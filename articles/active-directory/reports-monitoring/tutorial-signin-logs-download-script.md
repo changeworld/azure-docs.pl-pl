@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b134482e571b235b462c027a6d4ae8967fc77413
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: aedbc625bedcbe66b43b66ce96e1b17746b9a47c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175476"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531293"
 ---
 # <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Samouczek: jak pobrać skrypt w celu uzyskania dostępu do dzienników logowania i jak go używać
 
@@ -36,7 +36,6 @@ Potrzebne elementy:
 
 * Dzierżawa usługi Azure Active Directory z licencją premium (P1/P2). Pamiętaj, że jeśli przed uaktualnieniem nie istniały żadne dane działań, po przejściu na licencję premium może minąć kilka dni, zanim te dane pojawią się w raportach. 
 * Użytkownik mający rolę **administratora globalnego**, **administratora zabezpieczeń**, **czytelnika zabezpieczeń** lub **czytelnika raportów** dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
-* Jeśli chcesz uruchomić pobrany skrypt na maszynie z systemem Windows 10, [skonfiguruj moduł programu Azure PowerShell i ustaw zasady wykonywania](concept-sign-ins.md#running-the-script-on-a-windows-10-machine).
 
 ## <a name="tutorial"></a>Samouczek
 
@@ -58,7 +57,7 @@ Potrzebne elementy:
 
 Utworzone zadanie będzie uruchamiane codziennie, zapisując rekordy dzienników logowania z ostatnich 24 godzin w pliku o nazwie w formacie **AAD_SignInReport_RRRRMMDD_GGMMSS.csv**. Możesz również edytować pobrany skrypt programu PowerShell, aby zmienić nazwę zapisywanego pliku lub liczbę pobieranych rekordów. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Azure Active Directory report retention policies](reference-reports-data-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory)
 * [Wprowadzenie do interfejsu API raportów usługi Azure Active Directory](concept-reporting-api.md)

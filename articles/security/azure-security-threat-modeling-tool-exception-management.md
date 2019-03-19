@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 68bffaeef0451dae3a3b9707049dd2e44ad311fd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865879"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877303"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie wyjątkami | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -71,7 +71,7 @@ Wyłącz informacji o debugowaniu w usłudze. Można to osiągnąć, usuwając `
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | MVC 5, MVC 6 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Obsługa wyjątków w Web API platformy ASP.NET](http://www.asp.net/web-api/overview/error-handling/exception-handling), [Walidacja we wzorcu ASP.NET Web API modelu](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Odwołania**              | [Obsługa wyjątków w Web API platformy ASP.NET](https://www.asp.net/web-api/overview/error-handling/exception-handling), [Walidacja we wzorcu ASP.NET Web API modelu](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Kroki** | Domyślnie większość nieprzechwyconych wyjątków w interfejsie API sieci Web platformy ASP.NET są tłumaczone na odpowiedź HTTP z kodem stanu `500, Internal Server Error`|
 
 ### <a name="example"></a>Przykład
@@ -179,7 +179,7 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obsłudze wyjątkowe i sprawdzania poprawności modelu programu ASP.Net Web API 
+Sprawdź łącza w sekcji odwołań, aby uzyskać szczegółowe informacje o obsłudze wyjątkowe i sprawdzania poprawności modelu programu ASP.NET Web API 
 
 ## <a id="messages"></a>Nie ujawniaj informacji zabezpieczeń w komunikatach o błędach
 

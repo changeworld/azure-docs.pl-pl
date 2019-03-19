@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/19/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: e411047e68f13ca24e8937bddbccc261b72bc0d1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: be134267bbb1ca372006bc1ff05d7a5ddc3732de
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868416"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311107"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Go
 
-Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Pytanie w formacie JSON jest wysyłane w treści żądania interfejsu API. 
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) są wysyłane do usługi QnA Maker. [Odpowiedzi](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) zawiera przewidywany górnej odpowiedzi. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -66,6 +66,8 @@ Poniższy kod umożliwia wysłanie żądania HTTPS do interfejsu API usługi QnA
 
 Wartość nagłówka `Authorization` zawiera ciąg `EndpointKey `. 
 
+Dowiedz się więcej o [żądania](../how-to/metadata-generateanswer-usage.md#generateanswer-request) i [odpowiedzi](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
+
 ## <a name="build-and-run-the-program"></a>Kompilowanie i uruchamianie programu
 
 Skompiluj i uruchom program z poziomu wiersza polecenia. Automatycznie wyśle on żądanie do interfejsu API usługi QnA Maker, a następnie wyświetli informacje w oknie konsoli.
@@ -87,7 +89,7 @@ Skompiluj i uruchom program z poziomu wiersza polecenia. Automatycznie wyśle on
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

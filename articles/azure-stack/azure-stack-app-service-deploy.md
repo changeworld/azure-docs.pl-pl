@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: e8028bc9a4a6f3245dca61d6dd30db22dc295a7f
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d66254cdad596e3b10482b2c937326162e2e075d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992451"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886834"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -44,13 +44,13 @@ Zapewnić użytkownikom możliwość tworzenia aplikacji interfejsu API sieci we
 
 Instalowanie dostawcy zasobów usługi App Service ma co najmniej godzinę. Czas potrzebny jest zależny od roli liczbę wystąpień, możesz wdrożyć. Podczas wdrażania program Instalator uruchamia następujące zadania:
 
- - Utwórz kontener obiektów blob w ramach określonego konta magazynu usługi Azure Stack.
- - Tworzenie strefy DNS i wpisy dla usługi App Service.
- - Zarejestruj dostawcę zasobów usługi App Service.
- - Zarejestruj elementy galerii usługi App Service.
+- Utwórz kontener obiektów blob w ramach określonego konta magazynu usługi Azure Stack.
+- Tworzenie strefy DNS i wpisy dla usługi App Service.
+- Zarejestruj dostawcę zasobów usługi App Service.
+- Zarejestruj elementy galerii usługi App Service.
 
- > [!IMPORTANT]
- > Przed wdrożeniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
+  > [!IMPORTANT]
+  > Przed wdrożeniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.
 
 Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki:
 
@@ -74,8 +74,8 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
     a. Wybierz **Connect** obok **usługi Azure Stack subskrypcje**.
 
-     - Jeśli używasz usługi Azure Active Directory (Azure AD), wprowadź konto administratora usługi Azure AD i hasło podane podczas wdrażania usługi Azure Stack. Wybierz **Zaloguj**.
-     - Jeśli używasz usługi Active Directory Federation Services (AD FS) zapewniają konta administratora. Na przykład cloudadmin@azurestack.local. Wprowadź hasło, a następnie wybierz **Sign In**.
+   - Jeśli używasz usługi Azure Active Directory (Azure AD), wprowadź konto administratora usługi Azure AD i hasło podane podczas wdrażania usługi Azure Stack. Wybierz **Zaloguj**.
+   - Jeśli używasz usługi Active Directory Federation Services (AD FS) zapewniają konta administratora. Na przykład cloudadmin@azurestack.local. Wprowadź hasło, a następnie wybierz **Sign In**.
 
    b. W **usługi Azure Stack subskrypcje**, wybierz opcję **domyślne subskrypcję dostawcy**.
 
@@ -243,7 +243,7 @@ Aby utworzyć test aplikacji sieci web, wykonaj następujące kroki:
 
 1. W portalu dzierżawcy usługi Azure Stack, wybierz **+**, przejdź do portalu Azure Marketplace, wdrażanie witryny sieci Web Django i zaczekaj na zakończenie wdrożenia. Platforma sieci web Django korzysta z bazy danych opartych na systemie plików. Nie wymaga żadnych dostawców dodatkowych zasobów, takich jak SQL lub MySQL.
 
-2. Jeśli wdrożono również dostawcy zasobów bazy danych MySQL, można wdrażać witryny sieci Web WordPress w witrynie Marketplace. Po wyświetleniu monitu dla bazy danych, parametrów, wprowadź nazwę użytkownika jako *User1@Server1*, nazwą użytkownika i nazwę serwera.
+2. Jeśli wdrożono również dostawcy zasobów bazy danych MySQL, można wdrażać witryny sieci Web WordPress w witrynie Marketplace. Po wyświetleniu monitu dla bazy danych, parametrów, wprowadź nazwę użytkownika jako *Użytkownik1\@serwer1*, nazwą użytkownika i nazwę serwera.
 
 3. Jeśli wdrożono również dostawcę zasobów programu SQL Server, można wdrożyć DNN witryny sieci Web z witryny Marketplace. Po wyświetleniu monitu dla parametrów bazy danych, wybierz bazę danych na komputerze z uruchomionym programem SQL Server, która jest połączona z dostawcą zasobów.
 

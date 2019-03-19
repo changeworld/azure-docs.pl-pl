@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f5d54f90c0b53105953726b1f26dab98192b40a6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: 24a35b387a8b47d44f742303ddde0a0e8fb47fe6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752823"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833802"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Omówienie usługi Azure Spatial Anchors
 
@@ -30,11 +30,11 @@ Przykładowe przypadki użycia możliwe dzięki zastosowaniu usługi Spatial Anc
 
 - [Znajdowanie drogi](concepts/anchor-relationships-way-finding.md). Deweloperzy mogą także łączyć kotwice przestrzenne, tworząc między nimi relacje. Na przykład aplikacja może obejmować środowisko z co najmniej dwoma punktami orientacyjnymi, z którymi użytkownik musi wejść w interakcję, aby ukończyć zadanie. Te punkty orientacyjne mogą być tworzone jako połączone. Później, gdy użytkownik wykonuje zadanie wieloetapowe, aplikacja może zapytać o kotwice znajdujące się w pobliżu bieżącej kotwicy, aby skierować użytkownika do następnego kroku w zadaniu.
 
-- [Utrwalanie wirtualnej zawartości w świecie rzeczywistym](concepts/create-locate-anchors-unity.md#creating-a-cloud-spatial-anchor). Aplikacja może umożliwić użytkownikowi umieszczenie wirtualnego kalendarza na ścianie sali konferencyjnej, który użytkownicy mogą zobaczyć za pomocą aplikacji na telefon lub urządzenia HoloLens. W środowisku przemysłowym użytkownik może otrzymywać informacje kontekstowe o maszynie, kierując na nią aparat obsługiwanego urządzenia.
+- [Utrwalanie wirtualnej zawartości w świecie rzeczywistym](concepts/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Aplikacja może umożliwić użytkownikowi umieszczenie wirtualnego kalendarza na ścianie sali konferencyjnej, który użytkownicy mogą zobaczyć za pomocą aplikacji na telefon lub urządzenia HoloLens. W środowisku przemysłowym użytkownik może otrzymywać informacje kontekstowe o maszynie, kierując na nią aparat obsługiwanego urządzenia.
 
 Usługa Azure Spatial Anchors składa się z usługi zarządzanej i zestawów SDK klienta dla obsługiwanych platform urządzeń. Poniższe sekcje zawierają informacje o rozpoczynaniu tworzenia aplikacji przy użyciu usługi Azure Spatial Anchors.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Tworzenie pierwszej aplikacji z użyciem usługi Spatial Anchors.
 

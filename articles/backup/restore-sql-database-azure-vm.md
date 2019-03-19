@@ -6,21 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/19/2018
+ms.date: 03/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7f25f26ac1cefa0f2dc3b9b7e30f4a4fc2901c9f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1712e46494796e563c26316b4f45d968872c304f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436531"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996769"
 ---
-# <a name="restore-sql-server-databases-on-azure-vms"></a>Przywracanie bazy danych SQL Server na maszynach wirtualnych platformy Azure 
+# <a name="restore-sql-server-databases-on-azure-vms"></a>Przywracanie bazy danych SQL Server na maszynach wirtualnych platformy Azure
 
 W tym artykule opisano sposób przywracania bazy danych SQL Server, który działa na maszynie wirtualnej platformy Azure (VM), [kopia zapasowa Azure](backup-overview.md) usługi ma kopii zapasowej do magazynu usługi Azure Backup Recovery Services.
-
-> [!NOTE]
-> Kopia zapasowa bazy danych SQL Server, które są uruchomione na maszynie Wirtualnej platformy Azure, która używa usługi Azure Backup jest obecnie w publicznej wersji zapoznawczej.
 
 W tym artykule opisano sposób przywracania bazy danych programu SQL Server. Aby uzyskać więcej informacji, zobacz [Utwórz kopię zapasową bazy danych SQL Server na maszynach wirtualnych Azure](backup-azure-sql-database.md).
 
@@ -53,7 +50,7 @@ Aby przywrócić, potrzebne są następujące uprawnienia:
 * **Współautor (zapis)** dostępu do źródła maszynę Wirtualną, która jest wykonywana kopia zapasowa.
 * **Współautor (zapis)** dostęp do docelowej maszyny Wirtualnej:
     - W przypadku przywracania tej samej maszyny Wirtualnej, to źródłowej maszyny Wirtualnej.
-    - Jeśli przywracania alternatywnej lokalizacji, jest to nowy obiekt docelowy maszyny Wirtualnej. 
+    - Jeśli przywracania alternatywnej lokalizacji, jest to nowy obiekt docelowy maszyny Wirtualnej.
 
 Przywróć w następujący sposób:
 1. Otwórz magazyn, w którym jest zarejestrowana maszynę Wirtualną programu SQL Server.
@@ -66,24 +63,24 @@ Przywróć w następujący sposób:
 
     ![Wybieranie bazy danych do przywrócenia](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-5. Zapoznaj się z menu bazy danych. Zawiera informacje na temat kopii zapasowej bazy danych, w tym: 
+5. Zapoznaj się z menu bazy danych. Zawiera informacje na temat kopii zapasowej bazy danych, w tym:
 
     * Najstarsze i najnowsze punkty przywracania.
     * Stan kopii zapasowej dziennika, w ciągu ostatnich 24 godzin dla baz danych, które są w trybie odzyskiwania pełnego i z niepełnym dziennikiem, które są skonfigurowane dla kopii zapasowych dziennika transakcji.
 
-6. Wybierz **Restore DB**. 
+6. Wybierz **Restore DB**.
 
     ![Wybieranie pozycji Przywróć bazę danych](./media/backup-azure-sql-database/restore-db-button.png)
 
 7. W **przywracania konfiguracji**, określ lokalizację do przywracania danych:
-    - **Lokalizacja alternatywna**: Przywróć bazę danych do lokalizacji alternatywnej i zachować oryginalne źródłowej bazy danych.
-    - **Zastąp bazę danych**: przywróć dane do tego samego wystąpienia programu SQL Server co oryginalne źródło. Ta opcja spowoduje zastąpienie oryginalnej bazy danych.
+   - **Lokalizacja alternatywna**: Przywróć bazę danych do lokalizacji alternatywnej i zachować oryginalne źródłowej bazy danych.
+   - **Zastąp bazę danych**: przywróć dane do tego samego wystąpienia programu SQL Server co oryginalne źródło. Ta opcja spowoduje zastąpienie oryginalnej bazy danych.
 
-    > [!Important]
-    > Jeśli wybrana baza danych, należy do grupy dostępności Always On programu SQL Server nie zezwala na bazy danych zostaną zastąpione. Tylko **lokalizacji alternatywnej** jest dostępna.
-    >
+     > [!Important]
+     > Jeśli wybrana baza danych, należy do grupy dostępności Always On programu SQL Server nie zezwala na bazy danych zostaną zastąpione. Tylko **lokalizacji alternatywnej** jest dostępna.
+     >
 
-    ![Menu Konfiguracja przywracania](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
+     ![Menu Konfiguracja przywracania](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
 
 ### <a name="restore-to-an-alternate-location"></a>Przywracanie do lokalizacji alternatywnej
 
@@ -98,7 +95,7 @@ Przywróć w następujący sposób:
 2. W **wybierz punkt przywracania**, wybierz opcję [Przywracanie do określonego punktu w czasie](#restore-to-a-specific-point-in-time) lub [Przywracanie do punktu odzyskiwania](#restore-to-a-specific-restore-point).
 
     > [!NOTE]
-    > Przywracanie punktu w czasie jest dostępna tylko w przypadku kopii zapasowych dzienników dla baz danych, które znajdują się w trybie odzyskiwania pełnego i z niepełnym dziennikiem. 
+    > Przywracanie punktu w czasie jest dostępna tylko w przypadku kopii zapasowych dzienników dla baz danych, które znajdują się w trybie odzyskiwania pełnego i z niepełnym dziennikiem.
 
 ### <a name="restore-and-overwrite"></a>Przywracanie i zastępowania
 
@@ -109,7 +106,7 @@ Przywróć w następujący sposób:
 2. W **wybierz punkt przywracania**, wybierz opcję **dzienniki (punkt w czasie)** do [Przywracanie do określonego punktu w czasie](#restore-to-a-specific-point-in-time). Lub wybierz **pełna i różnicowa** do przywrócenia [określony punkt odzyskiwania](#restore-to-a-specific-restore-point).
 
     > [!NOTE]
-    > Przywracanie punktu w czasie jest dostępna tylko w przypadku kopii zapasowych dzienników dla baz danych, które znajdują się w trybie odzyskiwania pełnego i z niepełnym dziennikiem. 
+    > Przywracanie punktu w czasie jest dostępna tylko w przypadku kopii zapasowych dzienników dla baz danych, które znajdują się w trybie odzyskiwania pełnego i z niepełnym dziennikiem.
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Przywracanie do określonego punktu w czasie
 
@@ -125,7 +122,7 @@ Jeśli wybrano **dzienniki (punkt w czasie)** jako typ przywracania, wykonaj nas
 
     ![Wybierz czas przywracania](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
- 
+
 1. Na **Advanced Configuration** menu, aby ochronić bazę danych niesprawny po przywróceniu, Włącz **Przywróć z opcją NORECOVERY**.
 1. Jeśli chcesz zmienić lokalizację przywracania na serwerze docelowym, wprowadź nową ścieżkę docelowego.
 1. Kliknij przycisk **OK**.
@@ -144,9 +141,9 @@ Jeśli wybrano **pełna i różnicowa** jako typ przywracania, wykonaj następuj
 1. Wybierz punkt odzyskiwania z listy, a następnie wybierz pozycję **OK**, aby ukończyć procedurę punktu przywracania.
 
     ![Wybieranie punktu odzyskiwania pełnego](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
-        
+
 1. Na **Advanced Configuration** menu, aby ochronić bazę danych niesprawny po przywróceniu, Włącz **Przywróć z opcją NORECOVERY**.
-1. Jeśli chcesz zmienić lokalizację przywracania na serwerze docelowym, wprowadź nową ścieżkę docelowego. 
+1. Jeśli chcesz zmienić lokalizację przywracania na serwerze docelowym, wprowadź nową ścieżkę docelowego.
 1. Kliknij przycisk **OK**.
 
     ![Meny Konfiguracja zaawansowana](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)

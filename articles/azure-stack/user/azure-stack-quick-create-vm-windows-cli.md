@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d2e29e183ab898635f550290b6ebd6eddd42c4d2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 15dd878b7ff322ac8243b37649f16fed4e068af4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659205"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091719"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Szybki Start: tworzenie maszyny wirtualnej systemu Windows Server przy użyciu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -42,8 +42,8 @@ Można utworzyć maszynę wirtualną systemu Windows Server 2016 przy użyciu wi
 
 Grupa zasobów to logiczny kontener, w której można wdrożyć aplikację i zarządzanie zasobami usługi Azure Stack. W środowisku usługi Azure Stack, uruchom polecenie [Tworzenie grupy az](/cli/azure/group#az-group-create) polecenie, aby utworzyć grupę zasobów.
 
->[!NOTE]
- Wartości są przypisywane do wszystkich zmiennych w przykładach kodu. Jednak można przypisać nowe wartości, jeśli chcesz.
+> [!NOTE]
+>  Wartości są przypisywane do wszystkich zmiennych w przykładach kodu. Jednak można przypisać nowe wartości, jeśli chcesz.
 
 Poniższy przykład tworzy grupę zasobów o nazwie myResourceGroup w lokalizacji lokalnej.
 

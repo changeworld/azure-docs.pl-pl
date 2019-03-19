@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453617"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904511"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Samouczek 1. Przewidywanie ryzyka kredytowego — Azure Machine Learning Studio
 
@@ -70,7 +70,7 @@ Po utworzeniu obszaru roboczego otwórz usługę Machine Learning Studio ([https
 ## <a name="upload"></a>Przekazywanie istniejących danych
 
 Aby opracować model predykcyjny na potrzeby oceny ryzyka kredytowego, potrzebujesz danych, których można użyć do wytrenowania, a następnie przetestowania modelu. Na potrzeby tego samouczka użyjesz zestawu danych „UCI Statlog (German Credit Data) Data Set” z repozytorium UC Irvine Machine Learning. Znajdziesz go tutaj:  
-<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
+<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 Użyjesz pliku o nazwie **german.data**. Pobierz ten plik na lokalny dysk twardy.  
 
@@ -212,18 +212,18 @@ Aby użyć modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych), najpi
 
 1. Z powrotem w okienku **Properties** (Właściwości) poszukaj parametru **New column names** (Nowe nazwy kolumn). W tym polu wprowadź listę nazw dla 21 kolumn w zestawie danych, rozdzielane przecinkami i w kolejności kolumn. Nazwy kolumn możesz uzyskać z dokumentacji zestawu danych w witrynie UCI lub, dla wygody, możesz skopiować i wkleić poniższą listę:  
 
-  ```   
-  Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
-  ```
+   ```   
+   Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+   ```
 
-  Okienko Properties (Właściwości) wygląda następująco:
+   Okienko Properties (Właściwości) wygląda następująco:
 
-  ![Właściwości modułu Edytowanie metadanych](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
+   ![Właściwości modułu Edytowanie metadanych](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
-  > [!TIP]
-  > Jeśli chcesz zweryfikować nagłówki kolumn, uruchom eksperyment (kliknij przycisk **RUN** (URUCHOM) poniżej kanwy eksperymentu). Po zakończeniu eksperymentu (na module [Edit Metadata][edit-metadata] (Edytowanie metadanych) zostanie wyświetlony zielony znacznik wyboru), kliknij port wyjściowy modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych) i wybierz pozycję **Visualize** (Wizualizuj). W ten sam sposób możesz wyświetlić dane wyjściowe każdego modułu, aby sprawdzić postęp danych w eksperymencie.
-  > 
-  > 
+   > [!TIP]
+   > Jeśli chcesz zweryfikować nagłówki kolumn, uruchom eksperyment (kliknij przycisk **RUN** (URUCHOM) poniżej kanwy eksperymentu). Po zakończeniu eksperymentu (na module [Edit Metadata][edit-metadata] (Edytowanie metadanych) zostanie wyświetlony zielony znacznik wyboru), kliknij port wyjściowy modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych) i wybierz pozycję **Visualize** (Wizualizuj). W ten sam sposób możesz wyświetlić dane wyjściowe każdego modułu, aby sprawdzić postęp danych w eksperymencie.
+   > 
+   > 
 
 ### <a name="create-training-and-test-datasets"></a>Tworzenie szkoleniowych i testowych zestawów danych
 
@@ -291,7 +291,7 @@ Aby uzyskać więcej informacji na temat używania skryptów języka R w ekspery
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wykonano następujące kroki: 
  

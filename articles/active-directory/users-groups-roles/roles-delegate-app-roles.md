@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9409d196e307b75a14a272dee6c8c93789ca8556
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 9aba12a2bca882b5f0e6e95d8e4f6014b318a12e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669792"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119748"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Delegowanie ról administratora aplikacji w usłudze Azure Active Directory
 
@@ -37,8 +37,8 @@ Aby udzielić możliwość zarządzania dostęp do aplikacji w witrynie Azure po
 1. Zaloguj się do Twojej [dzierżawy usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta, który kwalifikuje się do roli administratora globalnego w dzierżawie.
 2. Jeśli masz wystarczające uprawnienia, otwórz [strony role i Administratorzy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators).
 3. Otwórz jeden z następujących ról, aby wyświetlić jej przypisaniami do elementu członkowskiego:
-  * **Administrator aplikacji**
-  * **Administrator aplikacji w chmurze**
+   * **Administrator aplikacji**
+   * **Administrator aplikacji w chmurze**
 4. Na **członków** strony dla tej roli, wybierz opcję **Dodawanie elementu członkowskiego**.
 5. Wybierz co najmniej jednego członka do dodania do roli. <!--Members can be users or groups.-->
 
@@ -50,8 +50,8 @@ Domyślnie wszyscy użytkownicy mogą tworzyć rejestracje aplikacji, ale można
 
 1. Zaloguj się do Twojej [dzierżawy usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta, który kwalifikuje się do roli administratora globalnego w dzierżawie.
 2. Po uzyskaniu odpowiednich uprawnień, należy ustawić jeden lub oba z następujących czynności:
-  * Na [strona Ustawienia użytkownika dla Twojej dzierżawy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)ustaw **użytkownicy mogą rejestrować aplikacje** na nie.
-  * Na [ustawienia użytkownika dla aplikacji korporacyjnych](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)ustaw **użytkownicy mogą wyrazić zgodę aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu** na nie.
+   * Na [strona Ustawienia użytkownika dla Twojej dzierżawy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)ustaw **użytkownicy mogą rejestrować aplikacje** na nie.
+   * Na [ustawienia użytkownika dla aplikacji korporacyjnych](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)ustaw **użytkownicy mogą wyrazić zgodę aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu** na nie.
 3. Następnie Przypisz użytkowników, którzy tego uprawnienia, aby być członkami roli dla deweloperów aplikacji, zgodnie z potrzebami.
 
 Gdy użytkownik rejestruje aplikację, ich są automatycznie dodawane jako pierwszy właściciela aplikacji.

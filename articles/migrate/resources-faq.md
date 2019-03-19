@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 3744e51ffb4e0836eba4b1641413d8c0ee240f87
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729381"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003722"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -21,7 +21,7 @@ Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Migrate. 
 
 ### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Usługa Azure Migrate obsługuje oceny tylko obciążeń oprogramowania VMware?
 
-Tak, usługa Azure Migrate aktualnie obsługuje tylko oceny obciążeń oprogramowania VMware. Obsługa dla funkcji Hyper-V jest w wersji zapoznawczej, zarejestruj się [tutaj](http://aka.ms/migratefuture) uzyskać dostęp do korzystania z wersji zapoznawczej. W przyszłości zostanie włączona obsługa dla serwerów fizycznych.
+Tak, usługa Azure Migrate aktualnie obsługuje tylko oceny obciążeń oprogramowania VMware. Obsługa dla funkcji Hyper-V jest w wersji zapoznawczej, zarejestruj się [tutaj](https://aka.ms/migratefuture) uzyskać dostęp do korzystania z wersji zapoznawczej. W przyszłości zostanie włączona obsługa dla serwerów fizycznych.
 
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Czy usługa Azure Migrate potrzebuje programu vCenter Server, aby dowiedzieć się, w środowisku programu VMware?
 
@@ -42,7 +42,7 @@ Usługa Azure Migrate jest migracji za pomocą narzędzia do planowania i planis
 
 **Migracja z programu VMware na platformę Azure**: Aby przeprowadzić migrację lokalnych obciążeń na platformę Azure, używać usługi Azure Migrate dotyczące planowania migracji. Usługa Azure Migrate ocenia obciążenia lokalne i zapewnia wskazówki, szczegółowe informacje i mechanizmy, aby pomóc w migracji do platformy Azure. Jeśli wszystko jest gotowe dla planu migracji, można użyć usług, takich jak Azure Site Recovery i Azure Database Migration Service, przeprowadzić migrację maszyn na platformę Azure.
 
-**Migracja z funkcji Hyper-V na platformę Azure**: Ogólnie dostępnej wersji usługa Azure migrate obsługuje obecnie oceny maszyn wirtualnych VMware do migracji na platformę Azure. Obsługa dla funkcji Hyper-V jest obecnie w wersji zapoznawczej w pomocy technicznej w środowisku produkcyjnym. Jeśli interesują Cię do wypróbowania wersji zapoznawczej, zarejestruj się [tutaj](http://aka.ms/migratefuture).
+**Migracja z funkcji Hyper-V na platformę Azure**: Ogólnie dostępnej wersji usługa Azure migrate obsługuje obecnie oceny maszyn wirtualnych VMware do migracji na platformę Azure. Obsługa dla funkcji Hyper-V jest obecnie w wersji zapoznawczej w pomocy technicznej w środowisku produkcyjnym. Jeśli interesują Cię do wypróbowania wersji zapoznawczej, zarejestruj się [tutaj](https://aka.ms/migratefuture).
 
 **Odzyskiwanie po awarii z programu VMware/funkcji Hyper-V na platformę Azure**: Jeśli planujesz wykonać odzyskiwanie po awarii (DR) na platformie Azure przy użyciu usługi Azure Site Recovery (Usługa Site Recovery), na użytek planista wdrażania usługi Site Recovery planowania odzyskiwania po awarii. Planista wdrażania usługi Site Recovery wykonuje głęboką, specyficzne dla usługi ASR oceny środowiska lokalnego. Zapewnia zaleceń, które są wymagane przez usługę Site Recovery dla pomyślnego operacji odzyskiwania po awarii, takich jak replikacja, failover maszyn wirtualnych.  
 

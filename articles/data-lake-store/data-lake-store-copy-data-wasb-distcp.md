@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 9740de34fe7cf7d06af1803cc6d77d7e89bbb73f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5c3f393278d3d51dd3a53cd19335cd242c15c6d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391525"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168711"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Kopiowanie danych między obiektów blob usługi Azure Storage i Azure Data Lake Storage Gen1 za pomocą narzędzia Distcp
 > [!div class="op_single_selector"]
@@ -33,9 +33,6 @@ Jeśli masz klaster usługi HDInsight z dostępem do usługi Azure Data Lake Sto
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Konto usługi Azure Data Lake Storage Gen1**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * **Klaster usługi Azure HDInsight** dzięki dostępowi do konta Data Lake Storage Gen1. Zobacz [Tworzenie klastra HDInsight z usługą Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
-
-## <a name="do-you-learn-fast-with-videos"></a>Czy dzięki filmom szybko się uczysz?
-[Obejrzyj ten film wideo](https://mix.office.com/watch/1liuojvdx6sie) dotyczącym kopiowania danych między Azure Storage Blobs a Data Lake Storage Gen1 korzystanie z narzędzia DistCp.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Z klastra usługi HDInsight w systemie Linux za pomocą narzędzia Distcp
 
@@ -79,9 +76,9 @@ Ponieważ firmy DistCp najniższy poziom szczegółowości jest pojedynczy plik,
 
 Oto kilka użytecznych wskazówek.
 
-* **Krok 1: Określanie całkowity rozmiar pamięci usługi YARN** -pierwszym krokiem jest określenie dostępnej do klastra, w którym jest uruchamiane zadanie DistCp pamięci usługi YARN. Te informacje są dostępne w portalu narzędzia Ambari skojarzonego z klastrem. Przejdź do usługi YARN i wyświetlić kartę konfiguracje, aby wyświetlić pamięci usługi YARN. Aby uzyskać całkowitej ilości pamięci usługi YARN, należy pomnożyć pamięci usługi YARN na węzeł z liczbą węzłów, które znajdują się w klastrze.
+* **Krok 1. Całkowity rozmiar pamięci usługi YARN określić** -pierwszym krokiem jest określenie dostępnej do klastra, w którym jest uruchamiane zadanie DistCp pamięci usługi YARN. Te informacje są dostępne w portalu narzędzia Ambari skojarzonego z klastrem. Przejdź do usługi YARN i wyświetlić kartę konfiguracje, aby wyświetlić pamięci usługi YARN. Aby uzyskać całkowitej ilości pamięci usługi YARN, należy pomnożyć pamięci usługi YARN na węzeł z liczbą węzłów, które znajdują się w klastrze.
 
-* **Krok 2: Oblicz liczbę liczby maperów** — wartość **m** jest taki sam, jak iloraz całkowity rozmiar pamięci usługi YARN podzielonej przez rozmiar kontenera YARN. Informacje o rozmiarze kontenera YARN jest dostępna w witrynie portal Ambari. Przejdź do usługi YARN i wyświetlić kartę konfiguracje. Rozmiar kontenera YARN jest wyświetlany w tym oknie. Równanie na liczbę liczby maperów (**m**) jest
+* **Krok 2. Oblicz liczbę liczby maperów** — wartość **m** jest taki sam, jak iloraz całkowity rozmiar pamięci usługi YARN podzielonej przez rozmiar kontenera YARN. Informacje o rozmiarze kontenera YARN jest dostępna w witrynie portal Ambari. Przejdź do usługi YARN i wyświetlić kartę konfiguracje. Rozmiar kontenera YARN jest wyświetlany w tym oknie. Równanie na liczbę liczby maperów (**m**) jest
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 

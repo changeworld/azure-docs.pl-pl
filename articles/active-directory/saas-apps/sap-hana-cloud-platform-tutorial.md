@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a7fa71f2cb9d2c5326eea75af40e1ab6b986eb9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: b345656b30a9bb182c097a4c9e18d71a293bf420
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864876"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Samouczek: Integracja usługi Azure Active Directory z platformą SAP Cloud Platform
 
@@ -59,7 +59,7 @@ Aby skonfigurować integrację platformy SAP Cloud Platform z usługą Azure AD,
 
 **Aby dodać platformę SAP Cloud Platform z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -131,7 +131,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie SAP Clou
     | `https://us1.hana.ondemand.com/<instancename>` |
     | `https://ap1.hana.ondemand.com/<instancename>` |
 
-    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
 
     | |
     |--|
@@ -166,7 +166,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie SAP Clou
 
     b. W polu **Configuration Type** (Typ konfiguracji) wybierz pozycję **Custom** (Niestandardowa).
 
-    d. W polu **Local Provider Name** (Nazwa dostawcy lokalnego) pozostaw wartość domyślną. Skopiuj tę wartość i wklej ją w polu **Identifier** (Identyfikator) w konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
+    c. W polu **Local Provider Name** (Nazwa dostawcy lokalnego) pozostaw wartość domyślną. Skopiuj tę wartość i wklej ją w polu **Identifier** (Identyfikator) w konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
 
     d. Aby wygenerować parę kluczy w polach **Signing Key** (Klucz podpisywania) i **Signing Certificate** (Certyfikat podpisywania), kliknij przycisk **Generate Key Pair** (Generuj parę kluczy).
 
@@ -184,7 +184,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie SAP Clou
 
     b. Otwórz pobrany plik XML z metadanymi platformy SAP Cloud Platform, a następnie znajdź tag **ns3:AssertionConsumerService**.
  
-    d. Skopiuj wartość atrybutu **Location**, a następnie wklej ją w polu **Adres URL odpowiedzi** w ramach konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
+    c. Skopiuj wartość atrybutu **Location**, a następnie wklej ją w polu **Adres URL odpowiedzi** w ramach konfiguracji usługi Azure AD dla platformy SAP Cloud Platform.
 
 5. Kliknij kartę **Trusted Identity Provider** (Zaufany dostawca tożsamości), a następnie kliknij pozycję **Add Trusted Identity Provider** (Dodaj zaufanego dostawcę tożsamości).
    
@@ -223,7 +223,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD na platformie SAP Clou
     
     b. Wartość pola **Default Attribute** (Domyślny atrybut) na zrzucie ekranu służy tylko do celów ilustracyjnych. Nie jest ona wymagana do działania tego scenariusza.  
  
-    d. Nazwy i wartości w kolumnie **Principal Attribute** (Atrybut jednostki) na zrzucie ekranu są zależne od sposobu tworzenia aplikacji. Istnieje możliwość, że w Twojej aplikacji wymagane będzie użycie innych mapowań.
+    c. Nazwy i wartości w kolumnie **Principal Attribute** (Atrybut jednostki) na zrzucie ekranu są zależne od sposobu tworzenia aplikacji. Istnieje możliwość, że w Twojej aplikacji wymagane będzie użycie innych mapowań.
 
 ### <a name="assertion-based-groups"></a>Grupy oparte na asercjach
 
@@ -253,7 +253,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -302,7 +302,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do platformy SAP C
 
     b. Kliknij kartę **Users** (Użytkownicy).
 
-    d. W polu tekstowym **User** (Użytkownik) wpisz adres e-mail użytkownika.
+    c. W polu tekstowym **User** (Użytkownik) wpisz adres e-mail użytkownika.
 
     d. Kliknij pozycję **Assign** (Przypisz), aby przypisać użytkownika do roli.
 
@@ -310,7 +310,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do platformy SAP C
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka SAP Cloud Platform w panelu dostępu powinno nastąpić automatyczne zalogowanie do platformy SAP Cloud Platform, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

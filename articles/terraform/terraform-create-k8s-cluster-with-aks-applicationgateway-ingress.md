@@ -2,19 +2,19 @@
 title: Tworzenie klastra Kubernetes z usługą Application Gateway jako kontrolerem ruchu przychodzącego za pomocą usługi Azure Kubernetes Service (AKS)
 description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service z usługą Application Gateway jako kontrolerem ruchu przychodzącego
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, maszyna wirtualna, azure, kubernetes, ruch przychodzący, application gateway
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891985"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994348"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes z kontrolerem ruchu przychodzącego Application Gateway za pomocą usług Azure Kubernetes Service i Terraform
 Usługa [Azure Kubernetes Service (AKS)](/azure/aks/) zarządza hostowanym środowiskiem Kubernetes. Usługa AKS umożliwia szybkie i łatwe wdrażanie konteneryzowanych aplikacji i zarządzanie nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
@@ -36,16 +36,16 @@ W tym samouczku dowiesz się, jak wykonywać następujące zadania podczas tworz
 - **Skonfigurowane narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure (Terraform i konfigurowanie dostępu do platformy Azure)](/azure/virtual-machines/linux/terraform-install-configure).
 
 - **Jednostka usługi platformy Azure**: postępuj zgodnie z instrukcjami w sekcji dotyczącej **tworzenia jednostki usługi** artykułu [Tworzenie jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Zapisz wartości pozycji appId, displayName i password.
-    - Zanotuj wartość pozycji Object ID jednostki usługi, uruchamiając następujące polecenie.
+  - Zanotuj wartość pozycji Object ID jednostki usługi, uruchamiając następujące polecenie.
 
     ```bash
-     az ad sp list --display-name <displayName>
+    az ad sp list --display-name <displayName>
     ```
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 Pierwszym krokiem jest utworzenie katalogu, w którym będą przechowywane pliki konfiguracji narzędzia Terraform dla tego ćwiczenia.
 
-1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
 1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 
@@ -99,8 +99,8 @@ Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację dostawcy
     ```bash
     :wq
     ```
-## <a name="define-input-variables"></a>Definiowanie zmiennych wejściowych
-Tworzenie pliku konfiguracji narzędzia Terraform z listą wszystkich zmiennych wymaganych podczas tego wdrożenia
+   ## <a name="define-input-variables"></a>Definiowanie zmiennych wejściowych
+   Tworzenie pliku konfiguracji narzędzia Terraform z listą wszystkich zmiennych wymaganych podczas tego wdrożenia
 1. W usłudze Cloud Shell utwórz plik o nazwie `variables.tf`
     ```bash
     vi variables.tf
@@ -284,7 +284,7 @@ Utwórz plik konfiguracji narzędzia Terraform używany do utworzenia wszystkich
       tags = "${var.tags}"
     }
     ```
-    d. Tworzenie podstawowych zasobów sieciowych
+    c. Tworzenie podstawowych zasobów sieciowych
    ```JSON
     resource "azurerm_virtual_network" "test" {
       name                = "${var.virtual_network_name}"
@@ -674,7 +674,7 @@ Nowo utworzony klaster można sprawdzić za pomocą narzędzi usługi Kubernetes
     ![Narzędzie kubectl umożliwia sprawdzenie kondycji klastra Kubernetes](./media/terraform-k8s-cluster-appgw-with-tf-aks/kubectl-get-nodes.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób tworzenia klastra Kubernetes przy użyciu narzędzia Terraform i usługi AKS. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure.
  
  > [!div class="nextstepaction"] 

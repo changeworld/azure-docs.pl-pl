@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 9ab397cbee4eeca45a2f25fba3fb63101208a0f3
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 20404cea2aca984ef35472fa94d37c04eb8080e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249106"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872657"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Przeglądanie i pobieranie swoje użycie platformy Azure oraz opłaty
 
@@ -106,7 +106,7 @@ Można również pobrać użycia data miesiąca dla bieżącego okresu rozliczen
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

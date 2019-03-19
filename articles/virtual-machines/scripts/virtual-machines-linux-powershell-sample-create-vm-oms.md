@@ -1,6 +1,6 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — Log Analytics | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — Log Analytics
+title: Przykładowy skrypt Azure PowerShell — usługa Azure Monitor dzienników | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt Azure PowerShell — usługa Azure Monitor dzienników
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 33dbaea4b4658e189555f39ddeff9d33c7b48112
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: e32729ba9a8ae4e10fe696c130b32b76bcf8fd2c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984056"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536435"
 ---
-# <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>Tworzenie maszyny wirtualnej monitorowanej za pomocą usługi Log Analytics przy użyciu programu PowerShell
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Tworzenie usługi Azure Monitor maszyny Wirtualnej przy użyciu programu PowerShell
 
 Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta usługi Log Analytics i rejestruje system w obszarze roboczym usługi Log Analytics. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w konsoli.
 
@@ -64,7 +64,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Dodaje rozszerzenie do maszyny wirtualnej. W takim przypadku rozszerzenie agenta usługi Log Analytics jest używane do instalowania agenta usługi Log Analytics i rejestrowania maszyny wirtualnej w obszarze roboczym usługi Log Analytics. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

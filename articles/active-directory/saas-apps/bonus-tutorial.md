@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62927e78b8f1a771de74c0f9215a7bd946a46672
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d6c82d6a8cf2281ebd77c9880903f8f20505f52c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199599"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Bonusly
 
@@ -211,15 +211,15 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Bonusly, musi by
    
     ![Dodawanie użytkownika](./media/bonus-tutorial/ic781044.png "Dodawanie użytkownika")
 
-1. Na **Dodaj użytkownika** okno dialogowe, należy wykonać następujące czynności:
+1. W oknie dialogowym **Add User** (Dodawanie użytkownika) wykonaj następujące kroki:
    
     ![Dodawanie użytkownika](./media/bonus-tutorial/ic781045.png "Dodawanie użytkownika")  
 
-    a. W **imię** polu tekstowym Wprowadź imię użytkownika, takich jak **Britta**.
+    a. W polu tekstowym **First name (Imię)** wprowadź imię użytkownika, na przykład **Britta**.
 
-    b. W **nazwisko** polu tekstowym Wprowadź nazwisko użytkownika, takich jak **Simon**.
+    b. W polu tekstowym **Last name (Nazwisko)** wprowadź nazwisko użytkownika, na przykład **Simon**.
  
-    c. W polu tekstowym **E-mail** wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
+    c. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     d. Kliknij pozycję **Zapisz**.
    
@@ -265,7 +265,7 @@ Po kliknięciu kafelka Bonusly w panelu dostępu użytkownik powinien uzyskać a
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

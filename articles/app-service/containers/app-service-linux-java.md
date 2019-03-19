@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 698e6fb861ab891a84aa43ca94769099a5c76943
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d944a51f7e0ee24d5a3768ba28d7a8294c30b99b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766822"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118769"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -250,21 +250,21 @@ Następnie należy określić, czy źródło danych powinna być dostępna, do j
 #### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>Na koniec umieść plikach JAR sterownika w ścieżce klasy Tomcat i uruchom ponownie usługi App Service
 
 1. Upewnij się, że pliki sterownika JDBC są dostępne dla Tomcat classloader, umieszczając je w `/home/tomcat/lib` katalogu. (Utwórz ten katalog, jeśli jeszcze nie istnieje). Aby przekazać te pliki do swojego wystąpienia usługi App Service, wykonaj następujące czynności:  
-    1. Zainstaluj rozszerzenie webpp w usłudze Azure App Service:
+   1. Zainstaluj rozszerzenie webpp w usłudze Azure App Service:
 
       ```azurecli-interactive
       az extension add –name webapp
       ```
 
-    1. Uruchom następujące polecenie interfejsu wiersza polecenia, aby utworzyć tunel SSH z systemu lokalnego do usługi App Service:
+   1. Uruchom następujące polecenie interfejsu wiersza polecenia, aby utworzyć tunel SSH z systemu lokalnego do usługi App Service:
 
       ```azurecli-interactive
       az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
       ```
 
-    1. Podłącz do lokalnego portu tunelowania przy użyciu klienta protokołu SFTP oraz przekazywanie plików do `/home/tomcat/lib` folderu.
+   1. Podłącz do lokalnego portu tunelowania przy użyciu klienta protokołu SFTP oraz przekazywanie plików do `/home/tomcat/lib` folderu.
 
-    Alternatywnie można użyć klienta FTP do przekazania sterownik JDBC. Postępuj zgodnie z tymi [instrukcje dotyczące pobierania poświadczeń protokołu FTP](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
+      Alternatywnie można użyć klienta FTP do przekazania sterownik JDBC. Postępuj zgodnie z tymi [instrukcje dotyczące pobierania poświadczeń protokołu FTP](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 2. Jeśli utworzono źródła danych na poziomie serwera, uruchom ponownie aplikację App Service dla systemu Linux. Spowoduje to zresetowanie Tomcat `CATALINA_HOME` do `/home/tomcat/conf` i użyć zaktualizowanej konfiguracji.
 

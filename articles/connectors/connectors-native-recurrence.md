@@ -11,12 +11,12 @@ ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 tags: connectors
 ms.topic: article
 ms.date: 01/08/2019
-ms.openlocfilehash: a1f89ca6e9dc2d05180df14ff0f4dc52729a7e03
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: eb22539d1f433e396935f82e4cb3786d5699d21a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107841"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083958"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Tworzenie i uruchamianie zadań cyklicznych i przepływów pracy z usługą Azure Logic Apps
 
@@ -95,12 +95,12 @@ Aby wyzwolić aplikacji logiki i uruchomić tylko jeden raz w przyszłości, zob
 
 Możesz skonfigurować te właściwości dla wyzwalacza.
 
-| Name (Nazwa) | Wymagane | Nazwa właściwości | Typ | Opis | 
+| Name (Nazwa) | Wymagane | Nazwa właściwości | Type | Opis | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **Częstotliwość** | Yes | frequency | Ciąg | Jednostka czasu cyklu: **Drugi**, **minutę**, **godzinę**, **dzień**, **tydzień**, lub **miesiąca** | 
+| **Częstotliwość** | Yes | frequency | String | Jednostka czasu cyklu: **Drugi**, **minutę**, **godzinę**, **dzień**, **tydzień**, lub **miesiąca** | 
 | **Interwał** | Yes | interval | Liczba całkowita | Dodatnia liczba całkowita, która opisuje, jak często przepływu pracy jest uruchamiana na podstawie częstotliwości. <p>Domyślny interwał wynosi 1. Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesiąc: 1 – 16 miesięcy </br>-Dzień: 1 – 500 dni </br>-Godzinny: 1-12 000 godzin </br>-Minutowy: 1 72,000 min </br>-Sekundowych: 1 9,999,999 sekundy<p>Na przykład jeśli interwał wynosi 6 i częstotliwość wynosi "Month", cykl jest co 6 miesięcy. | 
-| **Strefa czasowa** | Nie | timeZone | Ciąg | Ma zastosowanie tylko po określeniu godziny rozpoczęcia, ponieważ ten wyzwalacz nie zaakceptuje [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Wybierz strefę czasową, który chcesz zastosować. | 
-| **Godzina rozpoczęcia** | Nie | startTime | Ciąg | Podaj godzinę rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg w przypadku wybrania strefy czasowej <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie zaznaczysz strefy czasowej <p>Na przykład jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i wybierz strefę czasową, np. czasu pacyficznego. Alternatywnie można wskazać "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ten czas rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie zaznaczysz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. [*Jakie są sposoby, czy można używać daty rozpoczęcia i godzinę?*](#start-time) | 
+| **Strefa czasowa** | Nie | timeZone | String | Ma zastosowanie tylko po określeniu godziny rozpoczęcia, ponieważ ten wyzwalacz nie zaakceptuje [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Wybierz strefę czasową, który chcesz zastosować. | 
+| **Godzina rozpoczęcia** | Nie | startTime | String | Podaj godzinę rozpoczęcia w następującym formacie: <p>RRRR-MM-Ddtgg w przypadku wybrania strefy czasowej <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie zaznaczysz strefy czasowej <p>Na przykład jeśli chcesz 18 września 2017 r. o 14:00, następnie określ "2017-09-18T14:00:00" i wybierz strefę czasową, np. czasu pacyficznego. Alternatywnie można wskazać "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ten czas rozpoczęcia musi stosować [specyfikacji czasu daty ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie zaznaczysz strefy czasowej, należy dodać litera "Z" na końcu bez żadnych spacji. Ta "Z" odnosi się do równowartości [morskich czasu](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia przypada po pierwszym wystąpieniu, natomiast w przypadku harmonogramów złożonych wyzwalacz nie zostanie wyzwolony wszelkie wcześniej niż czas rozpoczęcia. [*Jakie są sposoby, czy można używać daty rozpoczęcia i godzinę?*](#start-time) | 
 | **W tych dniach** | Nie | weekDays | Ciąg lub tablicę ciągów | Jeśli wybierzesz opcję "Week", można wybrać jeden lub więcej dni, gdy zachodzi potrzeba uruchomienia przepływu pracy: **Poniedziałek**, **wtorek**, **środę**, **czwartek**, **piątek**, **sobota**, i **Niedziela** | 
 | **W tych godzinach** | Nie | hours | Liczba całkowita lub tablicy liczb całkowitych | Jeśli wybierzesz opcję "Day" lub "Week", można wybrać jeden lub więcej liczb całkowitych z zakresu od 0 do 23 godzin dnia, kiedy chcesz uruchomić przepływ pracy. <p>Na przykład jeśli określisz "10", "12" i "14", możesz uzyskać 10 AM, 12 PM i 14: 00 jako znaki godzinę. | 
 | **W tych minutach** | Nie | minutes | Liczba całkowita lub tablicy liczb całkowitych | Jeśli wybierzesz opcję "Day" lub "Week", można wybrać jeden lub więcej liczb całkowitych z zakresu od 0 do 59 jako minuty, godziny, kiedy chcesz uruchomić przepływ pracy. <p>Na przykład "30" można określić jako znacznik minutę i godziny, dnia, korzystając z poprzedniego przykładu, możesz uzyskać 10:30:00, 12:30:00 i 14:30:00. | 
@@ -141,8 +141,8 @@ Oto przykład [definicji wyzwalacza cyklu](../logic-apps/logic-apps-workflow-act
 
 <a name="run-once"></a>
 
-**PYT.:** Co zrobić, jeśli chcę, aby uruchomić aplikację logiki w przyszłości tylko jeden raz? </br>
-**ODP.:** Aby wyzwolić aplikacji logiki i uruchomić jeden raz bez cyklicznego, można użyć **harmonogramu: Uruchom raz zadania** szablonu. Po utworzeniu nowej aplikacji logiki, ale przed otwarciem projektanta aplikacji logiki w obszarze **szablony** sekcji z **kategorii** listy wybierz pozycję **harmonogram**, a następnie wybierz pozycję szablon:
+**Pyt.:** Co zrobić, jeśli chcę, aby uruchomić aplikację logiki w przyszłości tylko jeden raz? </br>
+**Odp.:** Aby wyzwolić aplikacji logiki i uruchomić jeden raz bez cyklicznego, można użyć **harmonogramu: Uruchom raz zadania** szablonu. Po utworzeniu nowej aplikacji logiki, ale przed otwarciem projektanta aplikacji logiki w obszarze **szablony** sekcji z **kategorii** listy wybierz pozycję **harmonogram**, a następnie wybierz pozycję szablon:
 
 ![Wybierz pozycję "harmonogramu: Uruchamianie zadania raz"szablonu](./media/connectors-native-recurrence/choose-run-once-template.png)
 
@@ -150,8 +150,8 @@ Lub, jeśli używasz szablonu pustej aplikacji logiki, uruchomić swoją aplikac
 
 <a name="example-recurrences"></a>
 
-**PYT.:** Jakie są inne harmonogramy cyklu przykład? </br>
-**ODP.:** Oto więcej przykładów:
+**Pyt.:** Jakie są inne harmonogramy cyklu przykład? </br>
+**Odp.:** Oto więcej przykładów:
 
 | Cykl | Interval | Częstotliwość | Godzina rozpoczęcia | W tych dniach | W tych godzinach | W tych minutach | Uwaga |
 | ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
@@ -160,7 +160,7 @@ Lub, jeśli używasz szablonu pustej aplikacji logiki, uruchomić swoją aplikac
 | Uruchamiany co godzinę, o pełnej godzinie (przy użyciu Data i godzina rozpoczęcia) | 1 | Godzina | *Oprócz parametru startDate*Thh:00:00Z | {unavailable} | {Brak} | {Brak} | Ten harmonogram nie zaczyna się *wszelkie wcześniej* niż określona data i godzina rozpoczęcia. Przyszłe powtórzenia uruchamiany co godzinę w pozycji "00" minut. <p>Jeśli częstotliwość wynosi "Week" lub "Month", ten harmonogram jest uruchamiany odpowiednio tylko raz w tygodniu lub raz na miesiąc. | 
 | Uruchamiany co godzinę, codziennie (nie Data i godzina rozpoczęcia) | 1 | Godzina | {Brak} | {unavailable} | {Brak} | {Brak} | Ten harmonogram jest uruchamiany natychmiast i oblicza przyszłe powtórzenia na podstawie ostatniego czasu wykonywania. <p>Jeśli częstotliwość wynosi "Week" lub "Month", ten harmonogram jest uruchamiany odpowiednio tylko raz w tygodniu lub raz na miesiąc. | 
 | Uruchamiany co godzinę, codziennie (z Data i godzina rozpoczęcia) | 1 | Godzina | *startDate*T*startTime*Z | {unavailable} | {Brak} | {Brak} | Ten harmonogram nie zaczyna się *wszelkie wcześniej* niż określona data rozpoczęcia i godzina, a następnie oblicza przyszłe powtórzenia na podstawie ostatniego czasu wykonywania. <p>Jeśli częstotliwość wynosi "Week" lub "Month", ten harmonogram jest uruchamiany odpowiednio tylko raz w tygodniu lub raz na miesiąc. | 
-| Uruchom co 15 minut po pełnej godzinie, co godzinę (przy użyciu Data i godzina rozpoczęcia) | 1 | Godzina | *Oprócz parametru startDate*T00:15:00Z | {unavailable} | {Brak} | {Brak} | Ten harmonogram nie zaczyna się *wszelkie wcześniej* niż określona data rozpoczęcia i czas uruchamiania o 00:15, 1:15:00, 2:15:00 i tak dalej. | 
+| Uruchom co 15 minut po pełnej godzinie, co godzinę (przy użyciu Data i godzina rozpoczęcia) | 1 | Godzina | *startDate*T00:15:00Z | {unavailable} | {Brak} | {Brak} | Ten harmonogram nie zaczyna się *wszelkie wcześniej* niż określona data rozpoczęcia i czas uruchamiania o 00:15, 1:15:00, 2:15:00 i tak dalej. | 
 | Uruchamiany co 15 minut po pełnej godzinie, co godzinę (nie daty i godziny rozpoczęcia) | 1 | Dzień | {Brak} | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Ten harmonogram jest uruchamiany o 00:15, 1:15:00, 2:15:00, i tak dalej. Ponadto ten harmonogram jest odpowiednikiem częstotliwości "Hour" i czas rozpoczęcia "15" minut. | 
 | Uruchamiany co 15 minut od znacznika 15-minutowy (nie Data i godzina rozpoczęcia) | 1 | Dzień | {Brak} | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ten harmonogram nie zaczyna się do czasu następnego określony znak 15 minut. | 
 | Uruchamiany o 8:00:00 każdego dnia (nie Data i godzina rozpoczęcia) | 1 | Dzień | {Brak} | {unavailable} | 8 | {Brak} | Ten harmonogram jest uruchamiany o 8:00 każdego dnia na podstawie określonego harmonogramu. | 
@@ -180,8 +180,8 @@ Lub, jeśli używasz szablonu pustej aplikacji logiki, uruchomić swoją aplikac
 
 <a name="start-time"></a>
 
-**PYT.:** Jakie są sposoby, czy można używać daty rozpoczęcia i godzinę? </br>
-**ODP.:** Poniżej przedstawiono niektóre wzorce, które pokazują sposób kontrolowania cykli z użyciem Data i godzina rozpoczęcia i jak aparat usługi Logic Apps wykonuje te cykli:
+**Pyt.:** Jakie są sposoby, czy można używać daty rozpoczęcia i godzinę? </br>
+**Odp.:** Poniżej przedstawiono niektóre wzorce, które pokazują sposób kontrolowania cykli z użyciem Data i godzina rozpoczęcia i jak aparat usługi Logic Apps wykonuje te cykli:
 
 | Godzina rozpoczęcia | Cykl bez harmonogramu | Cykl z harmonogramem | 
 | ---------- | --------------------------- | ------------------------ | 
@@ -202,7 +202,7 @@ W tym scenariuszu aplikacji logiki aparatu oblicza uruchomić razy na podstawie 
 | Godzina rozpoczęcia | Uruchom po raz pierwszy | Przyszłość czasy uruchomienia | 
 | ---------- | ------------ | ---------- | 
 | 2017-09 -**07** o 14:00 | 2017-09 -**09** o 14:00 | 2017-09 -**11** o 14:00 </br>2017-09 -**13** o 14:00 </br>2017-09 -**15** o 14:00 </br>i tak dalej...
-||||| 
+||||
 
 Więc w tym scenariuszu, niezależnie od tego, jak daleko w przeszłości, określ rozpoczęcie czasu, na przykład 2017-09 -**05** o 14:00 lub 2017-09 -**01** o 14:00, pierwszej czas wykonywania jest taka sama.
 

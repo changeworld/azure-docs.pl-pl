@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/05/2019
 ms.author: jowargo
-ms.openlocfilehash: d2de4a4be8838cf696d2d3ed6589e8f154a6ca05
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 2fe448f3ed91f2c6dd242c24aa378c3541eceecc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959849"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857950"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Firebase Cloud Messaging
 
@@ -29,7 +29,7 @@ ms.locfileid: "55959849"
 
 Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia push do aplikacji dla systemu Android przy użyciu usług Azure Notification Hubs i Firebase Cloud Messaging (FCM). W tym samouczku tworzysz pustą aplikację dla systemu Android służącą do odbierania powiadomień push przy użyciu usługi Firebase Cloud Messaging (FCM).
 
-Kompletny kod dla tego samouczka można pobrać z witryny GitHub [tutaj](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStartedFirebase).
+Kompletny kod dla tego samouczka można pobrać z witryny GitHub [tutaj](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples/FCMTutorialApp).
 
 W tym samouczku wykonasz następujące kroki:
 
@@ -74,7 +74,7 @@ Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure
 
 1. Wybierz pozycję **Google (GCM/FCM)** w obszarze **Settings** (Ustawienia) w menu po lewej. 
 2. Wklej **klucz serwera** dla projektu usługi FCM, który został zapisany wcześniej. 
-3. Wybierz pozycję **Save** (Zapisz) na pasku narzędzi. 
+3. Wybierz pozycję **Zapisz** na pasku narzędzi. 
 
     ![Azure Notification Hubs — Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 4. Wśród alertów pojawi się komunikat o pomyślnym zaktualizowaniu centrum powiadomień. Przycisk **Save** (Zapisz) będzie wyłączony. 
@@ -92,7 +92,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą Firebas
 1. W pliku `Build.Gradle` dla **aplikacji** dodaj następujące wiersze w sekcji **dependencies**.
 
     ```gradle
-    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
@@ -101,7 +101,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą Firebas
     ```gradle
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -111,7 +111,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą Firebas
 1. W pliku `Build.Gradle` dla **aplikacji** dodaj następujące wiersze w sekcji **dependencies**, jeśli jeszcze nie istnieją. 
 
     ```gradle
-    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
     ```
 
 2. Na końcu pliku dodaj następującą wtyczkę, jeśli jeszcze nie istnieje. 
@@ -186,8 +186,8 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą Firebas
         }
         ```
 
-    > [!IMPORTANT]
-    > Przed przejściem dalej wprowadź parametry **name** i **DefaultListenSharedAccessSignature** dla centrum powiadomień. 
+     > [!IMPORTANT]
+     > Przed przejściem dalej wprowadź parametry **name** i **DefaultListenSharedAccessSignature** dla centrum powiadomień. 
 2. Dodaj kolejną klasę o nazwie `MyInstanceIDService`. Ta klasa to Twoja implementacja usługi odbiornika interfejsu Instance ID.
 
     Kod dla tej klasy będzie wywoływać klasę `IntentService` w celu [odświeżenia tokenu usługi FCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) w tle.
@@ -531,7 +531,7 @@ Powiadomienia push możesz wysłać z witryny [Azure Portal], wykonując następ
 5. Zobacz **wynik** operacji na liście u dołu.
 
     ![Azure Notification Hubs — Wysyłanie testowe](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
-6. Na swoim urządzeniu zobaczysz komunikat z powiadomieniem. 
+6. Zobaczysz powiadomienie na swoim urządzeniu. 
 
     ![Komunikat z powiadomieniem na urządzeniu](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-on-device.png)
     
@@ -543,7 +543,7 @@ Aby przetestować powiadomienia wypychane w emulatorze, upewnij się, że obraz 
 
 Oprócz tego upewnij się, że dodano konto Google do uruchomionego emulatora w obszarze **Settings**  >  **Accounts** (Ustawienia > Konta). W przeciwnym razie próby rejestracji w usłudze GCM mogą spowodować wystąpienie wyjątku **AUTHENTICATION\_FAILED** (uwierzytelnianie nie powiodło się).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku za pomocą usługi Firebase Cloud Messaging wysłano powiadomienia push do urządzeń z systemem Android. Aby dowiedzieć się, jak wypychać powiadomienia przy użyciu usługi Google Cloud Messaging, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
@@ -554,7 +554,7 @@ W tym samouczku za pomocą usługi Firebase Cloud Messaging wysłano powiadomien
 <!-- URLs. -->
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md

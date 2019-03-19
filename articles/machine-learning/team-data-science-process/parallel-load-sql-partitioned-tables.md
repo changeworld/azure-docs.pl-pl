@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f1a5f54e520cdabd49e1ca69626e1c693bc1ee19
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 253f73cc58292778d88417b693c157fcbd7d92bd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470029"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853039"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Tworzenia i optymalizowania tabele, szybkie równoległe importowania danych do programu SQL Server na Maszynie wirtualnej platformy Azure
 
@@ -95,7 +95,7 @@ Aby uzyskać więcej informacji, zobacz [tworzenie partycjonowane tabele i indek
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Zbiorcze importowanie danych dla każdej tabeli poszczególnych partycji
 
-* Możesz użyć narzędzia BCP, BULK INSERT lub inne metody takie jak [Kreatora migracji programu SQL Server](http://sqlazuremw.codeplex.com/). Podany przykład używa metody BCP.
+* Możesz użyć narzędzia BCP, BULK INSERT lub inne metody takie jak [Kreatora migracji programu SQL Server](https://sqlazuremw.codeplex.com/). Podany przykład używa metody BCP.
 * [Instrukcja ALTER database](https://msdn.microsoft.com/library/bb522682.aspx) zmianę schematu rejestrowanie transakcji na BULK_LOGGED, aby zminimalizować obciążenie rejestrowania na przykład:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED

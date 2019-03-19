@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/01/2017
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 075f08f89e0bbdefa76623a284971f46a1b3966a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 13379111706eaa816a8fa16cfe72711b7bf4d739
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119802"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013295"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorowanie usług i aplikacji Node.js za pomocą usługi Application Insights
 
@@ -28,8 +28,6 @@ Aby móc odbierać, przechowywać i eksplorować dane monitorowania, uwzględnij
 Zestaw Node.js SDK może automatycznie monitorować przychodzące i wychodzące żądania HTTP, wyjątki i niektóre metryki systemu. Od wersji 0.20 zestaw SDK może również monitorować niektóre popularne pakiety innych firm, takie jak MongoDB, MySQL i Redis. Wszystkie zdarzenia związane z przychodzącym żądaniem HTTP są skorelowane, aby zapewnić szybsze rozwiązanie problemów.
 
 Do ręcznego instrumentowania i monitorowania dodatkowych aspektów aplikacji i systemu można używać interfejsu API TelemetryClient. Interfejs API TelemetryClient został szczegółowo opisany w dalszej części tego artykułu.
-
-![Przykładowe wykresy monitorowania wydajności](./media/nodejs/10-perf.png)
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
@@ -49,11 +47,7 @@ Przed rozpoczęciem upewnij się, że masz subskrypcję platformy Azure, lub [be
 1. Zaloguj się w witrynie [Azure Portal][portal].
 2. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**. Zasób zawiera punkt końcowy do odbierania danych telemetrycznych, magazyn danych, zapisane raporty oraz pulpity nawigacyjne, konfigurację reguły i alertu oraz inne elementy.
 
-  ![Tworzenie zasobu usługi Application Insights](./media/nodejs/03-new_appinsights_resource.png)
-
 3. Na stronie tworzenia zasobu w polu **Typ aplikacji** wybierz pozycję **Aplikacja Node.js**. Typ aplikacji określa domyślne tworzone pulpity nawigacyjne i raporty. (Dowolny zasób usługi Application Insights może w rzeczywistości zbierać dane dla dowolnego języka i platformy).
-
-  ![Formularz nowego zasobu usługi Application Insights](./media/nodejs/04-create_appinsights_resource.png)
 
 ### <a name="sdk"></a> Konfigurowanie zestawu Node.js SDK
 
@@ -61,29 +55,29 @@ Uwzględnij zestaw SDK w aplikacji, aby mógł zbierać dane.
 
 1. Skopiuj klucza instrumentacji zasobu (nazywany również *ikey*) z witryny Azure Portal. Usługa Application Insights używa klucza ikey do mapowania danych z zasobu platformy Azure. Aby zestaw SDK mógł korzystać z klucza ikey, należy określić ten klucz w zmiennej środowiskowej lub w kodzie.  
 
-  ![Kopiowanie klucza instrumentacji](./media/nodejs/05-appinsights_ikey_portal.png)
+   ![Kopiowanie klucza instrumentacji](./media/nodejs/instrumentation-key-001.png)
 
 2. Dodaj bibliotekę zestawu Node.js SDK do zależności aplikacji przy użyciu pliku package.json. W folderze głównym aplikacji uruchom polecenie:
 
-  ```bash
-  npm install applicationinsights --save
-  ```
+   ```bash
+   npm install applicationinsights --save
+   ```
 
 3. Jawnie załaduj bibliotekę w kodzie. Ponieważ zestaw SDK wprowadza instrumentację do wielu innych bibliotek, załaduj go możliwie jak najszybciej, nawet przed innymi instrukcjami `require`. 
 
-  Na początku pierwszego pliku js dodaj poniższy kod. Metoda `setup` konfiguruje klucz ikey (a tym samym zasób platformy Azure) w taki sposób, aby był używany domyślnie dla wszystkich śledzonych elementów.
+   Na początku pierwszego pliku js dodaj poniższy kod. Metoda `setup` konfiguruje klucz ikey (a tym samym zasób platformy Azure) w taki sposób, aby był używany domyślnie dla wszystkich śledzonych elementów.
 
-  ```javascript
-  const appInsights = require("applicationinsights");
-  appInsights.setup("<instrumentation_key>");
-  appInsights.start();
-  ```
+   ```javascript
+   const appInsights = require("applicationinsights");
+   appInsights.setup("<instrumentation_key>");
+   appInsights.start();
+   ```
    
-  Klucz ikey można również podać za pośrednictwem zmiennej środowiskowej APPINSIGHTS\_INSTRUMENTATIONKEY, zamiast przekazywać go ręcznie do metody `setup()` lub `new appInsights.TelemetryClient()`. Takie podejście umożliwia oddzielenie kluczy ikey od zatwierdzonego kodu źródłowego i określenie różnych kluczy ikey dla różnych środowisk.
+   Klucz ikey można również podać za pośrednictwem zmiennej środowiskowej APPINSIGHTS\_INSTRUMENTATIONKEY, zamiast przekazywać go ręcznie do metody `setup()` lub `new appInsights.TelemetryClient()`. Takie podejście umożliwia oddzielenie kluczy ikey od zatwierdzonego kodu źródłowego i określenie różnych kluczy ikey dla różnych środowisk.
 
-  Dodatkowe opcje konfiguracji opisano w poniższych sekcjach.
+   Dodatkowe opcje konfiguracji opisano w poniższych sekcjach.
 
-  Zestaw SDK możesz wypróbować bez wysyłania danych telemetrycznych przez ustawienie elementu `appInsights.defaultClient.config.disableAppInsights = true`.
+   Zestaw SDK możesz wypróbować bez wysyłania danych telemetrycznych przez ustawienie elementu `appInsights.defaultClient.config.disableAppInsights = true`.
 
 ### <a name="monitor"></a> Monitorowanie aplikacji
 
@@ -91,15 +85,13 @@ Zestaw SDK automatycznie zbiera dane telemetryczne dotyczące środowiska urucho
 
 Następnie w witrynie [Azure Portal][portal] przejdź do usługi Application Insights i otwórz utworzony zasób. W obszarze **Oś czasu przeglądu** wyszukaj kilka pierwszych punktów danych. Aby wyświetlić bardziej szczegółowe dane, wybierz inne składniki wykresów.
 
-![Pierwsze punkty danych](./media/nodejs/12-first-perf.png)
-
 Aby wyświetlić topologię odnajdowaną dla aplikacji, wybierz przycisk **Mapa aplikacji**. Wybierz składniki na mapie, aby zobaczyć więcej szczegółów.
 
-![Mapa prostej aplikacji](./media/nodejs/06-appinsights_appmap.png)
+![Mapa prostej aplikacji](./media/nodejs/application-map-002.png)
 
 Aby uzyskać więcej informacji o aplikacji i rozwiązać problemy, w sekcji **ZBADAJ** użyj innych dostępnych widoków.
 
-![Sekcja Zbadaj](./media/nodejs/07-appinsights_investigate_blades.png)
+![Sekcja Zbadaj](./media/nodejs/007-investigate-pane.png)
 
 #### <a name="no-data"></a>Brak danych?
 

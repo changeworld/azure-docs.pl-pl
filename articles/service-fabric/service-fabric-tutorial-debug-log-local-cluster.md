@@ -15,21 +15,16 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c1a8b18062f61be9eb020beefd3ad741c41b55f8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652706"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444263"
 ---
-# <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Samouczek: debugowanie aplikacji Java wdrożonej w lokalnym klasterze usługi Service Fabric
+# <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Samouczek: Debugowanie aplikacji Java wdrożonej w lokalnym klastrze usługi Service Fabric
 
 Ten samouczek jest drugą częścią serii. Dowiesz się, jak dołączyć debuger zdalny przy użyciu programu Eclipse dla aplikacji usługi Service Fabric. Ponadto zostanie przedstawiony sposób przekierowywania dzienników z uruchomionych aplikacji do lokalizacji wygodnej dla dewelopera.
-
-Część druga serii zawiera informacje na temat wykonywania następujących czynności:
-> [!div class="checklist"]
-> * Debugowanie aplikacji Java przy użyciu programu Eclipse
-> * Przekierowywanie dzienników do lokalizacji możliwej do skonfigurowania
 
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -38,6 +33,13 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > * [Wdrażanie aplikacji w klastrze platformy Azure](service-fabric-tutorial-java-deploy-azure.md)
 > * [Konfigurowanie monitorowania i diagnostyki dla aplikacji](service-fabric-tutorial-java-elk.md)
 > * [Konfigurowanie ciągłej integracji/ciągłego wdrażania](service-fabric-tutorial-java-jenkins.md)
+
+
+Część druga serii zawiera informacje na temat wykonywania następujących czynności:
+> [!div class="checklist"]
+> * Debugowanie aplikacji Java przy użyciu programu Eclipse
+> * Przekierowywanie dzienników do lokalizacji możliwej do skonfigurowania
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,7 +55,7 @@ Jeśli nie skompilowano przykładowej aplikacji do głosowania w [pierwszej czę
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 ```
 
-[Skonfiguruj i wdróż](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) aplikację w lokalnym klasterze projektowym.
+[Tworzenie i wdrażanie](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) ją w lokalnym klastrze projektowym.
 
 ## <a name="debug-java-application-using-eclipse"></a>Debugowanie aplikacji Java przy użyciu programu Eclipse
 
@@ -89,13 +91,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 10. W środowisku IDE programu Eclipse wybierz pozycje **Uruchom -> Debuguj konfiguracje -> Zdalna aplikacja Java**, kliknij utworzoną konfigurację **Voting** i kliknij pozycję **Debuguj**.
 
-11. Przejdź do przeglądarki internetowej i uzyskaj dostęp do lokalizacji **localhost:8080**, aby trafić punkt przerwania i wprowadzić **perspektywę debugowania** w środowisku Eclipse.
+11. Przejdź do przeglądarki sieci web i dostępu **localhost: 8080**. To automatycznie zostanie trafiony punkt przerwania i wprowadzić Eclipse **perspektywę debugowania**.
+
+Teraz można zastosować te same kroki, aby debugować dowolnej aplikacji usługi Service Fabric w środowisku Eclipse.
 
 ## <a name="redirect-application-logs-to-custom-location"></a>Przekierowywanie dzienników aplikacji do lokalizacji niestandardowej
 
 Poniższe kroki przedstawiają sposób przekierowywania dzienników aplikacji z domyślnej lokalizacji */var/log/syslog* do lokalizacji niestandardowej.
 
-1. Obecnie aplikacje uruchomione w klastrach systemu Linux w usłudze Service Fabric obsługują pobieranie jednego pliku dziennika. W związku z tym dzienniki są zawsze kierowane do pliku */tmp/mysfapp0.0.log*. Utwórz plik o nazwie logging.properties w następującej lokalizacji: *Voting/VotingApplication/VotingWebPkg/Code/logging.properties* i dodaj poniższą zawartość.
+1. Obecnie aplikacje uruchomione w klastrach usługi Service Fabric systemu Linux tylko obsługują pobieranie jednego pliku dziennika. Aby skonfigurować aplikację tak, aby dzienniki są zawsze kierowane do */tmp/mysfapp0.0.log*, Utwórz plik o nazwie logging.properties w następującej lokalizacji *Voting/VotingApplication/VotingWebPkg/Code/logging.properties*  i dodaj następującą zawartość.
 
     ```
     handlers = java.util.logging.FileHandler
@@ -103,7 +107,8 @@ Poniższe kroki przedstawiają sposób przekierowywania dzienników aplikacji z 
     java.util.logging.FileHandler.level = ALL
     java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 
-    # This value specifies your custom location. You will have to ensure this path has read and write access by the process running the SF Application
+    # This value specifies your custom location.
+    # You will have to ensure this path has read and write access by the process running the SF Application
     java.util.logging.FileHandler.pattern = /tmp/mysfapp0.0.log
     ```
 
@@ -113,7 +118,7 @@ Poniższe kroki przedstawiają sposób przekierowywania dzienników aplikacji z 
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    W poniższym przykładzie pokazano próbkę wykonania:
+    Poniższy przykład pokazuje próbkę wykonania za pomocą debugera dołączone, podobne do wykonywania w poprzedniej sekcji.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar

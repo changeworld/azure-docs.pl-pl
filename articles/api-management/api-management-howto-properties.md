@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 829d6bc6cb3f8e78d065d7aaca4937634e7349c8
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437069"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082708"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać wartości o nazwie w zasadach usługi Azure API Management
 Zasady usługi API Management są zaawansowaną możliwością system, który pozwala witrynie Azure portal zmieniać zachowanie interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Instrukcje zasad można skonstruować przy użyciu wartości tekst dosłowny, wyrażenia zasad i nazwane wartości. 
 
 Każde wystąpienie usługi API Management ma kolekcji właściwości pary klucz/wartość, która jest wywoływana o nazwie wartości, które są globalne do wystąpienia usługi. Te wartości o nazwie może służyć do zarządzania stałym ciągiem wartości we wszystkich Konfiguracja interfejsu API i zasady. Każda właściwość może mieć następujące atrybuty:
 
-| Atrybut | Typ | Opis |
+| Atrybut | Type | Opis |
 | --- | --- | --- |
-| Nazwa wyświetlana |ciąg |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
-| Wartość |ciąg |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
+| Nazwa wyświetlana |string |Ciąg alfanumeryczny używany jako odwołanie do właściwości w zasadach. |
+| Wartość |string |Wartość właściwości. Nie może być pusta ani składać się wyłącznie z białych znaków. |
 |Wpis tajny|wartość logiczna|Określa, czy wartość jest wpis tajny i powinien być zaszyfrowany, czy nie.|
-| Tagi |Tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
+| Tagi |tablica ciągów |Opcjonalne — tagi, gdy zostanie podane, może służyć do filtrowania listy właściwości. |
 
 ![Nazwane wartości](./media/api-management-howto-properties/named-values.png)
 
@@ -38,7 +38,7 @@ Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad]
 
 | Name (Nazwa) | Wartość | Wpis tajny | Tagi |
 | --- | --- | --- | --- |
-| ContosoHeader |trackingId |False |Contoso |
+| ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
 | ExpressionProperty |@(DateTime.Now.ToString()) |False | |
 
@@ -50,8 +50,8 @@ Wartości właściwości mogą zawierać ciągi literałów i [wyrażenia zasad]
 2. Wybierz **nazwane wartości**.
 3. Naciśnij klawisz **+ Dodaj**.
 
-  Nazwy i wartości są wymaganymi wartościami. Jeśli wartość tej właściwości jest klucz tajny, sprawdź, czy jest to pole wpisu tajnego. Wprowadź jeden lub więcej opcjonalnych tagów, aby ułatwić organizowanie nazwanych wartości, a następnie kliknij przycisk Zapisz.
-4. Kliknij przycisk **Utwórz**.
+   Nazwy i wartości są wymaganymi wartościami. Jeśli wartość tej właściwości jest klucz tajny, sprawdź, czy jest to pole wpisu tajnego. Wprowadź jeden lub więcej opcjonalnych tagów, aby ułatwić organizowanie nazwanych wartości, a następnie kliknij przycisk Zapisz.
+4. Kliknij pozycję **Utwórz**.
 
 Po utworzeniu właściwości można edytować go, klikając właściwości. Jeśli zmienisz nazwę właściwości, wszystkie zasady, które odwołują się tę właściwość są automatycznie aktualizowane do użycia nowej nazwy.
 

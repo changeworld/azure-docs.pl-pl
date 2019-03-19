@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 797838b077993ddcb4120bcf48b026063abbe1ab
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ef75ec40df50931f5a49c06184c61d2f78608dcf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105325"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014996"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii Azure – Azure
 
@@ -101,10 +101,11 @@ W poniższej tabeli opisano różne typy spójności.
 --- | --- | ---
 Migawki spójne awarii przechwytuje dane na dysku podczas migawka została utworzona. Nie zawiera żadnych w pamięci.<br/><br/> Zawiera ona odpowiednikiem dane na dysku, które będą obecne, jeśli maszyna wirtualna wystąpiła awaria lub przewód zasilający została ściągnięta z serwera na moment, że migawka została utworzona.<br/><br/> Spójne na poziomie awarii nie gwarantuje spójności danych dla systemu operacyjnego lub aplikacji na maszynie Wirtualnej. | Usługa Site Recovery tworzy punkty odzyskiwania spójne na poziomie awarii co pięć minut domyślnie. Nie można zmodyfikować to ustawienie.<br/><br/>  | Obecnie większość aplikacji może odzyskać dobrze punktów spójnych awaryjnie.<br/><br/> Punkty odzyskiwania spójne na poziomie awarii są zwykle wystarczające do replikacji systemów operacyjnych i aplikacji, takich jak serwery DHCP i serwery wydruku.
 
-### <a name="app-consistent"></a>Spójne na poziomie aplikacji
+### <a name="app-consistent"></a>App-consistent
+
 **Opis** | **Szczegóły** | **Zalecenie**
 --- | --- | ---
-Punkty odzyskiwania spójne na poziomie aplikacji są tworzone na podstawie migawek spójności aplikacji.<br/><br/> Migawka spójności aplikacji zawierają wszystkie informacje w migawce spójnej na poziomie awarii, a także wszystkie dane w pamięci i transakcje w toku. | Migawki spójne z aplikacji należy użyć usługi kopiowania woluminów w tle (VSS):<br/><br/>   (1) po zainicjowaniu migawki VSS operacja kopii przy zapisie (krowy) na woluminie.<br/><br/>   (2) przed wykonaniem krowy, VSS informuje o każdej aplikacji na komputerze który musi opróżniania swoje dane rezydentny na dysku.<br/><br/>   (3) Usługa VSS następnie umożliwia aplikacji odzyskiwania kopii zapasowej/po awarii (w tym przypadku Usługa Site Recovery) odczytuje dane migawki i kontynuować. | Migawki spójne z aplikacji są pobierane zgodnie z częstotliwością, które określisz. Tę częstotliwość zawsze powinna być mniejsza niż ustawiony przechowywania punktów odzyskiwania. Na przykład możesz zachować punkty odzyskiwania, za pomocą domyślne ustawienie 24 godziny, należy ustawić częstotliwość mniej niż 24 godziny.<br/><br/>Są one bardziej złożonych i potrwać dłużej niż migawki spójne na poziomie awarii.<br/><br/> Wpływają na wydajność aplikacji działających na maszynie Wirtualnej włączona replikacja. | <br/><br/>Punkty odzyskiwania spójne z aplikacjami są zalecane dla systemów operacyjnych bazy danych i aplikacji, takich jak SQL.<br/><br/> Migawki spójne z aplikacji są obsługiwane tylko dla maszyn wirtualnych z systemem Windows.
+Punkty odzyskiwania spójne na poziomie aplikacji są tworzone na podstawie migawek spójności aplikacji.<br/><br/> Migawka spójności aplikacji zawierają wszystkie informacje w migawce spójnej na poziomie awarii, a także wszystkie dane w pamięci i transakcje w toku. | Migawki spójne z aplikacji należy użyć usługi kopiowania woluminów w tle (VSS):<br/><br/>   (1) po zainicjowaniu migawki VSS operacja kopii przy zapisie (krowy) na woluminie.<br/><br/>   (2) przed wykonaniem krowy, VSS informuje o każdej aplikacji na komputerze który musi opróżniania swoje dane rezydentny na dysku.<br/><br/>   (3) Usługa VSS następnie umożliwia aplikacji odzyskiwania kopii zapasowej/po awarii (w tym przypadku Usługa Site Recovery) odczytuje dane migawki i kontynuować. | Migawki spójne z aplikacji są pobierane zgodnie z częstotliwością, które określisz. Tę częstotliwość zawsze powinna być mniejsza niż ustawiony przechowywania punktów odzyskiwania. Na przykład możesz zachować punkty odzyskiwania, za pomocą domyślne ustawienie 24 godziny, należy ustawić częstotliwość mniej niż 24 godziny.<br/><br/>Są one bardziej złożonych i potrwać dłużej niż migawki spójne na poziomie awarii.<br/><br/> Wpływają na wydajność aplikacji działających na maszynie Wirtualnej włączona replikacja. 
 
 ## <a name="replication-process"></a>Proces replikacji
 
@@ -116,8 +117,7 @@ Po włączeniu replikacji dla maszyny Wirtualnej platformy Azure, są następuj�
 4. Usługa Site Recovery przetwarza dane w pamięci podręcznej i wysyła je do docelowego konta magazynu lub do repliki usługi managed disks.
 5. Po przetworzeniu danych punkty odzyskiwania spójne na poziomie awarii są generowane co pięć minut. Punkty odzyskiwania spójne na poziomie aplikacji są generowane, zgodnie z ustawieniem określonym w zasadach replikacji.
 
-
-   ![Włączanie replikacji procesu, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Włączanie replikacji procesu, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
 **Proces replikacji**
 
@@ -144,16 +144,16 @@ Do sterowania ruchem wychodzącym dla maszyn wirtualnych przy użyciu adresów I
 
 **Reguły** |  **Szczegóły** | **Tag usługi**
 --- | --- | --- 
-Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwól na użycie zakresów, które odpowiadają na kontach magazynu w regionie źródłowym | Magazyn. < nazwa regionu >.
-Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do usługi Azure Active Directory (Azure AD).<br/><br/> Jeśli adresy usługi Azure AD zostaną dodane w przyszłości, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń (NSG).  | Usługi AzureActiveDirectory
+Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwól na użycie zakresów, które odpowiadają na kontach magazynu w regionie źródłowym | Storage.<region-name>.
+Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do usługi Azure Active Directory (Azure AD).<br/><br/> Jeśli adresy usługi Azure AD zostaną dodane w przyszłości, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń (NSG).  | AzureActiveDirectory
 Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na dostęp do [punktów końcowych Site Recovery](https://aka.ms/site-recovery-public-ips) odnoszą się do lokalizacji docelowej. 
 
 #### <a name="target-region-rules"></a>Docelowy region reguły
 
 **Reguły** |  **Szczegóły** | **Tag usługi**
 --- | --- | --- 
-Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do konta magazynu w regionie docelowym. | Magazyn. < nazwa regionu >.
-Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do usługi Azure AD.<br/><br/> Jeśli adresy usługi Azure AD zostaną dodane w przyszłości, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń.  | Usługi AzureActiveDirectory
+Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do konta magazynu w regionie docelowym. | Storage.<region-name>.
+Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do usługi Azure AD.<br/><br/> Jeśli adresy usługi Azure AD zostaną dodane w przyszłości, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń.  | AzureActiveDirectory
 Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na dostęp do [punktów końcowych Site Recovery](https://aka.ms/site-recovery-public-ips) odnoszą się do lokalizacji źródłowej. 
 
 

@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 1f51aee41937c531a987482a6a367970305e6594
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4e623c6a2423d2e61334932d0c40f05e548d3c38
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218026"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109869"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure Stack
 
@@ -218,11 +218,11 @@ Instalacja obejmuje cztery kroki:
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
     ```
 
-    > [!NOTE]  
-    >Na komputerach bez połączenia z Internetem zaleca się wykonanie następującego polecenia cmdlet, aby wyłączyć zbieranie danych telemetrii. Może wystąpić obniżenie wydajności elementu cmldets bez konieczności wyłączania zbierania danych telemetrycznych. Ta opcja ma zastosowanie tylko w przypadku maszyn bez połączenia z Internetem
-    ```PowerShell
-    Disable-AzureRmDataCollection
-    ```
+    > [!NOTE]
+    > Na komputerach bez połączenia z Internetem zaleca się wykonanie następującego polecenia cmdlet, aby wyłączyć zbieranie danych telemetrii. Może wystąpić obniżenie wydajności elementu cmldets bez konieczności wyłączania zbierania danych telemetrycznych. Ta opcja ma zastosowanie tylko w przypadku maszyn bez połączenia z Internetem
+    > ```PowerShell
+    > Disable-AzureRmDataCollection
+    > ```
 
 ### <a name="enable-additional-storage-features"></a>Włącz funkcje dodatkowego miejsca do magazynowania
 

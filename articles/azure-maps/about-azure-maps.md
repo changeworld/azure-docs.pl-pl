@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ce55185effc67709157ce6219c405bb8e32dd5db
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 023f5ed43453d7fb20dec5d91651230aa8fb4370
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768583"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571307"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
 
@@ -22,15 +22,21 @@ Azure Maps to zbiór usług geoprzestrzennych opartych na najświeższych dostę
 
 W poniższym filmie wideo wyjaśniono dokładnie działanie usługi Azure Maps:
 
-<iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 ## <a name="map-controls"></a>Kontrolki mapy
 
-### <a name="web-control"></a>Kontrolka internetowa
+### <a name="web-sdk"></a>Zestaw SDK sieci Web
 
-Kontrolka internetowa usługi Azure Maps umożliwia dostosowywanie interaktywnych map przy użyciu własnych treści i obrazów na potrzeby wyświetlania w aplikacjach internetowych i mobilnych. Kontrolka korzysta z technologii WebGL, co umożliwia renderowanie dużych zestawów danych z wysoką wydajnością. Do programowania z użyciem tej kontrolki można użyć języka JavaScript lub TypeScript.
+Zestaw SDK sieci Web mapy platformy Azure umożliwia dostosowanie interaktywne mapy za pomocą własnych zawartości i obrazów do wyświetlania w sieci web lub aplikacji dla urządzeń przenośnych. Kontrolka korzysta z technologii WebGL, co umożliwia renderowanie dużych zestawów danych z wysoką wydajnością. Programowanie przy użyciu zestawu SDK przy użyciu języka JavaScript lub TypeScript.
 
-![Kontrolka internetowa usługi Azure Maps](media/about-azure-maps/Introduction_WebMapControl.png)
+![Zestaw SDK sieci Web usługi Azure Maps](media/about-azure-maps/Introduction_WebMapControl.png)
+
+### <a name="android-sdk"></a>Android SDK
+
+Zestaw Azure SDK dla systemu Android mapy umożliwia tworzenie zaawansowanych mapowania mobilnych aplikacji. 
+
+![Zestaw SDK systemu Android z usługi Azure Maps](media/about-azure-maps/AndroidSDK.png)
 
 ## <a name="services-in-azure-maps"></a>Usługi Azure Maps
 
@@ -126,7 +132,7 @@ Interfejs API usługi Azure Maps jest obecnie dostępny we wszystkich krajach op
 
 Zweryfikuj, czy lokalizacja Twojego bieżącego adresu IP nie znajduje się w jednym z nieobsługiwanych krajów wymienionych powyżej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat nowych funkcji usługi Azure Maps, zobacz:
 

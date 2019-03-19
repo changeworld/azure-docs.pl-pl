@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: ada0a54f014e4e896c0e91d1eeafb94e6d254d5b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 803d05e1aaf4d9c26a6132bde30f101ce3905924
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096830"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Dowiedz się, jak aprowizowanie nowych dzierżaw i rejestrowanie ich w wykazie
 
@@ -26,7 +26,7 @@ W tym samouczku dowiesz się, jak aprowizować i katalog wzorców SaaS. Dowiesz 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
+> 
 > * Aprowizowanie pojedynczej nowej dzierżawy.
 > * Aprowizowanie partii dodatkowych dzierżaw.
 
@@ -167,7 +167,7 @@ Za pomocą wzorca automatycznej aprowizacji aplikacja klienta lub skrypt przesy�
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
+> 
 > * Aprowizowanie pojedynczej nowej dzierżawy.
 > * Aprowizowanie partii dodatkowych dzierżaw.
 > * Przejść do szczegółów aprowizowanie dzierżaw i rejestrowania ich w wykazie.

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: fe34668577efb1552731af7760896bccbb99cf67
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009192"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992350"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C
 
@@ -89,7 +89,7 @@ Jeśli nie znasz narzędzie device explorer, Poniższa procedura opisuje jak z n
 
 1. Kiedy uruchamiasz program, zostanie wyświetlony ten interfejs:
 
-  ![Zrzut ekranu z bliźniaczej reprezentacji Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
+   ![Zrzut ekranu z bliźniaczej reprezentacji Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
 1. Wprowadź swoje **parametry połączenia Centrum IoT Hub** w pierwszym polu i kliknij **aktualizacji**. Ten krok obejmuje skonfigurowanie narzędzie tak, aby umożliwić komunikację z usługą IoT Hub. 
 
@@ -97,17 +97,17 @@ Jeśli nie znasz narzędzie device explorer, Poniższa procedura opisuje jak z n
 
 1. Po skonfigurowaniu parametry połączenia Centrum IoT kliknij **zarządzania** karty:
 
-  ![Bliźniacza reprezentacja Device Explorer / zarządzania zrzut ekranu](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
+   ![Bliźniacza reprezentacja Device Explorer / zarządzania zrzut ekranu](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 Ta karta jest, którym zarządzasz urządzeń zarejestrowanych w usłudze IoT hub.
 
 1. Tworzenie urządzenia, klikając **Utwórz** przycisku. Wyświetla okno dialogowe z zestawem wstępnie wypełnionych klucze (podstawowe i pomocnicze). Wprowadź **identyfikator urządzenia** a następnie kliknij przycisk **Utwórz**.
 
-  ![Utwórz zrzut ekranu urządzenia](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
+   ![Utwórz zrzut ekranu urządzenia](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
 1. Po utworzeniu urządzenia urządzenia Wyświetl listę wszystkich zarejestrowanych urządzeń, który został utworzony w tym aktualizacje. Kliknięcie prawym przyciskiem myszy nowe urządzenie, zostanie wyświetlony w tym menu:
 
-  ![Wyników kliknij prawym przyciskiem myszy bliźniaczej reprezentacji Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
+   ![Wyników kliknij prawym przyciskiem myszy bliźniaczej reprezentacji Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
 1. Jeśli wybierzesz **skopiuj parametry połączenia dla wybranego urządzenia**, parametry połączenia urządzenia są kopiowane do Schowka. Zachowaj kopię parametry połączenia urządzenia. Będzie on potrzebny podczas uruchamiania aplikacji przykładowej, opisane w poniższych sekcjach.
 
@@ -351,7 +351,7 @@ Podobnie jak w poprzednim przykładzie ta obejmuje kilka pakietów NuGet:
 
 W tym samouczku większość tych pakietów w poprzednim przykładzie, ale **Microsoft.Azure.IoTHub.Serializer** nowego. Ten pakiet jest wymagany, gdy używasz **serializator** biblioteki.
 
-Można znaleźć implementacji aplikacji przykładowej w ***iothub_client\_przykłady\_iothub_convenience_sample** pliku.
+Można znaleźć implementacji aplikacji przykładowej w **iothub_client\_przykłady\_iothub_convenience_sample** pliku.
 
 Poniższe sekcje przeprowadzą Cię przez proces kluczowych części w tym przykładzie.
 

@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7397546d4dc576a8488f605e20a0bfe15a01d7c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311175"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860566"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Samouczek: Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
@@ -29,13 +28,12 @@ Dowiedz się, jak wykonać następujące czynności:
 > [!div class="checklist"]
 > * Konfigurowanie środowiska projektowego.
 > * Uzyskiwanie dostępu do danych i badanie ich.
-> * Lokalne uczenie prostej regresji logistycznej przy użyciu popularnej biblioteki uczenia maszynowego scikit-learn. 
-> * Uczenie wielu modeli w klastrze zdalnym.
+> * Uczenie modelu regresji logistycznej proste w zdalnym klastrze.
 > * Przeglądanie wyników uczenia i rejestrowanie najlepszego modelu.
 
 Tego, jak wybrać i wdrożyć model, dowiesz się z [drugiej części tego samouczka](tutorial-deploy-models-with-aml.md). 
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 >[!NOTE]
 > Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.8.
@@ -456,7 +454,7 @@ Usunąć możesz również sam klaster obliczeniowy usługi Azure Machine Learni
 compute_target.delete()
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku usługi Azure Machine Learning za pomocą języka Python wykonano następujące czynności:
 

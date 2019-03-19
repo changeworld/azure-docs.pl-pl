@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: a6e4f816d3c5be9d3a4f4824ad7ed26d48763034
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433276"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118054"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
 
@@ -52,24 +52,24 @@ Aby zacząć korzystać łącznik ITSM, wykonując następujące czynności:
 
 Przed utworzeniem połączenia należy dodać rozwiązanie łącznik ITSM.
 
-1.  W witrynie Azure portal kliknij **+ nowy** ikony.
+1. W witrynie Azure portal kliknij **+ nowy** ikony.
 
-    ![Usługa Azure nowy zasób](media/itsmc-overview/azure-add-new-resource.png)
+   ![Usługa Azure nowy zasób](media/itsmc-overview/azure-add-new-resource.png)
 
-2.  Wyszukaj **łącznika zarządzania usługami IT** w portalu Marketplace i kliknij **Utwórz**.
+2. Wyszukaj **łącznika zarządzania usługami IT** w portalu Marketplace i kliknij **Utwórz**.
 
-    ![Dodaj rozwiązanie ITSMC](media/itsmc-overview/add-itsmc-solution.png)
+   ![Dodaj rozwiązanie ITSMC](media/itsmc-overview/add-itsmc-solution.png)
 
-3.  W **obszaru roboczego pakietu OMS** wybierz obszar roboczy usługi Azure Log Analytics, którym chcesz zainstalować rozwiązanie.
+3. W **obszaru roboczego pakietu OMS** wybierz obszar roboczy usługi Azure Log Analytics, którym chcesz zainstalować rozwiązanie.
    >[!NOTE]
    >W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
-4.  W **ustawienia obszaru roboczego pakietu OMS** wybierz grupy zasobów, której chcesz utworzyć zasób rozwiązania.
+4. W **ustawienia obszaru roboczego pakietu OMS** wybierz grupy zasobów, której chcesz utworzyć zasób rozwiązania.
 
-    ![Obszar roboczy ITSMC](media/itsmc-overview/itsmc-solution-workspace.png)
-    >[!NOTE]
-    >W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
+   ![Obszar roboczy ITSMC](media/itsmc-overview/itsmc-solution-workspace.png)
+   >[!NOTE]
+   >W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor obszarów roboczych pakietu OMS są teraz nazywane obszarów roboczych usługi Log Analytics.
 
-5.  Kliknij pozycję **Utwórz**.
+5. Kliknij pozycję **Utwórz**.
 
 Podczas wdrażania zasobów rozwiązania powiadomienie pojawi się u góry po prawej krawędzi okna.
 
@@ -89,22 +89,22 @@ W zależności od produktu ITSM, do którego jest nawiązywane wykonaj następuj
 
 Gdy masz przygotowany tak narzędziami ITSM, wykonaj poniższe kroki, aby utworzyć połączenie:
 
-1.  Przejdź do **wszystkie zasoby**, poszukaj **ServiceDesk(YourWorkspaceName)**.
-2.  W obszarze **źródła danych obszaru roboczego** w okienku po lewej stronie kliknij **połączenia narzędzia ITSM**.
-    ![Połączenia narzędzia ITSM](media/itsmc-overview/itsm-connections.png)
+1. Przejdź do **wszystkie zasoby**, poszukaj **ServiceDesk(YourWorkspaceName)**.
+2. W obszarze **źródła danych obszaru roboczego** w okienku po lewej stronie kliknij **połączenia narzędzia ITSM**.
+   ![Połączenia narzędzia ITSM](media/itsmc-overview/itsm-connections.png)
 
-    Ta strona zawiera listę połączeń.
-3.  Kliknij przycisk **Dodaj połączenie**.
+   Ta strona zawiera listę połączeń.
+3. Kliknij przycisk **Dodaj połączenie**.
 
-    ![Dodawanie połączenia narzędzia ITSM](media/itsmc-overview/add-new-itsm-connection.png)
+   ![Dodawanie połączenia narzędzia ITSM](media/itsmc-overview/add-new-itsm-connection.png)
 
-4.  Określ ustawienia połączenia, zgodnie z opisem w [konfigurowania połączenia ITSMC z artykułu produktów i usług ITSM](../../azure-monitor/platform/itsmc-connections.md).
+4. Określ ustawienia połączenia, zgodnie z opisem w [konfigurowania połączenia ITSMC z artykułu produktów i usług ITSM](../../azure-monitor/platform/itsmc-connections.md).
 
-    > [!NOTE]
+   > [!NOTE]
+   > 
+   > Domyślnie ITSMC odświeża dane konfiguracji połączenia raz w co 24 godziny. Aby odświeżyć dane tego połączenia, natychmiast wszelkie modyfikacje lub szablonu aktualizacji, które wprowadzisz, kliknij **synchronizacji** przycisku w bloku tego połączenia.
 
-    > Domyślnie ITSMC odświeża dane konfiguracji połączenia raz w co 24 godziny. Aby odświeżyć dane tego połączenia, natychmiast wszelkie modyfikacje lub szablonu aktualizacji, które wprowadzisz, kliknij **synchronizacji** przycisku w bloku tego połączenia.
-
-    ![Odświeżanie połączenia](media/itsmc-overview/itsmc-connections-refresh.png)
+   ![Odświeżanie połączenia](media/itsmc-overview/itsmc-connections-refresh.png)
 
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
@@ -138,8 +138,8 @@ Postępuj zgodnie z następującą procedurą:
 
 Podczas tworzenia/edytowania regułę alertu z systemu Azure, należy użyć grupy akcji, która ma akcję ITSM. Po wyzwoleniu alertu, element roboczy jest utworzone/zaktualizowane w narzędziem ITSM.
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > Aby uzyskać informacje dotyczące cen akcji ITSM, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/) dla grup akcji.
 
 
@@ -172,7 +172,7 @@ Zdarzenia i żądania zmiany są synchronizowane z produktu ITSM, do obszaru rob
 Poniżej przedstawiono przykłady danych zbieranych przez ITSMC:
 
 > [!NOTE]
-
+> 
 > W zależności od typu elementu roboczego importowane do usługi Log Analytics **ServiceDesk_CL** zawiera następujące pola:
 
 **Element roboczy:** **Zdarzenia**  
@@ -284,17 +284,17 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 
 ## <a name="troubleshoot-itsm-connections"></a>Rozwiązywanie problemów z połączeniami narzędzia ITSM
-1.  W przypadku utraty połączenia z poziomu interfejsu użytkownika połączone źródło, z **błąd podczas zapisywania połączenia** wiadomości, wykonaj następujące czynności:
- - W przypadku połączeń usługi ServiceNow, Cherwell i Provance  
-    - Upewnij się, że poprawnie wprowadzono nazwę użytkownika, hasła, identyfikator klienta i klucz tajny klienta dla każdego połączenia.  
-    - Sprawdź, że masz wystarczające uprawnienia w odpowiednich produkcie ITSM, aby nawiązać połączenie.  
- - W przypadku połączeń programu Service Manager  
-    - Upewnij się, że aplikacja sieci Web została pomyślnie wdrożona, i zostanie utworzone połączenie hybrydowe. Aby sprawdzić, pomyślnie ustanawiane jest połączenie z maszyną programu Service Manager na lokalnych, odwiedź adres URL aplikacji sieci Web zgodnie z opisem w dokumentacji dotyczącej wprowadzania [połączenia hybrydowego](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
+1. W przypadku utraty połączenia z poziomu interfejsu użytkownika połączone źródło, z **błąd podczas zapisywania połączenia** wiadomości, wykonaj następujące czynności:
+   - W przypadku połączeń usługi ServiceNow, Cherwell i Provance  
+   - Upewnij się, że poprawnie wprowadzono nazwę użytkownika, hasła, identyfikator klienta i klucz tajny klienta dla każdego połączenia.  
+   - Sprawdź, że masz wystarczające uprawnienia w odpowiednich produkcie ITSM, aby nawiązać połączenie.  
+   - W przypadku połączeń programu Service Manager  
+   - Upewnij się, że aplikacja sieci Web została pomyślnie wdrożona, i zostanie utworzone połączenie hybrydowe. Aby sprawdzić, pomyślnie ustanawiane jest połączenie z maszyną programu Service Manager na lokalnych, odwiedź adres URL aplikacji sieci Web zgodnie z opisem w dokumentacji dotyczącej wprowadzania [połączenia hybrydowego](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
 
-2.  Jeśli dane z usługi ServiceNow, nie podlega wprowadzenie do usługi Log Analytics, upewnij się, że nie jest uśpiony wystąpienia usługi ServiceNow. Wystąpienia deweloperów usługi ServiceNow czasami przechodzi w tryb uśpienia podczas bezczynności przez długi czas. W przeciwnym wypadku zgłosić problem.
-3.  Jeśli wyzwolenie alertów usługi Log Analytics, ale działają elementy nie są tworzone w produkcie ITSM lub elementy konfiguracji nie są tworzone/połączone elementy robocze lub inne ogólne informacje, można znaleźć w następujących miejscach:
- -  ITSMC: Rozwiązanie zawiera podsumowanie połączeń/pracy elementów/komputerów itp. Wyświetlanie kafelka kliknij **stan łącznika**, która spowoduje przejście do **przeszukiwania dzienników** przy użyciu odpowiednich zapytań. Przyjrzyj się rekordów dziennika z LogType_S jako błąd Aby uzyskać więcej informacji.
- - **Wyszukiwania w dzienniku** strony: wyświetlić informacje o powiązanych z/błędy bezpośrednio przy użyciu zapytań `*`ServiceDeskLog_CL`*`.
+2. Jeśli dane z usługi ServiceNow, nie podlega wprowadzenie do usługi Log Analytics, upewnij się, że nie jest uśpiony wystąpienia usługi ServiceNow. Wystąpienia deweloperów usługi ServiceNow czasami przechodzi w tryb uśpienia podczas bezczynności przez długi czas. W przeciwnym wypadku zgłosić problem.
+3. Jeśli wyzwolenie alertów usługi Log Analytics, ale działają elementy nie są tworzone w produkcie ITSM lub elementy konfiguracji nie są tworzone/połączone elementy robocze lub inne ogólne informacje, można znaleźć w następujących miejscach:
+   -  ITSMC: Rozwiązanie zawiera podsumowanie połączeń/pracy elementów/komputerów itp. Wyświetlanie kafelka kliknij **stan łącznika**, która spowoduje przejście do **przeszukiwania dzienników** przy użyciu odpowiednich zapytań. Przyjrzyj się rekordów dziennika z LogType_S jako błąd Aby uzyskać więcej informacji.
+   - **Wyszukiwania w dzienniku** strony: wyświetlić informacje o powiązanych z/błędy bezpośrednio przy użyciu zapytań `*`ServiceDeskLog_CL`*`.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Rozwiązywanie problemów z wdrożenia aplikacji sieci Web programu Service Manager
 1.  W przypadku problemów z wdrażaniem aplikacji sieci web upewnij się, że masz wystarczające uprawnienia w ramach subskrypcji, jak podczas tworzenia/wdrażanie zasobów.

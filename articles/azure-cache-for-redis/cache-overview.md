@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5b2b3a3ec0e9aec603a69211a7493afc31e83283
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236553"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433811"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Co to jest usługa Azure Cache for Redis
 
@@ -57,7 +57,7 @@ Podstawowa | Pamięć podręczna z jednym węzłem. Ta warstwa obsługuje wiele 
 
 Pamięć podręczną można po utworzeniu skalować w górę do wyższej warstwy. Skalowanie w dół do niższej warstwy nie jest obsługiwane. Aby uzyskać instrukcje skalowania krok po kroku, zobacz [Jak skalować usługę Azure Cache for Redis](cache-how-to-scale.md) i [Jak zautomatyzować operację skalowania](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-### <a name="feature-comparision"></a>Porównanie funkcji
+### <a name="feature-comparison"></a>Porównanie funkcji
 
 Strona [Azure Cache for Redis — cennik](https://azure.microsoft.com/pricing/details/cache/) zawiera szczegółowe porównanie wszystkich warstw. W poniższej tabeli opisano niektóre funkcje obsługiwane przez warstwy:
 
@@ -73,7 +73,7 @@ Strona [Azure Cache for Redis — cennik](https://azure.microsoft.com/pricing/de
 | [Geo-replication](cache-how-to-geo-replication.md) (Replikacja geograficzna) |✔|-|-|
 | [Ponowne uruchamianie](cache-administration.md#reboot) |✔|✔|✔|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Szybki start z aplikacją internetową platformy ASP.NET](cache-web-app-howto.md) Tworzenie prostej aplikacji internetowej platformy ASP.NET, która korzysta z usługi Azure Cache for Redis.
 * [Szybki start z platformą .NET](cache-dotnet-how-to-use-azure-redis-cache.md) Tworzenie aplikacji platformy .NET, która korzysta z usługi Azure Cache for Redis.

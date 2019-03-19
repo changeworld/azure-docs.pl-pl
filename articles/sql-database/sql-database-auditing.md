@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 7069114a8cb63b8b166bc29e92d8f355c49824bb
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: ce691ec0622749f1cb7252e237dae25b2657d115
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727148"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010528"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -97,7 +97,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 
 7. Aby skonfigurować zapisywanie inspekcji dzienniki do obszaru roboczego usługi Log Analytics, wybierz opcję **usługi Log Analytics (wersja zapoznawcza)** , a następnie otwórz **szczegóły usługi Log Analytics**. Wybierz lub Utwórz obszar roboczy usługi Log Analytics, której będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
 
-    ![Obszar roboczy usługi Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Obszar roboczy usługi log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Aby skonfigurować zapisywanie inspekcji dzienników do Centrum zdarzeń, wybierz opcję **Centrum zdarzeń (wersja zapoznawcza)** , a następnie otwórz **szczegóły Centrum zdarzeń**. Wybierz Centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Pamiętaj, że Centrum zdarzeń znajduje się w tym samym regionie, co bazy danych i serwera.
 
@@ -130,11 +130,11 @@ Jeśli została wybrana opcja zapisywania dzienników inspekcji usługi Azure Mo
 W przypadku wybrania tylko zapisywanie dzienników inspekcji w Centrum zdarzeń:
 
 - Korzystanie z danych dzienników inspekcji z Centrum zdarzeń, należy skonfigurować strumienia na korzystanie ze zdarzeń i zapisywać je do obiektu docelowego. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
-- Dzienniki inspekcji w Centrum zdarzeń są przechwytywane w treści [Apache Avro](http://avro.apache.org/) zdarzeń i zmagazynowane przy użyciu formatu JSON formatowanie przy użyciu kodowania UTF-8. Aby odczytać dzienniki inspekcji, możesz użyć [narzędzia Avro](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) lub podobne narzędzia, które przetwarzają tego formatu.
+- Dzienniki inspekcji w Centrum zdarzeń są przechwytywane w treści [Apache Avro](https://avro.apache.org/) zdarzeń i zmagazynowane przy użyciu formatu JSON formatowanie przy użyciu kodowania UTF-8. Aby odczytać dzienniki inspekcji, możesz użyć [narzędzia Avro](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) lub podobne narzędzia, które przetwarzają tego formatu.
 
 Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage, istnieje kilka metod, których można użyć, aby wyświetlić dzienniki:
 
-- Dzienniki inspekcji są agregowane w ramach konta, który został wybrany podczas instalacji. Możesz zapoznać się z dziennikami inspekcji przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/). W usłudze Azure storage, dzienniki inspekcji są zapisywane jako kolekcja plików obiektów blob w kontenerze o nazwie **sqldbauditlogs**. Aby uzyskać więcej informacji o hierarchii folderu przechowywania konwencji nazewnictwa i format dziennika zobacz [odwołanie Format dziennika inspekcji obiektów Blob](https://go.microsoft.com/fwlink/?linkid=829599).
+- Dzienniki inspekcji są agregowane w ramach konta, który został wybrany podczas instalacji. Możesz zapoznać się z dziennikami inspekcji przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](https://storageexplorer.com/). W usłudze Azure storage, dzienniki inspekcji są zapisywane jako kolekcja plików obiektów blob w kontenerze o nazwie **sqldbauditlogs**. Aby uzyskać więcej informacji o hierarchii folderu przechowywania konwencji nazewnictwa i format dziennika zobacz [odwołanie Format dziennika inspekcji obiektów Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
 - Użyj [witryny Azure portal](https://portal.azure.com).  Otwórz odpowiedniej bazy danych. W górnej części bazy danych **inspekcji** kliknij **Wyświetl dzienniki inspekcji**.
 
@@ -161,7 +161,7 @@ Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage
     4. Scalono plik zostanie otwarty w programie SSMS, gdzie możesz można wyświetlać i analizować je, a także go wyeksportować w pliku XEL lub CSV lub tabeli.
 
 - Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Aby uzyskać więcej informacji i uzyskać dostęp do pobrania szablonu, zobacz [Analizuj dane z dziennika inspekcji w usłudze Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
-- Pobierz pliki dziennika z kontenera obiektów blob usługi Azure Storage za pośrednictwem portalu lub przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/).
+- Pobierz pliki dziennika z kontenera obiektów blob usługi Azure Storage za pośrednictwem portalu lub przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](https://storageexplorer.com/).
   - Po pobraniu pliku dziennika, który jest lokalnie, kliknij dwukrotnie plik, Otwórz, wyświetlać i analizować dzienniki w programie SSMS.
   - Można również pobrać wielu plików jednocześnie, za pomocą Eksploratora usługi Azure Storage. Aby to zrobić, kliknij prawym przyciskiem myszy określony podfolder, a następnie wybierz **Zapisz jako** można zapisać w folderze lokalnym.
 

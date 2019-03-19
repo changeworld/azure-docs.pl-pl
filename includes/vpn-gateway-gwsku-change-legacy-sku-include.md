@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2c1a4a1931bc2e38b0bee5f90518b01fdf4767a1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "30196830"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57908692"
 ---
-Jeśli pracujesz z modelu wdrażania usługi Resource Manager, można zmienić na nowej jednostki SKU bramy. Po zmianie ze starszej wersji jednostki SKU bramy do nowej wersji produktu, usuń istniejącą bramę sieci VPN i Utwórz nową bramę sieci VPN.
+Jeśli pracujesz z modelu wdrażania usługi Resource Manager, można zmienić do nowej jednostki SKU bramy. Po zmianie ze starszej wersji jednostki SKU bramy do nowej jednostki SKU, usuń istniejącą bramę sieci VPN i utworzyć nową bramę sieci VPN.
 
-Przepływu pracy:
+Przepływ pracy:
 
 1. Usuń wszystkie połączenia z bramą sieci wirtualnej.
 2. Usuń starą bramę sieci VPN.
@@ -27,9 +27,9 @@ Przepływu pracy:
 6. Pobierz nowe pakiety konfiguracji sieci VPN klienta dla klientów połączeń punkt-lokacja nawiązujących połączenie z siecią wirtualną przez tę bramę sieci VPN.
 7. Odtwórz połączenia z bramą sieci wirtualnej.
 
-Kwestie do rozważenia:
+Zagadnienia do rozważenia:
 
-* Aby przejść do nowej wersji produktu, bramy sieci VPN musi być w modelu wdrażania usługi Resource Manager.
-* Jeśli masz klasycznego bramy sieci VPN, należy nadal przy użyciu starszej starszej wersji jednostki SKU dla tej bramy, jednak można zmienić rozmiar między starszej wersji jednostki SKU. Nie można zmienić nowe jednostki SKU.
-* Konieczne będzie przestoju łączności po zmianie ze starszej wersji produktu do nowej wersji.
-* W przypadku zmiany do nowej bramy jednostka SKU, zmieni się publiczny adres IP dla bramy sieci VPN. Dzieje się tak nawet w przypadku określenia tej samej publicznego obiektu adres IP używany wcześniej.
+* Aby przejść do nowych jednostek SKU, bramy sieci VPN musi być w modelu wdrażania usługi Resource Manager.
+* W przypadku klasycznego bramy sieci VPN należy kontynuować, przy użyciu starszych starszych jednostek SKU dla tej bramy, jednak można zmienić rozmiar starszych jednostek SKU. Nie można zmienić nowych jednostek SKU.
+* Będziesz mieć czas przestoju łączności, gdy zmienią się ze starszej wersji jednostki SKU nowej jednostki SKU.
+* Podczas zmiany do nowej jednostki SKU bramy, publiczny adres IP dla bramy sieci VPN ulegnie zmianie. Dzieje się tak, nawet w przypadku określenia tego samego obiektu publicznego adresu IP, co użyte wcześniej.

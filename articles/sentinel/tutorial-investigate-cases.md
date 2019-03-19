@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7c4994863f3c145c7095bcc12dd69ff02fab8455
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6b3357ec06c89645b9c41e9efdb582a18af40672
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540280"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074679"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Samouczek: Badanie przypadków z platformy Azure przez wartownika w wersji zapoznawczej
 
@@ -42,7 +42,7 @@ Przypadek może obejmować wiele alertów. To Agregacja wszystkich odpowiednich 
 
 1. Wybierz **przypadków**. **Przypadków** strony informuje o tym, jak wiele przypadków, masz, ile jest otworzyć, ile ustawiono **w toku**, a ilu są zamknięte. W każdym przypadku widać, czas, w którym wystąpił, a stan sprawy. Przyjrzyj się ważność do podejmowania decyzji o obsługę pierwszy. W **przypadków** kliknij **alerty** kartę, aby wyświetlić wszystkie alerty, które są powiązane z przypadkiem. Jednostki, które są mapowane w wcześniej części mogą być wyświetlane w **jednostek** kartę.  Można filtrować przypadki, zgodnie z potrzebami, na przykład według stanu lub ważności. Podczas przeglądania **przypadków** kartę, zobaczysz otwartych spraw, które zawierają alertów wyzwalanych przez reguł wykrywania zdefiniowane w **analizy**. W górnej części zobaczysz swoje aktywnych spraw, nowe sprawy w przypadkach postępu. Widać również omówienie swoje przypadki według ważności.
 
-  ![Pulpit nawigacyjny alertów](./media/tutorial-investigate-cases/cases.png)
+   ![Pulpit nawigacyjny alertów](./media/tutorial-investigate-cases/cases.png)
 
 2. Aby rozpocząć badanie, kliknij na konkretnym przypadku. Po prawej stronie można wyświetlić szczegółowe informacje, w przypadku, w tym o jego ważność, podsumowanie liczby jednostek (oparte na mapowanie). Każdy przypadek ma unikatowy identyfikator. Ważność przypadku jest określana zgodnie z najpoważniejsze alert zawarte w tym przypadku.  
 

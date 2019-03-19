@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afe467d56d0247e17f73bb85a39246c4c04629cd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f6c313cc654461ea22c126fede317ed230408b82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173457"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079200"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problem z konfigurowaniem hasło logowania jednokrotnego dla aplikacji galerii usługi Azure AD
 
@@ -37,23 +37,23 @@ Gdy firma Microsoft ma technologie, aby automatycznie wykryć, kiedy integracji 
 
 Aby rozwiązać ten problem, spróbuj najpierw te rzeczy:
 
--   Użytkownik najpierw spróbują **bezpośrednio zalogować się do witryny sieci Web aplikacji** z poświadczeniami przechowywanymi dla nich.
+- Użytkownik najpierw spróbują **bezpośrednio zalogować się do witryny sieci Web aplikacji** z poświadczeniami przechowywanymi dla nich.
 
   * Jeśli działa logowanie, należy mieć użytkownika, kliknij przycisk **zaktualizować poświadczenia** znajdujący się na **kafelka aplikacji** w **aplikacje** części [dostęp do aplikacji Panel](https://myapps.microsoft.com/) je zaktualizować najnowszych znane pracy nazwy użytkownika i hasło.
 
-   * Jeśli użytkownik lub inny administrator przypisane poświadczenia dla tego użytkownika, odnaleźć użytkownika lub przypisanie do grupy aplikacji, przechodząc do **użytkownikami i grupami** kartę aplikacji, wybierając przypisania, a następnie klikając polecenie  **Zaktualizuj poświadczenia** przycisku.
+  * Jeśli użytkownik lub inny administrator przypisane poświadczenia dla tego użytkownika, odnaleźć użytkownika lub przypisanie do grupy aplikacji, przechodząc do **użytkownikami i grupami** kartę aplikacji, wybierając przypisania, a następnie klikając polecenie  **Zaktualizuj poświadczenia** przycisku.
 
--   Jeśli użytkownikowi przypisano własnych poświadczeń, należy mieć użytkownika **wyboru należy upewnić się, że ich hasło nie wygasł w aplikacji** , a jeśli tak, **aktualizacja wygasłego hasła** , logując się do aplikacji bezpośrednio.
+- Jeśli użytkownikowi przypisano własnych poświadczeń, należy mieć użytkownika **wyboru należy upewnić się, że ich hasło nie wygasł w aplikacji** , a jeśli tak, **aktualizacja wygasłego hasła** , logując się do aplikacji bezpośrednio.
 
-   * Po aktualizacji hasła w aplikacji, żądanie użytkownika, kliknij pozycję **zaktualizować poświadczenia** znajdujący się na **kafelka aplikacji** w **aplikacje** sekcji [Panelu dostępu do aplikacji](https://myapps.microsoft.com/) je zaktualizować najnowszych znane pracy nazwy użytkownika i hasło.
+  * Po aktualizacji hasła w aplikacji, żądanie użytkownika, kliknij pozycję **zaktualizować poświadczenia** znajdujący się na **kafelka aplikacji** w **aplikacje** sekcji [Panelu dostępu do aplikacji](https://myapps.microsoft.com/) je zaktualizować najnowszych znane pracy nazwy użytkownika i hasło.
 
-   * Jeśli użytkownik lub inny administrator przypisane poświadczenia dla tego użytkownika, odnaleźć użytkownika lub przypisanie do grupy aplikacji, przechodząc do **użytkownikami i grupami** kartę aplikacji, wybierając przypisania, a następnie klikając polecenie  **Zaktualizuj poświadczenia** przycisku.
+  * Jeśli użytkownik lub inny administrator przypisane poświadczenia dla tego użytkownika, odnaleźć użytkownika lub przypisanie do grupy aplikacji, przechodząc do **użytkownikami i grupami** kartę aplikacji, wybierając przypisania, a następnie klikając polecenie  **Zaktualizuj poświadczenia** przycisku.
 
--   Użytkownik powinien zaktualizować rozszerzenie przeglądarki panelu dostępu, wykonując poniższe kroki w [jak zainstalować rozszerzenie przeglądarki panelu dostępu](#how-to-install-the-access-panel-browser-extension) sekcji.
+- Użytkownik powinien zaktualizować rozszerzenie przeglądarki panelu dostępu, wykonując poniższe kroki w [jak zainstalować rozszerzenie przeglądarki panelu dostępu](#how-to-install-the-access-panel-browser-extension) sekcji.
 
--   Upewnij się, że rozszerzenie przeglądarki panelu dostępu jest uruchomiony i włączone w przeglądarce użytkownika.
+- Upewnij się, że rozszerzenie przeglądarki panelu dostępu jest uruchomiony i włączone w przeglądarce użytkownika.
 
--   Upewnij się, że użytkownicy nie próbuje zalogować się do aplikacji z poziomu panelu dostępu podczas w **trybu incognito, przeglądanie inPrivate lub prywatnych**. Rozszerzenie panelu dostępu nie jest obsługiwane w tych trybach.
+- Upewnij się, że użytkownicy nie próbuje zalogować się do aplikacji z poziomu panelu dostępu podczas w **trybu incognito, przeglądanie inPrivate lub prywatnych**. Rozszerzenie panelu dostępu nie jest obsługiwane w tych trybach.
 
 W przypadku, gdy nie działają powyższych sugestii, może to być tak, że nastąpiła zmiana na stronie aplikacji, która została tymczasowo uszkodzone, integracji aplikacji z usługą Azure AD. Na przykład to może wystąpić, gdy dostawca aplikacji wprowadza skryptu na swojej stronie, która zależy od ręcznego vs automatycznie danych wejściowych, co powoduje, że zautomatyzowane integracji, takich jak własną, aby przerwać. Na szczęście w wielu przypadkach firma Microsoft może współpracować z dostawcami aplikacji, aby szybko rozwiązać te problemy.
 
@@ -65,13 +65,13 @@ Oprócz tego **przypadku kontaktu z usługą dostawcy tej aplikacji** **przysła
 
 Istnieją dwie główne przyczyny tego problemu:
 
--   W zależności od ustawienia zabezpieczeń włączone w programie Internet Explorer, jeśli witryna sieci Web nie jest częścią **zaufane**, czasami naszego skryptu zablokowany wykonywania dla aplikacji.
+- W zależności od ustawienia zabezpieczeń włączone w programie Internet Explorer, jeśli witryna sieci Web nie jest częścią **zaufane**, czasami naszego skryptu zablokowany wykonywania dla aplikacji.
 
   *  Aby rozwiązać ten problem, poinstruuj użytkownika, aby **Dodaj witrynę sieci Web aplikacji** do **Zaufane witryny** listy w ramach ich **ustawienia zabezpieczeń programu Internet Explorer**. Możesz wysłać użytkownikom [sposób dodawania witryny do listy zaufanych witryn](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) artykuł, aby uzyskać szczegółowe instrukcje.
 
--   W rzadkich przypadkach walidacji zabezpieczeń programu Internet Explorer mogą wywoływać strony aby ładują się wolniej niż wykonywanie naszego skryptu.
+- W rzadkich przypadkach walidacji zabezpieczeń programu Internet Explorer mogą wywoływać strony aby ładują się wolniej niż wykonywanie naszego skryptu.
 
-   * Niestety ta sytuacja może się różnić w zależności od wersji przeglądarki, szybkość komputera lub odwiedzi witrynę. W tym przypadku zaleca się, czy możesz się z pomocą techniczną abyśmy mogli rozwiązać integracji dla tej konkretnej aplikacji.
+  * Niestety ta sytuacja może się różnić w zależności od wersji przeglądarki, szybkość komputera lub odwiedzi witrynę. W tym przypadku zaleca się, czy możesz się z pomocą techniczną abyśmy mogli rozwiązać integracji dla tej konkretnej aplikacji.
 
 Oprócz tego **przypadku kontaktu z usługą dostawcy tej aplikacji** **przysłanie NAS** firma Microsoft może więc pracować z nimi natywnie integracji aplikacji z usługi Azure Active Directory. Możesz wysłać z dostawcą, aby [listę aplikacji w galerii aplikacji usługi Azure Active Directory](../develop/howto-app-gallery-listing.md) do ich pracy.
 

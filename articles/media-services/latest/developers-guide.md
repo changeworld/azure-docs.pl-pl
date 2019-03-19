@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/22/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 97123ec795353073b912bd83e0abb45e23549a75
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: b9c89b6cb6dbc6cb217be671eb0e52c0416811ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749804"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889849"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Rozpoczęcie programowania przy użyciu interfejsu API usługi Media Services 3 za pomocą zestawów SDK i narzędzi
 
@@ -95,7 +95,7 @@ Przeanalizuj [dokumentację struktury .NET](https://aka.ms/ams-v3-dotnet-ref) us
 - [Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM — .NET](protect-with-drm.md)
 - [Pobieranie klucza podpisywania z istniejących zasad — .NET](get-content-key-policy-dotnet-howto.md)
 - [Tworzenie filtrów za pomocą usługi Media Services — .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Zaawansowane przykłady wideo na żądanie usługi Azure Functions v2 z usługą Media Services v3](http://aka.ms/ams3functions)
+- [Zaawansowane przykłady wideo na żądanie usługi Azure Functions v2 z usługą Media Services v3](https://aka.ms/ams3functions)
 
 ## <a name="java"></a>Java
 
@@ -113,7 +113,7 @@ Przejrzyj [dokumentację dla języka Python](https://aka.ms/ams-v3-python-ref) u
 
 Przejrzyj [dokumentację dla języka Go](https://aka.ms/ams-v3-go-ref) usługi Media Services.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Tworzenie konta — interfejs wiersza polecenia](create-account-cli-how-to.md)
 - [Dostęp do interfejsów API — interfejs wiersza polecenia](access-api-cli-how-to.md)

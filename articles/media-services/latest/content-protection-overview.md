@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d16f730d7e801342290467a796ae0155bfe89b26
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: cc32338a69953c49efad4a206a974ac4523923e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241531"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894142"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -39,55 +39,55 @@ Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", nale
 
 1. Kod platformy Azure Media Services
   
-  [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) przykładowych pokazano, jak zaimplementować multi-DRM systemu za pomocą usługi Media Services v3 i również użyć usługi dostarczania kluczy/licencji Media Services. Każdy element zawartości można szyfrować przy użyciu wielu typów szyfrowania (AES-128, PlayReady, Widevine, FairPlay). Zobacz [Streaming protocols and encryption types (Protokoły i typy szyfrowania przesyłania strumieniowego)](#streaming-protocols-and-encryption-types), aby sprawdzić, które rozwiązania warto łączyć.
+   [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) przykładowych pokazano, jak zaimplementować multi-DRM systemu za pomocą usługi Media Services v3 i również użyć usługi dostarczania kluczy/licencji Media Services. Każdy element zawartości można szyfrować przy użyciu wielu typów szyfrowania (AES-128, PlayReady, Widevine, FairPlay). Zobacz [Streaming protocols and encryption types (Protokoły i typy szyfrowania przesyłania strumieniowego)](#streaming-protocols-and-encryption-types), aby sprawdzić, które rozwiązania warto łączyć.
   
-  W przykładzie pokazano sposób:
+   W przykładzie pokazano sposób:
 
-  1. Tworzenie i konfigurowanie [zasad dotyczących zawartości klucza](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
+   1. Tworzenie i konfigurowanie [zasad dotyczących zawartości klucza](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
 
-    * Zdefiniuj autoryzacji dostarczania licencji, określając logika sprawdzania autoryzacji na podstawie oświadczeń w token JWT.
-    * Konfigurowanie szyfrowania DRM, określając klucz zawartości.
-    * Konfigurowanie [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), i/lub [FairPlay](fairplay-license-overview.md) licencji. Szablony pozwalają skonfigurować prawa i uprawnienia dla wszystkich używanych protokołów DRM.
+      * Zdefiniuj autoryzacji dostarczania licencji, określając logika sprawdzania autoryzacji na podstawie oświadczeń w token JWT.
+      * Konfigurowanie szyfrowania DRM, określając klucz zawartości.
+      * Konfigurowanie [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), i/lub [FairPlay](fairplay-license-overview.md) licencji. Szablony pozwalają skonfigurować prawa i uprawnienia dla wszystkich używanych protokołów DRM.
 
         ```
         ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
         ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
         ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
         ```
-  2. Tworzenie [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) skonfigurowanego do przesyłania strumieniowego zawartości zaszyfrowanej. 
+   2. Tworzenie [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) skonfigurowanego do przesyłania strumieniowego zawartości zaszyfrowanej. 
   
-    **Lokalizatora przesyłania strumieniowego** musi być skojarzone z [przesyłania strumieniowego zasadami] (https://docs.microsoft.com/rest/api/media/streamingpolicies). W tym przykładzie ustawimy StreamingLocator.StreamingPolicyName z zasadami "Predefined_MultiDrmCencStreaming". Ta zasada wskazuje, że chcemy uzyskać dwa klucze zawartości (koperty i CENC), aby pobrać generowane i ustawiane na wskaźniku. Dlatego stosowane są szyfrowania typu koperta, PlayReady i Widevine (klucz jest dostarczany do klienta odtwarzania w oparciu o skonfigurowane licencje DRM). Jeśli chcesz także zaszyfrować strumień przy użyciu metody CBCS (FairPlay), użyj zasad „Predefined_MultiDrmStreaming”.
+      **Lokalizatora przesyłania strumieniowego** musi być skojarzone z [przesyłania strumieniowego zasad](https://docs.microsoft.com/rest/api/media/streamingpolicies). W tym przykładzie ustawimy StreamingLocator.StreamingPolicyName z zasadami "Predefined_MultiDrmCencStreaming". Ta zasada wskazuje, że chcemy uzyskać dwa klucze zawartości (koperty i CENC), aby pobrać generowane i ustawiane na wskaźniku. Dlatego stosowane są szyfrowania typu koperta, PlayReady i Widevine (klucz jest dostarczany do klienta odtwarzania w oparciu o skonfigurowane licencje DRM). Jeśli chcesz także zaszyfrować strumień przy użyciu metody CBCS (FairPlay), użyj zasad „Predefined_MultiDrmStreaming”.
     
-    Ponieważ chcemy zaszyfrować wideo, **zasad klucza zawartości** czy został skonfigurowany wcześniej również musi być skojarzone z **lokalizatora przesyłania strumieniowego**. 
+      Ponieważ chcemy zaszyfrować wideo, **zasad klucza zawartości** czy został skonfigurowany wcześniej również musi być skojarzone z **lokalizatora przesyłania strumieniowego**. 
     
-  3. Utwórz token testu.
+   3. Utwórz token testu.
 
-    **GetTokenAsync** metoda pokazuje, jak utworzyć test tokenu.
-  4. Tworzenie adresu URL przesyłania strumieniowego.
+      **GetTokenAsync** metoda pokazuje, jak utworzyć test tokenu.
+   4. Tworzenie adresu URL przesyłania strumieniowego.
 
-    **GetDASHStreamingUrlAsync** metoda przedstawia sposób tworzenia adresu URL przesyłania strumieniowego. W tym przypadku strumieni adresu URL **DASH** zawartości.
+      **GetDASHStreamingUrlAsync** metoda przedstawia sposób tworzenia adresu URL przesyłania strumieniowego. W tym przypadku strumieni adresu URL **DASH** zawartości.
 
 2. Odtwarzacz przy użyciu technologii AES lub technologii DRM klienta. Aplikacja odtwarzacza wideo, oparte na odtwarzaczu zestawu SDK (natywny lub przeglądarki) musi spełniać następujące wymagania:
-  * Odtwarzacz zestaw SDK obsługuje wymagane klientów DRM
-  * Odtwarzacz zestaw SDK obsługuje wymagane protokołów przesyłania strumieniowego: Smooth, DASH lub HLS
-  * Zestaw SDK gracz musi być w stanie obsługiwać przekazywanie tokenu JWT w żądaniu nabycie licencji
+   * Odtwarzacz zestaw SDK obsługuje wymagane klientów DRM
+   * Odtwarzacz zestaw SDK obsługuje wymagane protokołów przesyłania strumieniowego: Smooth, DASH lub HLS
+   * Zestaw SDK gracz musi być w stanie obsługiwać przekazywanie tokenu JWT w żądaniu nabycie licencji
   
-    Odtwarzacz można utworzyć za pomocą [interfejsu API usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/). Użyj [interfejsu API usługi Azure Media Player ProtectionInfo](http://amp.azure.net/libs/amp/latest/docs/) do określenia technologii DRM na różnych platformach DRM.
+     Odtwarzacz można utworzyć za pomocą [interfejsu API usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/). Użyj [interfejsu API usługi Azure Media Player ProtectionInfo](https://amp.azure.net/libs/amp/latest/docs/) do określenia technologii DRM na różnych platformach DRM.
 
-    Do testowania AES lub CENC (Widevine i/lub technologii PlayReady) zaszyfrowany zawartość, możesz użyć [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Upewnij się, kliknij pozycję "Opcje zaawansowane" i sprawdź opcje szyfrowania.
+     Do testowania AES lub CENC (Widevine i/lub technologii PlayReady) zaszyfrowany zawartość, możesz użyć [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Upewnij się, kliknij pozycję "Opcje zaawansowane" i sprawdź opcje szyfrowania.
 
-    Jeśli chcesz przetestować FairPlay zaszyfrowana zawartość, użyj [tego odtwarzacza testu](https://aka.ms/amtest). Odtwarzacz obsługuje Widevine, PlayReady, i protokołów technologii FairPlay DRM, a także AES-128 szyfrowania otwartym kluczem. 
+     Jeśli chcesz przetestować FairPlay zaszyfrowana zawartość, użyj [tego odtwarzacza testu](https://aka.ms/amtest). Odtwarzacz obsługuje Widevine, PlayReady, i protokołów technologii FairPlay DRM, a także AES-128 szyfrowania otwartym kluczem. 
     
-    Musisz wybrać odpowiednie przeglądarce w celu przetestowania różnych protokołów DRM: Dla programu Chrome/Opera/Firefox Widevine, Microsoft Edge/IE11 dla technologii PlayReady, Safari w systemie macOS dla technologii FairPlay.
+     Musisz wybrać odpowiednie przeglądarce w celu przetestowania różnych protokołów DRM: Dla programu Chrome/Opera/Firefox Widevine, Microsoft Edge/IE11 dla technologii PlayReady, Safari w systemie macOS dla technologii FairPlay.
 
 3. Secure Token Service (STS), która wystawia Token sieci Web JSON (JWT) jako token dostępu, aby uzyskać dostęp do zasobów w wewnętrznej bazie danych. Za pomocą usług dostarczania licencji usługi AMS jako zasobów wewnętrznej bazy danych. Usługa tokenu Zabezpieczającego musi definiują następujące elementy:
 
-  * Wystawcy i odbiorców (lub zakres)
-  * Oświadczenia, które są zależne od wymagań biznesowych w Ochrona zawartości
-  * Weryfikacja konfiguracji symetrycznej lub asymetrycznej weryfikacji podpisu
-  * Obsługa przerzucania kluczy (jeśli jest to konieczne)
+   * Wystawcy i odbiorców (lub zakres)
+   * Oświadczenia, które są zależne od wymagań biznesowych w Ochrona zawartości
+   * Weryfikacja konfiguracji symetrycznej lub asymetrycznej weryfikacji podpisu
+   * Obsługa przerzucania kluczy (jeśli jest to konieczne)
 
-    Możesz użyć [to narzędzie usługi STS](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) testu usługi STS, która obsługuje wszystkie typy 3 klucza weryfikacji: symetryczne, asymetryczne lub Azure AD przy użyciu przerzucania klucza. 
+     Możesz użyć [to narzędzie usługi STS](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) testu usługi STS, która obsługuje wszystkie typy 3 klucza weryfikacji: symetryczne, asymetryczne lub Azure AD przy użyciu przerzucania klucza. 
 
 > [!NOTE]
 > Zdecydowanie zaleca się skupić się i w pełni przetestować każdej części (opisane powyżej) przed przejściem do następnej części. Aby przetestować systemu "content protection", użyj narzędzia określonych na liście powyżej.  
@@ -97,7 +97,7 @@ Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", nale
 Usługa Media Services umożliwia dostarczanie zawartości szyfrowane dynamicznie przy użyciu szyfrowania otwartym kluczem AES i technologii DRM szyfrowania za pomocą usług PlayReady, Widevine i FairPlay. Obecnie można zaszyfrować formatu HTTP Live Streaming (HLS), MPEG DASH i Smooth Streaming. Dla każdego protokołu obsługuje następujące metody szyfrowania:
 
 |Protokół|Format kontenera|Schemat szyfrowania|
-|---|---|---|---|
+|---|---|---|
 |MPEG-DASH|Wszyscy|AES|
 ||CSF(fmp4) |CENC (Widevine + PlayReady) |
 ||CMAF(fmp4)|CENC (Widevine + PlayReady)|
@@ -156,7 +156,7 @@ Klienci często używają niestandardowej usługi STS do uwzględnienia niestand
 Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomocą szyfrowania po stronie magazynu. W poniższej tabeli przedstawiono, jak działa szyfrowanie po stronie magazynu w wersji 3 usługa Media Services:
 
 |Opcja szyfrowania|Opis|Media Services v3|
-|---|---|---|---|
+|---|---|---|
 |Szyfrowanie magazynu usługi Media Services| AES-256 szyfrowania kluczy zarządzanych przez usługę Media Services|Nieobsługiwane<sup>(1)</sup>|
 |[Szyfrowanie usługi Storage dla danych magazynowanych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Szyfrowanie po stronie serwera, oferowane przez usługę Azure Storage, klucz zarządzany przez platformę Azure lub przez klienta|Obsługiwane|
 |[Szyfrowanie po stronie klienta magazynu](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Szyfrowanie po stronie klienta, oferowane przez usługę Azure storage, klucz zarządzany przez klienta w usłudze Key Vault|Nieobsługiwane|

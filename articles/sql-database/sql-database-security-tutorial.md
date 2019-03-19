@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893275"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli
 
@@ -77,11 +77,11 @@ Aby skonfigurować regułę zapory na poziomie serwera:
 
 1. Na stronie **Przegląd** wybierz opcję **Ustaw zaporę serwera**. Zostanie otwarta strona **Ustawienia zapory** dla serwera bazy danych.
 
-    1. Wybierz pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory. Reguła może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP. Wybierz pozycję **Zapisz**.
+   1. Wybierz pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory. Reguła może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP. Wybierz pozycję **Zapisz**.
 
-    ![ustawianie reguły zapory serwera](./media/sql-database-security-tutorial/server-firewall-rule2.png)
+      ![ustawianie reguły zapory serwera](./media/sql-database-security-tutorial/server-firewall-rule2.png)
 
-    1. Wybierz przycisk **OK** i zamknij stronę **Ustawienia zapory**.
+   1. Wybierz przycisk **OK** i zamknij stronę **Ustawienia zapory**.
 
 Teraz możesz nawiązać połączenie z dowolną bazą danych na serwerze przy użyciu określonego adresu IP lub zakresu adresów IP.
 
@@ -90,7 +90,7 @@ Teraz możesz nawiązać połączenie z dowolną bazą danych na serwerze przy u
 
 ### <a name="setup-database-firewall-rules"></a>Konfigurowanie reguł zapory bazy danych
 
-Reguły zapory na poziomie bazy danych dotyczą tylko pojedynczych baz danych. Są to reguły przenośne, podążające za bazą danych podczas przełączania serwera w tryb failover. Reguły zapory na poziomie bazy danych można skonfigurować wyłącznie za pomocą instrukcji języka Transact-SQL (T-SQL) oraz wyłącznie po skonfigurowaniu reguły zapory na poziomie serwera.
+Reguły zapory na poziomie bazy danych dotyczą tylko pojedynczych baz danych. Baza danych zachowuje te reguły podczas trybu failover serwera. Reguły zapory na poziomie bazy danych można skonfigurować wyłącznie za pomocą instrukcji języka Transact-SQL (T-SQL) oraz wyłącznie po skonfigurowaniu reguły zapory na poziomie serwera.
 
 Aby skonfigurować regułę zapory na poziomie bazy danych:
 
@@ -142,7 +142,7 @@ Aby uzyskać informacje na temat konfigurowania usługi Azure AD, zobacz:
 
 - [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md)
 - [Add your own domain name to Azure AD (Dodawanie własnej nazwy domeny do usługi Azure Active Directory)](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Microsoft Azure now supports federation with Windows Server AD (Platforma Microsoft Azure obsługuje teraz federację z usługą AD systemu Windows Server)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Microsoft Azure now supports federation with Windows Server AD (Platforma Microsoft Azure obsługuje teraz federację z usługą AD systemu Windows Server)](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Administrowanie katalogiem usługi Azure AD](../active-directory/fundamentals/active-directory-administer.md)
 - [Zarządzanie usługą Azure AD przy użyciu programu PowerShell](/powershell/azure/overview?view=azureadps-2.0)
 - [Wymagane porty i protokoły dotyczące tożsamości hybrydowej](../active-directory/hybrid/reference-connect-ports.md)
@@ -248,11 +248,11 @@ Aby włączyć zaawansowane zabezpieczenia danych:
 
 1. Na stronie **SQL Server** znajdź sekcję **Zabezpieczenia** i wybierz pozycję **Advanced Data Security**.
 
-    1. Wybierz opcję **WŁĄCZONE** dla pozycji **Advanced Data Security**, aby włączyć tę funkcję. Wybierz konto magazynu na potrzeby zapisania wyników oceny luk w zabezpieczeniach. Następnie wybierz pozycję **Zapisz**.
+   1. Wybierz opcję **WŁĄCZONE** dla pozycji **Advanced Data Security**, aby włączyć tę funkcję. Wybierz konto magazynu na potrzeby zapisania wyników oceny luk w zabezpieczeniach. Następnie wybierz pozycję **Zapisz**.
 
-    ![Okienko nawigacji](./media/sql-database-security-tutorial/threat-settings.png)
+      ![Okienko nawigacji](./media/sql-database-security-tutorial/threat-settings.png)
 
-    Można również skonfigurować wiadomości e-mail, aby otrzymywać alerty zabezpieczeń, szczegółowe informacje o magazynie i typy wykrytych zagrożeń.
+      Można również skonfigurować wiadomości e-mail, aby otrzymywać alerty zabezpieczeń, szczegółowe informacje o magazynie i typy wykrytych zagrożeń.
 
 1. Wróć do strony **Bazy danych SQL** dla używanej bazy danych i wybierz pozycję **Advanced Data Security** w sekcji **Zabezpieczenia**. W tym miejscu znajdziesz różne wskaźniki zabezpieczeń dostępne w bazie danych.
 
@@ -264,7 +264,7 @@ W przypadku wykrycia nietypowych działań otrzymasz wiadomość e-mail z inform
 
 ### <a name="auditing"></a>Inspekcja
 
-Funkcja inspekcji śledzi zdarzenia w bazie danych i zapisuje te zdarzenia w dzienniku inspekcji w usłudze Azure Storage, Log Analytics lub w centrum zdarzeń usługi Event Hubs. Inspekcja pomaga zachować zgodność z przepisami, analizować aktywność bazy danych oraz uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać potencjalne naruszenia zabezpieczeń.
+Funkcja inspekcji śledzi zdarzenia bazy danych i zapisuje zdarzenia w dzienniku inspekcji w jednej usłudze Azure storage, dzienniki usługi Azure Monitor, lub do Centrum zdarzeń. Inspekcja pomaga zachować zgodność z przepisami, analizować aktywność bazy danych oraz uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać potencjalne naruszenia zabezpieczeń.
 
 Aby włączyć inspekcję:
 
@@ -274,25 +274,25 @@ Aby włączyć inspekcję:
 
 1. W ustawieniach funkcji **Inspekcja** ustaw następujące wartości:
 
-    1. Ustaw opcję **Inspekcja** w pozycji **WŁ**.
+   1. Ustaw opcję **Inspekcja** w pozycji **WŁ**.
 
-    1. Wybierz dowolną z następujących lokalizacji w polu **Lokalizacja docelowa dziennika inspekcji**:
+   1. Wybierz dowolną z następujących lokalizacji w polu **Lokalizacja docelowa dziennika inspekcji**:
 
-        - **Storage** — konto usługi Azure Storage, na którym dzienniki zdarzeń będą zapisywane z możliwością pobrania w postaci plików *xel*.
+       - **Storage** — konto usługi Azure Storage, na którym dzienniki zdarzeń będą zapisywane z możliwością pobrania w postaci plików *xel*.
 
-           > [!TIP]
-           > Użyj tego samego konta magazynu dla wszystkich baz danych poddawanych inspekcji, aby najlepiej wykorzystać szablony raportów inspekcji.
+          > [!TIP]
+          > Użyj tego samego konta magazynu dla wszystkich baz danych poddawanych inspekcji, aby najlepiej wykorzystać szablony raportów inspekcji.
 
-        - **Log Analytics** — automatyczne zapisywanie zdarzeń do celów zapytań lub dalszej analizy.
+       - **Log Analytics** — automatyczne zapisywanie zdarzeń do celów zapytań lub dalszej analizy.
 
-            > [!NOTE]
-            > Do obsługi zaawansowanych funkcji takich jak analiza, niestandardowe reguły alertów czy eksportowanie do programu Excel lub usługi Power BI jest wymagany **obszar roboczy usługi Log Analytics**. Bez obszaru roboczego dostępny jest tylko edytor zapytań.
+           > [!NOTE]
+           > A **obszaru roboczego usługi Log Analytics** jest wymagany do obsługi zaawansowanych funkcji, takich jak analiza, niestandardowe reguły alertów i eksportuje programu Excel lub Power BI. Bez obszaru roboczego dostępny jest tylko edytor zapytań.
 
-        - **Centrum zdarzeń** — umożliwia kierowanie zdarzeń do użytku w innych aplikacjach
+       - **Centrum zdarzeń** — umożliwia kierowanie zdarzeń do użytku w innych aplikacjach
 
-    1. Wybierz pozycję **Zapisz**.
+   1. Wybierz pozycję **Zapisz**.
 
-    ![Ustawienia inspekcji](./media/sql-database-security-tutorial/audit-settings.png)
+      ![Ustawienia inspekcji](./media/sql-database-security-tutorial/audit-settings.png)
 
 1. Możesz teraz wybrać pozycję **Wyświetl dzienniki inspekcji**, aby wyświetlić dane zdarzeń z bazy danych.
 
@@ -334,9 +334,9 @@ Aby włączyć lub sprawdzić szyfrowanie:
     ![Niewidoczne szyfrowanie danych](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Aby wyświetlić stan szyfrowania, połącz się z bazą danych za pomocą programu [SQL Server Management Studio](./sql-database-connect-query-ssms.md) i wykonaj zapytanie dotyczące kolumny `encryption_state` w widoku [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017). Stan `3` oznacza, że baza danych jest szyfrowana.
+> Aby wyświetlić stan szyfrowania, połącz się z bazą danych za pomocą programu [SQL Server Management Studio](./sql-database-connect-query-ssms.md) i wykonaj zapytanie dotyczące kolumny `encryption_state` w widoku [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql). Stan `3` oznacza, że baza danych jest szyfrowana.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wyjaśniono, jak zwiększyć poziom bezpieczeństwa bazy danych w kilku prostych krokach. W tym samouczku omówiono:
 

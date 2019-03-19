@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: bce00300e62b3ea04331530bbda2c16f0ddd2ab3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 840445b2c1a28d294027c7fbfda9e6bf6e431f14
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759376"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990714"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu w usłudze Azure Stack
 
@@ -45,7 +45,7 @@ Jeśli interesują Cię określone konto magazynu — możesz to zrobić **filtr
 **Aby odfiltrować konta:**
 
 1. Wybierz **filtru** u góry okienka.
-2. Na okienka filtru umożliwia określanie **nazwa konta**, ** identyfikator subskrypcji lub **stan** można dostosować listę kont magazynu, które mają być wyświetlane. Ich używać zgodnie z potrzebami.
+2. Na okienka filtru umożliwia określanie **nazwa konta**, **identyfikator subskrypcji**, lub **stan** można dostosować listę kont magazynu, które mają być wyświetlane. Ich używać zgodnie z potrzebami.
 3. Wybierz pozycję **Update** (Aktualizuj). Listy należy odświeżyć odpowiednio.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)

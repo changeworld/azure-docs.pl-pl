@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 9e36ac41fb42d7c0e00dca6dc82f2f5daee1278b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 00cdc8de45d2f0177cd1f097fb874cbe67f7e442
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120129"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integracja usługi API Management w wewnętrznej sieci Wirtualnej z usługą Application Gateway
 
@@ -356,7 +356,7 @@ Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ## <a name="summary"> </a> Podsumowanie
 Usługa Azure API Management skonfigurowany w sieci Wirtualnej zapewnia interfejs jednej bramy dla wszystkich skonfigurowanych interfejsów API, czy są one hostowane lokalnie lub w chmurze. Integrowanie bramy aplikacji z usługą API Management zapewnia elastyczność selektywnie Włączanie określonego interfejsy API dostępne w Internecie, a także zapewnianie zapory aplikacji sieci Web jako frontonu do Twojego wystąpienia usługi API Management.
 
-##<a name="next-steps"> </a> Następne kroki
+## <a name="next-steps"> </a> Następne kroki
 * Dowiedz się więcej o usłudze Azure Application Gateway
   * [Application Gateway — omówienie](../application-gateway/application-gateway-introduction.md)
   * [Zapory aplikacji sieci Web usługi Application Gateway](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

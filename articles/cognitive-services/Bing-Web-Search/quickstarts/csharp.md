@@ -8,30 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 08e2ef1b219ed66a39d38c08be80df89814afbaf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 871cca9fe2b3ff50202feb4925a267b93d432700
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180491"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842077"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Szybki start: Wyszukiwanie w Internecie za pomocą interfejsu API REST wyszukiwania w sieci Web Bing i języka C#
 
-
-Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w Internecie Bing i odebranie odpowiedzi JSON. Ta aplikacja w języku C# wysyła żądanie wyszukiwania do interfejsu API i wyświetla odpowiedź. Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w Internecie Bing i odebranie odpowiedzi JSON. To C# aplikacja wysyła żądanie wyszukiwania do interfejsu API i pokazuje odpowiedzi. Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
 
 * W systemie Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](http://www.mono-project.com/)  
+* Linux/macOS: [Mono](https://www.mono-project.com/)  
 * Klucz subskrypcji
 
 W tym przykładowym programie używane są tylko klasy .NET Core.
-
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -63,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Definiowanie zmiennych
 
-Zanim będzie można kontynuować, należy ustawić kilka zmiennych. Upewnij się, że wartość `uriBase` jest prawidłowa, i zamień wartość `accessKey` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz dostosować zapytanie wyszukiwania, zamieniając wartość `searchTerm`.
+Zanim będzie można kontynuować, należy ustawić kilka zmiennych. Upewnij się, że wartość `uriBase` jest prawidłowa, i zamień wartość `accessKey` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz dostosować zapytanie wyszukiwania, zamieniając wartość `searchTerm`. Pamiętaj, aby dodać ten kod w celu `Program` klasy, jak wspomniano powyżej.
 
 ```csharp
 // Enter a valid subscription key.
@@ -79,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Deklarowanie metody Main
 
-Metoda `Main()` jest wymagana i jest pierwszą wywoływaną metodą po uruchomieniu programu. W tej aplikacji metoda Main weryfikuje wartość `accessKey`, wysyła żądanie i wyświetla odpowiedź.
+`Main()` Wymagana jest metoda i jest pierwsza metoda wywoływana, gdy program jest uruchomiony. W tej aplikacji metoda Main weryfikuje wartość `accessKey`, wysyła żądanie i wyświetla odpowiedź.
 
 Pamiętaj, że metoda `main()` jest zależna od metod, które zostaną utworzone w kilku następnych sekcjach.
 
@@ -110,7 +109,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Tworzenie struktury dla wyników wyszukiwania
 
-Ta struktura zwraca wyniki wyszukiwania z odpowiednimi nagłówkami. Jest ona wywoływana podczas wysyłania żądania do interfejsu API wyszukiwania w sieci Web Bing w celu utworzenia obiektu wyników.
+Ta struktura zwraca wyniki wyszukiwania z odpowiednimi nagłówkami. Jest ona wywoływana, gdy kieruje żądanie do interfejsu API wyszukiwania w sieci Web Bing do tworzenia obiektu wyniku.
 
 ```csharp
 // Returns search results with headers.
@@ -364,7 +363,7 @@ Odpowiedzi z interfejsu API wyszukiwania w sieci Web Bing są zwracane w formaci
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania w sieci Web Bing](../tutorial-bing-web-search-single-page-app.md)

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 03920bc3ed17eac9d76cea78877f1f008e83f4dd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bcaf470fae34056fe932cf8b5fd3076899f895ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197033"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880283"
 ---
 # <a name="create-a-new-saas-application-offer"></a>Tworzenie nowej oferty aplikacji SaaS
 
@@ -34,6 +34,7 @@ Następny diagram pokazuje proces tworzenia oferty aplikacji SaaS.
 ## <a name="offer-components"></a>Składniki oferty
 
 Oferty aplikacji SaaS składa się z pięciu sekcji opisane w poniższej tabeli:
+
 |  **Grupy zasobów**   |  **Opis**  |
 |  ---------------   |  ---------------  |
 |    Ustawienia oferty  |  Służy do konfigurowania unikatową tożsamość dla aplikacji SaaS.                 |
@@ -45,7 +46,7 @@ Oferty aplikacji SaaS składa się z pięciu sekcji opisane w poniższej tabeli:
 
 ## <a name="new-offer-form"></a>Nowy formularz oferty
 
-Zaloguj się do [portalu Cloud Partner](http://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **aplikacji SaaS** nowa oferta formularz wyświetlania i rozpocząć proces Definiowanie zasobów dla nowej oferty aplikacji SaaS.
+Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **aplikacji SaaS** nowa oferta formularz wyświetlania i rozpocząć proces Definiowanie zasobów dla nowej oferty aplikacji SaaS.
 
 ![Nowe menu oferty dla aplikacji SaaS](./media/azure-new-saas-offer.png)
 
@@ -54,8 +55,8 @@ Zaloguj się do [portalu Cloud Partner](http://cloudpartner.azure.com/), a nast�
 Na stronie Nowa oferta dla typu oferty SaaS zawiera zbiór kart i pola formularza, które będziesz używać do tworzenia nowej oferty. Każda z następujących artykułów wyjaśnia, jak karta służy do definiowania grup zasobów i usługi pomocnicze nowej oferty.
 
 - [Karta ustawień oferty](./cpp-offer-settings-tab.md)
-- [Karta informacje techniczne](./cpp-technical-info-tab.md)
-- [Karta informacje z kanału](./cpp-channel-info-tab.md)
+- [Karta informacji technicznych](./cpp-technical-info-tab.md)
+- [Karta informacji z kanału](./cpp-channel-info-tab.md)
 - [Karta Wersja testowa](./cpp-testdrive-tab.md)
-- [Karta StoreFront — szczegóły](./cpp-storefront-tab.md)
+- [Karta szczegółów sklepu](./cpp-storefront-tab.md)
 - [Karta kontaktów](./cpp-contacts-tab.md)

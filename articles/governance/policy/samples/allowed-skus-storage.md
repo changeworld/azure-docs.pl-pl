@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: cb6ccf87cc14424801a06cc2e9749e2fc2f6ee4a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 87770a12ca7e489b11b2d176903f976fdcc256a0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339910"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551331"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Przykład — dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
 
@@ -29,7 +29,7 @@ Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdrażanie na platformie Azure](http://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Wdrażanie na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -72,6 +72,6 @@ az policy assignment delete --name <assignmentName>
 az policy set-definition delete --name "skus-for-multiple-types"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/07/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: e418cf8d619b55fde56a4d6d7d7cd9a8b36a112e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 40c08f87a1711ae57ceb8b288851686d1e2ad391
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339236"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993930"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
@@ -29,7 +29,7 @@ Poniższe informacje zawierają aktualnie obsługiwany [platforma Microsoft Azur
 | --- | --- | --- |
 | **Azure (Niemcy)** | [Płatność za rzeczywiste użycie platformy Azure (Niemcy)](https://azure.microsoft.com/offers/ms-azr-de-0003p/) | MS-AZR-DE-0003P |
 | **Platforma Azure Government** | Azure Government — przedsiębiorstwa | MS-AZR-USGOV-0017P |
-| **Umowy Enterprise Agreement (EA)** | Tworzenie i testowanie (przedsiębiorstwo) | MS-AZR-0148P |
+| **Umowy Enterprise Agreement (EA)** | Enterprise — tworzenie i testowanie | MS-AZR-0148P |
 | **Umowy Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade/) | MS-AZR-0017P |
 | **Sieć Microsoft Developer Network (MSDN)** | [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p/) | MS-AZR-0062P |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
@@ -95,7 +95,7 @@ W poniższych tabelach przedstawiono dane, które ma włączone lub nie znajduje
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Harmonogram odświeżania danych użycia ocenione
 
-Dane kosztów i użycia są dostępne w zarządzanie kosztami i rozliczenia w witrynie Azure portal i [Obsługa interfejsów API](https://aka.ms/costmgmt/docs). Podczas przeglądania kosztów, należy pamiętać o następujące kwestie:
+Dane kosztów i użycia są dostępne w zarządzanie kosztami i rozliczenia w witrynie Azure portal i [Obsługa interfejsów API](index.yml). Podczas przeglądania kosztów, należy pamiętać o następujące kwestie:
 
 - Oszacowanie opłat dla bieżącego okresu rozliczeniowego zostaną zaktualizowane sześć razy dziennie.
 - Oszacowanie opłat w bieżącym okresie rozliczeniowym mogą zmienić wiąże się z większą funkcjonalność.

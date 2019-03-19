@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5317eb83552b5ea15b2d709f61b456a7a508e9ba
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876181"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995116"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczęcie korzystania z usługi Azure Stream Analytics: Wykrywanie oszustw w czasie rzeczywistym
 
@@ -114,20 +114,20 @@ Przed uruchomieniem aplikacji TelcoGenerator należy skonfigurować tak, aby rek
 
 ### <a name="configure-the-telcogenerator-app"></a>Konfigurowanie aplikacji TelcoGenerator
 
-1.  W edytorze, gdzie został skopiowany ciąg połączenia, zanotuj `EntityPath` wartości, a następnie usuń `EntityPath` pary (nie zapomnij usunąć poprzedzającego ją średnika). 
+1. W edytorze, gdzie został skopiowany ciąg połączenia, zanotuj `EntityPath` wartości, a następnie usuń `EntityPath` pary (nie zapomnij usunąć poprzedzającego ją średnika). 
 
-2.  W folderze, w którym rozpakowano plik TelcoGenerator.zip Otwórz plik telcodatagen.exe.config w edytorze. (Istnieje więcej niż jeden plik Config, dlatego upewnij się, że otworzyć właściwy).
+2. W folderze, w którym rozpakowano plik TelcoGenerator.zip Otwórz plik telcodatagen.exe.config w edytorze. (Istnieje więcej niż jeden plik Config, dlatego upewnij się, że otworzyć właściwy).
 
-3.  W `<appSettings>` elementu:
+3. W `<appSettings>` elementu:
 
-    * Ustaw wartość `EventHubName` klucza nazwę Centrum zdarzeń (czyli wartość ścieżka jednostki).
-    * Ustaw wartość `Microsoft.ServiceBus.ConnectionString` klucz do parametrów połączenia. 
+   * Ustaw wartość `EventHubName` klucza nazwę Centrum zdarzeń (czyli wartość ścieżka jednostki).
+   * Ustaw wartość `Microsoft.ServiceBus.ConnectionString` klucz do parametrów połączenia. 
 
-    `<appSettings>` Sekcji będzie wyglądać podobnie jak w poniższym przykładzie. (W celu uściślenia wiersze zostaną opakowane i niektóre znaki zostały usunięte z tokenu autoryzacji).
+   `<appSettings>` Sekcji będzie wyglądać podobnie jak w poniższym przykładzie. (W celu uściślenia wiersze zostaną opakowane i niektóre znaki zostały usunięte z tokenu autoryzacji).
 
    ![Plik konfiguracji TelcoGenerator zawiera parametry połączenia i nazwę Centrum zdarzeń](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4.  Zapisz plik. 
+4. Zapisz plik. 
 
 ### <a name="start-the-app"></a>Uruchom aplikację
 1.  Otwórz okno polecenia i przejdź do folderu, w którym aplikacja TelcoGenerator jest rozpakowany.
@@ -191,6 +191,7 @@ Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie u
    |Przestrzeń nazw centrum zdarzeń  |  asa-eh-ns-demo |  Wprowadź nazwę przestrzeni nazw Centrum zdarzeń.   |
    |Nazwa centrum zdarzeń  | asa-eh-frauddetection-demo | Wybierz nazwę Centrum zdarzeń.   |
    |Nazwa zasad centrum zdarzeń  | asa-policy-manage-demo | Wybierz zasady dostępu, który został utworzony wcześniej.   |
+
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -359,6 +360,7 @@ Jeśli masz istniejące konto magazynu obiektów blob, można użyć, który. W 
    |Subskrypcja   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma utworzone konto magazynu. Konto magazynu może być w tej samej lub innej subskrypcji. W tym przykładzie przyjęto założenie, że konto magazynu zostało utworzone w tej samej subskrypcji. |
    |Konto magazynu  |  asaehstorage |  Wprowadź nazwę utworzonego konta magazynu. |
    |Kontener  | asa-fraudulentcalls-demo | Wybierz pozycję Utwórz nowy, a następnie wprowadź nazwę kontenera. |
+
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     

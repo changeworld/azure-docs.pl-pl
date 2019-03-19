@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 5d0b53590e901cfa1686a71c3f0dda7fb771b56b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a3c0e94e213b861714bfc5f38e20e4d9a1de3a19
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990309"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107920"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 
@@ -94,18 +94,18 @@ Agenci zainstalowani na wszystkich komputerach w grupie możesz wizualizować za
 1. Na platformie Azure migracji projektu, w obszarze **Zarządzaj**, kliknij przycisk **grup**, a następnie wybierz grupę.
 2. Na stronie grupy kliknij **wyświetlanie zależności**, aby otworzyć mapowania zależności grupy.
 3. Mapa zależności dla grupy zawiera następujące informacje:
-    - Dla ruchu przychodzącego (klientów) oraz połączenia wychodzące TCP (serwery), do i z wszystkich maszyn, które są częścią grupy
-        - Zależnych maszyn, które nie mają zainstalowany agent MMA i zależności są pogrupowane według numerów portów
-        - Zależnych maszyn, które mają programu MMA i zainstalować agenta zależności są wyświetlane jako oddzielne pola
-    - Procesy uruchomione na maszynie, możesz rozwinąć każde pole maszyny do wyświetlania procesów
-    - Właściwości, takie jak w pełni kwalifikowanej nazwy domeny, System operacyjny i każdej maszyny, itp. adres MAC, możesz kliknąć pole każdej maszyny w taki sposób, aby wyświetlić te szczegóły
+   - Dla ruchu przychodzącego (klientów) oraz połączenia wychodzące TCP (serwery), do i z wszystkich maszyn, które są częścią grupy
+       - Zależnych maszyn, które nie mają zainstalowany agent MMA i zależności są pogrupowane według numerów portów
+       - Zależnych maszyn, które mają programu MMA i zainstalować agenta zależności są wyświetlane jako oddzielne pola
+   - Procesy uruchomione na maszynie, możesz rozwinąć każde pole maszyny do wyświetlania procesów
+   - Właściwości, takie jak w pełni kwalifikowanej nazwy domeny, System operacyjny i każdej maszyny, itp. adres MAC, możesz kliknąć pole każdej maszyny w taki sposób, aby wyświetlić te szczegóły
 
      ![Wyświetlanie zależności grupowych](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. Aby wyświetlić bardziej szczegółowe zależności, kliknij zakres czasu, aby go zmodyfikować. Domyślnie zakres jest godzinę. Możesz modyfikować zakres czasu lub określ rozpoczęcia i zakończenia daty i czasu trwania.
 
-    > [!NOTE]
-      Wizualizacji zależności interfejsu użytkownika nie obsługuje obecnie wybór zakresu czasu, więcej niż jedna godzina. Użyj usługi Azure Monitor rejestruje [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) przez dłuższy czas.
+   > [!NOTE]
+   >    Wizualizacji zależności interfejsu użytkownika nie obsługuje obecnie wybór zakresu czasu, więcej niż jedna godzina. Użyj usługi Azure Monitor rejestruje [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) przez dłuższy czas.
 
 4. Sprawdź zależnych maszyn proces uruchomiony na każdej maszynie, a następnie zidentyfikuje maszyny, które powinny zostać dodane lub usunięte z grupy.
 5. Użyj klawiszy Ctrl + kliknięcie, aby wybrać maszyny na mapie, aby dodać lub usunąć je z niej.

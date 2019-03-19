@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: d6d898b93af6c03b313ec2340eb076de85877155
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 205a8dae55394a82a60f54ed32bad95324a59517
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530998"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996928"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Funkcje aparatu reguł usługi Azure CDN
 W tym artykule przedstawiono szczegółowe opisy dostępnych funkcji dla usługi Azure Content Delivery Network (CDN) [aparat reguł](cdn-rules-engine.md).
@@ -76,7 +76,7 @@ Ta funkcja została zaprojektowana podać dodatkowe informacje w obrębie reguł
 Name (Nazwa) | Przeznaczenie
 -----|--------
 [Komentarz](#comment) | Umożliwia notatkę do dodania w obrębie reguły.
- 
+ 
 ## <a name="header-features"></a>Funkcje nagłówka
 
 Te funkcje są przeznaczone do Dodawanie, modyfikowanie lub usuwanie nagłówków żądania lub odpowiedzi.
@@ -126,7 +126,7 @@ Enabled|Indicates that the request is eligible for Edge Optimizer processing.
 Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
 
 **Default Behavior:** Disabled
- 
+ 
 
 ### Edge Optimizer - Instantiate Configuration
 **Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
@@ -164,7 +164,7 @@ Name (Nazwa) | Przeznaczenie
 [Rozmiar treści podlega buforowaniu, na żądanie](#cacheable-request-body-size) | Definiuje wartość progowa określająca, czy mogą być buforowane odpowiedzi WPIS.
 [Zmiennej użytkownika](#user-variable) | Tylko do użytku wewnętrznego.
 
- 
+ 
 ## <a name="url-features"></a>Adres URL funkcji
 
 Te funkcje umożliwiają żądanie, aby być przekierowywany lub przepisane, aby inny adres URL.
@@ -182,6 +182,7 @@ Name (Nazwa) | Przeznaczenie
 ---
 ### <a name="age-response-header"></a>Nagłówek odpowiedzi wiek
 **Cel**: Określa, czy nagłówek odpowiedzi wiek znajduje się odpowiedzi wysyłane do zleceniodawcy.
+
 Wartość|Wynik
 --|--
 Enabled (Włączony) | Nagłówek odpowiedzi wiek znajduje się w odpowiedzi wysyłane do zleceniodawcy.
@@ -191,7 +192,7 @@ Disabled (Wyłączony) | Nagłówek odpowiedzi okres ważności jest wykluczony 
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
 
-</br>
+<br>
 
 ---
 ### <a name="bandwidth-parameters"></a>Parametry przepustowości
@@ -394,6 +395,7 @@ Opcja|Opis
 --|--
 Oryginalna ścieżka| Zdefiniuj ścieżkę względną do typów żądań, których klucz pamięci podręcznej jest przepisany. Ścieżka względna mogą być definiowane przez wybranie ścieżka do podstawowego źródła, a następnie wzorzec wyrażenia regularnego.
 Nowa ścieżka|Zdefiniuj ścieżkę względną do nowego klucza pamięci podręcznej. Ścieżka względna mogą być definiowane przez wybranie ścieżka do podstawowego źródła, a następnie wzorzec wyrażenia regularnego. Tej ścieżki względnej można dynamicznie skonstruować za pośrednictwem [zmiennych HTTP](cdn-http-variables.md).
+
 **Domyślne zachowanie:** klucz pamięci podręcznej żądania jest określana przez identyfikator URI żądania.
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
@@ -473,6 +475,7 @@ text/html| Pliki HTML
 tekst/css|Kaskadowe arkusze stylów (CSS)
 application/x-javascript|Javascript
 application/javascript|Javascript
+
 Informacje o kluczu:
 
 - Aby określić wiele typów nośników Internet, rozdzielający każdej z nich z jednego miejsca. 
@@ -1024,6 +1027,7 @@ Wartość|Wynik
 --|--
 Enabled (Włączony)|Powoduje, że punkt POP ponownie Pobierz element zawartości z serwera pochodzenia.
 Disabled (Wyłączony)|Przywraca domyślne zachowanie. Zachowanie domyślne jest do obsługi pamięci podręcznej prawidłowe zasoby na żądanie.
+
 Ta funkcja nie jest wymagany poprawny pamięci podręcznej i dostarczania zawartości, ale może być przydatne jako obejście tego problemu. Na przykład dynamiczne generatorów zawartości na serwerach pochodzenia przypadkowo może spowodować 0 bajtów odpowiedzi są wysyłane do lokalizacji POP. Tego rodzaju odpowiedzi są buforowane przez lokalizacji POP. Jeśli wiesz, że odpowiedź 0 bajtów nigdy nie jest prawidłowa odpowiedź 
 
 dla zawartości następnie tej funkcji można zapobiec tych typów zasobów są obsługiwane dla klientów.
@@ -1279,6 +1283,7 @@ Opcja|Opis
 -|-
  Źródło & wzorzec | Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które może być ponowne napisanie. Będzie przebudować tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/><br/>  - **Źródło (lub punkt dostępu do zawartości):** wybierz ścieżki względnej, która identyfikuje serwer pochodzenia. Ta ścieżka jest _/XXXX/_ sekcji i nazwa punktu końcowego. <br/><br/> - **Źródło (wzorzec):** wzorca, który identyfikuje żądania przy użyciu ścieżki względnej, musi być zdefiniowany. Ten wzorzec wyrażenia regularnego należy zdefiniować ścieżkę, która rozpoczyna się bezpośrednio po wybrana wcześniej dostępu do zawartości punktu (zobacz powyżej). <br/> Sprawdź, czy żądanie identyfikatora URI kryteria (czyli źródła & wzorca) uprzednio zdefiniowany jest zgodny z którykolwiek z warunków dopasowania zdefiniowane dla tej funkcji. Określ wzorzec; Jeśli używasz pustej wartości jako wzorzec wszystkie ciągi są dopasowywane. 
  Element docelowy  |Zdefiniuj względny adres URL, do którego powyżej żądań będzie przepisany przez: <br/>    1. Wybieranie punktu dostępu do zawartości, która identyfikuje serwer pochodzenia. <br/>    2. Definiowanie przy użyciu ścieżki względnej: <br/>        -Wzorzec wyrażenia regularnego <br/>        - [Zmienne HTTP](cdn-http-variables.md) <br/> <br/> Zastąp wartości przechwytywane we wzorcu źródła do wzorca docelowego przy użyciu ciągu $_n_ gdzie _n_ identyfikuje wartość według kolejności, w której został przechwycony. Na przykład $1 reprezentuje pierwszą wartość przechwycone we wzorcu źródła, gdy $2 reprezentuje drugiej wartości. 
+
  Ta funkcja umożliwia POP do ponownego zapisywania adresów URL bez wykonywania tradycyjnych przekierowania. Oznacza to, że osoby żądającej otrzymuje ten sam kod odpowiedzi, tak, jakby poproszono nowych adresu URL.
 
 **Przykładowy scenariusz 1**

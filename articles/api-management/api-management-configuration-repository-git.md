@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 36b60b3784739a884b887a29f3dd53c61c44cd6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961013"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57851350"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisywanie i konfigurowanie konfiguracji usługi API Management przy użyciu narzędzia Git
 
@@ -50,12 +50,12 @@ W tym artykule opisano, jak włączyć i zarządzać konfiguracją usługi za po
 
 Aby wyświetlić i skonfigurować ustawienia konfiguracji usługi Git, możesz kliknąć **zabezpieczeń** menu i przejdź do **repozytorium konfiguracji** kartę.
 
-![Włączymy usługę GIT][api-management-enable-git]
+![Włącz system GIT][api-management-enable-git]
 
 > [!IMPORTANT]
-> Jakichkolwiek kluczy tajnych, które nie są zdefiniowane jako właściwości będą przechowywane w repozytorium i pozostanie w jego historię do momentu wyłączenia i ponownego włączenia dostępu do usługi Git. Właściwości zapewniają bezpiecznym miejscu, aby zarządzać stałe wartości ciągów, w tym wpisów tajnych oraz ich we wszystkich Konfiguracja interfejsu API i zasady, dzięki czemu nie trzeba przechowywać je bezpośrednio w zasadach zestawienia. Aby uzyskać więcej informacji, zobacz [jak korzystać z właściwości w zasadach usługi Azure API Management](api-management-howto-properties.md).
-> 
-> 
+> Jakichkolwiek kluczy tajnych, które nie są zdefiniowane jako o nazwie wartości będą przechowywane w repozytorium i pozostanie w jego historię aż Wyłącz i ponownie włączyć dostęp usługi Git. Nazwane wartości zapewniają bezpiecznym miejscu, aby zarządzać stałe wartości ciągów, w tym wpisów tajnych oraz ich we wszystkich Konfiguracja interfejsu API i zasady, dzięki czemu nie trzeba przechowywać je bezpośrednio w zasadach zestawienia. Aby uzyskać więcej informacji, zobacz [sposób użycia wartości o nazwie w zasadach usługi Azure API Management](api-management-howto-properties.md).
+>
+>
 
 Aby uzyskać informacje dotyczące włączania lub wyłączania dostępu do usługi Git przy użyciu interfejsu API REST, zobacz [Włącz lub wyłącz dostęp do usługi Git przy użyciu interfejsu API REST](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
 
@@ -73,13 +73,13 @@ Aby uzyskać informacje na wykonanie tej operacji za pomocą interfejsu API REST
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>Aby sklonować repozytorium na komputerze lokalnym
 
-Klonowanie repozytorium, należy adres URL repozytorium, nazwę użytkownika i hasło. Aby uzyskać nazwę użytkownika i inne poświadczenia, kliknij polecenie **poświadczenia dostępu** w górnej części strony.  
- 
+Klonowanie repozytorium, należy adres URL repozytorium, nazwę użytkownika i hasło. Aby uzyskać nazwę użytkownika i inne poświadczenia, kliknij polecenie **poświadczenia dostępu** w górnej części strony.
+
 Aby wygenerować hasła, najpierw upewnij się, że **wygaśnięcia** jest ustawiona na odpowiednią datę i godzinę wygaśnięcia, a następnie kliknij przycisk **Generuj**.
 
 > [!IMPORTANT]
 > Zanotuj hasło. Gdy opuścisz tę stronę hasło nie zostanie ponownie wyświetlone.
-> 
+>
 
 W poniższych przykładach używane narzędzie powłoki Git Bash z [Git dla Windows](https://www.git-scm.com/downloads) , ale można użyć dowolnego narzędzia Git, które znasz.
 
@@ -172,12 +172,12 @@ Te pliki można utworzyć, usunięte, edytować i zarządzane w lokalnym systemi
 
 > [!NOTE]
 > Następujące jednostki nie znajdują się w repozytorium Git i nie można skonfigurować przy użyciu narzędzia Git.
-> 
-> * Użytkownicy
-> * Subskrypcje
-> * Właściwości
+>
+> * [Użytkownicy](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
+> * [Subskrypcje](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
+> * [Nazwane wartości](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
 > * Jednostki portalu dla deweloperów, inne niż style
-> 
+>
 
 ### <a name="root-api-management-folder"></a>głównego folderu usługi api management
 Katalog główny `api-management` folder zawiera `configuration.json` pliku, który zawiera najwyższego poziomu informacji o wystąpieniu usługi, w następującym formacie.
@@ -223,7 +223,7 @@ Ustawienie ostatecznego `$ref-policy`, mapy do pliku instrukcje zasad globalnych
 ### <a name="apis-folder"></a>folder interfejsów API
 `apis` Folder zawiera folder dla każdego interfejsu API w wystąpieniu usługi, która zawiera następujące elementy.
 
-* `apis\<api name>\configuration.json` — to jest Konfiguracja interfejsu API i zawiera informacje dotyczące adresu URL usługi wewnętrznej bazy danych i operacje. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [uzyskać konkretnego interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/api/get) z `export=true` w `application/json` formatu.
+* `apis\<api name>\configuration.json` — to jest Konfiguracja interfejsu API i zawiera informacje dotyczące adresu URL usługi wewnętrznej bazy danych i operacje. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [uzyskać konkretnego interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/apis/get) z `export=true` w `application/json` formatu.
 * `apis\<api name>\api.description.html` — to jest opis interfejsu API i odpowiada `description` właściwość [jednostki interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
 * `apis\<api name>\operations\` — Ten folder zawiera `<operation name>.description.html` pliki, które są mapowane na operacje w interfejsie API. Każdy plik zawiera opis jednej operacji w interfejsie API, który mapuje `description` właściwość [jednostki operacji](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) w interfejsie API REST.
 

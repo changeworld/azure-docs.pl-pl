@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2018
-ms.author: kumud
+ms.date: 03/18/2019
+ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: afadef8b29927f909af5be1e1204180724258b74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167069"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Konfigurowanie trybu failover między wieloma punktami końcowymi usługi CDN Azure przy użyciu usługi Azure Traffic Manager
 
@@ -77,7 +77,7 @@ Po skonfigurowaniu profilów usługi Traffic Manager i CDN, wykonaj następując
     >
 
 
-2.  Z profilem w usłudze Azure CDN wybierz pierwszy punkt końcowy usługi CDN (firmy Akamai). Wybierz **Dodaj domenę niestandardową** i wejściowego *cdndemo101akamai.azureedge.net*. Sprawdź, czy zielony znacznik wyboru, aby zweryfikować domenę niestandardową. 
+2.  Z profilem w usłudze Azure CDN wybierz pierwszy punkt końcowy usługi CDN (firmy Akamai). Wybierz **Dodaj domenę niestandardową** i wejściowego *cdndemo101.dustydogpetcare.online*. Sprawdź, czy zielony znacznik wyboru, aby zweryfikować domenę niestandardową. 
 
     Usługa Azure CDN używa *cdnverify* poddomeny, aby sprawdzić poprawność mapowania DNS, aby ukończyć ten proces rejestracji. Aby uzyskać więcej informacji, zobacz [tworzenie rekordu CNAME DNS](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Ten krok powoduje włączenie usługi Azure CDN, dzięki czemu mogą odpowiadać na żądania jego, rozpoznawał domeny niestandardowej.
 
@@ -87,7 +87,7 @@ Po skonfigurowaniu profilów usługi Traffic Manager i CDN, wykonaj następując
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. Z profilem w usłudze Azure CDN Wybierz drugi punkt końcowy usługi CDN (Verizon), a następnie powtórz krok 2. Wybierz **Dodaj domenę niestandardową**i wejściowego *cdndemo101akamai.azureedge.net*.
+4. Z profilem w usłudze Azure CDN Wybierz drugi punkt końcowy usługi CDN (Verizon), a następnie powtórz krok 2. Wybierz **Dodaj domenę niestandardową**i wejściowego *cdndemo101.dustydogpetcare.online*.
  
 Po wykonaniu tych kroków, usługi CDN wielu, możliwości trybu failover jest skonfigurowany przy użyciu usługi Azure Traffic Manager. Będziesz mieć możliwość dostępu testu adresy URL z domeny niestandardowej. Aby przetestować funkcję, wyłącz podstawowego punktu końcowego usługi CDN i sprawdź, czy żądanie jest poprawnie przeniesieni do pomocniczego punktu końcowego usługi CDN. 
 

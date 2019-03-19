@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 8d6f7c36745f8c1a6fdbf8d4a0058e297fef0409
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: a4710e2afc1688d83ff1c6da3ba36693584f16d3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110595"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871802"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla języka C++
 
@@ -60,14 +60,14 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu tłumaczenia](media/sdk/qs-translate-cpp-windows-output.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dodatkowe przykłady, dotyczące między innymi odczytywania mowy z pliku audio i zwracania przetłumaczonego tekstu jako syntetyzowanej mowy, są dostępne w usłudze GitHub.
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C++ w usłudze GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

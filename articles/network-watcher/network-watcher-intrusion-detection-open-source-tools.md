@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9d77952a96bff6cc2d50ecbd4bde7e499f20de6d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41b039c6598334d49b9ddb0608d7ad2ae045b223
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420037"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901274"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Wykrywanie włamań w sieci przy użyciu usługi Network Watcher i narzędzi typu open source
 
@@ -39,7 +39,7 @@ Oba narzędzia typu open source można skonfigurować na Maszynie wirtualnej pla
 
 ### <a name="install-suricata"></a>Zainstaluj Suricata
 
-Aby uzyskać wszystkie inne metody instalacji odwiedź stronę http://suricata.readthedocs.io/en/latest/install.html
+Aby uzyskać wszystkie inne metody instalacji odwiedź stronę https://suricata.readthedocs.io/en/latest/install.html
 
 1. W terminalu wiersza polecenia maszyny wirtualnej, uruchom następujące polecenia:
 
@@ -58,7 +58,7 @@ Na tym etapie nie mamy żadnych reguł dla Suricata do uruchomienia. Można utwo
 Pobierz zestaw reguł i skopiować je do katalogu:
 
 ```
-wget http://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
+wget https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
 tar zxf emerging.rules.tar.gz
 sudo cp -r rules /etc/suricata/
 ```

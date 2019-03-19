@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 76059c587a6378ccfe16c0a633bea0c6c7a8a57d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340097"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112521"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager
 Gdy usługi Azure Resource Manager oferuje wiele wspaniałych nowych funkcji, ważne jest zaplanowanie podróż migracyjną Postaramy się bezproblemowym przejściu. Poświęcania czasu na temat planowania będą upewnij się, czy nie występują problemy podczas wykonywania działania migracji.
@@ -79,8 +79,8 @@ Klienci pomyślnie szczegółowych planów, gdzie poprzedniego pytania są omów
 
   Przeprowadzenie testu laboratoryjnego do danego scenariusza (obliczeniowych, sieci i magazynu) to najlepszy sposób, aby zapewnić płynną migrację. Ułatwi to zapewnienie:
 
-  - Laboratorium całkowicie oddzielnych lub istniejących poza środowiskiem produkcyjnym do testowania. Zaleca się całkowicie oddzielne laboratorium, które można poddać migracji wielokrotnie i może być modyfikowany jest generowany.  Poniżej przedstawiono skryptów w celu zebrania/wodzianem metadanych z rzeczywistych subskrypcji.
-  - To dobry pomysł, aby utworzyć laboratorium w oddzielnej subskrypcji. Przyczyną jest laboratorium będzie zostać rozłączona wielokrotnie i posiadanie oddzielnego, izolowane subskrypcji zmniejsza to ryzyko, że coś rzeczywiste będzie uzyskać przypadkowo usunięty.
+- Laboratorium całkowicie oddzielnych lub istniejących poza środowiskiem produkcyjnym do testowania. Zaleca się całkowicie oddzielne laboratorium, które można poddać migracji wielokrotnie i może być modyfikowany jest generowany.  Poniżej przedstawiono skryptów w celu zebrania/wodzianem metadanych z rzeczywistych subskrypcji.
+- To dobry pomysł, aby utworzyć laboratorium w oddzielnej subskrypcji. Przyczyną jest laboratorium będzie zostać rozłączona wielokrotnie i posiadanie oddzielnego, izolowane subskrypcji zmniejsza to ryzyko, że coś rzeczywiste będzie uzyskać przypadkowo usunięty.
 
   Można to zrobić za pomocą narzędzia AsmMetadataParser. [Dowiedz się więcej o tym narzędziu, w tym miejscu](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
@@ -122,13 +122,13 @@ Poniżej zostały problemów znalezionych w wielu większych migracji. To nie je
     > Te limity muszą być wywoływany w tym samym regionie, co Twoje bieżące środowisko do migracji.
     >
 
-    - Interfejsy sieciowe
-    - Moduły równoważenia obciążenia
-    - Publiczne adresy IP
-    - Statyczne publiczne adresy IP
-    - Rdzenie
-    - Grupy zabezpieczeń sieci
-    - Tabele tras
+  - Interfejsy sieciowe
+  - Moduły równoważenia obciążenia
+  - Publiczne adresy IP
+  - Statyczne publiczne adresy IP
+  - Rdzenie
+  - Grupy zabezpieczeń sieci
+  - Tabele tras
 
     Możesz sprawdzić bieżące limity przydziału usługi Azure Resource Manager przy użyciu następujących poleceń do najnowszej wersji programu Azure PowerShell.
     

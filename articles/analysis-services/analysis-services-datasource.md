@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c7b3695e5cb43a9c8f659a3ac1baddab51526b2d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: eeb3b2098cf477004ba7ad85a903f1a8e2267392
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893735"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117833"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w usługach Azure Analysis Services
 
@@ -52,14 +52,14 @@ Nawiązywanie połączenia z lokalnych źródeł danych z i serwera usług Azure
 |  --- | --- | --- |
 | Oprogramowanie SQL Server |SQL Server Native Client 11.0, dostawca OLE DB firmy Microsoft dla programu SQL Server, .NET Framework Data Provider for SQL Server | .NET framework Data Provider for SQL Server |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0, dostawca OLE DB firmy Microsoft dla programu SQL Server, .NET Framework Data Provider for SQL Server | .NET framework Data Provider for SQL Server |
-| Oracle |Dostawca Microsoft OLE DB dla Oracle, dostawca danych programu Oracle dla platformy .NET |Dostawca danych programu Oracle dla platformy .NET | |
-| Teradata |Dostawca OLE DB dla programu Teradata, dostawca danych programu Teradata dla platformy .NET |Dostawca danych programu Teradata dla platformy .NET | |
+| Oracle |Dostawca Microsoft OLE DB dla Oracle, dostawca danych programu Oracle dla platformy .NET |Dostawca danych programu Oracle dla platformy .NET |
+| Teradata |Dostawca OLE DB dla programu Teradata, dostawca danych programu Teradata dla platformy .NET |Dostawca danych programu Teradata dla platformy .NET |
 | | | |
 
 ### <a name="in-memory-only"></a>W pamięci tylko
 
 |Źródło danych  |  
-|---------|---------|
+|---------|
 |Baza danych programu Access     |  
 |Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
@@ -83,7 +83,7 @@ Nawiązywanie połączenia z lokalnych źródeł danych z i serwera usług Azure
 |SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Baza danych programu Sybase     |  
 |Tabele XML<sup>[1](#tab1400b)</sup>    |  
-|||
+||
  
 <a name="tab1400b">1</a> tabelarycznych 1400 i wyższych modeli tylko.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afd5361774af3379dc0d4054509e318e8263dcc5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887463"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Wyświetlanie i modyfikowanie nazw hostów
 Aby umożliwić wystąpień roli przywoływanie według nazwy hosta, należy ustawić wartość dla nazwy hosta w pliku konfiguracji usługi dla każdej roli. Można to zrobić, dodając nazwę wybranego hosta do **vmName** atrybutu **roli** elementu. Wartość **vmName** atrybut jest używany jako podstawa dla nazwy hosta dla wszystkich wystąpień roli. Na przykład jeśli **vmName** jest *webrole* istnieją trzy wystąpienia tej roli, nazwy hosta wystąpień będą *webrole0*, *webrole1*, i *webrole2*. Nie należy określić nazwę hosta dla maszyn wirtualnych w pliku konfiguracji, ponieważ nazwa hosta dla maszyny wirtualnej jest wypełniana na podstawie nazwy maszyny wirtualnej. Aby uzyskać więcej informacji na temat konfigurowania usługi Microsoft Azure, zobacz [schematu konfiguracji usługi platformy Azure (cscfg pliku)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -40,9 +40,9 @@ Po włączeniu usług pulpitu zdalnego (Windows), komunikacji zdalnej programu W
 ### <a name="azure-service-management-rest-api"></a>Interfejs API REST zarządzania usługi platformy Azure
 Od klienta REST wykonaj następujące instrukcje:
 
-1. Upewnij się, że certyfikat klienta, aby nawiązać połączenie z witryny Azure portal. Aby uzyskać certyfikat klienta, wykonaj kroki przedstawione w [porady: pobieranie i importowanie ustawień publikowania i informacje o subskrypcji](https://msdn.microsoft.com/library/dn385850.aspx). 
+1. Upewnij się, że certyfikat klienta, aby nawiązać połączenie z witryny Azure portal. Aby uzyskać certyfikat klienta, wykonaj kroki przedstawione w [jak: Pobieranie i importowanie publikowania, ustawienia i informacje o subskrypcji](https://msdn.microsoft.com/library/dn385850.aspx). 
 2. Ustaw wpis nagłówka o nazwie x-ms-version o wartości 2013-11-01.
-3. Wyślij żądanie w następującym formacie: https://management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
+3. Wyślij żądanie w następującym formacie: https:\//management.core.windows.net/\<identyfikator subscrition\>/services/hostedservices/\<nazwa usługi\>? szczegóły osadzania = true
 4. Wyszukaj **HostName** elementu dla każdego **RoleInstance** elementu.
 
 > [!WARNING]

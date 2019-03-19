@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c29cf0604e651902474d85dbd6edd3208e6b5944
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 55a829f2ed32152d14ef637c8079f7af8c487bea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811301"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097648"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Przenoszenie danych z serwera SFTP przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,7 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane ze źródła SFTP
 Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla połączonej usługi FTP.
 
 | Właściwość | Opis | Wymagane |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | type | Właściwość type musi być równa `Sftp`. |Yes |
 | host | Nazwa lub adres IP serwera SFTP. |Yes |
 | port |Port, na którym nasłuchuje serwer SFTP. Wartość domyślna to: 21 |Nie |
@@ -65,7 +65,7 @@ Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla po
 Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `Basic`, a następnie określ następujące właściwości oprócz tych ogólnych wprowadzone w ostatniej sekcji łącznika SFTP:
 
 | Właściwość | Opis | Wymagane |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | nazwa użytkownika | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
 | hasło | Hasło dla użytkownika (nazwa użytkownika). | Yes |
 
@@ -115,7 +115,7 @@ Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `Basic
 Aby użyć uwierzytelniania klucza publicznego SSH, ustaw `authenticationType` jako `SshPublicKey`, a następnie określ następujące właściwości oprócz tych ogólnych wprowadzone w ostatniej sekcji łącznika SFTP:
 
 | Właściwość | Opis | Wymagane |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | nazwa użytkownika |Użytkownik, który ma dostęp do serwera SFTP |Yes |
 | privateKeyPath | Określ ścieżkę bezwzględną do pliku klucza prywatnego może dostęp do tej bramy. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. <br><br> Mają zastosowanie tylko wtedy, gdy kopiowanie danych z lokalnego serwera SFTP. |
 | privateKeyContent | Ciąg serializacji treści klucza prywatnego. Kreator kopiowania można odczytać pliku klucza prywatnego i automatycznie wyodrębnić zawartość klucza prywatnego. Jeśli używane są wszystkie inne narzędzia/zestawu SDK, należy użyć właściwości privateKeyPath. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. |

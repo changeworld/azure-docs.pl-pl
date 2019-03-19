@@ -1,5 +1,5 @@
 ---
-title: O wysokiej dostępności usługi Service Fabric Reliable woluminu dysku jest używany w aplikacji usługi Azure Service Fabric siatki | Dokumentacja firmy Microsoft
+title: Używanie o wysokiej dostępności usługi Service Fabric Reliable woluminu dysku w aplikacji usługi Azure Service Fabric siatki | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przechowywać stanu w aplikacji usługi Azure Service Fabric siatki przez zainstalowanie usługi Service Fabric Reliable na dysku woluminu w kontenerze przy użyciu wiersza polecenia platformy Azure.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2ed64bbf0da252285184e2ca6fef0555a85ce149
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955325"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850857"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Instalowanie o wysokiej dostępności usługi Service Fabric Reliable dysku na podstawie woluminu w aplikacji usługi Service Fabric siatki 
 Typowe metody utrwalanie stanu przy użyciu aplikacji kontenera jest użycie magazynu zdalnego, takich jak usługi Azure File Storage lub bazy danych, takich jak usługi Azure Cosmos DB. To spowoduje naliczenie znaczących odczytu i zapisu opóźnienia sieci do zdalnego magazynu.

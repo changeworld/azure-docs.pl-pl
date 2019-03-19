@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 10c5dc5614731b247b917b68307f6a2d11663461
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1298e7d7ed9c3760ff5022b5b97e8444eb1bcad1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510480"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007050"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Rozwiązywanie problemów z błędami alokacji występującymi podczas tworzenia lub ponownego uruchomienia lub zmienianie rozmiaru maszyn wirtualnych na platformie Azure
 
@@ -25,7 +25,7 @@ Utwórz maszynę wirtualną (VM), ponowne uruchamianie zatrzymano (cofnięto prz
 
 **Kod błędu:**: AllocationFailed lub ZonalAllocationFailed
 
-**Komunikat o błędzie**: "Niepowodzenie alokacji. Nie mamy wystarczającej pojemności dla żądanego rozmiaru maszyny Wirtualnej w tym regionie. Przeczytaj więcej na temat zwiększania prawdopodobieństwa pomyślnej alokacji sukcesu w http://aka.ms/allocation-guidance"
+**Komunikat o błędzie**: "Niepowodzenie alokacji. Nie mamy wystarczającej pojemności dla żądanego rozmiaru maszyny Wirtualnej w tym regionie. Przeczytaj więcej na temat zwiększania prawdopodobieństwa pomyślnej alokacji sukcesu w `https://aka.ms/allocation-guidance`"
 
 W tym artykule opisano przyczyny niektórych typowych błędów alokacji i sugeruje możliwe środki zaradcze.
 
@@ -86,7 +86,7 @@ W miarę rozwijania infrastruktury platformy Azure, możemy wdrożyć sprzęt no
 |Starsze maszyny Wirtualnej serii/wielkości|Zalecany nowszej rozmiar maszyny Wirtualnej — seria /|Więcej informacji|
 |----------------------|----------------------------|--------------------|
 |Av1 serii|[Seria Av2](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Serii DSv1 lub Dv1 (D1 – D5)|[Dv3 i Seria DSv3](../windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Serii DSv1 lub Dv1 (D1 – D5)|[Dv3 i Seria DSv3](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
 |Serii DSv1 lub Dv1 (D11 do D14)|[Ev3 lub innej serii ESv3](../windows/sizes-memory.md#ev3-series)|
 |D15v2 lub DS15v2|Jeśli używasz modelu wdrażania Menedżera theResource aby można było korzystać z zalet większych rozmiarów maszyn wirtualnych, należy wziąć pod uwagę przeniesienie D16v3/DS16v3 lub D32v3/DS32v3. Są one przeznaczone do uruchamiania na sprzęcie najnowszej generacji. Jeśli używasz modelu wdrażania usługi Resource Manager, aby upewnić się, że z wystąpieniem maszyny Wirtualnej jest izolowane do sprzętu dedykowanego pojedynczemu klientowi, rozważ przejście do nowego izolowane rozmiarów maszyny Wirtualnej, element E64i_v3 lub element E64is_v3, które są zaprojektowane do uruchamiania na sprzęcie najnowszej generacji. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 

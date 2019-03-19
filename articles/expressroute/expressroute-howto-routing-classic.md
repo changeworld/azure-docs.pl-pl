@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: b7ac8c0f5c45382dd3beb943699efb198a94e0eb
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5542d61c5e615361ca96f911cfe11540fcd09037
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57402346"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103829"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Utworzyć i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -58,25 +58,25 @@ Aby zalogować się do konta platformy Azure, można użyć następujących przy
 
 1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem.
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzureRmAccount
+   ```
 2. Sprawdź subskrypcje dostępne na koncie.
 
-  ```powershell
-  Get-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzureRmSubscription
+   ```
 3. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, której chcesz użyć.
 
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```powershell
+   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 
 4. Następnie użyj następującego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="azure-private-peering"></a>Prywatna komunikacja równorzędna Azure
 
@@ -86,59 +86,59 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
 
 1. **Utwórz obwód usługi ExpressRoute.**
 
-  Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie prywatnej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami.
+   Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie prywatnej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami.
 2. **Sprawdź obwód usługi ExpressRoute, aby upewnić się, że jest zainicjowany.**
    
-  Sprawdź, czy obwód usługi ExpressRoute jest Aprowizowany i włączona.
+   Sprawdź, czy obwód usługi ExpressRoute jest Aprowizowany i włączona.
 
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Zwróć:
+   Zwróć:
 
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
+   Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 3. **Skonfiguruj prywatną komunikację równorzędną dla obwodu.**
 
-  Zanim przejdziesz do następnych kroków, upewnij się, czy masz następujące elementy:
+   Zanim przejdziesz do następnych kroków, upewnij się, czy masz następujące elementy:
    
-  * Podsieć /30 dla połączenia podstawowego. Nie może ona być częścią żadnej przestrzeni adresowej zarezerwowanej dla sieci wirtualnych.
-  * Podsieć /30 dla połączenia dodatkowego. Nie może ona być częścią żadnej przestrzeni adresowej zarezerwowanej dla sieci wirtualnych.
-  * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Sprawdź, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora sieci VLAN.
-  * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS. Możesz użyć prywatnego numeru AS dla tej komunikacji równorzędnej. Sprawdź, że nie używasz 65515.
-  * Skrót MD5, jeśli zdecydujesz się go użyć. **Opcjonalnie**.
+   * Podsieć /30 dla połączenia podstawowego. Nie może ona być częścią żadnej przestrzeni adresowej zarezerwowanej dla sieci wirtualnych.
+   * Podsieć /30 dla połączenia dodatkowego. Nie może ona być częścią żadnej przestrzeni adresowej zarezerwowanej dla sieci wirtualnych.
+   * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Sprawdź, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora sieci VLAN.
+   * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS. Możesz użyć prywatnego numeru AS dla tej komunikacji równorzędnej. Sprawdź, że nie używasz 65515.
+   * Skrót MD5, jeśli zdecydujesz się go użyć. **Opcjonalnie**.
      
-  Skorzystaj z następującego przykładu, aby skonfigurować prywatną komunikację równorzędną dla obwodu:
+   Skorzystaj z następującego przykładu, aby skonfigurować prywatną komunikację równorzędną dla obwodu:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
-  ```    
+   ```powershell
+   New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
+   ```    
 
-  Jeśli chcesz używać skrótu MD5, skorzystaj z następującego przykładu, aby skonfigurować prywatną komunikację równorzędną dla obwodu:
+   Jeśli chcesz używać skrótu MD5, skorzystaj z następującego przykładu, aby skonfigurować prywatną komunikację równorzędną dla obwodu:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
+   ```
      
-  > [!IMPORTANT]
-  > Upewnij się, można określić numer AS jako ASN komunikacji równorzędnej, a nie ASN klienta.
-  > 
+   > [!IMPORTANT]
+   > Upewnij się, można określić numer AS jako ASN komunikacji równorzędnej, a nie ASN klienta.
+   > 
 
 ### <a name="to-view-azure-private-peering-details"></a>Aby wyświetlić szczegóły dotyczące prywatnej komunikacji równorzędnej Azure
 
@@ -189,59 +189,59 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
 
 1. **Create an ExpressRoute circuit (Tworzenie obwodu usługi ExpressRoute)**
 
-  Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie publicznej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami.
+   Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie publicznej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami.
 2. **Sprawdź obwód usługi ExpressRoute, aby zweryfikować, że jest zainicjowany**
 
-  Musisz najpierw sprawdzić, czy obwód usługi ExpressRoute jest zainicjowany i włączony.
+   Musisz najpierw sprawdzić, czy obwód usługi ExpressRoute jest zainicjowany i włączony.
 
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Zwróć:
+   Zwróć:
 
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
+   Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 4. **Konfigurowanie publicznej komunikacji równorzędnej Azure dla obwodu**
    
-  Upewnij się, że masz poniższe informacje przed kontynuowaniem:
+   Upewnij się, że masz poniższe informacje przed kontynuowaniem:
    
-  * Podsieć /30 dla połączenia podstawowego. Musi to być prawidłowy publiczny prefiks IPv4.
-  * Podsieć /30 dla połączenia dodatkowego. Musi to być prawidłowy publiczny prefiks IPv4.
-  * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Sprawdź, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora sieci VLAN.
-  * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS.
-  * Skrót MD5, jeśli zdecydujesz się go użyć. **Opcjonalnie**.
+   * Podsieć /30 dla połączenia podstawowego. Musi to być prawidłowy publiczny prefiks IPv4.
+   * Podsieć /30 dla połączenia dodatkowego. Musi to być prawidłowy publiczny prefiks IPv4.
+   * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Sprawdź, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora sieci VLAN.
+   * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS.
+   * Skrót MD5, jeśli zdecydujesz się go użyć. **Opcjonalnie**.
 
-  > [!IMPORTANT]
-  > Upewnij się, określić numer AS jako ASN komunikacji równorzędnej, a nie ASN klienta.
-  >  
+   > [!IMPORTANT]
+   > Upewnij się, określić numer AS jako ASN komunikacji równorzędnej, a nie ASN klienta.
+   >  
      
-  Skorzystaj z następującego przykładu, aby skonfigurować publiczną komunikację równorzędną Azure dla obwodu:
+   Skorzystaj z następującego przykładu, aby skonfigurować publiczną komunikację równorzędną Azure dla obwodu:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
+   ```
      
-  Jeśli chcesz używać skrótu MD5, skorzystaj z następującego przykładu, aby skonfigurować obwodu:
+   Jeśli chcesz używać skrótu MD5, skorzystaj z następującego przykładu, aby skonfigurować obwodu:
      
-  ```powershell
-  New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
+   ```
      
 ### <a name="to-view-azure-public-peering-details"></a>Aby wyświetlić szczegóły dotyczące publicznej komunikacji równorzędnej Azure
 
@@ -293,34 +293,34 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
 
 1. **Create an ExpressRoute circuit (Tworzenie obwodu usługi ExpressRoute)**
   
-  Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie prywatnej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami.
+   Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie prywatnej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami.
 2. **Sprawdź obwód usługi ExpressRoute, aby zweryfikować, że jest zainicjowany**
 
-  Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. 
+   Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. 
    
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Zwróć:
+   Zwróć:
    
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
+   Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 3. **Skonfiguruj komunikację równorzędną Microsoft dla obwodu**
    
     Zanim przejdziesz dalej, upewnij się, że masz poniższe informacje.
@@ -334,11 +334,11 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
    * Nazwa rejestru routingu: Możesz określić RIR / IRR, względem którego numer AS i prefiksy są.
    * Skrót MD5, jeśli zdecydujesz się go użyć. **Opcjonalnie.**
      
-  Uruchom następujące polecenie cmdlet, aby skonfigurować komunikację równorzędną Microsoft dla obwodu:
+   Uruchom następujące polecenie cmdlet, aby skonfigurować komunikację równorzędną Microsoft dla obwodu:
  
-  ```powershell
-  New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
+   ```
 
 ### <a name="to-view-microsoft-peering-details"></a>Aby wyświetlić szczegóły dotyczące komunikacji równorzędnej firmy Microsoft
 

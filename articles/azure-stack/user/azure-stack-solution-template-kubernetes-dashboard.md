@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 243fb01a5c8112afaf310f616b93c2667ac6f19d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: d6428fe17dabd4eb6c0d68a56e3b44cdf3b3f8b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729851"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085307"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes w usłudze Azure Stack 
 
@@ -114,11 +114,11 @@ Adres URL pulpitu nawigacyjnego można pobrać z węzła głównego w klastrze.
 
 ## <a name="open-the-kubernetes-dashboard"></a>Otwórz pulpit nawigacyjny platformy Kubernetes 
 
-1.  Wyłącz blokowanie wyskakujących okienek w przeglądarce sieci Web.
+1. Wyłącz blokowanie wyskakujących okienek w przeglądarce sieci Web.
 
-2.  Punkt, w przeglądarce na adres URL zauważyć po uruchomieniu polecenia `kubectl cluster-info`. Na przykład: https://azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy 
-3.  Wybierz certyfikat klienta.
-4.  Wprowadź token. 
+2. Punkt, w przeglądarce na adres URL zauważyć po uruchomieniu polecenia `kubectl cluster-info`. Na przykład: https://azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy 
+3. Wybierz certyfikat klienta.
+4. Wprowadź token. 
 5. Połącz ponownie w wierszu polecenia powłoki bash w węźle głównym i nadać uprawnienia do `kubernetes-dashboard`. Uruchom następujące polecenie:
 
     ```Bash  

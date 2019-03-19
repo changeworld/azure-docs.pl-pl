@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0b5fe1b1df306bf0930715bc6cfb586e5445f85c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839963"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110498"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ponowne włączanie ochrony nie powiodło się na maszynach wirtualnych platformy Azure, do regionu podstawowego
 
@@ -35,12 +35,12 @@ Gdy możesz [w trybie Failover](site-recovery-failover.md) maszyn wirtualnych pl
 
 1. W **magazynu** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy nieudane przez maszynę Wirtualną i wybierz **ponownego włączenia ochrony**. Kierunek ponownego włączania ochrony powinny być wyświetlane z dodatkowej do głównej.
 
-  ![Ponowne włączanie ochrony](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Ponowne włączanie ochrony](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 2. Przejrzyj zestawy grup, sieci, magazynu i dostępności zasobów. Następnie kliknij przycisk **OK**. Jeśli istnieją wszystkie zasoby oznaczone jako nowe, są one tworzone w ramach procesu ponownego włączania ochrony.
 3. Zadanie ponownego włączania ochrony inicjuje lokację docelową, przy użyciu najnowszych danych. Po zakończeniu którego odbywa się replikacja różnicowa. Następnie można powrotu po awarii za pośrednictwem do lokacji głównej. Można wybrać konto magazynu lub sieci, z którą ma zostać użyty podczas ponownego włączenia ochrony, za pomocą opcji Dostosuj.
 
-  ![Dostosowywanie opcji](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+   ![Dostosowywanie opcji](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
 ### <a name="customize-reprotect-settings"></a>Dostosuj ustawienia ponownego włączania ochrony
 

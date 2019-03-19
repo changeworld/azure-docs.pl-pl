@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16a46db-5de2-4681-b7e0-94c670e3e54e
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c9b2770f861098993623d69f6b9f6a1577c9cf27
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.openlocfilehash: d1cc7735b8caa952a5ab7695d3e1f35b03fec1bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890594"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890682"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją PureCloud by Genesys
 
@@ -52,7 +52,7 @@ Aby skonfigurować integrację aplikacji PureCloud by Genesys z usługą Azure A
 
 **Aby dodać aplikację PureCloud by Genesys z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -105,6 +105,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD z aplikacją PureCl
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji PureCloud by Genesys](common/idp-intiated.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL zgodnie z regionem:
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -114,6 +115,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD z aplikacją PureCl
     | `https://login.mypurecloud.au/saml` |
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL zgodnie z regionem:
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -127,6 +129,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD z aplikacją PureCl
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji PureCloud by Genesys](common/metadata-upload-additional-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL zgodnie z regionem:
+    
     | |
     |--|
     | `https://login.mypurecloud.com` |
@@ -176,7 +179,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD z aplikacją PureCl
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-purecloud-by-genesys-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji PureCloud by Genesys
 
@@ -194,7 +197,7 @@ Aby skonfigurować logowanie jednokrotne w usłudze Azure AD z aplikacją PureCl
 
     b. W polu tekstowym **ADFS Issuer URI** (Identyfikator URI wystawcy ADFS) wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
 
-    d. W polu tekstowym **Target URI** (Docelowy identyfikator URI) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **Target URI** (Docelowy identyfikator URI) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
     d. Aby uzyskać wartość **Relying Party Identifier** (Identyfikator jednostki uzależnionej), przejdź do witryny Azure Portal, a następnie na stronie integracji aplikacji **PureCloud by Genesys** kliknij kartę **Właściwości** i skopiuj wartość **identyfikator aplikacji**. Wklej ją w polu tekstowym **Relying Party Identifier**. 
 
@@ -220,7 +223,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -275,13 +278,13 @@ Użytkownicy usługi Azure AD mogą logować się do aplikacji PureCloud by Gene
 
     a. W polu tekstowym **Full Name** (Imię i nazwisko) wprowadź nazwę użytkownika, na przykład **BrittaSimon**.
 
-    b. W polu tekstowym **Email** (Adres e-mail) wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
+    b. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
     
-    d. Kliknij pozycję **Utwórz**.
+    c. Kliknij pozycję **Utwórz**.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka PureCloud by Genesys w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji PureCloud by Genesys, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

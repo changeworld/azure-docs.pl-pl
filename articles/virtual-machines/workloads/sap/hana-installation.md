@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bdf23d1a2142e5c83ceeb72a79ca4fbea65d09c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5b6c636366d494901a34078100290084298de686
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534280"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999825"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -96,11 +96,11 @@ Poniżej przedstawiono dodatkowe i przydatne SAP na związane z systemem SUSE ł
 
 - [SAP HANA w systemie SUSE Linux lokacji](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
 - [Najlepsze rozwiązania dla programu SAP: Umieścić w kolejce replikacji — oprogramowanie SAP NetWeaver w systemie SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
-- [ClamSAP — ochrona przed wirusami SLES dla rozwiązania SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (w tym systemu SLES 12 dla aplikacji SAP)
+- [ClamSAP — ochrona przed wirusami SLES dla rozwiązania SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (w tym systemu SLES 12 dla aplikacji SAP)
 
 Poniżej przedstawiono informacje o pomocy technicznej SAP, które mają zastosowanie do wdrażania oprogramowania SAP HANA w systemie SLES 12:
 
-- [SAP Uwaga pomocy technicznej 1944799 # — SAP HANA wskazówki dotyczące instalacji systemu operacyjnego w systemie SLES](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [SAP Uwaga pomocy technicznej 1944799 # — SAP HANA wskazówki dotyczące instalacji systemu operacyjnego w systemie SLES](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 - [Uwaga pomocy technicznej SAP #2205917 — bazy danych SAP HANA zalecanych ustawień systemu operacyjnego systemu SLES 12 dla aplikacji SAP](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [Uwaga SAP pomocy technicznej 1984787 # — SUSE Linux Enterprise Server 12: uwagi dotyczące instalacji](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP Uwaga pomocy technicznej 171356 # — oprogramowanie SAP w systemie Linux:  Informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787)
@@ -143,7 +143,7 @@ Aby uzyskać więcej informacji na temat Ethernet szczegóły dotyczące archite
 
 ## <a name="storage"></a>Magazyn
 
-Układ magazynu dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) skonfigurowano przez platformę SAP HANA zarządzania usługami platformy Azure za pośrednictwem SAP zalecane wytyczne. Te wytyczne są udokumentowane w artykule [wymagania dotyczące magazynu oprogramowania SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) oficjalny dokument. 
+Układ magazynu dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) skonfigurowano przez platformę SAP HANA zarządzania usługami platformy Azure za pośrednictwem SAP zalecane wytyczne. Te wytyczne są udokumentowane w artykule [wymagania dotyczące magazynu oprogramowania SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) oficjalny dokument. 
 
 Nierównej rozmiary różnych woluminach za pomocą różnych HANA dużych wystąpień jednostek SKU jest udokumentowany w [platformy SAP HANA (duże wystąpienia) — omówienie i architektura na platformie Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -207,10 +207,10 @@ Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ogr
 > [!IMPORTANT]
 > Aby zapobiec próby rozwój pliki danych przekracza limit rozmiaru pliku 16 TB magazynu oprogramowania HANA, duże wystąpienie oprogramowania HANA, należy ustawić następujące parametry w pliku konfiguracyjnym global.ini platformy SAP HANA
 > 
-- datavolume_striping=true
-- datavolume_striping_size_gb = 15000
-- Zobacz też SAP Uwaga [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-- Należy pamiętać o Uwaga SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - datavolume_striping=true
+> - datavolume_striping_size_gb = 15000
+> - Zobacz też SAP Uwaga [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - Należy pamiętać o Uwaga SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 SAP HANA 2.0 z hdbparam framework jest przestarzała. W rezultacie należy ustawić parametry przy użyciu poleceń SQL. Aby uzyskać więcej informacji, zobacz [Uwaga SAP #2399079: Eliminacja hdbparam HANA 2](https://launchpad.support.sap.com/#/notes/2399079).

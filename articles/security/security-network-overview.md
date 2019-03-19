@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 6fd25bbf6910140a338267c51955a817d0195939
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 2aabe3d1fa8a6034c2dab38c8d6fa6da4b00ac1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247192"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080343"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
@@ -61,8 +61,8 @@ Platforma Azure obsługuje kilka typów kontroli dostępu do sieci, takich jak:
 
 Wszelkie bezpieczne wdrożenie wymaga niektóre miary kontroli dostępu do sieci. Celem kontroli dostępu do sieci jest ograniczenia komunikacji maszyny wirtualnej na potrzeby systemów. Inne próby komunikacji są blokowane.
 
->[!NOTE]
-Zapór usługi Storage są objęte [Omówienie zabezpieczeń usługi Azure storage](security-storage-overview.md) artykułu
+> [!NOTE]
+> Zapór usługi Storage są objęte [Omówienie zabezpieczeń usługi Azure storage](security-storage-overview.md) artykułu
 
 #### <a name="network-security-rules-nsgs"></a>Reguły zabezpieczeń sieci (NSG)
 
@@ -365,8 +365,8 @@ Usługa Azure Network Watcher może pomóc w rozwiązaniu i oferuje zupełnie no
 
 Aby uzyskać więcej informacji na temat usługi Network Watcher i uruchamiania, niektóre funkcje testowania w laboratorium, zobacz [omówienie monitorowania w usłudze Azure network watcher](../network-watcher/network-watcher-monitoring-overview.md).
 
->[!NOTE]
-Aby uzyskać najbardziej aktualne powiadomienia dotyczące dostępności i stanu tej usługi, sprawdź [strony aktualizacje platformy Azure](https://azure.microsoft.com/updates/?product=network-watcher).
+> [!NOTE]
+> Aby uzyskać najbardziej aktualne powiadomienia dotyczące dostępności i stanu tej usługi, sprawdź [strony aktualizacje platformy Azure](https://azure.microsoft.com/updates/?product=network-watcher).
 
 ### <a name="azure-security-center"></a>Azure Security Center
 

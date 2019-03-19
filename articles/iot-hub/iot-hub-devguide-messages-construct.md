@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: c882907ef2763f13a3806c335dabf330d35a0831
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 08eb7171249c42348877afedc80c6c6338265422
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433216"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861738"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Tworzenie i odczytywanie komunikatów usługi IoT Hub
 
@@ -56,8 +56,7 @@ Poniższa lista zawiera zbiór właściwości systemu w komunikatach usługi IoT
 | iothub enqueuedtime |Data i godzina [chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) wiadomość została odebrana przez usługę IoT Hub. | Brak komunikatów C2D; tak, w przeciwnym razie. |
 | correlation-id |Właściwość ciągu w komunikacie odpowiedzi, który zwykle zawiera identyfikator komunikatu żądania we wzorcach "żądanie-odpowiedź". | Yes |
 | user-id |Identyfikator używany do określenia pochodzenia wiadomości. Gdy komunikaty są generowane przez usługę IoT Hub, jest równa `{iot hub name}`. | Nie |
-| potwierdzenia iothub |Generator komunikat o opinię. Ta właściwość jest używana w komunikatów z chmury do urządzeń do usługi IoT Hub do generowania komunikatów zwrotnych w wyniku użycia komunikatu żądania przez urządzenie. Możliwe wartości: **Brak** (ustawienie domyślne): Brak komunikatu opinii jest generowany, **dodatnią**: Jeśli wiadomość została ukończona, wyświetlony komunikat opinii **ujemna**: odbierania komunikat opinii wygasł (lub została osiągnięta maksymalna liczba prób dostarczenia) bez kończone przez to urządzenie lub **pełne**: pozytywne i negatywne. 
-<!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Yes |
+| potwierdzenia iothub |Generator komunikat o opinię. Ta właściwość jest używana w komunikatów z chmury do urządzeń do usługi IoT Hub do generowania komunikatów zwrotnych w wyniku użycia komunikatu żądania przez urządzenie. Możliwe wartości: **Brak** (ustawienie domyślne): Brak komunikatu opinii jest generowany, **dodatnią**: Jeśli wiadomość została ukończona, wyświetlony komunikat opinii **ujemna**: odbierania komunikat opinii wygasł (lub została osiągnięta maksymalna liczba prób dostarczenia) bez kończone przez to urządzenie lub **pełne**: pozytywne i negatywne. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Yes |
 | iothub-connection-device-id |Identyfikator jest ustawiony przez usługę IoT Hub na komunikaty z urządzenia do chmury. Zawiera on **deviceId** urządzenia wysyłającego wiadomość. | Brak komunikatów D2C; tak, w przeciwnym razie. |
 | iothub-connection-auth-generation-id |Identyfikator jest ustawiony przez usługę IoT Hub na komunikaty z urządzenia do chmury. Zawiera on **generationId** (zgodnie [właściwości tożsamości urządzenia](iot-hub-devguide-identity-registry.md#device-identity-properties)) urządzenia, która wysłała komunikat. | Brak komunikatów D2C; tak, w przeciwnym razie. |
 | iothub-connection-auth-method |Metoda uwierzytelniania, ustawić przez usługę IoT Hub dla komunikatów z urządzenia do chmury. Ta właściwość zawiera informacje o metodę uwierzytelniania stosowaną w celu uwierzytelnienia urządzenia wysyłania wiadomości. <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | Brak komunikatów D2C; tak, w przeciwnym razie. |

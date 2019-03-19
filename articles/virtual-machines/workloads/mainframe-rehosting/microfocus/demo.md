@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 2a29b484b58b887981b1879ceba5bf7426bb6c2e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 733649c2b7f27ec5e80cb77adba708a158fb2c22
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192008"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099471"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Konfigurowanie Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 na platformie Azure
 
@@ -69,9 +69,9 @@ Po zainstalowaniu Enterprise Developer 4.0 na maszynie Wirtualnej, należy skonf
 
 7. Aby uzyskać **funkcji**, sprawdź **programu Microsoft .NET framework 4.6**i sprawdź następujące:
 
-    - Aktywacja potoku nazwanego
-    - Aktywacja TCP
-    - Udostępnianie portów TCP
+   - Aktywacja potoku nazwanego
+   - Aktywacja TCP
+   - Udostępnianie portów TCP
 
      ![Kreatora dodawania ról i funkcji: Usługi ról](media/01-demo-roles.png)
 

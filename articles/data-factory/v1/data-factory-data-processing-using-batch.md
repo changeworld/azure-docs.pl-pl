@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6ffed81390419898847ce1b1b9e6b2b48a749cdf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548476"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124154"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -802,8 +802,8 @@ W tym kroku utworzysz potok z jednym działaniem, niestandardowe działanie, kt�
    * **LinkedServiceName** właściwość niestandardowe działanie odwołuje się do **AzureBatchLinkedService**, który informuje usługi Data Factory to niestandardowe działanie musi zostać uruchomiony w usłudze Batch.
    * **Współbieżności** ustawienie jest istotne. Jeśli używasz wartość domyślna wynosi 1, nawet jeśli masz dwa lub więcej węzłów obliczeniowych w puli usługi Batch, wycinki są przetwarzane jeden po drugim. W związku z tym nie korzystając z zalet równoległego przetwarzania możliwości usługi Batch. Jeśli ustawisz **współbieżności** na wartość większą Załóżmy, że 2 oznacza dwóch dzieli (odpowiada dwa zadania w usłudze Batch) mogą być przetwarzane w tym samym czasie. W takich przypadkach obie maszyny wirtualne w puli usługi Batch są wykorzystywane. Odpowiednio ustawić właściwości współbieżności.
    * Tylko jedno zadanie (wycinka) jest wykonywane na maszynie Wirtualnej w dowolnym momencie domyślnie. Domyślnie **maksymalna zadań na maszynę Wirtualną** jest ustawiona na 1 w przypadku puli usługi Batch. W ramach wymagań wstępnych utworzono pulę za pomocą tę właściwość ustawioną na 2. W związku z tym wycinki fabryki danych w dwóch można uruchomić na maszynie Wirtualnej w tym samym czasie.
-    - **IsPaused** właściwość jest domyślnie ustawiona na wartość false. Potok uruchamia natychmiast w tym przykładzie, ponieważ wycinki można uruchomić w przeszłości. Można ustawić tę właściwość na **true** wstrzymać potoku i ustaw ją z powrotem na **false** ponownego uruchomienia.
-    -   **Start** i **zakończenia** godziny są od siebie pięć godzin. Wycinki są generowane co godzinę, więc pięć wycinki są produkowane przez potok.
+     - **IsPaused** właściwość jest domyślnie ustawiona na wartość false. Potok uruchamia natychmiast w tym przykładzie, ponieważ wycinki można uruchomić w przeszłości. Można ustawić tę właściwość na **true** wstrzymać potoku i ustaw ją z powrotem na **false** ponownego uruchomienia.
+     -   **Start** i **zakończenia** godziny są od siebie pięć godzin. Wycinki są generowane co godzinę, więc pięć wycinki są produkowane przez potok.
 
 1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć potok.
 

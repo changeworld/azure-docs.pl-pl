@@ -10,14 +10,14 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 074e2dd932cada5ae46ee0423dbc29fc8bc7495d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1da676787eeee1eb75095a5e3a6b3f40056567ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016780"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005771"
 ---
-# <a name="get-started-with-a-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Rozpoczynanie pracy z piaskownicą Apache Hadoop, emulator na maszynie wirtualnej
+# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Rozpoczynanie pracy z piaskownicą Apache Hadoop, emulator na maszynie wirtualnej
 
 Dowiedz się, jak zainstalować piaskownicy usługi Apache Hadoop firmy Hortonworks na maszynie wirtualnej, aby dowiedzieć się więcej na temat ekosystemu platformy Hadoop. Piaskownica udostępnia lokalne Środowisko deweloperskie Aby dowiedzieć się więcej na temat usługi Hadoop, Hadoop Distributed pliku System (HDFS) i przesłania zadania. Po przejściu na platformie Hadoop, można uruchomić za pomocą usługi Hadoop na platformie Azure przez utworzenie klastra usługi HDInsight. Aby uzyskać więcej informacji na temat rozpocząć pracę, zobacz [Rozpoczynanie pracy z platformą Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
@@ -30,7 +30,7 @@ Dowiedz się, jak zainstalować piaskownicy usługi Apache Hadoop firmy Hortonwo
 1. Przejdź do [Hortonworks pliki do pobrania](https://hortonworks.com/downloads/#sandbox).
 
 2. Kliknij przycisk **Pobierz VIRTUALBOX** do pobierania najnowszych Piaskownicą Hortonworks na maszynie Wirtualnej. Monit o zarejestrowanie Hortonworks, przed rozpoczęciem pobierania. Trwa jednej do dwóch godzin do pobrania w zależności od szybkości sieci.
-   
+
     ![Obraz linku do pobrania Piaskownicą Hortonworks dla VirtualBox](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
 3. W tej samej stronie sieci web kliknij **Import na Virtual Box** link, aby pobrać plik PDF zawierający instrukcje instalacji dla maszyny wirtualnej.
 
@@ -44,36 +44,35 @@ Aby pobrać starsze piaskownicy wersji HDP, rozwiń archiwum:
 1. Otwórz Oracle VM VirtualBox.
 2. Z **pliku** menu, kliknij przycisk **urządzenia importu**, a następnie określ obraz Piaskownicą Hortonworks.
 1. Wybierz z Piaskownicą Hortonworks, kliknij przycisk **Start**, a następnie **Start normalny**. Po zakończeniu procesu rozruchu maszyny wirtualnej przedstawia instrukcje logowania.
-   
+
     ![Normalnego uruchamiania](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Otwórz przeglądarkę internetową i przejdź do adresu URL wyświetlane (zazwyczaj http://127.0.0.1:8888).
+2. Otwórz przeglądarkę internetową i przejdź do adresu URL wyświetlane (zazwyczaj `http://127.0.0.1:8888`).
 
 ## <a name="set-sandbox-passwords"></a>Ustawianie haseł piaskownicy
 
 1. Z **wprowadzenie** krok z Piaskownicą Hortonworks wybierz opcję **widoku Zaawansowane opcje**. Skorzystaj z informacji na tej stronie, aby zalogować się do piaskownicy przy użyciu protokołu SSH. Użyj nazwy i hasła.
-   
+
    > [!NOTE]
    > Jeśli nie masz zainstalowanego klienta SSH, można użyć SSH opartego na sieci web, podane w przez maszynę wirtualną w **http://localhost:4200/**.
-   > 
-   
+
     Po raz pierwszy łączysz się przy użyciu protokołu SSH, monit o zmianę hasła dla konta głównego. Wprowadź nowe hasło, którego używasz, po zalogowaniu przy użyciu protokołu SSH.
 
 2. Po zalogowaniu, wprowadź następujące polecenie:
-   
+
         ambari-admin-password-reset
-   
+
     Po wyświetleniu monitu podaj hasło dla konta administratora Ambari. To jest używany, gdy uzyskujesz dostęp do Interfejsu sieci Web Ambari.
 
 ## <a name="use-hive-commands"></a>Za pomocą poleceń programu Hive
 
 1. Z poziomu połączenia SSH piaskownicy Użyj następującego polecenia, aby uruchomić powłoki usługi Hive:
-   
+
         hive
 2. Po rozpoczęciu powłoki wyświetlać tabele, które są dostarczane z piaskownicy należy wykonać następujące kroki:
-   
+
         show tables;
 3. Poniższa tabela pobrać 10 wierszy z `sample_07` tabeli:
-   
+
         select * from sample_07 limit 10;
 
 ## <a name="next-steps"></a>Kolejne kroki

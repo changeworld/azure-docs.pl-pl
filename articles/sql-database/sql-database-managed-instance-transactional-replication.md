@@ -12,16 +12,23 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 08ec654ecdfe9764aefdde287c5a4c78022c108c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551697"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852777"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna, za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
 Replikacja transakcyjna to funkcja usługi Azure SQL Database i programu SQL Server, która pozwala na replikowanie danych z tabeli w usłudze Azure SQL Database lub SQL Server do tabel umieszczone na zdalne bazy danych. Ta funkcja służy do synchronizowania wielu tabel w różnych bazach danych.
+
+## <a name="when-to-use-transactional-replication"></a>Kiedy należy używać replikacji transakcyjnej
+
+Replikacja transakcyjna jest przydatne w następujących scenariuszach:
+- Opublikuj zmiany wprowadzone w co najmniej jedną tabelę w bazie danych, a następnie dystrybuować je do jednej lub wielu programu SQL Server lub Azure SQL baz danych, które subskrybuje zmiany.
+- Zachowaj kilka rozproszonych baz danych w stanie zsynchronizowane.
+- Migrowanie baz danych z jednego programu SQL Server lub wystąpienia zarządzanego do innej bazy danych, stale publikując zmiany.
 
 ## <a name="overview"></a>Przegląd
 
@@ -54,7 +61,7 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
   >[!NOTE]
   > Subskrypcję wciąganą nie jest obsługiwana w przypadku dystrybutora jest wystąpienie bazy danych i subskrybenta nie jest. 
 
-Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
+Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
 
 
 | Replikacja | Jedno- i puli baz danych | Wystąpienie bazy danych|
@@ -70,7 +77,7 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 
   >[!NOTE]
   > - Próba skonfigurowania replikacji za pomocą starszej wersji może spowodować błąd, numer MSSQL_REPL20084 (ten proces nie może połączyć się subskrybenta.) i MSSQ_REPL40532 (nie można otworzyć serwera \<name > żądanego podczas logowania. Logowanie nie powiodło się.)
-  > - Aby korzystać ze wszystkich funkcji usługi Azure SQL Database, należy używać najnowszej wersji [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) i [programu SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017).
+  > - Aby korzystać ze wszystkich funkcji usługi Azure SQL Database, należy używać najnowszej wersji [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [programu SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
   ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>Tabela Supportabilty dla wystąpienia bazy danych i lokalnymi systemami
   Macierz obsługi replikacji dla wystąpienia bazy danych jest taka sama, jak dla programu SQL Server w środowisku lokalnym. 
@@ -93,14 +100,6 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 
   >[!NOTE]
   > Możesz napotkać błąd 53, łącząc się z usługi Azure File Storage, jeśli Sieciowej grupy zabezpieczeń sieciowego ruchu wychodzącego w porcie 445 jest zablokowany, po dystrybutora jest wystąpienie baza danych subskrybenta w środowisku lokalnym. [Aktualizowanie sieci wirtualnej, sieciowej grupy zabezpieczeń](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) Aby rozwiązać ten problem. 
-
-## <a name="when-to-use-transactional-replication"></a>Kiedy należy używać replikacji transakcyjnej
-
-Replikacja transakcyjna jest przydatne w następujących scenariuszach:
-
-- Opublikuj zmiany wprowadzone w co najmniej jedną tabelę w bazie danych, a następnie dystrybuować je do jednej lub wielu programu SQL Server lub Azure SQL baz danych, które subskrybuje zmiany.
-- Zachowaj kilka rozproszonych baz danych w stanie zsynchronizowane.
-- Migrowanie baz danych z jednego programu SQL Server lub wystąpienia zarządzanego do innej bazy danych, stale publikując zmiany.
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Porównaj Data Sync za pomocą replikacji transakcyjnej
 

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b35060aec8d9d040777fda247c798a42533b2ea4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182684"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091481"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiowanie strategii ochrony danych dla rozwiązania tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategię ochrony danych do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w:
@@ -119,9 +119,9 @@ Po użytkownik jest uwierzytelniany przy użyciu usługi Azure AD, jest ważne d
 
 Każdy interakcja w diagramie pokazano na rysunku x reprezentuje jeden scenariusz kontroli dostępu, który może być objętych przez usługę Azure AD. Poniżej są opis poszczególnych scenariuszy:
 
-  1. Dostęp warunkowy do aplikacji, które są hostowane lokalnie: Zarejestrowane urządzenia można używać z zasadami dostępu dla aplikacji, które są skonfigurowane do korzystania z usług AD FS w systemie Windows Server 2012 R2.
+1. Dostęp warunkowy do aplikacji, które są hostowane lokalnie: Zarejestrowane urządzenia można używać z zasadami dostępu dla aplikacji, które są skonfigurowane do korzystania z usług AD FS w systemie Windows Server 2012 R2.
 
-  2. Kontrola dostępu do witryny Azure portal:  Platforma Azure umożliwia również kontrolować dostęp do portalu przy użyciu kontroli dostępu opartej na rolach (RBAC)). Ta metoda umożliwia firmie ograniczyć liczbę operacji, które osoba można wykonać w witrynie Azure portal. Za pomocą funkcji RBAC do kontrolowania dostępu do portalu, Administratorzy IT mogą delegować dostęp przy użyciu następujących metod zarządzania dostępu:
+2. Kontrola dostępu do witryny Azure portal:  Platforma Azure umożliwia również kontrolować dostęp do portalu przy użyciu kontroli dostępu opartej na rolach (RBAC)). Ta metoda umożliwia firmie ograniczyć liczbę operacji, które osoba można wykonać w witrynie Azure portal. Za pomocą funkcji RBAC do kontrolowania dostępu do portalu, Administratorzy IT mogą delegować dostęp przy użyciu następujących metod zarządzania dostępu:
 
    - Przypisanie roli oparte na grupach: Dostęp można przypisać do grup usługi Azure AD, które mogą być synchronizowane z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, których organizacja wprowadziła narzędzia i procesy do zarządzania grupami. Można również użyć funkcji zarządzania delegowanej grupy usługi Azure AD Premium.
    - Użyj wbudowanych ról na platformie Azure: Można użyć trzech ról — właściciela, współautora i czytelnika, upewnij się, że użytkownicy i grupy mają uprawnienia do wykonania zadania, których potrzebują do wykonania swoich zadań.
@@ -131,9 +131,9 @@ Każdy interakcja w diagramie pokazano na rysunku x reprezentuje jeden scenarius
    > Jeśli tworzysz aplikacje, aby dostosować kontroli dostępu dla nich istnieje również możliwość role aplikacji w usłudze Azure AD na potrzeby autoryzacji. Przejrzyj ten [przykład aplikacji sieci Web-RoleClaims-DotNet](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) na temat tworzenia aplikacji, aby używać tej funkcji.
 
 
-  3. Dostęp warunkowy dla aplikacji usługi Office 365 z usługą Microsoft Intune:  Administratorzy IT mogą aprowizować zasady dostępu warunkowego urządzeń, aby zabezpieczyć zasoby firmowe, w tym samym czasie, dzięki czemu pracownicy przetwarzający informacje na zgodnych urządzeniach dostęp do usług. 
+3. Dostęp warunkowy dla aplikacji usługi Office 365 z usługą Microsoft Intune:  Administratorzy IT mogą aprowizować zasady dostępu warunkowego urządzeń, aby zabezpieczyć zasoby firmowe, w tym samym czasie, dzięki czemu pracownicy przetwarzający informacje na zgodnych urządzeniach dostęp do usług. 
   
-  4. Dostęp warunkowy dla aplikacji Saas: [Ta funkcja](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umożliwia skonfigurowanie reguł dostępu dla aplikacji usługi Multi-Factor authentication i możliwość blokowania dostępu dla użytkowników, nie w zaufanej sieci. Reguły uwierzytelniania wieloskładnikowego można zastosować do wszystkich użytkowników, które są przypisane do aplikacji lub tylko dla użytkowników z określonych grup zabezpieczeń. Użytkownicy mogą być wyłączone z wymagania dotyczące uwierzytelniania wieloskładnikowego, jeśli uzyskują dostęp do aplikacji z adresu IP, który w wewnątrz organizacji sieci.
+4. Dostęp warunkowy dla aplikacji Saas: [Ta funkcja](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umożliwia skonfigurowanie reguł dostępu dla aplikacji usługi Multi-Factor authentication i możliwość blokowania dostępu dla użytkowników, nie w zaufanej sieci. Reguły uwierzytelniania wieloskładnikowego można zastosować do wszystkich użytkowników, które są przypisane do aplikacji lub tylko dla użytkowników z określonych grup zabezpieczeń. Użytkownicy mogą być wyłączone z wymagania dotyczące uwierzytelniania wieloskładnikowego, jeśli uzyskują dostęp do aplikacji z adresu IP, który w wewnątrz organizacji sieci.
 
 Ponieważ opcje kontroli dostępu korzysta wielowarstwowego podejścia, porównania między te opcje nie są stosowane dla tego zadania. Upewnij się, że są wykorzystaniu wszystkie opcje dostępne dla każdego scenariusza, który wymaga do kontrolowania dostępu do zasobów.
 

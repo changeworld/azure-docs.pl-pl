@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 85d8b531f19ac35f091f54c2627f7fe6d3a62a42
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c7288b112ce2fd062a67cb673a1efa6028ec7d57
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468142"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888523"
 ---
-# <a name="work-with-databases-containers-and-items"></a>Praca z bazami danych, kontenerów i elementów
+# <a name="work-with-databases-containers-and-items"></a>Praca z bazami danych, kontenerami i elementami
 
 Po utworzeniu [konta usługi Azure Cosmos DB](account-overview.md) w ramach subskrypcji platformy Azure możesz zarządzać danymi na Twoim koncie, tworząc baz danych, kontenerów i elementów. W tym artykule opisano każdy z tych jednostek: baz danych, kontenerów i elementów. Na poniższej ilustracji przedstawiono hierarchię różnych obiektów na koncie usługi Azure Cosmos:
 
@@ -92,7 +92,7 @@ Kontener usługi Azure Cosmos ma zestaw właściwości zdefiniowane przez system
 Kontener usługi Azure Cosmos obsługuje następujące operacje przy użyciu dowolnej z interfejsów API usługi Azure Cosmos.
 
 | **Operacja** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | Wyliczanie kontenerów w bazie danych | Tak* | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Przeczytaj kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Utwórz nowy kontener | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
@@ -125,14 +125,14 @@ Każdy element w usłudze Azure Cosmos ma następujące właściwości zdefiniow
 Usługa Azure Cosmos elementu obsługuje następujące operacje, które mogą być wykonywane przy użyciu dowolnej z interfejsów API usługi Azure Cosmos.
 
 | **Operacja** | **Interfejs wiersza polecenia platformy Azure** | **INTERFEJS API SQL** | **Interfejs API rozwiązania Cassandra** | **Interfejs API usługi Azure Cosmos DB, bazy danych mongodb** | **Interfejs API języka gremlin** | **Interfejs API tabel** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | Wstaw, Zastąp i usuwanie, Upsert, przeczytaj | Nie | Yes | Yes | Yes | Yes | Yes |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz można przystąpić do Dowiedz się, jak aprowizować przepływność mierzoną na konto usługi Azure Cosmos lub zobacz inne pojęcia:
 
-* [Jak skonfigurować aprowizowanej przepływności w bazie danych Azure Cosmos](how-to-provision-database-throughput.md)
+* [Jak skonfigurować aprowizowaną przepływność na bazie danych Azure Cosmos](how-to-provision-database-throughput.md)
 * [Jak skonfigurować aprowizowaną przepływność na kontenerze usługi Azure Cosmos](how-to-provision-container-throughput.md)
 * [Partycjami logicznymi](partition-data.md)
 * [Jak skonfigurować czas wygaśnięcia w kontenerze usługi Azure Cosmos](how-to-time-to-live.md)

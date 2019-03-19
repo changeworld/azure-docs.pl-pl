@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1e8d21c39a428049594237900aa76f783a3ed0ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005458"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860360"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Omówienie interfejsu API REST usługi Media Services operacji 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -35,7 +35,7 @@ Uwierzytelnianie interfejsu API REST usługi Media Services odbywa się za pośr
 Obowiązują następujące zastrzeżenia, gdy przy użyciu interfejsu REST.
 
 * Podczas wykonywania zapytań dotyczących jednostek, istnieje limit 1000 jednostek zwrócona w tym samym czasie, ponieważ publiczny v2 REST ogranicza wyniki zapytania do 1000 wyników. Należy użyć **Pomiń** i **zająć** (.NET) / **górnej** (REST), zgodnie z opisem w [w tym przykładzie .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) i [tego interfejsu API REST przykład](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). 
-* Gdy przy użyciu formatu JSON i określając do użycia **__metadata** — słowo kluczowe w żądaniu (na przykład, aby odwołanie obiektu połączonego) należy ustawić **Akceptuj** nagłówka do [format JSON trybu informacji pełnej](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)(zobacz poniższy przykład). OData nie rozpoznaje **__metadata** właściwości w żądaniu, chyba że zostanie ustawiona do pełnego.  
+* Gdy przy użyciu formatu JSON i określając do użycia **__metadata** — słowo kluczowe w żądaniu (na przykład, aby odwołanie obiektu połączonego) należy ustawić **Akceptuj** nagłówka do [format JSON trybu informacji pełnej](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)(zobacz poniższy przykład). OData nie rozpoznaje **__metadata** właściwości w żądaniu, chyba że zostanie ustawiona do pełnego.  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
         Content-Type: application/json;odata=verbose

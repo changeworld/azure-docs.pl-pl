@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 189e122e04d56d28c1e1e94d328569647614a124
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 019c4eca564c503913a488a1d1ee5e4046ff320a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542131"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089883"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Tworzenie użytkowników w usłudze Azure Database dla serwera MariaDB 
 W tym artykule opisano, jak utworzyć użytkowników w usłudze Azure Database dla serwera MariaDB.
@@ -80,7 +80,7 @@ Po utworzeniu usługi Azure Database dla serwera MariaDB umożliwia pierwszego k
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-Aby uzyskać więcej informacji na temat zarządzania kontami użytkowników, zobacz dokumentację MariaDB [Zarządzanie kontami użytkowników](https://mariadb.com/kb/en/library/user-account-management/), [składni GRANT](https://mariadb.com/kb/en/library/grant/), i [uprawnienia](https://mariadb.com/kb/en/library/grant/#privilege-levels).
+   Aby uzyskać więcej informacji na temat zarządzania kontami użytkowników, zobacz dokumentację MariaDB [Zarządzanie kontami użytkowników](https://mariadb.com/kb/en/library/user-account-management/), [składni GRANT](https://mariadb.com/kb/en/library/grant/), i [uprawnienia](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Otwierająca zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im na połączenie: [Tworzenie i zarządzanie nimi — Azure Database dla MariaDB reguł zapory przy użyciu witryny Azure portal](howto-manage-firewall-portal.md)  

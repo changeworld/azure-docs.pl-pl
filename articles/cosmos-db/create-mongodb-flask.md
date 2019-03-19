@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 24c47acd028aa767d1f02dd7c4119692eeac479a
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: 35159a1630c7f1268119cd55cc6e0ac99dfd7b5f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119211"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Szybki start: Tworzenie aplikacji w języku Python za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -37,10 +37,10 @@ W tym przewodniku Szybki start wykorzystano następujący [przykład Flask](http
 - Jeśli nie masz jeszcze zainstalowanego programu Visual Studio Code, możesz szybko zainstalować program [VS Code](https://code.visualstudio.com/Download) odpowiedni dla swojej platformy (Windows, Mac, Linux).
 
 - Pamiętaj o dodaniu obsługi języka Python przez zainstalowanie jednego z popularnych rozszerzeń języka Python.
-    1. Wybierz rozszerzenie.
-    2. Zainstaluj rozszerzenie, wpisując polecenie `ext install` w palecie poleceń skrótu `Ctrl+Shift+P`.
+  1. Wybierz rozszerzenie.
+  2. Zainstaluj rozszerzenie, wpisując polecenie `ext install` w palecie poleceń skrótu `Ctrl+Shift+P`.
 
-    W przykładach omówionych w tym dokumencie używane jest popularne i pełnofunkcyjne [rozszerzenie języka Python](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) Dona Jayamanne’a.
+     W przykładach omówionych w tym dokumencie używane jest popularne i pełnofunkcyjne [rozszerzenie języka Python](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) Dona Jayamanne’a.
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
@@ -161,7 +161,7 @@ Jeśli nie chcesz tworzyć rozwidlenia tego repozytorium, możesz też kliknąć
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos i uruchamiania aplikacji Flask. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos. 
 

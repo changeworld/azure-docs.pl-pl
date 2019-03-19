@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
-ms.openlocfilehash: 1494ccea1580d7415c6c86f14682ca59ad7124d5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459904"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120367"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Otwórz bilet pomocy technicznej do zadania importu/eksportu
 
@@ -57,14 +57,14 @@ Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 
 4. W **nowe żądanie obsługi**, kliknij przycisk **informacji skontaktuj się z kroku 3**. W **informacje kontaktowe**, wykonaj następujące czynności:
 
-    1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
-    2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraju. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pola wyboru.
-    3. Kliknij pozycję **Utwórz**.
+   1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
+   2. Informacje kontaktowe zawiera nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraju. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi** pola wyboru.
+   3. Kliknij pozycję **Utwórz**.
    
-        ![Informacje kontaktowe](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
+       ![Informacje kontaktowe](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
-    Informacje te są wykorzystywane do skontaktować się z Tobą dodatkowe informacje, diagnozowania i rozwiązywania Microsoft Support.
-Gdy prześlesz żądanie inżynier pomocy technicznej się z Tobą tak szybko, jak to możliwe, aby kontynuować z żądaniem.
+      Informacje te są wykorzystywane do skontaktować się z Tobą dodatkowe informacje, diagnozowania i rozwiązywania Microsoft Support.
+      Gdy prześlesz żądanie inżynier pomocy technicznej się z Tobą tak szybko, jak to możliwe, aby kontynuować z żądaniem.
 
 ## <a name="manage-a-support-request"></a>Zarządzaj żądaniami obsługi
 

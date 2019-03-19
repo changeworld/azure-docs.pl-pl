@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a810ae13d9cfb68d11293ba883c52858aa4a2deb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b98cc0141954a079b848bd9639b081499819b8ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164757"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877007"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Przywrócić lub usunąć ostatnio usuniętego użytkownika przy użyciu usługi Azure Active Directory
 Po usunięciu użytkownika konto pozostaje w stanie wstrzymania przez 30 dni. Podczas tego 30-dniowe okno konto użytkownika można przywrócić, wraz z jego właściwości. Po pomyślnej tego 30-dniowe okno, użytkownik jest automatycznie i stałe, usuwane.
@@ -31,13 +31,13 @@ Można wyświetlić z możliwością przywrócenia użytkowników, przywracanie 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 Użytkownik musi mieć jedną z następujących ról, aby przywrócić i trwale usunąć użytkowników.
 
-- Administrator firmy
+- Administrator globalny
 
 - Pomoc techniczna dla partnerów (warstwa 1)
 
 - Pomoc techniczna dla partnerów (warstwa 2)
 
-- Administrator kont użytkowników
+- Administrator użytkownika
 
 ## <a name="view-your-restorable-users"></a>Wyświetlanie z możliwością przywrócenia użytkowników
 Można wyświetlić wszystkich użytkowników, które zostały usunięte z mniej niż 30 dni temu. Tacy użytkownicy mogą zostać przywrócone.

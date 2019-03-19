@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391279"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887089"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z usługi Azure Logic Apps
 
-Ten artykuł pokazuje, jak można pobrać w lokalnych zasobach SAP z wewnątrz aplikacji logiki za pomocą łącznika SAP ERP i przeniesieniu jej centralnej składnika (ECC). Łącznik SAP ECC obsługuje integrację wiadomości lub danych do i z systemów opartych na oprogramowanie SAP Netweaver przez pośredniego dokumentu (IDoc) lub interfejsu programowania aplikacji biznesowych (BAPI) lub zdalnego wywołania funkcji (RFC).
+Ten artykuł pokazuje, jak można pobrać w lokalnych zasobach SAP z wewnątrz aplikacji logiki za pomocą łącznika SAP ERP i przeniesieniu jej centralnej składnika (ECC). Łącznik działa z ECC i S/4 HANA systemów w środowisku lokalnym. Łącznik SAP ECC obsługuje integrację wiadomości lub danych do i z systemów opartych na oprogramowanie SAP Netweaver przez pośredniego dokumentu (IDoc) lub interfejsu programowania aplikacji biznesowych (BAPI) lub zdalnego wywołania funkcji (RFC).
 
-Łącznik SAP ECC używa <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .net Biblioteka łącznika (NCo)</a> i udostępnia te operacje lub akcje:
+Łącznik SAP ECC używa <a href="https://support.sap.com/en/product/connectors/msnet.html">Biblioteka łącznika systemu SAP .NET (NCo)</a> i udostępnia te operacje lub akcje:
 
 - **Wyślij do SAP**: Wyślij IDoc lub wywoływać funkcje BAPI za pośrednictwem tRFC z systemów SAP.
 - **Otrzymywać od firmy SAP**: Odbieranie IDoc lub BAPI wywołania funkcji za pośrednictwem tRFC z systemów SAP.

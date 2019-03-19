@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 12ccb4978a8cfbaa7dede8d0093c78da05295fec
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 622a3ce0f80bd09bd09fa7ff097f68155318142d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410013"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080360"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurowanie oświadczenia grupy dla aplikacji przy użyciu usługi Azure Active Directory (publiczna wersja zapoznawcza)
 
@@ -111,60 +111,60 @@ Niektóre aplikacje wymagają informacji o członkostwie grupy pojawią się w o
 
 Można również skonfigurować oświadczenia grupy w [opcjonalnych oświadczeń](../../active-directory/develop/active-directory-optional-claims.md) części [Manifest aplikacji](../../active-directory/develop/reference-app-manifest.md).
 
- 1. W portalu usługi -> Azure Active Directory -> Aplikacja rejestracje -> Wybierz aplikacji -> manifestu
+1. W portalu usługi -> Azure Active Directory -> Aplikacja rejestracje -> Wybierz aplikacji -> manifestu
 
- 2. Włączyć oświadczenia członkostwo grupy, zmieniając groupMembershipClaim
+2. Włączyć oświadczenia członkostwo grupy, zmieniając groupMembershipClaim
 
-    Prawidłowe wartości to:
+   Prawidłowe wartości to:
 
-    - "Wszystkie"
-    - "SecurityGroup"
-    - "DistributionList"
-    - "DirectoryRole"
+   - "Wszystkie"
+   - "SecurityGroup"
+   - "DistributionList"
+   - "DirectoryRole"
 
-    Na przykład:
+   Na przykład:
 
-    ```json
-    "groupMembershipClaims": "SecurityGroup"
-    ```
+   ```json
+   "groupMembershipClaims": "SecurityGroup"
+   ```
 
-    Domyślnie, których identyfikatory obiektów grupy będzie obliczanie w grupie wartości oświadczenia.  Aby zmodyfikować wartość oświadczenia, zawierają atrybuty grupy lokalnej lub zmienić typ oświadczenia roli, należy użyć OptionalClaims konfiguracji w następujący sposób:
+   Domyślnie, których identyfikatory obiektów grupy będzie obliczanie w grupie wartości oświadczenia.  Aby zmodyfikować wartość oświadczenia, zawierają atrybuty grupy lokalnej lub zmienić typ oświadczenia roli, należy użyć OptionalClaims konfiguracji w następujący sposób:
 
- 3. Ustaw oświadczenia opcjonalny konfiguracji nazwę grupy.
+3. Ustaw oświadczenia opcjonalny konfiguracji nazwę grupy.
 
-    Jeśli chcesz do grup w tokenie zawierać lokalnych, w których atrybuty grupy usługi AD w sekcji opcjonalnych oświadczeń, określ, której typ tokenu opcjonalnego roszczenia powinny być stosowane do, nazwę opcjonalnego roszczenia, żądane i wszelkie dodatkowe właściwości żądanego.  Mogą być wyświetlane wiele typów tokenu:
+   Jeśli chcesz do grup w tokenie zawierać lokalnych, w których atrybuty grupy usługi AD w sekcji opcjonalnych oświadczeń, określ, której typ tokenu opcjonalnego roszczenia powinny być stosowane do, nazwę opcjonalnego roszczenia, żądane i wszelkie dodatkowe właściwości żądanego.  Mogą być wyświetlane wiele typów tokenu:
 
-    - idToken dla tokenu Identyfikacyjnego OIDC
-    - accessToken dla tokenu dostępu OAuth/OIDC
-    - Saml2Token tokeny SAML.
+   - idToken dla tokenu Identyfikacyjnego OIDC
+   - accessToken dla tokenu dostępu OAuth/OIDC
+   - Saml2Token tokeny SAML.
 
-    > [!NOTE]
-    > Typ Saml2Token dotyczy zarówno SAML1.1 i SAML2.0 tokeny format
+   > [!NOTE]
+   > Typ Saml2Token dotyczy zarówno SAML1.1 i SAML2.0 tokeny format
 
-    Dla każdego odpowiedniego typu tokenu zmodyfikuj oświadczenia grupy do użycia w sekcji OptionalClaims w manifeście. Schemat OptionalClaims jest w następujący sposób:
+   Dla każdego odpowiedniego typu tokenu zmodyfikuj oświadczenia grupy do użycia w sekcji OptionalClaims w manifeście. Schemat OptionalClaims jest w następujący sposób:
 
- ```json
- {
-    "name": "groups",
-    "source": null,
-    "essential": false,
-    "additionalProperties": []
- }
- ```
+   ```json
+   {
+   "name": "groups",
+   "source": null,
+   "essential": false,
+   "additionalProperties": []
+   }
+   ```
 
- | Schemat opcjonalnych oświadczeń | Wartość |
- |----------|-------------|
- | **Nazwa:** | Musi być "groups" |
- | **Źródło:** | Nie jest używany. Pomiń lub określ wartość null |
- | **podstawowe:** | Nie jest używany. Pomiń lub określić wartość false |
- | **additionalProperties:** | Lista właściwości dodatkowych.  Prawidłowe opcje to "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | Schemat opcjonalnych oświadczeń | Wartość |
+   |----------|-------------|
+   | **Nazwa:** | Musi być "groups" |
+   | **Źródło:** | Nie jest używany. Pomiń lub określ wartość null |
+   | **podstawowe:** | Nie jest używany. Pomiń lub określić wartość false |
+   | **additionalProperties:** | Lista właściwości dodatkowych.  Prawidłowe opcje to "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
- W dodatkowe właściwości, tylko jeden "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" są wymagane.  Jeżeli istnieje więcej niż jeden, pierwszy jest używany i ignorowane przez inne osoby.
+   W dodatkowe właściwości, tylko jeden "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" są wymagane.  Jeżeli istnieje więcej niż jeden, pierwszy jest używany i ignorowane przez inne osoby.
 
- Niektóre aplikacje wymagają grupy informacje o użytkowniku w oświadczenie roli.  Aby zmienić typ oświadczenia z oświadczenia grupy oświadczenie roli, należy dodać "emit_as_roles" do właściwości dodatkowych.  Wartości grupy będzie emitowane w oświadczenie roli.
+   Niektóre aplikacje wymagają grupy informacje o użytkowniku w oświadczenie roli.  Aby zmienić typ oświadczenia z oświadczenia grupy oświadczenie roli, należy dodać "emit_as_roles" do właściwości dodatkowych.  Wartości grupy będzie emitowane w oświadczenie roli.
 
- > [!NOTE]
- > Jeśli jest używany "emit_as_roles" wszystkie role aplikacji skonfigurowane są przypisane do użytkownika zostanie pojawia się w oświadczenie roli
+   > [!NOTE]
+   > Jeśli jest używany "emit_as_roles" wszystkie role aplikacji skonfigurowane są przypisane do użytkownika zostanie pojawia się w oświadczenie roli
 
 ### <a name="examples"></a>Przykłady
 

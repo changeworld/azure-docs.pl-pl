@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: 4c01402932e35297e4284c09a35a14c304b4bf7c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550247"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888574"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich bazy danych SQL: Błędy połączenia bazy danych i inne problemy
 
@@ -30,7 +30,7 @@ Poniższa tabela zawiera kody błędów SQL dla błędów utraty połączenia i 
 
 ### <a name="most-common-database-connection-errors-and-transient-fault-errors"></a>Najbardziej typowe błędy połączenia bazy danych i błędów przejściowych błędów
 
-Infrastruktura platformy Azure ma możliwość dynamicznego ponownego konfigurowania serwerów w przypadku wystąpienia dużych obciążeń w ramach usługi SQL Database.  To dynamiczne zachowanie może powodować utratę połączenia z bazą danych SQL program kliencki. Ten rodzaj błędu nazywa się *błędu przejściowego*.
+Infrastruktura platformy Azure ma możliwość dynamicznego ponownego konfigurowania serwerów w przypadku wystąpienia dużych obciążeń w usłudze SQL Database.  To dynamiczne zachowanie może powodować, że program kliencki utraci połączenie z usługą SQL Database. Ten rodzaj błędu nazywa się *błędu przejściowego*.
 
 Zdecydowanie zaleca się program kliencki ma logikę ponawiania próby, aby dało się je można ponownie ustanowić połączenie po nadaniu Popraw sam czas błędu przejściowego.  Firma Microsoft zaleca opóźnienia na 5 sekund przed swoje pierwsze ponowienie. Ponawianie próby po opóźnieniu mniej niż 5 sekund ryzyka przeciąża usługę w chmurze. Na każdym kolejnym ponowieniem próby opóźnienie powinien rosnąć wykładniczo maksymalnie do 60 sekund.
 
@@ -55,7 +55,7 @@ Następujące błędy są przejściowe i powinno być ponowione w aplikacji logi
 
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
-| 4060 |16 |Nie można otworzyć bazy danych "%.&#x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. |Aby uzyskać więcej informacji, zobacz [błędy 4000 do 4999](https://docs.microsoft.comsql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-2017#errors-4000-to-4999)|
+| 4060 |16 |Nie można otworzyć bazy danych "%.&#x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. Aby uzyskać więcej informacji, zobacz [błędy 4000 do 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |Usługa napotkała błąd podczas przetwarzania Twojego żądania. Spróbuj ponownie. Kod błędu: %d.<br/><br/>Ten błąd jest wyświetlany, gdy usługa nie działa z powodu oprogramowania lub Modernizacje sprzętu, awarii sprzętu lub innych problemów trybu failover. Kod błędu: (%d) osadzane komunikat o błędzie 40197 zawiera dodatkowe informacje dotyczące rodzaju awarii lub pracy awaryjnej, który wystąpił. Niektóre przykłady błąd, który kodów są osadzane komunikat o błędzie 40197 są 40020, 40143, 40166 i 40540.<br/><br/>Ponowne nawiązywanie połączenia z serwerem bazy danych SQL Database automatycznie łączy dobrej kondycji kopię bazy danych. Aplikację należy przechwytywać 40197, dziennik błędów osadzony kod błędu: (%d) w ramach komunikatu w celu rozwiązywania problemów i ponowić próbę połączenia do bazy danych SQL, dopóki zasoby są dostępne, a następnie połączenie zostanie nawiązane ponownie. Aby uzyskać więcej informacji, zobacz [błędów przejściowych](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |Usługa jest obecnie zajęta. Ponów żądanie po 10 sekundach. Identyfikator zdarzenia: %ls. Kod: %d. Aby uzyskać więcej informacji, zobacz: <br/>&bull; &nbsp;[Limity zasobów na serwerze bazy danych](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Limity oparty na jednostkach DTU dla pojedynczej bazy danych](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[Oparte na jednostkach DTU limity dla pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[oparty na rdzeniach wirtualnych limity dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[oparty na rdzeniach wirtualnych limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md).|
 | 40613 |17 |Baza danych '%.&#x2a;ls' na serwerze '%.&#x2a;ls' nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji '%.&#x2a;ls'.<br/><br/> Ten błąd może wystąpić, jeśli istnieje już istniejące dedykowane połączenie administratora (DAC) ustalone w bazie danych. Aby uzyskać więcej informacji, zobacz [błędów przejściowych](sql-database-connectivity-issues.md#transient-errors-transient-faults).|

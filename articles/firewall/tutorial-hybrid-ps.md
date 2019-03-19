@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3a1edde2f51abbe60370eefee1b0c141f772c547
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815748"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405466"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -25,7 +25,7 @@ W tym samouczku zostaną utworzone trzy sieci wirtualne:
 
 - **VNet-Hub** — w tej sieci wirtualnej znajduje się zapora.
 - **VNet-Spoke** — sieć wirtualna będąca szprychą reprezentuje pakiet roboczy na platformie Azure.
-- **VNet-Onprem** — lokalna sieć wirtualna reprezentuje sieć lokalną. W trakcie rzeczywistego wdrożenia połączenie można nawiązać za pomocą sieci VPN lub usługi Route. Dla ułatwienia w tym samouczku zostanie wykorzystane połączenie za pośrednictwem bramy VPN Gateway, a do reprezentowania sieci lokalnej zostanie wykorzystana sieć wirtualna zlokalizowana na platformie Azure.
+- **VNet-Onprem** — lokalna sieć wirtualna reprezentuje sieć lokalną. W rzeczywiste wdrożenie może być połączona przez połączenie sieci VPN lub usługi ExpressRoute. Dla ułatwienia w tym samouczku zostanie wykorzystane połączenie za pośrednictwem bramy VPN Gateway, a do reprezentowania sieci lokalnej zostanie wykorzystana sieć wirtualna zlokalizowana na platformie Azure.
 
 ![Zapora w sieci hybrydowej](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -486,7 +486,7 @@ Teraz ponownie uruchom testy. Tym razem wszystkie powinny zakończyć się niepo
 
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **FW-Hybrid-Test**, aby usunąć wszystkie zasoby związane z zaporą.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Następnie możesz monitorować dzienniki usługi Azure Firewall.
 

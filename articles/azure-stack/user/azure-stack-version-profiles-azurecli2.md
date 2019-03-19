@@ -14,12 +14,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 261efda18b7cecc6370743c604622a8884ff8364
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 519046081a7f9778fb430daa0cd418cf9863a2b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732319"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57975631"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -47,7 +47,7 @@ Aby wyeksportować certyfikat główny ASDK w formacie PEM:
 
 2. Zaloguj się do maszyny, otwórz wiersz PowerShell z podwyższonym poziomem uprawnień, a następnie uruchom następujący skrypt:
 
-      ```powershell  
+    ```powershell  
       $label = "AzureStackSelfSignedRootCert"
       Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
       $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
@@ -56,13 +56,13 @@ Aby wyeksportować certyfikat główny ASDK w formacie PEM:
           Write-Error "Certificate with subject CN=$label not found"
           return
       }
-      
+
     Write-Host "Exporting certificate"
     Export-Certificate -Type CERT -FilePath root.cer -Cert $root
 
     Write-Host "Converting certificate to PEM format"
     certutil -encode root.cer root.pem
-```
+    ```
 
 3. Skopiuj certyfikatu na komputerze lokalnym.
 
@@ -75,15 +75,15 @@ Można skonfigurować publicznie dostępnym punkcie końcowym hostujący plik al
 
 2. Pobierz [przykładowy plik](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) z usługi GitHub.
 
-4. Utwórz konto magazynu w usłudze Azure Stack. Gdy zostanie to zrobione, Utwórz kontener obiektów blob. Ustawienie zasad dostępu do "publicznej".  
+3. Utwórz konto magazynu w usłudze Azure Stack. Gdy zostanie to zrobione, Utwórz kontener obiektów blob. Ustawienie zasad dostępu do "publicznej".  
 
-3. Przekaż plik JSON do nowego kontenera. Gdy zostanie to zrobione, możesz wyświetlić adres URL obiektu blob. Wybierz nazwę obiektu blob, a następnie wybierając adres URL, z właściwości obiektu blob.
+4. Przekaż plik JSON do nowego kontenera. Gdy zostanie to zrobione, możesz wyświetlić adres URL obiektu blob. Wybierz nazwę obiektu blob, a następnie wybierając adres URL, z właściwości obiektu blob.
 
-### <a name="install-or-ugrade-cli"></a>Instalowanie lub uaktualnić interfejsu wiersza polecenia
+### <a name="install-or-upgrade-cli"></a>Zainstalowanie lub uaktualnienie interfejsu wiersza polecenia
 
 Zaloguj się do deweloperskiej stacji roboczej i zainstalować interfejs wiersza polecenia. Usługa Azure Stack wymaga wersji 2.0 lub nowszej z wiersza polecenia platformy Azure. Najnowszą wersję profilami interfejsu API wymaga bieżącą wersję interfejsu wiersza polecenia.  Interfejs wiersza polecenia można zainstalować za pomocą procedury opisanej w [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) artykułu. Aby sprawdzić, czy instalacja zakończyła się pomyślnie, otwórz terminal lub okno wiersza polecenia i uruchom następujące polecenie:
 
-```azurecli
+```shell
 az --version
 ```
 
@@ -151,7 +151,7 @@ Ta sekcja przeprowadzi Cię konfigurowania interfejsu wiersza polecenia Jeśli u
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Traktować jako zaufany certyfikat główny urzędu usługi Azure Stack
 
-Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu certyfikacji na maszynie zdalnej. Nie należy to zrobić przy użyciu systemów intregrated.
+Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu certyfikacji na maszynie zdalnej. Nie należy to zrobić przy użyciu zintegrowanych systemów.
 
 Aby zaufać certyfikatowi głównemu urzędu certyfikacji w usłudze Azure Stack, należy dołączyć do istniejącego certyfikatu języka Python.
 
@@ -206,11 +206,12 @@ Aby zaufać certyfikatowi głównemu urzędu certyfikacji w usłudze Azure Stack
     ```
 
 2. Rejestrowanie środowiska. Użyj następujących parametrów podczas uruchamiania `az cloud register`.
+
     | Wartość | Przykład | Opis |
     | --- | --- | --- |
     | Nazwa środowiska | AzureStackUser | Użyj `AzureStackUser` w środowisku użytkownika. Jeśli operator, określić `AzureStackAdmin`. |
-    | Punktu końcowego Menedżera zasobów | https://management.local.azurestack.external | **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Jeśli masz pytania dotyczące punktu końcowego zintegrowanego systemu, skontaktuj się z operatorem chmury. |
-    | Punkt końcowy magazynu | local.azurestack.external | `local.azurestack.external` Służy do ASDK. Intregrated system należy używać punktu końcowego w systemie.  |
+    | Punkt końcowy usługi Resource Manager | https://management.local.azurestack.external | **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Jeśli masz pytania dotyczące punktu końcowego zintegrowanego systemu, skontaktuj się z operatorem chmury. |
+    | Punkt końcowy magazynu | local.azurestack.external | `local.azurestack.external` Służy do ASDK. Zintegrowany system należy użyć punktu końcowego w systemie.  |
     | Sufiks Keyvalut | . vault.local.azurestack.external | `.vault.local.azurestack.external` Służy do ASDK. Zintegrowany system należy użyć punktu końcowego w systemie.  |
     | Obraz maszyny Wirtualnej alias doc punktu końcowego — | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Identyfikator URI dokumentu, który zawiera aliasy obrazu maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [### konfigurowania punktu końcowego maszyny wirtualnej aliasy](#set-up-the-virtual-machine-aliases-endpoint). |
 
@@ -235,24 +236,24 @@ Aby zaufać certyfikatowi głównemu urzędu certyfikacji w usłudze Azure Stack
  
 1. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](../../active-directory/develop/app-objects-and-service-principals.md). 
 
-  - Zaloguj się jako *użytkownika*: 
+   - Zaloguj się jako *użytkownika*: 
 
-    Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Wykonaj te ostatnie Jeśli Twoje konto ma włączonego uwierzytelniania wieloskładnikowego:
+     Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Wykonaj te ostatnie Jeśli Twoje konto ma włączonego uwierzytelniania wieloskładnikowego:
 
-    ```azurecli
-    az login -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
-    ```
+     ```azurecli
+     az login -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
+     ```
 
-    > [!NOTE]
-    > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login` polecenia bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
+     > [!NOTE]
+     > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login` polecenia bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
 
-  - Zaloguj się jako *nazwy głównej usługi*: 
+   - Zaloguj się jako *nazwy głównej usługi*: 
     
-    Przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
+     Przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
 
-    ```azurecli  
-    az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
-    ```
+     ```azurecli  
+     az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
+     ```
 
 ### <a name="test-the-connectivity"></a>Testowanie łączności
 
@@ -272,7 +273,7 @@ Ta sekcja przeprowadzi Cię konfigurowania interfejsu wiersza polecenia Jeśli u
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Traktować jako zaufany certyfikat główny urzędu usługi Azure Stack
 
-Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu certyfikacji na maszynie zdalnej. Nie należy to zrobić przy użyciu systemów intregrated.
+Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu certyfikacji na maszynie zdalnej. Nie należy to zrobić przy użyciu zintegrowanych systemów.
 
 1. Znajdź lokalizację certyfikatu na komputerze. Lokalizacja mogą się różnić w zależności od tego, gdzie zainstalowano języka Python. Otwórz wiersz polecenia lub wiersz PowerShell i wpisz następujące polecenie:
 
@@ -325,11 +326,12 @@ Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu
     ```
 
 2. Rejestrowanie środowiska. Użyj następujących parametrów podczas uruchamiania `az cloud register`.
+
     | Wartość | Przykład | Opis |
     | --- | --- | --- |
     | Nazwa środowiska | AzureStackUser | Użyj `AzureStackUser` w środowisku użytkownika. Jeśli operator, określić `AzureStackAdmin`. |
-    | Punktu końcowego Menedżera zasobów | https://management.local.azurestack.external | **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Jeśli masz pytania dotyczące punktu końcowego zintegrowanego systemu, skontaktuj się z operatorem chmury. |
-    | Punkt końcowy magazynu | local.azurestack.external | `local.azurestack.external` Służy do ASDK. Intregrated system należy używać punktu końcowego w systemie.  |
+    | Punkt końcowy usługi Resource Manager | https://management.local.azurestack.external | **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Jeśli masz pytania dotyczące punktu końcowego zintegrowanego systemu, skontaktuj się z operatorem chmury. |
+    | Punkt końcowy magazynu | local.azurestack.external | `local.azurestack.external` Służy do ASDK. Zintegrowany system należy użyć punktu końcowego w systemie.  |
     | Sufiks Keyvalut | . vault.local.azurestack.external | `.vault.local.azurestack.external` Służy do ASDK. Zintegrowany system należy użyć punktu końcowego w systemie.  |
     | Obraz maszyny Wirtualnej alias doc punktu końcowego — | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Identyfikator URI dokumentu, który zawiera aliasy obrazu maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [### konfigurowania punktu końcowego maszyny wirtualnej aliasy](#set-up-the-virtual-machine-aliases-endpoint). |
 
@@ -354,34 +356,34 @@ Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu
 
 1. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](../../active-directory/develop/app-objects-and-service-principals.md). 
 
-  - Zaloguj się jako *użytkownika*:
+   - Zaloguj się jako *użytkownika*:
 
-    Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Wykonaj te ostatnie Jeśli Twoje konto ma włączonego uwierzytelniania wieloskładnikowego:
+     Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Wykonaj te ostatnie Jeśli Twoje konto ma włączonego uwierzytelniania wieloskładnikowego:
 
-    ```azurecli
-    az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/" --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2018-03-01-hybrid"
-    ```
+     ```azurecli
+     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/" --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2018-03-01-hybrid"
+     ```
 
-    > [!NOTE]
-    > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login` polecenia bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
+     > [!NOTE]
+     > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login` polecenia bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
 
-  - Zaloguj się jako *nazwy głównej usługi*: 
+   - Zaloguj się jako *nazwy głównej usługi*: 
     
-    Przygotuj plik PEM, który ma być używany dla logowania jednostki usługi.
+     Przygotuj plik PEM, który ma być używany dla logowania jednostki usługi.
 
-    Na komputerze klienckim, w której utworzono podmiot zabezpieczeń, eksportowanie certyfikatu nazwy głównej usługi, ponieważ pfx z kluczem prywatnym, który znajduje się w `cert:\CurrentUser\My`; certyfikatu, nazwa ma taką samą nazwę jak podmiot zabezpieczeń.
+     Na komputerze klienckim, w której utworzono podmiot zabezpieczeń, eksportowanie certyfikatu nazwy głównej usługi, ponieważ pfx z kluczem prywatnym, który znajduje się w `cert:\CurrentUser\My`; certyfikatu, nazwa ma taką samą nazwę jak podmiot zabezpieczeń.
 
-    Konwertuj plik pfx na pem (Użyj narzędzia biblioteki OpenSSL).
+     Konwertuj plik pfx na pem (Użyj narzędzia biblioteki OpenSSL).
 
-    Zaloguj się do interfejsu wiersza polecenia:
+     Zaloguj się do interfejsu wiersza polecenia:
   
-    ```azurecli  
-    az login --service-principal \
+     ```azurecli  
+     az login --service-principal \
       -u <Client ID from the Service Principal details> \
       -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
       --tenant <Tenant ID> \
       --debug 
-    ```
+     ```
 
 ### <a name="test-the-connectivity"></a>Testowanie łączności
 
@@ -402,7 +404,7 @@ Ta sekcja przeprowadzi Cię konfigurowania interfejsu wiersza polecenia Jeśli u
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Traktować jako zaufany certyfikat główny urzędu usługi Azure Stack
 
-Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu certyfikacji na maszynie zdalnej. Nie należy to zrobić przy użyciu systemów intregrated.
+Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu certyfikacji na maszynie zdalnej. Nie należy to zrobić przy użyciu zintegrowanych systemów.
 
 Zaufanie certyfikatu głównego urzędu certyfikacji w usłudze Azure Stack przez dołączenie jej do istniejącego certyfikatu języka Python.
 
@@ -416,17 +418,17 @@ Zaufanie certyfikatu głównego urzędu certyfikacji w usłudze Azure Stack prze
 
 2. Uruchom poniższe polecenie powłoki bash ze ścieżką do certyfikatu.
 
-  - Dla zdalnego maszyny z systemem Linux:
+   - Dla zdalnego maszyny z systemem Linux:
 
-    ```bash  
-    sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
-    ```
+     ```bash  
+     sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
+     ```
 
-  - Dla maszyny z systemem Linux w środowisku usługi Azure Stack:
+   - Dla maszyny z systemem Linux w środowisku usługi Azure Stack:
 
-    ```bash  
-    sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
-    ```
+     ```bash  
+     sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
+     ```
 
 ### <a name="connect-to-azure-stack"></a>Nawiązywanie połączenia z usługą Azure Stack
 
@@ -440,11 +442,12 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
    ```
 
 2. Rejestrowanie środowiska. Użyj następujących parametrów podczas uruchamiania `az cloud register`.
+
     | Wartość | Przykład | Opis |
     | --- | --- | --- |
     | Nazwa środowiska | AzureStackUser | Użyj `AzureStackUser` w środowisku użytkownika. Jeśli operator, określić `AzureStackAdmin`. |
-    | Punktu końcowego Menedżera zasobów | https://management.local.azurestack.external | **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Jeśli masz pytania dotyczące punktu końcowego zintegrowanego systemu, skontaktuj się z operatorem chmury. |
-    | Punkt końcowy magazynu | local.azurestack.external | `local.azurestack.external` Służy do ASDK. Intregrated system należy używać punktu końcowego w systemie.  |
+    | Punkt końcowy usługi Resource Manager | https://management.local.azurestack.external | **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Jeśli masz pytania dotyczące punktu końcowego zintegrowanego systemu, skontaktuj się z operatorem chmury. |
+    | Punkt końcowy magazynu | local.azurestack.external | `local.azurestack.external` Służy do ASDK. Zintegrowany system należy użyć punktu końcowego w systemie.  |
     | Sufiks Keyvalut | . vault.local.azurestack.external | `.vault.local.azurestack.external` Służy do ASDK. Zintegrowany system należy użyć punktu końcowego w systemie.  |
     | Obraz maszyny Wirtualnej alias doc punktu końcowego — | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Identyfikator URI dokumentu, który zawiera aliasy obrazu maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [### konfigurowania punktu końcowego maszyny wirtualnej aliasy](#set-up-the-virtual-machine-aliases-endpoint). |
 
@@ -469,30 +472,30 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
 
 5. Zaloguj się do środowiska usługi Azure Stack przy użyciu `az login` polecenia. Możesz zalogować się do środowiska usługi Azure Stack jako użytkownik lub [nazwy głównej usługi](../../active-directory/develop/app-objects-and-service-principals.md). 
 
-    * Zaloguj się jako *użytkownika*:
+   * Zaloguj się jako *użytkownika*:
 
-    Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Wykonaj te ostatnie Jeśli Twoje konto ma włączonego uwierzytelniania wieloskładnikowego:
+     Można określić nazwę użytkownika i hasło bezpośrednio w ramach `az login` polecenie lub uwierzytelniania za pomocą przeglądarki. Wykonaj te ostatnie Jeśli Twoje konto ma włączonego uwierzytelniania wieloskładnikowego:
 
-      ```azurecli
-      az login \
-        -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> \
-        --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
-      ```
+     ```azurecli
+     az login \
+       -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> \
+       --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
+     ```
 
-    > [!NOTE]
-    > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login` polecenia bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
+     > [!NOTE]
+     > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login` polecenia bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
    
-    * Zaloguj się jako *nazwy głównej usługi*
+   * Zaloguj się jako *nazwy głównej usługi*
     
-    Przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
+     Przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
 
-      ```azurecli  
-      az login \
-        --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
-        --service-principal \
-        -u <Application Id of the Service Principal> \
-        -p <Key generated for the Service Principal>
-      ```
+     ```azurecli  
+     az login \
+       --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
+       --service-principal \
+       -u <Application Id of the Service Principal> \
+       -p <Key generated for the Service Principal>
+     ```
 
 ### <a name="test-the-connectivity"></a>Testowanie łączności
 
@@ -512,7 +515,7 @@ Ta sekcja przeprowadzi Cię konfigurowania interfejsu wiersza polecenia jeśli k
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Traktować jako zaufany certyfikat główny urzędu usługi Azure Stack
 
-Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu certyfikacji na maszynie zdalnej. Nie należy to zrobić przy użyciu systemów intregrated.
+Jeśli używasz ASDK należy traktować jako zaufany certyfikat główny urzędu certyfikacji na maszynie zdalnej. Nie należy to zrobić przy użyciu zintegrowanych systemów.
 
 Zaufanie certyfikatu głównego urzędu certyfikacji w usłudze Azure Stack przez dołączenie jej do istniejącego certyfikatu języka Python.
 
@@ -526,17 +529,17 @@ Zaufanie certyfikatu głównego urzędu certyfikacji w usłudze Azure Stack prze
 
 2. Uruchom poniższe polecenie powłoki bash ze ścieżką do certyfikatu.
 
-  - Dla zdalnego maszyny z systemem Linux:
+   - Dla zdalnego maszyny z systemem Linux:
 
-    ```bash  
-    sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
-    ```
+     ```bash  
+     sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
+     ```
 
-  - Dla maszyny z systemem Linux w środowisku usługi Azure Stack:
+   - Dla maszyny z systemem Linux w środowisku usługi Azure Stack:
 
-    ```bash  
-    sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
-    ```
+     ```bash  
+     sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
+     ```
 
 ### <a name="connect-to-azure-stack"></a>Nawiązywanie połączenia z usługą Azure Stack
 
@@ -550,11 +553,12 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
    ```
 
 2. Rejestrowanie środowiska. Użyj następujących parametrów podczas uruchamiania `az cloud register`.
+
     | Wartość | Przykład | Opis |
     | --- | --- | --- |
     | Nazwa środowiska | AzureStackUser | Użyj `AzureStackUser` w środowisku użytkownika. Jeśli operator, określić `AzureStackAdmin`. |
-    | Punktu końcowego Menedżera zasobów | https://management.local.azurestack.external | **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Jeśli masz pytania dotyczące punktu końcowego zintegrowanego systemu, skontaktuj się z operatorem chmury. |
-    | Punkt końcowy magazynu | local.azurestack.external | `local.azurestack.external` Służy do ASDK. Intregrated system należy używać punktu końcowego w systemie.  |
+    | Punkt końcowy usługi Resource Manager | https://management.local.azurestack.external | **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/` Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Jeśli masz pytania dotyczące punktu końcowego zintegrowanego systemu, skontaktuj się z operatorem chmury. |
+    | Punkt końcowy magazynu | local.azurestack.external | `local.azurestack.external` Służy do ASDK. Zintegrowany system należy użyć punktu końcowego w systemie.  |
     | Sufiks Keyvalut | . vault.local.azurestack.external | `.vault.local.azurestack.external` Służy do ASDK. Zintegrowany system należy użyć punktu końcowego w systemie.  |
     | Obraz maszyny Wirtualnej alias doc punktu końcowego — | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Identyfikator URI dokumentu, który zawiera aliasy obrazu maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [### konfigurowania punktu końcowego maszyny wirtualnej aliasy](#set-up-the-virtual-machine-aliases-endpoint). |
 
@@ -581,24 +585,24 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
 
 6. Rejestrowanie: 
 
-  *  Jako **użytkownika** w przeglądarce sieci web przy użyciu kodu urządzenia:  
+   *  Jako **użytkownika** w przeglądarce sieci web przy użyciu kodu urządzenia:  
 
-  ```azurecli  
+   ```azurecli  
     az login --use-device-code
-  ```
+   ```
 
-  > [!NOTE]  
-  >Uruchamiając polecenie udostępnia adres URL i kodu, które muszą użyć do uwierzytelniania.
+   > [!NOTE]  
+   >Uruchamiając polecenie udostępnia adres URL i kodu, które muszą użyć do uwierzytelniania.
 
-  * Jako nazwę główną usługi:
+   * Jako nazwę główną usługi:
         
-    Przygotuj plik PEM, który ma być używany dla logowania jednostki usługi.
+     Przygotuj plik PEM, który ma być używany dla logowania jednostki usługi.
 
       * Na komputerze klienckim, w której utworzono podmiot zabezpieczeń, eksportowanie certyfikatu nazwy głównej usługi, ponieważ pfx z kluczem prywatnym, który znajduje się w `cert:\CurrentUser\My`; certyfikatu, nazwa ma taką samą nazwę jak podmiot zabezpieczeń.
   
       * Konwertuj plik pfx na pem (Użyj narzędzia biblioteki OpenSSL).
 
-    Zaloguj się do interfejsu wiersza polecenia:
+     Zaloguj się do interfejsu wiersza polecenia:
 
       ```azurecli  
       az login --service-principal \

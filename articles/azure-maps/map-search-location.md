@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 555fcc8998f954d222753194fc08bdf4a113d59c
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 8ae6c8a20a05df723d3f6b394e0639f218896a85
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570950"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845141"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
@@ -33,7 +33,7 @@ Tworzy drugi blok kodu **SubscriptionKeyCredentialPolicy** do uwierzytelniania �
 
 Trzeci bloku kodu tworzy źródła danych obiektu przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy i dodać wyniki wyszukiwania do niego. A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie.  Warstwa symbol zostanie utworzony i źródło danych jest dodawane do warstwy "symbol", która następnie zostanie dodany do mapy.
 
-Czwarty blok kodu używa [SearchFuzzy](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchfuzzy-string--searchgetsearchfuzzyoptionalparams-) method in Class metoda [moduł usługi](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2). Umożliwia wykonywanie dowolnej postaci wyszukiwanie na podstawie tekstu przy użyciu [interfejsu API rest Pobierz wyszukiwania rozmytego](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Pobierz interfejs API wyszukiwania rozmytego może obsługiwać dowolną kombinację rozmyte danych wejściowych. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu **geojson.getFeatures()** — metoda i dodać do źródła danych, co automatycznie powoduje danych są renderowane na mapie za pomocą warstwy symboli.
+Czwarty blok kodu używa [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) method in Class metoda [moduł usługi](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2). Umożliwia wykonywanie dowolnej postaci wyszukiwanie na podstawie tekstu przy użyciu [interfejsu API rest Pobierz wyszukiwania rozmytego](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Pobierz interfejs API wyszukiwania rozmytego może obsługiwać dowolną kombinację rozmyte danych wejściowych. Kolekcja funkcji GeoJSON z odpowiedzi jest wyodrębniany przy użyciu **geojson.getFeatures()** — metoda i dodać do źródła danych, co automatycznie powoduje danych są renderowane na mapie za pomocą warstwy symboli.
 
 Ostatni blok kodu dostosowuje granice aparatu mapy za pomocą mapy [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) właściwości.
 

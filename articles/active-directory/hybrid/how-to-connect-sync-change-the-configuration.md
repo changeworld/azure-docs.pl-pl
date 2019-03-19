@@ -16,12 +16,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf55cef00c0600963f8363e617c24fdc9113eae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543869"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122981"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Zmiany w konfiguracji domyślnej
 Ten artykuł ma na celu objaśniono sposób wprowadzania zmian w domyślnej konfiguracji synchronizacji usługi Azure Active Directory (Azure AD) Connect. Zapewnia on kroki kilka typowych scenariuszy. Za pomocą tej wiedzy można wszechstronną własnych konfiguracji na podstawie własnych reguł biznesowych.
@@ -349,8 +349,8 @@ Następujące kroki można użyć, aby zweryfikować zmiany podczas ręcznego ur
    3. W podręcznym oknie dialogowym, wybierz **pełny Import** a następnie kliknij przycisk **OK**.
    4. Poczekaj na zakończenie operacji.
 
-    > [!NOTE]
-    > Możesz pominąć pełny import na lokalną łącznik AD, jeśli atrybut źródłowy znajduje się już na liście zaimportowane atrybutów. Oznacza to, trzeba wprowadzać żadnych zmian podczas [krok 2: Dodawanie atrybutu źródłowego do serwera lokalnego łącznika AD schematu](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
+      > [!NOTE]
+      > Możesz pominąć pełny import na lokalną łącznik AD, jeśli atrybut źródłowy znajduje się już na liście zaimportowane atrybutów. Oznacza to, trzeba wprowadzać żadnych zmian podczas [krok 2: Dodawanie atrybutu źródłowego do serwera lokalnego łącznika AD schematu](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
 
 2. Uruchom **pełny import** na **łącznik usługi Azure AD**:
 

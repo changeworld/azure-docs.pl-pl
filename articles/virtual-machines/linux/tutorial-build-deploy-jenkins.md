@@ -5,20 +5,20 @@ author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: devops
+ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
+ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 651e8505c6d3a3952347bba5e598ec9a0a518e8e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074771"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901427"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Samouczek: wdrażanie aplikacji na maszynach wirtualnych systemu Linux na platformie Azure przy użyciu usług Jenkins i Azure DevOps Services
 
@@ -35,7 +35,7 @@ do [grupy wdrożenia](https://docs.microsoft.com/azure/devops/pipelines/release/
 > * Konfigurowanie usługi Jenkins do integracji z usługami Azure DevOps Services.
 > * Tworzenie punktu końcowego usługi Jenkins.
 > * Tworzenie grupy wdrożenia dla maszyn wirtualnych platformy Azure.
-> * Tworzenie potoku wydania usługi Azure Pipelines.
+> * Instrukcje tworzenia potoku usługi Azure potoków wydania.
 > * Przeprowadzanie wdrożeń wyzwalanych ręcznie i za pomocą CI.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -60,7 +60,7 @@ W tym samouczku zalecamy używanie [tej przykładowej aplikacji dostępnej w ser
 Utwórz rozwidlenie tej aplikacji i zanotuj lokalizację (adres URL) do użycia w dalszych krokach tego samouczka. Aby uzyskać więcej informacji, zobacz [Fork a repo (Tworzenie rozwidlenia repozytorium)](https://help.github.com/articles/fork-a-repo/).    
 
 > [!NOTE]
-> Aplikacja została skompilowana przy użyciu [narzędzia Yeoman](http://yeoman.io/learning/index.html). Używa ona narzędzi Express, Bower i Grunt. I ma niektóre pakiety npm jako zależności.
+> Aplikacja została skompilowana przy użyciu [narzędzia Yeoman](https://yeoman.io/learning/index.html). Używa ona narzędzi Express, Bower i Grunt. I ma niektóre pakiety npm jako zależności.
 > Przykład zawiera także skrypt, który konfiguruje serwer Nginx, a następnie wdraża aplikację. Jest on wykonywany na maszynach wirtualnych. W szczególności skrypt:
 > 1. Instaluje rozwiązania Node, Nginx i PM2.
 > 2. Konfiguruje rozwiązania Nginx i PM2.
@@ -141,7 +141,7 @@ Potrzebujesz [grupy wdrożenia](https://www.visualstudio.com/docs/build/concepts
 8. Po zakończeniu instalacji zostanie wyświetlony monit o tagi grupy wdrożenia. Zaakceptuj wartości domyślne.
 9. W usługach Azure DevOps Services sprawdź nowo zarejestrowaną maszynę wirtualną w pozycji **Miejsca docelowe** w obszarze **Grupy wdrożenia**.
 
-## <a name="create-a-azure-pipelines-release-pipeline"></a>Tworzenie potoku wydania usługi Azure Pipelines
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Instrukcje tworzenia potoku usługi Azure potoki wersji
 
 Potok wydania określa proces, którego usługa Azure Pipelines używa do wdrażania aplikacji. W tym przykładzie wykonasz skrypt powłoki.
 
@@ -175,7 +175,7 @@ W celu utworzenia potoku wydania w usłudze Azure Pipelines:
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zautomatyzowano wdrażanie aplikacji na platformie Azure przy użyciu usługi Jenkins na potrzeby kompilacji i usług Azure DevOps Services na potrzeby wydania. W tym samouczku omówiono:
 

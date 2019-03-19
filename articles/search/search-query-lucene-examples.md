@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 962c1cff91a5ac3f52dc67c30bd2c7a4e2e22b9d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 8ec6a6a24629f72199d5f5afa86200acf53aba01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631842"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136550"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Przykłady zapytań składni Lucene do tworzenia zaawansowanych zapytań w usłudze Azure Search
 Podczas tworzenia zapytań do usługi Azure Search, możesz zastąpić domyślną [prosty analizator zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) z udogodniona [analizator składni zapytań Lucene w usłudze Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sformułowanie specjalistyczne i zaawansowane zapytania definicje. 
@@ -58,7 +58,7 @@ Kompozycja adresu URL zawiera następujące elementy:
 
 ## <a name="send-your-first-query"></a>Wyślij pierwszego zapytania
 
-Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij przycisk **wysyłania**. Wyniki są zwracane jako pełne dokumenty JSON. Użytkownik może kopiowanie i wklejanie tego adresu URL w pierwszym przykładzie poniżej.
+Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij przycisk **wysyłania**. Wyniki są zwracane w postaci pełnych dokumentów JSON. Użytkownik może kopiowanie i wklejanie tego adresu URL w pierwszym przykładzie poniżej.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -172,7 +172,7 @@ Należy wziąć pod uwagę profil oceniania, co zwiększa przywiązanie podanej 
 Po ustawienie poziomie współczynnik wyższa współczynnika zwiększenie wydajności, tym większe znaczenie termin będzie względem innych terminy wyszukiwania. Domyślnie współczynnik boost wynosi 1. Chociaż współczynnik boost musi być dodatnią, może być mniejsza niż 1 (na przykład 0.2).
 
 
-## <a name="example-6-regex"></a>Przykład 6: wyrażenie regularne
+## <a name="example-6-regex"></a>Przykład 6: Regex
 
 Wyszukiwanie wyrażenia regularnego znalezienia dopasowania na podstawie zawartości między ukośnikami "/", zgodnie z opisem w [klasy RegExp](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).
 
@@ -206,7 +206,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Spróbuj określić analizatora zapytań Lucene w kodzie. Poniższe linki wyjaśniono, jak skonfigurować zapytania wyszukiwania dla środowiska .NET i interfejsu API REST. Łączy należy użyć składni proste domyślnego, konieczne będzie Zastosuj zdobytą wiedzę z tego artykułu, aby określić **queryType**.
 
 * [Zapytanie indeksu usługi Azure Search przy użyciu zestawu .NET SDK](search-query-dotnet.md)
-* [Zapytanie indeksu usługi Azure Search przy użyciu interfejsu API REST](search-query-rest-api.md)
+* [Zapytanie indeksu usługi Azure Search przy użyciu interfejsu API REST](search-create-index-rest-api.md)
 
 Odwołanie do dodatkowej składni, architektura zapytania i przykłady można znaleźć w następujących łączy:
 

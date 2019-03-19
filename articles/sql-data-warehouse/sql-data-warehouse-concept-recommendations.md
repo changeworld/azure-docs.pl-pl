@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5588d2bd6cf2098d8744479c2bf2d308c9bf8f0d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460451"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082912"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Zalecenia dotyczące usługi SQL Data Warehouse
 
@@ -63,4 +63,3 @@ Obecnie usługi Advisor będzie wyświetlana tylko co najwyżej kandydatów czte
 
 > [!IMPORTANT]
 > Zalecenie dotyczące replikowanej tabeli nie jest pełna weryfikacja i nie uwzględnia operacje przenoszenia danych konta. Pracujemy nad dodaniem tym jako o heurystykę, ale do tego czasu należy zawsze sprawdzić, czy obciążenie po zastosowaniu rekomendacji. Skontaktuj się z pomocą sqldwadvisor@service.microsoft.com Jeśli użytkownik zauważy zalecenia dotyczące replikowanej tabeli, które powoduje, że obciążenia, aby zbadanie. Aby dowiedzieć się więcej na temat zreplikowane tabele, odwiedź poniższą [dokumentacji](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
->

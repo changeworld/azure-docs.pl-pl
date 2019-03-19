@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: f92c8a7cca70dd9de6389c201d9589c7a31ce25f
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 24cda5d6c96355ab4df086a2649c136116f200f1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726995"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863097"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu plików platformy Azure dla usługi sieci szkieletowej (wersja zapoznawcza)
 Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker jest spakowany jako aplikacji usługi Service Fabric, który może być wdrożony w klastrach usługi Service Fabric. Jego celem jest zapewnienie usługi Azure Files na podstawie woluminów dla innych aplikacji kontenera usługi Service Fabric, które zostały wdrożone w klastrze.
@@ -66,7 +66,7 @@ W sekcji element fabricSettings szablonu ARM (w przypadku wdrożeń na platformi
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>Wdrażanie aplikacji usługi Service Fabric usługi Azure Files
 
-Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontenerów, można pobrać z następujących [łącze](http://download.microsoft.com/download/C/0/3/C0373AA9-DEFA-48CF-9EBE-994CA2A5FA2F/AzureFilesVolumePlugin.6.4.571.9590.zip). Aplikację można wdrożyć w klastrze za pomocą [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), [interfejsu wiersza polecenia](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) lub [interfejsy API FabricClient](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
+Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontenerów, można pobrać z następujących [łącze](https://download.microsoft.com/download/C/0/3/C0373AA9-DEFA-48CF-9EBE-994CA2A5FA2F/AzureFilesVolumePlugin.6.4.571.9590.zip). Aplikację można wdrożyć w klastrze za pomocą [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), [interfejsu wiersza polecenia](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) lub [interfejsy API FabricClient](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
 
 1. Przy użyciu wiersza polecenia, zmień katalog na katalog główny pobrany pakiet aplikacji.
 
@@ -110,9 +110,8 @@ Aplikacja usługi Service Fabric, która zapewnia woluminów dla swoich kontener
     ```
 
 > [!NOTE]
-
+> 
 > Windows Server 2016 Datacenter nie obsługuje mapowania instaluje SMB do kontenerów ([, jest tylko obsługiwana w systemie Windows Server w wersji 1709](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/container-storage)). To ograniczenie zapobiega mapowania sieci na woluminie i sterowników woluminów plików platformy Azure w wersji starszej niż 1709.
->   
 
 ### <a name="deploy-the-application-on-a-local-development-cluster"></a>Wdrażanie aplikacji na lokalny klaster projektowy
 Domyślna liczba wystąpień usługi dla aplikacji usługi Azure Files wtyczki woluminu jest wartość -1, co oznacza, że to wystąpienie usługi, który został wdrożony w każdym węźle w klastrze. Jednak podczas wdrażania aplikacji usługi Azure Files woluminu wtyczki na lokalny klaster projektowy, liczba wystąpień usługi powinien być określony jako 1. Można to zrobić za pomocą **InstanceCount** parametr aplikacji. W związku z tym polecenia do wdrożenia aplikacji usługi Azure Files woluminu wtyczki na lokalny klaster projektowy jest:
@@ -129,33 +128,33 @@ Poniższy fragment kodu pokazuje, jak usługi Azure Files na podstawie woluminu 
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
-<ApplicationManifest ApplicationTypeName="WinNodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <Description>Calculator Application</Description>
-    <Parameters>
-      <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>
-      <Parameter Name="MyCpuShares" DefaultValue="3"></Parameter>
-      <Parameter Name="MyStorageVar" DefaultValue="c:\tmp"></Parameter>
-    </Parameters>
-    <ServiceManifestImport>
-        <ServiceManifestRef ServiceManifestName="NodeServicePackage" ServiceManifestVersion="1.0"/>
-     <Policies>
+<ApplicationManifest ApplicationTypeName="WinNodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+    <Description>Calculator Application</Description>
+    <Parameters>
+      <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>
+      <Parameter Name="MyCpuShares" DefaultValue="3"></Parameter>
+      <Parameter Name="MyStorageVar" DefaultValue="c:\tmp"></Parameter>
+    </Parameters>
+    <ServiceManifestImport>
+        <ServiceManifestRef ServiceManifestName="NodeServicePackage" ServiceManifestVersion="1.0"/>
+     <Policies>
        <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv">
-            <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
-            <RepositoryCredentials PasswordEncrypted="false" Password="****" AccountName="test"/>
+            <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
+            <RepositoryCredentials PasswordEncrypted="false" Password="****" AccountName="test"/>
             <Volume Source="azfiles" Destination="c:\VolumeTest\Data" Driver="sfazurefile">
                 <DriverOption Name="shareName" Value="" />
                 <DriverOption Name="storageAccountName" Value="" />
                 <DriverOption Name="storageAccountKey" Value="" />
                 <DriverOption Name="storageAccountFQDN" Value="" />
             </Volume>
-       </ContainerHostPolicies>
-   </Policies>
-    </ServiceManifestImport>
-    <ServiceTemplates>
-        <StatelessService ServiceTypeName="StatelessNodeService" InstanceCount="5">
-            <SingletonPartition></SingletonPartition>
-        </StatelessService>
-    </ServiceTemplates>
+       </ContainerHostPolicies>
+   </Policies>
+    </ServiceManifestImport>
+    <ServiceTemplates>
+        <StatelessService ServiceTypeName="StatelessNodeService" InstanceCount="5">
+            <SingletonPartition></SingletonPartition>
+        </StatelessService>
+    </ServiceTemplates>
 </ApplicationManifest>
 ```
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 423399c93fca222dad2db3175036719a0cd5fdb9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6473b8d15d09251d22386036285019c3b55e4cb1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986162"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084119"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Przypisywanie licencji do użytkowników, członkostwa w grupach w usłudze Azure Active Directory
 
@@ -30,7 +30,7 @@ W tym przykładzie dzierżawcy zawiera grupę zabezpieczeń o nazwie **dział KA
 
 > [!NOTE]
 > Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość lokalizacja użytkowania na użytkownika.
-
+> 
 > W celu przypisania licencji grupy Wszyscy użytkownicy bez określonej lokalizacji użytkowania dziedziczą lokalizację katalogu. Jeśli masz użytkowników w wielu lokalizacjach, zaleca się zawsze wartość lokalizacji użytkowania — część przepływu tworzenia użytkownika w usłudze Azure AD (np. przez program AAD Connect Konfiguracja) -, które gwarantuje, że wynik przypisania licencji zawsze jest poprawna, a użytkownicy nie będą odbierać usługi w lokalizacjach, które nie są dozwolone.
 
 ## <a name="step-1-assign-the-required-licenses"></a>Krok 1: Przypisywanie licencji

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1b1020e66cd794ffd6e51f4af697fa79e0ae20
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a12fb0123e96c592a8af9fe04f6ff17f8fea62a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167171"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą itslearning
 
@@ -114,6 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Konfigurowanie logowania jednokrotnego](./media/itslearning-tutorial/tutorial_itslearning_url.png)
 
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL jako:
+    
     | |
     |--| 
     | `https://www.itslearning.com/index.aspx`|
@@ -212,7 +213,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

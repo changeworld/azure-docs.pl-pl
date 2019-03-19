@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0b24c5d2f174c9a656e81d0c85e12b589d7d7799
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810649"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837039"
 ---
 # <a name="appsource-package-preparation"></a>Przygotowanie pakietów usługi AppSource
 
@@ -40,7 +40,7 @@ Pakiet dla narzędzia do wdrażania pakietów jest jedną z części pakietu us�
 Aby utworzyć pakiet dla narzędzia do wdrażania pakietów, użyj poniższych instrukcji: [ https://msdn.microsoft.com/library/dn688182.aspx ](https://msdn.microsoft.com/library/dn688182.aspx). Po zakończeniu pakietu będzie składać się z poniższych zasobów:
 
 1. Folder pakietu: zawiera wszystkie rozwiązania, dane konfiguracji, pliki proste i zawartość dla pakietu. _Uwaga: W poniższym przykładzie firma Microsoft jest założenie, że folder pakietu jest nazywany "PkgFolder"_
-2. biblioteki DLL: zestaw zawiera kod niestandardowy dla pakietu. _Uwaga: W poniższym przykładzie firma Microsoft zakłada, że ten plik jest nazywany "MicrosoftSample.dll."_
+2. dll: Zestaw zawiera kod niestandardowy dla pakietu. _Uwaga: W poniższym przykładzie firma Microsoft jest założenie, że ten plik jest nazywany "MicrosoftSample.dll."_
 
 Teraz musisz utworzyć plik o nazwie "**Content_Types.xml**" ten plik znajduje się lista wszystkich rozszerzeń zasobów, które są częścią pakietu. Poniżej przedstawiono przykładowy kod do pliku.
 
@@ -71,11 +71,11 @@ Kroki umożliwiające utworzenie package.zip:
 
 ![CRMScreenShot2](media/CRMScreenShot2.png)
 
-2. Wybierz wszystkie elementy w folderze, kliknij prawym przyciskiem myszy i wybierz folder, Wyślij do skompresowany (zip)
+1. Wybierz wszystkie elementy w folderze, kliknij prawym przyciskiem myszy i wybierz folder, Wyślij do skompresowany (zip)
 
 ![CRMScreenShot3](media/CRMScreenShot3.png)
 
-3. Zmień nazwę na package.zip
+1. Zmień nazwę na package.zip
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
@@ -97,7 +97,7 @@ Poniżej przedstawiono przykładowy kod, aby uzyskać plik input.xml. Zobacz def
         <StartDate>01/01/2016</StartDate>
         <EndDate>01/01/2021</EndDate>
         <SupportedCountries>US,CA</SupportedCountries>
-        <LearnMoreLink>http://www.microsoft.com</LearnMoreLink>
+        <LearnMoreLink>https://www.microsoft.com</LearnMoreLink>
         <Locales>
         <PackageLocale Code="1033" IsDefault="true">
         <Logo>logo32x32.png</Logo>
@@ -117,13 +117,13 @@ Poniżej przedstawiono przykładowy kod, aby uzyskać plik input.xml. Zobacz def
 |SolutionAnchorName |Nazwa pliku zip rozwiązanie w narzędzia do wdrażania pakietów używany nazwę wyświetlaną i opis zasobów rozwiązania.|
 | Oprócz parametru startDate| Jest to data pakietu rozwiązania staną się dostępne. Format jest MM/DD/RRRR|
 |endDate|Jest to data pakietu rozwiązań zostanie zatrzymane, jest dostępna. Format jest MM/DD/RRRR |
-|SupportedCountries |Jest to rozdzielana przecinkami lista krajów, które powinny zostać wyświetlone tego pakietu. Skontaktuj się z usług online, aby uzyskać listę wszystkich bieżącego numerów kierunkowych krajów. W czasie, to zapisywanie listy został: AE, AL, AM, AO, AR, AT, Australia, AZ, BA, BB, BD, BE, BG, BH, BM, BN, BO, Brazylia, BY, urzędu certyfikacji, CH, ciągłej integracji, CL, zarządzania certyfikatami w usłudze, CO CR, CV, efektywna, CY, CZ, DE, DK, czy, DZ, WE, EE, EG , ES, FI, FR, GB, GE, GH, GR, GT, HK, HN, HR, HU, ID, IE, IL, INDIE, IQ, JEST, GO, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, MODUŁU RÓWNOWAŻENIA OBCIĄŻENIA, LK, LT, LU, ŁOTWA, LY, MA, MC, MD, MNIE, MK, MN, MIESIĄC, MT, MU, MX, MOJE , NG, NI, NL, NO, NZ, OM, PA, PE, PH, KLUCZ PODSTAWOWY, PL, ŻĄDANIA ŚCIĄGNIĘCIA, PS, (CZAS PACYFICZNY), PY, ODPOWIEDZI NA PYTANIA, RO, R, RU, RW, SA, SE, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, STANY ZJEDNOCZONE, UY, UŻ, VE, VI, VN, ZA, ZW |
+|SupportedCountries |Jest to rozdzielana przecinkami lista krajów, które powinny zostać wyświetlone tego pakietu. Skontaktuj się z usług online, aby uzyskać listę wszystkich bieżącego numerów kierunkowych krajów. W czasie pisania tego dokumentu lista została: AE, AL, AM, AO, AR, AT, AUSTRALIA, AZ, BA, BB, BD, BYĆ, BG, BH, BM BN, BO, BR PRZEZ URZĄD CERTYFIKACJI, CH, CIĄGŁEJ INTEGRACJI, CL, CM, CO, CR, CV, EFEKTYWNA, CY, CZ, DE, DK, CZY, DZ, WE, ESTONIA, NA PRZYKŁAD, ES, FI, FR, GB, GE, GH, GR, GT, HK , HN, HR, HU, ID, IE, IL, INDIE, IQ, JEST, GO, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, MODUŁU RÓWNOWAŻENIA OBCIĄŻENIA, LK, LT, LU, ŁOTWA, LY, MA, MC, MD, MNIE, MK, MN, MIESIĄC, MT, MU, MX, MY, NG, NI, NL, NO, NZ, OM, PA, PE, PH , KLUCZ PODSTAWOWY, PL, ŻĄDANIA ŚCIĄGNIĘCIA, PS, (CZAS PACYFICZNY), PY, ODPOWIEDZI NA PYTANIA, RO, R, RU, RW, SA, SE, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, STANY ZJEDNOCZONE, UY, UŻ, VE, VI, VN, ZA, ZW |
 |LearnMoreLink | Adres URL do strony więcej informacje dla tego pakietu. |
 |Ustawienia regionalne|Jedno wystąpienie tego węzła dla każdego języka środowiska użytkownika, które mają być obsługiwane w rozwiązaniu preferowane najlepsze środowisko użytkownika. Ten węzeł zawiera elementy podrzędne, które opisują ustawień regionalnych, logo i warunki dla każdego z języków|
 |Ustawienia regionalne: PackageLocale.Code|Identyfikator LCID języka dla tego węzła. Przykład: Angielski (US) to 1033|
 |Ustawienia regionalne: PackageLocale.IsDefault|Wskazuje, że jest to domyślny język. Jest on używany jako spadek kopię języka, jeśli język interfejsu użytkownika, wybranej przez klienta jest niedostępny.|
 |Ustawienia regionalne: Logo|To jeśli logo chcesz użyć dla tego pakietu. Rozmiar ikon to 32 x 32. Dozwolone formaty to PNG i JPG|
-|Ustawienia regionalne: terminy: PackageTerm.File|Jest to nazwa pliku dokumentu HTML, zawierający postanowieniami licencyjnymi.|
+|Ustawienia regionalne: warunki: PackageTerm.File|Jest to nazwa pliku dokumentu HTML, zawierający postanowieniami licencyjnymi.|
 
 Poniżej przedstawiono, w którym będą wyświetlane logo:
 

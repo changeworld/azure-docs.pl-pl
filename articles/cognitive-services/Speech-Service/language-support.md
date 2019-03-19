@@ -1,5 +1,5 @@
 ---
-title: Obsługa języków — interfejs API mowy usługi
+title: Obsługa języków — usługi mowy
 titleSuffix: Azure Cognitive Services
 description: Usługi mowy platformy Azure obsługuje wiele języków dla konwersji mowy na tekst i zamiany tekstu na mowę, oraz tłumaczenia mowy. Ten artykuł zawiera pełną listę Obsługa języków przez usługę.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 22916a188c79d5894faf48dd71d6ab17a582cf8b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 927781c61a9ca2a1ef23db47294468dad7140dff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885355"
 ---
-# <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
+# <a name="language-and-region-support-for-the-speech-services"></a>Obsługa języka i regionu dla usług przetwarzania mowy
 
 Różne języki są obsługiwane przez różne funkcje usług przetwarzania mowy. W poniższej tabeli podsumowano obsługę języka.
 
@@ -179,7 +179,7 @@ zh-TW | Chiński (Tajwan)|Kobieta | "Microsoft Server mowy Text na głos mowy (z
 Dostosowanie głos jest dostępny język angielski (en US), kontynent, chiński (zh-CN), francuski (fr-FR), niemiecki (de-DE) i włoski (it-IT).
 
 > [!NOTE]
-> Francuskim, niemieckim i włoskim szkolenia głosu rozpoczyna się od zestawu danych z ponad 2000 wypowiedzi. Chiński — angielski dwujęzyczny modele również są obsługiwane za pomocą ponad 2000 wypowiedzi początkowego zestawu danych.
+> Francuski, niemiecki i włoski szkolenia głosu rozpoczyna się od zestawu danych z ponad 2000 wypowiedzi. Chiński — angielski dwujęzyczny modele również są obsługiwane za pomocą ponad 2000 wypowiedzi początkowego zestawu danych.
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
@@ -255,5 +255,5 @@ Dostosowanie głos jest dostępny język angielski (en US), kontynent, chiński 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Pobierz subskrypcję wersji próbnej usługi Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 * [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

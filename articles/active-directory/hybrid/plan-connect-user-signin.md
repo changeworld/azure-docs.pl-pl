@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b503c7f0693a90d438fcec3ecae335fd349b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188005"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996338"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Usługa Azure AD Connect użytkownika opcje logowania
 Usługa Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logować się do zasobów lokalnych i chmurze przy użyciu tego samego hasła. W tym artykule opisano kluczowe pojęcia związane z każdego modelu tożsamości ułatwić wybór tożsamości, którego chcesz użyć do logowania do usługi Azure AD.
@@ -75,7 +75,9 @@ Aby uzyskać więcej informacji, zobacz:
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Federacji, który używa nowej lub istniejącej farmy usług AD FS w systemie Windows Server 2012 R2
 Za pomocą federacyjnego logowania użytkownicy zalogować się do usług platformy Azure na podstawie usługi AD za pomocą swoich haseł lokalnych. Gdy są one w sieci firmowej nie nawet muszą wprowadzić swoje hasła. Przy użyciu opcji federacji z usługami AD FS, można wdrożyć nowej lub istniejącej farmie za pomocą usług AD FS w systemie Windows Server 2012 R2. Jeśli chcesz określić istniejącą farmę, program Azure AD Connect konfiguruje relacji zaufania między farmy i usługi Azure AD, dzięki czemu można logowania użytkowników.
 
-<center>![Federacja z usługami AD FS w systemie Windows Server 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
+<center>
+
+![Federacja z usługami AD FS w systemie Windows Server 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Wdrażanie Federacja z usługami AD FS w systemie Windows Server 2012 R2
 
@@ -152,6 +154,7 @@ Jest bardzo ważne, aby zrozumieć relację między Stanami domeny niestandardow
 W następujące informacje, załóżmy, że jesteśmy zainteresowani, z contoso.com sufiks nazwy UPN, która jest używana w katalogu lokalnym jako część nazwy UPN — na przykład user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Synchronizacja skrótów haseł/ustawienia Express
+
 | Stan | Wpływ na wrażenia użytkownika logowania platformy Azure |
 |:---:|:--- |
 | Nie dodano |W tym przypadku nie domeny niestandardowej dla domeny contoso.com został dodany w katalogu usługi Azure AD. Użytkownicy, którzy mają nazwy UPN w środowisku lokalnym z sufiksem @contoso.com nie będzie można zalogować się do platformy Azure przy użyciu ich nazwy UPN w środowisku lokalnym. Zamiast tego należy ich używać nowej głównej nazwy użytkownika, który został dostarczony do ich przez usługę Azure AD, dodając sufiks domyślny katalog usługi Azure AD. Na przykład, jeśli synchronizowania użytkowników azurecontoso.onmicrosoft.com katalogu usługi Azure AD, a następnie użytkownika lokalnego user@contoso.com otrzyma nazwę UPN user@azurecontoso.onmicrosoft.com. |

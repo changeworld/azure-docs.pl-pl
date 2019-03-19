@@ -17,12 +17,12 @@ ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68593087c1fbb912cafb9c886f43f947744c5651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 07466e40834b8bfaf4a452cf728bae517b8c7b00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189382"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122722"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Szybki start: Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory 
 
@@ -164,7 +164,7 @@ Można zainicjować co, jeśli narzędzie oceny zasad, ustaw:
 - **Isabella Simonsen** jako użytkownik 
 - **Usługa Microsoft Azure Management** jako aplikacja w chmurze
 
- Klikając **co zrobić, jeśli** tworzy raport symulacji, który pokazuje:
+  Klikając **co zrobić, jeśli** tworzy raport symulacji, który pokazuje:
 
 - **Wymagać uwierzytelniania Wieloskładnikowego, aby uzyskać dostęp do portalu Azure** w obszarze **zasady, które będą miały zastosowanie** 
 - **Wymagaj uwierzytelniania wieloskładnikowego** jako **Udziel kontroli**.

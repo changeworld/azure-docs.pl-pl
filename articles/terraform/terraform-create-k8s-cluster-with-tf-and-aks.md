@@ -2,24 +2,24 @@
 title: Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service (AKS) i narzędzia Terraform
 description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, virtual machine, azure, kubernetes
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 57615ecd4c81359360004b732736bf757c0026c3
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009098"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
 Usługa [Azure Kubernetes Service (AKS)](/azure/aks/) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
 
-Z tego samouczka dowiesz się, jak wykonywać następujące zadania w ramach tworzenia klastra [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) za pomocą narzędzia [Terraform](http://terraform.io) i usługi AKS:
+Z tego samouczka dowiesz się, jak wykonywać następujące zadania w ramach tworzenia klastra [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) za pomocą narzędzia [Terraform](https://terraform.io) i usługi AKS:
 
 > [!div class="checklist"]
 > * Definiowanie klastra Kubernetes za pomocą języka HCL (HashiCorp Language)
@@ -37,7 +37,7 @@ Z tego samouczka dowiesz się, jak wykonywać następujące zadania w ramach two
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 Pierwszym krokiem jest utworzenie katalogu, w którym będą przechowywane pliki konfiguracji narzędzia Terraform dla tego ćwiczenia.
 
-1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
 1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: b9403855949e87a287f543c2ac41738e92238303
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: eb49d0fe610a78b8d1a407644a206fddaba0a67a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116219"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Oferty maszyny wirtualnej Podręcznik publikowania
 
@@ -56,12 +56,12 @@ Możesz podać środowisko z przewodnikiem rozwiązania klientom za pomocą inte
 
 Podczas wdrażania urządzenia wirtualnego subskrypcji skojarzonych z klientem, należy użyć typu oferty maszyny wirtualnej. Maszyny wirtualne są w pełni commerce włączone za pomocą zgodnie z rzeczywistym użyciem lub bring-your-own-license (BYOL) Modele licencjonowania. Firma Microsoft obsługuje transakcji handlowych i rozlicza klienta w Twoim imieniu. Możesz skorzystać z zalet przy użyciu relacji instrument preferowanego między klienta i firmy Microsoft, w tym wszelkich umów Enterprise Agreement.
 
->[!NOTE]
->W tej chwili zobowiązań pieniężnych związane z umową Enterprise Agreement mogą służyć względem użycia platformy Azure, maszyny wirtualnej, ale nie w odniesieniu do opłat za oprogramowanie.  
-
->[!NOTE]
->Jesteś w stanie ograniczyć odnajdywanie i wdrażanie maszyny wirtualnej do określonej grupy klientów przez publikowanie obrazu i cennik oferty prywatne. Oferty prywatne odblokowywanie możliwości tworzenia ekskluzywne oferty dla najbliższej klientów i oferuje dostosowane oprogramowanie i warunki. Warunki niestandardowe umożliwiają wyróżnienia różnych scenariuszy, w tym prowadzone przez pole zajmuje specjalne ceny i warunki oraz wczesny dostęp do ograniczonej wersji oprogramowania. Oferty prywatne Włącz Cię jednak do wypróbowania konkretne informacje o cenach lub produktów, które mają ograniczony zestaw klientów przez utworzenie nowej jednostki SKU o te szczegóły.  
-*   Aby uzyskać więcej informacji na temat oferty prywatne, odwiedź stronę oferty prywatne w portalu Azure Marketplace strony znajduje się w [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
+> [!NOTE]
+> W tej chwili zobowiązań pieniężnych związane z umową Enterprise Agreement mogą służyć względem użycia platformy Azure, maszyny wirtualnej, ale nie w odniesieniu do opłat za oprogramowanie.  
+> 
+> [!NOTE]
+> Jesteś w stanie ograniczyć odnajdywanie i wdrażanie maszyny wirtualnej do określonej grupy klientów przez publikowanie obrazu i cennik oferty prywatne. Oferty prywatne odblokowywanie możliwości tworzenia ekskluzywne oferty dla najbliższej klientów i oferuje dostosowane oprogramowanie i warunki. Warunki niestandardowe umożliwiają wyróżnienia różnych scenariuszy, w tym prowadzone przez pole zajmuje specjalne ceny i warunki oraz wczesny dostęp do ograniczonej wersji oprogramowania. Oferty prywatne Włącz Cię jednak do wypróbowania konkretne informacje o cenach lub produktów, które mają ograniczony zestaw klientów przez utworzenie nowej jednostki SKU o te szczegóły.  
+> *   Aby uzyskać więcej informacji na temat oferty prywatne, odwiedź stronę oferty prywatne w portalu Azure Marketplace strony znajduje się w [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- | 

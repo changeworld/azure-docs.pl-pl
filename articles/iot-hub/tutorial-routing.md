@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cc3f7c72acc0723c522b595ea106f72947e9d014
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 87d0339de117330bf6d586cd653b0d4d16a8cbca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728730"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087707"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Samouczek: Konfigurowanie routingu wiadomości przy użyciu usługi IoT Hub
 
@@ -144,7 +144,7 @@ echo "Service Bus namespace = " $sbNameSpace
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
-    
+
 # The Service Bus queue name must be globally unique, so add a random number to the end.
 sbQueueName=ContosoSBQueue$RANDOM
 echo "Service Bus queue name = " $sbQueueName
@@ -276,7 +276,7 @@ Planujesz rozsyłać komunikaty do różnych zasobów na podstawie właściwośc
 
 Teraz należy skonfigurować routing dla konta magazynu. Przejdź do okienka Kierowanie komunikatów, a następnie dodaj trasę. Podczas dodawania trasy zdefiniuj nowy punkt końcowy trasy. Po zakończeniu konfigurowania komunikaty, w których właściwość **level** została ustawiona na **storage**, będą automatycznie zapisywane na koncie magazynu. 
 
-Dane są zapisywane do magazynu obiektów blob w formacie Avro.
+Dane są zapisywane do magazynu w formacie Avro obiektów blob domyślnie.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) kliknij pozycję **Grupy zasobów**, a następnie wybierz grupę zasobów. W tym samouczku jest używana grupa **ContosoResources**. 
 
@@ -301,8 +301,9 @@ Dane są zapisywane do magazynu obiektów blob w formacie Avro.
    > 
    > Na przykład przy użyciu domyślnego formatu nazwy pliku obiektu blob, jeśli nazwa centrum to ContosoTestHub, a data/godzina to 30 października 2018 r., 10:56:00, nazwa obiektu blob będzie wyglądać następująco: `ContosoTestHub/0/2018/10/30/10/56`.
    > 
-   > Obiekty blob są zapisywane w formacie Avro.
-   >
+   > Obiekty BLOB są domyślnie zapisywane w formacie Avro. Można zapisywać pliki w formacie JSON. Funkcja do zakodowania w formacie JSON jest w wersji zapoznawczej we wszystkich regionach, w których IoT Hub jest dostępna, z wyjątkiem wschodnie stany USA, zachodnie stany USA i Europa Zachodnia. Zobacz [wskazówki dotyczące routingu w usłudze blob storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+   > 
+   > Routing do magazynu obiektów blob, firma Microsoft zaleca funkcji rejestrowanie obiektów blob, a następnie Iterowanie po nich, aby upewnić się, że wszystkie kontenery są odczytywane bez wprowadzania żadnych założeń partycji. Zakres partycji potencjalnie mogą ulec zmianie podczas [inicjowanych przez Microsoft trybu failover](iot-hub-ha-dr.md#microsoft-initiated-failover) lub usługi IoT Hub [ręczna praca awaryjna](iot-hub-ha-dr.md#manual-failover-preview). Aby dowiedzieć się, jak wyliczyć listy obiektów blob, zobacz [routingu do magazynu obiektów blob](iot-hub-devguide-messages-d2c.md#azure-blob-storage)
 
 8. Kliknij pozycję **Utwórz**, aby utworzyć punkt końcowy magazynu i dodać go do trasy. Spowoduje to powrót do okienka **Dodawanie trasy**.
 
@@ -311,15 +312,15 @@ Dane są zapisywane do magazynu obiektów blob w formacie Avro.
    **Nazwa**: Wprowadź nazwę zapytania dotyczącego routingu. W tym samouczku jest używana nazwa **StorageRoute**.
 
    **Punkt końcowy**: Skonfigurowany w poprzednim kroku punkt końcowy. 
-   
+
    **Źródło danych**: Z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
 
    **Włącz trasę**: Sprawdź, czy ta opcja jest włączona.
-   
+
    **Zapytanie dotyczące routingu**: Wprowadź `level="storage"` jako ciąg zapytania. 
 
    ![Zrzut ekranu przedstawiający tworzenie zapytania dotyczącego routingu dla konta magazynu.](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
-   
+
    Kliknij pozycję **Zapisz**. Po zakończeniu nastąpi powrót do okienka Kierowanie komunikatów, w którym można zobaczyć nowe zapytanie dotyczące routingu dla magazynu. Zamknij okienko Trasy, co spowoduje powrót na stronę grupy zasobów.
 
 ### <a name="routing-to-a-service-bus-queue"></a>Routing do kolejki usługi Service Bus 
@@ -337,14 +338,14 @@ Teraz skonfigurujesz routing dla kolejki usługi Service Bus. Przejdź do okienk
 4. Wypełnij następujące pola:
 
    **Nazwa punktu końcowego**: Wprowadź nazwę punktu końcowego. W tym samouczku jest używana nazwa **CriticalQueue**.
-   
+
    **Przestrzeń nazw usługi Service Bus**: Kliknij to pole, aby wyświetlić listę rozwijaną. Wybierz przestrzeń nazw usługi Service Bus, która została skonfigurowana podczas procedury przygotowywania. W tym samouczku jest używana nazwa **ContosoSBNamespace**.
 
    **Kolejka usługi Service Bus**: Kliknij to pole, aby wyświetlić listę rozwijaną. Z tej listy wybierz kolejkę usługi Service Bus. W tym samouczku jest używana kolejka **contososbqueue**.
 
 5. Kliknij pozycję **Utwórz**, aby dodać punkt końcowy kolejki usługi Service Bus. Spowoduje to powrót do okienka **Dodawanie trasy**. 
 
-6.  Teraz podaj pozostałe informacje zapytania dotyczącego routingu. To zapytanie określa kryteria dotyczące wysyłania komunikatów do kolejki usługi Service Bus, która właśnie została dodana jako punkt końcowy. Wypełnij pola na ekranie. 
+6. Teraz podaj pozostałe informacje zapytania dotyczącego routingu. To zapytanie określa kryteria dotyczące wysyłania komunikatów do kolejki usługi Service Bus, która właśnie została dodana jako punkt końcowy. Wypełnij pola na ekranie. 
 
    **Nazwa**: Wprowadź nazwę zapytania dotyczącego routingu. W tym samouczku jest używana nazwa **SBQueueRoute**. 
 
@@ -401,7 +402,7 @@ Kolejka usługi Service Bus jest używana do odbierania komunikatów oznaczonych
    ![Zrzut ekranu przedstawiający konfigurowanie połączenia na potrzeby kolejki usługi Service Bus.](./media/tutorial-routing/logic-app-define-connection.png)
 
    Kliknij przestrzeń nazw usługi Service Bus. W tym samouczku jest używana nazwa **ContosoSBNamespace**. Po wybraniu przestrzeni nazw portal wykonuje zapytanie w przestrzeni nazw usługi Service Bus w celu pobrania kluczy. Wybierz pozycję **RootManageSharedAccessKey** i kliknij pozycję **Utwórz**. 
-   
+
    ![Zrzut ekranu przedstawiający zakończenie konfigurowania połączenia.](./media/tutorial-routing/logic-app-finish-connection.png)
 
 6. Na następnym ekranie wybierz nazwę kolejki (w tym samouczku jest używana kolejka **contososbqueue**) z listy rozwijanej. W pozostałych polach można użyć wartości domyślnych. 
@@ -442,9 +443,9 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
-4. W obszarze **Topologia zadania** kliknij pozycję **Dane wejściowe**.
+1. W obszarze **Topologia zadania** kliknij pozycję **Dane wejściowe**.
 
-5. W okienku **Dane wejściowe** kliknij pozycję **Dodaj wejście strumienia** i wybierz pozycję centrum IoT Hub. Na wyświetlonym ekranie wypełnij następujące pola:
+1. W okienku **Dane wejściowe** kliknij pozycję **Dodaj wejście strumienia** i wybierz pozycję centrum IoT Hub. Na wyświetlonym ekranie wypełnij następujące pola:
 
    **Alias danych wejściowych**: W tym samouczku jest używany alias **contosoinputs**.
 
@@ -457,12 +458,12 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
    **Nazwa zasad dostępu współdzielonego**: Wybierz pozycję **iothubowner**. Portal wypełni klucz wstępny zasad dostępu współdzielonego za Ciebie.
 
    **Grupy użytkowników**: Wybierz wcześniej utworzoną grupę użytkowników. W tym samouczku jest używana grupa **contosoconsumers**.
-   
+
    W pozostałych polach zaakceptuj wartości domyślne. 
 
    ![Zrzut ekranu przedstawiający sposób konfigurowania danych wejściowych zadania usługi Stream Analytics.](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-6. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi Stream Analytics
 
@@ -613,7 +614,7 @@ Aby usunąć grupę zasobów, użyj polecenia [Remove-AzResourceGroup](https://d
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób użycia routingu komunikatów do rozsyłania komunikatów usługi IoT Hub do różnych miejsc docelowych. W tym celu wykonano następujące zadania:  
 
@@ -631,4 +632,4 @@ W tym samouczku przedstawiono sposób użycia routingu komunikatów do rozsyłan
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zarządzać stanem urządzenia IoT. 
 
 > [!div class="nextstepaction"]
-[Konfigurowanie i używanie metryk i diagnostyki w usłudze IoT Hub](tutorial-use-metrics-and-diags.md)
+> [Konfigurowanie i używanie metryk i diagnostyki w usłudze IoT Hub](tutorial-use-metrics-and-diags.md)

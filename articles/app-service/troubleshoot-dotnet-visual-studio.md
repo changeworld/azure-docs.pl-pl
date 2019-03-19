@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5e749f68aba48ac258363a0a03e3474e1e28b064
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876776"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996778"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacją w usłudze Azure App Service przy użyciu programu Visual Studio
 ## <a name="overview"></a>Przegląd
@@ -134,19 +134,19 @@ public ActionResult About()
 }
 ```
 
-4. [Ustaw punkt przerwania](https://docs.microsoft.com/visualstudio/debugger/) na `ViewBag.Message` wiersza.
+1. [Ustaw punkt przerwania](https://docs.microsoft.com/visualstudio/debugger/) na `ViewBag.Message` wiersza.
 
-5. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i kliknij przycisk **Publikuj**.
+1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i kliknij przycisk **Publikuj**.
 
-6. W **profilu** listy rozwijanej, wybierz taki sam, jak używane w profilu [tworzenie aplikacji ASP.NET w usłudze Azure App Service](app-service-web-get-started-dotnet-framework.md). Następnie kliknij przycisk Ustawienia.
+1. W **profilu** listy rozwijanej, wybierz taki sam, jak używane w profilu [tworzenie aplikacji ASP.NET w usłudze Azure App Service](app-service-web-get-started-dotnet-framework.md). Następnie kliknij przycisk Ustawienia.
 
-7. W **Publikuj** okno dialogowe, kliknij przycisk **ustawienia** kartę, a następnie zmień **konfiguracji** do **debugowania**, a następnie kliknij przycisk  **Zapisz**.
+1. W **Publikuj** okno dialogowe, kliknij przycisk **ustawienia** kartę, a następnie zmień **konfiguracji** do **debugowania**, a następnie kliknij przycisk  **Zapisz**.
 
     ![Publikowanie w trybie debugowania](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-8. Kliknij przycisk **Opublikuj**. Po wdrożeniu zostanie zakończone i przeglądarki otwiera Azure adres URL aplikacji, zamknij przeglądarkę.
+1. Kliknij przycisk **Opublikuj**. Po wdrożeniu zostanie zakończone i przeglądarki otwiera Azure adres URL aplikacji, zamknij przeglądarkę.
 
-9. W **Eksploratora serwera**, kliknij prawym przyciskiem myszy aplikację, a następnie kliknij przycisk **dołączyć debuger**.
+1. W **Eksploratora serwera**, kliknij prawym przyciskiem myszy aplikację, a następnie kliknij przycisk **dołączyć debuger**.
 
     ![Dołącz debuger](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
@@ -156,19 +156,19 @@ public ActionResult About()
     > Jeśli masz problemy z uruchamiania debugera, spróbuj to zrobić za pomocą **programu Cloud Explorer** zamiast **Eksploratora serwera**.
     >
 
-10. Kliknij przycisk **o** w menu.
+1. Kliknij przycisk **o** w menu.
 
-     Program Visual Studio zatrzymuje się na punkcie przerwania, a kod działa na platformie Azure, nie na komputerze lokalnym.
+    Program Visual Studio zatrzymuje się na punkcie przerwania, a kod działa na platformie Azure, nie na komputerze lokalnym.
 
-11. Umieść kursor nad `currentTime` zmiennej, aby wyświetlić wartość czasu.
+1. Umieść kursor nad `currentTime` zmiennej, aby wyświetlić wartość czasu.
 
-     ![Zmienna widoku w trybie debugowania, działające na platformie Azure](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
+    ![Zmienna widoku w trybie debugowania, działające na platformie Azure](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
-     Czas, który zostanie wyświetlony jest czas serwer platformy Azure, który może znajdować się w innej strefie czasowej niż komputera lokalnego.
+    Czas, który zostanie wyświetlony jest czas serwer platformy Azure, który może znajdować się w innej strefie czasowej niż komputera lokalnego.
 
-12. Wprowadź nową wartość dla `currentTime` zmiennych, takich jak "Teraz uruchomiona na platformie Azure".
+1. Wprowadź nową wartość dla `currentTime` zmiennych, takich jak "Teraz uruchomiona na platformie Azure".
 
-13. Naciśnij klawisz F5, aby kontynuować działanie.
+1. Naciśnij klawisz F5, aby kontynuować działanie.
 
      Na stronie informacje działających na platformie Azure — wyświetlenie nowej wartości wprowadzone w zmiennej bieżącagodzina.
 
@@ -311,7 +311,7 @@ public ActionResult Contact()
 }        
 ```
 
-2. Dodaj `using System.Diagnostics;` instrukcji na górze pliku.
+1. Dodaj `using System.Diagnostics;` instrukcji na górze pliku.
 
 ### <a name="view-the-tracing-output-locally"></a>Wyświetl dane wyjściowe śledzenia lokalnie
 1. Naciśnij klawisz F5, aby uruchomić aplikację w trybie debugowania.
@@ -339,15 +339,15 @@ public ActionResult Contact()
 ```
 
 `WebPageTraceListener` Umożliwiają wyświetlanie dane wyjściowe śledzenia, przechodząc do `/trace.axd`.
-3. Dodaj <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">element śledzenia</a> w obszarze `<system.web>` w pliku Web.config, takim jak poniższy:
+1. Dodaj <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">element śledzenia</a> w obszarze `<system.web>` w pliku Web.config, takim jak poniższy:
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
 ```       
 
-4. Naciśnij klawisze CTRL+F5, aby uruchomić aplikację.
-5. Na pasku adresu w oknie przeglądarki Dodaj *trace.axd* do adresu URL, a następnie naciśnij klawisz Enter (adres URL jest podobny do http://localhost:53370/trace.axd).
-6. Na **śledzenie aplikacji** kliknij **Wyświetl szczegóły** w pierwszym wierszu (a nie wiersz BrowserLink).
+1. Naciśnij klawisze CTRL+F5, aby uruchomić aplikację.
+1. Na pasku adresu w oknie przeglądarki Dodaj *trace.axd* do adresu URL, a następnie naciśnij klawisz Enter (adres URL jest podobny do `http://localhost:53370/trace.axd`).
+1. Na **śledzenie aplikacji** kliknij **Wyświetl szczegóły** w pierwszym wierszu (a nie wiersz BrowserLink).
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
@@ -477,7 +477,7 @@ Wszystkie dzienniki, które można monitorować w **dane wyjściowe** okna możn
    * Dzienniki serwera sieci Web znajdują się w *.log* pliki *LogFiles\http\RawLogs* folderu. Można użyć narzędzia, takie jak [analizator dzienników](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) do wyświetlania i modyfikowania tych plików.
    * Dzienniki komunikat szczegółowy komunikat o błędzie znajdują się w *.html* pliki *LogFiles\DetailedErrors* folderu.
 
-    ( *Wdrożeń* folder jest tworzonych przez kontroli źródła, publikowanie; nie ma niczego związanych z publikowaniem w programie Visual Studio. *Git* folder jest dający zapisy związane z kontrolą źródła publikowania i plików dziennika usługi transmisji strumieniowej.)  
+     ( *Wdrożeń* folder jest tworzonych przez kontroli źródła, publikowanie; nie ma niczego związanych z publikowaniem w programie Visual Studio. *Git* folder jest dający zapisy związane z kontrolą źródła publikowania i plików dziennika usługi transmisji strumieniowej.)  
 
 <!-- ## <a name="storagelogs"></a>View storage logs
 Application tracing logs can also be sent to an Azure storage account, and you can view them in Visual Studio. To do that you'll create a storage account, enable storage logs in the Azure portal, and view them in the **Logs** tab of the **Azure Web App** window.

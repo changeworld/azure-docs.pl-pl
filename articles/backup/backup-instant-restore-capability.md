@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 7d54e137cbfb35c84173c79e65a1070eabb52e78
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: a618482b73e8e423bc00b7c9010c9282da69cd3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731628"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844721"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
 > [!NOTE]
 > Na podstawie opinii użytkowników, zmieniamy **stosu kopii zapasowej maszyny Wirtualnej V2** do **natychmiastowe Przywracanie** aby wyeliminować problemy z funkcjami usługi Azure Stack.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Nowy model dla przywracania błyskawiczne zapewnia następujące ulepszenia funkcji:
 
@@ -27,7 +29,6 @@ Nowy model dla przywracania błyskawiczne zapewnia następujące ulepszenia funk
 * Obsługa dysków o rozmiarach do 4 TB.
 * Obsługuje dyski SSD w warstwie standardowa.
 *   Możliwość używania niezarządzanej maszyny Wirtualnej w oryginalnych kont magazynu (na dysku), podczas przywracania. Ta możliwość istnieje, nawet wtedy, gdy maszyna wirtualna ma dyski, które są dystrybuowane na kontach magazynu. Jego przyspiesza operacje przywracania dla różnych konfiguracji maszyny Wirtualnej
-
 
 
 ## <a name="whats-new-in-this-feature"></a>What's new in tej funkcji
@@ -91,19 +92,19 @@ Jeśli chcesz Samoobsługa i Uaktualnij, aby przywrócić błyskawiczne, uruchom
 1.  Zaloguj się do konta platformy Azure:
 
     ```
-    PS C:> Connect-AzureRmAccount
+    PS C:> Connect-AzAccount
     ```
 
 2.  Wybierz subskrypcję, której chcesz zarejestrować:
 
     ```
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    PS C:>  Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
     ```
 
 3.  Zarejestruj tej subskrypcji:
 
     ```
-    PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
+    PS C:>  Register-AzProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
 ## <a name="upgrade-to-instant-restore-using-cli"></a>Uaktualnij, aby przywrócić błyskawiczne przy użyciu interfejsu wiersza polecenia
@@ -134,7 +135,7 @@ Uruchom następujące polecenia z poziomu powłoki:
 Z poziomu terminalu programu PowerShell z podwyższonym poziomem uprawnień uruchom następujące polecenie cmdlet:
 
 ```
-Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
+Get-AzProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ### <a name="cli"></a>Interfejs wiersza polecenia

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/07/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: fce7beeda352b9add3603fb74c558ad1b64fac2a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 22b070e6d70208057c85ad6a2322cc440d12a0fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895520"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008208"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Przewodnik po zabezpieczeniach usługi Azure Data Lake Storage Gen2
 
@@ -88,7 +88,7 @@ Poniżej przedstawiono główne punkty, które musisz wiedzieć o otwieranie ope
 
 Klucze konta magazynu są ciągami 512-bitowy, utworzone przez platformę Azure, która wraz z nazwą konta magazynu, mogą być używane do dostępu do obiektów danych przechowywanych na koncie magazynu, na przykład, obiekty BLOB, jednostki przechowywane w tabeli, kolejki komunikatów i plików w udziale plików platformy Azure. Kontrolowanie dostępu do kluczy kontroli dostępu do konta magazynu do płaszczyzny danych dla tego konta magazynu.
 
-Każde konto magazynu ma dwa klucze, określane jako "Klucz 1" i "Klucz 2" w [witryny Azure portal](http://portal.azure.com/) w poleceniach cmdlet programu PowerShell. Te mogą zostać wygenerowane ponownie ręcznie przy użyciu jednej z kilku metod, w tym między innymi za pomocą [witryny Azure portal](https://portal.azure.com/), PowerShell, interfejsu wiersza polecenia platformy Azure lub programowo przy użyciu biblioteki klienta .NET magazynu lub usług Azure Storage INTERFEJS API REST.
+Każde konto magazynu ma dwa klucze, określane jako "Klucz 1" i "Klucz 2" w [witryny Azure portal](https://portal.azure.com/) w poleceniach cmdlet programu PowerShell. Te mogą zostać wygenerowane ponownie ręcznie przy użyciu jednej z kilku metod, w tym między innymi za pomocą [witryny Azure portal](https://portal.azure.com/), PowerShell, interfejsu wiersza polecenia platformy Azure lub programowo przy użyciu biblioteki klienta .NET magazynu lub usług Azure Storage INTERFEJS API REST.
 
 Istnieje wiele powodów, aby ponownie wygenerować kluczy konta magazynu.
 
@@ -167,7 +167,7 @@ Ponadto można określić, że żądania wysyłane za pomocą sygnatury dostępu
 
 Sygnaturę dostępu współdzielonego to zbiór parametrów zapytania dołączona do adresu URL wskazuje na zasób
 
-który zawiera informacje dotyczące dostępu przyznany i czas, dla których dostęp jest dozwolony. Oto przykład; Ten identyfikator URI zapewnia dostęp do odczytu do obiektu blob przez pięć minut. Parametry zapytania sygnatury dostępu Współdzielonego musi być zakodowane jako adres URL, takich jak 3A % dwukropek (:) lub 20% w przypadku spację.
+który zawiera informacje dotyczące dostępu przyznany i czas, dla których dostęp jest dozwolony. Oto przykład; Ten identyfikator URI zapewnia dostęp do odczytu do obiektu blob przez pięć minut. Parametry zapytania sygnatury dostępu Współdzielonego musi być zakodowane jako adres URL, takich jak 3A % dla dwukropek (:) lub % 20 spację.
 
 ```
 http://mystorage.dfs.core.windows.net/myfilesystem/myfile.txt (URL to the file)

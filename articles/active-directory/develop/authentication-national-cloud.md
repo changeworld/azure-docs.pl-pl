@@ -17,12 +17,12 @@ ms.author: negoe
 ms.reviewer: negoe,andret,saeeda,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a487c233e7bb71f05c6f2181d9c822ca508a583c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4feaf97de7b833514113af6c91b3745be0503eff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192952"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113688"
 ---
 # <a name="national-clouds"></a>Chmury krajowe
 
@@ -44,10 +44,10 @@ Poniższa tabela zawiera listę podstawowych adresach URL używany do rejestrowa
 
 | Chmury krajowe | Usługi AD portalu punkt końcowy platformy Azure
 | --- | --- |
-| Usługa Azure AD dla instytucji rządowych USA |https://portal.azure.us
-|Niemiecka wersja platformy Azure AD |https://portal.microsoftazure.de
-|Usługi AD chińska wersja platformy Azure obsługiwane przez firmę 21Vianet |https://portal.azure.cn
-|Usługa Azure AD (usługa globalne)|https://portal.azure.com 
+| Usługa Azure AD dla instytucji rządowych USA |`https://portal.azure.us`
+|Niemiecka wersja platformy Azure AD |`https://portal.microsoftazure.de`
+|Usługi AD chińska wersja platformy Azure obsługiwane przez firmę 21Vianet |`https://portal.azure.cn`
+|Usługa Azure AD (usługa globalne)|`https://portal.azure.com` 
 
 ## <a name="azure-ad-authentication-endpoints"></a>Punkty końcowe uwierzytelniania usługi Azure AD
 
@@ -78,8 +78,8 @@ Aby dowiedzieć się, jak wywoływać interfejsy API programu Graph firmy Micros
 
 
 
->[!IMPORTANT]
-Niektórych usług i funkcji, które znajdują się w określonych regionach usługi global service mogą nie być dostępne we wszystkich chmurach krajowych. Aby dowiedzieć się, jakie usługi są dostępne przejdź do [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
+> [!IMPORTANT]
+> Niektórych usług i funkcji, które znajdują się w określonych regionach usługi global service mogą nie być dostępne we wszystkich chmurach krajowych. Aby dowiedzieć się, jakie usługi są dostępne przejdź do [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

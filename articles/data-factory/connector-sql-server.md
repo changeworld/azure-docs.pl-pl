@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 10ec490a6fe2044e1845efca94762b4ae1a42752
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 78d82f7604d86b50ee5e05e5c3b5b9802a9559e5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877942"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -489,7 +489,7 @@ BEGIN
       UPDATE SET State = source.State
   WHEN NOT MATCHED THEN
       INSERT (ProfileID, State, Category)
-      VALUES (source.ProfileID, source.State, source.Category)
+      VALUES (source.ProfileID, source.State, source.Category);
 END
 ```
 
@@ -499,14 +499,11 @@ W bazie danych należy zdefiniować typ tabeli o takiej samej nazwie jako sqlWri
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
     [ProfileID] [varchar](256) NOT NULL,
     [State] [varchar](256) NOT NULL，
-    [Category] [varchar](256) NOT NULL，
+    [Category] [varchar](256) NOT NULL
 )
 ```
 
 Funkcja procedura składowana wykorzystuje [parametry Table-Valued](https://msdn.microsoft.com/library/bb675163.aspx).
-
->[!NOTE]
->Jeśli piszesz na typ danych pieniądze/Smallmoney przez wywoływanie procedury składowanej, mogą być zaokrąglane wartości. Określ odpowiedni typ danych w TVP jako dziesiętne zamiast pieniądze/Smallmoney, aby uniknąć.
 
 ## <a name="data-type-mapping-for-sql-server"></a>Mapowanie dla programu SQL server — typ danych
 

@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: b031e7b772389aa81fd214d31365c20018cf48ae
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: f00f11e66d33c37ff2107cbb8282b49994fe0d3b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874447"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013582"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Samouczek: Tworzenie aplikacji o wysokiej dostępności z usługą Blob Storage
 
@@ -49,15 +49,14 @@ W celu ukończenia tego samouczka:
 * Zainstaluj język [Python](https://www.python.org/downloads/)
 * Pobierz i zainstaluj [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python)
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Zestaw SDK języka Java w wersji 7](#tab/java-v7)
-
-* Zainstaluj i skonfiguruj narzędzie [Maven](http://maven.apache.org/download.cgi) tak, aby działało z poziomu wiersza polecenia
-* Zainstaluj i skonfiguruj zestaw [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-
 # <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
-* Zainstaluj i skonfiguruj narzędzie [Maven](http://maven.apache.org/download.cgi) tak, aby działało z poziomu wiersza polecenia
-* Zainstaluj i skonfiguruj zestaw [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Zainstaluj i skonfiguruj narzędzie [Maven](https://maven.apache.org/download.cgi) tak, aby działało z poziomu wiersza polecenia
+* Zainstaluj i skonfiguruj zestaw [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+* Zainstaluj [Node.js](https://nodejs.org).
 
 ---
 
@@ -74,24 +73,24 @@ Wykonaj następujące kroki, aby utworzyć konto magazynu geograficznie nadmiaro
 1. Wybierz przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure Portal.
 2. Wybierz pozycję **Storage** na stronie **Nowe**.
 3. Wybierz pozycję **Konto usługi Storage — Blob, File, Table, Queue** w sekcji **Polecane**.
-4. Wypełnij formularz konta magazynu przy użyciu następujących informacji zgodnie z ilustracją i wybierz pozycję **Utwórz**:
+4. Wypełnij formularz konta magazynu z poniższymi informacjami, jak pokazano na poniższej ilustracji, a następnie wybierz pozycję **Utwórz**:
 
    | Ustawienie       | Sugerowana wartość | Opis |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Nazwa** | mystorageaccount | Unikatowa wartość konta magazynu |
-   | **Model wdrażania** | Resource Manager  | Usługa Resource Manager oferuje najnowsze funkcje.|
-   | **Rodzaj konta** | StorageV2 | Aby uzyskać więcej informacji na temat typów kont, zobacz [Typy kont magazynu](../common/storage-introduction.md#types-of-storage-accounts) |
+   | **Subskrypcja** | Twoja subskrypcja |Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
+   | **Grupa zasobów** | myResourceGroup |Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
+   | **Nazwa konta magazynu** | mystorageaccount | Unikatowa wartość konta magazynu |
+   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację. |
    | **Wydajność** | Standardowa (Standard) | Warstwa Standardowa jest wystarczająca na potrzeby przykładowego scenariusza. |
+   | **Rodzaj konta** | StorageV2 | Aby uzyskać więcej informacji na temat typów kont, zobacz [Typy kont magazynu](../common/storage-introduction.md#types-of-storage-accounts) |
    | **Replikacja**| Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS) | Jest to niezbędne do działania przykładu. |
-   |**Subskrypcja** | Twoja subskrypcja |Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
-   |**ResourceGroup** | myResourceGroup |Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
-   |**Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację. |
+   | **Warstwa dostępu** | Gorąca | Gorąca jest wystarczająca na potrzeby przykładowego scenariusza. |
 
 ![tworzenie konta magazynu](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
-# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 [Pobierz przykładowy projekt](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip) i wyodrębnij (rozpakuj) plik storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip file. Możesz również użyć narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. Przykładowy projekt zawiera aplikację konsolową.
 
@@ -99,7 +98,7 @@ Wykonaj następujące kroki, aby utworzyć konto magazynu geograficznie nadmiaro
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git 
 ```
 
-# <a name="python-tabpython"></a>[Python] (#tab/python)
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 [Pobierz przykładowy projekt](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip) i wyodrębnij (rozpakuj) plik storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip. Możesz również użyć narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. Przykładowy projekt zawiera podstawową aplikację w języku Python.
 
@@ -107,15 +106,7 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="java-v7-sdk--tabjava-v7"></a>[Java V7 SDK] (#tab/java-v7)
-
-[Pobierz przykładowy projekt](https://github.com/Azure-Samples/storage-java-ha-ra-grs) i wyodrębnij plik storage-java-ragrs.zip. Możesz również użyć narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. Przykładowy projekt zawiera podstawową aplikację w języku Java.
-
-```bash
-git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
-```
-
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
+# <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
 [Pobierz przykładowy projekt](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs) i wyodrębnij plik storage-java-ragrs.zip. Możesz również użyć narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. Przykładowy projekt zawiera podstawową aplikację w języku Java.
 
@@ -123,62 +114,57 @@ git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
 git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 ```
 
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+[Pobierz przykładowy projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) i rozpakuj plik. Możesz również użyć narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji do swojego środowiska projektowego. Przykładowy projekt zawiera podstawową aplikację Node.js.
+
+```bash
+git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
+```
+
 ---
 
-# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
+## <a name="configure-the-sample"></a>Konfigurowanie przykładu
 
-W aplikacji należy wprowadzić parametry połączenia konta magazynu. Zaleca się przechowywanie tych parametrów połączenia w zmiennej środowiskowej na maszynie lokalnej, na której uruchomiona jest aplikacja. Postępuj zgodnie z jednym z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową.
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Kopiuj **ciąg połączenia** z klucza podstawowego lub dodatkowego. Zastąp ciąg \<yourconnectionstring\> rzeczywistymi parametrami połączenia, uruchamiając jedno z poniższych poleceń w systemie operacyjnym. To polecenie zapisuje zmienną środowiskową na maszynie lokalnej. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**. Zastąp ciąg **\<storageConnectionString\>** w następującym przykładzie:
+W aplikacji należy wprowadzić parametry połączenia konta magazynu. Te parametry połączenia można przechowywać w zmiennej środowiskowej na maszynie lokalnej z uruchomioną aplikacją. Postępuj zgodnie z jednym z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową.
 
-### <a name="linux"></a>Linux
-
-```
-export storageconnectionstring=\<yourconnectionstring\> 
-```
-### <a name="windows"></a>Windows
-
-```PowerShell
-setx storageconnectionstring "\<yourconnectionstring\>"
-```
-
-# <a name="python-tabpython"></a>[Python] (#tab/python)
-
-W aplikacji należy wprowadzić parametry połączenia konta magazynu. Zaleca się przechowywanie tych parametrów połączenia w zmiennej środowiskowej na maszynie lokalnej, na której uruchomiona jest aplikacja. Postępuj zgodnie z jednym z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową.
-
-W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Kopiuj **ciąg połączenia** z klucza podstawowego lub dodatkowego. Zastąp ciąg \<yourconnectionstring\> rzeczywistymi parametrami połączenia, uruchamiając jedno z poniższych poleceń w systemie operacyjnym. To polecenie zapisuje zmienną środowiskową na maszynie lokalnej. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**. Zastąp ciąg **\<storageConnectionString\>** w następującym przykładzie:
+W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Skopiuj **parametry połączenia** z klucza podstawowego lub pomocniczego. Uruchom jedno z następujących poleceń, w oparciu o systemu operacyjnego, zastępując \<yourconnectionstring\> z rzeczywistymi parametrami połączenia. To polecenie zapisuje zmienną środowiskową na maszynie lokalnej. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
 
 ### <a name="linux"></a>Linux
 
 ```
-export storageconnectionstring=\<yourconnectionstring\> 
+export storageconnectionstring=<yourconnectionstring>
 ```
 ### <a name="windows"></a>Windows
 
 ```PowerShell
-setx storageconnectionstring "\<yourconnectionstring\>"
+setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="java-v7-sdk--tabjava-v7"></a>[Java V7 SDK] (#tab/java-v7)
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-W aplikacji należy wprowadzić parametry połączenia konta magazynu. Zaleca się przechowywanie tych parametrów połączenia w zmiennej środowiskowej na maszynie lokalnej, na której uruchomiona jest aplikacja. Postępuj zgodnie z jednym z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową.
+W aplikacji musisz podać swoje poświadczenia konta magazynu. Te informacje można przechowywać w zmiennych środowiskowych na komputerze lokalnym, na którym uruchomiona jest aplikacja. Wykonaj jedną z poniższych przykładów w zależności od używanego systemu operacyjnego do tworzenia zmiennych środowiskowych.
 
-W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Kopiuj **ciąg połączenia** z klucza podstawowego lub dodatkowego. Zastąp ciąg \<yourconnectionstring\> rzeczywistymi parametrami połączenia, uruchamiając jedno z poniższych poleceń w systemie operacyjnym. To polecenie zapisuje zmienną środowiskową na maszynie lokalnej. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**. Zastąp ciąg **\<storageConnectionString\>** w następującym przykładzie:
+W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Wklej **nazwa konta magazynu** i **klucz** wartości następujące polecenia, zastępując \<youraccountname\> i \<youraccountkey\>symbole zastępcze. To polecenie zapisuje zmienne środowiskowe do komputera lokalnego. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
 
 ### <a name="linux"></a>Linux
 
 ```
-export storageconnectionstring=\<yourconnectionstring\> 
+export accountname=<youraccountname>
+export accountkey=<youraccountkey>
 ```
 ### <a name="windows"></a>Windows
 
 ```PowerShell
-setx storageconnectionstring "\<yourconnectionstring\>"
+setx accountname "<youraccountname>"
+setx accountkey "<youraccountkey>"
 ```
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
+# <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
-Ten przykład wymaga bezpiecznego przechowywania nazwy i klucza konta magazynu. Zapisz je w zmiennych środowiskowych znajdujących się lokalnie na maszynie używanej do uruchamiania aplikacji przykładowej. Aby utworzyć zmienne środowiskowe, użyj jednego z poniższych przykładów, w zależności od używanego systemu operacyjnego — Linux lub Windows. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
+Ten przykład wymaga bezpiecznego przechowywania nazwy i klucza konta magazynu. Zapisz je w zmiennych środowiskowych znajdujących się lokalnie na maszynie używanej do uruchamiania aplikacji przykładowej. Aby utworzyć zmienne środowiskowe, użyj jednego z poniższych przykładów, w zależności od używanego systemu operacyjnego — Linux lub Windows. 
 
 ### <a name="linux-example"></a>Przykład dla systemu Linux
 
@@ -194,11 +180,26 @@ setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
 
+Te informacje można znaleźć w witrynie Azure portal, przechodząc do swojego konta magazynu i wybranie **klucze dostępu** w **ustawienia** sekcji. 
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Aby uruchomić ten przykład, należy dodać poświadczenia konta magazynu do `.env.example` pliku, a następnie zmień jej nazwę na `.env`.
+
+```
+AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
+AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
+```
+
+Te informacje można znaleźć w witrynie Azure portal, przechodząc do swojego konta magazynu i wybranie **klucze dostępu** w **ustawienia** sekcji. 
+
+Należy również zainstalować wymagane zależności. Aby to zrobić, otwórz wiersz polecenia, przejdź do folderu przykładu, a następnie wprowadź `npm install`.
+
 ---
 
 ## <a name="run-the-console-application"></a>Uruchamianie aplikacji konsolowej
 
-# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 W programie Visual Studio naciśnij klawisz **F5** lub wybierz pozycję **Uruchom**, aby rozpocząć debugowanie aplikacji. Program Visual Studio automatycznie przywraca brakujące pakiety NuGet, jeśli zostały skonfigurowane. Więcej szczegółów można znaleźć w temacie [Installing and reinstalling packages with package restore (Instalowanie i ponowne instalowanie pakietów przy użyciu funkcji przywracania pakietów)](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview).
 
@@ -208,7 +209,7 @@ Zostanie uruchomione okno konsoli i aplikacja zacznie działać. Aplikacja przek
 
 W przykładowym kodzie zadanie `RunCircuitBreakerAsync` w pliku `Program.cs` jest używane do pobierania obrazu z konta magazynu przy użyciu metody [DownloadToFileAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_). Przed pobraniem definiowany jest element [OperationContext](/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet). Kontekst operacji definiuje procedury obsługi zdarzeń wyzwalane po pomyślnym zakończeniu pobierania lub po niepowodzeniu pobierania i podjęciu jego kolejnej próby.
 
-# <a name="python-tabpython"></a>[Python] (#tab/python)
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Aby uruchomić aplikację w terminalu lub wierszu polecenia, przejdź do katalogu **circuitbreaker.py** i wprowadź wartość `python circuitbreaker.py`. Aplikacja przekazuje obraz **HelloWorld.png** z rozwiązania na konto magazynu. Aplikacja sprawdza, czy obraz został replikowany do pomocniczego punktu końcowego RA-GRS. Następnie rozpoczyna pobieranie obrazu maksymalnie 999 razy. Każdy odczyt jest reprezentowany przez **P** lub **S**. **P** reprezentuje podstawowy punkt końcowy, a **S** — pomocniczy punkt końcowy.
 
@@ -220,17 +221,11 @@ Funkcja ponawiania obiektu usługi Storage została ustawiona na zasady ponawian
 
 Przed pobraniem definiowana jest funkcja [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) i [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) obiektu usługi. Te funkcje definiują procedury obsługi zdarzeń wyzwalane po pomyślnym zakończeniu pobierania lub po niepowodzeniu pobierania i podjęciu jego kolejnej próby.  
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK] (#tab/java-v7)
-
-Aplikację można uruchomić, otwierając terminal lub wiersz polecenia w zakresie folderu pobranej aplikacji. W tym miejscu należy wprowadzić polecenie `mvn compile exec:java`, aby uruchomić aplikację. Następnie aplikacja przekazuje obraz **HelloWorld.png** z katalogu do konta magazynu i sprawdza, czy obraz został replikowany do pomocniczego punktu końcowego magazynu RA-GRS. Po sprawdzeniu aplikacja rozpocznie pobieranie obrazu w sposób powtarzalny, wysyłając równocześnie raporty dotyczące punktu końcowego, z którego odbywa się pobieranie.
-
-Funkcja ponawiania obiektu usługi Storage została ustawiona w celu używania zasad ponawiania liniowego. Funkcja ponawiania określa, czy należy ponowić próbę żądania, oraz wskazuje liczbę sekund oczekiwania przed każdą ponowną próbą. Właściwość **LocationMode** elementu **BlobRequestOptions** została ustawiona na **PRIMARY\_THEN\_SECONDARY**. Umożliwia to aplikacji automatyczne przełączanie do lokalizacji pomocniczej, jeśli podczas próby pobrania obrazu **HelloWorld.png** nie uda się połączyć z lokalizacją podstawową.
-
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
+# <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
 Aby uruchomić aplikację przykładową, użyj narzędzia Maven w wierszu polecenia.
 
-1. Otwórz powłokę i przejdź do przykładu **storage-blobs-java-v10-quickstart** w sklonowanym katalogu.
+1. Otwórz powłokę i przejdź do **storage-blobs-java-v10-tutorial-master** w sklonowanym katalogu.
 2. Wprowadź polecenie `mvn compile exec:java`.
 
 W tym przykładzie zostanie utworzony plik testowy w katalogu domyślnym — dla użytkowników systemu Windows jest to **AppData\Local\Temp**. Następnie w przykładzie zostaną przedstawione następujące polecenia, które możesz wprowadzić:
@@ -270,11 +265,38 @@ Cleaning up the sample and exiting!
 
 Możesz kontrolować aplikację przykładową, więc wprowadź polecenia, aby wykonać ten kod. W danych wejściowych jest rozróżniana wielkość liter.
 
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Aby uruchomić przykład, otwórz wiersz polecenia, przejdź do folderu przykładu, a następnie wprowadź `node index.js`.
+
+Przykład tworzy kontener w ramach konta magazynu obiektów Blob, przekazanie **HelloWorld.png** do kontenera, następnie wielokrotnie sprawdza, czy kontener i obraz zostały zreplikowane do regionu pomocniczego. Po przeprowadzeniu replikacji monituje o podanie **D** lub **Q** (następuje ENTER) do pobrania lub zamknąć. Twoje dane wyjściowe powinny wyglądać podobnie do poniższego przykładu:
+
+```
+Created container successfully: newcontainer1550799840726
+Uploaded blob: HelloWorld.png
+Checking to see if container and blob have replicated to secondary region.
+[0] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
+[1] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
+...
+[31] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
+[32] Container found, but blob has not replicated to secondary region yet.
+...
+[67] Container found, but blob has not replicated to secondary region yet.
+[68] Blob has replicated to secondary region.
+Ready for blob download. Enter (D) to download or (Q) to quit, followed by ENTER.
+> D
+Attempting to download blob...
+Blob downloaded from primary endpoint.
+> Q
+Exiting...
+Deleted container newcontainer1550799840726
+```
+
 ---
 
 ## <a name="understand-the-sample-code"></a>Omówienie przykładowego kodu
 
-# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>Procedura obsługi zdarzeń ponawiania
 
@@ -325,7 +347,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="python-tabpython"></a>[Python] (#tab/python) 
+# <a name="pythontabpython"></a>[Python](#tab/python) 
 
 ### <a name="retry-event-handler"></a>Procedura obsługi zdarzeń ponawiania
 
@@ -367,22 +389,9 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="java-v7-sdk--tabjava-v7"></a>[Java V7 SDK] (#tab/java-v7)
+# <a name="java-v10-sdktabjava-v10"></a>[Zestaw SDK języka Java w wersji 10](#tab/java-v10)
 
-W przypadku języka Java nie trzeba definiować procedur obsługi wywołań zwrotnych, jeśli właściwość **LocationMode** elementu **BlobRequestOptions** ustawiono na **PRIMARY\_THEN\_SECONDARY**. Umożliwia to aplikacji automatyczne przełączanie do lokalizacji pomocniczej, jeśli podczas próby pobrania obrazu **HelloWorld.png** nie uda się połączyć z lokalizacją podstawową.
-
-```java
-    BlobRequestOptions myReqOptions = new BlobRequestOptions();
-    myReqOptions.setRetryPolicyFactory(new RetryLinearRetry(deltaBackOff, maxAttempts));
-    myReqOptions.setLocationMode(LocationMode.PRIMARY_THEN_SECONDARY);
-    blobClient.setDefaultRequestOptions(myReqOptions);
-
-    blob.downloadToFile(downloadedFile.getAbsolutePath(),null,blobClient.getDefaultRequestOptions(),opContext);
-```
-
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
-
-Jeśli używasz zestawu SDK Java V10, również nie trzeba definiować procedur obsługi wywołań zwrotnych, a ponadto występują pewne podstawowe różnice w stosunku do zestawu SDK w wersji V7. Zamiast właściwości LocationMode używa się pomocniczego **potoku**. Możesz zdefiniować potok pomocniczy za pomocą opcji **RequestRetryOptions**, a jeśli to zrobisz, aplikacja będzie mogła automatycznie przełączać się na potok pomocniczy w przypadku niepowodzenia łączenia z danymi za pośrednictwem potoku podstawowego.
+Przy użyciu zestawu SDK Java V10 procedur obsługi wywołań zwrotnych jest niepotrzebna i zestaw SDK ma teraz pewne podstawowe różnice z zestawu SDK w wersji 7. Zamiast właściwości LocationMode używa się pomocniczego **potoku**. Możesz zdefiniować potok pomocniczy za pomocą opcji **RequestRetryOptions**, a jeśli to zrobisz, aplikacja będzie mogła automatycznie przełączać się na potok pomocniczy w przypadku niepowodzenia łączenia z danymi za pośrednictwem potoku podstawowego.
 
 ```java
 // We create pipeline options here so that they can be easily used between different pipelines
@@ -391,9 +400,33 @@ myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONE
 // We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
 final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
 ```
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Za pomocą zestawu SDK środowiska Node.js V10 wywołania zwrotnego nie są konieczne. Zamiast tego Przykładowa aplikacja tworzy potok, który został skonfigurowany z opcjami ponawiania prób i pomocniczego punktu końcowego. Umożliwia to aplikacji automatyczne przełączanie do potoku pomocniczego, jeśli go nie uda się połączyć dane za pomocą podstawowego potoku. 
+
+```javascript
+const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+const storageAccessKey = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
+const sharedKeyCredential = new SharedKeyCredential(accountName, storageAccessKey);
+
+const primaryAccountURL = `https://${accountName}.blob.core.windows.net`;
+const secondaryAccountURL = `https://${accountName}-secondary.blob.core.windows.net`;
+
+const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
+  retryOptions: {
+    maxTries: 3, 
+    tryTimeoutInMs: 10000,
+    retryDelayInMs: 500, 
+    maxRetryDelayInMs: 1000,
+    secondaryHost: secondaryAccountURL
+  }
+});
+```
+
 ---
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W pierwszej części serii omówiono czynności dotyczące uzyskiwania wysokiej dostępności aplikacji przy użyciu kont magazynu RA-GRS.
 

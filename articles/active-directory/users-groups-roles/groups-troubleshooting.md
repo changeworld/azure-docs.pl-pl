@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a1210360690384b07e6d88007ccd118731ecce0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0594d99874ea9bb83673013a9a03272edcd8ce0b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405440"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897677"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Rozwiązywanie problemów i eliminowanie problemów z grupy
 
@@ -28,15 +28,15 @@ ms.locfileid: "57405440"
 Aby wyłączyć tworzenie grupy dla użytkowników bez uprawnień administratora w programie Powershell:
 1. Sprawdź, czy użytkownicy niebędący administratorami mogą tworzyć grupy:
    
-  ```
-  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ```
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
   
 2. Jeśli zostanie zwrócona `UsersPermissionToCreateGroupsEnabled : True`, a następnie użytkownicy niebędący administratorami mogą tworzyć grupy. Aby wyłączyć tę funkcję:
   
-  ``` 
-  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ```
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
 
 <br/>**Został wyświetlony grup maksymalny dozwolony błąd podczas próby utworzenia grupy dynamicznej w programie Powershell**<br/>
 Jeśli komunikat o błędzie programu Powershell wskazującym _zasady grupy dynamicznej max dozwoloną liczbę grup osiągnięto_, oznacza to, że osiągnięto maksymalny limit grup dynamicznych w dzierżawie. Maksymalna liczba grup dynamicznych na dzierżawę wynosi 5000.
@@ -47,7 +47,7 @@ Aby utworzyć żadnych nowych grup dynamicznych, musisz najpierw usunąć niekt�
 
 **Czy mogę skonfigurować regułę w grupie, ale zaktualizowani nie członkostwa w grupie**<br/>
 1. Sprawdź wartości dla użytkownika lub atrybuty urządzenia w regule. Upewnij się, że istnieją użytkownicy, którzy spełniają reguły. W przypadku urządzeń Sprawdź właściwości urządzenia, aby upewnić się, wszystkie zsynchronizowane atrybuty zawierają oczekiwane wartości.<br/>
-2. Sprawdź członkostwo stanu przetwarzania, aby upewnić się, jeśli został ukończony. Możesz sprawdzić [członkostwa stanu przetwarzania](\groups-create-rule.md#check-processing-status-for-a-rule) i Data ostatniej aktualizacji na **Przegląd** stronie dla grupy.
+2. Sprawdź członkostwo stanu przetwarzania, aby upewnić się, jeśli został ukończony. Możesz sprawdzić [członkostwa stanu przetwarzania](groups-create-rule.md#check-processing-status-for-a-rule) i Data ostatniej aktualizacji na **Przegląd** stronie dla grupy.
 
 Jeśli wszystko wygląda dobrze, może potrwać trochę czasu na wypełnienie grupy. W zależności od rozmiaru dzierżawy pierwsze wypełnienie grupy lub wypełnienie grupy po zmianie reguły może potrwać do 24 godzin.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 38ba8ccad63120d33ce06faf39439bb58706e78d
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 690e0da160042b7ac432b1a36c024a8a8f439823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56660284"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125029"
 ---
 ## <a name="create-a-storage-account-for-event-processor-host"></a>Tworzenie konta magazynu dla hosta procesora zdarzeń
 Host procesora zdarzeń to inteligentny agent, który upraszcza odbieranie zdarzeń z usługi Event Hubs przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami. W przypadku obsługi punktów kontrolnych host procesora zdarzeń wymaga konta magazynu. Poniższy przykład pokazuje, jak utworzyć konto magazynu oraz uzyskać jego klucze na potrzeby dostępu:
@@ -26,13 +26,13 @@ Host procesora zdarzeń to inteligentny agent, który upraszcza odbieranie zdarz
 
 3. Na stronie **Utwórz konto magazynu** wykonaj następujące kroki: 
 
-    1. Wprowadź nazwę konta magazynu. 
-    2. Wybierz subskrypcję platformy Azure zawierającą centrum zdarzeń.
-    3. Wybierz grupę zasobów zawierającą centrum zdarzeń.
-    4. Wybierz lokalizację, w której chcesz utworzyć zasób. 
-    5. Następnie kliknij pozycję **Przeglądanie + tworzenie**.
+   1. Wprowadź nazwę konta magazynu. 
+   2. Wybierz subskrypcję platformy Azure zawierającą centrum zdarzeń.
+   3. Wybierz grupę zasobów zawierającą centrum zdarzeń.
+   4. Wybierz lokalizację, w której chcesz utworzyć zasób. 
+   5. Następnie kliknij pozycję **Przeglądanie + tworzenie**.
    
-    ![Utwórz konto magazynu — strona](./media/event-hubs-create-storage/create-storage2.png)
+      ![Utwórz konto magazynu — strona](./media/event-hubs-create-storage/create-storage2.png)
 
 4. Na stronie **Przeglądanie + tworzenie** sprawdź wartości i wybierz pozycję **Utwórz**. 
 

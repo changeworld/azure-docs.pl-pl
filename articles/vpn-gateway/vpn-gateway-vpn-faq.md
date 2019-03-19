@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: yushwang
-ms.openlocfilehash: 98252f7faf7a456edae71dda5fda44850eef74dc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a4f8e2b6a1367658514cc1bf9711825959ee371e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766992"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095657"
 ---
 # <a name="vpn-gateway-faq"></a>Brama sieci VPN — często zadawane pytania
 
@@ -71,11 +71,11 @@ Bramy oparte na trasach wdrażają sieci VPN oparte na trasach. Sieci VPN oparte
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Czy mogę zaktualizować moją bramę sieci VPN opartą na zasadach do opartej na trasach?
 Nie. Nie można zmienić typu bramy sieci wirtualnej platformy Azure z opartej na zasadach na opartą na trasach ani w inny sposób. Bramę należy usunąć i utworzyć ponownie. Cały taki proces zajmie około 60 minut. Adres IP bramy ani klucz wstępny (PSK) nie zostaną zachowane.
 1. Usuń wszystkie połączenia skojarzone z bramą do usunięcia.
-2. Usuń bramę:
-* [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-* [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-* [Azure PowerShell — wersja klasyczna](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-3. [Utwórz nową bramę odpowiedniego typu i zakończ konfigurowanie sieci VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+1. Usuń bramę:
+1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+1. [Azure PowerShell — wersja klasyczna](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Utwórz nową bramę odpowiedniego typu i zakończ konfigurowanie sieci VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Czy potrzebuję podsieci „GatewaySubnet”?
 

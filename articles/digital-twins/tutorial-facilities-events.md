@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: f24d601fc3b589daf22788ad0d05eb74a7b51f0a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 524ca96687e9395b65ec513326ad0fd4f7c6d429
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156769"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528910"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Samouczek: otrzymywanie powiadomień z przestrzeni usługi Azure Digital Twins przy użyciu usługi Logic Apps
 
@@ -122,7 +122,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
    b. Wybierz **Typ zasobu** **Microsoft.EventGrid.Topics**.
 
-   d. Wybierz zasób usługi Event Grid z listy rozwijanej w polu **Nazwa zasobu**.
+   c. Wybierz zasób usługi Event Grid z listy rozwijanej w polu **Nazwa zasobu**.
 
    ![Okienko Projektant aplikacji logiki](./media/tutorial-facilities-events/logic-app-resource-event.png)
 
@@ -134,7 +134,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
    b. W polu **Zawartość** wybierz pozycję **Treść** na liście **Zawartość dynamiczna**.
 
-   d. Wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**. Wklej następujący ładunek JSON, a następnie wybierz przycisk **Gotowe**.
+   c. Wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**. Wklej następujący ładunek JSON, a następnie wybierz przycisk **Gotowe**.
 
     ```JSON
     {
@@ -166,7 +166,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
    b. W pierwszym polu tekstowym **Wybierz wartość** wybierz pozycję **eventType** na liście **Zawartość dynamiczna** w oknie **Przeanalizuj dane JSON**.
 
-   d. W drugim polu tekstowym **Wybierz wartość** wprowadź ciąg `UdfCustom`.
+   c. W drugim polu tekstowym **Wybierz wartość** wprowadź ciąg `UdfCustom`.
 
    ![Wybrane warunki](./media/tutorial-facilities-events/logic-app-condition.png)
 
@@ -176,7 +176,7 @@ Usługa [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umożliwia twor
 
    b. Na liście **Akcje** wybierz pozycję **Wyślij wiadomość e-mail**. Wybierz pozycję **Zaloguj** i wprowadź poświadczenia konta e-mail. Po wyświetleniu monitu wybierz przycisk **Zezwól na dostęp**.
 
-   d. W oknie **Do** wprowadź swój identyfikator poczty e-mail, aby otrzymywać powiadomienia. W polu **Temat** wprowadź tekst **Powiadomienie usługi Digital Twins dotyczące niskiej jakości powietrza**. Następnie wybierz pozycję **TopologyObjectId** na liście **Zawartość dynamiczna** pozycji **Przeanalizuj dane JSON**.
+   c. W oknie **Do** wprowadź swój identyfikator poczty e-mail, aby otrzymywać powiadomienia. W polu **Temat** wprowadź tekst **Powiadomienie usługi Digital Twins dotyczące niskiej jakości powietrza**. Następnie wybierz pozycję **TopologyObjectId** na liście **Zawartość dynamiczna** pozycji **Przeanalizuj dane JSON**.
 
    d. W obszarze **Treść** w tym samym oknie wprowadź tekst podobny do następującego: **W pomieszczeniu wykryto, że powietrze jest niskiej jakości, a temperatura wymaga regulacji**. Możesz samodzielnie opracowywać treść, korzystając z elementów na liście **Zawartość dynamiczna**.
 
@@ -196,14 +196,14 @@ Aby zrezygnować z otrzymywania tych wiadomości e-mail, przejdź do zasobu usł
 
 Jeśli nie chcesz kontynuować pracy z usługą Azure Digital Twins, możesz usunąć zasoby utworzone w tym samouczku:
 
-1. W menu po lewej stronie w witrynie [Azure Portal](http://portal.azure.com) wybierz przycisk **Wszystkie zasoby**, wybierz grupę zasobów usługi Digital Twins i wybierz polecenie **Usuń**.
+1. W menu po lewej stronie w witrynie [Azure Portal](https://portal.azure.com) wybierz przycisk **Wszystkie zasoby**, wybierz grupę zasobów usługi Digital Twins i wybierz polecenie **Usuń**.
 
     > [!TIP]
     > Jeśli podczas usuwania wystąpienia usługi Digital Twins wystąpił problem, została wdrożona aktualizacja usługi zawierająca poprawkę. Ponów próbę usunięcia wystąpienia.
 
 2. Jeśli będzie to konieczne, możesz usunąć przykładowe aplikacje na komputerze służbowym.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się, w jaki sposób wizualizować dane z czujników, analizować trendy i wykrywać anomalie, przejdź do kolejnego samouczka:
 

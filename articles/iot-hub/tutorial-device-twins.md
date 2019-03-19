@@ -3,23 +3,22 @@ title: Synchronizowanie stanu urządzenia z usługi Azure IoT Hub | Microsoft Do
 description: Używanie bliźniaczych reprezentacji urządzeń do synchronizowania stanu między urządzeniami i centrum IoT Hub
 services: iot-hub
 documentationcenter: ''
-author: dominicbetts
-manager: timlt
-ms.assetid: ''
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/18/2019
-ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 63ef5a36dc5a9d770e3474e15b4733d4165b9937
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: b0e6e75f962383055d4f28356c3db57aac4a088b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421916"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088081"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -60,7 +59,7 @@ Pobierz przykładowy projekt Node.js z https://github.com/Azure-Samples/azure-io
 
 Do ukończenia czynności z tego samouczka niezbędna jest subskrypcja platformy Azure zawierająca centrum IoT Hub z urządzeniem dodanym do rejestru tożsamości urządzeń. Wpis w rejestrze tożsamości urządzeń umożliwia łączenie urządzenia symulowanego uruchamianego w tym samouczku z centrum.
 
-Jeśli nie masz jeszcze centrum IoT Hub w subskrypcji, możesz skonfigurować je przy użyciu poniższego skryptu interfejsu wiersza polecenia. Ten skrypt używa nazwy **tutorial-iot-hub** dla centrum IoT Hub. Po uruchomieniu skryptu zastąp tę nazwę własną unikatową nazwą. Skrypt tworzy grupę zasobów i centrum w regionie **Środkowe stany USA**, który można zmienić na bliższy. Skrypt pobiera parametry połączenia usługi IoT Hub używane w przykładowym zapleczu w celi połączenia z centrum IoT Hub:
+Jeśli nie masz już Centrum IoT w subskrypcji, jeden skonfigurować, za pomocą następującego skryptu interfejsu wiersza polecenia. Ten skrypt używa nazwy **tutorial-iot-hub** dla centrum IoT Hub. Po uruchomieniu skryptu zastąp tę nazwę własną unikatową nazwą. Skrypt tworzy grupę zasobów i centrum w regionie **Środkowe stany USA**, który można zmienić na bliższy. Skrypt pobiera parametry połączenia usługi IoT Hub używane w przykładowym zapleczu w celi połączenia z centrum IoT Hub:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -76,7 +75,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --hub-name $hubname -o table
+az iot hub show-connection-string --name $hubname -o table
 
 ```
 
@@ -241,7 +240,7 @@ Poniższy zrzut ekranu przedstawia dane wyjściowe z aplikacji urządzenia symul
 
 ![Symulowane urządzenie](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-Poniższy zrzut ekranu przedstawia dane wyjściowe z aplikacji zaplecza i prezentuje sposób odbierania aktualizacji zgłaszanej właściwości z urządzenia i jej przetwarzania:
+Poniższy zrzut ekranu przedstawia dane wyjściowe z aplikacji zaplecza i prezentuje sposób odbiera i przetwarza aktualizacji zgłaszanych właściwości, z urządzenia:
 
 ![Aplikacja zaplecza](./media/tutorial-device-twins/BackEnd2.png)
 
@@ -258,9 +257,9 @@ Alternatywnie możesz użyć interfejsu wiersza polecenia:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób synchronizacji informacji o stanie między urządzeniami i centrum IoT Hub. Przejdź do następnego samouczka, aby dowiedzieć się, jak używać bliźniaczych reprezentacji urządzeń do implementowania procesu aktualizacji oprogramowania układowego.
 
 > [!div class="nextstepaction"]
-[Wdrażanie procesu aktualizacji oprogramowania układowego urządzenia](tutorial-firmware-update.md)
+> [Wdrażanie procesu aktualizacji oprogramowania układowego urządzenia](tutorial-firmware-update.md)

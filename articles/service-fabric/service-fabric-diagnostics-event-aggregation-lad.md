@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 9e4c4e8c8d7aa89e2a27efc2c2deebd4863be23e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ca6be2b08c9a38813b2c98eef7e5696bd61fd074
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242959"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893037"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu diagnostyki Azure Linux
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Jednym ze sposobów przekazywania i zbierania dzienników jest użycie rozszerze
 ## <a name="log-and-event-sources"></a>Źródła dzienników i zdarzeń
 
 ### <a name="service-fabric-platform-events"></a>Zdarzenia platformy usługi Service Fabric
-Usługa Service Fabric emituje kilka dzienników out-of--box za pomocą [LTTng](http://lttng.org), w tym zdarzenia operacyjne lub zdarzeniach środowiska uruchomieniowego. Te dzienniki są przechowywane w lokalizacji, która określa szablon usługi Resource Manager klastra. Do pobierania lub ustawiania szczegółów konta magazynu, wyszukaj tagu **AzureTableWinFabETWQueryable** i poszukaj **StoreConnectionString**.
+Usługa Service Fabric emituje kilka dzienników out-of--box za pomocą [LTTng](https://lttng.org), w tym zdarzenia operacyjne lub zdarzeniach środowiska uruchomieniowego. Te dzienniki są przechowywane w lokalizacji, która określa szablon usługi Resource Manager klastra. Do pobierania lub ustawiania szczegółów konta magazynu, wyszukaj tagu **AzureTableWinFabETWQueryable** i poszukaj **StoreConnectionString**.
 
 ### <a name="application-events"></a>Zdarzenia aplikacji
  Zdarzenia emitowane w kodzie twojej aplikacji i usług określonych przez Ciebie podczas Instrumentacji oprogramowania. Możesz użyć dowolnego rozwiązania rejestrowania, który zapisuje pliki dzienników tekstowych — na przykład LTTng. Aby uzyskać więcej informacji zobacz dokumentację LTTng na śledzenie aplikacji.
@@ -52,5 +52,5 @@ Pozwoli to na skonfigurowanie agenta LAD, aby monitorować określone pliki dzie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-1. Aby zrozumieć, w bardziej szczegółowo, jakie zdarzenia należy sprawdzić podczas rozwiązywania problemów, zobacz [dokumentacji LTTng](http://lttng.org/docs) i [przy użyciu LAD](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+1. Aby zrozumieć, w bardziej szczegółowo, jakie zdarzenia należy sprawdzić podczas rozwiązywania problemów, zobacz [dokumentacji LTTng](https://lttng.org/docs) i [przy użyciu LAD](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
 2. [Konfigurowanie agenta usługi Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) ułatwiające zbieranie metryk monitorowanie kontenerów wdrożonych w klastrze i wizualizacji dzienników 

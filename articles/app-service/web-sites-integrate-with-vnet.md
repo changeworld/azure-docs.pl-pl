@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 951f8f887a7b29aac67b50ff8f92ddfd4a66e26b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766882"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112623"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z siecią wirtualną platformy Azure
 Ten dokument zawiera opis funkcji integracji sieci wirtualnej usługi Azure App Service i pokazuje, jak je skonfigurować za pomocą aplikacji w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure] [ VNETOverview] (Vnet) pozwala na umieszczenie wielu zasobów platformy Azure w sieci, lecz-internet. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu technologii sieci VPN. 
@@ -50,7 +50,7 @@ Funkcja integracji sieci wirtualnej:
 Istnieje kilka kwestii, które nie są obsługiwane Integracja sieci wirtualnej w tym:
 
 * zainstalowanie dysku
-* Integracja usługi AD 
+* Integracja z usługą AD 
 * NetBios
 * dostęp do prywatnej witryny
 * Uzyskiwanie dostępu do zasobów dla usługi ExpressRoute 
@@ -259,7 +259,7 @@ Po Twojej sieci wirtualnej jest już połączona z sieci lokalnej, wówczas uży
 
 Poza różnice funkcjonalne, dostępne są także różnice cenowe. Funkcja środowiska App Service Environment jest Premium oferty usługi ale oferuje najbardziej sieci możliwości konfiguracji oprócz inne interesujące funkcje. Integracja sieci wirtualnej mogą być używane z warstwy standardowa lub Premium ASP i idealne w przypadku bezpieczne korzystanie z zasobów w sieci wirtualnej z wieloma dzierżawami usługi App Service. Połączenia hybrydowe obecnie zależy od BizTalk, konta, które ma poziomy, które Rozpocznij bezpłatnie, a następnie stopniowo bardziej kosztowne ceny, oparte na ilości, czego potrzebujesz. Jeśli chodzi o jednak działa w wielu sieciach, nie istnieje żadne inne funkcje, takie jak połączeń hybrydowych, które umożliwiają dostęp do zasobów w dobrze ponad 100 odrębnych sieci. 
 
-## <a name="new-vnet-integration"></a>Nową opcję integracji z siecią wirtualną ##
+## <a name="new-vnet-integration"></a>Nowa integracja z siecią wirtualną ##
 
 Istnieje nowa wersja funkcji integracji sieci wirtualnej, które nie są zależne od technologii sieci VPN typu punkt-lokacja. W przeciwieństwie do istniejących funkcji nowa funkcja w wersji zapoznawczej będą działać przy użyciu usługi ExpressRoute i punktów końcowych usługi. 
 
@@ -284,13 +284,13 @@ Aby korzystać z nowych funkcji:
 
 1. Przejdź do interfejsu użytkownika sieci, w portalu. Jeśli aplikacja jest w stanie korzystać z nowych funkcji, zostanie wyświetlone możliwości korzystania z nowych funkcji w wersji zapoznawczej.  
 
- ![Wybierz ikonę Podgląd nowego Integracja sieci wirtualnej][6]
+   ![Wybierz ikonę Podgląd nowego Integracja sieci wirtualnej][6]
 
 1. Wybierz **Dodaj sieć wirtualna (wersja zapoznawcza)**.  
 
 1. Wybierz sieć wirtualną usługi Resource Manager, który chcesz zintegrować z, a następnie utwórz nową podsieć lub wybrać już istniejącą pustą podsieć. Integracja zajmuje mniej niż minutę. Podczas integracji aplikacji zostanie ponownie uruchomiona.  Po ukończeniu integracji zobaczysz szczegółowe informacje dotyczące sieci wirtualnej są zintegrowane z usługą i Baner u góry strony, która informuje, że ta funkcja jest dostępna w wersji zapoznawczej.
 
- ![Wybierz sieć wirtualną i podsieć][7]
+   ![Wybierz sieć wirtualną i podsieć][7]
 
 Aby włączyć aplikację do używania serwera DNS, który skonfigurowano sieci wirtualnej, należy utworzyć ustawienie aplikacji dla swojej aplikacji, której nazwa to WEBSITE_DNS_SERVER, a jego wartość to adres IP serwera.  Jeśli masz pomocniczy serwer DNS, Utwórz innego ustawienia aplikacji, której nazwa to WEBSITE_DNS_ALT_SERVER, a jego wartość to adres IP serwera. 
 

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 3/06/2019
-ms.openlocfilehash: b2ad701115a69520658c2aa9cea53dbda90cf868
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.date: 3/14/2019
+ms.openlocfilehash: d8aaf51c836a8e88c4e9b92798067167cd044e72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726758"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015368"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalowanie elastycznej puli zasobów w usłudze Azure SQL Database
 
@@ -26,7 +26,6 @@ W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które m
 ## <a name="change-compute-resources-vcores-or-dtus"></a>Zasoby obliczeniowe zmiany (rdzeni wirtualnych lub jednostek Dtu)
 
 Po początkowym wybraniu liczbę rdzeni wirtualnych lub jednostek Edtu, należy można elastycznej puli w górę lub dół dynamicznie skalować na podstawie rzeczywistego użycia za pomocą [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [wiersza polecenia platformy Azure ](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
-
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Wpływ zmiany rozmiaru obliczeń warstwy lub ponowne skalowanie usługi
 
@@ -71,6 +70,9 @@ Czas oczekiwania, aby zmienić warstwę usługi lub zmienić rozmiar obliczeń p
 Opłaty naliczane są za każdą godzinę istnienia bazy danych przy użyciu najwyższej warstwy usługi i obliczenia rozmiaru zastosowany w ciągu tej godziny, niezależnie od użycia lub tego, czy baza danych była Aktywna krócej niż godzinę. Po utworzeniu pojedynczej bazy danych i usuniesz ją 5 minut później rachunku odzwierciedla za godzinę korzystania z jednej bazy danych.
 
 ## <a name="change-elastic-pool-storage-size"></a>Zmień rozmiar magazynu puli elastycznej
+
+> [!IMPORTANT]
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
 

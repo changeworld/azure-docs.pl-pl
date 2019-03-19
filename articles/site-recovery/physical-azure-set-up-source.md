@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 2e5b90f36a6dc5c88db3f6f449c911d22de680b1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e9bf06ba058078fc5012410bdd75ef90ff6c93d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976804"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899013"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Konfigurowanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych na platformę Azure
 
@@ -22,7 +22,7 @@ W tym artykule opisano sposób konfigurowania środowiska lokalnego do uruchamia
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Tego artykułu przyjęto założenie, że masz już:
-- Magazyn usługi Recovery Services w [witryny Azure portal](http://portal.azure.com "witryny Azure portal").
+- Magazyn usługi Recovery Services w [witryny Azure portal](https://portal.azure.com "witryny Azure portal").
 - Komputer fizyczny, na którym jest instalowany na serwerze konfiguracji.
 - Jeśli protokół TLS 1.0 zostały wyłączone na komputerze, na którym instalujesz serwer konfiguracji, upewnij się, włączenie protokołu TLs 1.2 i że .NET Framework w wersji 4.6 lub nowszy jest zainstalowany na maszynie (za pomocą silnej kryptografii wyłączone). [Dowiedz się więcej](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
@@ -36,7 +36,7 @@ W poniższej tabeli wymieniono minimalnych wymagań sprzętowych, oprogramowania
 ## <a name="choose-your-protection-goals"></a>Wybranie celów ochrony
 
 1. W witrynie Azure portal przejdź do **usługi Recovery Services** magazyny bloku i wybierz swój magazyn.
-2. W **zasobów** menu magazynu kliknij **wprowadzenie** > **Site Recovery** > **krok 1: Przygotowanie infrastruktury** > **cel ochrony**.
+2. W **zasobów** menu magazynu kliknij **wprowadzenie** > **Site Recovery** > **krok 1: Przygotowanie infrastruktury** > **Cel ochrony**.
 
     ![Wybieranie celów](./media/physical-azure-set-up-source/choose-goals.png)
 3. W **cel ochrony**, wybierz opcję **na platformę Azure** i **bez wirtualizacji/inne**, a następnie kliknij przycisk **OK**.
@@ -47,7 +47,7 @@ W poniższej tabeli wymieniono minimalnych wymagań sprzętowych, oprogramowania
 
 1. W **przygotowywanie źródła**, jeśli nie masz serwera konfiguracji, kliknij przycisk **+ serwer konfiguracji** dodanie.
 
-  ![Konfiguracja źródła](./media/physical-azure-set-up-source/plus-config-srv.png)
+   ![Konfiguracja źródła](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. W **Dodaj serwer** bloku, sprawdź, czy **serwera konfiguracji** pojawia się w **typ serwera**.
 4. Pobierz plik instalacyjny Site Recovery Unified Setup.
 5. Pobierz klucz rejestracji magazynu. Po uruchomieniu ujednoliconego Instalatora, potrzebujesz klucza rejestracji. Klucz jest ważny przez pięć dni po jego wygenerowaniu.

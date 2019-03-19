@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190521"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124087"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Znane problemy i rozwiązania dzięki zgodności protokołu 2.0 Standard SCIM usługi aprowizacji użytkownika usługi Azure AD
 
@@ -59,36 +59,36 @@ Tak. Jeśli korzystasz już z tego wystąpienia aplikacji dla logowania jednokro
  
 1. Zaloguj się do witryny Azure portal pod https://portal.azure.com.
 2. W **usługi Azure Active Directory > aplikacje dla przedsiębiorstw** sekcji w witrynie Azure Portal zlokalizuj i wybierz istniejącą aplikację Standard SCIM.
-3.  W **właściwości** sekcji Twoją istniejącą aplikację Standard SCIM kopiowania **obiektu o identyfikatorze**.
-4.  W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
+3. W **właściwości** sekcji Twoją istniejącą aplikację Standard SCIM kopiowania **obiektu o identyfikatorze**.
+4. W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
 5. W Eksploratorze programu Graph uruchom poniższe polecenie, aby zlokalizować identyfikator zadania inicjowania obsługi administracyjnej. Zastąp "[identyfikator obiektu]" w usłudze identyfikator podmiotu zabezpieczeń (identyfikator obiektu:) skopiowane z trzeciego stopnia.
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
- ![Pobierz zadania](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "wykonywania zadań") 
+   ![Pobierz zadania](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "wykonywania zadań") 
 
 
 6. W wynikach skopiować pełny ciąg "ID", który rozpoczyna się od "customappsso" lub "Standard scim".
 7. Uruchom poniższe polecenie, aby pobrać konfiguracji Mapowanie atrybutów, dzięki czemu można wykonać kopię zapasową. Użyj tego samego [— identyfikator obiektu] jako przed i Zastąp [identyfikator zadania] z Identyfikatorem zadania inicjowania obsługi administracyjnej, kopiowane w ostatnim kroku.
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
- ![Pobieranie schematu](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Pobieranie schematu") 
+   ![Pobieranie schematu](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Pobieranie schematu") 
 
 8. Skopiuj dane wyjściowe JSON w ostatnim kroku i zapisz go w pliku tekstowym. Zawiera wszystkie niestandardowe-mapowania atrybutów dodane do Twojej aplikacji stary i powinna być około kilku tysięcy wierszy JSON.
 9. Uruchom poniższe polecenie, aby usunąć zadanie inicjowania obsługi administracyjnej:
  
- `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
+   `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. Uruchom poniższe polecenie, aby utworzyć nowe zadanie inicjowania obsługi administracyjnej, który ma najnowsze poprawki usługi.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
- `{   templateId: "scim"   } `
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
+    `{   templateId: "scim"   } `
    
 11. W wynikach ostatnim kroku należy skopiować pełny ciąg "ID", który rozpoczyna się od "Standard scim". Opcjonalnie Zastosuj ponownie swoje stare mapowania atrybutów, uruchamiając poniższe polecenie, zastępując [identyfikator nowego zadania] identyfikator zadania został skopiowany, a następnie wprowadzenie który za pomocą pliku JSON dane wyjściowe z kroku 7 # jako treści żądania.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
- `{   <your-schema-json-here>   }`
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
+    `{   <your-schema-json-here>   }`
 
 12. Wróć do okna przeglądarki usługi pierwszy sieci web i wybierz **aprowizacji** kartę dla swojej aplikacji.
 13. Sprawdź konfigurację, a następnie uruchom zadanie inicjowania obsługi administracyjnej. 
@@ -97,15 +97,15 @@ Tak. Jeśli korzystasz już z tego wystąpienia aplikacji dla logowania jednokro
 
 Tak. Jeśli było kodowane stare zachowanie, które istniały przed poprawki i muszą wdrażać nowe wystąpienie aplikacji, wykonaj poniższą procedurę. Tę procedurę w tym artykule opisano sposób używania interfejsu API programu Microsoft Graph i interfejsu API Microsoft Graph explorer Standard SCIM zadanie inicjowania obsługi administracyjnej, która wykazuje stare zachowanie.
  
-1.  Zaloguj się do witryny Azure portal pod https://portal.azure.com.
+1. Zaloguj się do witryny Azure portal pod https://portal.azure.com.
 2. w **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > Tworzenie aplikacji** sekcji w witrynie Azure Portal utworzyć nową **spoza galerii** aplikacji.
-3.  W **właściwości** części Twojej nowej aplikacji niestandardowej kopiowania **obiektu o identyfikatorze**.
-4.  W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
+3. W **właściwości** części Twojej nowej aplikacji niestandardowej kopiowania **obiektu o identyfikatorze**.
+4. W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
 5. W Eksploratorze programu Graph uruchom poniższe polecenie, aby zainicjować konfiguracji aprowizacji dla aplikacji.
-Zastąp "[identyfikator obiektu]" w usłudze identyfikator podmiotu zabezpieczeń (identyfikator obiektu:) skopiowane z trzeciego stopnia.
+   Zastąp "[identyfikator obiektu]" w usłudze identyfikator podmiotu zabezpieczeń (identyfikator obiektu:) skopiowane z trzeciego stopnia.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "customappsso"   }`
+   `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+   `{   templateId: "customappsso"   }`
  
 6. Wróć do okna przeglądarki usługi pierwszy sieci web i wybierz **aprowizacji** kartę dla swojej aplikacji.
 7. Ukończ użytkownika konfigurację aprowizacji, tak jak zwykle.

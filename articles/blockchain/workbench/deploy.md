@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7fead05e7404e042d923631f4ba745553085943a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098114"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie aplikacji Azure Blockchain Workbench
 
@@ -108,20 +108,20 @@ Po ukończeniu kroków wymagań wstępnych można przystąpić do wdrażania apl
 
     *Użyj istniejącej* opcji pozwala określić sieć łańcucha bloków Ethereum dowód uwierzytelniania (PoA). Punkty końcowe mają następujące wymagania.
 
-    * Punkt końcowy musi być sieć łańcucha bloków Ethereum dowód uwierzytelniania (PoA).
-    * Punkt końcowy musi być publicznie dostępny za pośrednictwem sieci.
-    * Należy skonfigurować sieć łańcucha bloków PoA cenie gazu ustawiane na zero.
+   * Punkt końcowy musi być sieć łańcucha bloków Ethereum dowód uwierzytelniania (PoA).
+   * Punkt końcowy musi być publicznie dostępny za pośrednictwem sieci.
+   * Należy skonfigurować sieć łańcucha bloków PoA cenie gazu ustawiane na zero.
 
-    > [!NOTE]
-    > Nie są finansowane kont Blockchain Workbench. Jeśli wymaganych środków pieniężnych nie transakcji.
+     > [!NOTE]
+     > Nie są finansowane kont Blockchain Workbench. Jeśli wymaganych środków pieniężnych nie transakcji.
 
-    ![Ustawienia zaawansowane dla istniejącej sieci łańcucha bloków](media/deploy/advanced-blockchain-settings-existing.png)
+     ![Ustawienia zaawansowane dla istniejącej sieci łańcucha bloków](media/deploy/advanced-blockchain-settings-existing.png)
 
-    | Ustawienie | Opis  |
-    |---------|--------------|
-    | Punkt końcowy Ethereum RPC | Podaj końcowych wywołań RPC w istniejącej sieci PoA łańcucha bloków. Punkt końcowy rozpoczyna się od https:// lub http:// i kończy się za pomocą numeru portu. Na przykład: `http<s>://<network-url>:<port>` |
-    | Ustawienia usługi Azure Active Directory | Wybierz **później dodać**.</br>Uwaga: Jeśli została wybrana opcja [wstępne skonfigurowanie usługi Azure AD](#azure-ad-configuration) lub ponownego wdrażania, możliwość *Dodaj teraz*. |
-    | Wybór maszyny Wirtualnej | Wybierz preferowany rozmiar maszyny Wirtualnej dla sieci łańcucha bloków. |
+     | Ustawienie | Opis  |
+     |---------|--------------|
+     | Punkt końcowy Ethereum RPC | Podaj końcowych wywołań RPC w istniejącej sieci PoA łańcucha bloków. Punkt końcowy rozpoczyna się od https:// lub http:// i kończy się za pomocą numeru portu. Na przykład: `http<s>://<network-url>:<port>` |
+     | Ustawienia usługi Azure Active Directory | Wybierz **później dodać**.</br>Uwaga: Jeśli została wybrana opcja [wstępne skonfigurowanie usługi Azure AD](#azure-ad-configuration) lub ponownego wdrażania, możliwość *Dodaj teraz*. |
+     | Wybór maszyny Wirtualnej | Wybierz preferowany rozmiar maszyny Wirtualnej dla sieci łańcucha bloków. |
 
 9. Wybierz **OK** zakończenie ustawienia zaawansowane.
 
@@ -223,18 +223,18 @@ Następnie należy zmodyfikować manifest, użyj ról aplikacji w usłudze Azure
 
     ``` json
     "appRoles": [
-         {
-           "allowedMemberTypes": [
-             "User",
-             "Application"
-           ],
-           "displayName": "Administrator",
-           "id": "<A unique GUID>",
-           "isEnabled": true,
-           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
-           "value": "Administrator"
-         }
-       ],
+         {
+           "allowedMemberTypes": [
+             "User",
+             "Application"
+           ],
+           "displayName": "Administrator",
+           "id": "<A unique GUID>",
+           "isEnabled": true,
+           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
+           "value": "Administrator"
+         }
+       ],
     ```
 
     > [!IMPORTANT]

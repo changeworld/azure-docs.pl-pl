@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 7adf1eb3-d063-45d6-96a8-fd53b329b3f3
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3442497561af4fb9a5cfa6bdcb0dfe31fa0b8e05
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 79741d9ec71dd7735ef94ef8172921965a9e9df1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881026"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Ceridian Dayforce HCM
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Ceridian Dayforce HCM z usługą Azure 
 
 **Aby dodać aplikację Ceridian Dayforce HCM z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -119,7 +119,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Ceridian D
     | W przypadku środowiska produkcyjnego | `https://ncpingfederate.dayforcehcm.com/sp` |
     | W przypadku środowiska testowego | `https://fs-test.dayforcehcm.com/sp` |
 
-    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL używany przez usługę Azure AD do publikowania odpowiedzi.
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL używany przez usługę Azure AD do publikowania odpowiedzi.
 
     | Środowisko | Adres URL |
     | :-- | :-- |
@@ -193,7 +193,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -232,7 +232,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Ceridian D
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Ceridian Dayforce HCM w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Ceridian Dayforce HCM, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

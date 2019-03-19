@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ce3e8f31c7fee6afdeabf931485a49934e98f81b
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391355"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120741"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Odzyskiwanie po awarii przy użyciu usług Azure DNS i Traffic Manager
 
-Odzyskiwanie po awarii koncentruje się na odzyskiwanie po poważnych utraty funkcjonalności aplikacji. Aby można było wybrać rozwiązanie odzyskiwania po awarii, właściciele biznesowych i technologicznych należy najpierw ustalić poziom funkcjonalności, wymagany podczas awarii, takie jak - niedostępne, częściowo dostępny za pośrednictwem ograniczoną funkcjonalność lub opóźnione dostępności lub w pełni dostępne.
+Odzyskiwanie po awarii powinno być skoncentrowane na odzyskiwaniu po poważnej utracie funkcjonalności aplikacji. Aby można było wybrać rozwiązanie odzyskiwania po awarii, właściciele biznesowych i technologicznych należy najpierw ustalić poziom funkcjonalności, wymagany podczas awarii, takie jak - niedostępne, częściowo dostępny za pośrednictwem ograniczoną funkcjonalność lub opóźnione dostępności lub w pełni dostępne.
 Większość klientów korporacyjnych wybierają architektura obejmująca wiele regionów w celu zapewnienia odporności na aplikację lub infrastrukturę poziomu trybu failover. Klienci mogą wybrać kilka metod w quest do osiągnięcia trybu failover i wysokiej dostępności poprzez nadmiarowej architekturze. Oto niektóre z popularnych metod:
 
 - **Aktywny / pasywny z zimnym**: W tym rozwiązaniu trybu failover maszyny wirtualne i inne urządzenia, które działają w regionie wstrzymania nie są aktywne, dopóki nie jest wymagane dla trybu failover. Jednak w środowisku produkcyjnym są replikowane w postaci kopii zapasowych, obrazy maszyn wirtualnych lub szablonów usługi Resource Manager, w innym regionie. Ten mechanizm pracy awaryjnej jest to ekonomiczne rozwiązanie, ale zajmuje więcej czasu podjęcia pełną przejścia w tryb failover.
@@ -33,13 +33,13 @@ Większość klientów korporacyjnych wybierają architektura obejmująca wiele 
     
     *Rysunek — aktywny/pasywny z konfiguracji odzyskiwania zimny wstrzymania po awarii*
 
-- **Aktywny/pasywny z pilota światła**: W tym rozwiązaniu trybu failover skonfigurowano wstrzymania środowiska z minimalną konfiguracją. Instalator ma tylko niezbędne usługi do obsługuje tylko minimalne i krytycznych zbiór aplikacji. W formacie macierzystym w tym scenariuszu można tylko wykonania minimalną liczbę funkcji, ale można skalować w górę i zduplikować dodatkowych usług do zbiorczego obciążenia produkcyjnego w sytuacji, gdy do pracy awaryjnej.
+- **Aktywny/pasywny z pilota światła**: W tym rozwiązaniu trybu failover wstrzymania środowiska jest skonfigurowany z minimalną konfiguracją. Instalator ma tylko niezbędne usługi do obsługuje tylko minimalne i krytycznych zbiór aplikacji. W formacie macierzystym w tym scenariuszu można tylko wykonania minimalną liczbę funkcji, ale można skalować w górę i zduplikować dodatkowych usług do zbiorczego obciążenia produkcyjnego w sytuacji, gdy do pracy awaryjnej.
     
     ![Aktywny/pasywny z pilota światła](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     *Rysunek: Aktywny/pasywny z konfiguracji odzyskiwania po awarii światła pilotażu*
 
-- **Aktywny/pasywny z gotowości ciepło**: W tym rozwiązaniu trybu failover wstrzymania region jest wstępnie przygotowaniu i jest gotowy do podstawowego obciążenia, automatycznego skalowania jest włączona i wszystkie wystąpienia zostały włączone i uruchomione. To rozwiązanie nie jest skalowana do podjęcia obciążenia pełnym środowisku produkcyjnym, ale będzie działać, a wszystkie usługi są uruchomione. To rozwiązanie jest rozszerzone wersję podejście światła pilotażu.
+- **Aktywny/pasywny z gotowości ciepło**: W tym rozwiązaniu trybu failover wstrzymania region jest wstępnie warmed i jest gotowy do podstawowego obciążenia, automatycznego skalowania jest włączona i wszystkie wystąpienia zostały włączone i uruchomione. To rozwiązanie nie jest skalowana do podjęcia obciążenia pełnym środowisku produkcyjnym, ale będzie działać, a wszystkie usługi są uruchomione. To rozwiązanie jest rozszerzone wersję podejście światła pilotażu.
     
     ![Aktywny/pasywny z gotowości bez wyłączania zasilania](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
@@ -71,15 +71,16 @@ Rozwiązanie ręcznej pracy awaryjnej usługi Azure DNS do odzyskiwania po awari
 *Rysunek - ręcznej pracy awaryjnej przy użyciu usługi Azure DNS*
 
 Dostępne są następujące założenia dotyczące rozwiązania:
--   Punkty końcowe podstawowych i pomocniczych mają statyczne adresy IP, które nie zmieniają się często. Załóżmy, że dla lokacji głównej 100.168.124.44 jest adres IP i adres IP dla lokacji dodatkowej 100.168.124.43.
--   Strefy DNS platformy Azure nie istnieje dla lokacji głównej i dodatkowej. Załóżmy, że dla lokacji głównej punkt końcowy jest prod.contoso.com i tworzenia kopii zapasowej lokacji jest dr.contoso.com. Istnieje również rekord DNS dla głównej aplikacji, które są znane jako www.contoso.com.   
--   Czas wygaśnięcia jest większa niż określona przez umowę SLA cel czasu odzyskiwania w organizacji. Jeśli na przykład przedsiębiorstwo ustawia RTO odpowiedzi po awarii aplikacji to 60 minut, a następnie czasem wygaśnięcia powinny być mniejsze niż 60 minut, najlepiej małe, tym lepsze. Możesz skonfigurować usługę Azure DNS do ręcznego przełączania trybu failover w następujący sposób:
-1. Tworzenie strefy DNS
-2. Tworzenie rekordów strefy DNS
-3. Zaktualizuj rekord CNAME
+- Punkty końcowe podstawowych i pomocniczych mają statyczne adresy IP, które nie zmieniają się często. Załóżmy, że dla lokacji głównej 100.168.124.44 jest adres IP i adres IP dla lokacji dodatkowej 100.168.124.43.
+- Strefy DNS platformy Azure nie istnieje dla lokacji głównej i dodatkowej. Załóżmy, że dla lokacji głównej punkt końcowy jest prod.contoso.com i tworzenia kopii zapasowej lokacji jest dr.contoso.com. Rekord DNS dla głównej aplikacji, które są znane jako www\.istnieje również contoso.com.   
+- Czas wygaśnięcia jest większa niż określona przez umowę SLA cel czasu odzyskiwania w organizacji. Jeśli na przykład przedsiębiorstwo ustawia RTO odpowiedzi po awarii aplikacji to 60 minut, a następnie czasem wygaśnięcia powinny być mniejsze niż 60 minut, najlepiej małe, tym lepsze. 
+  Możesz skonfigurować usługę Azure DNS do ręcznego przełączania trybu failover w następujący sposób:
+- Tworzenie strefy DNS
+- Tworzenie rekordów strefy DNS
+- Zaktualizuj rekord CNAME
 
 ### <a name="step-1-create-a-dns"></a>Krok 1: Tworzenie systemu DNS
-Tworzenie strefy DNS (np. www.contoso.com), jak pokazano poniżej:
+Tworzenie strefy DNS (na przykład www\.contoso.com) jak pokazano poniżej:
 
 ![Tworzenie strefy DNS na platformie Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -87,15 +88,15 @@ Tworzenie strefy DNS (np. www.contoso.com), jak pokazano poniżej:
 
 ### <a name="step-2-create-dns-zone-records"></a>Krok 2: Tworzenie rekordów strefy DNS
 
-W ramach tej strefy należy utworzyć trzy rekordy (na przykład - www.contoso.com i prod.contoso.com dr.consoto.com) jako wyświetlane poniżej.
+W tej strefie Utwórz trzy rekordy (na przykład - www\.contoso.com i prod.contoso.com dr.consoto.com) jako wyświetlane poniżej.
 
 ![Tworzenie rekordów strefy DNS](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 *Rysunek — tworzenie rekordów w strefie DNS na platformie Azure*
 
-W tym scenariuszu witryny, www.contoso.com ma TTL 30 minut, co jest znacznie poniżej podane cel czasu odzyskiwania i wskazuje prod.contoso.com lokacji w środowisku produkcyjnym. Ta konfiguracja jest podczas zwykłych operacjach biznesowych. Czas wygaśnięcia prod.contoso.com i dr.contoso.com ustawiono 300 sekund lub 5 minut. Można użyć monitorowania platformy Azure, usługi, takiej jak Azure Monitor lub usługi Azure App Insights lub partnerskich rozwiązań, takich jak Dynatrace monitorowania, można również użyć głównego organicznie rozwiązania, które można monitorować lub wykrywanie awarii poziomu infrastruktury wirtualnej lub aplikacji.
+W tym scenariuszu, witryny, www\.contoso.com ma TTL 30 minut, co jest znacznie poniżej podane cel czasu odzyskiwania i wskazuje prod.contoso.com lokacji w środowisku produkcyjnym. Ta konfiguracja jest podczas zwykłych operacjach biznesowych. Czas wygaśnięcia prod.contoso.com i dr.contoso.com ustawiono 300 sekund lub 5 minut. Można użyć monitorowania platformy Azure, usługi, takiej jak Azure Monitor lub usługi Azure App Insights lub partnerskich rozwiązań, takich jak Dynatrace monitorowania, można również użyć głównego organicznie rozwiązania, które można monitorować lub wykrywanie awarii poziomu infrastruktury wirtualnej lub aplikacji.
 
-### <a name="step-3-update-the-cname-record"></a>Krok 3. Zaktualizuj rekord CNAME
+### <a name="step-3-update-the-cname-record"></a>Krok 3: Zaktualizuj rekord CNAME
 
 Gdy zostanie wykryta awaria, zmień wartość rekordu, aby wskazywał dr.contoso.com, jak pokazano poniżej:
        
@@ -103,7 +104,7 @@ Gdy zostanie wykryta awaria, zmień wartość rekordu, aby wskazywał dr.contoso
 
 *Rysunek — Zaktualizuj rekord CNAME w systemie Azure*
 
-W ciągu 30 minut, podczas których większość mechanizmów rozpoznawania odświeży pliku pamięci podręcznej strefy, nastąpi przekierowanie do dr.contoso.com dowolne zapytanie do www.contoso.com.
+W ciągu 30 minut, podczas których większość mechanizmów rozpoznawania odświeży pliku pamięci podręcznej strefy dowolnego zapytania www\.contoso.com nastąpi przekierowanie do dr.contoso.com.
 Można również uruchomić następujące polecenie interfejsu wiersza polecenia platformy Azure, aby zmienić wartość rekordu CNAME:
  ```azurecli
    az network dns record-set cname set-record \
@@ -151,9 +152,9 @@ Podobnie można utworzyć awaryjnego odzyskiwania punkt końcowy w ramach usług
 
 *Rysunek — tworzenie punktów końcowych odzyskiwania po awarii*
 
-### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Krok 3: Skonfigurować kondycji wyboru i trybu failover
+### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Krok 3: Ustaw konfigurację kondycji wyboru i trybu failover
 
-W tym kroku ustawisz czasu wygaśnięcia DNS to 10 sekund, które są uznawane przez większość mechanizmów rozpoznawania cyklicznego dostępnego z Internetu. Ta konfiguracja oznacza, że nie programu rozpoznawania nazw DNS spowoduje buforowanie tych informacji przez więcej niż 10 sekund. Dla ustawienia monitora punktu końcowego, ścieżka jest bieżący zestaw w / lub katalogu głównego, ale można dostosować ustawienia punktu końcowego można obliczyć ścieżki, na przykład prod.contoso.com/index. Poniżej przedstawiono przykład **https** protokół badania. Jednakże, możesz wybrać **http** lub **tcp** także. Zakończ aplikację zależy od wybranego protokołu. Interwał sondowania jest ustawiony na 10 sekund, co pozwala na szybkie badanie i ponowienie próby jest równa 3. Co w efekcie usługi Traffic Manager przejdzie w tryb failover do drugiego punktu końcowego Jeśli kolejne trzy w odstępach czasu zarejestrować błąd. Następująca formuła określa całkowity czas automatycznego trybu failover: czas pracy w trybie Failover = TTL i ponów próbę wykonania * Probing interwał, a w tym przypadku wartość jest 10 + 3 * 10 = 40 sekund (maks.).
+W tym kroku ustawisz czasu wygaśnięcia DNS to 10 sekund, które są uznawane przez większość mechanizmów rozpoznawania cyklicznego dostępnego z Internetu. Ta konfiguracja oznacza, że nie programu rozpoznawania nazw DNS spowoduje buforowanie tych informacji przez więcej niż 10 sekund. Dla ustawienia monitora punktu końcowego, ścieżka jest bieżący zestaw w / lub katalogu głównego, ale można dostosować ustawienia punktu końcowego można obliczyć ścieżki, na przykład prod.contoso.com/index. Poniżej przedstawiono przykład **https** protokół badania. Jednakże, możesz wybrać **http** lub **tcp** także. Zakończ aplikację zależy od wybranego protokołu. Interwał sondowania jest ustawiony na 10 sekund, co pozwala na szybkie badanie i ponowienie próby jest równa 3. Co w efekcie usługi Traffic Manager przejdzie w tryb failover do drugiego punktu końcowego Jeśli kolejne trzy w odstępach czasu zarejestrować błąd. Następująca formuła definiuje łączny czas do automatycznego trybu failover: Czas pracy w trybie Failover = TTL i ponów próbę wykonania * Probing interwał, a w tym przypadku wartość jest 10 + 3 * 10 = 40 sekund (maks.).
 Jeśli ponowienie próby jest ustawiona na 1, a czas wygaśnięcia wynosi 10 sekund, następnie godzinę dla trybu failover 10 + 1 * 10 = 20 sekund. Ustawić ponownych prób na wartość większą niż **1** , aby wyeliminować ryzyko przejścia w tryb failover ze względu na wyniki fałszywie dodatnie lub dowolnym blips pomocniczych sieci. 
 
 

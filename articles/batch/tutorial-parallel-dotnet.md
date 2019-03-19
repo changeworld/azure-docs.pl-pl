@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 9db223075284b02de1cf3de8cfa7a0b5aa35f286
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
-ms.translationtype: HT
+ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754224"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538693"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: Uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API środowiska .NET
 
@@ -31,7 +31,7 @@ Usługa Azure Batch umożliwia wydajne uruchamianie równoległych zadań wsadow
 > * Monitorowanie wykonania zadań podrzędnych
 > * Pobieranie plików wyjściowych
 
-W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 do formatu MP3 za pomocą narzędzia typu „open source”, [ffmpeg](http://ffmpeg.org/). 
+W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 do formatu MP3 za pomocą narzędzia typu „open source”, [ffmpeg](https://ffmpeg.org/). 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 

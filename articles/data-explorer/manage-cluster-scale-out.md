@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 7b99dcf621eac90d4b75d6827102b656f95aafbb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 8d369800bdc9817856eeb7039fe47e5b870735ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958885"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107376"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Zarządzaj klastra skalowalnego w poziomie do uwzględnienia zmiennym obciążeniem
 
@@ -42,7 +42,7 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Szczegółowe
     **Kryteria**
 
     | Ustawienie | Opis i wartość |
-    | --- | --- | --- |
+    | --- | --- |
     | **Agregacja czasu** | Wybierz kryteria agregacji, takich jak **średni**. |
     | **Nazwa metryki** | Wybierz metrykę, chcesz, aby operacja skalowania na podstawie, takich jak **wykorzystania pamięci podręcznej**. |
     | **Statystyka ziarna czasu** | Wybór między **średni**, **Minimum**, **maksymalna**, i **suma**. |
@@ -54,7 +54,7 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Szczegółowe
     **Akcja**
 
     | Ustawienie | Opis i wartość |
-    | --- | --- | --- |
+    | --- | --- |
     | **Operacja** | Wybierz odpowiednią opcję na skalowanie w pionie lub w poziomie. |
     | **Liczba wystąpień** | Wybierz liczbę węzłów lub wystąpienia, które chcesz dodać lub usunąć po spełnieniu warunku metryki. |
     | **Czas ochładzania (minuty)** | Wybierz odpowiedni interwał między operacji skalowania. Rozpocznij od domyślnego pięć minut. |
@@ -65,7 +65,7 @@ Na poniższym rysunku przedstawiono przepływ następnych krokach. Szczegółowe
 1. W **limity wystąpień** sekcji po lewej stronie, podaj wartości dla każdego ustawienia.
 
     | Ustawienie | Opis i wartość |
-    | --- | --- | --- |
+    | --- | --- |
     | **Minimum** | Liczba wystąpień skalowanych klastra nie będzie poniżej, niezależnie od użycia. |
     | **Maksymalna** | Liczba wystąpień skalowanych klastra nie będzie powyżej, niezależnie od użycia. |
     | **Domyślne** | Domyślna liczba wystąpień. To ustawienie jest używane, jeśli występują problemy z odczytaniem metryk zasobów. |

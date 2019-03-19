@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ccfe6a8d77926d2b908f84db600b0665565d51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 257f7b66163b72141ceb6405768e912a263fb14b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173895"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124222"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak i dlaczego aplikacje są dodawane do usługi Azure AD
 
@@ -133,8 +133,9 @@ Jeśli nadal chcesz uniemożliwić użytkownikom w katalogu, z rejestracji aplik
 * Aby uniemożliwić użytkownikom wyrażanie zgody na aplikacje we własnym imieniu:
   1. W witrynie Azure portal przejdź do [ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) w sekcji aplikacje dla przedsiębiorstw.
   2. Zmiana **użytkownicy mogą zezwalać aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu** do **nie**. 
-      > [!NOTE]
-      > Jeśli zdecydujesz wyłączyć zgody użytkownika, administratora będą musieli wyrazić zgodę na nową aplikację, którą użytkownik musi używać.    
+     
+     > [!NOTE]
+     > Jeśli zdecydujesz wyłączyć zgody użytkownika, administratora będą musieli wyrazić zgodę na nową aplikację, którą użytkownik musi używać.    
 * Aby uniemożliwić użytkownikom rejestrowanie swoich własnych aplikacji:
   1. W witrynie Azure portal przejdź do [ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) sekcji w obszarze Azure Active Directory
   2. Zmiana **użytkownicy mogą rejestrować aplikacje** do **nie**.

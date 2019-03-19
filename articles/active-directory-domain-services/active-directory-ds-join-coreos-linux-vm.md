@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 3948b0e1445aef5b9030e5e40f4bd4ec7ea1bf51
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fe9ec05b3d8f084f58d5836f1a077e952966ecef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175761"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119330"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Dołącz maszynę wirtualną CoreOS Linux do domeny zarządzanej
 W tym artykule pokazano, jak dołączanie maszyny wirtualnej systemu Linux systemu CoreOS na platformie Azure do domeny zarządzanej usług domenowych Azure AD.
@@ -113,10 +113,9 @@ sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H c
 
 > [!NOTE]
 > **Rozwiązywanie problemów:** Jeśli *adcli* nie może znaleźć Twojej domeny zarządzanej:
-  * Upewnij się, że domena jest dostępny z maszyny wirtualnej (spróbuj ping).
-  * Sprawdź, czy maszyna wirtualna w rzeczywistości został wdrożony na tej samej sieci wirtualnej, w którym domena zarządzana jest dostępna.
-  * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywała na kontrolerach domeny z domeny zarządzanej.
->
+>   * Upewnij się, że domena jest dostępny z maszyny wirtualnej (spróbuj ping).
+>   * Sprawdź, czy maszyna wirtualna w rzeczywistości został wdrożony na tej samej sieci wirtualnej, w którym domena zarządzana jest dostępna.
+>   * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywała na kontrolerach domeny z domeny zarządzanej.
 
 Uruchom usługę SSSD. W terminalu SSH wpisz następujące polecenie:
   ```

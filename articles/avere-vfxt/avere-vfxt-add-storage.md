@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: f809644d4b94ea5facebba45b921485c739eb047
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6d35d5cdeafb80a36f910d71393802a3affb4df8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774901"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078819"
 ---
 # <a name="configure-storage"></a>Konfigurowanie magazynu
 
@@ -149,7 +149,7 @@ Aby dodać magazyn obiektów Blob, po utworzeniu klastra, wykonaj następujące 
    * Opcjonalnie można ustawić **typ szyfrowania** do **Brak**.  Usługa Azure Storage jest domyślne szyfrowanie przekazywanego materiału.
    * Kliknij przycisk **Dodaj filtr**.
 
-  Aby uzyskać szczegółowe informacje, przeczytaj [Dodawanie nowych filtr core chmury](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) w przewodniku Avere konfiguracji klastra. 
+   Aby uzyskać szczegółowe informacje, przeczytaj [Dodawanie nowych filtr core chmury](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) w przewodniku Avere konfiguracji klastra. 
 
 Strona zostanie odświeżona lub możesz odświeżyć stronę, aby wyświetlić swoje nowy filtr core.
 

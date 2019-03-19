@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c60dc2ca93547b93ce2ee457393570479069c899
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 10335f9c74b9033b303c960a77af136cc80d75bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216272"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094368"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Jak używać alternatywnego danych wejściowych
 
@@ -48,6 +48,8 @@ Alternatywne dane wejściowe są wypowiedzi alternatywne, semantycznie równowa�
 3. Wpisz "city", "Nazwa jednostki".
 4. Kliknij przycisk "Utwórz".
 
+![](../media/T10_actions.png)
+
 Teraz Utwórzmy trzy czynności.
 
 ### <a name="create-the-first-action"></a>Tworzenie pierwszej akcji
@@ -58,11 +60,15 @@ Teraz Utwórzmy trzy czynności.
 4. W polu "Dyskwalifikacji uprawnia" wpisz "Miasto".
 5. Kliknij przycisk "Utwórz".
 
+![](../media/T10_action_create_1.png)
+
 ### <a name="create-the-second-action"></a>Tworzenie drugiej akcji
 
 1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
 2. W "Botów odpowiedzi..." pola, wpisz "pogody w $city jest prawdopodobnie sunny".
 3. Kliknij przycisk "Utwórz".
+
+![](../media/T10_action_create_2.png)
 
 ### <a name="create-the-third-action"></a>Utwórz akcję trzeci
 
@@ -71,7 +77,11 @@ Teraz Utwórzmy trzy czynności.
 3. W polu "Dyskwalifikacji uprawnia" wpisz "Miasto".
 4. Kliknij przycisk "Utwórz".
 
+![](../media/T10_action_create_3.png)
+
 Masz teraz trzy czynności.
+
+![](../media/T10_actions.png)
 
 ### <a name="train-the-model"></a>Uczenie modelu
 
@@ -82,7 +92,9 @@ Masz teraz trzy czynności.
 5. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Denver"
 6. Kliknij przycisk "Wynik akcje".
 7. Wybierz odpowiedź "pogody w Warszawie jest prawdopodobnie sunny".
-8. Kliknij przycisk "Zapisz".
+8. Kliknij przycisk "Prześlij zmiany".
+
+![](../media/T10_training_1.png)
 
 Spróbujmy trenowania więcej przez utworzenie innego train okna dialogowego.
 
@@ -96,7 +108,9 @@ Spróbujmy trenowania więcej przez utworzenie innego train okna dialogowego.
 6. Kliknij "Seattle", a następnie kliknij przycisk "city" z listy jednostek.
 7. Kliknij przycisk "Wynik akcje".
 8. Wybierz odpowiedź "pogody w Seattle jest prawdopodobnie sunny".
-9. Kliknij przycisk "Zapisz".
+9. Kliknij przycisk "Prześlij zmiany".
+
+![](../media/T10_training_2.png)
 
 ### <a name="third-model-train-dialog-using-alternative-input"></a>Trzeci modelu Train okna dialogowego, używając alternatywnego danych wejściowych
 
@@ -106,27 +120,29 @@ Spróbujmy trenowania więcej przez utworzenie innego train okna dialogowego.
     - Model jest pewności co do najlepszym rozwiązaniem, więc go wybrać najwyższy percentyl domyślnie.
 4. Kliknij przycisk "Nauczania Porzuć", a następnie przycisk "Potwierdź".
 
-![](../media/tutorial8_closescores.png)
+![](../media/T10_training_3.png)
 
 Teraz lepiej dostosować systemu przy użyciu alternatywnych danych wejściowych. Można dodać alternatywne dane wejściowe, podczas dydaktycznych lub nowszej.
 
-5. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie wybierz "Co można zrobić?" z listy okien dialogowych pociągu.
-6. Kliknij przycisk "co można zrobić?" Wypowiedź w panelu rozmowy.
-7. W "Dodaj alternatywne dane wejściowe..." pole, typ "pomoc" i naciśnij klawisz należy wprowadzić.
-8. Kliknij przycisk "Zapisz zmiany".
+1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie wybierz "Co można zrobić?" z listy okien dialogowych pociągu.
+1. Kliknij przycisk "co można zrobić?" Wypowiedź w panelu rozmowy.
+1. W "Dodaj alternatywne dane wejściowe..." pole, typ "pomoc" i naciśnij klawisz należy wprowadzić.
+1. Kliknij przycisk "Zapisz zmiany".
 
-![](../media/tutorial8_helpalternates.png)
+![](../media/T10_training_4.png)
 
 Dodajmy inną alternatywnych dane wejściowe do obsługi Houston.
 
-9. Kliknij przycisk "co to jest pogody w Seattle?" Wypowiedź w panelu rozmowy.
-10. W polu "Dodaj alternatywne dane wejściowe..." typu "prognozy Houston", a następnie naciśnij klawisz enter.
-    - Najważniejsze wiadomości błąd danych wejściowych alternatywnych fakt musi być semantycznie równoważne i zawierać tej samej jednostki jako oryginalnego wypowiedź; nie tylko tych samych wartości jednostki. Wymagana jest obecność tych samych jednostek.
-11. Kliknij pozycję "Houston" i wybierz "city" z listy jednostek.
-12. W polu "Dodaj alternatywne dane wejściowe..." typu "prognozy Seattle" i naciśnij klawisz enter.
-13. Kliknij na "Seattle" i wybierz "city" z listy jednostek.
-14. Kliknij przycisk "Zapisz zmiany".
-15. Kliknij przycisk "Edit Zapisz".
+1. Kliknij przycisk "co to jest pogody w Seattle?" Wypowiedź w panelu rozmowy.
+1. W polu "Dodaj alternatywne dane wejściowe..." typu "prognozy Houston", a następnie naciśnij klawisz enter.
+   - Najważniejsze wiadomości błąd danych wejściowych alternatywnych fakt musi być semantycznie równoważne i zawierać tej samej jednostki jako oryginalnego wypowiedź; nie tylko tych samych wartości jednostki. Wymagana jest obecność tych samych jednostek.
+1. Kliknij pozycję "Houston" i wybierz "city" z listy jednostek.
+1. W polu "Dodaj alternatywne dane wejściowe..." typu "prognozy Seattle" i naciśnij klawisz enter.
+1. Kliknij na "Seattle" i wybierz "city" z listy jednostek.
+1. Kliknij przycisk "Zapisz zmiany".
+1. Kliknij przycisk "Edit Zapisz".
+
+![](../media/T10_training_5.png)
 
 ### <a name="testing-the-model"></a>Testowanie modelu
 
@@ -134,7 +150,7 @@ Dodajmy inną alternatywnych dane wejściowe do obsługi Houston.
 2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Pomóż mi"
 3. W panelu rozmowy, w której wyświetlany jest tekst "Wpisz wiadomość...", wpisz "forecast dla Denver"
 
-![](../media/tutorial8_altcities.png)
+![](../media/T10_logdialog.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

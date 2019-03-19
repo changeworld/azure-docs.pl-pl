@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 84a2ef60c9f6aa4270c3fc4f83327070b298b8b2
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 535ba0049e91e09de3d1dcf05fc8ede80ef403ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697191"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088064"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migracja Contoso: Ponowne hostowanie aplikacji w środowisku lokalnym, na maszynach wirtualnych platformy Azure i grupy dostępności AlwaysOn programu SQL Server
 
@@ -286,7 +286,7 @@ Tworzą modułu równoważenia obciążenia w następujący sposób:
 
 Po wdrożeniu wewnętrznego modułu równoważenia obciążenia, należy je skonfigurować. One tworzenie puli adresów zaplecza, konfigurowanie sondy kondycji i konfigurowanie reguły równoważenia obciążenia.
 
-### <a name="add-a-backend-pool"></a>Dodawanie puli zaplecza
+### <a name="add-a-backend-pool"></a>Dodaj pulę zaplecza
 
 Aby dystrybuować ruch do maszyn wirtualnych w klastrze, Administratorzy Contoso skonfiguruj pulę adresów zaplecza, która zawiera adresy IP kart sieciowych dla maszyn wirtualnych, które będą odbierać ruch sieciowy z modułu równoważenia obciążenia.
 
@@ -704,10 +704,10 @@ Zespół ds. zabezpieczeń Contoso przegląda WEBVM maszyn wirtualnych platformy
 ## <a name="bcdr"></a>BCDR
 
  Ciągłość prowadzenia działalności biznesowej i odzyskiwania po awarii (BCDR) Contoso wykonuje następujące akcje:
- - Zabezpieczanie danych: Contoso tworzy kopie zapasowe danych na WEBVM i SQLAOG1 SQLAOG2 maszyn wirtualnych przy użyciu usługi Azure Backup. [Dowiedz się więcej].
-(https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- Contoso zawiera również informacje o tym, jak używać usługi Azure Storage do tworzenia kopii zapasowych programu SQL Server bezpośrednio do magazynu obiektów blob. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore).
-- Zachowaj aplikacji działanie: Contoso są replikowane maszyny wirtualne na platformie Azure aplikacji przy użyciu Site Recovery w regionie pomocniczym. [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
+- Zabezpieczanie danych: Contoso tworzy kopie zapasowe danych na WEBVM i SQLAOG1 SQLAOG2 maszyn wirtualnych przy użyciu usługi Azure Backup. [Dowiedz się więcej].
+  (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+  - Contoso zawiera również informacje o tym, jak używać usługi Azure Storage do tworzenia kopii zapasowych programu SQL Server bezpośrednio do magazynu obiektów blob. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore).
+  - Zachowaj aplikacji działanie: Contoso są replikowane maszyny wirtualne na platformie Azure aplikacji przy użyciu Site Recovery w regionie pomocniczym. [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 
 
 ### <a name="licensing-and-cost-optimization"></a>Optymalizacja licencjonowania i kosztów

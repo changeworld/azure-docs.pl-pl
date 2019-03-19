@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7b657d11e829d636063639e26a90d671a5d1473
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ad716e2ef5e597424c860378e7a63d5c2de53f54
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438357"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834561"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Uruchamiać zadania Apache Sqoop z usługą Hadoop w HDInsight za pomocą programu Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -68,19 +68,19 @@ Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy:
 
     W tym poleceniu są używane następujące parametry:
 
-    * **-d** — od `-G` nie jest używany, żądanie domyślnie metody POST. `-d` Określa wartości danych, które są wysyłane z żądania.
+   * **-d** — od `-G` nie jest używany, żądanie domyślnie metody POST. `-d` Określa wartości danych, które są wysyłane z żądania.
 
-        * **User.name** — użytkownik, który uruchamia polecenie.
+       * **User.name** — użytkownik, który uruchamia polecenie.
 
-        * **polecenie** — polecenie narzędzia Sqoop do wykonania.
+       * **polecenie** — polecenie narzędzia Sqoop do wykonania.
 
-        * **statusdir** — katalog, w którym zostanie zapisany stan dla tego zadania.
+       * **statusdir** — katalog, w którym zostanie zapisany stan dla tego zadania.
 
-    To polecenie zwróci identyfikator zadania, który może służyć do sprawdzania stanu zadania.
+     To polecenie zwróci identyfikator zadania, który może służyć do sprawdzania stanu zadania.
 
-        ```json
-        {"id":"job_1415651640909_0026"}
-        ```
+       ```json
+       {"id":"job_1415651640909_0026"}
+       ```
 
 3. Aby sprawdzić stan zadania, użyj następującego polecenia. Zastąp **JOBID** przy użyciu wartości zwracanej w poprzednim kroku. Na przykład, jeśli wartość zwracaną `{"id":"job_1415651640909_0026"}`, następnie **JOBID** będzie `job_1415651640909_0026`.
 

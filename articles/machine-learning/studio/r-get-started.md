@@ -1,21 +1,21 @@
 ---
-title: Wprowadzenie do języka programowania R
+title: Wprowadzenie do języka R
 titleSuffix: Azure Machine Learning Studio
 description: Użyj tego samouczka programowania R, aby rozpocząć tworzenie rozwiązania do prognozowania, przy użyciu języka R za pomocą usługi Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: c18de2efff0f867213cad56b6012bb8ee6ed52bb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 307636b019b53c8457c65261824adbf8e52ca0a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344911"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875519"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Wprowadzenie do języka R, w języku programowania w usłudze Azure Machine Learning Studio
 
@@ -131,7 +131,7 @@ Jeśli w tej chwili nie rozumiesz ostatni wiersz kodu, Czytaj dalej. W dalszej c
 
 RStudio to powszechnie używane środowisko IDE dla języka R. Będę używać programu RStudio edytowanie, testowanie i debugowanie część kodu języka R używanych w tym przewodniku. Gdy kod R jest przetestowany i przygotowany, można po prostu wycinania i wklejania w edytorze programu RStudio do Machine Learning Studio [wykonanie skryptu języka R] [ execute-r-script] modułu.  
 
-Jeśli nie masz języka programowania R zainstalowane na komputerze stacjonarnym, zalecamy, możesz to zrobić teraz. Bezpłatne materiały do pobrania z językiem R typu open source dostępnych w kompleksowe R archiwum sieci (CRAN) na [ http://www.r-project.org/ ](http://www.r-project.org/). Pliki do pobrania są dostępne dla Windows, Macos i Linux/UNIX. Wybierz pobliskich dublowania i postępuj zgodnie z instrukcjami pobierania. Ponadto CRAN zawiera mnóstwo przydatne pakietów manipulowania analizy i danych.
+Jeśli nie masz języka programowania R zainstalowane na komputerze stacjonarnym, zalecamy, możesz to zrobić teraz. Bezpłatne materiały do pobrania z językiem R typu open source dostępnych w kompleksowe R archiwum sieci (CRAN) na [ https://www.r-project.org/ ](https://www.r-project.org/). Pliki do pobrania są dostępne dla Windows, Macos i Linux/UNIX. Wybierz pobliskich dublowania i postępuj zgodnie z instrukcjami pobierania. Ponadto CRAN zawiera mnóstwo przydatne pakietów manipulowania analizy i danych.
 
 Jeśli jesteś nowym użytkownikiem programu RStudio, należy pobrać i zainstalować klasycznej wersji. Można znaleźć programu RStudio pliki do pobrania dla Windows, Mac OS i systemu Linux/UNIX w http://www.rstudio.com/products/RStudio/. Wykonaj instrukcje podane w instalacji programu RStudio na komputerze stacjonarnym.  
 
@@ -1312,18 +1312,18 @@ Program RStudio jest dość dobrze udokumentowane. Poniżej wymieniono niektóre
 
 Ten samouczek programowania R obejmuje podstawy, co jest potrzebne do języka R za pomocą usługi Azure Machine Learning Studio. Jeśli nie jesteś zaznajomiony z języka R, dwa wprowadzeń są dostępne w sieci CRAN:
 
-* [R dla początkujących](http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis jest dobrym miejscem do rozpoczęcia.  
-* [Wprowadzenie do języka R](http://cran.r-project.org/doc/manuals/R-intro.html) przez W. N. Venables et. al. Przechodzi do bardziej szczegółowe informacje.
+* [R dla początkujących](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis jest dobrym miejscem do rozpoczęcia.  
+* [Wprowadzenie do języka R](https://cran.r-project.org/doc/manuals/R-intro.html) przez W. N. Venables et. al. Przechodzi do bardziej szczegółowe informacje.
 
 Istnieje wiele książek na R, które mogą pomóc Ci rozpocząć pracę. Poniżej przedstawiono kilka, które mogę być przydatne:
 
 * **Grafikę programowania w języku R: Samouczek z oprogramowania statystycznie** to Normanowi Matloff znakomite wprowadzenie do programowania w języku R.  
 * **Podręcznik języka R** , Paul Teetor dostarcza rozwiązanie problemu i rozwiązania do używania języka R.  
-* **Język R w akcji** innej przydatne książki wprowadzające to Robert Kabacoff. Pomocnik [szybkie R witryny sieci Web](http://www.statmethods.net/) jest użytecznym zasobem.
+* **Język R w akcji** innej przydatne książki wprowadzające to Robert Kabacoff. Pomocnik [szybkie R witryny sieci Web](https://www.statmethods.net/) jest użytecznym zasobem.
 * **R Inferno** Patrick Burns jest zdumiewająco humorystyczną książki, który zajmuje się liczba trudne i trudne tematów, które można napotkać podczas programowania w języku R. Książki jest dostępna bezpłatnie w [Inferno R](http://www.burns-stat.com/documents/books/the-r-inferno/).
 * Jeśli chcesz, aby szczegółowo omówi zaawansowanych tematów w języku R, się jej przyjrzeć książki **zaawansowane R** przez Hadley Wickham. Wersję tej książki online jest dostępna bezpłatnie w [ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/).
 
-Wykaz pakietów serii czasu języka R można znaleźć w [CRAN widok zadania: Czas analizy serii](http://cran.r-project.org/web/views/TimeSeries.html). Informacje w określonym czasie serii obiektu pakietów powinni zapoznać się z dokumentacją tego pakietu.
+Wykaz pakietów serii czasu języka R można znaleźć w [CRAN widok zadania: Czas analizy serii](https://cran.r-project.org/web/views/TimeSeries.html). Informacje w określonym czasie serii obiektu pakietów powinni zapoznać się z dokumentacją tego pakietu.
 
 Książki **wprowadzające szeregów czasowych** przy użyciu języka R, Paul Cowpertwait i Andrew Metcalfe zawiera wprowadzenie do przy użyciu języka R do analizy serii czasowych. Wiele więcej teoretycznych teksty zawierają przykłady języka R.
 
@@ -1331,8 +1331,8 @@ Poniżej przedstawiono kilka przydatnych zasobów Internetu:
 
 * DataCamp uczy języka R w przy użyciu przeglądarki z wideo — lekcje i ćwiczenia kodowania. Dostępne są interaktywne samouczki na temat najnowszych technik R i pakietów. Weź udział w BEZPŁATNEJ [interaktywnego samouczka języka R](https://www.datacamp.com/courses/introduction-to-r).
 * [Dowiedz się programowania w języku R, ostateczne przewodnik](https://www.programiz.com/r-programming) z Programiz.
-* Szybkie [samouczek języka R](http://www.cyclismo.org/tutorial/R/) przez czarny Kelly Clarkson University.
-* Ponad 60 zasobów języka R, opisane w temacie [zasoby języka R górnej aby udoskonalić swoje umiejętności danych](http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
+* Szybkie [samouczek języka R](https://www.cyclismo.org/tutorial/R/) przez czarny Kelly Clarkson University.
+* Ponad 60 zasobów języka R, opisane w temacie [zasoby języka R górnej aby udoskonalić swoje umiejętności danych](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
 
 <!-- Module References -->
 [execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

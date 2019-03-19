@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: e78cc86a91e229b5d4d4aead5709da2f694ecac1
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 948110e5532aeeb2b9acbbb66361eb9c55eaf897
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895367"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543342"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Wyszukiwanie jednostek za pomocą interfejsu API jednostek Bing
 
@@ -72,7 +72,7 @@ Poniżej przedstawiono odpowiedź zawierającą jednostkę dominującą i uści�
                 "mustBeCloseToContent": true,
                 "license": {
                     "name": "CC-BY-SA",
-                    "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+                    "url": "https://creativecommons.org/licenses/by-sa/3.0/"
                 },
                 "licenseNotice": "Text under CC-BY-SA license"
             },
@@ -151,7 +151,7 @@ Jednostka zawiera pola `name` (nazwa), `description` (opis) i `image` (obraz). W
     "mustBeCloseToContent": true,
     "license": {
         "name": "CC-BY-SA",
-        "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+        "url": "https://creativecommons.org/licenses/by-sa/3.0/"
     },
     "licenseNotice": "Text under CC-BY-SA license"
 },
@@ -331,6 +331,6 @@ Jeśli nie masz pewności, czy Twoje środowisko można uznać za środowisko cz
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Użyj tego poradnika [Szybki start](../quickstarts/csharp.md), aby zacząć wyszukiwać jednostki za pomocą interfejsu API wyszukiwania jednostek Bing.

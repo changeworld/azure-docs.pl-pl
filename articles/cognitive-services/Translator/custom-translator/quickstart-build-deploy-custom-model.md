@@ -5,16 +5,16 @@ description: W tym przewodniku Szybki start szczegółowo omówiono tworzenie sy
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: quickstart
-ms.openlocfilehash: 25ff375b3b29729270b23372d82d1978c4ae37be
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 7875a32274ddf0ea886727cdc55a0bbb874b2296
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735003"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762997"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Szybki start: Tworzenie, wdrażanie i używanie niestandardowego modelu tłumaczenia
 
@@ -71,6 +71,6 @@ Gdy wszystko jest gotowe do wdrożenia przeszkolonego modelu, kliknij przycisk �
 
 Dostęp do wdrożonych modeli można uzyskać za pośrednictwem [interfejsu API tłumaczenia tekstu w usłudze Microsoft Translator w wersji 3, podając identyfikator kategorii](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Więcej informacji na temat interfejsu API tłumaczenia tekstu w usłudze Translator można znaleźć na stronie internetowej z [dokumentacją interfejsu API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak nawigować po [obszarze roboczym rozszerzenia Custom Translator i jak zarządzać projektami](workspace-and-project.md).

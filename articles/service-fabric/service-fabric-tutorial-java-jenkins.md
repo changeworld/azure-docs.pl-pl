@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a4b8d930a2176c16bb9d1cbcd3b67e6f919575ed
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162226"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880599"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Samouczek: konfigurowanie środowiska Jenkins w celu włączenia ciągłej integracji/ciągłego wdrażania dla aplikacji Java w usłudze Service Fabric
 
@@ -72,15 +72,15 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
     * Po zalogowaniu się po raz pierwszy możesz utworzyć konto użytkownika lub użyć konta administratora.
 
 1. Skonfiguruj usługę GitHub do pracy z narzędziem Jenkins, wykonując kroki opisane w temacie [Generating a new SSH key and adding it to the SSH agent (Generowanie nowego klucza SSH i dodawanie go do agenta SSH)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/). Ponieważ polecenia są uruchamiane w z kontenera Docker, postępuj zgodnie z instrukcjami dla środowiska systemu Linux.
-    * Użyj instrukcji z usługi GitHub do wygenerowania klucza SSH. Następnie dodaj klucz SSH do konta usługi GitHub, które hostuje repozytorium.
-    * Uruchom polecenia wymienione pod powyższym linkiem w powłoce platformy Docker narzędzia Jenkins (a nie na hoście).
-    * Aby zalogować się do powłoki narzędzia Jenkins z poziomu hosta, użyj następujących poleceń:
+   * Użyj instrukcji z usługi GitHub do wygenerowania klucza SSH. Następnie dodaj klucz SSH do konta usługi GitHub, które hostuje repozytorium.
+   * Uruchom polecenia wymienione pod powyższym linkiem w powłoce platformy Docker narzędzia Jenkins (a nie na hoście).
+   * Aby zalogować się do powłoki narzędzia Jenkins z poziomu hosta, użyj następujących poleceń:
 
-    ```sh
-    docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
-    ```
+     ```sh
+     docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
+     ```
 
-    Upewnij się, że klaster lub maszyna hostujące obraz kontenera narzędzia Jenkins mają publiczny adres IP. Dzięki publicznemu adresowi IP wystąpienie narzędzia Jenkins może otrzymywać powiadomienia z usługi GitHub.
+     Upewnij się, że klaster lub maszyna hostujące obraz kontenera narzędzia Jenkins mają publiczny adres IP. Dzięki publicznemu adresowi IP wystąpienie narzędzia Jenkins może otrzymywać powiadomienia z usługi GitHub.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Tworzenie i konfigurowanie zadania narzędzia Jenkins
 
@@ -102,7 +102,7 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
 
    b. Wybierz pozycję **Add Service** (Dodaj usługę), wpisz ciąg **Jenkins** i wybierz pozycję **Jenkins-Github plugin** (Wtyczka Jenkins-Github).
 
-   d. Wprowadź adres URL elementu webhook narzędzia Jenkins (domyślnie adres URL powinien być następujący: ``http://<PublicIPorFQDN>:8081/github-webhook/``). Kliknij pozycję **add/update service** (dodaj/aktualizuj usługę).
+   c. Wprowadź adres URL elementu webhook narzędzia Jenkins (domyślnie adres URL powinien być następujący: ``http://<PublicIPorFQDN>:8081/github-webhook/``). Kliknij pozycję **add/update service** (dodaj/aktualizuj usługę).
 
    d. Do wystąpienia narzędzia Jenkins zostanie wysłane zdarzenie testowe. W usłudze GitHub powinien zostać wyświetlony zielony znacznik wyboru obok elementu webhook i projekt jest kompilowany.
 
@@ -146,7 +146,7 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
-    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
+    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
       <Description>Voting Application</Description>
       <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="VotingWebPkg" ServiceManifestVersion="2.0.0"/>

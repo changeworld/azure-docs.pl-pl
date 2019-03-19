@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 80fbc84c2284b7078b07040a74566cf1e8d57fb4
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 11b1b46e29ac9a4147c4dc319753edd0fadce8bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341089"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088914"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych
 
@@ -50,7 +50,7 @@ Najnowszą wersję pliku instalacyjnego serwera konfiguracji jest dostępny w po
 4. Na **Dodaj serwer** kliknij przycisk pobierania, aby pobrać klucz rejestracji. Będzie on potrzebny podczas instalacji serwera konfiguracji, aby zarejestrować go za pomocą usługi Azure Site Recovery.
 5. Kliknij przycisk **Pobierz Microsoft Azure Site Recovery Unified Setup** link, aby pobrać najnowszą wersję serwera konfiguracji.
 
-  ![Strona pobierania](./media/physical-manage-configuration-server/downloadcs.png)
+   ![Strona pobierania](./media/physical-manage-configuration-server/downloadcs.png)
 
 
 ## <a name="install-and-register-the-server"></a>Instalowanie i rejestrowanie serwera
@@ -153,40 +153,40 @@ Można zmodyfikować ustawienia serwera proxy dla komputera serwera konfiguracji
 3. Kliknij przycisk **rejestracja w magazynie** kartę.
 4. Pobierz nowy plik rejestracji magazynu z portalu i podaj je jako dane wejściowe do narzędzia.
 
-  ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Podaj nowe szczegóły serwera proxy, a następnie kliknij przycisk **zarejestrować** przycisku.
 6. Otwórz okno poleceń programu PowerShell.
 7. Uruchom następujące polecenie:
 
-  ```PowerShell
-  $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
-  Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
-  net stop obengine
-  net start obengine
-  ```
+   ```PowerShell
+   $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
+   net stop obengine
+   net start obengine
+   ```
 
-  >[!WARNING]
-  W przypadku dodatkowych serwerów przetwarzania dołączonych do serwera konfiguracji należy [poprawienie ustawień serwera proxy na wszystkich serwerach proces skalowania w poziomie](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) w danym wdrożeniu.
+   > [!WARNING]
+   > W przypadku dodatkowych serwerów przetwarzania dołączonych do serwera konfiguracji należy [poprawienie ustawień serwera proxy na wszystkich serwerach proces skalowania w poziomie](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) w danym wdrożeniu.
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Zarejestruj ponownie serwer konfiguracji, w tym samym magazynie
-  1. Zaloguj się do serwera konfiguracji.
-  2. Uruchom cspsconfigtool.exe za pomocą skrótu na pulpicie.
-  3. Kliknij przycisk **rejestracja w magazynie** kartę.
-  4. Pobierz nowy plik rejestracji z portalu, a następnie podać go jako dane wejściowe do narzędzia.
-        ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-  5. Podaj szczegóły serwera Proxy, a następnie kliknij przycisk **zarejestrować** przycisku.  
-  6. Otwórz okno poleceń programu PowerShell.
-  7. Uruchom następujące polecenie
+1. Zaloguj się do serwera konfiguracji.
+2. Uruchom cspsconfigtool.exe za pomocą skrótu na pulpicie.
+3. Kliknij przycisk **rejestracja w magazynie** kartę.
+4. Pobierz nowy plik rejestracji z portalu, a następnie podać go jako dane wejściowe do narzędzia.
+      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+5. Podaj szczegóły serwera Proxy, a następnie kliknij przycisk **zarejestrować** przycisku.  
+6. Otwórz okno poleceń programu PowerShell.
+7. Uruchom następujące polecenie
 
-      ```PowerShell
-      $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
-      net stop obengine
-      net start obengine
-      ```
+    ```PowerShell
+    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
+    net stop obengine
+    net start obengine
+    ```
 
-  >[!WARNING]
-  Jeśli masz wiele serwerów procesu, musisz [ponownie je zarejestrować](vmware-azure-manage-process-server.md#reregister-a-process-server).
+   > [!WARNING]
+   > Jeśli masz wiele serwerów procesu, musisz [ponownie je zarejestrować](vmware-azure-manage-process-server.md#reregister-a-process-server).
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>Rejestrowanie serwera konfiguracji za pomocą innego magazynu
 
@@ -246,22 +246,22 @@ Uaktualnij serwer w następujący sposób:
 4. Kliknij przycisk **tak** o potwierdzenie usunięcia serwera.
 
 ### <a name="uninstall-the-configuration-server-and-its-dependencies"></a>Odinstaluj serwer konfiguracji i jego zależności
-  > [!TIP]
-  Jeśli planujesz ponowne serwera konfiguracji za pomocą usługi Azure Site Recovery, następnie możesz przejść do kroku 4 bezpośrednio
+> [!TIP]
+>   Jeśli planujesz ponowne serwera konfiguracji za pomocą usługi Azure Site Recovery, następnie możesz przejść do kroku 4 bezpośrednio
 
 1. Zaloguj się do serwera konfiguracji jako Administrator.
 2. Otwórz Panel sterowania > Program > Odinstaluj programy
 3. Należy odinstalować te programy w następującej kolejności:
-  * Agent usług Microsoft Azure Recovery Services
-  * Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy
-  * Dostawca programu Microsoft Azure Site Recovery
-  * Serwer procesu/serwera konfiguracji odzyskiwania lokacji platformy Microsoft Azure
-  * Zależności serwera konfiguracji odzyskiwania lokacji platformy Microsoft Azure
-  * MySQL Server 5.5
+   * Agent usług Microsoft Azure Recovery Services
+   * Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy
+   * Dostawca programu Microsoft Azure Site Recovery
+   * Serwer procesu/serwera konfiguracji odzyskiwania lokacji platformy Microsoft Azure
+   * Zależności serwera konfiguracji odzyskiwania lokacji platformy Microsoft Azure
+   * MySQL Server 5.5
 4. Uruchom następujące polecenie i wierszu polecenia administratora.
-  ```
-  reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
-  ```
+   ```
+   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+   ```
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Usunąć lub wyrejestrować serwer konfiguracji (PowerShell)
 

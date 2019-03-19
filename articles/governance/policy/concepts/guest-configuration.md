@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e6621172734ea02f971bd5064b403ad4844210a3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: da29065485438b402dfb8b9a41f95f435a172a01
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960769"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854487"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -125,6 +125,14 @@ Usługa Azure Policy korzysta z dostawców zasobów gościa konfiguracji **compl
 
 Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* inicjatywy zawiera zasady 18. Sześć **DeployIfNotExists** i **inspekcji** pary definicji zasad dla Windows i trzy pary dla systemu Linux.
 W przypadku każdego **DeployIfNotExists** [reguła definicji zasad](definition-structure.md#policy-rule) ogranicza systemów ocenione.
+
+## <a name="client-log-files"></a>Pliki dziennika klienta
+
+Rozszerzenie konfiguracji gościa zapisuje pliki dziennika w następujących lokalizacjach:
+
+Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\1.10.0.0\dsc\logs\dsc.log`
+
+Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-1.8.0/GCAgent/logs/dsc.log`
 
 ## <a name="next-steps"></a>Kolejne kroki
 

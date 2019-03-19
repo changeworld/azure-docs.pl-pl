@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e69e2ca5ccd8e8edc2f55d74a0cca03eaabc9f49
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 9288ea08da6335dd29e7a15a9bc871b76c1ce7e9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884248"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438435"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Praca z parami klucz-wartość w magazynie usługi Azure App Configuration
 
@@ -70,11 +70,11 @@ Ten skrypt używa poniższych poleceń do pracy na parach klucz-wartość w maga
 
 | Polecenie | Uwagi |
 |---|---|
-| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-set) | Tworzy lub aktualizuje parę klucz-wartość. |
-| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-list) | Wyświetla listę par klucz-wartość w magazynie konfiguracji aplikacji. |
-| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-delete) | Usuwa parę klucz-wartość. |
+| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig) | Tworzy lub aktualizuje parę klucz-wartość. |
+| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig) | Wyświetla listę par klucz-wartość w magazynie konfiguracji aplikacji. |
+| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig) | Usuwa parę klucz-wartość. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

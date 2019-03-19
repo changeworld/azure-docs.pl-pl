@@ -3,20 +3,20 @@ title: Konfigurowanie reguł i akcji w usłudze Azure IoT Central | Microsoft Do
 description: W tym samouczku przedstawiono, jak konstruktor konfiguruje reguły i akcje oparte na danych telemetrycznych w aplikacji usługi Azure IoT Central.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 10/12/2018
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: d7269f61579ce1ffd9a686634effd153837a2f25
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: 096daa28b7548401adc857c3c6c8327ef1d1eb00
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662992"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769408"
 ---
-# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Samouczek: Konfigurowanie reguł i akcji dla urządzenia w usłudze Azure IoT Central
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central-new-ui-design"></a>Samouczek: Konfigurowanie reguł i akcji dla urządzenia w usłudze Azure IoT Central (nowy projekt interfejsu użytkownika)
 
 *Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
 
@@ -28,31 +28,23 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie reguły opartej na danych telemetrycznych
 > * Dodawanie akcji
 
-[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem należy ukończyć samouczek [Definiowanie nowego typu urządzenia w aplikacji](tutorial-define-device-type.md), aby utworzyć szablon urządzenia **Połączony klimatyzator** umożliwiający dalszą pracę.
 
 ## <a name="create-a-telemetry-based-rule"></a>Tworzenie reguły opartej na danych telemetrycznych
 
-1. Aby dodać nową regułę opartą na danych telemetrycznych do aplikacji, w menu nawigacji po lewej stronie wybierz pozycję **Device Explorer**:
+1. Aby dodać nowej reguły na podstawie danych telemetrycznych aplikacji, w menu nawigacji po lewej stronie wybierz **szablonów urządzeń**:
 
-    ![Strona Device Explorer](media/tutorial-configure-rules/explorerpage1.png)
+    ![Strona Szablony urządzeń](media/tutorial-configure-rules/templatespage1.png)
 
-    Zostanie wyświetlony szablon urządzenia **Połączony klimatyzator (1.0.0)** i urządzenie **Połączony klimatyzator-1** utworzone w ramach poprzedniego samouczka.
+    Zostanie wyświetlony szablon urządzenia **Połączony klimatyzator (1.0.0)** utworzony w ramach poprzedniego samouczka.
 
-2. Aby rozpocząć dostosowywanie połączonego klimatyzatora, wybierz urządzenie utworzone w ramach poprzedniego samouczka:
+2. Aby dostosować szablon urządzenia, wybierz opcję **połączone klimatyzacyjne** szablon utworzony w poprzednim samouczku.
 
-    ![Strona Połączony klimatyzator](media/tutorial-configure-rules/builderdevicelist1.png)
+3. Można dodać reguły na podstawie danych telemetrycznych w **reguły** widoku, wybierz opcję **reguły**, wybierz opcję **+ Nowa reguła**, a następnie wybierz **Telemetrii**:
 
-3. Aby rozpocząć dodawanie reguły w widoku **Reguły**, wybierz pozycję **Reguły**, a następnie kliknij opcję **Edytuj szablon**:
-
-    ![Widok Reguły](media/tutorial-configure-rules/builderedittemplate.png)
-
-4. Aby utworzyć regułę telemetrii opartą na wartościach progowych, kliknij przycisk **Nowa reguła**, a następnie **Telemetria**.
-
-    ![Edytowanie szablonu](media/tutorial-configure-rules/buildernewrule.png)
+    ![Widok Reguły](media/tutorial-configure-rules/newrule.png)
 
 5. Aby zdefiniować regułę, użyj informacji w poniższej tabeli:
 
@@ -60,19 +52,20 @@ Przed rozpoczęciem należy ukończyć samouczek [Definiowanie nowego typu urzą
     | -------------------------------------------- | ------------------------------    |
     | Name (Nazwa)                                         | Alert temperatury klimatyzatora |
     | Włącz regułę dla wszystkich urządzeń z tego szablonu | Włączone                                |
-    | Włącz regułę na tym urządzeniu                   | Włączone                                |
     | Warunek                                    | Temperatura jest wyższa niż 90    |
     | Agregacja                                  | Brak                              |
 
-    ![Warunek reguły temperatury](media/tutorial-configure-rules/buildertemperaturerule1.png)
+    ![Warunek reguły temperatury](media/tutorial-configure-rules/temperaturerule.png)
+
+    Następnie wybierz pozycję **Zapisz**.
 
 ## <a name="add-an-action"></a>Dodawanie akcji
 
-W ramach definiowania reguły definiuje się także akcję uruchamianą, gdy warunki reguły są spełnione. W tym samouczku jest dodawana akcja wysłania wiadomości e-mail z powiadomieniem o wyzwoleniu reguły.
+W ramach definiowania reguły definiuje się także akcję uruchamianą, gdy warunki reguły są spełnione. W tym samouczku utworzysz regułę z akcją, która będzie wysyłać wiadomość e-mail z powiadomieniem.
 
-1. Aby dodać **akcję**, najpierw **Zapisz** regułę, a następnie przewiń w dół panel **Konfigurowanie reguły telemetrii** i wybierz element **+** obok pozycji **Akcje**, a następnie wybierz pozycję **Wiadomość e-mail**:
+1. Aby dodać **akcję**, najpierw **zapisz** regułę, a następnie przewiń w dół panel **Konfigurowanie reguły telemetrii**. Wybierz znak **+** obok pozycji **Akcje**, a następnie wybierz opcję **Adres e-mail**:
 
-    ![Akcja reguły temperatury](media/tutorial-configure-rules/builderaddaction1.png)
+    ![Akcja reguły temperatury](media/tutorial-configure-rules/addaction.png)
 
 2. Aby zdefiniować akcję, użyj informacji w poniższej tabeli:
 
@@ -84,25 +77,18 @@ W ramach definiowania reguły definiuje się także akcję uruchamianą, gdy war
     > [!NOTE]
     > Aby użytkownik mógł otrzymywać wiadomości e-mail z powiadomieniem, adres e-mail musi być [identyfikatorem użytkownika w aplikacji](howto-administer.md), a użytkownik musiał zalogować się do aplikacji co najmniej raz.
 
-    ![Akcja temperatury w Konstruktorze aplikacji](media/tutorial-configure-rules/buildertemperatureaction.png)
+    ![Akcja temperatury](media/tutorial-configure-rules/temperatureaction.png)
 
-3. Wybierz pozycję **Zapisz**. Reguła zostanie wyświetlona na stronie **Reguły**:
-
-    ![Reguły Konstruktora aplikacji](media/tutorial-configure-rules/builderrules1.png)
-
-4. Wybierz przycisk **Gotowe**, aby wyjść z trybu **Edytuj szablon**.
- 
+3. Wybierz pozycję **Zapisz**. Reguła zostanie wyświetlona na stronie **Reguły**.
 
 ## <a name="test-the-rule"></a>Testowanie reguły
 
 Wkrótce po zapisaniu reguły stanie się ona aktywna. Gdy warunki zdefiniowane w regule zostaną spełnione, aplikacja wyśle wiadomość na adres e-mail określony w akcji.
 
-![Akcja wiadomości e-mail](media/tutorial-configure-rules/email.png)
-
 > [!NOTE]
-> Po zakończeniu testowania wyłącz regułę, aby zatrzymać wysyłanie wiadomości do Twojej skrzynki odbiorczej. 
+> Po zakończeniu testowania wyłącz regułę, aby zatrzymać wysyłanie wiadomości do Twojej skrzynki odbiorczej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

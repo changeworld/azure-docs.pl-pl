@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 5de707f3f2e6a82d880363eea91fb8ce644fb3aa
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 340c08841b7bedc9f2453617aeff111beb810961
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055050"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888182"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analizować międzydzierżawowa, przy użyciu danych wyodrębnionych - aplikacji wielodostępnej
  
@@ -94,7 +94,7 @@ W poniższych krokach wdrożyć magazyn analizy, który jest nazywany **tenantan
     - Usługa SQL database za pomocą magazynu kolumn, ustawianie **$DemoScenario** = **3**  
 3. Naciśnij klawisz **F5** Aby uruchomić skrypt pokazowy (wywołująca *TenantAnalytics Wdróż<XX>.ps1* skryptu) tworzy magazyn analizy dzierżawy. 
 
-Skoro masz wdrożono aplikację i wypełnione interesujących danych dzierżawy, użyj [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) połączyć **tenants1-mt -\<użytkownika\>**  i **katalogu-mt -\<użytkownika\>**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło = *P@ssword1*.
+Skoro masz wdrożono aplikację i wypełnione interesujących danych dzierżawy, użyj [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) połączyć **tenants1-mt -\<użytkownika\>**  i **katalogu-mt -\<użytkownika\>**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło = *P\@ssword1*.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -176,7 +176,7 @@ Aby połączyć usługę Power BI i zaimportować widoków, która została utwo
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło = *P@ssword1*. Kliknij przycisk **Połącz**.  
+5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło = *P\@ssword1*. Kliknij przycisk **Połącz**.  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
@@ -239,7 +239,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Gratulacje!
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 Dodatkowe [samouczki nawiązujące do aplikacji SaaS o nazwie Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
 - [Zadania elastyczne](sql-database-elastic-jobs-overview.md).

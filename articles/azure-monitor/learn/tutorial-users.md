@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: f5d75e817da843e0b6a8e86fb055cc723e45a2bb
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.openlocfilehash: e46dae199f4d45c325e41fa5432e98cba9a2f4ae
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108897"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449601"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Korzystanie z usługi Azure Application Insights, aby dowiedzieć się, jak klienci używają aplikacji
 
@@ -86,7 +86,7 @@ Panel **Sesje** jest podobny do panelu **Użytkownicy**.  Panel **Użytkownicy**
     ![Oś czasu sesji](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Grupowanie podobnych użytkowników
-**Kohorta** to zestaw grup użytkowników o podobnej charakterystyce.  Kohorty umożliwiają filtrowanie danych w innych panelach, co pozwala analizować poszczególne grupy użytkowników.  Można na przykład analizować tylko użytkowników, którzy ukończyli zakup.
+A **kohorta** to zbiór użytkowników, pogrupowane według podobnej charakterystyce.  Kohorty umożliwiają filtrowanie danych w innych panelach, co pozwala analizować poszczególne grupy użytkowników.  Można na przykład analizować tylko użytkowników, którzy ukończyli zakup.
 
 1.  Wybierz pozycję **Kohorty** z menu.
 2.  Kliknij przycisk **Nowa**, aby utworzyć nową kohortę.
@@ -163,7 +163,7 @@ Panel **Przechowywanie** ułatwia sprawdzenie, którzy użytkownicy wrócą do a
 6.  Kliknij pozycję **Dodaj użytkowników**, aby dodać wykres z informacjami o użytkowniku.  Jeśli chcesz, edytuj szczegóły wykresu, a następnie kliknij pozycję **Zakończono edytowanie**, aby zapisać wykres.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Wiesz już, jak analizować użytkowników, więc możesz przejść do następnego samouczka, aby dowiedzieć się, jak tworzyć niestandardowe pulpity nawigacyjne, które łączą te informacje z innymi przydatnymi danymi dotyczącymi aplikacji.
 
 > [!div class="nextstepaction"]

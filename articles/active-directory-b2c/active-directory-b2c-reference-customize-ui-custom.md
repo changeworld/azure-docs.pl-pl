@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d222e398653487cb87525ac13ebe682e9c8a26ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195949"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122930"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Dostosowywanie interfejsu użytkownika dla podróży użytkownika za pomocą zasad niestandardowych
 
@@ -66,7 +66,7 @@ Aby upewnić się, że wszystko działa zgodnie z oczekiwaniami, musisz mieć:
 - Upewnij się, że Twoja zawartość jest HTML5, zgodne i jest dostępny
 - Upewnij się, że serwer zawartości jest włączona dla mechanizmu CORS.
 - Udostępniać zawartość przy użyciu protokołu HTTPS.
-- Używać bezwzględnych adresów URL, takich jak https://yourdomain/content dla wszystkich łączy i zawartość arkusza CSS.
+- Używać bezwzględnych adresów URL, takich jak `https://yourdomain/content` dla wszystkich łączy i zawartość arkusza CSS.
 
 > [!TIP]
 > Aby sprawdzić, czy włączono mechanizm CORS lokacji zawartości są hosting w systemie i przetestować żądań CORPS, można skorzystać z witryny https://test-cors.org/. Dzięki rozłożeniu w tej witrynie możesz wysyłać żądania CORS na serwerze zdalnym (tak, aby sprawdzić, czy CORS jest obsługiwany) lub wysyłać żądania CORS serwer testowy (zapoznaj się z pewnych funkcji CORS).
@@ -121,16 +121,16 @@ Aby sprawdzić, czy magazyn, które hostują zawartości na ma włączono mechan
 
 1. Otwieranie sesji przeglądania i przejdź do strony *unified.html* przy użyciu pełny adres URL lokalizacji na koncie magazynu `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Na przykład https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
 2. Przejdź do adresu https://test-cors.org. Ta witryna pozwala sprawdzić, czy strony, którego używasz, ma włączono mechanizm CORS.  
-<!--
-![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
--->
+   <!--
+   ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
+   -->
 
 3. W **zdalnego adresu URL**, wprowadź pełny adres URL zawartości unified.html i kliknij przycisk **Wyślij żądanie**.
 4. Upewnij się, że dane wyjściowe w **wyniki** sekcja zawiera *XHR stanu: 200*, co oznacza, że włączono mechanizm CORS.
-<!--
-![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
--->
-Konto magazynu nie powinien zawierać kontenera obiektów blob o nazwie *b2c* na ilustracji, który zawiera następujące szablony wingtiptoys z *pakiet startowy*.
+   <!--
+   ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
+   -->
+   Konto magazynu nie powinien zawierać kontenera obiektów blob o nazwie *b2c* na ilustracji, który zawiera następujące szablony wingtiptoys z *pakiet startowy*.
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)

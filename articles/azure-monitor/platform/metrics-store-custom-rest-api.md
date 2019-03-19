@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: c9e08cd1daef919fa4bd919c06e402da1c48d5db
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c7ec3ba960929250f2d23d09b9a5ab06e3f6cd38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095419"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Wyślij metryki niestandardowe dla zasobów platformy Azure do usługi Azure Monitor metryki magazynu przy użyciu interfejsu API REST
 
@@ -78,13 +78,13 @@ Zapisywanie tokenu dostępu z odpowiedzi.
     ``` 
 
 1. W oknie wiersza polecenia po dane metryk: 
-    - **azureRegion**. Musi być zgodna regionu geograficznego, zasobów, które w przypadku emitowania metryki. 
-    - **resourceID**.  Identyfikator zasobu zasobów platformy Azure, które należy prześledzić metryki względem.  
-    - **AccessToken**. Wklej uzyskany wcześniej tokenu.
+   - **azureRegion**. Musi być zgodna regionu geograficznego, zasobów, które w przypadku emitowania metryki. 
+   - **resourceID**.  Identyfikator zasobu zasobów platformy Azure, które należy prześledzić metryki względem.  
+   - **AccessToken**. Wklej uzyskany wcześniej tokenu.
 
-    ```Shell 
-    curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
-    ```
+     ```Shell 
+     curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
+     ```
 1. Zmiana sygnatury czasowej i wartości w pliku JSON. 
 1. Powtórz dwa poprzednie kroki kilka razy, dzięki czemu masz dane przez kilka minut.
 

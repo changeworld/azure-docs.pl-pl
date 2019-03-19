@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 0f444a4ce41a700af4c55795bca95dbbf95003a4
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3551d088c1d02715bf9ace09d7eb0048bc10111e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750025"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105254"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Podłącz urządzenie z systemem mxchip IoT DevKit do akceleratora rozwiązania monitorowania zdalnego
 
@@ -40,7 +40,7 @@ Aby otworzyć przykładowy zdalnego monitorowania w programie VS Code:
 
 1. Znajdź **zdalne monitorowanie** i kliknij przycisk **Otwórz przykładowy**. Zostanie otwarte nowe okno programu VS Code, przedstawiający folder projektu:
 
-  ![IoT aplikacji Workbench wybierz przykład zdalnego monitorowania](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
+   ![IoT aplikacji Workbench wybierz przykład zdalnego monitorowania](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
 ## <a name="configure-the-device"></a>Konfigurowanie urządzenia
 
@@ -99,11 +99,11 @@ Aby zmienić kolor jednego z diod LED Mxchip, użyj **LedColor** metody:
 
 1. Konfigurowanie zadań przy użyciu następujących wartości, a następnie kliknij przycisk **Zastosuj**:
 
-    * Wybierz zadania: **Run — metoda**
-    * Nazwa metody: **LedColor**
-    * Nazwa zadania: **ChangeLedColor**
+   * Wybierz zadania: **Run — metoda**
+   * Nazwa metody: **LedColor**
+   * Nazwa zadania: **ChangeLedColor**
 
-    ![Ustawienia zadania](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+     ![Ustawienia zadania](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
 
 1. Po kilku sekundach zmienia kolor LED RGB (poniżej przycisku, A) w swojej Mxchip:
 

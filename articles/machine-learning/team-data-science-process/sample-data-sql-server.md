@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4be3787df0c914762e02a2fa7ead870cbf945452
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455500"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897082"
 ---
 # <a name="heading"></a>Przykładowe dane w programie SQL Server na platformie Azure
 
 W tym artykule przedstawiono przykładowe dane przechowywane w programie SQL Server na platformie Azure przy użyciu SQL i języka programowania Python. Pokazano również, jak przenieść próbki danych do usługi Azure Machine Learning przez zapisanie go do pliku, przekazać go do obiektu blob platformy Azure i wczytaniem go do usługi Azure Machine Learning Studio.
 
-Używa języka Python próbkowania [moduł pyodbc](https://code.google.com/p/pyodbc/) biblioteki ODBC, aby połączyć się z serwerem SQL na platformie Azure i [Pandas](http://pandas.pydata.org/) biblioteki w celu pobierania próbek.
+Używa języka Python próbkowania [moduł pyodbc](https://code.google.com/p/pyodbc/) biblioteki ODBC, aby połączyć się z serwerem SQL na platformie Azure i [Pandas](https://pandas.pydata.org/) biblioteki w celu pobierania próbek.
 
 > [!NOTE]
 > Przykładowy kod SQL w tym dokumencie przyjęto założenie, że dane są w programie SQL Server na platformie Azure. Jeśli tak nie jest, zapoznaj się [przenoszenie danych do programu SQL Server na platformie Azure](move-sql-server-virtual-machine.md) artykuł, aby uzyskać instrukcje dotyczące sposobu przenoszenia danych do programu SQL Server na platformie Azure.
@@ -71,7 +71,7 @@ W tej sekcji przedstawiono przy użyciu [biblioteki moduł pyodbc](https://code.
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Pandas](http://pandas.pydata.org/) biblioteki w języku Python zawiera bogaty zestaw struktur danych i narzędzia do analizy danych do manipulowania danymi programowania Python. Poniższy kod odczytuje 0,1% przykładowe dane z tabeli w bazie danych Azure SQL Pandas data:
+[Pandas](https://pandas.pydata.org/) biblioteki w języku Python zawiera bogaty zestaw struktur danych i narzędzia do analizy danych do manipulowania danymi programowania Python. Poniższy kod odczytuje 0,1% przykładowe dane z tabeli w bazie danych Azure SQL Pandas data:
 
     import pandas as pd
 

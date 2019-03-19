@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: f9ec807f951bbaec0be3f1729ba2a7246ef37c62
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c3116b42e8696ae0bb2457a3c64320cb187b7447
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738032"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890716"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Funkcja diagnostyki dla stanowych usług Reliable Services
 Klasa Azure usługi Service Fabric stanowa niezawodnych usług StatefulServiceBase emituje [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) zdarzenia, które mogą służyć do debugowania usługi dają wgląd w sposób operacyjnego środowiska uruchomieniowego i pomóc w rozwiązywaniu problemów.
@@ -27,7 +27,7 @@ Klasa Azure usługi Service Fabric stanowa niezawodnych usług StatefulServiceBa
 ## <a name="eventsource-events"></a>Zdarzeń EventSource
 Nazwa źródła zdarzeń dla klasy niezawodne StatefulServiceBase usług stanowych to "Microsoft-ServiceFabric — usługi". Zdarzenia z tego źródła zdarzeń są wyświetlane w [zdarzenia diagnostyczne](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) okna, gdy usługa jest [debugowania w programie Visual Studio](service-fabric-debugging-your-application.md).
 
-Narzędzia i technologie, które pomagają w zbieraniu i/lub wyświetlanie zdarzeń EventSource przykłady [narzędzia PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [diagnostyki Azure](../cloud-services/cloud-services-dotnet-diagnostics.md)i [Microsoft TraceEvent Library](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+Narzędzia i technologie, które pomagają w zbieraniu i/lub wyświetlanie zdarzeń EventSource przykłady [narzędzia PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [diagnostyki Azure](../cloud-services/cloud-services-dotnet-diagnostics.md)i [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ## <a name="events"></a>Zdarzenia
 | Nazwa zdarzenia | Identyfikator zdarzenia | Poziom | Opis zdarzenia |
@@ -119,8 +119,8 @@ W powyższym przykładzie `00d0126d-3e36-4d68-98da-cc4f7195d85e` jest ciąg repr
 | --- | --- |
 | Liczba elementów | Liczba elementów w magazynie.|
 | Rozmiar dysku | Rozmiar całkowitego miejsca na dysku wyrażony w bajtach, plików punktu kontrolnego dla magazynu.|
-| Zapis pliku punktu kontrolnego B/s | Liczba bajtów zapisanych na sekundę dla najnowszych pliku punktu kontrolnego.|
-| Transfer kopiowania dysku w B/s | Liczba bajtów dysku odczytu (w replice podstawowej) lub zapisany (w replice pomocniczej) na sekundę podczas kopiowania magazynu.|
+| Bajty zapisu pliku punktu kontrolnego/s | Liczba bajtów zapisanych na sekundę dla najnowszych pliku punktu kontrolnego.|
+| Skopiuj bajty transferu dysku/s | Liczba bajtów dysku odczytu (w replice podstawowej) lub zapisany (w replice pomocniczej) na sekundę podczas kopiowania magazynu.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 [EventSource dostawców w PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

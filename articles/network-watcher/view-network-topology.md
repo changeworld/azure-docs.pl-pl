@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 842c0d5e3dff0c21545405624f0f536c80359b19
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: eb98fc2da95f1aa2b7294d09ec2a3145bdb5c789
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809899"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112742"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Wyświetlanie topologii sieci wirtualnej platformy Azure
 
@@ -42,7 +42,7 @@ Możesz użyć [witryny Azure portal](#azure-portal), [wiersza polecenia platfor
     - W ramach tej samej grupie zasobów i regionie co *myVnet* sieci wirtualnej. Na przykład, sieciowej grupy zabezpieczeń, która istnieje w grupie zasobów innej niż *MyResourceGroup*, nie jest widoczne, nawet jeśli sieciowa grupa zabezpieczeń jest skojarzona z podsiecią w *MyVnet* sieci wirtualnej .
     - W ciągu lub skojarzona z zasobami w ramach, *myVnet* sieci wirtualnej. Na przykład, sieciowej grupy zabezpieczeń, która nie jest skojarzona z podsiecią lub interfejsem sieciowym w *myVnet* sieci wirtualnej nie jest widoczne, nawet jeśli sieciowa grupa zabezpieczeń jest w *MyResourceGroup* Grupa zasobów.
 
-  Topologia pokazano na rysunku jest tworzone po wdrożeniu sieci wirtualnej **kierowanie ruchu przez przykładowy skrypt urządzenie wirtualne sieci**, którą można wdrożyć przy użyciu [wiersza polecenia platformy Azure](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json), lub [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+   Topologia pokazano na rysunku jest tworzone po wdrożeniu sieci wirtualnej **kierowanie ruchu przez przykładowy skrypt urządzenie wirtualne sieci**, którą można wdrożyć przy użyciu [wiersza polecenia platformy Azure](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json), lub [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 6. Wybierz **pobieranie topologii** pobranie obrazu jako plik można edytować, w formacie svg.
 
@@ -79,7 +79,7 @@ Konto, którego używasz, musi mieć niezbędne [uprawnienia](required-rbac-perm
 
     Informacje o topologii zwracany jest tylko dla zasobów, które znajdują się w tej samej grupie zasobów co *MyResourceGroup* grupy zasobów i tym samym regionie co usługa network watcher. Na przykład, sieciowej grupy zabezpieczeń, która istnieje w grupie zasobów innej niż *MyResourceGroup*, nie jest widoczne, nawet jeśli sieciowa grupa zabezpieczeń jest skojarzona z podsiecią w *MyVnet* sieci wirtualnej .
 
-  Dowiedz się więcej na temat relacji i [właściwości](#properties) zwróconych danych wyjściowych. Jeśli masz istniejącą sieć wirtualną, aby wyświetlić topologii dla ją utworzyć, korzystając [kierowania ruchu przez wirtualne urządzenie sieciowe](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przykładowy skrypt. Aby wyświetlić diagram topologii i pobrać plik można edytować, użyj [portal](#azure-portal).
+   Dowiedz się więcej na temat relacji i [właściwości](#properties) zwróconych danych wyjściowych. Jeśli masz istniejącą sieć wirtualną, aby wyświetlić topologii dla ją utworzyć, korzystając [kierowania ruchu przez wirtualne urządzenie sieciowe](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przykładowy skrypt. Aby wyświetlić diagram topologii i pobrać plik można edytować, użyj [portal](#azure-portal).
 
 ## <a name = "powershell"></a>Wyświetlanie topologii — PowerShell
 
@@ -123,7 +123,7 @@ Konto, którego używasz, musi mieć niezbędne [uprawnienia](required-rbac-perm
 
    Informacje o topologii zwracany jest tylko dla zasobów, które znajdują się w tej samej grupie zasobów co *MyResourceGroup* grupy zasobów i tym samym regionie co usługa network watcher. Na przykład, sieciowej grupy zabezpieczeń, która istnieje w grupie zasobów innej niż *MyResourceGroup*, nie jest widoczne, nawet jeśli sieciowa grupa zabezpieczeń jest skojarzona z podsiecią w *MyVnet* sieci wirtualnej .
 
-  Dowiedz się więcej na temat relacji i [właściwości](#properties) zwróconych danych wyjściowych. Jeśli masz istniejącą sieć wirtualną, aby wyświetlić topologii dla ją utworzyć, korzystając [kierowania ruchu przez wirtualne urządzenie sieciowe](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przykładowy skrypt. Aby wyświetlić diagram topologii i pobrać plik można edytować, użyj [portal](#azure-portal).
+   Dowiedz się więcej na temat relacji i [właściwości](#properties) zwróconych danych wyjściowych. Jeśli masz istniejącą sieć wirtualną, aby wyświetlić topologii dla ją utworzyć, korzystając [kierowania ruchu przez wirtualne urządzenie sieciowe](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przykładowy skrypt. Aby wyświetlić diagram topologii i pobrać plik można edytować, użyj [portal](#azure-portal).
 
 ## <a name="relationships"></a>Relacje
 

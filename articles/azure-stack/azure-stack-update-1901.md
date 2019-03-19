@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 0bbf76e16334ae4847ec6f7fbf3aa88fb508e84d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 682ff9b139d7315604da70fbba47b5e81a290921
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731147"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886375"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizacja usługi Azure Stack 1901
 
@@ -63,7 +63,7 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!IMPORTANT]
-- Zainstaluj [najnowsze poprawki usługi Azure Stack](#azure-stack-hotfixes) dla 1811 (jeśli istnieje), przed zaktualizowaniem do 1901.
+> - Zainstaluj [najnowsze poprawki usługi Azure Stack](#azure-stack-hotfixes) dla 1811 (jeśli istnieje), przed zaktualizowaniem do 1901.
 
 - Przed rozpoczęciem instalacji tej aktualizacji należy uruchomić [AzureStack testu](azure-stack-diagnostic-test.md) z następującymi parametrami, aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono, w tym wszystkie ostrzeżenia i błędy. Również sprawdź aktywne alerty i rozwiązywanie tych, które wymagają działań:
 
@@ -89,7 +89,7 @@ Ta aktualizacja obejmuje następujące nowe funkcje i ulepszenia dla usługi Azu
    * **AzureRm.Storage**  
          AzureRm zbiorczy moduł zawiera teraz obsługuje już opublikowanej wersji 5.0.4 **interfejsu api w wersji 2017-10-01**.  
    * **AzureRm.Compute**  
-         Dodano parametr proste ustawia w `New-AzureRMVM` i `NewAzureRMVMSS`, `-ImageName` parametr obsługuje określanie obrazów użytkowników.  
+         Dodano parametr proste ustawia w `New-AzureRmVM` i `New-AzureRmVmss`, `-Image` parametr obsługuje określanie obrazów użytkowników.  
    * **AzureRm.Insights**  
          AzureRm zbiorczy moduł zawiera teraz obsługuje już opublikowanej wersji 5.1.5 **interfejsu api w wersji 2018-01-01** dla metryk, definicje metryk typów zasobów.
 
@@ -115,7 +115,8 @@ Aby przejrzeć odwołania do zaktualizowanych modułów, zobacz [odwołania do u
 <!-- 16523695 – IS, ASDK -->
 - Rozwiązano problem, w którym po zaktualizowaniu ustawień DNS dla sieci wirtualnej z **użycia usługi Azure Stack DNS** do **niestandardowych serwerów DNS**, wystąpienia nie zostały zaktualizowane o nowe ustawienie.
 
-- <!-- 3235634 – IS, ASDK --> Rozwiązano problem z których wdrażanie maszyn wirtualnych o rozmiarach zawierający **v2** sufiks; na przykład **maszyna wirtualna standard_a2_v2 —**, jest to wymagane, określając sufiks jako **maszyna wirtualna standard_a2_v2 —** () małe litery v). Zgodnie z globalnej platformy Azure, możesz teraz użyć **maszyna wirtualna Standard_A2_V2** (wielkie litery V).
+- <!-- 3235634 – IS, ASDK -->
+  Rozwiązano problem z których wdrażanie maszyn wirtualnych o rozmiarach zawierający **v2** sufiks; na przykład **maszyna wirtualna standard_a2_v2 —**, jest to wymagane, określając sufiks jako **maszyna wirtualna standard_a2_v2 —** () małe litery v). Zgodnie z globalnej platformy Azure, możesz teraz użyć **maszyna wirtualna Standard_A2_V2** (wielkie litery V).
 
 <!-- 2869209 – IS, ASDK --> 
 - Rozwiązano problem, korzystając z [polecenia cmdlet Add-AzsPlatformImage](/powershell/module/azs.compute.admin/add-azsplatformimage), w którym trzeba było używać **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Teraz można również użyć ścieżkę lokalną na dysku.
@@ -291,9 +292,9 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- 3632798 - IS, ASDK -->
 - W portalu, jeśli Dodawanie reguły zabezpieczeń dla ruchu przychodzącego i wybierz pozycję **Tag usługi** jako źródło, kilka opcji są wyświetlane w **znacznik źródłowy** listy, które nie są dostępne dla usługi Azure Stack. Tylko opcje, które są prawidłowe w usłudze Azure Stack, są następujące:
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     Inne opcje nie są obsługiwane jako źródło tagi w usłudze Azure Stack. Podobnie jeśli Dodawanie reguły zabezpieczeń dla ruchu wychodzącego i wybierz pozycję **Tag usługi** jako miejsce docelowe, ta sama lista opcji **znacznik źródłowy** jest wyświetlana. Jedyne prawidłowe opcje są takie same jak w przypadku **znacznik źródłowy**, zgodnie z opisem w poprzedniej liście.
 
