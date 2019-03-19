@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be5023696d6aa937672482d618294102505f9f91
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 78e395db2f8ccaf4fbe9fb64b0faf9ac70c1b21c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881213"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Samouczek: Integracja usługi Azure Active Directory z usługą G Suite
 
@@ -95,7 +95,7 @@ Aby skonfigurować integrację usługi G Suite z usługą Azure AD, należy doda
 
 **Aby dodać usługę G Suite z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -150,12 +150,13 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze G Suite, wy
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta usługi G Suite](https://www.google.com/contact/).
@@ -167,12 +168,13 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze G Suite, wy
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
 
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
     
     > [!NOTE] 
     > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta usługi G Suite](https://www.google.com/contact/).
@@ -221,7 +223,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze G Suite, wy
 
 ### <a name="configure-g-suite-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze G Suite
 
-1. Otwórz nową kartę w przeglądarce, a następnie zaloguj się do [konsoli administracyjnej usługi G Suite](http://admin.google.com/) przy użyciu konta administratora.
+1. Otwórz nową kartę w przeglądarce, a następnie zaloguj się do [konsoli administracyjnej usługi G Suite](https://admin.google.com/) przy użyciu konta administratora.
 
 2. Kliknij pozycję **Security** (Zabezpieczenia). Jeśli nie widzisz linku, może on znajdować się w menu **More Controls** (Więcej kontrolek) u dołu ekranu.
 
@@ -239,7 +241,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze G Suite, wy
 
     b. W polu **Sign-in page URL** (Adres URL strony logowania) w usłudze G Suite wklej wartość pola  **Adres URL logowania**  skopiowaną z witryny Azure Portal.
 
-    d. W polu **Sign-out page URL** (Adres URL strony wylogowywania) w usłudze G Suite wklej wartość pola  **Adres URL wylogowywania**  skopiowaną z witryny Azure Portal.
+    c. W polu **Sign-out page URL** (Adres URL strony wylogowywania) w usłudze G Suite wklej wartość pola  **Adres URL wylogowywania**  skopiowaną z witryny Azure Portal.
 
     d. W polu **Change password URL** (Adres URL zmiany hasła) w usłudze G Suite wklej wartość pola  **Adres URL zmiany hasła**  skopiowaną z witryny Azure Portal.
 
@@ -267,7 +269,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -312,7 +314,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w oprogramowaniu G Sui
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka G Suite na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi G Suite, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

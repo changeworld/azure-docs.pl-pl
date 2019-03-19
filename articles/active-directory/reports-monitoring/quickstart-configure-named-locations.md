@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb50d22b5e0bd1a247dd806f45d9e4519214aba
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 328393d78514b236707cff1cedb9c34680900015
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208184"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120333"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Szybki start: konfigurowanie nazwanych lokalizacji w usłudze Azure Active Directory
 
@@ -53,13 +53,13 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
 6. Wypełnij formularz na nowej stronie. 
 
-    * W polu **Nazwa** wpisz nazwę dla nazwanej lokalizacji.
-    * W polu **Zakresy adresów IP** wpisz zakres adresów IP w formacie CIDR.  
-    * Kliknij pozycję **Utwórz**.
+   * W polu **Nazwa** wpisz nazwę dla nazwanej lokalizacji.
+   * W polu **Zakresy adresów IP** wpisz zakres adresów IP w formacie CIDR.  
+   * Kliknij pozycję **Utwórz**.
     
-    ![Blok Nowy](./media/quickstart-configure-named-locations/61.png)
+     ![Blok Nowy](./media/quickstart-configure-named-locations/61.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji, zobacz:
 

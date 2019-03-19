@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee936d174aa3e221bbeb0823ba1503c7cb64a9d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5a0700a63d21d089573f757716e08fb03665b28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185166"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164998"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Samouczek: Integracja usługi Azure Active Directory z maszynami Wirtualnymi IQNavigator
 
@@ -175,7 +175,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     d. Kliknij pozycję **Utwórz**.
 
-### <a name="creating-a-iqnavigator-vms-test-user"></a>Tworzenie użytkownika testowego IQNavigator maszyn wirtualnych
+### <a name="creating-an-iqnavigator-vms-test-user"></a>Tworzenie użytkownika testowego IQNavigator maszyn wirtualnych
 
 Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon na maszynach wirtualnych IQNavigator. Praca z [zespołem pomocy technicznej maszyn wirtualnych IQNavigator](https://www.beeline.com/iqn-product-support/) Aby dodać użytkowników w ramach konta IQNavigator maszyn wirtualnych.
 
@@ -218,7 +218,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

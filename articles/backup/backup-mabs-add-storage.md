@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: ee62138a56851747e75d75b7a806b2b73ba4fbbb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 621d071f98701ff3a949f4172fef1d13819d7192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544650"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852869"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Dodawanie magazynu do usługi Azure Backup Server
 
@@ -75,7 +75,7 @@ Dzięki magazynowi obsługującemu obciążenie można wybrać woluminów, na kt
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Wydajniejszego magazynu obsługującego obciążenie można skonfigurować za pomocą polecenia cmdlet programu PowerShell Update-DPMDiskStorage. zaktualizowanie właściwości woluminu w puli magazynów na serwerze usługi Azure Backup. 
+Wydajniejszego magazynu obsługującego obciążenie można skonfigurować za pomocą polecenia cmdlet programu PowerShell Update-DPMDiskStorage. umożliwia zaktualizowanie właściwości woluminu w puli magazynów na serwerze usługi Azure Backup. 
 
 Składnia:
 
@@ -100,13 +100,13 @@ Aktualizowanie grup ochrony w celu użycia Modern Backup Storage jest opcjonalne
 
 1. W konsoli administratora wybierz **ochrony** funkcji. W **elementu członkowskiego grupy ochrony** listy, kliknij prawym przyciskiem myszy element członkowski, a następnie wybierz **Zatrzymaj ochronę członka**.
 
-  ![Zatrzymaj ochronę członka](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![Zatrzymaj ochronę członka](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. W **Usuń z grupy** okna dialogowego przejrzyj używane miejsce na dysku i dostępne wolne miejsce w puli magazynów. Wartość domyślna to pozostawienie punktów odzyskiwania na dysku i umożliwić im wygaśnie za skojarzonych zasad przechowywania. Kliknij przycisk **OK**.
 
-  Aby natychmiast przywrócić zajęte miejsce na dysku do wolnej puli magazynów, należy zaznaczyć **Usuń replikę z dysku** pole wyboru, aby usunąć dane kopii zapasowej (i punktów odzyskiwania) skojarzonych z tym elementem członkowskim.
+   Aby natychmiast przywrócić zajęte miejsce na dysku do wolnej puli magazynów, należy zaznaczyć **Usuń replikę z dysku** pole wyboru, aby usunąć dane kopii zapasowej (i punktów odzyskiwania) skojarzonych z tym elementem członkowskim.
 
-  ![Usuń z grupy, okno dialogowe](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![Usuń z grupy, okno dialogowe](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Utwórz grupę ochrony, która używa funkcji Modern Backup Storage. Dołącz źródła danych niechronione.
 

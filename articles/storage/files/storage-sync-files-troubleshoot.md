@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 57bd65006058ab91dcacd4749c1677036f134ff3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: eeda1ed3181b8cc8f641ed731b7f00fac2d3fad6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005832"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -244,6 +244,7 @@ Aby wyświetlić te błędy, uruchom **FileSyncErrorsReport.ps1** skrypt program
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Rozwiązywanie problemów na błędy synchronizacji pliku lub katalogu
 **Dziennik ItemResults — błędy synchronizacji na element**  
+
 | WARTOŚĆ HRESULT | HRESULT (dziesiętna) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ nie jest jeszcze zsynchronizowany folder zależny. Ten element zostanie zsynchronizowany po zsynchronizowaniu zmian zależnych. | Żadna akcja nie jest wymagana. |
@@ -271,6 +272,7 @@ Poniższa tabela zawiera wszystkie znaki unicode, który nie obsługuje jeszcze 
 
 ### <a name="common-sync-errors"></a>Typowe błędy synchronizacji
 <a id="-2147023673"></a>**Sesja synchronizacji została anulowana.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x800704c7 |
@@ -281,6 +283,7 @@ Poniższa tabela zawiera wszystkie znaki unicode, który nie obsługuje jeszcze 
 Sesje synchronizacji może się nie powieść z różnych powodów, łącznie z serwerem jest ponownie uruchomiony lub zaktualizowaniu migawki VSS itp. Chociaż ten błąd wygląda na to wymaga monitowania, jest bezpiecznie zignorować ten błąd, chyba że utrzymuje okresie do kilku godzin.
 
 <a id="-2147012889"></a>**Nie można nawiązać połączenia z usługą.**    
+
 | | |
 |-|-|
 | **HRESULT** | 0x80072ee7 |
@@ -291,6 +294,7 @@ Sesje synchronizacji może się nie powieść z różnych powodów, łącznie z 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
 <a id="-2134376372"></a>**Żądanie użytkownika została ograniczona przez usługę.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8004c |
@@ -301,6 +305,7 @@ Sesje synchronizacji może się nie powieść z różnych powodów, łącznie z 
 Brak akcji jest wymagana; Serwer ponowi próbę. Jeśli ten błąd będzie się powtarzać dłużej niż kilka godzin, Utwórz żądanie pomocy technicznej.
 
 <a id="-2134364065"></a>**Synchronizacja nie może uzyskać dostępu z udziału plików platformy Azure, określonego przez punkt końcowy w chmurze.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8305f |
@@ -316,6 +321,7 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 4. [Upewnij się, że usługi Azure File Sync ma dostęp do konta magazynu.](#troubleshoot-rbac)
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Nie można rozpoznać nazwy konta magazynu, które są używane.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C83060 |
@@ -332,6 +338,7 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 3. [Sprawdź, upewnij się, że konto magazynu nie zawiera żadnych reguł sieciowych.](#troubleshoot-network-rules)
 
 <a id="-1906441138"></a>**Synchronizacja nie powiodła się z powodu problemu z bazy danych usługi synchronizacji.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x8e5e044e |
@@ -342,6 +349,7 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 Ten błąd występuje, gdy występuje problem z wewnętrznej bazy danych używane przez usługę Azure File Sync. Jeśli wystąpi ten problem, Utwórz żądanie obsługi, a firma Microsoft z Tobą, aby pomóc rozwiązać ten problem.
 
 <a id="-2134364053"></a>**Wersja agenta usługi Azure File Sync, które są zainstalowane na serwerze nie jest obsługiwana.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C8306B |
@@ -352,6 +360,7 @@ Ten błąd występuje, gdy występuje problem z wewnętrznej bazy danych używan
 Ten błąd występuje, jeśli nie jest obsługiwana przez wersję agenta usługi Azure File Sync, które są zainstalowane na serwerze. Aby rozwiązać ten problem, [uaktualnienia]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) do [obsługiwana wersja agenta]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions).
 
 <a id="-2134351810"></a>**Osiągnięto limit magazynowania udziału plików platformy Azure.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8603e |
@@ -377,6 +386,7 @@ Ten błąd występuje, gdy limit magazynu udziału plików platformy Azure zosta
 Jeśli nie ustawiono limit przydziału udziału jest pełny, jeden sposób możliwe naprawienie tego problemu jest przekształcić Każdy podfolder bieżący punkt końcowy serwera swój własny punkt końcowy serwera w ich własnych grupach oddzielne synchronizacji. W ten sposób każdy podfolder zsynchronizują się z udziałami plików platformy Azure indywidualnych.
 
 <a id="-2134351824"></a>**Nie można odnaleźć udziału plików platformy Azure.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c86030 |
@@ -392,6 +402,7 @@ Ten błąd występuje, gdy udział plików platformy Azure nie jest dostępny. A
 Jeśli usunięto udział plików platformy Azure, musisz utworzyć nowy udział plików, a następnie utwórz ponownie grupę synchronizacji. 
 
 <a id="-2134364042"></a>**Synchronizacja została wstrzymana, gdy tej subskrypcji platformy Azure jest wstrzymane.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C83076 |
@@ -402,6 +413,7 @@ Jeśli usunięto udział plików platformy Azure, musisz utworzyć nowy udział 
 Ten błąd występuje zawieszenia subskrypcji platformy Azure. Synchronizacja zostanie reenabled, po przywróceniu subskrypcji platformy Azure. Zobacz [Dlaczego Moja subskrypcja platformy Azure jest wyłączona, i jak jest ponownej?](../../billing/billing-subscription-become-disable.md) Aby uzyskać więcej informacji.
 
 <a id="-2134364052"></a>**To konto magazynu zawiera zapora lub sieci wirtualne są skonfigurowane.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8306c |
@@ -417,6 +429,7 @@ Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny z p
 Usuń te reguły, aby rozwiązać ten problem. 
 
 <a id="-2134375911"></a>**Synchronizacja nie powiodła się z powodu problemu z bazy danych usługi synchronizacji.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80219 |
@@ -432,6 +445,7 @@ Ten błąd zazwyczaj rozwiązuje się i może wystąpić, jeśli istnieją:
 Jeśli ten błąd będzie się powtarzać dłużej niż kilka godzin, Utwórz żądanie obsługi, a firma Microsoft z Tobą, aby pomóc rozwiązać ten problem.
 
 <a id="-2146762487"></a>**Serwer nie może nawiązać bezpiecznego połączenia. Usługi w chmurze Odebrano nieoczekiwany certyfikatu.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x800b0109 |
@@ -456,6 +470,7 @@ Ten błąd może wystąpić, jeśli Twoja organizacja używa serwera proxy proto
 Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje każdy lokalnie zaufany certyfikat SSL podczas transferu danych między serwerem a usługą w chmurze.
 
 <a id="-2147012894"></a>**Nie można nawiązać połączenia z usługą.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80072ee2 |
@@ -466,6 +481,7 @@ Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje ka
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
 <a id="-2134375680"></a>**Synchronizacja nie powiodła się z powodu problemu z uwierzytelnianiem.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80300 |
@@ -494,6 +510,7 @@ Jeśli czas serwera jest poprawna, wykonaj następujące kroki, aby rozwiązać 
     ```
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Wolumin, na którym znajduje się punkt końcowy serwera brakuje miejsca na dysku.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x8e5e0211 |
@@ -509,6 +526,7 @@ Jeśli czas serwera jest poprawna, wykonaj następujące kroki, aby rozwiązać 
 Ten błąd występuje, ponieważ wolumin jest wypełnione. Ten błąd zazwyczaj występuje, ponieważ korzystają z plików znajdujących się poza punkt końcowy serwera miejsca na woluminie. Zwolnij miejsce na woluminie, dodając punkty końcowe dodatkowy serwer, przenoszenie plików na inny wolumin lub zwiększenie rozmiaru woluminu punktu końcowego serwera znajduje się na.
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**Usługa nie jest jeszcze gotowy do synchronizacji z tym punktem końcowym serwera.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8300f |
@@ -521,6 +539,7 @@ Ten błąd występuje, ponieważ nie wprowadzono zmian w udziale plików platfor
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Synchronizacja nie powiodła się z powodu problemów dotyczących wielu pojedynczych plików.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8023b |
@@ -544,6 +563,7 @@ W przypadku których istnieje wiele na błędy synchronizacji plików, sesje syn
 > Usługa Azure File Sync tworzy migawkę usługi VSS tymczasowe raz dziennie na serwerze, aby synchronizować pliki, które mają otwarte dojścia.
 
 <a id="-2134376423"></a>**Synchronizacja nie powiodła się z powodu problemu z ścieżkę punktu końcowego serwera.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80019 |
@@ -554,6 +574,7 @@ W przypadku których istnieje wiele na błędy synchronizacji plików, sesje syn
 Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy ani istniejącym punktem końcowym serwera.
 
 <a id="-2134375817"></a>**Synchronizacja nie powiodła się, ponieważ wersja sterownika filtru nie jest zgodny z wersją agenta**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C80277 |
@@ -564,6 +585,7 @@ Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i
 Ten błąd występuje, ponieważ załadowane wersja Obsługa poziomów w chmurze (StorageSync.sys) sterownika filtru nie jest zgodny z usługą agenta synchronizacji magazynu (FileSyncSvc). Jeśli agent usługi Azure File Sync został uaktualniony, uruchom ponownie serwer, aby zakończyć instalację. Jeśli błąd będzie nadal występować, odinstaluj agenta, uruchom ponownie serwer i ponownie zainstaluj agenta usługi Azure File Sync.
 
 <a id="-2134376373"></a>**Usługa jest obecnie niedostępna.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8004b |
@@ -574,6 +596,7 @@ Ten błąd występuje, ponieważ załadowane wersja Obsługa poziomów w chmurze
 Ten błąd występuje, ponieważ usługa Azure File Sync jest niedostępna. Ten błąd będzie automatyczne rozwiązanie usługi Azure File Sync ponieważ dostępne ponownie.
 
 <a id="-2134375922"></a>**Synchronizacja nie powiodła się z powodu przejściowego problemu z bazy danych usługi synchronizacji.**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8020e |
@@ -793,13 +816,13 @@ Istnieją dwa główne klasy błędów, które mogą wystąpić przy użyciu alb
     - *Udział plików platformy Azure niedostępny*. Ten błąd zazwyczaj występuje, gdy usuniesz udział plików platformy Azure, gdy nadal jest punkt końcowy w chmurze w grupie synchronizacji.
     - *Konto magazynu niedostępny*. Ten błąd zazwyczaj występuje, gdy usunięcia konta magazynu, gdy ma ono nadal udziału plików platformy Azure, która jest punkt końcowy w chmurze w grupie synchronizacji. 
 - Błędy serwera 
-    - *Usługa Azure File Sync filtru systemu plików (StorageSync.sys) nie został załadowany*. Aby reagować na żądania obsługi warstw na/odwołania, muszą być ładowane filtru systemu plików usługi Azure File Sync. Filtr nie są ładowane może się zdarzyć z kilku powodów, ale najbardziej typową przyczyną jest, że administrator zwolnione go ręcznie. Filtr systemu plików usługi Azure File Sync musi być załadowany cały czas dla usługi Azure File Sync prawidłowo funkcji.
-    - *Brak, uszkodzony lub w inny sposób punktu ponownej analizy w uszkodzona*. Punkt ponownej analizy to struktura danych specjalne w pliku, który składa się z dwóch części:
-        1. Tag ponownej analizy, co oznacza systemowi operacyjnemu filtru systemu plików usługi Azure File Sync (StorageSync.sys) może być konieczne czynności niektóre na we/wy do pliku. 
-        2. Ponownej analizy danych, co oznacza filtru systemu plików, identyfikator URI pliku na skojarzonego punktu końcowego w chmurze (udział plików platformy Azure). 
+  - *Usługa Azure File Sync filtru systemu plików (StorageSync.sys) nie został załadowany*. Aby reagować na żądania obsługi warstw na/odwołania, muszą być ładowane filtru systemu plików usługi Azure File Sync. Filtr nie są ładowane może się zdarzyć z kilku powodów, ale najbardziej typową przyczyną jest, że administrator zwolnione go ręcznie. Filtr systemu plików usługi Azure File Sync musi być załadowany cały czas dla usługi Azure File Sync prawidłowo funkcji.
+  - *Brak, uszkodzony lub w inny sposób punktu ponownej analizy w uszkodzona*. Punkt ponownej analizy to struktura danych specjalne w pliku, który składa się z dwóch części:
+    1. Tag ponownej analizy, co oznacza systemowi operacyjnemu filtru systemu plików usługi Azure File Sync (StorageSync.sys) może być konieczne czynności niektóre na we/wy do pliku. 
+    2. Ponownej analizy danych, co oznacza filtru systemu plików, identyfikator URI pliku na skojarzonego punktu końcowego w chmurze (udział plików platformy Azure). 
         
-        Najczęstszym sposobem, które mogły ulec uszkodzeniu punkt ponownej analizy to, jeśli administrator próbuje zmodyfikować tagu lub jego danych. 
-    - *Problemy z połączeniem sieci*. Aby można było warstwy lub odwołanie pliku, serwer musi mieć łączność z Internetem.
+       Najczęstszym sposobem, które mogły ulec uszkodzeniu punkt ponownej analizy to, jeśli administrator próbuje zmodyfikować tagu lub jego danych. 
+  - *Problemy z połączeniem sieci*. Aby można było warstwy lub odwołanie pliku, serwer musi mieć łączność z Internetem.
 
 Poniższe sekcje określają, jak rozwiązywanie problemów obsługi warstw w chmurze i określ, czy problem występuje problem z magazynem chmury lub błąd serwera.
 
@@ -822,14 +845,14 @@ Aby monitorować aktywność odwołania na serwerze, należy użyć Event ID 900
 Jeśli pliki nie powiodły się warstwy do usługi Azure Files:
 
 1. W Podglądzie zdarzeń przejrzyj dane telemetryczne, operacyjne i diagnostycznych dzienników zdarzeń, znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent. 
-    1. Sprawdź, czy pliki znajdują się w udziale plików platformy Azure.
+   1. Sprawdź, czy pliki znajdują się w udziale plików platformy Azure.
 
-    > [!NOTE]
-    > Plik musi być synchronizowane z usługą udziału plików platformy Azure przed może być warstwowego.
+      > [!NOTE]
+      > Plik musi być synchronizowane z usługą udziału plików platformy Azure przed może być warstwowego.
 
-    2. Sprawdź, czy serwer ma połączenie z Internetem. 
-    3. Sprawdź, czy sterowniki filtrów usługi Azure File Sync (StorageSync.sys i StorageSyncGuard.sys) są uruchomione:
-        - W wierszu polecenia z podwyższonym poziomem uprawnień uruchom `fltmc`. Sprawdź, czy wymienione są StorageSync.sys i StorageSyncGuard.sys sterowniki filtrów systemu plików.
+   2. Sprawdź, czy serwer ma połączenie z Internetem. 
+   3. Sprawdź, czy sterowniki filtrów usługi Azure File Sync (StorageSync.sys i StorageSyncGuard.sys) są uruchomione:
+       - W wierszu polecenia z podwyższonym poziomem uprawnień uruchom `fltmc`. Sprawdź, czy wymienione są StorageSync.sys i StorageSyncGuard.sys sterowniki filtrów systemu plików.
 
 > [!NOTE]
 > 9003 Identyfikatora zdarzenia jest rejestrowane co godzinę w dzienniku zdarzeń Telemetrii, jeśli plik nie powiedzie się warstwy (jedno zdarzenie jest rejestrowane na kod błędu). Operacyjne i dzienników zdarzeń diagnostycznych powinny być używane, jeśli potrzebne są dodatkowe informacje w celu zdiagnozowania problemu.

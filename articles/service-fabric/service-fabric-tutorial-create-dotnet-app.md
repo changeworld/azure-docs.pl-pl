@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321742"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57851367"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Samouczek: Tworzenie i wdrażanie aplikacji przy użyciu usługi frontonu platformy ASP.NET Core z internetowym interfejsem API oraz stanowej usługi zaplecza
 
@@ -187,7 +187,7 @@ Otwórz plik **Views/Shared/_Layout.cshtml**, który jest widokiem domyślnym ap
 
 ```html
 <!DOCTYPE html>
-<html ng-app="VotingApp" xmlns:ng="http://angularjs.org">
+<html ng-app="VotingApp" xmlns:ng="https://angularjs.org">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -621,22 +621,22 @@ Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 4. Wróć do przeglądarki i kliknij opcję głosowania lub dodaj nową opcję głosowania. Zostanie trafiony pierwszy punkt przerwania w kontrolerze interfejsu API frontonu internetowego.
     
 
-    1. Jest to punkt, w którym skrypt JavaScript w przeglądarce wysyła żądanie do kontrolera internetowego interfejsu API w usłudze frontonu.
+   1. Jest to punkt, w którym skrypt JavaScript w przeglądarce wysyła żądanie do kontrolera internetowego interfejsu API w usłudze frontonu.
 
-    ![Dodawanie usługi frontonu Vote](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
+      ![Dodawanie usługi frontonu Vote](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-    2. Najpierw skonstruuj adres URL do elementu ReverseProxy dla usługi zaplecza **(1)**.
-    3. Następnie wyślij żądanie HTTP PUT do elementu ReverseProxy **(2)**.
-    4. Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)**.
+   2. Najpierw skonstruuj adres URL do elementu ReverseProxy dla usługi zaplecza **(1)**.
+   3. Następnie wyślij żądanie HTTP PUT do elementu ReverseProxy **(2)**.
+   4. Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)**.
 
 5. Naciśnij klawisz **F5**, aby kontynuować.
-    1. Jesteś teraz w punkcie przerwania w usłudze zaplecza.
+   1. Jesteś teraz w punkcie przerwania w usłudze zaplecza.
 
-    ![Dodawanie usługi zaplecza Vote](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
+      ![Dodawanie usługi zaplecza Vote](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
-    2. W pierwszym wierszu metody **(1)** użyj elementu `StateManager` do pobrania lub dodania niezawodnego słownika o nazwie `counts`.
-    3. Wszystkie interakcje z wartościami w niezawodnym słowniku wymagają transakcji — ta instrukcja using **(2)** tworzy tę transakcję.
-    4. W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)**. Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
+   2. W pierwszym wierszu metody **(1)** użyj elementu `StateManager` do pobrania lub dodania niezawodnego słownika o nazwie `counts`.
+   3. Wszystkie interakcje z wartościami w niezawodnym słowniku wymagają transakcji — ta instrukcja using **(2)** tworzy tę transakcję.
+   4. W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)**. Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
 6. Naciśnij klawisz **F5**, aby kontynuować.
 
 Aby zatrzymać sesję debugowania, naciśnij klawisze **Shift+F5**.

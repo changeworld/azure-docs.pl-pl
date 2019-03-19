@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 869bee8fcd0d1c2876ac7317fb239a1d5c61cb87
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: aed539484ac01d1b18b8374ffb57456364f9bd2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864553"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119271"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal
 
@@ -39,33 +39,33 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 Serwer usługi Azure Database for PostgreSQL jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych i przestrzeni dyskowej](./concepts-compute-unit-and-storage.md). Serwer jest tworzony w ramach [grupy zasobów Azure](../azure-resource-manager/resource-group-overview.md).
 
 Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for PostgreSQL:
-1.  W lewym górnym rogu witryny Azure Portal kliknij polecenie **Utwórz zasób**.
-2.  Na stronie **Nowy** wybierz pozycję **Bazy danych**, a następnie na stronie **Bazy danych** wybierz pozycję **Azure Database for PostgreSQL**.
-  ![Usługa Azure Database for PostgreSQL — tworzenie bazy danych](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
+1. W lewym górnym rogu witryny Azure Portal kliknij polecenie **Utwórz zasób**.
+2. Na stronie **Nowy** wybierz pozycję **Bazy danych**, a następnie na stronie **Bazy danych** wybierz pozycję **Azure Database for PostgreSQL**.
+   ![Usługa Azure Database for PostgreSQL — tworzenie bazy danych](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
 
-3.  Wypełnij formularz szczegółów nowego serwera, używając następujących informacji:
+3. Wypełnij formularz szczegółów nowego serwera, używając następujących informacji:
 
-    ![Tworzenie serwera](./media/tutorial-design-database-using-azure-portal/2-create.png)
+   ![Tworzenie serwera](./media/tutorial-design-database-using-azure-portal/2-create.png)
 
-    - Nazwa serwera: **mydemoserver** (nazwa serwera jest mapowana na nazwę DNS i dlatego musi być globalnie unikatowa) 
-    - Subskrypcja: Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zasób istnieje lub dla której są za niego naliczane opłaty.
-    - Grupa zasobów: **myresourcegroup**
-    - Wybrane przez Ciebie login i hasło administratora serwera
-    - Lokalizacja
-    - Wersja PostgreSQL
+   - Nazwa serwera: **mydemoserver** (nazwa serwera jest mapowana na nazwę DNS i dlatego musi być globalnie unikatowa) 
+   - Subskrypcja: Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zasób istnieje lub dla której są za niego naliczane opłaty.
+   - Grupa zasobów: **myresourcegroup**
+   - Wybrane przez Ciebie login i hasło administratora serwera
+   - Lokalizacja
+   - Wersja PostgreSQL
 
    > [!IMPORTANT]
    > Nazwa logowania i hasło administratora serwera określone w tym miejscu będą wymagane do logowania do serwera i jego baz danych w dalszej części tego samouczka. Zapamiętaj lub zapisz te informacje do wykorzystania w przyszłości.
 
-4.  Kliknij pozycję **Warstwa cenowa**, aby określić warstwę cenową dla nowego serwera. Na potrzeby tego samouczka wybierz następujące opcje: **Ogólnego przeznaczenia**, generowanie obliczeń **generacji 4**, 2 **rdzenie wirtualne**, 5 GB **magazynu** oraz 7 dni **okresu przechowywania kopii zapasowej**. Wybierz opcję nadmiarowości kopii zapasowej **Geograficznie nadmiarowa**, aby przechowywać automatyczne kopie zapasowe serwera w magazynie geograficznie nadmiarowym.
- ![Azure Database for PostgreSQL — wybór warstwy cenowej](./media/tutorial-design-database-using-azure-portal/2-pricing-tier.png)
+4. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę cenową dla nowego serwera. Na potrzeby tego samouczka wybierz **ogólnego przeznaczenia**, **Gen 5** generacji obliczeń i 2 **rdzeni wirtualnych**, 5 GB **magazynu** oraz 7 dni  **okres przechowywania kopii zapasowej**. Wybierz opcję nadmiarowości kopii zapasowej **Geograficznie nadmiarowa**, aby przechowywać automatyczne kopie zapasowe serwera w magazynie geograficznie nadmiarowym.
+   ![Azure Database for PostgreSQL — wybór warstwy cenowej](./media/tutorial-design-database-using-azure-portal/2-pricing-tier.png)
 
-5.  Kliknij przycisk **OK**.
+5. Kliknij przycisk **OK**.
 
-6.  Kliknij przycisk **Utwórz**, aby aprowizować serwer. Aprowizacja zajmuje kilka minut.
+6. Kliknij przycisk **Utwórz**, aby aprowizować serwer. Aprowizacja zajmuje kilka minut.
 
-7.  Na pasku narzędzi kliknij pozycję **Powiadomienia**, aby monitorować proces wdrażania.
- ![Usługa Azure Database for PostgreSQL — patrz Powiadomienia](./media/tutorial-design-database-using-azure-portal/3-notifications.png)
+7. Na pasku narzędzi kliknij pozycję **Powiadomienia**, aby monitorować proces wdrażania.
+   ![Usługa Azure Database for PostgreSQL — patrz Powiadomienia](./media/tutorial-design-database-using-azure-portal/3-notifications.png)
 
    > [!TIP]
    > Zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, aby łatwo śledzić wdrożenia.
@@ -76,17 +76,17 @@ Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for Pos
 
 Usługa Azure Database for PostgreSQL używa zapory na poziomie serwera. Domyślnie ta zapora uniemożliwia wszystkim zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze, chyba że zostanie utworzona reguła zapory otwierająca zaporę dla konkretnego zakresu adresów IP. 
 
-1.  Po zakończeniu wdrożenia kliknij pozycję **Wszystkie zasoby** w menu po lewej stronie i wpisz nazwę **mydemoserver**, aby wyszukać nowo utworzony serwer. Kliknij nazwę serwera wyświetlaną w wynikach wyszukiwania. Zostanie otwarta strona **Przegląd**, która zawiera dalsze opcje konfiguracji.
+1. Po zakończeniu wdrożenia kliknij pozycję **Wszystkie zasoby** w menu po lewej stronie i wpisz nazwę **mydemoserver**, aby wyszukać nowo utworzony serwer. Kliknij nazwę serwera wyświetlaną w wynikach wyszukiwania. Zostanie otwarta strona **Przegląd**, która zawiera dalsze opcje konfiguracji.
 
    ![Azure Database for PostgreSQL — wyszukiwanie serwera](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
-2.  Na stronie serwera wybierz pozycję **Zabezpieczenia połączeń**. 
+2. Na stronie serwera wybierz pozycję **Zabezpieczenia połączeń**. 
 
-3.  Kliknij w polu tekstowym w obszarze **Nazwa reguły** i dodaj nową regułę zapory, aby na liście dozwolonych umieścić zakres adresów IP służących do łączności. Wprowadź zakres adresów IP. Kliknij pozycję **Zapisz**.
+3. Kliknij w polu tekstowym w obszarze **Nazwa reguły** i dodaj nową regułę zapory, aby na liście dozwolonych umieścić zakres adresów IP służących do łączności. Wprowadź zakres adresów IP. Kliknij pozycję **Zapisz**.
 
    ![Usługa Azure Database for PostgreSQL — tworzenie reguły zapory](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
-4.  Kliknij polecenie **Zapisz**, a następnie kliknij przycisk **X**, aby zamknąć stronę **Zabezpieczenia połączeń**.
+4. Kliknij polecenie **Zapisz**, a następnie kliknij przycisk **X**, aby zamknąć stronę **Zabezpieczenia połączeń**.
 
    > [!NOTE]
    > Serwer Azure PostgreSQL komunikuje się przez port 5432. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 5432 może być zablokowany przez zaporę sieciową. Jeśli wystąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 5432.
@@ -184,11 +184,11 @@ SELECT * FROM inventory;
 ## <a name="restore-data-to-a-previous-point-in-time"></a>Przywracanie danych do określonego punktu w czasie
 Załóżmy, że ta tabela została przypadkowo usunięta. W takiej sytuacji niełatwo jest odzyskać dane. Usługa Azure Database for PostgreSQL umożliwia powrót do dowolnego punktu w czasie, dla którego istnieją kopie zapasowe na serwerze (określa to skonfigurowany okres przechowywania kopii zapasowych), i przywrócenie tego punktu w czasie na nowym serwerze. Przy użyciu tego nowego serwera można odzyskać usunięte dane. Następujące kroki umożliwiają przywrócenie serwera **mydemoserver** do punktu w czasie przed dodaniem tabeli spisu.
 
-1.  Na stronie **Przegląd** usługi Azure Database for PostgreSQL dla serwera kliknij polecenie **Przywróć** na pasku narzędzi. Zostanie otwarta strona **Przywracanie**.
+1. Na stronie **Przegląd** usługi Azure Database for PostgreSQL dla serwera kliknij polecenie **Przywróć** na pasku narzędzi. Zostanie otwarta strona **Przywracanie**.
 
    ![Witryna Azure Portal — opcje formularza Przywracanie](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
 
-2.  Wypełnij formularz **Przywracanie** wymaganymi informacjami:
+2. Wypełnij formularz **Przywracanie** wymaganymi informacjami:
 
    ![Witryna Azure Portal — opcje formularza Przywracanie](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
 
@@ -196,9 +196,9 @@ Załóżmy, że ta tabela została przypadkowo usunięta. W takiej sytuacji nie�
    - **Serwer docelowy**: podaj nazwę nowego serwera, na który chcesz przywrócić dane
    - **Lokalizacja**: nie można wybrać regionu — domyślnie wartość jest taka sama jak w przypadku serwera źródłowego
    - **Warstwa cenowa**: nie możesz zmienić tej wartości podczas przywracania serwera. Jest taka sama jak w przypadku serwera źródłowego. 
-3.  Kliknij przycisk **OK**, aby [przywrócić serwer do punktu w czasie](./howto-restore-server-portal.md) sprzed usunięcia tabeli. Przywrócenie serwera do innego punktu w czasie spowoduje utworzenie nowego serwera będącego duplikatem oryginalnego serwera z określonego przez Ciebie punktu w czasie, o ile zawiera się on w okresie przechowywania dla Twojej [warstwy cenowej](./concepts-pricing-tiers.md).
+3. Kliknij przycisk **OK**, aby [przywrócić serwer do punktu w czasie](./howto-restore-server-portal.md) sprzed usunięcia tabeli. Przywrócenie serwera do innego punktu w czasie spowoduje utworzenie nowego serwera będącego duplikatem oryginalnego serwera z określonego przez Ciebie punktu w czasie, o ile zawiera się on w okresie przechowywania dla Twojej [warstwy cenowej](./concepts-pricing-tiers.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób użycia witryny Azure Portal i innych narzędzi do:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for PostgreSQL

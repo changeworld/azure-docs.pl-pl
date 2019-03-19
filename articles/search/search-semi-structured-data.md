@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 44c818cba760fb5cd7d496fd45ea321ef38248f3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632946"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445095"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Samouczek: Przeszukiwanie częściowo ustrukturyzowanych danych w magazynie w chmurze platformy Azure
 
 Z tego dwuczęściowego samouczka dowiesz się, jak wyszukiwać częściowo ustrukturyzowane dane oraz dane bez struktury za pomocą usługi Azure Search. W [części 1](../storage/blobs/storage-unstructured-search.md) opisano proces wyszukiwania względem danych bez struktury, a także ważne wymagania wstępne dotyczące tego samouczka, takie jak utworzenie konta magazynu. 
 
-Część 2 koncentruje się na danych częściowo ustrukturyzowanych, takich jak JSON, przechowywanych w obiektach blob platformy Azure. Częściowo ustrukturyzowane dane zawierają tagi lub oznaczenia, które dzielą zawartość w ramach danych. Różnią się od danych bez struktury, które muszą być indeksowane w całości, oraz formalnie ustrukturyzowanych danych, które są zgodne z modelem danych, takim jak schemat relacyjnej bazy danych z możliwością przeszukiwania pod kątem poszczególnych pól.
+Część 2 koncentruje się na danych częściowo ustrukturyzowanych, takich jak JSON, przechowywanych w obiektach blob platformy Azure. Częściowo ustrukturyzowane dane zawierają tagi lub oznaczenia, które dzielą zawartość w ramach danych. Dzieli różnicę między pozbawionych struktury danych, które muszą być w pełni indeksowane i formalnie struktury danych, która jest zgodna z modelem danych, takich jak schemat relacyjnej bazy danych, które mogą być przeszukiwane w poszczególnych pól.
 
 W części 2 dowiesz się, jak:
 
@@ -284,7 +284,7 @@ Parametr `$filter` działa wyłącznie z metadanymi, które podczas tworzenia in
 
 Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd usługi Azure Search.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Do potoku indeksatora możesz dołączyć algorytmy oparte na sztucznej inteligencji. Aby wykonać następny krok, przejdź do kolejnego samouczka.
 

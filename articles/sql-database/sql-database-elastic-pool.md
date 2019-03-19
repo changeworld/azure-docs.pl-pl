@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: dd06ae6046ab96d95cf1c1907c74d0b4d9a843bb
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214337"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010241"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -211,7 +211,7 @@ Aby uzyskać więcej informacji, zobacz [tworzyć alerty bazy danych SQL w witry
 
   Umbraco używa pul elastycznych za pomocą usługi Azure SQL Database do szybkiego aprowizację i skalowanie usług dla tysięcy dzierżaw w chmurze.
 
-- [Daxko/CSI](http://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
 
   Daxko/CSI używa pul elastycznych za pomocą usługi Azure SQL Database, przyspieszyć cykl tworzenia i zwiększyć jej działu pomocy technicznej i wydajność.
 

@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 87afdd9e949ec866c6ee962c2b68af42590bee67
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 8007d576a6b896f12423087cfd4a483d9171abc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878718"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104373"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Szybki start: Wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing API REST wyszukiwania jednostek Bing przy użyciu środowiska Node.js
 
@@ -74,7 +74,7 @@ Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usłu
         });
         ```
 
-    3. Po zasygnalizowaniu flagi **end** przeanalizuj dane JSON i wydrukuj je.
+    3. Gdy **zakończenia** flaga jest sygnalizowane, Przeanalizuj dane JSON i drukować.
 
         ```javascript
         response.on ('end', function () {
@@ -87,24 +87,24 @@ Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usłu
 
 1. Utwórz funkcję o nazwie `Search`, aby wysłać żądanie wyszukiwania. Wykonaj w niej poniższe czynności.
 
-    1. Utwórz obiekt JSON zawierający parametry Twojego żądania: użyj `Get` dla metody oraz dodaj informacje dotyczące hosta i ścieżki. Dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`. 
-    2. Użyj `https.request()` do wysłania żądania z utworzoną wcześniej procedurą obsługi odpowiedzi i Twoimi parametrami wyszukiwania.
+   1. Utwórz obiekt JSON zawierający parametry Twojego żądania: użyj `Get` dla metody oraz dodaj informacje dotyczące hosta i ścieżki. Dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`. 
+   2. Użyj `https.request()` do wysłania żądania z utworzoną wcześniej procedurą obsługi odpowiedzi i Twoimi parametrami wyszukiwania.
     
-    ```javascript
-    let Search = function () {
-        let request_params = {
-            method : 'GET',
-            hostname : host,
-            path : path + query,
-            headers : {
-                'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            }
-        };
+      ```javascript
+      let Search = function () {
+       let request_params = {
+           method : 'GET',
+           hostname : host,
+           path : path + query,
+           headers : {
+               'Ocp-Apim-Subscription-Key' : subscriptionKey,
+           }
+       };
     
-        let req = https.request (request_params, response_handler);
-        req.end ();
-    }
-    ```
+       let req = https.request (request_params, response_handler);
+       req.end ();
+      }
+      ```
 
 2. Wywołaj funkcję `Search()`.
 
@@ -148,7 +148,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
         "_type": "Restaurant",
         "webSearchUrl": "https://www.bing.com/search?q=Pickles+and+Preserves...",
         "name": "Munson's Pickles and Preserves Farm",
-        "url": "http://www.princi.com/",
+        "url": "https://www.princi.com/",
         "entityPresentationInfo": {
           "entityScenario": "ListItem",
           "entityTypeHints": [
@@ -173,7 +173,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)

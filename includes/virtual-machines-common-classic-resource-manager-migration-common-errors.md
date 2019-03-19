@@ -4,17 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: aa58890f74c7c667189fa10c009769de043227c4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f00da12519f21410f773afb96a5e9a83c56166d9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457971"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58051890"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Typowe błędy występujące podczas migracji z modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
 W tym artykule skatalogowano najbardziej typowe błędy i środki zaradcze w trakcie migracji zasobów IaaS z klasycznego modelu wdrażania platformy Azure do stosu usługi Azure Resource Manager.
 
 ## <a name="list-of-errors"></a>Lista błędów
+
 | Ciąg błędu | Środki zaradcze |
 | --- | --- |
 | Wewnętrzny błąd serwera |W niektórych przypadkach jest to błąd przejściowy, który znika przy ponownej próbie. Jeśli ten błąd będzie się powtarzać, [skontaktuj się z pomocą techniczną platformy Azure](../articles/azure-supportability/how-to-create-azure-support-request.md), ponieważ wymaga to badania dzienników platformy. <br><br> **UWAGA:** Gdy zdarzenie jest śledzone przez zespół pomocy technicznej, nie należy podejmować żadnych samodzielnych ponieważ może to mieć niezamierzone konsekwencje w używanym środowisku. |

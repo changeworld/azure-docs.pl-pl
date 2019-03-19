@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.openlocfilehash: 9d941c36499f851f20c41fa6dd01faf14e4192ba
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 808c2f38be875e70b4f52698b7a6278aa781a6ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124097"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>W trybie offline aktualizacji usługi Azure App Service w usłudze Azure Stack
 
@@ -97,14 +97,14 @@ Aby uaktualnić usługi App Service w środowisku bez połączenia, należy najp
 7. Na następnej stronie:
 
    1. Kliknij przycisk **Connect** znajdujący się obok **usługi Azure Stack subskrypcje** pole.
-        * Jeśli używasz usługi Azure Active Directory (Azure AD), wprowadź konto administratora usługi Azure AD i hasło podane podczas wdrażania usługi Azure Stack. Kliknij przycisk **Zaloguj**.
-        * Jeśli używasz usługi Active Directory Federation Services (AD FS) zapewniają konta administratora. Na przykład _cloudadmin@azurestack.local_. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
+      * Jeśli używasz usługi Azure Active Directory (Azure AD), wprowadź konto administratora usługi Azure AD i hasło podane podczas wdrażania usługi Azure Stack. Kliknij przycisk **Zaloguj**.
+      * Jeśli używasz usługi Active Directory Federation Services (AD FS) zapewniają konta administratora. Na przykład _cloudadmin@azurestack.local_. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
    2. W **usługi Azure Stack subskrypcje** wybierz opcję **domyślne subskrypcję dostawcy**.
    3. W **lokalizacje usługi Azure Stack** wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
    4. W przypadku wykrycia istniejącego wdrożenia usługi App Service następnie zasobów grupy i konta magazynu będzie być wypełnione i wyszarzone.
    5. Kliknij przycisk **dalej** do Przejrzyj podsumowanie uaktualnienia.
 
-    ![Wykryto instalacji usługi App Service][4]
+      ![Wykryto instalacji usługi App Service][4]
 
 8. Na stronie podsumowania:
    1. Sprawdź wybrane opcje, które zostały wprowadzone. Aby wprowadzić zmiany, należy użyć **Wstecz** przycisków, aby przejść do poprzedniej strony.

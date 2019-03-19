@@ -2,19 +2,19 @@
 title: Instalowanie i używanie rozszerzenia Azure Terraform dla programu Visual Studio Code
 description: Dowiedz się, jak zainstalować rozszerzenie Azure Terraform w programie Visual Studio Code i korzystać z niego.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, azure, devops, visual studio code, extension
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: 137a57638207a05f797692b25a5d5a31bd66ce3d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: b1102649e48af8cb36a64f1142c078bf9ebc0d99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074584"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006189"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Instalowanie i używanie rozszerzenia Azure Terraform dla programu Visual Studio Code
 
@@ -59,7 +59,7 @@ Aby używać narzędzia Terraform w usłudze Cloud Shell, musisz [zainstalować 
 
 ### <a name="install-graphviz"></a>Instalowanie oprogramowania GraphViz
 
-Aby używać funkcji wizualizacji narzędzia Terraform, musisz [zainstalować oprogramowanie GraphViz](http://graphviz.org/).
+Aby używać funkcji wizualizacji narzędzia Terraform, musisz [zainstalować oprogramowanie GraphViz](https://graphviz.org/).
 
 >[!NOTE]
 >Aby sprawdzić, czy oprogramowanie GraphViz jest zainstalowane, otwórz okno terminalu i wprowadź polecenie `dot -V`.
@@ -128,7 +128,7 @@ W tym ćwiczeniu utworzysz i wykonasz podstawowy plik konfiguracji narzędzia Te
     ![Zapisywanie pliku pod nazwą main.tf](media/terraform-vscode-extension/tf-save-as-main.png)
 
 1. Wybierz pozycję **Zapisz**.
-- Na pasku menu wybierz pozycję **Plik > Otwórz folder**. Przejdź do nowo utworzonego folderu, a następnie wybierz go.
+1. Na pasku menu wybierz pozycję **Plik > Otwórz folder**. Przejdź do nowo utworzonego folderu, a następnie wybierz go.
 
 ### <a name="run-terraform-init-command"></a>Uruchamianie polecenia *init* narzędzia Terraform
 
@@ -306,6 +306,6 @@ Po kilku chwilach w okienku terminalu zostanie wyświetlona lista podobna do teg
 
 ![Wyniki testu end-to-end](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Lista modułów narzędzia Terraform dostępnych dla platformy Azure (i innych obsługiwanych dostawców)](https://registry.terraform.io/)

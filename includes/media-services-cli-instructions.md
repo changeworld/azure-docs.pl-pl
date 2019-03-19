@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: c13ba8ab42d949e5752bfefd9b792b14a5a5ce59
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 8439da94c770bee313a1ae1d1da5df30683cd2ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56408215"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57964241"
 ---
 ## <a name="cli-shell"></a>Interfejs wiersza polecenia powłoki
 
@@ -45,5 +45,6 @@ Względna ścieżka do pliku (wszystkie OS)
 * `@ "/usr/home/mytestfile.json"`
 *   `@"c:\tmp\user\mytestfile.json"`
 
+Użyj `{file}` Jeśli polecenie pyta o ścieżkę do pliku. Na przykład `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Użyj `@{file}` Jeśli polecenie będzie można załadować określonego pliku. Na przykład `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
 
 [Przekazywanie plików]: ./media/media-services-cli/upload-download-files.png

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 03ec8858ee4b9323e6f7964ba02f8bb38f32d6a4
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: efe85e017d883ca82414fe5ff10b5c2932366e48
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101129"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurowanie dostępu z sieci wirtualnych (VNet)
 
@@ -49,9 +49,9 @@ Poniżej opisano sposób konfigurowania punktu końcowego usługi sieci wirtualn
 
 > [!NOTE]
 > Aby włączyć punkty końcowe usługi sieci wirtualnej, potrzebne są następujące uprawnienia subskrypcji:
-  * Subskrypcja z siecią wirtualną: Współautor sieci
-  * Subskrypcja z kontem usługi Azure Cosmos DB: Współautor konta usługi DocumentDB
-  * Jeśli sieć wirtualna i konta usługi Azure Cosmos DB znajdują się w różnych subskrypcjach, upewnij się, że subskrypcję, która ma sieci wirtualnej ma również `Microsoft.DocumentDB` dostawcy zasobów zarejestrowany. Aby zarejestrować dostawcę zasobów, zobacz [dostawcy zasobów platformy Azure i ich typy](../azure-resource-manager/resource-manager-supported-services.md) artykułu. 
+>   * Subskrypcja z siecią wirtualną: Współautor sieci
+>   * Subskrypcja z kontem usługi Azure Cosmos DB: Współautor konta usługi DocumentDB
+>   * Jeśli sieć wirtualna i konta usługi Azure Cosmos DB znajdują się w różnych subskrypcjach, upewnij się, że subskrypcję, która ma sieci wirtualnej ma również `Microsoft.DocumentDB` dostawcy zasobów zarejestrowany. Aby zarejestrować dostawcę zasobów, zobacz [dostawcy zasobów platformy Azure i ich typy](../azure-resource-manager/resource-manager-supported-services.md) artykułu. 
 
 Poniżej przedstawiono wskazówki dotyczące rejestrowania subskrypcji za pomocą dostawcy zasobów.
 

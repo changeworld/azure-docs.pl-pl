@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cca6fba401d8673cf97897c24a9d6de2329f19a4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: eb4d04316de875e5eada0bd70383aff73382d8b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232493"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096065"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API wyszukiwania obrazów Bing i języka PHP
 
@@ -29,7 +29,7 @@ Kod źródłowy tego przykładu jest dostępny [w usłudze GitHub](https://githu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Środowisko PHP 5.6.x lub nowsze](http://php.net/downloads.php).
+* [Środowisko PHP 5.6.x lub nowsze](https://php.net/downloads.php).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -49,7 +49,7 @@ Aby uruchomić tę aplikację, wykonaj następujące kroki.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-an-http-request"></a>Konstruowanie i wykonywanie żądania HTTP
+   ## <a name="construct-and-perform-an-http-request"></a>Konstruowanie i wykonywanie żądania HTTP
 
 1. Użyj zmiennych z ostatniego kroku do przygotowania żądania HTTP do interfejsu API wyszukiwania obrazów.
 
@@ -129,12 +129,12 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: d75048cb53dd1a5ebaba6322228af6137d0f3b96
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3bb88f2f9546ec25433061a0704bd144730bd34c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456180"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894635"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
 
@@ -45,7 +45,7 @@ Przeczytaj ścieżkę i algorytmu etykiet na wykresie jako "dla  *&lt;etykieta �
 Czasami żadna z nich są idealnym rozwiązaniem. Są one przeznaczone do reguły z thumb zaleceń, więc nie martw się o nim są dokładne.
 Wielu analityków danych, które wspomnieliśmy o wspomniane, które jedynym pewnym sposobem znalezienia bardzo najlepszy algorytm jest do wypróbowania wszystkich z nich.
 
-Oto przykład z [galerii Azure AI](http://gallery.azure.ai/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [Porównaj klasyfikatorów wieloklasowej: Litera rozpoznawania](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
+Oto przykład z [galerii Azure AI](https://gallery.azure.ai/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [Porównaj klasyfikatorów wieloklasowej: Litera rozpoznawania](https://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Aby pobrać omówienie informacyjna łatwych do zrozumienia podstawy uczenia maszyny, aby dowiedzieć się więcej na temat popularnych algorytmów odpowiedzi na często zadawane pytania dotyczące machine learning, zobacz [podstawy uczenia maszynowego z algorytmami](basics-infographic-with-algorithm-examples.md).
@@ -180,7 +180,7 @@ Decyzja w lasach ([regresji](/azure/machine-learning/studio-module-reference/dec
 
 Ponieważ obszar funkcji może zostać podzielona na arbitralnie małej regionów, to proste wyobrazić sobie wystarczająco precyzyjnie podzielenie go mieć jeden punkt danych na region. To jest przykładem extreme overfitting. Aby tego uniknąć, szerokiej gamy drzewa są konstruowane przy użyciu szczególną matematyczne podjęte w celu zapewnienia, że drzewa nie są powiązane. Średnia to "las decyzyjny z" jest drzewa, która pozwala uniknąć overfitting. Decyzja lasów można używać dużej ilości pamięci. Dżungle decyzyjne są wariant, który zużywa mniej pamięci kosztem nieco dłużej szkolenia.
 
-Aby uniknąć overfitting drzewa decyzyjnego ograniczenie ile razy oni podzielić i jak najmniejszej liczby punktów danych są dozwolone w każdym regionie. Algorytm tworzy sekwencję drzewa, z których każdy uczy się kompensacji błąd w drzewie przed. Wynik jest bardzo dokładny uczeń, która zwykle używa dużej ilości pamięci. Aby uzyskać pełny opis techniczny, zapoznaj się [oryginalny dokument firmy Friedman](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
+Aby uniknąć overfitting drzewa decyzyjnego ograniczenie ile razy oni podzielić i jak najmniejszej liczby punktów danych są dozwolone w każdym regionie. Algorytm tworzy sekwencję drzewa, z których każdy uczy się kompensacji błąd w drzewie przed. Wynik jest bardzo dokładny uczeń, która zwykle używa dużej ilości pamięci. Aby uzyskać pełny opis techniczny, zapoznaj się [oryginalny dokument firmy Friedman](https://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
 
 [Szybkie regresji kwantyl lasu](/azure/machine-learning/studio-module-reference/fast-forest-quantile-regression) jest odmianą drzew decyzyjnych w specjalnym przypadku, w którym chcesz wiedzieć, nie tylko Typowa wartość (Mediana) danych w regionie, ale również jego dystrybucji postać quantiles.
 
@@ -215,7 +215,7 @@ Przy użyciu Sprytne rozszerzenia nieliniowych SVMs [SVM jednej klasy](/azure/ma
 Metody Bayesowskie mają bardzo pożądane jakości: Unikaj ich overfitting. One to robić przez założenie wcześniej o prawdopodobnie dystrybucji odpowiedzi. Inny byproduct tego podejścia jest bardzo mało parametrów. Usługa Azure Machine Learning Studio zawiera algorytmy Bayesowskie zarówno klasyfikacji ([maszyna punktu Bayesa Two-class](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)) i regresji ([regresji liniowej Bayesowskie](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)).
 Pamiętaj, że te przyjęto założenie, że dane mogą być podziału lub mieści się przy użyciu prostej.
 
-Na notatkę historycznych maszyn punktu Bayesa zostały opracowywane w dziale Microsoft Research. Mają one część wyjątkowo piękne prac teoretyczne za ich. Zainteresowane uczniów zostaje skierowany do [oryginalny artykuł w JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) i [wnikliwe blog, Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
+Na notatkę historycznych maszyn punktu Bayesa zostały opracowywane w dziale Microsoft Research. Mają one część wyjątkowo piękne prac teoretyczne za ich. Zainteresowane uczniów zostaje skierowany do [oryginalny artykuł w JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) i [wnikliwe blog, Chris Bishop](https://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
 
 ### <a name="specialized-algorithms"></a>Dołączanie specjalizowanych algorytmów
 Jeśli masz bardzo specyficznym celem może być szczęście. W kolekcji usługi Azure Machine Learning Studio istnieje algorytmami, które specjalizują się w:

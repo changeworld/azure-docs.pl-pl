@@ -4,22 +4,20 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 5f1e0153b1f919bc9d7e921d2a1b3ae745b2b01f
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: bfeb8bddf5fe3b4a76e662aed6c5a07439d2f1cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753521"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57908636"
 ---
-## <a name="open-the-sample-project-in-unity"></a>Otwieranie przykładowego projektu w aparacie Unity
+## <a name="set-up-your-device"></a>Konfigurowanie urządzenia
 
-[!INCLUDE [Clone Sample Repo](spatial-anchors-clone-sample-repository.md)]
-
-## <a name="to-set-up-for-an-android-device"></a>Konfigurowanie dla urządzenia z systemem Android
+### <a name="set-up-an-android-device"></a>Konfigurowanie urządzenia z systemem Android
 
 [!INCLUDE [Android Unity Build Settings](spatial-anchors-unity-android-build-settings.md)]
 
-## <a name="to-set-up-for-an-ios-device"></a>Konfigurowanie dla urządzenia z systemem iOS
+### <a name="set-up-an-ios-device"></a>Konfigurowanie urządzeniu z systemem iOS
 
 [!INCLUDE [iOS Unity Build Settings](spatial-anchors-unity-ios-build-settings.md)]
 
@@ -35,7 +33,7 @@ Zapisz scenę, wybierając pozycje **File (Plik)** -> **Save (Zapisz)**.
 
 ## <a name="to-deploy-to-an-android-device"></a>Wdrażanie na urządzeniu z systemem Android
 
-Włącz urządzenie z systemem Android, zaloguj się i połącz to urządzenie z komputerem PC za pomocą kabla USB.
+Zaloguj się na urządzeniu z systemem Android i podłącz go do komputera za pomocą kabla USB.
 
 Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** -> **Build Settings (Ustawienia kompilacji)**.
 

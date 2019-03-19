@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: 3e5fa15bbd6890bc6f36c97aadf3aeaa980b5031
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 65064707374ba76701566e061b77bfd6cdf520ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310322"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833389"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie metryki alertów klasycznych przy użyciu usługi Azure Monitor
 
@@ -35,7 +35,7 @@ Klasyczne alertów dotyczących metryk w usłudze Azure Monitor zapewnia sposób
 
 6. Wybierz **wiadomości E-mail właścicielom...**  chcącym administratorów i współadministratorów, aby otrzymywać powiadomienia e-mail, gdy zostanie wyzwolony alert.
 
-7. Jeśli chcesz wysyłać powiadomienia na adresy e-mail dodatkowych, gdy zostanie wyzwolony alert, dodaj je w **email(s) dodatkowego administratora** pola. Wiele wiadomości e-mail należy rozdzielić średnikami w następującym formacie:  *email@contoso.com;email2@contoso.com*
+7. Jeśli chcesz wysyłać powiadomienia na adresy e-mail dodatkowych, gdy zostanie wyzwolony alert, dodaj je w **email(s) dodatkowego administratora** pola. Wiele wiadomości e-mail należy rozdzielić średnikami w następującym formacie: *e-mail\@contoso.com;email2\@contoso.com*
 
 8. Umieść w prawidłowym identyfikatorem URI w **elementu Webhook** pola, jeśli ma ona wywoływana, gdy zostanie wyzwolony alert.
 
@@ -127,7 +127,7 @@ Tej sekcji pokazano, jak za pomocą programu PowerShell, poleceń tworzyć, wyś
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Nie jest już można tworzyć reguły alertów klasycznych za pomocą programu PowerShell. Aby utworzyć regułę alertu, należy użyć nowego ["Add-AzMetricAlertRule"](https://docs.microsoft.com/powershell/module/az.insights/add-azmetricalertrule?view=azurermps-6.13.0) polecenia.
+8. Nie jest już można tworzyć reguły alertów klasycznych za pomocą programu PowerShell. Aby utworzyć regułę alertu, należy użyć nowego ["Add-AzMetricAlertRule"](/powershell/module/az.monitor/add-azmetricalertrule) polecenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

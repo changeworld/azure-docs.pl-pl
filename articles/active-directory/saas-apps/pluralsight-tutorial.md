@@ -4,23 +4,22 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4c3f07d2-4e1f-4ea3-9025-c663f1f2b7b4
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 03/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 844e8abff45f663b39846c9b8dc9b55be0d43f4f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: b2d8d98fb9c953ef8063bf2081201f7d9bdf3649
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875620"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Pluralsight
 
@@ -47,13 +46,15 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 * Aplikacja Pluralsight obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
+* Obsługuje Pluralsight **just-in-time** aprowizacji użytkowników 
+
 ## <a name="adding-pluralsight-from-the-gallery"></a>Dodawanie aplikacji Pluralsight z galerii
 
 Aby skonfigurować integrację aplikacji Pluralsight z usługą Azure AD, musisz dodać aplikację Pluralsight z galerii do swojej listy zarządzanych aplikacji SaaS.
 
 **Aby dodać aplikację Pluralsight z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -109,21 +110,20 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Pluralsigh
 
     b. W polu **Identyfikator** wpisz adres URL: `www.pluralsight.com`
 
-    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<instancename>.pluralsight.com/sp/ACS.saml2`
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<instancename>.pluralsight.com/sp/ACS.saml2`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej klienta Pluralsight](mailto:support@pluralsight.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Aplikacja Pluralsight oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
-
+5. W witrynie Pluralsight aplikacja oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
     ![image](common/edit-attribute.png)
 
     >[!NOTE]
     >Możesz również dodać atrybut **„Unikatowy identyfikator”** z odpowiednią wartością, taką jak EmployeeID (identyfikator pracownika) lub inny element, który odpowiada Twojej organizacji. Warto zauważyć, że ten atrybut nie jest wymagany, możesz go jednak dodać, aby identyfikować unikatowych użytkowników.
 
-6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
+6. Ponadto powyżej Pluralsight aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
     
-    | Nazwa | Atrybut źródłowy|
+    | Name (Nazwa) | Atrybut źródłowy|
     | --------------- | --------- |
     | Imię  | user.givenname  |
     | Nazwisko  | user.surname  |
@@ -173,7 +173,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -208,17 +208,17 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 ### <a name="create-pluralsight-test-user"></a>Tworzenie użytkownika testowego aplikacji Pluralsight
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w aplikacji Pluralsight. Aby dodać użytkownika na koncie Pluralsight, skontaktuj się z [zespołem pomocy technicznej klienta Pluralsight](mailto:support@pluralsight.com).  Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w witrynie Pluralsight. Pluralsight obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w witrynie Pluralsight, nowy katalog jest tworzony po uwierzytelnieniu.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Pluralsight w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Pluralsight, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

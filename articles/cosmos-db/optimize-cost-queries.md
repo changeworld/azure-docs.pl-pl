@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e6814224827aac0da9c6faf5108ecf585bae7c35
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445385"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840192"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optymalizuj koszt zapytania w usłudze Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Zapytania, które odczytują dane z co najmniej jedną partycję pociągnąć za
 
 Gdy dane są przechowywane w kontenerach usługi Azure Cosmos, można użyć Eksploratora danych w witrynie Azure portal do tworzenia i uruchamiania zapytań. Koszt zapytania można także uzyskać za pomocą Eksploratora danych. Ta metoda zapewni Ci poczucie rzeczywiste opłaty związane z typowych zapytań i operacji, które system obsługuje.
 
-Koszt zapytania można także uzyskać programistycznie przy użyciu zestawów SDK. Do mierzenia obciążenie związane z każdej operacji, takich jak tworzenie, aktualizowanie lub sprawdzanie usunięcia `x-ms-request-charge` nagłówek, korzystając z interfejsu API REST. Jeśli używasz platformy .net lub zestawu Java SDK `RequestCharge` właściwość jest równoważna właściwości do pobrania opłata za żądanie wyrażana i ta właściwość jest obecny w ramach ResourceResponse lub FeedResponse.
+Koszt zapytania można także uzyskać programistycznie przy użyciu zestawów SDK. Do mierzenia obciążenie związane z każdej operacji, takich jak tworzenie, aktualizowanie lub sprawdzanie usunięcia `x-ms-request-charge` nagłówek, korzystając z interfejsu API REST. Jeśli używasz platformy .NET lub zestawu Java SDK `RequestCharge` właściwość jest równoważna właściwości do pobrania opłata za żądanie wyrażana i ta właściwość jest obecny w ramach ResourceResponse lub FeedResponse.
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -59,7 +59,7 @@ W niektórych przypadkach może zostać wyświetlony ciąg 200 i 429 odpowiedzi 
 
 ## <a name="metrics-for-troubleshooting"></a>Metryki dotyczące rozwiązywania problemów
 
-Wydajność i przepływność, głównie używane w zapytaniach, funkcje zdefiniowane przez użytkownika (UDF) jest zależna od treści funkcji. Najprostszym sposobem, aby dowiedzieć się, ile czasu wykonywania zapytania odbywa się w funkcji zdefiniowanej przez użytkownika i liczba RU, jest przez włączenie metryk zapytania. Jeśli korzystasz z zestawu .net SDK, poniżej przedstawiono przykładowe zapytanie metryki zwrócony przez zestaw SDK:
+Wydajność i przepływność, głównie używane w zapytaniach, funkcje zdefiniowane przez użytkownika (UDF) jest zależna od treści funkcji. Najprostszym sposobem, aby dowiedzieć się, ile czasu wykonywania zapytania odbywa się w funkcji zdefiniowanej przez użytkownika i liczba RU, jest przez włączenie metryk zapytania. Jeśli używasz zestawu SDK platformy .NET, poniżej przedstawiono przykładowe zapytanie metryki zwrócony przez zestaw SDK:
 
 ```bash
 Retrieved Document Count                 :               1              

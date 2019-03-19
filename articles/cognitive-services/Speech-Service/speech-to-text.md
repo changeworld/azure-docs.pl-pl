@@ -1,68 +1,113 @@
 ---
-title: Zamiana mowy na tekst — usługi mowy — informacje
+title: Mowy na tekst za pomocą usług przetwarzania mowy platformy Azure
 titleSuffix: Azure Cognitive Services
-description: Interfejs API zamiany mowy na tekst transcribes strumieni audio na tekst, który aplikacji można wyświetlić lub reagowanie na nie, jako dane wejściowe. Usługa jest dostępna za pośrednictwem zestawu SDK oraz punkt końcowy usługi RESTful.
+description: Mowy na tekst z usług przetwarzania mowy platformy Azure, znany także jako zamiany mowy na tekst, umożliwia w czasie rzeczywistym transkrypcji strumieni audio na tekst, którą może wykorzystać aplikacje, narzędzia lub urządzeń, wyświetlania i podejmij działanie jako dane wejściowe polecenia. Ta usługa jest obsługiwana w tej samej technologii rozpoznawania firmy Microsoft korzysta z produktów Cortana i pakietu Office, która bezproblemowo współdziała z przesunięcia i zamiany tekstu na mowę.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5012245a79295f1e05079f6c0a368ac832b8974a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7aa4492a22c8aca1e54570adb2811e4cb13caf7b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978582"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900781"
 ---
-# <a name="about-the-speech-to-text-api"></a>Zamiana mowy na tekst interfejsu API — informacje
+# <a name="what-is-speech-to-text"></a>Co to jest mowy na tekst?
 
-**Zamiana mowy na tekst** API *transcribes* strumieni audio na tekst, który aplikacji można wyświetlić użytkownikowi lub działać jako polecenia dane wejściowe. Interfejsy API mogą służyć przy użyciu biblioteki klienta zestawu SDK (dla obsługiwanych platform i języków) lub interfejsu API REST.
+Mowy na tekst z usług przetwarzania mowy platformy Azure, znany także jako zamiany mowy na tekst, umożliwia w czasie rzeczywistym transkrypcji strumieni audio na tekst, którą może wykorzystać aplikacje, narzędzia lub urządzeń, wyświetlania i podejmij działanie jako dane wejściowe polecenia. Ta usługa jest obsługiwana w tej samej technologii rozpoznawania firmy Microsoft korzysta z produktów Cortana i pakietu Office, która bezproblemowo współdziała z przesunięcia i zamiany tekstu na mowę.
 
-**Zamiana mowy na tekst** interfejs API oferuje następujące funkcje:
+Domyślnie usługa mowy na tekst używa modelu językowego uniwersalnych. Ten model został uczony przy użyciu danych należącymi do firmy Microsoft i jest wdrożona w chmurze. Jest optymalna do konwersacji i dyktowanie scenariuszy. Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych.
 
-- Zaawansowane technologii rozpoznawania mowy firmy Microsoft — taka sama używany przez Cortana, pakietu Office i innych produktów firmy Microsoft.
+Można łatwo przechwytywania dźwięku z mikrofonu, odczytywania ze strumienia lub dostępu do plików dźwiękowych z magazynu przy użyciu zestawu SDK rozpoznawania mowy i interfejsów API REST. Zestaw SDK rozpoznawania mowy obsługuje WAV/PCM 16-bitowy, 16 kHz, dźwięk jednego kanału rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane przy użyciu [punktu końcowego REST mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-formats) lub [transkrypcji, usługa batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
-- W czasie rzeczywistym rozpoznawania ciągłe. **Zamiana mowy na tekst** umożliwia użytkownikom wykonać transkrypcji audio na tekst w czasie rzeczywistym. Obsługuje ona również otrzymywać wyniki pośrednie wyrazów, które zostały rozpoznane do tej pory. Usługa automatycznie rozpoznaje koniec mowy. Użytkownicy mogą także wybrać dodatkowych opcji formatowania, w tym wielkość liter i znaków interpunkcyjnych, wulgaryzmów maskowania i normalizacji odwrotność tekstu.
+## <a name="core-features"></a>Podstawowe funkcje
 
-- Wyniki zwracane w formularzach zarówno Lexical, jak i wyświetlania (leksykalne wyników, zobacz DetailedSpeechRecognitionResult w przykładach lub interfejsu API).
+Oto funkcje dostępne za pośrednictwem mowy zestawu SDK i interfejsy API REST:
 
-- Obsługa wielu języków i dialekty. Aby uzyskać pełną listę obsługiwanych języków w trybie rozpoznawania, zobacz [obsługiwane języki](language-support.md#speech-to-text).
+| Przypadek użycia | SDK | REST |
+|----------|-----|------|
+| Transkrypcja wypowiedzi krótki (< 15 sekund). Obsługuje tylko wynik końcowy transkrypcji. | Yes | Yes |
+| Ciągłe transkrypcji długie wypowiedzi i przesyłania strumieniowego audio (> 15 sekund). Obsługuje wyniki tymczasowe i końcowe transkrypcji. | Yes | Nie |
+| Dziedziczyć intencji wyniki rozpoznawania [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Yes | Brak\* |
+| Asynchronicznie partii transkrypcji audio plików. | Nie | Tak\** |
+| Tworzenie i zarządzanie modelami mowy. | Nie | Tak\** |
+| Tworzenie i zarządzanie wdrożeniami modelu niestandardowego. | Nie | Tak\** |
+| Utwórz testy dokładności do mierzenia dokładności modelu odniesienia, a modele niestandardowe. | Nie | Tak\** |
+| Zarządzaj subskrypcjami. | Nie | Tak\** |
 
-- Dostosowane modeli języka i akustyczne, dzięki czemu można dostosować aplikację do słownictwa wyspecjalizowane domeny użytkowników, wypowiedzi środowiska i sposób wypowiedzi.
+\* *Usługa LUIS intencje i podmioty mogą być uzyskane przy użyciu oddzielnej subskrypcji usługi LUIS. Z tą subskrypcją zestawu SDK można wywołać usługi LUIS i jednostki i wyniki konwersji. Za pomocą interfejsu API REST, można wywołać usługi LUIS samodzielnie do wyprowadzenia intencje i podmioty ze swoją subskrypcją usługi LUIS.*
 
-- Interpretacja języka naturalnego. Dzięki integracji z usługą [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), użytkownik może dziedziczyć intencje i podmioty mowy. Użytkownicy nie muszą znać słownictwa aplikacji, ale można opisać mają własnymi słowami.
+\** *Te usługi są dostępne przy użyciu punktu końcowego cris.ai. Zobacz [Swagger odwołania](https://westus.cris.ai/swagger/ui/index).*
 
-- Współczynnik ufności jest zwracany odpowiedź od usługi, jeśli określisz szczegółowych danych wyjściowych na obiekt konfiguracji mowy (właściwość SpeechConfig.OutputFormat). Następnie możesz użyć jednej z metod Best() wynik lub pobrać go bezpośrednio wynik w JSON zwrócony przez usługę (podobnie do wyniku. Properties.GetProperty(PropertyId.SpeechServiceResponse_JsonResult)).
+## <a name="get-started-with-speech-to-text"></a>Rozpoczynanie pracy z usługą mowy na tekst
 
-## <a name="api-capabilities"></a>Funkcje interfejsu API
+Firma Microsoft oferuje Przewodniki Szybki Start w najbardziej popularnych języków programowania, każde jest zaprojektowane do uruchamiania kodu w mniej niż 10 minut. Poniższa tabela zawiera listę wszystkich SDK mowy przewodników Szybki Start, uporządkowane według języka.
 
-Niektóre z możliwości **zamiana mowy na tekst** interfejsu API, zwłaszcza w części dotyczącej dostosowywania, są dostępne za pośrednictwem interfejsu REST. Poniższa tabela zawiera podsumowanie możliwości każdej metody uzyskiwania dostępu do interfejsu API. Aby uzyskać pełną listę możliwości i szczegóły interfejsu API, zobacz [Swagger odwołania](https://westus.cris.ai/swagger/ui/index).
+| Szybki start | Platforma | Dokumentacja interfejsu API |
+|------------|----------|---------------|
+| [C#, .NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, .NET Framework](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-uwp) | Windows | [Przeglądaj](https://aka.ms/csspeech/csharpref) |
+| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Przeglądaj](https://aka.ms/csspeech/cppref)|
+| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Przeglądaj](https://aka.ms/csspeech/cppref) |
+| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux | [Przeglądaj](https://aka.ms/csspeech/javaref) |
+| [JavaScript, przeglądarki](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Przeglądarka, Windows, Linux, macOS | [Przeglądaj](https://aka.ms/AA434tv) |
+| [Javascript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Przeglądaj](https://aka.ms/AA434tv) |
+| [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Przeglądaj](https://aka.ms/csspeech/objectivecref) |
+| [Python](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-python) | Windows, Linux, macOS | [Przeglądaj](https://aka.ms/AA434tr)  |
 
-| Przypadek użycia | REST | Zestawy SDK |
-|-----|-----|-----|----|
-| Transkrypcja krótka wypowiedź, takich jak polecenia (długość < 15 s); nie wyników pośrednich | Yes | Yes |
-| Transkrypcja dłużej wypowiedź (> 15 s) | Nie | Yes |
-| Transkrypcja przesyłania strumieniowego audio z opcjonalnych wyników pośrednich | Nie | Yes |
-| Zrozumieć intencje osoby mówiącej za pośrednictwem usługi LUIS | Brak\* | Yes |
-| Utwórz testy dokładności | Yes | Nie |
-| Przekaż zestawy danych dla adaptacja modelu | Yes | Nie |
-| Tworzenie i zarządzanie modelami mowy | Yes | Nie |
-| Tworzenie i zarządzanie wdrożeniami modelu | Yes | Nie |
-| Zarządzanie subskrypcjami | Yes | Nie |
-| Tworzenie i zarządzanie wdrożeniami modelu | Yes | Nie |
-| Tworzenie i zarządzanie wdrożeniami modelu | Yes | Nie |
+Jeśli wolisz korzystać z usługi REST mowy na tekst, zobacz [interfejsów API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+
+## <a name="tutorials-and-sample-code"></a>Samouczki i przykładowy kod
+
+Po został mieli Państwo możliwość korzystania z usług rozpoznawania mowy, wypróbuj Nasz samouczek pokazujący, jak rozpoznać intencje z wypowiedzi przy użyciu zestawu SDK rozpoznawania mowy i LUIS.
+
+* [Samouczek: Rozpoznawanie intencji z wypowiedzi przy użyciu zestawu SDK rozpoznawania mowy i LUISC#](how-to-recognize-intents-from-speech-csharp.md)
+
+Przykładowy kod dla zestawu SDK rozpoznawania mowy jest dostępny w witrynie GitHub. Te przykłady obejmują typowe scenariusze, takie jak odczytywanie dźwięku z pliku lub strumienia, ciągłe i pojedynczego zrzutu ręcznego i Praca z modelami niestandardowych.
+
+* [Przykłady mowy na tekst (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [Przykłady transkrypcji dla usługi Batch (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+
+## <a name="customization"></a>Dostosowywanie
+
+Oprócz modelu Universal używane przez usługi rozpoznawania mowy możesz utworzyć niestandardowe modele akustyczne, języka i Wymowa określonego środowiska. Poniżej przedstawiono listę opcji dostosowywania:
+
+| Modelowanie | Opis |
+|-------|-------------|
+| [Model akustyczny](how-to-customize-acoustic-models.md) | Tworzenie niestandardowy model akustyczny jest przydatne, jeśli w Twojej aplikacji, narzędzia lub urządzeń są używane w określonym środowisku, takich jak w samochodu lub fabrykę przy użyciu rejestrowania określonych warunków. Przykłady obejmują akcentowaną mowę, specyficzne szumy w tle lub użycie konkretnego mikrofonu na potrzeby rejestrowania. |
+| [Model językowy](how-to-customize-language-model.md) | Utwórz model języka niestandardowego usprawniających transkrypcji słownika specyficzne dla branży i gramatyki, takie jak terminologia medycznych lub żargon IT. |
+| [Model wymowy](how-to-customize-pronunciation.md) | Za pomocą modelu niestandardowego Wymowa można zdefiniować fonetycznych formularza i wyświetlanie słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt. |
 
 > [!NOTE]
-> Interfejs API REST implementuje, że limity żądań interfejsu API 25 na 5-sekundowego ograniczania przepływności. Nagłówki komunikatów poinformuje o limicie
+> Opcje dostosowywania zależy od języka/ustawienia regionalne (zobacz [obsługiwane języki](supported-languages.md)).
 
-\* *Usługa LUIS intencje i podmioty mogą być uzyskane przy użyciu oddzielnej subskrypcji usługi LUIS. Z tą subskrypcją zestawu SDK można wywołać usługi LUIS i zawierają jednostki i przeznaczenie wyniki, a także transkrypcje mowy. Za pomocą interfejsu API REST, można wywołać usługi LUIS samodzielnie do wyprowadzenia intencje i podmioty ze swoją subskrypcją usługi LUIS.*
+## <a name="migration-guides"></a>Przewodniki dotyczące migracji
+
+> [!WARNING]
+> Rozpoznawanie mowy Bing zostanie zamknięty 15 października 2019 r.
+
+Twoje aplikacje, narzędzia lub produkty korzystania z interfejsów API rozpoznawania mowy Bing lub Custom Speech, utworzyliśmy przewodniki ułatwiające migrację do usług przetwarzania mowy.
+
+* [Migracja z rozpoznawania mowy Bing do usług przetwarzania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
+* [Migracja z Custom Speech do usług przetwarzania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
+
+## <a name="reference-docs"></a>Dokumentacja
+
+* [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
+* [Zestaw Speech Devices SDK](speech-devices-sdk.md)
+* [INTERFEJS API REST: Zamiany mowy na tekst](rest-speech-to-text.md)
+* [INTERFEJS API REST: Zamiana tekstu na mowę](rest-text-to-speech.md)
+* [INTERFEJS API REST: Dostosowywanie i transkrypcji usługi Batch](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-* [Szybki Start: Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
-* [Zobacz, jak rozpoznać intencje z wypowiedzi w języku C#](how-to-recognize-intents-from-speech-csharp.md)
+* [Bezpłatnie Uzyskaj klucz subskrypcji usług przetwarzania mowy](get-started.md)
+* [Pobierz zestaw SDK funkcji rozpoznawania mowy](speech-sdk.md)

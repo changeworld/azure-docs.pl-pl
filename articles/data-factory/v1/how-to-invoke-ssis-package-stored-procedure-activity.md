@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 859cd6cfd3db68dad2607f1dc8905facb43dd290
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ed53f9bf2e22e1d69a4e00de1e8d71291a5be46d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453783"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108716"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Wywoływanie pakietów SSIS za pomocą działania procedury składowanej w usłudze Azure Data Factory
 W tym artykule opisano jak wywołać pakietu SSIS z potoku usługi Azure Data Factory za pomocą działania procedury składowanej. 
@@ -54,20 +54,20 @@ Pierwszym krokiem jest, aby utworzyć fabrykę danych za pomocą witryny Azure p
 3. Wybierz **subskrypcję** Azure, w której chcesz utworzyć fabrykę danych. 
 4. Dla opcji **Grupa zasobów** wykonaj jedną z następujących czynności:
      
-      - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
-      - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
+   - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
+   - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
-    Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
+     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 4. Wybierz **V1** dla **wersji**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko lokalizacje obsługiwane przez usługę Data Factory. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych lokalizacjach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
 7. Kliknij pozycję **Utwórz**.
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
-    ![kafelek Wdrażanie fabryki danych](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
+     ![kafelek Wdrażanie fabryki danych](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**, jak pokazano na poniższej ilustracji.
    
-    ![Strona główna fabryki danych](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+     ![Strona główna fabryki danych](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Kliknij przycisk **tworzenie i wdrażanie** Kafelek, aby uruchomić edytora fabryki danych.
 
     ![Edytor fabryki danych](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-editor.png)
@@ -304,13 +304,13 @@ W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wyw
 
 ### <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 
-2. Uruchom **Get AzDataFactorySlice** Aby uzyskać szczegółowe informacje na temat wszystkich wycinków elementu wyjściowego zestawu danych **, który stanowi tabelę wyjściową potoku.
+1. Uruchom **Get AzDataFactorySlice** Aby uzyskać szczegółowe informacje na temat wszystkich wycinków elementu wyjściowego zestawu danych **, który stanowi tabelę wyjściową potoku.
 
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     Zauważ, że określana tutaj właściwość StartDateTime oznacza taki sam czas rozpoczęcia jak określony w potoku JSON. 
-3. Uruchom **Get AzDataFactoryRun** Aby uzyskać szczegółowe informacje o uruchomieniach działania dla określonego wycinka.
+1. Uruchom **Get AzDataFactoryRun** Aby uzyskać szczegółowe informacje o uruchomieniach działania dla określonego wycinka.
 
     ```PowerShell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a97e03f3c195b9fbd0ee7a09950414b7a940c7c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 694eb49244afb6761ce274572f15273ccef6cbb5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217483"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195034"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Szybki start: Logowanie użytkowników i uzyskiwanie tokenu dostępu z aplikacji języka JavaScript
 
@@ -74,14 +74,15 @@ Możesz wybrać jedną z poniższych opcji, właściwą dla środowiska dewelope
 * [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 Wyodrębnij plik zip do folderu lokalnego, na przykład **C:\Azure-Samples**.
+Aby otworzyć pliki w folderze, użyj edytorem takim jak [programu Visual Studio Code](https://code.visualstudio.com/).
 
 #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurowanie aplikacji języka JavaScript
 
 > [!div renderon="docs"]
-> Edytuj plik `index.html` i ustaw wartości `clientID` oraz `authority` w obszarze `applicationConfig`.
+> W folderze *JavaScriptSPA*, Edytuj `index.html` i ustaw `clientID` i `authority` wartości w obszarze `applicationConfig`.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Edytuj plik `index.html` i zastąp element `applicationConfig` elementem:
+> W folderze *JavaScriptSPA*, Edytuj `index.html` i Zastąp `applicationConfig` za pomocą:
 
 ```javascript
 var applicationConfig = {
@@ -103,13 +104,9 @@ var applicationConfig = {
 > > [!TIP]
 > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)**, **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
 
-> [!NOTE]
-> Serwer został skonfigurowany do nasłuchiwania na porcie 30662 w pliku *server.js* w projekcie [Node.js](https://nodejs.org/en/download/) i pliku *.csproj* w projekcie [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
->
-
 #### <a name="step-4-run-the-project"></a>Krok 4: Uruchamianie projektu
 
-* Jeśli używasz środowiska Node.js:
+* Jeśli używasz [Node.js](https://nodejs.org/en/download/):
 
     1. Uruchom następujące polecenie z katalogu projektu w celu uruchomienia serwera:
 
@@ -122,7 +119,7 @@ var applicationConfig = {
     1. Kliknij przycisk **Zaloguj się**, aby rozpocząć logowanie, a następnie wywołaj interfejsu API programu Microsoft Graph.
 
 
-* Jeśli używasz programu Visual Studio, upewnij się, że wybierasz rozwiązanie projektu, a następnie naciśnij klawisz **F5**, aby uruchomić projekt.
+* Jeśli przy użyciu [programu Visual Studio](https://visualstudio.microsoft.com/downloads/), upewnij się, że wybierz rozwiązanie projektu, a następnie naciśnij klawisz **F5** Aby uruchomić projekt.
 
 ## <a name="more-information"></a>Więcej informacji
 
@@ -210,16 +207,16 @@ myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (access
 > [!NOTE]
 > W tym przewodniku Szybki start są używane metody `loginRedirect` i `acquireTokenRedirect`, jeśli stosowana przeglądarka to program Internet Explorer, ze względu na [znany problem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) związany z obsługą okien wyskakujących przez przeglądarkę Internet Explorer.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać bardziej szczegółowe wskazówki krok po kroku dotyczące kompilowania aplikacji dla tego przewodnika Szybki start, wypróbuj poniższy samouczek dla języka JavaScript.
 
 ### <a name="learn-the-steps-to-create-the-application-for-this-quickstart"></a>Dowiedz się więcej na temat czynności tworzenia aplikacji użytej w tym przewodniku Szybki start
 
 > [!div class="nextstepaction"]
-> [Call Graph API tutorial (Samouczek dotyczący wywoływania interfejsu API programu Graph)](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [Samouczek logować się i wywołania MS Graph](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
 
 ### <a name="browse-the-msal-repo-for-documentation-faq-issues-and-more"></a>Przejrzyj repozytorium biblioteki MSAL, aby znaleźć dokumentację, odpowiedzi na często zadawane pytania, opis problemów i inne informacje
 
 > [!div class="nextstepaction"]
-> [Repozytorium msal.js usługi GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [Repozytorium MSAL.js GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js)

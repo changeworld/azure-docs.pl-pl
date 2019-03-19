@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 14a9e369f3366fc103cde2f0faafb570de409de7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 9258b58783d4670620a251fef866211f7634480f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096728"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
 
@@ -391,6 +391,6 @@ Aby uzyskać więcej informacji na temat tworzenia funkcji platformy Azure w ję
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
 * [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
-- Lokalne programowanie i debugowanie za pomocą [programu Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md), i [Eclipse](functions-create-maven-eclipse.md). 
+* Lokalne programowanie i debugowanie za pomocą [programu Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md), i [Eclipse](functions-create-maven-eclipse.md). 
 * [Zdalne debugowanie środowiska Java w usłudze Azure Functions przy użyciu programu Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [Wtyczka maven plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) -Usprawnij Tworzenie funkcji przy użyciu `azure-functions:add` cel i przygotowywanie katalogu przemieszczania dla [wdrażanie plików ZIP](deployment-zip-push.md).

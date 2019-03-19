@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f2bd1d863a7900b50712eb23c1088c6b271befa3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 777bf38fbc8a90335af79bbd0fb2ce74310bd991
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755900"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006799"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacji rozproszonych
 
@@ -42,13 +42,13 @@ Po kliknięciu przycisku "Aktualizuj składniki mapy", mapy zostaną odświeżon
 
 Jeśli wszystkie składniki są ról w ramach pojedynczego zasobu usługi Application Insights, ten krok odnajdowania nie jest wymagane. Ładowania początkowego dla takich aplikacji będzie miał wszystkie jego składniki.
 
-![Zrzut ekranu z mapy aplikacji](media/app-map/001.png)
+![Zrzut ekranu z mapy aplikacji](media/app-map/app-map-001.png)
 
 Jednym z celów klucza z tego środowiska jest możliwe do wizualizacji złożonych topologii z setkami składników.
 
 Kliknij dowolny składnik, aby zobaczyć powiązane szczegółowe informacje, a następnie przejdź do wydajności i dokładniejszej klasyfikacji błędów danego składnika.
 
-![Okno wysuwane](media/app-map/application-map-001.png)
+![Okno wysuwane](media/app-map/application-map-002.png)
 
 ### <a name="investigate-failures"></a>Zbadaj błędy
 

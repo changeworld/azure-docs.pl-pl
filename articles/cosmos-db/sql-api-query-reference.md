@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: b7e9a46caf39d736fd7fdc5b3742a47c2bab51fd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e49b521f625dee8c48c448065096ed027cf6c9b2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876419"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090036"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Dokumentacja języka SQL dla usługi Azure Cosmos DB 
 
@@ -218,11 +218,11 @@ Sprzężenia wewnętrzne spowodować pełny iloczyn wektorowy zestawy uczestnicz
   
 Ocena sprzężenia zależy od zakresu kontekstu uczestniczących w programie zestawów:  
   
--  Sprzężenia między kontenera — zestawu A i należące do kontenera zestawu B, wyniki w produkcie między wszystkie elementy w zestawach, A i B.
+- Sprzężenia między kontenera — zestawu A i należące do kontenera zestawu B, wyniki w produkcie między wszystkie elementy w zestawach, A i B.
   
--   Sprzężenie zestaw A i zakresu w dokumencie zestawu B, wynikiem sumę wszystkich zestawów uzyskane poprzez ocenę zakresu w dokumencie zestawu B dla każdego dokumentu z zestawu A.  
+- Sprzężenie zestaw A i zakresu w dokumencie zestawu B, wynikiem sumę wszystkich zestawów uzyskane poprzez ocenę zakresu w dokumencie zestawu B dla każdego dokumentu z zestawu A.  
   
- W bieżącej wersji więcej niż jedno wyrażenie zakresu kontenera jest obsługiwana przez procesor zapytań.  
+  W bieżącej wersji więcej niż jedno wyrażenie zakresu kontenera jest obsługiwana przez procesor zapytań.  
   
 ### <a name="examples-of-joins"></a>Przykłady połączeń  
   
@@ -321,17 +321,17 @@ WHERE <filter_condition>
   
  **Argumenty**  
   
--   `<filter_condition>`  
+- `<filter_condition>`  
   
-     Określa warunek do spełnienia dokumentów, które mają zostać zwrócone.  
+   Określa warunek do spełnienia dokumentów, które mają zostać zwrócone.  
   
--   `<scalar_expression>`  
+- `<scalar_expression>`  
   
-     Wyrażenie reprezentujące wartość ma zostać obliczony. Zobacz [wyrażenia skalarne](#bk_scalar_expressions) sekcji, aby uzyskać szczegółowe informacje.  
+   Wyrażenie reprezentujące wartość ma zostać obliczony. Zobacz [wyrażenia skalarne](#bk_scalar_expressions) sekcji, aby uzyskać szczegółowe informacje.  
   
- **Uwagi**  
+  **Uwagi**  
   
- W kolejności dokumentu, które mają zostać zwrócone wyrażenie określone jako filtr warunek musi zwrócić wartość true. Tylko wartość logiczną PRAWDA będzie spełniać warunek jakakolwiek inna wartość: Niezdefiniowany, null, wartość false, liczby, tablicy lub obiektu nie spełnia warunku.  
+  W kolejności dokumentu, które mają zostać zwrócone wyrażenie określone jako filtr warunek musi zwrócić wartość true. Tylko wartość logiczną PRAWDA będzie spełniać warunek jakakolwiek inna wartość: Niezdefiniowany, null, wartość false, liczby, tablicy lub obiektu nie spełnia warunku.  
   
 ##  <a name="bk_orderby_clause"></a> Klauzula ORDER BY  
  Określa kolejność sortowania wyników zwróconych przez zapytanie. Aby uzyskać przykłady, zobacz [ORDER BY przykłady klauzuli](how-to-sql-query.md#OrderByClause)
@@ -347,29 +347,29 @@ ORDER BY <sort_specification>
   
  **Argumenty**  
   
--   `<sort_specification>`  
+- `<sort_specification>`  
   
-     Określa właściwość lub wyrażenie do sortowania zestawu wyników zapytania. Kolumna sortowania może być określona jako alias nazwy lub kolumny.  
+   Określa właściwość lub wyrażenie do sortowania zestawu wyników zapytania. Kolumna sortowania może być określona jako alias nazwy lub kolumny.  
   
-     Można określić wiele kolumn sortowania. Nazwy kolumn muszą być unikatowe. Kolejność sortowania kolumn w klauzuli ORDER BY określa organizacji zestawu posortowanego wyników. Oznacza to zestaw wyników jest posortowana według pierwszą właściwością, a następnie tego uporządkowana lista jest posortowana według właściwości drugiej i tak dalej.  
+   Można określić wiele kolumn sortowania. Nazwy kolumn muszą być unikatowe. Kolejność sortowania kolumn w klauzuli ORDER BY określa organizacji zestawu posortowanego wyników. Oznacza to zestaw wyników jest posortowana według pierwszą właściwością, a następnie tego uporządkowana lista jest posortowana według właściwości drugiej i tak dalej.  
   
-     Nazwy kolumn w klauzuli ORDER BY muszą odpowiadać kolumnę na liście wyboru lub kolumny zdefiniowane w tabeli określony w klauzuli FROM bez żadnych niejednoznaczności.  
+   Nazwy kolumn w klauzuli ORDER BY muszą odpowiadać kolumnę na liście wyboru lub kolumny zdefiniowane w tabeli określony w klauzuli FROM bez żadnych niejednoznaczności.  
   
--   `<sort_expression>`  
+- `<sort_expression>`  
   
-     Określa jedną właściwość lub wyrażenie do sortowania zestawu wyników zapytania.  
+   Określa jedną właściwość lub wyrażenie do sortowania zestawu wyników zapytania.  
   
--   `<scalar_expression>`  
+- `<scalar_expression>`  
   
-     Zobacz [wyrażenia skalarne](#bk_scalar_expressions) sekcji, aby uzyskać szczegółowe informacje.  
+   Zobacz [wyrażenia skalarne](#bk_scalar_expressions) sekcji, aby uzyskać szczegółowe informacje.  
   
--   `ASC | DESC`  
+- `ASC | DESC`  
   
-     Określa, że wartości w określonej kolumnie powinny być sortowane w kolejności rosnącej lub malejącej. ASC sortuje od najniższej do najwyższej wartości. DESC sortuje od najwyższej do najniższej wartości. ASC jest domyślny porządek sortowania. Wartości null są traktowane jako najniższe możliwe wartości.  
+   Określa, że wartości w określonej kolumnie powinny być sortowane w kolejności rosnącej lub malejącej. ASC sortuje od najniższej do najwyższej wartości. DESC sortuje od najwyższej do najniższej wartości. ASC jest domyślny porządek sortowania. Wartości null są traktowane jako najniższe możliwe wartości.  
   
- **Uwagi**  
+  **Uwagi**  
   
- Gramatyki zapytań obsługuje wiele kolejność według właściwości, w czasie wykonywania zapytania usługi Cosmos DB obsługuje sortowanie wyłącznie w odniesieniu do jednej właściwości i wyłącznie w odniesieniu do nazw właściwości (nie względem obliczone właściwości). Sortowanie wymaga również, że zasady indeksowania zawiera indeks zakresu dla właściwości i określonego typu, z maksymalną dokładnością. Zajrzyj do dokumentacji zasad indeksowania, aby uzyskać więcej informacji.  
+  Gramatyki zapytań obsługuje wiele kolejność według właściwości, w czasie wykonywania zapytania usługi Cosmos DB obsługuje sortowanie wyłącznie w odniesieniu do jednej właściwości i wyłącznie w odniesieniu do nazw właściwości (nie względem obliczone właściwości). Sortowanie wymaga również, że zasady indeksowania zawiera indeks zakresu dla właściwości i określonego typu, z maksymalną dokładnością. Zajrzyj do dokumentacji zasad indeksowania, aby uzyskać więcej informacji.  
   
 ##  <a name="bk_scalar_expressions"></a> Wyrażenia skalarne  
  Wyrażenie skalarne, które jest kombinacją symboli i operatorów, które mogą być obliczane w celu uzyskania pojedynczej wartości. Proste wyrażenia może być stałe, odwołania do właściwości, odwołania do elementu tablicy, odwołania do aliasu lub wywołania funkcji. Proste wyrażenia można łączyć w złożonych wyrażeń przy użyciu operatorów. Aby uzyskać przykłady, zobacz [przykłady wyrażenia skalarne](how-to-sql-query.md#scalar-expressions)
@@ -407,62 +407,62 @@ ORDER BY <sort_specification>
   
  **Argumenty**  
   
--   `<constant>`  
+- `<constant>`  
   
-     Reprezentuje wartość stałą. Zobacz [stałe](#bk_constants) sekcji, aby uzyskać szczegółowe informacje.  
+   Reprezentuje wartość stałą. Zobacz [stałe](#bk_constants) sekcji, aby uzyskać szczegółowe informacje.  
   
--   `input_alias`  
+- `input_alias`  
   
-     Reprezentuje wartość zdefiniowana przez `input_alias` wprowadzona w `FROM` klauzuli.  
-    Ta wartość może nie być **niezdefiniowane** —**niezdefiniowane** wartości w danych wejściowych są pomijane.  
+   Reprezentuje wartość zdefiniowana przez `input_alias` wprowadzona w `FROM` klauzuli.  
+  Ta wartość może nie być **niezdefiniowane** —**niezdefiniowane** wartości w danych wejściowych są pomijane.  
   
--   `<scalar_expression>.property_name`  
+- `<scalar_expression>.property_name`  
   
-     Reprezentuje wartość właściwości obiektu. Jeśli właściwość nie istnieje lub odwołuje się do właściwości na wartość, która nie jest obiektem, a następnie wyrażenie ma **niezdefiniowane** wartość.  
+   Reprezentuje wartość właściwości obiektu. Jeśli właściwość nie istnieje lub odwołuje się do właściwości na wartość, która nie jest obiektem, a następnie wyrażenie ma **niezdefiniowane** wartość.  
   
--   `<scalar_expression>'['"property_name"|array_index']'`  
+- `<scalar_expression>'['"property_name"|array_index']'`  
   
-     Reprezentuje wartość właściwości o nazwie `property_name` lub elementu tablicy za pomocą indeksu `array_index` obiektu/tablicy. Jeśli indeks tablicy właściwości/nie istnieje, lub odwołanie do indeksu tablicy/właściwości na wartość, która nie jest/Tablica obiektów, a następnie wyrażenie ma wartość niezdefiniowaną wartość.  
+   Reprezentuje wartość właściwości o nazwie `property_name` lub elementu tablicy za pomocą indeksu `array_index` obiektu/tablicy. Jeśli indeks tablicy właściwości/nie istnieje, lub odwołanie do indeksu tablicy/właściwości na wartość, która nie jest/Tablica obiektów, a następnie wyrażenie ma wartość niezdefiniowaną wartość.  
   
--   `unary_operator <scalar_expression>`  
+- `unary_operator <scalar_expression>`  
   
-     Reprezentuje operatora, który jest stosowany do pojedynczej wartości. Zobacz [operatory](#bk_operators) sekcji, aby uzyskać szczegółowe informacje.  
+   Reprezentuje operatora, który jest stosowany do pojedynczej wartości. Zobacz [operatory](#bk_operators) sekcji, aby uzyskać szczegółowe informacje.  
   
--   `<scalar_expression> binary_operator <scalar_expression>`  
+- `<scalar_expression> binary_operator <scalar_expression>`  
   
-     Reprezentuje operatora, który jest stosowany do dwóch wartości. Zobacz [operatory](#bk_operators) sekcji, aby uzyskać szczegółowe informacje.  
+   Reprezentuje operatora, który jest stosowany do dwóch wartości. Zobacz [operatory](#bk_operators) sekcji, aby uzyskać szczegółowe informacje.  
   
--   `<scalar_function_expression>`  
+- `<scalar_function_expression>`  
   
-     Reprezentuje wartość zdefiniowana przez wynik wywołania funkcji.  
+   Reprezentuje wartość zdefiniowana przez wynik wywołania funkcji.  
   
--   `udf_scalar_function`  
+- `udf_scalar_function`  
   
-     Nazwa funkcji skalarnej zdefiniowanej przez użytkownika.  
+   Nazwa funkcji skalarnej zdefiniowanej przez użytkownika.  
   
--   `builtin_scalar_function`  
+- `builtin_scalar_function`  
   
-     Nazwa wbudowanej funkcji skalarnej.  
+   Nazwa wbudowanej funkcji skalarnej.  
   
--   `<create_object_expression>`  
+- `<create_object_expression>`  
   
-     Reprezentuje wartość uzyskaną przez utworzenie nowego obiektu przy użyciu określonych właściwości i ich wartości.  
+   Reprezentuje wartość uzyskaną przez utworzenie nowego obiektu przy użyciu określonych właściwości i ich wartości.  
   
--   `<create_array_expression>`  
+- `<create_array_expression>`  
   
-     Reprezentuje wartość uzyskać, tworząc nową tablicę z określonymi wartościami jako elementy  
+   Reprezentuje wartość uzyskać, tworząc nową tablicę z określonymi wartościami jako elementy  
   
--   `parameter_name`  
+- `parameter_name`  
   
-     Reprezentuje wartość określona nazwa parametru. Nazwy parametrów muszą mieć pojedynczy \@ jako pierwszego znaku.  
+   Reprezentuje wartość określona nazwa parametru. Nazwy parametrów muszą mieć pojedynczy \@ jako pierwszego znaku.  
   
- **Uwagi**  
+  **Uwagi**  
   
- Podczas wywoływania funkcji skalarnej wbudowany lub zdefiniowany przez użytkownika muszą być zdefiniowane wszystkie argumenty. Jeśli którykolwiek z argumentów jest niezdefiniowana, nie zostanie wywołana funkcja, a wynik jest niezdefiniowany.  
+  Podczas wywoływania funkcji skalarnej wbudowany lub zdefiniowany przez użytkownika muszą być zdefiniowane wszystkie argumenty. Jeśli którykolwiek z argumentów jest niezdefiniowana, nie zostanie wywołana funkcja, a wynik jest niezdefiniowany.  
   
- Podczas tworzenia obiektu, dowolnej właściwości, która jest przypisana wartość niezdefiniowana zostanie pominięty i nie są objęte utworzony obiekt.  
+  Podczas tworzenia obiektu, dowolnej właściwości, która jest przypisana wartość niezdefiniowana zostanie pominięty i nie są objęte utworzony obiekt.  
   
- Podczas tworzenia tablicy, każda wartość elementu, który jest przypisany **niezdefiniowane** wartość zostanie pominięty i nie są objęte utworzony obiekt. To spowoduje, że następny element zdefiniowany do jego miejsce w taki sposób, że utworzona tablica nie zostaną pominięte indeksów.  
+  Podczas tworzenia tablicy, każda wartość elementu, który jest przypisany **niezdefiniowane** wartość zostanie pominięty i nie są objęte utworzony obiekt. To spowoduje, że następny element zdefiniowany do jego miejsce w taki sposób, że utworzona tablica nie zostaną pominięte indeksów.  
   
 ##  <a name="bk_operators"></a> Operatory  
  W tej sekcji opisano obsługiwane operatory. Każdy operator można przypisać do dokładnie jednej kategorii.  
@@ -498,9 +498,11 @@ ORDER BY <sort_specification>
 |**Ciąg**|**&#124;&#124;**|Łączenie. Zwraca połączenie obu argumentów.|  
   
  **Operatory trzyargumentowe:**  
-  
-|Operator trójargumentowy|?|Zwraca wartość drugiego argumentu, jeśli pierwszy argument daje w wyniku **true**; w przeciwnym razie zwraca wartość trzeciego argumentu.|  
+
+|**Nazwa**|**Operator**|**Szczegóły**| 
 |-|-|-|  
+|Operator trójargumentowy|?|Zwraca wartość drugiego argumentu, jeśli pierwszy argument daje w wyniku **true**; w przeciwnym razie zwraca wartość trzeciego argumentu.|  
+
   
  **Kolejność wartości do porównania**  
   
@@ -614,7 +616,7 @@ ORDER BY <sort_specification>
   
   Literały ciągów są reprezentowane przez Sekwencja zero lub więcej znaków Unicode lub sekwencji unikowych ciągów znaków Unicode. Literały ciągu są ujmowane w cudzysłów pojedynczy (apostrof: ") lub podwójny cudzysłów (cudzysłów:").  
   
- Poniższe sekwencje ucieczki są dozwolone:  
+  Poniższe sekwencje ucieczki są dozwolone:  
   
 |**Sekwencja unikowa**|**Opis**|**Znak Unicode**|  
 |-|-|-|  
@@ -634,17 +636,17 @@ ORDER BY <sort_specification>
   
  Poniższe filtry zostaną uwzględnione podczas wyszukiwania indeksu:  
   
--   Za pomocą operatora równości (=) wyrażenie ścieżki dokumentu i stałą.  
+- Za pomocą operatora równości (=) wyrażenie ścieżki dokumentu i stałą.  
   
--   Operatory zakresu (<, \<=, >, > =) przy użyciu wyrażenie ścieżki dokumentu a number — stałe.  
+- Operatory zakresu (<, \<=, >, > =) przy użyciu wyrażenie ścieżki dokumentu a number — stałe.  
   
--   Wyrażenie ścieżki dokumentu oznacza dowolne wyrażenie, które identyfikuje ścieżkę stałej w dokumentach z kontenera, w której istnieje odwołanie.  
+- Wyrażenie ścieżki dokumentu oznacza dowolne wyrażenie, które identyfikuje ścieżkę stałej w dokumentach z kontenera, w której istnieje odwołanie.  
   
- **Wyrażenie ścieżki dokumentu**  
+  **Wyrażenie ścieżki dokumentu**  
   
- Wyrażenia ścieżka dokumentu są wyrażeniami, ścieżkę właściwości lub tablicy oceniających indeksatora za pośrednictwem dokumentu pochodzące z bazy danych dokumentów kontenerów. Ta ścieżka może służyć do identyfikowania lokalizacji wartości filtru bezpośrednio z poziomu dokumenty w kontenerze bazy danych.  
+  Wyrażenia ścieżka dokumentu są wyrażeniami, ścieżkę właściwości lub tablicy oceniających indeksatora za pośrednictwem dokumentu pochodzące z bazy danych dokumentów kontenerów. Ta ścieżka może służyć do identyfikowania lokalizacji wartości filtru bezpośrednio z poziomu dokumenty w kontenerze bazy danych.  
   
- Wyrażenie wziąć pod uwagę wyrażenie ścieżki dokumentu należy:  
+  Wyrażenie wziąć pod uwagę wyrażenie ścieżki dokumentu należy:  
   
 1.  Odwołanie do głównego kontenerów bezpośrednio.  
   
@@ -707,17 +709,17 @@ ABS (<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje wyniki za pomocą funkcji ABS na trzech różnych liczb.  
+  Poniższy przykład pokazuje wyniki za pomocą funkcji ABS na trzech różnych liczb.  
   
 ```  
 SELECT ABS(-1), ABS(0), ABS(1)  
@@ -740,17 +742,17 @@ ACOS(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca ACOS-1.  
+  Poniższy przykład zwraca ACOS-1.  
   
 ```  
 SELECT ACOS(-1)  
@@ -773,17 +775,17 @@ ASIN(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca ASIN-1.  
+  Poniższy przykład zwraca ASIN-1.  
   
 ```  
 SELECT ASIN(-1)  
@@ -806,17 +808,17 @@ ATAN(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca ATAN od określonej wartości.  
+  Poniższy przykład zwraca ATAN od określonej wartości.  
   
 ```  
 SELECT ATAN(-45.01)  
@@ -839,17 +841,17 @@ ATN2(<numeric_expression>, <numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- W poniższym przykładzie obliczany ATN2 dla określonego x i y składników.  
+  W poniższym przykładzie obliczany ATN2 dla określonego x i y składników.  
   
 ```  
 SELECT ATN2(35.175643, 129.44)  
@@ -872,17 +874,17 @@ CEILING (<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, liczbowych dodatnia, ujemna i wartości zerowych za pomocą funkcji CEILING.  
+  Poniższy przykład pokazuje, liczbowych dodatnia, ujemna i wartości zerowych za pomocą funkcji CEILING.  
   
 ```  
 SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)  
@@ -905,17 +907,17 @@ COS(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- W poniższym przykładzie obliczany COS podanemu kątowi.  
+  W poniższym przykładzie obliczany COS podanemu kątowi.  
   
 ```  
 SELECT COS(14.78)  
@@ -938,17 +940,17 @@ COT(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- W poniższym przykładzie obliczany COT podanemu kątowi.  
+  W poniższym przykładzie obliczany COT podanemu kątowi.  
   
 ```  
 SELECT COT(124.1332)  
@@ -971,17 +973,17 @@ DEGREES (<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca liczbę stopni w pod kątem PI/2 radianów.  
+  Poniższy przykład zwraca liczbę stopni w pod kątem PI/2 radianów.  
   
 ```  
 SELECT DEGREES(PI()/2)  
@@ -1004,17 +1006,17 @@ FLOOR (<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, liczbowych dodatnia, ujemna i wartości zerowe za pomocą funkcji FLOOR.  
+  Poniższy przykład pokazuje, liczbowych dodatnia, ujemna i wartości zerowe za pomocą funkcji FLOOR.  
   
 ```  
 SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR(0.0)  
@@ -1037,25 +1039,25 @@ EXP (<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Uwagi**  
+  **Uwagi**  
   
- Stała **e** (2.718281...), jest podstawą logarytmy naturalne.  
+  Stała **e** (2.718281...), jest podstawą logarytmy naturalne.  
   
- Wykładnik potęgi liczby jest stałą **e** podniesioną do potęgi liczby. Na przykład EXP(1.0) = e ^ 1.0 = 2.71828182845905 i EXP(10) = e ^ 10 = 22026.4657948067.  
+  Wykładnik potęgi liczby jest stałą **e** podniesioną do potęgi liczby. Na przykład EXP(1.0) = e ^ 1.0 = 2.71828182845905 i EXP(10) = e ^ 10 = 22026.4657948067.  
   
- Jest to liczba wykładniczą logarytm naturalny liczby sam: EXP (dziennik (n)) = n. A logarytm naturalny wykładniczą liczby jest liczbą sam: Dziennik (EXP (n)) = n.  
+  Jest to liczba wykładniczą logarytm naturalny liczby sam: EXP (dziennik (n)) = n. A logarytm naturalny wykładniczą liczby jest liczbą sam: Dziennik (EXP (n)) = n.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład deklaruje zmienną i zwraca wartość określonej zmiennej (10).  
+  Poniższy przykład deklaruje zmienną i zwraca wartość określonej zmiennej (10).  
   
 ```  
 SELECT EXP(10)  
@@ -1090,29 +1092,29 @@ LOG (<numeric_expression> [, <base>])
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
--   `base`  
+- `base`  
   
-     Opcjonalny argument liczbowy, który ustawia podstawa logarytmu.  
+   Opcjonalny argument liczbowy, który ustawia podstawa logarytmu.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Uwagi**  
+  **Uwagi**  
   
- Domyślnie LOG() Zwraca logarytm naturalny. Podstawa logarytmu można zmienić z inną wartością za pomocą opcjonalnego parametru podstawowej.  
+  Domyślnie LOG() Zwraca logarytm naturalny. Podstawa logarytmu można zmienić z inną wartością za pomocą opcjonalnego parametru podstawowej.  
   
- Logarytm naturalny to logarytm o podstawie **e**, gdzie **e** jest stałą nieracjonalnej w przybliżeniu równa 2.718281828.  
+  Logarytm naturalny to logarytm o podstawie **e**, gdzie **e** jest stałą nieracjonalnej w przybliżeniu równa 2.718281828.  
   
- Logarytm naturalny wykładniczą liczby jest to liczba sam: Dziennik (EXP (n)) = n. I wykładniczą logarytm naturalny liczby jest to liczba sam: EXP (dziennik (n)) = n.  
+  Logarytm naturalny wykładniczą liczby jest to liczba sam: Dziennik (EXP (n)) = n. I wykładniczą logarytm naturalny liczby jest to liczba sam: EXP (dziennik (n)) = n.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład deklaruje zmienną i zwraca wartość logarytmu określonej zmiennej (10).  
+  Poniższy przykład deklaruje zmienną i zwraca wartość logarytmu określonej zmiennej (10).  
   
 ```  
 SELECT LOG(10)  
@@ -1147,21 +1149,21 @@ LOG10 (<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Uwagi**  
+  **Uwagi**  
   
- LOG10 i możliwości funkcji odwrotnie są powiązane ze sobą. Na przykład 10 ^ LOG10(n) = n.  
+  LOG10 i możliwości funkcji odwrotnie są powiązane ze sobą. Na przykład 10 ^ LOG10(n) = n.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład deklaruje zmienną i zwraca wartość LOG10 określonej zmiennej (100).  
+  Poniższy przykład deklaruje zmienną i zwraca wartość LOG10 określonej zmiennej (100).  
   
 ```  
 SELECT LOG10(100)  
@@ -1184,17 +1186,17 @@ PI ()
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca wartość liczby PI.  
+  Poniższy przykład zwraca wartość liczby PI.  
   
 ```  
 SELECT PI()  
@@ -1217,21 +1219,21 @@ POWER (<numeric_expression>, <y>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
--   `y`  
+- `y`  
   
-     Jest to prawo do którego zostanie wywołane `numeric_expression`.  
+   Jest to prawo do którego zostanie wywołane `numeric_expression`.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- W poniższym przykładzie pokazano, zwiększenie liczby do potęgi 3 (moduł liczba).  
+  W poniższym przykładzie pokazano, zwiększenie liczby do potęgi 3 (moduł liczba).  
   
 ```  
 SELECT POWER(2, 3), POWER(2.5, 3)  
@@ -1254,17 +1256,17 @@ RADIANS (<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład przyjmuje kilka kąty jako dane wejściowe i zwraca ich odpowiednie wartości w radianach.  
+  Poniższy przykład przyjmuje kilka kąty jako dane wejściowe i zwraca ich odpowiednie wartości w radianach.  
   
 ```  
 SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIANS(197.1099392)  
@@ -1293,17 +1295,17 @@ ROUND(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zaokrągla liczby dodatnie i ujemne następujące do najbliższej liczby całkowitej.  
+  Poniższy przykład zaokrągla liczby dodatnie i ujemne następujące do najbliższej liczby całkowitej.  
   
 ```  
 SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)  
@@ -1326,17 +1328,17 @@ SIGN(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca wartości znak cyfry od -2 z 2.  
+  Poniższy przykład zwraca wartości znak cyfry od -2 z 2.  
   
 ```  
 SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)  
@@ -1359,17 +1361,17 @@ SIN(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- W poniższym przykładzie oblicza SINUS określonego kąta.  
+  W poniższym przykładzie oblicza SINUS określonego kąta.  
   
 ```  
 SELECT SIN(45.175643)  
@@ -1392,17 +1394,17 @@ SQRT(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca pierwiastki kwadratowe liczb od 1 do 3.  
+  Poniższy przykład zwraca pierwiastki kwadratowe liczb od 1 do 3.  
   
 ```  
 SELECT SQRT(1), SQRT(2.0), SQRT(3)  
@@ -1425,17 +1427,17 @@ SQUARE(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca kwadratów liczb od 1 do 3.  
+  Poniższy przykład zwraca kwadratów liczb od 1 do 3.  
   
 ```  
 SELECT SQUARE(1), SQUARE(2.0), SQUARE(3)  
@@ -1458,17 +1460,17 @@ TAN (<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- W poniższym przykładzie oblicza tangens liczby PI () / 2.  
+  W poniższym przykładzie oblicza tangens liczby PI () / 2.  
   
 ```  
 SELECT TAN(PI()/2);  
@@ -1491,17 +1493,17 @@ TRUNC(<numeric_expression>)
   
  **Argumenty**  
   
--   `numeric_expression`  
+- `numeric_expression`  
   
-     To wyrażenie liczbowe.  
+   To wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład obcina następujących numerów dodatnie i ujemne do najbliższej wartości całkowitej.  
+  Poniższy przykład obcina następujących numerów dodatnie i ujemne do najbliższej wartości całkowitej.  
   
 ```  
 SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)  
@@ -1533,17 +1535,17 @@ IS_ARRAY(<expression>)
   
  **Argumenty**  
   
--   `expression`  
+- `expression`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_ARRAY.  
+  Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_ARRAY.  
   
 ```  
 SELECT   
@@ -1573,17 +1575,17 @@ IS_BOOL(<expression>)
   
  **Argumenty**  
   
--   `expression`  
+- `expression`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_BOOL.  
+  Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_BOOL.  
   
 ```  
 SELECT   
@@ -1613,17 +1615,17 @@ IS_DEFINED(<expression>)
   
  **Argumenty**  
   
--   `expression`  
+- `expression`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza obecność właściwość w ramach określonego dokumentu JSON. Pierwsza zwraca wartość true, ponieważ "a" jest obecny, ale druga zwraca wartość false, ponieważ nie istnieje "b".  
+  Poniższy przykład sprawdza obecność właściwość w ramach określonego dokumentu JSON. Pierwsza zwraca wartość true, ponieważ "a" jest obecny, ale druga zwraca wartość false, ponieważ nie istnieje "b".  
   
 ```  
 SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)  
@@ -1649,17 +1651,17 @@ IS_NULL(<expression>)
   
  **Argumenty**  
   
--   `expression`  
+- `expression`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_NULL.  
+  Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_NULL.  
   
 ```  
 SELECT   
@@ -1689,17 +1691,17 @@ IS_NUMBER(<expression>)
   
  **Argumenty**  
   
--   `expression`  
+- `expression`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_NULL.  
+  Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_NULL.  
   
 ```  
 SELECT   
@@ -1729,17 +1731,17 @@ IS_OBJECT(<expression>)
   
  **Argumenty**  
   
--   `expression`  
+- `expression`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji is_object —.  
+  Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji is_object —.  
   
 ```  
 SELECT   
@@ -1769,17 +1771,17 @@ IS_PRIMITIVE(<expression>)
   
  **Argumenty**  
   
--   `expression`  
+- `expression`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_PRIMITIVE.  
+  Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_PRIMITIVE.  
   
 ```  
 SELECT   
@@ -1809,17 +1811,17 @@ IS_STRING(<expression>)
   
  **Argumenty**  
   
--   `expression`  
+- `expression`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_STRING.  
+  Poniższy przykład sprawdza obiektów JSON logiczna, liczba, ciąg, wartość null, obiekt, tablica i niezdefiniowane typów, przy użyciu funkcji IS_STRING.  
   
 ```  
 SELECT   
@@ -1850,7 +1852,7 @@ SELECT
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
 |[StringToBoolean](#bk_stringtoboolean)|[StringToNull](#bk_stringtonull)|[StringToNumber](#bk_stringtonumber)|
 |[StringToObject](#bk_stringtoobject)|[PODCIĄG](#bk_substring)|[ToString](#bk_tostring)|
-|[TRIM](#bk_trim)|[GÓRNY](#bk_upper)||| 
+|[TRIM](#bk_trim)|[GÓRNY](#bk_upper)||
   
 ####  <a name="bk_concat"></a> CONCAT  
  Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu.  
@@ -1863,17 +1865,17 @@ CONCAT(<str_expr>, <str_expr> [, <str_expr>])
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca połączony ciąg z określonymi wartościami.  
+  Poniższy przykład zwraca połączony ciąg z określonymi wartościami.  
   
 ```  
 SELECT CONCAT("abc", "def")  
@@ -1896,17 +1898,17 @@ CONTAINS(<str_expr>, <str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza, czy "abc" zawiera "ab" i zawiera "d".  
+  Poniższy przykład sprawdza, czy "abc" zawiera "ab" i zawiera "d".  
   
 ```  
 SELECT CONTAINS("abc", "ab"), CONTAINS("abc", "d")  
@@ -1929,17 +1931,17 @@ ENDSWITH(<str_expr>, <str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca "abc" kończy się ciągiem "b" i "bc".  
+  Poniższy przykład zwraca "abc" kończy się ciągiem "b" i "bc".  
   
 ```  
 SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")  
@@ -1962,17 +1964,17 @@ INDEX_OF(<str_expr>, <str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca indeks różnych podciągów wewnątrz "abc".  
+  Poniższy przykład zwraca indeks różnych podciągów wewnątrz "abc".  
   
 ```  
 SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")  
@@ -1995,21 +1997,21 @@ LEFT(<str_expr>, <num_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Jest dowolne prawidłowe wyrażenie liczbowe.  
+   Jest dowolne prawidłowe wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca lewej części "abc" dla różnych wartości długości.  
+  Poniższy przykład zwraca lewej części "abc" dla różnych wartości długości.  
   
 ```  
 SELECT LEFT("abc", 1), LEFT("abc", 2)  
@@ -2032,17 +2034,17 @@ LENGTH(<str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca długość ciągu.  
+  Poniższy przykład zwraca długość ciągu.  
   
 ```  
 SELECT LENGTH("abc")  
@@ -2065,17 +2067,17 @@ LOWER(<str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak używać NIŻSZYCH w zapytaniu.  
+  Poniższy przykład pokazuje, jak używać NIŻSZYCH w zapytaniu.  
   
 ```  
 SELECT LOWER("Abc")  
@@ -2099,17 +2101,17 @@ LTRIM(<str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak używać LTRIM w zapytaniu.  
+  Poniższy przykład pokazuje, jak używać LTRIM w zapytaniu.  
   
 ```  
 SELECT LTRIM("  abc"), LTRIM("abc"), LTRIM("abc   ")  
@@ -2132,17 +2134,17 @@ REPLACE(<str_expr>, <str_expr>, <str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład przedstawia sposób użycia ZAMIEŃ w zapytaniu.  
+  Poniższy przykład przedstawia sposób użycia ZAMIEŃ w zapytaniu.  
   
 ```  
 SELECT REPLACE("This is a Test", "Test", "desk")  
@@ -2165,24 +2167,24 @@ REPLICATE(<str_expr>, <num_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Jest dowolne prawidłowe wyrażenie liczbowe. W przypadku ujemny lub nieskończona num_expr wynik jest niezdefiniowany.
+   Jest dowolne prawidłowe wyrażenie liczbowe. W przypadku ujemny lub nieskończona num_expr wynik jest niezdefiniowany.
 
   > [!NOTE]
   > Maksymalna długość wyniku jest 10 000 znaków, czyli (length(str_expr) * num_expr) < = 10 000.
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład przedstawia sposób użycia replikacji w zapytaniu.  
+  Poniższy przykład przedstawia sposób użycia replikacji w zapytaniu.  
   
 ```  
 SELECT REPLICATE("a", 3)  
@@ -2205,17 +2207,17 @@ REVERSE(<str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład przedstawia sposób użycia w zapytaniu w odwrotnej kolejności.  
+  Poniższy przykład przedstawia sposób użycia w zapytaniu w odwrotnej kolejności.  
   
 ```  
 SELECT REVERSE("Abc")  
@@ -2238,21 +2240,21 @@ RIGHT(<str_expr>, <num_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Jest dowolne prawidłowe wyrażenie liczbowe.  
+   Jest dowolne prawidłowe wyrażenie liczbowe.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca jego prawej części "abc" dla różnych wartości długości.  
+  Poniższy przykład zwraca jego prawej części "abc" dla różnych wartości długości.  
   
 ```  
 SELECT RIGHT("abc", 1), RIGHT("abc", 2)  
@@ -2275,17 +2277,17 @@ RTRIM(<str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak używać RTRIM w zapytaniu.  
+  Poniższy przykład pokazuje, jak używać RTRIM w zapytaniu.  
   
 ```  
 SELECT RTRIM("  abc"), RTRIM("abc"), RTRIM("abc   ")  
@@ -2308,17 +2310,17 @@ STARTSWITH(<str_expr>, <str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sprawdza, jeśli ciąg "abc" rozpoczyna się znakiem "b" i "a".  
+  Poniższy przykład sprawdza, jeśli ciąg "abc" rozpoczyna się znakiem "b" i "a".  
   
 ```  
 SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")  
@@ -2341,17 +2343,17 @@ StringToArray(<expr>)
   
  **Argumenty**  
   
--   `expr`  
+- `expr`  
   
-     Jest dowolne prawidłowe wyrażenie tablicy JSON. Należy pamiętać, że wartości ciągu musi być napisana przy użyciu podwójnych cudzysłowów był prawidłowy. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)
+   Jest dowolne prawidłowe wyrażenie tablicy JSON. Należy pamiętać, że wartości ciągu musi być napisana przy użyciu podwójnych cudzysłowów był prawidłowy. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie tablicy lub jest niezdefiniowana.  
+  Zwraca wyrażenie tablicy lub jest niezdefiniowana.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak StringToArray zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToArray zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2385,17 +2387,17 @@ StringToBoolean(<expr>)
   
  **Argumenty**  
   
--   `expr`  
+- `expr`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia logicznego lub jest niezdefiniowana.  
+  Zwraca wartość wyrażenia logicznego lub jest niezdefiniowana.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak StringToBoolean zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToBoolean zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2428,17 +2430,17 @@ StringToNull(<expr>)
   
  **Argumenty**  
   
--   `expr`  
+- `expr`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie o wartości null lub jest niezdefiniowana.  
+  Zwraca wyrażenie o wartości null lub jest niezdefiniowana.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak StringToNull zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToNull zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2470,17 +2472,17 @@ StringToNumber(<expr>)
   
  **Argumenty**  
   
--   `expr`  
+- `expr`  
   
-     Jest dowolnym prawidłowym wyrażeniem liczby JSON. Liczby w formacie JSON musi być liczbą całkowitą lub zmiennoprzecinkowej. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)  
+   Jest dowolnym prawidłowym wyrażeniem liczby JSON. Liczby w formacie JSON musi być liczbą całkowitą lub zmiennoprzecinkowej. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie lub jest niezdefiniowana.  
+  Zwraca wyrażenie lub jest niezdefiniowana.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak StringToNumber zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToNumber zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2515,17 +2517,17 @@ StringToObject(<expr>)
   
  **Argumenty**  
   
--   `expr`  
+- `expr`  
   
-     Jest dowolne prawidłowe wyrażenie obiektu JSON. Należy pamiętać, że wartości ciągu musi być napisana przy użyciu podwójnych cudzysłowów był prawidłowy. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)  
+   Jest dowolne prawidłowe wyrażenie obiektu JSON. Należy pamiętać, że wartości ciągu musi być napisana przy użyciu podwójnych cudzysłowów był prawidłowy. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie obiektu lub jest niezdefiniowana.  
+  Zwraca wyrażenie obiektu lub jest niezdefiniowana.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak StringToObject zachowuje się na różnych urządzeniach. 
+  Poniższy przykład pokazuje, jak StringToObject zachowuje się na różnych urządzeniach. 
   
 ```  
 SELECT 
@@ -2559,21 +2561,21 @@ SUBSTRING(<str_expr>, <num_expr>, <num_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Jest dowolne prawidłowe wyrażenie liczbowe do oznaczania znakiem początkowym i końcowym.    
+   Jest dowolne prawidłowe wyrażenie liczbowe do oznaczania znakiem początkowym i końcowym.    
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład zwraca podciąg "abc", począwszy od stawki 1 i długości 1 znak.  
+  Poniższy przykład zwraca podciąg "abc", począwszy od stawki 1 i długości 1 znak.  
   
 ```  
 SELECT SUBSTRING("abc", 1, 1)  
@@ -2595,17 +2597,17 @@ ToString(<expr>)
   
  **Argumenty**  
   
--   `expr`  
+- `expr`  
   
-     Jest dowolne prawidłowe wyrażenie skalarne.  
+   Jest dowolne prawidłowe wyrażenie skalarne.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak ToString zachowuje się na różnych urządzeniach.   
+  Poniższy przykład pokazuje, jak ToString zachowuje się na różnych urządzeniach.   
   
 ```  
 SELECT ToString(1.0000), ToString("Hello World"), ToString(NaN), ToString(Infinity),
@@ -2670,17 +2672,17 @@ TRIM(<str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak używać TRIM w zapytaniu.  
+  Poniższy przykład pokazuje, jak używać TRIM w zapytaniu.  
   
 ```  
 SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")   
@@ -2702,17 +2704,17 @@ UPPER(<str_expr>)
   
  **Argumenty**  
   
--   `str_expr`  
+- `str_expr`  
   
-     Jest dowolnym wyrażeniem prawidłowy ciąg.  
+   Jest dowolnym wyrażeniem prawidłowy ciąg.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie ciągu.  
+  Zwraca wyrażenie ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład przedstawia sposób użycia w zapytaniu w prawym GÓRNYM  
+  Poniższy przykład przedstawia sposób użycia w zapytaniu w prawym GÓRNYM  
   
 ```  
 SELECT UPPER("Abc")  
@@ -2743,17 +2745,17 @@ ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])
   
  **Argumenty**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     Jest dowolnym wyrażeniem prawidłową tablicą.  
+   Jest dowolnym wyrażeniem prawidłową tablicą.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie tablicy.  
+  Zwraca wyrażenie tablicy.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sposobu łączenia dwóch tablic.  
+  Poniższy przykład sposobu łączenia dwóch tablic.  
   
 ```  
 SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])  
@@ -2776,25 +2778,25 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
  **Argumenty**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     Jest dowolnym wyrażeniem prawidłową tablicą.  
+   Jest dowolnym wyrażeniem prawidłową tablicą.  
   
--   `expr`  
+- `expr`  
   
-     Jest dowolnym prawidłowym wyrażeniem.  
+   Jest dowolnym prawidłowym wyrażeniem.  
 
--   `bool_expr`  
+- `bool_expr`  
   
-     Jest dowolne wyrażenie logiczne. Jeśli jest ustawiona "true'and, jeśli wartość wyszukiwania jest obiektem, polecenie sprawdza, czy dopasowanie częściowe (obiekt wyszukiwania jest jednym z obiektów podzbiór). Jeśli jest ustawiona na "false", polecenie sprawdza pełne dopasowanie wszystkich obiektów w tablicy. Wartość domyślna, jeśli nie zostanie określony, to false. 
+   Jest dowolne wyrażenie logiczne. Jeśli jest ustawiona "true'and, jeśli wartość wyszukiwania jest obiektem, polecenie sprawdza, czy dopasowanie częściowe (obiekt wyszukiwania jest jednym z obiektów podzbiór). Jeśli jest ustawiona na "false", polecenie sprawdza pełne dopasowanie wszystkich obiektów w tablicy. Wartość domyślna, jeśli nie zostanie określony, to false. 
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość typu Boolean.  
+  Zwraca wartość typu Boolean.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład jak sprawdzić, czy członkostwo w tablicy przy użyciu ARRAY_CONTAINS.  
+  Poniższy przykład jak sprawdzić, czy członkostwo w tablicy przy użyciu ARRAY_CONTAINS.  
   
 ```  
 SELECT   
@@ -2838,17 +2840,17 @@ ARRAY_LENGTH(<arr_expr>)
   
  **Argumenty**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     Jest dowolnym wyrażeniem prawidłową tablicą.  
+   Jest dowolnym wyrażeniem prawidłową tablicą.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wartość wyrażenia liczbowego.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sposobu uzyskania długości tablicy przy użyciu ARRAY_LENGTH.  
+  Poniższy przykład sposobu uzyskania długości tablicy przy użyciu ARRAY_LENGTH.  
   
 ```  
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])  
@@ -2871,25 +2873,25 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
  **Argumenty**  
   
--   `arr_expr`  
+- `arr_expr`  
   
-     Jest dowolnym wyrażeniem prawidłową tablicą.  
+   Jest dowolnym wyrażeniem prawidłową tablicą.  
   
--   `num_expr`  
+- `num_expr`  
   
-     Liczony od zera indeksu liczbowego od którego należy rozpocząć tablicy. Ujemne wartości mogą być używane, aby określić indeks początkowy względem ostatniego elementu odwołań do tablic tj -1 do ostatniego elementu w tablicy.  
+   Liczony od zera indeksu liczbowego od którego należy rozpocząć tablicy. Ujemne wartości mogą być używane, aby określić indeks początkowy względem ostatniego elementu odwołań do tablic tj -1 do ostatniego elementu w tablicy.  
 
--   `num_expr`  
+- `num_expr`  
 
-     Maksymalna liczba elementów w tablicy wynikowe.    
+   Maksymalna liczba elementów w tablicy wynikowe.    
 
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie tablicy.  
+  Zwraca wyrażenie tablicy.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak uzyskać różne wycinków tablicy przy użyciu ARRAY_SLICE.  
+  Poniższy przykład pokazuje, jak uzyskać różne wycinków tablicy przy użyciu ARRAY_SLICE.  
   
 ```  
 SELECT   
@@ -2920,10 +2922,10 @@ SELECT
 ###  <a name="bk_spatial_functions"></a> Funkcje przestrzenne  
  Następujące funkcje skalarne wykonania operacji na podstawie wartości wejściowe obiektu przestrzennego i zwracają wartość liczbowa lub Boolean.  
   
-||||  
-|-|-|-|  
-|[ST_DISTANCE](#bk_st_distance)|[ST_WITHIN](#bk_st_within)|[ST_INTERSECTS](#bk_st_intersects)|[ST_ISVALID](#bk_st_isvalid)|  
-|[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)|||  
+|||||
+|-|-|-|-|
+|[ST_DISTANCE](#bk_st_distance)|[ST_WITHIN](#bk_st_within)|[ST_INTERSECTS](#bk_st_intersects)|[ST_ISVALID](#bk_st_isvalid)|
+|[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)||||
   
 ####  <a name="bk_st_distance"></a> ST_DISTANCE  
  Zwraca odległość między dwoma wyrażeniami GeoJSON typu Point, Polygon lub LineString.  
@@ -2936,17 +2938,17 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **Argumenty**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
+   Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość wyrażenia liczbowego zawierający odległość. To wymaganie jest wyrażone w metrach dla systemu odniesienia domyślne.  
+  Zwraca wartość wyrażenia liczbowego zawierający odległość. To wymaganie jest wyrażone w metrach dla systemu odniesienia domyślne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak zwrócić wszystkie dokumenty rodziny, które znajdują się w 30 km określonej lokalizacji za pomocą wbudowanych funkcji ST_DISTANCE. .  
+  Poniższy przykład pokazuje, jak zwrócić wszystkie dokumenty rodziny, które znajdują się w 30 km określonej lokalizacji za pomocą wbudowanych funkcji ST_DISTANCE. .  
   
 ```  
 SELECT f.id   
@@ -2973,21 +2975,21 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
  **Argumenty**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
+   Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
  
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
+   Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość typu Boolean.  
+  Zwraca wartość typu Boolean.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak znaleźć wszystkie dokumenty rodziny Wielokąt przy użyciu ST_WITHIN.  
+  Poniższy przykład pokazuje, jak znaleźć wszystkie dokumenty rodziny Wielokąt przy użyciu ST_WITHIN.  
   
 ```  
 SELECT f.id   
@@ -3015,21 +3017,21 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
  **Argumenty**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
+   Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
  
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
+   Jest dowolne prawidłowe wyrażenie obiektu GeoJSON punkt, wielokąta lub LineString.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość typu Boolean.  
+  Zwraca wartość typu Boolean.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak można znaleźć wszystkich obszarów, które przecinają z danym wielokąta.  
+  Poniższy przykład pokazuje, jak można znaleźć wszystkich obszarów, które przecinają z danym wielokąta.  
   
 ```  
 SELECT a.id   
@@ -3057,21 +3059,21 @@ ST_ISVALID(<spatial_expr>)
   
  **Argumenty**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Jest dowolne prawidłowe wyrażenie GeoJSON punkt, wielokąta lub LineString.  
+   Jest dowolne prawidłowe wyrażenie GeoJSON punkt, wielokąta lub LineString.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wyrażenie logiczne.  
+  Zwraca wyrażenie logiczne.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład pokazuje, jak sprawdzić, czy punkt jest prawidłowy, za pomocą ST_VALID.  
+  Poniższy przykład pokazuje, jak sprawdzić, czy punkt jest prawidłowy, za pomocą ST_VALID.  
   
- Na przykład ten punkt ma wartość szerokości geograficznej, która nie jest prawidłowy zakres wartości [-90, 90], dlatego zwraca wartość false zapytania.  
+  Na przykład ten punkt ma wartość szerokości geograficznej, która nie jest prawidłowy zakres wartości [-90, 90], dlatego zwraca wartość false zapytania.  
   
- W przypadku wielokątów specyfikacją GeoJSON wymaga ostatnią parę współrzędnych podane powinna być taka sama jak pierwsza, aby utworzyć kształt zamknięty. Punkty, w ramach Wielokąt musi być określona w kolejności przeciwnie do ruchu wskazówek zegara. Wielokąt podane w kolejności do ruchu wskazówek zegara reprezentuje odwrotność region znajdujący się w nim.  
+  W przypadku wielokątów specyfikacją GeoJSON wymaga ostatnią parę współrzędnych podane powinna być taka sama jak pierwsza, aby utworzyć kształt zamknięty. Punkty, w ramach Wielokąt musi być określona w kolejności przeciwnie do ruchu wskazówek zegara. Wielokąt podane w kolejności do ruchu wskazówek zegara reprezentuje odwrotność region znajdujący się w nim.  
   
 ```  
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })  
@@ -3094,17 +3096,17 @@ ST_ISVALID(<spatial_expr>)
   
  **Argumenty**  
   
--   `spatial_expr`  
+- `spatial_expr`  
   
-     Jest dowolne GeoJSON prawidłowe wyrażenie punktów i wielokątów.  
+   Jest dowolne GeoJSON prawidłowe wyrażenie punktów i wielokątów.  
   
- **Typy zwracane**  
+  **Typy zwracane**  
   
- Zwraca wartość JSON, zawierająca wartość logiczną wartość, jeśli określone wyrażenie punktu lub Wielokąt GeoJSON jest prawidłowy, a nieprawidłowy, dodatkowo Przyczyna jako wartość ciągu.  
+  Zwraca wartość JSON, zawierająca wartość logiczną wartość, jeśli określone wyrażenie punktu lub Wielokąt GeoJSON jest prawidłowy, a nieprawidłowy, dodatkowo Przyczyna jako wartość ciągu.  
   
- **Przykłady**  
+  **Przykłady**  
   
- Poniższy przykład sposobu sprawdzania poprawności (ze szczegółowymi informacjami) przy użyciu ST_ISVALIDDETAILED.  
+  Poniższy przykład sposobu sprawdzania poprawności (ze szczegółowymi informacjami) przy użyciu ST_ISVALIDDETAILED.  
   
 ```  
 SELECT ST_ISVALIDDETAILED({   

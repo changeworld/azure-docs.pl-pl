@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 4a7da4a6e7b4b395063f7e4c9a3e97d610492ef6
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 222c2983d83fe2373159ea542260be7b5a8d8ce5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882675"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885185"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Rozpoczęcie pracy z przykładem kolekcji obszarów roboczych usługi Power BI
 
@@ -91,9 +91,9 @@ Po kliknięciu raportu, **EmbedSample** aplikacji sieci web powinien wyglądać 
 
 ![Przykładowy raport, wyświetlanie w aplikacji](media/get-started-sample/sample-web-app.png)
 
-## <a name="explore-the-sample-code"></a>Omówimy przykładowy kod
+## <a name="explore-the-sample-code"></a>Poznawanie przykładowego kodu
 
-**Kolekcji obszarów roboczych pakietu Microsoft Power BI** próbka jest przykładowa aplikacja sieci web, pokazujący, jak zintegrować **usługi Power BI** raporty w swojej aplikacji. Wzorzec projektowy Model-View-Controller (MVC) używa do zademonstrowania najlepszych rozwiązań. W tej sekcji przedstawiono przykładowy kod, który umożliwia zapoznanie się w części **osadzonych w usłudze Power BI** rozwiązania aplikacji w sieci web. Wzorzec Model-View-Controller (MVC) oddziela modelowanie domeny, prezentacji i akcji, w oparciu o dane wejściowe użytkownika w trzech osobnych klas: Model, widok i kontroli. Aby dowiedzieć się więcej na temat MVC, zobacz [Dowiedz się więcej o programie ASP.NET](http://www.asp.net/mvc).
+**Kolekcji obszarów roboczych pakietu Microsoft Power BI** próbka jest przykładowa aplikacja sieci web, pokazujący, jak zintegrować **usługi Power BI** raporty w swojej aplikacji. Wzorzec projektowy Model-View-Controller (MVC) używa do zademonstrowania najlepszych rozwiązań. W tej sekcji przedstawiono przykładowy kod, który umożliwia zapoznanie się w części **osadzonych w usłudze Power BI** rozwiązania aplikacji w sieci web. Wzorzec Model-View-Controller (MVC) oddziela modelowanie domeny, prezentacji i akcji, w oparciu o dane wejściowe użytkownika w trzech osobnych klas: Model, widok i kontroli. Aby dowiedzieć się więcej na temat MVC, zobacz [Dowiedz się więcej o programie ASP.NET](https://www.asp.net/mvc).
 
 **Kolekcji obszarów roboczych pakietu Microsoft Power BI** przykładowy kod jest oddzielona w następujący sposób. Każda sekcja zawiera nazwę pliku w rozwiązaniu embedded.sln usługi Power BI, aby mógł łatwo znaleźć kod w przykładzie.
 
@@ -270,4 +270,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 [Program Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [Przykład osadzania skryptu JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](http://community.powerbi.com/)
+Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](https://community.powerbi.com/)

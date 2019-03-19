@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: a624540e95d054ef5edadfada29fa13cd47419d6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: b3ab3552ad1b9bdd14a3d07cd426f8c0bc9dc865
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848873"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759240"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Uruchamianie pierwszego zapytania usługi Resource Graph przy użyciu programu Azure PowerShell
 
@@ -79,8 +79,8 @@ Teraz, gdy moduł programu Azure PowerShell został dodany do Twojego wybranego 
    Search-AzGraph -Query 'project name, type | limit 5 | order by name asc'
    ```
 
-  > [!NOTE]
-  > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
+   > [!NOTE]
+   > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
 
 1. Zaktualizuj zapytanie, aby najpierw wykonywało polecenie `order by` w celu sortowania według właściwości **Name**, a następnie polecenie `limit` w celu ograniczenia do pięciu pierwszych wyników:
 
@@ -103,7 +103,7 @@ Remove-Module -Name 'Az.ResourceGraph'
 > [!NOTE]
 > Nie powoduje ono usunięcia wcześniej pobranego pliku modułu. Powoduje tylko usunięcie go z uruchomionej sesji programu PowerShell.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Uzyskaj więcej informacji na temat [języka zapytań](./concepts/query-language.md)
 - Dowiedz się, jak [eksplorować zasoby](./concepts/explore-resources.md)

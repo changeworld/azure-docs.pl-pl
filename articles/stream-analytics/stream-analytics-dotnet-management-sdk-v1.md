@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf4f7e8f5837aaa56745e60df5a4960a93097a92
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9c4ddb1375154fef3290008a7b981a4e9069ae94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729631"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075206"
 ---
 # <a name="set-up-and-run-analytics-jobs-using-azure-stream-analytics-api-for-net"></a>Konfigurowanie i uruchamianie zadań analizy przy użyciu interfejsu API usługi Azure Stream Analytics dla platformy .NET
 Dowiedz się, jak skonfigurować i uruchomić zadania analizy przy użyciu interfejsu API analizy Stream dla platformy .NET przy użyciu zestawu SDK platformy .NET zarządzania. Konfigurowanie projektu i tworzenia źródeł wejściowych i wyjściowych, transformacji i rozpoczęcia zatrzymanie zadań. Dla zadań analizy przesyłanie strumieniowe danych z magazynu obiektów Blob lub Centrum zdarzeń.
@@ -57,7 +57,7 @@ Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 1.8.3
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
 ```
 
-3. Dodaj następujący kod **appSettings** sekcji w pliku App.config:
+1. Dodaj następujący kod **appSettings** sekcji w pliku App.config:
 
    ```csharp
    <appSettings>
@@ -76,7 +76,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
 
         Get-AzureAccount
 
-4. Dodaj następujące odwołanie w pliku csproj:
+1. Dodaj następujące odwołanie w pliku csproj:
 
    ```csharp
    <Reference Include="System.Configuration" />
@@ -95,7 +95,7 @@ using Microsoft.Azure.Management.StreamAnalytics.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-2. Dodaj metodę pomocnika uwierzytelniania:
+1. Dodaj metodę pomocnika uwierzytelniania:
 
    ```csharp
    private static async Task<string> GetAuthorizationHeader()

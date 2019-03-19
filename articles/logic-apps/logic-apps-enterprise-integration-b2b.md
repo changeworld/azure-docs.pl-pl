@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.openlocfilehash: ad7a29f4a554d599b17576921542b1ac6e403911
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074728"
 ---
 # <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Odbieranie danych B2B przy użyciu usługi Azure Logic Apps i pakiet integracyjny dla przedsiębiorstw
 
@@ -47,11 +47,13 @@ Wykonaj następujące kroki, aby utworzyć aplikację logiki B2B, która używa 
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
 
-6. Dodaj **treści** , którą chcesz używać jako danych wejściowych. W tym przykładzie wybierz treści żądania HTTP, która powoduje uruchomienie aplikacji logiki. Lub wprowadź wyrażenie, które danych wejściowych nagłówków **nagłówki** pola:
+6. Dodaj **treści** , którą chcesz używać jako danych wejściowych. 
+   W tym przykładzie wybierz treści żądania HTTP, która powoduje uruchomienie aplikacji logiki. Lub wprowadź wyrażenie, które danych wejściowych nagłówków **nagłówki** pola:
 
     @triggerOutputs() ["headers"]
 
-7. Dodaj wymagane **nagłówki** dla pola AS2, który można znaleźć w nagłówkach żądań HTTP. W tym przykładzie wybierz nagłówki żądania HTTP, które mogą powodować aplikacji logiki.
+7. Dodaj wymagane **nagłówki** dla pola AS2, który można znaleźć w nagłówkach żądań HTTP. 
+   W tym przykładzie wybierz nagłówki żądania HTTP, które mogą powodować aplikacji logiki.
 
 8. Teraz Dodaj akcję komunikat dekodowania X12. Wybierz **Dodaj akcję**.
 
@@ -65,12 +67,13 @@ Wykonaj następujące kroki, aby utworzyć aplikację logiki B2B, która używa 
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
 
-11. Teraz należy określić dane wejściowe tej akcji. Te dane wejściowe znajdują się dane wyjściowe z poprzednich akcji AS2.
+11. Teraz należy określić dane wejściowe tej akcji. 
+    Te dane wejściowe znajdują się dane wyjściowe z poprzednich akcji AS2.
 
     Zawartość komunikatu rzeczywiste znajduje się w obiekcie JSON i jest zakodowany w formacie, base64, dlatego należy określić wyrażenie jako dane wejściowe. 
     Wprowadź następujące wyrażenie w **X12 PROSTEGO pliku wiadomości do dekodowania** pole wejściowe:
     
-    @base64ToString(body('Decode_AS2_message')? ["AS2Message']? ["Content"])
+    @base64ToString(body('Decode_AS2_message')?['AS2Message']?['Content'])
 
     Teraz dodaj kroki w celu zdekodowania X12 danych odebranych z partnerem handlowym i danych wyjściowych elementów w obiekcie JSON. 
     Aby powiadomić partnera Odebrano dane, możesz wysłać ponownie odpowiedź zawierającą komunikat dyspozycji powiadomień (komunikatu MDN AS2) w celu wykonania akcji odpowiedzi HTTP.
@@ -89,7 +92,7 @@ Wykonaj następujące kroki, aby utworzyć aplikację logiki B2B, która używa 
 
 15. Dostęp do powiadomienia MDN z danych wyjściowych **komunikat dekodowania X12** akcji set response ustawić **treści** pole to wyrażenie:
 
-    @base64ToString(body('Decode_AS2_message')? ["OutgoingMdn']? ["Content"])
+    @base64ToString(body('Decode_AS2_message')?['OutgoingMdn']?['Content'])
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-17.png)  
 

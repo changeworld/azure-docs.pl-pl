@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: c11d8ddcd9a1c1f051ab779a66710ab3d968acab
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 77a5fbab6ecda910750ab2b8bae987e77607223a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903514"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Ustawianie firmowej domeny internetowej tak, aby wskazywała domenę usługi Azure Traffic Manager
 
@@ -25,7 +25,7 @@ Na przykład aby nazwa domeny `www.contoso.com` wskazywała nazwę DNS `contoso.
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Wszystkie żądania ruchu do domeny *www.contoso.com* będą kierowane do domeny *contoso.trafficmanager.net*.
+Wszystkie żądania ruchu do *www\.contoso.com* będą kierowane do *contoso.trafficmanager.net*.
 
 > [!IMPORTANT]
 > Domena drugiego poziomu, na przykład *contoso.com*, nie może wskazywać domeny usługi Traffic Manager. Standardy protokołu DNS nie zezwalają na ustanawianie rekordów CNAME dla nazw domen drugiego poziomu.

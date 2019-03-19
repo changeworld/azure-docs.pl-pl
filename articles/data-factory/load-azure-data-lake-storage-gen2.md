@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: c4f32113c0750b825f217330f94b45484dc3be29
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313470"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101095"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Ładowanie danych do usługi Azure Data Lake Storage Gen2 za pomocą usługi Azure Data Factory
 
@@ -77,12 +77,12 @@ W tym artykule dowiesz się, jak używać narzędzia do kopiowania danych w bazi
     
 4. W **połączenia Określ Amazon S3** wykonaj następujące czynności:
 
-    1. Określ **identyfikator klucza dostępu** wartość.
-    2. Określ **tajny klucz dostępu** wartość.
-    3. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
-    4. Zobaczysz, że nowe połączenie zostanie utworzona. Wybierz opcję **Dalej**.
+   1. Określ **identyfikator klucza dostępu** wartość.
+   2. Określ **tajny klucz dostępu** wartość.
+   3. Kliknij przycisk **Testuj połączenie** Aby zweryfikować ustawienia, zaznacz opcję **Zakończ**.
+   4. Zobaczysz, że nowe połączenie zostanie utworzona. Wybierz opcję **Dalej**.
    
-    ![Określanie konta usługi Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      ![Określanie konta usługi Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       
 5. W **Wybieranie pliku lub folderu wejściowego** strony, przejdź do folderu i pliku, który chcesz skopiować. Wybierz folderów i plików, wybierz pozycję **wybierz**:
 

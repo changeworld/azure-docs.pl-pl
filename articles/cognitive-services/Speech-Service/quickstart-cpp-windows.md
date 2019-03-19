@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: d6504b97bbc6c1ba4bcd02da54a29501c164439f
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: a3fe14436a569a8354e4bfd58a9ba164881d8fe2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878685"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku C++ w systemie Windows przy użyciu zestawu Speech SDK
 
@@ -25,7 +25,7 @@ W tym artykule opisano tworzenie aplikacji konsolowej w języku C++ dla systemu 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi rozpoznawania mowy. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje, zobacz temat [Try the Speech service for free](get-started.md) (Wypróbuj bezpłatnie usługę rozpoznawania mowy).
+Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodnik Szybki Start. Możesz go uzyskać bezpłatnie. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md) Aby uzyskać szczegółowe informacje.
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
@@ -53,18 +53,18 @@ Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskry
 
    ![Zrzut ekranu aplikacji Visual Studio z wyróżnioną opcją Rozpocznij debugowanie](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. Zostanie wyświetlone okno konsoli z monitem o wypowiedź ustną. Wypowiedz zwrot lub zdanie w języku angielskim. Wypowiedź zostanie przesłana do usługi rozpoznawania mowy i nastąpi jest transkrypcja na tekst, który zostanie wyświetlony w tym samym oknie.
+1. Zostanie wyświetlone okno konsoli z monitem o wypowiedź ustną. Wypowiedz zwrot lub zdanie w języku angielskim. Mowa jest przesyłane do usług przetwarzania mowy i przetłumaczone na tekst, który pojawia się w tym samym oknie.
 
    ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dodatkowe przykłady, dotyczące np. sposobu odczytywania mowy z pliku audio, są dostępne w witrynie GitHub.
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C++ w serwisie GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

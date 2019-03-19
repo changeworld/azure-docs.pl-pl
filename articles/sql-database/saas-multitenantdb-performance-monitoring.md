@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 731b87d7958bb461466b16f2ff724ea33f234ba8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: be7dbe35800bbe911bc56d1883462534a16499a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439812"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083185"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty bazy danych Azure SQL wielu dzierżaw w aplikacji SaaS z wieloma dzierżawami
 
@@ -28,7 +28,7 @@ Aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych używa modelu dany
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
+> 
 > * Symulowanie użycia we fragmenty wielodostępnej bazie danych przez uruchomienie generatora obciążenia podana
 > * Monitorowanie bazy danych odpowiada na wzrost obciążenia
 > * Skalowanie w górę bazy danych w odpowiedzi na zwiększone obciążenie bazy danych

@@ -1,6 +1,6 @@
 ---
 title: metodzie App() wyrażenia w zapytaniach dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Wyrażenie aplikacji jest używany w zapytaniu usługi Azure Monitor dziennika można pobrać danych z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji.
+description: Wyrażenie aplikacji jest używany w zapytaniu dzienników usługi Azure Monitor do pobierania danych z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 0abe2c869a05d359f692db105eb647f9e6a69df8
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889458"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>wyrażenie metodzie App() w zapytaniu usługi Azure Monitor
 

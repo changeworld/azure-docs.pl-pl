@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: c51804748e4313d79cc3a369b659974d2d32e2e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014271"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58163858"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopiowanie danych z i do magazyny danych ODBC za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-odbc-connector.md)
 > * [Bieżąca wersja](connector-odbc.md)
 
@@ -51,7 +51,7 @@ Następujące właściwości są obsługiwane dla ODBC połączone usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **ODBC** | Yes |
+| type | Właściwość type musi być równa: **Odbc** | Yes |
 | Parametry połączenia | Parametry połączenia, z wyjątkiem części poświadczeń. Można określić parametry połączenia za pomocą wzorca, takich jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyć systemu DSN (nazwa źródła danych), możesz skonfigurować na komputerze środowisko Integration Runtime za pomocą `"DSN=<name of the DSN on IR machine>;"` (muszą nadal określić część poświadczeń w połączonej usłudze odpowiednio).<br>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md).| Yes |
 | Element authenticationType | Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC.<br/>Dozwolone wartości to: **Podstawowe** i **anonimowe**. | Yes |
 | userName | Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. | Nie |

@@ -1,5 +1,5 @@
 ---
-title: Zgodność z RODO | Dokumentacja firmy Microsoft
+title: GDPR Compliance| Microsoft Docs
 description: Cloud Partner Portal i RODO.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1cd9e99d9f530abb34ff072a740d89bc511c64ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4e6f5095081f0549bc127b9b6949908a64214aee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241518"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857814"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud-zgodność z RODO Portal partnerów
 ====================================
 
-[Ogólne rozporządzenie o ochronie danych (RODO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)to prawo ochrony i prywatności danych Unii Europejskiej (UE). Rozporządzenie GDPR nakłada reguły dla firm, agencji rządowych, non-profit i innych organizacji oferujących towary i usługi osobom w Unii Europejskiej lub który zbierania i analizujących dane związane z osobami mieszkającymi w UE.
+[Ogólne rozporządzenie o ochronie danych (RODO)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm)to prawo ochrony i prywatności danych Unii Europejskiej (UE). Rozporządzenie GDPR nakłada reguły dla firm, agencji rządowych, non-profit i innych organizacji oferujących towary i usługi osobom w Unii Europejskiej lub który zbierania i analizujących dane związane z osobami mieszkającymi w UE.
 
 Cloud Partner Portal zapewnia szczegółowe informacje dotyczące jego przetwarzania klienta, danych oraz środków bezpieczeństwa, używanych do ochrony tych danych. Te informacje są dostępne za pośrednictwem jej środowiskach w ramach produktu.
 

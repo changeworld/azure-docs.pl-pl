@@ -14,12 +14,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a7dc5152bb1ede5f7311e74815a6d58782d32a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 27e5ae48a8194c05a19e5164ee2cc6be68967a62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199327"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112759"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Prywatność użytkownika i program Azure AD Connect Health 
 
@@ -62,17 +62,17 @@ Zobacz [jak usunąć serwer z programu Azure AD Connect Health](how-to-connect-h
 Program Azure AD Connect Health udostępnia opcję, aby zatrzymać zbieranie danych z **wszystkich** zarejestrowane usługi w dzierżawie. Firma Microsoft zaleca szczególną uwagę i pełne potwierdzenia wszyscy administratorzy globalni przed podjęciem działań. Po rozpoczęciu procesu usługi Connect Health przestanie odbierania, przetwarzania i zgłasza żadnych danych Twoich usług. Istniejące dane w usłudze programu Connect Health zostaną zachowane, nie więcej niż 30 dni.
 Jeśli chcesz zatrzymać zbieranie danych z określonego serwera, wykonaj poniższe kroki należy wykonać na usunięcie określonych serwerów. Aby zatrzymać zbieranie danych tenant-wise, wykonaj następujące kroki, aby zatrzymać zbieranie danych i Usuń wszystkie usługi dzierżawy.
 
-1.  Kliknij pozycję **ustawienia ogólne** w obszarze Konfiguracja w głównym bloku. 
-2.  Kliknij pozycję **Zatrzymaj zbieranie danych** przycisk u góry bloku. Inne opcje ustawień konfiguracji dzierżawy zostanie wyłączona, gdy rozpoczyna się proces.  
+1. Kliknij pozycję **ustawienia ogólne** w obszarze Konfiguracja w głównym bloku. 
+2. Kliknij pozycję **Zatrzymaj zbieranie danych** przycisk u góry bloku. Inne opcje ustawień konfiguracji dzierżawy zostanie wyłączona, gdy rozpoczyna się proces.  
  
- ![Zatrzymaj zbieranie danych](./media/reference-connect-health-user-privacy/gdpr4.png)
+   ![Zatrzymaj zbieranie danych](./media/reference-connect-health-user-privacy/gdpr4.png)
   
-3.  Upewnij się, na liście usług dołączono, które mają wpływ zatrzymywanie zbierania danych. 
-4.  Wprowadź nazwę dzierżawy dokładnie umożliwiające **Usuń** przycisk akcji
-5.  Kliknij pozycję **Usuń** do wyzwolenia usunięcie wszystkich usług. Connect Health zostanie zatrzymane odbierania, przetwarzania, zgłasza żadnych danych wysyłanych z usługi dołączone. Cały proces może potrwać do 24 godzin. Należy zauważyć, że ten krok nie jest nieodwracalna. 
-6.  Po zakończeniu procesu, nie zobaczysz żadnych zarejestrowanych usług w programie Connect Health więcej. 
+3. Upewnij się, na liście usług dołączono, które mają wpływ zatrzymywanie zbierania danych. 
+4. Wprowadź nazwę dzierżawy dokładnie umożliwiające **Usuń** przycisk akcji
+5. Kliknij pozycję **Usuń** do wyzwolenia usunięcie wszystkich usług. Connect Health zostanie zatrzymane odbierania, przetwarzania, zgłasza żadnych danych wysyłanych z usługi dołączone. Cały proces może potrwać do 24 godzin. Należy zauważyć, że ten krok nie jest nieodwracalna. 
+6. Po zakończeniu procesu, nie zobaczysz żadnych zarejestrowanych usług w programie Connect Health więcej. 
 
- ![Po zatrzymaniu zbierania danych](./media/reference-connect-health-user-privacy/gdpr5.png)
+   ![Po zatrzymaniu zbierania danych](./media/reference-connect-health-user-privacy/gdpr5.png)
 
 ## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Ponowne włączenie zbierania danych i monitorowania w Azure AD Connect Health
 Aby ponownie włączyć monitorowania w Azure AD Connect Health dla usuniętego wcześniej monitorowanej usługi, należy odinstalować i [ponownej instalacji agenta programu health](how-to-connect-health-agent-install.md) na wszystkich serwerach.
@@ -85,14 +85,14 @@ Zbieranie danych tenant-Wise może być wznowione w usłudze Azure AD Connect He
 > Poniższe kroki będą dostępne po 24 godziny, wyłącz akcji.
 > Po włączeniu zbierania danych prezentowanych wglądu i monitorowania danych w programie Connect Health nie będą widoczne wszystkie starsze dane zebrane przed. 
 
-1.  Kliknij pozycję **ustawienia ogólne** w obszarze Konfiguracja w głównym bloku. 
-2.  Kliknij pozycję **włączyć zbierania danych** przycisk u góry bloku. 
+1. Kliknij pozycję **ustawienia ogólne** w obszarze Konfiguracja w głównym bloku. 
+2. Kliknij pozycję **włączyć zbierania danych** przycisk u góry bloku. 
  
- ![Włączanie zbierania danych](./media/reference-connect-health-user-privacy/gdpr6.png)
+   ![Włączanie zbierania danych](./media/reference-connect-health-user-privacy/gdpr6.png)
  
-3.  Wprowadź nazwę dzierżawy dokładnie do aktywowania **Włącz** przycisku.
-4.  Kliknij pozycję **Włącz** przycisk, aby udzielić uprawnień zbierania danych w usłudze programu Connect Health. Wkrótce zostaną zastosowane zmiany. 
-5.  Postępuj zgodnie z [proces instalacji](how-to-connect-health-agent-install.md) ponownie zainstalować agenta na serwerach do monitorowania i usługi będą znajdować się w portalu.  
+3. Wprowadź nazwę dzierżawy dokładnie do aktywowania **Włącz** przycisku.
+4. Kliknij pozycję **Włącz** przycisk, aby udzielić uprawnień zbierania danych w usłudze programu Connect Health. Wkrótce zostaną zastosowane zmiany. 
+5. Postępuj zgodnie z [proces instalacji](how-to-connect-health-agent-install.md) ponownie zainstalować agenta na serwerach do monitorowania i usługi będą znajdować się w portalu.  
 
 
 ## <a name="next-steps"></a>Kolejne kroki

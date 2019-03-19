@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b45f48289eda9096c84537eaaa7bc2df74c9d05d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4784ca08366d833d02372393e0e12f0fefe8c5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112453"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
@@ -107,7 +107,7 @@ Podaj zasób zdalny dostęp do danych szkoleniowych. Eksperymenty uczenia maszyn
 
 Aby zapewnić dostęp, musisz mieć:
 + Tworzenie pliku get_data.py zawierającego `get_data()` — funkcja 
-* Umieść dostępne jako ścieżkę bezwzględną pliku w katalogu 
++ Umieść dostępne jako ścieżkę bezwzględną pliku w katalogu 
 
 Należy hermetyzować kod, aby odczytać dane z magazynu obiektów blob lub dysk lokalny, w pliku get_data.py. W poniższym przykładzie kodu dane pochodzą z pakietu skryptu sklearn.
 

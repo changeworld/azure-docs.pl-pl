@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4b66e5201de2c01aaf6a579d3b71b085dd14b1b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997170"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900900"
 ---
 # <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>Samouczek: Dodawanie autouzupełniania do pola wyszukiwania przy użyciu usługi Azure Search
 
@@ -35,7 +35,7 @@ Wykonasz następujące zadania:
 > * Dodawanie informacji o usłudze wyszukiwania do ustawień aplikacji
 > * Implementowanie pola wejściowego wyszukiwania
 > * Dodawanie obsługi listy autouzupełniania pobierającej dane ze źródła zdalnego 
-> * Dodawanie obsługi pobierania sugestii i danych autouzupełniania za pomocą zestawu .NET SDK i interfejsu API REST
+> * Pobierz sugestie i automatycznego uzupełniania za pomocą zestawu SDK platformy .NET i interfejsu API REST
 > * Dodawanie obsługi buforowania po stronie klienta w celu poprawy wydajności 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -65,7 +65,7 @@ Wykonaj kroki opisane w tej sekcji, jeśli chcesz zaimportować dane przykładow
 
 ### <a name="running-the-sample"></a>Uruchamianie przykładowej aplikacji
 
-Teraz możesz uruchomić przykładową aplikację przeznaczoną dla samouczka.  Otwórz plik rozwiązania AutocompleteTutorial.sln w programie Visual Studio, aby uruchomić samouczek.  Rozwiązanie zawiera projekt platformy ASP.NET MVC.  Naciśnij klawisz F5, aby uruchomić projekt i załadować stronę w wybranej przeglądarce.  U góry strony zobaczysz opcję wyboru języka C# lub JavaScript.  Opcja języka C# powoduje wywołanie elementu HomeController z przeglądarki i korzysta z zestawu .Net SDK usługi Azure Search do pobrania wyników.  Opcja języka JavaScript powoduje wywołanie interfejsu API REST usługi Azure Search bezpośrednio z przeglądarki.  Ta opcja ma zazwyczaj zauważalnie lepszą wydajność, ponieważ eliminuje kontroler z przepływu.  Opcję można wybrać na podstawie potrzeb i preferencji językowych.  Na stronie znajduje się kilka przykładów autouzupełniania, a dla każdego z nich są dostępne wskazówki.  Każdy przykład ma zalecany tekst przykładowy, który możesz wypróbować.  Spróbuj wpisać kilka liter w każdym polu wyszukiwania, aby zobaczyć, co się dzieje.
+Teraz możesz uruchomić przykładową aplikację przeznaczoną dla samouczka.  Otwórz plik rozwiązania AutocompleteTutorial.sln w programie Visual Studio, aby uruchomić samouczek.  Rozwiązanie zawiera projekt platformy ASP.NET MVC.  Naciśnij klawisz F5, aby uruchomić projekt i załadować stronę w wybranej przeglądarce.  U góry strony zobaczysz opcję wyboru języka C# lub JavaScript.  C# Opcja wywoła HomeController w przeglądarce i korzysta z zestawu .NET SDK usługi Azure Search do pobierania wyników.  Opcja języka JavaScript powoduje wywołanie interfejsu API REST usługi Azure Search bezpośrednio z przeglądarki.  Ta opcja ma zazwyczaj zauważalnie lepszą wydajność, ponieważ eliminuje kontroler z przepływu.  Opcję można wybrać na podstawie potrzeb i preferencji językowych.  Na stronie znajduje się kilka przykładów autouzupełniania, a dla każdego z nich są dostępne wskazówki.  Każdy przykład ma zalecany tekst przykładowy, który możesz wypróbować.  Spróbuj wpisać kilka liter w każdym polu wyszukiwania, aby zobaczyć, co się dzieje.
 
 ## <a name="how-this-works-in-code"></a>Jak to działa w kodzie
 
@@ -213,11 +213,11 @@ Jeśli porównasz go z przykładem powyżej wywołującym kontroler Home, zauwa�
 
 ## <a name="takeaways"></a>Wnioski
 
-Ten samouczek przedstawia podstawowe kroki tworzenia pola wyszukiwania, które obsługuje autouzupełnianie i sugestie.  Przedstawiono tworzenie aplikacji ASP.NET MVC i użycie zestawu .Net SDK usługi Azure Search lub interfejsu API REST do pobrania sugestii.
+Ten samouczek przedstawia podstawowe kroki tworzenia pola wyszukiwania, które obsługuje autouzupełnianie i sugestie.  Pokazano, jak można zbudować aplikację ASP.NET MVC i pobrać sugestie za pomocą zestawu .NET SDK usługi Azure Search lub interfejsu API REST.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Integrowanie sugestii i autouzupełniania w środowisku wyszukiwania.  Zastanów się nad tym, jak użycie zestawu .Net SDK lub bezpośrednio interfejsu API REST może ułatwić udostępnienie możliwości usługi Azure Search użytkownikom podczas wpisywania, zwiększając ich efektywność.
+Integrowanie sugestii i autouzupełniania w środowisku wyszukiwania.  Należy wziąć pod uwagę, jak przy użyciu zestawu .NET SDK lub interfejsu API REST bezpośrednio może pomóc korzystaj z zaawansowanych możliwości usługi Azure Search dla użytkowników, podczas ich wpisywania, aby stały się bardziej produktywne.
 
 > [!div class="nextstepaction"]
 > [Interfejs API REST autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete)

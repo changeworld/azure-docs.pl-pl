@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 12dea044dab2aafad1d7597214d159011b5ab536
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
-ms.translationtype: HT
+ms.openlocfilehash: 5109f4e801c1e34b2026cff8f8dd83558618e153
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652471"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165798"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Szybki start: tworzenie udziału usługi Azure Files przy użyciu maszyn wirtualnych z systemem Windows i zarządzanie tym udziałem
 
@@ -180,7 +180,7 @@ Podobnie jak w przypadku migawek usługi VSS w środowisku lokalnym, możesz wy�
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Korzystanie z udziału plików platformy Azure w systemie Windows](storage-how-to-use-files-windows.md)

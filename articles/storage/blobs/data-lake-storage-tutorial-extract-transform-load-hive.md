@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jamesbak
-ms.openlocfilehash: 566af5d42b1b5b778db0a2014b238657ace7db5c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: cdb89b552d0e328e6685e2bd62ea135e15e4b074
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672631"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013453"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu technologii Apache Hive w usłudze Azure HDInsight
 
@@ -58,6 +58,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
    | Rok filtrowania |2013 |
    | Filter Period (Okres filtrowania) |January (Styczeń) |
    | Pola |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   
    Wyczyść wszystkie pozostałe pola.
 
 3. Wybierz przycisk **Download** (Pobierz). Uzyskasz plik zip z wybranymi polami danych.
@@ -341,7 +342,7 @@ W poprzednich sekcjach skopiowano przekształcone dane w lokalizacji `abfs://<fi
 
 Wszystkie zasoby używane w tym samouczku istniały już wcześniej. Oczyszczanie nie jest konieczne.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby poznać więcej sposobów pracy z danymi w usłudze HDInsight, zobacz następujący artykuł:
 

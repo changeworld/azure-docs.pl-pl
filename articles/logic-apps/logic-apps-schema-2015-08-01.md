@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.topic: article
 ms.date: 05/31/2016
-ms.openlocfilehash: ec6f98ca0f0260a0d7bed16538f557931cd2e33e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 92f522c72f69218e55b1ee4cfff74511a30288b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080014"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904545"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Aktualizacje schematu dla usługi Azure Logic Apps — 1 sierpnia 2015 r. (wersja zapoznawcza)
 
@@ -352,7 +352,7 @@ Tak, przy użyciu poprzedniego `repeat` przykład pobrać te dane wyjściowe:
    },
    "outputs": {
       "headers": { },
-      "body": "<!DOCTYPE html><html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:Web=\"http://schemas.live.com/Web/\">...</html>"
+      "body": "<!DOCTYPE html><html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:Web=\"https://schemas.live.com/Web/\">...</html>"
    },
    "status": "Succeeded"
 } ]
@@ -369,7 +369,7 @@ Teraz możesz uzyskać te dane wyjściowe zamiast tego:
       },
       "outputs": {
          "headers": { },
-         "body": "<!DOCTYPE html><html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:Web=\"http://schemas.live.com/Web/\">...</html>"
+         "body": "<!DOCTYPE html><html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:Web=\"https://schemas.live.com/Web/\">...</html>"
       },
       "status": "Succeeded"
 } ]
@@ -384,7 +384,7 @@ Wcześniej Aby uzyskać `body` z akcji podczas odwoływania się do tych danych 
       "repeat": "@outputs('pingBing').repeatItems",
       "inputs": {
          "method": "POST",
-         "uri": "http://www.example.com",
+         "uri": "https://www.example.com",
          "body": "@repeatItem().outputs.body"
       }
    }
@@ -400,7 +400,7 @@ Teraz możesz użyć tej wersji:
       "foreach": "@outputs('pingBing')",
       "inputs": {
          "method": "POST",
-         "uri": "http://www.example.com",
+         "uri": "https://www.example.com",
          "body": "@item().outputs.body"
       }
    }
@@ -461,4 +461,4 @@ Wszystkie typy akcji obsługują teraz nowe dane wejściowe o nazwie `queries`. 
 
 ## <a name="enterprise-integration-apis"></a>Interfejsy API integracji przedsiębiorstw
 
-Ten schemat jeszcze nie obsługuje wersji zarządzanych interfejsów API integracji przedsiębiorstwa, takich jak AS2. Można jednak użyć istniejących wdrożonej interfejsów API usługi BizTalk przy użyciu akcji HTTP. Aby uzyskać więcej informacji, zobacz "Za pomocą już wdrożonej aplikacji interfejsu API" w [planu integracji](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Ten schemat jeszcze nie obsługuje wersji zarządzanych interfejsów API integracji przedsiębiorstwa, takich jak AS2. Można jednak użyć istniejących wdrożonej interfejsów API usługi BizTalk przy użyciu akcji HTTP. Aby uzyskać więcej informacji, zobacz "Za pomocą już wdrożonej aplikacji interfejsu API" w [planu integracji](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 

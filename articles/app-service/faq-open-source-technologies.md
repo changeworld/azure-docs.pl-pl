@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191449"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082946"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie open source często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -44,10 +44,10 @@ Aby włączyć rejestrowanie PHP:
 9. Wybierz pozycję **Zapisz**.
 10. Wybierz ikonę ołówka obok **wp config.php**.
 11. Zmień tekst z następującym kodem:
-   ```php
-   //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
-   ```
+    ```php
+    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
+    //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
+    ```
 12. W witrynie Azure portal w menu aplikacji sieci web Uruchom ponownie swoją aplikację sieci web.
 
 Aby uzyskać więcej informacji, zobacz [dzienniki błędów WordPress Włącz](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
@@ -59,31 +59,31 @@ Aby uzyskać więcej informacji, zobacz [dzienniki błędów WordPress Włącz](
 
 Aby zmienić wersję aplikacji Node.js, można użyć jednej z następujących opcji:
 
-*   W witrynie Azure portal, należy użyć **ustawienia aplikacji**.
-    1. W witrynie Azure portal przejdź do aplikacji sieci web.
-    2. Na **ustawienia** bloku wybierz **ustawienia aplikacji**.
-    3. W **ustawienia aplikacji**, można dołączyć WEBSITE_NODE_DEFAULT_VERSION jako klucza i wersję środowiska Node.js, ma jako wartość.
-    4. Przejdź do swojej [konsoli Kudu](https://*yourwebsitename*.scm.azurewebsites.net).
-    5. Aby sprawdzić wersję środowiska Node.js, wprowadź następujące polecenie:  
-   ```
-   node -v
-   ```
-*   Zmodyfikuj plik iisnode.yml udostępniany. Zmiana wersji środowiska Node.js w plik iisnode.yml udostępniany tylko zestawy środowiska wykonawczego tego programu iisnode używa. Usługi Kudu cmd, a inne nadal używać wersji środowiska Node.js, który jest ustawiony w **ustawienia aplikacji** w witrynie Azure portal.
+* W witrynie Azure portal, należy użyć **ustawienia aplikacji**.
+  1. W witrynie Azure portal przejdź do aplikacji sieci web.
+  2. Na **ustawienia** bloku wybierz **ustawienia aplikacji**.
+  3. W **ustawienia aplikacji**, można dołączyć WEBSITE_NODE_DEFAULT_VERSION jako klucza i wersję środowiska Node.js, ma jako wartość.
+  4. Przejdź do swojej [konsoli Kudu](https://*yourwebsitename*.scm.azurewebsites.net).
+  5. Aby sprawdzić wersję środowiska Node.js, wprowadź następujące polecenie:  
+     ```
+     node -v
+     ```
+* Zmodyfikuj plik iisnode.yml udostępniany. Zmiana wersji środowiska Node.js w plik iisnode.yml udostępniany tylko zestawy środowiska wykonawczego tego programu iisnode używa. Usługi Kudu cmd, a inne nadal używać wersji środowiska Node.js, który jest ustawiony w **ustawienia aplikacji** w witrynie Azure portal.
 
-    Aby ręcznie ustawić plik iisnode.yml, należy utworzyć plik iisnode.yml w folderze głównym aplikacji. W pliku należy umieścić następujący wiersz:
-   ```yml
-   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-   ```
+  Aby ręcznie ustawić plik iisnode.yml, należy utworzyć plik iisnode.yml w folderze głównym aplikacji. W pliku należy umieścić następujący wiersz:
+  ```yml
+  nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+  ```
    
-*   Ustaw plik iisnode.yml udostępniany przy użyciu pliku package.json podczas wdrażania kontroli źródła.
-    Proces wdrażania kontroli źródła platformy Azure obejmuje następujące czynności:
-    1. Powoduje przeniesienie zawartości do aplikacji sieci web platformy Azure.
-    2. Tworzy domyślny skrypt wdrożenia, jeśli nie istnieje (pliku deploy.cmd, pliki .deployment) w folderze głównym aplikacji sieci web.
-    3. Uruchamia skrypt wdrażania, w którym tworzy plik iisnode.yml Jeśli wspomnisz o wersji środowiska Node.js w pliku package.json > aparat `"engines": {"node": "5.9.1","npm": "3.7.3"}`
-    4. Plik iisnode.yml udostępniany ma następujący wiersz kodu:
-        ```yml
-        nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-        ```
+* Ustaw plik iisnode.yml udostępniany przy użyciu pliku package.json podczas wdrażania kontroli źródła.
+  Proces wdrażania kontroli źródła platformy Azure obejmuje następujące czynności:
+  1. Powoduje przeniesienie zawartości do aplikacji sieci web platformy Azure.
+  2. Tworzy domyślny skrypt wdrożenia, jeśli nie istnieje (pliku deploy.cmd, pliki .deployment) w folderze głównym aplikacji sieci web.
+  3. Uruchamia skrypt wdrażania, w którym tworzy plik iisnode.yml Jeśli wspomnisz o wersji środowiska Node.js w pliku package.json > aparat `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  4. Plik iisnode.yml udostępniany ma następujący wiersz kodu:
+      ```yml
+      nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+      ```
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Widzę komunikat "Błąd podczas nawiązywania połączenia z bazą danych" w swojej aplikacji WordPress, która jest hostowana w usłudze App Service. Jak rozwiązać ten problem?
 
@@ -114,7 +114,7 @@ Aby uzyskać informacje o instalowaniu Django, zobacz [wdrażanie aplikacji Djan
 
 Portal Azure Marketplace i wdrożeń niestandardowych:
 
-* Lokalizacja folderu: D:\home\site\wwwroot\bin\apache-Tomcat-8.0.33\logs
+* Lokalizacja folderu: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * Pliki zainteresowania:
     * catalina. *rrrr mm-dd*.log
     * Menedżer hosta. *rrrr mm-dd*.log

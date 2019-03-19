@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 4370cc5e39b7d1b9a50e8fc8af9f7bfc58f6356a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 05df154db27dcf1b07506c6bf9c2a681408de61e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602753"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091821"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Używanie zestawu narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra usługi HDInsight
 
@@ -141,12 +141,12 @@ Możesz połączyć normalny klaster przy użyciu nazwy użytkownika systemu Amb
    a. W narzędziu Package Explorer kliknij prawym przyciskiem myszy nazwę projektu, a następnie wybierz **przesyłanie aplikacji Spark HDInsight**.        
    b. W **przesyłania Spark** okno dialogowe, podaj następujące wartości, a następnie wybierz pozycję **przesyłania**:
       
-      * Aby uzyskać **nazwy klastra**, wybierz klaster HDInsight Spark, na którym chcesz uruchomić aplikację.
-      * Wybierz artefakt z projekt środowiska Eclipse lub wybierz jedną z dysku twardego. Wartość domyślna zależy od elementu, który można kliknąć prawym przyciskiem myszy w narzędziu Package Explorer.
-      * W **Nazwa klasy Main** listy rozwijanej, Kreator przesyłania Wyświetla wszystkie nazwy obiektów z projektu. Wybierz lub wprowadź klucz, który chcesz uruchomić. Jeśli wybrano artefaktu z dysku twardego, nazwa główna klasa musi wprowadzić ręcznie. 
-      * Ponieważ kod aplikacji, w tym przykładzie nie wymagają żadnych argumentów wiersza polecenia lub odwoływać się do plików lub plikach JAR, pozostałych pól tekstowych można pozostawić puste.
+   * Aby uzyskać **nazwy klastra**, wybierz klaster HDInsight Spark, na którym chcesz uruchomić aplikację.
+   * Wybierz artefakt z projekt środowiska Eclipse lub wybierz jedną z dysku twardego. Wartość domyślna zależy od elementu, który można kliknąć prawym przyciskiem myszy w narzędziu Package Explorer.
+   * W **Nazwa klasy Main** listy rozwijanej, Kreator przesyłania Wyświetla wszystkie nazwy obiektów z projektu. Wybierz lub wprowadź klucz, który chcesz uruchomić. Jeśli wybrano artefaktu z dysku twardego, nazwa główna klasa musi wprowadzić ręcznie. 
+   * Ponieważ kod aplikacji, w tym przykładzie nie wymagają żadnych argumentów wiersza polecenia lub odwoływać się do plików lub plikach JAR, pozostałych pól tekstowych można pozostawić puste.
         
-      ![Okno dialogowe przesyłania platformy Spark](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
+     ![Okno dialogowe przesyłania platformy Spark](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
 1. **Przesyłania Spark** kartę powinien rozpocząć wyświetlanie postępu. Można zatrzymać aplikację, wybierając czerwony przycisk w **przesyłania Spark** okna. Można również wyświetlić dzienniki dla tej konkretnej aplikacji, uruchomić, wybierając ikonę świecie (wskazywane przez niebieskie pole na obrazie).
       
    ![Okno przesyłania platformy Spark](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-4.png)

@@ -16,12 +16,12 @@ ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 8126397dfb3b02778413ab6ee696a8138c792c15
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d57b06a33421a94c4f849a1c1fd7cd6f1f4248dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342568"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848902"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>Usługa App Service w usłudze Azure Stack update 2 — informacje o wersji
 
@@ -64,7 +64,7 @@ Usługa Azure App Service w usłudze Azure Stack Update 2 obejmuje następujące
     - NodeJS 8.11.1
   - Dodano **NPM** wersji:
     - 5.6.0
-  - .Net Core zaktualizowane składniki, aby były zgodne z usługi Azure App Service w chmurze publicznej.
+  - Zaktualizowane składniki platformy .NET Core, aby były zgodne z usługi Azure App Service w chmurze publicznej.
   - Zaktualizowano Kudu
 
 - Automatycznej wymiany wdrożenia gniazd funkcję - [Konfigurowanie automatycznej wymiany](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)

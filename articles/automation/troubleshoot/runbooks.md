@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 77f6a48402aef5b493b115d2137ccb6a507050b7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005418"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -133,7 +133,7 @@ Aby używać certyfikatu za pomocą poleceń cmdlet modelu klasycznym wdrożeniu
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Typowe błędy podczas pracy z elementami runbook
 
-###<a name="child-runbook-object"></a>Podrzędny element runbook zwraca błąd, jeśli strumień wyjściowy zawiera obiekty, a nie proste typy danych
+### <a name="child-runbook-object"></a>Podrzędny element runbook zwraca błąd, jeśli strumień wyjściowy zawiera obiekty, a nie proste typy danych
 
 #### <a name="issue"></a>Problem
 
@@ -303,7 +303,7 @@ Ten błąd występuje ze względu na jeden z następujących problemów:
 
 3. Niezgodne modułu. Ten błąd może wystąpić, jeśli moduł zależności nie są poprawne, a nie są one, element runbook zwykle zwraca "nie znaleziono polecenia" lub "Nie można powiązać parametr" wiadomości.
 
-4. Element runbook będzie próbował wywołać plik wykonywalny lub proces podrzędny w elemencie runbook, które jest uruchamiane w piaskownicy usługi Azure. Ten scenariusz nie jest obsługiwany w piaskownicach platformy Azure.
+4. Element runbook próba wywołania pliku wykonywalnego lub subprocess w elemencie runbook, które jest uruchamiane w piaskownicy usługi Azure. Ten scenariusz nie jest obsługiwany w piaskownicach platformy Azure.
 
 #### <a name="resolution"></a>Rozwiązanie
 
@@ -463,7 +463,7 @@ Element webhook, który próbujesz wywołać, jest wyłączony lub wygasł.
 
 Jeśli element webhook jest wyłączona, można ponownie włączyć elementu webhook w witrynie Azure portal. Po wygaśnięciu element webhook elementu webhook musi zostać usunięte i utworzone ponownie. Można jedynie [odnowić element webhook](../automation-webhooks.md#renew-webhook) Jeśli jeszcze nie upłynął.
 
-### <a name="429"></a>Scenariusz: 429: Liczba żądań jest obecnie zbyt duży. Spróbuj ponownie
+### <a name="429"></a>Scenariusz: 429: Współczynnik żądań jest obecnie zbyt duży. Spróbuj ponownie
 
 #### <a name="issue"></a>Problem
 

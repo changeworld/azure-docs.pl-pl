@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/02/2019
-ms.openlocfilehash: 8441f6793140bcb565b97776a0cd86c7319db9c1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e6a528ae7eda7e10ab06c6f338fd05d20332a9fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448919"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089016"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Informacje o wersji dla usługi Azure HDInsight
 
@@ -1309,116 +1309,116 @@ Rozwiązano problemy reprezentują wybranego problemy, które zostały wcześnie
 
 ## <a name="known-issues"></a>Znane problemy
 
--   **HDInsight integracji z usługą Azure Data Lake Store Gen 2** istnieją dwa problemy w klastrach HDInsight ESP katalogów użytkowników i uprawnień przy użyciu usługi Azure Data Lake Storage Gen 2:
+- **HDInsight integracji z usługą Azure Data Lake Store Gen 2** istnieją dwa problemy w klastrach HDInsight ESP katalogów użytkowników i uprawnień przy użyciu usługi Azure Data Lake Storage Gen 2:
    
-   1. Katalogi macierzyste dla użytkowników nie są tworzonych na 1 węzeł główny. Jako obejście ręczne tworzenie katalogów i zmień własność UPN odpowiedniego użytkownika.
+  1. Katalogi macierzyste dla użytkowników nie są tworzonych na 1 węzeł główny. Jako obejście ręczne tworzenie katalogów i zmień własność UPN odpowiedniego użytkownika.
    
-   2. Uprawnienia do katalogu /hdp aktualnie nie jest równa 751. Musi to być ustawione na 
-      ```bash
-      chmod 751 /hdp 
-      chmod –R 755 /hdp/apps
-      ```
+  2. Uprawnienia do katalogu /hdp aktualnie nie jest równa 751. Musi to być ustawione na 
+     ```bash
+     chmod 751 /hdp 
+     chmod –R 755 /hdp/apps
+     ```
 
--   **Spark 2.3**
+- **Spark 2.3**
 
-    -   \[[*Platforma SPARK 23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] niepoprawny wynik spowodowany przez regułę OptimizeMetadataOnlyQuery
+  -   \[[*Platforma SPARK 23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] niepoprawny wynik spowodowany przez regułę OptimizeMetadataOnlyQuery
 
-    -   \[[*Platforma SPARK 23406* ](https://issues.apache.org/jira/browse/SPARK-23406) \] samosprzężenia usterki w usłudze stream strumienia
+  -   \[[*Platforma SPARK 23406* ](https://issues.apache.org/jira/browse/SPARK-23406) \] samosprzężenia usterki w usłudze stream strumienia
 
-    -   Notesy przykładowe Spark nie są dostępne po domyślnego magazynu klastra usługi Azure Data Lake Storage (Gen2).
+  -   Notesy przykładowe Spark nie są dostępne po domyślnego magazynu klastra usługi Azure Data Lake Storage (Gen2).
 
--   **Pakiet Enterprise Security**
+- **Pakiet Enterprise Security**
 
-    - Spark Thrift Server nie akceptuje połączenia od klientów ODBC.
-      Instrukcje dotyczące obejścia:
-      1. Poczekaj około 15 minut po utworzeniu klastra.
-      2. Sprawdź ranger interfejsu użytkownika dla istnienie hivesampletable_policy.
-      3. Uruchom ponownie usługę Spark.
-         Połączenie usługi STS powinny teraz działać.
+  - Spark Thrift Server nie akceptuje połączenia od klientów ODBC.
+    Instrukcje dotyczące obejścia:
+    1. Poczekaj około 15 minut po utworzeniu klastra.
+    2. Sprawdź ranger interfejsu użytkownika dla istnienie hivesampletable_policy.
+    3. Uruchom ponownie usługę Spark.
+       Połączenie usługi STS powinny teraz działać.
 
--   **Obejście niepowodzenie sprawdzania usług platformy Ranger**
+- **Obejście niepowodzenie sprawdzania usług platformy Ranger**
 
-    -   [RANGER 1607](https://issues.apache.org/jira/browse/RANGER-1607): Obejście niepowodzenie sprawdzania usługa Ranger podczas uaktualniania do HDP 2.6.2 z poprzednich wersji HDP.
+  -   [RANGER 1607](https://issues.apache.org/jira/browse/RANGER-1607): Obejście niepowodzenie sprawdzania usługa Ranger podczas uaktualniania do HDP 2.6.2 z poprzednich wersji HDP.
 
-        > [!NOTE]  
-        > Tylko gdy Ranger jest włączony protokół SSL. 
+      > [!NOTE]  
+      > Tylko gdy Ranger jest włączony protokół SSL. 
      
-    Ten problem pojawia się podczas próby uaktualnienia do wersji 2.6.1 HDP z poprzednich wersji HDP za pomocą systemu Ambari. Ambari używa wywołań programu curl, aby sprawdzić usługi do usługi platformy Ranger w Ambari. Jeśli wersja zestawu JDK używana przez narzędzia Ambari jest zestaw JDK 1.7, wywołanie curl zakończy się niepowodzeniem z poniższy błąd:
+  Ten problem pojawia się podczas próby uaktualnienia do wersji 2.6.1 HDP z poprzednich wersji HDP za pomocą systemu Ambari. Ambari używa wywołań programu curl, aby sprawdzić usługi do usługi platformy Ranger w Ambari. Jeśli wersja zestawu JDK używana przez narzędzia Ambari jest zestaw JDK 1.7, wywołanie curl zakończy się niepowodzeniem z poniższy błąd:
     
-    `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
+  `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
     
-    Przyczyną tego błędu jest tomcat wersja programu używana w Ranger Tomcat 7.0.7\*. Za pomocą zestawu JDK 1.7 powoduje konflikt z szyfrów domyślne podawany Tomcat 7.0.7\*.
+  Przyczyną tego błędu jest tomcat wersja programu używana w Ranger Tomcat 7.0.7\*. Za pomocą zestawu JDK 1.7 powoduje konflikt z szyfrów domyślne podawany Tomcat 7.0.7\*.
     
-    Można rozwiązać ten problem, na dwa sposoby:
+  Można rozwiązać ten problem, na dwa sposoby:
     
-    -   Zaktualizuj zestaw JDK używane w Ambari z zestaw JDK 1.7 zestaw JDK 1.8 (zobacz sekcję [Zmień wersję zestawu JDK](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html) w podręczniku systemu Ambari).
+  -   Zaktualizuj zestaw JDK używane w Ambari z zestaw JDK 1.7 zestaw JDK 1.8 (zobacz sekcję [Zmień wersję zestawu JDK](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html) w podręczniku systemu Ambari).
     
-    -   Jeśli chcesz kontynuować obsługę środowiska zestaw JDK 1.7:
+  -   Jeśli chcesz kontynuować obsługę środowiska zestaw JDK 1.7:
     
-        1.  Dodaj ranger.tomcat.ciphers właściwości w sekcji witryna w przypadku administratora platformy ranger w konfiguracji platformy Ambari Ranger za pomocą poniższych wartości:
+      1.  Dodaj ranger.tomcat.ciphers właściwości w sekcji witryna w przypadku administratora platformy ranger w konfiguracji platformy Ambari Ranger za pomocą poniższych wartości:
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
         
-        2.  Jeśli środowisko jest konfigurowane dla zasad Ranger KMS, należy dodać ranger.tomcat.ciphers właściwości w sekcji theranger kms lokacji w konfiguracji platformy Ambari Ranger za pomocą poniższych wartości:
+      2.  Jeśli środowisko jest konfigurowane dla zasad Ranger KMS, należy dodać ranger.tomcat.ciphers właściwości w sekcji theranger kms lokacji w konfiguracji platformy Ambari Ranger za pomocą poniższych wartości:
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]  
-    >Wartości dostrzeżone pracy przykłady i może nie wskazywać środowiska. Upewnij się, że jest zgodny sposób ustawiania tych właściwości, jak środowisko jest konfigurowane.   
+  >[!NOTE]  
+  >Wartości dostrzeżone pracy przykłady i może nie wskazywać środowiska. Upewnij się, że jest zgodny sposób ustawiania tych właściwości, jak środowisko jest konfigurowane.   
 
--   **RangerUI: Specjalna treść warunku zasad wprowadzonym w formularzu zasad**
+- **RangerUI: Specjalna treść warunku zasad wprowadzonym w formularzu zasad**
     
-    **Składnik, których to dotyczy:** platformy Ranger
+  **Składnik, których to dotyczy:** Ranger
     
-    **Opis problemu**
+  **Opis problemu**
     
-    Jeśli użytkownik chce, aby utworzyć zasady za pomocą zasad niestandardowych warunków i wyrażenie lub tekst zawiera znaki specjalne, wymuszanie zasad nie będzie działać. Znaki specjalne są konwertowane na ASCII w przed zapisaniem zasad do bazy danych.
+  Jeśli użytkownik chce, aby utworzyć zasady za pomocą zasad niestandardowych warunków i wyrażenie lub tekst zawiera znaki specjalne, wymuszanie zasad nie będzie działać. Znaki specjalne są konwertowane na ASCII w przed zapisaniem zasad do bazy danych.
     
-    **Znaki specjalne:**   &  &lt; &gt; " \` "
+  **Znaki specjalne:**  &  &lt; &gt; " \` "
     
-    Na przykład tags.attributes warunek\["type"\]= "abc" będą konwertowane do następującego po zapisaniu zasad.
+  Na przykład tags.attributes warunek\["type"\]= "abc" będą konwertowane do następującego po zapisaniu zasad.
     
-    tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
+  tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
     
-    Możesz zobaczyć warunek zasad z tych znaków, otwierając zasady w trybie edycji.
+  Możesz zobaczyć warunek zasad z tych znaków, otwierając zasady w trybie edycji.
     
-    **Obejście problemu**
+  **Obejście problemu**
     
-    - **Opcja \#1: Utwórz/zaktualizuj zasady za pomocą interfejsu API Rest platformy Ranger**
+  - **Opcja \#1: Utwórz/zaktualizuj zasady za pomocą interfejsu API Rest platformy Ranger**
         
-        Adres URL usługi REST: http://&lt;hosta&gt;: 6080/service/wtyczek/zasady
+      Adres URL usługi REST: http://&lt;hosta&gt;: 6080/service/wtyczek/zasady
         
-        **Tworzenie zasad z warunkiem zasad:**
+      **Tworzenie zasad z warunkiem zasad:**
         
-        W poniższym przykładzie zostanie utworzony zasad z tagami jako \`testu tagi\` i przypisz ją do \`publicznych\` grupy za pomocą zasad warunek astags.attr\["type"\]== "abc", wybierając wszystkie uprawnienia składnika hive, takich jak wybierz aktualizacji, utworzyć, porzucić, alter, indeksować, Zablokuj wszystko.
+      W poniższym przykładzie zostanie utworzony zasad z tagami jako \`testu tagi\` i przypisz ją do \`publicznych\` grupy za pomocą zasad warunek astags.attr\["type"\]== "abc", wybierając wszystkie uprawnienia składnika hive, takich jak wybierz aktualizacji, utworzyć, porzucić, alter, indeksować, Zablokuj wszystko.
         
-        **Przykład:**
+      **Przykład:**
         
-        `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
+      `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
         
-        **Aktualizacja istniejących zasad z warunkiem zasad:**
+      **Aktualizacja istniejących zasad z warunkiem zasad:**
         
-        Poniższy przykład spowoduje zaktualizowanie zasad z tagami jako \`testu tagi\` i przypisz ją do \`publicznych\` grupy za pomocą zasad warunek astags.attr\["type"\]== "abc", wybierając wszystkie uprawnienia składnika hive, takich jak wybierz aktualizacji, utworzyć, porzucić, alter, indeksować, Zablokuj wszystko.
+      Poniższy przykład spowoduje zaktualizowanie zasad z tagami jako \`testu tagi\` i przypisz ją do \`publicznych\` grupy za pomocą zasad warunek astags.attr\["type"\]== "abc", wybierając wszystkie uprawnienia składnika hive, takich jak wybierz aktualizacji, utworzyć, porzucić, alter, indeksować, Zablokuj wszystko.
         
-        Adres URL usługi REST: http://&lt;nazwy hosta&gt;:6080/service/wtyczek/zasady/&lt;identyfikator zasad&gt;
+      Adres URL usługi REST: http://&lt;nazwy hosta&gt;:6080/service/wtyczek/zasady/&lt;identyfikator zasad&gt;
         
-        **Przykład:**
+      **Przykład:**
         
-        `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
+      `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **Opcja \#2: Stosowanie zmian kodu Javascript**
+  - **Opcja \#2: Stosowanie zmian kodu Javascript**
         
-        Kroki, aby zaktualizować plik JS:
+      Kroki, aby zaktualizować plik JS:
         
-        1.  Dowiedz się, plik PermissionList.js pod /usr/hdp/current/ranger-admin
+      1.  Dowiedz się, plik PermissionList.js pod /usr/hdp/current/ranger-admin
         
-        2.  Dowiedz się, definicja funkcji renderPolicyCondtion (wiersz nie: 404).
+      2.  Dowiedz się, definicja funkcji renderPolicyCondtion (wiersz nie: 404).
         
-        3.  Usuń następujący wiersz z tym tj — funkcja w obszarze funkcja wyświetlania (wiersz nie: 434)
+      3.  Usuń następujący wiersz z tym tj — funkcja w obszarze funkcja wyświetlania (wiersz nie: 434)
             
-            Val = \_.escape(val);//Line nie: 460
+          Val = \_.escape(val);//Line nie: 460
             
-            Po usunięciu powyższy wiersz, interfejs użytkownika platformy Ranger pozwoli na tworzenie zasad z warunkiem zasad, który może zawierać znaków specjalnych i zasady oceny zakończy się pomyślnie dla tych samych zasad.
+          Po usunięciu powyższy wiersz, interfejs użytkownika platformy Ranger pozwoli na tworzenie zasad z warunkiem zasad, który może zawierać znaków specjalnych i zasady oceny zakończy się pomyślnie dla tych samych zasad.
 
 **HDInsight Integracja z usługą Azure Data Lake Store Gen 2: Problem katalogów i uprawnienia użytkownika przy użyciu klastrów ESP**
     1.  Katalogi macierzyste dla użytkowników nie są tworzonych na 1 węzeł główny. Obejście polega na tych ręcznie utworzyć i zmienić własność na nazwę UPN odpowiedniego użytkownika.

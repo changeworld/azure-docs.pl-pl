@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 6cd1d917be67d21e3e6dfe54ed5dec77b92509e9
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e4037e79812f0cf548ddfcc277c1b66332e0f1f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821459"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902879"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -61,7 +61,7 @@ Teraz możesz operacjonalizować potoków w czasie rzeczywistym przy użyciu zar
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Program Visual Studio Code dla usługi Azure Stream Analytics
 
-Zadania usługi Azure Stream Analytics mogą być tworzone w programie Visual Studio Code. Aby uzyskać dostęp do narzędzi prywatnej wersji zapoznawczej funkcji, skontaktuj się z pomocą do *ASAToolsfeedback@microsoft.com*.
+Zadania usługi Azure Stream Analytics mogą być tworzone w programie Visual Studio Code. Aby uzyskać dostęp do narzędzi prywatnej wersji zapoznawczej funkcji, skontaktuj się z pomocą do *ASAToolsfeedback\@microsoft.com*.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

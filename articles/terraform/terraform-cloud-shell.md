@@ -2,19 +2,19 @@
 title: Używanie narzędzia Terraform z usługą Azure Cloud Shell
 description: Korzystając z narzędzia Terraform z usługą Azure Cloud Shell, można uprościć uwierzytelnianie i konfigurowanie szablonów.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, scale set, virtual machine, network, storage, modules
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: af71cf07ea12e605f57d34b530fcbcd61838128b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: ab2fd0c7fa546201d6eb19f727053a9ac54fa854
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074548"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773067"
 ---
 # <a name="terraform-cloud-shell-development"></a>Programowanie za pomocą narzędzia Terraform w usłudze Cloud Shell 
 
@@ -48,7 +48,7 @@ Pliki i stany powłoki pozostają w usłudze Azure Storage między sesjami usłu
 W usłudze Cloud Shell jest dostępny interfejs wiersza polecenia platformy Azure, który stanowi doskonałe narzędzie do testowania konfiguracji i kontrolowania pracy po wykonaniu polecenia `terraform apply` lub `terraform destroy`.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Tworzenie niewielkiego klastra maszyn wirtualnych za pomocą rejestru modułu](terraform-create-vm-cluster-module.md)
 [Tworzenie niewielkiego klastra maszyn wirtualnych za pomocą niestandardowego języka HCL](terraform-create-vm-cluster-with-infrastructure.md)

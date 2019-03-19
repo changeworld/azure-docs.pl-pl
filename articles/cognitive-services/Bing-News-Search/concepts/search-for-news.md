@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: scottwhi
-ms.openlocfilehash: b7da1782491c4317713aafe54c4fd01c2c7110a9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 612a3961d901f53147ab2f3cfeea20f9c11d96b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880775"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087860"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Wyszukiwanie wiadomości za pomocą interfejsu API wyszukiwania wiadomości Bing
 
@@ -261,7 +261,7 @@ Jeśli istnieją inne artykuły, które są powiązane z artykułem z wiadomośc
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-[Jak przechodzić do kolejnych stron wyników wyszukiwania wiadomości Bing](../paging-news.md)
+> [Jak przechodzić do kolejnych stron wyników wyszukiwania wiadomości Bing](../paging-news.md)

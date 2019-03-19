@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 799a40d759dc5614bd43234638982d5275d9d325
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: da465fb9fe51b2be5ec90df1ac75c50271db87a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429200"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992066"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -426,9 +426,9 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
    Za pomocą drbd synchronizować dane z jednego hosta na inny, może wystąpić tak zwany mózg podziału. Mózg podziału jest scenariusz, w których oba węzły klastra promowane drbd urządzenia jako podstawowy, a poszło zsynchronizowane. Może być rzadkich sytuacji, ale nadal chcesz obsługiwać i rozwiązać podziałem tak szybko, jak to możliwe. W związku z tym jest ważne, aby otrzymywać powiadomienia, gdy wystąpiło mózg podziału.
 
-   Odczyt [dokumentacji oficjalnego drbd](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) na temat sposobu konfigurowania powiadomień mózg podziału.
+   Odczyt [dokumentacji oficjalnego drbd](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) na temat sposobu konfigurowania powiadomień mózg podziału.
 
-   Istnieje również możliwość automatycznego odzyskiwania po scenariuszu mózg podziału. Aby uzyskać więcej informacji, przeczytaj [zasady odzyskiwania mózg podziału automatyczne](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
+   Istnieje również możliwość automatycznego odzyskiwania po scenariuszu mózg podziału. Aby uzyskać więcej informacji, przeczytaj [zasady odzyskiwania mózg podziału automatyczne](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
    
 ### <a name="configure-cluster-framework"></a>Konfigurowanie klastra Framework
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 25fdce2381cc6dd65559a2450a42de5389589863
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7c4bd326c597b8e989dfc7aac5239ddb2d38376a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884775"
 ---
 # <a name="saas-application-storefront-details-tab"></a>Karta szczegółów Storefront aplikacji SaaS
 
@@ -37,7 +37,7 @@ W poniższej tabeli opisano szczegóły Storefront, zapewniające dla oferty.
 |  **Pola oferty**   |  **Opis**  |
 |  ---------------   |  ---------------  |
 |      Podsumowanie oferty              |        Podsumowanie Twoja oferta korzyści. Pojawi się na stronie wyszukiwania swojej oferty. Należy się z maksymalnie 100 znaków.           |
-|      Opis oferty              |      Opis, który będzie wyświetlany na stronie szczegółów aplikacji. Maksymalna dozwolona wartość to 1300 znaków. Można użyć podstawowa znaczników HTML do formatowania zawartości. Na przykład &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt;, i &lt;li&gt;. Aby zobaczyć, jak będzie wyglądać sformatowana opis, narzędzie online w czasie rzeczywistym HTML np. http://htmledit.squarefree.com             |
+|      Opis oferty              |      Opis, który będzie wyświetlany na stronie szczegółów aplikacji. Maksymalna dozwolona wartość to 1300 znaków. Można użyć podstawowa znaczników HTML do formatowania zawartości. Na przykład &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt;, i &lt;li&gt;. Aby zobaczyć, jak będzie wyglądać sformatowana opis, narzędzie online w czasie rzeczywistym HTML np. https://htmledit.squarefree.com             |
 |          Branże          |        Wybierz przedsiębiorstw, które oferty najlepiej jest wyrównany do. Jeśli aplikacja odnosi się do wielu branżach, możesz wybrać maksymalnie dwóch.           |
 |          Sugerowane kategorie (maks. 3)         |        Wybierz kategorie, które oferty najlepiej jest wyrównany do. Możesz wybrać maksymalnie trzy kategorie.           |
 |           Wersja aplikacji         |        Wprowadź numer wersji aplikacji.           |
@@ -56,7 +56,7 @@ W poniższej tabeli opisano pola, Marketing artefaktów.
 |                    |                   |
 |                    |                   |
 |                    |                   |
-|          Logo          |        Jeśli jest to sprzedaż za pośrednictwem aplikacji SaaS firmy Microsoft, należy podać wszystkie obrazy logo. Jeśli to jest lista logo tylko 2 są wymagane. Użyj następującego wytycznych dotyczących logo przekazany w portalu Cloud Partner:<br><ul><li>Niskich numer podstawowy i pomocniczy kolory na logo. Projekt platformy Azure ma prostą paletę kolorów. </li><li>Należy unikać używania czarne lub białe jako kolor tła logo. Kolory motywu w witrynie Azure Portal jest czarno biały. Zamiast tego należy użyć niektórych kolorów, która spowodowałaby wprowadzenie logo widocznym w witrynie Azure Portal. Zalecamy proste kolory podstawowe. Jeśli używasz przezroczyste tło, upewnij się, że obrazy logo i tekst są czarny, biały lub niebieski. </li><li>Nie używaj gradientu tła na logo. </li><li>Należy unikać wprowadzania tekstu, nawet Twoja firma lub nazwa marki na logo. Wygląd i działanie logo powinno być "płaską" i unikać gradientów.</li><li>Obraz logo nie powinien być rozciągnięty.</li></ul>            |
+|          Logos          |        Jeśli jest to sprzedaż za pośrednictwem aplikacji SaaS firmy Microsoft, należy podać wszystkie obrazy logo. Jeśli to jest lista logo tylko 2 są wymagane. Użyj następującego wytycznych dotyczących logo przekazany w portalu Cloud Partner:<br><ul><li>Niskich numer podstawowy i pomocniczy kolory na logo. Projekt platformy Azure ma prostą paletę kolorów. </li><li>Należy unikać używania czarne lub białe jako kolor tła logo. Kolory motywu w witrynie Azure Portal jest czarno biały. Zamiast tego należy użyć niektórych kolorów, która spowodowałaby wprowadzenie logo widocznym w witrynie Azure Portal. Zalecamy proste kolory podstawowe. Jeśli używasz przezroczyste tło, upewnij się, że obrazy logo i tekst są czarny, biały lub niebieski. </li><li>Nie używaj gradientu tła na logo. </li><li>Należy unikać wprowadzania tekstu, nawet Twoja firma lub nazwa marki na logo. Wygląd i działanie logo powinno być "płaską" i unikać gradientów.</li><li>Obraz logo nie powinien być rozciągnięty.</li></ul>            |
 |          Filmy wideo          |         Umożliwia dodawanie łączy filmów wideo w swojej oferty. Możesz użyć linków do serwisu YouTube lub Vimeo filmów wideo, które są wyświetlane wraz z ofertą dla klientów. Należy również wprowadzić obraz miniatury wideo z obrazem png 1280 x 720 pikseli. Może mieć maksymalnie cztery filmów wideo na ofertę.          |
 |          Dokumenty          |          Umożliwia dodawanie dokumentów marketingowych oferty. Wszystkie dokumenty muszą być w formacie PDF i może mieć co najwyżej trzech dokumentów na ofertę.         |
 |        Zrzuty ekranu            |         Umożliwia dodanie zrzutów ekranu oferty. Istnieje więcej niż pięć zrzuty ekranu, które mogą zostać dodane na ofertę. Rozmiar maksymalny obrazu to 1280 x 720 pikseli.          |

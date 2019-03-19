@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fee91b857d9fd127839baaf7a70199c25cfab33
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e28a0e9b69a79311836afbd0ba29d0ca4428ad98
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191643"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą SumoLogic
 
@@ -116,6 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<tenantname>.SumoLogic.com`
 
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `https://<tenantname>.us2.sumologic.com` |
@@ -145,7 +146,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     ![Zarządzanie](./media/sumologic-tutorial/ic778556.png "Zarządzanie")
 
-1. Kliknij przycisk **SAML**.
+1. Kliknij pozycję **SAML**.
    
     ![Ustawienia zabezpieczeń globalnych](./media/sumologic-tutorial/ic778557.png "ustawienia zabezpieczeń globalnych")
 
@@ -218,7 +219,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do SumoLogic, musi 
 
 1. Zaloguj się do Twojej **SumoLogic** dzierżawy.
 
-1. Przejdź do **zarządzanie \> użytkowników**.
+1. Przejdź do pozycji **Manage \> Users** (Zarządzaj > Użytkownicy).
    
     ![Użytkownicy](./media/sumologic-tutorial/ic778561.png "Użytkownicy")
 
@@ -280,7 +281,7 @@ Po kliknięciu kafelka SumoLogic w panelu dostępu, użytkownik powinien uzyska�
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

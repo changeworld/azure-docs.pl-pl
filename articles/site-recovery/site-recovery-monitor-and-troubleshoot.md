@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: 7deea91a016616d9015004857ad9e5ae70e24111
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5bbde2f1059982424c2557d6a767692b3491f6aa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432876"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098478"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorowanie i rozwiązywanie problemów Site Recovery
 
@@ -149,19 +149,19 @@ Na pulpicie nawigacyjnym dodatku można monitorować maszyn, na stronie maszyn w
     ![Usługa Site Recovery zreplikowane elementy widoku listy](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
 2. Na **zreplikowane elementy** strony, można wyświetlić i filtrować informacje. W menu Akcja u góry można wykonać akcje dla określonego komputera, takich jak uruchamianie testu trybu failover lub wyświetlanie określonych błędów.
-3.  Kliknij przycisk **kolumn** Aby wyświetlić dodatkowe kolumny, na przykład wyświetlić cel punktu odzyskiwania, przeznaczony dla problemów z konfiguracją oraz błędy replikacji.
+3. Kliknij przycisk **kolumn** Aby wyświetlić dodatkowe kolumny, na przykład wyświetlić cel punktu odzyskiwania, przeznaczony dla problemów z konfiguracją oraz błędy replikacji.
 4. Kliknij przycisk **filtr** do wyświetlania informacji na podstawie określonych parametrów, takich jak kondycja replikacji lub zasady replikacji w określonej.
 5. Kliknij prawym przyciskiem myszy maszynę, aby zainicjować operacji, takich jak testowanie trybu failover dla niego lub aby wyświetlić szczegółowe informacje o błędzie skojarzony z nim.
 6. Kliknij maszynę, aby przejść do bardziej szczegółowe informacje dla niego. Szczegółowe informacje obejmują:
-      - **Informacje o replikacji**: Bieżący stan i kondycję komputera.
-      - **Cel punktu odzyskiwania** (cel punktu odzyskiwania): Bieżący cel punktu odzyskiwania dla maszyny wirtualnej i czas ostatniego obliczane cel punktu odzyskiwania.
-      - **Punkty odzyskiwania**: Najnowsze dostępne punkty odzyskiwania dla maszyny.
-      - **Gotowość do pracy awaryjnej**: Wskazuje, czy test trybu failover zostało uruchomione dla komputera, wersja agenta uruchomione na maszynie (dla maszyn, na którym jest uruchomiona usługa mobilności) oraz problemów dotyczących konfiguracji.
-      - **Błędy**: Lista objawy błąd replikacji obecnie obserwowana na komputera i możliwych przyczyn/działań.
-      - **Zdarzenia**: Chronologiczną listę ostatnie zdarzenia wpływające na ochronę na maszynie. Szczegóły błędu pokazuje objawy błędu obecnie zauważalne, gdy zdarzenia jest historycznym problemy, które mają wpływ na maszynie.
-      - **Widok infrastruktury**: Pokazuje stan infrastruktury dla scenariusza podczas replikowania maszyn na platformę Azure.
+   - **Informacje o replikacji**: Bieżący stan i kondycję komputera.
+   - **Cel punktu odzyskiwania** (cel punktu odzyskiwania): Bieżący cel punktu odzyskiwania dla maszyny wirtualnej i czas ostatniego obliczane cel punktu odzyskiwania.
+   - **Punkty odzyskiwania**: Najnowsze dostępne punkty odzyskiwania dla maszyny.
+   - **Gotowość do pracy awaryjnej**: Wskazuje, czy test trybu failover zostało uruchomione dla komputera, wersja agenta uruchomione na maszynie (dla maszyn, na którym jest uruchomiona usługa mobilności) oraz problemów dotyczących konfiguracji.
+   - **Błędy**: Lista objawy błąd replikacji obecnie obserwowana na komputera i możliwych przyczyn/działań.
+   - **Zdarzenia**: Chronologiczną listę ostatnie zdarzenia wpływające na ochronę na maszynie. Szczegóły błędu pokazuje objawy błędu obecnie zauważalne, gdy zdarzenia jest historycznym problemy, które mają wpływ na maszynie.
+   - **Widok infrastruktury**: Pokazuje stan infrastruktury dla scenariusza podczas replikowania maszyn na platformę Azure.
 
-    ![Usługa Site Recovery zreplikowany element szczegóły/Przegląd](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
+     ![Usługa Site Recovery zreplikowany element szczegóły/Przegląd](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
 
 ### <a name="common-questions"></a>Często zadawane pytania
@@ -191,7 +191,7 @@ Można subskrybować otrzymywanie powiadomień e-mail dla tych zdarzeń krytyczn
 Subskrybuj w następujący sposób:
 
 W magazynie > **monitorowanie i raporty** kliknij **zdarzeń usługi Site Recovery**.
-2. Kliknij przycisk **wiadomości E-mail z powiadomieniami**.
-3. W **powiadomienia E-mail**włączymy powiadomienia i określić, kto wysyłać. Możesz wysłać wysłane do wszystkich administratorów subskrypcji powiadomień i adresy opcjonalnie określonej wiadomości e-mail.
+1. Kliknij przycisk **wiadomości E-mail z powiadomieniami**.
+1. W **powiadomienia E-mail**włączymy powiadomienia i określić, kto wysyłać. Możesz wysłać wysłane do wszystkich administratorów subskrypcji powiadomień i adresy opcjonalnie określonej wiadomości e-mail.
 
     ![Powiadomienia e-mail](./media/site-recovery-monitor-and-troubleshoot/email.png)

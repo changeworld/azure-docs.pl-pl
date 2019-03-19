@@ -3,16 +3,16 @@ title: Wprowadzenie do programu Terraform na platformie Azure.
 description: Rozpocznij pracę z programem Terraform na platformie Azure od wdrożenia usług Azure Cosmos DB i Azure Container Instances.
 services: terraform
 author: neilpeterson
-ms.service: terraform
+ms.service: azure
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: b3d872008c95d94a8401e6f38665c3c88616a168
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 6c858514c29a040539516f42e024f1633c2512a7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736927"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776534"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Tworzenie konfiguracji programu Terraform na platformie Azure
 
@@ -160,7 +160,7 @@ Gdy skończysz, zasoby i grupy zasobów platformy Azure można usunąć za pomoc
 terraform destroy -auto-approve
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przykładzie utworzono, wdrożono i zniszczono konfigurację programu Terraform. Aby uzyskać więcej informacji na temat korzystania z programu Terraform na platformie Azure, zapoznaj się z dokumentacją dostawcy programu Terraform na platformie Azure.
 

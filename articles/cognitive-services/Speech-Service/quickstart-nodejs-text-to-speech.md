@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5e25de83ddec2884d4bd10ea85f4708d534b8e3f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: eff79b31e926d382d98416b585ca2af54b3e87d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403247"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872650"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Szybki start: Konwertowanie tekstu na mowę, przy użyciu środowiska Node.js
 
@@ -30,7 +30,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 * Środowisko [Node w wersji 8.12.x lub nowszej](https://nodejs.org/en/)
 * Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
-* Klucz subskrypcji platformy Azure dla usługi Mowa. [Bezpłatnie Uzyskaj ją! ](get-started.md).
+* Klucz subskrypcji platformy Azure dla usług przetwarzania mowy. [Bezpłatnie Uzyskaj ją! ](get-started.md).
 
 ## <a name="create-a-project-and-require-dependencies"></a>Tworzenie projektu i wymagają zależności
 
@@ -53,9 +53,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>Pobranie tokenu dostępu
 
-Zamiany tekstu na mowę interfejsu API REST wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ta funkcja wymienia klucz subskrypcji usługa rozpoznawania mowy, aby uzyskać dostęp do tokenu przy użyciu `issueToken` punktu końcowego.
+Zamiany tekstu na mowę interfejsu API REST wymaga tokenu dostępu do uwierzytelniania. Aby uzyskać token dostępu, wymagana jest wymiana. Ta funkcja wymienia klucz subskrypcji usług przetwarzania mowy, aby uzyskać dostęp do tokenu przy użyciu `issueToken` punktu końcowego.
 
-W tym przykładzie przyjęto założenie, że subskrypcji usługa rozpoznawania mowy znajduje się w regionie zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość `uri`. Aby uzyskać pełną listę, zobacz [regionów](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+W tym przykładzie przyjęto założenie, że subskrypcji usług przetwarzania mowy znajduje się w regionie zachodnie stany USA. Jeśli używasz innego regionu, zaktualizuj wartość `uri`. Aby uzyskać pełną listę, zobacz [regionów](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Skopiuj ten kod do projektu:
 
@@ -80,7 +80,7 @@ W następnej sekcji utworzymy funkcja do wywołania interfejsu API zamiany tekst
 
 ## <a name="make-a-request-and-save-the-response"></a>Tworzenie żądania i zapisać odpowiedź
 
-W tym miejscu możesz zacząć tworzenie żądań do interfejsu API zamiany tekstu na mowę i zapisywanie odpowiedzi mowy. W tym przykładzie przyjęto założenie, że używasz punktu końcowego zachodnie stany USA. Jeśli zasób jest zarejestrowany w innym regionie, pamiętaj o zaktualizowaniu `uri`. Aby uzyskać więcej informacji, zobacz [regionach usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+W tym miejscu możesz zacząć tworzenie żądań do interfejsu API zamiany tekstu na mowę i zapisywanie odpowiedzi mowy. W tym przykładzie przyjęto założenie, że używasz punktu końcowego zachodnie stany USA. Jeśli zasób jest zarejestrowany w innym regionie, pamiętaj o zaktualizowaniu `uri`. Aby uzyskać więcej informacji, zobacz [regionów usług przetwarzania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Następnie należy dodać wymagane nagłówki żądania. Upewnij się, że aktualizujesz `User-Agent` nazwą zasobu (znajdujący się w witrynie Azure portal) i ustaw `X-Microsoft-OutputFormat` do preferowanego danych wyjściowych audio. Aby uzyskać pełną listę formatów danych wyjściowych, zobacz [danych wyjściowych Audio](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs).
 

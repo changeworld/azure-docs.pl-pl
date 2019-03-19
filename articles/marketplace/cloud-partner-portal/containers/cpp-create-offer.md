@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 71a69a8c299d4469c151102b0dbd5cdb70c296ec
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900084"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Tworzenie nowej oferty kontenera za pomocą portalu Cloud Partner
 
@@ -34,7 +34,7 @@ W tym artykule opisano, jak tworzyć i publikować wpis oferty kontenera dla wit
 
 ## <a name="new-offer-form"></a>Nowy formularz oferty 
 
-Zaloguj się do [portalu Cloud Partner](http://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **kontenery** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty kontenera.
+Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **kontenery** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty kontenera.
 
 ![Wybierz opcję kontenerów na potrzeby nowej oferty](./media/azure-container-offer.png)
 

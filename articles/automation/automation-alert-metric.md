@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7932d057a348957d369ba325044055ac8dfe3428
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185872"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170194"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorowanie elementów runbook z alertów dotyczących metryk
 
@@ -36,6 +36,9 @@ W witrynie Azure portal przejdź do swojego konta usługi Automation. W obszarze
 2. **Konfigurowanie logiki sygnału** strona jest, gdzie należy zdefiniować logikę, która wyzwala alert. W obszarze wykresu historycznych, dostępne są dwa wymiary **nazwa elementu Runbook** i **stan**. Wymiary są różne właściwości metryk, który może służyć do filtrowania wyników. Aby uzyskać **nazwa elementu Runbook**, wybierz element runbook ma być alert po wystąpieniu lub pozostaw pustą wartość alert na wszystkich elementów runbook. Aby uzyskać **stan**, wybierz stan z listy rozwijanej, aby monitorować. Element runbook nazwę i stan wartości, które pojawiają się na liście rozwijanej są tylko w przypadku zadań uruchomionych w ostatnim tygodniu.
 
    Jeśli chcesz utworzyć alerty dotyczące stanu lub element runbook, który nie jest wyświetlana na liście rozwijanej, kliknij przycisk **\+** obok wymiaru. Ta akcja powoduje otwarcie okna dialogowego, która pozwala na wprowadź wartość niestandardową nie zostało ostatnio wyemitowane dla tego wymiaru. Jeśli zostanie wprowadzona wartość, która nie istnieje dla właściwości alertu nie będą wyzwalane.
+
+   > [!NOTE]
+   > Jeśli nie zastosujesz nazwę **RunbookName** wymiaru, jeśli istnieją wszelkie elementy runbook spełniają kryteria stanu, w tym systemie ukryte elementy runbook, zostanie wyświetlony alert.
 
 3. W obszarze **Alert logic**, Zdefiniuj warunek i wartość progową alertu. Podgląd warunku zdefiniowany jest wyświetlana poniżej.
 
@@ -68,7 +71,7 @@ W witrynie Azure portal przejdź do swojego konta usługi Automation. W obszarze
 > [!NOTE]
 > Podczas dodawania adresu e-mail do grupy akcji, wiadomość e-mail z powiadomieniem są wysyłane, informujący, że adres został dodany do grupy akcji.
 
-## <a name="notification"></a>Powiadomienia
+## <a name="notification"></a>Powiadomienie
 
 Po spełnieniu kryteriów alertu grupy akcji uruchamia czynność zdefiniowana. W przykładzie w tym artykule zostanie wysłana wiadomość e-mail. Poniższy rysunek jest przykładem wiadomość e-mail, który pojawi się po wyzwoleniu alertu:
 

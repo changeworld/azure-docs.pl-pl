@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62888afb29c3b721da978c7180b36d62d6a575a8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c097fb045db1afe65a84a2a96dc202c57e8a449e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200568"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57975546"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą centralnego Cerner
 
@@ -119,6 +119,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
     
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następujących wzorców:
+    
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
@@ -210,7 +211,7 @@ Po kliknięciu kafelka Cerner centralnego w panelu dostępu, użytkownik powinie
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie aprowizacji użytkowników](cernercentral-provisioning-tutorial.md)
 

@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7605a8cee265822f133b3f72ce5de90add5fc0d0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210547"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993370"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizacja programu Azure AD Connect: Opis użytkowników, grup i kontaktów
 Istnieje kilka przyczyn, dlaczego może mieć wiele lasów usługi Active Directory i istnieje kilka topologii rozmieszczania. Typowe modeli obejmują wdrożenia zasobów konta usługi i lasów sync'ed GAL po połączeniu & pozyskiwania. Ale nawet w przypadku modeli czystego, modele hybrydowe są również wspólne. Domyślna konfiguracja przedstawiona w synchronizacji programu Azure AD Connect nie przyjmuje żadnych określonego modelu, ale w zależności od tego, jak dopasowanie użytkownika został wybrany w podręczniku instalacji, można zaobserwować inne zachowania.
@@ -51,9 +51,9 @@ Ważne punkty, które należy zwrócić uwagę podczas synchronizowania grup us�
     
       * Grupy usługi Active Directory, w których atrybut proxyAddress ma wartość *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* nie będzie włączoną obsługą poczty w usłudze Azure AD. Go nie ma adresu SMTP.
       
-      * Grupy usługi Active Directory, w których atrybut proxyAddress zawiera wartości *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe@contoso.com"}* będzie włączoną obsługą poczty w usłudze Azure AD.
+      * Grupy usługi Active Directory, w których atrybut proxyAddress zawiera wartości *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe\@contoso.com"}* będzie włączoną obsługą poczty w usłudze Azure AD.
       
-      * Grupy usługi Active Directory, w których atrybut proxyAddress zawiera wartości *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* będzie także włączoną obsługą poczty w usłudze Azure AD.
+      * Grupy usługi Active Directory, w których atrybut proxyAddress zawiera wartości *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe\@contoso.com"}* będzie także włączoną obsługą poczty w usłudze Azure AD.
 
 ## <a name="contacts"></a>Kontakty
 Kontakty reprezentujący użytkownika w innym lesie jest wspólne po połączeniu & nabycia gdzie rozwiązanie GALSync jest mostkowanie dwie lub większą liczbą lasów programu Exchange. Skontaktuj się z pomocą obiekt zawsze dołącza do przestrzeni łącznika do środowiska metaverse, za pomocą atrybutu poczty. Jeśli istnieje już obiekt kontaktu lub użytkownika za pomocą tego samego adresu poczty, obiekty są łączone ze sobą. To ustawienie jest konfigurowane w regule **w z usługi AD — skontaktuj się z Dołącz**. Dostępna jest również reguły o nazwie **w z usługi AD — skontaktuj się z wspólnej** przy użyciu przepływu atrybutu, aby atrybut metaverse **sourceObjectType** przy użyciu stałej **skontaktuj się z pomocą**. Ta reguła ma bardzo niskim priorytecie tak, jeśli dowolny obiekt użytkownika jest dołączony do tego samego obiektu metaverse, a następnie reguła **w z usługi AD — typowe użytkownika** współtworzą wartość tego atrybutu użytkownika. Z tą regułą tego atrybutu będzie mieć wartość kontaktu, jeśli żaden użytkownik nie został dołączony i wartość użytkownika, jeśli znaleziono co najmniej jednego użytkownika.

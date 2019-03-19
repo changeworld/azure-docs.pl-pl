@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cd7b2a8a70a315b05c0824a863803bbc6ffabb2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872139"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895451"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Wykrywanie typy obrazów za pomocą wizualizacji komputerowej
 
-Przetwarzanie obrazów można analizować typu zawartości obrazów, wskazując, czy obraz jest obrazem clipart, ocena prawdopodobieństwo skalowania lub rysowanie linii.
+Za pomocą [analizowanie obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API, przetwarzania obrazów może analizować typu zawartości obrazów, wskazującą, czy obraz jest clipart lub rysowanie linii.
 
 ## <a name="detecting-clip-art"></a>Wykrywanie clipart
 
@@ -115,4 +115,4 @@ Następujące odpowiedzi JSON przedstawiono co przetwarzania obrazów zwraca, gd
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pojęcia dotyczące [tagowanie obrazów](concept-tagging-images.md) i [kategoryzowanie obrazów](concept-categorizing-images.md).
+Zobacz [analizowanie obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) dokumentacji, aby dowiedzieć się, jak wykryć typy obrazów.

@@ -16,12 +16,12 @@ ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe9a10c85efa2f52a04f5c2fab87421a08f0a16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199803"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118446"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Usługa Azure Active Directory Connect sync: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
 Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
@@ -50,7 +50,7 @@ Obszarach geograficznych w usłudze Office 365 dostępne dla wielu regionów geo
 | Indie | IND |
 | Japonia | JPN |
 | Korea | KOR |
-| Wielka Brytania | GBR |
+| Zjednoczone Królestwo | GBR |
 | Stany Zjednoczone | NAZWA |
 
 * Jeśli georegionu nie znajduje się w tej tabeli (na przykład, Ameryka Południowa), następnie go nie można używać dla wielu regionów geograficznych.
@@ -192,8 +192,8 @@ Ogólnie rzecz biorąc cyklu Pełna synchronizacja jest wymagana. Jest to spowod
    3. W oknie dialogowym wybierz **pełny Import**i wybierz **OK**.
    4. Poczekaj na zakończenie operacji.
 
-    > [!NOTE]
-    > Jeśli atrybut źródłowy znajduje się już na liście atrybutów zaimportowane, możesz pominąć pełny import na łącznika lokalnej usługi Active Directory. Oznacza to nie trzeba wprowadzać zmian w kroku 2, w tym artykule.
+      > [!NOTE]
+      > Jeśli atrybut źródłowy znajduje się już na liście atrybutów zaimportowane, możesz pominąć pełny import na łącznika lokalnej usługi Active Directory. Oznacza to nie trzeba wprowadzać zmian w kroku 2, w tym artykule.
 
 2. Uruchom **pełny import** w programie Azure AD Connector:
 

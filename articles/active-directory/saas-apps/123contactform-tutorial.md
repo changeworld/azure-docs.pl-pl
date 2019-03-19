@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5211910a-ab96-4709-959a-524c4d57c43e
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2450548858d3b7eab3fda11b7f309519f6b871c8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 768afe007141eacbcea1560d3ec1676d9a7d2867
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869045"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją 123ContactForm
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację aplikacji 123ContactForm z usługą Azure AD, mus
 
 **Aby dodać aplikację 123ContactForm z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -139,11 +139,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji 123Contact
 
     ![Konfigurowanie logowania jednokrotnego](./media/123contactform-tutorial/submit.png) 
 
-    a. W polu tekstowym **Email (Adres e-mail)** wpisz adres e-mail użytkownika, na przykład **BrittaSimon@Contoso.com**.
+    a. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **BrittaSimon\@Contoso.com**.
 
     b. Kliknij pozycję **Upload (Przekazywanie)** i przejdź do pobranego pliku XML metadanych, który został pobrany z witryny Azure Portal.
 
-    d. Kliknij pozycję **SUBMIT FORM (PRZEŚLIJ FORMULARZ)**.
+    c. Kliknij pozycję **SUBMIT FORM (PRZEŚLIJ FORMULARZ)**.
 
 2. Na stronie **Microsoft Azure AD - Single sign-on - Configure App Settings (Konfigurowanie ustawień aplikacji usługi Microsoft Azure AD — logowanie jednokrotne)** wykonaj następujące kroki:
 
@@ -153,7 +153,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji 123Contact
 
     b. Jeśli chcesz skonfigurować aplikację w **trybie inicjowanym przez dostawcę tożsamości**, skopiuj wartość **REPLY URL (ADRES URL ODPOWIEDZI)** dla swojego wystąpienia, a następnie wklej ją w polu tekstowym **Adres URL odpowiedzi** w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    d. Jeśli chcesz skonfigurować aplikację w **trybie inicjowanym przez dostawcę tożsamości**, skopiuj wartość **SIGN ON URL (ADRES URL LOGOWANIA)** dla swojego wystąpienia, a następnie wklej ją w polu tekstowym **Adres URL logowania** w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    c. Jeśli chcesz skonfigurować aplikację w **trybie inicjowanym przez dostawcę tożsamości**, skopiuj wartość **SIGN ON URL (ADRES URL LOGOWANIA)** dla swojego wystąpienia, a następnie wklej ją w polu tekstowym **Adres URL logowania** w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -173,7 +173,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -212,7 +212,7 @@ W tej sekcji utworzysz w aplikacji 123ContactForm użytkownika o nazwie Britta S
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka 123ContactForm w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji 123ContactForm, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

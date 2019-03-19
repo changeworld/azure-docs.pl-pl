@@ -1,21 +1,21 @@
 ---
-title: Interpretacja wyników modelu w usłudze Machine Learning Studio
+title: Interpretacja wyników modelu
 titleSuffix: Azure Machine Learning Studio
 description: Jak wybrać optymalną parametrem ustawionym dla algorytmu przy użyciu i wizualizowanie danych wyjściowych modelu wynik.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 778f713fb1046d3c1987b065c9dc25c4ad9825cb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822552"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877279"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretacja wyników modelu w usłudze Azure Machine Learning Studio
 W tym temacie wyjaśniono, jak wizualizować i interpretacji wyników przewidywań w usłudze Azure Machine Learning Studio. Po uczony model i gotowe prognozy na nim ("oceniane modelu"), musisz zrozumieć i zinterpretować wyniki prognozy.
@@ -52,7 +52,7 @@ Usługa Azure Machine Learning Studio ma różnych modułów, aby poradzić sobi
 ### <a name="two-class-classification"></a>Klasyfikacja dwuklasowych
 **Przykładowy eksperyment**
 
-Przykładem problem klasyfikacji dwuklasowych jest klasyfikacji irysów kwiatów. Zadanie jest do klasyfikowania irysów kwiatów na podstawie ich funkcji. Zestaw danych irysów w usłudze Azure Machine Learning Studio jest podzbiorem popularnej [zestawu danych Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) zawierającą wystąpienia tylko dwa kwiaty gatunków (klasy 0 i 1). Istnieją cztery funkcje dla każdego zbioru (długość słupka, szerokość słupka, płatka długość i szerokość płatka).
+Przykładem problem klasyfikacji dwuklasowych jest klasyfikacji irysów kwiatów. Zadanie jest do klasyfikowania irysów kwiatów na podstawie ich funkcji. Zestaw danych irysów w usłudze Azure Machine Learning Studio jest podzbiorem popularnej [zestawu danych Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) zawierającą wystąpienia tylko dwa kwiaty gatunków (klasy 0 i 1). Istnieją cztery funkcje dla każdego zbioru (długość słupka, szerokość słupka, płatka długość i szerokość płatka).
 
 ![Zrzut ekranu przedstawiający iris eksperymentu](./media/interpret-model-results/1.png)
 

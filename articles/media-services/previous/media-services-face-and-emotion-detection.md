@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: fa51290623f68e94db9cb1b28cd69c88b5d5cf18
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000077"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188190"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Wykrywanie twarzy i emocji za pomocą usługi Azure Media Analytics
 ## <a name="overview"></a>Przegląd
@@ -60,7 +60,7 @@ Wykrywanie twarzy używane są także techniki fragmentacji (gdzie metadane mog�
 
 ## <a name="face-detection-input-and-output-example"></a>Dane wejściowe wykrywanie twarzy i przykład danych wyjściowych
 ### <a name="input-video"></a>Wejściowy plik wideo
-[Wejściowy plik wideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[Wejściowy plik wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
 Podczas tworzenia zadania za pomocą **wykrywanie twarzy multimediów Azure**, należy określić ustawienie wstępne konfiguracji. Następujące ustawienie konfiguracji jest po prostu wykrywanie twarzy.
@@ -132,7 +132,7 @@ Poniższy przykład dane wyjściowe JSON zostały obcięte.
 
 ## <a name="emotion-detection-input-and-output-example"></a>Wykrywanie emocji na danych wejściowych i wyjściowych przykładu
 ### <a name="input-video"></a>Wejściowy plik wideo
-[Wejściowy plik wideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[Wejściowy plik wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
 Podczas tworzenia zadania za pomocą **wykrywanie twarzy multimediów Azure**, należy określić ustawienie wstępne konfiguracji. Określa następujące ustawienie konfiguracji do tworzenia opartych na wykrywanie emocji na notacji JSON.
@@ -522,5 +522,5 @@ namespace FaceDetection
 ## <a name="related-links"></a>Powiązane linki
 [Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
 
-[Pokazy usługi Azure Media Analytics](http://amslabs.azurewebsites.net/demos/Analytics.html)
+[Pokazy usługi Azure Media Analytics](https://amslabs.azurewebsites.net/demos/Analytics.html)
 

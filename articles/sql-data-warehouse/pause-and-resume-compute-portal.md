@@ -5,19 +5,20 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
-ms.topic: conceptual
+ms.topic: quickstart
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b21c982a7f390855ccb7b9212ea92db8c26d303c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9c3ed6dd79d6225b38751c910253cfa1f0720d1c
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460288"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731969"
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Wstrzymywać i wznawiać moc obliczeniową na potrzeby usługi Azure SQL Data Warehouse w witrynie Azure portal
+
 Użyj portalu Azure w celu wstrzymania obliczeń w usłudze Azure SQL Data Warehouse w celu obniżenia kosztów. [Wznowić operacje obliczeniowe](sql-data-warehouse-manage-compute-overview.md) gdy wszystko będzie gotowe do użycia w magazynie danych.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
@@ -31,6 +32,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 Użyj [tworzenie i łączenie — portal](create-data-warehouse-portal.md) Aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**. 
 
 ## <a name="pause-compute"></a>Wstrzymaj obliczeń
+
 W celu obniżenia kosztów, można wstrzymywać i wznawiać obliczeniowego zasoby na żądanie. Na przykład jeśli użytkownik nie będzie używany bazy danych w nocy i w weekendy, można wstrzymywać je w tych godzinach i je wznowić w ciągu dnia. Opłata zostanie naliczona za zasoby obliczeniowe, gdy baza danych jest wstrzymany. Jednak będą nadal naliczane za magazyn. 
 
 Wykonaj następujące kroki, aby wstrzymać usłudze SQL data warehouse.
@@ -54,6 +56,7 @@ Wykonaj następujące kroki, aby wstrzymać usłudze SQL data warehouse.
 
 
 ## <a name="resume-compute"></a>Wznawianie obliczeń
+
 Wykonaj następujące kroki, aby wznowić działanie w usłudze SQL data warehouse.
 
 1. Kliknij opcję **Bazy danych SQL** po lewej stronie witryny Azure Portal.
@@ -96,7 +99,8 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Masz teraz wstrzymywanie i wznawianie obliczeń dla magazynu danych. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
 
 > [!div class="nextstepaction"]
->[Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+> [Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

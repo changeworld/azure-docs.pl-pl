@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f86e2a5ac65274ecdb806c1cd894c89f1ca2efae
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 756a836ff276804e9c85675c1acd5cb18aaa1258
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982186"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008400"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Windows 
 
@@ -69,6 +69,6 @@ Sieć RDMA obsługuje ruch interfejsu przekazywania komunikatów (MPI) dla aplik
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Deweloperzy tworzący aplikacje accelerated procesora GPU dla procesory GPU NVIDIA Tesla można także pobrać i zainstalować najnowszą [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+* Deweloperzy tworzący aplikacje accelerated procesora GPU dla procesory GPU NVIDIA Tesla można także pobrać i zainstalować najnowszą [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 
 

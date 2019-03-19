@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 03/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 73175b326c25d5d9a78155d0d9d888b655da1bfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191602"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124137"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Informacje dotyczące sieci środowiska App Service Environment #
 
@@ -53,7 +53,8 @@ Dostępne są następujące porty dostępu zwykła aplikacja:
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Użytkownika można konfigurować |  80, 443 |
 |  FTP/FTPS    | Użytkownika można konfigurować |  21, 990, 10001-10020 |
-|  Visual Studio zdalne debugowanie  |  Użytkownika można konfigurować |  4020 4022, 4024 |
+|  Visual Studio zdalne debugowanie  |  Użytkownika można konfigurować |  4020, 4022, 4024 |
+|  Wdrażanie usługi sieci Web | Użytkownika można konfigurować | 8172 |
 
 Ta zasada obowiązuje, jeśli jesteś na zewnętrznym środowiskiem ASE lub w środowisku ASE z wewnętrznym modułem równoważenia obciążenia. Jeśli używasz zewnętrznego środowiska ASE, napotkasz tych portów na publicznych adresów VIP. Jeśli środowisko ASE z wewnętrznym modułem równoważenia obciążenia, napotkasz tych portów na wewnętrznego modułu równoważenia obciążenia. Jeśli port 443 jest zablokowanie, może to być wpływ na niektóre funkcje dostępne w portalu. Aby uzyskać więcej informacji, zobacz [zależności portalu](#portaldep).
 

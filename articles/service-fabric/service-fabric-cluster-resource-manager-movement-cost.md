@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 58147f5c0c3c7203aa6978e284cf5bdc90fa6971
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a4431f1d2e9a63ee7797100cc1092244d9a8b880
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737785"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101520"
 ---
 # <a name="service-movement-cost"></a>Kosztach przenoszenia usług
 Czynnikiem, który Menedżer zasobów klastra usługi Service Fabric pod uwagę podczas próby określenia, jakie zmiany można wprowadzać w klastrze jest to koszt tych zmian. Pojęcie "cost" jest dłuższym czasem względem można zwiększyć ilość klastra. Koszt jest brana pod uwagę podczas przenoszenia usługi równoważenia, defragmentacji i inne wymagania. Celem jest, aby spełnić wymagania w taki sposób, co najmniej uciążliwe lub kosztowne. 
@@ -79,6 +79,7 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 MoveCost zawiera cztery poziomy: Zero, niski, średni i wysoki. MoveCosts są względem siebie, z wyjątkiem Zero. Żadnych kosztów przenoszenia oznacza, że przepływ jest bezpłatna powinna nie wliczają wynik rozwiązania. Ustawienie przejście kosztować wysokiego jest *nie* gwarancji, że replika pozostanie w jednym miejscu.
 
 <center>
+
 ![Koszt przenoszenia jako czynnika podczas Wybieranie repliki dla przepływu][Image1]
 </center>
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: efd450edb87316e75fc240cac80eda93151a22b3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084314"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics (wersja zapoznawcza)
 
@@ -173,7 +173,7 @@ Gdy użycie zapytania różnicowego [tabele danych czasowych w usłudze Azure SQ
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```
  
-  Należy pamiętać, że środowisko uruchomieniowe usługi Stream Analytics może okresowo zapytania snapshot oprócz zapytania różnicowego do przechowywania punktów kontrolnych.
+   Należy pamiętać, że środowisko uruchomieniowe usługi Stream Analytics może okresowo zapytania snapshot oprócz zapytania różnicowego do przechowywania punktów kontrolnych.
 
 ## <a name="faqs"></a>Często zadawane pytania
 

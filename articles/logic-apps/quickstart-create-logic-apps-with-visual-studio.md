@@ -12,14 +12,14 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 07/31/2018
-ms.openlocfilehash: 9d2fe2c18452537f734a8bf176130e1ad68d40e1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: e1d845d1d90a3a70590778013504fea7c0aec85c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231036"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097665"
 ---
-# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Szybki start: tworzenie i automatyzacja zadań, procesów i przepływów pracy z usługą Azure Logic Apps — w programie Visual Studio
+# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Szybki start: Tworzenie i zautomatyzować zadania, procesy i przepływy pracy za pomocą usługi Azure Logic Apps — Visual Studio
 
 Za pomocą usługi [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i programu Visual Studio można utworzyć przepływy pracy do automatyzacji zadań i procesów, które integrują aplikacje, dane, systemy i usługi w przedsiębiorstwach i organizacjach. W tym przewodniku Szybki start przedstawiono sposób projektowania i kompilowania tych przepływów pracy przez tworzenie aplikacji logiki w programie Visual Studio i wdrażanie ich na platformie <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> w chmurze. I chociaż można wykonać te zadania w witrynie <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, program Visual Studio umożliwia dodawanie aplikacji logiki do kontroli źródła, publikowanie różnych wersji i tworzenie szablonów usługi Azure Resource Manager dla różnych środowisk wdrożeń. 
 
@@ -83,11 +83,13 @@ Aby rozpocząć, utwórz [projekt grupy zasobów platformy Azure](../azure-resou
 
 Po utworzeniu projektu grupy zasobów platformy Azure utwórz i skompiluj aplikację logiki, zaczynając od szablonu **pustej aplikacji logiki**.
 
-1. W Eksploratorze rozwiązań otwórz menu skrótów pliku **LogicApp.json**. Wybierz pozycję **Otwórz przy użyciu Projektanta aplikacji logiki**. (Klawiatura: Ctrl+L)
+1. W Eksploratorze rozwiązań otwórz menu skrótów pliku **LogicApp.json**. 
+   Wybierz pozycję **Otwórz przy użyciu Projektanta aplikacji logiki**. (Klawiatura: Ctrl+L)
 
    ![Otwieranie pliku JSON aplikacji logiki za pomocą Projektanta aplikacji logiki](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
-2. W polu **Subskrypcja** wybierz subskrypcję platformy Azure, która ma być używana. W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową...** w celu utworzenia nowej grupy zasobów platformy Azure. 
+2. W polu **Subskrypcja** wybierz subskrypcję platformy Azure, która ma być używana. 
+   W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową...** w celu utworzenia nowej grupy zasobów platformy Azure. 
 
    ![Wybieranie subskrypcji platformy Azure, grupy zasobów i lokalizacji zasobu](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
@@ -101,7 +103,8 @@ Po utworzeniu projektu grupy zasobów platformy Azure utwórz i skompiluj aplika
    | **Lokalizacja** | MyLogicApp-RG2 <br> (Zachodnie stany USA) | Inna lokalizacja, jeśli nie chcesz używać lokalizacji grupy zasobów |
    ||||
 
-3. Zostanie otwarty Projektant aplikacji usługi Logic Apps wyświetlający stronę z wprowadzającym wideo i najczęściej używanymi wyzwalaczami. Przewiń poza wideo i wyzwalacze. W obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**.
+3. Zostanie otwarty Projektant aplikacji usługi Logic Apps wyświetlający stronę z wprowadzającym wideo i najczęściej używanymi wyzwalaczami. 
+   Przewiń poza wideo i wyzwalacze. W obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**.
 
    ![Wybieranie pozycji „Pusta aplikacja logiki”](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -109,7 +112,7 @@ Po utworzeniu projektu grupy zasobów platformy Azure utwórz i skompiluj aplika
 
 Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-concepts), który będzie aktywowany po pojawieniu się nowego elementu w kanale informacyjnym RSS. Każda aplikacja logiki musi rozpoczynać się od wyzwalacza uruchamianego po spełnieniu określonych kryteriów spełnione. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki uruchamiającej przepływ pracy.
 
-1. W projektancie aplikacji logiki wprowadź ciąg „rss” w polu wyszukiwania. Wybierz następujący wyzwalacz: **Gdy element kanału informacyjnego jest publikowany**
+1. W projektancie aplikacji logiki wprowadź ciąg „rss” w polu wyszukiwania. Wybierz ten wyzwalacz: **Po opublikowaniu elementu kanału informacyjnego**
 
    ![Kompilowanie aplikacji logiki przez dodanie wyzwalacza i akcji](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 
@@ -123,7 +126,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    ![Ukończona aplikacja logiki](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app.png)
 
-3. Aby zapisać aplikację logiki, zapisz rozwiązanie programu Visual Studio. (Klawiatura: Ctrl+S)
+3. Aby zapisać aplikację logiki, zapisz rozwiązanie programu Visual Studio. (Klawiatura: Ctrl + S)
 
 Teraz przed przetestowaniem aplikacji logiki wdróż aplikację na platformie Azure.
 
@@ -186,7 +189,7 @@ Wybierz grupę zasobów aplikacji logiki, a następnie wybierz pozycję **Przegl
 * Jeśli masz pytania, odwiedź <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">forum usługi Azure Logic Apps</a>.
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź <a href="https://aka.ms/logicapps-wish" target="_blank">witrynę opinii użytkowników usługi Logic Apps</a>.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule kompilowano, wdrożono i uruchomiono aplikację logiki przy użyciu programu Visual Studio. Aby dowiedzieć się więcej na temat wykonywania zaawansowanego wdrażania aplikacji logiki i zarządzania nim przy użyciu programu Visual Studio, zobacz następujące artykuły:
 

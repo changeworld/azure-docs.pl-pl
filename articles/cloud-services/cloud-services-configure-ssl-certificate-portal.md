@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
-ms.openlocfilehash: cf2fe10d6a0ab81ff71c948ee2defe6bc7edfd70
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 2a9879ebc55a5f25c1a358e386697dce1c55ec90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300196"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084348"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurowanie protokołu SSL dla aplikacji na platformie Azure
 
@@ -33,14 +33,14 @@ To zadanie używa w przypadku wdrożenia produkcyjnego. Informacje o używaniu w
 
 Odczyt [to](cloud-services-how-to-create-deploy-portal.md) pierwsze, jeśli nie utworzono jeszcze usługi w chmurze.
 
-## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: Uzyskiwanie certyfikatu SSL
+## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: Uzyskaj certyfikat protokołu SSL
 Można skonfigurować protokołu SSL dla aplikacji, należy najpierw uzyskać certyfikat SSL, który został podpisany przez urząd certyfikacji (CA), zaufanych innych firm, który wystawia certyfikaty do tego celu. Jeśli nie masz już jeden, musisz go uzyskać od firmy, która sprzedaje certyfikaty SSL.
 
 Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów SSL na platformie Azure:
 
 * Certyfikat musi zawierać klucz prywatny.
 * Certyfikat musi zostać utworzona na potrzeby wymiany kluczy, który można eksportować do pliku wymiany informacji osobistych (pfx).
-* Nazwa podmiotu certyfikatu musi odpowiadać domena używana do uzyskania dostępu do usługi w chmurze. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji (CA) dla domeny cloudapp.net. Należy uzyskać niestandardową nazwę domeny do użycia podczas dostęp do usługi. Gdy w przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardowej nazwy domeny umożliwia dostęp do Twoich aplikacji. Na przykład, jeśli nazwa domeny niestandardowej jest **contoso.com** może zażądać certyfikatu z urzędu certyfikacji dla ***. contoso.com** lub ** **www.contoso.com**.
+* Nazwa podmiotu certyfikatu musi odpowiadać domena używana do uzyskania dostępu do usługi w chmurze. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji (CA) dla domeny cloudapp.net. Należy uzyskać niestandardową nazwę domeny do użycia podczas dostęp do usługi. Gdy w przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardowej nazwy domeny umożliwia dostęp do Twoich aplikacji. Na przykład, jeśli nazwa domeny niestandardowej jest **contoso.com** może zażądać certyfikatu z urzędu certyfikacji dla ***. contoso.com** lub **www\.contoso.com**.
 * Certyfikat należy użyć co najmniej szyfrowanie 2048-bitowe.
 
 Do celów testowych możesz [tworzenie](cloud-services-certs-create.md) i używania certyfikatu z podpisem własnym. Certyfikat z podpisem własnym nie został uwierzytelniony przy użyciu urzędu certyfikacji i przy użyciu domeny cloudapp.net jako adres URL witryny sieci Web. Na przykład następujące zadanie używa certyfikatu z podpisem własnym jest nazwa pospolita (CN) użyta w certyfikacie **sslexample.cloudapp.net**.
@@ -155,7 +155,7 @@ Teraz, gdy definicja usługi i plików konfiguracyjnych usługi zostały zaktual
 
 4. Podaj **pliku**, **hasło**, następnie kliknij przycisk **przekazywanie** w dolnej części obszaru wprowadzania danych.
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: Łączenie z usługą wystąpienia roli przy użyciu protokołu HTTPS
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: Nawiąż połączenie z wystąpieniem roli, przy użyciu protokołu HTTPS
 Teraz, że wdrożenie jest uruchomiona na platformie Azure, możesz połączyć się do niej przy użyciu protokołu HTTPS.
 
 1. Kliknij przycisk **adres URL witryny** otwarcie przeglądarki sieci web.

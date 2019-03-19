@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b2e8d629f4007729ad0538aee9bdb8e67747b026
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159489"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015128"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Tworzenie pętli, które należy powtórzyć akcji przepływu pracy lub przetwarzać tablice w usłudze Azure Logic Apps
 
@@ -58,7 +58,7 @@ Ta przykładowa aplikacja logiki wysyła codzienne podsumowanie kanału informac
 
       ![Wybierz pozycję "Dodaj akcję"](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-   1. W polu wyszukiwania, wybierz **wszystkich**. W polu wyszukiwania wpisz "for each" jako filtr. Z listy akcji wybierz następującą akcję: **Dla każdego — formant**
+   1. W polu wyszukiwania wybierz pozycję **Wszystko**. W polu wyszukiwania wpisz "for each" jako filtr. Z listy akcji wybierz następującą akcję: **Dla każdego — formant**
 
       ![Dodaj pętlę "For each"](media/logic-apps-control-flow-loops/select-for-each.png)
 
@@ -166,7 +166,8 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 > Te kroki odnoszą się usługi Office 365 Outlook, ale można użyć dowolnego dostawcy poczty e-mail, który obsługuje Logic Apps. 
 > [Sprawdź tę listę łączników](https://docs.microsoft.com/connectors/). Jeśli używasz innego konta e-mail, ogólne kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej. 
 
-1. Tworzenia pustej aplikacji logiki. W Projektancie aplikacji logiki, w polu wyszukiwania, wybierz **wszystkich**. Wyszukaj "cykl". Z listy wyzwalaczy wybierz następujący wyzwalacz: **Cykl - harmonogramu**
+1. Tworzenia pustej aplikacji logiki. W Projektancie aplikacji logiki, w polu wyszukiwania, wybierz **wszystkich**. Wyszukaj "cykl". 
+   Z listy wyzwalaczy wybierz następujący wyzwalacz: **Cykl - harmonogramu**
 
    ![Dodawanie wyzwalacza "Harmonogram — cykl"](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
@@ -181,7 +182,8 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
    | **W tych godzinach** | 8 |
    ||| 
 
-1. W obszarze wyzwalacza wybierz **nowy krok**. Wyszukaj "zmienne" i wybierz następującą akcję: **Inicjowanie zmiennej — zmienne**
+1. W obszarze wyzwalacza wybierz **nowy krok**. 
+   Wyszukaj "zmienne" i wybierz następującą akcję: **Inicjowanie zmiennej — zmienne**
 
    ![Dodawanie akcji "Initialize zmiennej — zmienne"](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
@@ -198,48 +200,50 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 
 1. W obszarze **inicjowane zmiennej** akcji, wybierz **nowy krok**. 
 
-1. W polu wyszukiwania, wybierz **wszystkich**. Wyszukaj "do" i wybierz następującą akcję: **Do momentu — formant**
+1. W polu wyszukiwania wybierz pozycję **Wszystko**. Wyszukaj "do" i wybierz następującą akcję: **Do momentu — formant**
 
    ![Dodawanie "pętli do"](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-1. Tworzenie warunku zakończenia pętli, wybierając **Limit** zmiennej i **jest taki sam** operatora. Wprowadź **10** jako wartość porównania.
+1. Tworzenie warunku zakończenia pętli, wybierając **Limit** zmiennej i **jest taki sam** operatora. 
+   Wprowadź **10** jako wartość porównania.
 
    ![Tworzenie warunku zakończenia pętli zatrzymywania](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
 1. Wewnątrz pętli, wybierz **Dodaj akcję**. 
 
-1. W polu wyszukiwania, wybierz **wszystkich**. Wyszukaj "zmienne" i wybierz następującą akcję: **Zwiększ wartość zmiennej — zmienne**
+1. W polu wyszukiwania wybierz pozycję **Wszystko**. Wyszukaj "zmienne" i wybierz następującą akcję: **Zwiększ wartość zmiennej — zmienne**
 
    ![Dodawanie akcji dla zmiennej przyrostu o wartości](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
 1. Dla **nazwa**, wybierz opcję **Limit** zmiennej. Aby uzyskać **wartość**, wpisz "1". 
 
-   ![Zwiększ "Limit" o 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+    ![Zwiększ "Limit" o 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
 1. Wybierz poza i w obszarze pętli **nowy krok**. 
 
-1. W polu wyszukiwania, wybierz **wszystkich**. Znajduj i dodawaj akcji, która wysyła wiadomość e-mail, na przykład: 
+1. W polu wyszukiwania wybierz pozycję **Wszystko**. 
+    Znajduj i dodawaj akcji, która wysyła wiadomość e-mail, na przykład: 
 
-   ![Dodaj akcję, która wysyła wiadomość e-mail](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+    ![Dodaj akcję, która wysyła wiadomość e-mail](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. W razie potrzeby zaloguj się do swojego konta e-mail.
 
 1. Ustaw adres e-mail właściwości akcji. Dodaj **Limit** zmiennej do tematu. W ten sposób można sprawdzić, czy bieżąca wartość zmiennej spełnia określony warunek, na przykład:
 
-    ![Ustawianie właściwości wiadomości e-mail](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+     ![Ustawianie właściwości wiadomości e-mail](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-    | Właściwość | Wartość | Opis |
-    | -------- | ----- | ----------- | 
-    | **Do** | *<email-address@domain>* | adres e-mail adresata. Do testowania, należy użyć własnego adresu e-mail. | 
-    | **Temat** | Bieżąca wartość "Limit" jest **Limit** | Określ temat wiadomości e-mail. W tym przykładzie, upewnij się, że zawrzesz **Limit** zmiennej. | 
-    | **Treść** | <*email-content*> | Określ treść wiadomości wiadomości e-mail, który chcesz wysłać. W tym przykładzie wprowadź tekst, niezależnie od chcesz. | 
-    |||| 
+     | Właściwość | Wartość | Opis |
+     | -------- | ----- | ----------- | 
+     | **Do** | *<email-address\@domain>* | adres e-mail adresata. Do testowania, należy użyć własnego adresu e-mail. | 
+     | **Temat** | Bieżąca wartość "Limit" jest **Limit** | Określ temat wiadomości e-mail. W tym przykładzie, upewnij się, że zawrzesz **Limit** zmiennej. | 
+     | **Treść** | <*email-content*> | Określ treść wiadomości wiadomości e-mail, który chcesz wysłać. W tym przykładzie wprowadź tekst, niezależnie od chcesz. | 
+     |||| 
 
 1. Zapisz aplikację logiki. Aby ręcznie przetestować aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**.
 
-    Po logikę zacznie działać, otrzymasz wiadomość e-mail z zawartością, który określiłeś:
+     Po logikę zacznie działać, otrzymasz wiadomość e-mail z zawartością, który określiłeś:
 
-    ![Odebrano wiadomość e-mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+     ![Odebrano wiadomość e-mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>Zapobiegaj nieskończone pętle
 

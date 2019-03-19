@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8981f6a2b2d42627530fb8bf820ff8373e8f50b0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5c0fe0921446dde12771bacf096f806701b90444
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971669"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118003"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Wprowadzenie do platformy Apache Storm w usłudze HDInsight przy użyciu przykładów z projektu Storm Starter
 
@@ -69,7 +69,7 @@ Aby utworzyć klaster platformy Storm w usłudze HDInsight, wykonaj następując
 
 4. Po wybraniu typu klastra ustaw typ klastra przy użyciu przycisku __Wybierz__. Następnie zakończ konfigurację podstawową za pomocą przycisku __Dalej__.
 
-5. W sekcji **Magazyn** wybierz lub utwórz konto magazynu. Na potrzeby procedury w tym dokumencie pozostaw wartości domyślne w pozostałych polach w tej sekcji. Zapisz konfigurację magazynu za pomocą przycisku __Dalej__. Aby uzyskać więcej informacji na temat korzystania z Data Lake Storage Gen2, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+5. W sekcji **Magazyn** wybierz lub utwórz konto magazynu. Na potrzeby procedury w tym dokumencie pozostaw wartości domyślne w pozostałych polach w tej sekcji. Zapisz konfigurację magazynu za pomocą przycisku __Dalej__. Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage Gen2, zobacz [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
@@ -124,26 +124,26 @@ Wykonaj następujące kroki, aby monitorować topologię za pomocą interfejsu u
 
     Ta strona przedstawia następujące informacje:
 
-    * **Topology stats** (Statystyka topologii) — podstawowe informacje na temat wydajności topologii podzielone na okna czasowe.
+   * **Topology stats** (Statystyka topologii) — podstawowe informacje na temat wydajności topologii podzielone na okna czasowe.
 
-        > [!NOTE]  
-        > Wybór określonego okna czasowego zmienia przedział czasu dla informacji wyświetlanych w innych sekcjach strony.
+       > [!NOTE]  
+       > Wybór określonego okna czasowego zmienia przedział czasu dla informacji wyświetlanych w innych sekcjach strony.
 
-    * **Spouts** (Elementy spout) — podstawowe informacje o elementach spout, łącznie z ostatnim błędem zwróconym przez poszczególne elementy spout.
+   * **Spouts** (Elementy spout) — podstawowe informacje o elementach spout, łącznie z ostatnim błędem zwróconym przez poszczególne elementy spout.
 
-    * **Bolts** (Elementy bolt) — podstawowe informacje o elementach bolt.
+   * **Bolts** (Elementy bolt) — podstawowe informacje o elementach bolt.
 
-    * **Topology configuration** (Konfiguracja topologii) — szczegółowe informacje o konfiguracji topologii.
+   * **Topology configuration** (Konfiguracja topologii) — szczegółowe informacje o konfiguracji topologii.
 
-    Ta strona zawiera również akcje, które można wykonać w odniesieniu do topologii:
+     Ta strona zawiera również akcje, które można wykonać w odniesieniu do topologii:
 
-    * **Activate** (Aktywuj) — wznowienie przetwarzania dezaktywowanej topologii.
+   * **Activate** (Aktywuj) — wznowienie przetwarzania dezaktywowanej topologii.
 
-    * **Deactivate** (Dezaktywuj) — wstrzymanie uruchomionej topologii.
+   * **Deactivate** (Dezaktywuj) — wstrzymanie uruchomionej topologii.
 
-    * **Rebalance** (Ponowne równoważenie) — dopasowanie równoległości topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Pozwoli to dostosować równoległość topologii w celu kompensacji zwiększonej/zmniejszonej liczby węzłów w klastrze. Aby uzyskać więcej informacji, zobacz [pojęcie równoległości w topologii Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+   * **Rebalance** (Ponowne równoważenie) — dopasowanie równoległości topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Pozwoli to dostosować równoległość topologii w celu kompensacji zwiększonej/zmniejszonej liczby węzłów w klastrze. Aby uzyskać więcej informacji, zobacz [pojęcie równoległości w topologii Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-    * **Kill** (Kasuj) — zakończenie działania topologii Storm po określonym czasie.
+   * **Kill** (Kasuj) — zakończenie działania topologii Storm po określonym czasie.
 
 3. Na tej stronie wybierz pozycję z sekcji **Spouts** (Elementy spout) lub **Bolts** (Elementy bolt). Zostaną wyświetlone informacje o wybranym składniku.
 

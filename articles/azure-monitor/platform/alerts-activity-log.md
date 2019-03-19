@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: da7556b909ec4eb544a6b4e4fab7af4a0919a158
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308180"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090818"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -27,13 +27,13 @@ Te alerty są dla zasobów platformy Azure, można utworzyć przy użyciu szablo
 ## <a name="azure-portal"></a>Azure Portal
 
 > [!NOTE]
-
+> 
 >  Podczas tworzenia reguł alertów, zapewnić następujące okoliczności:
-
+> 
 > - Subskrypcja w zakresie nie jest różni się od subskrypcji, której tworzona jest alert.
-- Kryteria muszą być poziom/status/obiekt wywołujący / grupa zasobów / identyfikator zasobu / Typ zasobu / kategorii zdarzeń, na którym skonfigurowano alert.
-- Istnieje warunek "anyOf" lub warunki zagnieżdżone w konfiguracji alertu JSON (zasadniczo tylko jeden nieobsługiwanymi jest dozwolona w nie dalszych nieobsługiwanymi/anyOf).
-- Jeśli kategoria jest "administracyjne". Należy określić co najmniej jednego z poprzednich kryteriów w alertu. Nie można utworzyć alert, który aktywuje za każdym razem, gdy zdarzenie zostanie utworzone w dziennikach aktywności.
+> - Kryteria muszą być poziom/status/obiekt wywołujący / grupa zasobów / identyfikator zasobu / Typ zasobu / kategorii zdarzeń, na którym skonfigurowano alert.
+> - Istnieje warunek "anyOf" lub warunki zagnieżdżone w konfiguracji alertu JSON (zasadniczo tylko jeden nieobsługiwanymi jest dozwolona w nie dalszych nieobsługiwanymi/anyOf).
+> - Jeśli kategoria jest "administracyjne". Należy określić co najmniej jednego z poprzednich kryteriów w alertu. Nie można utworzyć alert, który aktywuje za każdym razem, gdy zdarzenie zostanie utworzone w dziennikach aktywności.
 
 ### <a name="create-with-azure-portal"></a>Tworzenie za pomocą witryny Azure portal
 
@@ -50,35 +50,36 @@ Postępuj zgodnie z następującą procedurą:
 
 3. **W ramach warunku zdefiniować alertu** Podaj następujące informacje, a następnie kliknij przycisk **gotowe**.
 
-    - **Element docelowy alertu:** Aby wyświetlić i wybierz element docelowy dla nowego alertu, należy użyć **Filtruj według subskrypcji** / **Filtruj według typu zasobu** i wybierz zasób lub grupa zasobów z wyświetlonej listy.
+   - **Element docelowy alertu:** Aby wyświetlić i wybierz element docelowy dla nowego alertu, należy użyć **Filtruj według subskrypcji** / **Filtruj według typu zasobu** i wybierz zasób lub grupa zasobów z wyświetlonej listy.
 
-    > [!NOTE]
+     > [!NOTE]
+     > 
+     > można wybrać zasób, grupy zasobów lub subskrypcji usługi całej sygnału dziennika aktywności.
 
-    > można wybrać zasób, grupy zasobów lub subskrypcji usługi całej sygnału dziennika aktywności.
+     **Docelowy przykładowy widok alertów**
+     ![wybierz docelowy](media/alerts-activity-log/select-target.png)
 
-    **Docelowy przykładowy widok alertów** ![wybierz docelowy](media/alerts-activity-log/select-target.png)
+   - W obszarze **kryteriów docelowych**, kliknij przycisk **Dodaj kryteria** i są wyświetlane wszystkie dostępne sygnały dla elementu docelowego, łącznie ze składnikami z różnych kategorii **dziennika aktywności**; Nazwa kategorii jest dołączany w **usługi Monitor** nazwy.
 
-    - W obszarze **kryteriów docelowych**, kliknij przycisk **Dodaj kryteria** i są wyświetlane wszystkie dostępne sygnały dla elementu docelowego, łącznie ze składnikami z różnych kategorii **dziennika aktywności**; Nazwa kategorii jest dołączany w **usługi Monitor** nazwy.
+   - Wybierz sygnał na liście wyświetlonej różnych operacji możliwe dla typu **dziennika aktywności**.
 
-    - Wybierz sygnał na liście wyświetlonej różnych operacji możliwe dla typu **dziennika aktywności**.
+     Można wybrać na osi czasu historia dziennika i odpowiednie logikę alertów ten sygnał docelowy:
 
-    Można wybrać na osi czasu historia dziennika i odpowiednie logikę alertów ten sygnał docelowy:
+     **Dodawanie ekranu z kryteriów**
 
-    **Dodawanie ekranu z kryteriów**
+     ![Dodaj kryteria](media/alerts-activity-log/add-criteria.png)
 
-    ![Dodaj kryteria](media/alerts-activity-log/add-criteria.png)
+     **Czas historii**: Zdarzenia dostępne dla wybranej operacji jest można wykreślić przez ostatnie 6/12/24 godziny (lub) w ciągu ostatniego tygodnia.
 
-    **Czas historii**: Zdarzenia dostępne dla wybranej operacji jest można wykreślić przez ostatnie 6/12/24 godziny (lub) w ciągu ostatniego tygodnia.
-
-    **Zgłoś alert logic**:
+     **Zgłoś alert logic**:
 
      - **Poziom zdarzenia**— poziom ważności zdarzenia. _Pełne_, _informacyjny_, _ostrzeżenie_, _błąd_, lub _krytyczne_.
      - **Stan**: Stan zdarzenia. _Pracę_, _nie powiodło się_, lub _zakończyło się pomyślnie_.
      - **Zdarzenie zainicjowane przez**: Znany także jako obiekt wywołujący; Adres e-mail lub usługi Azure Active Directory identyfikator użytkownika, który wykonał operację.
 
-        Przykładowy wykres sygnał z alert logic stosowane:
+       Przykładowy wykres sygnał z alert logic stosowane:
 
-        ![ wybrane kryteria](media/alerts-activity-log/criteria-selected.png)
+       ![ wybrane kryteria](media/alerts-activity-log/criteria-selected.png)
 
 4. W obszarze **Zdefiniuj szczegóły reguły alertów**, należy podać następujące dane:
 
@@ -115,15 +116,15 @@ Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzy
 
     Możesz użyć filtrów dostępnych - _subskrypcji_, _grupy zasobów_, _zasobów_, _typu sygnału_, lub _stanu_  można znaleźć reguły działania, które chcesz edytować.
 
-    > [!NOTE]
+   > [!NOTE]
+   > 
+   > Możesz edytować tylko **opis** , **docelowe kryteria** i **grup akcji**.
 
-    > Możesz edytować tylko **opis** , **docelowe kryteria** i **grup akcji**.
+3. Wybierz regułę, a następnie kliknij dwukrotnie, aby edytować opcje reguły. Wprowadź wymagane zmiany, a następnie kliknij przycisk **Zapisz**.
 
-3.  Wybierz regułę, a następnie kliknij dwukrotnie, aby edytować opcje reguły. Wprowadź wymagane zmiany, a następnie kliknij przycisk **Zapisz**.
+   ![ Zarządzaj regułami alertów](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
-    ![ Zarządzaj regułami alertów](media/alerts-activity-log/activity-log-rule-edit-page.png)
-
-4.  Można wyłączyć, włączyć lub usunąć regułę. Wybierz odpowiednią opcję w górnej części okna, po wybraniu reguły, zgodnie z opisem w kroku 2.
+4. Można wyłączyć, włączyć lub usunąć regułę. Wybierz odpowiednią opcję w górnej części okna, po wybraniu reguły, zgodnie z opisem w kroku 2.
 
 
 ## <a name="azure-resource-template"></a>Szablonu zasobów platformy Azure

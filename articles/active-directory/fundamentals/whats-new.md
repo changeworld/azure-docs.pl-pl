@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c34cd59a5f4636eeca395fde49e45beb1a49752
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: ae0565bd51235f2d1b471adcc511786c204d175a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408891"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890522"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -40,7 +40,7 @@ Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie. Jeśli szuk
 ---
 ## <a name="february-2019"></a>Lutego 2019 r
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Można skonfigurować usługi Azure AD szyfrowanie tokenu języka SAML (publiczna wersja zapoznawcza) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Szyfrowanie tokenu SAML usługi Azure AD z możliwością konfigurowania (publiczna wersja zapoznawcza) 
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Aplikacje dla przedsiębiorstw  
@@ -52,7 +52,7 @@ Aby uzyskać więcej informacji o konfigurowaniu szyfrowania tokenu SAML, zobacz
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu dla grupy lub aplikacji za pomocą przeglądów dostępu usługi Azure AD
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu dla grup i aplikacji za pomocą przeglądów dostępu usługi Azure AD
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Przeglądy dostępu  
@@ -64,7 +64,7 @@ Aby uzyskać więcej informacji o tym, jak tworzenie przeglądu dostępu za pomo
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — lutego 2019 r
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji Azure AD — luty 2019
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Aplikacje dla przedsiębiorstw  
@@ -78,7 +78,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ---
 
-### <a name="enhanced-combined-mfasspr-registration"></a>Ulepszone połączone rejestracji usługi MFA/SSPR
+### <a name="enhanced-combined-mfasspr-registration"></a>Rozszerzona połączona rejestracja uwierzytelniania wieloskładnikowego lub samoobsługowego resetowania hasła
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** Samodzielne resetowanie hasła  
@@ -106,7 +106,7 @@ Aby uzyskać więcej informacji na temat środowiska rejestracji rozszerzone zob
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>Możliwości zarządzania zaktualizowane zasady przepływy użytkownika
+### <a name="updated-policy-management-experience-for-user-flows"></a>Zaktualizowano środowisko zarządzania zasadami przepływów użytkownika
 
 **Typ:** Zmieniona funkcja  
 **Kategoria usług:** B2C — Consumer Identity Management  
@@ -120,7 +120,7 @@ Aby uzyskać więcej informacji na temat nowego środowiska zarządzania zasad, 
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Wybierz wersje elementów określonej strony udostępniane przez usługę Azure AD B2C
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Wybierz wersje elementów strony udostępnione przez usługę Azure AD B2C
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** B2C — Consumer Identity Management  
@@ -132,7 +132,7 @@ Aby uzyskać więcej informacji na temat określonych wersji elementów na stron
 
 ---
 
-### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>Wymagania dotyczące hasła użytkownika końcowego można konfigurować B2C (GA)
+### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>Wymagania dotyczące hasła użytkownika końcowego z możliwością konfigurowania dla usługi B2C (ogólna dostępność)
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** B2C — Consumer Identity Management  
@@ -144,7 +144,7 @@ Aby uzyskać więcej informacji na temat konfiguracji wymagań złożoności has
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Nowe domyślne szablony dla uwierzytelniania na marki niestandardowego środowiska
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Nowe szablony domyślne dla niestandardowych środowisk uwierzytelniania z oznakowaniem marki
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** B2C — Consumer Identity Management  
@@ -158,7 +158,7 @@ Aby uzyskać więcej informacji na temat korzystania z szablonów, zobacz [usłu
 
 ## <a name="january-2019"></a>Styczeń 2019
 
-### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Współpracy w Active Directory B2B przy użyciu uwierzytelniania jednorazowy kod dostępu (publiczna wersja zapoznawcza)
+### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Współpraca B2B w usłudze Active Directory przy użyciu uwierzytelniania za pomocą jednorazowego kodu dostępu (publiczna wersja zapoznawcza)
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** B2B  
@@ -168,7 +168,7 @@ Wprowadziliśmy uwierzytelniania jednorazowy kod dostępu (OTP) dla użytkownik�
 
 Aby uzyskać więcej informacji, zobacz [uwierzytelniania jednorazowy kod dostępu poczty E-mail (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) i blogu [usługi Azure AD sprawia, że udostępniania i współpracy bezproblemowe dla każdego użytkownika, przy użyciu dowolnego konta](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-makes-sharing-and-collaboration-seamless-for-any-user/ba-p/325949).
 
-### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Nowe ustawienia plików cookie serwera proxy aplikacji w usłudze Azure AD
+### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Nowe ustawienia plików cookie serwera Proxy aplikacji usługi Azure AD
 
 **Typ:** Nowa funkcja  
 **Kategoria usług:** Serwer proxy aplikacji  
@@ -516,11 +516,11 @@ Rozwiązaliśmy problem, więc teraz tworzyć i aktualizować reguły członkost
 
 Dostępne są następujące role:
 
-- Administrator globalny lub zapisywania firmy
+- Administrator globalny
 
 - Administrator usługi Intune
 
-- Administrator kont użytkowników
+- Administrator użytkownika
 
 Aby uzyskać więcej informacji, zobacz [utworzyć grupę dynamiczną i sprawdzić stan](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)
 

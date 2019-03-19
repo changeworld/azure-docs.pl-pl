@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417977"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099175"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Łączenie sieci wirtualnych z różnych modeli wdrażania za pomocą portalu
 
@@ -114,7 +114,7 @@ Jeśli masz już sieć wirtualną z bramą sieci VPN, sprawdź, czy brama jest d
 1. Na **nowe połączenie VPN** wybierz opcję **Utwórz bramę natychmiast** pola wyboru.
 2. Kliknij pozycję **Opcjonalna konfiguracja bramy**, aby otworzyć stronę **Konfiguracja bramy**.
 
-  ![Strona konfiguracji bramy Otwórz](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "stronie konfiguracji bramy Otwórz")
+   ![Strona konfiguracji bramy Otwórz](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "stronie konfiguracji bramy Otwórz")
 3. Kliknij przycisk **podsieć — Skonfiguruj wymagane ustawienia** otworzyć **Dodaj podsieć** strony. **Nazwa** ma już skonfigurowaną wymagana wartość: **GatewaySubnet**.
 4. **Zakres adresów** odwołuje się do zakresu podsieci bramy. Chociaż można utworzyć mniejszą podsieć bramy o rozmiarze/29 (adres 3), zakres adresów zaleca się utworzenie podsieci bramy, która zawiera więcej adresów IP. Będzie to dostosowana przyszłe konfiguracje, które mogą wymagać więcej dostępnych adresów IP. Jeśli jest to możliwe używaj wartość/27 lub/28. Jeśli używasz tych kroków w charakterze ćwiczenia, można zajrzeć do [przykładowe wartości](#values). W tym przykładzie używamy "10.0.0.32/28". Kliknij przycisk **OK** utworzyć podsieć bramy.
 5. Na **konfiguracji bramy** stronie **rozmiar** odwołuje się do jednostki SKU bramy. Wybierz jednostkę SKU bramy dla bramy sieci VPN.
@@ -192,16 +192,16 @@ W tej sekcji możesz zamiana zastępczego adresu IP, która została użyta podc
 2. Na stronie Twojej sieci wirtualnej, kliknij przycisk **Przegląd**.
 3. W **połączeń sieci VPN** kliknij nazwę lokacji lokalnej do grafiki.
 
-  ![Połączenia sieci VPN](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "połączeń sieci VPN")
+   ![Połączenia sieci VPN](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "połączeń sieci VPN")
 4. Na **połączeń sieci VPN typu lokacja lokacja** kliknij nazwę witryny.
 
-  ![Nazwa witryny](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "nazwy lokacji lokalnej")
+   ![Nazwa witryny](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "nazwy lokacji lokalnej")
 5. Na stronie połączenia lokacji lokalnej, kliknij nazwę lokacji lokalnej, aby otworzyć **lokacja lokalna** strony.
 
-  ![Otwórz lokalnej lokacji](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Otwórz lokacji lokalnej")
+   ![Otwórz lokalnej lokacji](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Otwórz lokacji lokalnej")
 6. Na **lokacja lokalna** strony, Zastąp **adres IP bramy sieci VPN** przy użyciu adresu IP bramy usługi Resource Manager.
 
-  ![Adres ip bramy](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "adres IP bramy")
+   ![Adres ip bramy](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "adres IP bramy")
 7. Kliknij przycisk **OK** można zaktualizować adresu IP.
 
 ## <a name="RMtoclassic"></a>Sekcja 4 — Tworzenie usługi Resource Manager do klasycznego połączenia

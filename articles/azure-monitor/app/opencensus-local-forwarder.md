@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Application Insights OpenCensus rozproszonego śledzenia lokalnej usługi przesyłania dalej | Dokumentacja firmy Microsoft
+title: Usługa Azure Application Insights OpenCensus rozproszonego śledzenia lokalnej usługi przesyłania dalej (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Do przodu OpenCensus rozproszonych śledzi i rozciąga się od języków, takich jak Python, a następnie przejść do usługi Azure Application Insights
 services: application-insights
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003507"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002823"
 ---
-# <a name="local-forwarder"></a>Lokalna usługa przesyłania dalej
+# <a name="local-forwarder-preview"></a>Lokalne usługi przesyłania dalej (wersja zapoznawcza)
 
 Lokalne usługi przesyłania dalej jest agent, który gromadzi informacje o usłudze Application Insights lub [OpenCensus](https://opencensus.io/) dane telemetryczne z różnych zestawów SDK i kieruje je do usługi Application Insights. Jest w stanie działać w obszarze Windows i Linux. Może również być może zostać uruchomiony w systemie macOS, ale który nie jest oficjalnie obsługiwany w tej chwili.
 
@@ -79,14 +79,14 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 Dla niektórych zastosowań, może być korzystne uruchomić lokalnej usługi przesyłania dalej jako aplikację konsolową w języku. Wersja jest dostarczany z następujących wersji pliku wykonywalnego hosta konsoli:
 * plik binarny platformy .NET Core zależny od struktury */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*. Uruchomienie tych danych binarnych wymaga platformy .NET Core zainstalowanego środowiska uruchomieniowego; Ten plik do pobrania można znaleźć [strony](https://www.microsoft.com/net/download/dotnet-core/2.1) Aby uzyskać szczegółowe informacje.
-```batchfile
-E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
-```
+  ```batchfile
+  E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
+  ```
 * autonomiczny zestaw .NET Core plików binarnych dla x86 i x64 64. Nie wymagają one środowisko uruchomieniowe programu .NET Core do uruchomienia. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
-```batchfile
-E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
-E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
-```
+  ```batchfile
+  E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
+  E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
+  ```
 
 ### <a name="linux"></a>Linux
 
@@ -97,7 +97,7 @@ Podobnie jak w przypadku Windows, wersja jest dostarczany z następujących wers
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* niezależna platformy .NET Core zestaw plików binarnych dla systemu linux-64. Ta nie wymaga środowisko uruchomieniowe programu .NET Core do uruchomienia. */ConsoleHost/Linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
+* niezależna platformy .NET Core zestaw plików binarnych dla systemu linux-64. Ta nie wymaga środowisko uruchomieniowe programu .NET Core do uruchomienia. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost

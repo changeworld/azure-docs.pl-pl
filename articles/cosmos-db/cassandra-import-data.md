@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: b12e7aad5fbdf65a8936b943f5053eda76dbd883
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: c9f7ec5009c9299e317d9b10f857e326d25fa005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120112"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Samouczek: Migrowanie danych do konta interfejsu API Cassandra w usłudze Azure Cosmos DB
 
@@ -35,31 +35,31 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 * **Szacowanie potrzebnej przepływności:** przed rozpoczęciem migracji danych do konta interfejsu API Apache Cassandra w usłudze Azure Cosmos DB należy oszacować przepływność potrzebną dla obciążenia. Na ogół zalecane jest rozpoczęcie od średniej przepływności wymaganej przez operacje CRUD, a następnie dołączenie dodatkowej przepływności wymaganej dla operacji ETL (wyodrębnianie, transformacja, ładowanie) lub operacji powodujących gwałtowne wzrosty obciążenia. Do zaplanowania migracji potrzebne są następujące szczegóły: 
 
-   * **Rozmiar danych istniejących lub szacowany rozmiar danych:** Definiuje minimalne wymagania dotyczące rozmiaru i przepływności bazy danych. Jeśli szacujesz rozmiar danych dla nowej aplikacji, możesz założyć, że dane są równomiernie rozłożone między wiersze i oszacować wartość, mnożąc ich liczbę przez rozmiar danych. 
+  * **Rozmiar danych istniejących lub szacowany rozmiar danych:** Definiuje minimalne wymagania dotyczące rozmiaru i przepływności bazy danych. Jeśli szacujesz rozmiar danych dla nowej aplikacji, możesz założyć, że dane są równomiernie rozłożone między wiersze i oszacować wartość, mnożąc ich liczbę przez rozmiar danych. 
 
-   * **Wymagana przepływność:** przybliżona przepływność w przypadku operacji odczytu (query/get) i zapisu (update/delete/insert). Ta wartość jest wymagana do obliczenia wymaganych jednostek żądań wraz z rozmiarem danych w stanie stabilności.  
+  * **Wymagana przepływność:** przybliżona przepływność w przypadku operacji odczytu (query/get) i zapisu (update/delete/insert). Ta wartość jest wymagana do obliczenia wymaganych jednostek żądań wraz z rozmiarem danych w stanie stabilności.  
 
-   * **Schemat:** połącz się z istniejącym klastrem Cassandra za pośrednictwem poleceń cqlsh i wyeksportuj schemat z bazy danych Cassandra: 
+  * **Schemat:** połącz się z istniejącym klastrem Cassandra za pośrednictwem poleceń cqlsh i wyeksportuj schemat z bazy danych Cassandra: 
 
-     ```bash
-     cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
-     ```
+    ```bash
+    cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
+    ```
 
-   Po zidentyfikowaniu wymagań dotyczących istniejącego obciążenia musisz utworzyć konto usługi Azure Cosmos, bazę danych i kontenery zgodnie z zebranymi wymaganiami dotyczącymi przepływności.  
+    Po zidentyfikowaniu wymagań dotyczących istniejącego obciążenia musisz utworzyć konto usługi Azure Cosmos, bazę danych i kontenery zgodnie z zebranymi wymaganiami dotyczącymi przepływności.  
 
-   * **Określenie opłaty za jednostkę żądania dla operacji:** jednostki żądań możesz określić przy użyciu dowolnego zestawu SDK obsługiwanego przez interfejs API Cassandra. W tym przykładzie przedstawiono sposób określania opłaty za jednostki żądań z użyciem wersji platformy .NET.
+  * **Określenie opłaty za jednostkę żądania dla operacji:** jednostki żądań możesz określić przy użyciu dowolnego zestawu SDK obsługiwanego przez interfejs API Cassandra. W tym przykładzie przedstawiono sposób określania opłaty za jednostki żądań z użyciem wersji platformy .NET.
 
-     ```csharp
-     var tableInsertStatement = table.Insert(sampleEntity);
-     var insertResult = await tableInsertStatement.ExecuteAsync();
+    ```csharp
+    var tableInsertStatement = table.Insert(sampleEntity);
+    var insertResult = await tableInsertStatement.ExecuteAsync();
 
-     foreach (string key in insertResult.Info.IncomingPayload)
-       {
-          byte[] valueInBytes = customPayload[key];
-          string value = Encoding.UTF8.GetString(valueInBytes);
-          Console.WriteLine($"CustomPayload:  {key}: {value}");
-       }
-     ```
+    foreach (string key in insertResult.Info.IncomingPayload)
+      {
+         byte[] valueInBytes = customPayload[key];
+         string value = Encoding.UTF8.GetString(valueInBytes);
+         Console.WriteLine($"CustomPayload:  {key}: {value}");
+      }
+    ```
 
 * **Przydzielenie wymaganej przepływności:** usługa Azure Cosmos DB potrafi automatycznie skalować magazyn i przepływność w miarę wzrostu wymagań. Potrzebną przepływność możesz oszacować, korzystając z [kalkulatora jednostek żądań usługi Azure Cosmos DB](https://www.documentdb.com/capacityplanner). 
 

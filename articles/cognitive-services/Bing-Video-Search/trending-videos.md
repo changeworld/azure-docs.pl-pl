@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2aa3c0cd9112f2de9ccda818e74b0b2c377133bf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 486cf2e3bcf851f23011bb2fb8d91691d6190698
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120843"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>Pobierz popularne wideo za pomocą interfejsu API wyszukiwania wideo Bing 
 
@@ -124,4 +124,4 @@ Poniższy przykład przedstawia odpowiedź interfejsu API, który zawiera popula
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-[Uzyskaj szczegółowe dane wideo](video-insights.md)
+> [Pobieranie szczegółowych informacji o wideo](video-insights.md)

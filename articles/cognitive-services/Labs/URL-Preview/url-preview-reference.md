@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: da23d8037f37174826a2b9662c39bb507367a6ae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104713"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odwołanie do projektu Podgląd adresu URL w wersji 7
 
@@ -56,7 +56,7 @@ Aby uzyskać informacji o dozwolone użycie i wyświetlania wyników, zobacz [u�
 > Niektóre nagłówki żądania, które mają znaczenie dla innych interfejsów API wyszukiwania nie mają wpływu na adres URL (wersja zapoznawcza)
 > - Pragma — obiekt wywołujący nie ma kontroli nad tego, czy adres URL w wersji zapoznawczej używa pamięci podręcznej
 > - Agent użytkownika — teraz adresu Url interfejsu API (wersja zapoznawcza) nie zapewnia różne odpowiedzi na wywołania pochodzące z komputera, Laptop lub Mobile.
-
+> 
 > Ponadto niektóre parametry nie są obecnie istotnych dla adresu URL interfejsu API (wersja zapoznawcza), ale mogą być używane w przyszłości dla globalizacji ulepszone.
 
 ## <a name="headers"></a>Nagłówki

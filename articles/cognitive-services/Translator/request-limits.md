@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 96ee65bfe8792bd56feb39f48659397cb517471a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735370"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861574"
 ---
 # <a name="request-limits-for-translator-text"></a>Limity żądań dla tekstu w usłudze Translator
 
@@ -43,7 +43,7 @@ Limity te są ograniczone do ogólnych systemy firmy Microsoft. Systemy tłumacz
 
 ## <a name="latency"></a>Opóźnienie
 
-Tekst usługi Translator ma maksymalny czas oczekiwania, 13 sekundach. Po tym czasie będzie Odebrano wynik lub limit czasu odpowiedzi. Zazwyczaj odpowiedzi są zwracane w milisekundach 150 do 300 MS. Czasy odpowiedzi będzie zależeć od rozmiaru lub parę żądania i język.
+Interfejs API tekstu usługi Translator ma maksymalny czas oczekiwania 15 sekund przy użyciu standardowych modeli. Tłumaczenie przy użyciu niestandardowych modeli zawiera maksymalny czas oczekiwania 25 sekund. Po tym czasie będzie Odebrano wynik lub limit czasu odpowiedzi. Zazwyczaj odpowiedzi są zwracane w milisekundach 150 do 300 MS. Czasy odpowiedzi będzie zależeć od rozmiaru pary żądania i język. Jeśli nie otrzymasz tłumaczenia lub [odpowiedzi na błąd](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) w określonym czasie, należy sprawdzić połączenie sieciowe i spróbuj ponownie.
 
 ## <a name="sentence-length-limits"></a>Limity długości zdania
 

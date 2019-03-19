@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/19/2018
 ms.author: wesmc
-ms.openlocfilehash: b8623acc9d29f083e34c7fa7494e866317146802
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
+ms.openlocfilehash: a9e5b00ad84a57f49303f2e6f9389b4791fd0f60
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252562"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58166950"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Szybki start: Sterowanie urządzeniem połączonym z centrum IoT Hub (Android)
 
@@ -91,7 +91,7 @@ Potrzebne będą także _parametry połączenia usługi_, aby umożliwić aplika
 **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 Zanotuj parametry połączenia usługi, które wyglądają następująco:
@@ -115,6 +115,13 @@ Przykładową aplikację dla zestawu SDK urządzenia można uruchomić na urząd
     ```
 
 3. W programie Android Studio kliknij kolejno pozycje **File** > **Sync Project with Gradle Files** (Plik > Synchronizuj projekt z plikami Gradle). Sprawdź, czy kompilacja została zakończona.
+
+   > [!NOTE]
+   > Jeśli synchronizacja projektu zakończy się niepowodzeniem, może być jednego z następujących powodów:
+   >
+   > * Wersje Wtyczka programu Gradle dla systemu Android i narzędzia Gradle, do którego odwołuje się projekt jest nieaktualny dla używanej wersji programu Android Studio. Postępuj zgodnie z [w instrukcjach](https://developer.android.com/studio/releases/gradle-plugin) odwołać się i zainstaluj poprawne wersje wtyczki i narzędzie Gradle dla tej instalacji.
+   > * Umowa licencyjna dotycząca zestawu Android SDK nie jest podpisany. Postępuj zgodnie z instrukcjami w danych wyjściowych kompilacji, podpisać umowę licencyjną, a następnie pobierz zestaw SDK.
+
 
 4. Po zakończeniu kompilacji kliknij kolejno pozycje **Run** > **Run 'app'** (Uruchom > Uruchom „aplikację”). Skonfiguruj aplikację do uruchamiania na fizycznym urządzeniu z systemem Android lub w emulatorze systemu Android. Aby uzyskać więcej informacji na temat uruchamiania aplikacji systemu Android na urządzeniu fizycznym lub w emulatorze, zobacz [Run your app (Uruchamianie aplikacji)](https://developer.android.com/training/basics/firstapp/running-app).
 
@@ -164,6 +171,13 @@ Aplikacja usługi zaplecza centrum IoT Hub zwykle działa w chmurze, gdzie możn
 
 3. W programie Android Studio kliknij kolejno pozycje **File** > **Sync Project with Gradle Files** (Plik > Synchronizuj projekt z plikami Gradle). Sprawdź, czy kompilacja została zakończona.
 
+   > [!NOTE]
+   > Jeśli synchronizacja projektu zakończy się niepowodzeniem, może być jednego z następujących powodów:
+   >
+   > * Wersje Wtyczka programu Gradle dla systemu Android i narzędzia Gradle, do którego odwołuje się projekt jest nieaktualny dla używanej wersji programu Android Studio. Postępuj zgodnie z [w instrukcjach](https://developer.android.com/studio/releases/gradle-plugin) odwołać się i zainstaluj poprawne wersje wtyczki i narzędzie Gradle dla tej instalacji.
+   > * Umowa licencyjna dotycząca zestawu Android SDK nie jest podpisany. Postępuj zgodnie z instrukcjami w danych wyjściowych kompilacji, podpisać umowę licencyjną, a następnie pobierz zestaw SDK.
+
+
 4. Po zakończeniu kompilacji kliknij kolejno pozycje **Run** > **Run 'app'** (Uruchom > Uruchom „aplikację”). Skonfiguruj aplikację do uruchamiania na osobnym fizycznym urządzeniu z systemem Android lub w emulatorze systemu Android. Aby uzyskać więcej informacji na temat uruchamiania aplikacji systemu Android na urządzeniu fizycznym lub w emulatorze, zobacz [Run your app (Uruchamianie aplikacji)](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Po załadowaniu aplikacji zaktualizuj ustawienie **Set Messaging Interval** (Ustaw interwał komunikatów) na wartość **1000** i kliknij pozycję **Invoke** (Wywołaj).
@@ -182,7 +196,7 @@ Aplikacja usługi zaplecza centrum IoT Hub zwykle działa w chmurze, gdzie możn
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start wywołano metodę bezpośrednią na urządzeniu z aplikacji zaplecza oraz odpowiedziano na wywołanie metody bezpośredniej w aplikacji urządzenia symulowanego.
 

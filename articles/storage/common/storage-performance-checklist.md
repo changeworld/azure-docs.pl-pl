@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 010a9f4e5be34986c1098f403e4df0ccf569838c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821681"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012330"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
 ## <a name="overview"></a>Przegląd
@@ -122,7 +122,7 @@ Możesz wykonać niektóre najlepsze rozwiązania, aby zmniejszyć częstotliwo�
 
 * Sprawdź konwencji nazewnictwa używanych w przypadku kont, kontenerów, obiektów blob, tabele i kolejki, dokładnie. Należy rozważyć dodanie przedrostka nazwy kont za pomocą skrótu 3-cyfrowy przy użyciu funkcji skrótu, który najlepiej odpowiada Twoim potrzebom.  
 * Organizowania danych przy użyciu sygnatur czasowych lub identyfikatory numeryczne należy upewnić się, że nie używasz wzorców ruchu tylko do dołączania (lub tylko dołączana). Wzorce te nie są odpowiednie dla zakresu — na podstawie partycjonowania systemu i może doprowadzić do całego ruchu, przechodząc do pojedynczej partycji i skutecznie ograniczenie systemu z równoważenia obciążenia. Na przykład w przypadku codziennych operacji korzystających z obiektu blob z sygnaturą czasową takich jak RRRRMMDD cały ruch do tego codziennej pracy jest kierowane do pojedynczego obiektu, który jest obsługiwany przez serwer z jedną partycją. Sprawdź, czy na limity obiektów blob na partycję limity potrzeb i rozważ podzielenie tej operacji na wielu obiektów blob, jeśli to konieczne. Podobnie jeśli przechowujesz dane szeregów czasowych w tabelach wszystko, co może być ruch skierowany do ostatniego część obszaru nazw kluczy. Jeśli musisz użyć sygnatur czasowych lub identyfikatory numeryczne, prefiks Identyfikatora znakiem numeru 3-cyfrowy lub w przypadku sygnatury czasowe prefiks część sekund w czasie, takie jak ssyyyymmdd. Wyświetlanie listy i badanie działań rutynowo wykonywane, jeśli funkcja wyznaczania wartości skrótu, która powoduje ograniczenie liczby zapytań. W innych przypadkach losowe prefiks, który może być wystarczające.  
-* Aby uzyskać dodatkowe informacje na temat schematu partycjonowania używane w usłudze Azure Storage, przeczytaj dokument SOSP [tutaj](http://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
+* Aby uzyskać dodatkowe informacje na temat schematu partycjonowania używane w usłudze Azure Storage, przeczytaj dokument SOSP [tutaj](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
 
 ### <a name="networking"></a>Networking
 Gdy interfejs API wywołuje sprawy, często ograniczenia sieci fizycznej aplikacji mieć znaczący wpływ na wydajność. Poniżej opisano niektóre ograniczenia, o których użytkownicy mogą wystąpić.  

@@ -4,17 +4,17 @@ description: Usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdra�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7aeb3cf2d56dbe20c85adca2243f5830575693e3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818667"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004906"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiowanie i przypisywanie usługi Azure Blueprint w portalu
 
@@ -42,7 +42,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    ![Tworzenie strategii](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste.  W polu **Lokalizacja definicji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcję, w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
+1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste. W polu **Lokalizacja definicji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcję, w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
 
 1. Sprawdź, czy informacje są poprawne (wartości pól **Nazwa strategii** i **Lokalizacja definicji** nie można później zmienić), a następnie kliknij pozycję **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
@@ -59,7 +59,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 1. Dodaj grupę zasobów w subskrypcji: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...**  pod elementem **Subskrypcja**. W polu _Typ artefaktu_ wybierz opcję „Grupa zasobów”. Pozostaw pola _Nazwa wyświetlana artefaktu_, _Nazwa grupy zasobów_ i _Lokalizacja_ puste, ale upewnij się, że dla każdej właściwości parametru jest zaznaczone pole wyboru, aby były one **parametrami dynamicznymi**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
-1. Dodaj szablon w grupie zasobów: Kliknij lewym przyciskiem myszy wiersz **+ Dodaj artefakt...** pod wpisem **ResourceGroup**. W polu _Typ artefaktu_ wybierz wartość „Szablon usługi Resource Manager”, w polu _Nazwa wyświetlana artefaktu_ ustaw wartość „StorageAccount”, a pole _Opis_ pozostaw puste. Na karcie **Szablon** w polu edytora wklej poniższy szablon usługi Resource Manager. Po wklejeniu szablonu wybierz kartę **Parametry** i zwróć uwagę, że parametry szablonu **storageAccountType** i **location** zostały wykryte. Każdy parametr został automatycznie wykryty i wypełniony, ale skonfigurowany jako **parametr dynamiczny**. Usuń zaznaczenie pola wyboru **storageAccountType** i zwróć uwagę, że lista rozwijana zawiera tylko wartości zawarte w szablonie usługi Resource Manager w obszarze **allowedValues**. Zaznacz pole, aby ustawić je powrotem jako **parametr dynamiczny**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
+1. Dodaj szablon w grupie zasobów: Kliknij lewym przyciskiem myszy pozycję **+ Dodaj artefakt...** pod wpisem **ResourceGroup**. W polu _Typ artefaktu_ wybierz wartość „Szablon usługi Resource Manager”, w polu _Nazwa wyświetlana artefaktu_ ustaw wartość „StorageAccount”, a pole _Opis_ pozostaw puste. Na karcie **Szablon** w polu edytora wklej poniższy szablon usługi Resource Manager. Po wklejeniu szablonu wybierz kartę **Parametry** i zwróć uwagę, że parametry szablonu **storageAccountType** i **location** zostały wykryte. Każdy parametr został automatycznie wykryty i wypełniony, ale skonfigurowany jako **parametr dynamiczny**. Usuń zaznaczenie pola wyboru **storageAccountType** i zwróć uwagę, że lista rozwijana zawiera tylko wartości zawarte w szablonie usługi Resource Manager w obszarze **allowedValues**. Zaznacz pole, aby ustawić je powrotem jako **parametr dynamiczny**. Kliknij pozycję **Dodaj**, aby dodać ten artefakt do strategii.
 
    > [!IMPORTANT]
    > W przypadku importowania szablonu upewnij się, że plik jest całkowicie w formacie JSON i nie zawiera kodu HTML. W przypadku wskazywania adresu URL w witrynie GitHub upewnij się, że została kliknięta opcja **RAW** (Plik nieprzetworzony), aby pobrać czysty plik JSON, a nie ten opakowany za pomocą kodu HTML do wyświetlania w witrynie GitHub. Jeśli zaimportowany szablon nie jest czystym plikiem JSON, wystąpi błąd.
@@ -84,7 +84,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
            },
            "location": {
                "type": "string",
-               "defaultValue": "[resourceGroup().location]",
+               "defaultValue": "[resourceGroups('ResourceGroup').location]",
                "metadata": {
                    "description": "Location for all resources."
                }
@@ -129,7 +129,7 @@ W ramach procedury [Tworzenie strategii](#create-a-blueprint) nie podano opisu s
 
 1. Na liście strategii kliknij prawym przyciskiem myszy tę, która została wcześniej utworzona, a następnie wybierz opcję **Edytuj strategię**.
 
-1. W polu **Opis strategii** podaj informacje o strategii i artefaktach, które ją tworzą.  W tym przypadku wprowadź opis podobny do następującego: „Ta strategia ustawia zasady tagu i przypisanie roli w ramach subskrypcji, tworzy grupę ResourceGroup i wdraża szablon zasobów oraz przypisanie roli w tej grupie ResourceGroup”.
+1. W polu **Opis strategii** podaj informacje o strategii i artefaktach, które ją tworzą. W tym przypadku wprowadź opis podobny do następującego: „Ta strategia ustawia zasady tagu i przypisanie roli w ramach subskrypcji, tworzy grupę ResourceGroup i wdraża szablon zasobów oraz przypisanie roli w tej grupie ResourceGroup”.
 
 1. Kliknij przycisk **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
@@ -186,13 +186,17 @@ Po opublikowaniu strategii można przypisać ją do subskrypcji. Przypisz utworz
    > [!NOTE]
    > Dla każdej wybranej subskrypcji jest tworzone przypisanie, co umożliwia późniejsze zmiany w przypisaniu pojedynczej subskrypcji bez wymuszania zmian w pozostałych wybranych subskrypcjach.
 
-1. W polu **Przypisana nazwa** podaj unikatową nazwę tego przypisania.
+1. Aby uzyskać **nazwa przypisania**, Podaj unikatową nazwę dla tego przypisania.
 
-1. W polu **Lokalizacja** wybierz region, w którym ma zostać utworzona tożsamość zarządzana. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+1. W **lokalizacji**, wybierz region dla zarządzanego obiektu wdrożenia tożsamości i subskrypcji do utworzenia w. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-1. Pozostaw listę rozwijaną **Wersja definicji strategii** wersji **opublikowanych** z wpisem „wersja 1” (domyślnie jako ostatnia **opublikowana** wersja).
+1. Pozostaw **wersji definicji planu** listy rozwijanej z **opublikowano** wersji na wpis "1" (wartość domyślna to ostatnio **opublikowano** wersji).
 
 1. Dla opcji **Blokowanie przypisania** pozostaw wartość domyślną **Nie blokuj**. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](./concepts/resource-locking.md).
+
+   ![Przypisanie — blokowanie i zarządzanych tożsamości](./media/create-blueprint-portal/assignment-locking-mi.png)
+
+1. W obszarze **tożsamości zarządzanej**, pozostaw wartość domyślną **przypisanej w systemie**.
 
 1. Dla przypisania roli na poziomie subskrypcji **[Grupa użytkowników lub nazwa aplikacji]: Współautor** wyszukaj i wybierz użytkownika, aplikację lub grupę.
 
@@ -243,11 +247,11 @@ Jeśli przypisanie strategii nie jest już potrzebne, możesz usunąć je z subs
 > [!NOTE]
 > Usunięcie strategii za pomocą tej metody powoduje również usunięcie wszystkich **opublikowanych wersji** wybranej strategii. Aby usunąć jedną wersję, otwórz strategię, kliknij kartę **Opublikowane wersje**, wybierz i kliknij wersję, którą chcesz usunąć, a następnie kliknij pozycję **Usuń tę wersję**. Ponadto strategii z przypisaniami nie można usunąć, dopóki wszystkie te przypisania strategii nie zostały usunięte.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat [cyklu życia strategii](./concepts/lifecycle.md)
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md)
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md)
-- Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md)
-- Dowiedz się, jak [zaktualizować istniejące przypisania](./how-to/update-existing-assignments.md)
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](./troubleshoot/general.md)
+- Dowiedz się więcej o [planu cyklu życia](./concepts/lifecycle.md).
+- Opis sposobu użycia [statycznych i dynamicznych parametrów](./concepts/parameters.md).
+- Dowiedz się, jak dostosować [planu sekwencjonowania](./concepts/sequencing-order.md).
+- Dowiedz się, jak używać [planu blokowania zasobów](./concepts/resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](./how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów z](./troubleshoot/general.md).

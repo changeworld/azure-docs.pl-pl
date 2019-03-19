@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473769"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002957"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Cross-Origin Resource Sharing (CORS) obsługę usług Azure Storage
-Począwszy od wersji 2013-08-15, usług Azure storage obsługuje udostępniania zasobów między źródłami (CORS) dla usług obiektów Blob, tabela, kolejka i pliku. CORS to funkcja protokołu HTTP, który umożliwia aplikacji sieci web uruchomionej w jednej domenie dostęp do zasobów w innej domenie. Przeglądarki sieci Web wdrażają ograniczenie bezpieczeństwa nazywane [zasadami tego samego źródła](http://www.w3.org/Security/wiki/Same_Origin_Policy) która zapobiega wywoływaniu interfejsów API w innej domenie; strony sieci web Mechanizm CORS zapewnia bezpieczną metodę umożliwiania jednej domenie (domenie źródłowej) wywoływania interfejsów API z innej domeny. Zobacz [specyfikacji CORS](http://www.w3.org/TR/cors/) szczegółowe informacje na mechanizmu CORS.
+Począwszy od wersji 2013-08-15, usług Azure storage obsługuje udostępniania zasobów między źródłami (CORS) dla usług obiektów Blob, tabela, kolejka i pliku. CORS to funkcja protokołu HTTP, który umożliwia aplikacji sieci web uruchomionej w jednej domenie dostęp do zasobów w innej domenie. Przeglądarki sieci Web wdrażają ograniczenie bezpieczeństwa nazywane [zasadami tego samego źródła](https://www.w3.org/Security/wiki/Same_Origin_Policy) która zapobiega wywoływaniu interfejsów API w innej domenie; strony sieci web Mechanizm CORS zapewnia bezpieczną metodę umożliwiania jednej domenie (domenie źródłowej) wywoływania interfejsów API z innej domeny. Zobacz [specyfikacji CORS](https://www.w3.org/TR/cors/) szczegółowe informacje na mechanizmu CORS.
 
 Można ustawić reguły CORS indywidualnie dla każdego z usługi magazynu, wywołując [ustawiania właściwości usługi obiektów Blob](https://msdn.microsoft.com/library/hh452235.aspx), [ustawiania właściwości usługi kolejki](https://msdn.microsoft.com/library/hh452232.aspx), i [ustawiania właściwości usługi tabeli](https://msdn.microsoft.com/library/hh452240.aspx). Po ustawieniu reguł CORS dla usługi, a następnie prawidłowo autoryzowanych żądania skierowanego do usługi z innej domeny zostanie ocenione w celu określenia, czy jest dozwolone zgodnie z regułami, które określono.
 
@@ -29,7 +29,7 @@ Można ustawić reguły CORS indywidualnie dla każdego z usługi magazynu, wywo
 ## <a name="understanding-cors-requests"></a>Opis żądania CORS
 Żądanie CORS z domeny pochodzenia może składać się z dwóch osobnych żądań:
 
-* Żądania wstępnego, który sprawdza CORS ograniczenia nałożone przez usługę. Żądania wstępnego jest wymagany, chyba że jest metoda żądania [prosta metoda](http://www.w3.org/TR/cors/), co oznacza, GET, HEAD lub POST.
+* Żądania wstępnego, który sprawdza CORS ograniczenia nałożone przez usługę. Żądania wstępnego jest wymagany, chyba że jest metoda żądania [prosta metoda](https://www.w3.org/TR/cors/), co oznacza, GET, HEAD lub POST.
 * Rzeczywistego żądania, skierowanego do żądanego zasobu.
 
 ### <a name="preflight-request"></a>Żądania wstępnego
@@ -129,7 +129,7 @@ Następnie należy wziąć pod uwagę następujące żądania CORS:
 
 | Żądanie |  |  | Odpowiedź |  |
 | --- | --- | --- | --- | --- |
-| **Metoda** |**Origin** |**Nagłówki żądania** |**Rule Match** |**wynik** |
+| **Metoda** |**Origin** |**Nagłówki żądań** |**Rule Match** |**wynik** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |Pierwsza reguła |Powodzenie |
 | **GET** |http://www.contoso.com |x-ms-blob-content-type |Druga reguła |Powodzenie |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |Druga reguła |Niepowodzenie |
@@ -146,7 +146,7 @@ Trzecie żądanie dopasowuje drugiej reguły w jego domena pochodzenia i metody,
 > 
 
 ## <a name="understanding-how-the-vary-header-is-set"></a>Informacje o konfiguracji nagłówka zależne
-*Zależne* nagłówek jest standardowy nagłówek HTTP/1.1, zawierający zestaw pól nagłówka żądania, które powiadomienia agenta przeglądarki lub użytkowników o kryteria, które zostały wybrane przez serwer przetwarzania żądania. *Zależne* nagłówek jest używana głównie dla pamięci podręcznej przez serwery proxy, przeglądarki i usługi CDN, które go użyć do określenia, jak powinny być buforowane odpowiedzi. Aby uzyskać szczegółowe informacje, zobacz specyfikację [nagłówka Vary](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+*Zależne* nagłówek jest standardowy nagłówek HTTP/1.1, zawierający zestaw pól nagłówka żądania, które powiadomienia agenta przeglądarki lub użytkowników o kryteria, które zostały wybrane przez serwer przetwarzania żądania. *Zależne* nagłówek jest używana głównie dla pamięci podręcznej przez serwery proxy, przeglądarki i usługi CDN, które go użyć do określenia, jak powinny być buforowane odpowiedzi. Aby uzyskać szczegółowe informacje, zobacz specyfikację [nagłówka Vary](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
 Gdy przeglądarki lub innego agenta użytkownika będzie buforować odpowiedź z żądania CORS, domena pochodzenia jest buforowany jako dozwolone pochodzenie. Gdy drugą domenę wysyła tego samego żądania dla zasobów magazynu, gdy pamięć podręczna jest aktywna, agent użytkownika pobiera domena pochodzenia pamięci podręcznej. Drugą domenę pasuje do pamięci podręcznej domeny, więc żądanie zakończy się niepowodzeniem, gdy w przeciwnym razie powiedzie. W niektórych przypadkach usługi Azure Storage ustawia nagłówek zależne **pochodzenia** nakazać agenta użytkownika, aby wysłać kolejne żądanie CORS do usługi, gdy żądanie domeny różni się od źródła pamięci podręcznej.
 
@@ -162,7 +162,7 @@ Należy pamiętać, że w przypadku żądań za pomocą metod innych niż GET/HE
 Poniższa tabela wskazuje, jak usługa Azure storage będą odpowiadać na żądania GET/HEAD oparte na przypadkach opisanych powyżej:
 
 | Żądanie | Ustawienia konta i wyniki oceny reguły |  |  | Odpowiedź |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | **Nagłówek źródła na żądanie** |**Reguły CORS określone dla tej usługi** |**Istnieje zgodną regułę, która zezwala na wszystkie origins(*)** |**Istnieje reguła pasujące źródło dokładne dopasowanie** |**Odpowiedź zawiera nagłówek zależne, ustaw punkt początkowy** |**Odpowiedź zawiera Access-Control-dozwolone-Origin: "*"** |**Odpowiedź zawiera Access-Control-udostępniane-Headers** |
 | Nie |Nie |Nie |Nie |Nie |Nie |Nie |
 | Nie |Yes |Nie |Nie |Yes |Nie |Nie |
@@ -184,5 +184,5 @@ Niepomyślne żądania wstępnego nie będą naliczane.
 
 [Ustawianie właściwości usługi tabeli](https://msdn.microsoft.com/library/hh452240.aspx)
 
-[W3C Cross-Origin Resource Sharing specyfikacji](http://www.w3.org/TR/cors/)
+[W3C Cross-Origin Resource Sharing specyfikacji](https://www.w3.org/TR/cors/)
 

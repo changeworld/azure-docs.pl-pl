@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 5cf09753645d8238232e064af2ba1a301a2a7217
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
-ms.translationtype: HT
+ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41918248"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082198"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Dołączanie rozwiązań aktualizacji i śledzenia zmian w usłudze Azure Automation
 
@@ -81,7 +81,7 @@ Teraz, gdy rozwiązania są włączone, można dołączyć maszynę wirtualną p
    ![Włączanie rozwiązania Update dla maszyny wirtualnej](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Jeśli użytkownik nie zaczeka na zakończenie instalacji innego rozwiązania przed włączeniem kolejnego rozwiązania, zostanie wyświetlony komunikat z informacją: *Trwa instalacja innego rozwiązania na tej lub innej maszynie wirtualnej. Po zakończeniu instalacji zostanie włączony przycisk Włącz i można zażądać instalacji rozwiązania na tej maszynie wirtualnej.*
+> Nie Czekaj, aż inne rozwiązanie do wykonania, gdy włączeniem kolejnego rozwiązania pojawi się komunikat z informacją: *Trwa instalacja innego rozwiązania na tej lub innej maszyny wirtualnej. Po zakończeniu instalacji zostanie włączony przycisk Włącz i można zażądać instalacji rozwiązania na tej maszynie wirtualnej.*
 
 ## <a name="install-and-update-modules"></a>Instalowanie i aktualizowanie modułów
 
@@ -105,7 +105,7 @@ Na stronie **Moduły** wybierz pozycję **Przeglądaj galerię**, aby otworzyć 
 1. Wybierz pozycję **Przeglądaj galerię**.
 1. Wyszukaj frazę **update and change tracking**, kliknij element runbook i wybierz pozycję **Importuj** na stronie **Wyświetlanie źródła**. Wybierz przycisk **OK**, aby zaimportować element runbook na konto usługi Automation.
 
-  ![Importowanie elementu runbook dołączania](media/automation-onboard-solutions/import-from-gallery.png)
+   ![Importowanie elementu runbook dołączania](media/automation-onboard-solutions/import-from-gallery.png)
 
 1. Na stronie **Element runbook** wybierz pozycję **Edytuj**, a następnie wybierz pozycję **Publikuj**. W oknie dialogowym **Publikowanie elementu runbook** wybierz przycisk **Tak**, aby opublikować element runbook.
 
@@ -131,7 +131,7 @@ Aby można było uruchomić ten element runbook, musi być dołączone rozwiąza
 1. Wybierz przycisk **OK**, aby uruchomić zadanie elementu runbook.
 1. Monitoruj postęp oraz wszelkie błędy na stronie zadania elementu runbook.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

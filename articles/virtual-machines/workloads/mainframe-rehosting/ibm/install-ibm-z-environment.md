@@ -8,18 +8,18 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 5de5f2f48504a711d4b7cff614abdd4214d0ba09
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fa3bf2b513ce7c5a0ea0210c66a9123ceaf1de37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739584"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015282"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalowanie IBM zD & T, środowisko programistyczne/testowe na platformie Azure
 
 Do tworzenia środowiska deweloperskiego/testowego, w przypadku obciążeń mainframe na systemach Z firmy IBM, można wdrożyć programowania Z firmy IBM i środowisko testowe (zD & T) w infrastrukturze platformy Azure maszyna wirtualna (VM) jako usługa (IaaS).
 
-Za pomocą zD & T, możesz korzystać z zalet oszczędność kosztów x86 platforma dla mniej ważnych środowiska deweloperskie i testowe i następnie wypychane aktualizacje z powrotem do środowiska produkcyjnego Z systemu. Aby uzyskać więcej informacji, zobacz [IBM ZD & T instrukcje dotyczące instalacji](http://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
+Za pomocą zD & T, możesz korzystać z zalet oszczędność kosztów x86 platforma dla mniej ważnych środowiska deweloperskie i testowe i następnie wypychane aktualizacje z powrotem do środowiska produkcyjnego Z systemu. Aby uzyskać więcej informacji, zobacz [IBM ZD & T instrukcje dotyczące instalacji](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
 
 Platforma Azure i usługi Azure Stack obsługuje następujące wersje:
 

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 725580a01c8dd60003cfc11910a3e5183624b1b1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 81646c979748b7a23762a25538ced447e382f72a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437547"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878435"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -233,7 +233,7 @@ New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Lo
 # Set your current working storage account
 Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
-# Create a Azure File Service Share
+# Create an Azure File Service Share
 $s = New-AzureStorageShare <<teamsharename>>
 # Create a directory under the FIle share. You can give it any name
 New-AzureStorageDirectory -Share $s -Path <directory name>
@@ -279,7 +279,7 @@ Obiektów blob platformy Azure to niezawodne i ekonomiczne przechowywanie w chmu
 ![Zrzut ekranu przedstawiający proces tworzenia konta magazynu w witrynie Azure portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Upewnij się, że wstępnie zainstalowane narzędzie wiersza polecenia narzędzia AzCopy znajduje się na ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Katalog zawierający azcopy.exe jest już w zmiennej środowiskowej PATH, aby uniknąć wpisywania ścieżki pełne polecenie podczas uruchamiania tego narzędzia. Aby uzyskać więcej informacji na temat narzędzia AzCopy, zapoznaj się [dokumentację programu AzCopy](../../storage/common/storage-use-azcopy.md)
-* Uruchom narzędzie Eksplorator usługi Azure Storage. Można go pobrać ze [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
+* Uruchom narzędzie Eksplorator usługi Azure Storage. Można go pobrać ze [Microsoft Azure Storage Explorer](https://storageexplorer.com/). 
 
 ![Zrzut ekranu przedstawiający Eksplorator usługi Azure Storage uzyskiwania dostępu do konta magazynu](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -296,7 +296,7 @@ Zastąp **C:\myfolder** do ścieżki, w którym jest zapisany plik, **mystoragea
 W programie PowerShell lub wierszu polecenia, Uruchom polecenia narzędzia AzCopy. Poniżej przedstawiono przykłady użycia polecenia narzędzia AzCopy:
 
 ```powershell
-# Copy *.sql from local machine to a Azure Blob
+# Copy *.sql from local machine to an Azure Blob
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:"c:\Aaqs\Data Science Scripts" /Dest:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /DestKey:[ENTER STORAGE KEY] /S /Pattern:*.sql
 
 # Copy back all files from Azure Blob container to Local machine

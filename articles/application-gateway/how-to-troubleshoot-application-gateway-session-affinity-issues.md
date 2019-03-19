@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: c98328342eec7fa59a56fbcc70da8cdd7a8fabf1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 157cbd9b05f7f2af58df732a1ca0329926a200da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880890"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123219"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Rozwiązywanie problemów z koligacją sesji bramy aplikacji platformy Azure
 
@@ -40,11 +40,11 @@ Czasami z koligacją sesji może wystąpić, gdy zapomnisz włączyć ustawienie
 
 3. Wybierz **ustawienia HTTP** karcie **ustawienia**.
 
-   ![troubleshoot-session-affinity-issues-1](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-1.png)
+   ![troubleshoot-session-affinity-issues-1](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
 
 4. Kliknij przycisk **appGatewayBackendHttpSettings** po prawej stronie, aby sprawdzić, czy wybrano **włączone** dla koligacji na podstawie plików Cookie.
 
-   ![troubleshoot-session-affinity-issues-2](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-2.jpg)
+   ![troubleshoot-session-affinity-issues-2](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-2.jpg)
 
 
 
@@ -81,9 +81,9 @@ Aby zidentyfikować ten problem, postępuj zgodnie z instrukcjami:
 2. Sprawdź i analizować dzienniki sesji, w celu określenia, czy pliki cookie, dostarczonych przez klienta mają szczegóły ARRAffinity. Jeśli nie możesz znaleźć ARRAffinity uzyskać szczegółowe informacje, takie jak "**ARRAffinity =** *ARRAffinityValue*" w zestawie plików cookie, który oznacza, że klient nie jest odpowiedzi z plikiem cookie Tabelaryzuj, który jest dostarczany przez Usługa Application Gateway.
     Na przykład:
 
-    ![troubleshoot-session-affinity-issues-3](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-3.png)
+    ![troubleshoot-session-affinity-issues-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-        ![troubleshoot-session-affinity-issues-4](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-4.png)
+        ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
 Aplikacja w dalszym ciągu próbuje ustawić plik cookie na każde żądanie, dopóki nie zostanie osiągnięty odpowiedzi.
 
@@ -111,25 +111,25 @@ Włączanie rejestrowania za pośrednictwem witryny Azure Portal
 
 2. Aby rozpocząć zbieranie danych, kliknij przycisk **Włącz diagnostykę**.
 
-   ![troubleshoot-session-affinity-issues-5](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-5.png)
+   ![troubleshoot-session-affinity-issues-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
 3. **Ustawień diagnostycznych** blok zawiera ustawienia dla dzienników diagnostycznych. W tym przykładzie usługi Log Analytics są przechowywane dzienniki. Kliknij przycisk **Konfiguruj** w obszarze **usługi Log Analytics** można ustawić obszaru roboczego. Na potrzeby zapisywania dzienników diagnostycznych można także skorzystać z usługi Event Hubs i konta magazynu.
 
-   ![troubleshoot-session-affinity-issues-6](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-6.png)
+   ![troubleshoot-session-affinity-issues-6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
 4. Potwierdź ustawienia a następnie kliknij przycisk **Zapisz**.
 
-   ![troubleshoot-session-affinity-issues-7](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-7.png)
+   ![troubleshoot-session-affinity-issues-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
 #### <a name="view-and-analyze-the-application-gateway-access-logs"></a>Wyświetlanie i analizowanie dzienników dostępu usługa Application Gateway
 
 1. W witrynie Azure portal w widoku zasobu bramy aplikacji, wybierz **dzienniki diagnostyczne** w **monitorowanie** sekcji.
 
-   ![troubleshoot-session-affinity-issues-8](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-8.png)
+   ![troubleshoot-session-affinity-issues-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
 2. Po prawej stronie wybierz pozycję "**ApplicationGatewayAccessLog**" na liście rozwijanej w obszarze **kategorie dziennika.**  
 
-   ![troubleshoot-session-affinity-issues-9](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-9.png)
+   ![troubleshoot-session-affinity-issues-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
 3. Na liście dziennik bramy Application Gateway dostępu kliknij dziennik, który chcesz analizować i wyeksportować, a następnie wyeksportowania pliku JSON.
 
@@ -145,7 +145,7 @@ Włączanie rejestrowania za pośrednictwem witryny Azure Portal
 
   - **STAN SERWERA**: Kod odpowiedzi HTTP bramy Application Gateway otrzymany z zaplecza.
 
-  ![troubleshoot-session-affinity-issues-11](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-11.png)
+  ![troubleshoot-session-affinity-issues-11](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
 Jeśli widać, dwa elementy pochodzą z tej samej ClientIP i portu klienta, a te są wysyłane na ten sam serwer zaplecza, oznacza to Application Gateway, poprawnie skonfigurowany.
 
@@ -164,23 +164,23 @@ Za pomocą debugera web wybranych przez użytkownika. W tym przykładzie używam
 
 2. Kliknij prawym przyciskiem myszy plik wykonywalny Instalatora i Uruchom jako administrator, aby zainstalować.
 
-            ![troubleshoot-session-affinity-issues-12](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-12.png)
+            ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
 3. Po otwarciu programu Fiddler, automatycznie początek Przechwytywanie ruchu (Uwaga: Przechwytywanie w lewej dolnym rogu). Naciśnij klawisz F12, aby rozpocząć lub zatrzymać przechwytywanie ruchu sieciowego.
 
-        ![troubleshoot-session-affinity-issues-13](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-13.png)
+        ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
 4. Najprawdopodobniej będą zainteresowani odszyfrowania ruchu HTTPS i odszyfrowywania protokołu HTTPS można włączyć, zaznaczając **narzędzia** > **opcje programu Fiddler**i zaznacz pole wyboru " **odszyfrowywania Ruch HTTPS**".
 
-        ![troubleshoot-session-affinity-issues-14](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-14.png)
+        ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
 5. Możesz usunąć poprzednich sesjach niepowiązanych przed odtworzenia problemu, klikając **X** (ikonę) > **Usuń wszystkie** jako wykonaj zrzut ekranu: 
 
-        ![troubleshoot-session-affinity-issues-15](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-15.png)
+        ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
 6. Po mają odtworzyć problem, Zapisz plik do przeglądu, wybierając **pliku** > **Zapisz** > **wszystkie sesje...** . 
 
-        ![troubleshoot-session-affinity-issues-16](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-16.png)
+        ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
 7. Sprawdź i analizować dzienniki sesji, aby ustalić, co to jest problem.
 
@@ -191,11 +191,11 @@ Za pomocą debugera web wybranych przez użytkownika. W tym przykładzie używam
    > [!NOTE]
    > Ta wartość ARRAffinity jest identyfikator pliku cookie, określająca Application Gateway dla klienta w celu wysłania do określonego serwera zaplecza.
 
-    ![Rozwiązywanie problemów z sesji koligacji — problemy-17](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-17.png)
+    ![Rozwiązywanie problemów z sesji koligacji — problemy-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **Przykład B:** Dalej dziennika sesji następuje poprzedni jest klient odpowiada powrót do bramy aplikacji, która została ustawiona ARRAAFFINITY. Jeśli identyfikator pliku cookie ARRAffinity jest zgodny, pakiet powinny być przesyłane na ten sam serwer zaplecza, który został wcześniej użyty. Sprawdź dalej kilka wierszy komunikacji http, aby zobaczyć, czy plik cookie ARRAffinity klienta ulegnie zmianie.
 
-    ![troubleshoot-session-affinity-issues-18](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-18.png)
+    ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
 > W tej samej sesji komunikacji plik cookie ma nie należy zmieniać. Sprawdź polu u góry po prawej stronie, wybierz kartę "Plików cookie", aby zobaczyć, czy klient jest przy użyciu pliku cookie i wysłanie go do bramy aplikacji. W przeciwnym razie w przeglądarce klienta nie jest przechowywanie i za pomocą plików cookie dla konwersacji. Czasami może znajdować się klient.

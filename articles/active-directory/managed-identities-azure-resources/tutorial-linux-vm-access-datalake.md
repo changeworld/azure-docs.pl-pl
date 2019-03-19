@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d050cbfbe3def0e6475b807f88102f3edfe4f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 3bae4012f20d5f655dba014a0e71616101bc42a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204665"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092059"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Data Lake Store
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-W tym samouczku przedstawiono sposób używania tożsamości zarządzanej przypisanej przez system dla maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Cosmos DB. Omawiane kwestie: 
+W tym samouczku przedstawiono sposób korzystania z tożsamości zarządzanej przypisana przez system dla systemu Linux maszyny wirtualnej (VM) na dostęp do usługi Azure Data Lake Store. Omawiane kwestie: 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -71,7 +71,7 @@ Aby wykonać te kroki, potrzebujesz klienta SSH. Jeśli używasz systemu Windows
 
 1. W portalu przejdź do maszyny wirtualnej z systemem Linux. W obszarze **Omówienie** wybierz pozycję **Połącz**.  
 2. Połącz się z maszyną wirtualną przy użyciu wybranego klienta protokołu SSH. 
-3. W oknie terminalu, używając programu cURL, wyślij żądanie do lokalnego punktu końcowego tożsamości zarządzanych dla platformy Azure, aby uzyskać token dostępu do systemu plików Data Lake Store. Identyfikator zasobu usługi Data Lake Store to „https://datalake.azure.net/”.  Ważne jest, aby na końcu identyfikatora zasobu uwzględnić kreskę ukośną.
+3. W oknie terminalu, używając programu cURL, wyślij żądanie do lokalnego punktu końcowego tożsamości zarządzanych dla platformy Azure, aby uzyskać token dostępu do systemu plików Data Lake Store. Identyfikator zasobu Data Lake Store jest `https://datalake.azure.net/`.  Ważne jest, aby na końcu identyfikatora zasobu uwzględnić kreskę ukośną.
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
@@ -150,7 +150,7 @@ Aby wykonać te kroki, potrzebujesz klienta SSH. Jeśli używasz systemu Windows
 
 Za pomocą innych interfejsów API w systemie plików Data Lake Store można dołączać do plików, plików do pobrania i innych elementów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób używania przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Azure Data Lake Store. Aby dowiedzieć się więcej o usłudze Azure Data Lake Store, zobacz:
 

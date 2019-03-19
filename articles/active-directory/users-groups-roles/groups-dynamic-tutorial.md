@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3883ddcad1c41e131d52016e4fa94a3e668adcd1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f1110ef9383798ddeb8a04a0e19deb441e3d207c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209731"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081308"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Samouczek: automatyczne dodawanie lub usuwanie członków grupy
 
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ta funkcja wymaga, aby globalny administrator dzierżawy posiadał jedną licencję usługi Azure AD — wersja Premium. Jeśli jej nie masz, w usłudze Azure AD wybierz opcję **Licencje** > **Produkty** > **Wypróbuj/kup**.
+Ta funkcja wymaga jedna licencja usługi Azure AD Premium dla Ciebie jako administratora globalnego dzierżawy. Jeśli jej nie masz, w usłudze Azure AD wybierz opcję **Licencje** > **Produkty** > **Wypróbuj/kup**.
 
 Nie musisz przypisywać licencji użytkownikom, aby mogli być członkami grup dynamicznych. W dzierżawie potrzebna jest tylko taka minimalna liczba dostępnych licencji usługi Azure AD — wersja Premium P1, aby objęci byli nimi wszyscy tacy użytkownicy. 
 
@@ -44,15 +44,15 @@ Nie musisz przypisywać licencji użytkownikom, aby mogli być członkami grup d
 
 Najpierw należy utworzyć grupę dla użytkowników-gości z jednej firmy partnerskiej. Potrzebują oni specjalnej licencji, a więc często najlepszym rozwiązaniem jest utworzenie grupy do tego celu.
 
-1. Zaloguj się w witrynie Azure Portal https://portal.azure.com) przy użyciu konta globalnego administratora dzierżawy.
+1. Zaloguj się do witryny Azure portal (https://portal.azure.com) przy użyciu konta administratora globalnego dla dzierżawy.
 2. Wybierz pozycję **Azure Active Directory** > **Grupy** > **Nowa grupa**.
-  ![Wybieranie polecenia Nowa grupa](./media/groups-dynamic-tutorial/new-group.png)
+   ![Wybieranie polecenia Nowa grupa](./media/groups-dynamic-tutorial/new-group.png)
 3. W bloku **Grupa**:
   
-  * Wybierz pozycję **Zabezpieczenia** jako typ grupy
-  * Podaj ciąg `Guest users Contoso` jako nazwę i opis grupy
-  * Zmień **Typ członkostwa** na **Użytkownik dynamiczny**
-  * Wybierz pozycję **Dodaj zapytanie dynamiczne**
+   * Wybierz pozycję **Zabezpieczenia** jako typ grupy
+   * Podaj ciąg `Guest users Contoso` jako nazwę i opis grupy
+   * Zmień **Typ członkostwa** na **Użytkownik dynamiczny**
+   * Wybierz pozycję **Dodaj zapytanie dynamiczne**
   
 4. Wybierz pozycję **Reguła zaawansowana**, a następnie w polu **Reguła zaawansowana** wpisz wartość: `(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`
 5. Wybierz pozycję **Dodaj zapytanie**, aby zamknąć blok.
@@ -84,7 +84,7 @@ Możliwe, że Twoim ostatecznym celem jako administratora jest przypisanie wszys
 1. Wybierz pozycję **Azure Active Directory** > **Grupy**. Wybierz nazwę grupy **Wszyscy użytkownicy**, aby otworzyć grupę.
 1. Wybierz pozycję **Reguły członkostwa dynamicznego**, wyczyść tekst w regule, a następnie wybierz polecenie **Zapisz**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]

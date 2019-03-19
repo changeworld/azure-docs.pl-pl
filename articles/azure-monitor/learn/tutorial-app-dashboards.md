@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ce99e06ea1a8e72a8767367ddfd7bbb845c8400
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.openlocfilehash: 3abe0511200bf5828b485b15a4b8a512731c4ffa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318427"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082130"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Tworzenie niestandardowych pulpitów nawigacyjnych wskaźników KPI przy użyciu usługi Azure Application Insights
 
@@ -42,18 +42,18 @@ Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https
 ## <a name="create-a-new-dashboard"></a>Tworzenie nowego pulpitu nawigacyjnego
 Pojedynczy pulpit nawigacyjny może zawierać zasoby z wielu aplikacji, subskrypcji i grup zasobów.  Aby rozpocząć wykonywanie kroków tego samouczka, utwórz nowy pulpit nawigacyjny aplikacji.  
 
-2.  W okienku pulpitów nawigacyjnych wybierz pozycję **Nowy pulpit nawigacyjny**.
+1. W okienku pulpitów nawigacyjnych wybierz pozycję **Nowy pulpit nawigacyjny**.
 
-    ![Nowy pulpit nawigacyjny](media/tutorial-app-dashboards/1newdashboard.png)
+   ![Nowy pulpit nawigacyjny](media/tutorial-app-dashboards/1newdashboard.png)
 
-3. Wpisz nazwę pulpitu nawigacyjnego.
-4. Otwórz **galerię kafelków**, aby zobaczyć, jak wiele różnych kafelków możesz dodać do pulpitu nawigacyjnego.  Oprócz dodawania kafelków z galerii na pulpicie nawigacyjnym możesz przypinać wykresy i inne widoki bezpośrednio z usługi Application Insights.
-5. Znajdź kafelek **Markdown** i przeciągnij go na pulpit nawigacyjny.  Ten kafelek pozwala dodawać tekst sformatowany w języku znaczników markdown, co jest idealnym rozwiązaniem w przypadku dodawania tekstu opisowego do pulpitu nawigacyjnego.
-6. Dodaj tekst we właściwościach kafelka i zmień jego rozmiar na kanwie pulpitu nawigacyjnego.
+1. Wpisz nazwę pulpitu nawigacyjnego.
+1. Otwórz **galerię kafelków**, aby zobaczyć, jak wiele różnych kafelków możesz dodać do pulpitu nawigacyjnego.  Oprócz dodawania kafelków z galerii na pulpicie nawigacyjnym możesz przypinać wykresy i inne widoki bezpośrednio z usługi Application Insights.
+1. Znajdź kafelek **Markdown** i przeciągnij go na pulpit nawigacyjny.  Ten kafelek pozwala dodawać tekst sformatowany w języku znaczników markdown, co jest idealnym rozwiązaniem w przypadku dodawania tekstu opisowego do pulpitu nawigacyjnego.
+1. Dodaj tekst we właściwościach kafelka i zmień jego rozmiar na kanwie pulpitu nawigacyjnego.
     
     ![Edytowanie kafelka Markdown](media/tutorial-app-dashboards/2dashboard-text.png)
 
-6. Kliknij pozycję **Zakończono dostosowywanie** w górnej części ekranu, aby wyjść z trybu dostosowywania kafelka.
+1. Kliknij pozycję **Zakończono dostosowywanie** w górnej części ekranu, aby wyjść z trybu dostosowywania kafelka.
 
 ## <a name="add-health-overview"></a>Dodawanie ogólnych informacji o kondycji
 Pulpit nawigacyjny zawierający tylko statyczny tekst nie jest specjalnie ciekawy, dlatego dodamy teraz kafelek z usługi Application Insights, przedstawiający informacje o aplikacji.  Kafelki usługi Application Insights można dodawać z galerii kafelków lub przypinać je bezpośrednio z ekranów usługi Application Insights.  Pozwala to konfigurować znane wykresy i widoki przed przypięciem ich do pulpitu nawigacyjnego.  Na początku dodamy przegląd standardowych informacji o kondycji aplikacji.  Nie wymaga on konfiguracji i udostępnia minimalne możliwości dostosowania na pulpicie nawigacyjnym.
@@ -141,7 +141,7 @@ Ponieważ funkcja analizy usługi Azure Application Insights jest odrębną usł
 5. Wybierz pozycję **Udostępnij**, aby opublikować ponownie zmiany na pulpicie nawigacyjnym, który teraz zawiera różne wykresy i wizualizacje z usługi Application Insights.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy już wiesz, jak tworzyć niestandardowe pulpity nawigacyjne, zapoznaj się z pozostałą częścią dokumentacji usługi Application Insights, w tym analizą przypadku.
 
 > [!div class="nextstepaction"]

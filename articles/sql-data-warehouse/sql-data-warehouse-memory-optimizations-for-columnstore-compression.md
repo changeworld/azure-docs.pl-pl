@@ -2,24 +2,24 @@
 title: Poprawianie wydajności indeksu magazynu kolumn — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Zmniejsz wymagania dotyczące pamięci lub zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje w każdej grupie wierszy.
 services: sql-data-warehouse
-author: ckarst
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d956322233cb6b4f8502775dcf2f89d96fd5cafe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463365"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189568"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizacja jakości i magazynu kolumn
 
-Jakość i jest określana przez liczbę wierszy w grupie wierszy. Zmniejsz wymagania dotyczące pamięci lub zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje w każdej grupie wierszy.  Metody te można stosować do zwiększenia szybkości kompresji i wykonywania zapytań względem wydajności w indeksach magazynu kolumn.
+Jakość i jest określana przez liczbę wierszy w grupie wierszy. Zwiększenie ilości dostępnej pamięci można zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje w każdej grupie wierszy.  Metody te można stosować do zwiększenia szybkości kompresji i wykonywania zapytań względem wydajności w indeksach magazynu kolumn.
 
 ## <a name="why-the-rowgroup-size-matters"></a>Dlaczego jest ważna wielkości grupy wierszy:
 Ponieważ indeks magazynu kolumn skanowania tabeli za pomocą skanowania segmentów kolumny z poszczególnych rowgroups, maksymalizacja liczby wierszy w każdej grupie wierszy zwiększa wydajność zapytań. Gdy rowgroups ma dużą liczbę wierszy, kompresji danych zwiększa, co oznacza, że ilość danych odczytanych z dysku.
@@ -35,11 +35,11 @@ Podczas zbiorcze obciążenie lub magazynu kolumn indeksu ponownej kompilacji cz
 
 Usługa SQL Data Warehouse generuje błąd, w przypadku braku pamięci w celu skompresowania co najmniej 10 000 wierszy w każdej grupie wierszy.
 
-Aby uzyskać więcej informacji na temat ładowania zbiorczego, zobacz [ładowanie zbiorcze do indeksu klastrowanego magazynu kolumn](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+Aby uzyskać więcej informacji na temat ładowania zbiorczego, zobacz [ładowanie zbiorcze do indeksu klastrowanego magazynu kolumn](https://msdn.microsoft.com/library/dn935008.aspx#Bulk ).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorować jakość grupy wierszy:
 
-Brak DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats), który udostępnia przydatne informacje, takie jak liczba wierszy w grupy wierszy i przyczynę przycinania, jeśli został przycinania. Możesz utworzyć następujący widok jako wygodny sposób ten widok DMV, aby uzyskać informacje dotyczące przycinania i zapytania.
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) zawiera definicję widoku dopasowania bazy danych SQL w usłudze SQL Data Warehouse), udostępnia przydatne informacje np. liczby wierszy w grupy wierszy i przyczynę przycinania, jeśli został przycinania. Możesz utworzyć następujący widok jako wygodny sposób ten widok DMV, aby uzyskać informacje dotyczące przycinania i zapytania.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -137,14 +137,6 @@ Rozmiar jednostek DWU i klasa zasobów użytkownika razem określają ilość pa
 
 - Zwiększenie liczby jednostek dwu, zobacz [sposób skalować wydajność?](quickstart-scale-compute-portal.md)
 - Aby zmienić klasy zasobów dla zapytania, zobacz [zmienić przykład klasy zasobów użytkownika](resource-classes-for-workload-management.md#change-a-users-resource-class).
-
-Na przykład na 100 jednostek DWU użytkownika do klasy zasobów smallrc służy 100 MB pamięci dla każdej dystrybucji. Aby uzyskać więcej informacji, zobacz [współbieżności w usłudze SQL Data Warehouse](resource-classes-for-workload-management.md).
-
-Załóżmy, że należy określić, czy potrzebujesz 700 MB pamięci, można pobrać rozmiarów grupy wierszy wysokiej jakości. Poniższe przykłady pokazują, jak uruchomić zapytanie obciążenia z wystarczającą ilość pamięci.
-
-- Korzystając z 1000 jednostek DWU i mediumrc, Twoje udział pamięci to 800 MB
-- Korzystając z 600 jednostek DWU i largerc, z przydziałem pamięci to 800 MB.
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

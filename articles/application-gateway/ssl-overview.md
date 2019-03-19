@@ -5,14 +5,14 @@ services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/23/2018
-ms.author: amsriva
-ms.openlocfilehash: fcb49f532d5dfcd340baf017bd55c69d4e81e0e6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 3/12/2019
+ms.author: victorh
+ms.openlocfilehash: 16ba6b73dd0c64298f319d4b18750d753f166987
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630686"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849384"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Omówienie kompleksowej usługi SSL z usługą Application Gateway
 
@@ -21,6 +21,8 @@ Usługa Application Gateway obsługuje kończenia żądań SSL na bramie, po kt�
 Kompleksowa usługa SSL pozwala na bezpieczne przesyłanie danych poufnych na zaplecze, szyfrowane, gdy nadal trwa, korzystając z zalet funkcji równoważenia obciążenia warstwy 7 której usługa application gateway zapewnia. Do tych funkcji należą koligacja sesji oparta na plikach cookie, routing oparty na adresach URL, obsługa routingu opartego na witrynach lub możliwość iniekcji nagłówków X-Forwarded-*.
 
 Po skonfigurowaniu kompleksowego trybu komunikacji SSL usługa Application Gateway kończy sesje SSL na bramie i odszyfrowuje ruch użytkownika. Następnie stosuje skonfigurowane reguły, aby wybrać odpowiednie wystąpienie puli serwerów zaplecza w celu skierowania do nich ruchu. Następnie usługa Application Gateway inicjuje nowe połączenie SSL z serwerem zaplecza i ponownie szyfruje dane przy użyciu certyfikatu klucza publicznego serwera zaplecza przed przekazaniem żądania do zaplecza. Kompleksowa usługa SSL jest włączona konfigurując dla ustawienia protokołu **parametr BackendHTTPSetting** HTTPS, których są następnie stosowane do puli zaplecza. Każdy serwer zaplecza w puli zaplecza z włączoną kompleksową usługą SSL należy skonfigurować przy użyciu certyfikatu, aby umożliwić bezpieczną komunikację.
+
+Zasady SSL dotyczy ruchu frontonu i wewnętrznej bazy danych. We frontonie usługa Application Gateway działa jako serwer i wymusza zasady. Do wewnętrznej bazy danych usługa Application Gateway działa jako klient i wysyła informacje o protokole/szyfrowania jako preferencji podczas uzgadniania protokołu SSL.
 
 ![Scenariusz kompleksowej usługi SSL][1]
 

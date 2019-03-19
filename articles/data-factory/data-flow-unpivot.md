@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: f1eca7f76f45966ba43c15b3d8b92203c8199bfe
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 160ff8bbcb8ce5a4f1f32245cc366281640c5919
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732079"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854261"
 ---
-# <a name="azure-data-factory-mapping-data-flow-unpivot-transformation"></a>Przepływ danych mapowania fabryki danych platformy Azure, Anuluj przestawienie transformacji
+# <a name="azure-data-factory-unpivot-transformation"></a>Usługi Azure Data Factory Anuluj przestawienie transformacji
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -51,3 +51,7 @@ Ustawienie rozmieszczenia kolumn na wartość "Normal" opcji pozwala grupować z
 ![Anuluj przestawienie przekształcania](media/data-flow//unpivot7.png "Anuluj przestawienie opcje 5")
 
 Na zestaw wyników danych końcowych przestawienia przedstawiono Anulowano przestawienie w oddzielnym wierszu wartości sumy kolumn.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Użyj [przestawnego przekształcania](data-flow-pivot.md) pivot wiersze jako kolumny.

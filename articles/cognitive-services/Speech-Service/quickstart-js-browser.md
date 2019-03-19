@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 8e1f880c57b0db0a2f68fbe26e99679769fdee6c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 0a06293a648460694bbe222f36f81bea2d6acdac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448045"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841178"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w języku JavaScript w przeglądarce przy użyciu zestawu SDK usługi Mowa
 
@@ -26,7 +26,7 @@ Aplikacja jest oparta na zestawie SDK usługi Mowa z usługi Microsoft Cognitive
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz subskrypcji dla usługi Mowa. Zobacz [Wypróbuj bezpłatnie usługę Mowa](get-started.md).
+* Klucz subskrypcji dla usługi Mowa. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md).
 * Komputer PC lub Mac z działającym mikrofonem.
 * Edytor tekstów.
 * Bieżąca wersja przeglądarki Chrome lub Microsoft Edge.
@@ -49,12 +49,12 @@ Utwórz w folderze nowy plik o nazwie `index.html`, a następnie otwórz ten pli
 
 1. Utwórz następujący szkielet kodu HTML:
 
-  ```html
-  <html>
-  <head>
+   ```html
+   <html>
+   <head>
       <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
-  </head>
-  <body>
+   </head>
+   <body>
     <!-- UI code goes here -->
 
     <!-- SDK reference goes here -->
@@ -62,21 +62,21 @@ Utwórz w folderze nowy plik o nazwie `index.html`, a następnie otwórz ten pli
     <!-- Optional authorization token request goes here -->
 
     <!-- Sample code goes here -->
-  </body>
-  </html>
-  ```
+   </body>
+   </html>
+   ```
 
 1. Dodaj następujący kod interfejsu użytkownika do pliku, poniżej pierwszego komentarza:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
 
 1. Dodaj odwołanie do zestawu SDK usługi Mowa
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
 1. Podłącz procedury obsługi dla przycisku rozpoznawania, wyniku rozpoznawania i pól powiązanych z subskrypcją zdefiniowanych przez kod interfejsu użytkownika:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 
 ## <a name="create-the-token-source-optional"></a>Tworzenie źródła tokenu (opcjonalnie)
 
@@ -85,11 +85,11 @@ W ten sposób Twój klucz subskrypcji nigdy nie opuści serwera, ale jednocześn
 
 1. Utwórz nowy plik o nazwie `token.php`. W tym przykładzie przyjęto założenie, że serwer internetowy obsługuje język skryptów PHP. Wprowadź następujący kod:
 
-  [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
+   [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
 
 1. Edytuj plik `index.html` i dodaj następujący kod do pliku:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
 
 > [!NOTE]
 > Tokeny autoryzacji mają tylko ograniczony okres istnienia.
@@ -103,7 +103,7 @@ Aby uruchomić aplikację, kliknij dwukrotnie plik index.html lub otwórz plik i
 
 Aby uruchomić aplikację, otwórz przeglądarkę internetową i wskaż w niej publiczny adres URL, pod którym hostowany jest folder, wprowadź swój [region](regions.md) i wyzwól rozpoznawanie za pomocą mikrofonu. Jeśli skonfigurowano tę funkcję, pobierze ona token ze źródła tokenu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka JavaScript w usłudze GitHub](https://aka.ms/csspeech/samples)

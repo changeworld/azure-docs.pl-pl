@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8f682e0795f8f732805e817e4498cc486bbb2c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6376a479d2e6969505310de0e8e73e74738a04c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Samouczek: Integracja usługi Azure Active Directory z cyklem życia SCC
 
@@ -117,6 +117,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`
 
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|--|
     | `https://bs1.scc.com/<entity>`|
@@ -135,8 +136,8 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Aby skonfigurować logowanie jednokrotne na **cyklu życia SCC** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej cyklu życia SCC](mailto:lifecycle.support@scc.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-  >[!NOTE]
-  >Logowania jednokrotnego musi być włączona przez zespół pomocy technicznej cyklu życia SCC.
+   >[!NOTE]
+   >Logowania jednokrotnego musi być włączona przez zespół pomocy technicznej cyklu życia SCC.
 
 > [!TIP]
 > Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -180,7 +181,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do cyklu życia S
 Gdy przypisany użytkownik próbuje zalogować się do cyklu życia SCC, cykl życia SCC automatycznie tworzone jest konto w razie potrzeby.
 
 > [!NOTE]
-> Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
+> Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -221,7 +222,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

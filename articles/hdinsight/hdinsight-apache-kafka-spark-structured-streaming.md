@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: e470f9d6f33e8b534be22132881f4806bed85f5d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652868"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078367"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: Używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
@@ -131,12 +131,12 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
     Ten szablon umożliwia utworzenie następujących zasobów:
 
-    * Klaster Kafka w usłudze HDInsight 3.6.
-    * Klaster Spark 2.2.0 w usłudze HDInsight 3.6.
-    * Sieć wirtualna platformy Azure zawierająca klastry usługi HDInsight.
+   * Klaster Kafka w usłudze HDInsight 3.6.
+   * Klaster Spark 2.2.0 w usłudze HDInsight 3.6.
+   * Sieć wirtualna platformy Azure zawierająca klastry usługi HDInsight.
 
-    > [!IMPORTANT]  
-    > Używany w tym samouczku notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark 2.2.0 w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
+     > [!IMPORTANT]  
+     > Używany w tym samouczku notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark 2.2.0 w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
 
 2. Wypełnij pola w sekcji **Dostosowany szablon**, korzystając z poniższych informacji:
 
@@ -203,7 +203,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 > 
 > Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób użycia [przesyłania strumieniowego ze strukturą platformy Apache Spark](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) do zapisywania danych na platformie [Apache Kafka](https://kafka.apache.org/) w usłudze HDInsight i odczytywania z niej danych. Korzystając z poniższego linku, możesz dowiedzieć się, jak używać systemu [Apache Storm](https://storm.apache.org/) z platformą Kafka.
 

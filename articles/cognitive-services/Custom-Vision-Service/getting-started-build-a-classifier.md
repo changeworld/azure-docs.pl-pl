@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445461"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088013"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
 
@@ -100,7 +100,7 @@ Aby przekazać inny zestaw obrazów, powrót do początku tej sekcji, a następn
 
 > [!NOTE]
 > Custom Vision Service obsługuje niektóre obsługi automatycznego obrazów ujemna. Na przykład jeśli tworzysz gronowego a banany klasyfikatora, przesyłanie obrazu butów w celu prognozowania klasyfikatora powinien wynik tego obrazu jako 0% gronowego i banany.
-
+> 
 > Z drugiej strony w przypadku obrazów ujemna odmianą obrazy używane w szkolenia, prawdopodobnie modelu będzie klasyfikowania obrazów ujemna jako klasę etykietami z powodu podobieństwa doskonałe. Na przykład jeśli masz pomarańczowy, a grejpfrutów klasyfikatora, a kanał w obrazie clementine, jego może wynik clementine pomarańczowa ponieważ wiele funkcji clementine przypominają Pomarańcze. W przypadku obrazów ujemna tego rodzaju, zaleca się utworzenie co najmniej jeden dodatkowe znaczniki (takie jak **innych**) i oznaczanie ujemna obrazy z tym znacznikiem podczas szkolenia zezwolić na model, który ma lepsze rozróżnienie tych klas .
 
 ## <a name="train-the-classifier"></a>Szkolenie klasyfikatora

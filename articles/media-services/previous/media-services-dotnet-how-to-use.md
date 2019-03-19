@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 36350f8f359c6ad5cc5637ce0ce38838698cd68b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7da57c01b6717b505ea09fa9e6197bab4d4976fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177448"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57873829"
 ---
 # <a name="media-services-development-with-net"></a>Projektowanie usługi Media Services przy użyciu platformy .NET 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -45,7 +45,7 @@ Alternatywnie, można uzyskać najnowsze elementy Media Services .NET SDK z usł
 2. Skompiluj rozwiązanie.
 3. Użyj **NuGet** na zainstalowanie i dodanie **rozszerzenia SDK .NET usługi Azure Media Services** (**windowsazure.mediaservices.extensions**). Podczas instalacji tego pakietu instalowany jest również zestaw **.NET SDK usługi Media Services** oraz dodawane są wszystkie inne wymagane zależności.
    
-    Upewnij się, że masz najnowszą wersję zainstalowanego Menedżera NuGet. Aby uzyskać więcej informacji i instalacji instrukcji, zobacz [NuGet](http://nuget.codeplex.com/).
+    Upewnij się, że masz najnowszą wersję zainstalowanego Menedżera NuGet. Aby uzyskać więcej informacji i instalacji instrukcji, zobacz [NuGet](https://nuget.codeplex.com/).
 
     1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy nazwę projektu, a następnie wybierz **Zarządzaj pakietami NuGet**.
 
@@ -54,7 +54,7 @@ Alternatywnie, można uzyskać najnowsze elementy Media Services .NET SDK z usł
     3. W galerii w trybie Online, wyszukiwanie rozszerzeń MediaServices platformy Azure, wybierz **rozszerzenia SDK .NET usługi Azure Media Services** (**windowsazure.mediaservices.extensions**), a następnie kliknij przycisk  **Zainstaluj** przycisku.
    
     4. Projekt jest zmodyfikowany i odwołania do rozszerzenia SDK .NET usługi Media Services, Media Services .NET SDK i inne zależne zestawy są dodawane.
-4. Aby wspierać bardziej przejrzyste środowisko programistyczne, należy rozważyć włączenie, przywracanie pakietów NuGet. Aby uzyskać więcej informacji, zobacz [Przywracanie pakietów NuGet "](http://docs.nuget.org/consume/package-restore).
+4. Aby wspierać bardziej przejrzyste środowisko programistyczne, należy rozważyć włączenie, przywracanie pakietów NuGet. Aby uzyskać więcej informacji, zobacz [Przywracanie pakietów NuGet "](https://docs.nuget.org/consume/package-restore).
 5. Dodaj odwołanie do **System.Configuration** zestawu. Ten zestaw zawiera System.Configuration. **ConfigurationManager** klasę, która umożliwia dostęp do plików konfiguracji (np. App.config).
    
     1. Aby dodać odwołania za pomocą okna dialogowego Zarządzanie odwołania, kliknij prawym przyciskiem myszy nazwę projektu w Eksploratorze rozwiązań. Następnie kliknij przycisk **Dodaj**, następnie kliknij przycisk **odwołanie...** .

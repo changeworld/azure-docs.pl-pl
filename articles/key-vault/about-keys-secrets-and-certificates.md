@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cb18b9063599520ccc6caec44053dc9780969f74
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532339"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842570"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
@@ -42,7 +42,7 @@ JavaScript Object Notation (JSON) i specyfikacje JavaScript obiektu podpisywania
 -   [Klucza internetowego JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [Szyfrowanie sieci Web JSON (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [Algorytmy sieci Web JSON (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [Sygnatura sieci Web JSON (JWS)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [Sygnatura sieci Web JSON (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>Typy danych
 
@@ -112,7 +112,7 @@ Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramow
 #### <a name="curve-types"></a>Typy krzywej
 
 -   **P-256** -NIST krzywej p-256, zdefiniowanych na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256_K** -s krzywej SECP256K1, zdefiniowanych na [s 2: Zaleca się parametry domeny krzywej eliptycznej](http://www.secg.org/sec2-v2.pdf).
+-   **P-256_K** -s krzywej SECP256K1, zdefiniowanych na [s 2: Zaleca się parametry domeny krzywej eliptycznej](https://www.secg.org/sec2-v2.pdf).
 -   **P-384** -NIST krzywej p-384 zdefiniowany z numerem [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 -   **P-521** -NIST krzywej p-521 zdefiniowany z numerem [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 
@@ -409,10 +409,10 @@ Kontakty certyfikatu zawierają informacji kontaktowych, aby wysyłać powiadomi
 
 Jeśli ustawiono zasady dotyczące certyfikatów automatycznego odnawiania, powiadomienie jest wysyłane następujących zdarzeń.  
 
--   Odnowienia certyfikatów
--   Po odnowieniu certyfikatu, podając, jeśli certyfikat został pomyślnie odnowiony, lub jeśli wystąpił błąd, wymagających ręczne odnowienie certyfikatu.  
+- Odnowienia certyfikatów
+- Po odnowieniu certyfikatu, podając, jeśli certyfikat został pomyślnie odnowiony, lub jeśli wystąpił błąd, wymagających ręczne odnowienie certyfikatu.  
 
- Gdy zasady certyfikatów, który jest ustawiony na być ręcznie odnowić (tylko do wiadomości e-mail), to powiadomienie jest wysyłane, gdy nadejdzie czas, aby odnowić certyfikat.  
+  Gdy zasady certyfikatów, który jest ustawiony na być ręcznie odnowić (tylko do wiadomości e-mail), to powiadomienie jest wysyłane, gdy nadejdzie czas, aby odnowić certyfikat.  
 
 ### <a name="certificate-access-control"></a>Kontrola dostępu do certyfikatu
 

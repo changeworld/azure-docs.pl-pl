@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 61c01e8ea3b4cbe7b5f7ab83ab35383d74df3105
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 888f9e04e048e3da4c9809ac4f8570f020030335
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234940"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855839"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostyka i monitorowanie wydajności struktury Reliable Actors
 W czasie wykonywania w elementach Reliable Actors emituje [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) zdarzeń i [liczniki wydajności](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Te zapewniają wgląd w jaki sposób działa środowisko uruchomieniowe i ułatwić rozwiązywanie problemów i monitorowania wydajności.
@@ -27,12 +27,12 @@ W czasie wykonywania w elementach Reliable Actors emituje [EventSource](https://
 ## <a name="eventsource-events"></a>Zdarzeń EventSource
 Nazwa dostawcy źródła zdarzeń dla środowiska uruchomieniowego elementów Reliable Actors to "Microsoft-ServiceFabric Aktorzy". Zdarzenia z tego źródła zdarzeń są wyświetlane w [zdarzenia diagnostyczne](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) okna, gdy jest aplikacja aktora [debugowania w programie Visual Studio](service-fabric-debugging-your-application.md).
 
-Narzędzia i technologie, które pomagają w zbieraniu i/lub wyświetlanie zdarzeń EventSource przykłady [narzędzia PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [diagnostyki Azure](../cloud-services/cloud-services-dotnet-diagnostics.md), [semantycznego rejestrowania](https://msdn.microsoft.com/library/dn774980.aspx)i [ Biblioteki TraceEvent Microsoft](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+Narzędzia i technologie, które pomagają w zbieraniu i/lub wyświetlanie zdarzeń EventSource przykłady [narzędzia PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [diagnostyki Azure](../cloud-services/cloud-services-dotnet-diagnostics.md), [semantycznego rejestrowania](https://msdn.microsoft.com/library/dn774980.aspx)i [ Biblioteki TraceEvent Microsoft](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ### <a name="keywords"></a>Słowa kluczowe
 Wszystkie zdarzenia, które należą do wiarygodne źródło zdarzeń uczestników są skojarzone z jedną lub więcej słów kluczowych. Dzięki temu filtrowanie zdarzeń, które są zbierane. Zdefiniowano następujące bitów słowa kluczowego.
 
-| Bitowe | Opis |
+| Bit | Opis |
 | --- | --- |
 | 0x1 |Ustaw o ważnych zdarzeniach, które podsumowują działania środowiska uruchomieniowego aktorów sieci szkieletowej. |
 | 0x2 |Zestaw zdarzeń, które opisują wywołania metody aktora. Aby uzyskać więcej informacji, zobacz [wprowadzające tematu aktorów](service-fabric-reliable-actors-introduction.md). |

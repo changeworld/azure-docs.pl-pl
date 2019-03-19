@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 084a921123badb786503ce6696eb4ace14dd59b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a26418a5159781eab96cf7730d669ccb65742d86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170486"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Pingboard
 
@@ -202,7 +202,7 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Pingbo
 
     a. W **imię i nazwisko** polu tekstowym wpisz pełną nazwę użytkownika, takie jak **Britta Simon**.
 
-    b. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon@contoso.com**.
+    b. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon\@contoso.com**.
 
     c. W **stanowisko** polu tekstowym wpisz stanowisko Britta Simon.
 
@@ -215,7 +215,7 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Pingbo
     ![Upewnij się](./media/pingboard-tutorial/create_testuser_confirm.png)
 
     > [!NOTE]
-    > Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
+    > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -256,7 +256,7 @@ Po kliknięciu kafelka Pingboard w panelu dostępu, użytkownik powinien uzyska�
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie aprowizacji użytkowników](pingboard-provisioning-tutorial.md)
 

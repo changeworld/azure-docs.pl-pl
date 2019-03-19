@@ -1,19 +1,19 @@
 ---
 title: Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
 description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux na platformie Azure przy użyciu rozwiązania Ansible
-ms.service: ansible
+ms.service: virtual-machines-linux
 keywords: ansible, azure, devops, maszyna wirtualna
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: 1f7f4809e064de15bb0a18c404f0df81307b1b9a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 38cc6cd8f375fe7c60a706541bc74313e8ea2c4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073989"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090257"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia automatyczne tworzenie, konfigurowanie i wdrażanie zasobów platformy Azure przy użyciu języka deklaratywnego, za pośrednictwem *podręczników* rozwiązania Ansible. W poszczególnych sekcjach tego artykułu opisano kolejne sekcje podręcznika rozwiązania Ansible, umożliwiające tworzenie i konfigurowanie różnych aspektów maszyny wirtualnej z systemem Linux. Na końcu tego artykułu znajdziesz [kompletny podręcznik rozwiązania Ansible](#complete-sample-ansible-playbook).
@@ -211,9 +211,9 @@ W tej sekcji omówiono uruchamianie przykładowego podręcznika rozwiązania Ans
 
 1. Utwórz plik, który ma zawierać podręcznik, i nazwij go `azure_create_complete_vm.yml`, a następnie otwórz go w edytorze VI w następujący sposób:
 
-  ```azurecli-interactive
-  vi azure_create_complete_vm.yml
-  ```
+   ```azurecli-interactive
+   vi azure_create_complete_vm.yml
+   ```
 
 1. Przejdź do trybu wstawiania, naciskając klawisz **I**.
 
@@ -229,54 +229,54 @@ W tej sekcji omówiono uruchamianie przykładowego podręcznika rozwiązania Ans
 
 1. Uruchom przykładowy podręcznik rozwiązania Ansible.
 
-  ```bash
-  ansible-playbook azure_create_complete_vm.yml
-  ```
+   ```bash
+   ansible-playbook azure_create_complete_vm.yml
+   ```
 
 1. Dane wyjściowe wyglądają mniej więcej tak — możesz zobaczyć, że maszyna wirtualna została pomyślnie utworzona:
 
-  ```bash
-  PLAY [Create Azure VM] ****************************************************
+   ```bash
+   PLAY [Create Azure VM] ****************************************************
 
-  TASK [Gathering Facts] ****************************************************
-  ok: [localhost]
+   TASK [Gathering Facts] ****************************************************
+   ok: [localhost]
 
-  TASK [Create resource group] *********************************************
-  changed: [localhost]
+   TASK [Create resource group] *********************************************
+   changed: [localhost]
 
-  TASK [Create virtual network] *********************************************
-  changed: [localhost]
+   TASK [Create virtual network] *********************************************
+   changed: [localhost]
 
-  TASK [Add subnet] *********************************************************
-  changed: [localhost]
+   TASK [Add subnet] *********************************************************
+   changed: [localhost]
 
-  TASK [Create public IP address] *******************************************
-  changed: [localhost]
+   TASK [Create public IP address] *******************************************
+   changed: [localhost]
 
-  TASK [Dump public IP for VM which will be created] ********************************************************************
-  ok: [localhost] => {
+   TASK [Dump public IP for VM which will be created] ********************************************************************
+   ok: [localhost] => {
       "msg": "The public IP is <ip-address>."
-  }
+   }
 
-  TASK [Create Network Security Group that allows SSH] **********************
-  changed: [localhost]
+   TASK [Create Network Security Group that allows SSH] **********************
+   changed: [localhost]
 
-  TASK [Create virtual network inteface card] *******************************
-  changed: [localhost]
+   TASK [Create virtual network inteface card] *******************************
+   changed: [localhost]
 
-  TASK [Create VM] **********************************************************
-  changed: [localhost]
+   TASK [Create VM] **********************************************************
+   changed: [localhost]
 
-  PLAY RECAP ****************************************************************
-  localhost                  : ok=8    changed=7    unreachable=0    failed=0
-  ```
+   PLAY RECAP ****************************************************************
+   localhost                  : ok=8    changed=7    unreachable=0    failed=0
+   ```
 
 1. Aby uzyskać dostęp do maszyny wirtualnej z systemem Linux, należy użyć polecenia SSH. Zastąp symbol zastępczy &lt;ip-address> adresem IP z poprzedniego kroku.
 
-  ```bash
-  ssh azureuser@<ip-address>
-  ```
+    ```bash
+    ssh azureuser@<ip-address>
+    ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Zarządzanie maszyną wirtualną z systemem Linux na platformie Azure za pomocą rozwiązania Ansible](./ansible-manage-linux-vm.md)

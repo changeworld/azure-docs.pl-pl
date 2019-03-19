@@ -1,19 +1,19 @@
 ---
 title: 'Samouczek: Uzyskiwanie dostępu do danych usługi Azure Data Lake Storage Gen2 za pomocą usługi Azure Databricks i platformy Spark | Microsoft Docs'
-description: Z tego samouczka dowiesz się, jak uruchamiać zapytania platformy Spark w klastrze usługi Azure Databricks w celu uzyskania dostępu do danych na koncie magazynu usługi Azure Data Lake Storage Gen2.
+description: W tym samouczku pokazano, jak uruchamiać zapytania Spark w klastrze usługi Azure Databricks, aby uzyskać dostęp do danych na koncie magazynu Azure Data Lake Storage Gen2.
 services: storage
 author: dineshmurthy
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 03/11/2019
 ms.author: dineshm
-ms.openlocfilehash: 14e8d54b7b9cf579bb5dcbce595e2591c158b841
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: cd851502f901302987f562976c3c2f5d324cdeb5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585437"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902947"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Samouczek: Uzyskiwanie dostępu do danych usługi Access Data Lake Storage Gen2 za pomocą usługi Azure DataBricks i platformy Spark
 
@@ -147,12 +147,12 @@ W tej sekcji utworzysz system plików i folder na koncie magazynu.
 
    * Parametr `storage-account-name` to nazwa konta magazynu usługi Azure Data Lake Storage Gen2.
 
-    > [!NOTE]
-    > W środowisku produkcyjnym rozważ przechowywanie klucza uwierzytelniania w usłudze Azure Databricks. Następnie dodaj do bloku kodu klucz wyszukiwania zamiast klucza uwierzytelniania. Po zakończeniu tego samouczka Szybki start zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks, aby zapoznać się z przykładami tego podejścia.
+   > [!NOTE]
+   > W środowisku produkcyjnym rozważ przechowywanie klucza uwierzytelniania w usłudze Azure Databricks. Następnie dodaj do bloku kodu klucz wyszukiwania zamiast klucza uwierzytelniania. Po zakończeniu tego samouczka Szybki start zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks, aby zapoznać się z przykładami tego podejścia.
 
 19. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
-    Nie zamykaj tego notesu, ponieważ później będziesz jeszcze dodawać do niego polecenia.
+   Nie zamykaj tego notesu, ponieważ później będziesz jeszcze dodawać do niego polecenia.
 
 ## <a name="ingest-data"></a>Pozyskiwanie danych
 
@@ -171,9 +171,10 @@ Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usł
 2. Aby skopiować dane z pliku *csv*, wprowadź następujące polecenie.
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
    ```
-   * Zamień wartość zastępczą `<csv-folder-path>` na ścieżkę do katalogu z plikiem *csv* (bez nazwy pliku).
+
+   * Zastąp `<csv-folder-path>` wartość symbolu zastępczego na ścieżkę do *CSV* pliku.
 
    * Zastąp wartość symbolu zastępczego `storage-account-name` nazwą konta magazynu.
 
@@ -181,28 +182,28 @@ Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usł
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Konwertowanie formatu CSV na format Parquet za pomocą notesu usługi Databricks
 
-We wcześniej utworzonym notesie dodaj nową komórkę i wklej do niej następujący kod. Zamień wartość zastępczą `storage-account-name` w tym fragmencie kodu na nazwę folderu, w którym został zapisany plik csv.
+We wcześniej utworzonym notesie dodaj nową komórkę i wklej do niej następujący kod. 
 
 ```python
 # Use the previously established DBFS mount point to read the data.
 # create a data frame to read data.
 
-flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/*.csv")
+flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/*.csv")
 
 # read the airline csv file and write the output to parquet format for easy query.
- flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
- print("Done")
- ```
+flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
+print("Done")
+```
 
 ## <a name="explore-data"></a>Eksplorowanie danych
 
-W nowej komórce wklej następujący kod, aby uzyskać listę plików CSV przekazanych za pomocą narzędzia AzCopy. Zamień wartość zastępczą `<csv-folder-path>` na taką samą wartość, jakiej użyto wcześniej dla tej wartości zastępczej.
+W nowej komórce wklej następujący kod, aby uzyskać listę plików CSV przekazanych za pomocą narzędzia AzCopy.
 
 ```python
 import os.path
 import IPython
 from pyspark.sql import SQLContext
-display(dbutils.fs.ls("/mnt/flightdata/On_Time/<your-folder-name>"))
+display(dbutils.fs.ls("/mnt/flightdata"))
 ```
 
 Aby utworzyć nowy plik i uzyskać listę plików w folderze *parquet/flights*, uruchom następujący skrypt:
@@ -220,13 +221,11 @@ Następnie możesz rozpocząć wykonywanie zapytań dotyczących danych przekaza
 
 Aby utworzyć ramki danych dla źródeł danych, uruchom następujący skrypt:
 
-* Zamień wartość zastępczą `<csv-folder-path>` na ścieżkę do katalogu z plikiem *csv* (bez nazwy pliku).
-
-* Zamień wartość symbolu zastępczego `<your-csv-file-name` na nazwę pliku *csv*.
+* Zastąp `<csv-folder-path>` wartość symbolu zastępczego na ścieżkę do *CSV* pliku.
 
 ```python
 #Copy this into a Cmd cell in your notebook.
-acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/<your-csv-file-name>.csv")
+acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time.csv")
 acDF.write.parquet('/mnt/flightdata/parquet/airlinecodes')
 
 #read the existing parquet file for the flights database that was created earlier
@@ -283,7 +282,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 Gdy grupa zasobów i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. W tym celu zaznacz grupę zasobów konta magazynu i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [!div class="nextstepaction"] 
 > [Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)

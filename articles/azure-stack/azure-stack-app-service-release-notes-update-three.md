@@ -16,12 +16,12 @@ ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 2432c30ca98904c2e6789f4b15468f905096bbf7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 765701188de6375a5dfe0c9a6c04afe1ee9f6740
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962795"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886443"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>Usługa App Service w usłudze Azure Stack update 3 — informacje o wersji
 
@@ -59,7 +59,7 @@ Usługa Azure App Service w usłudze Azure Stack Update 3 obejmuje następujące
 - Aktualizacje do podstawowej usługi, aby zwiększyć niezawodność i komunikatów o włączenie łatwiejsze Diagnostyka typowe problemy.
 
 - **Aktualizacje do narzędzi i struktur aplikacji na następujących**:
-  - Added ASP.Net Core 2.1.2
+  - Added ASP.NET Core 2.1.2
   - Dodano NodeJS 10.0.0
   - Added Zulu OpenJDK 8.30.0.1
   - Dodano Tomcat 8.5.31 i 9.0.8

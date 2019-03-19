@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 1ccbe8b268725cf3d0747486a20e0597d023662e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 8080355bebf00c9f37c28ae8ed54bba092f8dc17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099937"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Wdrażanie usług Azure Cognitive Services do usługi Azure Stack
 
@@ -67,12 +67,12 @@ Przed rozpoczęciem należy:
 
 Utwórz zasób usługi cognitive Services na platformie Azure nad wersją zapoznawczą kontenery rozpoznawania twarzy, LUIS lub rozpoznawanie tekstu, odpowiednio. Należy użyć subskrypcji key i punktu końcowego adresu URL z zasobu do utworzenia wystąpienia kontenerów usługi cognitive Services.
 
-1.  Tworzenie zasobu platformy Azure w witrynie Azure portal. Aby wyświetlić podgląd kontenery twarzy, możesz najpierw utworzyć odpowiadający jej zasób twarzy w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+1. Tworzenie zasobu platformy Azure w witrynie Azure portal. Aby wyświetlić podgląd kontenery twarzy, możesz najpierw utworzyć odpowiadający jej zasób twarzy w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
-    >  [!Note]  
-    >  Zasób twarzy lub przetwarzania obrazów musi używać F0 warstwę cenową.
+   > [!Note]
+   >  Zasób twarzy lub przetwarzania obrazów musi używać F0 warstwę cenową.
 
-2.  Pobieranie klucza punktu końcowego adresu URL i subskrypcji dla zasobów platformy Azure. Po utworzeniu zasobu platformy Azure należy użyć subskrypcji klucz i punkt końcowy adres URL z tego zasobu do utworzenia wystąpienia odpowiedniego kontenera rozpoznawania twarzy, LUIS lub rozpoznawanie tekstu dla wersji zapoznawczej.
+2. Pobieranie klucza punktu końcowego adresu URL i subskrypcji dla zasobów platformy Azure. Po utworzeniu zasobu platformy Azure należy użyć subskrypcji klucz i punkt końcowy adres URL z tego zasobu do utworzenia wystąpienia odpowiedniego kontenera rozpoznawania twarzy, LUIS lub rozpoznawanie tekstu dla wersji zapoznawczej.
 
 ## <a name="create-a-kubernetes-secret"></a>Tworzenie wpisu tajnego rozwiązania Kubernetes 
 

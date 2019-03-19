@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: 56434e12e1d5eec34e8848d71a018147f1e161f6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 54050c4c20b6ebb35f198775448f51ee8cdc533b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777264"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117646"
 ---
 # <a name="check-resource-usage-against-limits"></a>Sprawdź użycie zasobów limitów
 
@@ -34,16 +34,16 @@ W tym artykule dowiesz się, jak wyświetlić liczbę każdego typu zasobu sieci
 4. Wybierz nazwę subskrypcji, którą chcesz wyświetlić informacje o sposobie użycia.
 5. W obszarze **ustawienia**, wybierz opcję **użycia i przydziałów**.
 6. Możesz wybrać następujące opcje:
-    - **Typy zasobów**: Wybierz wszystkie typy zasobów lub wybierz konkretne typy zasobów, które chcesz wyświetlić.
-    - **Dostawców**: Możesz wybrać wszystkich dostawców zasobów lub wybierz **obliczenia**, **sieci**, lub **magazynu**.
-    - **Lokalizacje**: Możesz wybrać wszystkich lokalizacji platformy Azure lub wybrać określone lokalizacje.
-    - Możesz wybrać, aby wyświetlić wszystkie zasoby lub zasoby, których jest wdrażany co najmniej jeden.
+   - **Typy zasobów**: Wybierz wszystkie typy zasobów lub wybierz konkretne typy zasobów, które chcesz wyświetlić.
+   - **Dostawców**: Możesz wybrać wszystkich dostawców zasobów lub wybierz **obliczenia**, **sieci**, lub **magazynu**.
+   - **Lokalizacje**: Możesz wybrać wszystkich lokalizacji platformy Azure lub wybrać określone lokalizacje.
+   - Możesz wybrać, aby wyświetlić wszystkie zasoby lub zasoby, których jest wdrażany co najmniej jeden.
 
-    Przykład pokazany na poniższej ilustracji przedstawiono wszystkich zasobów sieciowych z co najmniej jeden zasób wdrażane w regionie wschodnie stany USA:
+     Przykład pokazany na poniższej ilustracji przedstawiono wszystkich zasobów sieciowych z co najmniej jeden zasób wdrażane w regionie wschodnie stany USA:
 
-        ![View usage data](./media/check-usage-against-limits/view-usage.png)
+       ![Wyświetlanie danych użycia](./media/check-usage-against-limits/view-usage.png)
 
-    Kolumny można sortować, wybierając nagłówek kolumny. Limity, wyświetlane są limity dla Twojej subskrypcji. Jeśli potrzebujesz do zwiększenia domyślnego limitu, wybierz pozycję **żądanie zwiększenia**, następnie wypełnij i prześlij żądanie pomocy technicznej. Wszystkie zasoby mają maksymalny limit na platformie Azure na liście [limity](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Jeśli bieżący limit jest już maksymalną liczbę, nie można zwiększyć limit.
+     Kolumny można sortować, wybierając nagłówek kolumny. Limity, wyświetlane są limity dla Twojej subskrypcji. Jeśli potrzebujesz do zwiększenia domyślnego limitu, wybierz pozycję **żądanie zwiększenia**, następnie wypełnij i prześlij żądanie pomocy technicznej. Wszystkie zasoby mają maksymalny limit na platformie Azure na liście [limity](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Jeśli bieżący limit jest już maksymalną liczbę, nie można zwiększyć limit.
 
 ## <a name="powershell"></a>PowerShell
 

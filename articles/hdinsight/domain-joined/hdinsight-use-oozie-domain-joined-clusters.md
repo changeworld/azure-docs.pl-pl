@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: b0ec8bf52b0b41aef4ea4cc2bfb6ed8fdcd170ec
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 15cdc78559a8f299e2bf0f357bbb7c0664881712
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343293"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116898"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamiaj Apache Oozie w usłudze HDInsight Hadoop klastry z pakietem Enterprise Security
 
@@ -38,9 +38,9 @@ Można również użyć programu Oozie do planowania zadań, które są specyfic
 Aby uzyskać więcej informacji na Secure Shell (SSH), zobacz [nawiązywanie połączenia z HDInsight (Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 1. Połącz się z klastrem HDInsight przy użyciu protokołu SSH:  
- ```bash
-ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
- ```
+   ```bash
+   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+   ```
 
 2. Aby sprawdzić pomyślnego uwierzytelnienia Kerberos, użyj `klist` polecenia. Jeśli nie, użyj `kinit` można uruchomić uwierzytelniania Kerberos.
 
@@ -54,23 +54,25 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
 ## <a name="define-the-workflow"></a>Zdefiniuj przepływ pracy
 Definicje przepływów pracy programu Oozie są zapisywane w Apache Hadoop procesu Definition Language (hPDL). hPDL to język definicji procesu XML. Wykonaj poniższe kroki, aby zdefiniować przepływ pracy:
 
-1.  Skonfiguruj obszar roboczy użytkownika domeny:
- ```bash
-hdfs dfs -mkdir /user/<DomainUser>
-cd /home/<DomainUserPath>
-cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
-tar -xvf oozie-examples.tar.gz
-hdfs dfs -put examples /user/<DomainUser>/
- ```
-Zastąp `DomainUser` z nazwą użytkownika domeny. Zastąp `DomainUserPath` przy użyciu ścieżki katalogu macierzystego użytkownika domeny. Zastąp `ClusterVersion` z wersją Hortonworks Data Platform (HDP) klastra.
+1. Skonfiguruj obszar roboczy użytkownika domeny:
+   ```bash
+   hdfs dfs -mkdir /user/<DomainUser>
+   cd /home/<DomainUserPath>
+   cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
+   tar -xvf oozie-examples.tar.gz
+   hdfs dfs -put examples /user/<DomainUser>/
+   ```
+   Zastąp `DomainUser` z nazwą użytkownika domeny. 
+   Zastąp `DomainUserPath` przy użyciu ścieżki katalogu macierzystego użytkownika domeny. 
+   Zastąp `ClusterVersion` z wersją Hortonworks Data Platform (HDP) klastra.
 
-2.  Aby tworzyć i edytować plik, należy użyć następującej instrukcji:
- ```bash
-nano workflow.xml
- ```
+2. Aby tworzyć i edytować plik, należy użyć następującej instrukcji:
+   ```bash
+   nano workflow.xml
+   ```
 
 3. Po otwarciu edytora nano, wprowadź następujący kod XML jako zawartość pliku:
- ```xml
+   ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
@@ -165,25 +167,25 @@ nano workflow.xml
        </kill>
        <end name="end" />
     </workflow-app>
- ```
+   ```
 4. Zastąp `clustername` nazwą klastra. 
 
 5. Aby zapisać plik, wybierz klawisze Ctrl + X. Wprowadź polecenie `Y`. Następnie wybierz pozycję **Enter**.
 
     Przepływ pracy jest podzielony na dwie części:
-    *   **Sekcja poświadczeń.** W tej sekcji przyjmuje poświadczenia, które są używane do uwierzytelniania Oozie akcje:
+   * **Sekcja poświadczeń.** W tej sekcji przyjmuje poświadczenia, które są używane do uwierzytelniania Oozie akcje:
 
-       W tym przykładzie korzysta z uwierzytelniania dla działania Hive. Aby dowiedzieć się więcej, zobacz [uwierzytelniania akcji](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
+     W tym przykładzie korzysta z uwierzytelniania dla działania Hive. Aby dowiedzieć się więcej, zobacz [uwierzytelniania akcji](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
 
-       Usługa dostępu do poświadczeń zezwala na akcje Oozie personifikować użytkownika do uzyskiwania dostępu do usług Hadoop.
+     Usługa dostępu do poświadczeń zezwala na akcje Oozie personifikować użytkownika do uzyskiwania dostępu do usług Hadoop.
 
-    *   **Sekcja akcji.** Ta sekcja zawiera trzy czynności:-mapreduce, Hive server 2 i Hive server 1:
+   * **Sekcja akcji.** Ta sekcja zawiera trzy czynności:-mapreduce, Hive server 2 i Hive server 1:
 
-      - Mapreduce uruchomień działania przykład z pakietu programu Oozie dla mapreduce, które wyświetla zagregowane wyrazów.
+     - Mapreduce uruchomień działania przykład z pakietu programu Oozie dla mapreduce, które wyświetla zagregowane wyrazów.
 
-       - Hive server 2 i gałąź serwera 1 akcji w przypadku uruchamiania zapytania na przykładową tabelę programu Hive, wyposażone w HDInsight.
+     - Hive server 2 i gałąź serwera 1 akcji w przypadku uruchamiania zapytania na przykładową tabelę programu Hive, wyposażone w HDInsight.
 
-        Działania programu Hive, Użyj poświadczeń określonych w sekcji poświadczenia do uwierzytelniania za pomocą słowa kluczowego `cred` w elemencie akcji.
+     Działania programu Hive, Użyj poświadczeń określonych w sekcji poświadczenia do uwierzytelniania za pomocą słowa kluczowego `cred` w elemencie akcji.
 
 6. Użyj następującego polecenia, aby skopiować `workflow.xml` plik `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
      ```bash

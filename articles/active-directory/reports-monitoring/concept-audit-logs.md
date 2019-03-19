@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65bc0c0ee1ccc1e1f3da5e364582534dfbc0d425
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cf069e053068eaee3f36153c3888e6c711724267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530709"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182170"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -98,7 +98,7 @@ Można filtrować dane inspekcji na następujące pola:
 - B2C
 - Dostęp warunkowy
 - Katalog podstawowy
-- Zarządzanie uprawnieniami
+- Zarządzanie upoważnieniami
 - Identity Protection
 - Zaproszeni użytkownicy
 - PIM
@@ -204,7 +204,7 @@ Jeśli chcesz przeglądać dane inspekcji dotyczące aplikacji, możesz znaleź�
 
 ## <a name="office-365-activity-logs"></a>Dzienniki aktywności usługi Office 365
 
-Można wyświetlić dzienniki aktywności usługi Office 365 z [Centrum administracyjnego usługi Office 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Mimo że aktywności usługi Office 365 i usługi Azure AD działania dzienniki współdzielą wiele zasobów katalogu tylko Office 365 Admin Center zapewnia pełnego widoku dzienników aktywności usługi Office 365. 
+Można wyświetlić dzienniki aktywności usługi Office 365 z [Centrum administracyjnego usługi Microsoft 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Mimo że aktywności usługi Office 365 i usługi Azure AD działania dzienniki współdzielą wiele zasobów katalogu, Centrum administracyjnego usługi Microsoft 365 zapewnia pełnego widoku dzienników aktywności usługi Office 365. 
 
 Można także przejść do dzienników aktywności usługi Office 365, programowo przy użyciu [interfejsów API zarządzania usługi Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 

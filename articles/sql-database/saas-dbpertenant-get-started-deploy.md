@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 97570a16c7d87a3c8182909b61c04fde30b3fe9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453675"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000206"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdrażanie i eksplorowanie wielodostępną aplikację SaaS, która używa wzorca bazy danych dla dzierżawcy z usługą SQL Database
 
@@ -56,7 +56,7 @@ Teraz wybierz nazwy i zanotuj je.
 
 1. Aby otworzyć szablon wdrożenia bazy danych dla dzierżawcy SaaS o nazwie Wingtip Tickets w witrynie Azure portal, wybierz **Wdróż na platformie Azure**.
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Wprowadź wartości w szablonie dla wymaganych parametrów.
 
@@ -186,9 +186,9 @@ Jeśli chcesz kontrolować i monitorować zadania w tle, należy użyć następu
 
 4. Jeśli `$OneTime = $false`, generator obciążenia rozpoczyna się zadania w tle, a następnie kontynuuje działanie. Co 10 sekund monitoruje dla nowych dzierżaw, które są udostępniane. Jeśli ustawisz `$OneTime = $true`, LoadGenerator uruchamia zadania w tle, a następnie zatrzymuje, uruchomiona na pierwszym planie. W tym samouczku pozostaw `$OneTime = $false`.
 
-  Jeśli chcesz zatrzymać lub uruchomić ponownie generator obciążenia, należy użyć klawiszy Ctrl-C lub zatrzymać operację Ctrl-Break.
+   Jeśli chcesz zatrzymać lub uruchomić ponownie generator obciążenia, należy użyć klawiszy Ctrl-C lub zatrzymać operację Ctrl-Break.
 
-  Jeśli pozostawisz generator obciążenia uruchomione na pierwszym planie, użyj innego wystąpienia programu PowerShell ISE, aby uruchomić inne skrypty programu PowerShell.
+   Jeśli pozostawisz generator obciążenia uruchomione na pierwszym planie, użyj innego wystąpienia programu PowerShell ISE, aby uruchomić inne skrypty programu PowerShell.
 
 &nbsp;
 
@@ -221,7 +221,7 @@ Odśwież Centrum zdarzeń, aby utworzyć nową dzierżawę, są wyświetlane na
 
 Teraz, gdy Zacząłem obciążenia względem kolekcji dzierżaw, Przyjrzyjmy się niektóre zasoby, które zostały wdrożone.
 
-1. W [witryny Azure portal](http://portal.azure.com), przejdź do listy serwerów SQL. Następnie otwórz **catalog-dpt -&lt;użytkownika&gt;** serwera.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do listy serwerów SQL. Następnie otwórz **catalog-dpt -&lt;użytkownika&gt;** serwera.
     - Serwer wykazu zawiera dwie bazy danych, **tenantcatalog** i **basetenantdb** (szablonu bazy danych, która jest kopiowana do tworzenia nowych dzierżaw).
 
    ![Bazy danych](./media/saas-dbpertenant-get-started-deploy/databases.png)

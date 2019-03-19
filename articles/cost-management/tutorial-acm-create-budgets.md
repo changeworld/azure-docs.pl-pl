@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 1db3fbbd39418504f98469c7b4999c5a91b5d6de
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342194"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013041"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie i zarządzanie nimi budżetów platformy Azure
 
@@ -53,7 +53,9 @@ Aby uzyskać więcej informacji na temat przypisywania uprawnień do danych rozw
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Tworzenie budżetu w witrynie Azure portal
 
-W okresie miesięczne, kwartałów lub można utworzyć budżet subskrypcji platformy Azure. Nawigacyjne zawartości w witrynie Azure portal Określa, czy utworzyć budżetu dla subskrypcji lub grupy zasobów. Na przykład w witrynie Azure portal przejdź do **subskrypcje** &gt; Wybierz subskrypcję, &gt; **budżetów**. W tym przykładzie budżet, tworzona jest wybrana subskrypcja. Jeśli chcesz utworzyć budżet dla grupy zasobów, przejdź do **grup zasobów** > Wybierz grupę zasobów > **budżetów**...
+W okresie miesięczne, kwartałów lub można utworzyć budżet subskrypcji platformy Azure. Nawigacyjne zawartości w witrynie Azure portal Określa, czy utworzyć budżetu dla subskrypcji lub grupy zarządzania.
+
+Aby utworzyć lub wyświetlić budżetu, otwórz żądany zakres w witrynie Azure portal i wybierz pozycję **budżetów** w menu. Na przykład, przejdź do **subskrypcje**, wybierz subskrypcję z listy, a następnie wybierz **budżetów** w menu. Użyj **zakres** skażone, aby przełączyć się do innego zakresu, takich jak grupy zarządzania, w budżet. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
 
 Po utworzeniu budżetów pokazują widok prosty bieżące wydatki względem nich.
 

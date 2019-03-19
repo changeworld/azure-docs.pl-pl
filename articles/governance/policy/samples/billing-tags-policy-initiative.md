@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: b659d6f681b980b956992f0d488995fd1a55de93
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 3964d75aa87fe76432af6b28e74a48fd1f2b49ef
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337609"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543836"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>Przykład — inicjatywa zasad tagów rozliczeń
 
@@ -29,7 +29,7 @@ Można wdrożyć ten szablon przy użyciu [witryny Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
-[![Wdrażanie na platformie Azure](http://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Wdrażanie na platformie Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -69,6 +69,6 @@ foreach ($r in $resources) {
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz więcej przykładów w witrynie [Przykłady dla usługi Azure Policy](index.md)

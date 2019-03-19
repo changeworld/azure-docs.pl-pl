@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 3d3ed7d1448ecb350a75a933666e6ab8bd17e84c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 31d4829c6adaf4bd5392ef393dcaefbeb7dc6255
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737216"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992419"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Planowana konserwacja powiadomienia dotyczące zestawów skalowania maszyn wirtualnych
 
@@ -126,14 +126,10 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 ```
 
 Następujące właściwości są zwracane w obszarze **MaintenanceRedeployStatus**: 
-| Wartość | Opis   |
-|-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | Wskazuje, czy możesz uruchomić konserwację na maszynie Wirtualnej, w tym momencie. ||
-| PreMaintenanceWindowStartTime         | Początek okna obsługi samoobsługi podczas można zainicjować obsługi na maszynie Wirtualnej. ||
-| PreMaintenanceWindowEndTime           | Koniec samoobsługi oknem obsługi po można zainicjować obsługi na maszynie Wirtualnej. ||
-| MaintenanceWindowStartTime            | Na początek zaplanowanej konserwacji w którym Azure powoduje zainicjowanie konserwacji na maszynie Wirtualnej. ||
-| MaintenanceWindowEndTime              | Koniec okna zaplanowanych konserwacji, w którym Azure powoduje zainicjowanie konserwacji na maszynie Wirtualnej. ||
-| LastOperationResultCode               | Wynik ostatniej próby umożliwiającej samodzielne zainicjowanie konserwacji na maszynie Wirtualnej. ||
+
+| Wartość | Opis |
+
+|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | Wskazuje, czy możesz uruchomić konserwację na maszynie Wirtualnej, w tym momencie. | | PreMaintenanceWindowStartTime | Początek okna obsługi samoobsługi podczas można zainicjować obsługi na maszynie Wirtualnej. | | PreMaintenanceWindowEndTime | Koniec samoobsługi oknem obsługi po można zainicjować obsługi na maszynie Wirtualnej. | | MaintenanceWindowStartTime | Na początek zaplanowanej konserwacji w którym Azure powoduje zainicjowanie konserwacji na maszynie Wirtualnej. | | MaintenanceWindowEndTime | Koniec okna zaplanowanych konserwacji, w którym Azure powoduje zainicjowanie konserwacji na maszynie Wirtualnej. | | LastOperationResultCode | Wynik ostatniej próby umożliwiającej samodzielne zainicjowanie konserwacji na maszynie Wirtualnej. |
 
 
 
@@ -156,14 +152,10 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
 Następujące właściwości są zwracane w obszarze **MaintenanceRedeployStatus** dla każdego wystąpienia maszyny Wirtualnej: 
-| Wartość | Opis   |
-|-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | Wskazuje, czy możesz uruchomić konserwację na maszynie Wirtualnej, w tym momencie. ||
-| PreMaintenanceWindowStartTime         | Początek okna obsługi samoobsługi podczas można zainicjować obsługi na maszynie Wirtualnej. ||
-| PreMaintenanceWindowEndTime           | Koniec samoobsługi oknem obsługi po można zainicjować obsługi na maszynie Wirtualnej. ||
-| MaintenanceWindowStartTime            | Na początek zaplanowanej konserwacji w którym Azure powoduje zainicjowanie konserwacji na maszynie Wirtualnej. ||
-| MaintenanceWindowEndTime              | Koniec okna zaplanowanych konserwacji, w którym Azure powoduje zainicjowanie konserwacji na maszynie Wirtualnej. ||
-| LastOperationResultCode               | Wynik ostatniej próby umożliwiającej samodzielne zainicjowanie konserwacji na maszynie Wirtualnej. ||
+
+| Wartość | Opis |
+
+|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | Wskazuje, czy możesz uruchomić konserwację na maszynie Wirtualnej, w tym momencie. | | PreMaintenanceWindowStartTime | Początek okna obsługi samoobsługi podczas można zainicjować obsługi na maszynie Wirtualnej. | | PreMaintenanceWindowEndTime | Koniec samoobsługi oknem obsługi po można zainicjować obsługi na maszynie Wirtualnej. | | MaintenanceWindowStartTime | Na początek zaplanowanej konserwacji w którym Azure powoduje zainicjowanie konserwacji na maszynie Wirtualnej. | | MaintenanceWindowEndTime | Koniec okna zaplanowanych konserwacji, w którym Azure powoduje zainicjowanie konserwacji na maszynie Wirtualnej. | | LastOperationResultCode | Wynik ostatniej próby umożliwiającej samodzielne zainicjowanie konserwacji na maszynie Wirtualnej. |
 
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>Uruchom konserwację w ramach wystąpienia maszyny Wirtualnej przy użyciu interfejsu wiersza polecenia

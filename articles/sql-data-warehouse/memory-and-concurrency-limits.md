@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/04/2018
+ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: cc42a0289316116b843696c984f9fc3c2114eb6c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 141112b8b6b44706a750d8a97780e018d96a5006
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592897"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890801"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i współbieżności dla usługi Azure SQL Data Warehouse
 Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse. Aby uzyskać więcej informacji i Zastosuj te możliwości do planu zarządzania obciążenia, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md). 
@@ -70,7 +70,7 @@ Poziomy usług Gen1 należą do zakresu od DW100 do DW6000.
 | DW6000            | 60            | 1                              | 1440                           |
 
 ## <a name="concurrency-maximums"></a>Maksymalne wartości współbieżności
-Aby upewnić się, że każde zapytanie ma za mało zasobów do wydajnego wykonywania, usługa SQL Data Warehouse śledzi wykorzystanie zasobów przez przypisywanie gniazd współbieżności każda kwerenda. System umieszcza zapytania z kolejką gdzie będą oni czekać do momentu wystarczająco dużo [gniazd współbieżności](resource-classes-for-workload-management.md#concurrency-slots) są dostępne. Priorytet procesora CPU można również określić w gniazd współbieżności. Aby uzyskać więcej informacji, zobacz [analizowanie obciążenia](analyze-your-workload.md)
+Aby upewnić się, że każde zapytanie ma za mało zasobów do wydajnego wykonywania, usługa SQL Data Warehouse śledzi wykorzystanie zasobów przez przypisywanie gniazd współbieżności każda kwerenda. System umieszcza zapytania do kolejki, w oparciu o ważności oraz liczby gniazd współbieżności. Zapytania oczekiwać w kolejce do momentu wystarczającej liczby gniazd współbieżności są dostępne. [Znaczenie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) i gniazd współbieżności określić priorytet procesora CPU. Aby uzyskać więcej informacji, zobacz [analizowanie obciążenia](analyze-your-workload.md)
 
 ### <a name="gen2"></a>Druga generacja
  

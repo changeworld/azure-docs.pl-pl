@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/07/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbb7684f3d684588ab4263683806e602e1346d5d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 57905b3d3c062c299a0f414ae6110dd0b6249198
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217806"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848034"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure SQL
 
@@ -40,12 +40,12 @@ W tym samouczku przedstawiono sposób używania tożsamości przypisanej przez s
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udzielanie maszynie wirtualnej dostępu do bazy danych na serwerze Azure SQL
 
-Aby udzielić maszynie wirtualnej dostępu do bazy danych na serwerze SQL platformy Azure, możesz użyć istniejącego serwera SQL lub utworzyć nowy.  Aby utworzyć nowy serwer i bazę danych przy użyciu witryny Azure Portal, wykonaj ten [przewodnik Szybki start usługi Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). W [dokumentacji usługi Azure SQL ](https://docs.microsoft.com/azure/sql-database/) dostępne są również przewodniki Szybki start, które używają interfejsu wiersza polecenia platformy Azure oraz programu Azure PowerShell.
+Aby udzielić maszynie wirtualnej dostępu do bazy danych na serwerze SQL platformy Azure, możesz użyć istniejącego serwera SQL lub utworzyć nowy. Aby utworzyć nowy serwer i bazę danych przy użyciu witryny Azure Portal, wykonaj ten [przewodnik Szybki start usługi Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). W [dokumentacji usługi Azure SQL ](https://docs.microsoft.com/azure/sql-database/) dostępne są również przewodniki Szybki start, które używają interfejsu wiersza polecenia platformy Azure oraz programu Azure PowerShell.
 
 Istnieją dwa kroki związane z udzielaniem maszynie wirtualnej dostępu do bazy danych:
 
-1.  Włącz uwierzytelnianie usługi Azure AD na potrzeby serwera SQL.
-2.  Tworzenie w bazie danych **zawartego użytkownika**, który będzie reprezentować tożsamość maszyny wirtualnej przypisaną przez system.
+1. Włącz uwierzytelnianie usługi Azure AD na potrzeby serwera SQL.
+2. Tworzenie w bazie danych **zawartego użytkownika**, który będzie reprezentować tożsamość maszyny wirtualnej przypisaną przez system.
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Włączanie uwierzytelniania usługi Azure AD na potrzeby serwera SQL
 
@@ -65,45 +65,45 @@ W tym kroku będziesz potrzebować programu [Microsoft SQL Server Management Stu
 - [Uniwersalne uwierzytelnianie przy użyciu usługi SQL Database i SQL Data Warehouse (obsługa SSMS w przypadku uwierzytelniania wieloskładnikowego)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Konfigurowanie i zarządzanie uwierzytelnianiem usługi Azure Active Directory przy użyciu usługi SQL Database lub SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
 
-Usługa SQL Database wymaga unikatowych nazw wyświetlanych usługi AAD. Zatem konta usługi AAD, takie jak użytkownicy, grupy, jednostki usługi (aplikacje) i nazwy maszyn wirtualnych włączone dla tożsamości zarządzanej muszą mieć unikatowe definicje w usłudze AAD w odniesieniu do ich nazw wyświetlanych. Baza danych SQL sprawdza nazwę wyświetlaną usługi AAD podczas tworzenia kodu T-SQL dla takich użytkowników, i jeśli nie jest ona unikatowa, wykonywanie polecenia kończy się niepowodzeniem i żądaniem podania unikatowej nazwy wyświetlanej usługi AAD dla danego konta.
+Usługa SQL Database wymaga unikatowych nazw wyświetlanych usługi AAD. Zatem konta usługi AAD, takie jak użytkownicy, grupy, jednostki usługi (aplikacje) i nazwy maszyn wirtualnych włączone dla tożsamości zarządzanej muszą mieć unikatowe definicje w usłudze AAD w odniesieniu do ich nazw wyświetlanych. Baza danych SQL sprawdza, czy nazwa wyświetlana usługi AAD podczas tworzenia takich użytkowników języka T-SQL i nie jest unikatowa, polecenie nie powiedzie się zażądał Podaj unikatową nazwę wyświetlaną usługi AAD dla danego konta.
 
-1.  Uruchom program SQL Server Management Studio.
-2.  W oknie dialogowym **Łączenie z serwerem** wprowadź nazwę serwera SQL w polu **Nazwa serwera**.
-3.  W polu **Uwierzytelnianie** wybierz opcję **Active Directory — uniwersalne z obsługą uwierzytelniania wieloskładnikowego**.
-4.  W polu **Nazwa użytkownika** wprowadź nazwę konta usługi Azure AD, które zostało ustawione jako administrator serwera, np. helen@woodgroveonline.com
-5.  Kliknij pozycję **Opcje**.
-6.  W polu **Połącz z bazą danych** wpisz nazwę niesystemowej bazy danych, którą chcesz skonfigurować.
-7.  Kliknij przycisk **Połącz**.  Zakończ proces logowania.
-8.  W **Eksploratorze obiektów** rozwiń folder **Bazy danych**.
-9.  Kliknij prawym przyciskiem myszy bazę danych użytkownika, a następnie kliknij pozycję **Nowe zapytanie**.
+1. Uruchom program SQL Server Management Studio.
+2. W oknie dialogowym **Łączenie z serwerem** wprowadź nazwę serwera SQL w polu **Nazwa serwera**.
+3. W polu **Uwierzytelnianie** wybierz opcję **Active Directory — uniwersalne z obsługą uwierzytelniania wieloskładnikowego**.
+4. W polu **Nazwa użytkownika** wprowadź nazwę konta usługi Azure AD, które zostało ustawione jako administrator serwera, np. helen@woodgroveonline.com
+5. Kliknij pozycję **Opcje**.
+6. W polu **Połącz z bazą danych** wpisz nazwę niesystemowej bazy danych, którą chcesz skonfigurować.
+7. Kliknij przycisk **Połącz**. Zakończ proces logowania.
+8. W **Eksploratorze obiektów** rozwiń folder **Bazy danych**.
+9. Kliknij prawym przyciskiem myszy bazę danych użytkownika, a następnie kliknij pozycję **Nowe zapytanie**.
 10. W oknie zapytania wpisz następujący wiersz, a następnie kliknij przycisk **Wykonaj** na pasku narzędzi:
 
     > [!NOTE]
     > Element `VMName` w poniższym poleceniu to nazwa maszyny wirtualnej, dla której w sekcji wymagań wstępnych włączono tożsamość przypisaną przez system.
     
-     ```
-     CREATE USER [VMName] FROM EXTERNAL PROVIDER
-     ```
+    ```
+    CREATE USER [VMName] FROM EXTERNAL PROVIDER
+    ```
     
-     Polecenie powinno zakończyć się pomyślnie, tworząc zawartego użytkownika na potrzeby tożsamości maszyny wirtualnej przypisanej przez system.
-11.  Wyczyść okno zapytania, wpisz następujący wiersz, a następnie kliknij przycisk **Wykonaj** na pasku narzędzi:
+    Polecenie powinno zakończyć się pomyślnie, tworząc zawartego użytkownika na potrzeby tożsamości maszyny wirtualnej przypisanej przez system.
+11. Wyczyść okno zapytania, wpisz następujący wiersz, a następnie kliknij przycisk **Wykonaj** na pasku narzędzi:
 
     > [!NOTE]
     > Element `VMName` w poniższym poleceniu to nazwa maszyny wirtualnej, dla której w sekcji wymagań wstępnych włączono tożsamość przypisaną przez system.
-     
-     ```
-     ALTER ROLE db_datareader ADD MEMBER [VMName]
-     ```
+    
+    ```
+    ALTER ROLE db_datareader ADD MEMBER [VMName]
+    ```
 
-     Polecenie powinno zakończyć się pomyślnie, udzielając zawartemu użytkownikowi prawa do odczytu całej bazy danych.
+    Polecenie powinno zakończyć się pomyślnie, udzielając zawartemu użytkownikowi prawa do odczytu całej bazy danych.
 
 Kod uruchomiony na maszynie wirtualnej może teraz pobrać token za pomocą swojej przypisanej przez system tożsamości zarządzanej i użyć tokenu do uwierzytelnienia na serwerze SQL.
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-sql"></a>Uzyskiwanie tokenu dostępu przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej oraz używanie go do wywołania usługi Azure SQL 
+## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-sql"></a>Uzyskiwanie tokenu dostępu przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej oraz używanie go do wywołania usługi Azure SQL
 
-Usługa Azure SQL natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane przy użyciu tożsamości zarządzanych dla zasobów platformy Azure.  Możesz użyć metody **tokena dostępu** dla tworzenia połączeń z serwerem SQL.  Jest to część integracji usługi Azure SQL z usługą Azure AD. Takie rozwiązanie różni się od podawania poświadczeń w parametrach połączenia.
+Usługa Azure SQL natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane przy użyciu tożsamości zarządzanych dla zasobów platformy Azure. Możesz użyć metody **tokena dostępu** dla tworzenia połączeń z serwerem SQL. Jest to część integracji usługi Azure SQL z usługą Azure AD. Takie rozwiązanie różni się od podawania poświadczeń w parametrach połączenia.
 
-Poniżej przedstawiono przykład kodu platformy .Net otwierającego połączenie z serwerem SQL przy użyciu tokenu dostępu.  Ten kod należy uruchomić na maszynie wirtualnej, aby mógł uzyskać dostęp do punktu końcowego przypisanej przez system tożsamości zarządzanej maszyny wirtualnej.  Wymagany jest program **.Net Framework 4.6** (lub nowszy) w celu użycia metody tokenu dostępu.  Zastąp odpowiednio wartości AZURE-SQL-SERVERNAME i DATABASE.  Pamiętaj, że identyfikator zasobu usługi Azure SQL to „https://database.windows.net/”.
+Poniżej przedstawiono przykładowy kod .NET otwarcia połączenia do bazy danych SQL przy użyciu tokenu dostępu. Ten kod należy uruchomić na maszynie wirtualnej, aby mógł uzyskać dostęp do punktu końcowego przypisanej przez system tożsamości zarządzanej maszyny wirtualnej. **.NET framework 4.6** lub nowszego jest wymagany przy użyciu metody token dostępu. Zastąp odpowiednio wartości AZURE-SQL-SERVERNAME i DATABASE. Należy pamiętać, identyfikator zasobu dla usługi Azure SQL jest `https://database.windows.net/`.
 
 ```csharp
 using System.Net;
@@ -125,7 +125,7 @@ try
     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
     // Pipe response Stream to a StreamReader and extract access token.
-    StreamReader streamResponse = new StreamReader(response.GetResponseStream()); 
+    StreamReader streamResponse = new StreamReader(response.GetResponseStream());
     string stringResponse = streamResponse.ReadToEnd();
     JavaScriptSerializer j = new JavaScriptSerializer();
     Dictionary<string, string> list = (Dictionary<string, string>) j.Deserialize(stringResponse, typeof(Dictionary<string, string>));
@@ -149,13 +149,13 @@ if (accessToken != null) {
 
 Alternatywną metodą szybkiego przetestowania kompleksowej konfiguracji bez potrzeby pisania i wdrażania aplikacji na maszynie wirtualnej jest użycie programu PowerShell.
 
-1.  W portalu przejdź do pozycji **Maszyny wirtualne**, a następnie przejdź do swojej maszyny wirtualnej z systemem Windows i w pozycji **Przegląd** kliknij przycisk **Połącz**. 
-2.  Wprowadź **nazwę użytkownika** i **hasło** dodane podczas tworzenia maszyny wirtualnej z systemem Windows. 
-3.  Teraz, po utworzeniu **połączenia pulpitu zdalnego** z maszyną wirtualną, otwórz program **PowerShell** w sesji zdalnej. 
+1.  W portalu przejdź do pozycji **Maszyny wirtualne**, a następnie przejdź do swojej maszyny wirtualnej z systemem Windows i w pozycji **Przegląd** kliknij przycisk **Połącz**.
+2.  Wprowadź **nazwę użytkownika** i **hasło** dodane podczas tworzenia maszyny wirtualnej z systemem Windows.
+3.  Teraz, po utworzeniu **połączenia pulpitu zdalnego** z maszyną wirtualną, otwórz program **PowerShell** w sesji zdalnej.
 4.  Używając polecenia `Invoke-WebRequest` programu PowerShell, wyślij żądanie do lokalnego punktu końcowego tożsamości zarządzanej, aby uzyskać token dostępu na potrzeby usługi Azure SQL.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F' -Method GET -Headers @{Metadata="true"}
+        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     Skonwertuj odpowiedź z obiektu JSON do obiektu PowerShell. 
@@ -170,7 +170,7 @@ Alternatywną metodą szybkiego przetestowania kompleksowej konfiguracji bez pot
     $AccessToken = $content.access_token
     ```
 
-5.  Otwórz połączenie z serwerem SQL. Pamiętaj, aby zastąpić wartości AZURE SQL-SERVERNAME i DATABASE.
+5. Otwórz połączenie z serwerem SQL. Pamiętaj, aby zastąpić wartości AZURE SQL-SERVERNAME i DATABASE.
     
     ```powershell
     $SqlConnection = New-Object System.Data.SqlClient.SqlConnection
@@ -179,7 +179,7 @@ Alternatywną metodą szybkiego przetestowania kompleksowej konfiguracji bez pot
     $SqlConnection.Open()
     ```
 
-    Następnie utwórz i wyślij zapytanie do serwera.  Pamiętaj, aby zastąpić wartość w pozycji TABLE.
+    Następnie utwórz i wyślij zapytanie do serwera. Pamiętaj, aby zastąpić wartość w pozycji TABLE.
 
     ```powershell
     $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
@@ -193,9 +193,9 @@ Alternatywną metodą szybkiego przetestowania kompleksowej konfiguracji bez pot
 
 Sprawdź wartość `$DataSet.Tables[0]`, aby wyświetlić wyniki zapytania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób używania przypisanej przez system tożsamości zarządzanej w celu uzyskania dostępu do serwera usługi Azure SQL.  Aby dowiedzieć się więcej o usłudze Azure SQL Server, zobacz:
+W tym samouczku przedstawiono sposób używania przypisanej przez system tożsamości zarządzanej w celu uzyskania dostępu do serwera usługi Azure SQL. Aby dowiedzieć się więcej o usłudze Azure SQL Server, zobacz:
 
 > [!div class="nextstepaction"]
->[Usługa Azure SQL Database](/azure/sql-database/sql-database-technical-overview)
+> [Usługa Azure SQL Database](/azure/sql-database/sql-database-technical-overview)

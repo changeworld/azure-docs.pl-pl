@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.openlocfilehash: af5a261ba57c406335fb75260d6af797af70a1b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653802"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101452"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Tworzenie klastrów Apache HBase w HDInsight w usłudze Azure Virtual Network
 Dowiedz się, jak tworzyć klastry usługi Azure HDInsight Apache HBase w [Azure Virtual Network][1].
@@ -90,9 +90,9 @@ Aby rozpocząć pracę z nowego klastra HBase, można użyć procedurach dostęp
      2. Kliknij przycisk **hosty** z górnego menu.
    * Użyj Curl wykonywanie wywołań REST:
 
-    ```bash
+     ```bash
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
-    ```
+     ```
 
      W danych JavaScript Object Notation (JSON), zwrócone Znajdź pozycję "host_name". Zawiera on nazwę FQDN dla węzłów w klastrze. Na przykład:
 
@@ -105,7 +105,7 @@ Aby rozpocząć pracę z nowego klastra HBase, można użyć procedurach dostęp
 
      Użyj poniższego skryptu programu Azure PowerShell do rejestrowania **Get ClusterDetail** funkcji, która może służyć do zwrócenia sufiks DNS:
 
-    ```powershell
+     ```powershell
         function Get-ClusterDetail(
             [String]
             [Parameter( Position=0, Mandatory=$true )]
@@ -195,13 +195,13 @@ Aby rozpocząć pracę z nowego klastra HBase, można użyć procedurach dostęp
                 Write-host $Suffix
             }
         }
-    ```
+     ```
 
      Po uruchomieniu skryptu programu Azure PowerShell, użyj następującego polecenia, aby zwrócić sufiks DNS przy użyciu **Get ClusterDetail** funkcji. Określ nazwę klastra HDInsight HBase, nazwę administratora i hasło administratora, korzystając z tego polecenia.
 
-    ```powershell
+     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
-    ```
+     ```
 
      To polecenie zwraca sufiks DNS. Na przykład **yourclustername.b4.internal.cloudapp.net**.
 

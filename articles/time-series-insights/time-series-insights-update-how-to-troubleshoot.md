@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e44a02e2126e7b25f69999de34fe5cf42499a90c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: eb1c302bf1954492ba2a7a78d16fc697fdf4b687
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556836"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080441"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnozowanie i rozwiązywanie problemów
 
@@ -43,16 +43,16 @@ Istnieje kilka przyczyn typowych, dlaczego mogą nie być wyświetlane dane w [A
 
 - Klucz źródła zdarzeń nie ma wymaganych uprawnień.
 
-    * Dla usługi IoT hub, musisz podać klucz, który ma **połączenie z usługą** uprawnień.
+  * Dla usługi IoT hub, musisz podać klucz, który ma **połączenie z usługą** uprawnień.
 
     ![Konfigurowanie][3]
 
-    * Pokazany na wcześniejszej ilustracji, obie zasady **iothubowner** i **usługi** działa, ponieważ mają one **połączenie z usługą** uprawnień.
-    * Centrum zdarzeń, musisz podać klucz, który ma **nasłuchiwania** uprawnień.
+  * Pokazany na wcześniejszej ilustracji, obie zasady **iothubowner** i **usługi** działa, ponieważ mają one **połączenie z usługą** uprawnień.
+  * Centrum zdarzeń, musisz podać klucz, który ma **nasłuchiwania** uprawnień.
   
     ![Uprawnienia][4]
 
-    * Pokazany na wcześniejszej ilustracji, oba **odczytu** i **zarządzanie** działania zasad, ponieważ mają one **nasłuchiwania** uprawnień.
+  * Pokazany na wcześniejszej ilustracji, oba **odczytu** i **zarządzanie** działania zasad, ponieważ mają one **nasłuchiwania** uprawnień.
 
 - Grupy konsumentów pod warunkiem jest wyłącznie dla usługi Time Series Insights.
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bee16ed8205453546702946628c98c73b0f34b15
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191739"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103812"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Szybki start: aktualizowanie aplikacji w usłudze Azure Active Directory
 
@@ -60,24 +60,24 @@ Zanim klient będzie mógł uzyskać dostęp do internetowego interfejsu API uwi
    ![Aktualizowanie rejestracji aplikacji](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
 4. Nastąpi przekierowanie do głównej strony rejestracji aplikacji, która zawiera stronę **Ustawienia** aplikacji. Aby dodać poświadczenia dla aplikacji internetowej, wykonaj następujące czynności:
-  1. Wybierz sekcję **Klucze** na stronie **Ustawienia**.
-  2. Aby dodać certyfikat, wykonaj następujące czynności:
-    - Wybierz pozycję **Przekaż klucz publiczny**.
-    - Wybierz plik, który chcesz przekazać. Plik musi być plikiem typu cer, pem lub crt.
-  - Aby dodać hasło, wykonaj poniższe kroki:
-    - Dodaj opis klucza.
-    - Wybierz czas trwania.
-    - Wybierz pozycję **Zapisz**. Po zapisaniu zmian w konfiguracji kolumna najdalej z prawej strony będzie zawierać wartość klucza. **Pamiętaj o skopiowaniu klucza** do użycia w kodzie aplikacji klienckiej, ponieważ nie będzie on dostępny po opuszczeniu tej strony.
+   1. Wybierz sekcję **Klucze** na stronie **Ustawienia**.
+   1. Aby dodać certyfikat, wykonaj następujące czynności:
+      - Wybierz pozycję **Przekaż klucz publiczny**.
+      - Wybierz plik, który chcesz przekazać. Plik musi być plikiem typu cer, pem lub crt.
+   1. Aby dodać hasło, wykonaj poniższe kroki:
+      - Dodaj opis klucza.
+      - Wybierz czas trwania.
+      - Wybierz pozycję **Zapisz**. Po zapisaniu zmian w konfiguracji kolumna najdalej z prawej strony będzie zawierać wartość klucza. **Pamiętaj o skopiowaniu klucza** do użycia w kodzie aplikacji klienckiej, ponieważ nie będzie on dostępny po opuszczeniu tej strony.
 
 5. Dodawanie uprawnień na potrzeby uzyskiwania dostępu do interfejsów API zasobu z poziomu klienta
-  1. Wybierz sekcję **Wymagane uprawnienia** na stronie **Ustawienia**, a następnie wybierz pozycję **Dodaj**.
-  1. Wybierz pozycję **Wybierz interfejs API**, aby określić typ zasobów, z których ma zostać dokonany wybór.
-  1. Przejrzyj listę dostępnych interfejsów API lub użyj pola wyszukiwania, aby wybrać z dostępnych aplikacji zasobów w katalogu, który uwidocznia internetowy interfejs API. Zaznacz interesujący Cię zasób, a następnie kliknij pozycję **Wybierz**.
-  1. Na stronie **Włączanie dostępu** wybierz uprawnienia aplikacji i/lub uprawnienia delegowane wymagane przez aplikację podczas uzyskiwania dostępu do interfejsu API.
+   1. Wybierz sekcję **Wymagane uprawnienia** na stronie **Ustawienia**, a następnie wybierz pozycję **Dodaj**.
+   1. Wybierz pozycję **Wybierz interfejs API**, aby określić typ zasobów, z których ma zostać dokonany wybór.
+   1. Przejrzyj listę dostępnych interfejsów API lub użyj pola wyszukiwania, aby wybrać z dostępnych aplikacji zasobów w katalogu, który uwidocznia internetowy interfejs API. Zaznacz interesujący Cię zasób, a następnie kliknij pozycję **Wybierz**.
+   1. Na stronie **Włączanie dostępu** wybierz uprawnienia aplikacji i/lub uprawnienia delegowane wymagane przez aplikację podczas uzyskiwania dostępu do interfejsu API.
    
-  ![Aktualizowanie rejestracji aplikacji — interfejs API uprawnień](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
+   ![Aktualizowanie rejestracji aplikacji — interfejs API uprawnień](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
 
-  ![Aktualizowanie rejestracji aplikacji — uprawnienia](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
+   ![Aktualizowanie rejestracji aplikacji — uprawnienia](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. Po zakończeniu wybierz przycisk **Wybierz** znajdujący się na stronie **Włączanie dostępu**, a następnie przycisk **Gotowe** na stronie **Dodaj dostęp do interfejsu API**. Nastąpi powrót na stronę **Wymagane uprawnienia**, na której nowy zasób zostanie dodany do listy interfejsów API.
 
@@ -98,8 +98,8 @@ W poniższej sekcji pokazano, jak uwidocznić zakresy dostępu, modyfikując man
 4. Nastąpi przekierowanie do głównej strony rejestracji aplikacji, która otwiera stronę **Ustawienia** aplikacji. Przełącz się do strony **Edytowanie manifestu**, klikając pozycję **Manifest** na stronie rejestracji aplikacji. Zostanie otwarty internetowy edytor manifestu umożliwiający **edycję** manifest w obrębie portalu. Opcjonalnie można kliknąć pozycję **Pobierz** i edytować manifest lokalnie, a następnie użyć pozycji **Przekaż** w celu ponownego zastosowania go do aplikacji.
 5. W tym przykładzie uwidocznimy nowy zakres o nazwie `Employees.Read.All` w naszym zasobie/interfejsie API, dodając następujący element JSON do kolekcji `oauth2Permissions`. Istniejący zakres `user_impersonation` jest domyślnie udostępniany podczas rejestracji. Zakres `user_impersonation` umożliwia aplikacji klienckiej zażądanie uprawnienia dostępu do zasobu w imieniu tożsamości zalogowanego użytkownika. Pamiętaj o dodaniu przecinka po istniejącym elemencie zakresu `user_impersonation` i o zmianie wartości właściwości zgodnie z potrzebami zasobu. 
 
-  ```json
-  {
+   ```json
+   {
     "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
     "adminConsentDisplayName": "Read-only access to Employee records",
     "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
@@ -108,17 +108,17 @@ W poniższej sekcji pokazano, jak uwidocznić zakresy dostępu, modyfikując man
     "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
     "userConsentDisplayName": "Read-only access to your Employee records",
     "value": "Employees.Read.All"
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE]
-  > Wartość `id` musi zostać wygenerowana programowo lub za pomocą narzędzia do generowania identyfikatora GUID, takiego jak [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Wartość `id` reprezentuje unikatowy identyfikator dla zakresu w formie uwidocznionej przez internetowy interfejs API. Po odpowiednim skonfigurowaniu klienta z uprawnieniami dostępu do internetowego interfejsu API usługa Azure AD wystawi token dostępu OAuth 2.0. Gdy klient wywołuje internetowy interfejs API, prezentuje on token dostępu, który ma oświadczenie zakresu (scp) ustawione na uprawnienia żądane w jego rejestracji aplikacji.
-  >
-  > Jeśli jest to konieczne, później można uwidocznić dodatkowe zakresy. Należy pamiętać, że internetowy interfejs API może uwidoczniać wiele zakresów powiązanych z różnymi funkcjami. Zasób może kontrolować dostęp do internetowego interfejsu API w czasie wykonywania, oceniając oświadczenia zakresu (`scp`) w odebranym tokenie dostępu OAuth 2.0.
+   > [!NOTE]
+   > Wartość `id` musi zostać wygenerowana programowo lub za pomocą narzędzia do generowania identyfikatora GUID, takiego jak [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Wartość `id` reprezentuje unikatowy identyfikator dla zakresu w formie uwidocznionej przez internetowy interfejs API. Po odpowiednim skonfigurowaniu klienta z uprawnieniami dostępu do internetowego interfejsu API usługa Azure AD wystawi token dostępu OAuth 2.0. Gdy klient wywołuje internetowy interfejs API, prezentuje on token dostępu, który ma oświadczenie zakresu (scp) ustawione na uprawnienia żądane w jego rejestracji aplikacji.
+   >
+   > Jeśli jest to konieczne, później można uwidocznić dodatkowe zakresy. Należy pamiętać, że internetowy interfejs API może uwidoczniać wiele zakresów powiązanych z różnymi funkcjami. Zasób może kontrolować dostęp do internetowego interfejsu API w czasie wykonywania, oceniając oświadczenia zakresu (`scp`) w odebranym tokenie dostępu OAuth 2.0.
 
 6. Po skończeniu kliknij przycisk **Zapisz**. Teraz internetowy interfejs API jest skonfigurowany do użycia przez inne aplikacje w katalogu.
 
-  ![Aktualizowanie rejestracji aplikacji](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
+   ![Aktualizowanie rejestracji aplikacji](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
 
 ### <a name="verify-the-web-api-is-exposed-to-other-applications-in-your-tenant"></a>Weryfikowanie, czy internetowy interfejs API jest uwidoczniany dla innych aplikacji w dzierżawie
 
@@ -130,7 +130,7 @@ W poniższej sekcji pokazano, jak uwidocznić zakresy dostępu, modyfikując man
 
 3. Na stronie **Włączanie dostępu** powinien zostać wyświetlony nowy zakres dostępny dla żądań uprawnień klienta.
 
-  ![Nowe uprawnienia są wyświetlane](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
+   ![Nowe uprawnienia są wyświetlane](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
 
 ### <a name="more-on-the-application-manifest"></a>Więcej informacji na temat manifestu aplikacji
 
@@ -211,12 +211,12 @@ Domyślnie przyznawanie niejawne protokołu OAuth 2.0 jest wyłączone dla aplik
 3. W okienku nawigacji po lewej stronie kliknij usługę **Azure Active Directory**, kliknij pozycję **Rejestracje aplikacji**, a następnie znajdź lub kliknij aplikację, którą chcesz skonfigurować. Nastąpi przekierowanie do głównej strony rejestracji aplikacji, która otwiera stronę **Ustawienia** aplikacji.
 4. Przełącz się do strony **Edytowanie manifestu**, klikając pozycję **Manifest** na stronie rejestracji aplikacji. Zostanie otwarty internetowy edytor manifestu umożliwiający **edycję** manifest w obrębie portalu. Znajdź i ustaw element „oauth2AllowImplicitFlow” na wartość „true”. Domyślnie jest on ustawiony na wartość „false”.
    
-  ```json
-  "oauth2AllowImplicitFlow": true,
-  ```
+   ```json
+   "oauth2AllowImplicitFlow": true,
+   ```
 5. Zapisz zaktualizowany manifest. Po zapisaniu Twój internetowy interfejs API jest skonfigurowany do korzystania z przyznawania niejawnego protokołu OAuth 2.0 na potrzeby uwierzytelniania użytkowników.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat innych powiązanych podręczników Szybki start dotyczących zarządzania aplikacjami korzystającymi z punktu końcowego usługi Azure AD w wersji 1.0:
 - [Add an application to Azure AD](quickstart-v1-integrate-apps-with-azure-ad.md) (Dodawanie aplikacji do usługi Azure AD)

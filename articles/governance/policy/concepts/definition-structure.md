@@ -4,17 +4,17 @@ description: W tym artykule opisano, jak zasobu definicji zasad jest używany pr
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e3f2b60af574bc1d4e6633ce47b6cdf51e8e6d3e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 35cb5c286b9c9657c37dcede7f51082b5c48ef99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894431"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -101,7 +101,7 @@ Parametr ma następujące właściwości, które są używane w definicji zasad:
   - `displayName`: Przyjazna nazwa wyświetlana w portalu dla parametru.
   - `strongType`: (Opcjonalnie) Używane podczas przypisywania definicji zasad za pośrednictwem portalu. Zawiera listę pamiętać kontekstu. Aby uzyskać więcej informacji, zobacz [strongType](#strongtype).
 - `defaultValue`: (Opcjonalnie) Jeśli wartość nie zostanie określony, ustawia wartość parametru w przypisania. Wymagane podczas aktualizowania istniejącej definicji zasad, która jest przypisana.
-- `allowedValues`: (Opcjonalnie) Zawiera listę wartości, które akceptuje parametr, podczas przypisywania.
+- `allowedValues`: (Opcjonalnie) Zawiera tablicę wartości, które akceptuje parametr, podczas przypisywania.
 
 Na przykład można zdefiniować definicję zasad, aby ograniczyć lokalizacje, w której można wdrożyć zasoby. Parametr dla tej definicji zasad może być **allowedLocations**. Ten parametr będzie używany przez każdy przypisanie definicji zasad, aby ograniczyć akceptowanych wartości. Korzystanie z **strongType** udostępnia udoskonalone funkcje podczas kończenia przypisania za pośrednictwem portalu:
 
@@ -289,6 +289,9 @@ W poniższym przykładzie `concat` służy do tworzenia wyszukiwanie tag o nazwi
 Warunki można również tworzone za pomocą **wartość**. **wartość** sprawdza warunki względem [parametry](#parameters), [obsługiwane funkcje szablonu](#policy-functions), albo literały.
 **wartość** jest powiązany z żadną obsługiwane [warunek](#conditions).
 
+> [!WARNING]
+> Jeśli wynik _funkcji szablonu_ , występuje błąd, zasady oceny zakończy się niepowodzeniem. Obliczanie nie powiodło się to bezwarunkowy **Odmów**. Aby uzyskać więcej informacji, zobacz [unikanie błędów szablonu](#avoiding-template-failures).
+
 #### <a name="value-examples"></a>Przykładowe wartości
 
 W tym przykładzie reguły zasad użyto **wartość** do porównania z wynikiem `resourceGroup()` funkcji i zwrócony **nazwa** właściwości **takich jak** warunek `*netrg`. Reguła nie zezwala na dowolny zasób nie jest `Microsoft.Network/*` **typu** w dowolnej grupie zasobów, których nazwa kończy się na `*netrg`.
@@ -328,6 +331,44 @@ W tym przykładzie reguły zasad użyto **wartość** do sprawdzenia, jeśli wyn
     }
 }
 ```
+
+#### <a name="avoiding-template-failures"></a>Unikanie błędów szablonu
+
+Korzystanie z _funkcje szablonu_ w **wartość** umożliwia złożonych dużo zagnieżdżonych funkcji. Jeśli wynik _funkcji szablonu_ , występuje błąd, zasady oceny zakończy się niepowodzeniem. Obliczanie nie powiodło się to bezwarunkowy **Odmów**. Przykładem **wartość** niepowodzenia w niektórych scenariuszach:
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[substring(field('name'), 0, 3)]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+Przykładowa reguła zasad powyżej używa [substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) do porównania pierwsze trzy znaki **nazwa** do **abc**. Jeśli **nazwa** jest krótszy niż trzy znaki `substring()` funkcja powoduje błąd. Ten błąd powoduje, że zasady aby stać się **Odmów** efekt.
+
+Zamiast tego należy użyć [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) funkcji, aby sprawdzić, czy pierwsze trzy znaki **nazwa** równy **abc** bez możliwości **nazwa** mniej niż trzy znaki do powodują wystąpienie błędu:
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[if(greaterOrEquals(length(field('name')), 3), substring(field('name'), 0, 3), 'not starting with abc')]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+Reguły zasad poprawione `if()` sprawdza długość **nazwa** przed próby uzyskania `substring()` na wartość składającą się z mniej niż trzy znaki. Jeśli **nazwa** jest zbyt krótki, a wartość "nie począwszy od abc", jest zwracana zamiast i w porównaniu do **abc**. Zasób o krótką nazwę, która nie rozpoczyna się od **abc** nadal kończy się niepowodzeniem reguły zasad, ale nie powoduje już wystąpił błąd podczas obliczania wartości.
 
 ### <a name="effect"></a>Efekt
 
@@ -443,70 +484,60 @@ Mieć wiele aliasów, które są dostępne wersji, która jest wyświetlana jako
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-Pierwszy przykład jest używany do oceny całej tablicy, której **[\*]** alias ocenia każdy element tablicy.
-
-Przyjrzyjmy się reguły zasad jako przykład. Te zasady będą **Odmów** konta magazynu, który ma skonfigurowane ipRules i, jeśli **Brak** ipRules ma wartość "127.0.0.1".
+Alias "normal" reprezentuje pole jako pojedyncza wartość. To pole jest scenariuszach porównania dokładnego dopasowania, gdy cały zestaw wartości muszą zawierać dokładnie zgodnie z definicją, już nie. Za pomocą **ipRules**, przykład będzie weryfikowanie, czy dokładny zestaw reguł, istnieje w tym liczba reguł i korzeń każdej reguły. Ta przykładowa reguła sprawdza, czy dokładnie zarówno **192.168.1.1** i **10.0.4.1** z _akcji_ z **Zezwalaj** w **ipRules** do zastosowania **effectType**:
 
 ```json
 "policyRule": {
     "if": {
-        "allOf": [{
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "Equals": [
+                    {
+                        "action": "Allow",
+                        "value": "192.168.1.1"
+                    },
+                    {
+                        "action": "Allow",
+                        "value": "10.0.4.1"
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+**[\*]** Alias sprawia, że można porównać wartości każdego elementu w tablicy i właściwości każdego elementu. To podejście sprawia, że można porównać właściwości elementu "Jeśli żadna z", "ewentualne", lub "Jeśli wszystkie z" scenariuszy. Za pomocą **ipRules [\*]**, przykład czy sprawdzanie poprawności, które każdy _akcji_ jest _Odmów_, ale nie martwiąc się o istnieją reguły ile lub jaki adres IP _wartość_ jest. Ta przykładowa reguła sprawdza, czy wszystkie dopasowania **ipRules [\*] .value** do **10.0.4.1** i stosuje **effectType** tylko wtedy, gdy co najmniej jedno dopasowanie nie zostanie znaleziona:
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
                 "exists": "true"
             },
             {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "127.0.0.1"
+                "notEquals": "10.0.4.1"
             }
         ]
     },
     "then": {
-        "effect": "deny",
+        "effect": "[parameters('effectType')]"
     }
 }
 ```
 
-**IpRules** tablicy jest następujący przykład:
-
-```json
-"ipRules": [{
-        "value": "127.0.0.1",
-        "action": "Allow"
-    },
-    {
-        "value": "192.168.1.1",
-        "action": "Allow"
-    }
-]
-```
-
-Poniżej przedstawiono sposób przetwarzania w tym przykładzie:
-
-- `networkAcls.ipRules` — Sprawdź, czy tablica jest różna od null. Oblicza wartość true, dlatego ocena jest kontynuowana.
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-    "exists": "true"
-  }
-  ```
-
-- `networkAcls.ipRules[*].value` -Sprawdza każdą _wartość_ właściwość **ipRules** tablicy.
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-    "notEquals": "127.0.0.1"
-  }
-  ```
-
-  - Jako tablicę każdy element zostanie przetworzone.
-
-    - "127.0.0.1"! = "127.0.0.1" ma wartość false.
-    - "127.0.0.1"! = "192.168.1.1" ma wartość true.
-    - Co najmniej jeden _wartość_ właściwość **ipRules** tablicy ocenione jako fałszywe, więc ocena zostanie zatrzymane.
-
-Jako wartość false, warunek **Odmów** efekt nie zostanie wyzwolony.
+Aby uzyskać więcej informacji, zobacz [dokonanie oceny oprogramowania [\*] alias](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Inicjatywy
 

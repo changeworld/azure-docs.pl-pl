@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: 6517aec56839295af30d251f4cb5d3bb9426282c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0a8b4f9821164cca943064b20f1ec1a87981a172
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125215"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych
 
@@ -142,7 +142,7 @@ Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych zoptymali
 |Standard_D32s_v3|16|
 |Standard_D64s_v3|32|
 
-Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych ogólnego przeznaczenia](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup).
+Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych ogólnego przeznaczenia](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-1).
 
 ## <a name="dv2-series"></a>Seria Dv2
 
@@ -179,7 +179,7 @@ Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych zoptymali
 |Standard_D32_v3|16|
 |Standard_D64_v3|32|
 
-Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych ogólnego przeznaczenia](../articles/virtual-machines/windows/sizes-general.md#dv3-series-sup1sup).
+Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych ogólnego przeznaczenia](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1).
 
 ## <a name="esv3-series"></a>Seria ESv3
 
@@ -240,7 +240,7 @@ Aby uzyskać więcej informacji, zobacz [rozmiarów maszyny wirtualne oferujące
 |Standardowa_F8s|8|
 |Standardowa_F16s|16|
 
-Aby uzyskać więcej informacji, zobacz [rozmiarów maszyny wirtualne oferujące zoptymalizowane możliwości obliczeniowe](../articles/virtual-machines/windows/sizes-compute.md#fs-series-sup1sup).
+Aby uzyskać więcej informacji, zobacz [rozmiarów maszyny wirtualne oferujące zoptymalizowane możliwości obliczeniowe](../articles/virtual-machines/windows/sizes-compute.md#fs-series-1).
 
 ## <a name="fsv2-series"></a>Seria Fsv2
 
@@ -254,7 +254,7 @@ Aby uzyskać więcej informacji, zobacz [rozmiarów maszyny wirtualne oferujące
 |Standard_F64s_v2|32|
 |Standard_F72s_v2|36|
 
-Aby uzyskać więcej informacji, zobacz [rozmiarów maszyny wirtualne oferujące zoptymalizowane możliwości obliczeniowe](../articles/virtual-machines/windows/sizes-compute.md#fsv2-series-sup1sup).
+Aby uzyskać więcej informacji, zobacz [rozmiarów maszyny wirtualne oferujące zoptymalizowane możliwości obliczeniowe](../articles/virtual-machines/windows/sizes-compute.md#fsv2-series-1).
 
 ## <a name="h-series"></a>Seria H
 

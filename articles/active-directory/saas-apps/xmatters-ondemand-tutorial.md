@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e947b71fe6bb9e6bd884b8b2dd0397a63bea2a95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b5ec711f0e43d9d29d962d43ed8b1d86338db87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203645"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881218"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą xMatters na żądanie
 
@@ -114,6 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Konfigurowanie logowania jednokrotnego](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
     a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -123,6 +124,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://<companyname>.xmatters.com.au/`|
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -154,11 +156,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Administrator](./media/xmatters-ondemand-tutorial/IC776795.png "Administrator")
 
-1. Na **plik konfiguracji SAML** strony, wykonaj następujące czynności:
+1. Na stronie **SAML Configuration** (Konfiguracja SAML) wykonaj następujące kroki:
 
     ![Plik konfiguracji SAML](./media/xmatters-ondemand-tutorial/IC776796.png "plik konfiguracji SAML")
 
-    a. Wybierz **Włącz SAML**.
+    a. Wybierz pozycję **Enable SAML** (Włącz SAML).
 
     b. W **identyfikator dostawcy tożsamości** pola tekstowego, Wklej **identyfikator jednostki SAML** wartości, które zostały skopiowane z witryny Azure portal.
 
@@ -209,9 +211,9 @@ Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w xMatters On
 
 1. Zaloguj się do Twojej **XMatters OnDemand** dzierżawy.
 
-1.  Kliknij przycisk **użytkowników** kartę, a następnie kliknij przycisk **Dodaj użytkownika**.
+1. Kliknij przycisk **użytkowników** kartę, a następnie kliknij przycisk **Dodaj użytkownika**.
 
-    ![Użytkownicy](./media/xmatters-ondemand-tutorial/IC781048.png "Użytkownicy")
+   ![Użytkownicy](./media/xmatters-ondemand-tutorial/IC781048.png "Użytkownicy")
 
 1. W **Dodawanie użytkownika** sekcji, wykonaj następujące czynności:
 
@@ -221,9 +223,9 @@ Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w xMatters On
 
     b. W **identyfikator użytkownika** polu tekstowym wpisz identyfikator użytkownika użytkownika, takie jak Brittasimon@contoso.com.
 
-    c. W **imię** polu tekstowym wpisz imię użytkownika, takich jak Britta.
+    c. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, takie jak Britta.
 
-    d. W **nazwisko** pole tekstowe, wpisz nazwisko użytkownika, takich jak Simon.
+    d. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak Simon.
 
     e. W **witryny** polu tekstowym Wprowadź prawidłową witryną prawidłowe platformy Azure konto usługi AD do aprowizowania.
 
@@ -268,7 +270,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

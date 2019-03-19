@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 264a1200ce78d85181650de716f9898033834bc0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001872"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549837"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Szybki start: Tworzenie fabryki danych i potoku przy użyciu języka Python
 
@@ -45,7 +45,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     John|Doe
     Jane|Doe
     ```
-2.  Użyj narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/), aby utworzyć kontener **adfv2tutorial** i folder **input** w kontenerze. Następnie przekaż plik **input.txt** do folderu **input**.
+2.  Użyj narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/), aby utworzyć kontener **adfv2tutorial** i folder **input** w kontenerze. Następnie przekaż plik **input.txt** do folderu **input**.
 
 ## <a name="install-the-python-package"></a>Instalacja pakietu języka Python
 
@@ -431,6 +431,6 @@ Aby usunąć fabrykę danych, dodaj następujący kod do programu:
 adf_client.factories.delete(rg_name,df_name)
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-dot-net.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach.

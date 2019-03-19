@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 57a8a89c73e2be51e54130d9c37194a7513a47d8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 28deb9b7ba15744b9bd3d273d02db4398d2b2ef3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896946"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Za pomocą aplikacji w dzierżawie wzorzec SaaS aprowizacji i wykazu nowych dzierżaw
 
@@ -99,7 +99,7 @@ Po zakończeniu działania skryptu katalogu będzie istnieć i przykładowymi dz
 Teraz sprawdźmy zasobów, który został utworzony.
 
 1. Otwórz [witryny Azure portal](https://portal.azure.com/) oraz przeglądanie grup zasobów.  Otwórz **wingtip-sa-catalog -\<użytkownika\>**  zasobów grupy i zanotuj serwer wykazu i bazy danych.
-1. Otwórz bazę danych w portalu i wybierz *Eksplorator danych* z menu po lewej stronie.  Kliknij polecenie logowania, a następnie wprowadź hasło = **P@ssword1**.
+1. Otwórz bazę danych w portalu i wybierz *Eksplorator danych* z menu po lewej stronie.  Kliknij polecenie logowania, a następnie wprowadź hasło = **P\@ssword1**.
 
 
 1. Zapoznaj się ze schematem *tenantcatalog* bazy danych.  

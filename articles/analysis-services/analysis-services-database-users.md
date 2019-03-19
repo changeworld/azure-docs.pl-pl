@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189800"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993190"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie rolami bazy danych i użytkowników
 
@@ -71,6 +71,7 @@ Do dodawania ról i użytkowników, aby wdrożony model bazy danych, możesz mus
 2. W **Utwórz rolę**, wprowadź nazwę roli i opis.
 
 3. Wybierz uprawnienie.
+
    |Uprawnienie|Opis|  
    |----------------|-----------------|  
    |**Pełna kontrola (Administrator)**|Członkowie mogą modyfikować schematu modelu przetwarzania danych i wykonywać zapytania na wszystkich danych.| 
@@ -123,7 +124,7 @@ W tym przykładzie użytkownik zewnętrzny B2B i grupy są dodawane do roli anal
   
 |Polecenie cmdlet|Opis|
 |------------|-----------------| 
-|[Dodaj RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Dodaj członka do roli bazy danych.| 
+|[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Dodaj członka do roli bazy danych.| 
 |[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Usuń członka z roli bazy danych.|   
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Wykonywanie skryptów TMSL.|
 
@@ -139,7 +140,7 @@ Filtry wierszy mają zastosowanie do określonych wierszy i powiązane wiersze. 
   
 |Tabela|Wyrażenie DAX|  
 |-----------|--------------------|  
-|Region|= Region [Kraj] = "USA"|  
+|Region|=Region[Country]="USA"|  
 |ProductCategory|= ProductCategory [Name] = "Rowerów"|  
 |Transakcje|= Transakcje [rok] = 2016|  
   

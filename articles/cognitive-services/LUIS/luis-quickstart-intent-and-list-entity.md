@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 23a94f7b2054692feedb3b7755dad1e840809be7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 5417c1c008b5abaada158530c7c29c67e0dc1ca0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734122"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119670"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Samouczek: Uzyskiwanie dokładnych danych dopasowanych na podstawie tekstu z wypowiedzi
 
@@ -134,7 +134,7 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to nazwa działu. Przykłady syn
 
 1. Przejdź na koniec tego adresu URL i wprowadź ciąg `shift Joe Smith to IT`. Ostatni parametr ciągu zapytania to `q`, czyli **q**uery (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe wypowiedzi oznaczone etykietami, dlatego jest dobra do testowania i powinna zwrócić intencję `TransferEmployeeToDepartment` z wyodrębnionym elementem `Department`.
 
-  ```json
+   ```json
     {
       "query": "shift Joe Smith to IT",
       "topScoringIntent": {
@@ -165,7 +165,7 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to nazwa działu. Przykłady syn
         }
       ]
     }
-  ```
+   ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -179,7 +179,7 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to nazwa działu. Przykłady syn
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku utworzono nową intencję, dodano przykładowe wypowiedzi, a następnie utworzono jednostkę listy, aby wyodrębnić z wypowiedzi dokładne dopasowania tekstu. Po wyszkoleniu i opublikowaniu aplikacji zapytanie do punktu końcowego zidentyfikowało intencję i zwróciło wyodrębnione dane.
 
 Kontynuuj pracę z tą aplikacją, [dodając jednostkę złożoną](luis-tutorial-composite-entity.md).

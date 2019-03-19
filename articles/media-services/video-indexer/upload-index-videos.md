@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: c11a206316cfb7b2d9e96b631fce01701da93565
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550486"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877874"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -26,7 +26,7 @@ Podczas przekazywania filmów wideo za pomocą interfejsu API indeksatora wideo,
 
 W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) przekazywać i indeksować pliki wideo na podstawie adresów URL. Przykładowy kod podany w artykule zawiera oznaczony jako komentarz kod, w którym pokazano, jak przekazać tablicę bajtów. <br/>W artykule omówiono też niektóre parametry, które można ustawić w interfejsie API, aby zmieniać przetwarzanie i dane wyjściowe interfejsu API.
 
-Po przekazaniu filmu wideo usługa Video Indexer opcjonalnie koduje wideo (omówionych w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. W przypadku opcji płatnej utworzone zostaje konto usługi Video Indexer [połączone z subskrypcją platformy Azure i kontem usługi Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
+Po przekazaniu filmu wideo usługa Video Indexer opcjonalnie koduje wideo (omówionych w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. W przypadku płatnych opcji tworzenia konta Video Indexer, który jest [połączony z subskrypcją platformy Azure oraz konta usługi Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
 
 ## <a name="uploading-considerations"></a>Zagadnienia dotyczące przekazywania
 
@@ -64,16 +64,16 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
         |state|Stan wideo|  
     - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Osoba rozpoznana na filmie wideo:
-    - Właściwości
+  - Właściwości
     
-        |Name (Nazwa)|Opis|
-        |---|---|
-        |id| Identyfikator wideo|
-        |faceId|Identyfikator Face ID w indeksie wideo|
-        |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
-        |personName|Imię i nazwisko osoby|
+      |Name (Nazwa)|Opis|
+      |---|---|
+      |id| Identyfikator wideo|
+      |faceId|Identyfikator Face ID w indeksie wideo|
+      |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
+      |personName|Imię i nazwisko osoby|
         
-     - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Przykład: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Uwagi
 

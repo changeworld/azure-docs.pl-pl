@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3f0671bc-f93f-496e-b465-b9ce8c6633fa
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c089e6f72af6fce7b97c0b3d467a9e1696cf87a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: f4ae2802c5f833f168385ef46d10b6a508fdf45a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874345"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Samouczek: Samouczek: integracja usługi Azure Active Directory z platformą LaunchDarkly
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację platformy LaunchDarkly z usługą Azure AD, musis
 
 **Aby dodać platformę LaunchDarkly z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -157,7 +157,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     b. W polu tekstowym **Adres URL logowania** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    d. Otwórz certyfikat pobrany z witryny Azure Portal w Notatniku, skopiuj zawartość, a następnie wklej ją w polu **Certyfikat X.509**, lub przekaż certyfikat bezpośrednio, klikając pozycję **Przekaż jeden**.
+    c. Otwórz certyfikat pobrany z witryny Azure Portal w Notatniku, skopiuj zawartość, a następnie wklej ją w polu **Certyfikat X.509**, lub przekaż certyfikat bezpośrednio, klikając pozycję **Przekaż jeden**.
 
     d. Kliknij pozycję **Zapisz**
 
@@ -179,7 +179,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -221,7 +221,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon na platformi
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka LaunchDarkly w panelu dostępu powinno nastąpić automatyczne zalogowanie do platformy LaunchDarkly, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

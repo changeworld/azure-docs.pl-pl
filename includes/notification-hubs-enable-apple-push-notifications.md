@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 2fc4f26f187301ea7a7a1e3051038f75da728547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264096"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125232"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generowanie pliku żądania podpisania certyfikatu
 
@@ -47,17 +47,17 @@ Aby móc wysyłać powiadomienia wypychane do aplikacji dla systemu iOS, należy
 
 2. Zaktualizuj następujące trzy pola dla nowej aplikacji, a następnie kliknij przycisk **Kontynuuj**:
 
-    * **Nazwa**: wpisz nazwę opisową aplikacji w polu **Nazwa** w sekcji **Opis identyfikatora aplikacji**.
-    * **Identyfikator pakietu**: w sekcji **Jawny identyfikator aplikacji** wprowadź **Identyfikator pakietu** w formie `<Organization Identifier>.<Product Name>` zgodnie z opisem w [Podręczniku dystrybucji aplikacji](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). *Identyfikator organizacji* i *Nazwa produktu*, których używasz, muszą być zgodne z identyfikatorem organizacji i nazwą produktu, których używasz podczas tworzenia projektu w programie XCode. Na poniższym zrzucie ekranu pozycja *NotificationHubs* stanowi identyfikator organizacji, a *GetStarted* nazwę produktu. Zagwarantowanie, że wartość ta jest zgodna z wartością używaną w projekcie w programie XCode, pozwoli na użycie poprawnego profilu publikowania w programie XCode.
-    * **Powiadomienia push**: zaznacz opcję **Powiadomienia push** w sekcji **App Services**.
+   * **Nazwa**: Wpisz nazwę opisową dla aplikacji **nazwa** pole **opis Identyfikatora aplikacji** sekcji.
+   * **Identyfikator pakietu**: W obszarze **jawny identyfikator aplikacji** sekcji, wprowadź **identyfikatora pakietu** w formie `<Organization Identifier>.<Product Name>` zgodnie z opisem w [podręczniku dystrybucji aplikacji](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). *Identyfikator organizacji* i *Nazwa produktu*, których używasz, muszą być zgodne z identyfikatorem organizacji i nazwą produktu, których używasz podczas tworzenia projektu w programie XCode. Na poniższym zrzucie ekranu pozycja *NotificationHubs* stanowi identyfikator organizacji, a *GetStarted* nazwę produktu. Zagwarantowanie, że wartość ta jest zgodna z wartością używaną w projekcie w programie XCode, pozwoli na użycie poprawnego profilu publikowania w programie XCode.
+   * **Powiadomienia wypychane**: Sprawdź **powiadomień wypychanych** opcji **App Services** sekcji.
 
-    ![Formularz rejestracji nowego identyfikatora aplikacji](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
+     ![Formularz rejestracji nowego identyfikatora aplikacji](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-    Ta akcja spowoduje wygenerowanie identyfikatora aplikacji, a użytkownik zostanie poproszony o potwierdzenie podanych informacji. Kliknij przycisk **Zarejestruj**, aby potwierdzić nowy identyfikator aplikacji.
+     Ta akcja spowoduje wygenerowanie identyfikatora aplikacji, a użytkownik zostanie poproszony o potwierdzenie podanych informacji. Kliknij przycisk **Zarejestruj**, aby potwierdzić nowy identyfikator aplikacji.
 
-    Po kliknięciu przycisku **Zarejestruj** jest wyświetlany ekran **Rejestracja ukończona**, jak przedstawiono na poniższym rysunku. Kliknij przycisk **Gotowe**.
+     Po kliknięciu przycisku **Zarejestruj** jest wyświetlany ekran **Rejestracja ukończona**, jak przedstawiono na poniższym rysunku. Kliknij przycisk **Gotowe**.
 
-    ![Ukończona rejestracja identyfikatora aplikacji z wyświetlanymi uprawnieniami](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
+     ![Ukończona rejestracja identyfikatora aplikacji z wyświetlanymi uprawnieniami](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 3. W Centrum deweloperów w obszarze Identyfikatory aplikacji zlokalizuj utworzony identyfikator aplikacji i kliknij jego wiersz.
 

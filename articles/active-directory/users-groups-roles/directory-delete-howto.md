@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dffcfe7c4c892976a61272a2217226f512b70ed
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 1cb15f3e786313fca4ae9f0c224c68c96bac7836
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542560"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077721"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Usunąć dzierżawę usługi Azure Active Directory
 Po usunięciu dzierżawy również zostaną usunięte wszystkie zasoby, które są zawarte w dzierżawie. Należy przygotować, minimalizując skojarzone z nią zasoby przed usunięciem dzierżawy. Tylko administrator globalny usługi Azure Active Directory (Azure AD) można usunąć dzierżawę usługi Azure AD z poziomu portalu.
@@ -41,11 +41,11 @@ Nie można usunąć dzierżawy w usłudze Azure AD, dopóki nie przekazuje kilka
 
 3. Przełącz się do dzierżawy chcesz usunąć.
   
-  ![Usuwanie przycisku katalogu](./media/directory-delete-howto/delete-directory-command.png)
+   ![Usuwanie przycisku katalogu](./media/directory-delete-howto/delete-directory-command.png)
 
 4. Wybierz **usunąć katalog**.
   
-  ![Usuwanie przycisku katalogu](./media/directory-delete-howto/delete-directory-list.png)
+   ![Usuwanie przycisku katalogu](./media/directory-delete-howto/delete-directory-list.png)
 
 5. Dzierżawy nie zakończy się pomyślnie co najmniej jeden, otrzymasz Link, aby uzyskać więcej informacji na temat sposobu przekazywania. Po przejściu wszystkich kontroli wybierz **Usuń** aby ukończyć proces.
 
@@ -57,10 +57,10 @@ Do czego można oczekiwać po wygaśnięciu wersji próbnej subskrypcji usługi 
 
 Stan subskrypcji | Dane | Dostęp do danych
 ----- | ----- | -----
-Aktywne (30 dni w wersji próbnej)  | Dostęp do wszystkich danych    | <li>Użytkownicy mają dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mają dostęp do Centrum administracyjnego usługi Office 365 i zasobów 
-Wygasłe (30 dni)   | Dostęp do wszystkich danych    | <li>Użytkownicy mają dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mają dostęp do Centrum administracyjnego usługi Office 365 i zasobów
-Wyłączone (30 dni) | Dostęp do administratora tylko do danych  | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą dostęp do Centrum administracyjnego usługi Office 365, ale nie można przypisać licencje lub zaktualizować użytkowników
-Anulowanie aprowizacji (30 dni po wyłączone) | Usunięte dane (automatycznie usuwane, jeśli brak innych usług, które są używane) | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą uzyskiwać dostęp do Centrum administracyjnego usługi Office 365, aby kupić i zarządzać innymi subskrypcjami 
+Aktywne (30 dni w wersji próbnej)  | Dostęp do wszystkich danych    | <li>Użytkownicy mają dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mają dostęp do Centrum administracyjnego usługi Microsoft 365 i zasobów 
+Wygasłe (30 dni)   | Dostęp do wszystkich danych    | <li>Użytkownicy mają dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mają dostęp do Centrum administracyjnego usługi Microsoft 365 i zasobów
+Wyłączone (30 dni) | Dostęp do administratora tylko do danych  | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą dostęp do Centrum administracyjnego usługi Microsoft 365, ale nie można przypisać licencje lub zaktualizować użytkowników
+Anulowanie aprowizacji (30 dni po wyłączone) | Usunięte dane (automatycznie usuwane, jeśli brak innych usług, które są używane) | <li>Użytkownicy nie mogą uzyskiwać dostęp do plików usługi Office 365 lub aplikacji<li>Administratorzy mogą uzyskiwać dostęp do Centrum administracyjnego usługi Microsoft 365, kupowanie i zarządzać innymi subskrypcjami 
 
 ## <a name="delete-a-subscription-in-the-microsoft-365-admin-center"></a>Usuń subskrypcję w Centrum administracyjnym usługi Microsoft 365
 
@@ -70,17 +70,17 @@ Możesz umieścić subskrypcji do **Deprovisoned** stanu do usunięcia w ciągu 
 
 2. Przejdź do **rozliczeń** kartę, a następnie wybierz pozycję **produktów i usług**, następnie wybierz subskrypcję, którą chcesz anulować. Po kliknięciu **anulować**, Odśwież stronę.
   
-  ![Usuń łącze do usuwania subskrypcji](./media/directory-delete-howto/delete-command.png)
+   ![Usuń łącze do usuwania subskrypcji](./media/directory-delete-howto/delete-command.png)
   
 3. Wybierz **Usuń** do usunięcia subskrypcji i zaakceptuj warunki i postanowienia. Wszystkie dane zostaną trwale usunięte w ciągu trzech dni. Jeśli zmienisz zdanie, można ponownie aktywować subskrypcję w ciągu trzech dni.
   
-  ![warunki i postanowienia](./media/directory-delete-howto/delete-terms.png)
+   ![warunki i postanowienia](./media/directory-delete-howto/delete-terms.png)
 
 4. Teraz zmieniła stan subskrypcji, subskrypcja jest oznaczona do usunięcia. Wprowadza subskrypcji **cofnięcia aprowizacji** stan później 72 godzin.
 
 5. Po usunięciu subskrypcji w dzierżawie usługi i upłynęły 72 godziny, możesz zarejestrować się wstecz do Centrum administracyjnego usługi Azure AD ponownie i powinny być ulepszonymi wymagane i nie ma subskrypcji blokuje usunięcie Twojej dzierżawy. Można pomyślnie usunąć dzierżawę usługi Azure AD.
   
-  ![Przekaż wyboru subskrypcji na ekranie usuwanie](./media/directory-delete-howto/delete-checks-passed.png)
+   ![Przekaż wyboru subskrypcji na ekranie usuwanie](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dokumentacja usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)

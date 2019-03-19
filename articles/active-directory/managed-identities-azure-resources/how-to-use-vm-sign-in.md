@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761843aad24dc89131079eb59954bd17883e595d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2dfbb618bafd9ae3cbb0c691e63a243ab2c2c31e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996541"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure dotyczące logowania 
 
@@ -87,7 +87,7 @@ Zobacz [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azu
 Odpowiedzi na następujące może wskazywać, że tożsamości zarządzanej maszyny Wirtualnej dla zasobów platformy Azure nie został prawidłowo skonfigurowany:
 
 - Program PowerShell: *Invoke-WebRequest: Nie można nawiązać połączenia z serwerem zdalnym*
-- CLI: *MSI: Nie można pobrać tokenu z "http://localhost:50342/oauth2/token" z powodu błędu programu "HTTPConnectionPool (host ="localhost", port = 50342)* 
+- CLI: *MSI: Nie można pobrać tokenu z `http://localhost:50342/oauth2/token` przy błędzie "HTTPConnectionPool (host ="localhost", port = 50342)* 
 
 Jeśli zostanie wyświetlony jeden z tych błędów, wróć do maszyny Wirtualnej platformy Azure w [witryny Azure portal](https://portal.azure.com) oraz:
 

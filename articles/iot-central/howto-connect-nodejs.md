@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c04358734923654366eb679505910e14d0e0059b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4d2701f078a26c22f52aebd0ef562dd60eaca923
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767536"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097978"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 
@@ -41,7 +41,7 @@ Dodaj następujące dane telemetryczne w **pomiarów** strony:
 | Ciśnienie     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  Typ danych miary telemetrii jest zmiennoprzecinkowy numer punktu.
+>   Typ danych miary telemetrii jest zmiennoprzecinkowy numer punktu.
 
 Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenia, dane telemetryczne nie można wyświetlić w aplikacji.
 
@@ -54,7 +54,7 @@ Dodaj następujący stan w **pomiarów** strony:
 | Tryb wentylatora     | fanmode     | 1       | Działanie      | 0       | Zatrzymano      |
 
 > [!NOTE]
-  Typ danych miary stanu jest ciągiem.
+>   Typ danych miary stanu jest ciągiem.
 
 Wprowadź nazwy pól dokładnie tak jak pokazano w tabeli do szablonu urządzenia. Jeśli nazwy pól są niezgodne nazwy właściwości w odpowiednim kodzie urządzenia, stan, nie można wyświetlić w aplikacji.
 
@@ -67,7 +67,7 @@ Dodaj następujące zdarzenie w **pomiarów** strony:
 | Przegrzaniu  | przegrzeje się    | Błąd    |
 
 > [!NOTE]
-  Typ danych miary zdarzeń jest ciągiem.
+>   Typ danych miary zdarzeń jest ciągiem.
 
 ### <a name="device-properties"></a>Właściwości urządzenia
 
@@ -279,5 +279,5 @@ Operator w aplikacji usługi Azure IoT Central rzeczywistego urządzenia możesz
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy wiesz jak połączyć ogólnego klienta Node.js z aplikacji usługi Azure IoT Central, Oto zalecane kolejne kroki:
-* [Przygotowanie i Połącz z urządzeniem Raspberry Pi](howto-connect-raspberry-pi-python.md)
+* [Przygotowywanie i łączenie urządzenia Raspberry Pi](howto-connect-raspberry-pi-python.md)
 <!-- Next how-tos in the sequence -->

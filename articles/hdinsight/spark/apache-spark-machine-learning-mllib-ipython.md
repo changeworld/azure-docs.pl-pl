@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: b5d1908201de803ae065403600fc3478e604eedd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: bf29fd8d9b707636fb5965669ad800517a6cf58f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959106"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075565"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Biblioteka MLlib platformy Spark Apache umożliwia tworzenie aplikacji uczenia maszynowego i analizować zestaw danych
 
@@ -200,16 +200,16 @@ Zacznijmy od wolumenu zawiera zestaw danych.
 
     Przewidywanie wyników inspekcji żywności, konieczne jest opracowanie modelu, w oparciu o naruszenia. Ponieważ regresji logistycznej jest metoda klasyfikacji binarnej, warto grupować dane wynikowe w dwie kategorie: **Niepowodzenie** i **przekazać**:
 
-    - Powodzenie
-        - Powodzenie
-        - Przekaż z warunkami
-    - Niepowodzenie
-        - Niepowodzenie
-    - Odrzuć
-        - Firmy, które nie znajdują się
-        - Działalność
+   - Powodzenie
+       - Powodzenie
+       - Przekaż z warunkami
+   - Niepowodzenie
+       - Niepowodzenie
+   - Odrzuć
+       - Firmy, które nie znajdują się
+       - Działalność
 
-    Dane z innych wyników ("Nie znajduje się biznesowe" lub "Out of Business") nie są przydatne i stanowią bardzo małego procentu wyniki mimo to.
+     Dane z innych wyników ("Nie znajduje się biznesowe" lub "Out of Business") nie są przydatne i stanowią bardzo małego procentu wyniki mimo to.
 
 4. Uruchom poniższy kod, który można przekonwertować istniejących dataframe (`df`) do nowych elementów dataframe, gdzie każdej kontroli jest reprezentowany jako pary naruszenia etykiety. W tym przypadku etykiety `0.0` reprezentuje awarię etykiety `1.0` reprezentuje sukcesu i etykiety `-1.0` reprezentuje niektórych wyników, oprócz tych dwóch. 
 

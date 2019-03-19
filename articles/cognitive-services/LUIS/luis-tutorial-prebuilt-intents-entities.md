@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: cf16f27a8d39871491b7cf46a509b9714a669667
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873818"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086619"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Samouczek: identyfikowanie typowych intencji i jednostek
 
@@ -55,13 +55,13 @@ Usługa LUIS zapewnia kilka wstępnie utworzonych intencji, których celem jest 
 
 1. Wybierz następujące intencje i wybierz opcję **Done** (Gotowe): 
 
-    * Utilities.Cancel
-    * Utilities.Confirm
-    * Utilities.Help
-    * Utilities.StartOver
-    * Utilities.Stop
+   * Utilities.Cancel
+   * Utilities.Confirm
+   * Utilities.Help
+   * Utilities.StartOver
+   * Utilities.Stop
 
-    Te intencje są przydatne do określenia miejsca w konwersacji, w jakim znajduje się użytkownik, oraz jakie jest ich przeznaczenie. 
+     Te intencje są przydatne do określenia miejsca w konwersacji, w jakim znajduje się użytkownik, oraz jakie jest ich przeznaczenie. 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Dodawanie wstępnie utworzonych jednostek ułatwiających wyodrębnianie wspólnych typów danych
@@ -74,12 +74,12 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 1. Wybierz następujące pozycje z listy wstępnie utworzonych jednostek, a następnie wybierz pozycję **Done** (Gotowe).
 
-    * **[PersonName](luis-reference-prebuilt-person.md)** 
-    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
+   * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-    ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
+     ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-    Te jednostki ułatwią dodawanie funkcji rozpoznawania nazwy i miejsca do aplikacji klienckiej.
+     Te jednostki ułatwią dodawanie funkcji rozpoznawania nazwy i miejsca do aplikacji klienckiej.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None 
 
@@ -170,7 +170,7 @@ Dowiedz się więcej o pracy z aplikacją usługi LUIS:
 * [Jak opublikować](luis-how-to-publish-app.md)
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dodając wstępnie utworzone intencje i jednostki, aplikacja kliencka może określić typowe intencje użytkowników i wyodrębnić wspólne typy danych.  
 

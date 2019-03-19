@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d963cdd484727ac46aed1915643dd92462e2c643
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857819"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101469"
 ---
 # <a name="create-reviews-from-the-api-console"></a>Utwórz przeglądy z poziomu konsoli interfejsu API
 
@@ -33,35 +33,35 @@ Będą mogli ją testować interfejs API za pomocą konsoli usługi online, koni
 
 Najprostszym sposobem na dostęp do konsoli testowania pochodzi z **poświadczenia** okna.
 
-1.  W **poświadczenia** wybierz [dokumentacja interfejsu API przeglądu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+1. W **poświadczenia** wybierz [dokumentacja interfejsu API przeglądu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
-  **Przejrzyj — tworzenie** zostanie otwarta strona.
+   **Przejrzyj — tworzenie** zostanie otwarta strona.
 
-2.  Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.
+2. Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.
 
-  ![Przejrzyj — Tworzenie strony pole region](images/test-drive-region.png)
+   ![Przejrzyj — Tworzenie strony pole region](images/test-drive-region.png)
 
-  **Przejrzyj — tworzenie** zostanie otwarta konsola interfejsu API.
+   **Przejrzyj — tworzenie** zostanie otwarta konsola interfejsu API.
   
-3.  Wprowadź wartości parametrów zapytania wymagany, typ zawartości i klucz subskrypcji. W **treść żądania** Określ zawartości (na przykład obraz lokalizacji), metadane i inne informacje związane z zawartością.
+3. Wprowadź wartości parametrów zapytania wymagany, typ zawartości i klucz subskrypcji. W **treść żądania** Określ zawartości (na przykład obraz lokalizacji), metadane i inne informacje związane z zawartością.
 
-  ![Przejrzyj — tworzenie parametry zapytania konsoli, nagłówki i okno treści żądania](images/test-drive-review-1.PNG)
+   ![Przejrzyj — tworzenie parametry zapytania konsoli, nagłówki i okno treści żądania](images/test-drive-review-1.PNG)
   
-4.  Wybierz pozycję **Wyślij**. Zostanie utworzony identyfikator przeglądu. Skopiuj ten identyfikator do użycia w kolejnych krokach.
+4. Wybierz pozycję **Wyślij**. Zostanie utworzony identyfikator przeglądu. Skopiuj ten identyfikator do użycia w kolejnych krokach.
 
-  ![Przejrzyj — Tworzenie konsoli zawartości, że pole zawiera identyfikator przeglądu odpowiedzi](images/test-drive-review-2.PNG)
+   ![Przejrzyj — Tworzenie konsoli zawartości, że pole zawiera identyfikator przeglądu odpowiedzi](images/test-drive-review-2.PNG)
   
-5.  Wybierz **uzyskać**, a następnie otwórz interfejs API, wybierając przycisk, który odpowiada Twoim regionie. Na stronie wynikowy wprowadź wartości dla **teamName**, **ReviewID**, i **klucz subskrypcji**. Wybierz **wysyłania** przycisk na stronie. 
+5. Wybierz **uzyskać**, a następnie otwórz interfejs API, wybierając przycisk, który odpowiada Twoim regionie. Na stronie wynikowy wprowadź wartości dla **teamName**, **ReviewID**, i **klucz subskrypcji**. Wybierz **wysyłania** przycisk na stronie. 
 
-  ![Przejrzyj — Tworzenie konsoli wyniki Get](images/test-drive-review-3.PNG)
+   ![Przejrzyj — Tworzenie konsoli wyniki Get](images/test-drive-review-3.PNG)
   
-6.  Zobaczysz wyniki skanowania.
+6. Zobaczysz wyniki skanowania.
 
-  ![Przejrzyj — Tworzenie pola zawartości odpowiedzi konsoli](images/test-drive-review-4.PNG)
+   ![Przejrzyj — Tworzenie pola zawartości odpowiedzi konsoli](images/test-drive-review-4.PNG)
   
-7.  Na pulpicie nawigacyjnym Content Moderator wybierz **przeglądu** > **obraz**. Pojawia się obraz, który skanowany, gotowe do przeglądu przez ludzi.
+7. Na pulpicie nawigacyjnym Content Moderator wybierz **przeglądu** > **obraz**. Pojawia się obraz, który skanowany, gotowe do przeglądu przez ludzi.
 
-  ![Obraz narzędzie do przeglądu piłka nożna](images/test-drive-review-5.PNG)
+   ![Obraz narzędzie do przeglądu piłka nożna](images/test-drive-review-5.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

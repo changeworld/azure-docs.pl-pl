@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 13ec97a8356bb24fbbc2098f1249ae8fa5b6e3ce
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877097"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905158"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
 
@@ -216,17 +216,16 @@ Istnieją dwa zestawy właściwości, które kontrolują dopełnienie, właściw
 + **UpperPad** i **LowerPad**: (opcjonalnie) Podaj większą kontrolę nad wielkość uzupełnienia do użycia. **Ważne:** Te atrybuty mogą być zdefiniowane wtedy i tylko wtedy, gdy **dopełnienie** powyższej właściwości jest ***nie*** zdefiniowane. Wartość musi być wartości całkowite krotki o długości, które są liczby argumentów pakietu. Jeśli te atrybuty są określone, "fikcyjny" węzłów są dodawane do dolnym i górnym numerem zakończenia każdego wymiaru warstwy danych wejściowych. Liczba węzłów dodanych do punktów końcowych dolnym i górnym numerem w każdym wymiarze jest określana przez **LowerPad**[i] i **UpperPad**[i] odpowiednio.
 
     Aby upewnić się, że jądra odpowiadają tylko dla węzłów "członu real", a nie węzłów "fikcyjny", muszą być spełnione następujące warunki:
-      - Każdy składnik **LowerPad** musi być mniejsza niż `KernelShape[d]/2`.
-      - Każdy składnik **UpperPad** musi być większa niż `KernelShape[d]/2`.
-      - Wartość domyślna z tych atrybutów jest krotki ze wszystkimi składnikami równa 0.
+  - Każdy składnik **LowerPad** musi być mniejsza niż `KernelShape[d]/2`.
+  - Każdy składnik **UpperPad** musi być większa niż `KernelShape[d]/2`.
+  - Wartość domyślna z tych atrybutów jest krotki ze wszystkimi składnikami równa 0.
 
     Ustawienie **dopełnienie** = true zezwala na tyle dopełnienie potrzeb jest zapewnienie "Centrum" jądra wewnątrz "prawdziwy" danych wejściowych. Spowoduje to zmianę matematyczne nieco dotyczących przeprowadzania obliczeń rozmiar danych wyjściowych. Ogólnie rzecz biorąc, rozmiar danych wyjściowych *D* jest obliczana jako `D = (I - K) / S + 1`, gdzie `I` jest rozmiar wejściowy `K` jądra, ma rozmiar `S` jest stride, i `/` jest dzielenie liczby całkowitej (zaokrąglony w kierunku zera ). Jeśli ustawisz UpperPad = [1, 1], rozmiar danych wejściowych `I` jest faktycznie 29 i w związku z tym `D = (29 - 5) / 2 + 1 = 13`. Jednak, gdy **dopełnienie** = true, zasadniczo `I` pobiera zaktualizowany w przez `K - 1`; dlatego `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Określając wartości dla **UpperPad** i **LowerPad** uzyskać większą kontrolę nad uzupełnienie niż w przypadku po prostu **dopełnienie** = true.
 
 Aby uzyskać więcej informacji na temat splotowych sieci i aplikacji zobacz następujące artykuły:
 
 + [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
-+ [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)
++ [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>Buforowanie pakietów
 
@@ -252,13 +251,13 @@ hidden P1 [5, 12, 12]
 
 Aby uzyskać więcej informacji na temat warstwy buforowania zobacz następujące artykuły:
 
-+ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (Sekcji 3.4)
-+ [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
-+ [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (Sekcji 3.4)
++ [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
++ [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>Pakiety normalizacji odpowiedzi
 
-**Normalizacja odpowiedzi** jest systemem normalizacji lokalnej, która została wprowadzona przez Geoffrey Hinton i inni w dokumencie [Klasyfikacja sieci ImageNet przy użyciu Splotowych sieci neuronowych głębokiego](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
+**Normalizacja odpowiedzi** jest systemem normalizacji lokalnej, która została wprowadzona przez Geoffrey Hinton i inni w dokumencie [Klasyfikacja sieci ImageNet przy użyciu Splotowych sieci neuronowych głębokiego](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
 Odpowiedź normalizacji jest używana do pomocy Generalizacja w sieci neuronowych. Gdy jeden neuronu jest uruchamiana na poziomie aktywacji bardzo duże, warstwy normalizacji lokalnego odpowiedzi pomija poziom aktywacji otaczające grupy neuronów. Jest to wykonywane przy użyciu trzech parametrów (`α`, `β`, i `k`) i splotowe struktury (lub kształtu otoczenia). Każdy neuronu warstwy docelowej **y** odpowiada neuronu **x** z warstwy źródłowej. Poziom aktywacji **y** znajduje się za pomocą następującego wzoru gdzie `f` jest poziom aktywacji neuronu, i `Nx` jądro (lub zestaw, który zawiera grupy neuronów w otoczeniu z **x**), zgodnie z następującą strukturę splotowe:
 
@@ -463,4 +462,4 @@ output Digit [10] from Hid3 all;
 
 ## <a name="acknowledgements"></a>Potwierdzenia
 
-Język Net # dostosowywania architektury sieci neuronowych został opracowany w firmie Microsoft przez Shon Katzenberger (Architekt, uczenie maszynowe) i Alexey Kamenev (inżynier oprogramowania, Microsoft Research). Jest ona używana wewnętrznie do uczenia maszynowego projektów i aplikacje, począwszy od wykrywania obrazu do analizy tekstu. Aby uzyskać więcej informacji, zobacz [neuronowe w usłudze Azure Machine Learning studio — wprowadzenie do Net #](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)
+Język Net # dostosowywania architektury sieci neuronowych został opracowany w firmie Microsoft przez Shon Katzenberger (Architekt, uczenie maszynowe) i Alexey Kamenev (inżynier oprogramowania, Microsoft Research). Jest ona używana wewnętrznie do uczenia maszynowego projektów i aplikacje, począwszy od wykrywania obrazu do analizy tekstu. Aby uzyskać więcej informacji, zobacz [neuronowe w usłudze Azure Machine Learning studio — wprowadzenie do Net #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

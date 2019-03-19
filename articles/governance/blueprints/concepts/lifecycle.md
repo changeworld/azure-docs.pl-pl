@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c1e596516136240b1d1d08b4e8386e9cf5ef48e5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 71a5233c6d5af21d7bc5430cda14e156e16d5cd4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819126"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001577"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Informacje o cyklu życia planu platformy Azure
 
@@ -68,7 +68,7 @@ Każda wersja planu jest obiektem unikatowy i może być indywidualnie **opublik
 > [!NOTE]
 > Nie jest możliwe usuwanie planu, który ma aktywne przypisania. Najpierw usuń przypisania, a następnie usuń wersję, którą chcesz usunąć.
 
-1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz **planu definicje** ze strony po lewej i użyj opcji filtru, można zlokalizować planu, aby usunąć wersję. Kliknij go, aby otworzyć stronę edycji.
 
@@ -103,8 +103,8 @@ Aby dowiedzieć się więcej, zobacz temat [zaktualizować istniejące przypisan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md)
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md)
-- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md)
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md)
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)
+- Opis sposobu użycia [statycznych i dynamicznych parametrów](parameters.md).
+- Dowiedz się, jak dostosować [planu sekwencjonowania](sequencing-order.md).
+- Dowiedz się, jak używać [planu blokowania zasobów](resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów z](../troubleshoot/general.md).

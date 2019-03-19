@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc60f3ac785bede0f3a2e4d83cc98980b46868e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 15e77767e16ce6ae02c6f1f93891d5acf4bfcb6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167069"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119602"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Szybki start: Rejestrowanie aplikacji z punktem końcowym usługi Azure Active Directory w wersji 1.0
 
@@ -52,16 +52,16 @@ Aby rozpocząć pracę, upewnij się, że masz dzierżawę usługi Azure AD, kt�
 
 1. Po pojawieniu się strony **Utwórz** wprowadź informacje dotyczące rejestracji aplikacji: 
 
-    - **Nazwa:** wprowadź opisową nazwę aplikacji
-    - **Typ aplikacji:**
-      - Wybierz opcję **Natywna** dla [aplikacji klienckich ](developer-glossary.md#client-application), które są zainstalowane lokalnie na urządzeniu. To ustawienie jest używane w przypadku [klientów natywnych](developer-glossary.md#native-client) publicznego protokołu OAuth.
-      - Wybierz pozycję **Aplikacja internetowa/interfejs API** dla [aplikacji klienckich](developer-glossary.md#client-application) i [aplikacji zasobów/interfejsu API](developer-glossary.md#resource-server), które są instalowane na zabezpieczonym serwerze. To ustawienie jest używane w przypadku poufnych [klientów internetowych](developer-glossary.md#web-client) protokołu OAuth i publicznych [klientów opartych na użytkowniku-agencie](developer-glossary.md#user-agent-based-client). Ta sama aplikacja może ujawniać zarówno klienta, jak i interfejs API lub zasób.
-    - **Adres URL logowania:** w przypadku aplikacji typu „Aplikacja internetowa/interfejs API” podaj podstawowy adres URL aplikacji. Na przykład ciąg `http://localhost:31544` może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą użyć tego adresu URL, aby zalogować się do aplikacji klienta internetowego. 
-    - **Identyfikator URI przekierowania:** w przypadku aplikacji typu „Natywna” podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla Twojej aplikacji, na przykład `http://MyFirstAADApp`
+   - **Nazwa:** wprowadź opisową nazwę aplikacji
+   - **Typ aplikacji:**
+     - Wybierz opcję **Natywna** dla [aplikacji klienckich ](developer-glossary.md#client-application), które są zainstalowane lokalnie na urządzeniu. To ustawienie jest używane w przypadku [klientów natywnych](developer-glossary.md#native-client) publicznego protokołu OAuth.
+     - Wybierz pozycję **Aplikacja internetowa/interfejs API** dla [aplikacji klienckich](developer-glossary.md#client-application) i [aplikacji zasobów/interfejsu API](developer-glossary.md#resource-server), które są instalowane na zabezpieczonym serwerze. To ustawienie jest używane w przypadku poufnych [klientów internetowych](developer-glossary.md#web-client) protokołu OAuth i publicznych [klientów opartych na użytkowniku-agencie](developer-glossary.md#user-agent-based-client). Ta sama aplikacja może ujawniać zarówno klienta, jak i interfejs API lub zasób.
+   - **Adres URL logowania:** w przypadku aplikacji typu „Aplikacja internetowa/interfejs API” podaj podstawowy adres URL aplikacji. Na przykład ciąg `http://localhost:31544` może być adresem URL aplikacji internetowej uruchomionej na komputerze lokalnym. Użytkownicy mogą użyć tego adresu URL, aby zalogować się do aplikacji klienta internetowego. 
+   - **Identyfikator URI przekierowania:** w przypadku aplikacji typu „Natywna” podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla Twojej aplikacji, na przykład `http://MyFirstAADApp`
 
-      ![Rejestrowanie nowej aplikacji — tworzenie](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
+     ![Rejestrowanie nowej aplikacji — tworzenie](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 
-    Jeśli chcesz poznać konkretne przykłady dotyczące aplikacji internetowych lub aplikacji natywnych, zapoznaj się z przewodnikami **Szybki start** w naszej dokumentacji.
+     Jeśli chcesz poznać konkretne przykłady dotyczące aplikacji internetowych lub aplikacji natywnych, zapoznaj się z przewodnikami **Szybki start** w naszej dokumentacji.
 
 1. Po zakończeniu wybierz pozycję **Utwórz**.
 
@@ -70,7 +70,7 @@ Aby rozpocząć pracę, upewnij się, że masz dzierżawę usługi Azure AD, kt�
       > [!NOTE]
       > Domyślnie nowo zarejestrowana aplikacja internetowa jest skonfigurowana tak, aby umożliwiać logowanie się do aplikacji **wyłącznie** użytkownikom z tej samej dzierżawy.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [Azure AD consent framework (Platforma wyrażania zgody usługi Azure AD)](consent-framework.md), aby zapoznać się z informacjami na temat wyrażania zgody.
 - Aby włączyć dodatkowe funkcje konfiguracji w rejestracji aplikacji — takie jak poświadczenia, uprawnienia, włączanie logowania dla użytkowników z innych dzierżaw — zobacz [Update an application in Azure AD (Aktualizowanie aplikacji w usłudze Azure AD)](quickstart-v1-update-azure-ad-app.md).

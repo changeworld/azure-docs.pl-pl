@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: df54f9dd4047fffb578a1a95a2edc47cba711ba1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433522"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100432"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 
@@ -28,7 +28,7 @@ Aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy używa modelu danych d
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
+> 
 > * Symulowanie korzystania z baz danych dzierżaw przy użyciu dostarczonego generatora obciążenia
 > * Monitorowanie reakcji baz danych dzierżaw na wzrost obciążenia
 > * Skalowanie w górę elastycznej puli w reakcji na zwiększone obciążenie bazy danych
@@ -171,17 +171,17 @@ Alternatywnym rozwiązaniem w stosunku do skalowania puli w górę jest utworzen
 1. Kliknij przycisk **+ nowa pula** Aby utworzyć pulę na bieżącym serwerze.
 1. Na **puli elastycznej** szablonu:
 
-    1. Ustaw **nazwa** do *Pool2*.
-    1. Pozostaw warstwę cenową **Pula Standardowa**.
-    1. Kliknij przycisk **Konfiguruj pulę**,
-    1. Ustaw **pula — eDTU** do *50 jednostek eDTU*.
-    1. Kliknij przycisk **Dodawanie baz danych** umożliwia wyświetlenie listy baz danych na serwerze, który można dodać do *Pool2*.
-    1. Wybierz wszystkie 10 bazy danych, aby przenieść je do nowej puli, a następnie kliknij przycisk **wybierz**. Jeśli został już uruchomiony generator obciążenia, usługa już wie, że Twój profil wydajności wymaga większą pulę niż domyślny rozmiar 50 jednostek eDTU i zaleca się, rozpoczynając od 100 ustawieniem eDTU.
+   1. Ustaw **nazwa** do *Pool2*.
+   1. Pozostaw warstwę cenową **Pula Standardowa**.
+   1. Kliknij przycisk **Konfiguruj pulę**,
+   1. Ustaw **pula — eDTU** do *50 jednostek eDTU*.
+   1. Kliknij przycisk **Dodawanie baz danych** umożliwia wyświetlenie listy baz danych na serwerze, który można dodać do *Pool2*.
+   1. Wybierz wszystkie 10 bazy danych, aby przenieść je do nowej puli, a następnie kliknij przycisk **wybierz**. Jeśli został już uruchomiony generator obciążenia, usługa już wie, że Twój profil wydajności wymaga większą pulę niż domyślny rozmiar 50 jednostek eDTU i zaleca się, rozpoczynając od 100 ustawieniem eDTU.
 
-    ![zalecenie](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![zalecenie](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
-    1. W tym samouczku pozostaw domyślny odpowiada 50 jednostkom Edtu, a następnie kliknij przycisk **wybierz** ponownie.
-    1. Wybierz **OK** Aby utworzyć nową pulę i przenieść wybranych baz danych do niego.
+   1. W tym samouczku pozostaw domyślny odpowiada 50 jednostkom Edtu, a następnie kliknij przycisk **wybierz** ponownie.
+   1. Wybierz **OK** Aby utworzyć nową pulę i przenieść wybranych baz danych do niego.
 
 Tworzenie puli i przeniesienie baz danych trwa kilka minut. Jako że są one nadal online i jest w pełni dostępna do ostatniej chwili przenoszeniu baz danych, w tym momencie wszystkie otwarte połączenia zostaną zamknięte. Tak długo, jak masz logikę ponawiania, klienci będą następnie łączyć z bazą danych w nowej puli.
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 31a42e316dab3d751fffa3353200c0185c56ee9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 93a77c64e82c39f8f967a3549fafecfae59b194b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997141"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993551"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Użyj wiersza polecenia platformy Azure, aby utworzyć aplikację usługi Azure AD i skonfigurować go do dostępu do interfejsu API usługi Media Services 
 

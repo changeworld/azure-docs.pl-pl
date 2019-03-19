@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 86976263c54f40c370a2bc8cab426f3e413442f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 48afb867a5455ffea10f8a74b1fff2c2b7f361ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849758"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(PRZESTARZAŁE) Za pomocą projektu usługi Azure Container Service i Azure Container Registry do tworzenia i wdrażania aplikacji w rozwiązaniu Kubernetes
 
@@ -31,7 +31,7 @@ Narzędzia Draft można użyć z dowolnym rejestrem obrazów Docker i dowolnym k
 ## <a name="create-an-azure-container-registry"></a>Tworzenie rejestru Azure Container Registry
 Możesz z łatwością [utworzyć nowy rejestr Azure Container Registry](../../container-registry/container-registry-get-started-azure-cli.md), przy czym kroki są następujące:
 
-1. Utwórz grupę zasobów Azure, aby zarządzać rejestrem ACR i klastrem Kubernetes w usłudze ACS.
+1. Utwórz grupę zasobów platformy Azure, aby zarządzać rejestrem ACR i klastrem Kubernetes usługi ACS.
       ```azurecli
       az group create --name draft --location eastus
       ```
@@ -106,11 +106,11 @@ Po utworzeniu klastra można zaimportować poświadczenia za pomocą polecenia [
 1. Pobierz wersję roboczą w danym środowisku, w https://github.com/Azure/draft/releases i zainstalować w ŚCIEŻCE, tak, że polecenia mogą być używane.
 2. Pobierz narzędzia helm dla środowiska w https://github.com/kubernetes/helm/releases i [go zainstalować w ŚCIEŻCE, dzięki czemu można użyć polecenia](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Skonfiguruj narzędzie Draft do korzystania z Twojego rejestru i tworzenia poddomen dla każdego planu Helm, które to narzędzie utworzy. Aby skonfigurować narzędzie Draft, potrzebne są:
-  - nazwa rejestru Azure Container Registry (w tym przykładzie: `draftacsdemo`);
-  - klucz rejestru lub hasło z polecenia `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`;
+   - nazwa rejestru Azure Container Registry (w tym przykładzie: `draftacsdemo`);
+   - klucz rejestru lub hasło z polecenia `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`;
 
-  Wywołaj `draft init` i procesu konfiguracji wyświetli monit o podanie wartości wymienione powyżej; należy pamiętać, że adres URL format adresu URL rejestru jest nazwą rejestru (w tym przykładzie `draftacsdemo`) oraz `.azurecr.io`. Nazwa użytkownika jest nazwą rejestru samodzielnie. Gdy proces uruchomisz po raz pierwszy, będzie on wyglądać podobnie do następującego.
- ```bash
+   Wywołaj `draft init` i procesu konfiguracji wyświetli monit o podanie wartości wymienione powyżej; należy pamiętać, że adres URL format adresu URL rejestru jest nazwą rejestru (w tym przykładzie `draftacsdemo`) oraz `.azurecr.io`. Nazwa użytkownika jest nazwą rejestru samodzielnie. Gdy proces uruchomisz po raz pierwszy, będzie on wyglądać podobnie do następującego.
+   ```bash
     $ draft init
     Creating /home/ralph/.draft 
     Creating /home/ralph/.draft/plugins 
@@ -132,7 +132,7 @@ Po utworzeniu klastra można zaimportować poświadczenia za pomocą polecenia [
     3. Enter your password: 
     Draft has been installed into your Kubernetes Cluster.
     Happy Sailing!
-```
+   ```
 
 Teraz możesz wdrożyć aplikację.
 
@@ -224,7 +224,7 @@ Twój dostawca domeny ma swój własny sposób przypisywania serwerów DNS. Aby 
     ```
 
 2. Utwórz strefę DNS dla swojej domeny.
-Użyj polecenia [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create), aby uzyskać serwery nazw w celu delegowania kontroli DNS do usługi Azure DNS dla Twojej domeny.
+   Użyj polecenia [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create), aby uzyskać serwery nazw w celu delegowania kontroli DNS do usługi Azure DNS dla Twojej domeny.
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {
@@ -247,12 +247,12 @@ Użyj polecenia [az network dns zone create](/cli/azure/network/dns/zone#az-netw
     ```
 3. Dodaj uzyskane serwery DNS do dostawcy domeny dla Twojej domeny wdrażania, co pozwoli używać usługi Azure DNS do dowolnego zmieniania sposobu wskazywania Twojej domeny. Można to zrobić zależy od typu domeny podać; [delegować serwery nazw Twojej domeny w celu usługi Azure DNS](../../dns/dns-delegate-domain-azure-dns.md) zawiera niektóre szczegółowe informacje, które należy znać. 
 4. Po delegowania domeny do usługi Azure DNS, Utwórz wpis zestawu rekordów A dla mapowania swojej domeny wdrażania, aby `ingress` adres IP z kroku 2 w poprzedniej sekcji.
-  ```azurecli
-  az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
-  ```
-Dane wyjściowe wyglądają podobnie do tych:
-  ```json
-  {
+   ```azurecli
+   az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
+   ```
+   Dane wyjściowe wyglądają podobnie do tych:
+   ```json
+   {
     "arecords": [
       {
         "ipv4Address": "13.64.108.240"
@@ -265,23 +265,23 @@ Dane wyjściowe wyglądają podobnie do tych:
     "resourceGroup": "squillace.io",
     "ttl": 3600,
     "type": "Microsoft.Network/dnszones/A"
-  }
-  ```
+   }
+   ```
 5. Zainstaluj ponownie **wersję roboczą**
 
    1. Usuń **draftd** z klastra, wpisując `helm delete --purge draft`. 
    2. Zainstaluj ponownie **projekt** , korzystając z tych samych `draft-init` polecenia, ale z `--ingress-enabled` opcji:
-    ```bash
-    draft init --ingress-enabled
-    ```
-   Odpowiedz na monity, tak jak po raz pierwszy, powyżej. Jednak mieć jedno pytanie więcej odpowiedzi, przy użyciu ścieżki kompletna domena, który został skonfigurowany za pomocą usługi Azure DNS.
+      ```bash
+      draft init --ingress-enabled
+      ```
+      Odpowiedz na monity, tak jak po raz pierwszy, powyżej. Jednak mieć jedno pytanie więcej odpowiedzi, przy użyciu ścieżki kompletna domena, który został skonfigurowany za pomocą usługi Azure DNS.
 
 6. Wprowadź domenę najwyższego poziomu dla danych przychodzących (np. draft.example.com): draft.squillace.io
 7. Gdy wywołujesz `draft up` ten czas można wyświetlić aplikację (lub `curl` go) pod adresem URL w postaci `<appname>.draft.<domain>.<top-level-domain>`. W tym przykładzie `http://handy-labradoodle.draft.squillace.io`. 
-```bash
-curl -s http://handy-labradoodle.draft.squillace.io
-Hello World, I'm Java!
-```
+   ```bash
+   curl -s http://handy-labradoodle.draft.squillace.io
+   Hello World, I'm Java!
+   ```
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: e0f4506afee134f2f6453ea1b1298925ff00084c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004609"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189788"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Samouczki zaawansowane Media Encoder Premium Workflow
 ## <a name="overview"></a>Przegląd
@@ -297,7 +297,7 @@ Do dynamicznego tworzenia pakietów do pracy w połączeniu z plików MP4 (i tyl
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-    <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+    <smil xmlns="https://www.w3.org/2001/SMIL20/Language">
       <head>
         <meta name="formats" content="mp4" />
       </head>
@@ -947,7 +947,7 @@ Za pomocą poniżej klauzuli proste guard, firma Microsoft Sprawdź, czy wymagan
 
 [Formaty i kodeki usługi Media Encoder Premium Workflow](media-services-premium-workflow-encoder-formats.md)
 
-[Przykładowe pliki przepływu pracy](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
+[Przykładowe pliki przepływu pracy](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
 [Narzędzie Azure Media Services Explorer](https://aka.ms/amse)
 

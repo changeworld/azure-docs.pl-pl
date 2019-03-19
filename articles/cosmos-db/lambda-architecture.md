@@ -6,12 +6,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3c59b96146928a066c70113cb3fb1cd1915d9c8b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6902b1a26d02efbf1a31fe9a3a25253a6b5a5604
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034016"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100347"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Usługa Azure Cosmos DB Implementowanie architektury lambda na platformie Azure 
 
@@ -258,14 +258,14 @@ W tym projekcie musisz tylko dwa zarządzane usługi Azure Cosmos DB i HDInsight
 
 ### <a name="resources"></a>Zasoby
 
- * **Nowe dane**: [Strumienia źródła danych z serwisu Twitter do usługi CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed), który jest mechanizm do wypychania nowych danych do usługi Azure Cosmos DB.
- * **Warstwa usługi Batch:** Warstwa wsadowa składa się z *główny zestaw danych* (niezmienne, tylko do dołączania zestawu danych pierwotnych) oraz możliwość wstępnie obliczeń wsadowych widoków danych, które są przekazywane do **warstwę obsługi**.
-    * **Rearchitected architektury Lambda - warstwa wsadowa** notesu [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) zapytania *główny zestaw danych* zestaw widoków usługi batch.
- * **Warstwa obsługi:** **Warstwę obsługi** składa się z wstępnie obliczone dane w widokach partii (na przykład agregacji, fragmentatory określonych itp.) dla zapytań.
-    * **Rearchitected architektury Lambda - usługi Batch do warstwy obsługująca** notesu [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) wypycha dane wsadowe warstwę obsługi; oznacza to, że platforma Spark zapytania kolekcję usługi batch tweetów, przetwarza je i zapisuje go do innej kolekcji (obliczanej usługi batch).
-* **Warstwa szybka:** **Warstwa szybka** składa się z platformy Spark przy użyciu zmian usługi Azure Cosmos DB, źródła danych do odczytu i zajmującym się natychmiast. Można również zapisać dane *obliczane RT* tak, aby inne systemy mogą wysyłać zapytania przetworzone dane w czasie rzeczywistym w przeciwieństwie do uruchamiania w czasie rzeczywistym zapytania samodzielnie.
-    * [Przesyłanie strumieniowe zapytania z Cosmos DB Zmień źródło danych](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) scala skrypt wykonuje zapytanie przesyłania strumieniowego ze źródła danych do obliczenia liczby interwał, z poziomu powłoki spark zmiany usługi Azure Cosmos DB.
-    * [Przesyłania strumieniowego kwerendę tagów, Cosmos DB Zmień źródło danych](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) scala skrypt wykonuje zapytanie przesyłania strumieniowego ze źródła danych, aby obliczyć interwał liczba tagów z poziomu powłoki spark zmiany usługi Azure Cosmos DB.
+* **Nowe dane**: [Strumienia źródła danych z serwisu Twitter do usługi CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed), który jest mechanizm do wypychania nowych danych do usługi Azure Cosmos DB.
+* **Warstwa usługi Batch:** Warstwa wsadowa składa się z *główny zestaw danych* (niezmienne, tylko do dołączania zestawu danych pierwotnych) oraz możliwość wstępnie obliczeń wsadowych widoków danych, które są przekazywane do **warstwę obsługi**.
+   * **Rearchitected architektury Lambda - warstwa wsadowa** notesu [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) zapytania *główny zestaw danych* zestaw widoków usługi batch.
+* **Warstwa obsługi:** **Warstwę obsługi** składa się z wstępnie obliczone dane w widokach partii (na przykład agregacji, fragmentatory określonych itp.) dla zapytań.
+  * **Rearchitected architektury Lambda - usługi Batch do warstwy obsługująca** notesu [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) wypycha dane wsadowe warstwę obsługi; oznacza to, że platforma Spark zapytania kolekcję usługi batch tweetów, przetwarza je i zapisuje go do innej kolekcji (obliczanej usługi batch).
+    * **Warstwa szybka:** **Warstwa szybka** składa się z platformy Spark przy użyciu zmian usługi Azure Cosmos DB, źródła danych do odczytu i zajmującym się natychmiast. Można również zapisać dane *obliczane RT* tak, aby inne systemy mogą wysyłać zapytania przetworzone dane w czasie rzeczywistym w przeciwieństwie do uruchamiania w czasie rzeczywistym zapytania samodzielnie.
+  * [Przesyłanie strumieniowe zapytania z Cosmos DB Zmień źródło danych](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) scala skrypt wykonuje zapytanie przesyłania strumieniowego ze źródła danych do obliczenia liczby interwał, z poziomu powłoki spark zmiany usługi Azure Cosmos DB.
+  * [Przesyłania strumieniowego kwerendę tagów, Cosmos DB Zmień źródło danych](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) scala skrypt wykonuje zapytanie przesyłania strumieniowego ze źródła danych, aby obliczyć interwał liczba tagów z poziomu powłoki spark zmiany usługi Azure Cosmos DB.
   
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli jeszcze nie, Pobierz platformy Spark do łącznika usługi Azure Cosmos DB z [azure cosmosdb spark](https://github.com/Azure/azure-cosmosdb-spark) repozytorium GitHub i dodatkowe zasoby w repozytorium:

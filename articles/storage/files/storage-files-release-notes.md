@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 3/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: f2f109b6861e54cc613fd06f26983897f7c1a9bb
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727131"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118616"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji agenta usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -55,7 +55,7 @@ Poniższe informacje o wersji dotyczą wersji 5.0.2.0 agenta usługi Azure File 
 ### <a name="improvements-and-issues-that-are-fixed"></a>Ulepszenia i problemy, które zostały usunięte
 
 - Obsługa chmury Azure Government
-    - Dodaliśmy obsługę wersji zapoznawczej w chmurze Azure dla instytucji rządowych. Wymaga to subskrypcji wymienione biały i pobieraniu specjalne agenta od firmy Microsoft. Aby uzyskać dostęp do wersji zapoznawczej, Wyślij wiadomość e-mail bezpośrednio do nas [ AzureFiles@microsoft.com ](mailto:AzureFiles@microsoft.com).
+  - Dodaliśmy obsługę wersji zapoznawczej w chmurze Azure dla instytucji rządowych. Wymaga to subskrypcji wymienione biały i pobieraniu specjalne agenta od firmy Microsoft. Aby uzyskać dostęp do wersji zapoznawczej, Wyślij wiadomość e-mail bezpośrednio do nas [ AzureFiles@microsoft.com ](mailto:AzureFiles@microsoft.com).
 - Obsługa deduplikacji danych
     - Funkcja deduplikacji danych teraz jest w pełni obsługiwany przy użyciu obsługi warstw włączone w systemie Windows Server 2016 i Windows Server 2019 w chmurze. Włączanie deduplikacji na woluminie z obsługi warstw włączone w chmurze pozwala bez inicjowania obsługi administracyjnej więcej miejsca w pamięci podręcznej więcej plików lokalnych.
 - Obsługa transferu danych w trybie offline (np. za pomocą urządzenia Data Box)

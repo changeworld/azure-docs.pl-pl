@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce4ad48a81d5f3b3b8574237b8d8685ad9b141ec
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852974"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Program Azure AD Connect: Uaktualnianie przy użyciu narzędzia DirSync
 Program Azure AD Connect zastępuje narzędzie DirSync. W tym temacie opisano sposoby uaktualniania z narzędzia DirSync. Czynności te nie zadziałają w przypadku aktualizowania z innej wersji programu Azure AD Connect lub z narzędzia Azure AD Sync.
@@ -41,7 +41,7 @@ Jeśli nie przeprowadzasz uaktualnienia z narzędzia DirSync, zobacz powiązanej
 Istnieją różne opcje uaktualniania, w zależności od istniejącego wdrożenia narzędzia DirSync. Jeśli szacowany czas uaktualniania wynosi mniej niż trzy godziny, zalecane jest przeprowadzenie uaktualnienia w miejscu. Jeśli szacowany czas uaktualniania wynosi ponad trzy godziny, zalecane jest przeprowadzenie wdrożenia równoległego na innym serwerze. Szacuje się, że uaktualnienie trwa więcej niż trzy godziny, jeśli masz ponad 50 000 obiektów.
 
 | Scenariusz |
-| --- | --- |
+| --- |
 | [Uaktualnienie w miejscu](#in-place-upgrade) |
 | [Wdrożenie równoległe](#parallel-deployment) |
 

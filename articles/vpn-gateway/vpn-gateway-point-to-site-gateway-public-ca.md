@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: d4f75a7bc552a7764a46865bf300b8fc5ffb350e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750790"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848936"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Przejście do certyfikatu bramy publicznego urzędu certyfikacji dla połączenia punkt-lokacja
 
@@ -20,7 +20,6 @@ Usługa Azure VPN Gateway nie jest już wystawia certyfikaty z podpisem własnym
 
 >[!NOTE]
 > * Certyfikaty z podpisem własnym używany do uwierzytelniania klientów P2S nie ma wpływu ta zmiana certyfikatu poziomie platformy Azure. Można nadal wystawiania i używać certyfikatów z podpisem własnym jako normalny.
-> * Ta zmiana nie dotyczy aplikacji sieci Web.
 >
 
 Certyfikaty, w tym kontekście są dodatkowy certyfikat poziomie platformy Azure. Nie są one łańcuchów certyfikatów, używane podczas generowania własnych certyfikatów głównych z podpisem własnym i certyfikatów klienta do uwierzytelniania. Te certyfikaty pozostaną niezmienione i wygaśnie w dniu dat wygenerowany ich nie skonfigurują.
@@ -39,7 +38,7 @@ Ta zmiana dotyczy tylko starsze bramy. Jeśli certyfikatu bramy musi miesięczne
 >
 > **Wszystkie pozostałe bramy zostanie zastąpiona 2019 12 marca, zaczynając od 18:00 UTC**.
 >
-> Proces przejścia bramy potrwa do 2 godzin. Klienci będą otrzymywać wiadomości e-mail podczas ich bramy kończy proces przejścia.
+> Klienci będą otrzymywać wiadomości e-mail podczas ich bramy kończy proces przejścia.
 > 
 
 ## <a name="1-verify-your-certificate"></a>1. Zweryfikuj swój certyfikat
@@ -51,8 +50,8 @@ Ta zmiana dotyczy tylko starsze bramy. Jeśli certyfikatu bramy musi miesięczne
 2. Otwórz lub Wyodrębnij plik zip i przejdź do folderu "Generic". W folderze ogólnym zobaczysz dwa pliki, z których jedna jest *VPNSettings.xml*.
 3. Otwórz *VPNSettings.xml* w dowolnym Podgląd i edytorem xml. W pliku xml Wyszukaj następujące pola:
 
-  * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
-  * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
+   * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
+   * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
 4. Jeśli *ServerCertRotCn* i *ServerCertIssuerCn* są "DigiCert globalnego głównego urzędu certyfikacji", użytkownik nie ma wpływu tej aktualizacji i nie ma potrzeby wykonaj kroki opisane w tym artykule. Jeśli jednak pokazują coś innego certyfikatu bramy jest częścią aktualizacji i zostanie przeniesiona.
 
 ### <a name="classic"></a>Wdrożenie klasyczne

@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fea950e2c13d9b5ce0c3619990961e611edd6626
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 78dc759632c4fc3116a59ea1e5bc0b93200bca45
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207381"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168191"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Jak można negować jednostek za pomocą modelu uczeń konwersacji
 
@@ -26,7 +26,7 @@ Ten samouczek przedstawia "Negatable" właściwość jednostki.
 [![Samouczek można negować jednostki (wersja zapoznawcza)](https://aka.ms/cl_Tutorial_v3_NegatableEntities_Preview)](https://aka.ms/cl_Tutorial_v3_NegatableEntities)
 
 ## <a name="requirements"></a>Wymagania
-Ten samouczek wymaga działa ogólne bot samouczek
+Ten samouczek wymaga, że ogólne samouczek Bot działa
 
     npm run tutorial-general
 
@@ -35,65 +35,64 @@ Właściwość "Negatable" jednostki umożliwia etykiety obu normalny (pozytywna
 
 ## <a name="steps"></a>Kroki
 
+Rozpocznij na stronie głównej w Interfejsie użytkownika sieci Web.
+
 ### <a name="create-the-model"></a>Tworzenie modelu
 
-1. W Interfejsie użytkownika sieci Web kliknij przycisk "Nowy Model".
-2. W polu "Nazwa" wpisz "NegatableEntity" i naciśnij klawisz enter.
-3. Kliknij przycisk "Utwórz".
+1. Wybierz **nowy Model**.
+2. Wprowadź **NegatableEntity** dla **nazwa**.
+3. Wybierz pozycję **Utwórz**.
 
 ### <a name="entity-creation"></a>Tworzenie jednostki
 
-1. Na lewym panelu kliknij przycisk "Jednostki", a następnie przycisku "Nowa jednostka".
-2. Wybierz opcję "Niestandardowy" dla "Typu jednostek".
-3. Wpisz "name", "Nazwa jednostki".
-4. Zaznacz to pole wyboru "Negatable".
-    - Sprawdzanie ta właściwość umożliwia użytkownikowi wprowadzenia wartości jednostki lub Załóżmy, że coś jest nie *nie* wartości jednostki. W tym ostatnim przypadku wynik jest usunięcie pasującej wartości jednostki.
-5. Kliknij przycisk "Utwórz".
+1. Wybierz **jednostek** w lewym panelu, a następnie **Nowa jednostka**.
+2. Wybierz **niestandardowych skonfigurowanych pod kątem** dla **typu jednostki**.
+3. Wprowadź **nazwa** dla **nazwa jednostki**.
+4. Sprawdź **Negatable** aby użytkownicy mogli podać wartość jednostki lub powiedzieć coś, co jest *nie* jednostki wartości, a tym samym usuwanie pasującej wartości jednostki.
+5. Wybierz pozycję **Utwórz**.
 
-![](../media/tutorial5_entities.PNG)
+![](../media/T06_entity_create.png)
 
 ### <a name="create-the-first-action"></a>Tworzenie pierwszej akcji
 
-1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
-2. W "Botów odpowiedzi..." pola, wpisz "Nie wiem swoją nazwę."
-3. W polu "Dyskwalifikacji uprawnia" wpisz "name".
-4. Kliknij przycisk "Utwórz".
+1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
+2. Wprowadź **nie wiem, swoją nazwę.** Aby uzyskać **odpowiedzi Botów...** .
+3. Wprowadź **nazwa** dla **dyskwalifikacji uprawnia**.
+4. Wybierz pozycję **Utwórz**.
+
+![](../media/T06_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>Tworzenie drugiej akcji
 
-1. Na lewym panelu kliknij przycisk "Akcje", a następnie przycisku "Nowa akcja".
-2. W "Botów odpowiedzi..." pola, wpisz "wiem, swoją nazwę. To $name".
-3. Kliknij przycisk "Utwórz".
+1. Wybierz **akcje** w lewym panelu, a następnie **nowa akcja**.
+2. Wprowadź **sprawdzić swoją nazwę. It is $name.** Aby uzyskać **odpowiedzi Botów...** .
+3. Wybierz pozycję **Utwórz**.
 
 > [!NOTE]
-> Jednostka "name" automatycznie został dodany jako "Wymagana jednostki" przez odwołanie w odpowiedzi.
+> **Nazwa** jednostka została automatycznie dodana jako **wymaganych jednostek** poprzez odwołanie w wypowiedź odpowiedzi.
 
 Masz teraz dwie akcje.
 
-![](../media/tutorial5_actions.PNG)
+![](../media/T06_action_create_2.png)
 
 ### <a name="train-the-model"></a>Uczenie modelu
 
-1. W lewym panelu kliknij przycisk "Okien dialogowych Train", a następnie przycisk "Nowy Train Dialog".
-2. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "hello".
-3. Kliknij przycisk "Wynik akcje".
-4. Wybierz odpowiedź "Nie wiem swoją nazwę."
-    - Percentyla wynosi 100%, zgodnie z jedynymi prawidłowymi akcji na podstawie ograniczeń.
-5. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Moja nazwa jest Piotr"
-6. Wybierz pozycję "Piotr" i wybierz etykietę "+ Nazwa"
-    - Istnieją dwa wystąpienia pod kątem "name" jednostki: "+ Nazwa" i "-name".  (+) A także dodaje lub zastępuje wartość. (-) Znak minus Usuwa wartość.
-7. Kliknij przycisk "Wynik akcje".
-    - Jednostka "name" teraz jest zdefiniowany jako "Piotr" w modelu pamięci, dlatego "I know swoją nazwę. To $name"Akcja jest dostępna.
-8. Wybierz odpowiedź "wiem, swoją nazwę. To $name".
-9. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Moja nazwa nie jest Frank."
-10. Wybierz "Piotr", a następnie wybierz etykietę "-name"
-    - Wybieramy "-name" Aby wyczyścić bieżącą wartość jednostki.
-11. Kliknij przycisk "Wynik akcje".
-12. Wybierz odpowiedź "Nie wiem swoją nazwę."
-13. W panelu rozmowy, w której wyświetlany jest tekst "Typ komunikatu...", wpisz "Moja nazwa jest Susan".
-14. Wybierz pozycję "Susan" i wybierz etykietę "+ Nazwa"
+1. Wybierz **okien dialogowych Train** w lewym panelu, a następnie **okno dialogowe Nowy Train**.
+2. Wprowadź **hello** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
+3. Wybierz **wynik akcji**.
+4. Wybierz **nie wiem, swoją nazwę.** z listy akcji. Percentyla wynosi 100%, co jedyne prawidłowe działanie na podstawie ograniczeń.
+5. Wprowadź **Nazywam się Frank** dla wypowiedź użytkownika w panelu po lewej stronie rozmowy.
+6. Wyróżnij **Frank** polecenie **+ nazwa**. Jednostki można negować mają dwa wystąpienia: (+) oraz dodaje lub zastępuje wartość; (-) znak minus Usuwa wartość.
+7. Wybierz **wynik akcji**. **Nazwa** jednostki jest teraz zdefiniowany jako **Frank** w modelu pamięci, więc **sprawdzić swoją nazwę. Jest $name** akcja jest dostępna.
+8. Wybierz **sprawdzić swoją nazwę. It is $name.** z listy akcji.
+9. Wprowadź **Moja nazwa nie jest Frank.** Aby uzyskać wypowiedź użytkownika w panelu po lewej stronie rozmowy.
+10. Wyróżnij **Frank** następnie wybierz pozycję **— nazwa** wyczyszczenie tej wartości z **nazwa** jednostki.
+11. Wybierz **wynik akcji**.
+12. Wybierz **nie wiem, swoją nazwę.** z listy akcji.
+13. Wprowadź **Nazywam się Susan.** Aby uzyskać wypowiedź trzeciego użytkownika w panelu po lewej stronie rozmowy.
+14. Wyróżnij **Susan** następnie **+ nazwa** 
 
-![](../media/tutorial5_dialogs.PNG)
+![](../media/T06_training.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

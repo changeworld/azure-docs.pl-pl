@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: c53b9f13c365a5ace227f792f5b0c80ae8fac6ff
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: 8ce5460a7a2f29250ad8ef346f35914a0363a921
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807358"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847233"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD
 
@@ -98,7 +98,7 @@ Role administratora usługi Azure AD służą do zarządzania zasobami usługi A
 | Rola administratora usługi Azure AD | Uprawnienia | Uwagi |
 | --- | --- | --- |
 | [Administrator globalny](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) | <ul><li>Zarządzanie dostępem do wszystkich funkcji administracyjnych w usłudze Azure Active Directory, a także usług, które są sfederowane z usługą Azure Active Directory</li><li>Przypisywanie ról administratorów do innych osób</li><li>Resetowanie haseł wszystkich użytkowników oraz wszystkich innych administratorów</li></ul> | Osoba, która zarejestruje się dla dzierżawy usługi Azure Active Directory, staje się administratorem globalnym. |
-| [Administrator użytkowników](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) | <ul><li>Tworzenie i zarządzanie wszystkimi aspektami użytkowników i grup</li><li>Zarządzanie biletami pomocy technicznej</li><li>Monitorowanie kondycji usługi</li><li>Zmienianie haseł użytkowników, administratorów pomocy technicznej i innych administratorów użytkowników</li></ul> |  |
+| [Administrator użytkowników](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Tworzenie i zarządzanie wszystkimi aspektami użytkowników i grup</li><li>Zarządzanie biletami pomocy technicznej</li><li>Monitorowanie kondycji usługi</li><li>Zmienianie haseł użytkowników, administratorów pomocy technicznej i innych administratorów użytkowników</li></ul> |  |
 | [Administrator rozliczeń](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Dokonywanie zakupów</li><li>Zarządzanie subskrypcjami</li><li>Zarządzanie biletami pomocy technicznej</li><li>Monitorowanie kondycji usługi</li></ul> |  |
 
 Listę ról administratora usługi Azure AD można wyświetlić w bloku **Role i administratorzy** witryny Azure Portal. Aby uzyskać listę wszystkich ról administratora usługi Azure AD, zobacz [Uprawnienia ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -114,7 +114,7 @@ Na wysokim poziomie role RBAC platformy Azure kontrolują uprawnienia do zarząd
 | Zarządzanie dostępem do zasobów platformy Azure | Zarządzanie dostępem do zasobów usługi Azure Active Directory |
 | Obsługa ról niestandardowych | Brak możliwości tworzenia własnych ról |
 | Możliwość określenia zakresu na wielu poziomach (grupa zarządzania, subskrypcja, grupa zasobów, zasób) | Zakres znajduje się na poziomie dzierżawy |
-| Informacje o rolach można uzyskać w witrynie Azure Portal, interfejsie wiersza polecenia platformy Azure, programie Azure PowerShell, szablonach usługi Azure Resource Manager, interfejsie API REST | Informacje o rolach można uzyskać w portalu administracyjnym platformy Azure, portalu administracyjnym usługi Office 365, programie Microsoft Graph, module AzureAD programu PowerShell |
+| Informacje o rolach można uzyskać w witrynie Azure Portal, interfejsie wiersza polecenia platformy Azure, programie Azure PowerShell, szablonach usługi Azure Resource Manager, interfejsie API REST | Informacje o rolach można uzyskiwać w administrowania platformą Azure portal, Centrum administracyjnego usługi Microsoft 365, Microsoft Graph usługi Azure AD PowerShell |
 
 ### <a name="do-azure-rbac-roles-and--azure-ad-administrator-roles-overlap"></a>Czy role RBAC platformy Azure i role administratora usługi Azure AD nakładają się na siebie?
 
@@ -124,7 +124,7 @@ Kilka ról administratora usługi Azure AD występuje zarówno w usłudze Azure 
 
 ![Porównanie ról RBAC platformy Azure z rolami administratora usługi Azure AD](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?](overview.md)
 - [Uprawnienia ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)

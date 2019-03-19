@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0970131c4b674fd864ad574b0f749cd6d7f6f2a2
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058514"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089390"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Jak zarządzać rejestracjami urządzeń przy użyciu witryny Azure Portal
 
@@ -28,15 +28,15 @@ Istnieją dwa sposoby, które mogą rejestrować urządzenia z usługą aprowiza
 
     Można utworzyć grupę rejestracji w portalu dla grupy urządzeń wykonując następujące czynności:
 
-    1. Zaloguj się do witryny Azure portal, a następnie kliknij przycisk **wszystkie zasoby** z menu po lewej stronie.  
-    1. Kliknij opcję usługi Device Provisioning, aby zarejestrować urządzenia w celu z listy zasobów.  
-    1. W usłudze aprowizacji:  
-       a. Kliknij przycisk **Zarządzanie rejestracjami**, a następnie wybierz **grup rejestracji** kartę.  
-       b. Kliknij przycisk **Dodaj** na górze.  
-       c. Gdy zostanie wyświetlony panel "Dodaj grupę rejestracji", wprowadź informacje dla wpisu listy rejestracji.  **Nazwa grupy** jest wymagana. Również wybrać opcję "Urzędu certyfikacji lub pośredniego" dla **typ certyfikatu**i przekaż głównego **podstawowy certyfikat** dla grupy urządzeń.  
-       d. Kliknij pozycję **Zapisz**. Po pomyślnym utworzeniu grupy rejestracji, powinien zostać wyświetlony nazwę grupy są wyświetlane w obszarze **grup rejestracji** kartę.  
+  1. Zaloguj się do witryny Azure portal, a następnie kliknij przycisk **wszystkie zasoby** z menu po lewej stronie.  
+  1. Kliknij opcję usługi Device Provisioning, aby zarejestrować urządzenia w celu z listy zasobów.  
+  1. W usłudze aprowizacji:  
+     a. Kliknij przycisk **Zarządzanie rejestracjami**, a następnie wybierz **grup rejestracji** kartę.  
+     b. Kliknij przycisk **Dodaj** na górze.  
+     c. Gdy zostanie wyświetlony panel "Dodaj grupę rejestracji", wprowadź informacje dla wpisu listy rejestracji.  **Nazwa grupy** jest wymagana. Również wybrać opcję "Urzędu certyfikacji lub pośredniego" dla **typ certyfikatu**i przekaż głównego **podstawowy certyfikat** dla grupy urządzeń.  
+     d. Kliknij pozycję **Zapisz**. Po pomyślnym utworzeniu grupy rejestracji, powinien zostać wyświetlony nazwę grupy są wyświetlane w obszarze **grup rejestracji** kartę.  
 
-       [![Grupy rejestracji w portalu](./media/how-to-manage-enrollments/group-enrollment.png)] (. / media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![Grupy rejestracji w portalu](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
 * **Rejestracji indywidualnej** wpis dla pojedynczego urządzenia, które może zarejestrować. Rejestracje indywidualne mogą używać dowolnego x509 certyfikatów lub tokenów SAS (z fizycznym lub wirtualnym module TPM) jako mechanizmów zaświadczania. Firma Microsoft zaleca używanie rejestracji indywidualnych w przypadku urządzeń, które wymagają unikatowej konfiguracji początkowej lub urządzeń, których można używać tylko tokenów SAS za pośrednictwem modułu TPM lub wirtualnego modułu TPM jako mechanizmu zaświadczania. W przypadku rejestracji indywidualnych można określić identyfikatory urządzeń wymaganego centrum IoT.

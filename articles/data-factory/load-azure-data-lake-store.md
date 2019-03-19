@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 56f1769d601df6292decc46c9470768eac29102c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d9bce32e87984193938099b96a358cc4495fd0c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249081"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119743"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Ładowanie danych do usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Data Factory
 
@@ -26,10 +26,10 @@ Usługa Azure Data Factory to usługa integracji danych w pełni zarządzane w c
 
 Usługa Azure Data Factory oferuje następujące korzyści dla ładowania danych do usługi Data Lake Storage Gen1:
 
-* **Łatwe do skonfigurowania**: intuicyjny Kreator krok 5 z bez skryptu wymagane.
-* **Obsługa magazynu danych sformatowanego**: wbudowaną obsługę bogaty zestaw w środowisku lokalnym i magazynami danych w chmurze. Aby uzyskać szczegółową listę, zobacz tabelę [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
-* **Bezpieczeństwo i zgodność**: dane są przesyłane za pośrednictwem protokołu HTTPS lub usługi ExpressRoute. Obecność usługi global service gwarantuje, że danych nigdy nie opuszcza granicy geograficznej.
-* **Wysoka wydajność**: maksymalnie 1-GB/s danych ładowania szybkość do usługi Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [wydajności działania kopiowania](copy-activity-performance.md).
+* **Łatwe do skonfigurowania**: Intuicyjny Kreator krok 5 z bez skryptu wymagane.
+* **Szczegółowe dane sklepu obsługują**: Wbudowana obsługa bogaty zestaw w środowisku lokalnym i magazynami danych w chmurze. Aby uzyskać szczegółową listę, zobacz tabelę [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Bezpieczeństwo i zgodność**: Dane są przesyłane za pośrednictwem protokołu HTTPS lub usługi ExpressRoute. Obecność usługi global service gwarantuje, że danych nigdy nie opuszcza granicy geograficznej.
+* **Wysoka wydajność**: Maksymalna szybkość ładowania danych do 1-GB/s do Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [wydajności działania kopiowania](copy-activity-performance.md).
 
 W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ładowanie danych z usługi Amazon S3 do Data Lake Storage Gen1_. Możesz wykonać podobne kroki w celu skopiowania danych z innych typów magazynów danych.
 
@@ -38,7 +38,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) przed przystąpieniem do wykonywania.
+* Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 * Konta usługi Data Lake Storage Gen1: Jeśli nie masz konta Data Lake Storage Gen1, zapoznaj się z instrukcjami w [Tworzenie konta Data Lake Storage Gen1](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account).
 * Amazon S3: W tym artykule pokazano, jak skopiować dane z usługi Amazon S3. Wykonując podobne kroki, można użyć innych magazynów danych.
 
@@ -51,7 +51,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
       
    ![Strona Nowa fabryka danych](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **Nazwa**: wprowadź unikatową w skali globalnej nazwę fabryki danych platformy Azure. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych \"LoadADLSG1Demo\" jest niedostępny," Wprowadź inną nazwę dla fabryki danych. Na przykład można użyć nazwy  _**twojanazwa**_**ADFTutorialDataFactory**. Spróbuj ponownie utworzyć fabrykę danych. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
+    * **Nazwa**: Wprowadź unikatową w skali globalnej nazwę fabryki danych platformy Azure. Jeśli zostanie wyświetlony błąd "Nazwa fabryki danych \"LoadADLSG1Demo\" jest niedostępny," Wprowadź inną nazwę dla fabryki danych. Na przykład można użyć nazwy  _**twojanazwa**_**ADFTutorialDataFactory**. Spróbuj ponownie utworzyć fabrykę danych. Artykuł [Data Factory naming rules (Zasady nazewnictwa fabryki danych)](naming-rules.md) zawiera zasady nazewnictwa artefaktów usługi Data Factory.
     * **Subskrypcja**: Wybieranie subskrypcji platformy Azure, w której chcesz utworzyć fabrykę danych. 
     * **Grupa zasobów**: Wybierz istniejącą grupę zasobów z listy rozwijanej lub **Utwórz nową** opcji, a następnie wprowadź nazwę grupy zasobów. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
     * **Wersja**: Wybierz **V2**.
@@ -85,7 +85,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
    2. Określ **tajny klucz dostępu** wartość.
    3. Wybierz pozycję **Finish** (Zakończ).
    
-     ![Określanie konta usługi Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![Określanie konta usługi Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. Zostaną wyświetlone nowe połączenie. Wybierz opcję **Dalej**.
    

@@ -2,19 +2,19 @@
 title: Sprawdzanie łączności urządzenia z usługą Azure IoT Hub
 description: Użyj narzędzi usługi IoT Hub do rozwiązywania problemów z łącznością urządzenia z usługą IoT Hub w czasie programowania.
 services: iot-hub
-author: dominicbetts
-manager: timlt
-ms.author: dobett
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: cd60129e2da0b0c2130b300159953bd81c4aeb82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674521"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077568"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: Testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
 
@@ -135,7 +135,7 @@ az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubNam
 
 Zanotuj pełen tekst wygenerowanego tokenu SAS. Token SAS wygląda następująco: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
-W oknie terminalu na komputerze deweloperskim przejdź do folderu głównego pobranego projektu przykładowego Node.js. Następnie przejdź do folderu **iot-hub\Tutorials\ConnectivityTests\simulated-device**.
+W oknie terminalu na komputerze deweloperskim przejdź do folderu głównego pobranego projektu przykładowego Node.js. Następnie przejdź do folderu **iot-hub\Tutorials\ConnectivityTests**.
 
 W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i uruchomić aplikację urządzenia symulowanego:
 
@@ -176,7 +176,7 @@ Najpierw należy pobrać aktualne parametry połączenia urządzenia symulowaneg
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-Aby uruchomić urządzenie symulowane, które wysyła komunikaty, przejdź do folderu **iot-hub\Tutorials\ConnectivityTests\simulated-device** w pobranym kodzie.
+Aby uruchomić symulowane urządzenie, która wysyła komunikaty, przejdź do **iot hub\Tutorials\ConnectivityTests** folderu w kodzie, który został pobrany.
 
 W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i uruchomić aplikację urządzenia symulowanego:
 
@@ -257,7 +257,7 @@ Oprócz otrzymywania na bieżąco żądanych zmian właściwości urządzenie sy
 
 Jeśli nie potrzebujesz już tego centrum IoT, usuń je oraz grupę zasobów z poziomu portalu. Aby to zrobić, wybierz grupę zasobów **tutorials-iot-hub-rg** zawierającą centrum IoT Hub, a następnie kliknij przycisk **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób sprawdzania kluczy urządzenia, sprawdzania łączności urządzenia z chmurą i chmury z urządzeniem oraz sprawdzania synchronizacji bliźniaczej reprezentacji urządzenia. Aby dowiedzieć się więcej na temat monitorowania centrum IoT, zapoznaj się z artykułem z instrukcjami dotyczącymi monitorowania usługi IoT Hub.
 

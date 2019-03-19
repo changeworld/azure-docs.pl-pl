@@ -15,12 +15,12 @@ ms.date: 03/04/2018
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 1115e11d6bf830afad3746eb41d6368cb89bdbf3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c3ea877e3271dcb5bea527d661e12827eb64fa0c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534382"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997422"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Samouczek: Utwórz rozwiązanie analizy użycia przemieszczonych danych dzięki platformie Azure i usługi Azure Stack 
 
@@ -175,25 +175,25 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Tworzenie funkcji wyzwalanej przez magazyn obiektów Blob
 
-1.  Rozwiń aplikację funkcji, a następnie wybierz pozycję **+** znajdujący się obok **funkcji**.
+1. Rozwiń aplikację funkcji, a następnie wybierz pozycję **+** znajdujący się obok **funkcji**.
 
-2.  W polu wyszukiwania wpisz `blob` , a następnie wybierz żądany język dla **obiekt Blob wyzwalacza** szablonu.
+2. W polu wyszukiwania wpisz `blob` , a następnie wybierz żądany język dla **obiekt Blob wyzwalacza** szablonu.
 
-  ![Wybierz szablon wyzwalacza usługi Blob Storage.](media/azure-stack-solution-staged-data-analytics/image10.png)
+   ![Wybierz szablon wyzwalacza usługi Blob Storage.](media/azure-stack-solution-staged-data-analytics/image10.png)
 
-3.  Użyj ustawień określonych w tabeli poniżej:
+3. Użyj ustawień określonych w tabeli poniżej:
 
-    | Ustawienie | Sugerowana wartość | Opis |
-    | ------- | ------- | ------- |
-    | Name (Nazwa) | Unikatowa w obrębie aplikacji funkcji | Nazwa funkcji wyzwalanej przez obiekt blob. |
-    | Ścieżka | \<Ścieżka z powyższych lokalizacji magazynu > | Lokalizacja w monitorowanym magazynie obiektów Blob. Nazwa pliku obiektu blob jest przekazywana w powiązaniu jako parametr name. |
-    | Połączenie konta magazynu | Połączenie aplikacji — funkcja | Można użyć połączenie konta magazynu, które są już używane przez aplikację funkcji lub utworzyć nową. |
+   | Ustawienie | Sugerowana wartość | Opis |
+   | ------- | ------- | ------- |
+   | Name (Nazwa) | Unikatowa w obrębie aplikacji funkcji | Nazwa funkcji wyzwalanej przez obiekt blob. |
+   | Ścieżka | \<Ścieżka z powyższych lokalizacji magazynu > | Lokalizacja w monitorowanym magazynie obiektów Blob. Nazwa pliku obiektu blob jest przekazywana w powiązaniu jako parametr name. |
+   | Połączenie konta magazynu | Połączenie aplikacji — funkcja | Można użyć połączenie konta magazynu, które są już używane przez aplikację funkcji lub utworzyć nową. |
 
-    **Przykład:**
+   **Przykład:**
 
-    ![Tworzenie funkcji wyzwalanej przez magazyn obiektów Blob.](media/azure-stack-solution-staged-data-analytics/image11.png)
+   ![Tworzenie funkcji wyzwalanej przez magazyn obiektów Blob.](media/azure-stack-solution-staged-data-analytics/image11.png)
 
-4.  Wybierz **Utwórz** Aby utworzyć funkcję.
+4. Wybierz **Utwórz** Aby utworzyć funkcję.
 
 ### <a name="test-the-function"></a>Testowanie funkcji
 
@@ -253,21 +253,21 @@ Skorzystaj z kroków i ustawień opisanych powyżej, można utworzyć innego kon
 
 ## <a name="test-the-queue-triggered-function"></a>Funkcja wyzwalana przez test kolejki
 
-1.  W portalu usługi Azure Stack przejdź do funkcji. Rozwiń **dzienniki** w dolnej części strony i upewnij się, strumieniowe przesyłanie dzienników nie została wstrzymana.
+1. W portalu usługi Azure Stack przejdź do funkcji. Rozwiń **dzienniki** w dolnej części strony i upewnij się, strumieniowe przesyłanie dzienników nie została wstrzymana.
 
-2.  Otwórz Eksploratora usługi Storage, a następnie nawiązać połączenie z kontem magazynu utworzonym na początku tej sekcji.
+2. Otwórz Eksploratora usługi Storage, a następnie nawiązać połączenie z kontem magazynu utworzonym na początku tej sekcji.
 
-3.  Rozwiń konto magazynu, **kontenerach obiektów Blob**, oraz obiekt blob utworzone wcześniej. Wybierz **przekazywanie** i następnie **przekazywania plików.**
+3. Rozwiń konto magazynu, **kontenerach obiektów Blob**, oraz obiekt blob utworzone wcześniej. Wybierz **przekazywanie** i następnie **przekazywania plików.**
 
-    ![Przekazywanie pliku do kontenera obiektów Blob.](media/azure-stack-solution-staged-data-analytics/image12.png)
+   ![Przekazywanie pliku do kontenera obiektów Blob.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
-4.  W oknie dialogowym przekazywanie plików wybierz pole plików. Przejdź do pliku na komputerze lokalnym, na przykład pliku obrazu, zaznacz ją i wybierz **Otwórz** i następnie **przekazywanie**.
+4. W oknie dialogowym przekazywanie plików wybierz pole plików. Przejdź do pliku na komputerze lokalnym, na przykład pliku obrazu, zaznacz ją i wybierz **Otwórz** i następnie **przekazywanie**.
 
-5.  Wróć do dzienników funkcji i sprawdź, czy obiekt blob został odczytany.
+5. Wróć do dzienników funkcji i sprawdź, czy obiekt blob został odczytany.
 
-  **Przykład:**
+   **Przykład:**
 
-    ![Wyświetlanie komunikatu w dziennikach.](media/azure-stack-solution-staged-data-analytics/image13.png)
+   ![Wyświetlanie komunikatu w dziennikach.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>Bezpiecznie przechowywane i dostęp do danych zgodne z
 

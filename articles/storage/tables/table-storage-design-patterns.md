@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 40062cfb2e646fd6befef1e746f9493f3e4b20f9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f2f4fb04ac483f7716c0b7a0fb1f87843d8b817f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995298"
 ---
 # <a name="table-design-patterns"></a>Wzorce projektowe tabel
 W tym artykule opisano niektóre wzorce, które są przeznaczone do użycia z rozwiązaniami usługi tabeli. Ponadto zobaczysz, jak praktycznie rozwiązać niektóre problemy i charakterystyczne kompromisowe omówione w innych artykułach projektowania magazynu tabeli. Poniższy diagram przedstawia relacje między różnych wzorców:  
@@ -588,7 +588,7 @@ var employees = query.Execute();
 
 Zwróć uwagę, jak zapytanie określa zarówno **RowKey** i **PartitionKey** zapewniające lepszą wydajność.  
 
-Poniższy przykład kodu pokazuje równoważne funkcje przy użyciu interfejsu API fluent (Aby uzyskać więcej informacji na temat płynnych interfejsów API ogólnie rzecz biorąc, zobacz [najlepsze rozwiązania dotyczące projektowania interfejs Fluent API](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
+Poniższy przykład kodu pokazuje równoważne funkcje przy użyciu interfejsu API fluent (Aby uzyskać więcej informacji na temat płynnych interfejsów API ogólnie rzecz biorąc, zobacz [najlepsze rozwiązania dotyczące projektowania interfejs Fluent API](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(

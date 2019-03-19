@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e19e21ab31fcee87aac6e7e8a0e1d0fbd0a7452c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0ca35c5d7a882a67bdce5e006b94d1f16daf9130
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409911"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893208"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migracja użytkowników
 W przypadku migracji dostawcy tożsamości do usługi Azure Active Directory B2C (Azure AD B2C), może być również konieczne migracji konta użytkownika. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont użytkowników z dowolnego dostawcy tożsamości do usługi Azure AD B2C. Artykuł jest nie należy traktować jako przetestowanego rozwiązania ze szczegółami, ale raczej opisano w nim kilka scenariuszy. Deweloper jest odpowiedzialny za przydatności każde podejście.
@@ -63,7 +63,7 @@ Najpierw zarejestrować aplikację migracji w usłudze Azure AD. Utwórz klucz a
 1. Utwórz nową aplikację, wykonując następujące czynności:
    - Dla **nazwa**, użyj **B2CUserMigration** lub dowolnej innej nazwy, które chcesz.
    - Aby uzyskać **typ aplikacji**, użyj **aplikacji/interfejs API sieci Web**.
-   - Aby uzyskać **adres URL logowania**, użyj **https://localhost** (co nie jest odpowiednie dla tej aplikacji).
+   - Aby uzyskać **adres URL logowania**, użyj `https://localhost` (co nie jest odpowiednie dla tej aplikacji).
    - Wybierz pozycję **Utwórz**.
    
 1. Po utworzeniu aplikacji w **aplikacje** wybierz nowo utworzony **B2CUserMigration** aplikacji.
@@ -94,7 +94,7 @@ Teraz gdy masz już aplikację z uprawnieniami do tworzenia, odczytywania i aktu
 Odczyt i zapis, czy uprawnienia do danych katalogu *nie* obejmują prawo do usuwania użytkowników. Aby zapewnić aplikacji możliwość usuwania użytkowników (czyszczenie środowiska), należy wykonać dodatkowe czynności, które polega na uruchomieniu programu PowerShell, aby ustawić uprawnienia Administrator kont użytkowników. W przeciwnym razie możesz przejść do następnej sekcji.
 
 > [!IMPORTANT]
-> Należy użyć konta administratora dzierżawy B2C, który jest *lokalnego* do dzierżawy usługi B2C. Składnia nazwy konta jest *admin@contosob2c.onmicrosoft.com*.
+> Należy użyć konta administratora dzierżawy B2C, który jest *lokalnego* do dzierżawy usługi B2C. Składnia nazwy konta jest *administratora\@contosob2c.onmicrosoft.com*.
 
 >[!NOTE]
 > Poniższy skrypt programu PowerShell wymaga [usługi Azure Active Directory PowerShell w wersji 2][AD-Powershell].

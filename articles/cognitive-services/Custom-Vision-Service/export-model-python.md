@@ -10,16 +10,19 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: areddish
-ms.openlocfilehash: 298279fd67b312b6a7ab3a9939444c344407127f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: 02f93b86bc53b482127bdd6df963f75680242bcd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806899"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007138"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Samouczek: Uruchamianie modelu TensorFlow w języku Python
 
 W tym przewodniku Szybki start opisano, jak po [wyeksportowaniu modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) z usługi Custom Vision Service użyć tego modelu lokalnie w celu klasyfikowania obrazów.
+
+> [!NOTE]
+> Ten samouczek dotyczy tylko modeli wyeksportowane z projektów klasyfikacji obrazów.
 
 ## <a name="install-required-components"></a>Instalacja wymaganych składników
 
@@ -50,8 +53,12 @@ import os
 graph_def = tf.GraphDef()
 labels = []
 
+# These are set to the default names from exported models, update as needed.
+filename = "model.pb"
+labels_filename = "labels.txt"
+
 # Import the TF graph
-with tf.gfile.FastGFile(filename, 'rb') as f:
+with tf.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -176,8 +183,12 @@ output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
 with tf.Session() as sess:
-    prob_tensor = sess.graph.get_tensor_by_name(output_layer)
-    predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+    try:
+        prob_tensor = sess.graph.get_tensor_by_name(output_layer)
+    except KeyError:
+        print ("Couldn't find classification output layer: " + output_layer + ".")
+        print ("Verify this a model exported from an Object Detection project.")
+        exit(-1)
 ```
 
 ## <a name="view-the-results"></a>Wyświetlanie wyników
@@ -192,12 +203,12 @@ Wyniki uruchomienia tensora obrazu za pośrednictwem modelu trzeb będzie wtedy 
 
     # Or you can print out all of the results mapping labels to probabilities.
     label_index = 0
-    for p in predictions[0]:
+    for p in predictions:
         truncated_probablity = np.float64(np.round(p,8))
         print (labels[label_index], truncated_probablity)
         label_index += 1
 ```
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Można również opakować model w aplikację mobilną:
 * [Używanie wyeksportowanego modelu TensorFlow w aplikacji systemu Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

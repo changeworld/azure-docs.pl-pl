@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 6e62e923b6e983dfff8eb72c9526708a3b360930
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494752"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086024"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Używanie usługi Azure Automation do wyzwalania zadania
 
@@ -53,20 +53,20 @@ Przed rozpoczęciem upewnij się, że masz:
 
 3. W **Dodawanie automatyzacji**:
 
-    1. Podaj **nazwa** konta usługi automation.
-    2. Wybierz **subskrypcji** połączonego z usługą StorSimple Data Manager.
-    3. Utwórz nową grupę zasobów lub wybierz istniejącą grupę zasobów.
-    4. Wybierz **lokalizację**.
-    5. Pozostaw wartość domyślną **Utwórz konto Uruchom jako** wybraną opcją.
-    6. Aby uzyskać link, aby uzyskać szybki dostęp na pulpicie nawigacyjnym, zapoznaj się z **Przypnij do pulpitu nawigacyjnego**. Kliknij pozycję **Utwórz**.
+   1. Podaj **nazwa** konta usługi automation.
+   2. Wybierz **subskrypcji** połączonego z usługą StorSimple Data Manager.
+   3. Utwórz nową grupę zasobów lub wybierz istniejącą grupę zasobów.
+   4. Wybierz **lokalizację**.
+   5. Pozostaw wartość domyślną **Utwórz konto Uruchom jako** wybraną opcją.
+   6. Aby uzyskać link, aby uzyskać szybki dostęp na pulpicie nawigacyjnym, zapoznaj się z **Przypnij do pulpitu nawigacyjnego**. Kliknij pozycję **Utwórz**.
 
-    ![Utwórz konto usługi automation Uruchom jako](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Utwórz konto usługi automation Uruchom jako](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
-    Po pomyślnym utworzeniu konta usługi automation, otrzymasz powiadomienie.
+      Po pomyślnym utworzeniu konta usługi automation, otrzymasz powiadomienie.
     
-    ![Powiadomienie dla wdrożenia dla konta usługi automation](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
+      ![Powiadomienie dla wdrożenia dla konta usługi automation](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-    Aby uzyskać więcej informacji, przejdź do [Tworzenie konta Uruchom jako](../automation/automation-create-runas-account.md).
+      Aby uzyskać więcej informacji, przejdź do [Tworzenie konta Uruchom jako](../automation/automation-create-runas-account.md).
 
 3. W nowo utworzonego konta, przejdź do **zasoby udostępnione > modułów** i kliknij przycisk **+ Dodaj moduł**.
 

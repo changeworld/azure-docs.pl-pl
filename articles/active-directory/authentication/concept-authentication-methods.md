@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d90407dab29f431f5a592e077c859aea997c4c
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214099"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999494"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -148,6 +148,8 @@ Aplikacja Microsoft Authenticator lub innych aplikacjach innych firm może słu�
 > [!WARNING]
 > Dla samoobsługowego resetowania haseł podczas tylko jedną z metod jest wymagany na potrzeby resetowania kod weryfikacyjny jest jedyną opcją, dostępne dla użytkowników **aby zapewnić najwyższy poziom zabezpieczeń**.
 >
+
+Użytkownicy mogą mieć kombinację tokenów OATH do 5 w sprzętu lub aplikacji wystawcy uwierzytelnienia, takich jak aplikacja Microsoft Authenticator skonfigurowany do użycia w dowolnym momencie.
 
 ## <a name="oath-hardware-tokens-public-preview"></a>Tokeny sprzętowe OATH (publiczna wersja zapoznawcza)
 

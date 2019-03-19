@@ -1,17 +1,17 @@
 ---
 title: Typy indeksu w usłudze Azure Cosmos DB
 description: Przegląd typów indeksu w usłudze Azure Cosmos DB
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/5/2018
-ms.author: rimman
-ms.openlocfilehash: f45663fd0f63537f87ee4466ad5f17cce0bed6a3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 3/13/2019
+ms.author: mjbrown
+ms.openlocfilehash: 56c0fcb24ac5d255c6a36bcffd327df76f459963
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961724"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990551"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Typy indeksu w usłudze Azure Cosmos DB
 
@@ -19,30 +19,24 @@ Istnieje wiele opcji gdzie konfigurowania zasad indeksowania dla ścieżki. Moż
 
 - **Typ danych:** Ciąg, liczba, punkt, wielokąta lub LineString (może zawierać tylko jeden wpis dla typu danych na każdej ścieżce).
 
-- **Typ indeksu:** Skrót (zapytań o równość), zakresu (równości, zakresu lub zapytania w klauzuli ORDER BY) lub przestrzenne (zapytań przestrzennych).
+- **Typ indeksu:** Zakres (równości, zakresu lub zapytania w klauzuli ORDER BY) lub przestrzenne (zapytań przestrzennych).
 
-- **Dokładność:** Dla indeksu skrótu różni się to od 1 do 8 na ciągi i liczby, a wartość domyślna to 3. Wartość maksymalna dozwolona dokładność: indeks zakresu jest wartość -1. Może się różnić od 1 do 100 (maksymalna dozwolona dokładność) dla parametrów lub wartości liczbowe.
+- **Dokładność:** Dla indeks zakresu maksymalna dozwolona dokładność: ma wartość -1, która jest również wartość domyślna.
 
 ## <a name="index-kind"></a>Typ indeksu
 
-Usługa Azure Cosmos DB obsługuje indeks zakresu i wyznaczania wartości skrótu dla każdej ścieżce, które można skonfigurować ciąg lub liczba typów danych lub obu.
+Usługa Azure Cosmos DB obsługuje indeks zakresu dla każdej ścieżce, które można skonfigurować ciąg lub liczba typów danych lub obu.
 
-- **Indeks skrótów** obsługuje wydajne równości i łączenia zapytań. W większości przypadków użycia większą precyzję niż domyślna wartość 3 bajtów nie ma potrzeby indeksów skrótu. Typ danych może być ciąg lub liczba.
-
-  > [!NOTE]
-  > Kontenery usługi Azure Cosmos obsługuje nowy układ indeksu, który nie używa już rodzaj indeksów skrótu. Jeśli określisz typ indeksu skrótu na zasady indeksowania żądań CRUD w kontenerze będzie po cichu ignorować rodzaj indeksu i odpowiedzi z kontenera, zawiera tylko rodzaj indeks zakresu. Domyślnie wszystkie nowe kontenery Cosmos używają nowego układu indeksu. 
-  
-- **Indeks zakresu** obsługuje zapytań o równość wydajne, zapytań o zakres (przy użyciu >, <>, =, < =,! =) i zapytania w klauzuli ORDER BY. Zapytania w klauzuli ORDER By, domyślnie wymagają także precyzja maksymalna wartość indeksu (-1). Typ danych może być ciąg lub liczba.
+- **Indeks zakresu** obsługuje zapytań o równość wydajne, sprzężenia zapytania, zapytań o zakres (przy użyciu >, <>, =, < =,! =) i zapytania w klauzuli ORDER BY. Zapytania w klauzuli ORDER By, domyślnie wymagają także precyzja maksymalna wartość indeksu (-1). Typ danych może być ciąg lub liczba.
 
 - **Indeks przestrzenny** obsługuje wydajne przestrzennego (w ramach i odległość) zapytania. Typ danych może być punkt, wielokąta lub LineString. Usługa Azure Cosmos DB obsługuje również rodzaj indeks przestrzenny dla każdej ścieżki, który może być określony dla typów danych punkt, wielokąta lub LineString. Wartość w określonej ścieżce musi być prawidłowy fragment GeoJSON, takich jak {"type": "Point", "coordinates": [0.0, 10.0]}. Usługa Azure Cosmos DB obsługuje automatyczne indeksowanie punkt wielokąta i LineString typów danych.
 
-Poniżej przedstawiono przykłady kwerend, które wyznaczania wartości skrótu, zakres, i Indeksy przestrzenne może służyć do obsługi:
+Oto przykłady zapytań, które zakresu i indeksów przestrzennych może służyć do obsługi:
 
 | **Typ indeksu** | **Opis elementu/użycia** |
 | ---------- | ---------------- |
-| Skrót  | Wyznaczania wartości skrótu, za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Skrót/właściwości / [] /? (i / lub/właściwości /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz tag z kolekcji c sprzężenia tagu w c.props, gdzie tag = 5  |
-| Zakres  | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Wybierz z kolekcji języka c WHERE c.prop > 5<br><br>Wybierz z kolekcji c ORDER BY c.prop   |
-| Przestrzenne     | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c<br><br>GDZIE ST_DISTANCE (c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>Wybierz z kolekcji języka c gdzie ST_WITHIN(c.prop, {"type": "Point",...}) — za pomocą indeksowania w punktach włączone<br><br>Wybierz z kolekcji języka c gdzie ST_WITHIN({"type": "Polygon",...}, c.prop) — przy użyciu wielokątów włączone indeksowanie.     |
+| Zakres      | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Wybierz z kolekcji języka c WHERE c.prop > 5<br><br>Wybierz z kolekcji c ORDER BY c.prop<br><br>Zakres za pośrednictwem/właściwości / [] /? (i / lub/właściwości /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz tag z kolekcji c sprzężenia tagu w c.props, gdzie tag = 5  |
+| Przestrzenne    | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c gdzie ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>Wybierz z kolekcji języka c gdzie ST_WITHIN(c.prop, {"type": "Point",...}) — za pomocą indeksowania w punktach włączone<br><br>Wybierz z kolekcji języka c gdzie ST_WITHIN({"type": "Polygon",...}, c.prop) — przy użyciu wielokątów włączone indeksowanie. |
 
 ## <a name="default-behavior-of-index-kinds"></a>Domyślne zachowanie rodzaju indeksu
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566044"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084882"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Zautomatyzowane rozwiązanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery dla udziałów plików w serwisie StorSimple
 ## <a name="overview"></a>Przegląd
@@ -179,7 +179,7 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
    - *RecoveryPlanName***-StorageAccountKey**: Klucz dostępu dla powyższego konta magazynu.
    - * RecoveryPlanName ***- VMGUIDS**: Podczas ochrony maszyn wirtualnych, usługi Azure Site Recovery przypisuje każda maszyna wirtualna Unikatowy identyfikator, który zawiera szczegółowe informacje o trybie tryb failover maszyny Wirtualnej. Aby uzyskać VMGUID, wybierz **usługi Recovery Services** kartę, a następnie kliknij przycisk **chronionego elementu** &gt; **grup ochrony** &gt;  **Maszyny** &gt; **właściwości**. Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikator GUID w faktycznej jako ciąg rozdzielonych przecinkami.
 
-    Na przykład, jeśli nazwa planu odzyskiwania jest fileServerpredayRP wówczas **zmienne**, **połączeń** i **certyfikaty** karta powinna wyglądać następująco, po dodaniu wszystkie zasoby.
+     Na przykład, jeśli nazwa planu odzyskiwania jest fileServerpredayRP wówczas **zmienne**, **połączeń** i **certyfikaty** karta powinna wyglądać następująco, po dodaniu wszystkie zasoby.
 
       ![Elementy zawartości](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
@@ -332,30 +332,30 @@ Planowanie pojemności składa się z co najmniej dwie ważne procesy:
    - Określanie wymaganej przepustowości Internetu.
 
 ## <a name="limitations"></a>Ograniczenia
-   - Obecnie tylko 1 urządzenia StorSimple można przełączone w tryb failover (pojedynczego urządzenia StorSimple w chmurze). Scenariusz serwera plików, który obejmuje kilka urządzeń StorSimple nie jest jeszcze obsługiwana.
-   - Jeśli wystąpi błąd podczas włączania ochrony dla maszyny Wirtualnej, upewnij się, że zostały odłączone obiektów docelowych iSCSI.
-   - Wszystkie kontenery woluminów, które zostały zgrupowane razem ze względu na zasady tworzenia kopii zapasowych, obejmujące kontenerów woluminów nie powiedzie się za pośrednictwem ze sobą.
-   - Wszystkie woluminy w kontenery woluminów, które zostały wybrane zostaną przełączone w tryb failover.
-   - Woluminy, które dodać do więcej niż 64 TB, który nie może za pośrednictwem, ponieważ maksymalna pojemność jednej urządzenia StorSimple w chmurze jest 64 TB.
-   - Jeśli planowane lub nieplanowane trybu failover nie powiedzie się i maszyny wirtualne są tworzone na platformie Azure, następnie nie usuwaj maszyny wirtualne. Zamiast tego podczas powrotu po awarii. Jeśli usuniesz maszyny wirtualne następnie lokalnych maszyn wirtualnych nie można włączyć ponownie.
-   - Po przejściu w tryb failover Jeśli nie jest możliwe zobaczyć woluminy, przejdź do maszyn wirtualnych, otwórz przystawkę Zarządzanie dyskami, ponownie przeskanować dyski, a następnie przełącz je online.
-   - W niektórych przypadkach litery dysku w lokacji odzyskiwania po awarii może być różni się od litery w środowisku lokalnym. W takiej sytuacji należy ręcznie rozwiązać ten problem, po zakończeniu pracy w trybie failover.
-   - Limit czasu zadania trybu failover: Skrypt StorSimple przekroczy limit czasu, jeśli tryb failover kontenery woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
-   - Limit czasu zadania tworzenia kopii zapasowej: Limit czasu skryptu StorSimple, jeśli tworzenie kopii zapasowych woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
+- Obecnie tylko 1 urządzenia StorSimple można przełączone w tryb failover (pojedynczego urządzenia StorSimple w chmurze). Scenariusz serwera plików, który obejmuje kilka urządzeń StorSimple nie jest jeszcze obsługiwana.
+- Jeśli wystąpi błąd podczas włączania ochrony dla maszyny Wirtualnej, upewnij się, że zostały odłączone obiektów docelowych iSCSI.
+- Wszystkie kontenery woluminów, które zostały zgrupowane razem ze względu na zasady tworzenia kopii zapasowych, obejmujące kontenerów woluminów nie powiedzie się za pośrednictwem ze sobą.
+- Wszystkie woluminy w kontenery woluminów, które zostały wybrane zostaną przełączone w tryb failover.
+- Woluminy, które dodać do więcej niż 64 TB, który nie może za pośrednictwem, ponieważ maksymalna pojemność jednej urządzenia StorSimple w chmurze jest 64 TB.
+- Jeśli planowane lub nieplanowane trybu failover nie powiedzie się i maszyny wirtualne są tworzone na platformie Azure, następnie nie usuwaj maszyny wirtualne. Zamiast tego podczas powrotu po awarii. Jeśli usuniesz maszyny wirtualne następnie lokalnych maszyn wirtualnych nie można włączyć ponownie.
+- Po przejściu w tryb failover Jeśli nie jest możliwe zobaczyć woluminy, przejdź do maszyn wirtualnych, otwórz przystawkę Zarządzanie dyskami, ponownie przeskanować dyski, a następnie przełącz je online.
+- W niektórych przypadkach litery dysku w lokacji odzyskiwania po awarii może być różni się od litery w środowisku lokalnym. W takiej sytuacji należy ręcznie rozwiązać ten problem, po zakończeniu pracy w trybie failover.
+- Limit czasu zadania trybu failover: Skrypt StorSimple przekroczy limit czasu, jeśli tryb failover kontenery woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
+- Limit czasu zadania tworzenia kopii zapasowej: Limit czasu skryptu StorSimple, jeśli tworzenie kopii zapasowych woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
    
-   > [!IMPORTANT]
-   > Ręcznie uruchomić tworzenie kopii zapasowej w witrynie Azure portal, a następnie ponownie uruchom planu odzyskiwania.
+  > [!IMPORTANT]
+  > Ręcznie uruchomić tworzenie kopii zapasowej w witrynie Azure portal, a następnie ponownie uruchom planu odzyskiwania.
    
-   - Sklonuj limit czasu zadania: Limit czasu skryptu StorSimple, jeśli Klonowanie woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
-   - Błąd synchronizacji: StorSimple skrypty występuje informujący o tym, że kopie zapasowe zakończyły się niepowodzeniem, mimo że kopii zapasowej zakończy się w portalu. Możliwą przyczyną tego może być, że urządzenie StorSimple czas może być zsynchronizowany z aktualną godziną w strefie czasowej.
+- Sklonuj limit czasu zadania: Limit czasu skryptu StorSimple, jeśli Klonowanie woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
+- Błąd synchronizacji: StorSimple skrypty występuje informujący o tym, że kopie zapasowe zakończyły się niepowodzeniem, mimo że kopii zapasowej zakończy się w portalu. Możliwą przyczyną tego może być, że urządzenie StorSimple czas może być zsynchronizowany z aktualną godziną w strefie czasowej.
    
-   > [!IMPORTANT]
-   > Synchronizacja czasu urządzenia z aktualną godziną w strefie czasowej.
+  > [!IMPORTANT]
+  > Synchronizacja czasu urządzenia z aktualną godziną w strefie czasowej.
    
-   - Błąd trybu failover urządzenia: Skrypt StorSimple może zakończyć się niepowodzeniem, jeśli istnieje urządzenie w tryb failover, gdy działa w planie odzyskiwania.
+- Błąd trybu failover urządzenia: Skrypt StorSimple może zakończyć się niepowodzeniem, jeśli istnieje urządzenie w tryb failover, gdy działa w planie odzyskiwania.
    
-   > [!IMPORTANT]
-   > Po zakończeniu pracy w trybie failover urządzenia, należy ponownie uruchomić planu odzyskiwania.
+  > [!IMPORTANT]
+  > Po zakończeniu pracy w trybie failover urządzenia, należy ponownie uruchomić planu odzyskiwania.
 
 
 ## <a name="summary"></a>Podsumowanie

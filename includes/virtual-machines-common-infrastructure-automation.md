@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d8ada53082b0ccc95d472b43a0ae2ff63cd76a3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53027930"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125351"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Korzystanie z narzędzi automatyzacji infrastruktury z maszynami wirtualnymi na platformie Azure
 Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą skalę, zwykle jest pożądane jakąś formę automatyzacji. Istnieje wiele narzędzi i rozwiązań, które umożliwiają automatyzację wdrażania całej infrastruktury platformy Azure i zarządzanie cyklem życia. W tym artykule przedstawiono niektóre z narzędzi automatyzacji infrastruktury, które można użyć na platformie Azure. Te narzędzia często mieści się w jednej z następujących metod:
@@ -60,7 +60,7 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
  Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy upewnij wdrożenia pakietu cloud-init, a konfiguracje bezproblemowej współpracy z maszyn wirtualnych i zestawów skalowania maszyn wirtualnych. W poniższej tabeli przedstawiono bieżącej dostępności obrazów pakietu cloud-init, włączone na platformie Azure:
 
 | Wydawca | Oferta | SKU | Wersja | gotowe pakietu cloud-init
-|:--- |:--- |:--- |:--- |:--- |:--- |
+|:--- |:--- |:--- |:--- |:--- 
 |Canonical |UbuntuServer |16.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |14.04.5-LTS |najnowsza |tak |
 |CoreOS |CoreOS |Stable |najnowsza |tak |
