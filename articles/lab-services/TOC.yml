@@ -75,6 +75,8 @@ items:
       href: classroom-labs/how-to-use-classroom-lab.md
     - name: Tworzenie harmonogramów i zarządzanie nimi
       href: classroom-labs/how-to-create-schedules.md
+    - name: Tworzenie środowiska z wieloma maszynami wirtualnymi w maszynie wirtualnej szablonu
+      href: classroom-labs/how-to-enable-multi-vm-environment.md
   - name: Laboratoria DevTest Labs
     items:
     - name: Określanie grupy zasobów dla maszyn wirtualnych laboratorium
@@ -248,9 +250,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: Często zadawane pytania
       href: devtest-lab-faq.md
-ms.openlocfilehash: b3cdd68b2a2b842da89a9866dc473c6d0c924e26
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 773faa503cb3fc29ef07b310b5ee2a7af5089d49
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307942"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189008"

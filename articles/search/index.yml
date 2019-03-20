@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8caeb6ad79f82ecb86da313cca901cb3a16b6d5c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004710"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199873"
 documentType: LandingData
 title: Dokumentacja usługi Azure Search
 metadata:
@@ -57,12 +57,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">Informacje o interfejsach API REST umiejętności poznawczych</a>
+    - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indeksowanie z użyciem sztucznej inteligencji (Cognitive Services)</a>
     - html: <a href="/azure/search/search-howto-dotnet-sdk">Jak korzystać z usługi Azure Search za pomocą platformy .NET</a>
     - html: <a href="/azure/search/search-indexer-tutorial">Indeksowanie zawartości usługi Azure SQL Database za pomocą platformy .NET</a>
     - html: <a href="/azure/search/search-semi-structured-data">Indeksowanie częściowo ustrukturyzowanych danych w usłudze Azure Blob Storage za pomocą architektury REST</a>
-    - html: <a href="/azure/search/search-synonyms-tutorial-sdk">Dodawanie synonimów w celu zwracania wyników dla równoważnych terminów</a>
-    - html: <a href="/azure/search/search-autocomplete-tutorial">Dodawanie funkcji automatycznego uzupełniania do pola wyszukiwania za pomocą platformy .NET</a>
     - html: <a href="/azure/search/search-get-started-portal">Korzystanie z portalu w celu indeksowania i testowania zapytań</a>
 - title: Dokumentacja
   items:
