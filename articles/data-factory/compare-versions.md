@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: f898b21e84cc57327991c97d2694e9e44e608417
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014900"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432706"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porównanie bieżącej wersji usługi Azure Data Factory z wersją 1 usługi Data Factory
 Ten artykuł zawiera porównanie bieżącej wersji usługi Data Factory z wersją 1 usługi Data Factory. Aby zapoznać się z wprowadzeniem do bieżącej wersji usługi Data Factory, zobacz [Wprowadzenie do usługi Data Factory](introduction.md). Aby zapoznać się z wprowadzeniem do wersji 1 usługi Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](v1/data-factory-introduction.md). 
@@ -118,7 +118,7 @@ Aby uzyskać więcej informacji, zobacz [Difference between custom activity in D
 
 - **.NET SDK**: zestaw .NET SDK został zaktualizowany w bieżącej wersji.
 
-- **PowerShell**: polecenia cmdlet programu PowerShell zostały zaktualizowane w bieżącej wersji. Polecenia cmdlet w bieżącej wersji zawierają w nazwie ciąg **DataFactoryV2**, na przykład: Get-AzureRmDataFactoryV2. 
+- **PowerShell**: polecenia cmdlet programu PowerShell zostały zaktualizowane w bieżącej wersji. Polecenia cmdlet w bieżącej wersji zawierają w nazwie ciąg **DataFactoryV2**, na przykład: Get-AzDataFactoryV2. 
 
 - **Python SDK**: ten zestaw SDK jest nowym składnikiem w bieżącej wersji.
 
@@ -145,5 +145,5 @@ Roli współautora usługi Data Factory w wersji 1 nie można użyć do tworzeni
 W bieżącej wersji można także monitorować fabryki danych za pomocą usługi [Azure Monitor](monitor-using-azure-monitor.md). Nowe polecenia cmdlet programu PowerShell obsługują monitorowanie [środowisk Integration Runtime](monitor-integration-runtime.md). Zarówno wersja 1, jak i wersja 2, obsługują monitorowanie wizualne za pośrednictwem aplikacji monitorowania, którą można uruchamiać z witryny Azure Portal.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się, jak utworzyć fabrykę danych, wykonując instrukcje krok po kroku zamieszczone w następujących przewodnikach Szybki start: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 

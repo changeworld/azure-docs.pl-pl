@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 69aecf3d107000408f98f8ae53968355943c2881
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440815"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075002"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Polecenia Windows - CMD i programu PowerShell
 
@@ -247,8 +247,8 @@ Aby uruchomić program PowerShell w SAC, po dojściu wiersz polecenia, wpisz:
 
 `powershell <enter>`
 
->[!CAUTION]
-Usuń moduł PSReadLine z sesji programu PowerShell, przed uruchomieniem innych poleceń programu PowerShell. Jest to znany problem gdzie dodatkowe znaki mogą być wprowadzane w tekście wklejonych ze Schowka, jeśli PSReadLine jest uruchomiony w sesji programu PowerShell w SAC.
+> [!CAUTION]
+> Usuń moduł PSReadLine z sesji programu PowerShell, przed uruchomieniem innych poleceń programu PowerShell. Jest to znany problem gdzie dodatkowe znaki mogą być wprowadzane w tekście wklejonych ze Schowka, jeśli PSReadLine jest uruchomiony w sesji programu PowerShell w SAC.
 
 Najpierw sprawdź, czy PSReadLine jest załadowany. Jest on ładowany domyślnie w systemie Windows Server 2016, Windows 10 i nowszych wersjach systemu Windows. Tylko byłaby obecne w starszych wersjach Windows ręcznie je zainstalowano. 
 

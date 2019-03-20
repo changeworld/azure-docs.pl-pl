@@ -17,12 +17,12 @@ ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5d3f44c870314f5ea2dc236a52173caa821263
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2f9045246366d8595dd47b1e1be50e966859759b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193904"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58163912"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych
 
@@ -110,7 +110,7 @@ Aby skonfigurować dołączanie hybrydowe do usługi Azure AD przy użyciu progr
 
 3. Na stronie **Przegląd** kliknij pozycję **Dalej**. 
 
-    ![Omówienie](./media/hybrid-azuread-join-federated-domains/13.png)
+    ![Przegląd](./media/hybrid-azuread-join-federated-domains/13.png)
 
 4. Na stronie **Łączenie z usługą Azure AD** wprowadź poświadczenia administratora globalnego dzierżawy usługi Azure AD, a następnie kliknij pozycję **Dalej**.   
 
@@ -128,7 +128,7 @@ Aby skonfigurować dołączanie hybrydowe do usługi Azure AD przy użyciu progr
 
     b. Wybierz usługę uwierzytelniania. Nie musisz wybierać serwera usług AD FS w sytuacji, gdy organizacja ma klientów systemu Windows 10 na wyłączność i skonfigurowano synchronizację komputera/urządzenia lub organizacja używa bezproblemowego logowania jednokrotnego.
 
-    d. Kliknij pozycję **Dodaj**, aby wprowadzić poświadczenia administratora przedsiębiorstwa.
+    c. Kliknij pozycję **Dodaj**, aby wprowadzić poświadczenia administratora przedsiębiorstwa.
 
 
 7. Na stronie **Systemy operacyjne urządzeń** wybierz systemy operacyjne używane przez urządzenia w środowisku usługi Active Directory, a następnie kliknij pozycję **Dalej**. 
@@ -226,7 +226,7 @@ Jeśli występują problemy z ukończeniem dołączania hybrydowego do usługi A
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie dołączenia hybrydowego do usługi Azure Active Directory dla domen zarządzanych](hybrid-azuread-join-managed-domains.md)

@@ -3,21 +3,20 @@ title: Tworzenie fabryki danych na platformie Azure przy użyciu szablonu usług
 description: W tym samouczku przedstawiono tworzenie przykładowego potoku usługi Azure Data Factory przy użyciu szablonu usługi Azure Resource Manager.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: c3a9864a901d44d0c84c6946c55e5dc2c700cbac
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 1d4eb3d2978be98d81b42dd66a75b21563c23a1a
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447603"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576654"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Samouczek: tworzenie fabryki danych na platformie Azure przy użyciu szablonu usługi Azure Resource Manager
 
@@ -34,7 +33,9 @@ W tym przewodniku Szybki start wyjaśniono, jak skorzystać z szablonu usługi A
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
@@ -51,7 +52,7 @@ Utwórz plik JSON o nazwie **ADFTutorialARM.json** w folderze **C:\ADFTutorial**
 ```json
 {
     "contentVersion": "1.0.0.0",
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "parameters": {
         "dataFactoryName": {
             "type": "string",
@@ -328,7 +329,7 @@ Utwórz plik JSON o nazwie **ADFTutorialARM-Parameters.json** zawierający param
 W programie PowerShell uruchom następujące polecenie, aby wdrożyć jednostki usługi Data Factory przy użyciu utworzonego wcześniej szablonu usługi Resource Manager.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
 ```
 
 Zostaną wyświetlone dane wyjściowe podobne do tych w następującym przykładzie:
@@ -368,9 +369,9 @@ Szablon umożliwia wdrożenie następujących jednostek usługi Data Factory:
 - Potok z działaniem kopiowania
 - Wyzwalacz potoku
 
-Wdrożony wyzwalacz jest w stanie zatrzymanym. Można go uruchomić, na przykład korzystając z polecenia cmdlet **Start-AzureRmDataFactoryV2Trigger** programu PowerShell. Poniższa procedura zawiera szczegółowy opis kroków:
+Wdrożony wyzwalacz jest w stanie zatrzymanym. Jedną z metod Uruchom wyzwalacz jest użycie **Start AzDataFactoryV2Trigger** polecenia cmdlet programu PowerShell. Poniższa procedura zawiera szczegółowy opis kroków:
 
-1. W oknie programu PowerShell utwórz zmienną do przechowywania nazwy grupy zasobów. Skopiuj poniższe polecenie do okna programu PowerShell i naciśnij klawisz ENTER. Jeśli podano inną nazwę grupy zasobów, uruchamiając polecenie New-AzureRmResourceGroupDeployment, zaktualizuj tę wartość.
+1. W oknie programu PowerShell utwórz zmienną do przechowywania nazwy grupy zasobów. Skopiuj poniższe polecenie do okna programu PowerShell i naciśnij klawisz ENTER. Jeśli podano inną nazwę grupy zasobów dla polecenia New-AzResourceGroupDeployment, zaktualizuj tę wartość.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -388,7 +389,7 @@ Wdrożony wyzwalacz jest w stanie zatrzymanym. Można go uruchomić, na przykła
 4. Po podaniu nazw fabryki danych i wyzwalacza, pobierz **stan wyzwalacza**, uruchamiając następujące polecenie programu PowerShell:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
     Oto przykładowe dane wyjściowe:
@@ -405,7 +406,7 @@ Wdrożony wyzwalacz jest w stanie zatrzymanym. Można go uruchomić, na przykła
 5. **Uruchom wyzwalacz**. Wyzwalacz uruchamia potok zdefiniowany w szablonie o pełnej godzinie. Na przykład jeśli polecenie zostanie wykonane o godzinie 14:25, po raz pierwszy wyzwalacz uruchomi potok o godzinie 15:00. Następnie potok będzie uruchamiany co godzinę do czasu zakończenia podanego dla wyzwalacza.
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     Oto przykładowe dane wyjściowe:
@@ -416,10 +417,10 @@ Wdrożony wyzwalacz jest w stanie zatrzymanym. Można go uruchomić, na przykła
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Uruchom ponownie polecenie Get-AzureRmDataFactoryV2Trigger, aby upewnić się, że wyzwalacz został uruchomiony.
+6. Upewnij się, że wyzwalacz został uruchomiony za pomocą polecenia Get-AzDataFactoryV2Trigger ponownie.
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     Oto przykładowe dane wyjściowe:
@@ -466,7 +467,7 @@ Wdrożony wyzwalacz jest w stanie zatrzymanym. Można go uruchomić, na przykła
 8. Po sprawdzeniu stanu uruchomienia zatrzymaj wyzwalacz. Wyzwalacz uruchamia potok co godzinę. Przy każdym uruchomieniu potok kopiuje ten sam plik z folderu wejściowego do folderu wyjściowego. Aby zatrzymać wyzwalacz, uruchom następujące polecenie w oknie programu PowerShell.
     
     ```powershell
-    Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Stop-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
@@ -604,7 +605,7 @@ Należy zdefiniować potok, który kopiuje dane z jednego zestawu danych obiekt�
 
 #### <a name="trigger"></a>Wyzwalacz
 
-Należy zdefiniować wyzwalacz, który uruchamia potok co godzinę. Wdrożony wyzwalacz jest w stanie zatrzymanym. Uruchom wyzwalacz za pomocą polecenia cmdlet **Start-AzureRmDataFactoryV2Trigger**. Więcej informacji na temat wyzwalaczy zawiera artykuł [Wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md#triggers).
+Należy zdefiniować wyzwalacz, który uruchamia potok co godzinę. Wdrożony wyzwalacz jest w stanie zatrzymanym. Uruchom wyzwalacz za pomocą **Start AzDataFactoryV2Trigger** polecenia cmdlet. Więcej informacji na temat wyzwalaczy zawiera artykuł [Wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md#triggers).
 
 ```json
 {
@@ -647,17 +648,17 @@ W ramach samouczka został utworzony szablon służący do definiowania jednoste
 Przykład:
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
 ```
 
 Należy zauważyć, że pierwsze polecenie używa pliku parametrów dla środowiska programistycznego, drugie dla środowiska testowego, a trzecie dla środowiska produkcyjnego.
 
 Można także ponownie użyć szablonu do wykonywania powtarzających się zadań. Na przykład może być potrzebne utworzenie wielu fabryk danych z co najmniej jednym potokiem, które implementują tę samą logikę, lecz każda fabryka danych używa innego konta magazynu platformy Azure. W tym scenariuszu do tworzenia fabryk danych jest używany ten sam szablon w tym samym środowisku (programistycznym, testowym lub produkcyjnym) w połączeniu z różnymi plikami parametrów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-dot-net.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach.

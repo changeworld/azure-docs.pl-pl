@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: dfff159d7e0204a752935458a2b4845499c0d652
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ecfd86a7e4a8ef97663cc930906fd909b6f0fae8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453403"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011118"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta za pomocą języka Python dla usługi Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ Odszyfrowywanie za pomocą techniki koperty działa w następujący sposób:
 4. Klucz szyfrowania zawartości (CEK) jest następnie używany do odszyfrowywania danych zaszyfrowanych użytkownika.
 
 ## <a name="encryption-mechanism"></a>Mechanizm szyfrowania
-Korzysta z biblioteki klienta usługi storage [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) w celu zaszyfrowania danych użytkownika. W szczególności [Cipher Block Chaining (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) trybu przy użyciu standardu AES. Każdy usługi działa nieco inaczej, omówimy każdy z nich w tym miejscu.
+Korzysta z biblioteki klienta usługi storage [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) w celu zaszyfrowania danych użytkownika. W szczególności [Cipher Block Chaining (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) trybu przy użyciu standardu AES. Każdy usługi działa nieco inaczej, omówimy każdy z nich w tym miejscu.
 
 ### <a name="blobs"></a>Obiekty blob
 Biblioteka klienta obsługuje obecnie szyfrowanie tylko całe obiektów blob. Ściślej mówiąc, szyfrowanie jest obsługiwane, gdy użytkownicy używają **tworzenie*** metody. Pliki do pobrania, zarówno pełne i pobrania zakresu są obsługiwane i równoległe przekazywanie i pobieranie jest dostępna.
@@ -91,9 +91,9 @@ Szyfrowanie danych tabeli działa w następujący sposób:
 2. Biblioteka klienta generuje losowe inicjowania wektora (IV) 16-bajtowy wraz z kluczem szyfrowania zawartości (CEK) 32-bitowej dla każdej jednostki i wykonuje szyfrowanie koperty na poszczególnych właściwości w celu zaszyfrowania przez wyprowadzanie nowy IV dla właściwości. Zaszyfrowane właściwości jest przechowywana jako dane binarne.
 3. Opakowana CEK i niektóre metadane dodatkowego szyfrowania są następnie zapisywane jako dwa dodatkowe właściwości zastrzeżonych. Pierwsze zastrzeżone właściwości (\_ClientEncryptionMetadata1) jest właściwością ciągu, która przechowuje informacje dotyczące IV, wersji i klucz opakowana. Drugi zastrzeżone właściwości (\_ClientEncryptionMetadata2) jest binarny właściwość, która przechowuje informacje dotyczące właściwości, które są szyfrowane. Informacje przedstawione w tej drugiej właściwości (\_ClientEncryptionMetadata2) jest zaszyfrowany.
 4. Ze względu na te dodatkowe właściwości zastrzeżonych wymagana na potrzeby szyfrowania użytkownicy mogą teraz mieć tylko 250 właściwości niestandardowych zamiast 252. Całkowity rozmiar jednostki musi być mniejszy niż 1MB.
-   
+
    Należy zauważyć, że tylko ciąg właściwości mogą być szyfrowane. Inne typy właściwości mają być szyfrowane, musi zostać przekonwertowana na ciągi. Zaszyfrowane ciągi są przechowywane w usłudze jako właściwości binarnych i są konwertowane do ciągi (nieprzetworzone ciągi, nie EntityProperties z typem EdmType.STRING) po odszyfrowywania.
-   
+
    W przypadku tabel, oprócz zasad szyfrowania użytkownicy muszą określić właściwości, które mają być szyfrowane. To jest możliwe dzięki przechowywaniu tych właściwości w obiektach TableEntity z wartością typu EdmType.STRING i szyfrowania ma wartość true lub ustawienie encryption_resolver_function obiektu tableservice. Mechanizm rozpoznawania szyfrowania jest funkcją, która przyjmuje klucza partycji, klucz wiersza i nazwę właściwości i zwraca wartość boolean wskazującą, czy mają być szyfrowane tej właściwości. Podczas szyfrowania biblioteki klienckiej użyje tych informacji do określania, czy właściwości mają być szyfrowane podczas zapisu w sieci. Delegat udostępnia także możliwości logiki wokół jak zaszyfrowane właściwości. (Na przykład, jeśli X, następnie szyfrować właściwość A; w przeciwnym razie szyfrowanie właściwości, A i B.) Należy pamiętać, że nie jest konieczne może przekazać tę informację podczas odczytywania lub podczas badania jednostki.
 
 ### <a name="batch-operations"></a>Operacji wsadowych
@@ -105,9 +105,9 @@ Należy pamiętać, że jednostki są szyfrowane, ponieważ są one wstawiane do
 > [!NOTE]
 > Ponieważ obiekty są szyfrowane, nie można uruchomić zapytania, które filtrują na właściwością szyfrowaną.  Przy próbie wyniki będą nieprawidłowe, ponieważ usługa może podjąć próbę porównać dane zaszyfrowane przy użyciu nieszyfrowanego danych.
 > 
->
-Aby wykonać operacje zapytań, należy określić klucza programu rozpoznawania nazw, który jest w stanie rozpoznać wszystkich kluczy w zestawie wyników. Biblioteka klienta będzie sygnalizować błąd, jeśli nie można rozpoznać jednostki zawarte w wyniku zapytania do dostawcy. Dla dowolnego zapytania, który wykonuje projekcje po stronie serwera biblioteki klienckiej spowoduje dodanie właściwości metadanych szyfrowania specjalne (\_ClientEncryptionMetadata1 i \_ClientEncryptionMetadata2), aby domyślnie zaznaczonych kolumnach.
-
+> 
+> Aby wykonać operacje zapytań, należy określić klucza programu rozpoznawania nazw, który jest w stanie rozpoznać wszystkich kluczy w zestawie wyników. Biblioteka klienta będzie sygnalizować błąd, jeśli nie można rozpoznać jednostki zawarte w wyniku zapytania do dostawcy. Dla dowolnego zapytania, który wykonuje projekcje po stronie serwera biblioteki klienckiej spowoduje dodanie właściwości metadanych szyfrowania specjalne (\_ClientEncryptionMetadata1 i \_ClientEncryptionMetadata2), aby domyślnie zaznaczonych kolumnach.
+> 
 > [!IMPORTANT]
 > Należy pamiętać o te ważne punkty, gdy za pomocą szyfrowania po stronie klienta:
 > 
@@ -115,8 +115,6 @@ Aby wykonać operacje zapytań, należy określić klucza programu rozpoznawania
 > * W przypadku tabel istnieje ograniczenie podobne. Uważaj nie aktualizować właściwości zaszyfrowane bez aktualizowania metadanych szyfrowania.
 > * Jeśli ustawisz metadane w obiekcie blob zaszyfrowanego może zastąpić metadane związane z szyfrowaniem, wymaganego do odszyfrowywania, ponieważ ustawienie metadanych nie jest dodatek. Dotyczy to również migawki Unikaj określania metadanych podczas tworzenia migawki obiektu blob zaszyfrowany. Jeśli należy ustawić metadane, należy wywołać **get_blob_metadata** metodą najpierw uzyskać bieżące metadane szyfrowania i uniknąć współbieżne operacje podczas ustawiania metadanych.
 > * Włącz **require_encryption** flagi na obiekt usługi dla użytkowników, którzy powinien działać wyłącznie z zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz poniżej.
-> 
-> 
 
 Biblioteka klienta magazynu oczekuje, że podana KEK oraz rozpoznawania klucza implementacji interfejsu. [Usługa Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pomoc techniczna dotycząca zarządzania KEK języka Python jest w stanie oczekiwania i zostanie zintegrowana z tej biblioteki, po zakończeniu.
 
@@ -136,10 +134,10 @@ Program rozpoznawania nazw kluczy co najmniej musi implementować metodę zwraca
 
 * Dla celów szyfrowania jest on używany zawsze i Brak klucza spowoduje wystąpienie błędu.
 * Do odszyfrowywania:
-  
+
   * Mechanizm rozpoznawania klucza jest wywoływana, jeśli określony, aby pobrać klucz. Jeśli program rozpoznawania nazw jest określony, ale nie ma mapowania dla identyfikatora klucza, zostanie zgłoszony błąd.
   * Jeśli program rozpoznawania nazw nie jest określony, ale klucz jest określony, klucz jest używany, jeśli pasuje do identyfikatora wymaganego identyfikatora klucza. Jeśli identyfikator nie jest zgodny, zostanie zgłoszony błąd.
-    
+
     Przykłady szyfrowania w azure.storage.samples <fix URL>pokazują bardziej szczegółowe scenariusz end-to-end dla obiektów blob, kolejek i tabel.
       Przykładowe implementacje KEK i rozpoznawania nazw kluczy są udostępniane w przykładowych plików oraz KeyWrapper KeyResolver odpowiednio.
 

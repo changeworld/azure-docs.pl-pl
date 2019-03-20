@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 87f608163e20d98179eb6c666158386a99858eeb
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096674"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188394"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Wtyczka usługi Service Fabric na potrzeby tworzenia aplikacji Java w środowisku Eclipse
 Eclipse jest jednym z najczęściej używanych zintegrowanych środowisk projektowych (IDE, integrated development environment) przez programistów języka Java. W tym artykule omówiono konfigurowanie środowiska projektowego Eclipse do pracy z usługą Azure Service Fabric. Dowiedz się, jak zainstalować wtyczkę usługi Service Fabric oraz utworzyć aplikację usługi Service Fabric i wdrożyć ją w lokalnym lub zdalnym klastrze usługi Service Fabric w środowisku Eclipse. 
@@ -41,7 +41,7 @@ Zainstaluj program Eclipse Neon lub nowszy z [witryny programu Eclipse](https://
 -   Aby sprawdzić i zainstalować aktualizacje środowiska Eclipse, wybierz opcję **Help** > **Check for Updates** (Pomoc — Sprawdź dostępność aktualizacji).
 
 Zainstaluj wtyczkę usługi Service Fabric: w środowisku Eclipse przejdź do pozycji **Help** > **Install New Software** (Pomoc > Instaluj nowe oprogramowanie).
-1. W polu **Work with** (Praca z) wpisz adres **http://dl.microsoft.com/eclipse**.
+1. W **pracować** wprowadź https:\//dl.microsoft.com/eclipse.
 2. Kliknij pozycję **Add** (Dodaj).
 
    ![Wtyczka usługi Service Fabric dla środowiska Eclipse][sf-eclipse-plugin-install]
@@ -54,7 +54,7 @@ Jeśli wtyczka usługi Service Fabric jest już zainstalowana, zainstaluj najnow
 3. Po zaktualizowaniu wtyczki usługi Service Fabric odśwież także projekt narzędzia Gradle.  Kliknij prawym przyciskiem myszy pozycję **build.gradle**, a następnie wybierz polecenie **Odśwież**.
 
 > [!NOTE]
-> Jeśli instalowanie lub aktualizowanie wtyczki usługi Service Fabric przebiega wolno, przyczyną może być ustawienie środowiska Eclipse. Środowisko Eclipse zbiera metadane dotyczące wszystkich zmian w witrynach aktualizowania, które są zarejestrowane w wystąpieniu środowiska Eclipse. Aby przyspieszyć proces sprawdzania i instalowania aktualizacji wtyczki usługi Service Fabric, wybierz pozycję **Available Software Sites** (Dostępne witryny z oprogramowaniem). Usuń zaznaczenie pól wyboru dla wszystkich witryn poza witryną wskazującą lokalizację wtyczki usługi Service Fabric (http://dl.microsoft.com/eclipse/azure/servicefabric).
+> Jeśli instalowanie lub aktualizowanie wtyczki usługi Service Fabric przebiega wolno, przyczyną może być ustawienie środowiska Eclipse. Środowisko Eclipse zbiera metadane dotyczące wszystkich zmian w witrynach aktualizowania, które są zarejestrowane w wystąpieniu środowiska Eclipse. Aby przyspieszyć proces sprawdzania i instalowania aktualizacji wtyczki usługi Service Fabric, wybierz pozycję **Available Software Sites** (Dostępne witryny z oprogramowaniem). Usuń zaznaczenie pól wyboru dla wszystkich witryn poza witryną wskazującą lokalizację wtyczki usługi Service Fabric (https://dl.microsoft.com/eclipse/azure/servicefabric).
 
 > [!NOTE]
 >Jeśli środowisko Eclipse nie działa zgodnie z oczekiwaniami na komputerze Mac (lub wymagane są uprawnienia administratora), przejdź do folderu **ECLIPSE_INSTALLATION_PATH**, a następnie do podfolderu **Eclipse.app/Contents/MacOS**. Uruchom środowisko Eclipse, uruchamiając element `./eclipse`.
@@ -141,8 +141,8 @@ Aby opublikować aplikację w chmurze, wykonaj następujące kroki:
    - `ClientKey` Pól powinien wskazywać w formacie PEM PEM lub Key pliku na komputerze lokalnym, który zawiera klucz prywatny dla certyfikatu klienta lub klastra.
    - `ClientCert` Pól powinien wskazywać w formacie PEM PEM lub CRT pliku na komputerze lokalnym, zawierający dane certyfikatu dla klienta lub klastra. certyfikat. 
 
-    ```bash
-    {
+     ```bash
+     {
          "ClusterConnectionParameters":
          {
             "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
@@ -150,8 +150,8 @@ Aby opublikować aplikację w chmurze, wykonaj następujące kroki:
             "ClientKey": "[path_to_your_pem_file_on_local_machine]",
             "ClientCert": "[path_to_your_pem_file_on_local_machine]"
          }
-    }
-    ```
+     }
+     ```
 
 2. Kliknij prawym przyciskiem myszy aplikację usługi Service Fabric, a następnie wybierz **usługi Service Fabric**.
 3. W menu kontekstowym kliknij **Publikuj aplikację...** .
@@ -159,8 +159,8 @@ Aby opublikować aplikację w chmurze, wykonaj następujące kroki:
 
     ![Okno dialogowe publikowania — chmura](./media/service-fabric-get-started-eclipse/cloudjson.png)
 
-4.  Możesz śledzić postęp operacji publikowania w oknie konsoli.
-5.  Aby sprawdzić, czy aplikacja jest uruchomiona, Otwórz narzędzie Service Fabric Explorer w klastrze usługi Azure, w oknie przeglądarki. W powyższym przykładzie będzie to: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Rozwiń **aplikacje** węzła i upewnij się, że aplikacja jest uruchomiona. 
+4. Możesz śledzić postęp operacji publikowania w oknie konsoli.
+5. Aby sprawdzić, czy aplikacja jest uruchomiona, Otwórz narzędzie Service Fabric Explorer w klastrze usługi Azure, w oknie przeglądarki. W powyższym przykładzie będzie to: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Rozwiń **aplikacje** węzła i upewnij się, że aplikacja jest uruchomiona. 
 
 
 W klastrach systemu Linux bezpieczne Jeśli Twoja aplikacja usług Reliable Services, należy również skonfigurować certyfikat, który umożliwia wywołanie środowiska uruchomieniowego usługi Service Fabric interfejsów API usługi. Aby dowiedzieć się więcej, zobacz [skonfigurować aplikację usług Reliable Services, aby działały w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: 94931546f3b8ddb18a5381de3baa31d66376badb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810724"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107461"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 Usługa Azure Backup ma kilka wbudowanych korzyści, które zmniejsza koszty magazynu i sieci podczas początkowego pełne kopie zapasowe danych na platformę Azure. Początkowa pełne kopie zapasowe zazwyczaj przesyłanie dużych ilości danych, a także wymagają większej przepustowości sieci w porównaniu do kolejnych kopii zapasowych, które przenieść tylko różnic/przyrostowa. Proces rozmieszczania w trybie offline usługa Azure Backup można użyć dysków do przekazania danych kopii zapasowej w trybie offline na platformę Azure.
@@ -73,7 +73,7 @@ W tej sekcji opisano przepływ pracy w trybie offline z kopii zapasowej, dzięki
 
     ![Ekran importowania](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
-  Opis danych wejściowych jest następująca:
+   Opis danych wejściowych jest następująca:
 
     * **Lokalizacja tymczasowa**: Lokalizacja magazynu tymczasowego, na którym jest zapisany początkowa kopia zapasowa. Lokalizacja tymczasowa mogą znajdować się na udziale sieciowym lub na komputerze lokalnym. Jeśli kopia komputera i komputera źródłowego są różne, zalecane jest, określ pełną ścieżkę sieciową lokalizacji przejściowej.
     * **Konto magazynu w usłudze Azure Resource Manager**: Nazwa typu konta magazynu usługi Resource Manager w dowolnej subskrypcji platformy Azure.
@@ -81,7 +81,7 @@ W tej sekcji opisano przepływ pracy w trybie offline z kopii zapasowej, dzięki
     * **Identyfikator subskrypcji platformy Azure**: Identyfikator subskrypcji platformy Azure, w której tworzone jest konto usługi Azure Storage.
     * **Nazwa zadania importowania platformy Azure**: Unikatowa nazwa importu platformy Azure, które usługi i usługi Azure Backup śledzić transferu danych na dyskach na platformie Azure. 
   
-  Podaj dane wejściowe na ekranie, a następnie kliknij przycisk **dalej**. Zapisz podane *Lokalizacja tymczasowa* i *nazwę zadania importowania platformy Azure*, jak te informacje są wymagane, aby przygotować dyski.
+   Podaj dane wejściowe na ekranie, a następnie kliknij przycisk **dalej**. Zapisz podane *Lokalizacja tymczasowa* i *nazwę zadania importowania platformy Azure*, jak te informacje są wymagane, aby przygotować dyski.
 
 2. Po wyświetleniu monitu zaloguj się do subskrypcji platformy Azure. Musisz się zalogować, aby usługa Azure Backup można utworzyć aplikacji usługi Azure Active Directory i zapewniają wymagane uprawnienia dostępu do usługi Azure Import.
 
@@ -106,14 +106,14 @@ W tej sekcji opisano przepływ pracy w trybie offline z kopii zapasowej, dzięki
 
 1. Przejdź do katalogu i skopiuj **AzureOfflineBackupDiskPrep** katalogu do innego komputera, na którym podłączonych dysków SATA. Na komputerze z podłączonych dysków SATA należy zapewnić:
 
-    * Komputer kopiowania ma dostęp do lokalizacji tymczasowej dla przepływu pracy w trybie offline rozmieszczania przy użyciu tej samej ścieżki sieciowej została podana w **inicjowanie kopii zapasowej offline** przepływu pracy.
-    * Funkcja BitLocker jest włączona na komputerze kopiowania.
-    * Zainstalowano program Azure PowerShell numer 3.7.0.
-    * Najnowsze zgodne przeglądarki (Microsoft Edge lub Internet Explorer 11) są zainstalowane, i języka JavaScript jest włączony. 
-    * Komputer kopiowania można uzyskać dostęp do witryny Azure portal. Jeśli to konieczne, komputer kopia może być taka sama jak komputera źródłowego.
+   * Komputer kopiowania ma dostęp do lokalizacji tymczasowej dla przepływu pracy w trybie offline rozmieszczania przy użyciu tej samej ścieżki sieciowej została podana w **inicjowanie kopii zapasowej offline** przepływu pracy.
+   * Funkcja BitLocker jest włączona na komputerze kopiowania.
+   * Zainstalowano program Azure PowerShell numer 3.7.0.
+   * Najnowsze zgodne przeglądarki (Microsoft Edge lub Internet Explorer 11) są zainstalowane, i języka JavaScript jest włączony. 
+   * Komputer kopiowania można uzyskać dostęp do witryny Azure portal. Jeśli to konieczne, komputer kopia może być taka sama jak komputera źródłowego.
     
-    > [!IMPORTANT] 
-    > Jeśli komputer źródłowy jest maszyną wirtualną, na komputerze kopii musi być inny serwer fizyczny lub komputerze klienckim z komputera źródłowego.
+     > [!IMPORTANT] 
+     > Jeśli komputer źródłowy jest maszyną wirtualną, na komputerze kopii musi być inny serwer fizyczny lub komputerze klienckim z komputera źródłowego.
 
 2. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień na tym komputerze kopiowania *AzureOfflineBackupDiskPrep* narzędzie katalogu jako bieżący katalog, a następnie uruchom następujące polecenie:
 
@@ -137,11 +137,11 @@ W tej sekcji opisano przepływ pracy w trybie offline z kopii zapasowej, dzięki
     Narzędzie następnie rozpoczyna się przygotować dysku i skopiowanie danych kopii zapasowej. Może być konieczne dołączanie dodatkowych dysków, po wyświetleniu monitu przez narzędzie, w przypadku, gdy podana dysku nie ma wystarczającej ilości miejsca dla danych kopii zapasowej. <br/>
 
     Na koniec pomyślne wykonanie narzędzia wiersza polecenia zawiera trzy informacje:
-    1. Co najmniej jeden dysk, podane są przygotowywane do wysłania do platformy Azure. 
-    2. Otrzymasz potwierdzenie, że utworzono zadanie importu. Zadania importu używa podanej nazwy.
-    3. Narzędzie wyświetla adres wysyłkowy dla centrum danych platformy Azure.
+   1. Co najmniej jeden dysk, podane są przygotowywane do wysłania do platformy Azure. 
+   2. Otrzymasz potwierdzenie, że utworzono zadanie importu. Zadania importu używa podanej nazwy.
+   3. Narzędzie wyświetla adres wysyłkowy dla centrum danych platformy Azure.
 
-    ![Zakończenie przygotowywania dysku platformy Azure](./media/backup-azure-backup-import-export/console2.png)<br/>
+      ![Zakończenie przygotowywania dysku platformy Azure](./media/backup-azure-backup-import-export/console2.png)<br/>
 
 6. Po zakończeniu wykonywania polecenia należy zaktualizować informacje o wysyłce.
 

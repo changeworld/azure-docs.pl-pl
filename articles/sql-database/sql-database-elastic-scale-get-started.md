@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 245cbafb42becc230f5e480cfc8e6fa41c352190
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7c2e3b2bea7ddef3dfbf69f85b499d9a60158689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309387"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999119"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Wprowadzenie do narzędzi elastycznej bazy danych
 
@@ -28,7 +28,7 @@ Ten dokument stanowi wprowadzenie do środowiska dewelopera w systemie [Bibliote
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 * Java Developer Kit (JDK), wersja 1.8 lub nowszego
-* [Maven](http://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi)
 * Serwer bazy danych SQL na platformie Azure lub lokalnego wystąpienia programu SQL Server
 
 ### <a name="download-and-run-the-sample-app"></a>Pobieranie i uruchamianie przykładowej aplikacji
@@ -74,7 +74,7 @@ Aby dodać biblioteki klienckiej Projekt narzędzia Maven, dodaj następującą 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 * Program Visual Studio 2012 lub nowszym za pomocą języka C#. Pobierz bezpłatną wersję na [pobieranie Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-* NuGet 2.7 lub nowszego. Aby uzyskać najnowszą wersję, zobacz [Instalowanie systemu NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).
+* NuGet 2.7 lub nowszego. Aby uzyskać najnowszą wersję, zobacz [Instalowanie systemu NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
 
 ### <a name="download-and-run-the-sample-app"></a>Pobieranie i uruchamianie przykładowej aplikacji
 
@@ -132,7 +132,7 @@ Aby uzyskać więcej informacji na temat narzędzia elastycznych baz danych zoba
   * [Narzędzia elastycznych baz danych dla usług SQL Azure - Entity Framework integracji](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Skrypty dotyczące elastyczności w Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [Elastyczne skalowanie anonsu](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
-* Channel 9: [Elastyczne skalowanie — omówienie wideo](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Channel 9: [Elastyczne skalowanie — omówienie wideo](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * Forum dyskusyjne: [Forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * Aby zmierzyć wydajność: [Liczniki wydajności dla menedżera map fragmentów](sql-database-elastic-database-client-library.md)
 

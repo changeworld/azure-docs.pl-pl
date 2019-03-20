@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f5e7a923ed5eb692f5fb05082c73b969081c739b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820998"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891590"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Ocenianie wydajności modelu w usłudze Azure Machine Learning Studio
 
@@ -83,7 +83,7 @@ Po uruchomieniu eksperymentu, można sprawdzić wyniki oceny, kliknij port wyjś
 Rysunek 4. Wyników krzyżowego sprawdzania poprawności modelu regresji.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Ocena Model klasyfikacji binarnej
-W przypadku klasyfikacji binarnej Zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {FAŁSZ, PRAWDA}, {dodatnie, ujemne}. Przyjęto założenie, otrzymują zestaw treści dla dorosłych pracowników z niektórymi demograficznych i zatrudnienia zmienne i zostanie wyświetlony monit do prognozowania poziomu dochodu binarne zmiennej o wartości {"< = 50 K", "> 50 K"}. Innymi słowy ujemna klasa reprezentuje pracowników, którzy tworzą mniejsza lub równa 50 K rocznie i dodatnią klasa reprezentuje innym pracownikom. Tak jak w scenariuszu regresji firma Microsoft będzie wytrenuj model, oceniać niektóre dane i ocena wyników. Główną różnicą jest wybór metryk, które oblicza Azure Machine Learning Studio i danych wyjściowych. Aby zilustrować scenariusza prognozowania poziomu przychodów, użyjemy [treści dla dorosłych](http://archive.ics.uci.edu/ml/datasets/Adult) zestawu danych, aby utworzyć eksperyment Studio i ocena wydajności modelu regresji logistycznej dwuklasowych, powszechnie używane Klasyfikator binarny.
+W przypadku klasyfikacji binarnej Zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {FAŁSZ, PRAWDA}, {dodatnie, ujemne}. Przyjęto założenie, otrzymują zestaw treści dla dorosłych pracowników z niektórymi demograficznych i zatrudnienia zmienne i zostanie wyświetlony monit do prognozowania poziomu dochodu binarne zmiennej o wartości {"< = 50 K", "> 50 K"}. Innymi słowy ujemna klasa reprezentuje pracowników, którzy tworzą mniejsza lub równa 50 K rocznie i dodatnią klasa reprezentuje innym pracownikom. Tak jak w scenariuszu regresji firma Microsoft będzie wytrenuj model, oceniać niektóre dane i ocena wyników. Główną różnicą jest wybór metryk, które oblicza Azure Machine Learning Studio i danych wyjściowych. Aby zilustrować scenariusza prognozowania poziomu przychodów, użyjemy [treści dla dorosłych](https://archive.ics.uci.edu/ml/datasets/Adult) zestawu danych, aby utworzyć eksperyment Studio i ocena wydajności modelu regresji logistycznej dwuklasowych, powszechnie używane Klasyfikator binarny.
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
 Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning Studio:
@@ -133,7 +133,7 @@ Rysunek 8. Weryfikowanie między Model klasyfikacji binarnej.
 Rysunek 9. Wyników krzyżowego sprawdzania poprawności Klasyfikator binarny.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Ocenianie modeli klasyfikacji Wieloklasowej
-W tym eksperymencie użyjemy popularnej [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") zestawu danych zawierającego wystąpienia 3 różne rodzaje (grupy) roślin iris. Istnieją 4 wartości funkcji (słupka długość/szerokość i długość/szerokość płatka) dla każdego wystąpienia. W poprzednich doświadczeń możemy przeszkolonych i przetestowane modele przy użyciu tych samych zestawów danych. W tym miejscu użyjemy [podziału danych] [ split] modułu do tworzenia 2 podzbiorów danych, uczenie się na pierwszym i ocenianie i oceny w drugiej. Zestawu danych Iris jest publicznie dostępny w [UCI Machine Learning repozytorium](http://archive.ics.uci.edu/ml/index.html)i można je pobrać za pomocą [importu danych] [ import-data] modułu.
+W tym eksperymencie użyjemy popularnej [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") zestawu danych zawierającego wystąpienia 3 różne rodzaje (grupy) roślin iris. Istnieją 4 wartości funkcji (słupka długość/szerokość i długość/szerokość płatka) dla każdego wystąpienia. W poprzednich doświadczeń możemy przeszkolonych i przetestowane modele przy użyciu tych samych zestawów danych. W tym miejscu użyjemy [podziału danych] [ split] modułu do tworzenia 2 podzbiorów danych, uczenie się na pierwszym i ocenianie i oceny w drugiej. Zestawu danych Iris jest publicznie dostępny w [UCI Machine Learning repozytorium](https://archive.ics.uci.edu/ml/index.html)i można je pobrać za pomocą [importu danych] [ import-data] modułu.
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
 Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning Studio:

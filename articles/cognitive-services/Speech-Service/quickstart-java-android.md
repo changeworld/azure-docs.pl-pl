@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 2ee5028e0766ec52c407bf0ef0e18885c11734d8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 43ace5e56234ed01ca008050c0efdf17b9a5a081
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961059"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848868"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
@@ -30,7 +30,7 @@ Zestaw Speech SDK jest obecnie zgodny z urządzeniami z systemem Android oraz 32
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia kroków tego przewodnika Szybki start potrzebujesz klucza subskrypcji usługi rozpoznawania mowy. Możesz go uzyskać bezpłatnie. Aby uzyskać szczegółowe informacje, zobacz temat [Try the Speech service for free](get-started.md) (Wypróbuj bezpłatnie usługę rozpoznawania mowy).
+Należy klucz subskrypcji usług przetwarzania mowy, aby ukończyć ten przewodnik Szybki Start. Możesz go uzyskać bezpłatnie. Zobacz [bezpłatnego wypróbowania usługi mowy](get-started.md) Aby uzyskać szczegółowe informacje.
 
 ## <a name="create-and-configure-a-project"></a>Tworzenie i konfigurowanie projektu
 
@@ -137,16 +137,16 @@ Tekst i graficzna reprezentacja interfejsu użytkownika powinny teraz wyglądać
 
    ![Zrzut ekranu okna Deployment Target (Cel wdrożenia)](media/sdk/qs-java-android-12-deploy.png)
 
-Naciśnij przycisk w aplikacji, aby przejść do sekcji rozpoznawania mowy. Kolejne 15 sekund mowy w języku angielskim zostanie wysłanych do usługi rozpoznawania mowy i poddanych transkrypcji. Wynik zostanie wyświetlony w aplikacji Android i w oknie programu logcat w programie Android Studio.
+Naciśnij przycisk w aplikacji, aby przejść do sekcji rozpoznawania mowy. Dalej 15 sekund mowy w języku angielskim, zostaną wysłane do usług przetwarzania mowy i transkrybowanego. Wynik zostanie wyświetlony w aplikacji Android i w oknie programu logcat w programie Android Studio.
 
 ![Zrzut ekranu aplikacji Android](media/sdk/qs-java-android-13-gui-on-device.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

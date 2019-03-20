@@ -1,6 +1,6 @@
 ---
-title: SAP ASCS/SCS wystąpienia identyfikatora SID multi wysokiej dostępności z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure | Dokumentacja firmy Microsoft
-description: Identyfikator SID Multi wysoka dostępność dla wystąpienia SAP ASCS/SCS z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure
+title: SAP ASCS/SCS wystąpienia — wiele identyfikatorów SID wysokiej dostępności z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure | Dokumentacja firmy Microsoft
+description: Wysoka dostępność — wiele identyfikatorów SID dla wystąpienia SAP ASCS/SCS przy użyciu systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee5dc346def58ea7362a763d088145eb0d04a608
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 777fda4317abf431c83b7328084085841eb1f757
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656734"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007980"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -56,7 +56,7 @@ ms.locfileid: "34656734"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -204,98 +204,98 @@ ms.locfileid: "34656734"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>SAP ASCS/SCS wystąpienia identyfikatora SID multi wysokiej dostępności z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure
+# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>SAP ASCS/SCS wystąpienia — wiele identyfikatorów SID wysokiej dostępności z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure
 
 > ![Windows][Logo_Windows] Windows
 >
 
-We wrześniu 2016 roku firma Microsoft wydała gdzie wielu wirtualnych adresów IP można zarządzać za pomocą funkcji [Azure wewnętrznego modułu równoważenia obciążenia][load-balancer-multivip-overview]. Ta funkcja jest już istnieje w Azure zewnętrznej usługi równoważenia obciążenia. 
+We wrześniu 2016 roku firma Microsoft opublikowała program funkcji, w której wiele wirtualnych adresów IP można zarządzać za pomocą [Azure wewnętrznego modułu równoważenia obciążenia][load-balancer-multivip-overview]. Ta funkcja już istnieje w module równoważenia obciążenia zewnętrznych platformy Azure. 
 
-W przypadku wdrożenia SAP, możesz korzystać wewnętrznego modułu równoważenia obciążenia do utworzenia konfiguracji klastra systemu Windows dla wystąpień usługi centralnej SAP (ASCS/SCS).
+W przypadku wdrożenia SAP musi umożliwia utworzenie konfiguracji klastra Windows dla wystąpień usług SAP Central Services (ASCS/SCS) wewnętrznego modułu równoważenia obciążenia.
 
-W tym artykule przedstawiono sposób przenoszenia z jednej instalacji ASCS/SCS do konfiguracji wielu SID SAP, instalując dodatkowe wystąpienia SAP ASCS/SCS w klastrze do istniejącego klastra systemu Windows Server Failover Clustering (WSFC) z udostępnionego dysku. Po zakończeniu tego procesu skonfigurowano SAP identyfikatora SID multi klastra.
+Ten artykuł koncentruje się na temat sposobu przenieść z jednej instalacji ASCS/SCS konfiguracji SAP — wiele identyfikatorów SID, instalując dodatkowe wystąpienia SAP ASCS/SCS klastra do istniejącego klastra systemu Windows Server Failover Clustering (WSFC) z udostępnionym dyskiem. Po zakończeniu tego procesu skonfigurowano klaster SAP — wiele identyfikatorów SID.
 
 > [!NOTE]
 > Ta funkcja jest dostępna tylko w modelu wdrażania usługi Azure Resource Manager.
 >
->Istnieje limit liczby prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
+>Ma limitu liczby prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
 >
->Maksymalna liczba wystąpień SAP ASCS/SCS w jednym klastrze usługi WSFC jest taki sam, jak maksymalna liczba prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
+>Maksymalna liczba wystąpień SAP ASCS/SCS w jednym klastrze usługi WSFC jest równy maksymalna liczba prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
 >
 
-Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatne IP frontonu dla usługi równoważenia obciążenia" w [limity sieci: usługi Azure Resource Manager][networking-limits-azure-resource-manager].
+Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatny adres IP frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Został już skonfigurowany klaster usługi WSFC do użycia dla jednego wystąpienia SAP ASCS/SCS za pomocą **udziału plików**, jak pokazano na tym diagramie.
+Został już skonfigurowany klaster usługi WSFC do użycia przy użyciu jednego wystąpienia SAP ASCS/SCS **udziału plików**, jak pokazano na poniższym diagramie.
 
-![Wystąpienie programu SAP ASCS/SCS wysokiej dostępności][sap-ha-guide-figure-6001]
+![Wystąpienia SAP ASCS/SCS wysokiej dostępności][sap-ha-guide-figure-6001]
 
 > [!IMPORTANT]
 > Instalator musi spełniać następujące warunki:
-> * Wystąpienia SAP ASCS/SCS muszą współużytkować tego samego klastra usługi WSFC.
-> * Każdy system zarządzania bazami danych (DBMS) identyfikatora SID musi mieć własny dedykowany klaster usługi WSFC.
-> * Serwery aplikacji SAP, które należą do jednego systemu SAP identyfikatora SID musi mieć własne dedykowanych maszyn wirtualnych.
+> * Wystąpienia SAP ASCS/SCS muszą współużytkować ten sam klaster usługi WSFC.
+> * Każdy system zarządzania bazami danych (DBMS) identyfikator SID musi mieć swój własny dedykowany klaster usługi WSFC.
+> * Serwery aplikacji SAP, które należą do jednego systemu SAP identyfikatora SID muszą mieć własne dedykowanych maszyn wirtualnych.
 
-## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>Architektura identyfikatora SID multi SAP ASCS/SCS z udostępnionego dysku
+## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>Architektura — wiele identyfikatorów SID SAP ASCS/SCS z udostępnionym dyskiem
 
-Celem jest zainstalowanie wielu ASCS ABAP SAP lub SAP Java SCS klastrowanego wystąpienia tego samego klastra usługi WSFC, jako ilustrowane tutaj:
+Celem jest zainstalowanie wielu SAP ABAP ASCS lub SAP Java SCS klastrowanych wystąpień w tym samym klastrze usługi WSFC, jak przedstawiono poniżej:
 
-![Wiele wystąpień programu SAP ASCS/SCS klastrowanego na platformie Azure][sap-ha-guide-figure-6002]
+![Wiele wystąpień SAP ASCS/SCS klastra na platformie Azure][sap-ha-guide-figure-6002]
 
-Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatne IP frontonu dla usługi równoważenia obciążenia" w [limity sieci: usługi Azure Resource Manager][networking-limits-azure-resource-manager].
+Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatny adres IP frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager].
 
-Zakończenie pozioma z dwoma systemami SAP wysokiej dostępności będzie wyglądać następująco:
+Pełne orientacja pozioma, z dwoma systemami SAP o wysokiej dostępności będzie wyglądać następująco:
 
-![SAP wysokiej dostępności multi-SID Instalatorowi systemu SAP identyfikatorów SID][sap-ha-guide-figure-6003]
+![Konfiguracja wysokiej dostępności — wiele identyfikatorów SID SAP za pomocą dwóch systemów SAP identyfikatorów SID][sap-ha-guide-figure-6003]
 
-## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> Przygotowanie infrastruktury scenariusz identyfikatora SID multi SAP
+## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> Przygotowywanie infrastruktury SAP — wiele identyfikatorów SID scenariusz
 
 Aby przygotować infrastrukturę, można zainstalować dodatkowe wystąpienia SAP ASCS/SCS z następującymi parametrami:
 
 | Nazwa parametru | Wartość |
 | --- | --- |
-| SAP ASCS/SCS SID |PR1-lb-ascs |
-| System DBMS SAP wewnętrznego modułu równoważenia obciążenia | PR5 |
-| Nazwa hosta wirtualnego SAP | cl-pr5-sap |
-| Adres IP hosta wirtualnego SAP ASCS/SCS (adres IP usługi równoważenia obciążenia Azure dodatkowe) | 10.0.0.50 |
-| SAP ASCS/SCS liczby wystąpień | 50 |
-| Port sondy ILB dodatkowe wystąpienia SAP ASCS/SCS | 62350 |
+| SAP ASCS/SCS SID |pr1-lb-ascs |
+| Systemu SAP DBMS wewnętrznego modułu równoważenia obciążenia | PR5 |
+| Nazwa hosta wirtualnego SAP | pr5-sap-cl |
+| Adres IP hosta wirtualnego SAP ASCS/SCS (adres IP modułu równoważenia dodatkowego obciążenia platformy Azure) | 10.0.0.50 |
+| Numer wystąpienia SAP ASCS/SCS | 50 |
+| Port sondy wewnętrznego modułu równoważenia obciążenia na potrzeby dodatkowe wystąpienia SAP ASCS/SCS | 62350 |
 
 > [!NOTE]
-> Każdy adres IP wystąpienia klastra programu SAP ASCS/SCS, wymaga port sondy unikatowy. Na przykład jeśli jeden adres IP na Azure wewnętrznego modułu równoważenia obciążenia używa portu sondowania 62300, żaden adres IP w tej usługi równoważenia obciążenia można użyć portu sondowania 62300.
+> W przypadku wystąpienia klastra SAP ASCS/SCS poszczególnych adresów IP wymaga port sondy unikatowy. Na przykład jeśli jeden adres IP w usłudze Azure wewnętrznego modułu równoważenia obciążenia używa port sondy 62300, żaden adres IP tego modułu równoważenia obciążenia można użyć port sondy 62300.
 >
->W naszym celów ponieważ port sondy 62300 jest już zarezerwowany, użyto port sondy 62350.
+>Dla naszych potrzeb ponieważ port sondy 62300 jest już zarezerwowany, używamy port sondy 62350.
 
-Można zainstalować dodatkowe wystąpienia SAP ASCS/SCS w istniejącym klastrze usługi WSFC z dwoma węzłami:
+Można zainstalować dodatkowe wystąpienia SAP ASCS/SCS w istniejącym klastrze usługi WSFC, z dwoma węzłami:
 
 | Roli maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Statyczny adres IP |
 | --- | --- | --- |
-| Pierwszym węźle klastra dla wystąpienia ASCS/SCS |pr1-ascs-0 |10.0.0.10 |
-| Drugi węzeł klastra dla wystąpienia ASCS/SCS |PR1-ascs-1 |10.0.0.9 |
+| Pierwszym węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-0 |10.0.0.10 |
+| Drugim węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-1 |10.0.0.9 |
 
-### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Utwórz nazwę hosta wirtualnego wystąpienia klastra programu SAP ASCS/SCS na serwerze DNS
+### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS na serwerze DNS
 
-Można utworzyć wpis DNS dla nazwy hostów wirtualnych wystąpienia ASCS/SCS przy użyciu następujących parametrów:
+Można utworzyć wpis DNS dla nazwy hosta wirtualnego wystąpienia ASCS/SCS przy użyciu następujących parametrów:
 
 | Nowa nazwa hosta wirtualnego SAP ASCS/SCS | Skojarzony adres IP |
-| --- | --- | --- |
-|cl-pr5-sap |10.0.0.50 |
+| --- | --- |
+|pr5-sap-cl |10.0.0.50 |
 
-Nowa nazwa hosta i adresu IP są wyświetlane w Menedżerze DNS, jak pokazano na poniższym zrzucie ekranu:
+Nowe nazwy hosta i adresu IP są wyświetlane w Menedżerze DNS, jak pokazano na poniższym zrzucie ekranu:
 
-![Lista Menedżera DNS wyróżnianie zdefiniowanych wpis DNS dla nowej SAP ASCS/SCS klastra wirtualnego nazwę i adres TCP/IP][sap-ha-guide-figure-6004]
+![Lista Menedżera DNS wyróżnianie zdefiniowanych wpis DNS dla nowej SAP ASCS/SCS klastra wirtualnego nazwy i adresu TCP/IP][sap-ha-guide-figure-6004]
 
 > [!NOTE]
-> Nowy adres IP przypisany do nazwy hostów wirtualnych dodatkowe wystąpienia ASCS/SCS musi być taka sama jak nowego adresu IP przypisanego do usługi równoważenia obciążenia SAP Azure.
+> Nowy adres IP, który zostanie przypisany do nazwy hostów wirtualnych dodatkowe wystąpienia ASCS/SCS musi być taka sama jak nowy adres IP przypisany do modułu równoważenia obciążenia SAP Azure.
 >
 >W naszym scenariuszu adres IP jest 10.0.0.50.
 
-### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>Dodaj adres IP do istniejących Azure wewnętrznego modułu równoważenia obciążenia przy użyciu programu PowerShell
+### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>Dodaj adres IP do istniejącego modułu równoważenia obciążenia wewnętrznego platformy Azure przy użyciu programu PowerShell
 
-Aby utworzyć więcej niż jedno wystąpienie SAP ASCS/SCS w tym samym klastrze usługi WSFC, Dodaj adres IP do istniejących Azure wewnętrznego modułu równoważenia obciążenia za pomocą programu PowerShell. Każdy adres IP wymaga własne reguły równoważenia obciążenia, port sondy frontonu puli adresów IP i puli zaplecza.
+Aby utworzyć więcej niż jedno wystąpienie SAP ASCS/SCS, w tym samym klastrze usługi WSFC, Dodaj do istniejącego modułu równoważenia obciążenia platformy Azure wewnętrzny adres IP za pomocą programu PowerShell. Poszczególnych adresów IP wymaga własne reguły równoważenia obciążenia, port sondy, puli adresów IP frontonu i puli zaplecza.
 
-Poniższy skrypt dodaje nowy adres IP do istniejącej usługi równoważenia obciążenia. Zaktualizuj zmienne środowiska PowerShell. Skrypt tworzy wszystkie wymagane równoważenia obciążenia reguły dla wszystkich portów SAP ASCS/SCS.
+Poniższy skrypt dodaje nowy adres IP do istniejącego modułu równoważenia obciążenia. Zaktualizuj zmienne programu PowerShell dla danego środowiska. Skrypt utworzy wszystkie wymagane reguł równoważenia obciążenia dla wszystkich portów SAP ASCS/SCS.
 
 ```powershell
 
@@ -375,65 +375,65 @@ $ILB | Set-AzureRmLoadBalancer
 Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
-Po uruchomieniu skryptu, wyniki są wyświetlane w portalu Azure, jak pokazano na poniższym zrzucie ekranu:
+Po uruchomieniu skryptu wyniki są wyświetlane w witrynie Azure portal, jak pokazano na poniższym zrzucie ekranu:
 
-![Nowa pula IP frontonu, w portalu Azure][sap-ha-guide-figure-6005]
+![Nowej puli adresów IP frontonu w witrynie Azure portal][sap-ha-guide-figure-6005]
 
-### <a name="add-disks-to-cluster-machines-and-configure-the-sios-cluster-share-disk"></a>Dodawanie dysków do klastra maszyny i skonfiguruj SIOS dysku udziału klastra
+### <a name="add-disks-to-cluster-machines-and-configure-the-sios-cluster-share-disk"></a>Dodaj dyski do klastrowania maszyn i skonfigurować oprogramowanie SIOS dysk udział klastra
 
-Należy dodać nowy dysk klastra udziału dla każdego dodatkowego wystąpienia SAP ASCS/SCS. Dla systemu Windows Server 2012 R2 dysk udziału klastra usługi WSFC obecnie w użyciu jest rozwiązanie programowe SIOS DataKeeper.
+Należy dodać nowy dysk udział klastra, za każde dodatkowe wystąpienie SAP ASCS/SCS. Dla systemu Windows Server 2012 R2 dysku udział klastra usługi WSFC, obecnie w użyciu jest rozwiązanie programowe oprogramowanie SIOS DataKeeper.
 
 Wykonaj następujące czynności:
-1. Dodaj dodatkowy dysk lub dyski o tym samym rozmiarze (co trzeba paskowych) do każdego z węzłów klastra, a ich format.
-2. Skonfigurować SIOS DataKeeper replikacji magazynu.
+1. Dodaj dodatkowy dysk lub dyski w tej samej wielkości (który jest potrzebny stripe) do każdego z węzłów klastra i sformatować je.
+2. Konfigurowanie replikacji magazynu z oprogramowanie SIOS DataKeeper.
 
-W tej procedurze przyjęto założenie, zainstalowano SIOS DataKeeper na komputerach klastra usługi WSFC. Po zainstalowaniu go teraz należy skonfigurować replikacji między komputerami. Proces jest szczegółowo opisane w [zainstalować SIOS DataKeeper Cluster Edition dla dysku udziału klastra SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].  
+Ta procedura zakłada, że już zainstalowano oprogramowanie SIOS DataKeeper na komputerach klastra usługi WSFC. Po zainstalowaniu go teraz należy skonfigurować replikację między maszynami. Ten proces opisano szczegółowo w temacie [zainstalować oprogramowanie SIOS DataKeeper Cluster Edition dla udziału dysk klastrowy SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].  
 
-![DataKeeper synchroniczne dublowania dla nowych ASCS SAP/SCS współużytkować dysku][sap-ha-guide-figure-6006]
+![DataKeeper synchroniczne, dublowania dla nowych SAP ASCS/SCS współużytkować dysku][sap-ha-guide-figure-6006]
 
-### <a name="deploy-vms-for-sap-application-servers-and-the-dbms-cluster"></a>Wdrażanie maszyn wirtualnych dla programu SAP aplikacji serwerów i klastrów systemu DBMS
+### <a name="deploy-vms-for-sap-application-servers-and-the-dbms-cluster"></a>Wdrażanie maszyn wirtualnych dla serwerów aplikacji SAP i klastra systemu DBMS
 
-Aby ukończyć przygotowanie infrastruktury do drugiego systemu SAP, wykonaj następujące czynności:
+Aby zakończyć przygotowania infrastruktury do drugiego systemu SAP, wykonaj następujące czynności:
 
-1. Wdrażanie dedykowanych maszyn wirtualnych dla serwerów aplikacji SAP i umieścić je w grupie własne dedykowane dostępności.
-2. Wdrażanie dedykowanych maszyn wirtualnych klastra systemu DBMS i umieścić je w grupie własne dedykowane dostępności.
+1. Wdrażanie dedykowanych maszyn wirtualnych dla serwerów aplikacji SAP i umieścić je w jego własnej grupie dostępności dedykowanych.
+2. Wdrażanie dedykowanych maszyn wirtualnych dla klastra systemu DBMS i umieścić je w jego własnej grupie dostępności dedykowanych.
 
-## <a name="install-an-sap-netweaver-multi-sid-system"></a>Zainstaluj system identyfikatora SID multi SAP NetWeaver
+## <a name="install-an-sap-netweaver-multi-sid-system"></a>Zainstaluj system SAP NetWeaver — wiele identyfikatorów SID
 
-Opis ukończenia procesu instalacji drugiego systemu SAP SID2, zobacz [SAP NetWeaver HA na instalację klastra pracy awaryjnej systemu Windows i udostępnionego dysku dla wystąpienia programu SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk].
+Aby uzyskać opis kompletnego procesu instalacji drugiego systemu SAP SID2, zobacz [instalacji SAP NetWeaver wysokiej dostępności w klastrze pracy awaryjnej Windows i udostępnionym dyskiem na potrzeby wystąpienia SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk].
 
-Procedury ogólne wygląda następująco:
+Procedura wysokiego poziomu, jest następujący:
 
-1. [Instalowanie programu SAP przy użyciu wystąpienia ASCS/SCS wysokiej dostępności][sap-high-availability-installation-wsfc-shared-disk-install-ascs].  
- W tym kroku jest instalowany przy użyciu wystąpienia ASCS/SCS wysokiej dostępności na istniejący węzeł klastra usługi WSFC 1 SAP.
+1. [Instalowanie SAP za pomocą wystąpienia ASCS/SCS wysokiej dostępności][sap-high-availability-installation-wsfc-shared-disk-install-ascs].  
+ W tym kroku zainstalujesz SAP w wystąpieniach ASCS/SCS wysokiej dostępności na istniejący węzeł klastra usługi WSFC: 1.
 
-2. [Modyfikowanie profilu SAP wystąpienia ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile].
+2. [Modyfikowanie profilu SAP ASCS/SCS wystąpienia][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile].
 
 3. [Skonfiguruj port sondy][sap-high-availability-installation-wsfc-shared-disk-add-probe-port].  
- W tym kroku konfigurowana jest zasób klastra SAP port sondy SAP SID2 IP przy użyciu programu PowerShell. Tej konfiguracji należy wykonać na jednym z węzłów klastra SAP ASCS/SCS.
+ W tym kroku konfigurowana jest zasobem klastra SAP port sondy SAP SID2 IP przy użyciu programu PowerShell. Wykonaj tę konfigurację w jednym z węzłów klastra SAP ASCS/SCS.
 
 4. Zainstaluj wystąpienie bazy danych.  
- Aby zainstalować drugi klaster, wykonaj czynności opisane w przewodniku instalacji SAP.
+ Aby zainstalować drugi klaster, postępuj zgodnie z instrukcjami w przewodniku instalacji SAP.
 
-5. Zainstaluj drugiego węzła klastra.  
- W tym kroku jest instalowany przy użyciu wystąpienia ASCS/SCS wysokiej dostępności na istniejący węzeł klastra usługi WSFC 2 SAP. Aby zainstalować drugi klaster, wykonaj czynności opisane w przewodniku instalacji SAP.
+5. Zainstaluj na drugim węźle klastra.  
+ W tym kroku zainstalujesz SAP w wystąpieniach ASCS/SCS wysokiej dostępności na istniejący węzeł klastra usługi WSFC 2. Aby zainstalować drugi klaster, postępuj zgodnie z instrukcjami w przewodniku instalacji SAP.
 
-6. Otwórz porty zapory systemu Windows dla portu wystąpienia i badania SAP ASCS/SCS.  
-    Na obu węzłów klastra używane dla wystąpień SAP ASCS/SCS otwierasz wszystkie porty zapory systemu Windows, które są używane przez SAP ASCS/SCS. Porty te SAP ASCS/SCS wystąpienia są wymienione w rozdziale [SAP ASCS / portów SCS][sap-net-weaver-ports-ascs-scs-ports].
+6. Otwórz porty zapory Windows dla portu usługi SAP ASCS/SCS wystąpienia i badania.  
+    W obu węzłach klastra, które są używane dla wystąpień SAP ASCS/SCS otwierasz wszystkie porty zapory Windows, które są używane przez SAP ASCS/SCS. Te porty wystąpienia SAP ASCS/SCS są wyświetlane w rozdziale [SAP ASCS / SCS porty][sap-net-weaver-ports-ascs-scs-ports].
 
-    Aby uzyskać listę wszystkich portów SAP, zobacz [porty TCP/IP wszystkich produktów SAP][sap-net-weaver-ports].  
+    Aby uzyskać listę wszystkich pozostałych portach SAP, zobacz [porty TCP/IP wszystkich produktów SAP][sap-net-weaver-ports].  
 
-    Również otworzyć portu sondy modułu równoważenia obciążenia wewnętrznego platformy Azure, który 62350 w naszym scenariuszu jest. Opisano [w tym artykule][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port].
+    Również otworzyć port sondy modułu równoważenia obciążenia wewnętrznego platformy Azure, czyli 62350 w naszym scenariuszu. Jest on opisany [w tym artykule][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port].
 
-7. [Zmień typ uruchamiania wystąpienia usługi systemu Windows rozliczenie odbioru otrzymania SAP obliczone][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type].
+7. [Zmień typ uruchomienia wystąpienia usługi Windows w programie SAP oceniane otrzymania rozliczenie odbioru][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type].
 
-8. Zainstaluj serwer aplikacji głównej SAP nowy dedykowany maszynie Wirtualnej, zgodnie z opisem w podręczniku instalacji SAP.  
+8. Zainstaluj na serwerze podstawowym aplikacji SAP na nowy dedykowany maszyny Wirtualnej, zgodnie z opisem w podręczniku instalacji SAP.  
 
-9. Zainstaluj serwer aplikacji dodatkowe SAP nowy dedykowany maszynie Wirtualnej, zgodnie z opisem w podręczniku instalacji SAP.
+9. Zainstaluj serwer dodatkowych aplikacji SAP na nowy dedykowany maszyny Wirtualnej, zgodnie z opisem w podręczniku instalacji SAP.
 
-10. [Testowanie trybu failover wystąpienia programu SAP ASCS/SCS i replikacji SIOS][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
+10. [Testowanie trybu failover wystąpienia SAP ASCS/SCS i replikacji oprogramowanie SIOS][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Ograniczenia sieciowe: Usługa Azure Resource Manager][networking-limits-azure-resource-manager]
-- [Moduł równoważenia obciążenia z wieloma wirtualnymi adresami IP na platformie Azure][load-balancer-multivip-overview]
+- [Limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager]
+- [Wielu adresów VIP dla usługi Azure Load Balancer][load-balancer-multivip-overview]

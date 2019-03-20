@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: 8c4d890633a8d588b51f876a361a77e6533b5db4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533154"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099022"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Przy użyciu usługi równoważenia obciążenia na platformie Azure
 
@@ -68,26 +68,26 @@ Na poniższym diagramie przedstawiono architekturę tego scenariusza:
 1. W witrynie Azure portal kliknij pozycję **Utwórz zasób** > **sieć** > **profilu usługi Traffic Manager**  >   **Utwórz**.
 2. Wprowadź następujące informacje podstawowe:
 
-  * **Nazwa**: Nadaj profilu usługi Traffic Manager DNS prefiks nazwy.
-  * **Metody routingu opartego na**: Wybierz zasady metody routingu ruchu. Aby uzyskać więcej informacji o metodach, zobacz [metody routingu ruchu w usłudze Traffic Manager](traffic-manager-routing-methods.md).
-  * **Subskrypcja**: Wybierz subskrypcję, która zawiera profil.
-  * **Grupa zasobów**: Wybierz grupę zasobów, która zawiera profil. Może być nowej lub istniejącej grupy zasobów.
-  * **Lokalizacja grupy zasobów**: Usługa Traffic Manager jest globalna i niepowiązana do lokalizacji. Jednakże należy określić region dla grupy, w którym znajduje się metadane skojarzone z profilem usługi Traffic Manager. Ta lokalizacja nie ma wpływu na dostępność profilu w czasie wykonywania.
+   * **Nazwa**: Nadaj profilu usługi Traffic Manager DNS prefiks nazwy.
+   * **Metody routingu opartego na**: Wybierz zasady metody routingu ruchu. Aby uzyskać więcej informacji o metodach, zobacz [metody routingu ruchu w usłudze Traffic Manager](traffic-manager-routing-methods.md).
+   * **Subskrypcja**: Wybierz subskrypcję, która zawiera profil.
+   * **Grupa zasobów**: Wybierz grupę zasobów, która zawiera profil. Może być nowej lub istniejącej grupy zasobów.
+   * **Lokalizacja grupy zasobów**: Usługa Traffic Manager jest globalna i niepowiązana do lokalizacji. Jednakże należy określić region dla grupy, w którym znajduje się metadane skojarzone z profilem usługi Traffic Manager. Ta lokalizacja nie ma wpływu na dostępność profilu w czasie wykonywania.
 
 3. Kliknij przycisk **Utwórz** do generowania profilu usługi Traffic Manager.
 
-  ![Blok "Tworzenie usługi Traffic Manager"](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+   ![Blok "Tworzenie usługi Traffic Manager"](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
 ### <a name="step-2-create-the-application-gateways"></a>Krok 2: Tworzenie bramy aplikacji
 
 1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **Utwórz zasób** > **sieć** > **Application Gateway**.
 2. Wprowadź następujące podstawowe informacje na temat bramy application gateway:
 
-  * **Nazwa**: Nazwa bramy aplikacji.
-  * **Rozmiar jednostki SKU**: Rozmiar bramy aplikacji, dostępne jako mały, średni lub duży.
-  * **Liczba wystąpień**: Liczba wystąpień, wartość z zakresu od 2 do 10.
-  * **Grupa zasobów**: Grupa zasobów, zawierającą bramy aplikacji. Może być istniejącą grupę zasobów lub do nowego.
-  * **Lokalizacja**: Region bramy application Gateway, która jest w tej samej lokalizacji co grupa zasobów. Lokalizacja jest ważna, ponieważ sieć wirtualna i publiczny adres IP musi znajdować się w tej samej lokalizacji co brama.
+   * **Nazwa**: Nazwa bramy aplikacji.
+   * **Rozmiar jednostki SKU**: Rozmiar bramy aplikacji, dostępne jako mały, średni lub duży.
+   * **Liczba wystąpień**: Liczba wystąpień, wartość z zakresu od 2 do 10.
+   * **Grupa zasobów**: Grupa zasobów, zawierającą bramy aplikacji. Może być istniejącą grupę zasobów lub do nowego.
+   * **Lokalizacja**: Region bramy application Gateway, która jest w tej samej lokalizacji co grupa zasobów. Lokalizacja jest ważna, ponieważ sieć wirtualna i publiczny adres IP musi znajdować się w tej samej lokalizacji co brama.
 3. Kliknij przycisk **OK**.
 4. Definiowanie sieci wirtualnej, podsieć, adres IP frontonu i konfiguracji odbiornika dla usługi application gateway. W tym scenariuszu jest adres IP frontonu **publicznych**, co umożliwia ma zostać dodany jako punkt końcowy do profilu usługi Traffic Manager później.
 5. Konfigurowanie odbiornika z jednym z następujących opcji:
@@ -104,11 +104,11 @@ Po wybraniu puli zaplecza, bramę aplikacji, który jest skonfigurowany z reguł
 2. W obszarze **ustawienia**, wybierz opcję **pule zaplecza**, a następnie wybierz pozycję **Dodaj** można dodać maszyny wirtualne, które chcesz skojarzyć z pulami zaplecza warstwa sieci web.
 3. Wprowadź nazwę puli zaplecza i wszystkie adresy IP maszyn, które znajdują się w puli. W tym scenariuszu połączono dwóch pul serwerów zaplecza maszyn wirtualnych.
 
-  ![Usługa Application Gateway "Dodaj pulę zaplecza"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+   ![Usługa Application Gateway "Dodaj pulę zaplecza"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
 4. W obszarze **ustawienia** bramy application Gateway wybierz **reguły**, a następnie kliknij przycisk **oparty na ścieżkach** przycisk, aby dodać regułę.
 
-  ![Przycisk "Path na podstawie" reguł bramy aplikacji](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+   ![Przycisk "Path na podstawie" reguł bramy aplikacji](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
 5. Skonfiguruj regułę, podając następujące informacje.
 
@@ -138,13 +138,13 @@ W tym scenariuszu usługi Traffic Manager jest podłączony do bramy aplikacji (
 1. Otwórz swój profil usługi Traffic Manager. Aby to zrobić, Szukaj w grupie zasobów lub wyszukaj nazwę profilu usługi Traffic Manager z **wszystkie zasoby**.
 2. W okienku po lewej stronie wybierz **punktów końcowych**, a następnie kliknij przycisk **Dodaj** Dodawanie punktu końcowego.
 
-  ![Przycisk usługi Traffic Manager punkty końcowe "Dodaj"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+   ![Przycisk usługi Traffic Manager punkty końcowe "Dodaj"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
 3. Utworzenie punktu końcowego, wprowadzając następujące informacje:
 
-  * **Typ**: Wybierz typ punktu końcowego w celu równoważenia obciążenia. W tym scenariuszu wybierz **punkt końcowy platformy Azure** ponieważ połączono go z wystąpieniami bramy aplikacji, które zostały wcześniej skonfigurowane.
-  * **Nazwa**: Wprowadź nazwę punktu końcowego.
-  * **Typ zasobu docelowego**: Wybierz **publiczny adres IP** a następnie w obszarze **zasób docelowy**, wybierz publiczny adres IP bramy aplikacji, który został wcześniej skonfigurowany.
+   * **Typ**: Wybierz typ punktu końcowego w celu równoważenia obciążenia. W tym scenariuszu wybierz **punkt końcowy platformy Azure** ponieważ połączono go z wystąpieniami bramy aplikacji, które zostały wcześniej skonfigurowane.
+   * **Nazwa**: Wprowadź nazwę punktu końcowego.
+   * **Typ zasobu docelowego**: Wybierz **publiczny adres IP** a następnie w obszarze **zasób docelowy**, wybierz publiczny adres IP bramy aplikacji, który został wcześniej skonfigurowany.
 
    ![Usługa Traffic Manager "Dodaj punkt końcowy"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
@@ -171,7 +171,7 @@ Aby uzyskać więcej informacji na temat konfigurowania wewnętrznego modułu r�
 1. Z grupy zasobów należy odnaleźć modułu równoważenia obciążenia, który został utworzony w poprzednich krokach.
 2. W obszarze **ustawienia**, kliknij przycisk **pule zaplecza**, a następnie kliknij przycisk **Dodaj** można dodać do puli zaplecza.
 
-  ![Moduł równoważenia obciążenia "Dodaj pulę zaplecza"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+   ![Moduł równoważenia obciążenia "Dodaj pulę zaplecza"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
 3. Wprowadź nazwę puli zaplecza.
 4. Dodaj poszczególnych maszyn lub zestaw dostępności, aby puli zaplecza.
@@ -180,7 +180,7 @@ Aby uzyskać więcej informacji na temat konfigurowania wewnętrznego modułu r�
 
 1. W moduł równoważenia obciążenia w obszarze **ustawienia**, wybierz opcję **sondy**, a następnie kliknij przycisk **Dodaj** Aby dodać sondy.
 
- ![Moduł równoważenia obciążenia "Dodawanie sondy"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+   ![Moduł równoważenia obciążenia "Dodawanie sondy"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
 2. Wprowadź nazwę dla sondy.
 3. Wybierz **protokołu** sondowania. Dla bazy danych możesz zechcieć sonda TCP, a nie w przypadku sondy HTTP. Aby dowiedzieć się więcej na temat sondy modułu równoważenia obciążenia, zobacz [sondy modułu równoważenia obciążenia omówienie](../load-balancer/load-balancer-custom-probe-overview.md).

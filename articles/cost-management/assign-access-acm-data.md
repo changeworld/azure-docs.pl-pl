@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 267919900fe68271365a73c3cbea7b1f0befc8a7
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 24a77561d08cc3db5356dd0e931f62bf2d16406d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766827"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014181"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych rozwiązania Cost Management
 
@@ -25,7 +25,7 @@ Zakres, który użytkownik wybierze jest używana w całej Cost Management, zape
 
 ## <a name="cost-management-scopes"></a>Usługa Cost Management zakresów
 
-Usługa Cost management obsługuje wiele różnych typów kont platformy Azure. Aby wyświetlić pełną listę typów obsługiwanych kont, zobacz [danych rozwiązania Cost Management zrozumieć](understand-cost-mgt-data.md). Typ konta określa dostępnych zakresów.
+Usługa Cost management obsługuje wiele różnych typów kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Typ konta określa dostępnych zakresów.
 
 ### <a name="azure-ea-subscription-scopes"></a>Zakresy subskrypcji Azure EA
 

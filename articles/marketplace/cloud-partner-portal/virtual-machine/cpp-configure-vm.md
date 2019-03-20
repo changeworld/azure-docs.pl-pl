@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183475"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833505"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurowanie maszyny Wirtualnej hostowanej na platformie Azure
 
@@ -28,7 +28,8 @@ W tym artykule wyjaśniono, jak rozmiar, aktualizowanie i uogólnianie maszyny w
 
 ## <a name="sizing-the-vhds"></a>Zmiany rozmiaru wirtualnych dysków twardych
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Jeśli wybrano maszyn wirtualnych, wstępnie skonfigurowane przy użyciu systemu operacyjnego (i opcjonalnie dodatkowych usług), a następnie zostały już pobrane standardowy rozmiar maszyny Wirtualnej platformy Azure, zgodnie z opisem w [jednostki SKU maszyny wirtualnej karcie](./cpp-skus-tab.md).  Uruchamianie rozwiązania z wstępnie skonfigurowanym systemem operacyjnym jest zalecanym podejściem.  Jednak w przypadku ręcznego instalowania systemu operacyjnego następnie musi rozmiaru głównej wirtualnego dysku twardego w obrazie maszyny Wirtualnej:
+<!--TD: Check if the following assertion is true. I didn't understand the original content. -->
+Jeśli wybrano maszyn wirtualnych, wstępnie skonfigurowane przy użyciu systemu operacyjnego (i opcjonalnie dodatkowych usług), a następnie zostały już pobrane standardowy rozmiar maszyny Wirtualnej platformy Azure, zgodnie z opisem w [jednostki SKU maszyny wirtualnej karcie](./cpp-skus-tab.md).  Uruchamianie rozwiązania z wstępnie skonfigurowanym systemem operacyjnym jest zalecanym podejściem.  Jednak w przypadku ręcznego instalowania systemu operacyjnego następnie musi rozmiaru głównej wirtualnego dysku twardego w obrazie maszyny Wirtualnej:
 
 - Dla Windows, system operacyjny dysku VHD powinien zostać utworzony jako dysk o rozmiarze 127 128 GB wirtualnego dysku twardego w stałym formacie. 
 - W przypadku systemu Linux ten wirtualny dysk twardy powinien zostać utworzony jako dysk o rozmiarze 30 – 50 GB wirtualnego dysku twardego w stałym formacie.
@@ -44,7 +45,7 @@ Podstawowe obrazy systemu operacyjnego maszyn wirtualnych zawierają najnowsze a
 
 Windows Server 2016, można uruchomić **sprawdzać dostępność aktualizacji** polecenia.  W przeciwnym razie dla starszych wersji systemu Windows, zobacz [sposób uzyskiwania aktualizacji za pośrednictwem usługi Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Windows update będzie automatycznie instalować aktualizacje najnowsze zabezpieczenia krytyczne i ważne.
 
-Dystrybucje systemu Linux aktualizacje są często pobierane i instalowane za pomocą narzędzia wiersza polecenia lub graficznego narzędzia.  Na przykład, Ubuntu Linux udostępnia [polecenia apt-get](http://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) polecenia i [Menedżera aktualizacji](http://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) narzędzia do aktualizowania systemu operacyjnego.
+Dystrybucje systemu Linux aktualizacje są często pobierane i instalowane za pomocą narzędzia wiersza polecenia lub graficznego narzędzia.  Na przykład, Ubuntu Linux udostępnia [polecenia apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) polecenia i [Menedżera aktualizacji](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) narzędzia do aktualizowania systemu operacyjnego.
 
 
 ## <a name="perform-additional-security-checks"></a>Wykonaj dodatkowe kontrole zabezpieczeń
@@ -72,7 +73,7 @@ Dyski systemu operacyjnego Windows są uogólniony za pomocą [narzędzia syspre
 > [!WARNING]
 >  Ponieważ aktualizacje może być uruchamiane automatycznie, po uruchomieniu programu sysprep, należy wyłączyć maszynę Wirtualną, dopóki nie jest ona wdrożona.  Zamknięcie zapobiegnie kolejnych aktualizacji, możliwość dokonywania zmian danego wystąpienia wirtualnego dysku twardego systemu operacyjnego lub zainstalowane usługi.
 
-Aby uzyskać więcej informacji na temat uruchamiania polecenia sysprep, zobacz [kroki, aby uogólnić wirtualnego dysku twardego] ()https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
+Aby uzyskać więcej informacji na temat uruchamiania polecenia sysprep, zobacz [kroki, aby uogólnić wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
 
 ### <a name="linux"></a>Linux
 

@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600724"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895859"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Tworzenie niestandardowych interfejsów API można wywołać z usługi Azure Logic Apps
 
@@ -25,7 +25,7 @@ Mimo że usługi Azure Logic Apps oferuje [ponad 100 wbudowanych łączników](.
 * Pomóż klientom Usługa do zarządzania zadaniami professional lub osobiste.
 * Rozwiń zasięg, możliwości odnajdywania i użycie Twojej usługi.
 
-Zasadniczo łączniki są internetowych interfejsów API, które przy użyciu architektury REST dla interfejsów podłączanych [formatu metadanych struktury Swagger](http://swagger.io/specification/) na potrzeby dokumentacji i dane JSON jako ich format wymiany danych. Łączniki są interfejsy API REST, które komunikują się za pośrednictwem punktów końcowych HTTP, można użyć dowolnego języka, takich jak .NET, Java lub Node.js do tworzenia łączników. Możesz również hostować interfejsy API na [usługi Azure App Service](../app-service/overview.md)platformy jako a- usługi (PaaS) zapewniający jednym ze sposobów najlepsze, najprostszy i najbardziej skalowalny interfejs API hostingu. 
+Zasadniczo łączniki są internetowych interfejsów API, które przy użyciu architektury REST dla interfejsów podłączanych [formatu metadanych struktury Swagger](https://swagger.io/specification/) na potrzeby dokumentacji i dane JSON jako ich format wymiany danych. Łączniki są interfejsy API REST, które komunikują się za pośrednictwem punktów końcowych HTTP, można użyć dowolnego języka, takich jak .NET, Java lub Node.js do tworzenia łączników. Możesz również hostować interfejsy API na [usługi Azure App Service](../app-service/overview.md)platformy jako a- usługi (PaaS) zapewniający jednym ze sposobów najlepsze, najprostszy i najbardziej skalowalny interfejs API hostingu. 
 
 W przypadku niestandardowych interfejsów API do pracy z usługą logic apps, interfejs API może zapewnić [ *akcje* ](./logic-apps-overview.md#logic-app-concepts) , wykonywania określonych zadań w przepływach pracy aplikacji logiki. Interfejs API mogą również działać jako [ *wyzwalacza* ](./logic-apps-overview.md#logic-app-concepts) , uruchamia przepływ pracy aplikacji logiki, gdy nowe dane lub zdarzenia spełnia określony warunek. W tym temacie opisano typowe wzorce, które możesz wykonać do tworzenia akcji i wyzwalaczy w interfejsie API, na podstawie zachowania, który chcesz, aby Twój interfejs API w celu zapewnienia.
 
@@ -41,11 +41,11 @@ Możesz hostować swoje interfejsy API na [usługi Azure App Service](../app-ser
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> Aby uzyskać przykłady aplikacji interfejsu API, stworzona z myślą o aplikacjach logiki, odwiedź stronę [repozytorium Azure Logic Apps w witrynie GitHub](http://github.com/logicappsio) lub [blogu](https://aka.ms/logicappsblog).
+> Aby uzyskać przykłady aplikacji interfejsu API, stworzona z myślą o aplikacjach logiki, odwiedź stronę [repozytorium Azure Logic Apps w witrynie GitHub](https://github.com/logicappsio) lub [blogu](https://aka.ms/logicappsblog).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Jak niestandardowe interfejsy API, różni się od łączników niestandardowych?
 
-Niestandardowe interfejsy API i [łączników niestandardowych](../logic-apps/custom-connector-overview.md) są internetowych interfejsów API, które przy użyciu architektury REST dla interfejsów podłączanych [formatu metadanych struktury Swagger](http://swagger.io/specification/) na potrzeby dokumentacji i dane JSON jako ich format wymiany danych. A ponieważ tych interfejsów API i łączników są interfejsy API REST, które komunikują się za pośrednictwem punktów końcowych HTTP, można użyć dowolnego języka, takich jak .NET, Java lub Node.js do tworzenia niestandardowych interfejsów API i łączników.
+Niestandardowe interfejsy API i [łączników niestandardowych](../logic-apps/custom-connector-overview.md) są internetowych interfejsów API, które przy użyciu architektury REST dla interfejsów podłączanych [formatu metadanych struktury Swagger](https://swagger.io/specification/) na potrzeby dokumentacji i dane JSON jako ich format wymiany danych. A ponieważ tych interfejsów API i łączników są interfejsy API REST, które komunikują się za pośrednictwem punktów końcowych HTTP, można użyć dowolnego języka, takich jak .NET, Java lub Node.js do tworzenia niestandardowych interfejsów API i łączników.
 
 Niestandardowe interfejsy API umożliwiają wywoływanie interfejsów API, które nie są łączniki i podaj punkty końcowe, które można wywoływać za pomocą protokołu HTTP + Swagger, usługi Azure API Management lub App Services. Łączniki niestandardowe działają podobnie jak niestandardowe interfejsy API, ale musi też mieć następujące atrybuty:
 
@@ -63,7 +63,7 @@ Aby uzyskać więcej informacji na temat łączników niestandardowych zobacz
 
 ## <a name="helpful-tools"></a>Przydatnych narzędzi
 
-Niestandardowy interfejs API działa najlepiej z usługą logic apps, gdy interfejs API również ma [dokument struktury Swagger](http://swagger.io/specification/) opisujący operacje i parametry interfejsu API.
+Niestandardowy interfejs API działa najlepiej z usługą logic apps, gdy interfejs API również ma [dokument struktury Swagger](https://swagger.io/specification/) opisujący operacje i parametry interfejsu API.
 Wiele bibliotek, takich jak [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle), może automatycznie wygenerować plik struktury Swagger dla Ciebie. Dodawać adnotacje do pliku struktury Swagger dla wyświetlane nazwy, typy właściwości i tak dalej, można również użyć [TRex](https://github.com/nihaue/TRex) tak, aby plik struktury Swagger działa dobrze z usługą logic apps.
 
 <a name="actions"></a>

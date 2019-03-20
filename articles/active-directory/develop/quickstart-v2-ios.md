@@ -3,8 +3,8 @@ title: Przewodnik Szybki start dla usługi Azure AD w wersji 2 dla systemu iOS |
 description: Dowiedz się, w jaki sposób logować użytkowników i wykonywać zapytania do programu Microsoft Graph w aplikacji natywnej dla systemu iOS.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30e80aa57896bec5e5b1ed68d754c0a838193042
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9134f939e771f92453b184aad643d41089623e19
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194066"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201470"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Szybki start: Logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji natywnej dla systemu iOS
 
@@ -30,7 +30,7 @@ ms.locfileid: "56194066"
 
 Ten przewodnik Szybki start zawiera przykładowy kod, który pokazuje, w jaki sposób można logować się na kontach osobistych i służbowych, uzyskiwać tokeny dostępu i wywoływać interfejs API programu Microsoft Graph z poziomu aplikacji natywnej dla systemu iOS.
 
-![Jak działa przykładowa aplikacja wygenerowana w tym przewodniku Szybki start](media/quickstart-v2-ios/ios-intro.png)
+![Pokazuje, jak działa przykładowej aplikacji wygenerowane przez ten przewodnik Szybki Start](media/quickstart-v2-ios/ios-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Rejestrowanie i pobieranie
@@ -183,7 +183,7 @@ applicationContext.acquireTokenSilent(forScopes: self.kScopes, account: applicat
 > | `forScopes` | Zawiera żądane zakresy (czyli `[ "user.read" ]` dla programu Microsoft Graph lub `[ "<Application ID URL>/scope" ]` dla niestandardowych interfejsów internetowych API — czyli `api://<Application ID>/access_as_user`) |
 > | `account` | Konto przesyłające żądanie tokenu (biblioteka MSAL obsługuje wiele kont w jednej aplikacji). W przypadku tego przewodnika Szybki start wartość wskazuje na pierwsze konto w pamięci podręcznej (`applicationContext.allAccounts().first`). |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wypróbuj samouczek dotyczący systemu iOS, aby uzyskać instrukcje krok po kroku dotyczące tworzenia aplikacji i nowych funkcji, w tym pełne objaśnienie informacji zawartych w tym przewodniku Szybki start.
 

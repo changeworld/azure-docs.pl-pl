@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2a2fafb5da50dbd26786284592cd330df7f5557a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 769e6b9936ad6d3cb963e208cec4c49813f2b6d3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113706"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188326"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Rozproszona geograficznie skala przy użyciu środowisk usługi App Service
 ## <a name="overview"></a>Przegląd
@@ -46,7 +46,7 @@ W pozostałej części tego tematu przedstawiono kroki związane z konfiguracją
 ## <a name="planning-the-topology"></a>Planowanie topologii
 Przed kompilacją limit rozmiaru aplikacji rozproszonej, warto ma kilka informacji fragmentów.
 
-* **Domeny niestandardowej do aplikacji:**  Jaka jest nazwa domeny niestandardowej, który użytkownicy będą używać do dostępu do aplikacji?  Przykładowa aplikacja niestandardowa nazwa domeny jest *www.scalableasedemo.com*
+* **Domeny niestandardowej do aplikacji:**  Jaka jest nazwa domeny niestandardowej, który użytkownicy będą używać do dostępu do aplikacji?  Przykładowa aplikacja jest niestandardowa nazwa domeny `www.scalableasedemo.com`
 * **Domena usługi Traffic Manager:**  Nazwa domeny, należy wybrać podczas tworzenia [profilu usługi Azure Traffic Manager][AzureTrafficManagerProfile].  Ta nazwa zostanie połączony z elementem *trafficmanager.net* sufiks Rejestracja zapisu domeny, który jest zarządzany przez usługę Traffic Manager.  Przykładowa aplikacja jest wybrana nazwa *pokaz skalowalne środowisko ase*.  Dzięki temu jest pełna nazwa domeny, który jest zarządzany przez usługę Traffic Manager *demo.trafficmanager.net skalowalne środowisko ase*.
 * **Strategia skalowania zasięgu aplikacji:**  Zużycie aplikacji będą rozproszone na wielu środowisk App Service Environment w jednym regionie?  Wiele regionów?  Różne podejścia w obu przypadkach efekt?  Decyzja powinna być oparta na oczekiwania, z której pochodzą ruchu klientów, a także jak można skalować w pozostałej części aplikacji obsługi infrastruktury zaplecza.  Na przykład za pomocą aplikacji bezstanowych w 100% aplikacji może być wysoce skalowana na region platformy Azure, pomnożona przez środowisk usługi App Service wdrożone w wielu regionach platformy Azure przy użyciu kombinacji wielu środowisk usługi App Service.  Klienci z 15 + publicznych regionach platformy Azure dostępne do wyboru naprawdę mogą tworzyć zużycie aplikacja ogromnego na całym świecie.  Przykładowa aplikacja używana w tym artykule, aby uzyskać trzy środowisk usługi App Service zostały utworzone w jednym regionie platformy Azure (południowo-środkowe stany USA).
 * **Konwencje nazewnictwa dla środowisk usługi App Service:**  Każdy środowiska App Service Environment wymaga unikatowej nazwy.  Po przekroczeniu jednego lub dwóch środowisk usługi App Service warto mają konwencję nazewnictwa ułatwiają identyfikację każdego środowiska App Service Environment.  Dla przykładowej aplikacji użyto prostych konwencji nazewnictwa.  Nazwy trzech środowisk App Service Environment są *fe1ase*, *fe2ase*, i *fe3ase*.
@@ -87,7 +87,7 @@ Zwróć uwagę, jak istnieje jedno wywołanie *AzureTrafficManagerEndpointConfig
 Wszystkie trzy punkty końcowe na użytek taką samą wartość (10) *wagi* parametru.  Skutkuje to usługi Traffic Manager rozproszenie żądania klientów we wszystkich wystąpieniach aplikacji trzy równomierne. 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Wskazuje aplikacji niestandardowej domeny na domenę usługi Traffic Manager
-Ostatnim krokiem niezbędne jest aby wskazywała domenę niestandardową aplikacji w domeny usługi Traffic Manager.  W przypadku przykładowej aplikacji oznacza to, wskazując *www.scalableasedemo.com* na *demo.trafficmanager.net skalowalne środowisko ase*.  Ten krok należy wykonać za pomocą rejestratora domen, która zarządza domeny niestandardowej.  
+Ostatnim krokiem niezbędne jest aby wskazywała domenę niestandardową aplikacji w domeny usługi Traffic Manager.  W przypadku przykładowej aplikacji oznacza to, wskazując `www.scalableasedemo.com` na `scalable-ase-demo.trafficmanager.net`.  Ten krok należy wykonać za pomocą rejestratora domen, która zarządza domeny niestandardowej.  
 
 Rekord CNAME, za pomocą narzędzia do zarządzania domeny u rejestratora swojej firmy, rejestruje potrzeb ma zostać utworzony, który wskazuje niestandardowej domeny na domenę usługi Traffic Manager.  Na rysunku poniżej przedstawiono przykład tej konfiguracji CNAME wygląda następująco:
 
@@ -95,16 +95,16 @@ Rekord CNAME, za pomocą narzędzia do zarządzania domeny u rejestratora swojej
 
 Mimo że nieuwzględnione w tym temacie, należy pamiętać, że każde wystąpienie poszczególnych aplikacji musi mieć domenę niestandardową, zarejestrowano również.  W przeciwnym razie żądanie sprawia, że do wystąpienia aplikacji, a aplikacja nie ma domeny niestandardowej zarejestrowane z aplikacją, żądanie zakończy się niepowodzeniem.  
 
-W tym przykładzie domena niestandardowa jest *www.scalableasedemo.com*, a każde wystąpienie aplikacji ma domenę niestandardową, skojarzone z nim.
+W tym przykładzie domena niestandardowa jest `www.scalableasedemo.com`, a każde wystąpienie aplikacji ma domenę niestandardową, skojarzone z nim.
 
 ![Domena niestandardowa][CustomDomain] 
 
 Aby uzyskać podsumowanie rejestrowania domeny niestandardowej z usługi Azure App Service, zobacz następujący artykuł w [rejestracji domen niestandardowych][RegisterCustomDomain].
 
 ## <a name="trying-out-the-distributed-topology"></a>Wypróbowanie topologii rozproszonej
-Wynik końcowy usługi Traffic Manager i DNS konfiguracji jest, że żądania dla *www.scalableasedemo.com* będą przepływać przez następującej sekwencji:
+Wynik końcowy usługi Traffic Manager i DNS konfiguracji jest, że żądania dla `www.scalableasedemo.com` będą przepływać przez następującej sekwencji:
 
-1. Przeglądarki lub urządzenia spowoduje, że wyszukiwanie DNS *www.scalableasedemo.com*
+1. Przeglądarki lub urządzenia spowoduje, że wyszukiwanie DNS `www.scalableasedemo.com`
 2. Wyszukiwanie DNS, aby zostać przekierowane do usługi Azure Traffic Manager powoduje, że wpis CNAME u rejestratora domen.
 3. Wyszukiwanie DNS wysłaniu *demo.trafficmanager.net skalowalne środowisko ase* na jednym z serwerów usługi Azure DNS usługi Traffic Manager.
 4. Oparte na zasady równoważenia obciążenia ( *TrafficRoutingMethod* parametru użyta wcześniej podczas tworzenia profilu usługi Traffic Manager), usługa Traffic Manager zostanie wybierz jedną z skonfigurowane punkty końcowe i zwrócić nazwy FQDN tego punktu końcowego przeglądarki lub urządzenia.

@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.subservice: common
-ms.openlocfilehash: 51ee5362a01a846378228a42343cc0e2b9f72497
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 13ddb4d64908421e999174623003acd2fb24024d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470216"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014894"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Wyświetla listę zasobów usługi Azure Storage w języku C++
 Lista operacji są kluczem do wielu scenariuszy programowania za pomocą usługi Azure Storage. W tym artykule opisano, jak najbardziej wydajny sposób wyliczenie obiektów w usłudze Azure Storage przy użyciu listy interfejsów API dostarczonych w bibliotece klienta usługi Microsoft Azure Storage dla języka C++.
 
 > [!NOTE]
-> Ten przewodnik jest przeznaczony dla biblioteki klienta usługi Azure Storage dla języka C++ w wersji 2.x, która jest dostępna za pośrednictwem [NuGet](http://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp).
+> Ten przewodnik jest przeznaczony dla biblioteki klienta usługi Azure Storage dla języka C++ w wersji 2.x, która jest dostępna za pośrednictwem [NuGet](https://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp).
 > 
 > 
 
@@ -34,7 +34,7 @@ Biblioteka klienta magazynu zapewnia różne metody zapytania lub listy obiektó
 Każda z tych metod jest wyświetlana przy użyciu innego przeciążenia dla różnych scenariuszy.
 
 ## <a name="asynchronous-versus-synchronous"></a>Asynchroniczne i synchroniczne
-Ponieważ biblioteki klienta usługi Storage dla języka C++ został opracowany w górnej części [biblioteki języka C++ REST](https://github.com/Microsoft/cpprestsdk), obsługujemy założenia asynchroniczne operacje przy użyciu [pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Na przykład:
+Ponieważ biblioteki klienta usługi Storage dla języka C++ został opracowany w górnej części [biblioteki języka C++ REST](https://github.com/Microsoft/cpprestsdk), obsługujemy założenia asynchroniczne operacje przy użyciu [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Na przykład:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -194,7 +194,7 @@ Aby uzyskać więcej informacji dotyczących usługi Azure Storage i Biblioteka 
 * [Jak używać magazynu obiektów Blob w języku C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Jak używać magazynu tabel w języku C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Jak używać magazynu kolejek w języku C++](../storage-c-plus-plus-how-to-use-queues.md)
-* [Biblioteki klienta usługi Azure Storage dokumentacji interfejsu API języka C++.](http://azure.github.io/azure-storage-cpp/)
+* [Biblioteki klienta usługi Azure Storage dokumentacji interfejsu API języka C++.](https://azure.github.io/azure-storage-cpp/)
 * [Blog zespołu odpowiedzialnego za usługę Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Dokumentacja usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 

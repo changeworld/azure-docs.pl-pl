@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 207d1f7f5eb4db4203f2595a06f943e8ae69881e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121132"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor
 
@@ -275,19 +275,19 @@ Proces tworzenia alertu dotyczącego metryki jest podobny do [Tworzenie alertu d
 - Kroki 9 i 10, są takie same.
 - Aby uzyskać kroki od 11 do 14 należy wykonać poniższe czynności:
 
-   1. Wybierz **+** **nowy krok** , a następnie wybierz **Dodaj warunek**. Ustaw następujące warunki, dzięki czemu aplikacja logiki wykonuje tylko wtedy, gdy dane wejściowe jest zgodna z tych wartości poniżej. Podczas wprowadzania wartość wersji w polu tekstowym, umieść ją ("2.0") w cudzysłowie do zapewniają, że wartość zostanie ocenione jako ciąg, a nie typu liczbowego.  System nie uwzględnia cudzysłowu, jeśli wróć do strony, ale podstawowy kod nadal utrzymuje typu string. 
-       - `schemaId == AzureMonitorMetricAlert`
-       - `version == "2.0"`
+  1. Wybierz **+** **nowy krok** , a następnie wybierz **Dodaj warunek**. Ustaw następujące warunki, dzięki czemu aplikacja logiki wykonuje tylko wtedy, gdy dane wejściowe jest zgodna z tych wartości poniżej. Podczas wprowadzania wartość wersji w polu tekstowym, umieść ją ("2.0") w cudzysłowie do zapewniają, że wartość zostanie ocenione jako ciąg, a nie typu liczbowego.  System nie uwzględnia cudzysłowu, jeśli wróć do strony, ale podstawowy kod nadal utrzymuje typu string. 
+     - `schemaId == AzureMonitorMetricAlert`
+     - `version == "2.0"`
        
        !["Ładunek alertu metryki warunek"](media/action-groups-logic-app/metric-alert-payload-condition.png "warunek ładunku alertu metryki")
 
-   1. W **w przypadku opcji true** warunku, należy dodać **dla każdego** pętli i działania Microsoft Teams. Zdefiniuj wiadomości przy użyciu kombinacji kodu HTML i zawartości dynamicznej.
+  1. W **w przypadku opcji true** warunku, należy dodać **dla każdego** pętli i działania Microsoft Teams. Zdefiniuj wiadomości przy użyciu kombinacji kodu HTML i zawartości dynamicznej.
 
-       !["Akcji po metryki warunek jest prawdziwy alertu"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "akcji po warunek alertu metryki")
+      !["Akcji po metryki warunek jest prawdziwy alertu"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "akcji po warunek alertu metryki")
 
-   1. W **w przypadku wartości FAŁSZ** warunku, zdefiniuj akcję Microsoft Teams do komunikowania się, że alert dotyczący metryki nie jest zgodna oczekiwania aplikacji logiki. Uwzględnij ładunek JSON. Zwróć uwagę, jak utworzyć odwołanie do `triggerBody` zawartości dynamicznej w `json()` wyrażenia.
+  1. W **w przypadku wartości FAŁSZ** warunku, zdefiniuj akcję Microsoft Teams do komunikowania się, że alert dotyczący metryki nie jest zgodna oczekiwania aplikacji logiki. Uwzględnij ładunek JSON. Zwróć uwagę, jak utworzyć odwołanie do `triggerBody` zawartości dynamicznej w `json()` wyrażenia.
 
-       !["Fałszywe alertu metryki wpis action"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "akcji po fałszywe alertu metryki")
+      !["Fałszywe alertu metryki wpis action"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "akcji po fałszywe alertu metryki")
 
 - Krok 15 jest taka sama. Postępuj zgodnie z instrukcjami, aby zapisać aplikację logiki i zaktualizować grupy akcji.
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: 1e8e9365567c19400b86dc60d966eb965b83591d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281755"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110821"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Przywracanie plików do Windows za pomocą modelu wdrażania usługi Azure Resource Manager
 
@@ -51,11 +51,11 @@ Jeśli przypadkowo usunięty plik i chcesz je przywrócić na tym samym komputer
 4. Na **wybierz tryb odzyskiwania** wybierz **pojedyncze pliki i foldery** > **dalej**.
 
     ![Zrzut ekranu z odzyskać dane kreatora wybierz tryb odzyskiwania strony](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
-  > [!IMPORTANT]
-  > Opcję, aby przywrócić pojedyncze pliki i foldery wymaga programu .NET Framework 4.5.2 lub nowszej. Jeśli nie widzisz **pojedyncze pliki i foldery** opcji, należy uaktualnić .NET Framework w wersji 4.5.2 lub nowszej i spróbuj ponownie.
+   > [!IMPORTANT]
+   > Opcję, aby przywrócić pojedyncze pliki i foldery wymaga programu .NET Framework 4.5.2 lub nowszej. Jeśli nie widzisz **pojedyncze pliki i foldery** opcji, należy uaktualnić .NET Framework w wersji 4.5.2 lub nowszej i spróbuj ponownie.
 
-  > [!TIP]
-  > **Pojedyncze pliki i foldery** opcja umożliwia szybkie uzyskiwanie dostępu do danych punktu odzyskiwania. Nadaje się do odzyskiwania pojedynczych plików o rozmiarze, co daje łącznie nie więcej niż 80 GB i oferuje transferu lub kopiowania przyspiesza maksymalnie 6 MB/s, podczas odzyskiwania. **Woluminu** opcji odzyskuje wszystkie kopie zapasowe danych w określonym woluminie. Ta opcja zapewnia szybkość transferu szybkości (maksymalnie 60 MB/s), co jest idealnym rozwiązaniem dla odzyskiwania danych i dużej wielkości lub całe woluminy.
+   > [!TIP]
+   > **Pojedyncze pliki i foldery** opcja umożliwia szybkie uzyskiwanie dostępu do danych punktu odzyskiwania. Nadaje się do odzyskiwania pojedynczych plików o rozmiarze, co daje łącznie nie więcej niż 80 GB i oferuje transferu lub kopiowania przyspiesza maksymalnie 6 MB/s, podczas odzyskiwania. **Woluminu** opcji odzyskuje wszystkie kopie zapasowe danych w określonym woluminie. Ta opcja zapewnia szybkość transferu szybkości (maksymalnie 60 MB/s), co jest idealnym rozwiązaniem dla odzyskiwania danych i dużej wielkości lub całe woluminy.
 
 5. Na **Wybierz wolumin i datę** Wybierz wolumin, który zawiera pliki i foldery, które mają zostać przywrócone.
 

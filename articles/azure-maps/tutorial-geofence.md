@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7bd4c261af4159429a91bd8b425180037eec8c23
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670897"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085324"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Konfigurowanie geofencingu przy użyciu usługi Azure Maps
 
@@ -25,11 +25,11 @@ Aby dowiedzieć się więcej na temat usługi Event Grid, zobacz [Azure Event Gr
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-* Przekazywanie obszaru geofencingu w usłudze Azure Maps — usłudze danych przy użyciu interfejsu API przekazywania danych.
-*   Konfigurowanie usługi Event Grid na potrzeby obsługi zdarzeń geofencingu.
-*   Konfigurowanie obsługi zdarzeń geofencingu.
-*   Konfigurowanie alertów w odpowiedzi na zdarzenia geofencingu przy użyciu aplikacji logiki.
-*   Śledzenie przy użyciu interfejsów API usługi geofencingu usługi Azure Maps, czy zasób budowlany znajduje się na terenie budowy.
+> * Przekazywanie obszaru geofencingu w usłudze Azure Maps — usłudze danych przy użyciu interfejsu API przekazywania danych.
+> *   Konfigurowanie usługi Event Grid na potrzeby obsługi zdarzeń geofencingu.
+> *   Konfigurowanie obsługi zdarzeń geofencingu.
+> *   Konfigurowanie alertów w odpowiedzi na zdarzenia geofencingu przy użyciu aplikacji logiki.
+> *   Śledzenie przy użyciu interfejsów API usługi geofencingu usługi Azure Maps, czy zasób budowlany znajduje się na terenie budowy.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -150,9 +150,9 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
 
 5. Kliknij przycisk wysyłania i przejrzyj nagłówek odpowiedzi. W nagłówku lokalizacji znajduje się identyfikator URI, który umożliwia uzyskanie dostępu do danych i pobranie ich do użycia w przyszłości. Zawiera także unikatowy identyfikator `udId` przekazanych danych.
 
-  ```HTTP
-  https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
 
 ## <a name="set-up-an-event-handler"></a>Konfigurowanie programu obsługi zdarzeń
 
@@ -163,15 +163,15 @@ Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane pr
 
 1. Tworzenie aplikacji logiki w witrynie Azure Portal
 
-  ![Tworzenie aplikacji Logic Apps](./media/tutorial-geofence/logic-app.png)
+   ![Tworzenie aplikacji Logic Apps](./media/tutorial-geofence/logic-app.png)
 
 2. Wybierz wyzwalacz żądania HTTP, a następnie wybierz pozycję „Wyślij wiadomość e-mail” jako akcję w łączniku programu Outlook
   
-  ![Schemat usługi Logic Apps](./media/tutorial-geofence/logic-app-schema.png)
+   ![Schemat usługi Logic Apps](./media/tutorial-geofence/logic-app-schema.png)
 
 3. Zapisz aplikację logiki, aby wygenerować punkt końcowy adresu URL HTTP i skopiuj adres URL HTTP.
 
-  ![Punkt końcowy usługi Logic Apps](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Punkt końcowy usługi Logic Apps](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Tworzenie subskrypcji zdarzeń usługi Azure Maps
@@ -208,55 +208,55 @@ Poniżej przedstawiono pięć żądań interfejsu API wirtualnego ogrodzenia GET
  
 1. Lokalizacja 1:
     
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
-  ![Zapytanie geofencingu 1](./media/tutorial-geofence/geofence-query1.png)
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
+   ![Zapytanie geofencingu 1](./media/tutorial-geofence/geofence-query1.png)
 
-  Jeśli przyjrzysz się powyższej odpowiedzi, ujemna odległość od głównego wirtualnego ogrodzenia oznacza, że sprzęt znajduje się w obrębie wirtualnego ogrodzenia, a dodatnia odległość od wirtualnego ogrodzenia terenu podrzędnego oznacza, że sprzęt znajduje się poza wirtualnym ogrodzeniem terenu podrzędnego. 
+   Jeśli przyjrzysz się powyższej odpowiedzi, ujemna odległość od głównego wirtualnego ogrodzenia oznacza, że sprzęt znajduje się w obrębie wirtualnego ogrodzenia, a dodatnia odległość od wirtualnego ogrodzenia terenu podrzędnego oznacza, że sprzęt znajduje się poza wirtualnym ogrodzeniem terenu podrzędnego. 
 
 2. Lokalizacja 2: 
    
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
     
-  ![Zapytanie geofencingu 2](./media/tutorial-geofence/geofence-query2.png)
+   ![Zapytanie geofencingu 2](./media/tutorial-geofence/geofence-query2.png)
 
-  Jeśli dokładnie przyjrzysz się poprzedniej odpowiedzi w formacie JSON, sprzęt znajduje się poza terenem podrzędnym, ale w obrębie głównego ogrodzenia. Nie powoduje to wyzwolenia zdarzenia ani wysłania wiadomości e-mail.
+   Jeśli dokładnie przyjrzysz się poprzedniej odpowiedzi w formacie JSON, sprzęt znajduje się poza terenem podrzędnym, ale w obrębie głównego ogrodzenia. Nie powoduje to wyzwolenia zdarzenia ani wysłania wiadomości e-mail.
 
 3. Lokalizacja 3: 
   
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![Zapytanie geofencingu 3](./media/tutorial-geofence/geofence-query3.png)
+   ![Zapytanie geofencingu 3](./media/tutorial-geofence/geofence-query3.png)
 
-  Nastąpiła zmiana stanu i sprzęt znajduje się teraz zarówno w obrębie głównego wirtualnego ogrodzenia, jak i wirtualnego ogrodzenia terenu podrzędnego. Powoduje to opublikowanie zdarzenia i wysłanie powiadomienia e-mail do programu Operations Manager.
+   Nastąpiła zmiana stanu i sprzęt znajduje się teraz zarówno w obrębie głównego wirtualnego ogrodzenia, jak i wirtualnego ogrodzenia terenu podrzędnego. Powoduje to opublikowanie zdarzenia i wysłanie powiadomienia e-mail do programu Operations Manager.
 
 4. Lokalizacja 4: 
 
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
   
-  ![Zapytanie geofencingu 4](./media/tutorial-geofence/geofence-query4.png)
+   ![Zapytanie geofencingu 4](./media/tutorial-geofence/geofence-query4.png)
 
    Obserwując dokładnie odpowiednią odpowiedź, możesz zauważyć, że w tym miejscu nie jest publikowane żadne zdarzenie, chociaż sprzęt wyjechał poza wirtualne ogrodzenie terenu podrzędnego. Jeśli przyjrzysz się czasowi określonemu przez użytkownika w żądaniu GET, możesz zobaczyć, że wirtualne ogrodzenie terenu podrzędnego wygasło względem tego czasu i sprzęt nadal znajduje się w obrębie głównego wirtualnego ogrodzenia. W obszarze `expiredGeofenceGeometryId` w treści odpowiedzi możesz również sprawdzić identyfikator geometrii wirtualnego ogrodzenia terenu podrzędnego.
 
 
 5. Lokalizacja 5:
       
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![Zapytanie geofencingu 5](./media/tutorial-geofence/geofence-query5.png)
+   ![Zapytanie geofencingu 5](./media/tutorial-geofence/geofence-query5.png)
 
-  Możesz zobaczyć, że sprzęt wyjechał poza wirtualne ogrodzenie głównego terenu budowy. Powoduje to opublikowanie zdarzenia (jest to poważne naruszenie), a do programu Operations Manager jest wysyłana wiadomość e-mail z alertem krytycznym.
+   Możesz zobaczyć, że sprzęt wyjechał poza wirtualne ogrodzenie głównego terenu budowy. Powoduje to opublikowanie zdarzenia (jest to poważne naruszenie), a do programu Operations Manager jest wysyłana wiadomość e-mail z alertem krytycznym.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W ramach tego samouczka nauczyliśmy się, jak skonfigurować geofencing przez przekazanie w usłudze Azure Maps — usłudze danych przy użyciu interfejsu API przekazywania danych. Nauczyliśmy się również, jak za pomocą usługi Azure Maps Events Grid subskrybować i obsługiwać zdarzenia geofencingu. 
 

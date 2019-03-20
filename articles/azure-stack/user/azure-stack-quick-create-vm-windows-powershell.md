@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 9b9a041f1e4269538488d17ee73a7ffdd138c8ab
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f6c8966582c0c5ae31818ce9d88b511cef811328
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251822"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099563"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki Start: tworzenie maszyny wirtualnej systemu Windows Server przy użyciu programu PowerShell w usłudze Azure Stack
 
@@ -32,8 +32,8 @@ Można utworzyć maszynę wirtualną systemu Windows Server 2016 za pomocą usł
 * Zainstaluj serwer sieci web usług IIS i wyświetlić domyślną stronę główną.
 * Czyszczenie zasobów.
 
->[!NOTE]
- Można wykonać kroki opisane w tym artykule, Azure Stack Development Kit lub z klienta zewnętrznego z systemem Windows, jeśli są połączone za pośrednictwem sieci VPN.
+> [!NOTE]
+>  Można wykonać kroki opisane w tym artykule, Azure Stack Development Kit lub z klienta zewnętrznego z systemem Windows, jeśli są połączone za pośrednictwem sieci VPN.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

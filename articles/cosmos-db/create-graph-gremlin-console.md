@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: b431d1b739342c54cbc218efdfded1ee516ecaa7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: 06601fbad43b3daf00e06efbe95a092e76559e36
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586396"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849826"
 ---
-# <a name="quickstart-create-query-and-traverse-a-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Szybki start: Tworzenie elementów, wykonywanie zapytań i przechodzenie przez grafową bazę danych usługi Azure Cosmos DB przy użyciu konsoli Gremlin
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Szybki start: Tworzenie, przeszukiwanie i przechodzić między nimi przy użyciu konsoli Gremlin bazy danych grafów Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [Konsola Gremlin](create-graph-gremlin-console.md)
@@ -81,13 +81,13 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 pamiętaj, aby wartość parametru hosta umieścić w nawiasach kwadratowych []. 
 
-3. W terminalu uruchom `bin/gremlin.bat` lub `bin/gremlin.sh`, aby uruchomić [Konsolę Gremlin](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
-4. W terminalu uruchom `:remote connect tinkerpop.server conf/remote-secure.yaml` w celu nawiązania połączenia z usługą aplikacji.
+1. W terminalu uruchom `bin/gremlin.bat` lub `bin/gremlin.sh`, aby uruchomić [Konsolę Gremlin](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
+1. W terminalu uruchom `:remote connect tinkerpop.server conf/remote-secure.yaml` w celu nawiązania połączenia z usługą aplikacji.
 
     > [!TIP]
     > Jeśli zostanie wyświetlony błąd `No appenders could be found for logger`, upewnij się, że zaktualizowano wartość serializatora w pliku remote-secure.yaml, zgodnie z opisem w kroku 2. 
 
-5. Następnie uruchom `:remote console`, aby przekierować wszystkie polecenia konsoli na serwer zdalny.
+1. Następnie uruchom `:remote console`, aby przekierować wszystkie polecenia konsoli na serwer zdalny.
 
    > [!NOTE]
    > Jeśli nie uruchomisz polecenia `:remote console`, ale chcesz przekierować wszystkie polecenia konsoli na serwer zdalny, dodaj do polecenia prefiks `:>`, na przykład uruchom polecenie jako `:> g.V().count()`. Ten prefiks jest częścią polecenia i jest to ważne, gdy konsola Gremlin jest używana z usługą Azure Cosmos DB. Pominięcie tego prefiksu oznacza, że konsola ma wykonać polecenia lokalnie, często względem grafu w pamięci. Użycie tego prefiksu `:>` powoduje wykonanie polecenia zdalnego przez konsolę, w tym przypadku względem usługi Azure Cosmos DB (emulatora localhost lub wystąpienia platformy Azure).

@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 99b4712373423d30dc83408cc80eccc93b342c10
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206004"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086313"
 ---
 # <a name="how-to-use-version-tagging"></a>Jak używać wersji znakowanie
 
@@ -67,9 +67,9 @@ Utworzymy jednej akcji dla wersji 1.
 
 Obecnie firma Microsoft będzie Oznacz ten element jako "Wersja 1" modelu.
 
-4. W panelu po lewej stronie kliknij pozycję "ustawienia", a następnie kliknij pozycję ![](../media/tutorial18_version_tags.PNG)ikonę "Wersji Tags", aby wyświetlić `New Tag` przycisk, który należy kliknąć opcję.
+1. W panelu po lewej stronie kliknij pozycję "ustawienia", a następnie kliknij pozycję ![](../media/tutorial18_version_tags.PNG)ikonę "Wersji Tags", aby wyświetlić `New Tag` przycisk, który należy kliknąć opcję.
     - Nadaj jej nazwę na "Wersja 1"
-4. W "na żywo Tag" listy rozwijanej wybierz pozycję "wersja 1".  
+1. W "na żywo Tag" listy rozwijanej wybierz pozycję "wersja 1".  
     - Teraz kanały przy użyciu tego Bota użyje "Wersja 1" Nasz Model.
     - Nie można zmienić jednostek, akcje i szkolenie okien dialogowych w tej wersji 1 modelu.
     - Wybierz "Wersja 1" jako "Edycja tagu" tylko będzie mogła wyświetlać modelu i nie można go edytować.

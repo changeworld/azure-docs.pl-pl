@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 866e93c81e5c4f7ad38528ae937317fde3a3f45d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: dc1be0d1d00ae64f38690f019580119b03debedf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857060"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106597"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Samouczek: wyodrębnianie wzorców powiązanych kontekstowo przy użyciu ról
 
@@ -369,7 +369,7 @@ Miasta, tak jak nazwiska, są problematyczne, ponieważ również mogą zawiera�
         "label": "neutral",
         "score": 0.5
       }
-}
+   }
     ```
 
 Wynik intencji jest teraz znacznie wyższy, a nazwy roli są częścią odpowiedzi jednostki.
@@ -391,7 +391,7 @@ Aby uzyskać więcej informacji, zobacz [Role a jednostki hierarchiczne](luis-co
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku dodano jednostkę z rolami i intencją w wypowiedziach przykładowych. Pierwsze przewidywanie punktu końcowego przy użyciu jednostki prawidłowo przewidziało intencję, ale współczynnik ufności był niski. Tylko jedna z dwóch jednostek została wykryta. Następnie w samouczku dodano wzorzec, który wykorzystywał role jednostek oraz listę fraz, aby poprawić wartość nazw miast w wypowiedziach. Drugie przewidywanie punktu końcowego zwróciło wynik o wyższym współczynniku ufności i odnalazło obie role jednostki. 
 

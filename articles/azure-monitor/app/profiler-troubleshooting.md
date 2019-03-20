@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 7d0743c09adf1c50d888d2e279ba85a8369bf286
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991633"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855677"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów, włączanie i wyświetlanie Application Insights Profiler
 
@@ -36,11 +36,11 @@ Profiler zapisuje komunikaty śledzenia i zdarzenia niestandardowe do zasobu us�
     ```
     Poniższa ilustracja przedstawia dwa przykłady wyszukiwania z dwóch sztucznej Inteligencji zasobów: 
     
-    * Po lewej stronie aplikacja nie jest odbierania żądań, gdy Profiler jest uruchomiona. Komunikat wyjaśniono, że przekazywanie zostało anulowane ze względu na Brak działania. 
+   * Po lewej stronie aplikacja nie jest odbierania żądań, gdy Profiler jest uruchomiona. Komunikat wyjaśniono, że przekazywanie zostało anulowane ze względu na Brak działania. 
 
-    * Po prawej stronie Profiler pracę i wysyłane zdarzenia niestandardowe, po jego wykryciu żądań, które wystąpiły w uruchomionej Profiler. Jeśli zdarzenie niestandardowe ServiceProfilerSample jest wyświetlany, oznacza, że Profiler jest dołączony śledzenia na żądanie i możesz wyświetlić ślad **Application Insights Performance** okienka.
+   * Po prawej stronie Profiler pracę i wysyłane zdarzenia niestandardowe, po jego wykryciu żądań, które wystąpiły w uruchomionej Profiler. Jeśli zdarzenie niestandardowe ServiceProfilerSample jest wyświetlany, oznacza, że Profiler jest dołączony śledzenia na żądanie i możesz wyświetlić ślad **Application Insights Performance** okienka.
 
-    Jeśli zostanie wyświetlone nie dane telemetryczne, Profiler nie jest uruchomiona. Aby rozwiązać problemy, zobacz sekcje dotyczące rozwiązywania problemów dla danego typu specyficzne dla aplikacji w dalszej części tego artykułu.  
+     Jeśli zostanie wyświetlone nie dane telemetryczne, Profiler nie jest uruchomiona. Aby rozwiązać problemy, zobacz sekcje dotyczące rozwiązywania problemów dla danego typu specyficzne dla aplikacji w dalszej części tego artykułu.  
 
      ![Wyszukiwanie danych telemetrycznych Profiler][profiler-search-telemetry]
 
@@ -90,7 +90,7 @@ Po skonfigurowaniu Profiler, aktualizacje są wprowadzane do ustawień aplikacji
 
 1. W **kontroli aplikacji sieci Web** otwartym okienkiem **ustawienia**.
 
-1. Ustaw **.Net Framework w wersji** do **wersje 4.6**.
+1. Ustaw **.NET Framework w wersji** do **wersje 4.6**.
 
 1. Ustaw **zawsze włączone** do **na**.
 
@@ -124,7 +124,7 @@ Profiler jest uruchamiany jako ciągłe zadanie webjob w aplikacji sieci web. Mo
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Rozwiązywanie problemów z Profiler i Diagnostyka Azure
 
-  >**W programie profiler, który jest dostarczany w najnowszej wersji WAD dla usług Cloud Services znajduje się błąd.** Aby można było używać programu profilującego z usługą w chmurze, obsługuje on tylko zestawu SDK usługi AI do wersji 2.7.2. Jeśli używasz nowszą wersję zestawu SDK usługi AI będziesz mieć, wróć do obszaru 2.7.2 Aby można było używać programu profilującego.
+  >**W programie profiler, który jest dostarczany w najnowszej wersji WAD dla usług Cloud Services znajduje się błąd.** Aby można było używać programu profilującego z usługą w chmurze, obsługuje on tylko zestawu SDK usługi AI do wersji 2.7.2. Jeśli używasz nowszą wersję zestawu SDK usługi AI będziesz mieć, wróć do obszaru 2.7.2 Aby można było używać programu profilującego. Jeśli używasz programu Visual Studio na starszą wersję zestawu SDK aplikacji usługi Insights może wystąpić błąd przekierowanie powiązania w czasie wykonywania. Jest to spowodowane "newVersion" w pliku web.config dla Microsoft.ApplicationInsights powinna być równa "2.7.2.0" po zmiany na starszą wersję zestawu SDK sztucznej Inteligencji, ale nie zostaje zaktualizowana automatycznie.
 
 Aby sprawdzić, czy Profiler jest poprawnie skonfigurowany przez diagnostykę platformy Azure, wykonaj następujące czynności: 
 1. Najpierw sprawdź, czy zawartość konfiguracji diagnostyki platformy Azure, które zostały wdrożone są, czego oczekiwać. 

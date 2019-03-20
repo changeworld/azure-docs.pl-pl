@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bee2a715e9e9b163af342b70c4cdd63d24ccee3b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e9e78d3226f90ef780a1ed2114ba256c293463dc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450043"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001586"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Używanie sygnatur dostępu współdzielonego (SAS)
 
@@ -40,11 +40,11 @@ Typowy scenariusz, w których jest użyteczny sygnatury dostępu Współdzielone
 
 1. Klienci, przekazywanie i pobieranie danych za pośrednictwem usługi Serwer proxy frontonu, który przeprowadza uwierzytelnianie. Ta usługa frontonu proxy ma możliwość weryfikacji reguł biznesowych, ale w przypadku dużych ilości danych lub dużej liczby transakcji, tworzenie usługi, które można skalować w celu dopasowania żądanie może być kosztowne i trudne.
 
-  ![Diagram scenariusza: Usługa frontonu serwera proxy](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
+   ![Diagram scenariusza: Usługa frontonu serwera proxy](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
 
 1. Usługi LDS uwierzytelnia klienta, zgodnie z potrzebami, a następnie generuje sygnaturę dostępu Współdzielonego. Gdy klient odbierze sygnatury dostępu Współdzielonego, ich dostęp do zasobów konta magazynu bezpośrednio z uprawnienia zdefiniowane przez sygnatury dostępu Współdzielonego i interwał dozwolone przez sygnatury dostępu Współdzielonego. Sygnatura dostępu Współdzielonego zmniejsza potrzebę routingu wszystkich danych za pośrednictwem usługi Serwer proxy frontonu.
 
-  ![Diagram scenariusza: Sygnatury dostępu Współdzielonego usługi dostawcy](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
+   ![Diagram scenariusza: Sygnatury dostępu Współdzielonego usługi dostawcy](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
 
 Wiele usług w rzeczywistych warunkach może użyć hybrydowego rozwiązania łączącego dwóm metodom. Na przykład niektóre dane mogą przetwarzane i zweryfikować za pomocą frontonu serwera proxy, podczas gdy inne dane zapisane lub odczytać bezpośrednio za pomocą sygnatury dostępu Współdzielonego.
 
@@ -230,8 +230,8 @@ Poniżej przedstawiono kilka przykładów oba rodzaje sygnatur dostępu współd
 
 Aby uruchomić te przykłady języka C#, należy odwoływać się do następujących pakietów NuGet w projekcie:
 
-* [Biblioteka klienta usługi Azure Storage dla platformy .NET](http://www.nuget.org/packages/WindowsAzure.Storage), w wersji 6.x lub nowszej (, aby użyć konta sygnatury dostępu Współdzielonego).
-* [Azure Configuration Manager](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
+* [Biblioteka klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage), w wersji 6.x lub nowszej (, aby użyć konta sygnatury dostępu Współdzielonego).
+* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
 
 Aby uzyskać więcej przykładów, które pokazują, jak tworzyć i testować sygnatury dostępu Współdzielonego, zobacz [przykłady kodu platformy Azure do przechowywania](https://azure.microsoft.com/documentation/samples/?service=storage).
 

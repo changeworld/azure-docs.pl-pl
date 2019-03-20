@@ -1,7 +1,7 @@
 ---
-title: Auto-train model prognozy
+title: Auto — szkolenie modelu prognozowania szeregów czasowych
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać usługi Azure Machine Learning to w opracowywaniu prognozowania modelu regresji przy użyciu zautomatyzowanych machine learning.
+description: Dowiedz się, jak używać usługi Azure Machine Learning to w opracowywaniu prognozowania modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego szeregów czasowych.
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -9,17 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 03/08/2019
-ms.openlocfilehash: 7c34040180cd7c6b635d55e59498908b1373ae1b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 03/19/2019
+ms.openlocfilehash: cc5aae0e46e181e8063a4e01a832e68eab0eae0e
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57786619"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226620"
 ---
-# <a name="auto-train-a-forecast-model"></a>Auto-train model prognozy
+# <a name="auto-train-a-time-series-forecast-model"></a>Auto — szkolenie modelu prognozowania szeregów czasowych
 
-W tym artykule przedstawiono to w opracowywaniu prognozowania modelu regresji przy użyciu zautomatyzowanych usługi machine learning w usłudze Azure Machine Learning. Konfigurowanie modelu prognozowania jest podobny do konfigurowania modelu regresji standard za pomocą automatycznych machine learning, ale niektórych opcjami i wstępne przetwarzanie kroki konfiguracji istnieje do pracy z danymi szeregów czasowych. Poniższe przykłady pokazują sposób do:
+W tym artykule dowiesz się, jak do uczenia modelu regresji prognozowania szeregów czasowych za pomocą automatycznych usługi machine learning w usłudze Azure Machine Learning. Konfigurowanie modelu prognozowania jest podobny do konfigurowania modelu regresji standard za pomocą automatycznych machine learning, ale niektórych opcjami i wstępne przetwarzanie kroki konfiguracji istnieje do pracy z danymi szeregów czasowych. Poniższe przykłady pokazują sposób do:
 
 * Przygotowuje dane do modelowania serii czasu
 * Konfigurowanie określone parametry szeregów czasowych w [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) obiektu
@@ -58,7 +58,7 @@ W tym przypadku dane są już sortowane rosnąco przez wartość pola Czas `week
 
 ```python
 X_train = data.iloc[:950]
-X_test = data.iloc[50:]
+X_test = data.iloc[-50:]
 
 y_train = X_train.pop("sales_quantity").values
 y_test = X_test.pop("sales_quantity").values

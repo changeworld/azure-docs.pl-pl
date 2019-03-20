@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
-ms.openlocfilehash: 3b46ffe49aeb31aaf9040be038e8a9e83641ae51
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 65b8253a307693d00f5eaefe7660d500dce49be4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984393"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078656"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
@@ -171,11 +171,11 @@ Pliki konfiguracji programu GRUB ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg"
 
 
 - Następujący wiersz jest z pliku programu GRUB **/boot/grub2/grub.cfg**. <br>
-*Linux /boot/vmlinuz-3.12.49-11-default **główny = / dev/sda2** ${extra_cmdline} **wznowić = / dev/sda1** splash = dyskretnej showopts cichy*
+  *Linux /boot/vmlinuz-3.12.49-11-default **główny = / dev/sda2** ${extra_cmdline} **wznowić = / dev/sda1** splash = dyskretnej showopts cichy*
 
 
 - Następujący wiersz jest z pliku programu GRUB **/boot/grub/menu.lst**
- */boot/vmlinuz-3.0.101-63-default jądra **główny = / dev/sda2** **wznowić = / dev/sda1 ** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
+   */boot/vmlinuz-3.0.101-63-default jądra **główny = / dev/sda2** **wznowić = / dev/sda1 ** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
 
 Jeśli zauważysz bold ciągu powyżej, program GRUB zawiera rzeczywistego urządzenia nazwy parametrów "root" i "resume" zamiast identyfikatora UUID.
  
@@ -184,15 +184,15 @@ Nazwy urządzeń należy zastąpić je klasą odpowiedni identyfikator UUID.<br>
 
 
 1. Znajdź identyfikator UUID urządzenia, wykonując polecenie "blkid <device name>". Na przykład:<br>
-```
-blkid /dev/sda1
-/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
-blkid /dev/sda2 
-/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
-```
+   ```
+   blkid /dev/sda1
+   /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+   blkid /dev/sda2 
+   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   ```
 
 2. Teraz Zastąp nazwy urządzenia za pomocą jego identyfikatora UUID w formacie, takich jak "główny = UUID =<UUID>". Na przykład, jeśli firma Microsoft Zastąp nazwy urządzenia o identyfikatorze UUID dla głównego i wznowić parametrów wymienionych powyżej w plikach "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" lub "/ etc/domyślne/chodników: wierszy w plikach wyglądać. <br>
-*jądra /boot/vmlinuz-3.0.101-63-default **główny = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **wznowić = UUID = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
+   *jądra /boot/vmlinuz-3.0.101-63-default **główny = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **wznowić = UUID = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
 3. Ponownie uruchom ochronę ponownie
 
 ## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Instalowanie usługi mobilności Ukończono z ostrzeżeniem o ponownym uruchomieniu (identyfikator błędu: 95265 & 95266)
@@ -284,20 +284,20 @@ Jeśli spójność aplikacji nie jest krytyczna dla wymagań dotyczących odzysk
 Aby pominąć instalację dostawcy usługi VSS usługi Azure Site Recovery i ręcznie zainstalować dostawcę usługi VSS usługi Azure Site Recovery po instalacji:
 
 1. Instalowanie usługi mobilności. 
-> [!Note]
-> 
-> Instalacja zakończy się niepowodzeniem na etapie "Poinstalacyjne configuration". 
+   > [!Note]
+   > 
+   > Instalacja zakończy się niepowodzeniem na etapie "Poinstalacyjne configuration". 
 2. Aby pominąć instalację usługi VSS:
    1. Otwórz znajdujący się w katalogu instalacji usługi mobilności Azure Site Recovery:
    
-    C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent
-   2.  Zmodyfikowanie skryptów instalacji dostawcy usługi VSS usługi Azure Site Recovery **nMageVSSProvider_Install** i **InMageVSSProvider_Uninstall.cmd** zawsze została wykonana pomyślnie, dodając następujące wiersze:
+      C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent
+   2. Zmodyfikowanie skryptów instalacji dostawcy usługi VSS usługi Azure Site Recovery **nMageVSSProvider_Install** i **InMageVSSProvider_Uninstall.cmd** zawsze została wykonana pomyślnie, dodając następujące wiersze:
     
-    ```     
-    rem @echo off
-    setlocal
-    exit /B 0
-    ```
+      ```     
+      rem @echo off
+      setlocal
+      exit /B 0
+      ```
 
 3. Ręcznie uruchom ponownie instalację agenta mobilności. 
 4. Jeśli instalacja zakończy się pomyślnie i przechodzi do następnego kroku **Konfiguruj**, Usuń wiersze dodane.
@@ -305,7 +305,7 @@ Aby pominąć instalację dostawcy usługi VSS usługi Azure Site Recovery i rę
    
     **C:\Program pliki (x86) \Microsoft Azure Site Recovery\agent >.\InMageVSSProvider_Install.cmd**
 
-9.  Sprawdź, czy dostawca VSS usługi ASR jest zainstalowany jako usługi w usługach Windows i Otwórz program MMC usługi składnika, aby sprawdzić, czy dostawca VSS usługi ASR jest wyświetlana.
+9. Sprawdź, czy dostawca VSS usługi ASR jest zainstalowany jako usługi w usługach Windows i Otwórz program MMC usługi składnika, aby sprawdzić, czy dostawca VSS usługi ASR jest wyświetlana.
 10. Jeśli instalowanie dostawcy usługi VSS w dalszym ciągu zakończyć się niepowodzeniem i pracować z CX, aby naprawić błędy uprawnień w CAPI2.
 
 ## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Instalacja dostawcy VSS nie powiedzie się z powodu usługa klastrowania jest włączony na maszynie bez klastra

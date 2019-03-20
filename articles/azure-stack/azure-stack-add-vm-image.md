@@ -15,12 +15,12 @@ ms.date: 03/04/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: ae4b19e9a4f11d84dddd7ec3b129cc5d575b75cb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ccf3beaacd15ad7d3e9177614bb62b0050bd8d5c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767401"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109169"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
@@ -39,8 +39,8 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
    - Usługa Azure Stack, tylko obsługuje generowanie jeden (1) maszyna wirtualna w dysku stałego wirtualnego dysku twardego formatu. Stałym formacie struktury dysku logicznego liniowo w pliku, tak że Przesunięcie X na dysku jest przechowywany w obiekcie blob z przesunięciem X. Małe stopka na końcu obiektu blob opisuje właściwości wirtualnego dysku twardego. Aby upewnić się, jeśli dysk jest stała, należy użyć [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) polecenia programu PowerShell.  
 
-    > [!IMPORTANT]  
-    >  Usługa Azure Stack nie obsługuje dysków dynamicznych wirtualnych dysków twardych. Zmiana rozmiaru dysku dynamicznego, który jest dołączony do maszyny Wirtualnej spowoduje, że maszyna wirtualna w stanie niepowodzenia. Aby rozwiązać ten problem, należy usunąć maszynę Wirtualną bez usuwania dysku maszyny Wirtualnej, obiektu blob dysku VHD na koncie magazynu. Konwertowania wirtualnego dysku twardego z dysk dynamiczny na dysk stały i ponownie utworzyć maszynę wirtualną.
+     > [!IMPORTANT]  
+     >  Usługa Azure Stack nie obsługuje dysków dynamicznych wirtualnych dysków twardych. Zmiana rozmiaru dysku dynamicznego, który jest dołączony do maszyny Wirtualnej spowoduje, że maszyna wirtualna w stanie niepowodzenia. Aby rozwiązać ten problem, należy usunąć maszynę Wirtualną bez usuwania dysku maszyny Wirtualnej, obiektu blob dysku VHD na koncie magazynu. Konwertowania wirtualnego dysku twardego z dysk dynamiczny na dysk stały i ponownie utworzyć maszynę wirtualną.
 
    - Jest bardziej wydajne do przekazania obrazu do magazynu obiektów blob usługi Azure Stack, niż na platformie Azure blob storage ponieważ zajmuje mniej czasu, aby wypchnąć obraz do repozytorium obrazów usługi Azure Stack.
 
@@ -50,9 +50,9 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
    - Aby udostępnić obiekt blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie został przekazany obraz maszyny Wirtualnej wirtualnego dysku twardego. Wybierz **Blob**, a następnie wybierz pozycję **zasady dostępu**. Opcjonalnie możesz wygenerować sygnaturę dostępu współdzielonego dla kontenera i dołączyć go jako część identyfikatora URI obiektu blob. Ten krok zapewnia, że obiekt blob jest dostępna do użytku z Dodawanie tego elementu jako obraz. Jeśli obiekt blob nie jest dostępne anonimowo, obraz maszyny Wirtualnej zostanie utworzony się w stanie niepowodzenia.
 
-    ![Przejdź do obiektów blob konta magazynu](./media/azure-stack-add-vm-image/image1.png)
+     ![Przejdź do obiektów blob konta magazynu](./media/azure-stack-add-vm-image/image1.png)
 
-    ![Określ dostęp do obiektów blob na publiczną](./media/azure-stack-add-vm-image/image2.png)
+     ![Określ dostęp do obiektów blob na publiczną](./media/azure-stack-add-vm-image/image2.png)
 
 2. Zaloguj się do usługi Azure Stack jako operator. Wybierz z menu **wszystkich usług** > **obrazów** w obszarze **obliczenia** > **Dodaj**.
 
@@ -83,42 +83,42 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 3. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-  ```PowerShell  
+   ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
       -version "<#.#.#>” `
       -OSType "<ostype>" `
       -OSUri "<osuri>"
-  ```
+   ```
 
-  **AzsPlatformimage Dodaj** polecenia cmdlet określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwoływać się do obrazu maszyny Wirtualnej. Wartości:
-  - **publisher**  
-    Na przykład: `Canonical`  
-    Segment nazwy wydawcy obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obraz. Na przykład **Microsoft**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-  - **offer**  
-    Na przykład: `UbuntuServer`  
-    Segment nazwę oferty obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **WindowsServer**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-  - **sku**  
-    Na przykład: `14.04.3-LTS`  
-    Segment nazwy jednostki SKU obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **Datacenter2016**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-  - **Wersja**  
-    Na przykład: `1.0.0`  
-    Wersja obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Ta wersja jest w formacie *\#.\#.\#*. Na przykład **1.0.0**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-  - **osType**  
-    Na przykład: `Linux`  
-    OsType obrazu musi być albo **Windows** lub **Linux**.  
-  - **OSUri**  
-    Na przykład: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
-    Możesz określić identyfikator URI magazynu obiektów blob dla `osDisk`.  
+   **AzsPlatformimage Dodaj** polecenia cmdlet określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwoływać się do obrazu maszyny Wirtualnej. Wartości:
+   - **publisher**  
+     Na przykład: `Canonical`  
+     Segment nazwy wydawcy obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obraz. Na przykład **Microsoft**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
+   - **offer**  
+     Na przykład: `UbuntuServer`  
+     Segment nazwę oferty obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **WindowsServer**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
+   - **sku**  
+     Na przykład: `14.04.3-LTS`  
+     Segment nazwy jednostki SKU obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **Datacenter2016**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
+   - **Wersja**  
+     Na przykład: `1.0.0`  
+     Wersja obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Ta wersja jest w formacie *\#.\#.\#*. Na przykład **1.0.0**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
+   - **osType**  
+     Na przykład: `Linux`  
+     OsType obrazu musi być albo **Windows** lub **Linux**.  
+   - **OSUri**  
+     Na przykład: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
+     Możesz określić identyfikator URI magazynu obiektów blob dla `osDisk`.  
 
-    Aby uzyskać więcej informacji, zobacz informacje dotyczące w programie PowerShell [AzsPlatformimage Dodaj](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) polecenia cmdlet i [New DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) polecenia cmdlet.
+     Aby uzyskać więcej informacji, zobacz informacje dotyczące w programie PowerShell [AzsPlatformimage Dodaj](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) polecenia cmdlet i [New DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) polecenia cmdlet.
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>Dodawanie niestandardowego obrazu maszyny Wirtualnej w portalu Marketplace przy użyciu programu PowerShell
  
 1. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 
-  ```PowerShell  
+   ```PowerShell  
     # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
     Add-AzureRMEnvironment `
       -Name "AzureStackAdmin" `
@@ -135,19 +135,19 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
-  ```
+   ```
 
 2. Jeśli przy użyciu **Active Directory Federation Services**, użyj następującego polecenia cmdlet:
 
-  ```PowerShell
-  # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+   ```PowerShell
+   # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-  # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
-  $GraphAudience = "<GraphAudience endpoint for your environment>"
+   # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAudience endpoint for your environment>"
 
-  # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
-  Add-AzureRMEnvironment `
+   # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+   Add-AzureRMEnvironment `
     -Name "AzureStackAdmin" `
     -ArmEndpoint $ArmEndpoint
     ```
@@ -158,24 +158,24 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 5. Przygotowywanie obrazu systemu operacyjnego Windows lub Linux w formacie VHD (nie VHDX), przekazania obrazu do swojego konta magazynu i Pobierz identyfikator URI, do której można pobrać obrazu maszyny Wirtualnej programu PowerShell.  
 
-  ```PowerShell  
+   ```PowerShell  
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
-  ```
+   ```
 
 6. (Opcjonalnie) Możesz przekazać tablicę dysków z danymi w ramach obrazu maszyny Wirtualnej. Tworzenie dysków danych za pomocą polecenia cmdlet New-DataDiskObject. Otwórz program PowerShell w wierszu polecenia z podwyższonym poziomem uprawnień i uruchom:
 
-  ```PowerShell  
+   ```PowerShell  
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
-  ```
+   ```
 
 7. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-  ```PowerShell  
+   ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
-  ```
+   ```
 
     Aby uzyskać więcej informacji na temat polecenia cmdlet Add-AzsPlatformimage i polecenia cmdlet New-DataDiskObject zobacz Microsoft PowerShell [Dokumentacja modułu usługi Azure Stack operatora](https://docs.microsoft.com/powershell/module/).
 
@@ -189,28 +189,28 @@ Jeśli nie potrzebujesz już obraz maszyny wirtualnej, który został przekazany
 
 3. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-  ```PowerShell  
-  Remove-AzsPlatformImage `
+   ```PowerShell  
+   Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
     -sku "<sku>" `
     -version "<version>" `
-  ```
-  **AzsPlatformImage Usuń** polecenia cmdlet określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwoływać się do obrazu maszyny Wirtualnej. Wartości:
-  - **publisher**  
-    Na przykład: `Canonical`  
-    Segment nazwy wydawcy obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obraz. Na przykład **Microsoft**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-  - **offer**  
-    Na przykład: `UbuntuServer`  
-    Segment nazwę oferty obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **WindowsServer**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-  - **sku**  
-    Na przykład: `14.04.3-LTS`  
-    Segment nazwy jednostki SKU obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **Datacenter2016**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
-  - **Wersja**  
-    Na przykład: `1.0.0`  
-    Wersja obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Ta wersja jest w formacie *\#.\#.\#*. Na przykład **1.0.0**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
+   ```
+   **AzsPlatformImage Usuń** polecenia cmdlet określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwoływać się do obrazu maszyny Wirtualnej. Wartości:
+   - **publisher**  
+     Na przykład: `Canonical`  
+     Segment nazwy wydawcy obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obraz. Na przykład **Microsoft**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
+   - **offer**  
+     Na przykład: `UbuntuServer`  
+     Segment nazwę oferty obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **WindowsServer**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
+   - **sku**  
+     Na przykład: `14.04.3-LTS`  
+     Segment nazwy jednostki SKU obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Na przykład **Datacenter2016**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
+   - **Wersja**  
+     Na przykład: `1.0.0`  
+     Wersja obrazu maszyny Wirtualnej, używanego przez użytkowników po wdrożeniu przez nich obrazu maszyny Wirtualnej. Ta wersja jest w formacie *\#.\#.\#*. Na przykład **1.0.0**. Nie dołączaj spacji ani innych znaków specjalnych w tym polu.  
     
-    Aby uzyskać więcej informacji na temat polecenia cmdlet Remove-AzsPlatformImage zobacz Microsoft PowerShell [Dokumentacja modułu usługi Azure Stack operatora](https://docs.microsoft.com/powershell/module/).
+     Aby uzyskać więcej informacji na temat polecenia cmdlet Remove-AzsPlatformImage zobacz Microsoft PowerShell [Dokumentacja modułu usługi Azure Stack operatora](https://docs.microsoft.com/powershell/module/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

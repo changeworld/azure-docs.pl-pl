@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: a2f0d775f061ab221092c9354d9d04b9241c9430
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f457246b429062625e6542cfdaf00f3526a85209
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543890"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083236"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Tworzenie i zarządzanie nimi — Azure Database dla MariaDB reguł zapory przy użyciu wiersza polecenia platformy Azure
 Reguły zapory na poziomie serwera umożliwiają administratorom zarządzanie dostępem do usługi Azure Database dla serwera MariaDB z określonego adresu IP lub zakres adresów IP. Przy użyciu wygodne poleceń interfejsu wiersza polecenia platformy Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory, aby zarządzać serwerem. Omówienie usługi Azure Database dla zapór MariaDB, zobacz [— Azure Database for reguły zapory serwera MariaDB](./concepts-firewall-rules.md)
@@ -35,10 +35,10 @@ Polecenia:
 Bezpiecznie łączyć z wiersza polecenia platformy Azure przy użyciu konta platformy Azure przy użyciu **az login** polecenia.
 
 1. Z wiersza polecenia Uruchom następujące polecenie:
-```azurecli
-az login
-```
-To polecenie generuje kod do użycia w następnym kroku.
+   ```azurecli
+   az login
+   ```
+   To polecenie generuje kod do użycia w następnym kroku.
 
 2. Użyj przeglądarki sieci web, aby otworzyć stronę [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), a następnie wprowadź kod.
 

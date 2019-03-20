@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb0822380fd375c111f8acb8b28132727a7c048
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8ee74c5caed04d2626fea27d3419d0b0d685d675
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego SAML insygnia
 
@@ -112,6 +112,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Domena logowania jednokrotnego SAML insygnia i adresy URL pojedynczego logowania jednokrotnego informacji](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `https://<customername>.insigniails.com/ils` |
@@ -217,7 +218,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

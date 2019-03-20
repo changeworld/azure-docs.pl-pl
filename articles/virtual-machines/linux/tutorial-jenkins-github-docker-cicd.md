@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 82e80b9dd4d20709fc8598e0fed3323046c21cfa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6c6510113710ea19128fcd27adbf8671a8f083bc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189416"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996507"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Samouczek: Budowanie infrastruktury tworzenia aplikacji na maszynie wirtualnej systemu Linux na platformie Azure przy użyciu usługi Jenkins, GitHub i Docker
 
@@ -61,7 +61,7 @@ write_files:
 runcmd:
   - apt install openjdk-8-jre-headless -y
   - wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
-  - sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+  - sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   - apt-get update && apt-get install jenkins -y
   - curl -sSL https://get.docker.com/ | sh
   - usermod -aG docker azureuser
@@ -247,7 +247,7 @@ Teraz wprowadź kolejną modyfikację pliku *index.js* w usłudze GitHub i zatwi
 ![Uruchamianie aplikacji Node.js po kolejnym zatwierdzeniu GitHub](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku skonfigurowano usługę GitHub do uruchomienia zadania kompilacji usługi Jenkins przy każdym zatwierdzeniu kodu, a następnie wdrożono kontener platformy Docker w celu testowania aplikacji. W tym samouczku omówiono:
 
 > [!div class="checklist"]

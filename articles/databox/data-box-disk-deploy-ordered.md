@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/27/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: db10361707d83fcda20f0e4bf2adc2abc4176808
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 67f4eb5383452a81ba288f5fe611242259217951
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156175"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404900"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Samouczek: zamawianie urządzenia Azure Data Box Disk
 
@@ -80,11 +80,25 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://aka.ms/azuredatab
     |Name (Nazwa)|Podaj przyjazną nazwę, aby śledzić zamówienie.<br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą. |
     |Grupa zasobów| Użyj istniejącej grupy lub utwórz nową. <br> Grupa zasobów to kontener logiczny zasobów, które mogą być zarządzane lub wdrażane razem. |
     |Docelowy region platformy Azure| Wybierz region swojego konta magazynu.<br> Obecnie są obsługiwane konta magazynu we wszystkich regionach USA, regionach Europa Zachodnia i Europa Północna, Kanadzie i Australii. |
-    |Konta magazynu|W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejące konto magazynu. <br>Można również utworzyć nowe konto ogólnego przeznaczenia w wersji 1 lub konto ogólnego przeznaczenia w wersji 2. |
     |Szacowany rozmiar danych w terabajtach (TB)| Wprowadź szacowany rozmiar w TB. <br>W zależności od rozmiaru danych firma Microsoft wysyła odpowiednią liczbę dysków SSD o pojemności 8 TB (7 TB pojemności do wykorzystania). <br>Maksymalna pojemność do wykorzystania na 5 dyskach to maksymalnie 35 TB. |
     |Klucz dostępu dla dysków| Jeśli zaznaczono opcję **Użyj niestandardowego klucza dostępu zamiast tego wygenerowanego przez platformę Azure**, podaj klucz dostępu dla dysków. <br> Podaj klucz alfanumeryczny zawierający od 12 do 32 znaków, w tym co najmniej jedną cyfrę i jeden znak specjalny. Dozwolone są następujące znaki specjalne: `@?_+`. <br> Tę opcję możesz pominąć i do odblokowywania dysków korzystać z klucza dostępu wygenerowanego przez platformę Azure.|
+    |Magazyn docelowy     | Wybierz z konta magazynu dysków zarządzanych i/lub. <br> Oparte na określonego regionu Azure, wybierz konto magazynu z listy filtrowanej istniejącego konta magazynu. Urządzenie Data Box można połączyć z maksymalnie 10 kontami magazynu. <br> Można również utworzyć nową **General-purpose v1**, **ogólnego przeznaczenia v2**, lub **konta magazynu obiektów Blob**. <br>Nie można używać kont magazynu, które mają skonfigurowane reguły. Konta magazynu muszą **zezwalać na dostęp ze wszystkich sieci** w sekcji zapór i sieci wirtualnych.|
 
-13. Kliknij przycisk **Dalej**. 
+    Jeśli jako miejsce docelowe przechowywania, przy użyciu konta magazynu, zostanie wyświetlony poniższy zrzut ekranu:
+
+    ![Zamówienie dysku pole danych dla konta magazynu](media/data-box-disk-deploy-ordered/order-storage-account.png)
+
+    Jeśli tworzenie dysków zarządzanych z wirtualnych dysków twardych w środowisku lokalnym za pomocą dysku Data Box, należy podać następujące informacje:
+
+    |Ustawienie  |Wartość  |
+    |---------|---------|
+    |Grupa zasobów     | Utwórz nową grupę zasobów, jeśli zamierzasz utworzyć dysków zarządzanych z wirtualnych dysków twardych w środowisku lokalnym. Użyj istniejącej grupy zasobów, tylko wtedy, gdy został utworzony przez usługę Data Box dla zamówienia dysku Data Box dla dysku zarządzanego. <br> Obsługiwane jest tylko jednej grupy zasobów.|
+
+    ![Zamówienie dysku pole danych dla dysku zarządzanego](media/data-box-disk-deploy-ordered/order-managed-disks.png)
+
+    Konto magazynu określone dla dysków zarządzanych jest używane jako konta magazynu przejściowego. Usługa Data Box przekazuje wirtualnych dysków twardych do konta magazynu przejściowego i następnie konwertuje je na dyski zarządzane i przenosi do grupy zasobów. Aby uzyskać więcej informacji, zobacz [danych sprawdź, czy przekazać na platformę Azure](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure).
+
+13. Kliknij przycisk **Dalej**.
 
     ![Podawanie szczegółów zamówienia](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
@@ -102,7 +116,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://aka.ms/azuredatab
  
 ## <a name="track-the-order"></a>Śledzenie zamówienia
 
-Po złożeniu zamówienia możesz śledzić jego stan w witrynie Azure Portal. Przejdź do zamówienia, a następnie przejdź do obszaru **Omówienie**, aby sprawdzić stan. Zadanie wyświetlone w portalu ma stan **Zamówione**. 
+Po złożeniu zamówienia możesz śledzić jego stan w witrynie Azure Portal. Przejdź do zamówienia, a następnie przejdź do obszaru **Omówienie**, aby sprawdzić stan. Zadanie wyświetlone w portalu ma stan **Zamówione**.
 
 ![Data Box Disk — stan Zamówione](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -118,16 +132,16 @@ Firma Microsoft następnie przygotowuje i wysyła dyski za pośrednictwem przewo
 
 ## <a name="cancel-the-order"></a>Anulowanie zamówienia
 
-Aby anulować to zamówienie, w witrynie Azure Portal przejdź do obszaru **Przegląd**, a następnie kliknij pozycję **Anuluj** na pasku poleceń. 
+Aby anulować to zamówienie, w witrynie Azure Portal przejdź do obszaru **Przegląd**, a następnie kliknij pozycję **Anuluj** na pasku poleceń.
 
-Anulowanie jest możliwe tylko, jeśli zamówiono dyski, a zamówienie jest przetwarzane pod kątem wysyłki. Po przetworzeniu zamówienia nie można go już anulować. 
+Anulowanie jest możliwe tylko, jeśli zamówiono dyski, a zamówienie jest przetwarzane pod kątem wysyłki. Po przetworzeniu zamówienia nie można go już anulować.
 
 ![Anulowanie zamówienia](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
 Aby usunąć anulowane zamówienie, w obszarze **Omówienie** kliknij pozycję **Usuń** na pasku poleceń.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 
@@ -140,5 +154,3 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak skonfigurować usł
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie usługi Azure Data Box Disk](./data-box-disk-deploy-set-up.md)
-
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 7dfc4329b338a65169c81521360264753bafa9d6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239920"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892901"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Omówienie monitorowania i zarządzania zabezpieczeniami platformy Azure
 
@@ -50,7 +50,7 @@ Za pomocą platformy Azure można użyć ochrony przed złośliwym oprogramowani
 
 Microsoft Antimalware dla usług Azure Cloud Services i Virtual Machines oferuje możliwość instalowania agenta ochrony przed złośliwym kodem dla maszyn wirtualnych i ról PaaS. Oparte na System Center Endpoint Protection, ta funkcja udostępnia sprawdzone w środowisku lokalnym technologii zabezpieczeń w chmurze.
 
-Oferujemy również ścisłą integrację dla trendu [Deep Security](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) i [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produktów na platformie Azure. Deep Security jest rozwiązanie antywirusowe i SecureCloud to rozwiązanie do szyfrowania. Deep Security jest wdrażana wewnątrz maszyn wirtualnych za pośrednictwem modelu rozszerzeń. Za pomocą interfejsu użytkownika witryny Azure portal i programu PowerShell, można użyć Deep Security wewnątrz nowych maszyn wirtualnych, które są uruchamiane są lub istniejących maszyn wirtualnych, które są już wdrożone.
+Oferujemy również ścisłą integrację dla trendu [Deep Security](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) i [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produktów na platformie Azure. Deep Security jest rozwiązanie antywirusowe i SecureCloud to rozwiązanie do szyfrowania. Deep Security jest wdrażana wewnątrz maszyn wirtualnych za pośrednictwem modelu rozszerzeń. Za pomocą interfejsu użytkownika witryny Azure portal i programu PowerShell, można użyć Deep Security wewnątrz nowych maszyn wirtualnych, które są uruchamiane są lub istniejących maszyn wirtualnych, które są już wdrożone.
 
 Symantec Endpoint Protection (SEP) jest również obsługiwana na platformie Azure. Dzięki integracji z portalu można określić, czy zamierzasz używać wrz na maszynie Wirtualnej. WRZ można zainstalować w nowej maszyny Wirtualnej w witrynie Azure portal lub może być zainstalowana na istniejącej maszyny Wirtualnej za pomocą programu PowerShell.
 
@@ -122,8 +122,8 @@ Dostarczając powiadomień i zalecanych czynności naprawczych, Identity Protect
 
 Więcej informacji:
 
-* [Usługa Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Witrynie Channel 9: Usługi Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Ochrona tożsamości w usłudze Azure Active Directory](../active-directory/active-directory-identityprotection.md)
+* [Witryna Channel 9: Usługa Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 
@@ -144,7 +144,7 @@ Więcej informacji:
 
 ## <a name="intelligent-security-graph"></a>Usługę Intelligent Security Graph
 
-Intelligent Security Graph zapewnia ochronę przed zagrożeniami w czasie rzeczywistym w produktów i usług. Używa zaawansowanych analiz, która łączy ogromne ilości zagrożeń danych analizy i zabezpieczeń w celu zapewnienia szczegółowe informacje, które mogą wzmocnić zabezpieczenia organizacji. Firma Microsoft korzysta z zaawansowanych analiz — przetwarzanie ponad 450 MLD uwierzytelnień na miesiąc, skanowanie 400 MLD wiadomości e-mail pod kątem złośliwego oprogramowania i wyłudzania informacji oraz aktualizowanie 1 MLD urządzeń — dostarczać pełniejszy wgląd. Wglądów może pomóc Twojej organizacji, wykrywanie i szybko reagować na ataki.
+Intelligent Security Graph zapewnia ochronę przed zagrożeniami w czasie rzeczywistym w produktów i usług. Używa zaawansowanych analiz, która łączy ogromne ilości zagrożeń danych analizy i zabezpieczeń w celu zapewnienia szczegółowe informacje, które mogą wzmocnić zabezpieczenia organizacji. Firma Microsoft korzysta z zaawansowanych analiz — przetwarzanie ponad 450 MLD uwierzytelnień na miesiąc, skanowanie 400 MLD wiadomości e-mail pod kątem złośliwego oprogramowania i wyłudzania informacji oraz aktualizowanie 1 MLD urządzeń — dostarczać pełniejszy wgląd. Statystyki te mogą pomóc Twojej organizacji wykrywać zagrożenia i szybko na nie reagować.
 
 * [Usługę Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 01af5052d8b092d10609769f211d6ffcde03cf8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bd4c024e14e70b5937d85e9917340d25f552096d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190378"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110872"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
 
@@ -23,7 +23,7 @@ Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure An
 
 **Minimalne wymagania:**
 
-* .NET 4.5 framework
+* .NET 4.5 Framework
 * 64-bitowej wersji systemu Windows 7 / Windows Server 2008 R2 (lub nowszy)
 
 **Zalecane:**
@@ -64,7 +64,7 @@ Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure An
    > [!NOTE]
    > Jeśli zalogujesz się przy użyciu konta domeny w usłudze Azure AD jest mapowany do swojego konta organizacyjnego. Konta organizacji jest używane jako administrator bramy.
 
-## <a name="register"></a>Zarejestruj się
+## <a name="register"></a>Register
 
 W celu utworzenia zasobu bramy na platformie Azure, możesz zarejestrować lokalne wystąpienie, który został zainstalowany przy użyciu usługi bramy w chmurze. 
 
@@ -90,19 +90,19 @@ Po został zainstalowany i zarejestrowany bramy, należy do utworzenia zasobu br
 
 2. W **Utwórz bramę połączenia**, wprowadź następujące ustawienia:
 
-    * **Nazwa**: Wprowadź nazwę zasobu bramy. 
+   * **Nazwa**: Wprowadź nazwę zasobu bramy. 
 
-    * **Subskrypcja**: Wybierz subskrypcję platformy Azure, aby skojarzyć z zasobem usługi bramy. 
+   * **Subskrypcja**: Wybierz subskrypcję platformy Azure, aby skojarzyć z zasobem usługi bramy. 
    
-      Domyślna subskrypcja opiera się na konto platformy Azure, która użyte do zalogowania.
+     Domyślna subskrypcja opiera się na konto platformy Azure, która użyte do zalogowania.
 
-    * **Grupa zasobów**: Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.
+   * **Grupa zasobów**: Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.
 
-    * **Lokalizacja**: Wybierz region, zarejestrować bramę.
+   * **Lokalizacja**: Wybierz region, zarejestrować bramę.
 
-    * **Nazwa instalacji**: Jeśli Twoja instalacja bramy nie została jeszcze wybrana, wybierz bramy, zarejestrowane. 
+   * **Nazwa instalacji**: Jeśli Twoja instalacja bramy nie została jeszcze wybrana, wybierz bramy, zarejestrowane. 
 
-    Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz**.
+     Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz**.
 
 ## <a name="connect-servers"></a>Połącz serwery do zasobu bramy
 

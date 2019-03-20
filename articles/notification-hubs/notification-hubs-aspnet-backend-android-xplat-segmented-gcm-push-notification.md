@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 0672e913bcf4b983a3603a5dc7f66f539f7dfad2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 1c777f705d9b2d3df713642349fe4dbd413e48e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098017"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872866"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>Samouczek: wysyłanie powiadomień push do określonych urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Korzystając z tego samouczka, dowiesz się, jak rozgłaszać powiadomienia z najważniejszymi informacjami do aplikacji systemu Android przy użyciu usługi Azure Notification Hubs. Po zakończeniu pracy z samouczkiem będziesz wiedzieć, jak rejestrować kategorie ważnych wiadomości, które Cię interesują, oraz otrzymywać tylko powiadomienia push dla tych kategorii. Ten scenariusz jest typowym wzorcem dla wielu aplikacji wymagających wysyłania powiadomień do grup użytkowników, które wcześniej zadeklarowały zainteresowanie nimi, na przykład czytników danych RSS, aplikacji dla fanów muzyki itp.
 
@@ -318,7 +318,7 @@ Aplikacja jest teraz zakończona i może przechowywać w magazynie lokalnym na u
 
     ![Powiadomienia dotyczące wiadomości technologicznych](./media/notification-hubs-aspnet-backend-android-breaking-news/technolgy-news-notification.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wysłano rozgłoszone powiadomienia do określonych urządzeń z systemem Android zarejestrowanych dla kategorii. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, przejdź do następującego samouczka:
 
@@ -333,10 +333,10 @@ W tym samouczku wysłano rozgłoszone powiadomienia do określonych urządzeń z
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Azure portal]: https://portal.azure.com
-[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591

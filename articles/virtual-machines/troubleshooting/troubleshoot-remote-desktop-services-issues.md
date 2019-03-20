@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215120"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003141"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Usługi pulpitu zdalnego nie jest uruchamiania na Maszynie wirtualnej platformy Azure
 
@@ -45,7 +45,7 @@ Podczas próby nawiązania połączenia z maszyną wirtualną, występują nast�
     **Poziom**:         Błąd</br>
     **Keywords**:      Wdrożenie klasyczne</br>
     **Użytkownik**:          ND</br>
-    **Komputer**: vm.contoso.com</br>
+    **Computer**:      vm.contoso.com</br>
     **Opis**: Usługi pulpitu zdalnego zawiesiła się podczas uruchamiania. 
 
     Funkcja konsoli szeregowej dostępu umożliwia również wyszukać te błędy, uruchamiając następujące zapytanie: 
@@ -99,7 +99,8 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej. Lub [napraw masz
 
     |  Błąd |  Sugestia |
     |---|---|
-    |5 — ODMOWA DOSTĘPU |Zobacz [TermService zostanie zatrzymana z powodu błędu dostępu](#termService-service-is-stopped-because-of-an-access-denied-problem). |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobacz [TermService usługa zostanie wyłączona](#termService-service-is-disabled).  |  
+    |5 — ODMOWA DOSTĘPU |Zobacz [TermService zostanie zatrzymana z powodu błędu dostępu](#termService-service-is-stopped-because-of-an-access-denied-problem). |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobacz [TermService usługa zostanie wyłączona](#termService-service-is-disabled).  |  
     |1058 - ERROR_SERVICE_DISABLED  |Zobacz [TermService usługa ulegnie awarii lub zawiesza się](#termService-service-crashes-or-hangs).  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.|
     |1067 - ERROR_PROCESS_ABORTED  |Zobacz [TermService usługa ulegnie awarii lub zawiesza się](#termService-service-crashes-or-hangs).  |
@@ -108,7 +109,7 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej. Lub [napraw masz
     |1070 - ERROR_SERVICE_START_HANG   | Zobacz [TermService usługa ulegnie awarii lub zawiesza się](#termService-service-crashes-or-hangs). |
     |1077 - ERROR_SERVICE_NEVER_STARTED   | Zobacz [TermService usługa zostanie wyłączona](#termService-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem. |
-    |1753   |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.   |   |5 — ODMOWA DOSTĘPU |Zobacz [TermService zostanie zatrzymana z powodu błędu dostępu](#termService-service-is-stopped-because-of-an-access-denied-error). |
+    |1753   |[Skontaktuj się z działem pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService zostanie zatrzymana z powodu problemu odmowa dostępu
 
@@ -205,7 +206,7 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej. Lub [napraw masz
 
 1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
 2. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania. Upewnij się, że dysk dołączony jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
-3.  Otwórz wiersz polecenia z podwyższonym wystąpienie (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest **F**. Zastąp go odpowiednią wartość w maszynie Wirtualnej. 
+3. Otwórz wiersz polecenia z podwyższonym wystąpienie (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest **F**. Zastąp go odpowiednią wartość w maszynie Wirtualnej. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

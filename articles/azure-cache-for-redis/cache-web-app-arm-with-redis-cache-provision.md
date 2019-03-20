@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 52c5fb8a6da7e3f12d621406542f0e31f7ece1de
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 23b8e4e7e88f5b993f9b0f9981bbae6b884e2818
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880013"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Tworzenie aplikacji internetowej oraz pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu szablonu
 
@@ -35,7 +35,7 @@ Aby uzyskać kompletny szablon, zobacz [aplikacji internetowej z pamięcią podr
 W tym szablonie zostanie wdrożona:
 
 * Aplikacja sieci Web platformy Azure
-* Usługa Azure Cache dla usługi Redis.
+* Azure Cache for Redis
 
 Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
@@ -86,7 +86,7 @@ Ten szablon tworzy pamięć podręczną w tej samej lokalizacji co grupa zasobó
 ### <a name="web-app"></a>Aplikacja internetowa
 Służy do tworzenia aplikacji sieci web przy użyciu nazwy określonej w **podaną nazwą** zmiennej.
 
-Zwróć uwagę, aplikacji sieci web skonfigurowano właściwości ustawienia aplikacji, które umożliwiają go do pracy z pamięcią podręczną Azure dla usługi Redis. Tej aplikacji, które ustawienia są tworzone dynamicznie na podstawie wartości podanych podczas wdrażania.
+Zwróć uwagę, aplikacji sieci web skonfigurowano właściwości ustawienia aplikacji, które umożliwiają go do pracy z pamięcią podręczną Azure dla usługi Redis. Te ustawienia są dynamicznie utworzona aplikacja na podstawie wartości podanych podczas wdrażania.
 
     {
       "apiVersion": "2015-08-01",

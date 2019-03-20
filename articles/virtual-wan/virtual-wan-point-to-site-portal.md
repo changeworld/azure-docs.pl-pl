@@ -5,15 +5,15 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/27/2019
 ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 87b8543d8cb658b46ab5e589a310a17a69508a47
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: 9fe0c7f7ae0c19833421b647449f0e4100904f5b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411394"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226236"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Samouczek: tworzenie połączenia punkt-lokacja przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
 
@@ -38,11 +38,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>Rejestrowanie tej funkcji
 
-Kliknij pozycję **Wypróbuj**, aby łatwo zarejestrować tę funkcję za pomocą usługi Azure Cloud Shell. Jeśli wolisz uruchomić program PowerShell lokalnie, upewnij się, że masz jego najnowszą wersję i zaloguj się przy użyciu poleceń **Connect-AzureRmAccount** i **Select-AzureRmSubscription**.
+Kliknij pozycję **Wypróbuj**, aby łatwo zarejestrować tę funkcję za pomocą usługi Azure Cloud Shell. Jeśli należy zamiast uruchomić programu PowerShell lokalnie, upewnij się, jest zainstalowana najnowsza wersja i zaloguj się przy użyciu **Connect AzAccount** i **AzSubscription wybierz** poleceń.
 
 >[!NOTE]
 >Jeśli nie zarejestrujesz tej funkcji, nie będzie można jej używać ani wyświetlać w portalu.
@@ -52,25 +54,25 @@ Kliknij pozycję **Wypróbuj**, aby łatwo zarejestrować tę funkcję za pomoc�
 Po kliknięciu pozycji **Wypróbuj** w celu otwarcia usługi Azure Cloud Shell skopiuj i wklej następujące polecenia:
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
  
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
-Gdy funkcja będzie widoczna jako zarejestrowana, ponownie zarejestruj subskrypcję w przestrzeni nazw Microsoft.Network.
+Gdy ta funkcja jest wyświetlany jako zarejestrowane, zarejestruj subskrypcję do Microsoft.Network przestrzeni nazw.
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ## <a name="vnet"></a>1. Tworzenie sieci wirtualnej
@@ -101,13 +103,13 @@ Konfiguracja P2S definiuje parametry służące do łączenia z klientami zdalny
 4. Kliknij przycisk **+ Dodaj konfigurację punkt-lokacja** w górnej części strony, aby otworzyć stronę **Utwórz nową konfigurację punkt-lokacja**.
 5. Na stronie **Utwórz nową konfigurację punkt-lokacja**, wypełnij następujące pola:
 
-  *  **Nazwa konfiguracji** — jest to nazwa używana w celu odwoływania się do konfiguracji.
-  *  **Typ tunelu** — protokół używany w przypadku tunelu.
-  *  **Pula adresów** — jest to pula adresów IP, z której będą przypisywani klienci.
-  *  **Nazwa certyfikatu głównego** — opisowa nazwa certyfikatu.
-  *  **Dane certyfikatu głównego** — dane certyfikatu X.509 szyfrowanego algorytmem Base-64.
+   *  **Nazwa konfiguracji** — jest to nazwa używana w celu odwoływania się do konfiguracji.
+   *  **Typ tunelu** — protokół używany w przypadku tunelu.
+   *  **Pula adresów** — jest to pula adresów IP, z której będą przypisywani klienci.
+   *  **Nazwa certyfikatu głównego** — opisowa nazwa certyfikatu.
+   *  **Dane certyfikatu głównego** — dane certyfikatu X.509 szyfrowanego algorytmem Base-64.
 
-5. Kliknij przycisk **Utwórz**, aby utworzyć konfigurację.
+6. Kliknij przycisk **Utwórz**, aby utworzyć konfigurację.
 
 ## <a name="hub"></a>5. Edytowanie przypisania koncentratora
 
@@ -115,15 +117,16 @@ Konfiguracja P2S definiuje parametry służące do łączenia z klientami zdalny
 2. Wybierz koncentrator, do którego chcesz przypisać konfigurację punkt-lokacja.
 3. Kliknij przycisk **„...”** i wybierz pozycję **Edytuj koncentrator wirtualny**
 4. Zaznacz pozycję **Uwzględnij bramę punkt-lokacja**.
-5. Wybierz pozycje **Jednostki skalowania bramy** i **Konfiguracja punkt-lokacja** wraz z **pulą adresów** dla klientów.
-6. Kliknij pozycję **Potwierdź**. 
-7. Ukończenie operacji może potrwać do 30 minut.
+5. Z listy rozwijanej wybierz **jednostek skalowania bramy**.
+6. Z listy rozwijanej wybierz **Point-to-site configuration** utworzony.
+7. Konfigurowanie **puli adresów** dla klientów.
+8. Kliknij pozycję **Potwierdź**. Ukończenie operacji może potrwać do 30 minut.
 
 ## <a name="vnet"></a>6. Łączenie sieci wirtualnej z koncentratorem
 
 W tym kroku zostanie utworzone połączenie równorzędne pomiędzy koncentratorem i siecią wirtualną. Powtórz te czynności dla każdej sieci wirtualnej, z którą chcesz się połączyć.
 
-1. Na stronie usługi Virtual WAN kliknij pozycję **Połączenie sieci wirtualnej**.
+1. Na stronie sieci wirtualnej WAN kliknij pozycję **Połączenia sieci wirtualnych**.
 2. Na stronie połączenia sieci wirtualnej kliknij polecenie **+ Dodaj połączenie**.
 3. Na stronie **Dodaj połączenie** wypełnij następujące pola:
 
@@ -131,6 +134,7 @@ W tym kroku zostanie utworzone połączenie równorzędne pomiędzy koncentrator
     * **Koncentratory** — wybierz koncentrator, z którym chcesz skojarzyć to połączenie.
     * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
     * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. Sieć wirtualna nie może mieć istniejącej bramy sieci wirtualnej.
+4. Kliknij przycisk **OK** można dodać połączenia.
 
 ## <a name="device"></a>7. Pobieranie profilu sieci VPN
 
@@ -149,7 +153,7 @@ Użyj pobranego profilu, aby skonfigurować klientów zdalnego dostępu. Procedu
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Pobierz i zainstaluj klienta OpenVPN z oficjalnej witryny internetowej.
-2.  Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracje punkt-lokacja w witrynie Azure Portal lub za pomocą polecenia New-AzureRmVpnClientConfiguration w programie PowerShell.
+2.  Pobierz profil sieci VPN dla bramy. Można to zrobić, na karcie konfiguracje punkt lokacja w witrynie Azure portal lub New-AzVpnClientConfiguration w programie PowerShell.
 3.  Rozpakuj profil. Otwórz plik konfiguracji vpnconfig.ovpn z folderu OpenVPN w programie Notatnik.
 4.  W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Sprawdź tutaj, w jaki sposób wyeksportować certyfikat, aby otrzymać zakodowany klucz publiczny.
 5.  W sekcji klucza prywatnego wprowadź klucz prywatny certyfikatu klienta P2S w formacie base64. Zobacz tutaj, w jaki sposób wyodrębnić klucz prywatny.
@@ -168,7 +172,7 @@ Użyj pobranego profilu, aby skonfigurować klientów zdalnego dostępu. Procedu
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Pobierz i zainstaluj klienta OpenVPN, na przykład program TunnelBlik, dostępny na stronie https://tunnelblick.net/downloads.html 
-2.  Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punkt-lokacja w witrynie Azure Portal lub za pomocą polecenia New-AzureRmVpnClientConfiguration w programie PowerShell.
+2.  Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w witrynie Azure portal lub New-AzVpnClientConfiguration w programie PowerShell.
 3.  Rozpakuj profil. Otwórz plik konfiguracji vpnconfig.ovpn z folderu OpenVPN w programie Notatnik.
 4.  W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Sprawdź tutaj, w jaki sposób wyeksportować certyfikat, aby otrzymać zakodowany klucz publiczny.
 5.  W sekcji klucza prywatnego wprowadź klucz prywatny certyfikatu klienta P2S w formacie base64. Zobacz tutaj, w jaki sposób wyodrębnić klucz prywatny.
@@ -201,13 +205,13 @@ Utwórz połączenie, aby monitorować komunikację pomiędzy maszyną wirtualn�
 
 ## <a name="cleanup"></a>12. Oczyszczanie zasobów
 
-Gdy grupa zasobów i zawarte w niej zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
+Jeśli te zasoby nie są już potrzebne, możesz użyć [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby. Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

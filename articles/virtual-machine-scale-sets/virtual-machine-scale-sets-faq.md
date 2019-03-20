@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 610ac10e757ef422ce130c0cfe8253af6ba4b7b9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542475"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999560"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -234,7 +234,7 @@ Można podać publicznymi kluczami SSH w postaci zwykłego tekstu, podczas tworz
 ```
 
 Nazwa elementu linuxConfiguration | Wymagane | Typ | Opis
---- | --- | --- | --- |  ---
+--- | --- | --- | --- 
 SSH | Nie | Collection | Określa konfigurację kluczy SSH w systemie operacyjnym Linux
 ścieżka | Yes | Ciąg | Określa ścieżkę pliku systemu Linux, gdzie klucze SSH lub certyfikatu powinien być zlokalizowany
 Kontenerem | Yes | Ciąg | Określa klucz publiczny SSH algorytmem Base64
@@ -309,7 +309,7 @@ Dokumentacja usługi Azure Key Vault stanów, Uzyskaj wpis tajny interfejsu API 
 
 Metoda | Adres URL
 --- | ---
-GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
+GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
 
 Zastąp {*nazw klucz tajny*} o nazwie i Zastąp {*wersji klucza tajnego*} z wersją tego hasła, które ma zostać pobrane. Wersja wpisu tajnego, może być wyłączone. W takim przypadku bieżącej wersji są pobierane.
 
@@ -535,7 +535,7 @@ Aby wdrożyć maszynę wirtualną zestawie skalowania do istniejącej sieci wirt
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Jak dodać adres IP z pierwszej maszyny Wirtualnej w zestawie danych wyjściowych szablonu skalowania maszyny wirtualnej?
 
-Aby dodać adres IP z pierwszej maszyny Wirtualnej w zestawie danych wyjściowych szablonu skalowania maszyny wirtualnej, zobacz [usługi Azure Resource Manager: Uruchom maszynę wirtualną z prywatnych adresów IP zestawów skalowania](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
+Aby dodać adres IP z pierwszej maszyny Wirtualnej w zestawie danych wyjściowych szablonu skalowania maszyny wirtualnej, zobacz [usługi Azure Resource Manager: Uruchom maszynę wirtualną z prywatnych adresów IP zestawów skalowania](https://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Dzięki przyspieszonej sieci można używać zestawów skalowania?
 
@@ -721,3 +721,26 @@ Główna różnica między usunięciem maszyny Wirtualnej w zestawie skalowania 
 - Chcesz uruchomić zestaw maszyn wirtualnych szybciej, niż można skalować zestaw skalowania maszyn wirtualnych.
   - Dotyczące tego scenariusza, być może utworzono własny aparat skalowania automatycznego i chcesz szybciej skalowania end-to-end.
 - Masz zestaw skalowania maszyn wirtualnych, które są nierównomiernie rozłożone między domeny błędów i domenach aktualizacji. Może to być, ponieważ selektywnie usunąć maszyny wirtualne lub maszyny wirtualne zostały usunięte po udostępniania. Uruchamianie `stop deallocate` następuje `start` na maszynie wirtualnej zestawu skalowania równomiernie rozdziela maszyny wirtualne między domeny błędów i domenach aktualizacji.
+
+### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>Jak utworzyć migawkę wystąpienia zestawu skalowania maszyn wirtualnych?
+Tworzenie migawki z wystąpienia zestawu skalowania maszyn wirtualnych.
+
+```azurepowershell-interactive
+$rgname = "myResourceGroup"
+$vmssname = "myVMScaleSet"
+$Id = 0
+$location = "East US"
+ 
+$vmss1 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $Id     
+$snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard_LRS -OsType Windows -CreateOption Copy -SourceUri $vmss1.StorageProfile.OsDisk.ManagedDisk.id
+New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
+``` 
+ 
+Tworzenie dysku zarządzanego na podstawie migawki.
+
+```azurepowershell-interactive
+$snapshotName = "myShapshot"
+$snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
+$diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk') 
+```

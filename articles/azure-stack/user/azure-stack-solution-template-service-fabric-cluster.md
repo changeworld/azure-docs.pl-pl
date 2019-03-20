@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: a8897288e19a7628dbd1cc2c022de4db2a111393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d0d725a57c27fe30215d77a596f6fb3b8c8720d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248048"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098012"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Wdrażanie klastra usługi Service Fabric w usłudze Azure Stack
 
@@ -37,17 +37,17 @@ Następujące czynności są wymagane do wdrożenia klastra usługi Service Fabr
    Jest to certyfikat X.509, dodanych do magazynu kluczy, podczas wdrażania usługi Service Fabric. 
    - **CN** tego certyfikatu musi odpowiadać w pełni kwalifikowanej domeny nazwę (FQDN) klastra usługi Service Fabric, możesz utworzyć. 
    - Format certyfikatu musi być PFX, ponieważ wymagane są klucze publiczne i prywatne. 
-   Zobacz [wymagania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) do tworzenia tego certyfikatu po stronie serwera.
+     Zobacz [wymagania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) do tworzenia tego certyfikatu po stronie serwera.
 
-    > [!NOTE]  
-    > Inplace certyfikatu z podpisem własnym x.509 certyfikatu serwera służy do celów testowych. Certyfikaty z podpisem własnym nie muszą odpowiadać nazwie FQDN klastra.
+     > [!NOTE]  
+     > Inplace certyfikatu z podpisem własnym x.509 certyfikatu serwera służy do celów testowych. Certyfikaty z podpisem własnym nie muszą odpowiadać nazwie FQDN klastra.
 
-1.  **Certyfikat klienta administracyjnego** jest to certyfikat, który będzie używany przez klienta do uwierzytelniania w klastrze usługi Service Fabric, co może być z podpisem własnym. Zobacz [wymagania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) do tworzenia tego certyfikatu klienta.
+1. **Certyfikat klienta administracyjnego** jest to certyfikat, który będzie używany przez klienta do uwierzytelniania w klastrze usługi Service Fabric, co może być z podpisem własnym. Zobacz [wymagania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) do tworzenia tego certyfikatu klienta.
 
-1.  **Następujące elementy muszą być dostępne w witrynie Azure Marketplace stosu:**
-     - **System Windows Server 2016** — szablon używa obrazu systemu Windows Server 2016 w celu utworzenia klastra.  
-     - **Rozszerzenia skryptów klienta** — rozszerzenie maszyny wirtualnej od firmy Microsoft.  
-     - **PowerShell Desired Configuration etapu** — rozszerzenie maszyny wirtualnej od firmy Microsoft.
+1. **Następujące elementy muszą być dostępne w witrynie Azure Marketplace stosu:**
+    - **System Windows Server 2016** — szablon używa obrazu systemu Windows Server 2016 w celu utworzenia klastra.  
+    - **Rozszerzenia skryptów klienta** — rozszerzenie maszyny wirtualnej od firmy Microsoft.  
+    - **PowerShell Desired Configuration etapu** — rozszerzenie maszyny wirtualnej od firmy Microsoft.
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Dodawanie wpisu tajnego do usługi Key Vault

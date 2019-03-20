@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673755"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900832"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>Samouczek: Aplikacja z użyciem interfejsu API tłumaczenia mowy w usłudze Translator w języku C#
 
@@ -40,7 +40,7 @@ Rozwiązanie programu Visual Studio kompiluje również instalator aplikacji. Do
 
 Potrzebny jest również klucz subskrypcji usługi tłumaczenia mowy w usłudze Translator, który możesz uzyskać z poziomu pulpitu nawigacyjnego platformy Microsoft Azure. Narzędzie dostępne jest w bezpłatnej warstwie cenowej, która umożliwia przetłumaczenie maksymalnie 10 godzin mowy miesięcznie bez żadnych opłat. Do celów tego samouczka ta warstwa jest wystarczająca.
 
-Wymagana jest również [biblioteka JSON.Net](https://www.newtonsoft.com/json) innej firmy (dostępna w witrynie Newtonsoft). Ten zestaw zostanie automatycznie zainstalowany przez narzędzie NuGet w przypadku zaznaczenia obu pól wyboru Package restore (Przywracanie pakietów) w opcjach programu Visual Studio.
+Innych firm [biblioteki na składnik JSON.NET](https://www.newtonsoft.com/json) (z Newtonsoft) jest również wymagany. Ten zestaw zostanie automatycznie zainstalowany przez narzędzie NuGet w przypadku zaznaczenia obu pól wyboru Package restore (Przywracanie pakietów) w opcjach programu Visual Studio.
 
 ## <a name="trying-the-translation-app"></a>Aplikacja do tłumaczenia — pierwsze kroki
 
@@ -428,7 +428,7 @@ Po uwierzytelnieniu ta metoda tworzy wystąpienie klasy `SpeechClient`. Klasa `S
 
 Dane binarne to dane audio (dane wyjściowe po zamianie tekstu na mowę) wysyłane przez usługę, gdy włączona jest opcja TTS. Dane tekstowe to częściowe lub pełne tłumaczenie tekstu mówionego. Po zainicjowaniu metoda podłącza funkcje umożliwiające obsługę tych komunikatów: dźwiękowych poprzez przechowywanie ich do późniejszego odtworzenia oraz tekstowych poprzez wyświetlenie ich w oknie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Ten kod przykładowy to aplikacja bogata w funkcje, która pokazuje, jak korzystać z interfejsu API tłumaczenia mowy w usłudze Translator. Dlatego zawiera wiele elementów, które należy rozumieć. Tutaj pokazane zostały najważniejsze z nich. Odnośnie do reszty warto ustawić kilka punktów przerwania w programie Visual Studio i przejść przez proces tłumaczenia. Gdy zapoznasz się już z działaniem aplikacji przykładowej, możesz rozpocząć korzystanie z funkcji tłumaczenia mowy w usłudze Translator we własnych aplikacjach.
 

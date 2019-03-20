@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: feb9d0a01cbba75fc9868f5a603d494c5c09ae2e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e41647140373fcf637cad55af62764bd87826a62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386301"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849350"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Zarządzanie aplikacjami i usługami jako zasoby usługi Azure Resource Manager
 
@@ -28,8 +28,8 @@ Na klastrze usługi Service Fabric za pomocą usługi Azure Resource Manager mo�
 Jest to zalecany sposób wdrożyć wszystkie ustawienia, nadzoru lub aplikacji do zarządzania klastrem, wymagających w klastrze. Obejmuje to [Patch Orchestration Application](service-fabric-patch-orchestration-application.md), Watchdogs lub wszystkie aplikacje, które musi być uruchomiona w klastrze, przed wdrożeniem innymi aplikacjami lub usługami. 
 
 Jeśli ma to zastosowanie, zarządzanie aplikacjami jako zasoby usługi Resource Manager w celu:
-* Dziennik inspekcji: Resource Manager inspekcje każdej operacji i przechowuje szczegółowe *dziennika aktywności* śledzenia wszelkie zmiany wprowadzone do tych aplikacji i klastra, może pomóc.
-* Kontrola dostępu oparta na rolach (RBAC): zarządzanie dostępem do klastrów, a także aplikacji wdrożonych w klastrze może odbywać się za pomocą tego samego szablonu usługi Resource Manager.
+* Dziennik inspekcji: Menedżer zasobów inspekcje każdej operacji i przechowuje szczegółowe *dziennika aktywności* śledzenia wszelkie zmiany wprowadzone do tych aplikacji i klastra, może pomóc.
+* Kontrola dostępu oparta na rolach (RBAC): Zarządzanie dostępem do klastrów, a także aplikacji wdrożonych w klastrze może odbywać się za pomocą tego samego szablonu usługi Resource Manager.
 * Usługa Azure Resource Manager (za pośrednictwem witryny Azure portal) staje się jedną — — znajdziesz zarządzania klastrem i wdrożeń aplikacja o krytycznym znaczeniu.
 
 Poniższy fragment kodu przedstawia różnych rodzajów zasobów, które mogą być zarządzane za pomocą szablonu:
@@ -69,9 +69,9 @@ Poniższy fragment kodu przedstawia różnych rodzajów zasobów, które mogą b
 3. Po mają wybierana. jakie aplikacje, które mają być wdrożone w ten sposób, aplikacje mają spakowane, zip i umieść w udziale plików. Udział musi być dostępny za pośrednictwem punktu końcowego REST dla usługi Azure Resource Manager można używać podczas wdrażania.
 4. W szablonie usługi Resource Manager poniżej swojej deklaracji klastra opisują właściwości każdej aplikacji. Te właściwości obejmują liczby replik lub wystąpień i wszelkich łańcuchów zależności między zasobami (innymi aplikacjami lub usługami). Aby uzyskać listę właściwości kompleksowe, zobacz [Specyfikacja Swagger interfejsu API REST](https://aka.ms/sfrpswaggerspec). Należy pamiętać, że nie zastępuje to aplikacja lub usługa manifesty, ale raczej opisano niektóre co znajduje się w ich w ramach szablonu usługi Resource Manager klastra. Poniżej przedstawiono przykładowy szablon zawierający wdrażania usługi bezstanowej *Service1* i usługi stanowej *klienta2* jako część *Application1*:
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+   ```json
+   {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "clusterName": {
@@ -251,11 +251,11 @@ Poniższy fragment kodu przedstawia różnych rodzajów zasobów, które mogą b
         }
       }
     ]
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE] 
-  > *ApiVersion* musi być równa `"2017-07-01-preview"`. Tego szablonu można także wdrożyć niezależnie od klastra, tak długo, jak klastra została już wdrożona.
+   > [!NOTE] 
+   > *ApiVersion* musi być równa `"2017-07-01-preview"`. Tego szablonu można także wdrożyć niezależnie od klastra, tak długo, jak klastra została już wdrożona.
 
 5. Wdrażanie! 
 
@@ -264,7 +264,7 @@ Poniższy fragment kodu przedstawia różnych rodzajów zasobów, które mogą b
 Jeśli klaster już działa, a niektóre aplikacje, czy chcesz zarządzać jako menedżerem zasobów są już na nim wdrożone, zamiast usuwania aplikacji i ponowne ich wdrożenie, można użyć wywołania PUT przy użyciu tych samych interfejsów API do aplikacji, Pobierz potwierdzony jako zasoby usługi Resource Manager. 
 
 > [!NOTE]
-> Aby umożliwić uaktualniania klastra, aby zignorować aplikacje w złej kondycji klienta można określić "maxPercentUnhealthyApplications: 100" w sekcji "upgradeDescription/healthPolicy"; szczegółowy opis dla wszystkich ustawień znajdują się w [dokumentacji usługi sieci szkieletowe REST API klastra zasady uaktualniania](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> Aby umożliwić uaktualniania klastra, aby zignorować aplikacje w złej kondycji klienta można określić "maxPercentUnhealthyApplications: 100" w sekcji" upgradeDescription/healthPolicy"; szczegółowy opis dla wszystkich ustawień znajdują się w [dokumentacji usługi sieci szkieletowe REST API klastra zasady uaktualniania](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

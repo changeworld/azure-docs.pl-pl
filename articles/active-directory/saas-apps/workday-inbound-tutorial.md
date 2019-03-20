@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73c921df493eeda25c50047e861d3d30e6dc52a8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897626"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
 
@@ -257,13 +257,13 @@ W tym kroku zostanie Utwórz grupę zabezpieczeń systemu integracji z użyciem 
     ![Grupa CreateSecurity](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity grupy")
 2. Wykonaj **Utwórz grupę zabezpieczeń** zadania. 
 
-  * Istnieją dwa typy grup zabezpieczeń w usłudze WORKDAY aplikacja:
-    * **Nieograniczone:** Wszyscy członkowie grupy zabezpieczeń można uzyskać dostęp do wszystkich wystąpień dane chronione przez grupę zabezpieczeń.
-    * **Ograniczone:** Wszyscy członkowie grupy zabezpieczeń mają kontekstowych dostęp do podzbioru wystąpień danych (wierszy), które mogą uzyskiwać dostęp do grupy zabezpieczeń.
-  * Sprawdź, czy razem ze swoim partnerem integracji produktu Workday wybierz typ grupy zabezpieczeń odpowiednich do integracji.
-  * Jeśli znasz już typ grupy, wybierz **integracji systemowa grupa zabezpieczeń (nieograniczony)** lub **integracji systemowa grupa zabezpieczeń (ograniczony)** z **typu grupy zabezpieczeń gośćmi**  listy rozwijanej.
+   * Istnieją dwa typy grup zabezpieczeń w usłudze WORKDAY aplikacja:
+     * **Nieograniczone:** Wszyscy członkowie grupy zabezpieczeń można uzyskać dostęp do wszystkich wystąpień dane chronione przez grupę zabezpieczeń.
+     * **Ograniczone:** Wszyscy członkowie grupy zabezpieczeń mają kontekstowych dostęp do podzbioru wystąpień danych (wierszy), które mogą uzyskiwać dostęp do grupy zabezpieczeń.
+   * Sprawdź, czy razem ze swoim partnerem integracji produktu Workday wybierz typ grupy zabezpieczeń odpowiednich do integracji.
+   * Jeśli znasz już typ grupy, wybierz **integracji systemowa grupa zabezpieczeń (nieograniczony)** lub **integracji systemowa grupa zabezpieczeń (ograniczony)** z **typu grupy zabezpieczeń gośćmi**  listy rozwijanej.
 
-    ![Grupa CreateSecurity](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity grupy")
+     ![Grupa CreateSecurity](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity grupy")
 
 3. Po pomyślnym utworzeniu grupy zabezpieczeń zostanie wyświetlona strona, na której można przypisać członków do grupy zabezpieczeń. Dodawanie nowego użytkownika systemu integracji, utworzony w poprzednim kroku do tej grupy zabezpieczeń. Jeśli używasz *ograniczonego* grupę zabezpieczeń należy również wybrać zakres w organizacji odpowiednie.
 
@@ -286,11 +286,11 @@ W tym kroku będziesz udzielić "zabezpieczenia domeny" uprawnienia zasad dla da
    * *Dane procesu roboczego: Bieżące informacje kadrowe*
    * *Dane procesu roboczego: Tytuł biznesowych na profil pracownika*
 
-    ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_07.png "zasady zabezpieczeń domeny")  
+     ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_07.png "zasady zabezpieczeń domeny")  
 
-    ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_08.png "zasady zabezpieczeń domeny") 
+     ![Zasady zabezpieczeń domeny](./media/workday-inbound-tutorial/wd_isu_08.png "zasady zabezpieczeń domeny") 
 
-    Kliknij przycisk **OK**.
+     Kliknij przycisk **OK**.
 
 3. W raporcie zostaną wyświetlone, wybierz wielokropek (...), która pojawia się obok **zewnętrznej konta** i kliknij opcję menu **domeny -> Edytuj uprawnienia zasad zabezpieczeń**
 
@@ -428,7 +428,7 @@ Wdrożenie .NET 4.7.1+ można pobrać **[tutaj agenta inicjowania obsługi admin
 
 8. Wykonaj **poświadczeń administratora** sekcji w następujący sposób:
 
-   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta systemowego integracji produktu Workday za pomocą dołączona nazwa domeny dzierżawy. Powinien wyglądać mniej więcej tak: **username@tenant_name**
+   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta systemowego integracji produktu Workday za pomocą dołączona nazwa domeny dzierżawy. Powinien wyglądać mniej więcej tak: **username\@nazwa_dzierżawy**
 
    * **Hasło administratora —** wprowadź hasło konta systemu integracji produktu Workday
 
@@ -438,8 +438,8 @@ Wdrożenie .NET 4.7.1+ można pobrać **[tutaj agenta inicjowania obsługi admin
 
    * **Kontener usługi Active Directory —** wprowadź nazwa Wyróżniająca kontenera, w którym tworzenia kont użytkowników domyślnie agenta.
         Przykład: *OU = użytkownicy standardowi, OU = Users, DC = contoso, DC = test*
-> [!NOTE]
-> To ustawienie pochodzi wyłącznie do gry dla podczas tworzenia kont użytkowników Jeśli *parentDistinguishedName* atrybutu nie skonfigurowano mapowania atrybutów. To ustawienie nie jest używane dla wyszukiwanie użytkowników lub aktualizacji operacji. Drzewo podrzędne całej domeny znajduje się w zakresie operacji wyszukiwania.
+     > [!NOTE]
+     > To ustawienie pochodzi wyłącznie do gry dla podczas tworzenia kont użytkowników Jeśli *parentDistinguishedName* atrybutu nie skonfigurowano mapowania atrybutów. To ustawienie nie jest używane dla wyszukiwanie użytkowników lub aktualizacji operacji. Drzewo podrzędne całej domeny znajduje się w zakresie operacji wyszukiwania.
 
    * **Wiadomość E-mail z powiadomieniem —** wprowadź swój adres e-mail, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail, jeśli wystąpi błąd".
 
@@ -477,11 +477,11 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 > [!TIP]
 > Podczas konfigurowania aprowizacji aplikacji po raz pierwszy, należy przetestować i zweryfikować mapowań atrybutów i wyrażenia, aby upewnić się, że go udostępnia Ci oczekiwany rezultat. Firma Microsoft zaleca przy użyciu zakresu filtry w obszarze **zakres obiektów źródłowych** do testowania mapowania przy użyciu kilku użytkowników testowych z produktu Workday. Po upewnieniu się, że mapowania działają, a następnie możesz usunąć filtr lub stopniowo rozwinąć, aby zawierała więcej użytkowników.
 
-3. W **Akcje obiektu docelowego** pole globalnie filtrowania, jakie akcje są wykonywane na usłudze Active Directory. **Tworzenie** i **aktualizacji** występują najczęściej.
+1. W **Akcje obiektu docelowego** pole globalnie filtrowania, jakie akcje są wykonywane na usłudze Active Directory. **Tworzenie** i **aktualizacji** występują najczęściej.
 
-4. W **mapowania atrybutów** sekcji można zdefiniować Workday jak poszczególne atrybuty mapowania atrybutów usługi Active Directory.
+1. W **mapowania atrybutów** sekcji można zdefiniować Workday jak poszczególne atrybuty mapowania atrybutów usługi Active Directory.
 
-5. Kliknij na istniejące mapowanie atrybutu go zaktualizować, lub kliknij **Dodaj nowe mapowanie** w dolnej części ekranu, aby dodać nowe mapowania. Mapowanie atrybutu poszczególnych obsługuje następujące właściwości:
+1. Kliknij na istniejące mapowanie atrybutu go zaktualizować, lub kliknij **Dodaj nowe mapowanie** w dolnej części ekranu, aby dodać nowe mapowania. Mapowanie atrybutu poszczególnych obsługuje następujące właściwości:
 
       * **Typ mapowania**
 
@@ -508,7 +508,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 
          * **Tylko podczas tworzenia** — Zastosuj to mapowanie tylko w akcji tworzenia użytkownika
 
-6. Aby zapisać mapowania, kliknij przycisk **Zapisz** w górnej części mapowanie atrybutu.
+1. Aby zapisać mapowania, kliknij przycisk **Zapisz** w górnej części mapowanie atrybutu.
 
    ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -524,8 +524,8 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Tak** | Zapisane podczas tworzenia tylko |
 | **PreferredNameData**    |  cn    |   |   Zapisane podczas tworzenia tylko |
-| **SelectUniqueValue (Dołącz ("@", Dołącz do (".", \[FirstName\], \[LastName\]), "contoso.com"), Dołącz ("@", Dołącz (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Dołącz ("@", Dołącz (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Zapisane podczas tworzenia tylko 
-| **Zastąp(Mid(Zastąp(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisane podczas tworzenia tylko |
+| **SelectUniqueValue (Dołącz ("\@", Dołącz (".", \[FirstName\], \[LastName\]), "contoso.com"), Dołącz ("\@", Dołącz do (".", Mid (\[FirstName\], 1, 1 () \[LastName\]), "contoso.com"), Dołącz ("\@", Dołącz (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Zapisane podczas tworzenia tylko 
+| **Zastąp(Mid(Zastąp(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisane podczas tworzenia tylko |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | Tworzenie i aktualizowanie |
 | **Imię**   | givenName       |     |    Tworzenie i aktualizowanie |
 | **Nazwisko**   |   numery seryjne   |     |  Tworzenie i aktualizowanie |
@@ -677,7 +677,7 @@ Wykonaj te instrukcje, aby skonfigurować zapisywanie zwrotne adresy e-mail uży
 
 8. Wykonaj **poświadczeń administratora** sekcji w następujący sposób:
 
-   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta systemowego integracji produktu Workday za pomocą dołączona nazwa domeny dzierżawy. Powinien wyglądać następująco: *username@contoso4*
+   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta systemowego integracji produktu Workday za pomocą dołączona nazwa domeny dzierżawy. Powinien wyglądać mniej więcej tak: *username\@contoso4*
 
    * **Hasło administratora —** wprowadź hasło konta systemu integracji produktu Workday
 
@@ -1226,7 +1226,7 @@ Aby wykonać tę zmianę, należy użyć [Workday Studio](https://community.work
 
 7. Ustaw **operacji** do **Get_Workers**
 
-8.  Kliknij małą **skonfigurować** link poniżej okienka żądanie/odpowiedź, aby ustawić poświadczenia dla produktu Workday. Sprawdź **uwierzytelniania**, a następnie wprowadź nazwę użytkownika i hasło dla konta system integracji produktu Workday. Pamiętaj format nazwy użytkownika jako name@tenanti pozostawić **UsernameToken WS-Security** wybraną opcją.
+8.  Kliknij małą **skonfigurować** link poniżej okienka żądanie/odpowiedź, aby ustawić poświadczenia dla produktu Workday. Sprawdź **uwierzytelniania**, a następnie wprowadź nazwę użytkownika i hasło dla konta system integracji produktu Workday. Pamiętaj sformatować nazwę użytkownika, jak nazwa\@dzierżawy i pozostaw **UsernameToken WS-Security** wybraną opcją.
 
     ![WORKDAY Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 

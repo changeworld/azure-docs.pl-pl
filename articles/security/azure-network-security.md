@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 857672e8dee4dbe8d586db0cd80b206ec6ecb7df
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244574"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121591"
 ---
 # <a name="azure-network-security"></a>Zabezpieczenia sieci na platformie Azure
 
@@ -90,7 +90,7 @@ Sieci wirtualne platformy Azure są podobne wirtualnej sieci lokalnej za pomocą
 
 - **Komunikacja równorzędna:** Dzięki zasoby podłączone do różnych sieci wirtualnych platformy Azure w ramach tej samej lokalizacji platformy Azure do komunikowania się ze sobą. Przepustowość i opóźnienie między siecią wirtualną jest taki sam, jakby zasoby były podłączone do tej samej sieci wirtualnej. Aby dowiedzieć się więcej na temat komunikacji równorzędnej, przeczytaj [komunikacja równorzędna sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
- ![Komunikacja równorzędna](media/azure-network-security/azure-network-security-fig-3.png)
+  ![Komunikacja równorzędna](media/azure-network-security/azure-network-security-fig-3.png)
 
 - **Połączenie sieć wirtualna-sieć wirtualna:** Dzięki zasoby podłączony do innej sieci wirtualnej platformy Azure w ramach tej samej lub innej lokalizacji platformy Azure. W przeciwieństwie do komunikacji równorzędnej, przepustowość jest ograniczona między sieciami wirtualnymi, ponieważ ruch musi przepływać za pośrednictwem bramy sieci VPN Azure.
 
@@ -318,19 +318,19 @@ Wymuszone tunelowanie w systemie Azure jest skonfigurowany za pośrednictwem sie
 
 W poniższej sekcji przedstawiono bieżące ograniczenie tabeli routingu i trasy dla usługi Azure Virtual Network:
 
--   Każda podsieć sieci wirtualnej ma wbudowane i tabelę routingu systemu. Tabela routingu system ma trzy następujące grupy trasy:
+- Każda podsieć sieci wirtualnej ma wbudowane i tabelę routingu systemu. Tabela routingu system ma trzy następujące grupy trasy:
 
- -  **Lokalne trasy sieci wirtualnej:** Bezpośrednio do lokalizacji docelowej maszyny wirtualne w tej samej sieci wirtualnej
+  -  **Lokalne trasy sieci wirtualnej:** Bezpośrednio do lokalizacji docelowej maszyny wirtualne w tej samej sieci wirtualnej
 
- - **W lokalnej trasy:** Do bramy sieci VPN platformy Azure
+  - **W lokalnej trasy:** Do bramy sieci VPN platformy Azure
 
- -  **Trasa domyślna:** Bezpośrednio do Internetu. Pakiety przeznaczone do prywatnych adresów IP nieuwzględnionych przez poprzednie dwie trasy są porzucane.
+  -  **Trasa domyślna:** Bezpośrednio do Internetu. Pakiety przeznaczone do prywatnych adresów IP nieuwzględnionych przez poprzednie dwie trasy są porzucane.
 
--   Wraz z wydaniem trasy zdefiniowane przez użytkownika można utworzyć tabeli routingu, aby dodać trasę domyślną i skojarz tabeli routingu do podsieci sieci wirtualnej można włączyć tunelowania wymuszonego tych podsieci.
+- Wraz z wydaniem trasy zdefiniowane przez użytkownika można utworzyć tabeli routingu, aby dodać trasę domyślną i skojarz tabeli routingu do podsieci sieci wirtualnej można włączyć tunelowania wymuszonego tych podsieci.
 
--   Należy ustawić "Domyślna witryna" wśród wielu lokacji lokalnych podłączone do sieci wirtualnej.
+- Należy ustawić "Domyślna witryna" wśród wielu lokacji lokalnych podłączone do sieci wirtualnej.
 
--   Wymuszone tunelowanie muszą być skojarzone z siecią wirtualną, która ma sieci VPN bramy o dynamicznym routingu (nie brama statyczna).
+- Wymuszone tunelowanie muszą być skojarzone z siecią wirtualną, która ma sieci VPN bramy o dynamicznym routingu (nie brama statyczna).
 
 - Usługa ExpressRoute wymuszonego tunelowania nie jest skonfigurowany za pomocą tego mechanizmu, ale zamiast tego można włączyć, konfigurując anonsuje trasę domyślną za pośrednictwem sesje komunikacji równorzędnej BGP usługi ExpressRoute.
 

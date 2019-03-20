@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bacefaada8ab0d63bb17d22f67b91c51a789de8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c769d241f54d5d86ef4954609eec555d8aab947a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172335"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858001"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problem z konfigurowaniem hasło logowania jednokrotnego dla aplikacji spoza galerii
 
@@ -46,25 +46,25 @@ Ogólnie rzecz biorąc **Jeśli przechwytywania pól automatycznego logowania ni
 
 Aby skonfigurować **opartego na hasłach logowania jednokrotnego** dla aplikacji za pomocą **przechwytywania pól automatycznego logowania**, wykonaj następujące czynności:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+4. Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne.
+6. Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8.  Wybierz tryb **opartego na hasłach logowania jednokrotnego.**
+8. Wybierz tryb **opartego na hasłach logowania jednokrotnego.**
 
-9.  Wprowadź **adres URL logowania**, adres URL, gdzie użytkownicy wprowadzają swoją nazwę i hasło do logowania. **Upewnij się pola logowania są widoczne w adresie URL, możesz podać**.
+9. Wprowadź **adres URL logowania**, adres URL, gdzie użytkownicy wprowadzają swoją nazwę i hasło do logowania. **Upewnij się pola logowania są widoczne w adresie URL, możesz podać**.
 
 10. Kliknij przycisk **Zapisz**.
 
@@ -76,25 +76,25 @@ Aby ręcznie Przechwyć pola logowania, najpierw musisz mieć zainstalowane rozs
 
 Aby skonfigurować **opartego na hasłach logowania jednokrotnego** dla aplikacji za pomocą **przechwytywania ręczne pól logowania**, wykonaj następujące czynności:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+4. Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
    * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne.
+6. Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8.  Wybierz tryb **opartego na hasłach logowania jednokrotnego.**
+8. Wybierz tryb **opartego na hasłach logowania jednokrotnego.**
 
-9.  Wprowadź **adres URL logowania**, adres URL, gdzie użytkownicy wprowadzają swoją nazwę i hasło do logowania. **Upewnij się pola logowania są widoczne w adresie URL, możesz podać**.
+9. Wprowadź **adres URL logowania**, adres URL, gdzie użytkownicy wprowadzają swoją nazwę i hasło do logowania. **Upewnij się pola logowania są widoczne w adresie URL, możesz podać**.
 
 10. Kliknij przycisk **Zapisz**.
 
@@ -174,21 +174,21 @@ Może również Pobierz rozszerzenie dla programu Chrome i Firefox z bezpośredn
 
 Możesz zobaczyć szczegółowe informacje o wszystkich powiadomień portalu, wykonując poniższe kroki:
 
-1.  Kliknij przycisk **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal
+1. Kliknij przycisk **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal
 
-2.  Wybierz powiadomienia w **błąd** stanu (te z czerwonym (!) obok nich).
+2. Wybierz powiadomienia w **błąd** stanu (te z czerwonym (!) obok nich).
 
-  >! PAMIĘTAJ], że nie można kliknąć powiadomienia w **pomyślnie** lub **w toku** stanu.
-  >
-  >
+   >! PAMIĘTAJ], że nie można kliknąć powiadomienia w **pomyślnie** lub **w toku** stanu.
+   >
+   >
 
-3.  **Szczegóły powiadomienia** zostanie otwarte okienko.
+3. **Szczegóły powiadomienia** zostanie otwarte okienko.
 
-4.  Skorzystaj z informacji, aby poznać więcej szczegółów o problemie.
+4. Skorzystaj z informacji, aby poznać więcej szczegółów o problemie.
 
-5.  Jeśli nadal potrzebujesz pomocy, możesz również udostępniać informacje inżynier pomocy technicznej lub grupa produktu, aby uzyskać pomoc dotyczącą danego problemu.
+5. Jeśli nadal potrzebujesz pomocy, możesz również udostępniać informacje inżynier pomocy technicznej lub grupa produktu, aby uzyskać pomoc dotyczącą danego problemu.
 
-6.  Kliknij przycisk **kopiowania** **ikonę** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie pomocy technicznej lub produktu inżynier grupy w polu tekstowym.
+6. Kliknij przycisk **kopiowania** **ikonę** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie pomocy technicznej lub produktu inżynier grupy w polu tekstowym.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak uzyskać pomoc, wysyłając powiadomienia, szczegółowe informacje ze specjalistą pomocy technicznej
 
@@ -226,7 +226,7 @@ Poniżej opisano bardziej każdej powiadomienia oznacza, że elementy oraz zawie
 
 -   **Nazwa UPN** — użytkownik, który wykonał operację
 
-    -   Przykład — **tperkins@f128.info**
+    -   Przykład — **tperkins\@f128.info**
 
 -   **Identyfikator dzierżawy** — Unikatowy identyfikator dzierżawy, który był użytkownika, który wykonał operację
 
@@ -240,11 +240,11 @@ Poniżej opisano bardziej każdej powiadomienia oznacza, że elementy oraz zawie
 
 -   **Nazwa wyświetlana** — **(może być pusta)** bardziej szczegółowe nazwy wyświetlane dla błędu
 
-    -   Przykład * — **ustawienia serwera proxy aplikacji**
+    -   Przykład — **ustawienia serwera proxy aplikacji**
 
 -   **Stan** — określonych stan powiadomienia
 
-    -   Przykład * — **nie powiodło się**
+    -   Przykład — **nie powiodło się**
 
 -   **Obiekt o identyfikatorze** — **(może być pusta)** identyfikator obiektu, dla której wykonano operację
 
@@ -252,7 +252,7 @@ Poniżej opisano bardziej każdej powiadomienia oznacza, że elementy oraz zawie
 
 -   **Szczegóły** — szczegółowy opis co nastąpiło w wyniku operacji
 
-    -   Przykład — **wewnętrznego adresu url "https://bing.com/" jest nieprawidłowa, ponieważ jest już używana**
+    -   Przykład — **wewnętrznego adresu url "<https://bing.com/>" jest nieprawidłowa, ponieważ jest już używana**
 
 -   **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie pomocy technicznej lub produktu inżynier grupy w polu tekstowym
 

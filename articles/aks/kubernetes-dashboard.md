@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 9d953cdb82412c07fe0ed4bef75dece4a929cad9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e831979e0a9f9c8b4d812f682403ecf466abbd13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299133"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993889"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Dostęp do pulpitu nawigacyjnego sieci web rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego rozwiązania Kube
 
 W krokach szczegółowo opisanych w tym dokumencie przyjęto założenie, został utworzony klaster usługi AKS i ustalonymi `kubectl` połączenia z klastrem. Jeśli musisz utworzyć klaster usługi AKS, zobacz [szybkiego startu usługi AKS][aks-quickstart].
 
-Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version` , aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version` , aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="start-the-kubernetes-dashboard"></a>Rozpocznij pulpit nawigacyjny platformy Kubernetes
 
@@ -34,7 +34,7 @@ Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglą
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-To polecenie tworzy serwer proxy między systemu dla deweloperów i interfejsu API rozwiązania Kubernetes i otworzy w przeglądarce sieci web pulpitu nawigacyjnego platformy Kubernetes. Przeglądarki sieci web nie zostanie otwarta do pulpitu nawigacyjnego rozwiązania Kubernetes, skopiuj i wklej adres URL zanotowanym w wiersza polecenia platformy Azure, zwykle *http://127.0.0.1:8001*.
+To polecenie tworzy serwer proxy między systemu dla deweloperów i interfejsu API rozwiązania Kubernetes i otworzy w przeglądarce sieci web pulpitu nawigacyjnego platformy Kubernetes. Przeglądarki sieci web nie zostanie otwarta do pulpitu nawigacyjnego rozwiązania Kubernetes, skopiuj i wklej adres URL zanotowanym w wiersza polecenia platformy Azure, zwykle `http://127.0.0.1:8001`.
 
 ![Na stronie Przegląd pulpitu nawigacyjnego sieci web rozwiązania Kubernetes](./media/kubernetes-dashboard/dashboard-overview.png)
 

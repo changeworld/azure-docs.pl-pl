@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2da89e674b967287150b2e8f3a98fc25df2af81e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fe653d36b2c527391a2f6d4ce33b89ba8dd648ac
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878268"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202796"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Dostosowywanie klastrów HDInsight za pomocą narzędzia Bootstrap
 
@@ -28,7 +28,7 @@ Czasami którą chcesz skonfigurować pliki konfiguracyjne, które obejmują:
 * hdfs-site.xml
 * hive-env.xml
 * hive-site.xml
-* mapred lokacji
+* mapred-site
 * oozie-site.xml
 * oozie-env.xml
 * storm-site.xml
@@ -87,7 +87,7 @@ Zakończenie pracy skryptu programu PowerShell można znaleźć w [dodatku](#app
 6. Kliknij przycisk **serwera HiveServer2** z **Podsumowanie**.
 7. Kliknij przycisk **Configs** kartę.
 8. Kliknij przycisk **Hive** menu po lewej stronie.
-9. Kliknij przycisk **zaawansowane** kartę.
+9. Kliknij kartę **Zaawansowane**.
 10. Przewiń w dół, a następnie rozwiń węzeł **zaawansowane witryny hive**.
 11. Wyszukaj **hive.metastore.client.socket.timeout** w sekcji.
 
@@ -131,7 +131,6 @@ Usługa ładowania początkowego można użyć w szablonie usługi Resource Mana
 * [Tworzenie klastrów usługi Apache Hadoop w HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
 * [Tworzenie akcji skryptu skryptów dla HDInsight][hdinsight-write-script]
 * [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]
-* [Instalowanie i używanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
 * [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
@@ -142,7 +141,7 @@ Usługa ładowania początkowego można użyć w szablonie usługi Resource Mana
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Etapy podczas tworzenia klastra"
 
-## <a name="appendix-powershell-sample"></a>Dodatek: Przykładowy PowerShell
+## <a name="appendix-powershell-sample"></a>Dodatek: Przykładowy skrypt programu PowerShell
 Ten skrypt programu PowerShell umożliwia utworzenie klastra usługi HDInsight i dostosowuje ustawienie gałęzi:
 
 ```powershell

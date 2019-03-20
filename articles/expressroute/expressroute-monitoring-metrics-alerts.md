@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d78c110f3317f4dd9f16cbe243aeca437e9890a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108801"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorowanie, metryki i alerty usługi ExpressRoute
 
@@ -43,18 +43,18 @@ Możesz wyświetlić metryki dla usługi prywatnej, publicznej i firmy Microsoft
 
 1. Aby skonfigurować alerty, przejdź do **usługi Azure Monitor**, następnie kliknij przycisk **alerty**.
 
-  ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
+   ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
 2. Kliknij przycisk **+ wybierz element docelowy** i wybierz zasób połączenia bramy usługi ExpressRoute.
 
-  ![Docelowy]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![Docelowy]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Zdefiniuj szczegóły alertu.
 
-  ![grupy akcji](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
+   ![grupy akcji](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
 4. Definiowanie i Dodaj grupę akcji.
 
-  ![Dodaj grupę akcji](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
+   ![Dodaj grupę akcji](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
 ## <a name="alerts-based-on-each-peering"></a>Alerty oparte na każdego wystąpienia komunikacji równorzędnej
 

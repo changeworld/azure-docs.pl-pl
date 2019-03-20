@@ -6,30 +6,30 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 12/27/2018
+ms.date: 03/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8fea062e2c72410b13fa70cc5cad22b7e677086b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: f7adcb7d4516e9013bf87306fff77b566885e018
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211852"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855286"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Konfigurowanie odzyskiwania po awarii do regionu pomocniczego platformy Azure dla maszyny wirtualnej platformy Azure        
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) stanowi część strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych i nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
 
-W tym samouczku Szybki start opisano sposób replikowania maszyny wirtualnej platformy Azure w innym regionie platformy Azure.
+Ten przewodnik Szybki Start opisano, jak skonfigurować odzyskiwanie po awarii dla maszyny Wirtualnej platformy Azure, replikując je do innego regionu platformy Azure.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Ten artykuł prowadzi nowego użytkownika przez środowisko usługi Azure Site Recovery, przy czym używane są opcje domyślne, a dostosowywanie jest minimalne. Aby dowiedzieć się więcej o różnych ustawieniach, które można dostosować, zapoznaj się z [samouczkiem dotyczącym włączania replikacji maszyn wirtualnych platformy Azure](azure-to-azure-tutorial-enable-replication.md)
+> Ten artykuł stanowi jako szybki przewodnik dla nowych użytkowników. Za pomocą to najprostsza ścieżka domyślna dostosowywania opcji i co najmniej.  Dla pełniejszego Przejrzyj wskazówki [Nasz samouczek dotyczący](azure-to-azure-tutorial-enable-replication.md).
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
+Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Włączanie replikacji maszyny wirtualnej platformy Azure
 
@@ -54,8 +54,8 @@ Po zakończeniu zadania replikacji można sprawdzić stan replikacji, zmodyfikow
 
 Replikowanie maszyny wirtualnej w regionie podstawowym jest zatrzymywane w przypadku wyłączenia dla niej replikacji:
 
-- Ustawienia replikacji źródła są automatycznie czyszczone. Pamiętaj, że rozszerzenie usługi Site Recovery, które jest instalowane w ramach replikacji, nie jest usuwane i należy je usunąć ręcznie. 
-- Zatrzymywane jest też rozliczanie usługi Site Recovery dla danej maszyny wirtualnej.
+- Ustawienia replikacji źródła są automatycznie czyszczone. Rozszerzenie usługi Site Recovery zainstalowana na maszynie Wirtualnej w ramach replikacji nie są usuwane i muszą zostać usunięte ręcznie. 
+- Powoduje zatrzymanie naliczania opłat za Site Recovery dla maszyny Wirtualnej.
 
 Zatrzymaj replikację w następujący sposób
 
@@ -66,7 +66,7 @@ Zatrzymaj replikację w następujący sposób
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku Szybki start zreplikowano pojedynczą maszynę wirtualną w regionie pomocniczym. Teraz możesz poznać więcej opcji i spróbować przeprowadzić replikowanie zestawu maszyn wirtualnych platformy Azure przy użyciu planu odzyskiwania.
+W tym samouczku Szybki start zreplikowano pojedynczą maszynę wirtualną w regionie pomocniczym. Teraz spróbuj replikowania wielu maszyn wirtualnych platformy Azure przy użyciu planu odzyskiwania.
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure](azure-to-azure-tutorial-enable-replication.md)

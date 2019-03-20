@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 03/12/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453855"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121710"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Blokowanie środowiska usługi App Service
 
@@ -91,7 +91,6 @@ Następujące informacje są tylko wymagane, jeśli chcesz skonfigurować urząd
 - Symbol wieloznaczny HTTP/HTTPS punkty końcowe są zależności, które mogą się różnić, za pomocą środowiska ASE na podstawie liczby kwalifikatorów. 
 - Zależności systemu Linux są tylko problemem, Jeżeli wdrażasz aplikacje systemu Linux w środowisku ASE. Gdy nie wdrażasz aplikacje systemu Linux w środowisku ASE, te adresy nie muszą zostać dodane do zapory. 
 
-
 #### <a name="service-endpoint-capable-dependencies"></a>Zależności zdolne do punktu końcowego usługi 
 
 | Endpoint |
@@ -106,6 +105,14 @@ Następujące informacje są tylko wymagane, jeśli chcesz skonfigurować urząd
 |----------| ----- |
 | \*:123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na port 123 |
 | \*:12000 | Ten port jest używany dla niektórych monitorowanie systemu. Jeśli zablokowany, a następnie niektóre problemy, będzie trudniejsze do klasyfikacji, ale środowisko ASE będzie w dalszym ciągu działać |
+| 40.77.24.27:80 | Potrzebne do monitorowania i alertów na problemy w środowisku ASE |
+| 40.77.24.27:443 | Potrzebne do monitorowania i alertów na problemy w środowisku ASE |
+| 13.90.249.229:80 | Potrzebne do monitorowania i alertów na problemy w środowisku ASE |
+| 13.90.249.229:443 | Potrzebne do monitorowania i alertów na problemy w środowisku ASE |
+| 104.45.230.69:80 | Potrzebne do monitorowania i alertów na problemy w środowisku ASE |
+| 104.45.230.69:443 | Potrzebne do monitorowania i alertów na problemy w środowisku ASE |
+| 13.82.184.151:80 | Potrzebne do monitorowania i alertów na problemy w środowisku ASE |
+| 13.82.184.151:443 | Potrzebne do monitorowania i alertów na problemy w środowisku ASE |
 
 Za pomocą zapory platformy Azure automatycznie zapewnia wszystko, co poniżej skonfigurowany przy użyciu tagów w pełni kwalifikowaną nazwę domeny. 
 
@@ -140,7 +147,8 @@ Za pomocą zapory platformy Azure automatycznie zapewnia wszystko, co poniżej s
 |cacerts.digicert.com:80 |
 |azperfcounters1.blob.core.windows.net:443 |
 |azurewatsonanalysis-prod.core.windows.net:443 |
-|global.metrics.nsatc.net:80   |
+|global.metrics.nsatc.net:80 |
+|global.metrics.nsatc.net:443 |
 |az-prod.metrics.nsatc.net:443 |
 |antares.metrics.nsatc.net:443 |
 |azglobal-black.azglobal.metrics.nsatc.net:443 |
@@ -175,12 +183,6 @@ Za pomocą zapory platformy Azure automatycznie zapewnia wszystko, co poniżej s
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
-|grmdsprod\*mini\*.servicebus.windows.net:443 |
-|grmdsprod\*lini\*.servicebus.windows.net:443 |
-|grsecprod\*mini\*.servicebus.windows.net:443 |
-|grsecprod\*lini\*.servicebus.windows.net:443 |
-|graudprod\*mini\*.servicebus.windows.net:443 |
-|graudprod\*lini\*.servicebus.windows.net:443 |
 
 #### <a name="linux-dependencies"></a>Zależności systemu Linux 
 

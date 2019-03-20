@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d829ad9b85b6e7944f6dd534ea7fbb3f92a0d2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887921"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199605"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Zmiany członkostwa w grupie statycznej na dynamiczną w usłudze Azure Active Directory
 
@@ -47,14 +47,13 @@ Poniższe kroki są przykładem Zmiana grupy ze statycznego na dynamiczne zarzą
   
 2. Wybierz **Dodaj zapytanie dynamiczne**, a następnie podaj reguły.
   
-   ![Wprowadź reguły](./media/groups-change-type/enter-rule.png)
+   ![Wprowadź reguły dla grupy dynamicznej](./media/groups-change-type/enter-rule.png)
   
 3. Po utworzeniu reguły, wybierz **Dodaj zapytanie** w dolnej części strony.
 4. Wybierz **Zapisz** na **właściwości** stronie dla grupy zapisać zmiany. **Typ członkostwa** grupy natychmiast zaktualizować na liście grup.
 
 > [!TIP]
 > Konwersja grup może zakończyć się niepowodzeniem, jeśli reguły członkostwa, który wprowadzono była nieprawidłowa. Zostanie wyświetlone powiadomienie w prawym górnym rogu portalu który zawiera wyjaśnienie, dlaczego nie można zaakceptować zasady przez system. Przeczytaj uważnie, aby zrozumieć, jak można dostosować reguły, aby stał się nieprawidłowy. Przykłady składni reguł i pełną listę obsługiwanych właściwości, operatory i wartości dla reguły członkostwa, zobacz [reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory](groups-dynamic-membership.md).
-
 
 ## <a name="change-membership-type-for-a-group-powershell"></a>Zmień typ członkostwa w grupie (PowerShell)
 
@@ -63,7 +62,7 @@ Poniższe kroki są przykładem Zmiana grupy ze statycznego na dynamiczne zarzą
 
 Oto przykład funkcji, które Przełącz zarządzanie członkostwem w istniejącej grupy. W tym przykładzie jest uważać, aby poprawnie manipulowania właściwość GroupTypes przy zachowaniu dowolnych wartości, które są powiązane z członkostwa dynamicznego.
 
-```
+```powershell
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
 $dynamicGroupTypeString = "DynamicMembership"
 
@@ -107,13 +106,13 @@ function ConvertStaticGroupToDynamic
 ```
 Aby umożliwić grupy statyczne:
 
-```
+```powershell
 ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ```
 
 Aby utworzyć grupę dynamiczną:
 
-```
+```powershell
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 6b3318ced4c6e40b80172b19d7f664c53e5569cc
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b824c99a015cfa2c1d1c75e2a1257eff482e8dd6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087962"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach
 
@@ -46,15 +46,15 @@ Aby dowiedzieć się więcej na temat pracy z zestawem SDK WebJobs, zobacz [jak 
 
 1. Zainstaluj najnowsze wersje stabilne 3.x następujące pakiety NuGet:
 
-    * `Microsoft.Azure.WebJobs`
-    * `Microsoft.Azure.WebJobs.Extensions`
+   * `Microsoft.Azure.WebJobs`
+   * `Microsoft.Azure.WebJobs.Extensions`
 
-    Oto **Konsola Menedżera pakietów** polecenia dla wersji 3.0.4:
+     Oto **Konsola Menedżera pakietów** polecenia dla wersji 3.0.4:
 
-    ```powershell
-    Install-Package Microsoft.Azure.WebJobs -version 3.0.4
-    Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.1
-    ```
+     ```powershell
+     Install-Package Microsoft.Azure.WebJobs -version 3.0.4
+     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.1
+     ```
 
 ## <a name="create-the-host"></a>Utwórz hosta
 
@@ -293,7 +293,7 @@ W tej sekcji Tworzenie i uruchamianie projektu lokalnie i wyzwolenia funkcji prz
 
    Ze względu na [sondowania wykładniczego wycofywania kolejki](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm), może upłynąć tak długo, jak 2 minuty środowiska uruchomieniowego Znajdź komunikat i wywołania funkcji. Można zmniejszyć czas oczekiwania, uruchamiając w [trybu opracowywania](webjobs-sdk-how-to.md#host-development-settings).
 
-  Dane wyjściowe konsoli wygląda następująco:
+   Dane wyjściowe konsoli wygląda następująco:
 
    ```console
     info: Function.ProcessQueueMessage[0]

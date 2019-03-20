@@ -1,5 +1,5 @@
 ---
-title: Migrowanie użytkowników do Licencjonowanie oparte na grupach — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Migrowanie indywidualnie licencjonowanych użytkowników do Licencjonowanie oparte na grupach — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak przełączyć się z licencji użytkownika do licencjonowania opartego na grupach, przy użyciu usługi Azure Active Directory
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd800097ca5107f7df1e67c91ff4c96b9cfcd74
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107750"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199976"
 ---
-# <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Jak dodać licencjonowanych użytkowników do grupy licencjonowania w usłudze Azure Active Directory
+# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Jak dodać migrowanie użytkowników z licencjami poszczególnych grup licencjonowania
 
-Masz istniejące licencje wdrożone dla użytkowników w organizacji za pośrednictwem "bezpośredniego przypisania"; oznacza to za pomocą skryptów programu PowerShell lub innych narzędzi, aby przypisać licencje do poszczególnych użytkowników. Jeśli chcesz rozpocząć korzystanie z licencjonowania opartego na grupach zarządzanie licencjami w organizacji, konieczne będzie plan migracji można bezproblemowo zastąpić istniejące rozwiązania z licencjonowaniem opartym na grupie.
+Masz istniejące licencje wdrożone dla użytkowników w organizacji za pośrednictwem "bezpośredniego przypisania"; oznacza to za pomocą skryptów programu PowerShell lub innych narzędzi, aby przypisać licencje do poszczególnych użytkowników. Przed rozpoczęciem korzystania Licencjonowanie na podstawie grupy, aby zarządzać licencjami w organizacji, można użyć ten plan migracji można bezproblemowo zastąpić istniejące rozwiązania z licencjonowaniem opartym na grupie.
 
 Ważne jest, aby pamiętać o to, że należy unikać sytuacji, w których migracja do Licencjonowanie na podstawie grupy spowoduje tymczasowo utraty ich aktualnie przypisanych licencji użytkowników. Każdy proces, który może spowodować usunięcie licencji należy unikać do usunięcia ryzyko utraty dostępu do usług i ich danych.
 
@@ -69,18 +69,17 @@ Poniżej przedstawiono, jak może wyglądać procesu migracji:
 
    - Jest to stan oczekiwany użytkownika podczas migracji:
 
-      ![Stan oczekiwany użytkownika](./media/licensing-groups-migrate-users/expected-user-state.png)
+      ![Stan oczekiwany użytkownika podczas migracji](./media/licensing-groups-migrate-users/expected-user-state.png)
 
    Będzie to potwierdzenie, że użytkownik ma licencje dziedziczone i bezpośrednie. Widzimy, że oba **EMS** i **E3** są przypisane.
 
    - Wybierz każdej licencji, aby wyświetlić szczegółowe informacje o usługach włączone. Może to służyć do sprawdzania, jeśli bezpośrednie i grupy licencji, Włącz dokładnie tych samych planów usługi dla użytkownika.
 
-      ![Sprawdź planów usług](./media/licensing-groups-migrate-users/check-service-plans.png)
+      ![Sprawdź planów usług dla użytkownika](./media/licensing-groups-migrate-users/check-service-plans.png)
 
 4. Po potwierdzeniu, że zarówno bezpośrednich, jak i grupy licencji są równoważne, można uruchomić, usunięcie bezpośrednie licencji użytkowników. Można testować tę aplikację, usuwając je dla poszczególnych użytkowników w portalu, a następnie uruchom skrypty automatyzacji, aby były usuwane w trybie zbiorczym. Oto przykład tego samego użytkownika z licencjami bezpośrednie usunięte za pośrednictwem portalu. Zwróć uwagę, stan licencji pozostaje niezmieniony, że firma Microsoft nie jest już wyświetlana przypisań bezpośrednich.
 
-   ![bezpośrednie licencje usunięte](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
-
+   ![Upewnij się, że licencje bezpośredniego są usuwane](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

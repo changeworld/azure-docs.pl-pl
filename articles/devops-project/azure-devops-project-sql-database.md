@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wdrażanie aplikacji ASP.NET i kodu bazy danych Azure SQL Database za pomocą usługi Azure DevOps Projects'
+title: 'Samouczek: Wdrażanie aplikacji platformy ASP.NET i kod usługi Azure SQL Database przy użyciu usługi Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Usługa DevOps Projects pozwala wdrożyć aplikację platformy ASP.NET i kod bazy danych Azure SQL Database w kilku prostych krokach.
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 32f33e4ac66ad456b5ff8807d6a1b5ea5f541fed
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
-ms.translationtype: HT
+ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161405"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845226"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji ASP.NET i kodu bazy danych Azure SQL Database za pomocą usługi Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Samouczek: Wdrażanie aplikacji platformy ASP.NET i kod usługi Azure SQL Database przy użyciu usługi Azure DevOps Projects
 
 Usługa Azure DevOps Projects stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub wybrać aplikację przykładową, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure. 
 
@@ -122,8 +122,8 @@ Usługa DevOps Projects automatycznie tworzy i konfiguruje kroki wymagane do wdr
     
 1. Po lewej stronie wybierz pozycję **Zmienne**. 
 
-  > [!NOTE]
-  > Ten krok należy wykonać tylko, jeśli hasło programu SQL Server zostało zmienione. Istnieje jedna zmienna hasła.
+   > [!NOTE]
+   > Ten krok należy wykonać tylko, jeśli hasło programu SQL Server zostało zmienione. Istnieje jedna zmienna hasła.
   
 1. Obok pola **Wartość** wybierz ikonę kłódki, wprowadź nowe hasło, a następnie wybierz pozycję **Zapisz**.
 
@@ -136,13 +136,13 @@ Usługa DevOps Projects automatycznie tworzy i konfiguruje kroki wymagane do wdr
 1. Po prawej stronie wybierz pozycję **Wyświetl wydania**, aby wyświetlić historię wydań.
 
 1. Wybierz symbol wielokropka (...) obok wydania, a następnie wybierz pozycję **Otwórz**.  
-    Dostępnych jest kilka menu, z którymi możesz się zapoznać, na przykład podsumowanie wydań, skojarzone elementy robocze i testy.
+     Dostępnych jest kilka menu, z którymi możesz się zapoznać, na przykład podsumowanie wydań, skojarzone elementy robocze i testy.
 
 1. Wybierz pozycję **Zatwierdzenia**.  
-    Ten widok przedstawia zatwierdzenia kodu skojarzone z danym wdrożeniem. Porównaj wydania, aby wyświetlić różnice w zatwierdzeniach pomiędzy wdrożeniami.
+     Ten widok przedstawia zatwierdzenia kodu skojarzone z danym wdrożeniem. Porównaj wydania, aby wyświetlić różnice w zatwierdzeniach pomiędzy wdrożeniami.
 
 1. Wybierz pozycję **Dzienniki**.  
-    Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Możesz je wyświetlać zarówno podczas wdrażania, jak i po jego zakończeniu.
+     Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Możesz je wyświetlać zarówno podczas wdrażania, jak i po jego zakończeniu.
 
 ## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Zatwierdzanie zmian w usłudze Azure Repos i automatyczne wdrażanie ich na platformie Azure 
 
@@ -182,10 +182,10 @@ Aby połączyć się z usługą Azure SQL Database potrzebne są odpowiednie upr
 
     Możesz teraz opcjonalnie użyć narzędzi klienta, takich jak SQL Server Management Studio lub Visual Studio, aby połączyć się z usługami SQL Server i Azure SQL Database. Użyj właściwości **Nazwa serwera**, aby nawiązać połączenie.
 
-    Jeśli nie zmieniono nazwy użytkownika bazy danych podczas początkowego konfigurowania projektu w usłudze DevOps Projects, nazwa użytkownika to lokalna część adresu e-mail. Jeśli na przykład Twój adres e-mail to *johndoe@microsoft.com*, nazwa użytkownika to *johndoe*.
+    Jeśli nie zmieniono nazwy użytkownika bazy danych podczas początkowego konfigurowania projektu w usłudze DevOps Projects, nazwa użytkownika to lokalna część adresu e-mail. Na przykład, jeśli Twój adres e-mail jest *jankowalski\@microsoft.com*, Twoja nazwa użytkownika jest *jankowalski*.
 
- > [!NOTE]
- > Jeśli zmienisz hasło logowania usługi SQL, musisz zmienić hasło w zmiennej potoku wydania, zgodnie z instrukcjami w sekcji „Badanie potoku ciągłego wdrażania”.
+   > [!NOTE]
+   > Jeśli zmienisz hasło logowania usługi SQL, musisz zmienić hasło w zmiennej potoku wydania, zgodnie z instrukcjami w sekcji „Badanie potoku ciągłego wdrażania”.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

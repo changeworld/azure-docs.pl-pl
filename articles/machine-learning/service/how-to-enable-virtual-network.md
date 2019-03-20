@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 045a8fc3723c7bae176f0b99a83965bb2bef721d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a83661a63f784f62bf46ce75b8b4f47c57c87b19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242942"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840447"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej platformy Azure
 
@@ -60,15 +60,17 @@ Aby użyć obliczeniowego usługi Azure Machine Learning w sieci wirtualnej, uż
 
     - Jedna usługa równoważenia obciążenia
 
-   Te zasoby są ograniczone przez [limity zasobów](https://docs.microsoft.com/azure/azure-subscription-service-limits) subskrypcji.
+  Te zasoby są ograniczone przez [limity zasobów](https://docs.microsoft.com/azure/azure-subscription-service-limits) subskrypcji.
 
 ### <a id="mlcports"></a> Wymagane porty
 
 Obecnie obliczeniowego usługi Machine Learning korzysta z usługi Azure Batch aprowizację maszyn wirtualnych w określonej sieci wirtualnej. Podsieć musi zezwalać na przychodzący komunikacji z usługą Batch. Ta komunikacja służy do planowania jest uruchamiany w węzłach obliczeniowego usługi Machine Learning i nawiązać połączenia z usługą Azure Storage i innych zasobów. Usługa Batch dodaje sieciowe grupy zabezpieczeń na poziomie interfejsów sieciowych (NIC), które są dołączone do maszyn wirtualnych. Te sieciowe grupy zabezpieczeń automatycznie konfigurują reguły ruchu przychodzącego i wychodzącego, aby zezwolić na następujący ruch:
 
-- Ruch przychodzący protokołu TCP na porty 29876 i 29877 z adresów IP roli usługi Batch.
+- Ruch przychodzący protokołu TCP na porty 29876 i 29877 z __Tag usługi__ z __BatchNodeManagement__.
+
+    ![Obraz portalu Azure przedstawiający regułę ruchu przychodzącego za pomocą BatchNodeManagement tag usługi](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- Ruch przychodzący protokołu TCP na porcie 22, aby zezwolić na zdalny dostęp.
+- (opcjonalnie) Ruch przychodzący protokołu TCP na porcie 22, aby zezwolić na zdalny dostęp. To ustawienie jest wymagane tylko, jeśli chcesz się połączyć przy użyciu protokołu SSH na publiczny adres IP.
  
 - Ruch wychodzący na dowolny port do sieci wirtualnej.
 

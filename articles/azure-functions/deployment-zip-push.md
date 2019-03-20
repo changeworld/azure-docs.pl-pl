@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717222"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086585"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Wdrażanie pliku ZIP dla usługi Azure Functions
 
@@ -51,13 +51,13 @@ Jednak może utworzono funkcji za pomocą edytora w witrynie Azure portal. Może
 
 + **W witrynie Azure portal:**
 
-    1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie przejdź do aplikacji funkcji.
+  1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie przejdź do aplikacji funkcji.
 
-    2. Na **Przegląd** zaznacz **Pobierz zawartość aplikacji**. Wybierz swoje opcje pobierania, a następnie wybierz **Pobierz**.
+  2. Na **Przegląd** zaznacz **Pobierz zawartość aplikacji**. Wybierz swoje opcje pobierania, a następnie wybierz **Pobierz**.
 
-        ![Pobieranie projektu aplikacji funkcji](./media/deployment-zip-push/download-project.png)
+      ![Pobieranie projektu aplikacji funkcji](./media/deployment-zip-push/download-project.png)
 
-    Plik zip pobranego jest w poprawnym formacie, aby ponownie opublikować aplikację funkcji przy użyciu wdrożenia wypychania .zip. Pobierz portalu można również dodać pliki potrzebne do otwierania aplikacji funkcji bezpośrednio w programie Visual Studio.
+     Plik zip pobranego jest w poprawnym formacie, aby ponownie opublikować aplikację funkcji przy użyciu wdrożenia wypychania .zip. Pobierz portalu można również dodać pliki potrzebne do otwierania aplikacji funkcji bezpośrednio w programie Visual Studio.
 
 + **Przy użyciu interfejsów API REST:**
 

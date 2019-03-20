@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d73c0e3f62d30764cba8866d7e731c5ea67d3057
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: aa8292aac82f478422f9214c26d974825872eed6
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878272"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226339"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu programu PowerShell
 
@@ -26,7 +26,7 @@ Omawiane kwestie:
 > - Skonfiguruj replikację, łącznie z zasadami replikacji. Dodawanie serwera vCenter i odnajdywanie maszyn wirtualnych. 
 > - Dodawanie serwera vCenter i odnajdywanie 
 > - Tworzenie konta magazynu do przechowywania danych replikacji i zreplikować maszyny wirtualne.
-> - Wykonaj przejście w tryb failover. Konfigurowanie ustawień trybu failover, wykonaj ustawienia e replikowania maszyn wirtualnych.
+> - Wykonaj przejście w tryb failover. Konfigurowanie ustawień trybu failover, wykonaj ustawienia dotyczące replikowania maszyn wirtualnych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -61,7 +61,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ProvisioningState : Succeeded
    Tags              :
    ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/VMwareDRtoAzurePS
-```
+   ```
    
 2. Utwórz magazyn usługi Recovery services. W poniższym przykładzie magazynu usługi Recovery services o nazwie VMwareDRToAzurePs i jest tworzona w regionie Azja Wschodnia i grupy zasobów utworzonej w poprzednim kroku.
 

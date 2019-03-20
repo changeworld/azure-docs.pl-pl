@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 02/12/2019
-ms.openlocfilehash: 61c4edc5ec9c690944047ce67f619f0f69f62f6c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.date: 03/01/2019
+ms.openlocfilehash: e15cf93514f921223fea37aa480730bba46dd195
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864953"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Szybki start: Korzystanie z usług Machine Learning Services (z językiem R) w usłudze Azure SQL Database (wersja zapoznawcza)
 
@@ -29,8 +29,12 @@ Usługa Machine Learning Services obejmuje podstawową dystrybucję języka R z 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/).
 
-> [!NOTE]
-> Usługa Machine Learning Services (z językiem R) w usłudze Azure SQL Database jest obecnie w publicznej wersji zapoznawczej. [Zarejestruj się, aby wypróbować wersję zapoznawczą](sql-database-machine-learning-services-overview.md#signup).
+> [!IMPORTANT]
+> SQL Database usługi Azure Machine Learning jest obecnie w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
+> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> [Zarejestruj się, aby wypróbować wersję zapoznawczą](sql-database-machine-learning-services-overview.md#signup).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -154,7 +158,7 @@ Na razie przyjrzyjmy się tylko domyślnym zmiennym wejściowym i wyjściowym pr
 
     ![Dane wyjściowe skryptu języka R, który zwraca dane z tabeli](./media/sql-database-connect-query-r/r-output-rtestdata.png)
 
-3. Zmieńmy nazwy zmiennych wejściowych lub wyjściowych. Skrypt powyżej używał domyślnych nazw zmiennych danych wejściowych i wyjściowych _InputDataSet_ i _OutputDataSet_. Aby zdefiniować dane wejściowe skojarzone ze zmienną _InputDatSet_, możesz użyć zmiennej *@input_data_1*.
+3. Zmieńmy nazwy zmiennych wejściowych lub wyjściowych. Skrypt powyżej używał domyślnych nazw zmiennych danych wejściowych i wyjściowych _InputDataSet_ i _OutputDataSet_. Aby zdefiniować dane wejściowe skojarzone z _InputDatSet_, możesz użyć  *\@input_data_1* zmiennej.
 
     W tym skrypcie nazwy zmiennych danych wyjściowych i wejściowych dla procedury składowanej zostały zmienione na *SQL_out* i *SQL_in*:
 
@@ -170,7 +174,7 @@ Na razie przyjrzyjmy się tylko domyślnym zmiennym wejściowym i wyjściowym pr
 
     Należy pamiętać, że w języku R jest rozróżniana wielkość liter, więc wielkość liter zmiennych wejściowych i wyjściowych w `@input_data_1_name` i `@output_data_1_name` musi być zgodna z tą w kodzie R w `@script`. 
 
-    Ważne jest również kolejność parametrów. Musisz najpierw określić wymagane parametry *@input_data_1* i *@output_data_1*, aby można było używać parametrów opcjonalnych *@input_data_1_name* i *@output_data_1_name*.
+    Ważne jest również kolejność parametrów. Podaj wymagane parametry  *\@input_data_1* i  *\@output_data_1* pierwsza, aby można było używać następujące parametry opcjonalne  *\@ input_data_1_name* i  *\@output_data_1_name*.
 
     Tylko jeden wejściowy zestaw danych może być przekazywany jako parametr i można zwrócić tylko jeden zestaw danych. Jednak można wywoływać inne zestawy danych z wewnątrz kodu języka R i można zwrócić dane wyjściowe innych typów oprócz zestawu danych. Możesz także dodać słowo kluczowe OUTPUT do dowolnego parametru, aby był zwracany z wynikami. 
 
@@ -271,34 +275,34 @@ Możesz wyszkolić model przy użyciu języka R i zapisać model w tabeli w usł
 
     Wymagania modelu liniowego są proste:
 
-    - Zdefiniuj formułę, która opisuje relację między zmienną zależną `speed` a zmienną niezależną `distance`.
+   - Zdefiniuj formułę, która opisuje relację między zmienną zależną `speed` a zmienną niezależną `distance`.
 
-    - Podaj dane wejściowe do użycia w uczenia modelu.
+   - Podaj dane wejściowe do użycia w uczenia modelu.
 
-    > [!TIP]
-    > Jeśli potrzebujesz przypomnienia informacji na temat modeli liniowych, zalecamy skorzystanie z tego samouczka, w którym opisano proces dopasowywania modelu przy użyciu funkcji rxLinMod: [Dopasowanie modeli liniowych](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+     > [!TIP]
+     > Jeśli potrzebujesz przypomnienia informacji na temat modeli liniowych, zalecamy skorzystanie z tego samouczka, w którym opisano proces dopasowywania modelu przy użyciu funkcji rxLinMod: [Dopasowanie modeli liniowych](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
-    Aby utworzyć model, definiujesz formułę wewnątrz kodu języka R i przekazujesz dane jako parametr wejściowy.
+     Aby utworzyć model, definiujesz formułę wewnątrz kodu języka R i przekazujesz dane jako parametr wejściowy.
 
-    ```sql
-    DROP PROCEDURE IF EXISTS generate_linear_model;
-    GO
-    CREATE PROCEDURE generate_linear_model
-    AS
-    BEGIN
-        EXEC sp_execute_external_script
-        @language = N'R'
-        , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
-            trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
-        , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
-        , @input_data_1_name = N'CarsData'
-        , @output_data_1_name = N'trained_model'
-        WITH RESULT SETS ((model VARBINARY(max)));
-    END;
-    GO
-    ```
+     ```sql
+     DROP PROCEDURE IF EXISTS generate_linear_model;
+     GO
+     CREATE PROCEDURE generate_linear_model
+     AS
+     BEGIN
+       EXEC sp_execute_external_script
+       @language = N'R'
+       , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
+           trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
+       , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
+       , @input_data_1_name = N'CarsData'
+       , @output_data_1_name = N'trained_model'
+       WITH RESULT SETS ((model VARBINARY(max)));
+     END;
+     GO
+     ```
 
-    Pierwszy argument funkcji rxLinMod to parametr *formula*, który definiuje odległość jako zależną od prędkości. Dane wejściowe są przechowywane w zmiennej `CarsData`, która jest wypełniana przez zapytanie SQL. Jeśli nie przypiszesz konkretnej nazwy do swoich danych wejściowych, domyślną nazwą zmiennej będzie _InputDataSet_.
+     Pierwszy argument funkcji rxLinMod to parametr *formula*, który definiuje odległość jako zależną od prędkości. Dane wejściowe są przechowywane w zmiennej `CarsData`, która jest wypełniana przez zapytanie SQL. Jeśli nie przypiszesz konkretnej nazwy do swoich danych wejściowych, domyślną nazwą zmiennej będzie _InputDataSet_.
 
 2. Następnie utworzysz tabelę, w której będzie przechowywany model, aby można go było ponownie szkolić lub użyć do prognozowania. Dane wyjściowe pakietu języka R, który tworzy model, są zazwyczaj **obiektem binarnym**. W związku z tym tabela musi udostępniać kolumnę typu **VARBINARY(max)**.
 
@@ -397,23 +401,23 @@ Użyj modelu utworzonego w poprzedniej sekcji, aby oceniać prognozy w odniesien
 
     Powyższy skrypt wykonuje następujące czynności:
 
-    + Używa instrukcji SELECT, aby uzyskać pojedynczy model z tabeli, a następnie przekazuje go jako parametr wejściowy.
+   + Używa instrukcji SELECT, aby uzyskać pojedynczy model z tabeli, a następnie przekazuje go jako parametr wejściowy.
 
-    + Po pobraniu modelu z tabeli wywołuje funkcję `unserialize` na modelu.
+   + Po pobraniu modelu z tabeli wywołuje funkcję `unserialize` na modelu.
 
-        > [!TIP] 
-        > Zapoznaj się także z nowymi [funkcjami serializacji](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) dostarczanymi przez kolekcję funkcji RevoScaleR, które obsługują oceniania w czasie rzeczywistym.
-    + Stosuje funkcję `rxPredict` z odpowiednimi argumentami do modelu i podaje nowe dane wejściowe.
+       > [!TIP] 
+       > Zapoznaj się także z nowymi [funkcjami serializacji](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) dostarczanymi przez kolekcję funkcji RevoScaleR, które obsługują oceniania w czasie rzeczywistym.
+   + Stosuje funkcję `rxPredict` z odpowiednimi argumentami do modelu i podaje nowe dane wejściowe.
 
-    + W przykładzie funkcja `str` jest dodawana podczas fazy testowania, aby sprawdzić schemat danych zwracanych z języka R. Później można usunąć tę instrukcję.
+   + W przykładzie funkcja `str` jest dodawana podczas fazy testowania, aby sprawdzić schemat danych zwracanych z języka R. Później można usunąć tę instrukcję.
 
-    + Nazwy kolumn użytych w skrypcie języka R niekoniecznie są przekazywane do danych wyjściowych procedury składowanej. W tym miejscu po użyliśmy klauzuli WITH RESULTS, aby zdefiniować kilka nowych nazw kolumn.
+   + Nazwy kolumn użytych w skrypcie języka R niekoniecznie są przekazywane do danych wyjściowych procedury składowanej. W tym miejscu po użyliśmy klauzuli WITH RESULTS, aby zdefiniować kilka nowych nazw kolumn.
 
-    **Results**
+     **Results**
 
-    ![Zestaw wyników dla przewidywania drogi zatrzymania](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+     ![Zestaw wyników dla przewidywania drogi zatrzymania](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
 
-    Istnieje również możliwość użycia klauzuli [PREDICT w języku Transact-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql) do wygenerowania przewidywanej wartości lub oceny na podstawie przechowywanego modelu.
+     Istnieje również możliwość użycia klauzuli [PREDICT w języku Transact-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql) do wygenerowania przewidywanej wartości lub oceny na podstawie przechowywanego modelu.
 
 <a name="add-package"></a>
 
@@ -511,7 +515,7 @@ Jeśli zachodzi potrzeba użycia pakietu, który nie jest jeszcze zainstalowany 
 > [!NOTE]
 > Innym sposobem zainstalowania pakietów języka R w usłudze SQL Database jest przekazanie pakietu języka R do strumienia bajtów za pomocą instrukcji [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat usługi Machine Learning Services, zobacz poniższe artykuły. Mimo że niektóre z tych artykułów dotyczą programu SQL Server, większość informacji ma również zastosowanie do usługi Machine Learning Services (z językiem R) w usłudze Azure SQL Database.
 

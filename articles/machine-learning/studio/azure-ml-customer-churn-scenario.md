@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 5a9638a18b8b5b046d66a6a95ef223220d05d550
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819347"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856131"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
@@ -25,7 +25,7 @@ Ten artykuł przedstawia informacje o referencyjnej implementacji projektu anali
 Ten eksperyment został opracowany i przetestowane przez Serge Berger, badacz danych jednostki w firmie Microsoft i Rogera Barga, wcześniej menedżerem produktu Microsoft Azure Machine Learning Studio. Zespół dokumentacji platformy Azure gratefully potwierdza swoją wiedzę i Dziękujemy udostępnianie ten oficjalny dokument.
 
 > [!NOTE]
-> Dane używane w tym eksperymencie nie jest publicznie dostępna. Aby uzyskać przykład sposobu tworzenia modelu uczenia maszynowego, analizy zmienności zobacz: [Postęp dokonany w sprzedaży detalicznej szablon modelu](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.azure.ai/)
+> Dane używane w tym eksperymencie nie jest publicznie dostępna. Aby uzyskać przykład sposobu tworzenia modelu uczenia maszynowego, analizy zmienności zobacz: [Postęp dokonany w sprzedaży detalicznej szablon modelu](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) w [Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai/)
 > 
 > 
 
@@ -106,7 +106,7 @@ Następujące diagramy przedstawiają dane, które zostało użyte.
  
 
 > Należy pamiętać, że te dane są prywatne, jak i w związku z tym nie może być współużytkowana modelu i danych.
-> Jednak dla podobnych modelu przy użyciu publicznie dostępnych danych, zobacz w tym przykładzie przeprowadzanie eksperymentów [galerii Azure AI](http://gallery.azure.ai/): [Odpływ klientów firmy Telco](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Jednak dla podobnych modelu przy użyciu publicznie dostępnych danych, zobacz w tym przykładzie przeprowadzanie eksperymentów [galerii Azure AI](https://gallery.azure.ai/): [Odpływ klientów firmy Telco](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Aby dowiedzieć się więcej na temat sposobu implementacji modelu analizy zmienności, przy użyciu pakietu Cortana Intelligence, zalecamy również [ten film wideo](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) przez Tok Hyong Wee starszy Menedżer programu. 
 > 
@@ -213,13 +213,13 @@ W tym dokumencie opisano rozsądne podejście na co dzień do czynienia powszech
 ## <a name="references"></a>Dokumentacja
 [1] predykcyjne analizy: Poza prognozy McKnight Zach. zarządzania informacją, lipiec/sierpień 2011 r. p.18 20.  
 
-[2] artykułu w Wikipedii: [Dokładność i precyzja](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] artykułu w Wikipedii: [Dokładność i precyzja](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [CRISP-DM 1.0: Przewodnik dotyczący wyszukiwania danych krok po kroku](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0: Przewodnik dotyczący wyszukiwania danych krok po kroku](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
 [4] [Big Data Marketing: Bardziej efektywne angażować swoich klientów i Zwiększaj wartość](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Telco postęp dokonany w szablonie model](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.azure.ai/) 
+[5] [Telco postęp dokonany w szablonie model](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) w [Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Dodatek

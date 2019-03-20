@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a77ad3ec954e77895cfab76a2f5fe2d822e08fb1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473174"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57879858"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Przenoszenie danych do i z usługi Azure Blob Storage za pomocą Eksploratora usługi Azure Storage
-Eksplorator usługi Azure Storage to bezpłatne narzędzie firmy Microsoft, która umożliwia pracę z danymi usługi Azure Storage w Windows, macOS i Linux. W tym temacie opisano, jak z niej korzystać, aby przekazywać i pobierać dane z magazynu obiektów blob platformy Azure. Narzędzie można pobrać z [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Eksplorator usługi Azure Storage to bezpłatne narzędzie firmy Microsoft, która umożliwia pracę z danymi usługi Azure Storage w Windows, macOS i Linux. W tym temacie opisano, jak z niej korzystać, aby przekazywać i pobierać dane z magazynu obiektów blob platformy Azure. Narzędzie można pobrać z [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -36,7 +36,7 @@ W tym dokumencie przyjęto założenie, że masz subskrypcję platformy Azure, k
 
 * Aby skonfigurować subskrypcję platformy Azure, zobacz [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 * Aby uzyskać instrukcje dotyczące tworzenia konta magazynu oraz w celu uzyskania konta i informacje o kluczu, zobacz [kontach magazynu Azure o](../../storage/common/storage-create-storage-account.md). Zanotuj klucz dostępu konta magazynu według potrzeb tego klucza, aby połączyć się z kontem za pomocą narzędzia Eksplorator usługi Azure Storage.
-* Narzędzie Eksplorator usługi Azure Storage można pobrać z [Microsoft Azure Storage Explorer](http://storageexplorer.com/). Zaakceptuj wartości domyślne podczas instalacji.
+* Narzędzie Eksplorator usługi Azure Storage można pobrać z [Microsoft Azure Storage Explorer](https://storageexplorer.com/). Zaakceptuj wartości domyślne podczas instalacji.
 
 <a id="explorer"></a>
 

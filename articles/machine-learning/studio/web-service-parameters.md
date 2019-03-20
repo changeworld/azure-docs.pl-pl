@@ -3,7 +3,7 @@ title: Parametry usługi — Azure Machine Learning Studio w sieci Web | Dokumen
 description: Jak używać parametry usługi sieci Web do programu Azure Machine Learning, aby zmodyfikować zachowanie modelu podczas uzyskiwania dostępu do usługi sieci web.
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
 editor: cgronlun
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 07115b893c27c013e31614c0625c4bc87a400ffb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a236043d5622e5a2e1ffd572c887fb5ffac2174a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821119"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838004"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Korzystanie z parametrów usług sieci web Azure Machine Learning Studio
 Usługi sieci web Azure Machine Learning jest tworzony przez opublikowanie eksperyment, który zawiera moduły z konfigurowalne parametry. W niektórych przypadkach można zmienić zachowanie modułu, gdy jest uruchomiona usługa sieci web. *Parametry usługi w sieci Web* pozwalają wykonać to zadanie. 
@@ -75,7 +75,7 @@ Na przykład załóżmy, że mamy eksperyment za pomocą [Eksport danych] [ writ
 Użytkownik usługi sieci web może teraz określić nowe miejsce docelowe dla [Eksport danych] [ writer] modułu podczas uzyskiwania dostępu do usługi sieci web.
 
 ## <a name="more-information"></a>Więcej informacji
-Aby uzyskać bardziej szczegółowym przykładem, zobacz [parametry usługi sieci Web](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) wpis [blogu dotyczącym uczenia maszynowego](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
+Aby uzyskać bardziej szczegółowym przykładem, zobacz [parametry usługi sieci Web](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) wpis [blogu dotyczącym uczenia maszynowego](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
 Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usługi sieci web Machine Learning, zobacz [jak korzystanie z usługi Azure Machine Learning w sieci Web](consume-web-services.md).
 

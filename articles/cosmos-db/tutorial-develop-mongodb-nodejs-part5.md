@@ -12,12 +12,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 4e7aa9931ffb268f787882729341fbe860255f70
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767863"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075479"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Tworzenie aplikacji Angular przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB — łączenie z usługą Cosmos DB za pomocą wtyczki Mongoose
 
@@ -56,35 +56,35 @@ Wtyczka Mongoose to biblioteka modelowania danych obiektu (ODM) dla bazy danych 
 
 1. Skopiuj następujący kod do pliku **mongo.js**. Ten kod zapewnia następujące funkcje:
 
-    * Wymaga wtyczki Mongoose.
-    * Przesłania obietnicę Mongo w celu użycia podstawowej obietnicy wbudowanej w wersji ES6/ES2015 i nowszych.
-    * Wywołuje plik env, który umożliwia skonfigurowanie pewnych elementów w oparciu o to, czy pracujesz na etapie przygotowywania, produkcji, czy programowania. Utworzysz ten plik w następnej sekcji.
-    * Zawiera parametry połączenia bazy danych MongoDB, które są ustawiane w pliku env.
-    * Tworzy funkcję connect, która wywołuje wtyczkę Mongoose.
+   * Wymaga wtyczki Mongoose.
+   * Przesłania obietnicę Mongo w celu użycia podstawowej obietnicy wbudowanej w wersji ES6/ES2015 i nowszych.
+   * Wywołuje plik env, który umożliwia skonfigurowanie pewnych elementów w oparciu o to, czy pracujesz na etapie przygotowywania, produkcji, czy programowania. Utworzysz ten plik w następnej sekcji.
+   * Zawiera parametry połączenia bazy danych MongoDB, które są ustawiane w pliku env.
+   * Tworzy funkcję connect, która wywołuje wtyczkę Mongoose.
 
-    ```javascript
-    const mongoose = require('mongoose');
-    /**
+     ```javascript
+     const mongoose = require('mongoose');
+     /**
      * Set to Node.js native promises
-     * Per http://mongoosejs.com/docs/promises.html
+     * Per https://mongoosejs.com/docs/promises.html
      */
-    mongoose.Promise = global.Promise;
+     mongoose.Promise = global.Promise;
 
-    const env = require('./env/environment');
+     const env = require('./env/environment');
 
-    // eslint-disable-next-line max-len
-    const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
+     // eslint-disable-next-line max-len
+     const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
 
-    function connect() {
+     function connect() {
      mongoose.set('debug', true);
      return mongoose.connect(mongoUri, { useMongoClient: true });
-    }
+     }
 
-    module.exports = {
-      connect,
-      mongoose
-    };
-    ```
+     module.exports = {
+     connect,
+     mongoose
+     };
+     ```
     
 1. W okienku Eksploratora w obszarze **server** utwórz folder o nazwie **environment**. W folderze **environment** utwórz plik o nazwie **environment.js**.
 
@@ -248,7 +248,7 @@ Możesz usunąć grupę zasobów, konto usługi Azure Cosmos DB oraz wszystkie p
  1. Wybierz pozycję **Usuń grupę zasobów**.
  1. Potwierdź nazwę grupy zasobów do usunięcia i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przejdź do części 6 samouczka, aby dodać funkcje Post, Put i Delete do aplikacji:
 

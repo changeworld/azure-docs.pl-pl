@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 16c7fe68e67094cef21d9efbffdccd614827ae6d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 2fe786d90612feff312983dbd25dc6d691be6e70
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887475"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089781"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Tworzenie kopii zapasowej maszyny Wirtualnej platformy Azure przy użyciu ustawień maszyny Wirtualnej
 
@@ -44,18 +44,18 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, usługi Azure
 3. Z listy maszyn wirtualnych wybierz maszynę Wirtualną, aby utworzyć kopię zapasową.
 4. W menu maszyny Wirtualnej kliknij **kopii zapasowej**. 
 5. W **magazyn usługi Recovery Services**, wykonaj następujące czynności:
-  - Jeśli masz już magazyn, kliknij przycisk **wybierz istniejący**i wybierz magazyn.
-  - Jeśli nie masz magazynu, kliknij przycisk **Utwórz nową**. Określ nazwę dla magazynu. Jest on tworzony w tym samym regionie i grupie zasobów co maszyna wirtualna. Nie można zmodyfikować te ustawienia, po włączeniu kopii zapasowej bezpośrednio z poziomu ustawień maszyny Wirtualnej.
+   - Jeśli masz już magazyn, kliknij przycisk **wybierz istniejący**i wybierz magazyn.
+   - Jeśli nie masz magazynu, kliknij przycisk **Utwórz nową**. Określ nazwę dla magazynu. Jest on tworzony w tym samym regionie i grupie zasobów co maszyna wirtualna. Nie można zmodyfikować te ustawienia, po włączeniu kopii zapasowej bezpośrednio z poziomu ustawień maszyny Wirtualnej.
 
-  ![Kreator włączania kopii zapasowej](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+   ![Kreator włączania kopii zapasowej](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
 6. W **wybierz zasady tworzenia kopii zapasowej**, wykonaj następujące czynności:
 
-  - Pozostaw domyślne zasady. Tworzy kopię zapasową maszyny Wirtualnej raz dziennie o godzinie określonej i przechowuje kopie zapasowe w magazynie przez 30 dni.
-  - Wybierz istniejące zasady tworzenia kopii zapasowej, jeśli nie masz.
-  - Utwórz nowe zasady i zdefiniuj ustawienia zasad.  
+   - Pozostaw domyślne zasady. Tworzy kopię zapasową maszyny Wirtualnej raz dziennie o godzinie określonej i przechowuje kopie zapasowe w magazynie przez 30 dni.
+   - Wybierz istniejące zasady tworzenia kopii zapasowej, jeśli nie masz.
+   - Utwórz nowe zasady i zdefiniuj ustawienia zasad.  
 
-  ![Wybór zasad tworzenia kopii zapasowej](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+   ![Wybór zasad tworzenia kopii zapasowej](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. Kliknij przycisk **Włącz wykonywanie kopii zapasowej**. Skojarzenie zasad tworzenia kopii zapasowej z maszyną Wirtualną. 
 
@@ -64,7 +64,7 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, usługi Azure
 8. Możesz śledzić postęp konfiguracji w powiadomieniach portalu.
 9. Po ukończeniu zadania, w menu maszyny Wirtualnej, kliknij przycisk **kopii zapasowej**. Na stronie wyświetlane stan kopii zapasowej dla maszyny Wirtualnej, informacje dotyczące punktów odzyskiwania, zadania uruchomione i alerty wydane.
 
-  ![Stan usługi Backup](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
+   ![Stan usługi Backup](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
 10. Po włączeniu kopii zapasowej uruchamia tworzenie początkowej kopii zapasowej. Możesz natychmiast rozpocząć tworzenie początkowej kopii zapasowej lub poczekaj, aż zacznie zgodnie z harmonogramem tworzenia kopii zapasowej.
     - Dopiero po zakończeniu tworzenia początkowej kopii zapasowej, **stan ostatniej kopii zapasowej** jest wyświetlany jako **ostrzeżenie (początkowa kopia zapasowa oczekuje)**.

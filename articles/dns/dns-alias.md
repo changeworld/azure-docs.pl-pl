@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: d751d4898be3fd19f9e6f5d03e9313e9d98e9dd2
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 6c5e0e47f006c6be170bdbf6fee431bfd3b6df0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446099"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105060"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Usługa Azure alias DNS rekordów — omówienie
 
@@ -58,7 +58,7 @@ Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równowa�
 
 Ten problem można rozwiązać przy użyciu rekordów aliasów. W przeciwieństwie do rekordów CNAME można utworzyć aliasu rekordów w wierzchołku strefy i właścicieli aplikacji może użyć go do profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe wskazują ich rekordów w wierzchołku strefy. Właściciele aplikacji może wskazywać tego samego profilu usługi Traffic Manager, używanego do innej domeny w swojej strefie DNS.
 
-Na przykład contoso.com i www.contoso.com może wskazywać tego samego profilu usługi Traffic Manager. Aby dowiedzieć się więcej o korzystaniu z rekordów aliasów z profilami usługi Azure Traffic Manager, zobacz sekcji Następne kroki.
+Na przykład contoso.com i www\.contoso.com może wskazywać tego samego profilu usługi Traffic Manager. Aby dowiedzieć się więcej o korzystaniu z rekordów aliasów z profilami usługi Azure Traffic Manager, zobacz sekcji Następne kroki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

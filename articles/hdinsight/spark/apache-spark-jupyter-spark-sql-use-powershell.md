@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: d05d8c39ae393d62969967c2ce09a97ec6a6710f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 1978f4a2afa2e22eb4182c01d3005f9e5daf5e57
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791714"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103013"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-powershell"></a>Szybki start: tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu programu PowerShell
-Dowiedz się, jak utworzyć klaster [Apache Spark](https://spark.apache.org/) w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu [Apache Hive](https://hive.apache.org/). Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat klastra Spark w usłudze HDInsight, zobacz [Omówienie: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
+Dowiedz się, jak utworzyć klaster [Apache Spark](https://spark.apache.org/) w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu [Apache Hive](https://hive.apache.org/). Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat platformy Apache Spark w usłudze HDInsight, zobacz [Omówienie: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
 
 W tym przewodniku Szybki start użyjesz programu Azure PowerShell do utworzenia klastra Spark w usłudze HDInsight. Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage Gen2, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
@@ -114,7 +114,7 @@ Te zasoby zostaną utworzone za pomocą skryptu programu PowerShell.  Po uruchom
     
     Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
     ```
-Utworzenie klastra trwa około 20 minut. Przed przejściem do następnej sesji należy utworzyć klaster.
+   Utworzenie klastra trwa około 20 minut. Przed przejściem do następnej sesji należy utworzyć klaster.
 
 Problemy podczas tworzenia klastrów usługi HDInsight mogą świadczyć o braku odpowiednich uprawnień. Aby uzyskać więcej informacji, zobacz [Wymagania dotyczące kontroli dostępu](../hdinsight-hadoop-create-linux-clusters-portal.md).
 

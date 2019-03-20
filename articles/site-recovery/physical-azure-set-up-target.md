@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 43276aad26bc06400c1bc4b5feaace0d5646c213
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849245"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57866296"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Przygotowywanie celu (program VMware do platformy Azure)
 
@@ -21,17 +21,17 @@ W tym artykule opisano sposób przygotowania środowiska platformy Azure do uruc
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Artykuł zakłada:
-- Utworzono magazyn usługi Recovery Services można chronić swoje serwery fizyczne. Można utworzyć magazyn usługi Recovery Services z [witryny Azure portal](http://portal.azure.com "witryny Azure portal").
+- Utworzono magazyn usługi Recovery Services można chronić swoje serwery fizyczne. Można utworzyć magazyn usługi Recovery Services z [witryny Azure portal](https://portal.azure.com "witryny Azure portal").
 - Masz [konfiguracji środowiska lokalnego](physical-azure-disaster-recovery.md) replikowania serwerów fizycznych do platformy Azure.
 
 ## <a name="prepare-target"></a>Przygotowywanie celu
 
-Po zakończeniu **cel ochrony 1 kroku** i **krok 2: przygotowanie źródłowego**, nastąpi przekierowanie do **krok 3: docelowy**
+Po zakończeniu **cel ochrony 1 kroku** i **krok 2: przygotowanie źródłowego**, nastąpi przekierowanie do **krok 3: Docelowy**
 
 ![Przygotowywanie celu](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
-1. **Subskrypcja:** z menu rozwijanego Wybierz subskrypcję, którą chcesz replikować serwery fizyczne do.
-2. **Model wdrażania:** wybierz model wdrażania (Model Klasyczny lub usługi Resource Manager)
+1. **Subskrypcja:** Z menu rozwijanego Wybierz subskrypcję, którą chcesz replikować serwery fizyczne do.
+2. **Model wdrażania:** Wybierz model wdrażania (Model Klasyczny lub usługi Resource Manager)
 
 Oparte na modelu wdrażania wybranego, uruchomiono aby upewnić się, że masz co najmniej jedno zgodne konto magazynu i sieć wirtualną w subskrypcji docelowej replikacji i trybu failover serwerów fizycznych do weryfikacji.
 

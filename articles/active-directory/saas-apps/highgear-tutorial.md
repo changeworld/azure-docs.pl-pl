@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 55dcd2fb-96b7-46ec-9e69-eee71c535773
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 017664e29f1ecf7d35411a3bc941df932c195856
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 873bc340d738704418310e22c34b0042f71a96bd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880159"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją HighGear
 
@@ -118,7 +118,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w systemie HighGear, w
 
     ![Pole adresu URL usługi Assertion Consumer Service (ACS)](media/highgear-tutorial/assertion-consumer-service-url-field.png)
 
-    d. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+    c. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
      ![Informacje o domenie i adresach URL pojedynczego logowania aplikacji HighGear](common/metadata-upload-additional-signon.png)
 
@@ -141,7 +141,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w systemie HighGear, w
 
     b. Identyfikator usługi Azure AD. Ta wartość będzie potrzebna w kroku 3 w poniższej sekcji **Konfigurowanie logowania jednokrotnego w aplikacji HighGear**.
 
-    d. Adres URL wylogowywania. Ta wartość będzie potrzebna w kroku 4 w poniższej sekcji **Konfigurowanie logowania jednokrotnego w aplikacji HighGear**.
+    c. Adres URL wylogowywania. Ta wartość będzie potrzebna w kroku 4 w poniższej sekcji **Konfigurowanie logowania jednokrotnego w aplikacji HighGear**.
 
 ### <a name="configure-highgear-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji HighGear
 
@@ -181,10 +181,10 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
@@ -248,7 +248,7 @@ Aby utworzyć użytkownika testowego aplikacji HighGear w celu przetestowania ko
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka HighGear w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji HighGear, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

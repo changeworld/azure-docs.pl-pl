@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 58f16b0aa068c8b333ef4e7986bb49327b002fbb
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e8afdfece258986f5dc4cc6f1c7e66aed24e0500
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092552"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Rozwiązanie do monitorowania kontenerów w usłudze Azure Monitor
 
@@ -100,19 +100,19 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 1. Dodaj rozwiązanie do monitorowania kontenerów do obszaru roboczego usługi Log Analytics z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) lub przy użyciu procesu opisanego w [Dodaj rozwiązania z galerii rozwiązań do monitorowania](../../azure-monitor/insights/solutions.md).
 
 2. Zainstalować i używać platformy Docker przy użyciu agenta usługi Log Analytics. Na podstawie systemu operacyjnego i platformy Docker programu orchestrator, można użyć następujących metod konfigurowania agenta.
-  - W przypadku autonomicznych hostów:
-    - W obsługiwanych systemach operacyjnych Linux, zainstaluj i uruchom platformy Docker i następnie zainstaluj i skonfiguruj [agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
-    - W systemie CoreOS nie można uruchomić agenta usługi Log Analytics dla systemu Linux. Zamiast tego możesz uruchomić konteneryzowanych wersję agenta usługi Log Analytics dla systemu Linux. Przejrzyj hostów kontenera systemu Linux, w tym CoreOS lub hostów kontenera platformy Azure dla instytucji rządowych w systemie Linux, w tym CoreOS, jeśli pracujesz z kontenerami w chmurze Azure Government.
-    - W systemie Windows Server 2016 i Windows 10 zainstalować aparat platformy Docker i klienta, a następnie połącz agenta, aby zebrać informacje i wysyłać je do usługi Azure Monitor. Przegląd [Instalowanie i konfigurowanie hostów kontenerów Windows](#install-and-configure-windows-container-hosts) Jeśli w środowisku Windows.
-  - Do aranżacji wielu hostów platformy Docker:
-    - Jeśli masz środowisko Red Hat OpenShift, zapoznaj się z Konfigurowanie agenta usługi Log Analytics, aby uzyskać Red Hat OpenShift.
-    - Jeśli masz klaster usługi Kubernetes przy użyciu usługi Azure Container Service:
+   - W przypadku autonomicznych hostów:
+     - W obsługiwanych systemach operacyjnych Linux, zainstaluj i uruchom platformy Docker i następnie zainstaluj i skonfiguruj [agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
+     - W systemie CoreOS nie można uruchomić agenta usługi Log Analytics dla systemu Linux. Zamiast tego możesz uruchomić konteneryzowanych wersję agenta usługi Log Analytics dla systemu Linux. Przejrzyj hostów kontenera systemu Linux, w tym CoreOS lub hostów kontenera platformy Azure dla instytucji rządowych w systemie Linux, w tym CoreOS, jeśli pracujesz z kontenerami w chmurze Azure Government.
+     - W systemie Windows Server 2016 i Windows 10 zainstalować aparat platformy Docker i klienta, a następnie połącz agenta, aby zebrać informacje i wysyłać je do usługi Azure Monitor. Przegląd [Instalowanie i konfigurowanie hostów kontenerów Windows](#install-and-configure-windows-container-hosts) Jeśli w środowisku Windows.
+   - Do aranżacji wielu hostów platformy Docker:
+     - Jeśli masz środowisko Red Hat OpenShift, zapoznaj się z Konfigurowanie agenta usługi Log Analytics, aby uzyskać Red Hat OpenShift.
+     - Jeśli masz klaster usługi Kubernetes przy użyciu usługi Azure Container Service:
        - Przegląd [konfigurowania agenta Log Analytics w systemie Linux dla platformy Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes).
        - Przegląd [Konfigurowanie agenta Log Analytics Windows dla rozwiązania Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Przejrzyj użycie narzędzia Helm, aby wdrożyć agenta Log Analytics na platformie Kubernetes z systemem Linux.
-    - Jeśli istnieje klastra usługi Azure Container Service DC/OS, dowiedzieć się więcej o [monitorowanie klastra usługi Azure Container Service DC/OS z usługą Azure Monitor](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
-    - Jeśli masz środowisku trybu Docker Swarm, Dowiedz się więcej o Konfigurowanie agenta usługi Log Analytics dla rozwiązania Docker Swarm.
-    - Jeśli masz klaster usługi Service Fabric, dowiedzieć się więcej o [monitorowania kontenerów za pomocą usługi Azure Monitor](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
+     - Jeśli istnieje klastra usługi Azure Container Service DC/OS, dowiedzieć się więcej o [monitorowanie klastra usługi Azure Container Service DC/OS z usługą Azure Monitor](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
+     - Jeśli masz środowisku trybu Docker Swarm, Dowiedz się więcej o Konfigurowanie agenta usługi Log Analytics dla rozwiązania Docker Swarm.
+     - Jeśli masz klaster usługi Service Fabric, dowiedzieć się więcej o [monitorowania kontenerów za pomocą usługi Azure Monitor](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Przegląd [aparat Docker na Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) artykuł, aby uzyskać dodatkowe informacje o sposobie instalowania i konfigurowania silników swojej platformy Docker na komputerach z systemem Windows.
 
@@ -476,17 +476,17 @@ Aby wdrożyć agenta Log Analytics w środowisku Kubernetes w systemie Linux prz
     LAST DEPLOYED: Tue Sep 19 20:37:46 2017
     NAMESPACE: default
     STATUS: DEPLOYED
- 
+ 
     RESOURCES:
     ==> v1/Secret
     NAME            TYPE    DATA  AGE
     omsagent-msoms  Opaque  3     17m
- 
+ 
     ==> v1beta1/DaemonSet
     NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
     omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
-Aby uzyskać więcej informacji, odwiedź [narzędzia Helm rozwiązania kontenera](https://aka.ms/omscontainerhelm).
+   Aby uzyskać więcej informacji, odwiedź [narzędzia Helm rozwiązania kontenera](https://aka.ms/omscontainerhelm).
 
 ### <a name="install-and-configure-windows-container-hosts"></a>Instalowanie i konfigurowanie hostach kontenerów Windows
 

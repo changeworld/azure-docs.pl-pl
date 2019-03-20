@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14bbb77678a70b51c7f640b501827c5618cce606
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c14b6e16a16f325681722203eaa05a435b141208
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978963"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990625"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak połączyć i logowanie się na maszynie wirtualnej platformy Azure, systemem Windows
 Korzystając z przycisku **Połącz** w witrynie Azure Portal, uruchomisz sesję pulpitu zdalnego z poziomu pulpitu systemu Windows. Najpierw nawiążesz połączenie z maszyną wirtualną, a następnie zaloguj się.
@@ -32,7 +32,7 @@ Aby połączyć się z maszyny Wirtualnej z systemem Windows z poziomu komputera
 2. W menu po lewej stronie wybierz **maszyn wirtualnych**.
 3. Wybierz maszynę wirtualną z listy.
 4. Górnej części strony dla maszyny wirtualnej, wybierz **Connect**.
-2. Na **Połącz z maszyną wirtualną** wybierz odpowiedni adres IP i port. W większości przypadków domyślny adres IP i port powinny być używane. Wybierz **pliku RDP Pobierz**pliku RDP Pobierz **. Jeśli maszyna wirtualna ma zestaw zasad just-in-time, musisz najpierw wybrać **żądania dostępu** przycisk, aby zażądać dostępu, przed pobraniem pliku RDP. Aby uzyskać więcej informacji na temat zasad just-in-time, zobacz [zarządzanie dostępem maszyny wirtualnej przy użyciu tylko w zasadach czasu](../../security-center/security-center-just-in-time.md).
+2. Na **Połącz z maszyną wirtualną** wybierz odpowiedni adres IP i port. W większości przypadków domyślny adres IP i port powinny być używane. Wybierz opcję **Pobierz plik RDP**. Jeśli maszyna wirtualna ma zestaw zasad just-in-time, musisz najpierw wybrać **żądania dostępu** przycisk, aby zażądać dostępu, przed pobraniem pliku RDP. Aby uzyskać więcej informacji na temat zasad just-in-time, zobacz [zarządzanie dostępem maszyny wirtualnej przy użyciu tylko w zasadach czasu](../../security-center/security-center-just-in-time.md).
 2. Otwórz pobrany plik RDP i wybierz polecenie **Połącz**, gdy wyświetli się odpowiedni monit. 
 2. Zostanie wyświetlone ostrzeżenie, że `.rdp` plik pochodzi od nieznanego wydawcy. Jest to oczekiwane. W **Podłączanie pulpitu zdalnego** wybierz **Connect** aby kontynuować.
    

@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 01/25/2019
+ms.date: 03/12/2019
 manager: craigg
-ms.openlocfilehash: cb892ddf6414b270d891042c9849137f1e2fdb35
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5f089148bafbab21721c83c0d4b6977a7db86320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307772"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834620"
 ---
 # <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Nawiązać połączenie z usługi Azure SQL Database z usługą Active Directory, uwierzytelnianie wieloskładnikowe
 
@@ -99,7 +99,7 @@ Aby dowiedzieć się więcej o usłudze Azure AD Administratorzy i użytkownicy 
 
 Administrator usługi Azure AD dla serwera bazy danych SQL można uruchomić C# przykładowy program. Użytkownika usługi Azure AD można uruchomić program, jeśli są one w bazie danych. Administrator usługi Azure AD SQL lub użytkownika usługi Azure AD, która już istnieje w bazie danych i ma `ALTER ANY USER` uprawnień w bazie danych można dodać użytkownika.
 
-Można dodać użytkownika do bazy danych przy użyciu języka SQL [ `Create User` ](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=sql-server-2017) polecenia. Na przykład `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
+Można dodać użytkownika do bazy danych przy użyciu języka SQL [ `Create User` ](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) polecenia. Na przykład `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
 
 Aby uzyskać więcej informacji, zobacz [użyciu Azure uwierzytelnianie usługi Active Directory do uwierzytelniania przy użyciu bazy danych SQL Database, wystąpienia zarządzanego lub SQL Data Warehouse](sql-database-aad-authentication.md).
 
@@ -126,7 +126,7 @@ Aby uzyskać C# program w celu pomyślnego uruchomienia, musisz przypisać odpow
 | Nazwa pola statycznego | Przykładowa wartość | Miejsce w witrynie Azure portal |
 | :---------------- | :------------ | :-------------------- |
 | Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **Serwery SQL** > **Filtruj według nazwy** |
-| AzureAD_UserID | „auser@abc.onmicrosoft.com” | **Usługa Azure Active Directory** > **użytkownika** > **nowy użytkownik-Gość** |
+| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Usługa Azure Active Directory** > **użytkownika** > **nowy użytkownik-Gość** |
 | Initial_DatabaseName | "myDatabase" | **Serwery SQL** > **baz danych SQL** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Usługa Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwanie według nazwy** > **Identyfikatora aplikacji** |
 | RedirectUri | Nowy identyfikator Uri ("https://mywebserver.com/") | **Usługa Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwanie według nazwy** > *[Your App regis]*  >  **Ustawienia** > **RedirectURIs**<br /><br />W tym artykule dowolną prawidłową wartość jest dobrym rozwiązaniem dla elementu RedirectUri, ponieważ nie jest używany w tym miejscu. |
@@ -342,5 +342,7 @@ In method 'AcquireTokenAsync', case_0 == '.ActiveDirectoryInteractive'.
 ## <a name="next-steps"></a>Kolejne kroki
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 - [Get-AzSqlServerActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)

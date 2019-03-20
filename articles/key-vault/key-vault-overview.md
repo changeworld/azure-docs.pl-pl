@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 474148289bb03088bbf92eeadc4049ce19625e3e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 06f1a2b33b177cf667fc2d3c5932f7ff117d2bdc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115950"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195476"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -55,7 +55,7 @@ Po utworzeniu kilku magazynów usługi Key Vault może zajść potrzeba monitoro
 
 - Archiwizowanie na koncie magazynu.
 - Przesyłanie strumieniowe do centrum zdarzeń.
-- Wysyłanie dzienników do usługi Log Analytics.
+- Wyślij dzienniki do dzienników usługi Azure Monitor.
 
 Kontrolujesz dzienniki i możesz je zabezpieczyć przez ograniczenie dostępu, a także możesz usunąć dzienniki, które nie są już potrzebne.
 
@@ -80,7 +80,7 @@ Jako bezpieczny magazyn na platformie Azure usługa Key Vault jest używana do u
 
 Samą usługę Key Vault można zintegrować z kontami magazynu, centrami zdarzeń i usługą Log Analytics.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Szybki start: tworzenie usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia](quick-create-cli.md)
 - [Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault](tutorial-web-application-keyvault.md)

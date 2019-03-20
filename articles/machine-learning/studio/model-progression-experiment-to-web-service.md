@@ -1,23 +1,23 @@
 ---
-title: Jak model uczenia maszynowego staje się usługi sieci web
+title: Jak usługa sieci web staje się na modelu
 titleSuffix: Azure Machine Learning Studio
-description: Omówienie sposobu działania jak eksperymentować z postępów modelu usługi Azure Machine Learning Studio od etapu programowania do zoperacjonalizowanej usługi sieci Web.
+description: Omówienie sposobu działania jak usługi Azure Machine Learning Studio w miarę modelu od etapu programowania eksperymentować z usługą sieci Web.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 808883fc96369538a26a06a7dadb5f0ecd6628d5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 28bb96099acb800d9095325b8c7b46a6b5124b4e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823403"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835133"
 ---
-# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak modelu usługi Machine Learning Studio w miarę z eksperymentu do zoperacjonalizowanej usługi sieci Web
+# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-a-web-service"></a>Jak modelu usługi Machine Learning Studio w miarę z eksperymentu usługi sieci Web
 Usługa Azure Machine Learning Studio udostępnia interaktywne kanwy, która pozwala na tworzenie, uruchamianie, testów i modyfikować ***eksperymentować*** reprezentujący modelu analizy predykcyjnej. Istnieją szerokiej gamy dostępnych modułów, które można:
 
 * Dane wejściowe do eksperymentu
@@ -32,7 +32,7 @@ Po zakończeniu eksperymentu można wdrożyć go jako ***klasycznej Azure Machin
 W tym artykule udostępniamy omówienie sposobu działania jak eksperymentować z postępów modelu uczenia maszynowego od etapu programowania do zoperacjonalizowanej usługi sieci Web.
 
 > [!NOTE]
-> Istnieją inne sposoby tworzenia i wdrażania modeli uczenia maszynowego, ale w tym artykule koncentruje się na jak używać usługi Machine Learning Studio. Na przykład, aby uzyskać opis sposobu tworzenia klasycznego predykcyjne usługi sieci Web przy użyciu języka R, zobacz wpis w blogu [kompilacji i wdrażania predykcyjne sieci Web Apps przy użyciu programu RStudio i Azure Machine Learning studio](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+> Istnieją inne sposoby tworzenia i wdrażania modeli uczenia maszynowego, ale w tym artykule koncentruje się na jak używać usługi Machine Learning Studio. Na przykład, aby uzyskać opis sposobu tworzenia klasycznego predykcyjne usługi sieci Web przy użyciu języka R, zobacz wpis w blogu [kompilacji i wdrażania predykcyjne sieci Web Apps przy użyciu programu RStudio i Azure Machine Learning studio](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
 >
 >
 

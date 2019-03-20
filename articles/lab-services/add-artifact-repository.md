@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 85763a895b61d184db033c09a413cc897ef6eaa3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 42b59c8da9e66b0f749d067e3df867911c7108e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551606"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106835"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Dodawanie repozytorium artefaktów do laboratorium w usłudze DevTest Labs
 DevTest Labs umożliwia określenie artefaktu ma zostać dodany do maszyny Wirtualnej w czasie tworzenia maszyny Wirtualnej lub po utworzeniu maszyny Wirtualnej. Ten artefakt może być narzędziem lub aplikacji, którą chcesz zainstalować na maszynie Wirtualnej. Artefakty są zdefiniowane w pliku JSON załadowane z repozytorium GitHub i VSTS Git. 
@@ -74,11 +74,11 @@ Ta sekcja zawiera kroki, aby dodać repozytorium artefaktów do laboratorium w w
 
     ![Przycisk Dodaj repozytorium](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Na **repozytoriów** określ następujące informacje:
-  1. **Nazwa**. Wprowadź nazwę repozytorium.
-  2. **Adres Url klonowania Git**. Wprowadź adres URL klonowania Git HTTPS, które wcześniej zostały skopiowane z usługi GitHub lub usługom DevOps platformy Azure.
-  3. **Gałąź**. Aby uzyskać definicji, wprowadź gałęzi.
-  4. **Osobisty Token dostępu**. Wprowadź osobisty token dostępu uzyskany wcześniej w usłudze GitHub lub usługom DevOps platformy Azure.
-  5. **Ścieżka folderu**. Wprowadź co najmniej jedną ścieżkę folderu względem adres URL klonowania, który zawiera Twoje artefaktu lub definicje szablonów usługi Resource Manager. Po określeniu podkatalogu, upewnij się, że zawierają ukośnika w ścieżce folderu.
+   1. **Nazwa**. Wprowadź nazwę repozytorium.
+   2. **Adres Url klonowania Git**. Wprowadź adres URL klonowania Git HTTPS, które wcześniej zostały skopiowane z usługi GitHub lub usługom DevOps platformy Azure.
+   3. **Gałąź**. Aby uzyskać definicji, wprowadź gałęzi.
+   4. **Osobisty Token dostępu**. Wprowadź osobisty token dostępu uzyskany wcześniej w usłudze GitHub lub usługom DevOps platformy Azure.
+   5. **Ścieżka folderu**. Wprowadź co najmniej jedną ścieżkę folderu względem adres URL klonowania, który zawiera Twoje artefaktu lub definicje szablonów usługi Resource Manager. Po określeniu podkatalogu, upewnij się, że zawierają ukośnika w ścieżce folderu.
 
         ![Obszar repozytoriów](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Wybierz pozycję **Zapisz**.

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a8c4ef5df586c87862ea8e1634e9a72356401d0b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bcb538cf2e546e4913ccb223e143c2343e114de7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247429"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896198"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Samouczek: Tworzenie rozwiązań skalowania wielu chmur przy użyciu platformy Azure
 
@@ -128,7 +128,7 @@ Azure Repos
 
 1. Zaloguj się do potoków usługi Azure, aby upewnić się, możliwość tworzenia definicji kompilacji.
 
-2. Dodaj **- r dla systemu win10-x64** kodu. Jest to konieczne wyzwolić wdrożenie niezależna za pomocą.Net Core.
+2. Dodaj **- r dla systemu win10-x64** kodu. Jest to konieczne wyzwolić wdrożenie niezależna z platformą .NET Core.
 
     ![Tekst alternatywny](media/azure-stack-solution-cloud-burst/image4.png)
 
@@ -266,7 +266,7 @@ Teraz, gdy informacje o punkcie końcowym istnieje, potoki platformy Azure do po
 
 Użyj [szablonami usługi Azure Resource Manager, takimi jak web](https://azure.microsoft.com/resources/templates/) kodu aplikacji z repozytoriów platformy Azure, aby wdrażać w obu chmurach.
 
-### <a name="add-code-to-a-azure-repos-project"></a>Dodawanie kodu do projektu repozytoriów platformy Azure
+### <a name="add-code-to-an-azure-repos-project"></a>Dodawanie kodu do projektu repozytoriów platformy Azure
 
 1.  Zaloguj się do repozytoriów platformy Azure przy użyciu konta które ma uprawnień do tworzenia projektu w usłudze Azure Stack. Następny zrzut ekranu pokazuje, jak połączyć się z projektem HybridCICD.
 
@@ -286,7 +286,7 @@ Użyj [szablonami usługi Azure Resource Manager, takimi jak web](https://azure.
 
 2.  Przejdź do **tworzenie aplikacji sieci Web** strony dla projektu.
 
-3.  W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna za pomocą.Net Core.
+3.  W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna z platformą .NET Core.
 
 4.  Uruchom kompilację. [Kompilacji wdrożenia niezależna](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) proces będzie publikować artefaktów, które można uruchamiać na platformie Azure i usługi Azure Stack.
 

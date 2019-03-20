@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a842c0807a3cfbad78a43bcffa896c83bceedfb9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1070cc97624b39ec929f5083f7073179fb1f068c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959293"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899149"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Zasoby poświadczeń w usłudze Azure Automation
 
-Zasób poświadczenia usługi Automation przechowuje obiekt, który zawiera poświadczenia zabezpieczeń, takie jak nazwa użytkownika i hasło. Konfiguracje elementów Runbook i DSC może używać poleceń cmdlet, które akceptuje obiekt PSCredential uwierzytelniania lub może ich wyodrębnić nazwy użytkownika i hasła obiektu PSCredential, aby zapewnić do niektórych aplikacji lub usługi wymagającej uwierzytelniania. Właściwości dla poświadczenia są bezpiecznie przechowywane w usłudze Azure Automation i dostępne w elemencie runbook lub konfiguracji DSC przy użyciu [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) działania.
+Zasób poświadczenia usługi Automation przechowuje obiekt, który zawiera poświadczenia zabezpieczeń, takie jak nazwa użytkownika i hasło. Konfiguracje elementów Runbook i DSC może używać poleceń cmdlet, które akceptuje obiekt PSCredential uwierzytelniania lub może ich wyodrębnić nazwy użytkownika i hasła obiektu PSCredential, aby zapewnić do niektórych aplikacji lub usługi wymagającej uwierzytelniania. Właściwości dla poświadczenia są bezpiecznie przechowywane w usłudze Azure Automation i dostępne w elemencie runbook lub konfiguracji DSC przy użyciu [Get-AutomationPSCredential](#activities) działania.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -31,10 +31,10 @@ Polecenia cmdlet w poniższej tabeli służą do tworzenia i obsługi zasobów p
 
 | Polecenia cmdlet | Opis |
 |:--- |:--- |
-| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |Pobiera informacje o zasób poświadczeń. Tylko można pobrać poświadczeń, sama z **Get-AutomationPSCredential** działania. |
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Tworzy nowe poświadczenie automatyzacji. |
-| [Remove - AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Usuwa poświadczenie automatyzacji. |
-| [Set - AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Ustawia właściwości istniejącego poświadczenia usługi Automation. |
+| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential) |Pobiera informacje o zasób poświadczeń. Tylko można pobrać poświadczeń, sama z **Get-AutomationPSCredential** działania. |
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Tworzy nowe poświadczenie automatyzacji. |
+| [Remove-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Usuwa poświadczenie automatyzacji. |
+| [Set-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Ustawia właściwości istniejącego poświadczenia usługi Automation. |
 
 ## <a name="azurerm-powershell-cmdlets"></a>Polecenia cmdlet usługi AzureRM PowerShell
 
@@ -42,10 +42,10 @@ Dla usługi AzureRM poleceń cmdlet w poniższej tabeli służą do tworzenia i 
 
 | Polecenia cmdlet | Opis |
 |:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential?view=azurermps-4.4.0) |Pobiera informacje o zasób poświadczeń.  |
-| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential?view=azurermps-4.4.0) |Tworzy nowe poświadczenie automatyzacji. |
-| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential?view=azurermps-4.4.0) |Usuwa poświadczenie automatyzacji. |
-| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential?view=azurermps-4.4.0) |Ustawia właściwości istniejącego poświadczenia usługi Automation. |
+| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |Pobiera informacje o zasób poświadczeń.  |
+| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |Tworzy nowe poświadczenie automatyzacji. |
+| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |Usuwa poświadczenie automatyzacji. |
+| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |Ustawia właściwości istniejącego poświadczenia usługi Automation. |
 
 ## <a name="activities"></a>Działania
 
@@ -53,7 +53,7 @@ Działania w poniższej tabeli są używane do dostępu do poświadczeń w eleme
 
 | Działania | Opis |
 |:--- |:--- |
-| Get-AutomationPSCredential |Pobiera poświadczenia do użycia w elemencie runbook lub konfiguracji DSC. Zwraca [System.Management.Automation.PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential) obiektu. |
+| Get-AutomationPSCredential |Pobiera poświadczenia do użycia w elemencie runbook lub konfiguracji DSC. Zwraca [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) obiektu. |
 
 > [!NOTE]
 > Należy unikać używania zmiennych w parametrze Name Get-AutomationPSCredential, ponieważ może to skomplikować wykrywanie zależności między elementami runbook lub konfiguracji DSC i poświadczeń zasobów w czasie projektowania.
@@ -93,7 +93,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>Używanie poświadczenia programu PowerShell
 
-Pobierz zasób poświadczeń w elemencie runbook lub konfiguracji DSC przy użyciu **Get-AutomationPSCredential** działania. Spowoduje to zwrócenie [obiektu PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) , za pomocą działania lub polecenia cmdlet, które wymaga, aby parametr PSCredential. Możesz również pobrać właściwości obiektu poświadczeń można użyć pojedynczo. Obiekt ma właściwość dla nazwy użytkownika i hasła bezpiecznego lub użyć **GetNetworkCredential** metodę, aby zwrócić [NetworkCredential](https://msdn.microsoft.com/library/system.net.networkcredential.aspx) obiekt, który zapewni niezabezpieczonej wersji hasło.
+Pobierz zasób poświadczeń w elemencie runbook lub konfiguracji DSC przy użyciu **Get-AutomationPSCredential** działania. Spowoduje to zwrócenie [obiektu PSCredential](/dotnet/api/system.management.automation.pscredential) , za pomocą działania lub polecenia cmdlet, które wymaga, aby parametr PSCredential. Możesz również pobrać właściwości obiektu poświadczeń można użyć pojedynczo. Obiekt ma właściwość dla nazwy użytkownika i hasła bezpiecznego lub użyć **GetNetworkCredential** metodę, aby zwrócić [NetworkCredential](/dotnet/api/system.net.networkcredential) obiekt, który zapewni niezabezpieczonej wersji hasło.
 
 ### <a name="textual-runbook-sample"></a>Przykład tekstowy element runbook
 

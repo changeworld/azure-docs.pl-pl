@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: ba268806dccb7c2671825c794383396a2ff20299
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d86264b632daa09a899fae28e73e117b16322617
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548817"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121965"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopiowanie danych z SAP ECC przy użyciu usługi Azure Data Factory
 
@@ -160,7 +160,7 @@ Aby skopiować dane z SAP ECC, należy ustawić typ źródła w działaniu kopio
 Podczas kopiowania danych z SAP ECC, następujące mapowania są używane z typów danych OData dla danych SAP ECC do typów danych tymczasowych usługi Azure Data Factory. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
 
 | Typ danych OData | Typ danych tymczasowych fabryki danych |
-|:--- |:--- |:--- |
+|:--- |:--- |
 | Edm.Binary | String |
 | Edm.Boolean | Bool |
 | Edm.Byte | String |

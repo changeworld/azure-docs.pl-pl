@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 40d16076a3d995ecccd06591278b330652d960d8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 9ff134b0747e78773c95fac7ceab4cddd61c601d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189017"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227018"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Aprowizacja urządzenia w centrum IoT przy użyciu usługi Azure IoT Hub Device Provisioning
 
@@ -43,7 +43,7 @@ Ten krok obejmuje dodawanie unikatowych artefaktów zabezpieczeń urządzenia do
       [![Informacje o rejestracji dla modułu TPM w portalu](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - W przypadku urządzeń opartych na standardzie X.509 wymagane są następujące elementy:
-    - [Certyfikat wystawiony dla modułu lub symulacji X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) w postaci pliku *PEM* lub *CER*. W przypadku rejestracji indywidualnej należy użyć *certyfikatu osoby podpisującej* na urządzenia dla systemu X.509, natomiast w przypadku grup rejestracji należy użyć *certyfikatu głównego*. 
+    - [Certyfikat wystawiony dla modułu lub symulacji X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) w postaci pliku *PEM* lub *CER*. Aby przeprowadzić rejestrację indywidualną, należy użyć poszczególnych urządzeń *certyfikat z podpisem* dla systemu X.509, natomiast w przypadku grup rejestracji należy użyć *certyfikat główny*. 
 
       [![Dodawanie indywidualnej rejestracji dla zaświadczenia X.509 w portalu](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -91,7 +91,7 @@ Po uruchomieniu urządzenia powinny zostać wykonane następujące działania:
 
 Aby uzyskać więcej informacji, zobacz przykład aprowizacji urządzenia klienta [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). W tym przykładzie pokazano aprowizowanie symulowanego urządzenia przy użyciu certyfikatów TPM i X.509 oraz kluczy zawartości. Zapoznaj się ponownie z przewodnikami Szybki start dotyczącymi atestacji certyfikatów [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device) i [X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) oraz [kluczy zawartości](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key), aby uzyskać instrukcje krok po kroku dotyczące korzystania z przykładów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

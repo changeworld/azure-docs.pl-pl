@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: cb7ccc665cdf9867232580fd8b687b344e43116d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a771b437258046f937b97a9e37ffedbe0a17c1c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079798"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny 
 
@@ -45,22 +45,22 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 1. Wybierz **domeny niestandardowe i protokół SSL**.
     
     Istnieje kilka punktów końcowych, do których można przypisać niestandardową nazwę domeny. Obecnie dostępne są następujące punkty końcowe: 
-    + **Serwer proxy** (wartość domyślna to: `<apim-service-name>.azure-api.net`), 
-    + **Portal** (wartość domyślna to: `<apim-service-name>.portal.azure-api.net`),     
-    + **Zarządzanie** (wartość domyślna to: `<apim-service-name>.management.azure-api.net`), 
-    + **Menedżer sterowania usługami** (wartość domyślna to: `<apim-service-name>.scm.azure-api.net`).
+   + **Serwer proxy** (wartość domyślna to: `<apim-service-name>.azure-api.net`), 
+   + **Portal** (wartość domyślna to: `<apim-service-name>.portal.azure-api.net`),     
+   + **Zarządzanie** (wartość domyślna to: `<apim-service-name>.management.azure-api.net`), 
+   + **Menedżer sterowania usługami** (wartość domyślna to: `<apim-service-name>.scm.azure-api.net`).
 
-    >[!NOTE]
-    > Możesz zaktualizować wszystkie punkty końcowe lub niektóre z nich. Często klienci zaktualizować **Proxy** (ten adres URL jest używany do wywoływania interfejsu API dostępne za pośrednictwem usługi API Management) i **Portal** (portalu dla deweloperów adres URL). **Zarządzanie** i **SCM** punkty końcowe są używane wewnętrznie przez klientów usługi APIM i dlatego rzadziej przypisanych niestandardowej nazwy domeny.
+     >[!NOTE]
+     > Możesz zaktualizować wszystkie punkty końcowe lub niektóre z nich. Często klienci zaktualizować **Proxy** (ten adres URL jest używany do wywoływania interfejsu API dostępne za pośrednictwem usługi API Management) i **Portal** (portalu dla deweloperów adres URL). **Zarządzanie** i **SCM** punkty końcowe są używane wewnętrznie przez klientów usługi APIM i dlatego rzadziej przypisanych niestandardowej nazwy domeny.
 
 1. Wybierz punkt końcowy, który chcesz zaktualizować. 
 1. W oknie po prawej stronie kliknij **niestandardowe**.
 
-    + W **niestandardowej nazwy domeny**, określ nazwę, której chcesz użyć. Na przykład `api.contoso.com`. Nazwy domen z symbolami wieloznacznymi (na przykład *. domena.com) są również obsługiwane.
-    + W **certyfikatu**, wybierz certyfikat z magazynu Key Vault. Możesz również przekazać prawidłowy. Plik PFX pliku i zapewnić jej **hasło**, jeśli certyfikat jest chroniony hasłem.
+   + W **niestandardowej nazwy domeny**, określ nazwę, której chcesz użyć. Na przykład `api.contoso.com`. Nazwy domen z symbolami wieloznacznymi (na przykład *. domena.com) są również obsługiwane.
+   + W **certyfikatu**, wybierz certyfikat z magazynu Key Vault. Możesz również przekazać prawidłowy. Plik PFX pliku i zapewnić jej **hasło**, jeśli certyfikat jest chroniony hasłem.
 
-    > [!TIP]
-    > Jeśli używasz usługi Azure Key Vault do zarządzania certyfikat SSL domen niestandardowych, upewnij się, certyfikat jest wstawiany do usługi Key Vault [jako *certyfikatu*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), a nie *klucz tajny*. Usługa API Management przejmą najnowszą wersję automatycznie, jeśli certyfikat autorotate.
+     > [!TIP]
+     > Jeśli używasz usługi Azure Key Vault do zarządzania certyfikat SSL domen niestandardowych, upewnij się, certyfikat jest wstawiany do usługi Key Vault [jako *certyfikatu*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), a nie *klucz tajny*. Usługa API Management przejmą najnowszą wersję automatycznie, jeśli certyfikat autorotate.
 
 1. Kliknij przycisk Zastosuj.
 

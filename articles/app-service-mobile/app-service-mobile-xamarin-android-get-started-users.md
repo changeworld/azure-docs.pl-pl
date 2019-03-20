@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 0a2d964d60d13f0e71de5776112a4edbe3cdcc45
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063544"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993925"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -57,7 +57,7 @@ Gdy aplikacja jest zaktualizowana, aby wymagać od użytkowników mogą wybrać 
 
 1. Dodaj następujący kod do **TodoActivity** klasy:
    
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
         private async Task<bool> Authenticate()
         {
@@ -96,7 +96,7 @@ Gdy aplikacja jest zaktualizowana, aby wymagać od użytkowników mogą wybrać 
     Spowoduje to utworzenie nowej metody na potrzeby uwierzytelniania użytkownika i obsługę metody nowej **Zaloguj** przycisku. Użytkownik w powyższym przykładowym kodzie jest uwierzytelniane za pomocą logowania do usługi Facebook. Okno dialogowe służy do wyświetlenia Identyfikatora użytkownika, po uwierzytelnieniu.
    
    > [!NOTE]
-   > Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, zmień wartość przekazana do **LoginAsync** powyżej do jednej z następujących czynności: *MicrosoftAccount*, *Twitter*,  *Google*, lub *WindowsAzureActiveDirectory*.
+   > Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, zmień wartość przekazana do **LoginAsync** powyżej do jednej z następujących czynności: *MicrosoftAccount*, *Twitter*, *Google*, lub *WindowsAzureActiveDirectory*.
    > 
    > 
 2. W **OnCreate** metody, usunąć lub komentarz następujący wiersz kodu:
@@ -130,7 +130,7 @@ Gdy aplikacja jest zaktualizowana, aby wymagać od użytkowników mogą wybrać 
 
 **Aplikacja uległa awarii, za pomocą `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
-W niektórych przypadkach powoduje konflikt w pakietach pomocy technicznej wyświetlany jako tylko ostrzeżeniem w Visual studio, ale awarii aplikacji za pomocą tego wyjątku w czasie wykonywania. W takim przypadku należy się upewnić, że wszystkie pakiety obsługi, określane w projekcie mają tę samą wersję. [Pakietu NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma `Xamarin.Android.Support.CustomTabs` zależność dla platformy systemu Android, więc jeśli projekt używa nowszej obsługi pakietów można konieczne zainstalowanie tego pakietu przy użyciu wymaganej wersji bezpośrednio w celu uniknięcia konfliktów.
+W niektórych przypadkach powoduje konflikt w pakietach pomocy technicznej wyświetlany jako tylko ostrzeżeniem w Visual studio, ale awarii aplikacji za pomocą tego wyjątku w czasie wykonywania. W takim przypadku należy się upewnić, że wszystkie pakiety obsługi, określane w projekcie mają tę samą wersję. [Pakiet NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma zależność `Xamarin.Android.Support.CustomTabs` dla platformy Android, więc jeśli projekt używa nowszych pakietów dla pomocy technicznej, musisz bezpośrednio zainstalować ten pakiet w wymaganej wersji w celu uniknięcia konfliktów.
 
 <!-- URLs. -->
 [Tworzenie aplikacji platformy Xamarin.Android]: app-service-mobile-xamarin-android-get-started.md

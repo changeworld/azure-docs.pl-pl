@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 02/26/2019
-ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888665"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123049"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: Wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
 
@@ -328,10 +328,10 @@ W ramach zadania usługi Stream Analytics kliknij pozycje **Uruchom**, następni
     > Po uruchomieniu przykładowej aplikacji i rozpoczęciu strumieniowego przesyłania danych do centrum zdarzeń liczba na tym kafelku zacznie się szybko zmieniać (co sekundę). Oznacza to, że zapytanie usługi Stream Analytics faktycznie aktualizuje wartość **co sekundę**. Zaktualizuj zapytanie do 3-minutowego okna wirowania, aby wyświetlać sumę z ostatnich kilku minut. 
 11. Dodaj kolejną wizualizację. Powtórz ponownie kilka pierwszych kroków:
 
-   * Kliknij przycisk **Dodaj kafelek**.
-   * Wybierz pozycję **Niestandardowe dane przesyłane strumieniowo**. 
-   * Kliknij przycisk **Dalej**.
-   * Wybierz zestaw danych, a następnie kliknij przycisk **Dalej**. 
+    * Kliknij przycisk **Dodaj kafelek**.
+    * Wybierz pozycję **Niestandardowe dane przesyłane strumieniowo**. 
+    * Kliknij przycisk **Dalej**.
+    * Wybierz zestaw danych, a następnie kliknij przycisk **Dalej**. 
 
 12. W obszarze **Typ wizualizacji** wybierz opcję **Wykres liniowy**.
 
@@ -371,7 +371,7 @@ Aby usunąć grupę zasobów, użyj polecenia [Remove-AzResourceGroup](/powershe
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]

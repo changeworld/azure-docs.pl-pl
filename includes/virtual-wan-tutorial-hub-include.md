@@ -5,22 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/12/2018
+ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f5560877d48513d5ac0b6a4842f45b2d91873e02
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 1d59c90b4f4ac7213a4bd2769a9c22cace25e9cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47004149"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124550"
 ---
-Nowy koncentrator zawiera bramę, której utworzenie trwa 30 minut. Po utworzeniu koncentratora będzie za niego naliczana opłata, nawet jeśli nie dołączysz żadnych lokacji. 
-1. Na stronie sieci WAN w obszarze **Architektura wirtualnej sieci WAN** kliknij pozycję **Koncentratory**, aby otworzyć stronę koncentratorów.
-2. Na stronie Koncentratory kliknij pozycję **+Nowy koncentrator**, aby otworzyć stronę **Koncentratory**.
-3. Na stronie Koncentratory wypełnij następujące pola:
+Koncentrator zawiera bramę. Po utworzeniu koncentratora będzie za niego naliczana opłata, nawet jeśli nie dołączysz żadnych lokacji. Trwa 30 minut, aby utworzyć Centrum i bramy.
 
-  * Lokalizacja
-  * Name (Nazwa)
-  * Prywatna przestrzeń adresowa koncentratora
-4. Kliknij polecenie **Potwierdź**, aby utworzyć koncentrator. Kliknij przycisk **Odśwież**, aby wyświetlić koncentrator na stronie Koncentratory.
+1. Znajdź wirtualne sieci WAN, który został utworzony. W wirtualnej WAN stronie w obszarze **architektury wirtualnej sieci WAN** , kliknij przycisk **koncentratory**.
+2. Na stronie Hubs kliknij **+ nowe Centrum** otworzyć **koncentrator wirtualny sieci WAN** strony.
+3. Na stronie wirtualne sieci WAN wypełnij następujące pola:
+
+   * Lokalizacja
+   * Name (Nazwa)
+   * Prywatna przestrzeń adresowa koncentratora
+4. Kliknij polecenie **Potwierdź**, aby utworzyć koncentrator. Kliknij przycisk **Odśwież** do wyświetlania koncentratora na **koncentratory** strony.

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c09df2a15fbd0bdfdd1478fad587e6a18695002c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207504"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201538"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identyfikowanie i rozwiązywanie problemów z przypisania licencji dla grupy w usłudze Azure Active Directory
 
@@ -33,21 +33,21 @@ Podczas korzystania z oparte na grupach licencji, mogą wystąpić błędy ten s
 ## <a name="how-to-find-license-assignment-errors"></a>Jak znaleźć błędy związane z przypisaniem licencji
 **Aby znaleźć błędy związane z przypisaniem licencji**
 
-   1. Aby wyszukać użytkowników w stanie błędu do określonej grupy, otwórz okienko dla grupy. W obszarze **licencji**, pojawi się powiadomienie w przypadku wszystkich użytkowników w stanie błędu.
+1. Aby wyszukać użytkowników w stanie błędu do określonej grupy, otwórz okienko dla grupy. W obszarze **licencji**, pojawi się powiadomienie w przypadku wszystkich użytkowników w stanie błędu.
 
-   ![Grupa powiadomienia o błędzie](./media/licensing-groups-resolve-problems/group-error-notification.png)
+   ![Grupy i komunikat powiadomienia](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-   2. Wybierz powiadomienie, aby otworzyć listę wszystkich użytkowników, których to dotyczy. Możesz wybrać poszczególni pojedynczo, aby zobaczyć więcej szczegółów.
+2. Wybierz powiadomienie, aby otworzyć listę wszystkich użytkowników, których to dotyczy. Możesz wybrać poszczególni pojedynczo, aby zobaczyć więcej szczegółów.
 
-   ![Grupy, listę użytkowników w stanie Błąd](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
+   ![Lista użytkowników w grupie licencji stanu błędu](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-   3. Aby znaleźć wszystkie grupy, które zawierają co najmniej jeden błąd w **usługi Azure Active Directory** Wybierz blok **licencji**, a następnie wybierz **Przegląd**. Pole informacyjne jest wyświetlane, gdy grupy wymagają Twojej uwagi.
+3. Aby znaleźć wszystkie grupy, które zawierają co najmniej jeden błąd w **usługi Azure Active Directory** Wybierz blok **licencji**, a następnie wybierz **Przegląd**. Pole informacyjne jest wyświetlane, gdy grupy wymagają Twojej uwagi.
 
-   ![Przegląd informacji na temat grup w stanie Błąd](./media/licensing-groups-resolve-problems/group-errors-widget.png)
+   ![Omówienie i informacji na temat grup w stanie Błąd](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-   4. Wybierz pole, aby wyświetlić listę wszystkich grup z błędami. Możesz wybrać każdej grupy, aby uzyskać więcej informacji.
+4. Wybierz pole, aby wyświetlić listę wszystkich grup z błędami. Możesz wybrać każdej grupy, aby uzyskać więcej informacji.
 
-   ![Omówienie, lista grup z błędami](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
+   ![Omówienie i listę grup z błędami](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
 
 
 W poniższych sekcjach znajdują się opis każdego potencjalnego problemu i sposobu rozwiązania go.
@@ -104,9 +104,9 @@ Jeśli używasz usługi Exchange Online, niektórzy użytkownicy w Twojej dzier�
 
 > [!TIP]
 > Aby sprawdzić, czy adres serwera proxy duplikatów, wykonaj następujące polecenie cmdlet programu PowerShell dla usługi Exchange Online:
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
+> ```
+> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> ```
 > Aby uzyskać więcej informacji na temat tego problemu, zobacz [w usłudze Exchange Online komunikat o błędzie "adres serwera Proxy jest już używana"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Artykuł zawiera również informacje na [sposób nawiązywania połączeń do usługi Exchange Online przy użyciu zdalnego programu PowerShell](https://technet.microsoft.com/library/jj984289.aspx). W tym artykule, aby uzyskać więcej informacji zobacz [na jak atrybut proxyAddresses jest wypełniany w usłudze Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 Po rozwiązaniu problemów adres serwera proxy dla użytkowników, których dotyczy problem, upewnij się wymusić przetwarzania licencji w grupie, aby upewnić się, że można teraz stosować licencji.

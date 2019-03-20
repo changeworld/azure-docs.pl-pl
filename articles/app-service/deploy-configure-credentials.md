@@ -10,18 +10,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/22/2018
-ms.author: cephalin
+ms.date: 03/10/2019
+ms.author: cephalin;byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d89197fad8354b0bae41ab67b9bb1dfac0a179eb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: df874ab77c88f05b048b1f9d10873943b7bebf36
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820301"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884391"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrożenia dla usługi Azure App Service
-[Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalne wdrożenie narzędzia Git](deploy-local-git.md) i [wdrożenia protokołu FTP/S](deploy-ftp.md). Nie są takie same, jak poświadczeń usługi Azure Active Directory.
+[Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalne wdrożenie narzędzia Git](deploy-local-git.md) i [wdrożenia protokołu FTP/S](deploy-ftp.md). Te poświadczenia nie są takie same, jak poświadczeń usługi Azure Active Directory.
 
 * **Poświadczenia na poziomie użytkownika**: jeden zestaw poświadczeń dla całego konta platformy Azure. Może służyć do wdrożenia usługi App Service dla każdej aplikacji, w przypadku subskrypcji, z uprawnień dostępu do konta platformy Azure. Jest domyślny zestaw, który jest udostępniane w portalu graficznego interfejsu użytkownika (takie jak **Przegląd** i **właściwości** aplikacji [strony zasobu](../azure-resource-manager/manage-resources-portal.md#manage-resources)). Po użytkownik uzyska dostęp do aplikacji za pomocą kontroli dostępu opartej na rolach (RBAC) lub uprawnienia coadmin, użytkownik ten może korzystać swoich własnych poświadczeń na poziomie użytkownika, dopóki nie został odwołany dostęp. Nie udostępniaj tych poświadczeń z innymi użytkownikami platformy Azure.
 
@@ -53,6 +53,12 @@ i *FTP* nazwa użytkownika wdrożenia w swojej aplikacji **właściwości**.
 > Azure nie są wyświetlane hasło do wdrażania na poziomie użytkownika. Jeśli zapomnisz hasło, wykonując kroki opisane w tej sekcji można zresetować swoje poświadczenia.
 >
 >  
+
+## <a name="use-user-level-credentials-with-ftpftps"></a>Poświadczenia na poziomie użytkownika za pomocą protokołu FTP/FTPS
+
+Uwierzytelnianie FTP/FTPS punkt końcowy przy użyciu requirers poświadczenia na poziomie użytkownika o nazwę użytkownika w następującym formacie: `<app-name>\<user-name>`
+
+Ponieważ poświadczenia na poziomie użytkownika są połączone z kontem użytkownika i określonego zasobu, nazwa użytkownika musi być w następującym formacie, aby skierować działania logowania do endpoint odpowiedniej aplikacji.
 
 ## <a name="appscope"></a>Pobierz i zresetować poświadczenia na poziomie aplikacji
 Aby uzyskać poświadczeń na poziomie aplikacji:

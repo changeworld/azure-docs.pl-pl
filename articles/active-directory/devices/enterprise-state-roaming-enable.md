@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ce6dc4cf98f2886eb4eed7049048d67599ac42e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: adad43f337d4cf026ca8f48976a9fc713fd52200
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207487"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077415"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
 Roaming stanu dla przedsiębiorstw jest dostępny dla każdej organizacji za pomocą usługi Azure AD Premium lub pakietu Enterprise Mobility + Security (EMS) licencji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcję usługi Azure AD, zobacz [strona produktu usługi Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -37,7 +37,7 @@ Po włączeniu roamingu stanu przedsiębiorstwa organizacji jest automatycznie p
 
 1. Wybierz **użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach**. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ustawienia urządzenia](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
-  ![Obraz ustawień urządzeń z etykietą użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach](./media/enterprise-state-roaming-enable/device-settings.png)
+   ![Obraz ustawień urządzeń z etykietą użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach](./media/enterprise-state-roaming-enable/device-settings.png)
   
 Dla urządzeń systemu Windows 10 do korzystania z usługi Roaming stanu dla przedsiębiorstw urządzenie musi uwierzytelniać przy użyciu tożsamości usługi Azure AD. W przypadku urządzeń, które są przyłączone do usługi Azure AD podstawowego znak w tożsamość użytkownika jest swojej tożsamości usługi Azure AD, więc żadna dodatkowa konfiguracja jest wymagana. W przypadku urządzeń korzystających z usługi Active Directory w środowisku lokalnym, administrator IT musi [urządzenia przyłączone do hybrydowej Konfigurowanie usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps). 
 
@@ -64,11 +64,11 @@ Wykonaj następujące kroki, aby wyświetlić raport o stanie synchronizacji urz
 
 1. W obszarze **Pokaż**, wybierz opcję **urządzenia synchronizujące ustawienia i dane aplikacji** do wyświetlania stanu synchronizacji.
   
-  ![Obraz ustawień danych synchronizacji urządzeń](./media/enterprise-state-roaming-enable/sync-status.png)
+   ![Obraz ustawień danych synchronizacji urządzeń](./media/enterprise-state-roaming-enable/sync-status.png)
   
 1. W przypadku urządzeń synchronizujących dla tego użytkownika, możesz zobaczyć urządzenia, jak pokazano poniżej.
   
-  ![Obraz danych kolumnowych synchronizacji urządzeń](./media/enterprise-state-roaming-enable/device-status-row.png)
+   ![Obraz danych kolumnowych synchronizacji urządzeń](./media/enterprise-state-roaming-enable/device-status-row.png)
 
 ## <a name="data-retention"></a>Przechowywanie danych
 Zsynchronizowane z chmurą Microsoft za pomocą Roaming stanu dla przedsiębiorstw dane są przechowywane do momentu został ręcznie usunięty lub danych w danym zostanie uznane za przestarzałe. 

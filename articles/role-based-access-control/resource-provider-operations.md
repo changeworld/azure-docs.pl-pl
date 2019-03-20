@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb22594ba240f9e7b790dbef0bd1e091c30c82b9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b400af524d303fe4fbcbc8e34a394b286a048cc4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456554"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008807"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -4153,15 +4153,15 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.Portal/consoles/delete | Usuwa wystąpienie usługi Cloud Shell. |
-> | Akcja | Microsoft.Portal/consoles/write | Utwórz lub zaktualizuj wystąpienie usługi Cloud Shell. |
+> | Akcja | Microsoft.Portal/consoles/delete | Usuwa wystąpienie powłoki w chmurze. |
+> | Akcja | Microsoft.Portal/consoles/write | Utwórz lub zaktualizuj wystąpienia powłoki w chmurze. |
 > | Akcja | Microsoft.Portal/dashboards/delete | Usuwa pulpit nawigacyjny z subskrypcji. |
 > | Akcja | Microsoft.Portal/dashboards/read | Odczytuje pulpity nawigacyjne z subskrypcji. |
 > | Akcja | Microsoft.Portal/dashboards/write | Dodaj pulpit nawigacyjny do subskrypcji lub zmodyfikuj go. |
 > | Akcja | Microsoft.Portal/register/action | Zarejestruj w portalu |
-> | Akcja | Microsoft.Portal/usersettings/delete | Usuwa ustawienia użytkownika usługi Cloud Shell. |
-> | Akcja | Microsoft.Portal/usersettings/read | Odczytuje ustawienia użytkownika w usłudze Cloud Shell. |
-> | Akcja | Microsoft.Portal/usersettings/write | Utwórz lub zaktualizuj ustawienie użytkownika usługi Cloud Shell. |
+> | Akcja | Microsoft.Portal/usersettings/delete | Usuwa ustawienia użytkownika cloud shell. |
+> | Akcja | Microsoft.Portal/usersettings/read | Odczytuje ustawienia użytkownika powłoki w chmurze. |
+> | Akcja | Microsoft.Portal/usersettings/write | Utwórz lub zaktualizuj ustawienia użytkownika usługi cloud shell. |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 

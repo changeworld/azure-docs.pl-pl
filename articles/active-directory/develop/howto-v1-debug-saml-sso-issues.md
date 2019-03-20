@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b953d979fc5306372c1e751fbbb8942d19fed03f
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: f854c8b27065c2d2bf0c9964fe9dfce66aba423a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648918"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104509"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory
 
@@ -97,9 +97,9 @@ Aby naprawić błąd, wykonaj następujące kroki:
     - Jeśli zainstalowano rozszerzenie Secure Moje aplikacje logowania, z **Test rejestracji jednokrotnej** bloku kliknij **pobrać odpowiedzi SAML**.
     - Jeśli rozszerzenie nie jest zainstalowany, użyj narzędzia takiego jak [Fiddler](https://www.telerik.com/fiddler) można pobrać odpowiedzi SAML. 
 1. Zwróć uwagę, te elementy w tokenie języka SAML odpowiedzi:
-    - Unikatowy identyfikator użytkownika, wartość NameID i format
-    - Oświadczeń wystawionych w tokenie
-    - Certyfikat używany do podpisywania tokenu. 
+   - Unikatowy identyfikator użytkownika, wartość NameID i format
+   - Oświadczeń wystawionych w tokenie
+   - Certyfikat używany do podpisywania tokenu. 
 
      Aby uzyskać więcej informacji na temat odpowiedzi SAML, zobacz [protokołu SAML rejestracji jednokrotnej](single-sign-on-saml-protocol.md).
 

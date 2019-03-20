@@ -1,5 +1,5 @@
 ---
-title: Nazwa zasad (wersja zapoznawcza) — grup usługi Office 365 — usługi Azure Active Directory grupy | Dokumentacja firmy Microsoft
+title: Wymuszanie zasad nazewnictwa grupy — grupy usługi Office 365 — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak skonfigurować zasady nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 03/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9ca7f457f74202735d3abdf7faaed4ee66745f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bce8a9e4018f24022fcc45733d64ce47d07ba771
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898775"
 ---
-# <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
+# <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory
 
 Aby wymusić spójne konwencje nazewnictwa dla grup usługi Office 365 utworzonych lub edytowanych przez użytkowników, należy skonfigurować grupę zasady nazewnictwa dla dzierżawców w usłudze Azure Active Directory (Azure AD). Na przykład można użyć zasad nazewnictwa do komunikowania się funkcji grupę, członkostwo, regionu geograficznego lub twórca grupy. Zasady nazewnictwa mogą również wykorzystać do kategoryzowania grup w książce adresowej. Aby zablokować określone słowa w grupie nazwy i aliasy użycia, można użyć zasad.
 
 > [!IMPORTANT]
-> Za pomocą zasad nazewnictwa grup Office 365 w wersji zapoznawczej wymaga licencji usługi Azure Active Directory Premium P1 i licencji usługi Azure AD podstawowa EDU każdy unikatowy użytkownik, który jest członkiem jednej lub kilku grup usługi Office 365.
+> Za pomocą pakietu Office 365 grupy nazewnictwa zasady wymaga licencji usługi Azure Active Directory Premium P1 i licencji usługi Azure AD podstawowa EDU każdy unikatowy użytkownik, który jest członkiem jednej lub kilku grup usługi Office 365.
 
 Nazewnictwa zasady są stosowane do tworzenia lub edytowania grup utworzonych na potrzeby różnych obciążeń (na przykład programu Outlook, Microsoft Teams, SharePoint, Exchange lub terminarz). Jest stosowany do nazwy grupy i alias grupy. Jeśli masz istniejącą grupę Exchange zasady nazewnictwa skonfigurować zasady nazewnictwa w usłudze Azure AD, są stosowane zasady nazewnictwa usługi Azure AD.
 
@@ -72,7 +72,7 @@ Wybranym administratorom można wykluczone z tych zasad we wszystkich obciąże�
 - Administrator globalny
 - Pomoc techniczna dla partnerów warstwy 1
 - Pomoc techniczna dla partnerów warstwy 2
-- Administrator kont użytkowników
+- Administrator użytkownika
 - Zapisywanie katalogów
 
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>Zainstaluj polecenia cmdlet programu PowerShell, aby skonfigurować zasady nazewnictwa
@@ -82,15 +82,15 @@ Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory Pow
 1. Otwórz aplikację Windows PowerShell jako administrator.
 2. Odinstaluj poprzednią wersję programu AzureADPreview.
   
-  ```
-  Uninstall-Module AzureADPreview
-  ```
+   ```
+   Uninstall-Module AzureADPreview
+   ```
 3. Zainstaluj najnowszą wersję programu AzureADPreview.
   
-  ```
-  Install-Module AzureADPreview
-  ```
-Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytorium, wpisz **Y**. Zainstalowanie nowego modułu może zająć kilka minut.
+   ```
+   Install-Module AzureADPreview
+   ```
+   Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytorium, wpisz **Y**. Zainstalowanie nowego modułu może zająć kilka minut.
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurowanie grupy, zasady nazewnictwa dla dzierżawcy przy użyciu usługi Azure AD PowerShell
 
@@ -98,11 +98,11 @@ Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytor
 
 2. Uruchom następujące polecenia, aby przygotować się do uruchomienia poleceń cmdlet.
   
-  ```
-  Import-Module AzureADPreview
-  Connect-AzureAD
-  ```
-  Na ekranie **Zaloguj się na swoje konto** wprowadź swoje konto administratora i hasło, aby połączyć się z usługą, a następnie wybierz polecenie **Zaloguj**.
+   ```
+   Import-Module AzureADPreview
+   Connect-AzureAD
+   ```
+   Na ekranie **Zaloguj się na swoje konto** wprowadź swoje konto administratora i hasło, aby połączyć się z usługą, a następnie wybierz polecenie **Zaloguj**.
 
 3. Postępuj zgodnie z instrukcjami zawartymi w artykule [Azure Active Directory cmdlets for configuring group settings (Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy)](groups-settings-cmdlets.md), aby utworzyć ustawienia grupy dla tej dzierżawy.
 
@@ -110,35 +110,35 @@ Jeśli zostanie wyświetlony monit dotyczący dostępu do niezaufanego repozytor
 
 1. Pobrać bieżące zasady nazewnictwa, aby wyświetlić bieżące ustawienia.
   
-  ```
-  $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
-  ```
+   ```
+   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
+   ```
   
 2. Wyświetl bieżące ustawienia grupy.
   
-  ```
-  $Setting.Values
-  ```
+   ```
+   $Setting.Values
+   ```
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Ustaw zasady nazewnictwa i podasz niestandardowe wyrazy zablokowane
 
 1. Ustaw prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell. Aby ta funkcja działała poprawnie, należy dodać element [GroupName] do ustawienia.
   
-  ```
-  $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
-  ```
+   ```
+   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
+   ```
   
 2. Ustaw niestandardowe słowa zablokowane. W poniższym przykładzie pokazano, jak dodać własne słowa niestandardowe.
   
-  ```
-  $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
-  ```
+   ```
+   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
+   ```
   
 3. Zapisz ustawienia nowych zasad, aby zaczęły obowiązywać, tak jak w poniższym przykładzie.
   
-  ```
-  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ```
+   ```
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   ```
   
 Gotowe. Już skonfigurować zasady nazewnictwa i dodać zablokowanych słów.
 
@@ -173,21 +173,21 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 1. Usuń prefiksy i sufiksy nazw grup w usłudze Azure AD PowerShell.
   
-  ```
-  $Setting["PrefixSuffixNamingRequirement"] =""
-  ```
+   ```
+   $Setting["PrefixSuffixNamingRequirement"] =""
+   ```
   
 2. Usuń niestandardowe słowa zablokowane. 
   
-  ```
-  $Setting["CustomBlockedWordsList"]=""
-  ```
+   ```
+   $Setting["CustomBlockedWordsList"]=""
+   ```
   
 3. Zapisz ustawienia.
   
-  ```
-  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ```
+   ```
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   ```
 
 
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>Zasady nazewnictwa napotka w aplikacjach usługi Office 365
@@ -218,7 +218,7 @@ StaffHub  | Zespoły usługi StaffHub nie wykonuj zasady nazewnictwa, ale nie po
 Exchange PowerShell | Polecenia cmdlet programu PowerShell programu Exchange są zgodne z zasadami nazewnictwa. Użytkownicy otrzymają odpowiedniego komunikatu o błędzie z sugerowanych prefiksów i sufiksów, a dla zablokowanych podasz niestandardowe wyrazy, jeśli nie stosują zasady nazewnictwa nazwę grupy i alias grupy (mailNickname).
 Polecenia cmdlet środowiska PowerShell usługi Active Directory systemu Azure | Polecenia cmdlet środowiska PowerShell usługi Active Directory systemu Azure są zgodne z zasady nazewnictwa. Użytkownicy otrzymają odpowiedniego komunikatu o błędzie z sugerowanych prefiksów i sufiksów, a dla zablokowanych podasz niestandardowe wyrazy, jeśli ich nie są zgodne z konwencją nazw grup i alias grupy.
 Centrum administracyjne Exchange | Centrum administracyjne Exchange jest zgodna z zasady nazewnictwa. Użytkownicy otrzymają odpowiedniego komunikatu o błędzie z sugerowanych prefiksów i sufiksów, a dla zablokowanych podasz niestandardowe wyrazy, jeśli ich nie są zgodne z konwencji nazewnictwa, nazwę grupy i alias grupy.
-Centrum administracyjne usługi Office 365 | Centrum administracyjne usługi Office 365 jest zgodna z zasady nazewnictwa. Gdy użytkownik tworzy lub zmiany nazwy grupy, zasady nazewnictwa jest automatycznie stosowany i użytkownicy otrzymają odpowiednie błędy po użytkownik podał podasz niestandardowe wyrazy zablokowane. W Centrum administracyjnym usługi Office 365 jeszcze nie wyświetla podgląd zasady nazewnictwa i nie zwraca błędy niestandardowe zablokowanego wyrazu, gdy użytkownik wprowadzi nazwę grupy.
+Centrum administracyjne usługi Microsoft 365 | Centrum administracyjne usługi Microsoft 365 jest zgodna z zasady nazewnictwa. Gdy użytkownik tworzy lub zmiany nazwy grupy, zasady nazewnictwa jest automatycznie stosowany i użytkownicy otrzymają odpowiednie błędy po użytkownik podał podasz niestandardowe wyrazy zablokowane. Centrum administracyjne usługi Microsoft 365 jeszcze nie wyświetla podgląd zasady nazewnictwa i nie zwraca błędy niestandardowe zablokowanego wyrazu, gdy użytkownik wprowadzi nazwę grupy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Te artykuły zawierają dodatkowe informacje na temat grup usługi Azure AD.

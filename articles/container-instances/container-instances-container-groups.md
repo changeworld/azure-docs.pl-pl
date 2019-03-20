@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 03/20/2018
 ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 094dc796541aaccbdfa1efc93e833bc6c5a7d1f1
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.custom: mvc
+ms.openlocfilehash: 8724bd7e13b0d8607ad5a6814b27c8c06681f331
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729551"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202014"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w usłudze Azure Container Instances
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 139fe946b013b1c86404bdef6ed06314af349c89
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343140"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202711"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# funkcje zdefiniowane przez użytkownika przy użyciu Apache Hive i Apache Pig, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
 
@@ -172,13 +172,13 @@ Aby uzyskać więcej informacji na temat wersji programu .NET framework i Mono d
 
 6. Aby przekazać pliki .exe, użyj jednej z następujących metod:
 
-    * Jeśli przy użyciu __konta usługi Azure Storage__, kliknij ikonę przekazywania, a następnie przejdź do **bin\debug** folder **HiveCSharp** projektu. Na koniec wybierz pozycję **HiveCSharp.exe** plik i kliknij przycisk **Ok**.
+   * Jeśli przy użyciu __konta usługi Azure Storage__, kliknij ikonę przekazywania, a następnie przejdź do **bin\debug** folder **HiveCSharp** projektu. Na koniec wybierz pozycję **HiveCSharp.exe** plik i kliknij przycisk **Ok**.
 
-        ![Przekaż ikonę](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![Przekaż ikonę](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Jeśli przy użyciu __usługi Azure Data Lake Storage__, kliknij prawym przyciskiem myszy pusty obszar na liście plików, a następnie wybierz __przekazywanie__. Na koniec wybierz pozycję **HiveCSharp.exe** plik i kliknij przycisk **Otwórz**.
+   * Jeśli przy użyciu __usługi Azure Data Lake Storage__, kliknij prawym przyciskiem myszy pusty obszar na liście plików, a następnie wybierz __przekazywanie__. Na koniec wybierz pozycję **HiveCSharp.exe** plik i kliknij przycisk **Otwórz**.
 
-    Gdy __HiveCSharp.exe__ przekazywanie zostało zakończone, powtórz proces przekazywania __PigUDF.exe__ pliku.
+     Gdy __HiveCSharp.exe__ przekazywanie zostało zakończone, powtórz proces przekazywania __PigUDF.exe__ pliku.
 
 ## <a name="run-an-apache-hive-query"></a>Uruchom zapytanie, Apache Hive
 
@@ -216,11 +216,7 @@ Aby uzyskać więcej informacji na temat wersji programu .NET framework i Mono d
 
 ## <a name="run-an-apache-pig-job"></a>Uruchom zadanie Apache Pig
 
-1. Nawiązać połączenia z klastrem HDInsight, użyj jednej z następujących metod:
-
-    * Jeśli używasz __opartych na systemie Linux__ HDInsight klastra, za pomocą protokołu SSH. Na przykład `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Aby uzyskać więcej informacji, zobacz [withHDInsight używanie protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)
-    
-    * Jeśli używasz __oparte na Windows__ klastra HDInsight [łączenie z klastrem przy użyciu pulpitu zdalnego](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+1. Za pomocą protokołu SSH Połącz się z klastrem usługi HDInsight. Na przykład `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Aby uzyskać więcej informacji, zobacz [withHDInsight używanie protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 2. Użyj jednej polecenie można uruchomić z wiersza polecenia Pig:
 

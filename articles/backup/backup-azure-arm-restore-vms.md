@@ -7,18 +7,23 @@ manager: vijayts
 keywords: Przywracanie kopii zapasowych. jak przywrócić; punkt odzyskiwania;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 03/19/2019
 ms.author: geg
-ms.openlocfilehash: 0140cbc440e6098290a81f7ae61aa99e36da7d80
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 44b8d57af83f53c73868a84104da7a7f72cb1e81
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312039"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202592"
 ---
 # <a name="restore-azure-vms"></a>Przywracanie maszyn wirtualnych platformy Azure
 
 W tym artykule opisano sposób przywracania danych maszyny Wirtualnej platformy Azure z punktów odzyskiwania przechowywanych na [kopia zapasowa Azure](backup-overview.md) Magazyny usługi Recovery Services.
+
+Aby przywrócić Maszynę wirtualną, upewnij się, masz wymagane [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) uprawnień.
+
+> [!NOTE]
+> Jeśli nie masz [RABAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) uprawnienia, które można wykonywać [przywracanie dysku](backup-azure-arm-restore-vms.md#create-new-restore-disks) i utworzyć maszynę Wirtualną przy użyciu [wdrażania szablonu](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkcji.
 
 ### <a name="restore-options"></a>Opcje przywracania
 
@@ -101,11 +106,11 @@ Po przywróceniu dysku Użyj szablonu, który został wygenerowany w ramach oper
     - [Dowiedz się więcej](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) informacji o wdrażaniu zasobów z szablonu niestandardowego.
     - [Dowiedz się więcej](../azure-resource-manager/resource-group-authoring-templates.md) o tworzeniu szablonów.
 
-  ![Ładowanie szablonu wdrożenia](./media/backup-azure-arm-restore-vms/edit-template1.png)
+   ![Ładowanie szablonu wdrożenia](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
 4. Wprowadź własne wartości dla maszyny Wirtualnej, Zaakceptuj **warunków i postanowień** i kliknij przycisk **zakupu**.
 
-  ![Przesyłanie szablonu wdrażania](./media/backup-azure-arm-restore-vms/submitting-template1.png)
+   ![Przesyłanie szablonu wdrażania](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
 
 ## <a name="replace-existing-disks"></a>Zastąp istniejące dyski

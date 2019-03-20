@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 3541a5b33aa0bb98d9381b51caefc63b6aa677ad
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377552"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850908"
 ---
 # <a name="handling-event-grid-events"></a>Obsługa zdarzeń usługi Event Grid
 
@@ -24,26 +24,9 @@ Zdarzenia usługi Media Services umożliwiają aplikacjom reagować na różne z
 
 Dostępność dla zdarzeń usługi Media Services jest powiązany z usługi Event Grid [dostępności](../../event-grid/overview.md) i będą dostępne w innych regionach, jak usługa Event Grid.  
 
-## <a name="available-media-services-events"></a>Dostępne zdarzeń usługi Media Services
+## <a name="media-services-events-and-schemas"></a>Schematy i zdarzeń usługi Media Services
 
-Korzysta z usługi Event grid [subskrypcji zdarzeń](../../event-grid/concepts.md#event-subscriptions) aby komunikaty o zdarzeniach trasy dla subskrybentów.  Obecnie subskrypcje zdarzeń usługi Media Services mogą obejmować następujące zdarzenia:  
-
-|Nazwa zdarzenia|Opis|
-|----------|-----------|
-| Microsoft.Media.JobStateChange| Wywoływane, gdy stan zmiany zadania. |
-| Microsoft.Media.LiveEventConnectionRejected | Kodera połączenie jest odrzucane. |
-| Microsoft.Media.LiveEventEncoderConnected | Koder ustanawia połączenie z wydarzenia na żywo. |
-| Microsoft.Media.LiveEventEncoderDisconnected | Odłącza kodera. |
-| Microsoft.Media.LiveEventIncomingDataChunkDropped | Serwer multimediów fragmentu danych spada, ponieważ jest za późno lub ma nakładające się sygnatura czasowa (sygnatura czasowa nowych fragmentów danych jest mniejsza niż czas zakończenia poprzedniego fragmentu danych). |
-| Microsoft.Media.LiveEventIncomingStreamReceived | Media serwer odbiera pierwszy fragment danych dla każdej ścieżki, w usłudze stream ani połączenia. |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Serwer multimediów wykrywa audio i wideo strumieni nie są zsynchronizowane. Użyj jako ostrzeżenie, ponieważ środowisko użytkownika nie może mieć wpływ. |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Serwer multimediów wykrywa, że jedną z dwóch strumieni wideo pochodzących z kodera nie są zsynchronizowane. Użyj jako ostrzeżenie, ponieważ środowisko użytkownika nie może mieć wpływ. |
-| Microsoft.Media.LiveEventIngestHeartbeat | Publikowany co 20 sekund dla każdej ścieżki, w przypadku zdarzenia na żywo jest uruchomiona. Zapewnia obsługę podsumowanie kondycji. |
-| Microsoft.Media.LiveEventTrackDiscontinuityDetected | Serwer multimediów wykrywa przerwa w ścieżce przychodzącej. |
-
-## <a name="event-schema"></a>Schemat zdarzenia
-
-Zdarzenia usługi Media Services zawierają wszystkie informacje potrzebne do reagowania na zmiany w danych.  Zdarzenia usługi Media Services można zidentyfikować, ponieważ właściwość Typ zdarzenia, który rozpoczyna się od "Microsoft.Media.".
+Korzysta z usługi Event grid [subskrypcji zdarzeń](../../event-grid/concepts.md#event-subscriptions) aby komunikaty o zdarzeniach trasy dla subskrybentów. Zdarzenia usługi Media Services zawierają wszystkie informacje potrzebne do reagowania na zmiany w danych. Zdarzenia usługi Media Services można zidentyfikować, ponieważ właściwość Typ zdarzenia, który rozpoczyna się od "Microsoft.Media.".
 
 Aby uzyskać więcej informacji, zobacz [schematów zdarzeń usługi Media Services](media-services-event-schemas.md).
 

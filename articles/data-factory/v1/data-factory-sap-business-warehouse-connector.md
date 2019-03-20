@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9e972ee64d60f0fc9703e766c3ab45c3057c32a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019881"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893258"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Przenoszenie danych z rozwiązania SAP Business Warehouse przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,13 +64,13 @@ Poniższa tabela zawiera opis specyficzne dla usługi SAP Business Warehouse (BW
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | ciąg | Yes
+serwer | Nazwa serwera, na którym znajduje się wystąpienie systemu SAP BW. | string | Yes
 systemNumber | Numer systemu systemu SAP BW. | Liczba dziesiętna dwucyfrowy reprezentowane jako ciąg. | Yes
 clientId | Identyfikator klienta klienta w SAP W systemie. | Liczba dziesiętna trzycyfrowy reprezentowane jako ciąg. | Yes
-nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Yes
-hasło | Hasło użytkownika. | ciąg | Yes
-gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem programu SAP BW. | ciąg | Yes
-encryptedCredential | Ciąg zaszyfrowane poświadczenia. | ciąg | Nie
+nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Yes
+hasło | Hasło użytkownika. | string | Yes
+gatewayName | Nazwa bramy, która powinna być używana w usłudze Data Factory, połączyć się z lokalnym wystąpieniem programu SAP BW. | string | Yes
+encryptedCredential | Ciąg zaszyfrowane poświadczenia. | string | Nie
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów na zestaw danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table itp.).
@@ -289,30 +289,30 @@ Jak wspomniano w [działania przenoszenia danych](data-factory-data-movement-act
 
 Podczas przenoszenia danych z systemu SAP BW, następujące mapowania są używane do typów .NET z typów programu SAP BW.
 
-Typ danych w słowniku ABAP | Typ danych .net
+Typ danych w słowniku ABAP | Typ danych .NET
 -------------------------------- | --------------
 ACCP |  Int
-CHAR | Ciąg
-CLNT | Ciąg
-CURR | Dziesiętny
-CUKY | Ciąg
-GRU | Dziesiętny
-FLTP | Podwójne
-INT1 | Bajtów
+CHAR | String
+CLNT | String
+CURR | Decimal
+CUKY | String
+DEC | Decimal
+FLTP | Double
+INT1 | Byte
 INT2 | Int16
 INT4 | Int
-JĘZYK | Ciąg
-LCHR | Ciąg
+JĘZYK | String
+LCHR | String
 LRAW | Byte[]
 PREC | Int16
-QUAN | Dziesiętny
-NIEPRZETWORZONE | Byte[]
+QUAN | Decimal
+RAW | Byte[]
 RAWSTRING | Byte[]
-CIĄG | Ciąg
-JEDNOSTKA | Ciąg
-DATS | Ciąg
-NUMC | Ciąg
-TIMS | Ciąg
+CIĄG | String
+JEDNOSTKA | String
+DATS | String
+NUMC | String
+TIMS | String
 
 > [!NOTE]
 > Aby zamapować kolumny z zestawu danych źródłowych do kolumn z zestawu danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

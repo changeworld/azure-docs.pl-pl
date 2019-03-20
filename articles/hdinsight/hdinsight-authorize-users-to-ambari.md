@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: cf001d86356f4dd5fd3735803f0e329aa1e0940d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725273"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224026"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Apache Ambari
 
 [Pakiet zabezpieczeń przedsiębiorstwa (ESP) włączone klastry HDInsight](./domain-joined/apache-domain-joined-introduction.md) zapewniają możliwości przeznaczonych dla przedsiębiorstw, w tym uwierzytelniania opartego na usłudze Azure Active Directory. Możesz [Synchronizowanie nowych użytkowników](hdinsight-sync-aad-users-to-cluster.md) dodane do grup usługi Azure AD, które zostały dołączone do dostępu do klastra, pozwalając określonych wykonywać niektórych akcji. Praca z użytkowników, grup i uprawnień w [Apache Ambari](https://ambari.apache.org/) jest obsługiwana w przypadku klastrów HDInsight ESP i klastry HDInsight standard.
 
-Użytkownicy usługi Active Directory mogą logować się do węzłów klastra przy użyciu swoich poświadczeń domeny. Można też swoich poświadczeń domeny do uwierzytelniania interakcje klastra za pomocą innych zatwierdzonych punktów końcowych, takich jak [Hue](https://gethue.com/), widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST.
+Użytkownicy usługi Active Directory zalogować się do węzłów klastra, przy użyciu swoich poświadczeń domeny. Można też swoich poświadczeń domeny do uwierzytelniania interakcje klastra za pomocą innych zatwierdzonych punktów końcowych, takich jak [Hue](https://gethue.com/), widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST.
 
 > [!WARNING]  
 > Nie zmieniaj hasła strażnika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartych na systemie Linux. Zmienianie hasła przerywa możliwość użyj akcji skryptu, lub wykonywać operacje skalowania na potrzeby klastra.
@@ -51,24 +51,24 @@ Ambari, który jest dostarczany za pomocą wystąpienia widoku dla [Apache Hive]
 
 **Udziel uprawnienia do tych grup** ![udzielić uprawnień do tych grup](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
 
-4. Aby dodać użytkownika, wybierz pozycję **Dodaj użytkownika** przycisku.
+1. Aby dodać użytkownika, wybierz pozycję **Dodaj użytkownika** przycisku.
 
-    * Wpisz nazwę użytkownika i zostanie wyświetlony na liście rozwijanej wcześniej zdefiniowanych nazw.
+   * Wpisz nazwę użytkownika i zostanie wyświetlony na liście rozwijanej wcześniej zdefiniowanych nazw.
 
-    ![Uzupełnić użytkownika](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
+     ![Uzupełnić użytkownika](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
 
-    * Wybierz lub Zakończ, wpisując nazwę użytkownika. Aby dodać tej nazwy użytkownika jako nowego użytkownika, wybierz **New** przycisku.
+   * Wybierz lub Zakończ, wpisując nazwę użytkownika. Aby dodać tej nazwy użytkownika jako nowego użytkownika, wybierz **New** przycisku.
 
-    * Aby zapisać zmiany, wybierz pozycję **niebieskie pole wyboru**.
+   * Aby zapisać zmiany, wybierz pozycję **niebieskie pole wyboru**.
 
-    ![Użytkownik wprowadził](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
+     ![Użytkownik wprowadził](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
 
-5. Aby dodać grupę, wybierz pozycję **Dodaj grupę** przycisku.
+1. Aby dodać grupę, wybierz pozycję **Dodaj grupę** przycisku.
 
-    * Zacznij wpisywać nazwę grupy. Proces wybranie istniejącej nazwy grupy lub dodawania nowej grupy, jest taka sama, jak w przypadku dodawania użytkowników.
-    * Aby zapisać zmiany, wybierz pozycję **niebieskie pole wyboru**.
+   * Zacznij wpisywać nazwę grupy. Proces wybranie istniejącej nazwy grupy lub dodawania nowej grupy, jest taka sama, jak w przypadku dodawania użytkowników.
+   * Aby zapisać zmiany, wybierz pozycję **niebieskie pole wyboru**.
 
-    ![Wprowadzono grupę](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
+     ![Wprowadzono grupę](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
 
 Dodawanie użytkowników bezpośrednio do widoku jest przydatne w przypadku, gdy chcesz przypisać uprawnienia dla użytkownika, aby użyć tego widoku, ale nie chcesz, aby być członkiem grupy, która ma dodatkowe uprawnienia. Aby zmniejszyć ilość czynności administracyjnych, może być prostsze przypisać uprawnienia do grup.
 

@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633746"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085154"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrowanie usługi Azure Time Series Insights za pomocą zdalnego monitorowania
 
@@ -45,7 +45,7 @@ Utwórz grupę odbiorców dedykowanej w usłudze IoT Hub ma być używany do prz
 az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsights --resource-group ContosoRM
 ```
 
-## <a name="deploy-time-series-insights"></a>Wdrażanie usługi Time Series Insights
+## <a name="deploy-time-series-insights"></a>Deploy Time Series Insights
 
 Następnie Wdróż usługi Time Series Insights jako dodatkowych zasobów w rozwiązaniu monitorowania zdalnego i podłącz go do usługi IoT hub.
 
@@ -66,7 +66,7 @@ Następnie Wdróż usługi Time Series Insights jako dodatkowych zasobów w rozw
     | SKU |**S1** |
     | Pojemność | **1** |
 
-    ![Tworzenie usługi Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
+    ![Create Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
 1. Kliknij pozycję **Utwórz**. Może potrwać chwilę dla środowiska, które ma zostać utworzony.
 
@@ -88,15 +88,16 @@ Utwórz nowe źródło zdarzeń, aby nawiązać połączenie z Centrum IoT hub. 
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwy źródła zdarzeń | Poniższy zrzut ekranu używa nazwy **contosorm-iot-hub**. Po wykonaniu tego kroku, należy użyć swoją własną unikatową nazwę. |
+    | Nazwa źródła zdarzenia | Poniższy zrzut ekranu używa nazwy **contosorm-iot-hub**. Po wykonaniu tego kroku, należy użyć swoją własną unikatową nazwę. |
     | Element źródłowy | **IoT Hub** |
     | Opcja importu | **Użyj usługi IoT Hub z dostępnych subskrypcji** |
     | Identyfikator subskrypcji | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
-    | Nazwa centrum iot | **contosorma57a6**. Użyj nazwy Centrum IoT hub z rozwiązania do monitorowania zdalnego. |
-    | Nazwa zasad Centrum iot | **iothubowner** upewnij się, zasady, stosowane są zasady właściciela. |
-    | Klucz zasad Centrum iot | To pole jest wypełniane automatycznie. |
-    | Grupa konsumentów Centrum iot | **timeseriesinsights** |
-    | Format serializacji zdarzeń | **JSON**     | Nazwa właściwości sygnatury czasowej | Pozostaw puste |
+    | Nazwa centrum IoT | **contosorma57a6**. Użyj nazwy Centrum IoT hub z rozwiązania do monitorowania zdalnego. |
+    | Nazwa zasad centrum IoT | **iothubowner** upewnij się, zasady, stosowane są zasady właściciela. |
+    | Klucz zasad centrum IoT | To pole jest wypełniane automatycznie. |
+    | Grupa odbiorców centrum IoT | **timeseriesinsights** |
+    | Format serializacji zdarzeń | **JSON**     | 
+    | Nazwa właściwości sygnatury czasowej | Pozostaw puste |
 
     ![Tworzenie źródła zdarzeń](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 

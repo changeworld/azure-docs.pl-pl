@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: 74cd56f5a8bfe8717927c13e6bf30eb27b43fbc9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b18ae44a140d77c24d8b5741bc09740767d1344f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558536"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075956"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Tworzenie nowego środowiska usługi Time Series Insights w witrynie Azure Portal
 W tym artykule opisano sposób tworzenia nowego środowiska usługi Time Series Insights przy użyciu witryny Azure portal.
@@ -26,15 +26,15 @@ Usługa Time Series Insights można rozpocząć wizualizowanie i wykonywania zap
 ## <a name="steps-to-create-the-environment"></a>Procedura tworzenia środowiska
 Wykonaj następujące kroki, aby utworzyć środowisko:
 
-1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2.  Wybierz **+ nowy** przycisku.
+2. Wybierz **+ nowy** przycisku.
 
-3.  Wybierz **Internet of Things** kategorii, a następnie wybierz **usługi Time Series Insights**.
+3. Wybierz **Internet of Things** kategorii, a następnie wybierz **usługi Time Series Insights**.
 
    ![Tworzenie środowiska usługi Time Series Insights](media/time-series-insights-get-started/1-new-tsi.png)
 
-4.  Na **usługi Time Series Insights** wybierz opcję **Utwórz**.
+4. Na **usługi Time Series Insights** wybierz opcję **Utwórz**.
 
 5. Wypełnij wymagane parametry. W poniższej tabeli opisano każdy parametr:
    

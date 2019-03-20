@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 3b27fe0bec4ec23739e3cff02d6aed667f1d3e1d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650107"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226831"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrowanie klastra Apache HBase do nowszej wersji
 
@@ -199,15 +199,21 @@ Poniższy scenariusz ma dla uaktualnienie oprogramowania HDInsight 3.4 do 3.6 (w
 
     ![W Ambari Zmień nazwę kontenera](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. Zapisz zmiany.
-9. Uruchom ponownie wszystkie wymagane usługi, wskazane przez Ambari.
-10. Punkt aplikacji do nowego klastra.
+8. **Jeśli nie używasz klastrów HBase za pomocą funkcji rozszerzone zapisuje, Pomiń ten krok. Potrzebny jest tylko w przypadku klastrów HBase za pomocą funkcji rozszerzone zapisuje.**
+   
+   Zmień ścieżkę hbase.rootdir, aby wskazać kontener oryginalnego klastra.
+
+    ![W Ambari Zmień nazwę kontenera rootdir bazy danych hbase](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+9. Zapisz zmiany.
+10. Uruchom ponownie wszystkie wymagane usługi, wskazane przez Ambari.
+11. Punkt aplikacji do nowego klastra.
 
     > [!NOTE]  
     > Statyczny serwera DNS dla zmian aplikacji podczas uaktualniania. Zamiast kodować na tym DNS, można skonfigurować rekord CNAME w ustawieniach DNS nazwy domeny, które wskazuje nazwę klastra. Innym rozwiązaniem jest przy użyciu pliku konfiguracji aplikacji, którą można zaktualizować bez ponownego wdrażania.
 
-11. Rozpocznij wprowadzanie, aby zobaczyć, jeśli to wszystko działa zgodnie z oczekiwaniami.
-12. Jeśli nowy klaster jest zadowalające, należy usunąć oryginalnego klastra.
+12. Rozpocznij wprowadzanie, aby zobaczyć, jeśli to wszystko działa zgodnie z oczekiwaniami.
+13. Jeśli nowy klaster jest zadowalające, należy usunąć oryginalnego klastra.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

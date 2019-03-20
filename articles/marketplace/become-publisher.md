@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2970ef58e177d10eac80d46825f3fb985b98af61
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734969"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842461"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Zostań chmury wydawcy w witrynie Marketplace
 
@@ -49,14 +49,14 @@ Po zarejestrowaniu, Zapisz identyfikator Microsoft Partner Network dla Twojej or
 
 ## <a name="2-create-a-microsoft-account"></a>2. Utwórz konto Microsoft  
 | 15 min |  
-Konto Microsoft, np. *@outlook.com lub @live.com*, umożliwia dostęp do wielu urządzeń firmy Microsoft i usług. Jest ona wymagana dla portalu Azure Marketplace transact oferty i zaleca się jej użycie na wszystkich wydawców w chmurze. Aby uzyskać więcej informacji na temat korzyści i zastosowania usługi konta Microsoft [tę stronę](https://account.microsoft.com/account/). Czy użyjesz osobistego konta Microsoft na dostęp do portalu Cloud Partner, oferuje platforma publikacji, którego używasz do tworzenia i zarządzania nimi w portalu marketplace. 
+Konto Microsoft, np.  *\@outlook.com lub \@live.com*, umożliwia dostęp do wielu urządzeń firmy Microsoft i usług. Jest ona wymagana dla portalu Azure Marketplace transact oferty i zaleca się jej użycie na wszystkich wydawców w chmurze. Aby uzyskać więcej informacji na temat korzyści i zastosowania usługi konta Microsoft [tę stronę](https://account.microsoft.com/account/). Czy użyjesz osobistego konta Microsoft na dostęp do portalu Cloud Partner, oferuje platforma publikacji, którego używasz do tworzenia i zarządzania nimi w portalu marketplace. 
 
 [! [Ważne] Uwaga, konta Microsoft skojarzonego z służbowego adresu e-mail nie zezwoli na dostęp do portalu.
 
->[!Note]
->Jeśli masz już konto Microsoft, zapoznaj się z [wytyczne dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania kontem marketplace](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) ustalenie, jeśli może służyć do publikowania w portalu marketplace. 
-
->Użytkowników za pomocą usługi Azure Active Directory federacyjnego konta firmowego powinni przeczytać [w tym artykule](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) przed podjęciem próby utworzenia lub używania istniejącego Account firmy Microsoft.
+> [!Note]
+> Jeśli masz już konto Microsoft, zapoznaj się z [wytyczne dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania kontem marketplace](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) ustalenie, jeśli może służyć do publikowania w portalu marketplace. 
+> 
+> Użytkowników za pomocą usługi Azure Active Directory federacyjnego konta firmowego powinni przeczytać [w tym artykule](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) przed podjęciem próby utworzenia lub używania istniejącego Account firmy Microsoft.
 
 *   Aby uzyskać pomoc przy tworzeniu i zarządzaniu nim swojego konta Microsoft, odwiedź [stron pomocy technicznej pomocy konta Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 

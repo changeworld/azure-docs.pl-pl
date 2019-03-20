@@ -11,17 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: bd3adaee275dbb8a705c7b0a35335385d1026eed
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337944"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008819"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Śledzenie eksperymentów i szkolenia metryk w usłudze Azure Machine Learning
 
-W usłudze Azure Machine Learning można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. W tym artykule poznasz różne sposoby dodawania rejestrowania skrypt szkolenia, porady przesyłanie eksperymentu za pomocą **start_logging** i **ScriptRunConfig**, jak sprawdzić postęp uruchomione zadania oraz jak wyświetlać wyniki przebiegu. 
-
+W usłudze Azure Machine Learning można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. W tym artykule Dowiedz się, jak dodawanie rejestrowania do skryptu szkolenia, przesłać przebieg eksperymentu, monitorować działanie i wyświetlić wyniki przebiegu.
 
 ## <a name="list-of-training-metrics"></a>Listy metryk szkolenia 
 
@@ -31,7 +30,7 @@ Następujące metryki można dodać do uruchomienia podczas szkolenia eksperymen
 |----|:----|:----|
 |Wartości skalarne |Funkcja:<br>`run.log(name, value, description='')`<br><br>Przykład:<br>Run.log ("dokładności" 0,95) |Dziennik w liczbowymi lub wartość ciągu do uruchomienia o podanej nazwie. Rejestrowanie metryki Uruchom powoduje, że w przypadku tej metryki, które mają być przechowywane w rekordu uruchomienia w eksperymencie.  Można rejestrować metryki tej samej kilka razy w ramach przebiegu, wynik jest traktowane jako wektor tej metryki.|
 |Listy|Funkcja:<br>`run.log_list(name, value, description='')`<br><br>Przykład:<br>Run.log_list ("dokładności" [Update 0.6, 0,7, 0.87]) | Zaloguj się listę wartości przebiegu o podanej nazwie.|
-|Wiersz|Funkcja:<br>"run.log_row (nazwa, opis = None, ** kwargs)<br>Przykład:<br>Run.log_row ("Y za pośrednictwem X", x = 1, y = 0,4) | Za pomocą *log_row* tworzy metryki z wielu kolumn, zgodnie z opisem w kwargs. Każdy parametr o nazwie generuje kolumna z wartością określoną.  *log_row* można lze volat pouze jednou logowanie dowolnego spójnej kolekcji lub wiele razy w pętli, aby wygenerować pełny spis.|
+|Wiersz|Funkcja:<br>`run.log_row(name, description=None, **kwargs)`<br>Przykład:<br>Run.log_row ("Y za pośrednictwem X", x = 1, y = 0,4) | Za pomocą *log_row* tworzy metryki z wielu kolumn, zgodnie z opisem w kwargs. Każdy parametr o nazwie generuje kolumna z wartością określoną.  *log_row* można lze volat pouze jednou logowanie dowolnego spójnej kolekcji lub wiele razy w pętli, aby wygenerować pełny spis.|
 |Tabela|Funkcja:<br>`run.log_table(name, value, description='')`<br><br>Przykład:<br>Run.log_table ("Y za pośrednictwem X", {"x": [1, 2, 3], "y": [Update 0.6, 0,7 0.89]}) | Zaloguj się do uruchomienia o podanej nazwie obiekt słownika. |
 |Obrazy|Funkcja:<br>`run.log_image(name, path=None, plot=None)`<br><br>Przykład:<br>Run.log_image ("ROC", czas ładowania strony) | Zaloguj się obraz rekordu uruchomienia. Użyj log_image do logowania się plik obrazu lub matplotlib wykresu do uruchomienia.  Te obrazy będą widoczne i porównywalny rekordu uruchomienia.|
 |Tag przebiegu|Funkcja:<br>`run.tag(key, value=None)`<br><br>Przykład:<br>Run.tag ("wybrane", "yes") | Tag wykonywania za pomocą klucza typu ciąg i wartości opcjonalny ciąg.|
@@ -51,11 +50,11 @@ Przed dodaniem rejestrowania i przesyłanie eksperymentu, należy skonfigurować
 
 1. Załaduj obszar roboczy. Aby dowiedzieć się więcej na temat ustawiania konfiguracji obszaru roboczego, postępuj zgodnie z [Szybki Start](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started).
 
-  ```python
-  from azureml.core import Experiment, Run, Workspace
-  import azureml.core
+   ```python
+   from azureml.core import Experiment, Run, Workspace
+   import azureml.core
   
-  ws = Workspace(workspace_name = <<workspace_name>>,
+   ws = Workspace(workspace_name = <<workspace_name>>,
                subscription_id = <<subscription_id>>,
                resource_group = <<resource_group>>)
    ```
@@ -68,57 +67,57 @@ Poniższy przykład przygotowuje prosty model Ridge skryptu sklearn lokalnie w p
 
 1. Utwórz skrypt szkoleniowy w lokalnego notesu programu Jupyter. 
 
-  ``` python
-  # load diabetes dataset, a well-known small dataset that comes with scikit-learn
-  from sklearn.datasets import load_diabetes
-  from sklearn.linear_model import Ridge
-  from sklearn.metrics import mean_squared_error
-  from sklearn.model_selection import train_test_split
-  from sklearn.externals import joblib
+   ``` python
+   # load diabetes dataset, a well-known small dataset that comes with scikit-learn
+   from sklearn.datasets import load_diabetes
+   from sklearn.linear_model import Ridge
+   from sklearn.metrics import mean_squared_error
+   from sklearn.model_selection import train_test_split
+   from sklearn.externals import joblib
 
-  X, y = load_diabetes(return_X_y = True)
-  columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-  data = {
+   X, y = load_diabetes(return_X_y = True)
+   columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+   data = {
       "train":{"X": X_train, "y": y_train},        
       "test":{"X": X_test, "y": y_test}
-  }
-  reg = Ridge(alpha = 0.03)
-  reg.fit(data['train']['X'], data['train']['y'])
-  preds = reg.predict(data['test']['X'])
-  print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
-  joblib.dump(value = reg, filename = 'model.pkl');
-  ```
+   }
+   reg = Ridge(alpha = 0.03)
+   reg.fit(data['train']['X'], data['train']['y'])
+   preds = reg.predict(data['test']['X'])
+   print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
+   joblib.dump(value = reg, filename = 'model.pkl');
+   ```
 
 2. Dodaj śledzenia eksperymentu przy użyciu zestawu SDK usługi Azure Machine Learning i przekazywanie utrwalonych modelu na uruchomienie rekordu eksperymentu. Poniższy kod dodaje znaczniki, dzienników i przekazuje plik modelu na uruchomienie eksperymentu.
 
-  ```python
-  # Get an experiment object from Azure Machine Learning
-  experiment = Experiment(workspace = ws, name = "train-within-notebook")
+   ```python
+   # Get an experiment object from Azure Machine Learning
+   experiment = Experiment(workspace = ws, name = "train-within-notebook")
   
-  # Create a run object in the experiment
-  run = experiment.start_logging()# Log the algorithm parameter alpha to the run
-  run.log('alpha', 0.03)
+   # Create a run object in the experiment
+   run = experiment.start_logging()# Log the algorithm parameter alpha to the run
+   run.log('alpha', 0.03)
 
-  # Create, fit, and test the scikit-learn Ridge regression model
-  regression_model = Ridge(alpha=0.03)
-  regression_model.fit(data['train']['X'], data['train']['y'])
-  preds = regression_model.predict(data['test']['X'])
+   # Create, fit, and test the scikit-learn Ridge regression model
+   regression_model = Ridge(alpha=0.03)
+   regression_model.fit(data['train']['X'], data['train']['y'])
+   preds = regression_model.predict(data['test']['X'])
 
-  # Output the Mean Squared Error to the notebook and to the run
-  print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
-  run.log('mse', mean_squared_error(data['test']['y'], preds))
+   # Output the Mean Squared Error to the notebook and to the run
+   print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
+   run.log('mse', mean_squared_error(data['test']['y'], preds))
 
-  # Save the model to the outputs directory for capture
-  joblib.dump(value=regression_model, filename='outputs/model.pkl')
+   # Save the model to the outputs directory for capture
+   joblib.dump(value=regression_model, filename='outputs/model.pkl')
 
-  # Take a snapshot of the directory containing this notebook
-  run.take_snapshot('./')
+   # Take a snapshot of the directory containing this notebook
+   run.take_snapshot('./')
 
-  # Complete the run
-  run.complete()
+   # Complete the run
+   run.complete()
   
-  ```
+   ```
 
 Skrypt kończy się ```run.complete()```, która oznacza Uruchom jako ukończone.  Ta funkcja jest zwykle używana w scenariuszach notesu interakcyjnego.
 
@@ -130,33 +129,33 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
 
 1. Utwórz skrypt szkolenia `train.py`.
 
-  ```python
-  # train.py
+   ```python
+   # train.py
 
-  import os
-  from sklearn.datasets import load_diabetes
-  from sklearn.linear_model import Ridge
-  from sklearn.metrics import mean_squared_error
-  from sklearn.model_selection import train_test_split
-  from azureml.core.run import Run
-  from sklearn.externals import joblib
+   import os
+   from sklearn.datasets import load_diabetes
+   from sklearn.linear_model import Ridge
+   from sklearn.metrics import mean_squared_error
+   from sklearn.model_selection import train_test_split
+   from azureml.core.run import Run
+   from sklearn.externals import joblib
 
-  import numpy as np
+   import numpy as np
 
-  #os.makedirs('./outputs', exist_ok = True)
+   #os.makedirs('./outputs', exist_ok = True)
 
-  X, y = load_diabetes(return_X_y = True)
+   X, y = load_diabetes(return_X_y = True)
 
-  run = Run.get_context()
+   run = Run.get_context()
 
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-  data = {"train": {"X": X_train, "y": y_train},
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+   data = {"train": {"X": X_train, "y": y_train},
           "test": {"X": X_test, "y": y_test}}
 
-  # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = mylib.get_alphas()
+   # list of numbers from 0.0 to 1.0 with a 0.05 interval
+   alphas = mylib.get_alphas()
 
-  for alpha in alphas:
+   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
       reg = Ridge(alpha = alpha)
       reg.fit(data["train"]["X"], data["train"]["y"])
@@ -180,43 +179,43 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
 
       print('alpha is {0:.2f}, and mse is {1:0.2f}'.format(alpha, mse))
   
-  ```
+   ```
 
 2. `train.py` Odwołania do skryptu `mylib.py` pozwalający na listę wartości alfa do użycia w modelu ridge.
 
-  ```python
-  # mylib.py
+   ```python
+   # mylib.py
   
-  import numpy as np
+   import numpy as np
 
-  def get_alphas():
+   def get_alphas():
       # list of numbers from 0.0 to 1.0 with a 0.05 interval
       return np.arange(0.0, 1.0, 0.05)
-  ```
+   ```
 
 3. Konfigurowanie środowiska lokalnego z zarządzana przez użytkownika.
 
-  ```python
-  from azureml.core.runconfig import RunConfiguration
+   ```python
+   from azureml.core.runconfig import RunConfiguration
 
-  # Editing a run configuration property on-fly.
-  run_config_user_managed = RunConfiguration()
+   # Editing a run configuration property on-fly.
+   run_config_user_managed = RunConfiguration()
 
-  run_config_user_managed.environment.python.user_managed_dependencies = True
+   run_config_user_managed.environment.python.user_managed_dependencies = True
 
-  # You can choose a specific Python environment by pointing to a Python path 
-  #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
-  ```
+   # You can choose a specific Python environment by pointing to a Python path 
+   #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
+   ```
 
 4. Prześlij ```train.py``` skrypt do uruchomienia w środowisku zarządzane przez użytkownika. Ten folder cały skrypt jest przesyłany w celu szkolenia, w tym ```mylib.py``` pliku.
 
-  ```python
-  from azureml.core import ScriptRunConfig
+   ```python
+   from azureml.core import ScriptRunConfig
   
-  experiment = Experiment(workspace=ws, name="train-on-local")
-  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
-  run = experiment.submit(src)
-  ```
+   experiment = Experiment(workspace=ws, name="train-on-local")
+   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+   run = experiment.submit(src)
+   ```
 
 ## <a name="cancel-a-run"></a>Anuluj przebieg
 Uruchom plik jest przesyłany, możesz to anulować nawet wtedy, gdy odwołanie do obiektu zostało utracone, tak długo, jak znać nazwę eksperymentu i Identyfikator przebiegu. 
@@ -255,12 +254,12 @@ Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obse
 
 1. Wyświetl element widget Jupyter podczas oczekiwania na przebieg zakończyć.
 
-  ```python
-  from azureml.widgets import RunDetails
-  RunDetails(run).show()
-  ```
+   ```python
+   from azureml.widgets import RunDetails
+   RunDetails(run).show()
+   ```
 
-  ![Zrzut ekranu aplikacji Jupyter notebook widżetu](./media/how-to-track-experiments/widgets.PNG)
+   ![Zrzut ekranu aplikacji Jupyter notebook widżetu](./media/how-to-track-experiments/widgets.PNG)
 
 2. **[Automatyczne uczenia maszynowego przebiegi]**  Dostęp do wykresów z poprzedniego uruchomienia. Zastąp `<<experiment_name>>` nazwą odpowiedniej eksperymentu:
 
@@ -274,7 +273,7 @@ Kiedy używasz **ScriptRunConfig** metodę, aby przesłać działa, możesz obse
    RunDetails(run).show()
    ```
 
-  ![Widżet notesu programu Jupyter dla automatycznego Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+   ![Widżet notesu programu Jupyter dla automatycznego Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
 Aby wyświetlić więcej szczegółów, kliknij potok w potoku chcesz eksplorować w tabeli i wykresów będą renderowane w podręcznym w witrynie Azure portal.
@@ -329,17 +328,17 @@ Dowiedz się więcej o usługach:
 
 1. Wybierz **eksperymentów** skrajnie po lewej stronie panelu obszaru roboczego.
 
-  ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
+   ![Zrzut ekranu przedstawiający menu eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
 
 1. Wybierz eksperyment, który Cię interesuje.
 
-  ![Lista eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+   ![Lista eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
 
 1. W tabeli wybierz numer uruchomienia.
 
    ![Uruchomienie eksperymentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
 
-1.  W tabeli wybierz liczbę iteracji dla modelu, który chcesz dalszego zbadania.
+1. W tabeli wybierz liczbę iteracji dla modelu, który chcesz dalszego zbadania.
 
    ![Model doświadczenia](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
 
@@ -449,7 +448,7 @@ Znaczenie dla funkcji daje wynik, który wskazuje opowiadają została każda fu
 
 ## <a name="example-notebooks"></a>Przykład notesów
 Następujące notesów zademonstrowania koncepcji w tym artykule:
-* [How-to-use-azureml/Training/Train-WITHIN-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training\train-within-notebook)
+* [How-to-use-azureml/Training/Train-WITHIN-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [How-to-use-azureml/Training/Train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 

@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0c31d895c453a8272c337b78f01dc8342a4d0765
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 115e2d6b041ecc3f38a2a6438d90777da9660221
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672512"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996477"
 ---
-# <a name="monitor-docker-applications-in-application-insights"></a>Monitorowanie aplikacji Docker w usłudze Application Insights
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Monitorowanie aplikacji Docker w usłudze Application Insights (przestarzałe)
+
+> [!NOTE]
+> To rozwiązanie jest przestarzała. Aby dowiedzieć się więcej o naszych dotychczasowe inwestycje w rozwiązania do monitorowania kontenerów firma Microsoft zaleca, wyewidencjonowywanie [usługi Azure Monitor dla kontenerów](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
 Zdarzenia cyklu życia i wydajności liczników z [Docker](https://www.docker.com/) kontenery mogą być dobrobytu w usłudze Application Insights. Zainstaluj [usługi Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) obrazu w kontenerze w hoście, a wyświetli liczniki wydajności dla hosta, a także inne obrazy.
 
@@ -30,9 +33,6 @@ Po uruchomieniu [obrazu usługi Application Insights](https://hub.docker.com/r/m
 * Cykl życia telemetrii dotyczącej wszystkie kontenery działające na hoście — uruchamianie, zatrzymywanie i tak dalej.
 * Liczniki wydajności dla wszystkich kontenerów. Procesor CPU, pamięci, użycie sieci i więcej.
 * Jeśli użytkownik [zainstalować zestaw Application Insights SDK dla języka Java](../../azure-monitor/app/java-get-started.md) w aplikacji działających w kontenerach, wszystkie dane telemetryczne aplikacji, które będą miały dodatkowych właściwości identyfikowanie kontenera i hostów maszyn. Tak na przykład w przypadku wystąpienia aplikacji działających w więcej niż jednego hosta można łatwo filtrować telemetrii aplikacji przez hosta.
-
-> [!NOTE]
-> To rozwiązanie jest przestarzała. Aby dowiedzieć się więcej o naszych dotychczasowe inwestycje w rozwiązania do monitorowania kontenerów firma Microsoft zaleca, wyewidencjonowywanie [usługi Azure Monitor dla kontenerów](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
 ## <a name="set-up-your-application-insights-resource"></a>Konfigurowanie zasobu usługi Application Insights
 

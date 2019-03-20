@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 2022971d24f7ac8a24986f45031f568a86fc31d9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: b30fa9bb0af8da7b3c72fef7aa2ecd18a8f759e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726367"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862849"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do transliterowania tekstu z użyciem języka Python
 
@@ -32,7 +32,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
-Utwórz nowy projekt języka Python przy użyciu ulubionego środowiska IDE lub edytora. Następnie skopiuj ten fragment kodu do swojego projektu do pliku o nazwie `transliterate-text.py`.
+Tworzenie nowego projektu przy użyciu ulubionego środowiska IDE lub edytora lub nowego folderu z plikiem o nazwie `transliterate-text.py` na pulpicie. Następnie skopiuj następujący fragment kodu do pliku/projektu:
 
 ```python
 # -*- coding: utf-8 -*-
@@ -135,7 +135,7 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 [
     {
         "script": "latn",
-        "text": "konnnichiha"
+        "text": "konnichiwa"
     }
 ]
 ```
@@ -144,12 +144,12 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 
 Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby usunąć ten klucz subskrypcji po zakończeniu pracy z przewodnikiem Szybki start.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla języka Python w usłudze GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 Dowiedz się, jak używać interfejsu API tłumaczenia tekstu w usłudze Translator w następujących celach:
 

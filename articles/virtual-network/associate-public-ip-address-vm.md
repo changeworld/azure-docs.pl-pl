@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: be3e9b8003bc6eb585177b285255658c44c7fc36
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ce573ff8fe61f2e1d4c88963e0f21fc9402776e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808654"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083219"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Skojarz publiczny adres IP do maszyny wirtualnej
 
@@ -74,20 +74,20 @@ Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?toc=
      --public-ip-address myVMPublicIP
    ```
 
-  - Jeśli nie masz istniejącego publicznego adresu IP, użyj [tworzenie sieci az public-ip](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) polecenie, aby go utworzyć. Na przykład następujące polecenie tworzy publiczny adres IP o nazwie *myVMPublicIP* w grupie zasobów o nazwie *myResourceGroup*.
+   - Jeśli nie masz istniejącego publicznego adresu IP, użyj [tworzenie sieci az public-ip](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) polecenie, aby go utworzyć. Na przykład następujące polecenie tworzy publiczny adres IP o nazwie *myVMPublicIP* w grupie zasobów o nazwie *myResourceGroup*.
   
-    ```azurecli-interactive
-    az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
-    ```
+     ```azurecli-interactive
+     az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
+     ```
 
-    > [!NOTE]
-    > Poprzednie polecenie tworzy publiczny adres IP z wartościami domyślnymi dla kilka ustawień, które chcesz dostosować. Aby dowiedzieć się więcej na temat wszystkie ustawienia publicznego adresu IP, zobacz [tworzenie publicznego adresu IP](virtual-network-public-ip-address.md#create-a-public-ip-address). Adres jest przypisywany z puli publicznych adresów IP używane dla każdego regionu platformy Azure. Aby wyświetlić listę pul adresów używanych w poszczególnych regionach, zobacz [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+     > [!NOTE]
+     > Poprzednie polecenie tworzy publiczny adres IP z wartościami domyślnymi dla kilka ustawień, które chcesz dostosować. Aby dowiedzieć się więcej na temat wszystkie ustawienia publicznego adresu IP, zobacz [tworzenie publicznego adresu IP](virtual-network-public-ip-address.md#create-a-public-ip-address). Adres jest przypisywany z puli publicznych adresów IP używane dla każdego regionu platformy Azure. Aby wyświetlić listę pul adresów używanych w poszczególnych regionach, zobacz [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
-  - Jeśli nie znasz nazwę interfejsu sieciowego dołączonego do maszyny Wirtualnej, użyj [az vm nic listy](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) polecenie, aby je wyświetlić. Na przykład następujące polecenie wyświetla listę nazw interfejsów sieciowych dołączonych do maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
+   - Jeśli nie znasz nazwę interfejsu sieciowego dołączonego do maszyny Wirtualnej, użyj [az vm nic listy](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) polecenie, aby je wyświetlić. Na przykład następujące polecenie wyświetla listę nazw interfejsów sieciowych dołączonych do maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
 
-    ```azurecli-interactive
-    az vm nic list --vm-name myVM --resource-group myResourceGroup
-    ```
+     ```azurecli-interactive
+     az vm nic list --vm-name myVM --resource-group myResourceGroup
+     ```
 
      Dane wyjściowe zawiera jeden lub więcej wierszy, które są podobne do poniższego przykładu:
   
@@ -97,11 +97,11 @@ Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?toc=
 
      W poprzednim przykładzie *myVMVMNic* nazywa się interfejs sieciowy.
 
-  - Jeśli nie znasz nazwy konfiguracji adresu IP dla karty sieciowej, użyj [az sieci nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) polecenie, aby je pobrać. Na przykład następujące polecenie wyświetla listę nazw konfiguracji adresów IP dla karty sieciowej o nazwie *myVMVMNic* w grupie zasobów o nazwie *myResourceGroup*:
+   - Jeśli nie znasz nazwy konfiguracji adresu IP dla karty sieciowej, użyj [az sieci nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) polecenie, aby je pobrać. Na przykład następujące polecenie wyświetla listę nazw konfiguracji adresów IP dla karty sieciowej o nazwie *myVMVMNic* w grupie zasobów o nazwie *myResourceGroup*:
 
-    ```azurecli-interactive
-    az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
-    ```
+     ```azurecli-interactive
+     az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
+     ```
 
 3. Wyświetl publiczny adres IP przypisany do konfiguracji adresu IP za pomocą [az vm-— adresy ip](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) polecenia. W poniższym przykładzie pokazano, adresy IP przypisane do istniejącej maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*.
 
@@ -132,35 +132,35 @@ Zainstaluj [PowerShell](/powershell/azure/install-az-ps), lub za pomocą usługi
    $nic | Set-AzNetworkInterface
    ```
 
-  - Jeśli nie masz istniejącego publicznego adresu IP, użyj [New AzPublicIpAddress](/powershell/module/Az.Network/New-AzPublicIpAddress) polecenie, aby go utworzyć. Na przykład następujące polecenie tworzy *dynamiczne* publiczny adres IP o nazwie *myVMPublicIP* w grupie zasobów o nazwie *myResourceGroup* w  *eastus* regionu.
+   - Jeśli nie masz istniejącego publicznego adresu IP, użyj [New AzPublicIpAddress](/powershell/module/Az.Network/New-AzPublicIpAddress) polecenie, aby go utworzyć. Na przykład następujące polecenie tworzy *dynamiczne* publiczny adres IP o nazwie *myVMPublicIP* w grupie zasobów o nazwie *myResourceGroup* w  *eastus* regionu.
   
-    ```azurepowershell-interactive
-    New-AzPublicIpAddress -Name myVMPublicIP -ResourceGroupName myResourceGroup -AllocationMethod Dynamic -Location eastus
-    ```
+     ```azurepowershell-interactive
+     New-AzPublicIpAddress -Name myVMPublicIP -ResourceGroupName myResourceGroup -AllocationMethod Dynamic -Location eastus
+     ```
 
-    > [!NOTE]
-    > Poprzednie polecenie tworzy publiczny adres IP z wartościami domyślnymi dla kilka ustawień, które chcesz dostosować. Aby dowiedzieć się więcej na temat wszystkie ustawienia publicznego adresu IP, zobacz [tworzenie publicznego adresu IP](virtual-network-public-ip-address.md#create-a-public-ip-address). Adres jest przypisywany z puli publicznych adresów IP używane dla każdego regionu platformy Azure. Aby wyświetlić listę pul adresów używanych w poszczególnych regionach, zobacz [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+     > [!NOTE]
+     > Poprzednie polecenie tworzy publiczny adres IP z wartościami domyślnymi dla kilka ustawień, które chcesz dostosować. Aby dowiedzieć się więcej na temat wszystkie ustawienia publicznego adresu IP, zobacz [tworzenie publicznego adresu IP](virtual-network-public-ip-address.md#create-a-public-ip-address). Adres jest przypisywany z puli publicznych adresów IP używane dla każdego regionu platformy Azure. Aby wyświetlić listę pul adresów używanych w poszczególnych regionach, zobacz [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
-  - Jeśli nie znasz nazwę interfejsu sieciowego dołączonego do maszyny Wirtualnej, użyj [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) polecenie, aby je wyświetlić. Na przykład następujące polecenie wyświetla listę nazw interfejsów sieciowych dołączonych do maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
+   - Jeśli nie znasz nazwę interfejsu sieciowego dołączonego do maszyny Wirtualnej, użyj [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) polecenie, aby je wyświetlić. Na przykład następujące polecenie wyświetla listę nazw interfejsów sieciowych dołączonych do maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
 
-    ```azurepowershell-interactive
-    $vm = Get-AzVM -name myVM -ResourceGroupName myResourceGroup
-    $vm.NetworkProfile
-    ```
+     ```azurepowershell-interactive
+     $vm = Get-AzVM -name myVM -ResourceGroupName myResourceGroup
+     $vm.NetworkProfile
+     ```
 
-    Dane wyjściowe zawiera jeden lub więcej wierszy, które są podobne do następującego. W przykładowych danych wyjściowych *myVMVMNic* nazywa się interfejs sieciowy.
+     Dane wyjściowe zawiera jeden lub więcej wierszy, które są podobne do następującego. W przykładowych danych wyjściowych *myVMVMNic* nazywa się interfejs sieciowy.
   
-    ```
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
-    ```
+     ```
+     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
+     ```
 
-  - Jeśli nie znasz nazwę sieci wirtualnej lub podsieci, która znajduje się w interfejsie sieciowym, użyj `Get-AzNetworkInterface` polecenie, aby wyświetlić informacje. Na przykład następujące polecenie pobiera wirtualnego informacji w sieci i podsieci dla interfejsu sieciowego o nazwie *myVMVMNic* w grupie zasobów o nazwie *myResourceGroup*:
+   - Jeśli nie znasz nazwę sieci wirtualnej lub podsieci, która znajduje się w interfejsie sieciowym, użyj `Get-AzNetworkInterface` polecenie, aby wyświetlić informacje. Na przykład następujące polecenie pobiera wirtualnego informacji w sieci i podsieci dla interfejsu sieciowego o nazwie *myVMVMNic* w grupie zasobów o nazwie *myResourceGroup*:
 
-    ```azurepowershell-interactive
-    $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
-    $ipConfigs = $nic.IpConfigurations
-    $ipConfigs.Subnet | Select Id
-    ```
+     ```azurepowershell-interactive
+     $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
+     $ipConfigs = $nic.IpConfigurations
+     $ipConfigs.Subnet | Select Id
+     ```
 
      Dane wyjściowe zawiera jeden lub więcej wierszy, które są podobne do następującego. W przykładowych danych wyjściowych *myVMVNET* jest nazwą sieci wirtualnej i *myVMSubnet* jest nazwą podsieci.
   
@@ -168,18 +168,18 @@ Zainstaluj [PowerShell](/powershell/azure/install-az-ps), lub za pomocą usługi
      "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVMVNET/subnets/myVMSubnet",
      ```
 
-  - Jeśli nie znasz nazwy konfiguracji adresu IP dla karty sieciowej, użyj [Get AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) polecenie, aby je pobrać. Na przykład następujące polecenie wyświetla listę nazw konfiguracji adresów IP dla karty sieciowej o nazwie *myVMVMNic* w grupie zasobów o nazwie *myResourceGroup*:
+   - Jeśli nie znasz nazwy konfiguracji adresu IP dla karty sieciowej, użyj [Get AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) polecenie, aby je pobrać. Na przykład następujące polecenie wyświetla listę nazw konfiguracji adresów IP dla karty sieciowej o nazwie *myVMVMNic* w grupie zasobów o nazwie *myResourceGroup*:
 
-    ```azurepowershell-interactive
-    $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
-    $nic.IPConfigurations
-    ```
+     ```azurepowershell-interactive
+     $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
+     $nic.IPConfigurations
+     ```
 
-    Dane wyjściowe zawiera jeden lub więcej wierszy, które są podobne do następującego. W przykładowych danych wyjściowych *ipconfigmyVM* jest nazwa konfiguracji adresu IP.
+     Dane wyjściowe zawiera jeden lub więcej wierszy, które są podobne do następującego. W przykładowych danych wyjściowych *ipconfigmyVM* jest nazwa konfiguracji adresu IP.
   
-    ```
-    Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
-    ```
+     ```
+     Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
+     ```
 
 3. Wyświetl publiczny adres IP przypisany do konfiguracji adresu IP za pomocą [Get AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) polecenia. W poniższym przykładzie przedstawiono adres przypisany publiczny adres IP o nazwie *myVMPublicIP* w grupie zasobów o nazwie *myResourceGroup*.
 

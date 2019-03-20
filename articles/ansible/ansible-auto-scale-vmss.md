@@ -1,19 +1,19 @@
 ---
 title: Automatyczne skalowanie zestawu skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 description: Dowiedz się, jak za pomocą autoskalowania skalować zestaw skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, scale, autoscale, virtual machine, virtual machine scale set, vmss
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.openlocfilehash: 7721dba37131616122f8a5a902e3c63de5c7157f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 578ad3207f62e74805be056ca11d3bd9b46513da
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157058"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792433"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Automatyczne skalowanie zestawu skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible umożliwia zarządzanie zestawem skalowania maszyn wirtualnych na platformie Azure, tak jak ma to miejsce w przypadku każdego innego zasobu platformy Azure. 
@@ -192,6 +192,6 @@ Ustawienie automatycznego skalowania można wyłączyć, zmieniając wartość `
          state: absent
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Przykładowy podręcznik rozwiązania Ansible dla zestawów skalowania maszyn wirtualnych](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746316"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004951"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Rozwiązywanie problemów z end-to-end, przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -133,9 +133,9 @@ Dziennik klienta zawiera szczegółowe informacje o kliencie przygotowuje żąda
 Biblioteki klienta usługi Storage przechowuje dane dziennika po stronie klienta w lokalizacji określonej w pliku konfiguracji aplikacji (web.config lub app.config).
 
 ### <a name="collect-a-network-trace"></a>Zbierać dane śledzenia sieci
-Message Analyzer umożliwiają zbieranie śledzenia sieci HTTP/HTTPS, gdy Twoja aplikacja kliencka jest uruchomiona. Message Analyzer używa [Fiddler](http://www.telerik.com/fiddler) na zapleczu. Przed zbierane śledzenia sieci zaleca się skonfigurowanie programu Fiddler, aby zarejestrować nieszyfrowanego ruchu HTTPS:
+Message Analyzer umożliwiają zbieranie śledzenia sieci HTTP/HTTPS, gdy Twoja aplikacja kliencka jest uruchomiona. Message Analyzer używa [Fiddler](https://www.telerik.com/fiddler) na zapleczu. Przed zbierane śledzenia sieci zaleca się skonfigurowanie programu Fiddler, aby zarejestrować nieszyfrowanego ruchu HTTPS:
 
-1. Zainstaluj [Fiddler](http://www.telerik.com/download/fiddler).
+1. Zainstaluj [Fiddler](https://www.telerik.com/download/fiddler).
 2. Uruchamianie programu Fiddler.
 3. Wybierz **narzędzia | Opcje programu fiddler**.
 4. W oknie dialogowym Opcje, upewnij się, że **nawiązuje połączenie z protokołu HTTPS przechwytywania** i **odszyfrować ruch HTTPS** są zaznaczone, jak pokazano poniżej.

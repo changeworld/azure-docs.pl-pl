@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 18fceca51ed67f5beca344160a73ae3f3d1a4b62
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491658"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008379"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Modyfikowanie konfiguracji urządzenia StorSimple przy użyciu usługi Menedżer urządzeń StorSimple
 
@@ -71,7 +71,7 @@ Urządzenie musi synchronizować czas w celu uwierzytelniania za pomocą dostawc
 
 Podczas konfigurowania serwera NTP, upewnij się, że sieć zezwala na ruch NTP z centrum danych do Internetu. Podczas określania publiczny serwer NTP, upewnij się, że zapory sieciowe i inne urządzenia zabezpieczeń są skonfigurowane i umożliwiają ruch NTP przesyłane do i z siecią zewnętrzną. Jeśli dwukierunkowy ruch NTP nie jest dozwolona, należy użyć wewnętrzny serwer NTP (kontroler domeny Windows zapewnia tę funkcję). Jeśli urządzenie nie może zsynchronizować czasu, nie można może komunikować się z dostawcą magazynu w chmurze.
 
-Aby wyświetlić listę serwerów NTP publicznych, przejdź do [Serwery NTP w sieci Web](http://support.ntp.org/bin/view/Servers/WebHome).
+Aby wyświetlić listę serwerów NTP publicznych, przejdź do [Serwery NTP w sieci Web](https://support.ntp.org/bin/view/Servers/WebHome).
 
 ### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Co się stanie, jeśli urządzenie jest wdrażana w innej strefie czasowej?
 

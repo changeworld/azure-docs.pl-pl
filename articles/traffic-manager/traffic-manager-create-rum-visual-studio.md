@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 35b4b06a09b8ef7b27e8d105d7f2336668c49f8f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570865"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079721"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Jak wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Traffic Manager za pomocą programu Visual Studio Mobile Center
 
@@ -33,22 +33,22 @@ Aby skonfigurować pomiarów rzeczywistego użytkownika, należy uzyskać klucz 
 Pomiary, pobrać i wysyłane do usługi Traffic Manager z aplikacji klienckiej są identyfikowane przez usługę za pomocą unikatowy ciąg, nazywany kluczem rzeczywistego użytkownika pomiarów (RUM). Możesz uzyskać klucz uruchamianie przy użyciu witryny Azure portal, interfejsu API REST lub przy użyciu programu PowerShell / interfejsu wiersza polecenia, interfejsy.
 
 Aby uzyskać klucz RUM przy użyciu witryny Azure portal, korzystając z następującej procedury:
-   1. Z poziomu przeglądarki Zaloguj się do witryny Azure portal. Jeśli nie masz jeszcze konta, możesz zarejestrować się w bezpłatnej wersji próbnej jednego miesiąca.
-   2. Na pasku wyszukiwania portalu Wyszukaj nazwę profilu usługi Traffic Manager, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w taki sposób, w wynikach, wyświetlana.
-   3. Na stronie profilu usługi Traffic Manager kliknij **pomiarów rzeczywistego użytkownika** w obszarze **ustawienia**.
-   4. Kliknij przycisk **Wygeneruj klucz** można utworzyć nowego klucza (rum).
+1. Z poziomu przeglądarki Zaloguj się do witryny Azure portal. Jeśli nie masz jeszcze konta, możesz zarejestrować się w bezpłatnej wersji próbnej jednego miesiąca.
+2. Na pasku wyszukiwania portalu Wyszukaj nazwę profilu usługi Traffic Manager, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w taki sposób, w wynikach, wyświetlana.
+3. Na stronie profilu usługi Traffic Manager kliknij **pomiarów rzeczywistego użytkownika** w obszarze **ustawienia**.
+4. Kliknij przycisk **Wygeneruj klucz** można utworzyć nowego klucza (rum).
         
    ![Wygeneruj klucz pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    **Rysunek 1: Rzeczywiste pomiary dotyczące prawdziwych użytkowników generowania kluczy**
 
-   5.   Zostanie wyświetlona strona klucza (rum), który jest generowany i wstawki kodu JavaScript, który ma być osadzone w kodzie strony HTML.
+5. Zostanie wyświetlona strona klucza (rum), który jest generowany i wstawki kodu JavaScript, który ma być osadzone w kodzie strony HTML.
  
    ![Kod JavaScript dla klucza pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
    **Rysunek 2: Klucz pomiarów rzeczywistego użytkownika oraz kod JavaScript pomiaru**
  
-   6. Kliknij przycisk **kopiowania** przycisk, aby skopiować klucz (rum). 
+6. Kliknij przycisk **kopiowania** przycisk, aby skopiować klucz (rum). 
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: Instrumentacja aplikacji przy użyciu uruchamianie pakiet zestawu SDK usługi Mobile Center
 

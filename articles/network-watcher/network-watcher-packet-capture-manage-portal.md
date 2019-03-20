@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: jdial
-ms.openlocfilehash: 827a3c2f831c8e8fb459e494dcad58e3661e78bd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 22bdd50f129a48ade97db323f904f7e652a00d39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348161"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889985"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher przy użyciu portalu
 
@@ -41,29 +41,29 @@ Jeśli sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym lub 
 1. W przeglądarce przejdź do [witryny Azure portal](https://portal.azure.com) i wybierz **wszystkich usług**, a następnie wybierz pozycję **usługi Network Watcher** w **sekcji sieci**.
 2. Wybierz **przechwytywania pakietów** w obszarze **narzędzia diagnostyczne sieci**. Wyświetlane są wszystkie istniejące przechwytywania pakietów niezależnie od ich stanu.
 3. Wybierz **Dodaj** utworzyć przechwytywania pakietów. Można wybrać wartości następujących właściwości:
-   - **Subskrypcja**: subskrypcją, w której chcesz utworzyć przechwytywania pakietów dla maszyny wirtualnej.
+   - **Subskrypcja**: Jest maszyny wirtualnej, w której chcesz utworzyć pakiet przechwytywania dla subskrypcji.
    - **Grupa zasobów**: Grupa zasobów maszyny wirtualnej.
-   - **Docelowa maszyna wirtualna**: maszynę wirtualną, która ma zostać utworzona przechwytywania pakietów dla.
-   - **Nazwa przechwycenia pakietu**: nazwę przechwytywania pakietów.
-   - **Konto magazynu lub pliku**: Wybierz **konta magazynu**, **pliku**, lub obu. Jeśli wybierzesz **pliku**, przechwytywania są zapisywane do ścieżki na maszynie wirtualnej.
-   - **Ścieżka do pliku lokalnego**: ścieżkę lokalną na maszynie wirtualnej, w którym zostanie zapisany przechwytywania pakietów (prawidłowe tylko wtedy, gdy *pliku* jest zaznaczona). Ścieżka musi być prawidłową ścieżką. Jeśli używasz maszyny wirtualnej systemu Linux ścieżka musi zaczynać się */var/przechwytuje*.
+   - **Docelowa maszyna wirtualna**: Na maszynie wirtualnej, który chcesz utworzyć przechwytywania pakietów dla.
+   - **Nazwa przechwycenia pakietu**: Nazwa przechwycenia pakietu.
+   - **Konto magazynu lub plik**: Wybierz **konta magazynu**, **pliku**, lub obu. Jeśli wybierzesz **pliku**, przechwytywania są zapisywane do ścieżki na maszynie wirtualnej.
+   - **Ścieżka do pliku lokalnego**: Ścieżka lokalna na maszynie wirtualnej, w którym zostanie zapisany przechwytywania pakietów (prawidłowe tylko wtedy, gdy *pliku* jest zaznaczona). Ścieżka musi być prawidłową ścieżką. Jeśli używasz maszyny wirtualnej systemu Linux ścieżka musi zaczynać się */var/przechwytuje*.
    - **Konta magazynu**: Wybierz istniejące konto magazynu, w przypadku wybrania *konta magazynu*. Ta opcja jest dostępna tylko jeśli wybrano **magazynu**.
    
      > [!NOTE]
      > Konta usługi Premium storage obecnie nie są obsługiwane dla przechowywania pakietów przechwytuje.
 
-   - **Maksymalna liczba bajtów na pakiet**: liczba bajtów z każdego pakietu, które są przechwytywane. Jeśli pole pozostanie puste, wszystkie wartości bajtowe są przechwytywane.
+   - **Maksymalna liczba bajtów na pakiet**: Liczba bajtów z każdego pakietu, które są przechwytywane. Jeśli pole pozostanie puste, wszystkie wartości bajtowe są przechwytywane.
    - **Maksymalna liczba bajtów na sesję**: Całkowita liczba bajtów, które są przechwytywane. Po zatrzymaniu przechwytywania pakietów jest osiągnięta wartość.
-   - **Limit czasu (w sekundach)**: limit czasu, zanim przechwytywania pakietów została zatrzymana. Wartość domyślna to 18,000 sekund.
+   - **Limit czasu (w sekundach)**: Limit czasu, zanim przechwytywania pakietów została zatrzymana. Wartość domyślna to 18,000 sekund.
    - Filtrowanie (opcjonalne). Wybierz **+ Dodaj filtr**
-     - **Protokół**: protokołu, aby filtrować pod kątem przechwytywania pakietów. Dostępne wartości to TCP, UDP i dowolny.
-     - **Lokalny adres IP**: filtry przechwytywania pakietów dla pakietów, których lokalny adres IP odpowiada tej wartości.
-     - **Port lokalny**: filtry przechwytywania pakietów dla pakietów, jeśli port lokalny odpowiada tej wartości.
-     - **Zdalny adres IP**: filtry przechwytywania pakietów dla pakietów, gdzie adres IP zdalnego zgodna z tą wartością.
-     - **Port zdalny**: filtry przechwytywania pakietów dla pakietów, gdy port zdalny zgodna z tą wartością.
+     - **Protokół**: Protokół, aby filtrować pod kątem przechwytywania pakietów. Dostępne wartości to TCP, UDP i dowolny.
+     - **Lokalny adres IP**: Filtruje przechwytywania pakietów dla pakietów, jeśli lokalny adres IP odpowiada tej wartości.
+     - **Port lokalny**: Filtruje przechwytywania pakietów dla pakietów, gdzie port lokalny zgodna z tą wartością.
+     - **Zdalny adres IP**: Filtruje przechwytywania pakietów dla pakietów, gdzie adres IP zdalnego zgodna z tą wartością.
+     - **Port zdalny**: Filtruje przechwytywania pakietów dla pakietów, gdy port zdalny zgodna z tą wartością.
     
-    > [!NOTE]
-    > Wartości adresów port i adres IP może być pojedynczą wartość, zakres wartości lub zakresu, takie jak 80 – 1024 dla portu. Można zdefiniować dowolną liczbę filtrów według potrzeb.
+     > [!NOTE]
+     > Wartości adresów port i adres IP może być pojedynczą wartość, zakres wartości lub zakresu, takie jak 80 – 1024 dla portu. Można zdefiniować dowolną liczbę filtrów według potrzeb.
 
 4. Kliknij przycisk **OK**.
 
@@ -88,7 +88,7 @@ W widoku przechwytywania pakietów, zaznacz **...**  po prawej stronie pakiet pr
 
 ## <a name="download-a-packet-capture"></a>Pobierz przechwytywania pakietów
 
-Po zakończeniu sesji przechwytywania pakietów pliku przechwytywania jest przekazywany do magazynu obiektów blob lub do pliku lokalnego na maszynie wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest zdefiniowany podczas tworzenia przechwytywania pakietów. Wygodne narzędzie dostępu do przechwytywania plików na koncie magazynu jest Microsoft Azure Storage Explorer, które można [Pobierz](http://storageexplorer.com/).
+Po zakończeniu sesji przechwytywania pakietów pliku przechwytywania jest przekazywany do magazynu obiektów blob lub do pliku lokalnego na maszynie wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest zdefiniowany podczas tworzenia przechwytywania pakietów. Wygodne narzędzie dostępu do przechwytywania plików na koncie magazynu jest Microsoft Azure Storage Explorer, które można [Pobierz](https://storageexplorer.com/).
 
 Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane na koncie magazynu w następującej lokalizacji:
 

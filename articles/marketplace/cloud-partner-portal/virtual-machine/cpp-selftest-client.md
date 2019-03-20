@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7afa64ebedb38b4514bbd155bf8f29268d420d18
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: aa46fbce9d11a8fd380a5ee1990c0e7924079a9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745762"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078690"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Tworzenie testu automatycznego klienta w celu wstępnego zweryfikowania obrazów maszyn wirtualnych platformy Azure
 
@@ -297,8 +297,8 @@ Wykonaj następujące kroki, aby zarejestrować aplikację klienta.
     - Wybierz **Zapisz** do generowania klucza.
     - W obszarze **wartość**, skopiuj klucz.
 
-     >[!Important]
-     >Nie można wyświetlić wartość tego klucza, po zamknięciu **klucze** formularza.
+      >[!Important]
+      >Nie można wyświetlić wartość tego klucza, po zamknięciu **klucze** formularza.
 
     ![Wartość klucza formularza](./media/stclient-create-key.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 09f0416e5a03527613e7c353961d81de39c4fe0e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 3bc91b1c20bb4cf4ae755ca47c8d8e0581eb3a1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566843"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995371"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopiowanie danych z bazy danych HBase za pomocą usługi Azure Data Factory 
 
@@ -42,7 +42,7 @@ Następujące właściwości są obsługiwane dla bazy danych HBase, połączone
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **HBase** | Yes |
-| host | Adres IP lub hosta nazwę serwera bazy danych HBase. (tj.)  `[clustername].azurehdinsight.net`, "192.168.222.160·)  | Tak |
+| host | Adres IP lub hosta nazwę serwera bazy danych HBase. (tj.)  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Yes |
 | port | Port TCP używany przez wystąpienie bazy danych HBase do nasłuchiwania połączeń klientów. Wartość domyślna to 9090. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Nie |
 | httpPath | Częściowe adres URL serwera bazy danych HBase, np. `/hbaserest0` przy użyciu klaster HDInsights. | Nie |
 | Element authenticationType | Mechanizm uwierzytelniania na potrzeby łączenia się z serwerem bazy danych HBase. <br/>Dozwolone wartości to: **Anonimowe**, **podstawowe** | Yes |

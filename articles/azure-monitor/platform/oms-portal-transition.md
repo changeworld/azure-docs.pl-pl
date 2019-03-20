@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7e14b5f2c5f84c4f1f21454f733987df6933f0c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214005"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886630"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS na platformę Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "54214005"
 
 Witryna Azure portal jest Centrum dla wszystkich usług platformy Azure i oferuje zaawansowane zarządzanie doświadczenie z możliwości, takich jak pulpity nawigacyjne dla funkcji przypinania zasobów, inteligentne wyszukiwanie, znajdowanie zasobów, tagowania i zarządzanie zasobami. Konsolidacja i usprawnić przepływ pracy zarządzania i monitorowania, czasu zaczęliśmy dodawać możliwości portalu pakietu OMS w witrynie Azure portal. Wszystkie funkcje portalu pakietu OMS są teraz częścią witryny Azure portal. W rzeczywistości niektóre z nowych funkcji, takich jak analiza ruchu są dostępne tylko w witrynie Azure portal. Będzie można wykonać wszystko, co robisz w portalu pakietu OMS przy użyciu witryny Azure portal i nie tylko. Jeśli jeszcze tego nie zrobiono, należy rozpocząć w witrynie Azure portal już dziś!
 
-**Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019** komercyjnej chmury Azure i w chmurze dla administracji USA, portalu pakietu OMS **zostanie oficjalnie wycofana 30 marca 2019 r.** Cieszymy się przenieść do witryny Azure portal i oczekują przejścia, które można łatwo. Ale wiemy, zmiany są trudne i może być szkodliwe. Wyślij wszelkie pytania opinii i zagadnień związanych z **LAUpgradeFeedback@microsoft.com**. W pozostałej części tego artykułu przechodzi przez kluczowych scenariuszy i harmonogram działania dla tego przejścia.
+**Portal pakietu OMS zostanie oficjalnie wycofana 15 stycznia 2019** komercyjnej chmury Azure i w chmurze dla administracji USA, portalu pakietu OMS **zostanie oficjalnie wycofana 30 marca 2019 r.** Cieszymy się przenieść do witryny Azure portal i oczekują przejścia, które można łatwo. Ale wiemy, zmiany są trudne i może być szkodliwe. Wyślij wszelkie pytania opinii i zagadnień związanych z **LAUpgradeFeedback\@microsoft.com**. W pozostałej części tego artykułu przechodzi przez kluczowych scenariuszy i harmonogram działania dla tego przejścia.
 
 ## <a name="what-is-changing"></a>Co ulega zmianie? 
 Następujące zmiany są anonsowanych z amortyzacja portalu pakietu OMS. Każdy z tych zmian jest opisany bardziej szczegółowo w poniższych sekcjach.
@@ -47,7 +47,7 @@ Chociaż większość funkcji będą nadal działać bez żadnych migracji, nale
 - Musisz [migrować swoje uprawnienia użytkownika](#user-access-and-role-migration) do witryny Azure portal.
 - Zobacz [Zmigruj swoje wdrożenia aktualizacji pakietu OMS na platformę Azure](../../automation/migrate-oms-update-deployments.md) szczegółowe informacje na temat przejścia na rozwiązanie do zarządzania aktualizacjami.
 
-Zapoznaj się [często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics](oms-portal-faq.md) informacje na temat, do którego nastąpi przejście do witryny Azure portal. Wyślij wszelkie opinii i pytań ani do zagadnień związanych z **LAUpgradeFeedback@microsoft.com**.
+Zapoznaj się [często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics](oms-portal-faq.md) informacje na temat, do którego nastąpi przejście do witryny Azure portal. Wyślij wszelkie opinii i pytań ani do zagadnień związanych z **LAUpgradeFeedback\@microsoft.com**.
 
 ## <a name="user-access-and-role-migration"></a>Migracja dostępu i roli użytkownika
 Zarządzanie dostępem portalu platformy Azure jest bogatsze i bardziej efektywne niż zarządzanie dostępem w portalu pakietu OMS. Zobacz [możesz zarządzać obszarami roboczymi](manage-access.md#manage-accounts-and-users) informacje na temat zarządzania dostępem w usłudze Log Analytics.
@@ -62,9 +62,9 @@ Już masz odpowiedni dostęp w witrynie Azure portal w tym przypadku nie trzeba 
  
 W obu przypadkach administrator musi ręcznie przypisać możesz odpowiednią rolę z poniższej tabeli. Firma Microsoft zaleca, aby przypisać tę rolę na poziomie zasobów grupy lub subskrypcji.  Bardziej szczegółowe wskazówki, zapewnia się wkrótce dla obu tych przypadkach.
 
-| Uprawnienia w portalu pakietu OMS | Rolę na platformie Azure |
+| Uprawnienia w portalu pakietu OMS | Azure Role |
 |:---|:---|
-| Tylko do odczytu | Czytelnik usługi Log Analytics |
+| ReadOnly | Czytelnik usługi Log Analytics |
 | Współautor | Współautor usługi Log Analytics |
 | Administrator | Właściciel | 
  

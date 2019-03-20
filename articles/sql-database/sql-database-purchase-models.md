@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: c0e7f941f9845ed7531f3adf03fbca9fbeb2787d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0e9001111d6aa48f0dad69a2fb3b2186bfc37ab7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456694"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010514"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
@@ -104,7 +104,7 @@ Dodatkowe jednostki eDTU można dodać do istniejącej puli bez przerwy w dział
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Określenie liczby jednostek Dtu wymaganych przez obciążenie
 
-Jeśli chcesz migrować istniejące lokalne lub obciążenie maszyny wirtualnej programu SQL Server do usługi Azure SQL Database, można użyć [kalkulatora DTU](http://dtucalculator.azurewebsites.net/) obliczyć przybliżoną liczbę potrzebnych jednostek Dtu. W przypadku istniejących obciążeń usługi Azure SQL Database, możesz użyć [szczegółowych informacji o wydajności zapytań](sql-database-query-performance.md) Aby poznać użycie zasobów bazy danych (Dtu), aby uzyskać lepszy wgląd w celu optymalizacji działalności obciążenie. Można również użyć [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) DMV, aby wyświetlić zużycie zasobów w ciągu ostatniej godziny. Alternatywnie widoku wykazu [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) przedstawia użycie zasobów w ciągu ostatnich 14 dni, ale o mniejszej dokładności pięciu minut.
+Jeśli chcesz migrować istniejące lokalne lub obciążenie maszyny wirtualnej programu SQL Server do usługi Azure SQL Database, można użyć [kalkulatora DTU](https://dtucalculator.azurewebsites.net/) obliczyć przybliżoną liczbę potrzebnych jednostek Dtu. W przypadku istniejących obciążeń usługi Azure SQL Database, możesz użyć [szczegółowych informacji o wydajności zapytań](sql-database-query-performance.md) Aby poznać użycie zasobów bazy danych (Dtu), aby uzyskać lepszy wgląd w celu optymalizacji działalności obciążenie. Można również użyć [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) DMV, aby wyświetlić zużycie zasobów w ciągu ostatniej godziny. Alternatywnie widoku wykazu [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) przedstawia użycie zasobów w ciągu ostatnich 14 dni, ale o mniejszej dokładności pięciu minut.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Obciążenia, które korzystają z elastycznej puli zasobów
 

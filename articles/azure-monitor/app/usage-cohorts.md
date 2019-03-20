@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 810ccae08b540c417a0e7dfecb6ad5a8b110cd7b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045881"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108529"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -105,16 +105,16 @@ Poprzednie dwa kohorty zostały zdefiniowane przy użyciu list rozwijanych. Ale 
     ![Kohorta użytkowników puste](./media/usage-cohorts/001.png)
 
     Istnieją trzy sekcje:
-    * Markdown sekcją tekstu, gdzie opisują kohorty bardziej szczegółowo innym członkom swojego zespołu.
+   * Markdown sekcją tekstu, gdzie opisują kohorty bardziej szczegółowo innym członkom swojego zespołu.
 
-    * Sekcji parametrów, gdzie wprowadzisz własnymi parametrami, takich jak **działania** i pozostałe pola listy rozwijanej z poprzednich dwóch przykładach.
+   * Sekcji parametrów, gdzie wprowadzisz własnymi parametrami, takich jak **działania** i pozostałe pola listy rozwijanej z poprzednich dwóch przykładach.
 
-    * Sekcja zapytań, gdzie kohorty możesz definiować za pomocą zapytania usługi analytics.
+   * Sekcja zapytań, gdzie kohorty możesz definiować za pomocą zapytania usługi analytics.
 
-    W sekcji zapytania możesz [napisać zapytanie analizy](/azure/kusto/query). Zapytanie wybiera niektórych zestawu wierszy, które opisują kohorty, które chcesz zdefiniować. W narzędziu kohorty niejawnie dodaje "| Podsumowanie, definiując pole user_Id"klauzula zapytania. Tych danych jest przeglądany poniżej zapytania w tabeli, dzięki czemu możesz upewnić się, że zapytanie zwraca wyniki.
+     W sekcji zapytania możesz [napisać zapytanie analizy](/azure/kusto/query). Zapytanie wybiera niektórych zestawu wierszy, które opisują kohorty, które chcesz zdefiniować. W narzędziu kohorty niejawnie dodaje "| Podsumowanie, definiując pole user_Id"klauzula zapytania. Tych danych jest przeglądany poniżej zapytania w tabeli, dzięki czemu możesz upewnić się, że zapytanie zwraca wyniki.
 
-    > [!NOTE]
-    > Jeśli nie widzisz zapytania, spróbuj zmienić rozmiar sekcji, aby wprowadzić na wyższy i ujawniają ukryte fakty zapytania. Animowany obraz GIF na początku tej sekcji przedstawiono zmiany rozmiaru zachowanie.
+     > [!NOTE]
+     > Jeśli nie widzisz zapytania, spróbuj zmienić rozmiar sekcji, aby wprowadzić na wyższy i ujawniają ukryte fakty zapytania. Animowany obraz GIF na początku tej sekcji przedstawiono zmiany rozmiaru zachowanie.
 
 2. Skopiuj i wklej następujący tekst w edytorze zapytań:
 

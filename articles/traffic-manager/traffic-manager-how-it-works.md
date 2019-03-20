@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 35abc43b60f31d94e8c4221137ad5437366b3489
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108869"
 ---
 # <a name="how-traffic-manager-works"></a>Jak działa usługa Traffic Manager
 
@@ -39,8 +39,8 @@ Firmy Contoso Corp opracowali nowego portalu dla partnerów. Adres URL dla tego 
 Aby uzyskać tę konfigurację, ich wykonaj następujące czynności:
 
 1. Wdrażanie trzech wystąpień usługi. Nazwy DNS wdrożenia to "contoso-us.cloudapp .net", "contoso-eu.cloudapp .net" i ".net asia.cloudapp firmy contoso".
-2. Utwórz profil usługi Traffic Manager o nazwie "contoso.trafficmanager.net" i skonfiguruj ją w trzech punktów końcowych przy użyciu metody routingu ruchu "Wydajność".
-* Konfigurowanie nazwy domeny znaczącej "partners.contoso.com", aby wskazywał "contoso.trafficmanager.net", przy użyciu rekordu CNAME systemu DNS.
+1. Utwórz profil usługi Traffic Manager o nazwie "contoso.trafficmanager.net" i skonfiguruj ją w trzech punktów końcowych przy użyciu metody routingu ruchu "Wydajność".
+1. Konfigurowanie nazwy domeny znaczącej "partners.contoso.com", aby wskazywał "contoso.trafficmanager.net", przy użyciu rekordu CNAME systemu DNS.
 
 ![Konfiguracja DNS usługi Traffic Manager][1]
 

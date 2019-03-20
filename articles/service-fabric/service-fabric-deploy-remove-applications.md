@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: d38ec87fb634e1809959b85f0382935e8a78bf3b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: dbfbbd38a24d4f82ef7fd09ce57b87fb5e5327dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697168"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880810"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Wdrażanie i usunąć aplikacje przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -287,7 +287,7 @@ PS C:\> Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Kopiuj ServiceFabricApplicationPackage poprosi o podanie ImageStoreConnectionString
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage asks for an ImageStoreConnectionString
 Środowisko usługi Service Fabric SDK powinno mieć już poprawne ustawienia domyślne, skonfiguruj. Ale jeśli to konieczne, ImageStoreConnectionString dla wszystkich poleceń powinna być zgodna wartość, która używa klastra usługi Service Fabric. W manifeście klastra można znaleźć ImageStoreConnectionString pobrany przy użyciu [Get ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) i polecenia Get-ImageStoreConnectionStringFromClusterManifest:
 
 ```powershell
@@ -303,7 +303,7 @@ Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\Se
 ImageStoreConnectionString znajduje się w manifeście klastra:
 
 ```xml
-<ClusterManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ClusterManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
 
     [...]
 
@@ -317,7 +317,7 @@ ImageStoreConnectionString znajduje się w manifeście klastra:
 Zobacz [zrozumieć parametry połączenia magazynu obrazu](service-fabric-image-store-connection-string.md) dodatkowych informacji na temat magazynu obrazów i obrazów można przechowywać w parametrach połączenia.
 
 ### <a name="deploy-large-application-package"></a>Wdrażanie pakietu dużych aplikacji.
-Problem: [ServiceFabricApplicationPackage kopiowania](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) upłynie limit czasu dla dużych aplikacji pakietu (kolejność GB).
+Problem: [Kopiuj ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) upłynie limit czasu dla dużych aplikacji pakietu (kolejność GB).
 Wypróbuj:
 - Określ większego limitu czasu dla [ServiceFabricApplicationPackage kopiowania](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) polecenia z `TimeoutSec` parametru. Domyślnie limit czasu to 30 minut.
 - Sprawdź połączenie sieciowe między maszyną źródłową i klastra. Jeśli połączenie jest powolne, rozważ użycie na maszynie z połączeniem sieciowym lepiej.
@@ -340,7 +340,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ### <a name="deploy-application-package-with-many-files"></a>Wdrażanie pakietu aplikacji przy użyciu wielu plików
-Problem: [ServiceFabricApplicationType rejestru](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) upłynie limit czasu dla pakietu aplikacji zawierających wiele plików (kolejność tysięcy).
+Problem: [Zarejestruj ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) upłynie limit czasu dla pakietu aplikacji zawierających wiele plików (kolejność tysięcy).
 Wypróbuj:
 - [Kompresowanie pakietu](service-fabric-package-apps.md#compress-a-package) przed skopiowaniem ich do magazynu obrazów. Kompresja zmniejsza liczbę plików.
 - Określ większego limitu czasu dla [ServiceFabricApplicationType rejestru](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) z `TimeoutSec` parametru.

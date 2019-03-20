@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: dde54894867811a34340f6dd4d0236b6b54e8144
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: cfa9f6bcb81182f4e76e995d626b207f8e130a80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840923"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -127,6 +127,8 @@ Aby zmienić zasady połączenia usługi Azure SQL Database dla serwera usługi 
 ## <a name="script-to-change-connection-settings-via-powershell"></a>Skrypt, aby zmienić ustawienia połączenia za pośrednictwem programu PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 > [!IMPORTANT]
 > Ten skrypt wymaga [modułu Azure PowerShell](/powershell/azure/install-az-ps).
@@ -150,7 +152,7 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skrypt, aby zmienić ustawienia połączenia za pośrednictwem wiersza polecenia platformy Azure
 
 > [!IMPORTANT]
-> Ten skrypt wymaga [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Ten skrypt wymaga [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 Poniższy skrypt interfejsu wiersza polecenia pokazuje, jak zmienić zasady połączenia.
 

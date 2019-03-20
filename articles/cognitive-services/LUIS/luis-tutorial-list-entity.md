@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: fc6d68e862f6a2f3c95f5ca6d130e42c96649eb1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 929dc7a86d141446a2070b046c6febfda4a07f0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874634"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092569"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Użyj jednostki listy w celu zwiększenia wykrywania jednostki 
 W tym samouczku zademonstrowano użycie [listy jednostek](luis-concept-entity-types.md) zwiększenia wykrywania jednostki. Lista jednostek jest konieczne etykietą, ponieważ są one dokładne dopasowanie warunków.  
@@ -23,9 +23,9 @@ W tym samouczku zademonstrowano użycie [listy jednostek](luis-concept-entity-ty
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-* Tworzenie jednostki listy 
-* Dodaj znormalizowane wartości i synonimy
-* Sprawdź poprawność identyfikacji ulepszone jednostki
+> * Tworzenie jednostki listy 
+> * Dodaj znormalizowane wartości i synonimy
+> * Sprawdź poprawność identyfikacji ulepszone jednostki
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

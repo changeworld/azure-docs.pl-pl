@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cdfc858522c5b331c90259de0fb5ad84fa54bc5d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f36ce51a9f385933cbc21e27280828b0ff0e43e2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57251874"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58016691"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
 
@@ -72,59 +72,3 @@ W trakcie okresu zapoznawczego ultra SSD:
 - Nie obsługuje jeszcze migawki dysków maszyny Wirtualnej obrazy, zestawy dostępności, zestawy skalowania maszyn wirtualnych i usługa Azure disk encryption.
 - Nie obsługuje jeszcze integracji z usługą Azure Backup lub usługi Azure Site Recovery.
 - Podobnie jak w przypadku [większość wersji zapoznawczych](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), nie należy używać tej funkcji dla obciążeń produkcyjnych do ogólnodostępnej (GA).
-
-## <a name="premium-ssd"></a>Premium, SSD
-
-Usługa Azure premium SSD dostarczać obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych (VM) z operacji wejścia/wyjścia (IO)-intensywnych obciążeń. Aby móc korzystać z szybkości i wydajności dysków usługi premium storage, należy przeprowadzić migrację istniejących dysków maszyny Wirtualnej na dyski SSD w warstwie Premium. Dyski SSD w warstwie Premium są odpowiednie dla aplikacji produkcyjnych o kluczowym znaczeniu.
-
-### <a name="disk-size"></a>Rozmiar dysku
-
-Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
-
-| Rozmiary dysków SSD — wersja Premium  | P4               | P6               | P10             | P15 | P20              | P30              | P40              | P50              | P60*              | P70*              | P80*              |
-|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
-| Rozmiar dysku w GiB           | 32             | 64             | 128            | 256  | 512            | 1,024    | 2,048     | 4,095    | 8192     | 16,384     | 32,767     |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | Do 120 | Maksymalnie 240              | Maks. 500              | Maksymalnie 1100 | Maksymalnie 2300              | Maksymalnie 5000              | Maksymalnie 7500             | Maksymalnie 7500              | Maksymalnie 12 500              | Maksymalnie 15 000              | Maksymalnie 20 000              |
-| Przepływność na dysk | Maksymalnie 25 MiB/s | Maksymalnie 50 MiB/s | Maksymalnie 100 MiB/s | Maksymalnie 125 MiB/s | Maksymalnie 150 MiB/s | Maksymalnie 200 MiB/s | Do 250 MiB/s | Do 250 MiB/s| Maksymalnie 480 MiB/s | Do 750 MiB/s | Do 750 MiB/s |
-
-## <a name="standard-ssd"></a>Standardowa, SSD
-
-Azure standardowe dyski SSD są opcji ekonomicznego magazynowania, zoptymalizowanych pod kątem obciążeń wymagających spójną wydajność na niższych poziomach operacji We/Wy. SSD w warstwie standardowa oferuje środowisko dobre klasy podstawowej dla osób, które chcesz przenieść do chmury, zwłaszcza, jeśli występują problemy z wariancję obciążeń działających na dysk twardy rozwiązań w środowisku lokalnym. Standardowa SSD zapewniają lepsze dostępności, spójności, niezawodności i opóźnienia w porównaniu do dysków HDD. Standardowe dyski SSD są odpowiednie dla serwerów sieci Web, niski serwerów aplikacji operacje We/Wy, aplikacje dla przedsiębiorstw używana w niewielkim stopniu i obciążeń deweloperskich/testowych.
-
-### <a name="disk-size"></a>Rozmiar dysku
-
-Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
-
-| Standardowe rozmiary dysków SSD  | E4                   | E6                   | E10               | E15               | E20             | E30 | E40              | E50              | E60*              | E70*              | E80*              |
-|---------------------|---------------------|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
-| Rozmiar dysku w GiB           | 32             | 64             | 128             | 256             | 512            | 1,024  | 2,048            | 4,095     | 8192     | 16,384     | 32,767    |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | Do 120              | Maksymalnie 240              | Maks. 500              | Maks. 500              | Maks. 500              | Maks. 500 | Maks. 500              | Maks. 500              | Maks. 500             | Maks. 500              | Maksymalnie 1300              | Do 2000              | Do 2000              |
-| Przepływność na dysk |  Maksymalnie 25 MiB/s  |  Maksymalnie 50 MiB/s  |  Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s| Maksymalnie 300 MiB/s |  Maks. 500 MiB/s | Maks. 500 MiB/s |
-
-## <a name="standard-hdd"></a>Standardowa, dysk twardy
-
-Azure standardowych dysków twardych dostarczanie obsługi niezawodne, niedrogie dysków dla maszyn wirtualnych obciążeń niewrażliwego na opóźnienia. Obsługuje również obiekty BLOB, tabel, kolejek i plików. Dzięki usłudze standard storage dane są przechowywane dyski twarde (HDD). Podczas pracy z maszynami wirtualnymi, używając dysków SSD i HDD w warstwie standardowa dla scenariuszy deweloperskich lub testowych oraz mniej krytycznych obciążeń. Magazynu w warstwie standardowa jest dostępna we wszystkich regionach platformy Azure.
-
-### <a name="disk-size"></a>Rozmiar dysku
-
-Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
-
-| Typ dysku standardowego  | S4               | S6               | S10             | S15 | S20              | S30              | S40              | S50              | S60*              | S70*              | S80*              |
-|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
-| Rozmiar dysku w GiB          | 32             | 64             | 128            | 256  | 512            | 1,024    | 2,048     | 4,095    | 8192     | 16,384     | 32,767     |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | Maks. 500              | Maks. 500              | Maks. 500              | Maks. 500 | Maks. 500              | Maks. 500              | Maks. 500             | Maks. 500              | Maksymalnie 1300              | Do 2000              | Do 2000              |
-| Przepływność na dysk | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s| Maksymalnie 300 MiB/s | Maks. 500 MiB/s | Maks. 500 MiB/s |
-
-## <a name="billing"></a>Rozliczenia
-
-Korzystając z dysków zarządzanych, zastosuj następujące zagadnienia dotyczące rozliczeń:
-
-- Typ dysku
-- dysk zarządzany rozmiar
-- Migawki
-- Wychodzące transfery danych
-- Liczba transakcji
-
-**Rozmiar dysku zarządzanego**: opłaty za dyski zarządzane są naliczane zarezerwowany rozmiar. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej rozmiaru dysku oferowane przez użytkownika. Szczegółowe informacje o oferowanych rozmiary dysków można zobaczyć w poprzednich tabelach. Każdy dysk mapuje do oferty rozmiar dysku obsługiwane i jest rozliczana w związku z tym. Na przykład, jeśli zainicjowano obsługę administracyjną 200 GiB SSD w warstwie standardowa, jest on mapowany ofertę rozmiar dysku E15 (256 GiB). Rozliczenia dla dowolnego dysku jest proporcjonalnie do liczby godzin przy użyciu miesięczna oferta usługi Premium Storage. Na przykład jeśli zainicjowano obsługę administracyjną E10 dysku, a następnie usunięte 20 godzin, są naliczane dla oferty E10 jest naliczany proporcjonalnie do 20 godzin. Jest to niezależnie od ilości rzeczywiste dane zapisane na dysku.
-
-**Migawki**: Migawki są rozliczane na podstawie rozmiaru używane. Na przykład jeśli utworzysz migawkę dysku zarządzanego z zaprowizowaną pojemnością 64 GiB i rzeczywistym użyciem danych rozmiaru 10 GiB migawki jest zapłacisz tylko za użyte dane o rozmiarze od 10 GiB.

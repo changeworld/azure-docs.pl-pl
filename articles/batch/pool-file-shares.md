@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 13ed2caa5ae547747707c368246ea23486dbed72
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469570"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103336"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Udział plików platformy Azure za pomocą puli usługi Batch
 
@@ -66,16 +66,16 @@ Aby uprościć operację instalowania, opcjonalnie utrwalić poświadczenia w w�
 
 1. Uruchom `cmdkey` narzędzie wiersza polecenia za pomocą zadania uruchamiania w konfiguracji puli. Będzie się powtarzał poświadczenia w każdym węźle Windows. Wiersza polecenia zadania uruchamiania są podobne do:
 
-  ```
-  cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
+   ```
+   cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
-  ```
+   ```
 
 2. Instalowanie udziału w każdym węźle w ramach każdego zadania przy użyciu `net use`. Na przykład następujący wiersz polecenia zadania instalowania udziału plików jako *S:* dysku. To może następować polecenia lub skryptu, który odwołuje się do udziału. Buforowane poświadczenia są używane w wywołaniu `net use`. W tym kroku przyjęto założenie, że używasz tej samej tożsamości użytkownika dla zadania, które są używane w zadanie podrzędne uruchamiania w puli, która nie jest odpowiednie w przypadku wszystkich scenariuszy.
 
-  ```
-  cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
-  ```
+   ```
+   cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
+   ```
 
 ### <a name="c-example"></a>Przykład w języku C#
 Następujące C# przykład pokazuje, jak można utrwalić poświadczenia w ramach puli Windows za pomocą zadania uruchamiania. Nazwa usługi pliku magazynu i poświadczenia magazynu są przekazywane jako zdefiniowanych stałych. W tym miejscu zadanie podrzędne uruchamiania jest uruchamiana (inni niż administrator) auto-konta użytkownika standardowego o zakresie puli.

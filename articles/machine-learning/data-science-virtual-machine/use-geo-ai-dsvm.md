@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 11026d642a5136ffcf0caa5815934115b6becf89
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238463"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880113"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Za pomocą maszyny wirtualnej analizy danych geograficznych ze sztucznej inteligencji
 
@@ -30,7 +30,7 @@ Maszyna wirtualna do nauki o danych sztucznej Inteligencji geograficznej umożli
 
 ## <a name="configuration-details"></a>Szczegóły konfiguracji
 
-Biblioteka języka Python [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), który jest używany do interfejsu z platformy ArcGIS jest zainstalowany w środowiska conda główny globalny maszyna wirtualna do nauki o danych, który znajduje się na ```c:\anaconda```. 
+Biblioteka języka Python [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), który jest używany do interfejsu z platformy ArcGIS jest zainstalowany w środowiska conda główny globalny maszyna wirtualna do nauki o danych, który znajduje się na ```c:\anaconda```. 
 
 - Jeśli używasz języka Python w wierszu polecenia, uruchom ```activate``` można aktywować w środowisku Python głównego narzędzia conda. 
 - Jeśli używasz środowiska IDE lub Jupyter notebook można wybrać środowisko lub jądra, aby upewnić się, że w środowisku poprawne conda. 
@@ -43,7 +43,7 @@ Mostek R ArcGIS jest instalowany jako biblioteka języka R, o nazwie [arcgisbind
 Oprócz uczenia Maszynowego i oparte na strukturze próbki z podstawowej maszyny Wirtualnej do nauki o danych do uczenia głębokiego udostępniane są również uzyskać zestaw przykładów geoprzestrzenne jako część maszyna wirtualna do nauki o danych sztucznej Inteligencji geograficznie. Te przykłady mogą pomóc szybko Rozpocznij korzystanie z usługi opracowywanie aplikacji sztucznej Inteligencji przy użyciu danych Geoprzestrzennych i oprogramowania ArcGIS. 
 
 
-1. [Wprowadzenie pracę z Geoprzestrzenna analiza przy użyciu języka Python](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Wprowadzające przykład przedstawiający sposób pracy z danymi dane geograficzne za pomocą interfejsu Python do ArcGIS dostarczone przez [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) biblioteki. Pokazano także, jak połączyć tradycyjnych uczenie maszynowe przy użyciu danych geoprzestrzennych oraz wizualizacja wyników na mapie w ArcGIS. 
+1. [Wprowadzenie pracę z Geoprzestrzenna analiza przy użyciu języka Python](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Wprowadzające przykład przedstawiający sposób pracy z danymi dane geograficzne za pomocą interfejsu Python do ArcGIS dostarczone przez [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) biblioteki. Pokazano także, jak połączyć tradycyjnych uczenie maszynowe przy użyciu danych geoprzestrzennych oraz wizualizacja wyników na mapie w ArcGIS. 
 
 2. [Wprowadzenie pracę z Geoprzestrzenna analiza przy użyciu języka R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Wprowadzający przykład, który pokazuje, jak pracować z danymi dane geograficzne za pomocą interfejsu języka R do ArcGIS dostarczone przez [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) biblioteki. 
 

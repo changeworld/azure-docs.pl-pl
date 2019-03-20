@@ -10,18 +10,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 12/27/2018
-ms.openlocfilehash: 5814c3f386ed31d8804469fa1a261ab9bda6b8f8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 220549c4ac3b6db584654b2c8bf27d9b4519b54a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865862"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225811"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>Szybki start: Rozpoczynanie pracy z usługami Apache Hadoop i Apache Hive w usłudze Azure HDInsight przy użyciu szablonu usługi Resource Manager
 
 W tym artykule dowiesz się, jak tworzyć klastry usługi [Apache Hadoop](https://hadoop.apache.org/) w usłudze HDInsight przy użyciu szablonu usługi Resource Manager, a następnie uruchamiać zadania usługi Hive w usłudze HDInsight. Większość zadań usługi Hadoop to zadania wsadowe. Tworzysz klaster, uruchamiasz pewne zadania, a następnie usuwasz klaster. W tym artykule wykonasz wszystkie trzy zadania.
 
-W tym przewodniku Szybki start użyjesz szablonu usługi Resource Manager do utworzenia klastra Hadoop w usłudze HDInsight. Klaster możesz również utworzyć w witrynie [Azure Portal](apache-hadoop-linux-create-cluster-get-started-portal.md).  Podobne szablony można wyświetlać w obszarze [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular). Dokumentację szablonu można znaleźć [tutaj](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
+W tym przewodniku Szybki start użyjesz szablonu usługi Resource Manager do utworzenia klastra Hadoop w usłudze HDInsight. Klaster możesz również utworzyć w witrynie [Azure Portal](apache-hadoop-linux-create-cluster-get-started-portal.md).  Można wyświetlić podobne szablony na [szablony szybkiego startu platformy](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular). Dokumentację szablonu można znaleźć [tutaj](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
 
 Obecnie usługa HDInsight obejmuje [siedem różnych typów klastrów](./apache-hadoop-introduction.md#cluster-types-in-hdinsight). Każdy typ klastra obsługuje inny zestaw składników. Wszystkie typy klastrów obsługują technologię Hive. Aby uzyskać listę obsługiwanych składników w usłudze HDInsight, zobacz artykuł [Nowości w wersjach klastra Hadoop dostarczanych z usługą HDInsight](../hdinsight-component-versioning.md)  
 
@@ -124,7 +124,7 @@ Masz dwie opcje umożliwiające utworzenie i uruchomienie zapytań Hive:
 * Tworzenie zapytań ad hoc
 * Tworzenie aplikacji Hive
 
-Aby utworzyć i uruchomić zapytania ad hoc:
+Tworzenie i uruchamianie zapytań ad hoc:
 
 1. W **Eksploratorze serwera** wybierz kolejno pozycje **Azure** > **Klastry usługi HDInsight**.
 
@@ -258,7 +258,7 @@ Jeśli chcesz dowiedzieć się więcej o tworzeniu klastra usługi HDInsight i z
 
 Aby dowiedzieć się więcej na temat tworzenia klastra HDInsight przy użyciu szablonów usługi Azure Resource Manager, zobacz:
 
-* [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular).
+* [Szablony szybkiego startu platformy](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular).
 * [Dokumentacja szablonów platformy Azure](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
 
 [1]: ../HDInsight/apache-hadoop-visual-studio-tools-get-started.md

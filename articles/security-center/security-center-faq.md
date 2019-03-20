@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2019
+ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: e42deed992496cc28bdf92c01934d74361f2de6f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7e4a4572a53338dc0c7b5d7d11dca7130c8979be
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444025"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226899"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -52,7 +52,7 @@ Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować probl
 Zobacz [uprawnień w usłudze Azure Security Center](security-center-permissions.md) Aby dowiedzieć się więcej na temat ról i dozwolonych akcji w usłudze Security Center.
 
 ## <a name="data-collection-agents-and-workspaces"></a>Zbieranie danych, agentów i obszary robocze
-Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy.
+Usługa Security Center zbiera dane z maszyn wirtualnych (VM), zestawy skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych), kontenery IaaS i komputery spoza platformy Azure (z uwzględnieniem lokalnej) do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy.
 
 ### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Czy są naliczane w przypadku dzienników usługi Azure Monitor na obszarach roboczych utworzonych przez usługę Security Center?
 Nie. Obszary robocze utworzone przez usługę Security Center, gdy skonfigurowane dla dzienników usługi Azure Monitor Naliczanie węzła, nie są naliczane opłaty dzienniki usługi Azure Monitor. Usługa Security Center są zawsze naliczane zasad zabezpieczeń usługa Security Center i rozwiązań zainstalowane w obszarze roboczym:
@@ -74,7 +74,7 @@ Windows lub maszyn wirtualnych IaaS z systemem Linux kwalifikuje się, jeśli:
 
 - Rozszerzenia Microsoft Monitoring Agent nie jest obecnie zainstalowana na maszynie Wirtualnej.
 - Maszyna wirtualna jest w stanie uruchomienia.
-- Windows lub Linux Agent maszyny Wirtualnej jest zainstalowany.
+- Windows lub Linux [agenta maszyny wirtualnej platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows) jest zainstalowany.
 - Maszyna wirtualna nie jest używana jako urządzenie, takie jak zapory aplikacji sieci web lub Zapora nowej generacji.
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Czy można usunąć domyślne obszary robocze utworzone przez usługę Security Center?
@@ -115,21 +115,23 @@ Aby wybrać istniejący obszar roboczy usługi Log Analytics:
 
    - Wybierz **anulować** anulować operację.
 
-### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>Co zrobić, jeśli program Microsoft Monitoring Agent został już zainstalowany jako rozszerzenie na maszynie Wirtualnej?
-Usługa Security Center nie zastępuje istniejące połączenia do obszarów roboczych użytkownika. Usługa Security Center są przechowywane dane zabezpieczeń z maszyny Wirtualnej w obszarze roboczym, który został już połączony. Usługa Security Center aktualizuje wersję rozszerzenia, aby uwzględniać identyfikator zasobu platformy Azure, maszyny wirtualnej do obsługi usługi Security Center użycia.
+### Co zrobić, jeśli program Microsoft Monitoring Agent został już zainstalowany jako rozszerzenie na maszynie Wirtualnej?<a name="mmaextensioninstalled"></a>
+Po zainstalowaniu programu Monitoring Agent jako rozszerzenie Konfiguracja rozszerzenia pozwala na zgłaszanie tylko z jednym obszarem roboczym. Usługa Security Center nie zastępuje istniejące połączenia do obszarów roboczych użytkownika. Usługa Security Center będzie przechowywać dane zabezpieczeń z maszyny Wirtualnej w obszarze roboczym, który jest już połączony, pod warunkiem, że "zabezpieczenia" lub "securityFree" rozwiązania została zainstalowana na nim. Usługa Security Center może Uaktualnij wersję rozszerzenia do najnowszej wersji w ramach tego procesu.
 
-### <a name="what-if-i-had-a-microsoft-monitoring-agent-installed-on-the-machine-but-not-as-an-extension"></a>Co zrobić, jeśli użytkownik miał Microsoft Monitoring Agent zainstalowany na komputerze, ale nie jako rozszerzenie?
-Jeśli program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie Wirtualnej (a nie jako rozszerzenie platformy Azure), usługa Security Center nie instaluje program Microsoft Monitoring Agent oraz monitorowanie zabezpieczeń jest ograniczony.
+Aby uzyskać więcej informacji, zobacz [automatycznej aprowizacji w przypadku istniejących instalacji agenta](security-center-enable-data-collection.md#preexisting).
 
-Aby uzyskać więcej informacji, zobacz następną sekcję [co się stanie w przypadku pakietu OMS lub SCOM programu bezpośredni agent jest już zainstalowany na maszynie Wirtualnej?](#scomomsinstalled)
 
-### Co się stanie, jeśli SCOM lub OMS bezpośredni agent jest już zainstalowana na maszynie Wirtualnej?<a name="scomomsinstalled"></a>
-Usługa Security Center nie może zidentyfikować wcześniej zainstalowano agenta.  Usługa Security Center spróbuje zainstalować rozszerzenia Microsoft Monitoring Agent i kończy się niepowodzeniem z powodu istniejących zainstalowanego agenta.  Ten błąd uniemożliwia zastępowanie ustawień połączenia agenta do jego obszaru roboczego i pozwala uniknąć tworzenia multihosting.
+### Co zrobić, jeśli wcześniej zainstalowany Microsoft Monitoring Agent bezpośrednio na maszynie, ale nie jako rozszerzenie (Agent bezpośredni)?<a name="directagentinstalled"></a>
+Program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie Wirtualnej (a nie jako rozszerzenie platformy Azure), Centrum zabezpieczeń zainstaluje rozszerzenia Microsoft Monitoring Agent i mogą zostać uaktualnione do najnowszej wersji Microsoft Monitoring agent.
+Jest zainstalowany agent będzie kontynuował raportowanie do jego już skonfigurowanego obszarów roboczych, a ponadto będzie zgłaszać do obszaru roboczego skonfigurowane w usłudze Security Center (multihosting jest obsługiwane).
+Skonfigurowany obszar roboczy w przypadku obszaru roboczego użytkownika (nie Centrum zabezpieczeń domyślnego obszaru roboczego), będą musieli zainstalować "security / rozwiązania"securityFree"na nim usługi Security Center rozpocząć przetwarzanie zdarzeń z maszyn wirtualnych i komputerów raportujących do obszaru roboczego.
 
-> [!NOTE]
-> Wersja agenta jest zaktualizowane do najnowszej wersji agenta pakietu OMS.  Dotyczy to użytkownikom SCOM również.
->
->
+Dla istniejących maszyn w subskrypcji dołączono do usługi Security Center, przed 2019-03-17, gdy zostanie wykryty istniejącego agenta, rozszerzenia Microsoft Monitoring Agent nie zostanie zainstalowany, a komputer nie ma wpływu na. Dla tych maszyn Zobacz zalecenie "Monitorowanie problemów dotyczących kondycji agenta na maszynach Rozwiąż", aby rozwiązać problemy z instalacją agentów na tych maszynach
+
+ Aby uzyskać więcej informacji, zobacz następną sekcję [co się stanie w przypadku pakietu OMS lub SCOM programu bezpośredni agent jest już zainstalowany na maszynie Wirtualnej?](#scomomsinstalled)
+
+### Co się stanie, jeśli SCOM agent jest już zainstalowany na maszynie Wirtualnej?<a name="scomomsinstalled"></a>
+Usługa Security center zostanie zainstalowany program Microsoft Monitoring Agent rozszerzenia side-by-side do istniejącego programu SCOM. Istniejącego agenta programu SCOM będą nadal normalnie raportu do serwera programu SCOM. Należy pamiętać, że SCOM agent i Microsoft Monitoring Agent współużytkują wspólne biblioteki czasu wykonywania, które zostaną zaktualizowane do wersji Najpóźniejsza podczas tego procesu.
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Jaki jest wpływ usunięcia tych rozszerzeń?
 Jeśli usuniesz rozszerzenie monitorowania firmy Microsoft, usługa Security Center nie jest w stanie do zbierania danych zabezpieczeń z maszyny Wirtualnej i niektóre zalecenia dotyczące zabezpieczeń i alerty są niedostępne. W ciągu 24 godzin usługa Security Center określa Brak rozszerzenia i spowoduje ponowne zainstalowanie rozszerzenia maszyny Wirtualnej.

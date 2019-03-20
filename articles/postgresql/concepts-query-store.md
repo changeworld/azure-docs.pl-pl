@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cd4cf12390ff29754b55d2827ea4750e7123a27
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: db62c1ec03ae9005f33a09010486b04ac6976742
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730509"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005896"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą Store zapytania
 
@@ -36,8 +36,8 @@ Query Store jest funkcji opcjonalnych, więc nie jest aktywne, domyślnie na ser
 4. Ustaw wartość `TOP` i **Zapisz**.
 
 Aby włączyć statystyki oczekiwania w swojej Query Store: 
-5. Wyszukaj `pgms_wait_sampling.query_capture_mode` parametru.
-6. Ustaw wartość `ALL` i **Zapisz**.
+1. Wyszukaj `pgms_wait_sampling.query_capture_mode` parametru.
+1. Ustaw wartość `ALL` i **Zapisz**.
 
 
 Alternatywnie można ustawić te parametry przy użyciu wiersza polecenia platformy Azure.
@@ -87,6 +87,7 @@ Poniżej przedstawiono kilka przykładów, jak można uzyskać lepszy wgląd w o
 Po włączeniu Query Store zapisuje dane w systemie windows agregacji 15 minut, maksymalnie 500 różne zapytania na okna. 
 
 Następujące opcje są dostępne w celu konfigurowania parametrów Query Store.
+
 | **Parametr** | **Opis** | **Domyślne** | **Range**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | Zestawy instrukcji, które są śledzone. | brak | Brak, top, wszystkie |
@@ -95,6 +96,7 @@ Następujące opcje są dostępne w celu konfigurowania parametrów Query Store.
 | pg_qs.track_utility | Określa, czy polecenia narzędzia są śledzone. | włączone | włączony wyłączony |
 
 Poniższe opcje są stosowane specjalnie w celu oczekiwania statystyk.
+
 | **Parametr** | **Opis** | **Domyślne** | **Range**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | Zestawy, które są śledzone instrukcji poczekaj statystyki. | brak | Brak, wszystkie|

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 1/30/2019
+ms.date: 3/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 3a1edde2f51abbe60370eefee1b0c141f772c547
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: HT
+ms.openlocfilehash: 973d5c5c3822eaddce2bc77d06d01930606994c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405466"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182578"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -51,13 +51,16 @@ Aby ten scenariusz przebiegał prawidłowo, muszą zostać spełnione trzy podst
 
 - Trasa zdefiniowana przez użytkownika w podsieci będącej szprychą, która wskazuje adres IP usługi Azure Firewall jako bramę domyślną. Propagacja trasy protokołu BGP musi być **wyłączona** w przypadku tej tabeli tras.
 - Trasa zdefiniowana przez użytkownika w podsieci bramy koncentratora musi wskazywać adres IP zapory jako następny przeskok do sieci będącej szprychą.
-- W podsieci usługi Azure Firewall nie jest wymagana trasa zdefiniowana przez użytkownika, ponieważ uzyskuje ona informacje o trasach na podstawie protokołu BGP.
+
+   W podsieci usługi Azure Firewall nie jest wymagana trasa zdefiniowana przez użytkownika, ponieważ uzyskuje ona informacje o trasach na podstawie protokołu BGP.
 - Ustaw wartość **AllowGatewayTransit** na potrzeby komunikacji równorzędnej między sieciami VNet-Hub i VNet-Spoke oraz **UseRemoteGateways** na potrzeby komunikacji równorzędnej VNet-Spoke i VNet-Hub.
 
-Zapoznaj się z sekcją Tworzenie tras w tym samouczku, aby poznać sposób tworzenia tych tras.
+Zapoznaj się z sekcją [Tworzenie tras](#create-the-routes) w tym samouczku, aby poznać sposób tworzenia tych tras.
 
 >[!NOTE]
->Usługa Azure Firewall musi mieć bezpośrednie połączenie z Internetem. Jeśli włączono wymuszone tunelowanie do środowiska lokalnego za pośrednictwem usługi ExpressRoute lub usługi Application Gateway, musisz skonfigurować trasę zdefiniowaną przez użytkownika 0.0.0.0/0 z wartością **NextHopType** ustawioną jako **Internet**, a następnie przypisać ją do podsieci **AzureFirewallSubnet**.
+>Usługa Azure Firewall musi mieć bezpośrednie połączenie z Internetem. Domyślnie AzureFirewallSubnet Zezwalaj tylko na 0.0.0.0/0 trasy zdefiniowanej przez użytkownika, za pomocą **Typ następnego przeskoku** wartość ustawiona jako **Internet**.
+>
+>Włączenie tunelowania do sieci lokalnej za pośrednictwem usługi ExpressRoute lub usługi Application Gateway, konieczne może być jawnie skonfigurujesz 0.0.0.0/0 trasy zdefiniowanej przez użytkownika Typ następnego przeskoku ma wartość jako **Internet** i skojarzyć go z Twojego AzureFirewallSubnet. Jeśli Twoja organizacja potrzebuje, wymuszonego tunelowania ruchu zapory usługi Azure, skontaktuj się z obsługą można umieścić na liście dozwolonych subskrypcji i upewnij się, że połączenie z Internetem wymagany zapory są obsługiwane.
 
 >[!NOTE]
 >Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.

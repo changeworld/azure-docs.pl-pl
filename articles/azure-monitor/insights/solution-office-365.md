@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 003d5da137c88097d9555a9884286251af92d6f0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311004"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996715"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -71,7 +71,7 @@ Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory,
 1. Kliknij pozycję **Rejestrowanie nowej aplikacji**.
 
     ![Dodawanie rejestracji aplikacji](media/solution-office-365/add-app-registration.png)
-1. Wprowadź aplikację **nazwa** i **adres URL logowania**.  Nazwa powinna być opisowe.  Użyj _http://localhost_ dla adresu URL i Zachowaj _aplikacji sieci Web / interfejs API_ dla **typ aplikacji**
+1. Wprowadź aplikację **nazwa** i **adres URL logowania**.  Nazwa powinna być opisowe.  Użyj `http://localhost` dla adresu URL i Zachowaj _aplikacji sieci Web / interfejs API_ dla **typ aplikacji**
     
     ![Utwórz aplikację](media/solution-office-365/create-application.png)
 1. Kliknij przycisk **Utwórz** i zweryfikować informacje o aplikacji.
@@ -91,11 +91,11 @@ Pierwszym krokiem jest do tworzenia aplikacji w usłudze Azure Active Directory,
     ![Wybieranie interfejsu API](media/solution-office-365/select-api.png)
 
 1. W obszarze **wybierz uprawnienia** wybierz następujące opcje dla obu **uprawnienia aplikacji** i **delegowane uprawnienia**:
-    - Odczytuj informacje o kondycji usług dla organizacji
-    - Odczytaj dane aktywności dla Twojej organizacji
-    - Odczytuj raporty aktywności dotyczące organizacji
+   - Odczytuj informacje o kondycji usług dla organizacji
+   - Odczytaj dane aktywności dla Twojej organizacji
+   - Odczytuj raporty aktywności dotyczące organizacji
 
-    ![Wybieranie interfejsu API](media/solution-office-365/select-permissions.png)
+     ![Wybieranie interfejsu API](media/solution-office-365/select-permissions.png)
 
 1. Kliknij przycisk **wybierz** i następnie **gotowe**.
 1. Kliknij przycisk **udzielić uprawnień** a następnie kliknij przycisk **tak** po wyświetleniu monitu o weryfikację.
@@ -592,7 +592,7 @@ Te rekordy są tworzone, gdy zmiany zostaną wprowadzone do konfiguracji program
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Określa, czy polecenie cmdlet zostało uruchomione przez użytkownika w organizacji przez personel centrum danych firmy Microsoft lub konta usługi z centrum danych, lub administrator delegowany. Wartość False wskazuje, że polecenie cmdlet zostało uruchomione przez kogoś w organizacji. Wartość True wskazuje, że polecenie cmdlet zostało uruchomione przez personel centrum danych, konta usługi Centrum danych lub administratora delegowanego. |
 | ModifiedObjectResolvedName |  Jest to nazwa przyjazny dla użytkownika, obiektu, który został zmodyfikowany przez polecenie cmdlet. To jest rejestrowany tylko wtedy, gdy polecenie cmdlet modyfikuje obiektu. |
-| Nazwa_organizacji | Nazwa dzierżawy. |
+| OrganizationName | Nazwa dzierżawy. |
 | OriginatingServer | Nazwa serwera, z którego wykonano polecenia cmdlet. |
 | Parametry | Nazwa i wartość dla wszystkich parametrów, które były używane z poleceniem cmdlet, który jest identyfikowany we właściwości operacji. |
 
@@ -705,7 +705,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 | Zapytanie | Opis |
 | --- | --- |
 |Liczba wszystkich operacji w ramach subskrypcji usługi Office 365 |OfficeActivity &#124; Podsumuj count() by operacji |
-|Użycie witryny programu SharePoint|OfficeActivity &#124; gdzie OfficeWorkload = ~ "sharepoint" &#124; Podsumuj count() by SiteUrl | Sortuj według Count asc|
+|Użycie witryny programu SharePoint|OfficeActivity &#124; gdzie OfficeWorkload = ~ "sharepoint" &#124; Podsumuj count() by SiteUrl \| Sortuj według Count asc|
 |Operacje dostępu do plików według typu użytkownika|Wyszukaj w OfficeWorkload (OfficeActivity) = ~ "usługi azureactivedirectory" i "Test"|
 |Wyszukiwanie przy użyciu określonego słowa kluczowego|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
 |Monitorowanie działań zewnętrznych, na serwerze Exchange|OfficeActivity &#124; gdzie OfficeWorkload = ~ "programu exchange" i ExternalAccess == true|

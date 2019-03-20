@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 57d112cfce00839f1381dc41d24bfb697179b5a4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 8276b86df2dc1bc90fc07da262aa0979f7562619
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878684"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548493"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Samouczek: Tworzenie niestandardowego modelu językowego
 
@@ -59,7 +59,7 @@ Główne wymagania dotyczące danych językowych przedstawiono w poniższej tabe
 | Liczba wypowiedzi w wierszu | 1 |
 | Maksymalna wielkość pliku | 1,5 GB |
 | Uwagi | Unikaj powtarzania znaków więcej niż cztery razy, na przykład „aaaaa”|
-| Uwagi | Nie używaj znaków specjalnych, takich jak „\t” lub innych znaków UTF-8 powyżej U+00A1 z [tabeli znaków Unicode](http://www.utf8-chartable.de/)|
+| Uwagi | Nie używaj znaków specjalnych, takich jak „\t” lub innych znaków UTF-8 powyżej U+00A1 z [tabeli znaków Unicode](https://www.utf8-chartable.de/)|
 | Uwagi | identyfikatory URI również zostaną odrzucone, ponieważ nie istnieje unikatowy sposób wymowy identyfikatora URI|
 
 Po zaimportowania tekstu jest on znormalizowany jako tekst, aby umożliwić jego przetwarzanie przez system. Istnieją jednak pewne istotne normalizacje, które muszą być wykonane przez użytkownika _przed_ przekazaniem danych. Zobacz [wytyczne dotyczące transkrypcji](prepare-transcription.md), aby określić odpowiedni język, który zostanie użyty podczas przygotowywania danych językowych.
@@ -118,7 +118,7 @@ Jeśli model znajduje się w stanie **Complete** (Ukończono), można go wdroży
 
 Jeśli w pewnym momencie zechcesz zmienić nazwę lub opis modelu w polach **Name** (Nazwa) lub **Description** (Opis), możesz użyć linku **Edit** (Edytuj) w odpowiednim wierszu tabeli modeli językowych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Pobierz subskrypcję wersji próbnej usługi Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 - [Jak rozpoznawać mowę w języku C#](quickstart-csharp-dotnet-windows.md)

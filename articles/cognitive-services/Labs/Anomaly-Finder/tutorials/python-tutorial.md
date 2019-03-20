@@ -10,18 +10,18 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2df1e2c261069473a02b40e4a7e45895eadea42d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 5a2fb54658599e0500944aaae9225f314277f9da
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219400"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539092"
 ---
 # <a name="tutorial-anomaly-detection-with-python-application"></a>Samouczek: wykrywanie anomalii przy użyciu aplikacji języka Python
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-W samouczku pokazano, jak używać interfejsu API wykrywania anomalii w języku Python oraz jak wizualizować wyniki za pomocą popularnych bibliotek. Uruchomisz samouczek przy użyciu programu Jupyter oraz spróbujesz użyć własnych danych z kluczem subskrypcji. Aby dowiedzieć się, jak zacząć korzystać z interakcyjnych notesów Jupyter, zapoznaj się z [dokumentacją programu Jupyter](http://jupyter.readthedocs.io/en/latest/index.html). 
+W samouczku pokazano, jak używać interfejsu API wykrywania anomalii w języku Python oraz jak wizualizować wyniki za pomocą popularnych bibliotek. Uruchomisz samouczek przy użyciu programu Jupyter oraz spróbujesz użyć własnych danych z kluczem subskrypcji. Aby dowiedzieć się, jak zacząć korzystać z interakcyjnych notesów Jupyter, zapoznaj się z [dokumentacją programu Jupyter](https://jupyter.readthedocs.io/en/latest/index.html). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -52,7 +52,7 @@ Do użycia tego notesu jest potrzebny klucz subskrypcji dla interfejsu API wykry
 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

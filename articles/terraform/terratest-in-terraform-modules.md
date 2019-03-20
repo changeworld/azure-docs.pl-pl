@@ -8,15 +8,18 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2018
-ms.openlocfilehash: 936fe347fb4f9d5e27e005099725674341960457
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: HT
+ms.date: 03/19/2019
+ms.openlocfilehash: 9d621905122ab7bf64432323d7d11cf8f1b50750
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773320"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224009"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Testowanie modułów programu Terraform na platformie Azure za pomocą struktury Terratest
+
+> [!NOTE]
+> Przykładowy kod w tym artykule nie działa z wersji 0,12 (i nowszych).
 
 Moduły programu Terraform umożliwiają tworzenie składników wielokrotnego użytku, które można łączyć i testować. Moduły programu Terraform uwzględniają hermetyzację, co jest przydatne podczas implementowania procesów infrastruktury jako kodu.
 

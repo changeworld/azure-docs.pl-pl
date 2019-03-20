@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d1e43924634e3c4543c244043cb06d965a4d14e0
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576841"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838803"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -61,7 +61,7 @@ Poniżej przedstawiono przepływ danych wysokiego poziomu dla podsumowania czynn
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Zagadnienia dotyczące korzystania z własnego środowiska IR
 
 - Pojedynczy własnego środowiska integration runtime może służyć do wielu źródeł danych w środowisku lokalnym. Pojedynczy własnego środowiska integration runtime mogą być udostępniane innym fabryki danych w ramach tej samej dzierżawie usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [udostępnianie własnego środowiska integration runtime](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories).
-- Może mieć tylko jedno wystąpienie własnego środowiska integration runtime zainstalowane na jednym komputerze. Jeśli masz dwa fabryk danych te potrzeby, aby uzyskać dostęp do środowiska lokalnego źródła danych, musisz zainstalować własnego środowiska integration runtime na komputerach z dwiema lokalnymi. Innymi słowy własne środowisko integration runtime jest powiązany fabrykę określonych danych.
+- Może mieć tylko jedno wystąpienie własnego środowiska integration runtime zainstalowane na jednym komputerze. W przypadku dwóch fabryki danych, które chcą korzystać z lokalnych źródeł danych, musisz zainstalować własnego środowiska integration runtime na dwóch lokalnych komputerów każdego z fabryki danych, lub użyj [własne środowisko IR do udostępniania funkcji](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)udostępniać własne środowisko integration runtime z innej usługi Data Factory.  
 - Własne środowisko integration runtime nie musi znajdować się na tym samym komputerze co źródło danych. Jednak bliżej źródła danych o własne środowisko integration runtime skraca czas dla własnego środowiska integration runtime do połączenia ze źródłem danych. Zaleca się zainstalowanie własnego środowiska integration runtime na maszynie, która jest inna niż wersja tego źródła danych lokalnych hostów. W przypadku Self-Hosted integration runtime i źródła danych na różnych maszynach, własne środowisko integration runtime nie konkurują o zasoby ze źródłem danych.
 - Na różnych maszynach, łączących się z tego samego źródła danych w środowisku lokalnym, możesz mieć wiele środowisk Self-Hosted integration Runtime. Na przykład Niewykluczone, że dwa produkty Self-Hosted integration Runtime, które obsługują dwa fabryki danych, ale tego samego źródła danych lokalnych jest zarejestrowana przy użyciu fabryk danych.
 - Jeśli masz już zainstalowany na komputerze, aby obsługiwać scenariusz, w usłudze Power BI bramy, zainstalować osobne własnego środowiska integration runtime usługi Azure Data Factory na innym komputerze.
@@ -145,7 +145,7 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 - Certyfikaty, które używają kluczy CNG nie są obsługiwane.  
 
 > [!NOTE]
-> Ten certyfikat jest używany do szyfrowania portów w węźle Self-Hosted IR, umożliwiający **komunikacji między węzłami** (w przypadku synchronizacji stanu) i podczas **przy użyciu programu PowerShell polecenia cmdlet dla połączonej usługi poświadczeń ustawienie**z w obrębie sieci lokalnej. Zalecane jest używanie tego certyfikatu, jeśli prywatnego środowiska sieciowego nie jest bezpieczna lub jeśli chcesz do zabezpieczenia komunikacji między węzłami w ramach sieci prywatnej, jak również. Przenoszenie danych przesyłanych z własne środowisko IR w innych magazynach danych występuje zawsze, przy użyciu szyfrowanego kanału, niezależnie od tego certyfikatu, lub nie. 
+> Ten certyfikat jest używany do szyfrowania portów w węźle Self-Hosted IR, umożliwiający **komunikacji między węzłami** (dla synchronizacji stanu, który zawiera połączone usługi poświadczenia synchronizacji między węzłami) oraz w trakcie **przy użyciu programu PowerShell polecenia cmdlet dla połączonej usługi poświadczeń ustawienie** z w obrębie sieci lokalnej. Zalecane jest używanie tego certyfikatu, jeśli prywatnego środowiska sieciowego nie jest bezpieczna lub jeśli chcesz do zabezpieczenia komunikacji między węzłami w ramach sieci prywatnej, jak również. Przenoszenie danych przesyłanych z własne środowisko IR w innych magazynach danych występuje zawsze, przy użyciu szyfrowanego kanału, niezależnie od tego certyfikatu, lub nie. 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Udostępnianie własnego środowiska integration runtime z różnych fabryk danych
 

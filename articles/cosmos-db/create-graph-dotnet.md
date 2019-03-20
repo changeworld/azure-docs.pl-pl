@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 2979f64934b2ea4517800f5bf0a17e96a1b238dc
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: 3f10c8d38d37682e2a949397d9747ec094bdb9af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587858"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170109"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Szybki start: tworzenie aplikacji .NET Framework lub Core za pomocą konta interfejsu API języka Gremlin w usłudze Azure Cosmos DB
 
@@ -160,7 +160,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) przejdź do swojego konta bazy danych programu Graph. Na karcie **Przegląd** są wyświetlane dwa punkty końcowe: 
  
-   **Identyfikator URI zestawu SDK platformy .NET** — ta wartość jest używana podczas nawiązywania połączenia z kontem programu Graph przy użyciu biblioteki Microsoft.Azure.Graphs. 
+   **Identyfikator URI zestawu SDK platformy .NET** — ta wartość jest używana podczas łączenia z kontem programu graph przy użyciu biblioteki Microsoft.Azure.Graphs. 
 
    **Punkt końcowy języka Gremlin** — ta wartość jest używana podczas nawiązywania połączenia z kontem programu Graph przy użyciu biblioteki Gremlin.Net.
 

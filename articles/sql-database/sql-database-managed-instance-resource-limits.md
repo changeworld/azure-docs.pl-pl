@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/27/2019
-ms.openlocfilehash: e429504cb6df2ba4f871fa0c9ca780ac5d906356
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958978"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223822"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -55,8 +55,8 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
 | Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |
-| Danych/dziennika operacji We/Wy (w przybliżeniu) | 500 — 7500 operacji na pliku<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines)| 11-110 tys. obr (1,375 na rdzeń wirtualny) |
-|Przepływność dziennika | 22 MB/s na wystąpienie | 3 MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48 MB/s na wystąpienie|
+| Danych/dziennika operacji We/Wy (w przybliżeniu) | 500 — 7500 operacji na pliku<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11-110 tys. obr (1,375 na rdzeń wirtualny) |
+| Przepływność dziennika | 22 MB/s na wystąpienie | 3 MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48 MB/s na wystąpienie|
 | Przepływność danych (w przybliżeniu) | 100 - 250 MB/s na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s na rdzeniach wirtualnych |
 | We/Wy, czas oczekiwania (w przybliżeniu) | 5 – 10 ms | 1 – 2 ms |
 | Maksymalny rozmiar bazy danych tempDB | 192 - 1,920 GB (24 GB na rdzeń wirtualny) | Bez ograniczeń — ograniczone przez maksymalny rozmiar wystąpienia: magazynu |
@@ -90,6 +90,9 @@ Typy obsługiwane subskrypcji mogą zawierać ograniczoną liczbę zasobów na r
 - **Limit podsieci**: Maksymalna liczba podsieci wdrożonym wystąpienia zarządzanego w jednym regionie.
 - **Limit liczby wystąpień**: Maksymalna liczba wystąpień, które mogą być wdrażane w jednym regionie.
 
+> [!Note]
+> Limity te są ustawienia domyślne i ograniczenia nie weryfikacji technicznej. Limity, może być zwiększenia na żądanie, tworząc specjalny [żądania pomocy technicznej w witrynie Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance) Jeśli potrzebujesz większej liczby wystąpień zarządzanych w bieżącym regionie. Jako alternatywę można utworzyć nowego wystąpienia zarządzane przez usługę w innym regionie platformy Azure, bez wysyłania żądań pomocy technicznej.
+
 W poniższej tabeli przedstawiono domyślne limity regionalne dla obsługiwanych subskrypcji:
 
 |Typ subskrypcji| Maksymalna liczba podsieci wystąpienia zarządzanego | Maksymalna liczba wystąpień |Maksymalna liczba GP zarządzane wystąpienia *|Maksymalna liczba BC zarządzane wystąpienia *|
@@ -97,14 +100,14 @@ W poniższej tabeli przedstawiono domyślne limity regionalne dla obsługiwanych
 |Płatność zgodnie z rzeczywistym użyciem|1*|4*|4*|1*|
 |CSP |1*|4*|4*|1*|
 |Płatność za rzeczywiste użycie, tworzenie i testowanie|1*|4*|4*|1*|
-|Tworzenie i testowanie (przedsiębiorstwo)|1*|4*|4*|1*|
+|Enterprise — tworzenie i testowanie|1*|4*|4*|1*|
 |EA|3**|12**|12**|3**|
 
 \* 1 BC lub 4 wystąpień zasad grupy w jednej podsieci, można wdrożyć albo tak, aby łączna liczba jednostek"wystąpienie" w podsieci nigdy nie przekracza 4.
 
 ** Maksymalnej liczby wystąpień w jednej warstwie usługi ma zastosowanie, jeśli żadne wystąpienia znajduje się w innej warstwie usługi. W przypadku, gdy użytkownik chce mieszać GP i BC wystąpienia w ramach tej samej podsieci, następująca sekcja służy jako odwołanie dla dozwolonych kombinacji. Zgodnie z zasadą proste całkowita liczba podsieci nie może przekraczać 3, a łączna liczba jednostek wystąpienia nie może przekraczać 12.
 
-Te limity można zwiększyć, tworząc specjalny [żądania pomocy technicznej w witrynie Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance) Jeśli potrzebujesz większej liczby wystąpień zarządzanych w bieżącym regionie. Jako alternatywę można utworzyć nowego wystąpienia zarządzane przez usługę w innym regionie platformy Azure, bez wysyłania żądań pomocy technicznej.
+
 
 > [!IMPORTANT]
 > Podczas planowania wdrożenia należy rozważyć, czy wystąpienia biznesowe krytyczne (BC) (z powodu dodane redundancy) zwykle zużywa 4 x większą pojemność niż wystąpienia ogólnego przeznaczenia (GP). Tak więc, na obliczeniach, wystąpienia zasad grupy: 1 = 1 wystąpienie jednostki oraz wystąpienia 1 BC = 4 jednostki wystąpienia. Aby uprościć analizy użycia na wartości domyślne, podsumowanie jednostki wystąpienia we wszystkich podsieciach w regionie, w których są wdrażane wystąpienia zarządzane przez usługę i należy porównać wyniki z granicami jednostki wystąpienia dla typu Twojej subskrypcji.

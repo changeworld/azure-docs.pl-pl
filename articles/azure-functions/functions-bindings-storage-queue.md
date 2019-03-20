@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: f54bec9c328893d1d579bff3313f126dbc1178de
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fbb95f6b92944b0f07ad17eb3094f9b30480144c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728033"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200977"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla kolejki platformy Azure
 
@@ -176,7 +176,7 @@ module.exports = async function (context, message) {
 ### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
 W poniższym przykładzie Java pokazano wyzwalacz kolejki magazynu funkcji, które rejestruje wyzwalane komunikat umieszczony w kolejce `myqueuename`.
- 
+
  ```java
  @FunctionName("queueprocessor")
  public void run(
@@ -190,7 +190,7 @@ W poniższym przykładzie Java pokazano wyzwalacz kolejki magazynu funkcji, któ
  ```
 
 ## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
- 
+
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następujących atrybutów, aby skonfigurować wyzwalacz kolejki:
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
@@ -218,7 +218,7 @@ W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następ
       ....
   }
   ```
- 
+
   Aby uzyskać kompletny przykład, zobacz [wyzwalacza — przykład w języku C#](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
@@ -253,14 +253,14 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy| Musi być równa `queueTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction**| Nie dotyczy | W *function.json* tylko plik. Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwa** | Nie dotyczy |Nazwa zmiennej, która zawiera ładunek elementu kolejki w kodzie funkcji.  | 
-|**queueName** | **QueueName**| Nazwa kolejki do sondowania. | 
+|**Nazwa** | Nie dotyczy |Nazwa zmiennej, która zawiera ładunek elementu kolejki w kodzie funkcji.  |
+|**queueName** | **QueueName**| Nazwa kolejki do sondowania. |
 |**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
- 
+
 W języku C# i skrypt języka C#, uzyskiwać dostęp do wiadomości za pomocą parametru metody, takie jak `string paramName`. W języku C# `paramName` jest wartością określoną w `name` właściwość *function.json*. Możesz powiązać dowolny z następujących typów:
 
 * Obiekt — środowisko uruchomieniowe usługi Functions deserializuje ładunek JSON do wystąpienia klasy dowolnego zdefiniowane w kodzie. 
@@ -306,9 +306,7 @@ Wyzwalacz kolejki automatycznie zapobiega funkcji przetwarzanie komunikatu w kol
 
 ## <a name="trigger---hostjson-properties"></a>Wyzwalacz — właściwości host.json
 
-[Host.json](functions-host-json.md#queues) plik zawiera ustawienia, które kontrolują zachowanie wyzwalacz kolejki.
-
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+[Host.json](functions-host-json.md#queues) plik zawiera ustawienia, które kontrolują zachowanie wyzwalacz kolejki. Zobacz [ustawienia host.json](#hostjson-settings) sekcji, aby uzyskać szczegółowe informacje dotyczące dostępnych ustawień.
 
 ## <a name="output"></a>Dane wyjściowe
 
@@ -370,7 +368,7 @@ Oto *function.json* pliku:
     }
   ]
 }
-``` 
+```
 
 [Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
@@ -431,7 +429,7 @@ Oto *function.json* pliku:
     }
   ]
 }
-``` 
+```
 
 [Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
@@ -466,13 +464,13 @@ module.exports = function(context) {
        result.setValue(message + " has been added.");
        return message;
  }
- ```
+```
 
 W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@QueueOutput` adnotacji w parametrach, którego wartość będzie zapisany do usługi Queue storage.  Typ parametru musi być `OutputBinding<T>`, gdzie T jest dowolnego natywnego języka Java typu obiektu typu POJO.
 
 
 ## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
- 
+
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
 Ten atrybut ma zastosowanie do `out` parametru lub zwracanej wartości funkcji. Konstruktor atrybutu ma nazwę kolejki, jak pokazano w poniższym przykładzie:
@@ -509,14 +507,14 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa `queue`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa `out`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje kolejkę w kodzie funkcji. Ustaw `$return` odwoływać się do wartości zwracanej funkcji.| 
-|**queueName** |**QueueName** | Nazwa kolejki. | 
+|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje kolejkę w kodzie funkcji. Ustaw `$return` odwoływać się do wartości zwracanej funkcji.|
+|**queueName** |**QueueName** | Nazwa kolejki. |
 |**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie
- 
+
 W języku C# i skrypt języka C#, należy napisać pojedynczy komunikat z kolejki za pomocą parametru metody, takie jak `out T paramName`. W języku C# `paramName` jest wartością określoną w `name` właściwość *function.json*. Można użyć typ zwracany metody zamiast `out` parametru i `T` może być dowolną z następujących typów:
 
 * Obiekt możliwy do serializacji w formacie JSON
@@ -564,16 +562,16 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
         }
     }
 }
-```  
+```
 
 
 |Właściwość  |Domyślne | Opis |
-|---------|---------|---------| 
-|maxPollingInterval|00:00:02|Maksymalny interwał między sondowaniami kolejki. Minimalna liczba to 00:00:00.100 (100 ms). | 
-|visibilityTimeout|00:00:00|Odstęp czasu między kolejnymi próbami podczas przetwarzania komunikatu nie powiedzie się. | 
-|batchSize|16|Liczba komunikatów w kolejce, które środowisko uruchomieniowe usługi Functions pobiera jednocześnie przetwarzane równolegle. Gdy liczba przetwarzanych wyświetlona w dół `newBatchThreshold`, środowisko uruchomieniowe inna partia pobiera i uruchamia przetwarzanie tych wiadomości. Dlatego jest maksymalna liczba współbieżnych komunikatów przetwarzanych dla każdej funkcji `batchSize` oraz `newBatchThreshold`. Ten limit dotyczy oddzielnie poszczególnych funkcji wyzwalanej przez kolejkę. <br><br>Jeśli chcesz uniknąć wykonywania równoległego dla wiadomości otrzymanych w jednej kolejki można ustawić `batchSize` 1. Jednak to ustawienie pozwala wyeliminować współbieżności tylko tak długo, jak aplikacja funkcji zostanie uruchomiona na jednej maszynie wirtualnej (VM). Jeśli aplikacja funkcji skalowania do wielu maszyn wirtualnych, każda maszyna wirtualna może uruchomić jedno wystąpienie każdej funkcji wyzwalanej przez kolejkę.<br><br>Maksymalna `batchSize` wynosi 32. | 
-|maxDequeueCount|5|Liczba prób przetwarzania komunikatu przed jego przeniesieniem do skażone kolejki.| 
-|newBatchThreshold|batchSize/2|Zawsze, gdy liczba komunikatów przetwarzanych jednocześnie uzyskuje na ten numer, środowisko uruchomieniowe pobiera inna partia.| 
+|---------|---------|---------|
+|maxPollingInterval|00:00:02|Maksymalny interwał między sondowaniami kolejki. Minimalna liczba to 00:00:00.100 (100 ms). |
+|visibilityTimeout|00:00:00|Odstęp czasu między kolejnymi próbami podczas przetwarzania komunikatu nie powiedzie się. |
+|batchSize|16|Liczba komunikatów w kolejce, które środowisko uruchomieniowe usługi Functions pobiera jednocześnie przetwarzane równolegle. Gdy liczba przetwarzanych wyświetlona w dół `newBatchThreshold`, środowisko uruchomieniowe inna partia pobiera i uruchamia przetwarzanie tych wiadomości. Dlatego jest maksymalna liczba współbieżnych komunikatów przetwarzanych dla każdej funkcji `batchSize` oraz `newBatchThreshold`. Ten limit dotyczy oddzielnie poszczególnych funkcji wyzwalanej przez kolejkę. <br><br>Jeśli chcesz uniknąć wykonywania równoległego dla wiadomości otrzymanych w jednej kolejki można ustawić `batchSize` 1. Jednak to ustawienie pozwala wyeliminować współbieżności tylko tak długo, jak aplikacja funkcji zostanie uruchomiona na jednej maszynie wirtualnej (VM). Jeśli aplikacja funkcji skalowania do wielu maszyn wirtualnych, każda maszyna wirtualna może uruchomić jedno wystąpienie każdej funkcji wyzwalanej przez kolejkę.<br><br>Maksymalna `batchSize` wynosi 32. |
+|maxDequeueCount|5|Liczba prób przetwarzania komunikatu przed jego przeniesieniem do skażone kolejki.|
+|newBatchThreshold|batchSize/2|Zawsze, gdy liczba komunikatów przetwarzanych jednocześnie uzyskuje na ten numer, środowisko uruchomieniowe pobiera inna partia.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

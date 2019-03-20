@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722910"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999538"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Wprowadzenie do usługi Azure Queue storage i Visual Studio podłączone usługi (projekty, zadania WebJob)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -27,7 +27,7 @@ W tym artykule opisano sposób rozpocząć korzystanie z usługi Azure Queue sto
 
 Ten artykuł zawiera C# przykłady kodu, które pokazują, jak używać zestawu Azure WebJobs SDK w wersji 1.x za pomocą usługi Azure Queue storage.
 
-Azure Queue Storage to usługa do przechowywania dużej liczby komunikatów, do której można uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem uwierzytelnionego połączenia za pomocą protokołu HTTP lub HTTPS. Pojedynczy komunikat z kolejki nie może przekraczać 64 KB, a kolejka może zawierać miliony komunikatów — maksymalnie liczbę nieprzekraczającą całkowitego limitu pojemności konta magazynu. Zobacz [Rozpoczynanie pracy z usługą Azure Queue Storage przy użyciu platformy .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) Aby uzyskać więcej informacji. Aby uzyskać więcej informacji na temat platformy ASP.NET, zobacz [ASP.NET](http://www.asp.net).
+Azure Queue Storage to usługa do przechowywania dużej liczby komunikatów, do której można uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem uwierzytelnionego połączenia za pomocą protokołu HTTP lub HTTPS. Pojedynczy komunikat z kolejki nie może przekraczać 64 KB, a kolejka może zawierać miliony komunikatów — maksymalnie liczbę nieprzekraczającą całkowitego limitu pojemności konta magazynu. Zobacz [Rozpoczynanie pracy z usługą Azure Queue Storage przy użyciu platformy .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) Aby uzyskać więcej informacji. Aby uzyskać więcej informacji na temat platformy ASP.NET, zobacz [ASP.NET](https://www.asp.net).
 
 ## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>Jak wyzwolić funkcję po otrzymaniu komunikatu w kolejce
 Aby napisać funkcja wywołująca przez zestaw SDK zadań Webjob, po odebraniu komunikatu w kolejce, użyj **QueueTrigger** atrybutu. Konstruktor atrybutu ma parametr ciągu, który określa nazwę kolejki do sondowania. Aby zobaczyć, jak można ustawić nazwy kolejki dynamicznie, zapoznaj się z [jak ustawić opcje konfiguracji](#how-to-set-configuration-options).
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 Oprócz **ciąg**, parametr może być tablicą bajtów **CloudQueueMessage** obiektu lub POCO, który zdefiniujesz.
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykłe stare obiektu CLR](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) kolejki komunikatów
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykłe stare obiektu CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) kolejki komunikatów
 W poniższym przykładzie komunikat w kolejce zawiera plik JSON do **BlobInformation** obiektu, który zawiera **BlobName** właściwości. Zestaw SDK automatycznie deserializuje obiekt.
 
 ```csharp
@@ -54,7 +54,7 @@ public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobI
 }
 ```
 
-Zestaw SDK używa [pakiet Newtonsoft.Json NuGet](http://www.nuget.org/packages/Newtonsoft.Json) do serializacji i deserializacji komunikatów. Jeśli tworzysz komunikatów w kolejce w programie, który nie korzysta z zestawem SDK usługi WebJobs można napisać kod, jak w poniższym przykładzie do utworzenia komunikatu w kolejce POCO, zestaw SDK może przeanalizować.
+Zestaw SDK używa [pakiet Newtonsoft.Json NuGet](https://www.nuget.org/packages/Newtonsoft.Json) do serializacji i deserializacji komunikatów. Jeśli tworzysz komunikatów w kolejce w programie, który nie korzysta z zestawem SDK usługi WebJobs można napisać kod, jak w poniższym przykładzie do utworzenia komunikatu w kolejce POCO, zestaw SDK może przeanalizować.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
@@ -72,7 +72,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Funkcje asynchroniczne może potrwać [token anulowania](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), jak pokazano w poniższym przykładzie, który kopiuje obiekt blob. (Objaśnienia dotyczące **queueTrigger** symbolu zastępczego, zobacz [obiektów blob](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) sekcji.)
+Funkcje asynchroniczne może potrwać [token anulowania](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), jak pokazano w poniższym przykładzie, który kopiuje obiekt blob. (Objaśnienia dotyczące **queueTrigger** symbolu zastępczego, zobacz [obiektów blob](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) sekcji.)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykłe stare obiektu CLR](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) kolejki komunikatów
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykłe stare obiektu CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) kolejki komunikatów
 Do utworzenia komunikatu w kolejce, zawierający POCO, a nie w ciągu, należy przekazać typ, POCO jako parametr wyjściowy do **kolejki** atrybut konstruktora.
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykłe stare obiektu CLR](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) kolejki komunikatów
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(zwykłe stare obiektu CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) kolejki komunikatów
 Dla POCO, zapisane w formacie JSON w komunikacie w kolejce, można użyć symboli zastępczych dostępnych nazwy właściwości obiektu w **kolejki** atrybutu **blobPath** parametru. Umożliwia także nazwy właściwości metadanych kolejki jako symbole zastępcze. Zobacz [kolejki lub kolejki komunikatów metadanych](#get-queue-or-queue-message-metadata).
 
 Poniższy przykład kopiuje obiekt blob do nowego obiektu blob z innym rozszerzeniem. Komunikat w kolejce to **BlobInformation** obiektu, który zawiera **BlobName** i **BlobNameWithoutExtension** właściwości. Nazwy właściwości są używane jako symbole zastępcze w ścieżce obiektu blob dla **Blob** atrybutów.
@@ -311,7 +311,7 @@ public static void CopyBlobPOCO(
 }
 ```
 
-Zestaw SDK używa [pakiet Newtonsoft.Json NuGet](http://www.nuget.org/packages/Newtonsoft.Json) do serializacji i deserializacji komunikatów. Jeśli tworzysz komunikatów w kolejce w programie, który nie korzysta z zestawem SDK usługi WebJobs można napisać kod, jak w poniższym przykładzie do utworzenia komunikatu w kolejce POCO, zestaw SDK może przeanalizować.
+Zestaw SDK używa [pakiet Newtonsoft.Json NuGet](https://www.nuget.org/packages/Newtonsoft.Json) do serializacji i deserializacji komunikatów. Jeśli tworzysz komunikatów w kolejce w programie, który nie korzysta z zestawem SDK usługi WebJobs można napisać kod, jak w poniższym przykładzie do utworzenia komunikatu w kolejce POCO, zestaw SDK może przeanalizować.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
@@ -442,7 +442,7 @@ static void Main(string[] args)
 ### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>Ustawianie wartości dla zestawu SDK usługi WebJobs parametry konstruktora w kodzie
 Czasami trzeba określić nazwę kolejki, nazwa obiektu blob lub kontenera lub tabeli w kodzie zamiast trwale kodować nadaj mu nazwę. Na przykład możesz chcieć określić nazwę kolejki **QueueTrigger** w zmiennej środowisku lub pliku konfiguracji.
 
-Możesz to zrobić, przekazując **NameResolver** obiekt **JobHostConfiguration** typu. Obejmują specjalnych symboli zastępczych, ujęte w znaki procentu (%) w parametrach konstruktora atrybutu zestawu SDK usługi WebJobs i **NameResolver** kod określa rzeczywiste wartości, które będą używane zamiast te symbole zastępcze.
+Możesz to zrobić, przekazując **NameResolver** obiekt **JobHostConfiguration** typu. Zawierają specjalne elementy zastępcze otoczony procentu (%) loguje się parametry konstruktora atrybutu zestaw SDK zadań Webjob i **NameResolver** kod określa rzeczywiste wartości, które będą używane zamiast te symbole zastępcze.
 
 Na przykład załóżmy, że chcesz użyć kolejkę o nazwie logqueuetest w środowisku testowym i jedną o nazwie logqueueprod w środowisku produkcyjnym. Zamiast nazwy zakodowane kolejki, aby określić nazwę wpisu w **appSettings** kolekcji, która będzie mieć nazwę kolejki rzeczywistych. Jeśli **appSettings** logqueue jest klucz, funkcja może wyglądać jak w poniższym przykładzie.
 

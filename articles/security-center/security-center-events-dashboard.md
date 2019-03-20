@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: 2b9426043619887d99003677fd6e8488cb56cce2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241072"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075769"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Monitorowanie i przetwarzania zdarzeń zabezpieczeń w usłudze Azure Security Center
 Pulpit nawigacyjny zdarzeń zawiera omówienie liczby zdarzeń związanych z zabezpieczeniami, zbierane wraz z upływem czasu i listę istotnych zdarzeń, które mogą wymagać Twojej uwagi.  
@@ -57,30 +57,30 @@ Możesz uzyskać dostęp do **zdarzenia** pulpitu nawigacyjnego z poziomu menu g
 1. W obszarze **usługi Security Center** menu głównego, wybierz opcję **zdarzenia**.
 2. **Pulpit nawigacyjny zdarzeń** selektor obszaru roboczego może zostać otwarty. Jeśli masz tylko jeden obszar roboczy, selektor obszaru roboczego, w tym nie jest widoczna. Jeśli masz więcej niż jeden obszar roboczy, musisz wybrać obszar roboczy, aby wyświetlić jego szczegóły przetwarzania zdarzeń. Wybierz obszar roboczy z listy, jeśli masz więcej niż jednego obszaru roboczego.
 
-  ![Listy obszaru roboczego][3]
+   ![Listy obszaru roboczego][3]
 
 3. **Pulpit nawigacyjny zdarzeń** otwiera zawierająca szczegóły zdarzenia dla wybranego obszaru roboczego. Możesz wyświetlić istotne zdarzenia i wszystkie zdarzenia według typu.  W tym przykładzie Wybraliśmy **istotnych zdarzeń**.
 
-  ![Istotne zdarzenie][4]
+   ![Istotne zdarzenie][4]
 
 4. Można tworzyć zapytania większej ilości danych w obszarze roboczym, wybierając typ zdarzenia. W tym przykładzie Wybraliśmy **SecurityEvent**.
 
-  ![Wybieranie typu zdarzenia][5]
+   ![Wybieranie typu zdarzenia][5]
 
 5. **Wyszukiwania w dzienniku** otwiera o dodatkowe informacje szczegółowe na temat typu zdarzenia.
 
-  ![Wyszukiwanie w dzienniku][6]
+   ![Wyszukiwanie w dzienniku][6]
 
 ## <a name="add-a-notable-event"></a>Dodaj istotne zdarzenie
 Usługa Security Center zapewnia out-of--box istotnych zdarzeń. Możesz dodać istotnych zdarzeń w oparciu o własne zapytania za pomocą [język zapytania Kusto](../log-analytics/log-analytics-search-reference.md). Wrócimy do **pulpit nawigacyjny zdarzeń** do Dodaj istotne zdarzenie.
 
 1. Wybierz **Dodaj istotne zdarzenie**.
 
-  ![Dodaj istotne zdarzenie][7]
+   ![Dodaj istotne zdarzenie][7]
 
 2. **Dodaj istotne zdarzenie niestandardowe** zostanie otwarty.  W obszarze **nazwę wyświetlaną**, wprowadź nazwę swojej istotnego zdarzenia. W obszarze **zapytania wyszukiwania**, wprowadź kwerendę dla zdarzenia.
 
-  ![Wprowadź kwerendę][8]
+   ![Wprowadź kwerendę][8]
 
 4. Kliknij przycisk **OK**.
 
@@ -104,19 +104,19 @@ Jeśli wiersz obszaru roboczego:
 1. Wybierz obszar roboczy, który **wymaga aktualizacji**.
 2. **Wyszukaj uaktualnienie** zostanie otwarty. Wybierz **Uaktualnij teraz**.
 
-  ![Podnieś poziom teraz][10]
+   ![Podnieś poziom teraz][10]
 
 ## <a name="upgrade-to-security-centers-standard-tier"></a>Uaktualnienie do warstwy standardowa usługi Security Center
 1. Wybierz obszar roboczy z **PLAN uaktualnienia**.
 2. **Pulpit nawigacyjny zdarzeń** zostanie otwarty. Wybierz **pulpit nawigacyjny zdarzeń spróbuj**.
 
-  ![Wypróbuj pulpit nawigacyjny][11]
+   ![Wypróbuj pulpit nawigacyjny][11]
 
 3. W obszarze **dołączanie do zabezpieczeń zaawansowanych**, wybierz obszar roboczy, która jest uaktualniana.
 4. W obszarze **ceny**, wybierz opcję **standardowa**.
 5. Wybierz pozycję **Zapisz**.
 
-  ![Uaktualnienie do warstwy standardowa][12]
+   ![Uaktualnienie do warstwy standardowa][12]
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób korzystania z pulpitu nawigacyjnego zdarzenie Security Center. Aby dowiedzieć się więcej o tym, jak działa pulpitu nawigacyjnego i pisać własne zapytania zdarzeń, zobacz:

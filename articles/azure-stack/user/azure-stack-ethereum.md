@@ -12,12 +12,12 @@ ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
 ms.lastreviewed: 02/04/2019
-ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a1902ae2bf663c432876a0f73e2bb17616023b8a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006912"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Wdrażanie sieci łańcucha bloków Ethereum w usłudze Azure Stack
 
@@ -39,7 +39,7 @@ Pobierz najnowsze elementy [z witryny Marketplace](../azure-stack-download-azure
 - Niestandardowego skryptu dla systemu Linux w wersji 2.0
 - Rozszerzenie niestandardowego skryptu dla Windows
 
-Aby uzyskać więcej informacji o scenariuszach łańcucha bloków, zobacz [szablon rozwiązania konsorcjum dowód pracy Ethereum](../../blockchain/templates/ethereum-deployment.md).
+Aby uzyskać więcej informacji o scenariuszach łańcucha bloków, zobacz [szablon rozwiązania konsorcjum dowód uwierzytelniania Ethereum](../../blockchain/templates/ethereum-poa-deployment.md).
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 

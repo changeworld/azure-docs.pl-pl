@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 65bb5990-07ef-4244-9f41-cd28fc2cb5a2
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b9675289ab14b00d565a5863600845d42b55030
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: HT
+ms.openlocfilehash: 63fbab5fffbcc30d0242d223fd8a6b5796c2aeae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985958"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Image Relay
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Image Relay z usługą Azure AD, należ
 
 **Aby dodać aplikację Image Relay z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -158,7 +158,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     b. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
-    d. Jako format **Name Id Format** (Format identyfikatora nazwy) wybierz pozycję **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**.
+    c. Jako format **Name Id Format** (Format identyfikatora nazwy) wybierz pozycję **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**.
 
     d. W obszarze **Binding Options for Requests from the Service Provider (Image Relay)** (Opcje wiązania dla żądań od dostawcy usług (Image Relay)) wybierz pozycję **POST Binding** (Powiązanie POST).
 
@@ -198,7 +198,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -251,7 +251,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Image Rela
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Image Relay w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Image Relay, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

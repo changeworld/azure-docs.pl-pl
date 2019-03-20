@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 94c464733d731505cde0327ce9a295d3b4ab68de
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538701"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995899"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
 > [!NOTE]
@@ -359,7 +359,7 @@ W tym kroku opisano tworzenie **potoku** przy użyciu jednego **działania kopio
 
    * W sekcji działań jest tylko działania którego **typu** ustawiono **kopiowania**.
    * **Dane wejściowe** dla działania jest ustawiony na **EmpOnPremSQLTable** i **dane wyjściowe** dla działania jest ustawiony na **OutputBlobTable**.
-   * W **typeProperties** sekcji **SqlSource** jest określony jako **typ źródła** i ** BlobSink ** jest określony jako **typ ujścia**.
+   * W **typeProperties** sekcji **SqlSource** jest określony jako **typ źródła** i **BlobSink** jest określony jako **typ ujścia**.
    * Zapytanie SQL `select * from emp` jest określona dla **sqlReaderQuery** właściwość **SqlSource**.
 
    Zarówno data/godzina rozpoczęcia, jak i data/godzina zakończenia muszą być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41Z. Czas **end** jest opcjonalny, ale w tym samouczku zostanie użyty.

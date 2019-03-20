@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 72238db8322132f42e14656c106b82d8604af21f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435103"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107818"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Omówienie automatycznego wdrożenia usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali
 
@@ -32,7 +32,7 @@ Ten artykuł koncentruje się na konfiguracji i monitorowania etapów do floty u
 2. Usługa IoT Hub komunikuje się z wszystkie objęte nimi urządzenia, aby je skonfigurować przy użyciu żądanych modułów. 
 3. Usługa IoT Hub pobiera stan z urządzenia usługi IoT Edge i udostępnienie ich dla operatora.  Na przykład operator widoczne, gdy urządzenia usługi Edge nie została skonfigurowana pomyślnie lub jeśli moduł zakończy się niepowodzeniem podczas wykonywania. 
 4. W dowolnym momencie nowego urządzenia usługi IoT Edge, które spełniają warunki określania wartości docelowej są skonfigurowane dla wdrożenia. Na przykład wdrożenia, który jest przeznaczony dla wszystkich urządzeń usługi IoT Edge w stanie Waszyngton, automatycznie konfiguruje nowe urządzenie usługi IoT Edge po jego są aprowizowane i dodane do grupy urządzeń w stanie Waszyngton. 
- 
+ 
 W tym artykule opisano poszczególne składniki zaangażowane w konfigurowania i monitorowania wdrożenia. Aby uzyskać wskazówki dotyczące tworzenia i aktualizowania wdrożenia, zobacz [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Wdrożenie

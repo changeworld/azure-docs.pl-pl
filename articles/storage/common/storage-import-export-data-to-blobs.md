@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: cdaa151f0603cddc9ca1bf17b0ff304f646cfdde
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000245"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -29,7 +29,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
     - Aby uzyskać informacji na temat kontenera magazynu, przejdź do [utworzyć kontenera magazynu](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
 - System Windows z systemem [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems). 
-- Włącz funkcję BitLocker w systemie Windows. Zobacz [jak włączyć funkcję BitLocker](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+- Włącz funkcję BitLocker w systemie Windows. Zobacz [jak włączyć funkcję BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 - [Pobierz WAImportExport wersji 1](https://aka.ms/waiev1) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexportv1`. Na przykład `C:\WaImportExportV1`.
 - Mieć konto FedEx/DHL w sprawie.  
     - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
@@ -47,7 +47,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
 
 1.  Do systemu Windows za pomocą łączników SATA, należy połączyć z stacje dysków.
 1.  Utwórz pojedynczy wolumin NTFS na każdym dysku. Przypisz literę dysku do woluminu. Nie należy używać punkty instalacji.
-2.  Włącz szyfrowanie funkcją BitLocker na woluminie NTFS. Jeśli system Windows Server, postępuj zgodnie z instrukcjami w [jak włączyć funkcję BitLocker w systemie Windows Server 2012 R2](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+2.  Włącz szyfrowanie funkcją BitLocker na woluminie NTFS. Jeśli system Windows Server, postępuj zgodnie z instrukcjami w [jak włączyć funkcję BitLocker w systemie Windows Server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 3.  Kopiuj dane do woluminu wykorzystującego. Użyj przeciągania i upuszczania lub Robocopy lub dowolnego narzędzia kopiowania.
 4.  Otwórz okno programu PowerShell lub wierszu polecenia z uprawnieniami administracyjnymi. Zmień katalog na folder rozpakowany, uruchom następujące polecenie:
     
@@ -94,14 +94,14 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 4. W **podstawy**:
 
-    - Wybierz **Importuj na platformę Azure**.
-    - Wprowadź opisową nazwę zadania importowania. Użyj nazwy w celu śledzenia postępu zadań.
-        - Nazwa może zawierać tylko małe litery, cyfry i łączniki.
-        - Nazwa musi zaczynać się literą i nie może zawierać spacji.
-    - Wybierz subskrypcję.
-    - Wprowadź lub wybierz grupę zasobów.  
+   - Wybierz **Importuj na platformę Azure**.
+   - Wprowadź opisową nazwę zadania importowania. Użyj nazwy w celu śledzenia postępu zadań.
+       - Nazwa może zawierać tylko małe litery, cyfry i łączniki.
+       - Nazwa musi zaczynać się literą i nie może zawierać spacji.
+   - Wybierz subskrypcję.
+   - Wprowadź lub wybierz grupę zasobów.  
 
-    ![Tworzenie zadania importu — krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Tworzenie zadania importu — krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. W **szczegóły zadania**:
 
@@ -113,21 +113,21 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 4. W **zwracają informacje o wysyłce**:
 
-    - Wybierz nośnik, z listy rozwijanej.
-    - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania importu. Jeśli nie masz numeru konta, Utwórz [FedEx](http://www.fedex.com/us/oadr/) lub [przez firmę DHL](http://www.dhl.com/) konto przewoźnika.
-    - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region. 
+   - Wybierz nośnik, z listy rozwijanej.
+   - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania importu. Jeśli nie masz numeru konta, Utwórz [FedEx](https://www.fedex.com/us/oadr/) lub [przez firmę DHL](http://www.dhl.com/) konto przewoźnika.
+   - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region. 
         
-        > [!TIP] 
-        > Zamiast określania adresu e-mail dla pojedynczego użytkownika, należy podać adres e-mail grupy. Dzięki temu otrzymywać powiadomienia, nawet jeśli opuści administrator.
+       > [!TIP] 
+       > Zamiast określania adresu e-mail dla pojedynczego użytkownika, należy podać adres e-mail grupy. Dzięki temu otrzymywać powiadomienia, nawet jeśli opuści administrator.
 
-    ![Tworzenie zadania importu — krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Tworzenie zadania importu — krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
 5. W **Podsumowanie**:
 
-    - Przejrzyj informacje o zadaniu, podane w informacjach. Zanotuj nazwę zadania i centrum danych platformy Azure, wysyłania adres odeślij dyski do platformy Azure. Te informacje są używane w dalszej części na etykietę wysyłkową.
-    - Kliknij przycisk **OK** do utworzenia zadania importu.
+   - Przejrzyj informacje o zadaniu, podane w informacjach. Zanotuj nazwę zadania i centrum danych platformy Azure, wysyłania adres odeślij dyski do platformy Azure. Te informacje są używane w dalszej części na etykietę wysyłkową.
+   - Kliknij przycisk **OK** do utworzenia zadania importu.
 
-    ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
 ## <a name="step-3-ship-the-drives"></a>Krok 3: Dostarczaj dyski 
 

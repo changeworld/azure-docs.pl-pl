@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: bdfeb41c7881bfbd577cdf1a9190617e09979a7f
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961027"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098495"
 ---
 # <a name="monitor-and-tune"></a>Monitorowanie i dostrajanie
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for PostgreSQL udostępnia różne opcje monitorowania zapewniają wgląd w zachowanie serwera.
@@ -23,7 +23,7 @@ Usługa Azure Database for PostgreSQL udostępnia różne metryki, które zapewn
 Te metryki są dostępne dla usługi Azure Database for PostgreSQL:
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Opis|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|Procent użycia Procesora|Procent|Procent użycia Procesora w użyciu.|
 |memory_percent|Procent pamięci|Procent|Procent pamięci w użyciu.|
 |io_consumption_percent|% Operacji We/Wy|Procent|Procent we/wy w użyciu.|

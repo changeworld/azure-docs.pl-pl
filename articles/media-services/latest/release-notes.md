@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8f549c20480e3866725717aa054af6653ab5a913
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 236e4e7079da792d055a8de148d03852ca1012ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877364"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
 
@@ -40,7 +40,7 @@ Usługa Media Services w wersji 3 jest teraz upported w chmurach narodowych plat
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) zdarzeń został dodany do schematów usługi Azure Event Grid w usłudze Media Services.
 
-## <a name="january-2019"></a>2019 stycznia
+## <a name="january-2019"></a>Styczeń 2019
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Pliki usługi Media Encoder Standard i MPI 
 
@@ -180,9 +180,9 @@ Jeśli podczas tworzenia zasobów lub filtrów kont od 09/28 i 10/12 przy użyci
 
 ## <a name="may-2018---preview"></a>Maja 2018 r. — wersja zapoznawcza
 
-### <a name="net-sdk"></a>Zestaw SDK platformy .NET
+### <a name="net-sdk"></a>Zestaw SDK .NET
 
-Następujące funkcje są obecne w zestawu .net SDK:
+Następujące funkcje są obecne w zestawie SDK platformy .NET:
 
 * **Przekształca** i **zadań** do kodowania i analizowanie zawartości multimedialnej. Aby uzyskać przykłady, zobacz [Stream pliki](stream-files-tutorial-with-api.md) i [analizy](analyze-videos-tutorial-with-api.md).
 * **Lokalizatory przesyłania strumieniowego** publikowania i przesyłanie strumieniowe zawartości na urządzeniach użytkowników końcowych

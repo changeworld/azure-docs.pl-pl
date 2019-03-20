@@ -6,21 +6,21 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 3/4/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 003b43760b4c0ae5785315e6acf0ed9982d9b1fe
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 4f95cbb6cb04f2215bb5cb89bb5e9afb4ca2628f
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960857"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342169"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
 Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest to w pełni stanowa zapora oferowana jako usługa, z wbudowaną wysoką dostępnością i możliwością nieograniczonego skalowania w chmurze. 
 
-![Omówienie zapory](media/overview/firewall-overview.png)
+![Omówienie zapory](media/overview/firewall-threat.png)
 
 Możesz centralnie tworzyć, wymuszać i rejestrować zasady łączności aplikacji i sieci w subskrypcjach i sieciach wirtualnych. Usługa Azure Firewall korzysta ze statycznego publicznego adresu IP dla zasobów sieci wirtualnej, co umożliwia zewnętrznym zaporom identyfikowanie ruchu pochodzącego z sieci wirtualnej.  Usługa jest w pełni zintegrowana z usługą Azure Monitor na potrzeby rejestrowania i analiz.
 
@@ -29,9 +29,11 @@ Możesz centralnie tworzyć, wymuszać i rejestrować zasady łączności aplika
 Usługa Azure Firewall oferuje następujące funkcje:
 
 ### <a name="built-in-high-availability"></a>Wbudowana wysoka dostępność
+
 Wysoka dostępność jest wbudowana, nie potrzeba więc żadnych dodatkowych modułów równoważenia obciążenia ani konfigurowania żadnych funkcji.
 
-### <a name="unrestricted-cloud-scalability"></a>Skalowalność w chmurze bez ograniczeń 
+### <a name="unrestricted-cloud-scalability"></a>Skalowalność w chmurze bez ograniczeń
+
 Usługa Azure Firewall umożliwia skalowanie bez ograniczeń, odpowiednio do zmieniających się przepływów ruchu sieciowego — nie trzeba więc dostosowywać budżetu do okresów szczytowego ruchu.
 
 ### <a name="application-fqdn-filtering-rules"></a>Reguły filtrowania w pełni kwalifikowanych nazw domen aplikacji
@@ -45,6 +47,14 @@ Można centralnie tworzyć reguły filtrowania sieci (*zezwalania* lub *blokowan
 ### <a name="fqdn-tags"></a>Tagi w pełni kwalifikowanych nazw domen
 
 Tagi w pełni kwalifikowanych nazw domen zezwalają na znany ruch sieciowy usługi Azure przez zaporę. Załóżmy na przykład, że chcesz zezwolić na ruch sieciowy z witryny Windows Update przez zaporę. Tworzysz regułę aplikacji i dołączasz tag „Windows Update”. Teraz ruch sieciowy z witryny Windows Update może przechodzić przez zaporę.
+
+### <a name="service-tags"></a>Tagi usługi
+
+Tag usługi reprezentuje grupę prefiksów adresów IP, aby zminimalizować złożoność tworzenia reguły zabezpieczeń. Nie można utworzyć własnego tagu usługi ani określić adresów IP uwzględnionych w tagu. Firma Microsoft zarządza prefiksami adresów obejmowanymi przez tag usługi i automatycznie aktualizuje tag usługi, gdy adresy ulegną zmianie.
+
+### <a name="threat-intelligence"></a>Analiza zagrożeń
+
+Filtrowanie na podstawie analizy zagrożeń można włączyć dla zapory dla alertów i zezwalają na ruch z i do znane złośliwe adresy IP i domen. Adresy IP i domen pochodzą z analizy zagrożeń firmy Microsoft, źródła danych.
 
 ### <a name="outbound-snat-support"></a>Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
 
@@ -65,18 +75,17 @@ W usłudze Azure Firewall występują następujące znane problemy:
 
 |Problem  |Opis  |Środki zaradcze  |
 |---------|---------|---------|
-|Konflikt z funkcją Just in time (JIT) usługi Azure Security Center|W przypadku dostępu JIT do maszyny wirtualnej znajdującej się w podsieci z trasą zdefiniowaną przez użytkownika, która wskazuje usługę Azure Firewall jako bramę domyślną, funkcja JIT usługi Azure Security Center nie działa. Jest to rezultat asymetrycznego trasowania — pakiet przychodzi za pośrednictwem publicznego adresu IP maszyny wirtualnej (funkcja JIT umożliwiła dostęp), ale ścieżka powrotna biegnie przez zaporę, która odrzuca pakiet, ponieważ nie ustanowiono sesji w zaporze.|Aby wyeliminować ten problem, należy umieścić maszyny wirtualne z funkcją JIT w oddzielnej podsieci, w której nie ma zdefiniowanej przez użytkownika trasy do zapory.|
+|Konflikt z funkcją Just in time (JIT) usługi Azure Security Center|W przypadku dostępu JIT do maszyny wirtualnej znajdującej się w podsieci z trasą zdefiniowaną przez użytkownika, która wskazuje usługę Azure Firewall jako bramę domyślną, funkcja JIT usługi Azure Security Center nie działa. Jest to wynik z routingiem asymetrycznym — pakiet jest oferowana w za pośrednictwem publicznego adresu IP maszyny wirtualnej (JIT otwartego dostępu), ale ścieżki zwrotu za pośrednictwem zapory, co powoduje pakietu, ponieważ nie istnieje żadne ustanowienie sesji w obrębie zapory.|Aby wyeliminować ten problem, należy umieścić maszyny wirtualne z funkcją JIT w oddzielnej podsieci, w której nie ma zdefiniowanej przez użytkownika trasy do zapory.|
 |Model typu gwiazda z globalną komunikacją równorzędną nie jest obsługiwany|Używanie modelu typu gwiazda, w którym koncentrator i zapora są wdrożone w jednym regionie świadczenia usługi Azure, a szprychy w innym. Połączenia z koncentratorem za pośrednictwem globalnych wirtualnych sieci równorzędnych nie są obsługiwane.|Jest to celowe. Aby uzyskać więcej informacji, zobacz [Limity, przydziały i ograniczenia usług i subskrypcji platformy Azure](../azure-subscription-service-limits.md#azure-firewall-limits)|
 Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie działają dla ruchu powiązanego z Internetem|Reguły filtrowania sieci dla protokołów innych niż TCP/UPD nie działają z funkcją SNAT i publicznym adresem IP. Protokoły inne niż TCP/UDP są obsługiwane między podsieciami szprych i sieciami wirtualnymi.|Usługa Azure Firewall korzysta ze standardowego modułu równoważenia obciążenia, [który obecnie nie obsługuje funkcji SNAT dla protokołów IP](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Firma Microsoft analizuje potencjalne opcje obsługi tego scenariusza w przyszłych wersjach.|
 |Brak obsługi protokołu ICMP w programie PowerShell i interfejsie wiersza polecenia|Program PowerShell i interfejs wiersza polecenia nie obsługują protokołu ICMP jako prawidłowego protokołu w regułach sieciowych.|Nadal można używać protokołu ICMP za pośrednictwem portalu i interfejsu API REST. Pracujemy nad dodaniem wkrótce obsługi protokołu ICMP w programie PowerShell i interfejsie wiersza polecenia.|
 |Tagi FQDN wymagają ustawienia protokołu i portu|Reguły aplikacji z tagami FQDN wymagają definicji portu i protokołu.|Jako wartości portu i protokołu można użyć wartości **https**. Pracujemy nad tym, aby to pole było opcjonalne, gdy są używane tagi FQDN.|
 |Przenoszenie zapory do innej grupy zasobów lub subskrypcji nie jest obsługiwane|Przenoszenie zapory do innej grupy zasobów lub subskrypcji nie jest obsługiwane.|Obsługa tej funkcji jest w naszym harmonogramie działania. Aby przenieść zaporę do innej grupy zasobów lub subskrypcji, musisz usunąć bieżące wystąpienie i utworzyć je ponownie w nowej grupie zasobów lub subskrypcji.|
 |Zakres portów w regułach sieci i aplikacji|Porty są ograniczone do 64 000, ponieważ porty o dużych numerach są zarezerwowane do zarządzania i sprawdzania kondycji. |Pracujemy nad złagodzeniem tego ograniczenia.|
-|
+|Może uzyskać maskowane alerty analizy zagrożeń|Reguły sieciowych z lokalizacją docelową 80/443 dla ruchu wychodzącego masek filtrowania zagrożeń analizy alertów w przypadku skonfigurowania do alertu tylko trybu.|Utwórz, filtrowanie ruchu wychodzącego dla 80/443 przy użyciu reguł aplikacji. Możesz też zmienić tryb analizy zagrożeń **alertów i odmawiać go**.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal](tutorial-firewall-deploy-portal.md)
 - [Wdrażanie usługi Azure Firewall przy użyciu szablonu](deploy-template.md)
 - [Tworzenie środowiska testowego usługi Azure Firewall](scripts/sample-create-firewall-test.md)
-

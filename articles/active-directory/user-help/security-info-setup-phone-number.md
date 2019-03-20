@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382a32d0ff9de0a7b372e3b7ff2de7170a791aab
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339253"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085086"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) do użycia połączeń telefonicznych
 Możesz wykonać następujące kroki, aby dodać weryfikację two-Factor Authentication i metod resetowania hasła. Po skonfigurowaniu to po raz pierwszy, można powrócić do **zabezpieczające** strony Dodawanie, aktualizowanie lub usuwanie informacji zabezpieczających.
@@ -26,10 +26,10 @@ Po wyświetleniu monitu o skonfigurowanie tego numeru, natychmiast, po zalogowan
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
->[!Note]
->Informacje o zabezpieczeniach nie obsługuje wewnętrzne numery telefonów. Nawet jeśli dodasz prawidłowego formatu, 4255551234 + 1 X 12345, rozszerzenia zostaną usunięte przed wykonaniem wywołania.
-
->Jeśli nie widzisz opcji dla telefonu, istnieje możliwość, że Twoja organizacja nie zezwala na numer telefonu służy do identyfikacji. W takim przypadku należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+> [!Note]
+> Informacje o zabezpieczeniach nie obsługuje wewnętrzne numery telefonów. Nawet jeśli dodasz prawidłowego formatu, 4255551234 + 1 X 12345, rozszerzenia zostaną usunięte przed wykonaniem wywołania.
+> 
+> Jeśli nie widzisz opcji dla telefonu, istnieje możliwość, że Twoja organizacja nie zezwala na numer telefonu służy do identyfikacji. W takim przypadku należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>Konfigurowanie połączeń telefonicznych z stronę informacji zabezpieczających
 W zależności od ustawień organizacji można użyć połączeń telefonicznych jako jeden z metody zabezpieczeń informacji.

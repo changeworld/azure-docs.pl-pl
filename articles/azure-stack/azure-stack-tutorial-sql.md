@@ -16,12 +16,12 @@ ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: ed149398a1244ad0cb09c3e0fe128973c6caa00d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b61bf4f05f52b9d28ee09bb6c0de30544396e815
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091600"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Samouczek: Oferowanie baz danych SQL o wysokiej dostępności
 
@@ -65,7 +65,7 @@ Wykonaj kroki w tej sekcji, aby wdrożyć grupy dostępności AlwaysOn programu 
 - Dostępność jeden zestaw zawierający Monitor udziału plików języków SQL i maszyn wirtualnych  
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Wybierz **\+** **Utwórz zasób** > **niestandardowe**, a następnie **wdrożenie szablonu**.
 
@@ -156,7 +156,7 @@ Po SQL zawsze włączone grupy dostępności zostały utworzone, skonfigurowane 
 > Uruchom następujące kroki, za pomocą portalu użytkownika usługi Azure Stack jako użytkownik dzierżawy z subskrypcją, zapewniając możliwości programu SQL Server (usługa Microsoft.SQLAdapter).
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Wybierz **\+** **Utwórz zasób** > **danych \+ magazynu**, a następnie **bazy danych SQL**.<br><br>Podaj informacje właściwości wymaganej bazy danych, w tym nazwy, sortowanie, maksymalny rozmiar i subskrypcji, grupy zasobów i lokalizacji na potrzeby wdrożenia. 
 

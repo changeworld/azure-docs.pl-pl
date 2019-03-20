@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: 9b56104934c1ddcc60222c988efdf173ca33d77b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871013"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189652"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka C#
 <a name="HOLTop"></a>
 
-W tym artykule opisano, jak wykrywać język, analizować tonację i wyodrębniać kluczowe frazy przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka C#. Ten kod został napisany do pracy z aplikacją .NET Core i zawiera minimalną liczbę odwołań do zewnętrznych bibliotek, aby możliwe było także jego uruchamianie w systemie Linux lub MacOS.
+W tym artykule opisano, jak wykrywać język, analizować tonację i wyodrębniać kluczowe frazy przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka C#. Ten kod został zapisany do pracy w aplikacji .NET Core, z minimalnym odwołaniami do zewnętrznych bibliotekach, dzięki czemu można ją również uruchomić w systemie Linux lub MacOS.
 
 Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.microsoft.com/fwlink/?LinkID=759346), zawierającym dokumentację techniczną interfejsów API.
 
@@ -30,26 +30,25 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 
 Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany dla Ciebie podczas tworzenia konta.
 
-
 ## <a name="install-the-nuget-sdk-package"></a>Instalowanie pakietu zestawu SDK NuGet
 1. Utwórz nowe rozwiązanie konsolowe w programie Visual Studio.
 1. Kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
 1. Zaznacz pole wyboru **Uwzględnij wersję wstępną**.
 1. Wybierz kartę **Przeglądaj** i wyszukaj ciąg **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**
-1. Wybierz pakiet NuGet i zainstaluj go.
+1. Wybierz pakiet NuGet i zainstaluj go. Może być konieczne v2.8.0 dla teraz (3-18-2019 r), w przeciwieństwie do 3.0.0, dopóki usterki w oprogramowaniu został rozwiązany.
 
 > [!Tip]
 >  [Punkty końcowe HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) można wywołać bezpośrednio z języka C#, ale zestaw SDK Microsoft.Azure.CognitiveServices.Language znacznie ułatwia wywołanie usługi bez martwienia się o serializację i deserializację danych JSON.
 >
 > Kilka przydatnych linków:
-> - [Strona zestawu SDK Nuget](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [Strona zestawu SDK Nuget](<https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics>)
 > - [Kod zestawu SDK](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
-
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>Wywoływanie interfejsu API analizy tekstu przy użyciu zestawu SDK
+
 1. Zastąp plik Program.cs kodem przedstawionym poniżej. Ten program pokazuje możliwości interfejsu API analizy tekstu w trzech sekcjach (wyodrębnianie języka, wyodrębnianie kluczowych fraz i analiza tonacji).
 1. Zastąp wartość nagłówka `Ocp-Apim-Subscription-Key` kluczem dostępu właściwym dla Twojej subskrypcji.
-1. Zmień lokalizację w ustawieniu `Endpoint` na punkt końcowy, w ramach którego zostało zarejestrowane konto. Punkt końcowy znajdziesz w zasobie witryny Azure Portal. Punkt końcowy zwykle zaczyna się od ciągu „https://[region].api.cognitive.microsoft.com”, a w tym miejscu podaj tylko protokół i nazwę hosta.
+1. Zastąp regionu w `Endpoint`. Punkt końcowy usługi można znaleźć w sekcji Przegląd zasobu analizy tekstu w [witryny Azure portal](<https://ms.portal.azure.com>). Uwzględnić tylko ta część punktu końcowego usługi: "https://[region].api.cognitive.microsoft.com".
 1. Uruchom program.
 
 ```csharp
@@ -217,12 +216,12 @@ Document ID: 2 , Sentiment Score: 0.44
 Document ID: 3 , Sentiment Score: 1.00
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
  [Omówienie analizy tekstu](../overview.md) [Frequently asked questions (FAQ) (Często zadawane pytania (FAQ))](../text-analytics-resource-faq.md)
 

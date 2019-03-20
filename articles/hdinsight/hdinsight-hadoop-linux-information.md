@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: c6763580a6693020c497c500342ff3ae4dc840d4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 43b672569b398f636b2e02172428cf072febb156
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339232"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202456"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -114,7 +114,8 @@ Korzystając z usługi Azure Storage lub usługi Data Lake Storage, nie trzeba w
 
 W HDInsight zasoby magazynu danych (magazyn obiektów Blob platformy Azure i usługi Azure Data Lake Storage) są całkowicie niezależni od zasobów obliczeniowych. W związku z tym można utworzyć klastry HDInsight w celu obliczeń, zgodnie z potrzebami i później usunąć klaster, po zakończeniu pracy, w międzyczasie przechowywanie plików danych bezpiecznie utrwalone w magazynie w chmurze tak długo, jak należy.
 
-### <a name="uri-and-scheme"></a>Identyfikator URI i schematu
+
+### <a name="URI-and-scheme"></a>Identyfikator URI i schematu
 
 Niektóre polecenia mogą wymagać Określ schemat identyfikatora URI w ramach podczas uzyskiwania dostępu do pliku. Na przykład składnik systemu plików Storm-HDFS wymaga Określ schemat. Korzystając z innych niż domyślne magazynu (dodane do klastra jako "dodatkowego" miejsca do magazynowania), należy zawsze używać systemu jako część identyfikatora URI.
 
@@ -248,7 +249,7 @@ Aby uzyskać szczegółowe informacje na temat skalowania klastra usługi HDInsi
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Jak instalowanie aplikacji Hue (lub innych składników usługi Hadoop)
 
-HDInsight to zarządzana usługa. Jeśli Azure wykryje problem z klastrem, jego może usunąć węzeł niepowodzeniem i Utwórz węzeł, aby go zastąpić. Po zainstalowaniu ręczne czynności w klastrze, nie zostaną utrwalone po wystąpieniu tej operacji. Zamiast tego należy użyć [akcji skryptu HDInsight](hdinsight-hadoop-customize-cluster.md). Akcja skryptu, można wprowadzić następujące zmiany:
+HDInsight to zarządzana usługa. Jeśli Azure wykryje problem z klastrem, jego może usunąć węzeł niepowodzeniem i Utwórz węzeł, aby go zastąpić. Po zainstalowaniu ręczne czynności w klastrze, nie zostaną utrwalone po wystąpieniu tej operacji. Zamiast tego należy użyć [akcji skryptu HDInsight](hdinsight-hadoop-customize-cluster-linux.md). Akcja skryptu, można wprowadzić następujące zmiany:
 
 * Instalowanie i konfigurowanie usługi lub witryny sieci web.
 * Zainstaluj i skonfiguruj składnik, który wymaga zmian konfiguracji na wielu węzłach w klastrze.
@@ -256,7 +257,6 @@ HDInsight to zarządzana usługa. Jeśli Azure wykryje problem z klastrem, jego 
 Akcje skryptu to skrypty powłoki Bash. Skrypty są uruchamiane podczas tworzenia klastra i są używane do instalowania i konfigurowania dodatkowych składników. Przykładowe skrypty są dostępne do zainstalowania następujących składników:
 
 * [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [Apache Solr](hdinsight-hadoop-solr-install-linux.md)
 
 Informacje na temat tworzenia własnych akcji skryptu można znaleźć w temacie [Script Action development with HDInsight](hdinsight-hadoop-script-actions-linux.md) (Tworzenie akcji skryptu za pomocą usługi HDInsight).
 

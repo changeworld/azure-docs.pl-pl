@@ -17,12 +17,12 @@ ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bec86ee095fb5011c80cd26efcb79efc639189ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0c468f149a8005f2452ba49afbb447c3304c3d4b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192323"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170534"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj urządzenia zarządzanego do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 

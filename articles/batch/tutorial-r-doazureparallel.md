@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: bccf12c4e0614ec02414001ab7cf3c4b7f189e65
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 557e7d9a35f012d65977d3e0654b55b15ff1e28f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456004"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106444"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Samouczek: Uruchamianie równoległej symulacji języka R w usłudze Azure Batch 
 
-Możesz uruchamiać równoległe obciążenia języka R na dużą skalę za pomocą lekkiego pakietu języka R, [doAzureParallel](http://www.github.com/Azure/doAzureParallel), umożliwiającego używanie usługi Azure Batch bezpośrednio z poziomu sesji języka R. Pakiet doAzureParallel został zbudowany na podstawie popularnego pakietu języka R [foreach](http://cran.r-project.org/web/packages/foreach/index.html). Pakiet doAzureParallel przesyła poszczególne iteracje pętli pakietu foreach jako zadania podrzędne usługi Azure Batch.
+Możesz uruchamiać równoległe obciążenia języka R na dużą skalę za pomocą lekkiego pakietu języka R, [doAzureParallel](https://www.github.com/Azure/doAzureParallel), umożliwiającego używanie usługi Azure Batch bezpośrednio z poziomu sesji języka R. Pakiet doAzureParallel został zbudowany na podstawie popularnego pakietu języka R [foreach](https://cran.r-project.org/web/packages/foreach/index.html). Pakiet doAzureParallel przesyła poszczególne iteracje pętli pakietu foreach jako zadania podrzędne usługi Azure Batch.
 
 Z tego samouczka dowiesz się, jak wdrożyć pulę usługi Azure Batch i uruchomić równoległe zadania języka R w usłudze Azure Batch bezpośrednio z poziomu programu RStudio. Omawiane kwestie:
  
@@ -45,7 +45,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>Instalowanie pakietu doAzureParallel
 
-Przy użyciu konsoli programu RStudio zainstaluj [pakiet doAzureParallel z witryny GitHub](http://www.github.com/Azure/doAzureParallel). Następujące polecenia umożliwiają pobranie i zainstalowanie pakietu oraz jego zależności w bieżącej sesji języka R: 
+Przy użyciu konsoli programu RStudio zainstaluj [pakiet doAzureParallel z witryny GitHub](https://www.github.com/Azure/doAzureParallel). Następujące polecenia umożliwiają pobranie i zainstalowanie pakietu oraz jego zależności w bieżącej sesji języka R: 
 
 ```R
 # Install the devtools package  
@@ -256,11 +256,11 @@ Zadanie zostanie automatycznie usunięte po zakończeniu. Jeśli klaster nie bę
 stopCluster(cluster)
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-Instalowanie pakietu doAzureParallel i konfigurowanie go w celu uzyskania dostępu do kont usług Batch i Storage
+> Instalowanie pakietu doAzureParallel i konfigurowanie go w celu uzyskania dostępu do kont usług Batch i Storage
 > * Tworzenie puli usługi Batch jako równoległego zaplecza dla sesji języka R
 > * Uruchamianie równoległe przykładowej symulacji w puli
 

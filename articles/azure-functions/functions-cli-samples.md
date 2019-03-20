@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 01/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 99ea221dcd236d3e8c42aec25d651b5fda2ae1d1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: ba0ecda0ec24bf0a07acbf1bf5bfef494c3eabdd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887433"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57836933"
 ---
 # <a name="azure-cli-samples"></a>Przykłady interfejsu wiersza polecenia platformy Azure
 
@@ -34,7 +34,7 @@ Poniższa tabela zawiera linki do skryptów powłoki Bash dla usługi Azure Func
 | | |
 |**Ciągłe wdrażanie**||
 | [Wdrażanie z repozytorium GitHub](scripts/functions-cli-create-function-app-github-continuous.md) | Utwórz aplikację funkcji, która wdraża z repozytorium GitHub.  |
-| [Wdrażanie z usługi Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Utwórz aplikację funkcji, która wdraża z usługi Azure DevOps.  |
+| [Wdrażanie z usługi Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Tworzenie aplikacji funkcji, który jest wdrażany z repozytorium DevOps platformy Azure.  |
 | | |
 |**Konfigurowanie aplikacji**||
 | [Mapowanie domeny niestandardowej na aplikację funkcji](scripts/functions-cli-configure-custom-domain.md) | Zdefiniuj domenę niestandardową na potrzeby funkcji.  |

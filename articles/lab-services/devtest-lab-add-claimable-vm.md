@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5ff0a70d8b370655df1eef55dac68804a1db406b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: f83ee40c97e49add539a44a6ba764024a8e47bfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082150"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081495"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Tworzenie i zarządzanie nimi przejęcia maszyn wirtualnych w usłudze Azure DevTest Labs
 Dodawanie przejęcia maszyny Wirtualnej do laboratorium w podobny sposób jak możesz [Dodaj maszyna wirtualna w warstwie standardowa](devtest-lab-add-vm.md) — od *podstawowy* oznacza to jedną [obrazu niestandardowego](devtest-lab-create-template.md), [formuły](devtest-lab-manage-formulas.md) , lub [obrazu z witryny Marketplace](devtest-lab-configure-marketplace-images.md). Ten samouczek przeprowadzi Cię przez dodawanie przejęcia maszyny Wirtualnej do laboratorium w usłudze DevTest Labs przy użyciu witryny Azure portal oraz przedstawiono procesy, które użytkownik wykona oświadczeń i wywołującemu maszyny Wirtualnej.
@@ -64,12 +64,12 @@ Użytkownik może przyjąć dowolnej maszyny Wirtualnej z listy "Przejęcia masz
 
 * Z listy "Przejęcia maszyny wirtualne" w dolnej części okienka "Przegląd" laboratorium, kliknij prawym przyciskiem myszy na jednej z maszyn wirtualnych, na liście, a następnie wybierz **maszyny oświadczenia**.
 
- ![Żądanie przejęcia określonej maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
+  ![Żądanie przejęcia określonej maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
 * W górnej części okienka "Przegląd" Wybierz **dowolny oświadczeń**. Losowe maszyny wirtualne są przypisane z listy przejęcia maszyn wirtualnych.
 
- ![Żądanie dowolnej przejęcia maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+  ![Żądanie dowolnej przejęcia maszyny Wirtualnej.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
 Po użytkownik oświadczeń maszyny Wirtualnej, są przenoszone w górę do listy "Moje maszyny wirtualne" i nie jest już przejęcia przez innych użytkowników.

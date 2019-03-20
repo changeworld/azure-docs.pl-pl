@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc56384d550854c05a813157b32ac36f5ebfb76
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: df2c4e447ff41e56c4d8b9862282b6fcb452a8c9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211924"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224298"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Czym są tożsamości zarządzane dla zasobów platformy Azure?
 
@@ -64,13 +64,12 @@ Na poniższym diagramie pokazano, jak tożsamości usługi zarządzanej współp
     1. Aktualizuje punkt końcowy tożsamości usługi Azure Instance Metadata Service przy użyciu certyfikatu i identyfikatora klienta jednostki usługi.
     1. Aprowizuje rozszerzenie maszyny wirtualnej (zaplanowane do wycofania z użycia w styczniu 2019 r.) oraz dodaje certyfikat i identyfikator klienta jednostki usługi. (Ten krok ma zostać uznany za przestarzały).
 4. Teraz, gdy maszyna wirtualna zyskała tożsamość, używamy informacji o jednostce usługi w celu przyznania maszynie wirtualnej dostępu do zasobów platformy Azure. Aby wywołać usługę Azure Resource Manager, należy użyć kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD w celu przypisania odpowiedniej roli do jednostki usługi maszyny wirtualnej. Aby wywołać usługę Key Vault, należy przyznać kodowi dostęp do określonego wpisu tajnego lub klucza w usłudze Key Vault.
-5. Kod uruchomiony na maszynie wirtualnej może żądać tokenu z dwóch punktów końcowych, które są dostępne jedynie z poziomu maszyny wirtualnej:
+5. Swój kod, który jest uruchomiony na maszynie Wirtualnej mogą żądać token z usługi Azure Instance Metadata punkt końcowy usługi, dostępny tylko w obrębie maszyny Wirtualnej: `http://169.254.169.254/metadata/identity/oauth2/token`
+    - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
+    - Parametr wersji interfejsu API określa wersję usługi IMDS, użyj wartości api-version=2018-02-01 lub nowszej.
 
-    - Punkt końcowy tożsamości usługi Azure Instance Metadata Service (opcja zalecana): `http://169.254.169.254/metadata/identity/oauth2/token`
-        - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
-        - Parametr wersji interfejsu API określa wersję usługi IMDS, użyj wartości api-version=2018-02-01 lub nowszej.
-    - Punkt końcowy rozszerzenia maszyny wirtualnej (opcja zaplanowana do wycofania z użycia w styczniu 2019 r.): `http://localhost:50342/oauth2/token` 
-        - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
+> [!NOTE]
+> Twój kod może także żądania tokenu z punktu końcowego rozszerzenia maszyny Wirtualnej, ale to planowane jest wprowadzenie obsługi wkrótce. Aby uzyskać więcej informacji na temat rozszerzenia maszyny Wirtualnej, zobacz [migracja z rozszerzenia maszyny Wirtualnej do IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
 6. W usłudze Azure AD jest wykonywane wywołanie żądające tokenu dostępu (jak określono w kroku 5) przy użyciu certyfikatu i identyfikatora klienta skonfigurowanego w kroku 3. Usługa Azure AD zwraca token dostępu powiązany z internetowym tokenem JSON (JWT, JSON Web Token).
 7. Kod wysyła token dostępu w wywołaniu do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
@@ -87,16 +86,14 @@ Na poniższym diagramie pokazano, jak tożsamości usługi zarządzanej współp
    > [!Note]
    > Ten krok można również wykonać przed krokiem 3.
 
-5. Kod uruchomiony na maszynie wirtualnej może żądać tokenu z dwóch punktów końcowych, które są dostępne jedynie z poziomu maszyny wirtualnej:
+5. Swój kod, który jest uruchomiony na maszynie Wirtualnej mogą żądać token z usługi Azure Instance Metadata Service tożsamość punktu końcowego, dostępny tylko w obrębie maszyny Wirtualnej: `http://169.254.169.254/metadata/identity/oauth2/token`
+    - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
+    - Parametr Identyfikator klienta określa tożsamość, dla której jest żądany token. Ta wartość jest wymagana do przeprowadzenia uściślania, gdy na jednej maszynie wirtualnej znajduje się więcej niż jedna tożsamość przypisana przez użytkownika.
+    - Parametr wersji interfejsu API określa wersję usługi Azure Instance Metadata Service. Należy użyć wersji `api-version=2018-02-01` lub nowszej.
 
-    - Punkt końcowy tożsamości usługi Azure Instance Metadata Service (opcja zalecana): `http://169.254.169.254/metadata/identity/oauth2/token`
-        - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
-        - Parametr Identyfikator klienta określa tożsamość, dla której jest żądany token. Ta wartość jest wymagana do przeprowadzenia uściślania, gdy na jednej maszynie wirtualnej znajduje się więcej niż jedna tożsamość przypisana przez użytkownika.
-        - Parametr wersji interfejsu API określa wersję usługi Azure Instance Metadata Service. Należy użyć wersji `api-version=2018-02-01` lub nowszej.
+> [!NOTE]
+> Twój kod może także żądania tokenu z punktu końcowego rozszerzenia maszyny Wirtualnej, ale to planowane jest wprowadzenie obsługi wkrótce. Aby uzyskać więcej informacji na temat rozszerzenia maszyny Wirtualnej, zobacz [migracja z rozszerzenia maszyny Wirtualnej do IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
-    - Punkt końcowy rozszerzenia maszyny wirtualnej (opcja zaplanowana do wycofania z użycia w styczniu 2019 r.): `http://localhost:50342/oauth2/token`
-        - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
-        - Parametr Identyfikator klienta określa tożsamość, dla której jest żądany token. Ta wartość jest wymagana do przeprowadzenia uściślania, gdy na jednej maszynie wirtualnej znajduje się więcej niż jedna tożsamość przypisana przez użytkownika.
 6. W usłudze Azure AD jest wykonywane wywołanie żądające tokenu dostępu (jak określono w kroku 5) przy użyciu certyfikatu i identyfikatora klienta skonfigurowanego w kroku 3. Usługa Azure AD zwraca token dostępu powiązany z internetowym tokenem JSON (JWT, JSON Web Token).
 7. Kod wysyła token dostępu w wywołaniu do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
 
@@ -138,7 +135,7 @@ Dowiedz się, jak używać tożsamości zarządzanej z innymi usługami platform
 
 Tożsamości zarządzane dla zasobów platformy Azure mogą służyć do uwierzytelniania w usługach obsługujących uwierzytelnianie usługi Azure AD. Listę usług platformy Azure, które obsługują funkcję tożsamości zarządzanych dla zasobów platformy Azure, można znaleźć w temacie [Services that support managed identities for Azure resources (Usługi, które obsługują tożsamości zarządzane dla platformy Azure)](services-support-msi.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Rozpocznij pracę z funkcją tożsamości zarządzanych dla zasobów platformy Azure, korzystając z następujących przewodników Szybki start:
 

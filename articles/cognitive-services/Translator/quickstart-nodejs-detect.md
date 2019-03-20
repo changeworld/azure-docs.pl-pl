@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: ebeb5fb8863dbe31b525bd4058f54fb88d4ddf7b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 35b6a55a3f5cad27045694231fc5ce79ed7aeadf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736604"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173944"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem środowiska Node.js
 
@@ -119,6 +119,8 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
+Znajdź skrót kraju, w tym [listę języków](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
+
 ```json
 [
     {
@@ -148,12 +150,12 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 
 Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby usunąć ten klucz subskrypcji po zakończeniu pracy z przewodnikiem Szybki start.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla środowiska Node.js w usłudze GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 Oprócz wykrywania języka interfejs API tłumaczenia tekstu w usłudze Translator może wykonywać następujące zadania:
 

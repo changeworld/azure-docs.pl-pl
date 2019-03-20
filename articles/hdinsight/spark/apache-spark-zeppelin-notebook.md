@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 019232308ec5fa6d735e4499c3fb5f3ac2727e2d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 18660b41f4413d3ae1cd820cd645ddb540397906
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766398"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095909"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Apache Zeppelin przy użyciu klastra Apache Spark w usłudze Azure HDInsight
 
@@ -106,12 +106,12 @@ Klastry HDInsight Spark obejmują [Apache Zeppelin](https://zeppelin.apache.org/
 
 8. Wybierz **wykres słupkowy** ikonę, aby zmienić sposób wyświetlania.  Następnie wybierz pozycję **ustawienia** i wprowadź następujące zmiany:
 
-    * **Grupy:**  Dodaj **targettemp**.  
-    * **Wartości:** 1. Usuń **data**.  2. Dodaj **temp_diff**.  3.  Zmiana agregatora z **suma** do **AVG**.  
+   * **Grupy:**  Dodaj **targettemp**.  
+   * **Wartości:** 1. Usuń **data**.  2. Dodaj **temp_diff**.  3.  Zmiana agregatora z **suma** do **AVG**.  
 
-    Poniższy zrzut ekranu przedstawia dane wyjściowe.
+     Poniższy zrzut ekranu przedstawia dane wyjściowe.
 
-    ![Uruchamianie instrukcji rozwiązania Spark SQL za pomocą notesu](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "uruchamianie instrukcji rozwiązania Spark SQL za pomocą notesu")
+     ![Uruchamianie instrukcji rozwiązania Spark SQL za pomocą notesu](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "uruchamianie instrukcji rozwiązania Spark SQL za pomocą notesu")
 
 9. Uruchom ponownie interpreter Livy, aby zakończyć działanie aplikacji. Aby to zrobić, Otwórz okno Ustawienia interpreter, wybierając zalogowanego w polu Nazwa użytkownika w prawym górnym rogu, a następnie wybierz **Interpreter**.  
 

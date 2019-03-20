@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1dba848be0c24ef26dcefd23d4fc3f7201420449
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 17e4d576d4c524321fd19c589868a323f97c48a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873516"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079724"
 ---
 # <a name="learn-image-moderation-concepts"></a>Pojęcia dotyczące moderowania obrazów
 
@@ -35,12 +35,11 @@ Użyj Content Moderator obraz wspomagane maszynowo Moderowanie i [narzędzie do 
       ],
 
 > [!NOTE]
-
+> 
 > - Obiekt `isImageAdultClassified` reprezentuje potencjalną obecność obrazów, które mogą być uznane za seksualne lub zawierające treści dla dorosłych w niektórych sytuacjach.
 > - Obiekt `isImageRacyClassified` reprezentuje potencjalną obecność obrazów, które mogą być uznane za potencjalnie seksualne lub zawierające treści dla dorosłych w niektórych sytuacjach.
 > - Wyniki należą do zakresu od 0 do 1. Wyższą ocenę, tym większe modelu jest prognozowanie mogą dotyczyć kategorii. Ta wersja zapoznawcza opiera się na modelu statystycznych, a nie ręcznie zakodowane wyników. Zaleca się testowanie za pomocą własnej zawartości, aby określić, jak wyrównuje każdej kategorii wymagań.
 > - Wartości logiczne to wartość PRAWDA lub FAŁSZ, w zależności od wewnętrznego wynik progów. Klientów należy ocenić, czy Użyj tej wartości lub wybrać progami niestandardowymi na podstawie ich zawartości zasad.
->
 
 ## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Wykrywanie tekstu za pomocą funkcji optycznego rozpoznawania znaków (OCR)
 
