@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240476"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858148"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej z geograficznie sztucznej inteligencji na platformie Azure 
 
@@ -33,7 +33,7 @@ DSVM geograficznego zawiera szereg narzędzi sztucznej Inteligencji, w tym:
 - narzędzia do uzyskania i obraz przetwarzania wstępnego, dane tekstowe 
 - Narzędzia dla działań programistycznych, takich jak Microsoft R Server Developer Edition, Anaconda Python notesów programu Jupyter dla języka Python i R, środowiska IDE języka Python i R, SQL bazy danych
 - Firmy ESRI ArcGIS Pro oprogramowania dla komputerów stacjonarnych wraz z języka Python i R interfejsy, które można pracować z danymi dane geograficzne z poziomu aplikacji sztucznej Inteligencji. 
-
+ 
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>Tworzenie usługi Geo sztucznej Inteligencji do analizy danych maszyny Wirtualnej
 
@@ -67,16 +67,16 @@ Poniżej przedstawiono procedurę, aby utworzyć wystąpienie maszyna wirtualna 
    - **Podsumowanie**: Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
 
    - **Kup**: Kliknij przycisk **Kup** do uruchomienia, jego obsługi. Link znajduje się na warunki użytkowania usługi. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
-
+ 
 >[!NOTE]
 > Aprowizacja powinno zająć około 20 – 30 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
 
-
+ 
 ## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Jak uzyskać dostęp do maszyny wirtualnej do nauki o danych sztucznej Inteligencji geograficznie
 
-Po utworzeniu maszyny Wirtualnej, jesteś gotowy rozpocząć korzystanie z narzędzia, które są zainstalowane i wstępnie skonfigurowane na nim. Brak kafelków menu start i ikony pulpitu dla wielu narzędzi. Pulpit zdalny można do niej przy użyciu poświadczeń konta administratora, które skonfigurowano w poprzednim **podstawy** sekcji. 
+ Po utworzeniu maszyny Wirtualnej, jesteś gotowy rozpocząć korzystanie z narzędzia, które są zainstalowane i wstępnie skonfigurowane na nim. Brak kafelków menu start i ikony pulpitu dla wielu narzędzi. Pulpit zdalny można do niej przy użyciu poświadczeń konta administratora, które skonfigurowano w poprzednim **podstawy** sekcji. 
 
-
+ 
 ## <a name="using-arcgis-pro-installed-in-the-vm"></a>Za pomocą ArcGIS Pro zainstalowane na maszynie wirtualnej
 
 DSVM geograficzna ma już desktop ArcGIS Pro wstępnie zainstalowane i środowiska, wstępnie skonfigurowane do pracy z wszystkich narzędzi opisanych w maszyny DSVM. Po uruchomieniu ArcGIS monituje o dane logowania do konta usługi ArcGIS. Jeśli już masz konto ArcGIS i masz licencji na oprogramowanie, można użyć posiadanych poświadczeń.  
@@ -87,7 +87,7 @@ W przeciwnym razie Załóż nowe konto ArcGIS i licencji lub uzyskać [bezpłatn
 
 ![Komponent ArcGIS bezpłatną wersję próbną](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Po utworzeniu rejestrowania dla płatna lub konto bezpłatnej wersji próbnej ArcGIS, ArcGIS Pro można autoryzować dla swojego konta, postępując zgodnie z instrukcjami w [rozpoczęcie korzystania z dokumentacji ArcGIS Pro](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Po utworzeniu rejestrowania dla płatna lub konto bezpłatnej wersji próbnej ArcGIS, ArcGIS Pro można autoryzować dla swojego konta, postępując zgodnie z instrukcjami w [rozpoczęcie korzystania z dokumentacji ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
 Po zalogowaniu do programu desktop ArcGIS Pro z Twoim kontem ArcGIS, jesteś gotowy rozpocząć korzystanie z narzędzi do nauki o danych, które są zainstalowane i skonfigurowane na maszynie Wirtualnej Geoprzestrzenna analiza i projektów uczenia maszynowego.
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 7be5331b-0481-48f7-9d6b-619dfec657e1
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb6943ef6c75f634cdb68557ed2339574bdc2602
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: eba63f8295fb5bebffdc8480f763c852521e331b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878289"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem ADP
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację rozwiązania ADP z usługą Azure AD, należy z p
 
 **Aby dodać rozwiązanie ADP z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -97,7 +97,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z rozwiązaniem ADP, w
 
     b. Skopiuj wartość pola **Adres URL dostępu użytkownika** i wklej ją w **sekcji Adres URL logowania jednokrotnego**, co zostało opisane w dalszej części tego samouczka.
 
-    d. Ustaw pole **Wymagane przypisanie użytkownika** na wartość **Tak**.
+    c. Ustaw pole **Wymagane przypisanie użytkownika** na wartość **Tak**.
 
     d. Ustaw pole **Widoczne dla użytkowników** na wartość **Nie**.
 
@@ -169,7 +169,7 @@ Aby skonfigurować logowanie jednokrotne po stronie rozwiązania **ADP**, należ
 > Twoi pracownicy, dla których wymagany jest dostęp federacyjny do usług ADP, muszą zostać przypisani do aplikacji usługi ADP, co wiąże się z koniecznością ponownego przypisania użytkowników do określonej usługi ADP.
 Po otrzymaniu potwierdzenia od przedstawiciela firmy ADP skonfiguruj swoje usługi ADP, a następnie przypisz użytkowników lub zarządzaj nimi, aby kontrolować ich dostęp do określonej usługi ADP.
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -187,13 +187,13 @@ Po otrzymaniu potwierdzenia od przedstawiciela firmy ADP skonfiguruj swoje usłu
 
 5. W witrynie Azure Portal na stronie integracji aplikacji **ADP** kliknij kartę  **Właściwości**, a następnie wykonaj następujące kroki:  
 
-    ![Połączone właściwości logowania jednokrotnego](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
+    ![Pojedynczy logowanie jednokrotne połączonej właściwości](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
     a.  Ustaw pole **Możliwe logowanie użytkowników** na wartość **Tak**.
 
     b.  Ustaw pole **Wymagane przypisanie użytkownika** na wartość **Tak**.
 
-    d.  Ustaw pole **Widoczne dla użytkowników** na wartość **Tak**.
+    c.  Ustaw pole **Widoczne dla użytkowników** na wartość **Tak**.
 
 6. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **ADP** wybierz pozycję **Logowanie jednokrotne**.
 
@@ -259,7 +259,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -298,7 +298,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w rozwiązaniu ADP. Sk
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka ADP w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania ADP, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

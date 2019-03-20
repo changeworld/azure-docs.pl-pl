@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 898f2eca0b6cc115f56bcae195c58c6eef190694
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884872"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838086"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurowanie powiadomień dotyczących kondycji dla istniejących systemów zarządzania problem przy użyciu elementu webhook
 
@@ -59,7 +59,7 @@ Z ważność najniższej do najwyższej ważności `level` właściwość w ład
 
 ## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>Podczas analizowania objęte wpływem usług, aby zrozumieć pełny zakres zdarzenia
 Alerty dotyczące kondycji usługi może wcześniej poinformować o problemach w wielu regionach i usług. Aby uzyskać szczegółowe informacje, należy przeanalizować wartości `impactedServices`.
-Zawartość wewnątrz [JSON poprzedzone znakiem zmiany znaczenia](http://json.org/) string, gdy o niezmienionym znaczeniu, zawiera inny obiekt JSON, który może zostać przeanalizowany regularnie.
+Zawartość wewnątrz [JSON poprzedzone znakiem zmiany znaczenia](https://json.org/) string, gdy o niezmienionym znaczeniu, zawiera inny obiekt JSON, który może zostać przeanalizowany regularnie.
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}

@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7f0af2c64d04d83cc3eb4043007979c17c75e051
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4a2c90accaafea0c17456f8e6c5eae41199b17ed
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877290"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105169"
 ---
 > [!NOTE]
 > Każdy znajduje się środowisko usługi App ma Virtual IP (VIP), która może służyć do kontaktowania się z usługi App Service Environment.
->
-# <a name="create-an-external-app-service-environment"></a>Tworzenie środowiska usługi aplikacji zewnętrznej #
+> 
+> # <a name="create-an-external-app-service-environment"></a>Tworzenie środowiska usługi aplikacji zewnętrznej #
 
 Środowisko Azure App Service Environment to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure (VNet). Istnieją dwa sposoby wdrażania środowiska App Service Environment (ASE):
 

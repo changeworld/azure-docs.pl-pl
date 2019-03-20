@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: ffac79209f998f1ef042ed5fcb4d8c6a45de2c2e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 03374f63345bd6c9e4f2b603443a1448493e1cdc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447041"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894618"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji dla programu Chrome przy użyciu usługi Azure Notification Hubs
 
@@ -266,7 +266,7 @@ Aplikacja dla programu Chrome jest tworzona przy użyciu języka JavaScript i mo
         sendNHRegistrationRequest();
     }
 
-    // From http://msdn.microsoft.com/library/dn495627.aspx
+    // From https://msdn.microsoft.com/library/dn495627.aspx
     function splitConnectionString()
     {
         var parts = connectionString.split(';');
@@ -361,17 +361,17 @@ Aplikacja dla programu Chrome jest tworzona przy użyciu języka JavaScript i mo
 
     Skrypt zawiera następujące najważniejsze parametry:
 
-    * `window.onload` określa zdarzenia dotyczące kliknięcia przycisków dla dwóch przycisków w interfejsie użytkownika. Pierwsza procedura obsługi zdarzenia dotyczącego kliknięcia przycisku służy do rejestracji w usłudze GCM, a druga używa identyfikatora rejestracji zwróconego po zarejestrowaniu w usłudze GCM do rejestracji w usłudze Azure Notification Hubs.
-    * `updateLog` jest funkcją, która umożliwia rejestrowanie informacji przez kod.
-    * `registerWithGCM` jest procedurą obsługi kliknięcia pierwszego przycisku, który wykonuje wywołanie `chrome.gcm.register` do usługi GCM w celu zarejestrowania bieżącego wystąpienia aplikacji dla programu Chrome.
-    * `registerCallback` jest funkcją wywołania zwrotnego, która jest wywoływana po zwróceniu danych przez wywołanie rejestracji w usłudze GCM.
-    * `registerWithNH` jest programem obsługi kliknięcia drugiego przycisku, który dokonuje rejestracji w usłudze Notification Hubs. Pobiera on właściwości `hubName` oraz `connectionString` (określone przez użytkownika) i tworzy wywołanie rejestracji w usłudze Notification Hubs za pomocą interfejsu API REST.
-    * `splitConnectionString` i `generateSaSToken` są pomocnikami reprezentującymi implementację procesu tworzenia tokenu SaS w języku JavaScript, która musi być używana we wszystkich wywołaniach interfejsu API REST. Aby uzyskać więcej informacji, zobacz temat [Common Concepts](https://msdn.microsoft.com/library/dn495627.aspx) (Wspólne pojęcia).
-    * `sendNHRegistrationRequest` jest funkcją wykonującą wywołanie interfejsu REST protokołu HTTP do usługi Azure Notification Hubs.
-    * `registrationPayload` definiuje ładunek XML rejestracji. Aby uzyskać więcej informacji, zobacz temat [Create Registration NH REST API] (Interfejs API REST rejestracji w usłudze Notification Hubs). Zaktualizuj w nim identyfikator rejestracji, używając wartości odebranej z usługi GCM.
-    * `client` jest wystąpieniem obiektu `XMLHttpRequest` używanym przez aplikację do tworzenia żądań POST protokołu HTTP. Zaktualizuj nagłówek `Authorization` przy użyciu elementu `sasToken`. Pomyślne wykonanie tego wywołania spowoduje zarejestrowanie tego wystąpienia aplikacji dla programu Chrome w usłudze Azure Notification Hubs.
+   * `window.onload` określa zdarzenia dotyczące kliknięcia przycisków dla dwóch przycisków w interfejsie użytkownika. Pierwsza procedura obsługi zdarzenia dotyczącego kliknięcia przycisku służy do rejestracji w usłudze GCM, a druga używa identyfikatora rejestracji zwróconego po zarejestrowaniu w usłudze GCM do rejestracji w usłudze Azure Notification Hubs.
+   * `updateLog` jest funkcją, która umożliwia rejestrowanie informacji przez kod.
+   * `registerWithGCM` jest procedurą obsługi kliknięcia pierwszego przycisku, który wykonuje wywołanie `chrome.gcm.register` do usługi GCM w celu zarejestrowania bieżącego wystąpienia aplikacji dla programu Chrome.
+   * `registerCallback` jest funkcją wywołania zwrotnego, która jest wywoływana po zwróceniu danych przez wywołanie rejestracji w usłudze GCM.
+   * `registerWithNH` jest programem obsługi kliknięcia drugiego przycisku, który dokonuje rejestracji w usłudze Notification Hubs. Pobiera on właściwości `hubName` oraz `connectionString` (określone przez użytkownika) i tworzy wywołanie rejestracji w usłudze Notification Hubs za pomocą interfejsu API REST.
+   * `splitConnectionString` i `generateSaSToken` są pomocnikami reprezentującymi implementację procesu tworzenia tokenu SaS w języku JavaScript, która musi być używana we wszystkich wywołaniach interfejsu API REST. Aby uzyskać więcej informacji, zobacz temat [Common Concepts](https://msdn.microsoft.com/library/dn495627.aspx) (Wspólne pojęcia).
+   * `sendNHRegistrationRequest` jest funkcją wykonującą wywołanie interfejsu REST protokołu HTTP do usługi Azure Notification Hubs.
+   * `registrationPayload` definiuje ładunek XML rejestracji. Aby uzyskać więcej informacji, zobacz temat [Create Registration NH REST API] (Interfejs API REST rejestracji w usłudze Notification Hubs). Zaktualizuj w nim identyfikator rejestracji, używając wartości odebranej z usługi GCM.
+   * `client` jest wystąpieniem obiektu `XMLHttpRequest` używanym przez aplikację do tworzenia żądań POST protokołu HTTP. Zaktualizuj nagłówek `Authorization` przy użyciu elementu `sasToken`. Pomyślne wykonanie tego wywołania spowoduje zarejestrowanie tego wystąpienia aplikacji dla programu Chrome w usłudze Azure Notification Hubs.
 
-    Ogólna struktura folderów dla tego projektu powinna przypominać następującą:  ![Aplikacja dla programu Google Chrome — struktura folderów][21]
+     Ogólna struktura folderów dla tego projektu powinna przypominać następującą: ![Aplikacja dla programu Google Chrome — struktura folderów][21]
 
 ### <a name="set-up-and-test-your-chrome-app"></a>Instalowanie i testowanie aplikacji dla programu Chrome
 
@@ -406,7 +406,7 @@ W celach testowych wyślij powiadomienia wypychane programu Chrome przy użyciu 
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-   Do projektu zostanie automatycznie dodane odwołanie do zestawu Azure Service Bus SDK za pomocą [pakietu NuGet WindowsAzure.ServiceBus](http://nuget.org/packages/WindowsAzure.ServiceBus/).
+   Do projektu zostanie automatycznie dodane odwołanie do zestawu Azure Service Bus SDK za pomocą [pakietu NuGet WindowsAzure.ServiceBus](https://nuget.org/packages/WindowsAzure.ServiceBus/).
 4. Otwórz plik `Program.cs` i dodaj następującą instrukcję `using`:
 
     ```csharp
@@ -481,8 +481,8 @@ W tym samouczku wysłano powiadomienia rozgłaszane do wszystkich klientów zare
 [przykładzie usługi GCM dla aplikacji dla programu Chrome]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [Chrome Apps on Mobile]: https://developer.chrome.com/apps/chrome_apps_on_mobile (Aplikacja dla programu Chrome na urządzeniach przenośnych)
-[Create Registration NH REST API]: http://msdn.microsoft.com/library/azure/dn223265.aspx (Interfejs API REST tworzenia rejestracji w usłudze Notification Hubs)
-[bibliotekę crypto-js]: http://code.google.com/p/crypto-js/
+[Create Registration NH REST API]: https://msdn.microsoft.com/library/azure/dn223265.aspx (Interfejs API REST tworzenia rejestracji w usłudze Notification Hubs)
+[bibliotekę crypto-js]: https://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
 [Azure Notification Hubs Notify Users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md

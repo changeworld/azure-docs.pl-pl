@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 121766a312db1970981b7ffb1c718f27c9f5d3d1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 8f2ae27e19acb5bf324202b463d2b3027ad2ea5a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538754"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888233"
 ---
 # <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań przy użyciu aplikacji MySQL Workbench
 
@@ -41,37 +41,37 @@ Pobierz informacje o połączeniu wymagane do nawiązania połączenia z wystąp
 
 4. Na stronie **Przegląd** serwera zanotuj wartości pozycji **Nazwa serwera** i **Nazwa logowania administratora serwera**. Jeśli zapomnisz hasła, możesz także je zresetować na tej stronie.
 
- ![Nazwa serwera usługi Azure Database for MariaDB i nazwa logowania administratora serwera](./media/connect-workbench/1_server-overview-name-login.png)
+   ![Nazwa serwera usługi Azure Database for MariaDB i nazwa logowania administratora serwera](./media/connect-workbench/1_server-overview-name-login.png)
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Nawiązywanie połączenia z serwerem za pomocą aplikacji MySQL Workbench
 
 Aby nawiązać połączenie z serwerem usługi Azure Database for MariaDB przy użyciu aplikacji MySQL Workbench:
 
-1.  Otwórz aplikację MySQL Workbench na komputerze. 
+1. Otwórz aplikację MySQL Workbench na komputerze. 
 
-2.  W oknie dialogowym **Konfigurowanie nowego połączenia** na karcie **Parametry** wprowadź poniższe informacje:
+2. W oknie dialogowym **Konfigurowanie nowego połączenia** na karcie **Parametry** wprowadź poniższe informacje:
 
-    | Ustawienie | Sugerowana wartość | Opis pola |
-    |---|---|---|
-    |   Nazwa połączenia | **Połączenie demonstracyjne** | Podaj etykietę dla tego połączenia. |
-    | Metoda połączenia | **Standardowa (TCP/IP)** | Metoda Standardowa (TCP/IP) jest wystarczająca. |
-    | Nazwa hosta | *nazwa serwera* | Określ nazwę serwera użytą do utworzenia wystąpienia usługi Azure Database for MariaDB. Przykładowy serwer to **mydemoserver.mariadb.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny (\*.mariadb.database.azure.com), tak jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, wykonaj kroki w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia.  |
-    | Port | **3306** | Zawsze używaj portu 3306 podczas łączenia z usługą Azure Database for MariaDB. |
-    | Nazwa użytkownika |  *nazwa logowania administratora serwera* | Podaj nazwę logowania administratora serwera użytą do utworzenia wystąpienia usługi Azure Database for MariaDB. Przykładowa nazwa użytkownika to **myadmin@mydemoserver**. Jeśli nie pamiętasz nazwy logowania administratora serwera, wykonaj instrukcje w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *username@servername*.
-    | Hasło | *Twoje hasło* | Aby zapisać hasło, wybierz pozycję **Store in Vault** (Zapisz w magazynie). |
+   | Ustawienie | Sugerowana wartość | Opis pola |
+   |---|---|---|
+   |   Nazwa połączenia | **Połączenie demonstracyjne** | Podaj etykietę dla tego połączenia. |
+   | Metoda połączenia | **Standardowa (TCP/IP)** | Metoda Standardowa (TCP/IP) jest wystarczająca. |
+   | Nazwa hosta | *nazwa serwera* | Określ nazwę serwera użytą do utworzenia wystąpienia usługi Azure Database for MariaDB. Przykładowy serwer to **mydemoserver.mariadb.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny (\*.mariadb.database.azure.com), tak jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, wykonaj kroki w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia.  |
+   | Port | **3306** | Zawsze używaj portu 3306 podczas łączenia z usługą Azure Database for MariaDB. |
+   | Nazwa użytkownika |  *nazwa logowania administratora serwera* | Podaj nazwę logowania administratora serwera użytą do utworzenia wystąpienia usługi Azure Database for MariaDB. Naszym przykładzie nazwa użytkownika jest **myadmin\@mydemoserver**. Jeśli nie pamiętasz nazwy logowania administratora serwera, wykonaj instrukcje w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format jest *username\@servername*.
+   | Hasło | *Twoje hasło* | Aby zapisać hasło, wybierz pozycję **Store in Vault** (Zapisz w magazynie). |
 
-    ![Konfigurowanie nowego połączenia](./media/connect-workbench/2-setup-new-connection.png)
+   ![Konfigurowanie nowego połączenia](./media/connect-workbench/2-setup-new-connection.png)
 
-3.   Wybierz pozycję **Test Connection** (Testuj połączenie), aby sprawdzić, czy wszystkie parametry zostały poprawnie skonfigurowane. 
+3. Wybierz pozycję **Test Connection** (Testuj połączenie), aby sprawdzić, czy wszystkie parametry zostały poprawnie skonfigurowane. 
 
-4.   Wybierz pozycję **OK**, aby zapisać połączenie. 
+4. Wybierz pozycję **OK**, aby zapisać połączenie. 
 
-5.   W obszarze **Połączenia programu MySQL** wybierz kafelek odpowiadający używanemu serwerowi. Poczekaj na nawiązanie połączenia.
+5. W obszarze **Połączenia programu MySQL** wybierz kafelek odpowiadający używanemu serwerowi. Poczekaj na nawiązanie połączenia.
 
-    Zostanie otwarta nowa karta SQL z pustym edytorem, w którym można wpisać swoje zapytania.
+   Zostanie otwarta nowa karta SQL z pustym edytorem, w którym można wpisać swoje zapytania.
     
-    > [!NOTE]
-    > Domyślnie na serwerze usługi Azure Database for MariaDB zabezpieczenia SSL połączeń są wymagane i wymuszane. Mimo że zazwyczaj nawiązanie połączenia aplikacji MySQL Workbench z serwerem nie wymaga dodatkowej konfiguracji certyfikatów SSL, zalecamy powiązanie certyfikatu SSL urzędu certyfikacji z aplikacją MySQL Workbench. Jeśli zachodzi potrzeba wyłączenia protokołu SSL, na stronie przeglądu serwera w witrynie Azure Portal wybierz pozycję **Zabezpieczenia połączeń** z menu. Dla pozycji **Wymuszaj połączenie SSL** wybierz opcję **Wyłączone**.
+   > [!NOTE]
+   > Domyślnie na serwerze usługi Azure Database for MariaDB zabezpieczenia SSL połączeń są wymagane i wymuszane. Mimo że zazwyczaj nawiązanie połączenia aplikacji MySQL Workbench z serwerem nie wymaga dodatkowej konfiguracji certyfikatów SSL, zalecamy powiązanie certyfikatu SSL urzędu certyfikacji z aplikacją MySQL Workbench. Jeśli zachodzi potrzeba wyłączenia protokołu SSL, na stronie przeglądu serwera w witrynie Azure Portal wybierz pozycję **Zabezpieczenia połączeń** z menu. Dla pozycji **Wymuszaj połączenie SSL** wybierz opcję **Wyłączone**.
 
 ## <a name="create-table-and-insert-read-update-and-delete-data"></a>Tworzenie tabeli oraz wstawianie, odczytywanie, aktualizowanie i usuwanie danych
 

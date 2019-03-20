@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: aa3f2bc23b731f1e2c02d84edd6079debfbae134
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 249ed7b1be2731fc8165ca7f205ba1d94066818e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727267"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088047"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji programu Microsoft Azure Storage Explorer
 
@@ -158,12 +158,12 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 
 * Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
 * Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
-    * Tworzenie i usuwanie kontenerów
-    * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
-    * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
-    * Tworzenia nowych folderów
-    * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
-    * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
+  * Tworzenie i usuwanie kontenerów
+  * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
+  * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
+  * Tworzenia nowych folderów
+  * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
+  * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
     
     Inne typowe funkcje obiektów Blob, takie jak usuwanie nietrwałe i migawki, nie są obecnie dostępne. Zarządzanie uprawnieniami jest również dostępna tylko po zalogowaniu. Ponadto podczas pracy na koncie usługi Azure Data Lake Store Gen2 Storage, Eksplorator usługi Storage będzie używać narzędzia AzCopy przekazywanie i pobieranie i domyślną przy użyciu nazwy i klucza poświadczeń dla wszystkich operacji, jeśli jest dostępny.
 * Po opinii silne użytkownika dzierżawy podziału ponownie można można przerwać dzierżawy dla wielu obiektów blob na raz.
@@ -227,12 +227,12 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 
 * Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
 * Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
-    * Tworzenie i usuwanie kontenerów
-    * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
-    * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
-    * Tworzenia nowych folderów
-    * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
-    * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
+  * Tworzenie i usuwanie kontenerów
+  * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
+  * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
+  * Tworzenia nowych folderów
+  * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
+  * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
     
     Inne typowe funkcje obiektów Blob, takie jak usuwanie nietrwałe i migawki, nie są obecnie dostępne. Zarządzanie uprawnieniami jest również dostępna tylko po zalogowaniu. Ponadto podczas pracy na koncie usługi Azure Data Lake Store Gen2 Storage, Eksplorator usługi Storage będzie używać narzędzia AzCopy przekazywanie i pobieranie i domyślną przy użyciu nazwy i klucza poświadczeń dla wszystkich operacji, jeśli jest dostępny.
 * Po opinii silne użytkownika dzierżawy podziału ponownie można można przerwać dzierżawy dla wielu obiektów blob na raz.
@@ -282,12 +282,12 @@ Ten artykuł zawiera informacje o wersji programu Azure Storage Explorer 1.4.3 w
 
 * Można teraz używać Eksploratora usługi Storage, dostęp do danych obiektów Blob za pomocą [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Jeśli użytkownik jest zalogowany i Eksploratora usługi Storage nie jest w stanie pobrać klucze konta magazynu, OAuth token będzie używany do uwierzytelniania podczas interakcji z danymi.
 * Eksplorator usługi Storage obsługuje teraz konta magazynu Gen2 usługi ADLS. Gdy Eksplorator usługi Storage wykryje, że hierarchicznej przestrzeni nazw jest włączona dla konta magazynu, będzie obok nazwy konta magazynu, zobacz "(ADLS Gen2 — wersja zapoznawcza)". Eksplorator usługi Storage jest w stanie wykryć, czy hierarchicznej przestrzeni nazw jest włączane, gdy użytkownik jest zalogowany, lub Jeśli dołączysz nazwą i kluczem konta magazynu. W przypadku kont magazynu Gen2 ADLS można użyć Eksploratora usługi Storage do:
-    * Tworzenie i usuwanie kontenerów
-    * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
-    * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
-    * Tworzenia nowych folderów
-    * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
-    * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
+  * Tworzenie i usuwanie kontenerów
+  * Zarządzanie właściwości kontenera i uprawnieniami (po lewej stronie)
+  * Wyświetlanie i nawigowanie po danych wewnątrz kontenerów
+  * Tworzenia nowych folderów
+  * Przekazywanie, pobieranie, zmiana nazwy i usuwanie plików i folderów
+  * Zarządzaj uprawnienia (po prawej stronie) i właściwości plików i folderów.
     
     Inne typowe funkcje obiektów Blob, takie jak usuwanie nietrwałe i migawki, nie są obecnie dostępne. Zarządzanie uprawnieniami jest również dostępna tylko po zalogowaniu. Ponadto podczas pracy na koncie usługi Azure Data Lake Store Gen2 Storage, Eksplorator usługi Storage będzie używać narzędzia AzCopy przekazywanie i pobieranie i domyślną przy użyciu nazwy i klucza poświadczeń dla wszystkich operacji, jeśli jest dostępny.
 * Po opinii silne użytkownika dzierżawy podziału ponownie można można przerwać dzierżawy dla wielu obiektów blob na raz.

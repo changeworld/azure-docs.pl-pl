@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 897bcae65cd0115f3e224ec4a65e3736089bf97f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 08f84a3e037301837da984b0891d978027dc2e11
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242500"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083168"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Samouczek: Wykrywanie zagrożeń za pomocą platformy Azure przez wartownika w wersji zapoznawczej
 
@@ -42,11 +42,11 @@ Aby zbadać przypadków, należy najpierw utworzyć reguły wykrywania. Reguły 
 
 1. W witrynie Azure portal w obszarze Azure przez wartownika wybierz **analizy**.
 
-  ![Analiza](./media/tutorial-detect-threats/alert-rules.png)
+   ![Analiza](./media/tutorial-detect-threats/alert-rules.png)
 
 2. Na pasku menu u góry kliknij **+ Dodaj**.  
 
-  ![Utwórz regułę alertu](./media/tutorial-detect-threats/create-alert-rule.png)
+   ![Utwórz regułę alertu](./media/tutorial-detect-threats/create-alert-rule.png)
 
 3. W obszarze **Utwórz regułę alertu**, wprowadź opisową nazwę i ustawić **ważność** zgodnie z potrzebami. 
 

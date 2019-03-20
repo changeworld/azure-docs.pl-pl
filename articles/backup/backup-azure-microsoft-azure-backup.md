@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: f81e7a0008c015c033d30045970fe1bd67597ff9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452202"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075616"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie usługi Azure Backup Server
 > [!div class="op_single_selector"]
@@ -231,16 +231,16 @@ Poniżej opisano sposób aktualizacji agentów ochrony na komputerach klienckich
 
 2. W okienku wyświetlania wybierz komputery klienckie, dla których chcesz zaktualizować agenta ochrony.
 
-  > [!NOTE]
-  > **Aktualizacji agenta** kolumna wskazuje, kiedy aktualizacji agenta ochrony jest dostępna dla każdego chronionego komputera. W **akcje** okienku **aktualizacji** akcja jest dostępna tylko wtedy, gdy komputer chroniony jest zaznaczony i są dostępne aktualizacje.
-  >
-  >
+   > [!NOTE]
+   > **Aktualizacji agenta** kolumna wskazuje, kiedy aktualizacji agenta ochrony jest dostępna dla każdego chronionego komputera. W **akcje** okienku **aktualizacji** akcja jest dostępna tylko wtedy, gdy komputer chroniony jest zaznaczony i są dostępne aktualizacje.
+   >
+   >
 
 3. Aby zainstalować zaktualizowanych agentów ochrony na wybranych komputerach w **akcje** okienku wybierz **aktualizacji**.
 
 4. Na komputerze klienckim, który nie jest podłączony do sieci, dopóki komputer jest połączony z siecią **stan agenta** kolumna pokazuje stan **oczekująca aktualizacja**.
 
-  Po komputer kliencki jest połączony z siecią **aktualizacji agenta** kolumny dla komputera klienckiego wskazuje stan **aktualizowanie**.
+   Po komputer kliencki jest połączony z siecią **aktualizacji agenta** kolumny dla komputera klienckiego wskazuje stan **aktualizowanie**.
 
 ## <a name="move-mabs-to-a-new-server"></a>Przenoszenie serwera usługi Mab nowy serwer
 
@@ -262,10 +262,11 @@ Poniżej przedstawiono kroki, jeśli musisz przenieść serwera usługi Mab na n
 9. Z bazy danych SQL należy przywrócić bazy danych DPMDB
 10. Z poziomu wiersza polecenia administratora na nowy serwer dysk cd, kopia zapasowa Microsoft Azure Zainstaluj lokalizacji i otworzyć folder bin
 
-Przykład ścieżki: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
-na platformie Azure należy utworzyć kopię zapasową wykonaj polecenie DPMSYNC-SYNC
+    Przykład ścieżki: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\" 
 
-10) Uruchom polecenie DPMSYNC-SYNC Uwaga Po dodaniu nowych dysków do puli magazynów programu DPM, zamiast przenoszenia stare, uruchom polecenie DPMSYNC - Reallocatereplica
+11. Do usługi Azure backup, wykonaj polecenie DPMSYNC-SYNC
+
+    Po dodaniu nowych dysków do puli magazynów programu DPM, zamiast przenoszenia stare, a następnie uruchom polecenie DPMSYNC - Reallocatereplica
 
 ## <a name="network-connectivity"></a>Połączenie sieciowe
 Usługa Azure Backup Server wymaga połączenia z usługą Azure Backup dla produktu działało poprawnie. Aby sprawdzić, czy komputer ma łączność z platformy Azure, należy użyć ```Get-DPMCloudConnection``` polecenia cmdlet w konsoli programu PowerShell serwera kopii zapasowych Azure. Jeśli dane wyjściowe polecenia cmdlet ma wartość TRUE, a następnie istnieje połączenie, przeciwnym razie nie ma łączności.
@@ -306,33 +307,33 @@ Użyj poniższych procedur, aby uaktualnić serwera usługi MAB.
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>Uaktualnienie z serwera usługi Mab V2 do V3
 
 > [!NOTE]
-
+> 
 > Serwera usługi Mab w wersji 2 nie jest wymagane w przypadku instalowania serwera usługi Mab w wersji 3. Możesz jednak uaktualnienie do serwera usługi Mab w wersji 3 tylko z serwera usługi Mab w wersji 2.
 
 Aby uaktualnić serwera usługi Mab, wykonaj następujące kroki:
 
 1. Uaktualnienie z serwera usługi Mab V2 do V3 serwera usługi Mab, należy uaktualnić system operacyjny do systemu Windows Server 2016 lub Windows Server 2019 w razie potrzeby.
 
-2.  Uaktualnij serwer. Kroki są podobne do [instalacji](#install-and-upgrade-azure-backup-server). Jednak dla ustawienia programu SQL, otrzymasz opcję Uaktualnij wystąpienie programu SQL do SQL 2017 lub użyć wystąpienia programu SQL server 2017.
+2. Uaktualnij serwer. Kroki są podobne do [instalacji](#install-and-upgrade-azure-backup-server). Jednak dla ustawienia programu SQL, otrzymasz opcję Uaktualnij wystąpienie programu SQL do SQL 2017 lub użyć wystąpienia programu SQL server 2017.
 
-  > [!NOTE]
+   > [!NOTE]
+   > 
+   > Nie zamykaj wystąpienia programu SQL jest uaktualniany, kończenie odinstaluje wystąpienie funkcji raportowania programu SQL i dlatego próby ponownego uaktualnienia serwera usługi Mab zakończy się niepowodzeniem.
 
-  > Nie zamykaj wystąpienia programu SQL jest uaktualniany, kończenie odinstaluje wystąpienie funkcji raportowania programu SQL i dlatego próby ponownego uaktualnienia serwera usługi Mab zakończy się niepowodzeniem.
+   Ważne zagadnienia, które należy zwrócić uwagę:
 
-  Ważne zagadnienia, które należy zwrócić uwagę:
-
-  > [!IMPORTANT]
-
-  >  W ramach uaktualnienia programu SQL 2017 możemy utworzyć kopię zapasową klucze szyfrowania programu SQL i odinstalowania usług raportowania. Po uaktualnieniu serwera SQL service(14.0.6827.4788) raportowania jest zainstalowana i klucze szyfrowania zostaną przywrócone.
-
- > Podczas ręcznego konfigurowania SQL 2017, zobacz *konfiguracji usługi SSRS z programem SQL 2017* sekcji zgodnie z instrukcjami instalacji.
+   > [!IMPORTANT]
+   > 
+   >  W ramach uaktualnienia programu SQL 2017 możemy utworzyć kopię zapasową klucze szyfrowania programu SQL i odinstalowania usług raportowania. Po uaktualnieniu serwera SQL service(14.0.6827.4788) raportowania jest zainstalowana i klucze szyfrowania zostaną przywrócone.
+   > 
+   > Podczas ręcznego konfigurowania SQL 2017, zobacz *konfiguracji usługi SSRS z programem SQL 2017* sekcji zgodnie z instrukcjami instalacji.
 
 3. Aktualizowanie agentów ochrony na serwerach chronionych.
 4. Tworzenie kopii zapasowych powinno być kontynuowane bez konieczności ponownego uruchomienia serwerów produkcyjnych.
 5. Możesz rozpocząć teraz ochrony danych. Jeśli uaktualniasz do Modern Backup Storage, przy jednoczesnej ochronie, również można woluminów, które chcesz przechowywać kopie zapasowe i sprawdź, czy w obszarze aprowizowane miejsce. [Dowiedz się więcej](backup-mabs-add-storage.md).
 
 > [!NOTE]
-
+> 
 > Jeśli uaktualniasz z serwera usługi Mab V1 na V2, upewnij się, że system operacyjny Windows Server 2016 lub Windows Server 2012 R2. Aby skorzystać z nowych funkcji, takich jak System Center 2016 danych ochrony Menedżera Modern Backup Storage, należy zainstalować kopii zapasowej serwera w wersji 2 w systemie Windows Server 2016. Zanim uaktualnisz do lub zainstalować kopii zapasowej serwera w wersji 2, przeczytaj o [wymagania wstępne instalacji](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) odpowiednie dla serwera usługi MAB.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów

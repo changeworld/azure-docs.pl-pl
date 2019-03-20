@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 02/26/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: c99d3df23e0ba9733e8762fe8fc22a4c69d3bcfb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: ca18042985669899247c3a0a16b41a98c5c6d1ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236860"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075172"
 ---
-# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Samouczek: tworzenie połączenia lokacja-lokacja przy użyciu usługi Azure Virtual WAN
+# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Samouczek: Utwórz połączenie lokacja-lokacja przy użyciu Azure wirtualnego WAN
 
 W tym samouczku pokazano, w jaki sposób przy użyciu usługi Azure Virtual WAN utworzyć połączenie z zasobami na platformie Azure za pośrednictwem połączenia sieci VPN protokołu IPsec/IKE (IKEv1 i IKEv2). Ten typ połączenia wymaga lokalnego urządzenia sieci VPN z przypisanym publicznym adresem IP dostępnym z zewnątrz. Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz [Omówienie usługi Virtual WAN](virtual-wan-about.md)
 
@@ -40,7 +40,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="vnet"></a>1. Tworzenie sieci wirtualnej
 
@@ -60,12 +64,12 @@ Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokaliz
 2. Na stronie **Lokacje sieci VPN** kliknij pozycję **+Utwórz lokację**.
 3. Na stronie **Tworzenie lokacji** wypełnij następujące pola:
 
-  * **Nazwa** — jest to nazwa używana do odwoływania się do lokacji lokalnej.
-  * **Publiczny adres IP** — jest to publiczny adres IP urządzenia sieci VPN znajdującego się w lokacji lokalnej.
-  * **Prywatna przestrzeń adresowa** — to przestrzeń adresowa IP znajdująca się w lokacji lokalnej. Ruch do tej przestrzeni adresowej jest kierowany do lokacji lokalnej.
-  * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
-  * **Grupa zasobów** — grupa zasobów, której chcesz używać.
-  * **Lokalizacja**.
+   * **Nazwa** — jest to nazwa używana do odwoływania się do lokacji lokalnej.
+   * **Publiczny adres IP** — jest to publiczny adres IP urządzenia sieci VPN znajdującego się w lokacji lokalnej.
+   * **Prywatna przestrzeń adresowa** — to przestrzeń adresowa IP znajdująca się w lokacji lokalnej. Ruch do tej przestrzeni adresowej jest kierowany do lokacji lokalnej.
+   * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
+   * **Grupa zasobów** — grupa zasobów, której chcesz używać.
+   * **Lokalizacja**.
 4. Kliknij pozycję **Pokaż zaawansowane**, aby wyświetlić dodatkowe ustawienia. Możesz wybrać pozycję **BGP**, aby włączyć protokół BGP, co spowoduje włączenie tej funkcji dla wszystkich połączeń utworzonych dla tej lokacji na platformie Azure. Możesz też wprowadzić **Informacje o urządzeniu** (pola opcjonalne). Pomogą one zespołowi platformy Azure lepiej zrozumieć środowisko i dodać nowe opcje optymalizacji w przyszłości. Mogą też ułatwić Ci rozwiązywanie problemów.
 5. Kliknij pozycję **Potwierdź**.
 6. Po kliknięciu pozycji **Potwierdź** wyświetl stan na stronie lokacji sieci VPN. Stan lokacji zmieni się z **Aprowizowanie** na **Aprowizowano**.
@@ -267,13 +271,13 @@ Utwórz połączenie, aby monitorować komunikację pomiędzy maszyną wirtualn�
 
 ## <a name="cleanup"></a>11. Oczyszczanie zasobów
 
-Gdy grupa zasobów i zawarte w niej zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
+Jeśli te zasoby nie są już potrzebne, możesz użyć [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby. Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

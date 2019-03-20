@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: tylerfox
-ms.openlocfilehash: 36d169a4220cb1baacdaee072ed01101ef2e9437
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b8e9ad31c2ce7b001297012bca2aa7dd526f732a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201283"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu programu Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -106,7 +106,7 @@ Wpływ zmianę liczby węzłów danych dla każdego typu klastra obsługiwane pr
 
     Interfejs użytkownika sieci web systemu Storm jest dostępny w klastrze HDInsight:
 
-    ![HDInsight storm skalowania w ponownego równoważenia](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
+    ![HDInsight storm skalowania w ponownego równoważenia](./media/hdinsight-administer-use-powershell/hdinsight.portal.scale.cluster.png)
 
     Oto przykład jak ponowne zrównoważenie topologii Storm za pomocą polecenia interfejsu wiersza polecenia:
 
@@ -159,7 +159,7 @@ Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredenti
 > [!NOTE]  
 > Przez przyznanie/odbieranie prawa dostępu, możesz zresetować klastra, nazwę użytkownika i hasło.
 
-Przyznanie i odbieranie prawa dostępu, jest możliwe również przy użyciu portalu. Zobacz [administrowania HDInsight przy użyciu witryny Azure portal][hdinsight-admin-portal].
+Przyznanie i odbieranie prawa dostępu, jest możliwe również przy użyciu portalu. Zobacz [Zarządzanie Apache Hadoop clusters w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md).
 
 ## <a name="update-http-user-credentials"></a>Aktualizowanie poświadczeń użytkownika HTTP
 Jest tę samą procedurę jak dostęp Grant/revoke HTTP. W przypadku klastra przyznano dostęp HTTP, należy je najpierw odwołać.  A następnie przyznać dostęp z nowymi poświadczeniami użytkownika protokołu HTTP.
@@ -228,7 +228,7 @@ Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Zobacz też
 * [Dokumentacja poleceń cmdlet HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx)
-* [Administrowanie HDInsight za pomocą witryny Azure portal][hdinsight-admin-portal]
+* [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md)
 * [Administrowanie HDInsight przy użyciu interfejsu wiersza polecenia][hdinsight-admin-cli]
 * [Tworzenie klastrów HDInsight][hdinsight-provision]
 * [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data]
@@ -245,12 +245,10 @@ Zobacz [Przekazywanie danych do usługi HDInsight][hdinsight-upload-data].
 [hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
 
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-flight]: hdinsight-analyze-flight-delay-data.md
 
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 

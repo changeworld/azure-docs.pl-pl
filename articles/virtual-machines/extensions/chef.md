@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 159ce1b565068e2cfdb3cb1cb2e5b5f72ff6848f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089169"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Program chef rozszerzenia maszyny Wirtualnej dla systemów Linux i Windows
 
@@ -69,25 +69,25 @@ Następujący kod JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej progr
 ### <a name="core-property-values"></a>Wartości właściwości podstawowe
 
 | Name (Nazwa) | Wartość / przykład | Typ danych
-| ---- | ---- | ---- | ----
+| ---- | ---- | ---- 
 | apiVersion | `2017-12-01` | ciąg (Data) |
-| Wydawcy | `Chef.Bootstrap.WindowsAzure` | ciąg |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | ciąg |
+| Wydawcy | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | ciąg (podwójny) |
 
 ### <a name="settings"></a>Ustawienia
 
 | Name (Nazwa) | Wartość / przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ----
-| Ustawienia/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | ciąg (url) | Tak |
-| Ustawienia/bootstrap_options/validation_client_name | `myorg-validator` | ciąg | Tak |
-| Ustawienia/runlist | `recipe[mycookbook::default]` | ciąg | Tak |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | ciąg (url) | Tak |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Tak |
+| settings/runlist | `recipe[mycookbook::default]` | string | Tak |
 
 ### <a name="protected-settings"></a>Chronione ustawienia
 
 | Name (Nazwa) | Przykład | Typ danych | Wymagana?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | ciąg | Tak |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Tak |
 
 <!--
 ### Linux-specific settings

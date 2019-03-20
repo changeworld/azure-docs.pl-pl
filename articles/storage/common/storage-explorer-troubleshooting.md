@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: bff1e8c111a8a50e15b6d316e422a641a778c73c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775173"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225046"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów do usługi Azure Storage Explorer
 
@@ -233,14 +233,46 @@ Jeśli przypadkowo dołączany przy użyciu nieprawidłowego adresu URL sygnatur
 
 ## <a name="linux-dependencies"></a>Zależności systemu Linux
 
-Dystrybucje systemu Linux niż Ubuntu 16.04 może być konieczne ręczne zainstalowanie niektóre zależności. Ogólnie rzecz biorąc wymagane są następujące pakiety:
+Ogólnie rzecz biorąc następujące pakiety są wymagane do uruchamiania Eksploratora usługi Storage w systemie Linux:
 
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* `libsecret`
+* [Środowisko uruchomieniowe programu .NET core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* `libgnome-keyring-common` i `libgnome-keyring-dev`
 * `libgconf-2-4`
-* Aktualne GCC
 
-W zależności od Twojej dystrybucji może być inne pakiety, które są potrzebne do zainstalowania. Program Storage Explorer [wersji](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) zawierają poznać konkretne kroki dla niektórych dystrybucji.
+W zależności od Twojej dystrybucji może różnić się lub więcej pakietów należy zainstalować.
+
+Eksplorator usługi Storage jest oficjalnie obsługiwany na naciśnięcie i przytrzymanie 18.04 Ubuntu 16.04 i 14.04. Kroki instalacji wyczyść maszyn są następujące:
+
+# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+
+1. Pobierz bezpłatnie Eksplorator magazynu
+2. Zainstaluj środowisko uruchomieniowe programu .NET Core, najbardziej aktualną wersję zweryfikowaną: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) (Jeśli użytkownik jest już zainstalowana nowsza wersja, konieczne może być stosowanie poprawek do Eksploratora usługi Storage, zobacz poniżej)
+3. Uruchom polecenie `sudo apt-get install libgconf-2-4`
+4. Uruchom polecenie `sudo apt install libgnome-keyring-common libgnome-keyring-dev`
+
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+
+1. Pobierz bezpłatnie Eksplorator magazynu
+2. Zainstaluj środowisko uruchomieniowe programu .NET Core, najbardziej aktualną wersję zweryfikowaną: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) (Jeśli użytkownik jest już zainstalowana nowsza wersja, konieczne może być stosowanie poprawek do Eksploratora usługi Storage, zobacz poniżej)
+3. Uruchom polecenie `sudo apt install libgnome-keyring-dev`
+
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+
+1. Pobierz bezpłatnie Eksplorator magazynu
+2. Zainstaluj środowisko uruchomieniowe programu .NET Core, najbardziej aktualną wersję zweryfikowaną: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) (Jeśli użytkownik jest już zainstalowana nowsza wersja, konieczne może być stosowanie poprawek do Eksploratora usługi Storage, zobacz poniżej)
+3. Uruchom polecenie `sudo apt install libgnome-keyring-dev`
+
+---
+
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Stosowanie poprawek Eksploratora usługi Storage dla nowszych wersji programu .NET Core 
+Jeśli masz wersję platformy .NET Core, większa niż 2.0 zainstalowana i uruchomiona wersja programu Storage Explorer 1.7.0 lub starszej, najprawdopodobniej konieczne będzie patch Eksploratora usługi Storage, wykonując następujące czynności:
+1. Pobierz wersję 1.5.43 StreamJsonRpc [z pakietów nuget](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Poszukaj linku "Pobierz" w prawej części strony.
+2. Po pobraniu pakietu, zmień rozszerzenie pliku z `.nupkg` do `.zip`
+3. Rozpakuj pakiet
+4. Przejdź do strony `streamjsonrpc.1.5.43/lib/netstandard1.1/`
+5. Kopiuj `StreamJsonRpc.dll` w następujących lokalizacjach znajdujące się w folderze Eksploratora usługi Storage:
+    1. `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+    2. `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Otwórz w Eksploratorze z witryny Azure portal nie działa
 

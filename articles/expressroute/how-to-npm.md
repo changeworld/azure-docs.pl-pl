@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: fb9ee97726632b7eeccc923596c1f5527a7c95bd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961619"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118633"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute
 
@@ -62,17 +62,17 @@ Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtua
 2. W dolnej części głównej **rozwiązania Network Performance Monitor** kliknij **Utwórz** otworzyć **rozwiązania Network Performance Monitor — Utwórz nowe rozwiązanie** strony. Kliknij przycisk **obszar roboczy usługi Analytics Log - wybierz obszar roboczy** aby otworzyć stronę obszarów roboczych. Kliknij przycisk **+ Utwórz nowy obszar roboczy** aby otworzyć stronę obszaru roboczego.
 3. Na **obszaru roboczego usługi Log Analytics** wybierz opcję **Utwórz nowy**, następnie skonfiguruj następujące ustawienia:
 
-  * Zaloguj się obszar roboczy usługi Analytics — wpisz nazwę obszaru roboczego.
-  * Subskrypcja — Jeśli masz wiele subskrypcji, wybierz jedną, które chcesz skojarzyć z nowym obszarem roboczym.
-  * Grupa zasobów - Utwórz grupę zasobów lub użyć istniejącego.
-  * Lokalizacja — ta lokalizacja będzie używana do określenia lokalizacji konta magazynu, które jest używane dla dzienników połączenia agenta.
-  * Warstwa cenowa — wybierz warstwę cenową.
+   * Zaloguj się obszar roboczy usługi Analytics — wpisz nazwę obszaru roboczego.
+   * Subskrypcja — Jeśli masz wiele subskrypcji, wybierz jedną, które chcesz skojarzyć z nowym obszarem roboczym.
+   * Grupa zasobów - Utwórz grupę zasobów lub użyć istniejącego.
+   * Lokalizacja — ta lokalizacja będzie używana do określenia lokalizacji konta magazynu, które jest używane dla dzienników połączenia agenta.
+   * Warstwa cenowa — wybierz warstwę cenową.
   
-    >[!NOTE]
-    >Obwód usługi ExpressRoute może być dowolnym miejscu na świecie. Nie musi znajdować się w tym samym regionie co obszar roboczy.
-    >
+     >[!NOTE]
+     >Obwód usługi ExpressRoute może być dowolnym miejscu na świecie. Nie musi znajdować się w tym samym regionie co obszar roboczy.
+     >
   
-    ![obszar roboczy](./media/how-to-npm/4.png)<br><br>
+     ![obszar roboczy](./media/how-to-npm/4.png)<br><br>
 4. Kliknij przycisk **OK** Aby zapisać i wdrożyć ustawienia szablonu. Gdy szablon jest weryfikowana, kliknij przycisk **Utwórz** do wdrożenia obszaru roboczego.
 5. Po wdrożeniu obszaru roboczego, przejdź do **NetworkMonitoring(name)** utworzonego zasobu. Sprawdź poprawność ustawień, a następnie kliknij przycisk **rozwiązanie wymaga dodatkowej konfiguracji**.
 
@@ -86,7 +86,7 @@ Utwórz obszar roboczy w ramach subskrypcji, która ma połączenie sieci wirtua
 2. Następnie skopiuj **identyfikator obszaru roboczego** i **klucz podstawowy** do Notatnika.
 3. Z **skonfigurować Log Analytics agentów monitorowania przy użyciu protokołu TCP** sekcji, Pobierz skrypt programu Powershell. Skrypt PowerShell ułatwia otworzyć port zapory dla transakcji TCP.
 
-  ![Skrypt programu PowerShell](./media/how-to-npm/7.png)
+   ![Skrypt programu PowerShell](./media/how-to-npm/7.png)
 
 ### <a name="installagent"></a>2.2: Zainstaluj agenta monitorowania na każdym serwerze monitorowania (w każdej sieci Wirtualnej, który chcesz monitorować)
 
@@ -102,15 +102,15 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
 4. Na **Folder docelowy** strony, Zmień lub pozostaw domyślny folder instalacji, a następnie kliknij **dalej**.
 5. Na **opcje instalacji agenta** strony, możesz nawiązać połączenia z agentem dzienniki usługi Azure Monitor lub Operations Manager. Lub puste opcje wyboru Jeśli chcesz później skonfigurować agenta. Po wprowadzeniu dokonane wybory, kliknij przycisk **dalej**.
 
-  * Jeśli chcesz nawiązać połączenie z **usługi Azure Log Analytics**, Wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego** (klucz podstawowy) skopiowane do Notatnika w poprzedniej sekcji. Następnie kliknij przycisk **Dalej**.
+   * Jeśli chcesz nawiązać połączenie z **usługi Azure Log Analytics**, Wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego** (klucz podstawowy) skopiowane do Notatnika w poprzedniej sekcji. Następnie kliknij przycisk **Dalej**.
 
-    ![Identyfikator i klucz](./media/how-to-npm/8.png)
-  * Jeśli chcesz nawiązać połączenie z **programu Operations Manager**na **Konfiguracja grupy zarządzania** wpisz **Nazwa grupy zarządzania**, **serwera zarządzania** i **Port serwera zarządzania**. Następnie kliknij przycisk **Dalej**.
+     ![Identyfikator i klucz](./media/how-to-npm/8.png)
+   * Jeśli chcesz nawiązać połączenie z **programu Operations Manager**na **Konfiguracja grupy zarządzania** wpisz **Nazwa grupy zarządzania**, **serwera zarządzania** i **Port serwera zarządzania**. Następnie kliknij przycisk **Dalej**.
 
-    ![Operations Manager](./media/how-to-npm/9.png)
-  * Na **konto akcji agenta** albo wybierz **systemu lokalnego** konta lub **domeny lub lokalnego konta komputera**. Następnie kliknij przycisk **Dalej**.
+     ![Operations Manager](./media/how-to-npm/9.png)
+   * Na **konto akcji agenta** albo wybierz **systemu lokalnego** konta lub **domeny lub lokalnego konta komputera**. Następnie kliknij przycisk **Dalej**.
 
-    ![Konto](./media/how-to-npm/10.png)
+     ![Konto](./media/how-to-npm/10.png)
 6. Na **gotowy do instalacji** strony, przejrzyj wybrane opcje, a następnie kliknij przycisk **zainstalować**.
 7. Na stronie **Konfiguracja została zakończona pomyślnie** kliknij przycisk **Zakończ**.
 8. Po zakończeniu programu Microsoft Monitoring Agent zostanie wyświetlona w Panelu sterowania. Możesz tam przejrzeć konfigurację i sprawdzić, czy agent jest połączony do dzienników usługi Azure Monitor. Po nawiązaniu połączenia agent wyświetla komunikat z informacją: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.
@@ -128,7 +128,7 @@ Aby skonfigurować ustawienia serwera proxy dla programu Microsoft Monitoring Ag
 3. Kliknij kartę **Ustawienia serwera proxy**.
 4. Wybierz **Użyj serwera proxy** i wpisz adres URL i numer portu, jeśli jest ono wymagane. Jeśli Twój serwer proxy wymaga uwierzytelniania, wpisz nazwę użytkownika i hasło, aby uzyskać dostęp do serwera proxy.
 
-  ![Serwer proxy](./media/how-to-npm/11.png)
+   ![Serwer proxy](./media/how-to-npm/11.png)
 
 ### <a name="verifyagent"></a>2.4: Sprawdź łączność agenta
 
@@ -139,7 +139,7 @@ Można łatwo sprawdzić, czy komunikują się agentów.
 3. Kliknij przycisk **usługi Azure Log Analytics** kartę.
 4. W **stan** kolumny, powinien zostać wyświetlony pomyślnie połączono agenta do dzienników usługi Azure Monitor.
 
-  ![status](./media/how-to-npm/12.png)
+   ![status](./media/how-to-npm/12.png)
 
 ### <a name="firewall"></a>2.5: Otwórz porty zapory na serwerach agenta monitorowania
 
@@ -172,16 +172,16 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [
 
 1. Przejdź do kafelka przeglądu rozwiązania Network Performance Monitor, przechodząc do **wszystkie zasoby** stronie, a następnie kliknij pozycję na liście dozwolonych NPM w obszarze roboczym.
 
-  ![obszar roboczy npm](./media/how-to-npm/npm.png)
+   ![obszar roboczy npm](./media/how-to-npm/npm.png)
 2. Kliknij przycisk **rozwiązania Network Performance Monitor** kafelka przeglądu, aby wyświetlić pulpit nawigacyjny. Pulpit nawigacyjny zawiera na stronie usługi ExpressRoute, który pokazuje, że usługa ExpressRoute jest w "stanie nieskonfigurowanym". Kliknij przycisk **Konfiguracja funkcji** aby otworzyć stronę konfiguracji rozwiązania Network Performance Monitor.
 
-  ![Konfiguracja funkcji](./media/how-to-npm/npm2.png)
+   ![Konfiguracja funkcji](./media/how-to-npm/npm2.png)
 3. Na stronie konfiguracji przejdź do karty "Komunikacje równorzędne usługi ExpressRoute", znajduje się w panelu po lewej stronie. Następnie kliknij przycisk **odnajdywanie teraz**.
 
-  ![odnajdź](./media/how-to-npm/13.png)
+   ![odnajdź](./media/how-to-npm/13.png)
 4. Po zakończeniu odnajdowania, zostanie wyświetlona lista zawierająca następujące elementy:
-  * Wszystkie połączenia komunikacji równorzędnej firmy Microsoft w obwody usługi ExpressRoute, które są skojarzone z tą subskrypcją.
-  * Wszystkie połączenia prywatnej komunikacji równorzędnej, łączących się z sieciami wirtualnymi skojarzone z tą subskrypcją.
+   * Wszystkie połączenia komunikacji równorzędnej firmy Microsoft w obwody usługi ExpressRoute, które są skojarzone z tą subskrypcją.
+   * Wszystkie połączenia prywatnej komunikacji równorzędnej, łączących się z sieciami wirtualnymi skojarzone z tą subskrypcją.
             
 ## <a name="configmonitor"></a>Krok 5. Konfigurowanie monitorów
 

@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf1dc33276c10a9b7fe7c7ebb6619b8c47d66bfb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447833"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852980"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących usługi Azure Active Directory (Azure AD) Connect Health. Wśród często zadawanych pytań obejmują pytania dotyczące sposobu korzystania z usługi, który zawiera model rozliczeń możliwości, ograniczeń i pomocy technicznej.
@@ -192,6 +192,9 @@ CheckForMS17-010
 **Pyt.: Dlaczego są moje usług AD FS inspekcji nie są generowane?**
 
 Użyj polecenia cmdlet programu PowerShell <i>Get-AdfsProperties - AuditLevel</i> upewnij się, dzienniki inspekcji nie znajduje się w stanie wyłączony. Przeczytaj więcej na temat [dzienniki inspekcji usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Zwróć uwagę, jeśli są to zaawansowane ustawienia inspekcji, przekazywane do serwera usług AD FS, zmiany przy użyciu auditpol.exe zostaną zastąpione (zdarzenie w przypadku aplikacji generowany jest nieskonfigurowany). W tym przypadku Ustaw zasady zabezpieczeń lokalnych, aby rejestrować błędy generowane aplikację i Powodzenie.
+
+**Pyt.: Kiedy certyfikat agenta będzie automatyczne wygaśnięcie odnowiony przed?**
+Certyfikacja agent będzie automatyczne odnowić **6 miesięcy** przed datą wygaśnięcia. Jeśli nie zostanie odnowiona, upewnij się, że połączenie sieciowe agenta jest stabilna. Ponowne uruchamianie usługi agenta lub aktualizacji do najnowszej wersji może rozwiązać ten problem.
 
 
 ## <a name="related-links"></a>Powiązane linki

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 4aa4c69857bfd1ab99945cb0f5f748e60cff9978
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: e50c5d942bdbafc60bf0e2b8c74b008ac12b3bc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417334"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084984"
 ---
-# <a name="transform-and-protect-your-api"></a>Przekształcanie i ochrona interfejsu API 
+# <a name="transform-and-protect-your-api"></a>Przekształcanie i ochrona interfejsu API
 
 Samouczek przedstawia sposób przekształcania interfejsu API, aby nie ujawniał prywatnych informacji zaplecza. Na przykład możesz ukryć informacje dotyczące stosu technologicznego działającego w zapleczu. Możesz też ukryć oryginalne adresy URL, które są wyświetlane w treści odpowiedzi HTTP interfejsu API, a zamiast tego przekierowywać je do bramy APIM.
 
@@ -30,19 +30,20 @@ W tym samouczku przedstawiono również, jak łatwo można dodawać ochronę do 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Przekształcanie interfejsu API w celu usuwania nagłówków odpowiedzi
-> * Zamiana oryginalnych adresów URL w treści odpowiedzi interfejsu API w adresy URL bramy APIM
-> * Ochrona interfejsu API poprzez dodanie zasad limitu szybkości (ograniczanie przepustowości)
-> * Testowanie przekształceń
+>
+> -   Przekształcanie interfejsu API w celu usuwania nagłówków odpowiedzi
+> -   Zamiana oryginalnych adresów URL w treści odpowiedzi interfejsu API w adresy URL bramy APIM
+> -   Ochrona interfejsu API poprzez dodanie zasad limitu szybkości (ograniczanie przepustowości)
+> -   Testowanie przekształceń
 
 ![Zasady](./media/transform-api/api-management-management-console.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
-+ Zapoznaj się z [koncepcją zasad w usłudze Azure API Management](api-management-howto-policies.md).
-+ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
-+ Ukończ również następujący samouczek: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
+-   Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
+-   Zapoznaj się z [koncepcją zasad w usłudze Azure API Management](api-management-howto-policies.md).
+-   Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
+-   Ukończ również następujący samouczek: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -50,8 +51,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 W tej sekcji przedstawiono sposób ukrywania nagłówków HTTP, które nie powinny być widoczne dla użytkowników. W tym przykładzie następujące nagłówki zostają usunięte w odpowiedzi HTTP:
 
-* **X-Powered-By**
-* **X-AspNet-Version**
+-   **X-Powered-By**
+-   **X-AspNet-Version**
 
 ### <a name="test-the-original-response"></a>Testowanie oryginalnej odpowiedzi
 
@@ -78,13 +79,14 @@ Oryginalna odpowiedź powinna wyglądać następująco:
 5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
 6. W okienku po prawej stronie w obszarze **Zasady przekształcania** kliknij dwukrotnie opcję **+ Ustaw nagłówek HTTP** (aby wstawić dwa fragmenty kodu zasad).
 
-    ![Zasady](./media/transform-api/transform-api.png)
+   ![Zasady](./media/transform-api/transform-api.png)
+
 7. Zmodyfikuj kod **<outbound>**, aby wyglądał następująco:
 
-        <set-header name="X-Powered-By" exists-action="delete" />
-        <set-header name="X-AspNet-Version" exists-action="delete" />
+       <set-header name="X-Powered-By" exists-action="delete" />
+       <set-header name="X-AspNet-Version" exists-action="delete" />
 
-    ![Zasady](./media/transform-api/set-policy.png)
+   ![Zasady](./media/transform-api/set-policy.png)
 
 8. Kliknij przycisk **Zapisz**.
 
@@ -99,7 +101,7 @@ Aby zobaczyć oryginalną odpowiedź:
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2. Kliknij kartę **Test** w górnej części ekranu.
 3. Wybierz operację **GetSpeakers**.
-4. Naciśnij przycisk **Wyślij** u dołu ekranu. 
+4. Naciśnij przycisk **Wyślij** u dołu ekranu.
 
     Jak widać, oryginalna odpowiedź wygląda następująco:
 
@@ -107,13 +109,13 @@ Aby zobaczyć oryginalną odpowiedź:
 
 ### <a name="set-the-transformation-policy"></a>Ustawianie zasad przekształcania
 
-1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
-2. Wybierz opcję **Wszystkie operacje**.
-3. W górnej części ekranu wybierz kartę **Projektowanie**.
-4. W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
-5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
-6. W oknie po prawej stronie w obszarze **Zasady przekształcania** kliknij opcję **+ Znajdź i zastąp ciąg w treści**.
-7. Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>**), aby zastąpić adres URL i dopasować go do bramy APIM. Na przykład:
+1.  Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2.  Wybierz opcję **Wszystkie operacje**.
+3.  W górnej części ekranu wybierz kartę **Projektowanie**.
+4.  W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
+5.  Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
+6.  W oknie po prawej stronie w obszarze **Zasady przekształcania** kliknij opcję **+ Znajdź i zastąp ciąg w treści**.
+7.  Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>**), aby zastąpić adres URL i dopasować go do bramy APIM. Na przykład:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -123,18 +125,18 @@ W tej sekcji przedstawiono sposób dodawania zabezpieczeń do interfejsu API zap
 
 ![Ustawianie zasad danych przychodzących](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
-1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
-2. Wybierz opcję **Wszystkie operacje**.
-3. W górnej części ekranu wybierz kartę **Projektowanie**.
-4. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**.
-5. Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
-6. W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
-7. Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
+1.  Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2.  Wybierz opcję **Wszystkie operacje**.
+3.  W górnej części ekranu wybierz kartę **Projektowanie**.
+4.  W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**.
+5.  Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
+6.  W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
+7.  Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
 ## <a name="test-the-transformations"></a>Testowanie przekształceń
-        
+
 Na tym etapie zasady w edytorze kodu powinny wyglądać następująco:
 
     <policies>
@@ -148,6 +150,7 @@ Na tym etapie zasady w edytorze kodu powinny wyglądać następująco:
         <outbound>
             <set-header name="X-Powered-By" exists-action="delete" />
             <set-header name="X-AspNet-Version" exists-action="delete" />
+            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
             <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
             <base />
         </outbound>
@@ -197,15 +200,16 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Przekształcanie interfejsu API w celu usuwania nagłówków odpowiedzi
-> * Zamiana oryginalnych adresów URL w treści odpowiedzi interfejsu API w adresy URL bramy APIM
-> * Ochrona interfejsu API poprzez dodanie zasad limitu szybkości (ograniczanie przepustowości)
-> * Testowanie przekształceń
+>
+> -   Przekształcanie interfejsu API w celu usuwania nagłówków odpowiedzi
+> -   Zamiana oryginalnych adresów URL w treści odpowiedzi interfejsu API w adresy URL bramy APIM
+> -   Ochrona interfejsu API poprzez dodanie zasad limitu szybkości (ograniczanie przepustowości)
+> -   Testowanie przekształceń
 
 Przejdź do następnego samouczka:
 

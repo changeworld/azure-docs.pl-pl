@@ -12,21 +12,21 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e53afdfc4d2d8288a612cfb461751e6f78ebb2fa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 34455cac61dd3b1f1251d4bc2003bd8b029de031
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179267"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014960"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Omówienie dodawania kont do aplikacji Microsoft Authenticator
 
 Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
 
->[!Important]
->Aplikacja Microsoft Authenticator współdziała z dowolną aplikacją używającą weryfikacji dwuetapowej i dowolnym kontem obsługującym standardy TOTP (Time-based One-time Password).
-
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+> [!Important]
+> Aplikacja Microsoft Authenticator współdziała z dowolną aplikacją używającą weryfikacji dwuetapowej i dowolnym kontem obsługującym standardy TOTP (Time-based One-time Password).
+> 
+> Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykład:
 
@@ -43,6 +43,7 @@ Weryfikację dwuskładnikową możesz włączyć dla wielu kont, których używa
 |Konta osobiste|Konta Microsoft i inne niż Microsoft otwarte osobiście przez użytkownika, takie jak konta Outlook.com, Xbox LIVE, Google, Facebook i inne.|
 
 ## <a name="in-this-section"></a>W tej sekcji
+
 |Artykuł |Opis |
 |------|------------|
 |[Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md)|Opis sposobu dodawania konta służbowego do aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuskładnikowej.|

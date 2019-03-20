@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175459"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176586"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -116,7 +116,7 @@ Kontroler danych przychodzących, która dystrybuuje ruch do usług i aplikacji 
 
 ![Zapory aplikacji sieci web (WAF), takie jak bramy aplikacji platformy Azure mogą chronić i dystrybucji ruchu do klastra usługi AKS](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Zapora aplikacji sieci web (WAF) zapewnia dodatkową warstwę zabezpieczeń, filtrując ruch przychodzący. Otwórz sieci Web aplikacji Security Project (OWASP) zawiera zestaw reguł do obserwacji atakami, takimi jak wielu lokacji skryptów lub skażające pliku cookie. [Usługa Azure Application Gateway] [ app-gateway] jest zapory aplikacji sieci Web, które można zintegrować z usługą AKS klastrów zapewnienie te funkcje zabezpieczeń, zanim ruch trafia z klastrem AKS i aplikacjami. Inne rozwiązania innych firm również wykonywać te funkcje, dzięki temu można nadal używać istniejących inwestycji i doświadczenia w danego produktu.
+Zapora aplikacji sieci web (WAF) zapewnia dodatkową warstwę zabezpieczeń, filtrując ruch przychodzący. Otwórz sieci Web aplikacji Security Project (OWASP) zawiera zestaw reguł do obserwacji atakami, takimi jak wielu lokacji skryptów lub skażające pliku cookie. [Usługa Azure Application Gateway] [ app-gateway] (obecnie w wersji zapoznawczej w usłudze AKS) jest zapory aplikacji sieci Web, które można zintegrować z klastrami AKS, aby zapewnić te funkcje zabezpieczeń, zanim ruch trafia z klastrem AKS i aplikacjami. Inne rozwiązania innych firm również wykonywać te funkcje, dzięki temu można nadal używać istniejących inwestycji i doświadczenia w danego produktu.
 
 Zasobów obciążenia równoważenia lub ruch przychodzący w dalszym ciągu uruchamiać w klastrze usługi AKS w taki sposób, aby uściślić Dystrybucja ruchu. App Gateway mogą centralnie zarządzane jako kontroler danych przychodzących, podając definicję zasobu. Aby rozpocząć pracę, [utworzyć kontroler danych przychodzących z bram aplikacji][app-gateway-ingress].
 
@@ -124,7 +124,7 @@ Zasobów obciążenia równoważenia lub ruch przychodzący w dalszym ciągu uru
 
 **Najważniejsze wskazówki** — zasady sieciowe umożliwiają blokują lub zezwalają na ruch do zasobników. Domyślnie cały ruch jest dozwolony między zasobników w ramach klastra. Aby zwiększyć bezpieczeństwo należy zdefiniować reguły, które ograniczają komunikację pod.
 
-Zasady sieci jest funkcją Kubernetes, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Użycie zasad sieciowych umożliwia natywnych dla chmury sterowanie przepływem ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane. Nie należy używać kontroli ruchu pod do zasobników, należy użyć zasad sieciowych grup zabezpieczeń sieci platformy Azure.
+Zasady sieci (obecnie dostępna w wersji zapoznawczej w usłudze AKS) jest funkcją Kubernetes, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Użycie zasad sieciowych umożliwia natywnych dla chmury sterowanie przepływem ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane. Nie należy używać kontroli ruchu pod do zasobników, należy użyć zasad sieciowych grup zabezpieczeń sieci platformy Azure.
 
 Aby użyć zasad sieciowych, można włączyć tę funkcję podczas tworzenia klastra usługi AKS. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS. Planuj z wyprzedzeniem upewnij się, możesz włączyć zasad sieciowych w klastrach i można ich używać, zgodnie z potrzebami.
 

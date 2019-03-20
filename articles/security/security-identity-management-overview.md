@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
-Customer intent: As a IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: b58cbcdccced3952c3171daa14f80986e473c5dd
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
+ms.openlocfilehash: 29c04fc04b5d277e982a37402a128b2dbe787e2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111496"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898503"
 ---
 # <a name="azure-identity-management-security-overview"></a>Omówienie zabezpieczeń zarządzania tożsamościami platformy Azure
 
@@ -67,7 +67,7 @@ Więcej informacji:
 
 ## <a name="reverse-proxy"></a>Zwrotny serwer proxy
 
-Serwer Proxy aplikacji usługi Azure AD umożliwia publikowanie lokalnych aplikacji, takich jak [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) witryn, [aplikacji Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), i [IIS](http://www.iis.net/)— na podstawie aplikacji w sieci prywatnej i zapewnia bezpieczny dostęp dla użytkowników spoza sieci. Serwer Proxy aplikacji udostępnia dostępu zdalnego i logowania jednokrotnego dla wielu typów lokalnych aplikacji sieci web z tysiącami aplikacji SaaS, które obsługuje usługę Azure AD. Pracownicy mogą logować się do aplikacji z domu na ich własnych urządzeń i Uwierzytelnij się za pośrednictwem tego serwera proxy oparte na chmurze.
+Serwer Proxy aplikacji usługi Azure AD umożliwia publikowanie lokalnych aplikacji, takich jak [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) witryn, [aplikacji Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), i [IIS](https://www.iis.net/)— na podstawie aplikacji w sieci prywatnej i zapewnia bezpieczny dostęp dla użytkowników spoza sieci. Serwer Proxy aplikacji udostępnia dostępu zdalnego i logowania jednokrotnego dla wielu typów lokalnych aplikacji sieci web z tysiącami aplikacji SaaS, które obsługuje usługę Azure AD. Pracownicy mogą logować się do aplikacji z domu na ich własnych urządzeń i Uwierzytelnij się za pośrednictwem tego serwera proxy oparte na chmurze.
 
 Więcej informacji:
 

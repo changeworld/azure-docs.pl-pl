@@ -5,10 +5,12 @@ items:
   items:
   - name: Co to jest usługa Azure Stack?
     href: azure-stack-poc.md
+  - name: Kluczowe funkcje i pojęcia
+    href: azure-stack-key-features.md
   - name: Informacje o wersji
     items:
     - name: Najnowsze aktualizacje
-      href: azure-stack-servicing-policy.md#update-package-release-cadence
+      href: azure-stack-servicing-policy.md
     - name: Aktualizacja 1902
       href: azure-stack-update-1902.md
     - name: Aktualizacja 1901
@@ -113,10 +115,6 @@ items:
         href: azure-stack-integrate-security.md
       - name: Inspekcja urządzenia
         href: azure-stack-integrate-physical-device-auditing.md
-  - name: Obsługa zasad
-    href: azure-stack-servicing-policy.md
-  - name: Kluczowe funkcje i pojęcia
-    href: azure-stack-key-features.md
   - name: Podstawy administracji
     href: azure-stack-manage-basics.md
 - name: Przewodniki z instrukcjami
@@ -286,8 +284,10 @@ items:
       href: azure-stack-app-service-capacity-planning.md
     - name: Przed rozpoczęciem
       href: azure-stack-app-service-before-you-get-started.md
-    - name: Wdrażanie dostawcy zasobów usługi App Service
+    - name: Wdróż usługę App Service
       href: azure-stack-app-service-deploy.md
+    - name: Wdrażanie usługi App Service w celu zapewnienia wysokiej dostępności
+      href: app-service-deploy-ha.md
     - name: Wdrażanie usługi App Service w trybie offline
       href: azure-stack-app-service-deploy-offline.md
     - name: Aktualizowanie usługi App Service
@@ -399,9 +399,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Szkolenia i certyfikacja
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: ed6de4a1839c8fe60248e79e5349d8077193d052
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4875ccf5b74151809788e024ae659756cf769e10
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774272"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223329"

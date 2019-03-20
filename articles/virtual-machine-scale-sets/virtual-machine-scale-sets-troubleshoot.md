@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: e4b1153e46625f88c717fd9b7a5336ffe4ca7f6a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 3308b22606e87853aad7e3d3a3995aab8d1b5401
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739553"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005301"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Rozwiązywanie problemów z skalowania automatycznego za pomocą zestawów skalowania maszyn wirtualnych
 **Problem** — utworzono infrastrukturę skalowania automatycznego w usłudze Azure Resource Manager przy użyciu zestawów skalowania maszyn wirtualnych — na przykład, wdrażając szablonu podobny do tego: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale — masz zdefiniowanych reguł skalowania i jej współdziałanie, z wyjątkiem nie niezależnie od tego, ile obciążenia, umieścić na maszynach wirtualnych, nie automatycznego skalowania.
@@ -52,7 +52,7 @@ Kilka rzeczy, które należy rozważyć, obejmują:
     Usługi Azure Resource Explorer jest niezbędne narzędzia rozwiązywania problemów, pokazujący stan zasobów usługi Azure Resource Manager. Kliknij subskrypcję i spójrz na grupę zasobów, rozwiązywania problemów. W ramach dostawcy zasobów obliczeniowych Przyjrzyj się zestawu skalowania maszyn wirtualnych, które zostały utworzone i sprawdź widok wystąpienia, w którym prezentowany jest stan wdrożenia. Należy także sprawdzić widok wystąpienia maszyn wirtualnych w zestawie skalowania maszyn wirtualnych. Następnie przejdź do dostawcy zasobów Microsoft.Insights i sprawdź, czy reguły skalowania automatycznego w porządku.
 * Rozszerzenie diagnostyki pracy i wysyłających danych dotyczących wydajności?
   
-    **Aktualizacja:** skalowania automatycznego platformy Azure zostało ulepszone, aby użyć potoku metryk opartych na hoście nie wymaga już rozszerzenie diagnostyki, do zainstalowania. Kilku następnych akapitach nie mają już zastosowania, jeśli tworzysz aplikację skalowania automatycznego za pomocą nowego potoku. Przykładem szablonów platformy Azure, które zostały przekonwertowane na korzystanie z potoku hosta jest dostępny tutaj: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
+    **Aktualizacja:** Skalowanie automatyczne platformy Azure zostało ulepszone, aby użyć potoku metryk opartych na hoście nie wymaga już rozszerzenie diagnostyki, do zainstalowania. Kilku następnych akapitach nie mają już zastosowania, jeśli tworzysz aplikację skalowania automatycznego za pomocą nowego potoku. Przykładem szablonów platformy Azure, które zostały przekonwertowane na korzystanie z potoku hosta jest dostępny tutaj: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
   
     Za pomocą opartego na hoście metryki automatycznego skalowania jest lepszym rozwiązaniem dla następujących przyczyn:
   
@@ -70,16 +70,16 @@ Kilka rzeczy, które należy rozważyć, obejmują:
     
     Można również sprawdzić je samodzielnie. Przyjrzyj się z kontem usługi Azure storage za pomocą Eksploratora chmury. Na przykład za pomocą [programu Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2), zaloguj się i wybierz subskrypcję platformy Azure jest używany. Następnie Przyjrzyj się nazwa konta magazynu diagnostyki wspomniane w definicji rozszerzenia diagnostyki w szablonie wdrożenia.
     
-    ![Eksplorator chmury][explorer]
+    ![Cloud Explorer][explorer]
     
-   Zostanie wyświetlona wiele tabel, w którym są przechowywane dane z każdej maszyny Wirtualnej. Korzystając z systemów Linux i metryki procesora CPU, na przykład wyglądać podczas ostatnich wierszy. Program cloud explorer programu Visual Studio obsługuje język zapytań, aby można było uruchomić zapytanie. Na przykład, można uruchomić zapytania dla "sygnatura czasowa gt daty i godziny" 2016-02-02T21:20:00Z "" Aby upewnić się, pobrać najnowszych zdarzeń. Strefa czasowa odnosi się do czasu UTC. Czy dane, które zobaczysz w odpowiadają reguł skalowania można skonfigurować? W poniższym przykładzie Procesora dla maszyny 20 pracę, zwiększając do 100% w ciągu ostatnich pięciu minut.
+    Zostanie wyświetlona wiele tabel, w którym są przechowywane dane z każdej maszyny Wirtualnej. Korzystając z systemów Linux i metryki procesora CPU, na przykład wyglądać podczas ostatnich wierszy. Program cloud explorer programu Visual Studio obsługuje język zapytań, aby można było uruchomić zapytanie. Na przykład, można uruchomić zapytania dla "sygnatura czasowa gt daty i godziny" 2016-02-02T21:20:00Z "" Aby upewnić się, pobrać najnowszych zdarzeń. Strefa czasowa odnosi się do czasu UTC. Czy dane, które zobaczysz w odpowiadają reguł skalowania można skonfigurować? W poniższym przykładzie Procesora dla maszyny 20 pracę, zwiększając do 100% w ciągu ostatnich pięciu minut.
     
     ![Tabele magazynu][tables]
     
     Jeśli dane nie są dostępne, oznacza to, czy problem jest za pomocą diagnostycznego rozszerzenia, które są uruchomione na maszynach wirtualnych. Jeśli dane są dostępne, sugeruje to, że istnieje problemami przy użyciu reguł skalowania lub za pomocą usługi Insights. Sprawdź [stanu platformy Azure](https://azure.microsoft.com/status/).
     
     Gdy byłeś tych kroków, jeśli nadal występują problemy z funkcją automatycznego skalowania, można skorzystać z następujących zasobów: 
-    * Czytanie forum na [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), lub [przepełnienie stosu](http://stackoverflow.com/questions/tagged/azure) 
+    * Czytanie forum na [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), lub [przepełnienie stosu](https://stackoverflow.com/questions/tagged/azure) 
     * Zaloguj się pomocy technicznej. Przygotuj się na udostępnianie szablonu i widok danych dotyczących wydajności.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: be1c46c5bc2c8edcfeca81c82095687c4ddfd894
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512248"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225828"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS
 
@@ -123,7 +123,7 @@ Istnieją dwa scenariusze, aby wziąć pod uwagę przy wyborze sposobu reagowani
 
     W tym scenariuszu istnieje spadek wydajności, ponieważ wszystkie żądania odczytu zostanie najpierw spróbuj podstawowego punktu końcowego, poczekaj na wartość limitu czasu wygaśnięcia, a następnie przełącz się do pomocniczego punktu końcowego.
 
-Dla tych scenariuszy należy zidentyfikować, który trwającą problem z podstawowego punktu końcowego i wysyłania żądania bezpośrednio do pomocniczego punktu końcowego wszystkich odczytu przez ustawienie **LocationMode** właściwość **SecondaryOnly** . W tym momencie możesz również zmienić aplikację do uruchamiania w trybie tylko do odczytu. To podejście jest nazywane [wzorzec wyłącznika](https://msdn.microsoft.com/library/dn589784.aspx).
+Dla tych scenariuszy należy zidentyfikować, który trwającą problem z podstawowego punktu końcowego i wysyłania żądania bezpośrednio do pomocniczego punktu końcowego wszystkich odczytu przez ustawienie **LocationMode** właściwość **SecondaryOnly** . W tym momencie możesz również zmienić aplikację do uruchamiania w trybie tylko do odczytu. To podejście jest nazywane [wzorzec wyłącznika](/azure/architecture/patterns/circuit-breaker).
 
 ### <a name="update-requests"></a>Żądania aktualizacji
 
@@ -201,12 +201,12 @@ W poniższej tabeli przedstawiono przykład co może się zdarzyć, gdy aktualiz
 | **czas** | **Transakcja**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **wynik** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Odp.: transakcji <br> Wstaw pracownika <br> jednostki w podstawowej |                                   |                    | Transakcja wstawione do głównej, A<br> nie jeszcze zreplikowane. |
-| T1       |                                                            | Transakcja A <br> replikowane do<br> pomocnicze | T1 | Replikowane do dodatkowej A transakcji. <br>Czas ostatniej synchronizacji aktualizacji.    |
+| T1       |                                                            | Transakcja A <br> replikowane do<br> pomocniczy | T1 | Replikowane do dodatkowej A transakcji. <br>Czas ostatniej synchronizacji aktualizacji.    |
 | T2       | Transakcja B:<br>Aktualizacja<br> Jednostka pracownika<br> w podstawowej  |                                | T1                 | Transakcja zapisywane do podstawowej, B<br> nie jeszcze zreplikowane.  |
-| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>podstawowe |                    | T1                 | Transakcja zapisywane do podstawowej, C<br> nie jeszcze zreplikowane.  |
-| *T4*     |                                                       | Transakcja języka C <br>replikowane do<br> pomocnicze | T1         | Transakcja C replikowane do dodatkowej.<br>Nie zaktualizowano ponieważ LastSyncTime <br>Transakcja B nie zostały jeszcze zreplikowane.|
+| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>podstawowa |                    | T1                 | Transakcja zapisywane do podstawowej, C<br> nie jeszcze zreplikowane.  |
+| *T4*     |                                                       | Transakcja języka C <br>replikowane do<br> pomocniczy | T1         | Transakcja C replikowane do dodatkowej.<br>Nie zaktualizowano ponieważ LastSyncTime <br>Transakcja B nie zostały jeszcze zreplikowane.|
 | *T5*     | Odczytaj jednostki <br>z pomocniczych                           |                                  | T1                 | Stare korzyści dla pracowników <br> jednostki, ponieważ nie transakcji B <br> jeszcze zreplikowane. Pobierz nową wartość dla<br> Administrator roli jednostki, ponieważ ma C<br> replikowane. Czas ostatniej synchronizacji nadal nie.<br> zostały zaktualizowane, ponieważ transakcja B<br> nie replikowane. Można stwierdzić<br>Administrator roli jednostki jest niespójna <br>ponieważ jednostka daty/godziny jest po <br>Czas ostatniej synchronizacji. |
-| *T6*     |                                                      | Transakcja B<br> replikowane do<br> pomocnicze | T6                 | *T6* — ma wszystkie transakcje za pośrednictwem języka C <br>zostały zreplikowane czas ostatniej synchronizacji<br> jest aktualizowana. |
+| *T6*     |                                                      | Transakcja B<br> replikowane do<br> pomocniczy | T6                 | *T6* — ma wszystkie transakcje za pośrednictwem języka C <br>zostały zreplikowane czas ostatniej synchronizacji<br> jest aktualizowana. |
 
 W tym przykładzie przyjęto założenie, że klient przełącza się do odczytu z regionu pomocniczego na T5. Stanie pomyślnie odczytywać **roli administrator** jednostki w tej chwili, ale jednostki zawiera wartość dla liczby administratorów, która nie jest spójna z liczbą **pracowników** jednostek, które są oznaczone jako administratorzy w dodatkowym regionie, w tym momencie. Twój klient po prostu można wyświetlić tę wartość, z ryzykiem jest niespójne informacje. Alternatywnie, klient mógłby próbować ustalenie, że **roli administrator** jest w stanie potencjalnie niespójne aktualizacje wystąpiło poza kolejnością, a następnie poinformowania użytkownika o tym fakcie.
 
@@ -216,7 +216,7 @@ Aby rozpoznać, że zawiera on danych potencjalnie niespójne, klient może uży
 
 Należy przetestować, że aplikacja zachowuje się zgodnie z oczekiwaniami, gdy napotka błędy powtarzający operację. Na przykład należy przetestować, że przełączniki aplikacji do regionu pomocniczego i w trybie tylko do odczytu, gdy wykryje problem i zmienia ponownie, gdy region podstawowy stanie się znowu dostępny. Aby to zrobić, potrzebny jest sposób symulacji powtarzający operację błędy i kontroli, jak często występują one.
 
-Możesz użyć [Fiddler](http://www.telerik.com/fiddler) do przechwycenia i modyfikowania odpowiedzi HTTP w skrypcie. Ten skrypt można zidentyfikować odpowiedzi, które pochodzą z podstawowego punktu końcowego i zmień kod stanu HTTP na taki, który Biblioteka klienta magazynu jest rozpoznawany jako błąd umożliwiający ponowienie próby. Następujący fragment kodu przedstawia prosty przykład skryptu programu Fiddler, który przechwytuje odpowiedzi na żądania skierowane do odczytu **employeedata** tabeli próbę zwrócenia stanu 502:
+Możesz użyć [Fiddler](https://www.telerik.com/fiddler) do przechwycenia i modyfikowania odpowiedzi HTTP w skrypcie. Ten skrypt można zidentyfikować odpowiedzi, które pochodzą z podstawowego punktu końcowego i zmień kod stanu HTTP na taki, który Biblioteka klienta magazynu jest rozpoznawany jako błąd umożliwiający ponowienie próby. Następujący fragment kodu przedstawia prosty przykład skryptu programu Fiddler, który przechwytuje odpowiedzi na żądania skierowane do odczytu **employeedata** tabeli próbę zwrócenia stanu 502:
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -228,7 +228,7 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-Można rozszerzyć w tym przykładzie przechwycenia szerszego zakresu żądań i zmieniać tylko **responseCode** na niektórych z nich w celu lepszej symulacji obciążenia w rzeczywistych scenariuszy. Aby uzyskać więcej informacji na temat dostosowywania programu Fiddler skryptów, zobacz [modyfikowanie żądania lub odpowiedzi](http://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) w dokumentacji programu Fiddler.
+Można rozszerzyć w tym przykładzie przechwycenia szerszego zakresu żądań i zmieniać tylko **responseCode** na niektórych z nich w celu lepszej symulacji obciążenia w rzeczywistych scenariuszy. Aby uzyskać więcej informacji na temat dostosowywania programu Fiddler skryptów, zobacz [modyfikowanie żądania lub odpowiedzi](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) w dokumentacji programu Fiddler.
 
 Jeśli zostały wprowadzone wartości progowe dla przełączania aplikacji do trybu tylko do odczytu można skonfigurować, będzie łatwiejsze testowanie zachowania przy użyciu woluminów transakcji nieprodukcyjnych.
 

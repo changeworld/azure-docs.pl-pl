@@ -16,12 +16,12 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f4eab44a55574f84f29488e78cd60522d7a52eb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171200"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905175"
 ---
 # <a name="email-notifications-in-pim"></a>Powiadomienia e-mail w usłudze PIM
 
@@ -31,7 +31,7 @@ Usługa Azure AD Privileged Identity Management (PIM) informuje o tym, kiedy wa�
 
 Wysłane wiadomości e-mail z usługi PIM dla usługi Azure AD i role zasobów platformy Azure ma następujący adres e-mail nadawcy:
 
-- Adres e-mail:  **azure-noreply@microsoft.com**
+- Adres e-mail: **azure noreply\@microsoft.com**
 - Nazwa wyświetlana: Microsoft Azure
 
 Te wiadomości e-mail zawierają **PIM** prefiks w wierszu tematu. Oto przykład:

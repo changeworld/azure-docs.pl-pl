@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 35a041216bf24a4c6ab73f9d5c3e85dff38a4501
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588113"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404709"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk przy użyciu systemu plików NFS
 
@@ -40,7 +40,8 @@ Przed rozpoczęciem upewnij się, że:
 
 W zależności od wybranego konta magazynu dla urządzenia Data Box są tworzone następujące elementy:
 - Maksymalnie trzy udziały dla każdego skojarzonego konta magazynu (GPv1 i GPv2).
-- Maksymalnie jeden udział dla konta magazynu w warstwie Premium lub konta magazynu obiektów blob. 
+- Jeden udział dla usługi premium storage. 
+- Jeden udział dla konta usługi blob storage. 
 
 W obszarze udziałów blokowych obiektów blob i stronicowych obiektów blob jednostki pierwszego poziomu są kontenerami, a jednostki drugiego poziomu są obiektami blob. W obszarze udziałów dla usługi Azure Files jednostki pierwszego poziomu są udziałami, a jednostki drugiego poziomu są plikami.
 
@@ -126,12 +127,15 @@ W przypadku korzystania z opcji rsync na potrzeby kopiowania wielowątkowego nal
 
      Na początku zaleca się użycie 16 równoległych kopii i zwiększanie liczby wątków w zależności od dostępności zasobów.
 
+> [!IMPORTANT]
+> Nie są obsługiwane następujące typy plików systemu Linux: łącza symbolicznego, pliki znak, blokowanie plików, gniazda i potoków. Następujące typy plików będą powodować błędy podczas **przygotowywanie do wysłania** kroku.
+
 - W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma kontrolna. Po zakończeniu kopiowania sprawdź ilość używanego i wolnego miejsca na urządzeniu.
     
    ![Sprawdzanie wolnego i używanego miejsca na pulpicie nawigacyjnym](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 

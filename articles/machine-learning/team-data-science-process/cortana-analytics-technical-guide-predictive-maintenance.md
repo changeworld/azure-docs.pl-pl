@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d0e62edd156e8fafbf16437af33941a99f4607fd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440611"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885440"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Podręcznik techniczny do szablon rozwiązania Cortana Intelligence, pod kątem konserwacji predykcyjnej w lotnictwie i kosmonautyce
 
->[!Important]
-W tym artykule jest przestarzała. Omówienie konserwacji predykcyjnej w lotnictwie i Kosmonautyce jest nadal są prawidłowe, ale aby uzyskać aktualne informacje, zapoznaj się [— Omówienie rozwiązania dla użytkowników biznesowych](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace).
+> [!Important]
+> W tym artykule jest przestarzała. Omówienie konserwacji predykcyjnej w lotnictwie i Kosmonautyce jest nadal są prawidłowe, ale aby uzyskać aktualne informacje, zapoznaj się [— Omówienie rozwiązania dla użytkowników biznesowych](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace).
 
 
 Szablony rozwiązań są przeznaczone do przyspieszenia procesu tworzenia pokaz E2E na podstawie pakietu Cortana Intelligence. Szablon wdrożonej aprowizuje subskrypcji za pomocą niezbędnych składników pakietu Cortana Intelligence, a następnie kompiluje relacje między nimi. Inicjowania inicjuje również potok danych z przykładowymi danymi z aplikacji generatora danych, która pobrać i zainstalować na komputerze lokalnym, po wdrożeniu szablonu rozwiązania. Dane z generatorem hydrates potoku danych i rozpoczęcia generowania przewidywań uczenia maszynowego, które mogą być następnie wizualizowane na pulpicie nawigacyjnym usługi Power BI.
@@ -51,7 +51,7 @@ W poniższych sekcjach opisano elementy rozwiązania.
 ### <a name="synthetic-data-source"></a>Źródło danych syntetycznego
 W przypadku tego szablonu użyte źródło danych jest generowany na podstawie aplikacji pulpitu, Pobierz i uruchom lokalnie, po pomyślnym wdrożeniu.
 
-Aby uzyskać instrukcje, aby pobrać i zainstalować tę aplikację, wybierz węzeł pierwszy, Generator danych konserwacji predykcyjnej, na diagramie szablonu rozwiązania. Instrukcje znajdują się w pasku właściwości. Źródła danych w tej aplikacji [usługi Azure Event Hub](#azure-event-hub) usługi za pomocą punktów danych lub zdarzenia, używane w pozostałej części przepływu rozwiązania. To źródło danych jest tworzony na podstawie publicznie dostępnych danych z [repozytorium danych prognostycznych NASA](https://c3.nasa.gov/dashlink/resources/139/) przy użyciu [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
+Aby uzyskać instrukcje, aby pobrać i zainstalować tę aplikację, wybierz węzeł pierwszy, Generator danych konserwacji predykcyjnej, na diagramie szablonu rozwiązania. Instrukcje znajdują się w pasku właściwości. Źródła danych w tej aplikacji [usługi Azure Event Hub](#azure-event-hub) usługi za pomocą punktów danych lub zdarzenia, używane w pozostałej części przepływu rozwiązania. To źródło danych jest tworzony na podstawie publicznie dostępnych danych z [repozytorium danych prognostycznych NASA](https://c3.nasa.gov/dashlink/resources/139/) przy użyciu [Turbofan Engine Degradation Simulation Data Set](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
 Aplikacja generowanie zdarzeń wypełnia usługi Azure Event Hub tylko wtedy, gdy jest wykonywany na komputerze.  
 
@@ -79,7 +79,7 @@ Użyj [usługi Power BI](https://powerbi.microsoft.com) do wyświetlenia pulpitu
 ## <a name="how-to-bring-in-your-own-data"></a>Jak przenieść w swoich danych
 W tej sekcji opisano, jak możesz używać własnych danych na platformie Azure i jakie obszary wymagają zmian danych, które wprowadzasz w tej architekturze.
 
-Jest mało prawdopodobne, że zestaw danych odpowiada zbioru danych używanego przez [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) używane dla tego szablonu rozwiązania. Opis danych i wymagania są niezwykle istotne, w jak zmodyfikować ten szablon służy do pracy z własnych danych. 
+Jest mało prawdopodobne, że zestaw danych odpowiada zbioru danych używanego przez [Turbofan Engine Degradation Simulation Data Set](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) używane dla tego szablonu rozwiązania. Opis danych i wymagania są niezwykle istotne, w jak zmodyfikować ten szablon służy do pracy z własnych danych. 
 
 W poniższych sekcjach omówiono te części szablonu, które wymaga modyfikacji, gdy wprowadzono nowy zestaw danych.
 
@@ -143,7 +143,7 @@ To [potoku](../../data-factory/concepts-pipelines-activities.md) zawiera jedno d
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Usługi Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) eksperymentować używane, aby ten szablon rozwiązania zawiera pozostałe przydatne okresu eksploatacji (RUL) silnika samolotu. Eksperyment jest przeznaczony dla zestawu danych, używane i wymaga modyfikacji lub zastąpienia specyficzne dla danych plików odwoływanych.
 
-Aby uzyskać informacji na temat tworzenia eksperymentu usługi Azure Machine Learning, zobacz [konserwacji predykcyjnej: Krok 1 z 3, przygotowania danych i technicznego opracowywania funkcji](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
+Aby uzyskać informacji na temat tworzenia eksperymentu usługi Azure Machine Learning, zobacz [konserwacji predykcyjnej: Krok 1 z 3, przygotowania danych i technicznego opracowywania funkcji](https://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
 
 ## <a name="monitor-progress"></a>Monitoruj postęp
 Po uruchomieniu Generator danych, potoku rozpoczyna się niezawierającego i różnych składników rozwiązania Uruchom określonego w następujących akcji polecenia wydane przez usługę data factory. Istnieją dwa sposoby, aby monitorować potok.
@@ -186,7 +186,7 @@ Poniższe kroki prowadzą na temat nawiązywania połączenia z bazą danych SQL
    * W następnym wyskakiwania okna, zobaczysz dwie opcje w okienku po lewej stronie (**Windows** i **bazy danych**). Kliknij przycisk **"Database"**, wypełnij swoje **'Username'** i **"Password"** (jest to nazwa użytkownika i hasło wprowadzone podczas najpierw wdrożono rozwiązanie i utworzone na platformie Azure Usługa SQL database). W ***wybierz poziom, które można zastosować te ustawienia***, zaznacz opcję poziomu bazy danych. Następnie kliknij przycisk **"Połącz z"**.
    * Kliknij drugą tabelę **PMResult** kliknięcie ![ikona Nawigacja](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) obok **"Źródło"** w obszarze **ZASTOSOWANE KROKI** po prawej stronie **"Ustawienia zapytania"** panelu i aktualizowanie nazwy serwera i bazy danych, tak jak w powyższych krokach i kliknij przycisk OK.
    * Gdy masz z przewodnikiem wróć do poprzedniej strony, zamknij okno. Zostanie wyświetlony komunikat — kliknij przycisk **Zastosuj**. Na koniec kliknij **Zapisz** przycisk, aby zapisać zmiany. Plik usługi Power BI ma teraz ustanowione połączenie z serwerem. Jeśli Twoje wizualizacje są puste, upewnij się, że wyczyść zaznaczenia na wizualizacji, aby wizualizować wszystkie dane, klikając ikonę gumki w prawym górnym rogu legendy. Użyj przycisku odświeżania, aby odzwierciedlać nowych danych na wizualizacji. Początkowo widoczne tylko danych inicjatora w wizualizacji jako usługi data factory jest zaplanowane na odświeżanie co 3 godziny. Po 3 godziny zostanie wyświetlony nowych przewidywań zostaną uwzględnione w wizualizacji, podczas odświeżania danych.
-3. (Opcjonalnie) Publikowanie pulpitu nawigacyjnego ścieżki nieaktywnej w celu [usługi Power BI online](http://www.powerbi.com/). Należy pamiętać, że ten krok wymaga konta usługi Power BI (lub konta usługi Office 365).
+3. (Opcjonalnie) Publikowanie pulpitu nawigacyjnego ścieżki nieaktywnej w celu [usługi Power BI online](https://www.powerbi.com/). Należy pamiętać, że ten krok wymaga konta usługi Power BI (lub konta usługi Office 365).
    
    * Kliknij przycisk **"Publikuj"** i kilka sekund później zostanie wyświetlone okno zawierające "Publikowanie w usłudze Power BI sukces!" z zielonym znacznikiem wyboru. Kliknij link poniżej "Otwórz PredictiveMaintenanceAerospace.pbix w usłudze Power BI". Aby uzyskać szczegółowe instrukcje, zobacz [publikowanie z programu Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Aby utworzyć nowy pulpit nawigacyjny: kliknij **+** dalej, aby zarejestrować **pulpity nawigacyjne** sekcji w okienku po lewej stronie. Wprowadź nazwę "Pokaz konserwacji predykcyjnej" dla tego nowego pulpitu nawigacyjnego.
@@ -206,13 +206,13 @@ Poniższe kroki prowadzą na temat nawiązywania połączenia z bazą danych SQL
    * Zaplanuj odświeżanie, w zależności od potrzeb. Aby uzyskać więcej informacji, zobacz [odświeżania danych w usłudze Power BI](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi).
 
 ### <a name="setup-hot-path-dashboard"></a>Pulpit nawigacyjny ścieżki aktywnej konfiguracji
-Poniższe kroki prowadzą, jak wizualizować dane wyjściowe z zadania usługi Stream Analytics, które zostały wygenerowane w czasie wdrażania rozwiązania. A [usługi Power BI online](http://www.powerbi.com/) można wykonać następujące czynności, wymagane jest konto. Jeśli nie masz konta, możesz to zrobić [utworzyć](https://powerbi.microsoft.com/pricing).
+Poniższe kroki prowadzą, jak wizualizować dane wyjściowe z zadania usługi Stream Analytics, które zostały wygenerowane w czasie wdrażania rozwiązania. A [usługi Power BI online](https://www.powerbi.com/) można wykonać następujące czynności, wymagane jest konto. Jeśli nie masz konta, możesz to zrobić [utworzyć](https://powerbi.microsoft.com/pricing).
 
 1. Dodaj dane wyjściowe usługi Power BI w usłudze Azure Stream Analytics (ASA).
    
    * Musi postępuj zgodnie z instrukcjami [usługi Azure Stream Analytics i Power BI: Pulpit nawigacyjny analizy, aby uzyskać wgląd w czasie rzeczywistym danych przesyłanych strumieniowo](../../stream-analytics/stream-analytics-power-bi-dashboard.md) skonfigurować dane wyjściowe zadania usługi Azure Stream Analytics jako pulpit nawigacyjny usługi Power BI.
    * Zapytanie ASA ma trzy danych wyjściowych, które są **aircraftmonitor**, **aircraftalert**, i **flightsbyhour**. Zapytania można wyświetlić, klikając na karcie zapytania. Odpowiadający każdej z tych tabel, należy dodać dane wyjściowe do ASA. Po dodaniu pierwszego danych wyjściowych (**aircraftmonitor**) upewnij się, że **Alias wyjściowy**, **Nazwa zestawu danych** i **nazwy tabeli** są tego samego (**aircraftmonitor**). Powtórz kroki, aby dodać dane wyjściowe dla **aircraftalert**, i **flightsbyhour**. Po dodaniu wszystkich trzech wyjściowe i uruchomić zadanie ASA, powinna pojawić się komunikat z potwierdzeniem ("Uruchamianie usługi Stream Analytics zadania maintenancesa02asapbi powiodło się.").
-2. Zaloguj się do [usługi Power BI w trybie online](http://www.powerbi.com)
+2. Zaloguj się do [usługi Power BI w trybie online](https://www.powerbi.com)
    
    * W lewym panelu sekcji zestawów danych w obszarze Mój obszar roboczy ***DATASET*** nazwy **aircraftmonitor**, **aircraftalert**, i **flightsbyhour** powinna zostać wyświetlona. Jest to dane przesyłane strumieniowo, które zostały wypchnięte z usługi Azure Stream Analytics w poprzednim kroku. Zestaw danych **flightsbyhour** mogą nie pojawić się w tym samym czasie co inne dwa zestawy danych ze względu na charakter zapytania SQL pod nim. Jednak należy widoczna po godzinie.
    * Upewnij się, że ***wizualizacje*** okienko jest otwarty i jest wyświetlany po prawej stronie ekranu.

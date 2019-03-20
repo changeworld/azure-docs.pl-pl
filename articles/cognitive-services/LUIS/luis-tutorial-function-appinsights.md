@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 97e29ba166d652f053f754482b6da36a33ec5bb5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878182"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098776"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights i Azure functions
 W tym samouczku dodaje informacje do żądania i odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
@@ -26,9 +26,9 @@ Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci We
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-* Dodaj bibliotekę usługi Application Insights do bota aplikacji sieci web
-* Przechwytywane i wysyłane do usługi LUIS wyników zapytania do usługi Application Insights
-* Zapytanie usługi Application Insights dla najważniejszych przeznaczenie, wynik i wypowiedź
+> * Dodaj bibliotekę usługi Application Insights do bota aplikacji sieci web
+> * Przechwytywane i wysyłane do usługi LUIS wyników zapytania do usługi Application Insights
+> * Zapytanie usługi Application Insights dla najważniejszych przeznaczenie, wynik i wypowiedź
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

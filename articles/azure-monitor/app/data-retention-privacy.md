@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8218da62eb8c3d8c454ca1dca1bd1071e0de67b0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3c74d3a6c5b66053fb968ad52f72eca181799a3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308758"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003581"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -156,12 +156,12 @@ Za pomocą kodu:
 
 - Usuń ServerTelemetryChannel z pliku konfiguracji
 - Dodaj następujący fragment do konfiguracji:
-```csharp
-ServerTelemetryChannel channel = new ServerTelemetryChannel();
-channel.StorageFolder = @"D:\NewTestFolder";
-channel.Initialize(TelemetryConfiguration.Active);
-TelemetryConfiguration.Active.TelemetryChannel = channel;
-```
+  ```csharp
+  ServerTelemetryChannel channel = new ServerTelemetryChannel();
+  channel.StorageFolder = @"D:\NewTestFolder";
+  channel.Initialize(TelemetryConfiguration.Active);
+  TelemetryConfiguration.Active.TelemetryChannel = channel;
+  ```
 
 ### <a name="netcore"></a>NetCore
 
@@ -237,6 +237,7 @@ Jednakże można zaimplementować taka funkcja w aplikacji. Wszystkie zestawy SD
 Zestawy SDK różnią się między platformami, a jest wiele składników, które można zainstalować. (Zobacz [Application Insights — omówienie][start].) Każdy składnik wysyła różnych danych.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Klasy danych przesyłanych w różnych scenariuszach
+
 | Twoja Akcja | Klasy danych zebranych (zobacz następną tabelę) |
 | --- | --- |
 | [Dodaj zestaw SDK usługi Application Insights do projektu sieci web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>użytkownicy |
@@ -252,6 +253,7 @@ Zestawy SDK różnią się między platformami, a jest wiele składników, któr
 Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokumenty.
 
 #### <a name="the-classes-of-collected-data"></a>Klasy zebranych danych
+
 | Klasa zebranych danych | Zawiera (nie stanowi wyczerpującej listy) |
 | --- | --- |
 | **Właściwości** |**Wszystkie dane — ustalany na podstawie kodu** |

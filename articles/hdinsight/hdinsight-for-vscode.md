@@ -1,7 +1,7 @@
 ---
 title: Narzędzia usługi Azure HDInsight — na użytek programu Visual Studio Code Hive, LLAP lub PySpark | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak używać narzędzi HDInsight systemu Azure dla programu Visual Studio Code do tworzenia i przesyłania zapytań i skryptów.
-Keywords: Visual Studio Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
+Keywords: Program Visual Studio Code, narzędzia Azure HDInsight, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, interaktywne usługi Hive, interakcyjnych zapytań
 services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 3301f3cdea1795db3b17bc2fa7da05bf362c744d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895079"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100330"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj usługi Azure HDInsight Tools for Visual Studio Code
 
@@ -81,7 +81,7 @@ Przed przesłaniem skryptów w klastrach HDInsight z programu Visual Studio Code
 
         ![Sign in instructions for innego środowiska logowania](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
- Po nawiązaniu połączenia swojej nazwy konta platformy Azure są wyświetlane na pasku stanu w lewym dolnym rogu okna programu Visual Studio Code.  
+   Po nawiązaniu połączenia swojej nazwy konta platformy Azure są wyświetlane na pasku stanu w lewym dolnym rogu okna programu Visual Studio Code.  
   
 
 <h2 id="linkcluster">Utwórz łącze: Azure HDInsight</h2>
@@ -310,20 +310,20 @@ Przesyłanie pliku, zwróć uwagę, że .vscode folder jest automatycznie dodawa
     | name | description | type | 
     | :- | :- | :- | 
     | plik | Plik zawierający wykonywanie aplikacji | Ścieżka (wymagane) | 
-    | proxyUser | Personifikację podczas uruchamiania zadania | ciąg | 
-    | className | Główna klasa platformy Java lub Spark aplikacji | ciąg |
+    | proxyUser | Personifikację podczas uruchamiania zadania | string | 
+    | className | Główna klasa platformy Java lub Spark aplikacji | string |
     | args | Argumenty wiersza polecenia dla aplikacji | Lista ciągów | 
     | plikach JAR | jars ma być używany w ramach tej sesji | Lista parametrów | 
     | pyFiles | Pliki języka Python do użycia w ramach tej sesji | Lista parametrów |
     | plików | pliki, które zostaną użyte w tej sesji | Lista parametrów |
-    | driverMemory | Ilość pamięci na potrzeby procesu sterownika | ciąg |
+    | driverMemory | Ilość pamięci na potrzeby procesu sterownika | string |
     | driverCores | Liczba rdzeni do użycia dla procesu sterownika | int |
-    | executorMemory | Ilość pamięci na działaniu proces wykonujący testy | ciąg |
+    | executorMemory | Ilość pamięci na działaniu proces wykonujący testy | string |
     | executorCores | Liczba rdzeni do użycia dla każdej funkcji wykonawczej | int |
     | numExecutors | Liczbie funkcji wykonawczych, aby uruchomić dla tej sesji | int |
     | Archiwa | Archiwa ma być używany w ramach tej sesji | Lista parametrów |
-    | kolejka | Nazwa kolejki YARN, do której przesłano | ciąg |
-    | name | Nazwa tej sesji | ciąg |
+    | kolejka | Nazwa kolejki YARN, do której przesłano | string |
+    | name | Nazwa tej sesji | string |
     | potwierdzenie | Właściwości konfiguracji aparatu Spark | Mapa klucza = val |
 
     Treść odpowiedzi   
@@ -334,8 +334,8 @@ Przesyłanie pliku, zwróć uwagę, że .vscode folder jest automatycznie dodawa
     | id | Identyfikator sesji | int | 
     | appId | Identyfikator aplikacji dla tej sesji |  String |
     | appInfo | Informacje o szczegółowe aplikacji | Mapa klucza = val |
-    | log | Wiersze dziennika | Lista ciągów |
-    | state |   Stan usługi batch | ciąg |
+    | dziennik | Wiersze dziennika | Lista ciągów |
+    | state |   Stan usługi batch | string |
 
 >[!NOTE]
 >Przypisanej konfiguracji usługi livy będą wyświetlane w okienku danych wyjściowych po Prześlij skrypt.

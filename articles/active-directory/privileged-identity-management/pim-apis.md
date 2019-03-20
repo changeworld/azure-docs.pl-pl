@@ -1,5 +1,5 @@
 ---
-title: Interfejsy API programu Microsoft Graph dla usługi Azure AD Privileged Identity Management (PIM) (wersja zapoznawcza) | Microsoft Docs
+title: Interfejsy API Microsoft Graph w usłudze PIM (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Zawiera informacje na temat korzystania z interfejsów API programu Microsoft Graph dla usługi Azure Active Directory Privileged Identity Management (PIM) (wersja zapoznawcza).
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97b548d199dd98a0f8c788c8c50ba618f721f4ab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c5d853579335653987321fded154eb9fb0f8dbdb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183942"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000292"
 ---
 # <a name="microsoft-graph-apis-for-pim-preview"></a>Interfejsy API programu Microsoft Graph dla usługi PIM (wersja zapoznawcza)
 
@@ -57,6 +57,6 @@ Jeśli do testowania wywołań używasz Eksploratora programu Graph, możesz okr
 
 1. Kliknij pozycję **Modyfikuj uprawnienia**, aby zastosować zmiany uprawnień.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Dokumentacja interfejsu API usługi Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)

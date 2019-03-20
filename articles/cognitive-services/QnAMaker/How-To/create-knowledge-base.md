@@ -1,26 +1,26 @@
 ---
 title: Tworzenie bazy wiedzy
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: Użyj portalu narzędzia QnA Maker można dodać za pomocą czatu chit tworzenie bazy wiedzy. To sprawia, że aplikacja interesujące. Dodaj zestaw wstępnie wypełnionych najważniejsze rozmowy chit do wiedzy jako punkt wyjścia do czatu internetowego chit Twój bot i zaoszczędzić czas i pieniądze, zapisywania ich od podstaw.
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: Użyj portalu usługi QnA Maker API, aby dodać za pomocą czatu chit tworzenie bazy wiedzy. To sprawia, że aplikacja interesujące. Dodaj zestaw wstępnie wypełnionych najważniejsze rozmowy chit do wiedzy jako punkt wyjścia do czatu internetowego chit Twój bot i zaoszczędzić czas i pieniądze, zapisywania ich od podstaw.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 1691bf9334d15ed7af211a929cf87ce433af895c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b4553a392795bb8578f24848ccacc870b654bce9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866406"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116236"
 ---
-# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>Szybki start: Tworzenie bazy wiedzy przy użyciu portalu narzędzia QnA Maker
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Szybki start: Tworzenie bazy wiedzy przy użyciu portalu usługi QnA Maker API
 
-Usługa QnA Maker pozwala w prosty sposób dodać istniejących źródeł danych, tworząc wiedzy. Możesz utworzyć nowe narzędzie QnA Maker wiedzy z następujących typów dokumentów:
+Portal usługi QnA Maker API ułatwia dodawanie istniejących źródeł danych, tworząc wiedzy. Możesz utworzyć nowe narzędzie QnA Maker wiedzy z następujących typów dokumentów:
 
 <!-- added for scanability -->
 * Często zadawane pytania dotyczące strony

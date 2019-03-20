@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: 460bb6b9c7c5700d2c59dbe88d3089be64bb3a31
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
-ms.translationtype: MT
+ms.openlocfilehash: cd486fa504ac819684d8c547e7a0f740b3eed4e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216445"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109631"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analizowanie raportu Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
 
@@ -41,6 +41,9 @@ Arkusz Podsumowanie środowiska lokalnego zawiera omówienie profilowanego środ
 **Zaobserwowany Typowy współczynnik zmian danych dziennie (GB)**: Średni współczynnik zmian danych zaobserwowany we wszystkie dni profilowania. Jest on używany jako dane wejściowe do określania liczby serwerów konfiguracji i dodatkowych serwerów przetwarzania do użycia we wdrożeniu.
 
 ## <a name="recommendations"></a>Zalecenia
+
+>[!Note]
+>Podczas replikowania bezpośrednio do usługi managed disks, zignoruj zalecenie dla liczba kont magazynu.
 
 Arkusz Zalecenia raportu dotyczącego replikacji z programu VMware do platformy Azure zawiera następujące informacje zgodnie z wybranym żądanym celem punktu odzyskiwania:
 
@@ -155,6 +158,9 @@ Może wystąpić sytuacja, w której nie można ustawić przepustowości większ
 ![Osiągalny cel punktu odzyskiwania dla przepustowości wynoszącej 500 Mb/s](media/site-recovery-vmware-deployment-planner-analyze-report/achievable-rpo-v2a.png)
 
 ## <a name="vm-storage-placement"></a>Rozmieszczenie maszyny wirtualnej względem magazynu
+
+>[!Note]
+>Podczas replikowania bezpośrednio do usługi managed disks, nie trzeba już martwić się o liczbę kont magazynu. W przypadku usługi storage w systemie tylko zalecenie typ magazynu (standardowa / Premium). Ten sam typ ma zastosowanie do dysków zarządzanych.
 
 ![Rozmieszczenie maszyny wirtualnej względem magazynu](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 

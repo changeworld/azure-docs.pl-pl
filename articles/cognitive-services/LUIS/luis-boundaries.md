@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: df69cb5cc2e369a5e1f372d49a821616bf624db9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237556"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897524"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice dla modelu usługi LUIS i klucze
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
@@ -27,7 +27,7 @@ Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-bound
 Jeśli aplikacja przekracza limity modelu usługi LUIS i granice, należy wziąć pod uwagę przy użyciu [wysyłania usługi LUIS](luis-concept-enterprise.md#dispatch-tool-and-model) aplikacji lub za pomocą [kontenera usługi LUIS](luis-container-howto.md). 
 
 |Obszar|Limit|
-|--|:--|--|
+|--|:--|
 | [Nazwa aplikacji][luis-get-started-create-app] | * Znak Domyślna maksymalna |
 | [Testowanie usługi Batch][batch-testing]| 10 zestawów danych, 1000 wypowiedzi dla zestawu danych|
 | Lista jawnego | 50 na aplikację|
@@ -41,7 +41,7 @@ Jeśli aplikacja przekracza limity modelu usługi LUIS i granice, należy wzią�
 | [Wyrażenie regularne jednostek](./luis-concept-entity-types.md)|20 jednostek<br>Maksymalna liczba znaków to 500. na jednostkę definicję wzorca wyrażenia regularnego|
 | [Role](luis-concept-roles.md)|300 role na aplikację. 10 ról na jednostkę|
 | [Wypowiedź][utterances] | 500 znaków|
-| [Wypowiedzi][utterances] | 15 000 na aplikacji|
+| [Wypowiedzi][utterances] | 15 000 danej aplikacji — a nie ma żadnego limitu liczby wypowiedzi na intencje|
 | [Wersje](luis-concept-version.md)| bez ograniczeń |
 | [Nazwa wersji][luis-how-to-manage-versions] | 10 znaków dotyczy alfanumeryczne oraz kropki (.) |
 

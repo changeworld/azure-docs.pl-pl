@@ -1,24 +1,20 @@
 ---
 title: 'Samouczek: Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics | Microsoft Docs '
 description: W tym samouczku przedstawiono korzystanie z zaawansowanej mechaniki zapytań za pomocą funkcji języka JavaScript zdefiniowanych przez użytkownika
-keywords: javascript, funkcje zdefiniowane przez użytkownika, funkcja udf
 services: stream-analytics
 author: rodrigoamicrosoft
-manager: kfile
-ms.assetid: ''
+ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.workload: data-services
-ms.author: rodrigoa
-ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088881"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192279"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
  
@@ -50,12 +46,19 @@ Poniżej przedstawiono niektóre działania, których nie można wykonać w usł
 Mimo że funkcje takie jak **Date.GetDate()** lub **Math.random()** nie są blokowane w definicji funkcji, należy unikać używania ich. Te funkcje **nie zwracają** tego samego wyniku za każdym wywołaniem, a usługa Azure Stream Analytics nie przechowuje dziennika wywołań funkcji i zwróconych wyników. Jeśli funkcja zwraca różne wyniki dla tych samych zdarzeń, powtarzalność nie jest gwarantowana po ponownym uruchomieniu zadania przez użytkownika lub usługę Stream Analytics.
 
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Dodawanie funkcji języka JavaScript zdefiniowanej przez użytkownika w witrynie Azure Portal
-Aby utworzyć prostą funkcję języka JavaScript zdefiniowaną przez użytkownika w ramach istniejącego zadania usługi Stream Analytics, wykonaj następujące kroki:
+Aby utworzyć prostą funkcję języka JavaScript zdefiniowane przez użytkownika w ramach istniejącego zadania usługi Stream Analytics, wykonaj następujące kroki:
+
+> [!NOTE]
+> Następujące kroki działają na zadania usługi Stream Analytics skonfigurowane do uruchamiania w chmurze. Jeśli zadanie usługi Stream Analytics jest skonfigurowany do uruchamiania w usłudze Azure IoT Edge, zamiast tego użyć programu Visual Studio i [dokonany zapis przy użyciu funkcji zdefiniowanej przez użytkownika C# ](stream-analytics-edge-csharp-udf.md).
 
 1.  W witrynie Azure Portal znajdź zadanie usługi Stream Analytics.
-2.  W obszarze **TOPOLOGIA ZADANIA**  wybierz swoją funkcję. Zostanie wyświetlona pusta lista funkcji.
-3.  Aby utworzyć nową funkcję zdefiniowaną przez użytkownika, wybierz polecenie **Dodaj**.
+
+2. W obszarze **topologia zadań** nagłówka, wybierz **funkcji**. Zostanie wyświetlona pusta lista funkcji.
+
+3.  Aby utworzyć nowe funkcji zdefiniowanej przez użytkownika, wybierz **+ Dodaj**.
+
 4.  W bloku **Nowa funkcja** wybierz dla elementu **Typ funkcji** pozycję **JavaScript**. Domyślny szablon funkcji zostanie wyświetlony w edytorze.
+
 5.  W polu **Alias funkcji zdefiniowanej przez użytkownika** podaj wartość **hex2Int** i zmień implementację funkcji w następujący sposób:
 
     ```javascript
@@ -70,7 +73,7 @@ Aby utworzyć prostą funkcję języka JavaScript zdefiniowaną przez użytkowni
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Wywoływanie funkcji w języku JavaScript zdefiniowanej przez użytkownika w zapytaniu
 
-1. W edytorze zapytań w obszarze **TOPOLOGIA ZADANIA** wybierz pozycję **Zapytanie**.
+1. W edytorze zapytań w ramach **topologia zadań** nagłówka, wybierz **zapytania**.
 2.  Zmodyfikuj zapytanie, a następnie wywołaj funkcję zdefiniowaną przez użytkownika w następujący sposób:
 
     ```SQL
@@ -99,7 +102,7 @@ Stream Analytics | JavaScript
 bigint | Number (maksymalna liczba całkowita, która może być reprezentowana przez język JavaScript, to 2^53)
 DateTime | Date (język JavaScript obsługuje tylko milisekundy)
 double | Liczba
-nvarchar(MAX) | Ciąg
+nvarchar(MAX) | String
 Rekord | Obiekt
 Tablica | Tablica
 NULL | Null
@@ -112,7 +115,7 @@ JavaScript | Stream Analytics
 --- | ---
 Liczba | Bigint (jeśli liczba jest zaokrąglona i należy do zakresu long.MinValue-long.MaxValue; w przeciwnym razie to double)
 Date | DateTime
-Ciąg | nvarchar(MAX)
+String | nvarchar(MAX)
 Obiekt | Rekord
 Tablica | Tablica
 Null, Undefined | NULL
@@ -158,7 +161,7 @@ Gdy grupa zasobów, zadanie przesyłania strumieniowego i wszystkie pokrewne zas
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dodatkową pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W ramach tego samouczka utworzono zadanie usługi Stream Analytics, które uruchamia prostą funkcję języka JavaScript zdefiniowaną przez użytkownika. Aby dowiedzieć się więcej o usłudze Stream Analytics, zapoznaj się z artykułami dotyczącymi scenariusza w czasie rzeczywistym:
 

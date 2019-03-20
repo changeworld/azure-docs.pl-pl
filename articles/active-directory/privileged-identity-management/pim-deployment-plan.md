@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb675778d899d6f4cec22de8a1c81fdae76ba17e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 05bf125d629ffef01a645dc407c341a984805520
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879768"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227035"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Wdrażanie usługi Azure AD Privileged Identity Management (PIM)
 
@@ -27,9 +27,9 @@ Ten przewodnik krok po kroku w tym artykule opisano sposób planowania wdrożeni
 
 > [!TIP]
 > W tym dokumencie pojawią się elementy oznaczone jako:
->
+> 
 > :heavy_check_mark: **Firma Microsoft zaleca**
->
+> 
 > Są to ogólne zalecenia i należy zaimplementować tylko jeśli mają one zastosowanie do Twoich potrzeb określonego przedsiębiorstwa.
 
 ## <a name="step-1-learn-about-pim"></a>Krok 1. Dowiedz się więcej o usłudze PIM
@@ -179,11 +179,11 @@ Należy określić priorytety ochrony ról usługi Azure AD, które mają najwi�
 
 1. Administrator globalny
 1. Administrator zabezpieczeń
-1. Administrator kont użytkowników
+1. Administrator użytkownika
 1. Administrator programu Exchange
 1. Administrator programu SharePoint
 1. Administrator usługi Intune
-1. Odczytywanie zabezpieczeń
+1. Czytelnik zabezpieczeń
 1. Administrator usługi
 1. Administrator rozliczeń
 1. Administrator programu Skype dla firm
@@ -259,13 +259,13 @@ Poniższa tabela zawiera opis ustawienia.
 | Ustawienie | Opis |
 | --- | --- |
 | Rola | Nazwa roli którą definiujesz ustawienia. |
-| Wymaganie usługi MFA | Czy uprawniony użytkownik musi wykonać uwierzytelnianie wieloskładnikowe przed aktywowaniem roli.<br/><br/>:heavy_check_mark: **Firma Microsoft zaleca** wymuszanie uwierzytelniania Wieloskładnikowego dla wszystkich ról administratora, zwłaszcza, jeśli są użytkowników-gości. |
+| Wymaganie usługi MFA | Czy uprawniony użytkownik musi wykonać uwierzytelnianie wieloskładnikowe przed aktywowaniem roli.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wymuszanie uwierzytelniania Wieloskładnikowego dla wszystkich ról administratora, zwłaszcza, jeśli są użytkowników-gości. |
 | Powiadomienie | Jeśli ustawiona na wartość true, Administrator globalny, Administrator ról uprzywilejowanych, a Administrator zabezpieczeń w organizacji otrzyma wiadomość e-mail z powiadomieniem po uprawniony użytkownik aktywuje roli.<br/><br/>**Uwaga:** W niektórych organizacjach nie mają adres e-mail powiązany z ich konta administratora, aby otrzymywać te powiadomienia e-mail, należy go ustawić alternatywny adres e-mail, dzięki czemu administratorzy będą otrzymywać te wiadomości e-mail. |
-| Bilet zdarzenia | Czy uprawniony użytkownik musi zarejestrować numeru biletu zdarzenia podczas aktywacji ich ról. To ustawienie pozwala organizacji identyfikowanie poszczególnych aktywacji z użyciem wewnętrzny numer zdarzenia eliminowanie niechciane aktywacji.<br/><br/>:heavy_check_mark: **Firma Microsoft zaleca** wykorzystując liczb biletów zdarzeń, aby powiązać PIM przy użyciu Twój system wewnętrzny. Jest to szczególnie przydatne dla osób zatwierdzających potrzebujących kontekstu aktywacji. |
-| Wymagaj zatwierdzenia | Czy uprawniony użytkownik musi uzyskać zatwierdzenia do aktywowania roli.<br/><br/>:heavy_check_mark: **Firma Microsoft zaleca** można skonfigurować zatwierdzenia dla ról z najbardziej uprawnień. Na podstawie wzorców użycia wszystkich klientów usługi PIM, administratora globalnego, administratora użytkowników, Administrator programu Exchange, administratora zabezpieczeń i Administrator haseł są najbardziej typowe role o zatwierdzenie instalacji. |
-| Osoba zatwierdzająca | Jeśli zatwierdzenie jest wymagane do aktywowania kwalifikujących się ról, wyświetlić listę osób, które należy zatwierdzać żądania. Domyślnie usługi PIM ustawia osoby zatwierdzającej do wszystkich użytkowników, którzy są administratorami ról uprzywilejowanych, czy są one stałe lub kwalifikujące się.<br/><br/>**Uwaga:** Jeśli użytkownik należy zarówno kwalifikuje się do roli usługi Azure AD i osoba zatwierdzająca roli, nie będą mogły zatwierdzać samodzielnie.<br/><br/>:heavy_check_mark: **Firma Microsoft zaleca** wybranie osób zatwierdzających do osób, które są najbardziej odpowiednią wiedzę na temat konkretnej roli i jej użytkownikach, częste, a nie administratora globalnego. |
+| Bilet zdarzenia | Czy uprawniony użytkownik musi zarejestrować numeru biletu zdarzenia podczas aktywacji ich ról. To ustawienie pozwala organizacji identyfikowanie poszczególnych aktywacji z użyciem wewnętrzny numer zdarzenia eliminowanie niechciane aktywacji.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wykorzystując liczb biletów zdarzeń, aby powiązać PIM przy użyciu Twój system wewnętrzny. Jest to szczególnie przydatne dla osób zatwierdzających potrzebujących kontekstu aktywacji. |
+| Wymagaj zatwierdzenia | Czy uprawniony użytkownik musi uzyskać zatwierdzenia do aktywowania roli.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** można skonfigurować zatwierdzenia dla ról z najbardziej uprawnień. Na podstawie wzorców użycia wszystkich klientów usługi PIM, administratora globalnego, administratora użytkowników, Administrator programu Exchange, administratora zabezpieczeń i Administrator haseł są najbardziej typowe role o zatwierdzenie instalacji. |
+| Osoba zatwierdzająca | Jeśli zatwierdzenie jest wymagane do aktywowania kwalifikujących się ról, wyświetlić listę osób, które należy zatwierdzać żądania. Domyślnie usługi PIM ustawia osoby zatwierdzającej do wszystkich użytkowników, którzy są administratorami ról uprzywilejowanych, czy są one stałe lub kwalifikujące się.<br/><br/>**Uwaga:** Jeśli użytkownik należy zarówno kwalifikuje się do roli usługi Azure AD i osoba zatwierdzająca roli, nie będą mogły zatwierdzać samodzielnie.<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** wybranie osób zatwierdzających do osób, które są najbardziej odpowiednią wiedzę na temat konkretnej roli i jej użytkownikach, częste, a nie administratora globalnego. |
 | Czas trwania aktywacji | Długość czasu, przez który użytkownik zostanie aktywowany w roli zostanie wygaśnięcia. |
-| Administratora trwałego | Listę użytkowników, którzy będą administrator trwały dla roli (nigdy nie musi aktywować).<br/><br/>:heavy_check_mark: **Firma Microsoft zaleca** ma zero administratora stałego dla wszystkich ról, z wyjątkiem administratorów globalnych. Przeczytaj więcej o nim w kto powinny kwalifikujących się oraz którzy użytkownicy powinni być trwale aktywne część tego planu. |
+| Administratora trwałego | Listę użytkowników, którzy będą administrator trwały dla roli (nigdy nie musi aktywować).<br/><br/> :heavy_check_mark: **Firma Microsoft zaleca** ma zero administratora stałego dla wszystkich ról, z wyjątkiem administratorów globalnych. Przeczytaj więcej o nim w kto powinny kwalifikujących się oraz którzy użytkownicy powinni być trwale aktywne część tego planu. |
 | Administrator usługi Active | Dla zasobów platformy Azure administratora active znajduje się lista użytkowników, którzy nigdy nie będą musiały Aktywuj, aby korzystać z roli. To nie nazywa się administrator trwały, takich jak role usługi Azure AD, ponieważ można ustawić czas wygaśnięcia po użytkownik utraci tej roli. |
 | Aktywne wygaśnięcia | Aktywne przypisania ról dla ról zasobów platformy Azure wygasają po tym okresie. Możesz wybrać spośród 15 dni, 1 miesiąc, 3-miesięczna 6 miesięcy, 1 roku lub trwale aktywne. |
 | Kwalifikujące się wygaśnięcia | Kwalifikujące się przypisanie roli dla ról zasobów platformy Azure wygasają po tym okresie. Możesz wybrać spośród 15 dni, 1 miesiąc, 3-miesięczna 6 miesięcy, 1 roku lub trwale zakwalifikowane. |

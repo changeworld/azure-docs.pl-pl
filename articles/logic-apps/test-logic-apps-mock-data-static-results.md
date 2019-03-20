@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 23cce4d846cdf183f41b25663ba21d3bf1d27013
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 03/18/2019
+ms.openlocfilehash: 0fbe56ceeeba71bcbb5ef358cd66de15e36508fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791004"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165100"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testowanie aplikacji logiki za pomocą danych testowych, konfigurując wyniki statycznej
 
@@ -67,9 +67,7 @@ Na przykład jeśli skonfigurowano statyczne wyniki dla usługi Outlook 365 wys�
 
    ![Ikona przedstawiająca włączone wyniki statycznej](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
-   Po uruchomieniu aplikacji logiki w historii uruchamiania aplikacji logiki, **wyniki statycznej** kolumna pokazuje, czy uruchomienie określonego zawiera akcje, które mają statyczny wyniki włączone, na przykład:
-
-   ![Historia - uruchamiania kolumnie wyników statyczne](./media/test-logic-apps-mock-data-static-results/run-history.png)
+   Aby znaleźć poprzednie przebiegi, które używają danych testowych, zobacz [znajdowanie, które używają statycznych wyniki](#find-runs-mock-data) w dalszej części tego tematu.
 
 <a name="reuse-sample-outputs"></a>
 
@@ -79,7 +77,7 @@ Jeśli Twoja aplikacja logiki ma poprzedniej Uruchom z danych wyjściowych, któ
 
 1. Jeśli nie jest już w [witryny Azure portal](https://portal.azure.com), Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. W menu głównym aplikację logiki, wybierz **Przegląd**. 
+1. W menu głównym aplikację logiki, wybierz **Przegląd**.
 
 1. W **Historia przebiegów** zaznacz ma możesz uruchamiania aplikacji logiki.
 
@@ -106,6 +104,26 @@ Jeśli Twoja aplikacja logiki ma poprzedniej Uruchom z danych wyjściowych, któ
    ![Tryb JSON](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
 1. Po zakończeniu wybierz pozycję **Gotowe**. Lub, aby powrócić do projektanta, wybierz **tryb przełącznika edytora** (![wybierz pozycję "Tryb edytora przełącznika"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
+
+<a name="find-runs-mock-data"></a>
+
+## <a name="find-runs-that-use-static-results"></a>Znajdowanie, które używają statycznych wyników
+
+Historia uruchomień aplikacji logiki identyfikuje przebiegów, gdzie akcje wykorzystują wyniki statycznej. Aby znaleźć te przebiegi, wykonaj następujące kroki:
+
+1. W menu głównym aplikację logiki, wybierz **Przegląd**. 
+
+1. W okienku po prawej stronie w obszarze **Historia przebiegów**, Znajdź **wyniki statycznej** kolumny. 
+
+   Każde uruchomienie zawierające akcji z wynikami ma **wyniki statycznej** kolumna ustawiona **włączone**, na przykład:
+
+   ![Historia - uruchamiania kolumnie wyników statyczne](./media/test-logic-apps-mock-data-static-results/run-history.png)
+
+1. Aby wyświetlić akcje, które Użyj statycznych wyników, wybierz działanie, które mają miejsce **wyniki statycznej** kolumny ustawiono **włączone**.
+
+   Akcje, które Użyj statycznych wyników pokazują zlewce testu (![ikonę wyniki statycznej](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) ikona, na przykład:
+
+   ![Historia - uruchamiania akcje, które Użyj statycznych wyników](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
 ## <a name="disable-static-results"></a>Wyłącz wyniki statycznej
 

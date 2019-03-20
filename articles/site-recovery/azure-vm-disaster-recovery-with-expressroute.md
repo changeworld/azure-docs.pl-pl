@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4622809f0e261236d6753daf5bb2e00ff814c849
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087877"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -91,11 +91,11 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
     - **Źródło vNet2**: 10.2.0.0/24.
     - Każda sieć wirtualna gwiazdy jest podłączony do **piastą**.
 - **Piastą**. Brak sieci wirtualnej koncentratora **źródła piastą**: 10.10.10.0/24.
-    - Tej sieci wirtualnej koncentratora pełnić rolę strażnika.
-    - Cała komunikacja między podsieciami przechodzą przez tego koncentratora.
- - Centrum sieci wirtualnej podsieci **. Sieć wirtualna Centrum ma dwie podsieci:
-     - **Urządzenie WUS podsieci**: 10.10.10.0/25. Ta podsieć zawiera NVA (. 10.10.10.10).
-     - **Podsieć bramy**: 10.10.10.128/25. Ta podsieć zawiera bramę usługi ExpressRoute, nawiązanie połączenia usługi ExpressRoute, która kieruje do lokacji lokalnej za pośrednictwem prywatnej komunikacji równorzędnej domeny routingu.
+  - Tej sieci wirtualnej koncentratora pełnić rolę strażnika.
+  - Cała komunikacja między podsieciami przechodzą przez tego koncentratora.
+    - Centrum sieci wirtualnej podsieci **. Sieć wirtualna Centrum ma dwie podsieci:
+    - **Urządzenie WUS podsieci**: 10.10.10.0/25. Ta podsieć zawiera NVA (. 10.10.10.10).
+    - **Podsieć bramy**: 10.10.10.128/25. Ta podsieć zawiera bramę usługi ExpressRoute, nawiązanie połączenia usługi ExpressRoute, która kieruje do lokacji lokalnej za pośrednictwem prywatnej komunikacji równorzędnej domeny routingu.
 - W lokalnym centrum danych ma połączenie obwodu usługi ExpressRoute za pośrednictwem przewagę partnera w Hongkongu.
 - Wszystkie routing jest kontrolowany przy użyciu tabel tras platformy Azure (UDR).
 - Cały ruch wychodzący między sieciami wirtualnymi lub w lokalnym centrum danych odbywa się za pośrednictwem urządzenia NVA.

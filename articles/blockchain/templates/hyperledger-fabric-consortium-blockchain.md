@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328031"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005815"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Sieci konsorcjum Hyperledger Fabric
 
@@ -78,11 +78,11 @@ W **podstawy**, określ wartości dla parametrów standardowego dla każdego wdr
 
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
-**Prefiks zasobów**| Prefiks nazwy dla zasobów udostępnionych w ramach wdrożenia |6 znaków lub mniej |
-**Nazwa użytkownika**| Nazwa użytkownika administratora dla poszczególnych maszyn wirtualnych wdrożonych dla tego elementu członkowskiego |1 - 64 znaki |
-**Typ uwierzytelniania**| Metoda uwierzytelniania do maszyny wirtualnej |Klucz publiczny hasła lub protokołu SSH|
-**Hasło (typ uwierzytelniania = hasło)**|Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać trzy z następujących typów znaków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny<br /><br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, można zmienić hasło po zainicjowaniu obsługi administracyjnej|12 - 72 znaków|
-**Klucz SSH (typ uwierzytelniania SSH oraz publicznego klucza =)**|Klucz protokołu secure shell, używany do zdalnego logowania ||
+**Prefiks zasobów** | Prefiks nazwy dla zasobów udostępnionych w ramach wdrożenia |6 znaków lub mniej |
+**Nazwa użytkownika** | Nazwa użytkownika administratora dla poszczególnych maszyn wirtualnych wdrożonych dla tego elementu członkowskiego |1 - 64 znaki |
+**Typ uwierzytelniania** | Metoda uwierzytelniania do maszyny wirtualnej |Klucz publiczny hasła lub protokołu SSH|
+**Hasło (typ uwierzytelniania = hasło)** |Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać trzy z następujących typów znaków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny<br /><br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, można zmienić hasło po zainicjowaniu obsługi administracyjnej|12 - 72 znaków|
+**Klucz SSH (typ uwierzytelniania SSH oraz publicznego klucza =)** |Klucz protokołu secure shell, używany do zdalnego logowania ||
 **Subskrypcja** |Subskrypcja, dla której chcesz wdrożyć ||
 **Grupa zasobów** |Grupa zasobów, dla której chcesz wdrożyć sieci konsorcjum ||
 **Lokalizacja** |Region platformy Azure, dla której chcesz wdrożyć pierwszego elementu członkowskiego w ||
@@ -97,10 +97,10 @@ W **ustawienia sieciowe**, określ dane wejściowe do tworzenia lub dołączenie
 
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
-**Konfiguracja sieci**|Można utworzyć nową sieć lub przyłącz istniejącą grupę. Jeśli wybierzesz *Dołącz istniejące*, musisz podać dodatkowe wartości. |Nową sieć <br/> Dołącz istniejące |
-**Hasło HLF urzędu certyfikacji**|Hasło używane do certyfikatów wygenerowanych przez urzędy certyfikacji, które są tworzone w ramach wdrożenia. Hasło musi zawierać trzy z następujących typów znaków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny.<br /><br />Gdy wszystkie maszyny wirtualne mają początkowo tego samego hasła, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|1 - 25 znaków |
-**Ustawienia organizacji** |Można dostosować nazwę organizacji i certyfikatu lub mają przypisane wartości domyślne do użycia.|Domyślne <br/> Advanced |
-**Ustawienia sieci VPN**| Aprowizowanie bramy tunel sieci VPN do uzyskiwania dostępu do maszyn wirtualnych | Yes <br/> Nie |
+**Konfiguracja sieci** |Można utworzyć nową sieć lub przyłącz istniejącą grupę. Jeśli wybierzesz *Dołącz istniejące*, musisz podać dodatkowe wartości. |Nową sieć <br/> Dołącz istniejące |
+**Hasło HLF urzędu certyfikacji** |Hasło używane do certyfikatów wygenerowanych przez urzędy certyfikacji, które są tworzone w ramach wdrożenia. Hasło musi zawierać trzy z następujących typów znaków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny.<br /><br />Gdy wszystkie maszyny wirtualne mają początkowo tego samego hasła, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|1 - 25 znaków |
+**Ustawienia organizacji** |Można dostosować nazwę organizacji i certyfikatu lub mają przypisane wartości domyślne do użycia.|Domyślne <br/> Zaawansowane |
+**Ustawienia sieci VPN** | Aprowizowanie bramy tunel sieci VPN do uzyskiwania dostępu do maszyn wirtualnych | Yes <br/> Nie |
 
 Kliknij przycisk **OK**.
 
@@ -112,8 +112,8 @@ W **konfiguracja sieci szkieletowej**, skonfiguruj network Activity block size i
 
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
-**Typ skalowania**|Typ wdrożenia pojedynczej maszyny wirtualnej z wieloma kontenerami lub wielu maszyn wirtualnych w modelu skalowalnego w poziomie.|Jednej maszyny Wirtualnej lub wielu maszyn wirtualnych |
-**Typ dysku maszyny Wirtualnej**|Typ magazynu kopii każdego wdrożonego węzła. <br/> Aby dowiedzieć się więcej na temat typów dostępnego miejsca na dysku, odwiedź stronę [wybierz typ dysku](../../virtual-machines/windows/disks-types.md).|Standardowa, SSD <br/> Premium, SSD |
+**Typ skalowania** |Typ wdrożenia pojedynczej maszyny wirtualnej z wieloma kontenerami lub wielu maszyn wirtualnych w modelu skalowalnego w poziomie.|Jednej maszyny Wirtualnej lub wielu maszyn wirtualnych |
+**Typ dysku maszyny Wirtualnej** |Typ magazynu kopii każdego wdrożonego węzła. <br/> Aby dowiedzieć się więcej na temat typów dostępnego miejsca na dysku, odwiedź stronę [wybierz typ dysku](../../virtual-machines/windows/disks-types.md).|Standardowa, SSD <br/> Premium, SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Wdrażanie wielu maszyn wirtualnych (dodatkowe ustawienia)
 
@@ -123,8 +123,8 @@ W **konfiguracja sieci szkieletowej**, skonfiguruj network Activity block size i
 |---|---|---|
 **Liczba węzłów osoby zamawiającej** |Liczba węzłów, których kolejność (organizowanie) transakcji w bloku. <br />Więcej informacji na temat usługi zamawiania, odwiedź stronę Hyperledger [dokumentacji](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1 – 4 |
 **Rozmiar maszyny wirtualnej węzła osoby zamawiającej** |Rozmiar maszyny wirtualnej, używany do osoby zamawiającej węzły w sieci|Standardowa Bs<br />Standard Ds<br />Standardowa FS |
-**Liczba węzłów równorzędnych**| Węzły, które są własnością członkowie konsorcjum, wykonywać transakcje, które Obsługa stanu i kopię rejestru.<br />Więcej informacji na temat usługi zamawiania, odwiedź stronę Hyperledger [dokumentacji](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1 – 4 |
-**Utrwalanie stanu węzła** |Aparat trwałości używana przez węzły równorzędne. Można skonfigurować ten aparat na węzeł równorzędny. Zobacz szczegóły poniżej wiele węzłów elementów równorzędnych.|CouchDB </br>LevelDB |
+**Liczba węzłów równorzędnych** | Węzły, które są własnością członkowie konsorcjum, wykonywać transakcje, które Obsługa stanu i kopię rejestru.<br />Więcej informacji na temat usługi zamawiania, odwiedź stronę Hyperledger [dokumentacji](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1 – 4 |
+**Utrwalanie stanu węzła** |Aparat trwałości używana przez węzły równorzędne. Można skonfigurować ten aparat na węzeł równorzędny. Zobacz szczegóły poniżej wiele węzłów elementów równorzędnych.|CouchDB <br />LevelDB |
 **Rozmiar maszyny wirtualnej węzła równorzędnego** |Rozmiar maszyny wirtualnej, używany dla wszystkich węzłów w sieci|Standardowa Bs<br />Standard Ds<br />Standardowa FS |
 
 ### <a name="multiple-peer-node-configuration"></a>Wiele konfiguracji węzła równorzędnego

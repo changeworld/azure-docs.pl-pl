@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e92c812ffc8b72fe79248c602e48ff01ef9fefcb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 21a10bcedc25ddce63ba468e400dcea1f77148a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961018"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863121"
 ---
 # <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji aparatu Unity dla systemu Android przy użyciu usługi Azure Spatial Anchors
 
@@ -35,7 +35,9 @@ Omawiane tematy:
 
 Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
 
-- Maszyna z systemem Windows lub macOS i aparatem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 lub nowszym</a> oraz programem <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 lub nowszym</a>.
+- Windows lub macOS komputera za pomocą <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> i <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a>.
+  - Jeśli w systemie Windows, należy także <a href="https://git-scm.com/download/win" target="_blank">Git dla Windows</a>.
+  - Jeśli uruchomiona w systemie macOS, skorzystaj z usługi Git, zainstalowanych za pomocą oprogramowania HomeBrew. Wprowadź następujące polecenie w jednym wierszu w terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`.
 - Urządzenie z systemem Android <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">pracujące w trybie dewelopera</a> i <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">zgodne z platformą ARCore</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -58,32 +60,12 @@ Zapisz scenę, wybierając pozycje **File (Plik)** -> **Save (Zapisz)**.
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Wybierz pozycję **Export (Eksportuj)**, aby otworzyć okno dialogowe. Następnie wybierz folder, aby wyeksportować projekt programu Android Studio.
-
-Po zakończeniu eksportu zostanie wyświetlony folder zawierający wyeksportowany projekt programu Android Studio z podfolderem o nazwie **HelloAR U3D**.
-
-## <a name="deploy-the-android-application"></a>Wdrażanie aplikacji systemu Android
-
-Otwórz program Android Studio i wybierz pozycję **Open an existing Android Studio project (Otwórz istniejący projekt Android Studio)**. Następnie wybierz podfolder **HelloAR U3D** z wyeksportowanego projektu programu Android Studio i kliknij przycisk **OK**.
-
-Podczas otwierania zostanie wyświetlony monit z pytaniem o użycie otoki Gradle. Wybierz przycisk **OK**, aby użyć otoki Gradle i otworzyć projekt.
-
-Włącz urządzenie z systemem Android, zaloguj się i połącz to urządzenie z komputerem PC za pomocą kabla USB.
-
-Wybierz polecenie **Run (Uruchom)** na pasku narzędzi programu Android Studio.
-
-![Wdrażanie i uruchamianie w programie Android Studio](./media/get-started-unity-android/android-studio-deploy-run.png)
-
-Wybierz urządzenie z systemem Android w oknie dialogowym **Select Deployment Target (Wybierz miejsce docelowe wdrożenia)**, a następnie wybierz przycisk **OK**, aby uruchomić aplikację na urządzeniu z systemem Android.
+Upewnij się, że pole wyboru **Export Project (Eksportuj projekt)** nie jest zaznaczone. Kliknij pozycję **Build And Run (Skompiluj i uruchom)**. Zobaczysz pytanie o zapisanie pliku `.apk` — możesz wybrać dla niego dowolną nazwę.
 
 Postępuj zgodnie z instrukcjami w aplikacji, aby umieścić i przywołać kotwicę.
 
 > [!NOTE]
 > Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz puste miejsce, niebieski kolor lub inne tekstury), prawdopodobnie musisz ponownie zaimportować zasoby w aparacie Unity. Zatrzymaj aplikację. Z górnego menu aparatu Unity wybierz pozycje **Assets -> Reimport all (Zasoby -> Zaimportuj ponownie wszystko)**. Następnie ponownie uruchom aplikację.
-
-Zatrzymaj aplikację, wybierając polecenie **Stop (Zatrzymaj)** na pasku narzędzi programu Android Studio.
-
-![Zatrzymywanie w programie Android Studio](./media/get-started-unity-android/android-studio-stop.png)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

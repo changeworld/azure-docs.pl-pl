@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 4f6dbb52778893de0468dbab82351b9020af2927
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: cae657736d78958259c04dee48034f97ac9d3d1c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871232"
 ---
 # <a name="create-an-azure-application-offer"></a>Tworzenie oferty aplikacji platformy Azure
 
@@ -27,7 +27,7 @@ W tym artykule opisano, jak tworzyć i publikować wpis oferty aplikacji platfor
 
 ## <a name="new-offer-form"></a>Nowy formularz oferty
 
-Zaloguj się do [portalu Cloud Partner](http://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **Azure Applications** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty.
+Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. Na nowe oferty menu, wybierz **Azure Applications** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty.
 
 ![Nowy formularz oferty](./media/azure-new-managedapp-offer.png)
 

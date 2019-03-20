@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/01/2018
+ms.date: 02/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a025c8e12f224bff4d90a924cf415143da9421b5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: cce28b031b146d8a56d37647022261294f07f0be
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892614"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213572"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Porównanie funkcji produktu Azure CDN
 
@@ -33,13 +33,19 @@ W poniższej tabeli przedstawiono porównanie funkcji dostępnych w poszczególn
 | [Przyspieszanie witryn dynamicznych](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  |  | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Przyspieszanie witryn dynamicznych — Adaptive Image Compression (Adaptacyjna kompresja obrazu)](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Przyspieszanie witryn dynamicznych — Object Prefetch (Pobieranie obiektów z wyprzedzeniem)](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
-| [Optymalizacja przesyłania strumieniowego wideo](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization)  | \* | **&#x2713;**  | \* |  \* |
-| [Optymalizacja dużych plików](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | \* | **&#x2713;**  | \* |  \* |
+| [Optymalizacja dostarczania ogólnych sieci web](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;**, Wybierz ten typ optymalizacji, jeśli Twoja średni rozmiar plików jest mniejsza niż 10 MB  | **&#x2713;** |  **&#x2713;** |
+| [Optymalizacja przesyłania strumieniowego wideo](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization)  | za pomocą dostarczania w sieci Web ogólne | **&#x2713;**  | za pomocą dostarczania w sieci Web ogólne |  za pomocą dostarczania w sieci Web ogólne |
+| [Optymalizacja dużych plików](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | za pomocą dostarczania w sieci Web ogólne | **&#x2713;**, Wybierz ten typ optymalizacji, jeśli Twoja średni rozmiar pliku jest większy niż 10 MB   | za pomocą dostarczania w sieci Web ogólne |  za pomocą dostarczania w sieci Web ogólne |
+| Zmień typ optymalizacji | |**&#x2713;** | | |
+| Port źródła |Wszystkie porty TCP |[Porty dozwolone pochodzenie](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |Wszystkie porty TCP |Wszystkie porty TCP |
 | [Globalne równoważenia obciążenia serwera (usługa GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Szybkie przeczyszczanie](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [Szybkie przeczyszczanie](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;**, Przeczyść wszystkie i przeczyszczanie symboli wieloznacznych nie są obsługiwane przez usługę Azure CDN from Akamai obecnie |**&#x2713;** |**&#x2713;** |
 | [Wstępne ładowanie zasobów](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
 | Ustawienia pamięci podręcznej/nagłówka (przy użyciu [reguł buforowania](cdn-caching-rules.md))  |  |**&#x2713;** |**&#x2713;** | |
+| Możliwego do dostosowania reguł na podstawie aparat dostarczania zawartości (przy użyciu [aparat reguł](cdn-rules-engine.md))  |  | | |**&#x2713;** |
 | Ustawienia pamięci podręcznej/nagłówka (przy użyciu [aparatu reguł](cdn-rules-engine.md))  |  | | |**&#x2713;** |
+| Adres URL przekierowania/ponownego napisania (przy użyciu [aparat reguł](cdn-rules-engine.md))  |  | | |**&#x2713;** |
+| Zasady urządzeń przenośnych (przy użyciu [aparatu reguł](cdn-rules-engine.md))  |  | | |**&#x2713;** |
 | [Buforowanie ciągu zapytania](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Podwójny stos protokołów IPv4/IPv6 | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Obsługa protokołu HTTP/2](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -65,11 +71,11 @@ W poniższej tabeli przedstawiono porównanie funkcji dostępnych w poszczególn
 | **Łatwość obsługi** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | Łatwa integracja z usługami platformy Azure, takimi jak [Storage](cdn-create-a-storage-account-with-cdn.md), [Web Apps](cdn-add-to-web-app.md) i [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Zarządzanie za pomocą [interfejsu API REST](https://msdn.microsoft.com/library/mt634456.aspx), [platformy .NET](cdn-app-dev-net.md), [środowiska Node.js](cdn-app-dev-node.md) lub [programu PowerShell](cdn-manage-powershell.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Dostosowywalny, oparty na regułach aparat dostarczania zawartości](cdn-rules-engine.md)  |  | | |**&#x2713;** |
-| Adres URL przekierowania/ponownego napisania (przy użyciu [aparatu reguł](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| Zasady urządzeń przenośnych (przy użyciu [aparatu reguł](cdn-rules-engine.md))  |  | | |**&#x2713;** |
+| [Typy MIME kompresji](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Domyślnie tylko |Można konfigurować |Można konfigurować  |Można konfigurować  |
+| Kompresja kodowania  |gzip, brotli |Gzip |gzip, deflate, bzip2, brotili  |gzip, deflate, bzip2, brotili  |
 
-\* Firmy Microsoft i Verizon obsługują bezpośrednie dostarczanie dużych plików i multimediów za pomocą optymalizacji ogólnego dostarczania w Internecie.
+
+
 
 
 

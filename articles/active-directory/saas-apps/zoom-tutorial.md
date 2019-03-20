@@ -7,20 +7,20 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/05/2019
+ms.date: 03/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4175b626040f5fcb7ec157120f19b89508e67239
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 641fe5439e320208d41969b9563293257648d488
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842094"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Zoom
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Zoom w usłudze Azure AD, należy doda�
 
 **Aby dodać aplikację Zoom z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -112,20 +112,20 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Zoom](https://support.zoom.us/hc/en-us) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Aplikacja Zoom oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+5. Powiększenie aplikacja oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe  **Atrybuty użytkownika** .
 
     ![image](common/edit-attribute.png)
 
-6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
+6. Ponadto powyżej, Powiększ aplikacja oczekuje, że kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** wykonaj następujące czynności, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
     
     | Name (Nazwa) | Przestrzeń nazw  |  Atrybut źródłowy|
     | ---------------| --------------- | --------- |
-    | Adres e-mail  | user.mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
-    | Imię  | user.givenname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname |
-    | Nazwisko  | user.surname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname |
-    | Numer telefonu  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
-    | Dział  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
-    | role (rola) |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
+    | Adres e-mail  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
+    | Imię  | user.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
+    | Nazwisko  | user.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
+    | Numer telefonu  | user.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
+    | Dział  | user.department  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
+    | role (rola) |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
 
     > [!NOTE]
     > Kliknij [tutaj](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), aby dowiedzieć się, jak skonfigurować rolę w usłudze Azure AD
@@ -138,7 +138,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
+    c. Dla opcji Źródło wybierz wartość **Atrybut**.
 
     d. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
@@ -161,7 +161,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-zoom-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Zoom
 
@@ -179,13 +179,23 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     a. W polu tekstowym **Sign-in page URL** (Adres URL strony logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    b. W polu tekstowym **Sign-out page URL** (Adres URL strony wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+    b. Dla **adres URL strony wylogowania** wartości, należy przejść do witryny Azure portal i kliknij **usługi Azure Active Directory** po lewej stronie przejdź do **rejestracje aplikacji**.
 
-    d. Otwórz certyfikat kodowany algorytmem base-64 w Notatniku, skopiuj jego zawartość do schowka, a następnie wklej ją w zawartość w polu tekstowym **Certyfikat dostawcy tożsamości**.
+    ![Przycisk Azure Active Directory](./media/zoom-tutorial/appreg.png)
 
-    d. W polu tekstowym **Wystawca** wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal. 
+    c. Kliknij pozycję **punktów końcowych**
 
-    e. Kliknij pozycję **Zapisz**.
+    ![Przycisk punktu końcowego](./media/zoom-tutorial/endpoint.png)
+
+    d. Kopiuj **punkt końcowy wylogowania protokołu SAML-P** i wklej go w **adres URL strony wylogowania** pola tekstowego.
+
+    ![Przycisk punkt końcowy kopiowania](./media/zoom-tutorial/endpoint1.png)
+
+    e. Otwórz certyfikat kodowany algorytmem base-64 w Notatniku, skopiuj jego zawartość do schowka, a następnie wklej ją w zawartość w polu tekstowym **Certyfikat dostawcy tożsamości**.
+
+    f. W **wystawcy** pola tekstowego, Wklej wartość **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal. 
+
+    g. Kliknij pozycję **Zapisz**.
 
     > [!NOTE]
     > Aby dowiedzieć się więcej, zapoznaj się z dokumentacją aplikacji Zoom pod adresem [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
@@ -208,7 +218,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -263,14 +273,14 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Zoom,
 
     b. W polu tekstowym **Emails** (Adresy e-mail) wpisz adres e-mail prawidłowego konta usługi Azure AD, które chcesz aprowizować.
 
-    d. Kliknij pozycję **Add** (Dodaj).
+    c. Kliknij pozycję **Add** (Dodaj).
 
 > [!NOTE]
 > Do aprowizowania kont użytkowników usługi Azure Active Directory możesz użyć dowolnego innego interfejsu API lub narzędzia do tworzenia kont użytkowników aplikacji Zoom oferowanego przez tę aplikację.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Zoom w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Zoom, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

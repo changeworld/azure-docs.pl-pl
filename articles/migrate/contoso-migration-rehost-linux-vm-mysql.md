@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 3cac893fcaafd4fe8d35aab2a10da92019d3ed42
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 114f4ccccaa861928263eb59b4e43379989abcca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698972"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077857"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Migracja Contoso: Hostuj ponownie lokalną aplikację systemu Linux na maszynach wirtualnych platformy Azure i w usłudze Azure MySQL
 
@@ -127,7 +127,7 @@ Poniżej przedstawiono, jak Contoso zostanie wykonany przez administratorów mig
 > [!div class="checklist"]
 > * **Krok 1. Przygotowywanie platformy Azure dla usługi Site Recovery**: Tworzą konta usługi Azure storage do przechowywania zreplikowane dane i utworzyć magazyn usługi Recovery Services.
 > * **Krok 2. Przygotowywanie lokalnych zasobów programu VMware do odzyskiwania lokacji**: Przygotowywanie konta do maszyny Wirtualnej odnajdywanie i zainstalować agenta i przygotowanie do połączenia z maszynami wirtualnymi platformy Azure po włączeniu trybu failover.
- * **Krok 3. Aprowizowanie bazy danych]**: Na platformie Azure udostępnia wystąpienie bazy danych Azure MySQL.
+>   * **Krok 3. Aprowizowanie bazy danych]**: Na platformie Azure udostępnia wystąpienie bazy danych Azure MySQL.
 > * **Krok 4. Replikowanie maszyn wirtualnych**: Ich Konfigurowanie środowiska źródłowego i docelowego Site Recovery, skonfiguruj zasady replikacji i rozpocząć replikowanie maszyn wirtualnych do usługi Azure storage.
 > * **Krok 5. Migrowanie bazy danych**: Konfigurowania migracji za pomocą narzędzi MySQL.
 > * **Krok 6: Migrowanie maszyn wirtualnych z usługą Site Recovery**: Na koniec one uruchomić testowy tryb failover, aby upewnić się, że wszystko działa, a następnie uruchom tryb failover pełnej migracji maszyn wirtualnych na platformie Azure.
@@ -147,10 +147,10 @@ Administratorzy firmy Contoso Tworzenie konta magazynu i Magazyn w następujący
 
 1. One tworzenie konta magazynu (**contosovmsacc20180528**) w regionie wschodnie stany USA 2.
 
-    - Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
-    - Używają konta ogólnego przeznaczenia z magazynu w warstwie standardowa i replikacją LRS.
+   - Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
+   - Używają konta ogólnego przeznaczenia z magazynu w warstwie standardowa i replikacją LRS.
 
-    ![Site Recovery magazynu](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
+     ![Site Recovery magazynu](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
 
 3. Za pomocą konta magazynu i sieci w miejscu utworzyć magazyn (ContosoMigrationVault) i umieść go w **ContosoFailoverRG** grupę zasobów, w regionie wschodnie stany USA 2 podstawowym.
 

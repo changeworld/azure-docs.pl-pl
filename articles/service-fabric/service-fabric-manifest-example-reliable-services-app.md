@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: 548c05963b0b99ba3434d600b19f80cef6a09d6a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1d0a0c2c6a965ac14002257484c5f840666e6fc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885270"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Przykłady manifestu aplikacji i usługi Reliable Services
 Poniżej przedstawiono przykłady manifestów aplikacji i usługi dla aplikacji usługi Service Fabric za pomocą frontonu sieci web platformy ASP.NET Core i stanowej back-end. Te przykłady ma na celu Pokaż jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usługi są oparte na [usługi Service Fabric platformy .NET Przewodnik Szybki Start](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) manifestów.
 
 Wyświetlane są następujące funkcje:
+
 |Manifest|Funkcje|
 |---|---|
 |[Manifest aplikacji](#application-manifest)| [nadzór nad zasobami](service-fabric-resource-governance.md), [uruchamianie usługi jako konto administratora lokalnego](service-fabric-application-runas-security.md), [dotyczą zasady domyślne wszystkie pakiety kodu usługi](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [tworzenie użytkowników i grup jednostek](service-fabric-application-runas-security.md), Udostępnij pakiet danych między wystąpieniami usług [zastąpienia punkty końcowe usługi](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
@@ -37,7 +38,7 @@ Zobacz [elementy manifestu aplikacji](#application-manifest-elements), [elementy
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="VotingData_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="VotingData_PartitionCount" DefaultValue="1" />
@@ -174,8 +175,8 @@ Zobacz [elementy manifestu aplikacji](#application-manifest-elements), [elementy
 <ServiceManifest Name="VotingWebPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType. 
          This name must match the string used in RegisterServiceType call in Program.cs. -->
@@ -238,8 +239,8 @@ Zobacz [elementy manifestu aplikacji](#application-manifest-elements), [elementy
 <ServiceManifest Name="VotingDataPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType. 
          This name must match the string used in RegisterServiceType call in Program.cs. -->

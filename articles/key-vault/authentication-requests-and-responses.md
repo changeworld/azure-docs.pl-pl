@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2d63c14c5eba1a9637cfd5544585e71d2bc86048
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7ca486768cf56059328801b1b4b1036bb8aeece8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535165"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081784"
 ---
 # <a name="authentication-requests-and-responses"></a>Uwierzytelnianie, żądania i odpowiedzi
 
@@ -31,17 +31,17 @@ Ten temat zawiera szczegółowe informacje o usłudze Azure Key Vault. Aby uzysk
 
  Aby pracować z obiektami w usłudze Azure Key Vault, są następujące adresy URL:  
 
--   Aby utworzyć klucz o nazwie TESTKEY w użycie usługi Key Vault — `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- Aby utworzyć klucz o nazwie TESTKEY w użycie usługi Key Vault — `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
--   Aby ZAIMPORTOWAĆ wartość dla kucza zwanego IMPORTEDKEY do użycia usługi Key Vault — `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- Aby ZAIMPORTOWAĆ wartość dla kucza zwanego IMPORTEDKEY do użycia usługi Key Vault — `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
--   Aby UZYSKAĆ klucz tajny o nazwie MYSECRET w użycie usługi Key Vault — `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- Aby UZYSKAĆ klucz tajny o nazwie MYSECRET w użycie usługi Key Vault — `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
--   Do PODPISANIA szyfrowane za pomocą klucza o nazwie TESTKEY w użycie usługi Key Vault — `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- Do PODPISANIA szyfrowane za pomocą klucza o nazwie TESTKEY w użycie usługi Key Vault — `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
- Urząd dla żądania do usługi Key Vault jest zawsze w następujący sposób,  `https://{keyvault-name}.vault.azure.net/`  
+  Urząd dla żądania do usługi Key Vault jest zawsze w następujący sposób,  `https://{keyvault-name}.vault.azure.net/`  
 
- Klucze zawsze są przechowywane w ścieżce /keys, wpisów tajnych zawsze są przechowywane w ścieżce /secrets.  
+  Klucze zawsze są przechowywane w ścieżce /keys, wpisów tajnych zawsze są przechowywane w ścieżce /secrets.  
 
 ## <a name="api-version"></a>Wersja interfejsu API  
  Usługi Azure Key Vault obsługuje wersji protokołu do zapewniania zgodności z klientami niższego poziomu, mimo że nie wszystkie funkcje będą dostępne dla tych klientów. Klienci muszą używać `api-version` parametr ciągu, aby określić wersję protokołu, które obsługują, ponieważ nie jest domyślnie zapytania.  
@@ -64,17 +64,17 @@ Ten temat zawiera szczegółowe informacje o usłudze Azure Key Vault. Aby uzysk
 ## <a name="error-responses"></a>Odpowiedzi na błędy  
  Obsługa błędów użyje kodów stanu HTTP. Typowe wyniki są:  
 
--   2xx — Powodzenie: Używane do normalnego działania. Treść odpowiedzi zawiera oczekiwany wynik  
+- 2xx — Powodzenie: Używane do normalnego działania. Treść odpowiedzi zawiera oczekiwany wynik  
 
--   3xx — przekierowania: 304 "Nie jest modyfikowany" mogą być zwrócone do spełnienia warunkowego GET. Inne kody 3xx może służyć w przyszłości do wskazania zmiany DNS i ścieżkę.  
+- 3xx — przekierowania: 304 "Nie jest modyfikowany" mogą być zwrócone do spełnienia warunkowego GET. Inne kody 3xx może służyć w przyszłości do wskazania zmiany DNS i ścieżkę.  
 
--   4xx — Błąd klienta: Używany w żądaniach, brakujące klucze, błędy składniowe, nieprawidłowe parametry, błędy uwierzytelniania, itd. Treść odpowiedzi zawiera wyjaśnienie szczegółowy komunikat o błędzie.  
+- 4xx — Błąd klienta: Używany w żądaniach, brakujące klucze, błędy składniowe, nieprawidłowe parametry, błędy uwierzytelniania, itd. Treść odpowiedzi zawiera wyjaśnienie szczegółowy komunikat o błędzie.  
 
--   5xx — Błąd serwera: Używany do błędy wewnętrzne serwera. Treść odpowiedzi będzie zawierać informacje o błędzie podsumowania.  
+- 5xx — Błąd serwera: Używany do błędy wewnętrzne serwera. Treść odpowiedzi będzie zawierać informacje o błędzie podsumowania.  
 
- System jest przeznaczona do pracy związany z serwera proxy lub zapory. W związku z tym klient może zostać wyświetlony innych kodach błędów.  
+  System jest przeznaczona do pracy związany z serwera proxy lub zapory. W związku z tym klient może zostać wyświetlony innych kodach błędów.  
 
- Usługa Azure Key Vault również zwraca informacje o błędzie w treści odpowiedzi w przypadku wystąpienia problemu. Treść odpowiedzi jest w formacie JSON i ma postać:  
+  Usługa Azure Key Vault również zwraca informacje o błędzie w treści odpowiedzi w przypadku wystąpienia problemu. Treść odpowiedzi jest w formacie JSON i ma postać:  
 
 ```  
 

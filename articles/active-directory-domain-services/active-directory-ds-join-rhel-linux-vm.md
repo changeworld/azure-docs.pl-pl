@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: bb2ebeedb1b34288a3d402ffdf4df80aa3be83cd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1102a8c80b0040c7044d64c674d956d339238623
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154079"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086653"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux 7 do domeny zarządzanej
 W tym artykule pokazano, jak dołączyć maszynę wirtualną Red Hat Enterprise Linux (RHEL) 7 do domeny zarządzanej usług domenowych Azure AD.
@@ -86,12 +86,11 @@ Teraz, wymagane pakiety są zainstalowane na maszynie wirtualnej systemu Linux, 
     sudo realm discover CONTOSO100.COM
     ```
 
-     > [!NOTE]
-     > **Rozwiązywanie problemów:** Jeśli *odnajdywania obszaru* nie może znaleźć Twojej domeny zarządzanej:
-     * Upewnij się, że domena jest dostępny z maszyny wirtualnej (spróbuj ping).
-     * Sprawdź, czy maszyna wirtualna w rzeczywistości został wdrożony na tej samej sieci wirtualnej, w którym domena zarządzana jest dostępna.
-     * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywała na kontrolerach domeny z domeny zarządzanej.
-     >
+   > [!NOTE]
+   > **Rozwiązywanie problemów:** Jeśli *odnajdywania obszaru* nie może znaleźć Twojej domeny zarządzanej:
+   >   * Upewnij się, że domena jest dostępny z maszyny wirtualnej (spróbuj ping).
+   >   * Sprawdź, czy maszyna wirtualna w rzeczywistości został wdrożony na tej samej sieci wirtualnej, w którym domena zarządzana jest dostępna.
+   >   * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywała na kontrolerach domeny z domeny zarządzanej.
 
 2. Zainicjuj protokołu Kerberos. W terminalu SSH wpisz następujące polecenie:
 

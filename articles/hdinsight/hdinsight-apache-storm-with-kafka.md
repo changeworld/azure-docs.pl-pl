@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 341278237bc18bfbb8f4bb1e5d600e2cab894926
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: b6717bc76caffb9c4b6f7743cc5356a80a8f742b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111858"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: Korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
 
@@ -129,7 +129,7 @@ Ten samouczek obejmuje dwie topologie:
     >
     > Jeśli nie używasz szablonu dostępnego w tym dokumencie do utworzenia klastra Storm, musisz ręcznie zastosować akcję skryptu dla klastra.
     >
-    > Akcja skryptu znajduje się pod adresem `https://hdiconfigactions2.blob.core.windows.net/stormextlib/stormextlib.sh` i jest stosowana do węzłów nadzorcy i Nimbus klastra Storm. Aby uzyskać więcej informacji dotyczących akcji skryptu, zobacz dokument [Dostosowywanie usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+    > Akcja skryptu znajduje się pod adresem `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh` i jest stosowana do węzłów nadzorcy i Nimbus klastra Storm. Aby uzyskać więcej informacji dotyczących akcji skryptu, zobacz dokument [Dostosowywanie usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 Topologie definiuje się przy użyciu struktury [Flux](https://storm.apache.org/releases/1.1.2/flux.html). Struktura Flux została wprowadzona w systemie Storm 0.10.x i umożliwia rozdzielenie konfiguracji topologii i kodu. Topologie wykorzystujące strukturę Flux są definiowane w pliku YAML. Plik YAML może sam być częścią topologii. Istnieje także możliwość użycia go jako pliku autonomicznego podczas przesyłania topologii. Struktura Flux obsługuje również podstawianie wartości zmiennych w czasie wykonywania, które jest używane w tym przykładzie.
 
@@ -400,26 +400,26 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
     * Platforma Kafka w usłudze HDInsight 3.6 (trzy węzły procesu roboczego)
     * System Storm w usłudze HDInsight 3.6 (trzy węzły procesu roboczego)
 
-  > [!WARNING]  
-  > Aby zapewnić dostępność platformy Kafka w usłudze HDInsight, klaster musi zawierać co najmniej trzy węzły procesu roboczego. Ten szablon umożliwia utworzenie klastra Kafka zawierającego trzy węzły procesu roboczego.
+   > [!WARNING]  
+   > Aby zapewnić dostępność platformy Kafka w usłudze HDInsight, klaster musi zawierać co najmniej trzy węzły procesu roboczego. Ten szablon umożliwia utworzenie klastra Kafka zawierającego trzy węzły procesu roboczego.
 
 2. Wypełnij pola w sekcji **Wdrożenie niestandardowe**, używając następujących wskazówek:
 
-    2. Wypełnij pola w sekcji **Dostosowany szablon**, korzystając z poniższych informacji:
+   1. Wypełnij pola w sekcji **Dostosowany szablon**, korzystając z poniższych informacji:
 
-    | Ustawienie | Wartość |
-    | --- | --- |
-    | Subskrypcja | Twoja subskrypcja platformy Azure |
-    | Grupa zasobów | Grupa zasobów zawierająca zasoby. |
-    | Lokalizacja | Region świadczenia usługi Azure, w którym są tworzone zasoby. |
-    | Nazwa klastra Kafka | Nazwa klastra Kafka. |
-    | Nazwa klastra Storm | Nazwa klastra Storm. |
-    | Nazwa użytkownika logowania klastra | Nazwa użytkownika będącego administratorem klastrów. |
-    | Hasło logowania klastra | Hasło użytkownika będącego administratorem klastrów. |
-    | Nazwa użytkownika SSH | Użytkownik SSH tworzony na potrzeby obsługi klastrów. |
-    | Hasło SSH | Hasło użytkownika SSH. |
+      | Ustawienie | Wartość |
+      | --- | --- |
+      | Subskrypcja | Twoja subskrypcja platformy Azure |
+      | Grupa zasobów | Grupa zasobów zawierająca zasoby. |
+      | Lokalizacja | Region świadczenia usługi Azure, w którym są tworzone zasoby. |
+      | Nazwa klastra Kafka | Nazwa klastra Kafka. |
+      | Nazwa klastra Storm | Nazwa klastra Storm. |
+      | Nazwa użytkownika logowania klastra | Nazwa użytkownika będącego administratorem klastrów. |
+      | Hasło logowania klastra | Hasło użytkownika będącego administratorem klastrów. |
+      | Nazwa użytkownika SSH | Użytkownik SSH tworzony na potrzeby obsługi klastrów. |
+      | Hasło SSH | Hasło użytkownika SSH. |
    
-    ![Obraz parametrów szablonu](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      ![Obraz parametrów szablonu](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
 3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
 
@@ -434,17 +434,17 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
 2. W katalogu **hdinsight-storm-java-kafka** wykonaj następujące polecenie, aby skompilować projekt i utworzyć pakiet na potrzeby wdrażania:
 
-  ```bash
-  mvn clean package
-  ```
+   ```bash
+   mvn clean package
+   ```
 
     Proces pakietu tworzy plik o nazwie `KafkaTopology-1.0-SNAPSHOT.jar` w katalogu `target`.
 
 3. Za pomocą poniższych poleceń skopiuj pakiet do klastra Storm w usłudze HDInsight. Zastąp ciąg `sshuser` nazwą użytkownika protokołu SSH dla klastra. Zastąp ciąg `stormclustername` nazwą klastra __Storm__.
 
-  ```bash
-  scp ./target/KafkaTopology-1.0-SNAPSHOT.jar sshuser@stormclustername-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
-  ```
+   ```bash
+   scp ./target/KafkaTopology-1.0-SNAPSHOT.jar sshuser@stormclustername-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
+   ```
 
     Po wyświetleniu monitu podaj hasło, którego użyto podczas tworzenia klastrów.
 
@@ -518,7 +518,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 4. Zapisz plik `dev.properties`, a następnie wykonaj następujące polecenie w celu przekazania go do klastra **Storm**:
 
      ```bash
-    scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
+    scp dev.properties USERNAME@BASENAME-ssh.azurehdinsight.net:dev.properties
     ```
 
     Zastąp ciąg **USERNAME** nazwą użytkownika protokołu SSH dla klastra. Zastąp ciąg **BASENAME** nazwą podstawową użytą podczas tworzenia klastra.
@@ -577,9 +577,9 @@ Platforma Kafka przechowuje dane w _temacie_. Musisz utworzyć temat przed uruch
 
 1. Z poziomu sesji SSH z klastrem Storm uruchom topologię modułu czytającego za pomocą następującego polecenia:
 
-  ```bash
-  storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
-  ```
+   ```bash
+   storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
+   ```
 
 2. Zaczekaj minutę, a następnie przy użyciu następującego polecenia wyświetl pliki utworzone przez topologię modułu czytającego:
 
@@ -635,7 +635,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 > 
 > Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób użycia topologii systemu [Apache Storm](https://storm.apache.org/) do zapisywania i odczytywania danych na platformie [Apache Kafka](https://kafka.apache.org/) w usłudze HDInsight. Pokazano również, jak zapisać dane w magazynie zgodnym z systemem plików [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) używanym przez usługę HDInsight.
 

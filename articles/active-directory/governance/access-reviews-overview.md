@@ -16,12 +16,12 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5fa81e564cf28f8b5478abe9ec5bb63d0f11bd3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8ab3570cb7e3e8b09425bf4c05f7f5725fd21d4f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449669"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845158"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co to są przeglądów dostępu usługi Azure AD?
 
@@ -84,7 +84,7 @@ Jeśli wszystko jest gotowe do wdrożenia przeglądów dostępu w organizacji, w
 
 Aby włączyć przeglądów dostępu, wykonaj następujące kroki.
 
-1. Jako Administrator globalny lub Administrator kont użytkowników, zaloguj się do [witryny Azure portal](https://portal.azure.com) przeglądy dla której chcesz używać dostępu.
+1. Jako administrator globalny lub administrator użytkowników, zaloguj się do [witryny Azure portal](https://portal.azure.com) przeglądy dla której chcesz używać dostępu.
 
 1. Kliknij przycisk **wszystkich usług** i znajdź usługę przeglądów dostępu.
 

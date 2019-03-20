@@ -1,19 +1,19 @@
 ---
 title: Instalowanie rozwiązania Ansible na maszynach wirtualnych platformy Azure
 description: Dowiedz się, w jaki sposób zainstalować i skonfigurować rozwiązanie Ansible, aby zarządzać zasobami platformy Azure w systemach Ubuntu, CentOS i SLES.
-ms.service: ansible
+ms.service: virtual-machines-linux
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: 3c57e46ebb8828cbf2e44ced95d2d37afe5671c5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 38a1ffdc815b357f7bb7ebe2c337b55a738fb6b5
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893922"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790436"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>Instalowanie rozwiązania Ansible na maszynach wirtualnych platformy Azure
 
@@ -133,7 +133,7 @@ Aby sprawdzić, czy konfiguracja zakończyła się pomyślnie, możesz teraz uż
 
 [!INCLUDE [create-resource-group-with-ansible.md](../../../includes/ansible-create-resource-group.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"] 
 > [Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible](./ansible-create-vm.md)

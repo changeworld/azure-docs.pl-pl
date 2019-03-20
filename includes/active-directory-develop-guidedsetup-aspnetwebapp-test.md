@@ -3,8 +3,8 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,16 +12,16 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/19/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d3f2efc0ae3dcf9bdcae3f82258b28b761944487
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4c4870dc0f5a423288e6cb561b985501414e8525
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988532"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203663"
 ---
-## <a name="test-your-code"></a>Testowanie kodu
+## <a name="test-your-code"></a>testowanie kodu
 
 Aby przetestować aplikację w programie Visual Studio, naciśnij klawisz **F5** Aby uruchomić projekt. Zostanie otwarta przeglądarka http://<span></span>localhost: {port} lokalizacji i **Zaloguj się przy użyciu Microsoft** przycisku. Wybierz przycisk aby rozpocząć proces logowania.
 
@@ -48,7 +48,7 @@ Po przejściu do widoku kontrolera, powinny zostać wyświetlone tabeli, która 
 |**Nazwa** |Imię i nazwisko użytkownika | Użytkownik na imię i nazwisko.
 |**Nazwa użytkownika** |Użytkownik<span>@domain.com</span> | Nazwa użytkownika, który służy do identyfikowania użytkownika.
 |**Temat** |Podmiot |Ciąg, który unikatowo identyfikuje użytkownika w sieci Web.|
-|**Identyfikator dzierżawy** |Identyfikator GUID | A **guid** który w unikatowy sposób identyfikuje użytkownika usługi Azure AD organizacja.|
+|**Tenant ID (Identyfikator dzierżawy)** |Guid | A **guid** który w unikatowy sposób identyfikuje użytkownika usługi Azure AD organizacja.|
 
 Ponadto powinien zostać wyświetlony spis wszystkich oświadczeń, które znajdują się w żądaniu uwierzytelnienia. Aby uzyskać więcej informacji, zobacz [lista oświadczeń, które znajdują się w usłudze Azure AD identyfikator tokenu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
@@ -80,9 +80,9 @@ Domyślnie podczas tworzenia aplikacji utworzone przez tego przewodnika, aplikac
 
 Do ograniczenia rejestrowania dostępu użytkowników dla aplikacji, dostępnych jest kilka opcji:
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Opcja 1: Ograniczyć użytkownikom możliwość wystąpienia usługi Active Directory tylko jednej z organizacji, aby zalogować się do aplikacji (pojedyncza dzierżawa)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Opcja 1: Ograniczenie możliwości logowania się do aplikacji do użytkowników tylko jednego wystąpienia usługi Active Directory organizacji (pojedyncza dzierżawa)
 
-Ta opcja jest typowym scenariuszem dla *aplikacje LOB*: Jeśli chcesz, aby Twoja aplikacja będzie akceptować logowania tylko z kont, które należą do konkretnego wystąpienia usługi Azure Active Directory (w tym *konta gościa*danego wystąpienia) wykonaj następujące czynności:
+Ta opcja jest typowym scenariuszem dla *aplikacje LOB*: Jeśli chcesz, aby Twoja aplikacja będzie akceptować logowania tylko z kont, które należą do konkretnego wystąpienia usługi Azure Active Directory (w tym *konta gościa* danego wystąpienia) wykonaj następujące czynności:
 
 1. W **web.config** plików, zmień wartość `Tenant` parametr `Common` nazwę dzierżawy organizacji, takich jak `contoso.onmicrosoft.com`.
 2. W swojej [Klasa początkowa OWIN](#configure-the-authentication-pipeline)ustaw `ValidateIssuer` argument `true`.

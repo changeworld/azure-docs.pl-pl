@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: 9a96f80c609f446dcc1fea2a87925dec3dadfedd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0a2088e603828a7850cb250c1874008d63fe9c89
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471899"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992451"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta i usługi Azure Key Vault przy użyciu języka Java dla usługi Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Przegląd
-[Biblioteki klienta usługi Azure Storage dla języka Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem do usługi Azure Storage oraz odszyfrowywanie danych pobraniem do klienta. Biblioteka obsługuje również integrację z usługą [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami konta magazynu.
+[Biblioteki klienta usługi Azure Storage dla języka Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) obsługuje szyfrowanie danych w aplikacjach klienckich przed przekazaniem do usługi Azure Storage oraz odszyfrowywanie danych pobraniem do klienta. Biblioteka obsługuje również integrację z usługą [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami konta magazynu.
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Szyfrowanie i odszyfrowywanie za pomocą techniki obwiedni
 Procesy szyfrowania i odszyfrowywania wykonaj technika koperty.  
@@ -43,7 +43,7 @@ Odszyfrowywanie za pomocą techniki koperty działa w następujący sposób:
 4. Klucz szyfrowania zawartości (CEK) jest następnie używany do odszyfrowywania danych zaszyfrowanych użytkownika.
 
 ## <a name="encryption-mechanism"></a>Mechanizm szyfrowania
-Korzysta z biblioteki klienta usługi storage [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) w celu zaszyfrowania danych użytkownika. W szczególności [Cipher Block Chaining (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) trybu przy użyciu standardu AES. Każdy usługi działa nieco inaczej, omówimy każdy z nich w tym miejscu.
+Korzysta z biblioteki klienta usługi storage [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) w celu zaszyfrowania danych użytkownika. W szczególności [Cipher Block Chaining (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) trybu przy użyciu standardu AES. Każdy usługi działa nieco inaczej, omówimy każdy z nich w tym miejscu.
 
 ### <a name="blobs"></a>Obiekty blob
 Biblioteka klienta obsługuje obecnie szyfrowanie tylko całe obiektów blob. Ściślej mówiąc, szyfrowanie jest obsługiwane, gdy użytkownicy używają **przekazywanie*** metody lub **openOutputStream** metody. Pliki do pobrania, zarówno pełne i pobrania zakresu są obsługiwane.  
@@ -55,9 +55,9 @@ Podczas szyfrowania biblioteki klienta wygeneruje losowy inicjowania wektora (IV
 > 
 > 
 
-Pobieranie obiektu blob zaszyfrowanego polega na pobraniu zawartości całego obiektu blob przy użyciu **pobierania * / openInputStream** wygodne metody. Opakowana CEK jest nieopakowanych i używany razem z IV (przechowywanych jako metadane obiektu blob w tym przypadku), aby zwrócić odszyfrowane dane do użytkowników.
+Pobieranie obiektu blob zaszyfrowanego polega na pobraniu zawartości całego obiektu blob przy użyciu **Pobierz**/**openInputStream** wygodne metody. Opakowana CEK jest nieopakowanych i używany razem z IV (przechowywanych jako metadane obiektu blob w tym przypadku), aby zwrócić odszyfrowane dane do użytkowników.
 
-Pobranie dowolnego zakresu (**downloadRange*** metody) w obiekcie blob zaszyfrowanego obejmuje, dostosowując zakres dostarczone przez użytkowników w celu uzyskania niewielką ilość dodatkowych danych, które można pomyślnie odszyfrować żądany zakres.  
+Pobranie dowolnego zakresu (**downloadRange** metody) w obiekcie blob zaszyfrowanego obejmuje, dostosowując zakres dostarczone przez użytkowników w celu uzyskania niewielką ilość dodatkowych danych, które można pomyślnie odszyfrować żądany zakres.  
 
 Wszystkie typy w obiektów blob (blokowe obiekty BLOB, stronicowe obiekty BLOB i uzupełnialnych obiektów blob) można zaszyfrowane/odszyfrować za pomocą tego programu.
 
@@ -98,8 +98,8 @@ W operacji wsadowych tego samego klucza KEK zostaną użyte, we wszystkich wiers
 > [!NOTE]
 > Ponieważ obiekty są szyfrowane, nie można uruchomić zapytania, które filtrują na właściwością szyfrowaną.  Przy próbie wyniki będą nieprawidłowe, ponieważ usługa może podjąć próbę porównać dane zaszyfrowane przy użyciu nieszyfrowanego danych.
 > 
->
-Aby wykonać operacje zapytań, należy określić klucza programu rozpoznawania nazw, który jest w stanie rozpoznać wszystkich kluczy w zestawie wyników. Biblioteka klienta będzie sygnalizować błąd, jeśli nie można rozpoznać jednostki zawarte w wyniku zapytania do dostawcy. Dla dowolnego zapytania, który wykonuje projekcje po stronie serwera biblioteki klienckiej doda właściwości metadanych szyfrowania specjalne (_ClientEncryptionMetadata1 i _ClientEncryptionMetadata2) domyślnie do wybranych kolumn.
+> 
+> Aby wykonać operacje zapytań, należy określić klucza programu rozpoznawania nazw, który jest w stanie rozpoznać wszystkich kluczy w zestawie wyników. Biblioteka klienta będzie sygnalizować błąd, jeśli nie można rozpoznać jednostki zawarte w wyniku zapytania do dostawcy. Dla dowolnego zapytania, który wykonuje projekcje po stronie serwera biblioteki klienckiej doda właściwości metadanych szyfrowania specjalne (_ClientEncryptionMetadata1 i _ClientEncryptionMetadata2) domyślnie do wybranych kolumn.
 
 ## <a name="azure-key-vault"></a>W usłudze Azure Key Vault
 Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Za pomocą usługi Azure Key Vault, użytkownicy mogą szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych. Pliki PFX oraz hasła) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (HSM). Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Key Vault?](../../key-vault/key-vault-whatis.md).
@@ -248,9 +248,9 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 Należy pamiętać, że szyfrowanie usługi magazynu danych spowoduje zmniejszenie wydajności. Klucz zawartości i IV musi zostać wygenerowany samej zawartości, które muszą być szyfrowane i musi być sformatowany i przekazać dodatkowe metadane. Ten narzut różnią się zależnie od ilości danych, są szyfrowane. Firma Microsoft zaleca, aby klienci zawsze testują wydajności podczas tworzenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Pobierz [biblioteki klienta usługi Azure Storage dla języka Java Maven package](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
+* Pobierz [biblioteki klienta usługi Azure Storage dla języka Java Maven package](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
 * Pobierz [biblioteki klienta usługi Azure Storage dla języka Java kodu źródłowego z repozytorium GitHub](https://github.com/Azure/azure-storage-java)   
 * Pobierz biblioteki Azure klucza magazynu Maven pakietów Java Maven:
-  * [Podstawowe](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) pakietu
-  * [Klient](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) pakietu
+  * [Podstawowe](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) pakietu
+  * [Klient](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) pakietu
 * Odwiedź stronę [dokumentacji usługi Azure Key Vault](../../key-vault/key-vault-whatis.md)

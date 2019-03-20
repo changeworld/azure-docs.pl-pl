@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: ee39d2d2cf85b8de52804ac764b17db348a053e0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 98e00eb382962d2364adda93b1a5b24fdef832eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538225"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101775"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Przewodnik dotyczący Java Enterprise dla usługi App Service w systemie Linux
 
@@ -44,7 +44,7 @@ Uruchamianie skryptu powłoki systemowej w celu wywołania WildFly interfejs wie
 - Konfigurowanie dostawców obsługi komunikatów
 - Do konfiguracji serwera Wildfly, należy dodać inne moduły i zależności.
 
- Skrypt jest uruchamiany, gdy Wildfly jest uruchomiona, ale przed uruchomieniem aplikacji. Należy użyć skryptu [JBOSS interfejsu wiersza polecenia](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) wywoływane z `/opt/jboss/wildfly/bin/jboss-cli.sh` skonfigurować serwer aplikacji z konfiguracji lub zmian po uruchomieniu serwera. 
+  Skrypt jest uruchamiany, gdy Wildfly jest uruchomiona, ale przed uruchomieniem aplikacji. Należy użyć skryptu [JBOSS interfejsu wiersza polecenia](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) wywoływane z `/opt/jboss/wildfly/bin/jboss-cli.sh` skonfigurować serwer aplikacji z konfiguracji lub zmian po uruchomieniu serwera. 
 
 Nie należy używać tryb interaktywny interfejsu wiersza polecenia do konfigurowania Wildfly. Zamiast tego można udostępnić skrypt poleceń interfejsu wiersza polecenia JBoss przy użyciu `--file` polecenia, na przykład:
 

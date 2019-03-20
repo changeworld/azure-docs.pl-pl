@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c7a6edab1bc63d8cb1ae6f7de43372304e21ed1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 950a349506f32405261d90c05312d24aa3deadc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170639"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089951"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Strona aplikacji nie są wyświetlane poprawnie dla aplikacji serwera Proxy aplikacji
 
@@ -31,7 +31,7 @@ Podczas publikowania aplikacji serwera Proxy aplikacji, tylko strony w obszarze 
 
 Można sprawdzić, jeśli brakujących zasobów jest problem, otwierając usługi śledzenia sieci (takich jak narzędzia Fiddler lub F12 tools w programie Internet Explorer/Microsoft Edge), ładowania strony i wyszukiwania 404 błędów. Wskazująca obecnie nie można odnaleźć strony i należy je opublikować.
 
-Jako przykład takim założono publikujesz aplikację koszty przy użyciu wewnętrznego adresu URL http://myapps/expenses, ale aplikacja korzysta z arkusza stylów http://myapps/style.css. W tym przypadku arkusza stylów nie został opublikowany w Twojej aplikacji, dzięki czemu podczas ładowania aplikacji wydatki zgłosić błąd 404 podczas próby załadowania style.css. W tym przykładzie problem został rozwiązany przez opublikowanie aplikacji przy użyciu wewnętrznego adresu URL http://myapp/.
+Jako przykład takim założono publikujesz aplikację koszty przy użyciu wewnętrznego adresu URL `http://myapps/expenses`, ale aplikacja korzysta z arkusza stylów `http://myapps/style.css`. W tym przypadku arkusza stylów nie został opublikowany w Twojej aplikacji, dzięki czemu podczas ładowania aplikacji wydatki zgłosić błąd 404 podczas próby załadowania style.css. W tym przykładzie problem został rozwiązany przez opublikowanie aplikacji przy użyciu wewnętrznego adresu URL `http://myapp/`.
 
 ## <a name="problems-with-publishing-as-one-application"></a>Problemy z publikowaniem jako jedna aplikacja
 

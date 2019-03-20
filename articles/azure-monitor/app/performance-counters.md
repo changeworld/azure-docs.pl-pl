@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: d5c7e1815fe27d9b851407a8e6f17d04d7bc1cad
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d38a575af54f044d64efc67b5483a67ffcd2fcd6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003531"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837613"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Liczniki wydajności systemu w usłudze Application Insights
 
-Windows oferuje szeroką gamę [liczniki wydajności](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) takich jak zajętość procesora CPU, pamięci, dysku i użycia sieci. Można także zdefiniować własne liczniki wydajności. Tak długo, jak aplikacja jest uruchomiona w środowisku usług IIS na hosta w środowisku lokalnym lub maszynie wirtualnej, do których masz dostęp administracyjny.
+W systemie Windows dostępne są różne [liczniki wydajności](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters), takie jak zajętości procesora CPU, pamięci, dysku i użycia sieci. Można także zdefiniować własne liczniki wydajności. Tak długo, jak aplikacja jest uruchomiona w środowisku usług IIS na hosta w środowisku lokalnym lub maszynie wirtualnej, do których masz dostęp administracyjny.
 
 ## <a name="view-counters"></a>Wyświetlanie liczników
 
@@ -122,8 +122,8 @@ Inne telemetrii, takie jak **liczniki wydajności** również zawiera kolumnę `
 
 * *Wyjątki* jest to liczba raportów metoda TrackException odebranych przez portal w interwale próbkowania wykresu. Obejmuje tylko wyjątki obsłużone gdzie zostały napisane metoda TrackException wywołania w kodzie, a nie zawiera wszystkich [nieobsługiwane wyjątki](../../azure-monitor/app/asp-net-exceptions.md). 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Liczniki wydajności w aplikacjach ASP.Net Core
-Liczniki wydajności są obsługiwane tylko wtedy, gdy aplikacja jest przeznaczony dla pełny program .NET Framework. Istnieje możliwość liczniki wydajności są zbierane dla.Net Core z aplikacji.
+## <a name="performance-counters-in-aspnet-core-applications"></a>Liczniki wydajności w aplikacjach ASP.NET Core
+Liczniki wydajności są obsługiwane tylko wtedy, gdy aplikacja jest przeznaczony dla pełny program .NET Framework. Istnieje możliwość zbierania liczników wydajności dla aplikacji .NET Core.
 
 ## <a name="alerts"></a>Alerty
 Podobnie jak inne metryki można [ustawić alert](../../azure-monitor/app/alerts.md) ostrzegania, jeśli licznik wydajności przekroczy limit, można określić. Otwórz w okienku alertów i kliknij przycisk Dodaj Alert.

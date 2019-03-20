@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fe4134d322c87c199f24cbd7966a8d6fca7256d9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538871"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852495"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Dodawanie repozytorium Git do przechowywania niestandardowych artefaktów i szablonów usługi Resource Manager
 
@@ -30,7 +30,7 @@ Firma Microsoft oferuje [repozytorium GitHub artefaktów](https://github.com/Azu
 Podczas tworzenia maszyny Wirtualnej, możesz zapisać szablon usługi Resource Manager, dostosować go, jeśli, a następnie użyć go później do utworzenia więcej maszyn wirtualnych. Należy utworzyć prywatnym repozytorium do przechowywania niestandardowych szablonów usługi Resource Manager.  
 
 * Aby dowiedzieć się, jak utworzyć repozytorium GitHub, zobacz [GitHub Bootcamp](https://help.github.com/categories/bootcamp/).
-* Aby dowiedzieć się, jak utworzyć projekt usługom DevOps platformy Azure, który ma repozytorium Git, zobacz [nawiązywanie połączenia z usługi Azure DevOps Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
+* Aby dowiedzieć się, jak utworzyć projekt usługom DevOps platformy Azure, która ma repozytorium Git, zobacz [nawiązywanie połączenia z usługi Azure DevOps Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
 
 Następujący rysunek jest przykładem repozytorium, które ma artefaktów może wyglądać w usłudze GitHub:  
 
@@ -78,13 +78,13 @@ Aby dodać repozytorium do środowiska laboratoryjnego, należy najpierw Pobierz
 
     ![Przycisk Dodaj repozytorium](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. W drugiej **repozytoriów** określ następujące informacje:
-  1. **Nazwa**. Wprowadź nazwę repozytorium.
-  2. **Adres Url klonowania Git**. Wprowadź adres URL klonowania Git HTTPS, które wcześniej zostały skopiowane z usługi GitHub lub usługom DevOps platformy Azure.
-  3. **Gałąź**. Aby uzyskać definicji, wprowadź gałęzi.
-  4. **Osobisty Token dostępu**. Wprowadź osobisty token dostępu uzyskany wcześniej w usłudze GitHub lub usługom DevOps platformy Azure.
-  5. **Ścieżka folderu**. Wprowadź co najmniej jedną ścieżkę folderu względem adres URL klonowania, który zawiera Twoje artefaktu lub definicje szablonów usługi Resource Manager. Po określeniu podkatalogu, upewnij się, że zawierają ukośnika w ścieżce folderu.
+   1. **Nazwa**. Wprowadź nazwę repozytorium.
+   2. **Adres Url klonowania Git**. Wprowadź adres URL klonowania Git HTTPS, które wcześniej zostały skopiowane z usługi GitHub lub usługom DevOps platformy Azure.
+   3. **Gałąź**. Aby uzyskać definicji, wprowadź gałęzi.
+   4. **Osobisty Token dostępu**. Wprowadź osobisty token dostępu uzyskany wcześniej w usłudze GitHub lub usługom DevOps platformy Azure.
+   5. **Ścieżka folderu**. Wprowadź co najmniej jedną ścieżkę folderu względem adres URL klonowania, który zawiera Twoje artefaktu lub definicje szablonów usługi Resource Manager. Po określeniu podkatalogu, upewnij się, że zawierają ukośnika w ścieżce folderu.
 
-     ![Obszar repozytoriów](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+      ![Obszar repozytoriów](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Wybierz pozycję **Zapisz**.
 
 ### <a name="related-blog-posts"></a>Wpisy w blogu pokrewne

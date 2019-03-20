@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238798"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089968"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Uruchamianie i testowanie U-SQL przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
 
@@ -32,11 +32,11 @@ Zestaw SDK danych U-SQL Lake wymaga następujących zależności:
 - [Microsoft .NET Framework 4.6 lub nowszej](https://www.microsoft.com/download/details.aspx?id=17851).
 - Microsoft Visual C++ 14 i zestaw Windows SDK 10.0.10240.0 lub nowszej (nazywana CppSDK w tym artykule). Istnieją dwa sposoby uzyskania CppSDK:
 
-    - Zainstaluj [programu Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). W folderze Program Files — na przykład C:\Program Files (x86) \Windows Kits\10\, będziesz mieć folderu \Windows Kits\10. Zawiera ona również wersję zestawu Windows 10 SDK w ramach \Windows Kits\10\Lib. Jeśli nie widzisz tych folderów, zainstaluj ponownie program Visual Studio i pamiętaj o wybraniu zestawu Windows 10 SDK podczas instalacji. Jeśli masz to zainstalowane z programem Visual Studio, kompilator lokalnego języka U-SQL zostanie okazać się automatycznie.
+  - Zainstaluj [programu Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). W folderze Program Files — na przykład C:\Program Files (x86) \Windows Kits\10\, będziesz mieć folderu \Windows Kits\10. Zawiera ona również wersję zestawu Windows 10 SDK w ramach \Windows Kits\10\Lib. Jeśli nie widzisz tych folderów, zainstaluj ponownie program Visual Studio i pamiętaj o wybraniu zestawu Windows 10 SDK podczas instalacji. Jeśli masz to zainstalowane z programem Visual Studio, kompilator lokalnego języka U-SQL zostanie okazać się automatycznie.
 
     ![Narzędzia Data Lake Tools for Visual Studio SDK systemu Windows 10 do uruchamiania lokalnego](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - Zainstaluj [usługi Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs). Możesz znaleźć, to wstępnie spakowane zestawy Visual C++ i Windows SDK plików w C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. W tym przypadku kompilator lokalnego języka U-SQL nie można automatycznie odnaleźć zależności. Należy określić ścieżkę CppSDK dla niego. Możesz skopiować pliki do innej lokalizacji lub użyć go jako jest.
+  - Zainstaluj [usługi Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs). Możesz znaleźć, to wstępnie spakowane zestawy Visual C++ i Windows SDK plików w C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. W tym przypadku kompilator lokalnego języka U-SQL nie można automatycznie odnaleźć zależności. Należy określić ścieżkę CppSDK dla niego. Możesz skopiować pliki do innej lokalizacji lub użyć go jako jest.
 
 ## <a name="understand-basic-concepts"></a>Zrozumieć podstawowe pojęcia
 
@@ -140,7 +140,7 @@ Poniżej przedstawiono opcjonalne argumenty **Uruchom**:
 |Argument|Wartość domyślna|Opis|
 |--------|-------------|-----------|
 |-CodeBehind|False|Skrypt zawiera .cs CodeBehind|
-|-CppSDK| |Katalog CppSDK|
+|-CppSDK| |CppSDK Directory|
 |-DataRoot| Ścieżka folderu DataRoot, zmienna środowiskowa|Ścieżka folderu DataRoot dla lokalnego Uruchom domyślną wartość zmiennej środowiskowej "LOCALRUN_DATAROOT"|
 |-MessageOut| |Komunikaty na konsoli do pliku zrzutu|
 |-Równoległych|1|Uruchom planu z określonym równoległości|
@@ -172,7 +172,7 @@ Poniżej przedstawiono opcjonalne argumenty **skompilować**:
 |Argument|Opis|
 |--------|-----------|
 | -CodeBehind [wartość domyślna "False"]|Skrypt zawiera .cs CodeBehind|
-| -CppSDK [wartość domyślna "]|Katalog CppSDK|
+| -CppSDK [wartość domyślna "]|CppSDK Directory|
 | -DataRoot [wartość domyślna 'Zmiennej środowiskowej ścieżka folderu DataRoot']|Ścieżka folderu DataRoot dla lokalnego Uruchom domyślną wartość zmiennej środowiskowej "LOCALRUN_DATAROOT"|
 | -MessageOut [wartość domyślna "]|Komunikaty na konsoli do pliku zrzutu|
 | -Odwołuje się do [wartość domyślna "]|Lista ścieżek do dodatkowych odwołań do zestawów lub plików z danymi o kodzie, oddzielone ";"|
@@ -211,8 +211,8 @@ Poniżej przedstawiono opcjonalne argumenty **wykonania**:
 |--------|-------------|-----------|
 |-DataRoot | '' |Do wykonania metadanych katalogu głównego danych. Jego wartość domyślna to **LOCALRUN_DATAROOT** zmiennej środowiskowej.|
 |-MessageOut | '' |Zrzuć komunikaty na konsoli do pliku.|
-|-Równoległych | "1" |Wskaźnik do uruchomienia wygenerowanego kroki uruchamiania lokalnego z poziomu określonego równoległości.|
-|-Verbose | "False" |Wskazuje, aby wyświetlić szczegółowe dane wyjściowe z środowiska uruchomieniowego.|
+|-Równoległych | '1' |Wskaźnik do uruchomienia wygenerowanego kroki uruchamiania lokalnego z poziomu określonego równoległości.|
+|-Verbose | 'False' |Wskazuje, aby wyświetlić szczegółowe dane wyjściowe z środowiska uruchomieniowego.|
 
 Poniżej przedstawiono przykład użycia:
 
@@ -223,7 +223,7 @@ Poniżej przedstawiono przykład użycia:
 
 Interfejsy programowania znajdują się w LocalRunHelper.exe. Można je zintegrować funkcje zestawu SDK U-SQL i struktury testowej C#, skalowanie testu lokalnego skryptu U-SQL. W tym artykule użyję standard języka C# projekt testu jednostkowego i pokazuje, jak przetestować skrypt U-SQL przy użyciu tych interfejsów.
 
-### <a name="step-1-create-c-unit-test-project-and-configuration"></a>Krok 1: Tworzenie projektu testu jednostkowego języka C# i Konfiguracja
+### <a name="step-1-create-c-unit-test-project-and-configuration"></a>Krok 1: Tworzenie C# testów jednostkowych projektu i konfiguracji
 
 - Tworzenie projektu testu jednostkowego języka C# za pomocą pliku > Nowy > Projekt > Visual C# > Test > Projekt testów jednostkowych.
 - Dodaj LocalRunHelper.exe jako odwołanie dla projektu. LocalRunHelper.exe znajduje się w \build\runtime\LocalRunHelper.exe pakietu Nuget.
@@ -332,7 +332,7 @@ LocalRunHelper.exe zapewnia interfejsy programowania U-SQL lokalnej kompilacji, 
 
 publiczne LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
-|Parametr|Typ|Opis|
+|Parametr|Type|Opis|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|Komunikaty wyjściowe ustawiona na wartość null, przy użyciu konsoli|
 
@@ -340,33 +340,33 @@ publiczne LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
-|AlgebraPath|ciąg|Ścieżka do pliku algebry (plik algebry jest jeden z wyników kompilacji)|
-|CodeBehindReferences|ciąg|Jeśli skrypt zawiera dodatkowy kod związany z odwołania, określ ścieżki oddzielonych ";"|
-|CppSdkDir|ciąg|Katalog CppSDK|
-|CurrentDir|ciąg|Bieżący katalog|
-|DataRoot|ciąg|Ścieżka katalogu głównego danych|
-|DebuggerMailPath|ciąg|Ścieżka do debugera mailslot|
-|GenerateUdoRedirect|wartość logiczna|Jeśli chcemy wygenerować z ładowaniem zestawu, przekierowanie zastępują konfiguracji|
-|HasCodeBehind|wartość logiczna|Jeśli skrypt zawiera kod związany z|
-|InputDir|ciąg|Katalog dla danych wejściowych|
-|MessagePath|ciąg|Ścieżka pliku zrzutu wiadomości|
-|OutputDir|ciąg|Katalog danych wyjściowych|
+|AlgebraPath|string|Ścieżka do pliku algebry (plik algebry jest jeden z wyników kompilacji)|
+|CodeBehindReferences|string|Jeśli skrypt zawiera dodatkowy kod związany z odwołania, określ ścieżki oddzielonych ";"|
+|CppSdkDir|string|CppSDK directory|
+|CurrentDir|string|Bieżący katalog|
+|DataRoot|string|Ścieżka katalogu głównego danych|
+|DebuggerMailPath|string|Ścieżka do debugera mailslot|
+|GenerateUdoRedirect|bool|Jeśli chcemy wygenerować z ładowaniem zestawu, przekierowanie zastępują konfiguracji|
+|HasCodeBehind|bool|Jeśli skrypt zawiera kod związany z|
+|InputDir|string|Katalog dla danych wejściowych|
+|MessagePath|string|Ścieżka pliku zrzutu wiadomości|
+|OutputDir|string|Katalog danych wyjściowych|
 |Równoległość|int|Równoległość topologii w celu uruchomienia algebry|
 |ParentPid|int|Identyfikator PID elementu nadrzędnego, na którym usługa monitoruje aby wyjść, równa 0 lub ujemne, aby zignorować|
-|ResultPath|ciąg|Ścieżka pliku zrzutu wyniku|
-|RuntimeDir|ciąg|Katalogu środowiska uruchomieniowego|
-|ScriptPath|ciąg|Gdzie można znaleźć skryptu|
-|Skrócona|wartość logiczna|Skrócona kompilacji, czy nie|
-|Element TempDir|ciąg|Katalog tymczasowy|
-|UseDataBase|ciąg|Określ bazę danych do użytku w kodzie rejestracji tymczasowe zestawu głównego domyślnie|
-|WorkDir|ciąg|Preferowany katalog roboczy|
+|ResultPath|string|Ścieżka pliku zrzutu wyniku|
+|RuntimeDir|string|Katalogu środowiska uruchomieniowego|
+|ScriptPath|string|Gdzie można znaleźć skryptu|
+|Skrócona|bool|Skrócona kompilacji, czy nie|
+|Element TempDir|string|Katalog tymczasowy|
+|UseDataBase|string|Określ bazę danych do użytku w kodzie rejestracji tymczasowe zestawu głównego domyślnie|
+|WorkDir|string|Preferowany katalog roboczy|
 
 
 **Metoda**
 
-|Metoda|Opis|Wróć|Parametr|
+|Metoda|Opis|Powrót|Parametr|
 |------|-----------|------|---------|
-|publiczne bool DoCompile()|Kompiluj skrypt U-SQL|Wartość true w przypadku powodzenia| |
+|public bool DoCompile()|Kompiluj skrypt U-SQL|Wartość true w przypadku powodzenia| |
 |publiczne bool DoExec()|Wynik wykonania|Wartość true w przypadku powodzenia| |
 |publiczne bool DoRun()|Uruchom skrypt U-SQL (kompilacji i wykonania)|Wartość true w przypadku powodzenia| |
 |publiczne bool IsValidRuntimeDir (ciąg ścieżki)|Sprawdź, czy ścieżka prawidłowy środowiska uruchomieniowego podanej ścieżce|Wartość true, aby uzyskać prawidłowy|Ścieżka katalogu środowiska uruchomieniowego|
@@ -379,7 +379,7 @@ E_CSC_SYSTEM_INTERNAL: Błąd wewnętrzny! Nie można załadować pliku lub zest
 
 Sprawdź, czy następujące czynności:
 
-- Upewnij się, że masz x64 środowiska. Platforma docelowa kompilacji i środowiska testowego należy x64, zapoznaj się **krok 1: tworzenie C# jednostki testowania projektu i konfiguracji** powyżej.
+- Upewnij się, że masz x64 środowiska. Platforma docelowa kompilacji i środowiska testowego należy x64, zapoznaj się **krok 1: Tworzenie C# testów jednostkowych projektu i konfiguracji** powyżej.
 - Upewnij się, że wszystkie pliki zależności w ramach NugetPackage\build\runtime\ zostały skopiowane do katalogu roboczego projektu.
 
 

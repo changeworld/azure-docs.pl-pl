@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0a10a56aeecf9973ea12b022e0030fb4635fbf
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: MT
+ms.openlocfilehash: 91ab8e8757c4a5313fde5f4d883e45648c9143b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984552"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901359"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Wersja zapoznawcza: Azure AD ochrony hasłem lokalnych — często zadawane pytania
 
@@ -86,6 +86,10 @@ Nie. Ponieważ serwer proxy jest bezstanowy, nie jest ważna które konkretnego 
 **Pyt.: Jest to akceptowalne wdrożyć usługę Proxy ochrony haseł usługi Azure AD równolegle z innymi usługami takimi jak program Azure AD Connect?**
 
 Tak. Usługa serwera Proxy ochrony haseł usługi Azure AD i Azure AD Connect powinno nigdy nie są w konflikcie ze sobą bezpośrednio.
+
+**Pyt.: W jakiej kolejności należy agentów kontrolera domeny i serwery proxy jest zainstalowany i zarejestrowany?**
+
+Jest obsługiwana w dowolnej kolejności instalacji agenta Proxy, instalacja agenta z kontrolera domeny, lasu rejestracji i Proxy rejestracji.
 
 **Pyt.: Czy mogę być dane dotyczące wydajności dla moich kontrolerów domeny z wdrażanie tej funkcji?**
 

@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 728f97773c2eec62c54235a868daca52dd6029a5
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: MT
+ms.openlocfilehash: 5eb2dc129cdde6f116cb4e054fa7eb792812db40
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731839"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225879"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu programu PowerShell jako operator
 
@@ -80,9 +80,6 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - [Tworzenie szablonów usługi Azure Stack](user/azure-stack-develop-templates.md)
- - [Wdrażanie szablonów za pomocą programu PowerShell](user/azure-stack-deploy-template-powershell.md) <<<<<<< HEAD
- - [Odwołania do modułu programu PowerShell usługi Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)
-=======
-- [Odwołania do modułu usługi Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)  
->>>>>>> ac8c5a2d00d4eb5b4ef65359c5349ddff1bf30cf
+- [Tworzenie szablonów usługi Azure Stack](user/azure-stack-develop-templates.md)
+- [Wdrażanie szablonów za pomocą programu PowerShell](user/azure-stack-deploy-template-powershell.md)
+  - [Odwołania do modułu usługi Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)  

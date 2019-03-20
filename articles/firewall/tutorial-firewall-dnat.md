@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 11/28/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e37d5b050c5ca957b59c1e0a60c88171c1fc4a23
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
-ms.translationtype: HT
+ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582245"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531168"
 ---
-# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Samouczek: filtrowanie ruchu przychodzącego za pomocą funkcji DNAT usługi Azure Firewall przy użyciu witryny Azure Portal
+# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Samouczek: Filtrowanie ruchu przychodzącego za pomocą funkcji DNAT usługi Azure Firewall przy użyciu witryny Azure Portal
 
 Możesz skonfigurować funkcję translacji docelowych adresów sieciowych (DNAT) usługi Azure Firewall do wykonywania translacji i filtrowania ruchu przychodzącego do podsieci. Podczas konfigurowania funkcji DNAT akcja kolekcji reguł NAT jest ustawiana na wartość **Dnat**. Każda reguła w kolekcji reguł NAT umożliwia wykonanie translacji publicznego adresu IP i portu zapory na prywatny adres IP i port. Reguły DNAT niejawnie dodają odpowiednią regułę sieci zezwalającą na przetłumaczony ruch. Aby przesłonić to zachowanie, jawnie dodaj kolekcję reguł sieci z regułami odmowy zgodnymi z przetłumaczonym ruchem. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
 
@@ -37,7 +37,7 @@ W tym samouczku utworzysz dwie sieci wirtualne połączone przy użyciu komunika
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-1. Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http://portal.azure.com).
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Na stronie głównej witryny Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **Dodaj**.
 3. W polu **Nazwa grupy zasobów** wpisz **RG-DNAT-Test**.
 4. W polu **Subskrypcja** wybierz subskrypcję.
@@ -152,7 +152,7 @@ Po zakończeniu wdrożenia zanotuj prywatny adres IP maszyny wirtualnej. Posłu�
    |---------|---------|
    |Name (Nazwa)     |FW-DNAT-test|
    |Subskrypcja     |\<Twoja subskrypcja\>|
-   |Grupa zasobów     |**Użyj istniejącej**: RG-DNAT-Test |
+   |Grupa zasobów     |**Użyj istniejącej**: RG DNAT testu |
    |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
    |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: VN-Hub|
    |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
@@ -215,7 +215,7 @@ Na potrzeby podsieci **SN-Workload** skonfiguruj trasę domyślną ruchu wychodz
 
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **RG-DNAT-Test**, aby usunąć wszystkie zasoby związane z zaporą.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
@@ -229,4 +229,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Następnie możesz monitorować dzienniki usługi Azure Firewall.
 
 > [!div class="nextstepaction"]
-> [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+> [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

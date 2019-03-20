@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: c251a159ec28d7fb03009ebcdc84056da739f937
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587433"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008658"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Często zadawane pytania: Replikacji Azure – Azure
 
@@ -26,6 +26,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące wdrażani
 1.  **[Spójność wielu maszyn wirtualnych](#multi-vm-consistency)** 
 1.  **[Plan odzyskiwania](#recovery-plan)** 
 1.  **[Ponownego włączania ochrony i powrotu po awarii](#reprotection-and-failback)** 
+2.  **[Pojemność](#capacity)**
 1.  **[Zabezpieczenia](#security)** 
 
 
@@ -35,7 +36,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące wdrażani
 Przegląd [cennika usługi Azure Site Recovery](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) szczegółowe informacje.
 ### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Jak działa bezpłatna warstwa usługi Azure Site Recovery?
 Każde wystąpienie chronione przez usługę Azure Site Recovery jest bezpłatne przez pierwsze 31 dni tej ochrony. Od 32. dnia opłaty za ochronę wystąpienia są naliczane według powyższych stawek.
-###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy podczas pierwszych 31 dni będą naliczane inne opłaty usługi Azure?
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy podczas pierwszych 31 dni będą naliczane inne opłaty usługi Azure?
 Tak, nawet jeśli usługa Azure Site Recovery będzie bezpłatna przez pierwsze 31 dni dla chronionego wystąpienia, mogą zostać naliczone opłaty za usługę Azure Storage, transakcje magazynowe i transfer danych. Opłaty za zasoby obliczeniowe platformy Azure mogą zostać również naliczone dla odzyskanej maszyny wirtualnej. Uzyskaj szczegółowe informacje na temat cen [tutaj](https://azure.microsoft.com/pricing/details/site-recovery)
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Jakie są najlepsze rozwiązania dotyczące konfigurowania Site Recovery na maszynach wirtualnych platformy Azure?
@@ -117,7 +118,7 @@ Poniższy zrzut ekranu przedstawia przykład. Na zrzucie ekranu:
 1. Czas mniejsza od ostatniej godzinie istnieją punkty odzyskiwania przy częstotliwości równej 5 minut.
 2. Czas poza ostatniej 1 godziny Usługa Site Recovery przechowuje punkt odzyskiwania tylko 1.
 
-  ![Lista punktów odzyskiwania wygenerowany](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+   ![Lista punktów odzyskiwania wygenerowany](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
 
 
 ### <a name="how-far-back-can-i-recover"></a>Jak daleko można odzyskać?
@@ -220,7 +221,12 @@ To zależy od sytuacji. Na przykład: Jeśli region źródłowej maszyny Wirtual
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Ile czasu zajmuje take do powrotu po awarii?
 Po ponownego włączania ochrony ilość czasu na potrzeby powrotu po awarii jest zwykle podobne do czasu dla trybu failover z regionu podstawowego do regionu pomocniczego. 
 
-## <a name="a-namesecuritysecurity"></a><a name="security">Zabezpieczenia
+## <a name="capacity"></a>Pojemność
+### <a name="does-site-recovery-work-with-reserved-instance"></a>Czy usługa Site Recovery współpracuje z wystąpienia zarezerwowanego?
+Tak, możesz kupić [zarezerwować wystąpień](https://azure.microsoft.com/pricing/reserved-vm-instances/) w DR region i operacji trybu failover usługi ASR będą z nich korzystać. </br> Dodatkowa konfiguracja nie jest wymagana od klientów.
+
+
+## <a name="security"></a>Zabezpieczenia
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Czy dane replikacji są wysyłane do usługi Site Recovery?
 Nie, Usługa Site Recovery nie przechwytuje replikowanych danych, nie ma żadnych informacji na temat co działa na maszynach wirtualnych. Do usługi Site Recovery są wysyłane jedynie metadane wymagane do organizowania replikacji i trybu failover.  
 Usługa Site Recovery jest ISO 27001: 2013, 27018, HIPAA, DPA certyfikowane i jest w trakcie SOC2 i FedRAMP JAB.

@@ -4,19 +4,19 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2019
-ms.openlocfilehash: 493810e85ef535005e75f4ac37fcb1920e5d8549
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0745e4987ca602a41f2d93ddc0a93cb061ce127d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741458"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58051937"
 ---
 Aby skonfigurować serwer proxy HTTP dla żądania wychodzącego, należy użyć tych dwóch argumentów:
 
 | Name (Nazwa) | Typ danych | Opis |
 |--|--|--|
-|HTTP_PROXY|ciąg|Serwer proxy, aby użyć, na przykład http://proxy:8888|
-|HTTP_PROXY_CREDS|ciąg|wszystkie poświadczenia wymagane do uwierzytelniania serwera proxy, na przykład nazwa_użytkownika: hasło.|
+|HTTP_PROXY|string|Serwer proxy, aby użyć, na przykład `http://proxy:8888`|
+|HTTP_PROXY_CREDS|string|wszystkie poświadczenia wymagane do uwierzytelniania serwera proxy, na przykład nazwa_użytkownika: hasło.|
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \

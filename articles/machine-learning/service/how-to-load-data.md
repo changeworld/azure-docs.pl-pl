@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: a056f5df12deb50ad64f90c19201942204e774f1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fe676cbba89a99a3dbd29609f181274062b37d86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000268"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Ładowanie i odczytać dane za pomocą usługi Azure Machine Learning
 
@@ -89,7 +89,7 @@ dflow.head(5)
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
-|0||stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
+|0|stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |1|ALABAMA|1|101710|Hale hrabstwa|10171002158| |
 |2|ALABAMA|1|101710|Hale hrabstwa|10171002162| |
 
@@ -103,7 +103,7 @@ dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|------|-----|
+|-----|-------|---------| -------|------|-----|------|
 |0|ALABAMA|1|101710|Hale hrabstwa|10171002158|29|
 |1|ALABAMA|1|101710|Hale hrabstwa|10171002162|40 |
 
@@ -154,12 +154,12 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
 dflow.head(5)
 ```
 
-||Kolumna1|Kolumna2|Kolumna3|Kolumna4|Column5|Kolumna6|Column7|Column8|
-|------|------|------|-----|------|-----|-------|----|-----|
-|0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
-|1|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
-|2|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|
-|3|Ranga|Stanowisko|Studio|Cały świat|Wywiad krajowy / %|Kolumna1|Zbiorowość / %|Kolumna2|Rok ^|
+| |Kolumna1|Kolumna2|Kolumna3|Kolumna4|Column5|Kolumna6|Column7|Column8| | |
+|-|-------|-------|-------|-------|-------|-------|-------|-------|-|-|
+|0|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak| |
+|1|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak| |
+|2|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak|Brak| |
+|3|Ranga|Stanowisko|Studio|Cały świat|Wywiad krajowy / %|Kolumna1|Zbiorowość / %|Kolumna2|Rok ^| |
 |4|1|Awatar|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|5|
 
 Dane wyjściowe pokazują, że dane w arkuszu drugi miał trzy puste wiersze przed nagłówków. `read_excel()` Funkcja zawiera parametry opcjonalne dla pomijania wierszy i korzystanie z nagłówków. Uruchom poniższy kod, aby pominąć pierwsze trzy wiersze, a następnie użyć czwartego wiersza jako nagłówków.
@@ -225,8 +225,8 @@ dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
 dflow.head(5)
 ```
 
-||Identyfikator produktu|Name (Nazwa)|ProductNumber|Kolor|StandardCost|ListPrice|Rozmiar|Waga|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|Thumbnailphoto usługa|ThumbnailPhotoFileName|ROWGUID|Data modyfikacji|
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| |Identyfikator produktu|Name (Nazwa)|ProductNumber|Kolor|StandardCost|ListPrice|Rozmiar|Waga|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|Thumbnailphoto usługa|ThumbnailPhotoFileName|ROWGUID|Data modyfikacji| |
+|-|---------|----|-------------|-----|------------|---------|----|------|-----------------|--------------|-------------|-----------|----------------|--------------|----------------------|-------|------------|-|
 |0|680|Rama szosowa HL — czarna, 58|FR — R92B-58|Czarny|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Brak|Brak|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000 + 00:00|
 |1|706|Rama szosowa HL — czerwona, 58|FR — R92R-58|Czerwony|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Brak|Brak|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000 + 00:00|
 |2|707|Kask Sport-100, czerwony|RAMA U509-R|Czerwony|13.0863|34.99|Brak|Brak|35|33|2005-07-01: 00:00:00 + 00:00|Brak|Brak|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|2e1ef41a-c08a-4ff6-8ada-bde58b64a712|2008-03-11 |10:01:36.827000 + 00:00|
@@ -307,7 +307,7 @@ dflow.to_pandas_dataframe().head()
 |----|------|-----|----|----|----|----|
 |0|1012063|Rolników Kaledonia rynek skojarzenie — Danville|https://sites.google.com/site/caledoniafarmers... ||Danville|Kaledonia|
 |1|1011871|Rynek "rolników Stearns Homestead|http://Stearnshomestead.com |Drogowa ridge 6975|Parma|Cuyahoga|
-|2|1011878|Rynek 100 mila|http://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
+|2|1011878|Rynek 100 mila|https://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
 |3|1009364|106 S. głównej ulicy rolników rynku|http://thetownofsixmile.wordpress.com/ |106 S. głównej ulicy|Sześć mila|||
 |4|1010691|Ulica 10 społeczności rolników rynku|https://agrimissouri.com/... |Ulica 10 i topoli|Lamar|Barton|
 

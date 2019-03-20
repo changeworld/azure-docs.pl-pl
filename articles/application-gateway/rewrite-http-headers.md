@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 176e6804e6c98a1b9e9ffe4af04f02748c80928b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310915"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119296"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
 
@@ -22,8 +22,8 @@ Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych in
 
 Usługa Application Gateway obsługuje teraz możliwość ponownego zapisywania nagłówków w przychodzących żądaniach HTTP, jak również w wychodzących odpowiedziach HTTP. Będzie można dodać, usunąć lub zaktualizować nagłówki żądania i odpowiedzi HTTP podczas pakiety żądań/odpowiedzi przenoszenia między pulami klienta i zaplecza. Można napisać ponownie obu pól nagłówka standardowe, jak również niestandardowych.
 
-> [!NOTE] 
->
+> [!NOTE]
+> 
 > Obsługa ponownego napisania nagłówka HTTP jest dostępna tylko dla [nowej jednostki SKU [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 
 Oferuje obsługę ponownego napisania nagłówka bramy aplikacji:

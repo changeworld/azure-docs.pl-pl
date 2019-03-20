@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5739c878812c09a8f2646320df4b1069dfa8810e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eced1b92aba24c8083cbdc2ece099fab95567db7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189056"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877959"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą trzech rozwiązania Zscaler
 
@@ -159,43 +159,43 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>Konfigurowanie rozwiązania Zscaler trzech logowania jednokrotnego
 
-9. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do trzech rozwiązania Zscaler witryny firmy.
+1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do trzech rozwiązania Zscaler witryny firmy.
 
-10. Przejdź do obszaru **Administracja > Uwierzytelnianie > Ustawienia uwierzytelniania** i wykonaj następujące kroki:
+1. Przejdź do obszaru **Administracja > Uwierzytelnianie > Ustawienia uwierzytelniania** i wykonaj następujące kroki:
    
-    ![Administracja](./media/zscaler-three-tutorial/ic800206.png "Administracja")
+   ![Administracja](./media/zscaler-three-tutorial/ic800206.png "Administracja")
 
-    a. W obszarze Typ uwierzytelniania wybierz pozycję **SAML**.
+   a. W obszarze Typ uwierzytelniania wybierz pozycję **SAML**.
 
-    b. Kliknij pozycję **Skonfiguruj język SAML**.
+   b. Kliknij pozycję **Skonfiguruj język SAML**.
 
-11. W oknie **Edytowanie języka SAML** wykonaj następujące kroki i kliknij pozycję Zapisz.  
+1. W oknie **Edytowanie języka SAML** wykonaj następujące kroki i kliknij pozycję Zapisz.  
             
-    ![Zarządzanie użytkownikami i uwierzytelnianiem](./media/zscaler-three-tutorial/ic800208.png "Zarządzanie użytkownikami i uwierzytelnianiem")
+   ![Zarządzanie użytkownikami i uwierzytelnianiem](./media/zscaler-three-tutorial/ic800208.png "Zarządzanie użytkownikami i uwierzytelnianiem")
     
-    a. W polu tekstowym **Adres URL portalu języka SAML** wklej **adres URL logowania** skopiowany z witryny Azure Portal.
+   a. W polu tekstowym **Adres URL portalu języka SAML** wklej **adres URL logowania** skopiowany z witryny Azure Portal.
 
-    b. W polu tekstowym **Atrybut nazwy logowania** wprowadź identyfikator **NameID**.
+   b. W polu tekstowym **Atrybut nazwy logowania** wprowadź identyfikator **NameID**.
 
-    c. Kliknij pozycję **Przekaż**, aby przekazać certyfikat podpisywania języka SAML na platformie Azure, który został pobrany z witryny Azure Portal w obrębie **publicznego certyfikatu SSL**.
+   c. Kliknij pozycję **Przekaż**, aby przekazać certyfikat podpisywania języka SAML na platformie Azure, który został pobrany z witryny Azure Portal w obrębie **publicznego certyfikatu SSL**.
 
-    d. Przełącz element **Włącz automatyczne aprowizowanie języka SAML**.
+   d. Przełącz element **Włącz automatyczne aprowizowanie języka SAML**.
 
-    e. W polu tekstowym **Atrybut nazwy wyświetlanej użytkownika** wprowadź ciąg **displayName**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu displayName.
+   e. W polu tekstowym **Atrybut nazwy wyświetlanej użytkownika** wprowadź ciąg **displayName**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu displayName.
 
-    f. W polu tekstowym **Atrybut nazwy grupy** wprowadź ciąg **memberOf**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu memberOf.
+   f. W polu tekstowym **Atrybut nazwy grupy** wprowadź ciąg **memberOf**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu memberOf.
 
-    g. W polu **Atrybut nazwy działu** wprowadź ciąg **department**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu department.
+   g. W polu **Atrybut nazwy działu** wprowadź ciąg **department**, jeśli chcesz włączyć automatyczne aprowizowanie języka SAML dla atrybutów elementu department.
 
-    i. Kliknij pozycję **Zapisz**.
+   i. Kliknij pozycję **Zapisz**.
 
-12. Na stronie okna dialogowanie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące kroki:
+1. Na stronie okna dialogowanie **Konfigurowanie uwierzytelniania użytkownika** wykonaj następujące kroki:
 
-    ![Administracja](./media/zscaler-three-tutorial/ic800207.png)
+   ![Administracja](./media/zscaler-three-tutorial/ic800207.png)
 
-    a. Umieść kursor nad menu **Aktywacja** w lewym dolnym rogu.
+   a. Umieść kursor nad menu **Aktywacja** w lewym dolnym rogu.
 
-    b. Kliknij pozycję **Aktywuj**.
+   b. Kliknij pozycję **Aktywuj**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurowanie ustawień serwera proxy w programie Internet Explorer
@@ -246,7 +246,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -300,7 +300,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

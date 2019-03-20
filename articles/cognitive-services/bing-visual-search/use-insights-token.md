@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: d2bf5194a3fd4398927d0ee95d89e44db1c1ca15
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b01b68964600f6162512d4405fddbaf125e7e76d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542645"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082729"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Przy użyciu tokenu szczegółowe informacje, aby uzyskać szczegółowe informacje o obrazie
 
@@ -373,19 +373,19 @@ Aby uruchomić tę aplikację, wykonaj następujące kroki:
 1. Utwórz folder dla projektu (lub użyj swojego ulubionego środowiska IDE lub edytora).
 2. W wierszu polecenia lub terminalu przejdź do właśnie utworzonego folderu.
 3. Zainstaluj moduły żądania:  
-  ```  
-  npm install request  
-  ```  
+   ```  
+   npm install request  
+   ```  
 3. Zainstaluj moduły form-data:  
-  ```  
-  npm install form-data  
-  ```  
+   ```  
+   npm install form-data  
+   ```  
 4. Utwórz plik o nazwie GetVisualInsights.js i dodaj do niego następujący kod.
 5. Zastąp wartość elementu `subscriptionKey` kluczem subskrypcji.
 7. Uruchom program.  
-  ```
-  node GetVisualInsights.js
-  ```
+   ```
+   node GetVisualInsights.js
+   ```
 
 ```javascript
 var request = require('request');

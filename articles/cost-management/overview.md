@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c99d638845cf0cd00ddbacf1ed0dcf3da889dd6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 08a1980a8855fc119a5066e058e9bb4d2df6646e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082547"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998866"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Co to jest rozwiązanie Cloudyn?
 
@@ -25,9 +25,38 @@ Aby obejrzeć klip wideo z wprowadzeniem, zobacz [Introduction to Azure Cloudyn]
 
 Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. Usługa Azure Cost Management to natywne rozwiązanie do zarządzania kosztami na platformie Azure. Ułatwia ona analizowanie kosztów, tworzenie budżetów i zarządzanie nimi, eksportowanie danych, a także zapoznawanie się z rekomendacjami dotyczącymi optymalizacji i ich wdrażanie w celu zaoszczędzenia pieniędzy. Aby uzyskać więcej informacji, zobacz [Azure Cost Management](overview-cost-mgt.md).
 
+## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Funkcje platformy Cloudyn, przejście do usługi Azure Cost Management
+
+Firma Microsoft nabyte Cloudyn i jest migrowany jego funkcje zarządzania kosztami portalu Cloudyn natywnie na platformie Azure. Aby korzystać z nowych funkcji, zaloguj się do witryny Azure portal i przejdź do [Zarządzanie kosztami i rozliczenia](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) na liście usług platformy Azure. W porównaniu do rozwiązania Cloudyn, natywne środowisko oferuje lepszą wydajność i mniejsze opóźnienia danych około ośmiu godzin.
+
+Kluczową funkcją migracji dla umowy Enterprise Agreement, płatności i MSDN kategorii oferty do usługi Azure Cost Management zostało ukończone. Subskrypcje dostawcy usług Kryptograficznych to właśnie trwa poddane migracji do usługi Azure Cost Management.
+
+Jeśli jeszcze nie poddano migracji do kategorii oferty, można nadal używać portalu Cloudyn. Wszyscy można użyć usługi Azure Cost Management.
+
+| Oferty Microsoft Azure i funkcji | Usługa zarządzania zalecane kosztów |
+| --- | --- |
+| Azure Enterprise Agreement | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Bezpośrednie sieci Web platformy Azure (PAYG/MSDN) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Government | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
+| Wielu chmur koszt analizy obsługę usług AWS (w wersji zapoznawczej) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Zalecenia dotyczące usług AWS | [Cloudyn](https://azure.cloudyn.com) |
+
+Niektóre z następujących funkcji są dostępne w rozwiązaniu Cloudyn, ale wszystkie z nich są teraz dostępne w usłudze Azure Cost Management.
+
+- Interfejsy API
+- Zalecenia dotyczące obliczeń platformy Azure
+- Usługa Azure zalecenia rezerwacji
+- Budżety
+- Analiza kosztów
+- Eksportowanie danych do konta usługi Azure storage
+- Krótszy czas oczekiwania
+- Pakiet zawartości usługi Power BI i łącznik
+- Obsługa tagów zasobów
+
 ## <a name="monitor-usage-and-spending"></a>Monitorowanie użycia i wydatków
 
-Monitorowanie użycia i wydatków ma kluczowe znaczenie dla infrastruktur w chmurze, ponieważ organizacje płacą za zasoby wykorzystywane w czasie. Gdy użycie przekroczy progi umowy, mogą zostać szybko naliczone nieoczekiwane koszty za użycie nadwyżkowe. Monitorowanie ad-hoc może utrudnić kilka ważnych czynników. Po pierwsze, planowanie kosztów na podstawie średniego użycia zakłada, że zużycie pozostaje na stałym poziomie przez określony okres rozliczeniowy. Po drugie, bardzo ważne jest proaktywne otrzymywanie powiadomień, gdy koszty zbliżają się do ustalonego budżetu lub go przekraczają. Dostawcy usług w chmurze mogą nie oferować projekcji kosztów względem progów lub raportów porównawczych okresów.
+Monitorowanie użycia i wydatków ma kluczowe znaczenie dla infrastruktur w chmurze, ponieważ organizacje płacą za zasoby wykorzystywane w czasie. Gdy użycie przekroczy progi umowy, mogą zostać szybko naliczone nieoczekiwane koszty za użycie nadwyżkowe. Kilka ważnych czynników może utrudnić ad-hoc monitorowania. Po pierwsze, planowanie kosztów na podstawie średniego użycia zakłada, że zużycie pozostaje na stałym poziomie przez określony okres rozliczeniowy. Po drugie, bardzo ważne jest proaktywne otrzymywanie powiadomień, gdy koszty zbliżają się do ustalonego budżetu lub go przekraczają. Dostawcy usług w chmurze mogą nie oferować projekcji kosztów względem progów lub raportów porównawczych okresów.
 
 Raporty ułatwiają monitorowanie wydatków w celu analizowania i śledzenia użycia chmury, kosztów i trendów. Używając raportów w czasie, możesz wykrywać anomalie różniące się od normalnych trendów. Czynniki niskiej wydajności we wdrożeniu w chmurze są widoczne w raportach optymalizacji. Czynniki niskiej wydajności możesz także zobaczyć w raportach analizy kosztów.
 
@@ -47,7 +76,8 @@ Za pomocą rozwiązania Cloudyn możesz określić optymalne użycie maszyny wir
 
 Jeśli zaaprowizowano wystąpienia zarezerwowane usługi AWS, możesz zwiększyć użycie wystąpień zarezerwowanych przy użyciu raportów dotyczących optymalizacji, dzięki którym możesz zobaczyć zalecenia dotyczące zakupów, modyfikować nieużywane rezerwacje i planować aprowizację.
 
-## <a name="next-steps"></a>Następne kroki
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Kolejnym krokiem po zapoznaniu się z rozwiązaniem Cloudyn jest zarejestrowanie środowiska chmury i rozpoczęcie eksplorowania danych.
 

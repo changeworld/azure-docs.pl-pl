@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723930"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104458"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Omówienie obsługi wielodostępu do odzyskiwania po awarii programu VMware na platformę Azure za pomocą programu CSP
 
@@ -75,17 +75,17 @@ Skonfiguruj serwer konfiguracji za pomocą konta które ma specjalną rolę do n
 1. Utwórz nową rolę przez klonowanie wstępnie zdefiniowanego *tylko do odczytu* roli, a następnie nadaj mu nazwę wygodne (na przykład Azure_Site_Recovery, jak pokazano w tym przykładzie).
 2. Przypisz następujące uprawnienia do tej roli:
 
-    * **Magazyn danych**: Przydzielanie miejsca, przegląd magazynu danych, operacji na plikach niskiego poziomu, usuń plik, pliki maszyny wirtualnej aktualizacji
-    * **Sieć**: Przypisywanie sieci
-    * **Zasób**: Przypisz maszyn wirtualnych do puli zasobów, migracja wyłączenia maszyny Wirtualnej, migracja, oparte na maszynie Wirtualnej
-    * **Zadania**: Utwórz zadania, aktualizowanie zadania
-    * **Maszyny Wirtualnej — Konfiguracja**: Wszyscy
-    - **Maszyny Wirtualnej — interakcji** > odpowiedzi na pytanie, połączenie z urządzeniem, konfigurowanie ciągłego Dostarczania multimediów, Konfiguruj dyskietka, wyłączanie zasilania na instalowanie narzędzi VMware
-    - **Maszyny Wirtualnej — spis** > Tworzenie na podstawie istniejącego, Utwórz nową, rejestrowanie, wyrejestrowywanie
-    - **Maszyny Wirtualnej — Inicjowanie obsługi administracyjnej** > Zezwalaj na pobieranie maszyny wirtualnej, przekazywanie plików maszyny wirtualnej Zezwalaj
-    - **Maszyny Wirtualnej — Zarządzanie migawek** > usuwanie migawek
+   * **Magazyn danych**: Przydzielanie miejsca, przegląd magazynu danych, operacji na plikach niskiego poziomu, usuń plik, pliki maszyny wirtualnej aktualizacji
+   * **Sieć**: Przypisywanie sieci
+   * **Zasób**: Przypisz maszyn wirtualnych do puli zasobów, migracja wyłączenia maszyny Wirtualnej, migracja, oparte na maszynie Wirtualnej
+   * **Zadania podrzędne**: Utwórz zadania, aktualizowanie zadania
+   * **Maszyny Wirtualnej — Konfiguracja**: Wszyscy
+   * **Maszyny Wirtualnej — interakcji** > odpowiedzi na pytanie, połączenie z urządzeniem, konfigurowanie ciągłego Dostarczania multimediów, Konfiguruj dyskietka, wyłączanie zasilania na instalowanie narzędzi VMware
+   * **Maszyny Wirtualnej — spis** > Tworzenie na podstawie istniejącego, Utwórz nową, rejestrowanie, wyrejestrowywanie
+   * **Maszyny Wirtualnej — Inicjowanie obsługi administracyjnej** > Zezwalaj na pobieranie maszyny wirtualnej, przekazywanie plików maszyny wirtualnej Zezwalaj
+   * **Maszyny Wirtualnej — Zarządzanie migawek** > usuwanie migawek
 
-        ![Okno dialogowe Edytuj rolę](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
+       ![Okno dialogowe Edytuj rolę](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
 3. Przypisz poziomy dostępu do konta vCenter (używane na serwerze konfiguracji dzierżawy) dla różnych obiektów w następujący sposób:
 

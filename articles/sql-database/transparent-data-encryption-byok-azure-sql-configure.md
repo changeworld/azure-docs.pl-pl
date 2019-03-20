@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: 6669be82877ae5d9465e23dad3c8b310cf24af89
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: c42c6175512105de38a29be260c370851e152137
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576773"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871649"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Program PowerShell i interfejsu wiersza polecenia: Włączanie funkcji Transparent Data Encryption przy użyciu klucza zarządzanego przez klienta z usługi Azure Key Vault
 
@@ -26,16 +26,18 @@ W tym artykule przedstawiono sposób użycia klucza z usługi Azure Key Vault dl
 ## <a name="prerequisites-for-powershell"></a>Wymagania wstępne dotyczące programu PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 - Musisz mieć subskrypcję platformy Azure i mieć uprawnienia administratora na tę subskrypcję.
 - [Zalecane, ale opcjonalny] Mieć sprzętowego modułu zabezpieczeń (HSM) lub klucza lokalnego magazynu dla tworzenia kopii lokalnej materiału klucza funkcji ochrony TDE.
 - Konieczne jest posiadanie programu Azure PowerShell zainstalowany i uruchomiony. 
 - Utwórz usługę Azure Key Vault i klucz do użycia dla funkcji TDE.
-   - [Instrukcje dotyczące programu PowerShell z usługi Key Vault](../key-vault/key-vault-overview.md)
-   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
- - Usługi key vault musi mieć następującą właściwość, która ma być używany dla funkcji TDE:
-   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
-   - [Jak używać usuwania nietrwałego w usłudze Key Vault z programem PowerShell](../key-vault/key-vault-soft-delete-powershell.md) 
+  - [Instrukcje dotyczące programu PowerShell z usługi Key Vault](../key-vault/key-vault-overview.md)
+  - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
+    - Usługi key vault musi mieć następującą właściwość, która ma być używany dla funkcji TDE:
+  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [Jak używać usuwania nietrwałego w usłudze Key Vault z programem PowerShell](../key-vault/key-vault-soft-delete-powershell.md) 
 - Klucz musi mieć następujące atrybuty, które ma być używany dla funkcji TDE:
    - Bez daty wygaśnięcia
    - Nie jest wyłączona
@@ -175,7 +177,7 @@ Użyj [Get AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Jeśli problem występuje, sprawdź następujące kwestie:
-- Jeśli nie można odnaleźć usługi key vault, upewnij się, znajdujesz się w prawej subskrypcji za pomocą [Get AzSubscription](/powershell/module/az.account/get-azsubscription) polecenia cmdlet.
+- Jeśli nie można odnaleźć usługi key vault, upewnij się, znajdujesz się w prawej subskrypcji za pomocą [Get AzSubscription](/powershell/module/az.accounts/get-azsubscription) polecenia cmdlet.
 
    ```powershell
    Get-AzSubscription `
@@ -195,13 +197,13 @@ Jeśli problem występuje, sprawdź następujące kwestie:
 
 - Musisz mieć subskrypcję platformy Azure i mieć uprawnienia administratora na tę subskrypcję.
 - [Zalecane, ale opcjonalny] Mieć sprzętowego modułu zabezpieczeń (HSM) lub klucza lokalnego magazynu dla tworzenia kopii lokalnej materiału klucza funkcji ochrony TDE.
-- Interfejs wiersza polecenia w wersji 2.0 lub nowszej. Aby zainstalować najnowszą wersję i nawiązać połączenie z subskrypcją platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia dla wielu Platform Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
+- Interfejs wiersza polecenia w wersji 2.0 lub nowszej. Aby zainstalować najnowszą wersję i nawiązać połączenie z subskrypcją platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia dla wielu Platform Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 - Utwórz usługę Azure Key Vault i klucz do użycia dla funkcji TDE.
-   - [Zarządzanie przy użyciu interfejsu wiersza polecenia 2.0 w usłudze Key Vault](../key-vault/key-vault-manage-with-cli2.md)
-   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
- - Usługi key vault musi mieć następującą właściwość, która ma być używany dla funkcji TDE:
-   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
-   - [Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia](../key-vault/key-vault-soft-delete-cli.md) 
+  - [Zarządzanie przy użyciu interfejsu wiersza polecenia 2.0 w usłudze Key Vault](../key-vault/key-vault-manage-with-cli2.md)
+  - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
+    - Usługi key vault musi mieć następującą właściwość, która ma być używany dla funkcji TDE:
+  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia](../key-vault/key-vault-soft-delete-cli.md) 
 - Klucz musi mieć następujące atrybuty, które ma być używany dla funkcji TDE:
    - Bez daty wygaśnięcia
    - Nie jest wyłączona
@@ -263,11 +265,11 @@ Bazy danych ani na magazyn danych ma teraz funkcja TDE jest włączona przy uży
 
 ## <a name="sql-cli-references"></a>Odwołania do interfejsu wiersza polecenia SQL
 
-https://docs.microsoft.com/cli/azure/sql?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql 
 
-https://docs.microsoft.com/cli/azure/sql/server/key?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/server/key 
 
-https://docs.microsoft.com/cli/azure/sql/server/tde-key?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/server/tde-key 
 
-https://docs.microsoft.com/cli/azure/sql/db/tde?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/db/tde 
 

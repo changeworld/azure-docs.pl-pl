@@ -1,5 +1,5 @@
 ---
-title: Włączanie integracji z usługą LinkedIn w aplikacjach firmy Microsoft — Azure Active Directory | Dokumentacja firmy Microsoft
+title: Zgoda na usługi LinkedIn dla organizacji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Wyjaśnia, jak włączyć lub wyłączyć integracji z usługą LinkedIn dla aplikacji firmy Microsoft w usłudze Azure Active Directory
 services: active-directory
 author: curtand
@@ -8,31 +8,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d562554259142b6dc5622bf15420785d5e1f052f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: abcb1696efe44293d01153aa37a9835ba5f43370
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090121"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199702"
 ---
-# <a name="linkedin-integration"></a>Integracja usługi LinkedIn
+# <a name="consent-to-linkedin-integration-for-your-azure-active-directory-organization"></a>Zgoda na integracji z usługą LinkedIn dla organizacji usługi Azure Active Directory
 
-W tym artykule możesz dowiedzieć się, jak włączyć lub wyłączyć integracji z usługą LinkedIn dla dzierżawy w Centrum administracyjnym usługi Azure Active Directory (Azure AD).
+W tym artykule możesz dowiedzieć się, jak włączyć lub wyłączyć integracji z usługą LinkedIn dla organizacji w Centrum administracyjnym usługi Azure Active Directory (Azure AD).
 
 > [!IMPORTANT]
-> Ustawienia integracji usługi LinkedIn jest obecnie udostępniana dzierżaw usługi Azure AD. Gdy jest ona udostępniona do swojej dzierżawy, jego jest domyślnie włączona.
+> Obecnie jest wdrażana ustawienia integracji usługi LinkedIn dla organizacji usługi Azure AD. Gdy jest ona udostępniona w organizacji, jego jest domyślnie włączona.
 > 
 > Wyjątki:
 > * To ustawienie nie jest dostępna dla klientów korzystających z Microsoft Cloud dla instytucji rządowych USA, Microsoft Cloud w Niemczech, lub platformy Azure i usługi Office 365, obsługiwana przez firmę 21Vianet w Chinach.
 > * To ustawienie jest wyłączone domyślnie w przypadku dzierżaw aprowizowane w Niemczech. Należy pamiętać, że ustawienie nie jest dostępna dla klientów korzystających z programu Microsoft Cloud (Niemcy).
 > * To ustawienie jest wyłączone domyślnie w przypadku dzierżaw zainicjowano obsługę administracyjną we Francji.
-> 
-> Integracja działa tylko wtedy, gdy jest włączone *i* Jeśli zezwolisz użytkownikom na wyrażanie zgody na dostęp do danych firmy w ich imieniu aplikacji. Aby uzyskać informacji o ustawieniach zgody, zobacz [jak usunąć dostęp użytkownika do aplikacji](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
+>
+> Integracja działa tylko wtedy, gdy jest włączone *i* po użytkownicy wyrazić zgodę na uzyskiwanie dostępu do danych firmy w ich imieniu aplikacji. Aby uzyskać informacji o ustawieniach zgody użytkownika, zobacz [jak usunąć dostęp użytkownika do aplikacji](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
 
 ## <a name="enable-or-disable-linkedin-integration-for-your-users-in-the-azure-portal"></a>Włączanie lub wyłączanie integracji z usługą LinkedIn dla użytkowników w witrynie Azure portal
 
@@ -41,10 +41,12 @@ Można włączyć lub wyłączyć integracji z usługą LinkedIn dla całej dzie
 1. Zaloguj się do [Centrum administracyjne usługi Azure Active Directory](https://aad.portal.azure.com/) przy użyciu konta administratora globalnego dla dzierżawy usługi Azure AD.
 2. Wybierz **użytkowników**.
 3. Na **użytkowników** bloku wybierz **ustawienia użytkownika**.
-4. W obszarze **integracji z usługą LinkedIn**:
-   * Wybierz **tak** można włączyć integracji usługi LinkedIn dla wszystkich użytkowników w dzierżawie
-   * Wybierz **wybrane** można włączyć integracji usługi LinkedIn dla tylko użytkownicy w wybranej dzierżawy
-   * Wybierz **nie** można wyłączyć integracji usługi LinkedIn dla wszystkich użytkowników ![integracji z usługą LinkedIn włączenie](./media/linkedin-integration/linkedin-integration.png)
+4. W obszarze **połączenia konta usługi LinkedIn**:
+
+   * Wybierz **tak** zgody dla wszystkich użytkowników w organizacji do łączenia ich kont w celu uzyskania dostępu do swoich kontaktów usługi LinkedIn w niektórych aplikacjach firmy Microsoft.
+   * Wybierz **wybrane** zgody dla tylko wybranym użytkownikom w organizacji łączenie ich kont w celu uzyskania dostępu do swoich kontaktów usługi LinkedIn w niektórych aplikacjach firmy Microsoft.
+   * Wybierz **nie** Aby wycofać zgodę dla użytkowników w Twojej organizacji, aby połączyć swoje konta, aby uzyskać dostęp do swoich kontaktów usługi LinkedIn w niektórych aplikacjach firmy Microsoft.
+    ![Włączanie integracji usługi LinkedIn w organizacji](./media/linkedin-integration/linkedin-integration.png)
 5. Zapisz ustawienia w przypadku, gdy wszystko będzie gotowe, wybierając **Zapisz**.
 
 ## <a name="enable-or-disable-linkedin-integration-for-your-users-in-group-policy"></a>Włączanie lub wyłączanie integracji z usługą LinkedIn dla użytkowników w zasadach grupy

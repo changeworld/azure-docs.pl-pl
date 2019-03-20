@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9551f07efa9d388da69b6474f6a2dd5af947ff2c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767655"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005725"
 ---
 # <a name="in-memory-sample"></a>Przykładowe w pamięci
 
@@ -190,11 +190,11 @@ Aby uzyskać więcej informacji, zobacz:
 <!--
 dn511655.aspx is for SQL 2014,
 [Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
-(http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
+(https://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
 
 whereas for SQL 2016+
 [Sample Database for In-Memory OLTP]
-(http://msdn.microsoft.com/library/mt465764.aspx)
+(https://msdn.microsoft.com/library/mt465764.aspx)
 -->
 
 
@@ -244,9 +244,9 @@ Po utworzeniu wynik *_inmem* uruchamiania, wykonaj następujące kroki, aby uzys
 
 
 1. Resetuj bazy danych, uruchamiając następujące polecenie w programie SSMS umożliwia usunięcie wszystkich danych, który został wstawiony przez poprzedniego uruchomienia:
-```sql
-EXECUTE Demo.usp_DemoReset;
-```
+   ```sql
+   EXECUTE Demo.usp_DemoReset;
+   ```
 
 2. Edytowanie wiersza polecenia ostress.exe, aby zamienić wszystkie *_inmem* z *_ondisk*.
 
@@ -277,13 +277,13 @@ Analiza w czasie rzeczywistym na obciążenia OLTP często jest najlepiej użyć
 
 
 1. Użyj witryny Azure portal, aby utworzyć nową bazą danych AdventureWorksLT z próbki.
- - Użyj takiej samej nazwie.
- - Wybierz wszystkie warstwy Premium.
+   - Użyj takiej samej nazwie.
+   - Wybierz wszystkie warstwy Premium.
 
 2. Kopiuj [sql_in memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) do Schowka.
- - Skrypt T-SQL tworzy obiekty niezbędne w pamięci w bazie danych AdventureWorksLT utworzonego w kroku 1.
- - Skrypt utworzy w tabeli wymiarów i dwóch tabel faktów. Tabele faktów są wypełniane przy użyciu 3,5 miliona wierszy.
- - Skrypt może potrwać 15 minut.
+   - Skrypt T-SQL tworzy obiekty niezbędne w pamięci w bazie danych AdventureWorksLT utworzonego w kroku 1.
+   - Skrypt utworzy w tabeli wymiarów i dwóch tabel faktów. Tabele faktów są wypełniane przy użyciu 3,5 miliona wierszy.
+   - Skrypt może potrwać 15 minut.
 
 3. Wklej skryptu T-SQL w programie SSMS, a następnie uruchom skrypt. **Magazynu kolumn** — słowo kluczowe w **CREATE INDEX** instrukcji ma kluczowe znaczenie, jak:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 

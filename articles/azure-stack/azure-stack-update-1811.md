@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 0e14e7eb20e87f5555fa6b494c0d09ccde08d2dd
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: ddcf3428f32698c9825f13975929bc4677139acf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081053"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -122,13 +122,13 @@ Ta aktualizacja obejmuje następujące nowe funkcje i ulepszenia dla usługi Azu
 - W tej wersji wprowadzono alert **naprawy** akcje operatora usługi Azure Stack. Podaj niektórych alertów w programie 1811 **naprawy** przycisk alert, który można wybrać, aby rozwiązać ten problem. Aby uzyskać więcej informacji, zobacz [monitorowania kondycji i alertów w usłudze Azure Stack](azure-stack-monitor-health.md).
 
 - Aktualizacje środowiska aktualizacji w usłudze Azure Stack. Ulepszenia aktualizacji obejmują: 
-    - Karty, na których podzielić aktualizacji historii aktualizacji lepsze aktualizacji śledzenia w toku i ukończone aktualizacje.
-    - Stan rozszerzone wizualizacje w sekcji podstawy, nowe ikony i układu do wersji bieżącej i OEM, a także ostatni aktualizowane daty.
-    - **Widok** link dla kolumny informacje o wersji powoduje otwarcie bezpośrednio do dokumentacji określonych tej aktualizacji, a nie na stronie Ogólne aktualizacji.
-    - **Aktualizacji historii** kartę używany do określenia czasu wykonywania dla każdej z aktualizacji, a także rozszerzone funkcje filtrowania.  
-    - Jednostki usługi Azure skalowania stosu, które są połączone, będą nadal automatycznie otrzymywać **dostępna aktualizacja** po ich udostępnieniu.
-    - Azure stosu jednostek skalowania, które nie są połączone można zaimportować aktualizacje tak samo jak przed. 
-    - Nie wprowadzono żadnych zmian w procesie, aby pobrać dzienniki JSON z poziomu portalu. Operatorzy usługi Azure Stack będą widzieć, rozszerzając kroki wyrażania postępu.
+  - Karty, na których podzielić aktualizacji historii aktualizacji lepsze aktualizacji śledzenia w toku i ukończone aktualizacje.
+  - Stan rozszerzone wizualizacje w sekcji podstawy, nowe ikony i układu do wersji bieżącej i OEM, a także ostatni aktualizowane daty.
+  - **Widok** link dla kolumny informacje o wersji powoduje otwarcie bezpośrednio do dokumentacji określonych tej aktualizacji, a nie na stronie Ogólne aktualizacji.
+  - **Aktualizacji historii** kartę używany do określenia czasu wykonywania dla każdej z aktualizacji, a także rozszerzone funkcje filtrowania.  
+  - Jednostki usługi Azure skalowania stosu, które są połączone, będą nadal automatycznie otrzymywać **dostępna aktualizacja** po ich udostępnieniu.
+  - Azure stosu jednostek skalowania, które nie są połączone można zaimportować aktualizacje tak samo jak przed. 
+  - Nie wprowadzono żadnych zmian w procesie, aby pobrać dzienniki JSON z poziomu portalu. Operatorzy usługi Azure Stack będą widzieć, rozszerzając kroki wyrażania postępu.
 
     Aby uzyskać więcej informacji, zobacz [stosowanie aktualizacji w usłudze Azure Stack](azure-stack-apply-updates.md).
 
@@ -256,17 +256,17 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- 1264761 - IS ASDK -->  
 - Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
 
-    - Zgłoś alert, #1:
-       - NAZWA:  Rola infrastruktury złej kondycji
-       - WAŻNOŚĆ: Ostrzeżenie
-       - SKŁADNIK: Kondycji kontrolera
-       - OPIS: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
+  - Zgłoś alert, #1:
+     - NAZWA:  Rola infrastruktury złej kondycji
+     - WAŻNOŚĆ: Ostrzeżenie
+     - SKŁADNIK: Kondycji kontrolera
+     - OPIS: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
 
-    - Zgłoś alert, #2:
-       - NAZWA:  Rola infrastruktury złej kondycji
-       - WAŻNOŚĆ: Ostrzeżenie
-       - SKŁADNIK: Kondycji kontrolera
-       - OPIS: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
+  - Zgłoś alert, #2:
+     - NAZWA:  Rola infrastruktury złej kondycji
+     - WAŻNOŚĆ: Ostrzeżenie
+     - SKŁADNIK: Kondycji kontrolera
+     - OPIS: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
 
     Obydwa alerty można bezpiecznie zignorować. Będą one zamknięte automatycznie wraz z upływem czasu.  
 
@@ -346,7 +346,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - W usłudze Azure Stack *obrotu klucz tajny*, istnieje okres, w której publiczne adresy IP są niedostępne dla 2 do 5 minut.
 
 <!-- 2664148 - IS ASDK --> 
--   W scenariuszach, w którym dzierżawy uzyskuje dostęp do maszyn wirtualnych przy użyciu tunelu S2S VPN mogą występować w scenariuszu, gdzie połączenia zakończy się niepowodzeniem, gdy został dodany w podsieci lokalnej bramy sieci lokalnej, po brama została już utworzona. 
+- W scenariuszach, w którym dzierżawy uzyskuje dostęp do maszyn wirtualnych przy użyciu tunelu S2S VPN mogą występować w scenariuszu, gdzie połączenia zakończy się niepowodzeniem, gdy został dodany w podsieci lokalnej bramy sieci lokalnej, po brama została już utworzona. 
 
 - W portalu usługi Azure Stack po zmianie statyczny adres IP dla konfiguracji adresu IP, który jest powiązany z kartą sieciową, dołączony do wystąpienia maszyny Wirtualnej, zobaczysz komunikat ostrzegawczy z informacją, że 
 
@@ -358,9 +358,9 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 - W portalu, jeśli Dodawanie reguły zabezpieczeń dla ruchu przychodzącego i wybierz pozycję **Tag usługi** jako źródło, kilka opcji są wyświetlane w **znacznik źródłowy** listy, które nie są dostępne dla usługi Azure Stack. Tylko opcje, które są prawidłowe w usłudze Azure Stack, są następujące:
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     Inne opcje nie są obsługiwane jako źródło tagi w usłudze Azure Stack. Podobnie jeśli Dodawanie reguły zabezpieczeń dla ruchu wychodzącego i wybierz pozycję **Tag usługi** jako miejsce docelowe, ta sama lista opcji **znacznik źródłowy** jest wyświetlana. Jedyne prawidłowe opcje są takie same jak w przypadku **znacznik źródłowy**, zgodnie z opisem w poprzedniej liście.
 

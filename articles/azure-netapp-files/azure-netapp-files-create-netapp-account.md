@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: ae42d8c0bec8c812d18e927dd450e5b5fc419ba3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774081"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113643"
 ---
 # <a name="create-a-netapp-account"></a>Tworzenie konta usługi NetApp
 Utworzenie konta usługi NetApp umożliwia skonfigurowanie puli pojemności, w której następnie można utworzyć wolumin. Nowe konto usługi NetApp możesz utworzyć w bloku usługi Azure NetApp Files.
@@ -33,29 +33,29 @@ Należy zarejestrować subskrypcję na potrzeby używania dostawcy zasobów usł
 
 1. Zaloguj się do Portalu Azure. 
 2. Przejdź do bloku usługi Azure NetApp Files za pomocą jednej z następujących metod:  
-  * Wyszukaj usługę **Azure NetApp Files** w polu wyszukiwania witryny Azure Portal.  
-  * Kliknij przycisk **Wszystkie usługi** w obszarze nawigacji, a następnie wprowadź nazwę usługi Azure NetApp Files w filtrze.  
+   * Wyszukaj usługę **Azure NetApp Files** w polu wyszukiwania witryny Azure Portal.  
+   * Kliknij przycisk **Wszystkie usługi** w obszarze nawigacji, a następnie wprowadź nazwę usługi Azure NetApp Files w filtrze.  
 
-  Możesz dodać blok usługi Azure NetApp Files do ulubionych, klikając ikonę gwiazdki obok tej usługi. 
+   Możesz dodać blok usługi Azure NetApp Files do ulubionych, klikając ikonę gwiazdki obok tej usługi. 
 
 3. Kliknij pozycję **+ Dodaj**, aby utworzyć nowe konto usługi NetApp.  
-  Zostanie wyświetlone okno Nowe konto usługi NetApp.  
+   Zostanie wyświetlone okno Nowe konto usługi NetApp.  
 
 4. Podaj następujące informacje dotyczące konta usługi NetApp: 
-  * **Nazwa konta**  
-    Określ unikatową nazwę subskrypcji.
-  *  **Subskrypcja**  
-    Wybierz subskrypcję z listy istniejących subskrypcji.
-  * **Grupa zasobów**   
-    Użyj istniejącej grupy zasobów lub utwórz nową.
-  * **Lokalizacja**  
-    Wybierz region, w którym będzie znajdować się konto i jego zasoby podrzędne.  
+   * **Nazwa konta**  
+     Określ unikatową nazwę subskrypcji.
+   * **Subskrypcja**  
+     Wybierz subskrypcję z listy istniejących subskrypcji.
+   * **Grupa zasobów**   
+     Użyj istniejącej grupy zasobów lub utwórz nową.
+   * **Lokalizacja**  
+     Wybierz region, w którym będzie znajdować się konto i jego zasoby podrzędne.  
 
-    ![Nowe konto usługi NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
+     ![Nowe konto usługi NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
 5. Kliknij pozycję **Utwórz**.     
-  Utworzone konto usługi NetApp znajduje się teraz w bloku usługi Azure NetApp Files. 
+   Utworzone konto usługi NetApp znajduje się teraz w bloku usługi Azure NetApp Files. 
 
 ## <a name="next-steps"></a>Kolejne kroki  
 

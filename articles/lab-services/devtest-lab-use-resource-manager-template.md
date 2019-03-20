@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 663864837e2847125d0925b9b82d8962e54290b3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: eaa285318a868d0ccee07d830e1cc1be18f457a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181558"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Tworzenie maszyn wirtualnych przy użyciu szablonu usługi Azure Resource Manager 
 
@@ -66,5 +66,5 @@ Szablon usługi Resource Manager jest teraz gotowa do użytku [Utwórz Maszynę 
 
 ### <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, jak [tworzenie środowisk z wieloma Maszynami wirtualnymi za pomocą szablonów usługi Resource Manager](devtest-lab-create-environment-from-arm.md).
-* [Wdrażanie szablonu usługi Resource Manager, aby utworzyć Maszynę wirtualną](devtest-lab-create-environment-from-arm.md#deploy-a-resource-manager-template-to-create-a-vm)
+* [Wdrażanie szablonu usługi Resource Manager, aby utworzyć Maszynę wirtualną](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
 * Poznaj więcej szablonów szybkiego startu usługi Resource Manager, związane z automatyzacją DevTest Labs z [publicznego repozytorium GitHub laboratoria DevTest](https://github.com/Azure/azure-quickstart-templates).

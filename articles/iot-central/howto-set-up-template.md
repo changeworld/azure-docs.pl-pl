@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f8c99bd6bc9edb78a7af241f1eee2669c955a040
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: ff73982b706fa2d353be818f5022de8fbfec42fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767315"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167443"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Konfigurowanie szablonu urządzenia (nowy interfejs użytkownika projekt)
 
@@ -44,11 +44,13 @@ Za pomocą tego szablonu urządzenia można tworzyć i łączenie urządzeń rze
 
 1. Przejdź do **szablonów urządzeń** strony.
 
-2. Aby utworzyć pusty szablon, wybierz **+**, a następnie wprowadź nazwę, taką jak **lodówki** nowego szablonu urządzenia. Następnie wybierz pozycję **Utwórz**:
+2. Aby utworzyć szablon, uruchom, wybierając **+ nowy**.
 
-   ![Strony szczegółów urządzenia za pomocą "Lodówki" jako nazwa szablonu](./media/howto-set-up-template/devicedetailspage.png)
+3. Aby szybko rozpocząć pracę, wybierz z istniejących, wstępnie skompilowane szablony. W przeciwnym razie wybierz **niestandardowe**, wprowadź nazwę i kliknij przycisk **Utwórz** tworzyć szablon od podstaw.
 
-4. Teraz możesz teraz **szczegóły urządzenia** strony, aby utworzyć nowy szablon urządzenia. Podczas tworzenia szablonu urządzenia IoT Central automatycznie tworzy symulowane urządzenie. Symulowane urządzenie umożliwia testowanie zachowanie aplikacji, aby połączyć prawdziwe urządzenie.
+   ![Biblioteka szablonów urządzenia](./media/howto-set-up-template/newtemplate.png)
+
+4. Podczas tworzenia szablonu niestandardowego, zobacz **szczegóły urządzenia** strona tworzenia nowego szablonu urządzenia. Podczas tworzenia szablonu urządzenia IoT Central automatycznie tworzy symulowane urządzenie. Symulowane urządzenie umożliwia testowanie zachowanie aplikacji, aby połączyć prawdziwe urządzenie.
 
 W poniższych sekcjach opisano każdej z kart na **szablon urządzenia** strony.
 

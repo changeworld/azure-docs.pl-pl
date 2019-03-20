@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 5f6cb29d8fb3fd1c3b75e18330e3ad2711a61aab
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d7f3c8d8efbdc658e4f7621a0606cb7fd92c88d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444926"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103489"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migracja Contoso: Ponowne hostowanie aplikacji systemu Linux w środowisku lokalnym, na maszynach wirtualnych platformy Azure
 
@@ -314,17 +314,17 @@ Teraz firmy Contoso, Administratorzy mogą rozpocząć replikowanie **OSTICKETWE
 
 3. Wybierają **OSTICKETWEB** maszyny Wirtualnej na potrzeby replikacji. 
 
-    - Na tym etapie wybierają **OSTICKETWEB** tylko, ponieważ sieć wirtualną i podsieć zarówno należy wybrać, a maszyny wirtualne nie są w tej samej podsieci.
-    - Usługa Site Recovery automatycznie instaluje usługę Mobility po włączeniu replikacji dla maszyny Wirtualnej.
+   - Na tym etapie wybierają **OSTICKETWEB** tylko, ponieważ sieć wirtualną i podsieć zarówno należy wybrać, a maszyny wirtualne nie są w tej samej podsieci.
+   - Usługa Site Recovery automatycznie instaluje usługę Mobility po włączeniu replikacji dla maszyny Wirtualnej.
 
-    ![Włączanie replikacji](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
+     ![Włączanie replikacji](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
 
 4. We właściwościach maszyny Wirtualnej są wybierz konto które jest używane przez serwer przetwarzania do automatycznego instalowania usługi mobilności na maszynie.
 
      ![Usługa mobilności](./media/contoso-migration-rehost-linux-vm/linux-mobility.png)
 
 5. w **ustawień replikacji** > **Konfigurowanie ustawień replikacji**, mogą sprawdzić, czy właściwe zasady replikacji zastosowane i wybierz pozycję **włączania replikacji**.
-6.  Śledzą postęp replikacji w **zadań**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
+6. Śledzą postęp replikacji w **zadań**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
 
 
 

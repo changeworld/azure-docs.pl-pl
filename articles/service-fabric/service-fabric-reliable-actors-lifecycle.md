@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: dbd9551027744d443613e32e0a082c10d4f357d5
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 10f78b3b78e90fbb4f1d50cf581bfbce263f44aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052059"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872725"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Cykl życia aktora, automatyczne wyrzucanie elementów bezużytecznych i ręczne delete
 Aktor jest aktywowana po raz pierwszy następuje wywołanie do dowolnego z jego metod. Aktor jest dezaktywowany (zebranych przez środowisko uruchomieniowe aktorów pamięci), jeśli nie jest używany przez można skonfigurować czas. Aktor i jej stan można również zostaną usunięte ręcznie w dowolnym momencie.
@@ -123,7 +123,7 @@ Wyrzucanie elementów bezużytecznych dezaktywowane aktorów tylko Czyści obiek
 * [Aktor Diagnostyka i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)
 * [Dokumentacja interfejsu API aktora](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Kod przykładowy w języku C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Kod przykładowy w języku Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Kod przykładowy w języku Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

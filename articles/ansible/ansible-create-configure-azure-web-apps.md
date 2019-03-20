@@ -1,19 +1,19 @@
 ---
 title: Tworzenie aplikacji internetowych platformy Azure za pomocą rozwiązania Ansible
 description: Dowiedz się, jak za pomocą rozwiązania Ansible utworzyć aplikację internetową w języku Java 8 korzystającą ze środowiska uruchomieniowego kontenera Tomcat w ramach usługi App Service w systemie Linux
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, element playbook, Azure App Service, aplikacja internetowa, Java
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 106fe11355d629e57f71b12d1125d188b98c2236
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 5f67a9f7d629eec9ab1462a25940355869c1cd28
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051349"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791226"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Tworzenie aplikacji internetowych w ramach usługi Azure App Service za pomocą rozwiązania Ansible
 [Funkcja Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (lub po prostu Web Apps) hostuje aplikacje internetowe, interfejsy API REST i zaplecza aplikacji mobilnych. Możesz programować w ulubionym języku &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP lub Python.
@@ -230,6 +230,6 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Skalowanie aplikacji internetowych w ramach usługi Azure App Service za pomocą rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-scale-azure-web-apps)

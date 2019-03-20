@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813844"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119347"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Rozwiązywanie problemów z używaniem bramy zarządzania danymi
 Ten artykuł zawiera informacje na temat rozwiązywania problemów z używaniem bramy zarządzania danymi.
@@ -169,8 +169,8 @@ Bramy nie można połączyć z usługą w chmurze za pośrednictwem usługi Serv
 Wykonaj następujące kroki, aby pobrać bramę przywrócić do trybu online:
 
 1. Zezwalaj na adres IP reguły ruchu wychodzącego na maszynie bramy i zapory w firmie. Adresy IP można znaleźć w dzienniku zdarzeń Windows (identyfikator == 401): Próbowano uzyskać dostęp do gniazda w sposób zabroniony przez jego uprawnienia dostępu XX. XX. XX. XX:9350.
-* Skonfiguruj ustawienia serwera proxy w bramie. Zobacz szczegółowe informacje w sekcji zagadnienia dotyczące serwera Proxy.
-* Włącz porty wychodzące 5671 i 9350-9354 zaporę Windows na maszynie bramy i zapory w firmie. Zobacz, portów i sekcji zapory, aby uzyskać szczegółowe informacje. Ten krok jest opcjonalny, ale firma Microsoft zaleca wziąć pod uwagę wydajności.
+1. Skonfiguruj ustawienia serwera proxy w bramie. Zobacz szczegółowe informacje w sekcji zagadnienia dotyczące serwera Proxy.
+1. Włącz porty wychodzące 5671 i 9350-9354 zaporę Windows na maszynie bramy i zapory w firmie. Zobacz, portów i sekcji zapory, aby uzyskać szczegółowe informacje. Ten krok jest opcjonalny, ale firma Microsoft zaleca wziąć pod uwagę wydajności.
 
 ### <a name="3-problem"></a>3. Problem
 Zostanie wyświetlony następujący błąd.
@@ -184,7 +184,7 @@ Błąd przejściowy w łączności sieciowej.
 Wykonaj następujące kroki, aby pobrać bramę przywrócić do trybu online:
 
 1. Poczekaj kilka minut, połączenia zostaną automatycznie odzyskane po błędzie został usunięty.
-* Jeśli błąd będzie się powtarzać, uruchom ponownie usługę bramy.
+1. Jeśli błąd będzie się powtarzać, uruchom ponownie usługę bramy.
 
 ## <a name="failed-to-author-linked-service"></a>Nie można utworzyć połączonej usługi
 ### <a name="problem"></a>Problem
@@ -282,6 +282,6 @@ Informacje szczegółowe bramy można znaleźć w dziennikach zdarzeń Windows.
 1. Uruchom Windows **Podgląd zdarzeń**.
 2. Zlokalizuj dzienniki w **Dzienniki aplikacji i usług** > **bramy zarządzania danymi** folderu.
 
- Przy rozwiązywaniu problemów związanych z bramą, wyszukać zdarzenia na poziomie błędu w przeglądarce zdarzeń.
+   Przy rozwiązywaniu problemów związanych z bramą, wyszukać zdarzenia na poziomie błędu w przeglądarce zdarzeń.
 
 ![Brama zarządzania danymi dzienniki w Podglądzie zdarzeń](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

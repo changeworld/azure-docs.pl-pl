@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 70a0463094f98612169e78e4bcdd4eac9c8ebf24
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 34829482e570354c1ab1e1fd6cec0c96b993cd83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167035"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Obsługa protokołu AMQP 1.0 w usłudze Service Bus
 Usługa Azure Service Bus w chmurze i lokalnych [Usługa Service Bus dla systemu Windows Server (Usługa Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) obsługuje zaawansowane komunikat Kolejkowanie Protocol (AMQP) 1.0. Protokół AMQP umożliwia tworzenie dla różnych platform aplikacji hybrydowej za pomocą otwartego protokołu. Można skonstruować aplikacji przy użyciu składników, które są tworzone przy użyciu różnych języków i platform i działających w różnych systemach operacyjnych. Wszystkie te składniki można połączyć z usługą Service Bus oraz zapewniające bezproblemową wymiany wiadomości ze strukturą biznesowych, wydajne i w pełnej rozdzielczości.
@@ -77,7 +77,7 @@ W tej chwili znane podanych niżej bibliotek klienta do pracy z usługą Service
 | C |Apache Qpid protonów C |
 | PHP |Apache Qpid protonów — PHP |
 | Python |Apache Qpid protonów — Python |
-| C# |AMQP .Net Lite |
+| C# |AMQP .NET Lite |
 
 **Rysunek 2: Tabela bibliotek klienta protokołu AMQP 1.0**
 

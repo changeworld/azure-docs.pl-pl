@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: fa156beba6d5eb1f7e10529d7f1287ab9a148024
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576569"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840566"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Tworzenie potoków predykcyjnych przy użyciu usługi Azure Machine Learning i Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.locfileid: "57576569"
 3. **Go wdrożyć jako usługę sieci web**. Możesz opublikować oceniania eksperymentu jako usługi sieci web platformy Azure. Można wysyłać dane do modelu przy użyciu tego punktu końcowego usługi sieci web i otrzymywać wyników przewidywań modelu.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Fabryka danych i uczenia maszynowego razem
-Usługa Azure Data Factory umożliwia łatwe tworzenie potoki, które używają opublikowanych [Azure Machine Learning] [azure uczenia maszynowego] usługi sieci web do analizy predykcyjnej. Za pomocą **działanie wykonywania wsadowego** w potoku usługi Azure Data Factory można wywołać usługi sieci web Azure Machine Learning studio, jak tworzyć prognozy na danych w usłudze batch.
+Usługa Azure Data Factory umożliwia łatwe tworzenie potoki, które używają opublikowanych [usługi Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning) sieci web usługi do analizy predykcyjnej. Za pomocą **działanie wykonywania wsadowego** w potoku usługi Azure Data Factory można wywołać usługi sieci web Azure Machine Learning studio, jak tworzyć prognozy na danych w usłudze batch.
 
 Wraz z upływem czasu modele predykcyjne w programie Azure Machine Learning studio, oceniania eksperymentów konieczne retrained, przy użyciu nowych danych wejściowych zestawów danych. Model z potoku usługi fabryka danych mogą przechowywać, wykonując następujące czynności:
 

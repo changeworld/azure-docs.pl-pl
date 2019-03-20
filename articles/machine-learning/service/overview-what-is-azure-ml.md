@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fd6ecb6cb45aef399a137c9eac2c8c6f845b610b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: f8f3da82d5c8747398882fd589e3ff91aaaa9739
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872492"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849214"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -32,10 +32,10 @@ Dzięki prognozom lub przewidywaniom uzyskiwanym za pomocą uczenia maszynowego 
 
 Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do przygotowywania danych, trenowania, testowania, wdrażania i śledzenia modeli uczenia maszynowego oraz zarządzania nimi.
 
-[![Przepływ pracy usługi Azure Machine Learning](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Przepływu pracy usługi Azure Machine Learning](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Usługa Azure Machine Learning w pełni obsługuje technologie typu open source. Dlatego można korzystać z dziesiątków tysięcy pakietów open source języka Python, wyposażonych w składniki uczenia maszynowego. Należą do nich na przykład PyTorch, TensorFlow i scikit-learn.
-Obsługa zaawansowanych narzędzi znacząco ułatwia interaktywne eksplorowanie i przygotowywanie danych, a następnie opracowywanie i testowanie modeli. Należą do nich [notesy programu Jupyter](http://jupyter.org) i rozszerzenie [Azure Machine Learning dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview).
+Obsługa zaawansowanych narzędzi znacząco ułatwia interaktywne eksplorowanie i przygotowywanie danych, a następnie opracowywanie i testowanie modeli. Należą do nich [notesy programu Jupyter](https://jupyter.org) i rozszerzenie [Azure Machine Learning dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview).
 Usługa Azure Machine Learning obejmuje również funkcje, które [automatyzują generowanie i dostrajanie modeli](tutorial-auto-train-models.md), co ułatwia tworzenie modeli w sposób prosty, wydajny i prawidłowy.
 
 Dzięki usłudze Azure Machine Learning można rozpocząć szkolenie na komputerze lokalnym, a następnie skalować działania do chmury. Dzięki wielu dostępnym [docelowym obiektom obliczeniowym](how-to-set-up-training-targets.md), takim jak środowisko obliczeniowe usługi Azure Machine Learning i [usługa Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), oraz [zaawansowanym usługom dostrajania hiperparametrów](how-to-tune-hyperparameters.md), można tworzyć lepsze modele szybciej, wykorzystując możliwości chmury.
@@ -56,7 +56,7 @@ Możesz korzystać z wielu składników uczenia maszynowego dostępnych w pakiet
 - <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
 - <a href="https://pytorch.org" target="_blank">PyTorch</a>
 - <a href="https://www.microsoft.com/en-us/cognitive-toolkit/" target="_blank">CNTK</a>
-- <a href="http://mxnet.io" target="_blank">MXNet</a>
+- <a href="https://mxnet.io" target="_blank">MXNet</a>
 
 Usługa Azure Machine Learning może także automatycznie wytrenować model i automatycznie go dla Ciebie dostroić.
 Przykład można znaleźć w temacie [Trenowanie modelu regresji za pomocą zautomatyzowanego uczenia maszynowego](tutorial-auto-train-models.md).
@@ -81,18 +81,18 @@ Używaj usługi uczenia maszynowego, jeśli pracujesz w środowisku języka Pyth
 
 ## <a name="free-trial"></a>Bezpłatna wersja próbna
 
-Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyczerpaniu możesz zachować konto i korzystać z [bezpłatnych usług platformy Azure](https://azure.microsoft.com/free/). Karta kredytowa nie zostanie obciążona, chyba że jawnie zmienisz ustawienia i poprosisz o jej obciążenie. Możesz też [aktywować korzyści subskrybenta MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), dzięki którym co miesiąc otrzymasz środki do wykorzystania na płatne usługi platformy Azure.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Utwórz obszar roboczy usługi Machine Learning, aby rozpocząć pracę [przy użyciu witryny Azure portal](quickstart-get-started.md) (podejście niewymagające instalacji) lub [w języku Python](quickstart-create-workspace-with-python.md) (podejście wymagające zainstalowania zestawu SDK).
 
 - Wykonaj kompleksowe samouczki: 
   + [Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md) 
   + [Prepare data and use automated machine learning to auto-train a regression model (Przygotowywanie danych i używanie zautomatyzowanego uczenia maszynowego do automatycznego trenowania modelu regresji)](tutorial-data-prep.md)
-  
+
 - Użyj zestawu [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk), aby przygotować swoje dane.
 
 - Dowiedz się więcej o [potokach uczenia maszynowego](/azure/machine-learning/service/concept-ml-pipelines) w celu tworzenia i optymalizowania scenariuszy uczenia maszynowego oraz zarządzania nimi.

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f816a6629ef561067f5a40ba15064b98b34c99
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 2f8be215f1a972539aff47347395f041d89d4e81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871438"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892850"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Accredible
 
@@ -51,9 +51,9 @@ W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azu
 
 Aby skonfigurować integrację usługi Accredible z usługą Azure AD, musisz dodać usługę Accredible z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać usługę Accredible z galerii, wykonaj następujące kroki:**
+**Aby dodać Accredible z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -154,7 +154,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -189,11 +189,11 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 ### <a name="create-accredible-test-user"></a>Tworzenie użytkownika testowego usługi Accredible
 
-W tej sekcji utworzysz użytkownika Britta Simon w usłudze Accredible. Należy wysłać wartość emailid użytkownika do  [zespołu pomocy technicznej usługi Accredible](mailto:support@accredible.com), który zweryfikuje adres e-mail i wyśle do Ciebie wiadomość e-mail z zaproszeniem, co umożliwi dodanie użytkownika na platformie Accredible.
+W tej sekcji utworzysz użytkownika Britta Simon w usłudze Accredible. Trzeba będzie wysłać identyfikator e-mail użytkownika, który [zespołem pomocy technicznej Accredible](mailto:support@accredible.com), a następnie sprawdzają wiadomości e-mail i Wyślij wiadomość e-mail z zaproszeniem tak, aby użytkownik zostanie dodany accredible platformy.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Accredible na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Accredible, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

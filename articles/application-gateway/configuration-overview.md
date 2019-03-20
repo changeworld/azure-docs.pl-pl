@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: absha
-ms.openlocfilehash: 702101039c03b30bb8883ef0308fe68c5567a0c4
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: MT
+ms.openlocfilehash: 7bc3ea054056ac67cf0a116fb1538bc1483ab4d4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57733323"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223533"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
 Usługa Application gateway składa się z kilku składników, które można skonfigurować na różne sposoby wykonywania różnych scenariuszy. W tym artykule przedstawiono sposób każdy składnik ma zostać skonfigurowany.
 
-![application-gateway-components](.\media\configuration-overview\configuration-overview1.png)
+![application-gateway-components](./media/configuration-overview/configuration-overview1.png)
 
-Na powyższej ilustracji przykład przedstawia konfiguracji aplikacji z 3 odbiorników. Pierwsze dwa są odbiorników obejmujących wiele lokacji dla http://acme.com/* i http://fabrikam.com/*, odpowiednio. Oba są nasłuchuje na porcie 80. Trzeci odbiornik jest podstawowy odbiornik mający kończenia żądań SSL typu end to end. 
+Na powyższej ilustracji przykład przedstawia konfiguracji aplikacji z 3 odbiorników. Pierwsze dwa są odbiorników obejmujących wiele lokacji dla `http://acme.com/*` i `http://fabrikam.com/*`, odpowiednio. Oba są nasłuchuje na porcie 80. Trzeci odbiornik jest podstawowy odbiornik mający kończenia żądań SSL typu end to end. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -83,10 +83,9 @@ Odbiornik jest jednostką logiczną, która sprawdza, czy żądania przychodząc
 
 Możesz wybrać między [odbiornika podstawowego lub połączenia obejmujące wiele lokacji](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners) podczas tworzenia nowego odbiornika. 
 
-- Hostujesz jednej witryny za bramą aplikacji, jeśli podstawowy odbiornik. Dowiedz się, [sposób tworzenia bramy aplikacji przy użyciu podstawowego odbiornika](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Hostujesz jednej witryny za bramą aplikacji, jeśli podstawowy odbiornik. Dowiedz się, [jak utworzyć bramę aplikacji przy użyciu podstawowego odbiornika](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Jeśli konfigurujesz więcej niż jednej aplikacji sieci web lub wieloma poddomenami tej samej domeny nadrzędnej na tym samym wystąpieniu bramy aplikacji, wybierz odbiornika wielu lokacji. Dla odbiornika wielu lokacji należy dodatkowo wprowadź nazwę hosta. Jest to spowodowane Application Gateway bazuje na nagłówkach hosta HTTP 1.1 do obsługi więcej niż jednej witryny sieci Web na tym samym publicznym adresem IP i porcie.![1551057450710](C:\Users\absha\AppData\Roaming\Typora\typora-user-images\1551057450710.png)
-
+- Jeśli konfigurujesz więcej niż jednej aplikacji sieci web lub wieloma poddomenami tej samej domeny nadrzędnej na tym samym wystąpieniu bramy aplikacji, wybierz odbiornika wielu lokacji. Dla odbiornika wielu lokacji należy dodatkowo wprowadź nazwę hosta. Jest to spowodowane Application Gateway bazuje na nagłówkach hosta HTTP 1.1 do obsługi więcej niż jednej witryny sieci Web na tym samym publicznym adresem IP i porcie.
 
 > [!NOTE]
 > W przypadku jednostek SKU v1 odbiorniki są przetwarzane w kolejności, w której są wyświetlane. Dlatego jeśli podstawowy odbiornik pasuje do przychodzącego żądania przetwarza je najpierw. W związku z tym należy skonfigurować odbiorników obejmujących wiele lokacji przed odbiornika podstawowego, aby upewnić się, że ruch jest kierowany do poprawne zaplecza.
@@ -195,7 +194,7 @@ Aby uzyskać informacji na temat możliwości przekierowania, zobacz [omówienie
 
   - ##### <a name="listener"></a>Odbiornik
 
-    Wybranie pozycji odbiornika jako obiektu docelowego przekierowania ułatwia przekierowywanie z jednego odbiornika do innego odbiornika na bramie. To ustawienie jest wymagane, jeśli chcesz włączyć protokół HTTP do przekierowania protokołu HTTPS, czyli przekierowywanie ruchu z odbiornika źródła sprawdzania pod kątem przychodzących żądań HTTP do odbiornika docelowego sprawdzania pod kątem przychodzących żądań HTTPS. Możesz również ciąg zapytania i ścieżki w oryginalne żądanie, które mają zostać uwzględnione w żądaniu przekazywane do obiektu docelowego przekierowania.![application-gateway-components](.\media\configuration-overview\configure-redirection.png)
+    Wybranie pozycji odbiornika jako obiektu docelowego przekierowania ułatwia przekierowywanie z jednego odbiornika do innego odbiornika na bramie. To ustawienie jest wymagane, jeśli chcesz włączyć protokół HTTP do przekierowania protokołu HTTPS, czyli przekierowywanie ruchu z odbiornika źródła sprawdzania pod kątem przychodzących żądań HTTP do odbiornika docelowego sprawdzania pod kątem przychodzących żądań HTTPS. Możesz również ciąg zapytania i ścieżki w oryginalne żądanie, które mają zostać uwzględnione w żądaniu przekazywane do obiektu docelowego przekierowania.![application-gateway-components](./media/configuration-overview/configure-redirection.png)
 
     Aby uzyskać więcej informacji na temat protokołu HTTP do przekierowania protokołu HTTPS, zobacz [przekierowania HTTP lub HTTP przy użyciu portalu](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal), [przekierowania HTTP lub HTTP przy użyciu programu PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell), [przekierowania HTTP lub HTTP przy użyciu interfejsu wiersza polecenia](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
@@ -277,7 +276,7 @@ Jeśli masz domenę niestandardową i zmapowane istniejącej niestandardowej naz
 
 ### <a name="host-name-override"></a>Zastąpienie nazwy hosta
 
-Ta funkcja zastępuje *hosta* nagłówka w żądaniu przychodzącym w usłudze application gateway dla nazwy hosta, określone w tym miejscu. Na przykład www.contoso.com jest określony jako **nazwy hosta** ustawienia oryginalne żądanie https://appgw.eastus.cloudapp.net/path1 zostanie zmieniony na https://www.contoso.com/path1 gdy żądanie jest przekazywane do serwera wewnętrznej bazy danych. 
+Ta funkcja zastępuje *hosta* nagłówka w żądaniu przychodzącym w usłudze application gateway dla nazwy hosta, określone w tym miejscu. Na przykład jeśli www\.contoso.com jest określony jako **nazwy hosta** ustawienia oryginalne żądanie https://appgw.eastus.cloudapp.net/path1 zostanie zmieniony na https://www.contoso.com/path1 gdy żądanie jest przekazywane do serwera wewnętrznej bazy danych. 
 
 ## <a name="backend-pool"></a>Pula zaplecza
 

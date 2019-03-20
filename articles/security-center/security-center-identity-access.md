@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 845227ea5e32d10eaed555cee80c8fc520a1771a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6f8fadc42d1c725002f2552a3fc1fc98e8564437
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105556"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098784"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -68,11 +68,11 @@ W obszarze **Przegląd**, znajduje się lista zaleceń. W pierwszej kolumnie wy�
 
 1. Wybierz zalecenie. Zostanie wyświetlone okno dialogowe i wyświetla zalecenia:
 
-  - Opis rekomendacji
-  - Lista subskrypcji w złej kondycji i w dobrej kondycji
-  - Lista zasobów, które są nieprzeskanowane ze względu na niepowodzenie oceny lub zasobu w ramach subskrypcji, uruchomiony w ramach warstwy bezpłatna i nie jest oceniany
+   - Opis rekomendacji
+   - Lista subskrypcji w złej kondycji i w dobrej kondycji
+   - Lista zasobów, które są nieprzeskanowane ze względu na niepowodzenie oceny lub zasobu w ramach subskrypcji, uruchomiony w ramach warstwy bezpłatna i nie jest oceniany
 
-  ![Okno w zalecenie][3]
+   ![Okno w zalecenie][3]
 
 1. Wybierz subskrypcję, na liście, aby uzyskać dodatkowe szczegóły.
 
@@ -81,27 +81,27 @@ W obszarze **subskrypcje**, znajduje się lista subskrypcji. W pierwszej kolumni
 
 ![Karta subskrypcji][4]
 
-1.  Wybierz subskrypcję. Otwiera widok podsumowania z trzema kartami:
+1. Wybierz subskrypcję. Otwiera widok podsumowania z trzema kartami:
 
-  - **Zalecenia dotyczące**: oparte na ocen wykonywane przez usługę Security Center, który uległ awarii.
-  - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
-  - **Oceny niedostępne**: Lista ocen, których nie można uruchomić z powodu błędu lub subskrypcja zawiera ponad 600 kont.
+   - **Zalecenia dotyczące**: oparte na ocen wykonywane przez usługę Security Center, który uległ awarii.
+   - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
+   - **Oceny niedostępne**: Lista ocen, których nie można uruchomić z powodu błędu lub subskrypcja zawiera ponad 600 kont.
 
-  W obszarze **zalecenia** listę zaleceń dla wybranej subskrypcji i ważność poszczególne zalecenia.
+   W obszarze **zalecenia** listę zaleceń dla wybranej subskrypcji i ważność poszczególne zalecenia.
 
-  ![Zalecenia dotyczące Wybieranie subskrypcji][5]
+   ![Zalecenia dotyczące Wybieranie subskrypcji][5]
 
 1. Wybierz zalecenie opis zalecenie, lista złej kondycji, jak i dobrej kondycji i listę nieprzeskanowane zasoby.
 
-  ![Opis rekomendacji][6]
+   ![Opis rekomendacji][6]
 
-  W obszarze **przekazywane ocen** znajduje się lista oceny zakończone pomyślnie.  Ważność te oceny zawsze ma kolor zielony.
+   W obszarze **przekazywane ocen** znajduje się lista oceny zakończone pomyślnie.  Ważność te oceny zawsze ma kolor zielony.
 
-  ![Oceny zakończone pomyślnie][7]
+   ![Oceny zakończone pomyślnie][7]
 
 1. Wybierz ocenę przekazany z listy opis oceny i listę subskrypcji w dobrej kondycji. Brak karta dla subskrypcji w złej kondycji, która wyświetla wszystkie subskrypcje, które nie powiodło się.
 
-  ![Oceny zakończone pomyślnie][8]
+   ![Oceny zakończone pomyślnie][8]
 
 ## <a name="recommendations"></a>Zalecenia
 Używany jako odwołanie w tabeli poniżej, aby lepiej zrozumieć dostępne zalecenia dotyczące tożsamości i dostępu, a każdy z nich działanie w przypadku zastosowania.

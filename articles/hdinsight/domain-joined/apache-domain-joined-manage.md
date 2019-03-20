@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0fec9173eb94aa60c3689089e4eacd2d9d47724a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819131"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200025"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Zarządzanie klastrami HDInsight z pakietem Enterprise Security
 Dowiedz się, użytkownicy i role w HDInsight Enterprise Security pakietu (ESP) oraz sposób zarządzania klastrami ESP.
@@ -143,7 +143,7 @@ Aby znaleźć nazwę FQDN węzła głównego, skorzystaj z informacji w zarządz
 ## <a name="users-of-hdinsight-clusters-with-esp"></a>Użytkownicy z klastrami HDInsight przy użyciu ESP
 Klaster HDInsight bez ESP ma dwa konta użytkownika, które są tworzone podczas tworzenia klastra:
 
-* **Administrator systemu Ambari**: To konto jest także znana jako *użytkownika usługi Hadoop* lub *użytkownika HTTP*. To konto może służyć do logowania do systemu Ambari pod https://&lt;nazwa_klastra >. azurehdinsight.net. Jego można również uruchamiać zapytania dotyczące widoków Ambari, wykonywanie zadania za pomocą narzędzia zewnętrzne (na przykład programu PowerShell, Templeton, Visual Studio) i uwierzytelnianie za pomocą sterownika ODBC programu Hive i narzędzi do analizy Biznesowej (na przykład programu Excel usługi Power Bi i Tableau).
+* **Administrator systemu Ambari**: To konto jest także znana jako *użytkownika usługi Hadoop* lub *użytkownika HTTP*. To konto może służyć do logowania się do systemu Ambari pod https://&lt;nazwa_klastra >. azurehdinsight.net. Jego można również uruchamiać zapytania dotyczące widoków Ambari, wykonywanie zadania za pomocą narzędzia zewnętrzne (na przykład programu PowerShell, Templeton, Visual Studio) i uwierzytelnianie za pomocą sterownika ODBC programu Hive i narzędzi do analizy Biznesowej (na przykład programu Excel, Power BI lub Tableau).
 
 Klaster HDInsight przy użyciu ESP ma trzy nowi użytkownicy, oprócz administratora Ambari.
 
@@ -179,7 +179,7 @@ Pakiet zabezpieczeń przedsiębiorstwa HDInsight ma następujące role:
 ## <a name="open-the-ambari-management-ui"></a>Otwórz przystawkę Zarządzanie Ambari interfejsu użytkownika
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Otwórz klastra usługi HDInsight. Zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-management-portal.md#list-and-show-clusters).
+2. Otwórz klastra usługi HDInsight.
 3. Kliknij przycisk **pulpit nawigacyjny** z górnego menu, aby otworzyć narzędzie Ambari.
 4. Zaloguj się przy użyciu nazwy użytkownika domeny administratora klastra i hasło Ambari.
 5. Kliknij przycisk **administratora** menu rozwijane w górnym prawym rogu, a następnie kliknij **Zarządzanie Ambari**.

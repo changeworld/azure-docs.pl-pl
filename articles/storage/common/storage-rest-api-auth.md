@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 771f910fce44724250ff79e770e0d1ca56e8765c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768420"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012781"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Storage
 
@@ -46,7 +46,7 @@ To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć rozwi�
 
 ## <a name="what-is-rest"></a>Co to jest REST?
 
-Oznacza, że REST *prezentowania*. Dla określonej definicji, zapoznaj się z [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
+Oznacza, że REST *prezentowania*. Dla określonej definicji, zapoznaj się z [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 Po prostu REST to architektura, służy do wywoływania interfejsów API lub Tworzenie interfejsów API do wywołania. Jest ono niezależne, co się dzieje po obu stronach i jakie inne oprogramowanie jest używana podczas wysyłania lub odbierania pozostałe wywołania. Można napisać aplikację, która działa na komputerze Mac, Windows, Linux, telefon z systemem Android lub tabletu, iPhone, iPod lub witryny sieci web i używać tego samego interfejsu API REST dla wszystkich tych platform. Dane mogą być przekazywane w i/lub się po wywołaniu interfejsu API REST. Interfejs API REST zależy od platformy jest wywoływane — ważne jest informacje przekazywane w żądaniu i danych zawartych w odpowiedzi.
 
@@ -80,7 +80,7 @@ Aby korzystać z dodatkowych parametrów, dołącz je do ciągu zasobu o wartoś
 
 [Treść żądania](/rest/api/storageservices/List-Containers2#request-body)**:** Brak treści żądania nie ListContainers. Treść żądania jest używana we wszystkich operacji PUT przy przekazywaniu obiektów blob, a także SetContainerAccessPolicy, co pozwala na wysyłanie na liście XML przechowywane zasady dostępu do zastosowania. Zapisane zasady dostępu zostały omówione w artykule [przy użyciu dostępu współdzielonego Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-[Kod stanu odpowiedzi](/rest/api/storageservices/List-Containers2#status-code)**:** Informuje żadnych kodów stanu, które trzeba znać. W tym przykładzie kod stanu HTTP 200 to ok. Aby uzyskać pełną listę kodów stanu HTTP, zapoznaj się [definicjami kodów stanu](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Aby wyświetlić kody błędów specyficzne dla interfejsów API REST magazynu, zobacz [kody błędów wspólnego interfejsu API REST](/rest/api/storageservices/common-rest-api-error-codes)
+[Kod stanu odpowiedzi](/rest/api/storageservices/List-Containers2#status-code)**:** Informuje żadnych kodów stanu, które trzeba znać. W tym przykładzie kod stanu HTTP 200 to ok. Aby uzyskać pełną listę kodów stanu HTTP, zapoznaj się [definicjami kodów stanu](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Aby wyświetlić kody błędów specyficzne dla interfejsów API REST magazynu, zobacz [kody błędów wspólnego interfejsu API REST](/rest/api/storageservices/common-rest-api-error-codes)
 
 [Nagłówki odpowiedzi](/rest/api/storageservices/List-Containers2#response-headers)**:** Obejmują one *typu zawartości*; *x-ms-request-id* (identyfikator żądania przekazałeś, jeśli ma to zastosowanie); *x-ms-version* (wskazuje wersję usługi obiektów Blob używane), a *data* (czas UTC, informuje, jakich czasie wysłano żądanie).
 
@@ -88,7 +88,7 @@ Aby korzystać z dodatkowych parametrów, dołącz je do ciągu zasobu o wartoś
 
 ## <a name="creating-the-rest-request"></a>Tworzenie żądania REST
 
-Kilka uwag dotyczących przed rozpoczęciem — aby zapewnić bezpieczeństwo podczas uruchamiania w środowisku produkcyjnym, należy zawsze używać protokołu HTTPS zamiast protokołu HTTP. Na potrzeby tego ćwiczenia należy użyć protokołu HTTP, aby można było wyświetlić dane żądań i odpowiedzi. Aby wyświetlić informacje dotyczące żądania i odpowiedzi w rzeczywistych wywołania REST, możesz pobrać [Fiddler](http://www.telerik.com/fiddler) lub podobnej aplikacji. W rozwiązaniu Visual Studio nazwa konta magazynu i klucz są zapisane na stałe w klasie, a metoda ListContainersAsyncREST przekazuje nazwę konta magazynu i klucza konta magazynu do metod, które są używane do tworzenia różnych składników żądania REST . W rzeczywistej aplikacji Nazwa konta magazynu i klucz będzie znajdować się w pliku konfiguracji, zmienne środowiskowe, lub można pobrać z usługi Azure Key Vault.
+Kilka uwag dotyczących przed rozpoczęciem — aby zapewnić bezpieczeństwo podczas uruchamiania w środowisku produkcyjnym, należy zawsze używać protokołu HTTPS zamiast protokołu HTTP. Na potrzeby tego ćwiczenia należy użyć protokołu HTTP, aby można było wyświetlić dane żądań i odpowiedzi. Aby wyświetlić informacje dotyczące żądania i odpowiedzi w rzeczywistych wywołania REST, możesz pobrać [Fiddler](https://www.telerik.com/fiddler) lub podobnej aplikacji. W rozwiązaniu Visual Studio nazwa konta magazynu i klucz są zapisane na stałe w klasie, a metoda ListContainersAsyncREST przekazuje nazwę konta magazynu i klucza konta magazynu do metod, które są używane do tworzenia różnych składników żądania REST . W rzeczywistej aplikacji Nazwa konta magazynu i klucz będzie znajdować się w pliku konfiguracji, zmienne środowiskowe, lub można pobrać z usługi Azure Key Vault.
 
 W naszym przykładowym projekcie kodu na potrzeby tworzenia nagłówek autoryzacji znajduje się w osobnej klasy z rozwiązaniem, że możesz może zająć całą klasę i dodaj go do własnego rozwiązania i używać go "as""to. Kod nagłówka autoryzacji działa w przypadku większości wywołań interfejsu API REST do usługi Azure Storage.
 
@@ -300,7 +300,7 @@ StringToSign = VERB + "\n" +
 
 Większość z tych pól są rzadko używane. Dla magazynu obiektów Blob należy określić ZLECENIE, md5, długość zawartości, w postaci kanonicznej nagłówków i zasobów w postaci kanonicznej. Puste innych (ale put w `\n` będzie wówczas traktował są puste).
 
-Jakie są CanonicalizedHeaders i CanonicalizedResource? Dobre pytanie. W rzeczywistości jak działa w postaci kanonicznej średniej? Program Microsoft Word nawet nie rozpoznaje je jako wyraz. Oto, co [Wikipedia mówi o canonicalization](http://en.wikipedia.org/wiki/Canonicalization): *Informatyki kanoniczną (czasami normalizacji lub normalizacji) to proces konwersji danych, który ma więcej niż jedną możliwą reprezentację w formie "standardowy", "normal" lub kanonicznej.* Czytaj w normalnym, oznacza to przejąć kontrolę na liście elementów (takich jak nagłówki w przypadku nagłówków w postaci kanonicznej) i je ustandaryzować w wymaganym formatem. Po prostu Microsoft decyzję formatu i muszą zapewnić zgodność.
+Jakie są CanonicalizedHeaders i CanonicalizedResource? Dobre pytanie. W rzeczywistości jak działa w postaci kanonicznej średniej? Program Microsoft Word nawet nie rozpoznaje je jako wyraz. Oto, co [Wikipedia mówi o canonicalization](https://en.wikipedia.org/wiki/Canonicalization): *Informatyki kanoniczną (czasami normalizacji lub normalizacji) to proces konwersji danych, który ma więcej niż jedną możliwą reprezentację w formie "standardowy", "normal" lub kanonicznej.* Czytaj w normalnym, oznacza to przejąć kontrolę na liście elementów (takich jak nagłówki w przypadku nagłówków w postaci kanonicznej) i je ustandaryzować w wymaganym formatem. Po prostu Microsoft decyzję formatu i muszą zapewnić zgodność.
 
 Zacznijmy od tych dwóch pól postaci kanonicznej, ponieważ są one wymagane do utworzenia nagłówka autoryzacji.
 
@@ -325,7 +325,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
     StringBuilder sb = new StringBuilder();
 
     // Create the string in the right format; this is what makes the headers "canonicalized" --
-    //   it means put in a standard format. http://en.wikipedia.org/wiki/Canonicalization
+    //   it means put in a standard format. https://en.wikipedia.org/wiki/Canonicalization
     foreach (var kvp in headers)
     {
         StringBuilder headerBuilder = new StringBuilder(kvp.Key);
@@ -482,7 +482,7 @@ GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
 SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 ```
 
-Poniżej przedstawiono wartości z [Fiddler](http://www.telerik.com/fiddler):
+Poniżej przedstawiono wartości z [Fiddler](https://www.telerik.com/fiddler):
 
 **Żądanie:**
 

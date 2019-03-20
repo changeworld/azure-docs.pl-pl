@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249000"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854470"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Wdrażanie wielu aplikacji wykonywalnych gości
 Ten artykuł pokazuje, jak pakowanie i wdrażanie wielu aplikacji wykonywalnych gości w usłudze Azure Service Fabric. Do tworzenia i wdrażania jednego pakietu usługi Service Fabric przeczytaj, jak do [wdrażanie pliku wykonywalnego gościa w usłudze Service Fabric](service-fabric-deploy-existing-app.md).
@@ -167,7 +167,7 @@ Teraz przejdź do katalogu i sprawdzić, jakie narzędzia został utworzony.
 Jak widać, narzędzie dodać nowy folder bazy danych MongoDB, do katalogu, który zawiera pliki binarne bazy danych MongoDB. Jeśli otworzysz `ApplicationManifest.xml` pliku, zobaczysz, że pakiet zawiera teraz aplikacją w technologii Node.js i MongoDB. Poniższy kod pokazuje zawartość manifestu aplikacji.
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="MongoDB" ServiceManifestVersion="1.0" />
    </ServiceManifestImport>

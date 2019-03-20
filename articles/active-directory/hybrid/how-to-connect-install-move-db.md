@@ -11,12 +11,12 @@ ms.date: 03/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c25aef949b99bb4dc348bd2392ada325fcd466ea
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eeeb9989b6bf0233354d493f5dbb6916c806cfdb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169619"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076840"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Przenoszenie bazy danych programu Azure AD Connect z serwera SQL Server Express do serwera SQL Server 
 
@@ -30,42 +30,42 @@ Poniżej przedstawiono krótkie informacje na temat tego scenariusza.  W tym sce
 ## <a name="move-the-azure-ad-connect-database"></a>Przenoszenie bazy danych programu Azure AD Connect
 Wykonaj następujące kroki, aby przenieść bazę danych programu Azure AD Connect na zdalny serwer SQL Server.
 
-1.  Na serwerze programu Azure AD Connect przejdź do pozycji **Usługi** i zatrzymaj usługę **Microsoft Azure AD Sync**.
+1. Na serwerze programu Azure AD Connect przejdź do pozycji **Usługi** i zatrzymaj usługę **Microsoft Azure AD Sync**.
 2. Znajdź folder **%Program Files%\Microsoft Azure AD Sync/Data/** i skopiuj pliki **ADSync.mdf** oraz **ADSync_log.ldf** na zdalny serwer SQL Server.
 3. Uruchom ponownie usługę **Microsoft Azure AD Sync** na serwerze programu Azure AD Connect.
 4. Odinstaluj program Azure AD Connect, przechodząc do pozycji Panel sterowania — Programy — Programy i funkcje.  Wybierz pozycję Microsoft Azure AD Connect i kliknij u góry pozycję Odinstaluj.
 5. Na zdalnym serwerze SQL Server otwórz program SQL Server Management Studio.
 6. W sekcji Bazy danych kliknij prawym przyciskiem myszy i wybierz pozycję Dołącz.
 7. Na ekranie **Dołączanie baz danych** kliknij pozycję **Dodaj** i przejdź do pliku ADSync.mdf.  Kliknij przycisk **OK**.
-![](media/how-to-connect-install-move-db/move2.png)
+   ![](media/how-to-connect-install-move-db/move2.png)
 
 8. Po dołączeniu bazy danych wróć do serwera programu Azure AD Connect i zainstaluj program Azure AD Connect.
 9. Po zakończeniu instalacji pliku MSI kreator programu Azure AD Connect rozpocznie instalację w trybie ekspresowym. Zamknij ekran, klikając ikonę zakończenia.
-![Powitanie](./media/how-to-connect-install-move-db/db1.png)
+   ![Powitanie](./media/how-to-connect-install-move-db/db1.png)
 10. Uruchom nowy wiersz polecenia lub sesję programu PowerShell. Przejdź do folderu <drive>\program files\Microsoft Azure AD Connect. Uruchom polecenie .\AzureADConnect.exe /useexistingdatabase w celu uruchomienia kreatora programu Azure AD Connect w trybie instalacji „Użyj istniejącej bazy danych”.
-![Program PowerShell](./media/how-to-connect-install-move-db/db2.png)
+    ![Program PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Zobaczysz ekran powitalny programu Azure AD Connect. Gdy zaakceptujesz postanowienia licencyjne i uwagi na temat ochrony prywatności, kliknij pozycję **Kontynuuj**.
-![Powitanie](./media/how-to-connect-install-move-db/db3.png)
+    ![Powitanie](./media/how-to-connect-install-move-db/db3.png)
 12. Na ekranie **Instalowanie wymaganych składników** włączona jest opcja **Użyj istniejącego serwera SQL Server**. Określ nazwę serwera SQL Server hostującego bazę danych programu ADSync. Jeśli wystąpienie aparatu SQL używane do hostowania bazy danych programu ADSync nie jest domyślnym wystąpieniem serwera SQL Server, musisz określić nazwę wystąpienia aparatu SQL. Ponadto jeśli nie jest włączone przeglądanie SQL, musisz też określić numer portu wystąpienia aparatu SQL. Na przykład:         
-![Powitanie](./media/how-to-connect-install-move-db/db4.png)           
+    ![Powitanie](./media/how-to-connect-install-move-db/db4.png)           
 
 13. Na ekranie **Łączenie z usługą Azure AD** musisz podać poświadczenia administratora globalnego katalogu usługi Azure AD. Zaleca się użycie konta w domyślnej domenie onmicrosoft.com. To konto służy tylko do tworzenia konta usługi w usłudze Azure AD i nie jest używane po zakończeniu pracy kreatora.
-![Połączenie](./media/how-to-connect-install-move-db/db5.png)
+    ![Połączenie](./media/how-to-connect-install-move-db/db5.png)
  
 14. Na ekranie **Podłączanie katalogów** istniejący las usługi AD skonfigurowany na potrzeby synchronizacji katalogów jest wyświetlany z ikoną czerwonego krzyżyka. Aby zsynchronizować zmiany z lokalnego lasu usługi AD, wymagane jest konto usługi AD DS. Kreator programu Azure AD Connect nie może uzyskać poświadczeń konta usługi AD DS przechowywanych w bazie danych programu ADSync, ponieważ poświadczenia są zaszyfrowane i mogą zostać odszyfrowane tylko przez poprzedni serwer programu Azure AD Connect. Kliknij pozycję **Zmień poświadczenia**, aby określić konto usługi AD DS dla lasu usługi AD.
-![Katalogi](./media/how-to-connect-install-move-db/db6.png)
+    ![Katalogi](./media/how-to-connect-install-move-db/db6.png)
  
  
 15. W wyskakującym oknie dialogowym możesz albo (i) podać poświadczenia administratora przedsiębiorstwa i pozwolić programowi Azure AD Connect utworzyć konto usługi AD DS, albo (ii) samodzielnie utworzyć konto usługi AD DS i podać jego poświadczenia w programie Azure AD Connect. Po wybraniu opcji i podaniu niezbędnych poświadczeń kliknij przycisk **OK** w celu zamknięcia wyskakującego okna dialogowego.
-![Powitanie](./media/how-to-connect-install-move-db/db7.png)
+    ![Powitanie](./media/how-to-connect-install-move-db/db7.png)
  
  
 16. Po podaniu poświadczeń ikona czerwonego krzyżyka jest zastępowana ikoną zielonego znacznika wyboru. Kliknij przycisk **Dalej**.
-![Powitanie](./media/how-to-connect-install-move-db/db8.png)
+    ![Powitanie](./media/how-to-connect-install-move-db/db8.png)
  
  
 17. Na ekranie **Wszystko gotowe do skonfigurowania** kliknij pozycję **Zainstaluj**.
-![Powitanie](./media/how-to-connect-install-move-db/db9.png)
+    ![Powitanie](./media/how-to-connect-install-move-db/db9.png)
  
  
 18. Po zakończeniu instalacji serwer programu Azure AD Connect jest automatycznie włączany dla trybu przejściowego. Przed wyłączeniem trybu przejściowego zaleca się przejrzenie konfiguracji serwera i oczekujących operacji eksportowania pod kątem nieoczekiwanych zmian. 

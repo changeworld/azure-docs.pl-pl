@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 82885c00557c85fefcf221789263632e21bd77da
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ab6da597457fa94c171a1e2547c1d48cf35cd0f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344033"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893054"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
@@ -51,7 +51,7 @@ Na poniższym diagramie przedstawiono, jak różnych infrastruktur Integration R
 Infrastruktura Azure Integration Runtime zapewnia następujące funkcje:
 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze
-- Wysyłanie następujących działań przekształcania w sieci publicznej: Działanie HDInsight Hive, działanie HDInsight Pig, działanie HDInsight MapReduce, działanie HDInsight Spark, działanie HDInsight Streaming, Machine Learning Batch Execution, działanie, działania Machine Learning Update Resource, działanie Stored Procedure Działania usługi Data Lake Analytics U-SQL, działanie niestandardowe platformy .net, działanie internetowe, działanie Lookup i działanie Get Metadata.
+- Wysyłanie następujących działań przekształcania w sieci publicznej: Działanie HDInsight Hive, działanie HDInsight Pig, działanie HDInsight MapReduce, działanie HDInsight Spark, działanie HDInsight Streaming, Machine Learning Batch Execution, działanie, działania Machine Learning Update Resource, działanie Stored Procedure Działania usługi Data Lake Analytics U-SQL, działanie niestandardowe platformy .NET, działanie internetowe, działanie Lookup i działanie Get Metadata.
 
 ### <a name="azure-ir-network-environment"></a>Środowisko sieciowe IR Azure
 Infrastruktura Azure Integration Runtime obsługuje łączenie z magazynami danych i usługami obliczeniowymi w sieci publicznej przy użyciu dostępnych publicznie punktów końcowych. Zastosowanie infrastruktury Integration Runtime (Self-hosted) w środowisku sieci wirtualnej Azure.
@@ -69,7 +69,7 @@ Informacje na temat tworzenia i konfigurowania infrastruktury Azure IR można zn
 Infrastruktura IR (Self-hosted) oferuje następujące możliwości:
 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze i magazynem danych w sieci prywatnej.
-- Wysyłanie następujących działań przekształcania w odniesieniu do zasobów obliczeniowych w lokalnych lub w usłudze Azure Virtual Network: Działanie HDInsight Hive (Przełącz BYOC Your własnego klastra), działanie HDInsight Pig (BYOC), działanie HDInsight MapReduce (BYOC), działanie HDInsight Spark (BYOC), HDInsight działania przesyłania strumieniowego (BYOC), działanie Machine Learning Batch Execution, Machine Learning Aktualizowanie działań zasobów, działanie Stored Procedure, działanie U-SQL usługi Data Lake Analytics, niestandardowe działanie platformy .net, działanie Lookup i działanie Get Metadata.
+- Wysyłanie następujących działań przekształcania w odniesieniu do zasobów obliczeniowych w lokalnych lub w usłudze Azure Virtual Network: Działanie HDInsight Hive (Przełącz BYOC Your własnego klastra), działanie HDInsight Pig (BYOC), działanie HDInsight MapReduce (BYOC), działanie HDInsight Spark (BYOC), HDInsight działania przesyłania strumieniowego (BYOC), działanie Machine Learning Batch Execution, Machine Learning Aktualizowanie działań zasobów, działanie Stored Procedure, działanie U-SQL usługi Data Lake Analytics, niestandardowe działanie platformy .NET, działanie Lookup i działanie Get Metadata.
 
 > [!NOTE] 
 > Infrastruktura Integration Runtime (Self-hosted) umożliwia obsługę magazynów danych wymagających własnych sterowników, takich jak SAP Hana, MySQL itp.  Więcej informacji można znaleźć w sekcji dotyczącej [obsługiwanych magazynów danych](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -16,17 +16,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194202"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011274"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Wdrażanie oprogramowania SAP IDES EHP7 SP3 dla oprogramowania SAP ERP 6.0 na platformie Azure
 W tym artykule opisano, jak wdrożyć system SAP IDES z programem SQL Server i systemu operacyjnego Windows na platformie Azure przy użyciu biblioteki SAP Cloud Appliance Library (SAP CAL) 3.0. Zrzuty ekranu pokazują krok po kroku procesu. Aby wdrożyć inne rozwiązanie, wykonaj te same czynności.
 
-Aby rozpocząć SAP CAL, przejdź do [SAP Cloud Appliance Library](https://cal.sap.com/) witryny sieci Web. Firma SAP ma również blog o nowym [SAP Cloud Appliance biblioteki 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
+Aby rozpocząć SAP CAL, przejdź do [SAP Cloud Appliance Library](https://cal.sap.com/) witryny sieci Web. Firma SAP ma również blog o nowym [SAP Cloud Appliance biblioteki 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
 > Od 29 maja 2017 r. modelu wdrażania usługi Azure Resource Manager, oprócz preferowane mniej klasycznego modelu wdrażania można użyć do wdrożenia SAP CAL. Firma Microsoft zaleca użycie nowego modelu wdrażania usługi Resource Manager, a następnie pominąć klasycznego modelu wdrażania.
@@ -46,8 +46,8 @@ Po zalogowaniu się do SAP CAL, pierwsza strona zwykle prowadzi do **rozwiązani
     
     c. Nadaj uprawnienia SAP CAL do wdrożenia w ramach subskrypcji platformy Azure.
 
-    > [!NOTE]
-    Następne kroki pokazują jak utworzyć konto SAP CAL dla wdrożeń usługi Resource Manager. Jeśli masz już konto SAP CAL, który jest połączony z klasycznego modelu wdrażania, możesz *muszą* wykonaj następujące kroki, aby utworzyć nowe konto SAP CAL. Nowe konto SAP CAL musi wdrożyć w modelu usługi Resource Manager.
+   > [!NOTE]
+   >  Następne kroki pokazują jak utworzyć konto SAP CAL dla wdrożeń usługi Resource Manager. Jeśli masz już konto SAP CAL, który jest połączony z klasycznego modelu wdrażania, możesz *muszą* wykonaj następujące kroki, aby utworzyć nowe konto SAP CAL. Nowe konto SAP CAL musi wdrożyć w modelu usługi Resource Manager.
 
 1. Aby utworzyć nowe konto SAP CAL **kont** strona zawiera jedną z dwóch opcji dla platformy Azure: 
 
@@ -91,7 +91,7 @@ Pomyślnie utworzono konto SAP CAL, który jest w stanie:
 - Wdrażanie systemów SAP w ramach subskrypcji platformy Azure.
 
 > [!NOTE]
-Przed wdrożeniem rozwiązania SAP IDES na podstawie Windows i programu SQL Server, może być konieczne w celu uzyskania subskrypcji usługi SAP CAL. W przeciwnym razie rozwiązania może być wyświetlany jako **zablokowany** na stronie Przegląd.
+> Przed wdrożeniem rozwiązania SAP IDES na podstawie Windows i programu SQL Server, może być konieczne w celu uzyskania subskrypcji usługi SAP CAL. W przeciwnym razie rozwiązania może być wyświetlany jako **zablokowany** na stronie Przegląd.
 
 ### <a name="deploy-a-solution"></a>Wdrażanie rozwiązania
 1. Po skonfigurowaniu konta SAP CAL, wybierz **rozwiązanie SAP IDES na Windows i program SQL Server** rozwiązania. Kliknij przycisk **Utwórz wystąpienie**i upewnij się, warunki użytkowania i warunki. 
@@ -104,7 +104,7 @@ Przed wdrożeniem rozwiązania SAP IDES na podstawie Windows i programu SQL Serv
 
     c.  Wprowadź wzorzec **hasło** dla rozwiązania, jak pokazano:
 
-    ![SAP CAL Basic tryb: Tworzenie wystąpienia](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL Basic tryb: Utwórz wystąpienie](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. Kliknij pozycję **Utwórz**. Po pewnym czasie w zależności od rozmiaru i złożoność rozwiązania (SAP CAL zapewnia oszacowanie), zostanie wyświetlony stan jako aktywne i gotowe do użycia: 
 

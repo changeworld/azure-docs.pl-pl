@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: ab13b0db843e5a2652ed1dd61a0e5ab5f7541244
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021989"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120265"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
 W tym samouczku użyjesz interfejsu użytkownika usługi Azure Data Factory, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze.
@@ -134,11 +134,11 @@ Nazwa fabryki danych musi być *globalnie unikatowa*. Jeśli dla pola nazwy zoba
 1. Wybierz **subskrypcję** platformy Azure, w której chcesz utworzyć fabrykę danych.
 1. W obszarze **Grupa zasobów** wykonaj jedną z następujących czynności:
    
-      - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej.
+   - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej.
 
-      - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.
+   - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.
         
-    Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/resource-group-overview.md).
+     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/resource-group-overview.md).
 1. W obszarze **Wersja** wybierz pozycję **V2**.
 1. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Storage i SQL Database) oraz jednostki obliczeniowe (np. usługa Azure HDInsight) używane przez usługę Data Factory mogą mieścić się w innych regionach.
 1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**. 
@@ -212,7 +212,7 @@ Nazwa fabryki danych musi być *globalnie unikatowa*. Jeśli dla pola nazwy zoba
 
     b. Upewnij się, że utworzone wcześniej środowisko Integration Runtime jest wyświetlane w polu **Połącz za pomocą środowiska Integration Runtime**.
 
-    d. W polu **Nazwa serwera** wprowadź nazwę lokalnego wystąpienia programu SQL Server. 
+    c. W polu **Nazwa serwera** wprowadź nazwę lokalnego wystąpienia programu SQL Server. 
 
     d. W polu **Nazwa bazy danych** wprowadź nazwę bazy danych zawierającej tabelę **emp**.
 
@@ -260,7 +260,7 @@ Nazwa fabryki danych musi być *globalnie unikatowa*. Jeśli dla pola nazwy zoba
 
     b. W polu **Nazwa konta magazynu** wybierz konto magazynu.
 
-    d. Aby przetestować połączenie z kontem magazynu, wybierz pozycję **Testuj połączenie**.
+    c. Aby przetestować połączenie z kontem magazynu, wybierz pozycję **Testuj połączenie**.
 
     d. Wybierz pozycję **Zapisz**.
 
@@ -272,7 +272,7 @@ Nazwa fabryki danych musi być *globalnie unikatowa*. Jeśli dla pola nazwy zoba
 
     b. Jako część **folder**/ **katalog** w polu **Ścieżka pliku** wprowadź wartość **adftutorial/incrementalcopy**. Jeśli folder wyjściowy nie istnieje w kontenerze adftutorial, usługa Data Factory automatycznie utworzy folder wyjściowy.
 
-    d. W przypadku części **nazwa pliku** w polu **Ścieżka pliku** wybierz pozycję **Dodaj zawartość dynamiczną**.   
+    c. W przypadku części **nazwa pliku** w polu **Ścieżka pliku** wybierz pozycję **Dodaj zawartość dynamiczną**.   
 
     ![dynamiczna wartość nazwy pliku](./media/tutorial-hybrid-copy-portal/file-name.png)
 
@@ -319,7 +319,7 @@ Potok automatycznie tworzy folder wyjściowy o nazwie *fromonprem* w kontenerze 
 ![potwierdzenie nazwy pliku wyjściowego](./media/tutorial-hybrid-copy-portal/sink-output.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Blob Storage. W tym samouczku omówiono:
 
 > [!div class="checklist"]

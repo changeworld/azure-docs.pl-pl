@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 65fa09b779f656654411a1d0c3602598655f50c9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 0df8e19d3c6f0680f1eb1b0157c3bee5c9841e4c
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884365"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575090"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importowanie do magazynu usługi Azure App Configuration
 
@@ -52,9 +52,9 @@ Ten skrypt używa poniższych poleceń do importowania magazynu konfiguracji apl
 
 | Polecenie | Uwagi |
 |---|---|
-| [az appconfig import](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-import) | Importuje do zasobu magazynu konfiguracji aplikacji. |
+| [az appconfig import](/cli/azure/ext/appconfig/appconfig) | Importuje do zasobu magazynu konfiguracji aplikacji. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](/cli/azure).
 

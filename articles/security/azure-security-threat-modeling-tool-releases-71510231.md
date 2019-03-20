@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: eb1b3c04d3714280c1d1ba6c91b3a4c728a3d1af
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 6f7699ece97be1941ef5235b92f2c76b3bed140e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360310"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883495"
 ---
-# <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Wydanie aktualizacji narzędzie do modelowania zagrożeń 7.1.51023.1 - 1-11 lutego 2018
+# <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool, wersja aktualizacyjna 7.1.51023.1 — 2018-11-01
 
 Pierwotnie zanotowanym w [wersji ogólnie dostępnej wersji](./azure-security-threat-modeling-tool-releases-71509112.md), opublikowaliśmy aktualizację (7.1.51023.1) do narzędzia modelowania zagrożeń firmy Microsoft, który będzie wymagać od użytkowników wersji zapoznawczej (wersja zapoznawcza klientów przy użyciu wersji < 7.1.50911.2) do uaktualnienia do obsługiwana wersja Ogólnodostępna. Ta wersja nie zawiera żadnych nowych funkcji ani poprawek składnika.
 
@@ -38,7 +38,7 @@ Pierwotnie zanotowanym w [wersji ogólnie dostępnej wersji](./azure-security-th
 - Obsługiwane systemy operacyjne
   - Microsoft Windows 10
 - Wymagana wersja platformy .NET
-  - .Net 3.5.2
+  - .NET 3.5.2
 - Wymagania dodatkowe
   - Aby otrzymywać aktualizacje do narzędzia, jak również szablony, wymagane jest połączenie internetowe.
 

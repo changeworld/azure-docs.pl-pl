@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbeffd012d2d2445d4a9a927981728e1bbe43e97
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670574"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111314"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Dostosowywanie i współpracy usługi Azure Active Directory B2B interfejsu API
 
@@ -44,7 +44,7 @@ Interfejs API oferuje następujące możliwości:
     "sendInvitationMessage": true
     ```
 
-  komunikat do adresata, które można dostosowywać
+   komunikat do adresata, które można dostosowywać
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
@@ -58,7 +58,7 @@ Interfejs API oferuje następujące możliwości:
     "sendInvitationMessage": false
     ```
 
-  W takim przypadku należy wrócić adres URL realizacji z interfejsu API, które można osadzić w szablon wiadomości e-mail, wiadomości Błyskawicznych lub innej metody dystrybucji wybranego.
+   W takim przypadku należy wrócić adres URL realizacji z interfejsu API, które można osadzić w szablon wiadomości e-mail, wiadomości Błyskawicznych lub innej metody dystrybucji wybranego.
 
 6. Ponadto jeśli jesteś administratorem, możesz zaprosić użytkownika jako członka.
 

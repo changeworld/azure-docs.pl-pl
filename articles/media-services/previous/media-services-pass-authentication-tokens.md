@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: dwgeo
-ms.openlocfilehash: b4bcc1bbed732e09f4c4d915342a422ce6c36901
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: 6fc13010d5dd888f28b5634b1f70aaa3326e54cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002079"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837511"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Dowiedz się, jak klienci przekazywanie tokenów usługi dostarczania kluczy usługi Azure Media Services
 Klienci często pytają, jak Odtwarzacz można przekazać tokenów do usługi dostarczania kluczy usługi Azure Media Services w celu weryfikacji, gracz może uzyskać klucz. Usługa Media Services obsługuje prosty token sieci web (SWT) i formatuje tokenu Web JSON (JWT). Token uwierzytelniania są stosowane do dowolnego typu klucza, niezależnie od tego, czy używać wspólnych lub szyfrowania Advanced Encryption Standard (AES) koperty w systemie.
@@ -29,7 +29,7 @@ Klienci często pytają, jak Odtwarzacz można przekazać tokenów do usługi do
 
 - Za pomocą nagłówka autoryzacji HTTP.
     > [!NOTE]
-    > Prefiks "Bearer" oczekuje na specyfikacji protokołu OAuth 2.0. Odtwarzacz próbki, przy użyciu tokenu konfiguracji znajduje się na usługi Azure Media Player [strona pokazu](http://ampdemo.azureedge.net/). Aby ustawić źródło wideo, wybierz **AES (tokenu JWT)** lub **AES (SWT tokenu)**. Token jest przekazywany za pośrednictwem nagłówka autoryzacji.
+    > Prefiks "Bearer" oczekuje na specyfikacji protokołu OAuth 2.0. Odtwarzacz próbki, przy użyciu tokenu konfiguracji znajduje się na usługi Azure Media Player [strona pokazu](https://ampdemo.azureedge.net/). Aby ustawić źródło wideo, wybierz **AES (tokenu JWT)** lub **AES (SWT tokenu)**. Token jest przekazywany za pośrednictwem nagłówka autoryzacji.
 
 - Przez dodanie ich do adresu URL zapytania parametr "token = tokenvalue."  
     > [!NOTE]

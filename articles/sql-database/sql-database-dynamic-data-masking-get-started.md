@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/04/2019
-ms.openlocfilehash: c174167268e95e55b0916d2340005538d3ae8add
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2be1f7bb6417834196da03b7cba22387744f8c19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336788"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876548"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Baza danych SQL dynamiczne maskowanie danych
 
@@ -55,7 +55,7 @@ Dynamiczne maskowanie danych mogą być konfigurowane przez administratora usłu
 
 Aparat zaleceń DDM flag określonych pól z bazy danych jako potencjalnie poufnych pola, które mogą być odpowiednimi obiektami do maskowania. W bloku funkcja dynamiczne maskowanie danych w portalu zobaczysz zalecane kolumny bazy danych. To wszystko, czego potrzebujesz, aby zrobić, kliknij przycisk **Dodaj maskę** dla co najmniej jednej kolumny i następnie **Zapisz** do zastosowania do maski dla tych pól.
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Skonfigurować dynamiczne maskowanie danych dla bazy danych przy użyciu poleceń cmdlet programu Powershell
+## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Skonfigurować dynamiczne maskowanie danych dla bazy danych przy użyciu poleceń cmdlet programu PowerShell
 
 Zobacz [polecenia cmdlet usługi Azure SQL Database](https://docs.microsoft.com/powershell/module/az.sql).
 

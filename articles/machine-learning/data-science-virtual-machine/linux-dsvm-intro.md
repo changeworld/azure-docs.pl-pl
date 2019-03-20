@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 58f4d7be530aa3c7e0071a2f0d80bc30ebd5cf25
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e7b67905c96495382536555b87772e4eefada250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440917"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835751"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej do nauki o danych CentOS Linux na platformie Azure
 
@@ -104,7 +104,7 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie systemu Linux maszyny w
 Aprowizacja powinno zająć około 10-20 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>Jak uzyskać dostęp do maszyny wirtualnej do nauki o danych systemu Linux
-Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](http://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
+Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. W systemie Windows możesz pobrać narzędzia klienta SSH, takie jak program [Putty](https://www.putty.org). Jeśli wolisz graficzny desktop (X w systemie Windows), możesz użyć X11 przekazywania w programie Putty lub zainstalować klienta X2Go.
 
 > [!NOTE]
 > Klient X2Go wykonywane znacznie lepsze niż X11 przekazywania do testowania. Zaleca się przy użyciu klienta X2Go dla interfejsu graficznego pulpitu.
@@ -114,7 +114,7 @@ Po utworzeniu maszyny Wirtualnej możesz można Zaloguj się do niej przy użyci
 ## <a name="installing-and-configuring-x2go-client"></a>Instalowanie i konfigurowanie klienta X2Go
 Maszyny Wirtualnej systemu Linux jest już zainicjowana przy użyciu serwera X2Go i gotowy do akceptowania połączeń klienta. Aby połączyć pulpit graficzny maszyny Wirtualnej systemu Linux, wykonaj następujące czynności na komputerze klienckim:
 
-1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 1. Uruchom klienta X2Go, a następnie wybierz pozycję **nowej sesji**. Otwiera okno konfiguracji z wieloma kartami. Wprowadź następujące parametry konfiguracji:
    * **Karta sesji**:
      * **Host**: Nazwa hosta lub adres IP maszyny wirtualnej do nauki o danych systemu Linux.
@@ -132,7 +132,7 @@ R jest jednym z najbardziej popularnych języków do analizowania danych i uczen
 
 Aby uruchomić R konsoli, po prostu wpisz **R** w powłoce. Spowoduje to przejście do środowiska interaktywnego. Aby opracować programu R, zazwyczaj używają edytorem takim jak Emacs lub vi lub gedit, a następnie uruchom skrypty w języku R. Za pomocą programu RStudio masz pełną graficznego środowiska IDE do tworzenia programu R.
 
-Jest także skrypt języka R do zainstalowania [pakietów języka R z pierwszych 20](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) chcącym. Ten skrypt można uruchomić po R interaktywny interfejs, który można wprowadzić (jak wspomniano), wpisując **R** w powłoce.  
+Jest także skrypt języka R do zainstalowania [pakietów języka R z pierwszych 20](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) chcącym. Ten skrypt można uruchomić po R interaktywny interfejs, który można wprowadzić (jak wspomniano), wpisując **R** w powłoce.  
 
 ### <a name="python"></a>Python
 Do tworzenia aplikacji przy użyciu języka Python została zainstalowana dystrybucja Anaconda Python 2.7 i 3.5. Rozkład ten zawiera podstawowy Python wraz z około 300 najpopularniejszych matematycznych, inżynieria i danych pakietów do analizy. Możesz użyć domyślnego edytorów tekstu. Ponadto można użyć Spyder, środowisko IDE języka Python, który jest powiązany z dystrybucji Anaconda Python. Spyder musi mieć graficzny pulpitu lub X11 przekazywania. Skrót do Spyder znajduje się w pulpicie graficznego.
@@ -203,7 +203,7 @@ Hadoop można zatrzymać związane z usługami, gdy nie są potrzebne, uruchamia
 ### <a name="ides-and-editors"></a>Środowiska IDE i edytorów
 Masz do wyboru kilka edytorów kodu. W tym vi/VIM, Emacs, gEdit, platformy PyCharm, RStudio, Eclipse i IntelliJ. gEdit, Eclipse, IntelliJ, RStudio i platformy PyCharm są edytory graficzne i musisz być zarejestrowany w programie desktop graficznego z nich korzystać. Te edytorów, aplikacji i pulpitu menu skrótów do ich uruchamiania.
 
-**VIM** i **Emacs** są edytory oparte na tekście. Na Emacs możemy zainstalować pakietu dodatku o nazwie Emacs mówi statystyki (dostępu), która ułatwia pracę przy użyciu języka R w edytorze Emacs. Więcej informacji znajduje się w temacie [TĘPU](http://ess.r-project.org/).
+**VIM** i **Emacs** są edytory oparte na tekście. Na Emacs możemy zainstalować pakietu dodatku o nazwie Emacs mówi statystyki (dostępu), która ułatwia pracę przy użyciu języka R w edytorze Emacs. Więcej informacji znajduje się w temacie [TĘPU](https://ess.r-project.org/).
 
 **Eclipse** jest typu open source, rozszerzalne środowisko IDE, która obsługuje wiele języków. Wersja deweloperów języka Java jest wystąpieniem zainstalowane na maszynie Wirtualnej. Brak dostępnych wtyczek dla kilku popularnych języków, które mogą być instalowane rozszerzenie środowiska. Mamy także wtyczki zainstalowane w środowisku Eclipse o nazwie **Azure Toolkit for Eclipse**. Umożliwia tworzenie, opracowywanie, testowanie i wdrażać aplikacje platformy Azure przy użyciu środowiska deweloperskiego Eclipse, który obsługuje języki takie jak Java. Istnieje również **zestawu Azure SDK dla języka Java** umożliwiającą dostęp do różnych usług platformy Azure ze środowiska Java. Więcej informacji na temat zestaw narzędzi platformy Azure dla środowiska Eclipse, można znaleźć w folderze [Azure Toolkit for Eclipse](../../azure-toolkit-for-eclipse.md).
 
@@ -377,5 +377,5 @@ Poniżej przedstawiono, jak można kontynuować Twoją naukę oraz eksploracji:
 * [Do nauki o danych w systemie Linux maszyny wirtualnej analizy danych](linux-dsvm-walkthrough.md) instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z systemem Linux maszyna wirtualna do nauki o danych aprowizowane w tym miejscu. 
 * Eksplorowanie różnych narzędzi do analizy danych na maszyny Wirtualnej do analizy danych, korzystając z narzędzi opisanych w tym artykule. Można również uruchomić *dsvm więcej informacji o* Shell na maszynie wirtualnej wstęp i łącza do dodatkowych informacji na temat narzędzi zainstalowanych na maszynie Wirtualnej.  
 * Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
-* Odwiedź stronę [Cortana Analytics — Galeria](http://gallery.cortanaanalytics.com) maszyny nauki i dane analizy przykładów korzystających z pakietu Cortana Analytics.
+* Odwiedź stronę [Cortana Analytics — Galeria](https://gallery.cortanaanalytics.com) maszyny nauki i dane analizy przykładów korzystających z pakietu Cortana Analytics.
 

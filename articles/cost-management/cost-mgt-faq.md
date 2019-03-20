@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/14/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6ebd25dc65f86e5e028c1c56943756b46d0db9a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098094"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011794"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
 
@@ -75,7 +75,7 @@ Po wykonaniu powyższych kroków, możesz wyświetlić zalecenia optymalizator w
 Najpierw Przyjrzyjmy się najbardziej typowy scenariusz, który powoduje, że konta użytkowników uzyskać *initiallySuspended*.
 
 > Admin1 może być użytkownikiem dostawcy rozwiązań w chmurze firmy Microsoft lub umowy Enterprise Agreement. Jego organizacja jest gotowy rozpocząć korzystanie z platformy Cloudyn.  Użytkownik rejestruje się w witrynie Azure portal i zaloguje się do portalu Cloudyn. Jako osoba, która rejestruje usługi Cloudyn i loguje się do portalu Cloudyn, staje się on *głównych administratorów*. Admin1 nie utworzyć kont użytkowników. Jednak przy użyciu portalu Cloudyn, on tworzenia konta platformy Azure i konfiguruje hierarchii jednostek. Admin1 informuje Admin2, administrator dzierżawy, który musi zarejestrować w usłudze Cloudyn i zaloguj się do portalu Cloudyn.
-
+> 
 > Admin2 rejestruje się w witrynie Azure portal. Jednak gdy próbuje zalogować się do portalu Cloudyn, emitowany błąd informujący o tym, jego konto jest **zawieszone**. Administrator podstawowy Admin1, jest powiadamiany o zawieszenie konta. Admin1 musi aktywować firmy Admin2 konto i przyznać *dostęp do jednostki administracyjnej* dla odpowiednich jednostek i umożliwia użytkownika zarządzania dostępem i aktywne konta użytkownika.
 
 
@@ -126,9 +126,9 @@ Cloudyn automatycznie wykrywa walucie subskrypcji Enterprise Agreement i prezent
 
 Cloudyn ma następujące osie czasu odświeżania danych:
 
-- **Początkowa**: po skonfigurowaniu, może upłynąć do 24 godzin, aby wyświetlić dane kosztów w rozwiązaniu Cloudyn. Może to również przybrać rozwiązanie Cloudyn do zbierania wystarczającej ilości danych, aby wyświetlić zalecenia dotyczące ustalania rozmiaru w ciągu 10 dni.
-- **Codzienne**: od dziesiątego na koniec każdego miesiąca Cloudyn powinny pokazywać dane na bieżąco z poprzedniego dnia po o UTC + 3 następnego dnia.
-- **Miesięczne**: od pierwszego dnia do dziesiątego dnia każdego miesiąca Cloudyn może wyświetlać dane tylko do końca poprzedniego miesiąca.
+- **Początkowa**: Po skonfigurowaniu może potrwać do 24 godzin, aby wyświetlić dane kosztów w rozwiązaniu Cloudyn. Może to również przybrać rozwiązanie Cloudyn do zbierania wystarczającej ilości danych, aby wyświetlić zalecenia dotyczące ustalania rozmiaru w ciągu 10 dni.
+- **Codzienne**: Z dziesiątego na koniec każdego miesiąca Cloudyn powinny pokazywać dane jako aktualne informacje z poprzedniego dnia po o UTC + 3 następnego dnia.
+- **Miesięczne**: Począwszy od pierwszego dnia dziesiątym dniu każdego miesiąca Cloudyn może wyświetlać dane tylko do końca poprzedniego miesiąca.
 
 Cloudyn przetwarza dane z poprzedniego dnia, gdy jest dostępna pełna danych z poprzedniego dnia. Poprzedniego dnia, dane są zwykle dostępne w rozwiązaniu Cloudyn przez o UTC + 3 każdego dnia. Niektórych danych, takich jak tagi oraz może być dodatkowe 24 godziny do przetwarzania.
 

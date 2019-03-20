@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 763dfbc3813a63ffbc91180de1d5b518cef2a46d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470166"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100449"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Otwórz bilet pomocy technicznej urządzenia Azure Data Box 
 
@@ -55,14 +55,14 @@ Wykonaj poniższe kroki, aby utworzyć żądanie pomocy technicznej:
 
 4. W **nowe żądanie obsługi**, kliknij przycisk **informacji skontaktuj się z kroku 3**. W **informacje kontaktowe**, wykonaj następujące czynności:
 
-    1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
-    2. W **informacje kontaktowe**, podaj nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraju. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi**.
-    3. Kliknij pozycję **Utwórz**.
+   1. W **opcje kontaktu**, podaj preferowaną metodę kontaktu (telefonu lub adresu e-mail) i język. Czas odpowiedzi zostanie automatycznie wybrany w oparciu o plan subskrypcji.
+   2. W **informacje kontaktowe**, podaj nazwę, adres e-mail, opcjonalny skontaktuj się z pomocą, kraju. Wybierz **Zapisz zmiany dotyczące kontaktu dla przyszłych żądań obsługi**.
+   3. Kliknij pozycję **Utwórz**.
    
-        ![Informacje kontaktowe](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
+       ![Informacje kontaktowe](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
-    Support firmy Microsoft używa tych informacji, aby skontaktować się z Tobą dodatkowe informacje, diagnozowania i rozwiązywania.
-Gdy prześlesz żądanie inżynier pomocy technicznej się z Tobą tak szybko, jak to możliwe, aby kontynuować z żądaniem.
+      Support firmy Microsoft używa tych informacji, aby skontaktować się z Tobą dodatkowe informacje, diagnozowania i rozwiązywania.
+      Gdy prześlesz żądanie inżynier pomocy technicznej się z Tobą tak szybko, jak to możliwe, aby kontynuować z żądaniem.
 
 ## <a name="manage-a-support-request"></a>Zarządzaj żądaniami obsługi
 

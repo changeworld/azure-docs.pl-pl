@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8225f5a093724c00dcc336d5dc2195f4addc998b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090478"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Szybki start: Tworzenie aplikacji internetowej platformy ASP.NET 
 
@@ -50,7 +50,7 @@ Aby ukończyć ten przewodnik Szybki start, musisz zainstalować program [Visual
 
     b. Wybierz pozycję **Chmura**.
 
-    d. Wybierz pozycję **Aplikacja internetowa platformy ASP.NET**.
+    c. Wybierz pozycję **Aplikacja internetowa platformy ASP.NET**.
 
     d. Upewnij się, że został wybrany program **.NET Framework 4.5.2** lub nowszy.
 
@@ -74,9 +74,9 @@ Następnie utworzysz pamięć podręczną dla aplikacji.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>Aby edytować plik *CacheSecrets.config*
 
-3. Utwórz na swoim komputerze plik o nazwie *CacheSecrets.config*. Umieść go w lokalizacji, gdzie nie zostanie zaewidencjonowany z kodem źródłowym przykładowej aplikacji. W tym przewodniku Szybki start plik *CacheSecrets.config* znajduje się w lokalizacji *C:\AppSecrets\CacheSecrets.config*.
+1. Utwórz na swoim komputerze plik o nazwie *CacheSecrets.config*. Umieść go w lokalizacji, gdzie nie zostanie zaewidencjonowany z kodem źródłowym przykładowej aplikacji. W tym przewodniku Szybki start plik *CacheSecrets.config* znajduje się w lokalizacji *C:\AppSecrets\CacheSecrets.config*.
 
-4. Edytuj plik *CacheSecrets.config*. Następnie dodaj następującą zawartość:
+1. Edytuj plik *CacheSecrets.config*. Następnie dodaj następującą zawartość:
 
     ```xml
     <appSettings>
@@ -84,14 +84,14 @@ Następnie utworzysz pamięć podręczną dla aplikacji.
     </appSettings>
     ```
 
-5. Zastąp element `<cache-name>` nazwą hosta pamięci podręcznej.
+1. Zastąp element `<cache-name>` nazwą hosta pamięci podręcznej.
 
-6. Zastąp element `<access-key>` kluczem podstawowym pamięci podręcznej.
+1. Zastąp element `<access-key>` kluczem podstawowym pamięci podręcznej.
 
     > [!TIP]
     > Podczas wymiany klucza można użyć pomocniczego klucza dostępu jako klucza alternatywnego, gdy następuje ponowne generowanie podstawowego klucza dostępu.
->
-7. Zapisz plik.
+   >
+1. Zapisz plik.
 
 ## <a name="update-the-mvc-application"></a>Aktualizowanie aplikacji MVC
 
@@ -332,7 +332,7 @@ Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy
 
 Po krótkim czasie grupa zasobów i wszystkie jej zasoby zostaną usunięte.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W następnym samouczku użyjesz usługi Azure Cache for Redis w scenariuszu bardziej zbliżonym do rzeczywistego, aby poprawić wydajność aplikacji. Zaktualizujesz tę aplikację tak, aby buforowała wyniki rankingu przy użyciu wzorca odkładania do pamięci podręcznej za pomocą platformy ASP.NET i bazy danych.
 

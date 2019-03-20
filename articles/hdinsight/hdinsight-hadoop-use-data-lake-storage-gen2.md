@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 02d72ed5fcfb84796dfd4b967819c331bb384610
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e8649096d4f7de49c9cf0d569422919f865bb3b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759972"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094096"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 
@@ -125,7 +125,7 @@ Klaster HDInsight możliwość uzyskiwania dostępu do plików w Data Lake Stora
 
 Usług platformy Azure ma dwa typy zarządzanych tożsamości: przypisana przez system i przypisanych przez użytkownika. HDInsight korzysta z tożsamości zarządzanej Data Lake Storage Gen2 dostęp do przypisanych przez użytkownika. Użytkownik przypisany tożsamość zarządzana zostanie utworzona jako autonomiczny zasobów platformy Azure. W ramach procesu tworzenia platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, której ufa używana subskrypcja. Utworzoną tożsamość można przypisać do co najmniej jednego wystąpienia usługi platformy Azure.
 
-Cykl życiowy tożsamości przypisanej przez użytkownika jest zarządzany oddzielnie od cyklu życiowego wystąpień usługi platformy Azure, do których została przypisana. Aby uzyskać więcej informacji o zarządzanych tożsamości, zobacz [jak zarządzanych tożsamości do pracy z zasobami platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka).
+Cykl życiowy tożsamości przypisanej przez użytkownika jest zarządzany oddzielnie od cyklu życiowego wystąpień usługi platformy Azure, do których została przypisana. Aby uzyskać więcej informacji o zarządzanych tożsamości, zobacz [jak zarządzanych tożsamości do pracy z zasobami platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Jak ustawić uprawnienia dla użytkowników usługi Azure AD do zapytania o dane w Data Lake Storage Gen2 przy użyciu programu Hive lub innych usług
 

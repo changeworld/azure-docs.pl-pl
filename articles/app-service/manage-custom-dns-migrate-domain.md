@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e7449b5c36d9a1c3df3692f80aed8ccc05a98ade
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6215230a52bcb5c44f54747b447dc5f64e6af650
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731375"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999090"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrowanie aktywnej nazwy DNS do usługi Azure App Service
 
@@ -56,9 +56,9 @@ Rekord TXT, czego potrzebujesz, zależy od rekordu DNS, które mają zostać zmi
 
 | Przykładowy rekord DNS | TXT Host | Wartość TXT |
 | - | - | - |
-| \@ (root) | _awverify_ | _&lt;Nazwa aplikacji >. azurewebsites.net_ |
-| WWW (pod) | _awverify.www_ | _&lt;Nazwa aplikacji >. azurewebsites.net_ |
-| \* (symbol wieloznaczny) | _awverify.\*_ | _&lt;Nazwa aplikacji >. azurewebsites.net_ |
+| \@ (root) | _awverify_ | _&lt;appname>.azurewebsites.net_ |
+| WWW (pod) | _awverify.www_ | _&lt;appname>.azurewebsites.net_ |
+| \* (symbol wieloznaczny) | _awverify.\*_ | _&lt;appname>.azurewebsites.net_ |
 
 Na stronie rekordów DNS należy pamiętać, typ rekordu nazwy DNS, które mają zostać zmigrowane. Usługa App Service obsługuje mapowania CNAME i.
 
@@ -124,8 +124,8 @@ Aby uzyskać `contoso.com` główny przykładowej domeny, ponowne mapowanie reko
 | Przykład nazwy FQDN | Typ rekordu | Host | Wartość |
 | - | - | - | - |
 | contoso.com (root) | A | `@` | Adres IP z sekcji [Kopiowanie adresu IP aplikacji](#info) |
-| www.contoso.com (pod) | CNAME | `www` | _&lt;Nazwa aplikacji >. azurewebsites.net_ |
-| \*. contoso.com (symbol wieloznaczny) | CNAME | _\*_ | _&lt;Nazwa aplikacji >. azurewebsites.net_ |
+| www\.contoso.com (pod) | CNAME | `www` | _&lt;appname>.azurewebsites.net_ |
+| \*. contoso.com (symbol wieloznaczny) | CNAME | _\*_ | _&lt;appname>.azurewebsites.net_ |
 
 Zapisz ustawienia.
 
@@ -136,4 +136,4 @@ Na początek zapytania DNS rozpoznawania aplikacji usługi app Service, natychmi
 Dowiedz się, jak powiązać niestandardowy certyfikat protokołu SSL usługi App Service.
 
 > [!div class="nextstepaction"]
-> [Powiązywanie istniejącego niestandardowego certyfikatu SSL w usłudze Azure App Service](app-service-web-tutorial-custom-ssl.md)
+> [Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md)

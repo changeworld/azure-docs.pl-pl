@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 8d70fca5820dbd2152ca378916bfbcdbad4a027f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892663"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -100,7 +100,7 @@ Każda osoba, która zawiera link do zawartości wideo lub audio i jego szczegó
 
 ### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Jakiego dostępu firmy Microsoft ma Moje wideo lub audio plików, które mają zostać indeksowane i/lub przechowywane przez indeksator wideo i metadane i szczegółowe informacje, które zostały wyodrębnione?
 
-Na [warunki dotyczące usług Online Azure](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST), całkowicie właścicielem zawartości, a firma Microsoft będzie tylko dostępu do zawartości i metadanych i szczegółowe informacje, które Video Indexer wyodrębnia z zawartości zgodnie z pliku OST i firmy Microsoft Zasady zachowania poufności.
+Na [warunki dotyczące usług Online Azure](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST), całkowicie właścicielem zawartości, a firma Microsoft będzie tylko dostępu do zawartości i metadanych i szczegółowe informacje, które Video Indexer wyodrębnia z zawartości zgodnie z pliku OST i firmy Microsoft Zasady zachowania poufności.
 
 ### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Należą modele niestandardowe, które mogę kompilować Moje konto usługi Video Indexer dostępne dla innych kont?
 

@@ -10,26 +10,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e227744864ee7204e29a029b4a479fc2d9e2f3c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3e4585e8e1a809824e63f917fed1cc8a9cfa646a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446388"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202932"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania grup usługi Office 365
 
 Można teraz zarządzać cyklem życia grup usługi Office 365, ustawiając zasady wygasania dla nich. Zasady wygasania możesz ustawić tylko grup usługi Office 365 w usłudze Azure Active Directory (Azure AD). 
 
 Po ustawieniu grupy wygaśnie:
--   Właściciele grupy powiadomi o konieczności odnowienia grupy, zgodnie z zbliżą się do czasu wygaśnięcia
--   Wszystkie grupy, która nie zostanie odnowiona, zostanie usunięty
--   Można przywrócić żadnej grupy usługi Office 365, które zostało usunięte w ciągu 30 dni, właściciele grupy lub przez administratora
+
+- Właściciele grupy powiadomi o konieczności odnowienia grupy, zgodnie z zbliżą się do czasu wygaśnięcia
+- Wszystkie grupy, która nie zostanie odnowiona, zostanie usunięty
+- Można przywrócić żadnej grupy usługi Office 365, które zostało usunięte w ciągu 30 dni, właściciele grupy lub przez administratora
 
 Aktualnie można skonfigurować tylko jedną zasadę wygasania grup usługi Office 365 w dzierżawie.
 
@@ -39,11 +40,12 @@ Aktualnie można skonfigurować tylko jedną zasadę wygasania grup usługi Offi
 Aby uzyskać informacje na temat sposobu pobierania i instalowania poleceń cmdlet programu PowerShell usługi Azure AD, zobacz [Azure Active Directory PowerShell wykres 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
 ## <a name="roles-and-permissions"></a>Role i uprawnienia
+
 Dostępne są następujące role, które można skonfigurować na użytek wygasania grup usługi Office 365 w usłudze Azure AD.
 
 Rola | Uprawnienia
 -------- | --------
-Administrator globalny lub Administrator kont użytkowników | Można utworzyć, odczytu, aktualizacji lub usunięcia ustawień zasad wygasania grup usługi Office 365<br>Można odnowić żadnej grupy usługi Office 365
+Administrator globalny lub administrator użytkowników | Można utworzyć, odczytu, aktualizacji lub usunięcia ustawień zasad wygasania grup usługi Office 365<br>Można odnowić żadnej grupy usługi Office 365
 Użytkownik | Można odnowić grupy usługi Office 365, do której jest właścicielem<br>Można przywrócić grupy usługi Office 365, do której jest właścicielem<br>Czas wygaśnięcia może odczytać ustawienia zasad
 
 Aby uzyskać więcej informacji na temat uprawnień, aby przywrócić usunięte grupy, zobacz [Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory](groups-restore-deleted.md).
@@ -54,13 +56,13 @@ Aby uzyskać więcej informacji na temat uprawnień, aby przywrócić usunięte 
 
 2. Wybierz **grup**, a następnie wybierz **wygaśnięcia** aby otworzyć ustawienia wygaśnięcia.
   
-  ![Blok wygaśnięcia](./media/groups-lifecycle/expiration-settings.png)
+   ![Ustawienia wygasania grup](./media/groups-lifecycle/expiration-settings.png)
 
 3. Na **wygaśnięcia** bloku, możesz:
 
-  * Ustaw okres istnienia grupy w dniach. Można wybrać jeden z wstępnie zdefiniowanych wartości lub niestandardową wartość (powinien mieć co najmniej 31 dni). 
-  * Określ adres e-mail, w którym mają być wysyłane powiadomienia odnowienia i wygaśnięcia gdy grupa nie ma właściciela. 
-  * Wybierz grupy usługi Office 365, które wygasną. Możesz włączyć wygaśnięcie dla **wszystkich** grup usługi Office 365, możesz włączyć tylko **wybrane** grup usługi Office 365, lub wybierz **Brak**  wyłączyć wygaśnięcia dla wszystkich grup.
+  * Ustaw okres istnienia grupy w dniach. Można wybrać jeden z wstępnie zdefiniowanych wartości lub niestandardową wartość (powinien mieć co najmniej 31 dni). 
+  * Określ adres e-mail, w którym mają być wysyłane powiadomienia odnowienia i wygaśnięcia gdy grupa nie ma właściciela. 
+  * Wybierz grupy usługi Office 365, które wygasną. Można włączyć wygaśnięcie dla **wszystkich** grup usługi Office 365, możesz włączyć tylko **wybrane** grup usługi Office 365, lub wybierz **Brak** wyłączyć wygaśnięcia dla wszystkich grup .
   * Zapisz ustawienia w przypadku, gdy wszystko będzie gotowe, wybierając **Zapisz**.
 
 > [!NOTE]
@@ -71,13 +73,13 @@ Aby uzyskać więcej informacji na temat uprawnień, aby przywrócić usunięte 
 
 Taką jak ta są wysyłane powiadomienia e-mail właścicielom grup usługi Office 365 30 dni, 15 dni i 1 dzień przed wygaśnięciem grupy. Język wiadomości e-mail jest określana przez właściciela grupy preferowanego języka lub języku dzierżawy. Jeśli właściciel grupy zdefiniował preferowanego języka lub wielu właścicielom mają ten sam język preferowany, używany jest ten język. W pozostałych przypadkach jest używany język dzierżawy.
 
-![Powiadomienie o wygaśnięciu wiadomości e-mail](./media/groups-lifecycle/expiration-notification.png)
+![Powiadomienia e-mail wygaśnięcia](./media/groups-lifecycle/expiration-notification.png)
 
 Z **Odnów grupę** wiadomość e-mail z powiadomieniem i grupy Właściciele mogą bezpośrednio dostęp do strony szczegółów grupy w panelu dostępu. Użytkownicy mogą uzyskać więcej informacji na temat grupy, takiej jak jej opis jej ostatniego Odnowiono, datę wygaśnięcia, a także możliwość Odnów grupę. Strona szczegółów grupy teraz zawiera także łącza do zasobów grupy usługi Office 365, tak aby właściciel grupy wygodnie wyświetlić zawartość i działania w swojej grupie.
 
 Po wygaśnięciu grupy Grupa została usunięta jeden dzień po dacie wygaśnięcia. Powiadomienie e-mail, taką jak ta są wysyłane do właścicieli grupy usługi Office 365 z informacją o wygaśnięciu i późniejsze usunięcie ich z grupy usługi Office 365.
 
-![Powiadomienie e-mail usunięcie grupy](./media/groups-lifecycle/deletion-notification.png)
+![Powiadomienia e-mail usunięcie grupy](./media/groups-lifecycle/deletion-notification.png)
 
 Grupy można przywrócić w ciągu 30 dni od jego usunięcia, wybierając **Przywracanie grupy** lub za pomocą poleceń cmdlet programu PowerShell, zgodnie z opisem w [Przywracanie usuniętej grupy usługi Office 365 w usłudze Azure Active Directory](groups-restore-deleted.md).
     
@@ -100,45 +102,45 @@ Zasady przechowywania zostały skonfigurowane za pomocą Centrum zabezpieczeń i
 Poniżej przedstawiono przykłady jak można użyć poleceń cmdlet programu PowerShell, aby skonfigurować ustawienia wygasania grup usługi Office 365 w Twojej dzierżawie:
 
 1. Zainstaluj moduł programu PowerShell w wersji 2.0 (wersja zapoznawcza) (2.0.0.137), a następnie zaloguj się w wierszu polecenia programu PowerShell:
-  ```
-  Install-Module -Name AzureADPreview
-  connect-azuread 
-  ```
+   ```powershell
+   Install-Module -Name AzureADPreview
+   connect-azuread 
+   ```
 2. Skonfiguruj ustawienia wygaśnięcia New-AzureADMSGroupLifecyclePolicy:  To polecenie cmdlet Ustawia okres istnienia dla wszystkich grup usługi Office 365 w ramach dzierżawy do 365 dni. Powiadomienia o odnowieniu dla usługi Office 365 grup bez właścicieli zostanie wysłany do "emailaddress@contoso.com"
   
-  ```
-  New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
-  ```
+   ```powershell
+   New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
+   ```
 3. Pobierz istniejące zasady Get-AzureADMSGroupLifecyclePolicy: To polecenie cmdlet pobiera bieżące, które zostały skonfigurowane ustawienia wygaśnięcia grupy usługi Office 365. W tym przykładzie widać:
-  * Identyfikator zasad 
-  * Okres istnienia dla wszystkich grup usługi Office 365 w ramach dzierżawy jest ustawiony do 365 dni
-  * Powiadomienia o odnowieniu dla usługi Office 365 grup bez właścicieli zostanie wysłany do "emailaddress@contoso.com."
+   * Identyfikator zasad 
+   * Okres istnienia dla wszystkich grup usługi Office 365 w ramach dzierżawy jest ustawiony do 365 dni
+   * Powiadomienia o odnowieniu dla usługi Office 365 grup bez właścicieli zostanie wysłany do "emailaddress@contoso.com."
   
-  ```
-  Get-AzureADMSGroupLifecyclePolicy
+   ```powershell
+   Get-AzureADMSGroupLifecyclePolicy
   
-  ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
-  --                                    ------------------- ----------------- ---------------------------
-  26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
-  ``` 
+   ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
+   --                                    ------------------- ----------------- ---------------------------
+   26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
+   ``` 
    
 4. Zaktualizuj istniejące zasady zestaw-AzureADMSGroupLifecyclePolicy: To polecenie cmdlet używane do aktualizowania istniejącej zasady. W poniższym przykładzie okres istnienia grupy w istniejących zasad została zmieniona z 365 dni do 180 dni. 
   
-  ```
-  Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
-  ```
+   ```powershell
+   Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
+   ```
   
-5. Dodaj określonych grup do zasad Add-AzureADMSLifecyclePolicyGroup: To polecenie cmdlet służy do dodawania grupy zasad cyklu życia. Na przykład: 
+5. Dodaj określonych grup do zasad Add-AzureADMSLifecyclePolicyGroup: To polecenie cmdlet służy do dodawania grupy zasad cyklu życia. Na przykład:
   
-  ```
-  Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
-  ```
+   ```powershell
+   Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
+   ```
   
 6. Usuń istniejące zasady Remove-AzureADMSGroupLifecyclePolicy: To polecenie cmdlet usuwa ustawienia wygasania grup usługi Office 365, ale wymaga identyfikatora zasad. Spowoduje to wyłączenie wygasania grup usługi Office 365. 
   
-  ```
-  Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
-  ```
+   ```powershell
+   Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
+   ```
   
 Następujące polecenia cmdlet, można skonfigurować zasady bardziej szczegółowo. Aby uzyskać więcej informacji, zobacz [dokumentacji programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 

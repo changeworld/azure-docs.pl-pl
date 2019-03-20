@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: fcb5941c56eda19f9c524a2c078a76483426b862
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2ba94963238cd5ee96df5c178a072addc5ddd75e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266998"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082929"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkcje zabezpieczeń, aby pomóc w ochronie hybrydowych kopii zapasowych, które używają usługi Azure Backup
 Coraz więcej wątpliwości dotyczących problemów z zabezpieczeniami, takich jak złośliwe oprogramowanie, przed oprogramowaniem wymuszającym okup i nieautoryzowanego dostępu. Te problemy dotyczące zabezpieczeń może być kosztowna, pod względem zarówno pieniądze, jak i dane. Aby zabezpieczyć się przed takimi atakami, kopia zapasowa Azure zapewnia funkcje zabezpieczeń, aby pomóc w ochronie hybrydowych kopii zapasowych. W tym artykule opisano, jak włączanie i używanie tych funkcji przy użyciu agenta usługi Azure Recovery Services i serwera usługi Azure Backup. Te funkcje obejmują:
@@ -33,7 +33,7 @@ Coraz więcej wątpliwości dotyczących problemów z zabezpieczeniami, takich j
 > Te funkcje są dostępne tylko w przypadku magazynu usługi Recovery Services. Wszystkie nowo utworzone magazynów usługi Recovery Services te funkcje są włączone domyślnie. Dla istniejących magazynów usługi Recovery Services użytkowników, należy włączyć te funkcje wykonując kroki opisane w poniższej sekcji. Po funkcji są włączone, odnoszą się do wszystkich usług Recovery Services agent komputerów, wystąpienia usługi Azure Backup Server i serwery programu Data Protection Manager zarejestrowane w usłudze magazynu. Włączenie tego ustawienia jest to akcja jednorazowa, a po ich włączeniu nie można wyłączyć te funkcje.
 >
 
-## <a name="enable-security-features"></a>Włączanie funkcji zabezpieczeń
+## <a name="enable-security-features"></a>Włączanie funkcji zabezpieczeń.
 W przypadku tworzenia magazynu usługi Recovery Services, można użyć wszystkich funkcji zabezpieczeń. Jeśli pracujesz z istniejącego magazynu, włączyć funkcje zabezpieczeń, wykonaj następujące czynności:
 
 1. Zaloguj się do witryny Azure portal przy użyciu swoich poświadczeń platformy Azure.
@@ -82,7 +82,7 @@ Testy zostały dodane do upewnij się, że tylko uprawnieni użytkownicy mogą w
 W ramach dodanie dodatkowej warstwy uwierzytelniania krytyczne operacje, zostanie wyświetlony monit o wprowadź zabezpieczający numer PIN, gdy wykonujesz **Zatrzymaj ochronę za pomocą usuwania danych** i **zmiany hasła** operacji.
 
 > [!NOTE]
-
+> 
 > Obecnie zabezpieczający numer pin nie jest obsługiwana dla **Zatrzymaj ochronę za pomocą usuwania danych** programu DPM i serwera usługi MAB.
 
 Aby otrzymać ten kod PIN:

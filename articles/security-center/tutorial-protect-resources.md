@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: monhaber
-ms.openlocfilehash: 8662539257422289053e75beeadd07c63d8d3f4d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 6e8c10ecb85addf2ef6a995e3c0b8ac611343cfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110345"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Samouczek: Ochrona zasobów przy użyciu usługi Azure Security Center
 Usługa Security Center ogranicza narażenia na zagrożenia poprzez zastosowanie kontroli dostępu i aplikacji w celu blokowania złośliwych działań. Dostęp typu „just in time” do maszyny wirtualnej redukuje narażenie na ataki, umożliwiając odmówienie trwałego dostępu do maszyn wirtualnych. Zamiast tego możesz zapewnić kontrolowany, monitorowany dostęp do maszyn wirtualnych tylko w razie potrzeby. Adaptacyjne kontrole aplikacji pomagają zabezpieczać maszyny wirtualne przed złośliwym oprogramowaniem poprzez kontrolowanie aplikacji, które mogą być uruchamiane na maszynach wirtualnych. Usługa Security Center analizuje procesy uruchomione na maszynie wirtualnej przy użyciu uczenia maszynowego i za pomocą tej analizy ułatwia zastosowanie listy reguł elementów dozwolonych.
@@ -43,30 +43,30 @@ Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte
 
 1. W menu głównym usługi Security Center wybierz pozycję **Dostęp just in time do maszyny wirtualnej** w obszarze **ZAAWANSOWANA OCHRONA W CHMURZE**.
 
-  ![Dostęp do maszyny wirtualnej dokładnie na czas][1]
+   ![Dostęp do maszyny wirtualnej dokładnie na czas][1]
 
-  Opcja **Dostęp just in time do maszyny wirtualnej** zapewnia informacje o stanie maszyn wirtualnych:
+   Opcja **Dostęp just in time do maszyny wirtualnej** zapewnia informacje o stanie maszyn wirtualnych:
 
-  - **Skonfigurowane** — maszyny wirtualne, które zostały skonfigurowane pod kątem dostępu just in time do maszyn wirtualnych.
-  - **Zalecane** — maszyny wirtualne, które mogą obsługiwać dostęp just in time, ale nie zostały skonfigurowane pod tym kątem.
-  - **Brak zaleceń** — powody, dla których maszyna wirtualna może nie mieć zaleceń:
+   - **Skonfigurowane** — maszyny wirtualne, które zostały skonfigurowane pod kątem dostępu just in time do maszyn wirtualnych.
+   - **Zalecane** — maszyny wirtualne, które mogą obsługiwać dostęp just in time, ale nie zostały skonfigurowane pod tym kątem.
+   - **Brak zaleceń** — powody, dla których maszyna wirtualna może nie mieć zaleceń:
 
-    - Brak sieciowej grupy zabezpieczeń — rozwiązanie just in time wymaga sieciowej grupy zabezpieczeń.
-    - Klasyczna maszyna wirtualna — dostęp just in time do maszyn wirtualnych usługi Security Center obecnie obsługuje tylko maszyny wirtualne wdrożone przy użyciu usługi Azure Resource Manager.
-    - Inne — maszyna wirtualna znajduje się w tej kategorii, jeżeli rozwiązanie just in time jest wyłączone w zasadach zabezpieczeń subskrypcji lub grupy zasobów albo jeśli maszyna wirtualna nie ma publicznego adresu IP i sieciowej grupy zabezpieczeń.
+     - Brak sieciowej grupy zabezpieczeń — rozwiązanie just in time wymaga sieciowej grupy zabezpieczeń.
+     - Klasyczna maszyna wirtualna — dostęp just in time do maszyn wirtualnych usługi Security Center obecnie obsługuje tylko maszyny wirtualne wdrożone przy użyciu usługi Azure Resource Manager.
+     - Inne — maszyna wirtualna znajduje się w tej kategorii, jeżeli rozwiązanie just in time jest wyłączone w zasadach zabezpieczeń subskrypcji lub grupy zasobów albo jeśli maszyna wirtualna nie ma publicznego adresu IP i sieciowej grupy zabezpieczeń.
 
 2. Wybierz zalecaną maszynę wirtualną i kliknij opcję **Włącz funkcję JIT na maszynie wirtualnej 1**, aby skonfigurować zasady dostępu just in time dla tej maszyny wirtualnej:
 
-  Możesz zapisać porty domyślne zalecane przez usługę Security Center lub dodać i skonfigurować nowy port, dla którego chcesz włączyć rozwiązanie just in time. W tym samouczku dodamy port, używając opcji **Dodaj**.
+   Możesz zapisać porty domyślne zalecane przez usługę Security Center lub dodać i skonfigurować nowy port, dla którego chcesz włączyć rozwiązanie just in time. W tym samouczku dodamy port, używając opcji **Dodaj**.
 
-  ![Dodawanie konfiguracji portu][2]
+   ![Dodawanie konfiguracji portu][2]
 
 3. W obszarze **Dodawanie konfiguracji portu** należy określić:
 
-  - Numer portu
-  - Typ protokołu
-  - Dozwolone źródłowe adresy IP — zakresy adresów IP, które mogą uzyskać dostęp po zatwierdzonym żądaniu
-  - Maksymalny czas żądania — maksymalny przedział czasu, w którym dany port może być otwarty
+   - Numer portu
+   - Typ protokołu
+   - Dozwolone źródłowe adresy IP — zakresy adresów IP, które mogą uzyskać dostęp po zatwierdzonym żądaniu
+   - Maksymalny czas żądania — maksymalny przedział czasu, w którym dany port może być otwarty
 
 4. Wybierz opcję **OK**, aby zapisać.
 
@@ -79,22 +79,22 @@ Ta funkcja jest dostępna tylko w przypadku maszyn z systemem Windows.
 
    ![Funkcje adaptacyjnego sterowania aplikacjami][3]
 
-  Sekcja **Grupy zasobów** zawiera trzy karty:
+   Sekcja **Grupy zasobów** zawiera trzy karty:
 
-  - **Skonfigurowano**: lista grup zasobów zawierających maszyny wirtualne, dla których skonfigurowano sterowanie aplikacjami.
-  - **Zalecane**: lista grup zasobów, dla których zaleca się sterowanie aplikacjami.
-  - **Brak zaleceń**: lista grup zasobów zawierających maszyny wirtualne bez żadnych zaleceń dotyczących sterowania aplikacjami. Na przykład maszyny wirtualne, na których aplikacje stale się zmieniają i nie osiągają stanu stabilnego.
+   - **Skonfigurowano**: lista grup zasobów zawierających maszyny wirtualne, dla których skonfigurowano sterowanie aplikacjami.
+   - **Zalecane**: lista grup zasobów, dla których zaleca się sterowanie aplikacjami.
+   - **Brak zaleceń**: lista grup zasobów zawierających maszyny wirtualne bez żadnych zaleceń dotyczących sterowania aplikacjami. Na przykład maszyny wirtualne, na których aplikacje stale się zmieniają i nie osiągają stanu stabilnego.
 
 2. Wybierz kartę **Zalecane**, aby uzyskać listę grup zasobów z zaleceniami dotyczącymi sterowania aplikacjami.
 
-  ![Zalecenia dotyczące kontroli aplikacji][4]
+   ![Zalecenia dotyczące kontroli aplikacji][4]
 
 3. Wybierz grupę zasobów, aby otworzyć opcję **Utwórz reguły sterowania aplikacjami**. W obszarze **Wybierz maszyny wirtualne** zapoznaj się z listą zalecanych maszyn wirtualnych i wyczyść zaznaczenie pól wyboru obok tych, do których nie ma być stosowane sterowanie aplikacjami. W obszarze **Wybierz procesy dla reguł umieszczania na białej liście** zapoznaj się z listą zalecanych aplikacji i wyczyść zaznaczenie pól wyboru obok tych, do których nie ma być stosowana ta funkcja. Lista zawiera:
 
-  - **NAZWA**: pełna ścieżka aplikacji
-  - **PROCESY**: ile aplikacji znajduje się w każdej ścieżce
-  - **WSPÓLNE**: wartość „Tak” wskazuje, że te procesy są wykonywane na większości maszyn wirtualnych w tej grupie zasobów
-  - **MOŻLIWE DO WYKORZYSTANIA**: ikona ostrzeżenia wskazuje, że osoba atakująca może wykorzystać aplikacje do pominięcia białej listy aplikacji. Zaleca się dokonanie przeglądu tych aplikacji przed ich zatwierdzeniem.
+   - **NAZWA**: pełna ścieżka aplikacji
+   - **PROCESY**: ile aplikacji znajduje się w każdej ścieżce
+   - **WSPÓLNE**: wartość „Tak” wskazuje, że te procesy są wykonywane na większości maszyn wirtualnych w tej grupie zasobów
+   - **MOŻLIWE DO WYKORZYSTANIA**: ikona ostrzeżenia wskazuje, że osoba atakująca może wykorzystać aplikacje do pominięcia białej listy aplikacji. Zaleca się dokonanie przeglądu tych aplikacji przed ich zatwierdzeniem.
 
 4. Po wybraniu opcji wybierz przycisk **Utwórz**.
 

@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: c0a5e8695b712ca95952ea839fa829dab2c48824
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6dd1dd0ce2395e2b06d80385ffd299835a280526
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002032"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Pakiet cloud-init obsługę maszyn wirtualnych na platformie Azure
 W tym artykule opisano obsługę, która istnieje dla [pakietu cloud-init](https://cloudinit.readthedocs.io) Aby skonfigurować maszynę wirtualną (VM) lub maszyn wirtualnych zestawów skalowania (zestawu skalowania maszyn wirtualnych) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure.  
 
 ## <a name="cloud-init-overview"></a>Omówienie pakietu cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest wywoływana podczas początkowego rozruchu, dlatego są żadne dodatkowe kroki ani agenci wymagane do zastosowania konfiguracji.  Aby uzyskać więcej informacji na temat poprawnie sformatować swoje `#cloud-config` plików, zobacz [witrynie dokumentacji pakietu cloud-init](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` są to pliki tekstowe zakodowane w formacie base64.
+[Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest wywoływana podczas początkowego rozruchu, dlatego są żadne dodatkowe kroki ani agenci wymagane do zastosowania konfiguracji.  Aby uzyskać więcej informacji na temat poprawnie sformatować swoje `#cloud-config` plików, zobacz [witrynie dokumentacji pakietu cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` są to pliki tekstowe zakodowane w formacie base64.
 
 Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie używa się poleceń **apt-get install** lub **yum install** do zainstalowania pakietu. Zamiast tego możesz zdefiniować listę pakietów do zainstalowania. Pakiet cloud-init automatycznie używa natywnego narzędzia do zarządzania pakietami dla wybranej dystrybucji.
 
@@ -34,7 +34,7 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
 
 | Wydawca | Oferta | SKU | Wersja | gotowe pakietu cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04 LTS |najnowsza |tak | 
+|Canonical |UbuntuServer |18.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |17.10 |najnowsza |tak | 
 |Canonical |UbuntuServer |16.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |14.04.5-LTS |najnowsza |tak |
@@ -92,7 +92,7 @@ Gdy maszyna wirtualna została aprowizowana, pakietu cloud-init zostanie uruchom
 > [!NOTE]
 > Nie każdy błąd modułu skutkuje krytyczny pakietu cloud-init ogólny błąd konfiguracji. Na przykład za pomocą `runcmd` modułu, jeśli skrypt zakończy się niepowodzeniem, pakietu cloud-init będzie nadal zgłaszać inicjowania obsługi administracyjnej powiodło się, ponieważ moduł runcmd wykonany.
 
-Aby uzyskać więcej szczegółów dotyczących rejestrowania pakietu cloud-init, dotyczą [dokumentacji pakietu cloud-init](http://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
+Aby uzyskać więcej szczegółów dotyczących rejestrowania pakietu cloud-init, dotyczą [dokumentacji pakietu cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Przykłady pakietu cloud-init zmian konfiguracji na ten temat można znaleźć w następujących dokumentach:

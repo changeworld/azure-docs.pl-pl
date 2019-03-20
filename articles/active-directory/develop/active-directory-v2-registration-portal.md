@@ -18,18 +18,18 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90f530febccada5421323dd95461257e0fc5950
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: b77b5185056329113ee1fd17fa3ed3f364380ca2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095878"
 ---
 # <a name="app-registration-reference"></a>Dokumentacja rejestracji aplikacji
 Ten dokument zawiera kontekstu i opisy różnych funkcji dostępnych w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
 
-> [!NOTE] 
-Firma Microsoft nie będą obsługiwać rejestrowanie aplikacji i zarządzaniem nimi osiągnięcia zbieżności i Azure AD w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) od maja 2019 r. Zaleca się zarządzanie istniejącymi aplikacjami i zarejestrować nowe aplikacje za pomocą [rejestracje aplikacji (wersja zapoznawcza)](https://aka.ms/appregistrations) środowisko w witrynie Azure portal.
+> [!NOTE]
+> Firma Microsoft nie będą obsługiwać rejestrowanie aplikacji i zarządzaniem nimi osiągnięcia zbieżności i Azure AD w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) od maja 2019 r. Zaleca się zarządzanie istniejącymi aplikacjami i zarejestrować nowe aplikacje za pomocą [rejestracje aplikacji (wersja zapoznawcza)](https://aka.ms/appregistrations) środowisko w witrynie Azure portal.
 
 ## <a name="my-applications-or-converged-applications"></a>Moje aplikacje lub zbieżne aplikacje
 Ta lista zawiera wszystkie aplikacje zarejestrowana do użycia z punktem końcowym v2.0 usługi Azure AD. Te aplikacje mają możliwość logowanie użytkowników mających konta służbowe z usługi Azure Active Directory i osobistych kont Microsoft. Aby dowiedzieć się więcej na temat punktu końcowego v2.0 usługi Azure AD, zobacz [Przegląd v2.0](active-directory-appmodel-v2-overview.md). Aplikacje te można również zintegrować z punktu końcowego uwierzytelniania konta Microsoft, `https://login.live.com`.

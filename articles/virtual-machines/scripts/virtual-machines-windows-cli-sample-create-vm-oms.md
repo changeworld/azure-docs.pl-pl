@@ -1,6 +1,6 @@
 ---
-title: Przykład dla interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej platformy Azure z monitorowaniem usługi Log Analytics | Microsoft Docs
-description: Przykład dla interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej platformy Azure, na której uruchomiono maszynę wirtualną Windows Server 2016 oraz monitorowanie usługi Log Analytics
+title: Interfejs wiersza polecenia Azure przykładowy — tworzenie maszyny Wirtualnej platformy Azure, z usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Interfejs wiersza polecenia Azure przykładowy — tworzenie maszyny Wirtualnej platformy Azure z maszyny Wirtualnej systemu Windows Server 2016 i usługi Azure Monitor.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 06e853534dc811ba5b37b192a9da75e88eedd778
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 2565433b8f42a3b81b843a972dd27850cce124b8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668317"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543325"
 ---
-# <a name="monitor-a-vm-with-log-analytics"></a>Monitorowanie maszyny wirtualnej za pomocą usługi Log Analytics
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Monitorowanie maszyny Wirtualnej przy użyciu dzienników usługi Azure Monitor
 
 Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta usługi Log Analytics i rejestruje system w obszarze roboczym usługi Log Analytics. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w obszarze monitorowania platformy Azure.
 
@@ -54,7 +54,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Uruchamia rozszerzenie maszyny wirtualnej względem maszyny wirtualnej. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

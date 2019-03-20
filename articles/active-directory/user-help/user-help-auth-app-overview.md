@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8585557672c7db15e07be6a5e663ba1811e07694
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 4b47b0c5af98198d829c4658877acae2edff5455
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961316"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001185"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Czym jest aplikacja Microsoft Authenticator?
 
@@ -28,18 +28,21 @@ Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używa
 
 Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykład:
 
-- Udostępnienie monitu dla drugiej metody weryfikacji po zalogowaniu się przy użyciu nazwy użytkownika i hasła.
+- Po zalogowaniu się przy użyciu nazwy użytkownika i hasła, należy odpowiedzieć na monit o uwierzytelnienie.
 
-- Udostępnienie możliwości logowania się bez wymagania hasła, ale za to przy użyciu nazwy użytkownika i jego twarzy, odcisku palca lub numeru PIN dostarczanych przez urządzenie przenośne.
+- Zaloguj się bez podawania hasła, za pomocą swoją nazwę użytkownika, aplikację wystawcy uwierzytelnienia i urządzenia przenośnego z odciskiem palca, powierzchni lub numeru PIN.
 
->[!Important]
->Aplikacja Microsoft Authenticator współdziała z dowolną aplikacją używającą weryfikacji dwuetapowej i dowolnym kontem obsługującym standardy TOTP (Time-based One-time Password).
+- Jako generator kodu dla innych kont, które obsługują aplikacje uwierzytelniania.
 
->Twoja organizacja może wymagać korzystania z aplikacji uwierzytelnienia do logowania się i uzyskiwania dostępu do danych organizacji i dokumentów. Mimo iż Twoja nazwa użytkownika może być wyświetlana w aplikacji, konto nie będzie skonfigurowane jako metoda weryfikacji, dopóki nie ukończysz procesu rejestracji. Aby uzyskać więcej informacji, zobacz [Dodawanie konta służbowego](user-help-auth-app-overview.md).
-
->Jeśli masz problemy z zalogowaniem się do swojego konta, zobacz temat [Kiedy nie możesz zalogować się na swoje konto Microsoft](https://support.microsoft.com/help/12429). Uzyskaj więcej informacji o tym, co zrobić, gdy podczas próby zalogowania się do konta Microsoft pojawia się komunikat [„To konto Microsoft nie istnieje”](https://support.microsoft.com/help/13811).
+> [!Important]
+> Aplikacja Microsoft Authenticator działa przy użyciu dowolnego konta, który używa two-Factor Authentication weryfikacji i obsługuje standardy oparte na czasie hasła jednorazowego (TOTP).
+> 
+> Twoja organizacja może wymagać korzystania z aplikacji uwierzytelnienia do logowania się i uzyskiwania dostępu do danych organizacji i dokumentów. Mimo iż Twoja nazwa użytkownika może być wyświetlana w aplikacji, konto nie będzie skonfigurowane jako metoda weryfikacji, dopóki nie ukończysz procesu rejestracji. Aby uzyskać więcej informacji, zobacz [Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md).
+> 
+> Jeśli masz problemy z zalogowaniem się do swojego konta, zobacz temat [Kiedy nie możesz zalogować się na swoje konto Microsoft](https://support.microsoft.com/help/12429). Uzyskaj więcej informacji o tym, co zrobić, gdy podczas próby zalogowania się do konta Microsoft pojawia się komunikat [„To konto Microsoft nie istnieje”](https://support.microsoft.com/help/13811).
 
 ## <a name="terminology"></a>Terminologia
+
 |Termin|Opis|
 |----|-----------|
 |Weryfikacja dwuskładnikowa |Proces weryfikacji, który wymaga specjalnego użycia tylko dwóch rodzajów informacji o weryfikacji, takich jak hasło i numer PIN. Aplikacja Microsoft Authenticator obsługuje zarówno standardową weryfikację dwuskładnikową, jak i logowanie bez hasła.|

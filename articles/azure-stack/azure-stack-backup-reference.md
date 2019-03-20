@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: a7930ea86f7972a6e4abb939fb148d519ca924e9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b35b069f05f117b227a2edbf5595f2682b7f6e86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416721"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997271"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odwołanie do usługi Kopia zapasowa infrastruktury
 
@@ -89,17 +89,20 @@ Wymagane jest miedzy innymi:
 Infrastruktura kopii zapasowej kontrolera będzie kopię zapasową danych na żądanie. Zaleca się tworzenie kopii zapasowej ostatnio dwa razy dziennie i Kontynuuj, maksymalnie siedem dni kopii zapasowych. 
 
 **1811 i nowszych**
+
 | Skalowanie środowiska | Przewidywany rozmiar kopii zapasowej | Całkowita ilość miejsca wymaganego |
 |-------------------|--------------------------|--------------------------------|
 | 4 – 16 węzłów        | 20 GB                    | 280 GB                        |
 | ASDK              | 10 GB                    | 140 GB                        |
 
 **Wstępnie 1811**
+
 | Skalowanie środowiska | Przewidywany rozmiar kopii zapasowej | Całkowita ilość miejsca wymaganego |
 |-------------------|--------------------------|--------------------------------|
 | 4 – 16 węzłach, ASDK  | 10 GB                     | 140 GB                        |
 
 ### <a name="network-requirements"></a>Wymagania dotyczące sieci
+
 | Lokalizacja magazynu                                                                 | Szczegóły                                                                                                                                                                                 |
 |----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Udział plików SMB hostowanych na urządzeniu magazynującym, w tym środowisku zaufanych sieci | Port 445 jest wymagany, jeśli wystąpienie usługi Azure Stack, który znajduje się w środowisku chronionego. Infrastruktura kopii zapasowej kontrolera zainicjuje połączenie z serwerem plików SMB za pośrednictwem portu 445. |
@@ -131,6 +134,7 @@ Certyfikat używany podczas odzyskiwania w chmurze przy użyciu klucza prywatneg
 Te limity wziąć pod uwagę planowanie, wdrażanie i obsługiwanie swoich wystąpień usługi Microsoft Azure Stack. W poniższej tabeli opisano te limity.
 
 ### <a name="infrastructure-backup-limits"></a>Tworzenie kopii zapasowych ogranicza
+
 | Identyfikator limitu                                                 | Limit        | Komentarze                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Typ kopii zapasowej                                                      | Tylko pełne    | Infrastruktura kopii zapasowej kontroler obsługuje tylko pełne kopie zapasowe. Przyrostowe kopie zapasowe nie są obsługiwane.                                          |

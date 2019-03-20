@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 857aa71a4812534030ca638fd8bab11f60535ea0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536950"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860588"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Samouczek: Utwórz rozwiązanie rozproszone geograficznie aplikacji przy użyciu platformy Azure i usługi Azure Stack
 
@@ -135,7 +135,7 @@ Konfigurowanie ciągłej integracji/ciągłego wdrażania na wdrażanie aplikacj
 
 1. **Zaloguj się do potoków Azure** o potwierdzenie zdolność do tworzenia definicji kompilacji.
 
-2. Dodaj **- r dla systemu win10-x64** kodu. Jest to konieczne wyzwolić wdrożenie niezależna za pomocą.Net Core.
+2. Dodaj **- r dla systemu win10-x64** kodu. Jest to konieczne wyzwolić wdrożenie niezależna z platformą .NET Core.
 
     ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image4.png)
 
@@ -154,9 +154,9 @@ Usługi Azure DevOps i serwer usługi Azure DevOps oferują wysoce konfigurowaln
 
 ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image5.png)
 
-1.  Wybierz **oraz** przycisk, aby dodać nowe wydanie w ramach **karcie wersje** na stronie kompilacji i wydania programu Visual Studio Online (VSO).
+1. Wybierz **oraz** przycisk, aby dodać nowe wydanie w ramach **karcie wersje** na stronie kompilacji i wydania programu Visual Studio Online (VSO).
 
-    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image6.png)
+   ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. Zastosuj **wdrożenie usługi aplikacji Azure** szablonu.
 
@@ -210,7 +210,7 @@ Usługi Azure DevOps i serwer usługi Azure DevOps oferują wysoce konfigurowaln
 
 14. Wybierz **subskrypcji** dla punktu końcowego usługi Azure Stack.
 
-  ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image20.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. Ustaw nazwę aplikacji sieci web usługi Azure Stack jako **nazwa usługi App service**.
 
@@ -299,11 +299,11 @@ Poniższy zrzut ekranu przedstawia przykład strony rekordów DNS:
 
 ![Przykładowa strona rekordów DNS](media/azure-stack-solution-geo-distributed/image28.png)
 
-1.  W rejestrze nazw domen, wybierz **apletu Dodaj lub Utwórz** do utworzenia rekordu. Niektórzy dostawcy udostępniają różne linki na potrzeby dodawania różnych typów rekordów. Zapoznaj się z dokumentacją dostawcy.
+1. W rejestrze nazw domen, wybierz **apletu Dodaj lub Utwórz** do utworzenia rekordu. Niektórzy dostawcy udostępniają różne linki na potrzeby dodawania różnych typów rekordów. Zapoznaj się z dokumentacją dostawcy.
 
-2.  Dodaj rekord CNAME, aby zmapować poddomenę na domyślną hosta aplikacji.
+2. Dodaj rekord CNAME, aby zmapować poddomenę na domyślną hosta aplikacji.
 
-  Na przykład domena www.northwindcloud.com, Dodaj rekord CNAME, który mapuje nazwę na < aplikacji\_name >. azurewebsites.net.
+   Na przykład domena www.northwindcloud.com, Dodaj rekord CNAME, który mapuje nazwę na < aplikacji\_name >. azurewebsites.net.
 
 Po dodaniu tego rekordu CNAME, strona rekordów DNS wygląda podobnie jak w poniższym przykładzie:
 
@@ -311,47 +311,47 @@ Po dodaniu tego rekordu CNAME, strona rekordów DNS wygląda podobnie jak w poni
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>Włączanie mapowania rekordów CNAME na platformie Azure
 
-1.  W nowej karcie Zaloguj się do witryny Azure portal
+1. W nowej karcie Zaloguj się do witryny Azure portal
 
-2.  Przejdź do usługi App Services.
+2. Przejdź do usługi App Services.
 
-3.  Wybierz aplikację sieci web.
+3. Wybierz aplikację sieci web.
 
-4.  W lewym obszarze nawigacji na stronie aplikacji w witrynie Azure Portal wybierz pozycję **Domeny niestandardowe**.
+4. W lewym obszarze nawigacji na stronie aplikacji w witrynie Azure Portal wybierz pozycję **Domeny niestandardowe**.
 
-5.  Wybierz ikonę **+** obok pozycji **Dodaj nazwę hosta**.
+5. Wybierz ikonę **+** obok pozycji **Dodaj nazwę hosta**.
 
-1.  Wpisz w pełni kwalifikowaną nazwę domeny, takich jak `www.northwindcloud.com`.
+1. Wpisz w pełni kwalifikowaną nazwę domeny, takich jak `www.northwindcloud.com`.
 
-2.  Wybierz przycisk **Weryfikuj**.
+2. Wybierz przycisk **Weryfikuj**.
 
-3.  Jeśli zaznaczone, Dodaj dodatkowe rekordy innych typów (`A` lub `TXT`) do rekordów DNS rejestratorów nazw domen. Azure zapewni wartości i typy tych rekordów:
+3. Jeśli zaznaczone, Dodaj dodatkowe rekordy innych typów (`A` lub `TXT`) do rekordów DNS rejestratorów nazw domen. Azure zapewni wartości i typy tych rekordów:
 
-    a.  Rekord **A** do zmapowania adresu IP aplikacji.
+   a.  Rekord **A** do zmapowania adresu IP aplikacji.
 
-    b.  A **TXT** rekordu do mapowania na aplikacja domyślnej nazwy hosta < nazwa_aplikacji >. azurewebsites.net. Usługa App Service używa tego rekordu tylko podczas konfiguracji, aby zweryfikować własność domeny niestandardowej. Po zakończeniu weryfikacji usuwanie rekordu TXT.
+   b.  A **TXT** rekordu do mapowania na aplikacja domyślnej nazwy hosta < nazwa_aplikacji >. azurewebsites.net. Usługa App Service używa tego rekordu tylko podczas konfiguracji, aby zweryfikować własność domeny niestandardowej. Po zakończeniu weryfikacji usuwanie rekordu TXT.
 
-4.  Wykonania tego zadania na karcie rejestratora domen i przechowywać aż **Dodaj nazwę hosta** zostanie aktywowany przycisk.
+4. Wykonania tego zadania na karcie rejestratora domen i przechowywać aż **Dodaj nazwę hosta** zostanie aktywowany przycisk.
 
-5.  Upewnij się, że ** typ rekordu nazwy hosta jest ustawiona na **CNAME (www.example.com lub dowolna poddomena)**.
+5. Upewnij się, że ** typ rekordu nazwy hosta jest ustawiona na **CNAME (www.example.com lub dowolna poddomena)**.
 
-6.  Wybierz przycisk **Dodaj nazwę hosta**.
+6. Wybierz przycisk **Dodaj nazwę hosta**.
 
-7.  Wpisz w pełni kwalifikowaną nazwę domeny, takich jak `northwindcloud.com`.
+7. Wpisz w pełni kwalifikowaną nazwę domeny, takich jak `northwindcloud.com`.
 
-8.  Wybierz przycisk **Weryfikuj**.
+8. Wybierz przycisk **Weryfikuj**.
 
-9.  **Dodaj** została aktywowana.
+9. **Dodaj** została aktywowana.
 
 10. Upewnij się, że ** typ rekordu nazwy hosta jest ustawiona na **rekord (example.com)**.
 
 11. **Dodaj nazwę hosta**.
 
-  Może upłynąć trochę czasu, nowe nazwy hostów zostaną odzwierciedlone w aplikacji **domen niestandardowych** strony. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
+    Może upłynąć trochę czasu, nowe nazwy hostów zostaną odzwierciedlone w aplikacji **domen niestandardowych** strony. Spróbuj odświeżyć przeglądarkę, aby zaktualizować dane.
   
-  ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image31.png) 
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  W przypadku błędu w dolnej części strony pojawi się powiadomienie o błędzie weryfikacji. ![Błąd weryfikacji](media/azure-stack-solution-geo-distributed/image32.png)
+    W przypadku błędu w dolnej części strony pojawi się powiadomienie o błędzie weryfikacji. ![Błąd weryfikacji](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  Może być powtarzany powyższe kroki do mapowania domeny z symbolami wieloznacznymi (\*. northwindcloud.com)... Umożliwia to dodanie wszelkich dodatkowych poddomen do tej usługi app service bez konieczności tworzenia oddzielny rekord CNAME dla każdej z nich. Postępuj zgodnie z instrukcjami rejestratora, do skonfigurowania tego ustawienia.
@@ -482,15 +482,15 @@ Gdy usługi IIS lub **Certreq.exe** są używane do wygenerowania żądania cert
 
 #### <a name="upload-the-ssl-certificate"></a>Przekaż certyfikat protokołu SSL
 
-1.  Wybierz **ustawienia protokołu SSL** w lewym obszarze nawigacji aplikacji internetowej.
+1. Wybierz **ustawienia protokołu SSL** w lewym obszarze nawigacji aplikacji internetowej.
 
-2.  Wybierz **Przekaż certyfikat**.
+2. Wybierz **Przekaż certyfikat**.
 
-3.  W **plik certyfikatu PFX**, wybierz plik PFX.
+3. W **plik certyfikatu PFX**, wybierz plik PFX.
 
-4.  4. W **hasło certyfikatu**, wpisz hasło utworzone podczas eksportowania pliku PFX.
+4. 1. W **hasło certyfikatu**, wpisz hasło utworzone podczas eksportowania pliku PFX.
 
-5.  Wybierz pozycję **Przekaż**.
+5. Wybierz pozycję **Przekaż**.
 
 ![Przekazywanie certyfikatu](media/azure-stack-solution-geo-distributed/image38.png)
 
@@ -588,23 +588,23 @@ Umożliwia aplikacji [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 
 
 ### <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
-1.  Na pasku wyszukiwania portali Wyszukaj ** profilu usługi Traffic Manager ** nazwą utworzoną w poprzedniej sekcji i wybierz profil usługi traffic manager w wynikach, wyświetlana.
+1. Na pasku wyszukiwania portali Wyszukaj ** profilu usługi Traffic Manager ** nazwą utworzoną w poprzedniej sekcji i wybierz profil usługi traffic manager w wynikach, wyświetlana.
 
-2.  W **profilu usługi Traffic Manager**w **ustawienia** zaznacz **punktów końcowych**.
+2. W **profilu usługi Traffic Manager**w **ustawienia** zaznacz **punktów końcowych**.
 
-3.  Wybierz pozycję **Dodaj**.
+3. Wybierz pozycję **Dodaj**.
 
-4.  Dodawanie punktu końcowego usługi Azure Stack.
+4. Dodawanie punktu końcowego usługi Azure Stack.
 
-5.  Aby uzyskać **typu**, wybierz opcję **zewnętrzny punkt końcowy**.
+5. Aby uzyskać **typu**, wybierz opcję **zewnętrzny punkt końcowy**.
 
-6.  Podaj **nazwa** dla tego punktu końcowego, najlepiej nazwa usługi Azure Stack.
+6. Podaj **nazwa** dla tego punktu końcowego, najlepiej nazwa usługi Azure Stack.
 
-7.  Dla w pełni kwalifikowaną nazwę domeny (**FQDN**), Użyj zewnętrznego adresu URL dla aplikacji sieci Web usługi Azure Stack.
+7. Dla w pełni kwalifikowaną nazwę domeny (**FQDN**), Użyj zewnętrznego adresu URL dla aplikacji sieci Web usługi Azure Stack.
 
-8.  W obszarze map geograficznych, wybierz region/kontynent, gdzie znajduje się zasób, na przykład **Europa.**
+8. W obszarze map geograficznych, wybierz region/kontynent, gdzie znajduje się zasób, na przykład **Europa.**
 
-9.  W obszarze Kraj/Region listy rozwijanej wyświetlonej, wybierz kraj, które zostaną zastosowane do tego punktu końcowego, na przykład **Niemcy**.
+9. W obszarze Kraj/Region listy rozwijanej wyświetlonej, wybierz kraj, które zostaną zastosowane do tego punktu końcowego, na przykład **Niemcy**.
 
 10. Pozycję **Dodaj jako wyłączone** pozostaw niezaznaczoną.
 
@@ -628,12 +628,12 @@ Umożliwia aplikacji [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 
 
 16. Kliknij przycisk **OK**
 
-  > [!Note]  
-  >  Utwórz co najmniej jeden punkt końcowy z geograficzny zakres wszystkich (świat) jako domyślny punkt końcowy dla zasobu.
+    > [!Note]  
+    >  Utwórz co najmniej jeden punkt końcowy z geograficzny zakres wszystkich (świat) jako domyślny punkt końcowy dla zasobu.
 
-1.  Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
+1. Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
 
-  ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image46.png)
+    ![Tekst alternatywny](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Globalne przedsiębiorstw opiera się na możliwości dystrybucja geograficzna platformy Azure**
 

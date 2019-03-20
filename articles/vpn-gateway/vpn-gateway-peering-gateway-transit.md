@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 91e2a4f49ba52ccbae8838400d54e0f483ca5039
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780528"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199634"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych
 
@@ -37,8 +37,8 @@ W tym dokumencie opisano dwa scenariusze:
 1. Obie sieci wirtualne korzystają z modelu wdrażania usługi Resource Manager
 2. Promieniście ułożone sieci wirtualne korzystają z modelu klasycznego, a centralna sieć wirtualna z bramą używa modelu usługi Resource Manager
 
-> [!IMPORTANT]
-> Tranzyt bramy nie jest obecnie obsługiwany w globalnych wirtualnych sieciach równorzędnych.
+> [!IMPORTANT]  
+> Tranzyt przez bramę jest obecnie obsługiwana przy użyciu globalne wirtualne sieci równorzędne w wersji zapoznawczej. Podgląd jest dostępny we wszystkich regionach platformy Azure, regionów chmury w Chinach i regionów chmury dla instytucji rządowych, ale nie w ramach wielu chmur. Wymagany jest nie umieszczania na białej liście. Możesz przetestować w wersji zapoznawczej za pośrednictwem interfejsu wiersza polecenia, programu PowerShell, szablonów i interfejsu API. Portal nie jest obsługiwana w wersji zapoznawczej. 
 
 ## <a name="requirements"></a>Wymagania
 
@@ -129,13 +129,13 @@ Add-AzVirtualNetworkPeering `
 Te kroki są podobne do kroków w przykładzie z modelami usługi Resource Manager, z tym wyjątkiem, że operacje są wykonywane tylko na sieci wirtualnej o nazwie Hub-RM.
 
 1. W witrynie Azure Portal utwórz lub zaktualizuj wirtualną komunikację równorzędną z sieci Hub-RM do sieci Spoke-RM. Przejdź do zasobu sieci wirtualnej Hub-RM i kliknij kolejno pozycje „Komunikacje równorzędne”, „Dodaj”:
-    - Ustaw opcję „Wdrożenie klasyczne” dla modelu wdrażania sieci wirtualnej.
-    - Wybierz sieć wirtualną „Spoke-Classic” w odpowiedniej subskrypcji.
-    - Upewnij się, że dla opcji „Zezwalaj na dostęp sieci wirtualnej” ustawiono wartość „Włączone”.
-    - Ustaw opcję „**Zezwalaj na tranzyt bramy**”.
-    - Kliknij przycisk „OK”.
+   - Ustaw opcję „Wdrożenie klasyczne” dla modelu wdrażania sieci wirtualnej.
+   - Wybierz sieć wirtualną „Spoke-Classic” w odpowiedniej subskrypcji.
+   - Upewnij się, że dla opcji „Zezwalaj na dostęp sieci wirtualnej” ustawiono wartość „Włączone”.
+   - Ustaw opcję „**Zezwalaj na tranzyt bramy**”.
+   - Kliknij przycisk „OK”.
 
-    ![hubrm-to-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
+     ![hubrm-to-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
 
 2. Jeśli komunikacja równorzędna jest już utworzona, przejdź do tego zasobu komunikacji równorzędnej, a następnie włącz opcję „**Zezwalaj na tranzyt bramy**” podobnie, jak pokazano na zrzucie ekranu w kroku (1).
 

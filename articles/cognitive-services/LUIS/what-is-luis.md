@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 97632ad27a09451f47012dfb7bbc9d406cd37c89
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: c26f3d6c3b34ed90a5455bb94ea71d7556b47751
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879262"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441971"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co to jest usługa Language Understanding (LUIS)?
 
@@ -104,7 +104,7 @@ Najważniejszą aplikacją kliencką dla usługi LUIS jest:
 * [Bot usługi Web Apps](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0) szybko tworzy czatbota obsługującego usługę LUIS, który rozmawia z użytkownikiem za pośrednictwem tekstowych danych wejściowych. Wykorzystuje strukturę [Bot Framework][bot-framework] w wersji [3.x](https://github.com/Microsoft/BotBuilder) lub [4.x](https://github.com/Microsoft/botbuilder-dotnet), która obsługuje pełne środowisko użytkowania bota.
 
 Narzędzia do szybkiego i łatwego korzystania z usługi LUIS z botem:
-* [Interfejs wiersza polecenia usługi LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) — pakiet NPM umożliwia tworzenie i przewidywanie za pomocą autonomicznego narzędzia wiersza poleceń lub importu. 
+* [Interfejs wiersza polecenia usługi LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) pakietu NPM oferuje do tworzenia i prognozowania z jako narzędzie wiersza polecenia autonomicznej lub importu. 
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) — to narzędzie do generowania silnie typizowanego języka C# i kodu źródłowego języka Typescript z wyeksportowanego modelu usługi LUIS.
 * [Dispatch](https://aka.ms/dispatch-tool) — umożliwia używanie kilku aplikacji LUIS lub QnA Maker z poziomu aplikacji nadrzędnej za pomocą modelu dyspozytora.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) — to narzędzie wiersza polecenia, które pomaga zarządzać modelami językowymi bota.
@@ -120,7 +120,7 @@ Przykłady korzystające z usługi LUIS:
 * Repozytorium GitHub [Conversational AI](https://github.com/Microsoft/AI)
 * Przykłady platformy Azure [Language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Utwórz nową aplikację usługi LUIS za pomocą domeny [wstępnie utworzonej](luis-get-started-create-app.md) lub [niestandardowej](luis-quickstart-intents-only.md). [Wyślij zapytanie do punktu końcowego przewidywania](luis-get-started-cs-get-intent.md) publicznej aplikacji IoT.
 

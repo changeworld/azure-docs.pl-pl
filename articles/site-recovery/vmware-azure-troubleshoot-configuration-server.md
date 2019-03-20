@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: a81bcf26234f3b7840a75e7134596cb777071e8f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432791"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107597"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Rozwiązywanie problemów z konfiguracją serwera
 
@@ -25,9 +25,9 @@ Po zainstalowaniu agenta mobilności na maszynie źródłowej rejestruje się z 
 1. Otwórz plik C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log. (ProgramData folder może być folderem ukrytym. Jeśli nie widzisz folder ProgramData, w Eksploratorze plików na **widoku** na karcie **Pokaż/Ukryj** zaznacz **ukryte elementy** pole wyboru.) Awarii może być spowodowany przez wiele problemów.
 
 2. Wyszukaj ciąg **nie można odnaleźć prawidłowego adresu IP**. Jeśli ciąg zostanie znaleziony:
-    1. Sprawdź, czy identyfikator żądanego hosta jest taki sam jak identyfikator hosta na maszynie źródłowej.
-    2. Sprawdź, czy maszyna źródłowa ma co najmniej jeden adres IP przypisany do fizycznej karty sieciowej. Rejestracji agenta z serwerem konfiguracji zakończyło się sukcesem maszyna źródłowa musi mieć co najmniej jeden prawidłowy adres IPv4 przypisany do fizycznej karty sieciowej.
-    3. Uruchom jedno z następujących poleceń na maszynie źródłowej, aby uzyskać wszystkie adresy IP maszyny źródłowej:
+   1. Sprawdź, czy identyfikator żądanego hosta jest taki sam jak identyfikator hosta na maszynie źródłowej.
+   2. Sprawdź, czy maszyna źródłowa ma co najmniej jeden adres IP przypisany do fizycznej karty sieciowej. Rejestracji agenta z serwerem konfiguracji zakończyło się sukcesem maszyna źródłowa musi mieć co najmniej jeden prawidłowy adres IPv4 przypisany do fizycznej karty sieciowej.
+   3. Uruchom jedno z następujących poleceń na maszynie źródłowej, aby uzyskać wszystkie adresy IP maszyny źródłowej:
       - Aby uzyskać Windows: `> ipconfig /all`
       - Dla systemu Linux: `# ifconfig -a`
 

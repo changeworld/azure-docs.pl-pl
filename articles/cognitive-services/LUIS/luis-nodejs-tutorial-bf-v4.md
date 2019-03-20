@@ -5,18 +5,18 @@ description: Przy użyciu platformy Node.js utwórz czatbot zintegrowany z usłu
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cjgronlund
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 852cc5e5b3b018d871bd40775dce64d669fb3011
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 54bae5548764ed1f89a2ffb7992eb222a058c706
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880618"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403655"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Samouczek: bot usługi LUIS w środowisku Node.js przy użyciu platformy Bot Framework 4.x i bota aplikacji internetowej platformy Azure
 Przy użyciu platformy Node.js można utworzyć czatbot zintegrowany z usługą Language Understanding (LUIS). Ten bot używa aplikacji HomeAutomation do implementacji rozwiązania bota. Bot jest kompilacją aplikacji [bot aplikacji internetowej](https://docs.microsoft.com/azure/bot-service/) na platformie Azure z [Bot Framework w wersji](https://github.com/Microsoft/botbuilder-js) 4.
@@ -354,7 +354,7 @@ Usługa Azure Bot używa zestawu SDK Bot Framework. Dowiedz się więcej na tema
 * [Zestaw SDK Bot Builder](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
 * [Narzędzia Bot Builder](https://github.com/Microsoft/botbuilder-tools):
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Utworzono usługę Azure Bot, skopiowano wpis tajny i ścieżkę pliku .bot, pobrano plik zip z kodem. Dodano wstępnie utworzoną domenę HomeAutomation do aplikacji LUIS utworzonej w ramach nowej usługi Azure Bot, a następnie przeprowadzono szkolenie i ponownie opublikowano aplikację. Wyodrębniono projekt kodu, utworzono plik środowiska (`.env`), a także ustawiono wpis tajny bota i ścieżkę pliku .bot. W pliku bot.js dodano kod w celu obsługi dwóch nowych intencji. Następnie przetestowano bota w emulatorze bota, aby zobaczyć odpowiedź usługi LUIS na wypowiedzenie jednej z nowych intencji. 
 

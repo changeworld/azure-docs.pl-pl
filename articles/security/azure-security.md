@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 934046ac4be6c0e85ee687cefb46b61ec8affca6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543370"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904256"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -59,7 +59,7 @@ Funkcje wymienione w następstwie są funkcje, które można przeglądać w celu
 | [Bezpieczna platforma](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Prywatność i kontrolek](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Zgodność](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Przezroczystości](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Cykl projektowania zabezpieczeń](https://www.microsoft.com/en-us/sdl/)wewnętrznej inspekcji | [Zarządzanie danymi przez cały czas](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Jak firma Microsoft zabezpiecza dane klienta z usługami platformy Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [Obowiązkowe szkolenia w zakresie zabezpieczeń, sprawdzanie w tle](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Kontrolowanie lokalizacji danych](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Typowe kontrolki Centrum](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak zarządzać lokalizacji danych w usługach platformy Azure przez firmy Microsoft](http://azuredatacentermap.azurewebsites.net/)|
+| [Obowiązkowe szkolenia w zakresie zabezpieczeń, sprawdzanie w tle](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Kontrolowanie lokalizacji danych](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Typowe kontrolki Centrum](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak zarządzać lokalizacji danych w usługach platformy Azure przez firmy Microsoft](https://azuredatacentermap.azurewebsites.net/)|
 | [Testy penetracyjne](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [włamań i DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [inspekcji i rejestrowania](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Zapewnia dostęp do danych na swoich warunkach](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Usługi w chmurze powodu starannością listy kontrolnej](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Kto w firmie Microsoft uzyskiwać dostęp do danych, na jakich zasadach](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [Centrum danych najnowocześniejsze](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), bezpieczeństwo fizyczne [zabezpieczenia sieci](https://docs.microsoft.com/azure/security/security-network-overview) | [Odpowiadanie na organom ścigania](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Zgodność z przepisami według usługi, lokalizacji i przemysł](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Jak firma Microsoft zabezpiecza dane klienta z usługami platformy Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [Reagowania na zdarzenia zabezpieczeń](https://aka.ms/SecurityResponsepaper), [udostępnione odpowiedzialności](https://aka.ms/sharedresponsibility) |[Rygorystyczne standardy ochrony prywatności](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Przejrzyj certyfikaty związane z usługami platformy Azure, Centrum przezroczystości](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|

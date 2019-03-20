@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: f1d64170c3f9622169dd1218e4c63652c9f94b9b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820675"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858881"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S
 
@@ -44,6 +44,14 @@ Na pulpicie nawigacyjnym FTP kliknij **kopiowania** do skopiowania FTPS poświad
 
 Zaleca się, że używasz **poświadczenia aplikacji** można wdrożyć do swojej aplikacji, ponieważ jest on unikatowy dla każdej aplikacji. Jednak jeśli klikniesz **poświadczenia użytkownika**, można ustawić poświadczenia na poziomie użytkownika, służące do logowania protokołu FTP/S do wszystkich aplikacji usługi App Service w ramach subskrypcji.
 
+> [!NOTE]
+> Uwierzytelnianie FTP/FTPS punkt końcowy przy użyciu requirers poświadczenia na poziomie użytkownika o nazwę użytkownika w następującym formacie: 
+>
+>`<app-name>\<user-name>`
+>
+> Ponieważ poświadczenia na poziomie użytkownika są połączone z kontem użytkownika i określonego zasobu, nazwa użytkownika musi być w następującym formacie, aby skierować działania logowania do endpoint odpowiedniej aplikacji.
+>
+
 ## <a name="deploy-files-to-azure"></a>Wdrażanie plików na platformie Azure
 
 1. Z poziomu klienta FTP (na przykład [programu Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), lub [WinSCP](https://winscp.net/index.php)), informacji o połączeniu zebrane nawiązać połączenia z aplikacją.
@@ -58,7 +66,6 @@ Zaleca się, że używasz **poświadczenia aplikacji** można wdrożyć do swoje
 > - Generowanie pliku Web.config (w tym miejscu jest [przykładu środowiska Node.js](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
 > Generowanie tych niezbędne pliki ręcznie na komputerze lokalnym, a następnie wdrożyć je razem z aplikacją.
->
 >
 
 ## <a name="enforce-ftps"></a>Wymuszanie protokołu FTPS

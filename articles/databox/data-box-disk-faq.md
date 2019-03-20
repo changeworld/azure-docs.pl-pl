@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 5f44e3c4a1b7f28133ecd232fc49a34931bddfa4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729835"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877857"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co to jest usługa Azure Data Box Disk?
 
@@ -51,7 +51,7 @@ A.  Aby otrzymać urządzenia Azure Data Box Disk, zaloguj się do witryny Azure
 A. W przypadku 5 dysków — każdy o rozmiarze 8 TB (7 TB pojemności do wykorzystania) — maksymalna pojemność do wykorzystania to 35 TB. W związku z tym jednorazowo możesz przenieść 35 TB danych. Aby przenieść większą ilość danych, musisz zamówić więcej dysków.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>PYTANIE: Jak sprawdzić, czy urządzenia Data Box Disk są dostępne w moim regionie? 
-A.  Urządzenia Data Box Disk są obecnie dostępne w Stanach Zjednoczonych, Kanadzie, Australii i we wszystkich krajach Unii Europejskiej.  
+A.  Aby zobaczyć, gdzie są obecnie dostępne dyski Data Box, przejdź do [dostępność w poszczególnych regionach](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>PYTANIE: W jakich regionach mogę zapisać dane, korzystając z usługi Data Box Disk?
 A. Usługa Data Box Disk jest obsługiwana we wszystkich regionach Stanów Zjednoczonych, Kanadzie, Australii oraz w regionach Europa Zachodnia i Europa Północna. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
@@ -126,14 +126,14 @@ A.  Nie. Obecnie na potrzeby urządzeń Data Box Disk jest obsługiwane tylko je
 A. Zestaw narzędzi dostępny na urządzeniu Data Box Disk zawiera trzy narzędzia:
  - **Narzędzie do odblokowywania dysków Data Box Disk**: To narzędzie umożliwia odblokowywanie zaszyfrowanych dysków, które są wysyłane przez firmę Microsoft. W przypadku odblokowywania dysków za pomocą narzędzia musisz podać klucz dostępu udostępniony w zamówieniu urządzenia Data Box Disk w witrynie Azure Portal. 
  - **Narzędzie do walidacji urządzenia Data Box Disk**: To narzędzie umożliwia weryfikowanie rozmiaru, formatu i nazw obiektów blob zgodnie z konwencjami nazewnictwa platformy Azure. Generuje ono sumy kontrolne skopiowanych danych, które następnie są używane do weryfikowania danych przekazywanych na platformie Azure.
- - **Narzędzie do dzielenia i kopiowania dysków Data Box Disk**: To narzędzie jest stosowane w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. To narzędzie jest obecnie dostępne dla systemu Windows.
+ - **Narzędzie do dzielenia i kopiowania dysków Data Box Disk**: To narzędzie jest stosowane w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. To narzędzie jest obecnie dostępne dla systemu Windows. To narzędzie nie jest obsługiwana w przypadku dysków zarządzanych. To narzędzie jest również sprawdzane, ponieważ dane są kopiowane, dlatego możesz pominąć krok weryfikacji podczas używania tego narzędzia.
 
 Zestaw narzędzi jest dostępny dla systemów Windows i Linux. Zestaw narzędzi można pobrać w tym miejscu:
- - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin) 
- - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
+- [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin) 
+- [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Linux](https://aka.ms/databoxdisktoolslinux)
  
-### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>PYTANIE: Czy można używać urządzenia Data Box Disk do przesyłania danych do usługi Azure Files, a następnie używać danych w usłudze Azure File Sync? 
-A. Urządzenie Data Box Disk nie obsługuje usługi Azure Files. Metadane nie są również zachowywane, jeśli dane pliku są później używane w usłudze Azure File Sync.
+  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>PYTANIE: Czy można używać urządzenia Data Box Disk do przesyłania danych do usługi Azure Files, a następnie używać danych w usłudze Azure File Sync? 
+  A. Usługa pliki systemu Azure są obsługiwane przy użyciu dysku Data Box, ale nie będzie działać poprawnie przy użyciu usługi Azure File Sync. Metadane nie są zachowywane, jeśli dane pliku jest używany z usługi Azure File Sync.
 
 
 ## <a name="verify-and-upload"></a>Weryfikowanie i przekazywanie
@@ -142,10 +142,10 @@ A. Urządzenie Data Box Disk nie obsługuje usługi Azure Files. Metadane nie s�
 A.  Dostęp do danych powinien być możliwy natychmiast po zmianie stanu zamówienia dla pozycji Kopiowanie danych na Ukończono.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>PYTANIE: Gdzie znajdują się moje dane na platformie Azure po przekazaniu?
-A.  Jeśli skopiowano dane do folderów *BlockBlob* i *PageBlob* na dysku, w ramach konta usługi Azure Storage jest tworzony kontener dla każdego podfolderu w folderze *BlockBlob* i *PageBlob*. Jeśli pliki zostały skopiowane bezpośrednio do folderów *BlockBlob* i *PageBlob*, zostaną one umieszczone w domyślnym kontenerze *$root* na koncie usługi Azure Storage.
+A.  Jeśli skopiowano dane do folderów *BlockBlob* i *PageBlob* na dysku, w ramach konta usługi Azure Storage jest tworzony kontener dla każdego podfolderu w folderze *BlockBlob* i *PageBlob*. Jeśli pliki zostały skopiowane bezpośrednio do folderów *BlockBlob* i *PageBlob*, zostaną one umieszczone w domyślnym kontenerze *$root* na koncie usługi Azure Storage. Po skopiowaniu danych do folderu, w obszarze *AzureFile* tworzony jest folder, udziałem plików.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>PYTANIE: Nazwy moich kontenerów nie są zgodne z wymaganiami dotyczącymi nazewnictwa platformy Azure. Czy przekazywanie moich danych na platformę Azure nie powiedzie się?
-A. Jeśli nazwy kontenerów zawierają wielkie litery, zostaną one automatycznie przekonwertowane w małe litery. Jeśli nazwy nie są zgodne w inny sposób (znaki specjalne, inne języki itd.), przekazywanie zakończy się niepowodzeniem. Aby uzyskać więcej informacji, zobacz [Konwencje nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions).
+A. Jeśli nazwy kontenerów zawierają wielkie litery, zostaną one automatycznie przekonwertowane w małe litery. Jeśli nazwy nie są zgodne w inny sposób (znaki specjalne, inne języki itd.), przekazywanie zakończy się niepowodzeniem. Aby uzyskać więcej informacji, zobacz [Konwencje nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions).
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>PYTANIE: Jak mogę zweryfikować dane skopiowane na wiele urządzeń Data Box Disk?
 A.  Po zakończeniu kopiowania danych możesz uruchomić plik `DataBoxDiskValidation.cmd` znajdujący się w folderze *DataBoxDiskImport* w celu wygenerowania sum kontrolnych na potrzeby walidacji. W przypadku wielu dysków musisz otworzyć okno polecenia i uruchomić to polecenie dla każdego z nich. Pamiętaj, że ta operacja może zająć dużo czasu (kilka godzin) w zależności od rozmiaru danych.
@@ -160,9 +160,15 @@ A.  Urządzenia Data Box Disk są zaszyfrowane za pomocą funkcji Microsoft BitL
 A. Tak. Jeśli zdecydujesz się na walidację danych (zdecydowanie to zalecamy!), musisz ponownie uruchomić walidację po dodaniu danych do dysków.
 
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>PYTANIE: Transferowane dane zajęły miejsce na wszystkich dyskach i muszę zamówić więcej dysków. Czy można szybko złożyć zamówienie?
-A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworzy takie samo zamówienie i możliwe jest edytowanie jego szczegółów bez konieczności wpisywania adresu, danych kontaktowych i danych dotyczących powiadomień. 
+A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworzy takie samo zamówienie i możliwe jest edytowanie jego szczegółów bez konieczności wpisywania adresu, danych kontaktowych i danych dotyczących powiadomień.
 
-## <a name="next-steps"></a>Następne kroki
+### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>PYTANIE: Po skopiowaniu danych do folderu ManagedDisk. Nie widzę żadnych dysków zarządzanych z grupą zasobów określona dla dysków zarządzanych. Przekazano dane na platformie Azure i jak mogę go znaleźć?
+A. Tak. Przekazano dane na platformie Azure, ale jeśli nie widzisz żadnych dysków zarządzanych przy użyciu grup określonego zasobu, prawdopodobną przyczyną jest danych nie jest prawidłowa. W przypadku stronicowych obiektów blob, blokowe obiekty BLOB, Azure Files i dysków zarządzanych nie jest prawidłowy, te musieli przejść do następujących folderów:
+ - Stronicowe obiekty BLOB musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-pb -*.
+ - Usługa Azure Files musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk — nieprawidłowy-af -*.
+ - Dyski zarządzane musieli przejść do bloku kontenera obiektów blob, począwszy od *databoxdisk-invliad-md -*.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj [wymagania systemowe usługi Data Box](data-box-disk-system-requirements.md).
 - Poznaj [ograniczenia usługi Data Box](data-box-disk-limits.md).

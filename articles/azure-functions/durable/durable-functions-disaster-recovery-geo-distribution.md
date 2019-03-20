@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0fb2103b982d5b2fc1a04455b451459ede12166e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336939"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108209"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Odzyskiwanie po awarii i dystrybucja geograficzna
 
@@ -24,7 +24,7 @@ ms.locfileid: "53336939"
 W przypadku funkcji trwałych wszystkie stany są utrwalane w usłudze Azure Storage. A [Centrum zadań](durable-functions-task-hubs.md) to kontener logiczny dla zasobów usługi Azure Storage, które są używane do aranżacji. Funkcje programu orchestrator i działanie tylko można ze sobą współdziałać, jeśli należą do tego samego Centrum zadania.
 Opisane scenariusze zaproponować opcjami wdrożenia w celu zwiększenia dostępności i skrócić czas przestoju podczas działania odzyskiwania po awarii.
 
-Należy zauważyć, że te scenariusze są oparte na konfiguracji aktywne-pasywne, ponieważ są one sterowana przez użycie usługi Azure Storage. Ten wzorzec polega na wdrożeniu aplikacji funkcji wykonywania kopii zapasowej (pasywnego) w innym regionie. Usługi Traffic Manager będzie monitorować aplikację podstawową funkcją (aktywny) dla dostępności. Zakończy się niepowodzeniem przez aplikację funkcji tworzenia kopii zapasowej w przypadku niepowodzenia podstawowego. Aby uzyskać więcej informacji, zobacz [usługi Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)firmy [metody rozsyłania ruchu priorytetu.](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)
+Należy zauważyć, że te scenariusze są oparte na konfiguracji aktywne-pasywne, ponieważ są one sterowana przez użycie usługi Azure Storage. Ten wzorzec polega na wdrożeniu aplikacji funkcji wykonywania kopii zapasowej (pasywnego) w innym regionie. Usługi Traffic Manager będzie monitorować aplikację podstawową funkcją (aktywny) dla dostępności. Zakończy się niepowodzeniem przez aplikację funkcji tworzenia kopii zapasowej w przypadku niepowodzenia podstawowego. Aby uzyskać więcej informacji, zobacz [usługi Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)firmy [metody rozsyłania ruchu priorytetu.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 >[!NOTE]
 >

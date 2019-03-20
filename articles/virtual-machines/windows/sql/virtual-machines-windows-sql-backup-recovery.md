@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: ec147355d6f61a282a0e6b0950fe03ba0e2341f5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: e291072f7eb075adeff9efb37f1f7dffc72d714c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530386"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093528"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Tworzenie i przywracanie kopii zapasowych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -33,7 +33,7 @@ Pierwsza część tego artykułu zawiera omówienie dostępnych kopii zapasowych
 Poniższa tabela zawiera informacje na temat różnych opcji tworzenia kopii zapasowych i przywracania dla programu SQL Server, działające na maszynach wirtualnych platformy Azure:
 
 | Strategia | Wersje programu SQL | Opis |
-|---|---|---|---|
+|---|---|---|
 | [Automatyczne kopie zapasowe](#automated) | 2014<br/> 2016<br/> 2017 | Zautomatyzowane tworzenie kopii zapasowej umożliwia planowanie regularnych kopii zapasowych dla wszystkich baz danych na maszynę Wirtualną programu SQL Server. Kopie zapasowe są przechowywane w magazynie platformy Azure przez maksymalnie 30 dni. Począwszy od programu SQL Server 2016, automatyczne kopie zapasowe w wersji 2 oferuje dodatkowe opcje, takie jak konfigurowanie ręcznego planowania oraz częstotliwości pełnego i kopie zapasowe dziennika. |
 | [Usługa Azure Backup dla maszyn wirtualnych SQL](#azbackup) | 2012<br/> 2014<br/> 2016<br/> 2017 | Usługa Azure Backup zapewnia możliwości tworzenia kopii zapasowej klasy przedsiębiorstwa dla programu SQL Server uruchamianych na maszynach wirtualnych platformy Azure. Ta usługa umożliwia centralne zarządzanie kopie zapasowe wielu serwerów i tysiącami baz danych. Bazy danych można przywrócić do określonego punktu w czasie w portalu. Oferuje ona zasady przechowywania można dostosowywać, które mogą zachowywać kopie zapasowe lata. Ta funkcja jest obecnie w publicznej wersji zapoznawczej. |
 | [Ręczna kopia zapasowa](#manual) | Wszyscy | W zależności od używanej wersji programu SQL Server istnieją różne techniki ręcznie i przywracania kopii zapasowych programu SQL Server uruchomionego na Maszynie wirtualnej platformy Azure. W tym scenariuszu jesteś odpowiedzialny za jak baz danych kopie zapasowe są tworzone i lokalizacji magazynu oraz zarządzania te kopie zapasowe. |

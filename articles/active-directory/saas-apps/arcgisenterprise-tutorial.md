@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63e4769a0089259ee337931e2dbc0e8bcc9290c5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 9275129c4339a6eae7ea8a44b22cbc78303cbf01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869024"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889543"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją ArcGIS Enterprise
 
@@ -57,7 +57,7 @@ Aby skonfigurować integrację aplikacji ArcGIS Enterprise z usługą Azure AD, 
 
 **Aby dodać aplikację ArcGIS Enterprise z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -113,7 +113,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
 
-    d. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+    c. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     ![Informacje o domenie i adresach URL pojedynczego logowania aplikacji ArcGIS Enterprise](common/metadata-upload-additional-signon.png)
 
@@ -150,7 +150,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
     b. W polu tekstowym **URL** (Adres URL) wklej wartość **adresu URL metadanych federacyjnych aplikacji**, którą skopiowano z witryny Azure Portal.
 
-    d. Kliknij pozycję **Show advanced settings** (Pokaż ustawienia zaawansowane) i skopiuj wartość z pola **Entity ID** (Identyfikator jednostki), a następnie wklej ją w polu tekstowym **Identyfikator** w sekcji **Domena i adresy URL aplikacji ArcGIS Enterprise** w witrynie Azure Portal.
+    c. Kliknij pozycję **Show advanced settings** (Pokaż ustawienia zaawansowane) i skopiuj wartość z pola **Entity ID** (Identyfikator jednostki), a następnie wklej ją w polu tekstowym **Identyfikator** w sekcji **Domena i adresy URL aplikacji ArcGIS Enterprise** w witrynie Azure Portal.
     
     ![Konfiguracja aplikacji ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure5.png)
 
@@ -174,7 +174,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -216,7 +216,7 @@ W tej sekcji w aplikacji ArcGIS Enterprise jest tworzony użytkownik o nazwie Br
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka ArcGIS Enterprise w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji ArcGIS Enterprise, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

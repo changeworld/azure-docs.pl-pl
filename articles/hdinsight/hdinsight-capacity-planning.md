@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b35c5073f2b19523010528800c2a989d5de5b448
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716144"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848017"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności dla klastrów HDInsight
 
@@ -73,9 +73,9 @@ Rozmiar maszyny Wirtualnej i typ jest określany przez wykorzystanie Procesora m
 
 * Procesor CPU: Rozmiar maszyny Wirtualnej decyduje o liczbie rdzeni. Każdy węzeł można osiągnąć, więcej rdzeni, wyższy stopień obliczeń równoległych. Ponadto niektóre typy maszyn wirtualnych mają szybsze rdzeni.
 
-* PAMIĘĆ RAM: Rozmiar maszyny Wirtualnej decyduje również o ilość pamięci RAM dostępnej na maszynie wirtualnej. W przypadku obciążeń, które przechowuje dane w pamięci do przetwarzania, a nie odczytu z dysku, upewnij się, węzłów procesu roboczego ma za mało pamięci, aby dopasować dane.
+* Pamięć RAM: Rozmiar maszyny Wirtualnej decyduje również o ilość pamięci RAM dostępnej na maszynie wirtualnej. W przypadku obciążeń, które przechowuje dane w pamięci do przetwarzania, a nie odczytu z dysku, upewnij się, węzłów procesu roboczego ma za mało pamięci, aby dopasować dane.
 
-* Sieć: Dla większości typów klastrów danych przetworzonych przez klaster jest nie na dysku lokalnym, ale raczej w usłudze magazynu zewnętrznego, takie jak magazyn usługi Data Lake lub usługi Azure Storage. Należy wziąć pod uwagę przepustowość sieci i przepustowość między węzłem maszyny Wirtualnej i usługi storage. Przepustowość sieci dostępną dla maszyny Wirtualnej zwykle zwiększa się o większych rozmiarach. Aby uzyskać więcej informacji, zobacz [maszyny Wirtualne o rozmiarach Przegląd](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Network: Dla większości typów klastrów danych przetworzonych przez klaster jest nie na dysku lokalnym, ale raczej w usłudze magazynu zewnętrznego, takie jak magazyn usługi Data Lake lub usługi Azure Storage. Należy wziąć pod uwagę przepustowość sieci i przepustowość między węzłem maszyny Wirtualnej i usługi storage. Przepustowość sieci dostępną dla maszyny Wirtualnej zwykle zwiększa się o większych rozmiarach. Aby uzyskać więcej informacji, zobacz [maszyny Wirtualne o rozmiarach Przegląd](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
 ## <a name="choose-the-cluster-scale"></a>Wybór skali klastra
 
@@ -109,15 +109,15 @@ Po ustaleniu, klaster docelowy rozmiar maszyny Wirtualnej, skalę i typ., sprawd
 1. Kliknij pozycję **Pomoc i obsługa techniczna** w lewym dolnym rogu strony.
 1. Kliknij pozycję **nowe żądanie obsługi**.
 1. Na **nowe żądanie obsługi** w obszarze **podstawy** , a następnie wybierz następujące opcje:
-    - **Typ problemu**: **Limity usług i subskrypcji (przydziały)**
-    - **Subskrypcja**: subskrypcji, którą chcesz zmodyfikować
-    - **Typ limitu przydziału**: **HDInsight**
+   - **Typ problemu**: **Limity usług i subskrypcji (przydziały)**
+   - **Subskrypcja**: subskrypcji, którą chcesz zmodyfikować
+   - **Typ limitu przydziału**: **HDInsight**
     
-    ![Utwórz żądanie obsługi, aby zwiększyć limit przydziału rdzeni HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+     ![Utwórz żądanie obsługi, aby zwiększyć limit przydziału rdzeni HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. Kliknij przycisk **Dalej**.
 1. Na **szczegóły** strony, wprowadź opis problemu, wybierz ważność problemu i wybierz preferowaną metodę kontaktu.
-1. Kliknij przycisk **dalej: Przeglądanie + tworzenie**.
+1. Kliknij pozycję **Next: Przeglądanie + tworzenie**.
 1. Na **przeglądu + Utwórz** kliknij pozycję **Utwórz**.
 
 > [!NOTE]  
@@ -125,7 +125,7 @@ Po ustaleniu, klaster docelowy rozmiar maszyny Wirtualnej, skalę i typ., sprawd
 
 Możesz [skontaktuj się z pomocą techniczną, aby zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Jednak istnieją pewne ograniczenia stały limit przydziału, na przykład pojedynczej subskrypcji platformy Azure może mieć co najwyżej 10 000 rdzeni. Aby uzyskać więcej informacji o tych limitach, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
+Jednak istnieją pewne ograniczenia stały limit przydziału, na przykład pojedynczej subskrypcji platformy Azure może mieć co najwyżej 10 000 rdzeni. Aby uzyskać więcej informacji o tych limitach, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

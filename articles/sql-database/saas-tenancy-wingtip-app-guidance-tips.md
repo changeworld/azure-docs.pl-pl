@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: af0e642a1f8ec34e654295ae7dcf2960c8664d91
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565568"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900509"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Ogólne wskazówki dotyczące pracy z Wingtip Tickets przykładowe aplikacje SaaS
 
@@ -94,7 +94,7 @@ W celu zapewnienia połączenia pokaz pomyślne, wszystkie serwery mają [reguł
 
    ![serwer wykazu](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Pokaz poświadczenia są: Identyfikator logowania = *developer*, hasło = *P@ssword1*
+3. Pokaz poświadczenia są: Identyfikator logowania = *developer*, hasło = *P\@ssword1*
 
     Na poniższej ilustracji przedstawiono nazwy logowania dla *bazy danych dla każdego dzierżawcy* wzorca. 
     ![połączenia](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

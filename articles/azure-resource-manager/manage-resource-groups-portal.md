@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 2f31809a0d80079730966e2ecdb017b68563949e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cbbc710c9408c84c601d7b9eb9560641b5313a05
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825108"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090937"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Zarządzanie grupami zasobów usługi Azure Resource Manager przy użyciu witryny Azure portal
 
@@ -46,11 +46,11 @@ Grupa zasobów przechowuje metadane dotyczące zasobów. Po określeniu lokaliza
 3. Wybierz pozycję **Dodaj**.
 4. Wprowadź następujące wartości:
 
-    - **Subskrypcja**: Wybierz swoją subskrypcję platformy Azure. 
-    - **Grupa zasobów**: Wprowadź nazwę nowej grupy zasobów. 
-    - **Region**: Wybierz lokalizację platformy Azure, taką jak **środkowe stany USA**.
+   - **Subskrypcja**: Wybierz swoją subskrypcję platformy Azure. 
+   - **Grupa zasobów**: Wprowadź nazwę nowej grupy zasobów. 
+   - **Region**: Wybierz lokalizację platformy Azure, taką jak **środkowe stany USA**.
 
-    ![Utwórz grupę zasobów](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![Utwórz grupę zasobów](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Wybierz **przeglądanie + tworzenie**
 6. Wybierz pozycję **Utwórz**. Zajmuje kilka sekund, aby utworzyć grupę zasobów.
 7. Wybierz **Odśwież** z górnego menu, aby odświeżyć listy grup zasobów, a następnie wybierz grupę nowo utworzonego zasobu, aby go otworzyć. Lub wybierz **powiadomień**(ikonę dzwonka) z góry, a następnie wybierz pozycję **przejdź do grupy zasobów** otworzyć nowo utworzonej grupy zasobów
@@ -130,14 +130,14 @@ Ta metoda umożliwia wyeksportowanie szablonów w przypadku niektórych wdroże�
 3. Wybierz jedno z wdrożeń z listy.
 4. W okienku po lewej stronie wybierz **szablonu**. Usługa Resource Manager pobiera następujące sześć plików:
 
-    - **Szablon** — szablon, który definiuje infrastrukturę Twojego rozwiązania. Po utworzeniu konta magazynu za pośrednictwem portalu usługa Resource Manager użyła szablonu w celu jego wdrożenia i zapisała ten szablon do użytku w przyszłości.
-    - **Parametry** — plik parametrów, który służy do przekazywania wartości podczas wdrażania. Zawiera on wartości, które podano podczas pierwszego wdrażania. Podczas ponownego wdrażania szablonu można zmienić dowolne z tych wartości.
-    - **Interfejs wiersza polecenia** — plik skryptu interfejsu wiersza polecenia platformy Azure, którego można użyć do wdrożenia szablonu.
-    - **PowerShell** — plik skryptu programu Azure PowerShell, którego możesz użyć do wdrożenia szablonu.
-    - **.NET** — klasa platformy .NET, której możesz użyć do wdrożenia szablonu.
-    - **Ruby** — klasa języka Ruby, której możesz użyć do wdrożenia szablonu.
+   - **Szablon** — szablon, który definiuje infrastrukturę Twojego rozwiązania. Po utworzeniu konta magazynu za pośrednictwem portalu usługa Resource Manager użyła szablonu w celu jego wdrożenia i zapisała ten szablon do użytku w przyszłości.
+   - **Parametry** — plik parametrów, który służy do przekazywania wartości podczas wdrażania. Zawiera on wartości, które podano podczas pierwszego wdrażania. Podczas ponownego wdrażania szablonu można zmienić dowolne z tych wartości.
+   - **Interfejs wiersza polecenia** — plik skryptu interfejsu wiersza polecenia platformy Azure, którego można użyć do wdrożenia szablonu.
+   - **PowerShell** — plik skryptu programu Azure PowerShell, którego możesz użyć do wdrożenia szablonu.
+   - **.NET** — klasa platformy .NET, której możesz użyć do wdrożenia szablonu.
+   - **Ruby** — klasa języka Ruby, której możesz użyć do wdrożenia szablonu.
 
-    Domyślnie portal zawiera szablon.
+     Domyślnie portal zawiera szablon.
 
 5. Wybierz **Pobierz** dotyczące eksportowania szablonu na komputerze lokalnym.
 
@@ -151,14 +151,14 @@ Jeśli zmieniono zasobów z poziomu portalu lub dodane/Usuń zasoby w wielu wdro
 1. Otwórz grupę zasobów, które chcesz usunąć.  Zobacz [Otwórz grup zasobów](#open-resource-groups).
 2. W okienku po lewej stronie wybierz **skrypt automatyzacji**. Usługa Resource Manager pobiera następujące sześć plików:
 
-    - **Szablon** — szablon, który definiuje infrastrukturę Twojego rozwiązania. Po utworzeniu konta magazynu za pośrednictwem portalu usługa Resource Manager użyła szablonu w celu jego wdrożenia i zapisała ten szablon do użytku w przyszłości.
-    - **Parametry** — plik parametrów, który służy do przekazywania wartości podczas wdrażania. Zawiera on wartości, które podano podczas pierwszego wdrażania. Podczas ponownego wdrażania szablonu można zmienić dowolne z tych wartości.
-    - **Interfejs wiersza polecenia** — plik skryptu interfejsu wiersza polecenia platformy Azure, którego można użyć do wdrożenia szablonu.
-    - **PowerShell** — plik skryptu programu Azure PowerShell, którego możesz użyć do wdrożenia szablonu.
-    - **.NET** — klasa platformy .NET, której możesz użyć do wdrożenia szablonu.
-    - **Ruby** — klasa języka Ruby, której możesz użyć do wdrożenia szablonu.
+   - **Szablon** — szablon, który definiuje infrastrukturę Twojego rozwiązania. Po utworzeniu konta magazynu za pośrednictwem portalu usługa Resource Manager użyła szablonu w celu jego wdrożenia i zapisała ten szablon do użytku w przyszłości.
+   - **Parametry** — plik parametrów, który służy do przekazywania wartości podczas wdrażania. Zawiera on wartości, które podano podczas pierwszego wdrażania. Podczas ponownego wdrażania szablonu można zmienić dowolne z tych wartości.
+   - **Interfejs wiersza polecenia** — plik skryptu interfejsu wiersza polecenia platformy Azure, którego można użyć do wdrożenia szablonu.
+   - **PowerShell** — plik skryptu programu Azure PowerShell, którego możesz użyć do wdrożenia szablonu.
+   - **.NET** — klasa platformy .NET, której możesz użyć do wdrożenia szablonu.
+   - **Ruby** — klasa języka Ruby, której możesz użyć do wdrożenia szablonu.
 
-    Domyślnie portal zawiera szablon.
+     Domyślnie portal zawiera szablon.
 3. Wybierz **Pobierz** dotyczące eksportowania szablonu na komputerze lokalnym.
 
 Niektóre wyeksportowanymi szablonami konieczne niektóre zmiany, zanim będzie można ich użyć. Aby dowiedzieć się, jak opracowywać szablony, zobacz [samouczki krok po kroku](/azure/azure-resource-manager/).

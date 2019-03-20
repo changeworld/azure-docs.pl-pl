@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: a0a07a78d36e4c0d11132d0c7d5ff947f7073029
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: 792346edf1d2b2326f7f5f5f53304ceca347508d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353570"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901121"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>Samouczek: Kompilowanie aplikacji internetowej w języku Java przy użyciu platformy Spring i usługi Azure Cosmos DB
 
@@ -45,7 +45,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 W tym samouczku jest używana przykładowa aplikacja listy zadań do wykonania (TODO) mająca internetowy interfejs użytkownika, który wywołuje interfejs API REST platformy Spring wspierany przez [dane platformy Spring usługi Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb). Kod aplikacji jest dostępny [w serwisie GitHub](https://github.com/Microsoft/spring-todo-app). Aby dowiedzieć się więcej na temat pisania aplikacji Java przy użyciu platformy Spring i bazy danych Cosmos DB, zobacz [Spring Boot Starter with the Azure Cosmos DB SQL API tutorial (Samouczek dotyczący używania funkcji Spring Boot Starter z interfejsem API SQL usługi Azure Cosmos DB)](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db ) i [Spring Data Azure Cosmos DB quick start (Przewodnik Szybki start dotyczący danych platformy Spring w usłudze Azure Cosmos DB)](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
 
 
-Uruchom następujące polecenia w swoim terminalu, aby sklonować przykładowe repozytorium i skonfigurować środowisko przykładowej aplikacji.
+Uruchom następujące polecenia w terminalu, aby sklonować przykładowe repozytorium i skonfiguruj środowisko aplikacji przykładowej.
 
 ```bash
 git clone --recurse-submodules https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git
@@ -101,7 +101,7 @@ export COSMOSDB_URI=<put-your-COSMOS-DB-documentEndpoint-URI-here>
 export COSMOSDB_KEY=<put-your-COSMOS-DB-primaryMasterKey-here>
 export COSMOSDB_DBNAME=<put-your-COSMOS-DB-name-here>
 
-// App Service Linux Configuration
+# App Service Linux Configuration
 export RESOURCEGROUP_NAME=<put-your-resource-group-name-here>
 export WEBAPP_NAME=<put-your-Webapp-name-here>
 export REGION=<put-your-REGION-here>
@@ -171,7 +171,7 @@ Dostęp do aplikacji TODO platformy Spring można uzyskać lokalnie za pomocą t
 
  ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Jeśli widzisz wyjątki zamiast komunikatu „Uruchomiono aplikację Todo”, sprawdź, czy skrypt `bash` w poprzednim kroku prawidłowo wyeksportował zmienne środowiskowe i czy wartości są poprawne dla utworzonej bazy danych Azure Cosmos DB.
+Jeśli widzisz wyjątki, zamiast komunikatu "TodoApplication uruchomiona", sprawdź, czy `bash` skryptu w poprzednim kroku wyeksportowane zmienne środowiskowe poprawnie i czy wartości są poprawne dla bazy danych Azure Cosmos DB utworzonego.
 
 ## <a name="configure-azure-deployment"></a>Konfigurowanie wdrożenia usługi Azure
 
@@ -230,7 +230,7 @@ Użyj celu `azure-webapp:deploy` narzędzia Maven, aby wdrożyć aplikację TODO
 
 ```bash
 
-// Deploy
+# Deploy
 bash-3.2$ mvn azure-webapp:deploy
 [INFO] Scanning for projects...
 [INFO] 
@@ -335,7 +335,7 @@ az group delete --name your-azure-group-name
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Platforma Azure dla deweloperów języka Java](/java/azure/)
 [Spring Boot](https://spring.io/projects/spring-boot), [Spring Data for Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable), [Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction) i [App Service Linux](/azure/app-service/containers/app-service-linux-intro).

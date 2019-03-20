@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 1534a3f010183cd91c444b577d26e3f21e296d27
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434323"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175985"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące harmonogramu zaawansowanych funkcji w usłudze Azure Kubernetes Service (AKS)
 
@@ -39,10 +39,10 @@ Harmonogram Kubernetes nasłonecznieniem i umożliwia tolerations ograniczyć, j
 Podczas wdrażania zasobnika klaster AKS rozwiązania Kubernetes tylko planuje zasobników w węzłach, w którym toleration jest powiązana z zmiany barwy. Na przykład załóżmy, że masz nodepool klastra AKS węzłów z procesora GPU, pomocy technicznej. Zdefiniuj nazwę, taką jak *procesora gpu*, następnie wartość do planowania. Jeśli ta wartość jest ustawiona na *NoSchedule*, harmonogram Kubernetes nie można zaplanować zasobników w węźle, jeśli Zasobnik nie zdefiniowano toleration odpowiednie.
 
 ```console
-kubectl taint node aks-nodepool1 gpu:NoSchedule
+kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Za pomocą zmiany barwy zastosowane do węzłów należy zdefiniować toleration w specyfikacji zasobnik, która umożliwia planowanie w węzłach. W poniższym przykładzie zdefiniowano `key: gpu` i `effect: NoSchedule` tolerować zmiany barwy zastosowany do węzła w poprzednim kroku:
+Za pomocą zmiany barwy zastosowane do węzłów należy zdefiniować toleration w specyfikacji zasobnik, która umożliwia planowanie w węzłach. W poniższym przykładzie zdefiniowano `sku: gpu` i `effect: NoSchedule` tolerować zmiany barwy zastosowany do węzła w poprzednim kroku:
 
 ```yaml
 kind: Pod
@@ -61,9 +61,9 @@ spec:
       cpu: 4.0
       memory: 16Gi
   tolerations:
-  - key: "gpu"
+  - key: "sku"
     operator: "Equal"
-    value: "value"
+    value: "gpu"
     effect: "NoSchedule"
 ```
 

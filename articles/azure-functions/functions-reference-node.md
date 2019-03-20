@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 04653dcdf0fb64e8b935cda18c01198ec91c548d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ed91425ca56278eccf21c10db6360b4f770b0660
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807477"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226542"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -554,6 +554,16 @@ module.exports = myObj;
 ```
 
 W tym przykładzie należy zauważyć, że mimo, że obiekt jest eksportowany, istnieją żadnej gwarancji dla zachowania stanu między wykonaniami.
+
+## <a name="local-debugging"></a>Debugowanie lokalne
+
+Podczas pracy z usługą `--inspect` parametr procesu Node.js nasłuchuje klientowi debugowania na określonym porcie. W usłudze Azure Functions 2.x, można określić argumenty do przekazania do procesu Node.js, która uruchamia kod poprzez dodanie zmiennej środowiskowej lub ustawienia aplikacji `languageWorkers:node:arguments = <args>`. 
+
+Aby debugować lokalnie, należy dodać `"languageWorkers:node:arguments": "--inspect=5858"` w obszarze `Values` w swojej [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) pliku i dołączyć debuger do portu 5858.
+
+Podczas debugowania za pomocą programu VS Code `--inspect` zostanie automatycznie dodany parametr przy użyciu `port` wartości w pliku launch.json projektu.
+
+W wersji 1.x, ustawienie `languageWorkers:node:arguments` nie będzie działać. Można wybrać port debugowania za pomocą [ `--nodeDebugPort` ](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) parametru podstawowych narzędzi usługi Azure Functions.
 
 ## <a name="typescript"></a>TypeScript
 

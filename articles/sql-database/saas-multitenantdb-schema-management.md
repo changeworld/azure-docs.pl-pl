@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 55e414a35574f8437a30ffb75aebd82eded14fa9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447927"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878078"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Zarządzanie schematami w aplikacji SaaS, która używa podzielonej na fragmenty wielodostępnych baz danych SQL
 
@@ -53,7 +53,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 - Musi być zainstalowany program Azure PowerShell. Aby uzyskać więcej informacji, zobacz [wprowadzenie do programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> W tym samouczku korzysta z funkcji usługi Azure SQL Database, które znajdują się w ograniczonej wersji zapoznawczej ([zadania Elastic Database](sql-database-elastic-database-client-library.md)). Jeśli użytkownik chce skorzystać z tego samouczka, Prześlij identyfikator swojej subskrypcji w taki sposób, aby *SaaSFeedback@microsoft.com* podmiotu = Elastic Job Preview. Po otrzymaniu potwierdzenia, że Twoja subskrypcja została włączona, [pobierz i zainstaluj najnowsze polecenia cmdlet zadań w wersji wstępnej](https://github.com/jaredmoo/azure-powershell/releases). Tej wersji zapoznawczej jest ograniczona, dlatego skontaktuj się z *SaaSFeedback@microsoft.com* pytań lub pomocy technicznej.
+> W tym samouczku korzysta z funkcji usługi Azure SQL Database, które znajdują się w ograniczonej wersji zapoznawczej ([zadania Elastic Database](sql-database-elastic-database-client-library.md)). Jeśli użytkownik chce skorzystać z tego samouczka, Prześlij identyfikator swojej subskrypcji w taki sposób, aby *SaaSFeedback\@microsoft.com* podmiotu = Elastic Job Preview. Po otrzymaniu potwierdzenia, że Twoja subskrypcja została włączona, [pobierz i zainstaluj najnowsze polecenia cmdlet zadań w wersji wstępnej](https://github.com/jaredmoo/azure-powershell/releases). Tej wersji zapoznawczej jest ograniczona, dlatego skontaktuj się z *SaaSFeedback\@microsoft.com* pytań lub pomocy technicznej.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Wprowadzenie do wzorców zarządzania schematu SaaS
 

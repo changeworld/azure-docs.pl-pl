@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: cb959bd74322534573f83c2b3258ff28d4c324ff
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.openlocfilehash: 3c40e00d55af49b1b040d3fe706f08af719b2238
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584160"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112793"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Samouczek: interfejs API strumieni platformy Kafka
 
@@ -199,13 +199,13 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
 
     Tematy są używane do następujących celów:
 
-    * `test`: w tym temacie są odbierane rekordy. Aplikacja do przesyłania strumieniowego odczytuje dane z tego tematu.
-    * `wordcounts`: w tym temacie aplikacja do przesyłania strumieniowego przechowuje swoje dane wyjściowe.
-    * `RekeyedIntermediateTopic`: w tym temacie zachodzi ponowne dzielenie danych, ponieważ liczba wyrazów jest aktualizowana za pomocą operatora `countByKey`.
-    * `wordcount-example-Counts-changelog`: ten temat jest magazynem stanów używanym przez operację `countByKey`
+   * `test`: w tym temacie są odbierane rekordy. Aplikacja do przesyłania strumieniowego odczytuje dane z tego tematu.
+   * `wordcounts`: w tym temacie aplikacja do przesyłania strumieniowego przechowuje swoje dane wyjściowe.
+   * `RekeyedIntermediateTopic`: w tym temacie zachodzi ponowne dzielenie danych, ponieważ liczba wyrazów jest aktualizowana za pomocą operatora `countByKey`.
+   * `wordcount-example-Counts-changelog`: ten temat jest magazynem stanów używanym przez operację `countByKey`
 
-    > [!IMPORTANT]  
-    > Platformę Kafka w usłudze HDInsight można również skonfigurować w taki sposób, aby automatycznie tworzyła tematy. Aby uzyskać więcej informacji, zobacz dokument [Configure automatic topic creation](apache-kafka-auto-create-topics.md) (Konfigurowanie automatycznego tworzenia tematów).
+     > [!IMPORTANT]  
+     > Platformę Kafka w usłudze HDInsight można również skonfigurować w taki sposób, aby automatycznie tworzyła tematy. Aby uzyskać więcej informacji, zobacz dokument [Configure automatic topic creation](apache-kafka-auto-create-topics.md) (Konfigurowanie automatycznego tworzenia tematów).
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
@@ -253,7 +253,7 @@ Aby skompilować i wdrożyć projekt na platformie Kafka w klastrze usługi HDIn
 
 7. Użyj klawiszy __Ctrl + C__, aby zakończyć działanie producenta. Podobnie użyj klawiszy __Ctrl + C__, aby zakończyć działanie aplikacji i odbiorcy.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym dokumencie zawarto informacje o sposobie korzystania z interfejsu API strumieni platformy Apache Kafka w usłudze HDInsight. Dowiedz się więcej o pracy z platformą Kafka, korzystając z następujących zasobów:
 
