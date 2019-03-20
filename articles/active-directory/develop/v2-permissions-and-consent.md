@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94d0e469614204a7507ba666ac04e59774eebde7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 225065e35e40c06d324bee89fa65a765a2727233
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204422"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123763"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 2.0
 
@@ -204,7 +204,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 W tym momencie usługa Azure AD wymaga tylko administrator dzierżawy może zalogować się do realizacji żądania. Administrator jest monitowany o zatwierdzenie wszystkich uprawnień, które żądanej aplikacji w portalu rejestracji aplikacji.
 
-#### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+#### <a name="successful-response"></a>Pomyślna odpowiedź
 
 Jeśli administrator zatwierdza uprawnień dla aplikacji, odpowiedź oznaczająca Powodzenie wygląda następująco:
 
@@ -213,7 +213,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 ```
 
 | Parametr | Opis |
-| --- | --- | --- |
+| --- | --- |
 | `tenant` | Dzierżawy katalogu, który uprawnień aplikacji żądał, w formacie identyfikatora GUID. |
 | `state` | Wartość uwzględnione w żądaniu, które również zostaną zwrócone w odpowiedzi tokenu. Może być ciągiem żadnej zawartości, którą chcesz. Stan jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 | `admin_consent` | Zostanie ustawiony na `True`. |
@@ -227,7 +227,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 ```
 
 | Parametr | Opis |
-| --- | --- | --- |
+| --- | --- |
 | `error` | Ciągu kodu błędu, który może służyć do klasyfikowania typy błędów, które występują i może służyć do reagowania na błędy. |
 | `error_description` | Określony komunikat o błędzie ułatwiający Deweloper odkryć ich główną przyczynę błędu. |
 
