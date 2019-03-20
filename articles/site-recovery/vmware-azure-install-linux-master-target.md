@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 28b28dc15809aa5d37eb9347ff3bc7eecccc9a20
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099056"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -168,15 +168,15 @@ Aby uzyskać identyfikator dla każdego dysku twardego SCSI na maszynie wirtualn
 
 5. Zobacz, czy wiersz z **dysku. EnableUUID** już istnieje.
 
-    - Jeśli wartość istnieje i jest ustawiona na **False**, zmień wartość na **True**. (Wartości nie jest rozróżniana wielkość liter).
+   - Jeśli wartość istnieje i jest ustawiona na **False**, zmień wartość na **True**. (Wartości nie jest rozróżniana wielkość liter).
 
-    - Jeśli wartość istnieje i jest ustawiona na **True**, wybierz opcję **anulować**.
+   - Jeśli wartość istnieje i jest ustawiona na **True**, wybierz opcję **anulować**.
 
-    - Jeśli wartość nie istnieje, wybierz opcję **Dodaj wiersz**.
+   - Jeśli wartość nie istnieje, wybierz opcję **Dodaj wiersz**.
 
-    - W kolumnie Nazwa Dodaj **dysku. EnableUUID**, a następnie ustaw wartość na **TRUE**.
+   - W kolumnie Nazwa Dodaj **dysku. EnableUUID**, a następnie ustaw wartość na **TRUE**.
 
-    ![Sprawdzanie tego, czy na dysku. EnableUUID już istnieje.](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![Sprawdzanie tego, czy na dysku. EnableUUID już istnieje.](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>Wyłącz uaktualniania jądra
 
