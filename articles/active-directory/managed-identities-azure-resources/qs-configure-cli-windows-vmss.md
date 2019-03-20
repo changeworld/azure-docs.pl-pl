@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować system i zarządzanych tożsamości przypisanych przez użytkownika na platformie Azure zestawu skalowania maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure
-description: Krok po kroku instrukcje dotyczące konfigurowania systemu i zarządzanych tożsamości przypisanych przez użytkownika na platformie Azure zestawu skalowania maszyn wirtualnych, przy użyciu wiersza polecenia platformy Azure.
+title: Jak skonfigurować system i zarządzanych tożsamości przypisanych przez użytkownika na skalę maszyny wirtualnej platformy Azure można ustawić przy użyciu wiersza polecenia platformy Azure
+description: Krok po kroku instrukcje dotyczące konfigurowania systemu i zarządzanych tożsamości przypisanych przez użytkownika na skalę maszyny wirtualnej platformy Azure zestawu, przy użyciu wiersza polecenia platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/15/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cd03ad6640ac809ce8ac2e8f4fc1070246df27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88bcd38890baea2d6bc0460937fe4b7882f7fd23
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886868"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226049"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure
 
@@ -28,9 +28,9 @@ ms.locfileid: "57886868"
 
 Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
 
-W tym artykule opisano sposób przeprowadzenia następujących tożsamości zarządzanych zasobów platformy Azure, operacje na Azure maszyn wirtualnych skalowania Ustaw (zestawu skalowania maszyn wirtualnych), przy użyciu wiersza polecenia platformy Azure:
-- Włączanie i wyłączanie przypisany systemowo tożsamość zarządzaną w usłudze Azure VMSS
-- Dodawanie i usuwanie tożsamości zarządzanej przypisanych przez użytkownika w usłudze Azure VMSS
+W tym artykule dowiesz się, jak wykonywać następujące zarządzanych tożsamości dla operacji tworzenia zasobów platformy Azure w zestawie skalowania maszyn wirtualnych platformy Azure przy użyciu wiersza polecenia platformy Azure:
+- Włączanie i wyłączanie przypisany systemowo tożsamość zarządzaną w zestawie skalowania maszyn wirtualnych platformy Azure
+- Dodawanie i usuwanie tożsamości zarządzanej przypisanych przez użytkownika w zestawie skalowania maszyn wirtualnych platformy Azure
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -57,7 +57,7 @@ W tym artykule opisano sposób przeprowadzenia następujących tożsamości zarz
 
 ## <a name="system-assigned-managed-identity"></a>Przypisana przez system tożsamości zarządzanej
 
-W tej sekcji dowiesz się, jak włączanie i wyłączanie tożsamość zarządzaną przypisana przez system Azure zestawu skalowania maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure.
+W tej sekcji dowiesz się, jak włączyć i wyłączyć przypisany systemowo tożsamości zarządzanych dla maszyn wirtualnych zestawu skalowania przy użyciu wiersza polecenia platformy Azure.
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Włącz przypisany systemowo tożsamości zarządzanej podczas tworzenia zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -114,11 +114,8 @@ Jeśli masz maszyny wirtualnej, która nie wymaga tożsamości zarządzanej przy
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Aby usunąć zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure (planowana do wycofania z użycia w styczniu 2019), użyj [Usuń az vmss tożsamości](/cli/azure/vmss/identity/) polecenie, aby usunąć przypisany systemu tożsamości zarządzanej z zestawu skalowania maszyn wirtualnych:
-
-```azurecli-interactive
-az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
-```
+> [!NOTE]
+> Jeśli aprowizowaniu tożsamość zarządzaną dla zasobów platformy Azure maszyna wirtualna rozszerzenie (przestarzałe), musisz go usunąć przy użyciu [Usuń rozszerzenie zestawu skalowania maszyn wirtualnych az](https://docs.microsoft.com/cli/azure/vm/). Aby uzyskać więcej informacji, zobacz [migracja z rozszerzenia maszyny Wirtualnej do IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
 ## <a name="user-assigned-managed-identity"></a>Przypisane przez użytkownika z tożsamości zarządzanej
 
@@ -126,7 +123,7 @@ W tej sekcji dowiesz się, jak włączyć i Usuń przypisanych przez użytkownik
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>Przypisz przypisanych przez użytkownika tożsamości zarządzanej podczas tworzenia zestawu skalowania maszyn wirtualnych
 
-Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnych i przypisywania tożsamości zarządzanej użytkownik przypisany do zestawu skalowania maszyn wirtualnych. Jeśli masz już VMSS, którego chcesz użyć, Pomiń tę sekcję i przejdź do następnego.
+Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnych i przypisywanie przypisanych przez użytkownika tożsamości zarządzanych do zestawu skalowania maszyn wirtualnych. Jeśli masz już zestaw skalowania maszyn wirtualnych, które chcesz użyć, Pomiń tę sekcję i przejdź do następnego.
 
 1. Można pominąć ten krok, jeśli masz już grupę zasobów, których chcesz użyć. Tworzenie [grupy zasobów](~/articles/azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania przypisanych przez użytkownika tożsamości zarządzanej przy użyciu [Tworzenie grupy az](/cli/azure/group/#az-group-create). Upewnij się, że parametry `<RESOURCE GROUP>` i `<LOCATION>` zostały zastąpione własnymi wartościami. :
 
@@ -158,7 +155,7 @@ Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnyc
    }
    ```
 
-3. Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu [tworzenie az vmss](/cli/azure/vmss/#az-vmss-create). Poniższy przykład obejmuje tworzenie zestawu skalowania maszyn wirtualnych skojarzonych z nowy użytkownik przypisany zarządzaną tożsamością, określony przez `--assign-identity` parametru. Upewnij się, że parametry `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` i `<USER ASSIGNED IDENTITY>` zostały zastąpione własnymi wartościami. 
+3. Tworzenie maszyny wirtualnej zestawu skalowania przy użyciu [tworzenie az vmss](/cli/azure/vmss/#az-vmss-create). Poniższy przykład tworzy zestaw skalowania maszyn wirtualnych skojarzonych z nowy użytkownik przypisany zarządzaną tożsamością, określony przez `--assign-identity` parametru. Upewnij się, że parametry `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` i `<USER ASSIGNED IDENTITY>` zostały zastąpione własnymi wartościami. 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
@@ -188,18 +185,18 @@ Ta sekcja przeprowadzi Cię przez tworzenie zestawu skalowania maszyn wirtualnyc
    }
    ```
 
-2. Przypisywanie zarządzanych tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych za pomocą [przypisać az vmss tożsamości](/cli/azure/vmss/identity). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY>` Zasób tożsamości przypisanych przez użytkownika jest `name` właściwości utworzonemu w poprzednim kroku:
+2. Przypisz przypisanych przez użytkownika tożsamości zarządzanej usługi skalowania maszyn wirtualnych można ustawić przy użyciu [przypisać az vmss tożsamości](/cli/azure/vmss/identity). Upewnij się, że parametry `<RESOURCE GROUP>` i `<VIRTUAL MACHINE SCALE SET NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY>` Zasób tożsamości przypisanych przez użytkownika jest `name` właściwości utworzonemu w poprzednim kroku:
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
     ```
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Usuwanie tożsamości przypisanych przez użytkownika zarządzanej z zestawu skalowania maszyn wirtualnych platformy Azure
 
-Usuwanie tożsamości przypisanych przez użytkownika zarządzanej użycia zestawu skalowania maszyn wirtualnych [Usuń az vmss tożsamości](/cli/azure/vmss/identity#az-vmss-identity-remove). Jeśli jest to jedyny użytkownik przypisany tożsamości przypisane do zestawu skalowania maszyn wirtualnych, zarządzanej `UserAssigned` zostaną usunięte z wartości typu tożsamości.  Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY>` Zostaną przypisane do użytkowników zarządzanych tożsamości `name` właściwość, która znajduje się w sekcji tożsamości maszyny wirtualnej zestawu skalowania przy użyciu `az vmss identity show`:
+Usuwanie tożsamości przypisanych przez użytkownika zarządzanej użycia zestawu skalowania maszyn wirtualnych [Usuń az vmss tożsamości](/cli/azure/vmss/identity#az-vmss-identity-remove). Jeśli jest to jedyny użytkownik przypisany tożsamości przypisane do zestawu skalowania maszyn wirtualnych, zarządzanej `UserAssigned` zostaną usunięte z wartości typu tożsamości.  Upewnij się, że parametry `<RESOURCE GROUP>` i `<VIRTUAL MACHINE SCALE SET NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY>` Zostaną przypisane do użytkowników zarządzanych tożsamości `name` właściwość, która znajduje się w sekcji tożsamości maszyny wirtualnej zestawu skalowania przy użyciu `az vmss identity show`:
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
+az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
 Jeśli zestaw skalowania maszyn wirtualnych nie ma przypisany systemowo zarządzanych tożsamości i chcesz usunąć wszystkich przypisanych do użytkowników zarządzanych tożsamości z niego, użyj następującego polecenia:

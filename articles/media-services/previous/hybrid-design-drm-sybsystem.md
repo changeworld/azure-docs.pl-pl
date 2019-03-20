@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: willzhan;juliako
-ms.openlocfilehash: 86e3e551969ee8d354b2d3e369f6006a77fd7820
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5c86a49cd9dc26f724de12ed2e5e77e645e4ab53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243078"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886715"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybrydowy projekt podsystemu DRM 
 
@@ -94,7 +94,7 @@ Za pomocą konfiguracji zasad dostarczania elementu zawartości można kontrolow
 
 Oparte na wyjaśnienia w poprzedniej sekcji, w następujących scenariuszach hybrydowych pięć użyć odpowiednich **klucz zawartości**-**zasad dostarczania elementów zawartości** kombinacje konfiguracji (przykłady podane w ostatniej kolumnie postępuj zgodnie z tabeli):
 
-|**Hosting zawartości źródł & o**|**Szyfrowanie DRM**|**Dostarczanie licencji DRM**|**Konfigurowanie klucza zawartości**|**Konfigurowanie zasad dostarczania elementów zawartości**|**Próbki**|
+|**Hosting zawartości źródł & o**|**Szyfrowanie DRM**|**Dostarczanie licencji DRM**|**Konfigurowanie klucza zawartości**|**Konfigurowanie zasad dostarczania elementów zawartości**|**Przykład**|
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|Yes|Yes|Przykład 1|
 |AMS|AMS|Innych firm|Yes|Yes|Przykład 2|
@@ -113,7 +113,7 @@ W przykładach objętych ochroną PlayReady i działa w przypadku DASH i smooth 
 
 ### <a name="sample-2"></a>Przykład 2
 
-* Adres URL źródła (podstawowa): http://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* Adres URL źródła (podstawowa): https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
 * PlayReady LA_URL (DASH i smooth): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
 
 ### <a name="sample-3"></a>Przykład 3

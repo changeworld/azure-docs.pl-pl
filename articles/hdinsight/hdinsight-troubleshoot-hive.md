@@ -8,12 +8,12 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6d75bf86dab8775e77efb21ecc3b0d60063a9823
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407024"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088965"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hive za pomocą usługi Azure HDInsight
 
@@ -33,13 +33,13 @@ Dowiedz się więcej o najczęściej zadawane pytania oraz dostępnych rozwiąza
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-  To polecenie spowoduje wygenerowanie pliku o nazwie allatables.sql.
+   To polecenie spowoduje wygenerowanie pliku o nazwie allatables.sql.
 
 3. Skopiuj alltables.sql plików do nowego klastra HDInsight, a następnie uruchom następujące polecenie:
 
-  ```apache
-  hive -f alltables.sql
-  ```
+   ```apache
+   hive -f alltables.sql
+   ```
 
 Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym klastrze są takie same jak ścieżki danych w starym klastrze. Jeśli ścieżki danych są różne, należy ręcznie zmodyfikować pliku wygenerowanego alltables.sql, aby odzwierciedlić zmiany.
 
@@ -56,21 +56,21 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 
 2. Aby wyświetlić dzienniki klienta programu Hive, użyj następującego polecenia:
 
-  ```apache
-  /tmp/<username>/hive.log 
-  ```
+   ```apache
+   /tmp/<username>/hive.log 
+   ```
 
 3. Aby wyświetlić dzienniki magazynu metadanych Hive, użyj następującego polecenia:
 
-  ```apache
-  /var/log/hive/hivemetastore.log 
-  ```
+   ```apache
+   /var/log/hive/hivemetastore.log 
+   ```
 
 4. Aby wyświetlić dzienniki Hiveserver, użyj następującego polecenia:
 
-  ```apache
-  /var/log/hive/hiveserver2.log 
-  ```
+   ```apache
+   /var/log/hive/hiveserver2.log 
+   ```
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
@@ -83,21 +83,21 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 
 1. Określ pary klucz wartość konfiguracji podczas uruchamiania powłoki usługi Hive. Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
 
-  ```apache
-  hive -hiveconf a=b 
-  ```
+   ```apache
+   hive -hiveconf a=b 
+   ```
 
 2. Aby wyświetlić listę wszystkich konfiguracje skuteczne na powłokę programu Hive, użyj następującego polecenia:
 
-  ```apache
-  hive> set;
-  ```
+   ```apache
+   hive> set;
+   ```
 
-  Na przykład następujące polecenie do Uruchom powłokę programu Hive za pomocą funkcji rejestrowania debugowania, włączone na konsoli:
+   Na przykład następujące polecenie do Uruchom powłokę programu Hive za pomocą funkcji rejestrowania debugowania, włączone na konsoli:
 
-  ```apache
-  hive -hiveconf hive.root.logger=ALL,console 
-  ```
+   ```apache
+   hive -hiveconf hive.root.logger=ALL,console 
+   ```
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 
@@ -111,21 +111,21 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
  
 1. Aby analizować Apache Tez skierowanym grafie acyklicznym (DAG) na wykresie klastra o znaczeniu krytycznym, łączenia z klastrem HDInsight przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
 
-2. W wierszu polecenia Uruchom następujące polecenie:
+2. W wierszu polecenia uruchom następujące polecenie:
    
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
+   ```
 
 3. Aby wyświetlić listę innych analizatorów, które mogą służyć do analizowania aplikacji Tez w grupie DAG, użyj następującego polecenia:
 
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
+   ```
 
-  Należy podać przykładowy program jako pierwszy argument.
+   Należy podać przykładowy program jako pierwszy argument.
 
-  Program prawidłowe nazwy zawierają:
+   Program prawidłowe nazwy zawierają:
     - **ContainerReuseAnalyzer**: Drukowanie szczegółów ponowne użycie kontenerów w grupie DAG
     - **CriticalPath**: Znajdź ścieżki krytycznej do grupy DAG
     - **LocalityAnalyzer**: Drukowanie szczegółów lokalizacji, w grupie DAG

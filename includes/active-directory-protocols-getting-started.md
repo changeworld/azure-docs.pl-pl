@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: 4794241ccfd7adcc0795245ae0983d9069ab431e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d97aa34f8e76a1ea49841f26534b6a5403e6b5d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56211550"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125281"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Rejestrowanie aplikacji w dzierżawie usługi AD
 Najpierw musisz zarejestrować aplikację w dzierżawie usługi Azure Active Directory (Azure AD). Spowoduje to nadanie aplikacji identyfikatora oraz umożliwi jej otrzymywanie tokenów.
@@ -30,7 +30,7 @@ Najpierw musisz zarejestrować aplikację w dzierżawie usługi Azure Active Dir
 * Kliknij pozycję **rejestracje aplikacji** i kliknij pozycję **rejestrowanie nowej aplikacji**.
 * Postępuj zgodnie z monitami i utwórz nową aplikację. Na potrzeby tego samouczka nie ma znaczenia, czy jest to aplikacja internetowa, czy aplikacja natywna, ale jeśli chcesz zapoznać się z konkretnymi przykładami dla aplikacji internetowych lub aplikacji natywnych, zobacz nasze [przewodniki szybkiego startu](../articles/active-directory/develop/v1-overview.md).
   * W przypadku aplikacji sieci Web podaj **adres URL logowania**, czyli podstawowy adres URL aplikacji, w którym użytkownicy mogą się logować, np `http://localhost:12345`.
-<!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
+    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
   * Dla aplikacji natywnych podaj **identyfikator URI przekierowania**, którego usługa Azure AD będzie używać do zwracania odpowiedzi tokenu. Wprowadź wartość specyficzną dla Twojej aplikacji, np. `http://MyFirstAADApp`
 * Po zakończeniu rejestracji usługi Azure AD przypisze aplikacji identyfikatorem unikatowych klientów **identyfikator aplikacji**. Ta wartość będzie potrzebna w kolejnych sekcjach, więc skopiuj ją ze strony aplikacji.
 * Aby znaleźć aplikację w witrynie Azure portal, kliknij **rejestracje aplikacji**, a następnie kliknij przycisk **Wyświetl wszystkie aplikacje**.

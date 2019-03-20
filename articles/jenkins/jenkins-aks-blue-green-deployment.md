@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073887"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092297"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania
 
@@ -117,12 +117,12 @@ Niebieskie/zielone wdrożenie można skonfigurować w usłudze AKS ręcznie lub 
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>Konfigurowanie klastra Kubernetes za pomocą przykładowego skryptu konfiguracji
 1. Zmodyfikuj plik **deploy/aks/setup/setup.sh**, zastępując następujące symbole zastępcze odpowiednimi wartościami dla danego środowiska: 
 
-    - **&lt;your-resource-group-name>**
-    - **&lt;your-kubernetes-cluster-name>**
-    - **&lt;your-location>**
-    - **&lt;your-dns-name-suffix>**
+   - **&lt;your-resource-group-name>**
+   - **&lt;your-kubernetes-cluster-name>**
+   - **&lt;your-location>**
+   - **&lt;your-dns-name-suffix>**
 
-    ![Zrzut ekranu przedstawiający skrypt setup.sh w powłoce bash z wyróżnionymi kilkoma symbolami zastępczymi](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
+     ![Zrzut ekranu przedstawiający skrypt setup.sh w powłoce bash z wyróżnionymi kilkoma symbolami zastępczymi](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
 1. Uruchom skrypt konfiguracji.
 
@@ -288,7 +288,7 @@ az group delete -y --no-wait -n <your-resource-group-name>
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W ramach tego samouczka wyjaśniono, w jaki sposób można przeprowadzić wdrażanie w usłudze AKS przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania. Aby dowiedzieć się więcej na temat dostawcy serwera Jenkins na platformie Azure, przejdź do witryny usługi Jenkins na platformie Azure.
 

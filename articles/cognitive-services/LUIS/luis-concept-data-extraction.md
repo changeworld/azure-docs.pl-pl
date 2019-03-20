@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 385e0065123b86f8f8b7c8503fe6de6daa7c6562
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3d9c2a694562977c2a012d9faa9c282c6b8fff9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874128"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099835"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>Wyodrębnianie danych z intencje i podmioty
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON.
@@ -195,7 +195,7 @@ Dane zwrócone z punktu końcowego obejmuje nazwa jednostki i nazwa elementu pod
 ```
 
 |Obiekt danych|Nadrzędny|Podrzędne|Wartość|
-|--|--|--|--|--|
+|--|--|--|--|
 |Hierarchiczna jednostki|Lokalizacja|ToLocation|"Paryż"|
 
 ## <a name="composite-entity-data"></a>Dane złożone jednostki

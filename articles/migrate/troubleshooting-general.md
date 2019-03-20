@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: raynew
-ms.openlocfilehash: 0eede0ae4623d68adf749dc528ac5cc1ce81e024
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2b542cc8202b75c0007686e3f0e0d9fbd1ac28c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119177"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -53,28 +53,28 @@ Jeśli nie można wyeksportować raport z oceny z portalu, spróbuj użyć poni�
 
 1. Zainstaluj *armclient* na komputerze (Jeśli nie jest już zainstalowana):
 
-  a. W oknie wiersza polecenia administratora uruchom następujące polecenie: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
+   a. W oknie wiersza polecenia administratora uruchom następujące polecenie: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
-  b. W oknie administrator programu Windows PowerShell uruchom następujące polecenie: ```choco install armclient```
+   b. W oknie administrator programu Windows PowerShell uruchom następujące polecenie: ```choco install armclient```
 
-2.  Pobierz adres URL pobierania dla raport z oceny za pomocą interfejsu API REST migracji platformy Azure
+2. Pobierz adres URL pobierania dla raport z oceny za pomocą interfejsu API REST migracji platformy Azure
 
-  a.    W oknie administrator programu Windows PowerShell uruchom następujące polecenie: ```armclient login```
+   a.    W oknie administrator programu Windows PowerShell uruchom następujące polecenie: ```armclient login```
 
-  Spowoduje to otwarcie wyskakującego logowania platformy Azure których trzeba zalogować się do platformy Azure.
+   Spowoduje to otwarcie wyskakującego logowania platformy Azure których trzeba zalogować się do platformy Azure.
 
-  b.    W tym samym oknie programu PowerShell uruchom następujące polecenie, aby uzyskać adres URL pobierania raport z oceny (Zastąp parametry identyfikatora URI z odpowiednimi wartościami przykładowego interfejsu API żądanie poniżej)
+   b.    W tym samym oknie programu PowerShell uruchom następujące polecenie, aby uzyskać adres URL pobierania raport z oceny (Zastąp parametry identyfikatora URI z odpowiednimi wartościami przykładowego interfejsu API żądanie poniżej)
 
-       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+      ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
-       Przykładowe żądanie i dane wyjściowe:
+      Przykładowe żądanie i dane wyjściowe:
 
-       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
-esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
-018_12_16_21/downloadUrl?api-version=2018-02-02
-{
-  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
-  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
+      ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+   esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+   018_12_16_21/downloadUrl?api-version=2018-02-02
+   {
+   "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+   "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
 3. Skopiuj adres URL z odpowiedzi i otwórz go w przeglądarce, aby pobrać raport z oceny.
 
@@ -97,9 +97,9 @@ Możesz przejść do **Essentials** sekcji **Przegląd** strony projektu, aby zi
 1. Upewnij się, jeśli plik OVA modułu zbierającego migracji platformy Azure jest ona pobierana poprawnie przez sprawdzenie wartości mieszania. Aby zweryfikować wartość skrótu, zapoznaj się z [artykułem](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Jeśli wartość skrótu nie jest zgodny, należy ponownie pobrać plik OVA i ponowieniem próby wdrożenia.
 2. Jeśli problemy nadal występują, a plik OVF jest wdrażany przy użyciu klienta oprogramowania VMware vSphere, spróbuj wdrożyć go za pomocą internetowego klienta programu vSphere. Jeśli nadal nie, spróbuj użyć innej przeglądarki sieci web.
 3. Jeśli są przy użyciu klienta sieci web vSphere, w trakcie wdrażania jej na vCenter Server 6.5 lub 6.7 próby wdrażanie OVA bezpośrednio na hoście ESXi, wykonując następujące czynności:
-  - Połączenia z hostem ESXi bezpośrednio (zamiast serwera vCenter) za pomocą klienta usługi sieci web (https:// <*adres IP hosta*> /ui)
-  - Przejdź do strony głównej > Spis
-  - Kliknij pozycję Plik > szablon OVF wdrażanie > Przejdź do OVA i ukończyć wdrażanie
+   - Połączenia z hostem ESXi bezpośrednio (zamiast serwera vCenter) za pomocą klienta usługi sieci web (https:// <*adres IP hosta*> /ui)
+   - Przejdź do strony głównej > Spis
+   - Kliknij pozycję Plik > szablon OVF wdrażanie > Przejdź do OVA i ukończyć wdrażanie
 4. Jeśli wdrożenie nadal kończy się niepowodzeniem, należy się z pomocą techniczną usługi Azure Migrate.
 
 
@@ -301,15 +301,15 @@ Aby zbierać zdarzenia śledzenia dla Windows, wykonaj następujące czynności:
 1. Otwórz przeglądarkę i przejdź i zaloguj się [do portalu](https://portal.azure.com).
 2. Naciśnij klawisz F12, aby uruchomić narzędzia dla deweloperów. Jeśli to konieczne, wyczyść ustawienie **Wyczyść wpisy w okienku nawigacji**.
 3. Kliknij przycisk **sieci** , a następnie Rozpocznij przechwytywanie ruchu sieciowego:
- - W przeglądarce Chrome, zaznacz **dziennika Zachowaj**. Nagrywanie powinna być uruchamiana automatycznie. Czerwone kółko oznacza, że ruch jest przechwytywania. Jeśli nie pojawia się, kliknij przycisk koła czarny, uruchom
- - W programie Microsoft Edge, IE, rejestrowanie, powinna być uruchamiana automatycznie. W przeciwnym razie kliknij przycisk Odtwórz zielony.
+   - W przeglądarce Chrome, zaznacz **dziennika Zachowaj**. Nagrywanie powinna być uruchamiana automatycznie. Czerwone kółko oznacza, że ruch jest przechwytywania. Jeśli nie pojawia się, kliknij przycisk koła czarny, uruchom
+   - W programie Microsoft Edge, IE, rejestrowanie, powinna być uruchamiana automatycznie. W przeciwnym razie kliknij przycisk Odtwórz zielony.
 4. Spróbuj odtworzyć błąd.
 5. Po został napotkał błąd podczas rejestrowania, Zatrzymaj nagrywanie, a następnie zapisz kopię zarejestrowanych działań:
- - W przeglądarce Chrome, kliknij prawym przyciskiem myszy, a następnie kliknij przycisk **Zapisz jako plik HAR z zawartością**. Pakuje i eksportuje dzienniki w formacie .har.
- - W programie Microsoft Edge, IE, kliknij przycisk **eksportu przechwycić ruch** ikony. Pakuje i eksportuje dziennika.
+   - W przeglądarce Chrome, kliknij prawym przyciskiem myszy, a następnie kliknij przycisk **Zapisz jako plik HAR z zawartością**. Pakuje i eksportuje dzienniki w formacie .har.
+   - W programie Microsoft Edge, IE, kliknij przycisk **eksportu przechwycić ruch** ikony. Pakuje i eksportuje dziennika.
 6. Przejdź do **konsoli** kartę pod kątem ostrzeżeń i błędów. Aby zapisać dziennik konsoli:
- - W przeglądarce Chrome kliknij prawym przyciskiem myszy w dowolnym miejscu w dzienniku konsoli. Wybierz **Zapisz jako**, aby wyeksportować i zip dziennika.
- - W programie Microsoft Edge, IE, kliknij prawym przyciskiem myszy na błędy i wybierz **Kopiuj wszystko**.
+   - W przeglądarce Chrome kliknij prawym przyciskiem myszy w dowolnym miejscu w dzienniku konsoli. Wybierz **Zapisz jako**, aby wyeksportować i zip dziennika.
+   - W programie Microsoft Edge, IE, kliknij prawym przyciskiem myszy na błędy i wybierz **Kopiuj wszystko**.
 7. Zamknij narzędzia dla deweloperów.
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Kody błędów modułu zbierającego i zalecane akcje

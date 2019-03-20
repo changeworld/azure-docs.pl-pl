@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5e8e634bfb69d7c274322d34d26ff614f75905af
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 01da5f0798316517869fcc94eed2a7428fffba7b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215930"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850704"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -40,7 +40,7 @@ Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scen
 |----------|----------------------------|
 | Odzyskiwanie po awarii | [Geograficznie nadmiarowych kopii zapasowych Azure](sql-database-automated-backups.md) |
 | Odczyt skali | [Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu](sql-database-read-scale-out.md) |
-| ETL (OLTP, aby OLAP) | [Usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/) lub [usług SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| ETL (OLTP, aby OLAP) | [Usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/) lub [usług SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
 | Migracja z programu on-premises SQL Server do usługi Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 

@@ -1,6 +1,6 @@
 ---
-title: Jak zaktualizować istniejącego przypisania
-description: Więcej informacji na temat aktualizowania istniejącego przypisania w plany usługi Azure przy użyciu mechanizmu.
+title: Jak zaktualizować istniejącego przypisania z poziomu portalu
+description: Więcej informacji na temat aktualizowania istniejącego przypisania z portalu w plany usługi Azure przy użyciu mechanizmu.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: edfc14e837c92cac5bab589e33069bb771a53cb7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818259"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999851"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie planu
 
@@ -26,9 +26,9 @@ Po przypisaniu planu można zaktualizować przypisania. Istnieje kilka powodów,
 
 ## <a name="updating-assignments"></a>Aktualizowanie przypisań
 
-1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Wybierz **przypisane plany** ze strony po lewej stronie.
+1. Wybierz pozycję **Przypisane strategie** w lewej części strony.
 
 1. Na liście Schematy kliknij lewym przyciskiem myszy przypisanie planu. Następnie kliknij przycisk **zaktualizować przypisania** lub kliknij prawym przyciskiem myszy przypisanie planu i wybrać **zaktualizować przypisania**.
 
@@ -69,8 +69,8 @@ Nie ma żadnego limitu, na ile razy moduł przypisania, które mogą być aktual
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat [cyklu życia strategii](../concepts/lifecycle.md)
-- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md)
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md)
-- Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md)
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)
+- Uzyskaj informacje na temat [cyklu życia strategii](../concepts/lifecycle.md).
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md).
+- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md).

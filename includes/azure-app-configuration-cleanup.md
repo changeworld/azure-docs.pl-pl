@@ -8,26 +8,26 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 8683a2cc0aece99d3a30bfa978bff2f8c31e96eb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: a02144914e73ca1788976d8b01ccd95d1b9e9a1b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884209"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227154"
 ---
-Jeśli zamierzasz przejść do kolejnego samouczka, możesz zachować zasoby utworzone w tym przewodniku Szybki start i użyć ich ponownie w następnym samouczku.
+Jeśli planujesz kontynuować do następnego samouczka, zachować zasoby utworzone w tym przewodniku Szybki Start. Można je wykorzystać w następnym samouczku.
 
-W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Szybki start możesz usunąć zasoby platformy Azure utworzone w tym poradniku Szybki start, aby uniknąć naliczania opłat.
+Jeśli zakończeniu przewodnika Szybki Start Przykładowa aplikacja usunięcie zasobów platformy Azure utworzone w tym przewodniku Szybki Start, aby uniknąć naliczania opłat.
 
 > [!IMPORTANT]
-> Usunięcie grupy zasobów jest nieodwracalne i grupa zasobów oraz wszystkie zawarte w niej zasoby zostaną trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub grupy zasobów. Jeśli zasoby do hostowania tego przykładu zostały utworzone wewnątrz istniejącej grupy zasobów zawierającej zasoby, które chcesz zachować, możesz usunąć każdy zasób oddzielnie z odpowiadającego mu bloku zamiast usuwać całą grupę zasobów.
+> Usunięcie grupy zasobów jest nieodwracalne. Grupa zasobów i wszystkie zasoby w nim trwale usunięte. Uważaj, aby nie usunąć przypadkowo niewłaściwych zasobów lub niewłaściwej grupy zasobów. Być może utworzono zasoby do hostowania w tym przykładzie wewnątrz istniejącej grupy zasobów, która zawiera zasoby, które chcesz zachować. Usuwać poszczególne zasoby pojedynczo z odpowiednich bloków zamiast usuwania grupy zasobów.
 >
 >
 
-Zaloguj się do witryny [Azure Portal](https://aka.ms/azconfig/portal) i kliknij pozycję **Grupy zasobów**.
+Zaloguj się do [witryny Azure portal](https://aka.ms/azconfig/portal)i wybierz **grup zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. W instrukcjach tego przewodnika Szybki start używana była grupa zasobów o nazwie *AppConfigTestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
+W **Filtruj według nazwy** wprowadź nazwę grupy zasobów. W instrukcjach tego przewodnika Szybki start używana była grupa zasobów o nazwie *AppConfigTestResources*. W swojej grupy zasobów na liście wyników wybierz **...**  , a następnie wybierz **Usuń grupę zasobów**.
 
-Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**.
+Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wprowadź nazwę grupy zasobów w celu potwierdzenia, a następnie wybierz **Usuń**.
 
 Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.

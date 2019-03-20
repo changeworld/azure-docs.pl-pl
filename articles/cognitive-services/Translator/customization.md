@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: a195a8967ab68990c305097fdcc3476fb3491d4f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e66387a904f0026eb862178b19fd1b005212d674
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730073"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124018"
 ---
 # <a name="customize-your-text-translations"></a>Dostosuj tłumaczenia tekstu
 
@@ -60,8 +60,8 @@ Więcej informacji na temat różnych poziomów dostosowywania oparte na dostęp
 
 > [!NOTE]
 > Od 1 lutego 2018 r. AddTranslation() i AddTranslationArray() nie są już dostępne do użytku z programem V2.0 interfejs API tekstu usługi Translator. Te metody zakończy się niepowodzeniem i nic nie zostanie zapisany. V3.0 interfejs API tekstu usługi Translator nie obsługuje tych metod.
-
->Podobne funkcje są dostępne w interfejsie API usługi Translator koncentratora. Zobacz [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
+> 
+> Podobne funkcje są dostępne w interfejsie API usługi Translator koncentratora. Zobacz [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

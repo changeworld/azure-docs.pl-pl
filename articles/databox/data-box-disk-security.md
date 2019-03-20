@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159693"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093460"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box Disk
 
@@ -71,17 +71,17 @@ W usłudze Azure Data Box Disk dane osobowe są zbierane i wyświetlane w nastę
 
 - **Szczegóły zamówienia** — po utworzeniu zamówienia na platformie Azure zostaną zapisane dane kontaktowe użytkowników, adres wysyłki, adres e-mail. Zapisane informacje obejmują:
 
-    - Nazwisko osoby kontaktowej
-    - Numer telefonu
-    - Email
-    - Adres
-    - Miasto
-    - Kod pocztowy
-    - Stan
-    - Kraj/Województwo/Region
-    - Identyfikator dysku
-    - Numer konta operatora
-    - Numer śledzenia dostawy
+  - Nazwisko osoby kontaktowej
+  - Numer telefonu
+  - Email
+  - Adres
+  - Miasto
+  - Kod pocztowy
+  - Stan
+  - Kraj/Województwo/Region
+  - Identyfikator dysku
+  - Numer konta operatora
+  - Numer śledzenia dostawy
 
     Szczegóły zamówienia są usuwane z usługi Data Box po zakończeniu zadania lub usunięciu zamówienia.
 
@@ -90,7 +90,7 @@ W usłudze Azure Data Box Disk dane osobowe są zbierane i wyświetlane w nastę
 Aby uzyskać więcej informacji, zapoznaj się z Zasadami ochrony prywatności firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zapoznaj się z [wymaganiami rozwiązania Data Box Disk](data-box-disk-system-requirements.md).
 - Zapoznaj się z [limitami usługi Data Box Disk](data-box-disk-limits.md).

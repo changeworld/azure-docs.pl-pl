@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743361"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202677"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Ograniczania dostępu do danych w HDInsight za pomocą sygnatur dostępu współdzielonego magazynu platformy Azure
 
@@ -219,13 +219,7 @@ Jeśli masz istniejący klaster oparty na systemie Linux, można dodać na sygna
 
 ## <a name="test-restricted-access"></a>Test z ograniczonym dostępem
 
-Aby sprawdzić, czy mają ograniczony dostęp, należy użyć następujących metod:
-
-* Aby uzyskać **oparte na Windows** klastrów HDInsight za pomocą pulpitu zdalnego do łączenia z klastrem. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia przy użyciu protokołu RDP HDInsight](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
-
-    Po nawiązaniu połączenia użyj **wiersza polecenia usługi Hadoop** ikony na pulpicie, aby otworzyć wiersz polecenia.
-
-* Aby uzyskać **opartych na systemie Linux** klastrów HDInsight za pomocą protokołu SSH Połącz się z klastrem. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Aby sprawdzić, czy mają ograniczony dostęp, za pomocą protokołu SSH Połącz się z klastrem. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby zweryfikować, możliwe jest tylko odczyt i listy elementów na koncie magazynu sygnatur dostępu Współdzielonego:
 
@@ -288,7 +282,7 @@ Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby zweryfi
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli używasz hasła dla użytkownika administracyjnego/HTTP dla klastra lub (w przypadku klastrów opartych na systemie Linux) użytkownika SSH.
 
-**Rozpoznawanie**: Użyj hasła spełniającego następujące kryteria:
+**Rozwiązanie**: Użyj hasła spełniającego następujące kryteria:
 
 * Musi być co najmniej 10 znaków.
 * Musi zawierać co najmniej jedną cyfrę.

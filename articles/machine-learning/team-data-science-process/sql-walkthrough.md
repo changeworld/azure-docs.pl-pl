@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 953f2cdac41dcd610afbde39a318c0237b0b9099
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114743"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890862"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Zespół danych dla celów naukowych w działaniu: przy użyciu programu SQL Server
-W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu programu SQL Server i publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje pracy do analizy danych w warstwie standardowa: pozyskiwanie i eksplorować dane, Projektuj funkcje ułatwić szkolenia, a następnie utworzyć i wdrożyć model.
+W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu programu SQL Server i publicznie dostępnego zestawu danych — [rund taksówek NYC](https://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje pracy do analizy danych w warstwie standardowa: pozyskiwanie i eksplorować dane, Projektuj funkcje ułatwić szkolenia, a następnie utworzyć i wdrożyć model.
 
 ## <a name="dataset"></a>Taksówek NYC podróży opis zestawu danych
 Dane podróży taksówek NYC około 20GB skompresowanych plików CSV (~ 48GB nieskompresowane), zawierających ponad milion 173 poszczególnych podróży i opłaty opłacony każdego podróży. Każdy rekord podróży obejmuje odbiór i dropoff lokalizacji i czasu, hack anonimowe (sterownika) numer licencji i numer Medalionu (unikatowy identyfikator dla taksówek). Dane obejmuje wszystkie podróży w roku 2013 i znajduje się w następujących dwóch zestawów danych w każdym miesiącu:
@@ -82,7 +82,7 @@ Aby skonfigurować środowisko nauki o danych platformy Azure:
 Na podstawie rozmiaru zestawu danych, lokalizacja źródła danych i środowiska wybranego obiektu docelowego platformy Azure, ten scenariusz jest podobny do [scenariusza \#5: Duży zestaw danych w lokalnych plikach docelowych programu SQL Server na maszynie Wirtualnej platformy Azure](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="getdata"></a>Pobierz dane ze źródła publiczne
-Aby uzyskać [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych w lokalizacji publicznej, możesz użyć dowolnej z metod opisanych w [przenoszenie danych do i z usługi Azure Blob Storage](move-azure-blob.md) Aby skopiować dane do nowej maszyny wirtualnej.
+Aby uzyskać [rund taksówek NYC](https://www.andresmh.com/nyctaxitrips/) zestawu danych w lokalizacji publicznej, możesz użyć dowolnej z metod opisanych w [przenoszenie danych do i z usługi Azure Blob Storage](move-azure-blob.md) Aby skopiować dane do nowej maszyny wirtualnej.
 
 Aby skopiować dane za pomocą narzędzia AzCopy:
 
@@ -622,8 +622,8 @@ Podsumowanie, w tym samouczku instruktażu utworzono środowisko do nauki o dany
 Ten przewodnik po przykładzie i towarzyszące jej IPython notebook(s) i skrypty są udostępniane przez firmę Microsoft na licencji MIT. Sprawdź, czy w pliku LICENSE.txt w katalogu przykładowego kodu w serwisie GitHub Aby uzyskać więcej informacji.
 
 ### <a name="references"></a>Dokumentacja
-• [Andrés Monroy taksówek NYC przesłania strony pobierania](http://www.andresmh.com/nyctaxitrips/)  
-• [FOILing NYC taksówki danych podróży, Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+• [Andrés Monroy taksówek NYC przesłania strony pobierania](https://www.andresmh.com/nyctaxitrips/)  
+• [FOILing NYC taksówki danych podróży, Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [Taksówek NYC i Limousine Komisji badań i statystyk](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png

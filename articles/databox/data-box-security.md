@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b4e7165f30364ba61b583cf5d2f55e8826b9cf3
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 90004c27463a61de1b36eaea6754215f911f7483
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092129"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095861"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box
 
@@ -75,16 +75,16 @@ W usłudze Azure Data Box dane osobowe są zbierane i wyświetlane w następują
 
 - **Szczegóły zamówienia** — po utworzeniu zamówienia na platformie Azure zostaną zapisane dane kontaktowe użytkowników, adres wysyłki, adres e-mail. Zapisane informacje obejmują:
 
-    - Nazwisko osoby kontaktowej
-    - Numer telefonu
-    - Email
-    - Adres
-    - Miasto
-    - Kod pocztowy
-    - Stan
-    - Kraj/Województwo/Region
-    - Numer konta operatora
-    - Numer śledzenia dostawy
+  - Nazwisko osoby kontaktowej
+  - Numer telefonu
+  - Email
+  - Adres
+  - Miasto
+  - Kod pocztowy
+  - Stan
+  - Kraj/Województwo/Region
+  - Numer konta operatora
+  - Numer śledzenia dostawy
 
     Szczegóły zamówienia są usuwane z usługi Data Box po zakończeniu zadania lub usunięciu zamówienia.
 
@@ -99,13 +99,13 @@ W usłudze Data Box są zaimplementowane następujące wytyczne dotyczące zabez
 
 |Wytyczna   |Opis   |
 |---------|---------|
-|[IEC 60529 IP52](http://www.iec.ch/)    | Dotyczy ochrony przed wodą i pyłem         |
+|[IEC 60529 IP52](https://www.iec.ch/)    | Dotyczy ochrony przed wodą i pyłem         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Dotyczy odporności na niekorzystne warunki podczas transportu          |
-|[NIST SP 800-147](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Dotyczy bezpiecznej aktualizacji oprogramowania układowego         |
+|[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Dotyczy bezpiecznej aktualizacji oprogramowania układowego         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Dotyczy ochrony danych         |
-|[NIST SP 800-88r1](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Dotyczy oczyszczania danych         |
+|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Dotyczy oczyszczania danych         |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zapoznaj się z [wymaganiami rozwiązania Data Box](data-box-system-requirements.md).
 - Poznaj [ograniczenia usługi Data Box](data-box-limits.md).

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: adc85514c0f4e2f7245a7db6dffbe6b9dc5e6d42
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6e27d00e4b12ade82cfde6b3a4927edc7d69798a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435195"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075820"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>Generowanie rekomendacji filmów za pomocą Apache Mahout opartych na systemie Linux usługi Apache Hadoop w HDInsight (SSH)
 
@@ -170,15 +170,15 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     To polecenie analizuje zalecenia wygenerowany dla użytkownika Identyfikatorem 4.
 
-    * **Ratings.txt użytkownika** plik jest używany do pobierania filmów, które zostały sklasyfikowane.
+   * **Ratings.txt użytkownika** plik jest używany do pobierania filmów, które zostały sklasyfikowane.
 
-    * **Moviedb.txt** plik jest używany do pobierania nazwy filmów.
+   * **Moviedb.txt** plik jest używany do pobierania nazwy filmów.
 
-    * **Recommendations.txt** służy do pobierania rekomendacji filmów dla tego użytkownika.
+   * **Recommendations.txt** służy do pobierania rekomendacji filmów dla tego użytkownika.
 
      Dane wyjściowe tego polecenia będą podobne do następującego tekstu:
 
-        Siedem lat Tibet (1997), wynik = 5.0 Indiana Jones i ostatniego Crusade (1989), wynik = 5.0 Jaws (1975), wynik = 5.0 znaczeniu i świadomości (1995), wynik = 5.0 niezależność od dnia (ID4) (1996), wynik = 5.0 Moje najlepszy przyjaciel ślubu (1997), wynik = 5.0 Jerry Maguire (1996) wynik = 5.0 Scream 2 (1997), wynik = 5.0 czas ataku typu Kill, (1996), wynik = 5.0
+       Siedem lat Tibet (1997), wynik = 5.0 Indiana Jones i ostatniego Crusade (1989), wynik = 5.0 Jaws (1975), wynik = 5.0 znaczeniu i świadomości (1995), wynik = 5.0 niezależność od dnia (ID4) (1996), wynik = 5.0 Moje najlepszy przyjaciel ślubu (1997), wynik = 5.0 Jerry Maguire (1996) wynik = 5.0 Scream 2 (1997), wynik = 5.0 czas ataku typu Kill, (1996), wynik = 5.0
 
 ## <a name="delete-temporary-data"></a>Usuń dane tymczasowe
 

@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037c5210f73899483bebf131efce0d5f61a847c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fae036a0860ddb5ee2776f7ed4734492741907f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177725"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Odnawianie certyfikatów Federacji dla usługi Office 365 i Azure Active Directory
 ## <a name="overview"></a>Przegląd
@@ -36,7 +36,7 @@ Ten artykuł zawiera dodatkowe informacje, aby zarządzać certyfikaty podpisywa
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Domyślna konfiguracja usług AD FS dla certyfikatów podpisywania tokenu
 Podpisywania tokenu i odszyfrowywania certyfikaty tokenu są zazwyczaj podpisem certyfikaty i są dobre przez jeden rok. Domyślnie usług AD FS obejmuje proces automatycznego odnawiania, o nazwie **AutoCertificateRollover**. Jeśli używasz usług AD FS 2.0 lub nowszej, usługi Office 365 i Azure AD automatycznie aktualizuje certyfikatu przed jego wygaśnięciem.
 
-### <a name="renewal-notification-from-the-office-365-portal-or-an-email"></a>Odnawianie powiadomień z portalu usługi Office 365 lub wiadomości e-mail
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Odnawianie powiadomienie z Centrum administracyjnego usługi Microsoft 365 lub wiadomości e-mail
 > [!NOTE]
 > Jeśli otrzymasz wiadomość e-mail lub powiadomienie portalu prośbą odnawianie certyfikatu dla pakietu Office, zobacz [Zarządzanie zmianami w certyfikaty podpisywania tokenu](#managecerts) do sprawdzenia, jeśli musisz podejmować żadnych działań. Firma Microsoft zapoznała się z potencjalny problem, który może prowadzić do powiadomienia dotyczące odnawiania certyfikatów, które są wysyłane, nawet wtedy, gdy jest wymagana żadna akcja.
 >
@@ -44,8 +44,8 @@ Podpisywania tokenu i odszyfrowywania certyfikaty tokenu są zazwyczaj podpisem 
 
 Usługa Azure AD próbuje monitorowanie metadanych Federacji i aktualizowanie certyfikatów podpisywania, wskazane przez te metadane tokenu. 30 dni przed wygaśnięciem certyfikaty podpisywania tokenu usługi Azure AD sprawdza, jeśli nowe certyfikaty są dostępne przez sondowanie metadanych federacji.
 
-* Jeśli go pomyślnie wykonać sondowanie metadanych Federacji i pobrać nowe certyfikaty, bez powiadomienia e-mail i ostrzeżenia w portalu usługi Office 365 jest wystawiony dla użytkownika.
-* Jeśli nie może pobrać nowe certyfikaty podpisywania tokenu, albo ponieważ metadanych federacji nie jest dostępny lub przerzucanie certyfikatów automatyczne nie jest włączone, usługa Azure AD wystawia wiadomość e-mail z powiadomieniem i ostrzeżenia w portalu usługi Office 365.
+* Jeśli go pomyślnie wykonać sondowanie metadanych Federacji i pobrać nowe certyfikaty, bez powiadomienia e-mail i ostrzeżenia w Centrum administracyjnym usługi Microsoft 365 wystawionego dla użytkownika.
+* Jeśli nie może pobrać nowe certyfikaty podpisywania tokenu, albo ponieważ metadanych federacji nie jest dostępny lub przerzucanie certyfikatów automatyczne nie jest włączone, usługa Azure AD wystawia wiadomość e-mail z powiadomieniem i ostrzeżenia w Centrum administracyjnym usługi Microsoft 365.
 
 ![Powiadomienia portalu usługi Office 365](./media/how-to-connect-fed-o365-certs/notification.png)
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 873339750f4d9aa06607f1ba3ad3b97ea5ef68f3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b2ca3d42fd5facb226fd3ddea8c48decaafade85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883729"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009504"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 
@@ -156,7 +156,7 @@ ms.locfileid: "56883729"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -170,7 +170,7 @@ ms.locfileid: "56883729"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -452,7 +452,7 @@ Odczyt [w tym artykule] [ vpn-gateway-create-site-to-site-rm-powershell] Aby uzy
 >
 
 ### <a name="supported-os-and-database-releases"></a>Obsługiwane systemu operacyjnego i wersji bazy danych
-* Oprogramowanie serwerowe firmy Microsoft, obsługiwane w przypadku usług Azure Virtual Machine znajduje się w tym artykule: <http://support.microsoft.com/kb/2721672>.
+* Oprogramowanie serwerowe firmy Microsoft, obsługiwane w przypadku usług Azure Virtual Machine znajduje się w tym artykule: <https://support.microsoft.com/kb/2721672>.
 * Obsługiwane wersje systemu operacyjnego, wersji systemu bazy danych obsługiwane w usługach maszyny wirtualnej platformy Azure w połączeniu z oprogramowaniem SAP są udokumentowane w artykule Uwaga SAP [1928533].
 * Aplikacje SAP i wersje obsługiwane w usługach maszyny wirtualnej platformy Azure są udokumentowane w artykule Uwaga SAP [1928533].
 * Do uruchamiania jako gość maszyn wirtualnych na platformie Azure dla scenariuszy SAP obsługiwane są tylko obrazy 64-bitowych. W rezultacie tylko 64-bitowych aplikacji SAP i bazy danych są obsługiwane.
@@ -579,7 +579,7 @@ Większość rodzin maszyn wirtualnych platformy Azure, certyfikat z oprogramowa
 
 Jeśli są wyewidencjonowywanie część maszyny wirtualne serii DS, w [w tym artykule (Linux)] [ virtual-machines-sizes-linux] i [w tym artykule (Windows)][virtual-machines-sizes-windows], możesz należy pamiętać, że Istnieją pewne ograniczenia woluminu danych do dysków usługi Premium Storage na stopień szczegółowości poziomu maszyny Wirtualnej. Różnych serii DS lub GS-series VMs również mieć różne ograniczenia względem liczby dysków danych, które mogą być instalowane. Te limity są opisane w artykule, o których wspomniano powyżej, jak również. Jednak w zasadzie oznacza to, że jeśli, na przykład zainstalować 32 dyski x P30 z jedną maszyną wirtualną DS14 nie uzyskasz 32 x maksymalna przepływność dysków P30. Zamiast tego maksymalna przepływność na poziomie maszyny Wirtualnej, zgodnie z opisem w artykule ogranicza przepływność danych.
 
-Więcej informacji na temat usługi Premium Storage można znaleźć tutaj: <http://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
+Więcej informacji na temat usługi Premium Storage można znaleźć tutaj: <https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
 
 #### <a name="azure-storage-accounts"></a>Konta usługi Azure Storage
 
@@ -751,7 +751,7 @@ Jako drzewo decyzyjne nierównej zdecydować, czy system SAP dopasowuje się do 
 
 **Krok 1**: Najważniejsze informacje się rozpoczynać wymaganie protokoły SAP dla danego systemu SAP. Wymagania dotyczące punktu SAP konieczne można podzielić na systemu DBMS i część aplikacji SAP, nawet jeśli SAP system jest już wdrożony lokalnie w konfiguracji warstwy 2. Istniejących systemów punktu SAP związanym ze sprzętem używany często można określić lub w oparciu o istniejące testy porównawcze SAP. Wyniki można znaleźć tutaj: <https://sap.com/about/benchmark.html>.
 Nowo wdrożonych systemów SAP powinien wykonano już instrukcje ćwiczeniu zmiany rozmiaru należy określić wymagania dotyczące punktu SAP systemu.
-Zobacz też ten blog i dołączony dokument w przypadku ustalania rozmiaru SAP na platformie Azure: <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Zobacz też ten blog i dołączony dokument w przypadku ustalania rozmiaru SAP na platformie Azure: <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 **Krok 2**: Dla istniejących systemów liczby operacji We/Wy i operacje We/Wy na sekundę na serwerze systemu DBMS powinno być mierzone. Nowo planowane systemów nowego systemu w tym ćwiczeniu rozmiaru również powinien zapewnić nierównej pomysły wymagań dotyczących operacji We/Wy systemu DBMS na stronie. Jeśli nie wiesz, trzeba będzie do przeprowadzenia weryfikacji koncepcji.
 
@@ -801,7 +801,7 @@ Bardziej szczegółowe instrukcje dotyczące sposobu instalowania, aktualizowani
 
 Komfort do tej pory było programu PowerShell (PS) to oczywiście bardziej zaawansowane narzędzia do wdrażania maszyn wirtualnych oraz tworzenie niestandardowych krokach we wdrożeniu maszyn wirtualnych. Wszystkich klientów działających wystąpień SAP na platformie Azure są przy użyciu poleceń cmdlet PS uzupełnienie zadań zarządzania, nie w witrynie Azure portal lub są a nawet przeznaczona wyłącznie do wdrożeń na platformie Azure przy użyciu poleceń cmdlet PS. Ponieważ polecenia cmdlet specyficzne dla platformy Azure mają tej samej konwencji nazewnictwa jak więcej niż 2000 polecenia cmdlet związane z Windows, jest łatwym zadaniem administratorów Windows, należy skorzystać z tych poleceń cmdlet.
 
-Zobacz przykład poniżej: <http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Zobacz przykład poniżej: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 [comment]: <> (MShermannd TODO opisano nowe polecenia interfejsu wiersza polecenia podczas testowania )
 Wdrażanie rozszerzenia monitorowania platformy Azure dla rozwiązania SAP (zobacz rozdział [Azure rozwiązanie do monitorowania dla rozwiązania SAP] [ planning-guide-9.1] w tym dokumencie) jest możliwe tylko za pośrednictwem programu PowerShell lub interfejsu wiersza polecenia. W związku z tym jest konieczne instalowanie i konfigurowanie programu PowerShell lub interfejsu wiersza polecenia podczas wdrażania i administrowania systemem SAP NetWeaver na platformie Azure.  
@@ -1007,7 +1007,7 @@ Podczas pobierania wirtualnych dysków twardych lub dysków Managed Disks nie mo
 
 #### <a name="powershell"></a>PowerShell
 
-  * Pobieranie dysku zarządzanego  
+* Pobieranie dysku zarządzanego  
   Należy najpierw uzyskać dostęp do bazowego obiektu blob dysku zarządzanego. Następnie możesz skopiować podstawowego obiektu blob do nowego konta magazynu i pobrać obiekt blob z tego konta magazynu.
 
   ```powershell
@@ -1022,7 +1022,7 @@ Podczas pobierania wirtualnych dysków twardych lub dysków Managed Disks nie mo
   Revoke-AzureRmDiskAccess -ResourceGroupName <resource group> -DiskName <disk name>
   ```
 
-  * Pobieranie wirtualnego dysku twardego  
+* Pobieranie wirtualnego dysku twardego  
   Po zatrzymaniu systemu SAP i maszyna wirtualna jest zamknięta, służy polecenie cmdlet programu PowerShell Save-AzureRmVhd w elemencie docelowym w środowisku lokalnym podczas pobierania dyski VHD w środowisku lokalnym. Aby to zrobić, wymagany jest adres URL wirtualnego dysku twardego, który można znaleźć w "magazynem sekcji" i witryny Azure portal (wymagana, aby przejść do konta magazynu i kontener magazynu, w której został utworzony wirtualny dysk twardy) musi wiedzieć, gdzie wirtualny dysk twardy powinien zostać skopiowany do.
 
   Następnie możesz wykorzystać polecenie przez zdefiniowanie parametru sourceuri i jako adres URL wirtualnego dysku twardego do pobrania i LocalFilePath jako fizyczną lokalizację wirtualnego dysku twardego (w tym jej nazwę). Polecenie może wyglądać podobnie do:
@@ -1034,7 +1034,7 @@ Podczas pobierania wirtualnych dysków twardych lub dysków Managed Disks nie mo
   Aby uzyskać więcej informacji na polecenia cmdlet Save-AzureRmVhd Sprawdź tutaj <https://docs.microsoft.com/powershell/module/azurerm.compute/save-azurermvhd>.
 
 #### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-  * Pobieranie dysku zarządzanego  
+* Pobieranie dysku zarządzanego  
   Należy najpierw uzyskać dostęp do bazowego obiektu blob dysku zarządzanego. Następnie możesz skopiować podstawowego obiektu blob do nowego konta magazynu i pobrać obiekt blob z tego konta magazynu.
   ```
   az disk grant-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --duration-in-seconds 3600
@@ -1042,7 +1042,7 @@ Podczas pobierania wirtualnych dysków twardych lub dysków Managed Disks nie mo
   az disk revoke-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>"
   ```
 
-  * Pobieranie wirtualnego dysku twardego   
+* Pobieranie wirtualnego dysku twardego   
   Po zatrzymaniu systemu SAP i maszyna wirtualna jest zamknięta, można użyć polecenia wiersza polecenia platformy Azure _usługi azure storage blob download_ w elemencie docelowym w środowisku lokalnym, do pobierania wirtualnego dysku twardego dyski z powrotem do świata w środowisku lokalnym. Aby to zrobić, potrzebna jest nazwa i kontener wirtualnego dysku twardego, który można znaleźć w sekcji magazyn w witrynie Azure Portal (wymagana, aby przejść do konta magazynu i kontener magazynu, w której został utworzony wirtualny dysk twardy) i chcesz wiedzieć, gdzie wirtualny dysk twardy powinien być cop iowane do.
 
   Następnie możesz wykorzystać polecenie przez zdefiniowanie parametrów obiektu blob i kontener wirtualnego dysku twardego umożliwiające pobranie i miejsce docelowe jako lokalizacja docelowa fizycznego wirtualnego dysku twardego (w tym jej nazwę). Polecenie może wyglądać podobnie do:
@@ -1084,11 +1084,11 @@ az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resour
 
 ##### <a name="azure-storage-tools"></a>Narzędzia usługi Azure Storage
 
-* <http://storageexplorer.com/>
+* <https://storageexplorer.com/>
 
 Profesjonalne wersje Eksploratory usługi Azure Storage można znaleźć tutaj:
 
-* <http://www.cerebrata.com/>
+* <https://www.cerebrata.com/>
 * <http://clumsyleaf.com/products/cloudxplorer>
 
 Kopię samego dysku VHD na koncie magazynu jest procesem, który zajmuje tylko kilka sekund (podobnie jak na sprzęcie sieci SAN, Tworzenie migawki z opóźnioną kopię i kopii przy zapisie). Po utworzeniu kopii pliku wirtualnego dysku twardego, możesz dołączyć do maszyny wirtualnej lub go użyć jako obraz, aby dołączyć kopie dysk VHD do maszyn wirtualnych.
@@ -1326,7 +1326,7 @@ Zobacz architektury różnica między klasycznym modelem i ARM, zgodnie z opisem
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Konfiguracja systemu SAP i SAP graficznego interfejsu użytkownika łączności przez internet
 
-Można znaleźć w tym artykule opisano szczegóły, aby w tym temacie: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Można znaleźć w tym artykule opisano szczegóły, aby w tym temacie: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Zmiana ustawień zapory na maszynie wirtualnej
 
@@ -1644,7 +1644,7 @@ W tabeli poniżej SAP typowe porty komunikacyjne są wyświetlane. Zasadniczo je
 
 *) identyfikator sid = Identyfikatorem systemu SAP
 
-Bardziej szczegółowe informacje dotyczące portów wymaganych dla różnych produktów SAP lub usług według produktów SAP można znaleźć tutaj <http://scn.sap.com/docs/DOC-17124>.
+Bardziej szczegółowe informacje dotyczące portów wymaganych dla różnych produktów SAP lub usług według produktów SAP można znaleźć tutaj <https://scn.sap.com/docs/DOC-17124>.
 Z tym dokumentem można otworzyć porty dedykowanych w niezbędne dla określonych produkty i scenariusze SAP urządzenia sieci VPN.
 
 Inne zabezpieczeń mierzy podczas wdrażania maszyn wirtualnych w takiej sytuacji można utworzyć [sieciowej grupy zabezpieczeń] [ virtual-networks-nsg] do zdefiniowania reguł dostępu.
@@ -1718,7 +1718,7 @@ Na platformie Azure możliwości usług pulpitu zdalnego do udzielania dostępu 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Szczegółowe informacje na temat Drukowanie z Windows można znaleźć tutaj: <http://technet.microsoft.com/library/jj590748.aspx>.
+> Szczegółowe informacje na temat Drukowanie z Windows można znaleźć tutaj: <https://technet.microsoft.com/library/jj590748.aspx>.
 >
 >
 
@@ -1729,7 +1729,7 @@ Zmiana SAP i System transportu (TMS) musi być skonfigurowana do eksportowania i
 
 ##### <a name="configuring-the-transport-domain"></a>— Konfigurowanie domeny transportu
 
-Skonfiguruj domenę transportu w systemie wyznaczony jako kontroler domeny transportu, zgodnie z opisem w [konfigurowania kontrolera domeny transportu](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Użytkownik systemu TMSADM zostanie utworzony i wymagane miejsce docelowe RFC zostanie wygenerowany. Można sprawdzać te połączenia RFC przy użyciu transakcji SM59. Rozpoznawanie nazwy hosta musi być włączona w Twojej domenie transportu.
+Skonfiguruj domenę transportu w systemie wyznaczony jako kontroler domeny transportu, zgodnie z opisem w [konfigurowania kontrolera domeny transportu](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm). Użytkownik systemu TMSADM zostanie utworzony i wymagane miejsce docelowe RFC zostanie wygenerowany. Można sprawdzać te połączenia RFC przy użyciu transakcji SM59. Rozpoznawanie nazwy hosta musi być włączona w Twojej domenie transportu.
 
 Instrukcje:
 
@@ -1742,12 +1742,12 @@ Instrukcje:
 
 Sekwencja, w tym z systemem SAP w domenie transportu wygląda następująco:
 
-* W systemie Deweloperskim na platformie Azure przejdź do systemu transportu (klient 000) i wywoływać transakcji STMS. Wybierz inne konfigurację z okna dialogowego, a następnie kontynuuj obejmują systemu w domenie. Określ kontroler domeny jako hosta docelowego ([w tym systemów SAP w domenie transportu](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). System oczekuje się teraz do uwzględnienia w domenie transportu.
+* W systemie Deweloperskim na platformie Azure przejdź do systemu transportu (klient 000) i wywoływać transakcji STMS. Wybierz inne konfigurację z okna dialogowego, a następnie kontynuuj obejmują systemu w domenie. Określ kontroler domeny jako hosta docelowego ([w tym systemów SAP w domenie transportu](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). System oczekuje się teraz do uwzględnienia w domenie transportu.
 * Ze względów bezpieczeństwa należy następnie wróć do kontrolera domeny, aby upewnić się, Twoje żądanie. Wybierz pozycję Przegląd systemu i zatwierdź systemu oczekiwania. Potwierdź będą dystrybuowane monit i konfiguracji.
 
 Ten system SAP teraz zawiera niezbędne informacje o wszystkich innych systemów SAP w domenie transportu. W tym samym czasie dane nowego systemu SAP są wysyłane do innych systemów SAP i SAP system jest wprowadzana w profilu transportu programu kontrolki transportu. Sprawdź, czy dokumenty RFC i dostęp do katalogu transportu domeny działa.
 
-Kontynuuj konfiguracji systemu transportu w zwykły sposób zgodnie z opisem w dokumentacji [zmian i System transportu](http://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
+Kontynuuj konfiguracji systemu transportu w zwykły sposób zgodnie z opisem w dokumentacji [zmian i System transportu](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
 
 Instrukcje:
 
@@ -1759,13 +1759,13 @@ Instrukcje:
 
 W połączonych lokacja lokacja między wieloma lokalizacjami scenariuszy, opóźnienie między lokalną i platformą Azure nadal może być istotne. Jeśli postępujemy zgodnie z sekwencji transportu obiektów w systemach deweloperskie i testowe do środowiska produkcyjnego lub Pomyśl o zastosowaniu transportu lub pakietów pomocy technicznej do różnych systemów, okazuje się, że zależą od lokalizacji katalogu transportu centralnego Niektóre systemy będą napotykać duże opóźnienie odczytu lub zapisu danych w katalogu centralnym transportu. Sytuacja jest podobny do SAP poziomym konfiguracji, gdzie różnych systemów rozprzestrzenia się w różnych centrach danych za pomocą znacznej odległość między centrami danych.
 
-Aby obejść takie opóźnienie i systemami działać szybko podczas zapisu lub odczytu do lub z katalogu transportu, można skonfigurować dwie domeny transportu STMS (jeden dla środowiska lokalnego i jeden z systemów na platformie Azure i połączyć domen transportu. Sprawdź, czy niniejszej dokumentacji opisano zasady dotyczące tę koncepcję w SAP TMS: <http://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>.
+Aby obejść takie opóźnienie i systemami działać szybko podczas zapisu lub odczytu do lub z katalogu transportu, można skonfigurować dwie domeny transportu STMS (jeden dla środowiska lokalnego i jeden z systemów na platformie Azure i połączyć domen transportu. Sprawdź, czy niniejszej dokumentacji opisano zasady dotyczące tę koncepcję w SAP TMS: <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>.
 
 Instrukcje:
 
-* Konfigurowanie domeny transportu w poszczególnych lokalizacjach (w środowisku lokalnym i platformą Azure) przy użyciu transakcji STMS <http://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
+* Konfigurowanie domeny transportu w poszczególnych lokalizacjach (w środowisku lokalnym i platformą Azure) przy użyciu transakcji STMS <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
 * Link domen z linkiem umożliwiającym domeny i upewnij się, łącze między dwiema domenami.
-  <http://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
+  <https://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
 * Przekazują konfigurację do połączonego systemu.
 
 #### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>RFC ruchu między wystąpieniami platformy SAP znajdujących się na platformie Azure i w środowisku lokalnym (Cross-Premises)
@@ -1827,14 +1827,14 @@ Instalator portalu SAP w maszynie wirtualnej platformy Azure nie różnią się 
 
 Scenariusz wdrożenia specjalne przez niektórych klientów jest przed nawiązywaniem bezpośredniego połączenia z portalu dla przedsiębiorstw SAP do Internetu, gdy host maszyny wirtualnej jest połączony z siecią firmową za pośrednictwem tunelu VPN typu lokacja lokacja lub ExpressRoute. Takiej sytuacji należy upewnić się, że określone porty są otwarte i nie jest blokowany przez zapory lub sieciowej grupy zabezpieczeń. 
 
-Portal początkowego identyfikatora URI jest http (s):`<Portalserver`>: 5XX00/irj, gdzie numer portu jest tworzona przez 50000 znaku plus (Systemnumber? 100). Domyślny system identyfikatora URI SAP portalu 00 to `<dns name`>.`<azure region` >.Cloudapp.azure.com:PublicPort/irj. Aby uzyskać więcej informacji, zapoznaj się <http://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
+Portal początkowego identyfikatora URI jest http (s):`<Portalserver`>: 5XX00/irj, gdzie numer portu jest tworzona przez 50000 znaku plus (Systemnumber? 100). Domyślny system identyfikatora URI SAP portalu 00 to `<dns name`>.`<azure region` >.Cloudapp.azure.com:PublicPort/irj. Aby uzyskać więcej informacji, zapoznaj się <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
 
 ![Konfiguracja punktu końcowego][planning-guide-figure-2800]
 
 Jeśli chcesz dostosować adresu URL i/lub porty witryny Enterprise Portal SAP, sprawdź tej dokumentacji:
 
-* [Zmień adres URL portalu](http://wiki.scn.sap.com/wiki/display/EP/Change+Portal+URL)
-* [Zmień domyślne numery portów, numery portów portalu](http://wiki.scn.sap.com/wiki/display/NWTech/Change+Default++port+numbers%2C+Portal+port+numbers)
+* [Zmień adres URL portalu](https://wiki.scn.sap.com/wiki/display/EP/Change+Portal+URL)
+* [Zmień domyślne numery portów, numery portów portalu](https://wiki.scn.sap.com/wiki/display/NWTech/Change+Default++port+numbers%2C+Portal+port+numbers)
 
 ## <a name="high-availability-ha-and-disaster-recovery-dr-for-sap-netweaver-running-on-azure-virtual-machines"></a>Wysoka dostępność (HA) i odzyskiwania po awarii (DR) dla oprogramowania SAP NetWeaver uruchomione na maszynach wirtualnych platformy Azure
 
@@ -1856,7 +1856,7 @@ Firma Microsoft można oddzielić dyskusji o SAP o wysokiej dostępności na pla
 
 i jak można ją połączyć z infrastrukturą platformy Azure o wysokiej dostępności.
 
-SAP wysokiej dostępności na platformie Azure ma pewne różnice w porównaniu do SAP o wysokiej dostępności w lokalnym środowisku fizycznym lub wirtualnym. Poniższy dokument z systemu SAP w tym artykule opisano standardowy SAP konfiguracjach wysokiej dostępności w środowiskach zwirtualizowanych na Windows: <http://scn.sap.com/docs/DOC-44415>. Brak zintegrowane sapinst SAP-zaświadczanie o kondycji konfiguracji dla systemu Linux takie jak istnieje Windows. Dotyczące SAP HA lokalnych dla systemu Linux znaleźć artykuły zawierają więcej informacji: <http://scn.sap.com/docs/DOC-8541>.
+SAP wysokiej dostępności na platformie Azure ma pewne różnice w porównaniu do SAP o wysokiej dostępności w lokalnym środowisku fizycznym lub wirtualnym. Poniższy dokument z systemu SAP w tym artykule opisano standardowy SAP konfiguracjach wysokiej dostępności w środowiskach zwirtualizowanych na Windows: <https://scn.sap.com/docs/DOC-44415>. Brak zintegrowane sapinst SAP-zaświadczanie o kondycji konfiguracji dla systemu Linux takie jak istnieje Windows. Dotyczące SAP HA lokalnych dla systemu Linux znaleźć artykuły zawierają więcej informacji: <https://scn.sap.com/docs/DOC-8541>.
 
 ### <a name="azure-infrastructure-high-availability"></a>Wysoka dostępność infrastruktury platformy Azure
 
@@ -1877,7 +1877,7 @@ Istnieją dwa typy zdarzeń platformy Azure, które mogą wpłynąć na dostępn
 * Zdarzenia planowanej konserwacji są okresowe aktualizacje przeprowadzane przez firmę Microsoft dla podstawowej platformy Azure w celu zwiększenia ogólnej niezawodności, wydajności i bezpieczeństwa infrastruktury platformy, które są uruchamiane maszyny wirtualne.
 * Zdarzenia nieplanowanej konserwacji wystąpić, gdy sprzętu lub infrastruktury fizycznej maszyny wirtualnej wystąpił błąd w jakiś sposób. Mogą być to awarie sieci lokalnej, błędy na dysku lokalnym lub inne awarie na poziomie regału. Po wykryciu awarii tego typu platformy Azure będą automatycznie migrować maszynę wirtualną z złej kondycji serwera fizycznego obsługującego maszynę wirtualną na serwerze fizycznym dobrej kondycji. Te zdarzenia występują rzadko, ale mogą również spowodować ponowne uruchomienie maszyny wirtualnej.
 
-Więcej szczegółów można znaleźć w tej dokumentacji: <http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+Więcej szczegółów można znaleźć w tej dokumentacji: <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
 
@@ -1885,7 +1885,7 @@ Dane konta usługi Microsoft Azure Storage są zawsze replikowane w celu zapewni
 
 Ponieważ usługi Azure Storage może być utrzymywanie trzy obrazy danych domyślnie, RAID5 lub RAID1 na wielu dyskach platformy Azure nie są konieczne.
 
-Więcej szczegółów można znaleźć w tym artykule: <http://azure.microsoft.com/documentation/articles/storage-redundancy/>
+Więcej szczegółów można znaleźć w tym artykule: <https://azure.microsoft.com/documentation/articles/storage-redundancy/>
 
 #### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>Przy użyciu ponownego uruchamiania maszyny Wirtualnej infrastruktury platformy Azure, aby osiągnąć wyższą dostępność aplikacji SAP
 
@@ -1944,7 +1944,7 @@ Wdrażanie kilka wystąpień serwera aplikacji SAP w ich dedykowanych maszyn wir
 
 ![Zaświadczanie o kondycji serwerów aplikacji SAP na platformie Azure][planning-guide-figure-3000]
 
-Więcej szczegółów można znaleźć w tej dokumentacji: <http://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+Więcej szczegółów można znaleźć w tej dokumentacji: <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="high-availability-for-sap-central-services-on-azure"></a>Wysoka dostępność dla usług SAP Central Services na platformie Azure
 
@@ -2004,7 +2004,7 @@ W profilu uruchamiania wystąpienia SAP ABAP i/lub Java.
 
 Zobacz, że dodatkowe informacje na temat funkcji autostart dla rozwiązania SAP wystąpień w tym miejscu:
 
-* [Uruchamianie/zatrzymywanie SAP oraz usługi Unix serwera uruchomień/zatrzymań](http://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
+* [Uruchamianie/zatrzymywanie SAP oraz usługi Unix serwera uruchomień/zatrzymań](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
 * [Uruchamianie i zatrzymywanie SAP NetWeaver na zarządzanie agentów](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
 * [Jak włączyć automatyczne Start z bazy danych HANA](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
@@ -2047,7 +2047,7 @@ Inne maszyny wirtualne w systemie SAP utworzeniem kopii zapasowej za pomocą fun
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Nie ma odpowiednika w usłudze VSS. Windows w systemie Linux. W związku z tym tylko spójna na poziomie plików kopie zapasowe są możliwe, ale nie spójnych z aplikacją kopii zapasowych. Kopia zapasowa systemu SAP DBMS powinno się odbywać za pomocą funkcji systemu DBMS. System plików, który zawiera dane dotyczące SAP może zostać zapisana, na przykład za pomocą tar zgodnie z opisem w tym miejscu: <http://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Nie ma odpowiednika w usłudze VSS. Windows w systemie Linux. W związku z tym tylko spójna na poziomie plików kopie zapasowe są możliwe, ale nie spójnych z aplikacją kopii zapasowych. Kopia zapasowa systemu SAP DBMS powinno się odbywać za pomocą funkcji systemu DBMS. System plików, który zawiera dane dotyczące SAP może zostać zapisana, na przykład za pomocą tar zgodnie z opisem w tym miejscu: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 
@@ -2055,7 +2055,7 @@ Inne maszyny wirtualne w systemie SAP utworzeniem kopii zapasowej za pomocą fun
 
 Od średniej 2014 r. rozszerzenia do różnych składników funkcji Hyper-V, programu System Center i Azure umożliwiają użycie platformy Azure jako lokacji odzyskiwania po awarii dla maszyn wirtualnych uruchomionych w środowisku lokalnym oparte na funkcji Hyper-V.
 
-Blog szczegółowych informacji na temat sposobu wdrażania tego rozwiązania opisano tutaj: <http://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
+Blog szczegółowych informacji na temat sposobu wdrażania tego rozwiązania opisano tutaj: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
 
 ## <a name="summary"></a>Podsumowanie
 

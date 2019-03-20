@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: eb5eecaca65cc8394bcc12fc5a475cf5e762f1c9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: dc8c29b1c7d4e5056cb6aeee6335e32687fd547f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729969"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123678"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak używać narzędzi dostępnych w zestawach SDK można Uproszczenie projektowania aplikacji do udostępniania
 IoT Hub Device Provisioning Service upraszcza proces inicjowania obsługi administracyjnej za pomocą bezobsługowe, just-in-time [automatycznej aprowizacji](concepts-auto-provisioning.md) w sposób bezpieczny i ekonomiczny.  Poświadczenie zabezpieczeń w formie certyfikatu X.509 lub Trusted Platform Module (TPM) jest wymagana.  Microsoft jest również partnerstwo z [innych partnerów sprzętowych zabezpieczeń](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) Aby zwiększyć zaufanie Zabezpieczanie wdrożenia IoT. Zrozumienie wymagań dotyczących zabezpieczeń sprzętu może być bardzo trudne dla deweloperów. Zestaw SDK usługi aprowizacji IoT platformy Azure są dostarczane, dzięki czemu deweloperzy mogą używać warstwy jako udogodnienie dla klientów pisania, komunikujące się z usługą aprowizowania. Zestawy SDK udostępniają przykłady dla typowych scenariuszy, a także zestaw narzędzi można uproszczenie zabezpieczeń zaświadczania w trakcie opracowywania.
@@ -23,9 +23,9 @@ IoT Hub Device Provisioning Service upraszcza proces inicjowania obsługi admini
 
 Dostępne są następujące kroki dotyczące korzystania z symulatora modułu TPM:
 1. [Przygotowywanie środowiska deweloperskiego](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) i sklonuj repozytorium GitHub:
-```
-git clone https://github.com/Azure/azure-iot-sdk-java.git
-```
+   ```
+   git clone https://github.com/Azure/azure-iot-sdk-java.git
+   ```
 2. Przejdź do folderu symulatora modułu TPM, w obszarze ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```.
 3. Uruchom Simulator.exe przed uruchomieniem każda aplikacja kliencka aprowizacji urządzenia.
 4. Pozwól symulator uruchomione w tle w całym procesie inicjowania obsługi administracyjnej, aby uzyskać identyfikator rejestracji i kluczem poręczenia.  Obie wartości są prawidłowe tylko dla jednego wystąpienia uruchomienia.
@@ -47,18 +47,18 @@ Obecnie, podczas gdy emulatorem DICE generuje certyfikat główny, pośredniego 
 
 Aby wygenerować certyfikat X.509, za pomocą tego generatora:
 1. [Przygotowywanie środowiska deweloperskiego](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) i sklonuj repozytorium GitHub:
-```
-git clone https://github.com/Azure/azure-iot-sdk-java.git
-```
+   ```
+   git clone https://github.com/Azure/azure-iot-sdk-java.git
+   ```
 2. Zmień katalogu głównego azure-iot-sdk-java.
 3. Uruchom ```mvn install -DskipTests=true``` pobrać wszystkie wymagane pakiety i Skompiluj zestaw SDK
 4. Przejdź do katalogu głównego dla Generator certyfikatów X.509 w ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```.
 5. Kompilowanie z ```mvn clean install```
 6. Uruchom narzędzie przy użyciu następujących poleceń:
-```
-cd target
-java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
-```
+   ```
+   cd target
+   java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
+   ```
 7. Po wyświetleniu monitu można opcjonalnie wprowadzić _nazwę pospolitą_ dla certyfikatów.
 8. To narzędzie generuje lokalnie **certyfikat klienta**, **klucz prywatny certyfikatu klienta**, **pośredniego certyfikatu**i **certyfikat główny**.
 

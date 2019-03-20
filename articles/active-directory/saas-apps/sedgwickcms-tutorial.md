@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7783da2e3e5fe2ee79942b246e452ad7998e278
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4c42b7010a6586e4845d3a58b9a47b01143f5b1d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Sedgwick CMS
 
@@ -112,12 +112,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Sedgwick CMS domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/sedgwickcms-tutorial/tutorial_sedgwickcms_url.png)
 
     a. W polu tekstowym **Identifier** (Identyfikator) wpisz adres URL: 
+
     | |
     |--|
     | `expresspreview.sedgwickcms.net/voe/sso` |
     | `claimlookup.com/Voe/sso` |
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `https://<subdomain>.sedgwickcms.net/voe/sso` |
@@ -215,7 +217,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

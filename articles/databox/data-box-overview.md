@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: d0d5ee18e37436562f1e9e15571dc39fb0e00129
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875042"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117748"
 ---
 # <a name="what-is-azure-data-box"></a>Co to jest usługa Azure Data Box?
 
@@ -44,11 +44,11 @@ Rozwiązanie Data Box jest przeznaczone do przenoszenia dużych ilości danych n
 - **Szybkość** — urządzenie Data Box umożliwia przeniesienie do 80 TB danych na platformę Azure za pomocą interfejsu sieciowego 1 Gb/s lub 10 Gb/s.
 
 - **Bezpieczeństwo** — rozwiązanie Data Box ma wbudowane zabezpieczenia urządzenia, danych i usługi.
-    - Urządzenie ma odporną na wstrząsy obudowę zabezpieczoną antywłamaniowymi śrubami i nalepkami umożliwiającymi wykrycie manipulacji. 
-    - Dane na urządzeniu są przez cały czas zabezpieczane za pomocą 256-bitowego szyfrowania AES.
-    - Urządzenie można odblokować tylko przy użyciu hasła podanego w witrynie Azure Portal.
-    - Usługa jest chroniona przy użyciu funkcji zabezpieczeń platformy Azure.
-    - Po przekazaniu danych na platformę Azure dyski urządzenia są czyszczone zgodnie ze standardami NIST 800-88r1.
+  - Urządzenie ma odporną na wstrząsy obudowę zabezpieczoną antywłamaniowymi śrubami i nalepkami umożliwiającymi wykrycie manipulacji. 
+  - Dane na urządzeniu są przez cały czas zabezpieczane za pomocą 256-bitowego szyfrowania AES.
+  - Urządzenie można odblokować tylko przy użyciu hasła podanego w witrynie Azure Portal.
+  - Usługa jest chroniona przy użyciu funkcji zabezpieczeń platformy Azure.
+  - Po przekazaniu danych na platformę Azure dyski urządzenia są czyszczone zgodnie ze standardami NIST 800-88r1.
     
     Aby uzyskać więcej informacji, przejdź do tematu [Zabezpieczenia i ochrona danych w usłudze Azure Data Box](data-box-security.md).
 
@@ -120,7 +120,7 @@ Rozwiązanie Data Box umożliwia przesyłanie danych w zależności od regionu, 
 - **Docelowe konta magazynu** — konta magazynu do przechowywania danych są dostępne we wszystkich regionach świadczenia usługi Azure, w których ta usługa jest dostępna.  
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj [wymagania systemowe usługi Data Box](data-box-system-requirements.md).
 - Poznaj [ograniczenia usługi Data Box](data-box-limits.md).

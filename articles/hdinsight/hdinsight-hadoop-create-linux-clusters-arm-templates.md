@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: cd02930394fd4cd09808a808765e54ff9ea6b4ea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e3757e94dcd8ccc39613b9a6fff8bf491812866a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434305"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224211"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów usługi Apache Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -36,14 +36,14 @@ Szablon usługi Resource Manager ułatwia utworzenie następujących zasobów dl
 
 W szablonie należy zdefiniować zasoby, które są wymagane przez aplikację. Należy również określić parametrów wdrożenia wprowadzanie wartości dla różnych środowisk. Szablon składa się z kodu JSON i wyrażeń, których używasz do tworzenia wartości dla danego wdrożenia.
 
-Można znaleźć przykłady szablonów HDInsight w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Użyj dla wielu platform [programu Visual Studio Code](https://code.visualstudio.com/#alt-downloads) z [rozszerzenia usługi Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) lub edytorze tekstów, aby zapisać szablon do pliku na stację roboczą. 
+Można znaleźć przykłady szablonów HDInsight w [szablony szybkiego startu platformy](https://azure.microsoft.com/resources/templates/?term=hdinsight). Użyj dla wielu platform [programu Visual Studio Code](https://code.visualstudio.com/#alt-downloads) z [rozszerzenia usługi Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) lub edytorze tekstów, aby zapisać szablon do pliku na stację roboczą. 
 
 Aby uzyskać więcej informacji na temat szablonów usługi Resource Manager zobacz następujące artykuły i przykłady:
 
 * [Tworzenie szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Wdrażanie aplikacji przy użyciu szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md)
 * [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) odwołanie do szablonu
-* [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
+* [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Generowanie szablonów
 
@@ -76,7 +76,7 @@ W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule mają przedstawiono kilka sposobów, aby utworzyć klaster usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* Aby uzyskać więcej HDInsight powiązanych szablonów, zobacz [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight).
+* Aby uzyskać więcej HDInsight powiązanych szablonów, zobacz [szablony szybkiego startu platformy](https://azure.microsoft.com/resources/templates/?term=hdinsight).
 * Aby uzyskać przykład wdrażanie zasobów za pomocą biblioteki klienckiej platformy .NET, zobacz [wdrażanie zasobów za pomocą szablonu i bibliotek .NET](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Aby uzyskać szczegółowy przykład wdrażania aplikacji, zobacz [Aprowizowanie i wdrażanie mikrousług przewidywalny na platformie Azure](../app-service/deploy-complex-application-predictably.md).
 * Aby uzyskać wskazówki dotyczące wdrażania rozwiązania w różnych środowiskach, zobacz [Development and test environments in Microsoft Azure](../solution-dev-test-environments.md) (Środowiska projektowe i testowe na platformie Microsoft Azure).

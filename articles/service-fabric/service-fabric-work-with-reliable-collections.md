@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/22/2019
 ms.author: aljo
-ms.openlocfilehash: 38aef6e5ba65f67a1dd30ba2c18e180cd92624c6
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: bb99e5984f91edb0cf40f3bdc485624b9ec59833
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805317"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872691"
 ---
 # <a name="working-with-reliable-collections"></a>Praca z elementami Reliable Collections
 Usługa Service Fabric oferuje stanowych model programowania dostępnych dla deweloperów platformy .NET za pomocą elementów Reliable Collections. W szczególności usługa Service Fabric udostępnia klasy niezawodna kolejka i niezawodnego słownika. Korzystając z tych klas, stan programu jest podzielona na partycje (w przypadku skalowalności), replikowane (w przypadku dostępności) i odbywających się w partycji (w przypadku semantyki ACID). Możemy przyjrzeć się typowego użycia obiektu niezawodnego słownika i zobacz, co faktycznie wykonywanie operacji.
@@ -143,7 +143,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definiowanie typów niezmienialnymi danymi, aby uniknąć błędów programisty
-W idealnym przypadku prosimy o poświęcenie kompilator, aby włączyć raportowanie błędów podczas przypadkowo tworzenia kodu, która mutuje stan obiektu, który jest powinien wziąć pod uwagę niezmienne. Jednak C# kompilator nie ma możliwości, aby to zrobić. Tak, aby uniknąć potencjalnych błędów programisty, zdecydowanie zalecamy czy zdefiniować typy użycia z elementami reliable collections być typami niezmienne. W szczególności oznacza to, że używany podstawowych typów wartości (na przykład numery [Int32, UInt64, itp.,], daty/godziny, identyfikator Guid, TimeSpan i podobne). Można również użyć ciągu. Najlepiej unikać właściwości kolekcji serializacji i deserializacji je często może obniżyć wydajność. Jednak jeśli chcesz korzystać z właściwości kolekcji, zdecydowanie zalecamy użycie. Biblioteka kolekcje niezmienialne NET firmy ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Ta biblioteka jest dostępny do pobrania http://nuget.org. Zalecamy również pieczętowanie Twoich zajęciach i oznaczanie pól tylko do odczytu, jeśli to możliwe.
+W idealnym przypadku prosimy o poświęcenie kompilator, aby włączyć raportowanie błędów podczas przypadkowo tworzenia kodu, która mutuje stan obiektu, który jest powinien wziąć pod uwagę niezmienne. Jednak C# kompilator nie ma możliwości, aby to zrobić. Tak, aby uniknąć potencjalnych błędów programisty, zdecydowanie zalecamy czy zdefiniować typy użycia z elementami reliable collections być typami niezmienne. W szczególności oznacza to, że używany podstawowych typów wartości (na przykład numery [Int32, UInt64, itp.,], daty/godziny, identyfikator Guid, TimeSpan i podobne). Można również użyć ciągu. Najlepiej unikać właściwości kolekcji serializacji i deserializacji je często może obniżyć wydajność. Jednak jeśli chcesz korzystać z właściwości kolekcji, zdecydowanie zalecamy użycie. Biblioteka kolekcje niezmienialne NET firmy ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Ta biblioteka jest dostępny do pobrania https://nuget.org. Zalecamy również pieczętowanie Twoich zajęciach i oznaczanie pól tylko do odczytu, jeśli to możliwe.
 
 Typ informacji o użytkowniku, poniżej pokazano, jak zdefiniować typ niezmienne, korzystając z zalet wyżej zalecenia.
 

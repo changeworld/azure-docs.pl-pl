@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f86fe5e3-0e91-40d6-869c-3df6912d27ea
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 24fa4297701e5144ba58d6d0e8ec034a6cdda570
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 48c5804df53c084715cac872aa431cf8694c6d35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872221"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Flatter Files
 
@@ -52,7 +52,7 @@ Aby skonfigurować integrację aplikacji Flatter Files w usłudze Azure AD, nale
 
 **Aby dodać aplikację Flatter Files z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -140,12 +140,12 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Flatter Fi
    
     a. W polu tekstowym **Domain** (Domena) wpisz nazwę zarejestrowanej domeny.
    
-    >[!NOTE]
-    >Jeśli nie masz jeszcze zarejestrowanej domeny, skontaktuj się z zespołem pomocy technicznej aplikacji Flatter pod adresem [support@flatterfiles.com](mailto:support@flatterfiles.com). 
+   > [!NOTE]
+   > Jeśli nie masz jeszcze zarejestrowanej domeny, skontaktuj się z zespołem pomocy technicznej aplikacji Flatter pod adresem [support@flatterfiles.com](mailto:support@flatterfiles.com). 
     
     b. W polu tekstowym **Identity Provider URL** (Adres URL dostawcy tożsamości) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
    
-    d.  Otwórz certyfikat kodowany algorytmem base-64 w Notatniku, skopiuj jego zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat dostawcy tożsamości**.
+    c.  Otwórz certyfikat kodowany algorytmem base-64 w Notatniku, skopiuj jego zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat dostawcy tożsamości**.
 
     d. Kliknij przycisk **Update** (Aktualizuj).
 
@@ -167,7 +167,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -222,14 +222,14 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Flatter Fi
    
     b. W polu tekstowym **Last Name** (Nazwisko) wpisz **Simon**. 
    
-    d. W polu tekstowym **Email Address** (Adres e-mail) wpisz adres e-mail użytkownika Britta w witrynie Azure Portal.
+    c. W polu tekstowym **Email Address** (Adres e-mail) wpisz adres e-mail użytkownika Britta w witrynie Azure Portal.
    
     d. Kliknij przycisk **Prześlij**.   
 
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Flatter Files w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Flatter Files, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

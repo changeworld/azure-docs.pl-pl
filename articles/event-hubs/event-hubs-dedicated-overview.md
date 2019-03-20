@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 2a1785b9c749a8c413987974446190aafc08ed3a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237131"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105594"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Omówienie usługi Event Hubs w wersji dedykowanej
 
@@ -29,7 +29,7 @@ ms.locfileid: "56237131"
 W poniższej tabeli porównano warstwy dostępna usługa Event Hubs. Oferta Event hubs w warstwie dedykowana jest stałą cenę miesięczną, w porównaniu do użycia ceny dla większości funkcji standardu. Dedykowany warstwa oferuje wszystkie funkcje plan w warstwie standardowa, ale o pojemności skali przedsiębiorstwa dla klientów wymagających obciążeń. 
 
 | Cecha | Standardowa (Standard) | Dedykowany |
-| --- |:---:|:---:|:---:|
+| --- |:---:|:---:|
 | Zdarzenia związane z transferem danych przychodzących | Płatność za milion zdarzeń | Dołączono |
 | Jednostka przepływności (1 MB/s danych przychodzących, 2 MB/s danych wychodzących) | Płatność za godzinę | Dołączono |
 | Rozmiar komunikatu | 1 MB | 1 MB |

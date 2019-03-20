@@ -4,7 +4,7 @@ description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: b26b88d0e089217fa9915bdbdcb8f913731bcc67
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 220723988f349bf015d2de7633af78782bc03bac
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988212"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203215"
 ---
 ## <a name="register-your-application"></a>Rejestrowanie aplikacji
 

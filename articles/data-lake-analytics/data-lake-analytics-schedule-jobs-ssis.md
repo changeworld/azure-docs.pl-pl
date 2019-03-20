@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448724"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104441"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planowanie zadań U-SQL przy użyciu programu SQL Server Integration Services (SSIS)
 
@@ -93,16 +93,16 @@ W widoku Projekt pakietu SSIS, Dodaj **zadania systemowego Azure Data Lake Store
     
     Aby utworzyć to połączenie pliku:
 
-    1. Wybierz **<New Connection...>** w ustawieniu FileConnection.
-    2. Ustaw **typu użycia** do **istniejący plik**i ustaw **pliku** do ścieżki pliku wszystkie istniejące pliki.
+   1. Wybierz **<New Connection...>** w ustawieniu FileConnection.
+   2. Ustaw **typu użycia** do **istniejący plik**i ustaw **pliku** do ścieżki pliku wszystkie istniejące pliki.
 
-        ![Konfiguruj Kontener pętli Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Konfiguruj Kontener pętli Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-    3. W **Menedżerowie połączeń** wyświetlić, kliknij prawym przyciskiem myszy utworzony właśnie teraz połączenia pliku, a następnie wybierz **właściwości**.
+   3. W **Menedżerowie połączeń** wyświetlić, kliknij prawym przyciskiem myszy utworzony właśnie teraz połączenia pliku, a następnie wybierz **właściwości**.
 
-    4. W **właściwości** okna, rozwiń węzeł **wyrażeń**i ustaw **ConnectionString** do zmiennej, zdefiniowane w kontenerze pętli Foreach, na przykład `@[User::FileName]`.
+   4. W **właściwości** okna, rozwiń węzeł **wyrażeń**i ustaw **ConnectionString** do zmiennej, zdefiniowane w kontenerze pętli Foreach, na przykład `@[User::FileName]`.
 
-        ![Konfiguruj Kontener pętli Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
+       ![Konfiguruj Kontener pętli Foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
 3. Ustaw **AzureDataLakeAnalyticsConnection** do konta usługi Azure Data Lake Analytics, które chcesz przesyłać zadania do. Dowiedz się więcej o [usługi Azure Data Lake Analytics połączenia Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
 

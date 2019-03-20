@@ -9,13 +9,14 @@ ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8417e2118de01d00e8b0450374a9b10bff40221f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 7b9274652b7164a4aef71499912cb8b38ace29ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675147"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854453"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Szybki start: Dodawanie użytkownika-gościa przy użyciu programu PowerShell
 
@@ -73,7 +74,7 @@ Po wyświetleniu monitu wprowadź poświadczenia.
 
 ## <a name="send-an-invitation"></a>Wysyłanie zaproszenia
 
-1. Aby wysłać zaproszenie na swoje testowe konto e-mail, uruchom następujące polecenie programu PowerShell (zastąp ciągi **„Sanda”** i **sanda@fabrikam.com** nazwą testowego konta e-mail i adresem e-mail): 
+1. Aby wysłać zaproszenie do swojego konta e-mail testów, uruchom następujące polecenie programu PowerShell (Zastąp **"Sanda"** i **sanda\@fabrikam.com** za pomocą testu konta nazwę i adres e-mail adres e-mail): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
@@ -89,7 +90,7 @@ Po wyświetleniu monitu wprowadź poświadczenia.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Sprawdź rezultat, aby upewnić się, że zaproszony użytkownik jest wyświetlany na liście, a główna nazwa użytkownika (UPN) jest w formacie *adres_e-mail*#EXT#@*domena*. Na przykład *sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com*, gdzie contoso.onmicrosoft.com jest organizacją, z której zostało wysłane zaproszenie.
+3. Sprawdź dane wyjściowe, aby upewnić się, użytkownika, możesz zaprosić jest wyświetlany na liście, główną nazwę użytkownika (UPN) w formacie *emailaddress*EXT #\@*domeny*. Na przykład *sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, gdzie contoso.onmicrosoft.com jest organizacji, z którego są wysyłane zaproszeń.
 
    ![Rezultat w programie PowerShell przedstawiający dodanego użytkownika-gościa](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 
@@ -103,7 +104,7 @@ Testowe konto użytkownika możesz usunąć z katalogu, gdy przestanie być potr
 Na przykład: `Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki start zaprosiliśmy i dodaliśmy do katalogu pojedynczego użytkownika-gościa, używając programu PowerShell. Następnie dowiesz się, jak zapraszać użytkowników-gości zbiorczo za pomocą programu PowerShell.
 
 > [!div class="nextstepaction"]

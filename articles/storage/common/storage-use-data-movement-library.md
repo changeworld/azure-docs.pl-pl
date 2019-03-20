@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: fd64376f68a177f12b2105ae0974eeeeefa94f4b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460084"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996147"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Transferowanie danych za pomocą Biblioteka przenoszenia danych magazynu platformy Microsoft Azure
 
@@ -193,7 +193,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 Ten kod nam monituje o podanie ścieżki do pliku lokalnego, nazwę nowego lub istniejącego kontenera i nazwa nowy obiekt blob. `TransferManager.UploadAsync` Metoda wykonuje przekazywania, korzystając z tych informacji.
 
-Trafienia `F5` do uruchamiania aplikacji. Możesz sprawdzić, przekazywania, które wystąpiły, wyświetlając konta magazynu przy użyciu [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Trafienia `F5` do uruchamiania aplikacji. Możesz sprawdzić, przekazywania, które wystąpiły, wyświetlając konta magazynu przy użyciu [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="set-number-of-parallel-operations"></a>Ustaw liczbę operacji równoległych
 Doskonałe funkcji oferowanych przez Biblioteka przenoszenia danych jest możliwość Ustaw liczbę operacji równoległych, aby zwiększyć przepływność transferu danych. Domyślnie biblioteka przenoszenia danych Ustawia liczbę operacji równoległych 8 * liczba rdzeni na swojej maszynie.

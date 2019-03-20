@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f974d446337b8c962d60be9aab964c6d2ebb535b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821074"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074747"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Wyświetl zawartość pliku, który jest śledzone za pomocą śledzenia zmian
 
@@ -62,11 +62,11 @@ W poniższych krokach objaśniono poprzez włączenie śledzenia zmian dla pliku
 
 1. Na **zmiany szczegółów** stronie zostanie wyświetlony standardowy przed i po nim plików informacji, w lewym górnym rogu, kliknij **Wyświetl zmiany zawartości plików** Aby wyświetlić zawartość pliku.
 
-  ![Szczegóły zmiany](./media/change-tracking-file-contents/change-details.png)
+   ![Szczegóły zmiany](./media/change-tracking-file-contents/change-details.png)
 
 1. Nowa strona zawiera zawartość pliku, w widoku side-by-side. Możesz również wybrać **wbudowane** Aby wyświetlić widok wbudowane zmian.
 
-  ![Przeglądanie zmian w plikach](./media/change-tracking-file-contents/view-file-changes.png)
+   ![Przeglądanie zmian w plikach](./media/change-tracking-file-contents/view-file-changes.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

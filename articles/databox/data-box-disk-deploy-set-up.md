@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f2e18db7bd1766901ffb36cc74172f4c8414135c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 4c2f2ebca40ee3e4b5a9a32767783694af52944b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232893"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106648"
 ---
-# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Samouczek: rozpakowywanie, podłączanie i odblokowywanie urządzenia Azure Data Box Disk
+# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Samouczek: Rozpakowywanie, łączenie i odblokować dysku Azure Data Box
 
 W tym samouczku opisano, jak rozpakować, podłączyć i odblokować urządzenie Azure Data Box Disk.
 
@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed rozpoczęciem upewnij się, że:
 
-1. Ukończono [samouczek dotyczący zamawiania urządzenia Azure Data Box](data-box-disk-deploy-ordered.md).
+1. Ukończono [Samouczek: zamawianie urządzenia Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 2. Dyski zostały do Ciebie dostarczone, a stan zadania w portalu zmienił się na **Dostarczono**.
 3. Masz komputer kliencki, na którym możesz zainstalować narzędzie do odblokowywania dysków Data Box Disk. Na komputerze klienckim wymagane jest:
     - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
@@ -70,7 +70,7 @@ Kroki odblokowywania dysków zależą od tego, czy masz połączenie z klientem 
 Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
      
 1. W witrynie Azure Portal przejdź do pozycji **Ogólne > Szczegóły urządzenia**. 
-2. Pobierz zestaw narzędzi dla dysków Data Box Disk przeznaczony dla klienta z systemem Windows. Zawiera on trzy narzędzia: narzędzie do odblokowywania dysków Data Box Disk, narzędzie do weryfikacji dysków Data Box Disk oraz narzędzie do dzielenia skopiowanych dysków Data Box Disk. 
+2. Pobierz zestaw narzędzi dla dysków Data Box Disk przeznaczony dla klienta z systemem Windows. Ten zestaw narzędzi zawiera narzędzia 3: Narzędzie do odblokowania dysku pole danych, narzędzie do sprawdzania poprawności dysku pola danych i narzędzia do kopiowania podział dysku pola danych. 
 
     W procedurze poniżej będziesz używać wyłącznie narzędzia do odblokowywania dysków Data Box Disk. Pozostałe dwa narzędzia zostaną użyte później.
 
@@ -170,39 +170,39 @@ Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
     
  
 5. Wpisz tekst `y`, aby kontynuować instalację. Skrypt zainstaluje następujące pakiety: 
-    - **epel-release** — repozytorium zawierające następujące trzy pakiety. 
-    - **dislocker i fuse-dislocker** — narzędzia ułatwiające odszyfrowywanie dysków zaszyfrowanych za pomocą funkcji BitLocker. 
-    - **ntfs-3g** — pakiet ułatwiający instalowanie woluminów NTFS. 
+   - **epel-release** — repozytorium zawierające następujące trzy pakiety. 
+   - **dislocker i fuse-dislocker** — narzędzia ułatwiające odszyfrowywanie dysków zaszyfrowanych za pomocą funkcji BitLocker. 
+   - **ntfs-3g** — pakiet ułatwiający instalowanie woluminów NTFS. 
  
-    Po pomyślnym zainstalowaniu pakietów na terminalu pojawi się odpowiednie powiadomienie.     
-    ```
-    Dependency Installed: compat-readline5.x86 64 0:5.2-17.I.el6 dislocker-libs.x86 64 0:0.7.1-8.el6 mbedtls.x86 64 0:2.7.4-l.el6        ruby.x86 64 0:1.8.7.374-5.el6 
-    ruby-libs.x86 64 0:1.8.7.374-5.el6 
-    Complete! 
-    Loaded plugins: fastestmirror, refresh-packagekit, security 
-    Setting up Remove Process 
-    Resolving Dependencies 
-    --> Running transaction check 
-    ---> Package epel-release.noarch 0:6-8 will be erased --> Finished Dependency Resolution 
-    Dependencies Resolved 
-    Package        Architecture        Version        Repository        Size 
-    Removing:  epel-release        noarch         6-8        @extras        22 k 
-    Transaction Summary                                 
-    Remove        1 Package(s) 
-    Installed size: 22 k 
-    Downloading Packages: 
-    Running rpmcheckdebug 
-    Running Transaction Test 
-    Transaction Test Succeeded 
-    Running Transaction 
-    Erasing : epel-release-6-8.noarch 
-    Verifying : epel-release-6-8.noarch 
-    Removed: 
-    epel-release.noarch 0:6-8 
-    Complete! 
-    Dislocker is installed by the script. 
-    OpenSSL is already installed.
-    ```
+     Po pomyślnym zainstalowaniu pakietów na terminalu pojawi się odpowiednie powiadomienie.     
+     ```
+     Dependency Installed: compat-readline5.x86 64 0:5.2-17.I.el6 dislocker-libs.x86 64 0:0.7.1-8.el6 mbedtls.x86 64 0:2.7.4-l.el6        ruby.x86 64 0:1.8.7.374-5.el6 
+     ruby-libs.x86 64 0:1.8.7.374-5.el6 
+     Complete! 
+     Loaded plugins: fastestmirror, refresh-packagekit, security 
+     Setting up Remove Process 
+     Resolving Dependencies 
+     --> Running transaction check 
+     ---> Package epel-release.noarch 0:6-8 will be erased --> Finished Dependency Resolution 
+     Dependencies Resolved 
+     Package        Architecture        Version        Repository        Size 
+     Removing:  epel-release        noarch         6-8        @extras        22 k 
+     Transaction Summary                                 
+     Remove        1 Package(s) 
+     Installed size: 22 k 
+     Downloading Packages: 
+     Running rpmcheckdebug 
+     Running Transaction Test 
+     Transaction Test Succeeded 
+     Running Transaction 
+     Erasing : epel-release-6-8.noarch 
+     Verifying : epel-release-6-8.noarch 
+     Removed: 
+     epel-release.noarch 0:6-8 
+     Complete! 
+     Dislocker is installed by the script. 
+     OpenSSL is already installed.
+     ```
 
 6. Uruchom narzędzie do odblokowywania dysków Data Box Disk. Podaj klucz dostępu z witryny Azure Portal uzyskany w sekcji [Nawiązywanie połączenia z dyskami i uzyskiwanie klucza dostępu](#Connect-to-disks-and-get-the-passkey). Opcjonalnie możesz podać listę woluminów zaszyfrowanych za pomocą funkcji BitLocker, które chcesz odblokować. Klucz dostępu i listę woluminów należy umieścić w apostrofach. 
 
@@ -254,7 +254,7 @@ Aby podłączyć i odblokować dyski, wykonaj następujące czynności.
 
     ![Zawartość urządzenia Data Box Disk](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące urządzenia Azure Data Box Disk, takie jak:
 

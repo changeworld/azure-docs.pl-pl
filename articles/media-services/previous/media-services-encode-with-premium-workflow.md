@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7b91f63057fa8b781fdfab17e0837a9f5547c1eb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988038"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187731"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Zaawansowane kodowanie za pomocą Media Encoder Premium Workflow
 > [!NOTE]
@@ -62,12 +62,12 @@ Są wykonywane następujące czynności:
     W większości przypadków jest pusty ciąg konfiguracji dla zadania (jak pokazano w poniższym przykładzie). Istnieją pewne zaawansowane scenariusze, (które wymagają dynamiczne Ustawianie właściwości środowisko uruchomieniowe) w którym to przypadku zapewni ciągu XML do kodowania zadania. Przykłady takich scenariuszy: tworzenie nakładki, równoległych lub sekwencyjny nośnika łączenia, napisy.
 5. Dodaj dwa zasoby danych wejściowych do zadania.
 
-    1. 1 — trwały przepływu pracy.
-    2. 2 — zawartości wideo.
+   1. 1 — trwały przepływu pracy.
+   2. 2 — zawartości wideo.
 
-    >[!NOTE]
-    >Trwały przepływu pracy musi zostać dodany do zadań przed elementu zawartości multimediów.
-   Ciąg konfiguracji dla tego zadania powinna być pusta.
+      >[!NOTE]
+      >Trwały przepływu pracy musi zostać dodany do zadań przed elementu zawartości multimediów.
+      Ciąg konfiguracji dla tego zadania powinna być pusta.
    
 6. Prześlij zadania kodowania.
 

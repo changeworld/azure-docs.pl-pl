@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811773"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899030"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -23,7 +23,7 @@ Usługa Azure Monitor udostępnia interfejsy użytkownika ujednoliconego do moni
 
 ## <a name="access-metrics"></a>Dostęp do metryk
 
-Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Użytkownik może uzyskiwać do nich dostęp z [witryny Azure portal](https://portal.azure.com), interfejsów API usługi Azure Monitor (REST i .net) i rozwiązań analitycznych, takich jak Event Hubs. Aby uzyskać więcej informacji, zobacz [metryk usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Użytkownik może uzyskiwać do nich dostęp z [witryny Azure portal](https://portal.azure.com), interfejsów API usługi Azure Monitor (REST i .NET) i rozwiązań analitycznych, takich jak Event Hubs. Aby uzyskać więcej informacji, zobacz [metryk usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Metryki są domyślnie włączone, a dostęp można uzyskać dane z ostatnich dni 93. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. To ustawienie jest konfigurowane w [ustawień diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md) w usłudze Azure Monitor.
 
@@ -134,13 +134,13 @@ Następującą odpowiedź zawiera wartości metryk w formacie JSON:
 
 ```
 
-### <a name="access-metrics-with-the-net-sdk"></a>Metryki dostępu przy użyciu zestawu .net SDK
+### <a name="access-metrics-with-the-net-sdk"></a>Metryki dostępu przy użyciu zestawu .NET SDK
 
-Usługa Azure Monitor zapewnia [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) na odczytywanie definicji metryk i wartości. [Przykładowego kodu](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) pokazuje, jak używać zestawu SDK z innymi parametrami. Należy użyć `0.18.0-preview` lub nowsza wersja dla metryk usługi storage. Identyfikator zasobu jest używana na platformie .net SDK. Aby uzyskać więcej informacji, przeczytaj informacje o identyfikatorze zasobu usługi w ramach magazynu.
+Usługa Azure Monitor zapewnia [zestawu .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) na odczytywanie definicji metryk i wartości. [Przykładowego kodu](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) pokazuje, jak używać zestawu SDK z innymi parametrami. Należy użyć `0.18.0-preview` lub nowsza wersja dla metryk usługi storage. Identyfikator zasobu jest używany w zestawie SDK platformy .NET. Aby uzyskać więcej informacji, przeczytaj informacje o identyfikatorze zasobu usługi w ramach magazynu.
 
-Poniższy przykład pokazuje, jak odczytywanie metryk usługi storage przy użyciu usługi Azure Monitor .net SDK.
+Poniższy przykład pokazuje, jak odczytywanie metryk usługi storage przy użyciu usługi Azure Monitor .NET SDK.
 
-#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Konta poziomu metryki definicji listy przy użyciu zestawu .net SDK
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Konta poziomu metryki definicji listy przy użyciu zestawu .NET SDK
 
 Poniższy przykład ilustruje sposób wyświetlenia listy definicja metryki na poziomie konta:
 
@@ -177,7 +177,7 @@ Poniższy przykład ilustruje sposób wyświetlenia listy definicja metryki na p
 
 Jeśli chcesz wyświetlić listę definicji metryk dla obiektów blob, tabel, plików lub kolejek, należy określić różne identyfikatory zasobów dla każdej usługi przy użyciu interfejsu API.
 
-#### <a name="read-metric-values-with-the-net-sdk"></a>Wartości metryk odczytu przy użyciu zestawu .net SDK
+#### <a name="read-metric-values-with-the-net-sdk"></a>Wartości metryk odczytu przy użyciu zestawu .NET SDK
 
 Poniższy przykład pokazuje, jak odczytać `UsedCapacity` danych na poziomie konta:
 
@@ -227,7 +227,7 @@ Poniższy przykład pokazuje, jak odczytać `UsedCapacity` danych na poziomie ko
 
 W powyżej przykładzie, jeśli chcesz odczytać wartości metryk dla obiektów blob, tabel, plik lub kolejki, należy określić różne identyfikatory zasobów dla każdej usługi przy użyciu interfejsu API.
 
-#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>Odczyt wartości metryk wielowymiarowych, przy użyciu zestawu .net SDK
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>Odczytu wartości metryk wielowymiarowych za pomocą zestawu SDK platformy .NET
 
 Dla metryk wielowymiarowych należy zdefiniować meta danych filtru, aby odczytać metryki danych na podstawie wartości określonego wymiaru.
 
@@ -380,7 +380,7 @@ Usługa Azure Storage udostępnia następujące metryki transakcji w usłudze Az
 | Ruch wychodzący | Ilość danych wychodzących. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. <br/><br/> Jednostka: Bajty <br/> Typ agregacji: Łącznie <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
 | SuccessServerLatency | Średni czas potrzebny na przetworzenie żądania zakończonego powodzeniem przez usługę Azure Storage. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia. <br/><br/> Jednostka: Milisekundy <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
 | SuccessE2ELatency | Średnie całkowite opóźnienie dla żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. <br/><br/> Jednostka: Milisekundy <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 1024 |
-| Dostępność | Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana wartość łączną liczbę płatnych żądań przez liczbę żądań mających zastosowanie, łącznie z tymi żądaniami, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API. <br/><br/> Jednostka: Procent <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 99.99 |
+| Dostępność | Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana wartość łączną liczbę płatnych żądań przez liczbę żądań mających zastosowanie, łącznie z tymi żądaniami, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API. <br/><br/> Jednostka: Procent <br/> Typ agregacji: Średnia <br/> Wymiary stosowane: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład wartości: 99.99 |
 
 ## <a name="metrics-dimensions"></a>Wymiary metryki
 
@@ -389,10 +389,10 @@ Usługa Azure Storage obsługuje następujące wymiary metryk w usłudze Azure M
 | Nazwa wymiaru | Opis |
 | ------------------- | ----------------- |
 | BlobType | Typ obiektu blob na potrzeby tylko metryki obiektów Blob. Obsługiwane wartości to **BlockBlob** i **PageBlob**. Dołącz obiekt Blob znajduje się w BlockBlob. |
-| ResponseType | Typ odpowiedzi transakcji. Dostępne wartości to: <br/><br/> <li>ServerOtherError: Inne błędy po stronie serwera, z wyjątkiem opisano te </li> <li> ServerBusyError: Uwierzytelnione żądanie spowodowało zwrócenie kodu stanu HTTP 503. </li> <li> ServerTimeoutError: Upłynął limit czasu żądania uwierzytelnionego zwrócił kod stanu HTTP 500. Przekroczono limit czasu z powodu błędu serwera. </li> <li> AuthorizationError: Uwierzytelnione żądanie nie powiodło się z powodu nieautoryzowanego dostępu do danych lub wystąpił błąd autoryzacji. </li> <li> NetworkError: Uwierzytelnione żądanie nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient zamyka przedwcześnie połączenie przed jego wygaśnięciem limitu czasu. </li> <li>    ClientThrottlingError: Błąd ograniczania przepływności po stronie klienta. </li> <li> ClientTimeoutError: Upłynął limit czasu żądania uwierzytelnionego zwrócił kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwano, usługi magazynu, jest oczekiwany limitu czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li> ClientOtherError: Inne błędy po stronie klienta, z wyjątkiem tych opisane. </li> <li> Powodzenie: Żądanie zakończone powodzeniem|
+| ResponseType | Typ odpowiedzi transakcji. Dostępne wartości obejmują: <br/><br/> <li>ServerOtherError: Wszystkie inne błędy po stronie serwera z wyjątkiem opisanych </li> <li> ServerBusyError: Uwierzytelnione żądanie, które zwróciło kod stanu HTTP 503. </li> <li> ServerTimeoutError: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Przekroczenie limitu czasu wystąpiło z powodu błędu serwera. </li> <li> AuthorizationError: Uwierzytelnione żądanie, które nie powiodło się z powodu nieautoryzowanego dostępu do danych lub błędu autoryzacji. </li> <li> NetworkError: Uwierzytelnione żądanie, które nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient przedwcześnie zamyka połączenie przed wygaśnięciem limitu czasu. </li> <li>    ClientThrottlingError: Błąd ograniczania przepływności po stronie klienta. </li> <li> ClientTimeoutError: Uwierzytelnione żądanie z przekroczonym limitem czasu, które zwróciło kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwana przez usługę magazynu, jest to oczekiwany limit czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li> ClientOtherError: Wszystkie inne błędy po stronie klienta z wyjątkiem opisanych. </li> <li> Powodzenie: Żądanie zakończone powodzeniem|
 | GeoType | Transakcja z podstawowy lub pomocniczy klastra. Dostępne wartości obejmują podstawowe i pomocnicze. Dotyczy ona dostęp do odczytu geograficznie nadmiarowy Storage(RA-GRS) podczas odczytywania obiektów ze dodatkowej dzierżawy. |
 | ApiName | Nazwa operacji. Na przykład: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Aby uzyskać wszystkie nazwy operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| Authentication | Typ uwierzytelniania używany w transakcji. Dostępne wartości to: <br/> <li>AccountKey: Transakcja jest uwierzytelniana przy użyciu klucza konta magazynu.</li> <li>SAS: Transakcja jest uwierzytelniana przy użyciu sygnatury dostępu współdzielonego.</li> <li>Uwierzytelnianie OAuth: Transakcja jest uwierzytelniana przy użyciu tokenów dostępu protokołu OAuth.</li> <li>Anonimowy: Transakcja jest proszony anonimowo. Nie zawiera żądania wstępnego.</li> <li>AnonymousPreflight: Transakcja została żądania wstępnego.</li> |
+| Authentication | Typ uwierzytelniania używany w transakcji. Dostępne wartości obejmują: <br/> <li>AccountKey: Transakcja jest uwierzytelniana przy użyciu klucza konta magazynu.</li> <li>SAS: Transakcja jest uwierzytelniana przy użyciu sygnatury dostępu współdzielonego.</li> <li>Uwierzytelnianie OAuth: Transakcja jest uwierzytelniana przy użyciu tokenów dostępu protokołu OAuth.</li> <li>Anonimowy: Transakcja jest proszony anonimowo. Nie zawiera żądania wstępnego.</li> <li>AnonymousPreflight: Transakcja została żądania wstępnego.</li> |
 
 W przypadku wymiarów pomocnicze metryki należy określić wartości wymiaru, aby wyświetlić odpowiednie wartości metryk. Na przykład, jeśli przyjrzymy się **transakcji** wartość dla pomyślnej odpowiedzi, trzeba filtrować **ResponseType** wymiaru przy użyciu **Powodzenie**. Lub jeśli przyjrzymy się **BlobCount** wartość dla blokowych obiektów Blob, trzeba filtrować **BlobType** wymiaru przy użyciu **BlockBlob**.
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 017d693f0d71692abfb432216ca0645dee80d7df
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: f8def13360bba2f82d5adf315503dc7d655f490d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865233"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899830"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem SAP HANA
 
@@ -64,7 +64,7 @@ Aby skonfigurować integrację oprogramowania SAP HANA z usługą Azure AD, nale
 
 **Aby dodać oprogramowanie SAP HANA z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -137,7 +137,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP H
 
     b. Z listy **Przekształcenie** wybierz pozycję **ExtractMailPrefix()**.
 
-    d. Z listy **Parametr 1** wybierz pozycję **user.mail**.
+    c. Z listy **Parametr 1** wybierz pozycję **user.mail**.
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -164,7 +164,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu SAP H
 
     ![Dodawanie ustawień dostawcy tożsamości](./media/saphana-tutorial/sap3.png)
 
-    d. W polu **Name** (Nazwa) obszaru ekranu **General Data** (Dane ogólne) podaj nazwę dla nowego dostawcy tożsamości SAML logowania jednokrotnego.
+    c. W polu **Name** (Nazwa) obszaru ekranu **General Data** (Dane ogólne) podaj nazwę dla nowego dostawcy tożsamości SAML logowania jednokrotnego.
 
     > [!NOTE]
     > Nazwa dostawcy tożsamości SAML jest wymagana i musi być unikatowa. Jest ona pokazywana na liście dostępnych dostawców tożsamości SAML wyświetlanej po wybraniu standardu SAML jako metody uwierzytelniania używanej przez aplikacje XS oprogramowania SAP HANA. Na przykład możesz to zrobić w obszarze ekranu **Authentication** (Uwierzytelnianie) narzędzia XS Artifact Administration.
@@ -195,7 +195,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -248,8 +248,8 @@ Jeśli potrzebujesz utworzyć użytkownika ręcznie, wykonaj następujące kroki
 
 4. Dodaj **tożsamość zewnętrzną** (w tym przypadku BrittaSimon) lub wybierz pozycję **Any** (Dowolna). Następnie wybierz przycisk **OK**.
 
-    >[!Note]
-    >Jeśli pole wyboru **Any** (Dowolna) nie jest zaznaczone, nazwa użytkownika w oprogramowaniu HANA musi dokładnie pasować do głównej nazwy użytkownika przed sufiksem domeny. (Na przykład BrittaSimon@contoso.com to BrittaSimon w oprogramowaniu HANA).
+   > [!Note]
+   > Jeśli pole wyboru **Any** (Dowolna) nie jest zaznaczone, nazwa użytkownika w oprogramowaniu HANA musi dokładnie pasować do głównej nazwy użytkownika przed sufiksem domeny. (Na przykład BrittaSimon@contoso.com to BrittaSimon w oprogramowaniu HANA).
 
 5. Dla celów testowych przypisz wszystkie role **XS** do użytkownika.
 
@@ -262,7 +262,7 @@ Jeśli potrzebujesz utworzyć użytkownika ręcznie, wykonaj następujące kroki
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka SAP HANA na panelu dostępu powinno nastąpić automatyczne zalogowanie do oprogramowania SAP HANA, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

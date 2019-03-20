@@ -1,5 +1,5 @@
 ---
-title: Co to jest usługa Azure App Configuration? | Microsoft Docs
+title: Co to jest Konfiguracja aplikacji platformy Azure? | Microsoft Docs
 description: Omówienie usługi Azure App Configuration.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,49 +13,59 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 11dd91039bb352e86800982d0a294f82622a56fe
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 8c2c31b4d87ac2db123c0cae63679e3773734b4f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885023"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226287"
 ---
-# <a name="what-is-azure-app-configuration"></a>Co to jest usługa Azure App Configuration?
+# <a name="what-is-azure-app-configuration"></a>Co to jest Konfiguracja aplikacji platformy Azure?
 
-Azure App Configuration to usługa służąca do centralnego zarządzania ustawieniami aplikacji. Nowoczesne programy, zwłaszcza te działające w chmurze, zwykle mają wiele składników. Posiadanie ustawień konfiguracji w ramach tych składników może powodować występowanie błędów podczas wdrażania aplikacji, których diagnozowanie będzie bardzo skomplikowane. Usługa App Configuration pozwala na przechowywanie w jednym miejscu wszystkich ustawień aplikacji i zabezpieczanie ich.
+Konfiguracja aplikacji platformy Azure udostępnia usługę umożliwia centralne zarządzanie ustawieniami aplikacji. Nowoczesnych programów, szczególnie programy działające w chmurze, zwykle mają wiele składników, które są rozmieszczone w rodzaju. Posiadanie ustawień konfiguracji w ramach tych składników może powodować występowanie błędów podczas wdrażania aplikacji, których diagnozowanie będzie bardzo skomplikowane. Używać konfiguracji aplikacji do przechowywania wszystkich ustawień dla aplikacji i zabezpieczanie ich dostęp w jednym miejscu.
 
-## <a name="why-use-app-configuration"></a>Dlaczego warto korzystać z usługi App Configuration?
+Konfiguracja aplikacji jest bezpłatna podczas korzystania z wersji zapoznawczej. Jeśli chcesz spróbować go [zarejestrować](https://aka.ms/azconfig/register) skorzystania z wersji zapoznawczej.
 
-Aplikacje oparte na chmurze są często uruchamiane na wielu maszynach wirtualnych lub kontenerach w wielu regionach i korzystają z wielu usług zewnętrznych. Utworzenie aplikacji rozproszonej, która jest jednocześnie niezawodna i skalowalna, to duże wyzwanie. Powstały różne metodologie programowania, które pomagają programistom radzić sobie z rosnącą złożonością procesu tworzenia takich aplikacji. Na przykład w metodologii Twelve-Factor App (Dwanaście aspektów aplikacji) szczegółowo opisano wiele dobrze przetestowanych wzorców architektury i najlepszych rozwiązań, które mogą zostać zastosowane w przypadku aplikacji w chmurze. Jednym z kluczowych zaleceń z tego przewodnika jest oddzielenia konfiguracji od kodu. Oznacza to, że konfiguracja aplikacji, taka jak ustawienia, powinna być przechowywana poza warstwą wykonywalną i odczytywana ze środowiska uruchomieniowego lub źródła zewnętrznego.
+## <a name="why-use-app-configuration"></a>Dlaczego warto używać konfiguracji aplikacji?
 
-Poniżej przedstawiono przykładowe typy aplikacji, które mogą korzystać z usługi App Configuration (może z nich jednak korzystać dowolna aplikacja):
+Aplikacje oparte na chmurze są często uruchamiane na wielu maszynach wirtualnych lub kontenerach w wielu regionach i korzystają z wielu usług zewnętrznych. Tworzenie aplikacji rozproszonych, które jest niezawodne i skalowalne jest trudne. 
 
-* Mikrousługi na podstawie usług AKS i Service Fabric lub innej skonteneryzowane aplikacje wdrożone w co najmniej jednej lokalizacji geograficznej.
-* Aplikacje bez użycia serwera, w tym aplikacje usługi Azure Functions, lub inne bezstanowe aplikacje do obliczeń sterowane zdarzeniami.
-* Potok ciągłego wdrażania.
+Różne metody programowania pomogą przeciwdziałania zwiększa złożoność tworzenia aplikacji. Na przykład aplikacji 12-składnikowych opisano wiele dobrze przetestowanych wzorce architektury i poznasz najlepsze rozwiązania dotyczące użycia z aplikacjami w chmurze. Jednym z kluczowych zaleceń z tego przewodnika jest oddzielenia konfiguracji od kodu. W takim przypadku ustawienia konfiguracji aplikacji należy przechowywane na zewnątrz do jego pliku wykonywalnego i odczytywane z źródła zewnętrznego lub jego środowiska uruchomieniowego.
+
+Podczas każdej aplikacji można skorzystać z konfiguracji aplikacji, poniższe przykłady są typy aplikacji, które korzystają z wykorzystać jego możliwości:
+
+* Mikrousługi oparty na usłudze Azure Kubernetes Service, Azure Service Fabric lub innych konteneryzowanych aplikacji wdrożonych w przynajmniej jednej lokalizacji geograficznych
+* Bez użycia serwera aplikacji, które obejmują usługi Azure Functions lub inne aplikacje oparte na zdarzeniach bezstanowe obliczeń
+* Potok ciągłego wdrażania
 
 Usługa App Configuration zapewnia następujące korzyści:
 
-* W pełni zarządzana usługa, którą można skonfigurować w ciągu kilku minut.
-* Elastyczne reprezentacje kluczy i mapowania.
-* Tagowanie za pomocą etykiet.
-* Powtarzanie ustawień z punktu w czasie.
-* Porównywanie dwóch zestawów konfiguracji w ramach niestandardowo zdefiniowanych wymiarów.
-* Zwiększony poziom zabezpieczeń za pomocą tożsamości zarządzanych platformy Azure.
-* Pełne szyfrowanie magazynowanych i przesyłanych danych.
-* Natywna integracja z popularnymi platformami.
+* W pełni zarządzana usługa, która można skonfigurować w ciągu kilku minut
+* Mapowania i elastyczne reprezentacje klucza
+* Znakowanie z etykietami
+* W momencie powtarzania ustawień
+* Porównanie dwóch zestawów konfiguracje w wymiarach niestandardowy
+* Zwiększone zabezpieczenia za pomocą tożsamości zarządzanych platformy Azure
+* Szyfrowanie kompletne dane, magazynowane i przesyłane
+* Natywna integracja za pomocą popularnych platform
 
-## <a name="how-to-use-app-configuration"></a>Jak używać usługi App Configuration
+Konfiguracja aplikacji uzupełnia [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/), która umożliwia przechowywanie kluczy tajnych aplikacji. Konfiguracja aplikacji sprawia, że łatwiej zaimplementować w następujących scenariuszach:
 
-Najprostszym sposobem dodania magazynu konfiguracji aplikacji do aplikacji jest użycie biblioteki klienta udostępnianej przez firmę Microsoft. Poniższej przedstawiono najlepsze dostępne dla Ciebie metody w zależności od używanego języka programowania i platformy:
+* Scentralizowane zarządzanie i stopień rozproszenia danych hierarchicznych konfiguracji dla różnych środowisk i różnych lokalizacji geograficznych
+* Zmiany konfiguracji dynamicznej bez konieczności ponownego wdrażania lub ponownego uruchomienia aplikacji
+* Funkcja zarządzania
+
+## <a name="use-app-configuration"></a>Używać konfiguracji aplikacji
+
+Najprostszym sposobem dodania magazynu konfiguracji aplikacji do aplikacji jest użycie biblioteki klienta udostępnianej przez firmę Microsoft. Na podstawie języka programowania i framework, dostępne są następujące metody najlepsze.
 
 | Język programowania i platforma | Jak nawiązać połączenie |
 |---|---|
-| **.NET Core** i **ASP.NET Core** | Dostawca konfiguracji usługi App Configuration dla platformy .NET Core. |
-| **.NET** i **ASP.NET** | Konstruktor konfiguracji usługi App Configuration dla platformy .NET. |
-| **Java Spring** | Klient konfiguracji usługi App Configuration dla platformy Spring Cloud. |
-| Inne | Interfejs API REST usługi App Configuration. |
+| .NET core i ASP.NET Core | Dostawca konfiguracji aplikacji dla platformy .NET Core |
+| .NET i programu ASP.NET | Konstruktor konfiguracji aplikacji dla platformy .NET |
+| Java Spring | Konfiguracja klienta aplikacji Spring Cloud |
+| Inne | Konfiguracja aplikacji interfejsu API REST |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Szybki start: Tworzenie aplikacji internetowej platformy ASP.NET](quickstart-aspnet-core-app.md)  
+* [Szybki start: tworzenie aplikacji internetowej platformy ASP.NET](quickstart-aspnet-core-app.md) 

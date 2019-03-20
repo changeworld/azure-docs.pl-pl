@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: c6918126c36e1940daf564ee7eae562e31b280c3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e6685a5e77d92bb9e05ab9578e48c99e80a64b74
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449108"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994630"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nie można zdalnie połączyć się z systemem Windows 10 lub Windows Server 2016 VM in Azure z netvsc.sys
 
@@ -28,7 +28,7 @@ W tym artykule wyjaśniono, jak rozwiązać problem, w których jest braku poł�
 
 Nie można nawiązać Azure Windows 10 lub maszyny Wirtualnej systemu Windows Server 2016, za pomocą protokołu RDP (Remote Desktop). W [diagnostykę rozruchu](boot-diagnostics.md), ekran pokazuje czerwony krzyżyk w karcie interfejsu sieciowego (NIC). Oznacza to, że maszyna wirtualna nie ma łączności po w pełni załadowany system operacyjny.
 
-Zazwyczaj ten problem występuje w Windows [kompilacji 14393](http://support.microsoft.com/help/4093120/) i [kompilacji 15063](http://support.microsoft.com/help/4015583/). Jeśli wersja systemu operacyjnego jest późniejsza niż te wersje, w tym artykule nie ma zastosowania do danego scenariusza. Aby sprawdzić wersję systemu, otwórz sesję CMD w [funkcji konsoli szeregowej dostępu](serial-console-windows.md), a następnie uruchom **Ver**.
+Zazwyczaj ten problem występuje w Windows [kompilacji 14393](https://support.microsoft.com/help/4093120/) i [kompilacji 15063](https://support.microsoft.com/help/4015583/). Jeśli wersja systemu operacyjnego jest późniejsza niż te wersje, w tym artykule nie ma zastosowania do danego scenariusza. Aby sprawdzić wersję systemu, otwórz sesję CMD w [funkcji konsoli szeregowej dostępu](serial-console-windows.md), a następnie uruchom **Ver**.
 
 ## <a name="cause"></a>Przyczyna
 
@@ -55,8 +55,8 @@ Połączyć się z [konsoli szeregowej, otwórz wystąpienie programu PowerShell
 
 2. Pobierz odpowiednią aktualizację na dysku nowych lub istniejących danych, który jest dołączony do działającej maszyny Wirtualnej z tym samym regionie:
 
-   - **10.0.14393.594**: [KB4073562](http://support.microsoft.com/help/4073562) lub nowsza aktualizacja
-   - **10.0.15063.0**: [KB4016240](http://support.microsoft.com/help/4016240) lub nowsza aktualizacja
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) lub nowsza aktualizacja
+   - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) lub nowsza aktualizacja
 
 3. Odłączanie dysku narzędzia z działającej maszyny Wirtualnej, a następnie dołączyć go do maszyny Wirtualnej w uszkodzona.
 
@@ -98,22 +98,22 @@ Połączyć się z [konsoli szeregowej, otwórz wystąpienie programu PowerShell
 
 12. Pobierz odpowiednią aktualizację:
 
-   - **10.0.14393.594**: [KB4073562](http://support.microsoft.com/help/4073562) lub nowsza aktualizacja
-   - **10.0.15063.0**: [KB4016240](http://support.microsoft.com/help/4016240) lub nowsza aktualizacja
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) lub nowsza aktualizacja
+    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) lub nowsza aktualizacja
 
 13. Dołącz dysk systemu jako dysk z danymi ratownictwa maszyny wirtualnej, na której można pobrać aktualizacji.
 
 14. Uruchom następujące polecenie, aby zainstalować aktualizację na maszynie Wirtualnej:
 
-   ```
-   dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
-   ```
+    ```
+    dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
+    ```
 
 15. Uruchom następujące polecenie, aby odinstalować gałęzi:
 
-   ```
-   reg unload HKLM\BROKENSYSTEM
-   ```
+    ```
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
 16. [Odłączanie dysku systemowego i ponownie utworzyć maszynę Wirtualną](../windows/troubleshoot-recovery-disks-portal.md).
 

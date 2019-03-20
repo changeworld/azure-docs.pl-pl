@@ -10,12 +10,12 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 7dddf7e48913aea9d84e0f8b66c2c9d29449ee6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: 5d66dcaccc6ca2e40fbd516f535ec56c1baf6b17
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825817"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195622"
 ---
 ### <a name="run-the-service"></a>Uruchamianie usługi
 
@@ -81,7 +81,7 @@ Przewodnik Wprowadzenie został ukończony! W tym samouczku omówiono:
 > * Efektywne tworzenie i testowanie kodu w środowisku zespołu.
 > * Ustalanie punktu odniesienia funkcjonalności za pomocą usługi Dev Spaces w celu łatwego testowania izolowanych zmian w kontekście większej aplikacji mikrousług.
 
-Teraz, gdy znasz już usługę Azure Dev Spaces, [udostępnij swoją przestrzeń deweloperów członkowi zespołu](../articles/dev-spaces/how-to/share-dev-spaces.md) i pokaż, jak łatwo możecie ze sobą współpracować.
+Teraz, gdy zostały zbadane Azure Dev miejsca do magazynowania [udostępniać obszaru dev członek zespołu](../articles/dev-spaces/how-to/share-dev-spaces.md) i rozpocząć współpracę.
 
 ## <a name="clean-up"></a>Czyszczenie
 Aby całkowicie usunąć z klastra wystąpienie usługi Azure Dev Spaces, w tym wszystkie przestrzenie deweloperów i usługi działające w ich obrębie, należy użyć polecenia `az aks remove-dev-spaces`. Pamiętaj, że ta akcja jest nieodwracalna. Możesz ponownie dodać obsługę usługi Azure Dev Spaces w klastrze, ale wszystko trzeba będzie zacząć od początku. Stare usługi i przestrzenie nie zostaną przywrócone.

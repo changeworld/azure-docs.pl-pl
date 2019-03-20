@@ -1,90 +1,126 @@
 ---
-title: Tworzenie kopii zapasowych maszyn wirtualnych na platformie Azure na dużą skalę | Microsoft Docs
-description: Ten samouczek zawiera szczegółowe instrukcje tworzenia kopii zapasowych wielu maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services.
-services: backup
+title: Tworzenie kopii zapasowych wielu maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
+description: Ten samouczek zawiera szczegółowe instrukcje tworzenia kopii zapasowych wielu maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services, za pomocą programu Azure PowerShell.
 author: rayne-wiselman
 manager: carmonm
-keywords: kopia zapasowa maszyny wirtualnej; tworzenie kopii zapasowej maszyny wirtualnej; kopia zapasowa i odzyskiwanie po awarii
 ms.service: backup
 ms.topic: tutorial
-ms.date: 09/06/2017
-ms.author: trinadhk
+ms.date: 03/05/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d2b83963f7af52101ed298e85b6c7fd64fc99a07
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f923589d0ca000e7dfa8d28b1cbeeb8c6e07f25c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875590"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835405"
 ---
-# <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>Tworzenie kopii zapasowych maszyn wirtualnych na platformie Azure na dużą skalę
+# <a name="back-up-azure-vms-with-powershell"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
-Ten samouczek zawiera szczegółowe instrukcje tworzenia kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services. Większość działań związanych z tworzeniem kopii zapasowych maszyn wirtualnych to działania przygotowawcze. Zanim będzie można utworzyć kopię zapasową maszyny wirtualnej (lub zabezpieczyć ją), należy spełnić [wymagania wstępne](backup-azure-arm-vms-prepare.md) w celu przygotowania środowiska na potrzeby ochrony maszyn wirtualnych. 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+W tym samouczku opisano sposób wdrażania [kopia zapasowa Azure](backup-overview.md) magazyn usługi Recovery Services, aby utworzyć kopię zapasową wielu maszyn wirtualnych platformy Azure przy użyciu programu PowerShell.  
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+
+> [!div class="checklist"]
+> * Utwórz magazyn usługi Recovery Services i Ustaw kontekst magazynu.
+> * Definiowanie zasad tworzenia kopii zapasowych
+> * Stosowanie zasad tworzenia kopii zapasowych w celu ochrony wielu maszyn wirtualnych
+> * Wyzwalacz zadania tworzenia kopii zapasowej na żądanie dla chronionych maszyn wirtualnych przed można utworzyć kopię zapasową (lub ochronę) maszyny wirtualnej, należy wykonać [wymagania wstępne](backup-azure-arm-vms-prepare.md) do przygotowania środowiska na potrzeby ochrony maszyn wirtualnych. 
 
 > [!IMPORTANT]
 > W tym samouczku przyjęto założenie, że utworzono już grupę zasobów i maszynę wirtualną platformy Azure.
 
+
+## <a name="log-in-and-register"></a>Zaloguj się i rejestrowanie
+
+
+1. Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+
+    ```powershell
+    Connect-AzAccount
+    ```
+2. Przy pierwszym użyciu usługi Azure Backup, należy zarejestrować dostawcę usługi Azure Recovery Service w subskrypcji przy użyciu [AzResourceProvider rejestru](/powershell/module/az.Resources/Register-azResourceProvider). Jeśli użytkownik jest już zarejestrowany, Pomiń ten krok.
+
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    ```
+
+
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
-[Magazyn usługi Recovery Services](backup-azure-recovery-services-vault-overview.md) to kontener przechowujący punkty odzyskiwania elementów, dla których tworzona jest kopia zapasowa. Magazyn usługi Recovery Services jest zasobem platformy Azure, który można wdrażać i którym można zarządzać w ramach grupy zasobów platformy Azure. W tym samouczku utworzysz magazyn usługi Recovery Services w tej samej grupie zasobów, w której znajduje się chroniona maszyna wirtualna.
+A [magazyn usługi Recovery Services](backup-azure-recovery-services-vault-overview.md) jest kontenerem logicznym, która przechowuje dane kopii zapasowej dla chronionych zasobów, takich jak maszyny wirtualne platformy Azure. Po uruchomieniu zadania tworzenia kopii zapasowej tworzy punkt odzyskiwania w magazynie usługi Recovery Services. Następnie można użyć jednego z tych punktów odzyskiwania w celu przywrócenia danych do danego punktu w czasie.
 
 
-Przy pierwszym użyciu usługi Azure Backup należy zarejestrować dostawcę usługi Azure Recovery Service w ramach subskrypcji. Jeśli dostawca został już zarejestrowany w ramach subskrypcji, przejdź do następnego kroku.
+- W tym samouczku utworzysz magazyn w tej samej grupie zasobów i lokalizacji co chcesz wykonać kopię maszyny Wirtualnej.
+- Usługa Azure Backup automatycznie obsługuje magazyn kopii zapasowych danych. Domyślnie używa magazynu [magazyn geograficznie nadmiarowy (GRS)](../storage/common/storage-redundancy-grs.md). Nadmiarowość geograficzna zapewnia, że kopie zapasowe danych są replikowane do regionu pomocniczego platformy Azure, setek odległości od regionu podstawowego.
+
+Utwórz magazyn w następujący sposób:
+
+1. Użyj [New AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault)do utworzenia magazynu. Określ nazwę grupy zasobów i lokalizacji maszyny Wirtualnej, aby utworzyć kopię zapasową.
+
+    ```powershell
+    New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
+    ```
+2. Wiele poleceń cmdlet usługi Azure Backup wymaga obiektu magazynu usługi Recovery Services jako danych wejściowych. Z tego powodu wygodne jest przechowywanie obiektu magazynu usługi Backup Recovery Services w zmiennej.
+
+    ```powershell
+    $vault1 = Get-AzRecoveryServicesVault –Name myRSVault
+    ```
+    
+3. Ustaw kontekst magazynu za pomocą [AzRecoveryServicesVaultContext zestaw](/powershell/module/az.RecoveryServices/Set-azRecoveryServicesVaultContext).
+
+   - Kontekst magazynu to typ danych chronionych w magazynie.
+   - Po ustawieniu kontekst ma zastosowanie do wszystkich kolejnych poleceń cmdlet
+
+     ```powershell
+     Get-AzRecoveryServicesVault -Name "myRSVault" | Set-AzRecoveryServicesVaultContext
+     ```
+
+## <a name="back-up-azure-vms"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
+
+Wykonywane kopie zapasowe zgodnie z harmonogramem określonym w zasadach tworzenia kopii zapasowej. Podczas tworzenia magazynu usługi Recovery Services jest on dostarczany z domyślnymi zasadami ochrony i przechowywania.
+
+- Domyślne zasady ochrony wyzwalają zadanie tworzenia kopii zapasowej, jednego dnia o określonej godzinie.
+- Domyślne zasady przechowywania zachowują codzienny punkt odzyskiwania przez 30 dni. 
+
+Aby włączyć i utworzyć kopię zapasową maszynę wirtualną platformy Azure w ramach tego samouczka, firma Microsoft wykonaj następujące czynności:
+
+1. Określ kontener w magazynie, który przechowuje dane kopii zapasowej za pomocą [Get AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupcontainer).
+2. Każda maszyna wirtualna do utworzenia kopii zapasowej jest element. Aby uruchomić zadanie tworzenia kopii zapasowej, można uzyskać informacji na temat maszyny Wirtualnej przy użyciu [Get AzRecoveryServicesBackupItem](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupItem).
+3. Uruchom tworzenie kopii zapasowej ad hoc z[AzRecoveryServicesBackupItem kopii zapasowej](/powershell/module/az.recoveryservices.backup/backup-Azrecoveryservicesbackupitem). 
+    - Pierwszy początkowe zadanie tworzenia kopii zapasowej tworzy punkt pełnego odzyskiwania.
+    - Po początkowej kopii zapasowej każde zadanie tworzenia kopii zapasowej tworzy przyrostowe punkty odzyskiwania.
+    - Przyrostowe punkty odzyskiwania są oszczędne pod względem czasu i miejsca w magazynie, ponieważ przesyłają wyłącznie zmiany wprowadzone od czasu ostatniej kopii zapasowej.
+
+Włącz, a następnie uruchom kopię zapasową w następujący sposób:
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+$namedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM"
+$item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadType AzureVM
+$job = Backup-AzRecoveryServicesBackupItem -Item $item
 ```
 
-Utwórz magazyn usługi Recovery Services za pomocą polecenia **New-AzureRmRecoveryServicesVault**. Pamiętaj, aby określić nazwę i lokalizację grupy zasobów używane podczas konfigurowania maszyny wirtualnej, której kopia zapasowa będzie tworzona. 
+## <a name="troubleshooting"></a>Rozwiązywanie problemów 
 
-```powershell
-New-AzureRmRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
-```
+Jeśli napotkasz problemy podczas tworzenia kopii zapasowej maszyny wirtualnej, przejrzyj ten [artykule dotyczącym rozwiązywania problemów](backup-azure-vms-troubleshoot.md).
 
-Wiele poleceń cmdlet usługi Azure Backup wymaga obiektu magazynu usługi Recovery Services jako danych wejściowych. Z tego powodu wygodne jest przechowywanie obiektu magazynu usługi Backup Recovery Services w zmiennej. Następnie należy użyć polecenia **Set-AzureRmRecoveryServicesBackupProperties**, aby ustawić opcję **-BackupStorageRedundancy** na wartość [Magazyn geograficznie nadmiarowy (GRS)](../storage/common/storage-redundancy-grs.md). 
+### <a name="deleting-a-recovery-services-vault"></a>Usuwanie magazynu usług Recovery Services
 
-```powershell
-$vault1 = Get-AzureRmRecoveryServicesVault –Name myRSVault
-Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
-```
-
-## <a name="back-up-azure-virtual-machines"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
-
-Zanim będzie można uruchomić proces tworzenia początkowej kopii zapasowej, należy ustawić kontekst magazynu. Kontekst magazynu to typ danych chronionych w magazynie. Podczas tworzenia magazynu usługi Recovery Services jest on dostarczany z domyślnymi zasadami ochrony i przechowywania. Domyślne zasady ochrony wyzwalają zadanie tworzenia kopii zapasowej każdego dnia o określonej godzinie. Domyślne zasady przechowywania zachowują codzienny punkt odzyskiwania przez 30 dni. Dla celów tego samouczka zaakceptuj te domyślne zasady. 
-
-Użyj polecenia **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)**, aby ustawić kontekst magazynu. Po ustawieniu kontekst magazynu ma zastosowanie do wszystkich kolejnych poleceń cmdlet. 
-
-```powershell
-Get-AzureRmRecoveryServicesVault -Name myRSVault | Set-AzureRmRecoveryServicesVaultContext
-```
-
-Użyj polecenia **[Backup-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem)**, aby wyzwolić zadanie tworzenia kopii zapasowej. Zadanie tworzenia kopii zapasowej tworzy punkt odzyskiwania. Jeśli tworzona jest początkowa kopia zapasowa, punkt odzyskiwania jest pełną kopią zapasową. Kolejne operacje tworzenia kopii zapasowych tworzą kopie przyrostowe.
-
-```powershell
-$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM"
-$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType AzureVM
-$job = Backup-AzureRmRecoveryServicesBackupItem -Item $item
-```
-
-## <a name="delete-the-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
-
-Aby usunąć magazyn usługi Recovery Services, należy najpierw usunąć z niego wszystkie punkty odzyskiwania, a następnie wyrejestrować magazyn. Następujące polecenia obrazują szczegółowo wykonywane kroki. 
+Jeśli musisz usunąć magazyn, najpierw usuń punkty odzyskiwania w magazynie, a następnie wyrejestrować magazyn, w następujący sposób:
 
 
 ```powershell
-$Cont = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered
-$PI = Get-AzureRmRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVm
-Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints $PI[0]
-Unregister-AzureRmRecoveryServicesBackupContainer -Container $namedContainer
-Remove-AzureRmRecoveryServicesVault -Vault $vault1
+$Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered
+$PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVm
+Disable-AzRecoveryServicesBackupProtection -RemoveRecoveryPoints $PI[0]
+Unregister-AzRecoveryServicesBackupContainer -Container $namedContainer
+Remove-AzRecoveryServicesVault -Vault $vault1
 ```
 
-## <a name="troubleshooting-errors"></a>Rozwiązywanie problemów z błędami
-Jeśli podczas tworzenia kopii zapasowej maszyny wirtualnej wystąpią błędy, pomocne mogą się okazać wskazówki z artykułu dotyczącego [rozwiązywania problemów z tworzeniem kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-vms-troubleshoot.md).
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="next-steps"></a>Następne kroki
-Teraz, po zabezpieczeniu maszyn wirtualnych, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o zadaniach zarządzania i sposobie przywracania maszyn wirtualnych z punktu odzyskiwania.
-
-* Aby zmodyfikować zasady tworzenia kopii zapasowych, zobacz sekcję dotyczącą [użycia poleceń cmdlet AzureRM.RecoveryServices.Backup do tworzenia kopii zapasowych maszyn wirtualnych](backup-azure-vms-automation.md#create-a-protection-policy).
-* [Monitorowanie maszyn wirtualnych i zarządzanie nimi](backup-azure-manage-vms.md)
-* [Przywracanie maszyn wirtualnych](backup-azure-arm-restore-vms.md)
+- [Przegląd](backup-azure-vms-automation.md) bardziej szczegółowy przewodnik dotyczący tworzenia kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu programu PowerShell. 
+- [Zarządzanie i monitorowanie maszyn wirtualnych platformy Azure](backup-azure-manage-vms.md)
+- [Przywracanie maszyn wirtualnych platformy Azure](backup-azure-arm-restore-vms.md)

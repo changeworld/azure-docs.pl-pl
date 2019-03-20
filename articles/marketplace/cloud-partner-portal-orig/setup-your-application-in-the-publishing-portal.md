@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448487"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847131"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Instalowanie aplikacji w portalu wydawców
 
@@ -27,16 +27,16 @@ Teraz można przystąpić do konfigurowania aplikacji w portalu wydawców.
 
 ## <a name="login-and-create-a-new-offer"></a>Zaloguj się i Utwórz nową ofertę
 
-1. Zaloguj się do [portalu dla partnerów w chmurze](http://cloudpartner.azure.com/).
+1. Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/).
 2. Na pasku nawigacyjnym po lewej stronie kliknij pozycję "+ nowe oferty" i wybierz pozycję "Dynamics 365 for Customer Engagement."
 
 ![Wybierając nową ofertę](./media/CRMScreenShot14.png)
 
-3. Nowa oferta "Editor" widok jest teraz otwarte i jesteśmy gotowi rozpocząć tworzenie.
+1. Nowa oferta "Editor" widok jest teraz otwarte i jesteśmy gotowi rozpocząć tworzenie.
 
 ![Nowy ekran oferty](./media/CRMScreenShot15.png)
 
-4. "Form", które muszą być wypełnione są widoczne po lewej stronie w widoku "Editor". Każdy "form" zawiera zestaw pól, które mają zostać wypełnione. Wymagane pola są oznaczone czerwoną gwiazdką (\*).
+1. "Form", które muszą być wypełnione są widoczne po lewej stronie w widoku "Editor". Każdy "form" zawiera zestaw pól, które mają zostać wypełnione. Wymagane pola są oznaczone czerwoną gwiazdką (\*).
 
 Istnieją cztery główne formularze na potrzeby tworzenia Dynamics 365 Customer Engagement oferty
 
@@ -88,7 +88,7 @@ Oto wyjaśnienia dla tych pól:
 
 ### <a name="crm-package-availability"></a>Dostępność pakietu CRM
 
-W tej sekcji należy wybrać jakie regiony CRM, pakiet zostanie udostępniona w celu. Aby uzyskać informacje, na którym regionach obsługiwać które kraje zobacz łącza: [http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
+W tej sekcji należy wybrać jakie regiony CRM, pakiet zostanie udostępniona w celu. Aby uzyskać informacje, na którym regionach obsługiwać które kraje zobacz łącza: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 Uwaga: Wdrażanie w Niemczech "Suwerennych i chmura rządowa USA" suwerennych wymaga uprawnień specjalnych i sprawdzanie poprawności podczas certyfikacji
 

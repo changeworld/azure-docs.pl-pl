@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52d3e058c7e604a31493bf3b1972b39c9922fd90
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5ce628716e9e8d0094f678c3d67dcfad9e24ada
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163519"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860537"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Proxyclick
 
@@ -214,11 +214,11 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Proxyclick, musi
 
     ![Dodawanie pracownika](./media/proxyclick-tutorial/user3.png)
 
-    a. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon@contoso.com**.
+    a. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon\@contoso.com**.
 
-    b. W **imię** polu tekstowym Nazwa typu pierwszego użytkownika, takich jak Britta.
+    b. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, takie jak Britta.
 
-    c. W **nazwisko** polu tekstowym wpisz nazwisko użytkownika, takich jak Simon.
+    c. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak Simon.
 
     d. Kliknij pozycję **Add User** (Dodaj użytkownika).
 
@@ -261,7 +261,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

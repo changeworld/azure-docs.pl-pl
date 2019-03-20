@@ -1,6 +1,6 @@
 ---
-title: Samouczek — korzystanie z usługi Azure Key Vault za pomocą aplikacji internetowej platformy Azure na platformie .NET — Azure Key Vault | Microsoft Docs
-description: Samouczek — konfigurowanie aplikacji platformy ASP.NET Core w celu odczytu wpisu tajnego z usługi Key Vault
+title: Samouczek — korzystanie z usługi Azure Key Vault za pomocą aplikacji internetowej platformy Azure na platformie .NET | Microsoft Docs
+description: W tym samouczku skonfigurujesz aplikacji platformy ASP.NET core w celu odczytu wpisu tajnego z magazynu kluczy.
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: b6dbae0f721983920c2073927fff74100528678e
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
-ms.translationtype: HT
+ms.openlocfilehash: 18c95978af3ce1e3451cac84db367f55acd392b4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998799"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455993"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Samouczek: Korzystanie z usługi Azure Key Vault w aplikacji internetowej platformy Azure na platformie .NET
 
@@ -25,44 +25,41 @@ Usługa Azure Key Vault umożliwia ochronę wpisów tajnych, takich jak klucze i
 
 W tym samouczku dowiesz się, jak utworzyć aplikację internetową platformy Azure, która umożliwia odczytanie informacji z usługi Azure Key Vault. W tym procesie używane są tożsamości zarządzane dla zasobów platformy Azure. Aby uzyskać więcej informacji na temat aplikacji internetowych platformy Azure, zobacz [Azure App Service](../app-service/overview.md).
 
-Ten artykuł zawiera omówienie następujących czynności:
+Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy.
-> * Zapisywanie wpisu tajnego w magazynie kluczy.
+> * Dodawanie wpisu tajnego do magazynu kluczy.
 > * Pobieranie wpisu tajnego z magazynu kluczy.
-> * Tworzenie aplikacji internetowej platformy Azure.
-> * Włączanie [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla aplikacji internetowej.
-> * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji internetowej odczytu danych z magazynu kluczy.
-> * Uruchamianie aplikacji internetowej na platformie Azure.
+> * Utwórz aplikację internetową platformy Azure.
+> * Włączanie tożsamości zarządzanej aplikacji sieci web.
+> * Przypisywanie uprawnień dla aplikacji sieci web.
+> * Uruchom aplikację sieci web na platformie Azure.
 
-Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami dotyczącymi usługi Key Vault](key-vault-whatis.md#basic-concepts).
+Przed rozpoczęciem przeczytaj [podstawowe pojęcia dotyczące usługi Key Vault](key-vault-whatis.md#basic-concepts). 
+
+Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* W systemie Windows:
-  * [Zestaw .NET Core 2.1 SDK lub nowszy](https://www.microsoft.com/net/download/windows)
-
-* Na komputerze Mac:
-  * [program Visual Studio dla komputerów Mac](https://visualstudio.microsoft.com/vs/mac/)
-
-* Wszystkie platformy:
+* Aby uzyskać Windows: [zestawu SDK programu .NET Core 2.1 lub nowszej](https://www.microsoft.com/net/download/windows)
+* Dla komputerów Mac: [program Visual Studio dla komputerów Mac](https://visualstudio.microsoft.com/vs/mac/)
+* Dla Windows, Mac i Linux:
   * [Usługa Git](https://git-scm.com/downloads)
-  * Subskrypcja platformy Azure <br />(Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
-  * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) w wersji 2.0.4 lub nowszej, dostępny dla systemów Windows, Mac i Linux
+  * Ten samouczek wymaga uruchomienia interfejsu wiersza polecenia platformy Azure lokalnie. Musi mieć wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
   * [.NET Core](https://www.microsoft.com/net/download/dotnet-core/2.1)
 
-## <a name="managed-service-identity-and-how-it-works"></a>Tożsamość usługi zarządzanej i jej działanie
+## <a name="about-managed-service-identity"></a>Informacje o tożsamości usługi zarządzanej
 
-Usługa Azure Key Vault służy do bezpiecznego przechowywania poświadczeń, tak aby nie były zawarte w kodzie. Aby jednak pobrać klucze, musisz uwierzytelnić się w usłudze Azure Key Vault. W tym celu potrzebujesz poświadczenia. To klasyczny przykład dylematu dotyczącego uruchamiania. Tożsamość usługi zarządzanej rozwiązuje ten problem poprzez zapewnienie _tożsamości uruchamiania_, która upraszcza ten proces.
+Usługa Azure Key Vault bezpiecznie przechowuje poświadczenia, więc nie są one wyświetlane w kodzie. Aby jednak pobrać klucze, musisz uwierzytelnić się w usłudze Azure Key Vault. W tym celu potrzebujesz poświadczenia. To klasyczny przykład dylematu dotyczącego uruchamiania. Tożsamość usługi zarządzanej rozwiązuje ten problem poprzez zapewnienie _tożsamości uruchamiania_, która upraszcza ten proces.
 
-Po włączeniu tożsamości usługi zarządzanej dla usługi platformy Azure (na przykład Virtual Machines, App Service lub Functions) platforma Azure tworzy [jednostkę usługi](key-vault-whatis.md#basic-concepts). Tożsamość usługi zarządzanej wykonuje tę czynność dla wystąpienia tej usługi w usłudze Azure Active Directory (Azure AD) i wprowadza poświadczenia dla jednostki usługi w tym wystąpieniu.
+Po włączeniu tożsamości usługi Zarządzanej dla usługi platformy Azure, takie jak maszyny wirtualne platformy Azure, Azure App Service lub usługi Azure Functions, platforma Azure tworzy [nazwy głównej usługi](key-vault-whatis.md#basic-concepts). MSI dzieje dla wystąpienia usługi Azure Active Directory (Azure AD) i wprowadza poświadczenia nazwy głównej usługi w tym wystąpieniu.
 
 ![Diagram dotyczący tożsamości usługi zarządzanej](media/MSI.png)
 
-Następnie Twój kod wywołuje lokalną usługę metadanych dostępną w zasobie platformy Azure, aby uzyskać token dostępu. W celu uwierzytelniania w usłudze Azure Key Vault kod używa tokenu dostępu otrzymanego z lokalnego elementu MSI_ENDPOINT.
+Następnie do uzyskania tokenu dostępu, Twój kod wywołuje usługi metadanymi lokalnymi, które są dostępne w obszarze zasobów platformy Azure. W celu uwierzytelnienia w usłudze Azure Key Vault kod używa tokenu dostępu, który otrzymuje z lokalnego punktu końcowego tożsamości usługi zarządzanej.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
 Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, wpisz:
 
@@ -74,8 +71,9 @@ az login
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-1. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create).
-1. Wybierz nazwę grupy zasobów i wypełnij symbol zastępczy. Poniższy przykład obejmuje tworzenie grupy zasobów w lokalizacji Zachodnie stany USA:
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create).
+
+Następnie wybierz nazwę grupy zasobów i wypełnienie w miejsce symbolu zastępczego. Poniższy przykład obejmuje tworzenie grupy zasobów w lokalizacji Zachodnie stany USA:
 
    ```azurecli
    # To list locations: az account list-locations --output table
@@ -88,49 +86,57 @@ Możesz używać tej grupy zasobów w całym samouczku.
 
 Aby utworzyć magazyn kluczy w grupie zasobów, należy podać następujące informacje:
 
-* Nazwa magazynu kluczy: ciąg składający się z od 3 do 24 znaków, zawierający tylko cyfry, litery i łączniki (na przykład: 0–9, a–z, A–Z oraz „-” )
+* Nazwa magazynu kluczy: ciąg 3 do 24 znaków, które mogą zawierać tylko cyfry (0 – 9) litery (a – z, A – Z) i łączniki (-)
 * Nazwa grupy zasobów
 * Lokalizacja: **Zachodnie stany USA**
 
-Wprowadź następujące polecenie w interfejsie wiersza polecenia platformy Azure:
+W interfejsie wiersza polecenia platformy Azure wprowadź następujące polecenie:
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
 
-Twoje konto platformy Azure jest teraz jedynym kontem z uprawnieniami do wykonywania jakichkolwiek operacji na tym nowym magazynie.
+W tym momencie konta platformy Azure jest jedyną, która ma uprawnienia do wykonywania operacji na tym nowym magazynie.
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Dodawanie wpisu tajnego do magazynu kluczy
 
 Teraz możesz dodać wpis tajny. Mogą to być parametry połączenia SQL lub inne informacje, które muszą być przechowywane bezpiecznie, ale jednocześnie muszą być dostępne dla aplikacji.
 
-Wpisz następujące polecenie, aby utworzyć wpis tajny w magazynie kluczy o nazwie **AppSecret**. Ten wpis tajny zawiera wartość **MySecret**.
+Aby utworzyć wpis tajny w usłudze key vault o nazwie **AppSecret**, wprowadź następujące polecenie: 
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-Aby wyświetlić wartość zawartą we wpisie tajnym jako zwykły tekst, wpisz następujące polecenie:
+Ten wpis tajny zawiera wartość **MySecret**.
+
+Aby wyświetlić wartość, która znajduje się we wpisie tajnym jako zwykły tekst, wprowadź następujące polecenie:
 
 ```azurecli
 az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 ```
 
-To polecenie wyświetla informacje o wpisie tajnym, w tym identyfikator URI. Po wykonaniu tych kroków będziesz mieć identyfikator URI wpisu tajnego w magazynie kluczy. Zanotuj te informacje. Będą one potrzebne w kolejnym kroku.
+To polecenie wyświetla poufne informacje, w tym identyfikator URI. 
+
+Po wykonaniu tych kroków będziesz mieć identyfikator URI wpisu tajnego w magazynie kluczy. Zanotuj te informacje dotyczące później używane w tym samouczku. 
 
 ## <a name="create-a-net-core-web-app"></a>Tworzenie nowej aplikacji internetowej platformy .NET Core
 
-Postępuj zgodnie z tym [samouczkiem](../app-service/app-service-web-get-started-dotnet.md), aby utworzyć aplikację internetową platformy .NET Core i **opublikować** ją na platformie Azure. Możesz też obejrzeć poniższe wideo:
+Tworzenie aplikacji sieci web platformy .NET Core i publikowanie jej na platformie Azure, postępuj zgodnie z instrukcjami [tworzenie aplikacji internetowej platformy ASP.NET Core na platformie Azure](../app-service/app-service-web-get-started-dotnet.md). 
+
+Możesz również obejrzeć to wideo:
 
 >[!VIDEO https://www.youtube.com/embed/EdiiEH7P-bU]
 
 ## <a name="open-and-edit-the-solution"></a>Otwieranie i edytowanie rozwiązania
 
-1. Przejdź kolejno do pliku **Strony** > **About.cshtml.cs**.
-2. Zainstaluj następujące pakiety NuGet:
+1. Przejdź do **stron** > **About.cshtml.cs** pliku.
+
+1. Zainstaluj następujące pakiety NuGet:
    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
    - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
-3. Zaimportuj następujący kod w pliku About.cshtml.cs:
+
+1. Następujący kod, aby zaimportować *About.cshtml.cs* pliku:
 
    ```csharp
     using Microsoft.Azure.KeyVault;
@@ -138,7 +144,7 @@ Postępuj zgodnie z tym [samouczkiem](../app-service/app-service-web-get-started
     using Microsoft.Azure.Services.AppAuthentication;
    ```
 
-4. Twój kod w klasie AboutModel powinien wyglądać tak jak poniżej:
+   Kod w klasie AboutModel powinien wyglądać następująco:
 
    ```csharp
     public class AboutModel : PageModel
@@ -152,14 +158,14 @@ Postępuj zgodnie z tym [samouczkiem](../app-service/app-service-web-get-started
             bool retry = false;
             try
             {
-                /* The below 4 lines of code shows you how to use AppAuthentication library to fetch secrets from your Key Vault*/
+                /* The next four lines of code show you how to use AppAuthentication library to fetch secrets from your key vault*/
                 AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
                 KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
                 var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
                         .ConfigureAwait(false);
                 Message = secret.Value;
 
-                /* The below do while logic is to handle throttling errors thrown by Azure Key Vault. It shows how to do exponential backoff which is the recommended client side throttling*/
+                /* The following *do while* logic is to handle throttling errors thrown by Azure Key Vault. It shows how to do exponential backoff, which is the recommended client side throttling*/
                 do
                 {
                     long waitTime = Math.Min(getWaitTime(retries), 2000000);
@@ -180,14 +186,14 @@ Postępuj zgodnie z tym [samouczkiem](../app-service/app-service-web-get-started
             }
         }
 
-        // This method implements exponential backoff incase of 429 errors from Azure Key Vault
+        // This method implements exponential backoff if there are 429 errors from Azure Key Vault
         private static long getWaitTime(int retryCount)
         {
             long waitTime = ((long)Math.Pow(2, retryCount) * 100L);
             return waitTime;
         }
 
-        // This method fetches a token from Azure Active Directory which can then be provided to Azure Key Vault to authenticate
+        // This method fetches a token from Azure Active Directory, which can then be provided to Azure Key Vault to authenticate
         public async Task<string> GetAccessTokenAsync()
         {
             var azureServiceTokenProvider = new AzureServiceTokenProvider();
@@ -197,53 +203,51 @@ Postępuj zgodnie z tym [samouczkiem](../app-service/app-service-web-get-started
     }
     ```
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
 
-1. Z menu głównego programu Visual Studio 2017 wybierz kolejno pozycje **Debuguj** > **Uruchom** z debugowaniem lub bez debugowania. 
-1. Gdy pojawi się przeglądarka, przejdź do strony **Informacje**.
-1. Wyświetlona zostanie wartość wpisu **AppSecret**.
+1. W menu głównym programu Visual Studio 2017, wybierz **debugowania** > **Start**, z lub bez debugowania. 
+1. W przeglądarce przejdź do **o** strony.  
+    Wyświetlona zostanie wartość wpisu **AppSecret**.
 
-## <a name="enable-a-managed-identity-for-the-web-app"></a>Włączanie tożsamości zarządzanej dla aplikacji internetowej
+## <a name="enable-a-managed-identity"></a>Włączanie tożsamości zarządzanej
 
-Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. [Tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) pomagają rozwiązać ten problem, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
+Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. [Tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) pomagają rozwiązać ten problem, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD. Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD, w tym usługi Key Vault bez konieczności wyświetlanie poświadczeń w kodzie.
 
-1. W interfejsie wiersza polecenia platformy Azure uruchom polecenie assign-identity w celu utworzenia tożsamości dla tej aplikacji:
+W interfejsie wiersza polecenia platformy Azure Aby utworzyć tożsamość dla tej aplikacji, uruchom polecenie Przypisz tożsamość:
 
-   ```azurecli
+```azurecli
+az webapp identity assign --name "<YourAppName>" --resource-group "<YourResourceGroupName>"
+```
 
-   az webapp identity assign --name "<YourAppName>" --resource-group "<YourResourceGroupName>"
+Zastąp \<nazwa_aplikacji > o nazwie opublikowanej aplikacji na platformie Azure.  
+    Na przykład, jeśli Twojej nazwy opublikowanej aplikacji **MyAwesomeapp.azurewebsites.net**, Zastąp \<nazwa_aplikacji > za pomocą **MyAwesomeapp**.
 
-   ```
+Zapisz identyfikator `PrincipalId` po opublikowaniu aplikacji na platformie Azure. Dane wyjściowe polecenia w kroku 1 powinny być w następującym formacie:
 
-   >[!NOTE]
-   >Zastąp ciąg \<YourAppName\> nazwą opublikowanej aplikacji na platformie Azure. Jeśli na przykład nazwa Twojej opublikowanej aplikacji to **MyAwesomeapp.azurewebsites.net**, zastąp ciąg \<YourAppName\> ciągiem **MyAwesomeapp**.
-
-1. Zapisz identyfikator `PrincipalId` po opublikowaniu aplikacji na platformie Azure. Dane wyjściowe polecenia w kroku 1 powinny być w następującym formacie:
-
-   ```json
-   {
-     "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-     "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-     "type": "SystemAssigned"
-   }
-   ```
+```json
+{
+  "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "SystemAssigned"
+}
+```
 
 >[!NOTE]
->Polecenie w tej procedurze odpowiada przejściu do [portalu](https://portal.azure.com) i przełączeniu ustawienia **Tożsamość/Przypisana przez system** na wartość **Włączone** we właściwościach aplikacji internetowej.
+>Polecenia w tej procedurze jest odpowiednikiem zamierza [witryny Azure portal](https://portal.azure.com) i przełączania **tożsamości / przypisana przez System** ustawienie **na** w aplikacji sieci web właściwości.
 
-## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Przypisywanie do aplikacji uprawnień odczytu wpisów tajnych z usługi Key Vault
+## <a name="assign-permissions-to-your-app"></a>Przypisywanie uprawnień do aplikacji
 
-Zastąp ciąg \<YourKeyVaultName\> nazwą magazynu kluczy, a identyfikator \<PrincipalId\> wartością identyfikatora **PrincipalId** w następującym poleceniu:
+Zastąp \<YourKeyVaultName > nazwą Twojego magazynu kluczy i Zastąp \<PrincipalId > z wartością **PrincipalId** w następującym poleceniu:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
 ```
 
-To polecenie przyznaje tożsamości usługi App Service (tożsamości usługi zarządzanej) uprawnienia do wykonywania operacji **get** i **list** w usłudze Key Vault.
+To polecenie daje identity (MSI) uprawnień usługi aplikacji w celu **uzyskać** i **listy** operacji na magazynie kluczy.
 
-## <a name="publish-the-web-application-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
+## <a name="publish-the-web-app-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
 
-Opublikuj ponownie tę aplikację internetową na platformie Azure, aby sprawdzić, czy aplikacja internetowa działająca na żywo umożliwia pobranie wartości wpisu tajnego.
+Publikowanie aplikacji sieci web na platformie Azure jeszcze raz, aby sprawdzić, czy aplikację sieci web można pobrać wartość wpisu tajnego.
 
 1. W programie Visual Studio wybierz projekt **key-vault-dotnet-core-quickstart**.
 2. Wybierz pozycje **Publikuj** > **Uruchom**.
@@ -251,9 +255,12 @@ Opublikuj ponownie tę aplikację internetową na platformie Azure, aby sprawdzi
 
 Gdy uruchomisz aplikację, zobaczysz, że może ona pobrać wartość wpisu tajnego.
 
-Na platformie .NET została utworzona aplikacja internetowa, która przechowuje wpisy tajne w usłudze Key Vault i pobiera je z tej usługi.
+Teraz pomyślnie utworzono aplikację sieci web na platformie .NET, która przechowuje oraz pobiera jego wpisy tajne z magazynu kluczy.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+Gdy nie są już potrzebne, można usunąć maszyny wirtualnej i magazynu kluczy.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 >[!div class="nextstepaction"]
 >[Przewodnik dewelopera usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-developers-guide)

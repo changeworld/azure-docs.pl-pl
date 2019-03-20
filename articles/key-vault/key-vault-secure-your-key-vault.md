@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 320a23e425ecb11e36af3efe988b25e598948132
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3b302c60aefec1c4cd37a7dde82a2f11a9eeed33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118517"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862866"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Bezpieczny dostęp do magazynu kluczy
 
@@ -28,7 +28,7 @@ Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowa
 
 ## <a name="access-model-overview"></a>Omówienie modelu dostępu
 
-Dostęp do magazynu kluczy jest kontrolowany za pośrednictwem dwóch interfejsów: *płaszczyzny zarządzania* i *płaszczyzny danych*. Płaszczyzna zarządzania zarządza się usługi Key Vault sam. Operacje w tej płaszczyzny obejmują tworzenie i usuwanie magazynów kluczy, pobieranie właściwości usługi Key Vault i aktualizowanie zasad dostępu. Płaszczyzna danych jest miejscem służącym do pracy z danymi przechowywanymi w magazynie kluczy. Możesz dodawać, usuwanie i modyfikowanie kluczy, wpisów tajnych i certyfikatów.
+Dostęp do magazynu kluczy jest kontrolowany za pośrednictwem dwóch interfejsów: **płaszczyzny zarządzania** i **płaszczyzny danych**. Płaszczyzna zarządzania zarządza się usługi Key Vault sam. Operacje w tej płaszczyzny obejmują tworzenie i usuwanie magazynów kluczy, pobieranie właściwości usługi Key Vault i aktualizowanie zasad dostępu. Płaszczyzna danych jest miejscem służącym do pracy z danymi przechowywanymi w magazynie kluczy. Możesz dodawać, usuwanie i modyfikowanie kluczy, wpisów tajnych i certyfikatów.
 
 Aby uzyskać dostęp do magazynu kluczy, albo płaszczyźnie, wszystkie podmioty wywołujące (użytkownicy lub aplikacje) musi mieć odpowiednie uwierzytelnianie i autoryzacja. Uwierzytelnianie ustala tożsamość elementu wywołującego. Autoryzacja Określa, jakie operacje może wykonywać obiekt wywołujący. 
 
@@ -62,7 +62,7 @@ W poniższej tabeli przedstawiono punktów końcowych zarządzania i płaszczyzn
 
 ## <a name="management-plane-and-rbac"></a>Płaszczyzna zarządzania i RBAC
 
-Na płaszczyźnie zarządzania umożliwia RBAC autoryzować operacje, które może wykonywać obiekt wywołujący. W modelu RBAC każdej subskrypcji platformy Azure ma wystąpienia usługi Azure AD. Możesz udzielić dostępu użytkownikom, grupom i aplikacjom z tego katalogu. Dostęp jest udzielany do zarządzania zasobami w subskrypcji platformy Azure, które używają modelu wdrażania usługi Azure Resource Manager. Aby udzielić dostępu, należy użyć [witryny Azure portal](https://portal.azure.com/), [wiersza polecenia platformy Azure](../cli-install-nodejs.md), [programu Azure PowerShell](/powershell/azureps-cmdlets-docs), lub [interfejsów API REST usługi Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn906885.aspx).
+Na płaszczyźnie zarządzania umożliwia RBAC (rola w oparciu Access Control) autoryzować operacje, które może wykonywać obiekt wywołujący. W modelu RBAC każdej subskrypcji platformy Azure ma wystąpienia usługi Azure AD. Możesz udzielić dostępu użytkownikom, grupom i aplikacjom z tego katalogu. Dostęp jest udzielany do zarządzania zasobami w subskrypcji platformy Azure, które używają modelu wdrażania usługi Azure Resource Manager. Aby udzielić dostępu, należy użyć [witryny Azure portal](https://portal.azure.com/), [wiersza polecenia platformy Azure](../cli-install-nodejs.md), [programu Azure PowerShell](/powershell/azureps-cmdlets-docs), lub [interfejsów API REST usługi Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
 Tworzenie magazynu kluczy w grupie zasobów i zarządzanie dostępem przy użyciu usługi Azure AD. Zezwolenie użytkownikom na lub grup możliwość zarządzania magazynami kluczy w grupie zasobów. Przypisując odpowiednie role RBAC, można przyznać dostęp na poziomie określonego zakresu. Aby udzielić dostępu użytkownika do zarządzania magazynami kluczy, możesz przypisać wstępnie zdefiniowanej `key vault Contributor` roli do użytkownika o określonym zakresie. Następujące poziomy zakresów można przypisać do roli RBAC:
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ce48e9a17ab6b63c7fb8caa752258e218ca51ba3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 74329624b6e0f1b105349d87a6d166efad520076
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226387"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010926"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -33,12 +33,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Upewnij się, że na maszynach wirtualnych, które mają zostać zmigrowane, jest uruchomiona obsługiwana wersja systemu operacyjnego. Obsługiwane wersje to: 
-      - Windows Server 2016 
-      - Windows Server 2012 R2
-      - Windows Server 2012 
-      - 64-bitowa wersja systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszym
-      - Red Hat Enterprise Linux wersja od 6.4 do 6.10, od 7.1 do 7.6 (tylko wystąpienia z wirtualizacją sprzętową) *(Wystąpienia ze sterownikami RedHat PV nie są obsługiwane).*
-      - CentOS wersja od 6.4 do 6.10, od 7.1 do 7.6 (tylko wystąpienia z wirtualizacją sprzętową)
+  - Windows Server 2016 
+  - Windows Server 2012 R2
+  - Windows Server 2012 
+  - 64-bitowa wersja systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszym
+  - Red Hat Enterprise Linux wersja od 6.4 do 6.10, od 7.1 do 7.6 (tylko wystąpienia z wirtualizacją sprzętową) *(Wystąpienia ze sterownikami RedHat PV nie są obsługiwane).*
+  - CentOS wersja od 6.4 do 6.10, od 7.1 do 7.6 (tylko wystąpienia z wirtualizacją sprzętową)
  
 - Na każdej maszynie wirtualnej, która ma być replikowana, musi być zainstalowana usługa mobilności. 
 
@@ -172,39 +172,39 @@ Włącz replikację dla każdej maszyny wirtualnej, która ma zostać zmigrowana
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 1. Na stronie swojego magazynu w obszarze **Wprowadzenie** wybierz pozycję **Site Recovery**.
 2. W obszarze **Dla maszyn lokalnych i maszyn wirtualnych platformy Azure** wybierz pozycję **Krok 1. Replikowanie aplikacji**. Przejdź do końca przez strony kreatora, używając poniższych informacji. Gdy wszystko będzie gotowe, na każdej stronie wybierz opcję **OK**:
-    - 1. Konfigurowanie źródła
+   - 1. Konfigurowanie źródła
 
-    |  |  |
-    |-----|-----|
-    | Źródło: | Wybierz pozycję **Lokalnie**.|
-    | Lokalizacja źródła:| Wprowadź nazwę wystąpienia usługi EC2 Twojego serwera konfiguracji.|
-    |Typ maszyny: | Wybierz pozycję **Maszyny fizyczne**.|
-    | Serwer przetwarzania: | Wybierz serwer konfiguracji z listy rozwijanej.|
+     |  |  |
+     |-----|-----|
+     | Źródło: | Wybierz pozycję **Lokalnie**.|
+     | Lokalizacja źródła:| Wprowadź nazwę wystąpienia usługi EC2 Twojego serwera konfiguracji.|
+     |Typ maszyny: | Wybierz pozycję **Maszyny fizyczne**.|
+     | Serwer przetwarzania: | Wybierz serwer konfiguracji z listy rozwijanej.|
 
-    - 2. Konfigurowanie celu
+   - 2. Konfigurowanie celu
 
-    |  |  |
-    |-----|-----|
-    | Cel: | Pozostaw wartość domyślną.|
-    | Subskrypcja: | Wybierz subskrypcję, której używasz.|
-    | Grupa zasobów po przełączeniu w tryb failover:| Użyj grupy zasobów utworzonej w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
-    | Model wdrażania po przełączeniu w tryb failover: | Wybierz opcję **Menedżer zasobów**.|
-    | Konto magazynu: | Wybierz konto magazynu utworzone w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
-    | Sieć platformy Azure: | Wybierz pozycję **Konfiguruj teraz dla wybranych maszyn**.|
-    | Sieć platformy Azure po przełączeniu w tryb failover: | Wybierz sieć utworzoną w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
-    | Podsieć: | Wybierz z listy rozwijanej pozycję **domyślna**.|
+     |  |  |
+     |-----|-----|
+     | Cel: | Pozostaw wartość domyślną.|
+     | Subskrypcja: | Wybierz subskrypcję, której używasz.|
+     | Grupa zasobów po przełączeniu w tryb failover:| Użyj grupy zasobów utworzonej w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
+     | Model wdrażania po przełączeniu w tryb failover: | Wybierz opcję **Menedżer zasobów**.|
+     | Konto magazynu: | Wybierz konto magazynu utworzone w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
+     | Sieć platformy Azure: | Wybierz pozycję **Konfiguruj teraz dla wybranych maszyn**.|
+     | Sieć platformy Azure po przełączeniu w tryb failover: | Wybierz sieć utworzoną w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
+     | Podsieć: | Wybierz z listy rozwijanej pozycję **domyślna**.|
 
-    - 3. Wybieranie maszyn fizycznych
+   - 3. Wybieranie maszyn fizycznych
 
-      Wybierz pozycję **Maszyna fizyczna**, a następnie wprowadź wartości dla pól **Nazwa**, **Adres IP** i **Typ systemu operacyjnego** dotyczące wystąpienia usługi EC2, które ma zostać zmigrowane. Kliknij przycisk **OK**.
+     Wybierz pozycję **Maszyna fizyczna**, a następnie wprowadź wartości dla pól **Nazwa**, **Adres IP** i **Typ systemu operacyjnego** dotyczące wystąpienia usługi EC2, które ma zostać zmigrowane. Kliknij przycisk **OK**.
 
-    - 4. Konfigurowanie właściwości
+   - 4. Konfigurowanie właściwości
 
-      Wybierz konto utworzone na serwerze konfiguracji, a następnie wybierz opcję **OK**.
+     Wybierz konto utworzone na serwerze konfiguracji, a następnie wybierz opcję **OK**.
 
-    - 5. Konfigurowanie ustawień replikacji
+   - 5. Konfigurowanie ustawień replikacji
 
-      Upewnij się, że wybrane z listy rozwijanej zasady replikacji to zasady **myReplicationPolicy**, a następnie wybierz opcję **OK**.
+     Upewnij się, że wybrane z listy rozwijanej zasady replikacji to zasady **myReplicationPolicy**, a następnie wybierz opcję **OK**.
 
 3. Po zakończeniu pracy kreatora wybierz pozycję **Włącz replikację**.
 
@@ -245,16 +245,16 @@ Uruchom rzeczywisty tryb failover dla wystąpień usługi EC2, aby zmigrować je
 1. Upewnij się, że maszyna wirtualna jest wyświetlana w obszarze **Zreplikowane elementy**.
 2. Kliknij prawym przyciskiem myszy każdą maszynę wirtualną, a następnie wybierz polecenie **Zakończ migrację**. Spowoduje to wykonanie następujących czynności:
 
-    - Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
-    - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne. 
+   - Spowoduje to zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
+   - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne. 
 
-    ![Kończenie migracji](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Kończenie migracji](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Nie anuluj trybu failover, który jest w toku*. Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie on zatrzymany, ale maszyna wirtualna nie zostanie ponownie zreplikowana.  
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule opisano migrowanie wystąpień usługi EC2 usług AWS do maszyn wirtualnych platformy Azure. Aby dowiedzieć się więcej o maszynach wirtualnych platformy Azure, przejdź do samouczków dotyczących maszyn wirtualnych z systemem Windows.
 

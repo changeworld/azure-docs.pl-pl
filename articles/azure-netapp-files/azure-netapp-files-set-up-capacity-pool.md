@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 7cb9cc6cc5ce98eb88e9b9cdf76f000c33f5509e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780715"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074441"
 ---
 # <a name="set-up-a-capacity-pool"></a>Konfigurowanie puli pojemności
 
@@ -41,19 +41,19 @@ Potrzebujesz utworzonego konta usługi NetApp.
     Zostanie wyświetlone okno Nowa pula pojemności.
 
 3. Podaj następujące informacje dotyczące nowej puli pojemności:  
-  * **Nazwa**  
-    Określ nazwę puli pojemności.  
-    Nazwa puli pojemności musi być unikatowa na tym koncie usługi NetApp.
+   * **Nazwa**  
+     Określ nazwę puli pojemności.  
+     Nazwa puli pojemności musi być unikatowa na tym koncie usługi NetApp.
 
-  * **Poziom usługi**   
-    To pole wskazuje docelową wydajność puli pojemności.  
-    Określ poziom usługi dla puli pojemności: [**Premium**](azure-netapp-files-service-levels.md#Premium) lub [**Standardowa**](azure-netapp-files-service-levels.md#Standard).
+   * **Poziom usługi**   
+     To pole wskazuje docelową wydajność puli pojemności.  
+     Określ poziom usługi dla puli pojemności: [**Premium**](azure-netapp-files-service-levels.md#Premium) lub [**Standardowa**](azure-netapp-files-service-levels.md#Standard).
 
-  * **Rozmiar**     
-    Określ rozmiar kupowanej puli pojemności.        
-    Minimalny rozmiar puli pojemności to 4 TiB. Można utworzyć pulę o rozmiarze będącym wielokrotnością 4 TiB.   
+   * **Rozmiar**     
+     Określ rozmiar kupowanej puli pojemności.        
+     Minimalny rozmiar puli pojemności to 4 TiB. Można utworzyć pulę o rozmiarze będącym wielokrotnością 4 TiB.   
       
-    ![Nowa pula pojemności](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+     ![Nowa pula pojemności](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. Kliknij przycisk **OK**.
 

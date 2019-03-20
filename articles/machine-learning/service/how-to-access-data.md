@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: a7c29d1bfcc0737f76afc43cb8997d6a1d16c82b
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: e6e1b304b90b37c93bed22bcb720a646680ee083
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731359"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223618"
 ---
 # <a name="access-data-from-your-datastores"></a>Dostęp do danych z usługi magazynów danych
 
@@ -146,13 +146,16 @@ ds.download(target_path='your target path',
 
 <a name="train"></a>
 ## <a name="access-datastores-during-training"></a>Dostęp do magazynów danych w trakcie szkolenia
-Magazyn danych można uzyskać dostęp podczas szkolenia z systemem (na przykład dla danych szkoleniowych lub sprawdzania poprawności) zdalnego obliczeniowego elementu docelowego za pomocą zestawu SDK języka Python, za pomocą [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) klasy.
 
-Istnieje kilka sposobów, aby udostępnić swoje magazynu danych w usłudze obliczeniowej zdalnego.
+Po udostępnieniu usługi magazynu danych na zdalne zasoby obliczeniowe, możesz do niego dostęp podczas przebiegów szkoleniowych (na przykład, szkoleń lub sprawdzania poprawności danych), po prostu przekazując ścieżkę do niego jako parametr w skrypcie szkolenia.
+
+W poniższej tabeli wymieniono typowe [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) metody, które udostępnia magazynów danych na zdalne zasoby obliczeniowe.
+
+# #
 
 sposób|Metoda|Opis
 ----|-----|--------
-Instalacja| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Użyj, aby zainstalować Magazyn danych w usłudze obliczeniowej zdalnego.
+Instalacja| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Użyj, aby zainstalować Magazyn danych w usłudze obliczeniowej zdalnego. Domyślny tryb dla magazynów danych.
 Do pobrania|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Użyj, aby pobrać dane z lokalizacji określonej przez `path_on_compute` na usługi magazynu danych na zdalne zasoby obliczeniowe.
 Upload|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Służy do przekazywania danych do katalogu głównego usługi magazynu danych z lokalizacji określonej przez `path_on_compute`.
 
@@ -165,20 +168,22 @@ ds.as_download(path_on_compute='your path on compute')
 ds.as_upload(path_on_compute='yourfilename')
 ```  
 
-### <a name="reference-filesfolders"></a>Odwołanie do plików/folderów
 Aby odwoływać się do określonego folderu lub pliku w swojej magazynu danych, należy użyć magazynu danych [ `path()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) funkcji.
 
 ```Python
-#download the contents of the `./bar` directory from the datastore 
+#download the contents of the `./bar` directory from the datastore to the remote compute
 ds.path('./bar').as_download()
 ```
 
 
+
+> [!NOTE]
+> Wszelkie `ds` lub `ds.path` obiektu jest rozpoznawana jako nazwę zmiennej środowiskowej formatu `"$AZUREML_DATAREFERENCE_XXXX"` których wartość reprezentuje ścieżkę instalacji/pobierania na zdalne zasoby obliczeniowe. Ścieżka magazynu danych w usłudze obliczeniowej zdalnego nie może być taka sama jak ścieżka wykonywania skryptu szkolenia.
+
 ### <a name="examples"></a>Przykłady 
 
-Wszelkie `ds` lub `ds.path` obiektu jest rozpoznawana jako nazwę zmiennej środowiskowej formatu `"$AZUREML_DATAREFERENCE_XXXX"` których wartość reprezentuje ścieżkę instalacji/pobierania na zdalne zasoby obliczeniowe. Ścieżka magazynu danych w usłudze obliczeniowej zdalnego nie może być taka sama jak ścieżka wykonywania skryptu.
+Następujące pokazują przykłady specyficzne dla [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) klasy do uzyskiwania dostępu do usługi magazynu danych podczas szkolenia.
 
-Aby uzyskać dostęp do usługi magazynu danych, podczas szkolenia, przekaż go do skryptu szkolenia jako argument wiersza polecenia za pomocą `script_params` z [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) klasy.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -192,12 +197,13 @@ est = Estimator(source_directory='your code directory',
                 compute_target=compute_target,
                 entry_script='train.py')
 ```
-`as_mount()` jest to domyślny tryb magazyn danych, dzięki czemu można również bezpośrednio przekazać `ds` do `'--data_dir'` argumentu.
+
+Ponieważ `as_mount()` jest to domyślny tryb dla magazynu danych, można także bezpośrednio przekazać `ds` do `'--data_dir'` argumentu.
 
 Lub przekazać listę magazynów danych do konstruktora narzędzie do szacowania `inputs` parametru, aby zainstalować, lub skopiować do i z niej swoje magazyny danych. Ten przykład kodu:
 * Pliki do pobrania całej zawartości w magazynie danych `ds1` do zdalnego obliczeń przed skrypt szkolenia `train.py` jest uruchamiany
 * Folder pobierania `'./foo'` w magazynie danych `ds2` do zdalnego obliczeń przed `train.py` jest uruchamiany
-* Przekazuje plik `'./bar.pkl'` ze zdalnego obliczeniowego do magazynu danych `d3` po uruchomieniu skryptu
+* Przekazuje plik `'./bar.pkl'` ze zdalnego obliczeniowego do magazynu danych `ds3` po uruchomieniu skryptu
 
 ```Python
 est = Estimator(source_directory='your code directory',

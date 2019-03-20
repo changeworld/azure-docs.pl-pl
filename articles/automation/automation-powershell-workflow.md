@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7ab6b387a28df06758e5e0c1ce197781fc4be3c5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c5764c36a646b9639c0eb6463c39b9f014c4272d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436811"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168089"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Nauka podstawowych pojęć przepływu pracy środowiska Windows PowerShell dla elementów runbook usługi Automation
 
@@ -226,7 +226,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Punkty kontrolne
 
-A *punktu kontrolnego* jest migawką bieżącego stanu przepływu pracy, który zawiera bieżące wartości zmiennych i wszelkie dane wyjściowe wygenerowane do tego punktu. Jeśli przepływ pracy nazwą kończącą się błąd lub jest wstrzymana, następnie przy następnym uruchomieniu rozpocznie od jej ostatniego punktu kontrolnego, zamiast początku przepływu pracy.  Punkt kontrolny można ustawić w przepływie pracy za pomocą **Checkpoint-Workflow** działania.
+A *punktu kontrolnego* jest migawką bieżącego stanu przepływu pracy, który zawiera bieżące wartości zmiennych i wszelkie dane wyjściowe wygenerowane do tego punktu. Jeśli przepływ pracy nazwą kończącą się błąd lub jest wstrzymana, następnie przy następnym uruchomieniu rozpocznie od jej ostatniego punktu kontrolnego, zamiast początku przepływu pracy.  Punkt kontrolny można ustawić w przepływie pracy za pomocą **Checkpoint-Workflow** działania. Usługa Azure Automation korzystają z funkcji [udział](automation-runbook-execution.md#fair-share), gdzie każdego elementu runbook, który działa przez 3 godziny zwalnianie umożliwia uruchomienie innych elementów runbook. Po pewnym czasie zwolnione element runbook zostanie załadowana ponownie, a gdy jest to, wykonanie od ostatniego punktu kontrolnego w elemencie runbook zostanie wznowione. W celu zagwarantowania, że element runbook zostanie ostatecznie zakończona, należy dodać punkty kontrolne w odstępach czasu, działające przez mniej niż 3 godziny. Jeśli podczas każdego uruchomienia jest dodawany nowy punkt kontrolny, a jeśli element runbook zostanie usunięty po 3 godziny z powodu błędu elementu runbook zostanie wznowione na czas nieokreślony.
 
 W poniższym przykładowym kodzie wyjątek wystąpi po działaniu Activity2 powoduje zakończenia przepływu pracy. Gdy przepływ pracy zostanie uruchomiony ponownie, rozpoczyna się przez uruchomienie Activity2, ponieważ przypadało ono zaraz po, ustaw ostatniego punktu kontrolnego.
 

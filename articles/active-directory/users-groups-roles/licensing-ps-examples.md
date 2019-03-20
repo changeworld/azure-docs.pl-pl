@@ -1,6 +1,6 @@
 ---
-title: Przykłady programu PowerShell i Graph Licencjonowanie oparte na grupach — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Scenariusze programu PowerShell dla licencjonowania opartego na grupach usługi Azure Active Directory
+title: Przykłady programu PowerShell i Graph licencjonowania grupy — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: PowerShell + wykresu, przykłady i scenariusze dotyczące licencjonowania opartego na grupach usługi Azure Active Directory
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
@@ -10,29 +10,31 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 02/27/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf8acf56c7ebf0fb85417f867044857cc51d223
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9da6f85f194d9aebab22584f8cba8b227ed38a72
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888002"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223312"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure AD
 
 Pełna funkcjonalność dla licencjonowania opartego na grupach jest dostępna za pośrednictwem [witryny Azure portal](https://portal.azure.com), i obecnie Obsługa programu PowerShell i program Microsoft Graph jest ograniczona. Istnieją jednak pewne użytecznych zadań, które mogą być wykonywane przy użyciu istniejącego [poleceń cmdlet programu MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) i Microsoft Graph. W tym dokumencie przedstawiono przykłady, co jest możliwe.
 
 > [!NOTE]
-> Przed uruchomieniem poleceń cmdlet, upewnij się, nawiązaniu połączenia z Twojej dzierżawy, uruchamiając `Connect-MsolService`  polecenia cmdlet.
+> Przed uruchomieniem poleceń cmdlet, upewnij się, nawiązaniu połączenia z Twojej organizacji, uruchamiając `Connect-MsolService`  polecenia cmdlet.
 
 > [!WARNING]
 > Ten kod jest dostarczany jako przykład w celach demonstracyjnych. Jeśli zamierzasz używać jej w środowisku, należy wziąć pod uwagę testowanie go najpierw na małą skalę, lub w dzierżawie testowej oddzielne. Może być konieczne dostosowanie kod w celu spełnienia specyficznych potrzeb danego środowiska.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>Wyświetl licencje produktów przypisane do grupy
+
 [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) polecenia cmdlet można pobrać obiektu grupy i sprawdź *licencji* właściwości: Wyświetla listę wszystkich licencji produktu aktualnie przypisane do grupy.
+
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
 | Select SkuPartNumber
@@ -48,7 +50,7 @@ EMSPREMIUM
 > [!NOTE]
 > Dane są ograniczone do informacji o produkcie (SKU). Nie jest możliwe wyświetlić listę planów usług, wyłączona w licencji.
 
-Użyj następujących czynności, aby uzyskać te same dane z programu Microsoft Graph
+Użyj poniższego przykładu, aby uzyskać te same dane z programu Microsoft Graph.
 
 ```
 GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
@@ -113,10 +115,9 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $licenseAssignedCount = 0;
     $licenseErrorCount = 0;
 
-    Get-MsolGroupMember -All -GroupObjectId $groupId |
+    Get-MsolGroupMember -All -GroupObjectId $groupId
     #get full info about each user in the group
-    Get-MsolUser -ObjectId {$_.ObjectId} |
-    Foreach {
+    Get-MsolUser -ObjectId {$_.ObjectId} |     Foreach {
         $user = $_;
         $totalCount++
 
@@ -219,17 +220,21 @@ Get-MsolGroupMember -All -GroupObjectId $groupId |
 ```
 
 Dane wyjściowe:
-```
+
+```powershell
 ObjectId                             DisplayName      License Error
 --------                             -----------      ------------
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
-Użyj następujących czynności, aby uzyskać te same dane z programu Microsoft Graph
-```
+
+Aby uzyskać te same dane z programu Microsoft Graph, użyj następującego:
+
+```powershell
 GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
 ```
+
 Dane wyjściowe:
-```
+```powershell
 HTTP/1.1 200 OK
 {
   "value":[
@@ -241,7 +246,7 @@ HTTP/1.1 200 OK
     },
     ... # other users.
   ],
-  "odata.nextLink":"https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors?$skipToken=<encodedPageToken>" 
+  "odata.nextLink":"https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors?$skipToken=<encodedPageToken>"
 }
 
 ```
@@ -268,7 +273,7 @@ Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {
 
 Dane wyjściowe:
 
-```
+```powershell
 UserName         UserId                               GroupId                              LicenseError
 --------         ------                               -------                              ------------
 Anna Bergman     0d0fd16d-872d-4e87-b0fb-83c610db12bc 7946137d-b00d-4336-975e-b1b81b0666d0 MutuallyExclusiveViolation
@@ -297,6 +302,7 @@ $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
 Dla obiektu użytkownika jest to możliwe sprawdzić, czy przypisano licencję konkretnego produktu z grupy, czy jest ona przypisana bezpośrednio.
 
 Dwie funkcje przykładowe poniżej może służyć do analizowania typu przydziału na użytkownika:
+
 ```powershell
 #Returns TRUE if the user has the license assigned directly
 function UserHasLicenseAssignedDirectly
@@ -359,8 +365,9 @@ function UserHasLicenseAssignedFromGroup
 ```
 
 Ten skrypt wykonuje te funkcje dla poszczególnych użytkowników w dzierżawie, używając Identyfikatora jednostki SKU jako dane wejściowe — w tym przykładzie interesuje licencję *Enterprise Mobility + Security*, co w naszej dzierżawy jest reprezentowane przez identyfikator  *Contoso:EMS*:
+
 ```powershell
-#the license SKU we are interested in. use Msol-GetAccountSku to see a list of all identifiers in your tenant
+#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
 $skuId = "contoso:EMS"
 
 #find all users that have the SKU license assigned
@@ -372,7 +379,8 @@ Get-MsolUser -All | where {$_.isLicensed -eq $true -and $_.Licenses.AccountSKUID
 ```
 
 Dane wyjściowe:
-```
+
+```powershell
 ObjectId                             SkuId       AssignedDirectly AssignedFromGroup
 --------                             -----       ---------------- -----------------
 157870f6-e050-4b3c-ad5e-0f0a377c8f4d contoso:EMS             True             False
@@ -380,12 +388,15 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-Wykres nie ma prosty sposób przedstawiają wynik pomyślnie, ale są widoczne z tego interfejsu API
-```
+Wykres nie ma prosty sposób przedstawiają wynik pomyślnie, ale są widoczne z tego interfejsu API:
+
+```powershell
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
 ```
+
 Dane wyjściowe:
-```
+
+```powershell
 HTTP/1.1 200 OK
 {
   "value":[
@@ -433,6 +444,7 @@ HTTP/1.1 200 OK
 ```
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Usuń bezpośrednie licencji dla użytkowników z licencjami grup
+
 Ten skrypt ma na celu usuń niepotrzebne bezpośrednie licencje użytkownikom, którzy już dziedziczyć po samym licencji grupy; na przykład, jako część [Przechodzenie do licencjonowania opartego na grupach](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
 > [!NOTE]
 > Należy najpierw sprawdzić poprawność bezpośrednie licencji do usunięcia nie należy włączać więcej funkcji usługi niż odziedziczonych licencji. W przeciwnym razie usuwanie licencji bezpośrednie może wyłączyć dostęp do danych i usług dla użytkowników. Obecnie nie jest możliwe sprawdzenie za pomocą programu PowerShell, które usługi są włączane za pośrednictwem bezpośredniego vs odziedziczonych licencji. W skrypcie określamy minimalny poziom usług, z których wiemy, są dziedziczone z grupy i sprawdź przeciwko, aby upewnić się, że użytkownicy nie nieoczekiwanie utracą dostęp do usług.
@@ -553,10 +565,9 @@ $servicePlansFromGroups = ("EXCHANGE_S_ENTERPRISE", "SHAREPOINTENTERPRISE", "OFF
 $expectedDisabledPlans = GetDisabledPlansForSKU $skuId $servicePlansFromGroups
 
 #process all members in the group
-Get-MsolGroupMember -All -GroupObjectId $groupId |
+Get-MsolGroupMember -All -GroupObjectId $groupId
     #get full info about each user in the group
-    Get-MsolUser -ObjectId {$_.ObjectId} |
-    Foreach {
+    Get-MsolUser -ObjectId {$_.ObjectId} | Foreach {
         $user = $_;
         $operationResult = "";
 
@@ -599,12 +610,13 @@ Get-MsolGroupMember -All -GroupObjectId $groupId |
 ```
 
 Dane wyjściowe:
-```
-UserId                               OperationResult                                                                                
-------                               ---------------                                                                                
-7c7f860f-700a-462a-826c-f50633931362 Removed direct license from user.                                                              
+
+```powershell
+UserId                               OperationResult
+------                               ---------------
+7c7f860f-700a-462a-826c-f50633931362 Removed direct license from user.
 0ddacdd5-0364-477d-9e4b-07eb6cdbc8ea User has extra plans that may be lost - license removal was skipped. Extra plans: SHAREPOINTWAC
-aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.                                                
+aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -3,7 +3,7 @@ title: Rejestrowanie usługi - Azure Machine Learning Studio w sieci Web | Dokum
 description: Dowiedz się, jak włączyć rejestrowanie dla usług sieci web Machine Learning Studio. Rejestrowanie udostępnia dodatkowe informacje ułatwiające rozwiązywanie problemów z interfejsów API.
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
 editor: cgronlun
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 23a160ee15547bea7d5ee832cd1032b2e899966b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 727379edb60756ca8cb3e5ebdc29cd38858945e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821836"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857559"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Włączanie rejestrowania usług sieci web Azure Machine Learning Studio
 Ten dokument zawiera informacje dotyczące możliwości rejestrowania usług sieci web Machine Learning Studio. Rejestrowanie udostępnia dodatkowe informacje, poza po prostu liczbą błędów i komunikatów, które mogą ułatwić rozwiązywanie problemów z wywołaniami interfejsy API usługi Machine Learning Studio.  
@@ -57,7 +57,7 @@ Włączanie rejestrowania z [usług sieci Web programu Azure Machine Learning St
 
    3. Jeśli kontener **diagnostyki ml** nie istnieje, kliknij przycisk **+ kontener**, nadaj nazwę "ml — diagnostyki" kontenera i wybierz **dostęp typu** jako "Blob". Kliknij przycisk **OK**.
 
-      ![Wybierz poziom rejestrowania](./media/web-services-logging/create-ml-diagnostics-container.png)
+      ![Utwórz nowy kontener do przechowywania dzienników diagnostycznych](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >

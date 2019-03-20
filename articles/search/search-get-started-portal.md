@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270338"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137831"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Szybki start: Korzystanie z wbudowanych narzędzi portalu do importowania, indeksowania i wykonywania zapytań w usłudze Azure Search
 
@@ -34,13 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Utwórz usługę Azure Search](search-create-service-portal.md) lub znajdź istniejącą usługę w ramach bieżącej subskrypcji.
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Otwórz pulpit nawigacyjny usługi Azure Search. Jeśli nie przypniesz kafelka usługi do pulpitu nawigacyjnego, usługę można znaleźć w następujący sposób:
-
-   * Na pasku dostępu kliknij pozycję **Wszystkie usługi** w lewym okienku nawigacji.
-   * W polu wyszukiwania wpisz *search*, aby uzyskać listę usług wyszukiwania dostępnych w Twojej subskrypcji. Kliknij pozycję **Search services** (Usługi wyszukiwania). Usługa powinna zostać wyświetlona na liście.
+[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa dla tego przewodnika Szybki Start. 
 
 ### <a name="check-for-space"></a>Sprawdzanie ilości wolnego miejsca
 
@@ -268,7 +262,7 @@ Przedstawiono również sposób znajdowania indeksów, indeksatorów i źródeł
 
 Jeśli w tym samouczku usługa Azure Search była używana po raz pierwszy, usuń grupę zasobów zawierającą usługę Azure Search. W przeciwnym razie wyszukaj odpowiednią nazwę grupy zasobów na liście usług i usuń ją.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Możesz lepiej poznać usługę Azure Search przy użyciu narzędzi programistycznych:
 

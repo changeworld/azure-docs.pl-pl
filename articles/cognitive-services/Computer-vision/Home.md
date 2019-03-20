@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453056"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432111"
 ---
 # <a name="what-is-computer-vision"></a>Czym jest przetwarzanie obrazów?
 
@@ -42,12 +42,11 @@ Obrazy można analizować, aby wykrywać cechy wizualne i właściwości obrazó
 |**[Generowanie miniatur](concept-generating-thumbnails.md)**|Analizowanie zawartości obrazu w celu wygenerowania dla niego odpowiedniej miniatury. Usługa przetwarzania obrazów najpierw generuje wysokiej jakości miniaturę, po czym analizuje obiekty na obrazie, aby określić *obszar zainteresowania*. Następnie przetwarzanie obrazów przycina obraz zgodnie z wymaganiami obszaru zainteresowania. W zależności od potrzeb wygenerowana miniatura może mieć współczynnik proporcji inny od współczynnika proporcji oryginalnego obrazu.|
 |**[Określanie obszaru zainteresowania](concept-generating-thumbnails.md#area-of-interest)**|Przeanalizuj zawartość obrazu w celu zwrócenia współrzędnych *obszaru zainteresowania*. Jest to ta sama funkcja, która służy do generowania miniatur, ale zamiast przycinania obrazu przetwarzanie obrazów zwraca współrzędne pola ograniczenia regionu, dlatego aplikacja wywołująca może modyfikować oryginalny obraz zgodnie z potrzebami.|
 
-
 ## <a name="extract-text-from-images"></a>Wyodrębnianie tekstu z obrazów
 
-Usługa przetwarzania obrazów umożliwia [wyodrębnianie tekstu za pomocą optycznego rozpoznawania znaków (OCR, Optical Character Recognition)](concept-extracting-text-ocr.md) z obrazu do strumienia znaków czytelnych dla komputera. Jeśli to konieczne, funkcja optycznego rozpoznawania znaków poprawia kąt obrotu i podaje współrzędne ramki każdego wyrazu. Funkcja optycznego rozpoznawania znaków obsługuje 25 języków i automatycznie wykrywa język rozpoznanego tekstu.
+Przetwarzanie obrazów służą do wyodrębniania tekstu z obrazu do strumienia znaków do odczytu maszynowego przy użyciu [optyczne rozpoznawanie znaków (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api). Jeśli to konieczne, funkcja optycznego rozpoznawania znaków poprawia kąt obrotu i podaje współrzędne ramki każdego wyrazu. Funkcja optycznego rozpoznawania znaków obsługuje 25 języków i automatycznie wykrywa język rozpoznanego tekstu.
 
-Można również [rozpoznawać tekst drukowany i pismo odręczne](concept-recognizing-text.md) na obrazie. Przetwarzanie obrazów potrafi wykrywać i wyodrębniać zarówno tekst drukowany, jak i pismo odręczne z obrazów różnych obiektów na różnych powierzchniach i tłach, takich jak rachunki, plakaty, wizytówki, listy i tablice. Obecnie rozpoznawanie tekstu drukowanego i odręcznego jest w wersji zapoznawczej i jedynym obsługiwanym językiem jest angielski. 
+Można również użyć [API odczytu](concept-recognizing-text.md#read-api) umożliwia wyodrębnianie tekstu odręcznego i drukować z obrazy i dokumenty zawierające dużo tekstu. Interfejs API odczytu używa modeli zaktualizowane i działa dla obiektów różne na różnych powierzchniach i tłach, takich jak przychody, plakaty, wizytówki, litery i tablic. Obecnie interfejs API odczytu jest w wersji zapoznawczej i jedynym obsługiwanym językiem jest angielski.
 
 ## <a name="moderate-content-in-images"></a>Moderowanie zawartości na obrazach
 
@@ -70,7 +69,7 @@ Przetwarzanie obrazów umożliwia analizowanie obrazów, które spełniają nast
 
 Jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi przetwarzania obrazów powinni znać zasady firmy Microsoft dotyczące danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Rozpocznij pracę z przetwarzaniem obrazów, korzystając z przewodnika Szybki start:
 

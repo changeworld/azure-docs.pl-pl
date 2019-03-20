@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: c0b317019d69d5d66e5a85304f739c92b761217c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b323836ff804d9e4af3765a2d4ea713a34bcf284
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087656"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226525"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware za pomocą usługi Azure Backup Server
 
@@ -327,31 +327,31 @@ Dodaj maszyny wirtualne programu VMware do utworzenia kopii zapasowej. Grup ochr
      ![Wybierz metodę tworzenia repliki](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
 1. W **opcje sprawdzania spójności**, zdecyduj, jak i kiedy automatyzacji sprawdzania spójności. Następnie kliknij przycisk **Next** (Dalej).
-     - Możesz uruchomić sprawdzanie spójności, gdy dane są niespójne, lub zgodnie z ustalonym harmonogramem.
-     - Jeśli nie chcesz skonfigurować automatyczne sprawdzenia spójności, możesz uruchomić sprawdzanie ręczne. Aby to zrobić, kliknij prawym przyciskiem myszy grupę ochrony > **Przeprowadź Sprawdzanie spójności**.
+      - Możesz uruchomić sprawdzanie spójności, gdy dane są niespójne, lub zgodnie z ustalonym harmonogramem.
+      - Jeśli nie chcesz skonfigurować automatyczne sprawdzenia spójności, możesz uruchomić sprawdzanie ręczne. Aby to zrobić, kliknij prawym przyciskiem myszy grupę ochrony > **Przeprowadź Sprawdzanie spójności**.
 
 1. W **Określ dane ochrony Online** wybierz maszyny wirtualne lub maszyny Wirtualnej, foldery, które chcesz utworzyć kopię zapasową. Wybierz elementy członkowskie, pojedynczo lub kliknij przycisk **Zaznacz wszystko** aby wybrać wszystkie elementy członkowskie. Następnie kliknij przycisk **Next** (Dalej).
 
-     ![Określ dane chronione w trybie online](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+      ![Określ dane chronione w trybie online](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Na **Określ harmonogram tworzenia kopii zapasowych Online** Określ, jak często chcesz utworzyć kopię zapasową danych z magazynu lokalnego do platformy Azure.
 
     - Punkty odzyskiwania w chmurze dla danych będą generowane zgodnie z harmonogramem. Następnie kliknij przycisk **Next** (Dalej).
     - Po wygenerowaniu punkt odzyskiwania, jego przeniesienie do magazynu usługi Recovery Services na platformie Azure.
 
-    ![Określ harmonogram tworzenia kopii zapasowej online](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+      ![Określ harmonogram tworzenia kopii zapasowej online](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
 1. Na **Określanie zasad przechowywania Online** strony, wskazują, jak długo chcesz przechowywać punktów odzyskiwania, które są tworzone na podstawie kopii zapasowych co dzień/tydzień/miesiąc/rok na platformie Azure. Następnie kliknij przycisk **dalej**.
 
     - Nie ma żadnego limitu czasu, na jak długo można przechowywać dane na platformie Azure.
     - Jedynym ograniczeniem jest to, że nie może mieć więcej niż 9999 punktów odzyskiwania na chronione wystąpienie. W tym przykładzie chronione wystąpienie jest serwerem VMware.
 
-    ![Określ zasady przechowywania danych online](./media/backup-azure-backup-server-vmware/retention-policy.png)
+      ![Określ zasady przechowywania danych online](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 
 1. Na **Podsumowanie** strony, przejrzyj ustawienia, a następnie kliknij przycisk **Utwórz grupę**.
 
-    ![Elementu członkowskiego grupy ochrony i ustawienia — podsumowanie](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+     ![Elementu członkowskiego grupy ochrony i ustawienia — podsumowanie](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 

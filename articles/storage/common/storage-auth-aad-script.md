@@ -1,102 +1,133 @@
 ---
-title: Uruchom polecenia wiersza polecenia platformy Azure lub programu PowerShell przy użyciu tożsamości usługi Azure AD, aby dostęp do usługi Azure Storage (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Uruchom polecenia wiersza polecenia platformy Azure lub programu PowerShell przy użyciu tożsamości usługi Azure AD, aby dostęp do usługi Azure Storage | Dokumentacja firmy Microsoft
 description: Program PowerShell i interfejsu wiersza polecenia platformy Azure obsługuje zalogować się przy użyciu tożsamości usługi Azure AD, aby uruchamiać polecenia na kontenery usługi Azure Storage i kolejki oraz ich dane. Token dostępu jest podana w sesji i autoryzowanie wywołania operacji. Uprawnienia są zależne od roli przypisanej do tożsamości usługi Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6369c9c2c3c517012018063883b04487f86ddfd9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8fd3cdcf73749d787fc6f1c2222946961091f80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460492"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849843"
 ---
-# <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)
+# <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell
 
-Usługa Azure Storage udostępnia rozszerzenia (wersja zapoznawcza) dla wiersza polecenia platformy Azure i programu PowerShell, które umożliwiają użytkownikowi Zaloguj się i uruchamianie poleceń skryptu z tożsamością usługi Azure Active Directory (Azure AD). Tożsamość usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być [tożsamości zarządzanej dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Możesz przypisywać uprawnienia dostępu do zasobów magazynu tożsamości usługi Azure AD za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat ról RBAC w usłudze Azure Storage, zobacz [Zarządzaj prawa dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+Usługa Azure Storage udostępnia rozszerzenia dla wiersza polecenia platformy Azure i programu PowerShell, które umożliwiają użytkownikowi Zaloguj się i uruchamianie poleceń skryptu z tożsamością usługi Azure Active Directory (Azure AD). Tożsamość usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być [tożsamości zarządzanej dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Możesz przypisywać uprawnienia dostępu do zasobów magazynu tożsamości usługi Azure AD za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat ról RBAC w usłudze Azure Storage, zobacz [Zarządzaj prawa dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
 
 Po zalogowaniu do wiersza polecenia platformy Azure lub programu PowerShell przy użyciu tożsamości usługi Azure AD, token dostępu jest zwracany do uzyskiwania dostępu do usługi Azure Storage w ramach tej tożsamości. Ten token jest następnie automatycznie używany przez interfejs wiersza polecenia lub programu PowerShell można autoryzować operacji dotyczących usługi Azure Storage. Dla obsługiwanych operacji nie trzeba przekazać klucz konta lub token sygnatury dostępu Współdzielonego za pomocą polecenia.
 
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
-
 ## <a name="supported-operations"></a>Obsługiwane operacje
 
-Rozszerzenia (wersja zapoznawcza) są obsługiwane dla operacji na kontenerach i kolejek. Jakie operacje może wywołać zależy od uprawnienia udzielone do tożsamości usługi Azure AD za pomocą którego możesz Zaloguj się do wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów usługi Azure Storage lub kolejki są przypisywane przy użyciu kontroli dostępu opartej na rolach (RBAC). Na przykład jeśli rola czytnik danych jest przypisany do odpowiedniej tożsamości, następnie można uruchomić poleceń skryptu, które odczytują dane z kontenera lub kolejki. Jeśli rola Współautor Data jest przypisany do odpowiedniej tożsamości, można uruchomić poleceń skryptu, które odczytu, zapisu lub usuwania kontenera lub kolejki lub danych, które zawierają. 
+Rozszerzenia są obsługiwane operacje na kontenerach i kolejek. Jakie operacje może wywołać zależy od uprawnienia udzielone do tożsamości usługi Azure AD za pomocą którego możesz Zaloguj się do wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów usługi Azure Storage lub kolejki są przypisywane przy użyciu kontroli dostępu opartej na rolach (RBAC). Na przykład jeśli rola czytnik danych jest przypisany do odpowiedniej tożsamości, następnie można uruchomić poleceń skryptu, które odczytują dane z kontenera lub kolejki. Jeśli rola Współautor Data jest przypisany do odpowiedniej tożsamości, można uruchomić poleceń skryptu, które odczytu, zapisu lub usuwania kontenera lub kolejki lub danych, które zawierają. 
 
 Aby uzyskać szczegółowe informacje o uprawnieniach wymaganych dla każdej operacji magazynu platformy Azure, kontenera lub kolejki, zobacz [uprawnień do wywoływania operacji REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 
-## <a name="call-cli-commands-with-an-azure-ad-identity"></a>Wywołanie polecenia interfejsu wiersza polecenia przy użyciu tożsamości usługi Azure AD
+## <a name="call-cli-commands-using-azure-ad-credentials"></a>Wywołanie polecenia interfejsu wiersza polecenia przy użyciu poświadczeń usługi Azure AD
 
-Aby zainstalować rozszerzenia w wersji zapoznawczej dla wiersza polecenia platformy Azure:
+Wiersza polecenia platformy Azure obsługuje `--auth-mode` parametr danych operacje względem usługi Azure Storage:
 
-1. Upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w wersji 2.0.32 lub nowszej. Uruchom `az --version` Aby sprawdzić zainstalowaną wersją.
-2. Uruchom następujące polecenie, aby zainstalować rozszerzenia w wersji zapoznawczej: 
-
-    ```azurecli
-    az extension add -n storage-preview
-    ```
-
-Rozszerzenia w wersji zapoznawczej dodaje nowy `--auth-mode` parametr obsługiwane polecenia:
-
-- Ustaw `--auth-mode` parametr `login` logować się za pomocą tożsamości usługi Azure AD.
+- Ustaw `--auth-mode` parametr `login` zarejestrować się przy użyciu podmiotu zabezpieczeń usługi Azure AD.
 - Ustaw `--auth-mode` parametr do starszego `key` znajdują się wartości, aby spróbować odpytać do klucza konta, gdy nie parametry uwierzytelniania dla konta. 
 
-Na przykład, aby pobrać obiekt blob w wiersza polecenia platformy Azure przy użyciu tożsamości usługi Azure AD, najpierw uruchom `az login`, następnie wywołaj polecenie `--auth-mode` równa `login`:
+Poniższy przykład pokazuje, jak utworzyć kontener w nowe konto magazynu z wiersza polecenia platformy Azure przy użyciu poświadczeń usługi Azure AD. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasy ostre własnymi wartościami: 
 
-```azurecli
-az login
-az storage blob download --account-name storagesamples --container sample-container --name myblob.txt --file myfile.txt --auth-mode login 
-```
+1. Upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom `az --version` Aby sprawdzić zainstalowaną wersją.
 
-Zmienna środowiskowa skojarzone z `--auth-mode` parametr `AZURE_STORAGE_AUTH_MODE`.
+1. Uruchom `az login` i Uwierzytelnij się w oknie przeglądarki: 
 
-## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Wywołania poleceń programu PowerShell przy użyciu tożsamości usługi Azure AD
+    ```azurecli
+    az login
+    ```
+    
+1. Określ żądaną subskrypcji. Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create). Tworzenie konta magazynu w ramach tego zasobu grupy za pomocą [Tworzenie konta magazynu az](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create): 
+
+    ```azurecli
+    az account set --subscription <subscription-id>
+
+    az group create \
+        --name sample-resource-group-cli \
+        --location eastus
+
+    az storage account create \
+        --name <storage-account> \
+        --resource-group sample-resource-group-cli \
+        --location eastus \
+        --sku Standard_LRS \
+        --encryption-services blob
+    ```
+    
+1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielać dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+
+    > [!IMPORTANT]
+    > W trakcie okresu zapoznawczego obsługę usługi Azure AD dla kolejek i obiektów blob przypisania ról RBAC może potrwać do 5 minut na propagację.
+    
+1. Wywołaj [utworzyć kontenera magazynu az](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) polecenia `--auth-mode` parametr `login` do utworzenia kontenera przy użyciu poświadczeń usługi Azure AD:
+
+    ```azurecli
+    az storage container create \ 
+        --account-name <storage-account> \ 
+        --name sample-container \
+        --auth-mode login
+    ```
+
+Zmienna środowiskowa skojarzone z `--auth-mode` parametr `AZURE_STORAGE_AUTH_MODE`. Można określić odpowiednią wartość w zmiennej środowiskowej, aby uniknąć go w tym w przypadku każdego wywołania operacji danych usługi Azure Storage.
+
+## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Wywołania poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Aby zalogować się przy użyciu tożsamości usługi Azure AD za pomocą programu Azure PowerShell:
+Za pomocą programu Azure PowerShell Zaloguj się i przeprowadzać kolejne operacje usługi Azure Storage przy użyciu poświadczeń usługi Azure AD, Utwórz kontekst magazynu, aby odwoływać się do konta magazynu z uwzględnieniem `-UseConnectedAccount` parametru.
 
-1. Odinstaluj wszystkie poprzednie instalacje programu Azure PowerShell:
+Poniższy przykład przedstawia sposób tworzenia kontenera na nowym koncie magazynu za pomocą programu Azure PowerShell przy użyciu poświadczeń usługi Azure AD. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasy ostre własnymi wartościami:
 
-    - Usuń wszystkie poprzednie instalacje programu Azure PowerShell z Windows przy użyciu **aplikacje i funkcje** w obszarze **ustawienia**.
-    - Usuń wszystkie **Azure*** modułów z `%Program Files%\WindowsPowerShell\Modules`.
-
-1. Upewnij się, że masz najnowszą wersję zainstalowanego modułu PowerShellGet. Otwórz okno programu Windows PowerShell i uruchom następujące polecenie, aby zainstalować najnowszą wersję:
- 
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
-    ```
-1. Zamknij i Otwórz okno programu PowerShell po zainstalowaniu modułu PowerShellGet. 
-
-1. Zainstaluj najnowszą wersję programu Azure PowerShell:
+1. Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami, aby wprowadzić swoje poświadczenia usługi Azure AD: 
 
     ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
+    Connect-AzAccount
+    ```
+    
+1. Utwórz grupę zasobów platformy Azure przez wywołanie metody [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
+
+    ```powershell
+    $resourceGroup = "sample-resource-group-ps"
+    $location = "eastus"
+    New-AzResourceGroup -Name $resourceGroup -Location $location
     ```
 
-1. Instalowanie modułu w wersji zapoznawczej usługi Azure Storage, który obsługuje usługi Azure AD:
-   
-   ```powershell
-   Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
-   ```
-1. Zamknij i Otwórz okno programu PowerShell.
-1. Wywołaj [New AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) polecenia cmdlet, aby utworzyć kontekst i obejmują `-UseConnectedAccount` parametru. 
-1. Aby wywoływać polecenia cmdlet przy użyciu tożsamości usługi Azure AD, należy przekazać nowo utworzony kontekst do polecenia cmdlet.
+1. Tworzenie konta magazynu przez wywołanie metody [New AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount).
 
-Poniższy przykład przedstawia listę obiektów blob w kontenerze za pomocą programu Azure PowerShell za pomocą tożsamości usługi Azure AD. Koniecznie Zastąp symbol zastępczy nazwy konta i kontenera przy użyciu własnych wartości: 
+    ```powershell
+    $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
+      -Name "<storage-account>" `
+      -SkuName Standard_LRS `
+      -Location $location `
+    ```
 
-```powershell
-$ctx = New-AzStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
-Get-AzStorageBlob -Container sample-container -Context $ctx 
-```
+1. Pobierz kontekst konta magazynu, który określa nowe konto magazynu, wywołując [New AzStorageContext](/powershell/module/az.storage/new-azstoragecontext). Działa na koncie magazynu, można odwoływać się do kontekstu, zamiast wielokrotnie przekazywać poświadczenia. Obejmują `-UseConnectedAccount` parametr wywołuj dowolne operacje następne dane przy użyciu poświadczeń usługi Azure AD:
+
+    ```powershell
+    $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
+    ```
+
+1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielać dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+
+    > [!IMPORTANT]
+    > W trakcie okresu zapoznawczego obsługę usługi Azure AD dla kolejek i obiektów blob przypisania ról RBAC może potrwać do 5 minut na propagację.
+
+1. Utwórz kontener, wywołując [New AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer). Ponieważ to wywołanie używa kontekstu utworzony w poprzednich krokach, ten kontener jest tworzony przy użyciu poświadczeń usługi Azure AD. 
+
+    ```powershell
+    $containerName = "sample-container"
+    New-AzStorageContainer -Name $containerName -Context $ctx
+    ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
 - Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)](storage-auth-aad-msi.md).
 - Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejki ze w aplikacjach pamięci masowej, zobacz [Użyj usługi Azure AD z magazynu aplikacji](storage-auth-aad-app.md).
-- Aby uzyskać dodatkowe informacje na temat integracji z usługą Azure AD dla kolejek i obiektów blob platformy Azure, zobacz blog zespołu usługi Azure Storage, publikowania, [ogłoszenie uwierzytelniania w wersji zapoznawczej programu Azure AD dla usługi Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).

@@ -4,17 +4,17 @@ description: Dowiedz się, które systemy operacyjne można uruchomić demona us
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5c215c125237d72875155f15002fca6c4bee53b1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5bc133e81f9917aafb406a6bfb27922cdba48ef5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077738"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190009"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Usługa Azure IoT Edge obsługiwanych systemów
 
@@ -36,15 +36,15 @@ Usługa Azure IoT Edge wymaga aparatu kontenera, aby uruchomić modułów, ponie
 </center>
 
 ## <a name="operating-systems"></a>Systemy operacyjne
-Usługa Azure IoT Edge działa na większości systemów operacyjnych, które umożliwia uruchamianie kontenerów; Jednak wszystkie te nie są równie obsługiwane. Systemy operacyjne są podzielone na warstwy, które reprezentują poziom pomocy technicznej, które użytkownicy mogą oczekiwać.
-* Warstwa 1 systemów można traktować jako oficjalnie obsługiwany. Oznacza to, że firmy Microsoft:
+Usługa Azure IoT Edge działa na większości systemów operacyjnych, które umożliwia uruchamianie kontenerów; Jednak wszystkie te systemy są równie nieobsługiwane. Systemy operacyjne są podzielone na warstwy, które reprezentują poziom pomocy technicznej, które użytkownicy mogą oczekiwać.
+* Warstwa 1 systemów można traktować jako oficjalnie obsługiwany. Warstwa 1 systemy, firmy Microsoft:
     * jest to system operacyjny w testach automatycznych
     * udostępnia pakiety instalacyjne dla nich
-* Systemy warstwy 2 można traktować jako zgodna z usługą Azure IoT Edge i może służyć stosunkowo łatwe. Oznacza to, że:
+* Systemy warstwy 2 można traktować jako zgodna z usługą Azure IoT Edge i może służyć stosunkowo łatwe. Warstwa 2 systemy:
     * Ma przeprowadzić doraźne testy na platformach firmy Microsoft lub zna partnerem, który został pomyślnie uruchomiony usługi Azure IoT Edge jest
     * Pakiety instalacyjne dla innych platform może działać na tych platformach
     
-Rodzina systemu operacyjnego hosta musi zawsze odpowiadać rodziny używane w kontenerze modułu systemu operacyjnego gościa. Innymi słowy tylko umożliwia kontenerów systemu Linux w systemie Linux i kontenerów Windows na Windows. Korzystając z Windows, proces izolowany kontenerów są obsługiwane, nie funkcji hyper-v kontenerach izolowanych.  
+Rodzina systemu operacyjnego hosta musi zawsze odpowiadać rodziny używane w kontenerze modułu systemu operacyjnego gościa. Innymi słowy tylko umożliwia kontenerów systemu Linux w systemie Linux i kontenerów Windows na Windows. Korzystając z Windows, przetwarzają tylko kontenerach izolowanych są obsługiwane, nie funkcji Hyper-V samodzielnie kontenerów.  
 
 <br>
 <center>
@@ -65,11 +65,11 @@ Publiczna wersja zapoznawcza
 
 | System operacyjny | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core build 17763 | Yes | Nie |
-| Windows 10 IoT Enterprise build 17763 | Yes | Nie |
+| Windows 10 IoT Core, build 17763 | Yes | Nie |
+| Windows 10 IoT Enterprise, build 17763 | Yes | Nie |
 | Windows Server 2019 | Yes | Nie |
 
-Systemy operacyjne Windows powyżej przedstawiono wymagania dotyczące urządzeń, których uruchamianie kontenerów Windows na Windows. Jest to jedyna obsługiwana konfiguracja dla środowiska produkcyjnego. Pakiety instalacyjne usługi Azure IoT Edge dla Windows umożliwia korzystanie z kontenerów systemu Linux na Windows; Jednak to tworzenia i testowania tylko. Korzystanie z kontenerów systemu Linux na Windows nie jest obsługiwaną konfiguracją w środowisku produkcyjnym. Dowolna wersja systemu Windows 10 kompilacji 14393 lub nowszym i Windows Server 2016 lub nowszym może służyć w tym scenariuszu rozwoju.
+Systemów operacyjnych Windows wymienionych powyżej przedstawiono wymagania dotyczące urządzeń z systemem Windows kontenery na Windows. Ta konfiguracja jest tylko obsługiwana konfiguracja dla środowiska produkcyjnego. Pakiety instalacyjne usługi Azure IoT Edge dla Windows umożliwia korzystanie z kontenerów systemu Linux na Windows; Jednak ta konfiguracja jest do tworzenia i testowania tylko. Korzystanie z kontenerów systemu Linux na Windows nie jest obsługiwaną konfiguracją w środowisku produkcyjnym. Dowolna wersja systemu Windows 10 kompilacji 14393 lub nowszym i Windows Server 2016 lub nowszym może służyć w tym scenariuszu rozwoju.
 
 ### <a name="tier-2"></a>Warstwa 2
 
@@ -86,7 +86,7 @@ Systemy operacyjne Windows powyżej przedstawiono wymagania dotyczące urządze�
 
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
-Usługa Azure IoT Edge można uruchomić na maszynach wirtualnych. Jest to typowe w przypadku, gdy klienci chcą rozszerzyć istniejącą infrastrukturę dzięki inteligencji krawędziowej. Rodzina systemu operacyjnego maszyny Wirtualnej hosta muszą być zgodne rodziny używane w kontenerze modułu systemu operacyjnego gościa. Jest to ten sam wymóg, gdy usługi Azure IoT Edge jest uruchamiane bezpośrednio na urządzeniu. Usługa Azure IoT Edge jest niezależny od podstawowych technologii wirtualizacji i działa na maszynach wirtualnych obsługiwane przez platform, takich jak funkcji Hyper-V i vSphere.
+Usługa Azure IoT Edge można uruchomić na maszynach wirtualnych. Używanie maszyny wirtualnej jako usługi IoT Edge urządzenia jest typowa, gdy klienci chcą rozszerzyć istniejącą infrastrukturę dzięki inteligencji krawędziowej. Rodzina systemu operacyjnego maszyny Wirtualnej hosta muszą być zgodne rodziny używane w kontenerze modułu systemu operacyjnego gościa. To wymaganie jest taka sama jak po uruchomieniu usługi Azure IoT Edge bezpośrednio na urządzeniu. Usługa Azure IoT Edge jest niezależny od podstawowych technologii wirtualizacji i działa na maszynach wirtualnych obsługiwane przez platform, takich jak funkcji Hyper-V i vSphere.
 
 <br>
 <center>
@@ -95,6 +95,14 @@ Usługa Azure IoT Edge można uruchomić na maszynach wirtualnych. Jest to typow
 </center>
 
 ## <a name="minimum-system-requirements"></a>Minimalne wymagania systemowe
-Usługa Azure IoT Edge działa doskonale na urządzeniach tak małej, jak Raspberry Pi3 serwer klasy korporacyjnej sprzęt. Wybieranie odpowiedniego sprzętu dla danego scenariusza jest bardzo zależy od obciążenia, które chcesz uruchomić. Podejmowania decyzji końcowy urządzenia może być skomplikowane; jednak łatwo zacząć tworzenie prototypów rozwiązania na tradycyjnych komputery przenośne lub komputery stacjonarne.
+Usługa Azure IoT Edge działa doskonale na urządzeniach tak małej, jak Raspberry Pi3 serwer klasy korporacyjnej sprzęt. Wybór odpowiedniego sprzętu dla danego scenariusza zależy od obciążenia, które chcesz uruchomić. Podejmowania decyzji końcowy urządzenia może być skomplikowane; jednak łatwo zacząć tworzenie prototypów rozwiązania na tradycyjnych komputery przenośne lub komputery stacjonarne.
 
-Środowisko podczas tworzenia prototypów pomoże przewodnik wyboru końcowego urządzenia. Pytania, które należy wziąć pod uwagę: jak wiele modułów składają się obciążenie, ile czy warstwy udział kontenery współpracę modułów, w jakim języku są moduły zapisanych, jak dużo danych będzie moduły przetwarzać, wykonaj wszelkie specjalne potrzeby modułów sprzęt przyspieszenia ich obciążeń, co to są żądane właściwości działania rozwiązania, co to jest budżetu sprzętu?
+Środowisko podczas tworzenia prototypów pomoże przewodnik wyboru końcowego urządzenia. Pytań, na które należy wziąć pod uwagę, obejmują: 
+
+* Jak wiele modułów należą Twoje obciążenie?
+* Jak wiele warstw korzystają z kontenerów współpracę modułów?
+* W jakim języku napisano się moduły? 
+* Jak dużo danych będzie moduły przetwarzać?
+* Czy moduły muszą wszelkie specjalistycznego sprzętu przyspieszenia ich obciążeń?
+* Co to są żądane właściwości działania rozwiązania?
+* Co to jest budżetu sprzętu?

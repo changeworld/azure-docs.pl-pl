@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d7888fd52495f7d2a195b729fae6d0411cfbd64c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8e75a6344e517fb0343343f557cb7211f49cfed8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587960"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838324"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i wiersza polecenia platformy Azure
 
-[Kontrola dostępu oparta na rolach (RBAC)](overview.md) sposób zarządzania dostępem do zasobów platformy Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC i wiersza polecenia platformy Azure.
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów platformy Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC i wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -194,7 +194,7 @@ az role assignment list --assignee <assignee>
 
 Domyślnie pojawi się tylko do przypisania zakresie subskrypcji. Aby wyświetlić przypisania zakresie zasobu lub grupy, należy użyć `--all`.
 
-Poniższy przykład wyświetla przypisania ról, które są przypisane bezpośrednio do *patlong@contoso.com* użytkownika:
+Poniższy przykład wyświetla przypisania ról, które są przypisane bezpośrednio do *patlong\@contoso.com* użytkownika:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -252,7 +252,7 @@ Aby utworzyć przypisania roli dla użytkownika w zakresie grupy zasobów, użyj
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Poniższy przykład przypisuje *Współautor maszyny wirtualnej* roli *patlong@contoso.com* użytkownika na *pharma — sprzedaż — projectforecast* zakresie grupy zasobów:
+Poniższy przykład przypisuje *Współautor maszyny wirtualnej* roli *patlong\@contoso.com* użytkownika na *pharma — sprzedaż — projectforecast* zakres grupy zasobów:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
@@ -300,7 +300,7 @@ RBAC, aby spowodować usunięcie dostępu, możesz usunąć przypisania roli uż
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-Poniższy przykład usuwa *Współautor maszyny wirtualnej* przypisania roli z *patlong@contoso.com* użytkownika na *pharma — sprzedaż — projectforecast* zasobów Grupa:
+Poniższy przykład usuwa *Współautor maszyny wirtualnej* przypisania roli z *patlong\@contoso.com* użytkownika na *pharma sprzedaży projectforecast* grupy zasobów:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast

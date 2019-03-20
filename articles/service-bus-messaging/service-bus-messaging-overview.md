@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 1c99c680371d9d9601637ebeb52d9299de71b0ec
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 8217eddd6f31a30b9113b178d74b59afb94f42af
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338816"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900866"
 ---
 # <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
 
-Usługa Microsoft Azure Service Bus jest w pełni zarządzanym brokerem komunikatów do [integracji](http://azure.com/integration) przedsiębiorstw. Usługa Service Bus jest najczęściej używana do rozdzielania aplikacji i usług oraz jest niezawodną i bezpieczną platformą do asynchronicznego przesyłania danych i stanu. Dane są przesyłane między różnymi aplikacjami i usługami przy użyciu *komunikatów*. Komunikat jest w formacie binarnym, który może zawierać kod JSON, XML lub po prostu tekst. 
+Usługa Microsoft Azure Service Bus jest w pełni zarządzanym brokerem komunikatów do [integracji](https://azure.com/integration) przedsiębiorstw. Usługa Service Bus jest najczęściej używana do rozdzielania aplikacji i usług oraz jest niezawodną i bezpieczną platformą do asynchronicznego przesyłania danych i stanu. Dane są przesyłane między różnymi aplikacjami i usługami przy użyciu *komunikatów*. Komunikat jest w formacie binarnym, który może zawierać kod JSON, XML lub po prostu tekst. 
 
 Niektóre typowe scenariusze obsługi komunikatów:
 
@@ -121,7 +121,7 @@ Usługa Service Bus w pełni integruje się z następującymi usługami platform
 - [Dynamics 365](https://dynamics.microsoft.com)
 - [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
  
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby rozpocząć korzystanie z obsługi komunikatów usługi Service Bus, zobacz następujące artykuły:
 

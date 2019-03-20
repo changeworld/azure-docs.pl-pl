@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 248861848aa905f9cbff01ab60affd7cf21aae78
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267754"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004813"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Szybki start: tworzenie pokoju rozmów za pomocą usługi SignalR Service
 
@@ -97,7 +97,7 @@ W tej sekcji dodasz narzędzie [Secret Manager](https://docs.microsoft.com/aspne
 
     Narzędzie Secret Manager będzie służyć do testowania aplikacji internetowej, tylko gdy będzie hostowana lokalnie. W późniejszym samouczku wdrożysz aplikację internetową do rozmów na platformie Azure. Po wdrożeniu aplikacji internetowej na platformie Azure użyjesz ustawienia aplikacji zamiast zapisywania parametrów połączenia za pomocą narzędzia Secret Manager.
 
-    Dostęp do tego wpisu tajnego można uzyskać za pomocą interfejsu API konfiguracji. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
+    Ten klucz tajny jest dostępny za pomocą konfiguracji interfejsu API. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
 
 
 4. Otwórz plik *Startup.cs* i zaktualizuj metodę `ConfigureServices` tak, aby używała usługi SignalR Service przez wywołanie metody `services.AddSignalR().AddAzureSignalR()`:
@@ -262,11 +262,11 @@ Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usu
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start utworzony został nowy zasób usługi Azure SignalR Service, którego użyto z aplikacją internetową platformy ASP.NET Core do wypychania aktualizacji zawartości w czasie rzeczywistym do wielu połączonych klientów. Aby dowiedzieć się więcej o korzystaniu z usługi Azure SignalR Service, przejdź do następnego samouczka, w którym zaprezentowano uwierzytelnianie.
 
 > [!div class="nextstepaction"]
-> [Uwierzytelnianie w usłudze Azure SignalR Service](./signalr-authenticate-oauth.md)
+> [Uwierzytelnianie w usłudze Azure SignalR Service](./signalr-concept-authenticate-oauth.md)
 
 

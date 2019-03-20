@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: f20c62f574b22d55d2acd8f9c7b811067837adb7
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: HT
+ms.openlocfilehash: 390421c2805bf242b8f931200c8b8981cb7116c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985941"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875004"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning przy użyciu języka C#
 
@@ -34,8 +34,8 @@ Mimo że kroki opisane w tym artykule działają zarówno na maszynach z systeme
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/vs/).
-* Zainstaluj zestaw [SDK platformy .NET Core](https://www.microsoft.com/net/download/windows).
-* Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
+* Zainstaluj [platformy .NET Core SDK](https://www.microsoft.com/net/download/windows).
+* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
 
 
 
@@ -172,7 +172,7 @@ Jeśli planujesz eksplorować przykładową usługę C#, nie usuwaj zasobów utw
 2. Przejdź do usługi Device Provisioning w witrynie Azure Portal, kliknij pozycję **Zarządzanie rejestracjami**, a następnie wybierz kartę **Grupy rejestracji**. Wybierz *Identyfikator rejestracji* wpisu rejestracji utworzonego w ramach tego przewodnika Szybki start i kliknij przycisk **Usuń** w górnej części bloku.  
 3. Z poziomu usługi Device Provisioning kliknij pozycję **Certyfikaty**, kliknij certyfikat przekazany w ramach tego przewodnika Szybki start, a następnie kliknij przycisk **Usuń** w górnej części okna **Szczegóły certyfikatu**.  
  
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki start utworzono grupę rejestracji dla pośredniego lub głównego certyfikatu X.509 urzędu certyfikacji przy użyciu usługi Azure IoT Hub Device Provisioning. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
  
 > [!div class="nextstepaction"]

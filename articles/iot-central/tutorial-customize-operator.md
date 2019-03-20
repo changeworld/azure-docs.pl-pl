@@ -3,19 +3,19 @@ title: Dostosowywanie widoków operatora w usłudze Azure IoT Central | Microsof
 description: Jako konstruktor możesz dostosować widoki operatora w aplikacji usługi Azure IoT Central.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 10/12/2018
+ms.date: 01/29/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: f65463b534988e0a721a1a5f816183f8dd8ebcaf
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: 86c9a7794146edc4106d8ec30106e1c27556248f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657658"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769680"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Samouczek: Dostosowywanie widoków operatora usługi Azure IoT Central
+# <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Samouczek: Dostosowywanie widoków operatora usługi Azure IoT Central (nowy projekt interfejsu użytkownika)
 
 W tym samouczku przedstawiono, jak konstruktor może dostosować widok operatora aplikacji. Po wprowadzeniu zmian w aplikacji jako konstruktor możesz wyświetlić podgląd widoku operatora w aplikacji usługi Microsoft Azure IoT Central.
 
@@ -28,10 +28,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie układu ustawień urządzenia
 > * Konfigurowanie układu właściwości urządzenia
 > * Wyświetlanie podglądu urządzenia jako operator
-> * Konfigurowanie domyślnej strony głównej
-> * Wyświetlanie podglądu domyślnej strony głównej jako operator
-
-[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
+> * Skonfiguruj domyślny pulpit nawigacyjny aplikacji
+> * Domyślny pulpit nawigacyjny aplikacji jako operator w wersji zapoznawczej
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,86 +40,66 @@ Przed rozpoczęciem należy wykonać dwa poprzednie samouczki:
 
 ## <a name="configure-your-device-dashboard"></a>Konfigurowanie pulpitu nawigacyjnego urządzenia
 
-Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawigacyjnym urządzenia. W ramach samouczka [Definiowanie nowego typu urządzenia w aplikacji](tutorial-define-device-type.md) dodano wykres liniowy i inne informacje do pulpitu nawigacyjnego **Połączony klimatyzator-1**.
+Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawigacyjnym urządzenia. W ramach samouczka [Definiowanie nowego typu urządzenia w aplikacji](tutorial-define-device-type.md) dodano wykres liniowy i inne informacje do pulpitu nawigacyjnego **Połączony klimatyzator**.
 
-1. Aby zmodyfikować szablon urządzenia **Połączony klimatyzator**, wybierz pozycję **Eksplorator** w menu nawigacji po lewej stronie:
+1. Aby zmodyfikować szablon urządzenia **Połączony klimatyzator**, wybierz pozycję **Szablony urządzeń** w menu nawigacji po lewej stronie:
 
-    ![Strona Eksplorator](media/tutorial-customize-operator/explorer.png)
+    ![Strona Szablony urządzeń](media/tutorial-customize-operator/devicetemplates.png)
 
-2. Aby rozpocząć dostosowywanie pulpitu nawigacyjnego połączonego klimatyzatora, wybierz szablon urządzenia **Połączony klimatyzator (1.0.0)**. Wybierz urządzenie **Połączony klimatyzator-1** utworzone w ramach samouczka [Definiowanie nowego typu urządzenia w aplikacji](tutorial-define-device-type.md):
+2. Aby dostosować pulpit nawigacyjny urządzenia, wybierz opcję **połączone klimatyzacyjne (1.0.0)** urządzenia szablon został utworzony w [Definiowanie nowego typu urządzenia w aplikacji](tutorial-define-device-type.md) samouczka.
 
-    ![Wybieranie połączonego klimatyzatora](media/tutorial-customize-operator/selectdevice.png)
-
-    Po przejściu do urządzenia, takiego jak **Połączony klimatyzator-1**, możesz wybrać pozycję **Edytuj szablon**, aby wprowadzić zmianę do szablonu bazowego. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej wersji szablonu urządzenia](howto-version-devicetemplate.md).
-
-3. Aby edytować pulpit nawigacyjny, wybierz pozycję **Pulpit nawigacyjny**, a następnie wybierz przycisk **Edytuj szablon**:
-
-    ![Strona pulpitu nawigacyjnego szablonu urządzenia](media/tutorial-customize-operator/dashboard.png)
+3. Aby edytować pulpit nawigacyjny, wybierz kartę **Pulpit nawigacyjny**.
 
 4. Aby dodać kafelek kluczowego wskaźnika wydajności (KPI) do pulpitu nawigacyjnego, wybierz pozycję **Kluczowy wskaźnik wydajności**:
-
-    ![Dodawanie wskaźnika KPI](media/tutorial-customize-operator/addkpi.png)
 
     Aby zdefiniować wskaźnik KPI, użyj informacji w poniższej tabeli:
 
     | Ustawienie     | Wartość |
     | ----------- | ----- |
     | Name (Nazwa)        | Temperatura maksymalna |
+    | Przedział czasu  | Ostatni tydzień |
+    | Typ miary | Telemetria |
     | Miara | temperature |
     | Agregacja | Maksimum |
-    | Przedział czasu  | Ostatni tydzień |
+    | Widoczność  | Enabled (Włączony) |
+
+    ![Dodawanie wskaźnika KPI](media/tutorial-customize-operator/addkpi.png)
 
 5. Wybierz pozycję **Zapisz**. Teraz na pulpicie nawigacyjnym można zobaczyć kafelek wskaźnika KPI:
 
     ![Kafelek wskaźnika KPI](media/tutorial-customize-operator/temperaturekpi.png)
 
-6. Aby przenieść kafelek lub zmienić jego rozmiar w ramach pulpitu nawigacyjnego, przesuń wskaźnik myszy nad kafelek. Kafelek można przeciągnąć do nowej lokalizacji lub zmienić jego rozmiar:
-
-    ![Edytowanie układu pulpitu nawigacyjnego](media/tutorial-customize-operator/dashboardlayout.png)
-
-7. Kliknij przycisk **Gotowe** po zakończeniu wprowadzania zmian.
+6. Aby przenieść kafelek lub zmienić jego rozmiar w ramach pulpitu nawigacyjnego, przesuń wskaźnik myszy nad kafelek. Kafelek można przeciągnąć do nowej lokalizacji lub zmienić jego rozmiar.
 
 ## <a name="configure-your-settings-layout"></a>Konfigurowanie układu ustawień
 
-Jako konstruktor możesz także skonfigurować widok operatora dla ustawień urządzenia. Operator używa strony ustawień urządzenia do konfigurowania urządzenia. Na przykład operator może użyć strony ustawień w celu ustawienia temperatury docelowej dla podłączonego klimatyzatora.
+Jako konstruktor możesz także skonfigurować widok operatora dla ustawień urządzenia. Operator używa karty ustawień urządzenia do konfigurowania urządzenia. Na przykład operator może użyć karty ustawień w celu ustawienia temperatury docelowej dla podłączonego klimatyzatora.
 
-1. Aby edytować układ ustawień dla połączonego klimatyzatora, wybierz pozycję **Ustawienia**, a następnie wybierz przycisk **Edytuj szablon**:
-
-    ![Strona Ustawienia](media/tutorial-customize-operator/settings.png)
+1. Aby zmodyfikować układ ustawień dla połączonego klimatyzatora, wybierz kartę **Ustawienia**.
 
 2. Kafelki ustawień można przenosić, a ich rozmiar można zmieniać:
 
     ![Edytowanie układu ustawień](media/tutorial-customize-operator/settingslayout.png)
 
-3. Kliknij przycisk **Gotowe** po zakończeniu wprowadzania zmian.
-
-> [!NOTE]
-> W trybie **Edytowanie szablonu** nie można edytować wartości ustawień.
-
 ## <a name="configure-your-properties-layout"></a>Konfigurowanie układu właściwości
 
-Poza pulpitem nawigacyjnym i ustawieniami możesz także skonfigurować widok operatora dla właściwości urządzenia. Operator używa strony właściwości urządzenia do zarządzania metadanymi urządzenia. Na przykład operator może użyć strony właściwości do wyświetlenia numeru seryjnego urządzenia lub zaktualizowania danych kontaktowych producenta.
+Poza pulpitem nawigacyjnym i ustawieniami możesz także skonfigurować widok operatora dla właściwości urządzenia. Operator używa karty właściwości urządzenia do zarządzania metadanymi urządzenia. Na przykład operator może użyć karty właściwości do wyświetlenia numeru seryjnego urządzenia lub zaktualizowania danych kontaktowych producenta.
 
-1. Aby edytować układ właściwości dla połączonego klimatyzatora, wybierz pozycję **Właściwości**, a następnie wybierz przycisk **Edytuj szablon**:
-
-    ![Strona właściwości](media/tutorial-customize-operator/properties.png)
+1. Aby zmodyfikować układ właściwości dla połączonego klimatyzatora, wybierz kartę **Właściwości**.
 
 2. Pola właściwości można przenieść, a także można zmienić ich rozmiar:
 
     ![Edytowanie układu właściwości](media/tutorial-customize-operator/propertieslayout.png)
 
-3. Kliknij przycisk **Gotowe** po zakończeniu wprowadzania zmian.
+## <a name="preview-the-device"></a>Urządzenia w wersji zapoznawczej
 
-> [!NOTE]
-> W trybie **Edytowanie szablonu** nie można edytować wartości właściwości.
+Możesz użyć strony **Szablony urządzeń**, aby dostosować karty Pulpit nawigacyjny, Ustawienia i Właściwości dla operatora. Możesz użyć strony narzędzia **Device Explorer**, aby wyświetlić szablon urządzenia i go użyć.
 
-## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>Wyświetlanie podglądu połączonego klimatyzatora jako operator
+1. Aby wyświetlić szablon połączonego klimatyzatora i użyć go jako operator, przejdź do strony **Device Explorer** i wybierz symulowane urządzenie, które zostało wygenerowane przez usługę IoT Central na podstawie szablonu:
 
-W trybie **Edytowanie szablonu** możesz dostosować pulpit nawigacyjny oraz strony ustawień i właściwości dla operatora. Jeśli nie pracujesz w trybie **Edytowanie szablonu**, możesz wyświetlić aplikację jako operator.
+    ![Wyświetlanie i używanie szablonu urządzenia](media/tutorial-customize-operator/usetemplate.png)
 
-1. Aby wyświetlić podłączone urządzenie klimatyzatora jako operator, kliknij przycisk **Gotowe** w celu zatrzymania edycji szablonu i powrotu do widoku operatora urządzenia.
-
-2. Aby zaktualizować lokalizację tego urządzenia, zmodyfikuj wartość na kafelku Lokalizacja, a następnie wybierz przycisk **Zapisz**:
+2. Aby zaktualizować lokalizację tego urządzenia, wybierz pozycję **Właściwości** i edytuj wartość na kafelku Lokalizacja. Następnie wybierz pozycję **Zapisz**:
 
     ![Edytowanie wartości właściwości](media/tutorial-customize-operator/editproperty.png)
 
@@ -135,36 +113,39 @@ W trybie **Edytowanie szablonu** możesz dostosować pulpit nawigacyjny oraz str
 
     ![Widok operatora dla pulpitu nawigacyjnego urządzenia](media/tutorial-customize-operator/operatordashboard.png)
 
-## <a name="configure-the-default-home-page"></a>Konfigurowanie domyślnej strony głównej
+## <a name="configure-the-default-dashboard"></a>Skonfiguruj domyślny pulpit nawigacyjny
 
-Gdy konstruktor lub operator zaloguje się do aplikacji usługi Azure IoT Central, widzi stronę główną. Jako konstruktor możesz skonfigurować zawartość strony głównej, umieszczając na niej zawartość najbardziej przydatną dla operatora.
+Jeśli konstruktor lub operator loguje się do aplikacji usługi Azure IoT Central, zobaczy pulpit nawigacyjny aplikacji. Jako Konstruktor można skonfigurować zawartość domyślny pulpit nawigacyjny, aby uwzględnić zawartość najbardziej przydatne i istotne dla operatora.
 
-1. Aby dostosować domyślną stronę główną, przejdź na stronę **Strona główna** i wybierz pozycję **Edycja** w prawej górnej części strony. Po wybraniu pozycji **Edycja** z prawej strony wysuwa się panel z listą obiektów, które można dodać do strony głównej.
+> [!NOTE]
+> Użytkownicy mogą również tworzyć własne osobistych pulpitów nawigacyjnych i wybierz jedną z nich domyślnie.
 
-    ![Strona Konstruktor aplikacji](media/tutorial-customize-operator/builderhome.png)
+1. Aby dostosować domyślny pulpit nawigacyjny aplikacji, przejdź do **pulpit nawigacyjny** strony i wybierz **Edytuj** w górnym rogu strony. Biblioteki obiektów, które można dodać do pulpitu nawigacyjnego zostanie wyświetlony panel.
 
-2. Aby dostosować stronę główną, dodaj kafelki z pola **Biblioteka**. Wybierz pozycję **Link** i dodaj szczegóły witryny internetowej organizacji. Następnie wybierz polecenie **Zapisz**:
+    ![Strona pulpitu nawigacyjnego](media/tutorial-customize-operator/builderhome.png)
 
-    ![Dodawanie linku do strony głównej](media/tutorial-customize-operator/addlink.png)
+2. Aby dostosować pulpit nawigacyjny, należy dodać Kafelki z **biblioteki**. Wybierz pozycję **Link** i dodaj szczegóły witryny internetowej organizacji. Następnie wybierz polecenie **Zapisz**:
+
+    ![Dodaj łącze do pulpitu nawigacyjnego](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > Istnieje także możliwość dodania linków do stron w aplikacji usługi Azure IoT Central. Na przykład możesz dodać link do pulpitu nawigacyjnego urządzenia lub strony ustawień.
 
-3. Opcjonalnie możesz wybrać pozycję **Obraz** i przekazać obraz do wyświetlania na stronie głównej. Dla obrazu może być określony adres URL otwierany po kliknięciu obrazu:
+3. Opcjonalnie wybierz opcję **obraz** i przekazania obrazu do wyświetlenia na pulpicie nawigacyjnym. Obraz może mieć adres URL, do którego możesz przejść po jego wybraniu:
 
-    ![Dodawanie obrazu do strony głównej](media/tutorial-customize-operator/addimage.png)
+    ![Dodawanie obrazu do pulpitu nawigacyjnego](media/tutorial-customize-operator/addimage.png)
 
     Aby dowiedzieć się więcej, zobacz [Jak przygotować obrazy i przekazać je aplikacji usługi Azure IoT Central](howto-prepare-images.md).
 
-## <a name="preview-the-default-home-page-as-an-operator"></a>Wyświetlanie podglądu domyślnej strony głównej jako operator
+## <a name="preview-the-dashboard"></a>Podgląd pulpitu nawigacyjnego
 
-Aby wyświetlić podgląd strony głównej jako operator i już jej nie edytować, wybierz pozycję **Gotowe** w prawej górnej części strony
+Aby pulpit nawigacyjny aplikacji jako operator w wersji zapoznawczej, wybierz pozycję **gotowe** w górnym rogu strony.
 
 ![Przełączanie trybu projektowania](media/tutorial-customize-operator/operatorviewhome.png)
 
-Link i kafelki obrazu można kliknąć, aby przejść do adresów URL ustawionych przez konstruktora.
+Możesz wybrać Kafelki linkiem i obrazem, aby przejść do adresów URL, Ustaw jako Konstruktor.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób dostosowywania widoku operatora aplikacji.
 

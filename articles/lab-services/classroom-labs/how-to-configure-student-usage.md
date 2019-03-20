@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181626"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurowanie zasad i ustawień użycia
 W tym artykule opisano, jak dodać użytkowników do laboratorium, Uzyskaj je zarejestrowane w usłudze laboratorium, kontrolować liczbę godzin, które mogą używać maszyny Wirtualnej i nie tylko. 
@@ -30,7 +30,7 @@ Jeśli masz **ograniczać** włączone, dodawanie użytkowników (adresy e-mail)
 1. W menu po lewej stronie wybierz pozycję **Użytkownicy**.
 2. Na pasku narzędzi wybierz pozycję **Dodaj użytkowników**. 
 
-    ![Dodawanie użytkowników przycisku](../media/how-to-configure-student-usage/add-users-button.png)
+    ![Przycisk Dodaj użytkowników](../media/how-to-configure-student-usage/add-users-button.png)
 1. Na stronie **Dodawanie użytkowników** wpisz adresy e-mail użytkowników w osobnych wierszach lub w jednym wierszu, rozdzielając je średnikami. 
 
     ![Dodawanie adresów e-mail użytkowników](../media/how-to-configure-student-usage/add-users-email-addresses.png)
@@ -38,9 +38,22 @@ Jeśli masz **ograniczać** włączone, dodawanie użytkowników (adresy e-mail)
 
     ![Lista użytkowników](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="send-registration-link-to-students"></a>Wysyłanie linków rejestracyjnych do uczniów
-Poniższa procedura zawiera kroki, aby wysłać link rejestracji dla użytkowników. Jeśli **ograniczać** jest włączona w środowisku laboratoryjnym, tylko użytkownicy na liście Użytkownicy mogą używać łącze do zarejestrowania do laboratorium. 
+## <a name="share-registration-link-with-students"></a>Udostępnij link do rejestracji przy użyciu uczniów
+Aby wysłać łącze rejestracji dla uczniów i studentów, użyj jednej z następujących metod. Pierwsza metoda dowiesz się, jak wysyłać wiadomości e-mail dla uczniów i studentów z łączem rejestracji i opcjonalną wiadomość. Druga metoda dowiesz się, jak uzyskać łącze rejestracji, które można udostępniać innym osobom dowolny sposób, który ma. 
 
+Jeśli **ograniczać** jest włączona w środowisku laboratoryjnym, tylko użytkownicy na liście Użytkownicy mogą używać łącze do zarejestrowania do laboratorium. Ta opcja jest włączona domyślnie. 
+
+### <a name="send-email-to-users"></a>Wyślij wiadomość e-mail do użytkowników
+1. Jeśli jeszcze nie jesteś na tej stronie, przełącz się do widoku **Użytkownicy**. 
+2. Wybierz z listy określonych lub wszystkich użytkowników. Aby wybrać określonych użytkowników, zaznacz pola wyboru w kolumnie pierwszej listy. Aby wybrać wszystkich użytkowników, zaznacz pole wyboru przed tytuł pierwszą kolumnę (**nazwa**) lub zaznacz wszystkie pola wyboru dla wszystkich użytkowników na liście.
+3. Wybierz **wysłać zaproszenia** na pasku narzędzi. Można również umieść kursor myszy nad nazwy studentów, na liście i wysłać ikonę poczty e-mail. 
+
+    ![Wyślij łącze rejestracji za pośrednictwem poczty e-mail](../media/tutorial-setup-classroom-lab/send-email.png)
+4. Na **Wyślij link rejestracji za pośrednictwem poczty e-mail** strony, wykonaj następujące kroki: 
+    1. Typ **opcjonalną wiadomość** , którą chcesz wysłać dla uczniów i studentów. Wiadomości e-mail automatycznie dołącza łącze rejestracji. 
+    2. Na **Wyślij link rejestracji za pośrednictwem poczty e-mail** wybierz opcję **wysyłania**. 
+
+## <a name="get-registration-link"></a>Uzyskaj link do rejestracji
 1. Przełącz się do **użytkowników** widoku, wybierając **użytkowników** w menu po lewej stronie. 
 2. Wybierz kafelek **Pobierz link rejestracji**.
 
@@ -49,11 +62,7 @@ Poniższa procedura zawiera kroki, aby wysłać link rejestracji dla użytkownik
 
     ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Zamknij**. 
-4. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie. Jeśli ustawienie **Ogranicz dostęp** jest włączone i masz listę użytkowników, wykonaj następujące czynności:
-    1. Wybierz **adres e-mail** użytkownika na liście. 
-    2. Zostanie wyświetlone okno domyślnego programu poczty e-mail z wypełnionym polem adresu **DO**. 
-    3. Wklej skopiowany wcześniej **adres URL rejestracji**. 
-    4. Wyślij wiadomość **e-mail**. 
+4. Udział **łącze rejestracji** z student tak, aby student można zarejestrować klasy. 
 
 ## <a name="view-users-registered-with-the-lab"></a>Wyświetlenie użytkowników zarejestrowanych w laboratorium
 

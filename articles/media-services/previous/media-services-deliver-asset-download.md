@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 798c7e4b5efa3ca016f5e1b7e5c0967599fa6436
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993116"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182663"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Instrukcje: Dostarczanie zasobu przez pobieranie  
 W tym artykule omówiono opcje dostarczania zasobów multimedialnych przekazany do usługi Media Services. Umożliwia dostarczanie zawartości Media Services, w wielu scenariuszach aplikacji. Po zakodowaniu, pobrać zasobów multimedialnych wygenerowany lub uzyskać do nich dostęp za pomocą Lokalizator przesyłania strumieniowego. Aby uzyskać lepszą wydajność i skalowalność umożliwia dostarczanie zawartości przy użyciu sieci dostarczania zawartości (CDN).

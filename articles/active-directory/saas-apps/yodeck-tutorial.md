@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 071054e2ec5fead3ce6181925b3c5f4e99a26736
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7564710b282c7e2ac586980896a28c00bcb2fe80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164230"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Yodeck
 
@@ -192,7 +192,7 @@ W przypadku Yodeck Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
     ![Dodawanie pracownika](./media/yodeck-tutorial/user2.png)
 
-1. Na **szczegóły użytkownika** okna dialogowego strony, wykonaj następujące czynności:
+1. Na stronie okna dialogowego **User Details (Szczegóły użytkownika)** wykonaj następujące kroki:
 
     ![Dodawanie pracownika](./media/yodeck-tutorial/user3.png)
 
@@ -200,7 +200,7 @@ W przypadku Yodeck Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
     b. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak **Simon**.
 
-    c. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon@contoso.com**.
+    c. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon\@contoso.com**.
 
     d. Wybierz odpowiedni **uprawnień konta** opcji zgodnie z wymaganiami organizacji.
     
@@ -245,7 +245,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

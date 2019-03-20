@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907511b7f20311479e7b11a30f3d5719daea3f87
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 4f96a67fecead65af28a975267590ebb08c715d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301472"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853016"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Omówienie łączników serwera Proxy aplikacji usługi Azure AD
 
@@ -93,7 +93,8 @@ Należy się upewnić, że zaplanowano wystarczająca ilość miejsca między ł
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\* Ta maszyna używana niestandardową wartość ustawienia pozyskiwania niektóre domyślne limity połączenia po przekroczeniu .net zalecanych ustawień. Firma Microsoft zaleca uruchamianie testu przy użyciu ustawień domyślnych, skontaktuj się z pomocą techniczną, aby ten limit, zmieniona dla Twojej dzierżawy.
+
+\* Ta maszyna używana niestandardową wartość ustawienia pozyskiwania niektóre domyślne limity połączenia po przekroczeniu .NET zalecanych ustawień. Firma Microsoft zaleca uruchamianie testu przy użyciu ustawień domyślnych, skontaktuj się z pomocą techniczną, aby ten limit, zmieniona dla Twojej dzierżawy.
  
 >[!NOTE]
 >Nie jest dużo różnicy w maksymalna TPS 4, 8 i 16 rdzeni maszyny. Główna różnica między tymi jest oczekiwane opóźnienie.  

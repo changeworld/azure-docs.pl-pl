@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie kontami magazynu usługi Azure Stack | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak znaleźć, zarządzanie, odzyskiwania i odzyskać kont magazynu usługi Azure Stack
+description: Dowiedz się, jak znaleźć, zarządzanie, odzyskiwanie i odzyskiwaniu kont magazynu usługi Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,29 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 840445b2c1a28d294027c7fbfda9e6bf6e431f14
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 34e49060a28869015f067f058b81239ec13eff47
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990714"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226406"
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu w usłudze Azure Stack
+# <a name="manage-azure-stack-storage-accounts"></a>Zarządzanie kontami magazynu usługi Azure Stack
 
-Dowiedz się, jak zarządzać kontami magazynu w usłudze Azure Stack, aby znaleźć, odzyskiwania i odzyskać pojemność magazynu na podstawie potrzeb biznesowych.
+Dowiedz się, jak zarządzać kontami magazynu usługi Azure Stack. Znajdź, odzyskiwania i odzyskać pojemność magazynu na podstawie potrzeb biznesowych.
 
 ## <a name="find-a-storage-account"></a>Znajdź konto magazynu
+
 Lista kont magazynu w regionie mogą być wyświetlane w usłudze Azure Stack przez:
 
 1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-2. Wybierz **wszystkich usług** > **kont magazynu**.
+2. Wybierz **wszystkich usług** > **magazynu** > **kont magazynu**.
 
-   ![](media/azure-stack-manage-storage-accounts/image4.png)
+   ![Konta magazynu w usłudze Azure Stack](media/azure-stack-manage-storage-accounts/image4.png)
 
 Domyślnie są wyświetlane pierwsze 10 kont. Istnieje możliwość pobrania więcej, klikając **Załaduj więcej** link w dolnej części listy.
 
@@ -46,16 +47,17 @@ Jeśli interesują Cię określone konto magazynu — możesz to zrobić **filtr
 
 1. Wybierz **filtru** u góry okienka.
 2. Na okienka filtru umożliwia określanie **nazwa konta**, **identyfikator subskrypcji**, lub **stan** można dostosować listę kont magazynu, które mają być wyświetlane. Ich używać zgodnie z potrzebami.
-3. Wybierz pozycję **Update** (Aktualizuj). Listy należy odświeżyć odpowiednio.
+3. Podczas wpisywania lista automatycznie zastosuje filtr.  .
    
-    ![](media/azure-stack-manage-storage-accounts/image5.png)
+    ![Filtruj kont magazynu usługi Azure Stack](media/azure-stack-manage-storage-accounts/image5.png)
+
 4. Aby zresetować filtr: Wybierz **filtru**, wyczyść wybrane elementy i aktualizacji.
 
 Pole tekstowe wyszukiwania (w górnej części okienka listy kont magazynu) umożliwia wyróżnianie zaznaczonego tekstu na liście kont. Umożliwia to, gdy pełna nazwa lub identyfikator nie jest łatwo dostępny.
 
 Dowolny tekst w tym miejscu służy do znajdowania kont, który Cię interesuje.
 
-![](media/azure-stack-manage-storage-accounts/image6.png)
+![Znajdowanie konta magazynu usługi Azure Stack](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>Przyjrzyj się szczegóły konta
 Po zlokalizowaniu kont, które Cię interesują wyświetlania można wybrać określone konto, aby wyświetlić niektóre szczegóły. Nowe okienko otwiera z szczegóły konta, takie jak: typ konta, czas utworzenia, lokalizacji itp.
@@ -65,7 +67,7 @@ Po zlokalizowaniu kont, które Cię interesują wyświetlania można wybrać okr
 ## <a name="recover-a-deleted-account"></a>Odzyskiwanie usuniętego konta
 Może być w sytuacji, gdy trzeba odzyskać usuniętego konta.
 
-W usłudze Azure Stack istnieje najprościej można to zrobić:
+W usłudze Azure Stack Brak najprościej można to zrobić:
 
 1. Przejdź do listy kont magazynu. Zobacz Znajdź konto magazynu, w tym artykule, aby uzyskać więcej informacji.
 2. Znajdź tego konkretnego konta na liście. Może być konieczne do filtrowania.
@@ -97,9 +99,8 @@ Ustawienie okresu zachowywania umożliwia operatorowi chmury określić okres cz
 
 1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
 2. Wybierz **wszystkich usług** > **zarządzanie regionami** w obszarze **administracji**.
-3. Wybierz **magazynu** z **dostawców zasobów** listy.
-4. Wybierz **ustawienia** u góry, aby otworzyć okienko ustawienia.
-5. Wybierz **konfiguracji** następnie zmodyfikuj wartość okresu przechowywania.
+3. Wybierz **dostawców zasobów** > **magazynu** > **ustawienia**. Ścieżka jest strona główna > *region* — dostawcy zasobów > magazynu.
+4. Wybierz **konfiguracji** następnie zmodyfikuj wartość okresu przechowywania.
 
    Ustaw liczbę dni, a następnie zapisz go.
    

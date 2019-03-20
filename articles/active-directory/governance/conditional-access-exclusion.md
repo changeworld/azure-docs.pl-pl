@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75ff08111e96fd4b210dfeb09db521856f4f5e52
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727506"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892725"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Użyj przeglądów dostępu usługi Azure AD do zarządzania użytkownikami wykluczone z zasad dostępu warunkowego
 
@@ -102,7 +102,7 @@ Teraz obejmuje dwa przykłady, których można użyć przeglądów dostępu do w
 Załóżmy, że zasady dostępu warunkowego które blokuje dostęp z niektórych krajów. Zawiera grupy, który jest wykluczony z zasad. Poniżej przedstawiono przegląd dostępu zalecane gdzie członkowie grupy są przeglądane.
 
 > [!NOTE]
-> Rola administratora globalnego lub administratora konta użytkownika jest wymagana do utworzenia przeglądów dostępu.
+> Administrator globalny lub roli administratora użytkownika jest wymagana do utworzenia przeglądów dostępu.
 
 1. Przegląd będzie powtarzał co tydzień.
 

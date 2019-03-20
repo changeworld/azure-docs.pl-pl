@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: d4293bf6a375f3e1a26c0c4fb50fcdc7bb5b8e8e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bf1ff4391e65fea68ac019be8fde8709fb4422b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243860"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181354"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Można skompilować i uruchomić nowoczesnych przenośnych opartych na mikrousł
 
 Jako otwartej platformy Kubernetes pozwala na tworzenie aplikacji przy użyciu preferowanego języka programowania, systemu operacyjnego, bibliotek lub magistrali komunikatów. Istniejące ciągłej integracji i narzędzi do ciągłego dostarczania (CI/CD) można zintegrować z rozwiązania Kubernetes do planowania i wdrażania wydań.
 
-Usługa Azure Kubernetes Service (AKS) zapewnia zarządzana usługa Kubernetes, która zmniejsza stopień złożoności wdrożenia i podstawowych zadaniach zarządzania znajdziesz w tym koordynowanie uaktualnienia. Wzorce klastra AKS są zarządzane przez platformę Azure i płacić tylko dla węzłów AKS, które uruchamiaj swoje aplikacje. AKS jest oparty na aparat usługi Kubernetes typu open source platformy Azure (usługi aks — aparat).
+Usługa Azure Kubernetes Service (AKS) zapewnia zarządzana usługa Kubernetes, która zmniejsza stopień złożoności wdrożenia i podstawowych zadaniach zarządzania znajdziesz w tym koordynowanie uaktualnienia. Wzorce klastra AKS są zarządzane przez platformę Azure i płacić tylko dla węzłów AKS, które uruchamiaj swoje aplikacje. AKS jest zbudowana na aparat typu open source usługi Azure Kubernetes usługi ([aparatu aks][aks-engine]).
 
 ## <a name="kubernetes-cluster-architecture"></a>Architektura klastra Kubernetes
 

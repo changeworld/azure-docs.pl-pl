@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: spelluru
-ms.openlocfilehash: 6cd06778ad54fa698c5bc2fe4ccf02f4be2ee2ec
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f1194d8385d1e7ddcb906d0c8c3a2b56648e2547
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807058"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120826"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Zarządzanie kontami laboratorium w usłudze Azure Lab Services 
 W usługach Azure Lab Services konta laboratorium jest kontenerem dla typów laboratorium zarządzanych, takich jak laboratorium na potrzeby zajęć. Administrator konfiguruje konta laboratorium przy użyciu usługi Azure Lab Services i zapewnia dostęp do laboratorium właścicieli, którzy mogą tworzyć laboratoriów w ramach konta. W tym artykule opisano sposób tworzenia konta laboratorium, są wyświetlane wszystkie konta laboratorium lub usuwanie konta laboratorium.
@@ -38,7 +38,9 @@ Następujące kroki ilustrują tworzenie konta laboratorium w usłudze Azure Lab
     2. Wybierz **subskrypcję platformy Azure**, w której chcesz utworzyć konto laboratorium.
     3. W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową** i wprowadź nazwę grupy zasobów.
     4. W obszarze **Lokalizacja** wybierz lokalizację/region, w których chcesz utworzyć konto laboratorium. 
-    5. Wybierz pozycję **Utwórz**. 
+    5. Aby uzyskać **równorzędna sieć wirtualna**, wybierz równorzędna sieć wirtualna (VNet) sieci laboratorium. Laboratoria utworzony na tym koncie są połączone z wybraną sieć wirtualną i mają dostęp do zasobów w wybranej sieci wirtualnej. 
+    7. W polu **Zezwalaj twórcy laboratorium na wybieranie lokalizacji laboratorium** określ, czy twórcy laboratoriów powinni mieć możliwość wybierania lokalizacji laboratorium. Domyślnie opcja ta jest wyłączona. W przypadku jej włączenia twórcy laboratoriów nie mogą określać lokalizacji dla tworzonych przez siebie laboratoriów. Laboratoria są tworzone w najbliższej lokalizacji geograficznej względem konta laboratorium. W przypadku włączenia tej opcji twórca laboratorium może wybrać lokalizację podczas tworzenia laboratorium.      
+    8. Wybierz pozycję **Utwórz**. 
 
         ![Okno Tworzenie konta laboratorium](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Wybierz **ikonę dzwonka** na pasku narzędzi (**Powiadomienia**), upewnij się, że wdrożenie zakończyło się pomyślnie, a następnie wybierz pozycję **Przejdź do zasobu**. 
@@ -86,6 +88,18 @@ Jako właściciel konta laboratorium możesz określić obrazy witryny Marketpla
     1. Wybierz pozycję **... (wielokropek)** w ostatniej kolumnie, a następnie polecenie **Włącz obraz**. 
     2. Wybierz jeden lub większą liczbę obrazów z listy przez zaznaczenie pól wyboru przed nazwami obrazów, a następnie wybierz pozycję **Włącz wybrane obrazy**. 
 
+## <a name="configure-the-lab-account"></a>Konfigurowanie konta laboratorium
+1. Na **konta laboratorium** wybierz opcję **konfiguracji Labs** w menu po lewej stronie.
+
+    ![Strona konfiguracji Labs](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
+1. Dla **równorzędna sieć wirtualna**, wybierz opcję **włączone** lub **wyłączone**. Wartość domyślna to **wyłączone**. Aby włączyć równorzędnej sieci wirtualnej, wykonaj następujące czynności: 
+    1. Wybierz **włączone**.
+    2. Wybierz **sieci wirtualnej** z listy rozwijanej. 
+    3. Wybierz pozycję **Zapisz** na pasku narzędzi. 
+    
+        Laboratoria utworzony na tym koncie są podłączone do wybranej sieci wirtualnej. Mogą oni dostęp do zasobów w wybranej sieci wirtualnej. 
+3. Dla **twórca laboratorium Zezwalaj, aby wybrać lokalizację lab**, wybierz opcję **włączone** chcącym twórca laboratorium, aby można było wybrać lokalizację dla laboratorium. Jeśli jest ono wyłączone, laboratoria są tworzone automatycznie w tej samej lokalizacji, w której istnieje konto laboratorium. 
+
 ## <a name="view-lab-accounts"></a>Wyświetl konta laboratorium
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkie zasoby** z menu. 
@@ -93,19 +107,6 @@ Jako właściciel konta laboratorium możesz określić obrazy witryny Marketpla
     Można również filtrować według subskrypcji, grupy zasobów, lokalizacje i tagów. 
 
     ![Wszystkie zasoby -> kontami laboratorium](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
-
-
-## <a name="delete-a-lab-account"></a>Usuwanie konta laboratorium
-Wykonaj instrukcje z poprzedniej sekcji, która wyświetla kontami laboratorium na liście. Użyj poniższych instrukcji, aby usunąć konto laboratorium: 
-
-1. Wybierz **konta laboratorium** , którą chcesz usunąć. 
-2. Wybierz **Usuń** na pasku narzędzi. 
-
-    ![Kontami laboratorium -> przycisk Usuń](../media/how-to-manage-lab-accounts/delete-button.png)
-1. Typ **tak** o potwierdzenie.
-1. Wybierz pozycję **Usuń**. 
-
-    ![Usuń konto laboratorium — potwierdzenie](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
 ## <a name="view-and-manage-labs-in-the-lab-account"></a>Wyświetlanie i zarządzanie laboratoriami na koncie laboratorium
 
@@ -119,6 +120,8 @@ Wykonaj instrukcje z poprzedniej sekcji, która wyświetla kontami laboratorium 
     4. Maksymalna liczba użytkowników uprawnionych do laboratorium. 
     5. Stan laboratorium. 
 
+
+
 ## <a name="delete-a-lab-in-the-lab-account"></a>Usuń laboratorium w ramach konta laboratorium
 Postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby wyświetlić listę laboratoriów w ramach konta laboratorium.
 
@@ -128,6 +131,20 @@ Postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby wyświetlić listę l
 2. Wybierz **tak** w komunikacie ostrzegawczym. 
 
     ![Potwierdź usunięcie laboratorium](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
+
+## <a name="delete-a-lab-account"></a>Usuwanie konta laboratorium
+Wykonaj instrukcje z poprzedniej sekcji, która wyświetla kontami laboratorium na liście. Użyj poniższych instrukcji, aby usunąć konto laboratorium: 
+
+1. Wybierz **konta laboratorium** , którą chcesz usunąć. 
+2. Wybierz **Usuń** na pasku narzędzi. 
+
+    ![Kontami laboratorium -> przycisk Usuń](../media/how-to-manage-lab-accounts/delete-button.png)
+1. Typ **tak** o potwierdzenie.
+1. Wybierz pozycję **Usuń**. 
+
+    ![Usuń konto laboratorium — potwierdzenie](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły:

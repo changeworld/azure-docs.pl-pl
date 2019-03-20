@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09f1ef137bbad50e72771c4368346716336c4faf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0522311c12da8416504a6d502e1e2247ff8ce15b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447102"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104152"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy z logowaniem do aplikacji firmy Microsoft
 
@@ -53,7 +53,7 @@ Lista obszarów ogólny problem, które można rozwinąć Jeśli masz pomysł gd
 
 Poniżej przedstawiono niektóre typowe problemy, które osoby zajmujące się napotkać podczas ich użytkownicy nie logują się do aplikacji firmy Microsoft.
 
--   Zagadnienia ogólne w celu sprawdzenia
+- Zagadnienia ogólne w celu sprawdzenia
 
   * Upewnij się, że użytkownik loguje się do **Popraw adres URL** a nie adres URL lokalnej aplikacji.
 
@@ -65,31 +65,31 @@ Poniżej przedstawiono niektóre typowe problemy, które osoby zajmujące się n
 
   * Upewnij się, że użytkownika **nie wygasł lub zapomnienia hasła.** [Resetowanie hasła użytkownika](#reset-a-users-password) lub [włączyć samoobsługowe Resetowanie hasła](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-   * Upewnij się, że **uwierzytelnianie wieloskładnikowe** nie blokuje dostęp użytkownika. [Sprawdź stan usługi Multi-Factor authentication użytkownika](#check-a-users-multi-factor-authentication-status) lub [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info)
+  * Upewnij się, że **uwierzytelnianie wieloskładnikowe** nie blokuje dostęp użytkownika. [Sprawdź stan usługi Multi-Factor authentication użytkownika](#check-a-users-multi-factor-authentication-status) lub [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info)
 
-   * Upewnij się, że **zasad dostępu warunkowego** lub **Identity Protection** zasad nie blokuje dostęp użytkownika. [Sprawdź zasady dostępu warunkowego określonych](#problems-with-conditional-access-policies) lub [Sprawdź zasady dostępu warunkowego określonej aplikacji](#check-a-specific-applications-conditional-access-policy) lub [Wyłącz zasady dostępu warunkowego określonych](#disable-a-specific-conditional-access-policy)
+  * Upewnij się, że **zasad dostępu warunkowego** lub **Identity Protection** zasad nie blokuje dostęp użytkownika. [Sprawdź zasady dostępu warunkowego określonych](#problems-with-conditional-access-policies) lub [Sprawdź zasady dostępu warunkowego określonej aplikacji](#check-a-specific-applications-conditional-access-policy) lub [Wyłącz zasady dostępu warunkowego określonych](#disable-a-specific-conditional-access-policy)
 
-   * Upewnij się, że użytkownik **informacje kontaktowe uwierzytelniania** pozostają aktualne, aby umożliwić uwierzytelnianie wieloskładnikowe lub dostępu warunkowego zasad, które mają być egzekwowane. [Sprawdź stan usługi Multi-Factor authentication użytkownika](#check-a-users-multi-factor-authentication-status) lub [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info)
+  * Upewnij się, że użytkownik **informacje kontaktowe uwierzytelniania** pozostają aktualne, aby umożliwić uwierzytelnianie wieloskładnikowe lub dostępu warunkowego zasad, które mają być egzekwowane. [Sprawdź stan usługi Multi-Factor authentication użytkownika](#check-a-users-multi-factor-authentication-status) lub [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info)
 
--   Aby uzyskać **Microsoft** **aplikacji, które wymagają licencji** (np. usługi Office 365), Oto kilka konkretnych problemów, aby sprawdzić, gdy wykluczasz powyższe problemy ogólne:
+- Aby uzyskać **Microsoft** **aplikacji, które wymagają licencji** (np. usługi Office 365), Oto kilka konkretnych problemów, aby sprawdzić, gdy wykluczasz powyższe problemy ogólne:
 
-   * Upewnij się, użytkownik lub ma **przypisaną licencję.** [Sprawdź przypisanych licencji użytkownika](#check-a-users-assigned-licenses) lub [Sprawdź przypisanych licencji grupy](#check-a-groups-assigned-licenses)
+  * Upewnij się, użytkownik lub ma **przypisaną licencję.** [Sprawdź przypisanych licencji użytkownika](#check-a-users-assigned-licenses) lub [Sprawdź przypisanych licencji grupy](#check-a-groups-assigned-licenses)
 
-   * W przypadku licencji **przypisane do** **Grupa statyczna**, upewnij się, że **użytkownik jest członkiem** tej grupy. [Sprawdzanie członkostwa grupy użytkownika](#check-a-users-group-memberships)
+  * W przypadku licencji **przypisane do** **Grupa statyczna**, upewnij się, że **użytkownik jest członkiem** tej grupy. [Sprawdzanie członkostwa grupy użytkownika](#check-a-users-group-memberships)
 
-   * W przypadku licencji **przypisane do** **grupy dynamicznej**, upewnij się, że **poprawnie ustawiono regułę grupy dynamicznej**. [Sprawdź kryteria członkostwa grupy dynamicznej](#check-a-dynamic-groups-membership-criteria)
+  * W przypadku licencji **przypisane do** **grupy dynamicznej**, upewnij się, że **poprawnie ustawiono regułę grupy dynamicznej**. [Sprawdź kryteria członkostwa grupy dynamicznej](#check-a-dynamic-groups-membership-criteria)
 
-   * W przypadku licencji **przypisane do** **grupy dynamicznej**, upewnij się, że grupa dynamiczna ma **zakończeniu przetwarzania** członkostwo i że **użytkownik jest członkiem**  (może to zająć trochę czasu). [Sprawdzanie członkostwa grupy użytkownika](#check-a-users-group-memberships)
+  * W przypadku licencji **przypisane do** **grupy dynamicznej**, upewnij się, że grupa dynamiczna ma **zakończeniu przetwarzania** członkostwo i że **użytkownik jest członkiem**  (może to zająć trochę czasu). [Sprawdzanie członkostwa grupy użytkownika](#check-a-users-group-memberships)
 
-   *  Po wprowadzeniu się, że ma przypisaną licencję, upewnij się, licencja jest **niewygasły**.
+  *  Po wprowadzeniu się, że ma przypisaną licencję, upewnij się, licencja jest **niewygasły**.
 
-   *  Upewnij się, że licencja jest **aplikacji** uzyskują dostęp do.
+  *  Upewnij się, że licencja jest **aplikacji** uzyskują dostęp do.
 
--   Aby uzyskać **Microsoft** **aplikacje, które nie wymagają licencji**, poniżej przedstawiono niektóre inne czynności do wykonania:
+- Aby uzyskać **Microsoft** **aplikacje, które nie wymagają licencji**, poniżej przedstawiono niektóre inne czynności do wykonania:
 
-   * Jeśli aplikacja żąda **uprawnienia na poziomie użytkownika** (na przykład "dostęp do skrzynek pocztowych użytkowników"), upewnij się, że użytkownik zalogował się do aplikacji i przeprowadził **operacji zezwoleniem użytkownika** aby umożliwić aplikacji dostęp do jej danych.
+  * Jeśli aplikacja żąda **uprawnienia na poziomie użytkownika** (na przykład "dostęp do skrzynek pocztowych użytkowników"), upewnij się, że użytkownik zalogował się do aplikacji i przeprowadził **operacji zezwoleniem użytkownika** aby umożliwić aplikacji dostęp do jej danych.
 
-   * Jeśli aplikacja żąda **uprawnienia na poziomie administratora** (na przykład "dostęp do skrzynek pocztowych wszystkich użytkowników"), upewnij się, że przeprowadził administratora globalnego **operacja zgody na poziomie administratora w imieniu wszystkich użytkowników** w organizacji.
+  * Jeśli aplikacja żąda **uprawnienia na poziomie administratora** (na przykład "dostęp do skrzynek pocztowych wszystkich użytkowników"), upewnij się, że przeprowadził administratora globalnego **operacja zgody na poziomie administratora w imieniu wszystkich użytkowników** w organizacji.
 
 ## <a name="problems-with-the-users-account"></a>Problemy z konta użytkownika
 
@@ -187,25 +187,25 @@ Aby włączyć samoobsługowe Resetowanie hasła, wykonaj poniższe kroki wdroż
 
 Aby sprawdzić stan uwierzytelniania wieloskładnikowego dla użytkownika, wykonaj następujące kroki:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **użytkowników i grup** w menu nawigacji.
+4. Kliknij przycisk **użytkowników i grup** w menu nawigacji.
 
-5.  Kliknij przycisk **wszyscy użytkownicy**.
+5. Kliknij przycisk **wszyscy użytkownicy**.
 
-6.  Kliknij przycisk **uwierzytelnianie wieloskładnikowe** znajdujący się u góry okienka.
+6. Kliknij przycisk **uwierzytelnianie wieloskładnikowe** znajdujący się u góry okienka.
 
-7.  Raz **portalu administracyjnego uwierzytelniania wieloskładnikowego** obciążeniami, upewnij się, znajdują się na **użytkowników** kartę.
+7. Raz **portalu administracyjnego uwierzytelniania wieloskładnikowego** obciążeniami, upewnij się, znajdują się na **użytkowników** kartę.
 
-8.  Znajdź użytkownika, na liście użytkowników przez wyszukiwanie, filtrowanie i sortowanie.
+8. Znajdź użytkownika, na liście użytkowników przez wyszukiwanie, filtrowanie i sortowanie.
 
-9.  Wybierz użytkownika z listy użytkowników i **Włącz**, **wyłączyć**, lub **Wymuś** uwierzytelnianie wieloskładnikowe zgodnie z potrzebami.
+9. Wybierz użytkownika z listy użytkowników i **Włącz**, **wyłączyć**, lub **Wymuś** uwierzytelnianie wieloskładnikowe zgodnie z potrzebami.
 
-  * **Uwaga**: Jeśli użytkownik znajduje się w **wymuszone** stanu, możesz je ustawić **wyłączone** tymczasowo w celu umożliwienia im do swojego konta. Gdy są one ponownie, można zmienić ich stan, aby **włączone** ponownie, aby wymagać od nich, aby ponownie zarejestrować informacje kontaktowe podczas następnego logowania w. Alternatywnie, możesz wykonać kroki opisane w [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info) Sprawdź lub ustaw te dane dla nich.
+   * **Uwaga**: Jeśli użytkownik znajduje się w **wymuszone** stanu, możesz je ustawić **wyłączone** tymczasowo w celu umożliwienia im do swojego konta. Gdy są one ponownie, można zmienić ich stan, aby **włączone** ponownie, aby wymagać od nich, aby ponownie zarejestrować informacje kontaktowe podczas następnego logowania w. Alternatywnie, możesz wykonać kroki opisane w [Sprawdź informacje kontaktowe uwierzytelniania użytkownika](#check-a-users-authentication-contact-info) Sprawdź lub ustaw te dane dla nich.
 
 ### <a name="check-a-users-authentication-contact-info"></a>Sprawdź informacje kontaktowe uwierzytelniania użytkownika
 
@@ -365,21 +365,21 @@ Aby sprawdzić grupy przypisane licencje, wykonaj następujące kroki:
 
 Aby ponownie przetworzyć grupy przypisane licencje, wykonaj następujące kroki:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **użytkowników i grup** w menu nawigacji.
+4. Kliknij przycisk **użytkowników i grup** w menu nawigacji.
 
-5.  Kliknij przycisk **wszystkich grup**.
+5. Kliknij przycisk **wszystkich grup**.
 
-6.  **Wyszukiwanie** grupy jesteś zainteresowany i **kliknij wiersz** do wybrania.
+6. **Wyszukiwanie** grupy jesteś zainteresowany i **kliknij wiersz** do wybrania.
 
-7.  Kliknij przycisk **licencji** aby zobaczyć, które obecnie licencji grupy został przypisany.
+7. Kliknij przycisk **licencji** aby zobaczyć, które obecnie licencji grupy został przypisany.
 
-8.  Kliknij przycisk **ponownie przetworzyć** przycisk, aby upewnić się, że licencje przypisane do członków tej grupy są aktualne. Może to potrwać długo w zależności od rozmiaru i złożoności grupy.
+8. Kliknij przycisk **ponownie przetworzyć** przycisk, aby upewnić się, że licencje przypisane do członków tej grupy są aktualne. Może to potrwać długo w zależności od rozmiaru i złożoności grupy.
 
    >[!NOTE]
    >Aby szybciej to zrobić, należy wziąć pod uwagę tymczasowo bezpośrednie przypisanie licencji do użytkownika. [Przypisywanie licencji użytkownika](#problems-with-application-consent).
@@ -390,32 +390,32 @@ Aby ponownie przetworzyć grupy przypisane licencje, wykonaj następujące kroki
 
 Aby przypisać licencję do grupy, wykonaj następujące kroki:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **użytkowników i grup** w menu nawigacji.
+4. Kliknij przycisk **użytkowników i grup** w menu nawigacji.
 
-5.  Kliknij przycisk **wszystkich grup**.
+5. Kliknij przycisk **wszystkich grup**.
 
-6.  **Wyszukiwanie** grupy jesteś zainteresowany i **kliknij wiersz** do wybrania.
+6. **Wyszukiwanie** grupy jesteś zainteresowany i **kliknij wiersz** do wybrania.
 
-7.  Kliknij przycisk **licencji** aby zobaczyć, które obecnie licencji grupy został przypisany.
+7. Kliknij przycisk **licencji** aby zobaczyć, które obecnie licencji grupy został przypisany.
 
-8.  Kliknij przycisk **przypisać** przycisku.
+8. Kliknij przycisk **przypisać** przycisku.
 
-9.  Wybierz **jeden lub więcej produktów** z listy dostępnych produktów.
+9. Wybierz **jeden lub więcej produktów** z listy dostępnych produktów.
 
 10. **Opcjonalnie** kliknij **opcje przydziału** element do szczegółowego przypisania produktów. Kliknij przycisk **Ok** po zakończeniu.
 
 11. Kliknij przycisk **przypisać** przycisk, aby przypisać licencje do tej grupy. Może to potrwać długo w zależności od rozmiaru i złożoności grupy.
 
-   >[!NOTE]
-   >Aby szybciej to zrobić, należy wziąć pod uwagę tymczasowo bezpośrednie przypisanie licencji do użytkownika. [Przypisywanie licencji użytkownika](#problems-with-application-consent).
-   > 
-   >
+    >[!NOTE]
+    >Aby szybciej to zrobić, należy wziąć pod uwagę tymczasowo bezpośrednie przypisanie licencji do użytkownika. [Przypisywanie licencji użytkownika](#problems-with-application-consent).
+    > 
+    >
 
 ## <a name="problems-with-conditional-access-policies"></a>Problemy z zasadami dostępu warunkowego
 
@@ -423,19 +423,19 @@ Aby przypisać licencję do grupy, wykonaj następujące kroki:
 
 Aby sprawdzić lub Sprawdzanie poprawności zasad dostępu warunkowego pojedynczego:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** w menu nawigacji.
+4. Kliknij przycisk **aplikacje dla przedsiębiorstw** w menu nawigacji.
 
-5.  Kliknij przycisk **dostępu warunkowego** element nawigacji.
+5. Kliknij przycisk **dostępu warunkowego** element nawigacji.
 
-6.  Kliknij zasady, jesteś zainteresowany sprawdzania.
+6. Kliknij zasady, jesteś zainteresowany sprawdzania.
 
-7.  Zapoznaj się, że nie określone warunki, przypisania ani innych ustawień, które mogą blokować dostęp użytkownika.
+7. Zapoznaj się, że nie określone warunki, przypisania ani innych ustawień, które mogą blokować dostęp użytkownika.
 
    >[!NOTE]
    >Możesz też chcieć tymczasowo wyłączyć tę zasadę, aby upewnić się, go nie wpływają na logowania. Aby to zrobić, należy ustawić **Włącz zasady** Przełącz, aby **nie** i kliknij przycisk **Zapisz** przycisku.

@@ -11,31 +11,31 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64e1ec4dcf2103c7635b69510f818480d83a6d6
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: b0ab999e2b2a8465b110874cca3d478c60c18099
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673634"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091141"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Uzyskiwanie pomocy technicznej do współpracy B2B
 
 Zapoznaj się z dokumentacją, możesz wykonać odpowiednie czynności, ale nadal nie można pobrać elementu pracy? Otwórz bilet pomocy technicznej (wymaga planu pomocy technicznej):
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do bloku Pomoc i wsparcie techniczne i wybierz pozycję nowe żądanie pomocy technicznej:
-  - Typ problemu: Techniczna
-  - Subskrypcja: Wybierz subskrypcję, których to dotyczy
-    - Usługa: Usługa Active Directory
-    - Plan pomocy technicznej: Wybierz plan pomocy technicznej odpowiednich
+   - Typ problemu: Techniczna
+   - Subskrypcja: Wybierz subskrypcję, których to dotyczy
+     - Usługa: Usługa Active Directory
+     - Plan pomocy technicznej: Wybierz plan pomocy technicznej odpowiednich
 
-  ![Nowe żądanie obsługi](media/get-support/new-support-request.png)
+   ![Nowe żądanie obsługi](media/get-support/new-support-request.png)
 
 2. Opisz problem:
-  - Wybierz odpowiednie ważność, która odzwierciedla możesz musi.
-  - Wybierz typ problemu jako Zarządzanie użytkownikami i grupami
-  - Wybierz kategorię, jak dodawanie użytkowników (B2B)
-  - Obejmują wszystkie komunikaty o błędach, takie jak identyfikator korelacji, użytkowników i tak dalej.
+   - Wybierz odpowiednie ważność, która odzwierciedla możesz musi.
+   - Wybierz typ problemu jako Zarządzanie użytkownikami i grupami
+   - Wybierz kategorię, jak dodawanie użytkowników (B2B)
+   - Obejmują wszystkie komunikaty o błędach, takie jak identyfikator korelacji, użytkowników i tak dalej.
 
-  ![obsługuje biletu, opis problemu](media/get-support/problem-description.png)
+   ![obsługuje biletu, opis problemu](media/get-support/problem-description.png)
 
 3. W przypadku przedstawicielem pomocy technicznej w celu skontaktowania się z Tobą dotyczące rozwiązywania problemów należy dodać swoje informacje kontaktowe.

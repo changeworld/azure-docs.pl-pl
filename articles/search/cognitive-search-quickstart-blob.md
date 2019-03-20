@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/02/2019
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200634"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Przewodnik Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 
@@ -32,21 +32,7 @@ W tym przewodniku Szybki start utworzysz swój pierwszy potok wzbogacania w witr
 
 ## <a name="supported-regions"></a> Obsługiwane regiony
 
-Wyszukiwanie poznawcze możesz wypróbować w usłudze Azure Search utworzonej w następujących regionach:
-
-* Środkowo-zachodnie stany USA
-* Środkowo-południowe stany USA
-* Wschodnie stany USA
-* Wschodnie stany USA 2
-* Zachodnie stany USA 2
-* Kanada Środkowa
-* Europa Zachodnia
-* Południowe Zjednoczone Królestwo
-* Europa Północna
-* Brazylia Południowa
-* Azja Południowo-Wschodnia
-* Indie Środkowe
-* Australia Wschodnia
+Sztucznej Inteligencji, wzbogacone indeksowanie przy użyciu usług Cognitive Services jest dostępna we wszystkich regionach usługi Azure Search.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -69,11 +55,11 @@ Usługi platformy Azure są używane wyłącznie w tym scenariuszu. Tworzenie po
 
 Najpierw utwórz konto usługi Azure Search. 
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta platformy Azure.
 
 1. Kliknij pozycję **Utwórz zasób**, wyszukaj usługę Azure Search i kliknij pozycję **Utwórz**. Zobacz [Tworzenie usługi Azure Search w portalu](search-create-service-portal.md), jeśli konfigurujesz usługę wyszukiwania po raz pierwszy i potrzebujesz dodatkowej pomocy.
 
-  ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
+   ![Pulpit nawigacyjny portalu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Tworzenie usługi Azure Search w portalu")
 
 1. W obszarze Grupa zasobów utwórz nową grupę zasobów, która będzie zawierała wszystkie zasoby utworzone w tym przewodniku Szybki start. Ułatwi to wyczyszczenie zasobów po ukończeniu tego przewodnika Szybki start.
 
@@ -81,16 +67,16 @@ Najpierw utwórz konto usługi Azure Search.
 
 1. W obszarze Warstwa cenowa możesz utworzyć usługę w warstwie **Bezpłatna**, aby ukończyć samouczki i przewodniki Szybki start. Na potrzeby głębszej analizy z wykorzystaniem własnych danych możesz utworzyć [płatną usługę](https://azure.microsoft.com/pricing/details/search/), taką jak usługa w warstwie **Podstawowa** lub **Standardowa**. 
 
-  Usługa w warstwie Bezpłatna jest ograniczona do 3 indeksów, maksymalnego rozmiaru obiektu blob równego 16 MB i 2 minut indeksowania, co nie wystarcza do korzystania z pełnych możliwości wyszukiwania poznawczego. Aby przejrzeć limity dla różnych warstw, zobacz [ograniczenia usługi](search-limits-quotas-capacity.md).
+   Usługa w warstwie Bezpłatna jest ograniczona do 3 indeksów, maksymalnego rozmiaru obiektu blob równego 16 MB i 2 minut indeksowania, co nie wystarcza do korzystania z pełnych możliwości wyszukiwania poznawczego. Aby przejrzeć limity dla różnych warstw, zobacz [ograniczenia usługi](search-limits-quotas-capacity.md).
 
-  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Strona definicji usługi w portalu")
+   ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service2.png "Strona definicji usługi w portalu")
 
-  > [!NOTE]
-  > Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności jest obecnie dostępne we wszystkich warstwach, w tym warstwie Bezpłatna. Bez skojarzenia z płatnym zasobem w usługach Cognitive Services będzie można wykonywać ograniczoną liczbę czynności wzbogacania. Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
+   > [!NOTE]
+   > Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności jest obecnie dostępne we wszystkich warstwach, w tym warstwie Bezpłatna. Bez skojarzenia z płatnym zasobem w usługach Cognitive Services będzie można wykonywać ograniczoną liczbę czynności wzbogacania. Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
 
 1. Przypnij usługę do pulpitu nawigacyjnego, aby uzyskać szybki dostęp do informacji o niej.
 
-  ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Strona definicji usługi w portalu")
+   ![Strona definicji usługi w portalu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Strona definicji usługi w portalu")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Konfigurowanie usługi Azure Blob Service i ładowanie przykładowych danych
 
@@ -98,11 +84,13 @@ Potok wzbogacania ściąga dane ze źródeł danych platformy Azure obsługiwany
 
 1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składające się z małego zestawu plików różnych typów. 
 
-1. Zarejestruj się w usłudze Azure Blob Storage, utwórz konto magazynu, otwórz stronę usługi Blob service i utwórz kontener. W kontenerze ustaw poziom dostępu publicznego na **Kontener**. Aby uzyskać więcej informacji, zobacz [sekcję „Tworzenie kontenera”](../storage/blobs/storage-unstructured-search.md#create-a-container) w samouczku *Przeszukiwanie danych bez struktury* .
+1. Zarejestruj się w usłudze Azure Blob Storage, utwórz konto magazynu, otwórz stronę usługi Blob service i utwórz kontener. 
+
+1. W kontenerze, ustawienie publicznego dostępu poziom **kontener (anonimowy dostęp do odczytu dla kontenerów i obiektów blob.)**. Aby uzyskać więcej informacji, zobacz [sekcję „Tworzenie kontenera”](../storage/blobs/storage-unstructured-search.md#create-a-container) w samouczku *Przeszukiwanie danych bez struktury* .
 
 1. W utworzonym kontenerze kliknij pozycję **Przekaż**, aby przekazać przykładowe pliki pobrane w poprzednim kroku.
 
-  ![Pliki źródłowe w usłudze Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
+   ![Pliki źródłowe w usłudze Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 ## <a name="create-the-enrichment-pipeline"></a>Tworzenie potoku wzbogacania
 
@@ -126,17 +114,17 @@ Następnie dodaj kroki wzbogacenia do potoku indeksowania. Jeśli nie masz zasob
 
 1. Rozwiń węzeł **Dołącz usługę Cognitive Services**, aby wyświetlić opcje obsługi zasobów interfejsów API usług Cognitive Services. Na potrzeby tego samouczka możesz wybrać zasób **Bezpłatny**.
 
-  ![Dołączanie usług Cognitive Services](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Dołączanie usług Cognitive Services](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. Rozwiń węzeł **Dodaj wzbogacenia** i wybierz umiejętności, które realizują przetwarzanie języka naturalnego. W ramach tego przewodnika Szybki start wybierz rozpoznawanie jednostek dla osób, organizacji i lokalizacji.
 
-  ![Dołączanie usług Cognitive Services](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Dołączanie usług Cognitive Services](media/cognitive-search-quickstart-blob/skillset.png)
 
-  Portal oferuje wbudowane umiejętności do przetwarzania OCR i analizy tekstu. W portalu zestaw umiejętności pracuje na jednym polu źródła. Może się to wydawać małym celem, ale w przypadku obiektów blob platformy Azure pole `content` zawiera większość dokumentu obiektu blob (na przykład dokument programu Word lub pokaz slajdów programu PowerPoint). Z tego względu to pole jest idealnym polem wejściowym, ponieważ obejmuje całą zawartość obiektu blob.
+   Portal oferuje wbudowane umiejętności do przetwarzania OCR i analizy tekstu. W portalu zestaw umiejętności pracuje na jednym polu źródła. Może się to wydawać małym celem, ale w przypadku obiektów blob platformy Azure pole `content` zawiera większość dokumentu obiektu blob (na przykład dokument programu Word lub pokaz slajdów programu PowerPoint). Z tego względu to pole jest idealnym polem wejściowym, ponieważ obejmuje całą zawartość obiektu blob.
 
 3. Przejdź do następnej strony.
 
-  ![Następna strona — dostosowywanie indeksów](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
+   ![Następna strona — dostosowywanie indeksów](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
 
 > [!NOTE]
 > Umiejętności przetwarzania języka naturalnego pracują na zawartości tekstowej w przykładowym zestawie danych. Ponieważ nie wybrano żadnej opcji OCR, w tym przewodniku Szybki start pliki JPEG i PNG znalezione w przykładowym zestawie danych nie będą przetwarzane. 
@@ -219,7 +207,7 @@ Po przeprowadzeniu eksploracji najszybszym sposobem wyczyszczenia środowiska je
 
 Zakładając, że obie te usługi są umieszczone w tej samej grupie, usuń teraz grupę zasobów, aby trwale usunąć wszystkie jej elementy, w tym usługi i przechowywaną zawartość utworzoną na potrzeby tego ćwiczenia. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd każdej usługi.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W zależności od sposobu aprowizowania zasobu usług Cognitive Services możesz eksperymentować z indeksowaniem i wzbogacaniem poprzez ponowne uruchomienie kreatora z różnymi umiejętnościami i polami danych źródłowych. Aby ponownie wykonać kroki, usuń indeks i indeksator, a następnie ponownie utwórz indeksator przy użyciu nowej kombinacji opcji.
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a37e67f299262a7e0b353564c24c789859dcec7c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0b1ba5c6d342fb0bf6f888af4bc3a4e1c8ef939e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074721"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać połączenie z platformy Apache Kafka w HDInsight przy użyciu sieci wirtualnej platformy Azure
 
@@ -31,29 +31,29 @@ HDInsight nie zezwala na bezpośrednie połączenie z platformą Kafka za pośre
 
 * Łączenie sieci prywatnej, np. z siecią lokalną z siecią wirtualną. Ta konfiguracja umożliwia klientom w sieci lokalnej, aby bezpośrednio pracować z platformą Kafka. Aby włączyć tę konfigurację, wykonaj następujące czynności:
 
-    1. Utwórz sieć wirtualną.
-    2. Tworzenie bramy sieci VPN, który korzysta z konfiguracji lokacja lokacja. Konfiguracja używana w tym dokumencie nawiązuje połączenie z urządzeniem bramy sieci VPN w sieci lokalnej.
-    3. Tworzenie serwera DNS w sieci wirtualnej.
-    4. Konfigurowanie składnika przesyłanie dalej między serwerem DNS w każdej sieci.
-    5. Utwórz platformy Kafka w klastrze HDInsight w sieci wirtualnej.
+  1. Utwórz sieć wirtualną.
+  2. Tworzenie bramy sieci VPN, który korzysta z konfiguracji lokacja lokacja. Konfiguracja używana w tym dokumencie nawiązuje połączenie z urządzeniem bramy sieci VPN w sieci lokalnej.
+  3. Tworzenie serwera DNS w sieci wirtualnej.
+  4. Konfigurowanie składnika przesyłanie dalej między serwerem DNS w każdej sieci.
+  5. Utwórz platformy Kafka w klastrze HDInsight w sieci wirtualnej.
 
-    Aby uzyskać więcej informacji, zobacz [Connect do platformy Apache Kafka z siecią lokalną](#on-premises) sekcji. 
+     Aby uzyskać więcej informacji, zobacz [Connect do platformy Apache Kafka z siecią lokalną](#on-premises) sekcji. 
 
 * Połącz poszczególnych maszyn w sieci wirtualnej przy użyciu bramy sieci VPN i klienta sieci VPN. Aby włączyć tę konfigurację, wykonaj następujące czynności:
 
-    1. Utwórz sieć wirtualną.
-    2. Utwórz bramę sieci VPN, która używa konfiguracji punkt lokacja. Ta konfiguracja może służyć z klientami z systemem MacOS i Windows.
-    3. Utwórz platformy Kafka w klastrze HDInsight w sieci wirtualnej.
-    4. Do celów reklamowych adresów IP, należy skonfigurować platformy Kafka. Ta konfiguracja umożliwia klientom nawiązywanie połączenia przy użyciu brokera adresów IP zamiast nazwy domeny.
-    5. Pobierz i korzystania z klienta sieci VPN w systemie programistycznym.
+  1. Utwórz sieć wirtualną.
+  2. Utwórz bramę sieci VPN, która używa konfiguracji punkt lokacja. Ta konfiguracja może służyć z klientami z systemem MacOS i Windows.
+  3. Utwórz platformy Kafka w klastrze HDInsight w sieci wirtualnej.
+  4. Do celów reklamowych adresów IP, należy skonfigurować platformy Kafka. Ta konfiguracja umożliwia klientom nawiązywanie połączenia przy użyciu brokera adresów IP zamiast nazwy domeny.
+  5. Pobierz i korzystania z klienta sieci VPN w systemie programistycznym.
 
-    Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z platformy Apache Kafka za pomocą klienta sieci VPN](#vpnclient) sekcji.
+     Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z platformy Apache Kafka za pomocą klienta sieci VPN](#vpnclient) sekcji.
 
-    > [!WARNING]  
-    > Ta konfiguracja jest zalecana tylko w celach programistycznych, ze względu na następujące ograniczenia:
-    >
-    > * Każdy klient musi połączyć przy użyciu oprogramowania klienta VPN.
-    > * Klient sieci VPN nie zostały spełnione żądań rozpoznawania nazw do sieci wirtualnej, dlatego należy używać adresu IP, odnoszący się do komunikowania się z platformą Kafka. Komunikacji z pakietem Integracyjnym wymaga dodatkowej konfiguracji klastra Kafka.
+     > [!WARNING]  
+     > Ta konfiguracja jest zalecana tylko w celach programistycznych, ze względu na następujące ograniczenia:
+     >
+     > * Każdy klient musi połączyć przy użyciu oprogramowania klienta VPN.
+     > * Klient sieci VPN nie zostały spełnione żądań rozpoznawania nazw do sieci wirtualnej, dlatego należy używać adresu IP, odnoszący się do komunikowania się z platformą Kafka. Komunikacji z pakietem Integracyjnym wymaga dodatkowej konfiguracji klastra Kafka.
 
 Aby uzyskać więcej informacji na temat używania HDInsight w sieci wirtualnej, zobacz [rozszerzyć HDInsight przy użyciu usługi Azure Virtual Networks](../hdinsight-extend-hadoop-virtual-network.md).
 
@@ -232,8 +232,8 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
         -SubnetName $defaultSubnet.Id
     ```
 
-  > [!WARNING]  
-  > Ten proces trwa około 15 minut.
+   > [!WARNING]  
+   > Ten proces trwa około 15 minut.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurowanie platformy Kafka do celów reklamowych adresu IP
 
@@ -323,23 +323,23 @@ Aby zweryfikować połączenie do platformy Kafka, należy użyć do tworzenia i
 
 3. Aby wysyłać dane do platformy Kafka, użyj następującego kodu języka Python:
 
-  ```python
-  from kafka import KafkaProducer
-  # Replace the `ip_address` entries with the IP address of your worker nodes
-  # NOTE: you don't need the full list of worker nodes, just one or two.
-  producer = KafkaProducer(bootstrap_servers=['kafka_broker_1','kafka_broker_2'])
-  for _ in range(50):
+   ```python
+   from kafka import KafkaProducer
+   # Replace the `ip_address` entries with the IP address of your worker nodes
+   # NOTE: you don't need the full list of worker nodes, just one or two.
+   producer = KafkaProducer(bootstrap_servers=['kafka_broker_1','kafka_broker_2'])
+   for _ in range(50):
       producer.send('testtopic', b'test message')
-  ```
+   ```
 
     Zastąp `'kafka_broker'` wpisów z adresami zwrócony z kroku 1 w tej sekcji:
 
-    * Jeśli używasz __klienta sieci VPN oprogramowania__, Zastąp `kafka_broker` wpisów z adresu IP węzłów procesu roboczego.
+   * Jeśli używasz __klienta sieci VPN oprogramowania__, Zastąp `kafka_broker` wpisów z adresu IP węzłów procesu roboczego.
 
-    * Jeśli masz __włączone rozpoznawanie nazw za pomocą niestandardowego serwera DNS__, Zastąp `kafka_broker` zapisów o FQDN węzłów procesu roboczego.
+   * Jeśli masz __włączone rozpoznawanie nazw za pomocą niestandardowego serwera DNS__, Zastąp `kafka_broker` zapisów o FQDN węzłów procesu roboczego.
 
-    > [!NOTE]
-    > Ten kod wysyła ciąg `test message` do tematu `testtopic`. Jest domyślna konfiguracja platformy kafka w HDInsight w celu utworzenia tematu, jeśli nie istnieje.
+     > [!NOTE]
+     > Ten kod wysyła ciąg `test message` do tematu `testtopic`. Jest domyślna konfiguracja platformy kafka w HDInsight w celu utworzenia tematu, jeśli nie istnieje.
 
 4. Można pobrać komunikaty z platformy Kafka, użyj następującego kodu języka Python:
 

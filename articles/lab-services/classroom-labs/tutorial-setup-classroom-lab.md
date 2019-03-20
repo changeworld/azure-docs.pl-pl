@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
-ms.translationtype: HT
+ms.openlocfilehash: 6816c21d30ff5340441d58aff202c271eb1c836a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649595"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090325"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: Konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -69,9 +69,9 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 
     ![Strona Konfigurowanie szablonu po zakończeniu konfiguracji](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Na stronie **Konfigurowanie szablonu** wykonaj następujące kroki: Te kroki samouczka są **opcjonalne**.
-    2. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. 
-    3. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu.     
-    5. Wprowadź **opis** szablonu.
+   1. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. 
+   1. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu.     
+   1. Wprowadź **opis** szablonu.
 9. Wybierz przycisk **Dalej** na stronie szablonu. 
 10. Na stronie **Publikowanie szablonu** wykonaj następujące czynności. 
     1. Aby opublikować szablon natychmiast, wybierz pozycję **Publikuj**.  
@@ -89,10 +89,10 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
     ![Publikowanie szablonu — powodzenie](../media/tutorial-setup-classroom-lab/publish-success.png)
 1. Zostanie wyświetlony **pulpit nawigacyjny** laboratorium. 
     
-    ![Pulpit nawigacyjny laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
+     ![Pulpit nawigacyjny laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 4. Przejdź na stronę **Maszyny wirtualne**, wybierając pozycję Maszyny wirtualne w menu po lewej stronie lub wybierając kafelek Maszyny wirtualne. Sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
 
-    ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+     ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 ## <a name="add-users-to-the-lab"></a>Dodawanie użytkowników do laboratorium
 
@@ -118,7 +118,7 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 1. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Zamknij**. 
 2. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku utworzono i skonfigurowano laboratorium na potrzeby zajęć. Aby dowiedzieć się, jak uczeń może uzyskać dostęp do maszyny wirtualnej w laboratorium przy użyciu linku rejestracyjnego, przejdź do następnego samouczka:
 
 > [!div class="nextstepaction"]

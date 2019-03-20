@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: b58059727a383e978691bfbbee77a1f6b04692ce
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c5128e904e540deeb3293fb687da4e8cafcfa1e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264330"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870998"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Nawiązać połączenie z lokalnymi systemami plików za pomocą usługi Azure Logic Apps
 
@@ -34,15 +34,15 @@ Aby skorzystać z przykładu, potrzebne są następujące elementy:
 
 * Zanim będzie można połączyć aplikacji logiki do systemów lokalnych, takim jak serwer systemu plików, należy [zainstalować i skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md). W ten sposób można określić, aby użyć instalacji bramy, podczas tworzenia połączenia systemu plików z aplikacji logiki.
 
-* A [konta Drobox](https://www.dropbox.com/) i poświadczenia konta. Swoje poświadczenia usługi DropBox są niezbędne do utworzenia połączenia między aplikacją logiki i kontem Drobox. 
+* A [konta usługi Dropbox](https://www.dropbox.com/), której można zarejestrować za darmo. Poświadczenia konta są niezbędne do utworzenia połączenia między aplikacją logiki i kontem usługi Dropbox. 
 
-* Poświadczenia konta dla komputera, na którym zainstalowano system plików, do którego chcesz uzyskać dostęp. Na przykład jeśli zainstalujesz bramę danych na tym samym komputerze w systemie plików, potrzebujesz poświadczeń konta dla tego komputera. 
+* Dostęp do komputera z systemu plików, które chcesz użyć. Na przykład po zainstalowaniu bramy danych na tym samym komputerze w systemie plików, należy poświadczenia konta dla tego komputera. 
 
 * Konto e-mail od dostawcy, który jest obsługiwany przez usługę Logic Apps, takich jak Office 365 Outlook, Outlook.com lub Gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/). Ta aplikacja logiki korzysta z konta Office 365 Outlook. Jeśli korzystasz z innego konta e-mail, ogólne kroki będą takie same, ale interfejs użytkownika może się trochę różnić. 
 
 * Podstawową wiedzę na temat o [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). W tym przykładzie należy pustej aplikacji logiki.
 
-## <a name="add-trigger"></a>Dodawanie wyzwalacza
+## <a name="add-trigger"></a>Dodaj wyzwalacz
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -58,7 +58,7 @@ Aby skorzystać z przykładu, potrzebne są następujące elementy:
 
    ![Wyzwalacz usługi Dropbox](media/logic-apps-using-file-connector/dropbox-trigger.png)
 
-## <a name="add-actions"></a>Dodawanie akcji
+## <a name="add-actions"></a>Dodaj akcje
 
 1. W obszarze wyzwalacza wybierz **następny krok**. W polu wyszukiwania wprowadź "file system" jako filtr. Z listy akcji wybierz następującą akcję: **Tworzenie pliku — System plików**
 
@@ -68,7 +68,7 @@ Aby skorzystać z przykładu, potrzebne są następujące elementy:
 
    ![Tworzenie połączenia](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Właściwość | Wymagany | Wartość | Opis | 
+   | Właściwość | Wymagany | Value | Opis | 
    | -------- | -------- | ----- | ----------- | 
    | **Nazwa połączenia** | Yes | <*connection-name*> | Nazwę, która ma połączenia | 
    | **Folder główny** | Yes | <*root-folder-name*> | Folder główny systemu plików, na przykład po zainstalowaniu lokalnej bramy danych przykład folderu lokalnego na komputerze, na którym instalowany jest lokalna brama danych, lub folderu do udziału sieciowego, w których komputer może uzyskać dostęp. <p>Na przykład: `\\PublicShare\\DropboxFiles` <p>Folder główny jest folder nadrzędny głównego, który jest używany dla ścieżek względnych dla wszystkich działań związanych z plikami. | 

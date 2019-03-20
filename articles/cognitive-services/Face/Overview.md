@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: dcfb50c58f1205a5ab31c3fc6b9b22fdb503e4ec
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455980"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588962"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co to jest interfejs API rozpoznawania twarzy na platformie Azure?
 
@@ -26,12 +26,12 @@ Interfejs API rozpoznawania twarzy oferuje kilka różnych funkcji opisanych w p
 
 Interfejs API rozpoznawania twarzy może wykrywać ludzkie twarzy na obrazie i zwracać współrzędne prostokąta ich lokalizacji. Opcjonalnie funkcja wykrywania twarzy może wyodrębniać szereg atrybutów dotyczących twarzy, takich jak postawa, ułożenie głowy, płeć, wiek, emocje, zarost i okulary.
 
+> [!NOTE] 
+> Funkcja wykrywania twarzy jest również dostępna za pośrednictwem [interfejsu API przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale aby wykonywać dalsze operacje przy użyciu danych twarzy, należy użyć interfejsu API rozpoznawania twarzy (tej usługi).
+
 ![Obraz przedstawiający kobietę i mężczyznę z prostokątami narysowanymi wokół twarzy oraz wyświetlonym wiekiem i płcią](./Images/Face.detection.jpg)
 
-> [!NOTE] 
-> Funkcja wykrywania twarzy jest również dostępna za pośrednictwem [interfejsu API przetwarzania obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale aby wykonywać dalsze operacje przy użyciu danych twarzy, należy użyć interfejsu API rozpoznawania twarzy (tej usługi). 
-
-Aby uzyskać więcej informacji na temat wykrywania twarzy, zobacz [Detect API (Interfejs API wykrywania)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Aby uzyskać więcej informacji na temat wykrywania twarzy, zobacz [poradnik wykrywanie twarzy](face-api-how-to-topics/howtodetectfacesinimage.md), lub Wyszukaj [API wykrywania](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) dokumentację referencyjną.
 
 ## <a name="face-verification"></a>Weryfikacja twarzy
 
@@ -82,7 +82,7 @@ Następujące przykładowe aplikacje pokazują kilka sposobów używania interfe
 
 Podobnie jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi rozpoznawania twarzy powinni wiedzieć o zasadach firmy Microsoft dotyczących danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wykonaj czynności opisane w przewodniku Szybki start, aby zaimplementować prosty scenariusz wykrywania twarzy w kodzie.
 - [Szybki start: wykrywanie twarzy na obrazie za pomocą zestawu .NET SDK przy użyciu języka C#](quickstarts/csharp.md) (inne języki są dostępne)

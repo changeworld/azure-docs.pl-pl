@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 1585eb460cc5f8ae437ee59a596dc7a854a108e7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 98f793b7d94cd554d426a0eec30d8bb4553d3d81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995734"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105407"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Włączanie tworzenia kopii zapasowej z portalu administratora usługi Azure Stack
 Włącz usługę infrastruktury kopii zapasowych za pośrednictwem portalu administracyjnego usługi Azure Stack mogą generować infrastruktury kopii zapasowych. Partner sprzętu można użyć tych kopii zapasowych do przywrócenia środowiska za pomocą odzyskiwania w chmurze w przypadku powstania [poważnej awarii](./azure-stack-backup-recover-data.md). Cel odzyskiwania w chmurze jest zapewnienie, że Twoje operatory i użytkownicy mogą Zaloguj się do portalu po ukończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnym planów, ofert i obliczeń wcześniej zdefiniowane, magazynu, limitów przydziałów sieci i wpisy tajne usługi Key Vault.
@@ -67,12 +67,15 @@ Administratorzy i użytkownicy są odpowiedzialne za tworzenie kopii zapasowych 
             -FilePath c:\certs\AzSIBCCert.cer 
     ```
 
-    > [!Note]  
-    > **1901 i nowsze wersje**: Usługa Azure Stack akceptuje certyfikatu do szyfrowania danych kopii zapasowej infrastruktury. Upewnij się, że z certyfikatem przy użyciu klucza publicznego i prywatnego w bezpiecznej lokalizacji. Ze względów bezpieczeństwa nie zaleca się używać certyfikatu przy użyciu kluczy publicznych i prywatnych do konfigurowania ustawień kopii zapasowej. Aby uzyskać więcej informacji na temat zarządzania cyklem życia certyfikatu, zobacz [infrastruktura kopii zapasowej usługa najlepszych rozwiązań](azure-stack-backup-best-practices.md).
+   > [!Note]
+   > **1901 i nowsze wersje**: Usługa Azure Stack akceptuje certyfikatu do szyfrowania danych kopii zapasowej infrastruktury. Upewnij się, że z certyfikatem przy użyciu klucza publicznego i prywatnego w bezpiecznej lokalizacji. Ze względów bezpieczeństwa nie zaleca się używać certyfikatu przy użyciu kluczy publicznych i prywatnych do konfigurowania ustawień kopii zapasowej. Aby uzyskać więcej informacji na temat zarządzania cyklem życia certyfikatu, zobacz [infrastruktura kopii zapasowej usługa najlepszych rozwiązań](azure-stack-backup-best-practices.md).
+   > 
+   > **1811 lub starszym**: Usługa Azure Stack akceptuje klucz symetryczny do szyfrowania danych kopii zapasowej infrastruktury. Użyj [AzsEncryptionKey64 nowe polecenia cmdlet, aby utworzyć klucz](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64). Po uaktualnieniu z 1811 1901 ustawienia kopii zapasowej zostaną zachowane klucza szyfrowania. Zalecane jest, aby zaktualizować ustawienia kopii zapasowej do korzystania z certyfikatu. Obsługa kluczy szyfrowania jest już przestarzały. Masz co najmniej 3 wersjach można zaktualizować ustawień do użycia certyfikatu. 
 
 10. Wybierz **OK** można zapisać ustawień kopii zapasowej kontrolera.
 
 ![Usługa Azure Stack — ustawienia kontrolera kopii zapasowej](media/azure-stack-backup/backup-controller-settings-certificate.png)
+
 
 ## <a name="start-backup"></a>Rozpocznij wykonywanie kopii zapasowej
 Aby rozpocząć tworzenie kopii zapasowej, kliknij pozycję **Utwórz teraz kopię zapasową** aby rozpocząć tworzenie kopii zapasowej na żądanie. Kopii zapasowej na żądanie nie zmodyfikuje podczas następnej zaplanowanej kopii zapasowej. Po zakończeniu zadania, można potwierdzić ustawień w **Essentials**:
@@ -115,7 +118,7 @@ Aby użyć klucza publicznego w certyfikacie nowe rozpocznie się nowych kopii z
 ![Usługa Azure Stack — odcisk palca certyfikatu widoku](media/azure-stack-backup/encryption-settings-thumbprint.png)
 
 ### <a name="backwards-compatibility-mode"></a>Wstecz w trybie zgodności
-Jeśli skonfigurowano kopię zapasową przed aktualizacją do 1901 ustawienia zostaną przeniesione bez zmian w zachowaniu. W tym przypadku klucz szyfrowania jest obsługiwana w przypadku zapewnienia zgodności. Istnieje możliwość aktualizowania klucza szyfrowania lub przełączanie do korzystania z certyfikatu. Będziesz mieć trzy wersje, aby kontynuować aktualizację klucza szyfrowania. Użyj tego czasu, do którego nastąpi przejście do certyfikatu. 
+Jeśli skonfigurowano kopię zapasową przed aktualizacją do 1901 ustawienia zostaną przeniesione bez zmian w zachowaniu. W tym przypadku klucz szyfrowania jest obsługiwana w przypadku zapewnienia zgodności. Istnieje możliwość aktualizowania klucza szyfrowania lub przełączanie do korzystania z certyfikatu. Masz co najmniej trzy wersje, aby kontynuować aktualizację klucza szyfrowania. Użyj tego czasu, do którego nastąpi przejście do certyfikatu. Aby utworzyć nowy użycie kluczy szyfrowania [polecenia cmdlet New-AzsEncryptionKeyBase64](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
 
 ![Usługa Azure Stack — przy użyciu klucza szyfrowania w trybie zgodności z poprzednimi wersjami](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 

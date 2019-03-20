@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: haroldw
-ms.openlocfilehash: 826377f7ae4803818fab22e333f7b9b89caf67cb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 826085df8d928cab0a05527be8c464af5f4e9180
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444892"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002519"
 ---
 # <a name="openshift-in-azure"></a>OpenShift na platformie Azure
 
@@ -50,7 +50,7 @@ Ponieważ klienci "własnością" tej platformy, mogą ją zainstalować w ich l
 
 ## <a name="openshift-on-azure"></a>OpenShift na platformie Azure
 
-Platforma OpenShift na platformie Azure jest w pełni zarządzana oferta platformy OpenShift działających na platformie Azure. Ta usługa jest wspólnie zarządzane i obsługiwane przez firmę Microsoft i Red Hat. Klaster zostanie wdrożony w subskrypcji platformy Azure przez klienta. Usługa jest obecnie dostępna w prywatnej wersji zapoznawczej i zostanie GA koniec CY2019 P1. W przypadku klientów wziąć udział w prywatnej wersji zapoznawczej, prosimy o wypełnienie [formularz nominacji](http://aka.ms/openshiftazureinterest).  Więcej informacje będą dostarczane jako oferty pobiera bliżej GA.
+Platforma OpenShift na platformie Azure jest w pełni zarządzana oferta platformy OpenShift działających na platformie Azure. Ta usługa jest wspólnie zarządzane i obsługiwane przez firmę Microsoft i Red Hat. Klaster zostanie wdrożony w subskrypcji platformy Azure przez klienta. Usługa jest obecnie dostępna w prywatnej wersji zapoznawczej i zostanie GA koniec CY2019 P1. W przypadku klientów wziąć udział w prywatnej wersji zapoznawczej, prosimy o wypełnienie [formularz nominacji](https://aka.ms/openshiftazureinterest).  Więcej informacje będą dostarczane jako oferty pobiera bliżej GA.
 
 ## <a name="okd-formerly-openshift-origin"></a>OKD (dawniej platformy OpenShift Origin)
 

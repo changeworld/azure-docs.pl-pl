@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e71e4ea56bfe467e03be59d6a855272baafc4235
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822735"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107733"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
@@ -47,7 +47,7 @@ Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) oferuje dwie op
 
 - Infrastruktura kopii zapasowej i przywracania oferowane. Można również użyć kopii zapasowej i przywrócenia jej funkcjonalności, który zapewnia podstawową infrastrukturą platformy SAP HANA na platformie Azure (duże wystąpienia). Ta opcja spełnia potrzeby kopii zapasowych oraz szybkie ich przywrócenie. Pozostałej części tej sekcji eliminuje funkcje i przywracania kopii zapasowych, które jest oferowana z dużymi wystąpieniami platformy HANA. W tej sekcji omówiono również relacji kopii zapasowej i przywracania musi po awarii odzyskiwania funkcjonalność oferowana przez dużych wystąpień HANA.
 
->   [!NOTE]
+> [!NOTE]
 >   Technologia migawki, która jest używana przez podstawową infrastrukturą dużych wystąpień HANA zależny od oprogramowania SAP HANA migawki. W tym momencie migawek platformy SAP HANA nie działają w połączeniu z wieloma dzierżawami kontenery wielodostępne bazy danych SAP HANA. Jeśli tylko jednej dzierżawy zostanie wdrożona, migawek platformy SAP HANA będą działać, a ta metoda może być używana.
 
 ## <a name="using-storage-snapshots-of-sap-hana-on-azure-large-instances"></a>Przy użyciu migawek magazynu oprogramowania SAP Hana na platformie Azure (duże wystąpienia)
@@ -641,44 +641,44 @@ Poniżej pokazano, jak przygotować się do żądania:
 
 1. Zamknij wystąpienie oprogramowania HANA.
 
- ![Zamknij wystąpienie oprogramowania HANA](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
+   ![Zamknij wystąpienie oprogramowania HANA](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
 1. Odinstaluj woluminy danych w każdym węźle bazy danych HANA. Woluminy danych nadal są zainstalowane w systemie operacyjnym, przywracanie migawki nie powiedzie się.
- ![Odinstaluj woluminy danych w każdym węźle bazy danych HANA](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
+   ![Odinstaluj woluminy danych w każdym węźle bazy danych HANA](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 
 1. Otwórz żądanie pomocy technicznej platformy Azure i zawierają instrukcje informujące o przywrócenie określoną migawkę.
 
- - Podczas przywracania: Oprogramowanie SAP HANA na zarządzanie usługami platformy Azure może poprosić Cię o weź udział w konferencji, do zapewnienia koordynacji, weryfikacji i potwierdzenie, że migawki magazynu poprawną został przywrócony. 
+   - Podczas przywracania: Oprogramowanie SAP HANA na zarządzanie usługami platformy Azure może poprosić Cię o weź udział w konferencji, do zapewnienia koordynacji, weryfikacji i potwierdzenie, że migawki magazynu poprawną został przywrócony. 
 
- - Po przywróceniu: Oprogramowanie SAP HANA na zarządzanie usługami platformy Azure powiadamia o przywróceniu z migawki magazynu.
+   - Po przywróceniu: Oprogramowanie SAP HANA na zarządzanie usługami platformy Azure powiadamia o przywróceniu z migawki magazynu.
 
 1. Po ukończeniu procesu przywracania, należy ponownie zainstalować wszystkie woluminy danych.
 
- ![Zainstaluj wszystkie woluminy danych](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
+   ![Zainstaluj wszystkie woluminy danych](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
 
 1. Wybierz opcje odzyskiwania w systemie SAP HANA Studio, jeśli nie automatycznie pojawiania się po ponownym nawiązaniu połączenia bazy danych HANA za pośrednictwem programu SAP HANA Studio. Przywracanie do ostatniego migawki HANA można znaleźć w poniższym przykładzie. Migawki magazynu osadza jedną migawkę platformy HANA. W przypadku przywracania do najnowszej migawki magazynu powinno być najnowszej migawki platformy HANA. (Jeśli można przywrócić starsze migawek magazynu, musisz zlokalizować migawki HANA na podstawie czasu, który migawki magazynu.)
 
- ![Wybierz opcje odzyskiwania w obrębie SAP HANA Studio](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
+   ![Wybierz opcje odzyskiwania w obrębie SAP HANA Studio](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
 
 1. Wybierz **odzyskać bazę danych do określonych danych migawki kopii zapasowej lub magazynu**.
 
- ![W oknie Określanie typu odzyskiwania](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
+   ![W oknie Określanie typu odzyskiwania](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
 
 1. Wybierz **Określ kopia zapasowa, bez katalogu**.
 
- ![W oknie określ lokalizację kopii zapasowej](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
+   ![W oknie określ lokalizację kopii zapasowej](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
 
 1. W **typ docelowy** listy wybierz **migawki**.
 
- ![Określ kopii zapasowej do okna odzyskiwanie](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
+   ![Określ kopii zapasowej do okna odzyskiwanie](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
 
 1. Wybierz **Zakończ** można uruchomić procesu odzyskiwania.
 
- ![Wybierz opcję "Zakończ", aby rozpocząć proces odzyskiwania](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
+    ![Wybierz opcję "Zakończ", aby rozpocząć proces odzyskiwania](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
 
 1. Baza danych HANA jest przywrócić i odzyskać z migawką HANA, który znajduje się w tle magazynu.
 
- ![Baza danych HANA jest przywrócić i odzyskać z migawką HANA](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
+    ![Baza danych HANA jest przywrócić i odzyskać z migawką HANA](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
 
 ### <a name="recover-to-the-most-recent-state"></a>Odzyskaj do najnowszych stanu
 
@@ -691,23 +691,23 @@ Następujący proces przywraca migawki HANA, który znajduje się w tle magazynu
 
 1. Wybierz **odzyskać bazę danych do stanu najnowszych**.
 
- ![Wybierz pozycję "Odzyskiwanie bazy danych do stanu najnowszych"](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
+   ![Wybierz pozycję "Odzyskiwanie bazy danych do stanu najnowszych"](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
 
 1. Określ lokalizację najnowsze kopie zapasowe dziennika platformy HANA. Lokalizacja musi zawierać wszystkie HANA kopie zapasowe dziennika transakcji z migawki HANA do najnowszych stanu.
 
- ![Określ lokalizację najnowsze kopie zapasowe dziennika HANA](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
+   ![Określ lokalizację najnowsze kopie zapasowe dziennika HANA](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
 
 1. Wybierz kopię zapasową jako podstawowy, z którego można odzyskać bazy danych. W tym przykładzie migawki HANA na zrzucie ekranu jest migawką HANA, która została uwzględniona w migawce magazynu. 
 
- ![Wybierz kopię zapasową jako podstawowy, z którego można odzyskać bazy danych](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
+   ![Wybierz kopię zapasową jako podstawowy, z którego można odzyskać bazy danych](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
 
 1. Wyczyść **tworzenia kopii zapasowych Użyj Delta** pole wyboru, jeśli nie istnieją różnice między czasem migawki HANA i najnowszych stanu.
 
- ![Usuń zaznaczenie pola wyboru "Użyj różnicowych kopii zapasowych", jeśli istnieje nie różnic](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
+   ![Usuń zaznaczenie pola wyboru "Użyj różnicowych kopii zapasowych", jeśli istnieje nie różnic](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
 
 1. Na ekranie Podsumowanie należy wybrać **Zakończ** rozpocząć wykonywanie procedury przywracania.
 
- ![Kliknij przycisk "Zakończ", na ekranie Podsumowanie](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
+   ![Kliknij przycisk "Zakończ", na ekranie Podsumowanie](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
 
 ### <a name="recover-to-another-point-in-time"></a>Odzyskaj do innego punktu w czasie
 Aby odzyskać do punktu w czasie między migawki HANA (zawarte w tle magazynu) oraz jedną, która jest nowsza niż HANA migawkę punktu w czasie odzyskiwania, należy wykonać następujące czynności:

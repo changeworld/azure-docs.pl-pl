@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117150"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884124"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Dane telemetryczne dotyczące żądań: Model danych usługi Application Insights
 
@@ -29,7 +29,7 @@ Elementu telemetrii żądania (w [usługi Application Insights](../../azure-moni
 
 Nazwa żądania reprezentuje ścieżkę kodu do przetwarzania żądania. Kardynalność niskiej wartości lepiej grupowanie żądań. Dla żądań HTTP, jego reprezentuje metody HTTP i szablon ścieżki adresu URL, takich jak `GET /values/{id}` bez rzeczywistego `id` wartość.
 
-Application Insights w sieci web zestaw SDK wysyła Nazwa żądania "w jakim jest" w odniesieniu do rozróżniania wielkości liter. Grupowanie w interfejsie użytkownika jest uwzględniana wielkość liter, `GET /Home/Index` jest liczone oddzielnie od `GET /home/INDEX` mimo że często powodują one ten sam wykonywania akcji i kontrolerów. Przyczyna tego jest to, że adresy URL ogólnie rzecz biorąc są [liter](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Warto sprawdzić, czy wszystkie `404` wystąpiło adresy URL wpisane pisane wielkimi literami. Możesz przeczytać więcej na żądania nazwy kolekcji przez zestaw SDK usługi sieci Web platformy ASP.Net w [wpis w blogu](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights w sieci web zestaw SDK wysyła Nazwa żądania "w jakim jest" w odniesieniu do rozróżniania wielkości liter. Grupowanie w interfejsie użytkownika jest uwzględniana wielkość liter, `GET /Home/Index` jest liczone oddzielnie od `GET /home/INDEX` mimo że często powodują one ten sam wykonywania akcji i kontrolerów. Przyczyna tego jest to, że adresy URL ogólnie rzecz biorąc są [liter](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Warto sprawdzić, czy wszystkie `404` wystąpiło adresy URL wpisane pisane wielkimi literami. Możesz przeczytać więcej na żądania nazwy kolekcji przez zestaw SDK usługi sieci Web platformy ASP.NET w [wpis w blogu](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Maksymalna długość: 1024 znaki
 

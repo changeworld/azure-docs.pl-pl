@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 432f2495dd1b4c8aeb761d12904adf26f3c24c0b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: dcfc2480cd9a62b57255163132373998db328034
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660701"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075803"
 ---
 # <a name="available-event-hubs-apis"></a>Zdarzenie dostępne koncentratory API
 
@@ -54,7 +54,7 @@ Ekosystem platformy .NET ma wielu modułów wykonawczych, istnieje więc wiele b
 Poniższa tabela zawiera listę wszystkich aktualnie dostępnych bibliotek specyficznych dla zarządzania. Żadna z tych bibliotek zawierają operacji środowiska uruchomieniowego i są wyłącznie w celu zarządzania jednostkami usługi Event Hubs.
 
 | Języka/platformy | Pakiet zarządzania | Repozytorium |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
 ## <a name="next-steps"></a>Kolejne kroki

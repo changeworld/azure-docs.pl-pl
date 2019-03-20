@@ -11,24 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 48098ba32a8eb1c2d7a7bafa246b8e850229b430
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804539"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005805"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Wyświetl Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal
 
-[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. Mimo że nie można utworzyć własne Odmów przypisania, musisz mieć możliwość wyświetlania Odmów przypisania, ponieważ może mieć wpływ na ogólną uprawnień. Aby uzyskać informacje o przypisaniu Odmów, konieczne jest posiadanie `Microsoft.Authorization/denyAssignments/read` uprawnień, który jest dostępny w większości [wbudowane role zasobów platformy Azure](built-in-roles.md).
-
-W tym artykule opisano sposób użycia witryny Azure portal do wyświetlania Odmów przypisania.
+[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. W tym artykule opisano sposób użycia witryny Azure portal do wyświetlania Odmów przypisania.
 
 > [!NOTE]
-> W tej chwili odmówić przypisania są przeznaczone tylko do odczytu i może zostać ustawiona tylko przez firmę Microsoft.
+> W tej chwili jedynym sposobem, które można dodać własne odmówić przypisania polega na użyciu plany platformy Azure. Aby uzyskać więcej informacji, zobacz [chronić nowe zasoby za pomocą blokad zasobów platformy Azure, plany](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby uzyskać informacje o przypisaniu Odmów, musisz mieć:
+
+- `Microsoft.Authorization/denyAssignments/read` uprawnienie, który jest dostępny w większości [wbudowane role zasobów platformy Azure](built-in-roles.md).
 
 ## <a name="view-deny-assignments"></a>Wyświetlanie przypisań odmowy
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 12/27/2018
+ms.date: 02/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6df44afee26570dbdc5d64b449c4e33d6a0956ae
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885714"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404046"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>Administrowanie urządzeniem Data Box za pomocą lokalnego internetowego interfejsu użytkownika
 
@@ -25,6 +25,7 @@ W tym artykule zawarto następujące samouczki:
 
 - Generowanie pakietu dla pomocy technicznej
 - Zamykanie lub ponowne uruchamianie urządzenia
+- Pobieranie zestawienia komponentów lub plików manifestu
 - Wyświetlanie dostępnej pojemności urządzenia
 - Pomijanie weryfikacji sumy kontrolnej 
 
@@ -104,6 +105,8 @@ Zanim zaczniesz, upewnij się, że dla urządzenia Data Box ukończono krok **Pr
     |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Stronicowe obiekty blob         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blokowe obiekty blob         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |Dysk zarządzany         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Dysk zarządzany         |SMB/NFS         |
 
 Ta lista umożliwia weryfikację plików przekazanych do konta usługi Azure Storage po powrocie urządzenia Data Box do centrum danych platformy Azure. Poniżej przedstawiono przykładowy plik manifestu.
 
@@ -172,7 +175,7 @@ Zdecydowanie zaleca się, aby nie wyłączać sumy kontrolnej, chyba że jej gen
 2. **Wyłącz** weryfikację sumy kontrolnej.
 3. Kliknij przycisk **Zastosuj**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, w jaki sposób [zarządzać urządzeniem Data Box w witrynie Azure Portal](data-box-portal-admin.md).
 
