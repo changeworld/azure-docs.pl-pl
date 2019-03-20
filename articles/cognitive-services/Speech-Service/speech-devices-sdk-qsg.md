@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b008293e06f476109abde5be519489b2e3d4c1e9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 114e0b951b2bfe83e8b989646bd07a5fd75b3ee6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531389"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894414"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
@@ -39,18 +39,18 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
 
 * Zainstaluj [programu Android Studio](https://developer.android.com/studio/) i [Vysor](https://vysor.io/download/) na komputerze.
 
-* Pobierz [klucz subskrypcji usługi mowy](get-started.md). Można uzyskać bezpłatnej 30-dniowej wersji próbnej lub uzyskać klucz z pulpitu nawigacyjnego platformy Azure.
+* Pobierz [klucz subskrypcji usług przetwarzania mowy](get-started.md). Można uzyskać bezpłatnej 30-dniowej wersji próbnej lub uzyskać klucz z pulpitu nawigacyjnego platformy Azure.
 
-* Jeśli chcesz użyć funkcja rozpoznawania celu usługi rozpoznawania mowy, Subskrybuj [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) i [Pobierz klucz subskrypcji](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription).
+* Jeśli chcesz użyć funkcja rozpoznawania celu mowy usług, Subskrybuj [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) i [Pobierz klucz subskrypcji](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription).
 
     Możesz [Tworzenie prostego modelu usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/) lub użyj przykładu model usługi LUIS, example.json usługi LUIS. Przykładowy model usługi LUIS jest dostępny z [witryny pobierania zestawu Speech Devices SDK](https://shares.datatransfer.microsoft.com/). Można przekazać swój model pliku JSON do [portal usługi LUIS](https://www.luis.ai/home), wybierz opcję **importowania Nowa aplikacja**, a następnie wybierz plik JSON.
 
 ## <a name="set-up-the-development-kit"></a>Skonfiguruj zestaw development kit
-    
+
 1. Zestaw development kit ma dwa wczesnych łączniki USB. Łącznik po lewej stronie zasilania deweloperski i jest wyróżniony jako zasilania na poniższej ilustracji. Po prawej stronie jeden ma nad nim kontroli i jest oznaczony jako debugowania na obrazie.
 
     ![Łączenie zestawu dla deweloperów](media/speech-devices-sdk/qsg-1.png)
-       
+
 1. Zasilacz deweloperski za pomocą kabla USB wczesnych połącz port zasilania do komputera lub dostarczenia adaptera. Wskaźnik zielony zasilania, zostaną wyświetlone w górnym tablicy.
 
 1. Do kontrolowania rozwoju kit połącz port debugowania na komputerze przy użyciu drugiej micro kabla USB. Istotne jest zapewnienie niezawodną komunikację przy użyciu kabla wysokiej jakości.
@@ -114,92 +114,68 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
 
 Aby uruchomić testy ROOBO i weryfikowanie konfiguracji development kit, tworzenie i instalowanie przykładowej aplikacji:
 
-1.  Uruchom program Android Studio.
+1. Uruchom program Android Studio.
 
-1.  Wybierz pozycję **Open an existing Android Studio project** (Otwórz istniejący projekt Android Studio).
+1. Wybierz pozycję **Open an existing Android Studio project** (Otwórz istniejący projekt Android Studio).
 
-    ![Android Studio — Otwórz istniejący projekt](media/speech-devices-sdk/qsg-5.png)
+   ![Android Studio — Otwórz istniejący projekt](media/speech-devices-sdk/qsg-5.png)
 
-1.  Przejdź do C:\SDSDK\Android-Sample-Release\example. Wybierz **OK** otworzyć projektu w przykładzie.
+1. Przejdź do C:\SDSDK\Android-Sample-Release\example. Wybierz **OK** otworzyć projektu w przykładzie.
 
-1.  Dodaj klucz subskrypcji mowy do kodu źródłowego. Do wypróbowania rozpoznawanie intencji, również należy dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora.
+1. Dodaj klucz subskrypcji mowy do kodu źródłowego. Do wypróbowania rozpoznawanie intencji, również należy dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora.
 
-    Kluczy i informacje o aplikacji przejdź w następujących wierszach w pliku źródłowym MainActivity.java:
+   Kluczy i informacje o aplikacji przejdź w następujących wierszach w pliku źródłowym MainActivity.java:
 
-    ```java
-    // Subscription
-    private static final String SpeechSubscriptionKey = "[your speech key]";
-    private static final String SpeechRegion = "westus";
-    private static final String LuisSubscriptionKey = "[your LUIS key]";
-    private static final String LuisRegion = "westus2.api.cognitive.microsoft.com";
-    private static final String LuisAppId = "[your LUIS app ID]"
-    ```
+   ```java
+   // Subscription
+   private static final String SpeechSubscriptionKey = "[your speech key]";
+   private static final String SpeechRegion = "westus";
+   private static final String LuisSubscriptionKey = "[your LUIS key]";
+   private static final String LuisRegion = "westus2.api.cognitive.microsoft.com";
+   private static final String LuisAppId = "[your LUIS app ID]"
+   ```
 
 1. Aktywujące domyślne (słowo kluczowe) jest "Computer". Można też spróbować jednego z innych podane wake słów, takich jak "Maszyna" lub "Asystent". Pliki zasobów dla tych słów alternatywne wznawiania znajdują się w zestawu Speech Devices SDK, na w tym folderze — słowo kluczowe. Na przykład C:\SDSDK\Android-Sample-Release\keyword\Computer zawiera pliki, używany do wznawiania wyraz "Komputer".
 
     Możesz również [utworzyć niestandardowe słowo aktywujące](speech-devices-sdk-create-kws.md).
 
-    Aby zainstalować word wznawiania, których chcesz użyć:
+    Aby korzystać z nowego słowa wznawiania, zaktualizuj następujące dwa wiersze MainActivity.java i skopiuj pakiet programu word wznawiania do swojej aplikacji. Na przykład aby użyć wyniku "Machine" programu word z kws pakietu programu word wake-machine.zip:
 
-    * Utwórz folder — słowo kluczowe w folderze danych na urządzeniu, uruchamiając następujące polecenia w oknie wiersza polecenia:
+   * Skopiuj pakiet wznawiania programu word do folderu "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
+   * Aktualizacja MainActivity.java za pomocą słowa kluczowego i nazwa pakietu: 
+    
+     ```java
+     private static final String Keyword = "Machine";
+     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
+     ```
 
-        ```
-        adb shell
-        cd /data
-        mkdir keyword
-        exit
-        ```
+1. Zaktualizuj następujące wiersze, które zawierają ustawienia geometrii, mikrofon tablicy:
 
-    * Skopiuj pliki kws.table kws_k.fst i words_kw.txt do folderu \data\keyword urządzenia. Uruchom następujące polecenia w oknie wiersza polecenia. Jeśli utworzono [niestandardowe słowo aktywujące](speech-devices-sdk-create-kws.md), plik kws.table wygenerowane z sieci web znajduje się w tym samym katalogu co pliki kws.table, kws_k.fst i words_kw.txt. Niestandardowe słowo aktywujące, można użyć `adb push C:\SDSDK\Android-Sample-Release\keyword\[wake_word_name]\kws.table /data/keyword` polecenie, aby wypchnąć plik kws.table do zestawu dla deweloperów:
+   ```java
+   private static final String DeviceGeometry = "Circular6+1";
+   private static final String SelectedGeometry = "Circular6+1";
+   ```
+   W poniższej tabeli opisano dostępne wartości:
 
-        ```
-        adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
-        adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\kws_k.fst /data/keyword
-        adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\words_kw.txt /data/keyword
-        ```
-
-    * Odwoływać się do tych plików w przykładowej aplikacji. Znajdź następujące wiersze w MainActivity.java. Upewnij się, że określone słowo kluczowe jest używasz i czy ścieżka prowadzi do `kws.table` pliku, który jest przypisany do urządzenia.
-
-        ```java
-        private static final String Keyword = "Computer";
-        private static final String KeywordModel = "/data/keyword/kws.table";
-        ```
-
-        > [!NOTE]
-        > We własnym kodzie można użyć pliku kws.table, aby utworzyć wystąpienie modelu — słowo kluczowe i uruchomić rozpoznawanie:
-        >
-        > ```java
-        > KeywordRecognitionModel km = KeywordRecognitionModel.fromFile(KeywordModel);
-        > final Task<?> task = reco.startKeywordRecognitionAsync(km);
-        > ```
-
-1.  Zaktualizuj następujące wiersze, które zawierają ustawienia geometrii, mikrofon tablicy:
-
-    ```java
-    private static final String DeviceGeometry = "Circular6+1";
-    private static final String SelectedGeometry = "Circular6+1";
-    ```
-    W poniższej tabeli opisano dostępne wartości:
-
-    |Zmienna|Znaczenie|Dostępne wartości|
-    |--------|-------|----------------|
-    |`DeviceGeometry`|Konfiguracji fizycznej mic|Aby uzyskać cykliczne zestaw deweloperski: `Circular6+1` |
-    |||Aby uzyskać liniowej zestaw deweloperski: `Linear4`|
-    |`SelectedGeometry`|Konfiguracja kontroli integralności uprawnień oprogramowania|Dla okręgu deweloperski, który używa mikrofonu wszystkich: `Circular6+1`|
-    |||Aby uzyskać zestaw cykliczne deweloperów, która używa czterech mikrofonu: `Circular3+1`|
-    |||Dla liniowych deweloperski, który używa mikrofonu wszystkich: `Linear4`|
-    |||Dla zestawu SDK do dev liniowy, który używa dwóch mikrofonu: `Linear2`|
+   |Zmienna|Znaczenie|Dostępne wartości|
+   |--------|-------|----------------|
+   |`DeviceGeometry`|Konfiguracji fizycznej mic|Aby uzyskać cykliczne zestaw deweloperski: `Circular6+1` |
+   |||Aby uzyskać liniowej zestaw deweloperski: `Linear4`|
+   |`SelectedGeometry`|Konfiguracja kontroli integralności uprawnień oprogramowania|Dla okręgu deweloperski, który używa mikrofonu wszystkich: `Circular6+1`|
+   |||Aby uzyskać zestaw cykliczne deweloperów, która używa czterech mikrofonu: `Circular3+1`|
+   |||Dla liniowych deweloperski, który używa mikrofonu wszystkich: `Linear4`|
+   |||Dla zestawu SDK do dev liniowy, który używa dwóch mikrofonu: `Linear2`|
 
 
-1.  Aby skompilować aplikację, na **Uruchom** menu, wybierz opcję **Uruchom "aplikację"**. **Wybierz cel wdrożenia** pojawi się okno dialogowe.
+1. Aby skompilować aplikację, na **Uruchom** menu, wybierz opcję **Uruchom "aplikację"**. **Wybierz cel wdrożenia** pojawi się okno dialogowe.
 
 1. Wybierz urządzenie, a następnie wybierz **OK** wdrożyć aplikację na urządzeniu.
 
     ![Wybierz cel wdrożenia — okno dialogowe](media/speech-devices-sdk/qsg-7.png)
 
-1.  Przykładowa aplikacja zestawu Speech Devices SDK rozpoczyna się i wyświetla następujące opcje:
+1. Przykładowa aplikacja zestawu Speech Devices SDK rozpoczyna się i wyświetla następujące opcje:
 
-    ![Opcje i przykładowa aplikacja przykład zestawu Speech Devices SDK](media/speech-devices-sdk/qsg-8.png)
+   ![Opcje i przykładowa aplikacja przykład zestawu Speech Devices SDK](media/speech-devices-sdk/qsg-8.png)
 
 1. Eksperyment!
 
@@ -207,9 +183,9 @@ Aby uruchomić testy ROOBO i weryfikowanie konfiguracji development kit, tworzen
 
 ### <a name="certificate-failures"></a>Błędy certyfikatów
 
-Jeśli błędy certyfikatów podczas korzystania z usługi rozpoznawania mowy, upewnij się, że urządzenie ma poprawną datę i godzinę:
+Jeśli pojawi się błędy certyfikatów, korzystając z usług przetwarzania mowy, upewnij się, że urządzenie ma poprawną datę i godzinę:
 
-1. Przejdź do **ustawienia**. W obszarze **systemu**, wybierz opcję **daty i godziny**.
+1. Przejdź do obszaru **Settings** (Ustawienia). W obszarze **systemu**, wybierz opcję **daty i godziny**.
 
     ![W obszarze Ustawienia wybierz datę i godzinę](media/speech-devices-sdk/qsg-12.png)
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc6b9ad5227bc5bffd1f44f664351843896aec
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181621"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109784"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Ustaw niestandardową stronę główną dla opublikowanych aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -30,10 +30,10 @@ W tym artykule omówiono sposób konfigurowania aplikacji, aby przekierować uż
 Podczas uruchamiania aplikacji przez użytkowników, są one skierowane domyślnie adres URL domeny katalogu głównego dla opublikowanej aplikacji. Strona docelowa jest zwykle ustawiana jako adres URL strony głównej. Użyj modułu Azure AD PowerShell do definiowania adresy URL niestandardową stronę główną, jeśli chcesz, aby użytkownikom aplikacji przejście na określonej stronie w aplikacji. 
 
 Oto przykład, dlaczego firma ustawiał niestandardowa strona główna:
-- W sieci firmowej użytkownicy przejść do *https://ExpenseApp/login/login.aspx* logować się i uzyskać dostęp do Twojej aplikacji.
-- Ponieważ inne zasoby, takie jak obrazy, które serwer Proxy aplikacji musi mieć dostęp na najwyższym poziomie w strukturze folderów, publikowanie aplikacji przy użyciu *https://ExpenseApp* jako wewnętrzny adres URL.
-- Domyślny adres URL zewnętrznego *https://ExpenseApp-contoso.msappproxy.net*, która nie przyjmuje użytkowników na stronę logowania.  
-- Ustaw *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* jako adres URL strony głównej. 
+- W sieci firmowej użytkownicy przejść do `https://ExpenseApp/login/login.aspx` logować się i uzyskać dostęp do Twojej aplikacji.
+- Ponieważ inne zasoby, takie jak obrazy, które serwer Proxy aplikacji musi mieć dostęp na najwyższym poziomie w strukturze folderów, publikowanie aplikacji przy użyciu `https://ExpenseApp` jako wewnętrzny adres URL.
+- Domyślny adres URL zewnętrznego `https://ExpenseApp-contoso.msappproxy.net`, która nie przyjmuje użytkowników na stronę logowania.  
+- Ustaw `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` jako adres URL strony głównej. 
 
 >[!NOTE]
 >Po zapewnieniu użytkownikom dostępu do opublikowanych aplikacji, aplikacje są wyświetlane w [panelu dostępu usługi Azure AD](../user-help/active-directory-saas-access-panel-introduction.md) i [uruchamianie aplikacji usługi Office 365](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher).
@@ -113,7 +113,7 @@ Utwórz adres URL strony głównej i aktualizowanie aplikacji przy użyciu tej w
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
- Teraz, gdy zostało potwierdzone aplikacji, możesz przystąpić do aktualizacji strony głównej, w następujący sposób.
+   Teraz, gdy zostało potwierdzone aplikacji, możesz przystąpić do aktualizacji strony głównej, w następujący sposób.
 
 2. Utwórz obiekt pusta aplikacja do przechowywania, które chcesz wprowadzić zmiany. Ta zmienna przechowuje wartości, które chcesz zaktualizować. Nic nie jest tworzone w tym kroku.
 

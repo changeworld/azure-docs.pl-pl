@@ -4,29 +4,29 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: 2b92aba8b9a8d8f46ae2aeac3a7bfe60a4755f9b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: aa2e6d80620f0a4cf5063919a6de53e4de20f706
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019230"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077009"
 ---
 1. Skopiuj Instalator do folderu lokalnego (na przykład TMP) na serwerze, który chcesz chronić. W terminalu uruchom następujące polecenia:
-  ```
-  cd /tmp ;
+   ```
+   cd /tmp ;
 
-  tar -xvzf Microsoft-ASR_UA*release.tar.gz
-  ```
+   tar -xvzf Microsoft-ASR_UA*release.tar.gz
+   ```
 2. Aby zainstalować usługę mobilności, uruchom następujące polecenie:
 
-  ```
-  sudo ./install -d <Install Location> -r MS -v VmWare -q
-  ```
+   ```
+   sudo ./install -d <Install Location> -r MS -v VmWare -q
+   ```
 3. Po zakończeniu instalacji usługi mobilności musi być zarejestrowany z serwerem konfiguracji. Uruchom następujące polecenie, aby zarejestrować usługę mobilności z serwerem konfiguracji:
 
-  ```
-  /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
-  ```
+   ```
+   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
+   ```
 
 #### <a name="mobility-service-installer-command-line"></a>Wiersz polecenia Instalatora usługi mobilności
 
@@ -35,7 +35,7 @@ Usage:
 ./install -d <Install Location> -r <MS|MT> -v VmWare -q
 ```
 
-|Parametr|Typ|Opis|Możliwe wartości|
+|Parametr|Type|Opis|Możliwe wartości|
 |-|-|-|-|
 |-r |Obowiązkowy|Określa, czy należy zainstalować usługi mobilności (MS), czy główny serwer docelowy ma Oznaczała powinien być zainstalowany.|MS </br> MT|
 |-d |Optional (Opcjonalność)|Lokalizacja, w którym jest zainstalowana usługa mobilności.|/usr/local/ASR|
@@ -51,7 +51,7 @@ cd /usr/local/ASR/Vx/bin
 UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
 ```
 
-|Parametr|Typ|Opis|Możliwe wartości|
+|Parametr|Type|Opis|Możliwe wartości|
 |-|-|-|-|
 |-i |Obowiązkowy|Adres IP serwera konfiguracji|Dowolny prawidłowy adres IP|
 |-P |Obowiązkowy|Pełna ścieżka pliku dla pliku, gdzie hasło połączenia zostanie zapisany.|Dowolny prawidłowy folder|

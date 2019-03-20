@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 53a1f50647e05b71afe6accb85f8a90cd8b7e253
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7f05665f4bcc5449c1a81fa24582b333b0a944e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470409"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173757"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Do zarządzania i publikowania, zestawy SDK siatki zdarzeń
 
@@ -46,4 +46,4 @@ Płaszczyzna danych SDK umożliwia wpis zdarzenia do tematów, zwracając szczeg
 * Na przykład, zobacz [przykładów kodu usługi Event Grid](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
 * Usługa Event Grid poleceń w interfejsie wiersza polecenia platformy Azure można znaleźć [wiersza polecenia platformy Azure](/cli/azure/eventgrid).
-* Usługa Event Grid poleceń w programie PowerShell można znaleźć [PowerShell](/powershell/module/azurerm.eventgrid).
+* Usługa Event Grid poleceń w programie PowerShell można znaleźć [PowerShell](/powershell/module/az.eventgrid).

@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002199"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201164"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Przesyłanie strumieniowe na dużą skalę w usłudze HDInsight
 
-Rozwiązania typu big data w czasie rzeczywistym względem danych w ruchu. Zazwyczaj te dane są najbardziej przydatne w momencie jego nadejścia. Przychodzący strumień danych staje się większą niż mogą być obsługiwane w tej chwili, może być konieczne ograniczanie zasobów w dół. Alternatywnie klaster usługi HDInsight skalować w górę do spełnienia rozwiązania do przesyłania strumieniowego poprzez dodawanie węzłów na żądanie.
+W czasie rzeczywistym danych big Data działają na danych w ruchu. Zazwyczaj te dane są najbardziej przydatne w momencie jego nadejścia. Przychodzący strumień danych staje się większą niż mogą być obsługiwane w tej chwili, może być konieczne ograniczanie zasobów w dół. Alternatywnie klaster usługi HDInsight skalować w górę do spełnienia rozwiązania do przesyłania strumieniowego poprzez dodawanie węzłów na żądanie.
 
 
 W przypadku przesyłania strumieniowego aplikacji co najmniej jedno źródło danych jest generowany zdarzeń (czasem w milionach na sekundę), które muszą być pozyskiwane szybko bez usuwania żadnych użytecznych informacji. Zdarzenia przychodzące są obsługiwane za pomocą *buforowanie strumienia*, nazywane również *Kolejkowanie zdarzeń*, przez usługę, takich jak [platformy Apache Kafka](kafka/apache-kafka-introduction.md) lub [usługi Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po zebraniu zdarzenia można następnie analizować dane przy użyciu systemu analizy w czasie rzeczywistym w ramach *przetwarzanie strumienia* warstwy, takich jak [Apache Storm](storm/apache-storm-overview.md) lub [Apache Spark Streaming](spark/apache-spark-streaming-overview.md). Przetworzone dane mogą być przechowywane w systemów magazynowania długoterminowe, takie jak [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)i wyświetlane w czasie rzeczywistym na pulpicie nawigacyjnym analizy biznesowej, takich jak [usługi Power BI](https://powerbi.microsoft.com), Tableau lub niestandardowe sieci web Strona.
@@ -45,7 +45,7 @@ Aby uzyskać więcej informacji, zobacz [co to jest Apache Spark Streaming?](hdi
 
 ## <a name="scaling-a-cluster"></a>Skalowanie klastra
 
-Chociaż można określić liczbę węzłów w klastrze podczas tworzenia, może być możliwość zwiększania i zmniejszania klastra w celu dopasowania obciążenia. Wszystkie klastry HDInsight umożliwiają [zmianę liczby węzłów w klastrze](hdinsight-administer-use-management-portal.md#scale-clusters). Klastry Spark można porzucić bez utraty danych, ponieważ wszystkie dane są przechowywane w usłudze Azure Storage lub magazynu usługi Data Lake.
+Chociaż można określić liczbę węzłów w klastrze podczas tworzenia, może być możliwość zwiększania i zmniejszania klastra w celu dopasowania obciążenia. Wszystkie klastry HDInsight umożliwiają [zmianę liczby węzłów w klastrze](hdinsight-administer-use-portal-linux.md#scale-clusters). Klastry Spark można porzucić bez utraty danych, ponieważ wszystkie dane są przechowywane w usłudze Azure Storage lub magazynu usługi Data Lake.
 
 Istnieją zalety łączenia odsprzęgania technologii. Na przykład platforma Kafka jest zdarzenie buforowania technologii, dzięki czemu jest bardzo operacji We/Wy o znacznym wykorzystaniu i nie wymaga znacznie mocy obliczeniowej. W odróżnieniu od procesorów strumieni, takich jak Spark Streaming są intensywnie wymagające bardziej wydajne maszyny wirtualne. Dzięki tych technologii odłączone w różnych klastrach, możesz skalować je niezależnie najlepszego wykorzystania maszyn wirtualnych.
 

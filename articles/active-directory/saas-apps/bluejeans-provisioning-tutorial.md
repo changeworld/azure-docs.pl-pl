@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2006b025c4bcf54ee2ab131e0d6a105f9f4e9f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fa740a558015b28e6d3fa7245c9041dc4167f832
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178179"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110362"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie BlueJeans dla automatycznej aprowizacji użytkowników
 
@@ -107,9 +107,9 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **nazwa użytkownika administratora**, i **hasło administratora** BlueJeans konta. Przykłady te wartości są:
 
-    *   W **nazwa użytkownika administratora** pola, wypełnij nazwę użytkownika konta administratora w Twojej dzierżawie BlueJeans. Przykład: admin@contoso.com.
+   * W **nazwa użytkownika administratora** pola, wypełnij nazwę użytkownika konta administratora w Twojej dzierżawie BlueJeans. Przykład: admin@contoso.com.
 
-    *   W **hasło administratora** pola, wypełnij hasło odpowiadający nazwa użytkownika administratora.
+   * W **hasło administratora** pola, wypełnij hasło odpowiadający nazwa użytkownika administratora.
 
 6. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z BlueJeans. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto BlueJeans ma uprawnienia administratora i spróbuj ponownie.
 

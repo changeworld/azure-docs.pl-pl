@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: bd59a9584f6993d768a9aeb790470a1d978c78ae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ab050a683913e62c6671bf01397e76311a08952b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542456"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006777"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Powiązania usługi SignalR Service dla usługi Azure Functions
 
@@ -82,7 +82,7 @@ public static SignalRConnectionInfo Negotiate(
 
 #### <a name="authenticated-tokens"></a>Uwierzytelniony tokenów
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/overview-Authentication-Authorization.MD).
+Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Możesz łatwo dodawać do aplikacji funkcji przy użyciu uwierzytelniania [uwierzytelnianie usługi App Service](../app-service/overview-authentication-authorization.md).
 
 Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `UserId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`. 
 
@@ -127,7 +127,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 #### <a name="authenticated-tokens"></a>Uwierzytelniony tokenów
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/overview-Authentication-Authorization.MD).
+Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Możesz łatwo dodawać do aplikacji funkcji przy użyciu uwierzytelniania [uwierzytelnianie usługi App Service](../app-service/overview-authentication-authorization.md).
 
 Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `userId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`. 
 
@@ -174,7 +174,7 @@ public SignalRConnectionInfo negotiate(
 
 #### <a name="authenticated-tokens"></a>Uwierzytelniony tokenów
 
-Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/overview-Authentication-Authorization.MD).
+Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Możesz łatwo dodawać do aplikacji funkcji przy użyciu uwierzytelniania [uwierzytelnianie usługi App Service](../app-service/overview-authentication-authorization.md).
 
 Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `UserId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`.
 
@@ -260,7 +260,7 @@ public static Task SendMessage(
     return signalRMessages.AddAsync(
         new SignalRMessage
         {
-            // the message will only be sent to this user ID
+            // the message will be sent to the group with this name
             GroupName = "myGroup",
             Target = "newMessage",
             Arguments = new [] { message }

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: a5376aed3e9cdb12be58cb07d7eb00303a03a963
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a9c6e99d3eff14c364d5eba3e6256382f9df6bc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074881"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182714"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -216,7 +216,7 @@ Kliknij znak plus dla pozycji pierwszej rezerwacji i ustaw opcję **Ilość reze
 
 Wszystkie nieużywane wystąpienia rezerwacji są teraz w pełni wykorzystywane i 51 wystąpień nie jest już uruchamianych na żądanie. W tym przykładzie zapewniasz swojej organizacji oszczędność pieniędzy, znacznie ograniczając użycie na żądanie i wykorzystując rezerwacje, za które już zapłacono.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku pomyślnie wykonano następujące czynności:
 

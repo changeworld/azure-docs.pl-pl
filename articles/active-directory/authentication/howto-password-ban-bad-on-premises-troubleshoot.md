@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63fdd60c4c462626cc43a7a453bddc0b020b92cf
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 760ad30daabee61300768b7c67824f39437ac87f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409894"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006957"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>Wersja zapoznawcza: Rozwiązywanie problemów z usługi Azure AD ochrony hasłem
 
@@ -63,13 +63,13 @@ Jeśli tryb uruchamiania usługi KDS został skonfigurowany na wyłączone, ta k
 
 Prosty test tego problemu jest ręcznie uruchom usługę KDS, za pośrednictwem konsoli MMC zarządzania usługami lub przy użyciu innych narzędzi do zarządzania usługi (na przykład uruchomić z poziomu konsoli wiersza polecenia polecenie "net start kdssvc"). Usługę KDS powinien uruchomić się pomyślnie i działają bez przerw.
 
-Najbardziej typowe przyczyny jest zlokalizowane poza domyślnej jednostki Organizacyjnej kontrolery domeny obiektu kontrolera domeny usługi Active Directory. Ta konfiguracja nie jest obsługiwana przez usługę KDS i brak ograniczeń narzuconych przez funkcję ochrony haseł usługi Azure AD. Poprawka dla tego warunku jest przenoszenie obiektu kontrolera domeny do lokalizacji domyślnej jednostki Organizacyjnej kontrolery domeny.
+Najczęstszą przyczyną główny nie będzie w stanie uruchomić usługę KDS jest zlokalizowane poza domyślnej jednostki Organizacyjnej kontrolery domeny obiektu kontrolera domeny usługi Active Directory. Ta konfiguracja nie jest obsługiwana przez usługę KDS i brak ograniczeń narzuconych przez funkcję ochrony haseł usługi Azure AD. Poprawka dla tego warunku jest przenoszenie obiektu kontrolera domeny do lokalizacji domyślnej jednostki Organizacyjnej kontrolery domeny.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Słabe hasła są akceptowane, ale nie powinien być
 
 Ten problem może mieć kilka przyczyn.
 
-1. Twoje agentach DC nie można pobrać zasad lub nie jest w stanie odszyfrować istniejące zasady. Sprawdź możliwe przyczyny w tematach powyżej.
+1. Twoje agentach DC nie może pobrać zasadę lub nie jest w stanie odszyfrować istniejące zasady. Sprawdź możliwe przyczyny w tematach powyżej.
 
 1. Tryb wymuszania zasad haseł jest nadal równa inspekcji. Jeśli ta konfiguracja jest włączone, ją ponownie skonfigurować, aby wymusić przy użyciu portalu ochrony haseł usługi Azure AD. Zobacz [ochrony hasłem Włącz](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
 

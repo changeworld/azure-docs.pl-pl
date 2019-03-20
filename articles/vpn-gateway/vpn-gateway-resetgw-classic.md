@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: d09f03aed8a739eaaaf8c60c379a746551d3b6f8
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009889"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118803"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetowanie bramy VPN Gateway
 
@@ -47,7 +47,7 @@ Można zresetować bramy sieci VPN usługi Resource Manager przy użyciu witryny
 1. Otwórz [witryny Azure portal](https://portal.azure.com) i przejdź do bramy sieci wirtualnej usługi Resource Manager, który chcesz zresetować.
 2. W bloku bramy sieci wirtualnej kliknij przycisk "Resetuj".
 
-  ![Zresetować blok bramy sieci VPN](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+   ![Zresetować blok bramy sieci VPN](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. W bloku resetowania kliknij **resetowania** przycisku.
 
 ## <a name="ps"></a>PowerShell

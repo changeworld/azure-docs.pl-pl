@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 9057cdc22e277e4e12e9f439f3fbe0c5a5cda2a2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 0ab6e3f189d4a2e7e8f3bc96108d7979c99fffa8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900517"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102673"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak zdefiniować parametry pliki konfiguracji w usłudze Service Fabric
 
@@ -30,24 +30,24 @@ W tym przykładzie można zastąpić wartości konfiguracji przy użyciu paramet
 1. Otwórz  *<MyService>\PackageRoot\Config\Settings.xml* plik w projekcie usługi.
 1. Ustaw nazwę parametru konfiguracji i wartość, na przykład rozmiar pamięci podręcznej równa 25, dodając następujący kod XML:
 
-  ```xml
+   ```xml
     <Section Name="MyConfigSection">
       <Parameter Name="CacheSize" Value="25" />
     </Section>
-  ```
+   ```
 
 1. Zapisz i zamknij plik.
 1. Otwórz  *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* pliku.
 1. W pliku ApplicationManifest.xml zadeklarować parametru i domyślne wartości w `Parameters` elementu.  Zaleca się, że nazwa parametru zawiera nazwę usługi (na przykład "MyService").
 
-  ```xml
+   ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
-  ```
+   ```
 1. W `ServiceManifestImport` sekcji znajduje się plik ApplicationManifest.xml, dodać `ConfigOverride` elementu, odwołania do pakietu konfiguracyjnego, sekcji i parametru.
 
-  ```xml
+   ```xml
     <ConfigOverrides>
       <ConfigOverride Name="Config">
           <Settings>
@@ -57,7 +57,7 @@ W tym przykładzie można zastąpić wartości konfiguracji przy użyciu paramet
           </Settings>
       </ConfigOverride>
     </ConfigOverrides>
-  ```
+   ```
 
 > [!NOTE]
 > W przypadku, w którym dodajesz ConfigOverride Usługa Service Fabric wybiera zawsze parametry aplikacji lub wartość domyślna określona w manifeście aplikacji.

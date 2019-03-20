@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5db4387c2fd610313aaac032c122366aa45dc7f9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 93313557781c6b3788d8b4d43d6676fc17625709
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201317"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Tworzenie akcji skryptu skryptów dla klastrów HDInsight Windows
-Dowiedz się, jak można tworzyć skrypty Akcja skryptu dla HDInsight. Aby uzyskać informacji na temat za pomocą skryptów akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md). Aby uzyskać ten sam artykuł, przeznaczony dla klastrów HDInsight opartych na systemie Linux, zobacz [skrypty opracowywanie akcji skryptu do HDInsight](hdinsight-hadoop-script-actions-linux.md).
+Dowiedz się, jak można tworzyć skrypty Akcja skryptu dla HDInsight. Aby uzyskać informacji na temat za pomocą skryptów akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md). Aby uzyskać ten sam artykuł, przeznaczony dla klastrów HDInsight opartych na systemie Linux, zobacz [skrypty opracowywanie akcji skryptu do HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
 
 > [!IMPORTANT]  
@@ -29,7 +29,7 @@ Akcja skryptu może służyć do instalowania dodatkowego oprogramowania, urucho
 > [!NOTE]  
 > Jeśli wystąpi następujący komunikat o błędzie:
 >
-> System.Management.Automation.CommandNotFoundException; ExceptionMessage: Termin "Save-HDIFile" nie został rozpoznany jako nazwa polecenia cmdlet, funkcji, pliku skryptu lub program wykonywalny. Sprawdź pisownię nazwy lub jeśli ścieżka został uwzględniony, sprawdź, czy ścieżka jest poprawna i spróbuj ponownie.
+> System.Management.Automation.CommandNotFoundException; ExceptionMessage : Termin "Save-HDIFile" nie został rozpoznany jako nazwa polecenia cmdlet, funkcji, pliku skryptu lub program wykonywalny. Sprawdź pisownię nazwy lub jeśli ścieżka został uwzględniony, sprawdź, czy ścieżka jest poprawna i spróbuj ponownie.
 > 
 > Jest on, ponieważ nie włączono metody pomocnika.  Zobacz [metody pomocnika do niestandardowych skryptów](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
 
@@ -95,12 +95,11 @@ HDInsight udostępnia szereg skryptów do instalowania dodatkowych składników 
 | --- | --- |
 | **Instalowanie platformy Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Zobacz [instalacji i używania klastrów platformy Apache Spark w HDInsight][hdinsight-install-spark]. |
 | **Instalowanie języka R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Zobacz [instalacji i używania języka R w klastrach HDInsight](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
-| **Zainstalować platformę Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Zobacz [instalacji i używania klastrów Apache Solr w HDInsight](hdinsight-hadoop-solr-install.md). |
 | **Zainstalować system Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Zobacz [instalacji i używania Giraph Apache na HDInsight clusters](hdinsight-hadoop-giraph-install.md). |
 | **Wstępne ładowanie bibliotek technologii Hive** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Zobacz [Dodaj Apache Hive bibliotek w klastrach HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
 
-Akcja skryptu można wdrożyć w witrynie Azure portal, programu Azure PowerShell lub przy użyciu zestawu .NET SDK HDInsight.  Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu][hdinsight-cluster-customize].
+Akcja skryptu można wdrożyć w witrynie Azure portal, programu Azure PowerShell lub przy użyciu zestawu .NET SDK HDInsight.  Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu] [hdinsight — klastra — Dostosowywanie].
 
 > [!NOTE]  
 > Przykładowe skrypty działają tylko w przypadku klastra HDInsight w wersji 3.1 lub nowszej. Aby uzyskać więcej informacji na temat wersji klastra HDInsight, zobacz [wersji klastra HDInsight](hdinsight-component-versioning.md).
@@ -131,8 +130,8 @@ Poniżej przedstawiono metody pomocnika, które są udostępniane przez ten skry
 
 | Metoda pomocnika | Opis |
 | --- | --- |
-| **Zapisz HDIFile** |Miejsce na dysku lokalnym, który jest skojarzony z węzłem maszyny Wirtualnej platformy Azure, przypisane do klastra, należy pobrać plik z określonego identyfikatora URI (Uniform Resource). |
-| **Rozwiń HDIZippedFile** |Rozpakuj skompresowany plik. |
+| **Save-HDIFile** |Miejsce na dysku lokalnym, który jest skojarzony z węzłem maszyny Wirtualnej platformy Azure, przypisane do klastra, należy pobrać plik z określonego identyfikatora URI (Uniform Resource). |
+| **Expand-HDIZippedFile** |Rozpakuj skompresowany plik. |
 | **Invoke-HDICmdScript** |Uruchom skrypt z cmd.exe. |
 | **HDILog zapisu** |Zapisują dane wyjściowe z niestandardowego skryptu używanych w przypadku akcji skryptu. |
 | **Get-Services** |Zostanie wyświetlona lista usług uruchomiona na komputerze, w którym skrypt jest wykonywany. |
@@ -291,13 +290,11 @@ W tym dzienniku jest jasne, że akcja skryptu Spark została wykonana na maszyni
 W przypadku, gdy wystąpi błąd wykonania, opisujące jego dane wyjściowe również znajdują się w tym pliku dziennika. Informacje zawarte w tych dziennikach powinna być pomocne w debugowaniu problemów skryptu, które mogą wystąpić.
 
 ## <a name="see-also"></a>Zobacz także
-* [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu][hdinsight-cluster-customize]
+* [Dostosowywanie klastrów HDInsight za pomocą akcji skryptu] [hdinsight — klastra — Dostosowywanie]
 * [Instalowanie i używanie platformy Apache Spark w klastrach HDInsight][hdinsight-install-spark]
-* [Instalowanie i używanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
 * [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [powershell-install-configure]: install-configure-powershell.md
 

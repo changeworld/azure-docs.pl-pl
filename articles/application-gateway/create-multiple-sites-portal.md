@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 58f448646efc4cac9298d5dc4ec7a99e0e39bddc
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080171"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tworzenie i konfigurowanie bramy aplikacji do hostowania wielu witryn sieci web przy użyciu witryny Azure portal
 
@@ -44,20 +44,20 @@ Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W ty
 2. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
 3. Wprowadź następujące wartości dla bramy aplikacji:
 
-    - *myAppGateway* — jako nazwę bramy aplikacji.
-    - *myResourceGroupAG* — jako nową grupę zasobów.
+   - *myAppGateway* — jako nazwę bramy aplikacji.
+   - *myResourceGroupAG* — jako nową grupę zasobów.
 
-    ![Tworzenie nowej bramy aplikacji](./media/create-multiple-sites-portal/application-gateway-create.png)
+     ![Tworzenie nowej bramy aplikacji](./media/create-multiple-sites-portal/application-gateway-create.png)
 
 4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
 5. Kliknij kolejno pozycje **Wybierz sieć wirtualną**, **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
 
-    - *myVNet* — jako nazwę sieci wirtualnej.
-    - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
-    - *myAGSubnet* — jako nazwę podsieci.
-    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
+   - *myVNet* — jako nazwę sieci wirtualnej.
+   - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
+   - *myAGSubnet* — jako nazwę podsieci.
+   - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
 
-    ![Tworzenie sieci wirtualnej](./media/create-multiple-sites-portal/application-gateway-vnet.png)
+     ![Tworzenie sieci wirtualnej](./media/create-multiple-sites-portal/application-gateway-vnet.png)
 
 6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
 7. Kliknij przycisk **wybierz publiczny adres IP**, kliknij przycisk **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
@@ -134,8 +134,8 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 1. Kliknij przycisk **odbiorników** a następnie kliknij przycisk **obejmujące wiele lokacji**.
 2. Wprowadź następujące wartości dla odbiornika:
     
-    - *contosoListener* — jako nazwę odbiornika.
-    - *www.contoso.com* — w tym przykładzie nazwa hosta Zamień na nazwę domeny.
+   - *contosoListener* — jako nazwę odbiornika.
+   - *www.contoso.com* — w tym przykładzie nazwa hosta Zamień na nazwę domeny.
 
 3. Kliknij przycisk **OK**.
 4. Utwórz odbiornik drugi przy użyciu nazwy *fabrikamListener* i korzystania z drugiego nazwy domeny. W tym przykładzie *www.fabrikam.com* jest używany.

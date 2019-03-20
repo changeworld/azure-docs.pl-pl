@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 847eddc78f8abc938e68e6fe383a773dadeaf779
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 7f8731f48b96ccbe0e77970af1ccefa1d7a7155f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557839"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438775"
 ---
 # <a name="azure-time-series-insights-preview-overview"></a>Omówienie usługi Azure Time Series Insights w wersji zapoznawczej
 
-Usługa Azure Time Series Insights w wersji zapoznawczej to kompleksowa oferta platformy jako usługi. Służy do pozyskiwania, przetwarzania i magazynowania wysoce skontekstualizowanych, zoptymalizowanych pod kątem szeregów czasowych danych środowiska IoT i wykonywania dotyczących ich zapytań. Usługa Time Series Insights idealnie nadaje się do eksplorowania danych ad hoc oraz do analizy operacyjnej. Usługa Time Series Insights to unikatowo rozszerzalna i niestandardowa oferta, która spełnia szeroki zakres potrzeb związanych z przemysłowymi wdrożeniami IoT.
+Usługa Azure Time Series Insights w wersji zapoznawczej to kompleksowa oferta platformy jako usługi. Służy do pozyskiwania, przetwarzania i magazynowania wysoce skontekstualizowanych, zoptymalizowanych pod kątem szeregów czasowych danych środowiska IoT i wykonywania dotyczących ich zapytań. Usługa Time Series Insights jest idealny dla eksploracji danych ad hoc i analizę operacyjną. Usługa Time Series Insights to unikatowo rozszerzalna i niestandardowa oferta, która spełnia szeroki zakres potrzeb związanych z przemysłowymi wdrożeniami IoT.
 
 ## <a name="video"></a>Połączenia wideo
 
@@ -44,7 +44,7 @@ Na poniższej ilustracji przedstawiono typowy przepływ danych IoT.
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>Usługa Azure Time Series Insights dla przemysłowego Internetu rzeczy
 
-Obecny krajobraz Internetu rzeczy jest zróżnicowany. Obejmuje on klientów z branży produkcyjnej, motoryzacyjnej, energetycznej, usług komunalnych, inteligentnego budownictwa i konsultingowej. Scenariusze obejmują eksplorację danych ad hoc, gdzie forma danych jest nieznana. Mogą dotyczyć również analizy operacyjnej danych objętych schematem lub jawnie modelowanych w celu zwiększenia wydajności operacyjnej. Te scenariusze na ogół istnieją obok siebie i obsługują różne przypadki użycia. Kluczowe znaczenie dla sukcesu przedsiębiorstw korzystających z przemysłowego IoT i ich rewolucji cyfrowej mają następujące możliwości platformy:
+Obecny krajobraz Internetu rzeczy jest zróżnicowany. Obejmuje on klientów z branży produkcyjnej, motoryzacyjnej, energetycznej, usług komunalnych, inteligentnego budownictwa i konsultingowej. Scenariusze obejmują eksploracji danych ad hoc, gdzie kształtu danych jest nieznany. Mogą dotyczyć również analizy operacyjnej danych objętych schematem lub jawnie modelowanych w celu zwiększenia wydajności operacyjnej. Te scenariusze na ogół istnieją obok siebie i obsługują różne przypadki użycia. Kluczowe znaczenie dla sukcesu przedsiębiorstw korzystających z przemysłowego IoT i ich rewolucji cyfrowej mają następujące możliwości platformy:
 
 - wielowarstwowy magazyn (ciepły i zimny), 
 - możliwość przechowywania serii danych z kilkudziesięciu lat, 
@@ -52,13 +52,13 @@ Obecny krajobraz Internetu rzeczy jest zróżnicowany. Obejmuje on klientów z b
 
 Usługa Time Series Insights jest kompleksową ofertą platformy jako usługi, która spełnia wymagania dotyczące eksplorowania danych IoT i uzyskiwania szczegółowych informacji operacyjnych. Usługa Time Series Insights oferuje w pełni zarządzaną usługę w chmurze do analizowania danych szeregów czasowych w skali IoT.
 
-Nieprzetworzone dane można przechowywać w magazynie bez schematu w pamięci. Następnie można wykonywać interaktywne zapytania ad-hoc za pomocą aparatu zapytań rozproszonych i interfejsu API. Można korzystać z zaawansowanego środowiska obsługi użytkownika w celu wizualizacji miliardów zdarzeń w ciągu kilku sekund. Dowiedz się więcej o [funkcjach eksplorowania danych](./time-series-insights-overview.md).
+Nieprzetworzone dane można przechowywać w magazynie bez schematu w pamięci. Interakcyjnych zapytań ad-hoc może następnie przeprowadzić za pomocą aparatu zapytań rozproszonych i interfejsu API. Można korzystać z zaawansowanego środowiska obsługi użytkownika w celu wizualizacji miliardów zdarzeń w ciągu kilku sekund. Dowiedz się więcej o [funkcjach eksplorowania danych](./time-series-insights-overview.md).
 
 Usługa Time Series Insights oferuje również funkcje dotyczące szczegółowych informacji operacyjnych, obecnie w wersji zapoznawczej. W połączeniu z interaktywnym eksplorowaniem danych i analizą operacyjną usługa Time Series Insights umożliwia uzyskanie większej wartości z danych zgromadzonych z zasobów IoT. Oferta wersji zapoznawczej zapewnia następujące składniki:
 
 * Skalowalny magazyn danych szeregów czasowych zoptymalizowany pod kątem wydajności i kosztów. To rozwiązanie IoT oparte na chmurze umożliwia określenie w ciągu kilku sekund trendów danych szeregów czasowych z wielu lat.
 * Obsługa modelu semantycznego w celu opisania domeny i metadanych skojarzonych z pochodnymi i niepochodnymi sygnałami z zasobów i urządzeń.
-* Ulepszone środowisko obsługi użytkownika, które łączy szczegółowe informacje o danych oparte na zasobach z rozbudowanymi funkcjami analizy danych ad-hoc. To połączenie umożliwia przeprowadzanie analiz biznesowych i operacyjnych.
+* Lepszą obsługę użytkowników łączącą wgląd w dane na podstawie zasobów za pomocą analizy danych w rozbudowane, ad-hoc. To połączenie umożliwia przeprowadzanie analiz biznesowych i operacyjnych.
 * Integracja z zaawansowanymi narzędziami do uczenia maszynowego i analizy. Są to m.in. Azure Databricks, Apache Spark, Azure Machine Learning, notesy programu Jupyter i usługa Power BI. Te narzędzia ułatwiają wykonywanie zadań związanych z danymi szeregów czasowych i zwiększanie wydajności operacyjnej.
 
 Funkcje dotyczące szczegółowych informacji operacyjnych i eksplorowania danych są oferowane razem w prostym modelu płatności zgodnie z rzeczywistym użyciem na potrzeby przetwarzania danych, magazynowania i wysyłania zapytań. Ten model rozliczeń jest dostosowany do zmieniających się potrzeb biznesowych.
@@ -78,7 +78,7 @@ Dzięki wprowadzeniu tych najważniejszych możliwości przemysłowego IoT usłu
 | **Analizowanie głównych przyczyn problemów i wykrywanie anomalii** | [Eksplorator usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-explorer.md) obsługuje wzorce i widoki perspektyw, które pozwalają przeprowadzać i zapisywać wieloetapowe analizy głównych przyczyn. Łącząc usługę Time Series Insights z usługą Azure Stream Analytics, można wykrywać alerty i anomalie w czasie zbliżonym do rzeczywistego. |
 | **Aplikacje niestandardowe tworzone na platformie usługi Time Series Insights** | Usługa Time Series Insights obsługuje [zestaw SDK języka JavaScript](./tutorial-explore-js-client-lib.md). Ten zestaw SDK zapewnia zaawansowane kontrolki i uproszczony dostęp do zapytań. Można go użyć do tworzenia niestandardowych aplikacji IoT opartych na usłudze Time Series Insights odpowiadających określonym potrzebom biznesowym. Można również bezpośrednio korzystać z [interfejsów API zapytań](./time-series-insights-update-tsq.md) usługi Time Series Insights, aby kierować dane do niestandardowych aplikacji IoT. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wprowadzenie do usługi Azure Time Series Insights w wersji zapoznawczej:
 

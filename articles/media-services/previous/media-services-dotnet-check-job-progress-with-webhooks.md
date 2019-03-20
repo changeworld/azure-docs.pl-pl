@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 386662a4e98b881228a82de3777632ed002bb5b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d1ecac243ee4cfd3385d0fc69c9ce7c9e2afd95c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898843"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Użyj platformy Azure z elementów Webhook do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET 
 
@@ -49,7 +49,7 @@ Do wykonania czynności przedstawionych w tym samouczku są niezbędne następuj
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-1. Przejdź do [witryny Azure Portal](http://portal.azure.com) i zaloguj się przy użyciu konta Azure.
+1. Przejdź do [witryny Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta Azure.
 2. Tworzenie aplikacji funkcji, zgodnie z opisem [tutaj](../../azure-functions/functions-create-function-app-portal.md).
 
 ## <a name="configure-function-app-settings"></a>Konfigurowanie ustawień aplikacji funkcji
@@ -379,22 +379,22 @@ W tej sekcji przedstawiono kod, który dodaje powiadomień elementu webhook do z
 2. Użyj [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) do zainstalowania usługi Azure Media Services.
 3. Zaktualizuj plik App.config odpowiednimi wartościami: 
     
-    * Informacje o połączeniu usługi Azure Media Services, 
-    * adres URL elementu webhook, który oczekuje, że aby otrzymywać powiadomienia, 
-    * klucz podpisywania, który pasuje do klucza, który oczekuje, że element webhook. Klucz podpisywania jest 64-bajtową wartość zakodowane w formacie Base64, który służy do ochrony i bezpiecznego wywołania zwrotne z elementów webhook z usługi Azure Media Services. 
+   * Informacje o połączeniu usługi Azure Media Services, 
+   * adres URL elementu webhook, który oczekuje, że aby otrzymywać powiadomienia, 
+   * klucz podpisywania, który pasuje do klucza, który oczekuje, że element webhook. Klucz podpisywania jest 64-bajtową wartość zakodowane w formacie Base64, który służy do ochrony i bezpiecznego wywołania zwrotne z elementów webhook z usługi Azure Media Services. 
 
-    ```xml
-            <appSettings>
-                <add key="AMSAADTenantDomain" value="domain" />
-                <add key="AMSRESTAPIEndpoint" value="endpoint" />
+     ```xml
+           <appSettings>
+               <add key="AMSAADTenantDomain" value="domain" />
+               <add key="AMSRESTAPIEndpoint" value="endpoint" />
 
-                <add key="AMSClientId" value="clinet id" />
-                <add key="AMSClientSecret" value="client secret" />
+               <add key="AMSClientId" value="clinet id" />
+               <add key="AMSClientSecret" value="client secret" />
 
-                <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
-                <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
-            </appSettings>
-    ```
+               <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
+               <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
+           </appSettings>
+     ```
 
 4. Zaktualizuj plik Program.cs następującym kodem:
 

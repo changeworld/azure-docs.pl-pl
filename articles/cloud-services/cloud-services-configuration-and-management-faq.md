@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: dd7351d2948526905c91f2eac52e48b25cf063ac
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 90b6798f7b7ab3acc552135c73bb1e491e4a0111
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191432"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835524"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfiguracja i problemów z zarządzaniem usług Azure Cloud Services: Często zadawane pytania (FAQ)
 
@@ -143,7 +143,7 @@ Więcej informacji na ten temat można znaleźć w następujących dokumentach:
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Jak włączyć rejestrowanie WAD dla usług w chmurze?
 Można włączyć rejestrowanie diagnostyki Azure Windows (WAD) za pośrednictwem następujących opcji:
 1. [Korzystanie z programu Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [Włączyć za pomocą kodu platformy .net](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+2. [Włączyć za pomocą kodu platformy .NET](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [Włącz za pomocą programu Powershell](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
 Aby uzyskać bieżące ustawienia WAD usługi w chmurze, możesz skorzystać z [Get AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd lub można je wyświetlać za pośrednictwem portalu, w bloku "Usługi w chmurze--> rozszerzenia".
@@ -190,7 +190,7 @@ Firma Microsoft stale monitoruje serwery, sieci i aplikacji w celu wykrywania za
 Windows 10 i Windows Server 2016 pochodzą z obsługą protokołu HTTP/2 po stronie klienta i serwera. Jeśli Twój klient (przeglądarka) nawiązuje połączenie z serwerem usług IIS za pośrednictwem protokołu TLS, negocjuje protokołu HTTP/2 za pośrednictwem rozszerzenia protokołu TLS, a następnie nie trzeba wprowadzać zmian po stronie serwera. Jest to spowodowane za pośrednictwem protokołu TLS, nagłówka h2-14, określając korzystanie z protokołu HTTP/2 są domyślnie wysyłane. Jeśli z drugiej strony klienta wysyła uaktualnienia nagłówka, aby uaktualnić do protokołu HTTP/2, należy wprowadzić zmianę poniżej po stronie serwera, aby upewnić się, że uaktualnienie działa i znajdą się za pośrednictwem połączenia HTTP/2. 
 
 1. Uruchom regedit.exe.
-2. Przejdź do klucza rejestru: Pozycji HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Przejdź do klucza rejestru: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Utwórz nową wartość DWORD o nazwie **DuoEnabled**.
 4. Ustaw jego wartość na 1.
 5. Uruchom ponownie serwer.
@@ -226,7 +226,7 @@ Microsoft stosuje rygorystyczne procesu, który nie pozwoli na wewnętrznych in�
 
 ### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Nie mogę Pulpit zdalny dla maszyny Wirtualnej usługi w chmurze przy użyciu pliku RDP. Czy mogę uzyskać następujący błąd: Wystąpił błąd uwierzytelniania (kod: 0x80004005)
 
-Ten błąd może wystąpić, jeśli używasz pliku RDP na komputerze, który jest przyłączony do usługi Azure Active Directory. Aby rozwiązać ten problem, wykonaj następujące kroki:
+Ten błąd może wystąpić, jeśli używasz pliku RDP na komputerze, który jest przyłączony do usługi Azure Active Directory. Aby rozwiązać ten problem, wykonaj poniższe czynności:
 
 1. Kliknij prawym przyciskiem myszy pobrany plik RDP, a następnie wybierz pozycję **Edytuj**.
 2. Dodaj "&#92;" jako prefiksu przed nazwą użytkownika. Na przykład użyć **. \username** zamiast **username**.
@@ -313,7 +313,7 @@ Zgodnie z opisem [tutaj](https://technet.microsoft.com/library/ee790567.aspx), $
 
 |Wartość|Znaczenie|
 ------|------
-|0|Nie SNI|
+|0|No SNI|
 |1|Rozszerzenie SNI włączone |
 |2 |SNI bez powiązania, który używa Store certyfikatu centralnego|
 |3|Powiązanie SNI, która używa certyfikatu centralnego przechowywania |

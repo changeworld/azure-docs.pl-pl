@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: d3c9c8eab0ce13aee5dbe7bdb732d45555e547fb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 31e759baa4f5e7b220eabf2bb9ffcc5cc011a354
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200467"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -139,7 +139,6 @@ W tym artykule mają przedstawiono kilka sposobów, aby utworzyć klaster usług
 
 * [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Tworzenie klastrów usługi Apache Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal](../hdinsight-administer-use-management-portal.md)
 * [Odwołanie do zestawu SDK .NET HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Apache Pig za pomocą HDInsight](hdinsight-use-pig.md)
 * [Za pomocą HDInsight przy użyciu narzędzia Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md)

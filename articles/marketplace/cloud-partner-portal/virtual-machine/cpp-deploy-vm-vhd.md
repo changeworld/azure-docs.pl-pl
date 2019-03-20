@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3ab98669e01c9cfb2d4f46b8ddd83ff69653337b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434176"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106053"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Wdrażanie maszyny Wirtualnej z sieci wirtualnych dysków twardych
 
@@ -51,13 +51,13 @@ Poniższe kroki zostaną umożliwia tworzenie i wdrażanie obrazu użytkownika m
 
 Po wdrożeniu maszyny Wirtualnej można przystąpić do [certyfikować swój obraz maszyny Wirtualnej](./cpp-certify-vm.md).
 
-2.  Kliknij przycisk **New** i wyszukaj **wdrożenie szablonu**, a następnie wybierz **Utwórz własny szablon w edytorze**.  <br/>
-  ![Tworzenie szablonu wdrożenia wirtualnego dysku twardego w witrynie Azure portal](./media/publishvm_021.png)
+1. Kliknij przycisk **New** i wyszukaj **wdrożenie szablonu**, a następnie wybierz **Utwórz własny szablon w edytorze**.  <br/>
+   ![Tworzenie szablonu wdrożenia wirtualnego dysku twardego w witrynie Azure portal](./media/publishvm_021.png)
 
-3. Skopiuj i Wklej to [szablon JSON](./cpp-deploy-json-template.md) w edytorze i kliknij przycisk **Zapisz**. <br/>
-  ![Zapisz szablon wdrożenia wirtualnego dysku twardego w witrynie Azure portal](./media/publishvm_022.png)
+1. Skopiuj i Wklej to [szablon JSON](./cpp-deploy-json-template.md) w edytorze i kliknij przycisk **Zapisz**. <br/>
+   ![Zapisz szablon wdrożenia wirtualnego dysku twardego w witrynie Azure portal](./media/publishvm_022.png)
 
-4. Podaj wartości parametrów dla wyświetlonych **wdrożenie niestandardowe** strony właściwości.
+1. Podaj wartości parametrów dla wyświetlonych **wdrożenie niestandardowe** strony właściwości.
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
@@ -79,7 +79,7 @@ Po wdrożeniu maszyny Wirtualnej można przystąpić do [certyfikować swój obr
    | ADRES URL WIRTUALNEGO DYSKU TWARDEGO                     | Wykonaj adres URL wirtualnego dysku twardego dysku systemu operacyjnego                                                     |
    |  |  |
             
-5. Po podaniu tych wartości, kliknij przycisk **zakupu**. 
+1. Po podaniu tych wartości, kliknij przycisk **zakupu**. 
 
 Azure rozpocznie się wdrażanie: tworzy nową maszynę Wirtualną przy użyciu określonego niezarządzanego dysku VHD, w Ścieżka konta magazynu określony.  Możesz śledzić postęp w witrynie Azure portal, klikając **maszyn wirtualnych** po lewej stronie portalu.  Podczas tworzenia maszyny Wirtualnej stan zmieni się z `Starting` do `Running`. 
 

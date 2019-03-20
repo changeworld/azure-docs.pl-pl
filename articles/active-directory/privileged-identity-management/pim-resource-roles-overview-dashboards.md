@@ -1,5 +1,5 @@
 ---
-title: Wykonywanie przeglądu dostępu — platformy Azure przy użyciu pulpitu nawigacyjnego zasobu | Dokumentacja firmy Microsoft
+title: Wykonywanie przeglądu dostępu w usłudze PIM — platformy Azure przy użyciu pulpitu nawigacyjnego zasobu | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób użycia zasobów pulpit nawigacyjny umożliwia wykonywanie przeglądu dostępu w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30cfafec770aec72faf01563018fbd478e73ab2f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89abf15731bd125737e7c18ab45782820a856b38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202608"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012682"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Wykonywanie przeglądu dostępu przy użyciu pulpitu nawigacyjnego zasobu
+# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>Wykonywanie przeglądu dostępu w usłudze PIM przy użyciu pulpitu nawigacyjnego zasobu
 
 Zasób pulpit nawigacyjny umożliwia wykonywanie przeglądu dostępu w Privileged Identity Management (PIM) dla zasobów platformy Azure. Administrator Wyświetl pulpit nawigacyjny ma trzy główne składniki:
 

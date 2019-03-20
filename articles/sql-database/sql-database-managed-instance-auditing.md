@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 20c893aa0ff5bc1f20ecfd95d33038937f3af466
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576977"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086058"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z inspekcją wystąpienie zarządzane bazy danych SQL Azure
 
@@ -50,7 +50,7 @@ W poniższej sekcji opisano konfigurację inspekcji w ramach wystąpienia zarzą
 
    1. Podaj kontener **nazwa**, Ustaw poziom dostępu publicznego **prywatnej**, a następnie kliknij przycisk **OK**.
 
-     ![Utwórz konfigurację kontenera obiektów blob](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![Utwórz konfigurację kontenera obiektów blob](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
 1. Po utworzeniu kontenera dla inspekcji dzienniki są dwa sposoby konfigurowania go jako element docelowy dla dzienników inspekcji: [przy użyciu języka T-SQL](#blobtsql) lub [przy użyciu programu SQL Server Management Studio (SSMS) interfejsu użytkownika](#blobssms):
 
@@ -113,7 +113,7 @@ W poniższej sekcji opisano konfigurację inspekcji w ramach wystąpienia zarzą
         GO
         ```
 
-      1. Kontynuuj, [tworzenie Specyfikacja inspekcji serwera lub specyfikacji inspekcji bazy danych](#createspec)
+        1. Kontynuuj, [tworzenie Specyfikacja inspekcji serwera lub specyfikacji inspekcji bazy danych](#createspec)
 
    - <a id="blobssms"></a>Konfigurowanie magazynu obiektów blob dla dzienników inspekcji przy użyciu programu SQL Server Management Studio (SSMS) 18 (wersja zapoznawcza):
 

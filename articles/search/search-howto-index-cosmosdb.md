@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9021bb2a030472d4e83d78c8fc6363db570c3554
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: dceabc799e187f3af56588d5a9008e5cdca517c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318006"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864460"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Jak indeksować Cosmos DB przy użyciu indeksator usługi Azure Search
 
@@ -23,7 +23,7 @@ W tym artykule przedstawiono sposób konfigurowania usługi Azure Cosmos DB [ind
 
 Ponieważ terminologia mogą być mylące, warto zauważyć, że [indeksowanie usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) i [indeksowanie usługi Azure Search](search-what-is-an-index.md) różne operacje, unikatowy dla każdej usługi. Przed rozpoczęciem korzystania z usługi Azure Search indeksowanie, bazy danych Azure Cosmos DB musi już istnieć i zawierać dane.
 
-Możesz użyć [portal](#cosmos-indexer-portal), [interfejsów API REST](#cosmos-indexer-rest), lub [zestawu .NET SDK](#cosmos-indexer-dotnet) do indeksowania zawartości Cosmos. Indeksator usługi Cosmos DB w usłudze Azure Search może przeszukiwać [elementów Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) dostępne za pośrednictwem tych protokołów:
+Możesz użyć [portal](#cosmos-indexer-portal), interfejsów API REST lub zestawu .NET SDK do indeksowania zawartości Cosmos. Indeksator usługi Cosmos DB w usłudze Azure Search może przeszukiwać [elementów Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) dostępne za pośrednictwem tych protokołów:
 
 * [INTERFEJS API SQL](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [Interfejs API usługi MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) (Obsługa usługi Azure Search dla tego interfejsu API jest w publicznej wersji zapoznawczej)  

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: bb1616c7cbf5c9c4620aed3e31896e32fe0163f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076738"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Obsługa metadanych interfejsu OpenAPI 2.0 w usłudze Azure Functions (wersja zapoznawcza)
 Standard OpenAPI 2.0 (dawniej Swagger) Obsługa metadanych w usłudze Azure Functions jest funkcją w wersji zapoznawczej, która służy do pisania definicji interfejsu OpenAPI 2.0 w aplikacji funkcji. Ten plik może być następnie hostować przy użyciu aplikacji funkcji.
@@ -53,7 +53,7 @@ Aby uzyskać instrukcje krok po kroku, zobacz [Wprowadzenie — samouczek](./fun
 
 Poniższa tabela reprezentuje ustawienia portalu Azure i odpowiadające im dane w function.json, ponieważ jest on zamapowany do wygenerowany szkielet struktury Swagger.
 
-|Swagger.json|Interfejsu użytkownika portalu|Function.json|
+|Swagger.json|Portal UI|Function.json|
 |:----|:-----|:-----|
 |[Host](https://swagger.io/specification/#fixed-fields-15)|**Ustawienia aplikacji funkcji** > **ustawień usługi App Service** > **Przegląd** > **adresu URL**|*Nie istnieje*
 |[Ścieżki](https://swagger.io/specification/#paths-object-29)|**Integracja** > **wybrane metody HTTP**|Powiązania: Trasa
@@ -72,9 +72,9 @@ Poniższa tabela reprezentuje ustawienia portalu Azure i odpowiadające im dane 
  Należy włączyć definicji interfejsu API hostingu w portalu, przed włączeniem kontroli źródła zmodyfikować definicję interfejsu API z poziomu kontroli źródła. Wykonaj te instrukcje:
 
 1. Przejdź do **definicji interfejsu API (wersja zapoznawcza)** w ustawieniach aplikacji funkcji.
-  1. Ustaw **źródło definicji interfejsu API** do **funkcja**.
-  1. Kliknij przycisk **szablon definicji interfejsu API z Generowanie** i następnie **Zapisz** do tworzenia definicji szablonu do modyfikowania później.
-  1. Należy pamiętać, adres URL definicji interfejsu API i klucz.
+   1. Ustaw **źródło definicji interfejsu API** do **funkcja**.
+   1. Kliknij przycisk **szablon definicji interfejsu API z Generowanie** i następnie **Zapisz** do tworzenia definicji szablonu do modyfikowania później.
+   1. Należy pamiętać, adres URL definicji interfejsu API i klucz.
 1. [Konfigurowanie ciągłej integracji/ciągłego wdrażania (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements).
 2. Modyfikowanie swagger.json w kontroli źródła pod \site\wwwroot\.azurefunctions\swagger\swagger.json.
 

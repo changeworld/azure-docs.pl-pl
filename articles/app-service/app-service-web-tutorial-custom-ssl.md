@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d627158744ae89e3c614d10a64886cee6879a3fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 0c89cdc34c23c461e5cebf3026cb0774bf91b75d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116053"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998560"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Samouczek: Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure App Service
 
@@ -264,11 +264,11 @@ New-AzWebAppSSLBinding `
 ## <a name="public-certificates-optional"></a>Certyfikaty publiczne (opcjonalnie)
 Jeśli aplikacja wymaga dostępu do zasobów zdalnych jako klient, a zasób zdalny wymaga uwierzytelniania certyfikatów, możesz przekazać do aplikacji [certyfikaty publiczne](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/). Certyfikaty publiczne nie są wymagane dla powiązań SSL aplikacji.
 
-Aby uzyskać więcej szczegółów na temat ładowania i używania certyfikatu publicznego w aplikacji, zobacz [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md). Certyfikatów publicznych możesz też używać z aplikacjami w środowiskach App Service Environment. Jeśli chcesz przechować certyfikat w magazynie certyfikatów komputera lokalnego, musisz użyć aplikacji w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [Jak skonfigurować certyfikaty publiczne dla aplikacji usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+Aby uzyskać więcej szczegółów na temat ładowania i używania certyfikatu publicznego w aplikacji, zobacz [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md). Certyfikatów publicznych możesz też używać z aplikacjami w środowiskach App Service Environment. Jeśli potrzebujesz przechować certyfikat w magazynie certyfikatów, należy skorzystać z aplikacji w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [Jak skonfigurować certyfikaty publiczne dla aplikacji usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
 ![Przekazywanie certyfikatu publicznego](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

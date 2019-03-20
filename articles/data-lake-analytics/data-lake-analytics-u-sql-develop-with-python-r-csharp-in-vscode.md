@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: 53859f5a81cf1d797ec93e83d75df5a329590dce
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051636"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087486"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Tworzenie języka U-SQL, Python, R w języku C# dla usługi Azure Data Lake Analytics w programie Visual Studio Code
 Dowiedz się, jak używać programu Visual Studio Code (VSCode) do pisania języka Python, R i języku C# kodu za zaporą za pomocą języka U-SQL oraz przesyłania zadań do usługi Azure Data Lake. Aby uzyskać więcej informacji na temat usługi Azure Data Lake Tools dla programu VSCode zobacz [używać usługi Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -30,10 +30,10 @@ Zarejestruj języka Python i R zestawów rozszerzeń dla konta usługi ADL.
 3. Wybierz **zainstalować rozszerzenia U-SQL**. 
 4. Po zainstalowaniu rozszerzenia U-SQL, zostanie wyświetlony komunikat potwierdzenia. 
 
-  ![Konfigurowanie środowiska języka python i R](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![Konfigurowanie środowiska języka python i R](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
-  > [!Note]
-  > Aby uzyskać najlepsze doświadczenia na usłudze języka Python i R Zainstaluj rozszerzeń programu VSCode języka Python i R. 
+   > [!Note]
+   > Aby uzyskać najlepsze doświadczenia na usłudze języka Python i R Zainstaluj rozszerzeń programu VSCode języka Python i R. 
 
 ## <a name="develop-python-file"></a>Tworzenie pliku Python
 1. Kliknij przycisk **nowy plik** w obszarze roboczym.
@@ -58,7 +58,7 @@ Zarejestruj języka Python i R zestawów rozszerzeń dla konta usługi ADL.
         USING Outputters.Csv();
     ```
     
-3. Kliknij prawym przyciskiem myszy plik skryptu, a następnie wybierz **ADL: generowanie kodu Python za pliku**. 
+3. Kliknij prawym przyciskiem myszy plik skryptu, a następnie wybierz **ADL: Generowanie pliku CodeBehind języka Python**. 
 4. **Xxx.usql.py** generowany jest plik w folderze roboczym. Napisz swój kod w pliku języka Python. Poniżej przedstawiono przykładowy kod.
 
     ```Python
@@ -115,7 +115,7 @@ Zarejestruj języka Python i R zestawów rozszerzeń dla konta usługi ADL.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Kliknij prawym przyciskiem myszy **USQL** pliku, a następnie wybierz **ADL: generowanie kodu języka R za pliku**. 
+3. Kliknij prawym przyciskiem myszy **USQL** pliku, a następnie wybierz **ADL: Generowanie pliku CodeBehind języka R**. 
 4. **Xxx.usql.r** generowany jest plik w folderze roboczym. Napisz swój kod w pliku języka R. Poniżej przedstawiono przykładowy kod.
 
     ```R
@@ -125,7 +125,7 @@ Zarejestruj języka Python i R zestawów rozszerzeń dla konta usługi ADL.
 5. Kliknij prawym przyciskiem myszy **USQL** pliku, możesz kliknąć pozycję **skryptu kompilacji** lub **Prześlij zadanie** do uruchomienia zadania.
 
 ## <a name="develop-c-file"></a>Tworzenie pliku języka C#
-Plik związany z kodem jest plik C# skojarzony z jednego skryptu U-SQL. Operatory zdefiniowane przez użytkownika Agregacja uda w JĘZYKU, UDT oraz funkcji zdefiniowanej przez użytkownika w pliku związanym z kodem, można zdefiniować dedykowany skrypt. Operatory zdefiniowane przez użytkownika, UDA, UDT i funkcji definiowanych przez użytkownika można bezpośrednio w skrypcie bez rejestrowania najpierw zestaw. Plik związany z kodem jest umieszczany w tym samym folderze co jego komunikacji równorzędnej pliku skryptu U-SQL. Jeśli skrypt ma nazwę xxx.usql, jako xxx.usql.cs nosi nazwę związanym z kodem. Jeśli usuniesz ręcznie pliku związanego z kodem, funkcja związanym z kodem jest wyłączona dla jego skojarzony skrypt U-SQL. Aby uzyskać więcej informacji na temat pisania kodu klienta dla skryptu U-SQL, zobacz [pisanie i przy użyciu niestandardowego kodu w języku U-SQL: funkcje zdefiniowane przez użytkownika]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+Plik związany z kodem jest plik C# skojarzony z jednego skryptu U-SQL. Operatory zdefiniowane przez użytkownika Agregacja uda w JĘZYKU, UDT oraz funkcji zdefiniowanej przez użytkownika w pliku związanym z kodem, można zdefiniować dedykowany skrypt. Operatory zdefiniowane przez użytkownika, UDA, UDT i funkcji definiowanych przez użytkownika można bezpośrednio w skrypcie bez rejestrowania najpierw zestaw. Plik związany z kodem jest umieszczany w tym samym folderze co jego komunikacji równorzędnej pliku skryptu U-SQL. Jeśli skrypt ma nazwę xxx.usql, jako xxx.usql.cs nosi nazwę związanym z kodem. Jeśli usuniesz ręcznie pliku związanego z kodem, funkcja związanym z kodem jest wyłączona dla jego skojarzony skrypt U-SQL. Aby uzyskać więcej informacji na temat pisania kodu klienta dla skryptu U-SQL, zobacz [pisanie i przy użyciu niestandardowego kodu w języku U-SQL: Funkcje zdefiniowane przez użytkownika]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
 1. Kliknij przycisk **nowy plik** w obszarze roboczym.
 2. Napisz swój kod w pliku języka U-SQL. Poniżej przedstawiono przykładowy kod.
@@ -157,7 +157,7 @@ Plik związany z kodem jest plik C# skojarzony z jednego skryptu U-SQL. Operator
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Kliknij prawym przyciskiem myszy **USQL** pliku, a następnie wybierz **ADL: Generuj CS za plik kodu**. 
+3. Kliknij prawym przyciskiem myszy **USQL** pliku, a następnie wybierz **ADL: Generowanie pliku CodeBehind CS**. 
 4. **Xxx.usql.cs** generowany jest plik w folderze roboczym. Napisz swój kod w pliku CS. Poniżej przedstawiono przykładowy kod.
 
     ```CS

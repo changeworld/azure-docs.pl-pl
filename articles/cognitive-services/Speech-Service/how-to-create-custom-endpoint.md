@@ -1,6 +1,6 @@
 ---
-title: Tworzenie punktu końcowego mowy niestandardowej z usługą mowy na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć niestandardowy punkt końcowy rozpoznawania mowy na tekst z usługa mowy w usługach Cognitive Services.
+title: Tworzenie punktu końcowego niestandardowa zamiana mowy z usług przetwarzania mowy na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć niestandardowy punkt końcowy rozpoznawania mowy na tekst za pomocą usług przetwarzania mowy platformy Azure.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,19 +9,19 @@ ms.subservice: custom-speech
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: panosper
-ms.openlocfilehash: 63d2c15c14340b0d7407b0144a8b8c75a2634e6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1f7a84d187ba6279caad4926d54bfc56254152af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220250"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863002"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Tworzenie niestandardowego punktu końcowego funkcji zamiany mowy na tekst
 
-Po utworzeniu niestandardowych modeli akustycznych lub modeli językowych, można je wdrożyć w niestandardowy punkt końcowy rozpoznawania mowy na tekst. 
+Po utworzeniu niestandardowych modeli akustycznych lub modeli językowych, można je wdrożyć w niestandardowy punkt końcowy rozpoznawania mowy na tekst.
 
 ## <a name="create-an-endpoint"></a>Tworzenie punktu końcowego
-Aby utworzyć nowy niestandardowy punkt końcowy, wybierz **punktów końcowych** na **Custom Speech** menu w górnej części strony. Ta akcja spowoduje przejście do **punktów końcowych** strony, która zawiera tabelę bieżącego niestandardowe punkty końcowe. Jeśli jeszcze nie utworzono żadnych punktów końcowych, tabela jest pusta. Bieżące ustawienia regionalne są odzwierciedlone w tytule tabeli. 
+Aby utworzyć nowy niestandardowy punkt końcowy, wybierz **punktów końcowych** na **Custom Speech** menu w górnej części strony. Ta akcja spowoduje przejście do **punktów końcowych** strony, która zawiera tabelę bieżącego niestandardowe punkty końcowe. Jeśli jeszcze nie utworzono żadnych punktów końcowych, tabela jest pusta. Bieżące ustawienia regionalne są odzwierciedlone w tytule tabeli.
 
 Aby utworzyć wdrożenie w innym języku, wybierz **Zmień ustawienia regionalne**. Aby uzyskać więcej informacji o obsługiwanych językach.
 

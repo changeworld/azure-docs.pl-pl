@@ -3,7 +3,6 @@ title: Automatyzacja zadań usług Azure SQL | Microsoft Docs
 description: Za pomocą funkcji automatyzacji zadań możesz uruchamiać skrypty Transact-SQL (T-SQL) w zestawie co najmniej jednej bazy danych Azure SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: database-features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
@@ -12,18 +11,20 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1fd524e858b20c75aef4101ad98ac54c4f485d1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457211"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901971"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatyzowanie zadań zarządzania za pomocą zadań bazy danych
 
 Usługa Azure SQL Database umożliwia tworzenie i planowanie zadań, które mogą być wykonywane okresowo w jednej lub wielu bazach danych w celu uruchamiania zapytań T-SQL i wykonywania zadań konserwacji. Każde zadanie rejestruje stan wykonania, a także automatycznie ponawia próbę wykonania operacji w przypadku awarii.
 Można określić docelową bazę danych lub grupy baz danych Azure SQL Database, w których zadania będą wykonywane, oraz zdefiniować harmonogramy uruchamiania zadania.
 Zadanie obsługuje zadanie rejestrowania w docelowej bazie danych. Możesz również definiować, obsługiwać i utrwalać skrypty języka Transact-SQL do wykonania w ramach grupy baz danych Azure SQL Database.
+
+## <a name="when-to-use-automated-jobs"></a>Kiedy należy używać zadaniami automatycznymi
 
 Istnieje kilka scenariuszy, w których można używać funkcji automatyzacji zadań:
 
@@ -36,8 +37,10 @@ Istnieje kilka scenariuszy, w których można używać funkcji automatyzacji zad
   - Agregowanie danych z kolekcji baz danych Azure SQL w pojedynczej tabeli docelowej.
   - Wykonywanie dłużej działających zapytań dotyczących przetwarzania danych w ramach dużego zestawu baz danych, na przykład w celu zbierania telemetrii klienta. Wyniki są zbierane w pojedynczej tabeli docelowej na potrzeby dalszej analizy.
 - Operacje przenoszenia danych
- - Tworzenie zadań polegających na replikowaniu zmian wprowadzonych w bazach danych do innych baz danych lub gromadzeniu aktualizacji wprowadzonych w bazach danych i stosowaniu zmian w bazie danych.
- - Tworzenie zadań polegających na ładowaniu zadań z lub do baz danych przy użyciu usług SQL Server Integration Services (SSIS).
+  - Tworzenie zadań polegających na replikowaniu zmian wprowadzonych w bazach danych do innych baz danych lub gromadzeniu aktualizacji wprowadzonych w bazach danych i stosowaniu zmian w bazie danych.
+  - Tworzenie zadań polegających na ładowaniu zadań z lub do baz danych przy użyciu usług SQL Server Integration Services (SSIS).
+
+## <a name="overview"></a>Przegląd
 
 W usłudze Azure SQL Database są dostępne następujące technologie planowania zadań:
 
@@ -158,9 +161,9 @@ Niektóre funkcje agenta SQL dostępne w programie SQL Server nie są obsługiwa
 - Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym.
 - Włączanie/wyłączanie agenta nie jest obecnie obsługiwane w wystąpieniu zarządzanym. Agent SQL zawsze działa.
 - Powiadomienia są obsługiwane częściowo.
- - Pager nie jest obsługiwany.
- - Polecenie NetSend nie jest obsługiwane.
- - Alerty nie są jeszcze nie obsługiwane.
+  - Pager nie jest obsługiwany.
+  - Polecenie NetSend nie jest obsługiwane.
+  - Alerty nie są jeszcze nie obsługiwane.
 - Serwery proxy nie są obsługiwane.
 - Dziennik zdarzeń nie jest obsługiwany.
 
@@ -277,7 +280,7 @@ Wersja zapoznawcza jest obecnie ograniczona do 100 współbieżnych zadań.
 
 Aby zapewnić, że zasoby nie będą przeciążone podczas uruchamiania zadań w ramach baz danych w elastycznej puli SQL, możliwe jest skonfigurowanie zadań w taki sposób, aby ograniczana była liczba baz danych, w ramach których mogą one być jednocześnie uruchamiane.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [What is SQL Server Agent (Co to jest agent programu SQL Server)](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
 - [How to create and manage elastic jobs (Jak tworzyć zadania elastyczne i zarządzać nimi)](elastic-jobs-overview.md) 

@@ -4,7 +4,7 @@ description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ac4f826ed1d27ee39d8e35605a3baa7f94b33e64
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6345eca674086801f8bb0f45476009f04a10f2e3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035317"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58214349"
 ---
-## <a name="test-your-code"></a>Testowanie kodu
+## <a name="test-your-code"></a>testowanie kodu
 
 Aby uruchomić projekt, w programie Visual Studio, wybierz **F5**. Aplikacja **MainWindow** jest wyświetlana, jak pokazano poniżej:
 
@@ -46,7 +46,7 @@ Po zalogowaniu, powinny być widoczne informacje o profilu użytkownika, który 
 |**Nazwa** |Imię i nazwisko użytkownika |Użytkownik na imię i nazwisko.|
 |**Nazwa użytkownika** |<span>user@domain.com</span> |Nazwa użytkownika, który służy do identyfikowania użytkownika.|
 |**Token wygasa** |DateTime |Czas, w którym token jest ważny. Biblioteka MSAL rozszerza datę wygaśnięcia, odnawianie tokenu zgodnie z potrzebami.|
-|**Token dostępu** |Ciąg |Ciąg tokenu, który jest wysyłany do protokołu HTTP żądania, które wymagają *nagłówek autoryzacji*.|
+|**Token dostępu** |String |Ciąg tokenu, który jest wysyłany do protokołu HTTP żądania, które wymagają *nagłówek autoryzacji*.|
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Więcej informacji o zakresach i delegowane uprawnienia

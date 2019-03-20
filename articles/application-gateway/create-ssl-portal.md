@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 33e24a8d8715dd6f2b37ed566a1479dffd93c466
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 92db27aa486936d53c2e2e1c92db7d728b7d99c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308095"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091838"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Konfigurowanie bramy aplikacji przy użyciu kończenia żądań SSL przy użyciu witryny Azure portal
 
@@ -78,12 +78,12 @@ Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W ty
 4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
 5. Kliknij kolejno pozycje **Wybierz sieć wirtualną**, **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
 
-    - *myVNet* — jako nazwę sieci wirtualnej.
-    - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
-    - *myAGSubnet* — jako nazwę podsieci.
-    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
+   - *myVNet* — jako nazwę sieci wirtualnej.
+   - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
+   - *myAGSubnet* — jako nazwę podsieci.
+   - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
 
-    ![Tworzenie sieci wirtualnej](./media/create-ssl-portal/application-gateway-vnet.png)
+     ![Tworzenie sieci wirtualnej](./media/create-ssl-portal/application-gateway-vnet.png)
 
 6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
 7. Kliknij przycisk **wybierz publiczny adres IP**, kliknij przycisk **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
@@ -149,13 +149,13 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 
 ### <a name="add-backend-servers"></a>Dodawanie serwerów zaplecza
 
-3. Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij pozycję **myAppGateway**.
-4. Kliknij pozycję **Pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Kliknij pozycję **appGatewayBackendPool**.
-5. Kliknij przycisk **Add target** dodawania każdej maszyny wirtualnej, który został utworzony do puli zaplecza.
+1. Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij pozycję **myAppGateway**.
+1. Kliknij pozycję **Pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Kliknij pozycję **appGatewayBackendPool**.
+1. Kliknij przycisk **Add target** dodawania każdej maszyny wirtualnej, który został utworzony do puli zaplecza.
 
     ![Dodawanie serwerów zaplecza](./media/create-ssl-portal/application-gateway-backend.png)
 
-6. Kliknij pozycję **Zapisz**.
+1. Kliknij pozycję **Zapisz**.
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 

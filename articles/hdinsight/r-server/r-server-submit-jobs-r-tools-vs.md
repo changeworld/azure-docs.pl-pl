@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3165adf09281f4ad35b77c2e0fbb89e40c04c631
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604535"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120962"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Przesyłanie zadań z narzędzi R Tools for Visual Studio
 
@@ -31,21 +31,21 @@ RTVS zwiększa R przepływu pracy, udostępniając narzędzia, takie jak [okno i
 2. Wybierz *aplikacji analitycznych i naukowych opracowań danych* obciążenie, następnie wybierz pozycję **obsługę języka R**, **obsługę środowiska uruchomieniowego dla Programowanie w języku R**, i  **Microsoft R Client** opcje.
 
 3. Musisz mieć publiczny i prywatny klucz do uwierzytelniania SSH.
-<!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
+   <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
 4. Zainstaluj [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) na swojej maszynie. ML Server zapewnia [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) i `RxSpark` funkcji.
 
 5. Zainstaluj [PuTTY](https://www.putty.org/) zapewnienie kontekst obliczeniowy pozwala uruchomić `RevoScaleR` funkcji z lokalnego klienta do klastra usługi HDInsight.
 
 6. Masz możliwość zastosowania ustawień do nauki o danych do środowiska programu Visual Studio, co zapewnia nowy układ obszaru roboczego dla narzędzia języka R.
-    1. Aby zapisać bieżące ustawienia programu Visual Studio, należy użyć **Narzędzia > Import i eksport ustawień** polecenia, a następnie wybierz **Eksportuj wybrane ustawienia środowiska** i określ nazwę pliku. Aby przywrócić te ustawienia, użyj tego samego polecenia, a następnie wybierz pozycję **Importuj ustawienia wybranego środowiska**.
+   1. Aby zapisać bieżące ustawienia programu Visual Studio, należy użyć **Narzędzia > Import i eksport ustawień** polecenia, a następnie wybierz **Eksportuj wybrane ustawienia środowiska** i określ nazwę pliku. Aby przywrócić te ustawienia, użyj tego samego polecenia, a następnie wybierz pozycję **Importuj ustawienia wybranego środowiska**.
 
-    2. Przejdź do **R Tools** menu elementów, następnie wybierz pozycję **ustawienia do nauki o danych...** .
+   2. Przejdź do **R Tools** menu elementów, następnie wybierz pozycję **ustawienia do nauki o danych...** .
 
-        ![Ustawienia do nauki o danych...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Ustawienia do nauki o danych...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]  
-    > Przy użyciu metody w kroku 1, można także zapisać i przywrócić układ osób przetwarzających dane spersonalizowane, zamiast powtarzania **ustawienia do nauki o danych** polecenia.
+      > [!NOTE]  
+      > Przy użyciu metody w kroku 1, można także zapisać i przywrócić układ osób przetwarzających dane spersonalizowane, zamiast powtarzania **ustawienia do nauki o danych** polecenia.
 
 ## <a name="execute-local-r-methods"></a>Wykonanie metody R lokalne
 

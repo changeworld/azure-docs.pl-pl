@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/16/2019
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5f8dffa01b2d7dd7fa966d2b417019f1d2afb1bc
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 25dda12ca33165cfc64ffd949a2068acb5150b84
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867018"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097153"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Samouczek: Tworzenie połączonych szablonów usługi Azure Resource Manager
 
 Dowiedz się, jak tworzyć połączone szablony usługi Azure Resource Manager. Użycie połączonych szablonów umożliwia wywołanie szablonu przez inny szablon. Jest to idealne narzędzie do podziału szablonów na moduły. W tym samouczku użyjesz tego samego szablonu, który został użyty w artykule [Samouczek: Tworzenie szablonów usługi Azure Resource Manager przy użyciu zasobów zależnych](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Powoduje on utworzenie maszyny wirtualnej, sieci wirtualnej i innych zasobów zależnych, w tym konta magazynu. Tworzenie zasobu konta magazynu jest realizowane przez połączony szablon.
+
+Wywoływanie dołączonego szablonu jest podobne do wywołania funkcji.  Poznasz również sposób przekazać wartości parametrów do dołączonego szablonu oraz uzyskiwanie "return values" dołączonego szablonu.
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -34,6 +36,8 @@ Ten samouczek obejmuje następujące zadania:
 > * Konfigurowanie zależności
 > * Wdrożenie szablonu
 > * Dodatkowe rozwiązania
+
+Aby uzyskać więcej informacji, zobacz [połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure](./resource-group-linked-templates.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -67,95 +71,97 @@ Szablony szybkiego startu platformy Azure to repozytorium na potrzeby szablonów
 3. Wybierz pozycję **Open (Otwórz)**, aby otworzyć plik.
 4. Istnieje pięć zasobów definiowanych przez szablon:
 
-    * `Microsoft.Storage/storageAccounts`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). 
-    * `Microsoft.Network/publicIPAddresses`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses). 
-    * `Microsoft.Network/virtualNetworks`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks). 
-    * `Microsoft.Network/networkInterfaces`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces). 
-    * `Microsoft.Compute/virtualMachines`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
+   * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
+   * [`Microsoft.Network/virtualNetworks`](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
+   * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
+   * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-    Warto uzyskać podstawową wiedzę na temat szablonu przed rozpoczęciem jego dostosowywania.
+     Warto uzyskać podstawowych informacji na temat schematu szablonu przed rozpoczęciem dostosowywania szablonu.
 5. Wybierz pozycję **Plik**>**Zapisz jako**, aby zapisać kopię pliku o nazwie **azuredeploy.json** na komputerze lokalnym.
 6. Wybierz pozycję **Plik**>**Zapisz jako**, aby utworzyć kolejną kopię pliku o nazwie **linkedTemplate.json**.
 
 ## <a name="create-the-linked-template"></a>Tworzenie połączonego szablonu
 
-Połączony szablon tworzy konto magazynu. Połączony szablon jest niemal taki sam, jak szablon autonomiczny, który tworzy konto magazynu. W tym samouczku połączony szablon musi przekazać wartość z powrotem do głównego szablonu. Ta wartość jest definiowana w elemencie `outputs`.
+Połączony szablon tworzy konto magazynu. Połączony szablon może służyć jako autonomiczny szablonu można utworzyć konta magazynu. W tym samouczku połączony szablon przyjmuje dwa parametry i przekazuje wartość z powrotem do głównego szablonu. Ta wartość "return" jest zdefiniowany w `outputs` elementu.
 
-1. Otwórz plik linkedTemplate.json w programie Visual Studio Code, jeśli nie jest jeszcze otwarty.
+1. Otwórz **linkedTemplate.json** programu Visual Studio Code, jeśli plik nie jest otwarty.
 2. Wprowadź następujące zmiany:
 
-    * Usuń wszystkie zasoby z wyjątkiem konta magazynu. Łącznie należy usunąć cztery zasoby.
+    * Usuń wszystkie parametry innych niż **lokalizacji**.
+    * Dodaj parametr o nazwie **storageAccountName**. 
+        ```json
+        "storageAccountName":{
+          "type": "string",
+          "metadata": {
+              "description": "Azure Storage account name."
+          }
+        },
+        ```
+        Nazwa konta magazynu i lokalizacja są przekazywane z głównego szablonu do dołączonego szablonu jako parametry.
+        
+    * Usuń element **variables** i wszystkie definicje zmiennych.
+    * Usuwanie wszystkich zasobów innych niż konta magazynu. Łącznie należy usunąć cztery zasoby.
     * Zaktualizuj wartość elementu **name** zasobu konta magazynu na następującą wartość:
 
         ```json
           "name": "[parameters('storageAccountName')]",
         ```
-    * Usuń element **variables** i wszystkie definicje zmiennych.
-    * Usuń wszystkie parametry z wyjątkiem parametru **location**.
-    * Dodaj parametr o nazwie **storageAccountName**. Nazwa konta magazynu jest przekazywana z głównego szablonu do połączonego szablonu jako parametr.
 
-        ```json
-        "storageAccountName":{
-        "type": "string",
-        "metadata": {
-            "description": "Azure Storage account name."
-        }
-        },
-        ```
     * Zaktualizuj element **outputs**, aby wyglądał następująco:
-
+    
         ```json
         "outputs": {
-            "storageUri": {
-                "type": "string",
-                "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
-              }
+          "storageUri": {
+              "type": "string",
+              "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
+            }
         }
         ```
-        Element **storageUri** jest wymagany przez definicję zasobu maszyny wirtualnej w głównym szablonie.  Wartość jest przekazywana z powrotem do głównego szablonu jako wartość wyjściowa.
+       Element **storageUri** jest wymagany przez definicję zasobu maszyny wirtualnej w głównym szablonie.  Wartość jest przekazywana z powrotem do głównego szablonu jako wartość wyjściowa.
 
-    Gdy wszystko będzie gotowe, szablon powinien wyglądać następująco:
+        Gdy wszystko będzie gotowe, szablon powinien wyglądać następująco:
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-          "storageAccountName":{
-            "type": "string",
-            "metadata": {
-              "description": "Azure Storage account name."
+        ```json
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "storageAccountName": {
+              "type": "string",
+              "metadata": {
+                "description": "Azure Storage account name."
+              }
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "Location for all resources."
+              }
             }
           },
-          "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-              "description": "Location for all resources."
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "[parameters('storageAccountName')]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2018-07-01",
+              "sku": {
+                "name": "Standard_LRS"
+              },
+              "kind": "Storage",
+              "properties": {}
+            }
+          ],
+          "outputs": {
+            "storageUri": {
+              "type": "string",
+              "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
             }
           }
-        },
-        "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[parameters('storageAccountName')]",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "sku": {
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-          }
-        ],
-        "outputs": {
-            "storageUri": {
-                "type": "string",
-                "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
-              }
         }
-    }
-    ```
+        ```
 3. Zapisz zmiany.
 
 ## <a name="upload-the-linked-template"></a>Przekazywanie połączonego szablonu
@@ -227,7 +233,7 @@ W praktyce token SAS jest generowany podczas wdrażania głównego szablonu. Dla
 
 Główny szablonu ma nazwę azuredeploy.json.
 
-1. Otwórz plik azuredeploy.json w programie Visual Studio Code, jeśli nie jest otwarty.
+1. Otwórz **azuredeploy.json** programu Visual Studio Code, jeśli nie jest otwarty.
 2. Usuń z szablonu definicję zasobu konta magazynu:
 
     ```json
@@ -303,8 +309,6 @@ Ponieważ konto magazynu jest teraz zdefiniowane w połączonym szablonie, musis
 3. Zaktualizuj wartość **properties/diagnosticsProfile/bootDiagnostics/storageUri** w sposób pokazany na poprzednim zrzucie ekranu.
 4. Zapisz poprawiony szablon.
 
-Aby uzyskać więcej informacji, zobacz [Używanie połączonych i zagnieżdżonych szablonów podczas wdrażania zasobów platformy Azure](./resource-group-linked-templates.md)
-
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
 Zapoznaj się sekcją [Wdrażanie szablonu](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template), gdzie znajduje się procedura wdrażania. Użyj tej samej nazwy grupy zasobów, której użyto dla konta magazynu, na potrzeby przechowywania połączonego szablonu. Ułatwi to wyczyszczenie zasobów w następnej sekcji. Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora maszyny wirtualnej. Zobacz [Wymagania wstępne](#prerequisites).
@@ -325,7 +329,7 @@ Aby poprawić projekt, po jego ukończeniu wprowadź w nim następujące dodatko
 1. Zmodyfikuj szablon główny (azuredeploy.json), aby pobierał wartość identyfikatora URI połączonego szablonu za pośrednictwem parametru.
 2. Zamiast generować token SAS podczas przekazywania połączonego szablonu, wygeneruj ten token podczas wdrażania szablonu głównego. Aby uzyskać więcej informacji, zobacz [Udostępnianie tokenu SAS podczas wdrażania](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wydzielono z szablonu dwa moduły: szablon główny i szablon połączony. Aby dowiedzieć się, jak wykonać zadania po wdrożeniu przy użyciu rozszerzenia maszyny wirtualnej, zobacz:
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
-ms.openlocfilehash: ee828c908cb3b103befa3890b43bb2c1f04f7cf0
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 254215389d129874f7ac3fc855b26819d41a095c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214048"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852478"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizowanie istniejącej oferty maszyny Wirtualnej w portalu Azure Marketplace
 
@@ -65,7 +65,7 @@ Jest to typowe dla obrazu maszyny Wirtualnej być okresowo aktualizowane za pomo
 
 4.  W obszarze **wersje dyskowe**, kliknij pozycję **+ nowa wersja dysku** można dodać nowego obrazu maszyny Wirtualnej.
 
-5.  Podaj nowe obrazy maszyn wirtualnych **wersje dyskowe**. Wersje dyskowe musi wykonać [wersji semantycznej](http://semver.org/) formatu. Wersje powinny być w postaci X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi. Sprawdź, czy nowa wersja, którą podasz jest większa niż wszystkie poprzednie wersje; w przeciwnym razie po ponowne publikowanie nowej wersji nie będą wyświetlane na portalu lub w portalu Azure Marketplace.
+5.  Podaj nowe obrazy maszyn wirtualnych **wersje dyskowe**. Wersje dyskowe musi wykonać [wersji semantycznej](https://semver.org/) formatu. Wersje powinny być w postaci X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi. Sprawdź, czy nowa wersja, którą podasz jest większa niż wszystkie poprzednie wersje; w przeciwnym razie po ponowne publikowanie nowej wersji nie będą wyświetlane na portalu lub w portalu Azure Marketplace.
 
 6.  Aby uzyskać **adres URL wirtualnego dysku twardego systemu operacyjnego**, wprowadź [sygnatury dostępu współdzielonego (SAS) identyfikator URI](./cpp-get-sas-uri.md) utworzony dla wirtualnego dysku twardego systemu operacyjnego. 
 

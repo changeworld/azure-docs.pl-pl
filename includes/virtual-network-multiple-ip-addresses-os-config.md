@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ec1727926f6dbfeead9932004715a8bb1dfbb0cd
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 7679bbc450e5fa0761860aedbb37ed02b27ec828
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36964539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124616"
 ---
 ## <a name="os-config"></a>Adresy IP do systemu operacyjnego maszyny wirtualnej
 
-Połącz i zaloguj się do maszyny Wirtualnej utworzonej z wielu prywatnych adresów IP. Wszystkie prywatne adresy IP (w tym podstawowy) dodane do maszyny wirtualnej muszą zostać wprowadzone ręcznie. Wykonaj kroki następujących systemu operacyjnego maszyny Wirtualnej.
+Połącz i zaloguj się do maszyny Wirtualnej utworzonej za pomocą wielu prywatnych adresów IP. Wszystkie prywatne adresy IP (w tym podstawowy) dodane do maszyny wirtualnej muszą zostać wprowadzone ręcznie. Wykonaj kroki tego następujący kod pod kątem systemu operacyjnego maszyny Wirtualnej.
 
 ### <a name="windows"></a>Windows
 
@@ -27,19 +27,19 @@ Połącz i zaloguj się do maszyny Wirtualnej utworzonej z wielu prywatnych adre
 4. Kliknij dwukrotnie Protokół internetowy w wersji 4 (IPv4).
 5. Wybierz pozycję **Użyj następującego adresu IP** i wprowadź następujące wartości:
 
-    * **Adres IP**: wprowadź *podstawowy* prywatny adres IP.
-    * **Maska podsieci**: ustaw na podstawie swojej sieci. Na przykład jeśli podsieć jest podsiecią typu /24, wprowadź maską podsieci 255.255.255.0.
-    * **Brama domyślna**: pierwszy adres IP w podsieci. Jeśli podsieć jest typu 10.0.0.0/24, adresem IP bramy będzie 10.0.0.1.
+    * **Adres IP**: Wprowadź *głównej* prywatny adres IP
+    * **Maska podsieci**: Ustawiona na podstawie podsieci. Na przykład jeśli podsieć jest podsiecią typu /24, wprowadź maską podsieci 255.255.255.0.
+    * **Brama domyślna**: Pierwszy adres IP w podsieci. Jeśli podsieć jest typu 10.0.0.0/24, adresem IP bramy będzie 10.0.0.1.
     * Wybierz **Użyj następujących adresów serwerów DNS** i wprowadź następujące wartości:
-        * **Preferowany serwer DNS**: jeśli nie używasz własnego serwera DNS, wprowadź adres 168.63.129.16.  Jeśli używasz własnego serwera DNS, wprowadź jego adres IP.
-    * Wybierz **zaawansowane** przycisk i dodawania dodatkowych adresów IP. Każdej dodatkowej prywatnych adresów IP, które zostały dodane do interfejsu sieci platformy Azure w poprzednim kroku, należy dodać do interfejsu sieciowego systemu Windows, który przypisano podstawowy adres IP przypisany do interfejsu sieci platformy Azure.
+        * **Preferowany serwer DNS**: Jeśli nie używasz własnego serwera DNS, wprowadź adres 168.63.129.16.  Jeśli używasz własnego serwera DNS, wprowadź jego adres IP.
+    * Wybierz **zaawansowane** przycisku i Dodaj dodatkowe adresy IP. Dodaj każdy pomocnicze prywatne adresy IP, które zostały dodane do interfejsu sieci platformy Azure w poprzednim kroku, z interfejsem sieciowym Windows, który jest przypisany podstawowy adres IP przypisany do interfejsu sieci platformy Azure.
 
-        Ręcznie nigdy nie należy przypisywać publiczny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej. Podczas ręcznie ustawić adres IP w ramach systemu operacyjnego, upewnij się, że jest ten sam adres prywatny adres IP przypisany do platformy Azure [interfejsu sieciowego](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), lub można utracić łączność z maszyną wirtualną. Dowiedz się więcej o [prywatnego adresu IP](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) ustawienia. Nigdy nie należy przypisywać Azure publicznego adresu IP w ramach systemu operacyjnego.
+        Należy nigdy ręcznie przypisać publiczny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej. Ustawiane ręcznie adresu IP w ramach systemu operacyjnego należy upewnić się, jest ten sam adres jako prywatny adres IP przypisany do platformy Azure [interfejsu sieciowego](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), lub można utracić łączność z maszyną wirtualną. Dowiedz się więcej o [prywatny adres IP](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) ustawienia. Nigdy nie należy przypisać publiczny adres IP platformy Azure w ramach systemu operacyjnego.
 
     * Kliknij przycisk **OK**, aby zamknąć ustawienia TCP/IP, a następnie kliknij ponownie przycisk **OK**, aby zamknąć ustawienia karty. Połączenie RDP zostanie ponownie nawiązane.
 
 6. W wierszu polecenia wpisz *ipconfig /all*. Zostaną wyświetlone wszystkie dodane adresy IP, a protokół DHCP będzie wyłączony.
-7. Skonfiguruj system Windows do użycia jako podstawowy adres IP prywatnego adresu IP w konfiguracji podstawowego adresu IP na platformie Azure dla systemu Windows. Zobacz [dostęp do Internetu nie z maszyny Wirtualnej systemu Windows Azure, który ma wiele adresów IP](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) szczegółowe informacje. 
+7. Skonfiguruj Windows na potrzeby prywatny adres IP podstawowa konfiguracja adresu IP na platformie Azure jako podstawowy adres IP Windows. Zobacz [dostępu do Internetu nie na maszynie Wirtualnej Windows Azure, która ma wiele adresów IP](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) Aby uzyskać szczegółowe informacje. 
 
 ### <a name="validation-windows"></a>Walidacja (Windows)
 
@@ -49,7 +49,7 @@ Aby upewnić się, że będziesz mieć możliwość nawiązania połączenia z I
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->W przypadku dodatkowej konfiguracji IP można tylko zbadać poleceniem ping z Internetem Jeśli konfiguracji ma publiczny adres IP skojarzone z nim. Dla podstawowej konfiguracji adresów IP publiczny adres IP nie jest wymagany na polecenie ping do Internetu.
+>Dla pomocniczej konfiguracji adresów IP można tylko zbadać poleceniem ping z Internetem, jeśli konfiguracja ma publiczny adres IP skojarzony z nim. Dla głównej konfiguracji adresu IP publiczny adres IP nie jest wymagany na polecenie ping do Internetu.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
@@ -62,15 +62,15 @@ ping -S 10.0.0.5 hotmail.com
 
 3. Zaktualizuj plik konfiguracji interfejsu sieciowego (przyjęto, że jest to „eth0”).
 
-    * Zachowaj istniejący element wiersza dla protokołu dhcp. Podstawowy adres IP pozostanie skonfigurowany tak jak poprzednio.
-    * Dodaj konfigurację dla dodatkowego statycznego adresu IP za pomocą następujących poleceń:
+   * Zachowaj istniejący element wiersza dla protokołu dhcp. Podstawowy adres IP pozostanie skonfigurowany tak jak poprzednio.
+   * Dodaj konfigurację dla dodatkowego statycznego adresu IP za pomocą następujących poleceń:
 
-        ```bash
-        cd /etc/network/interfaces.d/
-        ls
-        ```
+       ```bash
+       cd /etc/network/interfaces.d/
+       ls
+       ```
 
-    Powinien zostać wyświetlony plik cfg.
+     Powinien zostać wyświetlony plik cfg.
 4. Otwórz ten plik. Na końcu tego pliku powinny znajdować się następujące wiersze:
 
     ```bash
@@ -178,7 +178,7 @@ Aby upewnić się, że będziesz mieć możliwość nawiązania połączenia z I
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->W przypadku dodatkowej konfiguracji IP można tylko zbadać poleceniem ping z Internetem Jeśli konfiguracji ma publiczny adres IP skojarzone z nim. Dla podstawowej konfiguracji adresów IP publiczny adres IP nie jest wymagany na polecenie ping do Internetu.
+>Dla pomocniczej konfiguracji adresów IP można tylko zbadać poleceniem ping z Internetem, jeśli konfiguracja ma publiczny adres IP skojarzony z nim. Dla głównej konfiguracji adresu IP publiczny adres IP nie jest wymagany na polecenie ping do Internetu.
 
 W przypadku maszyn wirtualnych z systemem Linux podczas próby walidacji łączności wychodzącej z pomocniczej karty sieciowej może być konieczne dodanie odpowiednich tras. Istnieje wiele sposobów, aby to zrobić. Zapoznaj się z odpowiednią dokumentacją dla swojej dystrybucji systemu. Oto jedna z metod wykonania tej czynności:
 

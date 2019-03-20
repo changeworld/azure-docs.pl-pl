@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 9ea236718b7fd9b808a5092dddec9574f6b93b48
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6d78e310ffd5b473c3d7e44b4edbf9caaff7655f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167159"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077670"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Dołączanie maszyny wirtualnej systemu CentOS Linux do domeny zarządzanej
 W tym artykule pokazano, jak dołączyć maszyny wirtualnej systemu CentOS Linux na platformie Azure do domeny zarządzanej usług domenowych Azure AD.
@@ -86,12 +86,11 @@ Teraz, wymagane pakiety są zainstalowane na maszynie wirtualnej systemu Linux, 
     sudo realm discover CONTOSO100.COM
     ```
 
-    > [!NOTE]
-    > **Rozwiązywanie problemów:** Jeśli *odnajdywania obszaru* nie może znaleźć Twojej domeny zarządzanej:  
-      * Upewnij się, że domena jest dostępny z maszyny wirtualnej (spróbuj ping).  
-      * Sprawdź, czy maszyna wirtualna w rzeczywistości został wdrożony na tej samej sieci wirtualnej, w którym domena zarządzana jest dostępna.
-      * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywała na kontrolerach domeny z domeny zarządzanej.  
-      >
+   > [!NOTE]
+   > **Rozwiązywanie problemów:** Jeśli *odnajdywania obszaru* nie może znaleźć Twojej domeny zarządzanej:  
+   >    * Upewnij się, że domena jest dostępny z maszyny wirtualnej (spróbuj ping).  
+   >    * Sprawdź, czy maszyna wirtualna w rzeczywistości został wdrożony na tej samej sieci wirtualnej, w którym domena zarządzana jest dostępna.
+   >    * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywała na kontrolerach domeny z domeny zarządzanej.  
 
 2. Zainicjuj protokołu Kerberos. W terminalu SSH wpisz następujące polecenie:
 

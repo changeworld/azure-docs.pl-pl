@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 9dade2ccebfb96cd54bdb9c8ef70c14fdeadad76
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106451"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225777"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer
 
@@ -39,7 +39,11 @@ Zanim zaczniesz uruchamiać zapytania, musisz dodać połączenie do co najmniej
 
 1. W lewym górnym rogu aplikacji wybierz pozycję **Dodaj klaster**.
 
-1. W oknie dialogowym **Dodawanie klastra** wprowadź adres `https://help.kusto.windows.net`, a następnie wybierz pozycję **Dodaj**.
+1. W **klastra Dodaj** okno dialogowe, wprowadź identyfikator URI, a następnie wybierz **Dodaj**.
+
+   Może używać klastrze help identyfikatora URI, `https://help.kusto.windows.net`. Jeśli masz własny klaster, podaj identyfikator URI klastra. Na przykład `https://mydataexplorercluster.westus.kusto.windows.net` jak na poniższej ilustracji:
+
+    ![Identyfikator URI w portalu serwera](media/web-query-data/server-uri.png)
 
 1. W okienku po lewej stronie powinien być teraz wyświetlany klaster **help**. Rozwiń bazę danych **Samples**, aby wyświetlić przykładowe tabele, do których masz dostęp.
 
@@ -186,7 +190,7 @@ Usługa Data Explorer jest obecnie w wersji zapoznawczej, dlatego chętnie pozna
 
 W tym przewodniku Szybki start nie zostały utworzone żadne zasoby, ale jeśli chcesz usunąć jeden lub oba klastry z aplikacji, kliknij klaster prawym przyciskiem myszy, a następnie wybierz pozycję **Usuń połączenie**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)

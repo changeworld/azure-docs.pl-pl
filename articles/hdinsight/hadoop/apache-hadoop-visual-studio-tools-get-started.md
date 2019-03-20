@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: aa9d03e40880dbc856045840499dba43b9d1aba9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bb7c46548726b00c68c8e952a8e2956ad0511763
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105339"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201776"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Użyj narzędzi Data Lake Tools for Visual Studio, aby nawiązać połączenie z usługi Azure HDInsight i uruchomić zapytania usługi Apache Hive
 
@@ -93,7 +93,7 @@ Nawiązywanie połączenia z witryną Azure Portal w programie Visual Studio:
 
 1. Z poziomu Eksploratora serwera, przejdź do **Azure** > **HDInsight** i wybierz klaster.
 
-2. Kliknij prawym przyciskiem myszy klaster usługi HDInsight, a następnie wybierz pozycję **Zarządzaj klastrem w witrynie Azure Portal**.
+2. Kliknij prawym przyciskiem myszy klaster usługi HDInsight, a następnie wybierz pozycję **Zarządzaj klastrem w witrynie Azure portal**.
 
 Aby zadawać pytania i/lub wyrażanie opinii w programie Visual Studio:
 
@@ -275,5 +275,5 @@ Ten artykuł zawierał informacje dotyczące sposobu używania pakietu Data Lake
 * [Use Hadoop Hive in HDInsight](hdinsight-use-hive.md) (Używanie usługi Hadoop Hive w usłudze HDInsight)
 * [Rozpoczynanie pracy przy użyciu technologii Apache Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Przesyłanie zadań usługi Apache Hadoop w HDInsight](submit-apache-hadoop-jobs-programmatically.md)
-* [Analizowanie danych serwisu Twitter przy użyciu technologii Apache Hadoop w HDInsight](../hdinsight-analyze-twitter-data.md)
+* [Analizowanie danych serwisu Twitter przy użyciu technologii Apache Hadoop w HDInsight](../hdinsight-analyze-twitter-data-linux.md)
 

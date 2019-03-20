@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 3700ffe0a2b0e0d3ec69bce3a11cdc36d28d9145
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.openlocfilehash: 4aff7c486762d9ea7bd38ae152d169968432307e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569114"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898962"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Tworzenie kopii zapasowych maszyn Windows za pomocą agenta usług MARS kopia zapasowa Azure
 
@@ -43,7 +43,7 @@ Co można utworzyć kopię, zależy od tego, gdzie agent jest zainstalowany.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-- [Dowiedz się, jak](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders) usługi Azure Backup tworzy kopię zapasową maszyn Windows za pomocą agenta usług MARS.
+- [Dowiedz się, jak](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders) usługi Azure Backup tworzy kopię zapasową maszyn Windows za pomocą agenta usług MARS.
 - [Dowiedz się więcej o](backup-architecture.md#architecture-back-up-to-dpmmabs) architektura kopii zapasowych uruchamiania agenta usług MARS na serwerze pomocniczym serwera usługi Mab lub programu DPM.
 - [Przegląd](backup-support-matrix-mars-agent.md) elementy obsługiwane i co można utworzyć kopię za pomocą agenta usług MARS.
 - Sprawdź dostęp do Internetu na maszynach, które chcesz utworzyć kopię zapasową.
@@ -53,7 +53,7 @@ Co można utworzyć kopię, zależy od tego, gdzie agent jest zainstalowany.
 
 Jeśli komputer ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwer proxy zezwalać na te adresy URL:
 
-- www.msftncsi.com
+- www\.msftncsi.com
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
@@ -72,15 +72,20 @@ Magazyn usługi Recovery Services przechowuje kopie zapasowe i punkty odzyskiwan
 
     ![Tworzenie magazynu Usług odzyskiwania — krok 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-4. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Nazwa musi być unikalna w tej subskrypcji platformy Azure. Wpisz nazwę o długości od 2 do 50 znaków. Musi ona rozpoczynać się od litery i może zawierać tylko litery, cyfry i łączniki.
+4. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn.
+
+   - Nazwa musi być unikalna w tej subskrypcji platformy Azure.
+   - Może on zawierać 2 do 50 znaków.
+   - Musi zaczynać się literą i może zawierać tylko litery, cyfry i łączniki.
 
 5. Wybierz subskrypcję platformy Azure, grupę zasobów i region geograficzny, w którym można utworzyć magazynu. Dane kopii zapasowej są wysyłane do magazynu. Następnie kliknij pozycję **Utwórz**.
 
     ![Tworzenie magazynu usługi Recovery Services — krok 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-Może potrwać kilka minut na utworzenie magazynu. Monitoruj powiadomienia o stanie wyświetlane w portalu. Po utworzeniu magazynu pojawi się na liście magazynów usługi Recovery Services. Jeśli po kilku minutach nie widzisz magazynu, kliknij przycisk **Odśwież**.
+   - Może upłynąć trochę czasu utworzenie magazynu.
+   - Monitoruj powiadomienia o stanie wyświetlane w obszarze prawym górnym rogu portalu. Jeśli po kilku minutach nie widzisz magazynu, kliknij przycisk **Odśwież**.
 
-![Klikanie pozycji Odśwież](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)
+     ![Klikanie pozycji Odśwież](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)
 
 ### <a name="set-storage-redundancy"></a>Zestaw nadmiarowości magazynu
 
@@ -129,17 +134,17 @@ Pobierz agenta usług MARS zainstalowany na maszynach, które chcesz utworzyć k
 
 1. Uruchom **MARSagentinstaller.exe** plik na komputerach, które chcesz utworzyć kopię zapasową.
 2. W Kreatorze instalacji agenta usług MARS > **ustawienia instalacji**, określ, w którym chcesz zainstalować agenta i lokalizację do użycia dla pamięci podręcznej. Następnie kliknij przycisk **Next** (Dalej).
-    - Usługa Azure Backup używa pamięci podręcznej do przechowywania migawki danych przed wysłaniem ich do platformy Azure.
-    - Lokalizacja pamięci podręcznej powinien mieć miejsca równa co najmniej 5% rozmiaru danych, które będzie można utworzyć kopię zapasową.
+   - Usługa Azure Backup używa pamięci podręcznej do przechowywania migawki danych przed wysłaniem ich do platformy Azure.
+   - Lokalizacja pamięci podręcznej powinien mieć miejsca równa co najmniej 5% rozmiaru danych, które będzie można utworzyć kopię zapasową.
 
-    ![Ustawienia instalacji Kreator MARS](./media/backup-configure-vault/mars1.png)
+     ![Ustawienia instalacji Kreator MARS](./media/backup-configure-vault/mars1.png)
 
 2. W **konfigurację serwera Proxy**, określ, jak agenta uruchomionego na komputerze Windows połączy się z Internetem. Następnie kliknij przycisk **Next** (Dalej).
 
-    - Jeśli używasz niestandardowego serwera proxy, określ ustawienia serwera proxy i poświadczenia, jeśli to konieczne.
-    - Należy pamiętać, że agent musi mieć dostęp do [tych adresów URL](#verify-internet-access).
+   - Jeśli używasz niestandardowego serwera proxy, określ ustawienia serwera proxy i poświadczenia, jeśli to konieczne.
+   - Należy pamiętać, że agent musi mieć dostęp do [tych adresów URL](#verify-internet-access).
 
-    ![Dostęp do Internetu kreatora MARS](./media/backup-configure-vault/mars2.png)
+     ![Dostęp do Internetu kreatora MARS](./media/backup-configure-vault/mars2.png)
 
 3. W **instalacji** Przejrzyj sprawdzania wymagań wstępnych, a następnie kliknij przycisk **zainstalować**.
 4. Po zainstalowaniu agenta kliknij **przejść do rejestracji**.

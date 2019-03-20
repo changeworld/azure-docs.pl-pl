@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: f9f4dacc8aac2fc47002b65798c8367e354bb69c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d2651bc47f262a45a05217585eb00cbc721c01a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165781"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Zarządzanie zasobami i powiązanymi jednostkami za pomocą usługi Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -201,7 +201,7 @@ Aby uzyskać więcej informacji na temat opcji dostarczania zasobów, zobacz [do
 ```
 
 ## <a name="list-all-access-policies"></a>Lista wszystkich zasad dostępu
-W usłudze Media Services można zdefiniować zasadę dostępu dla zasobu lub jego pliki. Zasady dostępu definiuje uprawnienia dla pliku lub zasobu (jakiego rodzaju dostępu i czas trwania). W kodzie usługi Media Services zwykle zdefiniować zasadę dostępu, tworząc obiekt IAccessPolicy i kojarzenie go z istniejącego zasobu. Następnie można utworzyć obiektu ILocator, który umożliwia dostarczanie bezpośredni dostęp do zasobów w usłudze Media Services. Dołączona ta seria artykułów dokumentacji projektu programu Visual Studio zawiera kilka przykładów kodu, które pokazują, jak utworzyć i przypisać zasady dostępu i lokalizatorów zasobów.
+W usłudze Media Services można zdefiniować zasadę dostępu dla zasobu lub jego pliki. Zasady dostępu definiuje uprawnienia dla pliku lub zasobu (jakiego rodzaju dostępu i czas trwania). W kodzie usługi Media Services zwykle zdefiniować zasadę dostępu, tworząc obiekt IAccessPolicy i kojarzenie go z istniejącego zasobu. Następnie możesz utworzyć obiekt ILocator, który umożliwia dostarczanie bezpośredni dostęp do zasobów w usłudze Media Services. Dołączona ta seria artykułów dokumentacji projektu programu Visual Studio zawiera kilka przykładów kodu, które pokazują, jak utworzyć i przypisać zasady dostępu i lokalizatorów zasobów.
 
 Poniższy przykład kodu ilustruje sposób wyświetlenia listy wszystkich zasad dostępu na serwerze i zawiera typ skojarzone z każdą uprawnienia. Jest innym wygodny sposób, aby wyświetlić zasady dostępu, aby wyświetlić listę wszystkich obiektów ILocator na serwerze, a następnie dla każdego lokalizatora, możesz wyświetlić listę swoich zasad dostępu skojarzonych za pomocą jego właściwości AccessPolicy.
 

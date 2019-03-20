@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b3b011d9789cbb3dcd8557eda1473b7fd2609075
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fa5dfabeae829d52475d2e3cd6ccb123d8308c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454287"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013560"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Korzystanie z emulatora usługi Azure storage do programowania i testowania
 
@@ -54,7 +54,7 @@ Podczas pierwszego uruchomienia z emulatora magazynu środowiska lokalnego magaz
 Emulator magazynu jest instalowany domyślnie na `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`.
 
 > [!TIP]
-> Możesz użyć [Microsoft Azure Storage Explorer](http://storageexplorer.com) do pracy z zasobami emulatora magazynu lokalnego. Wyszukaj "(projektowanie)" w obszarze "Konta magazynu" w drzewie Eksploratora usługi Storage zasobów po został zainstalowany i uruchomiony emulator magazynu.
+> Możesz użyć [Microsoft Azure Storage Explorer](https://storageexplorer.com) do pracy z zasobami emulatora magazynu lokalnego. Wyszukaj "(projektowanie)" w obszarze "Konta magazynu" w drzewie Eksploratora usługi Storage zasobów po został zainstalowany i uruchomiony emulator magazynu.
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Inicjowanie emulator magazynu, aby użyć innej bazy danych SQL
@@ -64,15 +64,15 @@ Można zainicjować z emulatora magazynu, aby wskazywała wystąpienie bazy dany
 1. Otwórz okno konsoli emulatora magazynu, zgodnie z opisem w [rozpoczęcia i zainicjować emulatora magazynu](#start-and-initialize-the-storage-emulator) sekcji.
 1. W oknie konsoli, wpisz następujące polecenie, gdzie `<SQLServerInstance>` to nazwa wystąpienia programu SQL Server. Aby użyć programu LocalDB, należy określić `(localdb)\MSSQLLocalDb` jako wystąpienie programu SQL Server.
 
-  `AzureStorageEmulator.exe init /server <SQLServerInstance>`
+   `AzureStorageEmulator.exe init /server <SQLServerInstance>`
 
-  Umożliwia także następujące polecenie, które określa, że emulator, aby użyć domyślnego wystąpienia programu SQL Server:
+   Umożliwia także następujące polecenie, które określa, że emulator, aby użyć domyślnego wystąpienia programu SQL Server:
 
-  `AzureStorageEmulator.exe init /server .`
+   `AzureStorageEmulator.exe init /server .`
 
-  Lub służy następujące polecenie, które ponownie inicjuje bazę danych do domyślnego wystąpienia LocalDB:
+   Lub służy następujące polecenie, które ponownie inicjuje bazę danych do domyślnego wystąpienia LocalDB:
 
-  `AzureStorageEmulator.exe init /forceCreate`
+   `AzureStorageEmulator.exe init /forceCreate`
 
 Aby uzyskać więcej informacji na temat tych poleceń, zobacz [dokumentacja narzędzia wiersza polecenia usługi Storage emulator](#storage-emulator-command-line-tool-reference).
 
@@ -91,7 +91,7 @@ Aby uzyskać więcej informacji na temat parametrów połączenia, zobacz [Konfi
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Niektóre biblioteki klienta usługi Azure storage, takich jak biblioteka Xamarin obsługują tylko uwierzytelnianie przy użyciu tokenu (SAS) sygnatury dostępu współdzielonego. Możesz utworzyć token sygnatury dostępu Współdzielonego, za pomocą narzędzia, takiego jak [Eksploratora usługi Storage](http://storageexplorer.com/) lub innej aplikacji, która obsługuje uwierzytelnianie klucza wspólnego.
+Niektóre biblioteki klienta usługi Azure storage, takich jak biblioteka Xamarin obsługują tylko uwierzytelnianie przy użyciu tokenu (SAS) sygnatury dostępu współdzielonego. Możesz utworzyć token sygnatury dostępu Współdzielonego, za pomocą narzędzia, takiego jak [Eksploratora usługi Storage](https://storageexplorer.com/) lub innej aplikacji, która obsługuje uwierzytelnianie klucza wspólnego.
 
 Można również wygenerować token sygnatury dostępu Współdzielonego, za pomocą programu Azure PowerShell. Poniższy przykład generuje token SAS z pełnymi uprawnieniami do kontenera obiektów blob:
 
@@ -281,4 +281,4 @@ Usunięto usterkę, w której został zwracanie emulatora magazynu `DataServiceV
 
 * Oceń emulatora magazynu dla wielu platform, obsługiwane przez społeczności "open source" [Azurite](https://github.com/arafato/azurite). 
 * [Przykłady usługi Azure Storage przy użyciu platformy .NET](../storage-samples-dotnet.md) zawiera linki do kilka przykładów kodu, można użyć podczas tworzenia aplikacji.
-* Możesz użyć [Microsoft Azure Storage Explorer](http://storageexplorer.com) do pracy z zasobami w chmurze konta magazynu i w emulatorze magazynu.
+* Możesz użyć [Microsoft Azure Storage Explorer](https://storageexplorer.com) do pracy z zasobami w chmurze konta magazynu i w emulatorze magazynu.

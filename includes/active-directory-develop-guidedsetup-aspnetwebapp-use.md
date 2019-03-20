@@ -3,8 +3,8 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,16 +12,16 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/19/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 167fccd8e0546bc8f5ac1b24489cae68cc14191f
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 2b9d696ca896d0c8f0801f055000b9763d65d7ff
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842861"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203617"
 ---
-## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Dodaj kontroler do obsługi żądań logowania i wylogowania
+## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>dodawanie kontrolera do obsługi żądań logowania i wylogowania
 
 W tym kroku przedstawiono sposób tworzenia nowego kontrolera do udostępnienia metody logowania i wylogowywania.
 
@@ -65,7 +65,7 @@ W tym kroku przedstawiono sposób tworzenia nowego kontrolera do udostępnienia 
     }
     ```
 
-## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Tworzenie strony głównej aplikacji do logowania użytkowników za pomocą przycisku logowania
+## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>tworzenie strony głównej aplikacji do logowania użytkowników za pomocą przycisku logowania
 
 W programie Visual Studio utwórz nowy widok, aby dodać przycisk logowania i wyświetlić informacje o użytkowniku po uwierzytelnieniu:
 
@@ -159,7 +159,7 @@ Ten kontroler pokazuje wykorzystanie atrybutu `[Authorize]` do ochrony kontroler
 > Z powodu użycia atrybutu `[Authorize]` wszystkie metody tego kontrolera można wykonać tylko wtedy, gdy użytkownik jest uwierzytelniony. Jeśli użytkownik nie jest uwierzytelniony, próbuje uzyskać dostęp z kontrolerem OWIN inicjują wezwanie do uwierzytelnienia i zmusza użytkownika do uwierzytelniania. Powyższy kod sprawdza lista oświadczeń dla określonego użytkownika atrybutów zawarte w tokenie identyfikatora użytkownika. Te atrybuty obejmują imię i nazwisko użytkownika oraz nazwę użytkownika, a także podmiot globalnego identyfikatora. Zawiera on także *identyfikator dzierżawy*, który reprezentuje identyfikator organizacji użytkownika. 
 <!--end-collapse-->
 
-## <a name="create-a-view-to-display-the-users-claims"></a>Utwórz widok na wyświetlanie oświadczeń użytkownika
+## <a name="create-a-view-to-display-the-users-claims"></a>tworzenie widoku w celu wyświetlenia oświadczeń użytkownika
 
 W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń użytkownika na stronie internetowej:
 

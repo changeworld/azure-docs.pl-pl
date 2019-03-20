@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a160bc0247d2f80dda620b67c946805926d78006
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f63851359a19455ab0f46f66a801a679ee2c3bfe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773966"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079694"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Szybki start: Migrowanie z lokalnego notesu Jupyter
 
@@ -50,13 +50,13 @@ Ten przewodnik Szybki Start procesu migracji notesu z komputera lokalnego lub in
 
    (Ponownie, jeśli notesu znajduje się w repozytorium GitHub, postępuj zgodnie z instrukcjami [Szybki Start: Klonowanie notesu](quickstart-clone-jupyter-notebook.md) zamiast.)
 
-    - Jeśli przy użyciu **z komputera**, przeciągnij i upuść swoje *.ipynb* pliki do okna podręcznego, lub wybierz **Wybieranie plików**, a następnie wyszukaj i wybierz pliki, które chcesz zaimportować. Następnie wybierz pozycję **przekazywanie**. Przekazane pliki znajdują się taką samą nazwę jak pliki lokalne. (Nie trzeba przekazać zawartość dowolnego *.ipynb_checkpoints* folderów.)
+   - Jeśli przy użyciu **z komputera**, przeciągnij i upuść swoje *.ipynb* pliki do okna podręcznego, lub wybierz **Wybieranie plików**, a następnie wyszukaj i wybierz pliki, które chcesz zaimportować. Następnie wybierz pozycję **przekazywanie**. Przekazane pliki znajdują się taką samą nazwę jak pliki lokalne. (Nie trzeba przekazać zawartość dowolnego *.ipynb_checkpoints* folderów.)
 
-    ![Przekaż z komputera okna podręcznego](media/quickstarts/upload-from-computer-popup.png)
+     ![Przekaż z komputera okna podręcznego](media/quickstarts/upload-from-computer-popup.png)
 
-    - Jeśli przy użyciu **z adresu URL**, wprowadź adres źródła w **adres URL pliku** pola i nazwę pliku, aby przypisać do Notes w projekcie w **nazwy pliku** pola. Następnie wybierz pozycję **przekazywanie**. Jeśli masz wiele plików przy użyciu osobnych adresów URL, użyj **+ Dodaj plik** polecenie, aby sprawdzić pierwszy adres URL wprowadzony, po upływie którego okno podręczne zawiera nowe pola do innego pliku.
+   - Jeśli przy użyciu **z adresu URL**, wprowadź adres źródła w **adres URL pliku** pola i nazwę pliku, aby przypisać do Notes w projekcie w **nazwy pliku** pola. Następnie wybierz pozycję **przekazywanie**. Jeśli masz wiele plików przy użyciu osobnych adresów URL, użyj **+ Dodaj plik** polecenie, aby sprawdzić pierwszy adres URL wprowadzony, po upływie którego okno podręczne zawiera nowe pola do innego pliku.
 
-    ![Przekaż z adresu URL okna podręcznego](media/quickstarts/upload-from-url-popup.png)
+     ![Przekaż z adresu URL okna podręcznego](media/quickstarts/upload-from-url-popup.png)
 
 1. Otwórz i uruchom notesu nowo przesłanym, aby sprawdzić jej zawartość i operacji. Gdy wszystko będzie gotowe, wybierz pozycję **pliku** > **zatrzymania, a następnie Zamknij** zamknięcie notesu.
 

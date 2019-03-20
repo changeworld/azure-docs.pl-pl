@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: 18ef70d64523bc4001fa7d9a35a7f803b8050613
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539623"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102945"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Jak skonfigurować bazę danych Azure do replikacji danych MySQL
 
@@ -148,7 +148,7 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
 
-   - master_host: Nazwa hosta serwera głównego
+   - master_host: hostname of the master server
    - master_user: nazwa użytkownika dla serwera głównego
    - master_password: hasło dla tego serwera głównego
    - master_log_file: Nazwa pliku dziennika binarne uruchamiania `show master status`
@@ -184,7 +184,7 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
    ```
 
-2. Rozpocznij replikację
+1. Rozpocznij replikację
 
    Wywołaj `mysql.az_replication_start` przechowywane procedury, aby zainicjować replikacji.
 
@@ -192,7 +192,7 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
    CALL mysql.az_replication_start;
    ```
 
-3. Sprawdź stan replikacji
+1. Sprawdź stan replikacji
 
    Wywołaj [ `show slave status` ](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) polecenia na serwerze repliki tak, aby wyświetlić stan replikacji.
     

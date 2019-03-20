@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 991032a603844e697c122d8a26923f4c95a4a78c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170228"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -66,9 +66,13 @@ Strony zawiera również instrukcje na temat włączania obsługi monitorowania 
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
-Po dodaniu rozwiązania do obszaru roboczego do obszaru roboczego zostanie dodany Kafelek usługi Azure SQL Analytics, a zostanie on wyświetlony na Przegląd. Kafelek pokazuje liczbę baz danych, pul elastycznych, wystąpienia zarządzane przez usługę i baz danych Azure SQL w wystąpieniach zarządzanych, które odbiera dane diagnostyczne i telemetryczne z rozwiązania.
+Po dodaniu rozwiązania do obszaru roboczego do obszaru roboczego zostanie dodany Kafelek usługi Azure SQL Analytics, a zostanie on wyświetlony na Przegląd. Wybierz łącze Wyświetl podsumowanie, aby załadować zawartość kafelka.
 
-![Kafelek usługi Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile.png)
+![Kafelek podsumowania usługi Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile-01.png)
+
+Po załadowaniu Kafelek pokazuje liczbę baz danych, pul elastycznych, wystąpienia zarządzane przez usługę i baz danych Azure SQL w wystąpieniach zarządzanych, które odbiera dane diagnostyczne i telemetryczne z rozwiązania.
+
+![Kafelek usługi Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile-02.png)
 
 Rozwiązanie zawiera dwa osobne widoki — jeden dla monitorowania baz danych SQL Azure i elastycznych pul i innych widokach monitorowania wystąpienia zarządzanego i baz danych w wystąpieniach zarządzanych.
 

@@ -3,23 +3,23 @@ title: File Integrity Monitoring w usłudze Azure Security Center | Dokumentacja
 description: " Dowiedz się, jak włączyć File Integrity Monitoring w usłudze Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
-editor: ''
+editor: monhaber
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
-ms.author: rkarlin
-ms.openlocfilehash: bb987bcc38dee1f3d4ea2fce19e5e546ebfc8f7c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 03/13/2019
+ms.author: monhaber
+ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240239"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901591"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>File Integrity Monitoring w usłudze Azure Security Center
 Dowiedz się, jak skonfigurować plik Integrity Monitoring (FIM) w usłudze Azure Security Center za pomocą tego przewodnika.
@@ -36,15 +36,12 @@ Centrum zabezpieczeń File Integrity Monitoring weryfikuje integralność plikó
 Usługa Security Center zaleca jednostki do monitorowania, które można łatwo włączać programu FIM. Można również definiować własne zasady FIM lub jednostek do monitorowania. W tym przewodniku przedstawiono, jak.
 
 > [!NOTE]
-> Funkcja pliku Integrity Monitoring (FIM) działa w przypadku komputerów Windows i Linux oraz maszyn wirtualnych i jest dostępne w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
-FIM służy do przekazywania danych do obszaru roboczego usługi Log Analytics. Dane naliczane są opłaty, na podstawie ilości danych, które zostaną przesłane. Zobacz [log analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/) Aby dowiedzieć się więcej.
->
->
+> Funkcja pliku Integrity Monitoring (FIM) działa w przypadku komputerów Windows i Linux oraz maszyn wirtualnych i jest dostępne w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. FIM służy do przekazywania danych do obszaru roboczego usługi Log Analytics. Dane naliczane są opłaty, na podstawie ilości danych, które zostaną przesłane. Zobacz [cen usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) Aby dowiedzieć się więcej.
+
+FIM używa rozwiązania Azure Change Tracking w celu śledzenia i identyfikowania zmian w Twoim środowisku. Po włączeniu usługa File Integrity Monitoring **Change Tracking** zasobu o typie **rozwiązania**. Częstotliwość zbierania danych szczegółowe informacje, zobacz [Change Tracking szczegółów kolekcji danych](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) do śledzenia zmian platformy Azure.
 
 > [!NOTE]
-> FIM używa rozwiązania Azure Change Tracking w celu śledzenia i identyfikowania zmian w Twoim środowisku. Po włączeniu usługa File Integrity Monitoring **Change Tracking** zasobu typu rozwiązania. Jeśli usuniesz **Change Tracking** zasobów, możesz wyłączyć File Integrity Monitoring funkcji w usłudze Security Center.
->
->
+> Jeśli usuniesz **Change Tracking** zasobów, możesz również spowoduje wyłączenie File Integrity Monitoring funkcji w usłudze Security Center.
 
 ## <a name="which-files-should-i-monitor"></a>Pliki, które należy monitorować?
 Możesz pomyśleć o plikach, które mają kluczowe znaczenie dla systemu i aplikacji, podczas wybierania plików do monitorowania. Należy wziąć pod uwagę w Wybieranie plików, które nie chcą zmienić bez planowania. Wybranie pozycji pliki, które są często zmieniane przez aplikacje lub system operacyjny (na przykład plików dziennika i plików tekstowych) utworzyć wiele hałasu, który był trudny do identyfikowania ataków.
@@ -134,15 +131,15 @@ Wybieranie filtru w górnej części pulpitu nawigacyjnego umożliwia zastosowan
 
 1. Wróć do **File Integrity Monitoring pulpit nawigacyjny** i wybierz **ustawienia**.
 
-  ![Ustawienia][11]
+   ![Ustawienia][11]
 
-  **Konfiguracja obszaru roboczego** zostanie otwarty trzy karty: **Rejestr Windows**, **pliki Windows**, i **pliki systemu Linux**. Każda karta zawiera listę jednostek, które można edytować w tej kategorii. Dla każdej jednostki, na liście, usługa Security Center określa, czy program FIM będzie włączona (PRAWDA) lub wyłączona (false).  Edytowanie podmiotu pozwala włączyć lub wyłączyć usługi FIM.
+   **Konfiguracja obszaru roboczego** zostanie otwarty trzy karty: **Rejestr Windows**, **pliki Windows**, i **pliki systemu Linux**. Każda karta zawiera listę jednostek, które można edytować w tej kategorii. Dla każdej jednostki, na liście, usługa Security Center określa, czy program FIM będzie włączona (PRAWDA) lub wyłączona (false).  Edytowanie podmiotu pozwala włączyć lub wyłączyć usługi FIM.
 
-  ![Konfiguracja obszaru roboczego][12]
+   ![Konfiguracja obszaru roboczego][12]
 
-2. Wybierz identityprotection. W tym przykładzie Wybraliśmy elementu w obszarze rejestru Windows. **Edytowanie na potrzeby śledzenia zmian** zostanie otwarty.
+2. Wybierz ochronę tożsamości. W tym przykładzie Wybraliśmy elementu w obszarze rejestru Windows. **Edytowanie na potrzeby śledzenia zmian** zostanie otwarty.
 
-  ![Edytuj lub śledzenie zmian][13]
+   ![Edytuj lub śledzenie zmian][13]
 
 W obszarze **edytowanie na potrzeby śledzenia zmian** możesz:
 
@@ -155,11 +152,11 @@ W obszarze **edytowanie na potrzeby śledzenia zmian** możesz:
 1. Wróć do **File integrity monitoring pulpit nawigacyjny** i wybierz **ustawienia** u góry. **Konfiguracja obszaru roboczego** zostanie otwarty.
 2. W obszarze **Konfiguracja obszaru roboczego**, wybierz kartę dla typu jednostki, który chcesz dodać: Windows rejestru, plików Windows lub pliki systemu Linux. W tym przykładzie Wybraliśmy **pliki systemu Linux**.
 
-  ![Dodaj nowy element do monitorowania][14]
+   ![Dodaj nowy element do monitorowania][14]
 
 3. Wybierz pozycję **Dodaj**. **Dodaj do śledzenia zmian** zostanie otwarty.
 
-  ![Wprowadź wymagane informacje.][15]
+   ![Wprowadź wymagane informacje.][15]
 
 4. Na **Dodaj** strony, wpisz żądane informacje i wybierz **Zapisz**.
 
@@ -167,19 +164,19 @@ W obszarze **edytowanie na potrzeby śledzenia zmian** możesz:
 1. Wróć do **File Integrity Monitoring** pulpitu nawigacyjnego.
 2. Wybierz obszar roboczy, gdzie FIM jest obecnie włączona. Obszar roboczy jest włączona dla programu FIM, jeśli brakuje Włącz przycisk lub Uaktualnij Plan.
 
-  ![Wybierz obszar roboczy, w której włączono usługi FIM][16]
+   ![Wybierz obszar roboczy, w której włączono usługi FIM][16]
 
 3. Usługa File Integrity Monitoring wybierz **ustawienia**.
 
-  ![Wybierz ustawienia][17]
+   ![Wybierz ustawienia][17]
 
 4. W obszarze **Konfiguracja obszaru roboczego**, wybierz grupę gdzie **włączone** jest ustawiona na wartość true.
 
-  ![Konfiguracja obszaru roboczego][18]
+   ![Konfiguracja obszaru roboczego][18]
 
 5. W obszarze **edytowanie na potrzeby śledzenia zmian** zestaw okna **włączone** na wartość False.
 
-  ![Enabled ustaw wartość false][19]
+   ![Enabled ustaw wartość false][19]
 
 6. Wybierz pozycję **Zapisz**.
 
@@ -198,7 +195,7 @@ Można wyłączyć usługi FIM. FIM używa rozwiązania Azure Change Tracking w 
 2. Wybierz obszar roboczy.
 3. W obszarze **File Integrity Monitoring**, wybierz opcję **wyłączyć**.
 
-  ![Disable FIM][20]
+   ![Disable FIM][20]
 
 4. Wybierz **Usuń** można wyłączyć.
 

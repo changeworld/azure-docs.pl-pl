@@ -4,17 +4,17 @@ description: Więcej informacji na temat parametrów statyczne i dynamiczne i ja
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d7c923dd819f826d9d9aaf8d5b88355a9feb344f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823165"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838021"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych schematy za pomocą parametrów
 
@@ -41,8 +41,13 @@ To zabezpieczenie zapobiega niebezpieczne praktyki przechowywania wpisów tajnyc
 - Nazwa wpisu tajnego usługi Key Vault
 - Wersja wpisu tajnego usługi Key Vault
 
-Odwołania usługi Key Vault musi istnieć w tej samej subskrypcji, ponieważ planu jest przypisany do.
-Musisz również posiadać **włączyć dostęp do usługi Azure Resource Manager dla wdrożenia szablonu** skonfigurowane na usługi Key Vault **zasady dostępu** strony. Aby uzyskać wskazówki na temat włączania tej funkcji, zobacz [usługi Key Vault — wdrożenie szablonu Włącz](../../../managed-applications/key-vault-access.md#enable-template-deployment). Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [Key Vault Przegląd](../../../key-vault/key-vault-overview.md).
+Jeśli przypisanie planu używa **przypisany systemowo tożsamości zarządzanej**, odwołanie do usługi Key Vault _musi_ istnieje w tej samej subskrypcji, o których przypisano definicję planu.
+
+Jeśli przypisanie planu używa **przypisanych przez użytkownika z tożsamości zarządzanej**, odwołanie do usługi Key Vault _może_ istnieje w subskrypcji scentralizowany. Tożsamość zarządzana musi otrzymać odpowiednie uprawnienia w usłudze Key Vault przed przypisanie planu.
+
+W obu przypadkach usługi Key Vault musi mieć **włączyć dostęp do usługi Azure Resource Manager dla wdrożenia szablonu** skonfigurowane na **zasady dostępu** strony. Aby uzyskać wskazówki na temat włączania tej funkcji, zobacz [usługi Key Vault — wdrożenie szablonu Włącz](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+
+Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [Key Vault Przegląd](../../../key-vault/key-vault-overview.md).
 
 ## <a name="parameter-types"></a>Typy parametrów
 
@@ -52,9 +57,9 @@ Wartość parametru określone w definicji planu jest nazywany **parametru staty
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Parametry statyczne ustawienia w portalu
 
-1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Wybierz **planu definicje** ze strony po lewej stronie.
+1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
 1. Kliknij istniejący plan, a następnie kliknij przycisk **edycji planu** lub kliknij przycisk **+ Utwórz plan** i Wypełnij informacje w **podstawy** kartę.
 
@@ -169,9 +174,9 @@ Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten paramet
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Ustawianie parametrów dynamicznych w portalu
 
-1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Wybierz **planu definicje** ze strony po lewej stronie.
+1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
 1. Kliknij prawym przyciskiem myszy na planu, który chcesz przypisać. Wybierz **planu Przypisz** lub kliknąć planu, którą chcesz przypisać, a następnie kliknij przycisk **planu Przypisz** przycisku.
 
@@ -236,8 +241,8 @@ Artefakty dla grupy zasobów są definiowane za pomocą "Nazwa szablonu," **nazw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat [cyklu życia strategii](lifecycle.md)
-- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md)
-- Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md)
-- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md)
-- Rozwiązywanie problemów podczas przypisywania strategii za pomocą [ogólnych procedur rozwiązywania problemów](../troubleshoot/general.md)
+- Dowiedz się więcej o [planu cyklu życia](lifecycle.md).
+- Dowiedz się, jak dostosować [planu sekwencjonowania](sequencing-order.md).
+- Dowiedz się, jak używać [planu blokowania zasobów](resource-locking.md).
+- Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).
+- Rozwiązywanie problemów podczas przypisywania planu z [Ogólne rozwiązywanie problemów z](../troubleshoot/general.md).

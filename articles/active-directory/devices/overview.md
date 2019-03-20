@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/31/2019
+ms.date: 03/01/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3711f2b2901ddbe49b4d6a49cabef12ac5dab3e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b303841dffd09e2c2f8250e4a7885fda36ab4a38
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192476"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168609"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Co to jest zarządzanie urządzeniami w usłudze Azure Active Directory?
 
@@ -89,7 +89,7 @@ Dołączenie do usługi Azure AD można wdrożyć przy użyciu dowolnej z nastę
 
 Zaimplementowanie urządzeń dołączonych do usługi Azure AD zapewnia następujące korzyści:
 
-- **Logowanie jednokrotne** do aplikacji i usług SaaS zarządzanych na platformie Azure. Użytkownicy nie zobaczą dodatkowych monitów o uwierzytelnienie podczas uzyskiwania dostępu do zasobów służbowych. Funkcja logowania jednokrotnego jest dostępna nawet wtedy, gdy użytkownicy nie są podłączeni do sieci z domeną.
+- **Logowanie jednokrotne** do aplikacji i usług SaaS zarządzanych na platformie Azure. Użytkownicy nie zobaczą dodatkowych monitów o uwierzytelnienie podczas uzyskiwania dostępu do zasobów służbowych. Funkcji logowania jednokrotnego jest dostępna, nawet wtedy, gdy użytkownicy nie są połączone z siecią domeny.
 
 - **Roaming zgodny z wymaganiami przedsiębiorstwa** dla ustawień użytkowników na dołączonych urządzeniach. Użytkownicy nie muszą łączyć konta Microsoft (np. Hotmail), aby zobaczyć ustawienia na urządzeniach.
 
@@ -180,7 +180,7 @@ Ogólnie omówione typy urządzeń mają następujące zastosowania:
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać omówienie sposobu zarządzania urządzeniami w witrynie Azure Portal, zobacz [zarządzanie urządzeniami przy użyciu witryny Azure Portal](device-management-azure-portal.md)
 

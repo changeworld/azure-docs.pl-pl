@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3e9d7191af3a870f60b40311be03e0ef9d9bf7ad
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108107"
 ---
 # <a name="add-an-email-action"></a>Dodawanie akcji poczty e-mail
 
@@ -128,7 +128,7 @@ Poniższe kroki ułatwiają Zaloguj się i Ustawianie akcji poczty e-mail:
 
 1. Kliknij, aby zalogować się do programu Outlook. Nastąpi przekierowanie do witryny Azure portal:
 
-  ![Zaloguj się do programu Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
+   ![Zaloguj się do programu Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
 1. Kliknij przycisk **autoryzować**. Zostanie wyświetlony monit Zaloguj się. Konto, którego używasz do logowania powinien być adres e-mail aplikacja używa do wysyłania powiadomień e-mail:
 
@@ -136,7 +136,7 @@ Poniższe kroki ułatwiają Zaloguj się i Ustawianie akcji poczty e-mail:
 
 1. Jeśli zostały pomyślnie skonfigurowane powiadomienia e-mail, zostanie wyświetlony ten komunikat:
 
-  ![Pomyślne Outlook logowanie](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
+   ![Pomyślne Outlook logowanie](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
 ## Dostosuj wiadomości e-mail HTML <a name="htmledit"></a>
 

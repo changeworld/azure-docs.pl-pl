@@ -9,17 +9,17 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 5833571bc1c1ac2674723abf286437c3e5e0a5ae
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 6f96195197daf026cddee10785e0cadae8096031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111773"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Szybki start: Tworzenie klastra Apache Spark w usłudze HDInsight przy użyciu witryny Azure Portal
 Dowiedz się, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight, a następnie uruchamiać zapytania Spark SQL dla tabel programu Hive. Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. Aby uzyskać informacje na temat platformy Apache Spark w usłudze HDInsight, zobacz [Omówienie: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md).
 
-W tym przewodniku Szybki start użyjesz witryny Azure Portal do utworzenia klastra Spark w usłudze HDInsight. Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage Gen2, zobacz [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+W tym przewodniku Szybki start użyjesz witryny Azure Portal do utworzenia klastra Spark w usłudze HDInsight. Klaster używa usług Azure Storage Blob jako magazynu klastra. Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage Gen2, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 > [!IMPORTANT]  
 > Opłaty za klastry usługi HDInsight są naliczane proporcjonalnie za minutę, niezależnie od ich użycia. Pamiętaj o usunięciu klastra po zakończeniu korzystania z niego. Aby uzyskać więcej informacji, zobacz sekcję [Czyszczenie zasobów](#clean-up-resources) w tym artykule.
@@ -49,16 +49,16 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
     Wybierz przycisk **Dalej**, aby przejść do strony **Magazyn**.
 3. W obszarze **Magazyn** podaj następujące wartości:
 
-    - **Wybierz konto magazynu**: wybierz pozycję **Utwórz nowy**, a następnie podaj nazwę nowego konta magazynu. Nazwą konta magazynu używaną w tym przewodniku Szybki start jest **myspark20180403store**.
+   - **Wybierz konto magazynu**: wybierz pozycję **Utwórz nowy**, a następnie podaj nazwę nowego konta magazynu. Nazwą konta magazynu używaną w tym przewodniku Szybki start jest **myspark20180403store**.
 
-    ![Tworzenie konfiguracji magazynu klastra Spark w usłudze HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Tworzenie klastra Spark w usłudze HDInsight — konfiguracje magazynu")
+     ![Tworzenie konfiguracji magazynu klastra Spark w usłudze HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Tworzenie klastra Spark w usłudze HDInsight — konfiguracje magazynu")
 
-    > [!NOTE]  
-    > Na zrzucie ekranu jest widoczna pozycja **Wybierz istniejący**. Link przełącza między opcjami **Utwórz nowy** i **Wybierz istniejący**.
+     > [!NOTE]  
+     > Na zrzucie ekranu jest widoczna pozycja **Wybierz istniejący**. Link przełącza między opcjami **Utwórz nowy** i **Wybierz istniejący**.
 
-    **Domyślny kontener** ma domyślną nazwę.  Jeśli chcesz, możesz zmienić nazwę.
+     **Domyślny kontener** ma domyślną nazwę.  Jeśli chcesz, możesz zmienić nazwę.
 
-    Wybierz przycisk **Dalej**, aby przejść do strony **Podsumowanie**. 
+     Wybierz przycisk **Dalej**, aby przejść do strony **Podsumowanie**. 
 
 
 3. Na stronie **Podsumowanie** wybierz pozycję **Utwórz**. Utworzenie klastra trwa około 20 minut. Przed przejściem do następnej sesji należy utworzyć klaster.

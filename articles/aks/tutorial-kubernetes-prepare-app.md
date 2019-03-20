@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b529af1db6d72d87abc25eb37f2f1c39216a0ba4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724168"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002013"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: Przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
 
@@ -89,7 +89,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>Testowanie aplikacji w środowisku lokalnym
 
-Aby wyświetlić działającą aplikację, wprowadź adres http://localhost:8080 w lokalnej przeglądarce internetowej. Zostanie załadowana przykładowa aplikacja, jak pokazano w poniższym przykładzie:
+Aby wyświetlić działającą aplikację, wprowadź adres `http://localhost:8080` w lokalnej przeglądarce internetowej. Zostanie załadowana przykładowa aplikacja, jak pokazano w poniższym przykładzie:
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
@@ -105,7 +105,7 @@ docker-compose down
 
 Po usunięciu lokalnej aplikacji pozostanie obraz platformy Docker zawierający aplikację Azure Vote *azure-front-front*, która zostanie użyta w następnym samouczku.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przetestowano aplikację i obrazy kontenera utworzone dla aplikacji. W tym samouczku omówiono:
 

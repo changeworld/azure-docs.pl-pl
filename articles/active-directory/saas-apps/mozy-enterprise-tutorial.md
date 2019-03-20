@@ -4,194 +4,205 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 489b5e62-85c2-45c9-8766-326632d48114
 ms.service: active-directory
-ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/27/2017
+ms.topic: tutorial
+ms.date: 03/01/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9637212d97438d58a003ecf8d840ed887c7f5e35
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 55c83c91f4c183e7863c6a9fa129b5469e52afdd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198608"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Mozy Enterprise
 
 W tym samouczku dowiesz się, jak zintegrować Mozy przedsiębiorstwa za pomocą usługi Azure Active Directory (Azure AD).
-
 Integracja przedsiębiorstwa Mozy z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Mozy przedsiębiorstwa
-- Użytkowników, aby automatycznie uzyskać zalogowanych do przedsiębiorstwa Mozy (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Mozy przedsiębiorstwa.
+* Użytkownikom można automatycznie zalogowany do Mozy Enterprise (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD z usługą Mozy Enterprise, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Mozy Enterprise logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Mozy Enterprise logowanie jednokrotne włączone subskrypcji
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Mozy przedsiębiorstwa z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+* Obsługuje Mozy Enterprise **SP** jednokrotne logowanie inicjowane przez
 
 ## <a name="adding-mozy-enterprise-from-the-gallery"></a>Dodawanie Mozy przedsiębiorstwa z galerii
+
 Aby skonfigurować integrację Mozy przedsiębiorstwa w usłudze Azure AD, należy dodać Mozy przedsiębiorstwa z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Mozy przedsiębiorstwa z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Usługa Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **Mozy Enterprise**.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_search.png)
+4. W polu wyszukiwania wpisz **Mozy Enterprise**, wybierz opcję **Mozy Enterprise** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-1. W panelu wyników wybierz **Mozy Enterprise**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+     ![Mozy Enterprise na liście wyników](common/search-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji można skonfigurować, i test usługi Azure AD logowanie jednokrotne z usługą Mozy Enterprise oparte na użytkownika testu o nazwie "Britta Simon".
-
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w przedsiębiorstwie Mozy do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w przedsiębiorstwie Mozy musi zostać ustanowione.
-
-W przedsiębiorstwie Mozy przypisze się wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji skonfigurujesz i test usługi Azure AD logowanie jednokrotne z usługą Mozy Enterprise w oparciu o nazwie użytkownika testowego **Britta Simon**.
+Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w przedsiębiorstwie Mozy musi zostać ustanowione.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z usługą Mozy Enterprise, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Mozy Enterprise](#creating-a-mozy-enterprise-test-user)**  — aby odpowiednikiem Britta Simon w przedsiębiorstwie Mozy, które jest połączone z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie Mozy logowania jednokrotnego dla firm](#configure-mozy-enterprise-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego Mozy Enterprise](#create-mozy-enterprise-test-user)**  — aby odpowiednikiem Britta Simon w przedsiębiorstwie Mozy, które jest połączone z usługi Azure AD reprezentacja użytkownika.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji przedsiębiorstwa Mozy.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługi Azure AD logowanie jednokrotne z usługą Mozy Enterprise, wykonaj następujące czynności:**
+Aby skonfigurować usługi Azure AD logowanie jednokrotne z usługą Mozy Enterprise, wykonaj następujące czynności:
 
-1. W witrynie Azure portal na **Mozy Enterprise** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **Mozy Enterprise** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **Mozy Enterprise domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Mozy Enterprise domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<tenantname>.Mozyenterprise.com`
 
-    > [!NOTE] 
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Mozy Enterprise Client](http://support.mozy.com/) aby zyskać tę wartość.
+    > [!NOTE]
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Mozy Enterprise Client](http://support.mozy.com/) można uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_certificate.png) 
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. Kliknij przycisk **Save** (Zapisz).
+6. Na **Konfigurowanie Mozy Enterprise** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/mozy-enterprise-tutorial/tutorial_general_400.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Na **konfiguracja dla przedsiębiorstw Mozy** , kliknij przycisk **skonfigurować Mozy Enterprise** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
+    a. Adres URL logowania
 
-    ![Konfigurowanie logowania jednokrotnego](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_configure.png) 
+    b. Identyfikator usługi Azure AD
+
+    c. Adres URL wylogowywania
+
+### <a name="configure-mozy-enterprise-single-sign-on"></a>Konfigurowanie Mozy logowania jednokrotnego dla firm
 
 1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy Mozy przedsiębiorstwa, jako administrator.
 
-1. W **konfiguracji** kliknij **zasady uwierzytelniania**.
+2. W **konfiguracji** kliknij **zasady uwierzytelniania**.
    
-   ![Zasady uwierzytelniania](./media/mozy-enterprise-tutorial/ic777314.png "zasady uwierzytelniania")
+    ![Zasady uwierzytelniania](./media/mozy-enterprise-tutorial/ic777314.png "zasady uwierzytelniania")
 
-1. Na **zasady uwierzytelniania** sekcji, wykonaj następujące czynności:
+3. Na **zasady uwierzytelniania** sekcji, wykonaj następujące czynności:
    
-   ![Zasady uwierzytelniania](./media/mozy-enterprise-tutorial/ic777315.png "zasady uwierzytelniania")
+    ![Zasady uwierzytelniania](./media/mozy-enterprise-tutorial/ic777315.png "zasady uwierzytelniania")
    
-   a. Wybierz **usługi katalogowej** jako **dostawcy**.
+    a. Wybierz **usługi katalogowej** jako **dostawcy**.
    
-   b. Wybierz **użyć wypychania LDAP**.
+    b. Wybierz **użyć wypychania LDAP**.
    
-   c. Kliknij kartę **SAML Authentication** (Uwierzytelnianie SAML).
+    c. Kliknij kartę **SAML Authentication** (Uwierzytelnianie SAML).
    
-   d. Wklej **SAML pojedynczego logowania jednokrotnego adres URL usługi**, który skopiowano z witryny Azure portal do **adres URL uwierzytelniania** pole tekstowe.
+    d. Wklej **adres URL logowania**, który skopiowano z witryny Azure portal do **adres URL uwierzytelniania** pola tekstowego.
    
-   e. Wklej **identyfikator jednostki SAML**, skopiowanej w witrynie Azure portal do **punktem końcowym SAML** pola tekstowego.
+    e. Wklej **usługi Azure AD identyfikator**, który skopiowano z witryny Azure portal do **punktem końcowym SAML** pole tekstowe.
    
-   f. Otwórz pobrany certyfikat zakodowany base-64 w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej cały certyfikat do **certyfikat SAML** pola tekstowego.
+    f. Otwórz pobrany certyfikat zakodowany base-64 w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej cały certyfikat do **certyfikat SAML** pola tekstowego.
    
-   g. Wybierz **włączyć logowanie Jednokrotne dla grupy Administratorzy logowanie się przy użyciu swoich poświadczeń sieciowych**.
+    g. Wybierz **włączyć logowanie Jednokrotne dla grupy Administratorzy logowanie się przy użyciu swoich poświadczeń sieciowych**.
    
-   h. Kliknij przycisk **Save Changes** (Zapisz zmiany).
+    h. Kliknij przycisk **Save Changes** (Zapisz zmiany).
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/mozy-enterprise-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/mozy-enterprise-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/mozy-enterprise-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/mozy-enterprise-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-mozy-enterprise-test-user"></a>Tworzenie użytkownika testowego Mozy przedsiębiorstwa
+
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Mozy przedsiębiorstwa.
+
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Mozy Enterprise**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz **Mozy Enterprise**.
+
+    ![Link Mozy przedsiębiorstwa, na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-mozy-enterprise-test-user"></a>Tworzenie użytkownika testowego Mozy przedsiębiorstwa
 
 Aby umożliwić użytkownikom usługi Azure AD zalogować się do przedsiębiorstwa Mozy, musi być obsługiwana w przedsiębiorstwie Mozy. W przypadku przedsiębiorstw Mozy aprowizacji to zadanie ręczne.
 
@@ -202,85 +213,43 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do przedsiębiors
 
 1. Zaloguj się do Twojej **Mozy Enterprise** dzierżawy.
 
-1. Kliknij przycisk **użytkowników**, a następnie kliknij przycisk **Dodaj nowego użytkownika**.
+2. Kliknij przycisk **użytkowników**, a następnie kliknij przycisk **Dodaj nowego użytkownika**.
    
-   ![Użytkownicy](./media/mozy-enterprise-tutorial/ic777317.png "Użytkownicy")
+    ![Użytkownicy](./media/mozy-enterprise-tutorial/ic777317.png "Użytkownicy")
    
-   >[!NOTE]
-   >**Dodaj nowego użytkownika** tylko wtedy, gdy tylko jest wyświetlana opcja **Mozy** jest wybrany jako dostawcę, w obszarze **zasady uwierzytelniania**. Jeśli skonfigurowano uwierzytelnianie SAML, następnie użytkownicy są automatycznie dodawane podczas ich pierwszego logowania za pomocą logowania jednokrotnego na.
+    >[!NOTE]
+    >**Dodaj nowego użytkownika** tylko wtedy, gdy tylko jest wyświetlana opcja **Mozy** jest wybrany jako dostawcę, w obszarze **zasady uwierzytelniania**. Jeśli skonfigurowano uwierzytelnianie SAML, następnie użytkownicy są automatycznie dodawane podczas ich pierwszego logowania za pomocą logowania jednokrotnego na.
     
-1. W oknie dialogowym Nowy użytkownik należy wykonać następujące czynności:
+3. W oknie dialogowym Nowy użytkownik należy wykonać następujące czynności:
    
-   ![Dodawanie użytkowników](./media/mozy-enterprise-tutorial/ic777318.png "Dodawanie użytkowników")
+    ![Dodawanie użytkowników](./media/mozy-enterprise-tutorial/ic777318.png "Dodawanie użytkowników")
    
-   a. Z **wybierz grupę** , wybierz grupę na liście.
+    a. Z **wybierz grupę** , wybierz grupę na liście.
    
-   b. Z **jakiego rodzaju użytkownika** , wybierz typ na liście.
+    b. Z **jakiego rodzaju użytkownika** , wybierz typ na liście.
    
-   c. W **Username** polu tekstowym wpisz nazwę użytkownika usługi Azure AD.
+    c. W **Username** polu tekstowym wpisz nazwę użytkownika usługi Azure AD.
    
-   d. W **E-mail** pole tekstowe, wpisz adres e-mail użytkownika usługi Azure AD.
+    d. W **E-mail** pole tekstowe, wpisz adres e-mail użytkownika usługi Azure AD.
    
-   e. Wybierz **Wyślij wiadomość e-mail z instrukcją użytkownika**.
+    e. Wybierz **Wyślij wiadomość e-mail z instrukcją użytkownika**.
    
-   f. Kliknij przycisk **Dodaj użytkowników**.
+    f. Kliknij przycisk **Dodaj użytkowników**.
 
      >[!NOTE]
      > Po utworzeniu użytkownika zostanie wysłana wiadomość e-mail do użytkownika usługi Azure AD, która zawiera link do potwierdzenia konta, zanim stanie się aktywny.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Mozy przedsiębiorstwa.
-
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon Mozy przedsiębiorstwa, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **Mozy Enterprise**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/mozy-enterprise-tutorial/tutorial_mozyenterprise_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Mozy przedsiębiorstwa, w panelu dostępu, powinna pojawić się aplikacja dla przedsiębiorstw Mozy strony logowania.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Mozy przedsiębiorstwa, w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Mozy Enterprise, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/mozy-enterprise-tutorial/tutorial_general_01.png
-[2]: ./media/mozy-enterprise-tutorial/tutorial_general_02.png
-[3]: ./media/mozy-enterprise-tutorial/tutorial_general_03.png
-[4]: ./media/mozy-enterprise-tutorial/tutorial_general_04.png
-
-[100]: ./media/mozy-enterprise-tutorial/tutorial_general_100.png
-
-[200]: ./media/mozy-enterprise-tutorial/tutorial_general_200.png
-[201]: ./media/mozy-enterprise-tutorial/tutorial_general_201.png
-[202]: ./media/mozy-enterprise-tutorial/tutorial_general_202.png
-[203]: ./media/mozy-enterprise-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

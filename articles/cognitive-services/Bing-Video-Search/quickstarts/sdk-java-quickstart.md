@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: ff214a545023364b09a0e757462a1b3f3d963d44
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: d421abf0a3cc402cf8d040363dfe79b07b66bf95
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885025"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105713"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Szybki start: Wyszukiwanie wideo za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Java
 
@@ -41,7 +41,7 @@ Zainstaluj zależności zestawu SDK wyszukiwania wideo Bing przy użyciu oprogra
   </dependencies> 
 ```
 
-## <a name="create-and-initalize-a-project"></a>Tworzenie i inicjowanie projektu
+## <a name="create-and-initialize-a-project"></a>Tworzenie i inicjowanie projektu
 
 
 Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i zaimportuj poniższe biblioteki.
@@ -61,7 +61,7 @@ Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i z
 
 ## <a name="create-a-search-client"></a>Tworzenie klienta wyszukiwania
 
-2. Zaimplementuj klienta `VideoSearchAPIImpl`, który wymaga punktu końcowego interfejsu API i wystąpienia klasy `ServiceClientCredentials`.
+1. Zaimplementuj klienta `VideoSearchAPIImpl`, który wymaga punktu końcowego interfejsu API i wystąpienia klasy `ServiceClientCredentials`.
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -115,7 +115,7 @@ Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i z
         //...
         ```
 
-## <a name="send-a-search-request-and-recieve-the-response"></a>Wysyłanie żądania wyszukiwania i odbieranie odpowiedzi 
+## <a name="send-a-search-request-and-receive-the-response"></a>Wyślij żądanie wyszukiwania i otrzymywać odpowiedzi 
 
 1. Utwórz funkcję o nazwie `VideoSearch()`, która przyjmujące Twój klucz subskrypcji w postaci ciągu. Utwórz wystąpienie utworzonego wcześniej klienta wyszukiwania.
     
@@ -156,12 +156,12 @@ Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i z
     }
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie internetowej aplikacji jednostronicowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
 * [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)
 * [Cognitive services .NET SDK samples (Przykłady zestawów SKD .NET usług Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

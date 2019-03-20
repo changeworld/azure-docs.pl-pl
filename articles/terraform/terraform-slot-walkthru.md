@@ -2,19 +2,19 @@
 title: Program Terraform i miejsca wdrożenia dostawcy platformy Azure
 description: Samouczek dotyczący korzystania z programu Terraform w połączeniu z miejscami wdrożenia dostawcy platformy Azure
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, maszyna wirtualna, Azure, miejsca wdrożenia
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: 1564991ecfe29b1977837c2fdff4be7b3a3e1797
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074822"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992239"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Program Terraform służy do aprowizowania infrastruktury za pomocą miejsc wdrożenia platformy Azure
 
@@ -26,11 +26,11 @@ W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miej
 
 - **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Konto w serwisie GitHub**: Konto w serwisie [GitHub](http://www.github.com) jest potrzebne do rozwidlenia testowego repozytorium GitHub i używania go.
+- **Konto w serwisie GitHub**: Konto w serwisie [GitHub](https://www.github.com) jest potrzebne do rozwidlenia testowego repozytorium GitHub i używania go.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Tworzenie i stosowanie planu programu Terraform
 
-1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
 1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 

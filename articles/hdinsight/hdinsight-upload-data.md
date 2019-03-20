@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
-ms.openlocfilehash: 513cc1f0155c5e5499d0bf076d21aff46756d769
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 820bb22fee75e5c1159ba90f23b478339f6345b5
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312178"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201929"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Przekazywanie danych na potrzeby zadań usługi Apache Hadoop w HDInsight
 
@@ -37,7 +37,7 @@ Przed rozpoczęciem należy uwzględnić następujące wymagania:
 ## <a name="utilities"></a>Usługi użyteczności publicznej
 Firma Microsoft udostępnia następujące narzędzia do pracy z usługą Azure Storage:
 
-| Narzędzie | Linux | OS X | Windows |
+| Tool | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Interfejs wiersza polecenia platformy Azure](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
@@ -53,10 +53,7 @@ Firma Microsoft udostępnia następujące narzędzia do pracy z usługą Azure S
 ## <a id="commandline"></a>Wiersza polecenia usługi Hadoop
 Wiersza polecenia usługi Hadoop przydaje się tylko do przechowywania danych do obiektu blob magazynu platformy Azure, gdy dane znajdują się już na głównym węzłem klastra.
 
-Aby można było używać poleceń platformy Hadoop, musisz najpierw połączyć do węzła głównego przy użyciu jednej z następujących metod:
-
-* **HDInsight oparte na Windows**: [Nawiązywanie połączenia przy użyciu pulpitu zdalnego](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **HDInsight opartych na systemie Linux**: Nawiązywanie połączenia przy użyciu [SSH lub programu PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md).
+Aby można było używać poleceń platformy Hadoop, musisz najpierw połączyć do węzła głównego przy użyciu [SSH lub programu PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Po nawiązaniu połączenia można użyć następującej składni, aby przekazać plik do magazynu.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bba14e37e811c941c9709eef6b6d8ffd8322643
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3772f42b1216cfb26d66b1d68fcb9e59fd8652d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167137"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107546"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest funkcja zapisywania zwrotnego haseł?
 
@@ -96,11 +96,11 @@ Skrót federacyjnego lub hasło są synchronizowane użytkownik próbuje Resetow
    >
 
 1. Jeśli hasło ustawione operacja kończy się niepowodzeniem, błąd monituje użytkownika, aby spróbować ponownie. Operacja może zakończyć się niepowodzeniem, ponieważ:
-   * Usługa nie działał.
-   * Hasło, które są wybrane nie spełniło zasad organizacji.
-   * Nie można odnaleźć użytkownika w lokalnej usłudze Active Directory.
+    * Usługa nie działał.
+    * Hasło, które są wybrane nie spełniło zasad organizacji.
+    * Nie można odnaleźć użytkownika w lokalnej usłudze Active Directory.
 
-    Komunikaty o błędach zawierają wskazówki dla użytkowników, dzięki czemu mogą próbować rozwiązać bez interwencji administratora.
+      Komunikaty o błędach zawierają wskazówki dla użytkowników, dzięki czemu mogą próbować rozwiązać bez interwencji administratora.
 
 ## <a name="password-writeback-security"></a>Zabezpieczeń funkcji zapisywania zwrotnego haseł
 

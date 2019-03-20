@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc6d1d53fd292a936c833450fee3af91671eec86
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171177"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102404"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Samouczek: Federowanie pojedynczego środowiska lasu usługi AD z chmurą
 
@@ -83,7 +83,7 @@ Aby zakończyć tworzenie maszyny wirtualnej, należy zakończyć instalację sy
 
 1. Menedżer funkcji Hyper-V: kliknij dwukrotnie maszynę wirtualną
 2. Kliknij przycisk Uruchom.
-3.  Zostanie wyświetlony monit „Naciśnij dowolny klawisz, aby dokonać rozruchu z dysku CD lub DVD”. Zrób to.
+3. Zostanie wyświetlony monit „Naciśnij dowolny klawisz, aby dokonać rozruchu z dysku CD lub DVD”. Zrób to.
 4. Na ekranie uruchamiania systemu Windows Server wybierz język i kliknij przycisk **Dalej**.
 5. Kliknij pozycję **Zainstaluj teraz**.
 6. Wprowadź klucz licencji i kliknij przycisk **Dalej**.
@@ -281,9 +281,9 @@ Teraz potwierdzimy, że użytkownicy znajdujący się w katalogu lokalnym zostal
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Testowanie logowania się przy użyciu jednego z kont użytkowników
 
-1.  Przejdź na stronę [https://myapps.microsoft.com](httpss://myapps.microsoft.com)
+1. Przejdź na stronę [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Zaloguj się przy użyciu konta użytkownika utworzonego w nowej dzierżawie.  Należy zalogować się przy użyciu następującego formatu: (user@domain.onmicrosoft.com). Użyj tego samego hasła, za pomocą którego użytkownik loguje się lokalnie.
-![Weryfikacja](media/tutorial-password-hash-sync/verify1.png)
+   ![Weryfikacja](media/tutorial-password-hash-sync/verify1.png)
 
 W ten sposób pomyślnie skonfigurowano środowisko tożsamości hybrydowej, które można wykorzystać do testowania lub do bliższego zapoznania się z możliwościami platformy Azure.
 

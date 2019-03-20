@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c94c564434df0e9c48facedba1d2232f9510662e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cc7b935833a6b212bb008be86b26c613d8817133
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182612"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -87,7 +87,7 @@ Dowiedz się więcej informacji na temat opcji [sposobu uzyskania usługi Azure 
 
 W niektórych przypadkach tak.
 
-Uwierzytelnianie wieloskładnikowe dla administratorów systemu Azure oferuje podzestaw funkcji usługi Azure MFA bez opłat, aby uzyskać dostęp do usług online firmy Microsoft, łącznie z portali administratora platformy Azure i usługi Office 365. Ta oferta dotyczy tylko administratorzy globalni w wystąpieniach usługi Azure Active Directory, które nie mają pełną wersję usługi Azure MFA za pomocą licencji usługi MFA, pakietem lub dostawcy na podstawie użycia autonomicznego. Jeśli administratorom korzystać z bezpłatnej wersji, a następnie zakupić pełną wersję usługi Azure MFA, następnie wszystkich administratorów globalnych zostaną podniesione do wersji płatnej automatycznie.
+Uwierzytelnianie wieloskładnikowe dla administratorów systemu Azure oferuje podzestaw funkcji usługi Azure MFA bez opłat, aby uzyskać dostęp do usług online firmy Microsoft, w tym [witryny Azure portal](https://portal.azure.com) i [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com). Ta oferta dotyczy tylko administratorzy globalni w wystąpieniach usługi Azure Active Directory, które nie mają pełną wersję usługi Azure MFA za pomocą licencji usługi MFA, pakietem lub dostawcy na podstawie użycia autonomicznego. Jeśli administratorom korzystać z bezpłatnej wersji, a następnie zakupić pełną wersję usługi Azure MFA, następnie wszystkich administratorów globalnych zostaną podniesione do wersji płatnej automatycznie.
 
 Uwierzytelnianie wieloskładnikowe dla użytkowników usługi Office 365 oferuje podzestaw funkcji usługi Azure MFA bez opłat, aby uzyskać dostęp do usług Office 365, w tym usługi Exchange Online i SharePoint Online. Ta oferta ma zastosowanie do użytkowników, którzy mają licencję usługi Office 365 przypisane, gdy tego odpowiednie wystąpienia usługi Azure Active Directory nie ma pełną wersję usługi Azure MFA za pomocą licencji usługi MFA, pakietem lub dostawcy na podstawie użycia autonomicznego.
 

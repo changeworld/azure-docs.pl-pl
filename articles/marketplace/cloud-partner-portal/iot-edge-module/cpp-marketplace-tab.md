@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c119869c47547fd5d91f6ee91fcd772ea5941f46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431427"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010957"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Kartę Marketplace moduł usługi IoT Edge
 
 
-**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ten długich fragmentów jest podzielony na cztery sekcje: **Przegląd**, **marketingu artefaktów**, **prowadzić zarządzania**, i **prawne**.
+**Marketplace** karcie **nowa oferta** strony umożliwia udostępnianie potencjalnych klientów. marketingu, sprzedaży i prawne informacji i umowy i zarządzanie potencjalnymi klientami wygenerowany na podstawie Portal Marketplace. Ta długich fragmentów jest podzielony na cztery sekcje: **Omówienie**, **marketingowych artefaktów**, **Zarządzanie potencjalnymi**, i **prawne**.
 
 ## <a name="overview"></a>Przegląd
 
@@ -39,7 +39,7 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól.
 | **Tytuł**                 | Tytuł oferty. Będzie ona wyświetlana ważnej w portalu marketplace.  Składać z maksymalnie 50 znaków. <!--ADD PICTURE IN ACTION-->|
 | **Podsumowanie**               | Krótkie podsumowanie oferty. Składać z maksymalnie 100 znaków. <!--ADD PICTURE IN ACTION-->|
 | **Długie podsumowanie**          | Już podsumowanie ofertę (chociaż może być taka sama jak **podsumowania**).  Maksymalna długość 256 znaków. <!--ADD PICTURE IN ACTION-->|
-| **Opis**           | Opis oferty.  Maksymalną długość znaków 3000 obsługuje prosty format HTML.<br/> Musi on zawierać *minimalne wymagania sprzętowe* akapitu na dole. Na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> x64 systemu Linux i OS arm32, 1 GB pamięci RAM, 500 Mb pamięci masowej</p>
+| **Opis**           | Opis oferty.  Maksymalną długość znaków 3000 obsługuje prosty format HTML.<br/> Musi on zawierać *minimalne wymagania sprzętowe* akapitu na dole. Na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> X64 systemu Linux i OS arm32, 1 GB pamięci RAM, 500 Mb pamięci masowej</p>
 | **Identyfikator marketingu**  | Unikatowy adres URL, aby skojarzyć tę ofertę, obejmują zazwyczaj organizacji i nazwę rozwiązania, maksymalnej długości 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Identyfikatory subskrypcji (wersja zapoznawcza)** | Dodaj jeden do 100 identyfikatorów subskrypcji podglądy. Te subskrypcje biały na liście mają dostęp do tej oferty, po opublikowaniu, zanim usługa zostanie wprowadzona na żywo. |
 | **Przydatne linki**          | Wielokrotnego wyboru biznesowe i techniczne kategorie, które oferują może być najlepiej skojarzony.  Maksymalnie 10 dozwolone. Upewnij się dodać co najmniej jedno łącze do dokumentacji i jedno połączenie zgodne z urządzeniem usługi IoT Edge [Azure IoT — wykaz urządzeń](https://catalog.azureiotsolutions.com/). |
@@ -78,7 +78,7 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól.
 
 ## <a name="marketing-artifacts"></a>Marketing artefaktów
 
-Ta sekcja zawiera następujące podsekcje: **logo**, **zrzut ekranu**, i **wideo**. 
+Ta sekcja zawiera następujące podsekcje: **Logo**, **zrzut ekranu**, i **wideo**. 
 
 >[!Note]
 >Logo są jedynymi wymagane marketingowych artefaktów, jednak wszystkie są zdecydowanie zaleca się najlepsze odwołania klienta.
@@ -87,7 +87,7 @@ Ta sekcja zawiera następujące podsekcje: **logo**, **zrzut ekranu**, i **wideo
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |
-| *Logo*  | Zobacz, że przechwytuje poprzedni ekran, aby zobaczyć, jak i gdzie będą używane z logo.  |
+| *Logos*  | Zobacz, że przechwytuje poprzedni ekran, aby zobaczyć, jak i gdzie będą używane z logo.  |
 | **Małe**                 | format PNG 40 x 40 pikseli                                                     |
 | **Średni**                | format PNG 90 x 90 pikseli                                                     |
 | **Duże**                 | format PNG 115 x 115 pikseli                                                  |
@@ -104,7 +104,7 @@ Ta sekcja zawiera następujące podsekcje: **logo**, **zrzut ekranu**, i **wideo
 
 ### <a name="logo-guidelines"></a>Wytyczne dotyczące logo
 
-<!-- It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 Wszystkie logo, które są przekazywane do portalu Cloud Partner powinien postępuj zgodnie z wytycznymi:
@@ -160,7 +160,7 @@ Po pomyślnym opublikowaniu oferty, zweryfikowaniu połączenia potencjalnych kl
 
 ## <a name="legal"></a>Informacje prawne
 
-Ta sekcja umożliwia dostarczanie dwa dokumenty prawne, które są wymagane dla każdej oferty: zasady ochrony prywatności i warunki użytkowania.
+Ta sekcja umożliwia dostarczanie dwa dokumenty prawne, które są wymagane dla każdej oferty: Zasady ochrony prywatności i warunki użytkowania.
 
 |  **Pole**                |     **Opis**                                                          |
 |  ---------                |     ---------------                                                          |

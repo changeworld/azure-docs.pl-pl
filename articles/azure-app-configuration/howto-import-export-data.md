@@ -12,61 +12,61 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 851a8705b3cfa9c88e369af7b961a653dee8fd7a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 846472e00bc048de906ee8e14f6de38e366f3571
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959854"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225233"
 ---
 # <a name="import-or-export-configuration-data"></a>Importowanie lub eksportowanie danych konfiguracji
 
-Danych platformy Azure obsługuje konfigurację aplikacji, importowanie i eksportowanie operacji. Umożliwiają one pracować z danymi konfiguracji w trybie zbiorczym, zgodnie z danych programu exchange między konfiguracji aplikacji oraz przechowywanie i kodu projektu. Na przykład możesz skonfigurować Magazyn konfiguracji aplikacji do testowania i drugi dla środowiska produkcyjnego i kopiowania ustawień aplikacji między nimi przy użyciu pliku tak, aby nie trzeba wprowadzić dane dwa razy.
+Danych platformy Azure obsługuje konfigurację aplikacji, importowanie i eksportowanie operacji. Zastosowanie tych operacji do pracy z danymi konfiguracji zbiorcze i wymiany danych między magazynu konfiguracji aplikacji i kod projektu. Na przykład można skonfigurować Magazyn konfiguracji aplikacji do testowania i drugi dla środowiska produkcyjnego. Możesz następnie skopiować ustawienia aplikacji między nimi przy użyciu pliku tak, aby nie trzeba wprowadzać dane dwa razy.
 
 Ten artykuł zawiera wskazówki do importowania i eksportowania danych za pomocą konfiguracji aplikacji.
 
 ## <a name="import-data"></a>Importowanie danych
 
-Import powoduje przeniesienie magazynu danych, w konfiguracji aplikacji z istniejącym źródłem, zamiast ręcznego wprowadzania ich konfiguracji. Funkcja importowania służy do migrowania danych do magazynu konfiguracji aplikacji lub zagregowanych danych z wielu źródeł. Konfiguracja aplikacji obsługuje importowania z pliku JSON, YAML lub właściwości.
+Import powoduje przeniesienie konfiguracji magazynu danych, w konfiguracji aplikacji z istniejącym źródłem, a nie ręcznie wprowadzić informacje. Aby przeprowadzić migrację danych do magazynu konfiguracji aplikacji lub zagregowanych danych z wielu źródeł, należy użyć funkcji importowania. Konfiguracja aplikacji obsługuje importowania z pliku JSON, YAML lub właściwości.
 
-Możesz zaimportować dane przy użyciu [witryny Azure portal](https://aka.ms/azconfig/portal) lub [wiersza polecenia platformy Azure](./scripts/cli-import.md). W witrynie Azure portal wykonaj następujące kroki:
+Importowanie danych przy użyciu [witryny Azure portal](https://aka.ms/azconfig/portal) lub [wiersza polecenia platformy Azure](./scripts/cli-import.md). W witrynie Azure portal wykonaj następujące kroki:
 
-1. Przejdź do sklepu z aplikacjami konfiguracji, a następnie kliknij przycisk **Import/Export**.
+1. Przejdź do sklepu z aplikacjami konfiguracji, a następnie wybierz pozycję **Import/Export**.
 
-2. W **importu** kartę, wybrać **źródła usługi** i **pliku konfiguracyjnego**.
+2. Na **importu** zaznacz **źródła usługi** > **pliku konfiguracyjnego**.
 
-3. Wybierz **dla języka** i **typu pliku**.
+3. Wybierz **dla języka** > **typu pliku**.
 
-4. Kliknij pozycję **folderu** ikonę i przejdź do pliku, który chcesz zaimportować.
+4. Wybierz **folderu** ikonę i przejdź do pliku, który chcesz zaimportować.
 
     ![Plik importu](./media/import-file.png)
 
-5. Wybierz **Separator** i opcjonalnie wprowadź **prefiksu** do użycia dla importowanych nazwy kluczy.
+5. Wybierz **Separator**i opcjonalnie wprowadź **prefiksu** do użycia dla importowanych nazwy kluczy.
 
-6. Opcjonalnie wybierz **etykiety**.
+6. Opcjonalnie można zaznaczyć **etykiety**.
 
-7. Kliknij przycisk **Zastosuj** do ukończenia importowania.
+7. Wybierz **Zastosuj** zakończenie importowania.
 
-    ![Plik importu jest pełny](./media/import-file-complete.png)
+    ![Plik importu jest gotowy](./media/import-file-complete.png)
 
 ## <a name="export-data"></a>Eksportowanie danych
 
-Eksportowanie zapisuje dane konfiguracji przechowywane w konfiguracji aplikacji do innego miejsca docelowego. Funkcja eksportu można użyć na przykład, aby zapisać dane w magazynie konfiguracji aplikacji do pliku, która zostanie osadzona w kodzie aplikacji podczas wdrażania.
+Eksportowanie zapisuje dane konfiguracji przechowywane w konfiguracji aplikacji do innego miejsca docelowego. Funkcja eksportu, na przykład, aby zapisać dane w magazynie konfiguracji aplikacji do pliku, który jest osadzony w kodzie aplikacji podczas wdrażania.
 
-Możesz wyeksportować dane za pomocą [witryny Azure portal](https://aka.ms/azconfig/portal) lub [wiersza polecenia platformy Azure](./scripts/cli-export.md). W witrynie Azure portal wykonaj następujące kroki:
+Eksportowanie danych przy użyciu [witryny Azure portal](https://aka.ms/azconfig/portal) lub [wiersza polecenia platformy Azure](./scripts/cli-export.md). W witrynie Azure portal wykonaj następujące kroki:
 
-1. Przejdź do sklepu z aplikacjami konfiguracji, a następnie kliknij przycisk **Import/Export**.
+1. Przejdź do sklepu z aplikacjami konfiguracji, a następnie wybierz pozycję **Import/Export**.
 
-2. W **wyeksportować** kartę, wybrać **obiektem docelowym usługi** i **pliku konfiguracyjnego**.
+2. Na **wyeksportować** zaznacz **obiektem docelowym usługi** > **pliku konfiguracyjnego**.
 
-3. Opcjonalnie wprowadź **prefiksu** i wybierz polecenie **etykiety** i punktu w czasie dla kluczy do wyeksportowania.
+3. Opcjonalnie wprowadź **prefiksu** i wybierz **etykiety** i punktu w czasie dla kluczy do wyeksportowania.
 
-4. Wybierz **typu pliku** i **Separator**.
+4. Wybierz **typu pliku** > **Separator**.
 
-5. Kliknij przycisk **Zastosuj** aby zakończyć eksportowanie.
+5. Wybierz **Zastosuj** do zakończenia eksportowania.
 
-    ![Plik eksportu jest pełny](./media/export-file-complete.png)
+    ![Plik eksportu jest gotowy](./media/export-file-complete.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Szybki start: Tworzenie aplikacji sieci web ASP.NET](./quickstart-aspnet-core-app.md)  
+* [Szybki start: tworzenie aplikacji internetowej platformy ASP.NET](./quickstart-aspnet-core-app.md)  

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244787"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088710"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Wdrażanie rozwiązania StorSimple Virtual Array — przygotowanie witryny Azure portal
 
@@ -155,15 +155,15 @@ Wykonaj poniższe kroki w [witryny Azure portal](https://ms.portal.azure.com/) n
 3. Kliknij pozycję **Add** (Dodaj).
 4. W **Dodaj konto magazynu** blok, wykonaj następujące czynności:
    
-    1. Aby uzyskać **subskrypcji**, wybierz opcję **bieżącego**.
+   1. Aby uzyskać **subskrypcji**, wybierz opcję **bieżącego**.
    
-    2. Podaj nazwę konta usługi Azure storage.
+   2. Podaj nazwę konta usługi Azure storage.
    
-    3. Wybierz **Włącz** tworzy bezpieczny kanał komunikacji sieciowej między chmurą a urządzeniem StorSimple. Wybierz **wyłączyć** tylko wtedy, gdy pracujesz w chmurze prywatnej.
+   3. Wybierz **Włącz** tworzy bezpieczny kanał komunikacji sieciowej między chmurą a urządzeniem StorSimple. Wybierz **wyłączyć** tylko wtedy, gdy pracujesz w chmurze prywatnej.
    
-    4. Kliknij pozycję **Add** (Dodaj). Otrzymasz powiadomienie po pomyślnym utworzeniu konta magazynu.<br></br>
+   4. Kliknij pozycję **Add** (Dodaj). Otrzymasz powiadomienie po pomyślnym utworzeniu konta magazynu.<br></br>
    
-     ![Dodawanie istniejących poświadczeń konta magazynu](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![Dodawanie istniejących poświadczeń konta magazynu](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>Następny krok
 

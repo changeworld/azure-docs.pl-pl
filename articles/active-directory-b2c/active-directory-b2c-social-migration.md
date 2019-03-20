@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d6f857e926343c4c3c26d746134bbb9d94754c12
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866015"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089356"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrowanie użytkowników z tożsamościami społecznościowymi
 Planując migrację dostawcy tożsamości do usługi Azure AD B2C, konieczne może być migrowanie użytkowników wraz z tożsamościami społecznościowymi. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont tożsamości społecznościowych, takich jak: Kont usługi Facebook, LinkedIn i firmy Microsoft oraz Google do usługi Azure AD B2C. Ten artykuł dotyczy również do tożsamości federacyjnej, jednak te migracje są mniej typowe.
@@ -32,14 +32,14 @@ Ten artykuł jest kontynuacją artykuł dotyczący migracji użytkowników i kon
 * **Łączenie konta lokalnego za pomocą tożsamości dla sieci społecznościowej**. Jak wspomniano wcześniej, nazwy logowania w lokalnych kont i tożsamości konta w sieci społecznościowej są przechowywane w różnych atrybutów. `signInNames` jest używana do konta lokalnego, podczas gdy `userIdentities` dla konta w sieci społecznościowej. Jedno konto usługi Azure AD B2C, może być tylko konta lokalnego, tylko konta społecznościowego lub Połącz konto lokalne z tożsamości społecznościowych w rekordzie użytkownika. To zachowanie umożliwia zarządzanie jednego konta, gdy użytkownik może zalogować się przy użyciu credential(s) konta lokalnego lub wraz z tożsamościami społecznościowymi.
 
 * `UserIdentity` Typ — zawiera informacje o tożsamości użytkownika konta w sieci społecznościowej w dzierżawie usługi Azure AD B2C:
-    * `issuer` Ciąg reprezentujący dostawcę tożsamości, która wydała identyfikator użytkownika, takie jak facebook.com.
-    * `issuerUserId` Identyfikator unikatowy użytkownika używanej przez dostawcę tożsamości dla sieci społecznościowej w formacie base64.
+  * `issuer` Ciąg reprezentujący dostawcę tożsamości, która wydała identyfikator użytkownika, takie jak facebook.com.
+  * `issuerUserId` Identyfikator unikatowy użytkownika używanej przez dostawcę tożsamości dla sieci społecznościowej w formacie base64.
 
     ```JSON
     "userIdentities": [{
-            "issuer": "Facebook.com",
-            "issuerUserId": "MTIzNDU2Nzg5MA=="
-        }
+          "issuer": "Facebook.com",
+          "issuerUserId": "MTIzNDU2Nzg5MA=="
+      }
     ]
     ```
 

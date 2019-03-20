@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0f249cfc604a31a29f6b2e3c0380e6591ec8b4e6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3b778caed10981923d424745d820bfe10c1ce553
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903610"
 documentType: LandingData
 title: Dokumentacja usługi Azure Media Services
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09-24-2018
+  ms.date: 03/11/2019
   ms.author: juliako
 abstract:
   description: Azure Media Services (AMS) to oparta na chmurze platforma umożliwiająca tworzenie rozwiązań pozwalających na realizowanie kodowania wideo w jakości HD i przesyłania strumieniowego wideo w jakości telewizyjnej docierającego do odbiorców na najpopularniejszych urządzeniach. Usługa AMS w wersji 3 umożliwia też wyodrębnianie szczegółowych informacji z plików wideo i audio przy użyciu usługi Video Indexer za pośrednictwem ustawień wstępnych analizatora usługi AMS w wersji 3. Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer.<br/> Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentem z porównaniem</a>.
@@ -27,23 +27,28 @@ sections:
   - type: list
     style: cards
     className: cardsM
-    columns: 3
+    columns: 2
     items:
     - href: /azure/media-services/latest/
       html: <p>Dowiedz się, jak kodować, przeprowadzać przesyłanie strumieniowe na żądanie, prowadzić emisje na żywo i analizować wideo za pomocą usługi Media Services v3.</p>
       image:
         src: media/index/AMSIcons-media_servicesV3.svg
       title: Azure Media Services w wersji 3
-    - href: /azure/media-services/previous/
-      html: <p>Dowiedz się, jak kodować, przeprowadzać przesyłanie strumieniowe na żądanie i prowadzić emisje wideo na żywo za pomocą usługi Media Services v2.</p>
-      image:
-        src: media/index/AMSIcons-media_servicesV2.svg
-      title: Azure Media Services w wersji 2 (starsza wersja)
     - href: /azure/media-services/video-indexer/
       html: <p>Dowiedz się, jak wyodrębniać szczegółowe informacje z plików wideo i audio za pomocą usługi Video Indexer.</p>
       image:
         src: media/index/AMSIcons-media_analytics.svg
       title: Indeksator wideo
+    - href: /azure/media-services/previous/
+      html: <p>Dowiedz się, jak kodować, przeprowadzać przesyłanie strumieniowe na żądanie i prowadzić emisje wideo na żywo za pomocą usługi Media Services v2.</p>
+      image:
+        src: media/index/AMSIcons-media_servicesV2.svg
+      title: Azure Media Services w wersji 2 (starsza wersja)
+    - href: /azure/cdn/
+      html: <p>Dowiedz się, jak usługa CDN pozwala zapisywać obiekty statyczne w pamięci podręcznej i przyspieszyć zawartość dynamiczną, której nie można zapisać w pamięci podręcznej.</p>
+      image:
+        src: /azure/cdn/media/index/cdn.svg
+      title: CDN
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph

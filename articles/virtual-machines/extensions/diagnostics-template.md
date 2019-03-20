@@ -1,6 +1,6 @@
 ---
 title: Dodawanie monitorowania i diagnostyki na maszynie wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Użyj szablonu usługi Azure Resource Manager, aby utworzyć nową maszynę wirtualną Windows za pomocą rozszerzenie diagnostyki platformy Azure.
+description: Aby utworzyć nową maszynę wirtualną Windows za pomocą rozszerzenie diagnostyki platformy Azure, należy użyć szablonu usługi Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: sbtron
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 85e9b49cb8be1a3f53ca0f3b4816e6165b68bde0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993114"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893547"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Użyj monitorowania i diagnostyki za pomocą szablonów maszyn wirtualnych Windows i usługi Azure Resource Manager
 Rozszerzenie diagnostyki platformy Azure zawiera funkcje monitorowania i diagnostyki na maszynie wirtualnej na podstawie Windows Azure. Aby włączyć te możliwości na maszynie wirtualnej, łącznie z rozszerzeniem w ramach szablonu usługi Azure Resource Manager. Zobacz [Tworzenie szablonów usługi Azure Resource Manager przy użyciu rozszerzeń maszyn wirtualnych](../windows/template-description.md#extensions) uzyskać więcej informacji o tym każde rozszerzenie jako część szablonu maszyny wirtualnej. W tym artykule opisano, jak dodać rozszerzenie Diagnostyka Azure do szablonu maszyny wirtualnej systemu windows.  
@@ -162,7 +162,7 @@ Konfiguracja metryki powyżej generuje tabel w ramach konta magazynu diagnostyki
 * **PT1H** lub **PT1M**: Oznacza, że tabela zawiera zagregowane dane ponad 1 godzinę lub 1 minuta
 * **P10D**: Oznacza, że tabela będzie zawierać dane przez 10 dni od uruchamianiu tabeli zbierania danych
 * **V2S**: Stała typu String
-* **RRRRMMDD**: Data, w którym tabeli rozpoczęcia, zbieranie danych
+* **yyyymmdd**: Data, w którym tabeli rozpoczęcia, zbieranie danych
 
 Przykład: *WADMetricsPT1HP10DV2S20151108* zawiera dane metryk są agregowane w ciągu godziny przez 10 dni, począwszy od listopada-11-2015    
 
@@ -172,7 +172,7 @@ Każda tabela WADMetrics zawiera następujące kolumny:
 * **RowKey**: W formacie `<Descending time tick>:<Performance Counter Name>`. Malejąco obliczania osi czasu jest impulsów maksymalny czas minus godziną rozpoczęcia okresu agregacji. Na przykład jeśli okres próbkowania pracę od 2015-10-lis i będzie 00:00Hrs UTC, a następnie obliczenie: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. Dla dostępne bajty pamięci licznika wydajności klucz wiersza będzie wyglądać następująco: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: To nazwa licznika wydajności. Odpowiada to *counterSpecifier* zdefiniowane w pliku konfiguracyjnym xml.
 * **Maksymalna**: Maksymalna wartość licznika wydajności w okresie agregacji.
-* **Co najmniej**: Minimalna wartość licznika wydajności w okresie agregacji.
+* **Minimum**: Minimalna wartość licznika wydajności w okresie agregacji.
 * **Łączna liczba**: Sumę wszystkich wartości licznika wydajności zgłoszone w okresie agregacji.
 * **Liczba**: Całkowita liczba wartości zgłoszone dla licznika wydajności.
 * **Średnia**: Wartość średnia (łącznie/count) licznika wydajności w okresie agregacji.

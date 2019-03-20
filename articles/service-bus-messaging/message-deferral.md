@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 4471b556dc1ac5f520185d7ad586fb489c6d8f30
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 11ea10f1deba5a21b98dea875a1b7dc94998aa00
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856812"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225168"
 ---
 # <a name="message-deferral"></a>Odraczanie komunikatów
 
@@ -36,7 +36,7 @@ Interfejs API jest [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.mess
 
 Odroczone wiadomości pozostaną w kolejka główna oraz wszystkie inne aktywne komunikaty (w przeciwieństwie do wiadomości utraconych wiadomości, które znajdują się w kolejki podrzędnej), ale one nie otrzyma za pomocą funkcji regularnych odbioru/ReceiveAsync. Odnalezione odroczonej wiadomości [Przeglądanie komunikatów](message-browsing.md) Jeśli aplikacja utraci śledzenie z nich.
 
-Aby pobrać odroczony komunikat, jego właściciela jest odpowiedzialny za zapamiętywanie [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) zgodnie z jej do odracza. Żadnego odbiorcy, który zna numer sekwencyjny odroczony komunikat później może odbierać wiadomości jawnie z `Receive(sequenceNumber)`.
+Aby pobrać odroczony komunikat, jego właściciela jest odpowiedzialny za zapamiętywanie [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) zgodnie z jej do odracza. Żadnego odbiorcy, który zna numer sekwencyjny odroczony komunikat później może odbierać wiadomości jawnie z `Receive(sequenceNumber)`. W przypadku kolejek można użyć [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), użyj subskrypcje tematu [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
 
 Nie można przetworzyć komunikatu, ponieważ określony zasób do obsługi tego komunikatu jest tymczasowo niedostępna, ale przetwarzanie komunikatu nie summarily zawiesza się, sposób umieszczania ten komunikat po stronie przez kilka minut, czy do zapamiętania  **SequenceNumber** w [zaplanowanych wiadomości](message-sequencing.md) do opublikowania w ciągu kilku minut i ponownie Pobierz odroczony komunikat po nadejściu zaplanowanych wiadomości. Jeśli program obsługi komunikatów, który jest zależny od bazy danych dla wszystkich operacji tej bazy danych jest tymczasowo niedostępny, go powinien używa opóźnienia, ale raczej zawiesić odbierania komunikatów całkowicie, aż baza danych jest ponownie dostępny.
 

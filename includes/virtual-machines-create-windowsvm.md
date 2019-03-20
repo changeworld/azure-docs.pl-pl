@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d4075f644ed1ce42479e35544f0e1442488f78eb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0b5e817d5e39dd7800a1482d40c56db5f2be6ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958915"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109425"
 ---
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Uruchamianie w lewym górnym rogu, kliknij przycisk **Utwórz zasób** > **obliczeniowe** > **systemu Windows Server Datacenter 2016**.
+2. Uruchamianie w lewym górnym rogu, kliknij przycisk **Utwórz zasób** > **obliczenia** > **systemu Windows Server 2016 Datacenter**.
 
     ![Nawigowanie do obrazów maszyn wirtualnych Azure w portalu](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 
@@ -33,7 +33,7 @@ W bloku Podstawowe należy podać informacje administracyjne dotyczące maszyny 
 
 2. Podaj nazwę użytkownika w polu **Nazwa użytkownika** i silne hasło w polu **Hasło**. Zostaną one użyte do utworzenia konta lokalnego na maszynie wirtualnej. Konto lokalne jest używane do logowania się do maszyny wirtualnej i zarządzania nią. W tym przykładzie nazwa użytkownika to _azureuser_.
 
- Hasło musi mieć długość od 8 do 123 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: mała litera, wielka litera, cyfra i znak specjalny. Więcej informacji na temat [wymagań dotyczących nazwy użytkownika i hasła](../articles/virtual-machines/windows/faq.md).
+   Hasło musi mieć długość od 8 do 123 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: mała litera, wielka litera, cyfra i znak specjalny. Więcej informacji na temat [wymagań dotyczących nazwy użytkownika i hasła](../articles/virtual-machines/windows/faq.md).
 
 3. Pole **Subskrypcja** jest opcjonalne. Często używaną opcją jest „Płatność zgodnie z rzeczywistym użyciem”.
 

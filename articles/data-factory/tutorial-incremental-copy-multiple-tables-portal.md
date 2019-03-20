@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: e6a24bfe25513b1b4eacd8bc192caa5518c896c6
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
+ms.openlocfilehash: 12ca210e1fe7aa60515f5b8c4c0ad830dcdd9594
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593203"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078962"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    
@@ -382,7 +382,7 @@ W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową
    ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 1. Po kliknięciu przycisku **Zakończ** zostanie wyświetlona nazwa tabeli **@dataset().SinkTableName**.
+   1. Po kliknięciu przycisku **Zakończ**, zostanie wyświetlony  **\@dataset(). SinkTableName** jako nazwę tabeli.
    
    ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -424,11 +424,11 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
     ![Nazwa potoku](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. W oknie **Właściwości** wykonaj następujące czynności: 
 
-    1. Kliknij pozycję **+ Nowy**. 
-    1. Wprowadź ciąg **tableList** jako **nazwę** parametru. 
-    1. Wybierz pozycję **Obiekt** dla parametru **typ**.
+   1. Kliknij pozycję **+ Nowy**. 
+   1. Wprowadź ciąg **tableList** jako **nazwę** parametru. 
+   1. Wybierz pozycję **Obiekt** dla parametru **typ**.
 
-    ![Parametry potoku](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
+      ![Parametry potoku](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
 1. W przyborniku **Działania** rozwiń pozycję **Iteracja i warunki**, a następnie przeciągnij i upuść działanie **ForEach** na powierzchni projektanta potoku. Na karcie **Ogólne** w oknie **Właściwości** wprowadź wartość **IterateSQLTables**. 
 
     ![Działanie ForEach — nazwa](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
@@ -457,69 +457,69 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
     ![Drugie działanie Lookup — nazwa](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
 1. Przejdź do karty **Ustawienia**.
 
-    1. Wybierz pozycję **SourceDataset** w obszarze **Zestaw danych będący źródłem**. 
-    1. Wybierz pozycję **Zapytanie** w polu **Użyj zapytania**.
-    1. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL.
+     1. Wybierz pozycję **SourceDataset** w obszarze **Zestaw danych będący źródłem**. 
+     1. Wybierz pozycję **Zapytanie** w polu **Użyj zapytania**.
+     1. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL.
 
-        ```sql    
-        select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
-        ```
+         ```sql    
+         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+         ```
     
-        ![Drugie działanie Lookup — ustawienia](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+         ![Drugie działanie Lookup — ustawienia](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
 1. Przeciągnij działanie **Copy** (Kopiuj) z przybornika **Działania** i wprowadź wartość **IncrementalCopyActivity** w polu **Nazwa**. 
 
-    ![Działanie Copy (Kopiowanie) — nazwa](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
+     ![Działanie Copy (Kopiowanie) — nazwa](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
 1. Kolejno połącz działania **Lookup** z działaniem **Copy**. Aby utworzyć połączenie, zacznij przeciąganie w **zielonym** polu połączonym z działaniem **Lookup** i upuść je na działaniu **Copy**. Po zmianie koloru obramowania działania Copy na **niebieski** zwolnij przycisk myszy.
 
-    ![Łączenie działań Lookup z działaniem Copy](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+     ![Łączenie działań Lookup z działaniem Copy](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
 1. Wybierz działanie **Copy** w potoku. Przejdź do karty **Źródło** w oknie **Właściwości**. 
 
-    1. Wybierz pozycję **SourceDataset** w obszarze **Zestaw danych będący źródłem**. 
-    1. Wybierz pozycję **Zapytanie** w polu **Użyj zapytania**. 
-    1. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL.
+     1. Wybierz pozycję **SourceDataset** w obszarze **Zestaw danych będący źródłem**. 
+     1. Wybierz pozycję **Zapytanie** w polu **Użyj zapytania**. 
+     1. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL.
 
-        ```sql
-        select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
-        ```
+         ```sql
+         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
+         ```
 
-        ![Działanie Copy (Kopiowanie) — ustawienia źródła](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+         ![Działanie Copy (Kopiowanie) — ustawienia źródła](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. Przejdź do karty **Ujście** i wybierz pozycję **SinkDataset** w polu **Zestaw danych będący ujściem**. 
         
-    ![Działanie Copy (Kopiowanie) — ustawienia ujścia](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
+     ![Działanie Copy (Kopiowanie) — ustawienia ujścia](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Przejdź do karty **Parametry** i wykonaj następujące czynności:
 
-    1. Dla właściwości **Nazwa procedury składowanej będącej ujściem** wprowadź wartość `@{item().StoredProcedureNameForMergeOperation}`.
-    1. Dla właściwości **Typ tabeli będącej ujściem** wprowadź wartość `@{item().TableType}`.
-    1. W sekcji **Zestaw danych będący ujściem** jako parametr **SinkTableName** wprowadź wartość `@{item().TABLE_NAME}`.
+     1. Dla właściwości **Nazwa procedury składowanej będącej ujściem** wprowadź wartość `@{item().StoredProcedureNameForMergeOperation}`.
+     1. Dla właściwości **Typ tabeli będącej ujściem** wprowadź wartość `@{item().TableType}`.
+     1. W sekcji **Zestaw danych będący ujściem** jako parametr **SinkTableName** wprowadź wartość `@{item().TABLE_NAME}`.
 
-        ![Działanie Copy — parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+         ![Działanie Copy — parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Przeciągnij działanie **Stored Procedure** (Procedura składowana) z przybornika **Działania** do powierzchni projektanta potoku. Połącz działanie **Copy** z działaniem **Stored Procedure**. 
 
-    ![Działanie Copy — parametry](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
+     ![Działanie Copy — parametry](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
 1. Wybierz działanie **Stored Procedure** w potoku, a następnie wprowadź wartość **StoredProceduretoWriteWatermarkActivity** w polu **Nazwa** na karcie **Ogólne** w oknie **Właściwości**. 
 
-    ![Działanie procedury składowanej — nazwa](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
+     ![Działanie procedury składowanej — nazwa](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
 1. Przejdź do karty **Konto SQL** i wybierz wartość **AzureSqlDatabaseLinkedService** w polu **Połączona usługa**.
 
-    ![Działanie Stored Procedure (Procedura składowana) — konto SQL](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+     ![Działanie Stored Procedure (Procedura składowana) — konto SQL](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. Przejdź do karty **Procedura składowana** i wykonaj następujące czynności:
 
-    1. W polu **Nazwa procedury składowanej** wybierz wartość `usp_write_watermark`. 
-    1. Wybierz pozycję **Importuj parametr**. 
-    1. Określ wartości następujących parametrów: 
+     1. W polu **Nazwa procedury składowanej** wybierz wartość `usp_write_watermark`. 
+     1. Wybierz pozycję **Importuj parametr**. 
+     1. Określ wartości następujących parametrów: 
 
-        | Name (Nazwa) | Typ | Wartość | 
-        | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | Ciąg | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+         | Name (Nazwa) | Typ | Wartość | 
+         | ---- | ---- | ----- |
+         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-        ![Działanie procedury składowanej — ustawienia procedury składowanej](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+         ![Działanie procedury składowanej — ustawienia procedury składowanej](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. W okienku po lewej stronie kliknij pozycję **Opublikuj**. Ta czynność spowoduje opublikowanie utworzonych jednostek w usłudze Data Factory. 
 
-    ![Przycisk Opublikuj](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
+     ![Przycisk Opublikuj](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
 1. Poczekaj na wyświetlenie komunikatu **Pomyślnie opublikowano**. Aby wyświetlić powiadomienia, kliknij link **Pokaż powiadomienia**. Zamknij okno powiadomień, klikając przycisk **X**.
 
-    ![Wyświetlanie powiadomień](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
+     ![Wyświetlanie powiadomień](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
  
 ## <a name="run-the-pipeline"></a>Uruchamianie potoku
@@ -719,7 +719,7 @@ project_table   2017-10-01 00:00:00.000
 
 Należy zauważyć, że wartości limitu dla obu tabel zostały zaktualizowane.
      
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W ramach tego samouczka wykonano następujące procedury: 
 
 > [!div class="checklist"]

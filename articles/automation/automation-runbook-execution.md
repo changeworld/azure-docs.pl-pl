@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 84cf7d485295ae1a102957ee1f94ab3e9b2ea954
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b6c61b4116983f36cef0632f7bbec4d36d203d0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548255"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842983"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -112,6 +112,33 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 } else {
     # Insert Your code here
 }
+```
+
+### <a name="working-with-multiple-subscriptions"></a>Praca z wieloma subskrypcjami
+
+Podczas tworzenia elementów runbook, który transakcji z wieloma subskrypcjami, element runbook wymaga użycia [Disable-AzureRmContextAutosave](/powershell/module/azurerm.profile/disable-azurermcontextautosave) polecenia cmdlet, aby upewnić się, czy kontekst uwierzytelniania nie została pobrana z innego elementu runbook, który może być uruchomiona w tym samym piaskownicy. Następnie należy użyć `-AzureRmContext` parametrem w swojej `AzureRM` poleceń cmdlet i przekazywanie ich prawidłowego kontekstu.
+
+```powershell
+# Ensures you do not inherit an AzureRMContext in your runbook
+Disable-AzureRmContextAutosave –Scope Process
+
+$Conn = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzureRmAccount -ServicePrincipal `
+-Tenant $Conn.TenantID `
+-ApplicationID $Conn.ApplicationID `
+-CertificateThumbprint $Conn.CertificateThumbprint
+
+$context = Get-AzureRmContext
+
+$ChildRunbookName = 'ChildRunbookDemo'
+$AutomationAccountName = 'myAutomationAccount'
+$ResourceGroupName = 'myResourceGroup'
+
+Start-AzureRmAutomationRunbook `
+    -ResourceGroupName $ResourceGroupName `
+    -AutomationAccountName $AutomationAccountName `
+    -Name $ChildRunbookName `
+    -DefaultProfile $context
 ```
 
 ### <a name="using-executables-or-calling-processes"></a>Przy użyciu plików wykonywalnych lub wywoływania procesów

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 1805d54e66187a97bf598734801f0d94895e7490
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 0e61f6a914c33842f4f42b2e1e4206b370a11dd4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099039"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Samouczek:  Uzyskiwanie tonacji wypowiedzi
 
@@ -61,9 +61,9 @@ Ponieważ jest to ustawienie publikowania, nie widać go na stronach intencji i 
 
 1. Wybierz następującą jednostkę z listy wstępnie utworzonych jednostek, a następnie wybierz pozycję **Done** (Gotowe):
 
-    * **[PersonName](luis-reference-prebuilt-person.md)** 
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
 
-    ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
+     ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
 
 ## <a name="create-an-intent-to-determine-employee-feedback"></a>Utwórz intencję, aby określić opinie pracowników
 
@@ -164,7 +164,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 * [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku dodaliśmy analizę tonacji jako ustawienie publikowania, aby wyodrębnić wartości tonacji z wypowiedzi jako całości.
 
 > [!div class="nextstepaction"] 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: e407aee98bef9917a99e3305e2c99dbdd0c182e0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e5f428062155ea732dce785955ac76011f3e4678
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469825"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899353"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>W usłudze Machine Learning interfejs API wykrywania anomalii
 ## <a name="overview"></a>Przegląd
@@ -32,7 +32,7 @@ Detektory learning te maszyny śledzić takie zmiany w wartościach przez raport
 
 Oferta wykrywania anomalii jest dostarczany z przydatnymi narzędziami, które ułatwią Ci rozpoczęcie pracy.
 
-* [Aplikacji sieci web](http://anomalydetection-aml.azurewebsites.net/) pomoże Ci ocenić i wizualizowania wyników wykrywania anomalii interfejsów API na podstawie posiadanych danych.
+* [Aplikacji sieci web](https://anomalydetection-aml.azurewebsites.net/) pomoże Ci ocenić i wizualizowania wyników wykrywania anomalii interfejsów API na podstawie posiadanych danych.
 
 > [!NOTE]
 > Spróbuj **rozwiązania IT Anomaly Insights** działającemu [tego interfejsu API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
@@ -110,9 +110,9 @@ Interfejs API wykrywania anomalii obsługuje detektory 3 szerokie kategorie. W p
 | Wykrywanie kategorii | Wykrywanie | Opis | Parametry wejściowe | Dane wyjściowe |
 | --- | --- | --- | --- | --- |
 | Detektory kolekcji |Wykrywanie TSpike |Wykrywanie, wzrostów i spadków, na podstawie daleko wartości pochodzą z Kwartyle pierwszy i trzeci |*tspikedetector.sensitivity:* przyjmuje wartość całkowitą z zakresu 1-10, domyślny: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajnych co mniej poufnych |TSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie |
-| Detektory kolekcji | Wykrywanie ZSpike |Wykrywanie wzrostów i spadków, oparte na to, jak daleko są punktów danych od ich średniej |*zspikedetector.sensitivity:* zająć wartość całkowitą z zakresu 1-10, domyślny: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajnych co mniej poufnych |ZSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie | |
+| Detektory kolekcji | Wykrywanie ZSpike |Wykrywanie wzrostów i spadków, oparte na to, jak daleko są punktów danych od ich średniej |*zspikedetector.sensitivity:* zająć wartość całkowitą z zakresu 1-10, domyślny: 3; Wyższe wartości będzie przechwytywać więcej wartości skrajnych co mniej poufnych |ZSpike: wartości binarne — "1", w przypadku wykrycia kolekcji/dip, "0" w przeciwnym razie |
 | Wykrywanie powolnego trendu |Wykrywanie powolnego trendu |Wykrywanie powolne trend dodatnią zgodnie z czułości zestawu |*trenddetector.sensitivity:* progu na wykrywanie wynik (domyślne: 3,25, 3,25 — 5 jest uzasadnione zakresu, aby wybrać ten program z; Im wyższa mniej wrażliwe) |tscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii na tendencji |
-| Detektory zmiany poziomu | Wykrywanie zmian poziom dwukierunkowego |Wykrywanie zmiany poziomu zarówno w górę, jak i w dół zgodnie z czułości zestawu |*bileveldetector.sensitivity:* progu na wykrywanie wynik (domyślne: 3,25, 3,25 — 5 jest uzasadnione zakresu, aby wybrać ten program z; Im wyższa mniej wrażliwe) |rpscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii w górę i w dół zmiany poziomu | |
+| Detektory zmiany poziomu | Wykrywanie zmian poziom dwukierunkowego |Wykrywanie zmiany poziomu zarówno w górę, jak i w dół zgodnie z czułości zestawu |*bileveldetector.sensitivity:* progu na wykrywanie wynik (domyślne: 3,25, 3,25 — 5 jest uzasadnione zakresu, aby wybrać ten program z; Im wyższa mniej wrażliwe) |rpscore: liczbą zmiennoprzecinkową reprezentujący wyniku anomalii w górę i w dół zmiany poziomu |
 
 ### <a name="parameters"></a>Parametry
 W poniższej tabeli znajduje się bardziej szczegółowych informacji na temat tych parametrów wejściowych:

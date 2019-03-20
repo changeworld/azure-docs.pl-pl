@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6e3b1e3d501355994cd81c5eb9d712a684474524
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0524bd224e3da3e6a9b18a4225c88e9c43d07606
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136194"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223414"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu programu PowerShell i interfejsu API REST
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "58136194"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Ten artykuł przeprowadzi Cię przez proces tworzenia, ładowanie i wykonywanie zapytań usługi Azure Search [indeksu](search-what-is-an-index.md) przy użyciu programu PowerShell i [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Definicja indeksu i zawartości znajduje się w treści żądania jako poprawnie sformułowana zawartość JSON.
+Ten artykuł przeprowadzi Cię przez proces tworzenia, ładowanie i wykonywanie zapytań usługi Azure Search [indeksu](search-what-is-an-index.md) przy użyciu programu PowerShell i [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Definicja indeksu i którą można przeszukiwać zawartość jest dostępna w treści żądania jako poprawnie sformułowana zawartość JSON.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,13 +35,13 @@ Ten artykuł przeprowadzi Cię przez proces tworzenia, ładowanie i wykonywanie 
 
 Adres URL punktu końcowego i administratora klucz interfejsu api usługi search. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
-  1. W witrynie Azure portal w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://my-service-name.search.windows.net`.
+1. W witrynie Azure portal w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać jak https:\//my-service-name.search.windows.net.
 
-  2. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
+2. W **ustawienia** > **klucze**, Pobierz klucz administratora dla pełnych praw w usłudze. Istnieją dwa klucze administratora wymienne, podany w celu zachowania ciągłości w razie potrzeby do jednego przerzucania. Dodawanie, modyfikowanie i usuwanie obiektów, można użyć zarówno klucz podstawowy lub pomocniczy w odpowiedzi na żądania.
 
-  ![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
+   ![Pobierz HTTP punktu końcowego i klucza dostępu](media/search-fiddler/get-url-key.png "uzyskać HTTP punktu końcowego i klucza dostępu")
 
-  Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
+   Wszystkie żądania wymagają klucza interfejsu api na każde żądanie wysłane do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
 ## <a name="connect-to-azure-search"></a>Łączenie z usługą Azure Search
 
@@ -83,7 +83,7 @@ Jeśli używasz portalu indeksu musi istnieć w usłudze przed załadowaniem dan
 
 Wymagane elementy indeksu obejmują nazwy i kolekcji pól. Kolekcja pól definiuje strukturę *dokumentu*. Każde pole ma nazwę, typ i atrybuty, które określają, jak jest używana (na przykład, czy jest pełnotekstowe wyszukiwanie, filtrowanie lub pobieranie w wynikach wyszukiwania). W ramach indeksu, jednego pola typu `Edm.String` musi zostać wyznaczona jako *klucz* dokumentu tożsamości.
 
-Ten indeks o nazwie "hotels" i ma definicje pól, pokazane poniżej. Określa definicję indeksu [analizatory języka](index-add-language-analyzers.md) dla `description_fr` pola, ponieważ jest ono przeznaczone do przechowywania tekstu w języku francuskim, które dodamy w przykładzie nowsze.
+Ten indeks o nazwie "hotels" i ma definicje pól, pokazane poniżej. Określa definicję indeksu [analizatora języków](index-add-language-analyzers.md) dla `description_fr` pola, ponieważ jest ono przeznaczone do przechowywania tekstu w języku francuskim, które dodamy w przykładzie nowsze.
 
 Wklej w tym przykładzie w programie PowerShell, aby utworzyć **$body** obiektu zawierającego schemat indeksu.
 
@@ -344,7 +344,7 @@ $url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-1
 ```
 ## <a name="clean-up"></a>Czyszczenie 
 
-Jeśli nie są już potrzebne, należy usunąć indeks. Usługi w warstwie bezpłatna jest ograniczona do trzech indeksów. Możesz chcieć usunąć wszystkie indeksy, które nie są aktywnie używane.
+Jeśli nie są już potrzebne, należy usunąć indeks. Usługi w warstwie bezpłatna jest ograniczona do trzech indeksów. Możesz chcieć usunąć wszystkie indeksy nie aktywnie używasz, aby można było przechodzić przez innych samouczków.
 
 ```powershell
 # Set the URI to the hotel index

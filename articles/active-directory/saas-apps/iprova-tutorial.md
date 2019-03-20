@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1eaeef9b-4479-4a9f-b1b2-bc13b857c75c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65f8e023e087c3ca49e0d53f5760fbcd9a5f4d9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 395d3887e35d6e9c043d4d947b605e71eb58bd6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869211"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją iProva
 
@@ -124,7 +124,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji iProva, wy
 
     b. Wypełnij pole **Adres URL odpowiedzi** przy użyciu wartości wyświetlonej obok etykiety **Adres URL odpowiedzi** na stronie**informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
 
-    d. Wypełnij pole **Adres URL logowania** przy użyciu wartości wyświetlonej obok etykiety **Adres URL logowania** na stronie **informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
+    c. Wypełnij pole **Adres URL logowania** przy użyciu wartości wyświetlonej obok etykiety **Adres URL logowania** na stronie **informacji o formacie SAML2 aplikacji iProva**. Ta strona jest wciąż otwarta w innej karcie przeglądarki.
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji iProva](common/sp-identifier-reply.png)
 
@@ -147,7 +147,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji iProva, wy
 
     b. W polu tekstowym **Nazwa** podaj nazwę atrybutu pokazanego dla tego wiersza.
 
-    d. Na liście **Przestrzeń nazw** podaj wartość przestrzeni nazw pokazaną dla tego wiersza.
+    c. Na liście **Przestrzeń nazw** podaj wartość przestrzeni nazw pokazaną dla tego wiersza.
 
     d. Wybierz opcję **Źródło** dla pozycji **Atrybut**.
 
@@ -221,10 +221,10 @@ W tej sekcji utworzysz użytkownika testowego o nazwie Britta Simon w witrynie A
 
     a. W polu **Nazwa** podaj nazwę, na przykład **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** podaj wartość *yourname@yourcompanydomain.extension*. 
+    b. W **nazwa_użytkownika** wprowadź *twojanazwa\@yourcompanydomain.extension*. 
     Może to być na przykład BrittaSimon@contoso.com.
 
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
 
     d. Wybierz pozycję **Utwórz**.
 
@@ -266,14 +266,14 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
 5. Wybierz pozycję **Dodaj**.
 
-6. W polu **Username** (Nazwa użytkownika) podaj wartość *brittasimon@yourcompanydomain.extension*. 
+6. W **Username** wprowadź *brittasimon\@yourcompanydomain.extension*. 
     Może to być na przykład BrittaSimon@contoso.com.
 
 7. W polu **Full name** (Imię i nazwisko) podaj imię i nazwisko, na przykład **BrittaSimon**.
 
 8. Wybierz opcję **Bez hasła (użyj logowania jednokrotnego)**.
 
-9. W polu **E-mail address** (Adres e-mail) podaj wartość *yourname@yourcompanydomain.extension*. 
+9. W **adres E-mail** wprowadź *twojanazwa\@yourcompanydomain.extension*. 
    Może to być na przykład BrittaSimon@contoso.com.
 
 10. Przewiń w dół do końca strony, a następnie wybierz pozycję **Finish** (Zakończ).

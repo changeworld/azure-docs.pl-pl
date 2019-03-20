@@ -62,26 +62,29 @@ items:
       href: container-registry-image-lock.md
     - name: Usuwanie obrazów kontenerów
       href: container-registry-delete.md
-    - name: Zaufanie do zawartości (wersja zapoznawcza)
-      href: container-registry-content-trust.md
     - name: Uaktualnianie rejestru klasycznego
       href: container-registry-upgrade.md
     - name: Używanie elementów webhook rekordów ACR
       href: container-registry-webhook.md
     - name: Repozytoria formularzy Helm (wersja zapoznawcza)
       href: container-registry-helm-repos.md
-  - name: Authentication
+  - name: Zabezpieczenia i uwierzytelnianie
     items:
+    - name: Ograniczanie dostępu przy użyciu sieci wirtualnej (wersja zapoznawcza)
+      href: container-registry-vnet.md
     - name: Omówienie uwierzytelniania
       href: container-registry-authentication.md
-    - name: Uwierzytelnianie jednostki usługi
-      href: container-registry-auth-service-principal.md
-    - name: Uwierzytelnianie tożsamości zarządzanej
-      href: container-registry-authentication-managed-identity.md
-    - name: Azure Container Instances
-      href: container-registry-auth-aci.md
-    - name: Azure Kubernetes Service (AKS)
-      href: container-registry-auth-aks.md
+      items:
+      - name: Uwierzytelnianie jednostki usługi
+        href: container-registry-auth-service-principal.md
+      - name: Uwierzytelnianie tożsamości zarządzanej
+        href: container-registry-authentication-managed-identity.md
+      - name: Uwierzytelnianie w usłudze Azure Container Instances
+        href: container-registry-auth-aci.md
+      - name: Uwierzytelnianie w usłudze Azure Kubernetes Service (AKS)
+        href: container-registry-auth-aks.md
+    - name: Zaufanie do zawartości (wersja zapoznawcza)
+      href: container-registry-content-trust.md
   - name: Kompilowanie i stosowanie poprawek
     items:
     - name: Zadania usługi ACR
@@ -137,9 +140,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-container-registry
   - name: Filmy wideo
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: ef8f6b64129f9dd2f2959c89e93c34b9d90a62f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 732c0f878df9b5d722571bf45e4afd76a3180ebb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541953"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137998"

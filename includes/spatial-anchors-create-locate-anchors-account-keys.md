@@ -4,14 +4,14 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
-ms.openlocfilehash: cce71736369c5e7c448ccf92f5b569edc30a3966
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: afa3fea0c172134afb06abc63c90805a32c89639
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57907689"
 ---
-## <a name="setting-up-authentication"></a>Konfigurowanie uwierzytelniania
+## <a name="set-up-authentication"></a>Konfigurowanie uwierzytelniania
 
 Aby uzyskać dostęp do usługi, musisz podać klucz konta token dostępu i token uwierzytelniania usługi AAD.
 

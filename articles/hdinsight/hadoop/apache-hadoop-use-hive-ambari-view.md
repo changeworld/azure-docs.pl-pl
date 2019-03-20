@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cb68e93553be66d0d0be0edf61e491217bfe4d48
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407851"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091311"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Użyj widoku Hive narzędzia Ambari Apache przy użyciu technologii Apache Hadoop w HDInsight
 
@@ -73,7 +73,7 @@ Dowiedz się, jak uruchamianie zapytań Hive przy użyciu widoku Hive narzędzia
    * `DROP TABLE`: Usuwa tabelę i plik danych, w przypadku, gdy tabela już istnieje.
 
    * `CREATE EXTERNAL TABLE`: Tworzy nową tabelę "external" w gałęzi.
-   Tabele zewnętrzne przechowywać w definicji tabeli w gałęzi. Dane pozostaną w oryginalnej lokalizacji.
+     Tabele zewnętrzne przechowywać w definicji tabeli w gałęzi. Dane pozostaną w oryginalnej lokalizacji.
 
    * `ROW FORMAT`: Pokazuje, jak dane są sformatowane. W tym przypadku pola w każdym dzienniku są oddzielone spacją.
 
@@ -81,8 +81,8 @@ Dowiedz się, jak uruchamianie zapytań Hive przy użyciu widoku Hive narzędzia
 
    * `SELECT`: Wybiera liczbę wszystkich wierszy, gdzie t4 kolumna zawiera wartość [Błąd].
 
-    > [!IMPORTANT]  
-    > Pozostaw __bazy danych__ zaznaczenia w __domyślne__. W przykładach w tym dokumencie używany domyślna baza danych dołączone do HDInsight.
+     > [!IMPORTANT]  
+     > Pozostaw __bazy danych__ zaznaczenia w __domyślne__. W przykładach w tym dokumencie używany domyślna baza danych dołączone do HDInsight.
 
 5. Aby uruchomić zapytanie, należy użyć **Execute** znajdujący się poniżej arkusza. Przycisk zmieni kolor na pomarańczowy i tekst zostanie zmieniony na **zatrzymać**.
 
@@ -152,7 +152,7 @@ Na przykład, jeśli zdefiniowano funkcji zdefiniowanej przez użytkownika z nas
 
 * Nazwa funkcji zdefiniowanej przez użytkownika: myawesomeudf
 
-* Nazwa klasy funkcji zdefiniowanej przez użytkownika: com.myudfs.Awesome
+* UDF class name: com.myudfs.Awesome
 
 Za pomocą **Wstaw UDF** przycisk powoduje wyświetlenie wpis o nazwie **myudfs**, z innej listy rozwijanej dla każdej funkcji zdefiniowanej przez użytkownika zdefiniowane dla tego zasobu. W tym przypadku jest to **myawesomeudf**. Wybranie tego wpisu spowoduje dodanie następujących początek zapytania:
 

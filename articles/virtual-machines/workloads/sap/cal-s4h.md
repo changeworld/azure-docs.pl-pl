@@ -16,21 +16,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: a99fb959ae1ac1434bedffd782a7c4e0a302d361
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c59fcf43cb4767f1d95d769dfce4d5c8755e45ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431420"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990492"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Wdrażanie rozwiązania SAP S/4HANA lub BW/4HANA na platformie Azure
 W tym artykule opisano sposób wdrażania oprogramowania S/4HANA na platformie Azure przy użyciu biblioteki SAP Cloud Appliance Library (SAP CAL) 3.0. Aby wdrożyć innych rozwiązań opartych na oprogramowanie SAP HANA, takich jak BW/4HANA, wykonaj te same czynności.
 
 > [!NOTE]
-Aby uzyskać więcej informacji na temat SAP CAL, przejdź do [SAP Cloud Appliance Library](https://cal.sap.com/) witryny sieci Web. Firma SAP ma również blog o [SAP Cloud Appliance biblioteki 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
-
+> Aby uzyskać więcej informacji na temat SAP CAL, przejdź do [SAP Cloud Appliance Library](https://cal.sap.com/) witryny sieci Web. Firma SAP ma również blog o [SAP Cloud Appliance biblioteki 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
+> 
 > [!NOTE]
-Od 29 maja 2017 r. modelu wdrażania usługi Azure Resource Manager, oprócz preferowane mniej klasycznego modelu wdrażania można użyć do wdrożenia SAP CAL. Firma Microsoft zaleca użycie nowego modelu wdrażania usługi Resource Manager, a następnie pominąć klasycznego modelu wdrażania.
+> Od 29 maja 2017 r. modelu wdrażania usługi Azure Resource Manager, oprócz preferowane mniej klasycznego modelu wdrażania można użyć do wdrożenia SAP CAL. Firma Microsoft zaleca użycie nowego modelu wdrażania usługi Resource Manager, a następnie pominąć klasycznego modelu wdrażania.
 
 ## <a name="step-by-step-process-to-deploy-the-solution"></a>Instrukcje krok po kroku proces wdrażania rozwiązania
 
@@ -49,8 +49,8 @@ Poniższa sekwencja zrzuty ekranu pokazuje, jak wdrażanie oprogramowania S/4HAN
 
     c. Nadaj uprawnienia SAP CAL do wdrożenia w ramach subskrypcji platformy Azure.
 
-    > [!NOTE]
-    Następne kroki pokazują jak utworzyć konto SAP CAL dla wdrożeń usługi Resource Manager. Jeśli masz już konto SAP CAL, który jest połączony z klasycznego modelu wdrażania, możesz *muszą* wykonaj następujące kroki, aby utworzyć nowe konto SAP CAL. Nowe konto SAP CAL musi wdrożyć w modelu usługi Resource Manager.
+   > [!NOTE]
+   >  Następne kroki pokazują jak utworzyć konto SAP CAL dla wdrożeń usługi Resource Manager. Jeśli masz już konto SAP CAL, który jest połączony z klasycznego modelu wdrażania, możesz *muszą* wykonaj następujące kroki, aby utworzyć nowe konto SAP CAL. Nowe konto SAP CAL musi wdrożyć w modelu usługi Resource Manager.
 
 1. Utwórz nowe konto SAP CAL. **Kont** strona zawiera trzy opcje dla platformy Azure: 
 
@@ -96,10 +96,10 @@ Pomyślnie utworzono konto SAP CAL, który jest w stanie:
 Teraz możesz rozpocząć wdrażanie oprogramowania S/4HANA w ramach subskrypcji użytkownika na platformie Azure.
 
 > [!NOTE]
-Przed kontynuowaniem należy ustalić, czy limity przydziału procesorów wirtualnych platformy Azure dla maszyn wirtualnych serii H platformy Azure. W chwili do wdrażania, niektóre z rozwiązań opartych na oprogramowanie SAP HANA SAP CAL korzysta serii H maszyn wirtualnych platformy Azure. Twoja subskrypcja platformy Azure może nie mieć żadnych limity przydziału procesorów wirtualnych serii H serii H. Jeśli tak, może być konieczne skontaktuj się z działem pomocy technicznej platformy Azure można pobrać limitu przydziału w co najmniej 16 procesorów wirtualnych serii H.
-
+> Przed kontynuowaniem należy ustalić, czy limity przydziału procesorów wirtualnych platformy Azure dla maszyn wirtualnych serii H platformy Azure. W chwili do wdrażania, niektóre z rozwiązań opartych na oprogramowanie SAP HANA SAP CAL korzysta serii H maszyn wirtualnych platformy Azure. Twoja subskrypcja platformy Azure może nie mieć żadnych limity przydziału procesorów wirtualnych serii H serii H. Jeśli tak, może być konieczne skontaktuj się z działem pomocy technicznej platformy Azure można pobrać limitu przydziału w co najmniej 16 procesorów wirtualnych serii H.
+> 
 > [!NOTE]
-Gdy wdrażasz rozwiązania na platformie Azure w SAP CAL, może się okazać, które można wybrać tylko jeden region platformy Azure. Do wdrożenia w regionach platformy Azure w innym niż zaproponowana przez SAP CAL, należy zakupić subskrypcję licencji CAL programu SAP. Ponadto konieczne może być Otwórz wiadomość z oprogramowaniem SAP Twojego konta CAL włączone, aby dostarczyć do regionów platformy Azure innych niż początkowo zalecane.
+> Gdy wdrażasz rozwiązania na platformie Azure w SAP CAL, może się okazać, które można wybrać tylko jeden region platformy Azure. Do wdrożenia w regionach platformy Azure w innym niż zaproponowana przez SAP CAL, należy zakupić subskrypcję licencji CAL programu SAP. Ponadto konieczne może być Otwórz wiadomość z oprogramowaniem SAP Twojego konta CAL włączone, aby dostarczyć do regionów platformy Azure innych niż początkowo zalecane.
 
 ### <a name="deploy-a-solution"></a>Wdrażanie rozwiązania
 
@@ -120,7 +120,7 @@ Pokażemy, podstawowe ścieżki do wdrożenia w tym miejscu.
 
     d. Wprowadź wzorzec **hasło** rozwiązania ośmiu lub dziewięciu znaków. Hasło jest używane dla administratorów różnych składników.
 
-   ![SAP CAL Basic tryb: Tworzenie wystąpienia](./media/cal-s4h/s4h-pic10a.png)
+   ![SAP CAL Basic tryb: Utwórz wystąpienie](./media/cal-s4h/s4h-pic10a.png)
 
 1. Kliknij przycisk **Utwórz**i w wyświetlonym oknie komunikatu kliknij **OK**.
 

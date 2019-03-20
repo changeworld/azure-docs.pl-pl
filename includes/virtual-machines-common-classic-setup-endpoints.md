@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7dfd7d2a0363a95acb76a5dc214dbd4036de11d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ee5faedd4f59aa791424a1f178f0462922f21d28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735893"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094690"
 ---
 Każdy punkt końcowy ma *port publiczny* i *port prywatny*:
 
@@ -76,7 +76,7 @@ Jeśli maszyna wirtualna znajduje się w sieci wirtualnej platformy Azure, użyj
 
 4. Użycia wierszy na liście, aby dodać, usunąć, lub Edytuj reguły listy ACL i zmienić ich kolejność. **PODSIECI zdalnej** wartość zakresu adresów IP dla ruchu przychodzącego z Internetu, która używa modułu równoważenia obciążenia platformy Azure, aby akceptowanie lub odrzucanie ruchu, w oparciu o jego źródłowy adres IP. Pamiętaj określić zakres adresów IP format classless Inter-Domain routingu (CIDR), znany także jako format prefiksu adresu. Na przykład `10.1.0.0/8`.
 
- ![Nowy wpis listy ACL](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
+   ![Nowy wpis listy ACL](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
 
 
 Aby zezwolić na ruch tylko z określonych komputerów, odpowiadające na komputerach w Internecie lub zezwalają na ruch z zakresów określonych, znanych adresów, można użyć reguły.

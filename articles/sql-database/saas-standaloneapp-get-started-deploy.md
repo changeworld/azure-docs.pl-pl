@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 7609f3b0c04bdf74c87123f1125973219e6dda17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567217"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012664"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i eksplorowanie oddzielną aplikację pojedynczej dzierżawy, który używa usługi Azure SQL Database
 
@@ -76,11 +76,11 @@ Aplikacja prezentuje miejsca, które obsługują zdarzenia.  Lokalizacje są dzi
 
 1. Otwórz stronę wydarzenia dla każdego z trzech dzierżaw w osobnych kartach przeglądarki:
 
-    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
 
-    (W przypadku każdego adresu URL, Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia.)
+     (W przypadku każdego adresu URL, Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia.)
 
    ![Zdarzenia](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
@@ -96,7 +96,7 @@ W środowisku produkcyjnym zwykle możesz utworzyć rekordu CNAME DNS, aby [ *pu
 
 Spójrzmy na niektóre zasoby, które zostały wdrożone:
 
-1. W [witryny Azure portal](http://portal.azure.com), przejdź do listy grup zasobów.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do listy grup zasobów.
 2. Powinien zostać wyświetlony dzierżawy trzy grupy zasobów.
 3. Otwórz **wingtip-sa-fabrikam -&lt;użytkownika&gt;**  grupy zasobów, która zawiera zasoby do wdrożenia Fabrikam Jazz Club.  **Fabrikamjazzclub -&lt;użytkownika&gt;**  serwer zawiera **fabrikamjazzclub** bazy danych.
 

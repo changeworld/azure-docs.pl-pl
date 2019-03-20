@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Table | Dokumentacja firmy Microsoft
+title: Azure Table | Microsoft Docs
 description: Skonfiguruj zarządzanie potencjalnymi klientami dla tabeli platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c4537709181398e401ade67b831bc2d26a99221f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 31a800e851eb8a2f533cc8170856b16cd43c21cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193590"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850721"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Instrukcje prowadzić zarządzania dla usługi Azure Table
 
@@ -38,8 +38,8 @@ W tym artykule opisano sposób konfigurowania usługi Azure Table do przechowywa
     
     ![Klucz usługi Azure storage](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 
-Możesz użyć [Eksplorator usługi Azure storage](http://azurestorageexplorer.codeplex.com/) lub inne narzędzie, aby wyświetlić dane w tabeli magazynu. Możesz również wyeksportować dane w tabeli platformy Azure.
-dane.
+Możesz użyć [Eksplorator usługi Azure storage](https://azurestorageexplorer.codeplex.com/) lub inne narzędzie, aby wyświetlić dane w tabeli magazynu. Możesz również wyeksportować dane w tabeli platformy Azure.
+data.
 
 ## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>**(Opcjonalnie)**  Użyj Microsoft Flow za pomocą usługi Azure table
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2179b212dbbc7891b003664f4bea3d47cbb3a34e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: f03ece417ef5db891efe32a662a092ebf6072b33
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575396"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848165"
 documentType: LandingData
 title: Dokumentacja usługi Azure Data Factory
 metadata:
@@ -80,6 +80,7 @@ sections:
     - html: Przekształcanie danych w sieci wirtualnej — <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
     - html: Dodawanie rozgałęziania i tworzenia łańcuchów — <a href="/azure/data-factory/tutorial-control-flow-portal">interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
     - html: Uruchamianie pakietów SSIS na platformie Azure — <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">interfejs użytkownika usługi Data Factory</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+    - html: Ciągła integracja i ciągłe dostarczanie (CI/CD) w usłudze Azure Data Factory — <a href="/azure/data-factory/continuous-integration-deployment">interfejs użytkownika usługi Data Factory</a>
 - title: Przykłady
   items:
   - type: paragraph

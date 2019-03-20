@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: a2ecc2b0b8bfcf65d2ba566b8524a0c37c89ab78
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980554"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079098"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(PRZESTARZAŁE) Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu aparatu usługi ACS i trybu Docker Swarm przy użyciu DevOps platformy Azure
 
@@ -163,21 +163,21 @@ Potrzebujesz dwóch kroków platformy Docker dla każdego obrazu: jeden do tworz
 
    ![DevOps platformy Azure — dodawanie zadań wiersza polecenia](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
 
-      1. Zadanie wiersza polecenia, który używa skryptu powłoki systemowej w celu zastąpienia *RegistryURL* wystąpienie w pliku docker-compose.yml ze zmienną RegistryURL. 
+   1. Zadanie wiersza polecenia, który używa skryptu powłoki systemowej w celu zastąpienia *RegistryURL* wystąpienie w pliku docker-compose.yml ze zmienną RegistryURL. 
     
-          ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
 
-          ![Usługa Azure DevOps — plik Compose aktualizacji za pomocą adresu URL rejestru](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
+       ![Usługa Azure DevOps — plik Compose aktualizacji za pomocą adresu URL rejestru](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-      2. Zadanie wiersza polecenia, który używa skryptu powłoki systemowej w celu zastąpienia *AgentURL* wystąpienie w pliku docker-compose.yml ze zmienną AgentURL.
+   2. Zadanie wiersza polecenia, który używa skryptu powłoki systemowej w celu zastąpienia *AgentURL* wystąpienie w pliku docker-compose.yml ze zmienną AgentURL.
   
-          ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
-     3. Zadanie, które umieszcza zaktualizowany plik Compose jako artefakt kompilacji, dzięki czemu może być używany w wersji. Zobacz poniższy ekran, aby uzyskać szczegółowe informacje.
+      1. Zadanie, które umieszcza zaktualizowany plik Compose jako artefakt kompilacji, dzięki czemu może być używany w wersji. Zobacz poniższy ekran, aby uzyskać szczegółowe informacje.
 
-         ![Usługa Azure DevOps — publikowanie artefaktów](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
+      ![Usługa Azure DevOps — publikowanie artefaktów](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
 
-         ![Publikowanie DevOps platformy Azure — Utwórz plik](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
+      ![Publikowanie DevOps platformy Azure — Utwórz plik](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
 
 5. Kliknij przycisk **Zapisz k & olejką** próba potok kompilacji.
 
@@ -187,7 +187,7 @@ Potrzebujesz dwóch kroków platformy Docker dla każdego obrazu: jeden do tworz
 
 6. Jeśli **kompilacji** jest poprawna, trzeba wyświetlony następujący ekran:
 
-  ![Usługa Azure DevOps — kompilacja powiodła się](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
+   ![Usługa Azure DevOps — kompilacja powiodła się](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
 ## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Twórz potoki wydania
 
@@ -235,14 +235,14 @@ Przepływ pracy wydania składa się z dwóch zadań, które dodajesz.
 
     Polecenie wykonane na wzorcu używa interfejsu wiersza polecenia platformy Docker i interfejsu wiersza polecenia platformy Docker-Compose do wykonywania następujących zadań:
 
-    - Zaloguj się do usługi Azure container registry (używa trzech zmiennych kompilacji, które są zdefiniowane w **zmienne** kartę)
-    - Zdefiniuj **DOCKER_HOST** zmiennej do pracy z punktu końcowego Swarm (: 2375)
-    - Przejdź do *wdrażanie* folder, który został utworzony w poprzednim zadaniu bezpiecznego kopiowania i który zawiera plik docker-compose.yml 
-    - Wykonaj `docker stack deploy` polecenia, które ściągnięcia nowych obrazów i tworzenia kontenerów.
+   - Zaloguj się do usługi Azure container registry (używa trzech zmiennych kompilacji, które są zdefiniowane w **zmienne** kartę)
+   - Zdefiniuj **DOCKER_HOST** zmiennej do pracy z punktu końcowego Swarm (: 2375)
+   - Przejdź do *wdrażanie* folder, który został utworzony w poprzednim zadaniu bezpiecznego kopiowania i który zawiera plik docker-compose.yml 
+   - Wykonaj `docker stack deploy` polecenia, które ściągnięcia nowych obrazów i tworzenia kontenerów.
 
-    >[!IMPORTANT]
-    > Jak pokazano na poprzednim ekranie, pozostaw **zakończyć się niepowodzeniem ze strumienia STDERR** niezaznaczone pole wyboru. To ustawienie pozwala nam na ukończenie procesu tworzenia wersji ze względu na `docker-compose` drukuje kilka komunikatów diagnostycznych, takich jak kontenery są zatrzymywania lub usuwany na standardowy błąd danych wyjściowych. Jeśli zaznaczysz pole wyboru, DevOps platformy Azure zgłasza błędy, które wystąpiły podczas wersji, nawet jeśli wszystko przebiegnie poprawnie.
-    >
+     >[!IMPORTANT]
+     > Jak pokazano na poprzednim ekranie, pozostaw **zakończyć się niepowodzeniem ze strumienia STDERR** niezaznaczone pole wyboru. To ustawienie pozwala nam na ukończenie procesu tworzenia wersji ze względu na `docker-compose` drukuje kilka komunikatów diagnostycznych, takich jak kontenery są zatrzymywania lub usuwany na standardowy błąd danych wyjściowych. Jeśli zaznaczysz pole wyboru, DevOps platformy Azure zgłasza błędy, które wystąpiły podczas wersji, nawet jeśli wszystko przebiegnie poprawnie.
+     >
 3. Zapisz ten nowy potok wersji.
 
 ## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4: Testowanie potoku ciągłej integracji/ciągłego wdrażania

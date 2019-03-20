@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 692113257e483f67eaaee038c07d8702d95a7b31
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015526"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116813"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrowanie danych telemetrycznych w aplikacji sieci web Java
 
@@ -186,12 +186,12 @@ Filtruje zdarzenia niestandardowe (rejestrowane przy użyciu [poleceń TrackEven
 ```
 
 * `FromSeverityLevel` Prawidłowe wartości to:
- *  WYŁĄCZONE — odfiltrować wszystkie ślady
- *  TRACE — bez filtrowania. poziom śledzenia jest równa
- *  Informacje o — odfiltrowywanie poziom śledzenia
- *  WARN — filtr śledzenia i informacji
- *  Błąd — odfiltrowywanie OSTRZEGAJ, INFO, śledzenia
- *  KRYTYCZNY - odfiltrowywanie wszystkich pól poza krytyczne
+  *  WYŁĄCZONE — odfiltrować wszystkie ślady
+  *  TRACE — bez filtrowania. poziom śledzenia jest równa
+  *  Informacje o — odfiltrowywanie poziom śledzenia
+  *  WARN — filtr śledzenia i informacji
+  *  Błąd — odfiltrowywanie OSTRZEGAJ, INFO, śledzenia
+  *  KRYTYCZNY - odfiltrowywanie wszystkich pól poza krytyczne
 
 
 ## <a name="custom-filters"></a>Filtry niestandardowe

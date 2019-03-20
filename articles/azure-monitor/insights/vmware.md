@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 7d02f5b592600cf7efd0980c1284e8c724cd1f5b
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ece6c7048100a8204bfc067d9d57854b1d83c9b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195157"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074917"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Monitorowanie VMware (przestarzałe) rozwiązanie w usłudze Azure Monitor
 
@@ -195,13 +195,13 @@ Może istnieć kilka przyczyn:
   1. Usługa log Analytics nasłuchuje na porcie 1514. Aby zweryfikować, że jest otwarty, uruchom następujące polecenie: `netstat -a | grep 1514`
   1. Powinien zostać wyświetlony portu `1514/tcp` Otwórz. Jeśli tego nie zrobisz, sprawdź, czy omsagent jest poprawnie zainstalowany. Jeśli nie widzisz informacje o porcie syslog port nie jest otwarty na maszynie Wirtualnej.
 
-    a. Sprawdź, czy agent usługi Log Analytics jest uruchomiony przy użyciu `ps -ef | grep oms`. Jeśli nie jest uruchomiona, należy uruchomić proces, za pomocą polecenia ` sudo /opt/microsoft/omsagent/bin/service_control start`
+     a. Sprawdź, czy agent usługi Log Analytics jest uruchomiony przy użyciu `ps -ef | grep oms`. Jeśli nie jest uruchomiona, należy uruchomić proces, za pomocą polecenia ` sudo /opt/microsoft/omsagent/bin/service_control start`
 
-    b. Otwórz plik `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
+     b. Otwórz plik `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
 
-    c. Sprawdź, czy prawidłowego użytkownika i ustawienia grupy jest prawidłowy, podobnie do: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. Sprawdź, czy prawidłowego użytkownika i ustawienia grupy jest prawidłowy, podobnie do: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-    d. Jeśli plik nie istnieje lub nie użytkownika i ustawienia grupy jest nieprawidłowy, akcje naprawcze, [przygotowania serwera z systemem Linux](#prepare-a-linux-server).
+     d. Jeśli plik nie istnieje lub nie użytkownika i ustawienia grupy jest nieprawidłowy, akcje naprawcze, [przygotowania serwera z systemem Linux](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Użyj [rejestrowania zapytań](../log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.

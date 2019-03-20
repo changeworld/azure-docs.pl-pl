@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c6999e437abbef1920f6de771173e4e6e007f2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116915"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224152"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi G Suite dla automatycznej aprowizacji użytkowników
 
@@ -149,13 +149,13 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
 
 1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
 
-      ![Inicjowanie obsługi](./media/google-apps-provisioning-tutorial/provisioning.png)
+       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. W obszarze **poświadczeń administratora** zaznacz **Autoryzuj**. Otwiera okno dialogowe autoryzacji Google w nowym oknie przeglądarki.
 
 1. Upewnij się, że chcesz przyznać uprawnienia usługi Azure Active Directory, aby wprowadzić zmiany do dzierżawy usługi G Suite. Wybierz pozycję **Zaakceptuj**.
     
-      ![Upewnij się, uprawnienia.][28]
+       ![Confirm permissions.][28]
 
 1. W witrynie Azure portal wybierz **Testuj połączenie** do upewnij się, że połączenie usługi Azure AD do swojej aplikacji. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto usługi G Suite, ma uprawnienia administratora zespołu. Spróbuj **Autoryzuj** krok ponownie.
 

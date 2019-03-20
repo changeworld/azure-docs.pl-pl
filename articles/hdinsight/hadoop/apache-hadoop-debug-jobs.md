@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 0ba3c7321b0771c839289abb7891cd8e6b280afe
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4d3d45434a90e89e011bf8aa7c3fd37909e25386
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822684"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203068"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Analizowanie dzienników usługi Apache Hadoop
 
-Każdy klaster Apache Hadoop w usłudze Azure HDInsight ma konto usługi Azure storage używany jako domyślny system plików. Konto magazynu jest określane jako domyślne konto magazynu. Klaster używa usługi Azure Table storage i Blob storage na domyślne konto magazynu do przechowywania swoich dzienników.  Aby dowiedzieć się, domyślne konto magazynu dla klastra, zobacz [klastrów zarządzania Apache Hadoop w HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Dzienniki nadal na koncie magazynu, nawet po klaster jest usuwany.
+Każdy klaster Apache Hadoop w usłudze Azure HDInsight ma konto usługi Azure storage używany jako domyślny system plików. Konto magazynu jest określane jako domyślne konto magazynu. Klaster używa usługi Azure Table storage i Blob storage na domyślne konto magazynu do przechowywania swoich dzienników.  Aby dowiedzieć się, domyślne konto magazynu dla klastra, zobacz [klastrów zarządzania Apache Hadoop w HDInsight](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). Dzienniki nadal na koncie magazynu, nawet po klaster jest usuwany.
 
 ## <a name="logs-written-to-azure-tables"></a>Dzienniki zapisane tabele platformy Azure
 
@@ -48,7 +48,7 @@ Te tabele zawierają następujące pola:
 * Rola
 * RowIndex
 * Dzierżawa
-* ZNACZNIK CZASU:
+* SYGNATURA CZASOWA
 * TraceLevel
 
 ### <a name="tools-for-accessing-the-logs"></a>Narzędzia do uzyskiwania dostępu do dzienników
@@ -317,4 +317,4 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 * [Debugowanie zadań tez przy Apache na HDInsight przy użyciu widoków Ambari Apache](../hdinsight-debug-ambari-tez-view.md)
 * [Włączanie zrzutów sterty dla usługi Apache Hadoop w HDInsight opartych na systemie Linux](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](../hdinsight-hadoop-manage-ambari.md)
+* [Zarządzanie klastrami HDInsight przy użyciu internetowego interfejsu użytkownika systemu Apache Ambari](../hdinsight-hadoop-manage-ambari.md)

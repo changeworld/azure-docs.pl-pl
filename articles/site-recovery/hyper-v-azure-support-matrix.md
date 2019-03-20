@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 325df38cfea0c87cda8b7fb5ab37dca4a6a529fd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 84b1cfd54f5ff9e6a29c975622847e3ae6304bf8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315677"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107155"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V do platformy Azure
 
@@ -91,7 +91,7 @@ Accelerated Networking | Nie | Nie
 ## <a name="hyper-v-host-storage"></a>Magazyn hosta funkcji Hyper-V
 
 **Storage** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
---- | --- | --- | ---
+--- | --- | --- 
 NFS | Nie dotyczy | Nie dotyczy
 SMB 3.0 | Yes | Yes
 SAN (ISCSI) | Yes | Yes
@@ -180,7 +180,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 Aby upewnić się, że wdrożenie jest zgodny z ustawieniami w tym artykule, upewnij się, że używasz najnowszego dostawcę i wersje agentów.
 
 **Nazwa** | **Opis** | **Szczegóły**
---- | --- | --- | --- | ---
+--- | --- | --- 
 Dostawca usługi Azure Site Recovery | Służy do koordynowania komunikacji między serwerami lokalnymi a platformą Azure <br/><br/> Funkcji Hyper-V za pomocą programu Virtual Machine Manager: Zainstalowane na serwerach programu Virtual Machine Manager<br/><br/> Funkcji Hyper-V bez programu Virtual Machine Manager: Zainstalowany na hostach funkcji Hyper-V| Najnowsza wersja: 5.1.2700.1 (dostępne w witrynie Azure portal)<br/><br/> [Najnowsze funkcje i poprawki](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Agent usług odzyskiwania Microsoft Azure | Koordynuje replikację między maszynami wirtualnymi funkcji Hyper-V i platformą Azure<br/><br/> Zainstalowane na serwerach funkcji Hyper-V w środowisku lokalnym (z lub bez programu Virtual Machine Manager) | Najnowszą wersję agenta, dostępne w portalu
 

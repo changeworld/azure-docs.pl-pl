@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: f96ac14d68d98937cf230b04b45503e21c5e0187
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3a295a5c8a202b2f3186e696bb281002090fcad4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024573"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112606"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy adresów IP i metody alokacji (model klasyczny) na platformie Azure
 Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania się z innymi zasobami platformy Azure, siecią lokalną i Internetem. Istnieją dwa typy adresów IP, można użyć na platformie Azure: prywatnych i publicznych.
@@ -27,7 +27,7 @@ Publiczne adresy IP są używane do komunikacji z Internetem łącznie z usługa
 Prywatne adresy IP są używane do komunikacji w obrębie sieci wirtualnej platformy Azure (VNet), usługi w chmurze i sieci lokalnej, gdy używasz bramy sieci VPN lub obwodu usługi ExpressRoute w celu rozszerzenia swojej sieci na platformie Azure.
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami:  [Usługi Resource Manager i Model Klasyczny](../resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać usługi Resource Manager. Dowiedz się więcej o adresach IP w usłudze Resource Manager, zapoznając się [adresów IP](virtual-network-ip-addresses-overview-arm.md) artykułu.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać usługi Resource Manager. Dowiedz się więcej o adresach IP w usłudze Resource Manager, zapoznając się [adresów IP](virtual-network-ip-addresses-overview-arm.md) artykułu.
 
 ## <a name="public-ip-addresses"></a>Publiczne adresy IP
 Publiczne adresy IP umożliwiają zasobom platformy Azure do komunikowania się z Internetem a platformą Azure publicznymi usługami, takie jak [pamięci podręcznej Redis Azure](https://azure.microsoft.com/services/cache/), [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [baz danych SQL](../sql-database/sql-database-technical-overview.md), i [usługi Azure storage](../storage/common/storage-introduction.md).
@@ -165,13 +165,13 @@ Poniżej przedstawiono porównanie funkcji adresowania IP usługi Resource Manag
 |  | Zasób | Wdrożenie klasyczne | Resource Manager |
 | --- | --- | --- | --- |
 | **Publiczny adres IP** |***VM*** |Nazywane ILPIP (tylko dynamiczny) |Określane jako publiczny adres IP (dynamiczny lub statyczny) |
-|  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Skojarzone z karty Sieciowej maszyny Wirtualnej | |
-|  |***Moduł równoważenia obciążenia dostępnego z Internetu*** |Określone jako wirtualne adresy IP (dynamiczny) lub zastrzeżony adres IP (statyczne) |Określane jako publiczny adres IP (dynamiczny lub statyczny) | |
-|  ||Przypisane do usługi w chmurze |Skojarzone z konfiguracji frontonu modułu równoważenia obciążenia | |
+|  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Skojarzone z karty Sieciowej maszyny Wirtualnej |
+|  |***Moduł równoważenia obciążenia dostępnego z Internetu*** |Określone jako wirtualne adresy IP (dynamiczny) lub zastrzeżony adres IP (statyczne) |Określane jako publiczny adres IP (dynamiczny lub statyczny) |
+|  ||Przypisane do usługi w chmurze |Skojarzone z konfiguracji frontonu modułu równoważenia obciążenia |
 |  | | | |
 | **Prywatny adres IP** |***VM*** |Nazywane DIP |Określane jako prywatny adres IP |
-|  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Przypisane do karty Sieciowej maszyny Wirtualnej | |
-|  |***Wewnętrzny moduł równoważenia obciążenia (ILB)*** |Przypisane do wewnętrznego modułu równoważenia obciążenia (dynamicznej lub statycznej) |Przypisane do konfiguracji frontonu modułem równoważenia obciążenia (dynamicznej lub statycznej) | |
+|  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Przypisane do karty Sieciowej maszyny Wirtualnej |
+|  |***Wewnętrzny moduł równoważenia obciążenia (ILB)*** |Przypisane do wewnętrznego modułu równoważenia obciążenia (dynamicznej lub statycznej) |Przypisane do konfiguracji frontonu modułem równoważenia obciążenia (dynamicznej lub statycznej) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wdrażanie maszyny Wirtualnej ze statycznym prywatnym adresem IP](virtual-networks-static-private-ip-classic-pportal.md) przy użyciu witryny Azure portal.

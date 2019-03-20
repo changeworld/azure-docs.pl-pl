@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący wywoływania interfejsów API wyszukiwania poznawczego — Azure Search
+title: Samouczek dotyczący wywoływanie interfejsów API usług Cognitive Services w potoku indeksowania — usługa Azure Search
 description: W tym samouczku wykonasz kroki przykładu wyodrębniania danych oraz przetwarzania języka naturalnego i obrazów za pomocą funkcji sztucznej inteligencji w ramach indeksowania w usłudze Azure Search na potrzeby wyodrębniania i przekształcania danych.
 manager: pablocas
 author: luiscabrer
@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 410e5d618e1deb1887329bea41e2cd3c6d795e58
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a68d33d44e5edfb53f34f8a58b590dfdd25bc050
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075854"
+ms.locfileid: "58201793"
 ---
-# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Samouczek: Wywoływanie interfejsów API wyszukiwania poznawczego (wersja zapoznawcza)
+# <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Samouczek: Wywołania interfejsów API usług Cognitive Services w usłudze Azure Search indeksowanie potoku (wersja zapoznawcza)
 
-Za pomocą tego samouczka poznasz mechanizm programistycznego wzbogacania danych w usłudze Azure Search przy użyciu *umiejętności poznawczych*. Umiejętności poznawcze to funkcje przetwarzania języka naturalnego i operacje analizy obrazów, które umożliwiają wyodrębnianie tekstu i reprezentacji tekstowych obrazu, a także wykrywanie języka, jednostek, fraz kluczowych itd. Wynikiem końcowym jest bogata dodatkowa zawartość umieszczona w indeksie usługi Azure Search, która została utworzona przez potok indeksowania funkcji wyszukiwania poznawczego. 
+Za pomocą tego samouczka poznasz mechanizm programistycznego wzbogacania danych w usłudze Azure Search przy użyciu *umiejętności poznawczych*. Umiejętności są wspierane przez możliwości analizy obrazu, w usługach Cognitive Services i przetwarzania języka naturalnego (NLP). Za pomocą zestawu umiejętności tworzenia i konfiguracji można wyodrębnić tekst i reprezentacja tekstowa obrazu lub pliku skanowanego dokumentu. Może także wykryć język, jednostki, kluczowe frazy i. Wynik końcowy to zaawansowane dodatkowej zawartości do indeksu usługi Azure Search, utworzone przez potokiem indeksowania bazujących na sztucznej Inteligencji. 
 
 W tym samouczku interfejs API REST jest wywoływany w celu wykonania następujących zadań:
 
@@ -59,7 +59,7 @@ Najpierw utwórz konto usługi Azure Search.
 
 1. W obszarze Grupa zasobów utwórz grupę zasobów, która będzie zawierać wszystkie zasoby utworzone w tym samouczku. Ułatwi to wyczyszczenie zasobów po ukończeniu samouczka.
 
-1. Dla lokalizacji firma Microsoft zaleca, wybierając region, który znajduje się w pobliżu danych i innymi aplikacjami w chmurze.
+1. Dla lokalizacji wybierz region, który znajduje się w pobliżu danych i innymi aplikacjami w chmurze.
 
 1. W obszarze Warstwa cenowa możesz utworzyć usługę w warstwie **Bezpłatna**, aby ukończyć samouczki i przewodniki Szybki start. Na potrzeby głębszej analizy z wykorzystaniem własnych danych możesz utworzyć [płatną usługę](https://azure.microsoft.com/pricing/details/search/), taką jak usługa w warstwie **Podstawowa** lub **Standardowa**. 
 

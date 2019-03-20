@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: ec90c230674799d9b2f56f1659d61032d0eb834c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848681"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Rozpoczynanie pracy z usługą Azure Notification Hubs przy użyciu usługi Baidu
 
@@ -132,8 +132,8 @@ Zanotuj wartości `DefaultListenSharedAccessSignature` i `DefaultFullSharedAcces
 5. Następnie dodaj biblioteki usługi Azure Notification Hubs. W pliku `Build.Gradle` dla aplikacji dodaj następujące wiersze w sekcji dependencies.
 
     ```javascript
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
     Dodaj następujące repozytorium po sekcji dependencies.
@@ -141,7 +141,7 @@ Zanotuj wartości `DefaultListenSharedAccessSignature` i `DefaultFullSharedAcces
     ```javascript
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -161,7 +161,7 @@ Zanotuj wartości `DefaultListenSharedAccessSignature` i `DefaultFullSharedAcces
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6. Pobierz i rozpakuj [Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu](http://push.baidu.com/doc/android/api). Skopiuj plik `pushservice-x.y.z jar` z folderu libs. Następnie skopiuj pliki `.so` z folderów `src/main/jniLibs` (utwórz nowy folder) aplikacji dla systemu Android.
+6. Pobierz i rozpakuj [Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu](https://push.baidu.com/doc/android/api). Skopiuj plik `pushservice-x.y.z jar` z folderu libs. Następnie skopiuj pliki `.so` z folderów `src/main/jniLibs` (utwórz nowy folder) aplikacji dla systemu Android.
 
     ![Azure Notification Hubs — pliki lib w zestawie SDK usługi Baidu](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
@@ -497,7 +497,7 @@ W tej sekcji przedstawiono sposób wysyłania powiadomienia za pomocą aplikacji
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-    Ta instrukcja powoduje dodanie odwołania do zestawu SDK usługi Azure Notification Hubs z użyciem [pakietu NuGet Microsoft.Azure.Notification Hubs](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+    Ta instrukcja powoduje dodanie odwołania do zestawu SDK usługi Azure Notification Hubs z użyciem [pakietu NuGet Microsoft.Azure.Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -537,6 +537,6 @@ Testowe powiadomienie można wysłać przy użyciu karty debugowania w witrynie 
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu]: http://push.baidu.com/sdk/push_client_sdk_for_android
+[Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu]: https://push.baidu.com/sdk/push_client_sdk_for_android
 [Azure Portal]: https://portal.azure.com/
-[portalu Baidu]: http://www.baidu.com/
+[portalu Baidu]: https://www.baidu.com/

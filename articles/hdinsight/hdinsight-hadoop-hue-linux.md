@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: e0e25a9a1e70575d862374da0fb3097408b002e7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714631"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202694"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z rozwiązania Hue w klastrach usługi HDInsight Hadoop
 
@@ -66,7 +66,7 @@ Ta sekcja zawiera instrukcje dotyczące używania skryptu podczas aprowizowania 
    * **IDENTYFIKATOR URI SKRYPTU**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **HEAD**: Zaznacz tę opcję.
    * **PROCES ROBOCZY**: Pozostaw to pole puste.
-   * **DOZORCY**: Pozostaw to pole puste.
+   * **ZOOKEEPER**: Pozostaw to pole puste.
    * **PARAMETRY**: Pozostaw to pole puste.
 3. W dolnej części **akcji skryptu**, użyj **wybierz** przycisk, aby zapisać konfigurację. Na koniec użyj **wybierz** znajdujący się u dołu **opcjonalna konfiguracja** bloku, aby zapisać informacje o konfiguracji opcjonalnej.
 4. Kontynuuj, inicjowania obsługi klastra zgodnie z opisem w [Provision HDInsight clusters w systemie Linux](hdinsight-hadoop-provision-linux-clusters.md).
@@ -143,7 +143,6 @@ Tunelowanie SSH jest jedynym sposobem na dostęp do aplikacji Hue w klastrze, gd
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Instalowanie systemu Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach usługi HDInsight Hadoop. System Giraph umożliwia przetwarzanie wykresów za pomocą usługi Hadoop i mogą służyć za pomocą usługi Azure HDInsight.
-* [Instalowanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md). Użyj dostosowywania klastra, aby zainstalować platformę Solr w klastrach usługi HDInsight Hadoop. Solr umożliwia wykonywanie operacji wyszukiwania zaawansowanego w przechowywanych danych.
 * [Instalowanie języka R w klastrach HDInsight](hdinsight-hadoop-r-scripts-linux.md). Użyj dostosowywania klastra, aby zainstalować język R w klastrach usługi HDInsight Hadoop. R to język typu open source i środowisko do przeprowadzania obliczeń statystycznych. Zapewnia setek wbudowanych funkcji statystycznych i swój własny łączącą aspektów programowania funkcjonalności i zorientowane obiektowo języka programowania. Udostępnia również rozbudowane funkcje graficzne.
 
 [powershell-install-configure]: install-configure-powershell-linux.md

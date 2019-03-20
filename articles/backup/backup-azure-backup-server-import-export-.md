@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 01b90d6bb18addd6a0235101f86b9d51953cc096
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818561"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094977"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Przepływ pracy w trybie offline z kopii zapasowej programu DPM i serwer usługi Azure Backup
 Usługa Azure Backup ma kilka wbudowanych korzyści, które zmniejsza koszty magazynu i sieci podczas początkowego pełne kopie zapasowe danych na platformę Azure. Początkowa pełne kopie zapasowe zazwyczaj przesyłanie dużych ilości danych, a także wymagają większej przepustowości sieci w porównaniu do kolejnych kopii zapasowych, które przenieść tylko różnic/przyrostowa. Usługa Azure Backup są kompresowane wstępne kopie zapasowe. Proces rozmieszczania w trybie offline usługa Azure Backup umożliwia dysków Przekaż skompresowane dane początkowej kopii zapasowej w trybie offline na platformę Azure.
@@ -55,7 +55,7 @@ Upewnij się, że spełniono następujące wymagania wstępne, przed zainicjowan
 
 * Konto usługi Azure Storage za pomocą *klasycznego* modelu wdrażania przy użyciu została utworzona w ramach subskrypcji, z którego został pobrany plik ustawień publikowania w pokazany poniżej: 
 
- ![Tworzenie klasycznego konta magazynu](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![Tworzenie klasycznego konta magazynu](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
 
 * Utworzono lokalizację tymczasową, która może być udział sieciowy lub kolejny dysk na komputerze, wewnętrzne lub zewnętrzne, przy użyciu miejsca na dysku do przechowywania kopii początkowej. Na przykład jeśli chcesz utworzyć kopię zapasową na serwerze plików 500 GB, upewnij się, że obszar przejściowy co najmniej 500 GB. (Mniejszą ilość jest używany z powodu stosowania kompresji).
 * W odniesieniu do dysków, które będą wysyłane do platformy Azure upewnij się, który tylko 2,5 SSD lub 2.5 cala lub 3,5 cala SATA II/III wewnętrzne dyski twarde są używane. Można użyć dysków twardych do 10 TB. Sprawdź [dokumentacji usługi Azure Import/Export](../storage/common/storage-import-export-requirements.md#supported-hardware) o najnowszym zestawie dysków obsługiwanych przez usługę.
@@ -74,12 +74,12 @@ Informacje przedstawione w tej sekcji ułatwiają ukończenia przepływu pracy w
 
     Opis danych wejściowych jest następująca:
 
-    * **Lokalizacja tymczasowa**: Lokalizacja magazynu tymczasowego, na którym jest zapisany początkowa kopia zapasowa. Lokalizacja tymczasowa mogą znajdować się na udziale sieciowym lub na komputerze lokalnym. Jeśli kopia komputera i komputera źródłowego są różne, zalecane jest, określ pełną ścieżkę sieciową lokalizacji przejściowej.
-    * **Nazwa zadania importowania platformy Azure**: Unikatowa nazwa importu platformy Azure, które usługi i usługi Azure Backup śledzić transferu danych na dyskach na platformie Azure.
-    * **Ustawienia publikowania na platformie Azure**: Podaj ścieżkę lokalną do pliku ustawień publikowania.
-    * **Identyfikator subskrypcji platformy Azure**: Identyfikator subskrypcji platformy Azure dla subskrypcji, z którego został pobrany plik ustawień publikowania na platformie Azure. 
-    * **Konto usługi Azure Storage**: Nazwa konta magazynu w subskrypcji platformy Azure skojarzone z plikiem ustawień publikowania na platformie Azure.
-    * **Azure Storage Container**: Nazwa magazynu docelowego obiektu blob na koncie Azure storage, którego dane kopii zapasowej jest importowany.
+   * **Lokalizacja tymczasowa**: Lokalizacja magazynu tymczasowego, na którym jest zapisany początkowa kopia zapasowa. Lokalizacja tymczasowa mogą znajdować się na udziale sieciowym lub na komputerze lokalnym. Jeśli kopia komputera i komputera źródłowego są różne, zalecane jest, określ pełną ścieżkę sieciową lokalizacji przejściowej.
+   * **Nazwa zadania importowania platformy Azure**: Unikatowa nazwa importu platformy Azure, które usługi i usługi Azure Backup śledzić transferu danych na dyskach na platformie Azure.
+   * **Ustawienia publikowania na platformie Azure**: Podaj ścieżkę lokalną do pliku ustawień publikowania.
+   * **Identyfikator subskrypcji platformy Azure**: Identyfikator subskrypcji platformy Azure dla subskrypcji, z którego został pobrany plik ustawień publikowania na platformie Azure. 
+   * **Konto usługi Azure Storage**: Nazwa konta magazynu w subskrypcji platformy Azure skojarzone z plikiem ustawień publikowania na platformie Azure.
+   * **Azure Storage Container**: Nazwa magazynu docelowego obiektu blob na koncie Azure storage, którego dane kopii zapasowej jest importowany.
 
      Zapisz *lokalizacji tymczasowej* i *nazwę zadania importowania platformy Azure* podałeś, ponieważ jest wymagane, aby przygotować dyski.  
      
@@ -102,14 +102,14 @@ Informacje przedstawione w tej sekcji ułatwiają ukończenia przepływu pracy w
 
 1. Przejdź do katalogu i skopiuj **AzureOfflineBackupDiskPrep** katalogu na komputerze kopiowania, na którym są połączone dyski SATA, które mają zostać przygotowane. Upewnij się, poniżej w odniesieniu do komputera kopii:
 
-    * Komputer kopiowania ma dostęp do lokalizacji tymczasowej dla przepływu pracy w trybie offline rozmieszczania przy użyciu tej samej ścieżki sieciowej została podana w **inicjowanie kopii zapasowej offline** przepływu pracy.
-    * Funkcja BitLocker jest włączona na komputerze kopiowania.
-    * Komputer kopiowania można uzyskać dostęp do witryny Azure portal.
+   * Komputer kopiowania ma dostęp do lokalizacji tymczasowej dla przepływu pracy w trybie offline rozmieszczania przy użyciu tej samej ścieżki sieciowej została podana w **inicjowanie kopii zapasowej offline** przepływu pracy.
+   * Funkcja BitLocker jest włączona na komputerze kopiowania.
+   * Komputer kopiowania można uzyskać dostęp do witryny Azure portal.
 
-    Jeśli to konieczne, komputer kopia może być taka sama jak komputera źródłowego. 
+     Jeśli to konieczne, komputer kopia może być taka sama jak komputera źródłowego. 
     
-    > [!IMPORTANT] 
-    > Jeśli komputer źródłowy jest maszyną wirtualną, następnie jest wymagane, aby użyć różnych serwer fizyczny lub na komputerze klienckim jako komputer kopiowania.
+     > [!IMPORTANT] 
+     > Jeśli komputer źródłowy jest maszyną wirtualną, następnie jest wymagane, aby użyć różnych serwer fizyczny lub na komputerze klienckim jako komputer kopiowania.
     
     
 2. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień na tym komputerze kopiowania *AzureOfflineBackupDiskPrep* narzędzie katalogu jako bieżący katalog, a następnie uruchom następujące polecenie:

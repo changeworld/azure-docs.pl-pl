@@ -4,20 +4,23 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: b802c9dbd0cef65325cb03538b68b49c57b85bb3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 6768b1b8e0f5d7d3644779268025551c4e1aef9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56890937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964236"
 ---
 Wybierz pozycję **Build (Kompilacja)**, aby otworzyć okno dialogowe. Następnie wybierz folder, aby wyeksportować projekt środowiska Xcode.
 
 Po zakończeniu eksportowania zostanie wyświetlony folder zawierający wyeksportowany projekt Xcode.
 
+> [!NOTE]
+> Jeśli okno dialogowe pojawia się okienko z prośbą o chęć **Zastąp** lub **Append**, **dołączania** jest to zalecane, ponieważ jest ono szybciej. Należy jedynie wykonać **Zastąp** Jeśli zmieniasz zasoby w sceny (Dodawanie, usuwanie, zmiana relacji nadrzędny/podrzędny, dodawanie/usuwanie/zmiana właściwości itp). Jeśli wykonujesz tylko zmiany kodu źródłowego, **Append** powinny wystarczyć.
+
 ### <a name="open-the-xcode-project"></a>Otwieranie projektu Xcode
 
-W folderze wyeksportowanego projektu Xcode uruchom następujące polecenie, aby zainstalować zasobniki CocoaPods niezbędne dla projektu:
+W folderze projektu Xcode wyeksportowanego uruchom następujące polecenie w terminalu, aby zainstalować zasobniki CocoaPods niezbędne dla projektu:
 
 ```bash
 pod install --repo-update
@@ -34,7 +37,7 @@ open ./Unity-iPhone.xcworkspace
 
 Wybierz węzeł główny **Unity iPhone**, aby wyświetlić ustawienia projektu, a następnie wybierz kartę **General (Ogólne)**.
 
-W obszarze **Signing (Podpisywanie)** wybierz pozycję **Automatically manage signing (Automatycznie zarządzaj podpisywaniem)**. W wyświetlonym oknie dialogowym wybierz pozycję **Enable Automatic (Włącz automatyzację)**, aby zresetować ustawienia kompilacji.
+W obszarze **podpisywanie**, sprawdź, czy **automatycznie zarządzała podpisywania** jest włączona. Jeśli tak nie jest, Aktywuj ją i wybierz **włączyć automatyczne** w oknie dialogowym można zresetować ustawienia kompilacji.
 
 W obszarze **Deployment Info (Informacje o wdrożeniu)** upewnij się, że w polu **Deployment Target (Cel wdrożenia)** ustawiono wartość `11.0`.
 

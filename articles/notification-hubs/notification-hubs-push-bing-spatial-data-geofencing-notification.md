@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 7b01ee726d8417e34645e743497a02455fbe709c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 9baeb1c21252f8b7f7b24debde48108532d9865c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453156"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118310"
 ---
 # <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Samouczek: dostarczanie powiadomień push opartych na lokalizacji przy użyciu usługi Azure Notification Hubs i danych przestrzennych usługi Bing
 
@@ -63,12 +63,12 @@ W tym samouczku wykonasz następujące kroki:
 
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Na stronie **Upload a data source** (Przekazywanie źródła danych) wykonaj następujące czynności:
-    1. Wybierz pozycję **Pipe** (Potok) w polu **Data format** (Format danych).
-    2. Wyszukaj i wybierz plik `NotificationHubGeofence.pipe` utworzony w poprzednim kroku.
-    3. Wybierz przycisk **Upload** (Przekaż).
+   1. Wybierz pozycję **Pipe** (Potok) w polu **Data format** (Format danych).
+   2. Wyszukaj i wybierz plik `NotificationHubGeofence.pipe` utworzony w poprzednim kroku.
+   3. Wybierz przycisk **Upload** (Przekaż).
 
-    > [!NOTE]
-    > Może zostać wyświetlony monit o określenie nowego klucza dla właściwości **Klucz główny**, który różni się od właściwości **Klucz zapytania**. Po prostu utwórz nowy klucz przy użyciu pulpitu nawigacyjnego i odśwież stronę przekazywania źródła danych.
+      > [!NOTE]
+      > Może zostać wyświetlony monit o określenie nowego klucza dla właściwości **Klucz główny**, który różni się od właściwości **Klucz zapytania**. Po prostu utwórz nowy klucz przy użyciu pulpitu nawigacyjnego i odśwież stronę przekazywania źródła danych.
 6. Po przekazaniu pliku danych opublikuj źródło danych. Wybierz pozycję **Data sources** -> **Manage Data Sources** (Źródła danych > Zarządzaj źródłami danych) tak jak wcześniej.
 7. Wybierz źródło danych na liście, a następnie wybierz pozycję **Publish** (Publikuj) w kolumnie **Actions** (Akcje).
 
@@ -112,11 +112,11 @@ W tym samouczku wykonasz następujące kroki:
     ```
     Aby przygotować go do pracy, określ następujące parametry:
 
-    * **Identyfikator źródła danych** i **Nazwa źródła danych** — w interfejsie API Map Bing źródła danych zawierają różne metadane w zasobnikach, takie jak lokalizacje i godziny pracy.  
-    * **Nazwa jednostki** — jednostka, która ma być używana jako punkt odniesienia dla powiadomienia.
-    * **Klucz interfejsu API Map Bing** — klucz uzyskany wcześniej podczas tworzenia konta Centrum deweloperów Bing.
+   * **Identyfikator źródła danych** i **Nazwa źródła danych** — w interfejsie API Map Bing źródła danych zawierają różne metadane w zasobnikach, takie jak lokalizacje i godziny pracy.  
+   * **Nazwa jednostki** — jednostka, która ma być używana jako punkt odniesienia dla powiadomienia.
+   * **Klucz interfejsu API Map Bing** — klucz uzyskany wcześniej podczas tworzenia konta Centrum deweloperów Bing.
 
-    Po przygotowaniu źródła danych możemy rozpocząć pracę nad aplikacją platformy uniwersalnej systemu Windows.
+     Po przygotowaniu źródła danych możemy rozpocząć pracę nad aplikacją platformy uniwersalnej systemu Windows.
 2. Włącz usługi lokalizacji dla aplikacji. Otwórz plik `Package.appxmanifest` w **Eksploratorze rozwiązań**.
 
     ![](./media/notification-hubs-geofence/vs-package-manifest.png)
@@ -387,7 +387,7 @@ W tym samouczku wykonasz następujące kroki:
 
     ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jest kilka kroków, których wykonanie może być konieczne, aby mieć pewność, że rozwiązanie jest gotowe do zastosowania w środowisku produkcyjnym.
 

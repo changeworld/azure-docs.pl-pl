@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 52b52cce1e93e55563cf695f06bd7821ebcfc585
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444909"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112538"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych Apache HBase w sieci wirtualnej platformy Azure
 
@@ -288,15 +288,15 @@ Poniżej opisano sposób wywoływania akcji skryptu skrypt z witryny Azure porta
 4. W górnej części strony wybierz **Prześlij nową**.
 5. Wybierz lub wprowadź następujące informacje:
 
-  1. **Nazwa**: Wprowadź **włączyć replikację**.
-  2. **Adres URL skryptu programu bash**: Wprowadź **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  3.  **HEAD**: Upewnij się, że ta opcja jest zaznaczona. Wyczyść typy węzłów.
-  4. **Parametry**: Następujące przykładowe parametry włączyć replikację dla wszystkich istniejących tabel, a następnie skopiuj wszystkie dane z klastra źródłowego do klastra docelowego:
+   1. **Nazwa**: Wprowadź **włączyć replikację**.
+   2. **Adres URL skryptu programu bash**: Wprowadź **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+   3. **HEAD**: Upewnij się, że ta opcja jest zaznaczona. Wyczyść typy węzłów.
+   4. **Parametry**: Następujące przykładowe parametry włączyć replikację dla wszystkich istniejących tabel, a następnie skopiuj wszystkie dane z klastra źródłowego do klastra docelowego:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    > [!NOTE]
-    > Użyj nazwy hosta zamiast nazwy FQDN dla nazwy DNS klastra źródłowego i docelowego.
+      > [!NOTE]
+      > Użyj nazwy hosta zamiast nazwy FQDN dla nazwy DNS klastra źródłowego i docelowego.
 
 6. Wybierz pozycję **Utwórz**. Skrypt może wymagać trochę czasu, aby uruchomić, szczególnie w przypadku, gdy używasz **- copydata** argumentu.
 

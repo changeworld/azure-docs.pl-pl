@@ -5,19 +5,19 @@ author: rezas
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: ea82bdca23d8b34898261eb60fd908d281451fd0
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: d1cfe3d998c08aef2b845315a16d881dea1cd1f6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825758"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124358"
 ---
 W tej sekcji opisano, jak utworzyć centrum IoT przy użyciu witryny [Azure Portal](https://portal.azure.com).
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wybierz pozycję +**Utwórz zasób**, następnie pozycję **Internet rzeczy**.
 
@@ -31,7 +31,7 @@ W tej sekcji opisano, jak utworzyć centrum IoT przy użyciu witryny [Azure Port
 
    **Grupa zasobów**: istnieje możliwość utworzenia nowej lub użycia istniejącej grupy zasobów. Aby utworzyć nową, kliknij pozycję **Utwórz nową** i wprowadź nazwę, której chcesz używać. Aby użyć istniejącej grupy zasobów, kliknij pozycję **Użyj istniejącej**, a następnie wybierz grupę zasobów z listy rozwijanej. Aby uzyskać więcej informacji, zobacz [Zarządzanie grupami zasobów usługi Azure Resource Manager](../articles/azure-resource-manager/manage-resource-groups-portal.md).
 
-   **Region**: jest to region, w którym ma znajdować się centrum. Wybierz obsługiwany region (np. Środkowe stany USA lub Środkowe stany USA — EUAP).
+   **Region**: jest to region, w którym ma znajdować się centrum. Wybierz region, który obsługuje usługi IoT Hub urządzenia strumieni wersji zapoznawczej, środkowe stany USA lub centralna stany USA — EUAP.
 
    **Nazwa centrum IoT**: podaj nazwę dla centrum IoT Hub. Ta nazwa musi być unikatowa w skali globalnej. Jeśli wprowadzona nazwa jest dostępna, zostanie wyświetlony zielony znacznik wyboru.
 
@@ -41,8 +41,7 @@ W tej sekcji opisano, jak utworzyć centrum IoT przy użyciu witryny [Azure Port
 
    ![Zrzut ekranu przedstawiający ustawianie rozmiaru i skali dla nowego centrum IoT przy użyciu witryny Azure Portal](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-2-free.png)
 
-
-   Na tym ekranie możesz przyjąć wartości domyślne, klikając pozycję **Przejrzyj i utwórz** u dołu. 
+   Na tym ekranie możesz przyjąć wartości domyślne, klikając pozycję **Przejrzyj i utwórz** u dołu.
 
    **Warstwa cenowa i warstwa skali**: wybierz warstwę Standardowa (S1, S2, S3) lub Bezpłatna (F1). Podstawą tego wyboru może być także liczba urządzeń i rozmiar obciążeń innych niż przesyłania strumieniowego (np. komunikatów telemetrii) oczekiwanych dla centrum. Na przykład warstwa Bezpłatna służy do testowania i oceny. Obsługuje ona 500 urządzeń połączonych z centrum IoT i do 8000 komunikatów dziennie. Każda subskrypcja platformy Azure umożliwia utworzenie jednego centrum IoT w ramach warstwy Bezpłatna. 
 

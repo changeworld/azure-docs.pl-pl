@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: b4778c87ca5da266858cd05c67e5f0a78af731bc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 11a8ef1974e8d930b0001ccfb445b0eee509356f
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330821"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188955"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Go 
 <a name="HOLTop"></a>
@@ -41,9 +41,9 @@ Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyci
 1. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
 1. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westcentralus`) na region, w którym zostało zarejestrowane konto.
 1. Zapisz plik z rozszerzeniem „go”.
-1. Otwórz wiersz polecenia na komputerze, na którym zainstalowano środowisko języka Go.
-1. Skompiluj plik, na przykład za pomocą polecenia „go build quickstart.go”.
-1. Uruchom plik, na przykład „quickstart”.
+1. Otwórz wiersz polecenia na komputerze z Przejdź zainstalowanych z folderu głównego.
+1. Skompiluj plik, na przykład za pomocą polecenia: `go build detect.go`.
+1. Uruchom plik, na przykład: `go run detect.go`.
 
 ```golang
 package main
@@ -177,16 +177,16 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="analyze-sentiment-request"></a>Żądanie Analyze sentiment
 
-Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). W poniższym przykładzie oceniane są dwa dokumenty, jeden w języku angielskim, a drugi w hiszpańskim.
+Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Analiza tonacji, można dowiedzieć się, co klienci myślą o Twojej marki lub wybranego tematu, analizując nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. W poniższym przykładzie przedstawiono wyniki dla dwa dokumenty, jeden w języku angielskim i drugi w języku hiszpańskim.
 
 1. Utwórz nowy projekt w języku Go w ulubionym edytorze kodu.
 1. Dodaj kod przedstawiony poniżej.
 1. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
 1. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westcentralus`) na region, w którym zostało zarejestrowane konto.
 1. Zapisz plik z rozszerzeniem „go”.
-1. Otwórz wiersz polecenia na komputerze, na którym zainstalowano środowisko języka Go.
-1. Skompiluj plik, na przykład za pomocą polecenia „go build quickstart.go”.
-1. Uruchom plik, na przykład „quickstart”.
+1. Otwórz wiersz polecenia na komputerze z Przejdź zainstalowanych z folderu głównego.
+1. Skompiluj plik, na przykład za pomocą polecenia: `go build sentiment.go`.
+1. Uruchom plik, na przykład: `go run sentiment.go`.
 
 ```golang
 package main
@@ -272,7 +272,8 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Odpowiedź na żądanie Analyze sentiment
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
+Wynik jest mierzony jako dodatnie, jeśli jego są oceniane bliżej 1.0 i ujemne, jeśli są oceniane bliżej 0,0.
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -294,7 +295,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="extract-key-phrases-request"></a>Żądanie Extract key phrases
 
-Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
+Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Wyodrębnianie kluczowych fraz umożliwia szybko identyfikować jego główne punkty, dokumentu lub tekstu. W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
 
 1. Utwórz nowy projekt w języku Go w ulubionym edytorze kodu.
 1. Dodaj kod przedstawiony poniżej.
@@ -302,8 +303,8 @@ Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokume
 1. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westcentralus`) na region, w którym zostało zarejestrowane konto.
 1. Zapisz plik z rozszerzeniem „go”.
 1. Otwórz wiersz polecenia na komputerze, na którym zainstalowano środowisko języka Go.
-1. Skompiluj plik, na przykład za pomocą polecenia „go build quickstart.go”.
-1. Uruchom plik, na przykład „quickstart”.
+1. Skompiluj plik, na przykład za pomocą polecenia: `go build key-phrases.go`.
+1. Uruchom plik, na przykład: `go run key-phrases.go`.
 
 ```golang
 package main
@@ -390,7 +391,7 @@ func main() {
 
 ## <a name="extract-key-phrases-response"></a>Odpowiedź na żądanie Extract key phrases
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -430,9 +431,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 <a name="Entities"></a>
 
-## <a name="identify-entities-request"></a>Żądanie identyfikowania jednostek
+## <a name="identify-entities"></a>Identyfikowanie jednostek
 
-Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
+Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębnić wyrazów w tekście, takie jak "United States", a następnie zapewniają typ i/lub Wikipedia link to wyrazów. Typ dla "United States" jest `location`, a łącze do Wikipedia `https://en.wikipedia.org/wiki/United_States`.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
 
 1. Utwórz nowy projekt w języku Go w ulubionym edytorze kodu.
 1. Dodaj kod przedstawiony poniżej.
@@ -440,8 +441,8 @@ Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstow
 1. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westcentralus`) na region, w którym zostało zarejestrowane konto.
 1. Zapisz plik z rozszerzeniem „go”.
 1. Otwórz wiersz polecenia na komputerze, na którym zainstalowano środowisko języka Go.
-1. Skompiluj plik, na przykład za pomocą polecenia „go build quickstart.go”.
-1. Uruchom plik, na przykład „quickstart”.
+1. Skompiluj plik, na przykład za pomocą polecenia: `go build entities.go`.
+1. Uruchom plik, na przykład: `go run entities.go`.
 
 ```golang
 package main
@@ -685,12 +686,12 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
  [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)

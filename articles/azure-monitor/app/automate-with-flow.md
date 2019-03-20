@@ -9,18 +9,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2017
+ms.date: 03/12/2019
 ms.author: mbullwin
-ms.openlocfilehash: 685ce54f75b20879230163f216246746b4a36922
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: cbb9cceef68febec0af991c3d8d5df3e3404f1c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756651"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834054"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Zautomatyzować procesy usługi Azure Application Insights za pomocą łącznika usługi Microsoft Flow
 
-Czy masz ochotę wielokrotnie systemem tego samego zapytania dane telemetryczne, aby sprawdzić, czy usługa działa właściwie? Czy chcesz zautomatyzować te zapytania służące do znajdowania trendów i anomalii, a następnie utworzyć własne przepływy pracy wokół nich? Łącznik usługi Azure Application Insights (wersja zapoznawcza) dla Microsoft Flow jest właściwych narzędzi do tych celów.
+Czy masz ochotę wielokrotnie systemem tego samego zapytania dane telemetryczne, aby sprawdzić, czy usługa działa właściwie? Czy chcesz zautomatyzować te zapytania służące do znajdowania trendów i anomalii, a następnie utworzyć własne przepływy pracy wokół nich? Łącznik usługi Azure Application Insights dla Microsoft Flow jest właściwych narzędzi do tych celów.
 
 Dzięki tej integracji możesz teraz zautomatyzować wiele procesów bez konieczności pisania nawet jednego wiersza kodu. Po utworzeniu przepływu za pomocą akcji usługi Application Insights, przepływ automatycznie uruchamia zapytania analizy usługi Application Insights. 
 
@@ -34,38 +34,45 @@ W tym samouczku dowiesz się, jak utworzyć przepływ, który używa algorytmu k
 
 ### <a name="step-1-create-a-flow"></a>Krok 1: Tworzenie przepływu
 1. Zaloguj się do [Microsoft Flow](https://flow.microsoft.com), a następnie wybierz pozycję **moje przepływy**.
-2. Kliknij przycisk **Tworzenie przepływu od podstaw**.
+2. Kliknij przycisk **New** następnie **Utwórz z pustego**.
+
+    ![Utwórz nowy przepływ od podstaw](./media/automate-with-flow/1createflow.png)
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Tworzenie wyzwalacza przepływu
-1. Wybierz **harmonogram**, a następnie wybierz pozycję **harmonogram — cyklicznie**.
-1. W **częstotliwość** wybierz opcję **dzień**, a następnie w **interwał** wprowadź **1**.
+1. Wybierz opcję w kompilacji w **harmonogram**, a następnie wybierz pozycję **harmonogram — cyklicznie**.
 
-    ![Okno dialogowe wyzwalacz Microsoft Flow](./media/automate-with-flow/flow1.png)
+    ![Wybierz zaplanowane w ramach kompilacji](./media/automate-with-flow/2schedule.png)
+
+1. W **interwał** wprowadź **1**, a następnie w **częstotliwość** wybierz opcję **dzień**.
+2. Kliknij przycisk **nowy krok**
+
+    ![Skonfiguruj harmonogram cyklu z wprowadzaniem wartościami frequency i interval](./media/automate-with-flow/3schedulerecurrence.png)
 
 
 ### <a name="step-3-add-an-application-insights-action"></a>Krok 3: Dodawanie akcji usługi Application Insights
-1. Kliknij przycisk **nowy krok**, a następnie kliknij przycisk **Dodaj akcję**.
 1. Wyszukaj **usługi Application Insights**.
-1. Kliknij przycisk **Azure Application Insights — analiza wizualizacji zapytań (wersja zapoznawcza)**.
-
-    ![Uruchom okno zapytania usługi Analytics](./media/automate-with-flow/flow2.png)
+2. Kliknij przycisk **Azure Application Insights — zapytania analizy wizualizacji**.
+ 
+    ![Wybierz akcję: Usługa Azure zapytania wizualizować analizy usługi Application Insights](./media/automate-with-flow/4visualize.png)
 
 ### <a name="step-4-connect-to-an-application-insights-resource"></a>Krok 4: Łączenie z zasobem usługi Application Insights
 
 Aby ukończyć ten krok, należy identyfikator i klucz interfejsu API zasobu bazy danych. Można je pobrać w witrynie Azure portal, jak pokazano na poniższym diagramie:
 
-![Identyfikator aplikacji w witrynie Azure portal](./media/automate-with-flow/appid.png) 
+![Identyfikator aplikacji w witrynie Azure portal](./media/automate-with-flow/5apiaccess.png)
+
+![Klucz interfejsu API w witrynie Azure portal](./media/automate-with-flow/6apikey.png)
 
 - Podaj nazwę połączenia, wraz z kluczem identyfikator i interfejsu API aplikacji.
 
-    ![Okno połączenia Microsoft Flow](./media/automate-with-flow/flow3.png)
+    ![Okno połączenia Microsoft Flow](./media/automate-with-flow/7connection.png)
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5. Określ typ zapytania i wykres analizy
 To zapytanie przykładowe wybiera żądań zakończonych niepowodzeniem w ciągu ostatniego dnia i jest ich skorelowana z wyjątków, które wystąpiły w ramach operacji. Analiza koreluje je na podstawie identyfikatora operation_Id. Zapytanie, a następnie segmentów wyników przy użyciu algorytmu autocluster. 
 
 Podczas tworzenia własnych zapytań, sprawdź, czy działają prawidłowo w usłudze Analytics przed dodaniem go do przepływu.
 
-- Dodaj następujące zapytanie usługi Analytics, a następnie wybierz typ wykresu tabeli HTML. 
+- Dodaj następujące zapytanie usługi Analytics i wybierz typ wykresu tabeli HTML. Następnie wybierz pozycję **nowy krok**.
 
     ```
     requests
@@ -78,15 +85,14 @@ Podczas tworzenia własnych zapytań, sprawdź, czy działają prawidłowo w us�
     | evaluate autocluster()
     ```
     
-    ![Okno konfiguracji zapytania usługi Analytics](./media/automate-with-flow/flow4.png)
+    ![Okno konfiguracji zapytania usługi Analytics](./media/automate-with-flow/8query.png)
 
 ### <a name="step-6-configure-the-flow-to-send-email"></a>Krok 6: Konfiguruj przepływ do wysyłania wiadomości e-mail
 
-1. Kliknij przycisk **nowy krok**, a następnie kliknij przycisk **Dodaj akcję**.
 1. Wyszukaj **usługi Office 365 Outlook**.
-1. Kliknij przycisk **Office 365 Outlook — Wyślij wiadomość e-mail**.
+2. Kliknij przycisk **Office 365 Outlook — Wyślij wiadomość e-mail**.
 
-    ![Okno wyboru programu Outlook usługi Office 365](./media/automate-with-flow/flow2b.png)
+    ![Okno wyboru programu Outlook usługi Office 365](./media/automate-with-flow/9outlookaction.png)
 
 1. W **Wyślij wiadomość e-mail** okna, wykonaj następujące czynności:
 
@@ -98,7 +104,7 @@ Podczas tworzenia własnych zapytań, sprawdź, czy działają prawidłowo w us�
 
    d. Kliknij przycisk **Pokaż opcje zaawansowane**.
 
-    ![Konfiguracja programu Outlook usługi Office 365](./media/automate-with-flow/flow5.png)
+    ![Konfiguracja programu Outlook usługi Office 365](./media/automate-with-flow/10sendemailbody.png)
 
 1. W menu zawartości dynamicznej wykonaj następujące czynności:
 
@@ -108,12 +114,12 @@ Podczas tworzenia własnych zapytań, sprawdź, czy działają prawidłowo w us�
     
     c. W **HTML jest** wybierz opcję **tak**.
 
-    ![Okna konfiguracji poczty e-mail usługi Office 365](./media/automate-with-flow/flow7.png)
+    ![Okna konfiguracji poczty e-mail usługi Office 365](./media/automate-with-flow/11emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-flow"></a>Krok 7: Zapisz i przetestowanie przepływu
-- W **Nazwa przepływu** , Dodaj nazwę przepływowi, a następnie kliknij przycisk **Utwórz przepływ**.
+- W **Nazwa przepływu** , Dodaj nazwę przepływowi, a następnie kliknij przycisk **Zapisz**.
 
-    ![Tworzenie przepływu okna](./media/automate-with-flow/flow8.png)
+    ![Nazwij przepływ i Zapisz](./media/automate-with-flow/12nameflow.png)
 
 Możesz poczekać, aż wyzwalacz, aby uruchomić tej akcji lub uruchamianie przepływu w natychmiast przez [uruchamianie wyzwalacza na żądanie](https://flow.microsoft.com/blog/run-now-and-six-more-services/).
 

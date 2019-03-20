@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05b1885871c83da79839448fce2814016f0c082
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 64c199df2012e6ce3b3de5f34989cf5cbc135fdc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194567"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101027"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Przykłady kodu usługi Azure Active Directory (punkt końcowy w wersji 1.0)
 
@@ -45,7 +45,7 @@ Również może przyczynić się do naszych przykładów w witrynie GitHub. Aby 
 W tym przykładzie pokazano, jak napisać aplikację jednostronicowych zabezpieczony za pomocą usługi Azure AD.
 
  Platforma | Wywołuje jej własnego interfejsu API | Wywołuje innego interfejsu API sieci Web
- -------- |  --------------------- | ------------------ | ----------------
+ -------- |  --------------------- | ------------------ 
 ![JavaScript](media/sample-v2-code/logo_js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
 ![Angular JS](media/sample-v2-code/logo_angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
@@ -67,8 +67,8 @@ Poniższe przykłady ilustrują, aplikacje sieci Web logowania użytkowników. N
 
 Poniższe przykłady pokazują sposób implementacji kontroli dostępu opartej na rolach (RBAC). RBAC jest używana do Ogranicz uprawnienia do pewnych funkcji w aplikacji sieci web w taki sposób, aby niektórych użytkowników. Użytkownicy są autoryzowane w zależności od tego, czy należą one do **grupy usługi Azure AD** lub danej aplikacji **roli**.
 
-Platforma | Sample
- -------- | -------------------
+Platforma | Sample |
+ -------- | ------------------- |
 ![ASP.NET 4.5](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) <p/>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Aplikacja sieci web platformy .NET 4.5 MVC używa usługi Azure AD **role** autoryzacji
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Aplikacje komputerowe i mobilne publicznych klienta wywołanie programu Microsoft Graph lub interfejs API sieci Web
@@ -95,7 +95,7 @@ Pulpitu (Konsola)           | ![.NET core / C#](media/sample-v2-code/logo_NETcor
 Poniższe przykłady pokazują pulpitu lub aplikacji sieci web, do których dostęp internetowy interfejs API bez użytkownika (przy użyciu tożsamości aplikacji) lub Microsoft Graph.
 
 Aplikacja kliencka | Platforma | Przepływ/Grant | Wywołuje interfejs API platformy ASP.NET lub sieci Web platformy ASP.NET Core 2.0
------------------- | -------- | ---------- | -------------------- | -------------------------
+------------------ | -------- | ---------- | -------------------- 
 Demon aplikacji (Konsola)          | ![.NET](media/sample-v2-code/logo_NETframework.png) | Poświadczenia klienta za pomocą klucza tajnego aplikacji lub certyfikat | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 Demon aplikacji (Konsola)         | ![.NET](media/sample-v2-code/logo_NETcore.png) | Poświadczenia klienta przy użyciu certyfikatu| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
 Aplikacja sieci Web platformy ASP.NET  | ![.NET](media/sample-v2-code/logo_NETframework.png) | Poświadczenia klienta | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)

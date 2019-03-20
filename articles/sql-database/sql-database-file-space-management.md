@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: a6fccb087d8a2c78bb1ad47758952b76b245dbde
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: 043ceb6c46155ed169c080d08f37688b47e3e4b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881167"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku dla pojedynczych i puli baz danych w usłudze Azure SQL Database
 
@@ -29,6 +29,8 @@ W tym artykule opisano różne rodzaje miejsca w magazynie dla pojedynczego i pu
 ## <a name="overview"></a>Przegląd
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 Z jednej puli baz danych i w usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Ten stan może wystąpić, gdy ilość używanego miejsca zwiększy się, a następnie dane zostaną usunięte. Przyczyną jest, ponieważ plik miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
 
@@ -239,7 +241,7 @@ Aby włączyć automatyczne zmniejszanie, należy zmodyfikować nazwę bazy dany
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Aby uzyskać więcej informacji na temat tego polecenia, zobacz [bazy danych ustaw](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017) opcje. 
+Aby uzyskać więcej informacji na temat tego polecenia, zobacz [bazy danych ustaw](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) opcje. 
 
 ### <a name="rebuild-indexes"></a>Odbuduj indeksy
 

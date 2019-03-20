@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: dc743f7e8ebaebf2b253a1c2c199133bc4266dd5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c2107e501affd5e3dd22e0fbc83d078b51d414a5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841144"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
@@ -40,6 +40,7 @@ Kiedy używasz funkcji klucza konta magazynu zarządzanego:
 - **Zezwalaj tylko na usłudze Key Vault do zarządzania kluczami konta magazynu.** Nie podejmuj próby zarządzać samodzielnie, jak będzie zakłócać procesów usługi Key Vault.
 - **Nie zezwalaj na klucze konta magazynu, które będą zarządzane przez więcej niż jeden obiekt usługi Key Vault**.
 - **Ręcznie nie Generuj ponownie klucze konta magazynu**. Firma Microsoft zaleca regenerować je za pośrednictwem usługi Key Vault.
+- Pytaniem Zarządzanie kontem magazynu Key Vault może odbywać się przez podmiot zabezpieczeń użytkownika teraz, a nie nazwy głównej usługi
 
 Poniższy przykład pokazuje, jak umożliwić usługi Key Vault do zarządzania kluczami konta magazynu.
 
@@ -124,7 +125,7 @@ Gdy ta operacja zostanie wykonana pomyślnie, powinien pojawić się dane wyjśc
    "se=2020-01-01&sp=***"
 ```
 
-2. W tym kroku użyjemy dane wyjściowe ($sasToken) generowane powyżej, aby utworzyć definicję sygnatury dostępu Współdzielonego. Aby uzyskać więcej dokumentacji przeczytaj [tutaj](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
+1. W tym kroku użyjemy dane wyjściowe ($sasToken) generowane powyżej, aby utworzyć definicję sygnatury dostępu Współdzielonego. Aby uzyskać więcej dokumentacji przeczytaj [tutaj](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
 
 ```
 az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
@@ -134,12 +135,11 @@ az keyvault storage sas-definition create --vault-name <YourVaultName> --account
  > [!NOTE] 
  > W przypadku, że użytkownik nie ma uprawnień do konta magazynu możemy najpierw uzyskać identyfikator obiektu użytkownika
 
-    ```
-    az ad user show --upn-or-object-id "developer@contoso.com"
+ ```
+ az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
-    
-    ```
+ az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+ ```
     
 ## <a name="fetch-sas-tokens-in-code"></a>Pobieranie tokenów sygnatur dostępu Współdzielonego w kodzie
 
@@ -147,8 +147,8 @@ W tej sekcji omówimy, jak operacje na koncie magazynu przez pobieranie [tokeny 
 
 W poniżej sekcji pokażemy, jak można pobrać tokeny sygnatur dostępu Współdzielonego, po utworzeniu definicja sygnatury dostępu Współdzielonego, jak pokazano powyżej.
 
-> [!NOTE] 
-  Istnieją 3 sposoby uwierzytelnienia do usługi Key Vault, ponieważ możesz przeczytać w [podstawowe pojęcia](key-vault-whatis.md#basic-concepts)
+> [!NOTE]
+>   Istnieją 3 sposoby uwierzytelnienia do usługi Key Vault, ponieważ możesz przeczytać w [podstawowe pojęcia](key-vault-whatis.md#basic-concepts)
 > - Przy użyciu tożsamości usługi zarządzanej (zdecydowanie zalecane)
 > - Za pomocą jednostki usługi i certyfikatu 
 > - Przy użyciu nazwy głównej usługi i hasła (niezalecane)

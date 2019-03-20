@@ -1,5 +1,5 @@
 ---
-title: LinkedIn udostępnianie danych integracji i zgody — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Konta LinkedIn, udostępnianie danych połączeń i zgody — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Wyjaśniono sposób integracji z usługą LinkedIn udostępnia dane za pośrednictwem aplikacji firmy Microsoft w usłudze Azure Active Directory
 services: active-directory
 author: curtand
@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71eeed62c6de2a3771909e8489ca816930993435
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442226"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200450"
 ---
-# <a name="linkedin-integration-data-sharing-and-consent"></a>Udostępnianie danych Integracja usługi LinkedIn i zgody
+# <a name="linkedin-account-connections-data-sharing-and-consent"></a>Udostępnianie danych połączenia konta usługi LinkedIn i zgody
 
-Jako administrator usługi Azure Active Directory (Azure AD) możesz umożliwić użytkownikom w organizacji, aby wyrazić zgodę na połączyć swoją pracę Microsoft konta służbowego przy użyciu swojego konta usługi LinkedIn. Gdy użytkownicy łączą się z ich konta, informacje i najważniejsze informacje z usługi LinkedIn są dostępne w niektórych aplikacjach firmy Microsoft i usługach. Użytkownicy mogą również oczekiwać środowiska sieciowego w serwisie LinkedIn udoskonalany i wzbogacone o informacje od firmy Microsoft.
+Możesz umożliwić użytkownikom w organizacji usługi Active Directory (Azure AD), aby wyrazić zgodę na połączyć swoją pracę Microsoft konta służbowego przy użyciu swojego konta usługi LinkedIn. Po użytkownik łączy swoje konta, informacje i najważniejsze informacje z usługi LinkedIn są dostępne w niektórych aplikacjach firmy Microsoft i usługach. Użytkownicy mogą również oczekiwać środowiska sieciowego w serwisie LinkedIn udoskonalany i wzbogacone o informacje od firmy Microsoft.
 
 Aby wyświetlić informacje LinkedIn z usługami i aplikacjami firmy Microsoft, użytkownicy muszą wyrazić zgodę, do łączenia z własnymi kontami Microsoft i LinkedIn. Użytkownicy są monitowani o łączenie ich kont, gdy są one kliknij, aby zobaczyć informacje LinkedIn innego użytkownika na karcie profil w programie Outlook, OneDrive lub SharePoint Online po raz pierwszy. Połączenia konta usługi LinkedIn nie są w pełni włączone dla użytkowników, dopóki nie mogą wyrazić zgodę, do środowiska oraz łączenie ich kont.
 
@@ -32,13 +32,13 @@ Aby wyświetlić informacje LinkedIn z usługami i aplikacjami firmy Microsoft, 
 
 Dostęp do informacji usługi LinkedIn w ramach usług i aplikacji firmy Microsoft ułatwia użytkownikom łączenie, zaangażowania i utworzyć relacje profesjonalnych współpracownikom, klientom i partnerom wewnątrz organizacji i poza nią. Nowi użytkownicy mogą szybciej się wszystkiego, łączenie ze współpracownikami, więcej informacji na temat ich i łatwe uzyskiwanie dostępu do informacji. Poniżej przedstawiono przykładowy sposób LinkedIn informacje są wyświetlane na karcie profil w aplikacjach firmy Microsoft:
 
-![Włączanie integracji z usługą LinkedIn](./media/linkedin-user-consent/display-example.png)
+![Włączanie integracji usługi LinkedIn w Twojej organizacji](./media/linkedin-user-consent/display-example.png)
 
 ## <a name="enable-and-announce-linkedin-integration"></a>Włącz i poinformować o integracji z usługą LinkedIn
 
 Musi być administratora Azure Active Directory do zarządzania ustawienie dla Twojej organizacji. Można go włączyć dla wszystkich użytkowników lub dla określonych użytkowników.
 
-1. Aby włączyć lub wyłączyć integrację, wykonaj kroki opisane w [integracji z usługą LinkedIn](linkedin-integration.md).
+1. Aby włączyć lub wyłączyć integrację, wykonaj kroki opisane w [wyrazić zgodę na integracji z usługą LinkedIn dla organizacji usługi Azure AD](linkedin-integration.md).
 2. Podczas integracji z usługą LinkedIn anonsowania w Twojej organizacji, wskaż użytkowników często zadawane pytania dotyczące [LinkedIn informacji w usługach i aplikacjach firmy Microsoft](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Artykuł zawiera informacje o tym, gdzie LinkedIn informacji pojawia się, jak połączyć konta i nie tylko.
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Użytkownik wyrazić zgodę na dostęp do danych w Microsoft i LinkedIn

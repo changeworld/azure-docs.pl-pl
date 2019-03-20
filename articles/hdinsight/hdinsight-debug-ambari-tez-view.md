@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7d8a654b6b2f429119323fa5d18eb0596f63e6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719697"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105271"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Debugowanie zadań tez przy Apache na HDInsight przy użyciu widoków Ambari Apache
 
@@ -90,14 +90,14 @@ Umożliwia uruchomienie zapytania programu Hive, który używa Tez następujące
 
 5. Karty na tej stronie umożliwiają wyświetlanie następujące informacje:
 
-    * **Szczegóły zapytań**: Szczegółowe informacje o zapytania programu Hive.
-    * **Oś czasu**: Informacje o czas trwania każdego etapu przetwarzania.
-    * **Konfiguracje**: Konfiguracja używana dla tego zapytania.
+   * **Szczegóły zapytań**: Szczegółowe informacje o zapytania programu Hive.
+   * **Oś czasu**: Informacje o czas trwania każdego etapu przetwarzania.
+   * **Konfiguracje**: Konfiguracja używana dla tego zapytania.
 
-    Z __szczegóły kwerendy__ łącza można użyć, aby uzyskać informacje na temat __aplikacji__ lub __DAG__ dla tego zapytania.
+     Z __szczegóły kwerendy__ łącza można użyć, aby uzyskać informacje na temat __aplikacji__ lub __DAG__ dla tego zapytania.
     
-    * __Aplikacji__ link Wyświetla informacje dotyczące aplikacji usługi YARN dla tego zapytania. W tym miejscu możesz uzyskać dostęp, dzienniki aplikacji usługi YARN.
-    * __DAG__ link Wyświetla informacje o skierowanym grafie acyklicznym dla tego zapytania. W tym miejscu możesz wyświetlić graficzną reprezentację grafu DAG. Można również znaleźć informacji na temat wierzchołków w obrębie grafu DAG.
+   * __Aplikacji__ link Wyświetla informacje dotyczące aplikacji usługi YARN dla tego zapytania. W tym miejscu możesz uzyskać dostęp, dzienniki aplikacji usługi YARN.
+   * __DAG__ link Wyświetla informacje o skierowanym grafie acyklicznym dla tego zapytania. W tym miejscu możesz wyświetlić graficzną reprezentację grafu DAG. Można również znaleźć informacji na temat wierzchołków w obrębie grafu DAG.
 
 ## <a name="next-steps"></a>Następne kroki
 

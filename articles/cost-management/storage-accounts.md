@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 25a8057a1c547e29b209d87d9124a3e019957dd8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f03193253bd8d8a7530d65a552a07d3901887cf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100858"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104305"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurowanie kont magazynu na platformie Cloudyn
 
@@ -39,13 +39,13 @@ Możesz konfigurowania usługi Azure storage na potrzeby używania przez firmę 
 2. Kliknij przycisk **wszystkich usług**, wybierz opcję **kont magazynu**, przewiń do konta magazynu, który chcesz użyć, a następnie wybierz konto.
 3. Na stronie Twojego konta magazynu w ramach **ustawienia**, kliknij przycisk **klucze dostępu**.
 4. Kopiuj usługi **nazwa konta magazynu** i **parametry połączenia** w obszarze klucz1.  
-![Skopiuj parametry połączenia i nazwę konta magazynu](./media/storage-accounts/azure-storage-access-keys.png)  
+   ![Skopiuj parametry połączenia i nazwę konta magazynu](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę https://azure.cloudyn.com i zaloguj się.
 6. Kliknij symbol koła zębatego, a następnie wybierz pozycję **raporty zarządzania magazynem**.
 7. Kliknij przycisk **Dodaj nowe +** i upewnij się, że wybrano Microsoft Azure. Wklej nazwę konta usługi Azure storage w **nazwa** obszaru. Wklej swoje **parametry połączenia** w odpowiadający mu obszar. Wprowadź nazwę kontenera, a następnie kliknij przycisk **Zapisz**.  
-![Wklej konta magazynu platformy Azure, że nazwa i połączenia ciąg w oknie Dodaj nowe okno przechowywania raportu](./media/storage-accounts/azure-cloudyn-storage.png)
+   ![Wklej konta magazynu platformy Azure, że nazwa i połączenia ciąg w oknie Dodaj nowe okno przechowywania raportu](./media/storage-accounts/azure-cloudyn-storage.png)
 
-  Nowy wpis raport usługi Azure storage, zostanie wyświetlony na liście kont magazynu.  
+   Nowy wpis raport usługi Azure storage, zostanie wyświetlony na liście kont magazynu.  
     ![Nowy wpis raport usługi Azure storage, na liście](./media/storage-accounts/azure-storage-entry.png)
 
 
@@ -53,7 +53,7 @@ Raporty można zapisać teraz w usłudze Azure storage. W dowolnym raporcie klik
 
 ## <a name="configure-an-aws-storage-bucket"></a>Konfigurowanie przedziału magazyn AWS
 
-Cloudyn przy użyciu istniejących poświadczeń usługi AWS: użytkownika lub roli, aby zapisać raporty do zasobnika usługi. Aby przetestować dostęp, Cloudyn próbuje zapisać to mały plik tekstowy do zasobnika z nazwą pliku _wyboru zasobnika permission.txt_.
+Cloudyn przy użyciu istniejących poświadczeń usługi AWS: Użytkownik lub rola, aby zapisać raporty do zasobnika usługi. Aby przetestować dostęp, Cloudyn próbuje zapisać to mały plik tekstowy do zasobnika z nazwą pliku _wyboru zasobnika permission.txt_.
 
 Podasz roli Cloudyn lub użytkownika z uprawnieniami PutObject do zasobnika usługi. Następnie użyj istniejącego zasobnika, lub Utwórz nowy, aby zapisywać raporty. Na koniec zdecyduj, jak zarządzać klasę magazynu, Ustaw zasady cyklu życia lub usuń niepotrzebne pliki.
 
@@ -67,8 +67,8 @@ Podczas tworzenia nowych zasad, musisz podać uprawnienia potrzebne, aby zapisa�
 4. Kliknij przycisk **JSON** kartę.
 5. Następujące zasady umożliwia zapisywanie raportu przedział S3. Skopiuj i wklej poniższy przykład zasad **JSON** kartę. Zastąp &lt;bucketname&gt; z Twoją nazwą przedziału.
 
-  ```json
-{
+   ```json
+   {
     "Version": "2012-10-17",
     "Statement": [
       {
@@ -82,8 +82,8 @@ Podczas tworzenia nowych zasad, musisz podać uprawnienia potrzebne, aby zapisa�
         ]
       }
     ]
-}
-```
+   }
+   ```
 
 6. Kliknij przycisk **Przejrzyj zasady**.  
     ![Zasad usług AWS JSON przedstawiający przykładowe informacje](./media/storage-accounts/aws-policy.png)  
@@ -109,12 +109,12 @@ Aby dołączyć nowe zasady, otwórz konsolę usług AWS i edytować rolę Cloud
 1. Wybierz użytkownika platformy Cloudyn.
 2. Na **uprawnienia** kliknij pozycję **Dodaj uprawnienia**.
 3. W **Udziel uprawnienia** zaznacz **Dołącz istniejące zasady bezpośrednio**.
-4. Wyszukiwanie zasad, który został utworzony i wybierz ją, a następnie kliknij przycisk **dalej: Przejrzyj**.
+4. Wyszukiwanie zasad, który został utworzony i wybierz ją, a następnie kliknij przycisk **dalej: Review** (Dalej: przegląd).
 5. Dodaj uprawnienia do roli nazwy strony, kliknij przycisk **Dodaj uprawnienia**.  
     ![Przykładowe zasady dołączone do użytkowników platformy Cloudyn](./media/storage-accounts/aws-attach-policy-user.png)
 
 
-### <a name="optional-set-permission-with-bucket-policy"></a>Opcjonalnie: Ustawianie uprawnień za pomocą zasad zasobnika
+### <a name="optional-set-permission-with-bucket-policy"></a>Opcjonalnie: Ustawianie uprawnienia za pomocą zasad zasobnika
 
 Można również ustawić uprawnienia do tworzenia raportów w Twojej przedział S3 przy użyciu zasad zasobnika. W widoku klasycznym S3:
 
@@ -122,11 +122,11 @@ Można również ustawić uprawnienia do tworzenia raportów w Twojej przedział
 2. Wybierz **uprawnienia** kartę, a następnie kliknij przycisk **zasobnika zasad**.
 3. Skopiuj i wklej poniższy przykład zasad. Zastąp &lt;zasobnika\_nazwa&gt; i &lt;Cloudyn\_zasady&gt; z ARN z przedziału sieci. Zastąp ARN roli lub użytkownik w rozwiązaniu Cloudyn.
 
-  ```
-{
-  "Id": "Policy1485775646248",
-  "Version": "2012-10-17",
-  "Statement": [
+   ```
+   {
+   "Id": "Policy1485775646248",
+   "Version": "2012-10-17",
+   "Statement": [
     {
       "Sid": "SaveReport2S3",
       "Action": [
@@ -140,9 +140,9 @@ Można również ustawić uprawnienia do tworzenia raportów w Twojej przedział
         ]
       }
     }
-  ]
-}
-```
+   ]
+   }
+   ```
 
 4. W edytorze zasad zasobnika kliknij **Zapisz**.
 

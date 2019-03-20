@@ -8,12 +8,12 @@ ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dbb4789773ae9f1cd29f4a8e3ae415d450707a17
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 08a5e288d58d86cdad18561cb8a08a31f44ae498
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771331"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009725"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Rozwiązania i szkolenie dotyczące usługi Azure Active Directory B2C
 
@@ -28,3 +28,4 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia organizacjom Implemento
 | [Migrowanie aplikacji uwierzytelniania usługi Azure AD B2C w środowisku hybrydowym](https://aka.ms/MigratetoAADB2C) | W organizacjach nowoczesnych współczesnych transformacja cyfrowa i przejście do chmury odbywa się w etapach, wymaganie większości organizacji przynajmniej tymczasowo działa w środowisku hybrydowym tożsamości.<br><br>Ten przewodnik skupia się na tworzeniu planu migracji do przenoszenia pierwszą aplikację usługi Azure AD B2C i opisano zagadnienia, aby to zrobić w środowisku hybrydowym tożsamości. |
 | [Ochrona danych Ogólne zagadnienia (Regulation, GDPR) aplikacji połączonego z klientów](https://aka.ms/AADB2CandGDPR) | Dla każdego klienta, aplikacjach skierowanych RODO musi być brana pod uwagę przez wszystkie organizacje, które rozpoczęcia projektów, które przechowują dane osobiste i obsługiwać obywatelom Unii Europejskiej.<br><br>Ten przewodnik koncentruje się na jak usługi Azure AD B2C może służyć jako składnik elastyczne z ogólnym podejściem zgodności RODO, tym, jak składniki usługi Azure AD B2C obsługę każdego z kluczy praw RODO dla użytkowników indywidualnych. |
 | Praca z niestandardowych zasad:<br><ul><li>[Wprowadzenie do zasad niestandardowych](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Introduction.pdf)</li><li>[Korzystać z niestandardowych zasad w ramach dzierżawy](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Leveraging%20Custom%20Policies%20for%20your%20Tenant.pdf)</li><li>[Struktury zasad i zarządzanie kluczami](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Structuring%20Policies%20and%20Managing%20Keys.pdf)</li><li>[Przenieś swojej tożsamości oraz migrowanie użytkowników](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Bring-your-own-identity%20and%20Migrating%20Users.pdf)</li><li>[Rozwiązywanie problemów z zasadami i przeprowadzanie inspekcji dostępu](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Troubleshooting%20Policies%20and%20Auditing.pdf)</li><li>[Szczegółowe informacje dotyczące schematu zasad niestandardowych](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Deep%20Dive%20on%20Custom%20Policy%20Schema.pdf)</li><br>| Ta seria dokumentów zawiera podróż end-to-end za pomocą zasad niestandardowych w usłudze Azure AD B2C, prezentować szczegółowe najbardziej typowych zaawansowanych scenariuszy tożsamości.<br><br> Obejmuje ona jak implementować oraz zarządzać nimi niestandardowe zasady dla tych scenariuszy oraz sposób diagnozowania je za pomocą narzędzi dostępnych. Udostępnia również szczegółowe informacje dotyczące niestandardowych zasad pracy i uzyskać szczegółowe informacje jak dostosowywać je, aby pomieścić indywidualnymi wymaganiami. |
+

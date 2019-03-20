@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: fc94208ef01e52207b6efbf88223119cf58ddb7f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4f6a724fe6c1e8668084f1c1cefbaa01cffba181
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727166"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005855"
 ---
 # <a name="azure-log-integration-faq"></a>Integracja dzienników platformy Azure — często zadawane pytania
 
@@ -99,7 +99,7 @@ Błąd:
 
 Błąd:
 
-  *Tworzenie przypisania roli - AuthorizationFailed Ostrzeżenie: Klient janedo@microsoft.com"z obiektem identyfikatora"fe9e03e4-4dad-4328-910f-fd24a9660bd2"nie ma autoryzacji do wykonania akcji"Microsoft.Authorization/roleAssignments/write"w zakresie"/ subscriptions/70 d 95299 d689 4 c 97-b971-0d8ff0000000".*
+  *Tworzenie przypisania roli - AuthorizationFailed Ostrzeżenie: Janedo klienta\@microsoft.com "z obiektem identyfikatora"fe9e03e4-4dad-4328-910f-fd24a9660bd2"nie ma autoryzacji do wykonania akcji"Microsoft.Authorization/roleAssignments/write"w zakresie" /subscriptions/ 70d 95299 d689 4c 97-b971-0d8ff0000000 ".*
 
 **Autoryzować azlog** polecenie przypisuje rolę czytelnika do jednostki usługi Azure AD (utworzonych za pomocą **azlog createazureid**) dla podanej subskrypcji. Jeśli logowania do systemu Azure nie jest kontem administratora współpracującego czy jesteś właścicielem subskrypcji, zwróci błąd z komunikatem o błędzie "Autoryzacja nie powiodła się.". Azure opartej na rolach kontrola dostępu (RBAC) z kontem administratora współpracującego czy właściciel jest potrzebny do ukończenia tej akcji.
 

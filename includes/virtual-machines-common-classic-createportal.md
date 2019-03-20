@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 127ade3b37380c50461c5b648265b431a2f4467e
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 361d0ce5091d80198d47e4ad164f7cba8e21a55d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099514"
 ---
 *Niestandardowa* maszyna wirtualna to po prostu maszyna wirtualna utworzona za pomocą **aplikacji prezentowanej** w witrynie **Marketplace**, w przypadku której większość koniecznej pracy już wykonano. Mimo to można wybrać pewne opcje konfiguracji, w tym następujące:
 
@@ -28,11 +28,9 @@ ms.locfileid: "55735781"
 
 > [!IMPORTANT]
 > Jeśli maszyna wirtualna ma używać sieci wirtualnej, należy określić tę sieć podczas tworzenia maszyny wirtualnej.
-
+> 
 > * Dwie zalety używania sieci wirtualnej to łączenie się bezpośrednio z maszyną wirtualną i możliwość konfigurowania połączeń między różnymi lokalizacjami.
-
+> 
 > * Maszynę wirtualną można skonfigurować w celu dołączenia do sieci wirtualnej tylko na etapie jej tworzenia. Aby uzyskać szczegółowe informacje na temat sieci wirtualnych, zobacz [Omówienie usługi Azure Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
->
->
 
 ## <a name="to-create-the-virtual-machine"></a>Aby utworzyć maszynę wirtualną

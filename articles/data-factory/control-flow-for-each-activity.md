@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
-ms.openlocfilehash: 68cdabd8d6e5921eabaa200169c0523352461733
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856948"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092008"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Działanie ForEach w usłudze Azure Data Factory
 Działanie ForEach definiuje powtarzający się przepływ sterowania w potoku. To działanie służy do wykonywania iteracji po kolekcji i wykonuje określone działania w pętli. Implementacja pętli tego działania przypomina strukturę pętli Foreach w językach programowania.
@@ -71,8 +71,8 @@ Właściwości są opisane w dalszej części tego artykułu. Właściwość ite
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa dla każdego działania. | Ciąg | Yes
-type | Musi być równa **ForEach** | Ciąg | Yes
+name | Nazwa dla każdego działania. | String | Yes
+type | Musi być równa **ForEach** | String | Yes
 isSequential | Określa, czy pętla powinny być wykonywane kolejno lub równolegle.  Maksymalna liczba iteracji pętli 20 mogą być wykonywane jednocześnie równolegle). Na przykład, jeśli masz ForEach działania Iterowanie działania kopiowania przy użyciu 10 różnych danych źródła i ujścia przy użyciu **isSequential** ma wartość False, wszystkie kopie są wykonywane tylko raz. Domyślną jest False. <br/><br/> Jeśli "isSequential" jest ustawiona na "false", upewnij się, że jest poprawną konfigurację do uruchamiania wielu aplikacji wykonywalnych. W przeciwnym razie tej właściwości należy używać ostrożnie w celu uniknięcia konfliktów przy zapisywaniu. Aby uzyskać więcej informacji, zobacz [równoległym](#parallel-execution) sekcji. | Wartość logiczna | Nie. Domyślną jest False.
 batchCount | Liczba partii, która ma być używany do kontrolowania liczby przetwarzania równoległego, (gdy isSequential jest ustawiona na wartość false). | Liczba całkowita (maksymalna 50) | Nie. Domyślna to 20.
 Items | Wyrażenie, które zwraca tablicę JSON, aby być powtarzana. | Wyrażenie (która zwraca tablicę JSON) | Yes
@@ -474,7 +474,7 @@ Istnieje możliwość przejść przez wiele działań (na przykład: działania 
 
 ## <a name="aggregating-outputs"></a>Agregowanie danych wyjściowych
 
-Do agregacji danych wyjściowych __foreach__ działania, można wykorzystywać _Variable_s i _Dołącz zmiennej_ działania.
+Do agregacji danych wyjściowych __foreach__ działania, można wykorzystywać _zmienne_ i _Dołącz zmiennej_ działania.
 
 Najpierw należy zadeklarować `array` _zmiennej_ w potoku. Następnie wywołać _Dołącz zmiennej_ działań w każdej __foreach__ pętli. Następnie możesz pobrać agregacji z tablicy.
 

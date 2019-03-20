@@ -78,6 +78,7 @@
 #### [Wysoka dostępność w systemie Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [Wysoka dostępność w systemie Windows z udziałem plików SOFS na potrzeby wystąpienia (A)SCS](sap-high-availability-guide-wsfc-file-share.md)
 #### [Wysoka dostępność w systemie SUSE Linux na potrzeby wystąpienia (A)SCS](high-availability-guide-suse.md)
+#### [Wysoka dostępność w systemie SUSE Linux na potrzeby wystąpienia (A)SCS w usłudze Azure NetApp Files](high-availability-guide-suse-netapp-files.md)
 #### [Wysoka dostępność w systemie Red Hat Enterprise Linux na potrzeby wystąpienia (A)SCS](high-availability-guide-rhel.md)
 ### Przygotowywanie infrastruktury platformy Azure
 #### [System Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-high-availability-infrastructure-wsfc-shared-disk.md)
@@ -90,6 +91,7 @@
 #### [System Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-high-availability-installation-wsfc-shared-disk.md)
 #### [System Windows z udziałem plików SOFS na potrzeby wystąpienia (A)SCS](sap-high-availability-installation-wsfc-file-share.md)
 #### [System SUSE Linux z systemem plików NFS na potrzeby wystąpienia (A)SCS](high-availability-guide-suse.md)
+#### [System SUSE Linux z systemem plików NFS na potrzeby wystąpienia (A)SCS w usłudze Azure NetApp Files](high-availability-guide-suse-netapp-files.md)
 #### [Wysoka dostępność oprogramowania SAP NetWeaver w systemie Red Hat Enterprise Linux](high-availability-guide-rhel.md)
 ### SAP — wiele identyfikatorów SID
 #### [System Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)

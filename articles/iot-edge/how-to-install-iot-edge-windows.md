@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 03/14/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 3981ae197515803821891402e525852901963f63
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5f421c8949efae5a2488d5bf156a5d3571401bcc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871617"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996433"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows
 
@@ -25,8 +25,8 @@ Aby dowiedzieć się więcej na temat środowiska uruchomieniowego usługi IoT E
 
 W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge na usługi Windows x64 (AMD/Intel) systemu. Obsługa Windows jest obecnie w wersji zapoznawczej.
 
->[!NOTE]
-Używanie kontenerów systemu Linux w systemach Windows nie jest produkcyjnych zalecane lub obsługiwanych konfiguracji dla usługi Azure IoT Edge. Jednak może służyć do tworzenia i testowania.
+> [!NOTE]
+> Używanie kontenerów systemu Linux w systemach Windows nie jest produkcyjnych zalecane lub obsługiwanych konfiguracji dla usługi Azure IoT Edge. Jednak może służyć do tworzenia i testowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -52,6 +52,8 @@ Aby uzyskać więcej informacji o to, co jest uwzględnione w najnowszej wersji 
 
 Usługa Azure IoT Edge opiera się na [zgodnego z OCI](https://www.opencontainers.org/) kontenera aparatu. Na potrzeby scenariuszy produkcyjnych umożliwia uruchamianie kontenerów Windows na urządzeniu z systemem Windows aparatu Moby uwzględnione w skrypcie instalacji. Do tworzenia i testowania, umożliwia uruchamianie kontenerów systemu Linux na urządzeniu z systemem Windows, ale musisz zainstalować i skonfigurować aparat container przed zainstalowaniem usługi IoT Edge. Dla dowolnego scenariusza zobacz następujące sekcje wstępnie wymaganych składników do przygotowywania urządzenia. 
 
+Jeśli chcesz zainstalować usługi IoT Edge na maszynie wirtualnej, włączać wirtualizację zagnieżdżoną i przydziel co najmniej 2 GB pamięci RAM. Jak włączać wirtualizację zagnieżdżoną różni się w zależności od funkcji hypervisor użytkowanie. Dla funkcji Hyper-V maszyny wirtualne generacji 2 mają zagnieżdżone wirtualizacji włączona domyślnie. Dla oprogramowania VMWare Brak przełącznika, aby włączyć tę funkcję na maszynie wirtualnej. 
+
 #### <a name="moby-engine-for-windows-containers"></a>Aparat Moby dla kontenerów Windows
 
 W przypadku urządzeń Windows działa IoT Edge w scenariuszach produkcyjnych Moby to tylko aparat oficjalnie obsługiwane kontenerów. Skrypt instalacji automatycznie zainstaluje aparat Moby na urządzeniu z systemem, przed zainstalowaniem usługi IoT Edge. Przygotuj urządzenie, włączając funkcję kontenerów. 
@@ -64,7 +66,7 @@ W przypadku urządzeń Windows działa IoT Edge w scenariuszach produkcyjnych Mo
 
 Jeśli używasz Windows do tworzenia i testowania kontenery dla urządzeń z systemem Linux, możesz użyć [Docker for Windows](https://www.docker.com/docker-windows) jako aparat kontenera. Platformy docker można skonfigurować w celu [korzystanie z kontenerów systemu Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). Należy zainstalować platformę Docker i skonfigurować go przed zainstalowaniem usługi IoT Edge. Kontenery systemu Linux nie są obsługiwane na urządzeniach Windows w środowisku produkcyjnym. 
 
-Jeśli urządzenia usługi IoT Edge jest komputerem Windows, sprawdź, czy spełnia [wymagania systemowe](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) funkcji Hyper-v. Jeśli jest to maszyna wirtualna, włącz [zagnieżdżoną wirtualizację](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) i przydziel co najmniej 2 GB pamięci.
+Jeśli urządzenia usługi IoT Edge jest komputerem Windows, sprawdź, czy spełnia [wymagania systemowe](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) funkcji Hyper-v.
 
 ## <a name="install-iot-edge-on-a-new-device"></a>Zainstaluj usługi IoT Edge na nowe urządzenie
 

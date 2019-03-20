@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 188e58261cec90e9afcc885f3da21fa3fab3b746
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875437"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088472"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Samouczek: Nawiązywanie połączenia z interfejsem API wyszukiwania wiadomości Bing za pomocą usług połączonych w programie Visual Studio i języka C#
 
@@ -87,14 +87,14 @@ W tym artykule przedstawiono szczegółowe instrukcje dotyczące korzystania z i
 
 Po dodaniu obsługi interfejsu API wyszukiwania wiadomości Bing do projektu możesz użyć tego interfejsu API, aby dodać funkcję inteligentnego wyszukiwania do strony internetowej, wykonując opisane poniżej czynności.
 
-1.  W pliku *Startup.cs* w ramach metody `ConfigureServices` dodaj wywołanie `IServiceCollection.AddSingleton`. W ten sposób udostępnisz obiekt konfiguracji zawierający kluczowe ustawienia na potrzeby kodu w projekcie.
+1. W pliku *Startup.cs* w ramach metody `ConfigureServices` dodaj wywołanie `IServiceCollection.AddSingleton`. W ten sposób udostępnisz obiekt konfiguracji zawierający kluczowe ustawienia na potrzeby kodu w projekcie.
  
    ```csharp
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            services.AddSingleton<IConfiguration>(Configuration);
-        }
+       public void ConfigureServices(IServiceCollection services)
+       {
+           services.AddMvc();
+           services.AddSingleton<IConfiguration>(Configuration);
+       }
    ```
 
 
@@ -266,6 +266,6 @@ Gdy grupa zasobów nie jest już potrzebna, możesz ją usunąć. Spowoduje to u
 2. Wybierz pozycję **Usuń grupę zasobów**.
 3. W polu **Wpisz nazwę grupy zasobów** wpisz nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat interfejsu API wyszukiwania wiadomości Bing, zobacz [Co to jest wyszukiwanie wiadomości Bing?](index.yml).

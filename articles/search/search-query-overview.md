@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: d2f3eb25c2193ad94098acd714d934795d007e98
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a197be06d9c6f4b70b8ffc06712ef315547b4140
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543920"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136516"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
 
@@ -146,7 +146,7 @@ Od czasu do czasu substancji i nie struktury wyników jest nieoczekiwany. Gdy ni
 
 + Zmiana **`searchMode=any`** (domyślna), aby **`searchMode=all`** będą musieli dopasowanie wszystkie kryteria, a nie jakąkolwiek kryteriów. Jest to szczególnie istotne, gdy operatory logiczne są uwzględnione zapytania.
 
-+ Zmień technika zapytania, jeśli tekst lub poddawać analizie leksykalnej, jest to konieczne, ale typ zapytania wyklucza językowej przetwarzania. Podczas wyszukiwania pełnotekstowego tekst lub poddawać analizie leksykalnej automatycznie koryguje błędy pisowni, formularze programu word w liczbie pojedynczej niż liczby mnogiej i nawet nieregularne zlecenia lub rzeczowniki. Dla niektórych kwerend, takich jak rozmyte lub wyszukiwania symboli wieloznacznych, analiza tekstu nie jest częścią zapytania przetwarzania potoku. W niektórych scenariuszach wyrażeń regularnych zostały użyte jako obejście tego problemu. 
++ Zmień technika zapytania, jeśli tekst lub poddawać analizie leksykalnej, jest to konieczne, ale typ zapytania wyklucza językowej przetwarzania. Wyszukiwanie pełnotekstowe, tekst lub autocorrects poddawać analizie leksykalnej błędów pisowni, formularze programu word w liczbie pojedynczej niż liczby mnogiej i nawet nieregularne zlecenia lub rzeczowniki. Dla niektórych kwerend, takich jak rozmyte lub wyszukiwania symboli wieloznacznych, analiza tekstu nie jest częścią zapytania przetwarzania potoku. W niektórych scenariuszach wyrażeń regularnych zostały użyte jako obejście tego problemu. 
 
 ### <a name="paging-results"></a>Stronicowanie wyników
 Usługa Azure Search ułatwia implementowanie stronicowania wyników wyszukiwania. Za pomocą **`top`** i **`skip`** parametry, można sprawnie wysyłać żądania wyszukiwania, które umożliwiają uzyskanie całego zbioru wyników wyszukiwania w zarządzanych, uporządkowanych podzbiorów, który pozwala łatwo stosować dobre wyszukiwania interfejsu użytkownika rozwiązania. Razem z mniejszymi podzbiorami wyników można również odbierać liczbę dokumentów w całym zbiorze wyników wyszukiwania.
@@ -167,4 +167,4 @@ W usłudze Azure Search, podkreślając części, w wynikach wyszukiwania, zgodn
 + [Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search (zapytanie analizy architektury)](search-lucene-query-architecture.md)
 + [Eksplorator wyszukiwania](search-explorer.md)
 + [Jak wykonywać zapytania na platformie .NET](search-query-dotnet.md)
-+ [Jak wykonywać zapytania w REST](search-query-rest-api.md)
++ [Jak wykonywać zapytania w REST](search-create-index-rest-api.md)

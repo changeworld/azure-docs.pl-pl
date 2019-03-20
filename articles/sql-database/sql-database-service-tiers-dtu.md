@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 247198e9ba1cdc6cd43b3fe60a20cd81280113cd
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 7a8556edd793cbde47c14d2b79792dbe42f8e44b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569947"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894295"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Warstwy usług w modelu zakupu opartego na jednostkach DTU
 
@@ -33,7 +33,7 @@ Warstwy usług w modelu zakupu opartego na jednostkach DTU są zróżnicowane we
 Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, magazynu i wymagań dotyczących wydajności.
 
 ||Podstawowa|Standardowa (Standard)|Premium|
-| :-- | --: |--:| --:| --:|
+| :-- | --: |--:| --:|
 |Docelowego obciążenia|Rozwoju i produkcji|Rozwoju i produkcji|Rozwoju i produkcji|
 |Umowa SLA dotycząca czasu dostępności|99,99%|99,99%|99,99%|
 |Przechowywanie kopii zapasowych|7 dni|35 dni|35 dni|
@@ -52,10 +52,10 @@ Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, maga
 Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-purchase-models.md#dtu-based-purchasing-model)?
 
 ||Podstawowa|Standardowa (Standard)|Premium|
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | Maksymalny rozmiar magazynu | 2 GB | 1 TB | 4 TB  |
 | Maksymalna liczba jednostek Dtu | 5 | 3000 | 4000 | 
-||||||
+|||||
 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
@@ -63,13 +63,13 @@ Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) d
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Elastyczna pula — eDTU, magazynu i limity baza danych w puli
 
 | | **Podstawowa** | **Standardowa** | **Premium** |
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | Maksymalny rozmiar magazynu na bazę danych  | 2 GB | 1 TB | 1 TB |
 | Maksymalny rozmiar magazynu na pulę | 156 GB | 4 TB | 4 TB |
 | Maksymalna liczba jednostek Edtu na bazę danych | 5 | 3000 | 4000 |
 | Maksymalna liczba jednostek Edtu na pulę | 1600 | 3000 | 4000 |
 | Maksymalna liczba baz danych na pulę | 500  | 500 | 100 |
-||||||
+|||||
 
 > [!IMPORTANT]
 > Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB.  Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  

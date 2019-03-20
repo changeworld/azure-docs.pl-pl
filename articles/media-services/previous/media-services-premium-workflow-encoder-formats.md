@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: a24448507fa16a48ab3522c3307261d989d773ee
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 9c507bf1526bbee78d519362fc51453803820d57
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108396"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow formaty i kodery-dekodery
 
@@ -26,8 +26,6 @@ ms.locfileid: "55895028"
 > Pytania Encoder w warstwie premium, wiadomość e-mail na adres mepd@microsoft.com.
 > 
 > Procesor multimediów Media Encoder Premium Workflow omówione w tym temacie nie jest dostępna w Chinach. 
-> 
-> 
 
 Ten dokument zawiera listę plików wejściowych i wyjściowych formatów i koderów-dekoderów, które są obsługiwane w wersji zapoznawczej **Media Encoder Premium Workflow** kodera.
 

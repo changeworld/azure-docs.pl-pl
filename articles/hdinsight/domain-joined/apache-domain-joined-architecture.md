@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c5615dcfc9d43016bdf995a22ae29a5c5dd2c6f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7e71f27ab8d577602dd4b02f83d57ff84a92858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185387"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088098"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Użyj pakiet Enterprise Security w HDInsight
 
@@ -64,33 +64,33 @@ Za pomocą lokalnej usługi Active Directory lub usługi Active Directory na mas
 
 Jeśli federacyjnej jest używana i skróty haseł są poprawnie synchronizowane, ale pojawiają się błędy uwierzytelniania, sprawdź, czy hasło uwierzytelniania w chmurze jest włączony dla nazwy głównej usługi programu PowerShell. Jeśli nie, musisz ustawić [zasad Home obszaru odnajdywania (odnajdowanie obszaru macierzystego)](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) dla dzierżawy usługi Azure AD. Aby sprawdzić i ustawianie zasad HRD:
 
- 1. Instalowanie modułu Azure AD PowerShell.
+1. Instalowanie modułu Azure AD PowerShell.
 
- ```
-    Install-Module AzureAD
- ```
+   ```
+   Install-Module AzureAD
+   ```
 
- 2. Wprowadź `Connect-AzureAD` przy użyciu poświadczeń administratora globalnego (administratora dzierżawy).
+2. Wprowadź `Connect-AzureAD` przy użyciu poświadczeń administratora globalnego (administratora dzierżawy).
 
- 3. Sprawdź, jeśli została już utworzona nazwa główna usługi Microsoft Azure PowerShell.
+3. Sprawdź, jeśli została już utworzona nazwa główna usługi Microsoft Azure PowerShell.
 
- ```
-    $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
- ```
+   ```
+   $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+   ```
 
- 4. Jeśli nie istnieje (to znaczy, jeśli `($powershellSPN -eq $null)`), następnie utworzyć jednostkę usługi.
+4. Jeśli nie istnieje (to znaczy, jeśli `($powershellSPN -eq $null)`), następnie utworzyć jednostkę usługi.
 
- ```
-    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
- ```
+   ```
+   $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+   ```
 
- 5. Utwórz i Dołącz zasady do tej jednostki usługi.
+5. Utwórz i Dołącz zasady do tej jednostki usługi.
 
- ```
-    $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+   ```
+   $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
 
-    Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
- ```
+   Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+   ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

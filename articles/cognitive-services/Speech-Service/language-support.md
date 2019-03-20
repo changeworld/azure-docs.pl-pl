@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 927781c61a9ca2a1ef23db47294468dad7140dff
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885355"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225437"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Obsługa języka i regionu dla usług przetwarzania mowy
 
@@ -76,13 +76,18 @@ Neuronowych głosów można wprowadzić bardziej naturalne interakcje z czatbot�
 Aby uzyskać pełną listę neuronowych głosów i dostępności regionalnej zobacz [regionów](regions.md#neural-voices).
 
 | Ustawienia regionalne | Język | Płeć | Mapowanie nazwy usługi|
-|--------|----------|---------|--------------------|
+|--------|----------|--------|---------------------|
+| de-DE. | Niemiecki (Niemcy) | Kobieta | "Microsoft Server mowy Text na głos mowy (de-DE, KatjaNeural)" |
 | en-US | English (US) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (en US, GuyNeural)" |
 | en-US | English (US) | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, JessaNeural)" |
+| IT-IT | Włoski (Włochy) | Kobieta | "Microsoft Server mowy Text na głos mowy (it-IT, ElsaNeural)" |
 | zh-CN | Chiński | Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, XiaoxiaoNeural)" |
 
 > [!IMPORTANT]
 > Microsoft Server mowy tekstu na głos mowy (zh-CN, XiaoxiaoNeural) jest tylko dostępne za pośrednictwem punktu końcowego Azja południowo-wschodnia: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1.
+
+> [!IMPORTANT]
+> Microsoft Server mowy tekstu na głos mowy (de-DE, KatjaNeural) i Microsoft Server mowy tekstu na głos mowy (it-IT, ElsaNeural) są dostępne za pośrednictwem punktu końcowego Europa Zachodnia tylko: https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1.
 
 ### <a name="standard-voices"></a>Standardowa głosów
 

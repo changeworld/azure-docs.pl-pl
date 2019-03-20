@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: df836d46f244822c8c3dd35be6de08b0c4f34038
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 681ee66ca165ece170dd2a2ce2736cf55a44f1f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104084"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpieczanie klastra autonomicznego w Windows przy użyciu zabezpieczeń Windows
 Aby zapobiec nieautoryzowanemu dostępowi do klastra usługi Service Fabric, należy zabezpieczyć klaster. Bezpieczeństwo jest szczególnie ważne, gdy klaster działa obciążeń produkcyjnych. W tym artykule opisano sposób konfigurowania zabezpieczeń między węzłami i węzeł klienta przy użyciu zabezpieczeń Windows w *ClusterConfig.JSON* pliku.  Proces odnosi się do kroku zabezpieczeń Konfiguruj [Tworzenie klastra autonomicznego w systemie Windows](service-fabric-cluster-creation-for-windows-server.md). Aby uzyskać więcej informacji o używaniu Windows zabezpieczeń w usłudze Service Fabric, zobacz [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md).
@@ -52,13 +52,13 @@ Przykład *ClusterConfig.gMSA.Windows.MultiMachine.JSON* pliku konfiguracji pobr
 | **Ustawienia konfiguracji** | **Opis** |
 | --- | --- |
 | ClusterCredentialType |Ustaw *Windows* umożliwiające Windows zabezpieczenia komunikacji między węzłami.  | 
-| ServerCredentialType |Ustaw *Windows* umożliwiające zabezpieczeń Windows komunikacji z klientem i węzłem. |  
-| WindowsIdentities |Zawiera tożsamość klastra i klienta. |  
-| ClustergMSAIdentity |Służy do konfigurowania zabezpieczeń między węzłami. Konto usługi zarządzane przez grupę. |  
-| ClusterSPN |Zarejestrowane nazwy SPN dla konta gMSA|  
-| ClientIdentities |Służy do konfigurowania zabezpieczeń węzeł klienta. Tablica konta użytkownika klienta. | 
-| Tożsamość |Dodaj użytkownika domeny, domena\nazwa_użytkownika, tożsamość klienta. |  
-| IsAdmin |Ustaw wartość true, aby określić, czy użytkownik domeny ma administrator dostępu klienta lub wartość false dla dostępu klientów użytkownika. |  
+| ServerCredentialType |Ustaw *Windows* umożliwiające zabezpieczeń Windows komunikacji z klientem i węzłem. |
+| WindowsIdentities |Zawiera tożsamość klastra i klienta. |
+| ClustergMSAIdentity |Służy do konfigurowania zabezpieczeń między węzłami. Konto usługi zarządzane przez grupę. |
+| ClusterSPN |Zarejestrowane nazwy SPN dla konta gMSA|
+| ClientIdentities |Służy do konfigurowania zabezpieczeń węzeł klienta. Tablica konta użytkownika klienta. |
+| Tożsamość |Dodaj użytkownika domeny, domena\nazwa_użytkownika, tożsamość klienta. |
+| IsAdmin |Ustaw wartość true, aby określić, czy użytkownik domeny ma administrator dostępu klienta lub wartość false dla dostępu klientów użytkownika. |
 
 > [!NOTE]
 > Wartość ClustergMSAIdentity nie może zawierać nazwy domeny i może być tylko nazwa konta grupy usługi zarządzanej. I.E. "mysfgmsa" jest poprawny, a oba "moja_domena / / mysfgmsa" lub "mysfgmsa@mydomain" są nieprawidłowe; ponieważ domena jest implikowany przez komputer hosta.
@@ -104,10 +104,10 @@ Ten model jest wycofywany. Zaleca się używania konta usługi zarządzanego zgo
 
 | **Ustawienia konfiguracji** | **Opis** |
 | --- | --- |
-| ClusterCredentialType |Ustaw *Windows* umożliwiające Windows zabezpieczenia komunikacji między węzłami.  | 
-| ServerCredentialType |Ustaw *Windows* umożliwiające zabezpieczeń Windows komunikacji z klientem i węzłem. |  
-| WindowsIdentities |Zawiera tożsamość klastra i klienta. |  
-| ClusterIdentity |Nazwa grupy maszyn, domain\machinegroup, umożliwia konfigurowanie zabezpieczeń między węzłami. |  
+| ClusterCredentialType |Ustaw *Windows* umożliwiające Windows zabezpieczenia komunikacji między węzłami.  |
+| ServerCredentialType |Ustaw *Windows* umożliwiające zabezpieczeń Windows komunikacji z klientem i węzłem. |
+| WindowsIdentities |Zawiera tożsamość klastra i klienta. |
+| ClusterIdentity |Nazwa grupy maszyn, domain\machinegroup, umożliwia konfigurowanie zabezpieczeń między węzłami. |
 | ClientIdentities |Służy do konfigurowania zabezpieczeń węzeł klienta. Tablica konta użytkownika klienta. |  
 | Tożsamość |Dodaj użytkownika domeny, domena\nazwa_użytkownika, tożsamość klienta. |  
 | IsAdmin |Ustaw wartość true, aby określić, czy użytkownik domeny ma administrator dostępu klienta lub wartość false dla dostępu klientów użytkownika. |  

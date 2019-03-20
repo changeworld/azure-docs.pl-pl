@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca079fa2ec41f85c365102fbd81ffde23e97e2c4
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: ccad4f9aaa85d528697c1bcf34e1b034eeabe9e1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990496"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996011"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
@@ -60,7 +60,7 @@ Normalizacji ma dwie części.  Nie zostaną zmienione po pierwsze, wielkie lite
 | '0'  | ' o' |
 | '1'  | 'l' |
 | '$'  | 's' |
-| '@'  | 'a' |
+| '\@'  | 'a' |
 
 Przykład: Załóżmy, że hasło "puste" jest zablokowane, a użytkownik próbuje zmienić hasła w celu "Bl@nK". Mimo że "Bl@nk" to nie jest zablokowany, proces normalizacji konwertuje to hasło "blank", czyli zakazanych haseł.
 

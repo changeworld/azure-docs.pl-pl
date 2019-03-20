@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 47496be907726ca8cd0e235775cdb1a8493310d0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4f6c420ab76462818fb17308d062cc9d881af7df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879109"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091039"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -38,55 +38,55 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>Opis</th>
   <tr>
     <td>wersja interfejsu API</td>
-    <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
+    <td><em>Wymagany parametr</em>.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być <code>3.0</code>.</td>
   </tr>
   <tr>
     <td>z</td>
-    <td>*Opcjonalny parametr*.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie [obsługiwane języki](./v3-0-languages.md) przy użyciu `translation` zakresu. Jeśli `from` parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa język tekstu wejściowego. Dowiedz się, jakie języki są dostępne do tłumaczenia z przez wyszukanie [obsługiwane języki](./v3-0-languages.md) przy użyciu <code>translation</code> zakresu. Jeśli <code>from</code> parametr nie zostanie określony, funkcja automatycznego wykrywania języka jest stosowane w celu określenia języka źródłowego.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](./v3-0-languages.md) objęte `translation` zakresu. Na przykład użyć `to=de` do tłumaczenia na język niemiecki.<br/>Istnieje możliwość translacji jednocześnie do wielu języków, powtarzając parametr ciągu zapytania. Na przykład użyć `to=de&to=it` do translacji niemieckim i włoskim.</td>
+    <td><em>Wymagany parametr</em>.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](./v3-0-languages.md) objęte <code>translation</code> zakresu. Na przykład użyć <code>to=de</code> do tłumaczenia na język niemiecki.<br/>Istnieje możliwość translacji jednocześnie do wielu języków, powtarzając parametr ciągu zapytania. Na przykład użyć <code>to=de&to=it</code> do translacji niemieckim i włoskim.</td>
   </tr>
   <tr>
     <td>textType</td>
-    <td>*Opcjonalny parametr*.<br/>Określa, czy tekst tłumaczony jest zwykły tekst lub tekstu w formacie HTML. Kod HTML musi być elementem pełną, poprawnie sformułowany. Możliwe wartości to: `plain` (ustawienie domyślne) lub `html`.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, czy tekst tłumaczony jest zwykły tekst lub tekstu w formacie HTML. Kod HTML musi być elementem pełną, poprawnie sformułowany. Możliwe wartości to: <code>plain</code> (ustawienie domyślne) lub <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
-    <td>*Opcjonalny parametr*.<br/>Ciąg określający kategoria tłumaczenia (domena). Ten parametr umożliwia uzyskiwanie tłumaczenia niestandardowych utworzonych za pomocą systemu [niestandardowe w usłudze Translator](../customization.md). Dodaj identyfikator kategorii z projektu niestandardowe w usłudze Translator do tego parametru, aby użyć wdrożonego systemu dostosowane. Wartość domyślna to: `general`.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Ciąg określający kategoria tłumaczenia (domena). Ten parametr umożliwia uzyskiwanie tłumaczenia niestandardowych utworzonych za pomocą systemu [niestandardowe w usłudze Translator](../customization.md). Dodaj identyfikator kategorii z projektu niestandardowe w usłudze Translator do tego parametru, aby użyć wdrożonego systemu dostosowane. Wartość domyślna to: <code>general</code>.</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td>*Opcjonalny parametr*.<br/>Określa, jak profanities powinny być traktowane w translacji. Możliwe wartości to: `NoAction` (ustawienie domyślne), `Marked` lub `Deleted`. Aby poznać sposoby traktować wulgaryzmów, zobacz [obsługi wulgaryzmów](#handle-profanity).</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, jak profanities powinny być traktowane w translacji. Możliwe wartości to: <code>NoAction</code> (ustawienie domyślne), <code>Marked</code> lub <code>Deleted</code>. Aby poznać sposoby traktować wulgaryzmów, zobacz [obsługi wulgaryzmów](#handle-profanity).</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td>*Opcjonalny parametr*.<br/>Określa, jak profanities powinien być oznaczony w translacji. Możliwe wartości to: `Asterisk` (ustawienie domyślne) lub `Tag`. Aby poznać sposoby traktować wulgaryzmów, zobacz [obsługi wulgaryzmów](#handle-profanity).</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, jak profanities powinien być oznaczony w translacji. Możliwe wartości to: <code>Asterisk</code> (ustawienie domyślne) lub <code>Tag</code>. Aby poznać sposoby traktować wulgaryzmów, zobacz [obsługi wulgaryzmów](#handle-profanity).</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td>*Opcjonalny parametr*.<br/>Określa, czy mają zostać dołączone wyrównanie rzutowania z tekst źródłowy do przetłumaczonego tekstu. Możliwe wartości to: `true` lub `false` (ustawienie domyślne). </td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, czy mają zostać dołączone wyrównanie rzutowania z tekst źródłowy do przetłumaczonego tekstu. Możliwe wartości to: <code>true</code> lub <code>false</code> (ustawienie domyślne). </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td>*Opcjonalny parametr*.<br/>Określa, czy dołączać granice zdanie do tekstu wejściowego i przetłumaczonego tekstu. Możliwe wartości to: `true` lub `false` (ustawienie domyślne).</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, czy dołączać granice zdanie do tekstu wejściowego i przetłumaczonego tekstu. Możliwe wartości to: <code>true</code> lub <code>false</code> (ustawienie domyślne).</td>
   </tr>
   <tr>
     <td>suggestedFrom</td>
-    <td>*Opcjonalny parametr*.<br/>Określa język bazowy, jeśli nie można zidentyfikować język tekstu wejściowego. Automatyczne wykrywanie języka jest stosowany podczas `from` parametr zostanie pominięty. Jeśli wykrywanie nie powiedzie się, `suggestedFrom` języka zostanie przyjęta wartość.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa język bazowy, jeśli nie można zidentyfikować język tekstu wejściowego. Automatyczne wykrywanie języka jest stosowany podczas <code>from</code> parametr zostanie pominięty. Jeśli wykrywanie nie powiedzie się, <code>suggestedFrom</code> języka zostanie przyjęta wartość.</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Opcjonalny parametr*.<br/>Określa skrypt wejściowego tekstu.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa skrypt wejściowego tekstu.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Opcjonalny parametr*.<br/>Określa skrypt przetłumaczonego tekstu.</td>
+    <td><em>Opcjonalny parametr</em>.<br/>Określa skrypt przetłumaczonego tekstu.</td>
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>*Opcjonalny parametr*.<br/>Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje. Możliwe wartości to: `true` (ustawienie domyślne) lub `false`.<br/><br/>`allowFallback=false` Określa, czy tłumaczenie należy używać wyłącznie systemów uczona dla `category` określonym przez żądanie. Jeśli tłumaczenie język X język Y wymaga łańcucha przy użyciu języka pivot E, następnie wszystkich systemów w łańcuchu (X -> E i E -> Y) będzie musiał być niestandardowych i mieć tej samej kategorii. Jeśli system nie zostanie znaleziony o określonej kategorii, żądanie zwróci kod stanu 400. `allowFallback=true` Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje.
+    <td><em>Opcjonalny parametr</em>.<br/>Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje. Możliwe wartości to: <code>true</code> (ustawienie domyślne) lub <code>false</code>.<br/><br/><code>allowFallback=false</code> Określa, czy tłumaczenie należy używać wyłącznie systemów uczona dla <code>category</code> określonym przez żądanie. Jeśli tłumaczenie język X język Y wymaga łańcucha przy użyciu języka pivot E, następnie wszystkich systemów w łańcuchu (X -> E i E -> Y) będzie musiał być niestandardowych i mieć tej samej kategorii. Jeśli system nie zostanie znaleziony o określonej kategorii, żądanie zwróci kod stanu 400. <code>allowFallback=true</code> Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje.
 </td>
   </tr>
 </table> 
@@ -98,19 +98,19 @@ Nagłówki żądania obejmują:
   <th>Opis</th>
   <tr>
     <td>_Jeden autoryzacji_<br/>_header_</td>
-    <td>*Nagłówek żądania wymagane*.<br/>Zobacz [dostępne opcje uwierzytelniania](./v3-0-reference.md#authentication).</td>
+    <td><em>Nagłówek żądania wymagane</em>.<br/>Zobacz [dostępne opcje uwierzytelniania](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Nagłówek żądania wymagane*.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`.</td>
+    <td><em>Nagłówek żądania wymagane</em>.<br/>Określa typ zawartości ładunku. Możliwe wartości to: <code>application/json</code>.</td>
   </tr>
   <tr>
     <td>Długość zawartości</td>
-    <td>*Nagłówek żądania wymagane*.<br/>Długość treści żądania.</td>
+    <td><em>Nagłówek żądania wymagane</em>.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
+    <td><em>Opcjonalnie</em>.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie <code>ClientTraceId</code>.</td>
   </tr>
 </table> 
 
@@ -209,7 +209,7 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
   </tr>
   <tr>
     <td>408</td>
-    <td>Żądanie nie jest spełnione, ponieważ brakuje zasobu. Sprawdź szczegóły komunikatu o błędzie. Korzystając z niestandardowego `category`, oznacza to często, że system tłumaczenia niestandardowych nie jest jeszcze dostępna do obsługi żądań. Żądanie powinno zostać powtórzone, po okresie oczekiwania (np. 1 minuta).</td>
+    <td>Żądanie nie jest spełnione, ponieważ brakuje zasobu. Sprawdź szczegóły komunikatu o błędzie. Korzystając z niestandardowego <code>category</code>, oznacza to często, że system tłumaczenia niestandardowych nie jest jeszcze dostępna do obsługi żądań. Żądanie powinno zostać powtórzone, po okresie oczekiwania (np. 1 minuta).</td>
   </tr>
   <tr>
     <td>429</td>
@@ -217,11 +217,11 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
   </tr>
   <tr>
     <td>500</td>
-    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go: Data i godzina awarii, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`oraz identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
+    <td>Wystąpił nieoczekiwany błąd. Jeśli błąd będzie się powtarzać, zgłoś go: Data i godzina awarii, identyfikator żądania z nagłówka odpowiedzi <code>X-RequestId</code>oraz identyfikator klienta z nagłówka żądania <code>X-ClientTraceId</code>.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go: Data i godzina awarii, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`oraz identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
+    <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go: Data i godzina awarii, identyfikator żądania z nagłówka odpowiedzi <code>X-RequestId</code>oraz identyfikator klienta z nagłówka żądania <code>X-ClientTraceId</code>.</td>
   </tr>
 </table> 
 
@@ -376,28 +376,28 @@ Jeśli chcesz uniknąć wulgaryzmów w tłumaczeniu, niezależnie od obecności 
   <th width="20%">ProfanityAction</th>
   <th>Akcja</th>
   <tr>
-    <td>`NoAction`</td>
+    <td><code>NoAction</code></td>
     <td>To zachowanie domyślne. Wulgaryzmów zostaną spełnione ze źródła do docelowego.<br/><br/>
-    **Przykład źródłowej (japoński)**: 彼はジャッカスです。<br/>
-    **Przykład tłumaczenie (język angielski)**: Jest on jackass.
+    <strong>Przykład źródłowej (japoński)</strong>: 彼はジャッカスです。<br/>
+    <strong>Przykład tłumaczenie (język angielski)</strong>: Jest on jackass.
     </td>
   </tr>
   <tr>
-    <td>`Deleted`</td>
+    <td><code>Deleted</code></td>
     <td>Wyrazy obsceniczne zostaną usunięte z danych wyjściowych bez zastępowania.<br/><br/>
-    **Przykład źródłowej (japoński)**: 彼はジャッカスです。<br/>
-    **Przykład tłumaczenie (język angielski)**: Jest on.
+    <strong>Przykład źródłowej (japoński)</strong>: 彼はジャッカスです。<br/>
+    <strong>Przykład tłumaczenie (język angielski)</strong>: Jest on.
     </td>
   </tr>
   <tr>
-    <td>`Marked`</td>
-    <td>Obsceniczne wyrazów są zastępowane przez znacznika w danych wyjściowych. Zależy od znacznika `ProfanityMarker` parametru.<br/><br/>
-Aby uzyskać `ProfanityMarker=Asterisk`, obsceniczne wyrazów są zastępowane `***`:<br/>
-    **Przykład źródłowej (japoński)**: 彼はジャッカスです。<br/>
-    **Przykład tłumaczenie (język angielski)**: Jest on \* \* \*.<br/><br/>
-Aby uzyskać `ProfanityMarker=Tag`, obsceniczne wyrazy są ujęte w znaczników XML &lt;wulgaryzmów&gt; i &lt;/profanity&gt;:<br/>
-    **Przykład źródłowej (japoński)**: 彼はジャッカスです。<br/>
-    **Przykład tłumaczenie (język angielski)**: Jest on &lt;wulgaryzmów&gt;jackass&lt;/profanity&gt;.
+    <td><code>Marked</code></td>
+    <td>Obsceniczne wyrazów są zastępowane przez znacznika w danych wyjściowych. Zależy od znacznika <code>ProfanityMarker</code> parametru.<br/><br/>
+Aby uzyskać <code>ProfanityMarker=Asterisk</code>, obsceniczne wyrazów są zastępowane <code>***</code>:<br/>
+    <strong>Przykład źródłowej (japoński)</strong>: 彼はジャッカスです。<br/>
+    <strong>Przykład tłumaczenie (język angielski)</strong>: Jest on \* \* \*.<br/><br/>
+Aby uzyskać <code>ProfanityMarker=Tag</code>, obsceniczne wyrazy są ujęte w znaczników XML &lt;wulgaryzmów&gt; i &lt;/profanity&gt;:<br/>
+    <strong>Przykład źródłowej (japoński)</strong>: 彼はジャッカスです。<br/>
+    <strong>Przykład tłumaczenie (język angielski)</strong>: Jest on &lt;wulgaryzmów&gt;jackass&lt;/profanity&gt;.
   </tr>
 </table> 
 

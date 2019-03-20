@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: cd0493d4fd126175acafce050394e65a47e9bda9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: c9247b37e1e475892a1561c5667dc25275f67327
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650023"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104118"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Utworzyć komunikację równorzędną sieci wirtualnej — różne modele wdrażania i subskrypcje
 
@@ -60,7 +60,7 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
 10. Wyloguj się z portalu jako użytkownik a, a następnie zaloguj się jako Użytkownik_b.
 11. Kliknij przycisk **+ nowy**, typ *sieć wirtualna* w **Przeszukaj witrynę Marketplace** polu, a następnie kliknij przycisk **sieć wirtualna** w wynikach wyszukiwania.
 12. W **sieci wirtualnej** wyświetlonym bloku wybierz **klasycznego** w **wybierz model wdrożenia** polu, a następnie kliknij przycisk **Utwórz**.
-13.   W przypadku tworzenia sieci wirtualnej (model klasyczny) pojawi się okno wprowadź następujące wartości:
+13. W przypadku tworzenia sieci wirtualnej (model klasyczny) pojawi się okno wprowadź następujące wartości:
 
     - **Nazwa**: *myVnetB*
     - **Przestrzeń adresowa**: *10.1.0.0/16*

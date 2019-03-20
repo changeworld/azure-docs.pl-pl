@@ -9,19 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb15f3e786313fca4ae9f0c224c68c96bac7836
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 833c2e460ae306a7673e580aaa304be93c3cd044
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199736"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Usunąć dzierżawę usługi Azure Active Directory
+
 Po usunięciu dzierżawy również zostaną usunięte wszystkie zasoby, które są zawarte w dzierżawie. Należy przygotować, minimalizując skojarzone z nią zasoby przed usunięciem dzierżawy. Tylko administrator globalny usługi Azure Active Directory (Azure AD) można usunąć dzierżawę usługi Azure AD z poziomu portalu.
 
 ## <a name="prepare-the-tenant-for-deletion"></a>Przygotowanie dzierżawy do usunięcia
@@ -39,13 +40,13 @@ Nie można usunąć dzierżawy w usłudze Azure AD, dopóki nie przekazuje kilka
 
 2. Wybierz pozycję **Azure Active Directory**.
 
-3. Przełącz się do dzierżawy chcesz usunąć.
+3. Przełącz się do organizacji, które chcesz usunąć.
   
-   ![Usuwanie przycisku katalogu](./media/directory-delete-howto/delete-directory-command.png)
+   ![Upewnij się, organizacji, przed usunięciem](./media/directory-delete-howto/delete-directory-command.png)
 
 4. Wybierz **usunąć katalog**.
   
-   ![Usuwanie przycisku katalogu](./media/directory-delete-howto/delete-directory-list.png)
+   ![Wybierz polecenie, aby usunąć organizacji](./media/directory-delete-howto/delete-directory-list.png)
 
 5. Dzierżawy nie zakończy się pomyślnie co najmniej jeden, otrzymasz Link, aby uzyskać więcej informacji na temat sposobu przekazywania. Po przejściu wszystkich kontroli wybierz **Usuń** aby ukończyć proces.
 
@@ -74,7 +75,7 @@ Możesz umieścić subskrypcji do **Deprovisoned** stanu do usunięcia w ciągu 
   
 3. Wybierz **Usuń** do usunięcia subskrypcji i zaakceptuj warunki i postanowienia. Wszystkie dane zostaną trwale usunięte w ciągu trzech dni. Jeśli zmienisz zdanie, można ponownie aktywować subskrypcję w ciągu trzech dni.
   
-   ![warunki i postanowienia](./media/directory-delete-howto/delete-terms.png)
+   ![dokładnie przeczytaj warunki i postanowienia](./media/directory-delete-howto/delete-terms.png)
 
 4. Teraz zmieniła stan subskrypcji, subskrypcja jest oznaczona do usunięcia. Wprowadza subskrypcji **cofnięcia aprowizacji** stan później 72 godzin.
 
@@ -83,4 +84,5 @@ Możesz umieścić subskrypcji do **Deprovisoned** stanu do usunięcia w ciągu 
    ![Przekaż wyboru subskrypcji na ekranie usuwanie](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 [Dokumentacja usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)

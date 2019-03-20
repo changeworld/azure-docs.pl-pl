@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 4df134c6644a9480460635cbe3565f030d4bf779
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0b6baec08470754c04aaa0bea2a3e6defe7fd91f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440951"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117867"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Wyświetl względnego opóźnienia do regionów platformy Azure z określonych lokalizacji
 
@@ -119,8 +119,8 @@ Get-AzureRmNetworkWatcherReachabilityReport `
   -EndTime "2017-12-15"
 ```
 
->[!NOTE]
-W odróżnieniu od po określeniu jednej lokalizacji, jeśli nie Określ lokalizację lub określ wiele lokalizacji, na przykład "Zachodnie stany USA 2", "Zachodnie stany USA", należy określić usługodawcy internetowego przy uruchamianiu polecenia. 
+> [!NOTE]
+> W odróżnieniu od po określeniu jednej lokalizacji, jeśli nie Określ lokalizację lub określ wiele lokalizacji, na przykład "Zachodnie stany USA 2", "Zachodnie stany USA", należy określić usługodawcy internetowego przy uruchamianiu polecenia. 
 
 ## <a name="view-available"></a>Wyświetl dostępne krajów, miasta i dostawców
 

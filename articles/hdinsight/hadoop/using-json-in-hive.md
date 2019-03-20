@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: b174b1279a2e93560932334c9ae1e926c1eeca3c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 4d2e238182ec37a2ac652806bb1eed18110759de
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897167"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Przetwarzanie i analizowanie dokumentów JSON za pomocą technologii Hive w usłudze Azure HDInsight
 
@@ -57,7 +57,7 @@ Dowiedz się, jak przetwarzać i analizować pliki JavaScript Object Notation (J
 }
 ```
 
-Plik znajduje się w temacie **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Aby uzyskać więcej informacji na temat usługi Azure Blob storage za pomocą HDInsight, zobacz [zgodnego systemem plików HDFS użycia usługi Azure Blob storage przy użyciu technologii Apache Hadoop w HDInsight](../hdinsight-hadoop-use-blob-storage.md). Możesz skopiować plik do kontenera domyślnego klastra.
+Plik znajduje się w temacie **wasb://processjson\@hditutorialdata.blob.core.windows.net/**. Aby uzyskać więcej informacji na temat usługi Azure Blob storage za pomocą HDInsight, zobacz [zgodnego systemem plików HDFS użycia usługi Azure Blob storage przy użyciu technologii Apache Hadoop w HDInsight](../hdinsight-hadoop-use-blob-storage.md). Możesz skopiować plik do kontenera domyślnego klastra.
 
 W tym samouczku użyjesz konsoli Apache Hive. Aby uzyskać instrukcje na temat sposobu Otwórz konsolę Hive, zobacz [Użyj Apache Ambari programu Hive widoku przy użyciu technologii Apache Hadoop w HDInsight](apache-hadoop-use-hive-ambari-view.md).
 
@@ -83,7 +83,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-Plik JSON raw znajduje się w **wasb://processjson@hditutorialdata.blob.core.windows.net/**. **StudentsRaw** Hive punktów tabeli pierwotnych dokumencie JSON, który nie jest spłaszczany.
+Plik JSON raw znajduje się w **wasb://processjson\@hditutorialdata.blob.core.windows.net/**. **StudentsRaw** Hive punktów tabeli pierwotnych dokumencie JSON, który nie jest spłaszczany.
 
 **StudentsOneLine** tabeli hive za pomocą przechowuje dane w HDInsight domyślnego systemu plików w obszarze **/json/studentów/** ścieżki.
 

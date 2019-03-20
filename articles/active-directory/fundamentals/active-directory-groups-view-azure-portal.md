@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki start dotyczący wyświetlania grup i członków w usłudze Azure Active Directory w danej organizacji | Microsoft Docs
+title: Przewodnik Szybki Start, aby wyświetlić grupy i elementy członkowskie — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Instrukcje wyszukiwania i wyświetlania grup w organizacji oraz ich członków.
 services: active-directory
 author: eross-msft
@@ -10,15 +10,15 @@ ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ee02944e32a11a3749d6730b9263254fa9bda
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8eef6f7a363fe7b020a3ef18ae26799d7d5452ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183279"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881014"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -61,7 +61,7 @@ Utwórz konto nowego użytkownika, który nazywa się _Alain Charon_. Użytkowni
 
     - **Nazwa:** wpisz tekst _Alain Charon_.
 
-    - **Nazwa użytkownika:** wpisz *alain@contoso.com*.
+    - **Nazwa użytkownika:** Typ *alain\@contoso.com*.
 
 3. Skopiuj hasło automatycznie wygenerowane w polu **Hasło**, a następnie wybierz pozycję **Utwórz**.
 
@@ -127,7 +127,7 @@ Ta grupa jest używana w kilku procedurach zawartych w **przewodnikach z instruk
     >[!Important]
     >Wykonanie tej czynności nie powoduje usunięcia konta użytkownika Alain Charon, a tylko jego członkostwa w usuwanej grupie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W następnym artykule dowiesz się, jak skojarzyć subskrypcję z katalogiem usługi Azure AD.
 
 > [!div class="nextstepaction"]

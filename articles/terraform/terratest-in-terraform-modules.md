@@ -2,19 +2,19 @@
 title: Testowanie modułów programu Terraform na platformie Azure za pomocą struktury Terratest
 description: Dowiedz się, jak używać struktury Terratest do testowania modułów programu Terraform.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, konto magazynu, azure, terratest, test jednostkowy, test integracyjny
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2018
-ms.openlocfilehash: fce70916cef96cee6496478503305e2bb1e73c09
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 936fe347fb4f9d5e27e005099725674341960457
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656346"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773320"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Testowanie modułów programu Terraform na platformie Azure za pomocą struktury Terratest
 

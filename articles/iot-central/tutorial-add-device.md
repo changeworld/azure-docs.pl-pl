@@ -3,18 +3,18 @@ title: Dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Centra
 description: Jako operator możesz dodać rzeczywiste urządzenie do aplikacji usługi Azure IoT Central.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 10/12/2018
+ms.date: 02/01/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 5d9e33e5cf4c8a7d5b8085e1e2ff8f4bde3274b7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731533"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770905"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Samouczek: Dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central
 
@@ -52,21 +52,19 @@ Aby dodać rzeczywiste urządzenie do aplikacji, należy użyć szablonu urządz
 
    Strona **Device Explorer** pokazuje szablon urządzenia **Połączony klimatyzator** i symulowane urządzenie, które zostało utworzone automatycznie podczas tworzenia szablonu urządzenia przez konstruktora.
 
-2. Aby rozpocząć łączenie rzeczywistego połączonego klimatyzatora, wybierz pozycję **Nowe**, a następnie **Rzeczywiste**:
+2. Aby uruchomić Podłączanie urządzenia rzeczywistym połączonych klimatyzacyjne, zaznacz **+**, następnie **rzeczywistych**:
 
    ![Rozpoczynanie dodawania nowego rzeczywistego połączonego klimatyzatora](media/tutorial-add-device/newreal.png)
 
-3. Wprowadź identyfikator urządzenia (**powinien być podany małymi literami**) lub użyj sugerowanego identyfikatora. Możesz także podać nazwę nowego urządzenia i wybrać polecenie **Utwórz**.  
+3. Wprowadź identyfikator urządzenia (powinno wskazywać na małe litery) lub użyj sugerowanego identyfikator urządzenia. Możesz także podać nazwę nowego urządzenia i wybrać polecenie **Utwórz**.
 
    ![Zmienianie nazwy urządzenia](media/tutorial-add-device/rename.png)
-
-
 
 ## <a name="configure-a-real-device"></a>Konfigurowanie rzeczywistego urządzenia
 
 Rzeczywiste urządzenie jest tworzone na podstawie szablonu urządzenia **Połączony klimatyzator**. Możesz użyć pozycji **Ustawienia**, aby skonfigurować urządzenie i ustawić wartości właściwości pod kątem rejestrowania informacji o urządzeniu.
 
-1. Na stronie **Ustawienia** zwróć uwagę na to, że stan ustawienia **Ustaw temperaturę** to **brak aktualizacji**. Pozostanie ono w tym stanie do momentu, gdy rzeczywiste urządzenie połączy się z aplikacją i potwierdzi wykonanie działania dla ustawienia. 
+1. Na stronie **Ustawienia** zwróć uwagę na to, że stan ustawienia **Ustaw temperaturę** to **brak aktualizacji**. Pozostanie ono w tym stanie do momentu, gdy rzeczywiste urządzenie połączy się z aplikacją i potwierdzi wykonanie działania dla ustawienia.
 
     ![Synchronizowanie ustawień](media/tutorial-add-device/settingssyncing.png)
 
@@ -76,7 +74,7 @@ Rzeczywiste urządzenie jest tworzone na podstawie szablonu urządzenia **Połą
 
 3. Dla rzeczywistego urządzenia możesz wyświetlić strony **Miary**, **Reguły** i **Pulpit nawigacyjny**.
 
-## <a name="generate-connection-string-for-real-device-from-application"></a>Generowanie parametrów połączenia dla rzeczywistego urządzenia z aplikacji
+## <a name="generate-connection-string"></a>Generowanie parametrów połączenia
 
 Deweloper urządzenia musi osadzić *parametry połączenia* rzeczywistego urządzenia w kodzie uruchamianym na urządzeniu. Parametry połączenia umożliwiają urządzeniu nawiązanie zabezpieczonego połączenia z aplikacją usługi Azure IoT Central. Parametry połączenia możesz wygenerować w ramach przygotowywania kodu klienta korzystającego z oprogramowania Node.js w następnych krokach. Aplikacja Node.js reprezentuje rzeczywisty połączony klimatyzator. 
 
@@ -90,7 +88,6 @@ Przykładowy kod w tym artykule został napisany przy użyciu oprogramowania [No
 * wysłania odpowiedzi do operatora, który użył ustawienia **Ustaw temperaturę**.
 * obsługuje polecenie Echo z poziomu aplikacji usługi Azure IoT Central.
 
-
 Artykuły zawierające instrukcje przywoływane w sekcji [Następne kroki](#next-steps) zawierają pełniejsze przykłady i przedstawiają użycie innych języków programowania. Aby uzyskać więcej informacji na temat sposobu, w jaki urządzenia łączą się z usługą Azure IoT Central, patrz artykuł [Łączność urządzeń](concepts-connectivity.md).
 
 W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania [Node.js](https://nodejs.org/):
@@ -102,18 +99,12 @@ W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania 
 1. W środowisku wiersza polecenia przejdź do utworzonego folderu `connectedairconditioner`.
 
 1. Zainstaluj generator kluczy DPS przy użyciu następującego polecenia:
-    
+
     ```cmd/sh
     npm i -g dps-keygen
     ```
 
    Dowiedz się więcej na temat [narzędzia wiersza polecenia w tym miejscu](https://www.npmjs.com/package/dps-keygen).
-
-1. Pobierz i rozpakuj (w systemie Windows) narzędzie the dps_cstr z witryny GitHub (https://github.com/Azure/dps-keygen/archive/master.zip
-
-)
-
-    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. Parametry połączenia dla wystąpienia urządzenia w aplikacji są generowane na podstawie informacji o urządzeniu udostępnionych przez usługę IoT Central.
 
@@ -121,56 +112,56 @@ W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania 
 
    ![Strona Urządzenie przedstawiająca link umożliwiający wyświetlenie informacji o połączeniu](media/tutorial-add-device/connectionlink.png)
 
-
 1. Na stronie Połączenie urządzenia skopiuj pola Identyfikator zakresu, Identyfikator urządzenia i Klucz podstawowy, a następnie wklej je w edytorze tekstów i zapisz plik. Użyjesz tych wartości w następnym kroku.
 
-   ![Szczegóły połączenia](media/tutorial-add-device/device-connect.PNG)
+   ![Szczegóły połączenia](media/tutorial-add-device/device-connect.png)
 
 1. Wróć do środowiska wiersza polecenia i wygeneruj parametry połączenia, wykonując polecenie:
 
-   ```cmd/sh
-   dps_cstr <scope_id> <device_id> <Primary Key>
-   ```
-   
+    ```cmd/sh
+    dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
+    ```
+
    Skopiuj dane wyjściowe i zapisz je w nowym pliku (na przykład connection.txt).
 
 1. Aby zainicjować projekt oprogramowania Node.js, uruchom następujące polecenie, akceptując wszystkie wartości domyślne:
 
-   ```cmd/sh
+    ```cmd/sh
     npm init
-   ```
+      ```
 
 1. Aby zainstalować wymagane pakiety, uruchom następujące polecenie:
 
-   ```cmd/sh
-   npm install azure-iot-device azure-iot-device-mqtt --save
-   ```
+    ```cmd/sh
+    npm install azure-iot-device azure-iot-device-mqtt --save
+    ```
 
 1. Za pomocą edytora tekstów utwórz plik o nazwie **ConnectedAirConditioner.js** w folderze `connectedairconditioner`.
 
 1. Dodaj następujące instrukcje `require` na początku pliku **ConnectedAirConditioner.js**:
 
-   ```javascript
-   'use strict';
+    ```javascript
+    'use strict';
 
-   var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
-   var Message = require('azure-iot-device').Message;
-   var ConnectionString = require('azure-iot-device').ConnectionString;
-   ```
+    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var Message = require('azure-iot-device').Message;
+    var ConnectionString = require('azure-iot-device').ConnectionString;
+    ```
 
 1. Dodaj następujące deklaracje zmiennych do pliku:
 
-   ```javascript
-   var connectionString = '{your device connection string}';
-   var targetTemperature = 0;
-   var client = clientFromConnectionString(connectionString);
-   ```
-   > [!NOTE]
-   > Symbol zastępczy `{your device connection string}` zostanie zaktualizowany w późniejszym kroku. 
+    ```javascript
+    var connectionString = '{your device connection string}';
+    var targetTemperature = 0;
+    var client = clientFromConnectionString(connectionString);
+    ```
+
+    > [!NOTE]
+    > Symbol zastępczy `{your device connection string}` zostanie zaktualizowany w późniejszym kroku.
 
 1. Zapisz zmiany wprowadzone do tej pory, ale pozostaw plik otwarty.
 
-## <a name="understand-how-client-code-maps-to-the-application"></a>Poznawanie sposobu mapowania kodu klienta na aplikację
+## <a name="review-client-code"></a>Przejrzyj kod klienta
 
 W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla aplikacji, która nawiązuje połączenie z aplikacją usługi Azure IoT Central. W tej sekcji jest dodawany kod, który:
 
@@ -180,84 +171,82 @@ W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla apli
 * odbiera ustawienia z aplikacji usługi Azure IoT Central.
 * obsługuje polecenie Echo z poziomu aplikacji usługi Azure IoT Central.
 
-
 1. Aby wysyłać dane telemetryczne temperatury do aplikacji usługi Azure IoT Central, dodaj następujący kod do pliku **ConnectedAirConditioner.js**:
 
-   ```javascript
-   // Send device telemetry.
-   function sendTelemetry() {
-     var temperature = targetTemperature + (Math.random() * 15);
-     var data = JSON.stringify({ temperature: temperature });
-     var message = new Message(data);
-     client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
-       (err ? `; error: ${err.toString()}` : '') +
-       (res ? `; status: ${res.constructor.name}` : '')));
-   }
-   ```
+    ```javascript
+    // Send device telemetry.
+    function sendTelemetry() {
+      var temperature = targetTemperature + (Math.random() * 15);
+      var data = JSON.stringify({ temperature: temperature });
+      var message = new Message(data);
+      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+        (err ? `; error: ${err.toString()}` : '') +
+        (res ? `; status: ${res.constructor.name}` : '')));
+    }
+    ```
 
-   Nazwa pola w wysyłanym kodzie JSON musi być zgodna z nazwą pola określoną dla danych telemetrycznych temperatury w szablonie urządzenia. W tym przykładzie nazwa pola to **temperature**.
-
+    Nazwa pola w wysyłanym kodzie JSON musi być zgodna z nazwą pola określoną dla danych telemetrycznych temperatury w szablonie urządzenia. W tym przykładzie nazwa pola to **temperature**.
 
 1. Aby wysłać właściwości urządzenia, takie jak **firmwareVersion** i **serialNumber**, dodaj następującą definicję:
 
-   ```javascript
-   // Send device properties
-   function sendDeviceProperties(twin) {
-     var properties = {
-       firmwareVersion: "9.75",
-       serialNumber: "10001"
-     };
-     twin.properties.reported.update(properties, (errorMessage) => 
-       console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
-   }
-   ```
+    ```javascript
+    // Send device properties
+    function sendDeviceProperties(twin) {
+      var properties = {
+        firmwareVersion: "9.75",
+        serialNumber: "10001"
+      };
+      twin.properties.reported.update(properties, (errorMessage) => 
+      console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
+    }
+    ```
 
 1. Aby zdefiniować ustawienia obsługiwane przez urządzenie, takie jak **setTemperature**, dodaj następującą definicję:
 
-   ```javascript
-   // Add any settings your device supports
-   // mapped to a function that is called when the setting is changed.
-   var settings = {
-     'setTemperature': (newValue, callback) => {
-       // Simulate the temperature setting taking two steps.
-       setTimeout(() => {
-         targetTemperature = targetTemperature + (newValue - targetTemperature) / 2;
-         callback(targetTemperature, 'pending');
-         setTimeout(() => {
-           targetTemperature = newValue;
-           callback(targetTemperature, 'completed');
-         }, 5000);
-       }, 5000);
-     }
-   };
-   ```
+    ```javascript
+    // Add any settings your device supports
+    // mapped to a function that is called when the setting is changed.
+    var settings = {
+      'setTemperature': (newValue, callback) => {
+        // Simulate the temperature setting taking two steps.
+        setTimeout(() => {
+          targetTemperature = targetTemperature + (newValue - targetTemperature) / 2;
+          callback(targetTemperature, 'pending');
+          setTimeout(() => {
+            targetTemperature = newValue;
+            callback(targetTemperature, 'completed');
+          }, 5000);
+        }, 5000);
+      }
+    };
+    ```
 
 1. Aby obsługiwać ustawienia wysyłane z usługi Azure IoT Central, dodaj następującą funkcję, która lokalizuje i wykonuje odpowiedni kod urządzenia:
 
-   ```javascript
-   // Handle settings changes that come from Azure IoT Central via the device twin.
-   function handleSettings(twin) {
-     twin.on('properties.desired', function (desiredChange) {
-       for (let setting in desiredChange) {
-         if (settings[setting]) {
-           console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
-           settings[setting](desiredChange[setting].value, (newValue, status, message) => {
-             var patch = {
-               [setting]: {
-                 value: newValue,
-                 status: status,
-                 desiredVersion: desiredChange.$version,
-                 message: message
-               }
-             }
-             twin.properties.reported.update(patch, (err) => console.log(`Sent setting update for ${setting}; ` +
-               (err ? `error: ${err.toString()}` : `status: success`)));
-           });
-         }
-       }
-     });
-   }
-   ```
+    ```javascript
+    // Handle settings changes that come from Azure IoT Central via the device twin.
+    function handleSettings(twin) {
+      twin.on('properties.desired', function (desiredChange) {
+        for (let setting in desiredChange) {
+          if (settings[setting]) {
+            console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
+            settings[setting](desiredChange[setting].value, (newValue, status, message) => {
+              var patch = {
+                [setting]: {
+                  value: newValue,
+                  status: status,
+                  desiredVersion: desiredChange.$version,
+                  message: message
+                }
+              }
+              twin.properties.reported.update(patch, (err) => console.log(`Sent setting update for ${setting}; ` +
+                (err ? `error: ${err.toString()}` : `status: success`)));
+            });
+          }
+        }
+      });
+    }
+    ```
 
     Ta funkcja:
 
@@ -267,57 +256,57 @@ W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla apli
 
 1. Aby odpowiedzieć na polecenie, takie jak **echo**, z aplikacji usługi Azure IoT Central, dodaj następującą definicję:
 
-   ```javascript
-   // Respond to the echo command
-   function onCommandEcho(request, response) {
-     // Display console info
-     console.log(' * Echo command received');
-     // Respond
-     response.send(10, 'Success', function (errorMessage) {});
-   }
-   ```
+    ```javascript
+    // Respond to the echo command
+    function onCommandEcho(request, response) {
+      // Display console info
+      console.log(' * Echo command received');
+      // Respond
+      response.send(10, 'Success', function (errorMessage) {});
+    }
+    ```
 
 1. Dodaj następujący kod, aby umożliwić nawiązanie połączenia z usługą Azure IoT Central i dołączyć funkcje do kodu klienta:
 
-   ```javascript
-   // Handle device connection to Azure IoT Central.
-   var connectCallback = (err) => {
-     if (err) {
-       console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
-     } else {
-       console.log('Device successfully connected to Azure IoT Central');
-       // Send telemetry measurements to Azure IoT Central every 1 second.
-       setInterval(sendTelemetry, 1000);
-       // Setup device command callbacks
-       client.onDeviceMethod('echo', onCommandEcho);
-       // Get device twin from Azure IoT Central.
-       client.getTwin((err, twin) => {
-         if (err) {
-           console.log(`Error getting device twin: ${err.toString()}`);
-         } else {
-           // Send device properties once on device start up
-           sendDeviceProperties(twin);
-           // Apply device settings and handle changes to device settings.
-           handleSettings(twin);
-         }
-       });
-     }
-   };
+    ```javascript
+    // Handle device connection to Azure IoT Central.
+    var connectCallback = (err) => {
+      if (err) {
+        console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
+      } else {
+        console.log('Device successfully connected to Azure IoT Central');
+        // Send telemetry measurements to Azure IoT Central every 1 second.
+        setInterval(sendTelemetry, 1000);
+        // Setup device command callbacks
+        client.onDeviceMethod('echo', onCommandEcho);
+        // Get device twin from Azure IoT Central.
+        client.getTwin((err, twin) => {
+          if (err) {
+            console.log(`Error getting device twin: ${err.toString()}`);
+          } else {
+            // Send device properties once on device start up
+            sendDeviceProperties(twin);
+            // Apply device settings and handle changes to device settings.
+            handleSettings(twin);
+          }
+        });
+      }
+    };
 
-   client.open(connectCallback);
-   ```
+    client.open(connectCallback);
+    ```
 
 1. Zapisz zmiany wprowadzone do tej pory, ale pozostaw plik otwarty.
 
-## <a name="configure-client-code-for-the-real-device"></a>Konfigurowanie kodu klienta dla rzeczywistego urządzenia
+## <a name="configure-client-code"></a>Konfigurowanie kodu klienta
 
 <!-- Add the connection string to the sample code, build, and run -->Aby skonfigurować kod klienta pod kątem nawiązywania połączenia z aplikacją usługi Azure IoT Central, dodaj zanotowane wcześniej w tym samouczku parametry połączenia dla rzeczywistego urządzenia.
 
 1. W pliku **ConnectedAirConditioner.js** znajdź następujący wiersz kodu:
 
-   ```javascript
-   var connectionString = '{your device connection string}';
-   ```
+    ```javascript
+    var connectionString = '{your device connection string}';
+    ```
 
 1. Zastąp element `{your device connection string}` parametrami połączenia rzeczywistego urządzenia. Parametry połączenia zostały zapisane wcześniej w edytorze tekstów.
 
@@ -325,12 +314,12 @@ W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla apli
 
 1. Aby uruchomić przykład, podaj następujące polecenie w środowisku wiersza polecenia:
 
-   ```cmd/sh
-   node ConnectedAirConditioner.js
-   ```
+    ```cmd/sh
+    node ConnectedAirConditioner.js
+    ```
 
-   > [!NOTE]
-   > Upewnij się, że jesteś w folderze `connectedairconditioner` w momencie uruchamiania tego polecenia.
+    > [!NOTE]
+    > Upewnij się, że jesteś w folderze `connectedairconditioner` w momencie uruchamiania tego polecenia.
 
 1. Aplikacja wyświetla dane wyjściowe na konsoli:
 
@@ -338,7 +327,7 @@ W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla apli
 
 1. Po około 30 sekundach zobaczysz dane telemetryczne na stronie **Miary** urządzenia:
 
-   ![Rzeczywiste dane telemetryczne](media/tutorial-add-device/realtelemetry.png)
+   ![Rzeczywiste ~ ~ telemetrii](media/tutorial-add-device/realtelemetry.png)
 
 1. Na stronie **Ustawienia** widać, że ustawienie jest teraz zsynchronizowane. Po pierwszym połączeniu urządzenia odebrało ono wartość ustawienia i potwierdziło zmianę:
 
@@ -355,7 +344,7 @@ W poprzedniej sekcji utworzono szkielet projektu oprogramowania Node.js dla apli
 
     ![Dane telemetryczne temperatury mają teraz większe wartości](media/tutorial-add-device/highertemperature.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
@@ -372,7 +361,7 @@ Jako operator możesz dowiedzieć się, jak wykonywać następujące działania:
 
 * [Zarządzanie urządzeniami](howto-manage-devices.md)
 * [Korzystanie ze zbiorów urządzeń](howto-use-device-sets.md)
-* [Tworzenie niestandardowych analiz](howto-create-analytics.md)
+* [Tworzenie niestandardowych analiz](howto-use-device-sets.md)
 
 Jako deweloper urządzenia możesz dowiedzieć się, jak wykonywać następujące działania:
 

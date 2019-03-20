@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1347012971d53728d978f378e30684311c88828b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 743dad6032547f8f535543413adff416efb56ac0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022284"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998396"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopiowanie danych z bazy danych Cassandra przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [Bieżąca wersja](connector-cassandra.md)
 
@@ -98,7 +98,7 @@ Aby skopiować dane z bazy danych Cassandra, należy ustawić właściwość typ
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość typu elementu dataset musi być równa: **CassandraTable** | Yes |
-| przestrzeń kluczy |Nazwa przestrzeni kluczy lub schemat bazy danych Cassandra. |Nie (Jeśli określono parametr "zapytanie" do "CassandraSource") |
+| keyspace |Nazwa przestrzeni kluczy lub schemat bazy danych Cassandra. |Nie (Jeśli określono parametr "zapytanie" do "CassandraSource") |
 | tableName |Nazwa tabeli w bazie danych Cassandra. |Nie (Jeśli określono parametr "zapytanie" do "CassandraSource") |
 
 **Przykład:**
@@ -132,7 +132,7 @@ Aby skopiować dane z bazy danych Cassandra, należy ustawić typ źródłowego 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type źródło działania kopiowania: **CassandraSource** | Yes |
-| query |Użyj zapytania niestandardowe można odczytać danych. |Zapytanie SQL 92 lub zapytanie języka CQL. Zobacz [odwołanie do języka CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Korzystając z zapytania SQL, określ **nazwa name.table przestrzeń kluczy** do reprezentowania tabeli, które chcesz zbadać. |Nie (Jeśli zostanie określona "nazwa tableName" i "przestrzeń kluczy" w zestawie danych). |
+| query |Użyj zapytania niestandardowe można odczytać danych. Zapytanie SQL 92 lub zapytanie języka CQL. Zobacz [odwołanie do języka CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Korzystając z zapytania SQL, określ **nazwa name.table przestrzeń kluczy** do reprezentowania tabeli, które chcesz zbadać. |Nie (Jeśli zostanie określona "nazwa tableName" i "przestrzeń kluczy" w zestawie danych). |
 | consistencyLevel |Poziom spójności Określa, jak wiele replik musi odpowiadać na żądania odczytu przed zwróceniem danych do aplikacji klienckiej. Bazy danych Cassandra sprawdza określoną liczbę replik dla danych do spełnienia żądania odczytu. Zobacz [Konfigurowanie spójności danych](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) Aby uzyskać szczegółowe informacje.<br/><br/>Dozwolone wartości to: **JEDEN**, **dwóch**, **trzy**, **KWORUM**, **wszystkich**, **LOCAL_QUORUM**, **EACH_QUORUM**, i **LOCAL_ONE**. |Nie (wartość domyślna to `ONE`) |
 
 **Przykład:**
@@ -173,21 +173,21 @@ Podczas kopiowania danych z bazy danych Cassandra, następujące mapowania są u
 
 | Typ danych Cassandra | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| ASCII |Ciąg |
+| ASCII |String |
 | BIGINT |Int64 |
-| OBIEKT BLOB |Byte[] |
+| BLOB |Byte[] |
 | ATRYBUT TYPU WARTOŚĆ LOGICZNA |Wartość logiczna |
-| DECIMAL |Dziesiętny |
-| PODWÓJNE |Podwójne |
-| FLOAT |Pojedyncze |
-| INET |Ciąg |
+| DECIMAL |Decimal |
+| DOUBLE |Double |
+| FLOAT |Single |
+| INET |String |
 | INT |Int32 |
-| TEKST |Ciąg |
-| ZNACZNIK CZASU: |DateTime |
-| TIMEUUID |Identyfikator GUID |
-| IDENTYFIKATOR UUID |Identyfikator GUID |
-| VARCHAR |Ciąg |
-| VARINT |Dziesiętny |
+| TEKST |String |
+| SYGNATURA CZASOWA |DateTime |
+| TIMEUUID |Guid |
+| IDENTYFIKATOR UUID |Guid |
+| VARCHAR |String |
+| VARINT |Decimal |
 
 > [!NOTE]
 > Kolekcja typów (mapa, zestaw, listy itp.), można znaleźć [pracują z typami kolekcji bazy danych Cassandra przy użyciu tabeli wirtualnej](#work-with-collections-using-virtual-table) sekcji.
@@ -212,7 +212,7 @@ Na przykład poniższy "ExampleTable" jest tabeli bazy danych Cassandra, która 
 
 | pk_int | Wartość | List | Mapa | StringSet |
 | --- | --- | --- | --- | --- |
-| 1 |"przykład: wartość 1" |["1", "2", "3"] |{"S1": "," "S2": "b"} |{"A", "B", "C"} |
+| 1 |"przykład: wartość 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"przykład value 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
 
 Sterownik wygeneruje wiele tabel wirtualnego do reprezentowania jednej tabeli. Kolumny klucza obcego w tabelach wirtualnych odwoływać się do kolumny klucza podstawowego w tabeli rzeczywistych i wskazać, który wiersz tabeli rzeczywistych wiersz tabeli wirtualnej odpowiada.

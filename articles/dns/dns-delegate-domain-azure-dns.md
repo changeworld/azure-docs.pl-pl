@@ -5,18 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a952eb679810f36008425ae5daacc4261db50c77
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
-ms.translationtype: HT
+ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999620"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779780"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Samouczek: Hostowanie własnej domeny w usłudze Azure DNS
 
-Za pomocą usługi Azure DNS można hostować swoją domenę DNS i zarządzać rekordami DNS. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure. 
+Za pomocą usługi Azure DNS można hostować swoją domenę DNS i zarządzać rekordami DNS. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 
 Załóżmy, że masz zakupioną domenę „contoso.net” od rejestratora nazw domen i tworzysz strefę o nazwie „contoso.net” w usłudze Azure DNS. Ponieważ jesteś właścicielem domeny, rejestrator oferuje Ci opcję skonfigurowania rekordów serwerów nazw (NS) dla domeny. Rejestrator przechowuje rekordy NS w strefie nadrzędnej „.net”. Użytkownicy Internetu na całym świecie są kierowani do Twojej domeny w strefie usługi Azure DNS podczas próby rozpoznania rekordów DNS w strefie contoso.net.
 
@@ -31,6 +31,12 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Musi mieć nazwę domeny, które jest dostępne na potrzeby testów można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
+
+Domena przykład używane w tym samouczku jest "contoso.NET", ale korzystać z własnej nazwy domeny.
 
 ## <a name="create-a-dns-zone"></a>Tworzenie strefy DNS
 
@@ -107,7 +113,7 @@ Jeśli planujesz wykonanie następnego samouczka, możesz zachować grupę zasob
 
 - Wybierz grupę zasobów **contosoRG**, a następnie wybierz pozycję **Usuń grupę zasobów**. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku utworzono strefę DNS dla domeny i delegowano ją do usługi Azure DNS. Aby dowiedzieć się więcej o usłudze Azure DNS i aplikacjach internetowych, przejdź do samouczka dotyczącego aplikacji internetowych.
 

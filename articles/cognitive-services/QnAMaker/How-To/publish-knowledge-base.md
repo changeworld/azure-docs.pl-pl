@@ -1,26 +1,26 @@
 ---
 title: Publikowanie bazy wiedzy
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: Publikowanie bazy wiedzy jest ostatnim krokiem w zakresie udostępniania wiedzy jako punktu końcowego udzielenie odpowiedzi na pytanie. Podczas publikowania bazy wiedzy pytań i odpowiedzi zawartość bazy wiedzy przenosi się z Indeks testu do produkcji indeksu w usłudze Azure search.
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: Publikowanie bazy wiedzy przy użyciu usługi QnA Maker API jest to ostatni krok, aby udostępnić swojej wiedzy jako punktu końcowego udzielenie odpowiedzi na pytanie. Podczas publikowania bazy wiedzy pytań i odpowiedzi zawartość bazy wiedzy przenosi się z Indeks testu do produkcji indeksu w usłudze Azure search.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 585e5f8f955a405b08bef42588ab5caff71c7bba
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c65654e7d6b2e66a07116ea9555ed316ace88912
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865917"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091957"
 ---
-# <a name="publish-a-knowledge-base-using-the-qna-maker-portal"></a>Publikowanie bazy wiedzy przy użyciu portalu narzędzia QnA Maker
+# <a name="publish-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Publikowanie bazy wiedzy przy użyciu portalu usługi QnA Maker API
 
-Publikowanie bazy wiedzy jest ostatnim krokiem w zakresie udostępniania wiedzy jako punktu końcowego udzielenie odpowiedzi na pytanie do aplikacji klienta. 
+Publikowanie bazy wiedzy przy użyciu usługi QnA Maker API jest to ostatni krok, aby udostępnić swojej wiedzy jako punktu końcowego udzielenie odpowiedzi na pytanie. 
 
 Podczas publikowania bazy wiedzy pytań i odpowiedzi zawartość bazy wiedzy przenosi się z Indeks testu do produkcji indeksu w usłudze Azure search.
 

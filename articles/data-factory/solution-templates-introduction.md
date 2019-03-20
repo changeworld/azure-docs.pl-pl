@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: c684d275052e011d965210c132e09bab679cf166
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576259"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003552"
 ---
 # <a name="templates"></a>Szablony
 
@@ -40,11 +40,13 @@ Pracę można rozpocząć tworzenia potoku usługi fabryka danych na podstawie s
 
 ### <a name="out-of-the-box-data-factory-templates"></a>Poza pole szablony usługi Data Factory
 
-Data Factory przy użyciu szablonów usługi Azure Resource Manager do zapisywania szablony potoku fabryki danych. Możesz zobaczyć wszystkie szablony usługi Resource Manager, wraz z plikiem manifestu, używane poza pole szablony usługi Data Factory, w [oficjalne repozytorium Azure Data Factory w witrynie Github](https://github.com/Azure/Azure-DataFactory/tree/master/templates). Wstępnie zdefiniowanych szablonów, które są obsługiwane przez firmę Microsoft obejmują, ale nie są ograniczone do następujących elementów:
+Data Factory przy użyciu szablonów usługi Azure Resource Manager do zapisywania szablony potoku fabryki danych. Możesz zobaczyć wszystkie szablony usługi Resource Manager, wraz z plikiem manifestu, używane poza pole szablony usługi Data Factory, w [oficjalne repozytorium Azure Data Factory w witrynie GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/templates). Wstępnie zdefiniowanych szablonów, które są obsługiwane przez firmę Microsoft obejmują, ale nie są ograniczone do następujących elementów:
 
 -   Skopiuj szablony:
 
     -   [Zbiorcze kopiowanie danych z bazy danych](solution-template-bulk-copy-with-control-table.md)
+    
+    -   [Kopiuj nowe pliki, Data ostatniej modyfikacji](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [Kopiowanie wielu kontenerów plików między magazynami oparte na plikach](solution-template-copy-files-multiple-containers.md)
 

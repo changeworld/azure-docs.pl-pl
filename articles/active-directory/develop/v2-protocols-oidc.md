@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d94e64af362ef9698350b8231718cc841731f7e5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6c20ae6acaf600cdde6e168c6db96deb7a28e9fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162836"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112708"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory w wersji 2.0 i protokołu OpenID Connect
 
@@ -105,7 +105,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Kliknij poniższy link, aby wykonać tego żądania. Po zalogowaniu się w przeglądarce zostanie przekierowany do https://localhost/myapp/, przy użyciu tokenu Identyfikatora, w pasku adresu. Należy zauważyć, że używa tego żądania `response_mode=fragment` (tylko w celach demonstracyjnych). Firma Microsoft zaleca użycie `response_mode=form_post`.
+> Kliknij poniższy link, aby wykonać tego żądania. Po zalogowaniu się w przeglądarce zostanie przekierowany do `https://localhost/myapp/`, przy użyciu tokenu Identyfikatora, w pasku adresu. Należy zauważyć, że używa tego żądania `response_mode=fragment` (tylko w celach demonstracyjnych). Firma Microsoft zaleca użycie `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | Parametr | Warunek | Opis |
@@ -126,7 +126,7 @@ W tym momencie użytkownik jest monitowany, aby wprowadzić swoje poświadczenia
 
 Po użytkownik jest uwierzytelniany i przyznaje zgody, punktu końcowego v2.0 zwraca odpowiedź do aplikacji, na wskazany identyfikator URI przekierowania za pomocą metody podanej w `response_mode` parametru.
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+### <a name="successful-response"></a>Pomyślna odpowiedź
 
 Odpowiedź oznaczająca Powodzenie, gdy używasz `response_mode=form_post` wygląda podobnie do następującego:
 
@@ -178,7 +178,7 @@ W poniższej tabeli opisano kody błędów, które mogą być zwracane w `error`
 
 Po prostu odbiera id_token nie wystarcza do uwierzytelnienia użytkownika; należy sprawdzić poprawności podpisu id_token i weryfikować oświadczenia w tokenie na wymagania dotyczące Twojej aplikacji. Korzysta z punktu końcowego v2.0 [tokenów sieci Web JSON (tokenów Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
 
-Można wybrać sprawdzić poprawność `id_token` w kliencie kod, ale powszechną praktyką jest wysłanie `id_token` do serwera wewnętrznej bazy danych i zweryfikować istnieje. Po zweryfikowaniu podpis id_token, istnieje kilka oświadczenia, które będzie trzeba zweryfikować. Zobacz [ `id_token` odwołania](id-tokens.md) uzyskać więcej informacji, w tym [sprawdzania poprawności tokenów](id-tokens.md#validating-an-idtoken) i [ważnych informacji dotyczących podpisywania Przerzucanie klucza](active-directory-signing-key-rollover.md). Firma Microsoft zaleca korzystające z biblioteki do analizowania i sprawdzanie poprawności tokenów — Brak co najmniej jeden dostępny dla większości platform i języków.
+Można wybrać sprawdzić poprawność `id_token` w kliencie kod, ale powszechną praktyką jest wysłanie `id_token` do serwera wewnętrznej bazy danych i zweryfikować istnieje. Po zweryfikowaniu podpis id_token, istnieje kilka oświadczenia, które będzie trzeba zweryfikować. Zobacz [ `id_token` odwołania](id-tokens.md) uzyskać więcej informacji, w tym [sprawdzania poprawności tokenów](id-tokens.md#validating-an-id_token) i [ważnych informacji dotyczących podpisywania Przerzucanie klucza](active-directory-signing-key-rollover.md). Firma Microsoft zaleca korzystające z biblioteki do analizowania i sprawdzanie poprawności tokenów — Brak co najmniej jeden dostępny dla większości platform i języków.
 <!--TODO: Improve the information on this-->
 
 Możesz również sprawdzić dodatkowe oświadczenia w zależności od scenariusza. Niektórych typowych operacji sprawdzania poprawności obejmują:
@@ -235,14 +235,14 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 ```
 
 > [!TIP]
-> Kliknij poniższy link, aby wykonać tego żądania. Po zalogowaniu się w przeglądarce jest przekierowywane do https://localhost/myapp/, za pomocą tokenu Identyfikacyjnego i kodu na pasku adresu. Należy zauważyć, że używa tego żądania `response_mode=fragment` tylko w celach demonstracyjnych. Firma Microsoft zaleca użycie `response_mode=form_post`.
+> Kliknij poniższy link, aby wykonać tego żądania. Po zalogowaniu się w przeglądarce jest przekierowywane do `https://localhost/myapp/`, za pomocą tokenu Identyfikacyjnego i kodu na pasku adresu. Należy zauważyć, że używa tego żądania `response_mode=fragment` tylko w celach demonstracyjnych. Firma Microsoft zaleca użycie `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 
 Przy tym zakresy uprawnień w żądaniu oraz przy użyciu `response_type=id_token code`, punktu końcowego v2.0 gwarantuje, że użytkownik wyraził zgodę na uprawnienia czcionką `scope` parametr zapytania. Zwraca kod autoryzacji do aplikacji do wymiany dla tokenu dostępu.
 
-### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
+### <a name="successful-response"></a>Pomyślna odpowiedź
 
 Odpowiedź oznaczająca Powodzenie korzystania z `response_mode=form_post` wygląda podobnie do następującego:
 
@@ -279,4 +279,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Aby uzyskać opis możliwe kody błędów i opartej na zalecanym kliencie odpowiedzi, zobacz [kody błędów dla błędów punktu końcowego autoryzacji](#error-codes-for-authorization-endpoint-errors).
 
-Jeśli masz kod autoryzacji i identyfikator tokenu, można zalogować użytkownika i uzyskiwanie tokenów dostępu w ich imieniu. Do logowania użytkownika, musisz zweryfikować tokenu Identyfikacyjnego [dokładnie zgodnie z opisem](id-tokens.md#validating-an-idtoken). Uzyskiwanie tokenów dostępu, wykonaj czynności opisane w [dokumentacji przepływu kodu OAuth](v2-oauth2-auth-code-flow.md#request-an-access-token).
+Jeśli masz kod autoryzacji i identyfikator tokenu, można zalogować użytkownika i uzyskiwanie tokenów dostępu w ich imieniu. Do logowania użytkownika, musisz zweryfikować tokenu Identyfikacyjnego [dokładnie zgodnie z opisem](id-tokens.md#validating-an-id_token). Uzyskiwanie tokenów dostępu, wykonaj czynności opisane w [dokumentacji przepływu kodu OAuth](v2-oauth2-auth-code-flow.md#request-an-access-token).

@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701016"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860622"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Tworzenie zaawansowanych harmonogramów i cykli dla zadań w usłudze Azure Scheduler
 
@@ -65,13 +65,13 @@ Ta tabela zawiera ogólne omówienie głównych elementów JSON używanych podcz
 
 | Element | Wymagany | Opis | 
 |---------|----------|-------------|
-| **startTime** | Nie | Wartość ciągu daty/godziny w [formatu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) , który określa po pierwszym uruchomieniu zadania w harmonogramie podstawowe. <p>W przypadku harmonogramów złożonych zadania nie jest uruchamiany wcześniej niż **startTime**. | 
+| **startTime** | Nie | Wartość ciągu daty/godziny w [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , który określa po pierwszym uruchomieniu zadania w harmonogramie podstawowe. <p>W przypadku harmonogramów złożonych zadania nie jest uruchamiany wcześniej niż **startTime**. | 
 | **recurrence** | Nie | Zasady ponownego uruchamiania zadania. **Cyklu** obiektu obsługuje następujące elementy: **częstotliwość**, **interwał**, **harmonogram**, **liczba**, i **endTime**. <p>Jeśli używasz **cyklu** elementu, musisz również użyć **częstotliwość** elementu, podczas gdy inne **cyklu** elementy są opcjonalne. |
 | **frequency** | Tak, gdy używasz **cyklu** | Jednostka czasu między wystąpieniami i obsługuje następujące wartości: "Minute", "Hour", "Day", "Week", "Month" i "Rok" | 
 | **interval** | Nie | Dodatnia liczba całkowita określająca liczbę jednostek czasu między wystąpieniami na podstawie **częstotliwość**. <p>Na przykład jeśli **interwał** wynosi 10 i **częstotliwość** to "Week", zadanie jest powtarzany co 10 tygodnie. <p>Poniżej przedstawiono najbardziej liczba interwałów, które dla każdej częstotliwości: <p>-18 miesięcy <br>-78 tygodni <br>-548 dni <br>— W przypadku godziny i minuty, zakres to 1 < = <*interwał*>< = 1000. | 
 | **schedule** | Nie | Definiuje zmiany do powtarzania, w oparciu o te określonego minuta — znaczniki, znaczniki godziny, dni tygodnia i dni miesiąca | 
 | **count** | Nie | Dodatnia liczba całkowita, która określa liczbę prób, zadanie zostanie uruchomione przed zakończeniem. <p>Na przykład, jeśli zadania codziennego ma **liczba** Ustaw do 7, a data rozpoczęcia to poniedziałek, zakończeniu zadania uruchomione w niedzielę. Jeśli data rozpoczęcia już został przekazany, przy pierwszym uruchomieniu jest obliczany od czasu utworzenia. <p>Bez **endTime** lub **liczba**, zadanie zostanie uruchomione w nieskończoność. Nie można używać obu **liczba** i **endTime** w tym samym zadaniu, ale zasada, czy zakończeniu najpierw zostanie uznane. | 
-| **endTime** | Nie | Wartość ciągu daty lub daty/godziny w [formatu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) określający, kiedy zatrzymania zadania uruchamiania. Można ustawić wartości **endTime** jest w przeszłości. <p>Bez **endTime** lub **liczba**, zadanie zostanie uruchomione w nieskończoność. Nie można używać obu **liczba** i **endTime** w tym samym zadaniu, ale zasada, czy zakończeniu najpierw zostanie uznane. |
+| **endTime** | Nie | Wartość ciągu daty lub daty/godziny w [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) określający, kiedy zatrzymania zadania uruchamiania. Można ustawić wartości **endTime** jest w przeszłości. <p>Bez **endTime** lub **liczba**, zadanie zostanie uruchomione w nieskończoność. Nie można używać obu **liczba** i **endTime** w tym samym zadaniu, ale zasada, czy zakończeniu najpierw zostanie uznane. |
 |||| 
 
 Na przykład, ten schemat JSON w tym artykule opisano podstawowe harmonogramu i cyklu dla zadania: 
@@ -94,9 +94,9 @@ Na przykład, ten schemat JSON w tym artykule opisano podstawowe harmonogramu i 
 
 *Wartości daty/godziny i daty*
 
-* Daty w zadania usługi Scheduler obejmują tylko data i postępuj zgodnie z [specyfikacji ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
+* Daty w zadania usługi Scheduler obejmują tylko data i postępuj zgodnie z [specyfikacji ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 
-* Daty i godziny w zadania usługi Scheduler obejmują daty i godziny, postępuj zgodnie z [specyfikacji ISO 8601](http://en.wikipedia.org/wiki/ISO_8601)i są zakłada się, że to UTC, jeśli nie określono żadnych przesunięcie czasu UTC. 
+* Daty i godziny w zadania usługi Scheduler obejmują daty i godziny, postępuj zgodnie z [specyfikacji ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)i są zakłada się, że to UTC, jeśli nie określono żadnych przesunięcie czasu UTC. 
 
 Aby uzyskać więcej informacji, zobacz [pojęcia, terminologia oraz jednostki](../scheduler/scheduler-concepts-terms.md).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo, mikhegn
-ms.openlocfilehash: 10a2c48023ff8377600a0fdcdf4990a453392e80
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 9fe66e40376d9098244a1268fe9884cd416a36c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805921"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113575"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Instrukcje: Debugowanie kontenerów Windows w usłudze Azure Service Fabric przy użyciu programu Visual Studio 2017
 
@@ -35,19 +35,19 @@ Za pomocą programu Visual Studio 2017 Update 7 (w wersji 15.7) umożliwia debug
 1. Upewnij się, że platformy Docker dla usługi systemu Windows jest uruchomiona przed przejściem do następnego kroku.
 
 1. W celu obsługi rozpoznawania nazw DNS między kontenerów, trzeba będzie skonfigurować lokalnego klastra projektowego, używana jest nazwa komputera. Te kroki są również wymagane, aby adres usług przez zwrotny serwer proxy.
-    1. Otwórz program PowerShell jako administrator
-    2. Przejdź do folderu instalacyjnego zestawu SDK klastra, zwykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
-    3. Uruchom skrypt `DevClusterSetup.ps1`
+   1. Otwórz program PowerShell jako administrator
+   2. Przejdź do folderu instalacyjnego zestawu SDK klastra, zwykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
+   3. Uruchom skrypt `DevClusterSetup.ps1`
 
-       ``` PowerShell
-         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
-       ```
+      ``` PowerShell
+        C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
+      ```
 
-    > [!NOTE]
-    > Możesz użyć `-CreateOneNodeCluster` konfigurowania klastra z jednym węzłem. Wartość domyślna spowoduje utworzenie lokalnego klastra o pięciu węzłach.
-    >
+      > [!NOTE]
+      > Możesz użyć `-CreateOneNodeCluster` konfigurowania klastra z jednym węzłem. Wartość domyślna spowoduje utworzenie lokalnego klastra o pięciu węzłach.
+      >
 
-    Aby dowiedzieć się więcej na temat usługi DNS w usłudze Service Fabric, zobacz [usługa DNS w usłudze Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Aby dowiedzieć się więcej o korzystaniu z usługi Service Fabric zwrotny serwer proxy z usług działających w kontenerze, zobacz [zwrotny serwer proxy specjalna obsługa usług działających w kontenerach](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
+      Aby dowiedzieć się więcej na temat usługi DNS w usłudze Service Fabric, zobacz [usługa DNS w usłudze Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Aby dowiedzieć się więcej o korzystaniu z usługi Service Fabric zwrotny serwer proxy z usług działających w kontenerze, zobacz [zwrotny serwer proxy specjalna obsługa usług działających w kontenerach](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Znane ograniczenia podczas debugowania kontenerów w usłudze Service Fabric
 

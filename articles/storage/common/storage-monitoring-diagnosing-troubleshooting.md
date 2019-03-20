@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 25ec52b44f8d5a36868cc609c42b6db5ab939fa4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bfaa738b0f99594a3bd11541d519701ff5eb98f5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490268"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896164"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -123,9 +123,9 @@ W pozostałej części tej sekcji opisano metryki, które należy monitorować i
 Możesz użyć [witryny Azure portal](https://portal.azure.com) umożliwiających wyświetlenie kondycji usługi Storage (i innych usług platformy Azure) we wszystkich regionach platformy Azure na świecie. Umożliwia monitorowanie pozwala natychmiast zobaczyć, jeśli problem poza Twoją kontrolą ma wpływ na usługi Storage w regionie, używanej aplikacji.
 
 [Witryny Azure portal](https://portal.azure.com) można również dołączyć powiadomienia zdarzenia mające wpływ na różne usługi platformy Azure.
-Uwaga: Te informacje wcześniej była dostępna, wraz z danych historycznych na [pulpitu nawigacyjnego usług systemu Azure](http://status.azure.com).
+Uwaga: Te informacje wcześniej była dostępna, wraz z danych historycznych na [pulpitu nawigacyjnego usług systemu Azure](https://status.azure.com).
 
-Gdy [witryny Azure portal](https://portal.azure.com) zbiera informacje o kondycji z wewnątrz centrów danych platformy Azure (monitorowanie w poziomie), możesz również przyjęcie podejścia poza do generowania transakcji syntetycznych, które okresowo dostępu aplikacji sieci web hostowanych na platformie Azure, z wielu lokalizacji. Usługi oferowane przez [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) i Application Insights dla metodyki DevOps platformy Azure są przykładem tego podejścia. Aby uzyskać więcej informacji na temat usługi Application Insights dla metodyki DevOps platformy Azure, zobacz dodatku "[dodatek 5: Monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure](#appendix-5). "
+Gdy [witryny Azure portal](https://portal.azure.com) zbiera informacje o kondycji z wewnątrz centrów danych platformy Azure (monitorowanie w poziomie), możesz również przyjęcie podejścia poza do generowania transakcji syntetycznych, które okresowo dostępu aplikacji sieci web hostowanych na platformie Azure, z wielu lokalizacji. Usługi oferowane przez [Dynatrace](https://www.dynatrace.com/en/synthetic-monitoring) i Application Insights dla metodyki DevOps platformy Azure są przykładem tego podejścia. Aby uzyskać więcej informacji na temat usługi Application Insights dla metodyki DevOps platformy Azure, zobacz dodatku "[dodatek 5: Monitorowanie za pomocą usługi Application Insights dla metodyki DevOps platformy Azure](#appendix-5). "
 
 ### <a name="monitoring-capacity"></a>Monitorowanie wydajności
 Ponieważ obiekty BLOB są zazwyczaj konto największą część danych przechowywanych metryk usługi Storage tylko przechowuje metryki pojemności dla usługi blob (w czasie pisania, nie jest możliwe monitorowanie pojemności, tabele i kolejki za pomocą metryk usługi Storage). Możesz znaleźć te dane w **$MetricsCapacityBlob** tabeli po włączeniu monitorowania usługi obiektów Blob. Metryki magazynu rejestruje następujące dane raz dziennie, a następnie można użyć wartości **RowKey** do określenia, czy wiersz zawiera jednostki, która odnosi się do danych użytkownika (wartość **danych**) lub dane analizy (wartość **analytics**). Każda jednostka przechowywanych zawiera informacje o wielkość wykorzystanego magazynu (**pojemności** mierzony w bajtach) i bieżącą liczbę kontenerów (**ContainerCount**) i obiektów blob (**ObjectCount** ) używane w ramach konta magazynu. Aby uzyskać więcej informacji na temat metryki pojemności, przechowywane w **$MetricsCapacityBlob** tabeli, zobacz [schemat tabeli metryk usługi Analytics magazynu](https://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -194,7 +194,7 @@ Użytkownicy twojej aplikacji może powiadomić użytkownika o błędów zgłosz
 > 
 > 
 
-Przydatne dla zrozumienia, związane z magazynowaniem kodów stanu i błędów są następujące zasoby:
+Przydatne dla zrozumienia kodów stanu i błędów związanych z magazynem są następujące zasoby:
 
 * [Typowe kody błędów interfejsu API REST](https://msdn.microsoft.com/library/azure/dd179357.aspx)
 * [Kody błędów usługi Blob Service](https://msdn.microsoft.com/library/azure/dd179439.aspx)
@@ -220,10 +220,10 @@ Biblioteki klienta usługi Storage dla platformy .NET umożliwia zbieranie danyc
 ### <a name="using-network-logging-tools"></a>Za pomocą narzędzia rejestracji w sieci
 Można przechwytywać ruch między klientem i serwerem zawierają szczegółowe informacje o dane, które są wymiana klient i serwer i podstawowe warunki w sieci. Narzędzia rejestrowania przydatne sieci obejmują:
 
-* [Narzędzie fiddler](http://www.telerik.com/fiddler) jest to bezpłatny internetowy serwer proxy, który umożliwia zbadanie nagłówki i dane ładunku komunikatów żądań i odpowiedzi HTTP i HTTPS debugowania. Aby uzyskać więcej informacji, zobacz [dodatku 1: Za pomocą narzędzia Fiddler do przechwytywania ruchu HTTP i HTTPS](#appendix-1).
-* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) i [Wireshark](http://www.wireshark.org/) są bezpłatne sieci analizatory protokołu, umożliwiające wyświetlanie pakietów szczegółowe informacje dla różnych protokołów sieciowych. Aby uzyskać więcej informacji na temat programu Wireshark, zobacz "[dodatek 2: Do przechwytywania ruchu sieciowego za pomocą programu Wireshark](#appendix-2)".
+* [Narzędzie fiddler](https://www.telerik.com/fiddler) jest to bezpłatny internetowy serwer proxy, który umożliwia zbadanie nagłówki i dane ładunku komunikatów żądań i odpowiedzi HTTP i HTTPS debugowania. Aby uzyskać więcej informacji, zobacz [dodatku 1: Za pomocą narzędzia Fiddler do przechwytywania ruchu HTTP i HTTPS](#appendix-1).
+* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) i [Wireshark](https://www.wireshark.org/) są bezpłatne sieci analizatory protokołu, umożliwiające wyświetlanie pakietów szczegółowe informacje dla różnych protokołów sieciowych. Aby uzyskać więcej informacji na temat programu Wireshark, zobacz "[dodatek 2: Do przechwytywania ruchu sieciowego za pomocą programu Wireshark](#appendix-2)".
 * Microsoft Message Analyzer jest narzędziem do firmy Microsoft, która zastępuje Monitor sieci, które oprócz przechwytywanie danych pakietów sieciowych, pomaga przeglądać i analizować dane dziennika przechwycone z innych narzędzi. Aby uzyskać więcej informacji, zobacz "[dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer](#appendix-3)".
-* Jeśli chcesz wykonać test podstawowej łączności, aby sprawdzić, czy komputerze klienckim może połączyć się z usługą Azure storage za pośrednictwem sieci, nie możesz tego zrobić przy użyciu standardu **ping** narzędzia na komputerze klienckim. Można jednak użyć [ **tcping** narzędzie](http://www.elifulkerson.com/projects/tcping.php) Aby sprawdzić łączność.
+* Jeśli chcesz wykonać test podstawowej łączności, aby sprawdzić, czy komputerze klienckim może połączyć się z usługą Azure storage za pośrednictwem sieci, nie możesz tego zrobić przy użyciu standardu **ping** narzędzia na komputerze klienckim. Można jednak użyć [ **tcping** narzędzie](https://www.elifulkerson.com/projects/tcping.php) Aby sprawdzić łączność.
 
 W wielu przypadkach dane dzienników z rejestrowania magazynu i biblioteki klienta usługi Storage będą wystarczające, aby zdiagnozować problem, ale w niektórych przypadkach mogą wymagać bardziej szczegółowe informacje, które zapewniają następujące narzędzia rejestrowania w sieci. Na przykład za pomocą programu Fiddler, aby wyświetlić komunikaty HTTP i HTTPS umożliwia wyświetlenie nagłówka i ładunku danych wysyłane do i z usługi magazynu, które umożliwiłyby zbadać, jak aplikacja kliencka ponawia próbę operacji magazynu. Analizatory protokołów, takich jak program Wireshark działają na poziomie pakietów, które umożliwia wyświetlenie danych TCP, który umożliwiłby rozwiązywać problemy z łącznością i utraty pakietów. Analizator komunikatów mogą działać w warstwach protokołów HTTP i TCP.
 
@@ -464,12 +464,12 @@ Swoje metryki wskazują wzrost **wartości PercentNetworkError** dla jednego z u
 Najczęstszą przyczyną tego błędu jest klientem odłączania, zanim upłynie limit czasu w usłudze storage. Badanie kodu w swoim kliencie, aby zrozumieć, kiedy i dlaczego klient odłączy się od usługi storage. Aby zbadać problemy z połączeniem sieciowym z klienta, można użyć programu Wireshark, Microsoft Message Analyzer ani Tcping. Te narzędzia są opisane w [dodatki].
 
 ### <a name="the-client-is-receiving-403-messages"></a>Klient odbiera komunikaty HTTP 403 (zabronione)
-Jeśli Twoja aplikacja kliencka jest zgłaszania błędów HTTP 403 (zabronione), prawdopodobną przyczyną jest, że klient używa wygasłego sygnatury dostępu współdzielonego (SAS) podczas wysyłania żądania magazynu (chociaż innymi możliwymi przyczynami mogą zegara niesymetryczność nieprawidłowe klucze i nagłówków pusty ). Jeśli przyczyną jest wygasły klucz sygnatury dostępu Współdzielonego, nie zobaczysz żadnych wpisów w danych dziennika magazynu rejestrowania po stronie serwera. W poniższej tabeli przedstawiono przykład z dziennika klienta wygenerowane z biblioteki klienta magazynu, który ilustruje ten problem:
+Jeśli aplikacja kliencka zgłasza błędy HTTP 403 (zabronione), prawdopodobną przyczyną jest to, że klient używa wygasłej sygnatury dostępu współdzielonego podczas wysyłania żądania magazynu (chociaż inne możliwe przyczyny to niedokładność zegara, nieprawidłowe klucze i puste nagłówki). Jeśli przyczyną jest wygasły klucz sygnatury dostępu współdzielonego, nie będą widoczne żadne wpisy w danych dziennika rejestrowania danych magazynu po stronie serwera. W poniższej tabeli przedstawiono przykład z dziennika klienta wygenerowane z biblioteki klienta magazynu, który ilustruje ten problem:
 
 | Element źródłowy | Poziom szczegółowości | Poziom szczegółowości | Identyfikator żądania klienta | Operacja tekstu |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab-… |Trwa uruchamianie operacji z lokalizacji podstawowej dla trybu lokalizacji PrimaryOnly. |
-| Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Uruchamianie synchroniczne żądanie https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp; sr = c&amp;si = mypolicy&amp;sig = 2BmcR6zbudIH2F5Ikm % 2FyhNYZEmJNQ OFnd4Rd7z01fIvh % 3D&amp;parametru api-version = 2014-02-14. |
+| Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Począwszy od żądanie synchroniczne <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Oczekiwanie na odpowiedź. |
 | Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: (403) Zabronione. |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Odebrano odpowiedź. Kod stanu 403, identyfikator żądania = = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, zawartość MD5 = element ETag =. |
@@ -480,17 +480,17 @@ Jeśli Twoja aplikacja kliencka jest zgłaszania błędów HTTP 403 (zabronione)
 
 W tym scenariuszu należy zbadać, dlaczego tokenu sygnatury dostępu Współdzielonego wygaśnie, zanim klient wysyła ten token do serwera:
 
-* Zazwyczaj nie należy ustawiać czas rozpoczęcia, tworząc sygnaturę dostępu Współdzielonego dla klienta do użycia od razu. W przypadku małych zegara różnice między hosta Generowanie sygnatury dostępu Współdzielonego przy użyciu bieżącego czasu i usługi magazynu, jest możliwe, że usługi magazynu, aby otrzymywać sygnatury dostępu Współdzielonego, który nie jest jeszcze ważny.
-* Nie należy ustawiać czas wygaśnięcia bardzo krótkich na sygnatury dostępu Współdzielonego. Ponownie zegara małe różnice między hosta Generowanie sygnatury dostępu Współdzielonego i usługi storage może prowadzić do sygnatury dostępu Współdzielonego najwyraźniej wygasa wcześniej niż zakładano.
+* Zazwyczaj nie należy ustawiać czasu rozpoczęcia, tworząc sygnaturę dostępu współdzielonego dla klienta przeznaczoną do natychmiastowego użycia. Jeśli istnieją małe różnice zegara między hostem generującym sygnaturę dostępu współdzielonego przy użyciu bieżącej godziny a usługą magazynu jest możliwe, że usługa magazynu otrzyma sygnaturę dostępu współdzielonego, która nie jest jeszcze ważna.
+* Nie należy ustawiać bardzo krótkiego czasu wygaśnięcia w sygnaturze dostępu współdzielonego. W tym przypadku niewielkie różnice zegara między hostem generującym sygnaturę dostępu współdzielonego a usługą magazynu mogą prowadzić do tego, że sygnatura dostępu współdzielonego wygasa wcześniej, niż zakładano.
 * Jest parametr wersji klucza sygnatury dostępu Współdzielonego (na przykład **sv = 2015-04-05**) są zgodne z wersją biblioteki klienta magazynu używasz? Firma Microsoft zaleca, aby zawsze używać najnowszej wersji programu [biblioteki klienta usługi Storage](https://www.nuget.org/packages/WindowsAzure.Storage/).
-* Jeśli ponownego generowania kluczy dostępu do magazynu, może unieważniony istniejących tokenów SAS. Ten problem może wystąpić, jeśli Generowanie tokenów sygnatur dostępu Współdzielonego z czasem wygaśnięcia długi dla aplikacji klienckich pamięci podręcznej.
+* Jeśli ponownie wygenerujesz klucze dostępu do magazynu, wszelkie istniejące tokeny SAS mogą zostać unieważnione. Ten problem może wystąpić, jeśli generujesz tokeny SAS z długim czasem wygaśnięcia dla aplikacji klienckich do przechowywania w pamięci podręcznej.
 
-Jeśli używasz biblioteki klienta usługi Storage do generowania tokenów sygnatur dostępu Współdzielonego, następnie jest łatwa prawidłowy token. Jednakże, jeśli są przy użyciu interfejsu API REST magazynu i ręcznie konstruowanie tokeny sygnatur dostępu Współdzielonego, zobacz [Delegowanie dostępu za pomocą podpisu dostępu współdzielonego](https://msdn.microsoft.com/library/azure/ee395415.aspx).
+Jeśli używasz biblioteki klienta usługi magazynu do generowania tokenów SAS, utworzenie prawidłowego tokenu jest łatwe. Jednakże, jeśli są przy użyciu interfejsu API REST magazynu i ręcznie konstruowanie tokeny sygnatur dostępu Współdzielonego, zobacz [Delegowanie dostępu za pomocą podpisu dostępu współdzielonego](https://msdn.microsoft.com/library/azure/ee395415.aspx).
 
 ### <a name="the-client-is-receiving-404-messages"></a>Klient odbiera komunikaty HTTP 404 (nie znaleziono)
-Jeśli aplikacja kliencka odbiera komunikat HTTP 404 (nie znaleziono) z serwera, oznacza to, że obiekt, który klient próbowano użyć (np. jednostki, tabel, obiektów blob, kontenera lub kolejki) nie istnieje w usłudze storage. Istnieje kilka możliwych przyczyn, takich jak:
+Jeśli aplikacja kliencka odbiera komunikat HTTP 404 (nie znaleziono) z serwera, oznacza to, że obiekt, którego klient próbował użyć (np. jednostka, tabela, obiekt blob, kontener lub kolejka) nie istnieje w usłudze magazynu. Istnieje kilka możliwych przyczyn tej sytuacji, takich jak:
 
-* [Klient lub inny proces wcześniej usunięty obiekt]
+* [Klient lub inny proces wcześniej usunął obiekt]
 * [Problem autoryzacji dostępu sygnatury dostępu Współdzielonego]
 * [Kod JavaScript po stronie klienta nie ma uprawnień dostępu do tego obiektu]
 * [Błąd sieci]
@@ -589,7 +589,7 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 > 
 > 
 
-Te błędy, ponieważ implementuje przeglądarki sieci web [te same zasady pochodzenia](http://www.w3.org/Security/wiki/Same_Origin_Policy) pochodzi ograniczenia zabezpieczeń, który uniemożliwia wywołanie interfejsu API w innej domenie z domeny na stronie strony sieci web.
+Te błędy, ponieważ implementuje przeglądarki sieci web [te same zasady pochodzenia](https://www.w3.org/Security/wiki/Same_Origin_Policy) pochodzi ograniczenia zabezpieczeń, który uniemożliwia wywołanie interfejsu API w innej domenie z domeny na stronie strony sieci web.
 
 Aby obejść ten problem JavaScript, można skonfigurować między CORS Origin Resource Sharing () dla usługi storage, który uzyskuje dostęp do klienta. Aby uzyskać więcej informacji, zobacz [obsługi udostępniania zasobów między źródłami (CORS) dla usług Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).
 
@@ -632,9 +632,9 @@ W poniższej tabeli przedstawiono wyciąg z dwóch operacji klienta w dzienniku 
 | 05:10:13.8987407 |GetContainerProperties |404 |mmcont |bc881924-… |
 | 05:10:14.2147723 |CreateContainer |409 |mmcont |bc881924-… |
 
-Kod w aplikacji klienckiej, usuwa i od razu ponownie utworzy w kontenerze obiektów blob przy użyciu tej samej nazwie: **CreateIfNotExists** — metoda (żądanie klienta identyfikator bc881924-...) po pewnym czasie zakończy się niepowodzeniem z powodu błędu HTTP 409 (konflikt). Gdy klient usuwa kontenery obiektów blob, tabel lub kolejek jest krótki przed nazwą znowu dostępne.
+Kod w aplikacji klienckiej, usuwa i od razu ponownie utworzy w kontenerze obiektów blob przy użyciu tej samej nazwie: **CreateIfNotExists** — metoda (żądanie klienta identyfikator bc881924-...) po pewnym czasie zakończy się niepowodzeniem z powodu błędu HTTP 409 (konflikt). Kiedy klient usuwa kontenery obiektów blob, tabele lub kolejki, musi upłynąć pewien czas, zanim nazwa stanie się ponownie dostępna.
 
-Aplikacja kliencka należy używać nazwy unikatowe kontenerów, zawsze wtedy, gdy tworzy nowe kontenery, jeśli wzorzec Usuń/ponownie utwórz jest wspólne.
+Aplikacja kliencka powinna używać unikatowych nazw kontenerów za każdym razem, gdy tworzy nowe kontenery, jeśli wzorzec usuń/utwórz ponownie jest typowy.
 
 ### <a name="metrics-show-low-percent-success"></a>Metryki wskazują PercentSuccess niski lub wpisy dziennika analytics ma operacji ze stanem transakcji ClientOtherErrors
 **PercentSuccess** metryki przechwytuje procent operacje, które zakończyły się pomyślnie w oparciu o ich kod stanu HTTP. Operacje przy użyciu kody stanu 2XX liczone jako operacja się powiedzie, natomiast operacji przy użyciu kodów stanu w zakresach 3XX, 4XX i 5XX są liczone jako powiodło się i niższych **PercentSuccess** wartość metryki. W plikach dziennika magazynu po stronie serwera, te operacje są rejestrowane ze stanem transakcji **ClientOtherErrors**.
@@ -708,7 +708,7 @@ Aby uzyskać więcej informacji o korzystaniu z programu Microsoft Message Analy
 Dodatki opisano kilka narzędzi, które mogą być przydatne podczas diagnozowania i rozwiązywania problemów przy użyciu usługi Azure Storage (i inne usługi). Narzędzia te nie są częścią usługi Azure Storage, a niektóre są produktów innych firm. W efekcie narzędzia omówione w te dodatki nie są obejmowane przez wszystkie umowy dotyczącej pomocy technicznej, które mogą wiązać Ciebie z Microsoft Azure lub usługi Azure Storage, a w związku z tym jako część procesu oceny należy sprawdzić opcje licencjonowania i pomocy technicznej dostępne od dostawców tych narzędzi.
 
 ### <a name="appendix-1"></a>Dodatek 1: Za pomocą narzędzia Fiddler do przechwytywania ruchu HTTP i HTTPS
-[Narzędzie fiddler](http://www.telerik.com/fiddler) jest użytecznym narzędziem do analizowania ruchu HTTP i HTTPS między aplikacji klienckiej i usługi Azure storage.
+[Narzędzie fiddler](https://www.telerik.com/fiddler) jest użytecznym narzędziem do analizowania ruchu HTTP i HTTPS między aplikacji klienckiej i usługi Azure storage.
 
 > [!NOTE]
 > Narzędzie fiddler mogą dekodować ruchu HTTPS. należy przeczytać dokumentację programu Fiddler dokładnie zrozumieć, jak to robi i zrozumienie skutki dla bezpieczeństwa.
@@ -727,14 +727,14 @@ Aby ograniczyć ilość ruchu sieciowego, który przechwytuje Fiddler, możesz u
 ![][5]
 
 ### <a name="appendix-2"></a>Dodatek 2: Za pomocą programu Wireshark do przechwytywania ruchu sieciowego
-[Program Wireshark](http://www.wireshark.org/) jest analizatora protokołów sieciowych, który umożliwia wyświetlenie pakietów szczegółowe informacje dla różnych protokołów sieciowych.
+[Program Wireshark](https://www.wireshark.org/) jest analizatora protokołów sieciowych, który umożliwia wyświetlenie pakietów szczegółowe informacje dla różnych protokołów sieciowych.
 
 Poniższej procedury dowiesz się, jak przechwytywanie pakietów szczegółowe informacje dla ruchu z komputera lokalnego zainstalowano program Wireshark w usłudze tabel na koncie magazynu platformy Azure.
 
 1. Uruchom program Wireshark na komputerze lokalnym.
 2. W **Start** wybierz lokalnego interfejsu sieciowego lub interfejsów, które są połączone z Internetem.
 3. Kliknij przycisk **opcje przechwytywania**.
-4. Dodaj filtr do **filtr przechwytywania** pola tekstowego. Na przykład **hosta contosoemaildist.table.core.windows.net** skonfiguruje program Wireshark w celu przechwycenia tylko pakiety wysyłane do i z punkt końcowy usługi tabel w **contosoemaildist** konta magazynu. Zapoznaj się z [pełną listę filtrów przechwytywania](http://wiki.wireshark.org/CaptureFilters).
+4. Dodaj filtr do **filtr przechwytywania** pola tekstowego. Na przykład **hosta contosoemaildist.table.core.windows.net** skonfiguruje program Wireshark w celu przechwycenia tylko pakiety wysyłane do i z punkt końcowy usługi tabel w **contosoemaildist** konta magazynu. Zapoznaj się z [pełną listę filtrów przechwytywania](https://wiki.wireshark.org/CaptureFilters).
    
    ![][6]
 5. Kliknij przycisk **Uruchom**. Program Wireshark teraz Przechwyć wszystkie pakiety Wyślij do lub z punkt końcowy usługi tabel, jak używać aplikacji klienta na komputerze lokalnym.
@@ -745,12 +745,12 @@ Program WireShark wyróżni wszelkie błędy, które istnieją w **packetlist** 
 
 ![][7]
 
-Możesz również wyświetlić dane TCP, jak warstwa aplikacji widzi on, klikając prawym przyciskiem myszy na danych TCP i wybierając **wykonaj Stream TCP**. Jest to przydatne, jeśli możesz przechwycić swoje zrzutu bez pliku przechwytywania. Aby uzyskać więcej informacji, zobacz [następujące strumienie TCP](http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
+Możesz również wyświetlić dane TCP, jak warstwa aplikacji widzi on, klikając prawym przyciskiem myszy na danych TCP i wybierając **wykonaj Stream TCP**. Jest to przydatne, jeśli możesz przechwycić swoje zrzutu bez pliku przechwytywania. Aby uzyskać więcej informacji, zobacz [następujące strumienie TCP](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
 ![][8]
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat używania programu Wireshark zobacz [przewodnika użytkownicy programu Wireshark](http://www.wireshark.org/docs/wsug_html_chunked).
+> Aby uzyskać więcej informacji na temat używania programu Wireshark zobacz [przewodnika użytkownicy programu Wireshark](https://www.wireshark.org/docs/wsug_html_chunked).
 > 
 > 
 
@@ -845,7 +845,7 @@ Więcej informacji można znaleźć [co to jest usługa Application Insights](..
 
 [Klient odbiera komunikaty HTTP 403 (zabronione)]: #the-client-is-receiving-403-messages
 [Klient odbiera komunikaty HTTP 404 (nie znaleziono)]: #the-client-is-receiving-404-messages
-[Klient lub inny proces wcześniej usunięty obiekt]: #client-previously-deleted-the-object
+[Klient lub inny proces wcześniej usunął obiekt]: #client-previously-deleted-the-object
 [Problem autoryzacji dostępu sygnatury dostępu Współdzielonego]: #SAS-authorization-issue
 [Kod JavaScript po stronie klienta nie ma uprawnień dostępu do tego obiektu]: #JavaScript-code-does-not-have-permission
 [Błąd sieci]: #network-failure

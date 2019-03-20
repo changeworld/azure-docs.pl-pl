@@ -4,11 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
-ms.openlocfilehash: 139f2f2c32c8974d08e0a9c4278304a5b17892bc
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: 4badd7b3ea308968e514a58463f08e58243a3387
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57908522"
 ---
-W okienku **Hierarchia** wybierz obiekt gry **AzureSpatialAnchors**. Następnie w okienku **Inspektor** wpisz wartość `Account Key` (z utworzonego wcześniej zasobu usługi Spatial Anchors) jako wartość parametru `Spatial Anchors Account Key` oraz `Account ID` (z utworzonego wcześniej zasobu usługi Spatial Anchors) jako wartość parametru `Spatial Anchors Account Id`.
+Następnym krokiem jest, aby skonfigurować aplikację do używania Twojego identyfikatora konta i klucz konta. Skopiowane do edytora tekstu po [Definiowanie zasobów przestrzenne kotwic](#create-a-spatial-anchors-resource).
+
+W okienku **Hierarchia** wybierz obiekt gry **AzureSpatialAnchors**. Następnie w **Inspektor** okienku, wprowadź `Account Key` jako wartość pozycji `Spatial Anchors Account Key` i `Account ID` jako wartość `Spatial Anchors Account Id`.

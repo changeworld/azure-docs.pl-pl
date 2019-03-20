@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
-ms.date: 02/06/2019
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 8460f282a4372b4297b373bad669f56f2932e323
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 293dcaadfc20116455983b3fc0069f9e9df3f843
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271617"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010552"
 ---
 # <a name="suggesting-query-terms"></a>Sugerowanie terminów zapytania
 
@@ -55,6 +55,6 @@ Poniższy przykład przedstawia pole wyszukiwania z listą rozwijaną sugerowany
 
 Jeśli użytkownik wybierze sugerowane zapytanie z listy rozwijanej, termin zapytania z pola `query` zostanie użyty w celu wywołania [interfejsu API wyszukiwania w sieci Web Bing](../../bing-web-search/search-the-web.md) i wyświetlenia wyników. Alternatywnie można też użyć adresu URL z pola `url` w celu przeniesienia użytkownika na stronę wyników wyszukiwania usługi Bing.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Co to jest interfejs API automatycznego sugerowania Bing?](../get-suggested-search-terms.md)

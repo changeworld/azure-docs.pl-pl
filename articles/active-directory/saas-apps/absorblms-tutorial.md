@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 998a46bc6255898ab4754de57a2570a77896cf85
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: e86ae61a6aec6c546b36c52f3f3875cbebdc838e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876742"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861931"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Absorb LMS
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację usługi Absorb LMS z usługą Azure AD, należy d
 
 **Aby dodać usługę Absorb LMS z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -158,7 +158,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Absorb LMS,
 
     b. W polu **Method** (Metoda) wybierz pozycję **SAML**.
 
-    d. W Notatniku otwórz certyfikat pobrany z witryny Azure Portal. Usuń tagi **---BEGIN CERTIFICATE---** i **---END CERTIFICATE---**. Następnie w polu **Key** (Klucz) wklej pozostałą zawartość.
+    c. W Notatniku otwórz certyfikat pobrany z witryny Azure Portal. Usuń tagi **---BEGIN CERTIFICATE---** i **---END CERTIFICATE---**. Następnie w polu **Key** (Klucz) wklej pozostałą zawartość.
 
     d. W polu **Mode** (Tryb) wybierz pozycję **Identity Provider Initiated** (Inicjowane przez dostawcę tożsamości).
 
@@ -194,7 +194,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -251,7 +251,7 @@ Aby użytkownicy usługi Azure AD mogli zalogować się do usługi Absorb LMS, m
 
     b. W polu **Last Name** (Nazwisko) wpisz nazwisko, np. **Simon**.
 
-    d. W polu **Username** (Nazwa użytkownika) wpisz imię i nazwisko, np. **Britta Simon**.
+    c. W polu **Username** (Nazwa użytkownika) wpisz imię i nazwisko, np. **Britta Simon**.
 
     d. W polu **Password** (Hasło) wpisz hasło użytkownika.
 
@@ -268,7 +268,7 @@ Aby użytkownicy usługi Azure AD mogli zalogować się do usługi Absorb LMS, m
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Absorb LMS na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi Absorb LMS, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

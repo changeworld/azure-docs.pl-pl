@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4067a54326d0a4a8ab9029dd4afceea384cf6aa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 7fd800097ca5107f7df1e67c91ff4c96b9cfcd74
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188634"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107750"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Jak dodać licencjonowanych użytkowników do grupy licencjonowania w usłudze Azure Active Directory
 
@@ -39,17 +39,17 @@ Ważne jest, aby pamiętać o to, że należy unikać sytuacji, w których migra
 
 4. Sprawdź, czy licencje zostały zastosowane do wszystkich użytkowników w tych grupach. Ta aplikacja może odbywać się sprawdzając stan przetwarzania dla każdej grupy i sprawdzając dzienniki inspekcji.
 
-  - Możesz poszczególnych użytkowników w miejscu, analizując ich szczegóły licencji. Zostanie wyświetlony, mają te same licencje przypisane "bezpośrednio" i "dziedziczone" z grupy.
+   - Możesz poszczególnych użytkowników w miejscu, analizując ich szczegóły licencji. Zostanie wyświetlony, mają te same licencje przypisane "bezpośrednio" i "dziedziczone" z grupy.
 
-  - Można uruchomić skryptu programu PowerShell, aby [Sprawdź, jak są przypisywane licencje do użytkowników](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
+   - Można uruchomić skryptu programu PowerShell, aby [Sprawdź, jak są przypisywane licencje do użytkowników](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
-  - Po przypisaniu licencji produktu w tym samym użytkownikowi zarówno bezpośrednio i za pośrednictwem grupy, tylko jedna licencja jest wykorzystywane przez użytkownika. Dlatego żadne dodatkowe licencje są wymagane do przeprowadzenia migracji.
+   - Po przypisaniu licencji produktu w tym samym użytkownikowi zarówno bezpośrednio i za pośrednictwem grupy, tylko jedna licencja jest wykorzystywane przez użytkownika. Dlatego żadne dodatkowe licencje są wymagane do przeprowadzenia migracji.
 
 5. Upewnij się, że żadnych przypisań licencji nie powiodło się, sprawdzając w każdej grupie użytkowników w stanie błąd. Aby uzyskać więcej informacji, zobacz [rozpoznawanie i rozwiązywania problemów z licencją dla grupy](licensing-groups-resolve-problems.md).
 
 6. Rozważ usunięcie oryginalnego przypisań bezpośrednich; Można to zrobić w stopniowo, "etapami", najpierw monitorować wyniki dla podzbioru użytkowników.
 
-  Można pozostawić oryginalny przypisań bezpośrednich, użytkownicy, ale gdy użytkownicy opuszczają ich grup licencji nadal zachowa oryginalnej licencji, który ma prawdopodobnie nie ma.
+   Można pozostawić oryginalny przypisań bezpośrednich, użytkownicy, ale gdy użytkownicy opuszczają ich grup licencji nadal zachowa oryginalnej licencji, który ma prawdopodobnie nie ma.
 
 ## <a name="an-example"></a>Przykład
 
@@ -61,25 +61,25 @@ Poniżej przedstawiono, jak może wyglądać procesu migracji:
 
 2. Dla każdej grupy upewnij się, że przypisanie licencji zakończył się dla wszystkich użytkowników. Przejdź do bloku dla każdej grupy wybierz **licencji**i sprawdzić stan przetwarzania w górnej części **licencji** bloku.
 
-  - Wyszukaj "Licencję najnowsze zmiany zostały zastosowane do wszystkich użytkowników" Aby upewnić się, przetwarzanie zostało zakończone.
+   - Wyszukaj "Licencję najnowsze zmiany zostały zastosowane do wszystkich użytkowników" Aby upewnić się, przetwarzanie zostało zakończone.
 
-  - Poszukaj powiadomień u góry dotyczących wszystkich użytkowników, dla których licencji mogą nie zostały pomyślnie przypisane. Uruchomiliśmy już licencji dla niektórych użytkowników? Niektórzy użytkownicy mają licencję powodujące konflikt jednostek SKU, które uniemożliwiają dziedziczenie grupy licencji?
+   - Poszukaj powiadomień u góry dotyczących wszystkich użytkowników, dla których licencji mogą nie zostały pomyślnie przypisane. Uruchomiliśmy już licencji dla niektórych użytkowników? Niektórzy użytkownicy mają licencję powodujące konflikt jednostek SKU, które uniemożliwiają dziedziczenie grupy licencji?
 
 3. Miejscu Sprawdź niektórych użytkowników, aby sprawdzić, czy mają one zarówno bezpośrednich i grupy licencji stosowane. Przejdź do bloku dla użytkownika, wybierz opcję **licencji**oraz zbadania stanu licencji.
 
-  - Jest to stan oczekiwany użytkownika podczas migracji:
+   - Jest to stan oczekiwany użytkownika podczas migracji:
 
       ![Stan oczekiwany użytkownika](./media/licensing-groups-migrate-users/expected-user-state.png)
 
-  Będzie to potwierdzenie, że użytkownik ma licencje dziedziczone i bezpośrednie. Widzimy, że oba **EMS** i **E3** są przypisane.
+   Będzie to potwierdzenie, że użytkownik ma licencje dziedziczone i bezpośrednie. Widzimy, że oba **EMS** i **E3** są przypisane.
 
-  - Wybierz każdej licencji, aby wyświetlić szczegółowe informacje o usługach włączone. Może to służyć do sprawdzania, jeśli bezpośrednie i grupy licencji, Włącz dokładnie tych samych planów usługi dla użytkownika.
+   - Wybierz każdej licencji, aby wyświetlić szczegółowe informacje o usługach włączone. Może to służyć do sprawdzania, jeśli bezpośrednie i grupy licencji, Włącz dokładnie tych samych planów usługi dla użytkownika.
 
       ![Sprawdź planów usług](./media/licensing-groups-migrate-users/check-service-plans.png)
 
 4. Po potwierdzeniu, że zarówno bezpośrednich, jak i grupy licencji są równoważne, można uruchomić, usunięcie bezpośrednie licencji użytkowników. Można testować tę aplikację, usuwając je dla poszczególnych użytkowników w portalu, a następnie uruchom skrypty automatyzacji, aby były usuwane w trybie zbiorczym. Oto przykład tego samego użytkownika z licencjami bezpośrednie usunięte za pośrednictwem portalu. Zwróć uwagę, stan licencji pozostaje niezmieniony, że firma Microsoft nie jest już wyświetlana przypisań bezpośrednich.
 
-  ![bezpośrednie licencje usunięte](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
+   ![bezpośrednie licencje usunięte](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 94bc7d2ddca84b01dd799552fe7a331c9bb958a1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 96848e30c13d226978a6be1a1786e9ed2b4ab7c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856907"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892867"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla platformy Node.js
 
@@ -43,14 +43,14 @@ Zacznijmy od skonfigurowania środowiska deweloperskiego dla projektu Node.js.
     mkdir YOUR_PROJECT
     ```
 
-2. Utwórz nowy plik pakietu:
+1. Utwórz nowy plik pakietu:
 
     ```console
     cd YOUR_PROJECT
     npm init
     ```
 
-3. Teraz zainstalujmy kilka modułów platformy Azure i dodajmy je do pliku `package.json`:
+1. Teraz zainstalujmy kilka modułów platformy Azure i dodajmy je do pliku `package.json`:
 
     ```console
     npm install --save azure-cognitiveservices-websearch
@@ -104,11 +104,11 @@ Ostatnim krokiem jest uruchomienie programu.
 
 Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji z kodu programu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Przykłady zastosowania zestawu SDK dla platformy Node.js usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Dokumentacja zestawu Azure Node SDK](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch/)

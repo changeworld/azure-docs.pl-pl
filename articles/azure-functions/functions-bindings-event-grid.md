@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 12056ebec0f0a23ed255532a8ba27b130ecb81d1
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750450"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094164"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -321,7 +321,7 @@ Aby uzyskać kompletny przykład, zobacz C# przykład.
 W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku. Nie ma żadnych parametrów Konstruktor lub właściwości można ustawić w `EventGridTrigger` atrybutu.
 
 |Właściwość Function.JSON |Opis|
-|---------|---------|----------------------|
+|---------|---------|
 | **type** | Wymagana — musi być równa `eventGridTrigger`. |
 | **direction** | Wymagana — musi być równa `in`. |
 | **Nazwa** | Wymagana — nazwa zmiennej, używane w kodzie funkcji parametr, który odbiera dane zdarzenia. |
@@ -484,10 +484,10 @@ Alternatywnie możesz wysłać HTTP PUT do samodzielnie określić wartość teg
 
 Aby przetestować wyzwalacza usługi Event Grid masz lokalnie, pobieranie żądań HTTP siatki zdarzeń dostarczane z ich źródła w chmurze na komputer lokalny. Jest jednym ze sposobów, aby to zrobić przez Przechwytywanie żądań online i ręcznie wysłać je na komputerze lokalnym:
 
-2. [Tworzenie aplikacji sieci web podglądu](#create-a-viewer-web-app) znajdują się komunikaty o zdarzeniach.
-3. [Utwórz subskrypcję usługi Event Grid](#create-an-event-grid-subscription) , wysyła zdarzenia do aplikacji przeglądarki.
-4. [Generuje żądanie](#generate-a-request) i skopiuj treść żądania z aplikacji przeglądarki.
-5. [Ręcznie Opublikuj żądanie](#manually-post-the-request) adres URL localhost usługi Event Grid funkcja wyzwalacza.
+1. [Tworzenie aplikacji sieci web podglądu](#create-a-viewer-web-app) znajdują się komunikaty o zdarzeniach.
+1. [Utwórz subskrypcję usługi Event Grid](#create-an-event-grid-subscription) , wysyła zdarzenia do aplikacji przeglądarki.
+1. [Generuje żądanie](#generate-a-request) i skopiuj treść żądania z aplikacji przeglądarki.
+1. [Ręcznie Opublikuj żądanie](#manually-post-the-request) adres URL localhost usługi Event Grid funkcja wyzwalacza.
 
 Po zakończeniu testowania, skorzystać z tej samej subskrypcji w środowisku produkcyjnym aktualizowanie punktu końcowego. Użyj [aktualizacji subskrypcji zdarzeń eventgrid az](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) polecenia wiersza polecenia platformy Azure.
 
@@ -557,10 +557,10 @@ Funkcja wyzwalacza usługi Event Grid wykonuje i dzienniki zostaną wyświetlone
 
 Innym sposobem przetestowania wyzwalacza usługi Event Grid lokalnie jest zautomatyzować połączenia HTTP między Internetem a komputer deweloperski. Możesz to zrobić za pomocą narzędzia typu open source o nazwie [ngrok](https://ngrok.com/):
 
-3. [Tworzenie punktu końcowego ngrok](#create-an-ngrok-endpoint).
-4. [Uruchamianie funkcji wyzwalacza usługi Event Grid](#run-the-event-grid-trigger-function).
-5. [Utwórz subskrypcję usługi Event Grid](#create-a-subscription) , wysyła zdarzenia do ngrok endpoint.
-6. [Wyzwól zdarzenie](#trigger-an-event).
+1. [Tworzenie punktu końcowego ngrok](#create-an-ngrok-endpoint).
+1. [Uruchamianie funkcji wyzwalacza usługi Event Grid](#run-the-event-grid-trigger-function).
+1. [Utwórz subskrypcję usługi Event Grid](#create-a-subscription) , wysyła zdarzenia do ngrok endpoint.
+1. [Wyzwól zdarzenie](#trigger-an-event).
 
 Po zakończeniu testowania, skorzystać z tej samej subskrypcji w środowisku produkcyjnym aktualizowanie punktu końcowego. Użyj [aktualizacji subskrypcji zdarzeń eventgrid az](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) polecenia wiersza polecenia platformy Azure.
 

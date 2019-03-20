@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b044edbc24a83aeb98ff603a43f160a6c88d940f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003915"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Program Azure AD Connect: Automatycznie uaktualnianie
 Ta funkcja została wprowadzona z kompilacją [1.1.105.0 (wydane w lutym 2016 r.)](reference-connect-version-history.md#111050).  Ta funkcja została zaktualizowana w [kompilacji 1.1.561](reference-connect-version-history.md#115610) i teraz obsługuje dodatkowe scenariusze, które wcześniej nie są obsługiwani.
@@ -89,16 +89,16 @@ Poniżej przedstawiono listę najbardziej typowych komunikatów, które znajduje
 | UpgradeAbortedSyncExeInUse |[Interfejs użytkownika Menedżera usługi synchronizacji](how-to-connect-sync-service-manager-ui.md) jest otwarty na serwerze. |
 | UpgradeAbortedSyncOrConfigurationInProgress |Kreator instalacji jest uruchomiony lub synchronizacji zostało zaplanowane poza harmonogramu. |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | Jako metodę logowania wybrano usług AD FS. | 
+| UpgradeNotSupportedAdfsSignInMethod | Jako metodę logowania wybrano usług AD FS. |
 | UpgradeNotSupportedCustomizedSyncRules |Własne reguły niestandardowe zostały dodane do konfiguracji. |
 | UpgradeNotSupportedDeviceWritebackEnabled |Włączono [zapisywanie zwrotne urządzeń](how-to-connect-device-writeback.md) funkcji. |
 | UpgradeNotSupportedGroupWritebackEnabled |Włączono [zapisu zwrotnego grup](how-to-connect-preview.md#group-writeback) funkcji. |
 | UpgradeNotSupportedInvalidPersistedState |Instalacja nie jest ustawień ekspresowych lub uaktualnienie narzędzia DirSync. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Masz ponad 100 000 obiektów w magazynie metaverse. |
 | UpgradeNotSupportedMultiForestSetup |Łączysz się do więcej niż jednym lesie. Instalacja ekspresowa tylko łączy się z jednego lasu. |
-| UpgradeNotSupportedNonLocalDbInstall |Nie używasz bazy danych programu SQL Server Express LocalDB. |d.
+| UpgradeNotSupportedNonLocalDbInstall |Nie używasz bazy danych programu SQL Server Express LocalDB. |
 | UpgradeNotSupportedNonMsolAccount |[Konta usługi AD DS łącznika](reference-connect-accounts-permissions.md#ad-ds-connector-account) nie jest domyślnym kontem MSOL_ już. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | Podczas konfigurowania program AAD Connect, możesz wybrać *nie należy konfigurować* podczas wybierania metody logowania jednokrotnego. | 
+| UpgradeNotSupportedNotConfiguredSignInMethod | Podczas konfigurowania program AAD Connect, możesz wybrać *nie należy konfigurować* podczas wybierania metody logowania jednokrotnego. |
 | UpgradeNotSupportedPtaSignInMethod | Jako metodę logowania wybrano uwierzytelnianie przekazywane. |
 | UpgradeNotSupportedStagingModeEnabled |Serwer jest ustawiony w [Tryb przejściowy](how-to-connect-sync-staging-server.md). |
 | UpgradeNotSupportedUserWritebackEnabled |Włączono [zapis zwrotny użytkowników](how-to-connect-preview.md#user-writeback) funkcji. |

@@ -3,25 +3,25 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: bc439cbe5e690077213b5d7953a4e74488988c3b
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 5a1ff10901d10fb274a6fa1418f04e1f20113cb7
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203603"
 ---
-# <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Dodawanie logowania z firmą Microsoft do aplikacji sieci web platformy ASP.NET
+# <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
 Ten przewodnik demonstruje sposób implementacji logowania z firmą Microsoft przy użyciu rozwiązania platformy ASP.NET MVC przy użyciu tradycyjnych aplikacji sieci web opartej na przeglądarce przy użyciu protokołu OpenID Connect.
 
@@ -31,7 +31,7 @@ Na końcu tego przewodnika aplikacja będzie akceptować logowania konta osobist
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak działa przykładowej aplikacji wygenerowane przez ten przewodnik
 
-![Jak działa ten przewodnik](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.png)
+![Przedstawia, jak przykładowa aplikacja wygenerowany przez ta działa samouczki](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral-updated.png)
 
 Przykładowa aplikacja utworzona w tym przewodniku opiera się na scenariuszu, gdy użytkownik korzysta przeglądarki, aby dostęp do żądania użytkownika do uwierzytelniania za pomocą przycisku logowania w witrynie internetowej ASP.NET. W tym scenariuszu większość działań związanych z renderowaniem strony internetowej odbywa się po stronie serwera.
 

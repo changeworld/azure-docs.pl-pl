@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ff6601042c82cef2b0101833117f17aca8b463dc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743797"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223261"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Monitorowanie klastrów Apache Hadoop w HDInsight przy użyciu interfejsu API Apache Ambari
 Dowiedz się, jak monitorowanie klastrów HDInsight za pomocą interfejsy API systemu Apache Ambari.
@@ -125,7 +125,7 @@ Poniższa lista zawiera niektóre z najbardziej typowych Ambari, monitorowanie w
 | Uzyskaj informacje o klastrze. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |klastry usług, hosty |
 | Pobierz usługi |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services` |Usługi obejmują: systemu plików hdfs, mapreduce |
 | Pobierz informacje z usługi. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>` | |
-| Pobierz składniki usługi |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components` |System plików HDFS: namenode, datanodeMapReduce: jobtracker; tasktracker |
+| Pobierz składniki usługi |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components` |HDFS: namenode, datanodeMapReduce: jobtracker; tasktracker |
 | Uzyskaj składnik informacji. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/services/<ServiceName>/components/<ComponentName>` |ServiceComponentInfo, składniki hosta, metryk |
 | Uzyskiwanie hostów |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts` |headnode0, workernode0 |
 | Pobieranie informacji o hoście. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/hosts/<HostName>` | |
@@ -137,7 +137,7 @@ Poniższa lista zawiera niektóre z najbardziej typowych Ambari, monitorowanie w
 ## <a name="next-steps"></a>Następne kroki
 Teraz masz przedstawiono sposób korzystania z monitorowania wywołań interfejsu API Apache Ambari. Aby dowiedzieć się więcej, zobacz:
 
-* [Zarządzanie klastrami HDInsight przy użyciu witryny Azure portal][hdinsight-admin-portal]
+* [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md)
 * [Zarządzanie klastrami HDInsight przy użyciu programu Azure PowerShell][hdinsight-admin-powershell]
 * [Zarządzanie klastrami HDInsight przy użyciu interfejsu wiersza polecenia][hdinsight-admin-cli]
 * [Dokumentacja usługi HDInsight][hdinsight-documentation]
@@ -155,7 +155,6 @@ Teraz masz przedstawiono sposób korzystania z monitorowania wywołań interfejs
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
 [hdinsight-documentation]: https://docs.microsoft.com/azure/hdinsight/
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md

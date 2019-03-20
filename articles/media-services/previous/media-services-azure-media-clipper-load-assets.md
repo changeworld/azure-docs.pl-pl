@@ -6,15 +6,15 @@ keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 2074f074d3212f790ddb8b4990b16edb3f204a93
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ec8cd06be78bbd8df0bca390696e736c3a6ee075
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441325"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002635"
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>Trwa ładowanie zasobów do usługi Azure Media Clipper  
 

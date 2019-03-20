@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f23f29d15c4c8f05551b20d42b92dda5632cde08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078741"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Przewodnik po konwersji w sieci Web i ról procesów roboczych do usługi bezstanowej usługi Service Fabric
 W tym artykule opisano sposób migracji z usług sieci Web i chmury ról procesów roboczych do usługi bezstanowej usługi Service Fabric. Jest to najprostsza ścieżka migracji z usług Cloud Services do usługi Service Fabric dla aplikacji, w których ogólna architektura ma około pozostają takie same.
@@ -43,7 +43,7 @@ Podobnie jak w roli proces roboczy, roli sieci Web również reprezentuje bezsta
 | --- | --- | --- |
 | ASP.NET Web Forms |Nie |Konwertuj na MVC platformy ASP.NET Core 1 |
 | ASP.NET MVC |Z migracją |Uaktualnianie do platformy ASP.NET Core 1 MVC |
-| Składnik Web API platformy ASP.NET |Z migracją |Użyj własnego serwera lub ASP.NET Core 1 |
+| Internetowy interfejs API platformy ASP.NET |Z migracją |Użyj własnego serwera lub ASP.NET Core 1 |
 | ASP.NET Core 1 |Yes |ND |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Interfejs API punktu wejścia i cyklu życia
@@ -110,8 +110,8 @@ Mają zastąpienie podstawowy "Uruchom", w której chcesz rozpocząć przetwarza
 
 Istnieje kilka podstawowych różnic między cyklu życia i okresem istnienia usługi ról procesów roboczych i usługi Service Fabric:
 
-* **Cykl życia:** największych różnica polega na tym, rola procesu roboczego jest maszyną Wirtualną i dlatego jej cyklu projektowania jest powiązany z maszyną wirtualną, która obejmuje zdarzenia uruchamia i zatrzymuje maszyny Wirtualnej. Usługi Service Fabric zawiera cykl życia, który jest oddzielony od cyklu życia maszyny Wirtualnej, więc nie zawiera zdarzeń hosta maszyny Wirtualnej lub komputerze rozpoczyna się i zatrzymać, ponieważ nie są powiązane.
-* **Okres istnienia:** wystąpienia roli procesu roboczego będą Kosza, jeśli `Run` wyjścia metody. `RunAsync` Metody w usłudze Service Fabric można jednak uruchomić ukończone i wystąpienie usługi będzie nadal działać. 
+* **Cykl życia:** Największa różnica jest rola procesu roboczego jest maszyną Wirtualną i dlatego jej cyklu projektowania jest powiązany z maszyną wirtualną, która obejmuje zdarzenia uruchamia i zatrzymuje maszyny Wirtualnej. Usługi Service Fabric zawiera cykl życia, który jest oddzielony od cyklu życia maszyny Wirtualnej, więc nie zawiera zdarzeń hosta maszyny Wirtualnej lub komputerze rozpoczyna się i zatrzymać, ponieważ nie są powiązane.
+* **Okres istnienia:** Wystąpienia roli procesu roboczego będą Kosza, jeśli `Run` wyjścia metody. `RunAsync` Metody w usłudze Service Fabric można jednak uruchomić ukończone i wystąpienie usługi będzie nadal działać. 
 
 Usługa Service Fabric udostępnia punkt wejścia komunikacji opcjonalne ustawienia dla usług, które nasłuchują żądań klientów. Punkt wejścia RunAsync i komunikacji są opcjonalne przesłonięć w usługi Service Fabric — usługi mają możliwość nasłuchiwał tylko na żądania klienta lub uruchomić tylko pętli przetwarzania i / lub -, co jest dlaczego metodzie RunAsync jest dozwolone, aby zakończyć pracę bez ponownego uruchamiania wystąpienie usługi, ponieważ może nadal nasłuchuje żądań klienta.
 
@@ -209,9 +209,9 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 Zadania uruchamiania to akcje, które są wykonywane przed uruchomieniem aplikacji. Zadanie uruchamiania jest zazwyczaj używany do uruchamiania skryptów instalacji przy użyciu podniesionych przywilejów. Cloud Services i Service Fabric obsługuje zadań uruchamiania. Główną różnicą jest to, czy w usługach w chmurze, zadanie uruchamiania jest powiązany z maszyny Wirtualnej, ponieważ jest on częścią wystąpienia roli, natomiast w usłudze Service Fabric zadanie uruchamiania jest powiązany z usługą, która nie jest związany z dowolnej maszyny Wirtualnej z określonego.
 
 | Service Fabric | Cloud Services |
-| --- | --- | --- |
+| --- | --- |
 | Lokalizacja konfiguracji |ServiceDefinition.csdef |
-| Uprawnienia |"ograniczony" lub "z podwyższonym poziomem uprawnień" |
+| Przywileje |"ograniczony" lub "z podwyższonym poziomem uprawnień" |
 | Sekwencyjne |"prosty", "tła", "narzędzia" |
 
 ### <a name="cloud-services"></a>Cloud Services

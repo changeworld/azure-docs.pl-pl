@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/18/2019
 ms.author: monhaber
-ms.openlocfilehash: 3239bd2d4c5b79f1ebd905fb3844f3e7874ff175
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110957"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199838"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu just-in-time
 
@@ -101,7 +101,7 @@ Aby wybrać maszyny wirtualne, które chcesz włączyć:
 
 
 > [!NOTE]
->Gdy dostęp do maszyn wirtualnych JIT jest włączone dla maszyny Wirtualnej, usługa Azure Security Center tworzy odmówić wszystkich reguł ruchu przychodzącego dla wybranych portów w grupach zabezpieczeń sieci skojarzonych z nim. Zasady będzie najwyższy priorytet o sieciowych grupach zabezpieczeń lub niższy priorytet niż istniejące reguły, które zostały już istnieje. Zależy to od analizy wykonywane przez usługę Azure Security Center, która określa, czy reguła jest bezpieczne.
+>Po włączeniu dostępu do maszyny Wirtualnej JIT dla maszyny Wirtualnej usługi Azure Security Center tworzy "odmowa cały ruch przychodzący" dla wybranych portów w grupach zabezpieczeń sieci skojarzonych z nim. Jeśli inne reguły została utworzona na wybranych portach, następnie istniejące reguły pierwszeństwo przed nowe zasady "odmowa cały ruch przychodzący". Jeśli nie istnieją żadne istniejące reguły na wybranych portach, nowe zasady "odmowa cały ruch przychodzący" zabrać najwyższy priorytet w grupach zabezpieczeń sieci.
 >
 
 ### <a name="request-jit-access-to-a-vm"></a>Żądanie dostępu JIT do maszyny Wirtualnej

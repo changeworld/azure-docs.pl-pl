@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f699e40a4a31b6d57b12a43ae307806d3f010015
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a931b303e40e41bc23e8b586e1d37e600625b1a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267185"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881065"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Wdrażanie rozwiązania StorSimple Virtual Array — zestaw się jako serwer plików za pośrednictwem witryny Azure portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -129,15 +129,15 @@ Wykonaj poniższe kroki w [witryny Azure portal](https://portal.azure.com/) do u
     ![Konfigurowanie serwera plików](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Kliknij przycisk **Konfiguruj** na pasku poleceń. Spowoduje to otwarcie **Konfiguruj** bloku. W **Konfiguruj** blok, wykonaj następujące czynności:
    
-    1. Nazwa serwera plików jest wypełniane automatycznie.
+   1. Nazwa serwera plików jest wypełniane automatycznie.
     
-    2. Upewnij się, że szyfrowanie magazynu w chmurze jest ustawiona na **włączone**. To spowoduje zaszyfrowanie wszystkich danych, które są wysyłane do chmury. 
+   2. Upewnij się, że szyfrowanie magazynu w chmurze jest ustawiona na **włączone**. To spowoduje zaszyfrowanie wszystkich danych, które są wysyłane do chmury. 
     
-    3. 256-bitowego klucza AES jest używany do szyfrowania kluczem zdefiniowanych przez użytkownika. Należy określić klucz o długości 32 znaków, a następnie wprowadź ponownie klucz, aby je potwierdzić. Rejestruje klucz w aplikacji do zarządzania kluczami do użytku w przyszłości.
+   3. 256-bitowego klucza AES jest używany do szyfrowania kluczem zdefiniowanych przez użytkownika. Należy określić klucz o długości 32 znaków, a następnie wprowadź ponownie klucz, aby je potwierdzić. Rejestruje klucz w aplikacji do zarządzania kluczami do użytku w przyszłości.
     
-    4. Kliknij przycisk **Skonfiguruj wymagane ustawienia** Aby określić poświadczenia konta magazynu do użycia z Twoim urządzeniem. Kliknij przycisk **Dodaj nowe** Jeśli nie istnieją żadne poświadczenia konta magazynu, skonfigurowane. **Upewnij się, że konto magazynu, że używasz obsługuje blokowe obiekty BLOB. Stronicowe obiekty BLOB nie są obsługiwane.** Więcej informacji na temat [blokuje i stronicowe obiekty BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+   4. Kliknij przycisk **Skonfiguruj wymagane ustawienia** Aby określić poświadczenia konta magazynu do użycia z Twoim urządzeniem. Kliknij przycisk **Dodaj nowe** Jeśli nie istnieją żadne poświadczenia konta magazynu, skonfigurowane. **Upewnij się, że konto magazynu, że używasz obsługuje blokowe obiekty BLOB. Stronicowe obiekty BLOB nie są obsługiwane.** Więcej informacji na temat [blokuje i stronicowe obiekty BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
-    ![Konfigurowanie serwera plików](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![Konfigurowanie serwera plików](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. W **Dodawanie poświadczeń konta magazynu** blok, wykonaj następujące czynności: 
 
     1. Wybierz bieżącą subskrypcję, jeśli konto magazynu jest w tej samej subskrypcji co usługa. Określ inne jest magazynem konto znajduje się poza subskrypcją usługi. 
@@ -175,26 +175,26 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/
    ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. Określ następujące ustawienia udziału:
 
-    1. Unikatowa nazwa udziału. Nazwa musi być ciąg, który zawiera 3 do 127 znaków.
+   1. Unikatowa nazwa udziału. Nazwa musi być ciąg, który zawiera 3 do 127 znaków.
     
-    2. Opcjonalny **opis** udziału. Opis pomoże zidentyfikować właścicieli udziału.
+   2. Opcjonalny **opis** udziału. Opis pomoże zidentyfikować właścicieli udziału.
     
-    3. A **typu** udziału. Typ może być **warstwowy** lub **przypięty lokalnie**, przy użyciu warstwowego domyślna. Dla obciążeń, które wymagają lokalnych gwarancji, małych opóźnień i większej wydajności, wybierz **przypięty lokalnie** udostępniania. Dla wszystkich innych danych wybierz **warstwowy** udostępniania.
-    Udział przypiętego lokalnie jest alokowany nieelastycznie i gwarantuje, że główne dane w udziale pozostaje lokalne na urządzeniu i nie zostaną przeniesione do chmury. Udziału warstwowego z drugiej strony jest alokowany elastycznie. Po utworzeniu udziału warstwowego 10% wolnego miejsca jest inicjowana na warstwie lokalnej i 90% miejsca są aprowizowane w chmurze. Na przykład, jeśli aprowizowano 1 TB woluminu 100 GB będzie znajdować się w lokalnej przestrzeni i 900 GB będzie używana w chmurze podczas warstwy danych. Z kolei oznacza to, że jeśli zabraknie całe lokalne miejsce na urządzeniu nie można dostarczać udziału warstwowego.
+   3. A **typu** udziału. Typ może być **warstwowy** lub **przypięty lokalnie**, przy użyciu warstwowego domyślna. Dla obciążeń, które wymagają lokalnych gwarancji, małych opóźnień i większej wydajności, wybierz **przypięty lokalnie** udostępniania. Dla wszystkich innych danych wybierz **warstwowy** udostępniania.
+      Udział przypiętego lokalnie jest alokowany nieelastycznie i gwarantuje, że główne dane w udziale pozostaje lokalne na urządzeniu i nie zostaną przeniesione do chmury. Udziału warstwowego z drugiej strony jest alokowany elastycznie. Po utworzeniu udziału warstwowego 10% wolnego miejsca jest inicjowana na warstwie lokalnej i 90% miejsca są aprowizowane w chmurze. Na przykład, jeśli aprowizowano 1 TB woluminu 100 GB będzie znajdować się w lokalnej przestrzeni i 900 GB będzie używana w chmurze podczas warstwy danych. Z kolei oznacza to, że jeśli zabraknie całe lokalne miejsce na urządzeniu nie można dostarczać udziału warstwowego.
    
-    4. W **Ustaw domyślne pełne uprawnienia** pola, należy przypisać uprawnienia użytkownika lub grupy, który uzyskuje dostęp do tego udziału. Określ nazwę użytkownika lub grupy użytkowników w *john@contoso.com* formatu. Zalecamy użycie grupy użytkowników (zamiast jednego użytkownika) umożliwia uprawnień administratora dostępu do tych udziałów. Po przypisaniu uprawnień w tym miejscu możesz następnie zmodyfikować te uprawnienia przy użyciu Eksploratora plików.
+   4. W **Ustaw domyślne pełne uprawnienia** pola, należy przypisać uprawnienia użytkownika lub grupy, który uzyskuje dostęp do tego udziału. Określ nazwę użytkownika lub grupy użytkowników w *john\@contoso.com* formatu. Zalecamy użycie grupy użytkowników (zamiast jednego użytkownika) umożliwia uprawnień administratora dostępu do tych udziałów. Po przypisaniu uprawnień w tym miejscu możesz następnie zmodyfikować te uprawnienia przy użyciu Eksploratora plików.
    
-    5. Kliknij przycisk **Dodaj** Aby utworzyć udział. 
+   5. Kliknij przycisk **Dodaj** Aby utworzyć udział. 
     
-        ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
-        Zostanie wyświetlone powiadomienie, że trwa tworzenie udziału.
+       Zostanie wyświetlone powiadomienie, że trwa tworzenie udziału.
    
-        ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
-    Po utworzeniu udziału z określonymi ustawieniami **udziałów** blok zostanie zaktualizowana w celu odzwierciedlenia nowego udziału. Domyślnie monitorowanie i tworzenie kopii zapasowych są włączone dla udziału.
+      Po utworzeniu udziału z określonymi ustawieniami **udziałów** blok zostanie zaktualizowana w celu odzwierciedlenia nowego udziału. Domyślnie monitorowanie i tworzenie kopii zapasowych są włączone dla udziału.
    
-    ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![Dodawanie udziału](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>Krok 4: Łączenie z udziałem
 Teraz należy połączyć się z co najmniej jeden udział, które zostały utworzone w poprzednim kroku. Wykonaj następujące czynności na hoście z systemem Windows Server połączyć rozwiązania StorSimple Virtual Array.

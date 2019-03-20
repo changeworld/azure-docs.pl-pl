@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: bfc6bf8cab1358c47e66660303f3303f4e9c763a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845376"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Zrozumienie limicie wydatków i sposobach jego usuwania
 
@@ -46,7 +46,7 @@ Możesz usunąć limit wydatków w dowolnym momencie, o ile z subskrypcją jest 
 Aby usunąć limit wydatków, wykonaj następujące czynności:
 
 1. Zaloguj się do [Centrum kont](https://account.windowsazure.com/Subscriptions).
-1. Wybierz subskrypcję. Jeśli subskrypcja jest wyłączona z powodu osiągnięcia limitu wydatków, kliknij to powiadomienie: „Subskrypcja osiągnęła limit wydatków i została wyłączona, aby nie naliczono opłat”. W przeciwnym razie kliknij przycisk **Usuń limit wydatków** w **stan SUBSKRYPCJI** obszaru.
+1. Wybierz subskrypcję. Jeśli subskrypcja została wyłączona z powodu osiągnięcia limitu wydatków, kliknij to powiadomienie: „Subskrypcja osiągnęła limit wydatków i została wyłączona, aby nie naliczono opłat”. W przeciwnym razie kliknij przycisk **Usuń limit wydatków** w **stan SUBSKRYPCJI** obszaru.
 1. Wybierz odpowiednią opcję.
 
 ![Opcja Usuń limit wydatków](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -86,4 +86,4 @@ Limity wydatków niestandardowe nie są dostępne.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

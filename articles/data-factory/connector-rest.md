@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 372275740b7d4fd757e97a3966e4e87c9d2de940
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 807a6b38b9f2cbe2a3c8787fe09c2ea14106a942
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105393"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864902"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego REST przy użyciu usługi Azure Data Factory
 
@@ -173,7 +173,7 @@ Aby skopiować dane z usługi REST, obsługiwane są następujące właściwośc
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL, który jest określony w definicji połączonej usługi. | Nie |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **uzyskać** (ustawienie domyślne) i **wpis**. | Nie |
 | additionalHeaders | Dodatkowe nagłówki żądania HTTP. | Nie |
-| RequestBody | Treść żądania HTTP. | Nie |
+| requestBody | Treść żądania HTTP. | Nie |
 | paginationRules | Zasady podziału na strony do redagowania dalej żądania strony. Zapoznaj się [dzielenia na strony pomocy technicznej](#pagination-support) sekcją Szczegóły na temat. | Nie |
 
 **Przykład 1: Za pomocą metody Get z podziałem na strony**
@@ -274,8 +274,8 @@ Normalnie interfejs API REST ograniczyć jej rozmiar ładunku odpowiedzi pojedyn
 
 Ten ogólny łącznik REST obsługuje następujące wzorce dzielenia na strony: 
 
-* Bezwzględny adres URL następnego żądania = wartość właściwości w bieżącej treści odpowiedzi
-* Bezwzględny adres URL następnego żądania = wartość nagłówka w bieżących nagłówkach odpowiedzi
+* Kolejne żądanie bezwzględny lub względny adres URL = wartość właściwości w bieżącej treści odpowiedzi
+* Kolejne żądanie bezwzględny lub względny adres URL = wartość nagłówka w bieżących nagłówkach odpowiedzi
 * Parametr zapytania w kolejnym żądaniu = wartość właściwości w bieżącej treści odpowiedzi
 * Parametr zapytania w kolejnym żądaniu = wartość nagłówka w bieżących nagłówkach odpowiedzi
 * Nagłówek żądania dalej = wartość właściwości w bieżącej treści odpowiedzi
@@ -287,8 +287,8 @@ Ten ogólny łącznik REST obsługuje następujące wzorce dzielenia na strony:
 
 | Klucz | Opis |
 |:--- |:--- |
-| AbsoluteUrl | Określa adres URL następnego żądania. |
-| QueryParameters. *request_query_parameter* lub QueryParameters [request_query_parameter] | "request_query_parameter" jest zdefiniowana przez użytkownika odwołujące się jedną nazwę parametru zapytania w następnym adresu URL żądania HTTP. |
+| AbsoluteUrl | Określa adres URL następnego żądania. Może być **bezwzględny adres URL lub względny adres URL**. |
+| QueryParameters.*request_query_parameter* OR QueryParameters['request_query_parameter'] | "request_query_parameter" jest zdefiniowana przez użytkownika odwołujące się jedną nazwę parametru zapytania w następnym adresu URL żądania HTTP. |
 | Nagłówki. *request_header* lub nagłówków [request_header] | "request_header" jest zdefiniowana przez użytkownika które odwołują się do jednej nazwy nagłówka w następnym żądaniu HTTP. |
 
 **Obsługiwane wartości** w regułach dzielenia na strony:

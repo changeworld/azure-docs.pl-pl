@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: c136967c93a4a3e35adb3b0dac0560255c6daf3f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 6dfba843f9f265100a9ecf9c6f4f0e5003171826
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338199"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863301"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Przestarzałe ze wstępnie utworzonych jednostek w aplikacji usługi LUIS
 Następujące wstępnie utworzone jednostki są przestarzałe i nie można dodawać do nowych aplikacji usługi LUIS.
@@ -121,7 +121,7 @@ Wstępnie utworzone jednostki   |   Wstępnie utworzone jednostki (typy podrzęd
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.american_football.team  ```| ``` green bay packers  ```|
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.ice_hockey.team  ```| ``` hamilton bulldogs  ```|
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.soccer.team  ```| ``` fc bayern munich  ```|
-"" builtin.encyclopedia.organization.organization |BUILTIN.Encyclopedia.Government.political_party|pertubuhan kebangsaan melayu singapura'' '|
+```builtin.encyclopedia.organization.organization``` |```builtin.encyclopedia.government.political_party```|```pertubuhan kebangsaan melayu singapura```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.time.event  ```| ``` 1740 batavia massacre   ```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.sports.championship_event  ```| ``` super bowl xxxix  ```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.award.competition  ```| ``` eurovision song contest 2003  ```|

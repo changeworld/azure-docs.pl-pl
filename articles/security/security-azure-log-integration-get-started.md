@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 7e43af7d749719c2f69df9b53766c5452931884b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 244b2d1764f30f790c3e51e23cd2fa0af6375960
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542917"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894380"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń Windows
 
@@ -113,37 +113,37 @@ Po zakończeniu podstawowej konfiguracji możesz przystąpić do wykonania po in
 1. Otwórz program PowerShell jako administrator. Następnie przejdź do C:\Program Files\Microsoft Azure Log Integration.
 2. Zaimportować polecenia cmdlet usługi Azure Log Integration. Aby zaimportować polecenia cmdlet, uruchom skrypt `LoadAzlogModule.ps1`. Wprowadź `.\LoadAzlogModule.ps1`, a następnie naciśnij klawisz Enter (Zwróć uwagę na użycie **.\\**  w tym poleceniu). Powinien zostać wyświetlony podobny do wyświetlanych na poniższej ilustracji:
 
-  ![Zrzut ekranu przedstawiający dane wyjściowe polecenia LoadAzlogModule.ps1](./media/security-azure-log-integration-get-started/loaded-modules.png)
+   ![Zrzut ekranu przedstawiający dane wyjściowe polecenia LoadAzlogModule.ps1](./media/security-azure-log-integration-get-started/loaded-modules.png)
 3. Następnie skonfiguruj integracji dzienników platformy Azure do użycia w danym środowisku platformy Azure. *Środowiska platformy Azure* jest typem centrum danych w chmurze platformy Azure, którą chcesz pracować. Chociaż istnieje kilka środowisk platformy Azure, obecnie, odpowiednie opcje są **AzureCloud** lub **AzureUSGovernment**. Uruchamianie programu PowerShell jako administrator, upewnij się, że jesteś w C:\Program Files\Microsoft Azure dziennika Integration\. Następnie uruchom następujące polecenie:
 
-  `Set-AzlogAzureEnvironment -Name AzureCloud` (for **AzureCloud**)
+   `Set-AzlogAzureEnvironment -Name AzureCloud` (for **AzureCloud**)
   
-  Jeśli chcesz korzystać z chmury Azure dla instytucji rządowych USA, użyj **AzureUSGovernment** dla **— nazwa** zmiennej. Obecnie nie są obsługiwane inne chmury platformy Azure.  
+   Jeśli chcesz korzystać z chmury Azure dla instytucji rządowych USA, użyj **AzureUSGovernment** dla **— nazwa** zmiennej. Obecnie nie są obsługiwane inne chmury platformy Azure.  
 
-  > [!NOTE]
-  > Nie otrzymasz opinii, gdy polecenie powiedzie się. 
+   > [!NOTE]
+   > Nie otrzymasz opinii, gdy polecenie powiedzie się. 
 
 4. Aby można było monitorować system, potrzebna jest nazwa konta magazynu, który jest używany dla usługi Azure Diagnostics. W witrynie Azure portal przejdź do **maszyn wirtualnych**. Wyszukaj maszynę wirtualną Windows, która będzie monitorować. W **właściwości** zaznacz **ustawień diagnostycznych**.  Następnie wybierz **agenta**. Zanotuj nazwę konta magazynu, który jest określony. Należy tę nazwę konta w późniejszym kroku.
 
-  ![Zrzut ekranu okienka ustawień diagnostyki Azure](./media/security-azure-log-integration-get-started/storage-account-large.png) 
+   ![Zrzut ekranu okienka ustawień diagnostyki Azure](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
-  ![Zrzut ekranu włączyć przycisk monitorowania poziomie gościa](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
+   ![Zrzut ekranu włączyć przycisk monitorowania poziomie gościa](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
 
-  > [!NOTE]
-  > Jeśli nie zostało włączone monitorowanie, gdy maszyna wirtualna została utworzona, można włączyć pokazany na wcześniejszej ilustracji.
+   > [!NOTE]
+   > Jeśli nie zostało włączone monitorowanie, gdy maszyna wirtualna została utworzona, można włączyć pokazany na wcześniejszej ilustracji.
 
 5. Teraz wróć do maszyny integracji dzienników Azure. Sprawdź, czy masz połączenie z kontem usługi storage z systemu zainstalowanym Azure Log Integration. Komputera z uruchomioną usługą Azure Log Integration wymaga dostępu do konta magazynu, aby pobrać informacje, które jest rejestrowane przez diagnostykę platformy Azure na wszystkich monitorowanych systemach. Aby sprawdzić połączenie: 
-  1. [Pobierz bezpłatnie Eksplorator magazynu Azure](http://storageexplorer.com/).
-  2. Przeprowadź instalację.
-  3. Po zakończeniu instalacji wybierz **dalej**. Pozostaw **Uruchom Eksploratora usługi Microsoft Azure Storage** zaznaczone pole wyboru.  
-  4. Zaloguj się do platformy Azure.
-  5. Sprawdź, czy można wyświetlić konto magazynu, który został skonfigurowany dla usługi Azure Diagnostics: 
+   1. [Pobierz bezpłatnie Eksplorator magazynu Azure](https://storageexplorer.com/).
+   2. Przeprowadź instalację.
+   3. Po zakończeniu instalacji wybierz **dalej**. Pozostaw **Uruchom Eksploratora usługi Microsoft Azure Storage** zaznaczone pole wyboru.  
+   4. Zaloguj się do platformy Azure.
+   5. Sprawdź, czy można wyświetlić konto magazynu, który został skonfigurowany dla usługi Azure Diagnostics: 
 
    ![Zrzut ekranu przedstawiający kont magazynu w programie Storage Explorer](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
-  6. Jest kilka opcji są wyświetlane w ramach kont magazynu. W obszarze **tabel**, powinien zostać wyświetlony tabeli o nazwie **WADWindowsEventLogsTable**.
+   1. Jest kilka opcji są wyświetlane w ramach kont magazynu. W obszarze **tabel**, powinien zostać wyświetlony tabeli o nazwie **WADWindowsEventLogsTable**.
 
-  Jeśli nie zostało włączone monitorowanie, gdy maszyna wirtualna została utworzona, można włączyć, zgodnie z wcześniejszym opisem.
+   Jeśli nie zostało włączone monitorowanie, gdy maszyna wirtualna została utworzona, można włączyć, zgodnie z wcześniejszym opisem.
 
 
 ## <a name="integrate-windows-vm-logs"></a>Integrowanie dzienników maszyn wirtualnych Windows
@@ -156,36 +156,36 @@ Aby ukończyć ten krok, konieczne jest kilka rzeczy:
 * **StorageKey**: Klucz magazynu dla konta magazynu, w którym przechowywane są informacje diagnostyczne platformy Azure dla tej maszyny wirtualnej.  
 
 Aby uzyskać klucz magazynu, wykonaj następujące czynności:
-1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 2. W okienku nawigacji wybierz **wszystkich usług**.
 3. W **filtru** wprowadź **magazynu**. Następnie wybierz **kont magazynu**.
 
-  ![Zrzut ekranu pokazujący kont magazynu w wszystkie usługi](./media/security-azure-log-integration-get-started/filter.png)
+   ![Zrzut ekranu pokazujący kont magazynu w wszystkie usługi](./media/security-azure-log-integration-get-started/filter.png)
 
 4. Zostanie wyświetlona lista kont magazynu. Kliknij dwukrotnie konto które są przypisane do rejestrowania magazynu.
 
-  ![Zrzut ekranu przedstawiający listę kont magazynu](./media/security-azure-log-integration-get-started/storage-accounts.png)
+   ![Zrzut ekranu przedstawiający listę kont magazynu](./media/security-azure-log-integration-get-started/storage-accounts.png)
 
 5. W obszarze **Ustawienia** wybierz pozycję **Klucze dostępu**.
 
-  ![Zrzut ekranu pokazujący opcja klucze dostępu w menu](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
+   ![Zrzut ekranu pokazujący opcja klucze dostępu w menu](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
 
 6. Kopiuj **klucz1**, a następnie zapisz go w bezpiecznej lokalizacji, w której będziesz mieć dostęp na potrzeby następnego kroku.
 7. Na serwerze, na którym zostanie zainstalowany Azure Log Integration Otwórz okno wiersza polecenia jako administrator. (Pamiętaj otworzyć okno wiersza polecenia jako administrator, a nie programu PowerShell).
 8. Przejdź do C:\Program Files\Microsoft Azure Log Integration.
 9. Uruchom następujące polecenie: `Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>`.
  
-  Przykład:
+   Przykład:
   
-  `Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
+   `Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
-  Jeśli chcesz, aby identyfikator subskrypcji do wyświetlenia w zdarzeniu XML, Dołącz identyfikator subskrypcji przyjazną nazwę:
+   Jeśli chcesz, aby identyfikator subskrypcji do wyświetlenia w zdarzeniu XML, Dołącz identyfikator subskrypcji przyjazną nazwę:
 
-  `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
+   `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
   
-  Przykład:
+   Przykład:
   
-  `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
+   `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
 > [!NOTE]
 > Poczekaj do 60 minut, a następnie przeglądać zdarzenia, które są pobierane z konta magazynu. Zaznacz, aby wyświetlić zdarzenia, w usłudze Azure Log Integration **Podgląd zdarzeń** > **Dzienniki Windows** > **zdarzenia przesyłane dalej**.
@@ -200,11 +200,11 @@ Jeśli dane nie są wyświetlane w folderze zdarzenia przesyłane dalej po upły
 
 1. Sprawdź, czy komputer, na którym działa usługa Azure Log Integration Upewnij się, że mają dostęp do platformy Azure. Aby przetestować łączność, w przeglądarce, spróbuj przejść do [witryny Azure portal](https://portal.azure.com).
 2. Upewnij się, że konto użytkownika Azlog ma uprawnienia do zapisu dla users\Azlog folderu.
-  1. Otwórz Eksploratora plików.
-  2. Przejdź do C:\users.
-  3. Kliknij prawym przyciskiem myszy C:\users\Azlog.
-  4. Wybierz **zabezpieczeń**.
-  5. Wybierz **NT Service\Azlog**. Sprawdź uprawnienia dla konta. Jeśli konto nie ma na tej karcie lub odpowiednie uprawnienia nie są wyświetlane, można przyznać uprawnień konta na tej karcie.
+   1. Otwórz Eksploratora plików.
+   2. Przejdź do C:\users.
+   3. Kliknij prawym przyciskiem myszy C:\users\Azlog.
+   4. Wybierz **zabezpieczeń**.
+   5. Wybierz **NT Service\Azlog**. Sprawdź uprawnienia dla konta. Jeśli konto nie ma na tej karcie lub odpowiednie uprawnienia nie są wyświetlane, można przyznać uprawnień konta na tej karcie.
 3. Po uruchomieniu polecenia `Azlog source list`, upewnij się, że konto magazynu, który został dodany w poleceniu `Azlog source add` znajduje się w danych wyjściowych.
 4. Aby zobaczyć, jeśli błędy są zgłaszane z usługi Azure Log Integration, przejdź do **Podgląd zdarzeń** > **Dzienniki Windows** > **aplikacji**.
 
@@ -224,15 +224,15 @@ Dziennik aktywności platformy Azure jest Dziennik subskrypcji, który zapewnia 
 2. Uruchom następujące polecenie:  ```azlog createazureid```
 
     To polecenie wyświetli monit o podanie logowania do systemu Azure. Polecenie utworzy usługi Azure Active Directory nazwy głównej usługi w dzierżawach usługi Azure AD, obsługujące subskrypcji platformy Azure, w których zalogowanego użytkownika jest administrator, administrator współpracujący lub właściciela. Polecenie zakończy się niepowodzeniem, jeśli użytkownik zalogowany jest tylko użytkownik-Gość w dzierżawie usługi Azure AD. Uwierzytelnianie na platformie Azure odbywa się za pośrednictwem usługi Azure AD. Tworzenie nazwy głównej usługi Azure Log Integration tworzy tożsamości usługi Azure AD, która otrzymuje dostęp do odczytu z subskrypcji platformy Azure.
-3.  Uruchom następujące polecenie, aby autoryzować nazwę główną usługi Azure Log Integration, które zostały utworzone w kroku poprzedniego możliwość odczytu dziennika aktywności dla subskrypcji. Musisz być właścicielem subskrypcji do uruchomienia polecenia.
+3. Uruchom następujące polecenie, aby autoryzować nazwę główną usługi Azure Log Integration, które zostały utworzone w kroku poprzedniego możliwość odczytu dziennika aktywności dla subskrypcji. Musisz być właścicielem subskrypcji do uruchomienia polecenia.
 
-    ```Azlog.exe authorize subscriptionId``` Przykład:
+   ```Azlog.exe authorize subscriptionId``` Przykład:
 
    ```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
 
-4.  Sprawdź następujące foldery, aby upewnić się, że pliki JSON dziennika inspekcji usługi Azure Active Directory są tworzone w nich:
-    - C:\Users\azlog\AzureResourceManagerJson
-    - C:\Users\azlog\AzureResourceManagerJsonLD
+4. Sprawdź następujące foldery, aby upewnić się, że pliki JSON dziennika inspekcji usługi Azure Active Directory są tworzone w nich:
+   - C:\Users\azlog\AzureResourceManagerJson
+   - C:\Users\azlog\AzureResourceManagerJsonLD
 
 > [!NOTE]
 > Aby uzyskać szczegółowe instrukcje zapewniania informacji w plikach JSON security information and event management (SIEM) systemu skontaktuj się z dostawcą rozwiązania SIEM.

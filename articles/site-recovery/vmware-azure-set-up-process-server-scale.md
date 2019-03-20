@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e3f6a160f57a4432f91c395a2e0dd664bc8f323d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253684"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106546"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>Skalowanie na potrzeby powrotu po awarii przy użyciu dodatkowych serwerów przetwarzania
 
@@ -24,8 +24,8 @@ Domyślnie, Jeśli replikujesz maszyny wirtualne VMware lub serwery fizyczne do 
 
 Upewnij się, że zostały wykonane [planowania pojemności](site-recovery-plan-capacity-vmware.md) potrzeby replikacji oprogramowania VMware. Pomaga to identyfikować jak i kiedy należy wdrażać dodatkowych serwerów przetwarzania.
 
->[!NOTE]
-Korzystanie ze sklonowanym składnika serwera przetwarzania nie jest obsługiwana. Wykonaj kroki opisane w tym artykule, aby każdy PS skalowalnego w poziomie.
+> [!NOTE]
+> Korzystanie ze sklonowanym składnika serwera przetwarzania nie jest obsługiwana. Wykonaj kroki opisane w tym artykule, aby każdy PS skalowalnego w poziomie.
 
 ### <a name="sizing-requirements"></a>Wymagania w zakresie rozmiaru 
 
@@ -56,11 +56,11 @@ Pobierz plik instalacyjny na serwer przetwarzania w następujący sposób:
 3. Wybierz serwer konfiguracji, aby przejść do szczegółów serwera. Następnie kliknij przycisk **+ serwer przetwarzania**.
 4. W **serwer Dodaj przetwarzania** >  **wybierz, w której chcesz wdrożyć serwer przetwarzania**, wybierz opcję **Deploy Scale-out serwera przetwarzania w środowisku lokalnym**.
 
-  ![Dodaj stronę serwerów](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+   ![Dodaj stronę serwerów](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. Kliknij przycisk **pobrać z witryny Microsoft Azure Recovery ujednoliconej konfiguracji**. Spowoduje to pobranie najnowszej wersji pliku instalacyjnego.
 
-  > [!WARNING]
-  Wersja instalacji serwera przetwarzania powinna być taka sama jak, lub starszej niż, wersja serwera konfiguracji zostały uruchomione. Prosty sposób, aby zapewnić zgodność wersji jest użycie tego samego Instalatora, który ostatnio używane do instalowania lub aktualizowania serwera konfiguracji.
+   > [!WARNING]
+   > Wersja instalacji serwera przetwarzania powinna być taka sama jak, lub starszej niż, wersja serwera konfiguracji zostały uruchomione. Prosty sposób, aby zapewnić zgodność wersji jest użycie tego samego Instalatora, który ostatnio używane do instalowania lub aktualizowania serwera konfiguracji.
 
 ## <a name="install-from-the-ui"></a>Zainstaluj w interfejsie użytkownika
 

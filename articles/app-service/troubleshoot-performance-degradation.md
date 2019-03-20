@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9c66a937ffd9155569820c47c99946d186c55cce
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052159"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884226"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Aplikacja wolno Rozwiązywanie problemów z wydajnością w usłudze Azure App Service
 Ten artykuł pomoże Ci rozwiązywania problemów z wydajnością aplikacji powolne [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -162,7 +162,7 @@ Ponadto można uruchomić aplikację na więcej niż jedno wystąpienie. Skalowa
 Możesz ustawić skalowanie ręczne lub automatyczne.
 
 #### <a name="use-autoheal"></a>Używają funkcji AutoHeal
-Funkcji AutoHeal odtwarzania procesu roboczego dla aplikacji na podstawie ustawień wybranych (np. zmiany w konfiguracji, żądań, limity opartego na pamięci lub czas potrzebny do wykonania na żądanie). W większości przypadków, odtwarzania procesu jest najszybszym sposobem na odzyskanie problem. Chociaż można zawsze ponownie uruchomić aplikację z bezpośrednio z poziomu witryny Azure portal, funkcji AutoHeal zrobi to automatycznie za Ciebie. To wszystko, co należy zrobić, Dodaj niektórych wyzwalaczy w głównym pliku web.config aplikacji. Te ustawienia będzie działać w taki sam sposób, nawet jeśli aplikacja nie jest aplikacji platformy .net.
+Funkcji AutoHeal odtwarzania procesu roboczego dla aplikacji na podstawie ustawień wybranych (np. zmiany w konfiguracji, żądań, limity opartego na pamięci lub czas potrzebny do wykonania na żądanie). W większości przypadków, odtwarzania procesu jest najszybszym sposobem na odzyskanie problem. Chociaż można zawsze ponownie uruchomić aplikację z bezpośrednio z poziomu witryny Azure portal, funkcji AutoHeal zrobi to automatycznie za Ciebie. To wszystko, co należy zrobić, Dodaj niektórych wyzwalaczy w głównym pliku web.config aplikacji. Te ustawienia będzie działać w taki sam sposób, nawet jeśli aplikacja nie jest aplikacji platformy .NET.
 
 Aby uzyskać więcej informacji, zobacz [Samonaprawianie witryn sieci Web Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

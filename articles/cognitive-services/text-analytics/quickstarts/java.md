@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: 6462e48e2edb662c9968a9e22e431638a054e98b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 70f95ca83e225d7fe66875907afb1f829a2c896b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326276"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189091"
 ---
 # <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Java
 <a name="HOLTop"></a>
@@ -28,7 +28,7 @@ Zapoznaj się z tematem [API definitions (Definicje interfejsu API)](//go.micros
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany podczas tworzenia konta. 
+Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analytics-how-to-access-key.md) wygenerowany podczas tworzenia konta.
 
 <a name="Detect"></a>
 
@@ -36,11 +36,12 @@ Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analyti
 
 Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyciu [metody Detect Language](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Zmień lokalizację w ustawieniu `host` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
-5. Uruchom program.
+1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE (lub nowy folder na pulpicie). Utwórz klasę o nazwie `DetectLanguage.java`.
+1. Dodaj kod, przedstawionych poniżej do klasy.
+1. Zastąp `accessKey` wartość przy użyciu klucza z subskrypcji analizy tekstu w [Azure](https://ms.portal.azure.com).
+1. Zmień lokalizację w ustawieniu `host` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
+1. Upewnij się, że masz [Gson](https://github.com/google/gson) zainstalowanie biblioteki.
+1. Uruchom program w środowisku IDE, lub użyć wiersza polecenia do uruchomienia (instrukcje w komentarzach do kodu).
 
 ```java
 import java.io.*;
@@ -59,6 +60,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (DetectLanguage.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac DetectLanguage.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar DetectLanguage
  */
@@ -107,7 +109,7 @@ public class DetectLanguage {
     static String host = "https://westus.api.cognitive.microsoft.com";
 
     static String path = "/text/analytics/v2.0/languages";
-    
+
     public static String GetLanguage (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
@@ -160,7 +162,7 @@ public class DetectLanguage {
 }
 ```
 
-**Odpowiedź wykrywania języka**
+### <a name="language-detection-response"></a>Odpowiedź wykrywanie języka
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -208,13 +210,14 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). W poniższym przykładzie oceniane są dwa dokumenty, jeden w języku angielskim, a drugi w hiszpańskim.
+Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Analiza tonacji, można dowiedzieć się, co klienci myślą o Twojej marki lub wybranego tematu, analizując nieprzetworzony tekst dla wskazówek dotyczących opinii dodatnia lub ujemna. W poniższym przykładzie przedstawiono wyniki dla dwa dokumenty, jeden w języku angielskim i drugi w języku hiszpańskim.
 
-1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
-5. Uruchom program.
+1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE (lub nowy folder na pulpicie). Utwórz klasę w nim o nazwie `GetSentiment.java`.
+1. Dodaj kod, przedstawionych poniżej do klasy.
+1. Zastąp `accessKey` wartość przy użyciu klucza z subskrypcji analizy tekstu w [Azure](https://ms.portal.azure.com).
+1. Zmień lokalizację w ustawieniu `host` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
+1. Upewnij się, że masz [Gson](https://github.com/google/gson) zainstalowanie biblioteki.
+1. Uruchom program w środowisku IDE, lub użyć wiersza polecenia do uruchomienia (instrukcje w komentarzach do kodu).
 
 ```java
 import java.io.*;
@@ -233,6 +236,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetSentiment.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetSentiment.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetSentiment
  */
@@ -283,7 +287,7 @@ public class GetSentiment {
 
     static String path = "/text/analytics/v2.0/sentiment";
     
-    public static String GetSentiment (Documents documents) throws Exception {
+    public static String getTheSentiment (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
@@ -324,7 +328,7 @@ public class GetSentiment {
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.");
 
-            String response = GetSentiment (documents);
+            String response = getTheSentiment (documents);
             System.out.println (prettify (response));
         }
         catch (Exception e) {
@@ -333,9 +337,11 @@ public class GetSentiment {
     }
 }
 ```
-**Odpowiedź analizy tonacji**
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
+### <a name="sentiment-analysis-response"></a>Odpowiedź analizy tonacji
+
+Wynik jest mierzony jako dodatnie, jeśli jego są oceniane bliżej 1.0 i ujemne, jeśli są oceniane bliżej 0,0.
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -357,13 +363,14 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="extract-key-phrases"></a>Wyodrębnianie kluczowych fraz
 
-Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
+Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Wyodrębnianie kluczowych fraz umożliwia szybko identyfikować jego główne punkty, dokumentu lub tekstu. W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
 
-1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
-5. Uruchom program.
+1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE (lub nowy folder na pulpicie). Utwórz klasę w nim o nazwie `GetKeyPhrases.java`.
+1. Dodaj kod, przedstawionych poniżej do klasy.
+1. Zastąp `accessKey` wartość przy użyciu klucza z subskrypcji analizy tekstu w [Azure](https://ms.portal.azure.com).
+1. Zmień lokalizację w ustawieniu `host` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
+1. Upewnij się, że masz [Gson](https://github.com/google/gson) zainstalowanie biblioteki.
+1. Uruchom program w środowisku IDE, lub użyć wiersza polecenia do uruchomienia (instrukcje w komentarzach do kodu).
 
 ```java
 import java.io.*;
@@ -382,6 +389,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetKeyPhrases.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetKeyPhrases.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetKeyPhrases
  */
@@ -483,9 +491,10 @@ public class GetKeyPhrases {
     }
 }
 ```
-**Odpowiedź wyodrębniania kluczowych fraz**
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
+### <a name="key-phrase-extraction-response"></a>Odpowiedź wyodrębnianie kluczowych fraz
+
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -526,13 +535,14 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 ## <a name="identify-entities"></a>Identyfikowanie jednostek
 
-Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
+Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębnić wyrazów w tekście, takie jak "United States", a następnie zapewniają typ i/lub Wikipedia link to wyrazów. Typ dla "United States" jest `location`, a łącze do Wikipedia `https://en.wikipedia.org/wiki/United_States`.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
 
-1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Zmień lokalizację w ustawieniu `uriBase` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
-5. Uruchom program.
+1. Utwórz nowy projekt języka Java w ulubionym środowisku IDE (lub nowy folder na pulpicie). Utwórz klasę w nim o nazwie `GetEntities.java`.
+1. Dodaj kod, przedstawionych poniżej do klasy.
+1. Zastąp `accessKey` wartość przy użyciu klucza z subskrypcji analizy tekstu w [Azure](https://ms.portal.azure.com).
+1. Zmień lokalizację w ustawieniu `host` (obecnie: `westus`) na region, w którym zostało zarejestrowane konto.
+1. Upewnij się, że masz [Gson](https://github.com/google/gson) zainstalowanie biblioteki.
+1. Uruchom program w środowisku IDE, lub użyć wiersza polecenia do uruchomienia (instrukcje w komentarzach do kodu).
 
 ```java
 import java.io.*;
@@ -551,6 +561,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetEntities.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetEntities.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetEntities
  */
@@ -651,9 +662,10 @@ public class GetEntities {
     }
 }
 ```
-**Odpowiedź wyodrębniania jednostek**
 
-Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
+### <a name="entity-extraction-response"></a>Odpowiedź wyodrębniania jednostek
+
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -811,12 +823,12 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także
 
  [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)

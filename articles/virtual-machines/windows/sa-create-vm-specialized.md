@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 62d8236abb2b5f21bdb4111480d95376faa2e379
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 90d1d752481ada33c038ab563f6bd0d3bf5fad08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432604"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086806"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego wirtualnego dysku twardego w ramach konta magazynu
 
@@ -212,10 +212,10 @@ Tworzenie sieci wirtualnej i podsieci [sieci wirtualnej](../../virtual-network/v
     $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Tworzenie sieciowej grupy zabezpieczeń i regułę protokołu RDP
-Aby można było zalogować się do maszyny Wirtualnej przy użyciu protokołu RDP, musisz mieć reguły zabezpieczeń, która umożliwia dostęp do portu 3389 protokołu RDP. Ponieważ wirtualnego dysku twardego dla nowej maszyny Wirtualnej został utworzony na podstawie istniejącego wyspecjalizowanej maszyny Wirtualnej, po utworzeniu maszyny Wirtualnej, możesz użyć istniejącego konta ze źródłowej maszyny wirtualnej, który ma uprawnienia do logowania się przy użyciu protokołu RDP.
-To musi zostać ukończona przed utworzeniem interfejsu sieciowego, które zostaną skojarzone z.  
-W tym przykładzie nazwa sieciowej grupy zabezpieczeń w **myNsg** i nazwa reguły protokołu RDP do **myRdpRule**.
+   ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Tworzenie sieciowej grupy zabezpieczeń i regułę protokołu RDP
+   Aby można było zalogować się do maszyny Wirtualnej przy użyciu protokołu RDP, musisz mieć reguły zabezpieczeń, która umożliwia dostęp do portu 3389 protokołu RDP. Ponieważ wirtualnego dysku twardego dla nowej maszyny Wirtualnej został utworzony na podstawie istniejącego wyspecjalizowanej maszyny Wirtualnej, po utworzeniu maszyny Wirtualnej, możesz użyć istniejącego konta ze źródłowej maszyny wirtualnej, który ma uprawnienia do logowania się przy użyciu protokołu RDP.
+   To musi zostać ukończona przed utworzeniem interfejsu sieciowego, które zostaną skojarzone z.  
+   W tym przykładzie nazwa sieciowej grupy zabezpieczeń w **myNsg** i nazwa reguły protokołu RDP do **myRdpRule**.
 
 ```powershell
 $nsgName = "myNsg"

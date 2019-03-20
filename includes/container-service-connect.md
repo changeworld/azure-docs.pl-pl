@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 7dee92ffd183b852d48bcb150ba3c1ba8d5d0380
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 48deeec7a2c8767ab5dbb81b622e6d40483ed455
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569052"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093554"
 ---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>Nawiązywanie zdalnego połączenia z klastrem Kubernetes, DC/OS lub Docker Swarm
 Po utworzeniu klastra usługi Azure Container Service należy połączyć się z klastrem, aby wdrożyć obciążenia i zarządzać nimi. W tym artykule opisano sposób nawiązywania połączenia z główną maszyną wirtualną klastra z komputera zdalnego. 
@@ -113,11 +113,11 @@ Pierwszym krokiem tworzenia tunelu SSH w systemie Linux lub macOS jest zlokalizo
     ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com
     ```
   
-  > [!NOTE]
-  > Port połączenia SSH to 2200, a nie standardowy port 22. W klastrze z więcej niż jedną główną maszyną wirtualną jest to port połączenia z pierwszą główną maszyną wirtualną.
-  > 
+   > [!NOTE]
+   > Port połączenia SSH to 2200, a nie standardowy port 22. W klastrze z więcej niż jedną główną maszyną wirtualną jest to port połączenia z pierwszą główną maszyną wirtualną.
+   > 
 
-  Polecenie jest zwracane bez danych wyjściowych.
+   Polecenie jest zwracane bez danych wyjściowych.
 
 Zobacz przykłady dla klastrów DC/OS i Swarm w poniższych sekcjach.    
 
@@ -181,16 +181,16 @@ Istnieje wiele opcji tworzenia tuneli SSH w systemie Windows. Jeśli używasz na
 
 5. Wybierz pozycje **SSH > Tunele** i skonfiguruj następujące przekazane porty:
 
-    * **Port źródłowy:** — użyj portu 80 w przypadku opcji DC/OS lub portu 2375 w przypadku opcji Swarm.
-    * **Miejsce docelowe:** — użyj wartości localhost:80 w przypadku opcji DC/OS lub wartości localhost:2375 w przypadku opcji Swarm.
+   * **Port źródłowy:** Na użytek 80 dla platformy DC/OS lub 2375 Swarm.
+   * **Miejsce docelowe:** Na użytek localhost:80 DC/OS lub 2375 dla koordynatora Swarm.
 
-    Poniższy przykład został skonfigurowany na potrzeby opcji DC/OS, ale będzie wyglądać podobnie w przypadku rozwiązania Docker Swarm.
+     Poniższy przykład został skonfigurowany na potrzeby opcji DC/OS, ale będzie wyglądać podobnie w przypadku rozwiązania Docker Swarm.
 
-    > [!NOTE]
-    > W przypadku tworzenia tego tunelu nie można używać portu 80.
-    > 
+     > [!NOTE]
+     > W przypadku tworzenia tego tunelu nie można używać portu 80.
+     > 
 
-    ![Konfiguracja programu PuTTY 3](./media/container-service-connect/putty3.png)
+     ![Konfiguracja programu PuTTY 3](./media/container-service-connect/putty3.png)
 
 6. Po zakończeniu kliknij pozycje **Sesja > Zapisz**, aby zapisać konfigurację połączenia.
 

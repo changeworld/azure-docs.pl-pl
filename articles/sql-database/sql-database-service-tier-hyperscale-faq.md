@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: d94bc570f47d71a7e2b626041acd4bb6e84d0dc1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876011"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075939"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -45,7 +45,7 @@ Usługi oparte na rdzeniach wirtualnych warstwy różnią się głównie na pods
 - Krytyczne dla działania firmy warstwy usług jest odpowiednia dla obciążeń biznesowych, gdzie ma najwyższy priorytet, czas oczekiwania operacji We/Wy.
 
 | | Typ zasobu | Ogólne zastosowanie |  Hiperskalowanie | Krytyczne dla działania firmy |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|
 | **Najlepsze dla** |Wszyscy|  Większości obciążeń biznesowych. Oferty budżetu zorientowane na obiekty o zrównoważonym obciążeniu opcji obliczeniowych i magazynu. | Aplikacji przetwarzających dane z wymagań w zakresie pojemności dużych ilości danych i możliwości automatycznego skalowania magazynu i Skaluj obliczenia płynnie. | Przetwarzanie OLTP danych aplikacji za pomocą dużo transakcji i najniższym opóźnieniu operacji We/Wy. Oferuje najwyższą odporność na awarie, za pomocą kilku izolowany replik.|
 |  **Typ zasobu** ||Pojedynczą bazę danych / elastycznej puli / wystąpienia zarządzanego | Pojedyncza baza danych | Pojedynczą bazę danych / elastycznej puli / wystąpienia zarządzanego |
 | **Obliczenia rozmiaru**|Pojedynczą bazę danych / elastycznej puli * | 1 do 80 rdzeni wirtualnych | 1 do 80 rdzeni wirtualnych * | 1 do 80 rdzeni wirtualnych |

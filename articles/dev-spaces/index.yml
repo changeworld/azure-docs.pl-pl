@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4ad9de80a77d054ef723d9ed5bd53e410c653baa
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 5fc027e52d838a85e7b880e3dd0daf4438e850dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195085"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852002"
 documentType: LandingData
 title: Azure Dev Spaces
 metadata:
@@ -25,7 +25,7 @@ sections:
     text: >-
       > [!IMPORTANT]
 
-      > Usługa Azure Dev Spaces jest obecnie w wersji zapoznawczej i jest obsługiwana tylko w klastrach usługi AKS w następujących regionach: **Wschodnie stany USA**, **Wschodnie stany USA 2**, **Środkowe stany USA**, **Zachodnie stany USA 2**, **Europa Zachodnia**, **Azja Południowo-Wschodnia**, **Kanada Środkowa** i **Kanada Wschodnia**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+      > Usługa Azure Dev Spaces jest obecnie w wersji zapoznawczej i jest obsługiwana tylko w klastrach usługi AKS w następujących regionach: **Wschodnie stany USA**, **Wschodnie stany USA 2**, **Środkowe stany USA**, **Zachodnie stany USA 2**, **Europa Północna**, **Europa Zachodnia**, **Azja Południowo-Wschodnia**, **Kanada Środkowa** i **Kanada Wschodnia**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 - title: Rozpoczynanie pracy w usłudze Azure Dev Spaces
   items:
   - type: paragraph

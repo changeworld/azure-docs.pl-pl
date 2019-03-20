@@ -433,6 +433,8 @@ items:
     items:
     - name: Agregacja
       href: data-flow-aggregate.md
+    - name: Modyfikuj wiersz
+      href: data-flow-alter-row.md
     - name: Podział warunkowy
       href: data-flow-conditional-split.md
     - name: Kolumna pochodna
@@ -549,6 +551,8 @@ items:
       href: solution-templates-introduction.md
     - name: Kopiowanie plików z wielu kontenerów
       href: solution-template-copy-files-multiple-containers.md
+    - name: Kopiowanie nowych plików według daty ostatniej modyfikacji
+      href: solution-template-copy-new-files-lastmodifieddate.md
     - name: Kopiowanie zbiorcze za pomocą kontrolki tabeli
       href: solution-template-bulk-copy-with-control-table.md
     - name: Kopiowanie różnicowe za pomocą kontrolki tabeli
@@ -585,9 +589,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Opcje pomocy technicznej
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 8c724971db16381bb327cca6a30c5b8d63cac2bc
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 32411c9ec042a8504ef08ece1359ea9e5ee7ebda
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730746"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858898"

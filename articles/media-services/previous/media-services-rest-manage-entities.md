@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 0f500ec776d90755d6738af80c34866105d354f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ff7bb6fa087ab7fa362c13ca03d6f3100a505ce3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999406"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858961"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Zarządzanie jednostkami usługi Media Services za pomocą architektury REST  
 
@@ -29,7 +29,7 @@ ms.locfileid: "55999406"
 > 
 > 
 
-Microsoft Azure Media Services jest oparty na protokole REST usługa oparta na protokole OData v3. Można dodać, zapytania, aktualizacji i usuwanie jednostek w taki tak samo, jak w przypadku dowolnej usługi OData. Wyjątki zostaną przestawione, jeśli ma to zastosowanie. Aby uzyskać więcej informacji na temat protokołu OData, zobacz [dokumentacji protokołu Open Data Protocol](http://www.odata.org/documentation/).
+Microsoft Azure Media Services jest oparty na protokole REST usługa oparta na protokole OData v3. Można dodać, zapytania, aktualizacji i usuwanie jednostek w taki tak samo, jak w przypadku dowolnej usługi OData. Wyjątki zostaną przestawione, jeśli ma to zastosowanie. Aby uzyskać więcej informacji na temat protokołu OData, zobacz [dokumentacji protokołu Open Data Protocol](https://www.odata.org/documentation/).
 
 W tym temacie dowiesz się, jak zarządzać jednostkami usługi Azure Media Services za pomocą architektury REST.
 

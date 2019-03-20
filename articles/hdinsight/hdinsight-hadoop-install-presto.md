@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6fdeab56523d05232dd4e6a720de0be9866a4801
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fe3727c90819a96b7e1785362e557edd5cbbdf02
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084831"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199328"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>Instalowanie i używanie Presto w klastrach HDInsight opartych na usłudze Hadoop
 
@@ -175,8 +175,6 @@ TPC-DS to branżowy standard do pomiaru wydajności wiele systemów wspomaganie 
 * [Instalowanie i korzystanie z rozwiązania Hue w klastrach usługi HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). HUE to internetowy interfejs użytkownika, który ułatwia tworzenie, uruchamianie i zapisywanie Apache Pig i Hive zadania.
 
 * [Zainstaluj Apache Giraph w klastrach usługi HDInsight Hadoop, a przetwarzanie dużych wykresów za pomocą systemu Giraph](hdinsight-hadoop-giraph-install-linux.md). Użyj dostosowywania klastra, aby zainstalować system Giraph w klastrach HDInsight opartych na usłudze Hadoop. Za pomocą systemu Giraph można wykonać przetwarzanie wykresów za pomocą usługi Hadoop. Może również służyć za pomocą usługi Azure HDInsight.
-
-* [Instalowanie i używanie Apache Solr w klastrach usługi HDInsight Hadoop](hdinsight-hadoop-solr-install-linux.md). Użyj dostosowywania klastra, aby zainstalować platformę Solr w klastrach HDInsight opartych na usłudze Hadoop. Korzystając z platformy Solr, można wykonywać operacje zaawansowane wyszukiwanie, na przechowywanych danych.
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

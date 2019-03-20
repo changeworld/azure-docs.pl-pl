@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: c4ee56f4ddcccb1fc4ddd84aa1c1b16dea9754d9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123961"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842145"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wymiana X12 komunikatów B2B integracji przedsiębiorstwa w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
@@ -36,9 +36,10 @@ Po zakończeniu [utworzyć konto integracji](../logic-apps/logic-apps-enterprise
 
 ## <a name="create-an-x12-agreement"></a>Utwórz X12 umowy
 
-1. Zaloguj się w witrynie [Azure Portal](http://portal.azure.com "Azure Portal"). 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com "Azure Portal"). 
 
-2. W głównym menu platformy Azure, wybierz **wszystkich usług**. W polu wyszukiwania wprowadź "integration", a następnie wybierz pozycję **kont integracji**.  
+2. W głównym menu platformy Azure, wybierz **wszystkich usług**. 
+   W polu wyszukiwania wprowadź "integration", a następnie wybierz pozycję **kont integracji**.  
 
    ![Znajdź swoje konto integracji](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
@@ -49,7 +50,8 @@ Po zakończeniu [utworzyć konto integracji](../logic-apps/logic-apps-enterprise
 
    ![Wybierz miejsce utworzenia umowę konta integracji](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. Wybierz **Przegląd**, a następnie wybierz **umów** kafelka. Jeśli nie masz umowy kafelka, dodać Kafelek. 
+4. Wybierz **Przegląd**, a następnie wybierz **umów** kafelka. 
+   Jeśli nie masz umowy kafelka, dodać Kafelek. 
 
    ![Wybierz Kafelek "Umowy"](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
@@ -57,7 +59,10 @@ Po zakończeniu [utworzyć konto integracji](../logic-apps/logic-apps-enterprise
 
    ![Wybieranie pozycji "Dodaj"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
-6. W obszarze **Dodaj**, wprowadź **nazwa** dla umowy. Wybierz typ umowy **X12**. Wybierz **Partner hosta**, **tożsamości hosta**, **Partner gościa**, i **tożsamość gościa** dla umowy. Aby uzyskać więcej szczegółów właściwości Zobacz tabelę w tym kroku.
+6. W obszarze **Dodaj**, wprowadź **nazwa** dla umowy. 
+   Wybierz typ umowy **X12**. 
+   Wybierz **Partner hosta**, **tożsamości hosta**, **Partner gościa**, i **tożsamość gościa** dla umowy. 
+   Aby uzyskać więcej szczegółów właściwości Zobacz tabelę w tym kroku.
 
     ![Podaj szczegóły umowy](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
@@ -72,8 +77,8 @@ Po zakończeniu [utworzyć konto integracji](../logic-apps/logic-apps-enterprise
     | Ustawienia odbierania |Te właściwości mają zastosowanie do wszystkich komunikatów odebranych przez umowę. |
     | Ustawienia wysyłania |Te właściwości mają zastosowanie do wszystkich komunikatów wysłanych przez umowę. |  
 
-  > [!NOTE]
-  > Rozdzielczość X12 Umowy zależy od tego, pasujące kwalifikator nadawcy i identyfikator i kwalifikator odbiorcy i identyfikator, który zdefiniowano w przychodzącej wiadomości i partnera. W przypadku zmiany tych wartości dla partnera, zaktualizuj zbyt umowy.
+   > [!NOTE]
+   > Rozdzielczość X12 Umowy zależy od tego, pasujące kwalifikator nadawcy i identyfikator i kwalifikator odbiorcy i identyfikator, który zdefiniowano w przychodzącej wiadomości i partnera. W przypadku zmiany tych wartości dla partnera, zaktualizuj zbyt umowy.
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurowanie, jak dojścia Twojej umowy odebranych komunikatów
 
@@ -82,7 +87,7 @@ Teraz, gdy ustawiono właściwości umowy, można skonfigurować, jak niniejsza 
 1.  W obszarze **Dodaj**, wybierz opcję **ustawienia odbierania**.
 Należy skonfigurować te właściwości, w oparciu o umowy z partnerem, który wymienia wiadomości z Tobą. Opisy właściwości znajdują się w tabelach w tej sekcji.
 
-    **Otrzymał ustawienia** jest podzielone na następujące sekcje: identyfikatory, potwierdzenia, schematów, koperty, numery kontrolne, ocen i ustawienia wewnętrzne.
+    **Otrzymał ustawienia** jest podzielone na następujące sekcje: Identyfikatory potwierdzenia, schematów, koperty, numery kontrolne, ocen i ustawienia wewnętrzne.
 
 2. Po wykonaniu tych czynności upewnij się zapisać ustawienia, wybierając **OK**.
 
@@ -151,7 +156,7 @@ Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany au
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ komunikatu |Wybierz typ komunikatu EDI. |
+| Typ wiadomości |Wybierz typ komunikatu EDI. |
 | Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu EDI właściwości, ograniczenia długości, elementy z pustymi danymi i separatory kończące. |
 | Rozszerzona walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
 | Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
@@ -178,7 +183,7 @@ Można skonfigurować, jak niniejsza Umowa identyfikuje i obsługuje komunikaty 
 1.  W obszarze **Dodaj**, wybierz opcję **ustawienia wysyłania**.
 Należy skonfigurować te właściwości, w oparciu o umowy z partnerem, który wymienia wiadomości z Tobą. Opisy właściwości znajdują się w tabelach w tej sekcji.
 
-    **Ustawienia wysyłania** jest podzielone na następujące sekcje: identyfikatory, potwierdzenia, schematów, koperty, zestawów znaków i separatory, numerów kontrolnych i sprawdzanie poprawności.
+    **Ustawienia wysyłania** jest podzielone na następujące sekcje: Identyfikatory, potwierdzenia, schematów, koperty, zestawów znaków i separatory, numerów kontrolnych i sprawdzanie poprawności.
 
 2. Po wykonaniu tych czynności upewnij się zapisać ustawienia, wybierając **OK**.
 
@@ -276,7 +281,7 @@ Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany au
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ komunikatu |Wybierz typ komunikatu EDI. |
+| Typ wiadomości |Wybierz typ komunikatu EDI. |
 | Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu EDI właściwości, ograniczenia długości, elementy z pustymi danymi i separatory kończące. |
 | Rozszerzona walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
 | Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |

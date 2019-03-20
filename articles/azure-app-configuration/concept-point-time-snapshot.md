@@ -12,26 +12,26 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 4f26f3a31dc6303e991c39fc7f85d9bf254d57bc
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: e833146d05f0c35449915c1d1293873258a7b7eb
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885140"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226780"
 ---
 # <a name="point-in-time-snapshot"></a>Migawka punktu w czasie
 
-Usługa Azure App Configuration zapisuje dokładny czas utworzenia nowej pary klucz-wartość oraz jej późniejszych modyfikacji. Te rekordy tworzą pełną oś czasu zmian wartości klucza. Magazyn konfiguracji aplikacji może zrekonstruować historię wartości dowolnego klucza i odtworzyć dowolną z poprzednich wartości, aż do aktualnej. Ta funkcja umożliwia „cofanie się w czasie” w celu pobrania wcześniejszej wartości klucza. Możesz na przykład pobrać ustawienia konfiguracji z dnia wczorajszego, poprzedzającego najnowsze wdrożenie, co pozwala odzyskać poprzednią konfigurację w przypadku konieczności wycofania wersji aplikacji.
+Konfiguracja aplikacji Azure przechowuje rekordy dokładne razy, gdy nową parę klucz wartość jest tworzony i następnie zmodyfikować. Te rekordy tworzą pełną oś czasu zmian wartości klucza. Konfiguracji sklepu z aplikacjami można odtworzyć historię wszystkie wartości klucza i odtwarzania jego wartość w ciągu ostatnich w danym momencie, do chwili obecnej. Dzięki tej funkcji można "czas podróży" Wstecz i pobrania starej wartości klucza. Na przykład możesz uzyskać przeszła ustawienia konfiguracji, tuż przed najnowszych wdrożenia, aby można było odzyskać poprzednią konfigurację i wycofywanie aplikacji.
 
 ## <a name="key-value-retrieval"></a>Pobieranie wartości klucza
 
-Aby pobrać poprzednie wartości klucza, należy określić czas utworzenia migawki wartości klucza w nagłówku HTTP wywołania interfejsu API REST. Na przykład:
+Aby pobrać ostatnie wartości klucza, określ czas, w którym wartości klucza są migawki w nagłówku HTTP wywołania interfejsu API REST. Na przykład:
 
         GET /revisions HTTP/1.1
         Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
 
-Obecnie usługa App Configuration przechowuje historię zmian z 7 dni.
+Obecnie konfiguracji aplikacji przechowuje siedem dni historii zmian.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Szybki start: tworzenie aplikacji internetowej platformy ASP.NET](quickstart-aspnet-core-app.md)  

@@ -13,21 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2019
+ms.date: 03/18/2019
 ms.author: kaanan
-ms.openlocfilehash: dd99e1376eb0589fc8cb8404d557c9ebddd45fd6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992056"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189142"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
 Usługa Azure virtual network TAP (Terminal punktem dostępu) umożliwia ciągłego strumienia do narzędzia sieci pakiet modułu zbierającego lub analizy ruchu sieciowego maszyny wirtualnej. Narzędzie modułu zbierającego lub analizy są dostarczane przez [wirtualnego urządzenia sieciowego](https://azure.microsoft.com/solutions/network-appliances/) partnera. Aby uzyskać listę rozwiązań partnerskich, które są sprawdzane do pracy z usługą virtual network TAP zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Sieć wirtualna wzorca TAP jest obecnie dla deweloperów w wersji zapoznawczej w regionie WestCentralUS Azure. Aby korzystać z PODSŁUCHU sieci wirtualnej, musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość e-mail na adres <azurevnettap@microsoft.com> przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie można użyć funkcji, dopóki nie otrzymasz wiadomość e-mail z potwierdzeniem. Dla deweloperów w wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług i nie powinna być używana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Aby uzyskać szczegółowe informacje.
+> Sieć wirtualna wzorca TAP jest obecnie w wersji zapoznawczej we wszystkich regionach platformy Azure. Aby korzystać z PODSŁUCHU sieci wirtualnej, musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość e-mail na adres <azurevnettap@microsoft.com> przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie można użyć funkcji, dopóki nie otrzymasz wiadomość e-mail z potwierdzeniem. Tej wersji zapoznawczej jest oferowana bez umowy dotyczącej poziomu usług i nie powinna być używana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Aby uzyskać szczegółowe informacje.
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Rozwiązania partnerów wzorca TAP sieci wirtualnej
 

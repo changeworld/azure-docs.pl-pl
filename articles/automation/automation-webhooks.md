@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 920d6ee9b584e908885cf661d32aa700e655c3f8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816423"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224899"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie elementu runbook usługi Azure Automation za pomocą elementu webhook
 
@@ -22,6 +22,9 @@ A *elementu webhook* umożliwia uruchomienie określonego elementu runbook w us�
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 Można porównać elementów webhook, uruchamianie elementu runbook inne sposoby [uruchamianie elementu runbook w usłudze Azure Automation](automation-starting-a-runbook.md)
+
+> [!NOTE]
+> Aby uruchomić element runbook Python przy użyciu elementu webhook nie jest obsługiwana.
 
 ## <a name="details-of-a-webhook"></a>Szczegóły elementu webhook
 

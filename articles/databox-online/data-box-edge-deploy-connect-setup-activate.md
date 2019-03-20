@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c50aece847119dd0d2421553e9e9827c2168e553
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4fd52510abd61c4d319a3fcbc8f722df5edbc476
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451650"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120605"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>Samouczek: Łączenie, konfigurowanie i aktywowania usługi Azure Data Box Edge (wersja zapoznawcza) 
 
@@ -82,12 +82,12 @@ Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane, aby skonf
    
     Podczas konfigurowania ustawień sieciowych, należy pamiętać:
 
-    - Jeżeli w Twoim środowisku włączony jest protokół DHCP, interfejsy sieciowe są automatycznie konfigurowane. Adres IP, podsieci, bramy i DNS są automatycznie przypisywane.
-    - Jeśli nie jest włączony protokół DHCP, możesz przypisać statyczne adresy IP, w razie potrzeby.
-    - Możesz skonfigurować interfejsu sieciowego w przypadku protokołu IPv4.
+   - Jeżeli w Twoim środowisku włączony jest protokół DHCP, interfejsy sieciowe są automatycznie konfigurowane. Adres IP, podsieci, bramy i DNS są automatycznie przypisywane.
+   - Jeśli nie jest włączony protokół DHCP, możesz przypisać statyczne adresy IP, w razie potrzeby.
+   - Możesz skonfigurować interfejsu sieciowego w przypadku protokołu IPv4.
 
-    >[!NOTE] 
-    > Firma Microsoft zaleca, przełącza lokalny adres IP interfejsu sieciowego z statycznego do protokołu DHCP, o ile nie masz innego adresu IP, aby połączyć się z urządzeniem. Jeśli przy użyciu jednego interfejsu sieciowego i przełącz się do protokołu DHCP, będzie można ustalić adres DHCP. Jeśli chcesz zmienić adres DHCP, poczekaj, aż po urządzenia został zarejestrowany w usłudze, a następnie Zmień. Można wyświetlić adresy IP wszystkich kart w **właściwości urządzenia** w witrynie Azure portal dla usługi.
+     >[!NOTE] 
+     > Firma Microsoft zaleca, przełącza lokalny adres IP interfejsu sieciowego z statycznego do protokołu DHCP, o ile nie masz innego adresu IP, aby połączyć się z urządzeniem. Jeśli przy użyciu jednego interfejsu sieciowego i przełącz się do protokołu DHCP, będzie można ustalić adres DHCP. Jeśli chcesz zmienić adres DHCP, poczekaj, aż po urządzenia został zarejestrowany w usłudze, a następnie Zmień. Można wyświetlić adresy IP wszystkich kart w **właściwości urządzenia** w witrynie Azure portal dla usługi.
 
 1. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawień serwera proxy sieci Web**, a następnie skonfiguruj serwer proxy sieci web. Mimo, że konfiguracja serwera proxy sieci web jest opcjonalny, jeśli używasz serwera proxy sieci web, możesz go skonfigurować tylko na tej stronie.
    

@@ -6,14 +6,14 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: a57b52b3b0cc493fdde60e9bddfb0125ff2ce3e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 36a3a50ffaf3f8dab068f067ec0440149e7a58a1
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175968"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226644"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Narzędzie Kopia zapasowa programu SQL Server w maszynach wirtualnych platformy Azure — informacje
 
@@ -38,35 +38,103 @@ To rozwiązanie korzysta z natywnymi interfejsami API SQL do wykonania kopii zap
 Przed rozpoczęciem sprawdź następujące kwestie:
 
 1. Upewnij się, że masz wystąpienie programu SQL Server uruchomione na platformie Azure. Możesz [szybko utworzyć wystąpienie programu SQL Server](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) w witrynie Marketplace.
-2. Przegląd [funkcji brany pod uwagę](#feature-consideration) i [scenariusza pomocy technicznej](#scenario_support).
+2. Przegląd [funkcji brany pod uwagę](#feature-consideration-and-limitations) i [scenariusza pomocy technicznej](#scenario_support).
 3. [Przejrzyj często zadawane pytania](faq-backup-sql-server.md) dotyczące tego scenariusza.
-
-
-## <a name="feature-consideration-and-limitations"></a>Funkcja uwag i ograniczeń
-
-- Maszyna wirtualna z uruchomionym programem SQL Server wymaga łączności z Internetem do uzyskiwania dostępu do publicznych adresów IP platformy Azure.
-- Tworzenie kopii zapasowych [rozproszonej grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) grup pełni nie działają.
-- Zawsze włączone wystąpienia klastra trybu failover w programie SQL Server nie są obsługiwane w przypadku tworzenia kopii zapasowej.
-- Kopia zapasowa programu SQL Server należy skonfigurować w portalu lub za pośrednictwem programu PowerShell.
-- Operacje kopii zapasowej i przywracania baz danych duplikatu infrastruktury klasyfikacji plików, migawki baz danych i baz danych nie są obsługiwane.
-- Nie można chronić baz danych z dużą liczbą plików. Maksymalna liczba plików to 1000.
-- Można utworzyć kopię bazy danych SQL Server do 2000 ~ w magazynie. Jeśli masz ich więcej, utwórz kolejny magazyn.
-- Tworzenie kopii zapasowej dla maksymalnie 50 baz danych można skonfigurować w jednego kroku; to ograniczenie pomaga w optymalizacji obciążeń kopii zapasowych.
-- Nie można chronić baz danych z więcej niż 1000 plików.
-- Rozmiar zalecany bazy danych, aby zapewnić lepszą wydajność jest 2TB.
-- Chroni maksymalnie 300 baz danych na serwerze, w przypadku wykonywania kopii zapasowych dziennika skonfigurowane co 15 minut. Liczba baz danych można zwiększyć, jeśli dłuższe interwały częstotliwość wykonywania kopii zapasowych. Firma Microsoft opowie o szczegółowy sposób obliczania to wkrótce.
-
 
 ## <a name="scenario-support"></a>Obsługa scenariuszy
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
 **Obsługiwane wdrożenia** | Obsługiwane są maszyny wirtualne SQL Marketplace Azure i maszyny wirtualne spoza witryny Marketplace (z ręcznie instalowanym programem SQL Server).
-**Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia (ASE), Australia Wschodnia (AE) <br> Brazylia Południowa (BRS)<br> Kanada Środkowa (CNC), Kanada Wschodnia (CE)<br> Azja południowo-wschodnia (SEA), Azja Wschodnia (EA) <br> Wschodnie stany USA (EUS), wschodnie stany USA 2 (EUS2) zachodnie środkowe stany USA (WCUS), zachodnie stany USA (WUS); Zachodnie stany USA 2 (WUS 2) Północna środkowe stany USA (NCUS) środkowe stany USA (CUS) południowo-środkowe stany USA (SCUS) <br> Indie środkowe (INC), Indie Południowe (INS) <br> Japonia, część wschodnia (JPE), Japonia, część Zachodnia (JPW) <br> Korea Środkowa (KRC), Korea Południowa (KRS) <br> Europa Północna (NE), Europa Zachodnia <br> Republika Południowej Afryki Północna (SAN), Republika Południowej Afryki zachodnie (SAW) <br> Środkowe Zjednoczone Emiraty Arabskie (UAC), Zjednoczone Emiraty Arabskie Północna (UAN) <br> Południowe Zjednoczone Królestwo (UKS), Zjednoczone Królestwo w zachodnie (UKW)
+**Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia (ASE), Australia Wschodnia (AE) <br> Brazylia Południowa (BRS)<br> Kanada Środkowa (CNC), Kanada Wschodnia (CE)<br> Azja południowo-wschodnia (SEA), Azja Wschodnia (EA) <br> Wschodnie stany USA (EUS), wschodnie stany USA 2 (EUS2) zachodnie środkowe stany USA (WCUS), zachodnie stany USA (WUS); Zachodnie stany USA 2 (WUS 2) Północna środkowe stany USA (NCUS) środkowe stany USA (CUS) południowo-środkowe stany USA (SCUS) <br> Indie środkowe (INC), Indie Południowe (INS) <br> Japonia, część wschodnia (JPE), Japonia, część Zachodnia (JPW) <br> Korea Środkowa (KRC), Korea Południowa (KRS) <br> Europa Północna (NE), Europa Zachodnia <br> Południowe Zjednoczone Królestwo (UKS), Zjednoczone Królestwo w zachodnie (UKW)
 **Obsługiwane systemy operacyjne** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> System Linux nie jest obecnie obsługiwany.
 **Obsługiwane wersje programu SQL Server** | SQL Server 2017, SQL Server 2016, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Obsługiwane wersje programu .NET** | .NET framework 4.5.2 i nowszej zainstalowany na maszynie Wirtualnej
 
+## <a name="feature-consideration-and-limitations"></a>Funkcja uwag i ograniczeń
+
+- Kopia zapasowa programu SQL Server można skonfigurować w witrynie Azure portal lub **PowerShell**. Interfejs wiersza polecenia nie jest obsługiwana.
+- Maszynę Wirtualną z uruchomionym programem SQL Server wymaga łączności z Internetem na dostęp do platformy Azure z publicznymi adresami IP.
+- SQL Server-zawsze na **wystąpienia klastra trybu Failover (występowanie)** nie są obsługiwane.
+- Kopia zapasowa i przywracanie operacji dublowania baz danych i migawki bazy danych nie są obsługiwane.
+- Przy użyciu więcej niż jednego rozwiązania tworzenia kopii zapasowych do tworzenia kopii zapasowych z autonomicznego programu SQL Server lub wystąpienia programu SQL zawsze włączona grupa dostępności może prowadzić do niepowodzenia wykonywania kopii zapasowej; Unikaj umieszczania w ten sposób.
+- Tworzenie kopii zapasowej dwa węzły grupy dostępności za pomocą tych samych lub różnych rozwiązań, również może prowadzić do niepowodzenia wykonywania kopii zapasowej. Usługa Azure Backup można wykryć i chronić wszystkie węzły, które znajdują się w tym samym regionie co magazyn. Jeśli usługi SQL Server zawsze włączona grupa dostępności obejmuje wiele regionów systemu Azure, skonfigurować kopię zapasową z regionem, który ma węzła podstawowego. Usługa Azure Backup można wykryć i ochronę wszystkich baz danych w grupie dostępności, zgodnie z preferencjami kopii zapasowej.  
+- Usługa Azure Backup obsługuje tylko pełne i typy tylko do kopiowania pełnej kopii zapasowej **tylko do odczytu** baz danych
+- Nie można chronić baz danych z dużą liczbą plików. Maksymalna liczba plików, który jest obsługiwany jest **~ 1000**.  
+- Można utworzyć kopię do **OK. 2000** baz danych programu SQL Server w magazynie. Można utworzyć wiele magazynów, w przypadku, gdy masz większą liczbę baz danych.
+- Kopie zapasowe można skonfigurować maksymalnie **50** Przejdź baz danych w jednym; temu ograniczeniu można zoptymalizować obciążeń kopii zapasowych.
+- Firma Microsoft obsługuje bazy danych do **2TB** rozmiar; o rozmiarze większym niż ta, wydajność może pojawiania się nowych problemów.
+- Aby poznać dotyczące liczby baz danych mogą być chronione na serwerze, należy wziąć pod uwagę czynniki, takie jak przepustowość, rozmiar maszyny Wirtualnej, częstotliwość wykonywania kopii zapasowych, rozmiar bazy danych itp. Pracujemy nad planner, które będą pomocne podczas obliczanie te liczby na posiadanych przez użytkownika. Firma Microsoft będzie publikować dane w jej wkrótce.
+- W przypadku grup dostępności kopie zapasowe są pobierane z różnych węzłach, na podstawie kilku czynników. Poniżej podsumowano zachowanie tworzenia kopii zapasowej dla grupy dostępności.
+
+### <a name="backup-behavior-in-case-of-always-on-availability-groups"></a>Kopii zapasowej zachowanie w przypadku zawsze włączonych grup dostępności
+
+W zależności od preferencji kopii zapasowych i typy kopii zapasowych (pełnej/różnicowej/log/tylko do kopiowania pełną) kopie zapasowe są pobierane z określonego węzła (podstawowy/dodatkowy).
+
+- **Preferencję tworzenia kopii zapasowych: Podstawowy**
+
+**Typ kopii zapasowej** | **Node**
+    --- | ---
+    Pełne | Podstawowy
+    Różnicowa | Podstawowy
+    Log |  Podstawowy
+    Pełne copy-Only |  Podstawowy
+
+- **Preferencję tworzenia kopii zapasowych: Tylko pomocnicza**
+
+**Typ kopii zapasowej** | **Node**
+--- | ---
+Pełne | Podstawowy
+Różnicowa | Podstawowy
+Log |  Pomocniczy
+Pełne copy-Only |  Pomocniczy
+
+- **Preferencję tworzenia kopii zapasowych: Pomocniczy**
+
+**Typ kopii zapasowej** | **Node**
+--- | ---
+Pełne | Podstawowy
+Różnicowa | Podstawowy
+Log |  Pomocniczy
+Pełne copy-Only |  Pomocniczy
+
+- **Brak preferencji kopii zapasowej**
+
+**Typ kopii zapasowej** | **Node**
+--- | ---
+Pełne | Podstawowy
+Różnicowa | Podstawowy
+Log |  Pomocniczy
+Pełne copy-Only |  Pomocniczy
+
+## <a name="fix-sql-sysadmin-permissions"></a>Naprawianie uprawnień administratora systemu SQL
+
+  Aby rozwiązać problem z uprawnieniami spowodowany błędem **UserErrorSQLNoSysadminMembership**, wykonaj następujące czynności:
+
+  1. Zaloguj się do programu SQL Server Management Studio (SSMS), używając konta z uprawnieniami administratora systemu SQL Server. Jeśli nie potrzebujesz specjalnych uprawnień, uwierzytelnianie systemu Windows powinno działać.
+  2. W programie SQL Server otwórz folder **Security/Logins**.
+
+      ![Otwieranie folderu Security/Logins w celu wyświetlenia kont](./media/backup-azure-sql-database/security-login-list.png)
+
+  3. Kliknij prawym przyciskiem myszy folder **Logins**, a następnie wybierz pozycję **Nowa nazwa logowania**. W oknie **Nazwa logowania — nowa** wybierz pozycję **Wyszukaj**.
+
+      ![Wybieranie pozycji Wyszukaj w oknie dialogowym Nazwa logowania — nowa](./media/backup-azure-sql-database/new-login-search.png)
+
+  4. Konto usługi wirtualnej systemu Windows **NT SERVICE\AzureWLBackupPluginSvc** zostało utworzone podczas rejestracji maszyny wirtualnej i fazy odnajdywania SQL. Wprowadź nazwę konta, jak pokazano w polu **Wprowadź nazwę obiektu do wybrania**. Wybierz pozycję **Sprawdź nazwy** w celu rozpoznania nazwy. Kliknij przycisk **OK**.
+
+      ![Wybieranie pozycji Sprawdź nazwy w celu rozpoznania nieznanej nazwy](./media/backup-azure-sql-database/check-name.png)
+
+  5. W obszarze **Role serwera** sprawdź, czy wybrano rolę **sysadmin**. Kliknij przycisk **OK**. Wymagane uprawnienia powinny teraz istnieć.
+
+      ![Sprawdzanie, czy wybrano rolę sysadmin](./media/backup-azure-sql-database/sysadmin-server-role.png)
+
+  6. Skojarz bazę danych z magazynem usługi Recovery Services. W witrynie Azure Portal na liście **Serwery chronione** kliknij prawym przyciskiem myszy serwer w stanie błędu i wybierz pozycję **Ponownie znajdź bazy danych**.
+
+      ![Sprawdzanie, czy serwer ma odpowiednie uprawnienia](./media/backup-azure-sql-database/check-erroneous-server.png)
+
+  7. Sprawdź postęp w obszarze **Powiadomienia**. Po znalezieniu wybranych baz danych zostanie wyświetlony komunikat o powodzeniu.
+
+      ![Komunikat o powodzeniu wdrożenia](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 02/25/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6473b8d15d09251d22386036285019c3b55e4cb1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8a54d1ad3ab809f2a2f8df6ae0e30b1b061c2be1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084119"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201090"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Przypisywanie licencji do użytkowników, członkostwa w grupach w usłudze Azure Active Directory
 
@@ -41,7 +41,7 @@ W tym przykładzie dzierżawcy zawiera grupę zabezpieczeń o nazwie **dział KA
 
 4. W obszarze **wszystkie produkty**, wybierz pozycję Office 365 Enterprise E5 i rozwiązania Enterprise Mobility + Security E3, wybierając nazw produktów. Aby rozpocząć przypisywanie, wybierz opcję **przypisać** u góry okienka.
 
-   ![Wszystkie produkty jest przypisywanie licencji](./media/licensing-groups-assign/all-products-assign.png)
+   ![Wybierz produkty, aby przypisać licencje](./media/licensing-groups-assign/all-products-assign.png)
   
 5. Na **przypisywanie licencji** okienku wybierz **użytkowników i grup** aby otworzyć listę użytkowników i grup.
 
@@ -49,7 +49,7 @@ W tym przykładzie dzierżawcy zawiera grupę zabezpieczeń o nazwie **dział KA
 
 7. Na **przypisywanie licencji** okienku kliknij **opcje przydziału**, powoduje wyświetlenie wszystkich planach usługi uwzględnione w dwóch produktów, które wcześniej wybrano. Znajdź **Yammer Enterprise** i przekształcać je **poza** wyłączenie tej usługi, od licencji produktu. Potwierdź, klikając przycisk **OK** w dolnej części **opcji licencji**.
 
-   ![Opcje przypisania](./media/licensing-groups-assign/assignment-options.png)
+   ![Wybierz plany usługi dotyczące licencji](./media/licensing-groups-assign/assignment-options.png)
   
 8. Aby zakończyć przypisywanie, w dolnej części okienka **Przypisz licencję** kliknij pozycję **Przypisz**.
 
@@ -69,7 +69,7 @@ Podczas przypisywania licencji do grupy, usługi Azure AD przetwarza istniejący
 
    - Informacje o użytkownikach, którzy są w stanie błędu, ponieważ nie można przypisać licencji do nich.
 
-   ![Opcje przypisania](./media/licensing-groups-assign/assignment-errors.png)
+   ![błędy licencjonowania i stan licencji](./media/licensing-groups-assign/assignment-errors.png)
 
 3. Zobacz więcej szczegółowych informacji dotyczących przetwarzania w ramach licencji **usługi Azure Active Directory** > **użytkowników i grup** > *Nazwa grupy*  >  **Dzienniki inspekcji**. Należy zwrócić uwagę następujących działań:
 
@@ -85,15 +85,15 @@ Podczas przypisywania licencji do grupy, usługi Azure AD przetwarza istniejący
 2. W okienku grupy wybierz **licencji**. Powiadomienia u góry okienka pokazuje, że istnieją 10 użytkowników, których nie można przypisać licencji. Otwórz go, aby wyświetlić listę wszystkich użytkowników w stanie błąd licencjonowania dla tej grupy.
 3. **Przypisań zakończonych niepowodzeniem** kolumny informuje NAS, że obie licencje produktu nie można przypisać do użytkowników. **Najważniejsze przyczyny niepowodzenia** kolumna zawiera przyczynę niepowodzenia. W tym przypadku ma **plany usług powodujące konflikt**.
 
-   ![Przypisania nie powiodło się](./media/licensing-groups-assign/failed-assignments.png)
+   ![Nie można przypisać licencji](./media/licensing-groups-assign/failed-assignments.png)
 
 4. Wybierz użytkownika, aby otworzyć **licencji** okienka. W tym okienku przedstawia wszystkie licencje, które są obecnie przypisane do użytkownika. W tym przykładzie użytkownik ma licencję Office 365 Enterprise E1, który został odziedziczony z **użytkowników kiosku** grupy. To jest w konflikcie z licencją E3, który próbowano zastosować z systemu **dział KADR** grupy. W rezultacie Brak licencji z tej grupy zostały przypisane do użytkownika.
 
-   ![Wyświetl licencje na użytkownika](./media/licensing-groups-assign/user-license-view.png)
+   ![Wyświetl wszystkie konflikty licencji użytkownika](./media/licensing-groups-assign/user-license-view.png)
 
 5. Aby rozwiązać ten konflikt, należy usunąć użytkownika z **użytkowników kiosku** grupy. Po przetworzeniu przez usługę Azure AD zmiany **dział KADR** poprawnie przypisanych licencji.
 
-   ![Poprawnie przypisanej licencji](./media/licensing-groups-assign/license-correctly-assigned.png)
+   ![W tym miejscu poprawnie przypisywania licencji](./media/licensing-groups-assign/license-correctly-assigned.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

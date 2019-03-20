@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: b2e8d629f4007729ad0538aee9bdb8e67747b026
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015128"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225012"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Tworzenie pętli, które należy powtórzyć akcji przepływu pracy lub przetwarzać tablice w usłudze Azure Logic Apps
 
@@ -217,33 +217,33 @@ Począwszy od 8:00:00 każdego dnia, to przykładowa aplikacja logiki zwiększa 
 
 1. Dla **nazwa**, wybierz opcję **Limit** zmiennej. Aby uzyskać **wartość**, wpisz "1". 
 
-    ![Zwiększ "Limit" o 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+     ![Zwiększ "Limit" o 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
 1. Wybierz poza i w obszarze pętli **nowy krok**. 
 
 1. W polu wyszukiwania wybierz pozycję **Wszystko**. 
-    Znajduj i dodawaj akcji, która wysyła wiadomość e-mail, na przykład: 
+     Znajduj i dodawaj akcji, która wysyła wiadomość e-mail, na przykład: 
 
-    ![Dodaj akcję, która wysyła wiadomość e-mail](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+     ![Dodaj akcję, która wysyła wiadomość e-mail](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. W razie potrzeby zaloguj się do swojego konta e-mail.
 
 1. Ustaw adres e-mail właściwości akcji. Dodaj **Limit** zmiennej do tematu. W ten sposób można sprawdzić, czy bieżąca wartość zmiennej spełnia określony warunek, na przykład:
 
-     ![Ustawianie właściwości wiadomości e-mail](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+      ![Ustawianie właściwości wiadomości e-mail](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-     | Właściwość | Wartość | Opis |
-     | -------- | ----- | ----------- | 
-     | **Do** | *<email-address\@domain>* | adres e-mail adresata. Do testowania, należy użyć własnego adresu e-mail. | 
-     | **Temat** | Bieżąca wartość "Limit" jest **Limit** | Określ temat wiadomości e-mail. W tym przykładzie, upewnij się, że zawrzesz **Limit** zmiennej. | 
-     | **Treść** | <*email-content*> | Określ treść wiadomości wiadomości e-mail, który chcesz wysłać. W tym przykładzie wprowadź tekst, niezależnie od chcesz. | 
-     |||| 
+      | Właściwość | Wartość | Opis |
+      | -------- | ----- | ----------- | 
+      | **Do** | *<email-address\@domain>* | adres e-mail adresata. Do testowania, należy użyć własnego adresu e-mail. | 
+      | **Temat** | Bieżąca wartość "Limit" jest **Limit** | Określ temat wiadomości e-mail. W tym przykładzie, upewnij się, że zawrzesz **Limit** zmiennej. | 
+      | **Treść** | <*email-content*> | Określ treść wiadomości wiadomości e-mail, który chcesz wysłać. W tym przykładzie wprowadź tekst, niezależnie od chcesz. | 
+      |||| 
 
 1. Zapisz aplikację logiki. Aby ręcznie przetestować aplikację logiki, na pasku narzędzi Projektanta wybierz **Uruchom**.
 
-     Po logikę zacznie działać, otrzymasz wiadomość e-mail z zawartością, który określiłeś:
+      Po logikę zacznie działać, otrzymasz wiadomość e-mail z zawartością, który określiłeś:
 
-     ![Odebrano wiadomość e-mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+      ![Odebrano wiadomość e-mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>Zapobiegaj nieskończone pętle
 

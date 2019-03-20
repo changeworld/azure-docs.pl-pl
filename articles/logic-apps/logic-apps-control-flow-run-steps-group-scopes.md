@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 9e485797dcc40c426b208971c04acffa168e528a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455908"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080458"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Uruchom akcje na podstawie stanu grupy z zakresów w usłudze Azure Logic Apps
 
@@ -89,7 +89,8 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
       | **Typ Data Type przesyłania** | Brak | Dotyczy tylko tryb przesyłania. | 
       ||||  
 
-1. [Dodaj warunek](../logic-apps/logic-apps-control-flow-conditional-statement.md) który sprawdza, czy aktualny czas podróży z ruchem przekroczy określony czas. W tym przykładzie wykonaj następujące kroki:
+1. [Dodaj warunek](../logic-apps/logic-apps-control-flow-conditional-statement.md) który sprawdza, czy aktualny czas podróży z ruchem przekroczy określony czas. 
+   W tym przykładzie wykonaj następujące kroki:
 
    1. Zmień nazwę warunku na następujący opis: **Jeśli natężenie ruchu sieciowego jest większy niż określony czas**
 
@@ -105,7 +106,8 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
 
       ![Gotowy warunek](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-1. W **w przypadku opcji true** gałęzi, Dodaj akcję "Wyślij wiadomość e-mail" dla dostawcy poczty e-mail. Skonfiguruj tę akcję, wykonując kroki pod tą ilustracją:
+1. W **w przypadku opcji true** gałęzi, Dodaj akcję "Wyślij wiadomość e-mail" dla dostawcy poczty e-mail. 
+   Skonfiguruj tę akcję, wykonując kroki pod tą ilustracją:
 
    ![Dodaj akcję "Wyślij wiadomość e-mail", "w przypadku opcji true" gałęzi](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
 
@@ -124,7 +126,7 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
    1. Na liście zawartości dynamicznej wybierz pozycję **Wyrażenie**.
 
    1. Znajdź i zaznacz **div()** funkcji. 
-   Umieść kursor w wewnątrz nawiasów funkcji.
+      Umieść kursor w wewnątrz nawiasów funkcji.
 
    1. Gdy kursor znajduje się wewnątrz nawiasów funkcji, wybierz **zawartości dynamicznej** tak, aby wyświetlić listę zawartości dynamicznej. 
    
@@ -144,11 +146,11 @@ Można zapisywanie aplikacji logiki w dowolnym momencie, dlatego często Zapisz 
 
    1. Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
 
-  1. Po wyrażeniu jest rozpoznawany jako, Dodaj następujący tekst ze spacją: ``` minutes```
+   1. Po wyrażeniu jest rozpoznawany jako, Dodaj następujący tekst ze spacją: ``` minutes```
   
-     Twoje **treści** pole wygląda teraz następująco:
+       Twoje **treści** pole wygląda teraz następująco:
 
-     ![Zakończono pole "Treść"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![Zakończono pole "Treść"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
 
 1. Zapisz aplikację logiki.
 
