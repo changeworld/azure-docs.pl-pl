@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33e968ac608c393d65f69bfd6abbc0d205fb9bd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718881"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078792"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Praca z zestawem SDK serwera zaplecza platformy .NET na potrzeby usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -240,10 +240,10 @@ Można również użyć `UseDefaultConfiguration()` rozszerzenia zamiast metody 
 ## <a name="how-to-work-with-authentication"></a>Instrukcje: Praca z uwierzytelnianiem
 Usługa Azure Mobile Apps używa uwierzytelnianie usługi App Service / autoryzacji, aby zabezpieczyć zapleczu mobilnym.  W tej sekcji dowiesz się, jak wykonywać następujące zadania związane z uwierzytelnianiem w projekcie serwera zaplecza platformy .NET:
 
-* [Jak: Dodawanie uwierzytelniania do projektu serwera](#add-auth)
-* [Jak: Użyj uwierzytelniania niestandardowego dla aplikacji](#custom-auth)
-* [Jak: Pobieranie informacji uwierzytelnionego użytkownika](#user-info)
-* [Jak: Ograniczanie dostępu do danych dla autoryzowanych użytkowników](#authorize)
+* [Instrukcje: Dodawanie uwierzytelniania do projektu serwera](#add-auth)
+* [Instrukcje: Użyj uwierzytelniania niestandardowego dla aplikacji](#custom-auth)
+* [Instrukcje: Pobieranie informacji uwierzytelnionego użytkownika](#user-info)
+* [Instrukcje: Ograniczanie dostępu do danych dla autoryzowanych użytkowników](#authorize)
 
 ### <a name="add-auth"></a>Jak: Dodawanie uwierzytelniania do projektu serwera
 Można dodać uwierzytelnianie do projektu serwera, rozszerzając **MobileAppConfiguration** obiektu i konfigurowanie oprogramowania pośredniczącego OWIN. Po zainstalowaniu [Microsoft.Azure.Mobile.Server.Quickstart] pakietu i wywołania **UseDefaultConfiguration** metodę rozszerzenia, możesz przejść do kroku 3.
@@ -263,7 +263,7 @@ Aby dowiedzieć się więcej o tym, jak do uwierzytelniania klientów do zaplecz
 > Aby włączyć uwierzytelnianie niestandardowe, należy najpierw włączyć uwierzytelnianie usługi App Service bez zaznaczania dostawcy usługi App Service w witrynie Azure portal. Spowoduje to włączenie WEBSITE_AUTH_SIGNING_KEY zmienną środowiskową, w przypadku hostowania.
 > 
 > 
-Jeśli nie chcesz używać jednego z dostawców uwierzytelniania/autoryzacji dla aplikacji usługi, można zaimplementować własny system logowania. Zainstaluj [Microsoft.Azure.Mobile.Server.Login] pakietu na potrzeby generowania tokenu uwierzytelniania.  Podaj własny kod do zweryfikowania poświadczeń użytkownika. Na przykład sprawdzania solone i skrótu hasła w bazie danych. W poniższym przykładzie `isValidAssertion()` — metoda (zdefiniowany w innym miejscu) jest odpowiedzialny za te testy.
+> Jeśli nie chcesz używać jednego z dostawców uwierzytelniania/autoryzacji dla aplikacji usługi, można zaimplementować własny system logowania. Zainstaluj [Microsoft.Azure.Mobile.Server.Login] pakietu na potrzeby generowania tokenu uwierzytelniania.  Podaj własny kod do zweryfikowania poświadczeń użytkownika. Na przykład sprawdzania solone i skrótu hasła w bazie danych. W poniższym przykładzie `isValidAssertion()` — metoda (zdefiniowany w innym miejscu) jest odpowiedzialny za te testy.
 
 Niestandardowe uwierzytelnianie jest uwidaczniany przez utworzenie klasy ApiController i udostępnianie `register` i `login` akcji. Klient powinien używać niestandardowego interfejsu użytkownika do zbierania informacji od użytkownika.  Informacje następnie jest przesyłane do interfejsu API przy użyciu standardowego wywołania HTTP POST. Gdy serwer sprawdza potwierdzenia, token wystawiony za pomocą `AppServiceLoginHandler.CreateToken()` metody.  Klasy ApiController **nie powinien** użyj `[MobileAppController]` atrybutu.
 
