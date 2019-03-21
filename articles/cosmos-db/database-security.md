@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rimman
-ms.openlocfilehash: 3d05da5f62a076dc168bef029cd0babc3946ee6b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d37f373e98835846c2d29130781706c400086c0e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243148"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077245"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpieczenia w usłudze Azure Cosmos DB — omówienie
 
@@ -57,7 +57,7 @@ Przyjrzyjmy się ponownie na powyższej liście — ile tych wymagań dotyczący
 Przyjrzyjmy się bliżej temu w każdej z nich szczegółów.
 
 |Wymaganie dotyczące zabezpieczeń|Podejście do zabezpieczeń danych usługi Azure Cosmos DB|
-|---|---|---|
+|---|---|
 |Bezpieczeństwo sieci|Za pomocą zapory adresów IP jest pierwszą warstwę ochrony w celu zabezpieczenia bazy danych. Usługa Azure Cosmos DB obsługuje zasady na podstawie kontroli dostępu opartych na protokole IP, obsługi zapory dla ruchu przychodzącego. Kontroli dostępu opartych na protokole IP są podobne do reguł zapory używane przez tradycyjnych systemów baz danych, ale one rozszerzane tak, aby konta bazy danych usługi Azure Cosmos DB jest dostępny tylko z zatwierdzonego zestawu maszyn lub usług w chmurze. <br><br>Usługa Azure Cosmos DB umożliwia włączenie określonego adresu IP (168.61.48.0), zakresu adresów IP (168.61.48.0/8) i kombinacji adresów IP i zakresów. <br><br>Wszystkie żądania pochodzące z maszyn spoza tej listy dozwolonych są blokowane przez usługę Azure Cosmos DB. Żądania z zatwierdzonych maszyn i następnie usług w chmurze musi przejść proces uwierzytelniania, należy podać kontroli dostępu do zasobów.<br><br>Dowiedz się więcej w [Obsługa zapory usługi Azure Cosmos DB](firewall-support.md).|
 |Autoryzacja|Usługa Azure Cosmos DB używa kodu uwierzytelniania wiadomości bazujących na skrótach (HMAC), do autoryzacji. <br><br>Każde żądanie jest wyznaczana wartość skrótu przy użyciu klucza tajnego konta, a kolejne skrótu zakodowany base-64 jest wysyłany z każdego wywołania do usługi Azure Cosmos DB. Aby zatwierdzić żądanie, usługi Azure Cosmos DB używa poprawny klucz tajny i właściwości do generowania wartości skrótu, a następnie porównuje wartości przy użyciu jednego w żądaniu. Jeśli dwie wartości są zgodne, operacja jest Autoryzacja powiodła się i żądanie jest przetwarzane, w przeciwnym razie występuje błąd autoryzacji, a żądanie zostanie odrzucone.<br><br>Można użyć dowolnego [klucz główny](secure-access-to-data.md#master-keys), lub [token zasobu](secure-access-to-data.md#resource-tokens) umożliwiając szczegółową kontrolę dostępu do zasobów, takich jak dokumentu.<br><br>Dowiedz się więcej w [zabezpieczanie dostępu do zasobów usługi Azure Cosmos DB](secure-access-to-data.md).|
 |Użytkownicy i uprawnienia|Dla konta, za pomocą klucza głównego, można utworzyć zasobów użytkowników i uprawnień na bazę danych. Token zasobu jest skojarzony z uprawnień w bazie danych i określa, czy użytkownik ma dostęp (odczytu i zapisu, tylko do odczytu, lub Brak dostępu) do zasobu aplikacji w bazie danych. Zasoby aplikacji obejmują kontenera, dokumentów, załączniki, procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika. Token zasobu jest następnie używany podczas uwierzytelniania do zapewnienia zawartości lub odmawiające dostępu do zasobu.<br><br>Dowiedz się więcej w [zabezpieczanie dostępu do zasobów usługi Azure Cosmos DB](secure-access-to-data.md).|

@@ -16,16 +16,16 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3918030925022ac20144f9adac6e7683bac64aa4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 05c537b061619aa458663a9dcfcc97155d8a6614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106801"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD
 
-Podczas publikowania aplikacji za pośrednictwem serwera Proxy usługi Azure Active Directory Application, możesz utworzyć zewnętrzny adres URL dla użytkowników, aby odwiedzić, gdy działają w zdalnie. Ten adres URL pobiera domyślnej domeny *yourtenant.msappproxy.net*. Na przykład, jeśli opublikowano aplikację o nazwie wydatki i dzierżawy jest o nazwie Contoso, a następnie zewnętrzny adres URL będzie https://expenses-contoso.msappproxy.net. Jeśli chcesz korzystać z własnej nazwy domeny, należy skonfigurować domeny niestandardowej na potrzeby aplikacji. 
+Podczas publikowania aplikacji za pośrednictwem serwera Proxy usługi Azure Active Directory Application, możesz utworzyć zewnętrzny adres URL dla użytkowników, aby odwiedzić, gdy działają w zdalnie. Ten adres URL pobiera domyślnej domeny *yourtenant.msappproxy.net*. Na przykład, jeśli opublikowano aplikację o nazwie wydatki i dzierżawy jest o nazwie Contoso, a następnie zewnętrzny adres URL będzie `https://expenses-contoso.msappproxy.net`. Jeśli chcesz korzystać z własnej nazwy domeny, należy skonfigurować domeny niestandardowej na potrzeby aplikacji. 
 
 Zaleca się, że Konfigurowanie domen niestandardowych dla aplikacji, jeśli to możliwe. Oto niektóre korzyści domen niestandardowych:
 

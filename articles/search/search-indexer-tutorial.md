@@ -1,32 +1,31 @@
 ---
 title: Samouczek dotyczący indeksowania baz danych Azure SQL Database w portalu Azure Portal — Azure Search
-description: W ramach tego samouczka przeszukasz bazę danych Azure SQL Database w celu wyodrębnienia danych z możliwością wyszukiwania i wypełnisz indeks usługi Azure Search.
+description: W tym samouczku połączyć z bazą danych Azure SQL, wyodrębnianie danych z możliwością wyszukiwania i załadować je do indeksu usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e23c9e04d06e509cba32c728ae6f86e1328d88cc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111076"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201402"
 ---
 # <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Samouczek: Przeszukiwanie bazy danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
-W tym samouczku pokazano, jak skonfigurować indeksator do wyodrębniania danych z możliwością wyszukiwania z przykładowej bazy danych Azure SQL Database. [Indeksatory](search-indexer-overview.md) to składnik usługi Azure Search, który przeszukuje zewnętrzne źródła danych, wypełniając [indeks wyszukiwania](search-what-is-an-index.md) przy użyciu zawartości. Indeksator bazy danych Azure SQL Database jest używany najczęściej. 
+Dowiedz się, jak skonfigurować indeksator do wyodrębniania danych z możliwością wyszukiwania z przykładowej bazy danych Azure SQL. [Indeksatory](search-indexer-overview.md) to składnik usługi Azure Search, który przeszukuje zewnętrzne źródła danych, wypełniając [indeks wyszukiwania](search-what-is-an-index.md) przy użyciu zawartości. Wszystkie indeksatory indeksator usługi Azure SQL Database jest najczęściej używana. 
 
 Zaawansowanie w zakresie obsługi konfiguracji indeksatora jest pomocne, ponieważ upraszcza proces zapisu i obsługiwania kodu oraz zmniejsza jego ilość. Zamiast przygotowywać i wypychać zestaw danych JSON zgodny ze schematem, można dołączyć indeksator do źródła danych, poczekać, aż indeksator wyodrębni dane i wstawi je do indeksu, a następnie opcjonalnie uruchomić indeksator zgodnie z cyklicznym harmonogramem w celu zastosowania zmian w odpowiednim źródle.
 
-W tym samouczku przy użyciu [bibliotek klienta .NET usługi Azure Search](https://aka.ms/search-sdk) i aplikacji konsoli .NET Core, zostaną wykonane następujące zadania:
+W tym samouczku [biblioteki klienta .NET usługi Azure Search](https://aka.ms/search-sdk) i aplikacji konsoli .NET Core do wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Pobieranie i konfigurowanie rozwiązania
 > * Dodawanie informacji o usłudze wyszukiwania do ustawień aplikacji
 > * Przygotowywanie zewnętrznego zestawu danych w bazie danych Azure SQL Database 
 > * Przeglądanie definicji indeksu i indeksatora w przykładowym kodzie
@@ -38,16 +37,16 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Usługa Azure Search. Aby uzyskać pomoc podczas konfigurowania, zobacz [Create a search service (Tworzenie usługi wyszukiwania)](search-create-service-portal.md).
+[Tworzenie usługi Azure Search](search-create-service-portal.md) lub [znaleźć istniejącej usługi](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach Twojej bieżącej subskrypcji. Umożliwia to bezpłatna usługa, w tym samouczku.
 
-* Baza danych Azure SQL Database udostępniająca zewnętrzne źródło danych używane w indeksatorze. Przykładowe rozwiązanie udostępnia plik danych SQL w celu utworzenia tabeli.
+* [Usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/) dostarczanie zewnętrzne źródło danych używane w indeksatorze. Przykładowe rozwiązanie udostępnia plik danych SQL w celu utworzenia tabeli.
 
-* Program Visual Studio 2017. Możesz korzystać z bezpłatnego programu [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). 
+* + [Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), w każdej wersji. Przykładowy kod i instrukcje zostały przetestowane na bezpłatna wersja Community.
 
 > [!Note]
 > Jeśli używasz bezpłatnej usługi Azure Search, możesz korzystać tylko z trzech indeksów, trzech indeksatorów i trzech źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Upewnij się, że miejsce w usłudze jest wystarczające do zaakceptowania nowych zasobów.
 
-## <a name="download-the-solution"></a>Pobieranie rozwiązania
+### <a name="download-the-solution"></a>Pobieranie rozwiązania
 
 Rozwiązanie indeksatora używane w tym samouczku pochodzi z kolekcji przykładów usługi Azure Search dostarczanych w postaci jednego głównego pliku do pobrania. Rozwiązanie używane w tym samouczku to *DotNetHowToIndexers*.
 
@@ -63,7 +62,7 @@ Rozwiązanie indeksatora używane w tym samouczku pochodzi z kolekcji przykład�
 
 6. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy górny węzeł nadrzędny Rozwiązanie > **Przywróć pakiety Nuget**.
 
-## <a name="set-up-connections"></a>Konfigurowanie połączeń
+### <a name="set-up-connections"></a>Konfigurowanie połączeń
 Informacje o połączeniu z wymaganymi usługami są określane w pliku **appsettings.json** w rozwiązaniu. 
 
 W Eksploratorze rozwiązań otwórz plik **appsettings.json**, aby można było wypełnić poszczególne ustawienia przy użyciu instrukcji podanych w tym samouczku.  
@@ -105,7 +104,7 @@ Klucz i punkt końcowy usługi wyszukiwania można znaleźć w portalu. Klucz za
    }
    ```
 
-## <a name="prepare-an-external-data-source"></a>Przygotowywanie zewnętrznego źródła danych
+## <a name="prepare-sample-data"></a>Przygotowywanie danych przykładowych
 
 W tym kroku zostanie utworzone zewnętrzne źródło danych, które indeksator może przeszukiwać. Plik danych w tym samouczku to *hotels.sql* dostępny w folderze rozwiązania \DotNetHowToIndexers. 
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: babanisa
-ms.openlocfilehash: a77c208c208ef7e0df170733dbe89963fc5cb846
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727183"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863172"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Tworzenie własnego rozwiązania odzyskiwania po awarii dla tematów niestandardowych
 
@@ -28,7 +28,7 @@ Aby uprościć testowanie, wdrożysz [wstępnie zbudowaną aplikację internetow
 
 1. Wybierz pozycję **Wdróż na platformie Azure** w celu wdrożenia rozwiązania w subskrypcji. W witrynie Azure Portal podaj wartości parametrów.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Wdrożenie może potrwać kilka minut. Po pomyślnym wdrożeniu należy wyświetlić aplikację sieci Web i upewnić się, że jest uruchomiona. W przeglądarce sieci Web przejdź do: `https://<your-site-name>.azurewebsites.net`
 Zapisz ten adres URL, ponieważ będzie on potrzebny później.
@@ -54,10 +54,10 @@ Najpierw utwórz dwa tematy usługi Event Grid. Będą one pełnić role temató
 
 1. W menu Tematy usługi Event Grid wybierz pozycję **+DODAJ** w celu utworzenia tematu podstawowego.
 
-    * Nadaj tematowi nazwę logiczną i dodaj do niej jako sufiks „-primary” („podstawowy”), aby ułatwić śledzenie go.
-    * Region tego tematu będzie regionem podstawowym.
+   * Nadaj tematowi nazwę logiczną i dodaj do niej jako sufiks „-primary” („podstawowy”), aby ułatwić śledzenie go.
+   * Region tego tematu będzie regionem podstawowym.
 
-    ![Okno dialogowe tworzenia tematu podstawowego usługi Event Grid](./media/custom-disaster-recovery/create-primary-topic.png)
+     ![Okno dialogowe tworzenia tematu podstawowego usługi Event Grid](./media/custom-disaster-recovery/create-primary-topic.png)
 
 1. Po utworzeniu tematu przejdź do **punktu końcowego tematu** i skopiuj go. Ten identyfikator URI będzie potrzebny później.
 
@@ -69,11 +69,11 @@ Najpierw utwórz dwa tematy usługi Event Grid. Będą one pełnić role temató
 
 1. W bloku tematu kliknij pozycję **+ Subskrypcja zdarzeń**, aby utworzyć subskrypcję łączącą witrynę internetową odbiorcy zdarzeń utworzoną w ramach czynności wstępnie wymaganych przez ten samouczek.
 
-    * Nadaj subskrypcji zdarzeń nazwę logiczną i dodaj do niej jako sufiks „-primary” („podstawowy”), aby ułatwić jej śledzenie.
-    * Jako typ punktu końcowego wybierz element webhook.
-    * Jako punkt końcowy ustaw adres URL odbiorcy zdarzeń. Powinno to wyglądać mniej więcej tak: `https://<your-event-reciever>.azurewebsites.net/api/updates`
+   * Nadaj subskrypcji zdarzeń nazwę logiczną i dodaj do niej jako sufiks „-primary” („podstawowy”), aby ułatwić jej śledzenie.
+   * Jako typ punktu końcowego wybierz element webhook.
+   * Jako punkt końcowy ustaw adres URL odbiorcy zdarzeń. Powinno to wyglądać mniej więcej tak: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-    ![Podstawowa subskrypcja zdarzeń usługi Event Grid](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Podstawowa subskrypcja zdarzeń usługi Event Grid](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Powtórz te czynności w celu utworzenia pomocniczych tematu i subskrypcji. W tym przypadku zamiast sufiksu „-primary” („podstawowy”) użyj sufiksu „-secondary” („pomocniczy”), aby ułatwić śledzenie. Na koniec koniecznie umieść te elementy w innym regionie platformy Azure. Chociaż możesz umieścić je, gdziekolwiek zechcesz, zaleca się użycie [regionów sparowanych platformy Azure](../best-practices-availability-paired-regions.md). Umieszczenie tematu i subskrypcji pomocniczej w innym regionie gwarantuje, że nowe zdarzenia będą przepływać nawet wtedy, gdy region podstawowy ulegnie awarii.
 
@@ -91,7 +91,7 @@ Są już gotowe regionalnie nadmiarowe para tematów i konfiguracja subskrypcji.
 
 ### <a name="basic-client-side-implementation"></a>Podstawowa implementacja po stronie klienta
 
-Poniższy kod przykładowy to prosty wydawca .Net, który zawsze będzie próbować opublikować najpierw temat podstawowy. Jeśli to się nie powiedzie, w ramach trybu failover przejdzie do tematu pomocniczego. W obu przypadkach sprawdza również interfejs API kondycji drugiego tematu, wykonując żądanie GET dla `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. Temat w dobrej kondycji na żądanie GET w punkcie końcowym **/api/health** powinien zawsze odpowiedzieć **200 OK**.
+Następujący przykładowy kod jest prosty wydawcy platformy .NET, który zawsze będzie próbował opublikować podstawowej tematu. Jeśli to się nie powiedzie, w ramach trybu failover przejdzie do tematu pomocniczego. W obu przypadkach sprawdza również interfejs API kondycji drugiego tematu, wykonując żądanie GET dla `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. Temat w dobrej kondycji na żądanie GET w punkcie końcowym **/api/health** powinien zawsze odpowiedzieć **200 OK**.
 
 ```csharp
 using System;
@@ -205,7 +205,7 @@ Istnieje wiele sposobów, w jakie można rozszerzyć ten przykład stosownie do 
 
 Podobnie można zaimplementować logikę powrotu po awarii — w zależności od określonych potrzeb. Jeśli publikowanie w najbliższym centrum danych jest bardzo ważne ze względu na zmniejszenie opóźnień, można okresowo badać interfejs API kondycji tematu, dla którego włączono tryb failover. Gdy jego dobra kondycja zostanie przywrócona, będzie wiadomo, że można bezpiecznie powrócić po awarii do bliższego centrum danych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [odbierać zdarzenia w punkcie końcowym http](./receive-events.md)
 - Dowiedz się, jak [kierować zdarzenia do połączeń hybrydowych](./custom-event-to-hybrid-connection.md)

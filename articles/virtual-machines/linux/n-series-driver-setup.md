@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df78852e309054bb5c27a779b37bb2310d9f7a01
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cb597edc676fbb7b63c6a07849551cc21f69b354
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201044"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015016"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Linux
 
@@ -38,7 +38,7 @@ Specyfikacje, pojemności magazynu i dysku szczegółów maszyn wirtualnych seri
 Poniżej przedstawiono kroki, aby zainstalować sterowniki CUDA w zestawie narzędzi programu NVIDIA CUDA, na maszynach wirtualnych serii N. 
 
 
-Programiści C i C++ może opcjonalnie zainstalować pełny zestaw narzędzi do kompilowania aplikacji accelerated procesora GPU. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+Programiści C i C++ może opcjonalnie zainstalować pełny zestaw narzędzi do kompilowania aplikacji accelerated procesora GPU. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 Aby zainstalować sterowniki CUDA, Utwórz połączenie SSH do każdej maszyny Wirtualnej. Aby sprawdzić, czy system ma obsługą CUDA procesora GPU, uruchom następujące polecenie:
 
@@ -54,30 +54,30 @@ Następnie polecenia uruchamiania instalacji specyficzne dla Twojej dystrybucji.
 ### <a name="ubuntu"></a>Ubuntu 
 
 1. Pobierz i zainstaluj sterowniki CUDA w witrynie sieci Web firmy NVIDIA. Na przykład Ubuntu 16.04 LTS:
-  ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+   ```bash
+   CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
-  wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
-  sudo dpkg -i /tmp/${CUDA_REPO_PKG}
+   sudo dpkg -i /tmp/${CUDA_REPO_PKG}
 
-  sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
+   sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
 
-  rm -f /tmp/${CUDA_REPO_PKG}
+   rm -f /tmp/${CUDA_REPO_PKG}
 
-  sudo apt-get update
+   sudo apt-get update
 
-  sudo apt-get install cuda-drivers
+   sudo apt-get install cuda-drivers
 
-  ```
+   ```
 
-  Instalacja może zająć kilka minut.
+   Instalacja może zająć kilka minut.
 
 2. Opcjonalnie można zainstalować pełny zestaw narzędzi CUDA, wpisz:
 
-  ```bash
-  sudo apt-get install cuda
-  ```
+   ```bash
+   sudo apt-get install cuda
+   ```
 
 3. Uruchom ponownie maszynę Wirtualną, a następnie przejść do weryfikowania instalacji usług.
 
@@ -97,54 +97,54 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS i Red Hat Enterprise Linux
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS or Red Hat Enterprise Linux
 
 1. Zaktualizuj jądra (zalecane). Jeśli postanowisz nie aktualizować jądra, upewnij się, że wersje `kernel-devel` i `dkms` są odpowiednie dla Twojej jądra.
 
-  ```
-  sudo yum install kernel kernel-tools kernel-headers kernel-devel
+   ```
+   sudo yum install kernel kernel-tools kernel-headers kernel-devel
   
-  sudo reboot
+   sudo reboot
 
 2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
 
-  ```bash
-  wget https://aka.ms/lis
+   ```bash
+   wget https://aka.ms/lis
  
-  tar xvzf lis
+   tar xvzf lis
  
-  cd LISISO
+   cd LISISO
  
-  sudo ./install.sh
+   sudo ./install.sh
  
-  sudo reboot
-  ```
+   sudo reboot
+   ```
  
 3. Ponowne łączenie z maszyną wirtualną i kontynuować instalację za pomocą następujących poleceń:
 
-  ```bash
-  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   ```bash
+   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-  sudo yum install dkms
+   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
+   CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
-  wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
-  sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
+   sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
 
-  rm -f /tmp/${CUDA_REPO_PKG}
+   rm -f /tmp/${CUDA_REPO_PKG}
 
-  sudo yum install cuda-drivers
-  ```
+   sudo yum install cuda-drivers
+   ```
 
-  Instalacja może zająć kilka minut. 
+   Instalacja może zająć kilka minut. 
 
 4. Opcjonalnie można zainstalować pełny zestaw narzędzi CUDA, wpisz:
 
-  ```bash
-  sudo yum install cuda
-  ```
+   ```bash
+   sudo yum install cuda
+   ```
 
 5. Uruchom ponownie maszynę Wirtualną, a następnie przejść do weryfikowania instalacji usług.
 
@@ -180,117 +180,117 @@ Aby zainstalować sterowniki NVIDIA GRID NV lub maszyny wirtualne z serii NVv2, 
 
 2. Instalowanie aktualizacji.
 
-  ```bash
-  sudo apt-get update
+   ```bash
+   sudo apt-get update
 
-  sudo apt-get upgrade -y
+   sudo apt-get upgrade -y
 
-  sudo apt-get dist-upgrade -y
+   sudo apt-get dist-upgrade -y
 
-  sudo apt-get install build-essential ubuntu-desktop -y
-  ```
+   sudo apt-get install build-essential ubuntu-desktop -y
+   ```
 3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NVv2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
 
-  ```
-  blacklist nouveau
+   ```
+   blacklist nouveau
 
-  blacklist lbm-nouveau
-  ```
+   blacklist lbm-nouveau
+   ```
 
 
 4. Ponowne uruchomienie maszyny Wirtualnej i ponownie. Serwer X zakończenia:
 
-  ```bash
-  sudo systemctl stop lightdm.service
-  ```
+   ```bash
+   sudo systemctl stop lightdm.service
+   ```
 
 5. Pobierz i zainstaluj sterownik siatki:
 
-  ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
+   ```bash
+   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
-  chmod +x NVIDIA-Linux-x86_64-grid.run
+   chmod +x NVIDIA-Linux-x86_64-grid.run
 
-  sudo ./NVIDIA-Linux-x86_64-grid.run
-  ``` 
+   sudo ./NVIDIA-Linux-x86_64-grid.run
+   ``` 
 
 6. Gdy pojawi się prośba czy chcesz uruchomić narzędzie nvidia xconfig, aby zaktualizować plik konfiguracji X, wybierz **tak**.
 
 7. Po zakończeniu instalacji należy skopiować /etc/nvidia/gridd.conf.template do nowych gridd.conf pliku w lokalizacji/etc/nvidia /
 
-  ```bash
-  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
-  ```
+   ```bash
+   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+   ```
 
 8. Dodaj następujące polecenie, aby `/etc/nvidia/gridd.conf`:
  
-  ```
-  IgnoreSP=FALSE
-  ```
+   ```
+   IgnoreSP=FALSE
+   ```
 9. Uruchom ponownie maszynę Wirtualną, a następnie przejść do weryfikowania instalacji usług.
 
 
-### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS i Red Hat Enterprise Linux 
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS or Red Hat Enterprise Linux 
 
 1. Zaktualizuj jądro i DKMS (zalecane). Jeśli postanowisz nie aktualizować jądra, upewnij się, że wersje `kernel-devel` i `dkms` są odpowiednie dla Twojej jądra.
  
-  ```bash  
-  sudo yum update
+   ```bash  
+   sudo yum update
  
-  sudo yum install kernel-devel
+   sudo yum install kernel-devel
  
-  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
  
-  sudo yum install dkms
-  ```
+   sudo yum install dkms
+   ```
 
 2. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NV2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
 
-  ```
-  blacklist nouveau
+   ```
+   blacklist nouveau
 
-  blacklist lbm-nouveau
-  ```
+   blacklist lbm-nouveau
+   ```
  
 3. Uruchom ponownie maszynę Wirtualną, połącz się ponownie i zainstaluj najnowszą wersję [usługi integracji systemu Linux dla funkcji Hyper-V i platformą Azure](https://www.microsoft.com/download/details.aspx?id=55106).
  
-  ```bash
-  wget https://aka.ms/lis
+   ```bash
+   wget https://aka.ms/lis
 
-  tar xvzf lis
+   tar xvzf lis
 
-  cd LISISO
+   cd LISISO
 
-  sudo ./install.sh
+   sudo ./install.sh
 
-  sudo reboot
+   sudo reboot
 
-  ```
+   ```
  
 4. Ponownie połączyć się z maszyną Wirtualną i uruchom `lspci` polecenia. Sprawdź, czy karty M60 firmy NVIDIA lub kart są widoczne jako urządzenia PCI.
  
 5. Pobierz i zainstaluj sterownik siatki:
 
-  ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
+   ```bash
+   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
-  chmod +x NVIDIA-Linux-x86_64-grid.run
+   chmod +x NVIDIA-Linux-x86_64-grid.run
 
-  sudo ./NVIDIA-Linux-x86_64-grid.run
-  ``` 
+   sudo ./NVIDIA-Linux-x86_64-grid.run
+   ``` 
 6. Gdy pojawi się prośba czy chcesz uruchomić narzędzie nvidia xconfig, aby zaktualizować plik konfiguracji X, wybierz **tak**.
 
 7. Po zakończeniu instalacji należy skopiować /etc/nvidia/gridd.conf.template do nowych gridd.conf pliku w lokalizacji/etc/nvidia /
   
-  ```bash
-  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
-  ```
+   ```bash
+   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+   ```
   
 8. Dodaj następujące polecenie, aby `/etc/nvidia/gridd.conf`:
  
-  ```
-  IgnoreSP=FALSE
-  ```
+   ```
+   IgnoreSP=FALSE
+   ```
 9. Uruchom ponownie maszynę Wirtualną, a następnie przejść do weryfikowania instalacji usług.
 
 ### <a name="verify-driver-installation"></a>Weryfikacja instalacji sterowników

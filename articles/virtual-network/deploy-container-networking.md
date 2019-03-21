@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 62d19432cba431bce4485aaa2af3e0a23ad8b5f6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970978"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104101"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Wdrażanie wtyczki CNI w usłudze Azure Virtual Network
 
@@ -95,10 +95,10 @@ Wykonaj następujące czynności, aby zainstalować wtyczkę na każdej maszynie
 1. [Pobierz i zainstaluj wtyczkę](#download-and-install-the-plug-in).
 2. Wstępnie przydziel na każdej maszynie wirtualnej pulę adresów IP sieci wirtualnej, zawierającą adresy IP, które zostaną przypisane do zasobników. Każda maszyna wirtualna ma prywatny adres IP podstawowej sieci wirtualnej na każdym interfejsie sieciowym. Pula adresów IP dla zasobników zostanie dodana jako adresy pomocnicze (*ipconfigs*) w interfejsie sieciowym maszyny wirtualnej przy użyciu jednej z następujących opcji:
 
-   - **Interfejs wiersza polecenia**: [Assign multiple IP addresses using the Azure CLI (Przypisywanie wielu adresów IP przy użyciu interfejsu wiersza polecenia platformy Azure)](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [Assign multiple IP addresses using PowerShell (Przypisywanie wielu adresów IP przy użyciu programu PowerShell)](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portal**: [Assign multiple IP addresses using the Azure portal (Przypisywanie wielu adresów IP przy użyciu witryny Azure Portal)](virtual-network-multiple-ip-addresses-portal.md)
-   - **Szablon usługi Azure Resource Manager**: [Assign multiple IP addresses using templates (Przypisywanie wielu adresów IP przy użyciu szablonów)](virtual-network-multiple-ip-addresses-template.md)
+   - **Interfejs wiersza polecenia**: [przypisać wiele adresów IP przy użyciu wiersza polecenia platformy Azure](virtual-network-multiple-ip-addresses-cli.md)
+   - **Program PowerShell**: [przypisać wiele adresów IP przy użyciu programu PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portal**: [przypisać wiele adresów IP przy użyciu witryny Azure portal](virtual-network-multiple-ip-addresses-portal.md)
+   - **Szablon usługi Azure Resource Manager**: [przypisać wiele adresów IP przy użyciu szablonów](virtual-network-multiple-ip-addresses-template.md)
 
    Upewnij się, że dodano wystarczająco dużo adresów IP dla wszystkich zasobników, które chcesz uruchomić na maszynie wirtualnej.
 
@@ -106,13 +106,13 @@ Wykonaj następujące czynności, aby zainstalować wtyczkę na każdej maszynie
 4. Jeśli chcesz, aby zasobniki miały dostęp do Internetu, dodaj następującą regułę *iptables* na maszynach wirtualnych z systemem Linux dla ruchu internetowego opartego na źródle (SNAT). W poniższym przykładzie zakres adresów IP to 10.0.0.0/8.
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
    Reguły ruchu NAT, który nie jest skierowany do konkretnych zakresów adresów IP. Zakłada się, że cały ruch wykraczający poza poprzednie zakresy to ruch internetowy. Możesz określić zakresy adresów IP sieci wirtualnej maszyny wirtualnej, równorzędnych sieci wirtualnych i sieci lokalnych.
 
-  Maszyny wirtualne z systemem Windows automatycznie wyszukują ruch NAT, którego element docelowy znajduje się poza podsiecią, do której należy maszyna wirtualna. Nie można określić niestandardowych zakresów adresów IP.
+   Maszyny wirtualne z systemem Windows automatycznie wyszukują ruch NAT, którego element docelowy znajduje się poza podsiecią, do której należy maszyna wirtualna. Nie można określić niestandardowych zakresów adresów IP.
 
 Po wykonaniu poprzednich kroków zasobnikom uruchomionym na maszynach wirtualnych agenta platformy Kubernetes są automatycznie przypisywane prywatne adresy IP z sieci wirtualnej.
 
@@ -157,12 +157,12 @@ Plik konfiguracji wtyczki CNI jest opisany w formacie JSON. Jego domyślna lokal
 
 #### <a name="settings-explanation"></a>Wyjaśnienie ustawień
 
-- **cniVersion**: wtyczki CNI usługi Azure Virtual Network obsługują wersje 0.3.0 i 0.3.1 [specyfikacji wtyczki CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
-- **name**: nazwa sieci. Tę właściwość można ustawić na dowolną unikatową wartość.
-- **type**: nazwa wtyczki sieciowej. Ustaw tu wartość *azure-vnet*.
-- **mode**: tryb działania. To pole jest opcjonalne. Jedynym obsługiwanym trybem jest tryb „bridge”. Aby uzyskać więcej informacji, zobacz sekcję poświęconą [trybom działania](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
-- **bridge**: nazwa mostka, który będzie służył do łączenia z kontenerów w siecią wirtualną. To pole jest opcjonalne. Jeśli pole zostanie pominięte, wtyczka automatycznie wybierze unikatową nazwę na podstawie indeksu interfejsu głównego.
-- **ipam type**: nazwa wtyczki IPAM. Zawsze powinna być tu ustawiona wartość *azure-vnet-ipam*.
+- **cniVersion**: Dodatki plug-in wtyczki Azure wirtualnych sieci CNI obsługi wersji 0.3.0 i 0.3.1 z [Specyfikacja CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md).
+- **name**: Nazwa sieci. Tę właściwość można ustawić na dowolną unikatową wartość.
+- **Typ**: Nazwa wtyczki sieci. Ustaw *sieci wirtualnej platformy azure*.
+- **Tryb**: Tryb działania. To pole jest opcjonalne. Jedynym obsługiwanym trybem jest tryb „bridge”. Aby uzyskać więcej informacji, zobacz [tryby operacyjne](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **Mostek**: Nazwa most, która będzie służyć do łączenia z kontenerów w sieci wirtualnej. To pole jest opcjonalne. Jeśli pole zostanie pominięte, wtyczka automatycznie wybierze unikatową nazwę na podstawie indeksu interfejsu głównego.
+- **Typ usługi IPAM**: Nazwa wtyczki usługi IPAM. Zawsze ustawiony na wartość *azure-sieć wirtualna ipam*.
 
 ## <a name="download-and-install-the-plug-in"></a>Pobieranie i instalowanie wtyczki
 

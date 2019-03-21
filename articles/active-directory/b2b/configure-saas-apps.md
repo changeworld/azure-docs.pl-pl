@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98126c6459c77ec4580665b0d157d532a1fe636c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: MT
+ms.openlocfilehash: 03652329acaeb737cb7cb4010ef48938caa17acc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672257"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096915"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurowanie aplikacji SaaS na potrzeby współpracy B2B
 
@@ -37,37 +37,37 @@ Aby umożliwić użytkownikom na logowanie przy użyciu swojego konta organizacj
 
 1. Aby dodać aplikację biznesową usługi Dropbox do usługi Azure AD, wybierz **aplikacje dla przedsiębiorstw** w okienku po lewej stronie, a następnie kliknij **Dodaj**.
 
-  ![Przycisk "Dodaj" na stronie aplikacje przedsiębiorstwa](media/configure-saas-apps/add-dropbox.png)
+   ![Przycisk "Dodaj" na stronie aplikacje przedsiębiorstwa](media/configure-saas-apps/add-dropbox.png)
 
 2. W **dodać aplikację** oknie wprowadź **dropbox** w polu wyszukiwania, a następnie wybierz pozycję **usługa Dropbox dla firm** na liście wyników.
 
-  ![Wyszukaj "dropbox" na stronie Dodawanie strony aplikacji](media/configure-saas-apps/add-app-dialog.png)
+   ![Wyszukaj "dropbox" na stronie Dodawanie strony aplikacji](media/configure-saas-apps/add-app-dialog.png)
 
 3. Na **logowanie jednokrotne** wybierz opcję **logowanie jednokrotne** w okienku po lewej stronie, a następnie wprowadź **user.mail** w **identyfikator użytkownika** pole. (Jego jest ustawione jako nazwy UPN domyślnie).
 
-  ![Konfigurowanie logowania jednokrotnego dla aplikacji](media/configure-saas-apps/configure-app-sso.png)
+   ![Konfigurowanie logowania jednokrotnego dla aplikacji](media/configure-saas-apps/configure-app-sso.png)
 
 4. Aby pobrać certyfikat do użycia podczas konfiguracji usługi Dropbox, zaznacz **skonfigurować DropBox**, a następnie wybierz pozycję **SAML pojedynczy znak na adres URL usługi** na liście.
 
-  ![Pobieranie certyfikatu dla konfiguracji usługi Dropbox](media/configure-saas-apps/download-certificate.png)
+   ![Pobieranie certyfikatu dla konfiguracji usługi Dropbox](media/configure-saas-apps/download-certificate.png)
 
 5. Zaloguj się do usługi Dropbox na adres URL logowania jednokrotnego z **logowanie jednokrotne** strony.
 
-  ![Na stronie logowania usługi Dropbox](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![Na stronie logowania usługi Dropbox](media/configure-saas-apps/sign-in-to-dropbox.png)
 
 6. W menu, wybierz **konsoli administracyjnej**.
 
-  ![Link "Konsola administratora" w menu usługi Dropbox](media/configure-saas-apps/dropbox-menu.png)
+   ![Link "Konsola administratora" w menu usługi Dropbox](media/configure-saas-apps/dropbox-menu.png)
 
 7. W **uwierzytelniania** okno dialogowe, wybierz opcję **więcej**, Przekaż certyfikat i następnie **Zaloguj się w adresie URL** wprowadź SAML pojedynczy adres URL logowania.
 
-  ![Link "Więcej" w oknie dialogowym uwierzytelniania zwinięty](media/configure-saas-apps/dropbox-auth-01.png)
+   ![Link "Więcej" w oknie dialogowym uwierzytelniania zwinięty](media/configure-saas-apps/dropbox-auth-01.png)
 
-  !["Zaloguj się w adresie URL" rozwinięty w oknie dialogowym uwierzytelniania](media/configure-saas-apps/paste-single-sign-on-URL.png)
+   !["Zaloguj się w adresie URL" rozwinięty w oknie dialogowym uwierzytelniania](media/configure-saas-apps/paste-single-sign-on-URL.png)
 
 8. Aby skonfigurować ustawienia automatycznego użytkownika w witrynie Azure portal, wybierz **aprowizacji** w okienku po lewej stronie wybierz **automatyczne** w **inicjowania obsługi trybu** , a następnie wybierz  **Autoryzuj**.
 
-  ![Konfigurowanie automatycznej aprowizacji użytkowników w witrynie Azure portal](media/configure-saas-apps/set-up-automatic-provisioning.png)
+   ![Konfigurowanie automatycznej aprowizacji użytkowników w witrynie Azure portal](media/configure-saas-apps/set-up-automatic-provisioning.png)
 
 Po użytkowników z gościa lub elementu członkowskiego zdefiniowano w aplikacji Dropbox, otrzyma zaproszenie oddzielne z usługi Dropbox. Aby korzystać z usługi Dropbox logowanie jednokrotne, zapraszane osoby muszą musi zaakceptować zaproszenie, klikając łącze w nim.
 
@@ -78,22 +78,22 @@ Możesz umożliwić użytkownikom uwierzytelnianie użytkowników-gości pole za
 
 2. Skonfiguruj logowanie jednokrotne w następującej kolejności:
 
-  ![Konfiguruj okno logowania jednokrotnego](media/configure-saas-apps/configure-box-sso.png)
+   ![Konfiguruj okno logowania jednokrotnego](media/configure-saas-apps/configure-box-sso.png)
 
- a. W **adres URL logowania** Sprawdź, czy adres URL logowania jest odpowiednio ustawiony dla pola w witrynie Azure portal. Ten adres URL jest adres URL dzierżawy usługi Box.com. Powinien on być zgodny konwencji nazewnictwa *https://.box.com*.  
- **Identyfikator** nie ma zastosowania do tej aplikacji, ale nadal jest wyświetlany jako wymaganym polem.
+   a. W **adres URL logowania** Sprawdź, czy adres URL logowania jest odpowiednio ustawiony dla pola w witrynie Azure portal. Ten adres URL jest adres URL dzierżawy usługi Box.com. Powinien on być zgodny konwencji nazewnictwa *https://.box.com*.  
+   **Identyfikator** nie ma zastosowania do tej aplikacji, ale nadal jest wyświetlany jako wymaganym polem.
 
- b. W **identyfikator użytkownika** wprowadź **user.mail** (na potrzeby logowania jednokrotnego dla konta gościa).
+   b. W **identyfikator użytkownika** wprowadź **user.mail** (na potrzeby logowania jednokrotnego dla konta gościa).
 
- c. W obszarze **certyfikat podpisywania SAML**, kliknij przycisk **Utwórz nowy certyfikat**.
+   c. W obszarze **certyfikat podpisywania SAML**, kliknij przycisk **Utwórz nowy certyfikat**.
 
- d. Aby rozpocząć konfigurowanie Twojej dzierżawy usługi Box.com, używać usługi Azure AD jako dostawcy tożsamości, pobrać pliku metadanych, a następnie zapisz go na dysk lokalny.
+   d. Aby rozpocząć konfigurowanie Twojej dzierżawy usługi Box.com, używać usługi Azure AD jako dostawcy tożsamości, pobrać pliku metadanych, a następnie zapisz go na dysk lokalny.
 
- e. Przekazuj plik metadanych do pola obsługuje zespół, który umożliwia skonfigurowanie logowania jednokrotnego dla Ciebie.
+   e. Przekazuj plik metadanych do pola obsługuje zespół, który umożliwia skonfigurowanie logowania jednokrotnego dla Ciebie.
 
 3. Ustawienia automatycznego użytkownika usługi Azure AD, w okienku po lewej stronie wybierz **aprowizacji**, a następnie wybierz pozycję **Autoryzuj**.
 
-  ![Autoryzacja usługi Azure AD connect do pola](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+   ![Autoryzacja usługi Azure AD connect do pola](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
 Np. usługi Dropbox zapraszane osoby muszą zapraszane osoby muszą pole musi zrealizowanie zaproszenia z aplikacji Box.
 

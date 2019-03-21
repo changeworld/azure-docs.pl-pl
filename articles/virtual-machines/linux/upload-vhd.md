@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: edebd2efda7d8217c9b554f2d1f54135203502cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6483fa8737ee3de6a60c4e4646fefec30ae702b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821562"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006646"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure
 
@@ -48,7 +48,7 @@ Aby wykonać następujące kroki, będą potrzebne:
 
 * Maszyny wirtualnej systemu Linux, który został przygotowany do użytku na platformie Azure. [Przygotować maszynę Wirtualną](#prepare-the-vm) dalszej części tego artykułu opisano, jak znaleźć informacje specyficzne dla dystrybucji na temat instalowania agenta systemu Linux platformy Azure (waagent), który jest niezbędny do nawiązania połączenia z maszyną wirtualną przy użyciu protokołu SSH.
 * Plik wirtualnego dysku twardego z istniejącego [dystrybucji systemu Linux z zatwierdzone na platformie Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (lub zobacz [informacje dotyczące niezatwierdzonych dystrybucji](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) do dysku wirtualnego w formacie VHD. Istnieje wiele narzędzi do tworzenia maszyny Wirtualnej i wirtualnego dysku twardego:
-  * Instalowanie i konfigurowanie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) lub [KVM](http://www.linux-kvm.org/page/RunningKVM), zwracając szczególną uwagę na w formacie VHD obrazu. Jeśli to konieczne, możesz [Konwertowanie obrazu](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) z `qemu-img convert`.
+  * Instalowanie i konfigurowanie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) lub [KVM](https://www.linux-kvm.org/page/RunningKVM), zwracając szczególną uwagę na w formacie VHD obrazu. Jeśli to konieczne, możesz [Konwertowanie obrazu](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) z `qemu-img convert`.
   * Możesz również użyć funkcji Hyper-V [w systemie Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) lub [w systemie Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]
@@ -176,7 +176,7 @@ az disk create \
 
 Można również tworzenie dostosowanych maszyn wirtualnych na platformie Azure, a następnie skopiuj dysk systemu operacyjnego i dołączyć go do nowej maszyny Wirtualnej, aby utworzyć kolejną kopię. Jest to poprawne dla testów, ale jeśli chcesz użyć istniejącej maszyny Wirtualnej platformy Azure jako modelu wielu nowych maszyn wirtualnych, tworzenie *obraz* zamiast tego. Aby uzyskać więcej informacji o tworzeniu obrazu z istniejącej maszyny Wirtualnej platformy Azure, zobacz [Tworzenie niestandardowego obrazu maszyny wirtualnej portalu Azure przy użyciu interfejsu wiersza polecenia](tutorial-custom-images.md).
 
-### <a name="create-a-snapshot"></a>Utwórz migawkę
+### <a name="create-a-snapshot"></a>Tworzenie migawki
 
 W tym przykładzie tworzy migawkę maszyny Wirtualnej o nazwie *myVM* w grupie zasobów *myResourceGroup* i tworzących migawkę o nazwie *osDiskSnapshot*.
 

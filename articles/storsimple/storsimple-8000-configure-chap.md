@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie protokołu CHAP dla urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft
+title: Konfigurowanie protokołu CHAP dla urządzenia StorSimple 8000 series | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak skonfigurować protokół uwierzytelniania typu Challenge Handshake (CHAP) na urządzeniu StorSimple.
 services: storsimple
 documentationcenter: ''
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012662"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095164"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurowanie protokołu CHAP dla urządzenia StorSimple
 
-W tym samouczku przedstawiono sposób konfigurowania protokołu CHAP dla urządzenia StorSimple. Procedury szczegółowo opisane w tym artykule dotyczą urządzeń z serii StorSimple 8000.
+W tym samouczku opisano sposób konfigurowania protokołu CHAP dla urządzenia StorSimple. Procedura szczegółowo opisane w tym artykule dotyczy urządzeń z serii StorSimple 8000.
 
-Protokół uwierzytelniania typu Challenge Handshake oznacza protokołu CHAP. Jest schemat uwierzytelniania używany przez serwery do weryfikacji tożsamości klientów zdalnych. Weryfikacja jest oparta na wspólne hasło lub klucz tajny. Protokół CHAP, może być jedną z metod (jednokierunkowe) lub wzajemne (dwukierunkowe). Jednym ze sposobów CHAP jest podczas obiekt docelowy uwierzytelniania inicjatora. W wzajemnego lub wstecznego protokołu CHAP, element docelowy umożliwiają uwierzytelnienie inicjatora a następnie inicjatora obiektu docelowego. Inicjator może być realizowane bez uwierzytelnienia docelowego. Jednak docelowym może być realizowane tylko wtedy, gdy uwierzytelnianie inicjatora również jest zaimplementowana.
+Protokół CHAP oznacza Challenge Handshake Authentication Protocol. Jest schematu uwierzytelniania używany przez serwery do weryfikacji tożsamości klientów zdalnych. Weryfikacja opiera się na udostępnionym hasła lub klucza tajnego. Protokół CHAP, może być jednym ze sposobów (jednokierunkowe) lub wzajemne (dwukierunkowe). Jednym ze sposobów protokołu CHAP jest, gdy inicjator jest uwierzytelniany element docelowy. W wzajemnego lub wstecznego protokołu CHAP inicjator jest uwierzytelniany element docelowy, a następnie inicjator uwierzytelnia obiektu docelowego. Inicjator może być realizowane bez uwierzytelniania docelowego. Jednak docelowym może być realizowane tylko wtedy, gdy inicjator uwierzytelniania jest również implementowana.
 
-Jako najlepsze rozwiązanie zaleca się używać protokołu CHAP w celu zwiększenia bezpieczeństwa iSCSI.
+Najlepszym rozwiązaniem zaleca się używanie protokołu CHAP w celu ulepszania zabezpieczeń iSCSI.
 
 > [!NOTE]
-> Należy pamiętać, że protokół IPSEC nie jest obecnie obsługiwane urządzenia StorSimple.
+> Należy pamiętać, że protokół IPSEC nie jest obecnie obsługiwane na urządzeniach StorSimple.
 
 Ustawienia protokołu CHAP na urządzeniu StorSimple można skonfigurować w następujący sposób:
 
-* Uwierzytelnianie jednokierunkowe lub jednokierunkowe
-* Dwukierunkowy lub uwierzytelniania wzajemnego lub wstecznego
+* Jedno- lub jednokierunkowe uwierzytelnianie
+* Dwukierunkowe lub uwierzytelniania wzajemnego lub do tyłu
 
-W każdym z tych przypadków portal dla urządzenia i oprogramowania inicjatora iSCSI serwera musi być skonfigurowana. Szczegółowe informacje na temat tej konfiguracji zostały opisane w poniższych samouczka.
+W każdym z tych przypadków portal dla urządzeń i oprogramowania inicjatora iSCSI server musi zostać skonfigurowany. Szczegółowe instrukcje zostały podane dla tej konfiguracji są opisane w następującego samouczka.
 
-## <a name="unidirectional-or-one-way-authentication"></a>Uwierzytelnianie jednokierunkowe lub jednokierunkowe
+## <a name="unidirectional-or-one-way-authentication"></a>Jedno- lub jednokierunkowe uwierzytelnianie
 
-W przypadku uwierzytelniania jednokierunkowe inicjator jest uwierzytelniany element docelowy. To uwierzytelnianie wymaga skonfigurowania ustawień inicjatora protokołu CHAP na urządzeniu StorSimple i oprogramowaniem iSCSI Initiator na hoście. Szczegółowe procedury dotyczące hosta systemu Windows i urządzeń StorSimple, na których zostały opisane dalej.
+W przypadku uwierzytelniania jednokierunkowe inicjator jest uwierzytelniany element docelowy. To uwierzytelnianie wymaga, skonfigurować ustawienia inicjatora protokołu CHAP na urządzeniu StorSimple i oprogramowaniem iSCSI Initiator na hoście. Szczegółowe procedury dotyczące hostów Windows i urządzeń StorSimple, na których są opisane w dalszej części.
 
-#### <a name="to-configure-your-device-for-one-way-authentication"></a>Aby móc skonfigurować urządzenie do uwierzytelniania jednokierunkowe
+#### <a name="to-configure-your-device-for-one-way-authentication"></a>Aby skonfigurować urządzenie do uwierzytelniania jednokierunkowe
 
-1. W portalu Azure przejdź do usługi Menedżer StorSimple urządzenia. Kliknij przycisk **urządzeń** i wybierz i kliknij przycisk chcesz Konfigurowanie protokołu CHAP dla urządzenia. Przejdź do **ustawienia urządzenia > zabezpieczeń**. W **ustawienia zabezpieczeń** bloku, kliknij przycisk **protokołu CHAP**.
+1. W witrynie Azure portal przejdź do usługi Menedżer urządzeń StorSimple. Kliknij przycisk **urządzeń** wybierz i kliknij przycisk chcesz Konfigurowanie protokołu CHAP dla urządzenia. Przejdź do **ustawienia urządzenia > zabezpieczeń**. W **ustawienia zabezpieczeń** bloku kliknij **protokołu CHAP**.
    
-    ![Inicjatora protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
+    ![Inicjator protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. W **protokołu CHAP** bloku, a następnie w **inicjatora protokołu CHAP** sekcji:
    
-   1. Podaj nazwę użytkownika dla użytkownika inicjatora protokołu CHAP.
+   1. Podaj nazwę użytkownika dla usługi inicjatora protokołu CHAP.
    2. Podaj hasło dla użytkownika inicjatora protokołu CHAP.
       
-    > [!IMPORTANT]
-    > Nazwa użytkownika protokołu CHAP musi zawierać mniej niż 233 znaków. Hasło protokołu CHAP musi należeć do zakresu od 12 do 16 znaków. Dłużej nazwa użytkownika lub hasło powoduje niepowodzenie uwierzytelniania na hoście systemu Windows.
+      > [!IMPORTANT]
+      > Nazwa użytkownika protokołu CHAP musi zawierać mniej niż 233 znaków. Hasło CHAP musi mieć długość od 12 do 16 znaków. Dłuższe nazwy użytkownika ani hasła powoduje niepowodzenie uwierzytelniania na hoście Windows.
    
    3. Potwierdź hasło.
 
-       ![Inicjatora protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap6.png)
+       ![Inicjator protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap6.png)
 3. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat potwierdzenia. Kliknij przycisk **OK**, aby zapisać zmiany.
 
-#### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Aby skonfigurować uwierzytelnianie jednokierunkowe na serwerze hosta systemu Windows
-1. Na serwerze hosta z systemem Windows uruchom inicjatora iSCSI.
+#### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Aby skonfigurować jednokierunkowe uwierzytelnianie na serwerze hosta Windows
+1. Uruchom inicjator iSCSI na serwerze hosta Windows.
 2. W **właściwości inicjatora iSCSI** okna, wykonaj następujące czynności:
    
    1. Kliknij przycisk **odnajdywania** kartę.
@@ -72,103 +72,103 @@ W przypadku uwierzytelniania jednokierunkowe inicjator jest uwierzytelniany elem
 3. W **odnajdowanie portalu obiektu docelowego** okno dialogowe:
    
    1. Określ adres IP urządzenia.
-   2. Kliknij przycisk **zaawansowane**.
+   2. Kliknij pozycję **Advanced** (Zaawansowane).
       
        ![Odnajdowanie portalu obiektu docelowego](./media/storsimple-configure-chap/IC740945.png)
 4. W **Zaawansowane ustawienia** okno dialogowe:
    
-   1. Wybierz **Włącz protokół CHAP logowania** pole wyboru.
-   2. W **nazwa** pola, podaj nazwę użytkownika, który określony dla inicjatora protokołu CHAP w portalu Azure.
-   3. W **klucz tajny obiektu docelowego** pola, podaj hasło określone dla inicjatora protokołu CHAP w portalu Azure.
+   1. Wybierz **Włącz protokół CHAP zalogować** pole wyboru.
+   2. W **nazwa** pola, podaj nazwę użytkownika, który został określony dla inicjatora protokołu CHAP w witrynie Azure portal.
+   3. W **docelowego wpisu tajnego** pola, podaj hasło, który został określony dla inicjatora protokołu CHAP w witrynie Azure portal.
    4. Kliknij przycisk **OK**.
       
        ![Zaawansowane ustawienia ogólne](./media/storsimple-configure-chap/IC740946.png)
-5. Na **celów** karcie **właściwości inicjatora iSCSI** okna, stan urządzenia powinny się wyświetlać jako **połączony**. Jeśli używasz urządzenia StorSimple 1200 każdy wolumin jest zainstalowany jako obiektu docelowego iSCSI. W związku z tym kroki 3 i 4 należy powtórzyć dla każdego woluminu.
+5. Na **cele** karcie **właściwości inicjatora iSCSI** oknie stanu urządzenia powinny się wyświetlać jako **połączono**. Jeśli używasz urządzenia StorSimple 1200 każdy wolumin jest instalowany jako obiektu docelowego iSCSI. W związku z tym kroki 3 i 4 należy powtórzyć dla każdego woluminu.
    
-    ![Woluminów zainstalowanych jako osobne cele](./media/storsimple-configure-chap/chap4.png)
+    ![Woluminów zainstalowanych jako oddzielne elementy docelowe](./media/storsimple-configure-chap/chap4.png)
    
    > [!IMPORTANT]
-   > Jeśli zmienisz nazwę iSCSI Nowa nazwa jest używana dla nowej sesji iSCSI. Nowe ustawienia nie są ponownie używane istniejące sesje aż do wylogowywania i logowania.
+   > Jeśli zmienisz nazwę interfejsu iSCSI, Nowa nazwa jest używana dla nowych sesji iSCSI. Nowe ustawienia nie są używane dla istniejącej sesji do momentu wylogowania i zaloguj ponownie.
 
-Aby uzyskać więcej informacji o konfigurowaniu protokołu CHAP na serwerze hosta systemu Windows, przejdź do [uwagi dodatkowe](#additional-considerations).
+Aby uzyskać więcej informacji na temat konfigurowania protokołu CHAP na serwerze hosta Windows, przejdź do [dodatkowych kwestii dotyczących](#additional-considerations).
 
-## <a name="bidirectional-or-mutual-authentication"></a>Dwukierunkowy lub wzajemnego uwierzytelniania
+## <a name="bidirectional-or-mutual-authentication"></a>Dwukierunkowe lub wzajemnego uwierzytelniania
 
-W przypadku uwierzytelniania dwukierunkowego docelowy umożliwiają uwierzytelnienie inicjatora a następnie inicjatora obiektu docelowego. Ta procedura wymaga od użytkownika skonfigurować ustawienia inicjatora protokołu CHAP, wstecznego protokołu CHAP ustawienia na urządzeniu i oprogramowaniem iSCSI Initiator na hoście. W poniższych procedurach opisano kroki, aby skonfigurować uwierzytelnianie wzajemne, na urządzeniu i na hoście systemu Windows.
+W przypadku uwierzytelniania dwukierunkowe inicjator jest uwierzytelniany element docelowy, a następnie inicjator uwierzytelnia obiektu docelowego. Ta procedura wymaga od użytkownika skonfigurować ustawienia inicjatora protokołu CHAP, ustawienia odwrotnego protokołu CHAP na urządzeniu i oprogramowaniem iSCSI Initiator na hoście. W poniższych procedurach opisano kroki konfigurowania wzajemnego uwierzytelniania na urządzeniu i na hoście Windows.
 
-#### <a name="to-configure-your-device-for-mutual-authentication"></a>Aby móc skonfigurować urządzenie do wzajemnego uwierzytelniania
+#### <a name="to-configure-your-device-for-mutual-authentication"></a>Aby skonfigurować urządzenie do wzajemnego uwierzytelniania
 
-1. W portalu Azure przejdź do usługi Menedżer StorSimple urządzenia. Kliknij przycisk **urządzeń** i wybierz i kliknij przycisk chcesz Konfigurowanie protokołu CHAP dla urządzenia. Przejdź do **ustawienia urządzenia > zabezpieczeń**. W **ustawienia zabezpieczeń** bloku, kliknij przycisk **protokołu CHAP**.
+1. W witrynie Azure portal przejdź do usługi Menedżer urządzeń StorSimple. Kliknij przycisk **urządzeń** wybierz i kliknij przycisk chcesz Konfigurowanie protokołu CHAP dla urządzenia. Przejdź do **ustawienia urządzenia > zabezpieczeń**. W **ustawienia zabezpieczeń** bloku kliknij **protokołu CHAP**.
    
     ![Obiektu docelowego protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap5.png)
-2. Przewiń w dół na tej stronie, a następnie w **docelowego protokołu CHAP** sekcji:
+2. Przewiń w dół na tej stronie, a następnie w **element docelowy protokołu CHAP** sekcji:
    
-   1. Podaj **nazwy użytkownika** dla danego urządzenia.
-   2. Podaj **wstecznego protokołu CHAP hasła** dla danego urządzenia.
+   1. Podaj **nazwy użytkownika** dla Twojego urządzenia.
+   2. Podaj **hasło odwrotnego protokołu CHAP** dla Twojego urządzenia.
    3. Potwierdź hasło.
 3. W **inicjatora protokołu CHAP** sekcji:
    
-   1. Podaj **nazwy użytkownika** dla danego urządzenia.
-   2. Podaj **hasło** dla danego urządzenia.
+   1. Podaj **nazwa_użytkownika** dla Twojego urządzenia.
+   2. Podaj **hasło** dla Twojego urządzenia.
    3. Potwierdź hasło.
 
-       ![Inicjatora protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap11.png)
+       ![Inicjator protokołu CHAP](./media/storsimple-8000-configure-chap/configure-chap11.png)
 4. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat potwierdzenia. Kliknij przycisk **OK**, aby zapisać zmiany.
 
-#### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Aby skonfigurować uwierzytelnianie dwukierunkowe na serwerze hosta systemu Windows
+#### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Aby skonfigurować uwierzytelnianie dwukierunkowe na serwerze hosta Windows
 
-1. Na serwerze hosta z systemem Windows uruchom inicjatora iSCSI.
+1. Uruchom inicjator iSCSI na serwerze hosta Windows.
 2. W **właściwości inicjatora iSCSI** okna, kliknij przycisk **konfiguracji** kartę.
 3. Kliknij przycisk **protokołu CHAP**.
-4. W **wzajemnego protokołu CHAP klucz tajny inicjatora iSCSI** okno dialogowe:
+4. W **wzajemnego tajny protokołu CHAP inicjatora iSCSI** okno dialogowe:
    
-   1. Typ **wstecznego protokołu CHAP hasła** skonfigurowanego w portalu Azure.
+   1. Typ **hasło odwrotnego protokołu CHAP** skonfigurowanego w witrynie Azure portal.
    2. Kliknij przycisk **OK**.
       
        ![wzajemne tajny protokołu CHAP inicjatora iSCSI](./media/storsimple-configure-chap/IC740949.png)
 5. Kliknij przycisk **cele** kartę.
 6. Kliknij przycisk **Connect** przycisku. 
 7. W **połączyć z docelowym** okno dialogowe, kliknij przycisk **zaawansowane**.
-8. W **właściwości zaawansowane** okno dialogowe:
+8. W **zaawansowane właściwości** okno dialogowe:
    
-   1. Wybierz **Włącz protokół CHAP logowania** pole wyboru.
-   2. W **nazwa** pola, podaj nazwę użytkownika, który określony dla inicjatora protokołu CHAP w portalu Azure.
-   3. W **klucz tajny obiektu docelowego** pola, podaj hasło określone dla inicjatora protokołu CHAP w portalu Azure.
-   4. Wybierz **wykonaj wzajemnego uwierzytelniania** pole wyboru.
+   1. Wybierz **Włącz protokół CHAP zalogować** pole wyboru.
+   2. W **nazwa** pola, podaj nazwę użytkownika, który został określony dla inicjatora protokołu CHAP w witrynie Azure portal.
+   3. W **docelowego wpisu tajnego** pola, podaj hasło, który został określony dla inicjatora protokołu CHAP w witrynie Azure portal.
+   4. Wybierz **Przeprowadź uwierzytelnianie wzajemne** pole wyboru.
       
-       ![Ustawienia zaawansowane wzajemnego uwierzytelniania.](./media/storsimple-configure-chap/IC740950.png)
+       ![Ustawienia zaawansowane uwierzytelnianie wzajemne](./media/storsimple-configure-chap/IC740950.png)
    5. Kliknij przycisk **OK** w celu ukończenia konfiguracji protokołu CHAP
 
-Aby uzyskać więcej informacji o konfigurowaniu protokołu CHAP na serwerze hosta systemu Windows, przejdź do [uwagi dodatkowe](#additional-considerations).
+Aby uzyskać więcej informacji na temat konfigurowania protokołu CHAP na serwerze hosta Windows, przejdź do [dodatkowych kwestii dotyczących](#additional-considerations).
 
 ## <a name="additional-considerations"></a>Dodatkowe zagadnienia
 
-**Szybkie połączenie** funkcja nie obsługuje połączeń, które mają włączony protokół CHAP. Po włączeniu protokołu CHAP, upewnij się, że używasz **Connect** przycisku, który jest dostępny na **cele** kartę, aby połączyć się z obiektem docelowym.
+**Szybkie połączenie** funkcja nie obsługuje połączenia, które mają włączone protokołu CHAP. Po włączeniu uwierzytelniania CHAP, upewnij się, że używasz **Connect** przycisku, który jest dostępny na **cele** kartę, aby nawiązać połączenie z obiektu docelowego.
 
-![Łączenie do obiektu docelowego](./media/storsimple-configure-chap/IC740947.png)
+![Połączenia z obiektem docelowym](./media/storsimple-configure-chap/IC740947.png)
 
-W **nawiązywanie połączenia z docelowym** okno dialogowe jest wyświetlone, wybierz **Dodaj to połączenie do listy ulubionych elementów docelowych** pole wyboru. Wybranie tej opcji gwarantuje, że przy każdym ponownym uruchomieniu komputera próby odzyskania połączenia do ulubionych obiektów docelowych iSCSI.
+W **nawiązywanie połączenia z docelowym** okno dialogowe, które są prezentowane, wybierz **dodać to połączenie do listy ulubionych elementów docelowych** pole wyboru. Zaznacz to pole wyboru gwarantuje, że za każdym razem, gdy komputer jest uruchamiany ponownie, zostanie podjęta próba Aby przywrócić połączenie do ulubionych obiektów docelowych iSCSI.
 
 ## <a name="errors-during-configuration"></a>Błędy podczas konfiguracji
 
-Jeśli konfiguracja protokołu CHAP jest niepoprawny, a następnie może powodować zobacz **niepowodzenie uwierzytelniania** komunikat o błędzie.
+Jeśli Twoja konfiguracja protokołu CHAP jest nieprawidłowe, a następnie użytkownik prawdopodobnie zobacz **niepowodzenie uwierzytelniania** komunikat o błędzie.
 
 ## <a name="verification-of-chap-configuration"></a>Weryfikacja konfiguracji protokołu CHAP
 
-Aby sprawdzić, czy CHAP jest używany przez wykonanie następujących kroków.
+Aby sprawdzić, czy protokołu CHAP jest używany, wykonując następujące kroki.
 
 #### <a name="to-verify-your-chap-configuration"></a>Aby sprawdzić konfigurację protokołu CHAP
-1. Kliknij przycisk **Ulubione obiekty docelowe**.
-2. Wybierz cel, dla której jest włączone uwierzytelnianie.
+1. Kliknij przycisk **ulubione elementy docelowe**.
+2. Wybierz element docelowy, dla której włączono uwierzytelnianie.
 3. Kliknij przycisk **szczegóły**.
    
     ![Inicjator właściwości ulubionych obiektów docelowych iSCSI](./media/storsimple-configure-chap/IC740951.png)
-4. W **ulubionych szczegóły docelowej** okna dialogowego Zanotuj wpis w **uwierzytelniania** pola. Jeśli konfiguracja zakończyło się pomyślnie, powinien powiedzieć **protokołu CHAP**.
+4. W **ulubionych szczegóły elementu docelowego** okna dialogowego Zanotuj wpisu w **uwierzytelniania** pola. Jeśli konfiguracja zakończyło się pomyślnie, powinna być widoczna nazwa **protokołu CHAP**.
    
-    ![Szczegóły ulubiony obiekt docelowy](./media/storsimple-configure-chap/IC740952.png)
+    ![Szczegóły elementu docelowego ulubionych](./media/storsimple-configure-chap/IC740952.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [zabezpieczenia usługi StorSimple](storsimple-8000-security.md).
-* Dowiedz się więcej o [przy użyciu usługi Menedżer StorSimple urządzenia do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+* Dowiedz się więcej o [przy użyciu usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 

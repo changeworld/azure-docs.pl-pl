@@ -6,22 +6,22 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: 8bfa9f2fcdc3047ed5541db058f670a4bc464164
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: b8fb6e2b23c275d198ac58fec874ad6627a7b43e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449907"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007168"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
 Ten artykuł zawiera informacje dotyczące rozwiązywania problemów w celu ochrony maszyn wirtualnych serwera SQL na platformie Azure (wersja zapoznawcza).
 
-## <a name="public-preview-limitations"></a>Ograniczenia publicznej wersji zapoznawczej
+## <a name="feature-consideration-and-limitations"></a>Funkcja uwag i ograniczeń
 
-Aby wyświetlić ograniczenia publicznej wersji zapoznawczej, zapoznaj się z artykułem [Utwórz kopię zapasową bazy danych programu SQL Server na platformie Azure](backup-azure-sql-database.md#preview-limitations).
+Aby wyświetlić uwagę funkcji, zapoznaj się z artykułem [kopii zapasowych programu SQL Server, na maszynach wirtualnych Azure](backup-sql-server-azure-vms.md#feature-consideration-and-limitations).
 
 ## <a name="sql-server-permissions"></a>Uprawnienia programu SQL Server
 
@@ -37,7 +37,7 @@ Skorzystaj z informacji w poniższych tabelach, aby rozwiązywać problemy i bł
 
 | Ważność | Opis | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|---|
-| Ostrzeżenie | Bieżące ustawienia dla tej bazy danych nie obsługują pewnego rodzaju typy kopii zapasowych, które są obecne w skojarzonych zasad. | <li>**Bazy danych Master**: Tylko operacja tworzenia kopii zapasowej pełnej bazy danych może zostać wykonana w bazie danych master; ani **różnicowej** kopii zapasowych ani transakcji **dzienniki** kopii zapasowej są możliwe. </li> <li>Wszystkie bazy danych w **model odzyskiwania prostego** nie zezwala na transakcji **dzienniki** kopii zapasowej należy podjąć.</li> | Zmodyfikuj ustawienia bazy danych w taki sposób, że wszystkie typy kopii zapasowych w ramach zasad są obsługiwane. Alternatywnie Zmień bieżące zasady w celu uwzględnienia tylko obsługiwane typy kopii zapasowych. W przeciwnym razie nieobsługiwane typy kopii zapasowych zostaną pominięte podczas zaplanowanej kopii zapasowej lub kopii zapasowej ad-hoc zadania tworzenia kopii zapasowej zakończy się niepowodzeniem.
+| Ostrzeżenie | Bieżące ustawienia dla tej bazy danych nie obsługują pewnego rodzaju typy kopii zapasowych, które są obecne w skojarzonych zasad. | <li>**Bazy danych Master**: Tylko operacja tworzenia kopii zapasowej pełnej bazy danych może zostać wykonana w bazie danych master; ani **różnicowej** kopii zapasowych ani transakcji **dzienniki** możliwa jest kopia zapasowa. </li> <li>Wszystkie bazy danych w **model odzyskiwania prostego** nie zezwala na transakcji **dzienniki** kopii zapasowej należy podjąć.</li> | Zmodyfikuj ustawienia bazy danych w taki sposób, że wszystkie typy kopii zapasowych w ramach zasad są obsługiwane. Alternatywnie Zmień bieżące zasady w celu uwzględnienia tylko obsługiwane typy kopii zapasowych. W przeciwnym razie nieobsługiwane typy kopii zapasowych zostaną pominięte podczas zaplanowanej kopii zapasowej lub kopii zapasowej ad-hoc zadania tworzenia kopii zapasowej zakończy się niepowodzeniem.
 
 
 ## <a name="backup-failures"></a>Niepowodzeniami tworzenia kopii zapasowych
@@ -136,6 +136,35 @@ Następujący błąd kody są skonfigurować błędy tworzenia kopii zapasowych.
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Automatycznej ochrony został usunięty lub jest już prawidłowy. | Po włączeniu automatycznej ochrony wystąpienia SQL **konfigurowania kopii zapasowej** zadania są uruchamiane dla wszystkich baz danych w tym wystąpieniu. Po wyłączeniu automatycznej ochrony podczas wykonywania zadań, a następnie **w toku** są anulowane zadania przy użyciu tego kodu błędu. | Włącz automatyczną ochronę ponownie chronić wszystkie pozostałe bazy danych. |
+
+## <a name="re-registration-failures"></a>Błędy ponownej rejestracji
+
+Sprawdzaj co najmniej jeden z [objawy](#symptoms) przed wyzwoleniem operacji ponownej rejestracji.
+
+### <a name="symptoms"></a>Objawy
+
+* Wszystkie operacje takie jak Kopia zapasowa, Przywróć i skonfiguruj kopię zapasową kończą się niepowodzeniem na maszynie Wirtualnej przy użyciu jednego z następujących kody błędów: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**
+* **Stan kopii zapasowej** przeznaczonego na kopie zapasowe są wyświetlane elementu **nieosiągalny**. Chociaż należy wykluczyć wszystkie powody, które mogą również wynikać w tym samym stanie:
+
+  * Brak uprawnień do wykonania kopii zapasowej powiązanych operacji na maszynie Wirtualnej  
+  * Maszyna wirtualna została zamknięta z powodu którego kopii zapasowych nie może mieć miejsce
+  * Problemy z siecią  
+
+    ![Zarejestruj ponownie maszyny Wirtualnej](./media/backup-azure-sql-database/re-register-vm.png)
+
+* W przypadku, gdy z zawsze włączona grupa dostępności kopii zapasowych kończy się niepowodzeniem po zmianie preferencję tworzenia kopii zapasowych, lub podczas pracy w trybie failover
+
+### <a name="causes"></a>Przyczyny
+Tych objawów mogą wystąpić z powodu co najmniej jeden z następujących powodów:
+
+  * Rozszerzenie został usunięty lub odinstalowany z portalu 
+  * Rozszerzenie została odinstalowana z **Panelu sterowania** maszyny wirtualnej w obszarze **Odinstaluj lub zmień Program** interfejsu użytkownika
+  * Maszyna wirtualna została przywrócona w czasie przy użyciu funkcji przywracania dysków w miejscu
+  * Maszyny Wirtualnej zostało zamknięte przez dłuższy czas z powodu której konfiguracji rozszerzenia na nim wygasł
+  * Maszyna wirtualna została usunięta, a inną maszynę Wirtualną utworzono o takiej samej nazwie i w tej samej grupie zasobów usuniętej maszyny Wirtualnej
+  * Jednym z węzłów AG kompletna konfiguracja kopii zapasowej nie nadeszła, może się to zdarzyć, zarówno w czasie rejestracji grupy dostępności w magazynie lub po dodaniu nowego węzła  <br>
+    W powyższych scenariuszach zalecane jest aby wyzwolić ponowne zarejestrowanie operację na maszynie Wirtualnej. Ta opcja jest tylko dostępne za pośrednictwem programów PowerShell i będzie wkrótce dostępna w witrynie Azure portal.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

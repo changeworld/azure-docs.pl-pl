@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 3ebc4d94e0bbf24895be0aeba9fef1cc7aacd6b9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1e17ec48c35a7e01ca87016406fb416a05544b41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087197"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Pasujące aparat reguł w usłudze Azure CDN 
 W tym artykule przedstawiono szczegółowy opis warunków dopasowania dostępne dla usługi Azure Content Delivery Network (CDN) [aparat reguł](cdn-rules-engine.md).
@@ -532,16 +532,16 @@ Informacje o kluczu:
 - Krawędź CNAME adres URL jest przepisane, aby adres URL usługi CDN przed porównania adresu URL.
 
     Na przykład oba następujące adresy URL wskazują ten sam zasób i dlatego mają tę samą ścieżkę adresu URL.
-    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     
-    - Adres URL CNAME Edge: http:\//&lt;punktu końcowego&gt;.azureedge.net/path/asset.htm
+  - Adres URL CNAME Edge: http:\//&lt;punktu końcowego&gt;.azureedge.net/path/asset.htm
     
     Aby uzyskać dodatkowe informacje:
-    - Domena niestandardowa: https:\//my.domain.com/path/asset.htm
+  - Domena niestandardowa: https:\//my.domain.com/path/asset.htm
     
-    - Ścieżka adresu URL (względem katalogu głównego): / 800001/CustomerOrigin/path /
+  - Ścieżka adresu URL (względem katalogu głównego): / 800001/CustomerOrigin/path /
     
-    - Ścieżka adresu URL (względem źródła): /path/
+  - Ścieżka adresu URL (względem źródła): /path/
 
 - Część adresu URL, który jest używany do adresu URL porównanie kończy się tuż przed nazwy pliku żądanego zasobu. Ukośnik jest ostatni znak w tego rodzaju ścieżki.
     
@@ -639,27 +639,27 @@ Informacje o kluczu:
 - Użyj **względem** opcję, aby określić, czy punkt Porównanie adres URL rozpoczyna się przed lub po nim punkt dostępu do zawartości. 
 
     Następujące wartości są dostępne dla **względem** opcji:
-     - **Główny**: Wskazuje, że punkt Porównanie adres URL rozpoczyna się bezpośrednio po hosta CDN.
+  - **Główny**: Wskazuje, że punkt Porównanie adres URL rozpoczyna się bezpośrednio po hosta CDN.
 
-       Na przykład: http:\//wpc.0001.&lt; domeny&gt;/**800001/myorigin/myfolder/index.htm**
+    Na przykład: http:\//wpc.0001.&lt; domeny&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Pochodzenie**: Wskazuje, że punkt Porównanie adres URL rozpoczyna się po punkt dostępu do zawartości (na przykład myorigin /000001 lub/800001 /). Ponieważ \*. azureedge.net CNAME jest tworzony domyślnie względem katalogu origin na nazwę hosta usługi CDN firmy Verizon, sieć CDN systemu Azure użytkownicy powinni używać **pochodzenia** wartość. 
+  - **Pochodzenie**: Wskazuje, że punkt Porównanie adres URL rozpoczyna się po punkt dostępu do zawartości (na przykład myorigin /000001 lub/800001 /). Ponieważ \*. azureedge.net CNAME jest tworzony domyślnie względem katalogu origin na nazwę hosta usługi CDN firmy Verizon, sieć CDN systemu Azure użytkownicy powinni używać **pochodzenia** wartość. 
 
-       Na przykład: https:\//&lt;punktu końcowego&gt;.azureedge.net/**myfolder/index.htm**
+    Na przykład: https:\//&lt;punktu końcowego&gt;.azureedge.net/**myfolder/index.htm**
 
-     Ten adres URL wskazuje następujące nazwy hosta usługi CDN firmy Verizon: http:\//wpc.0001.&lt; domeny&gt;/800001/myorigin/**myfolder/index.htm**
+    Ten adres URL wskazuje następujące nazwy hosta usługi CDN firmy Verizon: http:\//wpc.0001.&lt; domeny&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Krawędź CNAME adres URL jest przepisane, aby adres URL usługi CDN przed porównaniem adresu URL.
 
     Na przykład oba następujące adresy URL wskazują ten sam zasób i dlatego mają tę samą ścieżkę adresu URL:
-    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-    - Adres URL CNAME Edge: http:\//&lt;punktu końcowego&gt;.azureedge.net/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - Adres URL CNAME Edge: http:\//&lt;punktu końcowego&gt;.azureedge.net/path/asset.htm
     
     Aby uzyskać dodatkowe informacje:
     
-    - Ścieżka adresu URL (względem katalogu głównego): /800001/CustomerOrigin/path/asset.htm
+  - Ścieżka adresu URL (względem katalogu głównego): /800001/CustomerOrigin/path/asset.htm
    
-    - Ścieżka adresu URL (względem źródła): /path/asset.htm
+  - Ścieżka adresu URL (względem źródła): /path/asset.htm
 
 - Ciągi zapytania w adresie URL są ignorowane.
 - Użyj **Ignoruj przypadek** opcji do sterowania czy odbywa się porównania uwzględniającego wielkość liter.
@@ -684,13 +684,13 @@ Informacje o kluczu:
  
     Na przykład oba adresy URL wskazują ten sam zasób i dlatego mają tę samą ścieżkę adresu URL.
 
-     - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
 
-     - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
+  - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
     
     Aby uzyskać dodatkowe informacje:
     
-     - Ścieżka adresu URL: /800001/CustomerOrigin/path/asset.htm
+  - Ścieżka adresu URL: /800001/CustomerOrigin/path/asset.htm
 
 - Ciągi zapytania w adresie URL są ignorowane.
     
@@ -714,27 +714,27 @@ Informacje o kluczu:
 - **Względem** opcji: Ta opcja określa, czy punkt Porównanie adres URL rozpoczyna się przed lub po nim punkt dostępu do zawartości.
 
    Ta opcja może mieć następujące wartości:
-     - **Główny**: Wskazuje, że punkt Porównanie adres URL rozpoczyna się bezpośrednio po hosta CDN.
+  - **Główny**: Wskazuje, że punkt Porównanie adres URL rozpoczyna się bezpośrednio po hosta CDN.
 
-       Na przykład: http:\//wpc.0001.&lt; domeny&gt;/**800001/myorigin/myfolder/index.htm**
+    Na przykład: http:\//wpc.0001.&lt; domeny&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Pochodzenie**: Wskazuje, że punkt Porównanie adres URL rozpoczyna się po punkt dostępu do zawartości (na przykład myorigin /000001 lub/800001 /). Ponieważ \*. azureedge.net CNAME jest tworzony domyślnie względem katalogu origin na nazwę hosta usługi CDN firmy Verizon, sieć CDN systemu Azure użytkownicy powinni używać **pochodzenia** wartość. 
+  - **Pochodzenie**: Wskazuje, że punkt Porównanie adres URL rozpoczyna się po punkt dostępu do zawartości (na przykład myorigin /000001 lub/800001 /). Ponieważ \*. azureedge.net CNAME jest tworzony domyślnie względem katalogu origin na nazwę hosta usługi CDN firmy Verizon, sieć CDN systemu Azure użytkownicy powinni używać **pochodzenia** wartość. 
 
-       Na przykład: https:\//&lt;punktu końcowego&gt;.azureedge.net/**myfolder/index.htm**
+    Na przykład: https:\//&lt;punktu końcowego&gt;.azureedge.net/**myfolder/index.htm**
 
-     Ten adres URL wskazuje następujące nazwy hosta usługi CDN firmy Verizon: http:\//wpc.0001.&lt; domeny&gt;/800001/myorigin/**myfolder/index.htm**
+    Ten adres URL wskazuje następujące nazwy hosta usługi CDN firmy Verizon: http:\//wpc.0001.&lt; domeny&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Krawędź CNAME adres URL jest przepisane, aby adres URL usługi CDN przed porównania adresu URL.
 
     Na przykład oba następujące adresy URL wskazują ten sam zasób i dlatego mają tę samą ścieżkę adresu URL:
-     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-     - Adres URL CNAME Edge: http:\//&lt;punktu końcowego&gt;.azureedge.net/path/asset.htm
+  - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - Adres URL CNAME Edge: http:\//&lt;punktu końcowego&gt;.azureedge.net/path/asset.htm
     
     Aby uzyskać dodatkowe informacje:
     
-     - Ścieżka adresu URL (względem katalogu głównego): /800001/CustomerOrigin/path/asset.htm
+  - Ścieżka adresu URL (względem katalogu głównego): /800001/CustomerOrigin/path/asset.htm
     
-     - Ścieżka adresu URL (względem źródła): /path/asset.htm
+  - Ścieżka adresu URL (względem źródła): /path/asset.htm
     
 - Rozdzielający każdej z nich z jednego miejsca, aby określić wiele ścieżek URL.
 

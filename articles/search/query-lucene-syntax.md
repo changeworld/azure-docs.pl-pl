@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5bb5993ea47bfcaca96662fbb3d34341e137b929
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a2576a0489ad62aba0a85a45f110acb8ac220847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107189"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Składnia zapytań Lucene w usłudze Azure Search
 Można napisać zapytań względem usługi Azure Search oparte na zaawansowanych [analizator składni zapytań Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) składnia wyspecjalizowane kwerendy forms: symbole wieloznaczne, Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie wyrażeń regularnych przedstawiono kilka przykładów. Jest wiele składni analizatora zapytań Lucene [zaimplementowane opublikowane w usłudze Azure Search](search-lucene-query-architecture.md), z wyjątkiem produktów *zakresu wyszukiwania* zbudowanych w usłudze Azure Search przy użyciu `$filter` wyrażenia. 
@@ -65,13 +65,13 @@ Aby uzyskać więcej przykładów, zobacz [przykłady składni zapytań Lucene d
 ##  <a name="bkmk_fields"></a> Zapytania należące do pola  
  Można określić `fieldname:searchterm` konstrukcji, aby zdefiniować operacji fielded zapytania, gdzie pole jest pojedynczego wyrazu, a termin wyszukiwania jest również pojedynczego wyrazu lub frazy, opcjonalnie wraz z operatorami logicznymi. Oto kilka przykładów:  
 
--   gatunku: jazz nie historii  
+- gatunku: jazz nie historii  
 
--   artists:("Miles Davis" "John Coltrane")
+- artists:("Miles Davis" "John Coltrane")
 
- Pamiętaj umieścić wielu ciągów w cudzysłowach, chcąc obu ciągów, które ma zostać obliczone jako pojedyncza jednostka, w tym przypadku wyszukiwanie dwa odrębne artystów w `artists` pola.  
+  Pamiętaj umieścić wielu ciągów w cudzysłowach, chcąc obu ciągów, które ma zostać obliczone jako pojedyncza jednostka, w tym przypadku wyszukiwanie dwa odrębne artystów w `artists` pola.  
 
- Pole określone w `fieldname:searchterm` musi być `searchable` pola.  Zobacz [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) szczegółowe informacje na temat używania atrybuty indeksu w definicji pola.  
+  Pole określone w `fieldname:searchterm` musi być `searchable` pola.  Zobacz [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) szczegółowe informacje na temat używania atrybuty indeksu w definicji pola.  
 
 ##  <a name="bkmk_fuzzy"></a> Wyszukiwanie rozmyte  
  Wyszukiwanie rozmyte znajduje dopasowań w warunkach, które mają podobne konstrukcji. Na [dokumentacji Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), Wyszukiwanie rozmyte opierają się na [odległość Damerau Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance).  

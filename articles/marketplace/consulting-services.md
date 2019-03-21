@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213625"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078768"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Usługi konsultingowe dla witryny Azure Marketplace i AppSource
 Usługi w portalu Azure Marketplace i AppSource doradcze zapewnia partnerów firmy Microsoft, cel połączenia klientów z usługami do obsługi i rozszerzać ich korzystanie z platformy Azure i celów biznesowych. 
@@ -36,17 +36,17 @@ Witryny sklepów są wyrównane z odbiorców i produktach chmury firmy Microsoft
 |**Grupy odbiorców**   |**Specjaliści IT i deweloperów rozwiązań w chmurze**|**Użytkownicy biznesowi / Line-of-business osoby podejmujące decyzje**|
 |Znaczenie dla rozwiązania     |Pomoc aplikacji stworzona z myślą o lub oparta na platformie Azure|Aplikacje biznesowe, które wykorzystać / rozszerzanie D365, usługi Power BI, usługi Office 365, platformy Azure. (Dodatek dodatek lub Zakończono aplikacji)|
 |Opcje publikowania     |Skontaktuj się z pomocą me, wersja próbna, Transact lub usług doradczych dotyczących|Skontaktuj się ze mną, okres próbny lub usług doradczych dotyczących|
-|W środowisku produktu      |Portal zarządzania systemu Azure|Dynamics 365, Office 365, aplikacje klienta pakietu Office| 
+|W środowisku produktu      |Portal zarządzania platformy Azure|Dynamics 365, Office 365, aplikacje klienta pakietu Office| 
 |Inne      |W środowisku lokalnym publikowanie za pomocą usługi Azure Stack|Usługi doradcze pod kątem Dynamics i usługi Power BI|
 
 Oferty usługi, które są oparte na Microsoft Dynamics 365, Office 365 i Power BI są uprawnieni do umieszczenia w usłudze AppSource. Aby uzyskać więcej informacji, zobacz [listy wskazówki dotyczące usług doradczych Microsoft AppSource](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
->[!Note]
->Usługi w witrynie Azure Marketplace doradcze powinny wykorzystywać funkcję przeznaczone dla ofert ** techniczne odbiorców za pomocą koncentruje się na *techniczne rozwiązań i usług Azure.* ** Consulting services w usłudze AppSource należy korzystać z ofert skierowana ku swoją wiedzę w dostarczaniu jakościowo rozwiązania Dynamics 365, Power BI lub usługi PowerApps wyświetlić listę ofert usług doradczych w usłudze AppSource
-
-
->[!TIP]
->Aby opublikować w sklepie Azure Marketplace, wprowadzisz zaznacz to pole wyboru, wybierając pozycję "Azure" z menu rozwijanego "Podstawowy produkt" w portalu Cloud Partner. Aby opublikować w usłudze AppSource, użytkownik udostępni zaznacz to pole wyboru, wybierając pozycję "Dynamics 365", "Power BI" lub "Power Apps" z menu rozwijanego "Podstawowy produkt" w portalu Cloud Partner.
+> [!Note]
+> Usługi w witrynie Azure Marketplace doradcze powinny wykorzystywać funkcję przeznaczone dla ofert ** techniczne odbiorców za pomocą koncentruje się na *techniczne rozwiązań i usług Azure.* ** Consulting services w usłudze AppSource należy korzystać z ofert skierowana ku swoją wiedzę w dostarczaniu jakościowo rozwiązania Dynamics 365, Power BI lub usługi PowerApps wyświetlić listę ofert usług doradczych w usłudze AppSource
+> 
+> 
+> [!TIP]
+> Aby opublikować w sklepie Azure Marketplace, wprowadzisz zaznacz to pole wyboru, wybierając pozycję "Azure" z menu rozwijanego "Podstawowy produkt" w portalu Cloud Partner. Aby opublikować w usłudze AppSource, użytkownik udostępni zaznacz to pole wyboru, wybierając pozycję "Dynamics 365", "Power BI" lub "Power Apps" z menu rozwijanego "Podstawowy produkt" w portalu Cloud Partner.
 
 ## <a name="eligible-partners-and-supported-countries"></a>Uprawnieni partnerzy i obsługiwane kraje
 
@@ -58,7 +58,7 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 |---------|---------|
 |Platforma usług w chmurze i infrastruktury     |   Platforma w chmurze, centrum danych      |
 |Tworzenie aplikacji i niezależnych dostawców oprogramowania     |  DevOps rozwoju, integracji aplikacji w aplikacji       |
-|Zarządzanie danymi i analiza    |  Analiza danych, platforma danych       |
+|Zarządzanie danymi i analiza    |  Data Analytics, Data Platform       |
 
 
 **Kwalifikujące się kompetencji są wymienione w poniższej tabeli do usługi AppSource:**
@@ -68,7 +68,7 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 | Dynamics 365 for Customer Engagement    |   Na poziomie Silver lub Gold [zarządzania relacjami z klientami chmury](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) kompetencji.    | 
 |Dynamics 365 for Finance and Operations, wersja Enterprise  |  Na poziomie Silver lub Gold [Planowanie zasobów przedsiębiorstwa](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) kompetencji i minimalne przychód z $25 tys w operacji w chmurze w końcu 12 miesięcy.       |
 |Dynamics 365 for Finance and Operations, wersja Business  |  Pełnią [dostawca usług chmury (CSP)](https://partner.microsoft.com/cloud-solution-provider) lub [cyfrowego partnera z rekordu (jako uprawniony partner CYFROWY)](https://partner.microsoft.com/membership/digital-partner-of-record) dla co najmniej jednego odbiorcy      |
-|Usługa Power BI, elementy wizualne usługi Power BI niestandardowe | Spełnia [kryteria partnera z zakresu rozwiązań](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
+|Power BI, Power BI Custom Visuals | Spełnia [kryteria partnera z zakresu rozwiązań](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
 |PowerApps | Publikacji [pokaz partnerów](https://appsource.microsoft.com/partners) rozwiązania
 
 <b> Aby uzyskać więcej informacji, zobacz [kompetencji za pośrednictwem sieci Microsoft Partner Network](https://partner.microsoft.com/membership/competencies). </b>
@@ -80,7 +80,7 @@ Partnerzy muszą mieć **kompetencji silver lub gold** w obszarze istotne dla ic
 |---------|----------|----------|----------|
 |Australia |Francja  |     Meksyk          |Hiszpania       |
 |Belgia   |Niemcy |     Holandia     |Szwecja       |
-|Kanada    |Indie   |     Nowa Zelandia     |Wielka Brytania  |
+|Kanada    |Indie   |     Nowa Zelandia     |Zjednoczone Królestwo  |
 |Dania   |Włochy   |     Norwegia          |Stany Zjednoczone |
 |Finlandia   |Japonia   |     Polska          
 
@@ -150,7 +150,7 @@ Przykłady:
 |---------|---------|
 |Wprowadzenie do usługi Azure IoT w dziedzinie produkcji    |   Produkcyjny IoT: 2-dniowych oceny      |
 |Warsztaty w tostery inteligentne        |  Inteligentne tostery: Warsztaty 1 tydzień       |
-|  PoC migracji programu SQL Server    | Migracja SQL: 3 tygodnie weryfikacji koncepcji        |
+|  SQL Server Migration PoC    | Migracja SQL: 3 tygodnie weryfikacji koncepcji        |
 
 #### <a name="listing-summaries-and-descriptions"></a>Wyświetlanie podsumowań i opisów
 

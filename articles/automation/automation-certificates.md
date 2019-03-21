@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 372df0bc6ea540b4b2c030ec71acc6889e7c7d19
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3a1fd81f890e304c6bda75fad609cc8c98cd634d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874090"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880385"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Zasobów certyfikatów w usłudze Azure Automation
 
@@ -28,11 +28,12 @@ Dla usługi AzureRM poleceń cmdlet w poniższej tabeli służą do tworzenia i 
 
 |Polecenia cmdlet|Opis|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Pobiera informacje o certyfikat do użycia w elemencie runbook lub konfiguracji DSC. Sam certyfikat można pobierać tylko z działania Get AutomationCertificate.|
-|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Tworzy nowy certyfikat do usługi Azure Automation.|
-[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Usuwa certyfikat z usługi Azure Automation.|Tworzy nowy certyfikat do usługi Azure Automation.
+|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Pobiera informacje o certyfikat do użycia w elemencie runbook lub konfiguracji DSC. Sam certyfikat można pobierać tylko z działania Get AutomationCertificate.| 
+|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Tworzy nowy certyfikat do usługi Azure Automation.| 
+[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Usuwa certyfikat z usługi Azure Automation.|
 |[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Ustawia właściwości istniejącego certyfikatu, włącznie z przekazywaniem pliku certyfikatu i ustawianiem hasła dla pliku pfx.|
 |[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|Służy do przekazywania certyfikatu usługi dla określona usługa w chmurze.|
+
 
 ## <a name="activities"></a>Działania
 Działania w poniższej tabeli są używane do dostępu do certyfikatów w elemencie runbook i konfiguracjach DSC.
@@ -62,11 +63,11 @@ Podczas tworzenia nowego certyfikatu, możesz przekazać plik cer lub PFX do us�
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Aby utworzyć nowy certyfikat za pomocą witryny Azure portal
 
 1. Na koncie usługi Automation kliknij **zasoby** Kafelek, aby otworzyć **zasoby** bloku.
-1. Kliknij przycisk **certyfikaty** Kafelek, aby otworzyć **certyfikaty** bloku.
-1. Kliknij przycisk **Dodaj certyfikat** w górnej części bloku.
-1. Wpisz nazwę certyfikatu w **nazwa** pole.
-1. Aby przeglądać w poszukiwaniu pliku cer lub PFX, kliknij przycisk **wybierz plik** w obszarze **Przekaż plik certyfikatu**. Wybranie pliku PFX, należy określić hasło i czy jest dozwolone do wyeksportowania.
-1. Kliknij przycisk **Utwórz** Aby zapisać nowy element zawartości certyfikat.
+2. Kliknij przycisk **certyfikaty** Kafelek, aby otworzyć **certyfikaty** bloku.
+3. Kliknij przycisk **Dodaj certyfikat** w górnej części bloku.
+4. Wpisz nazwę certyfikatu w **nazwa** pole.
+5. Aby przeglądać w poszukiwaniu pliku cer lub PFX, kliknij przycisk **wybierz plik** w obszarze **Przekaż plik certyfikatu**. Wybranie pliku PFX, należy określić hasło i czy jest dozwolone do wyeksportowania.
+6. Kliknij przycisk **Utwórz** Aby zapisać nowy element zawartości certyfikat.
 
 ### <a name="to-create-a-new-certificate-with-windows-powershell"></a>Aby utworzyć nowy certyfikat za pomocą programu Windows PowerShell
 

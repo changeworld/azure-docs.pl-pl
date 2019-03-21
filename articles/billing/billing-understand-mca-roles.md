@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 9b14174541117878d7fd98b79d1cd139babb1027
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543461"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834901"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Zrozumienie umowy klienta Microsoft ról administracyjnych na platformie Azure
 
 Aby zarządzać konta rozliczeniowego dla umowy klienta firmy Microsoft, należy użyć ról opisane w poniższych sekcjach. Te role są oprócz wbudowanych ról, platforma Azure ma kontrolować dostęp do zasobów. Aby uzyskać więcej informacji, zobacz [wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md).
 
-Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [Sprawdź, czy dostęp do umowy klienta Microsoft](#check-your-access-to-a-microsoft-customer-agreement).
+Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. Sprawdź, czy dostęp do umowy klienta firmy Microsoft.
 
 ## <a name="billing-role-definitions"></a>Definicje ról rozliczeń
 
@@ -44,7 +44,7 @@ W poniższej tabeli opisano role rozliczeń służy do zarządzania konta rozlic
 |Czytelnik sekcji faktur|Widok tylko do odczytu wszystkich elementów w sekcji faktury|
 |Twórca subskrypcji platformy Azure|Tworzenie subskrypcji platformy Azure|
 
-## <a name="billing-account-roles-and-tasks"></a>Rozliczanie konta role i zadania
+## <a name="billing-account-roles-and-tasks"></a>Zadania i role konta rozliczeniowego
 
 Konto rozliczeniowe umożliwia zarządzają rozliczeniami dla Twojej organizacji. Konto rozliczeniowe umożliwia organizowanie kosztów, opłaty za monitorowanie i faktur i kontroli dostępu rozliczeń dla Twojej organizacji. Aby uzyskać więcej informacji, zobacz [zrozumieć konto rozliczeniowe](billing-mca-overview.md#understand-billing-account).
 
@@ -90,7 +90,7 @@ W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w 
 |---|---|---|---|
 |Wyświetl wszystkie subskrypcje systemu Azure w ramach konta rozliczeniowego|✔|✔|✔|
 
-## <a name="billing-profile-roles-and-tasks"></a>Karta profilu role i zadania
+## <a name="billing-profile-roles-and-tasks"></a>Zadania i role profilu rozliczeniowego
 
 Profil rozliczeniowy pozwala zarządzać metodami płatności i faktur. Miesięcznej fakturze jest generowany dla subskrypcji platformy Azure i innych produktów zakupionych przy użyciu profilu rozliczeń. Możesz użyć metody płatności fakturę. Aby uzyskać więcej informacji, zobacz [zrozumieć profile rozliczeń](billing-mca-overview.md#understand-billing-profiles).
 
@@ -140,7 +140,7 @@ W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w 
 |---|---|---|---|---|---|---|---|
 |Wyświetl wszystkie subskrypcje systemu Azure dla profil rozliczeniowy|✔|✔|✔|✔|✔|✔|✔|
 
-## <a name="invoice-section-roles-and-tasks"></a>Faktury sekcji role i zadania
+## <a name="invoice-section-roles-and-tasks"></a>Zadania i role sekcji faktur
 
 Sekcja faktury umożliwia organizowanie kosztów na fakturze. Można utworzyć sekcję do organizowania koszty według działu, środowisko programistyczne, lub odpowiednio do potrzeb Twojej organizacji. Zezwól na uprawnienia do tworzenia subskrypcji platformy Azure, w sekcji. Opłaty za użycie i zakupów dla subskrypcji, a następnie show w sekcji faktury. Aby uzyskać więcej informacji, zobacz [sekcji faktury omówienie](billing-mca-overview.md#understand-invoice-sections).
 
@@ -148,11 +148,11 @@ W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w 
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>Zarządzanie uprawnieniami sekcji faktury i właściwości
 
-|Zadania|Właściciel sekcji faktur|Współautor sekcji faktur|Czytelnik sekcji faktur|Twórca subskrypcji platformy Azure|Właściciel konta rozliczeniowego|Współautor konta rozliczeniowego|Czytelnik konta rozliczeniowego
-|---|---|---|---|---|---|---|---|
-|Wyświetl wszystkie uprawnienia w sekcji faktury|✔|✔|✔|✔|✔|✔|✔|
-|Zezwól na uprawnienia do wyświetlania i zarządzania nimi w sekcji faktury|✔|✘|✘|✘|✘|✘|✘|
-|Wyświetlanie faktur sekcji właściwości|✔|✔|✔|✔|✔|✔|✔|
+|Zadania|Właściciel sekcji faktur|Współautor sekcji faktur|Czytelnik sekcji faktur|Twórca subskrypcji platformy Azure|Właściciel konta rozliczeniowego|Współautor konta rozliczeniowego|Czytelnik konta rozliczeniowego | |
+|---|---|---|---|---|---|---|---|---|
+|Wyświetl wszystkie uprawnienia w sekcji faktury|✔|✔|✔|✔|✔|✔|✔| |
+|Zezwól na uprawnienia do wyświetlania i zarządzania nimi w sekcji faktury|✔|✘|✘|✘|✘|✘|✘| |
+|Wyświetlanie faktur sekcji właściwości|✔|✔|✔|✔|✔|✔|✔| |
 |Aktualizowanie właściwości sekcji faktury|✔|✔|✘|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>Zarządzanie produktami dla sekcji faktury
@@ -171,7 +171,7 @@ W poniższych tabelach przedstawiono jaką rolę konieczne wykonywanie zadań w 
 |Zmień sekcję faktury dla subskrypcji|✔|✔|✘|✘|✘|✘|✘|
 |Własność rozliczeń subskrypcji należy poprosić użytkowników w innych kont rozliczeń|✔|✔|✘|✘|✘|✘|✘|
 
-## <a name="subscription-billing-roles-and-tasks"></a>Role rozliczeń subskrypcji i zadania
+## <a name="subscription-billing-roles-and-tasks"></a>Zadania i role subskrypcji rozliczeniowej
 
 W poniższej tabeli przedstawiono, jakie rola konieczne wykonywanie zadań w ramach subskrypcji.
 

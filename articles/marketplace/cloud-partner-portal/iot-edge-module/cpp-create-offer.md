@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7943119ed29e03afb6b089a913d4ba2baddc166
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 69ee0c0add2895b30a60db577cc11c83a0e00bb8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431294"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854776"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Tworzenie nowej oferty modułu usługi IoT Edge przy użyciu portalu Cloud Partner
 
@@ -34,7 +34,7 @@ W tym artykule opisano, jak tworzyć i publikować wpis oferty modułu usługi I
 
 ## <a name="new-offer-form"></a>Nowy formularz oferty 
 
-Zaloguj się do [portalu Cloud Partner](http://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. W menu nowa oferta wybierz **IoT Edge modułów** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty moduł Edge ioT. 
+Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/), a następnie wybierz pozycję **+ nowa oferta** na pasku menu po lewej stronie. W menu nowa oferta wybierz **IoT Edge modułów** do wyświetlenia **nowa oferta** formularza i rozpocząć proces Definiowanie zasobów dla nowej oferty moduł Edge ioT. 
 
 ![Nowy moduł usługi IoT Edge oferują wybór interfejsu użytkownika](./media/new-iot-edge-module-offer.png)
 
@@ -42,7 +42,7 @@ Zaloguj się do [portalu Cloud Partner](http://cloudpartner.azure.com/), a nast�
 
 **Nowa oferta** strona Typ oferty modułu usługi IoT Edge zawiera zbiór kart i pola formularza, które będziesz używać do tworzenia nowej oferty. Każda z następujących artykułów wyjaśnia, jak karta służy do definiowania grup zasobów i usługi pomocnicze nowej oferty modułu usługi IoT Edge.
 
-- [Karta Ustawienia oferty](./cpp-offer-settings-tab.md)
-- [Karty jednostki SKU](./cpp-skus-tab.md)
-- [Karta w portalu Marketplace](./cpp-marketplace-tab.md)
-- [Kartę Pomoc techniczna](./cpp-support-tab.md)
+- [Karta ustawień oferty](./cpp-offer-settings-tab.md)
+- [Karta jednostek SKU](./cpp-skus-tab.md)
+- [Karta platformy handlowej](./cpp-marketplace-tab.md)
+- [Karta pomocy technicznej](./cpp-support-tab.md)

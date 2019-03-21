@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: b41fbc3e834c7740d435e30a571d2a00671bfa64
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 682aac8ec6716ac59c6bdc0710065c916a0c41b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316408"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084933"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Tworzenie bramy aplikacji przy użyciu szablonu usługi Azure Resource Manager
 
@@ -60,16 +60,16 @@ Z witryny GitHub można pobrać istniejący szablon usługi Azure Resource Manag
 1. Otwórz zapisany plik i przyjrzyj się zawartości sekcji **parametry** w wierszu
 1. Parametry szablonu usługi Azure Resource Manager zawierają symbole zastępcze wartości, które można wypełnić podczas wdrażania.
 
-  | Parametr | Opis |
-  | --- | --- |
-  | **subnetPrefix** |Blok CIDR podsieci bramy aplikacji. |
-  | **applicationGatewaySize** | Rozmiar bramy aplikacji.  Zapora aplikacji sieci Web umożliwia tylko w średnich i dużych. |
-  | **backendIpaddress1** |Adres IP pierwszego serwera sieci web. |
-  | **backendIpaddress2** |Adres IP drugiego serwera sieci web. |
-  | **wafEnabled** | Ustawienie, aby ustalić, czy jest włączona Zapora aplikacji sieci Web.|
-  | **wafMode** | Tryb zapory aplikacji sieci web.  Dostępne opcje to: **zapobiegania** lub **wykrywania**.|
-  | **wafRuleSetType** | Typ zestawu reguł zapory aplikacji sieci Web.  Obecnie OWASP jest jedyną obsługiwaną opcją. |
-  | **wafRuleSetVersion** |Wersja zestawu reguł. OWASP CRS 2.2.9 i 3.0 są obecnie obsługiwane opcje. |
+   | Parametr | Opis |
+   | --- | --- |
+   | **subnetPrefix** |Blok CIDR podsieci bramy aplikacji. |
+   | **applicationGatewaySize** | Rozmiar bramy aplikacji.  Zapora aplikacji sieci Web umożliwia tylko w średnich i dużych. |
+   | **backendIpaddress1** |Adres IP pierwszego serwera sieci web. |
+   | **backendIpaddress2** |Adres IP drugiego serwera sieci web. |
+   | **wafEnabled** | Ustawienie, aby ustalić, czy jest włączona Zapora aplikacji sieci Web.|
+   | **wafMode** | Tryb zapory aplikacji sieci web.  Dostępne opcje to: **zapobiegania** lub **wykrywania**.|
+   | **wafRuleSetType** | Typ zestawu reguł zapory aplikacji sieci Web.  Obecnie OWASP jest jedyną obsługiwaną opcją. |
+   | **wafRuleSetVersion** |Wersja zestawu reguł. OWASP CRS 2.2.9 i 3.0 są obecnie obsługiwane opcje. |
 
 1. Sprawdź zawartość w obszarze **zasobów** i zwróć uwagę, następujące właściwości:
 
@@ -82,44 +82,44 @@ Z witryny GitHub można pobrać istniejący szablon usługi Azure Resource Manag
 1. Zapisz plik w folderze lokalnym na komputerze.
 1. Otwórz zapisany plik i edytuj wartości parametrów. Do wdrożenia opisanej w scenariuszu bramy aplikacji użyj poniższych wartości.
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "addressPrefix": {
-            "value": "10.0.0.0/16"
-            },
-            "subnetPrefix": {
-            "value": "10.0.0.0/28"
-            },
-            "applicationGatewaySize": {
-            "value": "WAF_Medium"
-            },
-            "capacity": {
-            "value": 2
-            },
-            "backendIpAddress1": {
-            "value": "10.0.1.10"
-            },
-            "backendIpAddress2": {
-            "value": "10.0.1.11"
-            },
-            "wafEnabled": {
-            "value": true
-            },
-            "wafMode": {
-            "value": "Detection"
-            },
-            "wafRuleSetType": {
-            "value": "OWASP"
-            },
-            "wafRuleSetVersion": {
-            "value": "3.0"
-            }
-        }
-    }
-    ```
+     ```json
+     {
+         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+         "contentVersion": "1.0.0.0",
+         "parameters": {
+             "addressPrefix": {
+             "value": "10.0.0.0/16"
+             },
+             "subnetPrefix": {
+             "value": "10.0.0.0/28"
+             },
+             "applicationGatewaySize": {
+             "value": "WAF_Medium"
+             },
+             "capacity": {
+             "value": 2
+             },
+             "backendIpAddress1": {
+             "value": "10.0.1.10"
+             },
+             "backendIpAddress2": {
+             "value": "10.0.1.11"
+             },
+             "wafEnabled": {
+             "value": true
+             },
+             "wafMode": {
+             "value": "Detection"
+             },
+             "wafRuleSetType": {
+             "value": "OWASP"
+             },
+             "wafRuleSetVersion": {
+             "value": "3.0"
+             }
+         }
+     }
+     ```
 
 1. Zapisz plik. Szablon JSON i szablon parametrów można przetestować za pomocą narzędzi weryfikacji danych JSON w trybie online, takich jak [JSlint.com](https://www.jslint.com/).
 

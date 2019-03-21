@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0b99c3a388dcfd0dabaf874e03f276c494553
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176870"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082623"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Usługi Active Directory w wersji 2 poleceń cmdlet platformy Azure do zarządzania grupami
 
@@ -218,15 +218,15 @@ Aby wyłączyć tworzenie grupy dla użytkowników bez uprawnień administratora
 
 1. Sprawdź, czy użytkownicy niebędący administratorami mogą tworzyć grupy:
    
-  ```
-  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ```
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
   
 2. Jeśli zostanie zwrócona `UsersPermissionToCreateGroupsEnabled : True`, a następnie użytkownicy niebędący administratorami mogą tworzyć grupy. Aby wyłączyć tę funkcję:
   
-  ``` 
-  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ```
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
   
 ## <a name="manage-owners-of-groups"></a>Zarządzenie właścicielami grup
 Aby dodać właścicieli do grupy, użyj polecenia cmdlet Add-AzureADGroupOwner:
@@ -251,7 +251,7 @@ Jeśli chcesz usunąć właściciela z grupy, użyj polecenia cmdlet Remove-Azur
 
 ## <a name="reserved-aliases"></a>Aliasy zarezerwowane 
 Po utworzeniu grupy pewność, że punkty końcowe umożliwiają użytkownikom końcowym określić mailNickname lub alias ma być używany jako część adresu e-mail grupy. Grupy z następujących aliasów e-mail o wysokim poziomie uprawnień można tworzyć tylko przez administratora globalnego usługi Azure AD. 
-  
+  
 * nadużyć 
 * admin 
 * administrator 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 65fccada665743cf293b4ee4bb8f786a4c01c58a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164167"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093909"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Tworzenie testów jednostkowych dla usług stanowych
 Jednostki testowania usług stanowych usługi Service Fabric udostępnia typowych błędów, które będą nie musi być przechwycony przez konwencjonalne aplikacji lub testy jednostkowe specyficznego dla domeny. Podczas tworzenia testów jednostkowych dla usług stanowych, istnieją pewne specjalne zagadnienia, które powinny być przechowywane w uwadze.
@@ -42,13 +42,13 @@ Począwszy od wersji 3.3.0 [ServiceFabric.Mocks](https://www.nuget.org/packages/
 W ramach części Rozmieść testu zestawu replik makiety i Menedżera stanu, który zostanie utworzony. Następnie zestawu replik będą właścicielami, tworzenia wystąpienia usługi przetestowane dla każdej repliki. On również właścicielem wykonywanie zdarzenia cyklu życia takich jak `OnChangeRole` i `RunAsync`. Menedżer stanów makiety zapewni dowolne operacje wykonywane względem przez menedżera stanu są uruchamiania i przechowywane, tak jak Menedżer rzeczywistego stanu.
 
 1. Utwórz delegata fabryki usługi, który będzie wystąpienia usługi poddawana testom. Powinno to być ta sama lub podobne jak wywołania zwrotnego fabryki usługi zwykle znajdują się w `Program.cs` dla usługi Service Fabric lub aktora. Należy to wykonać następujący podpis:
-```csharp
-MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
-```
+   ```csharp
+   MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
+   ```
 2. Utwórz wystąpienie obiektu `MockReliableStateManager` klasy. Spowoduje to testowanie wszystkie interakcje z przez menedżera stanu.
 3. Utwórz wystąpienie obiektu `MockStatefulServiceReplicaSet<TStatefulService>` gdzie `TStatefulService` jest typ usługi, testowany. Wymaga to delegata utworzonego w kroku #1 i Menedżer stanu wystąpienia w #2
 4. Dodawanie replik do zestawu replik. Określ rolę (na przykład podstawowego, ActiveSecondary, IdleSecondary) i identyfikator repliki
-> Przytrzymaj repliki identyfikatorów! Te będą prawdopodobnie używane podczas czynność i asercja części testu jednostkowego.
+   > Przytrzymaj repliki identyfikatorów! Te będą prawdopodobnie używane podczas czynność i asercja części testu jednostkowego.
 
 ```csharp
 //service factory to instruct how to create the service instance

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a707ae6959b035ae0bcc05ead027dabd528e1b59
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747513"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101537"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -30,7 +30,7 @@ ms.locfileid: "55747513"
 
 W tym artykule przedstawiono sposób tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Omówienie środowiska ASE podano w temacie [Wprowadzenie do środowisk App Service Environment][Intro]. Aby dowiedzieć się, jak utworzyć zewnętrzne środowisko ASE, zobacz [Create an External ASE][MakeExternalASE] (Tworzenie zewnętrznego środowiska ASE).
 
-## <a name="overview"></a>Omówienie ##
+## <a name="overview"></a>Przegląd ##
 
 Środowisko ASE można wdrożyć za pomocą punktu końcowego dostępnego z Internetu lub adresu IP w sieci wirtualnej. Aby można było ustawić jako adres IP adres sieci wirtualnej, należy wdrożyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku wdrażania środowiska ASE z wewnętrznym modułem równoważenia obciążenia należy podać następujące informacje:
 
@@ -80,11 +80,11 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
    Możesz [mapować istniejącą nazwę DNS na swoją aplikację][customdomain]. Nazwa domeny niestandardowej używanej z aplikacjami i nazwa domeny używana przez środowisko ASE nie mogą się nakładać. W przypadku środowiska ASE z wewnętrznym modułem równoważenia obciążenia mającego nazwę domeny _contoso.com_ nie można używać następujących nazw domen niestandardowych dla aplikacji:
 
-    * www.contoso.com
+   * www\.contoso.com
 
-    * abcd.def.contoso.com
+   * abcd.def.contoso.com
 
-    * abcd.contoso.com
+   * abcd.contoso.com
 
    Jeśli znasz nazwy domen niestandardowych używane z aplikacjami, wybierz dla środowiska ASE z wewnętrznym modułem równoważenia obciążenia taką domenę, dla której nie występuje konflikt z tymi nazwami domen niestandardowych. W tym przykładzie można użyć jako domeny środowiska ASE czegoś w rodzaju *contoso-wewn.com*, ponieważ ta nazwa nie jest w konflikcie z nazwami domen niestandardowych, które kończą się na *.contoso.com*.
 
@@ -222,7 +222,7 @@ Aby dowiedzieć się więcej na temat sposobu konfigurowania używania środowis
 ## <a name="get-started"></a>Rozpoczęcie pracy ##
 
 * Aby rozpocząć pracę ze środowiskami ASE, zobacz [Wprowadzenie do środowisk App Service Environment][Intro].
- 
+ 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png

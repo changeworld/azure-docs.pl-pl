@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 76c1543f5d9979d46b303f12c495dcaa403cef1d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589060"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078078"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Konfigurowanie usługi Azure NetApp Files i tworzenie woluminu 
 
@@ -56,14 +56,14 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
      ![Utwórz nowe konto NetApp](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
 3. W oknie nowego konta NetApp Podaj następujące informacje: 
-    1. Wprowadź **myaccount1** dla nazwy konta. 
-    2. Wybierz subskrypcję.
-    3. Wybierz **Utwórz nową** do tworzenia nowej grupy zasobów. Wprowadź **myRG1** nazwy grupy zasobów. Kliknij przycisk **OK**. 
-    4. Wybierz swoją lokalizację konta.  
+   1. Wprowadź **myaccount1** dla nazwy konta. 
+   2. Wybierz subskrypcję.
+   3. Wybierz **Utwórz nową** do tworzenia nowej grupy zasobów. Wprowadź **myRG1** nazwy grupy zasobów. Kliknij przycisk **OK**. 
+   4. Wybierz swoją lokalizację konta.  
 
-    ![Nowe okno konta NetApp](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
+      ![Nowe okno konta NetApp](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
 
-    ![Okno w grupie zasobów](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
+      ![Okno w grupie zasobów](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
 
 4. Kliknij przycisk **Utwórz** do utworzenia nowego konta NetApp.
 
@@ -99,22 +99,22 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
     ![Kliknij pozycję Dodaj woluminy](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
 
 3. W tworzenie okna woluminu Podaj informacje dla danego woluminu: 
-    1. Wprowadź **myvol1** jako nazwa woluminu. 
-    2. Wprowadź **myfilepath1** jako ścieżkę pliku, która będzie służyć do tworzenia ścieżki eksportu woluminu.
-    3. Wybierz pojemność puli (**mypool1**).
-    4. Użyj wartości domyślnej dla limitu przydziału. 
-    5. W ramach sieci wirtualnej, kliknij przycisk **Utwórz nową** do tworzenia nowej sieci wirtualnej platformy Azure (Vnet).  Następnie wprowadź następujące informacje:
-        * Wprowadź **myvnet1** jako nazwa sieci wirtualnej.
-        * Określ przestrzeń adresową, na przykład 10.7.0.0/16.
-        * Wprowadź **myANFsubnet** jako nazwę podsieci.
-        * Określ zakres adresów podsieci, na przykład 10.7.0.0/24.
-        * Wybierz **Microsoft.NetApp/volumes** dla celów delegacji podsieci.
-        * Kliknij przycisk **OK** do tworzenia sieci wirtualnej.
-    6. W podsieci, wybierz nowo utworzoną sieć wirtualną (**myvnet1**) jako podsieć delegata.
+   1. Wprowadź **myvol1** jako nazwa woluminu. 
+   2. Wprowadź **myfilepath1** jako ścieżkę pliku, która będzie służyć do tworzenia ścieżki eksportu woluminu.
+   3. Wybierz pojemność puli (**mypool1**).
+   4. Użyj wartości domyślnej dla limitu przydziału. 
+   5. W ramach sieci wirtualnej, kliknij przycisk **Utwórz nową** do tworzenia nowej sieci wirtualnej platformy Azure (Vnet).  Następnie wprowadź następujące informacje:
+       * Wprowadź **myvnet1** jako nazwa sieci wirtualnej.
+       * Określ przestrzeń adresową, na przykład 10.7.0.0/16.
+       * Wprowadź **myANFsubnet** jako nazwę podsieci.
+       * Określ zakres adresów podsieci, na przykład 10.7.0.0/24.
+       * Wybierz **Microsoft.NetApp/volumes** dla celów delegacji podsieci.
+       * Kliknij przycisk **OK** do tworzenia sieci wirtualnej.
+   6. W podsieci, wybierz nowo utworzoną sieć wirtualną (**myvnet1**) jako podsieć delegata.
 
-    ![Utwórz okno woluminu](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
+      ![Utwórz okno woluminu](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
 
-    ![Tworzenie sieci wirtualnej okna](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
+      ![Tworzenie sieci wirtualnej okna](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
 4. Kliknij pozycję **Przegląd + utwórz**.
 
@@ -127,5 +127,5 @@ Musisz uczestniczyć w programie podglądu publicznego i znajdować się na liś
 
 ## <a name="next-steps"></a>Kolejne kroki  
 
-* [Zrozumienie hierarchii magazynu usługi Azure Files NetApp](azure-netapp-files-understand-storage-hierarchy.md)
+* [Omówienie hierarchii magazynu usługi Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 * [Zarządzanie woluminami za pomocą usługi Azure Files NetApp](azure-netapp-files-manage-volumes.md) 

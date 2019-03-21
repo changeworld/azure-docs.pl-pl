@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 2b661968fd64f4d2a61bc59f9b99b1eea6b01f86
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997268"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004986"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Tworzenie niestandardowej sondy dla bramy aplikacji platformy Azure (model klasyczny) przy użyciu programu PowerShell
 
@@ -32,7 +32,7 @@ ms.locfileid: "52997268"
 W tym artykule należy dodać niestandardowej sondy do istniejącej bramy aplikacji przy użyciu programu PowerShell. Niestandardowe sondy są przydatne w przypadku aplikacji używających konkretnej strony kontroli kondycji lub dla aplikacji, które nie są oferowane pomyślnej odpowiedzi na domyślnej aplikacji sieci web.
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak [wykonać te kroki przy użyciu modelu usługi Resource Manager](application-gateway-create-probe-ps.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak [wykonać te kroki przy użyciu modelu usługi Resource Manager](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -151,7 +151,7 @@ Parametry konfiguracji są następujące:
 |Parametr|Opis|
 |---|---|
 |**Nazwa** |Nazwa odwołania dla niestandardowej sondy. |
-* **Protokół** | Protokół używany (możliwe wartości to HTTP lub HTTPS).|
+| **Protokół** | Protokół używany (możliwe wartości to HTTP lub HTTPS).|
 | **Host** i **ścieżki** | Pełna ścieżka adresu URL, które jest wywoływane przez usługę application gateway w celu określenia kondycji wystąpienia. Na przykład, jeśli masz witrynę z http://contoso.com/, a następnie można skonfigurować niestandardową sondę dla "http://contoso.com/path/custompath.htm" dla sonda sprawdza mieć pomyślnej odpowiedzi HTTP.|
 | **Interwał** | Konfiguruje sprawdzanie interwału sondowania w ciągu kilku sekund.|
 | **limit czasu** | Określa limit czasu sondy sprawdzanie odpowiedzi HTTP.|
@@ -161,18 +161,18 @@ Odwołuje się nazwa sondy \<BackendHttpSettings\> konfigurację, aby przypisać
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Dodawanie niestandardowej sondy do istniejącej bramy aplikacji
 
-Zmiana bieżącej konfiguracji bramy aplikacji wymaga wykonania trzech kroków: Uzyskaj bieżący plik konfiguracyjny XML, zmodyfikować tak, aby mieć niestandardową sondę i konfigurowania bramy aplikacji przy użyciu nowych ustawień XML.
+Zmiana bieżącej konfiguracji bramy aplikacji wymaga wykonania trzech kroków: Pobierz bieżący plik konfiguracyjny XML, zmodyfikować tak, aby mieć niestandardową sondę i konfigurowania bramy aplikacji przy użyciu nowych ustawień XML.
 
 1. Pobierz plik XML przy użyciu `Get-AzureApplicationGatewayConfig`. To polecenie cmdlet eksportuje konfigurację XML do zmodyfikowania, aby dodać ustawienie sondy.
 
-  ```powershell
-  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
-  ```
+   ```powershell
+   Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
+   ```
 
 1. Otwórz plik XML w edytorze tekstów. Dodaj `<probe>` sekcji po `<frontendport>`.
 
-  ```xml
-<Probes>
+   ```xml
+   <Probes>
     <Probe>
         <Name>Probe01</Name>
         <Protocol>Http</Protocol>
@@ -182,12 +182,12 @@ Zmiana bieżącej konfiguracji bramy aplikacji wymaga wykonania trzech kroków: 
         <Timeout>15</Timeout>
         <UnhealthyThreshold>5</UnhealthyThreshold>
     </Probe>
-</Probes>
-  ```
+   </Probes>
+   ```
 
-  W sekcji backendHttpSettings XML należy dodać nazwę sondowania, jak pokazano w poniższym przykładzie:
+   W sekcji backendHttpSettings XML należy dodać nazwę sondowania, jak pokazano w poniższym przykładzie:
 
-  ```xml
+   ```xml
     <BackendHttpSettings>
         <Name>setting1</Name>
         <Port>80</Port>
@@ -196,9 +196,9 @@ Zmiana bieżącej konfiguracji bramy aplikacji wymaga wykonania trzech kroków: 
         <RequestTimeout>120</RequestTimeout>
         <Probe>Probe01</Probe>
     </BackendHttpSettings>
-  ```
+   ```
 
-  Zapisz plik XML.
+   Zapisz plik XML.
 
 1. Aktualizowanie konfiguracji bramy aplikacji za pomocą nowego pliku XML przy użyciu `Set-AzureApplicationGatewayConfig`. To polecenie cmdlet aktualizuje Twojej bramy application gateway przy użyciu nowej konfiguracji.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913312"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079030"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Dzienniki przepływu visualizing sieciową grupę zabezpieczeń z usługą Power BI
 
@@ -56,10 +56,10 @@ Musi również mieć zainstalowanego na maszynie oraz wystarczającą ilością 
 
 1. Pobierz i otwórz następujący szablon usługi Power BI w aplikacja Power BI Desktop [szablonu dzienników przepływów sieciowych obserwatora usługi Power BI](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. Podaj wymagane parametry zapytania
-    1. **StorageAccountName** — Określa nazwę konta magazynu zawierające dzienniki przepływu sieciowych grup zabezpieczeń, które chcesz załadować i wizualizację.
-    1. **NumberOfLogFiles** — określa liczbę plików dziennika, które chcesz pobrać i wizualizacji w usłudze Power BI. Na przykład, jeśli określono 50 50 najnowszych plików dziennika. Jeśli będziemy mieć 2 sieciowych grup zabezpieczeń włączone i skonfigurowane do wysyłania dzienników przepływu sieciowych grup zabezpieczeń do tego konta, mogą być wyświetlane w ciągu ostatnich 25 godzin dzienników.
+   1. **StorageAccountName** — Określa nazwę konta magazynu zawierające dzienniki przepływu sieciowych grup zabezpieczeń, które chcesz załadować i wizualizację.
+   1. **NumberOfLogFiles** — określa liczbę plików dziennika, które chcesz pobrać i wizualizacji w usłudze Power BI. Na przykład, jeśli określono 50 50 najnowszych plików dziennika. Jeśli będziemy mieć 2 sieciowych grup zabezpieczeń włączone i skonfigurowane do wysyłania dzienników przepływu sieciowych grup zabezpieczeń do tego konta, mogą być wyświetlane w ciągu ostatnich 25 godzin dzienników.
 
-    ![główne usługi Power BI][2]
+      ![główne usługi Power BI][2]
 
 1. Wprowadź klucz dostępu konta magazynu. Klucze dostępu nie jest ważna można znaleźć, przechodząc do konta magazynu w witrynie Azure portal i wybierając opcję **klucze dostępu** z poziomu menu ustawień. Kliknij przycisk **Connect** następnie zastosować zmiany.
 
@@ -67,7 +67,7 @@ Musi również mieć zainstalowanego na maszynie oraz wystarczającą ilością 
 
     ![klucz dostępu 2][4]
 
-4.  Dzienniki są, pobrać i przeanalizować i można teraz korzystać ze wstępnie utworzonych wizualizacji.
+4. Dzienniki są, pobrać i przeanalizować i można teraz korzystać ze wstępnie utworzonych wizualizacji.
 
 ## <a name="understanding-the-visuals"></a>Opis elementów wizualnych
 
