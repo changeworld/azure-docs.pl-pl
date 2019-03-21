@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów w wersji zapoznawczej ochrony haseł usługi Azure AD
-description: Omówienie usługi Azure AD hasło ochrony (wersja zapoznawcza) wspólnej rozwiązywania problemów
+title: Rozwiązywanie problemów w ochrona za pomocą hasła usługi Azure AD
+description: Omówienie usługi Azure AD hasło ochrony typowych rozwiązywania problemów
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 760ad30daabee61300768b7c67824f39437ac87f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 7ac97d7bda56a871e0b8f6de6d5d7262f3f44667
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006957"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285704"
 ---
-# <a name="preview-azure-ad-password-protection-troubleshooting"></a>Wersja zapoznawcza: Rozwiązywanie problemów z usługi Azure AD ochrony hasłem
-
-|     |
-| --- |
-| Ochrony hasłem w usłudze Azure AD jest funkcją publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-troubleshooting"></a>Rozwiązywanie problemów z usługi Azure AD ochrony hasłem
 
 Po wdrożeniu ochrony haseł usługi Azure AD rozwiązywania problemów może być wymagane. W tym artykule przechodzi do szczegółów, aby lepiej zrozumieć niektóre typowe kroki rozwiązywania problemów.
 
@@ -101,7 +96,7 @@ Po obniżania poziomu zakończyła się pomyślnie, a kontroler domeny zostanie 
 
 ## <a name="removal"></a>Usunięcie
 
-Jeśli zostanie podjęta decyzja, aby odinstalować oprogramowanie w publicznej wersji zapoznawczej i czyszczenia stan wszystkich powiązanych z domeny i lasu, to zadanie można osiągnąć wykonując następujące czynności:
+Jeśli zostanie podjęta decyzja, aby odinstalować oprogramowanie do ochrony haseł usługi Azure AD i czyszczenia stan wszystkich powiązanych z domeny i lasu, to zadanie można osiągnąć wykonując następujące czynności:
 
 > [!IMPORTANT]
 > Należy wykonać następujące kroki w kolejności. Jeśli dowolne wystąpienie usługi serwera Proxy zostanie pozostawiony jako uruchomiony okresowo ponownie utworzy jej obiektu serviceConnectionPoint. Jeśli dowolne wystąpienie usługi agenta kontrolera domeny jest w trybie ciągłym okresowo ponownie utworzy jej obiektu serviceConnectionPoint i folderu sysvol stanu.
@@ -120,7 +115,7 @@ Jeśli zostanie podjęta decyzja, aby odinstalować oprogramowanie w publicznej 
 
    Obiekty wynikowe znalezione przez `Get-ADObject` polecenia następnie mogą być przesyłane potokiem do `Remove-ADObject`, lub usunąć ręcznie.
 
-4. Ręcznie usuń wszystkie punkty połączenia agenta kontrolera domeny w każdym kontekście nazewnictwa domeny. Może istnieć tylko jeden tych obiektów na kontrolerze domeny w lesie, w zależności od tego, jak powszechnie prapremiery publicznej została wdrożona. Lokalizacja tego obiektu może zostać odnalezionych za pomocą następującego polecenia środowiska PowerShell usługi Active Directory:
+4. Ręcznie usuń wszystkie punkty połączenia agenta kontrolera domeny w każdym kontekście nazewnictwa domeny. Może istnieć tylko jeden tych obiektów na kontrolerze domeny w lesie, w zależności od tego, jak oprogramowanie zostało wdrożone. Lokalizacja tego obiektu może zostać odnalezionych za pomocą następującego polecenia środowiska PowerShell usługi Active Directory:
 
    ```PowerShell
    $scp = "serviceConnectionPoint"

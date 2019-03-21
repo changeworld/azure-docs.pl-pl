@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 993a8ca48df40b400c21852d3d28941d9d62affb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 32720669ae9d8941abce4429471c13608a18cbc5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549021"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294896"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -149,7 +149,7 @@ Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie do
 
 ## <a name="download-sign-in-activities"></a>Pobieranie działań związanych z logowaniem
 
-Możesz [Pobierz dane logowania](quickstart-download-sign-in-report.md) Jeśli chcesz pracować z nim poza witryny Azure portal. Klikając **Pobierz** udostępnia opcję, aby utworzyć plik CSV lub JSCON ostatnich 250 000 rekordów.  
+Możesz [Pobierz dane logowania](quickstart-download-sign-in-report.md) Jeśli chcesz pracować z nim poza witryny Azure portal. Klikając **Pobierz** udostępnia opcję, aby utworzyć plik CSV lub JSON ostatnich 250 000 rekordów.  
 
 ![Pobierz](./media/concept-sign-ins/71.png "Pobierz")
 
@@ -214,7 +214,7 @@ Punktem wyjścia do tych danych są 3 najczęściej używane aplikacje w organiz
 
 ![Działania związane z logowaniem](./media/concept-sign-ins/10.png "Działania związane z logowaniem")
 
-Wykres użycia aplikacji przedstawia tygodniowe agregacje logowań 3 najczęściej używanych aplikacji w danym czasie. Domyślny okres to 30 dni.
+Aplikacja użycia wykres przedstawia tygodniowe agregacje logowań 3 pierwszych aplikacji w danym okresie czasu. Domyślny okres to 30 dni.
 
 ![Działania związane z logowaniem](./media/concept-sign-ins/47.png "Działania związane z logowaniem")
 
@@ -230,7 +230,7 @@ Opcja **Logowania** umożliwia pełny przegląd zdarzeń logowania do aplikacji.
 
 ## <a name="office-365-activity-logs"></a>Dzienniki aktywności usługi Office 365
 
-Można wyświetlić dzienniki aktywności usługi Office 365 z [Centrum administracyjnego usługi Office 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Mimo że aktywności usługi Office 365 i usługi Azure AD działania dzienniki współdzielą wiele zasobów katalogu tylko Office 365 Admin Center zapewnia pełnego widoku dzienników aktywności usługi Office 365. 
+Można wyświetlić dzienniki aktywności usługi Office 365 z [Centrum administracyjnego usługi Microsoft 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Mimo że aktywności usługi Office 365 i usługi Azure AD działania dzienniki współdzielą wiele zasobów katalogu, Centrum administracyjnego usługi Microsoft 365 zapewnia pełnego widoku dzienników aktywności usługi Office 365. 
 
 Można także przejść do dzienników aktywności usługi Office 365, programowo przy użyciu [interfejsów API zarządzania usługi Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 

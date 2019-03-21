@@ -2,33 +2,33 @@
 title: Rozwiązywanie problemów z powolnego działania lub awarii klastra HDInsight — usługi Azure HDInsight
 description: Diagnozowanie i rozwiązywanie problemów z klastrem HDInsight powolne lub awarie.
 services: hdinsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: MT
+ms.date: 03/19/2019
+ms.openlocfilehash: 0129a09383b59aa5d213ef7ff1c78f23588472a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994372"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295474"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
 
-Jeśli klaster usługi HDInsight jest działa wolno lub kończy się niepowodzeniem z kodem błędu, masz kilka opcji rozwiązywania problemów. Jeśli Twoje zadania trwa dłużej niż oczekiwano lub widzisz wydłużają czas odpowiedzi ogólnie rzecz biorąc, może być błędy nadrzędne z klastra, takiej jak usługi, na których są uruchamiane w klastrze. Najczęstszą przyczyną tych spowolnień jest jednak skalowanie niewystarczające. Podczas tworzenia nowego klastra HDInsight, wybierz odpowiedni [rozmiarów maszyn wirtualnych](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
+Jeśli klaster usługi HDInsight jest działa wolno lub kończy się niepowodzeniem z kodem błędu, masz kilka opcji rozwiązywania problemów. Jeśli Twoje zadania trwa dłużej niż oczekiwano lub widzisz wydłużają czas odpowiedzi ogólnie rzecz biorąc, może być błędy nadrzędne z klastra, takiej jak usługi, na których są uruchamiane w klastrze. Najczęstszą przyczyną tych spowolnień jest jednak skalowanie niewystarczające. Podczas tworzenia nowego klastra HDInsight, wybierz odpowiedni [rozmiarów maszyn wirtualnych](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
 
 Aby zdiagnozować powolnego działania lub awarii klastra, Zbierz informacje dotyczące wszystkich aspektów środowiska, takie jak powiązane usługi platformy Azure, konfiguracji klastra i informacje o wykonaniu zadania. Diagnostyka pomocne jest spróbuj odtworzyć stan błędu w innym klastrze.
 
-* Krok 1: Zbieranie danych o problemie
-* Krok 2: Sprawdzania, czy środowisko klastra HDInsight 
-* Krok 3: Wyświetl stan sieci klastra
-* Krok 4: Przejrzyj stos środowiska i wersje
-* Krok 5. Przejrzyj pliki dziennika klastra
-* Krok 6: Sprawdź ustawienia konfiguracji
-* Krok 7: Odtwórz błąd w innym klastrze 
+* Krok 1: Zbierz dane o problemie.
+* Krok 2: Sprawdzania, czy środowisko klastra HDInsight.
+* Krok 3: Wyświetl stan usługi klastra.
+* Krok 4: Przejrzyj stos środowiska i wersji.
+* Krok 5. Sprawdź pliki dziennika klastra.
+* Krok 6: Sprawdź ustawienia konfiguracji.
+* Krok 7: Odtwórz błąd w innym klastrze.
 
 ## <a name="step-1-gather-data-about-the-issue"></a>Krok 1: Zbieranie danych o problemie
 
@@ -57,13 +57,12 @@ Witryna Azure portal można podać te informacje:
 
 ![Portal HDInsight Azure informacji](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Można również użyć klasycznego wiersza polecenia platformy Azure:
+Można również użyć [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
 
+```azurecli
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Innym rozwiązaniem jest przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [klastrów zarządzania Apache Hadoop w HDInsight przy użyciu programu Azure PowerShell](hdinsight-administer-use-powershell.md).
 
@@ -73,10 +72,10 @@ Każdy klaster HDInsight opiera się na różne usługi platformy Azure i oprogr
 
 ### <a name="service-details"></a>Szczegóły usługi
 
-* Sprawdzanie wersji biblioteki typu open-source
-* Wyszukaj [przerwy w działaniu usługi platformy Azure](https://azure.microsoft.com/status/) 
-* Sprawdzanie limitów użycia usługi Azure 
-* Sprawdź konfigurację podsieci sieci wirtualnej platformy Azure 
+* Sprawdzanie wersji biblioteki typu open source.
+* Wyszukaj [przerwy w działaniu usługi platformy Azure](https://azure.microsoft.com/status/).  
+* Sprawdź, czy limity użycia usługi Azure. 
+* Sprawdź konfigurację podsieci sieci wirtualnej platformy Azure.  
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Wyświetlanie ustawień konfiguracji klastra za pomocą interfejsu użytkownika systemu Ambari
 
@@ -124,7 +123,7 @@ Jeden typowy scenariusz, Apache Hive, Apache Pig i Apache Sqoop zadań kończy s
 To jest ogólny komunikat z węzłów bramy i jest najczęściej kod stanu błędu. Jedną z możliwych przyczyn tego jest zablokowany w dół z aktywnego węzła głównego usługi WebHCat. Aby sprawdzić taką ewentualność, użyj następującego polecenia CURL:
 
 ```bash
-$ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
+curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
 ```
 
 Ambari wyświetla alert przedstawiający hosty, na których usługi WebHCat jest wyłączona. Możesz spróbować przełączyć tę usługę WebHCat Utwórz kopię zapasową, uruchamiając ponownie usługę sieciową hosta.
@@ -153,7 +152,7 @@ W poniższych sekcjach opisano niektóre z możliwych przyczyn WebHCat przekrocz
 Po użyciu usługi WebHCat pod obciążeniem, z ponad 10 Otwórz gniazd, co zajmuje więcej czasu ustanawiać nowych połączeń gniazd, które może powodować przekroczenie limitu czasu. Aby wyświetlić listę połączeń sieciowych, do i z usługi WebHCat, należy użyć `netstat` na bieżącego aktywnego węzła głównego:
 
 ```bash
-$ netstat | grep 30111
+netstat | grep 30111
 ```
 
 30111 jest port, który nasłuchuje WebHCat. Liczba otwartych gniazd powinna być mniejsza niż 10.
@@ -161,7 +160,7 @@ $ netstat | grep 30111
 Jeśli nie ma żadnych otwartych gniazd, poprzednie polecenie nie rezultatów. Aby sprawdzić, czy Templeton znajduje się i nasłuchuje na porcie 30111, użyj:
 
 ```bash
-$ netstat -l | grep 30111
+netstat -l | grep 30111
 ```
 
 ##### <a name="yarn-level-timeout"></a>Limit czasu poziomu usługi YARN
@@ -190,9 +189,9 @@ Na poziomie usługi YARN istnieją dwa rodzaje przekroczeń limitu czasu:
 
 Aby zdiagnozować te problemy:
 
-    1. Określić zakres czasu UTC, rozwiązywać problemy z
-    2. Wybierz odpowiedni `webhcat.log` pliki
-    3. Wyszukaj OSTRZEGAJ i komunikaty o BŁĘDACH w tym czasie
+1. Określić zakres czasu UTC, rozwiązywać problemy z
+2. Wybierz odpowiedni `webhcat.log` pliki
+3. Wyszukaj OSTRZEGAJ i komunikaty o BŁĘDACH w tym czasie
 
 #### <a name="other-webhcat-failures"></a>Inne błędy usługi WebHCat
 
@@ -215,8 +214,6 @@ Interfejsu użytkownika Ambari **stosu i wersji** strona zawiera informacje o kl
 ## <a name="step-5-examine-the-log-files"></a>Krok 5. Przejrzyj pliki dziennika
 
 Istnieje wiele typów dzienników, które są generowane na podstawie wielu usług i składników wchodzących w skład klastra usługi HDInsight. [Pliki dziennika usługi WebHCat](#check-your-webhcat-service) są opisane wcześniej. Istnieje kilka innych przydatne plików dziennika, które można zbadać Aby zawęzić problemy związane z klastrem, zgodnie z opisem w poniższych sekcjach.
-
-![Przykład pliku dziennika HDInsight](./media/hdinsight-troubleshoot-failed-cluster/logs.png)
 
 * Klastry HDInsight składa się z kilku węzłów, z których większość są nadzorowania do uruchomienia przesłane zadania. Zadania są uruchamiane równolegle, ale pliki dziennika mogą być wyświetlane tylko wyniki liniowo. HDInsight wykonuje nowych zadań, kończące inne scenariusze, które się nie powieść, aby najpierw zostało wykonane. To działanie jest rejestrowane `stderr` i `syslog` plików.
 
@@ -259,14 +256,14 @@ Aby ułatwić diagnozowanie źródła błędu klastra, uruchom nowy klaster z ta
 1. Tworzenie nowego klastra testowego z taką samą konfigurację jak klastra nie powiodło się.
 2. Prześlij pierwszym krokiem zadania do klastra testowego.
 3. Po zakończeniu przetwarzania kroku sprawdź, czy błędy w plikach dziennika kroku. Łączenie z węzłem głównym klastra testowego i wyświetlanie plików dziennika. Pliki dziennika kroku są wyświetlane tylko po kroku jest uruchamiane przez pewien czas, zostanie zakończone, lub nie powiedzie się.
-4. Pierwszym krokiem zakończyło się pomyślnie, należy uruchomić następny krok. Jeśli wystąpiły błędy, zbadanie błędów w plikach dziennika. Jeśli był błąd w kodzie, wprowadzanie poprawek i ponownie uruchom ten krok. 
+4. Pierwszym krokiem zakończyło się pomyślnie, należy uruchomić następny krok. Jeśli wystąpiły błędy, zbadanie błędów w plikach dziennika. Jeśli był błąd w kodzie, wprowadzanie poprawek i ponownie uruchom ten krok.
 5. Kontynuuj, dopóki wszystkie czynności wykonane bez błędów.
 6. Po zakończeniu debugowania klastra testowego, usuń go.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Zarządzanie klastrami HDInsight przy użyciu internetowego interfejsu użytkownika systemu Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Analizowanie dzienników usługi HDInsight](hdinsight-debug-jobs.md)
-* [Dziennik aplikacji Apache Hadoop YARN dostępu na HDInsight opartych na systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Dostęp do Apache Hadoop YARN application logowania HDInsight opartych na systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Włączanie zrzutów sterty dla usługi Apache Hadoop w HDInsight opartych na systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Znane problemy w przypadku klastra Apache Spark w HDInsight](hdinsight-apache-spark-known-issues.md)

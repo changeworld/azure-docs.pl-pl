@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b12328c8283c9a626a3dcfc45dfd682a5e628d07
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9c4af55a5ddb05335f8acfdd23711df2290e217b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728849"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085698"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurowanie i używanie koligacji usługi w usłudze Service Fabric
 Koligacja jest formant, który znajduje się przede wszystkim ułatwiają przejście większej aplikacji monolitycznych w świecie chmury i mikrousług. Jest również używany jako optymalizacji dla poprawy wydajności usługi, mimo że ten sposób można mieć skutki uboczne.
@@ -59,6 +59,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 Koligacja jest przedstawiana za pomocą jednego z kilku systemów korelacji i ma dwa różne tryby. Najbardziej typowe rodzaj koligacji to tak zwany NonAlignedAffinity. W NonAlignedAffinity replik lub wystąpień różnych usług są umieszczane w tej samej węzłów. Inny tryb jest AlignedAffinity. Koligacja wyrównany przydaje się tylko w przypadku usług stanowych. Konfigurowanie dwóch usług stanowych do wyrównany w koligacji gwarantuje, że kolory podstawowe te usługi są umieszczane w tej samej węzłów poszczególnych. On również powoduje, że każda para pomocnicze bazy danych dla tych usług, które mają być umieszczane w tej samej węzłów. Użytkownik może również (chociaż są mniej typowe) można skonfigurować NonAlignedAffinity dla usług stanowych. NonAlignedAffinity różnych replik z dwóch usług stanowych są uruchamiane na tym samym węzłów, ale ich kolory podstawowe można znajdą się w różnych węzłach.
 
 <center>
+
 ![Tryby koligacji i ich skutków][Image1]
 </center>
 
@@ -69,6 +70,7 @@ Relacja koligacji jest najlepszy nakład pracy. Nie zapewnia te same gwarancje k
 Już dziś Menedżer zasobów klastra nie jest w stanie modelu łańcucha koligacji relacji. Oznacza to, że to usługa, która jest elementem podrzędnym w jednej relacji koligacji nie może być elementem nadrzędnym w innej relacji koligacji. Jeśli chcesz modelu tego typu relacji masz skutecznie modelować gwiazdkę zamiast łańcuch. Aby przenieść z łańcucha gwiazdkę, znajdujących się najniżej podrzędnych może być elementem nadrzędnym do pierwszy element podrzędny elementu nadrzędnego zamiast tego. W zależności od rozmieszczenie usług może trzeba wielokrotnie. Nie ma żadnej usługi rodzica, należy utworzyć jedną, która służy jako symbol zastępczy. W zależności od wymagań możesz zbadać [grup aplikacji](service-fabric-cluster-resource-manager-application-groups.md).
 
 <center>
+
 ![Łańcuchy programu vs. Gwiazdek w kontekście relacje koligacji][Image2]
 </center>
 

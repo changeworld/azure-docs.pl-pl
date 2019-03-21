@@ -11,15 +11,15 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 03/20/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5c6cda735f946fc510129f688ebedf85dd054d0c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734255"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295678"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
 
@@ -112,13 +112,13 @@ Jeśli obszar roboczy usługi Log Analytics ma dostęp do starszych warstw cenow
 3. W obszarze **warstwa cenowa**, wybierz warstwę cenową, a następnie kliknij przycisk **wybierz**.  
     ![Wybrany plan taryfowy](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-Jeśli chcesz przenieść obszar roboczy do bieżącej warstwy cenowej, trzeba [zmienić swoją subskrypcję monitorowania modelu cen w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model) która spowoduje zmianę warstwy cenowej wszystkich obszarów roboczych w tej subskrypcji.
+Jeśli chcesz przenieść obszar roboczy do bieżącej warstwy cenowej, trzeba [zmienić swoją subskrypcję monitorowania modelu cen w usłudze Azure Monitor](usage-estimated-costs.md#moving-to-the-new-pricing-model) która spowoduje zmianę warstwy cenowej wszystkich obszarów roboczych w tej subskrypcji.
 
 > [!NOTE]
 > Jeśli obszar roboczy jest połączony z kontem usługi Automation, przed wybraniem warstwy cenowej *Autonomiczna (za GB)* musisz usunąć wszystkie rozwiązania **Automation and Control** i odłączyć konto usługi Automation. W bloku obszaru roboczego w obszarze **Ogólne** kliknij pozycję **Rozwiązania**, aby wyświetlić i usunąć rozwiązania. Aby odłączyć konto usługi Automation, kliknij nazwę konta usługi Automation w bloku **Warstwa cenowa**.
 
 > [!NOTE]
-> Możesz dowiedzieć się więcej [ustawienie warstwy cenowej za pośrednictwem ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace) oraz sposób upewnić się, że wdrożenie ARM powiedzie się niezależnie od tego, czy subskrypcja jest w starszej wersji lub nowy model cen. 
+> Możesz dowiedzieć się więcej [ustawienie warstwy cenowej za pośrednictwem ARM](template-workspace-configuration.md#create-a-log-analytics-workspace) oraz sposób upewnić się, że wdrożenie ARM powiedzie się niezależnie od tego, czy subskrypcja jest w starszej wersji lub nowy model cen. 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Rozwiązywanie problemów związanych z usługi Log Analytics nie jest już jest zbieranie danych
@@ -138,24 +138,12 @@ Aby otrzymać powiadomienie po zatrzymaniu zbierania danych, należy użyć proc
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Rozwiązywanie problemów związanych z użyciem przekraczającym oczekiwania
 Większe użycie jest spowodowane przez jedną lub obie z następujących przyczyn:
-- Do usługi Log Analytics jest wysyłana większa ilość danych niż oczekiwano
 - Dane wysyłane do usługi Log Analytics pochodzą z większej liczby węzłów niż oczekiwano
+- Do usługi Log Analytics jest wysyłana większa ilość danych niż oczekiwano
 
-### <a name="data-volume"></a>Ilość danych 
-Na **użycie i szacowane koszty** stronie *pozyskiwanie danych na rozwiązanie* wykres przedstawia łączny wolumin danych wysyłanych i ile wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. Zapytanie używane do generowania, to jest
+Następny explor sekcje
 
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-Należy pamiętać, że klauzuli "gdzie IsBillable = true" odfiltrowuje typy danych, z niektórych rozwiązań, dla których nie są pobierane opłaty pozyskiwania. 
-
-Możesz przejść dostosowaną Zobacz dane trendów dla konkretnych typów danych, na przykład jeśli chcesz badanie danych z powodu dzienniki usług IIS:
-
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-### <a name="nodes-sending-data"></a>Węzły wysyłające dane
+## <a name="understanding-nodes-sending-data"></a>Opis węzły wysyłające dane
 
 Aby poznać liczbę komputerów (węzłów), zgłoszenie danych każdego dnia w ciągu ostatniego miesiąca, użyj
 
@@ -163,7 +151,7 @@ Aby poznać liczbę komputerów (węzłów), zgłoszenie danych każdego dnia w 
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (niektóre typy danych są bezpłatne), korzystać z [_IsBillable](log-standard-properties.md#isbillable) właściwości:
+Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (niektóre typy danych są bezpłatne), korzystać z [_IsBillable](log-standard-properties.md#_isbillable) właściwości:
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -171,9 +159,9 @@ Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (n
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania. 
+Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania. To zapytanie zastąpi stary sposób wykonywania zapytań na komputerze informacji o typie danych użycia.  
 
-Może to rozszerzona, aby zwrócić liczbę komputerów, na godzinę, które wysyłają rozliczane typów danych:
+Może to rozszerzona, aby zwrócić liczbę komputerów, na godzinę, które wysyłają rozliczane typy danych (czyli jak usługi Log Analytics oblicza płatnych węzłów dla starszej wersji na warstwie cenowej węzła):
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -181,13 +169,30 @@ Może to rozszerzona, aby zwrócić liczbę komputerów, na godzinę, które wys
 | where computerName != ""
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
 
-Aby wyświetlić **rozmiar** płatnych zdarzeń wprowadzanych na komputerze, użyj `_BilledSize` właściwość, która zapewnia rozmiar w bajtach:
+## <a name="understanding-ingested-data-volume"></a>Ilość danych pozyskanych opis 
+
+Na **użycie i szacowane koszty** stronie *pozyskiwanie danych na rozwiązanie* wykres przedstawia łączny wolumin danych wysyłanych i ile wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. Zapytanie używane do generowania, to jest
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+Należy pamiętać, że klauzuli "gdzie IsBillable = true" odfiltrowuje typy danych, z niektórych rozwiązań, dla których nie są pobierane opłaty pozyskiwania. 
+
+Możesz przejść dostosowaną Zobacz dane trendów dla konkretnych typów danych, na przykład jeśli chcesz badanie danych z powodu dzienniki usług IIS:
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| where DataType == "W3CIISLog"
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+### <a name="data-volume-by-computer"></a>Objętość danych według komputera
+
+Aby wyświetlić **rozmiar** płatnych zdarzeń wprowadzanych na komputerze, użyj `_BilledSize` właściwości ([_billedsize.md # dziennika standardowe właściwości](learn more)) zapewniającą rozmiar w bajtach:
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
 
-To zapytanie zastąpi stary sposób wykonywanie zapytania dla tego typu danych użycia. 
+`_IsBillable` Właściwość określa, czy pozyskiwanych danych będą naliczane opłaty za ([_isbillable # dziennika — standardowy — properties.md](Learn more).)
 
 Aby wyświetlić **liczba** zdarzeń wprowadzanych na komputerze, należy użyć
 
@@ -207,8 +212,29 @@ Jeśli chcesz wyświetlić liczniki dla typów danych płatnych wysyłania danyc
 | where _IsBillable == true 
 | summarize count() by tt | sort by count_ nulls last `
 
+### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objętość danych według zasobów platformy Azure, grupę zasobów lub subskrypcji
+
+W przypadku danych z węzłów hostowanych na platformie Azure możesz uzyskać **rozmiar** płatnych zdarzeń pozyskanych __na komputer__, użyj `_ResourceId` właściwość, która zapewnia pełną ścieżkę do zasobu ([ log — standardowy — properties.md #_resourceid](learn more)):
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+
+W przypadku danych z węzłów hostowanych na platformie Azure możesz uzyskać **rozmiar** płatnych zdarzeń pozyskanych __subskrypcję platformy Azure__, przeanalizować `_ResourceId` właściwość jako:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+
+Zmiana `subscriptionId` do `resourceGroup` pokaże woluminu płatnych pozyskiwanych danych przez grupę resouurce platformy Azure. 
+
+
 > [!NOTE]
 > Niektóre pola typu danych użycia, chociaż nadal w schemacie, są przestarzałe i spowoduje, że ich wartości są już wypełnione. Są to **komputera** oraz pola powiązane z pozyskiwania (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** i **AverageProcessingTimeMs**.
+
+### <a name="querying-for-common-data-types"></a>Wykonanie zapytania dotyczącego standardowe typy danych
 
 Aby wyświetlić elementy podrzędne źródło danych dla określonego typu danych, poniżej przedstawiono pewne przydatne przykładowe zapytania:
 
@@ -241,7 +267,7 @@ Sugestie dotyczące zmniejszyć wolumin zebranych danych dzienników obejmują:
 | AzureDiagnostics           | Zmień kolekcję dziennika zasobów, aby: <br> — zmniejszyć liczbę dzienników zasobów wysyłanych do usługi Log Analytics, <br> — zbierać tylko wymagane dzienniki. |
 | Dane rozwiązań z komputerów, które nie wymagają rozwiązania | Użyj funkcji [określania celu rozwiązania](../insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów. |
 
-### <a name="getting-node-counts"></a>Pobieranie liczby węzłów 
+### <a name="getting-security-and-automation-node-counts"></a>Pobieranie liczby węzłów zabezpieczeń i automatyzacji 
 
 Jeśli użytkownik pracuje na "Na węzeł (OMS)" warstwy cenowej, a następnie opłaty są naliczane na podstawie liczby węzłów i rozwiązań można używać, numer wglądu w szczegółowe dane oraz węzły Analytics, dla których są naliczane będą wyświetlane w tabeli **użycie i szacowane koszty**strony.  
 
@@ -282,6 +308,7 @@ Aby wyświetlić liczbę liczymy węzły usługi Automation, użyj zapytania:
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Tworzenie alertu, gdy ilość zebranych danych jest większa od oczekiwanej
+
 W tej sekcji opisano sposób tworzenia alertu w sytuacji, gdy:
 - Ilość danych przekracza określoną wartość.
 - Przewiduje się, że ilość danych przekroczy określoną wartość.

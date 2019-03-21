@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 7daf76605d40495d6c9cb5076f0403a78819adfc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: aa97e60fe296190f3478d29bc80c70ea487e8955
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439167"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258585"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą usługi Azure Monitor
 
@@ -29,7 +29,7 @@ ms.locfileid: "57439167"
 ## <a name="using-log-analytics-workspace"></a>Za pomocą obszaru roboczego usługi Log Analytics
 
 > [!NOTE]
-> Dane z usługi Azure kopie zapasowe maszyn wirtualnych, agenta MAB programu System Center DPM (SC-DPM) to są kierowane do obszaru roboczego usługi Log Analytics, za pomocą ustawień diagnostycznych. Obsługa kopii zapasowych SQL na maszynach wirtualnych Azure, kopiami zapasowymi udziałów plików platformy Azure, Microsoft Azure Backup Server (MABS) będzie dostępna wkrótce.
+> Dane z usługi Azure kopie zapasowe maszyn wirtualnych, agenta MAB programu System Center DPM (SC-DPM) oraz kopii zapasowych SQL na maszynach wirtualnych Azure jest są kierowane do obszaru roboczego usługi Log Analytics, za pomocą ustawień diagnostycznych. Obsługa kopii zapasowych z udziału plików platformy Azure, Microsoft Azure Backup Server (MABS) będzie dostępna wkrótce.
 
 Firma Microsoft korzysta z możliwości usług platformy Azure, dwóch - **ustawień diagnostycznych** (w celu wysyłania danych z wielu zasobów usługi Azure Resource Manager do innego zasobu) i **usługi Log Analytics** (LA — w celu wygenerowania niestandardowe alerty, w którym można zdefiniować innych kanałów powiadomień przy użyciu grup akcji) do monitorowania na dużą skalę. W poniższych sekcjach szczegółowo o tym, jak używać LA do monitorowania usługi Azure Backup na dużą skalę.
 

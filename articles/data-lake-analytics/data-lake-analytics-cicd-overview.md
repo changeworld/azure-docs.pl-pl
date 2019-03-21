@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 937e261405634e88ab234d2fe43ee660a3acc417
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b6c5df1ef0c93508595e27cbda315281aa3461b5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233663"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124290"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak skonfigurować potok CI/CD dla usługi Azure Data Lake Analytics  
 
@@ -328,17 +328,17 @@ Oprócz wiersza polecenia można użyć Visual Studio Build lub zadanie programu
    ![Zadanie MSBuild ciągłej integracji/ciągłego Dostarczania dla projektu U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
 
-1.  Dodaj zadanie przywracania NuGet w celu uzyskania odwołanie do rozwiązania pakiet NuGet, który zawiera `Azure.DataLake.USQL.SDK`, dzięki czemu program MSBuild można znaleźć elementy docelowe języka U-SQL. Ustaw **zaawansowane** > **katalog docelowy** do `$(Build.SourcesDirectory)/packages` Jeśli chcesz korzystać z próbki argumenty MSBuild bezpośrednio w kroku 2.
+1. Dodaj zadanie przywracania NuGet w celu uzyskania odwołanie do rozwiązania pakiet NuGet, który zawiera `Azure.DataLake.USQL.SDK`, dzięki czemu program MSBuild można znaleźć elementy docelowe języka U-SQL. Ustaw **zaawansowane** > **katalog docelowy** do `$(Build.SourcesDirectory)/packages` Jeśli chcesz korzystać z próbki argumenty MSBuild bezpośrednio w kroku 2.
 
-    ![Zadanie NuGet ciągłej integracji/ciągłego Dostarczania dla projektu U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+   ![Zadanie NuGet ciągłej integracji/ciągłego Dostarczania dla projektu U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  Ustaw argumenty MSBuild w narzędziach kompilacji Visual Studio lub w zadaniu programu MSBuild, jak pokazano w poniższym przykładzie. Lub można zdefiniować zmienne dla tych argumentów w potoku kompilacji potoki usługi Azure.
+2. Ustaw argumenty MSBuild w narzędziach kompilacji Visual Studio lub w zadaniu programu MSBuild, jak pokazano w poniższym przykładzie. Lub można zdefiniować zmienne dla tych argumentów w potoku kompilacji potoki usługi Azure.
 
    ![Definiowanie zmiennych MSBuild ciągłej integracji/ciągłego Dostarczania dla projektu bazy danych U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
-    ```
-    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
-    ```
+   ```
+   /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
+   ```
  
 ### <a name="u-sql-database-project-build-output"></a>Wynik kompilacji projektu bazy danych U-SQL
 
@@ -459,7 +459,7 @@ Wykonaj poniższe kroki, aby skonfigurować zadania wdrożenia bazy danych w pot
 |Pakiet|Ścieżka pakietu wdrożeniowego bazy danych U-SQL do wdrożenia.|wartość null|true|
 |Database (Baza danych)|Nazwa bazy danych, które mają być wdrożone lub utworzony.|master|false|
 |LogFile|Ścieżka pliku do rejestrowania. Domyślnie standard out (Konsola).|wartość null|false|
-|LogLevel|Poziom dziennika: Pełne, normalny, Warning lub Error.|LogLevel.Normal|false|
+|LogLevel|Poziom rejestrowania: Pełne, normalny, Warning lub Error.|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>Parametr dla wdrożenia lokalnego
 

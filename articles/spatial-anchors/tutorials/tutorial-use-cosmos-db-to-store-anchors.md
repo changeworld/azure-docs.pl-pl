@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Udostępnianie między sesjami i urządzeniami za pomocą usługi Azure Spatial Anchors i zaplecza usługi Azure Cosmos DB | Microsoft Docs'
-description: Z tego samouczka dowiesz się, jak udostępniać identyfikatory usługi Azure Spatial Anchors między urządzeniami w aparacie Unity za pomocą usługi zaplecza i usługi Azure Cosmos DB.
+title: Samouczek — udostępnianie między sesjami i urządzeniami w usłudze Azure przestrzenne zakotwiczenia i zaplecza usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: W tym samouczku dowiesz się, jak udostępniać identyfikatory kotwic przestrzenne platformy Azure na urządzeniach z systemem Android/iOS na platformie Unity za pomocą usługi zaplecza i Azure Cosmos DB.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,36 +8,36 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0cd42fc37727099ed95a1c6fc2d427b7862412e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753492"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286401"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Samouczek: Udostępnianie między sesjami i urządzeniami za pomocą usługi Azure Spatial Anchors i zaplecza usługi Azure Cosmos DB
+# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Samouczek: Udostępnianie między sesjami i urządzeniami w usłudze Azure przestrzenne zakotwiczenia i zaplecza usługi Azure Cosmos DB
 
-Z tego samouczka dowiesz się, jak używać usługi [Azure Spatial Anchors](../overview.md) do wykonywania następujących czynności:
+W tym samouczku dowiesz się, jak używać [kotwic przestrzenne Azure](../overview.md) do:
 
-1. Tworzenie kotwic w jednej sesji, a następnie znajdowanie ich w innej sesji na tym samym lub innym urządzeniu. Na przykład innego dnia.
-2. Tworzenie kotwic, które mogą być znajdowane przez wiele urządzeń w tym samym miejscu i czasie.
+- Tworzyć kotwic podczas jednej sesji, a następnie zlokalizuj je w innej sesji, w tym samym urządzeniu lub na inną. Na przykład drugi sesja może być na różne dni.
+- Tworzyć kotwic, które mogą znajdować się na wielu urządzeniach, w tym samym miejscu, a w tym samym czasie.
 
-![Trwałość](./media/persistence.gif)
+![Obraz GIF ilustrujące trwałość obiektów](./media/persistence.gif)
 
-[Azure Spatial Anchors](../overview.md) to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację, którą można wdrożyć na dwóch urządzeniach lub więcej. Kotwice usługi Azure Spatial Anchors utworzone przez jedno wystąpienie będą udostępniać swoje identyfikatory innym wystąpieniom za pomocą usługi Cosmos DB.
+[Azure kotwic przestrzenne](../overview.md) to usługa programistycznych dla wielu platform, która umożliwia tworzenie środowisk rzeczywistość mieszana z obiektami, które ulegają zmianie lokalizacji urządzenia wraz z upływem czasu. Gdy skończysz, będziesz mieć aplikację, którą można wdrożyć na dwóch urządzeniach lub więcej. Przestrzenne kotwic utworzone przez jedno wystąpienie będzie udostępniać ich identyfikatorów innych za pomocą usługi Azure Cosmos DB.
 
 Omawiane tematy:
 
 > [!div class="checklist"]
-> * Wdrażanie na platformie Azure aplikacji internetowej platformy ASP.NET Core, która może służyć do udostępniania kotwic i przechowywania ich w bazie danych Cosmos DB.
-> * Konfigurowanie sceny AzureSpatialAnchorsLocalSharedDemo w ramach przykładu aparatu Unity z naszych przewodników Szybki start, aby skorzystać z aplikacji internetowej do udostępniania kotwic.
-> * Wdrażanie i uruchamianie na co najmniej jednym urządzeniu.
+> * Wdrażanie aplikacji internetowej platformy ASP.NET Core na platformie Azure, który może służyć do udostępniania zakotwiczenia, przechowując je w usłudze Azure Cosmos DB.
+> * Skonfiguruj sceny AzureSpatialAnchorsLocalSharedDemo w próbce Unity z pakiety Azure quickstarts, aby móc korzystać z aplikacji sieci Web do udostępniania zakotwiczenia.
+> * Wdrażanie aplikacji na co najmniej jedno urządzenie, a następnie uruchom go.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Warto zauważyć, że chociaż w tym samouczku będzie używany aparat Unity i usługa Azure Cosmos DB, ma to na celu jedynie zaprezentowanie przykładu udostępniania identyfikatorów kotwic usługi Azure Spatial Anchors innym urządzeniom. Do osiągniecia tego celu można użyć innych języków i technologii zaplecza. Ponadto aplikacja internetowa platformy ASP.NET Core używana w tym samouczku zależy od zestawu .NET Core 2.2 SDK. Działa poprawnie w normalnej usłudze Azure Web Apps (dla systemu Windows), ale obecnie nie będzie działać w usłudze Azure Web Apps dla systemu Linux.
+Warto zauważyć, że jeśli będziesz korzystać z aparatu Unity i Azure Cosmos DB w ramach tego samouczka, jest po prostu zapewnienie przykładem sposobu udostępniania identyfikatory zakotwiczeń przestrzenne między urządzeniami. Do osiągniecia tego celu można użyć innych języków i technologii zaplecza. Aplikacja internetowa ASP.NET Core, które są używane w tym samouczku wymaga również, .NET Core 2.2 SDK. Działa on poprawnie na Windows dla aplikacji sieci Web, ale obecnie nie będzie działać w usłudze Web Apps dla systemu Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -45,21 +45,25 @@ Warto zauważyć, że chociaż w tym samouczku będzie używany aparat Unity i u
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 
-Zanotuj parametr `Connection String`, ponieważ będzie on używany później.
+Kopiuj `Connection String` ponieważ będziesz ich potrzebować.
 
-## <a name="deploy-your-sharing-anchors-service"></a>Wdrażanie usługi do udostępniania kotwic
+## <a name="open-the-sample-project-in-unity"></a>Otwieranie przykładowego projektu w aparacie Unity
 
-Otwórz program Visual Studio i otwórz projekt w folderze `Sharing\SharingServiceSample`.
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-### <a name="configure-the-service-so-that-it-uses-your-cosmos-db"></a>Konfigurowanie usługi pod kątem używania bazy danych Cosmos DB
+## <a name="deploy-the-sharing-anchors-service"></a>Wdrażanie usługi udostępniania zakotwiczenia
 
-W **Eksploratorze rozwiązań** otwórz plik `SharingService\Startup.cs`.
+Otwórz projekt w programie Visual Studio i Otwórz `Sharing\SharingServiceSample` folderu.
 
-Znajdź wiersz `#define INMEMORY_DEMO` w górnej części pliku i oznacz go jako komentarz. Zapisz plik.
+### <a name="configure-the-service-to-use-your-azure-cosmos-db-database"></a>Skonfiguruj usługę do używania bazy danych Azure Cosmos DB
 
-W **Eksploratorze rozwiązań** otwórz plik `SharingService\appsettings.json`.
+W **Eksploratora rozwiązań**, otwórz `SharingService\Startup.cs`.
 
-Znajdź właściwość `StorageConnectionString`, a następnie ustaw wartość na wartość parametru `Connection String` zanotowaną podczas [tworzenia konta bazy danych](#create-a-database-account). Zapisz plik.
+Znajdź `#define INMEMORY_DEMO` w górnej części pliku a komentarz wiersz się. Zapisz plik.
+
+W **Eksploratora rozwiązań**, otwórz `SharingService\appsettings.json`.
+
+Znajdź `StorageConnectionString` właściwości, a następnie ustaw wartość taka sama jak `Connection String` wartości, który został skopiowany w [tworzenie krok konta bazy danych](#create-a-database-account). Zapisz plik.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
@@ -67,7 +71,7 @@ Znajdź właściwość `StorageConnectionString`, a następnie ustaw wartość n
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku użyto usługi Azure Cosmos DB do udostępnienia identyfikatorów kotwic między urządzeniami. Aby dowiedzieć się więcej o bibliotece usługi Azure Spatial Anchors, kontynuuj pracę z naszym przewodnikiem w sekcji dotyczącej sposobu tworzenia i znajdowania kotwic.
 

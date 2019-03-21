@@ -6,29 +6,27 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: a618482b73e8e423bc00b7c9010c9282da69cd3d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 20f934ae418b0a5e37d3e619fabadc5cb6e23642
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844721"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285551"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
 > [!NOTE]
 > Na podstawie opinii użytkowników, zmieniamy **stosu kopii zapasowej maszyny Wirtualnej V2** do **natychmiastowe Przywracanie** aby wyeliminować problemy z funkcjami usługi Azure Stack.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Nowy model dla przywracania błyskawiczne zapewnia następujące ulepszenia funkcji:
 
 * Możliwość stosowania migawek wykonanych w ramach zadania tworzenia kopii zapasowej, który jest dostępny dla odzyskiwania bez oczekiwania na przesyłanie danych do magazynu, aby zakończyć. Zmniejsza to czas oczekiwania dla migawek skopiować do magazynu przed wyzwoleniem przywracania.
 * Skraca okresy i przywracania kopii zapasowych, zachowując lokalnie, migawki przez dwa dni domyślnie. Ten magazyn domyślny jest konfigurowany na wartość z zakresu od 1 do 5 dni.
 * Obsługa dysków o rozmiarach do 4 TB.
-* Obsługuje dyski SSD w warstwie standardowa.
-*   Możliwość używania niezarządzanej maszyny Wirtualnej w oryginalnych kont magazynu (na dysku), podczas przywracania. Ta możliwość istnieje, nawet wtedy, gdy maszyna wirtualna ma dyski, które są dystrybuowane na kontach magazynu. Jego przyspiesza operacje przywracania dla różnych konfiguracji maszyny Wirtualnej
+* Obsługuje dyski SSD w warstwie standardowa wraz z dysków standardowych dysków Twardych i dysków SSD w warstwie Premium.
+*   Możliwość używania niezarządzanej maszyny Wirtualnej w oryginalnych kont magazynu (na dysku), podczas przywracania. Ta możliwość istnieje, nawet wtedy, gdy maszyna wirtualna ma dyski, które są dystrybuowane na kontach magazynu. Przyspiesza operacje przywracania dla różnych konfiguracji maszyny Wirtualnej.
 
 
 ## <a name="whats-new-in-this-feature"></a>What's new in tej funkcji
@@ -42,7 +40,7 @@ Punkt odzyskiwania jest uważany za utworzony po zakończeniu fazy 1 i 2. W rama
 
 ![Zadanie tworzenia kopii zapasowej w maszynę Wirtualną stosu kopii zapasowej modelu Resource Manager deployment — magazynu i Magazyn](./media/backup-azure-vms/instant-rp-flow.png)
 
-Domyślnie migawki są przechowywane przez dwa dni. Ta funkcja umożliwia operacji przywracania istnieje migawek, skracając czas przywracania w dół. Zmniejsza to czas, który jest wymagany do przekształcania, a następnie skopiować dane z magazynu do konta magazynu użytkownika dla scenariuszy dysk niezarządzany, natomiast w przypadku dysków zarządzanych użytkowników, tworzy dysków zarządzanych z danych usługi Recovery Services.
+Domyślnie migawki są przechowywane przez dwa dni. Ta funkcja umożliwia podczas operacji przywracania istnieje migawek, skracając czas przywracania w dół. Zmniejsza to czas, który jest wymagany do transformacji i kopiowanie danych z magazynu kopii.
 
 ## <a name="feature-considerations"></a>Zagadnienia związane z funkcji
 
@@ -52,100 +50,23 @@ Domyślnie migawki są przechowywane przez dwa dni. Ta funkcja umożliwia operac
 * Otrzymasz możliwość konfigurowania przechowywania migawki, w zależności od potrzeb przywracania. W zależności od wymagań można ustawić okres przechowywania migawek co najmniej jeden dzień w bloku zasad tworzenia kopii zapasowych, co zostało opisane poniżej. Może to pomóc Ci zaoszczędzić koszty przechowywania migawek, jeśli nie wykonasz często przywracania.
 * Jest to jedno uaktualnienie kierunkowe, po uaktualnieniu do natychmiastowe przywracanie, nie można wrócić.
 
-
 >[!NOTE]
 >Z tym natychmiastowe Przywracanie uaktualnienia, czas trwania przechowywania migawek wszystkich klientów (**nowych i istniejących zarówno dołączona**) zostanie ustawiona na wartość domyślną w ciągu dwóch dni. Można jednak ustawić czas trwania, zgodnie z wymaganiami dowolną wartość z zakresu od 1 do 5 dni.
-
 
 ## <a name="cost-impact"></a>Wpływ na koszt
 
 Migawek przyrostowych znajdują się na koncie magazynu maszyny Wirtualnej, które są używane na potrzeby natychmiastowe odzyskiwanie. Migawek przyrostowych oznacza, że miejsce zajmowane przez migawki jest równy miejsce zajmowane przez strony, które są zapisywane po utworzeniu migawki. Opłaty są nadal dla za GB zajęte miejsce zajmowane przez migawki i opłaty za GB danych jest taka sama, jak wspomniano w [stronę z cennikiem](https://azure.microsoft.com/pricing/details/managed-disks/).
 
+>[!NOTE]
+> Migawka przechowywania zostanie usunięty z 5 dni dla zasad co tydzień.
 
-## <a name="upgrading-to-instant-restore"></a>Uaktualnianie do natychmiastowe Przywracanie
+## <a name="configure-snapshot-retention-using-the-azure-portal"></a>Konfigurowanie przechowywania migawki za pomocą witryny Azure portal
 
-Jeśli używasz witryny Azure portal, zostanie wyświetlone powiadomienie na pulpicie nawigacyjnym magazynu. To powiadomienie odnosi się do obsługi dużych dysków oraz ulepszenia dotyczące prędkości i przywracania kopii zapasowych.
-Aby otworzyć ekran dla uaktualnienie do przywrócenia błyskawiczne, wybierz baner.
+**Wszyscy użytkownicy kopii zapasowej platformy Azure teraz zostały uaktualnione do natychmiastowe Przywracanie**.
 
-![Zadanie tworzenia kopii zapasowej w modelu wdrażania usługi Resource Manager stosu kopii zapasowej maszyny Wirtualnej — zgłoszenia pomocy technicznej](./media/backup-azure-vms/instant-rp-banner.png)
-
-Kliknij pozycję **uaktualnienia** jak pokazano na poniższym zrzucie ekranu:
-
-![Zadanie tworzenia kopii zapasowej w stos kopii zapasowej maszyny Wirtualnej modelu wdrażania usługi Resource Manager — uaktualnianie](./media/backup-azure-vms/instant-rp.png)
-
-Alternatywnie, możesz przejść do **właściwości** strona magazynu można pobrać **uaktualnienia** opcji w obszarze **stosu kopii zapasowej maszyny Wirtualnej**.
-
-![Zadanie tworzenia kopii zapasowej w stos kopii zapasowej maszyny Wirtualnej — strona właściwości](./media/backup-azure-vms/instant-restore-capability-properties.png)
-
-
-## <a name="configure-snapshot-retention-using-azure-portal"></a>Konfigurowanie przechowywania migawki za pomocą witryny Azure portal
-Wszyscy użytkownicy we wszystkich **publicznych obszarów geograficznych** zostali uaktualnieni do wersji natychmiastowe przywracanie.
-
-Dla uaktualnionego użytkowników w witrynie Azure portal można wyświetlić pola dodane w **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku w obszarze **natychmiastowe Przywracanie** sekcji. Można zmienić czasu trwania przechowywania migawek z **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku dla wszystkich maszyn wirtualnych skojarzonych z określonych zasad tworzenia kopii zapasowej.
+W witrynie Azure portal można zobaczyć pola dodane w **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku w obszarze **natychmiastowe Przywracanie** sekcji. Można zmienić czasu trwania przechowywania migawek z **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku dla wszystkich maszyn wirtualnych skojarzonych z określonych zasad tworzenia kopii zapasowej.
 
 ![Możliwość natychmiastowego przywracania](./media/backup-azure-vms/instant-restore-capability.png)
-
-## <a name="upgrade-to-instant-restore-using-powershell"></a>Uaktualnij, aby przywrócić błyskawiczne przy użyciu programu PowerShell
-
-Jeśli chcesz Samoobsługa i Uaktualnij, aby przywrócić błyskawiczne, uruchom następujące polecenia cmdlet z terminala PowerShell z podwyższonym poziomem uprawnień:
-
-1.  Zaloguj się do konta platformy Azure:
-
-    ```
-    PS C:> Connect-AzAccount
-    ```
-
-2.  Wybierz subskrypcję, której chcesz zarejestrować:
-
-    ```
-    PS C:>  Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
-    ```
-
-3.  Zarejestruj tej subskrypcji:
-
-    ```
-    PS C:>  Register-AzProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-## <a name="upgrade-to-instant-restore-using-cli"></a>Uaktualnij, aby przywrócić błyskawiczne przy użyciu interfejsu wiersza polecenia
-
-Uruchom następujące polecenia z poziomu powłoki:
-
-1.  Zaloguj się do konta platformy Azure:
-
-    ```
-    az login
-    ```
-
-2.  Wybierz subskrypcję, której chcesz zarejestrować:
-
-    ```
-    az account set --subscription "Subscription Name"
-    ```
-
-3.  Zarejestruj tej subskrypcji:
-
-    ```
-    az feature register --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
-    ```
-
-## <a name="verify-that-the-upgrade-is-successful"></a>Sprawdź, że uaktualnienie powiodło się
-
-### <a name="powershell"></a>PowerShell
-Z poziomu terminalu programu PowerShell z podwyższonym poziomem uprawnień uruchom następujące polecenie cmdlet:
-
-```
-Get-AzProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
-```
-
-### <a name="cli"></a>Interfejs wiersza polecenia
-Z poziomu powłoki uruchom następujące polecenie:
-
-```
-az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
-```
-
-Jeśli wyświetlany jest tekst "Zarejestrowane", Twoja subskrypcja jest uaktualniany do natychmiastowe przywracanie.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -156,7 +77,7 @@ Migawki są przechowywane wraz z dysków, aby przyspieszyć tworzenie punktu odz
 Tak, dla kont usługi premium storage migawki wykonane dla punktu odzyskiwania błyskawiczne zajmują 10 TB miejsca przydzielonego migawki.
 
 ### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Jak działa przechowywania migawek w okresie pięciu dni
-Każdego dnia nowe migawki, a następnie istnieje pięć poszczególnych migawek przyrostowych. Rozmiar migawki, zależy od współczynnika zmian danych, który znajduje się w większości przypadków około 2 – 7%.
+Każdego dnia nowe migawki, a następnie istnieje pięć poszczególnych migawek przyrostowych. Rozmiar migawki, zależy od współczynnika zmian danych, które są w większości przypadków około 2 – 7%.
 
 ### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>To natychmiastowe Przywracanie migawki, przyrostową migawką lub Pełna migawka?
 Migawki podjęte w ramach natychmiastowe Przywracanie możliwości są migawek przyrostowych.

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 85dca677238070ded13b59faf9a13081c2409987
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890869"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286435"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -102,19 +102,12 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 **Przyczyna 5: Usługa Kopia zapasowa nie ma uprawnień do usunięcia starych punktów przywracania z powodu blokady grupy zasobów** <br>
 **Przyczyna 6: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize — obecnie usługa Azure Backup nie obsługuje dysków o rozmiarach większych niż 1023GB
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize — obecnie usługa Azure Backup nie obsługuje dysków o rozmiarach większych niż 4095GB
 
 **Kod błędu:**: UserErrorUnsupportedDiskSize <br>
-**Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków o rozmiarze większym niż 1023 GB <br>
+**Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków o rozmiarach większych niż 4095GB <br>
 
-Podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do przywrócenia błyskawiczne, operację tworzenia kopii zapasowej może się nie powieść. Uaktualnianie do przywrócenia błyskawiczne zapewni obsługuje do 4TB, zobacz ten [artykułu](backup-instant-restore-capability.md#upgrading-to-instant-restore). Po uaktualnieniu, potrwa do dwóch godzin dla subskrypcji móc korzystać z tej funkcji. Zapewniają wystarczające buforu przed ponowieniem operacji.  
-
-## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported — obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa
-
-**Kod błędu:**: UserErrorStandardSSDNotSupported <br>
-**Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa <br>
-
-Obecnie usługa Azure Backup obsługuje dyski SSD w warstwie standardowa tylko w przypadku magazynów, które zostaną uaktualnione do [natychmiastowe Przywracanie](backup-instant-restore-capability.md).
+Operację tworzenia kopii zapasowej może zakończyć się niepowodzeniem, podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 4095GB. Obsługę dużych dysków będzie dostępna wkrótce.  
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress — nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej
 
@@ -200,7 +193,7 @@ Następujące warunki mogłyby spowodować zadania migawki nie powiedzie się:
 | Przyczyna | Rozwiązanie |
 | --- | --- |
 | Stan maszyny Wirtualnej jest zgłaszany niepoprawnie, ponieważ maszyna wirtualna zostanie zamknięta w protokole RDP (Remote Desktop). | Wyłączenie maszyny Wirtualnej w protokole RDP sprawdzić w portalu w celu ustalenia, czy stan maszyny Wirtualnej jest poprawna. Jeśli nie jest poprawny, należy wyłączyć maszynę Wirtualną w portalu przy użyciu **zamknięcia** opcji na pulpicie nawigacyjnym maszyn wirtualnych. |
-| Maszyna wirtualna nie można pobrać adres hosta lub w sieci szkieletowej z serwera DHCP. | DHCP musi być włączona na gościu przeznaczonego na kopie zapasowe maszyn wirtualnych IaaS do pracy. Jeśli maszyna wirtualna nie może uzyskać adres hosta lub w sieci szkieletowej z odpowiedzi serwerów DHCP 245, go nie można pobrać lub uruchomić żadnych rozszerzeń. Jeśli potrzebujesz statycznego prywatnego adresu IP, należy skonfigurować ją przy użyciu **witryny Azure Portal** lub **PowerShell** i upewnij się, że jest włączona opcja DHCP wewnątrz maszyny Wirtualnej. [Dowiedz się więcej](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o konfigurowaniu statyczny adres IP przy użyciu programu PowerShell.
+| Maszyna wirtualna nie można pobrać adres hosta lub w sieci szkieletowej z serwera DHCP. | DHCP musi być włączona na gościu przeznaczonego na kopie zapasowe maszyn wirtualnych IaaS do pracy. Jeśli maszyna wirtualna nie może uzyskać adres hosta lub w sieci szkieletowej z odpowiedzi serwerów DHCP 245, go nie można pobrać lub uruchomić żadnych rozszerzeń. Jeśli potrzebujesz statycznego prywatnego adresu IP, należy skonfigurować ją przy użyciu **witryny Azure portal** lub **PowerShell** i upewnij się, że jest włączona opcja DHCP wewnątrz maszyny Wirtualnej. [Dowiedz się więcej](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o konfigurowaniu statyczny adres IP przy użyciu programu PowerShell.
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Rozszerzenie kopii zapasowej nie powiedzie się zaktualizować lub załadować
 Jeśli nie można załadować rozszerzenia kopii zapasowej nie powiedzie się, ponieważ migawka nie może być przyjęty.

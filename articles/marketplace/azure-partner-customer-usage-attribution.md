@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3f3c7523bfc800a74da56b1b3241ac5756c68d14
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
-ms.translationtype: MT
+ms.openlocfilehash: ae31aa19e5905ccafcd0161ea362cc68234f8295
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215510"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294758"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -127,6 +127,8 @@ Korzystając z wiersza polecenia platformy Azure do dołączenia z identyfikator
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+Aby uzyskać więcej informacji, zobacz [zestawu Azure SDK dla języka Go](https://docs.microsoft.com/go/azure/).
+
 ## <a name="use-terraform"></a>Za pomocą narzędzia Terraform
 
 Pomoc techniczna dotycząca narzędzia Terraform jest dostępna za pośrednictwem dostawcy usługi Azure 1.21.0 wydania: [ https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019 ](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Ta obsługa dotyczy wszystkich partnerów, którzy wdrażają swoje rozwiązanie za pomocą narzędzia Terraform i wszystkie zasoby wdrożone i opłaty naliczane przez dostawcę usługi Azure (wersja 1.21.0 lub nowszej).
@@ -280,7 +282,7 @@ Jeśli potrzebujesz pomocy dla dołączania do witryny Marketplace i/lub autorst
    - W przypadku użycia skojarzenia problemów wybierz **innych**.
    - W przypadku problemów z dostępem za pomocą Azure Marketplace CPP wybrać **Problem z dostępem**.
    
-    ![Wybierz kategorię problemu](media/marketplace-publishers-guide/lu-article-incident.png)
+     ![Wybierz kategorię problemu](media/marketplace-publishers-guide/lu-article-incident.png)
 
 1. Wybierz **żądanie uruchomienia**.
 
@@ -299,7 +301,7 @@ Wskazówki techniczne może również odbierać od firmy Microsoft Partner Konsu
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Jak przesłać żądanie konsultacji Technical Preview
 
-1. Odwiedź stronę [ http://aka.ms/TechnicalJourney ](http://aka.ms/TechnicalJourney).
+1. Odwiedź stronę [ https://aka.ms/TechnicalJourney ](https://aka.ms/TechnicalJourney).
 1. Wybierz infrastruktury chmury i zarządzania oraz Nowa strona zostanie otwarty w celu wyświetlania podróż Technical Preview.
 1. W ramach wdrożenia usługi kliknij przycisk Prześlij przycisk żądania
 1. Zaloguj się przy użyciu konta Microsoft (konta programu MPN) lub usługi AAD (pulpit nawigacyjny partnera konta); oparte na logowanie poświadczenia, zostanie otwarty formularz zgłoszenia online: 
@@ -308,7 +310,7 @@ Wskazówki techniczne może również odbierać od firmy Microsoft Partner Konsu
     * Wprowadź tytuł i opis problemu (Podaj jak najdokładniejsze informacje, jak to możliwe).
 1. Kliknij przycisk Prześlij
 
-Wyświetl instrukcje krok po kroku ze zrzutami ekranu na [ http://aka.ms/TechConsultInstructions ](http://aka.ms/TechConsultInstructions).
+Wyświetl instrukcje krok po kroku ze zrzutami ekranu na [ https://aka.ms/TechConsultInstructions ](https://aka.ms/TechConsultInstructions).
 
 ### <a name="whats-next"></a>Jaka jest przyszłość
 

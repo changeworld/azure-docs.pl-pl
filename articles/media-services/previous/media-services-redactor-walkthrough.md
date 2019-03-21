@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: rli; juliako;
-ms.openlocfilehash: 14a274dbbc45f00ecf914d5bb0a3e1c040fb3a89
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3e4844c3174e41ca7f6f5667a2777aba11f70f11
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994527"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292992"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Redagowanie twarze z przewodnikiem analizy multimediów Azure
 
@@ -130,6 +130,6 @@ Jeśli jesteś deweloperem próby przeprowadzenia analizy danych JSON w adnotacj
 ## <a name="related-links"></a>Powiązane linki
 [Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
 
-[Pokazy usługi Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Pokazy usługi Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 [Ogłoszenie pomocą redakcji twarzy na potrzeby analizy multimediów Azure](https://azure.microsoft.com/blog/azure-media-redactor/)

@@ -12,18 +12,29 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 69ca51776a61b43768ce7cb1565451c4f118de6e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: f3bb6fa93a96adcd2c1995b6874aa0b36b2ce320
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316527"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884527"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Wielomodelowa możliwości usługi Azure SQL Database
 
 Wielomodelowe bazy danych pozwalają na przechowywanie i pracować z danymi reprezentowane w wielu formatach danych, takich jak dane relacyjne, wykresy, dokumenty JSON/XML, pary klucz wartość itp.
 
-Usługa Azure SQL Database jest przeznaczona do pracy przy użyciu modelu relacyjnego, która zapewnia najlepszą wydajność, w większości przypadków dla różnych aplikacji do zastosowań. Jednak usługi Azure SQL Database nie jest ograniczona do relacyjnych — tylko dane. Usługa Azure SQL Database umożliwia użycie różnych formatach nierelacyjnych, które są ściśle zintegrowane model relacyjny. Usługi Azure SQL, oferuje następujące funkcje wielomodelowa:
+## <a name="when-to-use-multi-model-capabilities"></a>Kiedy należy używać funkcji wielu modeli
+
+Usługa Azure SQL Database jest przeznaczona do pracy przy użyciu modelu relacyjnego, która zapewnia najlepszą wydajność, w większości przypadków dla różnych aplikacji do zastosowań. Jednak usługi Azure SQL Database nie jest ograniczona do relacyjnych — tylko dane. Usługa Azure SQL Database umożliwia użycie różnych formatach nierelacyjnych, które są ściśle zintegrowane model relacyjny.
+Należy rozważyć użycie wielu modeli możliwości usługi Azure SQL Database w następujących przypadkach:
+- Masz niektóre informacje lub struktur, które lepiej nadają się do modeli NoSQL, a nie chcesz używać oddzielnej bazy danych NoSQL.
+- Większość danych nadaje się do modelu relacyjnego, i należy do modelowania niektórych części danych w stylu NoSQL.
+- Chcesz korzystać z rozbudowanych języka Transact-SQL do tworzenia zapytań i analizowania zarówno relacyjnych, jak i danych NoSQL i zintegruj ją z różnych narzędzi i aplikacjach, można użyć języka SQL.
+- Chcesz zastosować funkcje bazy danych, takich jak [technologiom pamięci](sql-database-in-memory.md) aby poprawić wydajność usługi analityczne lub przetwarzanie Twojego strucutres danych NoSQL, użyj [replikacji transakcyjnej](sql-database-managed-instance-transactional-replication.md) lub [replik z możliwością odczytu](sql-database-read-scale-out.md) do utworzenia kopii danych w innym miejscu i odciążania niektórych obciążeń analitycznych z podstawowej bazy danych.
+
+## <a name="overview"></a>Przegląd
+
+Usługi Azure SQL, oferuje następujące funkcje wielomodelowa:
 - [Wykres funkcji](#graph-features) pozwalają do reprezentowania danych jako zestaw węzłów i krawędzi, a następnie użyj standardowego zapytania Transact-SQL, rozszerzony o wykres `MATCH` — operator zapytań o dane wykresu.
 - [Funkcje JSON](#json-features) umożliwia umieszczanie dokumenty JSON w tabelach i przekształcania danych relacyjnych dokumentów JSON i na odwrót. Możesz użyć standardowego języka Transact-SQL, ulepszone funkcje podczas analizowania dokumentów JSON i umożliwia zoptymalizowanie zapytań bez klastrowanych indeksów, indeksy magazynu kolumn lub w przypadku tabel zoptymalizowanych pod kątem pamięci.
 - [Funkcje przestrzenne](#spatial-features) pozwala na przechowywanie danych geograficznych i geometryczne, indeksować je przy użyciu indeksów przestrzennych i pobierać dane za pomocą zapytań przestrzennych.
@@ -56,7 +67,7 @@ Nie ma nic, który może osiągnąć bazy danych grafów, które nie mogą być 
 
 ## <a name="json-features"></a>Funkcje JSON
 
-Azure umożliwia bazy danych SQL, analizy i kwerend danych reprezentowanych w JavaScript Object Notation [(JSON)](http://www.json.org/) formatowania i eksportowanie danych relacyjnych jako tekst w formacie JSON.
+Azure umożliwia bazy danych SQL, analizy i kwerend danych reprezentowanych w JavaScript Object Notation [(JSON)](https://www.json.org/) formatowania i eksportowanie danych relacyjnych jako tekst w formacie JSON.
 
 JSON to format popularnych dane używane do wymiany danych w nowoczesne rozwiązania sieci web i aplikacji mobilnych. JSON jest również używany do przechowywania danych z częściową strukturą w plikach dziennika lub bazy danych NoSQL, takie jak [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Wiele usług sieci web REST zwracane wyniki formatować jako tekstu JSON lub akceptować dane w formacie JSON. Większość Azure services, takich jak [usługi Azure Search](https://azure.microsoft.com/services/search/), [usługi Azure Storage](https://azure.microsoft.com/services/storage/), i [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) punkty końcowe REST, które zwracają lub zużywają JSON.
 

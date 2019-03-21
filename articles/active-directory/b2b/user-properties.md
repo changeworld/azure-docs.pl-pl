@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45e9553a3af8a09a6630efa771294661702feef5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670714"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294658"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Właściwości użytkownika współpracy B2B usługi Azure Active Directory
 
@@ -32,7 +33,7 @@ W zależności od potrzeb organizacji zapraszającej użytkownik współpracy B2
 
 - Stan 4: Umieszczone w organizacji hosta usługi Azure AD z wartością UserType = gościa i poświadczenia, które zarządza hosta.
 
-  ![Wyświetlanie inicjały zapraszającej](media/user-properties/redemption-diagram.png)
+  ![Diagram przedstawiający stany czterech użytkowników](media/user-properties/redemption-diagram.png)
 
 
 Teraz zobaczmy, jak wygląda użytkownik współpracy B2B usługi Azure AD w usłudze Azure AD.
@@ -41,7 +42,7 @@ Teraz zobaczmy, jak wygląda użytkownik współpracy B2B usługi Azure AD w us�
 
 Stan 1 i 2 stan konta są wynikiem zaprosisz użytkowników-gości do współpracy przy użyciu poświadczeń własnych użytkowników gości. Gdy zaproszenie początkowo jest wysyłana do użytkownika gościa, konto jest tworzone w katalogu. To konto nie ma żadnych poświadczeń skojarzonych z nią, ponieważ uwierzytelnianie jest wykonywane przez dostawcę tożsamości użytkownika gościa. **Źródła** dla konta gościa w katalogu zostaje ustalona **użytkownika Invited**. 
 
-![Przed realizacji oferty](media/user-properties/before-redemption.png)
+![Zrzut ekranu przedstawiający właściwości użytkownika przed realizacji oferty](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>Po realizacja zaproszenia
 
@@ -87,7 +88,7 @@ Zazwyczaj użytkownik B2B usługi Azure AD i użytkownika-gościa są równoznac
 
 ## <a name="filter-for-guest-users-in-the-directory"></a>Filtr dla użytkowników-gości w katalogu
 
-![Filtruj użytkowników-gości](media/user-properties/filter-guest-users.png)
+![Zrzut ekranu przedstawiający filtr dla użytkowników-gości](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Konwertuj UserType
 Istnieje możliwość konwersji UserType elementu członkowskiego gościa i na odwrót przy użyciu programu PowerShell. Jednak Właściwość UserType reprezentuje relację użytkownika w organizacji. W związku z tym należy zmienić tylko wtedy, gdy właściwość relacja użytkownika do zmian w organizacji. Jeśli relacja użytkownik zmieni się, należy zmienić nazwę główną użytkownika (UPN)? Użytkownik powinien nadal mieć dostęp do tych samych zasobów? Powinien być przypisany skrzynki pocztowej Nie zaleca się zmianę UserType przy użyciu programu PowerShell jako atomic działania. Ponadto w przypadku, gdy ta właściwość stanie się niezmienne przy użyciu programu PowerShell, nie zaleca się zależna od tej wartości.
@@ -97,7 +98,7 @@ Może to być przypadki, w którym chcesz zapewnić użytkownikom gościa z wyż
 
 Istnieje możliwość wyłączenia ograniczenia domyślne, tak aby użytkownik-Gość w katalogu firmy ma takie same uprawnienia, jak użytkownika elementu członkowskiego.
 
-![Usuń ograniczenia użytkownika gościa](media/user-properties/remove-guest-limitations.png)
+![Zrzut ekranu przedstawiający opcję w ustawieniach użytkownika dla użytkowników zewnętrznych](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Czy mogę utworzyć użytkowników-gości widoczne w globalnej listy adresowej Exchange?
 Tak. Domyślnie obiekty gościa nie są widoczne w Twojej organizacji globalnej liście adresowej, ale można użyć programu PowerShell usługi Azure Active Directory, aby stały się widoczne. Aby uzyskać więcej informacji, zobacz **mogę sprawdzić, że obiekty gościa widoczna na globalnej liście adresowej?** w [zarządzanie dostępem gości w grup usługi Office 365](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq). 

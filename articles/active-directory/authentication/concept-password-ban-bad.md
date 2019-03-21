@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccad4f9aaa85d528697c1bcf34e1b034eeabe9e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: b7dcac665dadef7f3f192e7f0e359b6b7c244bde
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996011"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287030"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
-
-|     |
-| --- |
-| Ochrony hasłem w usłudze Azure AD i listy niestandardowej zakazanych haseł są publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
 
 Liderów branży zorientować się, nie należy używać tego samego hasła w wielu miejscach złożoną i nie wprowadzać proste, np. / Password123. Jak organizacje gwarantuje, że postępujesz zgodnie z użytkownikom wskazówki Jak one upewnij się, że użytkownicy nie są przy użyciu wspólnego hasła lub haseł, które są znane mają zostać uwzględnione w ostatnich naruszeń danych?
 
@@ -31,7 +26,7 @@ Liderów branży zorientować się, nie należy używać tego samego hasła w wi
 
 Firma Microsoft nieustannie pracuje, by pozostawać o krok przed przestępcami. W związku z tym zespół usługi Azure AD Identity Protection nieustannie szukać haseł często używane i których bezpieczeństwo zostało naruszone. Następnie blokują tych haseł, które zostaną uznane za zbyt często używany w co nosi nazwę listy globalne zakazanych haseł. Cyberprzestępcy również stosują podobne strategie w ich ataków, w związku z tym Microsoft nie publikuje zawartość tej listy publicznie. Te narażone hasła są blokowane, zanim staną się prawdziwym zagrożeniem dla klientów firmy Microsoft. Aby uzyskać więcej informacji na temat bieżącego działaniach związanych z zabezpieczeniami, zobacz [Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report).
 
-## <a name="preview-custom-banned-password-list"></a>Wersja zapoznawcza: Lista zakazanych haseł niestandardowych
+## <a name="custom-banned-password-list"></a>Lista zakazanych haseł niestandardowych
 
 Niektóre organizacje mogą chcieć wykonać zabezpieczeń jeden krok dalej przez dodanie dostosowań na górze listy globalne zakazanych haseł co Microsoft wywołuje listy niestandardowej zakazanych haseł. Klientów korporacyjnych, takich jak Contoso następnie można zdecydować się na zablokowanie warianty ich nazwy na marki, warunki specyficzny dla firmy lub innych elementów.
 
@@ -41,7 +36,7 @@ Niestandardowy zablokowane lista hasła oraz możliwość włączenia Active Dir
 
 ## <a name="on-premises-hybrid-scenarios"></a>Scenariusze hybrydowe w środowisku lokalnym
 
-Ochrona konta tylko w chmurze jest pomocne, ale w wielu organizacjach Obsługa scenariuszy hybrydowych, w tym usługi Active Directory lokalnego systemu Windows Server. Istnieje możliwość zainstalowania ochrona za pomocą hasła usługi Azure AD dla usługi Windows Server Active Directory (wersja zapoznawcza) agentów lokalnego rozszerzenie listy zakazanych haseł w istniejącej infrastrukturze. Teraz użytkownicy i Administratorzy, którzy zmienić, ustawianie lub resetowanie haseł w środowisku lokalnym są wymagane do wykonania tych samych zasad haseł jako użytkowników tylko w chmurze.
+Ochrona konta tylko w chmurze jest pomocne, ale w wielu organizacjach Obsługa scenariuszy hybrydowych, w tym usługi Active Directory lokalnego systemu Windows Server. Istnieje możliwość zainstalowania ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server agentów lokalnego rozszerzenie listy zakazanych haseł w istniejącej infrastrukturze. Teraz użytkownicy i Administratorzy, którzy zmienić, ustawianie lub resetowanie haseł w środowisku lokalnym są wymagane do wykonania tych samych zasad haseł jako użytkowników tylko w chmurze.
 
 ## <a name="how-are-passwords-evaluated"></a>Sposób oceniania hasła
 

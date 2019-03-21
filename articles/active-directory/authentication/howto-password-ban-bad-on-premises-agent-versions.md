@@ -11,19 +11,32 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8897651c963b0036bc2ac3d8cdb06a52d6f52ba1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 6e09127f8ed2e8e949711631a20fa5a9cd855311
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188040"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284803"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Wersja zapoznawcza:  Historia wersji agenta w usłudze Azure ochrona za pomocą hasła usługi AD
+# <a name="azure-ad-password-protection-agent-version-history"></a>Historia wersji agenta w usłudze Azure ochrona za pomocą hasła usługi AD
 
-|     |
-| --- |
-| Ochrony hasłem w usłudze Azure AD jest funkcją publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+## <a name="121160"></a>1.2.116.0
+
+Data wydania: 3/13/2019
+
+* Get-AzureADPasswordProtectionProxy i Get-AzureADPasswordProtectionDCAgent poleceń cmdlet teraz raportów w wersji oprogramowania i Azure bieżącej dzierżawy z następującymi ograniczeniami:
+  * Wersja oprogramowania i danych dzierżawy platformy Azure są tylko dostępne dla agentów kontrolera domeny i serwery proxy wersją 1.2.116.0 lub nowszych.
+  * Dane dzierżawy usługi Azure może nie być zgłaszany do czasu ponownej rejestracji (lub odnowienia) serwera proxy lub wystąpił lasu.
+* Usługa serwera Proxy teraz wymaga zainstalowania platformy .NET 4.7.
+  * .NET 4.7 powinno być już zainstalowane na serwerze systemu Windows w pełni zaktualizowany. Jeśli nie jest tak, Pobierz i uruchom Instalator znalazł w [Instalator w trybie offline programu .NET Framework 4.7 dla Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * W systemach Server Core może być konieczne do przekazania flagi/q Instalator programu .NET 4.7 w taki sposób, aby pobrać go zakończyło się sukcesem.
+* Usługa Serwer Proxy obsługuje teraz automatyczne uaktualnianie. Automatyczne uaktualnianie korzysta z usługi Microsoft Azure AD Connect Agent aktualizacji, która jest zainstalowanych obok siebie przy użyciu usługi Serwer Proxy. Automatyczne uaktualnianie jest domyślnie włączone.
+* Automatyczne uaktualnianie można włączyć lub wyłączyć za pomocą polecenia cmdlet Set-AzureADPasswordProtectionProxyConfiguration. Bieżące ustawienie może być odpytywany za pomocą polecenia cmdlet Get-AzureADPasswordProtectionProxyConfiguration.
+* Binarny usługi dla usługi agenta kontrolera domeny została zmieniona na AzureADPasswordProtectionDCAgent.exe.
+* Binarny usługi dla usługi serwera Proxy została zmieniona na AzureADPasswordProtectionProxy.exe. Reguły zapory może być konieczne w związku z tym można modyfikować, jeśli zapora innej firmy jest w użyciu.
+  * Uwaga: Jeśli plik konfiguracji serwera proxy http było używane w poprzednich Proxy zainstalować, trzeba będzie ją można zmienić nazwy (z *proxyservice.exe.config* do *AzureADPasswordProtectionProxy.exe.config*) później uaktualnianie.
+* Wszystkie kontrole czasu ograniczoną funkcjonalność zostały usunięte z agenta kontrolera domeny.
+* Rejestrowanie ulepszenia i poprawki drobnych usterek.
 
 ## <a name="12650"></a>1.2.65.0
 

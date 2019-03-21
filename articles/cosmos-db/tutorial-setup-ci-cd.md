@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: c5ae3523da6da3286a65328cf302c5b211987d6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c8f7e3cd6a2b4b6105547d7a4429803a00f6999f
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895239"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285517"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -39,7 +39,7 @@ Następnie wybierz organizację, w której chcesz zainstalować rozszerzenie.
 
 Teraz, gdy rozszerzenie jest zainstalowane, zaloguj się do swojego konta usługi Azure DevOps i znajdź swój projekt na pulpicie nawigacyjnym projektów. Do projektu możesz dodać [potok kompilacji](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) lub zmodyfikować istniejący potok kompilacji. Jeśli masz już potok kompilacji, możesz przejść od razu do sekcji [Dodawanie zadania kompilacji emulatora do definicji kompilacji](#addEmulatorBuildTaskToBuildDefinition).
 
-1. Aby utworzyć nową definicję kompilacji, przejdź do karty **Builds** (Kompilacje) w usłudze Azure DevOps. Wybierz pozycję **+New** (+Nowe). >  **New build pipeline** (Nowy potok kompilacji)
+1. Aby utworzyć nową definicję kompilacji, przejdź do karty **Builds** (Kompilacje) w usłudze Azure DevOps. Wybierz pozycję **+New** (+Nowe). \> **Nowy potok kompilacji**
 
    ![Tworzenie nowego potoku kompilacji](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 

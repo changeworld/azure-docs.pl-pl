@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: af3e7528e2312cef1832dc104e83384a91acf263
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: b6950e3445f2320f2e3a45f55726befd7077119a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991346"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835913"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcę zasobów usługi App Service do odłączonego środowiska usługi Azure Stack, zabezpieczone przez usługi AD FS
 
@@ -82,28 +82,28 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
     ![Instalator usługi App Service][3]
 
 7. Na następnej stronie:
-    1. Kliknij przycisk **Connect** znajdujący się obok **usługi Azure Stack subskrypcje** pole.
-        - Podaj konto administratora. Na przykład cloudadmin@azurestack.local. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
-    2. W **usługi Azure Stack subskrypcje** wybierz opcję **domyślne subskrypcję dostawcy**.
+   1. Kliknij przycisk **Connect** znajdujący się obok **usługi Azure Stack subskrypcje** pole.
+      - Podaj konto administratora. Na przykład cloudadmin@azurestack.local. Wprowadź hasło, a następnie kliknij przycisk **Sign In**.
+   2. W **usługi Azure Stack subskrypcje** wybierz opcję **domyślne subskrypcję dostawcy**.
     
-    > [!NOTE]
-    > Usługa App Service można wdrażać tylko w **domyślne subskrypcję dostawcy**.
-    >
+      > [!NOTE]
+      > Usługa App Service można wdrażać tylko w **domyślne subskrypcję dostawcy**.
+      >
     
-    3. W **lokalizacje usługi Azure Stack** wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
-    4. Kliknij przycisk **Dalej**.
+   3. W **lokalizacje usługi Azure Stack** wybierz lokalizację, do której odnosi się do regionu jest wdrażany na. Na przykład wybierz **lokalnego** Jeśli Twoje wdrożenie usługi Azure Stack Development Kit.
+   4. Kliknij przycisk **Dalej**.
 
-    ![Instalator usługi App Service][4]
+      ![Instalator usługi App Service][4]
 
 8. Masz teraz możliwość wdrożenia do istniejącej sieci wirtualnej, zgodnie z konfiguracją kroki [tutaj](azure-stack-app-service-before-you-get-started.md#virtual-network), lub zezwolić Instalatora usługi App Service, aby utworzyć sieć wirtualną i skojarzone podsieci.
-    1. Wybierz **Utwórz sieć wirtualną z ustawieniami domyślnymi**, zaakceptuj wartości domyślne, a następnie kliknij przycisk **dalej**, lub;
-    2. Wybierz **użyć istniejącej sieci wirtualnej i podsieci**.
-        1. Wybierz **grupy zasobów** zawierający sieci wirtualnej.
-        2. Wybierz prawidłowy **sieci wirtualnej** nazwy, które chcesz wdrożyć w;
-        3. Wybierz poprawnego **podsieci** wartości dla każdej z tych podsieci roli wymagane;
-        4. Kliknij przycisk **Dalej**
+   1. Wybierz **Utwórz sieć wirtualną z ustawieniami domyślnymi**, zaakceptuj wartości domyślne, a następnie kliknij przycisk **dalej**, lub;
+   2. Wybierz **użyć istniejącej sieci wirtualnej i podsieci**.
+       1. Wybierz **grupy zasobów** zawierający sieci wirtualnej.
+       2. Wybierz prawidłowy **sieci wirtualnej** nazwy, które chcesz wdrożyć w;
+       3. Wybierz poprawnego **podsieci** wartości dla każdej z tych podsieci roli wymagane;
+       4. Kliknij przycisk **Dalej**
 
-    ![Instalator usługi App Service][5]
+      ![Instalator usługi App Service][5]
 
 9. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików należy użyć w pełni kwalifikowaną nazwę domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites.  Jeśli używasz serwera plików, który jest przyłączony do domeny, należy podać pełną nazwę użytkownika, łącznie z domeną, na przykład myfileserverdomain\FileShareOwner.
 
@@ -152,7 +152,7 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
     > ```
     > Zapoznaj się [informacje o wersji dla usługi Azure App Service w usłudze Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md) Aby uzyskać więcej informacji.
    
-   ![Instalator usługi App Service][12]
+    ![Instalator usługi App Service][12]
 
 13. Przejrzyj opcje jednostki SKU i wystąpienia roli. Wartości domyślne są wypełniane przy użyciu minimalnej liczby wystąpień i minimalne jednostki SKU dla każdej roli we wdrożeniu ASDK. Aby ułatwić planowanie wdrożenia usługi udostępniane jest podsumowanie wymagań dotyczących pamięci i procesorów wirtualnych. Po dokonaniu wyboru, kliknij przycisk **dalej**.
 
@@ -210,7 +210,7 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
     ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
 
 > [!NOTE]
-> Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrznego adresu IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+> Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
 > * Źródło: Dowolne
 > * Zakres portów źródłowych: *
 > * Miejsce docelowe: Adresy IP
@@ -253,7 +253,7 @@ Po wdrażanie i rejestrowanie dostawcy zasobów usługi App Service, go przetest
 
 1. W portalu dzierżawcy usługi Azure Stack, kliknij przycisk **+**, przejdź do portalu Azure Marketplace, wdrażanie witryny sieci Web Django i poczekaj na pomyślne zakończenie. Platforma sieci web Django korzysta z bazy danych opartych na systemie plików. Nie wymaga żadnych dostawców dodatkowych zasobów, takich jak SQL lub MySQL.
 
-2. Jeśli wdrożono również dostawcy zasobów bazy danych MySQL, można wdrażać witryny sieci Web WordPress w witrynie Marketplace. Po wyświetleniu monitu dla bazy danych, parametrów, wprowadź nazwę użytkownika jako *User1@Server1*, nazwą użytkownika i nazwę serwera.
+2. Jeśli wdrożono również dostawcy zasobów bazy danych MySQL, można wdrażać witryny sieci Web WordPress w witrynie Marketplace. Po wyświetleniu monitu dla bazy danych, parametrów, wprowadź nazwę użytkownika jako *Użytkownik1\@serwer1*, nazwą użytkownika i nazwę serwera.
 
 3. Jeśli wdrożono również dostawcę zasobów programu SQL Server, można wdrożyć DNN witryny sieci Web z witryny Marketplace. Po wyświetleniu monitu dla parametrów bazy danych, wybierz bazę danych na komputerze z uruchomionym programem SQL Server, która jest połączona z dostawcą zasobów.
 

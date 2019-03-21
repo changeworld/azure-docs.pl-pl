@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 830825c6ad54a6ff300fb7ee223b32ee0571a55a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bb244cb03ed5419762541e93784bb72fcf252676
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163538"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258058"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Jak zarządzać urządzeniami przy użyciu witryny Azure portal
 
@@ -83,7 +83,7 @@ Na stronie ustawień urządzenia można skonfigurować:
 
 - **Użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach** — domyślnie to ustawienie ma wartość **NONE**. Wybranie określonych użytkowników lub grup lub wszystkie umożliwia użytkownika ustawień i danych aplikacji na synchronizacje przez urządzeń z systemem Windows 10. Dowiedz się więcej na temat działania synchronizacji w systemie Windows 10.
 Ta opcja jest możliwość premium, dostępna za pośrednictwem produktów, takich jak Azure AD Premium lub Enterprise Mobility Suite (EMS).
- 
+
 
 
 
@@ -119,7 +119,7 @@ Niektóre urządzenia z systemem iOS nazwy urządzenia, zawierające apostrofy m
 
 ## <a name="device-management-tasks"></a>Zadania dotyczące zarządzania urządzeniami
 
-Jako administrator globalny można zarządzać zarejestrowane lub dołączonym do urządzenia. Administratorzy usługi Intune mogą:
+Jako administrator globalny lub administrator urządzenia w chmurze można zarządzać zarejestrowane lub dołączonym do urządzenia. Administratorzy usługi Intune mogą:
  
 - Aktualizacja urządzenia — przykłady są codziennych operacji, takich jak włączanie/wyłączanie urządzeń
 
@@ -151,7 +151,7 @@ Aby włączyć / wyłączyć urządzenie, masz dwie opcje:
 
 **Uwagi:**
 
-- Musisz być administratorem globalnym w usłudze Azure AD, aby włączyć / wyłączyć urządzenie. 
+- Musisz być administratorem globalnym lub administrator urządzenia w chmurze w usłudze Azure AD, aby włączyć / wyłączyć urządzenie. 
 - Wyłączenie urządzenia powoduje urządzenia z pomyślnym uwierzytelnieniu w usłudze Azure AD, zapobiegając w ten sposób urządzeniu dostęp do zasobów usługi Azure AD, na które będą chronione przez urządzenie urzędu certyfikacji lub przy użyciu poświadczeń WH4B. 
 
 

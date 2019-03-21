@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8bb1733090ac2a4f3fad837e55943706309c4a5a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 9cb43cfdf930b14449f5c7130df275ef0b8d6484
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344016"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842621"
 ---
 # <a name="advanced-resource-graph-queries"></a>Zaawansowane zapytania usługi Resource Graph
 
@@ -74,7 +74,7 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 ## <a name="vm-regex"></a>Wyświetlanie maszyn wirtualnych dopasowanych przez wyrażenie regularne
 
 To zapytanie szuka maszyn wirtualnych, które odpowiadają [wyrażeniu regularnemu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (nazywanemu _regex_).
-Polecenie **matches regex @** pozwala na określenie wyrażenia regularnego do dopasowania, czyli `^Contoso(.*)[0-9]+$`. Definicja tego wyrażenia regularnego jest wyjaśniona jako:
+**Pasuje do wyrażenia regularnego \@**  pozwala na określenie wyrażenia regularnego do dopasowania, czyli `^Contoso(.*)[0-9]+$`. Definicja tego wyrażenia regularnego jest wyjaśniona jako:
 
 - `^` - Dopasowanie musi zaczynać się od początku ciągu.
 - `Contoso` - Ciąg z uwzględnieniem wielkości liter.
@@ -101,7 +101,7 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz przykłady [zapytań dla początkujących](starter.md)
 - Dowiedz się więcej o [języku zapytań](../concepts/query-language.md)

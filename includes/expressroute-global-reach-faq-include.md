@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 01/29/2019
+ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55235996"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305132"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co to jest usługa ExpressRoute zasięgu globalnym?
 
@@ -49,7 +49,7 @@ Nie. Aby włączyć łączność między dowolnymi dwiema sieci lokalnej, należ
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Co to jest przepływność sieci, oczekiwanych między Moje sieci w środowisku lokalnym, po włączeniu zasięgu globalnym usługi ExpressRoute?
 
-Przepustowość sieci między sieci w środowisku lokalnym, korzystając z usługi ExpressRoute zasięgu globalnym, jest ograniczone przez mniejszą z dwóch obwodów usługi ExpressRoute.
+Przepustowość sieci między sieci w środowisku lokalnym, korzystając z usługi ExpressRoute zasięgu globalnym, jest ograniczone przez mniejszą z dwóch obwodów usługi ExpressRoute. Ruchu lokalnego na platformę Azure ruchu lokalnego do lokalnego współużytkować ten sam obwód i podlegają tym samym ograniczenie przepustowości. 
 
 ### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>Za pomocą usługi ExpressRoute zasięgu globalnym jakie są ograniczenia liczby tras, które można było ogłaszać dłuższe i liczby tras, które będę otrzymywać?
 

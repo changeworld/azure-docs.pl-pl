@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 21b036763a1e8a7480d11fef4c36599f92fc3657
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853192"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295253"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i korzystanie z aktywnej replikacji geograficznej
 
@@ -115,6 +115,12 @@ Można uaktualnić lub obniżyć podstawowej bazy danych do rozmiaru obliczeniow
 
 > [!NOTE]
 > Jeśli utworzono pomocniczej bazy danych jako część konfiguracji grupy trybu failover, który nie jest zalecane w przypadku obniżania pomocniczej bazy danych. To jest, aby upewnić się, że w warstwie danych ma dostatecznie dużą pojemność przetwarzanie regularne obciążenie, po aktywowaniu trybu failover.
+
+> [!IMPORTANT]
+> Podstawowej bazy danych w grupie trybu failover nie można skalować do wyższego poziomu, chyba że najpierw skalowania pomocniczej bazy danych wybranej wyższej warstwie. Jeśli zostanie podjęta próba skalowania podstawowej bazy danych przed pomocnicze bazy danych jest skalowana, można otrzymać następujący błąd:
+>
+> `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
+>
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Zapobieganie utracie danych o kluczowym znaczeniu
 

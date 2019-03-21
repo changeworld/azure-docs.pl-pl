@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996962"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259078"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurowanie zasad ochrony zawartości przy użyciu witryny Azure portal
  Usługa Azure Media Services można zabezpieczyć multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES) przy użyciu kluczy szyfrowania 128-bitowego. Ponadto można korzystania z szyfrowania common encryption (CENC) przy użyciu technologii PlayReady i Widevine zarządzania prawami cyfrowymi (DRM) i technologii FairPlay firmy Apple. 
@@ -71,7 +71,7 @@ Szablon licencji Widevine Ustawia funkcje, które jest włączona z licencji Wid
 ### <a name="basic"></a>Podstawowa
 Po wybraniu **podstawowe**, szablon został utworzony przy użyciu wszystkich wartości domyślnych.
 
-### <a name="advanced"></a>Advanced
+### <a name="advanced"></a>Zaawansowane
 Aby uzyskać więcej informacji na temat szablon praw technologii Widevine, zobacz [omówienie szablonu licencji Widevine](media-services-widevine-license-template-overview.md).
 
 ![Zaawansowana ochrona zawartości](./media/media-services-portal-content-protection/media-services-content-protection005.png)
