@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/18/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: bb9e5ba960251f728e14106ab1c586e1d3ef373f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 33f1ccf3f1c7bc657cc66efe7c5025356c954ad6
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538650"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187765"
 ---
 # <a name="asdk-release-notes"></a>Informacje o wersji ASDK
 
@@ -30,9 +30,11 @@ Na bieżąco what's new in ASDK subskrybując [ ![RSS](./media/asdk-release-note
 
 ## <a name="build-11902069"></a>Tworzenie 1.1902.0.69
 
-### <a name="changes"></a>Zmiany
+### <a name="new-features"></a>Nowe funkcje
 
 - Kompilacja 1902 wprowadza nowy interfejs użytkownika w portalu administratora usługi Azure Stack do tworzenia plany, oferty, przydziały i planów dodatków. Aby uzyskać więcej informacji, w tym ze zrzutami ekranu, zobacz [Tworzenie planów, ofert i przydziałów](../azure-stack-create-plan.md).
+
+- Aby uzyskać listę innych zmian i ulepszeń w tej wersji, zobacz [w tej sekcji](../azure-stack-update-1902.md#improvements) informacje o wersji w usłudze Azure Stack.
 
 <!-- ### New features
 
@@ -42,6 +44,20 @@ Na bieżąco what's new in ASDK subskrybując [ ![RSS](./media/asdk-release-note
 
 - For a list of issues fixed in this release, see [this section](../azure-stack-update-1902.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../azure-stack-update-1902.md#known-issues-post-installation).
 - Note that [available Azure Stack hotfixes](../azure-stack-update-1902.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK. -->
+
+### <a name="known-issues"></a>Znane problemy
+
+- Wykryto problem dotyczący porzucenia pakietów ponad 1450 bajtów do wewnętrznego obciążenia Balancer (ILB). Problem jest następstwem ustawienia MTU na hoście jest za mała, aby pomieścić VXLAN hermetyzowanych pakietów, przechodzących przez rolą, która od 1901 została przeniesiona do hosta. Istnieją co najmniej dwa scenariusze, które mogą wystąpić w przypadku których Zaobserwowaliśmy ten problem, objawiać:
+
+  - Zapytania SQL do bazy danych SQL na zawsze za wewnętrznego obciążenia Balancer (ILB), a ponad 660 bajtów.
+  - Wdrożenia rozwiązania Kubernetes się nie powieść, jeśli próba włączenia wielu wzorców.  
+
+  Ten problem występuje, gdy masz komunikacji między wewnętrznym modułem równoważenia obciążenia i maszyny Wirtualnej w tej samej sieci wirtualnej, ale w różnych podsieciach. Ten problem można obejść, uruchamiając następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień na hoście ASDK:
+
+  ```shell
+  netsh interface ipv4 set sub "hostnic" mtu=1660
+  netsh interface ipv4 set sub "management" mtu=1660
+  ```
 
 ## <a name="build-11901095"></a>Tworzenie 1.1901.0.95
 

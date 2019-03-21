@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2ca2298d-9a0c-4f14-925c-fa23f2659d28
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfcf637810a3cbbc70216af39918847e703ca32f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: f7925e6fe66579c8bf702acbe165c50d2aed536e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869738"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Samouczek: Integracja usługi Azure Active Directory z Halogen Software
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Halogen Software w usłudze Azure AD, n
 
 **Aby dodać aplikację Halogen Software z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -152,7 +152,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Halogen So
 
     b. W sekcji **Unique Identifier Maps To** (Unikatowy identyfikator jest mapowany na) wybierz opcję **Username** (Nazwa użytkownika).
   
-    d. Aby przekazać pobrany plik metadanych, kliknij przycisk **Browse** (Przeglądaj), aby wybrać plik, a następnie wybierz przycisk **Upload File** (Przekaż plik).
+    c. Aby przekazać pobrany plik metadanych, kliknij przycisk **Browse** (Przeglądaj), aby wybrać plik, a następnie wybierz przycisk **Upload File** (Przekaż plik).
 
     d. Aby przetestować konfigurację, kliknij przycisk **Run test** (Uruchom test).
 
@@ -181,7 +181,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -234,7 +234,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Halogen So
 
     b. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak **Simon**.
 
-    d. W polu tekstowym **Username** (Nazwa użytkownika) wpisz nazwę użytkownika **Britta Simon**, tak jak w witrynie Azure Portal.
+    c. W polu tekstowym **Username** (Nazwa użytkownika) wpisz nazwę użytkownika **Britta Simon**, tak jak w witrynie Azure Portal.
 
     d. W polu tekstowym **Password** (Hasło) wpisz hasło użytkownika Britta.
 
@@ -242,7 +242,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Halogen So
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Halogen Software w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Halogen Software, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

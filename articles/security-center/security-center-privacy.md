@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8cbe391f756dab35abda411c3a6c943a51eae302
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fcec410df631a58b76878a4cb327ca2fb04a2105
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115984"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117859"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Zarządzanie danymi użytkownika w usłudze Azure Security Center
 Ten artykuł zawiera informacje dotyczące sposobu możesz zarządzać danymi użytkownika w usłudze Azure Security Center. Zarządzanie danymi użytkowników umożliwia dostęp, usunąć lub eksportowanie danych.
@@ -68,25 +68,25 @@ Użytkownik usługi Security Center przypisaną rolę Czytelnik, właściciela, 
 
 - Wykonywanie kopii w witrynie Azure portal
 - Wykonywanie wywołania interfejsu API REST platformy Azure, Pobierz HTTP:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
+  ```
 
 Użytkownik usługi Security Center z przypisaną rolą z Administrator konta może wyeksportować [dokładnie na czas zasady](security-center-just-in-time.md) zawierające adres IP adresów przez:
 
 - Wykonywanie kopii w witrynie Azure portal
 - Wykonywanie wywołania interfejsu API REST platformy Azure, Pobierz HTTP:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
+  ```
 
 Administrator konta może wyeksportować szczegóły alertu przez:
 
 - Wykonywanie kopii w witrynie Azure portal
 - Wykonywanie wywołania interfejsu API REST platformy Azure, Pobierz HTTP:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
+  ```
 
 Zobacz [pobieranie alertów zabezpieczeń (pobieranie kolekcji)](https://msdn.microsoft.com/library/mt704050.aspx) Aby uzyskać więcej informacji.
 

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2aa5522b8200f87df633759ee136f744cd1b8099
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6588690629d2e266469a4b8ea533c5650f3fc0ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471236"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890886"
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Wprowadzenie do maszyny wirtualnej analizy danych geograficznych ze sztucznej inteligencji
 
@@ -44,7 +44,7 @@ Integrowanie lokalizacji geograficznej lub informacji lokalizacyjnych ze swoimi 
 
 [Maszyny wirtualnej do nauki o danych (DSVM)](overview.md) od firmy Microsoft to popularne eksperymenty i modelowania środowiska na platformie Azure, która zapewnia hosta narzędzia do analizy sztucznej Inteligencji, uczenia maszynowego i danych. Tymi platformami i narzędziami są wszystkie wygodnie wstępnie skonfigurowana pod kątem natychmiast wydajność pracy użytkownika. 
 
-Łącząc możliwości predykcyjnych maszyna wirtualna do nauki o danych dzięki możliwościom skalowania chmury platformy Azure i oprogramowania analitycznego dane geograficzne z [ESRI](http://www.esri.com), naukowcy i analitycy pracujący geoprzestrzenne powstał produktywności platformy z którego można uzyskać nowe informacje analityczne ze swoich danych oraz znaleźć nowe możliwości. 
+Łącząc możliwości predykcyjnych maszyna wirtualna do nauki o danych dzięki możliwościom skalowania chmury platformy Azure i oprogramowania analitycznego dane geograficzne z [ESRI](https://www.esri.com), naukowcy i analitycy pracujący geoprzestrzenne powstał produktywności platformy z którego można uzyskać nowe informacje analityczne ze swoich danych oraz znaleźć nowe możliwości. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

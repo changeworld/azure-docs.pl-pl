@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17a297d3099d51b3a58a6654560a67f9a4192a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aadb3188969e099a709711ac18916b67c83b5da1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208320"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą jednego Zoho
 
@@ -117,7 +117,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     d. W **tan przekaźnika** pole tekstowe, wpisz adres URL:`https://one.zoho.com`
 
-1. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb wykonaj następujące kroki:
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę usług**, wykonaj następujący krok:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com`
      
@@ -223,7 +223,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do jednej Zoho, m
     
     a. W **nazwa** tekstu wprowadź nazwę użytkownika, takich jak **Britta simon**.
     
-    b. W polu tekstowym **Email Address** (Adres e-mail) wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
+    b. W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     >[!Note]
     >Wybierz zweryfikowaną domenę z listy domen.
@@ -269,7 +269,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

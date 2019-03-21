@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e3259cb2fce9b5ec1725b200bcd53d9a8b33e908
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 0470c12f7965ec5d7e151bb6b03163d6946b83e6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050255"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548187"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji języka PHP i korzystającej z bazy danych MySQL w usłudze Azure App Service w systemie Linux
 
@@ -194,7 +194,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 > Reguła zapory może być jeszcze bardziej restrykcyjna, jeśli [zostaną użyte tylko adresy IP dla ruchu wychodzącego używane przez aplikację](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 >
 
-W usłudze Cloud Shell ponownie uruchom to samo polecenie, aby umożliwić dostęp z komputera lokalnego, zastępując wyrażenie *\<you_ip_address>* [lokalnym adresem IP w wersji IPv4](http://www.whatsmyip.org/).
+W usłudze Cloud Shell ponownie uruchom to samo polecenie, aby umożliwić dostęp z komputera lokalnego, zastępując wyrażenie *\<you_ip_address>* [lokalnym adresem IP w wersji IPv4](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>

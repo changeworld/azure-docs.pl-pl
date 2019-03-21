@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: e1013047bb66581e7f9d26854f2cd91655c8bd93
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810086"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111892"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
@@ -172,7 +172,7 @@ Użytkownik zostanie automatycznie usunięty do awaryjnego shell Jeśli SLES nie
 1. Zwróć uwagę na wiersz jądra, który rozpoczyna się od `linux`
 1. Dołącz `systemd.unit=emergency.target` do końca wiersza
 1. Naciśnij klawisze Ctrl + X ponowny rozruch przy użyciu tych ustawień, a następnie wprowadź awaryjnego powłoki
-> Należy pamiętać, że użytkownik zostanie porzucony w do awaryjnego shell przy użyciu _tylko do odczytu_ systemu plików. Jeśli chcesz wprowadzić zmiany do wszystkich plików, należy ponownie zainstalować system plików z uprawnieniami do odczytu i zapisu. Aby to zrobić, należy wprowadzić `mount -o remount,rw /` powłokę
+   > Należy pamiętać, że użytkownik zostanie porzucony w do awaryjnego shell przy użyciu _tylko do odczytu_ systemu plików. Jeśli chcesz wprowadzić zmiany do wszystkich plików, należy ponownie zainstalować system plików z uprawnieniami do odczytu i zapisu. Aby to zrobić, należy wprowadzić `mount -o remount,rw /` powłokę
 
 ## <a name="access-for-oracle-linux"></a>Dostęp do oprogramowania Oracle w systemie Linux
 Znacznie takich jak Red Hat Enterprise Linux, tryb jednego użytkownika w systemie Oracle Linux wymaga CHODNIKÓW i jako użytkownik root włączyć. 

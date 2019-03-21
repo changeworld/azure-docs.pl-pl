@@ -6,18 +6,21 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/4/2019
+ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0ab626bffa3520af0ea23314cbaed118d66e280f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199248"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Przenoszenie magazynu usługi Recovery Services między subskrypcjami platformy Azure i grup zasobów (ograniczonej publicznej wersji zapoznawczej)
 
 W tym artykule opisano sposób przenoszenia magazynu usługi Recovery Services, skonfigurowany dla usługi Azure Backup, między subskrypcjami platformy Azure lub do innej grupy zasobów w tej samej subskrypcji. Aby przenieść magazyn usługi Recovery Services, można użyć witryny Azure portal lub programu PowerShell.
+
+> [!NOTE]
+> Aby przenieść magazyn usługi Recovery Services i skojarzone z nią zasoby do innej grupy zasobów, należy najpierw [rejestrowanie subskrypcji źródłowej](#register-the-source-subscription-to-move-your-recovery-services-vault).
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Wymagania wstępne dotyczące przenoszenia magazynu
 
@@ -38,9 +41,7 @@ W tym artykule opisano sposób przenoszenia magazynu usługi Recovery Services, 
 
 > [!NOTE]
 >
-Magazyny usługi Recovery Services skonfigurowane do korzystania z **usługi Azure Site Recovery** nie można przenieść jeszcze. Jeśli skonfigurowano żadnych maszyn wirtualnych (IaaS platformy Azure, funkcji Hyper-V, VMware) lub komputerów fizycznych dla za pomocą odzyskiwania po awarii **usługi Azure Site Recovery**, operację przenoszenia, będą blokowane. Funkcji przenoszenia zasobów dla usługi Site Recovery nie jest jeszcze dostępna.
->
->
+> Magazyny usługi Recovery Services skonfigurowane do korzystania z **usługi Azure Site Recovery** nie można przenieść jeszcze. Jeśli skonfigurowano żadnych maszyn wirtualnych (IaaS platformy Azure, funkcji Hyper-V, VMware) lub komputerów fizycznych dla za pomocą odzyskiwania po awarii **usługi Azure Site Recovery**, operację przenoszenia, będą blokowane. Funkcji przenoszenia zasobów dla usługi Site Recovery nie jest jeszcze dostępna.
 
 ## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>Zarejestruj subskrypcję źródła można przenieść magazynu usługi Recovery Services
 
@@ -48,26 +49,26 @@ Można zarejestrować subskrypcji źródłowej do **przenieść** magazynu usłu
 
 1. Zaloguj się do swojego konta platformy Azure
 
-  ```
-  Connect-AzureRmAccount
-  ```
+   ```
+   Connect-AzureRmAccount
+   ```
 
-2.  Wybierz subskrypcję, która ma zostać zarejestrowany
+2. Wybierz subskrypcję, która ma zostać zarejestrowany
 
-    ```
-    Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3.  Zarejestruj tę subskrypcję
+   ```
+   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   ```
+3. Zarejestruj tę subskrypcję
 
-  ```
-  Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
-  ```
+   ```
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   ```
 
 4. Uruchamianie polecenia
 
-  ```
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-  ```
+   ```
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   ```
 
 Poczekaj, aż subskrypcja złóż wniosek o umieszczenie przed rozpoczęciem operacji przenoszenia, przy użyciu witryny Azure portal lub programu PowerShell na 30 minut.
 
@@ -78,27 +79,27 @@ Aby przenieść odzyskiwania usług magazynu i skojarzone z nią zasoby do innej
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Otwórz listę **Magazyny usługi Recovery Services** i wybierz magazyn, którą chcesz przenieść. Po otwarciu pulpitu nawigacyjnego magazynu pojawia się, jak pokazano na poniższej ilustracji.
 
-  ![Odzyskaj Otwórz magazyn usługi](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Odzyskaj Otwórz magazyn usługi](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-  Jeśli nie widzisz **Essentials** informacje dla swojego magazynu, kliknij ikonę listy rozwijanej. Powinien zostać wyświetlony informacji podstawy dla magazynu.
+   Jeśli nie widzisz **Essentials** informacje dla swojego magazynu, kliknij ikonę listy rozwijanej. Powinien zostać wyświetlony informacji podstawy dla magazynu.
 
-  ![Informacje o karcie danych podstawowych](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+   ![Informacje o karcie danych podstawowych](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
 3. W menu przegląd magazynu, kliknij przycisk **zmienić** obok **grupy zasobów**, aby otworzyć **przenoszenia zasobów** bloku.
 
-  ![Zmień grupę zasobów](./media/backup-azure-move-recovery-services/change-resource-group.png)
+   ![Zmień grupę zasobów](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
 4. W **przenoszenia zasobów** bloku wybranego magazynu zaleca przenieść opcjonalne powiązane zasoby, zaznaczając pole wyboru, jak pokazano na poniższej ilustracji.
 
-  ![Przeniesienie subskrypcji](./media/backup-azure-move-recovery-services/move-resource.png)
+   ![Przeniesienie subskrypcji](./media/backup-azure-move-recovery-services/move-resource.png)
 
 5. Aby dodać docelową grupę zasobów w **grupy zasobów** listy rozwijanej wybierz istniejący zasób grupy, lub kliknij przycisk **Utwórz nową grupę** opcji.
 
-  ![Utwórz zasób](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![Utwórz zasób](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. Po dodaniu grupy zasobów, upewnij się, **zdaję sobie sprawę, że narzędzia i skrypty skojarzone z przeniesionymi zasobami nie będą działać dopóki nie Zaktualizuję ich do używania nowych identyfikatorów zasobów** opcji, a następnie kliknij przycisk **OK** do ukończenia Przenoszenie magazynu.
 
-  ![Komunikat z potwierdzeniem](./media/backup-azure-move-recovery-services/confirmation-message.png)
+   ![Komunikat z potwierdzeniem](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
 
 ## <a name="use-azure-portal-to-move-a-recovery-services-vault-to-a-different-subscription"></a>Przenieś magazyn usługi Recovery Services do innej subskrypcji za pomocą witryny Azure portal
@@ -116,16 +117,16 @@ Magazyn usługi Recovery Services i skojarzone z nią zasoby można przenieść 
 
 3. W menu przegląd magazynu, kliknij przycisk **zmienić** obok **subskrypcji**, aby otworzyć **przenoszenia zasobów** bloku.
 
-  ![Zmień subskrypcję](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
+   ![Zmień subskrypcję](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
 4. Wybierz zasoby do przeniesienia, w tym miejscu zalecamy używać **Zaznacz wszystko** możliwość dokonania wyboru z listy opcjonalnych zasobów.
 
-  ![Przenoszenie zasobów](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
+   ![Przenoszenie zasobów](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Wybierz subskrypcję docelową z **subskrypcji** listy rozwijanej, którego magazynu do przeniesienia.
 6. Aby dodać docelową grupę zasobów w **grupy zasobów** listy rozwijanej wybierz istniejący zasób grupy, lub kliknij przycisk **Utwórz nową grupę** opcji.
 
-  ![Dodaj subskrypcję](./media/backup-azure-move-recovery-services/add-subscription.png)
+   ![Dodaj subskrypcję](./media/backup-azure-move-recovery-services/add-subscription.png)
 
 7. Kliknij przycisk **zdaję sobie sprawę, że narzędzia i skrypty skojarzone z przeniesionymi zasobami nie będą działać dopóki nie Zaktualizuję ich do używania nowych identyfikatorów zasobów** opcję, aby potwierdzić, a następnie kliknij przycisk **OK**.
 

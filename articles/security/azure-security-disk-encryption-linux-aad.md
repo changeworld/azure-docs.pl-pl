@@ -1,18 +1,18 @@
 ---
 title: Usługa Azure Disk Encryption przy użyciu maszyn wirtualnych IaaS z systemem Linux aplikacji usługi Azure AD (poprzedniej wersji)
 description: Ten artykuł zawiera instrukcje na temat włączania systemu Microsoft Azure Disk Encryption dla maszyn wirtualnych IaaS z systemem Linux.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/06/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 659530d1dcea5593e86edf85cb6c2b15da57618e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 5af0e3917c84daa97d0a9fa86121ef4b4c387abc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775637"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835490"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych systemu Linux IaaS (poprzedniej wersji)
 
@@ -77,22 +77,22 @@ Składnia wartości parametru klucza szyfrowania jest pełny identyfikator URI d
 ### <a name="bkmk_RunningLinuxPSH"> </a> Włącz szyfrowanie dla istniejących lub uruchomionej maszyny Wirtualnej systemu Linux przy użyciu programu PowerShell
 Użyj [AzVMDiskEncryptionExtension zestaw](/powershell/module/az.compute/set-azvmdiskencryptionextension) polecenia cmdlet, aby włączyć szyfrowanie na uruchomionej maszyny wirtualnej IaaS na platformie Azure. Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/lub utworzyć kopię zapasową maszyny Wirtualnej przy użyciu [kopia zapasowa Azure](../backup/backup-azure-vms-encryption.md) przed dyski są szyfrowane. Parametr - skipVmBackup jest już określony w skryptach programu PowerShell do zaszyfrowania uruchomionej maszyny Wirtualnej systemu Linux.
 
--  **Szyfruj uruchomionej maszyny Wirtualnej za pomocą klucza tajnego klienta:** Poniższy skrypt inicjuje zmiennych i uruchamia polecenie cmdlet Set-AzVMDiskEncryptionExtension. Grupy zasobów, maszyna wirtualna, magazyn kluczy, aplikacji usługi AAD i klucz tajny klienta powinny zostały już utworzone jako warunki wstępne. Zamień MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM MySecureVault, My-AAD-client-ID, a My-AAD-client-secret własnymi wartościami. Zmodyfikuj parametr - VolumeType, aby określić, które dyski, na którą Szyfrujesz.
+- **Szyfruj uruchomionej maszyny Wirtualnej za pomocą klucza tajnego klienta:** Poniższy skrypt inicjuje zmiennych i uruchamia polecenie cmdlet Set-AzVMDiskEncryptionExtension. Grupy zasobów, maszyna wirtualna, magazyn kluczy, aplikacji usługi AAD i klucz tajny klienta powinny zostały już utworzone jako warunki wstępne. Zamień MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM MySecureVault, My-AAD-client-ID, a My-AAD-client-secret własnymi wartościami. Zmodyfikuj parametr - VolumeType, aby określić, które dyski, na którą Szyfrujesz.
 
-     ```azurepowershell
-      $VMRGName = 'MyVirtualMachineResourceGroup';
-      $KVRGname = 'MyKeyVaultResourceGroup';
-      $vmName = 'MySecureVM';
-      $aadClientID = 'My-AAD-client-ID';
-      $aadClientSecret = 'My-AAD-client-secret';
-      $KeyVaultName = 'MySecureVault';
-      $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $KVRGname;
-      $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
-      $KeyVaultResourceId = $KeyVault.ResourceId;
-      $sequenceVersion = [Guid]::NewGuid();
+    ```azurepowershell
+     $VMRGName = 'MyVirtualMachineResourceGroup';
+     $KVRGname = 'MyKeyVaultResourceGroup';
+     $vmName = 'MySecureVM';
+     $aadClientID = 'My-AAD-client-ID';
+     $aadClientSecret = 'My-AAD-client-secret';
+     $KeyVaultName = 'MySecureVault';
+     $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $KVRGname;
+     $diskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
+     $KeyVaultResourceId = $KeyVault.ResourceId;
+     $sequenceVersion = [Guid]::NewGuid();
 
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType '[All|OS|Data]' -SequenceVersion $sequenceVersion -skipVmBackup;
-     ```
+     Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType '[All|OS|Data]' -SequenceVersion $sequenceVersion -skipVmBackup;
+    ```
 - **Szyfruj uruchomionej maszyny Wirtualnej przy użyciu klucza KEK zawijania wpisu tajnego klienta:** Usługa Azure Disk Encryption umożliwia określenie istniejącego klucza w magazynie kluczy na zawijanie kluczy tajnych szyfrowania dysków, które zostały wygenerowane podczas włączania szyfrowania. Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Zmodyfikuj parametr - VolumeType, aby określić, które dyski, na którą Szyfrujesz. 
 
      ```azurepowershell
@@ -111,9 +111,9 @@ Użyj [AzVMDiskEncryptionExtension zestaw](/powershell/module/az.compute/set-azv
      Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType '[All|OS|Data]' -SequenceVersion $sequenceVersion -skipVmBackup;
      ```
 
- >[!NOTE]
- > Składnia służąca do wartości parametru dysku — szyfrowanie — magazyn kluczy jest ciągiem pełny identyfikator: / subscriptions/[subscription-id-guid]/resourceGroups/[KVresource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> </br>
-Składnia wartości parametru klucza szyfrowania jest pełny identyfikator URI do KEK, podobnie jak w: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
+  >[!NOTE]
+  > Składnia służąca do wartości parametru dysku — szyfrowanie — magazyn kluczy jest ciągiem pełny identyfikator: / subscriptions/[subscription-id-guid]/resourceGroups/[KVresource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> </br>
+  Składnia wartości parametru klucza szyfrowania jest pełny identyfikator URI do KEK, podobnie jak w: https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
     
 - **Sprawdź, czy dyski są szyfrowane:** Aby sprawdzić stan szyfrowania maszyny wirtualnej IaaS, należy użyć [Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) polecenia cmdlet. 
     
@@ -249,28 +249,6 @@ $VirtualMachine = New-AzVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
 $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name "SecureOSDisk" -VhdUri "os.vhd" Caching ReadWrite -Windows -CreateOption "Attach" -DiskEncryptionKeyUrl "https://mytestvault.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa" -DiskEncryptionKeyVaultId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mytestvault"
 New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ```
-
-### <a name="bkmk_VHDpreRM"> </a> Szablon usługi Resource Manager służy do szyfrowania maszyn wirtualnych IaaS z zaszyfrowane wstępnie wirtualne dyski twarde 
-Można włączyć szyfrowanie dysków na zaszyfrowane wirtualnego dysku twardego za pomocą [szablonu usługi Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm).
-
-1. Szablon szybkiego startu platformy Azure, wybierz polecenie **Wdróż na platformie Azure**.
-
-2. Wybieranie subskrypcji, grupy zasobów, lokalizację grupy zasobów, parametry, postanowienia prawne i umowy. Kliknij przycisk **Utwórz** Aby włączyć szyfrowanie na nowej maszynie Wirtualnej IaaS.
-
-Poniższa tabela zawiera listę parametrów szablonu usługi Resource Manager dla zaszyfrowanych wirtualnego dysku twardego:
-
-| Parametr | Opis |
-| --- | --- |
-| newStorageAccountName | Nazwa konta magazynu do przechowywania wirtualnego dysku twardego systemu operacyjnego zaszyfrowane. To konto magazynu powinny już został utworzony w tej samej grupie zasobów i tej samej lokalizacji co maszyna wirtualna. |
-| osVhdUri | Identyfikator URI wirtualnego dysku twardego systemu operacyjnego z konta magazynu. |
-| osType | Typ produktu systemu operacyjnego (Windows/Linux). |
-| virtualNetworkName | Nazwa sieci wirtualnej, która karty Sieciowej maszyny Wirtualnej powinny należeć do. Nazwa powinna już została utworzona w tej samej grupie zasobów i tej samej lokalizacji co maszyna wirtualna. |
-| subnetName | Nazwa podsieci w sieci wirtualnej, której karty Sieciowej maszyny Wirtualnej powinna należeć. |
-| vmSize | Rozmiar maszyny Wirtualnej. Obecnie są obsługiwane tylko standardowe A, D i G serii. |
-| keyVaultResourceID | Identyfikator zasobu, która identyfikuje zasób magazynu kluczy w usłudze Azure Resource Manager. Możesz pobrać go przy użyciu polecenia cmdlet programu PowerShell `(Get-AzKeyVault -VaultName "MyKeyVaultName" -ResourceGroupName "MyResourceGroupName").ResourceId` lub za pomocą polecenia wiersza polecenia platformy Azure `az keyvault show --name "MySecureVault" --query id`|
-| keyVaultSecretUrl | Adres URL klucza szyfrowania dysku, który jest skonfigurowany w usłudze key vault. |
-| keyVaultKekUrl | Adres URL klucza szyfrowania do szyfrowania klucza wygenerowanego szyfrowania dysków. |
-| vmName | Nazwa maszyny Wirtualnej IaaS. |
 
 ## <a name="enable-encryption-on-a-newly-added-data-disk"></a>Włącz szyfrowanie dla dysków nowo dodane dane
 Możesz dodać nowy dysk danych, za pomocą [dołączanie dysku maszyny wirtualnej az](../virtual-machines/linux/add-disk.md), lub [za pośrednictwem witryny Azure portal](../virtual-machines/linux/attach-disk-portal.md). Przed można zaszyfrować, należy najpierw zainstalować nowo dołączony dysk danych. Należy zażądać szyfrowania dysku danych, ponieważ dysk będzie można jej używać, gdy szyfrowanie jest w toku. 

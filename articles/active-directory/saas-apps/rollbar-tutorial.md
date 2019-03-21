@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a850b42f23a94366ec73949556b4af9a90f5015e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ebedddf5e62e41bd0ef2d4c426df448a81a1e2d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195230"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą pałąka zabezpieczającego
 
@@ -218,7 +218,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do pałąka zabezpi
 
     ![Zaproś inne osoby](./media/rollbar-tutorial/user2.png)
 
-1. W polu tekstowym wprowadź nazwę użytkownika, takich jak **brittasimon@contoso.com** i kliknięcie **Add/zaproszenia**.
+1. W polu tekstowym wprowadź nazwę użytkownika, takich jak **brittasimon\@contoso.com** i kliknięcie **Add/zaproszenia**.
 
     ![Zaproś inne osoby](./media/rollbar-tutorial/user3.png)
 
@@ -263,7 +263,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

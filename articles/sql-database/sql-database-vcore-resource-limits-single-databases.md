@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: 127e3385f1fd9cf0975ff19818d3112fe5a713d0
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.date: 03/12/2019
+ms.openlocfilehash: 990e6b4d869df030bfddfeb2d60f0ca0e23ea8ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571018"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902267"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
@@ -54,7 +54,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|600|800|1000|1200|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|
-|Multi-AZ|ND|ND|ND|ND|ND|ND|ND|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
@@ -84,7 +84,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generowania 5 (część 1)
 
 |Obliczenia rozmiaru|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
@@ -107,7 +107,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generowania 5 (część 2)
 
 |Obliczenia rozmiaru|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|16|18|20|24|32|40|80|
 |Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
@@ -168,7 +168,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Rozmiar bazy danych TempDB (GB)|224|256|288|320|384|384|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|35000|40000|45000|50000|80000|120000|
-|Limity szybkości dziennika (MB/s)|42|48|48|48|48|48|
+|Limity szybkości dziennika (MB/s)|42|48|54|60|64|64|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1400|1600|1800|2000|3200|4800|
 |Maksymalna liczba współbieżnych logowań (żądań)|1400|1600|1800|2000|3200|4800|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
@@ -180,7 +180,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generowania 5 (część 1)
 
 |Obliczenia rozmiaru|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
@@ -204,7 +204,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generowania 5 (część 2)
 
 |Obliczenia rozmiaru|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|16|18|20|24|32|40|80|
 |Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
@@ -216,7 +216,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Docelowy operacji We/Wy (64 KB)|40000|45000|50000|60000|80000|100000|200000|
-|Limity szybkości dziennika (MB/s)|48|48|48|48|48|48|48|
+|Limity szybkości dziennika (MB/s)|48|54|60|72|96|96|96|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|1600|1800|2000|2400|3200|4000|8000|
 |Maksymalna liczba współbieżnych logowań|1600|1800|2000|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
@@ -230,7 +230,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 ### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>Platforma obliczeniowa generacja 4: Magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
 |Poziom wydajności|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
-|:--- | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|4|8|16|24|
 |Pamięć (GB)|7|14|28|56|112|168|
@@ -253,7 +253,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 ### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
 
 |Poziom wydajności|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|8|16|24|32|40|80|
 |Pamięć (GB)|10.2|20.4|40.8|81.6|122.4|163.2|204|408|

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 69a57aed0a53febbe547386de8053fc6c9d4ed8f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 795002d450505b9103f1815a8b03c8d546bddde8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751110"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119466"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB: obsługiwane funkcje i składnia
 
@@ -214,22 +214,22 @@ Poniżej znajdują się obsługiwane operatory razem z odpowiednimi przykładami
 
 Operator | Przykład |
 --- | --- |
-$eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |  | -
-$gt | ``` { "Elevation": { $gt: 4000 } } ``` |  | -
-$gte | ``` { "Elevation": { $gte: 4392 } } ``` |  | -
-$lt | ``` { "Elevation": { $lt: 5000 } } ``` |  | -
-$lte | ``` { "Elevation": { $lte: 5000 } } ``` | | -
-$ne | ``` { "Elevation": { $ne: 1 } } ``` |  | -
-$in | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |  | -
-$nin | ``` { "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } } ``` | | -
-$or | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
-$and | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |  | -
-$not | ``` { "Elevation": { $not: { $gt: 5000 } } } ```|  | -
-$nor | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |  | -
-$exists | ``` { "Status": { $exists: true } } ```|  | -
-$type | ``` { "Status": { $type: "string" } } ```|  | -
-$mod | ``` { "Elevation": { $mod: [ 4, 0 ] } } ``` |  | -
-$regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|  | -
+$eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |
+$gt | ``` { "Elevation": { $gt: 4000 } } ``` |
+$gte | ``` { "Elevation": { $gte: 4392 } } ``` |
+$lt | ``` { "Elevation": { $lt: 5000 } } ``` |
+$lte | ``` { "Elevation": { $lte: 5000 } } ``` |
+$ne | ``` { "Elevation": { $ne: 1 } } ``` |
+$in | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |
+$nin | ``` { "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } } ``` |
+$or | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |
+$and | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |
+$not | ``` { "Elevation": { $not: { $gt: 5000 } } } ```|
+$nor | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |
+$exists | ``` { "Status": { $exists: true } } ```|
+$type | ``` { "Status": { $type: "string" } } ```|
+$mod | ``` { "Elevation": { $mod: [ 4, 0 ] } } ``` |
+$regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|
 
 ### <a name="notes"></a>Uwagi
 
@@ -267,19 +267,19 @@ Pierwsza część użyje indeksu, aby ograniczyć wyszukiwanie do dokumentów, k
 
 ### <a name="geospatial-operators"></a>Operatory danych geoprzestrzennych
 
-Operator | Przykład 
---- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Yes
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Yes
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Yes
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Yes
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Yes
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Yes
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Yes
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes
+Operator | Przykład | |
+--- | --- | --- |
+$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Yes |
+$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
+$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
+$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Yes |
+$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
+$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Yes |
+$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Yes |
+$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Yes |
+$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Yes |
+$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Yes |
+$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Yes |
 
 ## <a name="sort-operations"></a>Operacje sortowania
 W przypadku używania operacji `findOneAndUpdate` obsługiwane są operacje sortowania względem pojedynczego pola, ale nie względem wielu pól.
@@ -334,7 +334,7 @@ Niektóre aplikacje polegają na ustawieniu [Write Concern](https://docs.mongodb
 
 Usługa Cosmos DB obsługuje automatyczne dzielenie na fragmenty po stronie serwera. Usługa Cosmos DB nie obsługuje poleceń dotyczących ręcznego dzielenia na fragmenty.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.

@@ -1,19 +1,19 @@
 ---
 title: Używanie rozwiązania Ansible z platformą Azure
 description: Wprowadzenie do używania rozwiązania Ansible w celu automatyzowania aprowizowania chmury, zarządzania konfiguracją i wdrażania aplikacji.
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, overview, cloud provision, configuration management, application deployment, ansible modules, ansible playbooks
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/02/2018
 ms.topic: overview
-ms.openlocfilehash: 55dcda953454ce3eb4e19dabbf198f886d028180
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.openlocfilehash: d7fc86f9968ede37623ea9c89a666a35cba7eee8
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54357934"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791600"
 ---
 # <a name="ansible-with-azure"></a>Rozwiązanie Ansible z platformą Azure
 
@@ -49,6 +49,6 @@ Obraz [Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/re
 Rozwiązanie Ansible jest dostarczane z kilkoma modułami, które można wykonywać bezpośrednio na hostach zdalnych lub za pośrednictwem elementów playbook.
 Sekcja [Moduł rozwiązania Ansible i macierz wersji](./ansible-matrix.md) zawiera listę modułów rozwiązania Ansible dla platformy Azure, za pomocą których można aprowizować zasoby chmurowe platformy Azure, takie jak maszyny wirtualne, sieci i usługi kontenerów. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Konfigurowanie rozwiązania Ansible](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 - [Tworzenie maszyny wirtualnej z systemem Linux](/azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)

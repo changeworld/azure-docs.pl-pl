@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661704"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122723"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Konfigurowanie alertów dotyczących metryk usługi Azure Database dla serwera MariaDB za pomocą witryny Azure portal
 
@@ -60,21 +60,21 @@ Można skonfigurować i uzyskać informacje na temat reguł alertów za pomocą:
 
 10. Konfigurowanie **poczty E-mail/SMS/wypychania/rejestr** typ akcji.
     
-   Wybierz "Wiadomości E-mail Azure zasobu Manager rolę" Aby wybrać subskrypcję właściciele, współautorzy i czytelnicy otrzymywać powiadomienia.
+    Wybierz "Wiadomości E-mail Azure zasobu Manager rolę" Aby wybrać subskrypcję właściciele, współautorzy i czytelnicy otrzymywać powiadomienia.
    
-   Opcjonalnie możesz podać prawidłowy identyfikator URI w **elementu Webhook** jeśli ma ona wywoływana, gdy zostanie wyzwolony alert.
+    Opcjonalnie możesz podać prawidłowy identyfikator URI w **elementu Webhook** jeśli ma ona wywoływana, gdy zostanie wyzwolony alert.
 
-   Wybierz **OK** po zakończeniu.
+    Wybierz **OK** po zakończeniu.
 
-   ![Grupa akcji](./media/howto-alert-metric/10-action-group-type.png)
+    ![Grupa akcji](./media/howto-alert-metric/10-action-group-type.png)
 
 11. Określ nazwę reguły alertu, opis i ważności.
 
-   ![Grupa akcji](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Grupa akcji](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Wybierz **Utwórz regułę alertu** do utworzenia alertu.
 
-   W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
+    W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
 
 ## <a name="manage-your-alerts"></a>Zarządzanie alertami
 Po utworzeniu alertu, można ją zaznaczyć i wykonaj następujące czynności:

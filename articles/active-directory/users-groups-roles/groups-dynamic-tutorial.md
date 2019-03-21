@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1110ef9383798ddeb8a04a0e19deb441e3d207c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 93b59a108d5d87479c12174e97713d4c12d84f2e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081308"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200059"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Samouczek: automatyczne dodawanie lub usuwanie członków grupy
 
@@ -28,7 +28,7 @@ W usłudze Azure Active Directory (Azure AD) możesz automatycznie dodawać uży
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Tworzenie automatycznie wypełnionej grupy użytkowników-gości z określonej firmy partnerskiej
+> * Utwórz grupę automatycznie wypełnione dla użytkowników-gości z firmy partnerskiej
 > * Przypisywanie licencji do grupy w celu umożliwienia użytkownikom-gościom uzyskanie dostępu do funkcji specyficznych dla partnera
 > * Dodatek: zabezpieczanie grupy **Wszyscy użytkownicy** przez usunięcie użytkowników-gości, aby na przykład umożliwić członkom organizacji dostęp do witryn przeznaczonych wyłącznie dla użytkowników wewnętrznych
 
@@ -46,7 +46,7 @@ Najpierw należy utworzyć grupę dla użytkowników-gości z jednej firmy partn
 
 1. Zaloguj się do witryny Azure portal (https://portal.azure.com) przy użyciu konta administratora globalnego dla dzierżawy.
 2. Wybierz pozycję **Azure Active Directory** > **Grupy** > **Nowa grupa**.
-   ![Wybieranie polecenia Nowa grupa](./media/groups-dynamic-tutorial/new-group.png)
+   ![Wybierz polecenie, aby uruchomić nową grupę](./media/groups-dynamic-tutorial/new-group.png)
 3. W bloku **Grupa**:
   
    * Wybierz pozycję **Zabezpieczenia** jako typ grupy
