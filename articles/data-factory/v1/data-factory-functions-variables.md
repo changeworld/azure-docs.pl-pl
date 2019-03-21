@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a82d871ea232b31b31cfc24585af672141617d88
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353014"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57976780"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Usługa Azure Data Factory — funkcje i zmienne systemowe
 > [!NOTE]
@@ -27,6 +27,7 @@ ms.locfileid: "54353014"
 Ten artykuł zawiera informacje dotyczące funkcji i zmiennych obsługiwane przez usługę Azure Data Factory.
 
 ## <a name="data-factory-system-variables"></a>Zmienne systemowe fabryki danych
+
 | Nazwa zmiennej | Opis | Zakres obiektów | Zakres JSON i przypadki użycia |
 | --- | --- | --- | --- |
 | WindowStart |Początek przedział czasowy na potrzeby uruchamiania okna bieżącego działania |działanie |<ol><li>Określ zapytaniach wyboru danych. Zobacz artykuły łącznika, do którego odwołuje się [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu.</li> |
@@ -94,7 +95,7 @@ W poniższej tabeli wymieniono wszystkie funkcje w usłudze Azure Data Factory:
 | Date |EndOfDay(X) |X: DateTime |Pobiera daty i godziny, reprezentującą koniec dnia (składnik dzień) x.<br/><br/>Przykład: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Date |EndOfMonth(X) |X: DateTime |Pobiera koniec miesiąca, reprezentowane przez składnik miesiąca z parametr X. <br/><br/>Przykład: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (Data i godzina, reprezentujący koniec miesiąca września) |
 | Date |StartOfDay(X) |X: DateTime |Pobiera początek dnia, reprezentowane przez składnik dni z wartości parametru X.<br/><br/>Przykład: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| DateTime |From(X) |X: Ciąg |Przeanalizować składni ciągu X czas daty. |
+| DateTime |From(X) |X: String |Przeanalizować składni ciągu X czas daty. |
 | DateTime |Ticks(X) |X: DateTime |Pobiera znaczniki właściwość parametru X. Jeden znaczników jest równa 100 nanosekund. Wartość tej właściwości reprezentuje liczbę znaczników, które upłynęły od północy 12:00:00, 1 stycznia 0001. |
 | Tekst |Format(X) |X: Zmienna String |Formatuje tekst (Użyj `\\'` kombinacji jako znak ucieczki `'` znaków).|
 

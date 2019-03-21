@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 071837aac9fce405fcc5ef92e044a0265e0e5969
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ca7bed26d91c28304638e85d6da93708bfcfcada
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431540"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170313"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>Aktualizowanie istniejącej oferty modułu usługi IoT Edge
 
@@ -49,7 +49,7 @@ Następujące operacje aktualizacji są powszechne.
 
 ### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>Zaktualizuj wersję obrazu modułu usługi IoT Edge dla jednostki SKU
 
-Bardzo często obraz modułu usługi IoT Edge być okresowo aktualizowane za pomocą poprawek zabezpieczeń, dodatkowe funkcje i tak dalej. W tym scenariuszu chcesz zaktualizować obrazu modułu usługi IoT Edge, który odwołuje się do danej jednostki SKU wykonując następujące kroki:
+Bardzo często obraz modułu usługi IoT Edge, aby być okresowo aktualizowane za pomocą poprawek zabezpieczeń, dodatkowe funkcje i tak dalej. W tym scenariuszu chcesz zaktualizować obrazu modułu usługi IoT Edge, który odwołuje się do danej jednostki SKU wykonując następujące kroki:
 
 1.  Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/).
 

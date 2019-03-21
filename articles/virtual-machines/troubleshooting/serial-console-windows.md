@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: b280c86b15f7af01b04d41b4c2d625ea4ec4a398
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 57b20f9d694ae0581988762735c35cb65012fd8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104443"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992372"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>Konsola szeregowa maszyny wirtualnej dla Windows
 
@@ -196,14 +196,14 @@ Wszystkie dane, które są wysyłane w obie strony są szyfrowane w sieci.
 ### <a name="audit-logs"></a>Dzienniki inspekcji
 Dostęp do konsoli szeregowej jest aktualnie zalogowany [diagnostykę rozruchu](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) dzienniki maszyny wirtualnej. Dostęp do tych dzienników są własnością i kontrolowane przez administratora maszyny wirtualnej platformy Azure.
 
->[!CAUTION]
-Żadne hasła dostępu do konsoli są rejestrowane. Jednak jeśli polecenia uruchamiane w ramach konsoli zawierają lub danych wyjściowych haseł, kluczy tajnych, nazwy użytkowników lub jakąkolwiek inną formę identyfikowalne dane osobowe (PII), te będą zapisywane do dzienników diagnostyki rozruchu maszyny Wirtualnej. One będą zapisywane wraz z wszystkich innych widocznych tekstu, jako część wykonania wstecz przewijania konsoli szeregowej funkcji. Te dzienniki są cykliczne i tylko osoby z uprawnieniami do odczytu do konta magazynu diagnostyki mieli do nich dostęp. Jednak zaleca się następujące najlepsze rozwiązanie polegające na przy użyciu pulpitu zdalnego dla wszystkich elementów, które mogą obejmować wpisów tajnych i/lub dane osobowe.
+> [!CAUTION]
+> Żadne hasła dostępu do konsoli są rejestrowane. Jednak jeśli polecenia uruchamiane w ramach konsoli zawierają lub danych wyjściowych haseł, kluczy tajnych, nazwy użytkowników lub jakąkolwiek inną formę identyfikowalne dane osobowe (PII), te będą zapisywane do dzienników diagnostyki rozruchu maszyny Wirtualnej. One będą zapisywane wraz z wszystkich innych widocznych tekstu, jako część wykonania wstecz przewijania konsoli szeregowej funkcji. Te dzienniki są cykliczne i tylko osoby z uprawnieniami do odczytu do konta magazynu diagnostyki mieli do nich dostęp. Jednak zaleca się następujące najlepsze rozwiązanie polegające na przy użyciu pulpitu zdalnego dla wszystkich elementów, które mogą obejmować wpisów tajnych i/lub dane osobowe.
 
 ### <a name="concurrent-usage"></a>Współbieżne użycie
 Jeśli użytkownik jest połączony z konsoli szeregowej i inny użytkownik pomyślnie żąda dostępu do tej samej maszyny wirtualnej, pierwszy użytkownik zostanie odłączony, a drugi użytkownik nawiązał połączenie z tą samą sesją.
 
->[!CAUTION]
-Oznacza to, że użytkownik, który jest odłączony nie będzie można wylogować. Możliwość wymuszenia wylogowania po rozłączenia (przy użyciu SIGHUP lub podobny mechanizm) nadal działa w planach. Dla Windows to automatyczne limitu czasu w SAC; włączone w przypadku systemu Linux można skonfigurować ustawienie limitu czasu w terminalu.
+> [!CAUTION]
+> Oznacza to, że użytkownik, który jest odłączony nie będzie można wylogować. Możliwość wymuszenia wylogowania po rozłączenia (przy użyciu SIGHUP lub podobny mechanizm) nadal działa w planach. Dla Windows to automatyczne limitu czasu w SAC; włączone w przypadku systemu Linux można skonfigurować ustawienie limitu czasu w terminalu.
 
 ## <a name="accessibility"></a>Ułatwienia dostępu
 Dostępność jest kluczowym dla konsoli szeregowej platformy Azure. W tym celu upewniliśmy się, że konsoli szeregowej jest dostępny dla wizualizacji i wysłuchaniu osłabiona, a także osoby, które mogą okazać się niemożliwe przy użyciu myszy.
@@ -215,6 +215,7 @@ Użyj **kartę** kluczowe na klawiaturze, aby przejść w interfejsie konsoli sz
 Konsoli szeregowej ma wbudowaną obsługę czytników zawartości ekranu. Przemieszczać się przy użyciu czytnika zawartości ekranu włączone umożliwi tekst alternatywny dla aktualnie wybranego przycisku zostanie odczytany na głos przez czytnik zawartości ekranu.
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>Typowe scenariusze dotyczące uzyskiwania dostępu do konsoli szeregowej
+
 Scenariusz          | Akcje w konsoli szeregowej
 :------------------|:-----------------------------------------
 Reguły zapory niepoprawne | Dostęp do serial konsoli i napraw zasady Windows w zapory.
@@ -254,7 +255,7 @@ Konsola szeregowa nie działa z zaporą konta magazynu. | Konsola szeregowa zgod
 
 **PYTANIA I ODPOWIEDZI. Jak wysłać opinię?**
 
-A. Przekazać opinię, tworząc problem w usłudze GitHub w https://aka.ms/serialconsolefeedback. Można również (mniej preferowany), możesz wysłać opinię, za pośrednictwem azserialhelp@microsoft.com lub w maszynie wirtualnej kategorii http://feedback.azure.com.
+A. Przekazać opinię, tworząc problem w usłudze GitHub w https://aka.ms/serialconsolefeedback. Można również (mniej preferowany), możesz wysłać opinię, za pośrednictwem azserialhelp@microsoft.com lub w maszynie wirtualnej kategorii https://feedback.azure.com.
 
 **PYTANIA I ODPOWIEDZI. Konsoli szeregowej obsługuje kopiowania/wklejania?**
 

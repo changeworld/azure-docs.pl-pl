@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania dotyczące Akustyka projektu
+title: Projekt Akustyka — często zadawane pytania
 titlesuffix: Azure Cognitive Services
 description: Ta strona zawiera odpowiedzi na pytania często zadawane Akustyka projektu, w tym instrukcje pobierania i tworzenie procesu.
 services: cognitive-services
@@ -7,25 +7,29 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: conceptual
+ms.topic: resources
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 12dda5d7af1236ec2d7eddbe025b8fdba47d7bca
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c43c81d42a39bda504b02eb6c053a16a2cf53aec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881078"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138052"
 ---
-# <a name="frequently-asked-questions"></a>Często zadawane pytania
+# <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akustyka — często zadawane pytania
 
 ## <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 
-Wtyczka Unity Akustyka projektu to system Akustyka obliczający zachowanie dźwięku przed środowiska uruchomieniowego, podobnie statyczne oświetlenia. Chmura ma skomplikowanymi fali fizyki obliczeń, więc koszt czasu wykonywania procesora CPU jest niska.  
+Pakiet Akustyka projektu wtyczek to system Akustyka obliczający zachowanie dźwięku przed środowiska uruchomieniowego, podobnie statyczne oświetlenia. Chmura ma skomplikowanymi fali fizyki obliczeń, więc koszt czasu wykonywania procesora CPU jest niska.  
 
 ## <a name="where-can-i-download-the-plugin"></a>Gdzie można pobrać wtyczkę?
 
-Jeśli interesuje Cię ocena wtyczki akustyki, zarejestruj się [tutaj](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u), aby dołączyć do programu Designer Preview.
+Możesz pobrać Akustyka projektu z [strony Centrum pobierania Akustyka projektu](https://www.microsoft.com/en-us/download/details.aspx?id=57346).
+
+## <a name="does-project-acoustics-support-x-platform"></a>Obsługuje Akustyka projektu <x> platformy?
+
+Obsługa platform Akustyka projektu rozwoju zależnie od potrzeb klienta. Skontaktuj się z nami na [forów Akustyka projektu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) na uzyskiwanie informacji o obsłudze dotyczącymi dodatkowych platform.
 
 ## <a name="is-azure-used-at-runtime"></a>Azure jest używana w środowisku uruchomieniowym?
 
@@ -45,17 +49,17 @@ Nie. System będzie pozyskiwać szczegółowe geometrii poziomu bezpośrednio. B
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>Co znajduje się w tabeli odnośników czasu wykonywania?
 
-Plik ACE jest tabelą parametrów akustycznych między wiele pary lokalizacji źródłowej i odbiornika.
+Zawiera plik ACE jest tabelą parametrów akustycznych między wiele źródła i pary lokalizacji odbiornik, jak również geometrii sceny voxelized używane do interpolacji parametru.
  
-## <a name="can-it-handle-moving-sources"></a>Może on obsługiwać przenoszenia źródeł
+## <a name="can-project-acoustics-handle-moving-sources"></a>Projekt Akustyka dzienniki może obsłużyć przenoszenia źródeł?
 
-Tak, **Acoustics Microsoft** wtyczki spatializer Unity konsultować się z tabeli odnośników na każdy takt audio przetwarzania przy użyciu bieżącej lokalizacji źródłowej i odbiornika. Procesor DSP spatializer aktualizuje sprawnie parametrów akustycznych przetwarzania na każdy takt.
+Tak, Akustyka projektu sprawdza tabelę odnośników i aktualizuje audio DSP na każdy takt, więc może obsługiwać przenoszenia źródeł i odbiornika.
  
-## <a name="can-it-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Może on obsługiwać dynamiczne geometrii Zamyka drzwi? Ściany fascynujące natychmiast?
+## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Akustyka projektu, może obsługiwać dynamiczne geometrii? Zamyka drzwi? Ściany fascynujące natychmiast?
 
-Nie. Parametrów akustycznych są wstępnie obliczone oparte na stanie statyczne poziomu gier. Firma Microsoft sugeruje, pozostawiając geometrii drzwi poza Akustyka, a następnie zastosować dodatkowe zamknięcia na podstawie stanu obiektów zniszczalnych i ruchomego gier przy użyciu technik ustalonych.
+Nie. Parametrów akustycznych są wstępnie obliczone oparte na stanie statyczne poziomu gier. Zalecamy pozostawienie geometrii drzwi poza Akustyka, a następnie zastosowanie dodatkowych zamknięcia na podstawie stanu zniszczalnych i przydzielaj obiektów gry przy użyciu ustalone technik.
  
-## <a name="does-it-handle-materials"></a>Go obsługuje materiałów?
+## <a name="does-project-acoustics-use-acoustic-materials"></a>Akustyka projekt używa akustyczny materiałów?
 
 Tak. Fizyczny nazw materiału w Twoim poziomie nawyki absorptivity pobrane materiały.
  
@@ -65,12 +69,12 @@ Sondy są próbkowania lokalizacji możliwe odtwarzacza. Każdy sondy reprezentu
  
 ## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Dlaczego warto poświęcić tak dużej ilości zasobów obliczeniowych w chmurze? Co to on kupić mnie?
 
-Projekt Akustyka zapewnia dokładnych i wiarygodnych parametrów akustycznych nawet w przypadku niezwykle złożonych środowisk wirtualnych, uwzględniając każdy aspekt architektury. Zapewnia płynne zamknięcia. / przeszkoda bez ręcznej pracy i dynamiczne pogłosu odmiany bez rysowania woluminów. Cały czas pozostały światła CPU podczas wykonywania.
+Projekt Akustyka zapewnia dokładnych i wiarygodnych parametrów akustycznych nawet w przypadku niezwykle złożonych środowisk wirtualnych, uwzględniając każdy aspekt architektury. Zapewnia płynne zamknięcia i przeszkody i odmianą dynamiczne pogłosu bez konieczności ręcznej pracy rysowania woluminów. Cały czas pozostały światła CPU podczas wykonywania.
 
 ## <a name="what-exactly-happens-during-baking"></a>Co to dokładnie będzie się działo podczas "pieczenie"?
 
-System uważa potencjalne lokalizacje odtwarzacza, aby wygenerować zestaw równomiernie rozmieszczonych pozycji "sondy" przykładowy. Tworzenie dla poziomu składa się z niezależnych zadań dla każdego sondowania: System uzna cuboid "Symulacji Region", a ich tematyka na sondę i jest symulacja wave szczegółowe, w tym regionie, rozdzielczością maksymalnie 25 cm.
+Tworzenie składa się z symulacji fale akustyczne cuboid symulacji regionów, w przypadku każdego sondowania odbiornika a ich tematyka.
 
-## <a name="next-steps"></a>Następne kroki
-* Zapoznaj się z [sceny próbki](sample-walkthrough.md)
+## <a name="next-steps"></a>Kolejne kroki
+* Spróbuj [Unity Akustyka projektu przykładowej zawartości](unity-quickstart.md) lub [Unreal przykładowej zawartości](unreal-quickstart.md)
 

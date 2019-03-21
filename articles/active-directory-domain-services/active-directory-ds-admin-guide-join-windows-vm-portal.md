@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 41e7f0ea8616b25eac43ecff7802e0f9e1c08050
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f18d3409d53123733d7f423c77864cd0739765eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900594"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 W tym artykule pokazano, jak wdrożyć maszynę wirtualną systemu Windows Server przy użyciu witryny Azure portal. Go następnie pokazano, jak dołączyć maszyny wirtualnej do domeny zarządzanej usługi Azure Active Directory Domain Services (Azure AD DS).
@@ -107,7 +107,7 @@ Można dołączyć maszyny wirtualnej systemu Windows Server do usługi Azure AD
 
 7. Należy określić poświadczenia w jednym z następujących sposobów:
 
-   * **Format nazwy UPN**: (Zalecane) Określ sufiks głównej nazwy (UPN) użytkownika dla konta użytkownika, zgodnie z konfiguracją w usłudze Azure AD. W tym przykładzie sufiks nazwy UPN użytkownika *bob* jest *bob@domainservicespreview.onmicrosoft.com*.
+   * **Format nazwy UPN**: (Zalecane) Określ sufiks głównej nazwy (UPN) użytkownika dla konta użytkownika, zgodnie z konfiguracją w usłudze Azure AD. W tym przykładzie sufiks nazwy UPN użytkownika *bob* jest *bob\@domainservicespreview.onmicrosoft.com*.
 
    * **Formacie SAMAccountName**: Można określić nazwę konta w formacie SAMAccountName. W tym przykładzie użytkownik *bob* będzie konieczne wprowadzenie *CONTOSO100\bob*.
 
@@ -146,7 +146,7 @@ Jeśli występują problemy z poświadczeniami i nie można przyłączyć do dom
 
 * Upewnij się, że masz [włączoną synchronizację haseł](active-directory-ds-getting-started-password-sync.md) do domeny zarządzanej.
 
-* Sprawdź, że znasz nazwę UPN użytkownika zgodnie z konfiguracją w usłudze Azure AD (na przykład *bob@domainservicespreview.onmicrosoft.com*) do logowania.
+* Sprawdź, że znasz nazwę UPN użytkownika zgodnie z konfiguracją w usłudze Azure AD (na przykład *bob\@domainservicespreview.onmicrosoft.com*) do logowania.
 
 * Poczekaj wystarczająco długi, synchronizacja haseł zakończona, jak określono w przewodniku z wprowadzeniem.
 

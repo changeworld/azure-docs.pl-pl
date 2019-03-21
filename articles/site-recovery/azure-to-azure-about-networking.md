@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: fb80af9df58fba41e5ece060099eb98e3d2f90fe
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0e28792e49d588bfec8d1f09dec68ead7e9dfa49
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883151"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001084"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure – Azure
 
@@ -101,7 +101,8 @@ Zakresy adresów IP odzyskiwania lokacji są następujące:
    Francja Południowa | 52.136.139.227 |52.136.136.62
    Australia centralnej| 20.36.34.70 | 20.36.46.142
    Australia Środkowa 2| 20.36.69.62 | 20.36.74.130
-
+   Republika Południowej Afryki (zachód) | 102.133.72.51 | 102.133.26.128
+   Republika Południowej Afryki (północ) | 102.133.160.44 | 102.133.154.128
 ## <a name="example-nsg-configuration"></a>Przykładowa konfiguracja sieciowa grupa zabezpieczeń
 
 W tym przykładzie pokazano, jak skonfigurować reguły sieciowej grupy zabezpieczeń dla maszyny Wirtualnej do replikacji.

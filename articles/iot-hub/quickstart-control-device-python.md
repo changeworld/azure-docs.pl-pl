@@ -1,23 +1,23 @@
 ---
 title: Kontrolowanie urządzenia z poziomu usługi Azure IoT Hub — Szybki start (Python) | Microsoft Docs
 description: W tym przewodniku Szybki start uruchomisz dwie przykładowe aplikacje Python. Jedna z aplikacji to aplikacja zaplecza, która może zdalnie kontrolować urządzenia podłączone do centrum. Druga z aplikacji symuluje urządzenie podłączone do centrum, które można kontrolować zdalnie.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/30/2018
-ms.author: dobett
-ms.openlocfilehash: 08b2018ec1f1d34291778df0fa217b874cc3ffab
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: HT
+ms.openlocfilehash: 801258f2f6f56fc3fd9e7c830e93bf0dbfa9c134
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515101"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170364"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT (Python)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: Kontrolowanie urządzenia podłączone do usługi IoT hub (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -65,7 +65,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 1. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby dodać rozszerzenie interfejsu wiersza polecenia usługi IoT Hub i utworzyć tożsamość urządzenia. 
 
-    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT.
+    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
     **MyPythonDevice**: jest to nazwa nadana dla zarejestrowanego urządzenia. Użyj elementu MyPythonDevice w pokazany sposób. Jeśli wybierzesz inną nazwę dla swojego urządzenia, musisz również używać tej nazwy w tym artykule oraz zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
@@ -76,7 +76,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 2. Uruchom następujące polecenia w usłudze Azure Cloud Shell, aby uzyskać _parametry połączenia urządzenia_ dla urządzenia, które właśnie zostało zarejestrowane:
 
-    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT.
+    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
@@ -90,11 +90,11 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 3. Potrzebne będą także _parametry połączenia usługi_, aby umożliwić aplikacji zaplecza nawiązywanie połączenia z centrum IoT i pobieranie komunikatów. Następujące polecenie pobiera parametry połączenia usługi dla centrum IoT:
 
-    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT.
+    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --hub-name YourIoTHubName \
+      --name YourIoTHubName \
       --output table
     ```
 
@@ -164,7 +164,7 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start wywołano metodę bezpośrednią na urządzeniu z aplikacji zaplecza oraz odpowiedziano na wywołanie metody bezpośredniej w aplikacji urządzenia symulowanego.
 

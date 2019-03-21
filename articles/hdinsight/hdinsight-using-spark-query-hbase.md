@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: a2cd0d213be778624ae862d35f99f7fe960f0755
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 0ba61dc266add48577c3a382465ecb2cec9d2a05
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093858"
+ms.locfileid: "58188037"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Odczytywanie i zapisywanie danych w bazie danych Apache HBase za pomocą platformy Apache Spark
 
@@ -77,7 +77,7 @@ Kopiowanie bazy danych hbase-site.xml z magazynu lokalnego do katalogu główneg
 
 | Wartość składni | Nowa wartość|
 |---|---|
-|[Schemat identyfikatora URI](/hdinsight-hadoop-linux-information#URI-and-scheme.md) | Modyfikacja w celu odzwierciedlenia magazynu.  Poniższej składni jest dla usługi blob storage z włączonym bezpiecznym transferem.|
+|[Schemat identyfikatora URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Modyfikacja w celu odzwierciedlenia magazynu.  Poniższej składni jest dla usługi blob storage z włączonym bezpiecznym transferem.|
 |`SPARK_STORAGE_CONTAINER`|Zamień na nazwę domyślnego kontenera magazynu używane dla klastra Spark.|
 |`SPARK_STORAGE_ACCOUNT`|Zamień domyślna nazwa konta magazynu używane dla klastra Spark.|
 

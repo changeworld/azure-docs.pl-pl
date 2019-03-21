@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bdcf0729-c880-4c95-b739-0f6345b17dd8
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bd08f5fab1469898f0f3a8213b1ff7da367b6eb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 6c0d595bcd96bb38021a2128138f7ee49f9b8354
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878663"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884816"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Bime
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Bime z usługą Azure AD, musisz dodać
 
 **Aby dodać aplikację Bime z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -146,7 +146,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Bime, wyk
 
     b. W polu tekstowym **Remote Login URL (Adres URL zdalnego logowania)** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    d. W polu tekstowym **Certificate Fingerprint (Odcisk palca certyfikatu)** wklej wartość **ODCISK PALCA** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **Certificate Fingerprint (Odcisk palca certyfikatu)** wklej wartość **ODCISK PALCA** skopiowaną z witryny Azure Portal.
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -168,7 +168,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -225,7 +225,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Bime,
 
     b. W polu tekstowym **Last name (Nazwisko)** wprowadź nazwisko użytkownika, na przykład **Simon**.
 
-    d. W polu tekstowym **E-mail** wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
+    c. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -234,7 +234,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Bime,
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Bime w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Bime, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

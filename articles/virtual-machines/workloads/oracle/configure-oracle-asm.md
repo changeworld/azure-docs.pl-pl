@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8cf977f9c5bbf10c6a4d862a29fda98d3ce71844
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998950"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Skonfiguruj rozwiązanie Oracle ASM na maszynie wirtualnej z systemem Linux na platformie Azure  
 
@@ -90,7 +90,7 @@ ssh <publicIpAddress>
 
 Aby zainstalować rozwiązanie Oracle ASM, wykonaj następujące czynności. 
 
-Aby uzyskać więcej informacji na temat instalowania programu Oracle ASM, zobacz [Oracle ASMLib pliki do pobrania dla Oracle Linux 6](http://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html).  
+Aby uzyskać więcej informacji na temat instalowania programu Oracle ASM, zobacz [Oracle ASMLib pliki do pobrania dla Oracle Linux 6](https://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html).  
 
 1. Musisz zalogować się jako użytkownik główny, aby kontynuować instalację ASM:
 
@@ -104,7 +104,7 @@ Aby uzyskać więcej informacji na temat instalowania programu Oracle ASM, zobac
     yum list | grep oracleasm 
     yum -y install kmod-oracleasm.x86_64 
     yum -y install oracleasm-support.x86_64 
-    wget http://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el6.x86_64.rpm 
+    wget https://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el6.x86_64.rpm 
     yum -y install oracleasmlib-2.0.12-1.el6.x86_64.rpm 
     rm -f oracleasmlib-2.0.12-1.el6.x86_64.rpm
    ```
@@ -336,24 +336,24 @@ W tym samouczku jest domyślny użytkownik *siatki* i jest domyślną grupą *as
 
 10. Zmień uprawnienia do folderu:
 
-   ```bash
-   chmod -R 775 /opt 
-   chown grid:oinstall /opt 
-   chown oracle:oinstall /dev/sdc1 
-   chown oracle:oinstall /dev/sdd1 
-   chown oracle:oinstall /dev/sde1 
-   chown oracle:oinstall /dev/sdf1 
-   chmod 600 /dev/sdc1 
-   chmod 600 /dev/sdd1 
-   chmod 600 /dev/sde1 
-   chmod 600 /dev/sdf1
-   ```
+    ```bash
+    chmod -R 775 /opt 
+    chown grid:oinstall /opt 
+    chown oracle:oinstall /dev/sdc1 
+    chown oracle:oinstall /dev/sdd1 
+    chown oracle:oinstall /dev/sde1 
+    chown oracle:oinstall /dev/sdf1 
+    chmod 600 /dev/sdc1 
+    chmod 600 /dev/sdd1 
+    chmod 600 /dev/sde1 
+    chmod 600 /dev/sdf1
+    ```
 
 ## <a name="download-and-prepare-oracle-grid-infrastructure"></a>Pobierz i przygotowanie infrastruktury siatki Oracle
 
 Aby pobrać i przygotować oprogramowanie Oracle siatki infrastruktury, wykonaj następujące czynności:
 
-1. Pobierz Oracle siatki infrastruktury z [stronę pobierania programu Oracle ASM](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
+1. Pobierz Oracle siatki infrastruktury z [stronę pobierania programu Oracle ASM](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
 
    W obszarze pobierania pod tytułem **bazy danych Oracle Database 12c wersji 1 siatki infrastruktury (12.1.0.2.0) dla systemu Linux x86-64**, Pobierz te dwa pliki zip.
 
@@ -402,7 +402,7 @@ Aby pobrać i przygotować oprogramowanie Oracle siatki infrastruktury, wykonaj 
 ## <a name="prepare-your-local-client-and-vm-to-run-x11"></a>Przygotowywanie lokalnego klienta i maszynę Wirtualną, aby uruchomić x11
 Konfigurowanie programu Oracle ASM wymaga interfejsu graficznego, aby zakończyć instalację i konfigurację. Używamy x11 protokół w celu ułatwienia tej instalacji. Jeśli używasz systemu klienta (Mac lub Linux), który ma już X11 możliwości włączone i skonfigurowane — można pominąć to konfiguracja i instalacja wyłączne maszyn Windows. 
 
-1. [Pobierz program PuTTY](http://www.putty.org/) i [Pobierz Xming](https://xming.en.softonic.com/) na komputer Windows. Należy zainstalować obie aplikacje z wartościami domyślnymi, przed kontynuowaniem.
+1. [Pobierz program PuTTY](https://www.putty.org/) i [Pobierz Xming](https://xming.en.softonic.com/) na komputer Windows. Należy zainstalować obie aplikacje z wartościami domyślnymi, przed kontynuowaniem.
 
 2. Po zainstalowaniu programu PuTTY, otwórz wiersz polecenia, przejdź do folderu programu PuTTY (na przykład C:\Program Files\PuTTY), a następnie uruchom `puttygen.exe` w celu wygenerowania klucza.
 

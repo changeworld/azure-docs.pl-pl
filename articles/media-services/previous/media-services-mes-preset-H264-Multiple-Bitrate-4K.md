@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 393583196d15ec0e1cfd132dc28aedb88d03891d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e2c5339731267a00e3423e79bc25b9d03d274bfd
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996482"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189431"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Wiele szybkość transmisji bitów 4K
 `Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
@@ -38,7 +38,7 @@ ms.locfileid: "55996482"
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
-<Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">  
+<Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">  
   <Encoding>  
     <H264Video>  
       <KeyFrameInterval>00:00:02</KeyFrameInterval>  

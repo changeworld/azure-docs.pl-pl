@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 67b9be6f7788acd44ac60fe0c71133d69a2c122e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889795"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Instalowanie Przegląd zadań elastycznej bazy danych
 
@@ -27,12 +27,12 @@ ms.locfileid: "57313841"
 
 [**Zadania elastic Database** ](sql-database-elastic-jobs-overview.md) można zainstalować za pomocą programu PowerShell lub za pośrednictwem witryny Azure portal. Można uzyskać dostęp do tworzenia zadań i zarządzanie nimi przy użyciu interfejsu API programu PowerShell, tylko wtedy, gdy zainstalowanie pakietu programu PowerShell. Ponadto interfejsów API programu PowerShell zapewniają one znacznie więcej funkcji niż portalu w tym momencie.
 
-Jeśli zainstalowano już **zadania Elastic Database** za pośrednictwem portalu z istniejącego **puli elastycznej**, najnowszą wersję zapoznawczą programu Powershell obejmuje skrypty, aby uaktualnić istniejącą instalację. Zalecane jest aby uaktualnić instalację do najnowszej wersji **zadania Elastic Database** składników, aby wykorzystać nowe funkcje udostępniane za pośrednictwem interfejsów API programu PowerShell.
+Jeśli zainstalowano już **zadania Elastic Database** za pośrednictwem portalu z istniejącego **puli elastycznej**, najnowszą wersję zapoznawczą programu PowerShell obejmuje skrypty, aby uaktualnić istniejącą instalację. Zalecane jest aby uaktualnić instalację do najnowszej wersji **zadania Elastic Database** składników, aby wykorzystać nowe funkcje udostępniane za pośrednictwem interfejsów API programu PowerShell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Subskrypcja platformy Azure. Bezpłatnej wersji próbnej, zobacz [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 * Azure PowerShell. Zainstaluj najnowszą wersję przy użyciu polecenia [Instalatora platformy sieci Web](https://go.microsoft.com/fwlink/p/?linkid=320376). Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell).
-* [Narzędzie wiersza polecenia NuGet](https://nuget.org/nuget.exe) służy do zainstalowania pakietu zadań elastycznej bazy danych. Aby uzyskać więcej informacji, zobacz http://docs.nuget.org/docs/start-here/installing-nuget.
+* [Narzędzie wiersza polecenia NuGet](https://nuget.org/nuget.exe) służy do zainstalowania pakietu zadań elastycznej bazy danych. Aby uzyskać więcej informacji, zobacz https://docs.nuget.org/docs/start-here/installing-nuget.
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Pobierz i zaimportuj pakiet PowerShell zadań elastycznej bazy danych
 1. Uruchom okno poleceń programu Microsoft Azure PowerShell i przejdź do katalogu, do którego pobrano narzędzie wiersza polecenia NuGet (nuget.exe).
@@ -75,9 +75,7 @@ Parametry podane na to wywołanie przykładowe mógł zostać zmodyfikowany do �
     <td>Zawiera nazwę grupy zasobów platformy Azure zawiera nowo utworzony składników platformy Azure. Ten parametr "__ElasticDatabaseJob". Nie zaleca się zmiany tej wartości.</td>
     </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ResourceGroupLocation</td>
     <td>Zapewnia lokalizacji platformy Azure, które ma być używany dla nowo utworzonego składników platformy Azure. Ten parametr do lokalizacji, środkowe stany USA.</td>
 </tr>
@@ -85,28 +83,24 @@ Parametry podane na to wywołanie przykładowe mógł zostać zmodyfikowany do �
 <tr>
     <td>ServiceWorkerCount</td>
     <td>Zawiera liczbę procesów roboczych usługi, aby zainstalować. Ten parametr ma domyślnie wartość 1. Większa liczba procesów roboczych może służyć do skalowania w poziomie usługi i umożliwiające uzyskanie wysokiej dostępności. Zaleca się użyć "2" na potrzeby wdrożeń, które wymagają wysokiej dostępności usługi.</td>
-    </tr>
-
 </tr>
-    <tr>
+
+<tr>
     <td>ServiceVmSize</td>
     <td>Zapewnia rozmiar maszyny Wirtualnej do użycia w ramach usługi w chmurze. Ten parametr A0. Wartości parametrów... /.. / A3 są akceptowane spowodować roli procesu roboczego użyć rozmiaru ExtraSmall/małych/średni/duża, odpowiednio. Zobacz więcej informacji na temat rozmiarów ról procesów roboczych, FO [zadań elastycznych baz danych, składniki i ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerDatabaseSlo</td>
     <td>Udostępnia rozmiaru obliczeń dla wersji standardowa. Ten parametr S0. Wartości parametrów... /.. /.. /.. / S9/S12 — są akceptowane spowodować użycie rozmiaru odpowiednich obliczeniowych usługi Azure SQL Database. Aby uzyskać więcej informacji na temat rozmiarów wystąpień obliczeniowych bazy danych SQL, zobacz [zadań elastycznych baz danych, składniki i ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorUserName</td>
     <td>Zawiera nazwę użytkownika administratora dla nowo utworzony serwer Azure SQL Database. Jeśli nie zostanie określony, monit o podanie poświadczeń otworzy się okno poświadczenia programu PowerShell.</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorPassword</td>
     <td>Podaje hasło administratora dla nowo utworzony serwer Azure SQL Database. Jeśli nie podano okno poświadczenia programu PowerShell otworzy się monit o podanie poświadczeń.</td>
 </tr>
@@ -131,22 +125,17 @@ Aby zaktualizować rozmiar maszyny Wirtualnej, instalacji, uruchom następujący
   <th>Opis</th>
 </tr>
 
-  <tr>
+<tr>
     <td>ResourceGroupName</td>
     <td>Określa nazwę grupy zasobów platformy Azure używana podczas początkowo zostały zainstalowane składniki zadania elastycznych baz danych. Ten parametr "__ElasticDatabaseJob". Ponieważ nie jest to zalecane, aby zmienić tę wartość, nie powinny mieć do określenia tego parametru.</td>
-    </tr>
 </tr>
 
-</tr>
-
-  <tr>
+<tr>
     <td>ServiceWorkerCount</td>
     <td>Zawiera liczbę procesów roboczych usługi, aby zainstalować.  Ten parametr ma domyślnie wartość 1.  Większa liczba procesów roboczych może służyć do skalowania w poziomie usługi i umożliwiające uzyskanie wysokiej dostępności.  Zaleca się użyć "2" na potrzeby wdrożeń, które wymagają wysokiej dostępności usługi.</td>
 </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ServiceVmSize</td>
     <td>Zapewnia rozmiar maszyny Wirtualnej do użycia w ramach usługi w chmurze. Ten parametr A0. Wartości parametrów... /.. / A3 są akceptowane spowodować roli procesu roboczego użyć rozmiaru ExtraSmall/małych/średni/duża, odpowiednio. Zobacz więcej informacji na temat rozmiarów ról procesów roboczych, FO [zadań elastycznych baz danych, składniki i ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 571cce2fafe1d19653dfa1e3d9a91042584621eb
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: fedc053d7869d9d5e85f890dcc707852a27df089
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735945"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011385"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Szybki start: Tworzenie serwera — PowerShell
 
@@ -37,7 +37,7 @@ Import-Module Az.AnalysisServices
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount). Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```powershell
 Connect-AzAccount
@@ -68,7 +68,7 @@ Możesz usunąć serwer z subskrypcji przy użyciu polecenia [Remove-AzAnalysisS
 Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przedstawiono, jak utworzyć serwer w ramach subskrypcji platformy Azure przy użyciu programu PowerShell. Teraz, po utworzeniu serwera, możesz go zabezpieczyć, konfigurując (opcjonalną) zaporę serwera. Możesz też dodać do serwera podstawowy przykładowy model danych bezpośrednio w portalu. Przykładowy model służy do zdobywania wiedzy na temat konfigurowania ról modelowej bazy danych oraz testowania połączeń klienckich. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego dodawania przykładowego modelu.
 

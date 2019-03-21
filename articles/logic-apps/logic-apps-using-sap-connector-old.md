@@ -2,7 +2,6 @@
 title: Łączenie z systemami SAP — Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Uzyskiwanie dostępu i zarządzania zasobami SAP dzięki automatyzacji przepływów pracy z usługą Azure Logic Apps
 author: ecfan
-manager: jeconnoc
 ms.author: estfan
 ms.date: 05/31/2018
 ms.topic: article
@@ -11,18 +10,17 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 77d1e11c1400f9a3d6bb6bda8e935cd4d24a195e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230900"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170840"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z usługi Azure Logic Apps
 
 > [!NOTE]
-> Ten łącznik SAP wkrótce staną się przestarzałe. Udostępniliśmy nowe, bardziej zaawansowane łącznika systemu SAP i zalecamy, aby wybrać lub przenieść do [nowy łącznik SAP](./logic-apps-using-sap-connector.md).
->  
+> Ten łącznik SAP jest zaplanowane do wycofania z użycia. Użyj lub Migrowanie do [łącznika systemu SAP nowszych i bardziej zaawansowanych](./logic-apps-using-sap-connector.md). 
 
 Ten artykuł pokazuje, jak można pobrać zasobów SAP z wewnątrz aplikacji logiki za pomocą łączników serwera aplikacji SAP i SAP Message Server. W ten sposób można zautomatyzować zadania, procesów i przepływów pracy, które Zarządzaj danymi SAP i zasoby, tworząc aplikacje logiki.
 
@@ -38,7 +36,7 @@ Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.micro
 
 Aby skorzystać z tego artykułu, potrzebne są następujące elementy:
 
-* Aplikacja logiki, z którym chcesz uzyskać dostęp do systemu SAP i wyzwalacza uruchamiającego przepływ pracy aplikacji logiki. Łączniki SAP zapewniają obecnie tylko akcje. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikacja logiki, z którym chcesz uzyskać dostęp do systemu SAP i wyzwalacza uruchamiającego przepływ pracy aplikacji logiki. Łączniki SAP zapewniają obecnie tylko akcje. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Twoje <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">serwera aplikacji SAP</a> lub <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP Message Server</a>
 
@@ -67,7 +65,7 @@ W tym przykładzie utworzysz aplikację logiki z punktem końcowym usługi na pl
 
 1. W witrynie Azure portal utworzyć pustej aplikacji logiki, który zostanie otwarty projektant aplikacji logiki. 
 
-2. W polu wyszukiwania wpisz "żądanie http" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **żądania — zostanie odebrane żądanie po HTTP**
+2. W polu wyszukiwania wpisz "żądanie http" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **Żądania — po odebraniu żądania HTTP**
 
    ![Dodawanie wyzwalacza żądania HTTP](./media/logic-apps-using-sap-connector-old/add-trigger.png)
 
@@ -93,7 +91,7 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
    * **Serwer aplikacji SAP — Wyślij SAP**
    * **Serwer komunikatów SAP — Wyślij SAP**
 
-   W tym przykładzie użyto tej akcji: **serwera aplikacji SAP — Wyślij SAP**
+   W tym przykładzie użyto tej akcji: **Serwer aplikacji SAP — Wyślij SAP**
 
    ![Wybierz opcję "Serwer aplikacji SAP" lub "Serwer SAP komunikat"](media/logic-apps-using-sap-connector-old/select-sap-action.png)
 
@@ -110,7 +108,7 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
 
       ![Utwórz połączenie z serwerem aplikacji SAP](./media/logic-apps-using-sap-connector-old/create-SAP-app-server-connection.png)  
 
-      **Serwer komunikatów SAP**
+      **SAP Message Server**
 
       ![Utwórz połączenie z serwerem SAP wiadomości](media/logic-apps-using-sap-connector-old/create-SAP-message-server-connection.png) 
 
@@ -154,7 +152,7 @@ Teraz Dodaj akcję odpowiedzi do przepływu pracy aplikacji logiki i zawierają 
 
 1. W Projektancie aplikacji logiki w obszarze akcji SAP wybierz **nowy krok** > **Dodaj akcję**.
 
-2. W polu wyszukiwania wprowadź "response" jako filtr. Z listy akcji wybierz następującą akcję: **żądanie - odpowiedź**
+2. W polu wyszukiwania wprowadź "response" jako filtr. Z listy akcji wybierz następującą akcję: **Żądanie - odpowiedź**
 
 3. Kliknij wewnątrz **treści** pola tak, aby wyświetlić listę zawartości dynamicznej. Z tej listy w obszarze **wysyłać SAP**, wybierz opcję **treści** pola. 
 
@@ -193,7 +191,7 @@ Gratulacje, utworzono aplikację logiki, który może komunikować się z serwer
 Aby uzyskać szczegółowe informacje techniczne dotyczące łącznika, zgodnie z opisem w plików struktury Swagger łączników programu zobacz następujące artykuły odwołania: 
 
 * [Serwer aplikacji SAP](/connectors/sapapplicationserver/)
-* [Serwer komunikatów SAP](/connectors/sapmessageserver/)
+* [SAP Message Server](/connectors/sapmessageserver/)
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 

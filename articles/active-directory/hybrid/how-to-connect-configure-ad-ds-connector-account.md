@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d39305b4a8fafbd2fe2f1ac101f92597d6a3e4a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189053"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000866"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 
@@ -104,7 +104,7 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -Obje
 ```
  
 ### <a name="view-ad-ds-permissions-of-an-object"></a>Wyświetlanie uprawnień obiektu w usługach AD DS 
-Poniższe polecenie cmdlet służy do wyświetlania listy uprawnienia ustawione dla obiektu usługi Active Directory, podając jego DistinguishedName: 
+Poniższe polecenie cmdlet służy do wyświetlania listy uprawnień aktualnie ustawiona na obiekt usługi Active Directory, podając jego DistinguishedName: 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
@@ -120,7 +120,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAcco
 ```
 
 
-Lub; 
+lub; 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -148,7 +148,7 @@ Aby ustawić uprawnienia dla konta usługi AD DS łącznika, w przypadku używan
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-Lub; 
+lub; 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -158,7 +158,7 @@ To polecenie cmdlet będzie ustawić następujące uprawnienia:
 
 |Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
-|Zezwalaj|Łącznik usługi AD DS Account|Właściwości odczytu/zapisu|MS-DS-spójności — identyfikator Guid|Obiekty zależne użytkownika|
+|Zezwalaj|Łącznik usługi AD DS Account|Właściwości odczytu/zapisu|Obiekty zależne użytkownika|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>Uprawnienia do synchronizacji skrótów haseł 
 Aby ustawić uprawnienia dla konta usługi AD DS łącznika, korzystając z synchronizacji skrótów haseł, uruchom polecenie: 
@@ -168,7 +168,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 ```
 
 
-Lub; 
+lub; 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
@@ -189,7 +189,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConne
 ```
 
 
-Lub;
+lub;
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -208,7 +208,7 @@ Aby ustawić uprawnienia dla konta usługi AD DS łącznika, używając zapisu z
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-Lub; 
+lub; 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
@@ -230,7 +230,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnecto
 ```
 
 
-Lub; 
+lub; 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -254,7 +254,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -
 ```
 
 
-Lub; 
+lub; 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -271,7 +271,7 @@ Ten skrypt programu PowerShell spowoduje podwyższenie poziomu uprawnień dla ko
 - Wyłącz dziedziczenie dla określonego obiektu 
 - Usunąć wszystkie wpisy kontroli dostępu dla określonego obiektu, z wyjątkiem ACE specyficzne dla siebie, ponieważ chcemy zachować uprawnienia domyślne, jeśli chodzi o SAMODZIELNIE. 
  
- Parametr - ADConnectorAccountDN jest konto usługi AD, w której uprawnienia muszą być ściągane. Jest to zazwyczaj MSOL_nnnnnnnnnnnn konta domeny, który jest skonfigurowany w łączniku usługi AD DS (zobacz Określanie konta łącznika AD DS). Credential parametr niezbędne jest określenie konta administratora, które ma niezbędne uprawnienia, aby ograniczyć uprawnienia usługi Active Directory w obiekcie docelowym usługi AD. Jest to zazwyczaj, Enterprise lub administratora domeny.  
+  Parametr - ADConnectorAccountDN jest konto usługi AD, w której uprawnienia muszą być ściągane. Jest to zazwyczaj MSOL_nnnnnnnnnnnn konta domeny, który jest skonfigurowany w łączniku usługi AD DS (zobacz Określanie konta łącznika AD DS). Credential parametr niezbędne jest określenie konta administratora, które ma niezbędne uprawnienia, aby ograniczyć uprawnienia usługi Active Directory w obiekcie docelowym usługi AD. Jest to zazwyczaj, Enterprise lub administratora domeny.  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 

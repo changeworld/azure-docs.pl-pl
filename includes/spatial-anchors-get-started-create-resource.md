@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: 9e232c5a8f1c2e38c04ea2236691554952f443e8
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: cee446e54a37ce47fc82d72724e831b8270f3769
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752852"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57908488"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Tworzenie zasobu usługi Spatial Anchors
 
@@ -21,7 +21,7 @@ ms.locfileid: "56752852"
 
    ![Wyszukiwanie usługi Spatial Anchors](./media/spatial-anchors-get-started-create-resource/portal-search.png)
 
-4. Wybierz pozycję **Spatial Anchors (wersja zapoznawcza)**, aby otworzyć okno dialogowe, i wybierz pozycję **Utwórz**.
+4. Wybierz **przestrzenne kotwic** aby otworzyć okno dialogowe i wybrać **Utwórz**.
 
 5. W formularzu **Konto usługi Spatial Anchors** wykonaj następujące czynności:
 
@@ -34,10 +34,10 @@ ms.locfileid: "56752852"
 
    ![Tworzenie zasobu](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-6. Po pomyślnym ukończeniu tworzenia zasobu możesz wyświetlić jego właściwości. Zanotuj wartość **identyfikatora konta** zasobu, ponieważ będzie ona potrzebna później.
+6. Po pomyślnym ukończeniu tworzenia zasobu możesz wyświetlić jego właściwości. Kopiuj zasób **Accountid** wartości do edytora tekstu, ponieważ będzie on wymagane później.
 
    ![Wyświetlanie właściwości zasobu](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 
-7. W obszarze **Ustawienia** wybierz pozycję **Klucz** i zanotuj wartość pozycji **Klucz podstawowy**. Ta wartość to `Account Key` i zostanie ona użyta później.
+7. W obszarze **ustawienia**, wybierz opcję **klucz**, a następnie skopiuj do edytora tekstu **klucz podstawowy** wartość. Ta wartość to `Account Key` i zostanie ona użyta później.
 
    ![Wyświetlanie klucza konta](./media/spatial-anchors-get-started-create-resource/view-account-key.png)

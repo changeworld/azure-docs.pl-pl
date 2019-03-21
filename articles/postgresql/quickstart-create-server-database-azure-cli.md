@@ -6,16 +6,20 @@ ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 3/12/2019
 ms.custom: mvc
-ms.openlocfilehash: b4c13fb0bdae790f215b87dbfdbfa32eff388fd8
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 07e3f1f2dd672fcfd0b7a3a4d102c429ac123c08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730582"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902022"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Szybki start: Tworzenie serwera usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecania platformy Azure
+
+> [!TIP]
+> Należy wziąć pod uwagę przy użyciu prostszej [az postgres się](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) polecenia wiersza polecenia platformy Azure (obecnie w wersji zapoznawczej). Wypróbuj [Szybki Start](./quickstart-create-server-up-azure-cli.md).
+
 Azure Database for PostgreSQL to usługa zarządzana, która umożliwia uruchamianie i skalowanie w chmurze baz danych PostgreSQL o wysokiej dostępności, a także zarządzanie nimi. Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. W tym przewodniku Szybki start przedstawiono, jak utworzyć serwer usługi Azure Database for PostgreSQL w [grupie zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) za pomocą interfejsu wiersza polecenia platformy Azure.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
@@ -50,7 +54,7 @@ Utwórz [serwer usługi Azure Database for PostgreSQL](overview.md) za pomocą p
 ---|---|---
 name | mydemoserver | Wybierz unikatową nazwę, która identyfikuje serwer usługi Azure Database for PostgreSQL. Nazwa serwera może zawierać tylko małe litery, cyfry i znaki łącznika (-). Musi zawierać od 3 do 63 znaków.
 resource-group | myresourcegroup | Podaj nazwę grupy zasobów platformy Azure.
-sku-name | GP_Gen4_2 | Nazwa jednostki SKU. Zgodnie z konwencją {warstwa cenowa}_{generacja obliczeniowa}_{rdzenie wirtualne} w skrócie. Zobacz poniższą tabelę, aby uzyskać więcej informacji na temat parametru sku-name.
+sku-name | GP_Gen5_2 | Nazwa jednostki SKU. Zgodnie z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne} w skrócie. Zobacz poniższą tabelę, aby uzyskać więcej informacji na temat parametru sku-name.
 backup-retention | 7 | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres wynosi od 7 do 35. 
 geo-redundant-backup | Disabled (Wyłączony) | Określa, czy dla tego serwera powinny być włączone kopie zapasowe geograficznie nadmiarowe. Dozwolone wartości: Enabled (Włączone), Disabled (Wyłączone).
 location | westus | Lokalizacja platformy Azure dla serwera.
@@ -62,7 +66,7 @@ admin-password | *bezpieczne hasło* | Hasło użytkownika administratora. Musi 
 
 
 Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne}, jak pokazano w przykładach poniżej:
-+ `--sku-name B_Gen4_1` — warstwa podstawowa, 4. generacja, 1 rdzeń wirtualny. Ta opcja to najmniejsza dostępna jednostka SKU.
++ `--sku-name B_Gen5_1` — warstwa podstawowa, 5. generacja, 1 rdzeń wirtualny. Ta opcja to najmniejsza dostępna jednostka SKU.
 + `--sku-name GP_Gen5_32` — warstwa ogólnego przeznaczenia, 5. generacja, 32 rdzenie wirtualne.
 + `--sku-name MO_Gen5_2` — warstwa zoptymalizowana pod kątem pamięci, 5. generacja, 2 rdzenie wirtualne.
 
@@ -108,8 +112,8 @@ Wynik jest w formacie JSON. Zanotuj wartości **administratorLogin** i **fullyQu
   "resourceGroup": "myresourcegroup",
   "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -131,25 +135,25 @@ Wynik jest w formacie JSON. Zanotuj wartości **administratorLogin** i **fullyQu
 Jeśli na Twoim komputerze klienckim jest zainstalowany program PostgreSQL, możesz użyć lokalnego wystąpienia narzędzia [psql](https://www.postgresql.org/docs/current/static/app-psql.html), aby nawiązać połączenie z serwerem Azure PostgreSQL. Użyj teraz narzędzia wiersza polecenia psql, aby nawiązać połączenie z serwerem Azure PostgreSQL.
 
 1. Uruchom poniższe polecenie psql w celu nawiązania połączenia z serwerem usługi Azure Database for PostgreSQL
-```bash
-psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
-```
+   ```bash
+   psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
+   ```
 
-  Na przykład poniższe polecenie służy do nawiązywania połączenia z domyślną bazą danych o nazwie **postgres** na Twoim serwerze PostgreSQL **mydemoserver.postgres.database.azure.com** za pomocą poświadczeń dostępu. Gdy zostanie wyświetlony monit o podanie hasła, wprowadź wybrane hasło `<server_admin_password>`.
+   Na przykład poniższe polecenie służy do nawiązywania połączenia z domyślną bazą danych o nazwie **postgres** na Twoim serwerze PostgreSQL **mydemoserver.postgres.database.azure.com** za pomocą poświadczeń dostępu. Gdy zostanie wyświetlony monit o podanie hasła, wprowadź wybrane hasło `<server_admin_password>`.
   
-  ```bash
-psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
-```
+   ```bash
+   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
+   ```
 
-2.  Po nawiązaniu połączenia z serwerem utwórz pustą bazę danych za pomocą wiersza polecenia.
-```sql
-CREATE DATABASE mypgsqldb;
-```
+2. Po nawiązaniu połączenia z serwerem utwórz pustą bazę danych za pomocą wiersza polecenia.
+   ```sql
+   CREATE DATABASE mypgsqldb;
+   ```
 
-3.  W wierszu polecenia wykonaj poniższe polecenie, aby przełączyć połączenie na nowo utworzoną bazę danych **mypgsqldb**:
-```sql
-\c mypgsqldb
-```
+3. W wierszu polecenia wykonaj poniższe polecenie, aby przełączyć połączenie na nowo utworzoną bazę danych **mypgsqldb**:
+   ```sql
+   \c mypgsqldb
+   ```
 
 ## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>Nawiązywanie połączenia z serwerem PostgreSQL za pomocą narzędzia pgAdmin
 
@@ -172,7 +176,7 @@ pgAdmin to narzędzie open source używane z bazą danych PostgreSQL. Aplikację
     Nazwa lub adres hosta | Nazwa serwera | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Przykładowy serwer to **mydemoserver.postgres.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny (**\*.postgres.database.azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
     Port | 5432 | Port używany podczas łączenia z serwerem usługi Azure Database for PostgreSQL. 
     Baza danych konserwacji | *postgres* | Domyślna nazwa bazy danych wygenerowana przez system.
-    Nazwa użytkownika | Nazwa logowania administratora serwera | Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *username@servername*.
+    Nazwa użytkownika | Nazwa logowania administratora serwera | Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format jest *username\@servername*.
     Hasło | Hasło administratora | Hasło wybrane podczas tworzenia serwera wcześniej w tym przewodniku Szybki start.
     Rola | Pozostaw puste | Nie trzeba podawać nazwy roli w tym momencie. Pozostaw pole puste.
     Tryb SSL | *Wymagane* | Tryb SSL możesz ustawić na karcie SSL narzędzia pgAdmin. Domyślnie wszystkie serwery usługi Azure Database for PostgreSQL są tworzone z włączonym wymuszaniem protokołu SSL. Aby wyłączyć wymuszanie protokołu SSL, zobacz [Wymuszanie protokołu SSL](./concepts-ssl-connection-security.md).
@@ -189,7 +193,7 @@ pgAdmin to narzędzie open source używane z bazą danych PostgreSQL. Aplikację
 
 10. Z listy rozwijanej wybierz pozycję **Właściciel** dla bazy danych. Wybierz nazwę logowania administratora serwera, np. przykładową nazwę **my admin**.
 
-   ![Tworzenie bazy danych w narzędziu pgAdmin](./media/quickstart-create-server-database-azure-cli/11-pgadmin-database.png)
+    ![Tworzenie bazy danych w narzędziu pgAdmin](./media/quickstart-create-server-database-azure-cli/11-pgadmin-database.png)
 
 11. Wybierz pozycję **Zapisz**, aby utworzyć nową pustą bazę danych.
 
@@ -214,7 +218,7 @@ Jeśli po prostu chcesz usunąć jeden z nowo utworzonych serwerów, możesz uru
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Migrowanie bazy danych przy użyciu funkcji eksportowania i importowania](./howto-migrate-using-export-and-import.md)
 

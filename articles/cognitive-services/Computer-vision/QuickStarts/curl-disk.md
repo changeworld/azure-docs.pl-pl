@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b73c574f790891e2ad849fd0bd9fb27c313051f0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: d2591bf4aeb3ec0accf322e5fb77841fb68df3dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869266"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889322"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Szybki start: analizowanie obrazu lokalnego przy użyciu interfejsu API REST i biblioteki cURL podczas przetwarzania obrazów
 
@@ -110,7 +110,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 Jeśli nie będziesz już używać okna wiersza polecenia i edytora tekstów, zamknij je.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z interfejsem API przetwarzania obrazów używanym do analizy obrazu, wykrywania osobistości i charakterystycznych elementów krajobrazu, tworzenia miniatur oraz wyodrębniania tekstu drukowanego i odręcznego. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

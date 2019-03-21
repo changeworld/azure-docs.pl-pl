@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/27/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d1ff4b44ff352742ee91b61c0c774cfe7c3f9d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 28f9c17e21db5a46ad01fd1b318c52a3a721f8b9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181358"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226967"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu programu PowerShell
 
@@ -46,7 +46,7 @@ W tej sekcji dowiesz się, jak włączyć i wyłączyć przypisany systemowo to�
 
 Aby utworzyć Maszynę wirtualną platformy Azure z przypisany systemowo zarządzaną tożsamością, włączone, Twoje konto musi [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) przypisania roli.  Nie dodatkowych Azure przypisań ról katalogu usługi AD są wymagane.
 
-1. Można skorzystać z jednego z usługi Azure VM poradników, kończenie tylko niezbędne sekcje ("Logowanie do platformy Azure", "Tworzenie grupy zasobów", "Tworzenie sieci grupy", "Tworzenie maszyny Wirtualnej").
+1. Można skorzystać z jednego z usługi Azure VM poradników, kończenie tylko niezbędne sekcje (zwrotu "Sign in Azure", "Tworzenie grupy zasobów", "Tworzenie sieci group", "Tworzenie maszyny Wirtualnej").
     
     Gdy pojawi się w sekcji "Tworzenie maszyny Wirtualnej" Wprowadź niewielkich modyfikacji do [New AzVMConfig](/powershell/module/az.compute/new-azvm) Składnia poleceń cmdlet. Pamiętaj dodać `-AssignIdentity:$SystemAssigned` parametr do aprowizowania maszyny Wirtualnej przy użyciu tożsamości przypisanych przez system, włączone, na przykład:
       
@@ -57,14 +57,8 @@ Aby utworzyć Maszynę wirtualną platformy Azure z przypisany systemowo zarząd
    - [Utwórz maszynę wirtualną Windows przy użyciu programu PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
    - [Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Opcjonalnie) Dodawanie zarządzanych tożsamości dla zasobów platformy Azure maszyny Wirtualnej rozszerzenie (zaplanowane do wycofania z użycia w styczniu 2019) przy użyciu `-Type` parametru [AzVMExtension zestaw](/powershell/module/az.compute/set-azvmextension) polecenia cmdlet. Można przekazać elementu "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny Wirtualnej i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
-    > [!NOTE]
-    > Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również. Zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure planowane jest przestarzała w styczniu 2019 r. 
+> [!NOTE]
+> Opcjonalnie aprowizujesz zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure, ale wkrótce zostaną wycofane. Zalecamy używanie punktu końcowego usługi Azure Instance Metadata tożsamości do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [migracja z rozszerzenia maszyny Wirtualnej do endpoint IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Włącz przypisany systemowo tożsamość zarządzaną istniejącej maszyny wirtualnej platformy Azure
 
@@ -83,14 +77,8 @@ Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotni
    Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-3. (Opcjonalnie) Dodawanie zarządzanych tożsamości dla zasobów platformy Azure maszyny Wirtualnej rozszerzenie (zaplanowane do wycofania z użycia w styczniu 2019) przy użyciu `-Type` parametru [AzVMExtension zestaw](/powershell/module/az.compute/set-azvmextension) polecenia cmdlet. Można przekazać elementu "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny Wirtualnej i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu. Pamiętaj określić poprawny `-Location` parametru dopasowania lokalizacji istniejącej maszyny Wirtualnej:
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
-    > [!NOTE]
-    > Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również.
+> [!NOTE]
+> Opcjonalnie aprowizujesz zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure, ale wkrótce zostaną wycofane. Zalecamy używanie punktu końcowego usługi Azure Instance Metadata tożsamości do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [migracja z rozszerzenia maszyny Wirtualnej do endpoint IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
 ### <a name="add-vm-system-assigned-identity-to-a-group"></a>Dodawanie tożsamości przypisanej w systemie maszyny Wirtualnej do grupy
 
@@ -146,13 +134,10 @@ $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-Aby usunąć zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure, użytkownika przełącznika - Name, za pomocą [AzVMExtension Usuń](/powershell/module/az.compute/remove-azvmextension) polecenia cmdlet, określenie tej samej nazwie, które są używane podczas dodawania rozszerzenia:
+> [!NOTE]
+> Jeśli aprowizowaniu tożsamość zarządzaną dla zasobów platformy Azure maszyna wirtualna rozszerzenie (przestarzałe), musisz go usunąć przy użyciu [AzVMExtension Usuń](/powershell/module/az.compute/remove-azvmextension). Aby uzyskać więcej informacji, zobacz [migracja z rozszerzenia maszyny Wirtualnej do IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
-   ```powershell
-   Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
-   ```
-
-## <a name="user-assigned-managed-identity"></a>Przypisane przez użytkownika z tożsamości zarządzanej
+## <a name="user-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez użytkownika
 
 W tej sekcji dowiesz się, jak dodawać i usuwać przypisanych przez użytkownika tożsamości zarządzanej maszyny wirtualnej przy użyciu programu Azure PowerShell.
 
@@ -160,7 +145,7 @@ W tej sekcji dowiesz się, jak dodawać i usuwać przypisanych przez użytkownik
 
 Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualnej, Twoje konto musi [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) i [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) przypisań ról. Nie dodatkowych Azure przypisań ról katalogu usługi AD są wymagane.
 
-1. Można skorzystać z jednego z usługi Azure VM poradników, kończenie tylko niezbędne sekcje ("Logowanie do platformy Azure", "Tworzenie grupy zasobów", "Tworzenie sieci grupy", "Tworzenie maszyny Wirtualnej"). 
+1. Można skorzystać z jednego z usługi Azure VM poradników, kończenie tylko niezbędne sekcje (zwrotu "Sign in Azure", "Tworzenie grupy zasobów", "Tworzenie sieci group", "Tworzenie maszyny Wirtualnej"). 
   
     Gdy pojawi się w sekcji "Tworzenie maszyny Wirtualnej" Wprowadź niewielkich modyfikacji do [ `New-AzVMConfig` ](/powershell/module/az.compute/new-azvm) Składnia poleceń cmdlet. Dodaj `-IdentityType UserAssigned` i `-IdentityID ` parametry do aprowizowania maszyny Wirtualnej przy użyciu tożsamości przypisanych przez użytkownika.  Zastąp `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, i `<USER ASSIGNED IDENTITY NAME>` własnymi wartościami.  Na przykład:
     
@@ -171,14 +156,8 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
     - [Utwórz maszynę wirtualną Windows przy użyciu programu PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
     - [Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Opcjonalnie) Dodaj tożsamość zarządzaną dla rozszerzenie maszyny Wirtualnej zasoby platformy Azure przy użyciu polecenia `-Type` parametru [AzVMExtension zestaw](/powershell/module/az.compute/set-azvmextension) polecenia cmdlet. Można przekazać elementu "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny Wirtualnej i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu. Pamiętaj określić poprawny `-Location` parametru dopasowania lokalizacji istniejącej maszyny Wirtualnej:
-      > [!NOTE]
-    > Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również. Zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure planowane jest przestarzała w styczniu 2019 r.
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
+> [!NOTE]
+> Opcjonalnie aprowizujesz zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure, ale wkrótce zostaną wycofane. Zalecamy używanie punktu końcowego usługi Azure Instance Metadata tożsamości do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [migracja z rozszerzenia maszyny Wirtualnej do endpoint IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Przypisz tożsamości zarządzanej użytkownik przypisany do istniejącej maszyny Wirtualnej platformy Azure
 
@@ -193,7 +172,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 2. Tworzenie przy użyciu przypisanych przez użytkownika z tożsamości zarządzanej [New AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) polecenia cmdlet.  Uwaga `Id` w danych wyjściowych, ponieważ będzie on potrzebny w następnym kroku.
 
    > [!IMPORTANT]
-   > Tworzenie zarządzanych tożsamości przypisanych przez użytkownika obsługuje tylko alfanumeryczne i łącznik (0 – 9 lub a-z lub A-Z lub -) znaków. Ponadto nazwa powinna być ograniczona do 24 znaków w celu przypisania do VM/VMSS, aby zapewnić prawidłowe działanie. Wracaj tutaj, aby zapoznać się z aktualizacjami. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+   > Tworzenie zarządzanych tożsamości przypisanych przez użytkownika obsługuje tylko alfanumeryczne, podkreślenie i łącznik (0 – 9 lub a-z lub A-Z, \_ lub -) znaków. Ponadto nazwa powinna być ograniczona od 3 do 128 znaków w celu przypisania do VM/VMSS, aby zapewnić prawidłowe działanie. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
 
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
@@ -208,12 +187,8 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
    Update-AzVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-4. Dodaj tożsamość zarządzaną dla zasobów platformy Azure maszyny Wirtualnej rozszerzenie (zaplanowane do wycofania z użycia w styczniu 2019) przy użyciu `-Type` parametru [AzVMExtension zestaw](/powershell/module/az.compute/set-azvmextension) polecenia cmdlet. Można przekazać elementu "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny Wirtualnej i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu. Określ poprawny `-Location` parametru dopasowania lokalizacji istniejącej maszyny Wirtualnej.
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
+> [!NOTE]
+> Opcjonalnie aprowizujesz zarządzanych tożsamości dla rozszerzenia maszyny Wirtualnej zasoby platformy Azure, ale wkrótce zostaną wycofane. Zalecamy używanie punktu końcowego usługi Azure Instance Metadata tożsamości do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [migracja z rozszerzenia maszyny Wirtualnej do endpoint IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Usuń przypisanych przez użytkownika tożsamości zarządzanej maszyny wirtualnej platformy Azure
 

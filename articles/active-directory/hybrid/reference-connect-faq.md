@@ -15,16 +15,33 @@ ms.date: 11/02/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 594fb736b8ec4b49cf1525047ff8a7ce5e5dc959
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194975"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840906"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
 ## <a name="general-installation"></a>Ogólne instalacji
+
+**Pyt.: Jak można zabezpieczyć mój serwer usługi Azure AD Connect, aby zmniejszyć obszar narażony na ataki zabezpieczeń?**
+
+Firma Microsoft zaleca, ograniczenie funkcjonalności serwera Azure AD Connect do zmniejszenia bezpieczeństwa obszar narażony na atak to kluczowy składnik środowiska informatycznego.  Zgodnie z zaleceniami poniżej zostaną obniżone zagrożenia dla bezpieczeństwa organizacji.
+
+* Wdrażanie usługi Azure AD Connect na serwerze przyłączonym do domeny i Ogranicz dostęp administracyjny do administratorów domeny lub inne grupy zabezpieczeń ściśle kontrolowany
+
+Aby dowiedzieć się więcej, zobacz: 
+
+* [Zabezpieczanie grupy Administratorzy](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+
+* [Zabezpieczanie konta wbudowanego konta administratora](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+
+* [Ulepszenia zabezpieczeń i sustainment, zmniejszając powierzchni ataku](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+
+* [Zmniejszenie podatności usługi Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+
 **Pyt.: Instalacja będzie działać, jeśli administrator globalny usługi Azure Active Directory (Azure AD) ma uwierzytelniania dwuskładnikowego (2FA) włączone?**  
 Począwszy od lutego 2016 kompilacje ten scenariusz jest obsługiwany.
 

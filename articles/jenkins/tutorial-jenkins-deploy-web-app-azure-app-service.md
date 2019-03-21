@@ -8,18 +8,18 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: b0f909bb7f4b59e083f0ef1c8a19c11d5d9fb312
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 90f89f9ffb1d55e7621c87f168375251c78d9730
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821307"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533497"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
-W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](http://projects.spring.io/spring-boot/). 
+W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](https://projects.spring.io/spring-boot/). 
 
-![Omówienie](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Przegląd](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
 
 W tym samouczku wykonasz następujące zadania:
 
@@ -193,7 +193,7 @@ W narzędziu Jenkins utwórz zadanie potoku na potrzeby kompilowania i wdrażani
 
    1. W wyświetlonym polu **Properties Content** (Treść właściwości) dodaj następujące zmienne środowiskowe i ich wartości. 
 
-      ```text
+      ```ini
       AZURE_CRED_ID=yourAzureServicePrincipalName
       RES_GROUP=yourWebAppAzureResourceGroupName
       WEB_APP=yourWebAppName
@@ -212,7 +212,7 @@ Teraz możesz utworzyć pliki używane przez narzędzie Jenkins do kompilowania 
 1. W folderze `src/main/resources/` Twojego rozwidlenia usługi GitHub utwórz plik konfiguracji aplikacji o nazwie `web.config` zawierający następujący kod XML, lecz z ciągiem `$(JAR_FILE_NAME)` zastąpionym wartością `gs-spring-boot-0.1.0.jar`:
 
    ```xml
-   <?xml version="1.0" encoding="UTF-8">
+   <?xml version="1.0" encoding="UTF-8"?>
    <configuration>
       <system.webServer>
          <handlers>
@@ -225,7 +225,7 @@ Teraz możesz utworzyć pliki używane przez narzędzie Jenkins do kompilowania 
 
 1. W folderze głównym rozwidlenia usługi GitHub utwórz skrypt kompilacji i wdrażania o nazwie `Jenkinsfile` zawierający następujący tekst ([źródło w usłudze GitHub znajduje się tutaj](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se)):
 
-   ```text  
+   ```groovy
    node {
       stage('init') {
          checkout scm
@@ -326,7 +326,7 @@ Następnie skompiluj i wdróż aplikację w usłudze Azure App Service.
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Use Azure VMs as build agents (Używanie maszyn wirtualnych platformy Azure)](/azure/jenkins/jenkins-azure-vm-agents)

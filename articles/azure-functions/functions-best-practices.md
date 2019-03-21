@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8581510f16896df74f814e501648374d984945e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039337"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848953"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizuj wydajność i niezawodność usługi Azure Functions
 
@@ -84,7 +84,7 @@ Funkcje w ramach aplikacji funkcji udostępniania zasobów. Na przykład pamię�
 
 Należy zachować ostrożność ładowanie w aplikacjach funkcji w środowisku produkcyjnym. Pamięci są uśredniane dla każdej funkcji w aplikacji.
 
-Jeśli masz zestaw współużytkowany, do którego odwołuje się wiele funkcji platformy .net, należy umieścić go we wspólnym folderze udostępnionym. Jeśli za pomocą skryptów języka C# (csx), należy odwoływać się do zestawu za pomocą instrukcji, które są podobne do poniższego przykładu: 
+Jeśli masz zestaw współużytkowany, do którego odwołuje się wiele funkcji platformy .NET, należy umieścić go we wspólnym folderze udostępnionym. Jeśli za pomocą skryptów języka C# (csx), należy odwoływać się do zestawu za pomocą instrukcji, które są podobne do poniższego przykładu: 
 
     #r "..\Shared\MyAssembly.dll". 
 

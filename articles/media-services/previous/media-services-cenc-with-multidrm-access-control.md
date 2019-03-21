@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 94baa1235388ce99d013f8267f8410dcc206a51d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998352"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894363"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Projekt systemu ochrony zawartości przy użyciu kontroli dostępu przy użyciu usługi Azure Media Services 
 
@@ -28,7 +28,7 @@ Projektowanie i tworzenie podsystemu zarządzania (prawami cyfrowymi DRM) prawam
 
 Docelowe czytelnicy dla tego dokumentu są inżynierów, którzy pracują w podsystemu DRM OTT lub online rozwiązania przesyłania strumieniowego / (wiele ekranów) lub czytelników, którzy są zainteresowani podsystemu DRM. Zakłada się, czy czytelnicy są zapoznać się z co najmniej jedną z technologii DRM na rynku, takich jak PlayReady, Widevine, FairPlay lub Adobe Access.
 
-W tej dyskusji DRM możemy również obejmować szyfrowania common encryption (CENC) przy użyciu technologii multi-DRM. Główne trend w przemyśle OTT i przesyłania strumieniowego online jest CENC za pomocą wielu natywnych DRM na różnych platformach klienckich. Tego trendu jest przesunięcia od poprzedniego używany pojedynczy DRM i jego zestawu SDK klienta dla różnych platform klienta. Gdy używasz CENC przy użyciu wielu natywnych DRM PlayReady i Widevine są szyfrowane na [szyfrowania Common Encryption (CENC 23001-7 ISO/IEC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specyfikacji.
+W tej dyskusji DRM możemy również obejmować szyfrowania common encryption (CENC) przy użyciu technologii multi-DRM. Główne trend w przemyśle OTT i przesyłania strumieniowego online jest CENC za pomocą wielu natywnych DRM na różnych platformach klienckich. Tego trendu jest przesunięcia od poprzedniego używany pojedynczy DRM i jego zestawu SDK klienta dla różnych platform klienta. Gdy używasz CENC przy użyciu wielu natywnych DRM PlayReady i Widevine są szyfrowane na [szyfrowania Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specyfikacji.
 
 Zalety CENC przy użyciu technologii multi-DRM są jej:
 
@@ -156,7 +156,7 @@ W poniższej tabeli przedstawiono mapowania.
 | **Zarządzanie kluczami** |Nie wymagane przez implementację referencyjną |
 | **Zarządzanie zawartością** |Aplikacja konsolowa C# |
 
-Innymi słowy tożsamości i usługi STS są używane z usługą Azure AD. [Interfejsu API usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/) jest używany dla gracza. Usługa Media Services i Media Player obsługuje DASH i CENC przy użyciu technologii multi-DRM.
+Innymi słowy tożsamości i usługi STS są używane z usługą Azure AD. [Interfejsu API usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/) jest używany dla gracza. Usługa Media Services i Media Player obsługuje DASH i CENC przy użyciu technologii multi-DRM.
 
 Na poniższym diagramie przedstawiono ogólną strukturę i przepływ za pomocą poprzedniej mapowania technologii:
 
@@ -208,7 +208,7 @@ Implementacja obejmuje następujące kroki:
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. Tworzenie odtwarzacza przy użyciu [interfejsu API usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/). Użyj [interfejsu API usługi Azure Media Player ProtectionInfo](http://amp.azure.net/libs/amp/latest/docs/) do określenia technologii DRM na różnych platformach DRM.
+8. Tworzenie odtwarzacza przy użyciu [interfejsu API usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/). Użyj [interfejsu API usługi Azure Media Player ProtectionInfo](https://amp.azure.net/libs/amp/latest/docs/) do określenia technologii DRM na różnych platformach DRM.
 
 9. W poniższej tabeli przedstawiono macierzy testów.
 

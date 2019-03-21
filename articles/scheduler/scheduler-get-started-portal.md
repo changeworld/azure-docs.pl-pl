@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7e5abf1100c09f8f28d268b3f2defe953c5f36f0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770139"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887225"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Tworzenie i planowanie swojego pierwszego zadania przy użyciu usługi Azure Scheduler — Azure Portal
 
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.co
 
    ![Tworzenie zasobu usługi Scheduler](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
-   Teraz utwórz zadanie, które wysyła żądanie GET do tego adresu URL: `http://www.microsoft.com/` 
+   Teraz utwórz zadanie, które wysyła żądanie GET do tego adresu URL: `https://www.microsoft.com/` 
 
 1. W obszarze **Zadanie usługi Scheduler** wprowadź następujące informacje:
 
@@ -51,7 +51,7 @@ Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.co
    |----------|---------------|-------------| 
    | **Akcja** | **HTTP** | Typ akcji do uruchomienia | 
    | **Metoda** | **Get** | Metoda do wywołania | 
-   | **Adres URL** | **http://www.microsoft.com** | Docelowy adres URL | 
+   | **Adres URL** | **https://www.microsoft.com** | Docelowy adres URL | 
    |||| 
    
    ![Definiowanie zadania](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0e38e921121f9b44356a33641bea4c2666412cca
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5f98cf51b618686e3c608535667993e9d5f9e939
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852931"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
 
@@ -149,11 +149,8 @@ Standardowe adresy i porty wymagane przez hybrydowy proces roboczy elementu Runb
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-## <a name="troubleshoot"></a>Rozwiązywanie problemów
-
-Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów z hybrydowych procesów roboczych Runbook](troubleshoot/hybrid-runbook-worker.md#general)
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
+* Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
+* Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów z hybrydowych procesów roboczych Runbook](troubleshoot/hybrid-runbook-worker.md#general)
 

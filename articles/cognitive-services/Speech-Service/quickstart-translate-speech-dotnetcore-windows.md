@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 5e4b8bbd84b16f74943d8958c4153fb1546bdb32
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: b0b0c256db3cc93e515b38bf7daad72b082d2d3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110561"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850262"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla platformy .NET Core
 
@@ -62,14 +62,14 @@ Ten przewodnik Szybki start wymaga następujących elementów:
     ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu tłumaczenia](media/sdk/qs-translate-csharp-dotnetcore-windows-output.png "Dane wyjściowe konsoli po pomyślnym ukończeniu tłumaczenia")
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dodatkowe przykłady, dotyczące między innymi odczytywania mowy z pliku audio i zwracania przetłumaczonego tekstu jako syntetyzowanej mowy, są dostępne w usłudze GitHub.
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka C# w usłudze GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)
 - [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md)

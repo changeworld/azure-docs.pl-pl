@@ -5,21 +5,23 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: overview
-ms.date: 09/26/2018
+ms.date: 03/05/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: db6a02db3a154193a9326e2957038e5daa2faae7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 0960977a17925ffd922e75fa03847b7023241c4e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201504"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Usługa Azure Service Kubernetes (AKS) ułatwia wdrażanie zarządzanego klastra Kubernetes na platformie Azure. Usługa AKS zmniejsza złożoność i nakłady operacyjne związane z zarządzaniem rozwiązaniem Kubernetes, przenosząc znaczną część tej odpowiedzialności na platformę Azure. Jako hostowana usługa Kubernetes, platforma Azure obsługuje krytyczne zadania, takie jak monitorowanie kondycji i konserwacja. Wzorce rozwiązania Kubernetes są zarządzane przez platformę Azure. Zarządzasz tylko węzłami agentów i obsługujesz je. Jako zarządzana usługa Kubernetes usługa AKS jest bezpłatna — płacisz tylko za węzły agentów w swoich klastrach, a nie za wzorce.
 
 Klaster usługi AKS możesz utworzyć w witrynie Azure Portal, przy użyciu wiersza polecenia platformy Azure lub opcji wdrożenia opartych na szablonach, takich jak szablony usługi Resource Manager i programu Terraform. Podczas wdrażania klastra usługi AKS wzorzec Kubernetes i wszystkie węzły są wdrażane i konfigurowane automatycznie. Dodatkowe funkcje, takie jak zaawansowana łączność sieciowa, integracja z usługą Azure Active Directory i monitorowanie, także można skonfigurować podczas procesu wdrażania.
+
+Aby uzyskać więcej informacji na temat podstawy platformy Kubernetes, zobacz [Kubernetes podstawowe pojęcia dla usługi AKS][concepts-clusters-workloads].
 
 Aby rozpocząć pracę, ukończ przewodnik Szybki start dotyczący usługi AKS [w witrynie Azure Portal][aks-portal] lub [przy użyciu wiersza polecenia platformy Azure][aks-cli].
 
@@ -30,6 +32,8 @@ Aby zapewnić lepsze zabezpieczenia i zarządzanie, usługa AKS umożliwia integ
 ### <a name="identity-and-security-management"></a>Zarządzanie tożsamościami i zabezpieczeniami
 
 Aby ograniczyć dostęp do zasobów klastra, usługa AKS obsługuje [kontrolę dostępu opartą na rolach (RBAC) platformy Kubernetes][kubernetes-rbac]. Kontrola dostępu oparta na rolach umożliwia kontrolowanie dostępu do zasobów i przestrzeni nazw platformy Kubernetes, a także uprawnień do tych zasobów. Możesz też skonfigurować integrację klastra usługi AKS z usługą Azure Active Directory. Dzięki integracji z usługą Azure AD dostęp do platformy Kubernetes można skonfigurować w oparciu o istniejącą tożsamość i członkostwo w grupie. Istniejącym użytkownikom i grupom usługi Azure AD można zapewnić dostęp do zasobów usługi AKS i zintegrowane środowisko logowania.
+
+Aby uzyskać więcej informacji o tożsamości, zobacz [opcje dostęp i tożsamość dla usługi AKS][concepts-identity].
 
 Aby zabezpieczyć klastry usługi AKS, zobacz [Integrowanie usługi Azure Active Directory z usługą AKS][aks-aad].
 
@@ -65,13 +69,17 @@ Aby uzyskać więcej informacji, zobacz [Korzystanie z procesorów GPU w usłudz
 
 Na potrzeby obsługi obciążeń aplikacji możesz zainstalować woluminy magazynu do trwałego magazynowania danych. Mogą być używane woluminy statyczne i dynamiczne. W zależności od liczby połączonych zasobników współużytkujących magazyn możesz używać magazynu opartego na usłudze Azure Disks na potrzeby dostępu pojedynczego zasobnika lub usługi Azure Files na potrzeby dostępu wielu współbieżnych zasobników.
 
-Rozpocznij pracę z dynamicznymi woluminami trwałymi za pomocą usługi [Azure Disks][azure-disk] lub usługi [Azure Files][azure-files].
+Aby uzyskać więcej informacji, zobacz [opcji magazynu dla aplikacji w usłudze AKS][concepts-storage].
+
+Rozpoczynanie pracy z usługą woluminy dynamiczne trwałego przy użyciu [Azure Disks] [ azure-disk] lub [usługi Azure Files][azure-files].
 
 ## <a name="virtual-networks-and-ingress"></a>Sieci wirtualne i ruch przychodzący
 
 Klaster usługi AKS można wdrożyć w istniejącej sieci wirtualnej. W takiej konfiguracji każdy zasobnik w klastrze ma przypisany adres IP w sieci wirtualnej i może bezpośrednio komunikować się z innymi zasobnikami w klastrze oraz innymi węzłami w sieci wirtualnej. Zasobniki mogą też łączyć się z innymi usługami w równorzędnych sieciach wirtualnych i z sieciami lokalnymi za pośrednictwem usługi ExpressRoute lub połączeń sieci VPN typu lokacja-lokacja (S2S).
 
-Aby uzyskać więcej informacji, zobacz temat [Omówienie łączności sieciowej usługi AKS][aks-networking].
+Aby uzyskać więcej informacji, zobacz [sieci pojęcia związane z aplikacjami w usłudze AKS][aks-networking].
+
+Aby rozpocząć pracę z ruchem danych przychodzących, zobacz [Routing aplikacji protokołu HTTP][aks-http-routing].
 
 ### <a name="ingress-with-http-application-routing"></a>Ruch przychodzący z routingiem aplikacji protokołu HTTP
 
@@ -101,9 +109,9 @@ Usługa Azure Kubernetes Service (AKS) ma certyfikat CNCF zgodności z platform�
 
 ## <a name="regulatory-compliance"></a>Zgodność z przepisami
 
-Usługa Azure Kubernetes Service (AKS) jest zgodna z regulacjami SOC, ISO, PCI DSS i HIPAA.
+Usługa Azure Kubernetes Service (AKS) jest zgodna z regulacjami SOC, ISO, PCI DSS i HIPAA. Aby uzyskać więcej informacji, zobacz [zgodności omówienie platformy Microsoft Azure][compliance-doc].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat wdrażania usługi AKS i zarządzania nią z przewodnika Szybki start dotyczącego interfejsu wiersza polecenia platformy Azure.
 
@@ -112,10 +120,8 @@ Dowiedz się więcej na temat wdrażania usługi AKS i zarządzania nią z przew
 
 <!-- LINKS - external -->
 [aks-engine]: https://github.com/Azure/aks-engine
-[draft]: https://github.com/Azure/draft
-[helm]: https://helm.sh/
 [kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
-[kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[compliance-doc]: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md
@@ -134,3 +140,7 @@ Dowiedz się więcej na temat wdrażania usługi AKS i zarządzania nią z przew
 [container-health]: ../monitoring/monitoring-container-health.md
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
+[concepts-clusters-workloads]: concepts-clusters-workloads.md
+[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[concepts-identity]: concepts-identity.md
+[concepts-storage]: concepts-storage.md

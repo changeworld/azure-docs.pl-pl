@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a1ca6988158d1cd15b6c802a8dcda1c91850c91
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cd0ce02a92c0a2e803866b6f070dba113c566f5d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112215"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>Protokoły — przy użyciu niejawnego przepływu aplikacji jednostronicowych w wersji 2.0
 
@@ -134,7 +134,7 @@ error=access_denied
 
 Po prostu odbiera id_token nie wystarcza do uwierzytelnienia użytkownika; należy również sprawdzić poprawności podpisu id_token i weryfikować oświadczenia w tokenie, w zależności od wymagań aplikacji. Korzysta z punktu końcowego v2.0 [tokenów sieci Web JSON (tokenów Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
 
-Można wybrać sprawdzić poprawność `id_token` w kliencie kod, ale powszechną praktyką jest wysłanie `id_token` do serwera wewnętrznej bazy danych i zweryfikować istnieje. Po zweryfikowaniu podpis id_token, istnieje kilka oświadczenia, które będzie trzeba zweryfikować. Zobacz [ `id_token` odwołania](id-tokens.md) uzyskać więcej informacji, w tym [sprawdzanie poprawności tokenów](id-tokens.md#validating-an-idtoken) i [ważne informacje na temat Przerzucanie klucza podpisywania](active-directory-signing-key-rollover.md). Firma Microsoft zaleca korzystające z biblioteki do analizowania i sprawdzanie poprawności tokenów — Brak co najmniej jeden dostępny dla większości platform i języków.
+Można wybrać sprawdzić poprawność `id_token` w kliencie kod, ale powszechną praktyką jest wysłanie `id_token` do serwera wewnętrznej bazy danych i zweryfikować istnieje. Po zweryfikowaniu podpis id_token, istnieje kilka oświadczenia, które będzie trzeba zweryfikować. Zobacz [ `id_token` odwołania](id-tokens.md) uzyskać więcej informacji, w tym [sprawdzanie poprawności tokenów](id-tokens.md#validating-an-id_token) i [ważne informacje na temat Przerzucanie klucza podpisywania](active-directory-signing-key-rollover.md). Firma Microsoft zaleca korzystające z biblioteki do analizowania i sprawdzanie poprawności tokenów — Brak co najmniej jeden dostępny dla większości platform i języków.
 
 Możesz również sprawdzić dodatkowe oświadczenia w zależności od scenariusza. Niektórych typowych operacji sprawdzania poprawności obejmują:
 

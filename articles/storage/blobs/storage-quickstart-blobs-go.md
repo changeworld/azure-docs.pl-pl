@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: 5bafceca09cfe5a981365a39e4f3803b5865ce73
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
-ms.translationtype: HT
+ms.openlocfilehash: 69895fff5e1daaf02caec54a6d38052e36ad8d49
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754819"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999059"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Go
 
@@ -89,7 +89,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 Po naciśnięciu klawisza w celu kontynuowania aplikacja przykładowa usunie kontener magazynu i pliki. 
 
 > [!TIP]
-> Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](http://storageexplorer.com). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
+> Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
 >
 
 ## <a name="understand-the-sample-code"></a>Omówienie przykładowego kodu
@@ -208,7 +208,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>Pobieranie obiektu blob
 
-Pobierz obiekty blob za pomocą funkcji niskiego poziomu **Download** z użyciem obiektu BlobURL. Spowoduje to zwrócenie struktury **DownloadResponse**. Uruchom funkcję **Body** w strukturze, aby uzyskać strumień **RetryReader** związany z odczytem danych. Jeśli połączenie nie powiedzie się podczas odczytu, spowoduje to utworzenie dodatkowych żądań ponownego nawiązania połączenia i kontynuowanie odczytu. Określenie opcji RetryReaderOption z elementem MaxRetryRequests ustawionym na 0 (ustawienie domyślne) zwraca treść oryginalnej odpowiedzi, a kolejne próby nie są wykonywane. Można również użyć interfejsów API wysokiego poziomu **DownloadBlobToBuffer** lub **DownloadBlobToFile** w celu uproszczenia kodu.
+Pobierz obiekty blob za pomocą funkcji niskiego poziomu **Download** z użyciem obiektu BlobURL. Spowoduje to zwrócenie struktury **DownloadResponse**. Uruchom funkcję **Body** w strukturze, aby uzyskać strumień **RetryReader** związany z odczytem danych. Jeśli połączenie nie powiedzie się podczas odczytu, wprowadzi dodatkowych żądań do ponownego nawiązania połączenia i Czytaj dalej. Określenie opcji RetryReaderOption z elementem MaxRetryRequests ustawionym na 0 (ustawienie domyślne) zwraca treść oryginalnej odpowiedzi, a kolejne próby nie są wykonywane. Można również użyć interfejsów API wysokiego poziomu **DownloadBlobToBuffer** lub **DownloadBlobToFile** w celu uproszczenia kodu.
 
 Poniższy kod pobiera obiekt blob przy użyciu funkcji **Download**. Zawartość obiektu blob jest zapisywana w buforze i wyświetlana w konsoli.
 
@@ -245,6 +245,6 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji języka Go przy uż
 - W witrynie GitHub wyświetl [kod źródłowy biblioteki klienta Go](https://github.com/Azure/azure-storage-blob-go) dla usługi Azure Storage i zainstaluj go.
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#pkg-examples) napisanymi przy użyciu biblioteki klienta Go.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
  
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Go. Aby uzyskać więcej informacji o zestawie SDK usługi Azure Storage Blob, przejrzyj [kod źródłowy](https://github.com/Azure/azure-storage-blob-go/) i [dokumentację interfejsu API](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob).

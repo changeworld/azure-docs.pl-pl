@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: a4b6bc8f6e621cda921d599b5368c6a671defcc2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548613"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113303"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -682,7 +682,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 ### <a name="latency-metrics"></a>Opóźnienie metryki
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Sposób użycia |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | ReplicationLatency    | Opóźnienie replikacji|  MilliSeconds|   Minimalna, maksymalna, średnia | Poziomie P99 opóźnienie replikacji między regionami źródłowych i docelowych dla konta włączono geograficznie| SourceRegion, TargetRegion| Wszyscy | Używana do monitorowania na poziomie P99 opóźnienie replikacji między dwoma regionami oddalonymi dowolnego konta z replikacją geograficzną. |
 
 ### <a name="availability-metrics"></a>Metryki dostępności
@@ -694,7 +694,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 ### <a name="cassandra-api-metrics"></a>Metryki interfejsu API rozwiązania Cassandra
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Sposób użycia |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | CassandraRequests | Żądania bazy danych Cassandra |  Licznik|  Licznik|  Liczba żądań interfejsu API rozwiązania Cassandra|  DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType|   Wszyscy| Umożliwia monitorowanie bazy danych Cassandra żądań na minutę stopień szczegółowości. Aby uzyskać średnia liczba żądań na sekundę, użycia agregacji liczba na minutę, a następnie podzielić przez 60.|
 | CassandraRequestCharges|  Opłaty za żądania bazy danych Cassandra| Licznik|   Sum, Min, Max, Avg| Jednostki używane przez żądania interfejsu API rozwiązania Cassandra żądania|   DatabaseName, CollectionName, Region, OperationType, ResourceType|  Wszyscy| Używana do monitorowania jednostek ru na minutę posługują się konta interfejsu API rozwiązania Cassandra.|
 | CassandraConnectionClosures   | Zamknięć połączenia bazy danych Cassandra |Licznik| Licznik   |Liczba połączeń bazy danych Cassandra z zamknięty|    ClosureReason, Region|  Wszyscy | Używane do monitorowania łączności między klientami i interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB.|
@@ -819,7 +819,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |browserTimings/totalDuration|Czas ładowania strony przeglądarki|MilliSeconds|Średnia|Czas od wysłania żądania użytkownika do załadowania modelu DOM, arkuszy stylów, skryptów i obrazów.|Nie wymiarów|
 |zależności/liczby|Wywołania zależności|Licznik|Licznik|Liczba wywołań zasobów zewnętrznych wykonanych przez aplikację.|zależności/typu zależności/performanceBucket, zależności/Powodzenie, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
 |zależności/czas trwania|Czas trwania zależności|MilliSeconds|Średnia|Czas trwania wywołań zasobów zewnętrznych wykonanych przez aplikację.|zależności/typu zależności/performanceBucket, zależności/Powodzenie, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
-|zależności lub nie powiodła się|Awarie zależności|Licznik|Licznik|Liczba wywołań zależności zasobów zewnętrznych zakończonych niepowodzeniem wykonanych przez aplikację.|Typ zależności/zależności/performanceBucket, operacji/syntetycznych, chmury/roleInstance, chmury/roleName|
+|zależności lub nie powiodła się|Błędy zależności|Licznik|Licznik|Liczba wywołań zależności zasobów zewnętrznych zakończonych niepowodzeniem wykonanych przez aplikację.|Typ zależności/zależności/performanceBucket, operacji/syntetycznych, chmury/roleInstance, chmury/roleName|
 |Liczba/wyświetleń stron|Wyświetlenia strony|Licznik|Licznik|Liczba wyświetleń strony.|Operacja/syntetycznych|
 |wyświetleń stron/czas trwania|Wyświetlenie strony — czas ładowania|MilliSeconds|Średnia|Wyświetlenie strony — czas ładowania|Operacja/syntetycznych|
 |performanceCounters/requestExecutionTime|Czas wykonywania żądania HTTP|MilliSeconds|Średnia|Czas wykonywania najnowszego żądania.|cloud/roleInstance|
@@ -1296,7 +1296,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Nie wymiarów|
 |physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|Nie wymiarów|
-|log_write_percent|Wartość procentowa we/wy dziennika|Procent|Średnia|Wartość procentowa we/wy dziennika|Nie wymiarów|
+|log_write_percent|We/wy dziennika (procent)|Procent|Średnia|We/wy dziennika (procent)|Nie wymiarów|
 |dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|Nie wymiarów|
 |magazyn|Łączny rozmiar bazy danych|Bajty|Maksimum|Łączny rozmiar bazy danych|Nie wymiarów|
 |connection_successful|Pomyślnie nawiązane połączenia|Licznik|Łącznie|Pomyślnie nawiązane połączenia|Nie wymiarów|
@@ -1305,7 +1305,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Zakleszczenia|Zakleszczenia|Licznik|Łącznie|Zakleszczenia|Nie wymiarów|
 |storage_percent|Procent użycia rozmiaru bazy danych|Procent|Maksimum|Procent użycia rozmiaru bazy danych|Nie wymiarów|
 |xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
-|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|Nie wymiarów|
+|workers_percent|Procent procesów roboczych|Procent|Średnia|Procent procesów roboczych|Nie wymiarów|
 |sessions_percent|Procent sesji|Procent|Średnia|Procent sesji|Nie wymiarów|
 |dtu_limit|DTU Limit|Licznik|Średnia|DTU Limit|Nie wymiarów|
 |dtu_used|Używane jednostki DTU|Licznik|Średnia|Używane jednostki DTU|Nie wymiarów|
@@ -1321,10 +1321,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Nie wymiarów|
 |physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|Nie wymiarów|
-|log_write_percent|Wartość procentowa we/wy dziennika|Procent|Średnia|Wartość procentowa we/wy dziennika|Nie wymiarów|
+|log_write_percent|We/wy dziennika (procent)|Procent|Średnia|We/wy dziennika (procent)|Nie wymiarów|
 |dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|Nie wymiarów|
 |storage_percent|Procent użycia magazynu|Procent|Średnia|Procent użycia magazynu|Nie wymiarów|
-|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|Nie wymiarów|
+|workers_percent|Procent procesów roboczych|Procent|Średnia|Procent procesów roboczych|Nie wymiarów|
 |sessions_percent|Procent sesji|Procent|Średnia|Procent sesji|Nie wymiarów|
 |eDTU_limit|eDTU limit|Licznik|Średnia|eDTU limit|Nie wymiarów|
 |storage_limit|Limit magazynu|Bajty|Średnia|Limit magazynu|Nie wymiarów|
