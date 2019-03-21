@@ -180,6 +180,8 @@ items:
       href: backup-client-automation.md
     - name: Udziały plików platformy Azure w witrynie Azure Portal
       href: backup-azure-afs-automation.md
+    - name: Kopie zapasowe baz danych SQL na maszynach wirtualnych platformy Azure
+      href: backup-azure-sql-automation.md
   - name: Używanie interfejsu API REST usługi Azure Backup
     items:
     - name: Tworzenie magazynu usługi Recovery Services
@@ -195,7 +197,7 @@ items:
   - name: Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
     items:
     - name: Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
-      href: backup-sql-server-azure-vms.md
+      href: backup-azure-sql-database.md
     - name: Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
       href: backup-sql-server-database-azure-vms.md
     - name: Przywracanie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
@@ -278,9 +280,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 033235611271b00275a0ef759af80f2c8c9a2474
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb58460b2331ab867e064235d5a2536809b28021
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014659"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284973"

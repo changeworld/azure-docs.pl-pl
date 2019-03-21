@@ -7,16 +7,16 @@ items:
     href: overview.md
 - name: Przewodniki Szybki start
   items:
-  - name: Zarządzanie ruchem internetowym — portal
+  - name: Tworzenie usługi Application Gateway — portal
     href: quick-create-portal.md
-  - name: Zarządzanie ruchem internetowym — PowerShell
+  - name: Tworzenie usługi Application Gateway — program PowerShell
     href: quick-create-powershell.md
-  - name: Zarządzanie ruchem internetowym — interfejs wiersza polecenia platformy Azure
+  - name: Tworzenie usługi Application Gateway — interfejs wiersza polecenia platformy Azure
     href: quick-create-cli.md
   expanded: true
 - name: Samouczki
   items:
-  - name: Zarządzanie ruchem internetowym
+  - name: Hostowanie pojedynczej witryny
     href: tutorial-manage-web-traffic-cli.md
   - name: Włączanie zapory aplikacji internetowych
     href: tutorial-restrict-web-traffic-cli.md
@@ -110,6 +110,8 @@ items:
       href: end-to-end-ssl-portal.md
     - name: Kompleksowa łączność SSL — PowerShell
       href: application-gateway-end-to-end-ssl-powershell.md
+    - name: Tworzenie certyfikatów do umieszczania zaplecza na liście dozwolonych
+      href: certificates-for-backend-authentication.md
     - name: Odnawianie certyfikatów
       href: renew-certificates.md
     - name: Konfigurowanie zasad protokołu SSL
@@ -120,7 +122,7 @@ items:
       href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
-  - name: Dostosowywanie reguł zapory aplikacji internetowych
+  - name: Konfigurowanie zestawów reguł zapory aplikacji internetowej
     items:
     - name: Azure Portal
       href: application-gateway-customize-waf-rules-portal.md
@@ -226,9 +228,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: ce92641c82ffd577b0611fb5da4e8e78816ae32f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 68264afadd3d05e4d11c6b4b98cd7375886e4d20
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225352"
+ms.locfileid: "58286960"
