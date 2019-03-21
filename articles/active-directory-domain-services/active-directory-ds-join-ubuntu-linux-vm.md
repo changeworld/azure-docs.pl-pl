@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: f9c8273e82d46c34c36533605c08200c308815af
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8699585a7f8e5cdfc81a40b94fbe10fa677a0030
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154274"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120996"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Dołączanie maszyny wirtualnej systemu Ubuntu na platformie Azure do domeny zarządzanej
 W tym artykule pokazano, jak dołączyć maszynę wirtualną Ubuntu Linux do domeny zarządzanej usług domenowych Azure AD.
@@ -125,10 +125,9 @@ Teraz, wymagane pakiety są zainstalowane na maszynie wirtualnej systemu Linux, 
 
    > [!NOTE]
    > **Rozwiązywanie problemów:** Jeśli *odnajdywania obszaru* nie może znaleźć Twojej domeny zarządzanej:
-     * Upewnij się, że domena jest dostępny z maszyny wirtualnej (spróbuj ping).
-     * Sprawdź, czy maszyna wirtualna w rzeczywistości został wdrożony na tej samej sieci wirtualnej, w którym domena zarządzana jest dostępna.
-     * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywała na kontrolerach domeny z domeny zarządzanej.
-   >
+   >   * Upewnij się, że domena jest dostępny z maszyny wirtualnej (spróbuj ping).
+   >   * Sprawdź, czy maszyna wirtualna w rzeczywistości został wdrożony na tej samej sieci wirtualnej, w którym domena zarządzana jest dostępna.
+   >   * Sprawdź, czy zostały zaktualizowane ustawienia serwera DNS dla sieci wirtualnej, aby wskazywała na kontrolerach domeny z domeny zarządzanej.
 
 2. Zainicjuj protokołu Kerberos. W terminalu SSH wpisz następujące polecenie:
 

@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: b5062dd4edf43fbb348a6de57f534096a8c922de
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267958"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193572"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co to jest usługa Azure Resource Graph
 
@@ -52,9 +52,9 @@ Zapytania kierowane do usługi Resource Graph są ograniczane, aby zapewnić wsz
 
 ## <a name="running-your-first-query"></a>Uruchamianie pierwszego zapytania
 
-Usługa Resource Graph obsługuje zarówno interfejs wiersza polecenia platformy Azure, jak i program Azure PowerShell. Struktura zapytania jest taka sama dla obu języków. Dowiedz się, jak włączyć usługę Resource Graph w [interfejsie wiersza polecenia platformy Azure](first-query-azurecli.md#add-the-resource-graph-extension) i [programie Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
+Wykres zasobów obsługuje wiersza polecenia platformy Azure, programu Azure PowerShell i zestawie Azure SDK dla platformy .NET. Zapytania są skonstruowane takie same dla każdego języka. Dowiedz się, jak włączyć usługę Resource Graph w [interfejsie wiersza polecenia platformy Azure](first-query-azurecli.md#add-the-resource-graph-extension) i [programie Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Uruchamianie pierwszego zapytania za pomocą [interfejsu wiersza polecenia platformy Azure](first-query-azurecli.md)
 - Uruchamianie pierwszego zapytania przy użyciu [programu Azure PowerShell](first-query-powershell.md)
