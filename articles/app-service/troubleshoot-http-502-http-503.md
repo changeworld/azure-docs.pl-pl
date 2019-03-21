@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5a4b8b2fd3e232d7b42b2f510075c3964ca50531
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652578"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899132"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Rozwiązywanie problemów z błędami HTTP "502 — Zła brama" i "503 Usługa niedostępna" w usłudze Azure App Service
 "502 — Zła brama" i "503 Usługa niedostępna" są typowe błędy w aplikacji hostowanej w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ten artykuł pomaga rozwiązać te błędy.
@@ -109,7 +109,7 @@ Ponadto można uruchomić aplikację na więcej niż jedno wystąpienie. To nie 
 Możesz ustawić skalowanie ręczne lub automatyczne.
 
 #### <a name="use-autoheal"></a>Używają funkcji AutoHeal
-Funkcji AutoHeal odtwarzania procesu roboczego dla aplikacji na podstawie ustawień wybranych (np. zmiany w konfiguracji, żądań, limity opartego na pamięci lub czas potrzebny do wykonania na żądanie). W większości przypadków, odtwarzania procesu jest najszybszym sposobem na odzyskanie problem. Chociaż można zawsze ponownie uruchomić aplikację z bezpośrednio z poziomu witryny Azure Portal, funkcji AutoHeal będzie zrobiła to automatycznie dla Ciebie. To wszystko, co należy zrobić, Dodaj niektórych wyzwalaczy w głównym pliku web.config aplikacji. Należy pamiętać, że tych ustawień będzie działać w taki sam sposób, nawet jeśli aplikacja nie jest jeden .net.
+Funkcji AutoHeal odtwarzania procesu roboczego dla aplikacji na podstawie ustawień wybranych (np. zmiany w konfiguracji, żądań, limity opartego na pamięci lub czas potrzebny do wykonania na żądanie). W większości przypadków, odtwarzania procesu jest najszybszym sposobem na odzyskanie problem. Chociaż można zawsze ponownie uruchomić aplikację z bezpośrednio z poziomu witryny Azure Portal, funkcji AutoHeal będzie zrobiła to automatycznie dla Ciebie. To wszystko, co należy zrobić, Dodaj niektórych wyzwalaczy w głównym pliku web.config aplikacji. Należy pamiętać, że tych ustawień będzie działać w taki sam sposób, nawet jeśli aplikacja nie jest jeden .NET.
 
 Aby uzyskać więcej informacji, zobacz [Samonaprawianie witryn sieci Web Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

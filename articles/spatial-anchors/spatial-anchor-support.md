@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c0c66b2d03f4c09a4de121008de17689cdc2b040
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: c372b86861452c48b2114073419d4ed709ff115c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753187"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109886"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Opcje pomocy technicznej Azure kotwic przestrzenne
 
@@ -25,11 +25,11 @@ Aby otworzyć bilet pomocy technicznej w witrynie Azure Portal do kotwic przestr
 
 ![Azure portal Pomoc i obsługa techniczna](./media/spatial-anchor-support.png)
 
-2. Pomoc i obsługa techniczna otwarty, wybierz stronę **+ nowe żądanie pomocy technicznej**.
+1. Pomoc i obsługa techniczna otwarty, wybierz stronę **+ nowe żądanie pomocy technicznej**.
 
 ![Azure portal nowe żądanie obsługi](./media/spatial-anchor-support2.png)
 
-3. Po wypełnieniu pól bilet pomocy technicznej: 
+1. Po wypełnieniu pól bilet pomocy technicznej: 
 
 - Typ problemu: Techniczna
 - Usługa: Kotwice przestrzenne

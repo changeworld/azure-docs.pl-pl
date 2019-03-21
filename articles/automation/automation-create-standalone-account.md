@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 197d7529a52b400cd078ead79bbb6db5f5849ee6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cdffc339bee1f5456e4eeb619e566b1f9c34b143
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821374"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093181"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tworzenie autonomicznego konta usługi Azure Automation
 
@@ -62,12 +62,12 @@ Aby utworzyć konto usługi Azure Automation w witrynie Azure portal, wykonaj na
 
 1. Na następnym ekranie Wybierz **Utwórz**.
 
-  ![Dodawanie konta usługi Automation](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+   ![Dodawanie konta usługi Automation](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
-  > [!NOTE]
-  > Jeśli zostanie wyświetlony następujący komunikat w **Dodawanie konta usługi Automation** okienko, Twoje konto nie jest członkiem roli Administratorzy subskrypcji i współadministrator subskrypcji.
-  >
-  > ![Dodaj ostrzeżenie konta usługi Automation](media/automation-create-standalone-account/create-account-without-perms.png)
+   > [!NOTE]
+   > Jeśli zostanie wyświetlony następujący komunikat w **Dodawanie konta usługi Automation** okienko, Twoje konto nie jest członkiem roli Administratorzy subskrypcji i współadministrator subskrypcji.
+   >
+   > ![Dodaj ostrzeżenie konta usługi Automation](media/automation-create-standalone-account/create-account-without-perms.png)
 
 1. W **Dodawanie konta usługi Automation** okienku w obszarze **nazwa** wprowadź nazwę dla nowego konta usługi Automation. Nie można zmienić tę nazwę, po jego wybraniu. *Nazwy kont usługi Automation są unikatowe w każdym regionie i grupie zasobów. Nazwy kont usługi Automation, które zostały usunięte, mogą nie być natychmiast dostępne.*
 1. Jeśli masz więcej niż jedną subskrypcję w **subskrypcji** określ subskrypcję, dla którego chcesz użyć dla nowego konta.
@@ -75,13 +75,13 @@ Aby utworzyć konto usługi Azure Automation w witrynie Azure portal, wykonaj na
 1. Aby uzyskać **lokalizacji**, wybierz taką lokalizację centrum danych platformy Azure.
 1. Aby uzyskać **Tworzenie konta Uruchom jako platformy** opcji, upewnij się, że **tak** jest wybrany, a następnie wybierz **Utwórz**.
 
-  > [!NOTE]
-  > Jeśli nie chcesz utworzyć konto Uruchom jako, wybierając **nie** dla **Tworzenie konta Uruchom jako platformy**, zostanie wyświetlony komunikat w **Dodawanie konta usługi Automation** okienka. Mimo że konto zostanie utworzone w witrynie Azure portal, to konto nie ma odpowiedniej tożsamości uwierzytelniania w ramach subskrypcji w modelu wdrożenia klasycznego lub w usłudze katalogowej subskrypcji usługi Azure Resource Manager. W związku z tym konto usługi Automation nie ma dostępu do zasobów w ramach subskrypcji. Zapobiega to wszelkie elementy runbook odwołujące się do tego konta miałyby możliwość uwierzytelniania i wykonywania zadań w odniesieniu do zasobów w tych modelach wdrożenia.
-  >
-  > ![Dodaj ostrzeżenie konta usługi Automation](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
-  >
-  > Gdy nie została utworzona nazwa główna usługi, nie jest przypisany do roli współautor.
-  >
+   > [!NOTE]
+   > Jeśli nie chcesz utworzyć konto Uruchom jako, wybierając **nie** dla **Tworzenie konta Uruchom jako platformy**, zostanie wyświetlony komunikat w **Dodawanie konta usługi Automation** okienka. Mimo że konto zostanie utworzone w witrynie Azure portal, to konto nie ma odpowiedniej tożsamości uwierzytelniania w ramach subskrypcji w modelu wdrożenia klasycznego lub w usłudze katalogowej subskrypcji usługi Azure Resource Manager. W związku z tym konto usługi Automation nie ma dostępu do zasobów w ramach subskrypcji. Zapobiega to wszelkie elementy runbook odwołujące się do tego konta miałyby możliwość uwierzytelniania i wykonywania zadań w odniesieniu do zasobów w tych modelach wdrożenia.
+   >
+   > ![Dodaj ostrzeżenie konta usługi Automation](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   >
+   > Gdy nie została utworzona nazwa główna usługi, nie jest przypisany do roli współautor.
+   >
 
 1. Aby śledzić postęp tworzenia konta automatyzacji w menu, wybierz **powiadomienia**.
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0fbc55c73f6d745d39873236df389f121dc9c7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 73f6126d6bf172a35a284e92b65b1c3ef449949e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880924"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904137"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Asana
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację aplikacji Asana w usłudze Azure AD, należy doda
 
 **Aby dodać aplikację Asana z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -159,7 +159,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -204,13 +204,13 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Asana.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Wpisz adres e-mail użytkownika, taki jak **britta.simon@contoso.com**, w polu tekstowym, a następnie wybierz pozycję **Invite** (Zaproś).
+2. Wpisz adres e-mail użytkownika, takich jak **britta.simon\@contoso.com** w polu tekstowym, a następnie wybierz **zaprosić**.
 
 3. Kliknij pozycję **Send Invite** (Wyślij zaproszenie). Nowy użytkownik otrzyma wiadomość e-mail na swoim koncie poczty e-mail. Użytkownik będzie musiał utworzyć i zweryfikować konto.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Asana w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Asana, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
@@ -222,4 +222,4 @@ Po kliknięciu kafelka Asana w panelu dostępu powinno nastąpić automatyczne z
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-* [Konfigurowanie aprowizacji użytkowników](asana-provisioning-tutorial.md)
+- [Konfigurowanie aprowizacji użytkowników](asana-provisioning-tutorial.md)

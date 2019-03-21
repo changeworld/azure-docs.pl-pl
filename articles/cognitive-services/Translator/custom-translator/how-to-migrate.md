@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 246580d7c93677859c5800cdc9394c1603c4c36b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776976"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901529"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrowanie centrum obszaru roboczego i projekty do niestandardowych w usłudze Translator
 
@@ -26,12 +26,8 @@ Te akcje są wykonywane podczas migracji:
 * Zmigrowane szkoleniach, które nie zostały wdrożone, będą umieszczone w stanie zmigrowanych wersji roboczej. W ten stan będzie mieć możliwość uczenia modelu przy użyciu definicji zmigrowane, ale zostaną naliczone opłaty regularne szkolenie.
 * W dowolnym momencie wynik BELEU migrowane z Centrum szkolenia można znaleźć na stronie TrainingDetails modelu w "Beleu wynik w Centrum MT" nagłówek.
 
->[!Note]
-Szkolenia zakończyło się sukcesem, niestandardowe w usłudze Translator wymaga co najmniej 10 000 unikatowy wyodrębnione zdań. Niestandardowe w usłudze Translator nie mogą przeprowadzić szkolenia z mniej niż [sugerowane minimum](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
-
-## <a name="enable-account-migration"></a>Włącz migrację konta
-
-Aby użyć narzędzia do migracji, musisz mieć włączone migracji konta Centrum. Aby to zrobić, Wyślij wiadomość e-mail [ custommt@microsoft.com ](mailto:custommt@microsoft.com) z listą wszystkich identyfikator live id kont, które chcesz włączyć. Te konta powinny być adresy e-mail, które logują się przy użyciu.
+> [!Note]
+> Szkolenia zakończyło się sukcesem, niestandardowe w usłudze Translator wymaga co najmniej 10 000 unikatowy wyodrębnione zdań. Niestandardowe w usłudze Translator nie mogą przeprowadzić szkolenia z mniej niż [sugerowane minimum](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
 
 ## <a name="find-custom-translator-workspace-id"></a>Znajdź identyfikator obszaru roboczego niestandardowych w usłudze Translator
 

@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43fa8148fff1389982d967b2e69f4a9425841c91
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014919"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295627"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy e-mail z zaproszeniem współpracy B2B — usługi Azure Active Directory
 
 Wiadomości e-mail z zaproszeniem są kluczowym aspektem doprowadzić partnerów na pokładzie użytkowników we współpracy B2B w usłudze Azure AD. Można użyć je, aby zwiększyć zaufanie adresata. Możesz dodawać legalności i sprawdzone rozwiązanie do poczty e-mail, aby upewnić się, że odbiorca czuje doświadczenia z wybraniu **wprowadzenie** przycisk, aby zaakceptować zaproszenie. Jest to zaufanie klucza oznacza, że wysyłaj do udostępniania. I chcesz również wprowadzić adres e-mail wyglądał świetnie!
 
-![Poczty e-mail z zaproszeniem usługi Azure AD B2b](media/invitation-email-elements/invitation-email.png)
+![Zrzut ekranu przedstawiający wiadomość e-mail z zaproszeniem dla B2B](media/invitation-email-elements/invitation-email.png)
 
 ## <a name="explaining-the-email"></a>Wyjaśniające, wiadomości e-mail
 Spójrzmy na kilka elementów w wiadomości e-mail, aby było wiadomo, jak najlepiej wykorzystać jego możliwości.
@@ -51,12 +51,12 @@ Nazwa wyświetlana osoby zapraszającej jest dołączony do wiadomości e-mail. 
 
 W przypadku swoje zdjęcie profilowe nie został jeszcze skonfigurowany, jest wyświetlana ikona inicjały zapraszającej zamiast obrazu:
 
-  ![Wyświetlanie inicjały zapraszającej](media/invitation-email-elements/inviters-initials.png)
+  ![Zrzut ekranu przedstawiający z zaproszeniem zapraszającej Inicjały wyświetlane](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Treść
 Treść zawiera komunikat zapraszającej Redaguj, kiedy [zaproszeniem użytkownika gościa do katalogu, grupa lub aplikacja](add-users-administrator.md) lub [przy użyciu interfejsu API zaproszenia](customize-invitation-api.md). Jest obszar tekstu, więc nie przetwarza tagów HTML ze względów bezpieczeństwa.
 
-  ![Obraz treść wiadomości e-mail](media/invitation-email-elements/invitation-email-body.png)
+  ![Zrzut ekranu przedstawiający treść wiadomości e-mail z zaproszeniem](media/invitation-email-elements/invitation-email-body.png)
 
 ### <a name="footer-section"></a>Sekcji stopki
 Stopka zawiera marki firmy Microsoft i umożliwia odbiorcy znać, jeśli wiadomość e-mail została wysłana z niemonitorowanego aliasu. 
@@ -65,12 +65,12 @@ Specjalne przypadki:
 
 - Osoba zapraszająca nie ma adresu e-mail w zapraszający dzierżawy
 
-  ![Obraz osoba zapraszająca nie ma adresu e-mail w zapraszający dzierżawy](media/invitation-email-elements/inviter-no-email.png)
+  ![Zrzut ekranu, gdy osoba zapraszająca nie ma adresu e-mail w zapraszający dzierżawy](media/invitation-email-elements/inviter-no-email.png)
 
 
 - Odbiorca nie ma konieczności zrealizować zaproszenia
 
-  ![Kiedy adresat nie ma konieczności zrealizować zaproszenia](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![Zrzut ekranu, gdy adresat nie ma konieczności zrealizować zaproszenia](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
 ## <a name="how-the-language-is-determined"></a>Jak język jest określana.
 Język prezentowane użytkownikowi Gość w wiadomości e-mail z zaproszeniem jest określany przez następujące ustawienia. Te ustawienia są wymienione w kolejności priorytetu. Jeśli to ustawienie nie zostanie skonfigurowane, następne ustawienie na liście określa język. 

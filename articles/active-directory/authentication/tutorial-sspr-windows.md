@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0463a2ad3fa74f33a52e15a246dfd4ffd63107a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200874"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224655"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: Resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -33,8 +33,10 @@ W tym samouczku umożliwisz użytkownikom resetowanie swoich haseł z ekranu log
    * [dołączone do usługi Azure AD](../device-management-azure-portal.md) lub
    * [dołączone do hybrydowej usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) z łącznością sieciową z kontrolerem domeny.
 * Musisz włączyć funkcję samoobsługowego resetowania haseł w usłudze Azure AD.
-* Jeśli urządzenia z systemem Windows 10 są za serwerem proxy lub zaporą, musisz dodać adresy URL `passwordreset.microsoftonline.com` oraz `ajax.aspnetcdn.com` do listy Dozwolone adresy URL ruchu protokołu HTTPS (port 443).
+* Urządzenia z systemem Windows 10 znajdują się za serwerem proxy lub zapora, należy dodać adresy URL, `passwordreset.microsoftonline.com` i `ajax.aspnetcdn.com` do ruchu HTTPS (port 443) dozwolone adresy URL listy.
+* Samoobsługowe Resetowanie HASEŁ w systemie Windows 10 jest obsługiwana tylko z serwerami proxy poziom maszyny
 * Przejrzyj ograniczenia poniżej przed wypróbowaniem tej funkcji w danym środowisku.
+* Jeśli używasz obrazu, przed sysprep upewnij się, że wyczyszczenia pamięci podręcznej sieci web dla wbudowanego konta administratora przed wykonaniem kroku CopyProfile. Więcej informacji na ten temat można znaleźć w artykule pomocy technicznej [niska wydajność podczas korzystania z niestandardowego domyślnego profilu użytkownika](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurowanie linku resetowania hasła przy użyciu usługi Intune
 

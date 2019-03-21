@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f0db4fb0-7eec-48c2-9c7a-beab1ab49bc2
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d5e7af8dc5ed678846f24b136d64fef384ef773
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: b00e27a0620212fbc09f8b7d91d8f5b9d0971c8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868242"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Samanage
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację usługi Samanage z usługą Azure AD, musisz doda
 
 **Aby dodać usługę Samanage z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -146,7 +146,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Samanage, w
  
     b. W polu tekstowym **Identity Provider URL** (Adres URL dostawcy tożsamości) wklej wartość pola **Identyfikator usługi Azure AD** skopiowaną z witryny Azure Portal.    
  
-    d. Upewnij się, że wartość pola **Login URL** (Adres URL logowania) odpowiada **adresowi URL logowania** z sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    c. Upewnij się, że wartość pola **Login URL** (Adres URL logowania) odpowiada **adresowi URL logowania** z sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
  
     d. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wprowadź wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
  
@@ -176,7 +176,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -239,7 +239,7 @@ W przypadku usługi Samanage aprowizowanie jest zadaniem ręcznym.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Samanage na panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi Samanage, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 2cc5384fe039e757b33802075d0e550b369477f3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6d6e380cded18a089f624f90d998477a89293be
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874970"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259045"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
 
@@ -112,7 +112,7 @@ Jeśli nie masz konta serwera proxy systemu skonfigurowane w następujący spos�
 4. Zdefiniuj ustawienia serwera proxy.
    - Na maszynach z systemem Linux:
      - Dodaj następujący wiersz do **/etc/środowisko** pliku:
-       - **że =<http://proxy> IP adres: port serwera proxy**
+       - **że = http:\//proxy IP adres: port serwera proxy**
      - Dodaj następujące wiersze do **/etc/waagent.conf** pliku:
          - **Adres IP HttpProxy.Host=proxy**
          - **HttpProxy.Port=proxy port**

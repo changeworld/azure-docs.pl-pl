@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6266ec1f01a50756f745c3e8185c9fe34e102b4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2e25848359de91d67925f49901c6c170978ea592
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196199"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078707"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Szybki start: Tworzenie aplikacji Xamarin integrującej logowanie firmy Microsoft
 
@@ -59,11 +59,12 @@ Aby umożliwić aplikacji uzyskiwanie tokenów, musisz najpierw zarejestrować j
 3. Kliknij pozycję **Wszystkie usługi** w okienku po lewej stronie, a następnie wybierz pozycję **Azure Active Directory**.
 4. Kliknij przycisk **Rejestracje aplikacji**, a następnie wybierz pozycję **Dodaj**.
 5. Aby utworzyć nową **natywną** aplikację kliencką, postępuj zgodnie z monitami.
-  * **Nazwa** opisuje aplikację użytkownikom.
-  * **Identyfikator URI przekierowania** jest połączeniem schematu i ciągu, przy użyciu którego usługa Azure AD zwraca odpowiedzi tokenów. Wprowadź wartość (na przykład http://DirectorySearcher).
+   * **Nazwa** opisuje aplikację użytkownikom.
+   * **Identyfikator URI przekierowania** jest połączeniem schematu i ciągu, przy użyciu którego usługa Azure AD zwraca odpowiedzi tokenów. Wprowadź wartość (na przykład `http://DirectorySearcher`).
 6. Gdy zakończysz rejestrację, usługa Azure AD przypisze aplikacji unikatowy identyfikator. Skopiuj wartość z karty **Aplikacje**, ponieważ będzie ona potrzebna później.
 7. Na stronie **Ustawienia** wybierz pozycję **Wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**.
-8. Wybierz **Microsoft Graph** jako interfejs API. W obszarze **Uprawnienia delegowane** dodaj uprawnienie **Odczytuj dane katalogu**. Ta akcja umożliwia aplikacji wykonywanie zapytań względem interfejsu API programu Graph dotyczących użytkowników.
+8. Wybierz **Microsoft Graph** jako interfejs API. W obszarze **Uprawnienia delegowane** dodaj uprawnienie **Odczytuj dane katalogu**. 
+   Ta akcja umożliwia aplikacji wykonywanie zapytań względem interfejsu API programu Graph dotyczących użytkowników.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalowanie i konfigurowanie biblioteki ADAL
 
@@ -95,9 +96,9 @@ Gdy masz już aplikację w usłudze Azure AD, możesz zainstalować bibliotekę 
 2. W projekcie DirectorySearcherLib otwórz plik DirectorySearcher.cs.
 3. Zastąp wartości elementów członkowskich klasy wartościami, które zostały wprowadzone w witrynie Azure Portal. Twój kod odwołuje się do tych wartości podczas każdego użycia biblioteki ADAL.
 
-  * *tenant* to domena Twojej dzierżawy usługi Azure AD (na przykład contoso.onmicrosoft.com).
-  * *clientId* to identyfikator klienta aplikacji skopiowany z portalu.
-  * *returnUri* to identyfikator URI przekierowania wprowadzony w portalu (na przykład http://DirectorySearcher).
+   * *tenant* to domena Twojej dzierżawy usługi Azure AD (na przykład contoso.onmicrosoft.com).
+   * *clientId* to identyfikator klienta aplikacji skopiowany z portalu.
+   * *ReturnUri* jest przekierowania URI, które wprowadziłeś w portalu (na przykład `http://DirectorySearcher`).
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Uzyskiwanie tokenów z usługi Azure AD przy użyciu biblioteki ADAL
 
@@ -195,7 +196,7 @@ Jeśli dzierżawa nie została jeszcze wypełniona użytkownikami, nadszedł cza
 1. Uruchom aplikację DirectorySearcher, a następnie zaloguj się przy użyciu jednego z użytkowników.
 2. Wyszukaj innych użytkowników na podstawie ich nazw UPN.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Biblioteka ADAL ułatwia dodanie typowych funkcji tożsamości do aplikacji. Zajmuje się ona wszystkimi żmudnymi zadaniami, takimi jak zarządzanie pamięcią podręczną, obsługa protokołu OAuth, prezentowanie użytkownikom interfejsu użytkownika logowania i odświeżanie wygasłych tokenów. Musisz znać tylko jedno wywołanie interfejsu API, `authContext.AcquireToken*(…)`.
 

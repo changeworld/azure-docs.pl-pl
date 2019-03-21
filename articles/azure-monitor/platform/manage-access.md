@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 66cef8369a314a76cf619e436cd25d6bdf628c45
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: be285b6a51ae5a0f4239b841ce64100f1875d785
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076313"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294352"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w usłudze Azure Monitor
 Magazyny usługi Azure Monitor możesz rejestrować dane w obszarze roboczym usługi Log Analytics, która jest kontener, który zawiera dane i informacje konfiguracyjne. W celu zarządzania dostępem do danych logowania, należy wykonać różne zadania administracyjne dotyczące obszarów roboczych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
@@ -136,15 +136,6 @@ Jest to domyślne ustawienie dla wszystkich obszarów roboczych utworzonych po m
 > [!NOTE]
 > Jeśli użytkownik ma tylko uprawnienia do zasobów, do obszaru roboczego, tylko będą w stanie uzyskać dostęp za pomocą obszaru roboczego do [skoncentrowane na zasób tryb](#access-modes).
 
-
-### <a name="define-access-control-mode-in-azure-portal"></a>Zdefiniuj tryb kontroli dostępu w witrynie Azure portal
-Bieżący tryb kontroli dostępu do obszaru roboczego można wyświetlić na **Przegląd** strony dla obszaru roboczego w **obszaru roboczego usługi Log Analytics** menu.
-
-![Tryb kontroli dostępu do obszaru roboczego widoku](media/manage-access/view-access-control-mode.png)
-
-To ustawienie można zmienić na **właściwości** strony dla obszaru roboczego. Zmienianie ustawień zostanie wyłączona, jeśli nie masz uprawnienia do konfigurowania obszaru roboczego.
-
-![Zmień tryb dostępu do obszaru roboczego](media/manage-access/change-access-control-mode.png)
 
 ### <a name="define-access-control-mode-in-azure-portal"></a>Zdefiniuj tryb kontroli dostępu w witrynie Azure portal
 Bieżący tryb kontroli dostępu do obszaru roboczego można wyświetlić na **Przegląd** strony dla obszaru roboczego w **obszaru roboczego usługi Log Analytics** menu.

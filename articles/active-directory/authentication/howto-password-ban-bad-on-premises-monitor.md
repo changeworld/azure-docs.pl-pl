@@ -1,5 +1,5 @@
 ---
-title: Monitorowanie i rejestrowanie w wersji zapoznawczej ochrony haseł usługi Azure AD
+title: Monitorowanie i rejestrowanie ochrony haseł usługi Azure AD
 description: Omówienie ochrony haseł usługi Azure AD, monitorowanie i rejestrowanie
 services: active-directory
 ms.service: active-directory
@@ -11,23 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1f946eceab68b0fe49ea67dc33a7094458cd14c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: b1e12addc15afe0c0745e0e8d5a9b6718483d477
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451490"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293723"
 ---
-# <a name="preview-azure-ad-password-protection-monitoring-and-logging"></a>Wersja zapoznawcza: Usługa Azure AD ochrona za pomocą hasła monitorowanie i rejestrowanie
-
-|     |
-| --- |
-| Ochrony hasłem w usłudze Azure AD jest funkcją publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Usługa Azure AD ochrona za pomocą hasła monitorowanie i rejestrowanie
 
 Po wdrożeniu ochrony haseł usługi Azure AD monitorowania i raportowania są podstawowe zadania. W tym artykule przechodzi do szczegółów, aby pomóc, że rozumiesz różnych technik monitorowania, w tym, gdzie każda usługa rejestruje informacje i instrukcje sporządzić raport na temat stosowania ochrony haseł usługi Azure AD.
 
-# <a name="dc-agent-event-logging"></a>Rejestrowanie zdarzeń agenta kontrolera domeny
+## <a name="dc-agent-event-logging"></a>Rejestrowanie zdarzeń agenta kontrolera domeny
 
 Na każdym kontrolerze domeny DC oprogramowani usługi zapisuje wyniki każdej operacji sprawdzania poprawności poszczególnych hasła (i inne stanu) w lokalnym dzienniku zdarzeń:
 

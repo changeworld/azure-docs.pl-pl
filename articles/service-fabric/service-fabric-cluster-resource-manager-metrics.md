@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2d1818f42cb2bcb19f979f25962a6c9bdea10155
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 642f479aba62e5cc9dde63aed7c30de39b513a5e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728016"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093353"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Zarządzanie zużycia zasobów i obciążenia w usłudze Service Fabric za pomocą metryk
 *Metryki* są zasoby, które swoje najważniejsze usługi informacje, które są dostarczane przez węzły w klastrze. Metryka to wszystkich elementów, które mają być zarządzane, aby zwiększyć lub monitorowanie wydajności usługi. Na przykład może obserwować zużycie pamięci, aby dowiedzieć się, jeśli usługa jest przeciążony. Innym zastosowaniem jest ustalenie, czy usługa może przenieść innym miejscu, gdzie pamięci jest mniejsza ograniczonego w celu uzyskania lepszej wydajności.
@@ -45,6 +45,7 @@ W przypadku obciążeń podstawowych domyślnych metryk oferują znośnego rozł
 Oto co uzyskujesz:
 
 <center>
+
 ![Układ klastra przy użyciu domyślnych metryk][Image1]
 </center>
 
@@ -215,6 +216,7 @@ Przypominamy ta składnia jest ("MetricName MetricWeight, PrimaryDefaultLoad, Se
 Zobaczmy, jakie jeden układ klastra możliwe może wyglądać jak:
 
 <center>
+
 ![Zrównoważony klastra za pomocą domyślnych i niestandardowych metryk][Image2]
 </center>
 
@@ -239,6 +241,7 @@ Rzeczywistego wpływu różne metryki obciążenia w klastrze jest, że Menedże
 Spójrzmy na przykład niektóre raporty obciążenia i jak różne metryki przeprowadzi wyniki w różnych alokacji w klastrze. W tym przykładzie widzimy, że przełączenie Względna waga metryk powoduje, że Menedżer zasobów klastra, aby tworzyć różne rozmieszczenia usług.
 
 <center>
+
 ![Przykład waga metryki i jej wpływ na rozwiązań do równoważenia][Image3]
 </center>
 
@@ -256,6 +259,7 @@ Istnieje wiele wagi, które są śledzone dla każdego metryki. Pierwsza waga je
 Co się stanie, jeśli Menedżer zasobów klastra nie interesują saldo zarówno globalne i lokalne? Jest również łatwe do utworzenia rozwiązania, które są globalnie równoważone, ale który powoduje, że w równowadze zasobów niska dla poszczególnych usług. W poniższym przykładzie możemy przyjrzeć się skonfigurowano tylko domyślnych metryk usługi i zobacz, co się stanie, gdy tylko globalne saldo jest uważany za:
 
 <center>
+
 ![Wpływ to globalne rozwiązanie tylko][Image4]
 </center>
 

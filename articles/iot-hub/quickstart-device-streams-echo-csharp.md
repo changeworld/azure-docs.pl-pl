@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 7b3a8ac0500652b8c4250b4bc3b4f5514b62c4aa
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: 0b39943b318afd6f9aabd6ab0711651d64e975cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816942"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121608"
 ---
 # <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>Szybki start: komunikacja z aplikacjami urządzenia w języku C# za pomocą strumieni urządzeń usługi IoT Hub (wersja zapoznawcza)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
+
+Microsoft Azure IoT Hub obsługuje obecnie strumieni urządzenia jako [funkcja w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Strumienie urządzeń usługi IoT Hub](./iot-hub-device-streams-overview.md) umożliwiają aplikacjom usług i urządzeń bezpieczną komunikację w sposób przyjazny dla zapory. Ten przewodnik Szybki start obejmuje dwa programy w języku C#, które wykorzystują strumienie urządzeń do przesyłania danych między sobą (funkcja echo).
 
@@ -28,6 +30,11 @@ ms.locfileid: "56816942"
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+Strumienie urządzenia w wersji zapoznawczej jest obecnie obsługiwane tylko w przypadku centrów IoT Hub są tworzone w następujących regionach:
+
+  - **Środkowe stany USA**
+  - **Central US EUAP**
 
 Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku C#. Potrzebujesz zestawu SDK .NET Core w wersji 2.1.0 lub nowszej na komputerze deweloperskim.
 
@@ -79,7 +86,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
    **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --hub-name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
     Zanotuj zwróconą wartość, która wygląda następująco:
@@ -140,7 +147,7 @@ dotnet run "<DeviceConnectionString>"
 dotnet run <DeviceConnectionString>
 ```
 
-Na końcu ostatniego kroku program po stronie usługi zainicjuje strumień do urządzenia, a po utworzeniu strumienia wyśle w nim bufor ciągu. W tym przykładzie program po stronie usługi po prostu przesyła z powrotem te same dane do urządzenia, demonstrując pomyślną dwukierunkową komunikację między dwiema aplikacjami. Zobacz rysunek poniżej.
+Na końcu ostatniego kroku program po stronie usługi zainicjuje strumień do urządzenia, a po utworzeniu strumienia wyśle w nim bufor ciągu. W tym przykładzie program po stronie usługi po prostu informujące ponownie tych samych danych na urządzeniu, demonstrując pomyślne dwukierunkowej komunikacji między dwiema aplikacjami. Zobacz rysunek poniżej.
 
 Dane wyjściowe konsoli po stronie urządzenia: ![tekst alternatywny](./media/quickstart-device-streams-echo-csharp/device-console-output.png "Dane wyjściowe konsoli po stronie urządzenia")
 
@@ -152,7 +159,7 @@ Ruch wysyłany przez strumień będzie tunelowany przez centrum IoT Hub, a nie w
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start skonfigurowano centrum IoT Hub, zarejestrowano urządzenie, utworzono strumień urządzenia między aplikacjami w języku C# po stronie urządzenia i usługi oraz przesłano za pomocą strumienia dane między aplikacjami.
 

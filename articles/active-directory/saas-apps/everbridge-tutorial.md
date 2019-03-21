@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95465fdc17131c996fa242d028addbab4191628c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d1bb62c9a11971f72a6c96c4652b136c19812cb3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191116"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839325"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą EverBridge
 
@@ -127,22 +127,22 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 5. Aby skonfigurować **EverBridge** jako **EverBridge elementu członkowskiego portalu**na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące czynności:
 
-    * Jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+   * Jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-        ![EverBridge domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
+       ![EverBridge domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
 
-        * W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
+       * W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
 
-        * W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
+       * W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
 
-    * Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+   * Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-        ![EverBridge domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
+       ![EverBridge domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
 
-        * W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
+       * W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
 
-    > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej EverBridge](mailto:support@everbridge.com) do uzyskania tych wartości.
+     > [!NOTE]
+     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej EverBridge](mailto:support@everbridge.com) do uzyskania tych wartości.
 
 6. Na **certyfikat podpisywania SAML** strony w **certyfikat podpisywania SAML** kliknij **Pobierz** można pobrać **XML metadanych Federacji** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -164,21 +164,21 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 9. W menu u góry kliknij **ustawienia** kartę, a następnie wybierz pozycję **logowania jednokrotnego** w obszarze **zabezpieczeń**.
    
-    ![Konfigurowanie logowania jednokrotnego](./media/everbridge-tutorial/tutorial_everbridge_002.png)
+     ![Konfigurowanie logowania jednokrotnego](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
-    a. W **nazwa** polu tekstowym wpisz nazwę identyfikatora dostawcy (na przykład: Nazwa firmy).
+     a. W **nazwa** polu tekstowym wpisz nazwę identyfikatora dostawcy (na przykład: Nazwa firmy).
    
-    b. W **Nazwa interfejsu API** polu tekstowym wpisz nazwę interfejsu API.
+     b. W **Nazwa interfejsu API** polu tekstowym wpisz nazwę interfejsu API.
    
-    c. Kliknij przycisk **wybierz plik** przycisk, aby przekazać plik metadanych, który został pobrany z witryny Azure portal.
+     c. Kliknij przycisk **wybierz plik** przycisk, aby przekazać plik metadanych, który został pobrany z witryny Azure portal.
    
-    d. W tym miejscu tożsamości SAML, wybierz **tożsamość jest w elemencie NameIdentifier instrukcji podmiotu**.
+     d. W tym miejscu tożsamości SAML, wybierz **tożsamość jest w elemencie NameIdentifier instrukcji podmiotu**.
    
-    e. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej wartość **adres URL logowania** skopiowanej w witrynie Azure portal.
+     e. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej wartość **adres URL logowania** skopiowanej w witrynie Azure portal.
    
-    f. W dostawcy inicjowane żądania powiązania usługi, wybierz **przekierowania HTTP**.
+     f. W dostawcy inicjowane żądania powiązania usługi, wybierz **przekierowania HTTP**.
 
-    g. Kliknij pozycję **Zapisz**
+     g. Kliknij pozycję **Zapisz**
 
 10. Aby skonfigurować logowanie jednokrotne na **EverBridge** jako **EverBridge elementu członkowskiego portalu**, musisz wysłać pobrany **XML metadanych Federacji** do [ Zespół pomocy technicznej Everbridge](mailto:support@everbridge.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
@@ -200,7 +200,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -244,7 +244,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

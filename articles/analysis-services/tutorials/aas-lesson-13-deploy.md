@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 72fa9bf211139b971afa443af812d644c76062fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188389"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123474"
 ---
 # <a name="deploy"></a>Wdrażanie
 
@@ -49,15 +49,15 @@ Ten artykuł stanowi część samouczka modelowania tabelarycznego, który nale�
   
 #### <a name="to-deploy-the-adventure-works-internet-sales"></a>Aby wdrożyć projekt Adventure Works Internet Sales
   
-1.  W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt **AW Internet Sales** > **Kompiluj**.  
+1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt **AW Internet Sales** > **Kompiluj**.  
 
-2.  Kliknij prawym przyciskiem myszy projekt **AW Internet Sales** > **Wdróż**.
+2. Kliknij prawym przyciskiem myszy projekt **AW Internet Sales** > **Wdróż**.
 
-    Podczas wdrażania usług Azure Analysis Services może zostać wyświetlona prośba o wprowadzenie konta. Wprowadź swoje konto organizacyjne i hasło, na przykład nancy@adventureworks.com. To konto musi być wpisane należeć do grupy Administratorzy na serwerze.
+   Podczas wdrażania usług Azure Analysis Services może zostać wyświetlona prośba o wprowadzenie konta. Wprowadź swoje konto organizacyjne i hasło, na przykład nancy@adventureworks.com. To konto musi być wpisane należeć do grupy Administratorzy na serwerze.
   
-    Zostanie wyświetlone okno dialogowe Wdrażanie pokazujące stan wdrożenia metadanych i każdej tabeli zawartej w modelu.  
+   Zostanie wyświetlone okno dialogowe Wdrażanie pokazujące stan wdrożenia metadanych i każdej tabeli zawartej w modelu.  
     
-    ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
+   ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
 3. Po pomyślnym zakończeniu wdrażania kliknij przycisk **Zamknij**.  
   

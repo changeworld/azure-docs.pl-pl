@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 596bc86033fdeaf872f1facfebbf47780893b7d2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5b4da39d56b86f79727590076ac60b87541643e1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455944"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082844"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska za pomocą rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
@@ -44,11 +44,11 @@ To rozwiązanie działa przy użyciu programu Microsoft System Center 2012 Opera
 
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
- - Zanim użyjesz sprawdzanie kondycji rozwiązania w usłudze Log Analytics, musi mieć zainstalowane oprogramowanie. Instalowanie rozwiązania z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
+- Zanim użyjesz sprawdzanie kondycji rozwiązania w usłudze Log Analytics, musi mieć zainstalowane oprogramowanie. Instalowanie rozwiązania z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
 
- - Po dodaniu rozwiązania do obszaru roboczego **System Center Operations Manager Health Check** kafelka na pulpicie nawigacyjnym wyświetli komunikat wymagana dodatkowa konfiguracja. Kliknij Kafelek, a następnie wykonaj kroki konfiguracji opisane na stronie
+- Po dodaniu rozwiązania do obszaru roboczego **System Center Operations Manager Health Check** kafelka na pulpicie nawigacyjnym wyświetli komunikat wymagana dodatkowa konfiguracja. Kliknij Kafelek, a następnie wykonaj kroki konfiguracji opisane na stronie
 
- ![Kafelek pulpitu nawigacyjnego programu System Center Operations Manager](./media/scom-assessment/scom-configrequired-tile.png)
+  ![Kafelek pulpitu nawigacyjnego programu System Center Operations Manager](./media/scom-assessment/scom-configrequired-tile.png)
 
 > [!NOTE]
 > Konfiguracji programu System Center Operations Manager można zrobić za pomocą skryptu, wykonując kroki opisane na stronie konfiguracji rozwiązania w usłudze Log Analytics.

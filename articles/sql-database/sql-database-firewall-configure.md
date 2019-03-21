@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: 58eb7729dd0d2dda728d2008d5bb674f5222c08e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/12/2019
+ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337842"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875190"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse IP
 
@@ -150,6 +150,8 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-powershell"></a>Zarządzanie regułami zapory na IP na poziomie serwera przy użyciu programu Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 | Polecenie cmdlet | Poziom | Opis |
 | --- | --- | --- |

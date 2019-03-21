@@ -8,14 +8,22 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 2/4/2019
-ms.openlocfilehash: 357f0efcf7300545d10113c92702d9fed4aad049
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: ca4ffce1ae966d2bb8fb187c9b04938330969641
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958026"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286333"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>Tworzenie klastra i bazy danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia
+
+> [!div class="op_single_selector"]
+> * [Portal](create-cluster-database-portal.md)
+> * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
+> * [Program PowerShell](create-cluster-database-powershell.md)
+> * [C#](create-cluster-database-csharp.md)
+> * [Python](create-cluster-database-python.md)
+>  
 
 W tym przewodniku Szybki start opisano sposób tworzenia klastra i bazy danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia platformy Azure.
 
@@ -100,7 +108,7 @@ Masz teraz klaster i bazę danych.
     az kusto cluster delete --name azureclitest --resource-group testrg
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Szybki start: pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7db08cde0df1ba3d9bc227758ab3ad00c1fc422
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2f569b497afe01db0fc4c3aa29589e6f2c538faf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108665"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Szybki start: Konfigurowanie środowiska deweloperskiego
 
@@ -55,8 +55,8 @@ Wielu deweloperów uzyskało już dzierżawy za pośrednictwem usług lub subskr
 
 > [!TIP]
 > Aby znaleźć identyfikator dzierżawy, możesz wykonać następujące czynności:
-* Umieść wskaźnik myszy nad nazwą konta, aby uzyskać identyfikator katalogu/dzierżawy. Ewentualnie:
-* Wybierz kolejno pozycje **Azure Active Directory > Właściwości > Identyfikator katalogu** w witrynie Azure Portal
+> * Umieść wskaźnik myszy nad nazwą konta, aby uzyskać identyfikator katalogu/dzierżawy. Ewentualnie:
+> * Wybierz kolejno pozycje **Azure Active Directory > Właściwości > Identyfikator katalogu** w witrynie Azure Portal
 
 Jeśli nie masz istniejącej dzierżawy skojarzonej z kontem, pod nazwą konta zostanie wyświetlony identyfikator GUID i nie będzie można przykład zarejestrować aplikacji, dopóki nie zostaną wykonane czynności opisane w kolejnej sekcji.
 
@@ -75,7 +75,7 @@ Jeśli nie masz jeszcze dzierżawy usługi Azure AD lub chcesz utworzyć nową d
 
 Aby rozpocząć tworzenie aplikacji, które umożliwiają logowanie za pomocą kont społecznościowych i lokalnych, musisz utworzyć dzierżawę usługi Azure AD B2C. Aby rozpocząć, wykonaj czynności opisane w artykule dotyczącym [tworzenia dzierżawy usługi Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Zapoznaj się z podręcznikiem Szybki start dotyczącym kodowania i zacznij uwierzytelniać użytkowników. 
 * Aby uzyskać więcej szczegółowych przykładów kodu, zapoznaj się z sekcją **Samouczki** w dokumentacji.

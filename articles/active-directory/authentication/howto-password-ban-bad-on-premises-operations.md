@@ -1,6 +1,6 @@
 ---
-title: Operacji ochrona za pomocą hasła usługi AD platformy Azure w wersji zapoznawczej i raportowanie
-description: Operacji po wdrożeniu na platformie Azure w wersji zapoznawczej ochrona za pomocą hasła usługi AD i raportowanie
+title: Operacje ochrony hasłem usługi AD platformy Azure i raportowanie
+description: Operacji po wdrożeniu na platformie Azure AD ochrony hasłem i raportowanie
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fda79f16560a5c96e1283f4d9d9f14dbe503d61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: ac91a70465d79b235ae43681a1375d47e7691efe
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175251"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285806"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Wersja zapoznawcza: Usługa Azure AD ochrony hasłem procedury operacyjne
-
-|     |
-| --- |
-| Ochrony hasłem w usłudze Azure AD jest funkcją publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-operational-procedures"></a>Usługa Azure AD ochrony hasłem procedury operacyjne
 
 Po ukończeniu [instalacji ochrony haseł usługi Azure AD](howto-password-ban-bad-on-premises-deploy.md) w środowisku lokalnym, istnieje kilka elementów, które muszą być skonfigurowane w witrynie Azure portal.
 
@@ -33,7 +28,7 @@ Postępuj zgodnie ze wskazówkami w artykule [Konfigurowanie listy zakazanych ha
 
 ## <a name="enable-password-protection"></a>Włączanie ochrony hasłem
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory**, **metod uwierzytelniania**, następnie **ochrona za pomocą hasła (wersja zapoznawcza)**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **usługi Azure Active Directory**, **metod uwierzytelniania**, następnie **ochrony hasłem**.
 1. Ustaw **włączenia ochrony haseł usługi Active Directory systemu Windows Server** do **tak**
 1. Jak wspomniano w [przewodnik wdrażania](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), zalecane jest początkowo ustawiona **tryb** do **inspekcji**
    * Po masz doświadczenia z tej funkcji, można przełączać się **tryb** do **wymuszone**

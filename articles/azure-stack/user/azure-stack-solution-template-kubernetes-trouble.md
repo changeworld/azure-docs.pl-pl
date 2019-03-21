@@ -5,21 +5,21 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabvrigg
+ms.date: 03/20/2019
 ms.reviewer: waltero
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 6a5efce2f50a25902b33f2cb85d470a280000305
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: 01a9405c98160149782ab2cf248f64818d631dde
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002061"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293791"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack
 
@@ -66,8 +66,8 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
 
     Ten skrypt wykonuje następujące zadania:
     - Instaluje etcd, Docker i Kubernetes zasoby, takie jak agenta kubelet. etcd jest magazyn rozproszonych wartości klucza, który umożliwia przechowywanie danych w klastrze maszyn. Docker obsługuje znane jako kontenery wirtualizacji komputerów PC bez kości poziom systemu operacyjnego. Agenta Kubelet to agent węzeł, który działa w każdym węźle usługi Kubernetes.
-    - Konfiguruje usługę etcd.
-    - Konfiguruje usługę agenta kubelet.
+    - Konfiguruje **etcd** usługi.
+    - Konfiguruje **agenta kubelet** usługi.
     - Uruchamia agenta kubelet. To zadanie obejmuje następujące czynności:
         1. Uruchamia usługę interfejsu API.
         2. Uruchamia usługę kontrolera.
@@ -77,9 +77,9 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
 7. Pobierz i Uruchom rozszerzenie skryptu niestandardowego.
 
 7. Uruchom skrypt agenta. Skrypt niestandardowy agenta wykonuje następujące zadania:
-    - Instaluje etcd
-    - Konfiguruje usługę agenta kubelet
-    - Zostanie przyłączony do klastra Kubernetes
+    - Instaluje **etcd**.
+    - Konfiguruje **agenta kubelet** usługi.
+    - Dołączy do klastra Kubernetes.
 
 ## <a name="steps-for-troubleshooting"></a>Kroki rozwiązywania problemów z
 
@@ -119,66 +119,52 @@ Podczas wdrażania klastra Kubernetes, możesz sprawdzić stan wdrożenia można
 
     Każdy element ma ikona stanu zielony lub czerwony.
 
-## <a name="get-logs-from-a-vm"></a>Pobieranie dzienników z maszyny Wirtualnej
+## <a name="review-deployment-logs"></a>Przejrzyj dzienniki wdrażania
 
-Aby wygenerować dzienniki, możesz muszą połączyć się z główną maszyną Wirtualną dla klastra, otwórz wiersz bash, a następnie uruchom skrypt. Wzorzec maszyny Wirtualnej można znaleźć w grupie zasobów klastra i nosi nazwę `k8s-master-<sequence-of-numbers>`. 
+Jeśli portalu usługi Azure Stack nie zawiera informacji wystarczających do rozwiązania lub wyeliminowanie niepowodzenie wdrożenia, następnym krokiem jest, aby wyświetlić szczegółowe dzienniki klastra. Aby ręcznie pobrać dzienników wdrażania, zazwyczaj należy połączyć się z jednej z maszyn wirtualnych z głównego klastra. Pobierz i uruchom następujące polecenie powinno być prostszej metody alternatywnej [skryptu powłoki systemowej](https://aka.ms/AzsK8sLogCollectorScript) dostarczane przez zespół usługi Azure Stack. Ten skrypt łączy się z Menedżer DVM i maszyn wirtualnych klastra, umożliwia zbieranie informacji o odpowiednich system i dzienniki klastra i pobiera je do swojej stacji roboczej.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebujesz bash monitu na komputerze który służy do zarządzania usługi Azure Stack. Użyj powłoki bash, aby uruchamiać skrypty, które uzyskiwanie dostępu do dzienników. Na komputerze Windows można użyć wierszu polecenia powłoki bash, który został zainstalowany przy użyciu narzędzia Git. Aby uzyskać najbardziej aktualną wersję narzędzia git, zobacz [pobierania narzędzia Git](https://git-scm.com/downloads).
+Konieczne będzie wiersz Bash na komputerze, który służy do zarządzania usługi Azure Stack. Na komputerze Windows, możesz uzyskać Bash prompt, instalując [Git dla Windows](https://git-scm.com/downloads). Po zakończeniu instalacji, poszukaj _powłoki Git Bash_ w start menu.
 
-### <a name="get-logs"></a>Pobierz dzienniki
+### <a name="retrieving-the-logs"></a>Trwa pobieranie dzienników
 
-Aby uzyskać dzienniki, wykonaj następujące czynności:
+Wykonaj następujące kroki, aby zbierać i pobrać dzienniki klastra:
 
-1. Otwórz wiersz bash. Jeśli używasz narzędzia Git na komputerze Windows, można otworzyć wiersz bash w następującej ścieżce: `c:\programfiles\git\bin\bash.exe`.
-2. Uruchom następujące polecenia powłoki bash:
+1. Otwórz wiersz Bash. Na komputerze Windows otwórz _powłoki Git Bash_ lub uruchomić: `C:\Program Files\Git\git-bash.exe`.
+
+2. Pobierz skrypt zbierających dane dziennika, uruchamiając następujące polecenia w wierszu polecenia z powłoki Bash:
 
     ```Bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
     curl -O https://raw.githubusercontent.com/msazurestackworkloads/azurestack-gallery/master/diagnosis/getkuberneteslogs.sh
-    sudo chmod 744 getkuberneteslogs.sh
+    chmod 744 getkuberneteslogs.sh
     ```
 
-    > [!Note]  
-    > W Windows, nie trzeba uruchomić `sudo`. Zamiast tego można użyć `chmod 744 getkuberneteslogs.sh`.
-
-3. W tej samej sesji, uruchom następujące polecenie z parametrami zaktualizowane pod kątem danego środowiska:
-
-    ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmd-host 192.168.102.37
-    ```
-
-4. Przejrzyj parametry i ustaw wartości, w zależności od używanego środowiska.
+3. Wyszukaj informacje wymagane przez skrypt i uruchom go:
 
     | Parametr           | Opis                                                                                                      | Przykład                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host       | Publiczny adres IP lub nazwa FQDN Menedżer DVM. Nazwa maszyny Wirtualnej, który rozpoczyna się od `vmd-`.                                                       | Adres IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
-    | -f,--force | Nie Monituj przed przekazaniem klucza prywatnego. | |
-    | -i, — plik tożsamości | RSA pliku klucza prywatnego do łączenia z głównej maszynie Wirtualnej platformy Kubernetes. Klucz musi rozpoczynać się: <br>`-----BEGIN RSA PRIVATE KEY-----` | C:\data\id_rsa.pem                                                        |
-    | -h, — pomoc  | Drukowanie użycia polecenia `getkuberneteslogs.sh` skryptu. | |
-    | -m,--host główny          | Publiczny adres IP lub w pełni kwalifikowana nazwa domeny (FQDN) węzła głównego klastra Kubernetes maszyny Wirtualnej. Nazwa maszyny Wirtualnej, który rozpoczyna się od `k8s-master-`.                       | Adres IP: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
-    | -u, — użytkownik          | Nazwa użytkownika maszyny Wirtualnej węzła głównego klastra Kubernetes. Ta nazwa jest ustawiona, podczas konfigurowania elementu portalu marketplace.                                                                    | użytkownik_azure                                                                     |
+    | -d, --vmd-host      | Publiczny adres IP lub w pełni kwalifikowana nazwa domeny (FQDN) programu Menedżer DVM. Nazwa maszyny wirtualnej, który rozpoczyna się od `vmd-`. | Adres IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -h, — pomoc  | Drukowanie użycie polecenia. | |
+    | -i, — plik tożsamości | Plik klucza prywatnego RSA przekazany do elementu portalu marketplace, podczas tworzenia klastra Kubernetes. Wymagane do zdalnego w węzłach usługi Kubernetes. | C:\data\id_rsa.PEM (Putty)<br>~/.SSH/id_rsa (SSH)
+    | -m,--host główny   | Publiczny adres IP lub w pełni kwalifikowana nazwa domeny (FQDN) węzła głównego usługi Kubernetes. Nazwa maszyny wirtualnej, który rozpoczyna się od `k8s-master-`. | Adres IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -u, — użytkownik          | Nazwa użytkownika jest przekazywany do elementu portalu marketplace podczas tworzenia klastra Kubernetes. Wymagane do zdalnego w węzłach Kubernetes | azureuser (wartość domyślna) |
 
 
-
-
-   Po dodaniu wartości parametrów, on może wyglądać podobnie do poniższego kodu:
+   Podczas dodawania wartości parametrów polecenia może wyglądać mniej więcej tak:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-    Pomyślny przebieg tworzy dzienniki.
+4. Po kilku minutach skryptu zostanie wygenerowana dzienniki zebrane do katalogu o nazwie `KubernetesLogs_{{time-stamp}}`. Można znaleźć katalogu dla każdej maszyny wirtualnej, który należy do klastra.
 
-    ![Wygenerowanych dzienników](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
+    Skrypt modułu zbierającego dziennika również sprawdzić występowanie błędów w plikach dziennika i obejmować kroki rozwiązywania problemów, jeśli się stanie, aby znaleźć to znany problem. Upewnij się, że używasz najnowszej wersji skryptu, aby zwiększyć szanse znalezienia znanych problemów.
 
-
-1. Pobierz dzienniki w folderach, które zostały utworzone przy użyciu polecenia. Polecenie spowoduje utworzenie nowych folderów i ich sygnatury czasowe.
-    - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
-        - Dvmlogs
-        - Acsengine-kubernetes-dvm.log
+> [!Note]  
+> Zapoznaj się z tym GitHub [repozytorium](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis) Aby uzyskać więcej informacji na temat skryptu dziennika modułu zbierającego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

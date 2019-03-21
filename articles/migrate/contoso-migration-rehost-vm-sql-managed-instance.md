@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 832614c46f0269460245d081f20897b591e31fce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694486"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101571"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migracja Contoso: Ponowne hostowanie aplikacji w środowisku lokalnym na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database
 
@@ -222,7 +222,7 @@ Contoso uwzględnia następujące czynniki:
 - Podsieć może być skojarzona z tabelą tras tylko jeden.
 - Nie istnieją żadne dodatkowe opłaty, do tworzenia tabel tras w systemie Microsoft Azure.
 
- Aby skonfigurować routing Contoso administratorów, wykonaj następujące czynności:
+  Aby skonfigurować routing Contoso administratorów, wykonaj następujące czynności:
 
 1. Tworzą tabeli trasy zdefiniowanej przez użytkownika (trasy) w **ContosoNetworkingRG** grupy zasobów.
 
@@ -441,11 +441,11 @@ Gdy źródłowy i docelowy są skonfigurowane, Administratorzy Contoso utworzyć
 
 1. W **przygotowanie infrastruktury** > **ustawień replikacji** > **zasad replikacji** >  **Utwórz i Skojarz**, tworzą **ContosoMigrationPolicy** zasad.
 2. Używają domyślnych ustawień:
-    - **Próg celu punktu odzyskiwania**: Domyślnej wartości 60 minut. Ta wartość określa częstość tworzenia punktów odzyskiwania. Przekroczenie tego limitu przez replikację ciągłą spowoduje wygenerowanie alertu.
-    - **Przechowywanie punktów odzyskiwania**: Domyślnej wartości 24 godzin. Ta wartość określa, jak długo trwa okno przechowywania dla każdego punktu odzyskiwania. Replikowane maszyny wirtualne można odzyskać do dowolnego punktu w tym oknie.
-    - **Częstotliwość wykonywania migawek na poziomie aplikacji**: Domyślnej równej 1 godz. Ta wartość określa częstotliwość, z jaką są tworzone migawki spójne z aplikacjami.
+   - **Próg celu punktu odzyskiwania**: Domyślnej wartości 60 minut. Ta wartość określa częstość tworzenia punktów odzyskiwania. Przekroczenie tego limitu przez replikację ciągłą spowoduje wygenerowanie alertu.
+   - **Przechowywanie punktów odzyskiwania**: Domyślnej wartości 24 godzin. Ta wartość określa, jak długo trwa okno przechowywania dla każdego punktu odzyskiwania. Replikowane maszyny wirtualne można odzyskać do dowolnego punktu w tym oknie.
+   - **Częstotliwość wykonywania migawek na poziomie aplikacji**: Domyślnej równej 1 godz. Ta wartość określa częstotliwość, z jaką są tworzone migawki spójne z aplikacjami.
  
-    ![Zasadami replikacji — tworzenie](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
+     ![Zasadami replikacji — tworzenie](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
 
 3. Zasady zostaną automatycznie skojarzone z serwerem konfiguracji. 
 

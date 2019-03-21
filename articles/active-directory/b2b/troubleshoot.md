@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e66c694d2bfb5497712bcf81c4d50a8e68fdcef9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af106650f6e1d139ec7af2c8d243dc50f2e963fc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122524"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293962"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory
 
@@ -38,7 +38,7 @@ Aby włączyć tę funkcję, należy za pomocą ustawienia "ShowPeoplePickerSugg
 
 Jeśli zostanie wyświetlone powiadomienie, że nie masz uprawnień do zapraszania użytkowników, należy sprawdzić, czy Twoje konto użytkownika jest autoryzowany do zapraszania użytkowników zewnętrznych w obszarze Ustawienia użytkownika:
 
-![Ustawień użytkowników zewnętrznych](media/troubleshoot/external-user-settings.png)
+![Zrzut ekranu przedstawiający ustawienia użytkowników zewnętrznych](media/troubleshoot/external-user-settings.png)
 
 Jeśli zostały ostatnio zmodyfikowane tych ustawień lub przypisana rola osoba zapraszająca gości do użytkownika, może występować opóźnienie 15 – 60 minut aby zmiany zaczęły obowiązywać.
 
@@ -50,7 +50,7 @@ Typowe błędy:
 
 Podczas zapraszania użytkowników, których organizacja używa usługi Azure Active Directory, ale których nie istnieje konta określonego użytkownika (na przykład, użytkownik nie istnieje w domenie contoso.com w usłudze Azure AD). Administrator domeny contoso.com może mieć zasady w miejscu, uniemożliwiając tworzonych przez użytkowników. Użytkownik musi skontaktować się z ich administratora, aby określić, czy użytkownicy zewnętrzni mogą. Może być konieczne użytkownika zewnętrznego administratora umożliwiające użytkownikom zweryfikować poczty E-mail w ich domenie (zobacz ten [artykułu](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na co pozwala użytkownikom zweryfikować wiadomości E-mail).
 
-![Użytkowników, które mają zostać dodane zweryfikowanych błędzie informujący, że ta dzierżawa nie zezwala na adres e-mail](media/troubleshoot/allow-email-verified-users.png)
+![Użytkowników zweryfikowanych błędzie informujący, że dzierżawa nie zezwala na adres e-mail](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Użytkownik zewnętrzny nie istnieje już w domeny federacyjnej
 

@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 018281406bb810f6357ad00948060cedae57fc6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: de80825ccdd331f57dcd31d307196dc0b45b9cc9
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003800"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294590"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -116,7 +116,8 @@ Dołączenie do hybrydowej usługi Azure AD jest proces automatycznego rejestrow
 
 Przyłączone do domeny systemu Windows 10 urządzenia są już [usługi Azure AD zarejestrowany](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) do swojej dzierżawy, zdecydowanie zalecamy usunięcie tego stanu przed włączeniem dołączenie do hybrydowej usługi Azure AD. Z wersji systemu Windows 10 1809 wprowadzono następujące zmiany w celu uniknięcia tego podwójną stanu: 
  - Wszelkie istniejący stan usługi Azure AD zarejestrowany będą automatycznie usuwane, gdy urządzenie jest przyłączone do usługi Azure AD hybrydowej. 
- - Użytkownik może uniemożliwić urządzenia przyłączone do domeny usługi Azure AD zarejestrowany przez dodanie tego klucza rejestru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001
+ - Użytkownik może uniemożliwić urządzenia przyłączone do domeny usługi Azure AD zarejestrowany przez dodanie tego klucza rejestru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001.
+ - Ta zmiana jest teraz dostępna w wersji systemu Windows 10 w wersji 1803 z KB4489894.
 
 Zgodne ze standardem FIPS TPM nie są obsługiwane przez dołączenie do hybrydowej usługi Azure AD. Jeśli urządzenia były zgodne ze standardem FIPS modułów TPM, należy wyłączyć je przed kontynuowaniem dołączenie do hybrydowej usługi Azure AD. Firma Microsoft zapewnia wszystkie narzędzia wyłączanie trybu FIPS dla modułów TPM, ponieważ jest on zależny od producenta modułu TPM. Uzyskać pomoc, skontaktuj się z sprzęt OEM.
 

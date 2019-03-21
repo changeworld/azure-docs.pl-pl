@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de0e20eb096ba127790019c1c07fbdd504d3a480
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877915"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem BlueJeans
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację rozwiązania BlueJeans z usługą Azure AD, musis
 
 **Aby dodać rozwiązanie BlueJeans z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -150,7 +150,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
     b. W polu tekstowym **Adres URL logowania** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    d. W polu tekstowym **Password Change URL** (Adres URL zmiany hasła) wklej wartość **adresu URL zmiany hasła** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **Password Change URL** (Adres URL zmiany hasła) wklej wartość **adresu URL zmiany hasła** skopiowaną z witryny Azure Portal.
 
     d. W polu tekstowym **Logout URL** (Adres URL wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
@@ -162,7 +162,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
     b. W polu tekstowym **Email** (Adres e-mail) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    d. Kliknij przycisk **SAVE CHANGES** (ZAPISZ ZMIANY).
+    c. Kliknij przycisk **SAVE CHANGES** (ZAPISZ ZMIANY).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -182,7 +182,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -238,13 +238,13 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w rozwiązan
 
     b. W polu tekstowym **Last Name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
 
-    d. W polu tekstowym **Pick a BlueJeans Username** (Wybierz nazwę użytkownika BlueJeans) wprowadź nazwę użytkownika, na przykład **Brittasimon**
+    c. W polu tekstowym **Pick a BlueJeans Username** (Wybierz nazwę użytkownika BlueJeans) wprowadź nazwę użytkownika, na przykład **Brittasimon**
 
     d. W polu tekstowym **Create a Password** (Utwórz hasło) wprowadź hasło.
 
     e. W polu tekstowym **Company** (Firma) wprowadź nazwę Twojej firmy.
 
-    f. W polu tekstowym **Email Address** (Adres e-mail) wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
+    f. W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     g. W polu tekstowym **Create a BlueJeans Meeting I.D** (Utwórz identyfikator spotkania BlueJeans) wprowadź swój identyfikator spotkania.
 
@@ -261,7 +261,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w rozwiązan
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka BlueJeans w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania BlueJeans, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

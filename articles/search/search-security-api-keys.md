@@ -8,15 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 03/19/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6ba63fa776e92dd2f8035cfbbdb8cea2860d106f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316933"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286605"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Tworzenie i zarządzanie nimi klucze api KEY dla usługi Azure Search
 
@@ -42,19 +41,35 @@ Dwa typy kluczy są używane do uzyskania dostępu do usługi wyszukiwania: admi
 > [!NOTE]  
 >  Chodzi w zakresie zabezpieczeń niską do przekazywania poufnych danych, takich jak `api-key` w identyfikatorze URI żądania. Z tego powodu usługa Azure Search akceptuje tylko klucz zapytania jako `api-key` w zapytaniu ciągu, na które należy unikać sposób, chyba że zawartość indeksu powinny być dostępne publicznie. Ogólną zasadą jest, zalecamy przekazywanie Twojego `api-key` jako nagłówek żądania.  
 
-## <a name="find-api-keys-for-your-service"></a>Znajdź klucze api KEY dla usługi
+## <a name="find-existing-keys"></a>Znajdowanie istniejących kluczy
 
 Możesz uzyskać klucze dostępu w portalu lub za pomocą [interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/). Aby uzyskać więcej informacji, zobacz [Zarządzanie administratora i zapytania klucze api Key](search-security-api-keys.md).
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Lista [usługi wyszukiwania](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) dla Twojej subskrypcji.
-3. Wybierz usługę, a następnie na stronie usługi, znalezienia **ustawienia** >**klucze** do wyświetlania kluczy administratora i zapytania.
+3. Wybierz usługę, a następnie na stronie Przegląd kliknij przycisk **ustawienia** >**klucze** do wyświetlania kluczy administratora i zapytania.
 
-![Strony w portalu, ustawień kluczy sekcji](media/search-security-overview/settings-keys.png)
+   ![Strony w portalu, ustawień kluczy sekcji](media/search-security-overview/settings-keys.png)
+
+## <a name="create-query-keys"></a>Utwórz klucze zapytania
+
+Klucze zapytania są używane dla dostępu tylko do odczytu do dokumentów w indeksie. Ograniczanie dostępu i operacje w aplikacjach klienckich jest niezbędne do ochrony zasobów wyszukiwania w usłudze. Zawsze używaj klucz zapytania zamiast klucza administratora dla dowolnego zapytania pochodzące z aplikacji klienckiej.
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Lista [usługi wyszukiwania](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) dla Twojej subskrypcji.
+3. Wybierz usługę, a następnie na stronie Przegląd kliknij przycisk **ustawienia** >**klucze**.
+4. Kliknij przycisk **zarządzanie kluczami zapytań**.
+5. Użyj zapytania już wygenerowany dla usługi lub utworzyć do 50 nowe klucze zapytania. Domyślny klucz zapytania nie ma nazwy, ale może mieć nazwę zapytania dodatkowe klucze do zarządzania nimi.
+
+   ![Tworzenie lub używanie klucza zapytania](media/search-security-overview/create-query-key.png) 
+
+
+> [!Note]
+> Przykładowy kod pokazujący użycie klucza zapytania można znaleźć w [tworzenie zapytań względem indeksu usługi Azure Search w C# ](search-query-dotnet.md).
 
 ## <a name="regenerate-admin-keys"></a>Wygeneruj ponownie klucze administratora
 
-Dwa klucze administratora są tworzone dla każdej usługi, aby można było przerzucania klucza podstawowego, przy użyciu klucza pomocniczego opinię dotyczącą przedłużenia dostępu.
+Dwa klucze administratora są tworzone dla każdej usługi, dzięki czemu można też obrócić kluczem podstawowym opinię dotyczącą przedłużenia dostępu przy użyciu klucza pomocniczego.
 
 Jeśli w tym samym czasie można ponownie wygenerować kluczy podstawowych i pomocniczych, w aplikacjach używających żadnego z nich do uzyskiwania dostępu do operacji usługi nie jest już mają dostęp do usługi.
 

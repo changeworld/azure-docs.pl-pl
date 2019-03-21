@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: c456f8f7f08fdbd0020bfc49ceeec262fa0ac773
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 14c9a453913a9a8080c840df3f23751487b86c34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457979"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006154"
 ---
 # <a name="ilogger"></a>ILogger
 
@@ -219,6 +219,26 @@ services.AddApplicationInsightsTelemetry("ikeyhere");
 W tym przykładzie konfiguracja używana przez `ApplicationInsightsLoggerProvider` jest taka sama jak wartość używana przez monitorowanie aplikacji w regularnych. W związku z tym oba `ILogger` ślady i innych danych telemetrycznych (żądań, zależności itd.) będą uruchomione tego samego zestawu `TelemetryInitializers`, `TelemetryProcessors`, i `TelemetryChannel`. Będą one skorelowane i próbkowane tak/nie próbkowane w taki sam sposób.
 
 Istnieje jednak wyjątek dotyczący tego zachowania. Wartość domyślna `TelemetryConfiguration` nie pełni skonfiguruj, kiedy rejestruje czegoś ze `Program.cs` lub `Startup.cs` siebie, więc tych dzienników nie będzie domyślna konfiguracja. Jednak co inne dziennika (na przykład dzienniki z kontrolerów, modele itp.), czy mają taką konfigurację.
+
+## <a name="control-logging-level"></a>Poziom rejestrowania formantu
+
+Oprócz filtrowania dzienniki na kodzie, jak w powyższych przykładach, istnieje również możliwość sterowania przechwytuje poziom rejestrowania usługi Application Insights, modyfikując `appsettings.json`. [Rejestrowanie podstawowe informacje dotyczące dokumentacji platformy ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering) pokazuje, jak można to osiągnąć. Specjalnie dla usługi Application Insights jest nazwę aliasu dostawcy `ApplicationInsights`, jak pokazano w poniższym przykładzie, który konfiguruje `ApplicationInsights` do przechwycenia tylko dzienniki `Warning` i nowsze wersje z wszystkich kategorii.
+
+```json
+{
+  "Logging": {
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

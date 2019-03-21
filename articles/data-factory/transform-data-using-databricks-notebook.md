@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 181e2c1d1a9758d6f196c9cb2b281eefa141d81a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: HT
+ms.openlocfilehash: fcf3fe85b6dd184b4f58060aab4fcf3ce146af13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015159"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Uruchamianie notesu usługi Databricks za pomocą działania notesu usługi Databricks w usłudze Azure Data Factory
 
@@ -141,9 +141,9 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
     b. Wybierz usługę  **AzureDatabricks\_LinkedService**  (utworzoną w ramach poprzedniej procedury).
 
-    d. Przejdź do karty **Ustawienia**.
+    c. Przejdź do karty **Ustawienia**.
 
-    d. Użyj polecenia Przeglądaj, aby wybrać wartość dla pozycji **Ścieżka notesu** usługi Databricks. W tym miejscu utworzymy notes i określimy ścieżkę. Ścieżkę notesu można uzyskać, wykonując kilka następnych kroków.
+    c. Użyj polecenia Przeglądaj, aby wybrać wartość dla pozycji **Ścieżka notesu** usługi Databricks. W tym miejscu utworzymy notes i określimy ścieżkę. Ścieżkę notesu można uzyskać, wykonując kilka następnych kroków.
 
        1. Uruchom obszar roboczy usługi Azure Databricks.
 
@@ -151,7 +151,7 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
           ![Tworzenie nowego folderu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. W folderze **adftutorial** [utwórz nowy notes](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) i nadaj mu nazwę **mynotebook****.** Kliknij przycisk **Utwórz**.
+       1. [Tworzenie nowego notesu](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) i nazwiemy to **mynotebook** w obszarze **adftutorial** folderu, kliknij przycisk **Utwórz.**
 
           ![Tworzenie nowego notesu](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -173,13 +173,13 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
        1. W tym przypadku **Ścieżka notesu** to **/adftutorial/mynotebook**.
 
-1.  Przełącz się z powrotem do **narzędzia tworzenia interfejsu użytkownika usługi Data Factory**. Przejdź do karty **Ustawienia** w obszarze **Działanie notesu Notes1**. 
-    
+1.  Przełącz się z powrotem do **narzędzia tworzenia interfejsu użytkownika usługi Data Factory**. Przejdź do karty **Ustawienia** w obszarze **Działanie notesu Notes1**.
+
     a.  **Dodaj parametr** do działania notesu. Użyj tego samego parametru, który został dodany wcześniej do **potoku**.
 
        ![Dodawanie parametru](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Nadaj parametrowi nazwę **wejście** i podaj wartości w postaci wyrażenia **@pipeline().parameters.name**.
+    b.  Nazwa parametru jako **wejściowych** i podaj wartość jako wyrażenie  **\@potoku ().parameters.name**.
 
 1.  Aby zweryfikować potok, wybierz przycisk  **Weryfikuj**  na pasku narzędzi. Wybierz przycisk  **\>\>**  (strzałka w prawo), aby zamknąć okno weryfikacji.
 

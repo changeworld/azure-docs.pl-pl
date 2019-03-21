@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b7ad21bd3185e5e6ba4774cdc5780b0594033f14
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028447"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903627"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostyka ujednoliconego transakcji między składnikami
 
@@ -50,7 +50,7 @@ Ten wykres zawiera oś czasu z poziome paski na czas trwania żądania i zależn
 * Wybierz wszystkie wiersze, aby wyświetlić jego [szczegółów po prawej stronie](#details-of-the-selected-telemetry). 
 
 > [!NOTE]
-Wywołania do innych składników mają dwa wiersze: jeden wiersz reprezentuje wywołanie ruchu wychodzącego (zależności) ze składnika obiektu wywołującego, a innych wierszy odpowiada na żądanie dla ruchu przychodzącego na składnik o nazwie. Ikona wiodące i odrębnych stylów pasków czas trwania pomóc je odróżnić.
+> Wywołania do innych składników mają dwa wiersze: jeden wiersz reprezentuje wywołanie ruchu wychodzącego (zależności) ze składnika obiektu wywołującego, a innych wierszy odpowiada na żądanie dla ruchu przychodzącego na składnik o nazwie. Ikona wiodące i odrębnych stylów pasków czas trwania pomóc je odróżnić.
 
 ## <a name="all-telemetry-with-this-operation-id"></a>Wszystkie dane telemetryczne z tym identyfikatorem operacji
 
@@ -74,9 +74,9 @@ W tym okienku zwijany przedstawia wyniki, które spełniają kryteria filtru. Kl
 
 [Narzędzie Application Insights profiler](../../azure-monitor/app/profiler.md) lub [rozszerzenia snapshot debugger](snapshot-debugger.md) pomoc przy użyciu diagnostyki kodu poziom wydajności i niepowodzeń problemów. Z tego środowiska można wyświetlić ślady narzędzia profiler, lub kliknij przycisk migawki z dowolnego składnika za pomocą jednego.
 
-Jeśli nie można pobrać Profiler pracy, skontaktuj się z **serviceprofilerhelp@microsoft.com**
+Jeśli nie można pobrać Profiler pracy, skontaktuj się z **serviceprofilerhelp\@microsoft.com**
 
-Jeśli nie można pobrać rozszerzenia Snapshot Debugger pracy, skontaktuj się z **snapshothelp@microsoft.com**
+Jeśli nie można pobrać rozszerzenia Snapshot Debugger pracy, skontaktuj się z **snapshothelp\@microsoft.com**
 
 ![Integracja Profiler](media/transaction-diagnostics/profilerTraces.png)
 

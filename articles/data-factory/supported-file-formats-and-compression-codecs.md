@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: bb701a33d4ebb1ffca19896f3b4ac0419f27d54f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e21223bf3c50a98e039d0f19c51116c4a3cfbcc0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539041"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875142"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
@@ -573,6 +573,14 @@ Aby określić kompresji dla zestawu danych, użyj **kompresji** właściwość 
 
 > [!NOTE]
 > Ustawienia kompresji nie są obsługiwane dla danych w **AvroFormat**, **OrcFormat**, lub **ParquetFormat**. Podczas odczytywania plików w tych formatach, Data Factory wykrywa i używa kodera-dekodera kompresji w metadanych. Podczas zapisywania plików w tych formatach, Data Factory wybiera natomiast opcję domyślną kodera-dekodera kompresji dla tego formatu. Na przykład ZLIB OrcFormat i SNAPPY dla ParquetFormat.
+
+## <a name="unsupported-file-types-and-compression-formats"></a>Nieobsługiwane typy plików i kompresji
+
+Funkcje rozszerzalności usługi Azure Data Factory umożliwia przekształcanie plików, które nie są obsługiwane. Dwie opcje obejmują usługi Azure Functions i niestandardowe zadania za pomocą usługi Azure Batch.
+
+Możesz zobaczyć przykładu korzystającego z funkcji platformy Azure, aby [Wyodrębnij zawartość pliku tar](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Aby uzyskać więcej informacji, zobacz [działania usługi Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
+
+Można także utworzyć tej funkcjonalności za pomocą działania niestandardowego dotnet. Więcej informacji jest dostępnych [tutaj](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

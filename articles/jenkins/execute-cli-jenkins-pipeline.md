@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 6/7/2017
-ms.openlocfilehash: dfdc572810cfcfd275faa4502e508b9c8ccec9b6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 5728a9ab70c5b7db10a123d6964b498e70f96588
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727845"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546147"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Wdrażanie w usłudze Azure App Service za pomocą serwera Jenkins i interfejsu wiersza polecenia platformy Azure
 Aby wdrożyć aplikację internetową Java na platformie Azure, można użyć interfejsu wiersza polecenia platformy Azure w [potoku Jenkins](https://jenkins.io/doc/book/pipeline/). W tym samouczku utworzysz potok CI/CD na maszynie wirtualnej platformy Azure. Wykonasz m.in. następujące czynności:
@@ -117,7 +117,7 @@ Gdy definicja aplikacji internetowej jest gotowa, w interfejsie wiersza poleceni
 
 Ustaw konfigurację środowiska uruchomieniowego języka Java wymaganą przez aplikację przy użyciu polecenia [az appservice web config update](/cli/azure/webapp/config).
 
-Następujące polecenie konfiguruje aplikację internetową do uruchamiania razem z zestawem Java 8 JDK i środowiskiem [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Następujące polecenie konfiguruje aplikację internetową do uruchamiania razem z zestawem Java 8 JDK i środowiskiem [Apache Tomcat](https://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -215,7 +215,7 @@ Usługa Web App on Linux obsługuje inny sposób wdrażania, który wykorzystuje
 
     Przejdź do adresu http://&lt;nazwa_aplikacji>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (zastąp wartości &lt;x > i &lt;y > dowolnymi liczbami), aby uzyskać sumę wartości x i y.
     
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku skonfigurowaliśmy potok Jenkins, który wyewidencjonowuje kod źródłowy w repozytorium GitHub. Uruchamia narzędzie Maven, aby skompilować plik war, a następnie używa interfejsu wiersza polecenia platformy Azure w celu wdrożenia w usłudze Azure App Service. W tym samouczku omówiono:
 
 > [!div class="checklist"]

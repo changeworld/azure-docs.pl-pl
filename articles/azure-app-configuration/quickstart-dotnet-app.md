@@ -14,22 +14,22 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: becd91b3539ef992289a4032283be64fbf9d123d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 551b884f032eaba3f052fcb7571ba907038152ff
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729364"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226848"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki start: tworzenie aplikacji .NET Framework przy użyciu usługi Azure App Configuration
 
-Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Dzięki niej możesz łatwo przechowywać wszystkie ustawienia aplikacji w jednym miejscu oddzielonym od kodu i zarządzać tymi ustawieniami. W tym przewodniku Szybki start pokazano, jak zintegrować usługę z aplikacją konsolową systemu Windows opartą na programie NET Framework.
+Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Umożliwia on łatwe przechowywać i zarządzać wszystkie ustawienia aplikacji w jednym miejscu, który jest oddzielony od kodu. W tym przewodniku Szybki start pokazano, jak zintegrować usługę z aplikacją konsolową systemu Windows opartą na programie NET Framework.
 
-![Przewodnik Szybki start ukończony, wersja lokalna](./media/quickstarts/dotnet-fx-app-run.png)
+![Lokalny kompletny przewodnik Szybki Start](./media/quickstarts/dotnet-fx-app-run.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start, zainstaluj program [Visual Studio 2017](https://visualstudio.microsoft.com/vs) i program [.NET Framework 4.7.1](https://dotnet.microsoft.com/download) lub nowszy, jeśli jeszcze tego nie zrobiono.
+Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://visualstudio.microsoft.com/vs) i [platformy .NET Framework 4.7.1](https://dotnet.microsoft.com/download) lub nowszy, jeśli jeszcze go.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,19 +39,19 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj program [Visual Studio 20
 
 ## <a name="create-a-net-console-app"></a>Tworzenie aplikacji konsolowej platformy .NET
 
-1. Uruchom program Visual Studio, a następnie wybierz pozycję **Plik** > **Nowy** > **Projekt**.
+1. Uruchom program Visual Studio, a następnie wybierz pozycję **pliku** > **New** > **projektu**.
 
-2. W oknie dialogowym **Nowy projekt** wybierz pozycję **Zainstalowane**, rozwiń pozycję **Visual C#** > **Aplikacja klasyczna systemu Windows**, wybierz pozycję**Aplikacja konsolowa (.NET Framework)**, wpisz **nazwę** projektu, wybierz program **.NET Framework 4.7.1** lub nowszy i kliknij przycisk **OK**.
+2. W **nowy projekt**, wybierz opcję **zainstalowane** > **Visual C#**   >  **pulpitu Windows**. Wybierz **Aplikacja konsoli (.NET Framework)**, a następnie wprowadź nazwę dla projektu. Wybierz **platformy .NET Framework 4.7.1** lub się i wybierz **OK**.
 
-## <a name="connect-to-app-configuration-store"></a>Łączenie z magazynem konfiguracji aplikacji
+## <a name="connect-to-an-app-configuration-store"></a>Łączenie do sklepu z aplikacjami konfiguracji
 
-1. Kliknij projekt prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet**. Na karcie **Przeglądaj** wyszukaj i dodaj do projektu następujące pakiety NuGet (zaznacz pole **Uwzględnij wersję wstępną**, jeśli nie możesz ich znaleźć).
+1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Na **Przeglądaj** kartę, wyszukiwanie i dodaj następujące pakiety NuGet do projektu. Jeśli nie można go znaleźć, wybrać **Uwzględnij wersję wstępną** pole wyboru.
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
     ```
 
-2. Zaktualizuj plik *App.config* w projekcie w następujący sposób:
+2. Aktualizacja *App.config* plik projektu w następujący sposób:
 
     ```xml
     <configSections>
@@ -71,9 +71,9 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj program [Visual Studio 20
     </appSettings>
     ```
 
-   Należy pamiętać, jak firma Microsoft będzie można odczytywać parametry połączenia magazynu konfiguracji aplikacji zmiennej środowiskowej `ConnectionString`, ważne jest, aby dodać `Environment` konstruktora konfiguracji przed `MyConfigStore` w `configBuilders` właściwość `appSettings` sekcji.
+   Parametry połączenia magazynu konfiguracji aplikacji jest do odczytu w zmiennej środowiskowej `ConnectionString`. Dodaj `Environment` konstruktora konfiguracji przed `MyConfigStore` w `configBuilders` właściwość `appSettings` sekcji.
 
-3. Otwórz plik *Program.cs* i zaktualizuj metodę `Main`, aby używała usługi App Configuration przez wywołanie elementu `ConfigurationManager`.
+3. Otwórz *Program.cs*i zaktualizuj `Main` metodę, aby można było używać konfiguracji aplikacji, wywołując `ConfigurationManager`.
 
     ```csharp
     static void Main(string[] args)
@@ -86,7 +86,7 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj program [Visual Studio 20
 
 ## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
-1. Ustaw zmienną środowiskową o nazwie **ConnectionString** na parametry połączenia magazynu konfiguracji aplikacji. Jeśli używasz wiersza polecenia systemu Windows, uruchom następujące polecenie:
+1. Ustaw zmienną środowiskową o nazwie **ConnectionString** na parametry połączenia magazynu konfiguracji aplikacji. Korzystając z wiersza polecenia Windows, uruchom następujące polecenie:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -94,7 +94,7 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj program [Visual Studio 20
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. Uruchom ponownie program Visual Studio, aby zastosować zmiany, a następnie naciśnij klawisze **Ctrl + F5** na klawiaturze, aby skompilować i uruchomić aplikację konsolową.
+2. Uruchom program Visual Studio, aby umożliwić zmiana zaczęła obowiązywać. Naciśnij klawisze Ctrl + F5, aby skompilować i uruchomić aplikację konsoli.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -102,7 +102,7 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj program [Visual Studio 20
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start został utworzony nowy magazyn konfiguracji aplikacji i użyto go z aplikacją konsolową .NET Framework. Aby dowiedzieć się więcej o korzystaniu z usługi App Configuration, przejdź do następnego samouczka, w którym zaprezentowano uwierzytelnianie.
+W tym przewodniku Szybki Start utworzyliśmy nowym magazynem konfiguracji aplikacji i używać go z aplikacji konsoli .NET Framework. Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 
 > [!div class="nextstepaction"]
-> [Tożsamości zarządzane na potrzeby integracji zasobów platformy Azure](./integrate-azure-managed-service-identity.md)
+> [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./integrate-azure-managed-service-identity.md)

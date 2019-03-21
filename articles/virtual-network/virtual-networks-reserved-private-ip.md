@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7977dc55d101c99bf1f850a529083916367308b4
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: b83a6e2c81eac9993c481561e3cebbed681d2c4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096048"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak skonfigurować statyczne wewnętrzne prywatny adres IP przy użyciu programu PowerShell (wersja klasyczna)
 W większości przypadków nie trzeba określić statyczny adres IP wewnętrznego dla maszyny wirtualnej. Maszyny wirtualne w sieci wirtualnej automatycznie otrzyma wewnętrznego adresu IP z zakresu, który określisz. Jednak w niektórych przypadkach Określanie statyczny adres IP dla konkretnej maszyny Wirtualnej ma sens. Na przykład, jeśli maszyna wirtualna będzie uruchamiany DNS lub zostanie kontrolerem domeny. Statyczny adres IP wewnętrznego pozostaje z maszyną Wirtualną, nawet za pośrednictwem do stanu zatrzymania/anulowania aprowizacji. 
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać [modelu wdrażania usługi Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać [modelu wdrażania usługi Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
-## <a name="install-the-azure-powershell-service-management-module"></a>Instalowanie modułu Azure PowerShell Service Management
+> ## <a name="install-the-azure-powershell-service-management-module"></a>Instalowanie modułu Azure PowerShell Service Management
 
 Przed uruchomieniem poniższych poleceń upewnij się, że [modułu zarządzania usługami programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
 ) jest zainstalowany na komputerze. Historii wersji modułu Azure PowerShell Service Management, zobacz [modułu platformy Azure w galerii programu PowerShell](https://www.powershellgallery.com/packages/Azure/5.3.0).

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 536ca8895d130fd9273d556332830d020a485dc3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 812b3752bfffd16c09b466b036fb0ac91e77d5a4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958298"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104356"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Tworzenie maszyny wirtualnej ze statycznym prywatnym adresem IP przy użyciu programu PowerShell
 
@@ -91,14 +91,12 @@ Z komputera lokalnego lub za pomocą usługi Azure Cloud Shell, można wykonać 
 
 > [!WARNING]
 > Że można dodawać prywatnej ustawienia adresu IP do systemu operacyjnego, firma Microsoft zaleca przeciwnym razie dopiero po odczytu [Dodaj prywatny adres IP do systemu operacyjnego](virtual-network-network-interface-addresses.md#private).
->
->
-<a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
-
+> 
+> 
+> <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
+> 
 > [!IMPORTANT]
 > Dostęp do maszyny Wirtualnej z Internetu, należy przypisać publiczny adres IP do maszyny Wirtualnej. Można również zmienić dynamicznego przydzielania prywatnych adresów IP do przypisania statycznego. Aby uzyskać więcej informacji, zobacz [apletu Dodaj lub zmień adresy IP](virtual-network-network-interface-addresses.md). Ponadto zaleca się ograniczenie ruchu sieciowego z maszyną wirtualną przez skojarzenie sieciowej grupy zabezpieczeń do interfejsu sieciowego i/lub podsieci, w której został utworzony interfejs sieciowy w. Aby uzyskać więcej informacji, zobacz [Zarządzanie grupami zabezpieczeń sieci](manage-network-security-group.md).
->
->
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

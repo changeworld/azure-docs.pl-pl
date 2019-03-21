@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 7305fbf21557061250a80e095998ad7ea2f35510
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 561c8c9d942210a9bbdc70feff9bc468fa69967e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995854"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -27,19 +27,19 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 ## <a name="general"></a>Ogólne
 * <a id="why-files-useful"></a>
-**Jak usługi Azure Files jest przydatne?**  
+  **Jak usługi Azure Files jest przydatne?**  
    Usługi Azure Files można użyć do tworzenia udziałów plików w chmurze, nie są odpowiedzialni za zarządzanie obciążenie serwera fizycznego, urządzenie lub urządzenia. Robimy monotonii pracy dla Ciebie, uwzględniając stosowanie aktualizacji systemu operacyjnego i wymieniać uszkodzonych dysków. Aby dowiedzieć się więcej na temat scenariuszy, które usługi pliki Azure może Ci pomóc, zobacz [przydaje się dlaczego usługi Azure Files](storage-files-introduction.md#why-azure-files-is-useful).
 
 * <a id="file-access-options"></a>
-**Jakie są różne sposoby uzyskiwania dostępu do plików w usłudze Azure Files?**  
-    Możesz zainstalować udział plików na komputerze lokalnym przy użyciu protokołu SMB 3.0 lub można użyć narzędzi, takich jak [Eksploratora usługi Storage](http://storageexplorer.com/) uzyskiwania dostępu do plików w udziale plików. Z poziomu aplikacji dostęp do Twoich plików w udziale plików platformy Azure można użyć bibliotek klienckich magazynu, interfejsów API REST, programu PowerShell lub wiersza polecenia platformy Azure.
+  **Jakie są różne sposoby uzyskiwania dostępu do plików w usłudze Azure Files?**  
+    Możesz zainstalować udział plików na komputerze lokalnym przy użyciu protokołu SMB 3.0 lub można użyć narzędzi, takich jak [Eksploratora usługi Storage](https://storageexplorer.com/) uzyskiwania dostępu do plików w udziale plików. Z poziomu aplikacji dostęp do Twoich plików w udziale plików platformy Azure można użyć bibliotek klienckich magazynu, interfejsów API REST, programu PowerShell lub wiersza polecenia platformy Azure.
 
 * <a id="what-is-afs"></a>
-**Co to jest usługa Azure File Sync?**  
+  **Co to jest usługa Azure File Sync?**  
     Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca maszyny z systemem Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, Network File System (NFS) i usługi protokołu transferu plików (FTPS). Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
 
 * <a id="files-versus-blobs"></a>
-**Dlaczego należy używać udziału plików platformy Azure i usługi Azure Blob storage dla moich danych?**  
+  **Dlaczego należy używać udziału plików platformy Azure i usługi Azure Blob storage dla moich danych?**  
     Usługi Azure Files i obiektów Blob platformy Azure, magazynu, oba programy oferują sposoby przechowywania dużych ilości danych w chmurze, ale są one użyteczne do nieco innych celów. 
     
     Usługa Azure Blob storage jest przydatne w przypadku bardzo dużej skali, natywnych dla chmury aplikacji, które muszą przechowywać dane bez określonej struktury. Aby zmaksymalizować wydajność i skalę, usługi Azure Blob storage jest prostsze abstrakcji magazynu niż prawdziwy system plików. Tylko za pośrednictwem biblioteki klienta opartego na protokole REST (lub bezpośrednio za pomocą protokołu opartego na protokole REST) można uzyskać dostęp do usługi Azure Blob storage.
@@ -58,42 +58,42 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
     Aby uzyskać informacji na temat opcji konfigurowania serwera plików o wysokiej wydajności i dostępności na platformie Azure, zobacz [klastrów gościa wdrażanie maszyn wirtualnych IaaS w programie Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Aby uzyskać bardziej szczegółowy opis różnic między usługą Azure Files i dysków platformy Azure, zobacz [przy wyborze rozwiązania, kiedy należy używać usługi Azure Blob storage, Azure Files lub Azure Disks](../common/storage-decide-blobs-files-disks.md). Aby dowiedzieć się więcej na temat usługi Azure Disks, zobacz [Omówienie usługi Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
 
 * <a id="get-started"></a>
-**Jak rozpocząć pracę przy użyciu usługi Azure Files?**  
+  **Jak rozpocząć pracę przy użyciu usługi Azure Files?**  
    Wprowadzenie do usługi Azure Files jest proste. Po pierwsze, [Utwórz udział plików](storage-how-to-create-file-share.md)i zainstalować go w preferowanego systemu operacyjnego: 
 
-    * [Zainstaluj w Windows](storage-how-to-use-files-windows.md)
-    * [Instalowanie w systemie Linux](storage-how-to-use-files-linux.md)
-    * [Instalowanie w systemie macOS](storage-how-to-use-files-mac.md)
+  * [Zainstaluj w Windows](storage-how-to-use-files-windows.md)
+  * [Instalowanie w systemie Linux](storage-how-to-use-files-linux.md)
+  * [Instalowanie w systemie macOS](storage-how-to-use-files-mac.md)
 
-   Bardziej szczegółowe wskazówki dotyczące wdrażania udziału plików platformy Azure do zastąpienia udziałów plików w środowisku produkcyjnym w Twojej organizacji, zobacz [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md).
+    Bardziej szczegółowe wskazówki dotyczące wdrażania udziału plików platformy Azure do zastąpienia udziałów plików w środowisku produkcyjnym w Twojej organizacji, zobacz [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md).
 
 * <a id="redundancy-options"></a>
-**Jakie opcje nadmiarowości magazynu są obsługiwane przez usługi Azure Files?**  
+  **Jakie opcje nadmiarowości magazynu są obsługiwane przez usługi Azure Files?**  
     Obecnie usługa Azure Files obsługuje magazyn lokalnie nadmiarowy (LRS), Magazyn strefowo nadmiarowy (ZRS) i Magazyn geograficznie nadmiarowy (GRS). Planujemy do obsługi magazynu geograficznie nadmiarowego (RA-GRS) magazyn do odczytu w przyszłości, ale nie mamy osi czasu, aby udostępnić w tej chwili.
 
 * <a id="tier-options"></a>
-**Jakie warstwy magazynowania są obsługiwane w usłudze Azure Files?**  
+  **Jakie warstwy magazynowania są obsługiwane w usłudze Azure Files?**  
     Obecnie usługa Azure Files obsługuje tylko warstwy magazynu w warstwie standardowa. Nie mamy osi czasu, aby udostępnić usługę premium storage i magazynu chłodnego pomocy technicznej w tej chwili. 
     
     > [!NOTE]
     > Nie można utworzyć udziały plików platformy Azure, z konta magazynu tylko dla obiektów blob lub kont usługi premium storage.
 
 * <a id="give-us-feedback"></a>
-**Czy na pewno chcesz zobaczyć określoną funkcję, dodany do usługi Azure Files. Możesz dodać go?**  
+  **Czy na pewno chcesz zobaczyć określoną funkcję, dodany do usługi Azure Files. Możesz dodać go?**  
     Zespół usługi Azure Files jest zainteresowany wysłuchaniu wszelkie opinie, w których masz o naszej usługi. Należy zagłosować na sugestie funkcji w [UserVoice plików Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Chcemy do przodu przykuwających możesz z wieloma nowymi funkcjami.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
-**Jakie regiony są obsługiwane w przypadku usługi Azure File Sync?**  
+  **Jakie regiony są obsługiwane w przypadku usługi Azure File Sync?**  
     Lista dostępnych regionów można znaleźć na [dostępność w poszczególnych regionach](storage-sync-files-planning.md#region-availability) przewodnik sekcji planowania usługi Azure File Sync. Stale dodamy Obsługa dodatkowych regionów, w tym niepublicznych regionów.
 
 * <a id="cross-domain-sync"></a>
-**W tej samej grupie synchronizacji można mieć serwerów przyłączonych do domeny i nieprzyłączonych do domeny?**  
+  **W tej samej grupie synchronizacji można mieć serwerów przyłączonych do domeny i nieprzyłączonych do domeny?**  
     Tak. Grupa synchronizacji może zawierać punkty końcowe serwera, które mają różne członkostwa w usłudze Active Directory, nawet jeśli nie są przyłączone do domeny. Chociaż ta konfiguracja z technicznego punktu widzenia działa, firma Microsoft nie jest to zalecane jako typowej konfiguracji ponieważ listy kontroli dostępu (ACL), które są zdefiniowane dla plików i folderów na jednym serwerze może nie być w stanie zostaną wymuszone przez inne serwery w grupie synchronizacji. Aby uzyskać najlepsze wyniki zaleca się synchronizacji między serwerami, które znajdują się w tym samym lesie usługi Active Directory, między serwerami, które znajdują się w różnych lasach usługi Active Directory, ale która ustalonymi relacjami zaufania lub między serwerami, które nie znajdują się w domenie. Zaleca się unikać przy użyciu kombinacji tych konfiguracji.
 
 * <a id="afs-change-detection"></a>
-**Utworzono plik bezpośrednio w mojej udziału plików platformy Azure przy użyciu protokołu SMB lub w portalu. Jak długo trwa dla pliku, aby zsynchronizować z serwerów w grupie synchronizacji?**  
+  **Utworzono plik bezpośrednio w mojej udziału plików platformy Azure przy użyciu protokołu SMB lub w portalu. Jak długo trwa dla pliku, aby zsynchronizować z serwerów w grupie synchronizacji?**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 * <a id="afs-conflict-resolution"></a>**Jeśli ten sam plik jest zmieniany na dwa serwery w tym samym czasie, co dzieje?**  
@@ -104,66 +104,66 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
     Na przykład pierwszy konflikt CompanyReport.docx staje się CompanyReport CentralServer.docx przypadku CentralServer, gdzie wystąpiło starsze zapisu. Drugi konflikt będą miały postać CompanyReport-CentralServer-1.docx.
 
 * <a id="afs-storage-redundancy"></a>
-**Magazyn geograficznie nadmiarowy jest obsługiwane dla usługi Azure File Sync?**  
+  **Magazyn geograficznie nadmiarowy jest obsługiwane dla usługi Azure File Sync?**  
     Tak, usługi Azure Files obsługuje zarówno magazyn lokalnie nadmiarowy (LRS) i Magazyn geograficznie nadmiarowy (GRS). Jeśli zainicjujesz magazynu konta przejściu w tryb failover między sparowane regiony z konta skonfigurowane w przypadku usługi GRS, firma Microsoft zaleca nowy region można traktować jako kopia zapasowa tylko danych. Usługa Azure File Sync nie automatycznie rozpocznie się synchronizowanie przy użyciu nowego regionu podstawowego. 
 
 * <a id="sizeondisk-versus-size"></a>
-**Dlaczego nie *rozmiar na dysku* właściwość dopasowania plików *rozmiar* właściwości po zakończeniu korzystania z usługi Azure File Sync?**  
- Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
+  **Dlaczego nie *rozmiar na dysku* właściwość dopasowania plików *rozmiar* właściwości po zakończeniu korzystania z usługi Azure File Sync?**  
+  Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
 
 * <a id="is-my-file-tiered"></a>
-**Jak sprawdzić, czy plik został warstwy?**  
- Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#is-my-file-tiered).
+  **Jak sprawdzić, czy plik został warstwy?**  
+  Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#is-my-file-tiered).
 
 * <a id="afs-recall-file"></a>**Plik, który ma być użyty został warstwowego. Jak można odwołać pliku na dysku, aby używać go lokalnie?**  
- Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-recall-file).
+  Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-recall-file).
 
 * <a id="afs-force-tiering"></a>
-**Jak wymusić, plik lub katalog do umieszczane?**  
- Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-force-tiering).
+  **Jak wymusić, plik lub katalog do umieszczane?**  
+  Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-force-tiering).
 
 * <a id="afs-effective-vfs"></a>
-**Jak jest *wolne miejsce w woluminie* interpretowany, jeśli mam wiele punktów końcowych serwera na woluminie?**  
- Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  **Jak jest *wolne miejsce w woluminie* interpretowany, jeśli mam wiele punktów końcowych serwera na woluminie?**  
+  Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-effective-vfs).
 
 * <a id="afs-files-excluded"></a>
-**Które pliki lub foldery są automatycznie wykluczane przez usługę Azure File Sync?**  
+  **Które pliki lub foldery są automatycznie wykluczane przez usługę Azure File Sync?**  
     Domyślnie usługa Azure File Sync nie obejmuje następujące pliki:
-    * desktop.ini
-    * thumbs.db
-    * ehthumbs.dB
-    * ~$\*.\*
-    * \*.laccdb
-    * \*.tmp
-    * 635D02A9D91C401B97884B82B3BCDAEA.\*
+  * desktop.ini
+  * thumbs.db
+  * ehthumbs.dB
+  * ~$\*.\*
+  * \*.laccdb
+  * \*.tmp
+  * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     Następujące foldery są również wyłączone domyślnie:
 
-    * \System volume Information
-    * \$RECYCLE.BIN
-    * \SyncShareState
+  * \System volume Information
+  * \$RECYCLE.BIN
+  * \SyncShareState
 
 * <a id="afs-os-support"></a>
-**Z systemu Windows Server 2008 R2, Linux lub urządzenie magazynu dołączone do sieci (NAS) można używać usługi Azure File Sync?**  
+  **Z systemu Windows Server 2008 R2, Linux lub urządzenie magazynu dołączone do sieci (NAS) można używać usługi Azure File Sync?**  
     Obecnie usługa Azure File Sync obsługuje tylko w systemie Windows Server 2016 i Windows Server 2012 R2. W tej chwili nie mamy inne plany, które firma Microsoft może udostępniać, ale jest otwarty w celu obsługi dodatkowych platform, na podstawie oczekiwań klienta. Daj nam znać o [UserVoice plików Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files) platformach mamy do obsługi.
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
-**Dlaczego pliki warstwowe są dostępne poza przestrzeni nazw punktu końcowego serwera**  
+  **Dlaczego pliki warstwowe są dostępne poza przestrzeni nazw punktu końcowego serwera**  
     Przed wersją agenta usługi Azure File Sync 3 usługi Azure File Sync zablokowane przeniesienie plików warstwowych, poza punkt końcowy serwera, ale w tym samym woluminie jako punkt końcowy serwera. Operacje kopiowania, przenosi plików warstwowy i przesuwa z warstwowego na inne woluminy nie miała wpływu. Przyczyna to zachowanie jest domyślne założenie, że Eksplorator plików i innych interfejsów API Windows mają (prawie) natychmiastowe czy operacji przenoszenia na tym samym woluminie, Zmień nazwę operacji. Oznacza to, przenosi spowoduje Eksploratorze plików lub innych metod przenoszenia (na przykład wiersza polecenia lub programu PowerShell) są wyświetlane odpowiadać, podczas gdy usługi Azure File Sync odwołuje dane z chmury. Począwszy od [wersja agenta usługi Azure File Sync 3.0.12.0](storage-files-release-notes.md#supported-versions), usługi Azure File Sync pozwala przenieść plik warstwowy poza punktu końcowego serwera. Firma Microsoft należy unikać negatywnego wpływu, wcześniej wspomniano, dzięki czemu plikami warstwowym istnieje jako plik warstwowy poza punkt końcowy serwera, a następnie odwołująca plik w tle. Oznacza to, że przenosi na tym samym woluminie są natychmiastowe i robimy całą pracę, przywołanie pliku na dysku, po ukończeniu przenoszenia. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-**Mam problem z usługi Azure File Sync na serwerze (synchronizacja chmury warstw itp). Należy I usunięcie i ponowne utworzenie Mój punkt końcowy serwera?**  
+  **Mam problem z usługi Azure File Sync na serwerze (synchronizacja chmury warstw itp). Należy I usunięcie i ponowne utworzenie Mój punkt końcowy serwera?**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
-**Czy mogę przenieść usługę synchronizacji magazynu i/lub konta magazynu do innej grupy zasobów lub subskrypcji?**  
+  **Czy mogę przenieść usługę synchronizacji magazynu i/lub konta magazynu do innej grupy zasobów lub subskrypcji?**  
    Tak, usługa synchronizacji magazynu i/lub konta magazynu można przenieść do innej grupy zasobów lub subskrypcji w ramach istniejącej dzierżawy usługi Azure AD. Jeśli konto magazynu zostanie przeniesiony, należy udzielić dostępu usługi hybrydowe File Sync do konta magazynu (zobacz [upewnij się, usługa Azure File Sync ma dostęp do konta magazynu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Usługa Azure File Sync nie obsługuje przenoszenia subskrypcji Azure innej dzierżawy usługi AD.
     
 * <a id="afs-ntfs-acls"></a>
-**Usługi Azure File Sync zachować poziomie pliku lub katalogu listy ACL systemu plików NTFS oraz danych przechowywanych w usłudze Azure Files?**
+  **Usługi Azure File Sync zachować poziomie pliku lub katalogu listy ACL systemu plików NTFS oraz danych przechowywanych w usłudze Azure Files?**
 
     Listy ACL systemu plików NTFS są przenoszone z pliku lokalnego serwerów są zachowywane przez usługę Azure File Sync jako metadane. Usługa pliki systemu Azure nie obsługuje uwierzytelniania przy użyciu poświadczeń usługi Azure AD do uzyskiwania dostępu do udziałów plików zarządzany przez usługę Azure File Sync.
     

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016771"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092195"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brama zarządzania danymi — wysokiej dostępności i skalowalności (wersja zapoznawcza)
 > [!NOTE]
@@ -29,8 +29,8 @@ Ten artykuł pomoże Ci skonfigurować rozwiązania wysokiej dostępności i ska
 
 > [!NOTE]
 > W tym artykule założono, że znasz już podstawy środowiska Integration Runtime (wcześniej brama zarządzania danymi). Jeśli nie masz, zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md).
-
->**Tę funkcję wersji zapoznawczej oficjalnie jest obsługiwana w 2.12.xxxx.x wersji bramy zarządzania danymi i nowszych**. Upewnij się, że używasz wersji 2.12.xxxx.x lub nowszej. Pobierz najnowszą wersję bramy zarządzania danymi [tutaj](https://www.microsoft.com/download/details.aspx?id=39717).
+> 
+> **Tę funkcję wersji zapoznawczej oficjalnie jest obsługiwana w 2.12.xxxx.x wersji bramy zarządzania danymi i nowszych**. Upewnij się, że używasz wersji 2.12.xxxx.x lub nowszej. Pobierz najnowszą wersję bramy zarządzania danymi [tutaj](https://www.microsoft.com/download/details.aspx?id=39717).
 
 ## <a name="overview"></a>Przegląd
 Możesz skojarzyć bramy zarządzania danych, które są zainstalowane na wielu komputerach w środowisku lokalnym za pomocą jednej logicznej bramy w portalu. Te maszyny są nazywane **węzłów**. Możesz mieć maksymalnie **czterech węzłów** skojarzone z logicznej bramy. Zalety o wielu węzłach (maszynach lokalnych z zainstalowaną bramę) dla bramy sieci logiczne to:  
@@ -163,8 +163,8 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 
 - Certyfikat musi być publicznie zaufany X509 certyfikatu v3. Firma Microsoft zaleca użycie certyfikatów wystawionych przez publiczny (innej firmy) urząd certyfikacji (CA).
 - Ten certyfikat, a także komputer klienta, na którym jest uruchomiony aplikacji Menedżer poświadczeń, muszą ufać każdej węzeł środowiska integration runtime. 
-> [!NOTE]
-> Aplikacji Menedżer poświadczeń jest używany podczas tworzenia bezpiecznego dostępu do poświadczeń za pomocą Kreatora kopiowania / witryny Azure Portal. I może to być aktywowany z dowolnego komputera w ramach tej samej sieci lokalnej / prywatnego magazynu danych.
+  > [!NOTE]
+  > Aplikacji Menedżer poświadczeń jest używany podczas tworzenia bezpiecznego dostępu do poświadczeń za pomocą Kreatora kopiowania / witryny Azure Portal. I może to być aktywowany z dowolnego komputera w ramach tej samej sieci lokalnej / prywatnego magazynu danych.
 - Certyfikaty symbole wieloznaczne są obsługiwane. Jeśli nazwa FQDN jest **node1.domain.contoso.com**, możesz użyć ***. domain.contoso.com** jako nazwę podmiotu certyfikatu.
 - Certyfikaty SAN nie są zalecane, ponieważ tylko ostatni element nazwy alternatywnej podmiotu, który będzie używany, a wszystkie pozostałe zostaną zignorowane ze względu na bieżące ograniczenia. Na przykład mieć certyfikat sieci SAN, w których SAN są **node1.domain.contoso.com** i **node2.domain.contoso.com**, możesz użyć wyłącznie tego certyfikatu na komputerze, którego nazwa FQDN jest **node2.domain.contoso.com**.
 - Obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.

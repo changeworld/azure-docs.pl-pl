@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9bbf8e4ebf59e8084d0a831c55685238c053e13
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: e20a298c34a7b2723963396f8ccaafaa9472e19a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882709"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją AirWatch
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji AirWatch z usługą Azure AD, musisz do
 
 **Aby dodać aplikację AirWatch z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -183,7 +183,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji AirWatch, 
 
     b. Wybierz pozycję **Use SAML For Authentication** (Użyj protokołu SAML na potrzeby uwierzytelniania).
 
-    d. Aby przekazać pobrany certyfikat, kliknij pozycję **Upload** (Przekaż).
+    c. Aby przekazać pobrany certyfikat, kliknij pozycję **Upload** (Przekaż).
 
 7. W sekcji **Request** (Żądanie) wykonaj następujące czynności:
 
@@ -193,7 +193,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji AirWatch, 
 
     b. W witrynie Azure Portal na stronie **Konfigurowanie logowania jednokrotnego w aplikacji Airwatch** skopiuj wartość **Adres URL logowania**, a następnie wklej ją w polu tekstowym **Identity Provider Single Sign On URL** (Adres URL logowania jednokrotnego dostawcy tożsamości).
 
-    d. W polu **NameID Format** (Format identyfikatora nazwy) wybierz opcję **Email Address** (Adres e-mail).
+    c. W polu **NameID Format** (Format identyfikatora nazwy) wybierz opcję **Email Address** (Adres e-mail).
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -209,7 +209,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji AirWatch, 
 
     b. W polu tekstowym **Username** (Nazwa użytkownika) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    d. W polu tekstowym **Display Name** (Nazwa wyświetlana) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. W polu tekstowym **Display Name** (Nazwa wyświetlana) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
     d. W polu tekstowym **First Name** (Imię) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
@@ -237,7 +237,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -299,7 +299,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji AirWat
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka AirWatch w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji AirWatch, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

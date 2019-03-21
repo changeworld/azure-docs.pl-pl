@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 0a9197c8c46cc480f5f096f1d2ef98c0d5823f35
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 584b9d67808e75222d832f045e5d3f93fbb326ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455789"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105094"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Tworzenie połączeń hybrydowych i zarządzanie nimi
 
 > [!IMPORTANT]
 > Połączenia hybrydowe BizTalk zostały wycofane i zastąpione połączeniami hybrydowymi usługi App Service. Aby uzyskać więcej informacji, m.in. o tym, jak zarządzać istniejącymi połączeniami hybrydowymi BizTalk, zobacz artykuł [Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) (Połączenia hybrydowe usługi Azure App Service).
-
->[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
+> 
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 ## <a name="overview-of-the-steps"></a>Omówienie kroków
 1. Tworzenie połączenia hybrydowego, wprowadzając **nazwy hosta** lub **FQDN** z lokalnymi zasobami w sieci prywatnej.

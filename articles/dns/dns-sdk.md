@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: a814c543b9f4bfe6717e639342d82ed13dac35b0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a06d629087e853c2578e6d35a2ea90c5a8eff840
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954610"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860605"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Tworzenie strefy DNS i zestawów rekordów przy użyciu zestawu .NET SDK
 
@@ -45,7 +45,7 @@ Aby użyć zestawu .NET SDK usługi Azure DNS, musisz zainstalować **biblioteki
 2. Przejdź do **narzędzia** **>** **Menedżera pakietów NuGet** **>** **Zarządzaj pakietami NuGet dla Rozwiązanie...** .
 3. Kliknij przycisk **Przeglądaj**, Włącz **Uwzględnij wersję wstępną** zaznacz pole wyboru i wpisz **Microsoft.Azure.Management.Dns** w polu wyszukiwania.
 4. Wybierz pakiet, a następnie kliknij przycisk **zainstalować** Aby dodać go do projektu programu Visual Studio.
-5. Powtórz ten proces powyżej, aby również Zainstaluj następujące pakiety: **Microsoft.Rest.ClientRuntime.Azure.Authentication** i **Microsoft.Azure.Management.ResourceManager**.
+5. Powtórz proces powyżej, aby również Zainstaluj następujące pakiety: **Microsoft.Rest.ClientRuntime.Azure.Authentication** i **Microsoft.Azure.Management.ResourceManager**.
 
 ## <a name="add-namespace-declarations"></a>Dodawanie deklaracji przestrzeni nazw
 
@@ -83,7 +83,7 @@ Usługa Azure DNS obsługuje optymistycznej współbieżności, o nazwie [elemen
 // Create zone parameters
 var dnsZoneParams = new Zone("global"); // All DNS zones must have location = "global"
 
-// Create a Azure Resource Manager 'tag'.  This is optional.  You can add multiple tags
+// Create an Azure Resource Manager 'tag'.  This is optional.  You can add multiple tags
 dnsZoneParams.Tags = new Dictionary<string, string>();
 dnsZoneParams.Tags.Add("dept", "finance");
 

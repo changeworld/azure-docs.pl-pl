@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 7/25/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 5559e2fc9b9cce95bd7d5d02a64d134e5eaa03be
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 2758817d58fdd2e80b302b5f833308dbde1a6b63
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100642"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779168"
 ---
 # <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Tworzenie strefy prywatnej usługi Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -47,7 +47,7 @@ az group create --name MyAzureResourceGroup --location "East US"
 
 ## <a name="create-a-dns-private-zone"></a>Tworzenie strefy prywatnej DNS
 
-Strefa DNS jest tworzona przy użyciu polecenia `az network dns zone create` i wartości *Private* parametru **ZoneType**. Poniższy przykład tworzy strefę DNS o nazwie **contoso.local** w grupie zasobów o nazwie **MyAzureResourceGroup** i udostępnia strefę DNS w sieci wirtualnej o nazwie **MyAzureVnet** .
+Strefa DNS jest tworzona przy użyciu polecenia `az network dns zone create` i wartości *Private* parametru **ZoneType**. Poniższy przykład tworzy strefę DNS o nazwie **private.contoso.com** w grupie zasobów o nazwie **MyAzureResourceGroup** i udostępnia strefę DNS w sieci wirtualnej o nazwie  **MyAzureVnet**.
 
 W przypadku pominięcia parametru **ZoneType** strefa zostanie utworzona jako publiczna, dlatego jest on wymagany do utworzenia strefy prywatnej.
 
@@ -61,7 +61,7 @@ az network vnet create \
   --subnet-prefixes 10.2.0.0/24
 
 az network dns zone create -g MyAzureResourceGroup \
-   -n contoso.local \
+   -n private.contoso.com \
   --zone-type Private \
   --registration-vnets myAzureVNet
 ```
@@ -118,12 +118,12 @@ Ukończenie tej operacji potrwa kilka minut.
 
 Aby utworzyć rekord DNS, użyj polecenia `az network dns record-set [record type] add-record`. Aby uzyskać pomoc dotyczącą dodawania na przykład rekordów A, zobacz `azure network dns record-set A add-record --help`.
 
- W poniższym przykładzie jest tworzony rekord o nazwie względnej **db** w strefie DNS **contoso.local** w grupie zasobów **MyAzureResourceGroup**. W pełni kwalifikowana nazwa zestawu rekordów to **db.contoso.local**. Typ rekordu to „A” z adresem IP „10.2.0.4”.
+ Poniższy przykład tworzy rekord o nazwie względnej **db** w strefie DNS **private.contoso.com**, w grupie zasobów **MyAzureResourceGroup**. W pełni kwalifikowana nazwa zestawu rekordów to **db.private.contoso.com**. Typ rekordu to „A” z adresem IP „10.2.0.4”.
 
 ```azurecli
 az network dns record-set a add-record \
   -g MyAzureResourceGroup \
-  -z contoso.local \
+  -z private.contoso.com \
   -n db \
   -a 10.2.0.4
 ```
@@ -135,13 +135,13 @@ Aby wyświetlić listę rekordów DNS w strefie, uruchom polecenie:
 ```azurecli
 az network dns record-set list \
   -g MyAzureResourceGroup \
-  -z contoso.local
+  -z private.contoso.com
 ```
 Pamiętaj, że automatycznie tworzone rekordy A dla dwóch testowych maszyn wirtualnych nie będą widoczne.
 
 ## <a name="test-the-private-zone"></a>Testowanie strefy prywatnej
 
-Teraz możesz przetestować rozpoznawanie nazw dla strefy prywatnej **contoso.local**.
+Teraz możesz sprawdzić rozpoznawanie nazw dla swojej **private.contoso.com** stref prywatnych.
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurowanie maszyn wirtualnych w celu zezwolenia na ruch przychodzący protokołu ICMP
 
@@ -160,13 +160,13 @@ Powtórz dla maszyny wirtualnej myVM02.
 
 1. W wierszu polecenia programu Windows PowerShell maszyny wirtualnej myVM02 wyślij polecenie ping do maszyny wirtualnej myVM01 przy użyciu automatycznie zarejestrowanej nazwy hosta:
    ```
-   ping myVM01.contoso.local
+   ping myVM01.private.contoso.com
    ```
    Powinny pojawić się dane wyjściowe podobne do następujących:
    ```
-   PS C:\> ping myvm01.contoso.local
+   PS C:\> ping myvm01.private.contoso.com
 
-   Pinging myvm01.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging myvm01.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time=1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
@@ -180,13 +180,13 @@ Powtórz dla maszyny wirtualnej myVM02.
    ```
 2. Teraz wyślij polecenie ping do utworzonej wcześniej nazwy **db**:
    ```
-   ping db.contoso.local
+   ping db.private.contoso.com
    ```
    Powinny pojawić się dane wyjściowe podobne do następujących:
    ```
-   PS C:\> ping db.contoso.local
+   PS C:\> ping db.private.contoso.com
 
-   Pinging db.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
@@ -207,7 +207,7 @@ Jeśli zasoby utworzone w tym samouczku nie są już potrzebne, możesz je usun�
 az group delete --name MyAzureResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wdrożono strefę prywatną DNS, utworzono rekord DNS oraz przetestowano strefę.
 Następnie możesz dowiedzieć się więcej na temat stref prywatnych DNS.

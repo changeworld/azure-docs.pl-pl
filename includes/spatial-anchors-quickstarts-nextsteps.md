@@ -4,13 +4,13 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: c877cff20a2329ae07a15e1b198c4d407721c4ed
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: 3e0f2593f6a5cf0ddfe74b51523476f7db8ae4de
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752771"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305263"
 ---
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start utworzono konto usługi Spatial Anchors. Następnie skonfigurowano i wdrożono aplikację w celu zapisania i przywołania usługi Spatial Anchors. Aby dowiedzieć się, jak udoskonalić aplikację, aby mogła udostępniać usługę Spatial Anchors innych urządzeniom, przejdź do następnego samouczka.
+W tym przewodniku Szybki Start zostało utworzone konto przestrzenne zakotwiczenia. Następnie konfigurowane i wdrażane aplikację, aby zapisać i odwołania przestrzennego zakotwiczenia. Aby dowiedzieć się więcej na temat sposobu udoskonalać aplikację go udostępnić kotwic przestrzennych z innymi urządzeniami, przejdź do następnego samouczka.

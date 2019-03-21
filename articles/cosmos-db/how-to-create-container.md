@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 445d9f220a215eb17436d52f637b57bd3492aaae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 8ce890500c31c1966254e5bca9d23c8fcdd7bb67
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864778"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258296"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Tworzenie kontenera usługi Azure Cosmos
 
@@ -23,7 +23,7 @@ W tym artykule omówiono różne sposoby tworzenia kontenera (kolekcji, tabeli l
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos DB](create-sql-api-dotnet.md#create-a-database-account) lub wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos DB](create-sql-api-dotnet.md#create-account) lub wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa kolekcja**. Następnie podaj następujące szczegóły:
 
@@ -198,7 +198,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-W przypadku protokołu przewodowego usługi MongoDB nie następuje żądanie jednostek. Aby utworzyć nową kolekcję z odpowiednią przepływnością, skorzystaj z witryny Azure Portal lub interfejsu API SQL.
+> W przypadku protokołu przewodowego usługi MongoDB nie następuje żądanie jednostek. Aby utworzyć nową kolekcję z odpowiednią przepływnością, skorzystaj z witryny Azure Portal lub interfejsu API SQL.
 
 ### <a id="dotnet-cassandra"></a>Interfejs API rozwiązania Cassandra
 
@@ -210,6 +210,6 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)

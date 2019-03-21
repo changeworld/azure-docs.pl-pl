@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 150f2b9155d5e920a7394e2fa55ce28701497868
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 44af0ccab45f1335d9dfec06287303a34391eded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763014"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113201"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -45,10 +45,10 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu d
 
 1. Dodaj **rzeczywistego urządzenia** Device Explorer, zaznacz **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
 
-    * Wprowadź identyfikator urządzenia **<span style="color:Red">(powinno wskazywać na małe litery)</span>** lub sugerowane identyfikator urządzenia.
-    * Wprowadź nazwę urządzenia, lub użyć sugerowanej nazwy
+   * Wprowadź identyfikator urządzenia **<span style="color:Red">(powinno wskazywać na małe litery)</span>** lub sugerowane identyfikator urządzenia.
+   * Wprowadź nazwę urządzenia, lub użyć sugerowanej nazwy
 
-    ![Dodaj urządzenie](media/howto-connect-devkit/add-device.png)
+     ![Dodaj urządzenie](media/howto-connect-devkit/add-device.png)
 
 1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodane urządzenie, wybierając **Connect** na stronie urządzenia.
 

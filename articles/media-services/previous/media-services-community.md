@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 641218e6a9a366d8c3b0d269223a98c08b860bdb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: aeaf8fb5112fe9f6d8f2ca77ed9c1fd244fd9603
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001157"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877075"
 ---
 # <a name="azure-media-services-community"></a>Społeczność usługi Azure Media Services  
 
@@ -48,10 +48,10 @@ Obecnie MSDN to forum społeczności podstawowego zespołu usługi Media Service
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 Zespół monitoruje również pytania w witrynie Stack Overflow oznaczone "azure-media-services".
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
+[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>Skontaktuj się z zespołem
-Usługa Azure Media Services jest adres e-mail pomocy technicznej podstawowy: **amshelp@microsoft.com**.
+Usługa Azure Media Services jest adres e-mail pomocy technicznej podstawowy: **amshelp\@microsoft.com**.
 
 W poniższej tabeli wymieniono e-mail zespołów ds. funkcji podrzędnej:
 

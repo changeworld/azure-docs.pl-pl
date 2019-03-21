@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f41027b5455aa3b1835a0d4fd0c1be11cddccd0d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 75aa960ff060d74d0a579b475e4334402992b3c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871999"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903368"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Wprowadzenie do Menedżer zasobów klastra usługi Service Fabric
 Tradycyjnie Zarządzanie systemów informatycznych lub usługi online polegało na dedykowanym określonych fizycznych lub maszyn wirtualnych do tych określonych usług lub systemów. Usługi zostały zaprojektowana jako warstwy. Może to być warstwy "Internet" i "dane" lub "Magazyn" warstwy. Aplikacje będą mieć warstwa obsługi komunikatów, gdzie żądania przepływ wewnątrz i na zewnątrz, a także zestaw maszyn dedykowanego dla usługi pamięć podręczna. Każdą warstwę lub typu obciążenia ma określonych maszyn do niego w wersji dedykowanej: kilka maszyn w wersji dedykowanej, serwery sieci web w kilka stało się bazy danych. Określonego typu obciążenie spowodowane maszyn, które było do uruchomić zbyt gorąca, a następnie dodać więcej maszyn w tej samej konfiguracji dla tej warstwy. Jednak nie wszystkie obciążenia może być skalowana w poziomie tak łatwe — szczególnie z warstwą danych zazwyczaj spowodowałoby zastąpienie maszyn z większych maszyn. Łatwe. Maszyna nie powiodło się, część cała aplikacja był uruchamiany niższe osiągnięto maksymalną dopóki komputer może zostać przywrócona. Nadal dość proste (o ile nie zawsze przyjemne).
 
 Teraz jednak świata architektury i oprogramowaniu został zmieniony. Jest to bardziej powszechne, czy aplikacje zostały przyjęte projektowania skalowalnego w poziomie. Tworzenie aplikacji za pomocą kontenerów lub mikrousług (lub obie) jest powszechne. Teraz gdy nadal masz tylko kilka maszyny, nie działają pojedynczego wystąpienia obciążenia. One może jeszcze działać wiele różnych obciążeń w tym samym czasie. Masz teraz dziesiątki różnego rodzaju usług (Brak wykorzystywanie pełnego maszyny, przez które zasoby), być może setki różnych wystąpień tych usług. Każde wystąpienie nazwane ma jedną lub więcej wystąpień lub replik dla wysokiej dostępności (HA). W zależności od wielkości tych obciążeń i ich obciążenia są może okazać się samodzielnie z setek lub tysięcy maszyn. 
 
-Nagle zarządzania środowiskiem nie jest tak proste, jak zarządzanie komputerami kilka przeznaczonych dla pojedynczych typów obciążeń. Serwery wirtualne oraz nie będzie już nazwy (nastąpiło przełączenie mindsets z [zwierząt domowych, aby bydła](http://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20) po wszystkich). Konfiguracja jest mniej o maszyn i więcej informacji na temat uwierzytelnienia usługi. Sprzęt, który jest przeznaczony do pojedynczego wystąpienia, obciążenia jest głównie Historia. Uwierzytelnienia usługi stały się małych systemów rozproszonych, obejmujących wiele mniejsze kawałki standardowego sprzętu.
+Nagle zarządzania środowiskiem nie jest tak proste, jak zarządzanie komputerami kilka przeznaczonych dla pojedynczych typów obciążeń. Serwery wirtualne oraz nie będzie już nazwy (nastąpiło przełączenie mindsets z [zwierząt domowych, aby bydła](https://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20) po wszystkich). Konfiguracja jest mniej o maszyn i więcej informacji na temat uwierzytelnienia usługi. Sprzęt, który jest przeznaczony do pojedynczego wystąpienia, obciążenia jest głównie Historia. Uwierzytelnienia usługi stały się małych systemów rozproszonych, obejmujących wiele mniejsze kawałki standardowego sprzętu.
 
 Ponieważ aplikacja nie jest już szereg monolitycznych projektów rozmieszczone w kilku warstwach, masz teraz liczbę kombinacji więcej radzenia sobie z. Kto decyduje, co typów obciążeń, można uruchomić na sprzęcie, który, lub ile? Obciążeń, które działają na tym samym sprzęcie, a które powodują konflikt? Maszyna przechodzi, w jaki sposób w dół wiedzieć, co zostało uruchomione są na nim na danym komputerze? Kto jest odpowiedzialny za zagwarantowanie, że obciążenie ponownym uruchomieniu? Poczekać maszyny (wirtualny?), aby wrócić do lub obciążeń automatyczne przełączenie do innych maszyn i Zachowaj uruchomiony? Jest interwencji człowieka, wymagane? Jak wygląda uaktualnienia, w tym środowisku?
 

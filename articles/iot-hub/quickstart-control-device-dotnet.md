@@ -1,21 +1,21 @@
 ---
 title: Kontrolowanie urządzenia z poziomu usługi Azure IoT Hub — Szybki start (.NET) | Microsoft Docs
 description: W tym przewodniku Szybki start uruchomisz dwie przykładowe aplikacje C#. Jedna z aplikacji to aplikacja zaplecza, która może zdalnie kontrolować urządzenia podłączone do centrum. Druga z aplikacji symuluje urządzenie podłączone do centrum, które można kontrolować zdalnie.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.author: dobett
-ms.openlocfilehash: 5de2fa7e7ae18bf5a6212f6571acdf545116b88b
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: a24f0810a5b785a57a8a255f3f762f2d2a8e6ee4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673489"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170823"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Szybki start: Kontrolowanie urządzenia podłączonego do centrum IoT (.NET)
 
@@ -93,7 +93,7 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 Potrzebne będą także _parametry połączenia usługi_ centrum IoT, aby umożliwić aplikacji zaplecza nawiązywanie połączenia z centrum i pobieranie komunikatów. Następujące polecenie pobiera parametry połączenia usługi dla centrum IoT:
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 Zanotuj parametry połączenia usługi, które wyglądają następująco:
@@ -162,7 +162,7 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start wywołano metodę bezpośrednią na urządzeniu z aplikacji zaplecza oraz odpowiedziano na wywołanie metody bezpośredniej w aplikacji urządzenia symulowanego.
 

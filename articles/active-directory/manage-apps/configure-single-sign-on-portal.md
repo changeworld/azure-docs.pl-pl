@@ -12,12 +12,12 @@ ms.date: 12/06/2018
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b04831790083f9ba41f20719a7d8ffddc35348b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 037f5b554889d89fc0b50983d3d85d38f4345311
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210411"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571409"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Samouczek: Konfigurowanie logowania jednokrotnego opartego na języku SAML dla aplikacji w ramach usługi Azure Active Directory
 
@@ -72,9 +72,9 @@ Aby skonfigurować domenę i adresy URL, wykonaj następujące czynności:
 
     | Ustawienie konfiguracji | Zainicjowane przez dostawcę usługi | Zainicjowane przez dostawcę tożsamości | Opis |
     |:--|:--|:--|:--|
-    | Adres URL logowania | Wymagany | Nie podawaj | Gdy użytkownik otwiera ten adres URL, dostawca usługi przekierowuje go do usługi Azure AD w celu uwierzytelnienia i zalogowania. Usługa Azure AD używa adresu URL do uruchomienia aplikacji z usługi Office 365 lub panelu dostępu usługi Azure AD. Jeśli adres pozostanie pusty, usługa Azure AD będzie bazowała na dostawcy tożsamości w celu zainicjowania logowania jednokrotnego, gdy użytkownik uruchamia aplikację.|
+    | Adres URL logowania | Wymagane | Nie podawaj | Gdy użytkownik otwiera ten adres URL, dostawca usługi przekierowuje go do usługi Azure AD w celu uwierzytelnienia i zalogowania. Usługa Azure AD używa adresu URL do uruchomienia aplikacji z usługi Office 365 lub panelu dostępu usługi Azure AD. Jeśli adres pozostanie pusty, usługa Azure AD będzie bazowała na dostawcy tożsamości w celu zainicjowania logowania jednokrotnego, gdy użytkownik uruchamia aplikację.|
     | Identyfikator (identyfikator jednostki) | Wymagane w przypadku niektórych aplikacji | Wymagane w przypadku niektórych aplikacji | Jednoznacznie identyfikuje aplikację, dla której logowanie jednokrotne jest konfigurowane. Usługa Azure AD wysyła identyfikator do aplikacji jako parametr odbiorców tokenu SAML. Aplikacja powinna go zweryfikować. Ta wartość jest widoczna również jako identyfikator jednostki w dowolnych metadanych SAML udostępnianych przez aplikację.|
-    | Adres URL odpowiedzi | Optional (Opcjonalność) | Wymagany | Określa miejsce, w którym aplikacja oczekuje otrzymać token języka SAML. Adres URL odpowiedzi jest również nazywany adresem URL usługi Assertion Consumer Service (ACS). |
+    | Adres URL odpowiedzi | Optional (Opcjonalność) | Wymagane | Określa miejsce, w którym aplikacja oczekuje otrzymać token języka SAML. Adres URL odpowiedzi jest również nazywany adresem URL usługi Assertion Consumer Service (ACS). |
     | Stan przekaźnika | Optional (Opcjonalność) | Optional (Opcjonalność) | Określa aplikacji, dokąd przekierować użytkownika po zakończeniu uwierzytelniania. Zwykle ta wartość jest prawidłowym adresem URL dla aplikacji, ale niektóre aplikacje wykorzystują to pole w inny sposób. Aby uzyskać więcej informacji, skontaktuj się z dostawcą aplikacji.
 
 2. Wprowadź informacje. Aby wyświetlić wszystkie ustawienia, kliknij pozycję **Pokaż zaawansowane ustawienia adresu URL**.
@@ -173,7 +173,7 @@ Możesz teraz przetestować swoje ustawienia.
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku skonfigurowano ustawienia logowania jednokrotnego dla aplikacji. Po zakończeniu konfiguracji przypisano użytkownika do aplikacji i skonfigurowano aplikację do używania logowania jednokrotnego opartego na języku SAML. Po wykonaniu tych wszystkich zadań zweryfikowano, że logowanie na podstawie protokołu SAML działa prawidłowo.
 
 Zostały wykonane następujące zadania:
@@ -189,6 +189,6 @@ Zostały wykonane następujące zadania:
 Aby wdrożyć aplikację dla większej liczby użytkowników w organizacji, zalecamy użycie automatycznej aprowizacji użytkowników.
 
 > [!div class="nextstepaction"]
->[Dowiedz się, jak przypisać użytkowników za pomocą automatycznej aprowizacji](configure-automatic-user-provisioning-portal.md)
+> [Dowiedz się, jak przypisać użytkowników za pomocą automatycznej aprowizacji](configure-automatic-user-provisioning-portal.md)
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 01b67cc0c20710fcf7c9a072e0ba3baaf286852a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 60466f0c3c0e674dcbfa287a0368462fd5a1d18f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423647"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120316"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Usługa Service Fabric za pomocą usługi Azure API Management — omówienie
 
@@ -83,9 +83,9 @@ Aby to osiągnąć, operacji usługi API Management zawiera zasadę przychodząc
 
 W tym przykładzie Usługa bezstanowa tworzone jest nowe wystąpienie dla każdego użytkownika aplikacji o nazwie generowanych dynamicznie, korzystając z następującego wzoru:
  
- - `fabric:/app/users/<username>`
+- `fabric:/app/users/<username>`
 
- Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry ponieważ usługi są tworzone w odpowiedzi na użytkownika lub administratora danych wejściowych i dlatego nie może być ustalone w zasady usługi APIM lub reguły routingu. Zamiast tego, nazwę usługi, do którego należy wysłać żądanie jest generowany w definicji zasad zaplecza z `name` wartość podana w ścieżce adresu URL żądania. Na przykład:
+  Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry ponieważ usługi są tworzone w odpowiedzi na użytkownika lub administratora danych wejściowych i dlatego nie może być ustalone w zasady usługi APIM lub reguły routingu. Zamiast tego, nazwę usługi, do którego należy wysłać żądanie jest generowany w definicji zasad zaplecza z `name` wartość podana w ścieżce adresu URL żądania. Na przykład:
 
   - Żądanie `/api/users/foo` jest kierowany do wystąpienia usługi `fabric:/app/users/foo`
   - Żądanie `/api/users/bar` jest kierowany do wystąpienia usługi `fabric:/app/users/bar`
@@ -102,9 +102,9 @@ Aby to osiągnąć, operacji usługi API Management zawiera zasadę przychodząc
 
 W tym przykładzie stanowej usługi tworzone jest nowe wystąpienie dla każdego użytkownika aplikacji o nazwie generowanych dynamicznie, korzystając z następującego wzoru:
  
- - `fabric:/app/users/<username>`
+- `fabric:/app/users/<username>`
 
- Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry ponieważ usługi są tworzone w odpowiedzi na użytkownika lub administratora danych wejściowych i dlatego nie może być ustalone w zasady usługi APIM lub reguły routingu. Zamiast tego, nazwę usługi, do którego należy wysłać żądanie jest generowany w definicji zasad zaplecza z `name` podać wartość ścieżki adresu URL żądania. Na przykład:
+  Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry ponieważ usługi są tworzone w odpowiedzi na użytkownika lub administratora danych wejściowych i dlatego nie może być ustalone w zasady usługi APIM lub reguły routingu. Zamiast tego, nazwę usługi, do którego należy wysłać żądanie jest generowany w definicji zasad zaplecza z `name` podać wartość ścieżki adresu URL żądania. Na przykład:
 
   - Żądanie `/api/users/foo` jest kierowany do wystąpienia usługi `fabric:/app/users/foo`
   - Żądanie `/api/users/bar` jest kierowany do wystąpienia usługi `fabric:/app/users/bar`

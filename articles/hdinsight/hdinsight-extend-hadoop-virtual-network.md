@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 8a67b94c7f2355872b243a05a7908604e88cf778
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ae3b4787928b3a578df30dd7f8a2791ce487305d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433794"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100500"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -115,8 +115,8 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowe HDInsight do i
     * [Tworzenie przy użyciu klasyczny interfejs wiersza polecenia usługi Azure HDInsight](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Utwórz HDInsight przy użyciu szablonu usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-  > [!IMPORTANT]  
-  > Dodawanie HDInsight z siecią wirtualną jest krokiem opcjonalnym. Pamiętaj wybrać sieć wirtualną, podczas konfigurowania klastra.
+   > [!IMPORTANT]  
+   > Dodawanie HDInsight z siecią wirtualną jest krokiem opcjonalnym. Pamiętaj wybrać sieć wirtualną, podczas konfigurowania klastra.
 
 ## <a id="multinet"></a>Łączenie wielu sieci
 
@@ -128,8 +128,8 @@ Platforma Azure udostępnia rozpoznawanie nazw dla usług platformy Azure, któr
 
 * Dowolnego zasobu, który znajduje się w tej samej sieci wirtualnej platformy Azure, używając __wewnętrzne nazwy DNS__ zasobu. Na przykład podczas rozpoznawania nazwy domyślnej, poniżej przedstawiono przykład przypisane do węzłów procesu roboczego HDInsight wewnętrzne nazwy DNS:
 
-    * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
-    * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     Oba te węzły mogą komunikować się bezpośrednio ze sobą, a inne węzły w HDInsight, za pomocą wewnętrzne nazwy DNS.
 
@@ -148,29 +148,29 @@ Aby włączyć rozpoznawanie nazw między zasobami w dołączonym do sieci i sie
 
 4. Konfigurowanie składnika przesyłanie dalej między serwerami DNS. Konfiguracja zależy od rodzaju sieci zdalnej.
 
-    * Jeśli zdalna sieć jest siecią lokalną, skonfiguruj DNS w następujący sposób:
+   * Jeśli zdalna sieć jest siecią lokalną, skonfiguruj DNS w następujący sposób:
         
-        * __Niestandardowe DNS__ (w sieci wirtualnej):
+     * __Niestandardowe DNS__ (w sieci wirtualnej):
 
-            * Przesyłania żądań dla sufiksu DNS w sieci wirtualnej do mechanizmu rozpoznawania cyklicznego platformy Azure (168.63.129.16). Azure obsługuje żądania dotyczące zasobów w sieci wirtualnej
+         * Przesyłania żądań dla sufiksu DNS w sieci wirtualnej do mechanizmu rozpoznawania cyklicznego platformy Azure (168.63.129.16). Azure obsługuje żądania dotyczące zasobów w sieci wirtualnej
 
-            * Przekazuje wszystkie żądania do serwera DNS w środowisku lokalnym. DNS w środowisku lokalnym obsługuje wszystkie inne żądania dotyczące rozpoznawania nazw, nawet żądania zasobów internetowych, np. Microsoft.com.
+         * Przekazuje wszystkie żądania do serwera DNS w środowisku lokalnym. DNS w środowisku lokalnym obsługuje wszystkie inne żądania dotyczące rozpoznawania nazw, nawet żądania zasobów internetowych, np. Microsoft.com.
 
-        * __W środowisku lokalnym DNS__: Przesyłania żądań dla sufiksu DNS sieci wirtualnej do niestandardowego serwera DNS. Niestandardowy serwer DNS przekazuje następnie do mechanizmu rozpoznawania cyklicznego platformy Azure.
+     * __W środowisku lokalnym DNS__: Przesyłania żądań dla sufiksu DNS sieci wirtualnej do niestandardowego serwera DNS. Niestandardowy serwer DNS przekazuje następnie do mechanizmu rozpoznawania cyklicznego platformy Azure.
 
-        Tego żądania trasy konfiguracji dla w pełni kwalifikowane nazwy domeny, które zawierają sufiks DNS w sieci wirtualnej do niestandardowego serwera DNS. Wszystkie żądania (nawet w przypadku publicznych adresów internetowych) są obsługiwane przez serwer DNS w środowisku lokalnym.
+       Tego żądania trasy konfiguracji dla w pełni kwalifikowane nazwy domeny, które zawierają sufiks DNS w sieci wirtualnej do niestandardowego serwera DNS. Wszystkie żądania (nawet w przypadku publicznych adresów internetowych) są obsługiwane przez serwer DNS w środowisku lokalnym.
 
-    * Jeśli sieci zdalnej jest kolejną sieć wirtualną platformy Azure, skonfiguruj DNS w następujący sposób:
+   * Jeśli sieci zdalnej jest kolejną sieć wirtualną platformy Azure, skonfiguruj DNS w następujący sposób:
 
-        * __Niestandardowe DNS__ (w każdej sieci wirtualnej):
+     * __Niestandardowe DNS__ (w każdej sieci wirtualnej):
 
-            * Żądania dla sufiksu DNS w sieci wirtualnej są przekazywane do niestandardowych serwerów DNS. Serwer DNS w każdej sieci wirtualnej jest odpowiedzialny za rozpoznawanie zasobów w ramach jego sieci.
+         * Żądania dla sufiksu DNS w sieci wirtualnej są przekazywane do niestandardowych serwerów DNS. Serwer DNS w każdej sieci wirtualnej jest odpowiedzialny za rozpoznawanie zasobów w ramach jego sieci.
 
-            * Przekazywać wszystkich innych żądaniach do mechanizmu rozpoznawania cyklicznego platformy Azure. Cyklicznego programu rozpoznawania nazw jest odpowiedzialny za rozpoznawania lokalnych i zasobów w Internecie.
+         * Przekazywać wszystkich innych żądaniach do mechanizmu rozpoznawania cyklicznego platformy Azure. Cyklicznego programu rozpoznawania nazw jest odpowiedzialny za rozpoznawania lokalnych i zasobów w Internecie.
 
-        Serwer DNS dla każdej sieci przekazuje żądania do drugiej strony, na podstawie sufiksu DNS. Inne żądania są rozwiązane, używanie mechanizmu rozpoznawania cyklicznego platformy Azure.
+       Serwer DNS dla każdej sieci przekazuje żądania do drugiej strony, na podstawie sufiksu DNS. Inne żądania są rozwiązane, używanie mechanizmu rozpoznawania cyklicznego platformy Azure.
 
-    Na przykład konfiguracjami zobacz [przykładu: Niestandardowe DNS](#example-dns) sekcji.
+     Na przykład konfiguracjami zobacz [przykładu: Niestandardowe DNS](#example-dns) sekcji.
 
 Aby uzyskać więcej informacji, zobacz [rozpoznawania nazw dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
@@ -647,9 +647,9 @@ W tym przykładzie sprawia, że następujące założenia:
     };
     ```
     
-    * Zastąp `10.0.0.0/16` i `10.1.0.0/16` wartości z adresem IP odnoszą się do zakresów sieci wirtualnych. Ten wpis umożliwia zasoby w każdej sieci na wysyłanie żądań do serwerów DNS.
+   * Zastąp `10.0.0.0/16` i `10.1.0.0/16` wartości z adresem IP odnoszą się do zakresów sieci wirtualnych. Ten wpis umożliwia zasoby w każdej sieci na wysyłanie żądań do serwerów DNS.
 
-    Wszystkie żądania, które się nie sufiksy DNS, sieci wirtualnych (na przykład microsoft.com) jest obsługiwane przez mechanizm rozpoznawania cyklicznego platformy Azure.
+     Wszystkie żądania, które się nie sufiksy DNS, sieci wirtualnych (na przykład microsoft.com) jest obsługiwane przez mechanizm rozpoznawania cyklicznego platformy Azure.
 
 4. Do korzystania z konfiguracji, uruchom ponownie powiązania. Na przykład `sudo service bind9 restart` na obu serwerach DNS.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 56d392a7df2a659cf457631ec5693766fd674f91
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727199"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842514"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
@@ -183,7 +183,7 @@ Aby zobaczyć, jeśli jesteś administratorem konta, przejdź do [subskrypcje w 
 
 Jeśli nie jesteś administratorem konta, a następnie ktoś prawdopodobnie udostępniła Ci częściowy dostęp za pomocą [kontroli dostępu opartej na roli Azure Active Directory](../role-based-access-control/role-assignments-portal.md) (RBAC). Do zarządzania subskrypcjami i zmiany rozliczeń info, [znaleźć administrator konta](billing-subscription-transfer.md#whoisaa). Poproś administratora konta, aby wykonać zadania lub [przenieść subskrypcję do Ciebie](billing-subscription-transfer.md).
 
-Jeśli administrator konta nie jest już w organizacji, należy do zarządzania rozliczeniami, [skontaktuj się z nami](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli administrator konta nie jest już w organizacji, należy do zarządzania rozliczeniami, [skontaktuj się z nami](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 
 ### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>Jak utworzyć żądanie umowy dotyczącej poziomu usług środki na korzystanie z zdarzenie w usłudze
@@ -207,4 +207,4 @@ Aby uzyskać więcej informacji, zobacz [umowy dotyczące poziomu usług](https:
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

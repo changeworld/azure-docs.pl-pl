@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43aa43d37099d69441a5dde47327e784d67fa9ac
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5d85c4dbd3cc1c3d827a3f8324e63f75eb942425
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189450"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ThousandEyes
 
@@ -113,7 +113,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/thousandeyes-tutorial/tutorial_thousandeyes_url.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL jako: `https://app.thousandeyes.com/login/sso`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.thousandeyes.com/login/sso`
 
 1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
@@ -214,7 +214,7 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Thousa
 
     a. W **nazwa** polu tekstowym wpisz nazwę użytkownika, takie jak **Britta Simon**.
 
-    b. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon@contoso.com**.
+    b. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon\@contoso.com**.
 
     b. Kliknij przycisk **dodać nowego użytkownika do konta**.
 
@@ -264,7 +264,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie aprowizacji użytkowników](thousandeyes-provisioning-tutorial.md)
 

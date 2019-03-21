@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 15481706d56af6cd9565e8c475b4770e432c1838
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120554"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Omówienie monitorowania kondycji bramy aplikacji
 
@@ -64,7 +64,7 @@ Po określeniu kryteria dopasowania, może być dołączane do sondowania przy u
 > [!NOTE]
 > Port jest tego samego portu jako ustawienia HTTP zaplecza.
 
-Domyślnej funkcji badania sprawdza tylko http://127.0.0.1:\<port\> do określenia stanu kondycji. Jeśli musisz skonfigurować sondę kondycji, aby przejść do niestandardowego adresu URL lub zmodyfikuj inne ustawienia, należy użyć niestandardowe sondy.
+Domyślnej funkcji badania sprawdza tylko http:\//127.0.0.1:\<portu\> do określenia stanu kondycji. Jeśli musisz skonfigurować sondę kondycji, aby przejść do niestandardowego adresu URL lub zmodyfikuj inne ustawienia, należy użyć niestandardowe sondy.
 
 ### <a name="probe-intervals"></a>Interwałów sondy
 

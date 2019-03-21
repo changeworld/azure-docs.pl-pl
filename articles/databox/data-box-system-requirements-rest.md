@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 4ad607ad7ef1ee91ea9c886a76faabb0f304969d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5770cd9a4955013100b7e58698eed77da10c0583
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538072"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012262"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Wymagania dotyczące magazynu Azure Blob pole danych
 
@@ -96,7 +96,7 @@ Uruchom: Zainstaluj php composer.phar.
 
 ### <a name="endpoint-declaration"></a>Deklarację punktu końcowego
 
-Punkt końcowy magazynu Azure Blob pole danych zawiera dwie części: Nazwa regionu i domeny urządzenia Data Box. W magazynie obiektów Blob pole danych zestawu SDK jest domyślny punkt końcowy <serial no. of the device>. microsoftdatabox.com.  Aby uzyskać więcej informacji na temat punkt końcowy usługi blob service, przejdź do [Połącz za pomocą magazynu obiektów Blob pole danych](data-box-deploy-copy-data-via-rest.md).
+Punkt końcowy magazynu Azure Blob pole danych zawiera dwie części: Nazwa regionu i domeny urządzenia Data Box. W magazynie obiektów Blob pole danych zestawu SDK jest domyślny punkt końcowy \<nr seryjny. urządzenia >. microsoftdatabox.com.  Aby uzyskać więcej informacji na temat punkt końcowy usługi blob service, przejdź do [Połącz za pomocą magazynu obiektów Blob pole danych](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Przykłady
 

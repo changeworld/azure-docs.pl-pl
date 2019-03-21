@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 360caaec0033136ffa250d636864fbed8359b8ef
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: cbdbf7dcd6269991d23c61d316dcee68e6678171
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244251"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175670"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ W tym artykule przedstawiono podstawowe pojęcia, które zapewniają sieci do ap
 
 Aby zezwolić na dostęp do aplikacji lub dla składników aplikacji do komunikowania się ze sobą, usługa Kubernetes zapewnia warstwę abstrakcji sieci wirtualnej. Węzły rozwiązania Kubernetes są podłączone do sieci wirtualnej i może zapewnić łączność ruchu przychodzącego i wychodzącego do zasobników. *Serwera proxy klastra kubernetes w usłudze* składnika, który jest uruchamiany w każdym węźle, aby zapewnić, te funkcje sieciowego.
 
-W usłudze Kubernetes *usług* pogrupowania zasobników, aby zezwolić na potrzeby bezpośredniego dostępu za pośrednictwem adresu IP lub nazwę DNS i na określonym porcie. Możesz też dystrybuować ruch przy użyciu *moduł równoważenia obciążenia*. Bardziej złożonym routingiem ruchu aplikacji, również można osiągnąć za pomocą *kontrolerów ruch przychodzący*. Zabezpieczenia i filtrowanie ruchu sieciowego do zasobników jest możliwe przy użyciu rozwiązania Kubernetes *zasad sieciowych*.
+W usłudze Kubernetes *usług* pogrupowania zasobników, aby zezwolić na potrzeby bezpośredniego dostępu za pośrednictwem adresu IP lub nazwę DNS i na określonym porcie. Możesz też dystrybuować ruch przy użyciu *moduł równoważenia obciążenia*. Bardziej złożonym routingiem ruchu aplikacji, również można osiągnąć za pomocą *kontrolerów ruch przychodzący*. Zabezpieczenia i filtrowanie ruchu sieciowego do zasobników jest możliwe przy użyciu rozwiązania Kubernetes *zasad sieciowych* (w wersji zapoznawczej w usłudze AKS).
 
 Platforma Azure pomaga uprościć sieci wirtualnych w przypadku klastrów usługi AKS. Podczas tworzenia modułu równoważenia obciążenia rozwiązania Kubernetes bazowego zasobu modułu równoważenia obciążenia platformy Azure zostało utworzone i skonfigurowane. Podczas otwierania portów sieciowych w celu zasobników skonfigurowano odpowiednie zasady grupy zabezpieczeń sieci platformy Azure. Routing aplikacji protokołu HTTP, aby uzyskać Azure można również skonfigurować *zewnętrznego serwera DNS* jako nowy ruch przychodzący trasy są skonfigurowane.
 
@@ -108,7 +108,7 @@ Sieciowa grupa zabezpieczeń służy do przefiltrowania ruchu dla maszyn wirtual
 
 Domyślnie wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu bez ograniczeń. Aby zwiększyć bezpieczeństwo można zdefiniować reguły, które kontrolują przepływu ruchu. Aplikacji zaplecza są dostępne często tylko wymagane frontonu usług lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
 
-Zasady sieci jest funkcją Kubernetes, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Sieciowe grupy zabezpieczeń są więcej węzłów AKS, nie zasobników. Użycie zasad sieciowych jest bardziej odpowiedni i natywnych dla chmury sposób kontrolowania przepływu ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane.
+Zasady sieci jest funkcją Kubernetes, obecnie w wersji zapoznawczej w usłudze AKS, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Sieciowe grupy zabezpieczeń są więcej węzłów AKS, nie zasobników. Użycie zasad sieciowych jest bardziej odpowiedni i natywnych dla chmury sposób kontrolowania przepływu ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane.
 
 Aby uzyskać więcej informacji, zobacz [bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)][use-network-policies].
 

@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: f767dfdf96b89344fea18893f7030ea0fd1882ad
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764274"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900645"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Zarządzanie wpisami tajnymi aplikacji usługi Service Fabric Mesh
 Usługa Service Fabric Mesh obsługuje wpisy tajne jako zasoby platformy Azure. Wpis tajny usługi Service Fabric Mesh może być dowolnym poufnym tekstem, takim jak parametry połączenia magazynu, hasła lub inne wartości, które powinny być przechowywane i przesyłane w bezpieczny sposób. W tym artykule pokazano, jak za pomocą usługi bezpiecznego magazynu usługi Service Fabric można wdrażać wpisy tajne i konserwować je.
@@ -24,20 +24,20 @@ Wpis tajny aplikacji usługi Mesh składa się z następujących elementów:
 * Co najmniej jeden zasób **Wpisy tajne/wartości**, który jest przechowywany w kontenerze zasobów **Wpisy tajne**. Zasoby **Wpisy tajne/wartości** rozróżnia się na podstawie numeru wersji. Nie można zmodyfikować wersji zasobu **Wpisy tajne/wartości**. Można jedynie dołączyć nową wersję.
 
 Aby zarządzać wpisami tajnymi, wykonaj następujące kroki:
-1. Zadeklaruj zasób **Wpisy tajne** usługi Mesh w pliku YAML lub JSON modelu zasobów platformy Azure za pomocą rodzaju inlinedValue i definicji contentType SecretsStoreRef.
-2. Zadeklaruj zasoby **Wpisy tajne/wartości** usługi Mesh w pliku YAML lub JSON modelu zasobów platformy Azure, który będzie przechowywany w zasobie **Wpisy tajne** (z kroku 1).
+1. Zadeklaruj siatki **wpisów tajnych** zasób w pliku YAML modelu zasobów platformy Azure lub danych JSON przy użyciu rodzaj inlinedValue i SecretsStoreRef contentType definicji.
+2. Zadeklaruj siatki **wpisów tajnych/wartości** zasobów w pliku YAML modelu zasobów platformy Azure lub danych JSON, który będzie przechowywany w **wpisów tajnych** zasobów (z kroku 1).
 3. Zmodyfikuj aplikację usługi Mesh tak, aby przywoływała wartości wpisów tajnych usługi Mesh.
 4. Przeprowadź wdrożenie lub uaktualnienie stopniowe aplikacji usługi Mesh, aby skorzystać z wartości wpisów tajnych.
 5. Użyj poleceń „az” interfejsu wiersza polecenia platformy Azure do zarządzania cyklem życia usługi bezpiecznego magazynu.
 
 ## <a name="declare-a-mesh-secrets-resource"></a>Deklarowanie zasobu Wpisy tajne usługi Mesh
-Zasób Wpisy tajne usługi Mesh jest deklarowany w pliku YAML lub JSON modelu zasobów platformy Azure za pomocą rodzaju inlinedValue i definicji contentType SecretsStoreRef. Zasób Wpisy tajne usługi Mesh obsługuje wpisy tajne pochodzące z usługi bezpiecznego magazynu. 
+Zasób siatki wpisów tajnych jest zadeklarowana w pliku JSON Model zasobu platformy Azure lub pliku YAML, przy użyciu rodzaj inlinedValue i SecretsStoreRef contentType definicji. Zasób Wpisy tajne usługi Mesh obsługuje wpisy tajne pochodzące z usługi bezpiecznego magazynu. 
 >
 Poniżej przedstawiono przykładową deklarację zasobów Wpisy tajne usługi Mesh w pliku JSON:
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -103,7 +103,7 @@ Poniżej przedstawiono przykładową deklarację zasobów Wpisy tajne/wartości 
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -215,9 +215,9 @@ az mesh secret show --Resource-group <myResourceGroup> --secret-name <mySecret>
 
 - Nie można usunąć wpisu tajnego, gdy jest przywoływany przez aplikację usługi Mesh.
 - Usunięcie zasobu Wpisy tajne powoduje usunięcie wszystkich wersji zasobu Wpisy tajne.
-```azurecli-interactive
-az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
-```
+  ```azurecli-interactive
+  az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
+  ```
 
 ### <a name="list-secrets-in-subscription"></a>Wyświetlanie wpisów tajnych w subskrypcji
 ```azurecli-interactive

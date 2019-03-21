@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1262ed841fe8f6f9c2d5339d79abf06c1ab15a25
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 724a91b6ba0be030a2281bce366e4378892df59b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392877"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011586"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Architektura sieci platformy SAP HANA (duże wystąpienia)
 
@@ -27,7 +27,7 @@ Architektura usług sieci platformy Azure jest kluczowym elementem pomyślne wdr
 
 - Wdrażane oprogramowanie SAP systemów lokalnych. Ze względu na ich rozmiary te systemy aktualnie nie mogą być hostowane na platformie Azure. Przykładem jest system SAP ERP, który działa w programie SQL Server (co baza danych) i wymaga większej ilości zasobów procesora CPU lub pamięci niż są dostępne maszyny wirtualne w środowisku produkcyjnym.
 - Wdrażane na podstawie platformy SAP HANA SAP systemów lokalnych.
-- Wdrożonych systemów SAP na maszynach wirtualnych. Te systemy mogą być tworzenia/testowania piaskownicy, lub produkcji wystąpienia dla każdej aplikacji opartych na oprogramowanie SAP NetWeaver, które pomyślnie wdrożyć na platformie Azure (na maszynach wirtualnych), zgodnie z potrzebami zasobów zużycia i pamięci. Te systemy również może bazować na baz danych, takich jak SQL Server. Aby uzyskać więcej informacji, zobacz [SAP pomocy technicznej Uwaga #1928533 — aplikacje środowiska SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure](https://launchpad.support.sap.com/#/notes/1928533/E). A te systemy mogą być oparte na baz danych, takich jak SAP HANA. Aby uzyskać więcej informacji, zobacz [platform IaaS z certyfikatem SAP HANA](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+- Wdrożonych systemów SAP na maszynach wirtualnych. Te systemy mogą być tworzenia/testowania piaskownicy, lub produkcji wystąpienia dla każdej aplikacji opartych na oprogramowanie SAP NetWeaver, które pomyślnie wdrożyć na platformie Azure (na maszynach wirtualnych), zgodnie z potrzebami zasobów zużycia i pamięci. Te systemy również może bazować na baz danych, takich jak SQL Server. Aby uzyskać więcej informacji, zobacz [SAP pomocy technicznej Uwaga #1928533 — aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure](https://launchpad.support.sap.com/#/notes/1928533/E). A te systemy mogą być oparte na baz danych, takich jak SAP HANA. Aby uzyskać więcej informacji, zobacz [platform IaaS z certyfikatem SAP HANA](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
 - Wdrożone serwery aplikacji SAP na platformie Azure (na maszynach wirtualnych), korzystających z platformy SAP HANA na platformie Azure (duże wystąpienia) w sygnatury dużego wystąpienia platformy Azure.
 
 Typowe jest hybrydowego środowiska SAP za pomocą co najmniej czterech różnych scenariuszy wdrażania. Istnieje również wiele przypadków klienta pełną SAP zapewniały realizację niezbędnych zadań, które działają na platformie Azure. W miarę bardziej wydajne maszyny wirtualne zwiększa liczby klientów, które przenoszą swoje rozwiązania SAP na platformie Azure.
@@ -79,7 +79,7 @@ Dostępne są następujące różnice, by wdrożenia SAP na platformie Azure:
 - Architektura aplikacji SAP jest bardziej wrażliwy na opóźnienia sieci niż typowych scenariuszy, w którym dane są wymieniane między lokalną i platformą Azure.
 - Brama sieci wirtualnej ma co najmniej dwóch połączeń usługi ExpressRoute. Zarówno połączenia współużytkują maksymalna przepustowość dla danych przychodzących bramy sieci wirtualnej.
 
-Opóźnienie sieci reprezentatywne między maszynami wirtualnymi i dużych wystąpień HANA jednostki mogą być większe niż typowy opóźnienie Rundy sieci maszyny Wirtualnej do maszyny Wirtualnej. Zależy od regionu platformy Azure, wartości mierzone może przekroczyć opóźnienie obustronne ms 0,7 sklasyfikowane jako poniżej średniej w [1100926 # Uwaga SAP — często zadawane pytania: wydajność sieci](https://launchpad.support.sap.com/#/notes/1100926/E). Zależą od regionu platformy Azure oraz narzędzia do mierzenia obustronne opóźnienie sieciowe między maszyną Wirtualną platformy Azure i jednostka dużych wystąpień HANA, mierzonego opóźnienie można maksymalnie i wokół 2 milisekund. Niemniej jednak klienci wdrażać aplikacje SAP oparte na oprogramowanie SAP HANA produkcyjne pomyślnie na duże wystąpienie SAP HANA. Upewnij się, że należy dokładnie przetestować procesy biznesowe w dużych wystąpień HANA platformy Azure.
+Opóźnienie sieci reprezentatywne między maszynami wirtualnymi i dużych wystąpień HANA jednostki mogą być większe niż typowy opóźnienie Rundy sieci maszyny Wirtualnej do maszyny Wirtualnej. Zależy od regionu platformy Azure, wartości mierzone może przekroczyć opóźnienie obustronne ms 0,7 sklasyfikowane jako poniżej średniej w [1100926 # Uwaga SAP — często zadawane pytania: Wydajność sieci](https://launchpad.support.sap.com/#/notes/1100926/E). Zależą od regionu platformy Azure oraz narzędzia do mierzenia obustronne opóźnienie sieciowe między maszyną Wirtualną platformy Azure i jednostka dużych wystąpień HANA, mierzonego opóźnienie można maksymalnie i wokół 2 milisekund. Niemniej jednak klienci wdrażać aplikacje SAP oparte na oprogramowanie SAP HANA produkcyjne pomyślnie na duże wystąpienie SAP HANA. Upewnij się, że należy dokładnie przetestować procesy biznesowe w dużych wystąpień HANA platformy Azure.
  
 Aby zapewnić deterministyczne opóźnienie między maszynami wirtualnymi i dużych wystąpień HANA, wybór bramy sieci wirtualnej jednostka SKU jest niezbędne. W przeciwieństwie do wzorców ruchu między magazynami lokalnymi i maszynami wirtualnymi wzorzec ruchu między maszynami wirtualnymi i dużych wystąpień HANA można tworzyć małe, ale wysokie wzrosty żądania i dane woluminów, które mają być przekazywane. Aby obsłużyć takie wzrosty dobrze, zdecydowanie zalecamy użycie jednostki SKU bramy UltraPerformance. W klasie typu II jednostek SKU platformy HANA duże wystąpienie użycie jednostki SKU bramy UltraPerformance jako brama sieci wirtualnej jest obowiązkowe.
 
@@ -113,7 +113,7 @@ Aby uzyskać bardziej Skalowalna architektura sieci:
 - Korzystać z wielu sieci wirtualnych w jednym, większy warstwy aplikacji SAP.
 - Wdrożyć oddzielny jednej sieci wirtualnej dla każdego systemu SAP wdrożone, w porównaniu do łączenia tych systemów SAP w oddzielnych podsieciach w ramach tej samej sieci wirtualnej.
 
- Bardziej Skalowalna architektura sieci dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia):
+  Bardziej Skalowalna architektura sieci dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia):
 
 ![Wdrażanie warstwy aplikacji SAP za pośrednictwem wielu sieci wirtualnych](./media/hana-overview-architecture/image4-networking-architecture.png)
 
@@ -132,12 +132,12 @@ Trzy routingu zagadnienia dotyczące sieci są ważne w przypadku oprogramowania
 
 * Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) jednostki ma przypisanego adresu IP z zakresu adresów puli adresów IP serwera, przesłane. Aby uzyskać więcej informacji, zobacz [infrastrukturę SAP HANA (duże wystąpienia) i łączności na platformie Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ten adres IP jest dostępny za pośrednictwem subskrypcji platformy Azure i usługi ExpressRoute, który nawiązuje połączenie sieci wirtualnych do platformy HANA na platformie Azure (duże wystąpienia). Przypisany adres IP z zakresu adresów puli adresów IP serwera jest przypisane bezpośrednio do jednostki sprzętu. Ma ona *nie* przypisane przy użyciu translatora adresów Sieciowych, jak w przypadku pierwszego wdrożenia tego rozwiązania. 
 
-> [!NOTE] 
+> [!NOTE]
 > Aby wyeliminować ograniczeń w routingu przejściowy, jak wyjaśniono w elementy: pierwsze dwie listy, należy użyć dodatkowych składników routingu. Składniki, które mogą służyć do pokonania ograniczenia może być:
-
+> 
 > * Zwrotnego serwera proxy do kierowania danych do i z. Na przykład F5 BIG-IP, serwer NGINX z usługą Traffic Manager wdrożonych na platformie Azure jako rozwiązanie zapory/ruch wirtualnej routingu.
 > * Za pomocą [reguły IPTables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) na maszynie wirtualnej systemu Linux, aby umożliwić routing między lokalizacjami lokalnymi i dużych wystąpień HANA jednostki lub między jednostkami duże wystąpienie oprogramowania HANA w różnych regionach.
-
+> 
 > Należy pamiętać, że wdrożenia i obsługę niestandardowego rozwiązania innych firm urządzeń sieciowych lub IPTables nie jest obsługiwane przez firmę Microsoft. Obsługa musi być podana przez dostawcę składnik używany lub integrator. 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>Łączność z Internetem z dużych wystąpień HANA

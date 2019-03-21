@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 895499865fb1d47669fcca2aeaa571b2fb79237b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b4fd3d7cd1d25415ba5938586aee448bdc512aa7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438724"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100466"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej
 
@@ -52,7 +52,7 @@ Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być
 
        Aby usunąć punkt końcowy usługi, usuń zaznaczenie usługi, aby usunąć punkt końcowy usługi dla. Aby dowiedzieć się więcej na temat punktów końcowych usługi i usługi mogą być włączone dla, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md). Po włączeniu punktu końcowego usługi dla usługi, musisz również włączyć dostęp do sieci dla podsieci dla zasobu utworzonych za pomocą usługi. Na przykład po włączeniu punktu końcowego usługi dla *Microsoft.Storage*, należy również włączyć dostęp sieciowy do wszystkich kont usługi Azure Storage, które chcesz przyznać dostęp do sieci. Aby uzyskać szczegółowe informacje o tym, jak włączyć dostęp sieciowy do podsieci, które włączono punkt końcowy usługi, zobacz dokumentację poszczególnych usług został włączony punkt końcowy usługi dla.
 
-    Aby sprawdzić, czy punkt końcowy usługi jest włączona dla podsieci, Wyświetl [obowiązujące trasy](diagnose-network-routing-problem.md) dla dowolnego interfejsu sieciowego w podsieci. Po skonfigurowaniu punktu końcowego, zobacz *domyślne* trasy z prefiksami adresów usługi, a element nexthoptype o wartości **VirtualNetworkServiceEndpoint**. Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
+     Aby sprawdzić, czy punkt końcowy usługi jest włączona dla podsieci, Wyświetl [obowiązujące trasy](diagnose-network-routing-problem.md) dla dowolnego interfejsu sieciowego w podsieci. Po skonfigurowaniu punktu końcowego, zobacz *domyślne* trasy z prefiksami adresów usługi, a element nexthoptype o wartości **VirtualNetworkServiceEndpoint**. Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
 6. Aby dodać podsieci do sieci wirtualnej, które wybrano, wybierz **OK**.
 
 **Polecenia**

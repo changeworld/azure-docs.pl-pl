@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 6c77bb1f17f93e25605d251c717c2a4d61f940dd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 5fd51e2d847b540d2eb8c17c2bc31f4e162a21ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313970"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904630"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Wprowadzenie do zadań elastycznych baz danych
 
@@ -28,6 +28,8 @@ W tym artykule rozszerza przykładu w [rozpoczęcie korzystania z narzędzi elas
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 Pobierz i uruchom [wprowadzenie do przykładowej narzędzi elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
 
@@ -50,7 +52,7 @@ W tym miejscu będą zwykle utworzymy mapowania fragmentów w postaci docelowymi
 
 ## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Tworzy kolekcję niestandardową, a następnie dodaj wszystkie bazy danych na serwerze do docelowej kolekcji niestandardowej, z wyjątkiem wzorca
 
-   ```Powershell
+   ```PowerShell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -314,7 +316,7 @@ W przypadku anulowania zadania jest wymagany dla zadania nadrzędnego, żądanie
 
 Aby przesłać żądanie anulowania, należy użyć **Stop AzureSqlJobExecution** polecenia cmdlet i ustaw **JobExecutionId** parametru.
 
-   ```Powershell
+   ```PowerShell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```

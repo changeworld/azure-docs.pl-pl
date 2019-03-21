@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 0377f192ea9bc6502065fa037704ec8461ce1447
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7d07b0a098aad472b1b4f0b9810e5b63ac3c48a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311122"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007465"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z problemów z połączeniami bazy danych SQL i błędom przejściowym
 
@@ -356,7 +356,7 @@ Poniżej przedstawiono niektóre łącza do informacji na temat EntLib60:
 
 - Pobierania bezpłatnej książki: [Przewodnik dewelopera Microsoft Enterprise Library, wydanie 2](https://www.microsoft.com/download/details.aspx?id=41145).
 - Najlepsze rozwiązania: [Ogólne wskazówki dotyczące ponawiania prób](../best-practices-retry-general.md) ma doskonałą szczegółowe omówienie logikę ponawiania próby.
-- Pobieranie NuGet: [Biblioteka przedsiębiorstwa — blok aplikacji do obsługi błędów przejściowych 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
+- Pobieranie NuGet: [Biblioteka przedsiębiorstwa — blok aplikacji do obsługi błędów przejściowych 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 

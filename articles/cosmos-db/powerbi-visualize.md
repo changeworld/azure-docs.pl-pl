@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: f6ba66aa37b4a1902f98d2a1fcf5f542fa6476d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043655"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137678"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Wizualizuj dane z usługi Azure Cosmos DB przy użyciu łącznika usługi Power BI
 
@@ -122,7 +122,7 @@ Spowoduje pobranie danych swe dzieła z konta usługi Azure Cosmos DB i wizualiz
 8. Podaj nazwę dla nowej kolumny, np. LatLong.
 9. Następnie określ Formuła niestandardowa dla nowej kolumny.  W tym przykładzie firma Microsoft będzie łączyć wartości długości i szerokości geograficznej, oddzielone przecinkiem, jak pokazano poniżej, korzystając z następującego wzoru: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Kliknij przycisk **OK**.
    
-    Aby uzyskać więcej informacji na Data Analysis Expressions (DAX) w tym funkcje języka DAX, odwiedź [podstawowych języka DAX w programie Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop).
+    Aby uzyskać więcej informacji na Data Analysis Expressions (DAX) w tym funkcje języka DAX, odwiedź [podstawy języka DAX w programie Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
    
     ![Usługa Power BI samouczek dla łącznika usługi Azure Cosmos DB w usłudze Power BI — Dodawanie kolumny niestandardowej](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 

@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9493f7ee3278bb42dc21574cd008fbe2f4376a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185149"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294829"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Uwierzytelnianie jednorazowy kod dostępu konta e-mail (wersja zapoznawcza)
 
@@ -35,11 +36,11 @@ Ta funkcja jest obecnie dostępna w wersji zapoznawczej (zobacz [zgody na korzys
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Środowisko użytkownika dla użytkowników-gości jednorazowy kod dostępu
 Jednorazowy kod dostępu uwierzytelniania użytkownik-Gość można zrealizować zaproszenia, klikając łącze bezpośrednie lub za pomocą wiadomości e-mail z zaproszeniem. W obu przypadkach komunikat w przeglądarce wskazuje, że kod zostanie wysłany na adres e-mail użytkownika gościa. Użytkownik-Gość wybiera **Wyślij kod**:
  
-   ![Panelach dostępu Zarządzanie aplikacją](media/one-time-passcode/otp-send-code.png)
+   ![Zrzut ekranu przedstawiający przycisk Wyślij kod](media/one-time-passcode/otp-send-code.png)
  
 Hasła są wysyłane na adres e-mail użytkownika. Użytkownik pobiera kod dostępu z wiadomości e-mail i wstawia go w oknie przeglądarki:
  
-   ![Panelach dostępu Zarządzanie aplikacją](media/one-time-passcode/otp-enter-code.png)
+   ![Zrzut ekranu przedstawiający stronę kodową Enter](media/one-time-passcode/otp-enter-code.png)
  
 Użytkownik-Gość obecnie jest uwierzytelniona i ich można wyświetlić zasobu udostępnionego lub kontynuować logowanie. 
 
@@ -57,7 +58,7 @@ W momencie zaproszenia jest nie wskazuje, że użytkownik, którego jesteś zapr
 
 Można wyświetlić użytkowników-gości, którzy uwierzytelniają się za pomocą haseł jednorazowych w witrynie Azure portal, przechodząc do **usługi Azure Active Directory** > **relacje w organizacji**  >   **Użytkownicy z innych organizacji**.
 
-![Wyświetl jednorazowy kod dostępu użytkowników w witrynie Azure portal, gdzie źródło jest równe OTP](media/one-time-passcode/otp-users.png)
+![Zrzut ekranu przedstawiający jednorazowy kod dostępu użytkownika z źródła wartość OTP](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
 > Gdy użytkownik umarza jednorazowy kod dostępu, a później uzyskuje MSA, konto usługi Azure AD lub innego federacyjnego konta, będą one nadal zostać uwierzytelniony przy użyciu jednorazowy kod dostępu. Jeśli chcesz zaktualizować swoje metody uwierzytelniania, możesz usunąć swoje konta gościa i Zaproś je ponownie.

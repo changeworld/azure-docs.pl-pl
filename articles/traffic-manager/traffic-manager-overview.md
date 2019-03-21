@@ -2,8 +2,7 @@
 title: Azure Traffic Manager | Microsoft Docs
 description: Ten artykuł zawiera omówienie usługi Azure Traffic Manager. Sprawdź, czy jest ona dobrym rozwiązaniem w przypadku równoważenia obciążenia ruchu użytkownika w aplikacji.
 services: traffic-manager
-documentationcenter: ''
-author: kumudd
+author: KumudD
 manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
@@ -11,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2018
+ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 7fa72df04b0507a915a75688b38e26ed0f21e5a5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: a8504cea3af6eb7633cf6738a73f757767d83138
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486014"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534322"
 ---
 # <a name="what-is-traffic-manager"></a>Co to jest Traffic Manager?
 Usługa Azure Traffic Manager to oparty na systemie DNS moduł równoważenia obciążenia ruchu, który umożliwia optymalną dystrybucję ruchu do usług w wielu regionach platformy Azure na świecie, przy jednoczesnym zapewnieniu wysokiej dostępności i krótkiego czasu odpowiedzi.
@@ -55,7 +54,7 @@ Dzięki użyciu [zagnieżdżonych profilów usługi Traffic Manager](traffic-man
 Aby uzyskać informacje o cenach, zobacz [cennik usługi Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [utworzyć profil usługi Traffic Manager](traffic-manager-create-profile.md).
 - Dowiedz się, [jak działa usługa Traffic Manager](traffic-manager-how-it-works.md).

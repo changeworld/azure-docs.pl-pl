@@ -1,6 +1,6 @@
 ---
-title: Przypisywanie ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przypisywać ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
+title: Przypisywanie ról administratora usługi Azure AD — Privileged Identity Management | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak do przypisywania ról administratora w usłudze Azure Active Directory w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,22 +13,22 @@ ms.subservice: pim
 ms.date: 10/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4acabd4b583766ac730558fd07c424ce97a1299a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e3c8a7fb7a94dbca7b0e63ddaf756a536fbd0600
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192521"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000633"
 ---
-# <a name="assign-azure-ad-directory-roles-in-pim"></a>Przypisywanie ról katalogu usługi Azure AD w usłudze PIM
+# <a name="assign-azure-ad-administrator-roles-in-pim"></a>Przypisywanie ról administratora usługi Azure AD w usłudze PIM
 
-Za pomocą usługi Azure Active Directory (Azure AD), ułatwia administratora globalnego **stałe** przypisań ról w katalogu. Te przypisania roli mogą być tworzone za pomocą [witryny Azure portal](../users-groups-roles/directory-assign-admin-roles.md) lub za pomocą [poleceń programu PowerShell](/powershell/module/azuread#directory_roles).
+Za pomocą usługi Azure Active Directory (Azure AD), ułatwia administratora globalnego **stałe** przypisania roli administratora usługi Azure AD. Te przypisania roli mogą być tworzone za pomocą [witryny Azure portal](../users-groups-roles/directory-assign-admin-roles.md) lub za pomocą [poleceń programu PowerShell](/powershell/module/azuread#directory_roles).
 
-Usługa Azure AD Privileged Identity Management (PIM) umożliwia także administratorami ról uprzywilejowanych zapewnienie katalogu trwałe przypisania ról. Ponadto administratorzy ról uprzywilejowanych uczynić użytkowników **kwalifikujących się** dla ról w katalogu. Administrator uprawniony można aktywować rolę, gdy ich potrzebują, a następnie ich uprawnienia wygasają po one gotowe.
+Usługa Azure AD Privileged Identity Management (PIM) umożliwia również utwórz administratora trwałego przypisania ról uprzywilejowanych administratorów ról. Ponadto administratorzy ról uprzywilejowanych uczynić użytkowników **kwalifikujących się** dla ról administratora w usłudze Azure AD. Administrator uprawniony można aktywować rolę, gdy ich potrzebują, a następnie ich uprawnienia wygasają po one gotowe.
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Ustaw użytkownika z uprawnieniami dla roli
 
-Wykonaj następujące kroki, aby utworzyć użytkownika kwalifikuje się do roli katalogu usługi Azure AD.
+Wykonaj następujące kroki, aby utworzyć użytkownika kwalifikuje się do roli administratora usługi Azure AD.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) z użytkownikiem, który jest elementem członkowskim [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) roli.
 
@@ -68,7 +68,7 @@ Wykonaj następujące kroki, aby utworzyć użytkownika kwalifikuje się do roli
 
 ## <a name="make-a-role-assignment-permanent"></a>Były trwałe przypisania roli
 
-Domyślnie nowym użytkownikom przysługuje tylko rolę katalogu. Wykonaj następujące kroki, aby były trwałe przypisania roli.
+Domyślnie nowi użytkownicy tylko kwalifikują się do roli administratora usługi Azure AD. Wykonaj następujące kroki, aby były trwałe przypisania roli.
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
@@ -92,7 +92,7 @@ Domyślnie nowym użytkownikom przysługuje tylko rolę katalogu. Wykonaj nastę
 
 Możesz usunąć użytkowników z przypisaniami ról, ale upewnij się, że zawsze jest co najmniej jednego użytkownika, który jest trwały administratora globalnego. Jeśli nie masz pewności, które użytkownicy nadal potrzebują swoje przypisania roli, możesz to zrobić [Rozpoczynanie przeglądu dostępu dla roli](pim-how-to-start-security-review.md).
 
-Wykonaj następujące kroki, aby usunąć określonego użytkownika z rolą katalogu.
+Wykonaj następujące kroki, aby usunąć określonego użytkownika z roli administratora usługi Azure AD.
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
@@ -116,7 +116,7 @@ Wykonaj następujące kroki, aby usunąć określonego użytkownika z rolą kata
 
 ## <a name="authorization-error-when-assigning-roles"></a>Błąd autoryzacji podczas przypisywania ról
 
-Jeśli niedawno pojawiła się PIM w przypadku subskrypcji i wystąpi błąd autoryzacji, podczas próby nawiązania kwalifikuje się do ról katalogu użytkownika, może to być, ponieważ jednostki usługi MS PIM jeszcze nie ma odpowiednich uprawnień. Jednostki usługi MS PIM musi mieć [Administrator dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator) roli, aby przypisać role do innych użytkowników. Zamiast czekać, aż usługi PIM MS przypisany do roli Administrator dostępu użytkowników, można przypisać go ręcznie.
+Jeśli wystąpi błąd autoryzacji, podczas próby nawiązania użytkownika kwalifikuje się do roli administratora usługi Azure AD PIM ostatnio włączony dla subskrypcji, może to być, ponieważ jednostki usługi MS PIM jeszcze nie ma odpowiednich uprawnień. Jednostki usługi MS PIM musi mieć [Administrator dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator) roli, aby przypisać role do innych użytkowników. Zamiast czekać, aż usługi PIM MS przypisany do roli Administrator dostępu użytkowników, można przypisać go ręcznie.
 
 Wykonaj następujące kroki, aby przypisać rolę administratora dostępu użytkowników do jednostki usługi MS PIM w przypadku subskrypcji.
 
@@ -151,5 +151,5 @@ Wykonaj następujące kroki, aby przypisać rolę administratora dostępu użytk
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
+- [Konfigurowanie ustawień roli administratora usługi Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
 - [Przypisz role zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)

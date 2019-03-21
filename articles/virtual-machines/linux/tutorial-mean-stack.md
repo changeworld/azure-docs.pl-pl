@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 97734ad6119e89c00634035b1646bc29ac6549bd
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a8f756385b62dfb21e910b9373dc275c7f679d3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237870"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009658"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Samouczek: tworzenie stosu MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure
 
@@ -91,13 +91,13 @@ sudo apt-get install -y nodejs
 ```
 
 ## <a name="install-mongodb-and-set-up-the-server"></a>Instalowanie bazy danych MongoDB i konfigurowanie serwera
-[Baza danych MongoDB](http://www.mongodb.com) przechowuje dane w elastycznych dokumentach w notacji JSON. Pola w bazie danych mogą się różnić w zależności od dokumentu, a struktura danych może zmienić się z upływem czasu. W przypadku naszej przykładowej aplikacji dodajemy do bazy danych MongoDB rekordy książek zawierające nazwę, numer ISBN, autora i liczbę stron. 
+[Baza danych MongoDB](https://www.mongodb.com) przechowuje dane w elastycznych dokumentach w notacji JSON. Pola w bazie danych mogą się różnić w zależności od dokumentu, a struktura danych może zmienić się z upływem czasu. W przypadku naszej przykładowej aplikacji dodajemy do bazy danych MongoDB rekordy książek zawierające nazwę, numer ISBN, autora i liczbę stron. 
 
 1. Na maszynie wirtualnej, korzystając z powłoki bash otwartej przy użyciu protokołu SSH, ustaw klucz bazy danych MongoDB.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
 2. Zaktualizuj menedżera pakietów przy użyciu klucza.
@@ -149,7 +149,7 @@ sudo apt-get install -y nodejs
 
 ## <a name="install-express-and-set-up-routes-to-the-server"></a>Instalowanie platformy Express i konfigurowanie tras do serwera
 
-[Express](https://expressjs.com) to minimalna i elastyczna platforma aplikacji internetowych Node.js, która oferuje funkcje dla aplikacji internetowych i mobilnych. W tym samouczku platforma Express jest używana do przekazywania informacji o książkach do i z bazy danych MongoDB. Program [Mongoose](http://mongoosejs.com) zapewnia proste, oparte na schemacie rozwiązanie do modelowania danych aplikacji. W tym samouczku oprogramowanie Mongoose jest używane do zapewnienia schematu książki dla bazy danych.
+[Express](https://expressjs.com) to minimalna i elastyczna platforma aplikacji internetowych Node.js, która oferuje funkcje dla aplikacji internetowych i mobilnych. W tym samouczku platforma Express jest używana do przekazywania informacji o książkach do i z bazy danych MongoDB. Program [Mongoose](https://mongoosejs.com) zapewnia proste, oparte na schemacie rozwiązanie do modelowania danych aplikacji. W tym samouczku oprogramowanie Mongoose jest używane do zapewnienia schematu książki dla bazy danych.
 
 1. Zainstaluj platformę Express i program Mongoose.
 
@@ -338,7 +338,7 @@ sudo apt-get install -y nodejs
 
 5. Możesz kliknąć przycisk **Usuń** i usunąć rekord książki z bazy danych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W ramach tego samouczka utworzono aplikację internetową, która śledzi rekordy książek przy użyciu stosu MEAN na maszynie wirtualnej z systemem Linux. W tym samouczku omówiono:
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5584e4ecc78a8805135cb3f36bd5f5cd7079129
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5122c9142eccf12193e7e429a3af5ac44fbb8fd6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767077"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111331"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Konfigurowanie samoobsługowego zarządzania grupami w usłudze Azure Active Directory 
 
@@ -46,8 +46,8 @@ Grupy utworzone w | Zachowanie domyślne grupy zabezpieczeń | Zachowanie domyś
 2. Wybierz pozycję **Użytkownicy i grupy**, a następnie wybierz pozycję **Ustawienia grupy**.
 3. Dla pozycji **Włączono samoobsługowe zarządzanie grupami** ustaw opcję **Tak**.
 4. Dla pozycji **Użytkownicy mogą tworzyć grupy zabezpieczeń** lub **Użytkownicy mogą tworzyć grupy usługi Office 365** ustaw opcję **Tak**.
-  * W przypadku włączenia tych ustawień wszyscy użytkownicy w katalogu mogą tworzyć nowe grupy zabezpieczeń i dodawać do nich członków. Te nowe grupy będą również wyświetlane na panelu dostępu dla innych użytkowników. Jeśli ustawienie zasad grupy to umożliwia, inni użytkownicy mogą tworzyć żądania, aby dołączyć do tych grup. 
-  * Jeśli te ustawienia są wyłączone, użytkownicy nie mogą tworzyć grup ani zmieniać istniejących grup, których są właścicielami. Jednak nadal mogą zarządzać członkostwem w tych grupach i zatwierdzać żądania dołączenia do ich grup pochodzące od innych użytkowników.
+   * W przypadku włączenia tych ustawień wszyscy użytkownicy w katalogu mogą tworzyć nowe grupy zabezpieczeń i dodawać do nich członków. Te nowe grupy będą również wyświetlane na panelu dostępu dla innych użytkowników. Jeśli ustawienie zasad grupy to umożliwia, inni użytkownicy mogą tworzyć żądania, aby dołączyć do tych grup. 
+   * Jeśli te ustawienia są wyłączone, użytkownicy nie mogą tworzyć grup ani zmieniać istniejących grup, których są właścicielami. Jednak nadal mogą zarządzać członkostwem w tych grupach i zatwierdzać żądania dołączenia do ich grup pochodzące od innych użytkowników.
 
 Dodatkowo możesz użyć opcji **Użytkownicy, którzy mogą zarządzać grupami zabezpieczeń** i **Użytkownicy, którzy mogą zarządzać grupami usługi Office 365**, aby dokładniej sterować dostępem użytkowników do samoobsługowego zarządzania grupami. W przypadku włączenia opcji **Użytkownicy mogą tworzyć grupy** wszyscy użytkownicy w dzierżawie mogą tworzyć nowe grupy i dodawać do nich członków. Zmieniając ustawienie na **Niektóre**, możesz ograniczyć zarządzanie grupą do wybranych użytkowników. Gdy ten przełącznik ma wartość **Niektóre**, należy dodać użytkowników do grupy SSGMSecurityGroupsUsers, zanim będą oni mogli tworzyć nowe grupy i dodawać do nich członków. Wybranie ustawienia **Wszyscy** dla opcji **Użytkownicy, którzy mogą używać samoobsługi dla grup zabezpieczeń** i **Użytkownicy, którzy mogą zarządzać grupami usługi Office 365** umożliwi wszystkim użytkownikom w katalogu tworzenie nowych grup.
 

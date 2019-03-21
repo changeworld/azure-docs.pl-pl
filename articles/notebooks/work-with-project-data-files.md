@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: fd1e7ccdc54b5c5111ecfa466e916a376f43521a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c5f8b6db77cabdf5e7af66063cbd9a058bd01800
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770721"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082776"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Praca z plikami danych w projektach notesu platformy Azure
 
@@ -42,13 +42,13 @@ Przenoszenie plików do projektu na pulpicie nawigacyjnym projektu lub w ramach 
 
 1. Wybierz **przekazywanie** polecenia, a następnie opcję **z adresu URL** lub **z komputera** i odpowiednie szczegóły danych, który chcesz zaimportować do projektu:
 
-    - **Z adresu URL**: Wprowadź adres źródła w **adres URL pliku** pola i nazwę pliku, aby przypisać do Notes w projekcie w **nazwy pliku** pola. Następnie wybierz pozycję **+ Dodaj plik** można dodać adres URL do listy przekazywania. Powtórz te czynności dla wszelkich dodatkowych adresów URL, a następnie wybierz **gotowe**.
+   - **Z adresu URL**: Wprowadź adres źródła w **adres URL pliku** pola i nazwę pliku, aby przypisać do Notes w projekcie w **nazwy pliku** pola. Następnie wybierz pozycję **+ Dodaj plik** można dodać adres URL do listy przekazywania. Powtórz te czynności dla wszelkich dodatkowych adresów URL, a następnie wybierz **gotowe**.
 
-    ![Przekaż z adresu URL okna podręcznego](media/quickstarts/upload-from-url-popup.png)
+     ![Przekaż z adresu URL okna podręcznego](media/quickstarts/upload-from-url-popup.png)
 
-    - **Z poziomu komputera**: Przeciągnij i upuść pliki w okienku wyskakującym lub wybierz **Wybieranie plików**, a następnie wyszukaj i wybierz pliki danych, który chcesz zaimportować. Można usunąć lub wybrać dowolną liczbę plików dowolnego typu i formatu, ponieważ to Ty kodu w notesie, otwórz plik i analizować swoje dane.
+   - **Z poziomu komputera**: Przeciągnij i upuść pliki w okienku wyskakującym lub wybierz **Wybieranie plików**, a następnie wyszukaj i wybierz pliki danych, który chcesz zaimportować. Można usunąć lub wybrać dowolną liczbę plików dowolnego typu i formatu, ponieważ to Ty kodu w notesie, otwórz plik i analizować swoje dane.
 
-    ![Przekaż z komputera okna podręcznego](media/quickstarts/upload-from-computer-popup.png)
+     ![Przekaż z komputera okna podręcznego](media/quickstarts/upload-from-computer-popup.png)
 
 1. Po zaimportowaniu plików są wyświetlane na pulpicie nawigacyjnym projekt i są dostępne w ramach kodu notesu przy użyciu nazw względnych ścieżek do folderu zawierającego.
 

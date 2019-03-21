@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b94445d3053f036510baf7945c1086558d28188
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 11d63889555d6899df07e83168813994907476af
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341684"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860333"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -204,7 +204,7 @@ Wykonaj te instrukcje, aby przechwycić dzienniki rozwiązywania problemów dla 
 
 4. Po zakończeniu, należy cofnąć te zmiany.
 
-### <a name="net-core"></a>.Net Core
+### <a name="net-core"></a>.NET Core
 
 1. Zainstaluj [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) pakietu NuGet. Wersję, którą należy zainstalować musi odpowiadać bieżącej zainstalowanej wersji programu `Microsoft.ApplicationInsights`
 

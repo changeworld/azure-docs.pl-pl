@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: cb1d08bb7b4c64d8dbcf39a667cb037ff30c38e7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467906"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287268"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Metryki niestandardowe w usłudze Azure Monitor
 
@@ -55,7 +55,7 @@ Ta właściwość umożliwia przechwytywanie jakie regionie platformy Azure, zas
 >
 
 ### <a name="timestamp"></a>Znacznik czasu
-Każdy punkt danych wysyłanych do usługi Azure Monitor musi być oznaczony przez sygnaturę czasową. Sygnatura czasowa przechwytuje daty/godziny, w którym wartość metryki jest mierzony lub zebrane. Usługa Azure Monitor akceptuje dane metryk z sygnaturami czasowymi, o ile to 20 minut w przeszłości i 5 minut w przyszłości.
+Każdy punkt danych wysyłanych do usługi Azure Monitor musi być oznaczony przez sygnaturę czasową. Sygnatura czasowa przechwytuje daty/godziny, w którym wartość metryki jest mierzony lub zebrane. Usługa Azure Monitor akceptuje dane metryk z sygnaturami czasowymi, o ile to 20 minut w przeszłości i 5 minut w przyszłości. Sygnatura czasowa musi być w formacie ISO 8601.
 
 ### <a name="namespace"></a>Przestrzeń nazw
 Przestrzenie nazw służą do kategoryzowania lub grupowanie podobnych miernikach. Za pomocą przestrzeni nazw, można osiągnąć izolacji między grupami miar, które może zbierać informacje na temat różnych technologii lub wskaźniki wydajności. Na przykład, Niewykluczone, że przestrzeń nazwy wywołaną **ContosoMemoryMetrics** który śledzi metryki wykorzystania pamięci, która profilu aplikacji. Innej przestrzeni nazw o nazwie **ContosoAppTransaction** może śledzić wszystkie metryki dotyczące transakcji użytkownika w aplikacji.
@@ -65,7 +65,7 @@ Przestrzenie nazw służą do kategoryzowania lub grupowanie podobnych miernikac
 
 ### <a name="dimension-keys"></a>Klucze wymiaru
 Wymiar jest parą klucza lub wartości, która pomaga, opisz dodatkową charakterystykę metryki są zbierane. Za pomocą dodatkowych właściwości, można zebrać więcej informacji na temat metryki, co pozwala uzyskać lepszy wgląd w dane. Na przykład **pamięci bajty w użyciu** Metryka może mieć klucza wymiaru o nazwie **procesu** który przechwytuje zużywa każdy proces na maszynie Wirtualnej Określanie liczby bajtów pamięci. Za pomocą tego klucza, możesz filtrować metryki, aby zobaczyć, ile pamięci, użyj określonych procesów lub do identyfikowania najważniejszych procesów pięć przez użycie pamięci.
-Wszystkie niestandardowe metryki może mieć maksymalnie 10 wymiarów.
+Wymiary są opcjonalne, nie wszystkie metryki może mieć wymiary. Metryka niestandardowa może zawierać maksymalnie 10 wymiarów.
 
 ### <a name="dimension-values"></a>Wartości wymiaru
 Podczas zgłaszania punkt danych metryk dla każdego klucza wymiaru na metryce zgłaszane, istnieje odpowiadająca wartość w wymiarze. Na przykład możesz zgłosić pamięci używanej przez ContosoApp na maszynie Wirtualnej:
@@ -75,6 +75,7 @@ Podczas zgłaszania punkt danych metryk dla każdego klucza wymiaru na metryce z
 * Wartość wymiaru będzie **ContosoApp.exe**.
 
 Podczas publikowania wartość metryki, można określić tylko jeden wymiar wartość dla klucza wymiaru. Jeśli zbierasz wiele procesów w tej samej użycia pamięci na maszynie Wirtualnej, możesz zgłaszać wiele metryk wartości tej sygnatury czasowej. Każda wartość metryki określić wartości innego wymiaru **procesu** klucza wymiaru.
+Wymiary są opcjonalne, nie wszystkie metryki może mieć wymiary. Jeśli wpis metryki definiuje klucze wymiarów, odpowiadające im wartości wymiaru są obowiązkowe.
 
 ### <a name="metric-values"></a>Wartości metryk
 Usługa Azure Monitor są przechowywane wszystkie metryki w odstępach czasu z dokładnością do jednej minuty. Rozumiemy, że minucie danego Metryka może być konieczne będą próbkowane kilka razy. Przykładem jest użycie procesora CPU. Lub może być konieczne mierzone w przypadku wielu zdarzeń dyskretnych. Przykładem jest opóźnienia rejestrowania transakcji. Aby ograniczyć liczbę nieprzetworzonych wartości, które mają do emisji i Płać w usłudze Azure Monitor, możesz lokalnie wstępnej agregacji i emitować wartości:
@@ -169,13 +170,13 @@ W publicznej wersji zapoznawczej umożliwia publikowanie metryk niestandardowych
 
 |Region platformy Azure|Prefiks regionalnych punktu końcowego|
 |---|---|
-|Wschodnie stany USA|https://eastus.monitoring.azure.com/|
-|Środkowo-południowe stany USA|https://southcentralus.monitoring.azure.com/|
-|Środkowo-zachodnie stany USA|https://westcentralus.monitoring.azure.com/|
-|Zachodnie stany USA 2|https://westus2.monitoring.azure.com/|
-|Azja Południowo-Wschodnia|https://southeastasia.monitoring.azure.com/|
-|Europa Północna|https://northeurope.monitoring.azure.com/|
-|Europa Zachodnia|https://westeurope.monitoring.azure.com/|
+|Wschodnie stany USA| protokół https:\//eastus.monitoring.azure.com/ |
+|Środkowo-południowe stany USA| https:\//southcentralus.monitoring.azure.com/ |
+|Środkowo-zachodnie stany USA| https:\//westcentralus.monitoring.azure.com/ |
+|Zachodnie stany USA 2| protokół https:\//westus2.monitoring.azure.com/ |
+|Azja Południowo-Wschodnia| protokół https:\//southeastasia.monitoring.azure.com/ |
+|Europa Północna| protokół https:\//northeurope.monitoring.azure.com/ |
+|Europa Zachodnia| protokół https:\//westeurope.monitoring.azure.com/ |
 
 ## <a name="quotas-and-limits"></a>Limity przydziału i ograniczenia
 Usługa Azure Monitor nakłada następujące limity użycia dla metryk niestandardowych:
@@ -185,6 +186,7 @@ Usługa Azure Monitor nakłada następujące limity użycia dla metryk niestanda
 |Czas aktywności serii/subskrypcje/region|50,000|
 |Klucze wymiarów na metrykę|10|
 |Długość ciągu dla metryki przestrzeni nazw, nazwami metryk, wymiaru kluczy i wartości wymiaru|256 znaków|
+
 Szeregi czasowe active jest zdefiniowany jako wszelkie unikatową kombinację metryki, wymiaru klucza lub wartości wymiaru, który miał wartości metryk, opublikowane w ciągu ostatnich 12 godzin.
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 901afc8f28b617eb5bada2a0f58761ddb9f67607
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1622de0cccdbc8fee0681e209e756b30da292d3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327416"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003493"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale na platformie Azure
 
@@ -66,7 +66,7 @@ To podejście jest szablon, który można modyfikować dla rozmiaru i skali w Tw
 
 ### <a name="compute-considerations"></a>Zagadnienia dotyczące obliczeń
 
-Ta architektura działa warstwy aplikacji, magazynu i danych na maszynach wirtualnych platformy Azure. [Skryptów Instalatora wdrożenia](http://aka.ms/db2onazure) Utwórz następującą:
+Ta architektura działa warstwy aplikacji, magazynu i danych na maszynach wirtualnych platformy Azure. [Skryptów Instalatora wdrożenia](https://aka.ms/db2onazure) Utwórz następującą:
 
 -   Klaster pureScale bazy danych DB2. Rodzaj zasobów obliczeniowych, czego potrzebujesz na platformie Azure, zależy od konfiguracji. Ogólnie rzecz biorąc można użyć dwóch metod:
 

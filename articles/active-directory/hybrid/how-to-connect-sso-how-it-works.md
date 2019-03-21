@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af01d924036e5d31de5498e51b56efdf1defc9f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201452"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083941"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Techniczne
 
@@ -60,7 +60,7 @@ Przepływ logowania w przeglądarce sieci web jest następująca:
 3. Użytkownik wpisze nazwy użytkownika do strony logowania usługi Azure AD.
 
    >[!NOTE]
-   >Aby uzyskać [niektóre aplikacje](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), są pomijane kroki 2 i 3.
+   >Aby uzyskać [niektóre aplikacje](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso), są pomijane kroki 2 i 3.
 
 4. Przy użyciu języka JavaScript w tle, usługa Azure AD wyzwań przeglądarki, za pośrednictwem nieautoryzowanych uzyskanie odpowiedzi 401, aby zapewnić biletu protokołu Kerberos.
 5. Z kolei przeglądarki, żąda biletu z usługi Active Directory dla `AZUREADSSOACC` konto komputera, (który reprezentuje usługę Azure AD).

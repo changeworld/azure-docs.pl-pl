@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 83bbb7f6a683265e4f2ed20801d0c7541a54e9f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 63ce2be847017ed7e80fe5e573d5553311f6af2f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244965"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107682"
 ---
 # <a name="use-notebooks-to-hunt-for-anomalies"></a>Korzystanie z notesów do wyszukiwania anomalii
 
@@ -48,15 +48,15 @@ W poniższym przykładzie udostępniamy wbudowanych Notes, aby wyszukać szczeg�
   
    ![Wybierz notes](./media/notebooks/select-notebook.png)
 
-3.  Kliknij przycisk **importu** do sklonowania repozytorium GitHub w projekcie notesy platformy Azure.
-  ![Importuj notesu](./media/notebooks/import1.png)
-4.  Każdy notesu przeprowadzi Cię przez kroki umożliwiające wykonywanie hunt lub badania. Modele, biblioteki i inne zależności i konfiguracji dla połączenia z usługą Azure przez wartownika jest importowany automatycznie włączyć wykonywanie jednego kliknięcia. Cały kod i bibliotek wymaganych w celu uruchomienia notesu są wstępnie załadowane. Możesz natychmiast rozpocząć uruchamiania notesu obszaru roboczego usługi Log Analytics bez konfiguracji.
+3. Kliknij przycisk **importu** do sklonowania repozytorium GitHub w projekcie notesy platformy Azure.
+   ![Importuj notesu](./media/notebooks/import1.png)
+4. Każdy notesu przeprowadzi Cię przez kroki umożliwiające wykonywanie hunt lub badania. Modele, biblioteki i inne zależności i konfiguracji dla połączenia z usługą Azure przez wartownika jest importowany automatycznie włączyć wykonywanie jednego kliknięcia. Cały kod i bibliotek wymaganych w celu uruchomienia notesu są wstępnie załadowane. Możesz natychmiast rozpocząć uruchamiania notesu obszaru roboczego usługi Log Analytics bez konfiguracji.
 
    ![Importowanie repozytorium](./media/notebooks/import2.png)
 
-5.  Eksploruj, modyfikowanie i uruchamianie notesów przykładowe podane. Mogą one używane jako bloków konstrukcyjnych dla wielu różnych scenariuszy.
+5. Eksploruj, modyfikowanie i uruchamianie notesów przykładowe podane. Mogą one używane jako bloków konstrukcyjnych dla wielu różnych scenariuszy.
 
-  ![Wybierz notes](./media/notebooks/import3.png)
+   ![Wybierz notes](./media/notebooks/import3.png)
 
 
 

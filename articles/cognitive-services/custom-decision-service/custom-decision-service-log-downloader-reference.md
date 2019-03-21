@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: c03278c0d0faced20f4e02fcc1f61531c88ae141
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8a8f669c33f40fb80dc826ec04203880dee74d82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869674"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109413"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -49,7 +49,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | `-s START_DATE`, `--start_date START_DATE` | Pobieranie rozpoczęcia (włączone), w *RRRR-MM-DD* formatu. | `None` |
 | `-e END_DATE`, `--end_date END_DATE` | Pobieranie Data zakończenia (włączone), w *RRRR-MM-DD* formatu. | `None` |
 | `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | Tryb zastępowania do użycia. | |
-| | `0`: Nigdy nie zastąpi; Poproś użytkownika, czy obiekty BLOB są obecnie używane. | Domyślne | |
+| | `0`: Nigdy nie zastąpi; Poproś użytkownika, czy obiekty BLOB są obecnie używane. | Domyślne |
 | | `1`: Poproś użytkownika w sposób kontynuować, jeśli pliki mają różne rozmiary, lub gdy obiekty BLOB są obecnie używane. | |
 | | `2`: Zawsze mają pierwszeństwo przed; Pobierz obiekty BLOB obecnie używane. | |
 | | `3`: Nigdy nie należy zastępować i dołączenia, jeśli rozmiar jest większy, bez monitowania; Pobierz obiekty BLOB obecnie używane. | |

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/27/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df6675c8ed9bc600da5fc054698e6445f31abb1a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2dee7759dccf3093e9ba9f66bffcceaf603a11d4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203530"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226882"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na zestawach skalowania maszyn wirtualnych przy użyciu programu PowerShell
 
@@ -54,24 +54,16 @@ W tej sekcji dowiesz się, jak włączyć i Usuń przypisany systemowo tożsamo�
 
 ### <a name="enable-system-assigned-managed-identity-during-the-creation-of-an-azure-virtual-machine-scale-set"></a>Włącz przypisany systemowo tożsamości zarządzanej podczas tworzenia zestawu skalowania maszyn wirtualnych platformy Azure
 
-Do utworzenia zestawu skalowania maszyn wirtualnych z przypisany systemowo tożsamość zarządzaną włączone:
+Aby utworzyć maszyny wirtualnej zestawu skalowania z przypisany systemowo tożsamość zarządzaną włączone:
 
-1. Zapoznaj się *przykład 1* w [New AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) artykuł dokumentacji polecenia cmdlet do tworzenia zestawu skalowania maszyn wirtualnych za pomocą tożsamości zarządzanej przypisana przez system.  Dodaj parametr `-IdentityType SystemAssigned` do `New-AzVmssConfig` polecenia cmdlet:
+1. Zapoznaj się *przykład 1* w [New AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) artykule odwołanie do polecenia cmdlet, aby utworzyć zestaw skalowania maszyn wirtualnych zestawu przy użyciu tożsamości zarządzanej przypisana przez system.  Dodaj parametr `-IdentityType SystemAssigned` do `New-AzVmssConfig` polecenia cmdlet:
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
+> [!NOTE]
+> Rozszerzenie zestawu skalowania maszyn wirtualnych z zasobami platformy Azure, ale wkrótce zostaną wycofane, może opcjonalnie udostępnić zarządzanych tożsamości. Zalecamy używanie punktu końcowego usługi Azure Instance Metadata tożsamości do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [zaprzestać korzystania z rozszerzenia maszyny Wirtualnej i rozpocząć korzystanie z punktu końcowego IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
-2. (Opcjonalnie) Dodawanie zarządzanych tożsamości dla zestawu skalowania maszyny wirtualnej zasoby platformy Azure przy użyciu rozszerzenia `-Name` i `-Type` parametru [AzVmssExtension Dodaj](/powershell/module/az.compute/add-azvmssextension) polecenia cmdlet. Można przekazać albo "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu skalowania maszyn wirtualnych zestawu i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
-
-    > [!NOTE]
-    > Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również.
-
-   ```powershell
-   $setting = @{ "port" = 50342 }
-   $vmss = Get-AzVmss
-   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
-   ```
 
 ## <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Włącz przypisany systemowo tożsamość zarządzana na podstawie istniejącego zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -89,13 +81,8 @@ Jeśli musisz włączyć przypisany systemowo tożsamości zarządzanej na podst
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-3. Dodawanie zarządzanych tożsamości dla rozszerzenie zestawu skalowania maszyn wirtualnych zasobów platformy Azure przy użyciu polecenia `-Name` i `-Type` parametru [AzVmssExtension Dodaj](/powershell/module/az.compute/add-azvmssextension) polecenia cmdlet. Można przekazać albo "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu skalowania maszyn wirtualnych zestawu i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
-
-   ```powershell
-   $setting = @{ "port" = 50342 }
-   $vmss = Get-AzVmss
-   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
-   ```
+> [!NOTE]
+> Rozszerzenie zestawu skalowania maszyn wirtualnych z zasobami platformy Azure, ale wkrótce zostaną wycofane, może opcjonalnie udostępnić zarządzanych tożsamości. Zalecamy używanie punktu końcowego usługi Azure Instance Metadata tożsamości do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [migracja z rozszerzenia maszyny Wirtualnej do endpoint IMDS platformy Azure do uwierzytelniania](howto-migrate-vm-extension.md).
 
 ### <a name="disable-the-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Wyłącz przypisany systemowo tożsamość zarządzaną z zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -115,7 +102,7 @@ Jeśli masz zestaw skalowania maszyn wirtualnych, który nie wymaga tożsamości
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
 ```
 
-## <a name="user-assigned-managed-identity"></a>Przypisane przez użytkownika z tożsamości zarządzanej
+## <a name="user-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez użytkownika
 
 W tej sekcji dowiesz się, jak dodawać i usuwać przypisane przez użytkownika tożsamości zarządzanej maszyny wirtualnej zestawu skalowania przy użyciu programu Azure PowerShell.
 
@@ -143,7 +130,7 @@ Aby przypisać tożsamości zarządzanej użytkownik przypisany do istniejącego
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Usuwanie tożsamości przypisanych przez użytkownika zarządzanej z zestawu skalowania maszyn wirtualnych platformy Azure
 
-Jeśli zestaw skalowania maszyn wirtualnych ma wiele tożsamości zarządzanych przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Upewnij się, że parametry `<RESOURCE GROUP>` i `<VMSS NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY NAME>` Jest przypisanych do użytkowników zarządzanych tożsamości nazwę właściwości, która powinna pozostać w zestawie skalowania maszyn wirtualnych. Te informacje można znaleźć w sekcji tożsamości maszyny wirtualnej zestawu skalowania przy użyciu `az vmss show`:
+Jeśli zestaw skalowania maszyn wirtualnych ma wiele tożsamości zarządzanych przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Upewnij się, że parametry `<RESOURCE GROUP>` i `<VIRTUAL MACHINE SCALE SET NAME>` zostały zastąpione własnymi wartościami. `<USER ASSIGNED IDENTITY NAME>` Jest przypisanych do użytkowników zarządzanych tożsamości nazwę właściwości, która powinna pozostać w zestawie skalowania maszyn wirtualnych. Te informacje można znaleźć w sekcji tożsamości maszyny wirtualnej zestawu skalowania przy użyciu `az vmss show`:
 
 ```powershell
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED IDENTITY NAME>"

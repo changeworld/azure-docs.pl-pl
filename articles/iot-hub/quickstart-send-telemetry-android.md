@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/05/2018
 ms.author: wesmc
-ms.openlocfilehash: d90595d3d557293bfbc6b06aca638eb1b7c08d30
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.openlocfilehash: 8f30918a73e1e7012ad3be151e778eb073627b84
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164317"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726689"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Szybki start: Przesyłanie danych telemetrycznych usługi IoT z urządzenia z systemem Android
 
@@ -86,6 +86,12 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
 3. W programie Android Studio kliknij kolejno pozycje **File** > **Sync Project with Gradle Files** (Plik > Synchronizuj projekt z plikami Gradle). Sprawdź, czy kompilacja została zakończona.
 
+   > [!NOTE]
+   > Jeśli synchronizacja projektu zakończy się niepowodzeniem, może być jednego z następujących powodów:
+   >
+   > * Wersje Wtyczka programu Gradle dla systemu Android i narzędzia Gradle, do którego odwołuje się projekt jest nieaktualny dla używanej wersji programu Android Studio. Postępuj zgodnie z [w instrukcjach](https://developer.android.com/studio/releases/gradle-plugin) odwołać się i zainstaluj poprawne wersje wtyczki i narzędzie Gradle dla tej instalacji.
+   > * Umowa licencyjna dotycząca zestawu Android SDK nie jest podpisany. Postępuj zgodnie z instrukcjami w danych wyjściowych kompilacji, podpisać umowę licencyjną, a następnie pobierz zestaw SDK.
+
 4. Po zakończeniu kompilacji kliknij kolejno pozycje **Run** > **Run 'app'** (Uruchom > Uruchom „aplikację”). Skonfiguruj aplikację do uruchamiania na fizycznym urządzeniu z systemem Android lub w emulatorze systemu Android. Aby uzyskać więcej informacji na temat uruchamiania aplikacji systemu Android na urządzeniu fizycznym lub w emulatorze, zobacz [Run your app (Uruchamianie aplikacji)](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Po załadowaniu aplikacji kliknij przycisk **Start**, aby rozpocząć wysyłanie danych telemetrycznych do centrum IoT Hub:
@@ -113,7 +119,7 @@ W tej sekcji, używając usługi Azure Cloud Shell z [rozszerzeniem IoT](https:/
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start skonfigurowano centrum IoT Hub, zarejestrowano urządzenie, wysłano dane telemetryczne do centrum przy użyciu aplikacji z systemem Android oraz odczytano dane telemetryczne z centrum przy użyciu usługi Azure Cloud Shell.
 

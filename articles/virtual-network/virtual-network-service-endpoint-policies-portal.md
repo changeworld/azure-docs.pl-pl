@@ -12,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 06c034968b2577d6321ffe6f55f969547a35931f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: aaa07759ed8b10578d024d5838ac1d2658778695
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054439"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999877"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Tworzenie, zmienianie lub usuwanie zasad punktów końcowych usługi za pomocą witryny Azure portal
 
@@ -35,7 +35,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 
-Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
+Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-service-endpoint-policy"></a>Tworzenie zasad punktów końcowych usługi
 
@@ -45,7 +45,7 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
    - Subskrypcja: Wybierz swoją subskrypcję dla zasad.    
    - Grupa zasobów: Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.     
-   - Nazwa: myEndpointPolicy
+   - Name           : myEndpointPolicy
    - Lokalizacja: Środkowo-zachodnie stany USA     
  
    ![Tworzenie punktu końcowego usługi podstawowe informacje dotyczące zasad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
@@ -63,10 +63,10 @@ Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
    
 5. Opcjonalnie: Wprowadź lub wybierz następujące informacje w **tagi**:
    
-   - Klucz: Wybierz klucz dla zasad. Przykład: Dział     
-   - Wartość: Wprowadź pary wartości klucza. Przykład: Finanse
+   - Klucz: Wybierz klucz dla zasad. Na przykład: Dział     
+   - Wartość: Wprowadź pary wartości klucza. Na przykład: Finanse
 
-6. Wybierz **przeglądanie + tworzenie**. Zweryfikuj informacje i kliknięcie **Utwórz**. Może wprowadzać dalszych zmian, kliknij przycisk **Wstecz**. 
+6. Wybierz pozycję **Przegląd + utwórz**. Zweryfikuj informacje i kliknięcie **Utwórz**. Może wprowadzać dalszych zmian, kliknij przycisk **Wstecz**. 
 
    ![Tworzenie punktu końcowego usługi końcowego walidacji zasad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-finalcreatereview.PNG)
   

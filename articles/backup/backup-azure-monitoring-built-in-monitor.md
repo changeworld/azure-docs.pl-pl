@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 50d766eed5800c58d0b0258b2be6637f139c542a
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730969"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112504"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorowanie obciążeń usługi Azure Backup
 
@@ -92,9 +92,9 @@ W przypadku skonfigurowania powiadomień, otrzymasz-Zapraszamy lub wprowadzając
 Jeśli ustawiono częstotliwość podsumowanie godzinowe oraz alert był wyświetlany i rozwiązywany w ciągu godziny, nie będzie częścią nadchodzących podsumowanie godzinowe.
 
 > [!NOTE]
->
-* Jeśli operacją destrukcyjną, takie jak **Zatrzymaj ochronę za pomocą usuwania danych** jest wykonywane, zostanie zgłoszony alert oraz zostanie wysłana wiadomość e-mail do właścicieli subskrypcji, Administratorzy i współadministratorzy, nawet jeśli nie skonfigurowano powiadomienia usługi odzyskiwania Magazyn.
-* Aby skonfigurować powiadomienia dla zadań zakończonych pomyślnie użyć [usługi Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+> 
+> * Jeśli operacją destrukcyjną, takie jak **Zatrzymaj ochronę za pomocą usuwania danych** jest wykonywane, zostanie zgłoszony alert oraz zostanie wysłana wiadomość e-mail do właścicieli subskrypcji, Administratorzy i współadministratorzy, nawet jeśli nie skonfigurowano powiadomienia usługi odzyskiwania Magazyn.
+> * Aby skonfigurować powiadomienia dla zadań zakończonych pomyślnie użyć [usługi Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie wielościeżkowego wejścia/wyjścia dla urządzenia StorSimple | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania wielościeżkowego wejścia/wyjścia (MPIO) dla Twojego urządzenia StorSimple podłączonego do hosta z systemem Windows Server 2012 R2.
+description: W tym artykule opisano sposób konfigurowania wielościeżkowego wejścia/wyjścia (MPIO) dla urządzenia StorSimple połączony z hostem z systemem Windows Server 2012 R2.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,131 +14,131 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f2b094604f486d283574f4669fcad6f72bd4431
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30245741"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078146"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia dla urządzenia StorSimple
 
-W tym samouczku opisano kroki należy wykonać, aby zainstalować i używać funkcji wielościeżkowego wejścia/wyjścia (MPIO) na hoście z systemem Windows Server 2012 R2 i podłączony do urządzenia fizycznego StorSimple. Wskazówki zawarte w tym artykule dotyczą z serii StorSimple 8000 tylko urządzenia fizycznego. Wielościeżkowe wejście/wyjście nie jest obecnie obsługiwane na urządzeniu z StorSimple w chmurze.
+W tym samouczku opisano kroki należy wykonać, aby zainstalować i korzystać z funkcji wielościeżkowego wejścia/wyjścia (MPIO) na hoście z systemem Windows Server 2012 R2 i połączony z urządzeniem fizycznym StorSimple. Wskazówki zawarte w tym artykule dotyczy serii StorSimple 8000 tylko w przypadku urządzeń fizycznych. Wielościeżkowego wejścia/wyjścia nie jest obecnie obsługiwane na urządzenie StorSimple w chmurze.
 
-Firma Microsoft opracowała obsługę funkcji wielościeżkowego wejścia/wyjścia (MPIO) w systemie Windows Server w celu ułatwienia tworzenia iSCSI o wysokiej dostępności, odpornej na uszkodzenia konfiguracji sieci. Wielościeżkowe wejście/wyjście używa nadmiarowych składników ścieżki fizycznej — kart, kabli i przełączników — do tworzenia ścieżek logicznych między serwerem a urządzeniem magazynującym. W przypadku awarii składnika, Ścieżka logiczna się niepowodzeniem, przyczyną logika wielościeżkowa używa ścieżki alternatywnej do operacji We/Wy, dzięki czemu aplikacje mogą nadal uzyskiwać dostępu do danych. Ponadto w zależności od konfiguracji wielościeżkowego wejścia/wyjścia mogą także podnieść wydajność przez ponowne równoważenie obciążenia we wszystkich tych ścieżek. Aby uzyskać więcej informacji, zobacz [Omówienie wielościeżkowego wejścia/wyjścia](https://technet.microsoft.com/library/cc725907.aspx "wielościeżkowego wejścia/wyjścia Przegląd oraz funkcje").
+Firma Microsoft opracowała obsługę funkcji wielościeżkowego wejścia/wyjścia (MPIO) w systemie Windows Server w celu ułatwienia tworzenia konfiguracji sieci iSCSI wysoko dostępnej i odpornej na uszkodzenia. Wielościeżkowe wejście/wyjście używa nadmiarowych składników ścieżki fizycznej — kart, kabli i przełączników — do tworzenia ścieżek logicznych między serwerem a urządzeniem magazynującym. W przypadku awarii składnika, powodując ścieżkę logiczną zakończyć się niepowodzeniem, uszkodzenie ścieżki logika wielościeżkowa używa ścieżki alternatywnej dla operacji We/Wy, dzięki czemu aplikacje mogą nadal uzyskiwać dostęp do swoich danych. Ponadto w zależności od konfiguracji, wielościeżkowego wejścia/wyjścia można również zwiększyć wydajność przez ponowne równoważenie obciążenia we wszystkich tych ścieżek. Aby uzyskać więcej informacji, zobacz [Omówienie wielościeżkowego wejścia/wyjścia](https://technet.microsoft.com/library/cc725907.aspx "wielościeżkowe wejście/wyjście — omówienie i funkcje").
 
-Aby wysokiej dostępności rozwiązania StorSimple należy skonfigurować wielościeżkowego wejścia/wyjścia na urządzeniu StorSimple. Podczas instalowania wielościeżkowego wejścia/wyjścia na serwerach hosta z systemem Windows Server 2012 R2, serwery następnie może tolerować łącza, sieci lub interfejsu.
+Dla wysokiej dostępności rozwiązania StorSimple należy skonfigurować wielościeżkowe wejście/wyjście na urządzeniu StorSimple. Po zainstalowaniu wielościeżkowego wejścia/wyjścia na serwerach hostów z systemem Windows Server 2012 R2 serwery następnie może tolerować łącza, sieci lub interfejsu.
 
 ## <a name="mpio-configuration-summary"></a>Podsumowanie konfiguracji wielościeżkowego wejścia/wyjścia
 
-Wielościeżkowego wejścia/wyjścia jest opcjonalna funkcja w systemie Windows Server i nie jest instalowany domyślnie. Powinno być instalowane jako funkcja za pomocą Menedżera serwera.
+Wielościeżkowe wejście/wyjście to opcjonalna funkcja w systemie Windows Server i nie jest instalowany domyślnie. Powinno być instalowane jako funkcja za pomocą Menedżera serwera.
 
-Wykonaj następujące kroki, aby skonfigurować wielościeżkowego wejścia/wyjścia na urządzeniu StorSimple:
+Wykonaj następujące kroki, aby skonfigurować wielościeżkowe wejście/wyjście na urządzeniu StorSimple:
 
-* Krok 1: Instalacja wielościeżkowego We/Wy na hoście systemu Windows Server
+* Krok 1: Zainstaluj wielościeżkowego wejścia/wyjścia na hoście systemu Windows Server
 * Krok 2: Konfigurowanie wielościeżkowego wejścia/wyjścia dla woluminów StorSimple
 * Krok 3: Woluminy StorSimple instalacji na hoście
-* Krok 4: Konfigurowanie wielościeżkowego wejścia/wyjścia wysokiej dostępności i równoważenia obciążenia
+* Krok 4: Konfigurowanie wielościeżkowego wejścia/wyjścia w celu zapewnienia wysokiej dostępności i równoważenia obciążenia
 
 W poniższych sekcjach omówiono każdego z powyższych kroków.
 
-## <a name="step-1-install-mpio-on-the-windows-server-host"></a>Krok 1: Instalacja wielościeżkowego We/Wy na hoście systemu Windows Server
+## <a name="step-1-install-mpio-on-the-windows-server-host"></a>Krok 1: Zainstaluj wielościeżkowego wejścia/wyjścia na hoście systemu Windows Server
 
-Do zainstalowania tej funkcji na hoście z systemem Windows Server, wykonaj poniższą procedurę.
+Aby zainstalować tę funkcję na hoście z systemem Windows Server, wykonaj poniższą procedurę.
 
-#### <a name="to-install-mpio-on-the-host"></a>Aby zainstalować wielościeżkowego We/Wy na hoście
+#### <a name="to-install-mpio-on-the-host"></a>Aby zainstalować wielościeżkowego wejścia/wyjścia na hoście
 
-1. Otwórz Menedżera serwera na hoście z systemem Windows Server. Domyślnie Menedżer serwera rozpoczyna się, gdy członek grupy Administratorzy loguje się do komputera z systemem Windows Server 2012 R2 lub Windows Server 2012. Jeśli Menedżer serwera nie jest jeszcze otwarty, kliknij przycisk **Start > Menedżera serwera**.
+1. Otwórz Menedżera serwera na hoście z systemem Windows Server. Domyślnie Menedżer serwera rozpoczyna się, gdy członek grupy Administratorzy zaloguje się na komputerze z systemem Windows Server 2012 R2 lub Windows Server 2012. Jeśli Menedżer serwera nie jest już otwarty, kliknij przycisk **Start > Menedżer serwera**.
    
-   ![Menedżer serwera](./media/storsimple-configure-mpio-windows-server/IC740997.png)
+   ![Menedżera serwera](./media/storsimple-configure-mpio-windows-server/IC740997.png)
 
 2. Kliknij przycisk **Menedżera serwera > pulpit nawigacyjny > Dodaj role i funkcje**. Spowoduje to uruchomienie **Dodaj role i funkcje** kreatora.
    
-   ![Dodawanie ról i funkcji — Kreator 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
+   ![Dodaj role i funkcje kreatora 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
 3. W **Dodaj role i funkcje** kreatora, wykonaj następujące czynności:
    
-   1. Na **przed rozpoczęciem** kliknij przycisk **dalej**.
-   2. Na **Wybieranie typu instalacji** Zaakceptuj domyślne ustawienie **rolach lub oparta na funkcjach** instalacji. Kliknij przycisk **Dalej**.
+   1. Na **przed rozpoczęciem** kliknij **dalej**.
+   2. Na **Wybieranie typu instalacji** strona, zaakceptuj domyślne ustawienie **opartej na rolach lub oparta na funkcjach** instalacji. Kliknij przycisk **Dalej**.
    
-       ![Dodawanie ról i funkcji — Kreator 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-   3. Na **serwera docelowego wybierz** wybierz pozycję **wybierz serwer z puli serwerów**. Serwer hosta powinien być wykrywane automatycznie. Kliknij przycisk **Dalej**.
-   4. Na **Wybieranie ról serwera** kliknij przycisk **dalej**.
+       ![Dodaj role i funkcje kreatora 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
+   3. Na **serwer docelowy wybierz** wybierz **wybierz serwer z puli serwerów**. Serwer hosta powinny zostać wykryte automatycznie. Kliknij przycisk **Dalej**.
+   4. Na **Wybieranie ról serwera** kliknij **dalej**.
    5. Na **wybierz funkcje** wybierz **wielościeżkowego We/Wy**i kliknij przycisk **dalej**.
    
-       ![Dodawanie ról i funkcji — Kreator 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. Na **Potwierdź wybrane opcje instalacji** , potwierdź wybór, a następnie wybierz **automatycznie ponownie uruchom serwer docelowy, jeśli jest to wymagane**, jak pokazano poniżej. Kliknij pozycję **Zainstaluj**.
+       ![Dodaj role i funkcje kreatora 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
+   6. Na **Potwierdź wybrane opcje instalacji** strony, potwierdź wybór, a następnie wybierz pozycję **automatycznego ponownego uruchomienia serwera docelowego, jeśli jest to wymagane**, jak pokazano poniżej. Kliknij pozycję **Zainstaluj**.
    
-       ![Dodawanie ról i funkcji — Kreator 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
-   7. Użytkownik jest powiadamiany o zakończeniu instalacji. Kliknij przycisk **Zamknij**, aby zamknąć kreatora.
+       ![Dodaj role i funkcje kreatora 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
+   7. Otrzymasz powiadomienie po zakończeniu instalacji. Kliknij przycisk **Zamknij**, aby zamknąć kreatora.
    
-       ![Dodawanie ról i funkcji — Kreator 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
+       ![Dodaj role i funkcje kreatora 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
 
 ## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>Krok 2: Konfigurowanie wielościeżkowego wejścia/wyjścia dla woluminów StorSimple
 
-Wielościeżkowego wejścia/wyjścia musi być skonfigurowany, aby zidentyfikować woluminów StorSimple. Aby skonfigurować, aby rozpoznać woluminów StorSimple, wykonaj następujące kroki.
+Wielościeżkowe wejście/wyjście musi być skonfigurowany w celu zidentyfikowania woluminów StorSimple. Aby skonfigurować wielościeżkowe wejście/wyjście, rozpoznawał woluminów StorSimple, wykonaj następujące czynności.
 
-#### <a name="to-configure-mpio-for-storsimple-volumes"></a>Aby skonfigurować wielościeżkowego wejścia/wyjścia dla woluminów StorSimple
+#### <a name="to-configure-mpio-for-storsimple-volumes"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia dla woluminów StorSimple
 
-1. Otwórz **Konfiguracja MPIO**. Kliknij przycisk **Menedżera serwera > pulpit nawigacyjny > Narzędzia > wielościeżkowego wejścia/wyjścia**.
-2. W **Właściwości wielościeżkowego wejścia/wyjścia** okno dialogowe, wybierz opcję **wykrywanie obsługi wielu ścieżek** kartę.
-3. Wybierz **dodać obsługę urządzeń iSCSI**, a następnie kliknij przycisk **Dodaj**.  
+1. Otwórz **Konfiguracja wielościeżkowego wejścia/wyjścia**. Kliknij przycisk **Menedżera serwera > pulpit nawigacyjny > Narzędzia > wielościeżkowego wejścia/wyjścia**.
+2. W **Właściwości wielościeżkowego wejścia/wyjścia** okno dialogowe, wybierz opcję **wykrywanie wielu ścieżek** kartę.
+3. Wybierz **obsługę urządzeń iSCSI**, a następnie kliknij przycisk **Dodaj**.  
    ![Właściwości wielościeżkowego wejścia/wyjścia odnajdywanie wielu ścieżek](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. Uruchom ponownie serwer po wyświetleniu monitu.
-5. W **Właściwości wielościeżkowego wejścia/wyjścia** okno dialogowe, kliknij przycisk **urządzeń wielościeżkowego wejścia/wyjścia** kartę. Kliknij przycisk **dodać**.
-    </br>![Wielościeżkowe wejście/wyjście Właściwości wielościeżkowego We/Wy urządzenia](./media/storsimple-configure-mpio-windows-server/IC741004.png)
-6. W **Dodawanie obsługi wielościeżkowego wejścia/wyjścia** okna dialogowego, w obszarze **identyfikator urządzenia sprzętowego**, wprowadź numer seryjny urządzenia. Aby uzyskać numer seryjny urządzenia, dostęp do usługi Menedżer StorSimple urządzenia. Przejdź do **urządzenia > pulpit nawigacyjny**. Numer seryjny urządzenia jest wyświetlany w prawej **szybki przegląd** okienku nawigacyjnym urządzenia.
+5. W **Właściwości wielościeżkowego wejścia/wyjścia** okno dialogowe, kliknij przycisk **urządzeń wielościeżkowego wejścia/wyjścia** kartę. Kliknij pozycję **Dodaj**.
+    </br>![Urządzeń wielościeżkowego wejścia/wyjścia Właściwości wielościeżkowego wejścia/wyjścia](./media/storsimple-configure-mpio-windows-server/IC741004.png)
+6. W **Dodaj Obsługa wielościeżkowego wejścia/wyjścia** dialogowego **identyfikator urządzenia sprzętowego**, wprowadź numer seryjny urządzenia z systemem. Aby uzyskać numer seryjny urządzenia, dostęp do usługi Menedżer urządzeń StorSimple. Przejdź do **urządzeń > pulpit nawigacyjny**. Numer seryjny urządzenia jest wyświetlany w prawej **Quick Glance** okienku pulpitu nawigacyjnego z urządzenia.
     </br>
-    ![Dodawanie obsługi wielościeżkowego wejścia/wyjścia](./media/storsimple-configure-mpio-windows-server/IC741005.png)
+    ![Dodanie obsługi wielościeżkowego wejścia/wyjścia](./media/storsimple-configure-mpio-windows-server/IC741005.png)
 7. Uruchom ponownie serwer po wyświetleniu monitu.
 
 ## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>Krok 3: Woluminy StorSimple instalacji na hoście
 
-Po skonfigurowaniu wielościeżkowego wejścia/wyjścia w systemie Windows Server woluminy utworzone na urządzeniu StorSimple może być instalowany i następnie skorzystać z funkcji MPIO nadmiarowości. Aby zainstalować wolumin, wykonaj następujące kroki.
+Po skonfigurowaniu wielościeżkowego wejścia/wyjścia w systemie Windows Server mogą być instalowane woluminy utworzone na urządzeniu StorSimple, a następnie korzystać z zalet wielościeżkowego wejścia/wyjścia w celu zapewnienia nadmiarowości. Aby zainstalować wolumin, wykonaj następujące kroki.
 
 #### <a name="to-mount-volumes-on-the-host"></a>Aby zainstalować woluminy na hoście
 
 1. Otwórz **właściwości inicjatora iSCSI** okno na hoście systemu Windows Server. Kliknij przycisk **Menedżera serwera > pulpit nawigacyjny > Narzędzia > inicjatora iSCSI**.
 2. W **właściwości inicjatora iSCSI** okno dialogowe, kliknij kartę odnajdywania, a następnie kliknij przycisk **odnajdowanie portalu obiektu docelowego**.
-3. W **odnajdowanie portalu obiektu docelowego** okna dialogowego wykonaj następujące czynności:
+3. W **odnajdowanie portalu obiektu docelowego** okna dialogowego pole, wykonaj następujące czynności:
    
-   1. Wprowadź adres IP, portu, danych urządzenia StorSimple (na przykład wprowadzić dane 0).
+   1. Wprowadź adres IP, portu, danych urządzenia StorSimple (na przykład, wprowadź interfejs DATA 0).
    2. Kliknij przycisk **OK** aby powrócić do **właściwości inicjatora iSCSI** okno dialogowe.
      
-     > [!IMPORTANT]
-     > **Jeśli używasz sieci prywatnej dla połączenia iSCSI, wprowadź adres IP, portu danych, do którego jest podłączony do sieci prywatnej.**
+      > [!IMPORTANT]
+      > **Jeśli używasz sieci prywatnej dla połączenia iSCSI, wprowadź adres IP, portu danych, który jest podłączony do sieci prywatnej.**
     
-4. Powtórz kroki 2 i 3 dla drugiego interfejsu sieciowego (na przykład 1 danych) na urządzeniu. Należy pamiętać, że te interfejsy powinno być włączone dla interfejsu iSCSI. Aby uzyskać więcej informacji, zobacz [zmodyfikować interfejsów sieciowych](storsimple-8000-modify-device-config.md#modify-network-interfaces).
-5. Wybierz **celów** karcie **właściwości inicjatora iSCSI** okno dialogowe. Powinny pojawić się urządzenia StorSimple target IQN w obszarze **wykryte obiekty docelowe**.
+4. Powtórz kroki 2 i 3 dla drugiego interfejsu sieciowego (na przykład dane 1) na urządzeniu. Należy pamiętać, że te interfejsy powinno być włączone dla interfejsu iSCSI. Aby uzyskać więcej informacji, zobacz [zmodyfikować interfejsów sieciowych](storsimple-8000-modify-device-config.md#modify-network-interfaces).
+5. Wybierz **cele** karcie **właściwości inicjatora iSCSI** okno dialogowe. Powinien zostać wyświetlony urządzenia StorSimple docelowa nazwa IQN w obszarze **wykryte obiekty docelowe**.
 
    ![Karta elementy docelowe właściwości inicjatora iSCSI](./media/storsimple-configure-mpio-windows-server/IC741007.png)
    
-6. Kliknij przycisk **Connect** ustanowienie sesji iSCSI przy użyciu swojego urządzenia StorSimple. A **nawiązywanie połączenia z docelowym** zostanie wyświetlone okno dialogowe.
-7. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru. Kliknij przycisk **zaawansowane**.
-8. W **Zaawansowane ustawienia** okna dialogowego wykonaj następujące czynności:
+6. Kliknij przycisk **Connect** ustanowienie sesji iSCSI na urządzeniu StorSimple. A **nawiązywanie połączenia z docelowym** pojawi się okno dialogowe.
+7. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru. Kliknij pozycję **Advanced** (Zaawansowane).
+8. W **Zaawansowane ustawienia** okna dialogowego pole, wykonaj następujące czynności:
    
    1. Na **karty lokalnej** listy rozwijanej wybierz **inicjatora iSCSI firmy Microsoft**.
-   2. Na **IP inicjatora** listy rozwijanej wybierz adres IP hosta.
-   3. Na **portalu obiektu docelowego** IP listy rozwijanej wybierz adres IP interfejsu urządzenia.
+   2. Na **adres IP inicjatora** listy rozwijanej wybierz adres IP hosta.
+   3. Na **portalu obiektu docelowego** IP listę rozwijaną, wybierz adres IP interfejsu urządzenia na liście.
    4. Kliknij przycisk **OK** aby powrócić do **właściwości inicjatora iSCSI** okno dialogowe.
-9. Kliknij pozycję **Właściwości**. W **właściwości** okno dialogowe, kliknij przycisk **dodać sesji**.
-10. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru. Kliknij przycisk **zaawansowane**.
+9. Kliknij pozycję **Właściwości**. W **właściwości** okno dialogowe, kliknij przycisk **Dodaj sesję**.
+10. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru. Kliknij pozycję **Advanced** (Zaawansowane).
 11. W **Zaawansowane ustawienia** okno dialogowe:
 
-    1. Na **karty lokalnej** listy rozwijanej, wybierz inicjatora iSCSI firmy Microsoft.
-    2. Na **IP inicjatora** listy rozwijanej wybierz adres IP odpowiadający hosta. W takim przypadku w jednym interfejsem sieciowym na hoście łączysz dwa interfejsy sieci na urządzeniu. W związku z tym ten interfejs jest taka sama jak ta podana dla pierwszej sesji.
-    3. Na **docelowy adres IP portalu** listy rozwijanej, wybierz adres IP drugi interfejs danych, włączone na urządzeniu.
-    4. Kliknij przycisk **OK** aby powrócić do okna dialogowego właściwości inicjatora iSCSI. Dodano drugiej sesji do obiektu docelowego.
-12. Otwórz **Zarządzanie komputerem** przechodząc do **Menedżera serwera > pulpit nawigacyjny > Zarządzanie komputerem**. W okienku po lewej stronie kliknij **magazynu > Zarządzanie dyskami**. Wolumin utworzony na urządzeniu StorSimple, które są widoczne dla tego hosta zostanie wyświetlona w obszarze **Zarządzanie dyskami** jako nowe dyski.
+    1. Na **karty lokalnej** listy rozwijanej, wybierz opcję inicjatora iSCSI firmy Microsoft.
+    2. Na **adres IP inicjatora** listę rozwijaną, wybierz adres IP odpowiadający hosta na liście. W takim przypadku w pojedynczym interfejsem sieciowym na hoście łączysz dwa interfejsy sieci na urządzeniu. W związku z tym ten interfejs jest taka sama jak ta podana dla pierwszej sesji.
+    3. Na **IP portalu docelowego** listy rozwijanej, wybierz adres IP drugiego interfejsu danych, włączone na urządzeniu.
+    4. Kliknij przycisk **OK** aby powrócić do okna dialogowego właściwości inicjatora iSCSI. Drugi sesji zostały dodane do obiektu docelowego.
+12. Otwórz **Zarządzanie komputerem** , przechodząc do **Menedżera serwera > pulpit nawigacyjny > Zarządzanie komputerem**. W okienku po lewej stronie kliknij **magazynu > Zarządzanie dyskami**. Wolumin utworzony na urządzeniu StorSimple, które będą widoczne dla tego hosta zostanie wyświetlona w obszarze **przystawki Zarządzanie dyskami** jako nowe dyski.
 13. Zainicjuj dysk, a następnie utwórz nowy wolumin. W trakcie format Wybierz blok o rozmiarze 64 KB.
     
     ![Zarządzanie dyskami](./media/storsimple-configure-mpio-windows-server/IC741008.png)
-14. W obszarze **Zarządzanie dyskami**, kliknij prawym przyciskiem myszy **dysku** i wybierz **właściwości**.
-15. W modelu StorSimple ### **właściwości urządzenia dysku wielościeżkowe** okno dialogowe, kliknij przycisk **wielościeżkowego wejścia/wyjścia** kartę.
+14. W obszarze **przystawki Zarządzanie dyskami**, kliknij prawym przyciskiem myszy **dysku** i wybierz **właściwości**.
+15. W modelu usługi StorSimple ### **właściwości urządzenia dysku wielościeżkowe** okno dialogowe, kliknij przycisk **wielościeżkowego wejścia/wyjścia** kartę.
     
-    ![StorSimple 8100 DeviceProp wielościeżkowe dysku.](./media/storsimple-configure-mpio-windows-server/IC741009.png)
-16. W **Nazwa DSM** kliknij **szczegóły** i upewnij się, że parametry są ustawione na parametrów domyślnych. Parametry domyślne są:
+    ![StorSimple 8100 Multi-Path Disk DeviceProp.](./media/storsimple-configure-mpio-windows-server/IC741009.png)
+16. W **Nazwa DSM** kliknij **szczegóły** i sprawdź, czy parametry są ustawione na parametrów domyślnych. Parametry domyślne są następujące:
     
-    * Ścieżka upewnij się, okres = 30
+    * Sprawdź ścieżkę, okres = 30
     * Liczba ponownych prób = 3
     * PDO Usuń okres = 20
     * Interwał ponawiania prób = 1
@@ -148,47 +148,47 @@ Po skonfigurowaniu wielościeżkowego wejścia/wyjścia w systemie Windows Serve
 > **Nie należy modyfikować domyślnych parametrów.**
 
 
-## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>Krok 4: Konfigurowanie wielościeżkowego wejścia/wyjścia wysokiej dostępności i równoważenia obciążenia
+## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>Krok 4: Konfigurowanie wielościeżkowego wejścia/wyjścia w celu zapewnienia wysokiej dostępności i równoważenia obciążenia
 
-Wielościeżkowe podstawie wysokiej dostępności i równoważenia obciążenia, wiele sesji należy dodać ręcznie do deklarowania różne ścieżki dostępne. Na przykład, jeśli host ma dwa interfejsy podłączone do sieci iSCSI i urządzenie ma dwa interfejsy podłączone do sieci iSCSI, a następnie należy cztery sesji skonfigurowane z odpowiednią ścieżką permutacji (tylko dwóch sesji będzie wymagane, jeśli każdy interfejs danych i interfejs hosta jest w innej podsieci IP i nie podlega routingowi).
+Wielościeżkowe opartego o wysokiej dostępności i równoważenia obciążenia, wiele sesji należy dodać ręcznie zadeklarować różnych ścieżek dostępne. Na przykład, jeśli host ma dwa interfejsy podłączone do sieci iSCSI i urządzenie ma dwa interfejsy podłączone do sieci iSCSI, a następnie należy czterech sesji, skonfigurowany z odpowiednią ścieżką permutacji (tylko dwie sesje będzie wymagane, jeśli każdy interfejs danych i interfejs hosta jest w innej podsieci IP i nie podlega routingowi).
 
-**Zaleca się, że masz co najmniej 8 aktywne sesje równoległych między urządzeniem i hosta aplikacji.** Można to osiągnąć przez włączenie 4 interfejsów sieciowych w systemie Windows Server. Użyj sieci fizycznej lub wirtualnej interfejsów za pomocą technologii wirtualizacji sieci na poziomie sprzętu lub systemu operacyjnego na hoście z systemem Windows Server. Z dwoma interfejsami sieciowymi na urządzeniu ta konfiguracja spowoduje 8 aktywnych sesji. Taka konfiguracja pozwala zoptymalizować przepływność urządzenia i w chmurze.
+**Zaleca się, że masz co najmniej 8 aktywne sesje równoległe między urządzeniem i hosta aplikacji.** Można to osiągnąć przez włączenie 4 interfejsów sieciowych w systemie Windows Server. Użyj sieci fizycznej lub wirtualnej interfejsów przy użyciu technologii wirtualizacji sieci na poziomie sprzętu lub systemu operacyjnego na hoście z systemem Windows Server. Z dwoma interfejsami sieciowymi na urządzeniu ta konfiguracja mogłoby spowodować 8 aktywnych sesji. Taka konfiguracja pozwala zoptymalizować przepływność urządzenia i chmury.
 
 > [!IMPORTANT]
-> **Zaleca się, że niemieszanie 1 GbE i interfejsów sieciowych usługi 10 GbE. Jeśli używasz dwa interfejsy sieci dotyczą obu interfejsów powinna być typem identyczne.**
+> **Zaleca się, że użytkownik nie należy mieszać 1 GbE i interfejsów sieciowych 10 GbE. Jeśli używasz dwa interfejsy sieciowe, dotyczą obu interfejsów powinien być identyczny typu.**
 
-Poniższa procedura zawiera opis sposobu dodawania sesji, gdy urządzenie StorSimple z dwoma interfejsami sieciowymi jest podłączone do hosta z dwoma interfejsami sieciowymi. Dzięki temu tylko 4 sesji. Zastosuj tę samą procedurę z urządzeniem StorSimple z dwóch interfejsów sieciowych podłączonych do hosta z czterech interfejsami sieciowymi. Należy skonfigurować 8 zamiast 4 sesje opisane w tym miejscu.
+Poniższa procedura opisuje sposób dodawania sesji, gdy urządzenie StorSimple o dwa interfejsy sieci jest podłączony do hosta z dwoma interfejsami sieciowymi. Dzięki temu tylko 4 sesji. Zastosuj tę samą procedurę z urządzeniem StorSimple przy użyciu dwa interfejsy sieciowe podłączone do hosta z czterech interfejsami sieciowymi. Należy skonfigurować 8 zamiast sesje 4 opisane w tym miejscu.
 
-### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>Aby skonfigurować wielościeżkowe wejście/wyjście wysoką dostępność i równoważenie obciążenia
+### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>Konfigurowanie wielościeżkowego wejścia/wyjścia w celu zapewnienia wysokiej dostępności i równoważenia obciążenia
 
-1. Odnajdź elementu docelowego: w **właściwości inicjatora iSCSI** na okna dialogowego **odnajdywania** , kliknij pozycję **odnajdź Portal**.
+1. Odnajdywanie elementu docelowego: w **właściwości inicjatora iSCSI** dialogowym **odnajdywania** kliknij pozycję **odnajdź Portal**.
 2. W **nawiązywanie połączenia z docelowym** okna dialogowego wprowadź adres IP jednego z interfejsów sieciowych urządzenia.
 3. Kliknij przycisk **OK** aby powrócić do **właściwości inicjatora iSCSI** okno dialogowe.
-4. W **właściwości inicjatora iSCSI** okno dialogowe, wybierz opcję **celów** , zaznacz odnalezionych obiektu docelowego, a następnie kliknij **Connect**. **Nawiązywanie połączenia z docelowym** zostanie wyświetlone okno dialogowe.
+4. W **właściwości inicjatora iSCSI** okno dialogowe, wybierz opcję **cele** kartę, zaznacz odnalezionych docelowego, a następnie kliknij **Connect**. **Nawiązywanie połączenia z docelowym** pojawi się okno dialogowe.
 5. W **nawiązywanie połączenia z docelowym** okno dialogowe:
    
-   1. Pozostaw domyślnie wybrane ustawienie docelowej dla **dodania tego połączenia** do listy ulubionych elementów docelowych. Dzięki temu urządzenie automatycznie podejmować próby ponownego uruchomienia połączenia, za każdym razem, gdy ten komputer zostanie uruchomiony ponownie.
+   1. Pozostaw domyślnie wybrane ustawienie obiektu docelowego dla **dodać to połączenie** do listy ulubionych elementów docelowych. To sprawia, że urządzenie automatycznej próbie ponownego uruchomienia połączenie, za każdym razem, gdy ten komputer zostanie uruchomiony ponownie.
    2. Wybierz **Włącz wielościeżkowe** pole wyboru.
-   3. Kliknij przycisk **zaawansowane**.
+   3. Kliknij pozycję **Advanced** (Zaawansowane).
 6. W **Zaawansowane ustawienia** okno dialogowe:
    
    1. Na **karty lokalnej** listy rozwijanej wybierz **inicjatora iSCSI firmy Microsoft**.
-   2. Na **IP inicjatora** listy rozwijanej wybierz adres IP odpowiadający pierwszy interfejs na hoście (interfejsu iSCSI).
-   3. Na **docelowy adres IP portalu** listy rozwijanej, wybierz adres IP dla pierwszego interfejsu danych, włączone na urządzeniu.
+   2. Na **adres IP inicjatora** listy rozwijanej wybierz adres IP odpowiadający interfejsowi pierwszy na hoście (interfejsu iSCSI).
+   3. Na **IP portalu docelowego** listy rozwijanej, wybierz adres IP pierwszego interfejsu danych, włączone na urządzeniu.
    4. Kliknij przycisk **OK** aby powrócić do okna dialogowego właściwości inicjatora iSCSI.
-7. Kliknij przycisk **właściwości**i w **właściwości** okno dialogowe, kliknij przycisk **dodać sesji**.
+7. Kliknij przycisk **właściwości**, a następnie w **właściwości** okno dialogowe, kliknij przycisk **Dodaj sesję**.
 8. W **nawiązywanie połączenia z docelowym** okno dialogowe, wybierz opcję **Włącz wielościeżkowe** pole wyboru, a następnie kliknij przycisk **zaawansowane**.
 9. W **Zaawansowane ustawienia** okno dialogowe:
    
    1. Na **karty lokalnej** listy rozwijanej wybierz **inicjatora iSCSI firmy Microsoft**.
-   2. Na **IP inicjatora** listy rozwijanej wybierz adres IP odpowiadający drugi interfejs iSCSI na hoście.
-   3. Na **docelowy adres IP portalu** listy rozwijanej, wybierz adres IP drugi interfejs danych, włączone na urządzeniu.
-   4. Kliknij przycisk **OK** aby powrócić do **właściwości inicjatora iSCSI** okno dialogowe. Drugi sesji zostało dodane do obiektu docelowego.
-10. Powtórz kroki 8-10, aby dodać dodatkowych sesji (ścieżki) do obiektu docelowego. Dwa interfejsy na hoście i dwa na urządzeniu można dodawać łącznie cztery sesji.
-11. Po dodaniu żądanego sesji (ścieżki) w **właściwości inicjatora iSCSI** okno dialogowe, wybierz obiekt docelowy, a kliknij przycisk **właściwości**. Na karcie sesje **właściwości** okno dialogowe, Uwaga cztery sesji identyfikatorów, które odpowiadają permutacji możliwych ścieżek. Aby anulować sesję, zaznacz pole wyboru obok identyfikator sesji, a następnie kliknij przycisk **rozłączenia**.
-12. Aby wyświetlić urządzenia przedstawione w sesji, wybierz **urządzeń** kartę. Aby skonfigurować zasady wielościeżkowego wejścia/wyjścia dla wybranego urządzenia, kliknij przycisk **wielościeżkowego wejścia/wyjścia**. **Szczegóły urządzenia** zostanie wyświetlone okno dialogowe. Na **wielościeżkowego wejścia/wyjścia** karcie można wybrać odpowiednie **zasady równoważenia obciążenia** ustawienia. Można również wyświetlić **Active** lub **wstrzymania** typu ścieżki.
+   2. Na **adres IP inicjatora** listy rozwijanej wybierz adres IP odpowiadający drugi interfejs iSCSI na hoście.
+   3. Na **IP portalu docelowego** listy rozwijanej, wybierz adres IP drugiego interfejsu danych, włączone na urządzeniu.
+   4. Kliknij przycisk **OK** aby powrócić do **właściwości inicjatora iSCSI** okno dialogowe. Drugi sesji zostały dodane do obiektu docelowego.
+10. Powtórz kroki 8 – 10, aby dodać dodatkowe sesji (ścieżek) do obiektu docelowego. Mając dwa interfejsy na hoście i dwa na urządzeniu możesz dodać daje w sumie czterech sesji.
+11. Po dodaniu żądanej sesji (ścieżek) w **właściwości inicjatora iSCSI** okna dialogowego pole, wybierz element docelowy i kliknij przycisk **właściwości**. Na karcie sesje **właściwości** okno dialogowe, Uwaga czterech sesji identyfikatorów, które odpowiadają permutacji możliwej ścieżki. Aby anulować sesję, zaznacz pole wyboru obok identyfikatora sesji, a następnie kliknij **rozłączenia**.
+12. Zaznacz, aby wyświetlić urządzenia przedstawione w sesjach **urządzeń** kartę. Aby skonfigurować zasady wielościeżkowego wejścia/wyjścia dla wybranego urządzenia, kliknij przycisk **wielościeżkowego wejścia/wyjścia**. **Szczegóły urządzenia** pojawi się okno dialogowe. Na **wielościeżkowego wejścia/wyjścia** karty, możesz wybrać odpowiednie **zasady równoważenia obciążenia** ustawienia. Można również wyświetlić **Active** lub **wstrzymania** typ ścieżki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [przy użyciu usługi Menedżer StorSimple urządzenia do modyfikowania konfiguracji urządzenia StorSimple](storsimple-8000-modify-device-config.md).
+Dowiedz się więcej o [do modyfikowania konfiguracji urządzenia StorSimple przy użyciu usługi Menedżer urządzeń StorSimple](storsimple-8000-modify-device-config.md).
 

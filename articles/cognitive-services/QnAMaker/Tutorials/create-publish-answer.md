@@ -7,27 +7,27 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 348cb6a451f15ddec6b7ee013832ad6c563bb2da
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874956"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102166"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Samouczek: używanie języka C# do tworzenia bazy wiedzy, a następnie odpowiadania na pytanie z bazy wiedzy
 
 Ten samouczek przedstawia sposób programowego tworzenia i publikowania bazy wiedzy, a następnie odpowiadania na pytanie klienta za pomocą bazy wiedzy. 
 
 > [!div class="checklist"]
-* Tworzenie bazy wiedzy 
-* Sprawdzanie stanu tworzenia
-* Uczenie i publikowanie bazy wiedzy
-* Uzyskiwanie informacji o punkcie końcowym
-* Używanie programu Curl do wykonywania zapytań w bazie wiedzy
+> * Tworzenie bazy wiedzy 
+> * Sprawdzanie stanu tworzenia
+> * Uczenie i publikowanie bazy wiedzy
+> * Uzyskiwanie informacji o punkcie końcowym
+> * Używanie programu Curl do wykonywania zapytań w bazie wiedzy
 
 
 Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
@@ -245,7 +245,7 @@ Skompiluj i uruchom program.
 
 Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices). Kiedy już wiesz, jak używać interfejsu API generowania odpowiedzi, możesz użyć tego interfejsu API z dowolnym językiem lub strukturą żądania HTTP. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

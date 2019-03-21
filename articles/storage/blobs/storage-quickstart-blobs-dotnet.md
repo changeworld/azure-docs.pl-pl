@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie obiektu blob w magazynie obiektów za pomocą platformy .NET — Azure Storage'
+title: 'Szybki start: Używaj .NET do tworzenia obiektu blob w magazynie obiektów - usługi Azure Storage'
 description: Z tego przewodnika Szybki start dowiesz się, jak używać biblioteki klienta usługi Azure Storage dla platformy .NET do tworzenia kontenera i obiektu blob w magazynie obiektów blob (obiektów). Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać listę wszystkich obiektów blob w kontenerze.
 services: storage
 author: tamram
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 4b632d9aab89e4c8d79983855bdd12aeafb05147
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 50bb13ecaa9e6076f00749d54b492a1e6663a93e
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712028"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287115"
 ---
-# <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Szybki start: tworzenie obiektu blob w magazynie obiektów za pomocą platformy .NET
+# <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Szybki start: Tworzenie obiektu blob w magazynie obiektów przy użyciu .NET
 
 Z tego przewodnika Szybki start dowiesz się, jak używać biblioteki klienta usługi Azure Storage dla platformy .NET do tworzenia kontenera i obiektu blob w magazynie obiektów blob (obiektów). Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać listę wszystkich obiektów blob w kontenerze.
 
@@ -162,6 +162,7 @@ Przykładowy kod najpierw sprawdza, czy zmienna środowiskowa zawiera parametry 
 string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
 
 // Check whether the connection string can be parsed.
+CloudStorageAccount storageAccount;
 if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
 {
     // If the connection string is valid, proceed with operations against Blob storage here.
@@ -172,7 +173,7 @@ else
     // Otherwise, let the user know that they need to define the environment variable.
     Console.WriteLine(
         "A connection string has not been defined in the system environment variables. " +
-        "Add a environment variable named 'storageconnectionstring' with your storage " +
+        "Add an environment variable named 'storageconnectionstring' with your storage " +
         "connection string as a value.");
     Console.WriteLine("Press any key to exit the sample application.");
     Console.ReadLine();
@@ -196,7 +197,7 @@ W takim przypadku przykład wywołuje metodę [CreateAsync](/dotnet/api/microsof
 CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
 
 // Create a container called 'quickstartblobs' and append a GUID value to it to make the name unique. 
-cloudBlobContainer = cloudBlobClient.GetContainerReference("quickstartblobs" + Guid.NewGuid().ToString());
+CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("quickstartblobs" + Guid.NewGuid().ToString());
 await cloudBlobContainer.CreateAsync();
 
 // Set the permissions so the blobs are public. 
@@ -295,7 +296,7 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji .NET przy użyciu m
 - Aby uzyskać więcej informacji na temat biblioteki klienta .NET, zobacz [dokumentację interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob) napisanymi przy użyciu biblioteki klienta .NET.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start opisano następujące czynności: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy .NET. 
 

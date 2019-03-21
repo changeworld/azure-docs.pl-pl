@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d0bb9ad5c3a39f4065a81fb218a4b167f6fde9b1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4e609bf6d96fa9cc3f2dc179157ecd27178608f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447561"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860367"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Dostęp do usługi Azure Cosmos DB z sieciami wirtualnymi (VNet)
 
@@ -44,7 +44,7 @@ Po włączeniu punktu końcowego usługi dla usługi Azure Cosmos DB w podsieci 
 Tylko sieć wirtualną i ich podsieci dodane do konta usługi Azure Cosmos mają dostęp. Ich wirtualne sieci równorzędne nie może uzyskać dostępu do konta, dopóki podsieci w sieciach wirtualnych są dodawane do konta.
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Co to jest maksymalna liczba podsieci dozwolony dostęp do jednego konta usługi Cosmos? 
-Obecnie usługa może mieć co najwyżej 64 podsieci dozwolona dla konta usługi Azure Cosmos.
+Obecnie usługa może mieć co najwyżej 64 podsieci dozwoloną dla konta usługi Azure Cosmos.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Można włączyć dostęp z sieci VPN i Expressroute? 
 Do uzyskania dostępu do konta usługi Azure Cosmos za pośrednictwem expressroute z lokalnie, należy włączyć komunikację równorzędną firmy Microsoft. Po wprowadzeniu zapory adresów IP lub reguły dostępu do sieci wirtualnej można dodać publiczne adresy IP, używany do komunikacji równorzędnej firmy Microsoft na zaporze IP konta usługi Azure Cosmos w celu umożliwienia lokalnej usługi dostępu do konta usługi Azure Cosmos. 

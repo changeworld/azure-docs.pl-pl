@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: d13e0ea365b25bc17ff2d23dfaf86bc057774744
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415497"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996325"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Pobieranie skryptów konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S
 
@@ -53,7 +53,7 @@ Utwórz bramę Azure VPN gateway, bramy sieci lokalnej i zasobu połączenia, po
 
 Po utworzeniu zasobu połączenia postępuj zgodnie z poniższymi instrukcjami, aby pobrać skrypty konfiguracji urządzenia sieci VPN:
 
-1. W przeglądarce przejdź do [witryny Azure portal](http://portal.azure.com) i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure
+1. W przeglądarce przejdź do [witryny Azure portal](https://portal.azure.com) i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure
 2. Przejdź do zasobu połączenia, który został utworzony. Lista wszystkich zasobów połączenia można znaleźć, klikając pozycję "Wszystkie usługi", a następnie "Sieć" i "Połączenia".
 
     ![Lista połączeń](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)

@@ -10,16 +10,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 53c816ee8fa670c8a4dde3212325524a17d25aab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 85113a5007a171459b831684f584773ba4328b94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314436"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079950"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Tworzenie bramy aplikacji z wielu lokacji hostingu za pomocą witryny Azure portal
 
-Witryna Azure portal służy do konfigurowania [hostingu wielu witryn sieci web](application-gateway-multi-site-overview.md) po utworzeniu [bramy application gateway](application-gateway-introduction.md). W tym samouczku utworzysz pul zaplecza za pomocą zestawów skalowania maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś właścicielem wielu domen, przykładami których są *www.contoso.com* i *www.fabrikam.com*.
+Witryna Azure portal służy do konfigurowania [hostingu wielu witryn sieci web](application-gateway-multi-site-overview.md) po utworzeniu [bramy application gateway](application-gateway-introduction.md). W tym samouczku utworzysz pul zaplecza za pomocą zestawów skalowania maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku założono, że posiadasz wiele domen i używa przykłady *www\.contoso.com* i *www\.fabrikam.com*.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -46,20 +46,20 @@ Sieć wirtualna jest potrzebna do komunikacji między utworzonymi zasobami. W ty
 2. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
 3. Wprowadź następujące wartości dla bramy aplikacji:
 
-    - *myAppGateway* — jako nazwę bramy aplikacji.
-    - *myResourceGroupAG* — jako nową grupę zasobów.
+   - *myAppGateway* — jako nazwę bramy aplikacji.
+   - *myResourceGroupAG* — jako nową grupę zasobów.
 
-    ![Tworzenie nowej bramy aplikacji](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
+     ![Tworzenie nowej bramy aplikacji](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
 
 4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
 5. Kliknij kolejno pozycje **Wybierz sieć wirtualną**, **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
 
-    - *myVNet* — jako nazwę sieci wirtualnej.
-    - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
-    - *myAGSubnet* — jako nazwę podsieci.
-    - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
+   - *myVNet* — jako nazwę sieci wirtualnej.
+   - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
+   - *myAGSubnet* — jako nazwę podsieci.
+   - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
 
-    ![Tworzenie sieci wirtualnej](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
+     ![Tworzenie sieci wirtualnej](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
 
 6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
 7. Kliknij przycisk **wybierz publiczny adres IP**, kliknij przycisk **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
@@ -136,11 +136,11 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 1. Kliknij przycisk **odbiorników** a następnie kliknij przycisk **obejmujące wiele lokacji**.
 2. Wprowadź następujące wartości dla odbiornika:
     
-    - *contosoListener* — jako nazwę odbiornika.
-    - *www.contoso.com* — w tym przykładzie nazwa hosta Zamień na nazwę domeny.
+   - *contosoListener* — jako nazwę odbiornika.
+   - *www\.contoso.com* — w tym przykładzie nazwa hosta Zamień na nazwę domeny.
 
 3. Kliknij przycisk **OK**.
-4. Utwórz odbiornik drugi przy użyciu nazwy *fabrikamListener* i korzystania z drugiego nazwy domeny. W tym przykładzie *www.fabrikam.com* jest używany.
+4. Utwórz odbiornik drugi przy użyciu nazwy *fabrikamListener* i korzystania z drugiego nazwy domeny. W tym przykładzie *www\.fabrikam.com* jest używany.
 
 Reguły są przetwarzane w kolejności, w jakiej są wymienione, a ruch jest przekierowywany przy użyciu pierwszej zgodnej reguły niezależnie od specyficzności. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
 

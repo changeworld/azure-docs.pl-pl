@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 848663c509fd3635b33b8e7735feb940da215bfa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441818"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853294"
 ---
 # <a name="scp-programming-guide"></a>Podręcznik programowania punkt połączenia usługi
 Punkt połączenia usługi jest platformę kompilacji w czasie rzeczywistym, niezawodne i spójne i aplikacji przetwarzania danych o wysokiej wydajności. Jest on oparty na [Apache Storm](https://storm.incubator.apache.org/) — zaprojektowane przez społeczności OSS systemu przetwarzania strumienia. STORM został zaprojektowany przez Nathana Marza, i została open source w serwisie Twitter. Wykorzystuje [Apache ZooKeeper](https://zookeeper.apache.org/), innego projektu Apache, aby włączyć wysoce niezawodne rozproszone Zarządzanie koordynacji i stanu. 
@@ -32,7 +32,7 @@ Storm — Topologia aplikacji definiuje Graf obliczeń. Każdy węzeł w topolog
 
 Punkt połączenia usługi obsługuje wszelkich starań, co najmniej jednokrotne i dokładnie — raz przetwarzania danych. W transmisji strumieniowej przetwarzania aplikacji rozproszonej różne błędy może się zdarzyć podczas przetwarzania danych, takich jak awaria sieci, błąd maszyny lub błędu w kodzie użytkownika itd. Co najmniej jednokrotne przetwarzania gwarantuje, że wszystkie dane będą przetwarzane przez odtworzenie automatycznie tych samych danych, gdy wystąpił błąd co najmniej raz. Przetwarzanie co najmniej jednokrotne jest proste i niezawodne i odpowiada również wiele aplikacji. Jednak jeśli aplikacja wymaga dokładnego zliczania, co najmniej jednokrotne przetwarzania jest niewystarczająca od tych samych danych potencjalnie może być odtwarzany w topologii aplikacji. W takim przypadku zgadza się — po przetwarzania zaprojektowano w celu upewnić się, że wynik jest poprawna, nawet gdy danych może być odtwarzany i przetworzyć wiele razy.
 
-Punkt połączenia usługi umożliwia deweloperom platformy .NET do tworzenia aplikacji do przetwarzania danych czasu rzeczywistego, korzystając w języku Java maszyny wirtualnej (JVM) z systemem Storm w sposób niewidoczny. .NET i JVM komunikują się za pośrednictwem lokalnego gniazda TCP. Zasadniczo każdy Spout/Bolt to para procesu .net i Java gdzie logikę użytkownika działa w procesie .net jako wtyczkę.
+Punkt połączenia usługi umożliwia deweloperom platformy .NET do tworzenia aplikacji do przetwarzania danych czasu rzeczywistego, korzystając w języku Java maszyny wirtualnej (JVM) z systemem Storm w sposób niewidoczny. .NET i JVM komunikują się za pośrednictwem lokalnego gniazda TCP. Zasadniczo każdy Spout/Bolt to para procesu .NET i Java gdzie logikę użytkownika działa w procesie .NET jako wtyczkę.
 
 Aby utworzyć aplikację do przetwarzania danych na podstawie punkt połączenia usługi, potrzebne są podjęcia kilku czynności:
 
@@ -355,12 +355,12 @@ Platformy SCP.NET dodał następujące funkcje do definiowania transakcyjnych to
 | **Nowe funkcje** | **Parametry** | **Opis** |
 | --- | --- | --- |
 | **tx-topolopy** |Nazwa topologii<br />spout mapy<br />Mapowanie elementu bolt |Definiuj transakcyjnych topologię o nazwie topologii &nbsp;spouts definicji mapy i mapy definicji elementów bolt |
-| **scp-tx-spout** |exec — nazwa<br />args<br />pola |Zdefiniuj spout transakcyjnych. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout |
-| **scp-tx-batch-bolt** |exec — nazwa<br />args<br />pola |Zdefiniuj transakcyjnych Bolt usługi Batch. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args.***<br /><br />Pola jest pól danych wyjściowych dla elementu bolt. |
-| **scp-tx-commit-bolt** |exec — nazwa<br />args<br />pola |Zdefiniuj bolt zatwierdzania transakcji. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt |
+| **scp-tx-spout** |exec — nazwa<br />args<br />Pola |Zdefiniuj spout transakcyjnych. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout |
+| **scp-tx-batch-bolt** |exec — nazwa<br />args<br />Pola |Zdefiniuj transakcyjnych Bolt usługi Batch. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args.***<br /><br />Pola jest pól danych wyjściowych dla elementu bolt. |
+| **scp-tx-commit-bolt** |exec — nazwa<br />args<br />Pola |Zdefiniuj bolt zatwierdzania transakcji. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt |
 | **nontx topolopy** |Nazwa topologii<br />spout mapy<br />Mapowanie elementu bolt |Definiuj topologię nietransakcyjna o nazwie topologii&nbsp; spouts definicji mapy i mapy definicji elementów bolt |
-| **scp-spout** |exec — nazwa<br />args<br />pola<br />parameters |Zdefiniuj spout nietransakcyjnej. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
-| **scp-bolt** |exec — nazwa<br />args<br />pola<br />parameters |Zdefiniuj nietransakcyjna Bolt. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
+| **scp-spout** |exec — nazwa<br />args<br />Pola<br />parameters |Zdefiniuj spout nietransakcyjnej. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pola danych wyjściowych spout<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
+| **scp-bolt** |exec — nazwa<br />args<br />Pola<br />parameters |Zdefiniuj nietransakcyjna Bolt. Działa z aplikacji przy użyciu ***exec-name*** przy użyciu ***args***.<br /><br />***Pola*** jest pól danych wyjściowych dla elementu bolt<br /><br />***Parametry*** są opcjonalne, używany do określenia niektóre parametry, takie jak "nontransactional.ack.enabled". |
 
 Program SCP.NET następujące słowa kluczowe zdefiniowane:
 
@@ -450,7 +450,7 @@ Tutaj
 3. [0,1] oznacza, że skrót zbiór identyfikatorów pola, począwszy od 0.
 
 ### <a name="hybrid-topology"></a>Topologia hybrydowe
-Natywne Storm jest napisany w języku Java. A platformy SCP.Net ma go w celu włączenia C\# programistom pisanie C\# kod służący do obsługi ich logiki biznesowej. Ale obsługuje ona również hybrydowe topologie, które zawiera nie tylko C\# elementów spout/bolt, ale także Java Spout/Bolt.
+Natywne Storm jest napisany w języku Java. A platformy SCP.NET ma go w celu włączenia C\# programistom pisanie C\# kod służący do obsługi ich logiki biznesowej. Ale obsługuje ona również hybrydowe topologie, które zawiera nie tylko C\# elementów spout/bolt, ale także Java Spout/Bolt.
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>Określ Spout/Bolt języka Java w specyfikacji pliku
 W specyfikacji pliku "punkt połączenia usługi spout" i "punkt połączenia usługi bolt" może również służyć do określania Spouts języka Java i elementów Bolt, Oto przykład:
@@ -562,7 +562,7 @@ W trybie hosta kodu użytkownika jest kompilowany jako biblioteka DLL i jest wyw
 
 ## <a name="scp-programming-examples"></a>Przykłady programowania punkt połączenia usługi
 ### <a name="helloworld"></a>HelloWorld
-**HelloWorld** to prosty przykład, aby pokazać smak platformy SCP.Net. Używa nietransakcyjnej topologii z spout, o nazwie **generator**i dwóch elementów bolt o nazwie **rozdzielacz** i **licznika**. Spout **generator** losowo generuje zdania i emitują te zdania w celu **rozdzielacz**. Elementy bolt **rozdzielacz** dzieli zdania wyrazy i wyemituj te wyrazy do **licznika** bolt. Elementy bolt "counter" używa słownik do rejestrowania liczbę wystąpień każdego wyrazu.
+**HelloWorld** to prosty przykład, aby pokazać smak platformy SCP.NET. Używa nietransakcyjnej topologii z spout, o nazwie **generator**i dwóch elementów bolt o nazwie **rozdzielacz** i **licznika**. Spout **generator** losowo generuje zdania i emitują te zdania w celu **rozdzielacz**. Elementy bolt **rozdzielacz** dzieli zdania wyrazy i wyemituj te wyrazy do **licznika** bolt. Elementy bolt "counter" używa słownik do rejestrowania liczbę wystąpień każdego wyrazu.
 
 Istnieją dwa pliki specyfikacji, **HelloWorld.spec** i **HelloWorld\_EnableAck.spec** w tym przykładzie. W języku C\# kodu, jego można znaleźć włączenie potwierdzenia uzyskując pluginConf ze strony języka Java.
 

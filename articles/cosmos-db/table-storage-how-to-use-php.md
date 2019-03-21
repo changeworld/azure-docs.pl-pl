@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: 3ec91b564647e4eda4696a249c77739daff2ece3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044233"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111501"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym przewodniku przedstawiono sposób wykonywania typowych zadań przy użyciu usługi Azure Storage Table oraz interfejsu API tabel usługi Azure Cosmos DB. Przykłady są napisane w języku PHP i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka PHP][download]. Przedstawione scenariusze obejmują **tworzenie i usuwanie tabel**, **wstawianie i usuwanie jednostek w tabeli oraz wykonywanie zapytań dotyczących jednostek**. Aby uzyskać więcej informacji na temat usługi Azure Table Storage, zobacz sekcję [Następne kroki](#next-steps).
 
 
@@ -44,19 +44,19 @@ W tym przewodniku wykorzystane zostaną funkcje usługi Azure Table Storage lub 
 ## <a name="get-the-client-library"></a>Pobieranie biblioteki klienta
 
 1. Utwórz plik o nazwie composer.json w katalogu głównym projektu i dodaj do niego następujący kod:
-```json
-{
-  "require": {
+   ```json
+   {
+   "require": {
     "microsoft/azure-storage-table": "*"
-  }
-}
-```
+   }
+   }
+   ```
 2. Pobierz plik [composer.phar](https://getcomposer.org/composer.phar) do katalogu głównego. 
 3. Otwórz wiersz polecenia i uruchom następujące polecenie w katalogu głównym projektu:
-```
-php composer.phar install
-```
-Możesz też przejść do [biblioteki klienta usługi Azure Table Storage dla języka PHP](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) w witrynie GitHub i sklonować kod źródłowy.
+   ```
+   php composer.phar install
+   ```
+   Możesz też przejść do [biblioteki klienta usługi Azure Table Storage dla języka PHP](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) w witrynie GitHub i sklonować kod źródłowy.
 
 
 ## <a name="add-required-references"></a>Dodawanie wymaganych odwołań
@@ -500,7 +500,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, kiedy znasz już podstawy usług Azure Table Storage i Azure Cosmos DB, skorzystaj z poniższych linków, aby dowiedzieć się więcej.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.

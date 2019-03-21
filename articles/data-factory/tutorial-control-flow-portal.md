@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 037dafcfc60c629841e326cecc38bb2b3250d77c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 092a346d8303bb9e88a53b6fa529bb820635c554
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015427"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099546"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 W tym samouczku pokazano, jak utworzyć potok usługi Data Factory przedstawiający niektóre funkcje przepływu sterowania. Ten potok tworzy prostą kopię z kontenera w usłudze Azure Blob Storage w innym kontenerze na tym samym koncie magazynu. Jeśli działanie kopiowania zakończy się powodzeniem, potok wysyła szczegóły zakończonej pomyślnie operacji kopiowania (takie jak ilość zapisanych danych) w wiadomości e-mail z informacją o powodzeniu. W przypadku niepowodzenia działania kopiowania potok wysyła szczegóły błędu kopiowania (np. komunikat o błędzie) w wiadomości e-mail z informacją o niepowodzeniu. W samouczku pokazano, jak przekazać parametry.
@@ -52,7 +52,7 @@ W tym samouczku jest używana witryna Azure Portal. Aby uzyskać informacje o in
     John,Doe
     Jane,Doe
     ```
-2. Użyj narzędzia takiego jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/), aby wykonać następujące czynności: 
+2. Użyj narzędzia takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/), aby wykonać następujące czynności: 
     1. Utwórz kontener **adfv2branch**.
     2. Utwórz folder **input** w kontenerze **adfv2branch**.
     3. Przekaż plik **input.txt** do kontenera.
@@ -199,10 +199,10 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
    ![Nowa połączona usługa Azure Storage](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Wprowadź wartość `@pipeline().parameters.sourceBlobContainer` jako folder oraz `emp.txt` jako nazwę pliku. Parametr potoku sourceBlobContainer umożliwia ustawienie ścieżki folderu dla zestawu danych. 
 
-    ![Ustawienia zestawu danych źródłowych](./media/tutorial-control-flow-portal/source-dataset-settings.png)
+   ![Ustawienia zestawu danych źródłowych](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 13. Przejdź do karty **potoku** lub kliknij potok w widoku drzewa. Upewnij się, że dla ustawienia **Zestaw danych źródłowych** wybrano wartość **SourceBlobDataset**. 
 
-   ![Zestaw danych źródłowych](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+    ![Zestaw danych źródłowych](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 13. W oknie Właściwości przejdź do karty **Ujście**, a następnie kliknij pozycję **+ Nowy** dla elementu **Zestaw danych ujścia**. W tym kroku utworzysz zestaw danych ujścia dla działania kopiowania w podobny sposób do tworzenia zestawu danych źródłowych. 
 
     ![Przycisk Nowy zestaw danych ujścia](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
@@ -217,7 +217,7 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
         ![Ustawienia zestawu danych ujścia](./media/tutorial-control-flow-portal/sink-dataset-settings.png)
 17. Przejdź do karty **potoku** u góry. W przyborniku **Działania** rozwiń pozycję **Ogólne**, a następnie przeciągnij działanie **Internet** i upuść je na powierzchni projektanta potoku. Ustaw nazwę działania na wartość **SendSuccessEmailActivity**. Działanie internetowe umożliwia wywołanie dowolnego punktu końcowego REST. Aby uzyskać więcej informacji na temat działania, zobacz [Działanie internetowe](control-flow-web-activity.md). Ten potok używa działania internetowego w celu wywołania przepływu pracy poczty e-mail usługi Logic Apps. 
 
-   ![Przeciąganie i upuszczanie pierwszego działania internetowego](./media/tutorial-control-flow-portal/success-web-activity-general.png)
+    ![Przeciąganie i upuszczanie pierwszego działania internetowego](./media/tutorial-control-flow-portal/success-web-activity-general.png)
 18. Z karty **Ogólne** przejdź do karty **Ustawienia** i wykonaj następujące czynności: 
     1. W pozycji **Adres URL** określ adres URL dla przepływu pracy aplikacji logiki, który wysyła wiadomość e-mail z informacją o powodzeniu.  
     2. Wybierz wartość **POST** dla pozycji **Metoda**. 
@@ -235,12 +235,12 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
         ```
         Treść wiadomości zawiera następujące właściwości:
 
-        - Wiadomość — przekazywanie wartości elementu `@{activity('Copy1').output.dataWritten`. Uzyskuje dostęp do właściwości poprzedniego działania kopiowania i przekazuje wartość elementu dataWritten. W przypadku wiadomości dotyczącej niepowodzenia przekaż dane wyjściowe błędu zamiast elementu `@{activity('CopyBlobtoBlob').error.message`.
-        - Nazwa fabryki danych — przekazywanie wartości elementu `@{pipeline().DataFactory}`. Jest to zmienna systemowa, która umożliwia dostęp do odpowiedniej nazwy fabryki danych. Lista zmiennych systemowych jest dostępna w artykule [Zmienne systemowe](control-flow-system-variables.md).
-        - Nazwa potoku — przekazywanie wartości elementu `@{pipeline().Pipeline}`. Jest to również zmienna systemowa, która umożliwia dostęp do odpowiedniej nazwy potoku. 
-        - Odbiorca — przekazywanie wartości elementu \@pipeline().parameters.receiver). Uzyskuje dostęp do parametrów potoku.
+       - Wiadomość — przekazywanie wartości elementu `@{activity('Copy1').output.dataWritten`. Uzyskuje dostęp do właściwości poprzedniego działania kopiowania i przekazuje wartość elementu dataWritten. W przypadku wiadomości dotyczącej niepowodzenia przekaż dane wyjściowe błędu zamiast elementu `@{activity('CopyBlobtoBlob').error.message`.
+       - Nazwa fabryki danych — przekazywanie wartości elementu `@{pipeline().DataFactory}`. Jest to zmienna systemowa, która umożliwia dostęp do odpowiedniej nazwy fabryki danych. Lista zmiennych systemowych jest dostępna w artykule [Zmienne systemowe](control-flow-system-variables.md).
+       - Nazwa potoku — przekazywanie wartości elementu `@{pipeline().Pipeline}`. Jest to również zmienna systemowa, która umożliwia dostęp do odpowiedniej nazwy potoku. 
+       - Odbiorca — przekazywanie wartości elementu \@pipeline().parameters.receiver). Uzyskuje dostęp do parametrów potoku.
     
-        ![Ustawienia dla pierwszego działania internetowego](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
+         ![Ustawienia dla pierwszego działania internetowego](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. Połącz działanie **Kopiowanie** z działaniem **Internet**, przeciągając zielony przycisk znajdujący się obok działania kopiowania i upuszczając go na działaniu internetowym. 
 
     ![Łączenie działania kopiowania z pierwszym działaniem internetowym](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)
@@ -325,7 +325,7 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
 
     ![Błąd uruchamiania działania](./media/tutorial-control-flow-portal/activity-run-error.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W ramach tego samouczka wykonano następujące procedury: 
 
 > [!div class="checklist"]

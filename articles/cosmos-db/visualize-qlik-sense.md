@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4b37b6cd35526d6a76625dd03d1325f1688e698e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044471"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258786"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Usługa Qlik Sense nawiązać połączenie z usługi Azure Cosmos DB i wizualizuj dane bazy danych
 
@@ -42,9 +42,9 @@ Przed wykonaniem instrukcji zawartych w tym artykule, upewnij się, że gotowy n
 
 * Pobierz [dane gry wideo](https://www.kaggle.com/gregorut/videogamesales), te przykładowe dane są w formacie CSV. Będzie przechowywać te dane w ramach konta usługi Cosmos DB i zwizualizowana w usługa Qlik Sense.
 
-* Tworzenie konta interfejsu API SQL usługi Azure Cosmos DB przy użyciu kroków opisanych w [Tworzenie konta usługi](create-sql-api-dotnet.md#create-a-database-account) sekcji z artykułem Szybki Start.
+* Tworzenie konta interfejsu API SQL usługi Azure Cosmos DB przy użyciu kroków opisanych w [Tworzenie konta usługi](create-sql-api-dotnet.md#create-account) sekcji z artykułem Szybki Start.
 
-* [Utwórz bazę danych i kolekcji](create-sql-api-dotnet.md#add-a-collection) — możesz Użyj wartość można ustawić kolekcji przepływności do 1000 jednostek RU/s. 
+* [Utwórz bazę danych i kolekcji](create-sql-api-dotnet.md#create-collection-database) — możesz Użyj wartość można ustawić kolekcji przepływności do 1000 jednostek RU/s. 
 
 * Ładowanie przykładowych danych sprzedaży gry wideo do swojego konta usługi Cosmos DB. Możesz importować dane przy użyciu narzędzia migracji danych usługi Azure Cosmos DB, możesz zrobić [sekwencyjne](import-data.md#SQLSeqTarget) lub [zbiorczego importu](import-data.md#SQLBulkTarget) danych. Trwa około 3 – 5 minut, zanim dane do zaimportowania do konta usługi Cosmos DB.
 

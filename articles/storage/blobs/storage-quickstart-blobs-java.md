@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9aaa22a656d1164ad4e9f9c1ed7539a93dd0457
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999932"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu biblioteki klienta dla języka Java w wersji 7
 
@@ -34,7 +34,7 @@ Upewnij się, że masz następujące wymagania wstępne:
 
 * Możesz również zainstalować i skonfigurować narzędzie Maven tak, aby działało z poziomu wiersza polecenia.
 
-W tym przewodniku używane [Eclipse](http://www.eclipse.org/downloads/) z konfiguracją "Eclipse IDE for Java Developers".
+W tym przewodniku używane [Eclipse](https://www.eclipse.org/downloads/) z konfiguracją "Eclipse IDE for Java Developers".
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
@@ -87,7 +87,7 @@ Deleting the source, and downloaded files
 Zanim przejdziesz dalej, sprawdź, czy katalog domyślny (*C:\Users\<użytkownik>\AppData\Local\Temp* w przypadku użytkowników systemu Windows) zawiera przykładowy plik. Skopiuj adres URL dla obiektu blob z okna konsoli i wklej go do przeglądarki, aby wyświetlić zawartość pliku w usłudze Blob Storage. Jeśli porównasz przykładowy plik w katalogu z zawartością przechowywaną w usłudze Blob Storage, zobaczysz, że są takie same. 
 
   >[!NOTE]
-  >Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu.
+  >Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu.
 
 Po zweryfikowaniu plików naciśnij klawisz **Enter**, aby zakończyć pokaz i usunąć pliki testowe. Wiesz już, jak działa aplikacja przykładowa. Otwórz plik **AzureApp.java** i spójrz na kod. 
 

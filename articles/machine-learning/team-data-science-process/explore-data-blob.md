@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76cc22f614b7877db54fb5af0e58ff90105a8194
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d921d0907d7481b842fd98db2c0d7cb5f402f24f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961775"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835981"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Eksplorowanie danych w usłudze Azure blob storage za pomocą usług Panda
 
-W tym artykule opisano, jak eksplorować dane, które są przechowywane w kontenerze obiektów blob platformy Azure za pomocą [pandas](http://pandas.pydata.org/) pakiet języka Python.
+W tym artykule opisano, jak eksplorować dane, które są przechowywane w kontenerze obiektów blob platformy Azure za pomocą [pandas](https://pandas.pydata.org/) pakiet języka Python.
 
 To zadanie jest to krok w [zespołu danych dla celów naukowych](overview.md).
 
@@ -53,7 +53,7 @@ t2=time.time()
 print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 ```
 
-2. Odczytać dane do pandas DataFrame pobranego pliku.
+1. Odczytać dane do pandas DataFrame pobranego pliku.
 
 ```python
 #LOCALFILE is the file path
@@ -71,7 +71,7 @@ Poniżej przedstawiono kilka przykładów sposobów eksploracji danych przy uży
 print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 ```
 
-2. **Sprawdzanie** kilka pierwszej lub ostatniej **wierszy** następujących danych:
+1. **Sprawdzanie** kilka pierwszej lub ostatniej **wierszy** następujących danych:
 
 ```python
 dataframe_blobdata.head(10)
@@ -79,33 +79,33 @@ dataframe_blobdata.head(10)
 dataframe_blobdata.tail(10)
 ```
 
-3. Sprawdź **— typ danych** każdej kolumny został zaimportowany, używając następującego przykładowego kodu
+1. Sprawdź **— typ danych** każdej kolumny został zaimportowany, używając następującego przykładowego kodu
 
 ```python
 for col in dataframe_blobdata.columns:
     print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
 ```
 
-4. Sprawdź **podstawowe statystyki** dla kolumn w danych, ustaw następujący
+1. Sprawdź **podstawowe statystyki** dla kolumn w danych, ustaw następujący
 
 ```python
 dataframe_blobdata.describe()
 ```
 
-5. Spójrz na liczbę wpisów dla każdej wartości kolumny w następujący sposób
+1. Spójrz na liczbę wpisów dla każdej wartości kolumny w następujący sposób
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts()
 ```
 
-6. **Liczba brakujących wartości** a rzeczywista liczba wpisów w poszczególnych kolumnach, za pomocą następującego przykładowego kodu
+1. **Liczba brakujących wartości** a rzeczywista liczba wpisów w poszczególnych kolumnach, za pomocą następującego przykładowego kodu
 
 ```python
 miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
 print miss_num
 ```
 
-7. Jeśli masz **brakujących wartości** dla określonej kolumny w danych, można upuścić je w następujący sposób:
+1. Jeśli masz **brakujących wartości** dla określonej kolumny w danych, można upuścić je w następujący sposób:
 
 ```python
 dataframe_blobdata_noNA = dataframe_blobdata.dropna()
@@ -118,7 +118,7 @@ Innym sposobem, aby zastąpić wartości Brak jest funkcją trybu:
 dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
-8. Tworzenie **histogram** wykresu, do wykreślenia dystrybucji zmiennej za pomocą zmiennej liczba pojemników
+1. Tworzenie **histogram** wykresu, do wykreślenia dystrybucji zmiennej za pomocą zmiennej liczba pojemników
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -126,7 +126,7 @@ dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 ```
 
-9. Przyjrzyj się **korelacji** między zmiennymi za pomocą wykres punktowy lub przy użyciu funkcji wbudowanych korelacji
+1. Przyjrzyj się **korelacji** między zmiennymi za pomocą wykres punktowy lub przy użyciu funkcji wbudowanych korelacji
 
 ```python
 #relationship between column_a and column_b using scatter plot

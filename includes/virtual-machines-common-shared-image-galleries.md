@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: f8122f35ac6d604908fc31dcece7dfb53dd50286
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985475"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58052201"
 ---
 Galeria obrazów udostępnionych to usługa, która pomaga w tworzeniu struktury i organizacji wokół niestandardowych obrazów maszyn wirtualnych zarządzanych. Przy użyciu galerii obrazów współdzielona możesz udostępnić swoje obrazy do różnych użytkowników, nazw głównych usług lub grup usługi Active Directory w Twojej organizacji. Udostępnianych obrazów mogą być replikowane w wielu regionach, szybsze skalowanie wdrożeń.
 
@@ -128,18 +128,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
  
  A. Aby wyświetlić listę wszystkich zasobów galerii obrazów współużytkowane między subskrypcjami, że masz dostęp do witryny Azure portal, wykonaj następujące czynności:
 
- 1. Otwórz [portal Azure](https://portal.azure.com).
- 1. Przejdź do **wszystkie zasoby**.
- 1. Wybierz wszystkie subskrypcje, w których chcesz wyświetlić listę wszystkich zasobów.
- 1. Wyszukaj zasoby typu **prywatną galerię**.
+1. Otwórz [portal Azure](https://portal.azure.com).
+1. Przejdź do **wszystkie zasoby**.
+1. Wybierz wszystkie subskrypcje, w których chcesz wyświetlić listę wszystkich zasobów.
+1. Wyszukaj zasoby typu **prywatną galerię**.
  
- Aby wyświetlić obraz definicje i wersje obrazów, należy również wybrać **Pokaż ukryte typy**.
+   Aby wyświetlić obraz definicje i wersje obrazów, należy również wybrać **Pokaż ukryte typy**.
  
- Aby wyświetlić listę wszystkich zasobów w galerii obrazów udostępnione w subskrypcjach, które mają uprawnienia do, użyj następującego polecenia w interfejsie wiersza polecenia platformy Azure:
+   Aby wyświetlić listę wszystkich zasobów w galerii obrazów udostępnione w subskrypcjach, które mają uprawnienia do, użyj następującego polecenia w interfejsie wiersza polecenia platformy Azure:
 
- ```bash
- az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
- ```
+   ```bash
+   az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
+   ```
 
 
 **PYTANIE** Jak udostępnić Moje obrazy między subskrypcjami?
@@ -155,9 +155,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
  Scenariusz 2: W przypadku niezarządzanych uogólnionego obrazu utworzenie obrazu zarządzanego z niego, a następnie utworzyć definicję obrazu i wersję obrazu z niego. 
 
- Scenariusz 3: W przypadku wirtualnego dysku twardego w lokalnym systemie plików, musisz przekazać wirtualny dysk twardy, utworzenie obrazu zarządzanego, a następnie można tworzyć i obrazów, definicji i wersję obrazu z niego. 
-    - Jeśli wirtualny dysk twardy maszyny Wirtualnej z systemem Windows, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
-    - Jeśli wirtualny dysk twardy dla maszyny Wirtualnej z systemem Linux, zobacz [przekazania dysku VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+ Scenariusz 3: W przypadku wirtualnego dysku twardego w lokalnym systemie plików, musisz przekazać wirtualny dysk twardy, utworzenie obrazu zarządzanego, a następnie można tworzyć i obrazów, definicji i wersję obrazu z niego.
+- Jeśli wirtualny dysk twardy maszyny Wirtualnej z systemem Windows, zobacz [przekazywanie uogólnionego wirtualnego dysku twardego](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
+- Jeśli wirtualny dysk twardy dla maszyny Wirtualnej z systemem Linux, zobacz [przekazania dysku VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 
 **PYTANIE** Czy mogę utworzyć wersję obrazu z wyspecjalizowanego dysku

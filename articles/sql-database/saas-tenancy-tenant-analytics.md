@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: f7c482a0308d3c2b2583d99cf4079040065b80c0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 9f88314bbf507dc3b4e282532acfa079c2a63cce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890546"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Cross-tenant analytics przy użyciu wyodrębnione dane — aplikacja jednej dzierżawy
  
@@ -93,7 +93,7 @@ W poniższych krokach wdrożyć magazyn analizy, który jest nazywany **tenantan
     - Usługa SQL database za pomocą magazynu kolumn, ustawianie **$DemoScenario** = **3**  
 3. Naciśnij klawisz **F5** Aby uruchomić skrypt pokazowy (wywołująca *TenantAnalytics Wdróż<XX>.ps1* skryptu) tworzy magazyn analizy dzierżawy. 
 
-Skoro masz wdrożono aplikację i wypełnione interesujących danych dzierżawy, użyj [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) połączyć **tenants1-dpt -&lt;użytkownika&gt;**  i **katalogu-dpt -&lt;użytkownika&gt;**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło = *P@ssword1*. Zobacz [Samouczek wprowadzający](saas-dbpertenant-wingtip-app-overview.md) Aby uzyskać więcej wskazówek.
+Skoro masz wdrożono aplikację i wypełnione interesujących danych dzierżawy, użyj [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) połączyć **tenants1-dpt -&lt;użytkownika&gt;**  i **katalogu-dpt -&lt;użytkownika&gt;**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło = *P\@ssword1*. Zobacz [Samouczek wprowadzający](saas-dbpertenant-wingtip-app-overview.md) Aby uzyskać więcej wskazówek.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -175,7 +175,7 @@ Aby połączyć usługę Power BI i zaimportować widoków, która została utwo
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło = *P@ssword1*. Kliknij przycisk **Połącz**.  
+5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło = *P\@ssword1*. Kliknij przycisk **Połącz**.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

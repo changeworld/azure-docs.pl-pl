@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 39ab31cd06707dbd488914da248941ab6d174c29
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 632fa14bd96eaee2ca58b59dd855584c1fd961e8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010093"
 ---
 # <a name="app-service-environment-management-addresses"></a>Adresy zarządzania środowiska usługi aplikacji
 
@@ -40,7 +40,7 @@ Można skonfigurować adresy podane poniżej w tabeli tras. Jest to ważne w prz
 
 ## <a name="configuring-a-network-security-group"></a>Konfigurowanie sieciowej grupy zabezpieczeń
 
-Przy użyciu grup zabezpieczeń sieci nie trzeba już martwić się o poszczególne adresy lub utrzymywania własnej konfiguracji. Brak adresów IP usługi tag o nazwie AppServiceManagement, który jest aktualizowany na bieżąco ze wszystkimi adresami. Aby użyć tego tagu usługi IP w sieciowej grupie zabezpieczeń, przejdź do portalu, Otwórz interfejs użytkownika grup zabezpieczeń sieci i wybierz reguły zabezpieczeń ruchu przychodzącego. Jeśli masz już istniejącą regułę dla ruchu przychodzącego zarządzania go edytować. Jeśli ta sieciowa grupa zabezpieczeń nie został utworzony za pomocą środowiska ASE lub w przypadku wszystkich nowych, następnie wybierz pozycję **Dodaj**. W obszarze Źródło listy rozwijanej wybierz **Tag usługi**.  W obszarze tag usługi źródłowej, wybierz pozycję ** AppServiceManagement **. Ustaw źródło zakresów portów \*, docelowe **wszelkie**, docelowe zakresy portów do **454 455**, protokół do **TCP**i działania w celu **Zezwalaj** . Jeśli wykonujesz reguły, a następnie należy ustawić priorytet. 
+Przy użyciu grup zabezpieczeń sieci nie trzeba już martwić się o poszczególne adresy lub utrzymywania własnej konfiguracji. Brak adresów IP usługi tag o nazwie AppServiceManagement, który jest aktualizowany na bieżąco ze wszystkimi adresami. Aby użyć tego tagu usługi IP w sieciowej grupie zabezpieczeń, przejdź do portalu, Otwórz interfejs użytkownika grup zabezpieczeń sieci i wybierz reguły zabezpieczeń ruchu przychodzącego. Jeśli masz już istniejącą regułę dla ruchu przychodzącego zarządzania go edytować. Jeśli ta sieciowa grupa zabezpieczeń nie został utworzony za pomocą środowiska ASE lub w przypadku wszystkich nowych, następnie wybierz pozycję **Dodaj**. W obszarze Źródło listy rozwijanej wybierz **Tag usługi**.  W obszarze tag usługi źródłowej, wybierz **AppServiceManagement**. Ustaw źródło zakresów portów \*, docelowe **wszelkie**, docelowe zakresy portów do **454 455**, protokół do **TCP**i działania w celu **Zezwalaj** . Jeśli wykonujesz reguły, a następnie należy ustawić priorytet. 
 
 ![Tworzenie sieciowej grupy zabezpieczeń za pomocą tag usługi][1]
 

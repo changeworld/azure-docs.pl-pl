@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 06430bf476c2e9f3af2102272fb54d201a3f1066
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 862846c8ec544cf082d45cea650269b6518a016f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790813"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003534"
 ---
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>Ręczne instalowanie usługi mobilności na maszynach wirtualnych VMware oraz serwerach fizycznych
 
@@ -65,40 +65,42 @@ Przed instalacją należy utworzyć hasło, które będą używane podczas insta
 
 1. Skopiuj Instalator do folderu lokalnego (np. C:\Temp) na serwerze, który chcesz chronić. 
 
-  ```
-  cd C:\Temp
-  ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
-  MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
-  cd C:\Temp\Extracted.
-  ```
+   ```
+   cd C:\Temp
+   ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
+   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
+   cd C:\Temp\Extracted.
+   ```
 2. Należy zainstalować w następujący sposób:
 
-  ```
-  UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
-  ```
+   ```
+   UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
+   ```
 
 3. Zarejestruj agenta z serwerem konfiguracji.
 
-  ```
-  cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
-  UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
-  ```
+   ```
+   cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
+   UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+   ```
 
 #### <a name="installation-settings"></a>Ustawienia instalacji
+
 **Ustawienie** | **Szczegóły**
 --- | ---
-Sposób użycia | UnifiedAgent.exe/role < MS|MT > /InstallLocation  <Install Location> /silent "VmWare" opcji/platform
-Dzienniki Instalatora | W obszarze % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
-/ Roli | Parametr obowiązkowo instalowany. Określa, czy można zainstalować usługi mobilności (MS) lub główny serwer docelowy (MT).
+Sposób użycia | UnifiedAgent.exe/role < MS\|MT > /InstallLocation  <Install Location> /silent "VmWare" opcji/platform
+Dzienniki Instalatora | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+/Role | Parametr obowiązkowo instalowany. Określa, czy można zainstalować usługi mobilności (MS) lub główny serwer docelowy (MT).
 /InstallLocation| Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności (dowolnego folderu).
 / Platform | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych VMware; **Azure** dla maszyn wirtualnych platformy Azure. 
-/ Silent| Opcjonalny. Określa, czy należy uruchomić Instalatora w trybie dyskretnym.
+/Silent| Opcjonalny. Określa, czy należy uruchomić Instalatora w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
+
 **Ustawienie** | **Szczegóły**
 --- | ---
-Sposób użycia | / Csendpoint UnifiedAgentConfigurator.exe  <CSIP> /passphrasefilepath <PassphraseFilePath>
-Dzienniki konfiguracji agenta | W obszarze % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
+Sposób użycia | UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+Dzienniki konfiguracji agenta | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Obowiązkowy parametr. Określa adres IP serwera konfiguracji. Użyj dowolny prawidłowy adres IP.
 /PassphraseFilePath |  Obowiązkowy. Lokalizacja hasło. Użyj dowolnego Nieprawidłowa ścieżka UNC lub ścieżka do pliku lokalnego.
 
@@ -106,39 +108,42 @@ Dzienniki konfiguracji agenta | W obszarze % ProgramData%\ASRSetupLogs\ASRUnifie
 ### <a name="on-a-linux-machine"></a>Na maszynie z systemem Linux
 
 1. Skopiuj Instalator do folderu lokalnego (na przykład TMP) na serwerze, który chcesz chronić. W terminalu uruchom następujące polecenia:
-  ```
-  cd /tmp ;
+   ```
+   cd /tmp ;
 
-  tar -xvzf Microsoft-ASR_UA*release.tar.gz
-  ```
+   tar -xvzf Microsoft-ASR_UA*release.tar.gz
+   ```
 2. Należy zainstalować w następujący sposób:
 
-  ```
-  sudo ./install -d <Install Location> -r MS -v VmWare -q
-  ```
+   ```
+   sudo ./install -d <Install Location> -r MS -v VmWare -q
+   ```
 3. Po zakończeniu instalacji usługi mobilności musi być zarejestrowany z serwerem konfiguracji. Uruchom następujące polecenie, aby zarejestrować usługę mobilności z serwerem konfiguracji:
 
-  ```
-  /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
-  ```
+   ```
+   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
+   ```
 
 
 #### <a name="installation-settings"></a>Ustawienia instalacji
+
 **Ustawienie** | **Szczegóły**
 --- | ---
-Sposób użycia | . / install -d <Install Location> - r < MS|MT > - v, VmWare - q
+Sposób użycia | . / install -d <Install Location> - r < MS\|MT > - v, VmWare - q
 -r | Parametr obowiązkowo instalowany. Określa, czy można zainstalować usługi mobilności (MS) lub główny serwer docelowy (MT).
 -d | Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności: /usr/local/ASR.
 -v | Obowiązkowy. Określa platformę, na którym zainstalowano usługę mobilności. **VMware** dla serwerów fizycznych i maszyn wirtualnych VMware; **Azure** dla maszyn wirtualnych platformy Azure. 
 -q | Opcjonalny. Określa, czy należy uruchomić Instalatora w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
+
 **Ustawienie** | **Szczegóły**
 --- | ---
-Sposób użycia | /usr/local/ASR/Vx/bin dysku CD<br/><br/> UnifiedAgentConfigurator.sh -i <CSIP> - P <PassphraseFilePath>
+Sposób użycia | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i <CSIP> - P <PassphraseFilePath>
 -i | Obowiązkowy parametr. Określa adres IP serwera konfiguracji. Użyj dowolny prawidłowy adres IP.
 -P |  Obowiązkowy. Pełna ścieżka pliku, w którym zapisywane są hasła. Użyj dowolnego prawidłowego folderu
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 - [Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych VMware](vmware-azure-tutorial.md)
 - [Konfigurowanie odzyskiwania po awarii dla serwerów fizycznych](physical-azure-disaster-recovery.md)

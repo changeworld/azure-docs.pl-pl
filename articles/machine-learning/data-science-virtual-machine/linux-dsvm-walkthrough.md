@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b06ca287f03c62b3947e6c37712cf491396392e0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: MT
+ms.openlocfilehash: 0ca3cee0c818bf9d5dda4a7ea8a1f356ed017973
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245837"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891090"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
@@ -36,7 +36,7 @@ Przed użyciem systemu Linux maszyny wirtualnej do nauki o danych, musisz mieć 
 
 * **Subskrypcji platformy Azure**. Jeśli nie masz już jeden, zobacz [Utwórz bezpłatne konto platformy Azure już dziś](https://azure.microsoft.com/free/).
 * A [ **Linux maszyny Wirtualnej do analizy danych**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Aby uzyskać informacje o inicjowaniu obsługi tej maszyny Wirtualnej, zobacz [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md).
-* [X2Go](http://wiki.x2go.org/doku.php) zainstalowana na danym komputerze i otworzyć sesję XFCE. Aby uzyskać informacje dotyczące instalowania i konfigurowania **klienta X2Go**, zobacz [Instalowanie i konfigurowanie klienta X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* [X2Go](https://wiki.x2go.org/doku.php) zainstalowana na danym komputerze i otworzyć sesję XFCE. Aby uzyskać informacje dotyczące instalowania i konfigurowania **klienta X2Go**, zobacz [Instalowanie i konfigurowanie klienta X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
 * Dla płynne przewijanie, Przełącz flagę gfx.xrender.enabled o: config w przeglądarce FireFox maszyn wirtualnych. [Zobacz więcej informacji znajdziesz tutaj. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Należy również rozważyć przełączanie *mousewheel.enable_pixel_scrolling* na wartość False. [Instrukcje w tym miejscu.](https://support.mozilla.org/en-US/questions/981140)
 * **Konta usługi Azure ml**. Jeśli nie masz jeszcze jeden Załóż nowe na [strony głównej usługi Azure ml](https://studio.azureml.net/). Brak warstwę bezpłatnego użycia, aby pomóc Ci rozpocząć pracę.
 
@@ -52,7 +52,7 @@ Jeśli potrzebujesz więcej miejsca w magazynie, możesz utworzyć dodatkowe dys
 
 Aby pobrać dane, Otwórz okno terminalu i uruchom następujące polecenie:
 
-    wget http://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
 Pobrany plik ma wiersz nagłówka, więc utworzyć inny plik, który ma nagłówka. Uruchom następujące polecenie, aby utworzyć plik, odpowiednie nagłówki:
 
@@ -263,7 +263,7 @@ XGBoost można również wywołać z języka python lub wiersza polecenia.
 Do tworzenia aplikacji przy użyciu języka Python dystrybucje Anaconda Python 2.7 i 3.5 zostały zainstalowane w maszyny DSVM.
 
 > [!NOTE]
-> Obejmuje dystrybucji pakietu Anaconda [Conda](http://conda.pydata.org/docs/index.html), który może służyć do tworzenia niestandardowego środowiska dla języka Python, które mają różne wersje i/lub pakietów zainstalowanych w nich.
+> Obejmuje dystrybucji pakietu Anaconda [Conda](https://conda.pydata.org/docs/index.html), który może służyć do tworzenia niestandardowego środowiska dla języka Python, które mają różne wersje i/lub pakietów zainstalowanych w nich.
 >
 >
 
@@ -318,21 +318,19 @@ Dystrybucja pakietu Anaconda w maszyny DSVM jest powiązana z notesu programu Ju
 
 > [!NOTE]
 > Aby użyć Menedżera pakietów języka Python (za pośrednictwem `pip` polecenie) z notesu Jupyter w jądrze bieżącego następującego polecenia mogą być używane w komórce kodu, na przykład:
-  ```python
-   import sys
-   ! {sys.executable} -m pip install numpy -y
-  ```
->
->
-
+>   ```python
+>    import sys
+>    ! {sys.executable} -m pip install numpy -y
+>   ```
+> 
+> 
+> 
 > [!NOTE]
 > Aby użyć Instalatora Conda (za pośrednictwem `conda` polecenie) z notesu Jupyter w jądrze bieżącego następującego polecenia mogą być używane w komórce kodu, na przykład:
-  ```python
-   import sys
-   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-  ```
->
->
+>   ```python
+>    import sys
+>    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+>   ```
 
 Kilka notesów próbki są już zainstalowane na maszynie Wirtualnej:
 
@@ -515,7 +513,7 @@ Lub co to są właściwości wiadomości e-mail, które często zawierają *3d*?
 
 Większość wiadomości e-mail, które mają wysokie wystąpienie *3d* są najwyraźniej wysyłania spamu, dzięki czemu może to być przydatne do tworzenia modelu predykcyjnego klasyfikowanie wiadomości e-mail.
 
-Jeśli chcesz wykonać uczenia maszynowego z danymi przechowywanymi w bazie danych programu PostgreSQL, należy rozważyć użycie [MADlib](http://madlib.incubator.apache.org/).
+Jeśli chcesz wykonać uczenia maszynowego z danymi przechowywanymi w bazie danych programu PostgreSQL, należy rozważyć użycie [MADlib](https://madlib.incubator.apache.org/).
 
 ## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
 Azure SQL Data Warehouse to oparta na chmurze i skalowalna w poziomie baza danych, która może przetwarzać ogromne ilości danych relacyjnych i nierelacyjnych. Aby uzyskać więcej informacji, zobacz [co to jest Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)

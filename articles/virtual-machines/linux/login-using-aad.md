@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cbe9e5c734708701828b2b70f062d88c960dc224
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848698"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -64,7 +64,7 @@ Poniższych regionów platformy Azure są obecnie obsługiwane w okresie zapozna
 
 Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten samouczek wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
+## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
 Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az-group-create), następnie utwórz Maszynę wirtualną za pomocą [tworzenie az vm](/cli/azure/vm#az-vm-create) przy użyciu obsługiwanych Dystrybucja w obsługiwanym regionie. Poniższy przykład wdraża maszynę Wirtualną o nazwie *myVM* , który używa *Ubuntu 16.04 LTS* w grupie zasobów o nazwie *myResourceGroup* w *southcentralus*  regionu. W poniższych przykładach można podać własną grupę zasobów i nazwy maszyn wirtualnych, zgodnie z potrzebami.
 
@@ -186,7 +186,7 @@ Access denied
 
 Jeśli pomyślnym ukończeniu kroku uwierzytelniania w przeglądarce sieci web, można od razu monit może się ponownie zalogować się przy użyciu kodu od nowa. Ten błąd jest zazwyczaj spowodowany przez niezgodność między podana w wierszu SSH nazwa logowania i konta którego zalogowano się do usługi Azure AD za pomocą. Aby rozwiązać ten problem:
 
-- Sprawdź, czy określona w wierszu SSH nazwa logowania jest poprawna. Błąd pisowni w nazwie logowania może spowodować niezgodność między podana w wierszu SSH nazwa logowania i konta którego zalogowano się do usługi Azure AD za pomocą. Na przykład wpisać *azuresuer@contoso.onmicrosoft.com* zamiast *azureuser@contoso.onmicrosoft.com*.
+- Sprawdź, czy określona w wierszu SSH nazwa logowania jest poprawna. Błąd pisowni w nazwie logowania może spowodować niezgodność między podana w wierszu SSH nazwa logowania i konta którego zalogowano się do usługi Azure AD za pomocą. Na przykład wpisać *azuresuer\@contoso.onmicrosoft.com* zamiast *azureuser\@contoso.onmicrosoft.com*.
 - Jeśli masz wiele kont użytkowników, upewnij się, że podczas logowania się do usługi Azure AD nie podasz innego konta użytkownika w oknie przeglądarki.
 - Linux jest rozróżniana wielkość liter systemu operacyjnego. Istnieje różnica pomiędzy "Azureuser@contoso.onmicrosoft.com"i"azureuser@contoso.onmicrosoft.com", co może spowodować niezgodność. Upewnij się, określ nazwę UPN z poprawną uwzględnianie wielkości liter w wierszu SSH.
 

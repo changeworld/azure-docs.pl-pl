@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 195b513d7cc878045449ed137a2ea72f291a9f6e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308163"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901937"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Przenoszenie danych między skalowanymi bazami danych w chmurze
 
@@ -29,7 +29,7 @@ Narzędzie do dzielenia i scalania działa jako usługa sieci web platformy Azur
 
 ## <a name="download"></a>Do pobrania
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentacja
 
@@ -136,7 +136,7 @@ Pakiet usługi dzielenia i scalania obejmuje rolę procesu roboczego oraz roli s
 
 - **Mapy fragmentów**
 
- Następna sekcja Parametry żądania podano informacje dotyczące mapowania fragmentów i bazę danych hostingu mapy fragmentów. W szczególności musisz podać nazwę serwera Azure SQL Database i obsługi shardmap, poświadczenia do połączenia z bazy danych mapowań fragmentów, a na końcu nazwę mapowania fragmentów bazy danych. Obecnie operację akceptuje tylko jeden zestaw poświadczeń. Te poświadczenia muszą mieć wystarczające uprawnienia do wykonywania zmian do mapy fragmentów, jak również do danych użytkownika na fragmenty.
+  Następna sekcja Parametry żądania podano informacje dotyczące mapowania fragmentów i bazę danych hostingu mapy fragmentów. W szczególności musisz podać nazwę serwera Azure SQL Database i obsługi shardmap, poświadczenia do połączenia z bazy danych mapowań fragmentów, a na końcu nazwę mapowania fragmentów bazy danych. Obecnie operację akceptuje tylko jeden zestaw poświadczeń. Te poświadczenia muszą mieć wystarczające uprawnienia do wykonywania zmian do mapy fragmentów, jak również do danych użytkownika na fragmenty.
 
 - **Zakres źródłowy (dzielenie i scalanie)**
 
@@ -217,6 +217,8 @@ Usługi dzielenia i scalania korzysta z usługi Azure Diagnostics opartego na pl
 ## <a name="deploy-diagnostics"></a>Wdrażanie diagnostyki
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 Aby włączyć monitorowania i diagnostyki przy użyciu konfiguracji diagnostycznych dla ról sieć web i proces roboczy, dostarczone przez pakiet NuGet, uruchom następujące polecenia, za pomocą programu Azure PowerShell:
 

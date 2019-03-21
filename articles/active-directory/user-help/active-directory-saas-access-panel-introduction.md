@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: asteen
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df034264e54d7d421d9508fb3c08cc6675cb10d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 47c624a9f1d3989e9146f7c32745ca892f6467e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451998"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113810"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co to jest MyApps portal?
 
@@ -82,11 +82,11 @@ Aby logować się na podstawie hasła logowania jednokrotnego, należy użyć ro
 
 > [!NOTE]
 > Dodatkowe funkcje są dostępne tylko w przypadku Microsoft Edge, Chrome i Firefox.
->
-Możesz pobrać rozszerzenia bezpośrednio z następujących witryn:
-- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
+> 
+> Możesz pobrać rozszerzenia bezpośrednio z następujących witryn:
+> - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+> - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+> - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Jeśli używasz Mój adres URL aplikacji innych niż `https://myapps.microsoft.com`, skonfigurować domyślny adres URL, wykonując następujące czynności:
 1. Gdy jesteś *nie* logowanie się do rozszerzenia, kliknij prawym przyciskiem myszy ikonę rozszerzenia.

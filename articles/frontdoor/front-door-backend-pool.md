@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 14cc87e8691c859274495a13cc0b73fa29ad22df
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 228ed5c54a382db7b47d19adacf9e5db398c53ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726893"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123695"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Pule zaplecza aplikacji i wewnętrznej bazy danych w usłudze Azure Service drzwi
 W tym artykule opisano różne koncepcje dotyczące jak mapować wdrażania aplikacji za pomocą drzwiami frontowymi. Wyjaśnimy również różne warunki na wierzchu drzwi biblioteki konfiguracją na całym zaplecza aplikacji znaczenie.
@@ -62,7 +62,7 @@ Po dodaniu zaplecza w puli zaplecza usługi drzwiami frontowymi należy wypełni
 Żądania przekazywane za wejściu do wewnętrznej bazy danych ma pola nagłówka hosta, który używa wewnętrznej bazy danych w celu pobrania zasobu docelowego. Wartość dla tego pola zazwyczaj pochodzi z identyfikatora URI wewnętrznej bazy danych, a także ma hosta i portu. Na przykład żądania dotyczącego `www.contoso.com` będzie miał nagłówek hosta `www.contoso.com`. Jeśli konfigurujesz wewnętrzną bazą danych przy użyciu witryny Azure portal, domyślną wartość, która jest wypełniana dla tego pola jest nazwą hosta w wewnętrznej bazie danych. Na przykład, jeśli jest zaplecza `contoso-westus.azurewebsites.net`, a następnie w witrynie Azure portal będzie automatycznie wypełniony wartość nagłówka hosta zaplecza `contoso-westus.azurewebsites.net`. 
 </br>Jednak jeśli przy użyciu szablonów usługi Resource Manager, lub inny mechanizm i są to ustawienie nie zostanie to pole jawnie drzwiami frontowymi wysyła przychodzącą nazwę hosta jako wartość nagłówka hosta. Na przykład, jeśli żądanie zostało wystosowane `www.contoso.com`, a zapleczem `contoso-westus.azurewebsites.net` następnie za pomocą puste pole nagłówka hosta zaplecza drzwiami frontowymi ustawi nagłówek hosta jako `www.contoso.com`.
 
-Większość zaplecza aplikacji (takich jak Web Apps, Blob Storage i usług w chmurze) wymagają nagłówek hosta był zgodny z domeną wewnętrznej bazy danych. Jednak hosta serwera sieci Web, który kieruje wewnętrzną bazą danych ma inną nazwę hosta, takich jak www.contoso.azurefd.net. Jeśli wewnętrznej bazy danych, którą konfigurujesz wymaga nagłówka hosta, aby dopasować nazwę hosta w wewnętrznej bazie danych, należy upewnić się, że nagłówek hosta wewnętrznej bazy danych ma również nazwę hosta w wewnętrznej bazie danych.
+Większość zaplecza aplikacji (takich jak Web Apps, Blob Storage i usług w chmurze) wymagają nagłówek hosta był zgodny z domeną wewnętrznej bazy danych. Hosta serwera sieci Web, który kieruje do swojej wewnętrznej bazy danych będzie jednak innej nazwy hosta, takich jak www\.contoso.azurefd.net. Jeśli wewnętrznej bazy danych, którą konfigurujesz wymaga nagłówka hosta, aby dopasować nazwę hosta w wewnętrznej bazie danych, należy upewnić się, że nagłówek hosta wewnętrznej bazy danych ma również nazwę hosta w wewnętrznej bazie danych.
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>Konfigurowanie zaplecza nagłówek hosta dla wewnętrznej bazy danych
 Pole "Nagłówek hosta dla wewnętrznej bazy danych" można skonfigurować dla zaplecza w sekcji puli zaplecza.

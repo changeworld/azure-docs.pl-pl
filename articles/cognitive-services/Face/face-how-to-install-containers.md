@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 96040d6caeb1541eec78e57973dd9089b5a107ed
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: f3534f3001de1c3e58f0be3fb7bc9639b7dfcd03
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671849"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295433"
 ---
-# <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
+# <a name="install-and-run-face-containers"></a>Instalowanie i uruchamianie kontenerów twarzy
 
 Twarzy udostępnia standardowy kontener systemu Linux dla platformy Docker, o nazwie rozpoznawania twarzy wykrywa twarze osób na obrazach, która identyfikuje atrybutów, w tym to punktów charakterystycznych (takie jak elementy ruchome i oczy), płeć, wiek i inne funkcje twarzy przewidzieć maszyny. Oprócz wykrywania twarzy można sprawdzić, czy dwie twarze w ten sam obraz lub różne obrazy są takie same, za pomocą współczynnik ufności lub porównywania twarzy względem bazy danych, aby sprawdzić, czy podobnie wyglądających twarzy identyczne już istnieje. Można również zorganizować podobnych twarzy w grupach, przy użyciu udostępnionego visual traits.
 
@@ -48,11 +48,12 @@ Przed rozpoczęciem korzystania z interfejsu API rozpoznawania twarzy, kontenery
 
 W poniższej tabeli opisano minimalne i zalecane rdzeni procesora CPU i pamięci do przydzielenia dla każdego kontenera interfejsu API rozpoznawania twarzy.
 
-| Kontener | Minimalne | Zalecane |
-|-----------|---------|-------------|
-|Rozpoznawanie twarzy | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |
+| Kontener | Minimalne | Zalecane | TPS<br>(Minimum, maksimum)|
+|-----------|---------|-------------|--|
+|Rozpoznawanie twarzy | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |10, 20|
 
-Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
+* Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
+* TPS - transakcji na sekundę
 
 Rdzeni i pamięci odpowiadają `--cpus` i `--memory` ustawienia, które są używane jako część `docker run` polecenia.
 
@@ -117,7 +118,7 @@ Więcej [przykłady](./face-resource-container-config.md#example-docker-run-comm
 
 Kontener udostępnia punkt końcowy usługi oparte na protokole REST zapytania prognozowania interfejsów API. 
 
-Użyj hosta, https://localhost:5000, dla kontenera interfejsów API.
+Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 
 ## <a name="stop-the-container"></a>Zastavit kontejner
 

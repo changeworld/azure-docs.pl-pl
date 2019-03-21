@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b0d2c12a4e2088964e397b1bc499fa4adfdff3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 172bc96857c6aa0ab19fd4f1a13870dd493100bf
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244559"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295712"
 ---
 # <a name="what-is-authentication"></a>Co to jest uwierzytelnianie?
 
@@ -79,7 +79,7 @@ Usługa Azure AD reprezentuje aplikacje działające według określonego modelu
 
 W usłudze Azure AD **obiekt aplikacji** opisuje aplikację jako jednostkę abstrakcyjną. Deweloperzy pracują z aplikacjami. Podczas wdrażania usługa Azure AD używa danego obiektu aplikacji jako konspektu do utworzenia **jednostki usługi**, która reprezentuje konkretne wystąpienie aplikacji w katalogu lub dzierżawie. To właśnie jednostka usługi definiuje, jakie działania może w rzeczywistości wykonywać aplikacja w konkretnym katalogu docelowym, kto może z niej korzystać, do jakich zasobów ma ona dostęp itd. Usługa Azure AD tworzy jednostkę usługi na podstawie obiektu aplikacji poprzez wyrażenie **zgody**.
 
-Na poniższym diagramie przedstawiono uproszczony przepływ aprowizowania usługi Azure AD sterowany poprzez wyrażenie zgody.
+Na poniższym diagramie przedstawiono uproszczony przepływ aprowizowania usługi Azure AD sterowany poprzez wyrażenie zgody.  Istnieją dwa dzierżaw (A i B), gdzie dzierżawy A właścicielem aplikacji i dzierżawy B jest utworzenie wystąpienia aplikacji za pomocą nazwy głównej usługi.  
 
 ![Uproszczony przepływ aprowizowania sterowany poprzez wyrażenie zgody](./media/authentication-scenarios/simplified-provisioning-flow-consent.png)
 
@@ -87,14 +87,14 @@ Ten przepływ aprowizowania składa się z następujących etapów:
 
 |   |   |
 |---|---|
-| 1 | Użytkownik B próbuje zalogować się w aplikacji. |
+| 1 | Użytkownik w dzierżawie B próbuje zalogować się przy użyciu aplikacji |
 | 2 | Poświadczenia użytkownika są odbierane i weryfikowane. |
 | 3 | Użytkownik jest monitowany o wyrażenie zgody na przyznanie aplikacji dostępu do dzierżawy B. |
-| 4 | Usługa Azure AD używa obiektu aplikacji A jako konspektu do utworzenia jednostki usługi w B. |
+| 4 | Usługa Azure AD używa obiektu aplikacji A jako planu do tworzenia nazwy głównej usługi w dzierżawie B |
 | 5 | Użytkownik otrzymuje żądany token. |
 |   |   |
 
-Ten proces może być powtarzany dowolną liczbę razy dla innych dzierżaw (C, D itd.). Katalog A przechowuje konspekt dla aplikacji (obiekt aplikacji). Użytkownicy i administratorzy wszystkich pozostałych dzierżaw, dla których aplikacja otrzymała zgodę, zachowują kontrolę nad tym, jakie działania może wykonywać aplikacja przy użyciu odpowiedniego obiektu jednostki usługi w każdej dzierżawie. Aby uzyskać więcej informacji, zobacz [Application and service principal objects in Azure AD](app-objects-and-service-principals.md) (Obiekty aplikacji i jednostki usługi w usłudze Azure AD).
+Ten proces może być powtarzany dowolną liczbę razy dla innych dzierżaw (C, D itd.). Dzierżawy A zachowuje plan dla aplikacji (obiekt aplikacji). Użytkownicy i administratorzy wszystkich pozostałych dzierżaw, dla których aplikacja otrzymała zgodę, zachowują kontrolę nad tym, jakie działania może wykonywać aplikacja przy użyciu odpowiedniego obiektu jednostki usługi w każdej dzierżawie. Aby uzyskać więcej informacji, zobacz [Application and service principal objects in Azure AD](app-objects-and-service-principals.md) (Obiekty aplikacji i jednostki usługi w usłudze Azure AD).
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Oświadczenia w tokenach zabezpieczających usługi Azure AD
 
@@ -132,6 +132,6 @@ W poniższej tabeli znajduje się krótki opis każdego typu oświadczenia emito
 | Nazwa główna użytkownika | Zawiera nazwę główną użytkownika podmiotu. |
 | Wersja | Zawiera numer wersji tokenu. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [typach aplikacji i scenariuszach obsługiwanych w usłudze Azure Active Directory](app-types.md)

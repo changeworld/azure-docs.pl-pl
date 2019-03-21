@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e86180a643b27056edc9901d590760cedcbf259
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331881"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081835"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Przenoszenie danych z PostgreSQL za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,12 +50,12 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magaz
 
 - Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 - Aby utworzyć potok umożliwia także następujących narzędzi:
-    - Azure Portal
-    - Visual Studio
-    - Azure PowerShell
-    - Szablon usługi Azure Resource Manager
-    - Interfejs API .NET
-    - Interfejs API REST
+  - Azure Portal
+  - Visual Studio
+  - Azure PowerShell
+  - Szablon usługi Azure Resource Manager
+  - Interfejs API .NET
+  - Interfejs API REST
 
     Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
@@ -306,46 +306,46 @@ Podczas przenoszenia danych postgresql w warstwie, następujące mapowania są u
 
 | Typ bazy danych PostgreSQL | Aliasy PostgresSQL | Typ .NET framework |
 | --- | --- | --- |
-| abstime | |Data/godzina | &nbsp;
+| abstime | |Data/godzina |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bitowe [(n)] | |Byte [] ciąg | &nbsp;
+| bitowe [(n)] | |Byte [] ciąg |
 | bit zróżnicowanie [(n)] |varbit |Byte [] ciąg |
-| wartość logiczna |wartość logiczna |Wartość logiczna |
-| box | |Byte [] ciąg |&nbsp;
-| bytea | |Byte [] ciąg |&nbsp;
-| znak [(n)] |char [(n)] |Ciąg |
-| znak zróżnicowanie [(n)] |varchar [(n)] |Ciąg |
-| identyfikator CID | |Ciąg |&nbsp;
-| CIDR | |Ciąg |&nbsp;
-| Okrąg | |Byte [] ciąg |&nbsp;
-| date | |Data/godzina |&nbsp;
-| DateRange | |Ciąg |&nbsp;
-| podwójnej precyzji |FLOAT8 |Podwójne |
-| inet | |Byte [] ciąg |&nbsp;
-| intarry | |Ciąg |&nbsp;
-| int4range | |Ciąg |&nbsp;
-| int8range | |Ciąg |&nbsp;
+| wartość logiczna |bool |Wartość logiczna |
+| box | |Byte [] ciąg |
+| bytea | |Byte [] ciąg |
+| znak [(n)] |char [(n)] |String |
+| znak zróżnicowanie [(n)] |varchar [(n)] |String |
+| identyfikator CID | |String |
+| format cidr | |String |
+| Okrąg | |Byte [] ciąg |
+| date | |Data/godzina |
+| DateRange | |String |
+| podwójnej precyzji |FLOAT8 |Double |
+| inet | |Byte [] ciąg |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
 | liczba całkowita |int, int4 |Int32 |
-| Interwał [polami] [(p)] | |Zakres czasu |&nbsp;
-| json | |Ciąg |&nbsp;
-| jsonb | |Byte[] |&nbsp;
-| Wiersz | |Byte [] ciąg |&nbsp;
-| lseg | |Byte [] ciąg |&nbsp;
-| macaddr | |Byte [] ciąg |&nbsp;
-| pieniędzy | |Dziesiętny |&nbsp;
-| numeryczne [(p, s)] |decimal [(p, s)] |Dziesiętny |
-| numrange | |Ciąg |&nbsp;
-| Identyfikator OID | |Int32 |&nbsp;
-| ścieżka | |Byte [] ciąg |&nbsp;
-| pg_lsn | |Int64 |&nbsp;
-| Punkt | |Byte [] ciąg |&nbsp;
-| Wielokąt | |Byte [] ciąg |&nbsp;
-| rzeczywiste |FLOAT4 |Pojedyncze |
+| Interwał [polami] [(p)] | |Zakres czasu |
+| json | |String |
+| jsonb | |Byte[] |
+| wiersz | |Byte [] ciąg |
+| lseg | |Byte [] ciąg |
+| macaddr | |Byte [] ciąg |
+| pieniędzy | |Decimal |
+| numeryczne [(p, s)] |decimal [(p, s)] |Decimal |
+| numrange | |String |
+| Identyfikator OID | |Int32 |
+| ścieżka | |Byte [] ciąg |
+| pg_lsn | |Int64 |
+| punkt | |Byte [] ciąg |
+| Wielokąt | |Byte [] ciąg |
+| rzeczywiste |FLOAT4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | numer seryjny |serial4 |Int32 |
-| tekst | |Ciąg |&nbsp;
+| tekst | |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
 Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

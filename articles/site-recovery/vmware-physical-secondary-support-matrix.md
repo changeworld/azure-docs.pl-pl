@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 6ebf1abe6f3b115a254201184f47e6aad2febb2a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2f70a180afcc8eda5d43356c3f4f96b25292c6d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208180"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088931"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
 
@@ -110,10 +110,10 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 
 Usługa mobilności koordynuje replikację między lokalnymi serwerami VMware lub serwerów fizycznych i lokacji dodatkowej. Po skonfigurowaniu replikacji upewnić się, że masz najnowszą wersję usługi mobilności i innych składników.
 
-**Aktualizacja** | **Szczegóły** 
---- | --- 
-Aktualizacje programu Scout | [Dowiedz się więcej o i Pobierz](vmware-physical-secondary-disaster-recovery.md#updates) najnowsze aktualizacje programu Scout | Aktualizacje programu Scout kumulują się.
-Aktualizacje składników | Aktualizacje programu Scout obejmują aktualizacje dla wszystkich składników, w tym RX serwera, serwer konfiguracji, proces i główne serwery docelowe, vContinuum serwerów i serwerów źródłowych, które chcesz chronić.<br/><br/> [Dowiedz się więcej](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).
+| **Aktualizacja** | **Szczegóły** |
+| --- | --- |
+|Aktualizacje programu Scout | Aktualizacje programu Scout kumulują się. <br/><br/> [Dowiedz się więcej o i Pobierz](vmware-physical-secondary-disaster-recovery.md#updates) najnowsze aktualizacje programu Scout |
+|Aktualizacje składników | Aktualizacje programu Scout obejmują aktualizacje dla wszystkich składników, w tym RX serwera, serwer konfiguracji, proces i główne serwery docelowe, vContinuum serwerów i serwerów źródłowych, które chcesz chronić.<br/><br/> [Dowiedz się więcej](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

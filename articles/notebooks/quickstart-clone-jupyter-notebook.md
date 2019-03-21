@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ced279575c0dd6ca2509911a53a23c2ebf9eb77e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cfce5765cda1e3a1dfb7eb073719191b13b0696e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762046"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089203"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Szybki start: Klonowanie notesu
 
@@ -40,13 +40,13 @@ Klonowanie tworzy kopię notesu usługi GitHub w ramach Twojego konta platformy 
 
 1. W **przekazywanie repozytorium GitHub** wyświetlany, wprowadź lub ustaw następujące szczegóły, a następnie wybierz **importu**:
 
-    - **Repozytorium GitHub**: Microsoft/cognitive-services notesów (Ta nazwa klony notesów programu Jupyter dla usług Azure Cognitive Services na [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
-    - **Rekursywnie Klonuj**: (usunięty)
-    - **Nazwa projektu**: Klonuj usług cognitive Services
-    - **Identyfikator projektu**: klonowania cognitive services
-    - **Publiczne**: (usunięty)
+   - **Repozytorium GitHub**: Microsoft/cognitive-services notesów (Ta nazwa klony notesów programu Jupyter dla usług Azure Cognitive Services na [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
+   - **Rekursywnie Klonuj**: (usunięty)
+   - **Nazwa projektu**: Klonuj usług cognitive Services
+   - **Identyfikator projektu**: klonowania cognitive services
+   - **Publiczne**: (usunięty)
 
-    ![Przekaż popup repozytorium GitHub, aby zebrać informacje o repozytorium](media/quickstarts/upload-github-repo-popup.png)
+     ![Przekaż popup repozytorium GitHub, aby zebrać informacje o repozytorium](media/quickstarts/upload-github-repo-popup.png)
 
 1. Cierpliwość, podczas gdy proces zostanie zakończony; klonowanie repozytorium może potrwać kilka minut.
 

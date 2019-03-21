@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8abc6129e1179378ac90278fd2032737b2b828b2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888878"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125201"
 ---
 #### <a name="to-download-hotfixes"></a>Aby pobrać poprawki
 
@@ -100,12 +100,12 @@ Wykonaj następujące kroki, aby zainstalować i zweryfikować poprawki przeznac
     Powinny zostać wyświetlone następujące wersje:
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 5.0`
-   *  `HcsSoftwareVersion: 6.3.9600.17845`
+   * `HcsSoftwareVersion: 6.3.9600.17845`
    
-    Jeśli numer wersji nie zmieni się po zastosowaniu aktualizacji, wskazuje to, że stosowanie poprawki nie powiodło się. Jeśli widzisz coś takiego, skontaktuj się z [pomocą techniczną firmy Microsoft](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) w celu uzyskania dalszej pomocy.
+     Jeśli numer wersji nie zmieni się po zastosowaniu aktualizacji, wskazuje to, że stosowanie poprawki nie powiodło się. Jeśli widzisz coś takiego, skontaktuj się z [pomocą techniczną firmy Microsoft](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) w celu uzyskania dalszej pomocy.
      
-    > [!IMPORTANT]
-    > Należy uruchomić ponownie kontroler aktywny za pomocą `Restart-HcsController` polecenia cmdlet przed zastosowaniem następnej aktualizacji.
+     > [!IMPORTANT]
+     > Należy uruchomić ponownie kontroler aktywny za pomocą `Restart-HcsController` polecenia cmdlet przed zastosowaniem następnej aktualizacji.
      
 8. Powtórz kroki 3 – 6, aby zainstalować _CisMDSAgentupdate.exe_ agenta są pobierane do Twojego _FirstOrderUpdate_ folderu.
 8. Powtórz kroki 3 – 6, aby zainstalować aktualizacje drugiej kolejności. 

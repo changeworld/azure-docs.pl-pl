@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: cfefa8a1bfee03959d0f3b077d9915a6badb1ffd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988089"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075070"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -45,7 +45,7 @@ Widżet **Player** (Odtwarzacz) umożliwia przesyłanie strumieniowe wideo z ada
 |t|Sekundy od początku|Sprawia, że odtwarzanie rozpoczyna się od podanego punktu w czasie.<br/>Przykład: t=60|
 |captions|Kod języka|Pobiera napisy w danym języku podczas ładowania widżetu w celu udostępnienia ich w menu napisów.<br/>Przykład: captions=en-US|
 |showCaptions|Wartość logiczna|Powoduje załadowanie już włączonych napisów.<br/>Przykład: showCaptions=true|
-|type||Aktywuje skórkę odtwarzacza audio (część wideo jest usuwana).<br/>Przykład: type=audio|"
+|type||Aktywuje skórkę odtwarzacza audio (część wideo jest usuwana).<br/>Przykład: type=audio|
 |autoplay|Wartość logiczna|Wskazuje, czy należy rozpocząć odtwarzanie po załadowaniu pliku wideo (wartość domyślna to true).<br/>Przykład: autoplay=false|
 |language|Kod języka|Określa język widżetu Player (wartość domyślna to en-US)<br/>Przykład: language=de-DE|
 

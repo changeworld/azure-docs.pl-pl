@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 588faa3c59c4e6b3ea704d953c20c4319ef4b01e
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312127"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538735"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka JavaScript
 
@@ -35,7 +35,7 @@ Utwórz nowy plik HTML o nazwie *detectFaces.html* i dodaj poniższy kod.
 <html>
     <head>
         <title>Detect Faces Sample</title>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     </head>
     <body></body>
 </html>
@@ -234,7 +234,7 @@ Następujący kod to przykład pomyślnej odpowiedzi w formacie JSON.
 ]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start napisano skrypt w języku JavaScript służący do wywoływania interfejsu API rozpoznawania twarzy platformy Azure w celu wykrywania twarzy na obrazie i zwracania ich atrybutów. Następnie zapoznaj się z dokumentacją referencyjną interfejsu API rozpoznawania twarzy, aby dowiedzieć się więcej.
 

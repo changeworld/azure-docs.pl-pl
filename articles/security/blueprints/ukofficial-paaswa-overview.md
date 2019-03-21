@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7f67b7363719f544c485503e0f8207bb1f1078ce
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
-ms.translationtype: MT
+ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244710"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891107"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
@@ -219,7 +219,7 @@ Ponadto Cloud Security Alliance (CSA) opublikowane macierzy kontroli chmury, aby
 
 Ten plan został przejrzany, Zjednoczone Królestwo National Cybernetycznymi zabezpieczeń Centrum (NCSC) i zgodne z zasadami zabezpieczeń NCSC 14 chmury
 
-Szablony usługi automation zostały przetestowane przez zespół sukcesu klientów Zjednoczone Królestwo jednostki Architekt rozwiązań chmury platformy Azure i naszym partnerem firmy Microsoft [Ampliphae](http://www.ampliphae.com/).
+Szablony usługi automation zostały przetestowane przez zespół sukcesu klientów Zjednoczone Królestwo jednostki Architekt rozwiązań chmury platformy Azure i naszym partnerem firmy Microsoft [Ampliphae](https://www.ampliphae.com/).
 
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania

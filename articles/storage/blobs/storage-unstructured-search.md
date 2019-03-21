@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/13/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 42c67d73ee776488fbe932676f61cb7166c2984b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: acf01788a1ac8ed8ca476941c402801abfbd8adf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599846"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011305"
 ---
 # <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>Samouczek: Przeszukiwanie danych bez struktury w magazynie w chmurze
 
@@ -39,7 +39,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Każde konto magazynu musi należeć do grupy zasobów platformy Azure. Grupa zasobów to logiczny kontener przeznaczony do grupowania usług platformy Azure. Podczas tworzenia konta magazynu masz możliwość utworzenia nowej grupy zasobów lub użycia istniejącej grupy zasobów. W tym samouczku utworzymy nową grupę zasobów.
 
-Zaloguj się w witrynie [Azure Portal](http://portal.azure.com).
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -63,7 +63,7 @@ W tym samouczku użyjesz pojedynczego kontenera do przechowywania plików teksto
 
 5. Wybierz przycisk **OK**, aby utworzyć kontener.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/storageactinfo.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/storageactinfo.png)
 
 ## <a name="upload-the-example-data"></a>Przekazywanie przykładowych danych
 
@@ -77,7 +77,7 @@ Teraz, po utworzeniu kontenera, możesz przekazać do niego przykładowe dane.
 
 4. Wybierz pozycję **Przekaż**, aby rozpocząć proces przekazywania.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/upload.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/upload.png)
 
 Proces przekazywania może chwilę potrwać.
 
@@ -107,7 +107,7 @@ W tym samouczku użyjesz usługi wyszukiwania do przeszukiwania plików tekstowy
 
 8. Wybierz polecenie **Utwórz**, aby utworzyć usługę wyszukiwania.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/createsearch2.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/createsearch2.png)
 
 ## <a name="connect-your-search-service-to-your-container"></a>Łączenie usługi wyszukiwania z kontenerem
 
@@ -127,13 +127,13 @@ Teraz, po utworzeniu usługi wyszukiwania, można ją dołączyć do usługi Blo
 
 2. Ponieważ używane obiekty blob to pliki tekstowe, dla pozycji **Tryb analizy** ustaw wartość **Tekst**.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/datasources.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/datasources.png)
 
 3. Wybierz pozycję **Kontener magazynu**, aby wyświetlić listę dostępnych kont magazynu.
 
 4. Wybierz swoje konto magazynu, a następnie zaznacz wcześniej utworzony kontener.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/datacontainer.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/datacontainer.png)
 
 5. Kliknij pozycję **Wybierz**, aby powrócić do okna **Nowe źródło danych**, a następnie wybierz przycisk **OK** w celu kontynuowania.
 
@@ -147,7 +147,7 @@ Teraz, po utworzeniu usługi wyszukiwania, można ją dołączyć do usługi Blo
 
 3. Zaznacz pole wyboru atrybutu **Z możliwością pobierania**  w obszarze **metadata_storage_name**.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/valuestoselect.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/valuestoselect.png)
 
 4. Wybierz przycisk **OK**, aby otworzyć okno **Tworzenie indeksatora**.
 
@@ -172,7 +172,7 @@ Parametry znajdują się w kolumnie **NAZWA POLA**. Poniższa tabela zawiera lis
 
 1. Wprowadź nazwę w polu **Nazwa** i wybierz przycisk **OK**.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/exindexer.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/exindexer.png)
 
 2. Zostanie ponownie wyświetlone okno **Importowanie danych**. Wybierz przycisk **OK**, aby zakończyć proces łączenia.
 
@@ -186,19 +186,19 @@ Poniżej opisano, gdzie można znaleźć Eksploratora wyszukiwania, oraz przedst
 
 1. Przejdź do wszystkich zasobów i znajdź nowo utworzoną usługę wyszukiwania.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/exampleurl.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/exampleurl.png)
 
 2. Wybierz indeks, aby go otworzyć.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/overview.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/overview.png)
 
 3. Wybierz pozycję **Eksplorator wyszukiwania**, aby otworzyć to narzędzie umożliwiające tworzenie aktywnych zapytań względem danych.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/indexespane.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/indexespane.png)
 
 4. Wybierz pozycję **Wyszukaj**, nie wpisując nic w polu ciągu zapytania. Puste zapytanie zwraca *wszystkie* dane z obiektów blob.
 
-  ![Wyszukiwanie bez struktury](media/storage-unstructured-search/emptySearch.png)
+   ![Wyszukiwanie bez struktury](media/storage-unstructured-search/emptySearch.png)
 
 ### <a name="perform-a-full-text-search"></a>Wykonywanie wyszukiwania pełnotekstowego
 
@@ -229,7 +229,7 @@ Najprostszym sposobem usunięcia utworzonych zasobów jest usunięcie grupy zaso
 3. Wybierz przycisk **Usuń grupę zasobów**, a następnie wprowadź nazwę grupy zasobów w polu usuwania.
 4. Wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Skorzystaj z tego linku, aby dowiedzieć się więcej o indeksowaniu dokumentów za pomocą usługi Azure Search:
 

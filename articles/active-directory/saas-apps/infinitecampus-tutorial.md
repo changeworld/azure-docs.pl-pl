@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c23f16f5d3c665cb74e9e0460d2e5658fa716d72
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e0ada3055a3347cb42179fddbba671f2f03f502d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Samouczek: Integracja usługi Azure Active Directory z Kampusu nieskończona
 
@@ -196,14 +196,14 @@ Celem tej sekcji jest utworzenie _pojedynczego_ użytkownika testowego w witryni
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
 
     d. Wybierz pozycję **Utwórz**.
 
-### <a name="creating-a-infinite-campus-test-user"></a>Tworzenie użytkownika testowego Campus nieskończona
+### <a name="creating-an-infinite-campus-test-user"></a>Tworzenie użytkownika testowego Campus nieskończona
 
 Nieskończona Campus ma architekturę dane demograficzne, a ich tematyka. Skontaktuj się z pomocą [zespołem pomocy technicznej nieskończonej Campus](mailto:sales@infinitecampus.com) Aby dodać użytkowników na platformie Campus nieskończoną.
 
@@ -239,7 +239,7 @@ Po kliknięciu kafelka Campus nieskończonej w panelu dostępu, możesz powinien
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

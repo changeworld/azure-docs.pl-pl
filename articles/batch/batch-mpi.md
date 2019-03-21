@@ -11,15 +11,15 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
-ms.date: 06/12/2018
+ms.date: 03/13/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 826b0d2e56034a99130962f259c5c4297a31daf7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7fe75dabe098cf98f0c3c04d592a32d6a44cebf8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537273"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905025"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Zadania obejmujące wiele wystąpień umożliwiają uruchamianie aplikacji interfejsu przekazywania komunikatów (MPI) w usłudze Batch
 
@@ -52,7 +52,7 @@ Gdy prześlesz zadanie przy użyciu ustawienia wielu wystąpień do zadania usł
 Zadania obejmujące wiele wystąpień wymagają puli z **komunikacji między węzłami włączone**i **wykonywania zadań jednoczesnych wyłączone**. Aby wyłączyć wykonywanie zadań jednoczesnych, ustaw [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) właściwości na wartość 1.
 
 > [!NOTE]
-> Batch [limity](batch-quota-limit.md#other-limits) rozmiar puli, który ma włączoną komunikacji między węzłami.
+> Batch [limity](batch-quota-limit.md#pool-size-limits) rozmiar puli, który ma włączoną komunikacji między węzłami.
 
 
 Ten fragment kodu pokazuje, jak utworzyć pulę dla zadania obejmujące wiele wystąpień przy użyciu biblioteki .NET usługi Batch.

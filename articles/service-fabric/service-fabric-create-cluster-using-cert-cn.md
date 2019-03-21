@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: a6607fa91d9c8556881a5532527a63b6f21ad4d1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f6f4858740288facb1e206eed3a8cd4ee1854daa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977460"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111450"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Wdrażanie klastra usługi Service Fabric, która używa nazwy pospolitej certyfikatu zamiast odcisku palca
 Nie dwóch certyfikatów może mieć ten sam odcisk palca, który sprawia, że Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Klastra przy użyciu nazwy pospolite certyfikatów sprawia, że certyfikat zarządzania jest znacznie prostsze. W tym artykule opisano, jak wdrożyć klaster usługi Service Fabric do użycia nazwy pospolitej certyfikatu zamiast odcisk palca certyfikatu.
@@ -158,36 +158,36 @@ Następnie otwórz *azuredeploy.json* plik w edytorze tekstów i trzy aktualizac
           },
     ```
 
-4.  W **Microsoft.ServiceFabric/clusters** zasobu wersji aktualizacji interfejsu API "2018-02-01".  Również dodać **certificateCommonNames** ustawienie z **commonNames** właściwości i Usuń **certyfikatu** ustawienie (za pomocą właściwości odcisk palca), w następującej przykład:
-    ```json
-    {
-        "apiVersion": "2018-02-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-        "addonFeatures": [
-            "DnsService",
-            "RepairManager"
-        ],        
-        "certificateCommonNames": {
-            "commonNames": [
-            {
-                "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
-            }
-            ],
-            "x509StoreName": "[parameters('certificateStoreValue')]"
-        },
-        ...
-    ```
-> [!NOTE]
-> Pole "certificateIssuerThumbprint" umożliwia określenie oczekiwanego wystawców certyfikatów o nazwie wspólnej dany podmiot. To pole akceptuje rozdzielaną przecinkami wyliczenie odcisków palca SHA1. Należy pamiętać, że to wzmocnienia weryfikację certyfikatu — w przypadku, gdy wystawcy nie została określona lub pusta, certyfikat zostanie zaakceptowany do uwierzytelniania, jeśli mogą być wbudowane w łańcuchu i kończy się się w katalogu głównym zaufany przez moduł weryfikacji. Jeśli wystawca jest określony, certyfikat zostanie zaakceptowane, jeśli odcisk palca jej bezpośredniego wystawcę pasuje do żadnej wartości określonej w tym polu — niezależnie od tego, czy katalog główny jest zaufany, czy nie. Należy pamiętać, że infrastruktura kluczy publicznych może używać różnych urzędów certyfikacji do wystawiania certyfikatów dla tego samego podmiotu, a więc jest ważne określić wszystkie oczekiwanego wystawcy odciski palców dla danego podmiotu.
->
-> Określanie wystawca jest uznawany za najlepszą praktyką. pomijając go będą nadal działać — certyfikaty łańcucha zaufany główny urząd certyfikacji — to zachowanie ma ograniczenia i może wycofać w niedalekiej przyszłości. Należy także zauważyć klastrach wdrożonych na platformie Azure i zabezpieczony za pomocą X509 certyfikaty wystawione przez prywatne PKI i zadeklarować według tematu może nie dawać możliwości ma zostać zweryfikowana przez usługę Azure Service Fabric (dla komunikacji usługi klastrowania), jeśli zasady dotyczące certyfikatów PKI nie jest dostępne i prostsze do odnalezienia, dostępne. 
+4. W **Microsoft.ServiceFabric/clusters** zasobu wersji aktualizacji interfejsu API "2018-02-01".  Również dodać **certificateCommonNames** ustawienie z **commonNames** właściwości i Usuń **certyfikatu** ustawienie (za pomocą właściwości odcisk palca), w następującej przykład:
+   ```json
+   {
+       "apiVersion": "2018-02-01",
+       "type": "Microsoft.ServiceFabric/clusters",
+       "name": "[parameters('clusterName')]",
+       "location": "[parameters('clusterLocation')]",
+       "dependsOn": [
+       "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+       ],
+       "properties": {
+       "addonFeatures": [
+           "DnsService",
+           "RepairManager"
+       ],        
+       "certificateCommonNames": {
+           "commonNames": [
+           {
+               "certificateCommonName": "[parameters('certificateCommonName')]",
+               "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
+           }
+           ],
+           "x509StoreName": "[parameters('certificateStoreValue')]"
+       },
+       ...
+   ```
+   > [!NOTE]
+   > Pole "certificateIssuerThumbprint" umożliwia określenie oczekiwanego wystawców certyfikatów o nazwie wspólnej dany podmiot. To pole akceptuje rozdzielaną przecinkami wyliczenie odcisków palca SHA1. Należy pamiętać, że to wzmocnienia weryfikację certyfikatu — w przypadku, gdy wystawcy nie została określona lub pusta, certyfikat zostanie zaakceptowany do uwierzytelniania, jeśli mogą być wbudowane w łańcuchu i kończy się się w katalogu głównym zaufany przez moduł weryfikacji. Jeśli wystawca jest określony, certyfikat zostanie zaakceptowane, jeśli odcisk palca jej bezpośredniego wystawcę pasuje do żadnej wartości określonej w tym polu — niezależnie od tego, czy katalog główny jest zaufany, czy nie. Należy pamiętać, że infrastruktura kluczy publicznych może używać różnych urzędów certyfikacji do wystawiania certyfikatów dla tego samego podmiotu, a więc jest ważne określić wszystkie oczekiwanego wystawcy odciski palców dla danego podmiotu.
+   >
+   > Określanie wystawca jest uznawany za najlepszą praktyką. pomijając go będą nadal działać — certyfikaty łańcucha zaufany główny urząd certyfikacji — to zachowanie ma ograniczenia i może wycofać w niedalekiej przyszłości. Należy także zauważyć klastrach wdrożonych na platformie Azure i zabezpieczony za pomocą X509 certyfikaty wystawione przez prywatne PKI i zadeklarować według tematu może nie dawać możliwości ma zostać zweryfikowana przez usługę Azure Service Fabric (dla komunikacji usługi klastrowania), jeśli zasady dotyczące certyfikatów PKI nie jest dostępne i prostsze do odnalezienia, dostępne. 
 
 ## <a name="deploy-the-updated-template"></a>Wdrożyć zaktualizowany szablon
 Po wprowadzeniu zmian, należy ponownie wdrożyć zaktualizowany szablon.

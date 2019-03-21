@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 19206278f838b77954c28e95e9171a857ba1338a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1cf5fb00e9f1a202fe7ad46253f916e3e6bee7a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670664"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295576"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -46,15 +46,14 @@ Aby można było uruchomić kontener usługi LUIS, musisz mieć następujące cz
 
 Ten kontener obsługuje minimalne i zalecane wartości ustawień:
 
-|Ustawienie| Minimalne | Zalecane |
-|-----------|---------|-------------|
-|Rdzenie<BR>`--cpus`|1 rdzeń|1 rdzeń|
-|Memory (Pamięć)<BR>`--memory`|2 GB|4 GB|
-|Transakcje na sekundę<BR>(TPS)|20 TPS|40 TPS|
+|Kontener| Minimalne | Zalecane | TPS<br>(Minimum, maksimum)|
+|-----------|---------|-------------|--|
+|LUIS|1 rdzeń, 2 GB pamięci|1 rdzeń, 4 GB pamięci RAM|20,40|
 
-Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
+* Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
+* TPS - transakcji na sekundę
 
-`--cpus` i `--memory` ustawienia są używane jako część `docker run` polecenia.
+Rdzeni i pamięci odpowiadają `--cpus` i `--memory` ustawienia, które są używane jako część `docker run` polecenia.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera przy użyciu `docker pull`
 
@@ -102,8 +101,8 @@ Katalog instalacji danych wejściowych może zawierać **produkcji**, **przemies
 
 |Typ pakietu|Punkt końcowy interfejsu API zapytań|Dostępność zapytań|Format nazwy pliku pakietu|
 |--|--|--|--|
-|Przeszkoleni|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Przemieszczanie|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_STAGING.gz`|
+|Szkolone|GET, Post|Kontenera|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Przygotowanie|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_STAGING.gz`|
 |Produkcja|GET, Post|Platformy Azure i kontenerów|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -259,13 +258,13 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 |Typ pakietu|Metoda|Trasa|Parametry zapytania|
 |--|--|--|--|
 |Opublikowano|[Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& przemieszczania<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]<br>|
-|Przeszkoleni|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]|
+|Szkolone|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[& timezoneOffset]<br>[& pełne]<br>[& dziennika]|
 
 Skonfiguruj parametry zapytania jak i co to jest zwracany w odpowiedzi na zapytanie:
 
 |Parametr zapytania|Type|Przeznaczenie|
 |--|--|--|
-|`q`|ciąg|Wypowiedź użytkownika.|
+|`q`|string|Wypowiedź użytkownika.|
 |`timezoneOffset`|numer|TimezoneOffset umożliwia [Zmień strefę czasową](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) posługują się datetimeV2 wstępnie utworzone jednostki.|
 |`verbose`|wartość logiczna|Zwraca wszystkie intencje i ich wyniki, gdy ustawiona na wartość true. Wartość domyślna to false, która zwraca górną intencji.|
 |`staging`|wartość logiczna|Zapytanie zwraca wyniki w środowisku przejściowym, jeśli jest ustawiona na wartość true. |

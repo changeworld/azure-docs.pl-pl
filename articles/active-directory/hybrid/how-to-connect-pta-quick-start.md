@@ -16,12 +16,12 @@ ms.date: 02/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a282ef88a5112593d4d8b9e304ec6ad03f44787c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415871"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101010"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Szybki start
 
@@ -68,7 +68,7 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
      Jeśli Zapora wymusza zasady zgodnie z źródłowy użytkowników, należy otworzyć następujące porty dla ruchu z usług Windows, które są uruchamiane jako usługa sieciowa.
    - Jeśli zapora lub serwer proxy umożliwia DNS umieszczania na białej liście, lista dozwolonych połączeń z  **\*. msappproxy.net** i  **\*. servicebus.windows.net**. Jeśli nie, Zezwalaj na dostęp do [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653), która jest aktualizowana co tydzień.
    - Agentów uwierzytelniania muszą mieć dostęp do **login.windows.net** i **login.microsoftonline.com** dla wstępnej rejestracji. Otwierania zapory dla tych adresów URL również.
-   - Sprawdzanie poprawności certyfikatu, można odblokować w następujących adresów URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, i  **www.microsoft.com:80**. Ponieważ te adresy URL są używane do weryfikacji certyfikatu z innych produktów firmy Microsoft, może już być tych adresów URL odblokowane.
+   - Sprawdzanie poprawności certyfikatu, można odblokować w następujących adresów URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, i **www \.microsoft.com:80**. Ponieważ te adresy URL są używane do weryfikacji certyfikatu z innych produktów firmy Microsoft, może już być tych adresów URL odblokowane.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Włącz tę funkcję
 

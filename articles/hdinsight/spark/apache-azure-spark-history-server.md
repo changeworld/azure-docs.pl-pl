@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792785"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076806"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Serwer historii platformy Spark w usłudze rozszerzonej Apache umożliwia debugowanie i diagnozowanie aplikacji platformy Apache Spark
 
@@ -106,11 +106,11 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **wykres** w menu N
 
 + Odtwarzanie zadania, klikając **odtwarzania** przycisk i zatrzymać w dowolnym momencie, klikając przycisk Zatrzymaj. Wyświetlanie zadań są oznaczone kolorem do wyświetlania stanu różnych podczas odtwarzania:
 
-    + Zielony dla zakończyło się pomyślnie: Zadanie zostało ukończone pomyślnie.
-    + Pomarańczowy na ponawiane: Wystąpienia zadania, które nie powiodło się, ale nie wpływają na ostateczny wynik zadania. Te zadania ma zduplikowany lub spróbuj ponownie wystąpienia, które może powieść się później.
-    + Niebieski do uruchomienia: Zadanie jest uruchomione.
-    + Biały dla oczekiwania lub pominięte: Zadanie oczekuje na uruchomienie lub etapu została pominięta.
-    + Kolor czerwony dla nie powiodło się: Zadanie nie powiodło się.
+  + Zielony dla zakończyło się pomyślnie: Zadanie zostało ukończone pomyślnie.
+  + Pomarańczowy na ponawiane: Wystąpienia zadania, które nie powiodło się, ale nie wpływają na ostateczny wynik zadania. Te zadania ma zduplikowany lub spróbuj ponownie wystąpienia, które może powieść się później.
+  + Niebieski do uruchomienia: Zadanie jest uruchomione.
+  + Biały dla oczekiwania lub pominięte: Zadanie oczekuje na uruchomienie lub etapu została pominięta.
+  + Kolor czerwony dla nie powiodło się: Zadanie nie powiodło się.
 
     ![przykład koloru wykresu, uruchomione](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -132,20 +132,20 @@ Wybierz identyfikator zadania, a następnie kliknij przycisk **wykres** w menu N
     ![etykietki narzędzi wykresu](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + Na karcie grafu zadania etapy będą miały etykietki narzędzi i mała ikona wyświetlana, jeśli mają zadania, które spełniają poniższe warunki:
-    + Niesymetryczność danych: rozmiar odczytu danych > ilość odczytanych danych średni rozmiar wszystkich zadań w tym etapie * 2 i dane odczytane rozmiar > 10 MB.
-    + Niesymetryczność czasu: czasu wykonywania > Średni czas wykonywania wszystkich zadań w tym etapie * 2 i czasu wykonywania > 2 minut.
+  + Niesymetryczność danych: rozmiar odczytu danych > ilość odczytanych danych średni rozmiar wszystkich zadań w tym etapie * 2 i dane odczytane rozmiar > 10 MB.
+  + Niesymetryczność czasu: czasu wykonywania > Średni czas wykonywania wszystkich zadań w tym etapie * 2 i czasu wykonywania > 2 minut.
 
     ![niesymetryczność ikoną wykresu](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + Węzłem grafu zadania zostaną wyświetlone następujące informacje, każdy z etapów:
-    + IDENTYFIKATOR.
-    + Nazwy lub opisu.
-    + Liczba wszystkich zadań.
-    + Dane odczytane: Suma rozmiar danych wejściowych i shuffle rozmiar odczytu.
-    + Zapisywanie danych: Suma rozmiar danych wyjściowych i shuffle rozmiar zapisu.
-    + Czas wykonywania: czas między przy pierwszej próbie czas rozpoczęcia i czas ukończenia ostatniej próby.
-    + Liczba wierszy: Suma rekordów danych wejściowych, wyjściowych rekordów mieszania odczytu rekordów i mieszania rekordów zapisu.
-    + Postęp.
+  + ID.
+  + Nazwy lub opisu.
+  + Liczba wszystkich zadań.
+  + Dane odczytane: Suma rozmiar danych wejściowych i shuffle rozmiar odczytu.
+  + Zapisywanie danych: Suma rozmiar danych wyjściowych i shuffle rozmiar zapisu.
+  + Czas wykonywania: czas między przy pierwszej próbie czas rozpoczęcia i czas ukończenia ostatniej próby.
+  + Liczba wierszy: Suma rekordów danych wejściowych, wyjściowych rekordów mieszania odczytu rekordów i mieszania rekordów zapisu.
+  + Postęp.
 
     > [!NOTE]  
     > Domyślnie węzłem grafu zadania spowoduje wyświetlenie informacji z ostatniej próby, każdy z etapów (z wyjątkiem czas wykonywania etapu), ale podczas odtwarzania wykresu węźle są wyświetlane informacje z kolejnymi próbami.
@@ -312,10 +312,10 @@ Do uaktualnienia przy użyciu poprawek, należy użyć poniższego skryptu, któ
     https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh
    ```
 
-    + Sprawdzanie **Head** i **procesu roboczego**.
-    + **Parametry**: Ustaw następujące parametry użycia powłoki bash.
+   + Sprawdzanie **Head** i **procesu roboczego**.
+   + **Parametry**: Ustaw następujące parametry użycia powłoki bash.
 
-    ![przekazanie dzienników lub uaktualnienia poprawki](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![przekazanie dzienników lub uaktualnienia poprawki](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
 ## <a name="known-issues"></a>Znane problemy

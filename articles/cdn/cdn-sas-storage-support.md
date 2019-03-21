@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 57891bcce289c30d7dce1cd00c301064aa9b97cc
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ee64b4cbfd024c91b226736bc8cac0b9b33f964e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955239"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170398"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Usługa Azure CDN przy użyciu sygnatury dostępu Współdzielonego
 
@@ -48,9 +48,9 @@ Aby uzyskać więcej informacji na temat parametrów ustawień, zobacz [zagadnie
 
 ![Ustawienia sygnatury dostępu Współdzielonego usługi CDN](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
-### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Opcja 1: Przy użyciu sygnatury dostępu Współdzielonego przy użyciu przekazywanego do magazynu obiektów blob z usługi Azure CDN
+### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Opcja 1: Sygnatury dostępu Współdzielonego używania z przy użyciu przekazywanego do magazynu obiektów blob usługi Azure CDN
 
-Ta opcja jest najprostszy i korzysta z jednego tokenu sygnatury dostępu Współdzielonego, który jest przekazywany przez usługę Azure CDN do serwera pochodzenia. Nie jest obsługiwany przez **Azure CDN Standard from Verizon** i **Azure CDN Standard from Akamai** profilów. 
+Ta opcja jest najprostszy i korzysta z jednego tokenu sygnatury dostępu Współdzielonego, który jest przekazywany przez usługę Azure CDN do serwera pochodzenia.
  
 1. Wybierz punkt końcowy, wybierz pozycję **reguły buforowania**, a następnie wybierz **Buforuj każdy unikatowy adres URL** z **buforowanie ciągu zapytania** listy.
 
@@ -136,7 +136,7 @@ Ponieważ sygnatury dostępu Współdzielonego parametry nie są widoczne dla us
 | Nazwa parametru sygnatury dostępu Współdzielonego | Opis |
 | --- | --- |
 | Uruchamianie | Czas rozpoczęcia przez sieć CDN systemu Azure na dostęp do pliku obiektu blob. Z powodu zegara pochylanie (po odebraniu sygnału zegara w różnym czasie dla różnych składników), wybierz czas 15 minut wcześniej, jeśli chcesz, aby zasobów, które mają być dostępne natychmiast. |
-| Zakończ | Czas, po upływie którego usługa Azure CDN nie jest już dostęp do pliku obiektu blob. Wcześniej buforowanych plików w usłudze Azure CDN, są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, ustaw czas wygaśnięcia odpowiednie w tokenie zabezpieczeń usługi Azure CDN lub przeczyszczania elementu zawartości. |
+| Koniec | Czas, po upływie którego usługa Azure CDN nie jest już dostęp do pliku obiektu blob. Wcześniej buforowanych plików w usłudze Azure CDN, są nadal dostępne. Aby kontrolować czas wygaśnięcia pliku, ustaw czas wygaśnięcia odpowiednie w tokenie zabezpieczeń usługi Azure CDN lub przeczyszczania elementu zawartości. |
 | Dozwolone adresy IP | Opcjonalny. Jeśli używasz **Azure CDN from Verizon**, ten parametr zostanie ustawiony na zakresy zdefiniowane w [Azure CDN from Verizon zakresy adresów IP serwerów brzegowych](https://msdn.microsoft.com/library/mt757330.aspx). Jeśli używasz **Azure CDN from Akamai**, nie można ustawić parametru zakresów adresów IP, ponieważ nie są statyczne adresy IP.|
 | Dozwolone protokoły | Rozróżniany, dozwolone dla żądań wykonywanych przy użyciu sygnatury dostępu Współdzielonego konta. Ustawienie HTTPS jest zalecane.|
 
@@ -144,6 +144,6 @@ Ponieważ sygnatury dostępu Współdzielonego parametry nie są widoczne dla us
 
 Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego zobacz następujące artykuły:
 - [Używanie sygnatury dostępu współdzielonego (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-- [Udostępnione sygnatur dostępu, część 2: Tworzenie i sygnatury dostępu Współdzielonego za pomocą magazynu obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
+- [Udostępnione sygnatur dostępu, część 2: Tworzenie i używanie sygnatury dostępu Współdzielonego z usługą Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
 
 Aby uzyskać więcej informacji na temat konfigurowania uwierzytelniania tokenu, zobacz [zasobów Zabezpieczanie usługi Azure Content Delivery Network, za pomocą tokenu uwierzytelniania](https://docs.microsoft.com/azure/cdn/cdn-token-auth).

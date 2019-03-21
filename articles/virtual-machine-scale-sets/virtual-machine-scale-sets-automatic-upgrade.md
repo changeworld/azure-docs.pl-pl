@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: manayar
-ms.openlocfilehash: 55eb81fd969e18ea25dd4194a532747ef5b7d4ca
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 779a10257a94ed761572fdcc80a68059750342dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994453"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -239,7 +239,7 @@ az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServ
 
 Szablony umożliwia wdrożenie zestawu skalowania z automatycznych uaktualnień systemu operacyjnego dla obsługiwanych obrazów takich jak [Ubuntu 16.04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej przykładów na temat korzystania z automatycznego uaktualniania systemu operacyjnego za pomocą zestawów skalowania, przejrzyj [repozytorium GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).

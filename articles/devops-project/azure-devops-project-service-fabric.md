@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Service Fabric za pomocą usługi Azure DevOps Projects'
+title: 'Samouczek: Wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Service Fabric przy użyciu usługi Azure DevOps Projects'
 description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Usługa DevOps Projects pozwala wdrożyć aplikację platformy ASP.NET Core w usłudze Azure Service Fabric w kilku prostych krokach.
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 2bba5d54c2b6298c2dd8059d47e5975ad3f176c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264764"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453775"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Samouczek: wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Service Fabric za pomocą usługi Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Samouczek: Wdrażanie aplikacji platformy ASP.NET Core w usłudze Azure Service Fabric przy użyciu usługi Azure DevOps Projects
 
 Usługa Azure DevOps Projects stanowi uproszczone środowisko, do którego możesz przenieść istniejący kod i repozytorium Git lub wybrać aplikację przykładową, aby utworzyć potok ciągłej integracji i ciągłego dostarczania na platformie Azure. 
 
@@ -39,7 +39,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 * Subskrypcja platformy Azure. Możesz uzyskać ją bezpłatnie za pośrednictwem programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabricc"></a>Używanie usługi DevOps Projects do tworzenia aplikacji platformy ASP.NET Core i wdrażania jej w usłudze Service Fabric
+## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>Używanie usługi DevOps Projects do tworzenia aplikacji platformy ASP.NET Core i wdrażania jej w usłudze Service Fabric
 
 Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure, na przykład klaster usługi Azure Service Fabric, w wybranej przez użytkownika subskrypcji platformy Azure.
 
@@ -79,7 +79,7 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 Usługa DevOps Projects automatycznie konfiguruje potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz przeglądać i dostosowywać potok. Aby zapoznać się z nim, wykonaj następujące czynności:
 
-1. Przejdź do pulpitu nawigacyjnego usługi DevOps Projects.
+1. Przejdź do pulpitu nawigacyjnego projekt DevOps.
 
 1. U góry pulpitu nawigacyjnego usługi DevOps Projects wybierz pozycję **Potoki kompilacji**.  
     Zostanie wyświetlona karta przeglądarki z potokiem kompilacji dla nowego projektu.
@@ -159,7 +159,7 @@ Jeśli przeprowadzasz testowanie, możesz uniknąć naliczania opłat, oczyszcza
 1. W prawym górnym rogu wybierz pozycję **Usuń**. 
 1. Po wyświetleniu monitu wybierz pozycję **Tak**, aby *trwale usunąć* zasoby.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Opcjonalnie możesz zmodyfikować potok ciągłej integracji/ciągłego wdrażania platformy Azure w celu zaspokojenia potrzeb zespołu. Możesz także użyć wzorca ciągłej integracji/ciągłego wdrażania jako szablonu podczas pracy z innymi potokami. W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

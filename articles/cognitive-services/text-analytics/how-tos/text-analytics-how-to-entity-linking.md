@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: bb315ff19aedd839c2b0638726be84343dcf4ec3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 78cc200a7bbaa2673cf6fea71d9be123fc96a75f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545366"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258075"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
@@ -47,7 +47,7 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 | Lokalizacja      | N/D\*         | "Redmond w stanie Waszyngton", "Paryż"  |
 | Organizacja  | N/D\*         | "Microsoft"   |
 | Ilość      | Liczba        | "6", "6"     | 
-| Ilość      | Procentowe    | "50%", "percent pięćdziesiąt"| 
+| Ilość      | Wartość procentowa    | "50%", "percent pięćdziesiąt"| 
 | Ilość      | Liczba porządkowa       | "2", "drugi"     | 
 | Ilość      | NumberRange   | "od 4 do 8"     | 
 | Ilość      | Wiek           | "90 dni temu" lub "30 lat"    | 
@@ -62,8 +62,9 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 | DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
 | DateTime      | Set           | "każdy wtorek"     | 
 | DateTime      | Strefa czasowa      |    | 
-| Adres URL           | N/D\*         | „https://www.bing.com”    |
+| Adres URL           | N/D\*         | "https:\//www.bing.com"    |
 | Email         | N/D\*         | „support@contoso.com” |
+
 \* W zależności od jednostki danych wejściowych i wyodrębnione może pominąć niektóre jednostki `SubType`.
 
 

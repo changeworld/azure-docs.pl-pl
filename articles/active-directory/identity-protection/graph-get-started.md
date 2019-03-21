@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36a2fc9d1ab364d44bd5dd6e7930e5d8ae3fb78d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7d9935b5605bc09f000a81e7616e807a0e194e12
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204750"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295542"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Rozpoczynanie pracy z usługą Azure Active Directory Identity Protection i Microsoft Graph
 
@@ -166,7 +166,7 @@ Na potrzeby uwierzytelniania, Wyślij żądanie post `https://login.microsoft.co
 
 - grant_type: "**client_credentials**"
 
--  Zasób: "**https://graph.microsoft.com**"
+-  Zasób: `https://graph.microsoft.com`
 
 - client_id: \<Identyfikatora klienta\>
 
@@ -246,7 +246,7 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 
 
 
-# <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Gratulacje, właśnie wykonana pierwszego wywołania w programie Microsoft Graph!  
 Teraz możesz zbadać zdarzenia o podwyższonym ryzyku tożsamości i używania danych, jednak wedle uznania.

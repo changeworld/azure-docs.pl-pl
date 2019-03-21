@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b8ca5fc5348818a7d0f1075557d4fe5c7e3bef44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810513"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834340"
 ---
 <a name="azure-marketplace-seo-publisher-guide"></a>Przewodnik dotyczący publikowania w portalu Azure Marketplace optymalizacji dla aparatów wyszukiwania
 =======================================
 
 ### <a name="general-explanation-of-algorithm"></a>Ogólne omówienie algorytmu
 
-Portal marketplace korzysta z usługi Azure Search zapewniająca możliwości wyszukiwania w witrynie. Algorytm opiera się na określenie częstotliwości — odwrotność dokumentu częstotliwość ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardowa [analizator Lucene](http://lucene.apache.org/core/) jest używany.
+Portal marketplace korzysta z usługi Azure Search zapewniająca możliwości wyszukiwania w witrynie. Algorytm opiera się na określenie częstotliwości — odwrotność dokumentu częstotliwość ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardowa [analizator Lucene](https://lucene.apache.org/core/) jest używany.
 
 Ogólnie rzecz biorąc cały tekst pola kategorii i branżach każdego typu i należy do weightage zgodność. Terminy specjalistyczne, które są rzadko używane przez aplikacje, ale często w swojej aplikacji, spowoduje wygenerowanie wyższą ocenę dopasowanie za pomocą wyszukiwania. Dlatego w tym terminy, takie jak "Maszyny Wirtualnej" będzie oferują niewielkie korzyści, konieczne będzie znacznie bardziej wyspecjalizowane "Usługa Azure search".
 Poniżej przedstawiono najbardziej odpowiednie pola, aby wziąć pod uwagę.

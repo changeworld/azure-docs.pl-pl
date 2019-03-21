@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad97381d983446dfcc32dd1ba82af587a500b9da
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 55c9120547472bb9a9a74533fe532d346844e89c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762147"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081767"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Samouczek: Konfigurowanie zasobów do weryfikacji jako usługa
 
@@ -56,13 +56,13 @@ Tworzenie dzierżawy używanego organizacji dostęp do usług VaaS. Na przykład
 
     Aby przypisać role w **usługi Azure Stack weryfikacji Service** aplikacji:
 
-    1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-    2. Wybierz **wszystkich usług** > **usługi Azure Active Directory** w obszarze **tożsamości** sekcji.
-    3. Wybierz **aplikacje dla przedsiębiorstw** > **usługi Azure Stack weryfikacji Service** aplikacji.
-    4. Wybierz pozycję **Użytkownicy i grupy**. **Azure Stack weryfikacji Service — użytkownicy i grupy** blok zawiera listę użytkowników z uprawnieniami do korzystania z aplikacji.
-    5. Wybierz **+ Dodaj użytkownika** Dodawanie użytkownika z dzierżawy i przypisać rolę.
+   1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+   2. Wybierz **wszystkich usług** > **usługi Azure Active Directory** w obszarze **tożsamości** sekcji.
+   3. Wybierz **aplikacje dla przedsiębiorstw** > **usługi Azure Stack weryfikacji Service** aplikacji.
+   4. Wybierz pozycję **Użytkownicy i grupy**. **Azure Stack weryfikacji Service — użytkownicy i grupy** blok zawiera listę użytkowników z uprawnieniami do korzystania z aplikacji.
+   5. Wybierz **+ Dodaj użytkownika** Dodawanie użytkownika z dzierżawy i przypisać rolę.
 
-    Jeśli chcesz izolować VaaS zasobów i akcji wśród różnych grup w organizacji, możesz utworzyć wiele katalogów dzierżawy usługi Azure AD.
+      Jeśli chcesz izolować VaaS zasobów i akcji wśród różnych grup w organizacji, możesz utworzyć wiele katalogów dzierżawy usługi Azure AD.
 
 ### <a name="register-your-tenant"></a>Zarejestrować dzierżawę usługi
 

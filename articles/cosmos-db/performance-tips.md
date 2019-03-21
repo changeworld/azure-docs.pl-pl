@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: d9d2b58ff249e765620e2fbae5c9677e9412f1ea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432060"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861897"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
@@ -38,37 +38,37 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
    * W trybie bezpośrednim
 
-     Tryb Direct obsługuje łączność za pośrednictwem protokołów TCP i HTTPS. Jeśli używasz najnowszej wersji zestawu SDK platformy .net, tryb połączenie bezpośrednie jest obsługiwany w .NET Standard 2.0 i .net framework. Podczas korzystania z trybu bezpośrednich, istnieją dwie opcje protokołu:
+     Tryb Direct obsługuje łączność za pośrednictwem protokołów TCP i HTTPS. Jeśli używasz najnowszej wersji zestawu SDK platformy .NET, tryb połączenie bezpośrednie jest obsługiwany w .NET Standard 2.0 i .NET framework. Podczas korzystania z trybu bezpośrednich, istnieją dwie opcje protokołu:
 
-    * TCP
-    * HTTPS
+     * TCP
+     * HTTPS
 
-    Podczas korzystania z trybu bramy usługi Cosmos DB używa portu 443 i portów 10250, 10255 i 10256, korzystając z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Mapowania portów 10250 domyślnym wystąpieniem bazy danych MongoDB, bez replikacji geograficznej i mapowania portów 10255/10256 do wystąpienia bazy danych MongoDB przy użyciu funkcji replikacji geograficznej. Korzystając z protokołu TCP w trybie bezpośrednim oprócz portów do bramy, należy upewnić się port zakresie 10000 i 20000 jest otwarty, ponieważ korzysta z usługi Azure Cosmos DB dynamiczne porty TCP. Jeśli te porty są otwarte, i próbuj używać protokołu TCP, błąd 503 Usługa niedostępna. W poniższej tabeli przedstawiono dostępne tryby łączności dla różnych interfejsów API i użytkownik portów usługi dla każdego interfejsu API:
+     Podczas korzystania z trybu bramy usługi Cosmos DB używa portu 443 i portów 10250, 10255 i 10256, korzystając z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Mapowania portów 10250 domyślnym wystąpieniem bazy danych MongoDB, bez replikacji geograficznej i mapowania portów 10255/10256 do wystąpienia bazy danych MongoDB przy użyciu funkcji replikacji geograficznej. Korzystając z protokołu TCP w trybie bezpośrednim oprócz portów do bramy, należy upewnić się port zakresie 10000 i 20000 jest otwarty, ponieważ korzysta z usługi Azure Cosmos DB dynamiczne porty TCP. Jeśli te porty są otwarte, i próbuj używać protokołu TCP, błąd 503 Usługa niedostępna. W poniższej tabeli przedstawiono dostępne tryby łączności dla różnych interfejsów API i użytkownik portów usługi dla każdego interfejsu API:
 
-    |Tryb połączenia  |Obsługiwany protokół  |Obsługiwanych zestawów SDK  |Port usługi/interfejsu API  |
-    |---------|---------|---------|---------|
-    |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-    |Bezpośrednie    |    HTTPS     |  Zestaw SDK platformy .net i Java    |   Porty w zakresie 20 000 10 000 operacji    |
-    |Bezpośrednie    |     TCP    |  Zestaw SDK platformy .NET    | Porty w zakresie 20 000 10 000 operacji |
+     |Tryb połączenia  |Obsługiwany protokół  |Obsługiwanych zestawów SDK  |Port usługi/interfejsu API  |
+     |---------|---------|---------|---------|
+     |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
+     |Bezpośrednie    |    HTTPS     |  Zestaw SDK platformy .NET i Java    |   Porty w zakresie 20 000 10 000 operacji    |
+     |Bezpośrednie    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 20 000 10 000 operacji |
 
-    Usługa Azure Cosmos DB oferuje proste i Otwórz model programowania RESTful przy użyciu protokołu HTTPS. Ponadto oferuje wydajne protokołu TCP, który jest również zgodne ze specyfikacją REST swój model komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno w przypadku bezpośredniego połączenia TCP, jak i protokołu HTTPS na użytek SSL początkowego uwierzytelniania i szyfrowania ruchu. Aby uzyskać najlepszą wydajność należy użyć protokołu TCP, gdy jest to możliwe.
+     Usługa Azure Cosmos DB oferuje proste i Otwórz model programowania RESTful przy użyciu protokołu HTTPS. Ponadto oferuje wydajne protokołu TCP, który jest również zgodne ze specyfikacją REST swój model komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno w przypadku bezpośredniego połączenia TCP, jak i protokołu HTTPS na użytek SSL początkowego uwierzytelniania i szyfrowania ruchu. Aby uzyskać najlepszą wydajność należy użyć protokołu TCP, gdy jest to możliwe.
 
-    Podczas tworzenia wystąpienia DocumentClient z parametr ConnectionPolicy jest konfigurowana tryb łączności. Jeśli jest używany w trybie bezpośrednim, protokół można również ustawić w ramach parametr ConnectionPolicy.
+     Podczas tworzenia wystąpienia DocumentClient z parametr ConnectionPolicy jest konfigurowana tryb łączności. Jeśli jest używany w trybie bezpośrednim, protokół można również ustawić w ramach parametr ConnectionPolicy.
 
-    ```csharp
-    var serviceEndpoint = new Uri("https://contoso.documents.net");
-    var authKey = new "your authKey from the Azure portal";
-    DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-    new ConnectionPolicy
-    {
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = new "your authKey from the Azure portal";
+     DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+     new ConnectionPolicy
+     {
         ConnectionMode = ConnectionMode.Direct,
         ConnectionProtocol = Protocol.Tcp
-    });
-    ```
+     });
+     ```
 
-    Ponieważ protokół TCP jest obsługiwany tylko w trybie bezpośredniego, jeśli używany jest tryb bramy protokołu HTTPS zawsze jest używany do komunikacji z bramą i wartość protokołu w ConnectionPolicy jest ignorowana.
+     Ponieważ protokół TCP jest obsługiwany tylko w trybie bezpośredniego, jeśli używany jest tryb bramy protokołu HTTPS zawsze jest używany do komunikacji z bramą i wartość protokołu w ConnectionPolicy jest ignorowana.
 
-    ![Ilustracja zasad połączenia usługi Azure Cosmos DB](./media/performance-tips/connection-policy.png)
+     ![Ilustracja zasad połączenia usługi Azure Cosmos DB](./media/performance-tips/connection-policy.png)
 
 2. **Wywołaj OpenAsync, aby uniknąć opóźnienia uruchomienia na pierwsze żądanie**
 

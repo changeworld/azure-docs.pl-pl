@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: cf4ee8b1b9d96ad4d32a0ac8b1682968b90653f9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c43d3b236a305f1e6d2bd392527a5206b6a5c974
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541494"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074900"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak wykonać aprowizację starsze urządzenia przy użyciu kluczy symetrycznych
 
@@ -120,17 +120,17 @@ Zestaw SDK zawiera przykładowy kod dla symulowanego urządzenia. To urządzenie
 
 3. Na **Dodaj grupę rejestracji**, wprowadź następujące informacje i kliknij przycisk **Zapisz** przycisku.
 
-    - **Nazwa grupy**: Wprowadź **mylegacydevices**.
+   - **Nazwa grupy**: Wprowadź **mylegacydevices**.
 
-    - **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
+   - **Typ zaświadczeń**: Wybierz **klucz symetryczny**.
 
-    - **Automatycznie generuj klucze**: zaznacz to pole wyboru.
+   - **Automatycznie generuj klucze**: zaznacz to pole wyboru.
 
-    - **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **statycznie** można przypisać do określonego koncentratora.
+   - **Wybierz sposób przypisywania urządzeń do centrów**: Wybierz **statycznie** można przypisać do określonego koncentratora.
 
-    - **Wybierz centra IoT Hub do tej grupy mogą być przypisane do**: Wybierz jeden z koncentratorami.
+   - **Wybierz centra IoT Hub do tej grupy mogą być przypisane do**: Wybierz jeden z koncentratorami.
 
-    ![Dodaj grupę rejestracji dla zaświadczenia klucza symetrycznego](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Dodaj grupę rejestracji dla zaświadczenia klucza symetrycznego](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
 4. Po zapisaniu rejestracji zostanie wygenerowany **klucz podstawowy** i **klucz pomocniczy**. Zostaną one dodane do wpisu rejestracji. Grupa symetrycznego klucza rejestracji jest wyświetlana jako **mylegacydevices** w obszarze *Nazwa grupy* kolumny w *grup rejestracji* kartę. 
 

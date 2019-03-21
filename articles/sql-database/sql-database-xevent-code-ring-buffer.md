@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: b15a884821fa067c329766169cb4c704e9ed069a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f47c6b63ce5f18aa896b086ec884b9a3020cadd2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993277"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kod docelowy buforu dla rozszerzonych zdarzeń w bazie danych SQL cyklicznego
 
@@ -57,7 +57,7 @@ W tym temacie przedstawiono przykładowy kod języka Transact-SQL, który:
 
 Bardzo drobnych modyfikacji Poniższy przykładowy kod bufor cykliczny może działać w usłudze Azure SQL Database lub programu Microsoft SQL Server. Różnica polega na obecności węzła "_bazy danych" nazwę niektóre dynamicznych widoków zarządzania (DMV), używany w klauzuli FROM w kroku 5. Na przykład:
 
-* sys.dm_xe **_database**_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
 
 &nbsp;

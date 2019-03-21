@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7e196a912db723d5d118b0aadc98f73f1c7271e0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243758"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096711"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -181,7 +181,7 @@ Wykonaj kroki w tej sekcji, aby wygenerować Certyfikaty testowe na urządzeniu 
 
 W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczenie certyfikatów w łańcuchu pliku pozwala łatwo zainstalować je na urządzenie bramy usługi IoT Edge i wszystkie podrzędne urządzenia.  
 
-1.  Utwórz certyfikat urzędu certyfikacji właściciela i jeden certyfikat pośredniego. Te certyfikaty są umieszczane w  *\<WRKDIR >*.
+1. Utwórz certyfikat urzędu certyfikacji właściciela i jeden certyfikat pośredniego. Te certyfikaty są umieszczane w  *\<WRKDIR >*.
 
    ```bash
    ./certGen.sh create_root_and_intermediate
@@ -193,7 +193,7 @@ W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczen
    * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
    * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
 
-2.  Utwórz certyfikat urzędu certyfikacji urządzenia usługi Edge i klucza prywatnego za pomocą następującego polecenia. Podaj nazwę dla urządzenia bramy, która będzie służyć do nazwy plików i podczas generowania certyfikatów. 
+2. Utwórz certyfikat urzędu certyfikacji urządzenia usługi Edge i klucza prywatnego za pomocą następującego polecenia. Podaj nazwę dla urządzenia bramy, która będzie służyć do nazwy plików i podczas generowania certyfikatów. 
 
    ```bash
    ./certGen.sh create_edge_device_certificate "<gateway name>"

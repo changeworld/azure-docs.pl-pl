@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 21e7406d566be5be73342d530a4ad66b80a1d23f
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: deef5d17f9970f23c40c323bd1612cc3e3e1304e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990445"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107410"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Jak używać kontroli dostępu opartej na rolach w usłudze Azure API Management
 Usługa Azure API Management bazuje na kontroli dostępu based (RBAC) umożliwia precyzyjne zarządzanie dostępem dla usługi API Management i jednostek (na przykład interfejsów API i zasady). Ten artykuł zawiera przegląd ról wbudowanych i niestandardowych w usłudze API Management. Aby uzyskać więcej informacji na temat zarządzania dostępem w witrynie Azure portal, zobacz [wprowadzenie do zarządzania dostępem w witrynie Azure portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
@@ -32,7 +32,7 @@ Usługa API Management obecnie udostępnia trzy role wbudowane i doda dwóch wi�
 Poniższa tabela zawiera krótkie opisy ról wbudowanych. Te role można przypisać za pomocą witryny Azure portal lub innych narzędzi, takich jak Azure [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), i [interfejsu API REST](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Aby uzyskać szczegółowe informacje dotyczące sposobu przypisywania wbudowanych ról, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 | Rola          | Dostęp do odczytu<sup>[1]</sup> | Dostęp do zapisu<sup>[2]</sup> | Tworzenie usługi, usuwanie, skalowanie, sieci VPN i konfiguracja domen niestandardowych | Dostęp do portalu wydawcy starszej wersji | Opis
-| ------------- | ---- | ---- | ---- | ---- | ---- | ---- |
+| ------------- | ---- | ---- | ---- | ---- | ---- 
 | Współautor usługi Azure API Management | ✓ | ✓ | ✓ | ✓ | Administrator. Ma pełny dostęp CRUD do usługi API Management i jednostek (na przykład interfejsów API i zasady). Ma dostęp do portalu wydawcy starszej wersji. |
 | Usługi Azure API Management usługi czytnika | ✓ | | || Ma dostęp tylko do odczytu do usługi API Management i jednostek. |
 | Operator usługi zarządzania interfejs API platformy Azure | ✓ | | ✓ | | Może zarządzać usługi API Management, ale nie jednostki.|

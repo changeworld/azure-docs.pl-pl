@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5e69b5680edf4b633703eccdd68cd3752d989ec
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 037e01120a695b1bacf2b1d4bc47e9ca9ed3fbd2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Samouczek: Integracja usługi Azure Active Directory z usługą ArcGIS Online
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację usługi ArcGIS Online z usługą Azure AD, należ
 
 **Aby dodać usługę ArcGIS Online z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -146,7 +146,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z usługą ArcGIS Onli
 
     b. W pozycji **Metadata for the Enterprise Identity Provider will be supplied using** (Metadane dla dostawcy tożsamości przedsiębiorstwa zostaną dostarczone przy użyciu) wybierz opcję **A File** (Plik).
 
-    d. Aby przekazać pobrany plik metadanych, kliknij pozycję **Wybierz plik**.
+    c. Aby przekazać pobrany plik metadanych, kliknij pozycję **Wybierz plik**.
 
     d. Kliknij opcję **SET IDENTITY PROVIDER** (USTAW DOSTAWCĘ TOŻSAMOŚCI).
 
@@ -168,7 +168,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -234,7 +234,7 @@ W przypadku usługi ArcGIS Online aprowizacja jest zadaniem ręcznym.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka ArcGIS Online w panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi ArcGIS Online, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

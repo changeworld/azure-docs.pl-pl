@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2187d0e986a173e1b8dc37fd0abdfa3bfd9e9505
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 64aebaedd9221b2570b66bdb8550bff36b54492c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168991"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084763"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą SpringCM
 
@@ -200,7 +200,7 @@ Aby umożliwić użytkownikom usługi Azure Active Directory, zaloguj się do Sp
    
     ![Utwórz użytkownika](./media/spring-cm-tutorial/ic797054.png "Utwórz użytkownika")
 
-1. Kliknij przycisk **Utwórz użytkownika**.
+1. Kliknij pozycję **Create User** (Utwórz użytkownika).
 
 1. Wybierz **roli użytkownika**.
 
@@ -212,9 +212,9 @@ Aby umożliwić użytkownikom usługi Azure Active Directory, zaloguj się do Sp
 
 1. Kliknij pozycję **Zapisz**.
 
-  >[!NOTE]
-  >Można użyć jakichkolwiek innych SpringCM użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez SpringCM do aprowizacji kont użytkowników usługi AAD.  
-  > 
+   >[!NOTE]
+   >Można użyć jakichkolwiek innych SpringCM użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez SpringCM do aprowizacji kont użytkowników usługi AAD.  
+   > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -249,14 +249,14 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
- 
+ 
 Po kliknięciu kafelka SpringCM w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji SpringCM.
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu). 
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

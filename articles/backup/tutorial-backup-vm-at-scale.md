@@ -9,12 +9,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: a73568fd1dd7ed6b6cd3a7938768db4982725658
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 99f5b09d0b5dfc144dca7f19efff3f0656a82b35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497890"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093249"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Tworzenie kopii zapasowych wielu maszyn wirtualnych za pomocą witryny Azure Portal
 
@@ -77,16 +77,16 @@ Po utworzeniu magazynu usługi Recovery Services następnym krokiem jest skonfig
     ![Wybieranie obciążenia](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. W menu **Zasady kopii zapasowych** w polu **Nazwa zasad** wpisz *Finance* (Finansowe). Wprowadź następujące zmiany dotyczące zasad tworzenia kopii zapasowych:
-    - W obszarze **Częstotliwość tworzenia kopii zapasowych** ustaw strefę czasową *Czas środkowy*. Ponieważ kompleks sportowy znajduje się w Teksasie, właściciel chce, aby czas był lokalny. Pozostaw dla częstotliwości tworzenia kopii zapasowych ustawienie: codziennie o 3:30.
-    - W obszarze **Przechowywanie codziennego punktu kopii zapasowej** ustaw okres 90 dni.
-    - W obszarze **Przechowywanie tygodniowego punktu kopii zapasowej** użyj punktu przywracania *Poniedziałek* przechowywanego przez 52 tygodnie.
-    - W obszarze **Przechowywanie miesięcznego punktu kopii zapasowej** użyj punktu przywracania od pierwszej niedzieli miesiąca przechowywanego przez 36 miesięcy.
-    - Anuluj wybór opcji **Przechowywanie rocznego punktu kopii zapasowej**. Kierownik ds. finansów nie chce przechowywać danych dłużej niż 36 miesięcy.
-    - Kliknij pozycję **OK**, aby utworzyć zasady kopii zapasowych.
+   - W obszarze **Częstotliwość tworzenia kopii zapasowych** ustaw strefę czasową *Czas środkowy*. Ponieważ kompleks sportowy znajduje się w Teksasie, właściciel chce, aby czas był lokalny. Pozostaw dla częstotliwości tworzenia kopii zapasowych ustawienie: codziennie o 3:30.
+   - W obszarze **Przechowywanie codziennego punktu kopii zapasowej** ustaw okres 90 dni.
+   - W obszarze **Przechowywanie tygodniowego punktu kopii zapasowej** użyj punktu przywracania *Poniedziałek* przechowywanego przez 52 tygodnie.
+   - W obszarze **Przechowywanie miesięcznego punktu kopii zapasowej** użyj punktu przywracania od pierwszej niedzieli miesiąca przechowywanego przez 36 miesięcy.
+   - Anuluj wybór opcji **Przechowywanie rocznego punktu kopii zapasowej**. Kierownik ds. finansów nie chce przechowywać danych dłużej niż 36 miesięcy.
+   - Kliknij pozycję **OK**, aby utworzyć zasady kopii zapasowych.
 
-    ![Wybieranie obciążenia](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
+     ![Wybieranie obciążenia](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
-    Po utworzeniu zasad tworzenia kopii zapasowych należy skojarzyć je z maszynami wirtualnymi.
+     Po utworzeniu zasad tworzenia kopii zapasowych należy skojarzyć je z maszynami wirtualnymi.
 
 6. W oknie dialogowym **Wybieranie maszyn wirtualnych** wybierz pozycję *myVM* i kliknij przycisk **OK**, aby wdrożyć zasady tworzenia kopii zapasowych dla maszyn wirtualnych.
 

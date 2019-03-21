@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: bb173981e3f06c923fa7357eb64777493bd17b8c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 33169448b5b1e4496f42d157cb77134b90804fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958273"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433182"
 ---
 # <a name="what-is-azure-data-explorer"></a>Co to jest usługa Azure Data Explorer?
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Pomaga ona w obsłudze wielu strumieni danych emitowanych przez nowoczesne oprogramowanie, dlatego można zbierać, przechowywać i analizować dane. Usługa Azure Data Explorer to idealne rozwiązanie do analizowania dużych ilości zróżnicowanych danych z dowolnego źródła danych, takiego jak witryny internetowe, aplikacje, urządzenia IoT i inne. Te dane są używane na potrzeby diagnostyki, monitorowania, raportowania, uczenia maszynowego i dodatkowych możliwości analizy. Usługa Azure Data Explorer upraszcza pozyskiwanie takich danych i umożliwia wykonywanie złożonych zapytań ad-hoc dotyczących danych w ciągu kilku sekund.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Pomaga ona w obsłudze wielu strumieni danych emitowanych przez nowoczesne oprogramowanie, dlatego można zbierać, przechowywać i analizować dane. Usługa Azure Data Explorer to idealne rozwiązanie do analizowania dużych ilości zróżnicowanych danych z dowolnego źródła danych, takiego jak witryny internetowe, aplikacje, urządzenia IoT i inne. Te dane są używane na potrzeby diagnostyki, monitorowania, raportowania, uczenia maszynowego i dodatkowych możliwości analizy. Eksplorator danych usługi Azure upraszcza to pozyskiwanie i umożliwia wykonywanie złożonych zapytań ad hoc dotyczące danych w ciągu kilku sekund.
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Co sprawia, że usługa Azure Data Explorer jest unikatowa?
 
@@ -53,7 +53,7 @@ Ogólnie praca z usługą Azure Data Explorer odbywa się zgodnie z następując
 
 ## <a name="query-experience"></a>Środowisko pracy z zapytaniami
 
-Zapytanie w usłudze Azure Data Explorer to przeznaczone tylko do odczytu żądanie przetwarzające dane i zwracające wyniki tego przetwarzania bez modyfikowania danych lub metadanych. Zapytania można uściślać do momentu ukończenia analizy. Usługa Azure Data Explorer upraszcza ten proces dzięki środowisku obsługującemu bardzo szybkie wykonywanie zapytań ad-hoc.
+Zapytanie w usłudze Azure Data Explorer to przeznaczone tylko do odczytu żądanie przetwarzające dane i zwracające wyniki tego przetwarzania bez modyfikowania danych lub metadanych. Zapytania można uściślać do momentu ukończenia analizy. Eksplorator danych usługi Azure ułatwia ten proces ze względu na swoje doświadczenie kwerend bardzo szybko ad hoc.
 
 Usługa Azure Data Explorer równie efektywnie obsługuje duże ilości danych ze strukturą, częściową strukturą (zagnieżdżone typy w notacji JSON) oraz bez struktury (dowolny tekst). Umożliwia ona wyszukiwanie terminów z określonym tekstem, lokalizowanie konkretnych zdarzeń i wykonywanie obliczeń w stylu metryk na danych strukturalnych. Usługa Azure Data Explorer łączy światy dzienników tekstowych bez struktury oraz numerów i wymiarów ze strukturą, wyodrębniając wartości w czasie wykonywania z pól tekstowych w dowolnej postaci. Eksplorowanie danych jest upraszczane przez połączenie szybkiego indeksowania tekstu, magazynu kolumn i operacje na szeregach czasowych.
 
@@ -69,7 +69,7 @@ Bardzo chcemy poznać Twoją opinię na temat usługi Azure Data Explorer oraz j
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
 - [Przedstaw sugestie dotyczące produktów w witrynie User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer](create-cluster-database-portal.md)
 

@@ -1,10 +1,10 @@
 ---
-title: Zarządzanie kontami dostępu awaryjnego w usłudze Azure AD | Dokumentacja firmy Microsoft
+title: Zarządzać kontami administratorów dostępu awaryjnego — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób użycia kont dostępu awaryjnego, aby zapobiec przypadkowo zablokowania dostępu do dzierżawy usługi Azure Active Directory (Azure AD).
 services: active-directory
 author: markwahl-msft
 ms.author: curtand
-ms.date: 12/21/2018
+ms.date: 03/19/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bd08f9414353eb6d458494d76654dae7262c524
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f430a832ffb35b95d0bf4eff2d82be5ecc3d865c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769203"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224944"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Zarządzanie kontami dostępu awaryjnego w usłudze Azure AD
 

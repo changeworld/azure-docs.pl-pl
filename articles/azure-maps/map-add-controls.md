@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4947977fbed2b4fe4bd47adcc4de6516090573ad
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661313"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260151"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Dodawanie kontrolki mapy do usługi Azure Maps
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono sposób dodawania kontrolki mapy do mapy. Zostanie 
 
 Pierwszy blok kodu ustawia klucz subskrypcji i tworzy obiekt mapy bez wstępnie ustawienia stylu. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
 
-Kontrolka powiększenia dodaje możliwość powiększanie i pomniejszanie mapy. Drugi blok kodu tworzy obiekt Powiększenie, przy użyciu atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Kontrolka powiększenia mieści się w planie **odbiornik zdarzeń** zapewnienie ładuje po mapy ładuje pełni.
+Kontrolka powiększenia dodaje możliwość powiększanie i pomniejszanie mapy. Drugi blok kodu tworzy obiekt Powiększenie, przy użyciu atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Kontrolka powiększenia mieści się w planie **odbiornik zdarzeń** zapewnienie ładuje po mapy ładuje pełni.
 
 ## <a name="add-pitch-control"></a>Dodaj kontrolkę pomysłu
 
@@ -35,7 +35,7 @@ Kontrolka powiększenia dodaje możliwość powiększanie i pomniejszanie mapy. 
 
 Pierwszy blok kodu ustawia klucz subskrypcji i tworzy obiekt mapy bez wstępnie ustawienia stylu. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
 
-Wysokość formantu dodaje możliwości, aby zmienić wysokość mapy. Drugi blok kodu tworzy obiekt formantu pomysłu, używając atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Formant skoku znajduje się w mapie **odbiornik zdarzeń** zapewnienie ładuje po mapy ładuje pełni.
+Wysokość formantu dodaje możliwości, aby zmienić wysokość mapy. Drugi blok kodu tworzy obiekt formantu pomysłu, używając atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Formant skoku znajduje się w mapie **odbiornik zdarzeń** zapewnienie ładuje po mapy ładuje pełni.
 
 ## <a name="add-compass-control"></a>Dodaj kontrolkę kompasu
 
@@ -44,7 +44,7 @@ Wysokość formantu dodaje możliwości, aby zmienić wysokość mapy. Drugi blo
 
 Pierwszy blok kodu ustawia klucz subskrypcji i tworzy obiekt mapy bez wstępnie ustawienia stylu. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
 
-Drugi blok kodu tworzy obiekt Compass kontrolki, używając atlas [kontroli Compass](/javascript/api/azure-maps-control/atlas.controls.compasscontrol). Dodaje także kompasu formant do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Kontrolka Compass mieści się w planie **odbiornik zdarzeń** zapewnienie ładuje po mapy ładuje pełni.
+Drugi blok kodu tworzy obiekt Compass kontrolki, używając atlas [kontroli Compass](/javascript/api/azure-maps-control/atlas.control.compasscontrol). Dodaje także kompasu formant do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Kontrolka Compass mieści się w planie **odbiornik zdarzeń** zapewnienie ładuje po mapy ładuje pełni.
 
 ## <a name="a-map-with-all-controls"></a>Mapa przy użyciu wszystkich formantów
 
@@ -53,13 +53,13 @@ Drugi blok kodu tworzy obiekt Compass kontrolki, używając atlas [kontroli Comp
 
 Pierwszy blok kodu ustawia klucz subskrypcji i tworzy obiekt mapy bez wstępnie ustawienia stylu. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
 
-Drugi blok kodu tworzy obiekt Compass kontrolki, używając atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
+Drugi blok kodu tworzy obiekt Compass kontrolki, używając atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
 
-Trzeci bloku kodu tworzy obiekt Powiększenie, przy użyciu atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
+Trzeci bloku kodu tworzy obiekt Powiększenie, przy użyciu atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
 
-Czwarty blok kodu tworzy obiekt formantu pomysłu, używając atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
+Czwarty blok kodu tworzy obiekt formantu pomysłu, używając atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
 
-Ostatni blok kodu tworzy obiekt selektor stylu przy użyciu atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Wszystkie obiekty kontrolki są dodawane w mapie **odbiornik zdarzeń** aby upewnić się, są one ładowane po mapy ładuje pełni.
+Ostatni blok kodu tworzy obiekt selektor stylu przy użyciu atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) i dodaje je do mapy za pomocą mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Wszystkie obiekty kontrolki są dodawane w mapie **odbiornik zdarzeń** aby upewnić się, są one ładowane po mapy ładuje pełni.
 
 Kolejność obiektów kontroli w skrypcie decyduje o kolejności, w jakiej są wyświetlane na mapie. Aby zmienić kolejność formantów na mapie, możesz zmienić ich kolejność w skrypcie.
 

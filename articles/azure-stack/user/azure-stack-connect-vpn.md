@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 03/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: d2766416c84233281e55ff6f8be8519b7aadfb8c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d35ab3f477f327cb85cd8dfebd255542489debdc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763558"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286146"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu sieci VPN
 
@@ -92,8 +92,7 @@ Najpierw utwórz zasobów sieciowych na platformie Azure. Poniższe instrukcje p
 5. Aby wybrać sieć wirtualną, wybrać **sieć wirtualna**. Następnie wybierz pozycję **AzureVnet** z listy.
 6. Wybierz pozycję **Publiczny adres IP**. Gdy **wybierz publiczny adres IP** zostanie otwarta sekcja, wybierz opcję **Utwórz nową**.
 7. W **nazwa**, typ **Azure-GW-PiP**, a następnie wybierz pozycję **OK**.
-8. Domyślnie dla **typu sieci VPN**, **oparte na trasach** jest zaznaczone. Zachowaj **oparte na trasach** typu sieci VPN.
-9. Upewnij się, że wartości w polach **Subskrypcja** i **Lokalizacja** są poprawne. Możesz przypiąć zasób do pulpitu nawigacyjnego. Wybierz pozycję **Utwórz**.
+8. Upewnij się, że wartości w polach **Subskrypcja** i **Lokalizacja** są poprawne. Możesz przypiąć zasób do pulpitu nawigacyjnego. Wybierz pozycję **Utwórz**.
 
 ### <a name="create-the-local-network-gateway-resource"></a>Tworzenie zasobu Brama sieci lokalnej
 

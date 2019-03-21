@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 2f949265e3961794e2fc4b0efbce107762a75ef7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 5e88602aa3b983e1533248253d53967f39e6b5eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041564"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837528"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Wykonywanie operacji zbiorczych w interfejsie API języka Gremlin dla usługi Azure Cosmos DB przy użyciu biblioteki grafów BulkExecutor .NET
 
@@ -154,7 +154,7 @@ Ustawienie|Opis
 2. Uruchom aplikację. Spowoduje to dwukrotne wywołanie polecenia `BulkImportAsync` — raz w celu zaimportowania wierzchołków i raz w celu zaimportowania krawędzi. Jeśli dowolny z obiektów spowoduje błąd podczas wstawiania, zostanie dodany do pliku `.\BadVertices.txt` lub `.\BadEdges.txt`.
 3. Oceń wyniki, wysyłając zapytania do bazy danych grafów. Jeśli opcja `ShouldCleanupOnFinish` ma wartość „true”, baza danych zostanie automatycznie usunięta.
 
-## <a name="next-steps"></a>Następne kroki
-* Aby uzyskać szczegółowe informacje na temat pakietu Nuget i wersji biblioteki Bulk Executor .NET, zobacz [szczegóły zestawu SDK Bulk Executor](sql-api-sdk-bulk-executor-dot-net.md). 
+## <a name="next-steps"></a>Kolejne kroki
+* Dowiedz się więcej o szczegóły pakietu Nuget i biblioteki .NET wykonawca zbiorcze informacje o wersji, zobacz [zbiorczo Szczegóły zestawu SDK funkcji wykonawczej](sql-api-sdk-bulk-executor-dot-net.md). 
 * Zapoznaj się z [poradami dotyczącymi wydajności](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips), aby jeszcze lepiej zoptymalizować użycie narzędzia BulkExecutor.
 * Zapoznaj się z artykułem informacyjnym na temat narzędzia [BulkExecutor.Graph](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet), aby uzyskać szczegółowe informacje na temat klas i metod zdefiniowanych w tej przestrzeni nazw.

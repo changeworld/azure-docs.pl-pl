@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 9f0ccb85fa4b42ef3ca90c6d4ca2d80113b93a0c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3a6fa631fdf3436dc3a76817d2c0043b0407b2ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733703"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121557"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Udzielić aplikacji dostępu do zasobów usługi Azure Stack, tworząc jednostki usługi
 
@@ -56,8 +56,8 @@ Kroki przypisywanie nazwy głównej usługi do roli takie same dla usługi Azure
 
 Jeśli usługi Azure Stack używa usługi Azure AD do przechowywania tożsamości, należy można utworzyć jednostkę usługi za pomocą te same czynności co platformy Azure, przy użyciu witryny Azure portal.
 
->[!NOTE]
-Sprawdź, czy masz [wymagane uprawnienia usługi Azure AD](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) przed rozpoczęciem tworzenia jednostki usługi.
+> [!NOTE]
+> Sprawdź, czy masz [wymagane uprawnienia usługi Azure AD](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) przed rozpoczęciem tworzenia jednostki usługi.
 
 ### <a name="create-service-principal"></a>Tworzenie jednostki usługi
 
@@ -67,7 +67,7 @@ Aby utworzyć jednostkę usługi dla aplikacji:
 2. Wybierz **usługi Azure Active Directory** > **rejestracje aplikacji** > **Dodaj**.
 3. Podaj nazwę i adres URL aplikacji. Wybierz opcję **aplikacji sieci Web / interfejs API** lub **natywnych** dla typu aplikacji, którą chcesz utworzyć. Po ustawieniu wartości, wybierz **Utwórz**.
 
-### <a name="get-credentials"></a>Pobierz poświadczenia
+### <a name="get-credentials"></a>Pobieranie poświadczeń
 
 Podczas logowania programowo, użyj Identyfikatora swojej aplikacji i klucza uwierzytelniania. Aby wyświetlić następujące wartości:
 
@@ -80,8 +80,8 @@ Podczas logowania programowo, użyj Identyfikatora swojej aplikacji i klucza uwi
 
 4. Podaj opis i czas trwania klucza. Po zakończeniu wybierz pozycję **Zapisz**.
 
->[!IMPORTANT]
-Po zapisaniu klucza, klucz **wartość** jest wyświetlana. Zanotuj tę wartość, ponieważ nie można pobrać klucza później. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
+> [!IMPORTANT]
+> Po zapisaniu klucza, klucz **wartość** jest wyświetlana. Zanotuj tę wartość, ponieważ nie można pobrać klucza później. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
 
 ![Ostrzeżenie wartości klucza dla klucza zapisane.](./media/azure-stack-create-service-principals/image15.png)
 
@@ -101,8 +101,8 @@ Aby uzyskać więcej informacji na temat tworzenia jednostki usługi, zobacz [Tw
 
 Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: wbudowane role](../../role-based-access-control/built-in-roles.md).
 
->[!NOTE]
-Zakres roli można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład aplikacji za pomocą roli Czytelnik dla grupy zasobów oznacza, że aplikacja może odczytywać zasoby w grupie zasobów.
+> [!NOTE]
+> Zakres roli można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład aplikacji za pomocą roli Czytelnik dla grupy zasobów oznacza, że aplikacja może odczytywać zasoby w grupie zasobów.
 
 W przypadku przypisywania roli do jednostki usługi, wykonaj następujące kroki jako wskazówki.
 

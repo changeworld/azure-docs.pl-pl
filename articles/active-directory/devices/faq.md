@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbae902e7074207453938b14b9e79628e437e1cc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: eaaad0d7351c398c9b2cc013f40d62461a2dd3f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737352"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845534"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -237,7 +237,13 @@ Dołączenie do hybrydowej usługi Azure AD mają pierwszeństwo przed stan usł
 
 **Pyt.: Czy urządzeń przyłączonych do usługi Azure AD hybrydowego systemu Windows 10 będą wymagały linii wzroku do kontrolera domeny, aby uzyskać dostęp do zasobów w chmurze?**
 
-**Odp.:** Nie. Plik systemu Windows 10 hybrydowych usługi Azure AD join jest zakończone, a użytkownik zalogował się w co najmniej raz, urządzenia nie wymaga linii wzroku do kontrolera domeny do dostępu do zasobów w chmurze. Systemu Windows 10 można nawiązać połączenia z logowania jednokrotnego aplikacji usługi Azure AD z dowolnego miejsca przy użyciu połączenia internetowego, z wyjątkiem sytuacji, gdy zostanie zmienione hasło. Jeśli hasło zostało zmienione poza siecią firmową (na przykład przy użyciu usługi Azure AD SSPR), użytkownik musi mieć bezpośredni kontakt z kontrolerem domeny, zanim staną się mogli logować się do urządzenia przy użyciu nowego hasła. W przeciwnym razie można tylko logowania się przy użyciu starego hasła, zostaje unieważniony przez usługę Azure AD, która uniemożliwia logowanie na. Jednak ten problem nie występuje, gdy używasz Windows Hello dla firm. Użytkownicy, którzy logują się przy użyciu Windows Hello dla firm w dalszym ciągu uzyskać pojedynczego logowania do aplikacji usługi Azure AD po zmianie hasła, nawet jeśli nie mają linii wzroku do ich kontrolera domeny. 
+**Odp.:** Ogólnie nie, z wyjątkiem sytuacji, gdy zostanie zmienione hasło użytkownika. Plik systemu Windows 10 hybrydowych usługi Azure AD join jest zakończone, a użytkownik zalogował się w co najmniej raz, urządzenia nie wymaga linii wzroku do kontrolera domeny do dostępu do zasobów w chmurze. Systemu Windows 10 można nawiązać połączenia z logowania jednokrotnego aplikacji usługi Azure AD z dowolnego miejsca przy użyciu połączenia internetowego, z wyjątkiem sytuacji, gdy zostanie zmienione hasło. Użytkowników, którzy logują się przy użyciu Windows Hello dla firm w dalszym ciągu uzyskać pojedynczego logowania do aplikacji usługi Azure AD nawet w przypadku, po zmianie hasła, nawet jeśli nie mają linii wzroku do ich kontrolera domeny. 
+
+---
+
+**Pyt.: Co się stanie, jeśli użytkownik nie zmieni hasła i spróbuje zalogować się do swojego systemu Windows 10 hybrydowej usługi Azure AD przyłączone urządzenie poza siecią firmową?**
+
+**Odp.:** Jeśli hasło zostało zmienione poza siecią firmową (na przykład przy użyciu usługi Azure AD SSPR), następnie logowania użytkownika przy użyciu nowego hasła zakończy się niepowodzeniem. W przypadku urządzeń przyłączonych do usługi Azure AD hybrydowe w lokalnej usłudze Active Directory jest podstawowej urzędu. Urządzenie nie ma bezpośredni kontakt z kontrolerem domeny, to nie można zweryfikować nowe hasło. Tak, użytkownik musi nawiązać połączenie z kontrolerem domeny (za pośrednictwem sieci VPN lub w sieci firmowej) przed mogą logować się do urządzenia przy użyciu nowego hasła. W przeciwnym razie one można tylko Zaloguj się przy użyciu starego hasła ze względu na możliwość logowania pamięci podręcznej w Windows. Jednak stare hasło zostaje unieważniony przez usługę Azure AD podczas żądania tokenu z tego powodu uniemożliwia logowanie na i kończy się niepowodzeniem, wszystkie zasady dostępu warunkowego opartego na urządzeniach. Ten problem nie występuje, jeśli używasz Windows Hello dla firm. 
 
 ---
 
@@ -250,7 +256,7 @@ Dołączenie do hybrydowej usługi Azure AD mają pierwszeństwo przed stan usł
 
 **Pyt.: Jak mogę zarejestrować urządzenia z systemem macOS**
 
-**Odp.:** Wykonaj następujące czynności:
+**Odp.:** Wykonaj następujące kroki:
 
 1.  [Tworzenie zasad zgodności](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
 2.  [Definiowanie zasad dostępu warunkowego dla urządzeń z systemem macOS](../active-directory-conditional-access-azure-portal.md) 

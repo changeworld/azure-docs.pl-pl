@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 690ce08aa15a9677b04931ed1965ef819614ee84
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 76b607502324c3ca25b3536d5197a97dbb80399d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355627"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102149"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualizowanie oferty w portalu Azure Marketplace i AppSource
 
@@ -68,19 +68,19 @@ Aby zaimplementować te zmiany, wykonaj poniższe kroki.
 
 W przypadku ofert portalu Azure Marketplace:
 
-2. Wybierz **jednostki SKU** kartę.  Wybierz jednostkę SKU, aby zmodyfikować.
-3. Kliknij przycisk **Wybierz kraje** przycisku w obszarze **dostępności Kraj/Region** pola.
-4. W oknie dialogowym dostępności regionu należy dodać lub usunąć regiony tej jednostki SKU.
+1. Wybierz **jednostki SKU** kartę.  Wybierz jednostkę SKU, aby zmodyfikować.
+1. Kliknij przycisk **Wybierz kraje** przycisku w obszarze **dostępności Kraj/Region** pola.
+1. W oknie dialogowym dostępności regionu należy dodać lub usunąć regiony tej jednostki SKU.
 
 W przypadku ofert usługi AppSource:
 
-2. Wybierz **szczegóły Storefront** kartę.
-3. Obok pozycji **obsługiwane kraje/regiony** etykietę, kliknij przycisk **obsługiwane kraje/regiony**. 
-4. W oknie dialogowym obsługiwane kraje/regiony Dodawanie lub usuwanie regionów dla tej oferty.
+1. Wybierz **szczegóły Storefront** kartę.
+1. Obok pozycji **obsługiwane kraje/regiony** etykietę, kliknij przycisk **obsługiwane kraje/regiony**. 
+1. W oknie dialogowym obsługiwane kraje/regiony Dodawanie lub usuwanie regionów dla tej oferty.
 
 Dla każdej witryny marketplace:
 
-5. Kliknij przycisk **Publikuj** aby rozpocząć proces publikowania. 
+1. Kliknij przycisk **Publikuj** aby rozpocząć proces publikowania. 
 
 Jeśli jednostka SKU jest wykonywane w nowym regionie, masz możliwość określenia ceny dla tego konkretnego regionu za pośrednictwem **Eksport danych ceny** funkcji. W przypadku dodawania ponownie region, który wcześniej był dostępny, nie można zaktualizować, cennik, ponieważ zmianie cen nie są dozwolone.
 

@@ -15,12 +15,12 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd109637379f1fd2cdb108fbbb6c6c47224e00a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431771"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840882"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Środowisko logowania za pomocą usługi Azure Multi-Factor Authentication
 > [!NOTE]
@@ -34,7 +34,7 @@ ms.locfileid: "57431771"
 | [Za pomocą rozmowy telefonicznej, aby Mój telefon komórkowy lub pakietu office](#signing-in-with-a-phone-call) |
 | [Tekst na Mój telefon komórkowy](#signing-in-with-a-text-message)
 | [Powiadomienia z aplikacji Microsoft Authenticator](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
-| [Przy użyciu kodów weryfikacyjnych z aplikacji Microsoft Authenticator](#to-sign-in-using-a-verification-with-the-microsoft-authenticator-app) |
+| Przy użyciu kodów weryfikacyjnych z aplikacji Microsoft Authenticator |
 | [Za pomocą alternatywnej metody ponieważ nie mogę używać mojej preferowaną metodą teraz](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Logowanie się przy użyciu połączenia telefonicznego
@@ -58,7 +58,7 @@ Poniższe informacje zawierają opis korzystania z aplikacji Microsoft Authentic
 1. Zaloguj się do aplikacji lub usługi, takiej jak Office 365 przy użyciu nazwy użytkownika i hasła.
 2. Firma Microsoft wysyła powiadomienie do aplikacji Microsoft Authenticator na urządzeniu.
 
-  ![Firma Microsoft wysyła powiadomienia](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![Firma Microsoft wysyła powiadomienia](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. Otwórz powiadomienie na telefonie i wybierz **Sprawdź** klucza. Jeśli Twoja firma wymaga numeru PIN, wprowadź go tutaj.
 4. Użytkownik powinien teraz zostać zarejestrowany.
@@ -70,7 +70,7 @@ Jeśli używasz aplikacji Microsoft Authenticator uzyskać kody weryfikacyjne na
 1. Zaloguj się do aplikacji lub usługi, takiej jak Office 365 przy użyciu nazwy użytkownika i hasła.
 2. Microsoft wyświetli monit o podanie kodu weryfikacyjnego.
 
-  ![Wprowadź kod weryfikacyjny](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![Wprowadź kod weryfikacyjny](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. Otwórz aplikację Microsoft Authenticator na telefonie i wprowadź kod w polu, w którym rejestrujesz się.
 
@@ -81,7 +81,7 @@ Czasami nie masz telefon lub urządzenia, które można skonfigurować jako Twoj
 2. Wybierz **użyć innej opcji weryfikacji**. Zostanie wyświetlony opcje różnych weryfikacji, w oparciu o ile zostało skonfigurowane.
 3. Wybierz alternatywną metodę i zaloguj się.
 
-  ![Należy użyć alternatywnej metody](./media/multi-factor-authentication-end-user-signin/alt.png)
+   ![Należy użyć alternatywnej metody](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Jeśli masz problemy z zarejestrowaniem się przy użyciu weryfikacji dwuetapowej, należy uzyskać więcej informacji o [problemy z usługą Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).

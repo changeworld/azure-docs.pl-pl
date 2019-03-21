@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 8ed148dfd6441d05891ef38934123a9cd3827b8b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110974"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service DC/OS z usługą Log Analytics
 
@@ -41,18 +41,18 @@ W tym artykule założono, że skonfigurowano DC/OS i wdrożono prostych kontene
    >[!NOTE]
    >Pakiet OMS jest teraz nazywana usługi Log Analytics.
 
- ![](media/container-service-monitoring-oms/image2.png)
+   ![](media/container-service-monitoring-oms/image2.png)
 
 2. Kliknij pozycję **Zainstaluj**. Zobaczysz okno podręczne z informacjami o wersji i **zainstaluj pakiet** lub **zaawansowane instalacji** przycisku. Po kliknięciu **zaawansowane instalacji**, co prowadzi do **OMS określonej konfiguracji właściwości** strony.
 
- ![](media/container-service-monitoring-oms/image3.png)
+   ![](media/container-service-monitoring-oms/image3.png)
 
- ![](media/container-service-monitoring-oms/image4.png)
+   ![](media/container-service-monitoring-oms/image4.png)
 
 3. W tym miejscu użytkownik jest proszony o podanie `wsid` (identyfikator obszaru roboczego usługi Log Analytics) i `wskey` (klucz podstawowy dla Identyfikatora obszaru roboczego). Aby uzyskać zarówno `wsid` i `wskey` , musisz utworzyć konto w <https://mms.microsoft.com>.
-Wykonaj kroki, aby utworzyć konto. Po zakończeniu tworzenia konta, musisz uzyskać swoje `wsid` i `wskey` , klikając **ustawienia**, następnie **połączone źródła**, a następnie **serwerówzsystememLinux**, jak pokazano poniżej.
+   Wykonaj kroki, aby utworzyć konto. Po zakończeniu tworzenia konta, musisz uzyskać swoje `wsid` i `wskey` , klikając **ustawienia**, następnie **połączone źródła**, a następnie **serwerówzsystememLinux**, jak pokazano poniżej.
 
- ![](media/container-service-monitoring-oms/image5.png)
+   ![](media/container-service-monitoring-oms/image5.png)
 
 4. Wybierz liczbę wystąpień, chcesz, a następnie kliknij przycisk "Sprawdź i zainstaluj". Zazwyczaj chcesz liczbą wystąpień równą liczbie maszyn wirtualnych w klastrze agenta. Log Analytics agent dla systemu Linux jest instalowany jako poszczególnych kontenerów na każdej maszynie Wirtualnej, który chce, aby zebrać informacje dotyczące monitorowania i rejestrowania informacji.
 

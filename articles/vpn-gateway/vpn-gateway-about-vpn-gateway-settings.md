@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24b08bb843b4f1a0eb9f2471cb17b81f2c8ac4d0
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 76323ab00a3562cae10520b18008d030e40043fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417537"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864681"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informacje o ustawieniach konfiguracji bramy sieci VPN
 
@@ -43,7 +43,7 @@ Brama sieci VPN wymaga `-GatewayType` *Vpn*.
 
 Przykład:
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
@@ -63,7 +63,7 @@ Jeśli używasz witryny Azure portal do tworzenia bramy sieci wirtualnej usługi
 
 W poniższym przykładzie programu PowerShell `-GatewaySku` jako VpnGw1. Podczas tworzenia bramy przy użyciu programu PowerShell, musisz najpierw Utwórz konfigurację adresów IP, a następnie użyć zmiennej do odwoływania się do niego. W tym przykładzie zmienna konfiguracyjna jest $gwipconfig.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'US East' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
 -GatewayType Vpn -VpnType RouteBased
@@ -77,7 +77,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 ###  <a name="resizechange"></a>Zmiana rozmiaru lub zmiana jednostki SKU
 
-Jeśli masz bramy sieci VPN, którego chcesz użyć innej jednostki SKU bramy opcje są albo Zmień rozmiar jednostki SKU bramy lub zmienić na inną jednostkę SKU. Po zmianie na inną jednostkę SKU bramy, całkowicie Usuń istniejącą bramę i tworzyć nowe. Może to potrwać do 45 minut kompilacji. W odróżnieniu od podczas zmiany rozmiaru bramy jednostki SKU i masz bardzo mało przestój ponieważ nie trzeba usunąć i ponownie utworzyć bramę. Jeśli masz opcję, aby zmienić rozmiar jednostki SKU bramy, zamiast go zmienić, należy to zrobić. Jednak istnieją reguły dotyczące rozmiaru:
+Jeśli masz bramy sieci VPN, którego chcesz użyć innej jednostki SKU bramy opcje są albo Zmień rozmiar jednostki SKU bramy lub zmienić na inną jednostkę SKU. Po zmianie na inną jednostkę SKU bramy, całkowicie Usuń istniejącą bramę i tworzyć nowe. Tworzenie bramy może zająć do 45 minut kompilacji. W odróżnieniu od podczas zmiany rozmiaru bramy jednostki SKU i nie ma długi Przestój, ponieważ nie trzeba usunąć i ponownie utworzyć bramę. Jeśli masz opcję, aby zmienić rozmiar jednostki SKU bramy, zamiast go zmienić, należy to zrobić. Jednak istnieją reguły dotyczące rozmiaru:
 
 1. Można zmienić rozmiar jednostek SKU, wybierając z opcji VpnGw1, VpnGw2 i VpnGw3.
 2. Podczas pracy ze starymi jednostkami SKU bramy można zmienić rozmiar, wybierając z opcji Basic, Standard i HighPerformance.
@@ -102,7 +102,7 @@ W modelu wdrażania usługi Resource Manager każda konfiguracja wymaga typu po�
 
 W poniższym przykładzie programu PowerShell, możemy utworzyć połączenie S2S, które wymaga typu połączenia *IPsec*.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
@@ -120,7 +120,7 @@ Po utworzeniu bramy sieci wirtualnej nie można zmienić typu sieci VPN. Musisz 
 
 W poniższym przykładzie programu PowerShell `-VpnType` jako *RouteBased*. Podczas tworzenia bramy musisz upewnić się, że typ -VpnType jest prawidłowy dla danej konfiguracji.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
@@ -132,7 +132,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ## <a name="gwsub"></a>Podsieć bramy
 
-Przed utworzeniem bramy sieci VPN, należy utworzyć podsieć bramy. Podsieć bramy zawiera adresy IP, które używają bramy sieci wirtualnej maszyny wirtualne i usługi. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i skonfigurować wymagane ustawienia bramy sieci VPN. W podsieci bramy nigdy nie należy wdrożyć inne (na przykład dodatkowych maszyn wirtualnych). Podsieć bramy musi mieć nazwę "GatewaySubnet" działało poprawnie. Nadanie podsieci bramy nazwy "GatewaySubnet" umożliwia wiedzieć, że jest to podsieć do wdrożenia bramy sieci wirtualnej maszyn wirtualnych i usług platformy Azure.
+Przed utworzeniem bramy sieci VPN, należy utworzyć podsieć bramy. Podsieć bramy zawiera adresy IP, które używają bramy sieci wirtualnej maszyny wirtualne i usługi. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i skonfigurować wymagane ustawienia bramy sieci VPN. Nigdy nie należy wdrażać dowolne inne (na przykład dodatkowych maszyn wirtualnych) w podsieci bramy. Podsieć bramy musi mieć nazwę "GatewaySubnet" działało poprawnie. Nadanie podsieci bramy nazwy "GatewaySubnet" umożliwia wiedzieć, że jest to podsieć do wdrożenia bramy sieci wirtualnej maszyn wirtualnych i usług platformy Azure.
 
 >[!NOTE]
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
@@ -142,7 +142,7 @@ Podczas tworzenia podsieci bramy należy określić liczbę zawartych w niej adr
 
 W poniższym przykładzie programu PowerShell usługi Resource Manager zawiera podsieć bramy o nazwie GatewaySubnet. Widać, że notacja CIDR Określa rozmiar/27, który daje wystarczającą liczbę adresów IP w przypadku większości konfiguracji, które obecnie istnieją.
 
-```powershell
+```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
@@ -156,7 +156,7 @@ Nazwij bramy sieci lokalnej, publiczny adres IP lokalnego urządzenia sieci VPN 
 
 W poniższym przykładzie programu PowerShell tworzy nową bramę sieci lokalnej:
 
-```powershell
+```azurepowershell-interactive
 New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```

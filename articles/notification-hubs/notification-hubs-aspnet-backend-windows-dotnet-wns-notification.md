@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 7a351901a4453bc15b42900e5eb99d17afce5384
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 9fde3befb147aeeab9419e08602552a970368cfe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568553"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844988"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień do konkretnych użytkowników przy użyciu usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym samouczku pokazano, jak wysyłać powiadomienia push do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecze ASP.NET interfejsu WebAPI jest używane do uwierzytelniania klientów. Kiedy zaplecze uwierzytelnia użytkownika aplikacji klienckiej, automatycznie dodaje tag do rejestracji powiadomienia. Zaplecze używa tego tagu do wysyłania powiadomień do określonego użytkownika.
 
@@ -222,7 +222,7 @@ W tej sekcji zaktualizujesz kod w projekcie ukończonym w ramach artykułu [Samo
     ```
 13. Kliknij prawym przyciskiem myszy projekt **WindowsApp**, kliknij polecenie **Dodaj**, a następnie kliknij polecenie **Klasa**. Nadaj klasie nazwę `RegisterClient.cs`, a następnie kliknij przycisk **OK**, aby wygenerować klasę.
 
-   Ta klasa opakowuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji, aby przeprowadzać rejestrację na potrzeby powiadomień push. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](https://msdn.microsoft.com/library/dn743807.aspx). Klasa używa tokenu autoryzacji przechowywanego w magazynie lokalnym po kliknięciu przycisku **Login and register** (Zaloguj i zarejestruj się).
+    Ta klasa opakowuje wywołania REST wymagane do kontaktowania się z zapleczem aplikacji, aby przeprowadzać rejestrację na potrzeby powiadomień push. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](https://msdn.microsoft.com/library/dn743807.aspx). Klasa używa tokenu autoryzacji przechowywanego w magazynie lokalnym po kliknięciu przycisku **Login and register** (Zaloguj i zarejestruj się).
 14. Dodaj następujące instrukcje `using` na początku pliku RegisterClient.cs:
 
     ```csharp
@@ -335,7 +335,7 @@ W tej sekcji zaktualizujesz kod w projekcie ukończonym w ramach artykułu [Samo
 
     ![][15]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnych użytkowników, którzy mają tagi skojarzone ze swoimi rejestracjami. Aby dowiedzieć się, jak wypychać powiadomienia oparte na lokalizacji, przejdź do następującego samouczka:
 
@@ -355,4 +355,4 @@ W tym samouczku przedstawiono sposób wysyłania powiadomień push do konkretnyc
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx

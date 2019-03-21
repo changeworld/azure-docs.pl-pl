@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f596f40cdea095ea152785e656c44eaa062e28c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: a8f3a5c6a1c7adaff620f8675fcffa4018eb9874
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133097"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: wdrażanie modelu klasyfikacji obrazów w usłudze Azure Container Instances
 
@@ -376,7 +375,7 @@ service.delete()
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 + Dowiedz się więcej o wszystkich [opcjach wdrażania usługi Azure Machine Learning](how-to-deploy-and-where.md).
 + Dowiedz się, jak [tworzyć klientów na potrzeby usługi internetowej](how-to-consume-web-service.md).

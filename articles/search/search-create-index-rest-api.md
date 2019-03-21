@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 0524bd224e3da3e6a9b18a4225c88e9c43d07606
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 87da5cdd31abb41a774a46d3891006eb58ac5e4d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223414"
+ms.locfileid: "58285138"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu programu PowerShell i interfejsu API REST
 > [!div class="op_single_selector"]
@@ -77,7 +77,7 @@ Jeśli usługa jest pusta i nie zawiera indeksów, wyniki są podobne do poniżs
 }
 ```
 
-## <a name="1---create-an-index"></a>1. Tworzenie indeksu
+## <a name="1---create-an-index"></a>1 — Tworzenie indeksu
 
 Jeśli używasz portalu indeksu musi istnieć w usłudze przed załadowaniem danych. Ten krok definiuje indeks i wypycha go do usługi. [Create Index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) jest używany w tym kroku.
 
@@ -162,6 +162,8 @@ Wyniki powinny wyglądać podobnie do poniższego (obcięty do pierwsze dwa pola
 
 > [!Tip]
 > W celu weryfikacji, można również sprawdzać listy indeksów w portalu, lub uruchom ponownie polecenie używany do sprawdzenia połączenia z usługą, aby wyświetlić *hotele* indeksu na liście kolekcji indeksów.
+
+<a name="load-documents"></a>
 
 ## <a name="2---load-documents"></a>2 - ładowanie dokumentów
 
@@ -253,7 +255,7 @@ Wyniki powinny wyglądać podobnie do poniższego przykładu. Wyświetlony kod s
 }
 ```
 
-## <a name="3---search-an-index"></a>3 - przeszukiwanie indeksu
+## <a name="3---search-an-index"></a>3 — Przeszukiwanie indeksu
 
 W tym kroku przedstawiono sposób tworzenia zapytań względem indeksu przy użyciu [interfejsu API wyszukiwania w dokumentach](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 

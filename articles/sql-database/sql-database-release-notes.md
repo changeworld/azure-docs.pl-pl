@@ -10,12 +10,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: carlrab
-ms.openlocfilehash: 9a461f84577997ff976956b7f2f50500e9b3d323
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6600a578ba9c73c8a2c71466fd0b008f19058b80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548068"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861297"
 ---
 # <a name="sql-database-release-notes"></a>Informacje o wersji bazy danych SQL
 
@@ -50,7 +50,7 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 |Wystąpienie zarządzane Obsługa tabel tras, ulepszone| Aby uzyskać więcej informacji, zobacz [wymagania dotyczące sieciowej](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
 |Zmień nazwę bazy danych obsługiwane w wystąpieniu zarządzanym | Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) i [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql) składni.|
 |Baza danych SQL jako źródła danych referencyjnych dla usługi Stream Analytics. | Aby uzyskać więcej informacji, zobacz [usługi Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).|
-|Data Migration Assistant dodaje obsługę dla wystąpienia zarządzanego. |Aby uzyskać więcej informacji, zobacz [What's new in DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew?view=sql-server-2017).|
+|Data Migration Assistant dodaje obsługę dla wystąpienia zarządzanego. |Aby uzyskać więcej informacji, zobacz [What's new in DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew).|
 |SQL Server Migration Assistant alokowanej oceny gotowości docelowego dla wystąpienia zarządzanego. | Aby uzyskać więcej informacji, zobacz [Asystenta migracji programu SQL Server](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
 |Usługa migracji danych obsługuje migrację z usług RDS Amazon do wystąpienia zarządzanego | Aby uzyskać więcej informacji, zobacz [Samouczek: Migrowanie usług pulpitu zdalnego programu SQL Server do usługi Azure SQL Database lub wystąpienia zarządzanego usługi Azure SQL Database i online przy użyciu usługi DMS](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
 | &nbsp; |
@@ -60,7 +60,7 @@ Ten artykuł zawiera listę nowych funkcji i ulepszeń, w ramach usługi SQL Dat
 | Udoskonalenia dokumentacji | Szczegóły |
 | --- | --- |
 |Dodawanie zarządzanych wyjaśnienia opcji wdrożenia wystąpienia|Zaktualizowano wiele artykułów, aby wyjaśnić, ma zastosowanie do pojedynczej bazy danych, pul elastycznych i opcji wdrożenia wystąpienia zarządzanego. |
-|Zaktualizowano bazę danych tempdb rozmiary modelu zakupu opartego na jednostkach DTU | Aby uzyskać więcej informacji, zobacz [bazy danych Tempdb w bazie danych SQL](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).|
+|Zaktualizowano bazę danych tempdb rozmiary modelu zakupu opartego na jednostkach DTU | Aby uzyskać więcej informacji, zobacz [bazy danych Tempdb w bazie danych SQL](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 |Zaktualizowano importowanie i eksportowanie z pliku bacpac do obsługi wystąpienia zarządzanego| Aby uzyskać więcej informacji, zobacz [Importuj z pliku BACPAC](sql-database-import.md) i [wyeksportować do pliku BACPAC](sql-database-export.md). |
 | &nbsp; |
 
@@ -97,4 +97,4 @@ Zestaw dokumentacji usługi Azure SQL jest "open source". Praca w środowisku ot
 - "Open source" Przeglądanie repozytoriów w środowisku otwartym w celu publikowania najbardziej użytecznej zawartości w naszej pierwszej wersji.
 - Aktualizowanie repozytoriów typu open source w środowisku otwartym w celu ułatwienia stałego udoskonalania zawartości.
 
-Aby współtworzyć zawartość dokumentacji usługi Azure SQL Database, zobacz [przewodnik współautora Microsoft Docs — omówienie](https://docs.microsoft.com/en-us/contribute/). Środowisko użytkownika w [docs.microsoft.com](https://docs.microsoft.com/) integruje [GitHub](https://github.com/) przepływy pracy, bezpośrednio po to, aby jeszcze bardziej ułatwiał. Rozpocznij od [edytowania przeglądanego dokumentu](https://docs.microsoft.com/en-us/contribute/#quick-edits-to-existing-documents). Lub Pomóż [recenzować nowe tematy](https://docs.microsoft.com/en-us/contribute/#review-open-prs), lub [tworzenie problemów z jakością](https://docs.microsoft.com/en-us/contribute/#create-quality-issues).
+Aby współtworzyć zawartość dokumentacji usługi Azure SQL Database, zobacz [przewodnik współautora Microsoft Docs — omówienie](https://docs.microsoft.com/contribute/). Środowisko użytkownika w [docs.microsoft.com](https://docs.microsoft.com/) integruje [GitHub](https://github.com/) przepływy pracy, bezpośrednio po to, aby jeszcze bardziej ułatwiał. Rozpocznij od [edytowania przeglądanego dokumentu](https://docs.microsoft.com/contribute/#quick-edits-to-existing-documents). Lub Pomóż [recenzować nowe tematy](https://docs.microsoft.com/contribute/#review-open-prs), lub [tworzenie problemów z jakością](https://docs.microsoft.com/contribute/#create-quality-issues).

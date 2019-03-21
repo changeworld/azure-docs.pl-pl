@@ -2,7 +2,7 @@
 title: Wsparcie — platformy Azure w wersji dedykowanej przez moduł HSM | Dokumentacja firmy Microsoft
 description: Opcje pomocy technicznej i obszary odpowiedzialności dla platformy Azure w wersji dedykowanej w module HSM w różnych scenariuszach
 services: dedicated-hsm
-author: barclayn
+author: johndaw
 manager: barbkess
 ms.service: key-vault
 ms.workload: identity
@@ -10,24 +10,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 23c509f6f219b708fc259ee123d73948ebe50773
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8e4bbe3a5e2de8ba919cf0b641ee4e6776c5e8d4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114488"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225556"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Wsparcie dla platformy Azure dedykowanej przez moduł HSM
 
 Usługi Azure w wersji dedykowanej przez moduł HSM zapewnia pełną odpowiedzialność administracyjna kontroli i zarządzania urządzenia fizycznego do użycia wyłącznie klientów. Urządzenia udostępnione [modelu sprzętowego modułu zabezpieczeń firmy Gemalto SafeNet Luna 7 A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Microsoft będzie miał nie dostęp administracyjny, w raz udostępnionych przez klienta, po przekroczeniu załącznika fizyczny port szeregowy rolę monitorowania.  Bez dostępu do firmy Microsoft mogą mają nie bieżące oprogramowanie poziomu konserwacji lub system administracji obowiązki. W rezultacie klienci są zobowiązani do typowych działań operacyjnych.
 Klienci są w pełni odpowiedzialny za aplikacje, użyć modułów HSM, które powinny współpracować z firmy Gemalto dla pomocy technicznej i konsultacji Pomoc. Ze względu na zakres klienta własności higieny operacyjnej nie jest możliwe, firma Microsoft oferuje wszelkiego rodzaju gwarancja wysokiej dostępności dla tej usługi. Jest klienta ponosić odpowiedzialność za zapewnienie ich aplikacji są poprawnie skonfigurowane w celu osiągnięcia wysokiej dostępności. Firma Microsoft będzie monitorować i obsługa urządzenia kondycji oraz łączności sieciowej.
 
+## <a name="getting-support"></a>Uzyskiwanie pomocy technicznej
+
+Obsługa klienta w wersji dedykowanej przez moduł HSM jest wspólnego nakładu pracy między firmami Microsoft i firmy Gemalto. Wszelkie problemy sprzętowe lub problemy z siecią ścieżki problem zostanie rozwiązany przez firmę Microsoft i nic wspólnego z rzeczywistych modułu HSM, takie jak konfiguracja, oprogramowania, programowanie aplikacji i oprogramowania układowego, problem zostanie rozwiązany przez firmy Gemalto. Ten model pomocy technicznej zapewnia najszybszy sposób najbardziej efektywne pomocy technicznej. W razie wątpliwości dla konkretnego problemu, Prześlij żądanie pomocy technicznej firmy Microsoft i firma Microsoft będzie upewnij się, że użytkownik jest kierowany odpowiednio. Firma Microsoft będzie zabawnej we wszystkich scenariuszach pomocy technicznej i Dokładamy wszelkich starań, aby uzyskać najlepsze wyniki pomocy technicznej dla naszych klientów.
+
 ## <a name="gemalto-support"></a>Obsługa firmy Gemalto
 
-Klienci korzystający z usługi w wersji dedykowanej przez moduł HSM musi mieć pomocy technicznej Umowę w miejscu z firmy Gemalto. W ramach umowy dotyczącej pomocy technicznej klienci otrzymują wskazówki, pomocy technicznej i usług bezpośrednio od firmy Gemalto. Mechanizm, aby uzyskać pomoc techniczną od firmy Gemalto jest za pośrednictwem ich [portalu pomocy technicznej klienta](https://supportportal.gemalto.com/csm/).
-Firmy Gemalto zapewni żadnych składników oprogramowania, wymagane do użycia w ramach sprzętowego modułu zabezpieczeń (na przykład oprogramowanie dostępu klienta i zestawów SDK). One spowoduje również obsługuje konfiguracji i oferują usługi konsultingowe dotyczące projektowania, tworzenia i wdrażania aplikacji przy użyciu 7 Luna SafeNet sprzętowego modułu zabezpieczeń.
+Klienci korzystający z usługi w wersji dedykowanej HSM kwalifikować się do pomocy technicznej od firmy Gemalto zgodnie z ich oraz Plan pomocy technicznej. Wymaga to po prostu proces rejestracji przy użyciu portalu firmy Gemalto pomocy technicznej. Identyfikator klienta i instrukcje, będą dostępne w tym w ramach początkowej zaangażowania firmy Microsoft do uzyskania dostępu do usługi w wersji dedykowanej sprzętowego modułu zabezpieczeń. Mechanizm, aby uzyskać pomoc techniczną od firmy Gemalto jest za pośrednictwem ich [portalu pomocy technicznej klienta](https://supportportal.gemalto.com/csm/).
+Kluczowy punkt notatki to, że firmy Gemalto zapewni oprogramowania i dokumentacji, trzeba używać sprzętowego modułu zabezpieczeń (na przykład oprogramowanie dostępu klienta i zestawów SDK) przy użyciu pobierania w portalu pomocy technicznej klienta.
 
 ### <a name="software-components"></a>Składniki oprogramowania
 
@@ -51,7 +55,7 @@ Aby uzyskać pomoc w projekcie tworzenia i wdrażania aplikacji niestandardowych
 
 ## <a name="microsoft-support"></a>Pomoc techniczna firmy Microsoft
 
-Firma Microsoft jest odpowiedzialny za zapewnienie fizycznej przez sprzętowy moduł zabezpieczeń urządzenia są dostępne i w stan operacyjny do wyłącznego wykorzystania pojedynczemu klientowi. Klienci są zobowiązani do administrowania i zarządzania urządzeniem. Obowiązki firmy Microsoft obejmują:
+Microsoft będzie upewnij się, że fizyczne urządzenia HSM korzystają z sieci, dostępny i stan operacyjny do wyłącznego użytku pojedynczemu klientowi. Klienci są zobowiązani do konfiguracji, Administracja i zarządzanie urządzeniem. Obowiązki firmy Microsoft obejmują:
 
 * Co się, że urządzenie ma zasilania i chłodzenia
 * Obsługa stan operacyjny sprzętowego modułu zabezpieczeń (na przykład scenariusze w zakresie usuwania awarii)
@@ -72,7 +76,7 @@ Po klient został zarejestrowany zatwierdzonego dla usługi w wersji dedykowanej
 
 ### <a name="hardware-issues"></a>Problemów ze sprzętem
 
-Urządzenia HSM zawiera nadmiarowe i wymienne zasilacze i wentylator jednostki. Wentylator jednostki usunięcie spowoduje, że zdarzenie odporne Jeśli usuwane, gdy urządzenie jest włączone. W przypadku awarii składnika firma Microsoft użyje wyborze odpowiedniego procesu w celu rozwiązania problemu poziomu składnika w sposób, który powoduje, że minimalną przerwą i najniższego ryzyka na naszym klientom dostępność usługi.
+Urządzenia HSM zawiera nadmiarowe i wymienne zasilacze i wentylator jednostki.  Jednak usunięcie jednostki wentylator nadal powodują zdarzeń odporne. W przypadku awarii składnika firma Microsoft użyje wyborze odpowiedniego procesu w celu rozwiązania problemu poziomu składnika w sposób, który powoduje, że minimalną przerwą i najniższego ryzyka na naszym klientom dostępność usługi.
 Jakiekolwiek niepowodzenie poważniejsze urządzenia spowoduje to urządzenie jest zastępowany przez nową z wolnej puli. Klient po prostu zawiera nowe urządzenie w istniejącej pary HA dla niego synchronizować i powrócić do stanu pełnej działania. Nie powiodło się urządzenie będzie mieć swoje dane, mając urządzenia usuwane i rozdrobniony w centrum danych w witrynie. Tylko obudowy zostaną zwrócone do firmy Gemalto odtwarzania.
 
 

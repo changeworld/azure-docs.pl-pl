@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 237294c1bc603402c349f7a56f20c34ed8d210fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8a91614e7dfb804e6a902967ce60f898ed0e54ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057364"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999772"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Wprowadzenie do usługi queue storage i Visual Studio podłączone usługi (systemu Windows platformy ASP.NET Core)
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób rozpoczęcia pracy przy użyciu usługi Azure Que
 
 Usługi Azure queue storage jest usługą służącą do przechowywania dużej liczby wiadomości, które są dostępne z dowolnego miejsca na świecie za pośrednictwem uwierzytelnionych połączeń HTTP lub HTTPS. Pojedynczy komunikat z kolejki, może być maksymalnie 64 kilobajtów (KB), rozmiar, a kolejka może zawierać miliony komunikatów — maksymalnie nieprzekraczającą całkowitego limitu pojemności konta magazynu. Zobacz też [Rozpoczynanie pracy z usługą Azure Queue storage przy użyciu platformy .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) szczegółowe informacje na temat programowe operowanie kolejek.
 
-Aby rozpocząć pracę, należy najpierw utworzyć kolejki platformy Azure w ramach konta magazynu. Następnie w tym artykule przedstawiono, jak utworzyć kolejkę w języku C# i sposobu wykonywania operacji kolejki podstawowych, takich jak dodawanie, modyfikowanie, odczytywanie i usuwanie wiadomości w kolejce.  Kod używa biblioteki klienta usługi Azure Storage dla platformy .NET. Aby uzyskać więcej informacji na temat platformy ASP.NET, zobacz [ASP.NET](http://www.asp.net).
+Aby rozpocząć pracę, należy najpierw utworzyć kolejki platformy Azure w ramach konta magazynu. Następnie w tym artykule przedstawiono, jak utworzyć kolejkę w języku C# i sposobu wykonywania operacji kolejki podstawowych, takich jak dodawanie, modyfikowanie, odczytywanie i usuwanie wiadomości w kolejce.  Kod używa biblioteki klienta usługi Azure Storage dla platformy .NET. Aby uzyskać więcej informacji na temat platformy ASP.NET, zobacz [ASP.NET](https://www.asp.net).
 
 Niektóre z interfejsów API usługi Azure Storage są asynchroniczne i kodu w tym artykule przyjęto założenie, że metody asynchroniczne są używane. Zobacz [programowania asynchronicznego](https://docs.microsoft.com/dotnet/csharp/async) Aby uzyskać więcej informacji.
 
@@ -66,7 +66,7 @@ Aby uzyskać dostęp do kolejki w projektach programu ASP.NET Core, obejmują na
 
 ### <a name="create-a-queue-in-code"></a>Tworzenie kolejki w kodzie
 
-Aby utworzyć kolejki systemu Azure w kodzie, wywołaj '' CreateIfNotExistsAsync ":
+Aby utworzyć kolejki systemu Azure w kodzie, wywołaj `CreateIfNotExistsAsync`:
 
 ```cs
 // Create the CloudQueue if it does not exist.

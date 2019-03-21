@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8fccf82371225acd5839537f7629ffe7df138d43
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 3258f4d36d80c2a501e4ceba3b428128fc3f781b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888155"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201011"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal
 
@@ -56,7 +56,7 @@ Wybierz nazwę klastra z [ **klastry HDInsight** strony](#showClusters).  Spowod
     - **Narzędzia**: Pomoc dotycząca HDInsight narzędzia pokrewne.
 
 - **Menu Ustawienia**  
-  - **Rozmiar klastra**: Sprawdź, zwiększyć i zmniejszyć liczbę węzłów procesu roboczego klastra. Zobacz [Skaluj klastry](hdinsight-administer-use-management-portal.md#scale-clusters).
+  - **Rozmiar klastra**: Sprawdź, zwiększyć i zmniejszyć liczbę węzłów procesu roboczego klastra. Zobacz [Skaluj klastry](hdinsight-administer-use-portal-linux.md#scale-clusters).
   - **Limity przydziału**: Wyświetl rdzeni używane i dostępne dla Twojej subskrypcji.
   - **Logowania do klastra i protokołu SSH**: Zawiera instrukcje łączenia z klastrem przy użyciu połączenia protokołu Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
   - **Data Lake Storage Gen1**: Konfigurowanie dostępu Data Lake Storage Gen1.  Zobacz [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
@@ -186,7 +186,7 @@ Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest uż
 Istnieje wiele sposobów, można programować procesu:
 
 * Użytkownik usługi Azure Data Factory. Zobacz [tworzenie na żądanie Apache Hadoop oparte na systemie Linux klastrów w HDInsight przy użyciu usługi Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) tworzenia HDInsight na żądanie połączonych usług.
-* Używanie programu Azure PowerShell.  Zobacz [analizowanie danych dotyczących opóźnień lotów](hdinsight-analyze-flight-delay-data.md).
+* Używanie programu Azure PowerShell.  Zobacz [analizowanie danych dotyczących opóźnień lotów](hdinsight-analyze-flight-delay-data-linux.md).
 * Użyj klasycznego wiersza polecenia platformy Azure. Zobacz [HDInsight Zarządzanie klastrami przy użyciu klasyczny interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md).
 * Użyj zestawu .NET SDK HDInsight. Zobacz [zadania przesyłania Apache Hadoop](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

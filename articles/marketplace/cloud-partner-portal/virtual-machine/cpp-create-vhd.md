@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bd085804f532811e71d421e3f683c50c1c3416cb
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575485"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096575"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Utwórz wirtualny dysk twardy zgodnych z platformą Azure
 
@@ -55,18 +55,18 @@ W programie Microsoft [witryny Azure portal](https://ms.portal.azure.com/), utwo
     ![Blok nowej maszyny Wirtualnej obliczenia](./media/publishvm_014.png)
 
 5. Po wybraniu odpowiedniego obrazu wirtualnej, podaj następujące wartości:
-  * Na **podstawy** bloku wprowadź **nazwa** dla maszyny wirtualnej, od 1 do 15 znaków alfanumerycznych. (W tym przykładzie użyto `DemoVm009`.)
-  * Wprowadź **nazwa_użytkownika** i silne **hasło**, które są używane do utworzenia konta lokalnego na maszynie Wirtualnej.  (W tym miejscu `adminUser` jest używana.)  Hasło musi mieć długość od 8 do 123 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: mała litera, wielka litera, cyfra i znak specjalny. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące nazwy użytkownika i hasła](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
-  * Wybierz utworzoną grupę zasobów (w tym miejscu `DemoResourceGroup`).
-  * Wybierz centrum danych Azure **lokalizacji** (w tym miejscu `West US`).
-  * Kliknij przycisk **OK** można zapisać tych wartości. 
+   * Na **podstawy** bloku wprowadź **nazwa** dla maszyny wirtualnej, od 1 do 15 znaków alfanumerycznych. (W tym przykładzie użyto `DemoVm009`.)
+   * Wprowadź **nazwa_użytkownika** i silne **hasło**, które są używane do utworzenia konta lokalnego na maszynie Wirtualnej.  (W tym miejscu `adminUser` jest używana.)  Hasło musi mieć długość od 8 do 123 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: mała litera, wielka litera, cyfra i znak specjalny. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące nazwy użytkownika i hasła](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
+   * Wybierz utworzoną grupę zasobów (w tym miejscu `DemoResourceGroup`).
+   * Wybierz centrum danych Azure **lokalizacji** (w tym miejscu `West US`).
+   * Kliknij przycisk **OK** można zapisać tych wartości. 
 
-6.  Wybierz rozmiar maszyny Wirtualnej, aby wdrożyć przy użyciu następujące zalecenia:
-  * Jeśli zamierzasz utworzyć wirtualny dysk twardy w środowisku lokalnym, rozmiar nie ma znaczenia. Zastanów się nad użyciem maszyny wirtualnej o mniejszym rozmiarze.
-  * Jeśli zamierzasz utworzyć obraz na platformie Azure, warto wybrać jeden z zalecanych rozmiarów maszyny wirtualnej dla wybranego obrazu.
-  * Aby uzyskać informacje o cenach, zobacz **zalecane warstwy cenowe** selektor wyświetlany w portalu. Zostaną wyświetlone trzy zalecane rozmiary udostępniane przez wydawcę. (W tym miejscu wydawca jest firmy Microsoft).
+6. Wybierz rozmiar maszyny Wirtualnej, aby wdrożyć przy użyciu następujące zalecenia:
+   * Jeśli zamierzasz utworzyć wirtualny dysk twardy w środowisku lokalnym, rozmiar nie ma znaczenia. Zastanów się nad użyciem maszyny wirtualnej o mniejszym rozmiarze.
+   * Jeśli zamierzasz utworzyć obraz na platformie Azure, warto wybrać jeden z zalecanych rozmiarów maszyny wirtualnej dla wybranego obrazu.
+   * Aby uzyskać informacje o cenach, zobacz **zalecane warstwy cenowe** selektor wyświetlany w portalu. Zostaną wyświetlone trzy zalecane rozmiary udostępniane przez wydawcę. (W tym miejscu wydawca jest firmy Microsoft).
 
-    ![Rozmiar bloku nowej maszyny Wirtualnej](./media/publishvm_015.png)
+   ![Rozmiar bloku nowej maszyny Wirtualnej](./media/publishvm_015.png)
 
 7. W **ustawienia** ustawić bloku **użycie dysku zarządzanego** opcję **nie**.  Dzięki temu można ręcznie zarządzać nowego wirtualnego dysku twardego. ( **Ustawienia** bloku pozwala również na innych zmian, zmienić opcje magazynu i sieci, na przykład wybranie **Premium (SSD)** w **typ dysku**.)  Kliknij przycisk **OK** aby kontynuować.
 

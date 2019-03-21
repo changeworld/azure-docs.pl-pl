@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e525e5584e4835b0f2b73203c818c3f799b77cf5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063220"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075718"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Utwórz zmienne, zapisywania i zarządzaniu wartości w usłudze Azure Logic Apps
 
@@ -211,7 +211,7 @@ Aby zwiększyć lub *przyrostu* zmiennej przez wartość stałą, Dodaj **zmienn
    | Właściwość | Wymagany | Value |  Opis |
    |----------|----------|-------|--------------|
    | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
-   | Value | Nie | <*wartość przyrostu*> | Wartość przyrostu o wartości zmiennej. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określona wartość przyrostu o wartości do zmiennej. | 
+   | Value | Nie | <*increment-value*> | Wartość przyrostu o wartości zmiennej. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określona wartość przyrostu o wartości do zmiennej. | 
    |||| 
 
    Na przykład: 
@@ -331,7 +331,7 @@ Poniżej przedstawiono właściwości dla **Zmniejsz zmienną** akcji:
 | Właściwość | Wymagany | Value |  Opis |
 |----------|----------|-------|--------------|
 | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmniejszyć | 
-| Value | Nie | <*wartość przyrostu*> | Wartość dla zmiennej zmniejszanie. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określonej wartości dla zmniejszanie zmiennej. | 
+| Value | Nie | <*increment-value*> | Wartość dla zmiennej zmniejszanie. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określonej wartości dla zmniejszanie zmiennej. | 
 ||||| 
 
 Jeśli przełącznik przy użyciu projektanta widoku edytora kodu poniżej przedstawiono sposób **Zmniejsz zmienną** akcji pojawia się wewnątrz definicji aplikacji logiki, która jest w formacie JSON.
@@ -366,7 +366,7 @@ Poniżej przedstawiono właściwości dla **Ustaw zmienną** akcji:
 | Właściwość | Wymagany | Value |  Opis | 
 |----------|----------|-------|--------------| 
 | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
-| Value | Yes | <*Nowa wartość*> | Wartość, którą chcesz przypisać do zmiennej. Oba muszą mieć ten sam typ danych. | 
+| Value | Yes | <*new-value*> | Wartość, którą chcesz przypisać do zmiennej. Oba muszą mieć ten sam typ danych. | 
 ||||| 
 
 > [!NOTE]
@@ -414,17 +414,18 @@ W przypadku zmiennych, które przechowują ciągi lub tablice można wstawić lu
 
 1. Znajdź i wybierz jedno z tych działań na podstawie informacji o tego, czy Twoja Zmienna ciągu lub tablicy: 
 
-  * **Zmienne — Dołącz do zmiennej ciągu**
-  * **Zmienne — Dołącz do zmiennej tablicowej** 
+   * **Zmienne — Dołącz do zmiennej ciągu**
+   * **Zmienne — Dołącz do zmiennej tablicowej** 
 
-2. Podaj wartość do dołączenia jako ostatni element w tablicy lub ciągu. Ta wartość jest wymagana. 
+2. Podaj wartość do dołączenia jako ostatni element w tablicy lub ciągu. 
+   Ta wartość jest wymagana. 
 
 Poniżej przedstawiono właściwości dla **dołączenia do...**  akcje:
 
 | Właściwość | Wymagany | Value |  Opis | 
 |----------|----------|-------|--------------| 
 | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
-| Value | Yes | <*Dołącz wartość*> | Wartość, którą chcesz dołączyć, i może mieć dowolny typ | 
+| Value | Yes | <*append-value*> | Wartość, którą chcesz dołączyć, i może mieć dowolny typ | 
 |||||  
 
 Jeśli przełącznik przy użyciu projektanta widoku edytora kodu poniżej przedstawiono sposób **Dołącz do zmiennej tablicowej** akcji pojawia się wewnątrz definicji aplikacji logiki, która jest w formacie JSON.

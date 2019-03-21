@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: a3a259b9734a1cc313e046d9946a090232cd14a1
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727063"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088421"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
 
@@ -65,9 +65,9 @@ W wersji 2.x, wprowadzono następujące zmiany:
 
 * Plik konfiguracji hosta (host.json) powinna być pusta ani mieć ciąg `"version": "2.0"`.
 
-* Aby ulepszyć monitorowanie pulpitu nawigacyjnego zadań Webjob w portalu i użyć [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) zastępuje ustawienie przy użyciu usługi Azure Application Insights, który używa [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsightsinstrumentationkey) ustawienie. Aby uzyskać więcej informacji, zobacz [monitora usługi Azure Functions](functions-monitoring.md).
+* Aby ulepszyć monitorowanie pulpitu nawigacyjnego zadań Webjob w portalu i użyć [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) zastępuje ustawienie przy użyciu usługi Azure Application Insights, który używa [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsights_instrumentationkey) ustawienie. Aby uzyskać więcej informacji, zobacz [monitora usługi Azure Functions](functions-monitoring.md).
 
-* Wszystkie funkcje w aplikacji funkcji muszą współużytkować ten sam język. Podczas tworzenia aplikacji funkcji, musisz wybrać stosu środowiska uruchomieniowego aplikacji. Stos środowiska uruchomieniowego jest określona przez [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functionsworkerruntime) wartość w ustawieniach aplikacji. To wymaganie zostało dodane do poprawić czas zużycia i uruchamiania. Podczas tworzenia lokalnie, należy również uwzględnić to ustawienie w [pliku local.settings.json](functions-run-local.md#local-settings-file).
+* Wszystkie funkcje w aplikacji funkcji muszą współużytkować ten sam język. Podczas tworzenia aplikacji funkcji, musisz wybrać stosu środowiska uruchomieniowego aplikacji. Stos środowiska uruchomieniowego jest określona przez [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functions_worker_runtime) wartość w ustawieniach aplikacji. To wymaganie zostało dodane do poprawić czas zużycia i uruchamiania. Podczas tworzenia lokalnie, należy również uwzględnić to ustawienie w [pliku local.settings.json](functions-run-local.md#local-settings-file).
 
 * Domyślna wartość limitu czasu dla funkcji w ramach planu usługi App Service jest zmieniany na 30 minut. Można ręcznie zmienić limit czasu na nieograniczony, za pomocą [functionTimeout](functions-host-json.md#functiontimeout) ustawienie w host.json.
 
@@ -109,7 +109,7 @@ Do tworzenia aplikacji programu Visual Studio Code, konieczne może być zaktual
 
 ### <a name="changing-version-of-apps-in-azure"></a>Zmiana wersji aplikacji na platformie Azure
 
-Wersja środowisko uruchomieniowe usługi Functions używana przez opublikowane aplikacje na platformie Azure jest zależna od [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functionsextensionversion) ustawienia aplikacji. Wartość `~2` jest przeznaczony dla środowiska uruchomieniowego w wersji 2.x i `~1` elementy docelowe środowisko uruchomieniowe 1.x wersji. Arbitralnie nie zmieniaj tego ustawienia, ponieważ prawdopodobnie wymagane są inne zmiany w ustawieniach aplikacji i zmiany kodu w funkcji. Aby dowiedzieć się o zalecanym sposobem migracji aplikacji funkcji do środowiskiem uruchomieniowym w różnych wersji, zobacz [sposobu kierowania wersje środowiska uruchomieniowego usługi Azure Functions](set-runtime-version.md).
+Wersja środowisko uruchomieniowe usługi Functions używana przez opublikowane aplikacje na platformie Azure jest zależna od [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functions_extension_version) ustawienia aplikacji. Wartość `~2` jest przeznaczony dla środowiska uruchomieniowego w wersji 2.x i `~1` elementy docelowe środowisko uruchomieniowe 1.x wersji. Arbitralnie nie zmieniaj tego ustawienia, ponieważ prawdopodobnie wymagane są inne zmiany w ustawieniach aplikacji i zmiany kodu w funkcji. Aby dowiedzieć się o zalecanym sposobem migracji aplikacji funkcji do środowiskiem uruchomieniowym w różnych wersji, zobacz [sposobu kierowania wersje środowiska uruchomieniowego usługi Azure Functions](set-runtime-version.md).
 
 ## <a name="bindings"></a>Powiązania
 

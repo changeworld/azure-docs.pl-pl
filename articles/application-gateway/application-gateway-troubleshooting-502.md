@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: d50f25fbe10fc5ac4e834141fe7ac45fbed918ab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 26144b7eb53f5c0d4ebecbc9e6eece741f466719
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997794"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Rozwiązywanie problemów z błędami nieprawidłowej bramy w usłudze Application Gateway
 
@@ -83,7 +83,7 @@ Jeśli jest obecny, upewnij się, że serwer DNS jest w stanie poprawnie rozpozn
 
 | Właściwość sondy | Wartość | Opis |
 | --- | --- | --- |
-| Adres URL sondy |http://127.0.0.1/ |Ścieżka adresu URL |
+| Adres URL sondy |`http://127.0.0.1/` |Ścieżka adresu URL |
 | Interval |30 |Interwał sondy w sekundach |
 | Limit czasu |30 |Sondy czasu w sekundach |
 | Próg złej kondycji |3 |Sonda liczbę ponownych prób. Serwer zaplecza jest oznaczony w dół po liczba niepowodzeń sondy kolejnych osiąga próg złej kondycji. |
@@ -92,7 +92,7 @@ Jeśli jest obecny, upewnij się, że serwer DNS jest w stanie poprawnie rozpozn
 
 * Upewnij się, że domyślna witryna jest skonfigurowana i nasłuchuje na 127.0.0.1.
 * Jeśli parametr BackendHttpSetting określa portu innego niż 80, domyślnej witryny, należy skonfigurować do nasłuchiwania na tym porcie.
-* Wywołanie http://127.0.0.1:port powinien zostać zwrócony kod wyniku protokołu HTTP 200. Powinna to być zwrócona przed upływem limitu czasu 30 sekund.
+* Wywołanie `http://127.0.0.1:port` powinien zostać zwrócony kod wyniku protokołu HTTP 200. Powinna to być zwrócona przed upływem limitu czasu 30 sekund.
 * Upewnij się, że skonfigurowany port jest otwarty i że nie istnieją żadne reguły zapory lub grupy zabezpieczeń sieci platformy Azure, które blokować ruch przychodzący lub wychodzący na porcie skonfigurowanym.
 * Jeśli klasyczne maszyny wirtualne platformy Azure lub usługi w chmurze jest używana w pełni kwalifikowaną nazwę domeny lub publiczny adres IP, upewnij się, że odpowiednie [punktu końcowego](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) jest otwarty.
 * Jeśli maszyna wirtualna jest skonfigurowana za pomocą usługi Azure Resource Manager i znajduje się poza siecią wirtualną, gdzie usługa Application Gateway jest wdrażana, [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md) musi być skonfigurowana do Zezwalaj na dostęp na odpowiedni port.
@@ -118,7 +118,7 @@ Niestandardowe sondy kondycji zezwolić na dodatkową elastyczność na potrzeby
 Sprawdź, czy niestandardowa sonda kondycji jest skonfigurowane poprawnie jako zgodnie z poprzednią tabelą. Oprócz powyższych kroków rozwiązywania problemów również zapewnić następujące okoliczności:
 
 * Upewnij się, że sonda poprawnie określono zgodnie [przewodnik](application-gateway-create-probe-ps.md).
-* Jeśli usługa Application Gateway jest skonfigurowana dla jednej witryny, domyślnie hosta należy podać nazwę jako "127.0.0.1", chyba że inaczej skonfigurowane w niestandardowej sondy.
+* Jeśli usługa Application Gateway jest skonfigurowana dla jednej witryny, domyślnie hosta należy określić nazwę jako `127.0.0.1`, chyba że inaczej skonfigurowana w niestandardowej sondy.
 * Upewnij się, że wywołanie http://\<hosta\>:\<portu\>\<ścieżki\> zwraca kod wyniku protokołu HTTP 200.
 * Upewnij się, że interwał, limit czasu i UnhealtyThreshold znajdują się w dopuszczalnym zakresie.
 * Jeśli za pomocą sondy protokołu HTTPS, upewnij się, że serwera wewnętrznej bazy danych nie wymaga SNI, konfigurując certyfikat fallback na serwerze wewnętrznej bazy danych.

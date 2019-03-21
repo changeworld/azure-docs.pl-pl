@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: 8b46839d26130f37f4f4ba5559f5699498b0e60f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: MT
+ms.openlocfilehash: 2cb70c67bc4719eb43c4fcb70edf574c57362f26
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599403"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013272"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Rozwiązywanie problemów ze stanem obniżonej wydajności w usłudze Azure Traffic Manager
 
@@ -41,8 +41,8 @@ Wyświetlaniem kondycji usługi Traffic Manager **nieaktywny** stanu, a następn
 
 Aby rozwiązać błąd sondowania, należy to narzędzie, które zawiera kod stanu HTTP zwracany z adresem URL badania. Istnieje wiele narzędzi, które pokazują nieprzetworzona odpowiedź HTTP.
 
-* [Fiddler](http://www.telerik.com/fiddler)
-* [Curl](https://curl.haxx.se/)
+* [Fiddler](https://www.telerik.com/fiddler)
+* [curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 Ponadto możesz użyć karcie sieciowej narzędzi debugowania F12 w przeglądarce Internet Explorer do wyświetlania odpowiedzi HTTP.

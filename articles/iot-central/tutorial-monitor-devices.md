@@ -3,18 +3,18 @@ title: Monitorowanie urządzeń w usłudze Azure IoT Central | Microsoft Docs
 description: Jako operator możesz monitorować urządzenia za pomocą aplikacji usługi Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/12/2018
+ms.date: 02/01/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 941fbffaa7a0129de30d6fdf14d3d0559429309f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: 561477d8bf3a64397e9964499339c368dec5470d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200245"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760476"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Samouczek: Korzystanie z usługi Azure IoT Central do monitorowania urządzeń
 
@@ -41,7 +41,7 @@ Usługa Azure IoT Central wysyła powiadomienia dotyczące urządzeń jako wiado
 
 Otwórz wiadomość e-mail odebraną na końcu samouczka [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md). W wiadomości e-mail wybierz pozycję **Kliknij tutaj, aby otworzyć urządzenie**:
 
-![Reguły Konstruktora aplikacji](media/tutorial-monitor-devices/email.png)
+![Wiadomość e-mail z alertem](media/tutorial-monitor-devices/email.png)
 
 Strona **Urządzenie** dla symulowanego urządzenia **Połączony klimatyzator-1** utworzonego w poprzednim samouczku zostanie otwarta w przeglądarce:
 
@@ -55,13 +55,13 @@ Wybierz widok **Pulpit nawigacyjny**, aby wyświetlić informacje o urządzeniu.
 
 ![Pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/initial_screen.png)
 
-Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Bieżącą temperaturę docelową urządzenia można także zobaczyć na kafelku **Ustaw temperaturę docelową**. Decydujesz, że temperatura docelowa jest zbyt wysoka.
+Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Można również wyświetlić aktualną temperaturę docelowego dla urządzenia w **właściwości urządzenia** kafelka. Decydujesz, że temperatura docelowa jest zbyt wysoka.
 
 ## <a name="remediate-an-issue"></a>Rozwiązywanie problemu
 
 Aby zmienić temperaturę docelową urządzenia, użyj strony **Ustawienia**:
 
-1. Wybierz pozycję **Ustawienia**. Zmień wartość pola **Ustaw temperaturę** na 75. Wybierz polecenie **Aktualizuj**, aby wysłać nową temperaturę docelowa do urządzenia. Gdy urządzenie potwierdzi zmianę ustawień, stan wartości ustawienia zostanie zmieniony na **zsynchronizowane**:
+1. Wybierz pozycję **Ustawienia**. Zmień wartość pola **Ustaw temperaturę** na 75. Wybierz polecenie **Aktualizuj**, aby wysłać nową temperaturę docelowa do urządzenia. Gdy urządzenie potwierdzi zmianę ustawień, stan ustawienia zostanie zmieniony na **zsynchronizowane**:
 
     ![Aktualizowanie ustawień](media/tutorial-monitor-devices/change_settings.png)
 
@@ -69,7 +69,7 @@ Aby zmienić temperaturę docelową urządzenia, użyj strony **Ustawienia**:
 
     ![Zaktualizowany pulpit nawigacyjny urządzenia](media/tutorial-monitor-devices/new_settings.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

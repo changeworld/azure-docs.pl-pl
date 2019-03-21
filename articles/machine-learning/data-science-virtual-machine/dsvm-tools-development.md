@@ -16,18 +16,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 663da31985759f47fff77dc5ad0f985d44559385
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: dd60c5d0210ffba373839fd0f194496c5dbcc20d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451584"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999403"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Narzędzia programistyczne na maszynie wirtualnej do nauki o danych
 
 Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwoju, tworzenie pakietów kilku popularnych narzędzi i środowiska IDE. Poniżej przedstawiono niektóre narzędzia, które znajdują się maszyny DSVM. 
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017  
+
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Ogólnego przeznaczenia IDE      |
@@ -38,6 +39,7 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 | Pokrewne narzędzia na maszyny DSVM      |     Visual Studio Code, RStudio, Juno  |
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
+
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Ogólnego przeznaczenia IDE      |
@@ -47,6 +49,7 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 | Pokrewne narzędzia na maszyny DSVM      |     Visual Studio 2017, RStudio, Juno  |
 
 ## <a name="rstudio--desktop"></a>RStudio Desktop 
+
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Klient środowisko IDE dla języka R    |
@@ -56,6 +59,7 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 | Pokrewne narzędzia na maszyny DSVM      |   Visual Studio 2017, Visual Studio Code, Juno      |
 
 ## <a name="rstudio--server"></a>Programu RStudio Server 
+
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Środowisko IDE oparte na sieci Web dla języka R    |
@@ -65,6 +69,7 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 | Pokrewne narzędzia na maszyny DSVM      |   Program Visual Studio 2017, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
+
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Klient środowiska IDE języka Julia   |
@@ -74,6 +79,7 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 | Pokrewne narzędzia na maszyny DSVM      |   Visual Studio 2017, Visual Studio Code, RStudio      |
 
 ## <a name="pycharm"></a>Platformy Pycharm
+
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Klient środowisko IDE dla języka Python    |
@@ -85,6 +91,7 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 
 
 ## <a name="powerbi-desktop"></a>PowerBI Desktop 
+
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Interaktywna Wizualizacja danych i narzędzia do analizy Biznesowej    |

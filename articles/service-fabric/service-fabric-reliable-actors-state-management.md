@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77fa369a3085a3d11d5bf03406b4ddb885a24009
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847403"
 ---
 # <a name="reliable-actors-state-management"></a>Niezawodne zarządzanie stanem aktorów
 Elementy Reliable Actors są jednowątkowe obiekty, hermetyzują logiki i stanu. Ponieważ aktorów są uruchamiane na usług Reliable Services, ich niezawodne zachowują stan, przy użyciu tego samego trwałości i mechanizmów replikacji. W ten sposób Aktorzy nie strać ich stanu po awarii po ponownej aktywacji po wyrzucania elementów bezużytecznych lub po przeniesieniu ich między węzłami w klastrze z powodu równoważenia zasobów lub uaktualnień.
@@ -29,9 +29,9 @@ Wszystkie elementy Reliable Actors są traktowane jako *stanowa* ponieważ każd
 
 Mimo że Aktorzy są traktowane jako stanowe, które nie oznacza to, że ich musi niezawodnego przechowywania stanu. Aktorzy można wybrać poziom trwałości stanu i replikacji na podstawie swoich danych wymagania dotyczące magazynu:
 
-* **Stan trwały**: stan jest zachowywany na dysku, a następnie są replikowane do co najmniej trzema replikami. Utrwalonego stanu jest najbardziej niezawodne opcji magazynu stanu, gdy stan można utrwalić za pośrednictwem awarii całego klastra.
-* **Stan volatile**: stan jest replikowana do co najmniej trzema replikami i przechowywane tylko w pamięci. Stan volatile zapewnia odporność względem awarii węzła i niepowodzeń aktora i podczas uaktualnień i równoważenia zasobów. Jednak nie jest trwały stan dysku. Dlatego jeśli wszystkie repliki zostaną utracone na raz, stan zostanie utracony także.
-* **Bez stanu utrwalonego**: stan nie jest replikowany lub zapisywane na dysku, używaj tylko dla podmiotów, które nie wymagają niezawodne zarządzania stanem.
+* **Stan trwały**: Stan jest zachowywany na dysku, a następnie są replikowane do co najmniej trzema replikami. Utrwalonego stanu jest najbardziej niezawodne opcji magazynu stanu, gdy stan można utrwalić za pośrednictwem awarii całego klastra.
+* **Stan volatile**: Stan jest replikowana do co najmniej trzema replikami i przechowywane tylko w pamięci. Stan volatile zapewnia odporność względem awarii węzła i niepowodzeń aktora i podczas uaktualnień i równoważenia zasobów. Jednak nie jest trwały stan dysku. Dlatego jeśli wszystkie repliki zostaną utracone na raz, stan zostanie utracony także.
+* **Bez stanu utrwalonego**: Stanu nie jest replikowany lub zapisywane na dysku, używaj tylko dla podmiotów, które nie wymagają niezawodne zarządzania stanem.
 
 Każdy poziom trwałości jest po prostu inny *dostawca stanu* i *replikacji* konfiguracji usługi. Określa, czy stan są zapisywane do dysku zależy od dostawcy stanu — składnik w usługi reliable service, który zapisuje stan. Replikacja zależy od tego, jak wiele replik, usługa jest wdrażany z. Podobnie jak w przypadku usług Reliable Services, zarówno dostawca stanu, jak i liczby replik łatwo można ustawić ręcznie. Struktura aktora zapewnia atrybutu, gdy na aktora, automatycznie wybiera domyślny dostawca stanu i automatycznie generuje ustawienia liczba replik osiągnięcie jednego z tych trzech ustawień stanu trwałego. Atrybut StatePersistence nie jest dziedziczone przez klasy pochodnej, każdy typ aktora należy podać jego poziom StatePersistence.
 
@@ -86,7 +86,7 @@ Jeśli używasz `StatePersistence` atrybutu, dostawca stanu jest automatycznie w
 Te parametry można zmienić ręcznie. Ale każdorazowo `StatePersistence` zmienić atrybutu, parametry są ustawione na wartości domyślne repliki Ustaw rozmiar dla wybranego `StatePersistence` atrybutu, zastępując wszystkie poprzednie wartości. Oznacza to, czy wartości, które można ustawić w ServiceManifest.xml *tylko* zastąpione w czasie kompilacji, po zmianie `StatePersistence` wartość atrybutu.
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
       <Parameter Name="MyActorService_PartitionCount" DefaultValue="10" />
       <Parameter Name="MyActorService_MinReplicaSetSize" DefaultValue="3" />

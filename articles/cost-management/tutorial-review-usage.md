@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: bb5a4b3a3019007948a9996ed6715e755f284f9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098650"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58175171"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -97,14 +97,14 @@ Alerty pozwalają automatycznie powiadamiać uczestników projektu o anomaliach 
 
 W tym przykładzie skorzystasz z raportu **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu), aby wysłać powiadomienie, gdy wydatki na maszyny wirtualne platformy Azure zbliżą się do poziomu łącznego budżetu. W tym scenariuszu łączny budżet wynosi 20 000 USD. Chcesz otrzymywać powiadomienie, gdy koszty osiągną poziom 9000 USD, a potem kolejne powiadomienie po osiągnięciu wartości 10 000 USD.
 
-1. W menu w górnej części portalu Cloudyn wybierz pozycję **Costs** > **Cost Analysis** > **Actual Cost Over Time** (Koszty > Analiza kosztów > Koszt rzeczywisty na przestrzeni czasu). 
-2. Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**. 
+1. W menu w górnej części portalu Cloudyn wybierz pozycję **Costs** > **Cost Analysis** > **Actual Cost Over Time** (Koszty > Analiza kosztów > Koszt rzeczywisty na przestrzeni czasu).
+2. Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**.
 3. W prawym górnym rogu raportu wybierz pozycję **Actions** (Akcje), a następnie wybierz pozycję **Schedule report** (Zaplanuj raport).
-4. Aby wysyłać do siebie wiadomość e-mail dotyczącą raportu w zaplanowanych odstępach czasu, wybierz kartę **Scheduling** (Planowanie) w oknie dialogowym **Save or Schedule this report** (Zapisz lub zaplanuj ten raport). Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtry zostaną uwzględnione w raporcie wysłanym w wiadomości e-mail. 
-5. Wybierz kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). 
-   1. W polu progu **Red alert** (Czerwony alert) wprowadź wartość 10 000. 
-   2. W polu progu **Yellow alert** (Żółty alert) wprowadź wartość 9000. 
-   3. W polu **Number of consecutive alerts** (Liczba kolejnych alertów) wprowadź liczbę alertów, które mają być wysyłane. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. 
+4. Aby wysyłać do siebie wiadomość e-mail dotyczącą raportu w zaplanowanych odstępach czasu, wybierz kartę **Scheduling** (Planowanie) w oknie dialogowym **Save or Schedule this report** (Zapisz lub zaplanuj ten raport). Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtry zostaną uwzględnione w raporcie wysłanym w wiadomości e-mail.
+5. Wybierz kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg).
+   1. W polu progu **Red alert** (Czerwony alert) wprowadź wartość 10 000.
+   2. W polu progu **Yellow alert** (Żółty alert) wprowadź wartość 9000.
+   3. W polu **Number of consecutive alerts** (Liczba kolejnych alertów) wprowadź liczbę alertów, które mają być wysyłane. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane.
 6. Wybierz pozycję **Zapisz**.
 
 ![Przykład pokazujący czerwone i żółte alerty na podstawie progów wydatków](./media/tutorial-review-usage/schedule-alert01.png)
