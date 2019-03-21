@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 07/31/2018
 ms.subservice: common
-ms.openlocfilehash: 2aeab9be28a61f4e185be7192e7965cbf02bfed9
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 8ea80d557185f4489a96384b77ddd2519e7bd049
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791991"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992174"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Za pomocą usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
 
@@ -40,7 +40,7 @@ Korzyści z używania usługi obiektów Blob, aby hostować swoje artefakty komp
   
     Jeśli obecnie nie masz rozwiązanie ciągłej integracji narzędzia Jenkins, możesz uruchomić rozwiązaniem ciągłej integracji narzędzia Jenkins przy użyciu następujących technik:
   
-  1. Na maszynie z obsługą języka Java, Pobierz jenkins.war z <http://jenkins-ci.org>.
+  1. Na maszynie z obsługą języka Java, Pobierz jenkins.war z <https://jenkins-ci.org>.
   2. W wierszu polecenia, który jest otwierany do folderu, który zawiera jenkins.war Uruchom polecenie:
      
       `java -jar jenkins.war`
@@ -48,7 +48,7 @@ Korzyści z używania usługi obiektów Blob, aby hostować swoje artefakty komp
   3. Otwórz w przeglądarce, `http://localhost:8080/` można otworzyć pulpitu nawigacyjnego usługi Jenkins, który będzie używany do instalowania i konfigurowania wtyczki usługi Azure Storage.
      
       Podczas gdy typowe rozwiązanie ciągłej integracji narzędzia Jenkins, należy skonfigurować do uruchamiania jako usługa, uruchomiona war narzędzia Jenkins w wierszu polecenia, będzie wystarczająca na potrzeby tego samouczka.
-* Konto platformy Azure. Możesz zasubskrybować konta platformy Azure w <http://www.azure.com>.
+* Konto platformy Azure. Możesz zasubskrybować konta platformy Azure w <https://www.azure.com>.
 * Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć ją przy użyciu czynności opisane w temacie [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 * Znajomość rozwiązanie ciągłej integracji Jenkins jest zalecane, ale nie jest to wymagane, zgodnie z następującą zawartością użyje podstawowy przykład w celu dowiesz się, że artefakty kompilacji kroki wymagane w przypadku korzystania z usługi Blob service jako repozytorium do ciągłej integracji narzędzia Jenkins.
 
@@ -118,7 +118,7 @@ Poniższe kroki ilustrują skonfigurować krok kompilacji, można pobrać elemen
 1. W **kompilacji** sekcji konfiguracji zadania, wybierz opcję **Dodaj krok kompilacji** i wybierz **pobierać z usługi Azure Blob storage**.
 2. Aby uzyskać **nazwa konta magazynu**, wybierz konto magazynu do użycia.
 3. Aby uzyskać **nazwa kontenera**, określ nazwę kontenera, który zawiera obiekty BLOB, którą chcesz pobrać. Można używać zmiennych środowiskowych.
-4. Aby uzyskać **nazwa obiektu Blob**, określ nazwę obiektu blob. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu znakami nazwy obiektu blob. Na przykład **projektu\***  należałoby określić wszystkie obiekty BLOB, których nazwy rozpoczynają się od **projektu**.
+4. Aby uzyskać **nazwa obiektu Blob**, określ nazwę obiektu blob. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu znakami nazwy obiektu blob. Na przykład **projektu\\*** należałoby określić wszystkie obiekty BLOB, których nazwy rozpoczynają się od **projektu**.
 5. [Opcjonalnie] Aby uzyskać **ścieżkę pobierania**, określ ścieżkę na maszynie Jenkins, której chcesz pobierać pliki z usługi Azure blob storage. Można także zmienne środowiskowe. (Jeśli nie zostanie określona wartość **ścieżkę pobierania**, pliki z magazynu obiektów blob platformy Azure zostaną pobrane z obszarem roboczym zadania.)
 
 Jeśli masz dodatkowe elementy, które chcesz pobrać z magazynu obiektów blob platformy Azure, możesz utworzyć dodatkowych kroków kompilacji.

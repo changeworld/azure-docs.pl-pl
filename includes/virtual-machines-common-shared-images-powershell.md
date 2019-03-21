@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: c74a96e3dcce1394e0af5447c07ad38c54b960fa
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825781"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125181"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
@@ -95,7 +95,7 @@ $vmConfig = Set-AzVMSourceImage `
 
 Jest to podobne do jak możesz obecnie określić Użyj wydawcy, oferta i jednostka SKU dla [obrazów portalu Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) można pobrać najnowszej wersji obrazu z witryny Marketplace. Pamiętając o tym każda definicja obrazu musi mieć unikatowy zestaw tych wartości.  
 
-##<a name="create-an-image-version"></a>Utwórz wersję obrazu
+## <a name="create-an-image-version"></a>Utwórz wersję obrazu
 
 Utwórz wersję obrazu na podstawie obrazu zarządzanego przy użyciu [New AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) . W tym przykładzie jest wersja obrazu *1.0.0* i są replikowane do obu *zachodnio-środkowe stany USA* i *południowo-środkowe stany USA* centrów danych.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 8f365bd5711f8478379394630f43a86dd442389d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 36eaaeabcf888aac10bcf9b8a27e3590d21079ec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446022"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897109"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Szybki start: tłumaczenie mowy przy użyciu zestawu SDK usługi Mowa dla języka Java
 
@@ -72,14 +72,14 @@ Dane wejściowe mowy z mikrofonu zostaną przetranskrybowane na język niemiecki
 
 ![Zrzut ekranu przedstawiający dane wyjściowe konsoli po pomyślnym ukończeniu rozpoznawania](media/sdk/qs-translate-java-jre-output.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dodatkowe przykłady, dotyczące między innymi odczytywania mowy z pliku audio i zwracania przetłumaczonego tekstu jako syntetyzowanej mowy, są dostępne w usłudze GitHub.
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Szybki start: rozpoznawanie mowy, Java (Windows, Linux)](quickstart-java-jre.md)
 - [Samouczek: tworzenie niestandardowego modelu akustycznego](how-to-customize-acoustic-models.md)

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: eb924bcfe3e2545cf6666a19bbb3494c11bc3a48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 28a7de1b43d793641237197aea841022996b07e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057685"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994031"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Wprowadzenie do usługi Azure Queue storage i Visual Studio połączonych usług (usługi w chmurze projektów)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -32,7 +32,7 @@ Poniżej opisano sposób tworzenia kolejki w kodzie. Ponadto pokażemy sposób w
 * Zobacz [Rozpoczynanie pracy z usługą Azure Queue storage przy użyciu platformy .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) więcej informacji na temat manipulowanie kolejek w kodzie.
 * Zobacz [dokumentacja usługi Storage](https://azure.microsoft.com/documentation/services/storage/) ogólne informacje o usłudze Azure Storage.
 * Zobacz [dokumentacji usług w chmurze](https://azure.microsoft.com/documentation/services/cloud-services/) ogólne informacje dotyczące usług Azure cloud services.
-* Zobacz [ASP.NET](http://www.asp.net) Aby uzyskać więcej informacji na temat programowania aplikacji ASP.NET.
+* Zobacz [ASP.NET](https://www.asp.net) Aby uzyskać więcej informacji na temat programowania aplikacji ASP.NET.
 
 Azure Queue Storage to usługa do przechowywania dużej liczby komunikatów, do której można uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem uwierzytelnionego połączenia za pomocą protokołu HTTP lub HTTPS. Pojedynczy komunikat z kolejki nie może przekraczać 64 KB, a kolejka może zawierać miliony komunikatów — maksymalnie liczbę nieprzekraczającą całkowitego limitu pojemności konta magazynu.
 
@@ -57,7 +57,7 @@ Aby uzyskać dostęp do kolejki w projektach Visual Studio Cloud Services, nale�
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**Uwaga:** korzystać ze wszystkich powyższy kod przed kodem w następujących przykładach.
+**UWAGA:** Używać wszystkich powyższy kod przed kodem w następujących przykładach.
 
 ## <a name="create-a-queue-in-code"></a>Tworzenie kolejki w kodzie
 Aby utworzyć kolejkę w kodzie, wystarczy dodać wywołanie **CreateIfNotExists**.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dbbfea183454b1068558111bf62b45f5fa6415cc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e05281b2279f5d40f8a3ba4ed3f49a38e5abf0ee
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333787"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261476"
 ---
 Magazyn zoptymalizowanych rozmiarów maszyn wirtualnych zapewniają Wysoka przepływność dysku i we/wy oraz idealnie nadają się do obsługi dużych ilości danych, SQL, NoSQL baz danych, magazynowanie danych i dużych transakcyjnych baz danych.  Przykłady obejmują bazy danych Cassandra, MongoDB, Cloudera i Redis. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu lokalnego dla każdego rozmiaru zoptymalizowane.
 
@@ -31,13 +31,13 @@ Magazyn w warstwie Premium: Obsługiwane
 
 Buforowanie Premium Storage: Nieobsługiwane
 
-| Rozmiar          | Procesor wirtualny | Pamięć (GiB) | Dysku tymczasowego<sup>1</sup> (GiB) | Dyski NVMe<sup>2</sup> | Przepływność dysków NVMe<sup>3</sup> (odczytu na SEKUNDĘ / MB/s) | Host Cache Size<sup>4</sup> | Dyski z danymi maksymalna | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
+| Rozmiar          | Procesor wirtualny | Pamięć (GiB) | Dysku tymczasowego<sup>1</sup> (GiB) | Dyski NVMe<sup>2</sup> | Przepływność dysków NVMe<sup>3</sup> (odczytu na SEKUNDĘ / MB/s) | Maksymalna liczba danych przepływność niebuforowanych dysków (na sekundę/MB/s)<sup>4</sup> | Dyski z danymi maksymalna | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 340,000 / 2,000 | ND | 16 | 2 / 3,200  | 
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 680,000 / 4,500 | ND | 32 | 4 / 6,400  | 
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x1.92 TB  | 1.4 M / 9000    | ND | 32 | 8 / 12,800 | 
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.7 M / 18,000   | ND | 32 | 8 / 25,600 |
-| Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.4 M / 22 000   | ND | 32 | 8 / 32,000 |
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 400,000 / 2,000 | 8,000/160 | 16 | 2 / 3,200  | 
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800,000 / 4,000 | 16,000/320 | 32 | 4 / 6,400  | 
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x1.92 TB  | 1,5 MB / 8000    | 32,000/640 | 32 | 8 / 12,800 | 
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.9 M / 16 000   | 64,000/1,280 | 32 | 8 / 25,600 |
+| Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.8 M / 20 000   | 80,000/1,400 | 32 | 8 / 32,000 |
  
 <sup>1</sup> maszyny wirtualne z serii Lsv2 ma standardowy dysk na podstawie zasobów temp SCSI dla użycie pliku stronicowania/wymiany systemu operacyjnego (D: na Windows, /dev/sdb w systemie Linux). Ten dysk zapewnia 80 GiB pamięci, 4000 operacje We/Wy i 80 MB/s transferu kurs co 8 wirtualnych procesorów CPU (np. Standard_L80s_v2 zapewnia 800 GiB 40 000 operacji We/Wy i 800 MB/s). Gwarantuje to, że dyski NVMe, które mogą być w pełni przeznaczone do użycia w aplikacji. Ten dysk jest tymczasowych, a wszystkie dane zostaną utracone na Zatrzymaj/Cofnij Przydział.
 

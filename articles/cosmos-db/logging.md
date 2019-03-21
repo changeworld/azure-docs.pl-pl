@@ -4,15 +4,15 @@ description: Dowiedz się więcej o różnych sposobach rejestrowania i monitoro
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 2a08097b42f395bd0009353635cabbd264c3c421
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992094"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259775"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB 
 
@@ -24,7 +24,7 @@ Po uruchomieniu używać jednego lub więcej baz danych Azure Cosmos DB, warto m
 
 Zanim będziemy wyjaśniać, jak monitorować konto usługi Azure Cosmos DB, możemy wyjaśnić kilka kwestii dotyczących rejestrowania i monitorowania. Istnieją różne typy dzienników na platformie Azure. Istnieją [dzienników aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [dzienniki diagnostyczne platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [metryki platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), zdarzenia, pulsu, dzienniki operacji i tak dalej. Istnieje mnóstwo dzienniki. Można wyświetlić pełną listę dzienników w [dzienniki usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) w witrynie Azure portal. 
 
-Na poniższej ilustracji przedstawiono różne rodzaje dzienniki platformy Azure, które są dostępne:
+Na poniższej ilustracji przedstawiono inny rodzaj dzienniki platformy Azure, które są dostępne:
 
 ![Różne rodzaje dzienniki platformy Azure](./media/logging/azurelogging.png)
 
@@ -67,7 +67,7 @@ Dzienniki diagnostyczne platformy Azure są emitowane przez zasób i zapewniają
 
 Aby włączyć rejestrowanie diagnostyczne, musi mieć następujące zasoby:
 
-* Istniejące usługi Azure Cosmos DB konta, bazy danych i kontenerów. Aby uzyskać instrukcje dotyczące tworzenia tych zasobów, zobacz [utworzyć konto bazy danych przy użyciu witryny Azure portal](create-sql-api-dotnet.md#create-a-database-account), [przykłady interfejsu wiersza polecenia platformy Azure](cli-samples.md), lub [przykłady programu PowerShell](powershell-samples.md).
+* Istniejące usługi Azure Cosmos DB konta, bazy danych i kontenerów. Aby uzyskać instrukcje dotyczące tworzenia tych zasobów, zobacz [utworzyć konto bazy danych przy użyciu witryny Azure portal](create-sql-api-dotnet.md#create-account), [przykłady interfejsu wiersza polecenia platformy Azure](cli-samples.md), lub [przykłady programu PowerShell](powershell-samples.md).
 
 Aby włączyć rejestrowanie diagnostyczne w witrynie Azure portal, wykonaj następujące czynności:
 
@@ -99,27 +99,23 @@ Aby włączyć rejestrowanie diagnostyczne i metryki za pomocą wiersza poleceni
 - Aby włączyć magazyn dzienników diagnostycznych w ramach konta magazynu, użyj tego polecenia:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
+   az monitor diagnostic-settings create --name DiagStorage --resource <resourceId> --storage-account <storageAccountName> --logs '[{"category": "QueryRuntimeStatistics", "enabled": true, "retentionPolicy": {"enabled": true, "days": 0}}]'
    ```
 
-   `resourceId` Jest nazwą konta usługi Azure Cosmos DB. `storageId` Jest nazwą konta magazynu, do którego chcesz wysłać dzienniki.
+   `resource` Jest nazwą konta usługi Azure Cosmos DB. Zasób jest w formacie "/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/ < Azure_Cosmos_account_name >" `storage-account` jest nazwą konta magazynu, do których użytkownik Czy chcesz wysłać dzienniki. Zaloguj się inne dzienniki, aktualizując wartości parametrów kategorii "MongoRequests" lub "DataPlaneRequests". 
 
 - Aby włączyć strumieniowe przesyłanie dzienników diagnostycznych do Centrum zdarzeń, użyj tego polecenia:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
+   az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --event-hub-rule <eventHubRuleID> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
-   `resourceId` Jest nazwą konta usługi Azure Cosmos DB. `serviceBusRuleId` Jest ciągiem o następującym formacie:
-
-   ```azurecli-interactive
-   {service bus resource ID}/authorizationrules/{key name}
-   ```
+   `resource` Jest nazwą konta usługi Azure Cosmos DB. `event-hub-rule` Jest to identyfikator reguły Centrum zdarzeń. 
 
 - Aby włączyć wysyłanie dzienników diagnostycznych do obszaru roboczego usługi Log Analytics, użyj tego polecenia:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
+   az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --workspace <resource id of the log analytics workspace> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
 Można połączyć te parametry, aby włączyć wiele opcji danych wyjściowych.
@@ -351,7 +347,7 @@ Dzienniki diagnostyczne są udostępniane w ramach Twojego konta do dwóch godzi
 
 
 <a id="#view-in-loganalytics"></a>
-## <a name="view-logs-in-azure-monitor-logs"></a>Wyświetl dzienniki w dziennikach w usłudze Azure Monitor
+## <a name="view-logs-in-azure-monitor-logs"></a>Wyświetlanie dzienników w usłudze Azure Monitor
 
 W przypadku wybrania **wysyłanie do usługi Log Analytics** opcji po włączeniu rejestrowania diagnostycznego diagnostyczne dane z kontenera jest przekazywany do usługi Azure Monitor dzienniki w ciągu dwóch godzin. Jeśli przyjrzymy się dzienniki usługi Azure Monitor bezpośrednio po włączeniu rejestrowania, nie zobaczysz żadnych danych. Po prostu Zaczekaj dwie godziny i spróbuj ponownie. 
 

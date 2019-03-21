@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 44252274cc3c0050ba138c3115deeceb2f06f8d8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782772"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121540"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure App Service
 
@@ -146,7 +146,7 @@ Zobacz też wybranej nazwy hostów w **domen niestandardowych** strony w **niest
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
-Aby przetestować nazwy hostów, przejdź do listy nazw hostów w przeglądarce. W przykładzie na poprzednim zrzucie ekranu, spróbuj przejść do _kontoso.net_ i _www.kontoso.net_.
+Aby przetestować nazwy hostów, przejdź do listy nazw hostów w przeglądarce. W przykładzie na poprzednim zrzucie ekranu, spróbuj przejść do _kontoso.net_ i _www\.kontoso.net_.
 
 ## <a name="assign-hostnames-to-app"></a>Przypisywanie nazw hostów do aplikacji
 
@@ -177,7 +177,7 @@ Wybierz przycisk **Dodaj nazwę hosta**.
 W **Dodaj nazwę hosta** okno dialogowe, wpisz w pełni kwalifikowana nazwa domeny Twojej domeny usługi App Service lub dowolna poddomena. Na przykład:
 
 - kontoso.net
-- www.kontoso.net
+- www\.kontoso.net
 - abc.kontoso.net
 
 Po zakończeniu wybierz pozycję **weryfikacji**. Typ rekordu nazwy hosta jest automatycznie wybrana.

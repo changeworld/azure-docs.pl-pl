@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: b8fb6e2b23c275d198ac58fec874ad6627a7b43e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007168"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286018"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
@@ -21,7 +21,7 @@ Ten artykuł zawiera informacje dotyczące rozwiązywania problemów w celu ochr
 
 ## <a name="feature-consideration-and-limitations"></a>Funkcja uwag i ograniczeń
 
-Aby wyświetlić uwagę funkcji, zapoznaj się z artykułem [kopii zapasowych programu SQL Server, na maszynach wirtualnych Azure](backup-sql-server-azure-vms.md#feature-consideration-and-limitations).
+Aby wyświetlić uwagę funkcji, zapoznaj się z artykułem [kopii zapasowych programu SQL Server, na maszynach wirtualnych Azure](backup-azure-sql-database.md#feature-consideration-and-limitations).
 
 ## <a name="sql-server-permissions"></a>Uprawnienia programu SQL Server
 
@@ -80,7 +80,7 @@ Poniższe tabele są uporządkowane według kodu błędu.
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Nie można przyjąć kopii zapasowej, ponieważ dziennik transakcji dla źródła danych jest pełny. | Przestrzeń dziennika transakcji bazy danych jest pełny. | Aby rozwiązać ten problem, zapoznaj się [dokumentacji programu SQL](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
-| Ta baza danych SQL nie obsługuje żądanego typu kopii zapasowej. | Repliki pomocnicze zawsze na grupy dostępności nie obsługują pełne i różnicowe kopie zapasowe. | <ul><li>Jeśli wyzwoleniu kopii zapasowej usługi ad-hoc wyzwalanie tworzenia kopii zapasowych w węźle podstawowym.</li><li>Jeśli kopia zapasowa została zaplanowana przez zasady, upewnij się, że węzeł podstawowy jest zarejestrowany. Aby zarejestrować węzeł, [postępuj zgodnie z instrukcjami, aby odnaleźć bazy danych programu SQL Server](backup-azure-sql-database.md#discover-sql-server-databases).</li></ul> |
+| Ta baza danych SQL nie obsługuje żądanego typu kopii zapasowej. | Repliki pomocnicze zawsze na grupy dostępności nie obsługują pełne i różnicowe kopie zapasowe. | <ul><li>Jeśli wyzwoleniu kopii zapasowej usługi ad-hoc wyzwalanie tworzenia kopii zapasowych w węźle podstawowym.</li><li>Jeśli kopia zapasowa została zaplanowana przez zasady, upewnij się, że węzeł podstawowy jest zarejestrowany. Aby zarejestrować węzeł, [postępuj zgodnie z instrukcjami, aby odnaleźć bazy danych programu SQL Server](backup-sql-server-database-azure-vms.md#discover-sql-server-databases).</li></ul> |
 
 ## <a name="restore-failures"></a>Błędy przywracania
 

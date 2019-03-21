@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9c6ce826569b9c198e747a7977de3d346b1d3230
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0cf7464188bb502d77c673284cba226ce91a5725
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57783150"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259724"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki start: Wdrażanie aplikacji w portalu usługi LUIS
 
@@ -134,4 +134,4 @@ Po ukończeniu tego przewodnika Szybki Start wybierz **Moje aplikacje** w górny
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Identyfikowanie wspólnych intencje i podmioty](/luis-tutorial-prebuilt-intents-entities.md)
+> [Identyfikowanie wspólnych intencje i podmioty](luis-tutorial-prebuilt-intents-entities.md)

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure AD hasło protection w wersji zapoznawczej
-description: Zablokuj słabe hasła w usłudze Active Directory w środowisku lokalnym za pomocą usługi Azure AD hasło protection w wersji zapoznawczej
+title: Ochrona haseł w usłudze Azure AD
+description: Zablokuj słabe hasła w usłudze Active Directory w środowisku lokalnym za pomocą ochrona za pomocą hasła usługi Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fdf308ff6178dcb51ec73e46d43b853f62e7777
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: f1b3660d256e4beda948f723035aa75ca8a9ed2e
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840957"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284872"
 ---
-# <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wersja zapoznawcza: Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
+# <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
-|     |
-| --- |
-| Ochrona platformy Azure za pomocą hasła usługi Active Directory (Azure AD) i listy niestandardowej zakazanych haseł są publicznej wersji zapoznawczej funkcji usługi Azure AD. Aby uzyskać informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
-
-Ochrony hasłem w usłudze Azure AD to nowa funkcja w wersji zapoznawczej, która rozszerza zasady haseł w organizacji. Ochrona za pomocą hasła wdrożenia w środowisku lokalnym używa zarówno globalnych i niestandardowych zakazanych haseł listy, które są przechowywane w usłudze Azure AD. Robi się tego samego sprawdzenia lokalnego jako usługi Azure AD dla zmian oparte na chmurze.
+Ochrony hasłem w usłudze Azure AD jest funkcją, która rozszerza zasady haseł w organizacji. Ochrona za pomocą hasła wdrożenia w środowisku lokalnym używa zarówno globalnych i niestandardowych zakazanych haseł listy, które są przechowywane w usłudze Azure AD. Robi się tego samego sprawdzenia lokalnego jako usługi Azure AD dla zmian oparte na chmurze.
 
 ## <a name="design-principles"></a>Zasady projektowania
 

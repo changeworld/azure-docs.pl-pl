@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 969821c8b83b8ef554c67f99e3a16e827b53e647
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ba6a352d965f3f90a122f5277ad23ec5f92907eb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845124"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258466"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Wykonywały operacje zbiorcze w usłudze Azure Cosmos DB za pomocą biblioteki .NET przetwarzania zbiorczego
 
@@ -30,7 +30,7 @@ Obecnie zbiorcze wykonawca biblioteka jest obsługiwana przez interfejsu API SQL
 
 * Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań. Alternatywnie można użyć [emulatora usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) z `https://localhost:8081` punktu końcowego. Klucz podstawowy został podany w sekcji [Uwierzytelnianie żądań](local-emulator.md#authenticating-requests).
 
-* Tworzenie konta interfejsu API SQL usługi Azure Cosmos DB przy użyciu kroków opisanych w [Tworzenie konta bazy danych](create-sql-api-dotnet.md#create-a-database-account) sekcji z artykułem Szybki Start platformy .NET. 
+* Tworzenie konta interfejsu API SQL usługi Azure Cosmos DB przy użyciu kroków opisanych w [Tworzenie konta bazy danych](create-sql-api-dotnet.md#create-account) sekcji z artykułem Szybki Start platformy .NET. 
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
@@ -72,7 +72,7 @@ Aplikacja "BulkImportSample" generuje losowe dokumentów i zbiorcze importuje je
    connectionPolicy)
    ```
 
-4. Obiekt BulkExecutor jest inicjowany za pomocą ponownych prób wysoki czas oczekiwania i ograniczenia żądań. A następnie są one ustawione na 0 do przekazywania kontroli przeciążenia do BulkExecutor na cały okres ich istnienia.  
+4. Obiekt BulkExecutor jest inicjowany z wartością wysokiej ponawiania prób dla czas oczekiwania i ograniczenia żądań. A następnie są one ustawione na 0 do przekazywania kontroli przeciążenia do BulkExecutor na cały okres ich istnienia.  
 
    ```csharp
    // Set retry options high during initialization (default values).
@@ -102,7 +102,7 @@ Aplikacja "BulkImportSample" generuje losowe dokumentów i zbiorcze importuje je
    
    |**Parametr**  |**Opis** |
    |---------|---------|
-   |enableUpsert    |   Flaga włączenia upsert dokumentów. Jeśli dokument o podanym identyfikatorze już istnieje, jest on aktualizowany. Domyślnie jest ustawiona na wartość false.      |
+   |enableUpsert    |   Flaga włączenia wykonuje operację UPSERT dokumentów. Jeśli dokument o podanym identyfikatorze już istnieje, jest on aktualizowany. Domyślnie jest ustawiona na wartość false.      |
    |disableAutomaticIdGeneration    |    Flagi, aby wyłączyć automatyczne generowanie identyfikatora. Domyślnie jest ustawiona na wartość true.     |
    |maxConcurrencyPerPartitionKeyRange    | Maksymalny stopień współbieżności na zakres kluczy partycji, ustawienie na wartość null spowoduje, że biblioteki użyć wartości domyślnej, 20. |
    |maxInMemorySortingBatchSize     |  Maksymalna liczba dokumentów pobierane z dokumentu moduł wyliczający, który jest przekazywany do interfejsu API wywołania na każdym etapie.  W pamięci przetwarzania wstępnego sortowania fazy przed zaimportowaniem zbiorcze biblioteki użyć wartości domyślnej min (documents.count 1000000) spowoduje, że ustawienie na wartość null.       |
@@ -173,7 +173,7 @@ Korzystając z biblioteki program wykonujący zbiorcze, należy wziąć pod uwag
 
 * Zalecane jest uruchamianie pojedynczego obiektu BulkExecutor dla całej aplikacji w ramach jednej maszyny wirtualnej odpowiadający określonego kontenera usługi Cosmos DB.  
 
-* Od momentu wykonania operacji interfejsu API pojedynczej zbiorczej zużywa duże fragment komputerze klienckim procesora CPU i sieci We/Wy. Dzieje się tak wewnętrznie duplikując wielu zadań, należy unikać duplikowania wiele równoczesnych zadań w procesie aplikacji wywoływanych w każdej wykonywanie zbiorczej operacji interfejsu API. W przypadku wywołania operacji interfejsu API pojedynczej zbiorczej, uruchomiony w jednej maszynie wirtualnej nie można użyć całego kontenera przepływności (Jeśli Twój kontener przepływności > 1 mln jednostek RU/s), lepiej jest utworzyć osobne maszyny wirtualne, aby jednocześnie wykonać zbiorcze wywołania operacji interfejsu API.  
+* Od momentu wykonania operacji interfejsu API pojedynczej zbiorczej zużywa duże fragment komputerze klienckim procesora CPU i sieci We/Wy. Dzieje się tak wewnętrznie duplikując wielu zadań, należy unikać duplikowania wiele równoczesnych zadań w procesie aplikacji wywoływanych w każdej wykonywanie zbiorczej operacji interfejsu API. W przypadku pojedynczej zbiorczej wywołania operacji interfejsu API, który działa na jednej maszynie wirtualnej nie można użyć całego kontenera przepływności (Jeśli Twój kontener przepływności > 1 mln jednostek RU/s), lepiej jest utworzyć osobne maszyny wirtualne, aby jednocześnie wykonać zbiorcze wywołania operacji interfejsu API.  
 
 * Upewnij się, że InitializeAsync() jest wywoływana po utworzenie wystąpienia obiektu BulkExecutor można pobrać mapy partycji kontenera usługi Cosmos DB docelowego.  
 

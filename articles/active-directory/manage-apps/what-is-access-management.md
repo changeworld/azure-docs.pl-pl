@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14957a94dbe8330553a4090e22d80d6cc2ee06eb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 70513675d09a663c65c6f5b3e18059467a8ba388
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217330"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109328"
 ---
 # <a name="managing-access-to-apps"></a>Zarządzanie dostępem do aplikacji
 Ciągły dostęp do zarządzania, użycie oceny i raportowania nadal żądanie po aplikacji jest zintegrowany system obsługi tożsamości organizacji. W wielu przypadkach administratorzy IT lub pomocą techniczną wymagać trwającą aktywną rolę w zarządzaniu dostępem do aplikacji. Czasami przydziału jest wykonywane przez zespół IT ogólne lub działów. Często decyzja przydziału jest przeznaczona do należy delegować domenę do osoba podejmująca decyzje biznesowe, wymaganie zatwierdzenia przed IT sprawia, że przypisanie.  Innym organizacjom inwestowanie w integracji z istniejących automatycznych tożsamościami i dostępem system zarządzania, takich jak kontrola dostępu oparta na rolach (RBAC) lub atrybutu-Based Access Control (ABAC). Integracji i programowania reguły zwykle wyspecjalizowanych i drogich. Monitorowania i raportowania w obu podejścia do zarządzania jest inwestycji oddzielne kosztownych i złożonych.
@@ -29,7 +29,7 @@ Ciągły dostęp do zarządzania, użycie oceny i raportowania nadal żądanie p
 
 * [Dodanie nowej lub istniejącej aplikacji](configure-single-sign-on-portal.md)
 
- Przypisania aplikacji usługi Azure AD koncentruje się na dwóch trybach podstawowy przypisania:
+  Przypisania aplikacji usługi Azure AD koncentruje się na dwóch trybach podstawowy przypisania:
 
 * **Przypisanie indywidualne** administratora z uprawnieniami administratora globalnego katalogu można wybrać poszczególnych kont użytkowników i przyznać im dostęp do aplikacji.
 * **Przypisanie oparte na grupach, (płatność tylko usługi Azure AD)** administratora z uprawnieniami administratora globalnego katalogu można przypisać grupę do aplikacji. Dostęp do określonych użytkowników zależy od tego, czy są członkowie grupy w czasie użytkownik próbuje uzyskać dostęp do aplikacji. Innymi słowy administrator może skutecznie utworzyć reguły przypisania z informacją "bieżący członkom grupy przypisane ma dostęp do aplikacji". Przy użyciu tej opcji przypisania, Administratorzy mogą korzystać z dowolnej opcji zarządzania grupami usługi Azure AD, w tym [grupy dynamiczne oparte na atrybutach](../fundamentals/active-directory-groups-create-azure-portal.md), grup zewnętrznych systemu (na przykład w lokalnej usługi Active Directory lub pracy), lub grupy, zarządzane przez administratora lub zarządzanych eksploatacyjnych samoobsługowego. Pojedynczej grupy można łatwo przypisać do wielu aplikacji, upewniając się, aplikacje z użyciem koligacji przypisania udostępnić reguły przypisania, co zmniejsza ogólną złożoność zarządzania. Należy pamiętać, że członkostwo w grupach zagnieżdżonych nie są obsługiwane w przypadku oparte na grupach przypisywania do aplikacji, w tym momencie.

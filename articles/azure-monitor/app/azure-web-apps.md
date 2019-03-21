@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 09084f71eda611c4b638a339d0d837e77e2639b9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92a7c1a45655f8804aa1f81b1a77ebf7cd5197e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432315"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122169"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności w usłudze Azure App Service
 W [witryny Azure portal](https://portal.azure.com) możesz skonfigurować monitorowanie wydajności aplikacji dla aplikacji sieci web, mobilnych zaplecza i aplikacji API apps w [usługi Azure App Service](../../app-service/overview.md). [Usługa Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) umożliwia instrumentację aplikacji w celu wysyłania danych telemetrii do usługi Application Insights, gdzie są one przechowywane i analizowane. W usłudze tej można używać wykresów metryki i narzędzi wyszukiwania do ułatwiania diagnozowania problemów, zwiększania wydajności i oceny użycia.
@@ -38,25 +38,25 @@ Jeśli korzystasz obecnie z usługi app service na platformie Azure, otrzymujesz
 
    * O ile nie jest już skonfigurowany zasób usługi Application Insights dla tej aplikacji, należy wybrać opcję utworzenia nowego zasobu. 
 
-    > [!NOTE]
-    > Po kliknięciu **OK** do utworzenia nowego zasobu, zostanie wyświetlony monit do **Zastosuj ustawienia monitorowania**. Wybieranie **Kontynuuj** połączy nowy zasób usługi Application Insights do usługi app service, wykonując będzie również **wyzwolić ponowne uruchomienie usługi app service**. 
+     > [!NOTE]
+     > Po kliknięciu **OK** do utworzenia nowego zasobu, zostanie wyświetlony monit do **Zastosuj ustawienia monitorowania**. Wybieranie **Kontynuuj** połączy nowy zasób usługi Application Insights do usługi app service, wykonując będzie również **wyzwolić ponowne uruchomienie usługi app service**. 
 
-    ![Instrumentacja aplikacji internetowej](./media/azure-web-apps/create-resource.png)
+     ![Instrumentacja aplikacji internetowej](./media/azure-web-apps/create-resource.png)
 
 2. Po określenie zasobu do użycia, możesz wybrać sposób usługi application insights do zbierania danych dla danej platformy dla aplikacji. Monitorowanie aplikacji ASP.NET jest na domyślnie z dwóch różnych poziomach w kolekcji.
 
     ![Wybierz opcje dla danej platformy](./media/azure-web-apps/choose-options-new.png)
 
-    * .NET **podstawowe kolekcji** poziom oferuje podstawowe funkcje APM jednego wystąpienia.
+   * .NET **podstawowe kolekcji** poziom oferuje podstawowe funkcje APM jednego wystąpienia.
     
-    * .NET **zalecane kolekcji** poziom:
-        * Dodaje trendy użycia procesora CPU, pamięci i operacji We/Wy.
-        * Koreluje mikrousługi w granicach żądania/zależności.
-        * Zbiera dane trendów użycia i umożliwia korelacji z wyniki dostępności transakcji.
-        * Gromadzi informacje o wyjątki nieobsługiwane przez proces hosta.
-        * Zwiększa dokładność metryki APM pod obciążeniem, pobieranie próbek jest używany.
+   * .NET **zalecane kolekcji** poziom:
+       * Dodaje trendy użycia procesora CPU, pamięci i operacji We/Wy.
+       * Koreluje mikrousługi w granicach żądania/zależności.
+       * Zbiera dane trendów użycia i umożliwia korelacji z wyniki dostępności transakcji.
+       * Gromadzi informacje o wyjątki nieobsługiwane przez proces hosta.
+       * Zwiększa dokładność metryki APM pod obciążeniem, pobieranie próbek jest używany.
     
-    .NET core oferuje **zalecane kolekcji** lub **wyłączone** dla platformy .NET Core 2.0 i 2.1.
+     .NET core oferuje **zalecane kolekcji** lub **wyłączone** dla platformy .NET Core 2.0 i 2.1.
 
 3. **Instrumentacja usługi app service** po zainstalowaniu usługi Application Insights.
 
@@ -67,9 +67,9 @@ Jeśli korzystasz obecnie z usługi app service na platformie Azure, otrzymujesz
    * Wybierz kolejno pozycje Ustawienia > Ustawienia aplikacji
    * W obszarze Ustawienia aplikacji dodaj nową parę klucz-wartość:
 
-    Klucz: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Klucz: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-    Wartość:`true`
+     Wartość:`true`
    * **Zapisz** ustawienia i **ponownie uruchom** aplikację.
 
 4. Eksplorowanie danych monitorowania aplikacji, wybierając **ustawienia** > **usługi Application Insights** > **wyświetlić więcej szczegółowych informacji w aplikacji**.

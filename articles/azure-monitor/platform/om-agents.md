@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 722712d1e38efa3e1accc41abca5c9d88b3c1229
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 21294f61c77f0267601c5d0fc1fc9dcf213008e7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095929"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258834"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Aby zachować istniejącą inwestycję w [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) i rozszerzone możliwości za pomocą usługi Log Analytics, Operations Manager można zintegrować z obszaru roboczego usługi Log Analytics. Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
@@ -132,7 +132,7 @@ Wykonaj następujące czynności, czy wewnętrzny serwer proxy między grupą za
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
 1. Rozwiń węzeł Operations Management Suite, a następnie kliknij pozycję **Połączenia**.
 1. W widoku Połączenie OMS kliknij pozycję **Konfiguruj serwer proxy**.
-1. Na **Kreator Operations Management Suite: Serwer proxy** wybierz opcję **Użyj serwera proxy do dostępu do pakietu Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład <http://corpproxy:80> a następnie kliknij przycisk **Zakończ** .
+1. Na **Kreator Operations Management Suite: Serwer proxy** wybierz opcję **Użyj serwera proxy do dostępu do pakietu Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http:\//corpproxy:80, a następnie kliknij przycisk  **Zakończ**.
 
 Jeśli Twój serwer proxy wymaga uwierzytelniania, należy wykonać poniższe kroki, aby skonfigurować poświadczenia i ustawienia, które muszą zostać poddane propagacji na zarządzanych komputerach, które raporty do usługi Log Analytics w grupie zarządzania.
 

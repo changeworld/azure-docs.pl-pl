@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: 10275b2938ce66a2816b1d4a5589a5e88ee22e80
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093922"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259741"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Kontrola Azure działanie buforowania usługi CDN przy użyciu reguł buforowania
 
@@ -27,13 +27,13 @@ ms.locfileid: "49093922"
  
 Usługa Azure Content Delivery Network (CDN) oferuje dwa sposoby kontrolowania, jak są buforowane pliki: 
 
-- Reguły buforowania: w tym artykule opisano, jak można użyć sieci dostarczania zawartości (CDN) reguły buforowania można ustawić lub zmodyfikować domyślne zachowanie wygaśnięcia pamięci podręcznej, globalnie i za pomocą niestandardowych warunków, takich jak ścieżki i rozszerzenia adresu URL. Usługa Azure CDN oferuje dwa typy reguł buforowania:
+- Reguły buforowania: W tym artykule opisano, jak można użyć sieci dostarczania zawartości (CDN) reguły buforowania można ustawić lub zmodyfikować domyślne zachowanie wygaśnięcia pamięci podręcznej, globalnie i za pomocą niestandardowych warunków, takich jak ścieżki i rozszerzenia adresu URL. Usługa Azure CDN oferuje dwa typy reguł buforowania:
 
-   - Globalne reguły buforowania: można ustawić jedną globalną regułę buforowania dla każdego punktu końcowego w profilu, co wpłynie na wszystkie żądania do punktu końcowego. Globalna reguła buforowania zastępuje wszelkie nagłówki dyrektywy pamięci podręcznej HTTP, jeśli zostały one ustawione.
+   - Globalne reguły buforowania: Możesz ustawić jedną globalne reguły buforowania dla każdego punktu końcowego w profilu, który ma wpływ na wszystkie żądania do punktu końcowego. Globalna reguła buforowania zastępuje wszelkie nagłówki dyrektywy pamięci podręcznej HTTP, jeśli zostały one ustawione.
 
-   - Niestandardowe reguły buforowania: można skonfigurować co najmniej jedną niestandardową regułę buforowania dla każdego punktu końcowego w profilu. Niestandardowe reguły buforowania pasują do określonych ścieżek i rozszerzeń plików, są przetwarzane kolejno i zastępują globalną regułę buforowania, jeśli została ustawiona. 
+   - Niestandardowe reguły buforowania: Można ustawić co najmniej jeden niestandardowe reguły buforowania dla każdego punktu końcowego w Twoim profilu. Niestandardowe reguły buforowania pasują do określonych ścieżek i rozszerzeń plików, są przetwarzane kolejno i zastępują globalną regułę buforowania, jeśli została ustawiona. 
 
-- Buforowanie ciągu zapytania: Możesz dostosować, jak usługa Azure CDN traktuje buforowania żądań z ciągami zapytań. Aby uzyskać informacje, zobacz [kontroli usługi Azure CDN caching zachowanie z ciągami zapytań](cdn-query-string.md). Jeśli plik jest nie podlega buforowaniu, ustawienia buforowania ciągów zapytań nie ma znaczenia, oparte na pamięci podręcznej reguły i zachowania domyślne usługi CDN.
+- Buforowanie ciągu zapytania: Można dostosować, jak usługa Azure CDN traktuje buforowania żądań z ciągami zapytań. Aby uzyskać informacje, zobacz [kontroli usługi Azure CDN caching zachowanie z ciągami zapytań](cdn-query-string.md). Jeśli plik jest nie podlega buforowaniu, ustawienia buforowania ciągów zapytań nie ma znaczenia, oparte na pamięci podręcznej reguły i zachowania domyślne usługi CDN.
 
 Aby dowiedzieć się, domyślne zachowanie buforowania i nagłówki dyrektywy buforowania, zobacz [jak działa buforowanie](cdn-how-caching-works.md). 
 
@@ -54,11 +54,11 @@ Aby dowiedzieć się, domyślne zachowanie buforowania i nagłówki dyrektywy bu
 ## <a name="caching-behavior-settings"></a>Ustawienia zachowania buforowania
 W przypadku globalnych i niestandardowych regułach buforowania, można określić następujące **zachowanie buforowania** ustawienia:
 
-- **Pomiń pamięć podręczną**: nie pamięci podręcznej i Zignoruj warunkiem do źródła nagłówki z dyrektywami.
+- **Pomiń pamięć podręczną**: Nie w pamięci podręcznej i Zignoruj warunkiem do źródła nagłówki z dyrektywami.
 
-- **Zastąp**: Zignoruj warunkiem do źródła nagłówki z dyrektywami; zamiast tego użyj czas podany pamięci podręcznej.
+- **Zastąp**: Zignoruj warunkiem do źródła czas trwania pamięci podręcznej; Zamiast tego użyj czas podany pamięci podręcznej. Nie spowoduje to zastąpienie nagłówka cache-control: nie-cache.
 
-- **Ustaw, jeśli brak**: Honor dostarczone do źródła nagłówki z dyrektywami, jeśli takie istnieją; w przeciwnym razie użyj czas podany pamięci podręcznej.
+- **Ustaw, jeśli brak**: Uwzględnić dostarczone do źródła nagłówki z dyrektywami, jeśli takie istnieją; w przeciwnym razie użyj czas podany pamięci podręcznej.
 
 ![Globalne reguły buforowania](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
@@ -75,9 +75,9 @@ Dla globalnych i niestandardowych regułach buforowania można określić czas w
 
 Dla reguły niestandardowej pamięci podręcznej dostępne są dopasowanie dwa warunki:
  
-- **Ścieżka**: ten stan odpowiada Ścieżka adresu URL, z wyjątkiem nazwy domeny i obsługuje symbol wieloznaczny (\*). Na przykład _/myfile.html_, _/Moje/folder / *_, i _/my/images/*.jpg_. Maksymalna długość wynosi 260 znaków.
+- **Ścieżka**: Ten warunek odpowiada Ścieżka adresu URL, z wyjątkiem nazwy domeny i obsługuje symbol wieloznaczny (\*). Na przykład _/myfile.html_, _/Moje/folder / *_, i _/my/images/*.jpg_. Maksymalna długość wynosi 260 znaków.
 
-- **Rozszerzenie**: ten stan jest zgodna rozszerzenie pliku żądanego pliku. Możesz podać listę rozszerzeń plików rozdzielanych przecinkami do dopasowania. Na przykład _.jpg_, _.mp3_, lub _.png_. Maksymalna liczba rozszerzeń wynosi 50, a maksymalna liczba znaków w rozszerzeniu to 16. 
+- **Rozszerzenie**: Ten stan zastępuje rozszerzenie pliku żądanego pliku. Możesz podać listę rozszerzeń plików rozdzielanych przecinkami do dopasowania. Na przykład _.jpg_, _.mp3_, lub _.png_. Maksymalna liczba rozszerzeń wynosi 50, a maksymalna liczba znaków w rozszerzeniu to 16. 
 
 ## <a name="global-and-custom-rule-processing-order"></a>Kolejność przetwarzania reguły globalnych i niestandardowych
 Globalne i niestandardowych regułach buforowania są przetwarzane w następującej kolejności:
@@ -88,22 +88,22 @@ Globalne i niestandardowych regułach buforowania są przetwarzane w następują
 
 **Przykład**:
 - Globalne reguły buforowania: 
-   - Zachowanie buforowania: **zastąpienia**
+   - Zachowanie buforowania: **zastąpienie**
    - Czas wygasania pamięci podręcznej: 1 dzień
 
 - Buforowanie niestandardowe reguły #1:
-   - Warunek dopasowania: **ścieżki**
+   - Warunek dopasowania: **Ścieżka**
    - Odpowiada wartości:   _/home / *_
-   - Zachowanie buforowania: **zastąpienia**
+   - Zachowanie buforowania: **zastąpienie**
    - Czas wygasania pamięci podręcznej: 2 dni
 
 - Buforowanie niestandardowe reguły #2:
-   - Warunek dopasowania: **rozszerzenia**
+   - Warunek dopasowania: **Rozszerzenie**
    - Odpowiada wartości: _HTML_
    - Zachowanie buforowania: **Ustaw, jeśli brak**
    - Czas wygasania pamięci podręcznej: 3 dni
 
-Gdy te zasady są ustawione, żądanie  _&lt;nazwę hosta punktu końcowego&gt;_ wyzwalaczy.azureedge.net/home/index.html buforowanie niestandardowe reguły #2, która jest równa: **Ustaw, jeśli brak** i 3 Liczba dni. W związku z tym jeśli *index.html* plik ma `Cache-Control` lub `Expires` nagłówków HTTP, są one uwzględniane; w przeciwnym razie, jeśli nie ustawiono tych nagłówków, plik jest buforowany do 3 dni.
+Gdy te zasady są ustawione, żądanie  _&lt;nazwę hosta punktu końcowego&gt;_ wyzwalaczy.azureedge.net/home/index.html buforowanie niestandardowe reguły #2, która jest ustawiona na: **Ustaw, jeśli brak** i 3 dni. W związku z tym jeśli *index.html* plik ma `Cache-Control` lub `Expires` nagłówków HTTP, są one uwzględniane; w przeciwnym razie, jeśli nie ustawiono tych nagłówków, plik jest buforowany do 3 dni.
 
 > [!NOTE] 
 > Pliki, które są buforowane, przed zmianą reguły utrzymywać ich ustawienie czas trwania pamięci podręcznej pochodzenia. Aby zresetować ich czas trwania pamięci podręcznej, należy najpierw [przeczyścić pliku](cdn-purge-endpoint.md). 

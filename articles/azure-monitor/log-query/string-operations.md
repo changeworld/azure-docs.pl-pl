@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4998084ed15e6ed455789689674e134c6cd9d0a8
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012219"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Praca z ciągami zapytań dzienników usługi Azure Monitor
 
@@ -64,9 +64,9 @@ Operator       |Opis                         |Case-Sensitive|Przykład (daje `tr
 `hasprefix_cs`    |Po prawej stronie jest określenie prefiksu po lewej stronie         |Yes            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |Po prawej stronie nie jest określenie prefiksu po lewej stronie     |Yes            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |Po prawej stronie jest sufiksem termin w polu po lewej stronie         |Nie            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Nie            |""Ameryka Północna"! hassuffix"americ"
+`!hassuffix`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Nie            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |Po prawej stronie jest sufiksem termin w polu po lewej stronie         |Yes            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Yes            |""Ameryka Północna"! hassuffix_cs"icA"
+`!hassuffix_cs`   |Po prawej stronie nie ma sufiks termin w po lewej stronie     |Yes            |`"North America" !hassuffix_cs "icA"`
 `contains`     |Występuje po prawej stronie podsekwencji po lewej stronie  |Nie            |`"FabriKam" contains "BRik"`
 `!contains`    |Po prawej stronie nie występuje w po lewej stronie           |Nie            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |Występuje po prawej stronie podsekwencji po lewej stronie  |Yes           |`"FabriKam" contains_cs "Kam"`
@@ -259,6 +259,7 @@ SecurityEvent
 ```
 
 Może mieć następujące wyniki:
+
 Działanie                                        |zastąpione
 ------------------------------------------------|----------------------------------------------------------
 4663 - próbowano uzyskać dostęp do obiektu  |Identyfikator działania 4663: Nastąpiła próba dostępu do obiektu.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 42c981aa585d35e1d78718b4dee51d450b45e241
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: aa637571ca11ea294b1f95df49855d7ee81b3001
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852261"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258874"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Tworzenie kopii zapasowej maszyny wirtualnej za pomocą programu PowerShell
 
@@ -83,13 +83,13 @@ Włącz wykonywanie kopii zapasowej maszyny wirtualnej platformy Azure, a nastę
 
 Włącz kopię zapasową w następujący sposób:
 
-1. Najpierw Ustaw domyślne zasady za pomocą [Get AzRecoveryServicesBackupProtectionPolicy](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupProtectionPolicy):
+1. Najpierw Ustaw domyślne zasady za pomocą [Get AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy):
 
     ```powershell
     $policy = Get-AzRecoveryServicesBackupProtectionPolicy     -Name "DefaultPolicy"
     ```
 
-2. Włącz wykonywanie kopii zapasowej maszyny Wirtualnej, z [AzRecoveryServicesBackupProtection Włącz](/powershell/module/Az.RecoveryServices.Backup/Enable-AzRecoveryServicesBackupProtection). Określ zasady, grupy zasobów i nazwę maszyny Wirtualnej.
+2. Włącz wykonywanie kopii zapasowej maszyny Wirtualnej, z [AzRecoveryServicesBackupProtection Włącz](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection). Określ zasady, grupy zasobów i nazwę maszyny Wirtualnej.
 
     ```powershell
     Enable-AzRecoveryServicesBackupProtection `
@@ -107,9 +107,9 @@ Wykonywane kopie zapasowe zgodnie z harmonogramem określonym w zasadach tworzen
 - Po początkowej kopii zapasowej każde zadanie tworzenia kopii zapasowej tworzy przyrostowe punkty odzyskiwania.
 - Przyrostowe punkty odzyskiwania są oszczędne pod względem czasu i miejsca w magazynie, ponieważ przesyłają wyłącznie zmiany wprowadzone od czasu ostatniej kopii zapasowej.
 
-Aby uruchomić kopii zapasowej usługi ad-hoc, należy użyć[AzRecoveryServicesBackupItem kopii zapasowej](/powershell/module/az.recoveryservices.backup/backup-Azrecoveryservicesbackupitem). 
-- Określasz kontener w magazynie, który przechowuje dane kopii zapasowej za pomocą [Get AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupcontainer).
-- Każda maszyna wirtualna, której kopia zapasowa ma być tworzona, jest traktowana jako element. Aby uruchomić zadanie tworzenia kopii zapasowej, można uzyskać informacji na temat maszyny Wirtualnej przy użyciu [Get AzRecoveryServicesBackupItem](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupItem).
+Aby uruchomić kopii zapasowej usługi ad-hoc, należy użyć[AzRecoveryServicesBackupItem kopii zapasowej](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+- Określasz kontener w magazynie, który przechowuje dane kopii zapasowej za pomocą [Get AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
+- Każda maszyna wirtualna, której kopia zapasowa ma być tworzona, jest traktowana jako element. Aby uruchomić zadanie tworzenia kopii zapasowej, można uzyskać informacji na temat maszyny Wirtualnej przy użyciu [Get AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
 Uruchom zadanie tworzenia kopii zapasowej ad-hoc w następujący sposób:
 
@@ -132,7 +132,7 @@ Uruchom zadanie tworzenia kopii zapasowej ad-hoc w następujący sposób:
 
 ## <a name="monitor-the-backup-job"></a>Monitorowanie zadania tworzenia kopii zapasowej
 
-1. Uruchom [Get AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupjob) do monitorowania stanu zadania.
+1. Uruchom [Get AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) do monitorowania stanu zadania.
 
     ```powershell
     Get-AzRecoveryservicesBackupJob

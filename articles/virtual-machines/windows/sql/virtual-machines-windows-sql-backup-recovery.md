@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: e291072f7eb075adeff9efb37f1f7dffc72d714c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093528"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286299"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Tworzenie i przywracanie kopii zapasowych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji o tym, jak skonfigurować automatyczne tworzenie
 - **SQL Server 2016/2017**: [Automatyczne v2 kopii zapasowych maszyn wirtualnych platformy Azure](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**: [Zautomatyzowane tworzenie kopii zapasowej dla maszyn wirtualnych SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a> Usługa Azure Backup dla maszyn wirtualnych SQL (publiczna wersja zapoznawcza)
+## <a id="azbackup"></a> Usługa Azure Backup dla maszyn wirtualnych SQL
 
 [Usługa Azure Backup](/azure/backup/) zapewnia możliwości tworzenia kopii zapasowej klasy Enterprise programu SQL Server uruchomionego na maszynach wirtualnych Azure. Wszystkie kopie zapasowe są przechowywane i zarządzane w magazynie usługi Recovery Services. Istnieje kilka dodatkowych korzyści, udostępnianych przez to rozwiązanie, szczególnie w przypadku przedsiębiorstw:
 
@@ -76,9 +76,9 @@ Aby uzyskać więcej informacji o tym, jak skonfigurować automatyczne tworzenie
 
 Aby uzyskać szybki przegląd sposobu działania wraz z wersji demonstracyjnej Obejrzyj poniższy film wideo:
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2dNbw]
+> [!VIDEO https://www.youtube.com/embed/wmbANpHos_E]
 
-To rozwiązanie Azure Backup dla maszyn wirtualnych SQL jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Utwórz kopię zapasową bazy danych SQL Server na platformie Azure](../../../backup/backup-azure-sql-database.md).
+To rozwiązanie Azure Backup dla maszyn wirtualnych SQL jest ogólnie dostępna. Aby uzyskać więcej informacji, zobacz [Utwórz kopię zapasową bazy danych SQL Server na platformie Azure](../../../backup/backup-azure-sql-database.md).
 
 ## <a id="manual"></a> Ręczna kopia zapasowa
 

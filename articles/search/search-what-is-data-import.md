@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c3da9470668fa2987195c26e98eee51f14027f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7d95ae1f750c59c121e998c6f51f9439b1b0339a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136348"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287098"
 ---
 # <a name="data-import-overview---azure-search"></a>Importowanie danych przegląd — usługa Azure Search
 
@@ -40,18 +40,25 @@ Aby zapoznać się z wprowadzeniem do każdej z metodologii, zobacz [Szybki Star
 
 <a name="indexing-actions"></a>
 
-### <a name="indexing-actions-upload-merge-uploadormerge-delete"></a>Operacje indeksowania: przekazanie, scalenie, uploadOrMerge, Usuń
+### <a name="indexing-actions-upload-merge-mergeorupload-delete"></a>Operacje indeksowania: przekazanie, scalenie, mergeOrUpload, Usuń
 
-Korzystanie z interfejsu API REST wymaga wysyłania żądań HTTP POST zawierających treść żądań JSON do adresu URL punktu końcowego indeksu usługi Azure Search. Obiekt JSON w treści żądania HTTP będzie zawierał pojedynczą tablicę danych JSON o nazwie „wartość” z obiektami JSON reprezentującymi dokumenty, które mają zostać dodane do indeksu, zaktualizowane lub usunięte.
+Typ akcji indeksowania na podstawie poszczególnych dokumentów, można kontrolować określenie, czy dokument powinny zostać przekazane w pełni, scalone z istniejącą zawartością dokumentu lub usunięte.
 
-Poszczególne obiekty JSON w tablicy „wartość” reprezentują dokumenty, które mają zostać umieszczone w indeksie. Każdy z tych obiektów zawiera klucz dokumentu i określa wymaganą akcję indeksowania (przekazać, scalić, usunąć). W zależności od tego, którą z poniższych akcji wybierzesz, tylko określone pola muszą być uwzględnione w danym dokumencie:
+W interfejsie API REST wysyłania żądań HTTP POST zawierających treść żądań JSON do adresu URL punktu końcowego indeksu usługi Azure Search. Poszczególne obiekty JSON w tablicy "wartość" zawiera klucz dokumentu i określa akcję indeksowania Dodawanie, aktualizowanie i lub usuwa zawartość dokumentu. Dla przykładu kodu zobacz [ładowanie dokumentów](search-create-index-rest-api.md#load-documents).
+
+Zestaw .NET SDK spakować dane do `IndexBatch` obiektu. `IndexBatch` Hermetyzuje kolekcję `IndexAction` obiektów, z których każdy zawiera dokument i właściwości, które informują usługę Azure Search, jaką akcję wykonać na tym dokumencie. Dla przykładu kodu zobacz [konstruowania IndexBatch](search-import-data-dotnet.md#construct-indexbatch).
+
 
 | @search.action | Opis | Wymagane pola dla każdego dokumentu | Uwagi |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Akcja `upload` jest podobna do akcji „upsert”, co oznacza, że dokument zostanie wstawiony, jeśli jest nowy, albo zaktualizowany/zastąpiony, jeśli już istnieje. |pole klucza oraz inne pola, które chcesz zdefiniować |Podczas aktualizowania/zastępowania istniejącego dokumentu każde pole, które nie jest określone w żądaniu, zostanie ustawione na wartość `null`. Dzieje się tak nawet wtedy, gdy pole było wcześniej ustawione na wartość inną niż null. |
-| `merge` |Aktualizuje istniejący dokument o określone pola. Jeśli dokument nie istnieje w indeksie, scalanie zakończy się niepowodzeniem. |pole klucza oraz inne pola, które chcesz zdefiniować |Wszystkie pola, które określisz w żądaniu scalania, zastąpią istniejące pola w dokumencie. Obejmuje to również pola typu `Collection(Edm.String)`. Jeśli na przykład dokument zawiera pole `tags` o wartości `["budget"]` i wykonywane jest scalanie z wartością `["economy", "pool"]` dla pola `tags`, końcowa wartość pola `tags` będzie równa `["economy", "pool"]`. Nie będzie to `["budget", "economy", "pool"]`. |
+| `merge` |Aktualizuje istniejący dokument o określone pola. Jeśli dokument nie istnieje w indeksie, scalanie zakończy się niepowodzeniem. |pole klucza oraz inne pola, które chcesz zdefiniować |Wszystkie pola, które określisz w żądaniu scalania, zastąpią istniejące pola w dokumencie. W zestawie SDK platformy .NET, w tym pól typu `DataType.Collection(DataType.String)`. W interfejsie API REST, w tym pól typu `Collection(Edm.String)`. Jeśli na przykład dokument zawiera pole `tags` o wartości `["budget"]` i wykonywane jest scalanie z wartością `["economy", "pool"]` dla pola `tags`, końcowa wartość pola `tags` będzie równa `["economy", "pool"]`. Nie będzie to `["budget", "economy", "pool"]`. |
 | `mergeOrUpload` |Ta akcja działa jak akcja `merge`, jeśli dokument o danym kluczu już istnieje w indeksie. Jeśli dokument nie istnieje, działa jak akcja `upload` dla nowego dokumentu. |pole klucza oraz inne pola, które chcesz zdefiniować |- |
 | `delete` |Usuwa określony dokument z indeksu. |tylko pole klucza |Wszystkie pola, które określisz oprócz pola klucza, zostaną zignorowane. Jeśli chcesz usunąć pojedyncze pole z dokumentu, zamiast tej akcji użyj akcji `merge` i po prostu jawnie ustaw dla pola wartość null. |
+
+## <a name="decide-which-indexing-action-to-use"></a>Wybieranie akcji indeksowania do użycia
+Aby zaimportować dane przy użyciu zestawu .NET SDK, (przekazywania, scalanie, usuwania i mergeOrUpload). W zależności od tego, którą z poniższych akcji wybierzesz, tylko określone pola muszą być uwzględnione w danym dokumencie:
+
 
 ### <a name="formulate-your-query"></a>Formułowanie zapytania
 Istnieją dwie metody [przeszukiwania indeksu przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Pierwsza z nich polega na wysłaniu żądania HTTP POST, w ramach którego parametry zapytania są definiowane w obiekcie JSON w treści żądania. Druga metoda obejmuje wysłanie żądania HTTP GET, w ramach którego parametry zapytania są definiowane w adresie URL żądania. W przypadku żądania POST limity dotyczące rozmiaru parametrów zapytania są [luźniejsze](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) niż dla żądania GET. Z tego powodu zaleca się używanie żądania POST, o ile nie występują specjalne okoliczności, w których korzystanie z żądania GET jest wygodniejsze.

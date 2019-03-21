@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 01d34ef722034ef5b56c842bab97a3415a02b0bb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341871"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890937"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Pobierz rozliczeń własności subskrypcji platformy Azure od innych użytkowników
 
@@ -96,7 +96,8 @@ Ten artykuł dotyczy konta rozliczeniowego dla umowy klienta firmy Microsoft. [S
    |Anulowane|Dostęp do żądanie przeniesienia zostało anulowane żądania|
    |Odrzucono|Użytkownik odrzucił żądanie przeniesienia|
 
-6. Wybierz żądanie przeniesienia, aby wyświetlić szczegóły. Na stronie szczegółów transferu zawiera następujące informacje: <!-- Todo - Add a screenshot -->
+6. Wybierz żądanie przeniesienia, aby wyświetlić szczegóły. Na stronie szczegółów transferu zawiera następujące informacje:
+   <!-- Todo - Add a screenshot -->
 
    |Kolumna  |Definicja|
    |---------|---------|
@@ -149,7 +150,7 @@ Można dokonać transferu subskrypcji ani typy ofert, z wyjątkiem oferuje dosta
 
 ### <a name="cancel-a-transfer-request"></a>Anuluj żądanie transferu
 
-Możesz anulować żądanie transferu do czasu zatwierdzenia lub odrzucenia żądania. Aby anulować żądanie transferu [przejdź do strony szczegółów transferu](#check-status-of-your-transfer-request-in-the-Azure-portal) i wybierz pozycję Anuluj w dolnej części strony.
+Możesz anulować żądanie transferu do czasu zatwierdzenia lub odrzucenia żądania. Aby anulować żądanie transferu, przejdź do strony szczegółów transferu, i wybierz pozycję Anuluj w dolnej części strony.
 
 ### <a name="software-as-a-service-saas-transfer"></a>Oprogramowanie jako usługa (SaaS) przeniesienia
 

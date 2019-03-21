@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 512956d2de0f9a838cc6378345a334e489d1d120
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c80b007c3c9c1a35540e690554603a5ae8f16d62
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306871"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284633"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Wyzwalanie usługi Azure Functions przy użyciu elementów webhook w usłudze Azure IoT Central
 
 *Ten temat dotyczy konstruktorów i administratorów.*
 
-Uruchamianie kodu bez serwera na dane wyjściowe elementu webhook z IoT Central reguły za pomocą usługi Azure Functions. Nie trzeba aprowizować maszynę Wirtualną lub publikowania aplikacji sieci web za pomocą usługi Azure Functions, ale zamiast tego można uruchomić ten kod serverlessly. Przekształcanie ładunek elementu webhook przed wysłaniem ich do miejsca docelowego, takich jak bazy danych SQL lub usługi Event Grid przy użyciu usługi Azure Functions.
+Uruchamianie kodu bez serwera na dane wyjściowe elementu webhook z IoT Central reguły za pomocą usługi Azure Functions. Nie trzeba aprowizować maszynę Wirtualną lub publikowania aplikacji sieci web za pomocą usługi Azure Functions, ale zamiast tego możesz uruchomić ten kod bez użycia serwera. Przekształcanie ładunek elementu webhook przed wysłaniem ich do miejsca docelowego, takich jak bazy danych SQL lub usługi Event Grid przy użyciu usługi Azure Functions.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -27,15 +27,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="how-to-connect-azure-functions"></a>Sposób połączenia usługi Azure Functions
 
-1. [Utwórz nową aplikację funkcji w witrynie Azure Portal](https://ms.portal.azure.com/#create/Microsoft.FunctionApp).
+1. [Utwórz nową aplikację funkcji w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.FunctionApp).
 
-    ![Utwórz nową aplikację funkcji w witrynie Azure Portal](media/howto-trigger-azure-functions/createfunction.png)
+    ![Utwórz nową aplikację funkcji w witrynie Azure portal](media/howto-trigger-azure-functions/createfunction.png)
 
-2. Rozwiń swoją aplikację funkcji, a następnie wybierz pozycję **przycisk +** obok funkcji. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **Funkcja niestandardowa**. Spowoduje to wyświetlenie pełnego zestawu szablonów funkcji.
+2. Rozwiń swoją aplikację funkcji, a następnie wybierz pozycję **przycisk +** obok funkcji. Jeśli ta funkcja jest pierwszy z nich w aplikacji funkcji, wybierz **w portalu** jako środowiska deweloperskiego i wybierz pozycję **Kontynuuj**.
 
     ![Wybierz funkcję niestandardowego w aplikacji funkcji](media/howto-trigger-azure-functions/customfunction.png)
 
-3. W polu wyszukiwania wpisz **"generic"** , a następnie wybierz żądany język dla szablonu wyzwalacza ogólnego elementu webhook. W tym temacie użyto funkcji języka C#. 
+3. Wybierz **element Webhook i interfejs API** szablonu, a następnie wybierz **Utwórz**. W tym temacie użyto funkcji platformy Azure na podstawie .NET.
 
     ![Wybieranie wyzwalacza ogólnego elementu webhook](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 

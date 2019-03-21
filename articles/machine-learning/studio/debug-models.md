@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 5730a85a640759e61ad0e4aa2ae112a022900b27
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9c505262030e5b5aa13b8d221cf1e39c4a9c7833
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822108"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090767"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Debugowanie modelu w usłudze Azure Machine Learning Studio
 

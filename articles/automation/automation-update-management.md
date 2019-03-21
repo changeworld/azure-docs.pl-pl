@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 77f18a80c094fbaf58cfb09df38e5fa1c924329a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 85b920767cbdc5ba60c2046563c32e87f6ad7ef8
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856196"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259401"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -567,7 +567,7 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Za pomocą grup dynamicznych (wersja zapoznawcza)
 
-Rozwiązanie Update Management umożliwia dynamiczne grupy maszyn wirtualnych platformy Azure w celu wdrażania aktualizacji. Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktualizacji, Członkowie tej grupy są oceniane. Podczas definiowania kwerendy, następujące elementy można ze sobą do wypełniania grupy dynamicznej
+Rozwiązanie Update Management umożliwia dynamiczne grupy maszyn wirtualnych platformy Azure w celu wdrażania aktualizacji. Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktualizacji, Członkowie tej grupy są oceniane. Grupy dynamiczne nie działają z klasycznych maszyn wirtualnych. Podczas definiowania kwerendy, następujące elementy można ze sobą do wypełniania grupy dynamicznej
 
 * Subskrypcja
 * Grupy zasobów

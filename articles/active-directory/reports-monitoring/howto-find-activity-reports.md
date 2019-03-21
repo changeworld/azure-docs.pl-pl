@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46fc0a49ebae86a715685e1073b4eb7cc10e6032
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 65e803ca373fb9853fc23d17f1a27ecadc6a209c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533412"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295219"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Znajdowanie raportów aktywności w witrynie Azure portal
 
@@ -81,12 +81,12 @@ Usługi to:
 - B2C
 - Dostęp warunkowy
 - Katalog podstawowy
-- Zarządzanie uprawnieniami
+- Zarządzanie upoważnieniami
 - Identity Protection
 - Zaproszeni użytkownicy
 - PIM
 - Samoobsługowe zarządzanie grupami
-- Passord samoobsługowego zarządzania
+- Samoobsługowe zarządzanie hasłami
 - Warunki użytkowania
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań 
@@ -153,11 +153,11 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
  
 #### <a name="cause"></a>Przyczyna
 
-Podczas pobierania dzienników aktywności w witrynie Azure portal ograniczamy skalowanie do 5000 rekordów posortowanych według najnowsze na początku. 
+Podczas pobierania dzienników aktywności w witrynie Azure portal jest ograniczona na skalę, która rozmiar 250 000 rekordów posortowanych według najnowsze na początku. 
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu. Naszym Zalecanym podejściem jest [za pomocą skryptu zgodnie z harmonogramem](tutorial-signin-logs-download-script.md) , wywołuje interfejsy API raportowania w celu pobrania rekordów w sposób przyrostowy okresie (na przykład codziennie lub co tydzień). 
+Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu.
 
 ### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Brak danych inspekcji dla ostatnich działań w witrynie Azure portal
 

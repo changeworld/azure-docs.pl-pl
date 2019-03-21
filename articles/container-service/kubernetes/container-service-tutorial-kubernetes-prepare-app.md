@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a003248104c45fa2bcc1020e0ad8ea895d759457
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 961f09d7581a26596b03e7a2f8e97d98fe83e6aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992379"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995388"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(PRZESTARZAŁE) Tworzenie obrazów kontenera do użycia z usługą Azure Container Service
 
@@ -103,7 +103,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>Testowanie aplikacji w środowisku lokalnym
 
-Przejdź na adres http://localhost:8080, aby zobaczyć działającą aplikację.
+Przejdź na adres `http://localhost:8080`, aby zobaczyć działającą aplikację.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
@@ -125,7 +125,7 @@ docker-compose down
 
 Po zakończeniu będzie dostępny obraz kontenera zawierający aplikację Azure Vote.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przetestowano aplikację i obrazy kontenera utworzone dla aplikacji. Wykonano następujące czynności:
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b82f32477efb2e45eb95651dd21ccd2ae3095e7c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431313"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286588"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Ograniczone delegowanie protokołu Kerberos do logowania jednokrotnego do aplikacji przy użyciu serwera Proxy aplikacji
 
@@ -37,7 +37,7 @@ Ten diagram opisano przepływ, gdy użytkownik próbuje uzyskać dostęp w aplik
 1. Użytkownik musi wprowadzić adres URL, aby uzyskać dostęp w aplikacji lokalnej za pośrednictwem serwera Proxy aplikacji.
 2. Serwer Proxy aplikacji przekierowuje żądanie do usług uwierzytelniania usługi Azure AD, aby preauthenticate. W tym momencie usługa Azure AD ma zastosowanie wszelkich mających zastosowanie uwierzytelniania i zasady autoryzacji, takie jak uwierzytelnianie wieloskładnikowe. Jeśli użytkownik zostanie zweryfikowana, usługi Azure AD tworzy token i wysyła go do użytkownika.
 3. Użytkownik przekazuje token do serwera Proxy aplikacji.
-4. Serwer Proxy aplikacji weryfikuje token pobiera główną nazwę użytkownika (UPN) z niego i wysyła następnie żądanie, nazwy UPN i głównej nazwy usługi (SPN) do łącznika usługi za pośrednictwem uwierzytelnionych dually bezpiecznego kanału.
+4. Serwer Proxy aplikacji weryfikuje token i pobiera główną nazwę użytkownika (UPN) z niego, a następnie Connector pobiera nazwy UPN i głównej nazwy usługi (SPN) za pośrednictwem uwierzytelnionych dually bezpiecznego kanału.
 5. Łącznik negocjowanie delegowanie ograniczone protokołu Kerberos (KCD) przy użyciu usługi AD, personifikacji użytkownika w celu pobrania tokenu protokołu Kerberos do aplikacji lokalnych.
 6. Usługi Active Directory wysyła ten token protokołu Kerberos, do łącznika aplikacji.
 7. Łącznik wysyła oryginalne żądanie do serwera aplikacji przy użyciu tokenu protokołu Kerberos, otrzymanego z usługi AD.

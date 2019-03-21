@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/12/2019
+ms.date: 03/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: a7dd061d84167b172aff52e8a62ed6d43fddc108
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 66d788aec83e3e57a49b063f2ca80484360f639d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862016"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295287"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS
 
@@ -81,6 +81,7 @@ Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii:
 * Warstwa podstawowa maszyn wirtualnych IaaS.
 * Wyłącz szyfrowanie dla dysku systemu operacyjnego dla maszyn wirtualnych IaaS z systemem Linux.
 * Wyłącz szyfrowanie dla dysku danych, gdy dysk systemu operacyjnego jest zaszyfrowany dla maszyn wirtualnych IaaS z systemem Linux.
+* Ustawia szyfrowania dysku systemu operacyjnego dla skalowania maszyn wirtualnych z systemem Linux.
 * Maszyny wirtualne IaaS, które są tworzone za pomocą klasycznego metodę tworzenia maszyny Wirtualnej.
 * Włącz szyfrowanie klientów niestandardowych obrazów na maszynach wirtualnych IaaS z systemem Linux.
 * Integracja z systemem zarządzania kluczami w środowisku lokalnym.

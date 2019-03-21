@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 669da18c889d906c629a7656eaa766993bf67373
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 7b932cf8a1623dfcff02baff409db26135e5aa20
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238355"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837562"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu Visual Studio Code do nawiązywania połączenia i wysyłania zapytań dotyczących danych w bazie danych Azure SQL Database
 
@@ -50,7 +50,7 @@ Upewnij się, że masz zainstalowaną najnowszą wersję programu [Visual Studio
 
 ### <a name="mac-os"></a>**Mac OS**
 
-W systemie macOS należy zainstalować protokół OpenSSL, który jest wymaganiem wstępnym dla narzędzi .Net Core używanych przez rozszerzenie mssql. Otwórz terminal i wprowadź następujące polecenia, aby zainstalować rozwiązania **brew** i **OpenSSL**. 
+W systemie MacOS należy zainstalować protokół OpenSSL, który jest wymaganiem wstępnym dla platformy .NET Core, która używa rozszerzenie mssql. Otwórz terminal i wprowadź następujące polecenia, aby zainstalować rozwiązania **brew** i **OpenSSL**. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -191,7 +191,7 @@ Uruchom następującą instrukcję [DELETE](https://docs.microsoft.com/sql/t-sql
 
 2. Naciśnij klawisze **Ctrl**+**Shift**+**E**, aby usunąć określony wiersz w tabeli `Product`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby nawiązywać połączenia i wykonywać zapytania przy użyciu programu SQL Server Management Studio, zobacz [Szybki start: Azure SQL Database: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych](sql-database-connect-query-ssms.md).
 - Aby nawiązywać połączenia i wykonywać zapytania przy użyciu witryny Azure Portal, zobacz [Szybki start: witryna Azure Portal: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane](sql-database-connect-query-portal.md).

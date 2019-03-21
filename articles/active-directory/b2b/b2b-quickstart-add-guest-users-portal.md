@@ -9,14 +9,15 @@ ms.date: 07/02/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb01ae6514dfb97cc8a923619513383ace0b09a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: f4935cc15bf3edeccd6b6ce9da701904a32606db
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669979"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295032"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Szybki start: dodawanie użytkowników-gości do katalogu w witrynie Azure Portal
 
@@ -39,15 +40,15 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 2. W lewym okienku wybierz pozycję **Azure Active Directory**.
 3.  W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 
-    ![Wybierz pozycję Azure Active Directory](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![Zrzut ekranu przedstawiający miejsce wybrać opcję użytkowników](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  Wybierz pozycję **Nowy użytkownik-gość**.
 
-    ![Wybierz pozycję Azure Active Directory](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![Zrzut ekranu przedstawiający miejsce wybrać opcję użytkownika gościa](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
 5.  W obszarze **Nazwa użytkownika** wprowadź adres e-mail użytkownika zewnętrznego. W obszarze **Dołącz osobistą wiadomość do zaproszenia** wpisz wiadomość powitalną. 
 
-    ![Wybierz pozycję Azure Active Directory](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+    ![Zrzut ekranu przedstawiający miejsce wprowadzania wiadomości z zaproszeniem użytkownika gościa](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
 
 6. Wybierz pozycję **Zaproś**, aby automatycznie wysłać zaproszenie do użytkownika-gościa. W prawym górnym rogu zostanie wyświetlone powiadomienie z komunikatem **Pomyślnie zaproszono użytkownika**. 
 7.  Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do katalogu jako gość.
@@ -59,7 +60,7 @@ Dodaj aplikację Salesforce do swojej dzierżawy testowej i przypisz testowego u
 3.  Wybierz pozycję **Nowa aplikacja**.
 4. W obszarze **Dodaj z galerii** wyszukaj pozycję **Salesforce**, a następnie wybierz ją.
 
-    ![Wybierz pozycję Azure Active Directory](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+    ![Zrzut ekranu przedstawiający dodawanie z pola wyszukiwania w galerii](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. Wybierz pozycję **Dodaj**.
 6. W obszarze **Zarządzaj** wybierz pozycję **Logowanie jednokrotne**, a w obszarze **Tryb logowania jednokrotnego** wybierz pozycję **Logowanie oparte na haśle** i kliknij przycisk  **Zapisz**.
 7. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy i grupy** > **Dodaj użytkownika** > **Użytkownicy i grupy**.
@@ -71,11 +72,11 @@ Teraz zaloguj się jako użytkownik-gość, aby zobaczyć zaproszenie.
 1.  Zaloguj się do konta e-mail testowego użytkownika-gościa.
 2.  W skrzynce odbiorczej znajdź wiadomość e-mail „Zaproszenie”.
 
-    ![Wiadomość e-mail z zaproszeniem B2B](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
+    ![Zrzut ekranu przedstawiający wiadomość e-mail z zaproszeniem dla B2B](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
 3.  W treści wiadomości e-mail wybierz pozycję **Rozpocznij**. W przeglądarce zostanie otwarta strona **Przejrzyj uprawnienia**. 
 
-    ![Strona akceptowania zaproszenia B2B](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![Zrzut ekranu przedstawiający stronę przeglądu uprawnienia](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. Wybierz pozycję **Zaakceptuj**. Zostanie otwarty Panel dostępu zawierający listę aplikacji, do których może uzyskać dostęp użytkownik-gość.
 
@@ -89,5 +90,5 @@ Usuń testowego użytkownika-gościa i aplikację testową, gdy przestaną być 
 6.  W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 7.  Wybierz użytkownika testowego, a następnie wybierz pozycję **Usuń użytkownika**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku utworzyliśmy użytkownika-gościa w witrynie Azure Portal i wysłaliśmy zaproszenie do udostępnienia aplikacji. Następnie zobaczyliśmy proces realizacji z punktu widzenia użytkownika-gościa i sprawdziliśmy, czy aplikacja pojawiła się na jego Panelu dostępu. Aby dowiedzieć się więcej na temat dodawania użytkowników-gości do współpracy, zobacz [Dodawanie użytkowników współpracy usługi Azure Active Directory B2B w witrynie Azure Portal](add-users-administrator.md).

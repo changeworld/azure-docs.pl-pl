@@ -1,6 +1,6 @@
 ---
-title: Ochrona zawartości przy użyciu usługi Media Services — Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie ochrony zawartości przy użyciu usługi Media Services.
+title: Chronić zawartość przy użyciu szyfrowania dynamicznego usługi Media Services — Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie ochrony zawartości w przypadku szyfrowania dynamicznego. Również opowiada o protokoły i typy szyfrowania przesyłania strumieniowego.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,17 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: cc32338a69953c49efad4a206a974ac4523923e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 4d1a9ae622de103b459d256cb48c5823f5866a3b
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894142"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294080"
 ---
-# <a name="content-protection-overview"></a>Omówienie ochrony zawartości
+# <a name="content-protection-with-dynamic-encryption"></a>Ochrona zawartości dzięki dynamicznemu szyfrowaniu
 
 Usługa Azure Media Services umożliwia zabezpieczenie multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services można dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128), lub z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów. 
 
@@ -96,17 +96,54 @@ Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", nale
 
 Usługa Media Services umożliwia dostarczanie zawartości szyfrowane dynamicznie przy użyciu szyfrowania otwartym kluczem AES i technologii DRM szyfrowania za pomocą usług PlayReady, Widevine i FairPlay. Obecnie można zaszyfrować formatu HTTP Live Streaming (HLS), MPEG DASH i Smooth Streaming. Dla każdego protokołu obsługuje następujące metody szyfrowania:
 
+### <a name="hls"></a>HLS
+
+Protokół HLS obsługuje następujące formaty kontenera i schematy szyfrowania.
+
+|Format kontenera|Schemat szyfrowania|Przykład adresu URL|
+|---|---|---|
+|Wszyscy|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|MPG2-TS |CBCS (FairPlay) ||
+|CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
+|MPG2-TS |CENC (PlayReady) ||
+|CMAF(fmp4) |CENC (PlayReady) ||
+
+HLS/CMAF oraz technologia FairPlay (w tym — HEVC / H.265) jest obsługiwane na następujących urządzeniach:
+
+* v11 z systemem iOS lub nowszej 
+* iPhone 8 lub nowszy
+* System MacOS high Sierra oraz Intel 7 ogólnego użycia Procesora
+
+### <a name="mpeg-dash"></a>MPEG-DASH
+
+Protokołu MPEG-DASH obsługuje następujące formaty kontenera i schematy szyfrowania.
+
+|Format kontenera|Schemat szyfrowania|Przykłady adresu URL
+|---|---|---|
+|Wszyscy|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
+|CMAF(fmp4)|CENC (Widevine + PlayReady)||
+
+### <a name="smooth-streaming"></a>Smooth Streaming
+
+Protokołu Smooth Streaming obsługuje następujące formaty kontenera i schematy szyfrowania.
+
 |Protokół|Format kontenera|Schemat szyfrowania|
 |---|---|---|
-|MPEG-DASH|Wszyscy|AES|
-||CSF(fmp4) |CENC (Widevine + PlayReady) |
-||CMAF(fmp4)|CENC (Widevine + PlayReady)|
-|HLS|Wszyscy|AES|
-||MPG2-TS |CBCS (Fairplay) |
-||MPG2-TS |CENC (PlayReady) |
-||CMAF(fmp4) |CENC (PlayReady) |
-|Smooth Streaming|fMP4|AES|
-||fMP4 | CENC (PlayReady) |
+|fMP4|AES||
+|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|
+
+### <a name="browsers"></a>Przeglądarki
+
+Popularne przeglądarki obsługują następujących klientów DRM:
+
+|Przeglądarka|Szyfrowanie|
+|---|---|
+|Chrome|Widevine|
+|Edge, IE 11|PlayReady|
+|Firefox|Widevine|
+|Opera|Widevine|
+|Safari|FairPlay|
 
 ## <a name="aes-128-clear-key-vs-drm"></a>Vs otwartym kluczem AES-128. DRM
 
@@ -163,10 +200,17 @@ Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomo
 
 <sup>1</sup> Media Services v3, szyfrowanie magazynu (szyfrowanie AES-256) jest tylko obsługiwane dla zapewnienia zgodności gdy Twoje zasoby zostały utworzone za pomocą usługi Media Services v2. Co oznacza v3 współpracuje z istniejącym magazynie zaszyfrowane zasoby, ale nie pozwoli na tworzenie nowych.
 
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
+
+Jeśli otrzymasz `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` błąd, upewnij się, określ odpowiednie zasady przesyłania strumieniowego.
+
+Jeśli występują błędy, które kończą się `_NOT_SPECIFIED_IN_URL`, upewnij się, że format szyfrowania w adresie URL. Na przykład .../manifest (format = m3u8-cmaf szyfrowania = cbcs-aapl). Zobacz [protokoły i typy szyfrowania przesyłania strumieniowego](#streaming-protocols-and-encryption types).
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Ochrona przy użyciu szyfrowania AES](protect-with-aes128.md)
 * [Ochrona za pomocą technologii DRM](protect-with-drm.md)
-* [Projektowanie technologii multi-drm systemu ochrony zawartości przy użyciu kontroli dostępu](design-multi-drm-system-with-access-control.md)
+* [Projektowanie multi-DRM systemu ochrony zawartości przy użyciu kontroli dostępu](design-multi-drm-system-with-access-control.md)
 * [Często zadawane pytania](frequently-asked-questions.md)
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 884f9025f4152c391b4b59384bc94b2136daa916
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240749"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257973"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Publikowanie zawartości w witrynie Azure portal  
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Wybierz wideo, a następnie wybierz przycisk **Odtwórz**.
 Zagadnienia do rozważenia:
 
 * Upewnij się, że wideo zostało już opublikowane.
-* Odtwarzacz multimedialny w witrynie Azure Portal odtwarza zawartość z domyślnego punktu końcowego przesyłania strumieniowego. Aby odtworzyć zawartość z punktu końcowego przesyłania strumieniowego innego niż domyślny, zaznacz i skopiuj adres URL, a następnie wklej go do innego odtwarzacza. Na przykład swoje wideo możesz przetestować w usłudze [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* Odtwarzacz multimedialny w witrynie Azure Portal odtwarza zawartość z domyślnego punktu końcowego przesyłania strumieniowego. Aby odtworzyć zawartość z punktu końcowego przesyłania strumieniowego innego niż domyślny, zaznacz i skopiuj adres URL, a następnie wklej go do innego odtwarzacza. Na przykład swoje wideo możesz przetestować w usłudze [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 * Punkt końcowy przesyłania strumieniowego, z którego są przesyłania strumieniowego musi być uruchomiona.  
 
 ## <a name="provide-feedback"></a>Przekazywanie opinii

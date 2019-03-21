@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 1e8d21c39a428049594237900aa76f783a3ed0ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860360"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293621"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Omówienie interfejsu API REST usługi Media Services operacji 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -101,7 +101,7 @@ Poniżej przedstawiono pełną listę zleceń HTTP, które mogą być używane p
 | PUT |Zastępuje obiekt lub tworzy nazwany obiekt (jeśli ma zastosowanie). |
 | DELETE |Usuwa obiekt. |
 | SCALANIE |Aktualizuje istniejący obiekt ze zmianami właściwości o nazwie. |
-| GŁÓWNY |Zwraca metadane obiektu dla odpowiedzi GET. |
+| HEAD |Zwraca metadane obiektu dla odpowiedzi GET. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Odnajdywanie i Przeglądaj modelu jednostki usługi Media Services
 Aby jednostek usługi Media Services mogą szybciej odnajdywać, służy operacja $metadata. Umożliwia pobranie wszystkich typów jednostek prawidłowe, właściwości jednostki, skojarzeń, funkcji, działania i tak dalej. Dodanie operacji $metadata-to-end punktu końcowego interfejsu API REST usługi Media Services, dostęp do tej usługi odnajdywania.

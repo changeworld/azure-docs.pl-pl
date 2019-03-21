@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e29d4c0a4279ae44a45b082c5a36b471af3cb12a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110192"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259945"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Szybki start: Używanie rozpoznawania mowy Bing interfejsu API REST
 
@@ -66,9 +66,9 @@ Przykłady usługi identyfikatory URI są wymienione w poniższej tabeli.
 
 | Tryb rozpoznawania  | Język | Format wyjściowy | Identyfikator URI usługi |
 |---|---|---|---|
-| `interactive` | pt-BR | Domyślne | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | en-US | Szczegółowy | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
-| `dictation` | fr-FR | Proste | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
+| `interactive` | pt-BR | Domyślne | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| `conversation` | en-US | Szczegółowy | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `dictation` | fr-FR | Proste | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
 > Identyfikator URI usługi jest wymagane tylko wtedy, gdy aplikacja używa interfejsów API REST, aby wywołać usługę rozpoznawania mowy. Jeśli używasz jednego z [biblioteki klienckie](GetStartedClientLibraries.md), zwykle nie trzeba wiedzieć, których identyfikator URI jest używany. Biblioteki klienckie może używać innej usługi identyfikatory URI, które mają zastosowanie tylko w przypadku biblioteki klienta właściwy. Aby uzyskać więcej informacji zobacz Biblioteka klienta wybranych przez użytkownika.

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7097c3852ad903e9d8f7c8786ea7fd616706f108
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4db013b51657bb327c36d616a3743c46731cd19a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903797"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Warstwy usług na dużą skalę (wersja zapoznawcza) do 100 TB
 
@@ -112,7 +112,7 @@ Dzięki możliwości szybkiego uruchomienia dodatkowych tylko do odczytu węzł�
 
 ## <a name="create-a-hyperscale-database"></a>Tworzenie bazy danych na dużą skalę
 
-Można utworzyć bazę danych na dużą skalę za pomocą [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Bazy danych w Hiperskali są dostępne, tylko przy użyciu [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
+Można utworzyć bazę danych na dużą skalę za pomocą [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Bazy danych w Hiperskali są dostępne, tylko przy użyciu [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
 Następujące polecenie języka T-SQL tworzy bazę danych na dużą skalę. Należy określić zarówno wersji, jak i usługa cel w `CREATE DATABASE` instrukcji.
 
@@ -124,7 +124,7 @@ GO
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrowanie istniejącej bazy danych SQL Azure do warstwy usług na dużą skalę
 
-Można przenieść istniejące bazy danych Azure SQL na dużą skalę za pomocą [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). W publicznej wersji zapoznawczej jest to jednokierunkowe migracji. Nie można przenieść bazy danych w Hiperskali, do innej warstwy usług. Firma Microsoft zaleca, Utwórz kopię produkcyjnych bazach danych i migrację do w Hiperskali dla weryfikacji koncepcji (weryfikacji koncepcji).
+Można przenieść istniejące bazy danych Azure SQL na dużą skalę za pomocą [witryny Azure portal](https://portal.azure.com), [języka T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). W publicznej wersji zapoznawczej jest to jednokierunkowe migracji. Nie można przenieść bazy danych w Hiperskali, do innej warstwy usług. Firma Microsoft zaleca, Utwórz kopię produkcyjnych bazach danych i migrację do w Hiperskali dla weryfikacji koncepcji (weryfikacji koncepcji).
 
 Następujące polecenie języka T-SQL przenosi bazę danych do warstwy usług na dużą skalę. Należy określić zarówno wersji, jak i usługa cel w `ALTER DATABASE` instrukcji.
 

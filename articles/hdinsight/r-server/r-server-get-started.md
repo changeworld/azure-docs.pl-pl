@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: dce345c39918e7471531710051797c848a3c7cde
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444076"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087588"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Wprowadzenie do usług ML w usłudze Azure HDInsight
 
@@ -79,16 +79,16 @@ Jeśli wybierzesz opcję instalacji programu RStudio Server Community Edition w 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 * **Opcja 2** — witryna Azure Portal.
-Z poziomu portalu:
+  Z poziomu portalu:
   1. Wybierz **wszystkich usług** menu po lewej stronie.
   2. W obszarze **ANALYTICS**, wybierz opcję **klastry HDInsight**.
   3. Wybierz nazwę klastra z **klastry HDInsight** strony.
   4. Z **pulpity nawigacyjne usługi ML**, wybierz opcję **programu R Studio server**. 
 
-    ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
+     ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]  
-   > Niezależnie od wybranej metody, pierwsze logowanie wymaga dwukrotnego uwierzytelnienia.  Po wyświetleniu pierwszego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika administratora klastra* i *hasło*. Po wyświetleniu drugiego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika protokołu SSH* i *hasło*. Kolejne dodatki dziennika wymagane tylko poświadczenia protokołu SSH.
+     > [!IMPORTANT]  
+     > Niezależnie od wybranej metody, pierwsze logowanie wymaga dwukrotnego uwierzytelnienia.  Po wyświetleniu pierwszego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika administratora klastra* i *hasło*. Po wyświetleniu drugiego monitu dotyczącego uwierzytelniania podaj *identyfikator użytkownika protokołu SSH* i *hasło*. Kolejne dodatki dziennika wymagane tylko poświadczenia protokołu SSH.
 
 Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekranu:
 

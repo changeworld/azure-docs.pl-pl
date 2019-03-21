@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 1e952e32142672946fa987b763032dad66f564a9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d5603bb6bbb56d1aebb719902c60de631a4f14f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537885"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108192"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]
@@ -45,38 +45,36 @@ Wynik o logowaniu użytkownika jest, że aplikacja otrzymuje token dostępu i to
 W tym scenariuszu aplikacja wyświetla monit o zalogowanie się i wówczas wszystkie operacje są wykonywane w kontekście zalogowanego użytkownika. Wykonaj poniższe czynności:
 
 1. Za pomocą aplikacji przekieruj użytkownika pod następujący adres URL:
-   
+
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
-   
+
    > [!NOTE]
    > Identyfikator \<REDIRECT-URI> musi być zakodowany na potrzeby adresu URL. Tak, aby uzyskać https://localhost, użyj `https%3A%2F%2Flocalhost`)
-   > 
-   > 
-   
+
     Na potrzeby tego samouczka możesz zastąpić symbole zastępcze w powyższym adresie URL i wkleić go w pasku adresu przeglądarki sieci web. Nastąpi przekierowanie w celu uwierzytelniania przy użyciu identyfikatora logowania do platformy Azure. Gdy pomyślnie się zalogujesz, odpowiedź zostanie wyświetlona na pasku adresu przeglądarki. Odpowiedź będzie miała następujący format:
-   
+
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
 
 2. Przechwyć kod autoryzacji z odpowiedzi. W tym samouczku można skopiować kod autoryzacji z paska adresu przeglądarki sieci web i przekazać go we WPISIE żądania do punktu końcowego tokenu, jak pokazano w poniższym fragmencie kodu:
-   
+
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
         -F grant_type=authorization_code \
         -F resource=https://management.core.windows.net/ \
         -F client_id=<APPLICATION-ID> \
         -F code=<AUTHORIZATION-CODE>
-   
+
    > [!NOTE]
    > W takim przypadku identyfikatora \<REDIRECT-URI> nie trzeba kodować.
    > 
    > 
 
 3. Odpowiedzią jest obiekt JSON, który zawiera token dostępu (na przykład `"access_token": "<ACCESS_TOKEN>"`) i tokenu odświeżania (na przykład `"refresh_token": "<REFRESH_TOKEN>"`). Aplikacja używa tokenu dostępu podczas uzyskiwania dostępu do usługi Azure Data Lake Storage Gen1 i token odświeżania, aby uzyskać inny token dostępu po wygaśnięciu token dostępu.
-   
+
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
 4. Po wygaśnięciu tokenu dostępu możesz zażądać nowego tokenu dostępu przy użyciu tokenu odświeżania, jak pokazano w poniższym fragmencie kodu:
-   
+
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
              -F resource=https://management.core.windows.net/ \
@@ -84,7 +82,7 @@ W tym scenariuszu aplikacja wyświetla monit o zalogowanie się i wówczas wszys
              -F refresh_token=<REFRESH-TOKEN>
 
 Więcej informacji na temat interakcyjnego uwierzytelniania użytkownika zawiera temat [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Przepływ udzielania kodu autoryzacji).
-   
+
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 za pomocą uwierzytelniania service to service przy użyciu interfejsu API REST. Możesz teraz przejrzeć następujące artykuły, które omówiono sposób użycia interfejsu API REST do pracy z usługi Azure Data Lake Storage Gen1.
 

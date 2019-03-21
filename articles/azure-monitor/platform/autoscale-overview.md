@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: ae1828210345eb35f9d22664285a0d348ea50d48
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478335"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085647"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w Microsoft Azure Virtual Machines, Cloud Services i Web Apps
 W tym artykule opisano, jakie Microsoft Azure Skalowanie automatyczne to, jego zalety i sposób rozpoczynania korzystania z niego.  
@@ -36,7 +36,7 @@ Po spełnieniu warunków reguły, co najmniej jednej akcji skalowania automatycz
 
 Wyjaśnienia poniżej mają zastosowanie do rodzajów poprzedniego diagramu.   
 
-## <a name="resource-metrics"></a>Metryki zasobów
+## <a name="resource-metrics"></a>Metryki zasobu
 Zasoby emitują metryki, te metryki są później przetwarzane przez zasady. Metryki są dostarczane za pośrednictwem różnych metod.
 Zestawy skalowania maszyn wirtualnych Użyj danych telemetrycznych z agentów dla diagnostyki platformy Azure, natomiast dane telemetryczne dla aplikacji sieci Web i usług w chmurze pochodzi bezpośrednio z infrastruktury platformy Azure. Niektóre powszechnie używane statystyki obejmują użycie procesora CPU, użycie pamięci, liczby wątków, długość kolejki i użycie dysku. Aby uzyskać listę danych telemetrycznych, jakie można użyć, zobacz [typowe metryki automatycznego skalowania](../../azure-monitor/platform/autoscale-common-metrics.md).
 
@@ -66,15 +66,15 @@ Funkcja automatycznego skalowania, użyj poniższe terminy i struktury.
 
 - **Ustawienie skalowania automatycznego** jest odczytywany przez aparat skalowania automatycznego, aby określić, czy wykonać skalowanie w górę lub w dół. Zawiera on jeden lub więcej profilów, informacje dotyczące zasobu docelowego i ustawień powiadomień.
 
-    - **Profilu skalowania automatycznego** jest kombinacją Odp.:
+  - **Profilu skalowania automatycznego** jest kombinacją Odp.:
 
-        - **Ustawienia pojemności**, co oznacza, minimalna, maksymalna i wartości domyślne dla liczby wystąpień.
-        - **zestaw reguł**, z których każdy zawiera wyzwalacz (czas lub metryki) oraz akcję skalowania (górę lub w dół).
-        - **Cykl**, co oznacza, że po umieszczeniu tego profilu w życie skalowania automatycznego.
+    - **Ustawienia pojemności**, co oznacza, minimalna, maksymalna i wartości domyślne dla liczby wystąpień.
+    - **zestaw reguł**, z których każdy zawiera wyzwalacz (czas lub metryki) oraz akcję skalowania (górę lub w dół).
+    - **Cykl**, co oznacza, że po umieszczeniu tego profilu w życie skalowania automatycznego.
 
-        Może mieć wiele profilów, które pozwalają zadbać o różnych wymaganiach nakładających się. Istnieje możliwość użycia profile automatycznego skalowania różne dla różnych porach dnia lub dni tygodnia, na przykład.
+      Może mieć wiele profilów, które pozwalają zadbać o różnych wymaganiach nakładających się. Istnieje możliwość użycia profile automatycznego skalowania różne dla różnych porach dnia lub dni tygodnia, na przykład.
 
-    - A **ustawienie powiadomień** definiuje, jakie powiadomienia mają być powinny być wykonywane, gdy wystąpi zdarzenie automatyczne skalowanie zależnie od spełniające kryteria profile ustawienie skalowania automatycznego. Skalowanie automatyczne można powiadomienie co najmniej jeden adres e-mail lub wykonywanie wywołań do jednego lub więcej elementów webhook.
+  - A **ustawienie powiadomień** definiuje, jakie powiadomienia mają być powinny być wykonywane, gdy wystąpi zdarzenie automatyczne skalowanie zależnie od spełniające kryteria profile ustawienie skalowania automatycznego. Skalowanie automatyczne można powiadomienie co najmniej jeden adres e-mail lub wykonywanie wywołań do jednego lub więcej elementów webhook.
 
 
 ![Ustawienie skalowania automatycznego platformy Azure, profilu i struktury reguły](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)

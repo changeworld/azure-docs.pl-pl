@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
-ms.translationtype: HT
+ms.openlocfilehash: 5d6a7d77b442383817179fadc5878f02dfe86628
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650907"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089526"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Samouczek: Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service
 
@@ -145,7 +145,7 @@ Wybierz przycisk **Weryfikuj**.
 
 Zostanie wyświetlona strona **Dodawanie nazwy hosta**. 
 
-Upewnij się, że opcja **Typ rekordu nazwy hosta** jest ustawiona na wartość **CNAME (www.example.com lub dowolna poddomena)**.
+Upewnij się, że **typ rekordu nazwy hosta** ustawiono **CNAME (www\.example.com lub dowolna poddomena)**.
 
 Wybierz przycisk **Dodaj nazwę hosta**.
 
@@ -282,7 +282,7 @@ Wpisz w pełni kwalifikowany nazwę domeny, która pasuje do domeny z symbolami 
 
 Zostanie aktywowany przycisk **Dodaj nazwę hosta**. 
 
-Upewnij się, że opcja **Typ rekordu nazwy hosta** jest ustawiona na wartość **CNAME (www.example.com lub dowolna poddomena)**.
+Upewnij się, że **typ rekordu nazwy hosta** ustawiono **rekord CNAME (www\.example.com lub dowolna poddomena)**.
 
 Wybierz przycisk **Dodaj nazwę hosta**.
 
@@ -360,7 +360,7 @@ Set-AzWebApp `
 
 Aby uzyskać więcej informacji, zobacz [Assign a custom domain to a web app](scripts/powershell-configure-custom-domain.md) (Przypisywanie domeny niestandardowej do aplikacji internetowej).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

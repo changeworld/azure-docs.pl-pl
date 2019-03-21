@@ -7,22 +7,26 @@ documentationcenter: ''
 author: willzhan
 manager: steveng
 editor: ''
-ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 710ec72e9867ad180afcae8273a093f48933112a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a0e3b0758f8c70bec14d533ef62ce75f57a198cb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991518"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259656"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>W trybie offline FairPlay Streaming dla systemu iOS 
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Wersja 3](../latest/offline-fairplay-for-ios.md)
+> * [Wersja 2](media-services-protect-hls-with-offline-fairplay.md)
+
  Usługa Azure Media Services udostępnia zestaw dobrze zaprojektowanego [usług ochrony zawartości](https://azure.microsoft.com/services/media-services/content-protection/) określające:
 
 - PlayReady firmy Microsoft
@@ -211,7 +215,7 @@ Poniższe często zadawane pytania dotyczące pomocy w rozwiązywaniu problemów
 Przykładowy plik boot.xml:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<HLSMoviePackage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
   <Version>1.0</Version>
   <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
   <Streams>

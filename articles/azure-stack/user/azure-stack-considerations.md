@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 12/27/2018
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 1f65d7711c57930886ac9826bb105b6bc4931268
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 158f22ec2ab07bfc2f893d4b0c55d862e0b19de0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238911"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106665"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Najważniejsze kwestie: Za pomocą usług lub tworzenia aplikacji dla usługi Azure Stack
 
@@ -76,8 +76,8 @@ Usługa Azure Stack obsługuje wersje programu Azure PowerShell i interfejsów A
 
 Aby upewnić się, że używasz poprawnej wersji programu Azure PowerShell, należy użyć [profilami wersji interfejsu API](azure-stack-version-profiles.md). Aby określić najnowszą profilu wersji interfejsu API, którego można używać, Dowiedz się, kompilacja jest używany w usłudze Azure Stack. Te informacje można uzyskać od administratora usługi Azure Stack.
 
->[!NOTE]
- Jeśli używasz usługi Azure Stack Development Kit i mieć dostęp administracyjny, zobacz [ustalić bieżącą wersję](../azure-stack-updates.md#determine-the-current-version) sekcji, aby określić kompilację w usłudze Azure Stack.
+> [!NOTE]
+>  Jeśli używasz usługi Azure Stack Development Kit i mieć dostęp administracyjny, zobacz [ustalić bieżącą wersję](../azure-stack-updates.md#determine-the-current-version) sekcji, aby określić kompilację w usłudze Azure Stack.
 
 Dla innych interfejsów API, uruchom następujące polecenie programu PowerShell służący do wypełniania wyjściowego przestrzenie nazw, typy zasobów i wersje interfejsu API, które są obsługiwane w ramach subskrypcji usługi Azure Stack. Uwaga może nadal być różnice na poziomie właściwości. To polecenie mogło działać, musisz mieć już [zainstalowane](azure-stack-powershell-install.md) i [skonfigurowane](azure-stack-powershell-configure-user.md) programu PowerShell dla środowiska Azure Stack. Należy również mieć subskrypcję oferty usługi Azure Stack.
 

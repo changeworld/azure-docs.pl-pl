@@ -10,12 +10,12 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 1247f603b759364edcee2bff12f75bb0a217ecd6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: MT
+ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231258"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295304"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Zarządzanie rekordami Dynamics 365 z usługą Azure Logic Apps
 
@@ -42,7 +42,7 @@ Najpierw dodaj wyzwalacz Dynamics 365, która jest uruchamiana, gdy nowy rekord 
 
 1. W [witryny Azure portal](https://portal.azure.com), Otwórz swoje pustej aplikacji logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-1. W polu wyszukiwania wprowadź "Dynamics 365" jako filtr. Na przykład w obszarze listy wyzwalaczy wybierz następujący wyzwalacz: **gdy rekord zostanie utworzony.**
+1. W polu wyszukiwania wprowadź "Dynamics 365" jako filtr. Na przykład w obszarze listy wyzwalaczy wybierz następujący wyzwalacz: **Gdy rekord zostanie utworzony.**
 
    ![Wybierz wyzwalacz](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -122,9 +122,9 @@ W tej tabeli opisano niektóre typy pól oraz typy danych wymaganych do ich wart
 
 | Typ pola | Wymagany typ danych | Opis | 
 |------------|--------------------|-------------|
-| Pola tekstowe | Pojedynczy wiersz tekstu | Pola te wymagają jednego wiersza tekstu lub zawartości dynamicznej, która ma typ tekstu. <p><p>*Przykład pola*: **opis** i **kategorii** | 
-| Pola liczb całkowitych | Liczba całkowita | Niektóre pola wymagają liczby całkowitej lub zawartości dynamicznej, która ma typ liczby całkowitej. <p><p>*Przykład pola*: **procent wykonania** i **czas trwania** | 
-| Pola daty | Data i godzina | Niektóre pola wymagają daty z formatem mm/dd/rrrr lub zawartości dynamicznej, która ma typ date. <p><p>*Przykład pola*: **utworzono**, **Data rozpoczęcia**, **Rozpoczęcie rzeczywiste**, **Rzeczywiste zakończenie**, i **Data ukończenia** | 
+| Pola tekstowe | Pojedynczy wiersz tekstu | Pola te wymagają jednego wiersza tekstu lub zawartości dynamicznej, która ma typ tekstu. <p><p>*Przykład pola*: **Opis** i **kategorii** | 
+| Pola liczb całkowitych | Liczba całkowita | Niektóre pola wymagają liczby całkowitej lub zawartości dynamicznej, która ma typ liczby całkowitej. <p><p>*Przykład pola*: **Procent wykonania** i **czas trwania** | 
+| Pola daty | Data i godzina | Niektóre pola wymagają daty z formatem mm/dd/rrrr lub zawartości dynamicznej, która ma typ date. <p><p>*Przykład pola*: **Utworzone na**, **Data rozpoczęcia**, **Rzeczywiste rozpoczęcie**, **Rzeczywiste zakończenie**, i **Data ukończenia** | 
 | Typ pola wymagające Identyfikatora rekordu i wyszukiwania | Klucz podstawowy | Niektóre pola odwołujące się do innego rekordu jednostki wymagają zarówno Identyfikatora rekordu i typu wyszukiwania. | 
 ||||
 
@@ -187,7 +187,7 @@ Aby uzyskać więcej informacji na temat rozwiązywania problemów z aplikacjami
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [strona referencyjna łącznika](/connectors/crm/). 
+Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [strona referencyjna łącznika](/connectors/dynamicscrmonline/). 
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 

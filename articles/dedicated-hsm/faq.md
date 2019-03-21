@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/11/2019
+ms.date: 3/19/2019
 ms.author: barclayn
-ms.openlocfilehash: cd3228b66dbbf19b574c390733340c0ea2fb5a78
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b28d9607bf35d37e252d7d0bc59d1ce808e38665
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57846892"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259996"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
@@ -164,7 +164,7 @@ Tak. Możesz wysłać dzienniki z urządzenia przez moduł HSM do serwera syslog
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>PYT.: Czy jest możliwe do skonfigurowania wysokiej dostępności, w tym samym regionie lub w wielu regionach?
 
-Tak. Konfiguracja wysokiej dostępności i konfiguracji są wykonywane w oprogramowaniu klienckim przez moduł HSM, które są dostarczane przez firmy Gemalto. Sprzętowych modułów zabezpieczeń z tej samej sieci Wirtualnej lub innych sieci wirtualnych w tym samym regionie lub w regionach lub w środowisku lokalnym sprzętowych modułów zabezpieczeń połączone z siecią Wirtualną przy użyciu lokacja lokacja lub sieci VPN typu punkt-punkt mogą być dodawane do tej samej konfiguracji o wysokiej dostępności.
+Tak. Konfiguracja wysokiej dostępności i konfiguracji są wykonywane w oprogramowaniu klienckim przez moduł HSM, które są dostarczane przez firmy Gemalto. Sprzętowych modułów zabezpieczeń z tej samej sieci Wirtualnej lub innych sieci wirtualnych w tym samym regionie lub w regionach lub w środowisku lokalnym sprzętowych modułów zabezpieczeń połączone z siecią Wirtualną przy użyciu lokacja lokacja lub sieci VPN typu punkt-punkt mogą być dodawane do tej samej konfiguracji o wysokiej dostępności. Należy zauważyć, że synchronizuje tylko materiału klucza i elementy nie konkretnej konfiguracji, takie jak role.
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>PYT.: Czy mogę dodać sprzętowych modułów zabezpieczeń z sieci lokalnej do grupy o wysokiej dostępności przy użyciu sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej
 
@@ -176,13 +176,13 @@ Nie.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>PYT.: Ile sprzętowych modułów zabezpieczeń można dodać do tej samej konfiguracji o wysokiej dostępności z jednego wniosku?
 
-16\.
+16 elementów członkowskich grupy o wysokiej dostępności zawiera — stała, ograniczenie przepustowości pełnego testowania za pomocą doskonałe wyniki.
 
 ## <a name="support"></a>Pomoc techniczna
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>PYT.: Co to jest umowa SLA dla usługi w wersji dedykowanej przez moduł HSM?
 
-W tej chwili nie ma umowy SLA podane dla usługi w wersji dedykowanej sprzętowego modułu zabezpieczeń. Microsoft zapewni poziomu dostępu do sieci na urządzeniu i dlatego stosowanie standardowych umów SLA sieci platformy Azure.
+Nie ma żadnych guarentee określonego czasu podane dla usługi w wersji dedykowanej sprzętowego modułu zabezpieczeń. Microsoft zapewni poziomu dostępu do sieci na urządzeniu i dlatego stosowanie standardowych umów SLA sieci platformy Azure.
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>PYT.: Jak są używane moduły HSM w platformy Azure w wersji dedykowanej chronione przez moduł HSM?
 
@@ -198,15 +198,19 @@ Zdecydowanie zaleca się używać urządzenia kopii zapasowej przez moduł HSM d
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>PYT.: Jak uzyskać pomoc techniczną dotyczącą dedykowany przez moduł HSM?
 
-Taki sam sposób możesz uzyskać pomoc techniczną dla wszystkich innych usług platformy Azure. Zespół pomocy technicznej Azure przekaże do działu pomocy technicznej firmy Gemalto zgodnie z potrzebami, w zależności od tego, w tym przypadku.
+Pomoc techniczna jest świadczona przez firmę Microsoft, jak i firmy Gemalto.  Jeśli występuje problem ze sprzętem lub dostęp do sieci, Prześlij żądanie pomocy technicznej firmy Microsoft, a jeśli masz problem za pomocą modułu HSM konfiguracji, oprogramowania i aplikacji, zapoznaj się z rasie obsługi żądania z firmy Gemalto. Jeśli masz nieokreślony problem podnieść withg żądania pomocy technicznej firmy Microsoft, a następnie firmy Gemalto może zostać uruchomione jako wymagane. 
 
-### <a name="q-how-do-i-get-access-to-dedicated-hsm-client-software-documentation-firmware-images"></a>PYT.: Jak uzyskać dostęp do oprogramowania klienckiego przez sprzętowy moduł zabezpieczeń w wersji dedykowanej, dokumentacji, obrazach oprogramowania układowego?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>PYT.: Jak uzyskać dostęp do integracji wskazówki dotyczące SafeNet Luna 7 przez moduł HSM, dokumentację i oprogramowania klienta?
 
-Klient musi skontaktować się bezpośrednio z firmy Gemalto, aby uzyskać dostęp do oprogramowania klienckiego przez moduł HSM, dokumentacji, obrazy systemu operacyjnego i oprogramowania układowego.
+Po zarejestrowaniu usługi, identyfikator klienta firmy Gemalto będzie pod warunkiem, która umożliwia rejestrację w portalu firmy Gemalto klientów pomocy technicznej. Umożliwi to dostęp do wszystkich oprogramowania i dokumentacji także włączenie żądania pomocy technicznej bezpośrednio z firmy Gemalto.
 
 ### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>PYT.: Jeśli nie znaleziono luki w zabezpieczeniach i patch został wydany przez firmy Gemalto, który jest odpowiedzialny za uaktualnianie/poprawianie systemu operacyjnego i oprogramowania układowego?
 
 Microsoft nie ma możliwości podłączenia do sprzętowych modułów zabezpieczeń przydzielone do klientów. Klienci, należy uaktualnić i stosowanie poprawek do ich sprzętowych modułów zabezpieczeń.
+
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>PYT.: Co zrobić, jeśli trzeba ponowne uruchomienie mojej przez moduł HSM?
+
+ Moduł HSM ma opcję ponownego uruchamiania wiersza polecenia, a następnie należy zauważyć, że opcji "ponowny rozruch sprzętowy" należy używać. Jeśli to nie powiedzie się z jakiegokolwiek powodu, Prześlij żądanie pomocy technicznej firmy Microsoft i mamy urządzenia fizycznego ponowny rozruch. 
 
 ## <a name="cryptography-and-standards"></a>Standardy i kryptografii
 
@@ -262,15 +266,13 @@ Dedykowane urządzenia przepisami SafeNet sieciowych przez moduł HSM 7 sprzęto
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>PYT.: Ile partycje mogą być tworzone w wersji dedykowanej module HSM?
 
-Na podstawie określonego modelu używać sprzętowego modułu zabezpieczeń, istnieją 10 partycji.
+Model SafeNet Luna HSM 7, używane przez A790 obejmuje licencję do 10 partycji w koszt usługi. Urządzenie ma limit równy 100 partycji i dodawanie partycji do tego limitu będzie ponosić kosztów dodatkowych licencjonowania i wymagają instalacji nowego pliku licencji na urządzeniu.
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>PYT.: Ile kluczy może być obsługiwany w wersji dedykowanej module HSM?
 
-Maksymalna liczba kluczy. Numery te są również zastosowanie do pary kluczy przy użyciu kluczy asymetrycznych.
+Maksymalna liczba kluczy jest funkcją dostępnej pamięci. Model SafeNet Luna 7 A790 używana ma 32MB pamięci. Następujące numery są również zastosowanie do pary kluczy przy użyciu kluczy asymetrycznych.
 
 * SZYFROWANIA RSA 2048 - 19,000
 * ECC P256 - 91,000
-* AES-256 - 218,000
 
 Pojemność różnią się w zależności od określonych kluczowych atrybutów w szablonie generowania kluczy i liczby partycji.
-

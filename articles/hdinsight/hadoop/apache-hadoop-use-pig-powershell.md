@@ -1,6 +1,6 @@
 ---
 title: Apache Pig za pomocą programu PowerShell w programie HDInsight — Azure
-description: Dowiedz się, jak przesyłać zadania Apache Pig do klastra Apache Hadoop w HDInsight przy użyciu programu Azure PowerShell.
+description: Dowiedz się, jak przesyłać zadania Apache Pig do klastrów Apache Hadoop w HDInsight przy użyciu programu Azure PowerShell.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 84780d7c432e818153f964522063f29d8540e0ec
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 69a45a0c2c21ffafde8a4b366e1f3e90b7c8f59a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012615"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>Wykonywanie zadań Apache Pig z usługą HDInsight przy użyciu programu Azure PowerShell
 
@@ -41,9 +41,9 @@ Azure PowerShell udostępnia *poleceń cmdlet* umożliwiającą zdalne uruchamia
 Następujące polecenia cmdlet są używane podczas uruchamiania zadania Pig w zdalnym klastrze HDInsight:
 
 * **Connect-AzureRmAccount**: Uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
-* **Nowe AzureRmHDInsightPigJobDefinition**: Tworzy *definicji zadania* przy użyciu określonej instrukcji Pig Latin.
+* **New-AzureRmHDInsightPigJobDefinition**: Tworzy *definicji zadania* przy użyciu określonej instrukcji Pig Latin.
 * **Start-AzureRmHDInsightJob**: Wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
-* **Oczekiwania AzureRmHDInsightJob**: Używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż zadanie zostało zakończone, lub przekroczono czas oczekiwania.
+* **Wait-AzureRmHDInsightJob**: Używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż zadanie zostało zakończone, lub przekroczono czas oczekiwania.
 * **Get-AzureRmHDInsightJobOutput**: Używany do pobierania danych wyjściowych zadania.
 
 Poniższe kroki pokazują, jak używać tych poleceń cmdlet, aby uruchomić zadanie w klastrze usługi HDInsight.

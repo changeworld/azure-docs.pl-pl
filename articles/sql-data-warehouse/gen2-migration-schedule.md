@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: dea0a38b1f543fbb17cb0cd98ee4f96144d07f4e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8f24bab531143cad1974663eb71b173a20b6f51a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432910"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287183"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 
@@ -43,8 +43,8 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Chiny Północne |\* |\* |
 | Chiny Północne 2 |\* |\* |
 | Azja Wschodnia |Dostępne |1 maja 2019 r. |
-| Wschodnie stany USA |Dostępne |2 kwietnia 2019 r. |
-| Wschodnie stany USA 2 |Dostępne |2 kwietnia 2019 r. |
+| Wschodnie stany USA |Dostępne |1 maja 2019 r. |
+| Wschodnie stany USA 2 |Dostępne |Od 1 maja. 2019 |
 | Francja Środkowa |\* |\* |
 | Niemcy Środkowe |\* |\* |
 | Niemcy Środkowo-Zachodnie |1 września 2019 r.|2 stycznia 2020 roku. |
@@ -55,15 +55,15 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 | Korea Środkowa |2 kwietnia 2019 r. |1 maja 2019 r. |
 | Korea Południowa |2 kwietnia 2019 r. |1 czerwca 2019 r. |
 | Środkowo-północne stany USA |2 kwietnia 2019 r. |1 czerwca 2019 r. |
-| Europa Północna |Dostępne |2 kwietnia 2019 r. |
+| Europa Północna |Dostępne |1 maja 2019 r. |
 | Środkowo-południowe stany USA |Dostępne |1 maja 2019 r. |
-| Azja Południowo-Wschodnia |Dostępne |2 kwietnia 2019 r. |
+| Azja Południowo-Wschodnia |Dostępne |1 maja 2019 r. |
 | Południowe Zjednoczone Królestwo |2 kwietnia 2019 r. |1 maja 2019 r. |
 | Zachodnie Zjednoczone Królestwo |\*|\* |
 | Środkowo-zachodnie stany USA |2 września 2019 r. |2 stycznia 2020 roku.|
-| Europa Zachodnia |Dostępne |2 kwietnia 2019 r. |
+| Europa Zachodnia |Dostępne |1 maja 2019 r. |
 | Zachodnie stany USA |2 kwietnia 2019 r. |1 czerwca 2019 r. |
-| Zachodnie stany USA 2 |Dostępne |2 kwietnia 2019 r. |
+| Zachodnie stany USA 2 |Dostępne |1 maja 2019 r. |
 
 ## <a name="automatic-upgrade-process"></a>Automatyczne uaktualnianie
 

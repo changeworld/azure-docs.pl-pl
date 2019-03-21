@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 5e6d155a3efebfc8289263ac703a87e9aa3287cd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dc8deb16f7d124c5fb11568f25050eee99a245b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834761"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096762"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
 
@@ -31,11 +31,11 @@ Możesz uruchomić test trybu failover z węzła podstawowego do lokacji dodatko
     - Uruchamianie trybu failover i pozwól Site Recovery automatycznie twórz sieci testowej. W tym przypadku Usługa Site Recovery automatycznie twórz sieci i czyszczenie po zakończeniu testowania trybu failover.
 - Należy wybrać punkt odzyskiwania do testowania trybu failover: 
     - **Najnowszy przetworzony**: Ta opcja wprowadza Maszynę wirtualną za pośrednictwem do najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
-    - **Najnowszy spójny na poziomie aplikacji**: Ta opcja Failover maszyny Wirtualnej w celu najnowszy spójnych z aplikacją punkt przywracania przetworzone przez usługę Site Recovery. 
-    - **Najnowsze**: Ta opcja najpierw przetwarza wszystkie dane, które została wysłana do usługi Site Recovery, aby utworzyć punkt odzyskiwania dla każdej maszyny Wirtualnej przed przechodzenie w tryb failover do niego. Ta opcja zapewnia najniższy cel punktu odzyskiwania (cel punktu odzyskiwania), ponieważ maszyna wirtualna utworzona po pracy awaryjnej, będzie miał wszystkie dane, które są replikowane do usługi Site Recovery podczas pracy w trybie failover zostało wyzwolone.
-    - **Najnowsze wieloma Maszynami wirtualnymi przetwarzane**: dostępna dla plany odzyskiwania obejmujące co najmniej jeden maszyn wirtualnych, które mają włączoną spójnością wielu maszyn wirtualnych. Maszyny wirtualne z włączone ustawienie przełączyć w tryb failover do najnowszego punktu odzyskiwania spójnego na poziomie wielu maszyn wirtualnych wspólnej. Inne maszyny wirtualne przełączyć w tryb failover do najnowszego punktu odzyskiwania przetworzonego.
+    - **Najnowszy spójny na poziomie aplikacji**: Ta opcja tryb failover maszyny Wirtualnej w celu najnowszy spójnych z aplikacją punkt przywracania przetworzone przez usługę Site Recovery. 
+    - **Najnowszy**: Ta opcja najpierw przetwarza wszystkie dane, które została wysłana do usługi Site Recovery, aby utworzyć punkt odzyskiwania dla każdej maszyny Wirtualnej przed przechodzenie w tryb failover do niego. Ta opcja zapewnia najniższy cel punktu odzyskiwania (cel punktu odzyskiwania), ponieważ maszyna wirtualna utworzona po pracy awaryjnej, będzie miał wszystkie dane, które są replikowane do usługi Site Recovery podczas pracy w trybie failover zostało wyzwolone.
+    - **Najnowsze wieloma Maszynami wirtualnymi przetwarzane**: Dostępne dla plany odzyskiwania obejmujące co najmniej jeden maszyn wirtualnych, które mają włączoną spójnością wielu maszyn wirtualnych. Maszyny wirtualne z włączone ustawienie przełączyć w tryb failover do najnowszego punktu odzyskiwania spójnego na poziomie wielu maszyn wirtualnych wspólnej. Inne maszyny wirtualne przełączyć w tryb failover do najnowszego punktu odzyskiwania przetworzonego.
     - **Najnowsze wieloma Maszynami wirtualnymi spójny na poziomie aplikacji**: Ta opcja jest dostępna w przypadku planów odzyskiwania z co najmniej jeden maszyn wirtualnych, które mają włączoną spójnością wielu maszyn wirtualnych. Maszyny wirtualne, które są częścią grupy replikacji przełączyć w tryb failover do najnowszego punktu odzyskiwania spójnego z aplikacją wspólnej wielu maszyn wirtualnych. Inne maszyny wirtualne Failover ich najnowszego punktu odzyskiwania spójnego na poziomie aplikacji.
-    - **Niestandardowe**: Ta opcja służy do określonej maszyny Wirtualnej do określonego punktu odzyskiwania w trybie Failover.
+    - **Niestandardowy**: Użyj tej opcji do określonej maszyny Wirtualnej do określonego punktu odzyskiwania w trybie Failover.
 
 
 
@@ -43,11 +43,11 @@ Możesz uruchomić test trybu failover z węzła podstawowego do lokacji dodatko
 
 Po uruchomieniu testu trybu failover, zostanie wyświetlony monit wybierz ustawienia sieci dla maszyny repliki testu, zgodnie z opisem w tabeli.
 
-**Opcja** | **Szczegóły** 
---- | --- 
-**Brak** | Testowej maszyny Wirtualnej jest tworzony na hoście, na którym znajduje się maszyna wirtualna repliki. Nie została dodana do chmury, a nie jest połączona z żadną siecią.<br/><br/> Komputer można połączyć z siecią maszyny Wirtualnej, po jego utworzeniu.
-**Użyj istniejącej** | Testowej maszyny Wirtualnej jest tworzony na hoście, na którym znajduje się maszyna wirtualna repliki. Nie jest dodawany do chmury.<br/><br/>Utwórz sieć maszyny Wirtualnej, która jest odizolowana od sieci środowiska produkcyjnego.<br/><br/>Jeśli używasz sieci VLAN, zalecamy utworzenie oddzielnych sieci logiczne (ale nie używane w środowisku produkcyjnym) w programie VMM w tym celu. Ta sieć logiczna jest używana do tworzenia sieci maszyn wirtualnych dla testu pracy w trybie Failover.<br/><br/>Sieć logiczna powinna być skojarzona z co najmniej jedną z kart sieciowych w procentach wszystkich serwerów funkcji Hyper-V, które hostują maszyny wirtualne.<br/><br/>Dla sieci VLAN sieci logicznych lokacji sieciowych, które dodajesz do sieci logicznej powinna być odizolowane.<br/><br/>Jeśli używasz wirtualizacji sieci Windows oparte na sieci logicznej, usługi Azure Site Recovery automatycznie tworzy izolowanych sieci maszyn wirtualnych. 
-**Tworzenie sieci** | Sieci testowej tymczasowy jest tworzony automatycznie w oparciu o ustawienia, którą określasz w **sieci logicznej** i jej lokacji związane z siecią.<br/><br/> Tryb failover sprawdza, czy maszyny wirtualne są tworzone. |Tej opcji należy używać, jeśli więcej niż jedną sieć maszyny Wirtualnej korzysta z planu odzyskiwania.<br/><br/> Jeśli używasz wirtualizacji sieci Windows ta opcja może automatycznie tworzyć sieci maszyn wirtualnych z tymi samymi ustawieniami (podsieci i pule adresów IP) w sieci maszyny wirtualnej repliki. Te sieci maszyn wirtualnych są automatycznie czyszczone po zakończeniu testowania trybu failover.<br/><br/> Test maszyna wirtualna jest tworzona na hoście, na którym znajduje się maszyna wirtualna repliki. Nie jest dodawany do chmury.
+| **Opcja** | **Szczegóły** | |
+| --- | --- | --- |
+| **Brak** | Testowej maszyny Wirtualnej jest tworzony na hoście, na którym znajduje się maszyna wirtualna repliki. Nie została dodana do chmury, a nie jest połączona z żadną siecią.<br/><br/> Komputer można połączyć z siecią maszyny Wirtualnej, po jego utworzeniu.| |
+| **Użyj istniejącej** | Testowej maszyny Wirtualnej jest tworzony na hoście, na którym znajduje się maszyna wirtualna repliki. Nie jest dodawany do chmury.<br/><br/>Utwórz sieć maszyny Wirtualnej, która jest odizolowana od sieci środowiska produkcyjnego.<br/><br/>Jeśli używasz sieci VLAN, zalecamy utworzenie oddzielnych sieci logiczne (ale nie używane w środowisku produkcyjnym) w programie VMM w tym celu. Ta sieć logiczna jest używana do tworzenia sieci maszyn wirtualnych dla testu pracy w trybie Failover.<br/><br/>Sieć logiczna powinna być skojarzona z co najmniej jedną z kart sieciowych w procentach wszystkich serwerów funkcji Hyper-V, które hostują maszyny wirtualne.<br/><br/>Dla sieci VLAN sieci logicznych lokacji sieciowych, które dodajesz do sieci logicznej powinna być odizolowane.<br/><br/>Jeśli używasz wirtualizacji sieci Windows oparte na sieci logicznej, usługi Azure Site Recovery automatycznie tworzy izolowanych sieci maszyn wirtualnych. | |
+| **Tworzenie sieci** | Sieci testowej tymczasowy jest tworzony automatycznie w oparciu o ustawienia, którą określasz w **sieci logicznej** i jej lokacji związane z siecią.<br/><br/> Tryb failover sprawdza, czy maszyny wirtualne są tworzone.<br/><br/> Tej opcji należy używać, jeśli więcej niż jedną sieć maszyny Wirtualnej korzysta z planu odzyskiwania.<br/><br/> Jeśli używasz wirtualizacji sieci Windows ta opcja może automatycznie tworzyć sieci maszyn wirtualnych z tymi samymi ustawieniami (podsieci i pule adresów IP) w sieci maszyny wirtualnej repliki. Te sieci maszyn wirtualnych są automatycznie czyszczone po zakończeniu testowania trybu failover.<br/><br/> Test maszyna wirtualna jest tworzona na hoście, na którym znajduje się maszyna wirtualna repliki. Nie jest dodawany do chmury.|
 
 ### <a name="best-practices"></a>Najlepsze praktyki
 
@@ -94,14 +94,14 @@ Jeśli po prostu chcesz sprawdzić, czy maszyny Wirtualnej w trybie Failover, mo
 W przypadku maszyn wirtualnych testowy tryb failover użyć protokołu DHCP, Utwórz test serwera DHCP w sieci izolowanej na potrzeby testowania trybu failover.
 
 
-### <a name="prepare-active-directory"></a>Przygotowanie usługi Active Directory
+### <a name="prepare-active-directory"></a>Prepare Active Directory
 Aby uruchomić testowy tryb failover do testowania aplikacji, potrzebujesz kopii środowiska produkcyjnego w usłudze Active Directory w środowisku testowym. Aby uzyskać więcej informacji, zobacz [testowanie trybu failover zagadnienia dotyczące usługi Active Directory](site-recovery-active-directory.md#test-failover-considerations).
 
 ### <a name="prepare-dns"></a>Przygotowanie DNS
 Przygotuj serwer DNS do testowania trybu failover w następujący sposób:
 
 * **DHCP**: Jeśli maszyny wirtualne używać protokołu DHCP, adres IP test DNS powinien zostać zaktualizowany na serwerze DHCP testu. Jeśli używasz typu sieci wirtualizacji sieci Windows, serwer programu VMM działa jako serwer DHCP. W związku z tym adres IP serwera DNS powinien zostać zaktualizowany w testowej sieci trybu failover. W przypadku maszyn wirtualnych, rejestrują się do odpowiedniego serwera DNS.
-* **Statyczny adres**: maszyny wirtualnej użycie statycznego adresu IP, adres IP serwera DNS, test powinny być zaktualizowane w testowej sieci trybu failover. Może być konieczne aktualizowanie systemu DNS przy użyciu adresu IP testowe maszyny wirtualne. W tym celu, można użyć następującego przykładowego skryptu:
+* **Statyczny adres**: Jeśli maszyny wirtualne używać statycznego adresu IP, adres IP serwera DNS, test powinien zostać zaktualizowany w testowej sieci trybu failover. Może być konieczne aktualizowanie systemu DNS przy użyciu adresu IP testowe maszyny wirtualne. W tym celu, można użyć następującego przykładowego skryptu:
 
         Param(
         [string]$Zone,

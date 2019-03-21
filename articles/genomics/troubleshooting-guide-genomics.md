@@ -11,12 +11,12 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
-ms.openlocfilehash: 01f4cca8e177d8f9c9325a7920eb7e72c005bbd6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760946"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078061"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -73,8 +73,8 @@ Istnieją trzy wymagane argumenty:
                 Bases Processed : 1,348,613,600 (1 GBase)
         ```
 
- > [!NOTE]
- >  Alternatywnie możesz dołączyć ścieżkę do pliku konfiguracji zamiast bezpośrednio wprowadzać adres URL i klucz. Jeśli te argumenty zostaną umieszczone w wierszu polecenia, a także plik konfiguracji, argumenty wiersza polecenia będą miały pierwszeństwo.  
+  > [!NOTE]
+  >  Alternatywnie możesz dołączyć ścieżkę do pliku konfiguracji zamiast bezpośrednio wprowadzać adres URL i klucz. Jeśli te argumenty zostaną umieszczone w wierszu polecenia, a także plik konfiguracji, argumenty wiersza polecenia będą miały pierwszeństwo.  
 
 Przepływ pracy o identyfikatorze 1001 i plik config.txt znajduje się w tej samej ścieżce jako modułu msgen pliku wykonywalnego polecenie będzie wyglądać następująco:
 
@@ -116,7 +116,7 @@ Te błędy są informacje z możliwością działania użytkownika. Na podstawie
 
 | Typ pliku | Kod błędu | Komunikat o błędzie                                                                           | Zalecane kroki rozwiązywania problemów                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Dowolne          | 701        | Przeczytaj [readId] ma podstaw [numberOfBases], ale limit [maxReadLength]           | Najbardziej typową przyczyną tego błędu jest uszkodzenie pliku, co prowadzi do łączenia dwóch operacji odczytu. Sprawdź pliki wejściowe. |                                |
+| Dowolne          | 701        | Przeczytaj [readId] ma podstaw [numberOfBases], ale limit [maxReadLength]           | Najbardziej typową przyczyną tego błędu jest uszkodzenie pliku, co prowadzi do łączenia dwóch operacji odczytu. Sprawdź pliki wejściowe. |
 | BAM          | 200        |   Nie można odczytać pliku "[yourFileName]".                                                                                       | Sprawdź format plik BAM. Prześlij przepływ pracy ponownie poprawnie sformatowanym plikiem.                                                                           |
 | BAM          | 201        |  Nie można odczytać plik BAM [nazwa_pliku].                                                                                      |Sprawdź format plik BAM.  Przesyłanie przepływu pracy przy użyciu poprawnie sformatowanym plikiem.                                                                            |
 | BAM          | 202        | Nie można odczytać plik BAM [nazwa_pliku]. Zbyt małe i brak nagłówka pliku.                                                                                        | Sprawdź format plik BAM.  Przesyłanie przepływu pracy przy użyciu poprawnie sformatowanym plikiem.                                                                            |

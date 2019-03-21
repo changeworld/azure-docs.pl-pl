@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/09/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 4e9abb20e6548d8612bc3b59aba4f7384913d081
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1482569e415971fba98de8a586cc2868cc574198
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761552"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258092"
 ---
 # <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Jak przeprowadzić transmisja strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu witryny Azure portal przy użyciu usługi Media Services  
 > [!div class="op_single_selector"]
@@ -41,18 +41,16 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 
 > [!NOTE]
 > Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
-> 
-> 
 
 1. Podłącz kamerę wideo do komputera. Uruchom i skonfiguruj lokalny koder na żywo, który wysyła strumień o pojedynczej szybkości transmisji bitów przy użyciu jednego z następujących protokołów: RTMP lub Smooth Streaming. Aby uzyskać więcej informacji, zobacz temat [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://go.microsoft.com/fwlink/?LinkId=532824).
-   
+
     Ten krok można również wykonać po utworzeniu kanału.
 2. Utwórz i uruchom kanał. 
 3. Pobierz adres URL pozyskiwania kanału. 
-   
+
     Koder na żywo używa adresu URL pozyskiwania do wysyłania strumienia do kanału.
 4. Pobierz adres URL podglądu kanału. 
-   
+
     Użyj tego adresu URL, aby sprawdzić, czy kanał prawidłowo odbiera strumień na żywo.
 5. Utwórz wydarzenie/program (to spowoduje również utworzenie elementu zawartości). 
 6. Opublikuj wydarzenie (to spowoduje utworzenie lokalizatora OnDemand dla skojarzonego elementu zawartości).    
@@ -83,31 +81,31 @@ Następujące elementy są wymagane do wykonania czynności przedstawionych w sa
 1. W witrynie [Azure Portal](https://portal.azure.com/) wybierz pozycję Media Services, a następnie kliknij nazwę konta usługi Media Services.
 2. Wybierz pozycję **Transmisja strumieniowa na żywo**.
 3. Wybierz pozycję **Tworzenie niestandardowe**. Ta opcja umożliwi utworzenie kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo.
-   
+
     ![Tworzenie kanału](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
 4. Kliknij pozycję **Ustawienia**.
-   
+
    1. Wybierz typ kanału **Kodowanie na żywo**. Ten typ określa, że chcesz utworzyć kanał obsługujący kodowanie na żywo. Oznacza to, że przychodzący strumień o pojedynczej szybkości transmisji bitów jest wysyłany do kanału i kodowany do strumienia o wielokrotnej szybkości transmisji bitów przy użyciu określonych ustawień kodera na żywo. Aby uzyskać więcej informacji na ten temat, zobacz artykuł [Korzystanie z usługi Azure Media Services do prowadzenia transmisji strumieniowych na żywo ze strumieniami o wielokrotnej szybkości transmisji bitów](media-services-manage-live-encoder-enabled-channels.md). Kliknij przycisk OK.
    2. Określ nazwę kanału.
    3. Kliknij przycisk OK w dolnej części ekranu.
 5. Wybierz kartę **Pozyskiwanie**.
-   
+
    1. Na tej stronie można wybrać protokół przesyłania strumieniowego. W przypadku kanału typu **Kodowanie na żywo** prawidłowe opcje protokołu są następujące:
-      
+
       * Pojedyncza szybkość transmisji bitów podzielonej zawartości w formacie MP4 (Smooth Streaming)
       * Pojedyncza szybkość transmisji bitów w formacie RTMP
-        
+
         Aby uzyskać szczegółowe informacje na temat wszystkich protokołów, zobacz artykuł [Korzystanie z usługi Azure Media Services do prowadzenia transmisji strumieniowych na żywo ze strumieniami o wielokrotnej szybkości transmisji bitów](media-services-manage-live-encoder-enabled-channels.md).
-        
+
         Nie można zmienić opcji protokołu, gdy kanał lub skojarzone z nim wydarzenia/programy są uruchomione. Jeśli potrzebujesz różnych protokołów, utwórz osobny kanał dla każdego protokołu przesyłania strumieniowego.  
    2. Można zastosować ograniczenie adresów IP dotyczące pozyskiwania. 
-      
+
        Można zdefiniować adresy IP, które mogą pozyskiwać pliki wideo w tym kanale. Dozwolone adresy IP można określić jako pojedynczy adres IP (np. „10.0.0.1”), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. „10.0.0.1/22”) lub zakres adresów IP przy użyciu adresu IP i maski podsieci w zapisie kropkowo-cyfrowym (np. „10.0.0.1(255.255.252.0)”).
-      
+
        Jeśli adresy IP nie zostaną określone i brakuje definicji reguły, to żaden adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.
 6. Na karcie **Podgląd** zastosuj ograniczenie adresów IP do podglądu.
 7. Na karcie **Kodowanie** określ ustawienie wstępne kodowania. 
-   
+
     Obecnie jedyną wartością ustawienia wstępnego systemu, którą można wybrać, jest **Domyślna rozdzielczość 720p**. Aby określić niestandardowe ustawienie domyślne, otwórz bilet pomocy technicznej firmy Microsoft. Następnie wprowadź nazwę utworzonego ustawienia wstępnego. 
 
 > [!NOTE]
@@ -153,18 +151,18 @@ Po przesłaniu strumienia do kanału można rozpocząć zdarzenie przesyłania s
 Istnieją dwa sposoby rozpoczęcia zdarzenia: 
 
 1. Na stronie **Kanał** kliknij pozycję **Wydarzenie na żywo**, aby dodać nowe wydarzenie.
-   
+
     Określ nazwę wydarzenia, nazwę elementu zawartości, okno archiwum i opcję szyfrowania.
-   
+
     ![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
-   
+
     Jeśli zaznaczono opcję **Opublikuj to wydarzenie na żywo teraz**, zostaną utworzone ADRESY URL PUBLIKOWANIA.
-   
+
     Naciśnij przycisk **Start**, gdy wszystko będzie gotowe do rozpoczęcia przesyłania strumieniowego wydarzenia.
-   
+
     Po uruchomieniu wydarzenia możesz nacisnąć przycisk **Obejrzyj**, aby rozpocząć odtwarzanie zawartości.
 2. Możesz również użyć skrótu i nacisnąć przycisk **Na żywo** na stronie **Kanał**. Spowoduje to utworzenie domyślnych elementów treści, programu i lokalizatora przesyłania strumieniowego.
-   
+
     Wydarzenie będzie miało nazwę **domyślne** i okno archiwum zostanie ustawione na 8 godzin.
 
 Możesz obejrzeć opublikowane wydarzenie na stronie **Wydarzenie na żywo**. 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 6ad48bb6e7d9c2fd0365b26999b67ad8c62fc42c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f757218d29317f82339967a327f34438c62ab96
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000256"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294148"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalowanie i uruchamianie kontenerów analizy tekstu
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby można było uruchomić dowolny kontener, analiza tekstu, musi mieć następujące czynności:
+Aby można było uruchomić dowolny kontener, analiza tekstu, konieczne jest posiadanie środowisk komputera i kontenerów hostów.
 
 ## <a name="preparation"></a>Przygotowanie
 
@@ -46,11 +46,14 @@ Przed rozpoczęciem korzystania z kontenerów analizy tekstu, musi spełniać na
 
 W poniższej tabeli przedstawiono minimalne i zalecane rdzeni procesora CPU, co najmniej 2,6 gigaherc (GHz) lub szybszy i pamięci w gigabajtach (GB) do przydzielenia dla każdego kontenera analizy tekstu.
 
-| Kontener | Minimalne | Zalecane |
-|-----------|---------|-------------|
-|Wyodrębnianie kluczowych fraz | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |
-|Wykrywanie języka | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |
-|Analiza tonacji | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |
+| Kontener | Minimalne | Zalecane | TPS<br>(Minimum, maksimum)|
+|-----------|---------|-------------|--|
+|Wyodrębnianie kluczowych fraz | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |15, 30|
+|Wykrywanie języka | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |15, 30|
+|Analiza tonacji | 1 rdzeń, 2 GB pamięci | 1 rdzeń, 4 GB pamięci RAM |15, 30|
+
+* Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
+* TPS - transakcji na sekundę
 
 Rdzeni i pamięci odpowiadają `--cpus` i `--memory` ustawienia, które są używane jako część `docker run` polecenia.
 
@@ -64,7 +67,7 @@ Obrazy kontenerów dla analizy tekstu są dostępne z rejestru kontenerów firmy
 |Wykrywanie języka | `mcr.microsoft.com/azure-cognitive-services/language` |
 |Analiza tonacji | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-Użyj [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z rejestru kontenerów Microsoft...
+Użyj [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z rejestru kontenerów firmy Microsoft.
 
 Pełny opis dostępnych tagów dla kontenerów analizy tekstu zobacz następujące kontenery w usłudze Docker Hub:
 
@@ -125,7 +128,7 @@ ApiKey={BILLING_KEY}
 To polecenie:
 
 * Uruchamia kontener frazy kluczowe z obrazu kontenera
-* Przydziela jeden rdzeni procesora CPU i 4 gigabajty (GB) pamięci
+* Przydziela jeden rdzeń procesora CPU i 4 gigabajty (GB) pamięci
 * Uwidacznia TCP port 5000 i przydziela pseudo-TTY kontenera
 * Automatycznie usuwa kontener po jej zakończenia. Obraz kontenera jest nadal dostępna na komputerze-hoście. 
 

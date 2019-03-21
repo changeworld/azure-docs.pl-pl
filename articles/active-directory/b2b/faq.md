@@ -9,14 +9,15 @@ ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ee08e4dc2f6a4616c4b427ad7d33f56e135b27a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 860a059f57578965045ff8e7f404c3b072df03a1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442499"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293825"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Współpraca B2B usługi Active Directory Azure — często zadawane pytania
 
@@ -59,12 +60,12 @@ Chyba że użytkownik przypisany do roli ograniczony administrator lub administr
 Tak! Po skonfigurowaniu tych zasad, należy zachować ostrożność uniknąć przypadkowego blokowanie dostępu do członków i administratorów.
 Aby zablokować dostęp użytkownika-gościa do [witryny Azure portal](https://portal.azure.com), użyj zasad dostępu warunkowego w interfejsie API modelu klasycznym wdrożeniu platformy Windows Azure:
 1. Modyfikowanie **wszyscy użytkownicy** grupy tak, aby zawierała tylko elementy członkowskie.
-  ![Modyfikowanie grupy zrzutu ekranu](media/faq/modify-all-users-group.png)
+   ![Zrzut ekranu przedstawiający grupa Wszyscy użytkownicy, których UserType nie jest równy gościa ](media/faq/modify-all-users-group.png)
 2. Utwórz grupę dynamiczną, która zawiera użytkowników-gości.
-  ![Utwórz zrzut ekranu z grupy](media/faq/group-with-guest-users.png)
+   ![Zrzut ekranu przedstawiający nową grupę Wszyscy użytkownicy-goście](media/faq/group-with-guest-users.png)
 3. Skonfigurowanie zasad dostępu warunkowego do Blokuj użytkowników-gości z dostęp do portalu, jak pokazano w poniższym klipie wideo:
   
-  > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Współpraca B2B w usłudze Azure AD obsługuje uwierzytelnianie wieloskładnikowe i konta poczty e-mail odbiorcy?
 Tak. Oba konta e-mail uwierzytelniania i konsumentów usługi Multi-Factor Authentication są obsługiwane dla współpracy B2B usługi Azure AD.
@@ -94,7 +95,7 @@ Użytkownik-Gość można użyć dowolnego dostawcy tożsamości do uwierzytelni
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Gdzie mogę znaleźć udostępnianie rozwiązań i przesyłaj pomysły społeczność współpracy B2B?
 Stale słuchamy opinii, aby poprawić współpracę B2B. Udostępnij użytkownikowi scenariuszy, najlepsze rozwiązania i co Ci się podoba współpracy B2B usługi Azure AD. Dołącz do dyskusji w [społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
- 
+ 
 Zachęcamy także do przesyłania Twoje pomysły i głosuj na przyszłych funkcji w [pomysły współpracy B2B](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Tak, aby użytkownik po prostu "gotowe" możemy wysłać zaproszenie, który jest automatycznie zrealizowany? Lub użytkownik zawsze należy kliknąć na adres URL realizacji?

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6c5e0e47f006c6be170bdbf6fee431bfd3b6df0e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105060"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295644"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Usługa Azure alias DNS rekordów — omówienie
 
@@ -59,6 +59,13 @@ Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równowa�
 Ten problem można rozwiązać przy użyciu rekordów aliasów. W przeciwieństwie do rekordów CNAME można utworzyć aliasu rekordów w wierzchołku strefy i właścicieli aplikacji może użyć go do profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe wskazują ich rekordów w wierzchołku strefy. Właściciele aplikacji może wskazywać tego samego profilu usługi Traffic Manager, używanego do innej domeny w swojej strefie DNS.
 
 Na przykład contoso.com i www\.contoso.com może wskazywać tego samego profilu usługi Traffic Manager. Aby dowiedzieć się więcej o korzystaniu z rekordów aliasów z profilami usługi Azure Traffic Manager, zobacz sekcji Następne kroki.
+
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Wskaż wierzchołku strefy punktów końcowych usługi Azure CDN
+Podobnie jak profil usługi Traffic Manager umożliwia także rekordów aliasów wskaż punktów końcowych usługi CDN Azure wierzchołku strefy usługi DNS. Jest to przydatne podczas tworzenia statycznych witryn internetowych przy użyciu usługi Azure storage i Azure CDN. Można następnie uzyskać dostęp do witryny bez as "www", do nazwy DNS.
+
+Na przykład jeśli statycznej witryny sieci Web ma nazwę www.contoso.com, Twoje użytkownicy mają dostęp witryny przy użyciu domeny contoso.com, bez konieczności można poprzedzić www na nazwę DNS.
+
+Zgodnie z wcześniejszym opisem rekordów CNAME w wierzchołku strefy są nieobsługiwane. Tak nie można użyć rekordu CNAME, aby wskazywał contoso.com punktu końcowego usługi CDN. Zamiast tego można rekord aliasu wskaż wierzchołku strefy punktu końcowego usługi CDN bezpośrednio.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

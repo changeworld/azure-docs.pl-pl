@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: ff28fbb52b33308967051a37fdaa3c6c273fc282
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 64a31e0c8a36b7ea8b60f65caefba9ba15b91777
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816102"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258738"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integracja zewnętrznej rozwiązania do monitorowania za pomocą usługi Azure Stack
 
@@ -81,8 +81,8 @@ Skonfiguruj plik wtyczki "Azurestack_plugin.py" z następującymi parametrami:
 
 | Parametr | Opis | Przykład |
 |---------|---------|---------|
-| *arm_endpoint* | Punkt końcowy usługi Azure Resource Manager (administrator) |https://adminmanagement.local.azurestack.external |
-| *api_endpoint* | Punkt końcowy usługi Azure Resource Manager (administrator)  | https://adminmanagement.local.azurestack.external |
+| *arm_endpoint* | Punkt końcowy usługi Azure Resource Manager (administrator) |protokół https:\//adminmanagement.local.azurestack.external |
+| *api_endpoint* | Punkt końcowy usługi Azure Resource Manager (administrator)  | protokół https:\//adminmanagement.local.azurestack.external |
 | *Tenant_id* | Identyfikator subskrypcji administratora | Pobieranie za pośrednictwem portalu administratora lub programu PowerShell |
 | *Nazwa_użytkownika* | Nazwa operatora subskrypcji użytkownika | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | Hasła subskrypcji — operator | mojehasło |
@@ -96,12 +96,12 @@ Skonfiguruj plik wtyczki "Azurestack_plugin.py" z następującymi parametrami:
 
 Jeśli nie używasz programu Operations Manager, Nagios lub rozwiązaniem opartym na Nagios, można użyć programu PowerShell umożliwiające szerokiej gamy monitorowanie rozwiązań do integracji z usługą Azure Stack.
 
-1. Przy użyciu programu PowerShell, upewnij się, że masz [PowerShell zainstalowaną i skonfigurowaną](azure-stack-powershell-configure-quickstart.md) dla środowiska operatora usługi Azure Stack. Instalowanie programu PowerShell na komputerze lokalnym, który można osiągnąć punktu końcowego usługi Resource Manager (administrator) (https://adminmanagement. [ Region]. [External_FQDN]).
+1. Przy użyciu programu PowerShell, upewnij się, że masz [PowerShell zainstalowaną i skonfigurowaną](azure-stack-powershell-configure-quickstart.md) dla środowiska operatora usługi Azure Stack. Instalowanie programu PowerShell na komputerze lokalnym, który można osiągnąć punktu końcowego usługi Resource Manager (administrator) (https:\//adminmanagement. [ Region]. [External_FQDN]).
 
 2. Uruchom następujące polecenia, aby połączyć się z środowiskiem usługi Azure Stack jako operatorów usługi Azure Stack:
 
    ```PowerShell  
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
+    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https:\//adminmanagement.[Region].[External_FQDN]
 
    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```

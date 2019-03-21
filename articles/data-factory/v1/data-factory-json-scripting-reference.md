@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ee09f8defc7a10b153e910cb7208b0ddb21120b2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 7a3819eedc57e1e349814c9105a0880bf3d4d9ec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543956"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891260"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Usługi Azure Data Factory — Dokumentacja skryptów JSON
 > [!NOTE]
@@ -3325,6 +3325,7 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 | gatewayName |Określa nazwę bramy, która Data Factory powinna używać do łączenia się z serwerem plików lokalnych. |Yes |
 
 #### <a name="sample-folder-path-definitions"></a>Ścieżka folderu definicje
+
 | Scenariusz | Hosting w definicji połączonej usługi | folderPath w definicji zestawu danych |
 | --- | --- | --- |
 | Folder lokalny na maszynie bramy zarządzania danymi: <br/><br/>Przykłady: D:\\ \* lub D:\folder\subfolder\\* |D:\\ \\ (dla danych bramy zarządzania w wersji 2.0 i nowsze wersje) <br/><br/> localhost (dla starszych niż danych bramy zarządzania w wersji 2.0) |. \\ \\ lub folderu\\\\podfolder (dla danych bramy zarządzania w wersji 2.0 i nowsze wersje) <br/><br/>D:\\ \\ lub D:\\\\folderu\\\\podfolder (dla bramy w wersji 2.0) |
@@ -3496,6 +3497,7 @@ Jeśli dane są kopiowane do systemu plików, ustaw **typ ujścia** z działanie
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | copyBehavior |Definiuje zachowania dotyczącego kopiowania, gdy źródłem jest BlobSource lub systemu plików. |**PreserveHierarchy:** Zachowuje hierarchii plików w folderze docelowym. Względna ścieżka pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego, do folderu docelowego.<br/><br/>**FlattenHierarchy:** Wszystkie pliki z folderu źródłowego są tworzone w pierwszy poziom folderu docelowego. Pliki docelowe są tworzone z nazwą wygenerowany automatycznie.<br/><br/>**MergeFiles:** Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli określono nazwę pliku nazwy/obiekt blob, nazwa pliku scalonego jest określona nazwa. W przeciwnym razie jest to nazwa pliku generowanych automatycznie. |Nie |
+
 Auto-
 
 #### <a name="example"></a>Przykład
@@ -3863,7 +3865,7 @@ Aby uzyskać więcej informacji zobacz artykuł dotyczący łącznika systemu pl
 Aby zdefiniować SFTP połączoną usługę, należy ustawić **typu** połączonej usługi, aby **Sftp**i określ następujące właściwości w **typeProperties** sekcji:
 
 | Właściwość | Opis | Wymagane |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | host | Nazwa lub adres IP serwera SFTP. |Yes |
 | port |Port, na którym nasłuchuje serwer SFTP. Wartość domyślna to: 21 |Nie |
 | Element authenticationType |Określ typ uwierzytelniania. Dozwolone wartości: **Podstawowe**, **SshPublicKey**. <br><br> Odnoszą się do uwierzytelniania podstawowego Using i [przy użyciu protokołu SSH uwierzytelnianie klucza publicznego](#using-ssh-public-key-authentication) odpowiednio sekcje więcej właściwości i przykłady kodu JSON. |Yes |
@@ -3877,7 +3879,7 @@ Aby zdefiniować SFTP połączoną usługę, należy ustawić **typu** połączo
 Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `Basic`, a następnie określ następujące właściwości oprócz tych ogólnych wprowadzone w ostatniej sekcji łącznika SFTP:
 
 | Właściwość | Opis | Wymagane |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | nazwa użytkownika | Użytkownik, który ma dostęp do serwera SFTP. |Yes |
 | hasło | Hasło dla użytkownika (nazwa użytkownika). | Yes |
 
@@ -3926,7 +3928,7 @@ Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `Basic
 Aby użyć uwierzytelniania podstawowego, ustaw `authenticationType` jako `SshPublicKey`, a następnie określ następujące właściwości oprócz tych ogólnych wprowadzone w ostatniej sekcji łącznika SFTP:
 
 | Właściwość | Opis | Wymagane |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | nazwa użytkownika |Użytkownik, który ma dostęp do serwera SFTP |Yes |
 | privateKeyPath | Określ ścieżkę bezwzględną do pliku klucza prywatnego może dostęp do tej bramy. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. <br><br> Mają zastosowanie tylko wtedy, gdy kopiowanie danych z lokalnego serwera SFTP. |
 | privateKeyContent | Ciąg serializacji treści klucza prywatnego. Kreator kopiowania można odczytać pliku klucza prywatnego i automatycznie wyodrębnić zawartość klucza prywatnego. Jeśli używane są wszystkie inne narzędzia/zestawu SDK, należy użyć właściwości privateKeyPath. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. |
@@ -5398,7 +5400,7 @@ Pamiętaj o następujących kwestiach:
 Aby uzyskać więcej informacji na temat działania, zobacz [działania platformy Spark](data-factory-spark.md) artykułu.
 
 ## <a name="machine-learning-batch-execution-activity"></a>Działanie wykonywania wsadowego w usłudze Machine Learning
-W programie Azure Machine Learning studio definicji JSON działania wykonywania wsadowego, można określić następujące właściwości. Właściwość type dla działania muszą być: **AzureMLBatchExecution**. Należy utworzyć środowisko Azure Machine Learning najpierw połączonej usługi i określ nazwę ją jako wartość **linkedServiceName** właściwości. Następujące właściwości są obsługiwane w **typeProperties** sekcji, gdy wartość typu działania AzureMLBatchExecution:
+W usłudze Azure Machine Learning studio definicji JSON działania wykonywania wsadowego, można określić następujące właściwości. Właściwość type dla działania muszą być: **AzureMLBatchExecution**. Musi utworzyć Azure Machine Learning najpierw połączonej usługi i określ nazwę ją jako wartość **linkedServiceName** właściwości. Następujące właściwości są obsługiwane w **typeProperties** sekcji, gdy wartość typu działania AzureMLBatchExecution:
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
@@ -5454,7 +5456,7 @@ W tym przykładzie JSON wdrożonej usługi Azure Machine Learning w sieci Web u�
 > Tylko dane wejściowe i wyjściowe aktywności AzureMLBatchExecution mogą być przekazywane jako parametry do usługi sieci Web. Na przykład w powyższym fragmencie kodu JSON MLSqlInput jest wartością wejściową działania AzureMLBatchExecution, który jest przekazywany jako dane wejściowe do usługi sieci Web za pomocą parametru webServiceInput.
 
 ## <a name="machine-learning-update-resource-activity"></a>Działanie aktualizowania zasobów w usłudze Machine Learning
-Można określić następujące właściwości w programie Azure Machine Learning studio definicji JSON działania zasobów aktualizacji. Właściwość type dla działania muszą być: **AzureMLUpdateResource**. Należy utworzyć środowisko Azure Machine Learning najpierw połączonej usługi i określ nazwę ją jako wartość **linkedServiceName** właściwości. Następujące właściwości są obsługiwane w **typeProperties** sekcji, gdy wartość typu działania AzureMLUpdateResource:
+Można określić następujące właściwości w usłudze Azure Machine Learning studio definicji JSON działania zasobów aktualizacji. Właściwość type dla działania muszą być: **AzureMLUpdateResource**. Musi utworzyć Azure Machine Learning najpierw połączonej usługi i określ nazwę ją jako wartość **linkedServiceName** właściwości. Następujące właściwości są obsługiwane w **typeProperties** sekcji, gdy wartość typu działania AzureMLUpdateResource:
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e964e00cd326d924a77a53348942f91ebbdbdea4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9d29608ded920b14af1be6d4d68ab1d77c3c8cb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630164"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099158"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Use Apache Spark Structured Streaming przy użyciu platformy Apache Kafka i Azure Cosmos DB
 
@@ -52,19 +52,19 @@ Chociaż można utworzyć sieci wirtualnej platformy Azure, platformy Kafka i Sp
 
     Ten szablon umożliwia utworzenie następujących zasobów:
 
-    * Klaster Kafka w usłudze HDInsight 3.6.
+   * Klaster Kafka w usłudze HDInsight 3.6.
 
-    * Platforma Spark w klastrze HDInsight 3.6.
+   * Platforma Spark w klastrze HDInsight 3.6.
 
-    * Sieć wirtualna platformy Azure zawierająca klastry usługi HDInsight.
+   * Sieć wirtualna platformy Azure zawierająca klastry usługi HDInsight.
 
-        > [!NOTE]  
-        > Przestrzeń adresów 10.0.0.0/16 korzysta z sieci wirtualnej utworzonej przez szablon.
+       > [!NOTE]  
+       > Przestrzeń adresów 10.0.0.0/16 korzysta z sieci wirtualnej utworzonej przez szablon.
 
-    * Baza danych interfejsu API SQL usługi Azure Cosmos DB.
+   * Baza danych interfejsu API SQL usługi Azure Cosmos DB.
 
-    > [!IMPORTANT]  
-    > Używany w tym przykładzie notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
+     > [!IMPORTANT]  
+     > Używany w tym przykładzie notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
 
 2. Użyj poniższych informacji, aby wypełnić wpisy na **wdrożenie niestandardowe** sekcji:
    

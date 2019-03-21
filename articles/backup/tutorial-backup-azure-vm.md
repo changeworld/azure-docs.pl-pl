@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f923589d0ca000e7dfa8d28b1cbeeb8c6e07f25c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 85e5fc7e1c8a4561b51afaf0d665fedb6d9cde1f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835405"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258381"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -87,9 +87,9 @@ Wykonywane kopie zapasowe zgodnie z harmonogramem określonym w zasadach tworzen
 
 Aby włączyć i utworzyć kopię zapasową maszynę wirtualną platformy Azure w ramach tego samouczka, firma Microsoft wykonaj następujące czynności:
 
-1. Określ kontener w magazynie, który przechowuje dane kopii zapasowej za pomocą [Get AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupcontainer).
-2. Każda maszyna wirtualna do utworzenia kopii zapasowej jest element. Aby uruchomić zadanie tworzenia kopii zapasowej, można uzyskać informacji na temat maszyny Wirtualnej przy użyciu [Get AzRecoveryServicesBackupItem](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupItem).
-3. Uruchom tworzenie kopii zapasowej ad hoc z[AzRecoveryServicesBackupItem kopii zapasowej](/powershell/module/az.recoveryservices.backup/backup-Azrecoveryservicesbackupitem). 
+1. Określ kontener w magazynie, który przechowuje dane kopii zapasowej za pomocą [Get AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
+2. Każda maszyna wirtualna do utworzenia kopii zapasowej jest element. Aby uruchomić zadanie tworzenia kopii zapasowej, można uzyskać informacji na temat maszyny Wirtualnej przy użyciu [Get AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
+3. Uruchom tworzenie kopii zapasowej ad hoc z[AzRecoveryServicesBackupItem kopii zapasowej](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem). 
     - Pierwszy początkowe zadanie tworzenia kopii zapasowej tworzy punkt pełnego odzyskiwania.
     - Po początkowej kopii zapasowej każde zadanie tworzenia kopii zapasowej tworzy przyrostowe punkty odzyskiwania.
     - Przyrostowe punkty odzyskiwania są oszczędne pod względem czasu i miejsca w magazynie, ponieważ przesyłają wyłącznie zmiany wprowadzone od czasu ostatniej kopii zapasowej.

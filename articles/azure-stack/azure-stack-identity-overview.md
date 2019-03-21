@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: e548188f1fc44ec32b90d0eaaa4154602e3e51c4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 665f8ac9a8b0738ed23649673c548bc6b1774d2d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764085"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259962"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Przegląd tożsamości usługi Azure Stack
 
@@ -60,12 +60,12 @@ Jak utworzyć i zarządzać użytkownikami i grupami, zależy od rozwiązania to
 
 W usłudze Azure Stack, kont użytkowników:
 
-- Są tworzone w *username@domain* formatu. Mimo że usług AD FS kont użytkowników jest mapowany do wystąpienia usługi Active Directory, usług AD FS nie obsługuje użycia  *\\ \<domeny >\\\<alias >* formatu.
+- Są tworzone w *username\@domeny* formatu. Mimo że usług AD FS kont użytkowników jest mapowany do wystąpienia usługi Active Directory, usług AD FS nie obsługuje użycia  *\\ \<domeny >\\\<alias >* formatu.
 - Można skonfigurować do korzystania z uwierzytelniania Multi-Factor Authentication.
 - Są ograniczone do katalogu, gdzie są najpierw zarejestrować, jest katalogiem swojej organizacji.
 - Mogą zostać zaimportowane z usługi w katalogach lokalnych. Aby uzyskać więcej informacji, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).
 
-Po zalogowaniu się do portalu dzierżawcy w Twojej organizacji, możesz użyć *https://portal.local.azurestack.external* adresu URL. Podczas logowania się do portalu usługi Azure Stack z domen innych niż ta, używane do rejestrowania usługi Azure Stack, nazwa domeny używane do rejestrowania usługi Azure Stack musi być przypisany do portalu adresu url. Na przykład, jeśli usługi Azure Stack został zarejestrowany za pomocą fabrikam.onmicrosoft.com i konto użytkownika, logowanie jest admin@contoso.com, adres URL na potrzeby zaloguj się do portalu użytkownika: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Po zalogowaniu się do portalu dzierżawcy w Twojej organizacji, możesz użyć *https:\//portal.local.azurestack.external* adresu URL. Podczas logowania się do portalu usługi Azure Stack z domen innych niż ta, używane do rejestrowania usługi Azure Stack, nazwa domeny używane do rejestrowania usługi Azure Stack musi być przypisany do portalu adresu url. Na przykład, jeśli usługi Azure Stack został zarejestrowany za pomocą fabrikam.onmicrosoft.com i konto użytkownika, logowanie jest admin@contoso.com, adres URL na potrzeby zaloguj się do portalu użytkownika: https:\//portal.local.azurestack.external/ Fabrikam.onmicrosoft.com.
 
 ### <a name="guest-users"></a>Użytkownicy-goście
 
@@ -73,7 +73,7 @@ Użytkownicy-goście, są kontami użytkowników z innych dzierżaw katalogu, kt
 
 Aby zaprosić użytkowników-gości, można użyć operatorów w chmurze i użytkowników [współpracy B2B usługi Azure AD](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Zaproszeni użytkownicy uzyskają dostęp do dokumentów, zasobów i aplikacji z katalogu, a Ty masz kontrolę nad własnych zasobów i danych. 
 
-Jako użytkownika-gościa należy zalogować się do dzierżawy katalogu innej organizacji. W tym celu należy dołączyć nazwę katalogu w organizacji do portalu adresu URL. Na przykład, jeśli należą do organizacji Contoso i chcesz zarejestrować się w katalogu firmy Fabrikam, możesz użyć https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Jako użytkownika-gościa należy zalogować się do dzierżawy katalogu innej organizacji. W tym celu należy dołączyć nazwę katalogu w organizacji do portalu adresu URL. Na przykład, jeśli należą do organizacji firmy Contoso, aby zarejestrować się w katalogu firmy Fabrikam używany protokół https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### <a name="applications"></a>Aplikacje
 
@@ -156,10 +156,10 @@ W przypadku aplikacji i użytkowników architektury usługi Azure Stack jest opi
 
 Uwierzytelnianie za pomocą dostawcy tożsamości i odbierać tokenu sieci Web JSON, musi mieć następujące informacje:
 
-1. **Adres URL dla systemu tożsamości (urzędu)**: Adres URL, w którym dostawca tożsamości jest osiągalna. Na przykład *https://login.windows.net*.
+1. **Adres URL dla systemu tożsamości (urzędu)**: Adres URL, w którym dostawca tożsamości jest osiągalna. Na przykład *https:\//login.windows.net*.
 2. **Identyfikator URI Identyfikatora aplikacji dla usługi Azure Resource Manager**: Unikatowy identyfikator dla usługi Azure Resource Manager, która jest zarejestrowana u dostawcy tożsamości. Również jest unikatowy dla każdej instalacji usługi Azure Stack.
 3. **poświadczenia**: Poświadczenia, które służy do uwierzytelniania za pomocą dostawcy tożsamości.
-4. **Adres URL dla usługi Azure Resource Manager**: Adres URL jest lokalizację usługi Azure Resource Manager. Na przykład *https://management.azure.com* lub *https://management.local.azurestack.external*.
+4. **Adres URL dla usługi Azure Resource Manager**: Adres URL jest lokalizację usługi Azure Resource Manager. Na przykład *https:\//management.azure.com* lub *https:\//management.local.azurestack.external*.
 
 Gdy podmiot zabezpieczeń (klienta, aplikacja lub użytkownik) wykonuje żądanie uwierzytelnienia dostępu do zasobu, żądanie musi zawierać:
 

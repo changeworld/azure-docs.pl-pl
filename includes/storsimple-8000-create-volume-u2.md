@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: fa433f55839db66bcf8245fe058ac56702af3d6e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889632"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125162"
 ---
 #### <a name="to-create-a-volume"></a>Aby utworzyć wolumin
 1. Z tabelarycznej listy urządzeń w bloku **Urządzenia** wybierz swoje urządzenie. Kliknij pozycję **+ Dodaj wolumin**.
@@ -22,7 +22,7 @@ ms.locfileid: "55889632"
 
    2. Z listy rozwijanej wybierz kontener woluminów, do którego chcesz dodać wolumin. 
 
-   3.  Wpisz wartość pola **Nazwa** dla woluminu. Nie można zmienić nazwy woluminu po jego utworzeniu.
+   3. Wpisz wartość pola **Nazwa** dla woluminu. Nie można zmienić nazwy woluminu po jego utworzeniu.
 
    4. Z listy rozwijanej wybierz wartość **Typ** dla woluminu. W przypadku obciążeń, które wymagają lokalnych gwarancji, małych opóźnień i większej wydajności, wybierz wolumin typu **Przypięty lokalnie**. W przypadku wszystkich innych danych wybierz wolumin typu **Warstwowy**. Jeśli używasz tego woluminu na potrzeby danych archiwalnych, wybierz opcję **Użyj tego woluminu w przypadku rzadziej używanych danych archiwalnych**.
       
@@ -36,19 +36,19 @@ ms.locfileid: "55889632"
       
        W przypadku alokowania woluminu przypiętego lokalnie o rozmiarze 8,5 TB (maksymalny dozwolony rozmiar) na urządzeniu 8100 całe lokalne miejsce dostępne na urządzeniu zostanie wyczerpane. Od tego momentu nie można tworzyć woluminów warstwowych, ponieważ w urządzeniu nie ma już miejsca lokalnego do hostowania roboczego zestawu woluminu warstwowego. Istniejące woluminy warstwowe również wpływają na dostępne miejsce. Jeśli na przykład masz urządzenie 8100 z woluminami warstwowymi o wielkości około 106 TB, tylko 4 TB są dostępne dla woluminów przypiętych lokalnie.
 
-    6. W polu **Połączone hosty** kliknij strzałkę. 
+      1. W polu **Połączone hosty** kliknij strzałkę. 
 
-        ![Połączone hosty](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
+         ![Połączone hosty](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
 
-    7. W bloku **Połączone hosty** wybierz istniejący rekord ACR lub dodaj nowy rekord ACR, wykonując następujące kroki:
+      1. W bloku **Połączone hosty** wybierz istniejący rekord ACR lub dodaj nowy rekord ACR, wykonując następujące kroki:
 
-       1. Wypełnij pole **Nazwa** dla rekordu ACR.
-       2. W obszarze **Nazwa inicjatora iSCSI** podaj kwalifikowaną nazwę iSCSI (IQN) hosta z systemem Windows. Jeśli nie masz nazwy IQN, przejdź do tematu [Pobieranie nazwy IQN hosta z systemem Windows Server](#get-the-iqn-of-a-windows-server-host).
+         1. Wypełnij pole **Nazwa** dla rekordu ACR.
+         2. W obszarze **Nazwa inicjatora iSCSI** podaj kwalifikowaną nazwę iSCSI (IQN) hosta z systemem Windows. Jeśli nie masz nazwy IQN, przejdź do tematu [Pobieranie nazwy IQN hosta z systemem Windows Server](#get-the-iqn-of-a-windows-server-host).
 
-    9. Kliknij pozycję **Utwórz**. Wolumin zostanie utworzony przy użyciu wybranych ustawień.
+      1. Kliknij pozycję **Utwórz**. Wolumin zostanie utworzony przy użyciu wybranych ustawień.
 
-        ![Kliknięcie pozycji Utwórz](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+         ![Kliknięcie pozycji Utwórz](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 
-        > [!NOTE]
-        > Należy pamiętać, że wolumin, który został utworzony w tym miejscu, nie jest chroniony. Aby móc tworzyć zaplanowane kopie zapasowe, konieczne będzie utworzenie zasad tworzenia kopii zapasowych oraz powiązanie ich z tym woluminem. 
+         > [!NOTE]
+         > Należy pamiętać, że wolumin, który został utworzony w tym miejscu, nie jest chroniony. Aby móc tworzyć zaplanowane kopie zapasowe, konieczne będzie utworzenie zasad tworzenia kopii zapasowych oraz powiązanie ich z tym woluminem. 
 

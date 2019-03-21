@@ -1,5 +1,5 @@
 ---
-title: Dodają użytkowników we współpracy B2B bez zaproszenia łącze lub wiadomość e-mail — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Dodawanie gości B2B bez zaproszenia łącze lub wiadomość e-mail — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Można pozwolić, aby użytkownik-Gość innych użytkowników-gości można dodawać do usługi Azure AD, bez realizowanie zaproszenia we współpracy B2B usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c33d9a3755f2fb5397dd013c88ab542e727e125
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1dca03f84b821d20ee6fecbaec24a1aa840836b5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337672"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294981"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Dodawanie użytkowników-gości współpracy B2B bez zaproszenia łącze lub wiadomości e-mail
 
@@ -33,7 +33,7 @@ Ta metoda oryginalnego nadal działa. Istnieje jednak niewielkie różnice w zac
 
 Jeśli zaproszenie użytkownika do katalogu użytkownik-Gość musi uzyskać dostęp do portalu Azure specyficznym dla dzierżawy zasobów bezpośrednio adres URL (takie jak https://portal.azure.com/ *resourcetenant*. onmicrosoft.com) aby wyświetlić i zaakceptować warunki ochrony prywatności.
 
-### <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 - [Realizacja zaproszenia współpracy B2B](redemption-experience.md)

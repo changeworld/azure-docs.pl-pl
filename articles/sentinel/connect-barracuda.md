@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8cfe902ff8a679dfeaee49cbf0631530e53cf0d4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 453af401f3b6120345cbe489fbfc323eca464ade
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240188"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092280"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Połącz urządzenie Barracuda 
 
@@ -30,8 +30,8 @@ ms.locfileid: "57240188"
 Barracuda zapory aplikacji sieci Web (WAF) łącznik umożliwia łatwe łączenie dzienników Barracuda za pomocą usługi Azure przez wartownika, aby wyświetlić pulpity nawigacyjne, tworzyć niestandardowe alerty i lepsze badanie. To zapewnia lepszy wgląd w sieci swojej organizacji i zwiększa możliwości operacji zabezpieczeń. Wartownik Azure wykorzystuje natywna integracja pomiędzy usługą **Barracuda** i Microsoft Azure OMS, aby zapewnić bezproblemową integrację. 
 
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > - Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Skonfigurować i połączyć z zapory aplikacji internetowych Barracuda

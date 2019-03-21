@@ -9,14 +9,15 @@ ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4ed93bee091bf0a40718a47ffb7cd97a85147c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993487"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293996"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Samouczek: wymuszanie uwierzytelniania wieloskładnikowego dla użytkowników-gości B2B
 
@@ -24,7 +25,7 @@ W przypadku współpracy z zewnętrznymi użytkownikami-gośćmi B2B dobrym pomy
 
 Przykład:
 
-![Aplikacja B2B wymagająca usługi MFA](media/tutorial-mfa/aad-b2b-mfa-example.png)
+![Diagram przedstawiający użytkownikiem-gościem, logując się do aplikacji firmowych](media/tutorial-mfa/aad-b2b-mfa-example.png)
 
 1.  Administrator lub pracownik w firmie A zaprasza użytkownika-gościa do użycia aplikacji w chmurze lub lokalnej, która jest konfigurowana do wymagania usługi MFA w celu uzyskania dostępu.
 2.  Użytkownik-gość loguje się za pomocą własnej tożsamości służbowej lub społecznościowej. 
@@ -56,11 +57,11 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 3.  W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 4.  Wybierz pozycję **Nowy użytkownik-gość**.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-user-3.png)
+    ![Zrzut ekranu przedstawiający miejsce wybrać opcję użytkownika gościa](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
 5.  W obszarze **Nazwa użytkownika** wprowadź adres e-mail użytkownika zewnętrznego. Opcjonalnie możesz dodać komunikat powitalny. 
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-user-4.png)
+    ![Zrzut ekranu przedstawiający miejsce wprowadzania komunikatu zaproszenie gościa](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
 6.  Wybierz pozycję **Zaproś**, aby automatycznie wysłać zaproszenie do użytkownika-gościa. Zostanie wyświetlony komunikat **Pomyślnie zaproszono użytkownika**. 
 7.  Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do katalogu jako gość.
@@ -79,26 +80,26 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 6.  W sekcji **Przypisania** wybierz pozycję **Użytkownicy i grupy**.
 7.  Na stronie **Użytkownicy i grupy** wybierz pozycję **Wybierz użytkowników i grupy**, a następnie wybierz pozycję **Wszyscy użytkownicy-goście (wersja zapoznawcza)**.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-policy-6.png)
+    ![Zrzut ekranu przedstawiający Wybieranie wszyscy użytkownicy-goście](media/tutorial-mfa/tutorial-mfa-policy-6.png)
 9.  Wybierz pozycję **Done** (Gotowe).
 10. Na stronie **Nowy** w sekcji **Przypisania** wybierz pozycję **Aplikacje w chmurze**.
 11. Na stronie **Aplikacje w chmurze** wybierz pozycję **Wybierz aplikację**, a następnie wybierz pozycję **Wybierz**.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-policy-10.png)
+    ![Zrzut ekranu przedstawiający stronę aplikacji w chmurze i wybierz opcję](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
 12. Na stronie **Wybieranie** wybierz pozycję **Microsoft Azure Management**, a następnie wybierz pozycję **Wybierz**.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![Zrzut ekranu przedstawiający wybrano aplikacji Microsoft Azure Management](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. Na stronie **Aplikacje w chmurze** wybierz pozycję **Gotowe**.
 14. Na stronie **Nowy** w sekcji **kontrole dostępu** wybierz pozycję **Udziel**.
 15. Na stronie **Udzielanie** wybierz pozycję **Udziel dostępu**, zaznacz pole wyboru **Wymagaj uwierzytelniania wieloskładnikowego**, a następnie wybierz pozycję **Wybierz**.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-policy-13.png)
+    ![Zrzut ekranu przedstawiający wymagają opcji uwierzytelniania wieloskładnikowego](media/tutorial-mfa/tutorial-mfa-policy-13.png)
 
 16. W obszarze **Włączanie zasad** wybierz pozycję **Włączone**.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-policy-14.png)
+    ![Zrzut ekranu pokazujący opcji zasad Włącz włączona](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
 17. Wybierz pozycję **Utwórz**.
 
@@ -106,27 +107,27 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 
 1.  Na stronie **Dostęp warunkowy — zasady** wybierz pozycję **What If**. 
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![Zrzut ekranu przedstawiający miejsce, zaznacz co, jeśli opcja](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  Wybierz pozycję **Użytkownik**, wybierz testowego użytkownika-gościa, a następnie wybierz pozycję **Wybierz**.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
+    ![Zrzut ekranu przedstawiający wybrany użytkownik-Gość](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
 3.  Wybierz pozycję **Aplikacje w chmurze**.
 4.  Na stronie **Aplikacje w chmurze** wybierz pozycję **Wybierz aplikację**, a następnie kliknij pozycję **Wybierz**. Na liście aplikacji wybierz pozycję **Microsoft Azure Management**, a następnie kliknij pozycję **Wybierz**. 
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
+    ![Zrzut ekranu przedstawiający wybrano aplikacji Microsoft Azure Management](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 
 5.  Na stronie **Aplikacje w chmurze** wybierz pozycję **Gotowe**.
 6.  Wybierz pozycję **What If** i sprawdź, czy nowe zasady są wyświetlane w obszarze **Wyniki oceny** na karcie **Zasady, które będą stosowane**.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
+    ![Zrzut ekranu przedstawiający miejsce, zaznacz co, jeśli opcja](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
 ## <a name="test-your-conditional-access-policy"></a>Testowanie zasad dostępu warunkowego
 1.  Użyj nazwy użytkownika testowego i hasła do zalogowania się do witryny [Azure Portal](https://portal.azure.com/).
 2.  Powinno zostać wyświetlone żądanie dotyczące dodatkowych metod uwierzytelniania. Pamiętaj, że zastosowanie zasad może potrwać pewien czas.
 
-    ![Wybierz pozycję Azure Active Directory](media/tutorial-mfa/mfa-required.png)
+    ![Zrzut ekranu przedstawiający komunikat wymaganych więcej informacji](media/tutorial-mfa/mfa-required.png)
  
 3.  Wyloguj się.
 
