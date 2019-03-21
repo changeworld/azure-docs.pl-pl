@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168247"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894091"
 ---
 <a name="create-a-microsoft-developer-account"></a>Utwórz konto Microsoft Developer
 ====================================
@@ -77,7 +77,7 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
 >[!IMPORTANT]
 >Aby można było przejść przez różne etapy oferty tworzenia i wdrażania, należy wykonać następujące składniki dla deweloperów w profilu.
 
-| Profil dewelopera     | Aby uruchomić projekt    | Przemieszczanie       | Bezpłatnie Publikuj i szablon rozwiązania   | Publikowanie komercyjnych   |
+| Profil dewelopera     | Aby uruchomić projekt    | Przygotowanie       | Bezpłatnie Publikuj i szablon rozwiązania   | Publikowanie komercyjnych   |
 |---------------------- |----------------   |-----------    |-------------------------------------  |---------------------  |
 | Rejestracja firmy  | Musi mieć         | Musi mieć     | Musi mieć                             | Musi mieć             |
 | Profil NIP        | Optional (Opcjonalność)          | Optional (Opcjonalność)      | Optional (Opcjonalność)                              | Musi mieć             |
@@ -90,7 +90,7 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
 
 1. Otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania w celu zapewnienia, że użytkownik nie zalogowany do konta osobistego.
 
-2. Przejdź do [Centrum deweloperów Windows](http://dev.windows.com/registration?accountprogram=azure) Aby zarejestrować się jako sprzedawcy. Przed kontynuowaniem przeczytaj następujące ważne uwagi.
+2. Przejdź do [Centrum deweloperów Windows](https://dev.windows.com/registration?accountprogram=azure) Aby zarejestrować się jako sprzedawcy. Przed kontynuowaniem przeczytaj następujące ważne uwagi.
 
    ![Weryfikacja konta Microsoft](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
 
@@ -157,7 +157,7 @@ Aby opublikować komercyjnych oferty zakupu, należy dodać informacje dotycząc
 
 **Aby podać informacje bank**
 
-1.  Zaloguj się do [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) z Twoim kontem Microsoft.
+1.  Zaloguj się do [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) z Twoim kontem Microsoft.
 2.  Wybierz **konta informacje dotyczące wypłat** w menu po lewej stronie w obszarze **wybierania metody płatności**, wybierz opcję **konta bankowego** lub **PayPal**.
 
     >[!NOTE]
@@ -173,7 +173,7 @@ Aby opublikować komercyjnych oferty zakupu, należy dodać informacje dotycząc
 
 **Aby zapewnić informacje podatkowe**
 
-1.  Zaloguj się do [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) z Twoim kontem Microsoft (jeśli jest to konieczne).
+1.  Zaloguj się do [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) z Twoim kontem Microsoft (jeśli jest to konieczne).
 2.  W menu po lewej stronie wybierz **podatkowych profilu**.
 3.  Na **skonfigurować formularz podatku** strony:
     - Wybierz kraj lub region, w którym masz stały rezydencji.

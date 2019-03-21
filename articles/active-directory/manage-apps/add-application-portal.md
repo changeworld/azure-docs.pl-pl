@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27456f672e2fa67928b43e80bef384a14e9c1d62
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9f062596e2be93065b3c076787c2f5b3dfcedf9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110124"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Szybki start: dodawanie aplikacji do dzierżawy usługi Azure Active Directory
 
@@ -113,35 +113,35 @@ Aby edytować właściwości aplikacji
 
 4. Skorzystaj z poniższych tabel, które pomogą Ci wybrać opcje najlepiej spełniające Twoje potrzeby.
 
-    - Zachowanie w przypadku użytkowników **przypisanych**:
+   - Zachowanie w przypadku użytkowników **przypisanych**:
 
-        | Ustawienia właściwości aplikacji | | | Środowisko użytkowników przypisanych | |
-        |---|---|---|---|---|
-        | Włączono dla użytkowników w celu logowania się? | Wymagane przypisanie użytkownika? | Widoczne dla użytkowników? | Czy przypisani użytkownicy mogą się logować? | Czy przypisani użytkownicy widzą aplikację?* |
-        | tak | tak | tak | tak | tak  |
-        | tak | tak | nie  | tak | nie   |
-        | tak | nie  | tak | tak | tak  |
-        | tak | nie  | nie  | tak | nie   |
-        | nie  | tak | tak | nie  | nie   |
-        | nie  | tak | nie  | nie  | nie   |
-        | nie  | nie  | tak | nie  | nie   |
-        | nie  | nie  | nie  | nie  | nie   |
+       | Ustawienia właściwości aplikacji | | | Środowisko użytkowników przypisanych | |
+       |---|---|---|---|---|
+       | Włączono dla użytkowników w celu logowania się? | Wymagane przypisanie użytkownika? | Widoczne dla użytkowników? | Czy przypisani użytkownicy mogą się logować? | Czy przypisani użytkownicy widzą aplikację?* |
+       | tak | tak | tak | tak | tak  |
+       | tak | tak | nie  | tak | nie   |
+       | tak | nie  | tak | tak | tak  |
+       | tak | nie  | nie  | tak | nie   |
+       | nie  | tak | tak | nie  | nie   |
+       | nie  | tak | nie  | nie  | nie   |
+       | nie  | nie  | tak | nie  | nie   |
+       | nie  | nie  | nie  | nie  | nie   |
 
-    - Zachowanie w przypadku użytkowników **nieprzypisanych**:
+   - Zachowanie w przypadku użytkowników **nieprzypisanych**:
 
-        | Ustawienia właściwości aplikacji | | | Środowisko użytkowników nieprzypisanych | |
-        |---|---|---|---|---|
-        | Włączono dla użytkowników w celu logowania się? | Wymagane przypisanie użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
-        | tak | tak | tak | nie  | nie   |
-        | tak | tak | nie  | nie  | nie   |
-        | tak | nie  | tak | tak | nie   |
-        | tak | nie  | nie  | tak | nie   |
-        | nie  | tak | tak | nie  | nie   |
-        | nie  | tak | nie  | nie  | nie   |
-        | nie  | nie  | tak | nie  | nie   |
-        | nie  | nie  | nie  | nie  | nie   |
+       | Ustawienia właściwości aplikacji | | | Środowisko użytkowników nieprzypisanych | |
+       |---|---|---|---|---|
+       | Włączono dla użytkowników w celu logowania się? | Wymagane przypisanie użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
+       | tak | tak | tak | nie  | nie   |
+       | tak | tak | nie  | nie  | nie   |
+       | tak | nie  | tak | tak | nie   |
+       | tak | nie  | nie  | tak | nie   |
+       | nie  | tak | tak | nie  | nie   |
+       | nie  | tak | nie  | nie  | nie   |
+       | nie  | nie  | tak | nie  | nie   |
+       | nie  | nie  | nie  | nie  | nie   |
 
-    *Czy użytkownik widzi aplikację w panelu dostępu i narzędziu do uruchamiania aplikacji usługi Office 365?
+     *Czy użytkownik widzi aplikację w panelu dostępu i narzędziu do uruchamiania aplikacji usługi Office 365?
 
 ## <a name="use-a-custom-logo"></a>Używanie logo niestandardowego
 
@@ -156,7 +156,7 @@ Aby użyć logo niestandardowego:
     ![Zmienianie logo](media/add-application-portal/change-logo.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przedstawiono sposób dodawania aplikacji z galerii do dzierżawy usługi Azure AD. Przedstawiono sposób edytowania właściwości aplikacji.
 

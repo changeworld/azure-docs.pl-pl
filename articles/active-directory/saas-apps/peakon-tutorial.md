@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e32f0ac6fcc6839bad973c3d014436d08ae43896
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b841cbe838156cd00876a9a13c7a9cbe1790ea80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211313"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Peakon
 
@@ -190,7 +190,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -220,7 +220,7 @@ W przypadku Peakon Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
     a. W **nazwa** polu tekstowym wpisz imię jako **Britta** i nazwiska jako **simon**.
 
-    b. W **E-mail** pole tekstowe, wpisz adres e-mail, takich jak **Brittasimon@contoso.com**.
+    b. W **E-mail** pole tekstowe, wpisz adres e-mail, takich jak **Brittasimon\@contoso.com**.
 
     c. Kliknij przycisk **pracowników Utwórz**.
 
@@ -257,7 +257,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

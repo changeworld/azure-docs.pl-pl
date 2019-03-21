@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 025f2ecef070170fef216d7533150359cf11c50f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092590"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193368"
 ---
-# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Przewodnik Szybki start — integracja konta magazynu platformy Azure z usługą Azure CDN
+# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Szybki start: Integrowanie konta usługi Azure storage z usługą Azure CDN
 W tym przewodniku Szybki start włączysz usługę [Azure Content Delivery Network (CDN)](cdn-overview.md), aby buforować zawartość z magazynu Azure. Usługa Azure CDN oferuje deweloperom globalne rozwiązanie umożliwiające dostarczanie zawartości z wysoką przepustowością. Może buforować obiekty blob oraz zawartość statyczną wystąpień obliczeniowych na węzłach fizycznych w Stanach Zjednoczonych, Europie, Azji, Australii i Ameryce Południowej.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -31,7 +31,7 @@ W tym przewodniku Szybki start włączysz usługę [Azure Content Delivery Netwo
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta platformy Azure.
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
-Poniższa procedura umożliwia utworzenie nowego konta magazynu dla subskrypcji platformy Azure. Konto magazynu zapewnia dostęp do usług Azure Storage. Konto magazynu reprezentuje najwyższy poziom przestrzeni nazw do uzyskiwania dostępu do poszczególnych składników usługi Azure Storage: Azure Blob Storage, Queue Storage oraz Table Storage. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Microsoft Azure Storage](../storage/common/storage-introduction.md).
+Poniższa procedura umożliwia utworzenie nowego konta magazynu dla subskrypcji platformy Azure. Konto magazynu zapewnia dostęp do usług Azure Storage. Konto magazynu oznacza najwyższy poziom przestrzeni nazw do uzyskiwania dostępu do wszystkich składników usługi Azure Storage: Usługa Azure storage Blob, Queue oraz Table. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Microsoft Azure Storage](../storage/common/storage-introduction.md).
 
 Aby utworzyć konto magazynu, musisz być administratorem usługi albo współadministratorem subskrypcji skojarzonej.
 
@@ -96,9 +96,10 @@ Usługę Azure CDN dla konta magazynu można włączyć bezpośrednio z konta ma
 
     | Ustawienie  | Wartość |
     | -------- | ----- |
-    | **Profil CDN** | Wybierz opcję **Utwórz nowy** i wprowadź *my-cdn-profile-123* jako nazwę profilu. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę.  |
+    | **Profil CDN** | Wybierz **Utwórz nową** i wprowadź nazwę profilu, na przykład *my-cdn-profile-123*. Ta nazwa musi być unikatowa w skali globalnej.  |
     | **Warstwa cenowa** | Z listy rozwijanej wybierz pozycję **Verizon — Standardowa**. |
-    | **Nazwa punktu końcowego usługi CDN** | Wprowadź ciąg *my-endpoint-123* jako nazwę hosta punktu końcowego. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_.azureedge.net. Domyślnie nowy punkt końcowy CDN używa jako nazwy serwera pochodzenia nazwy hosta konta magazynu.|
+    | **Nazwa punktu końcowego usługi CDN** | Wprowadź nazwę hosta punktu końcowego usługi, czyli *my-endpoint-123*. Ta nazwa musi być unikatowa w skali globalnej. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_.azureedge.net. |
+    | **Nazwa hosta źródła** | Domyślnie nowy punkt końcowy CDN używa jako nazwy serwera pochodzenia nazwy hosta konta magazynu. |
 
 3. Wybierz pozycję **Utwórz**. Po utworzeniu punktu końcowego zostanie on wyświetlony na liście punktów końcowych.
 
@@ -141,9 +142,9 @@ W poprzednich krokach utworzono profil i punkt końcowy usługi CDN w grupie zas
 
 3. Aby usunąć konto magazynu, wybierz je z pulpitu nawigacyjnego, a następnie wybierz opcję **Usuń** z górnego menu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat dodawania domeny niestandardowej i włączania protokołu HTTP w punkcie końcowym usługi CDN, zapoznaj się z następującym samouczkiem:
 
 > [!div class="nextstepaction"]
-> [Samouczek: uzyskiwanie dostępu do obiektów blob magazynu w domenie niestandardowej usługi Azure CDN za pośrednictwem protokołu HTTPS](cdn-storage-custom-domain-https.md)
+> [Samouczek: Dostęp do magazynu obiektów blob przy użyciu domeny niestandardowej Azure CDN przy użyciu protokołu HTTPS](cdn-storage-custom-domain-https.md)
 
