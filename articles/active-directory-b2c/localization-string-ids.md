@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3f72480aaa05c0f50179d4d330525b12525282bc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5f937a86e4e063ad1e8346dc629a917ae7ce8b65
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161872"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077211"
 ---
 # <a name="localization-string-ids"></a>Lokalizacja ciągu identyfikatorów
 
@@ -33,7 +33,7 @@ Następujące identyfikatory są używane na potrzeby definicji zawartości o id
 | **logonIdentifier_email** | Adres e-mail |
 | **requiredField_email** | Wprowadź swój adres e-mail |
 | **invalid_email** | Wprowadź prawidłowy adres e-mail |
-| **email_pattern** | ^ [a-zA-Z0-9.! #$% &'' * +/ =? ^ _'{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^ [a-zA-Z0-9.! #$% & "*+/ =? ^ _\`{\|} ~-]+@[a-zA-Z0-9-]+ (?:\\. [ -zA-Z0 - 9-] +)*$ |
 | **local_intro_username** | Zaloguj się przy użyciu swojej nazwy użytkownika |
 | **logonIdentifier_username** | Nazwa użytkownika |
 | **requiredField_username** | Wprowadź swoją nazwę użytkownika |
