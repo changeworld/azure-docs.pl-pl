@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53cc987d13479fc0d9276ec80f33a163a2a6ded7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: f7f235ce709fd81c4bb4c367774b4a96cd920e13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817035"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120350"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Samouczek: Zabezpieczanie artefaktów w przypadku wdrożeń szablonów usługi Azure Resource Manager
 
@@ -126,11 +126,11 @@ Kontener obiektów blob jest wymagany, aby można było przekazywać pliki.
 3. Wybierz pozycję **Generuj token i adres URL sygnatury dostępu współdzielonego obiektu blob**.
 4. Utwórz kopię **adresu URL sygnatury dostępu współdzielonego obiektu blob**. W środku adresu URL jest nazwa pliku **SQLDatabaseExtension.bacpac**.  Ta nazwa pliku dzieli adres URL na trzy części:
 
-    - **Lokalizacja artefaktu**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Upewnij się, że lokalizacja kończy się znakiem „/”.
-    - **Nazwa pliku BACPAC**: SQLDatabaseExtension.bacpac.
-    - **Token sygnatury dostępu współdzielonego lokalizacji artefaktu**: Upewnij się, że token jest poprzedzony znakiem „?”.
+   - **Lokalizacja artefaktu**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Upewnij się, że lokalizacja kończy się znakiem „/”.
+   - **Nazwa pliku BACPAC**: SQLDatabaseExtension.bacpac.
+   - **Token sygnatury dostępu współdzielonego lokalizacji artefaktu**: Upewnij się, że token jest poprzedzony znakiem „?”.
 
-    Te trzy wartości będą Ci potrzebne w sekcji [Wdrażanie szablonu](#deploy-the-template).
+     Te trzy wartości będą Ci potrzebne w sekcji [Wdrażanie szablonu](#deploy-the-template).
 
 ## <a name="open-an-existing-template"></a>Otwieranie istniejącego szablonu
 
@@ -146,13 +146,13 @@ W tej sesji zmodyfikujesz szablon utworzony w artykule [Samouczek: Importowanie 
 
     W tym szablonie zdefiniowano pięć zasobów:
 
-    * `Microsoft.Sql/servers`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
-    * `Microsoft.SQL/servers/securityAlertPolicies`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
-    * `Microsoft.SQL/servers/filewallRules`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
-    * `Microsoft.SQL/servers/databases`.  Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
-    * `Microsoft.SQL/server/databases/extensions`.  Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
+   * `Microsoft.Sql/servers`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
+   * `Microsoft.SQL/servers/securityAlertPolicies`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
+   * `Microsoft.SQL/servers/filewallRules`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
+   * `Microsoft.SQL/servers/databases`.  Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.SQL/server/databases/extensions`.  Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
-    Warto uzyskać podstawową wiedzę na temat szablonu przed rozpoczęciem jego dostosowywania.
+     Warto uzyskać podstawową wiedzę na temat szablonu przed rozpoczęciem jego dostosowywania.
 4. Wybierz pozycję **Plik**>**Zapisz jako**, aby zapisać kopię pliku o nazwie **azuredeploy.json** na komputerze lokalnym.
 
 ## <a name="edit-the-template"></a>Edytowanie szablonu
@@ -235,7 +235,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 3. Wybierz nazwę grupy zasobów.  W grupie zasobów zostanie wyświetlonych łącznie sześć zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wdrożono program SQL Server i usługę SQL Database oraz zaimportowano plik BACPAC przy użyciu tokenu SAS. Aby dowiedzieć się, jak wdrażać zasoby platformy Azure w wielu regionach i jak stosować praktyki bezpiecznego wdrażania, zobacz
 

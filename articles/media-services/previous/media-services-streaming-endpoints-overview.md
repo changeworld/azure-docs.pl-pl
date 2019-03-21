@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b40a2bbfa7bbab7ffbdd4c47684eda7c954e7b77
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c5979fa7ff67c5acda9ab653bc4ee52d8b5129a5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996956"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293808"
 ---
 # <a name="streaming-endpoints-overview"></a>Omówienie punktów końcowych przesyłania strumieniowego  
 
@@ -50,8 +50,8 @@ Począwszy od stycznia 2017 wersję usługi Media Services, istnieją dwa typy p
 
 Type|Opis
 ---|---
-**Standardowa**|Jest to opcja domyślna, która będzie działać w przypadku większości scenariuszy.<br/>Po wybraniu tej opcji Pobierz umowę SLA/limited, pierwsze 15 dni, po uruchomieniu punktu końcowego przesyłania strumieniowego jest bezpłatna.<br/>Jeśli tworzysz więcej niż jedną punkty końcowe, przesyłania strumieniowego tylko pierwszy z nich jest bezpłatna przez pierwsze 15 dni, inne są rozliczane zaraz po ich uruchomieniu. <br/>Należy pamiętać, że bezpłatnej wersji próbnej ma zastosowanie tylko do konta usługi media nowo utworzony i domyślny punkt końcowy przesyłania strumieniowego. Istniejące punkty końcowe przesyłania strumieniowego i dodatkowo utworzone punkty końcowe przesyłania strumieniowego nie zawiera bezpłatny okres próbny jeszcze są uaktualniane do wersji 2.0 lub są one tworzone w wersji 2.0.
-**Premium**|Ta opcja jest odpowiednia dla profesjonalnych scenariusze, które wymagają wyższej skali lub formantu.<br/>Zmiennej umowy SLA, który jest oparty na premium przesyłania strumieniowego (SU) jednostki nabyte miejsce w dedykowanej punkty końcowe przesyłania strumieniowego na żywo w izolowanym środowisku, a nie konkurują o zasoby.
+**Standardowa** |Jest to opcja domyślna, która będzie działać w przypadku większości scenariuszy.<br/>Po wybraniu tej opcji Pobierz umowę SLA/limited, pierwsze 15 dni, po uruchomieniu punktu końcowego przesyłania strumieniowego jest bezpłatna.<br/>Jeśli tworzysz więcej niż jedną punkty końcowe, przesyłania strumieniowego tylko pierwszy z nich jest bezpłatna przez pierwsze 15 dni, inne są rozliczane zaraz po ich uruchomieniu. <br/>Należy pamiętać, że bezpłatnej wersji próbnej ma zastosowanie tylko do konta usługi media nowo utworzony i domyślny punkt końcowy przesyłania strumieniowego. Istniejące punkty końcowe przesyłania strumieniowego i dodatkowo utworzone punkty końcowe przesyłania strumieniowego nie zawiera bezpłatny okres próbny jeszcze są uaktualniane do wersji 2.0 lub są one tworzone w wersji 2.0.
+**Premium** |Ta opcja jest odpowiednia dla profesjonalnych scenariusze, które wymagają wyższej skali lub formantu.<br/>Zmiennej umowy SLA, który jest oparty na premium przesyłania strumieniowego (SU) jednostki nabyte miejsce w dedykowanej punkty końcowe przesyłania strumieniowego na żywo w izolowanym środowisku, a nie konkurują o zasoby.
 
 Aby uzyskać więcej informacji, zobacz **porównania przesyłania strumieniowego typy** tej sekcji.
 

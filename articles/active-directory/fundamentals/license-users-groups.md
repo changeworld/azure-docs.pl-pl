@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10346ea0aa292be33f820bd4e92434e2c58a89ab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194312"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286860"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory
 Wiele usług Azure Active Directory (Azure AD) wymagają aktywacji produktu usługi Azure AD i wszystkich użytkowników lub grup (i skojarzone elementy członkowskie) licencji dla tego produktu. Tylko użytkownicy z liczby aktywnych licencji będą mogli uzyskać dostęp do licencjonowanych usługi Azure AD.
@@ -47,7 +47,7 @@ Możesz wyświetlić dostępne produkty, w poszczególnych licencji, w tym spraw
 
     **Licencji** zostanie wyświetlona strona.
 
-    ![Licencje na stronie, w którym wyświetlana jest liczba zakupionych produktów i przypisanych licencji](media/license-users-groups/license-details-blade.png)
+    ![Strona licencji, o liczbie zakupionych produktów i przypisanych licencji](media/license-users-groups/license-details-blade.png)
     
 3. Wybierz **zakupionych produktów** link, aby wyświetlić **produktów** strony i zobaczyć **przypisane**, **dostępne**, i  **Wkrótce wygaśnie** szczegółów dla każdej wersji określonego produktu.
 
@@ -76,7 +76,7 @@ Upewnij się, że każdy konieczności korzystania z licencjonowanego usługi Az
 
 4. Wybierz **opcje przydziału**, upewnij się, że masz odpowiednią licencję opcje włączona, a następnie wybierz **OK**.
 
-    ![Strona opcji licencji wyświetlane są wszystkie opcje dostępne w wydaniu](media/license-users-groups/license-option-blade-assignments.png)
+    ![Strona opcji licencji, wszystkie opcje dostępne w wersji](media/license-users-groups/license-option-blade-assignments.png)
 
     **Przypisywanie licencji** aktualizacji, aby pokazać, że użytkownik jest zaznaczone, a przydziały są skonfigurowane stron.
 
@@ -102,7 +102,7 @@ Upewnij się, że każdy konieczności korzystania z licencjonowanego usługi Az
 
 4. Wybierz **opcje przydziału**, upewnij się, że masz odpowiednią licencję opcje włączona, a następnie wybierz **OK**.
 
-    ![Strona opcji licencji wyświetlane są wszystkie opcje dostępne w wydaniu](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Strona opcji licencji, wszystkie opcje dostępne w wersji](media/license-users-groups/license-option-blade-group-assignments.png)
 
     **Przypisywanie licencji** aktualizacji, aby pokazać, że użytkownik jest zaznaczone, a przydziały są skonfigurowane stron.
 
@@ -112,7 +112,6 @@ Upewnij się, że każdy konieczności korzystania z licencjonowanego usługi Az
 5. Wybierz opcję **Przypisz**.
 
     Grupa jest dodawana do listy grup licencji, i wszyscy członkowie mają dostęp do dołączonej usługi Azure AD.
-
 
 ## <a name="remove-a-license"></a>Usuwanie licencji
 Możesz usunąć licencję dla użytkownika lub grupy z **licencji** strony.

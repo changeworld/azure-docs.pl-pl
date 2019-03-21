@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 1996befa78409e572798a9043f7e6ee3b6f647bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887909"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286571"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Azure Monitor
 Przy użyciu projektanta widoku w usłudze Azure Monitor, można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
@@ -43,6 +43,9 @@ Widoki, które tworzysz przy użyciu projektanta widoku zawierają elementy, kt�
 | Kafelki | Są wyświetlane w usłudze Azure Monitor **Przegląd** strony. Każdy Kafelek Wyświetla wizualnego podsumowania widoku niestandardowego, który go reprezentuje. Każdy typ kafelka zawiera inny typ wizualizacji rekordy. Możesz wybrać Kafelek, aby wyświetlić widok niestandardowy. |
 | Widok niestandardowy | Wyświetlane po wybraniu kafelka. Każdy widok zawiera jedną lub więcej z części wizualizacji. |
 | Części wizualizacji | Prezentowanie wizualizacji danych w obszarze roboczym usługi Log Analytics, w oparciu o co najmniej jeden [rejestrowania zapytań](../log-query/log-query-overview.md). Większość elementów obejmują nagłówka, który zawiera wizualizację wysokiego poziomu, oraz listy, który wyświetla najwyższe wyniki. Każdy typ części zawiera inny typ wizualizacji rekordów w obszarze roboczym usługi Log Analytics. Możesz wybrać elementy w części, aby wykonać zapytanie dziennika, który zawiera szczegółową dokumentację. |
+
+## <a name="required-permissions"></a>Wymagane uprawnienia
+Potrzebujesz co najmniej [uprawnień na poziomie współautora](manage-access.md#manage-accounts-and-users) w obszarze roboczym usługi Log Analytics, aby utworzyć lub zmodyfikować widoków. Jeśli nie posiada tego uprawnienia, opcja Projektant widoków nie będzie wyświetlana w menu.
 
 
 ## <a name="work-with-an-existing-view"></a>Praca z istniejącego widoku

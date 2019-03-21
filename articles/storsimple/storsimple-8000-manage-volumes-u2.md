@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822310"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093334"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Usługa Menedżer urządzeń StorSimple umożliwia zarządzanie woluminami (Update 3 lub nowszy)
 
@@ -235,7 +235,7 @@ Można zmienić woluminu przypiętego lokalnie na wolumin warstwowy, jeśli potr
    * W przypadku zmiany typu, który ma **warstwowy** i ten wolumin będą używane na potrzeby danych archiwalnych, wybierz opcję **Użyj tego woluminu dla rzadziej używanych danych archiwalnych** pole wyboru.
    * Jeśli konfigurujesz woluminu przypiętego lokalnie, zgodnie z zasadami warstwowej lub _odwrotnie_, zostanie wyświetlony następujący komunikat.
    
-    ![Komunikat typu woluminu zmiany](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![Komunikat typu woluminu zmiany](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
 7. Kliknij przycisk **Zapisz**, aby zapisać zmiany. Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak** można uruchomić procesu konwersji. 
 

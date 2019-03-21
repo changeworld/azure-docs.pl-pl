@@ -9,18 +9,18 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 3441350a07047676ac43de23262be6c54912162c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104169"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292890"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonywać zaawansowane przekształceń JSON i łącznika Liquid szablonów w usłudze Azure Logic Apps
 
-Można wykonać podstawowe przekształceń JSON w aplikacjach logiki, za pomocą danych natywnych operacji akcji takich jak **Compose** lub **Przeanalizuj dane JSON**. Wykonywanie zaawansowanych przekształceń JSON, można utworzyć szablony lub mapy za pomocą [Liquid](https://shopify.github.io/liquid/), który jest językiem szablonu typu open source dla aplikacji sieci web elastyczne. Płynne Szablony umożliwiają definiowanie sposobu przekształcać dane wyjściowe JSON i obsługuje bardziej złożonych transformacji JSON, takich jak iteracji, kontrolować przepływy, zmienne i tak dalej. 
+Można wykonać podstawowe przekształceń JSON w aplikacjach logiki, za pomocą danych natywnych operacji akcji takich jak **Compose** lub **Przeanalizuj dane JSON**. Wykonywanie zaawansowanych przekształceń JSON, można utworzyć szablony lub mapy za pomocą [Liquid](https://shopify.github.io/liquid/), który jest językiem szablonu typu open source dla aplikacji sieci web elastyczne. Płynne szablon definiuje sposób przekształcania danych wyjściowych JSON i obsługuje bardziej złożonych przekształceń JSON, takich jak iteracji przepływów sterowania, zmienne i tak dalej. 
 
-Tak zanim będzie można wykonywać przekształcenia Liquid w aplikacji logiki, należy najpierw zdefiniować za pomocą pliku JSON do mapowania JSON przy użyciu szablonu płynne i magazynu, które mapują na koncie integracji. W tym artykule przedstawiono sposób tworzenia i używania tego szablonu Liquid lub mapy. 
+Zanim będzie można wykonywać przekształcenia Liquid w aplikacji logiki, należy najpierw zdefiniować za pomocą pliku JSON do formatu JSON mapowania przy użyciu szablonu płynne i magazynu, które mapują na koncie integracji. W tym artykule przedstawiono sposób tworzenia i używania tego szablonu Liquid lub mapy. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,10 @@ Tak zanim będzie można wykonywać przekształcenia Liquid w aplikacji logiki, 
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tworzenie płynnych szablon lub mapy dla konta integracji
 
-1. W tym przykładzie należy utworzyć przykładowy szablon Liquid opisane w tym kroku. W szablonie Liquid służy [filtry cieczy](https://shopify.github.io/liquid/basics/introduction/#filters), wykorzystującymi [DotLiquid](https://dotliquidmarkup.org/) i C# konwencji nazewnictwa. Jednak upewnij się, że *rozpoczynać nazw filtrów wielkich liter*, nie małe litery. 
+1. W tym przykładzie należy utworzyć przykładowy szablon Liquid opisane w tym kroku. W szablonie Liquid służy [filtry cieczy](https://shopify.github.io/liquid/basics/introduction/#filters), wykorzystującymi [DotLiquid](https://dotliquidmarkup.org/) i C# konwencji nazewnictwa. 
+
+   > [!NOTE]
+   > Upewnij się, użyj nazwy filtru *zasad stosowania wielkich liter* w szablonie. W przeciwnym razie filtry nie będzie działać.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}

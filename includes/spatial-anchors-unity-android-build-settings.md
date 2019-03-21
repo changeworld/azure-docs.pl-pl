@@ -4,25 +4,25 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 662aced6df27febdf29f2645725962763e89cfa2
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: 53f480b8858e2bbe7d4699d8637ecaa5ab0c08a3
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752728"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305181"
 ---
-Otwórz aparat Unity i otwórz projekt w folderze `Unity`.
+Na platformie Unity, otwórz projekt w `Unity` folderu.
 
-Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** -> **Build Settings (Ustawienia kompilacji)**.
+Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
 
-W sekcji **Platform (Platforma)** wybierz pozycję **Android**. Następnie zmień wartość pola **Build System (System kompilacji)** na **Gradle** i zaznacz pole wyboru **Export Project (Eksportuj projekt)**.
+W sekcji **Platform (Platforma)** wybierz pozycję **Android**. Zmiana **System kompilacji** do **Gradle** i wybierz **Eksportowanie projektu**.
 
-Wybierz pozycję **Switch Platform (Przełącz platformę)**, aby zmienić platformę na **Android**. Aparat Unity może poprosić o zainstalowanie składników obsługi systemu Android, jeśli ich brakuje.
+Wybierz pozycję **Switch Platform (Przełącz platformę)**, aby zmienić platformę na **Android**. Unity może spowodować wyświetlenie monitu do zainstalowania składników obsługi systemu Android, jeśli są one Brak.
 
-![Ustawienia kompilacji aparatu Unity](./media/spatial-anchors-unity/unity-android-build-settings.png)
+![Okno ustawień kompilacji platformy Unity](./media/spatial-anchors-unity/unity-android-build-settings.png)
 
 Zamknij okno **Build Settings (Ustawienia kompilacji)**.
 
 ### <a name="download-and-import-the-arcore-sdk-for-unity"></a>Pobierz i zaimportuj zestaw ARCore SDK dla aparatu Unity
 
-Pobierz plik `unitypackage` z sekcji [wersji zestawu ARCore SDK dla aparatu Unity](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0). W projekcie aparatu Unity wybierz pozycję **Assets (Zasoby)** -> **Import Package (Importuj pakiet)** -> **Custom Package... (Pakiet niestandardowy...)**, a następnie wybierz pobrany wcześniej plik `unitypackage`. W oknie dialogowym **Import Unity Package (Importowanie pakietu aparatu Unity)** upewnij się, że wybrane są wszystkie pliki, a następnie wybierz pozycję **Import (Importuj)**.
+Pobierz plik `unitypackage` z sekcji [wersji zestawu ARCore SDK dla aparatu Unity](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0). W projekcie Unity, wybierz **zasoby** > **Importuj pakiet** > **niestandardowy pakiet** , a następnie wybierz `unitypackage` plik wcześniej pobrane. W **Importowanie pakietu Unity** okno dialogowe, upewnij się, że zaznaczone są wszystkie pliki, a następnie wybierz pozycję **importu**.

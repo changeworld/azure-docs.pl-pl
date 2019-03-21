@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3413b235d9202530eb1a3129637e3746bbe6585b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124666"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872579"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wymienianie komunikatów AS2 integracji przedsiębiorstw B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
@@ -35,7 +35,7 @@ Po zakończeniu [utworzyć konto integracji](../logic-apps/logic-apps-enterprise
 
 ## <a name="create-an-as2-agreement"></a>Tworzenie umowy AS2
 
-1.  Zaloguj się w witrynie [Azure Portal](http://portal.azure.com "Azure Portal").  
+1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com "Azure Portal").  
 
 2. W głównym menu platformy Azure, wybierz **wszystkich usług**. W polu wyszukiwania wprowadź "integration", a następnie wybierz pozycję **kont integracji**.
 

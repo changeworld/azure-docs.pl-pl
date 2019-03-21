@@ -5,24 +5,71 @@ services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/12/2019
+ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 16ba6b73dd0c64298f319d4b18750d753f166987
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 92799019d13de71d911767d8e400598513587667
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849384"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258409"
 ---
-# <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Omówienie kompleksowej usługi SSL z usługą Application Gateway
+# <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Omówienie kończenia żądań SSL i kompleksowej usługi SSL z usługą Application Gateway
 
-Usługa Application Gateway obsługuje kończenia żądań SSL na bramie, po której ruch na ogół płynie niezaszyfrowany do serwerów wewnętrznej bazy danych. Ta funkcja umożliwia odciążenie serwerów sieci Web z nadmiaru kosztownych operacji szyfrowania i odszyfrowywania. Jednak dla niektórych klientów nieszyfrowana komunikacja z serwerami zaplecza jest opcją niemożliwą do zaakceptowania. Nieszyfrowana komunikacja może być spowodowana przez wymagania dotyczące zabezpieczeń lub zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji brama aplikacji obsługuje kompleksowe szyfrowanie SSL.
+Secure Sockets Layer (SSL) to technologia standardowych zabezpieczeń, do nawiązywania zaszyfrowanego połączenia między serwera sieci web i przeglądarką. Ten link gwarantuje, że wszystkie dane są przekazywane między serwerem sieci web i przeglądarek pozostają prywatne i szyfrowana. Usługa Application gateway obsługuje zarówno kończenia żądań SSL bramy, jak również kompleksowe szyfrowanie SSL.
+
+## <a name="ssl-termination"></a>Kończenie żądań protokołu SSL
+
+Usługa Application Gateway obsługuje kończenia żądań SSL na bramie, po której ruch na ogół płynie niezaszyfrowany do serwerów wewnętrznej bazy danych. Istnieje wiele z korzyści wynikających z wykonywania kończenia żądań SSL na bramie aplikacji:
+
+- **Zwiększona wydajność** — największa wydajność osiągnięty podczas odszyfrowywania protokołu SSL jest początkowa uzgadniania. W celu poprawy wydajności serwera, wykonując odszyfrowywania buforuje identyfikatory sesji SSL i zarządza biletami sesji TLS. Jeśli zostanie to zrobione w usłudze application gateway, wszystkie żądania z tego samego klienta można użyć wartości z pamięci podręcznej. Jeśli to się robi na serwerach wewnętrznej bazy danych, następnie każdorazowo żądania tego klienta przejdź do innego serwera, klienta musi re‑authenticate. Korzystanie z protokołu TLS biletów może pomóc rozwiązać ten problem, ale nie są obsługiwane przez wszystkich klientów i mogą być trudne do konfigurowania i zarządzania nimi.
+- **Lepsze wykorzystanie serwerów wewnętrznej bazy danych** — SSL/TLS przetwarzania jest bardzo intensywnie z Procesora i staje się coraz bardziej intensywnie, zwiększania rozmiaru klucza. Usuwanie tę pracę z serwerów zaplecza pozwala skoncentrować się na jakie są najbardziej efektywny sposób na dostarczania zawartości.
+- **Inteligentnego routingu** — odszyfrowywania ruchu, brama aplikacji ma dostęp do zawartości żądania, takie jak nagłówki, identyfikator URI i tak dalej i może użyć tych danych w celu kierowania żądań.
+- **Zarządzanie certyfikatami** — certyfikaty tylko muszą zostać zakupione i zainstalowane na bramie aplikacji i nie wszystkie serwery zaplecza. Spowoduje to zapisanie czas i pieniądze.
+
+Aby skonfigurować kończenia żądań SSL, certyfikat SSL jest wymagany do dodania do odbiornika do włączenia do wyprowadzenia klucza symetrycznego zgodnie z specyfikacją protokołu SSL bramy aplikacji. Klucz symetryczny jest następnie używany do szyfrowania i odszyfrowywania ruch wysyłany do bramy. Certyfikat SSL musi mieć format wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, wymagane przez tę bramę aplikacji z realizacją szyfrowania i odszyfrowywania ruchu.
+
+> [!NOTE] 
+>
+> Usługa Application gateway nie zapewnia możliwość tworzenia nowego certyfikatu lub Wyślij żądanie certyfikatu do urzędu certyfikacji.
+
+Dla połączenia SSL do pracy należy upewnić się, że certyfikat SSL spełnia następujące warunki:
+
+- Bieżąca data i godzina to "Ważny od" i "Ważny do" zakres dat w certyfikacie.
+- Tego certyfikatu "Common Name" (CN) jest zgodna z nagłówkiem hosta w żądaniu. Na przykład, jeśli klient jest kieruje żądanie do `https://www.contoso.com/`, musi być nazwa Pospolita `www.contoso.com`.
+
+### <a name="certificates-supported-for-ssl-termination"></a>Obsługiwane w przypadku kończenia żądań SSL certyfikatów
+
+Usługa Application gateway obsługuje następujące typy certyfikatów:
+
+- Certyfikat urzędu certyfikacji (urzędu certyfikacji): Certyfikat urzędu certyfikacji jest certyfikat wystawiony przez urząd certyfikacji (CA)
+- Certyfikat z Weryfikacją (Extended weryfikacji): Certyfikat Weryfikacją to wytyczne dotyczące branży Standardowy certyfikat. Spowoduje to kolor na zielony pasek lokalizatora przeglądarki i publikowania również nazwę firmy.
+- Certyfikat uniwersalny: Ten certyfikat obsługuje dowolną liczbę poddomen, na podstawie *. site.com, gdzie Twoje poddomeny spowodowałoby zastąpienie *. Nie obsługuje jednak site.com, dzięki czemu w przypadku, gdy użytkownicy uzyskują dostęp do witryny sieci Web bez wpisywania wiodących "www", certyfikat uniwersalny nie zapewnią który.
+- Certyfikaty z podpisem własnym: Przeglądarki klienta nie zaufać tym certyfikatom i powiadomi użytkownika czy certyfikatu usługi wirtualnego nie jest częścią łańcuch zaufania. Certyfikaty z podpisem własnym są odpowiednie do testowania lub środowiska, w której administratorzy kontrolować klientów i bezpiecznie pominąć alerty zabezpieczeń w przeglądarce. Obciążenia produkcyjne nigdy nie należy używać certyfikatów z podpisem własnym.
+
+Aby uzyskać więcej informacji, zobacz [skonfigurować kończenia żądań SSL z usługą application gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+
+## <a name="end-to-end-ssl-encryption"></a>Kompleksową usługę szyfrowania SSL
+
+Niektórzy klienci mogą nie pozwalają nieszyfrowana komunikacja z serwerami wewnętrznej bazy danych. Może to być spowodowane wymaganiami dotyczącymi zabezpieczeń lub zgodności albo aplikacja może akceptować jedynie bezpieczne połączenia. Na potrzeby takich aplikacji brama aplikacji obsługuje kompleksowe szyfrowanie SSL.
 
 Kompleksowa usługa SSL pozwala na bezpieczne przesyłanie danych poufnych na zaplecze, szyfrowane, gdy nadal trwa, korzystając z zalet funkcji równoważenia obciążenia warstwy 7 której usługa application gateway zapewnia. Do tych funkcji należą koligacja sesji oparta na plikach cookie, routing oparty na adresach URL, obsługa routingu opartego na witrynach lub możliwość iniekcji nagłówków X-Forwarded-*.
 
-Po skonfigurowaniu kompleksowego trybu komunikacji SSL usługa Application Gateway kończy sesje SSL na bramie i odszyfrowuje ruch użytkownika. Następnie stosuje skonfigurowane reguły, aby wybrać odpowiednie wystąpienie puli serwerów zaplecza w celu skierowania do nich ruchu. Następnie usługa Application Gateway inicjuje nowe połączenie SSL z serwerem zaplecza i ponownie szyfruje dane przy użyciu certyfikatu klucza publicznego serwera zaplecza przed przekazaniem żądania do zaplecza. Kompleksowa usługa SSL jest włączona konfigurując dla ustawienia protokołu **parametr BackendHTTPSetting** HTTPS, których są następnie stosowane do puli zaplecza. Każdy serwer zaplecza w puli zaplecza z włączoną kompleksową usługą SSL należy skonfigurować przy użyciu certyfikatu, aby umożliwić bezpieczną komunikację.
+Po skonfigurowaniu kompleksowego trybu komunikacji SSL usługa Application Gateway kończy sesje SSL na bramie i odszyfrowuje ruch użytkownika. Następnie stosuje skonfigurowane reguły, aby wybrać odpowiednie wystąpienie puli serwerów zaplecza w celu skierowania do nich ruchu. Następnie usługa Application Gateway inicjuje nowe połączenie SSL z serwerem zaplecza i ponownie szyfruje dane przy użyciu certyfikatu klucza publicznego serwera zaplecza przed przekazaniem żądania do zaplecza. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego. Kompleksowa usługa SSL jest włączona konfigurując dla ustawienia protokołu [ustawienia HTTP zaplecza](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) HTTPS, których są następnie stosowane do puli zaplecza.
 
 Zasady SSL dotyczy ruchu frontonu i wewnętrznej bazy danych. We frontonie usługa Application Gateway działa jako serwer i wymusza zasady. Do wewnętrznej bazy danych usługa Application Gateway działa jako klient i wysyła informacje o protokole/szyfrowania jako preferencji podczas uzgadniania protokołu SSL.
+
+Usługa Application gateway komunikuje się tylko z tych wystąpień zaplecza, które mają albo na liście dozwolonych certyfikatów przy użyciu bramy aplikacji lub których certyfikaty są podpisywane przez dobrze znanych urzędów certyfikacji, jeśli nazwa Pospolita certyfikatu odpowiada nazwie hosta w protokole HTTP Ustawienia zaplecza. Należą do zaufanych usług platformy Azure, takich jak aplikacje sieci web usługi aplikacji platformy Azure i usługi Azure API Management.
+
+Jeśli certyfikaty elementów członkowskich w puli zaplecza nie są podpisane przez dobrze znanych urzędów certyfikacji, poszczególnych wystąpień w puli zaplecza przy użyciu kompleksowej usługi SSL włączone, musi być skonfigurowane przy użyciu certyfikatu, aby umożliwić bezpieczną komunikację. Dodawanie certyfikatu gwarantuje, że bramy application gateway komunikuje się tylko ze znanych wystąpień zaplecza. W ten sposób dalszej komunikacji end-to-end.
+
+> [!NOTE] 
+>
+> Konfiguracja certyfikatu uwierzytelniania nie jest wymagana dla zaufanych usług platformy Azure, takich jak aplikacje sieci web usługi aplikacji platformy Azure i usługi Azure API Management.
+
+> [!NOTE] 
+>
+> Certyfikat dodany do **ustawienia HTTP zaplecza** do uwierzytelniania zaplecza serwery mogą być takie same jak w przypadku certyfikatu dodana do **odbiornika** dla kończenia żądań SSL na bramie aplikacji lub inne w przypadku zwiększone zabezpieczenia.
 
 ![Scenariusz kompleksowej usługi SSL][1]
 

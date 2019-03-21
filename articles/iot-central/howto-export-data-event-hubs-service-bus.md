@@ -8,18 +8,18 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 14b51f109ca76661ac10c99d42002dda45bc0500
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 700e8e9fe0dac182d71df8ca66800fa03cf25a2e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318715"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295797"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych w usłudze Azure IoT Central
 
 *W tym temacie mają zastosowanie do administratorów.*
 
-Ten artykuł omawia lepszy sposób używania funkcji eksportu ciągłego dane w usłudze Azure IoT Central Eksport danych w ramach swojej własnej **usługi Azure Event Hubs**, i **usługi Azure Service Bus** wystąpień. Możesz wyeksportować **pomiarów**, **urządzeń**, i **szablonów urządzeń** do docelowej dla analizy i szczegółowych informacji z ciepłej ścieżki. Obejmuje to wyzwolenie reguły niestandardowe w usłudze Azure Stream Analytics, wyzwalania niestandardowych przepływów pracy w usłudze Azure Logic Apps lub przekształcanie ich i przekazanie do niej za pomocą usługi Azure Functions. 
+W tym artykule opisano sposób używania funkcji eksportu ciągłego dane w usłudze Azure IoT Central Eksport danych w ramach swojej własnej **usługi Azure Event Hubs**, i **usługi Azure Service Bus** wystąpień. Możesz wyeksportować **pomiarów**, **urządzeń**, i **szablonów urządzeń** do docelowej dla analizy i szczegółowych informacji z ciepłej ścieżki. Obejmuje to wyzwolenie reguły niestandardowe w usłudze Azure Stream Analytics, wyzwalania niestandardowych przepływów pracy w usłudze Azure Logic Apps lub przekształcanie ich i przekazanie do niej za pomocą usługi Azure Functions. 
 
 > [!Note]
 > Jeszcze raz po włączeniu ciągły Eksport danych otrzymasz tylko dane od tej pory wartości. Obecnie nie można pobrać danych w czasie, gdy ciągły Eksport danych zostało wyłączone. Do przechowania większej ilości danych historycznych, należy włączyć funkcję ciągły Eksport danych z wcześniej.
@@ -28,6 +28,77 @@ Ten artykuł omawia lepszy sposób używania funkcji eksportu ciągłego dane w 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz być administratorem w Twojej aplikacji IoT Central
+
+## <a name="set-up-export-destination"></a>Skonfiguruj miejsce docelowe eksportu
+
+Jeśli nie masz istniejących zdarzeń koncentratory/usługi Service Bus można wyeksportować do, wykonaj następujące kroki:
+
+## <a name="create-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
+
+1. Tworzenie [nowych nazw usługi Event Hubs w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Dowiedz się więcej w [dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+2. wybierz subskrypcję. 
+
+    > [!Note] 
+    > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
+3. Tworzenie Centrum zdarzeń w przestrzeni nazw usługi Event Hubs. Przejdź do obszaru nazw, a następnie wybierz pozycję **+ Centrum zdarzeń** u góry, aby utworzyć wystąpienie Centrum zdarzeń.
+
+## <a name="create-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
+
+1. Tworzenie [nowej przestrzeni nazw magistrali usług w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . Dowiedz się więcej w [dokumentacja usługi Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
+2. wybierz subskrypcję. 
+
+    > [!Note] 
+    > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
+
+3. Przejdź do przestrzeni nazw usługi Service Bus i wybierz **+ kolejka** lub **+ temat** u góry, aby utworzyć kolejki lub tematu, aby wyeksportować do.
+
+
+## <a name="set-up-continuous-data-export"></a>Konfigurowanie ciągły Eksport danych
+
+Teraz, gdy docelowy usługi Event Hubs/Service Bus, aby wyeksportować dane, wykonaj następujące kroki, aby skonfigurować ciągły Eksport danych. 
+
+1. Zaloguj się do aplikacji IoT Central.
+
+2. W menu po lewej stronie wybierz **ciągły Eksport danych**.
+
+    > [!Note]
+    > Jeśli nie widzisz ciągły Eksport danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Porozmawiaj z administratorem, aby skonfigurować Eksport danych.
+
+    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_menu.PNG)
+
+3. Wybierz **+ nowy** przycisk w prawym górnym rogu. Wybierz jedną z **usługi Azure Event Hubs** lub **usługi Azure Service Bus** jako miejsce docelowe eksportu. 
+
+    > [!NOTE] 
+    > Maksymalna liczba eksportów aplikacji wynosi pięć. 
+
+    ![Utwórz nowy ciągły Eksport danych](media/howto-export-data/export_new.PNG)
+
+4. W polu listy rozwijanej wybierz swoje **przestrzeni nazw magistrali przestrzeń nazw/usługi Event Hubs**. Można również wybrać na liście, która jest ostatnia opcja **wprowadź parametry połączenia**. 
+
+    > [!NOTE] 
+    > Widoczne są tylko magazyn kont/Event Hubs przestrzenie nazw/usługi Service Bus przestrzeniach nazw **tej samej subskrypcji co aplikacja IoT Central**. Jeśli chcesz wyeksportować do miejsca docelowego spoza tej subskrypcji, wybierz opcję **wprowadź parametry połączenia** i zobacz krok 5.
+
+    > [!NOTE] 
+    > 7-dniowy, który eksportowania aplikacji w wersji próbnej, jedynym sposobem, aby skonfigurować ciągłe danych jest za pomocą parametrów połączenia. Jest to spowodowane 7-dniowy aplikacji w wersji próbnej nie mają skojarzonej subskrypcji platformy Azure.
+
+    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_create.PNG)
+
+5. (Opcjonalnie) Jeśli została wybrana opcja **wprowadź parametry połączenia**, nowe pole pojawia się należy wkleić parametry połączenia. Aby uzyskać parametry połączenia dla usługi:
+    - Usługa Event Hubs lub usługi Service Bus, przejdź do przestrzeni nazw w witrynie Azure portal.
+        - W obszarze **ustawienia**, wybierz opcję **współużytkowane zasady dostępu**
+        - Wybierz domyślne **RootManageSharedAccessKey** lub Utwórz nową
+        - Skopiuj parametry połączenia podstawowej lub dodatkowej
+ 
+6. Wybierz Centrum zdarzeń/kolejki lub tematu w polu listy rozwijanej.
+
+7. W obszarze **danych do wyeksportowania**, określ każdy rodzaj danych do wyeksportowania, ustawiając typ **na**.
+
+6. Aby włączyć ciągły Eksport danych, upewnij się, **eksportu danych** jest **na**. Wybierz pozycję **Zapisz**.
+
+  ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/export_list.PNG)
+
+7. Po kilku minutach danych pojawi się w wybranej lokalizacji docelowej.
+
 
 ## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Eksportowanie do usługi Azure Event Hubs i usługi Azure Service Bus
 

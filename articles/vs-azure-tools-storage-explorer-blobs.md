@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: fd13cb25fbe3696bf67615ef956f478b7c355547
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422056"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858171"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Zarządzanie zasobami usługi Azure Blob Storage za pomocą Eksploratora usługi Storage
 ## <a name="overview"></a>Przegląd
@@ -30,7 +30,7 @@ Magazyn obiektów Blob może być użyty do udostępniania danych publicznie lub
 Do wykonania kroków opisanych w tym artykule konieczne jest wykonanie kroków znajdujących się w następujących artykułach:
 
 * [Pobieranie i instalowanie Eksploratora usługi Storage](https://www.storageexplorer.com)
-* [Łączenie się z usługą lub kontem magazynu platformy Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
+* [Nawiązać połączenie z usługą lub kontem magazynu platformy Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Tworzenie kontenera obiektów blob
 Wszystkie obiekty BLOB muszą znajdować się w kontenerze obiektów blob, który jest po prostu powodują ustawienie logicznego grupowania obiektów blob. Konto może zawierać nieograniczoną liczbę kontenerów, a każdy kontener może przechowywać nieograniczoną liczbę obiektów blob.
@@ -41,11 +41,11 @@ Poniższe kroki ilustrują Tworzenie kontenera obiektów blob w Eksploratorze us
 2. W okienku po lewej stronie rozwiń konto magazynu, w którym chcesz utworzyć kontener obiektów blob.
 3. Kliknij prawym przyciskiem myszy **kontenery obiektów Blob**, a następnie z menu kontekstowego — wybierz pozycję **Utwórz kontener obiektów Blob**.
 
-   ![Tworzenie menu kontekstowe kontenery obiektów blob][0]
+   ![Menu kontekstowe — tworzenie kontenerów obiektów blob][0]
 4. Pola tekstowego pojawi się pod **kontenery obiektów Blob** folderu. Wprowadź nazwę kontenera obiektów blob. Zobacz [Tworzenie kontenera i ustawianie uprawnień](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) informacji na temat reguł i ograniczeń dotyczących nazewnictwa kontenerów obiektów blob.
 
    ![Tworzenie pola tekstowego kontenery obiektów Blob][1]
-5. Naciśnij klawisz **Enter** po zakończeniu tworzenia kontenera obiektów blob lub **Esc** można anulować. Po pomyślnym utworzeniu kontener obiektów blob będzie wyświetlana w obszarze **kontenery obiektów Blob** folder dla wybranego konta magazynu.
+5. Po zakończeniu naciśnij klawisz **Enter**, aby utworzyć kontener obiektów blob, lub klawisz **Esc**, aby anulować. Po pomyślnym utworzeniu kontener obiektów blob będzie wyświetlana w obszarze **kontenery obiektów Blob** folder dla wybranego konta magazynu.
 
    ![Kontener obiektów blob utworzone][2]
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7e1c6d771e2452e99b47c256c99e25e281b9a3aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849231"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259911"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -159,7 +159,7 @@ Kontenery są również jednostkami rozliczeniowymi dla usługi Azure Cosmos DB.
 
 ### <a name="how-do-i-create-a-database"></a>Jak utworzyć bazę danych?
 
-Można utworzyć bazy danych przy użyciu [witryny Azure portal](https://portal.azure.com), zgodnie z opisem w [dodania kolekcji](create-sql-api-dotnet.md#create-collection), jednego z [zestawów SDK usługi Azure Cosmos DB](sql-api-sdk-dotnet.md), lub [interfejsów API REST](/rest/api/cosmos-db/).
+Można utworzyć bazy danych przy użyciu [witryny Azure portal](https://portal.azure.com), zgodnie z opisem w [dodania kolekcji](create-sql-api-dotnet.md#create-collection-database), jednego z [zestawów SDK usługi Azure Cosmos DB](sql-api-sdk-dotnet.md), lub [interfejsów API REST](/rest/api/cosmos-db/).
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Jak skonfigurować użytkowników i uprawnienia?
 
@@ -257,7 +257,7 @@ Istnieją pewne różnice zachowanie, które pochodzące z usługi Azure Table s
 * Mechanizm CORS nie jest obecnie obsługiwane.
 * Nazwy tabel w usłudze Azure Table storage nie ma wielkość liter, ale są one interfejsu API tabeli usługi Azure Cosmos DB
 * Niektóre usługi Azure Cosmos DB wewnętrznego formaty kodowania informacje, takie jak pola binarne, nie są obecnie wydajne jeden mogą zainteresować. W związku z tym może to spowodować nieoczekiwane ograniczenia rozmiaru danych. Na przykład aktualnie jeden nie można użyć Meg pełnej jedną jednostkę tabeli do przechowywania danych binarnych, ponieważ kodowanie zwiększa rozmiar danych.
-* Nazwa właściwości jednostki "Id" obecnie nieobsługiwane
+* Nazwa właściwości jednostki "ID" obecnie nieobsługiwane
 * TableQuery TakeCount nie jest ograniczone do 1000
 
 Pod względem interfejsu API REST istnieje kilka opcji punkty końcowe/zapytania, które nie są obsługiwane przez interfejsu API tabeli usługi Azure Cosmos DB:

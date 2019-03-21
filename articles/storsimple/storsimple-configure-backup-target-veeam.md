@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-ms.openlocfilehash: f06b74493bad546997f82ed6eef0a89cffb7c75b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261982"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011996"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Usługa StorSimple jako miejsce docelowe kopii zapasowej z oprogramowaniem Veeam
 
@@ -81,7 +81,7 @@ Magazyn StorSimple oferuje następujące korzyści:
 
 Chociaż StorSimple przedstawia dwa scenariusze wdrażania głównego (podstawowy cel kopii zapasowej i dodatkowej docelowa kopia zapasowa), zasadniczo jest zwykły, urządzeniem magazynu blokowego. Usługa StorSimple jest podczas kompresji i deduplikacji. Bezproblemowo wysyła i pobiera dane między chmury oraz aplikacji i systemu plików.
 
-Aby uzyskać więcej informacji na temat rozwiązania StorSimple, zobacz [serii StorSimple 8000: hybrydowe rozwiązanie magazynu w chmurze](storsimple-overview.md). Ponadto możesz przejrzeć [techniczne serii StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Aby uzyskać więcej informacji na temat rozwiązania StorSimple, zobacz [serii StorSimple 8000: Rozwiązanie magazynu w chmurze hybrydowej](storsimple-overview.md). Ponadto możesz przejrzeć [techniczne serii StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > Przy użyciu usługi StorSimple urządzenia jako miejsce docelowe kopii zapasowej jest obsługiwana tylko w przypadku StorSimple 8000 Update 3 i nowszych wersjach.
@@ -170,7 +170,7 @@ Rozwiązanie do optymalnego wykonywania firma Microsoft zaleca, postępuj zgodni
 -   Link, który nawiązuje połączenie usługi StorSimple obsługi warstw na platformie Azure muszą spełniać wymagań dotyczących przepustowości. Można to osiągnąć, stosując wymaganego poziomu jakości usług (QoS) w infrastrukturze przełączników, aby spełnić cel punktu odzyskiwania i odzyskiwania czasu cel umowy SLA.
 -   Maksymalna opóźnienia dostępu do magazynu obiektów Blob platformy Azure powinna być około 80 ms.
 
-### <a name="deploy-storsimple"></a>Wdrażanie usługi StorSimple
+### <a name="deploy-storsimple"></a>Deploy StorSimple
 
 Aby uzyskać instrukcje krok po kroku dotyczące wdrażania usługi StorSimple, zobacz [wdrażanie urządzenia StorSimple w środowisku lokalnym](storsimple-deployment-walkthrough-u2.md).
 
@@ -186,7 +186,7 @@ W tej sekcji pokażemy niektóre przykłady konfiguracji. Poniższe przykłady i
 
 | Zadania związane z wdrażaniem usługi StorSimple  | Dodatkowe komentarze |
 |---|---|
-| Wdrażanie urządzenia StorSimple w środowisku lokalnym. | Obsługiwane wersje: Aktualizacja 3 i nowszych wersjach. |
+| Wdrażanie urządzenia StorSimple w środowisku lokalnym. | Obsługiwane wersje: Update 3 i nowszych wersjach. |
 | Włącz docelowy kopii zapasowej. | Aby włączyć lub wyłączyć tryb docelowy kopii zapasowej i można uzyskać stanu, należy użyć tych poleceń. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia zdalnego na urządzeniu StorSimple](storsimple-remote-connect.md).</br> Aby włączyć tryb tworzenia kopii zapasowych: `Set-HCSBackupApplianceMode -enable`. </br> Aby wyłączyć tryb tworzenia kopii zapasowych: `Set-HCSBackupApplianceMode -disable`. </br> Aby uzyskać bieżący stan ustawienia trybu tworzenia kopii zapasowych: `Get-HCSBackupApplianceMode`. |
 | Utwórz kontener woluminów typowe dla woluminu, który przechowuje dane kopii zapasowej. Wszystkie dane w kontenerze wolumin jest deduplikowany. | Kontenery woluminów StorSimple Definiowanie domen deduplikacji.  |
 | Tworzenie woluminów StorSimple. | Utwórz woluminy o rozmiarze jak blisko oczekiwanego użycia jak to możliwe, ponieważ rozmiar woluminu wpływa na czas trwania migawki w chmurze. Aby uzyskać informacje o tym, jak rozmiar woluminu, przeczytaj temat [zasady przechowywania](#retention-policies).</br> </br> Użyj StorSimple woluminy warstwowe, a następnie wybierz **Użyj tego woluminu dla rzadziej używanych danych archiwalnych** pole wyboru. </br> Używanie tylko lokalnie przypięte woluminy nie jest obsługiwane. |
@@ -209,16 +209,16 @@ Konfigurowanie rozwiązania programu zgodnie z wytycznymi podanymi w następują
 
 ### <a name="operating-system-best-practices"></a>Najlepsze rozwiązania w systemie operacyjnym
 
--   Wyłącz szyfrowanie systemu Windows Server i funkcji deduplikacji systemu plików NTFS.
--   Wyłącz defragmentacji systemu Windows Server w przypadku woluminów StorSimple.
--   Wyłączenie indeksowania systemu Windows Server, w przypadku woluminów StorSimple.
--   Uruchomienie skanowania antywirusowego na hoście źródłowym (ale nie dla woluminów StorSimple).
--   Wyłączyć domyślną [konserwacji systemu Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) w Menedżerze zadań. Użyć jednego z następujących sposobów:
-    - Wyłącz konfiguratora konserwacji w harmonogramie zadań Windows.
-    - Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) Windows Sysinternals. Po pobraniu programu PsExec, uruchom program Windows PowerShell jako administrator, a następnie wpisz:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Wyłącz szyfrowanie systemu Windows Server i funkcji deduplikacji systemu plików NTFS.
+- Wyłącz defragmentacji systemu Windows Server w przypadku woluminów StorSimple.
+- Wyłączenie indeksowania systemu Windows Server, w przypadku woluminów StorSimple.
+- Uruchomienie skanowania antywirusowego na hoście źródłowym (ale nie dla woluminów StorSimple).
+- Wyłączyć domyślną [konserwacji systemu Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) w Menedżerze zadań. Użyć jednego z następujących sposobów:
+  - Wyłącz konfiguratora konserwacji w harmonogramie zadań Windows.
+  - Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) Windows Sysinternals. Po pobraniu programu PsExec, uruchom program Windows PowerShell jako administrator, a następnie wpisz:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Najlepsze rozwiązania StorSimple
 
@@ -265,6 +265,7 @@ Na podstawie poprzedniego założeń tworzenie TiB 26 StorSimple warstwowego wol
 | Pełne roczne | 1  | 10 | 10 |
 | Wymaganie GFS |   | 38 |   |
 | Dodatkowego przydziału  | 4  |   | 42 łączna liczba wymagań GFS  |
+
 \* Mnożnik GFS jest liczba kopii, które należy chronić i zachować zgodnie z wymaganiami zasady tworzenia kopii zapasowej.
 
 ## <a name="set-up-veeam-storage"></a>Konfigurowanie magazynu Veeam
@@ -318,8 +319,8 @@ Oto przykład planu obrotu GFS cztery tygodnie, miesięczne i roczne:
 | Typ częstotliwości/kopia zapasowa | Pełne | Przyrostowa (1 – 5 dni)  |   
 |---|---|---|
 | Co tydzień (1 – 4 tygodnie) | Sobota | Od poniedziałku do piątku |
-| Miesięczne  | Sobota  |   |
-| Rocznie | Sobota  |   |   |
+| Co miesiąc  | Sobota  |   |
+| Rocznie | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Przypisać woluminy StorSimple do zadania tworzenia kopii zapasowej Veeam
@@ -384,6 +385,7 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 | Pełne miesięczne |Usługa StorSimple dysku (długoterminowe) | 1 | 12 | 12 |
 | Pełne roczne |Usługa StorSimple dysku (długoterminowe) | 1 | 1 | 1 |
 |Wymagany rozmiar woluminów GFS |  |  |  | 18*|
+
 \* Całkowita pojemność obejmuje 17 dysków TiB StorSimple i 1 TiB lokalnego woluminu RAID.
 
 
@@ -397,8 +399,8 @@ Obrót GFS tygodniowe, miesięczne i roczne harmonogramu
 | Tydzień 2 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 3 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 4 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
-| Miesięczne | Co miesiąc StorSimple |   |   |   |   |   |
-| Rocznie | Co rok StorSimple  |   |   |   |   |   |   |
+| Co miesiąc | Co miesiąc StorSimple |   |   |   |   |   |
+| Rocznie | Co rok StorSimple  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Przypisać woluminy StorSimple do zadania kopiowania Veeam
 
@@ -469,9 +471,9 @@ W poniższej sekcji opisano sposób tworzenia krótkiej skryptu do uruchamiania 
 1. [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
 2. Pobierz i skonfiguruj [CloudSnapshots.ps1 Zarządzaj](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) skrypt programu PowerShell.
 3. Na serwerze, który uruchamia skrypt Uruchom program PowerShell jako administrator. Upewnij się, że uruchomieniu skryptu za pomocą `-WhatIf $true` aby zobaczyć, co spowodowało skrypt spowoduje, że. Po zakończeniu sprawdzania poprawności, należy przekazać `-WhatIf $false`. Uruchom poniższe polecenie:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
 4. Aby dodać skrypt zadania kopii zapasowej, należy edytować opcje zaawansowane zadania Veeam.
 
     ![Karta skrypty kopii zapasowej ustawień zaawansowanych Veeam](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
@@ -485,7 +487,7 @@ Przywraca z pracy urządzenia StorSimple, takich jak przywracanie z dowolnym urz
 Z oprogramowaniem Veeam uzyskujesz odzyskiwania, szybka i szczegółowym poziomie plików za pośrednictwem usługi StorSimple za pośrednictwem widoków Eksploratora wbudowanych w konsoli Veeam. Eksploratory Veeam umożliwia odzyskanie poszczególnych elementów, takich jak wiadomości e-mail, obiektów usługi Active Directory i elementów programu SharePoint z kopii zapasowych. Odzyskiwanie jest możliwe bez przerw w działaniu maszyn wirtualnych w środowisku lokalnym. Możesz również tworzyć w momencie odzyskiwania dla baz danych Azure SQL Database i Oracle. Pakiet Veeam i StorSimple, że proces odzyskiwanie na poziomie elementu z platformy Azure jest łatwe i szybkie. Aby uzyskać informacje o sposobie wykonaj operację przywracania, zobacz dokumentację Veeam:
 
 - Aby uzyskać [program Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html)
-- Aby uzyskać [usługi Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
+- For [Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
 - Aby uzyskać [programu SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
 - Aby uzyskać [programu SharePoint](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
 - Aby uzyskać [Oracle](https://www.veeam.com/oracle-backup-recovery-explorer.html)
@@ -510,7 +512,7 @@ Awarii może być spowodowany różnych czynników. W poniższej tabeli wymienio
 W tym artykule przywoływane następujące dokumenty:
 
 - [StorSimple Wielościeżkowe We/Wy Instalatora](storsimple-configure-mpio-windows-server.md)
-- [Scenariusze usługi Storage: alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Scenariusze usługi Storage: Alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Za pomocą GPT dysków](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Konfigurowanie kopii w tle dla folderów udostępnionych](https://technet.microsoft.com/library/cc771893.aspx)
 

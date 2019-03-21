@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c2b0343ff472fe380750152712ca88d9ebb404e2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: aae3ec8ff713959c5cc2485951aba025a6f89a1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782789"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113286"
 ---
 # <a name="validate-oem-packages"></a>Sprawdzanie poprawności pakietów producenta OEM
 
@@ -185,30 +185,30 @@ Następujące testy są wymagane do weryfikacji pakietu OEM:
 
     Weryfikacja pakietu rozszerzenia OEM jest podzielony na dwie ręczne wykonanie czynności: Aktualizacja usługi Azure Stack, a aktualizacja OEM.
 
-    1. **Wybierz** "Uruchom" w Interfejsie użytkownika do uruchomienia skryptu precheck. Jest to testów automatycznych, który trwa około 5 minut i nie wymaga żadnej czynności.
+   1. **Wybierz** "Uruchom" w Interfejsie użytkownika do uruchomienia skryptu precheck. Jest to testów automatycznych, który trwa około 5 minut i nie wymaga żadnej czynności.
 
-    1. Po zakończeniu precheck skryptu, wykonaj krok wykonywany ręcznie: **zainstalować** najnowszej dostępnej usługi Azure Stack aktualizacji za pomocą portalu usługi Azure Stack.
+   1. Po zakończeniu precheck skryptu, wykonaj krok wykonywany ręcznie: **zainstalować** najnowszej dostępnej usługi Azure Stack aktualizacji za pomocą portalu usługi Azure Stack.
 
-    1. **Uruchom** Test-AzureStack dla sygnatury. Jeśli wystąpią jakiekolwiek błędy, nie Kontynuuj badanie i skontaktuj się z pomocą [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
+   1. **Uruchom** Test-AzureStack dla sygnatury. Jeśli wystąpią jakiekolwiek błędy, nie Kontynuuj badanie i skontaktuj się z pomocą [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
 
-        Aby uzyskać informacje na temat uruchamiania polecenia Test-AzureStack, zobacz [stanu systemu weryfikowanie usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
+       Aby uzyskać informacje na temat uruchamiania polecenia Test-AzureStack, zobacz [stanu systemu weryfikowanie usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
 
-    1. **Wybierz** "Dalej", aby wykonać postcheck skrypt. Jest zautomatyzowany test, który oznacza zakończenie procesu aktualizacji usługi Azure Stack.
+   1. **Wybierz** "Dalej", aby wykonać postcheck skrypt. Jest zautomatyzowany test, który oznacza zakończenie procesu aktualizacji usługi Azure Stack.
 
-    1. **Wybierz** "Uruchom", można wykonać skryptu precheck aktualizacji OEM.
+   1. **Wybierz** "Uruchom", można wykonać skryptu precheck aktualizacji OEM.
 
-    1. Po zakończeniu wstępne sprawdzenie wykonać czynność ręczna: **zainstalować** pakiet rozszerzenia OEM za pośrednictwem portalu.
+   1. Po zakończeniu wstępne sprawdzenie wykonać czynność ręczna: **zainstalować** pakiet rozszerzenia OEM za pośrednictwem portalu.
 
-    1. **Uruchom** Test-AzureStack dla sygnatury.
+   1. **Uruchom** Test-AzureStack dla sygnatury.
 
-        > [!NOTE]
-        > Tak jak poprzednio, nie Kontynuuj badanie i skontaktuj się z pomocą [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) Jeśli zakończy się niepowodzeniem. Ten krok jest krytyczna, ponieważ zostanie ono zapisane możesz ponownego wdrażania.
+      > [!NOTE]
+      > Tak jak poprzednio, nie Kontynuuj badanie i skontaktuj się z pomocą [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) Jeśli zakończy się niepowodzeniem. Ten krok jest krytyczna, ponieważ zostanie ono zapisane możesz ponownego wdrażania.
 
-    1. **Wybierz** "Dalej", aby wykonać postcheck skrypt. Oznacza koniec kroku aktualizacji OEM.
+   1. **Wybierz** "Dalej", aby wykonać postcheck skrypt. Oznacza koniec kroku aktualizacji OEM.
 
-    1. Na wszelkie pytania pozostałe na końcu testu i **wybierz** "Prześlij".
+   1. Na wszelkie pytania pozostałe na końcu testu i **wybierz** "Prześlij".
 
-    1. Oznacza koniec interaktywne testu.
+   1. Oznacza koniec interaktywne testu.
 
 5. Przejrzyj wynik weryfikacji pakietu rozszerzenia OEM. Gdy test zakończyła się pomyślnie, należy zaplanować aparatu symulacji chmury w celu wykonania.
 

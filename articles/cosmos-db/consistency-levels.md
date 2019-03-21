@@ -5,25 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2018
-ms.openlocfilehash: cbe7b0e243f34d9b48e837c1211b5a186946f69f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/18/2019
+ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903712"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294515"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności w usłudze Azure Cosmos DB
 
-Rozproszonych baz danych, które opierają się na replikację, wysoką dostępność, małe opóźnienia lub obu, należy podstawowych zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej.  [Atomowych](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) lub standardy programowania danych modelu silnej spójności. Ale dodaje wymaga początkowo dużej ilości cena czas oczekiwania (w stanie stabilnym) i ograniczoną dostępnością (podczas awarii). Z drugiej strony spójność ostateczną zapewnia większą dostępność i lepszą wydajność, ale jest trudny do aplikacji. 
+Rozproszonych baz danych, które opierają się na replikację, wysoką dostępność, małe opóźnienia lub obu, należy podstawowych zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: *silne* spójności i *ostatecznej* spójności.  [Atomowych](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) lub standardy programowania danych modelu silnej spójności. Ale dodaje cenie czas oczekiwania (w stanie stabilnym) i ograniczoną dostępnością (podczas awarii). Z drugiej strony spójność ostateczną oferuje większą dostępność i lepszą wydajność, ale utrudniało to aplikacje programu. 
 
-Wyjaśnienie pojęcia spójności danych jako liczne opcje zamiast dwoma skrajnymi poziomami zbliża się do usługi Azure Cosmos DB. Wysoki poziom spójności i spójności ostatecznej znajdują się na końcach, ale istnieje wiele opcji spójności wzdłuż spektrum. Deweloperzy mogą używać tych opcji, opcji dokładne i szczegółową skutków ubocznych dotyczących wysokiej dostępności lub wydajności. 
+Wyjaśnienie pojęcia spójności danych jako liczne opcje zamiast dwoma skrajnymi poziomami zbliża się do usługi Azure Cosmos DB. Wysoki poziom spójności i spójności ostatecznej jest na końcu spektrum, ale istnieje wiele opcji spójności wzdłuż spektrum. Deweloperzy mogą używać tych opcji, opcji dokładne i szczegółową kompromisów w zakresie wysokiej dostępności i wydajności. 
 
-Usługa Azure Cosmos DB deweloperzy mogą wybierać pięć dokładnie zdefiniowanych modeli spójności na spektrum spójności. Od najsilniejszej do najsłabszej, modele są silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Modele są dobrze zdefiniowany i intuicyjne. Służy do określonych scenariuszy w rzeczywistych warunkach. Każdy model zawiera [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest wspierana przez kompleksowe umowy SLA. Na poniższej ilustracji przedstawiono poziomów spójności różnych jako spektrum.
+Usługa Azure Cosmos DB deweloperzy mogą wybierać pięć dokładnie zdefiniowanych modeli spójności na spektrum spójności. Od najsilniejszej do bardziej złagodzone, modele obejmują *silne*, *powiązana nieaktualność*, *sesji*, *spójny prefiks*i *ostatecznej* spójności. Modele są dobrze zdefiniowany i intuicyjne i może służyć do określonych scenariuszy w rzeczywistych warunkach. Każdy model zawiera [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest uzupełniana przez umów SLA. Na poniższej ilustracji przedstawiono poziomów spójności różnych jako spektrum.
 
 ![Spójność o szerokim zakresie funkcji](./media/consistency-levels/five-consistency-levels.png)
 
-Poziomy spójności są niezależne od regionu. Poziom spójności konta usługi Azure Cosmos jest gwarantowane, dla wszystkich operacji niezależnie od określonego regionu, w którym odczyty i zapisy są one obsługiwane, przez liczbę regionów skojarzonych z Twoim kontem usługi Azure Cosmos odczytu, czy Twoje konto jest skonfigurowane przy użyciu jednego lub wielu regionach zapisu.
+Poziomy spójności są niezależne od regionu i gwarantują dla wszystkich operacji niezależnie od określonego regionu, w którym odczyty i zapisy są one obsługiwane, przez liczbę regionów skojarzonych z Twoim kontem usługi Azure Cosmos lub tego, czy Twoje konto jest skonfigurowane za pomocą jednego lub wielu regionach zapisu.
 
 ## <a name="scope-of-the-read-consistency"></a>Zakres spójności odczytu
 

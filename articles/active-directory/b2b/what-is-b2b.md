@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa36ab67957dcba7b5282e219706e442be9dc97
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: a77d502182da8128624bfb5fc0481f2f8786ec37
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674484"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293638"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co to jest dostęp użytkowników-gości w usłudze Azure Active Directory B2B?
 
@@ -34,7 +35,7 @@ Dzięki usłudze Azure AD B2B partner używa własnego rozwiązania do zarządza
 - Nie trzeba zarządzać zewnętrznymi kontami lub hasłami. 
 - Nie trzeba zsynchronizować konta ani zarządzać cyklami życia kont.  
 
-![dodawanie członka](media/what-is-b2b/add-member.png)
+![Zrzut ekranu przedstawiający dodawanie członków strony](media/what-is-b2b/add-member.png)
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Zapraszanie użytkowników-gości za pomocą prostego procesu zapraszania i realizacji
 Użytkownicy-goście logują się do aplikacji i usług za pomocą własnych tożsamości służbowych lub społecznościowych. Jeśli użytkownik-gość nie ma konta Microsoft lub konta usługi Azure AD, zostanie ono utworzone, gdy użytkownik zrealizuje zaproszenie. 
@@ -42,7 +43,7 @@ Użytkownicy-goście logują się do aplikacji i usług za pomocą własnych to�
 - Wyślij bezpośredni link do aplikacji lub wyślij zaproszenie do własnego portalu dostępu użytkownika-gościa. 
 - Użytkownicy-goście wykonują kilka prostych kroków w celu realizacji.
 
-![panel dostępu](media/what-is-b2b/consentscreen.png)
+![Zrzut ekranu przedstawiający stronę przeglądu uprawnienia](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Bezpieczne udostępnianie aplikacji i usług przy użyciu zasad
 Zasady autoryzacji umożliwiają ochronę zawartości firmowej. Zasady dostępu warunkowego, takie jak uwierzytelnianie wieloskładnikowe, można wymuszać:
@@ -50,7 +51,7 @@ Zasady autoryzacji umożliwiają ochronę zawartości firmowej. Zasady dostępu 
 - Na poziomie aplikacji.
 - W przypadku określonych gości w celu ochrony aplikacji i danych firmowych.
 
-![dodawanie użytkowników-gości](media/what-is-b2b/tutorial-mfa-policy-2.png)
+![Zrzut ekranu przedstawiający opcję dostępu warunkowego](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
 
 ## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>Łatwe dodawanie użytkowników-gości w portalu usługi Azure AD
@@ -60,7 +61,7 @@ Jako administrator możesz łatwo dodawać użytkowników-gości do organizacji 
 - Użytkownik-gość natychmiast otrzymuje możliwe do dostosowania zaproszenie, które pozwala mu na zalogowanie się do panelu dostępu.
 - Użytkowników-gości w katalogu można przypisywać do aplikacji lub grup.  
 
-![dodawanie użytkowników-gości](media/what-is-b2b/adding-b2b-users-admin.png)
+![Zrzut ekranu przedstawiający stronę wpis z zaproszeniem nowego użytkownika gościa](media/what-is-b2b/adding-b2b-users-admin.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Zezwalanie właścicielom aplikacji i grup na zarządzanie własnymi użytkownikami-gośćmi
 
@@ -68,7 +69,7 @@ Zarządzanie użytkownikami-gośćmi można delegować do właścicieli aplikacj
  - Administratorzy konfigurują samoobsługowe zarządzanie aplikacjami i grupami.
  - Użytkownicy inni niż administratorzy używają własnego [panelu dostępu](https://myapps.microsoft.com) w celu dodania użytkowników-gości do aplikacji lub grup.
 
-![dodawanie użytkowników-gości](media/what-is-b2b/access-panel-manage-app.png)
+![Zrzut ekranu przedstawiający panelu dostępu dla użytkownika-gościa](media/what-is-b2b/access-panel-manage-app.png)
 
 ## <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Używanie interfejsów API i przykładowego kodu do prostego tworzenia aplikacji do dodania
 
@@ -76,9 +77,9 @@ Zaproś partnerów zewnętrznych do współpracy w sposób dostosowany do potrze
 - Skorzystaj z [interfejsów API zapraszania do współpracy w usłudze B2B](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) w celu dostosowywania środowisk dodawania, w tym budowania samoobsługowych portali tworzenia kont. 
 - Skorzystaj z przykładowego kodu, który udostępniamy na potrzeby portalu samoobsługowego [w serwisie GitHub](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
-![portal tworzenia konta](media/what-is-b2b/sign-up-portal.png)
+![Zrzut ekranu przedstawiający przykładowego portalu rejestracji](media/what-is-b2b/sign-up-portal.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Licensing guidance for Azure AD B2B collaboration (Wskazówki dotyczące licencjonowania w ramach współpracy B2B w usłudze Azure AD)](licensing-guidance.md)
 - [Add B2B collaboration guest users in the portal (Dodawanie użytkowników-gości współpracy B2B w portalu)](add-users-administrator.md)

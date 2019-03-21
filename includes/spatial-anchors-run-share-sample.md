@@ -4,12 +4,12 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: bfeb8bddf5fe3b4a76e662aed6c5a07439d2f1cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 563c2bd561328561d30acee6910b70d53ef64c6b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57908636"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305159"
 ---
 ## <a name="set-up-your-device"></a>Konfigurowanie urządzenia
 
@@ -21,36 +21,36 @@ ms.locfileid: "57908636"
 
 [!INCLUDE [iOS Unity Build Settings](spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-account-identifier-and-key"></a>Konfigurowanie identyfikatora i klucza konta
+## <a name="configure-the-account-identifier-and-key"></a>Skonfiguruj identyfikator konta i klucz
 
 W okienku **Project (Projekt)** przejdź do katalogu `Assets/AzureSpatialAnchorsPlugin/Examples` i otwórz plik sceny `AzureSpatialAnchorsLocalSharedDemo.unity`.
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-Dodatkowo w okienku **Inspector (Inspektor)** wprowadź wartość `Sharing Anchors Service url` (z wdrożenia aplikacji internetowej platformy ASP.NET na platformie Azure) jako wartość `Base Sharing Url`, zastępując wartość `index.html` wartością `api/anchors`. Powinno to wyglądać następująco: `https://<app_name>.azurewebsites.net/api/anchors`.
+W **Inspektor** okienku, wprowadź `Sharing Anchors Service url` (z poziomu aplikacji sieci web platformy ASP.NET wdrażania na platformie Azure) jako wartość pozycji `Base Sharing Url`, zastępując ciąg `index.html` z `api/anchors`. Powinien wyglądać następująco: `https://<app_name>.azurewebsites.net/api/anchors`.
 
-Zapisz scenę, wybierając pozycje **File (Plik)** -> **Save (Zapisz)**.
+Zapisz scenę, wybierając pozycje **File (Plik)** > **Save (Zapisz)**.
 
-## <a name="to-deploy-to-an-android-device"></a>Wdrażanie na urządzeniu z systemem Android
+## <a name="to-deploy-the-app-to-an-android-device"></a>Aby wdrożyć aplikację na urządzeniu z systemem Android
 
 Zaloguj się na urządzeniu z systemem Android i podłącz go do komputera za pomocą kabla USB.
 
-Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** -> **Build Settings (Ustawienia kompilacji)**.
+Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
 
-W obszarze **Scenes in Build (Sceny w kompilacji)** zaznacz pole wyboru obok sceny `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` i wyczyść pola wyboru przy wszystkich innych scenach.
+W obszarze **sceny w kompilacji**, zaznacz pole wyboru obok pozycji `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` scen i wyczyść wyboru oznacza od wszystkich innych sceny.
 
-Upewnij się, że pole wyboru **Export Project (Eksportuj projekt)** nie jest zaznaczone. Kliknij pozycję **Build And Run (Skompiluj i uruchom)**. Zobaczysz pytanie o zapisanie pliku `.apk` — możesz wybrać dla niego dowolną nazwę.
+Upewnij się, że **Eksportowanie projektu** nie ma znacznik wyboru. Wybierz **kompilowanie i uruchamianie**. Zostanie wyświetlony monit, aby zapisać swoje `.apk` pliku. Możesz wybrać dowolną nazwę.
 
-Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać opcję **Create & Share Anchor (Utwórz i udostępnij kotwicę)** lub **Locate Shared Anchor (Zlokalizuj udostępnioną kotwicę)**. Pierwsza opcja pozwala utworzyć kotwicę, którą można później znaleźć na tym samym lub innym urządzeniu. Druga opcja, jeśli wcześniej uruchomiono aplikację (na tym samym lub innym urządzeniu), umożliwia zlokalizowanie wcześniej udostępnionych kotwic.
+Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać **Utwórz i Udostępnij zakotwiczenia** lub **Znajdź udostępniony zakotwiczenia**. Pierwsza opcja umożliwia tworzenie kotwicę, która może znajdować się na później w tym samym urządzeniu lub na inną. Druga opcja, jeśli została już uruchomiono aplikację, na tym samym urządzeniu lub na inną, umożliwia umieszczanie kotwic wcześniej udostępniony.
 
-## <a name="to-deploy-to-an-ios-device"></a>Wdrażanie na urządzeniu z systemem iOS
+## <a name="to-deploy-the-app-to-an-ios-device"></a>Aby wdrożyć aplikację na urządzeniu z systemem iOS
 
-Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** -> **Build Settings (Ustawienia kompilacji)**.
+Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
 
-W obszarze **Scenes in Build (Sceny w kompilacji)** zaznacz pole wyboru obok sceny `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` i wyczyść pola wyboru przy wszystkich innych scenach.
+W obszarze **sceny w kompilacji**, zaznacz pole wyboru obok pozycji `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` scen i wyczyść wyboru oznacza od wszystkich innych sceny.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać opcję **Create & Share Anchor (Utwórz i udostępnij kotwicę)** lub **Locate Shared Anchor (Zlokalizuj udostępnioną kotwicę)**. Pierwsza opcja pozwala utworzyć kotwicę, którą można później znaleźć na tym samym lub innym urządzeniu. Druga opcja, jeśli wcześniej uruchomiono aplikację (na tym samym lub innym urządzeniu), umożliwia zlokalizowanie wcześniej udostępnionych kotwic.
+Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać **Utwórz i Udostępnij zakotwiczenia** lub **Znajdź udostępniony zakotwiczenia**. Pierwsza opcja umożliwia tworzenie kotwicę, która może znajdować się na później w tym samym urządzeniu lub na inną. Druga opcja, jeśli została już uruchomiono aplikację, na tym samym urządzeniu lub na inną, umożliwia umieszczanie kotwic wcześniej udostępniony.
 
-W programie Xcode zatrzymaj aplikację, naciskając pozycję **Stop**.
+W programie Xcode, Zatrzymaj aplikację, wybierając **zatrzymać**.

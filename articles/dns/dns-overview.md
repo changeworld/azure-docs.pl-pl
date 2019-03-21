@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 07230b061f9b18e1efe6ce8c65abe0f7e7f73b34
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 62043128b6415a064e35adca6be4d60ccfcae308
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893498"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294318"
 ---
 # <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
 
@@ -38,6 +38,8 @@ W usłudze Azure DNS domeny DNS są hostowane w globalnej sieci serwerów nazw D
 
 Aby uzyskać więcej informacji, zobacz [How to protect DNS zones and records (Jak chronić strefy i rekordy DNS)](dns-protect-zones-recordsets.md). 
 
+## <a name="dnssec"></a>DNSSEC
+Usługa Azure DNS aktualnie nie obsługuje rozszerzeń DNSSEC. W większości przypadków mogą zmniejszyć potrzebę rozszerzeń DNSSEC, stale przy użyciu protokołu HTTPS/TLS w aplikacji. Rozszerzenia DNSSEC w przypadku najważniejszych wymagań dla stref DNS, może obsługiwać te strefy za pomocą dostawcy hostingu DNS innej.
 
 ## <a name="ease-of-use"></a>Łatwość obsługi
 
@@ -62,7 +64,7 @@ Teraz możesz także skierować domenę wierzchołkową lub samą domenę do pro
 Aby uzyskać więcej informacji, zobacz temat [Overview of Azure DNS alias records (Omówienie rekordów aliasów usługi Azure DNS)](dns-alias.md).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej na temat stref i rekordów DNS, zobacz [DNS zones and records overview (Omówienie stref i rekordów DNS)](dns-zones-records.md).
 

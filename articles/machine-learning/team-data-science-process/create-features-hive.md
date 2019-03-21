@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458027"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835020"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive
 W tym dokumencie przedstawiono sposób tworzenia funkcji — dane przechowywane w klastrze usługi Azure HDInsight Hadoop przy użyciu zapytań programu Hive. Te zapytania programu Hive za pomocą osadzonych funkcji Hive User-Defined przez użytkownika (UDF), skryptów, dla której są dostarczane.
 
 Operacje wymagane do utworzenia funkcji może być intensywnie korzystających z pamięci. Wydajność zapytań technologii Hive staje się ważniejsze w takich przypadkach i można zwiększyć przez dostrojenie określonych parametrów. Dostrajanie tych parametrów jest omówiona w sekcji końcowej.
 
-Przykłady zapytań, które są prezentowane są specyficzne dla [danych podróży taksówek NYC](http://chriswhong.com/open-data/foil_nyc_taxi/) scenariusze są również dostępne w [repozytorium GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Te zapytania już mają określony schemat danych i gotowe do wysłania do uruchomienia. W sekcji końcowej parametry, które użytkownicy można dostrajanie, dzięki czemu można zwiększyć wydajność zapytań technologii Hive zostały również omówione.
+Przykłady zapytań, które są prezentowane są specyficzne dla [danych podróży taksówek NYC](https://chriswhong.com/open-data/foil_nyc_taxi/) scenariusze są również dostępne w [repozytorium GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Te zapytania już mają określony schemat danych i gotowe do wysłania do uruchomienia. W sekcji końcowej parametry, które użytkownicy można dostrajanie, dzięki czemu można zwiększyć wydajność zapytań technologii Hive zostały również omówione.
 
 To zadanie jest to krok w [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
@@ -130,7 +130,7 @@ Pola, które są używane w tym zapytaniu są współrzędne GPS odbiór i dropo
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Wyrażenia matematyczne, które obliczyć odległość między dwoma współrzędne GPS znajduje się na <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">skryptów typu ruchome</a> witryny, opracowane przez Peter Lapisu. W tym Javascript, funkcja `toRad()` jest po prostu *lat_or_lon*pi/180 *, która konwertuje stopnie na radiany. W tym miejscu *lat_or_lon* jest geograficzna i szerokość geograficzną. Ponieważ gałąź nie zapewnia funkcji `atan2`, ale zapewnia funkcję `atan`, `atan2` funkcja jest zaimplementowana przez `atan` funkcji w powyższym zapytaniu Hive przy użyciu definicji w <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+Wyrażenia matematyczne, które obliczyć odległość między dwoma współrzędne GPS znajduje się na <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">skryptów typu ruchome</a> witryny, opracowane przez Peter Lapisu. W tym Javascript, funkcja `toRad()` jest po prostu *lat_or_lon*pi/180, która konwertuje stopnie na radiany. W tym miejscu *lat_or_lon* jest geograficzna i szerokość geograficzną. Ponieważ gałąź nie zapewnia funkcji `atan2`, ale zapewnia funkcję `atan`, `atan2` funkcja jest zaimplementowana przez `atan` funkcji w powyższym zapytaniu Hive przy użyciu definicji w <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
 
 ![Tworzenie obszaru roboczego](./media/create-features-hive/atan2new.png)
 
@@ -161,11 +161,11 @@ Domyślne parametry Hive klastra może nie być odpowiednie dla zapytań program
    
     Zazwyczaj wartość domyślna:
     
-    - *mapred.min.split.SIZE* ma wartość 0, w przypadku
-    - *mapred.max.split.SIZE* jest **Long.MAX** i 
-    - *DFS.Block.SIZE* to 64 MB.
+   - *mapred.min.split.SIZE* ma wartość 0, w przypadku
+   - *mapred.max.split.SIZE* jest **Long.MAX** i 
+   - *DFS.Block.SIZE* to 64 MB.
 
-    Jak widać, uwzględniając rozmiar danych dostosowywania tych parametrów, ustawiając wartość"" ich pozwala nam dostosować liczbę liczby maperów używane.
+     Jak widać, uwzględniając rozmiar danych dostosowywania tych parametrów, ustawiając wartość"" ich pozwala nam dostosować liczbę liczby maperów używane.
 
 4. Oto kilka innych kolejnych **zaawansowane opcje** optymalizacji wydajności technologii Hive. Te umożliwiają ustawianie pamięć przydzielona programowi mapowania i redukcji zadań i może być przydatne w Dostosowywanie wydajności. Należy pamiętać, że *mapreduce.reduce.memory.mb* nie może być większa niż rozmiar pamięci fizycznej w każdym węzłem procesu roboczego w klastrze usługi Hadoop.
    

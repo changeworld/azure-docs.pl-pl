@@ -9,14 +9,15 @@ ms.date: 05/26/2017
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ab999e2b2a8465b110874cca3d478c60c18099
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ae5ae6d742bc6b4420b886c9ea2bd4e023075f4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091141"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295525"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Uzyskiwanie pomocy technicznej do współpracy B2B
 
@@ -28,7 +29,7 @@ Zapoznaj się z dokumentacją, możesz wykonać odpowiednie czynności, ale nada
      - Usługa: Usługa Active Directory
      - Plan pomocy technicznej: Wybierz plan pomocy technicznej odpowiednich
 
-   ![Nowe żądanie obsługi](media/get-support/new-support-request.png)
+   ![Zrzut ekranu przedstawiający nowe żądanie obsługi](media/get-support/new-support-request.png)
 
 2. Opisz problem:
    - Wybierz odpowiednie ważność, która odzwierciedla możesz musi.
@@ -36,6 +37,6 @@ Zapoznaj się z dokumentacją, możesz wykonać odpowiednie czynności, ale nada
    - Wybierz kategorię, jak dodawanie użytkowników (B2B)
    - Obejmują wszystkie komunikaty o błędach, takie jak identyfikator korelacji, użytkowników i tak dalej.
 
-   ![obsługuje biletu, opis problemu](media/get-support/problem-description.png)
+   ![Zrzut ekranu przedstawiający opis problemu bilet pomocy technicznej](media/get-support/problem-description.png)
 
 3. W przypadku przedstawicielem pomocy technicznej w celu skontaktowania się z Tobą dotyczące rozwiązywania problemów należy dodać swoje informacje kontaktowe.

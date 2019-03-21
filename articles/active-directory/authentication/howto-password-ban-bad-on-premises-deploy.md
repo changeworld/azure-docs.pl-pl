@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie ochrony haseł usługi Azure AD w wersji zapoznawczej
-description: Wdrażanie usługi Azure AD hasło protection w wersji zapoznawczej zablokować błędnego hasła lokalnie
+title: Wdrażanie ochrony haseł w usłudze Azure AD
+description: Wdrażanie ochrony hasłem usługi Azure AD, aby zablokować błędnego hasła lokalnie
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 832f29d16e5976493da56b304c3de0288b83c9b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54d2d600771316b0a88ea0a2486c0dedd0f84594
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848749"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286537"
 ---
-# <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrony haseł w usłudze Azure AD
-
-|     |
-| --- |
-| Ochrona platformy Azure za pomocą hasła usługi Active Directory (Azure AD) to funkcja publicznej wersji zapoznawczej usługi Azure AD. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
 Teraz, gdy już rozumiesz [jak wymusić ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server](concept-password-ban-bad-on-premises.md), następnym krokiem jest planowania i wykonywania wdrożenia.
 

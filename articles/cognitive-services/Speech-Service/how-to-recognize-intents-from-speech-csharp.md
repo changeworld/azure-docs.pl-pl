@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 680c10d8402853f1ac2f519b8f07f81b9718ab9e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855728"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Samouczek: rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#
 
@@ -45,9 +45,9 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku upewnij s
 
 ## <a name="luis-and-speech"></a>Usługa LUIS i mowa
 
-Usługa LUIS integruje się z usługą rozpoznawania mowy, aby rozpoznawać intencje z mowy. Nie potrzebujesz subskrypcji usługi rozpoznawania mowy, tylko usługi LUIS.
+Usługa LUIS integruje się z usług przetwarzania mowy, rozpoznawał intencji z wypowiedzi. Nie potrzebujesz subskrypcji usług przetwarzania mowy, po prostu usługi LUIS.
 
-Usługa LUIS używa dwóch rodzajów kluczy: 
+Usługa LUIS używa dwóch rodzajów kluczy:
 
 |Typ klucza|Przeznaczenie|
 |--------|-------|
@@ -56,7 +56,7 @@ Usługa LUIS używa dwóch rodzajów kluczy:
 
 Klucz punktu końcowego to klucz usługi LUIS potrzebny w tym samouczku. W tym samouczku jest używana przykładowa aplikacja usługi LUIS Home Automation, którą można utworzyć, wykonując kroki opisane w temacie [Używanie wstępnie utworzonej aplikacji Home Automation](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app). Jeśli masz już utworzoną własną aplikację usługi LUIS, możesz jej użyć.
 
-Podczas tworzenia aplikacji usługi LUIS klucz początkowy jest generowany automatycznie, aby można było przetestować aplikację przy użyciu zapytań tekstowych. Ten klucz nie umożliwia integracji z usługą rozpoznawania mowy i nie będzie działać w tym samouczku. Musisz utworzyć zasób usługi LUIS na pulpicie nawigacyjnym platformy Azure i przypisać go do aplikacji usługi LUIS. Na potrzeby tego samouczka możesz używać subskrypcji warstwy Bezpłatna. 
+Podczas tworzenia aplikacji usługi LUIS klucz początkowy jest generowany automatycznie, aby można było przetestować aplikację przy użyciu zapytań tekstowych. Ten klucz nie umożliwia integracji usług przetwarzania mowy i nie będzie działać w tym samouczku. Musisz utworzyć zasób usługi LUIS na pulpicie nawigacyjnym platformy Azure i przypisać go do aplikacji usługi LUIS. Na potrzeby tego samouczka możesz używać subskrypcji warstwy Bezpłatna.
 
 Po utworzeniu zasobu usługi LUIS na pulpicie nawigacyjnym platformy Azure zaloguj się do [portalu usługi LUIS](https://www.luis.ai/home), wybierz aplikację na stronie Moje aplikacje, a następnie przejdź do strony zarządzania aplikacją. Na koniec kliknij pozycję **Klucze i punkty końcowe** na pasku bocznym.
 
@@ -123,7 +123,7 @@ Poniższe sekcje zawierają omówienie kodu.
 Pierwszym krokiem rozpoznawania intencji w mowie jest utworzenie konfiguracji mowy przy użyciu regionu i klucza punktu końcowego usługi LUIS. Konfiguracje mowy mogą służyć do tworzenia aparatów rozpoznawania w przypadku różnych możliwości zestawu SDK rozpoznawania mowy. Konfiguracja mowy oferuje wiele sposobów określania subskrypcji do użycia. W tym miejscu użyjemy opcji `FromSubscription`, która uwzględnia region i klucz subskrypcji.
 
 > [!NOTE]
-> Użyj klucza i regionu subskrypcji usługi LUIS, a nie subskrypcji usługi mowy.
+> Użyj klucza i regionie Twojej subskrypcji usługi LUIS, nie z subskrypcji usług przetwarzania mowy.
 
 Następnie utwórz aparat rozpoznawania mowy przy użyciu elementu `new IntentRecognizer(config)`. Ponieważ konfiguracja już wie, której subskrypcji użyć, nie trzeba ponownie określać punktu końcowego i klucza subskrypcji podczas tworzenia aparatu rozpoznawania.
 
@@ -174,7 +174,7 @@ Poniższy kod ilustruje dwie dodatkowe możliwości funkcji rozpoznawania intenc
 
 Inna możliwość to odczytywanie dźwięku zawierającego mowę w celu przetworzenia z pliku WAV. Obejmuje to tworzenie konfiguracji audio, której można używać podczas tworzenia aparatu rozpoznawania intencji. Plik musi być plikiem jednokanałowym (mono) z częstotliwością próbkowania wynoszącą 16 kHz.
 
-Aby wypróbować te funkcje, zastąp treść metody `RecognizeIntentAsync()` poniższym kodem. 
+Aby wypróbować te funkcje, zastąp treść metody `RecognizeIntentAsync()` poniższym kodem.
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
@@ -183,7 +183,7 @@ Zmodyfikuj kod, aby uwzględnić identyfikator aplikacji, region i klucz punktu 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Wyszukaj kod z tego artykułu w folderze samples/csharp/sharedcontent/console.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Jak rozpoznawać mowę](how-to-recognize-speech-csharp.md)

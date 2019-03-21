@@ -9,14 +9,15 @@ ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad4872f9bc32a1978de47a52cea23d6bb2742a1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5763a7e5f122702ddaf86246fbfbd18326878146
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673617"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294199"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Inspekcja i raportowanie użytkownika współpracy B2B
 Użytkownicy-goście masz inspekcji funkcje podobne do użytkowników. 
@@ -28,11 +29,11 @@ Przeglądy dostępu umożliwia okresowo sprawdzać, czy użytkownicy-goście nad
 
 Inspekcja usługi Azure AD dzienniki dostarczają informacji na temat działania systemu i użytkownika, w tym działania zainicjowane przez użytkowników-gości. Uzyskiwanie dostępu do dzienników inspekcji w **usługi Azure Active Directory**w obszarze **monitorowanie**, wybierz opcję **dzienniki inspekcji**. Oto przykład zaproszenie i realizacji historii użytkownika osoby zaproszonej Sam Oogle:
 
-![dziennik inspekcji](./media/auditing-and-reporting/audit-log.png)
+![Zrzut ekranu przedstawiający i przykład inspekcji dziennika danych wyjściowych](./media/auditing-and-reporting/audit-log.png)
 
 Możesz od razu do każdego z tych zdarzeń, aby uzyskać szczegóły. Na przykład Przyjrzyjmy się szczegóły zatwierdzenia.
 
-![Szczegóły działania](./media/auditing-and-reporting/activity-details.png)
+![Zrzut ekranu przedstawiający i przykład danych wyjściowych szczegóły działania](./media/auditing-and-reporting/activity-details.png)
 
 Można również wyeksportować te dzienniki z usługi Azure AD i uzyskiwanie dostosowanych raportów za pomocą narzędzia raportowania wybranych przez użytkownika.
 

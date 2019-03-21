@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: e56ab4d74b54e1da8b07de6081766c8669bfb68a
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 2ffc9055f23b8221a6f711f741b6146545ff0821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895740"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Wdrażanie usługi sieci web Azure Machine Learning Studio
 
@@ -93,23 +93,23 @@ Strona testowa RRS wyświetla dane wejściowe, dane wyjściowe i parametry globa
 
 Aby przetestować przy użyciu rekordów zasobów, w trybie widoku listy, wprowadź odpowiednie wartości dla danych wejściowych, a następnie kliknij przycisk **testowania odpowiedź na żądanie**. Wyniki prognozy są wyświetlane w kolumnie wyników po lewej stronie.
 
-![Wdrażanie usługi sieci Web](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
+![Wprowadź odpowiednie wartości, aby przetestować usługę sieci web](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
 Aby przetestować usługi BES, **partii**. Na stronie testu usługi Batch kliknij przycisk Przeglądaj, w obszarze dane wejściowe, a następnie wybierz plik CSV zawierający przykładowe odpowiednie wartości. Jeśli nie masz plik CSV i tworzenia eksperymentu predykcyjnego przy użyciu usługi Machine Learning Studio, możesz pobrać zestaw danych do eksperymentu predykcyjnego i jej używać.
 
 Aby pobrać zestaw danych, należy otworzyć usługi Machine Learning Studio. Otwórz eksperyment predykcyjny i kliknij prawym przyciskiem myszy dane wejściowe na potrzeby eksperymentu. Z menu kontekstowego wybierz **dataset** , a następnie wybierz **Pobierz**.
 
-![Wdrażanie usługi sieci Web](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
+![Pobierz zestaw danych z obszar roboczy Studio](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
 Kliknij przycisk **testu**. Stan zadania wykonywania wsadowego są wyświetlane po prawej stronie w obszarze **zadania wsadowe testów**.
 
-![Wdrażanie usługi sieci Web](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
+![Testowanie zadania wykonywania wsadowego za pomocą portalu usług sieci web](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
 <!--![Test the web service](./media/publish-a-machine-learning-web-service/figure-3.png)-->
 
 Na **konfiguracji** strony, można zmienić opis tytuł, zaktualizować klucz konta magazynu i Włącz przykładowe dane do usługi sieci web.
 
-![Konfigurowanie usługi internetowej](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
+![Konfiguruj usługę sieci web](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
 
 ### <a name="access-your-new-web-service"></a>Dostęp do nowej usługi sieci web
 
@@ -161,7 +161,7 @@ Teraz, gdy został odpowiednio przygotowany eksperyment predykcyjny, możesz go 
 
 Aby wdrożyć eksperyment predykcyjny, kliknij **Uruchom** w dolnej części eksperymentu kanwy, a następnie kliknij przycisk **wdrażanie usługi sieci Web**. Usługa sieci web jest skonfigurowany, i są umieszczane w pulpicie nawigacyjnym usługi sieci web.
 
-![Wdrażanie usługi sieci Web](./media/publish-a-machine-learning-web-service/figure-2.png)
+![Wdrażanie usługi sieci web z programu Studio](./media/publish-a-machine-learning-web-service/figure-2.png)
 
 ### <a name="test-your-classic-web-service"></a>Testowanie klasyczne usługi sieci web
 
@@ -181,7 +181,7 @@ Możesz podać opis danych wejściowych, danych wyjściowych i sieci web paramet
 
 Można włączyć rejestrowanie, aby zdiagnozować wszelkie błędy, które występują podczas uzyskiwania dostępu do usługi sieci web. Aby uzyskać więcej informacji, zobacz [Włączanie rejestrowania usług sieci web Machine Learning Studio](web-services-logging.md).
 
-![Konfigurowanie usługi internetowej](./media/publish-a-machine-learning-web-service/figure-4.png)
+![Włącz rejestrowanie w portalu usług sieci web](./media/publish-a-machine-learning-web-service/figure-4.png)
 
 Można również skonfigurować punkty końcowe usługi sieci web, w portalu usług sieci Web Azure Machine Learning, podobnie jak wcześniej przedstawionych w sekcji usługi sieci web. Dostępne opcje zależą, można dodać lub zmienić opisu usługi, Włącz rejestrowanie i Włącz przykładowe dane do testowania.
 
@@ -218,7 +218,6 @@ Jedną z opcji aktualizowania usługi sieci web jest programowe ponowne trenowan
 * Aby uzyskać więcej informacji na temat sposobu przygotowania do wdrożenia modelu, zobacz [jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md).
 
 * Istnieje kilka sposobów uzyskiwania dostępu do usługi sieci Web za pomocą interfejsu API REST. Zobacz [sposobu korzystania z usługi sieci web Azure Machine Learning Studio](consume-web-services.md).
-
 
 <!-- internal links -->
 [Tworzenie eksperymentu szkolenia]: #create-a-training-experiment

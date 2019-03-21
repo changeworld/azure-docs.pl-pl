@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 3/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1b26f0833dec95d886a56dde4526d02f697926ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 665e6651db37cc04693d68bd2de2ede6e595eab4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004419"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293399"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów rozpoznawanie tekstu
 
@@ -50,14 +50,14 @@ Przed rozpoczęciem korzystania z kontenerów rozpoznawanie tekstu, musi spełni
 
 W poniższej tabeli opisano minimalne i zalecane rdzeni procesora CPU i pamięci do przydzielenia dla każdego kontenera rozpoznawanie tekstu.
 
-| Kontener | Minimalne | Zalecane |
-|-----------|---------|-------------|
-|Rozpoznawanie tekstu|1 core, 8 GB memory, 0.5 TPS|2 rdzenie, 8 GB pamięci 1 TPS|
+| Kontener | Minimalne | Zalecane |TPS<br>(Minimum, maksimum)|
+|-----------|---------|-------------|--|
+|Rozpoznawanie tekstu|1 core, 8 GB memory, 0.5 TPS|2 rdzenie, 8 GB pamięci 1 TPS|0.5, 1|
 
-Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
+* Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
+* TPS - transakcji na sekundę
 
 Rdzeni i pamięci odpowiadają `--cpus` i `--memory` ustawienia, które są używane jako część `docker run` polecenia.
-
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera przy użyciu `docker pull`
 

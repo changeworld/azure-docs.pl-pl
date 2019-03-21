@@ -4,40 +4,40 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: cee446e54a37ce47fc82d72724e831b8270f3769
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: dc8d3c2d400204f53b05bb5536af95679541f3f6
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57908488"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305145"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Tworzenie zasobu usługi Spatial Anchors
 
-1. Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-2. W menu po lewej stronie w witrynie Azure Portal wybierz pozycję **Utwórz zasób**.
+W okienku nawigacji po lewej stronie w witrynie Azure portal wybierz **Utwórz zasób**.
 
-3. Wyszukaj ciąg „Spatial Anchors” na pasku wyszukiwania.
+Użyj pola wyszukiwania, aby wyszukać **przestrzenne kotwic**.
 
    ![Wyszukiwanie usługi Spatial Anchors](./media/spatial-anchors-get-started-create-resource/portal-search.png)
 
-4. Wybierz **przestrzenne kotwic** aby otworzyć okno dialogowe i wybrać **Utwórz**.
+Wybierz **przestrzenne kotwic**. W oknie dialogowym wybierz **Utwórz**.
 
-5. W formularzu **Konto usługi Spatial Anchors** wykonaj następujące czynności:
+W **przestrzenne konta kotwic** okno dialogowe:
 
-   1. Określ unikatową nazwę zasobu.
-   2. Wybierz subskrypcję do dołączenia do zasobu.
-   3. Utwórz grupę zasobów, wybierając pozycję **Utwórz nową**, a następnie nadaj grupie zasobów nazwę **myResourceGroup** i wybierz przycisk **OK**.
+- Wprowadź nazwę unikatowy zasób.
+- Wybierz subskrypcję, której chcesz dołączyć zasobu.
+- Utwórz grupę zasobów, wybierając **Utwórz nową**. Nadaj mu nazwę **myResourceGroup** i wybierz **OK**.
       [!INCLUDE [resource group intro text](resource-group.md)]
-   4. Wybierz lokalizację (region), w której zasób zostanie umieszczony.
-   5. Wybierz pozycję **Nowy**, aby rozpocząć tworzenie zasobu.
+- Wybierz lokalizację (region), w której chcesz umieścić zasobu.
+- Wybierz pozycję **Nowy**, aby rozpocząć tworzenie zasobu.
 
    ![Tworzenie zasobu](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-6. Po pomyślnym ukończeniu tworzenia zasobu możesz wyświetlić jego właściwości. Kopiuj zasób **Accountid** wartości do edytora tekstu, ponieważ będzie on wymagane później.
+Po utworzeniu zasobu możesz wyświetlić właściwości zasobu. Kopiuj zasób **Accountid** wartości do edytora tekstu, ponieważ będzie on potrzebny później.
 
-   ![Wyświetlanie właściwości zasobu](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
+   ![Właściwości zasobu](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 
-7. W obszarze **ustawienia**, wybierz opcję **klucz**, a następnie skopiuj do edytora tekstu **klucz podstawowy** wartość. Ta wartość to `Account Key` i zostanie ona użyta później.
+W obszarze **ustawienia**, wybierz opcję **klucz**. Kopiuj **klucz podstawowy** wartości do edytora tekstu. Ta wartość jest `Account Key`. Będzie on potrzebny później.
 
-   ![Wyświetlanie klucza konta](./media/spatial-anchors-get-started-create-resource/view-account-key.png)
+   ![Klucz konta](./media/spatial-anchors-get-started-create-resource/view-account-key.png)

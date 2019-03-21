@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f3138a9d0fe201a9486c34c08b8cdb3cca47e1d7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0da6b6b0fef0f998e20789253b2a65c54121532c
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207551"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260013"
 ---
 # <a name="manage-content-moderator-service-credentials"></a>Zarządzanie poświadczeniami usługi Content Moderator
 
@@ -61,7 +61,7 @@ Następujące części są rozpatrywane wcześniejszej ilustracji, używając ba
 
 Pierwsze listy części Twojej **przejrzeć punkt końcowy interfejsu API**, **Identyfikatora zespołu**i **Ocp-Apim-Subscription-Key (klucz wersji próbnej usługi Content Moderator)** wygenerowane jako część Twojego zespołu Tworzenie. Służą one do wywołania wszystkich Content Moderator interfejsów API, tym interfejs API przeglądu.
 
-Należy również zauważyć, że identyfikator region dla punktu końcowego interfejsu API. Na przykład **westus** to region, w "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
+Należy również zauważyć, że identyfikator region dla punktu końcowego interfejsu API. Na przykład **westus** to region, w "https:\//westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
 
 ![Klucz zawartości Moderator w narzędzie do przeglądu](images/credentials-trialkey.PNG)
 

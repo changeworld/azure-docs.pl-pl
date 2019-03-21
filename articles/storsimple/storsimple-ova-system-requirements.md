@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 7e5cf79613bdbd62427e99a0d1f2aa29ed8f85be
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245195"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999507"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Wymagania systemowe macierzy wirtualnej StorSimple
 ## <a name="overview"></a>Przegląd
@@ -42,7 +42,7 @@ Wymagania dotyczące oprogramowania zawierają informacje na obsługiwanych prze
 | **Funkcja hypervisor** | **Wersja** |
 | --- | --- |
 | Funkcja Hyper-V |Windows Server 2008 R2 z dodatkiem SP1 lub nowszy |
-| Host VMware ESXi |w wersji 5.0, 5.5, 6.0 i 6.5. |
+| VMware ESXi |w wersji 5.0, 5.5, 6.0 i 6.5. |
 
 > [!IMPORTANT]
 > Nie należy instalować oprogramowania VMware na rozwiązania StorSimple Virtual Array; Spowoduje to nieobsługiwaną konfigurację.
@@ -72,13 +72,13 @@ Są następujące wymagania dotyczące oprogramowania dla inicjatorów iSCSI, uz
 
 | **Obsługiwane systemy operacyjne** | **Wymagana wersja** | **Dodatkowe wymagania dotyczące/uwagi** |
 | --- | --- | --- |
-| Windows Server |2008R2 Z DODATKIEM SP1, 2012, 2012 R2 |Usługa StorSimple można tworzyć alokowane elastycznie i inicjowane w pełni woluminów. Nie można go tworzyć woluminów inicjowanych częściowo. Woluminy iSCSI StorSimple są obsługiwane tylko w przypadku: <ul><li>Woluminów prostych na dyskach podstawowych Windows.</li><li>Windows System plików NTFS do formatowania woluminu.</li> |
+| Windows Server |2008R2 SP1, 2012, 2012R2 |Usługa StorSimple można tworzyć alokowane elastycznie i inicjowane w pełni woluminów. Nie można go tworzyć woluminów inicjowanych częściowo. Woluminy iSCSI StorSimple są obsługiwane tylko w przypadku: <ul><li>Woluminów prostych na dyskach podstawowych Windows.</li><li>Windows System plików NTFS do formatowania woluminu.</li> |
 
 Są następujące wymagania dotyczące oprogramowania dla klientów protokołu SMB uzyskujących dostęp do rozwiązania StorSimple Virtual Array (skonfigurowana jako serwer plików).
 
 | **Wersja protokołu SMB** |
 | --- |
-| Protokół SMB 2.x |
+| SMB 2.x |
 | SMB 3.0 |
 | SMB 3.02 |
 
@@ -94,13 +94,13 @@ Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, a
 
 | **Nr portu<sup>1</sup>** | **Wewnątrz lub na zewnątrz** | **Zakres portów** | **Wymagane** | **Uwagi** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Wyjście |WAN |Nie |Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
-| TCP 443 (HTTPS) |Wyjście |WAN |Yes |Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
-| UDP 53 (DNS) |Wyjście |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. <br></br> Należy pamiętać o tym, jeśli wdrożenie serwera plików, zalecamy używanie lokalnego serwera DNS. |
-| UDP 123 (NTP) |Wyjście |WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie.<br></br> Należy pamiętać, że jeśli wdrażanie serwera plików, zaleca się synchronizowanie czasu z kontrolerów domeny usługi Active Directory. |
+| TCP 80 (HTTP) |Wyjście |Sieć WAN |Nie |Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
+| TCP 443 (HTTPS) |Wyjście |Sieć WAN |Yes |Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze. <br></br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
+| UDP 53 (DNS) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy używasz serwera DNS internetowego. <br></br> Należy pamiętać o tym, jeśli wdrożenie serwera plików, zalecamy używanie lokalnego serwera DNS. |
+| UDP 123 (NTP) |Wyjście |Sieć WAN |W niektórych przypadkach; Zobacz uwagi. |Ten port jest wymagany tylko wtedy, gdy korzystają z serwera NTP oparty na Internecie.<br></br> Należy pamiętać, że jeśli wdrażanie serwera plików, zaleca się synchronizowanie czasu z kontrolerów domeny usługi Active Directory. |
 | TCP 80 (HTTP) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. <br></br> Należy pamiętać, uzyskiwanie dostępu do lokalnego interfejsu użytkownika za pośrednictwem protokołu HTTP spowoduje automatyczne przekierowanie do protokołu HTTPS. |
 | TCP 443 (HTTPS) |W |Sieć LAN |Yes |Jest to port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu StorSimple na potrzeby zarządzania lokalnego. |
-| 3260 TCP (iSCSI) |W |Sieć LAN |Nie |Port ten jest używany do dostępu do danych za pośrednictwem interfejsu iSCSI. |
+| TCP 3260 (iSCSI) |W |Sieć LAN |Nie |Port ten jest używany do dostępu do danych za pośrednictwem interfejsu iSCSI. |
 
 <sup>1</sup> nie portów przychodzących, które muszą być otwarte w publicznym Internecie.
 
@@ -125,12 +125,12 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, w opar
 | --- | --- |
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Usługa menedżera urządzeń StorSimple<br>Usługa kontroli dostępu<br>Azure Service Bus<br>Usługa uwierzytelniania|
 | `http://*.backup.windowsazure.com` |Rejestracja urządzenia |
-| `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Odwoływanie certyfikatów |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odwoływanie certyfikatów |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Konta usługi Azure storage i monitorowania |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com` |Serwerami usługi Microsoft Update<br> |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Serwerami usługi Microsoft Update<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Pakiet dla pomocy technicznej |
-| `http://*.data.microsoft.com ` |Usługa telemetrii w Windows, zobacz [aktualizacja dla programu obsługi klienta i diagnostycznych telemetrii](https://support.microsoft.com/en-us/kb/3068708) |
+| `https://*.data.microsoft.com ` |Usługa telemetrii w Windows, zobacz [aktualizacja dla programu obsługi klienta i diagnostycznych telemetrii](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przygotowywanie portalu, aby wdrożyć rozwiązania StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)

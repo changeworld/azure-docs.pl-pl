@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 884a13df23fd0cc1103b6a73fad26f2099e3bfd7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 54b440ee76fe36a83284b8ce769bb31012781a35
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074697"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295763"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Przekształcanie danych za pomocą usługi Databricks w usłudze Azure Data Factory
 
@@ -39,7 +39,7 @@ W celu uproszczenia tego szablonu, szablon nie tworzy zaplanowane wyzwalanie. Mo
 
 2.  Upewnij się, że **obszaru roboczego usługi Azure Databricks** lub utworzyć nowy.
 
-1.  **Importuj Notes ETL**. Importuj poniżej Notes przekształcenia do obszaru roboczego usługi Databricks. (Go nie ma znajdować się w tej samej lokalizacji, tak jak pokazano poniżej, ale należy pamiętać ścieżkę, wybierz dla później). Importuj Notes z następującego adresu URL, wprowadzając ten adres URL w polu adres URL: `https://Data Factorylabstaging1.blob.core.windows.net/share/Transformations.html`. Wybierz **importu**.
+1.  **Importuj Notes ETL**. Importuj poniżej Notes przekształcenia do obszaru roboczego usługi Databricks. (Go nie ma znajdować się w tej samej lokalizacji, tak jak pokazano poniżej, ale należy pamiętać ścieżkę, wybierz dla później). Importuj Notes z następującego adresu URL, wprowadzając ten adres URL w polu adres URL: `https://DataFactorylabstaging1.blob.core.windows.net/share/Transformations.html`. Wybierz **importu**.
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 

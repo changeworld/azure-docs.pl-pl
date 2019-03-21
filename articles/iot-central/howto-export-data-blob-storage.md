@@ -8,18 +8,18 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 43fda73b1bd410c3e754316bb8bf8c7e1c744e58
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f6e44b21a2a2e174ffa49073fdeb8cc96910a69e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005345"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295083"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Eksportuj dane do usługi Azure Blob Storage
 
 *W tym temacie mają zastosowanie do administratorów.*
 
-Ten artykuł omawia bardziej jak używać funkcji eksportu ciągłymi danymi w usłudze Azure IoT Central, aby okresowo eksportowały dane do swojej **konta usługi Azure Blob storage**. Możesz wyeksportować **pomiarów**, **urządzeń**, i **szablonów urządzeń** do plików w formacie Apache Avro. Wyeksportowane dane, może służyć do ścieżki nieaktywnej analizy, takich jak szkolenia modeli w usłudze Azure Machine Learning lub długoterminowej analizy trendu w usłudze Microsoft Power BI.
+W tym artykule opisano, jak używać funkcji eksportu ciągłymi danymi w usłudze Azure IoT Central, aby okresowo eksportowały dane do swojej **konta usługi Azure Blob storage**. Możesz wyeksportować **pomiarów**, **urządzeń**, i **szablonów urządzeń** do plików w formacie Apache Avro. Wyeksportowane dane, może służyć do ścieżki nieaktywnej analizy, takich jak szkolenia modeli w usłudze Azure Machine Learning lub długoterminowej analizy trendu w usłudze Microsoft Power BI.
 
 > [!Note]
 > Jeszcze raz po włączeniu ciągły Eksport danych otrzymasz tylko dane od tej pory wartości. Obecnie nie można pobrać danych w czasie, gdy ciągły Eksport danych zostało wyłączone. Do przechowania większej ilości danych historycznych, należy włączyć funkcję ciągły Eksport danych z wcześniej.
@@ -28,6 +28,69 @@ Ten artykuł omawia bardziej jak używać funkcji eksportu ciągłymi danymi w u
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz być administratorem w Twojej aplikacji IoT Central
+
+
+## <a name="set-up-export-destination"></a>Skonfiguruj miejsce docelowe eksportu
+
+Jeśli nie masz istniejącego magazynu, aby wyeksportować do, wykonaj następujące kroki:
+
+## <a name="create-storage-account"></a>Tworzenie konta magazynu
+
+1. Tworzenie [nowe konto magazynu w witrynie Azure portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Dowiedz się więcej w [dokumentacja usługi Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
+2. Dla typu konta, wybierz **ogólnego przeznaczenia** lub **magazynu obiektów Blob**.
+3. wybierz subskrypcję. 
+
+    > [!Note] 
+    > Teraz możesz wyeksportować dane do innych subskrypcji, które są **nie sam** co dla twojej aplikacji płatność za rzeczywiste użycie IoT Central. Połączysz się przy użyciu parametrów połączenia, w tym przypadku.
+
+4. Utwórz kontener na koncie magazynu. Przejdź do swojego konta magazynu. W obszarze **usługę Blob Service**, wybierz opcję **Przeglądaj obiekty BLOB**. Wybierz **+ kontener** u góry, aby utworzyć nowy kontener
+
+
+## <a name="set-up-continuous-data-export"></a>Konfigurowanie ciągły Eksport danych
+
+Teraz, gdy masz magazynu lokalizację docelową, aby wyeksportować dane, wykonaj następujące kroki, aby skonfigurować ciągły Eksport danych. 
+
+1. Zaloguj się do aplikacji IoT Central.
+
+2. W menu po lewej stronie wybierz **ciągły Eksport danych**.
+
+    > [!Note]
+    > Jeśli nie widzisz ciągły Eksport danych w menu po lewej stronie, nie jesteś administratorem w swojej aplikacji. Porozmawiaj z administratorem, aby skonfigurować Eksport danych.
+
+    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export_menu.PNG)
+
+3. Wybierz **+ nowy** przycisk w prawym górnym rogu. Wybierz **usługi Azure Blob Storage** jako miejsce docelowe eksportu. 
+
+    > [!NOTE] 
+    > Maksymalna liczba eksportów aplikacji wynosi pięć. 
+
+    ![Utwórz nowy ciągły Eksport danych](media/howto-export-data/export_new.PNG)
+
+4. W polu listy rozwijanej wybierz swoje **konta magazynu, obszaru nazw**. Można również wybrać na liście, która jest ostatnia opcja **wprowadź parametry połączenia**. 
+
+    > [!NOTE] 
+    > Zostanie wyświetlony tylko w przestrzeniach nazw kont magazynu **tej samej subskrypcji co aplikacja IoT Central**. Jeśli chcesz wyeksportować do miejsca docelowego spoza tej subskrypcji, wybierz opcję **wprowadź parametry połączenia** i zobacz krok 5.
+
+    > [!NOTE] 
+    > 7-dniowy, który eksportowania aplikacji w wersji próbnej, jedynym sposobem, aby skonfigurować ciągłe danych jest za pomocą parametrów połączenia. Jest to spowodowane 7-dniowy aplikacji w wersji próbnej nie mają skojarzonej subskrypcji platformy Azure.
+
+    ![Utwórz nowy CRP Centrum zdarzeń](media/howto-export-data/export-create-blob.png)
+
+5. (Opcjonalnie) Jeśli została wybrana opcja **wprowadź parametry połączenia**, nowe pole pojawia się należy wkleić parametry połączenia. Aby uzyskać parametry połączenia dla usługi:
+    - Konto magazynu, przejdź do konta magazynu w witrynie Azure portal.
+        - W obszarze **ustawienia**, wybierz opcję **klucze dostępu**
+        - Skopiuj parametry połączenia klucz1 lub klucz2 parametry połączenia
+ 
+6. Wybierz kontener, w polu listy rozwijanej.
+
+7. W obszarze **danych do wyeksportowania**, określ każdy rodzaj danych do wyeksportowania, ustawiając typ **na**.
+
+6. Aby włączyć ciągły Eksport danych, upewnij się, **eksportu danych** jest **na**. Wybierz pozycję **Zapisz**.
+
+  ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/export-list-blob.png)
+
+7. Po kilku minutach danych pojawi się w wybranej lokalizacji docelowej.
+
 
 ## <a name="export-to-azure-blob-storage"></a>Eksportowanie do usługi Azure Blob Storage
 

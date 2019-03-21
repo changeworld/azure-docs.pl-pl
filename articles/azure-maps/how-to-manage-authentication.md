@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fe0e325543d245e4415fea925fcdade32eb00614
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570508"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259928"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Zarządzaj uwierzytelnianiem w usługi Azure Maps
 
@@ -32,7 +32,7 @@ Informacje dotyczące uwierzytelniania można wyświetlić w witrynie Azure port
 
 Po utworzeniu konta usługi Azure Maps, należy ustanowić połączenia między dzierżawą usługi Azure AD i zasobów usługi Azure Maps.
 
-1. Przejdź do bloku usługi Azure AD i Utwórz rejestracji aplikacji. Podaj nazwę dla rejestracji. W **adres URL logowania** Podaj strony głównej aplikacji internetowej / interfejsu API (na przykład https://localhost/). Jeśli masz już zarejestrowana aplikacja, przejdź do kroku 2.
+1. Przejdź do bloku usługi Azure AD i Utwórz rejestracji aplikacji. Podaj nazwę dla rejestracji. W **adres URL logowania** Podaj strony głównej aplikacji internetowej / interfejsu API (np. https:\//localhost/). Jeśli masz już zarejestrowana aplikacja, przejdź do kroku 2.
 
     ![Rejestracja aplikacji](./media/how-to-manage-authentication/app-registration.png)
 
