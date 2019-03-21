@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1d66ca49db097eebd4c8fb5663f63e0db7460ad6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e038afe27718dcbd407e83b5c9190606e6b917c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782874"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004656"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Tworzenie połączenia sieci VPN typu lokacja lokacja między dwiema sieciami wirtualnymi w różnych środowiskach Azure Stack Development Kit
 ## <a name="overview"></a>Przegląd
@@ -52,6 +52,7 @@ W środowisku POC1 i POC2 przygotować ofertę, aby użytkownik mógł subskrybo
 Poniższa tabela zawiera podsumowanie konfiguracji sieci w obu środowiskach Azure Stack Development Kit. Użyj procedury, która pojawia się pod tabelą, aby dodać adres BGPNAT zewnętrznych, które są specyficzne dla sieci.
 
 **Tabela konfiguracji sieci**
+
 |   |POC1|POC2|
 |---------|---------|---------|
 |Nazwa sieci wirtualnej     |VNET-01|VNET-02 |

@@ -1,6 +1,6 @@
 ---
-title: Samouczek tworzenia aplikacji internetowej ASP.NET MVC za pomocą usługi Azure Cosmos DB i zestawu SDK platformy .NET w wersji zapoznawczej.
-description: W tym samouczku opisano sposób tworzenia aplikacji internetowej ASP .NET MVC za pomocą usługi Azure Cosmos DB. W aplikacji z listą zadań do wykonania hostowanej na platformie Azure będziesz zapisywać dane JSON i uzyskiwać dostęp do nich.
+title: Samouczek do tworzenia aplikacji sieci web platformy ASP.NET MVC za pomocą usługi Azure Cosmos DB przy użyciu platformy .NET w wersji zapoznawczej zestawu SDK.
+description: W tym samouczku opisano, jak utworzyć aplikację sieci web ASP .NET MVC za pomocą usługi Azure Cosmos DB. W aplikacji z listą zadań do wykonania hostowanej na platformie Azure będziesz zapisywać dane JSON i uzyskiwać dostęp do nich.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: e3ad852246b4b78d5ed7ac938348e59e9b7e6ce0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: bf1da7e8a1041b15076ebda6eeac9b0a75c567c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037127"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857168"
 ---
-# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Samouczek: tworzenie aplikacji internetowej ASP.NET MVC za pomocą usługi Azure Cosmos DB i zestawu SDK platformy .NET w wersji zapoznawczej 
+# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Samouczek: Tworzenie aplikacji sieci web ASP.NET MVC za pomocą usługi Azure Cosmos DB przy użyciu platformy .NET w wersji zapoznawczej zestawu SDK 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -26,9 +26,9 @@ ms.locfileid: "54037127"
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
 
-W tym samouczku pokazano, jak przy użyciu usługi Azure Cosmos DB przechowywać dane i uzyskiwać do nich dostęp z poziomu aplikacji ASP.NET MVC hostowanej na platformie Azure. W tym samouczku będziemy używać wersji 3 zestawu SDK platformy .NET, która jest aktualnie dostępna w wersji zapoznawczej. Na poniższej ilustracji przedstawiono stronę internetową, którą utworzymy, korzystając z przykładu opisanego w tym artykule:
+W tym samouczku pokazano, jak przy użyciu usługi Azure Cosmos DB przechowywać dane i uzyskiwać do nich dostęp z poziomu aplikacji ASP.NET MVC hostowanej na platformie Azure. W tym samouczku użyjesz V3 zestawu SDK platformy .NET, która jest obecnie dostępna w wersji zapoznawczej. Na poniższej ilustracji przedstawiono stronę internetową, którą utworzymy, korzystając z przykładu opisanego w tym artykule:
  
-![Zrzut ekranu aplikacji internetowej MVC listy rzeczy do zrobienia utworzonej w ramach tego samouczka — szczegółowy samouczek dla platformy ASP.NET MVC](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-image01.png)
+![Zrzut ekranu przedstawiający listę zadań do wykonania utworzone w ramach tego samouczka - ASP platformy ASP.NET MVC, samouczek krok po kroku, aplikacja sieci web MVC](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-image01.png)
 
 Jeśli nie masz czasu na pracę z tym samouczkiem, możesz pobrać kompletny przykładowy projekt z witryny [GitHub][GitHub]. 
 
@@ -77,7 +77,7 @@ W następnej sekcji utworzysz nową aplikację ASP.NET MVC.
 
 3. W polu **Nazwa** wpisz nazwę projektu. W tym samouczku jest używana nazwa „todo”. Jeśli wybierzesz inną nazwę, to wszędzie tam, gdzie jest wspomniana przestrzeń nazw todo, musisz dostosować podane przykłady kodu tak, aby używały nazwy Twojej aplikacji. 
 
-4. Wybierz polecenie **Przeglądaj**, aby przejść do folderu, w którym chcesz utworzyć projekt, a następnie wybierz pozycję **.NET Framework 4.6.1** lub pozycję odpowiadającą nowszej wersji platformy .NET. Kliknij przycisk **OK**. 
+4. Wybierz **Przeglądaj** przejdź do folderu, w którym chcesz utworzyć projekt, a następnie wybierz **platformy .NET framework 4.6.1** lub nowszej. Kliknij przycisk **OK**. 
 
 5. Zostanie wyświetlone okno dialogowe **Nowa aplikacja internetowa platformy ASP.NET**. W okienku szablonów wybierz pozycję **MVC**.
 
@@ -91,7 +91,7 @@ Mamy już większość kodu platformy ASP.NET MVC potrzebnego w tym rozwiązaniu
 
 1. Zestaw SDK platformy .NET dla usługi Azure Cosmos DB ma postać pakietu NuGet i jest dystrybuowany jako taki pakiet. Aby pobrać pakiet NuGet w programie Visual Studio, użyj menedżera pakietów NuGet w programie Visual Studio — kliknij prawym przyciskiem myszy projekt w **Eksploratorze rozwiązań**, a następnie wybierz polecenie **Zarządzaj pakietami NuGet**.
    
-   ![Zrzut ekranu opcji dostępnych w menu otwieranym prawym przyciskiem myszy dla projektu aplikacji internetowej w Eksploratorze rozwiązań z wyróżnioną pozycją Zarządzaj pakietami NuGet.](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-manage-nuget.png)
+   ![Zrzut ekranu przedstawiający opcje prawego przycisku myszy dla projektu aplikacji sieci web w Eksploratorze rozwiązań z NuGet wyróżnioną pozycją Zarządzaj pakietami.](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-manage-nuget.png)
    
 2. Zostanie wyświetlone okno dialogowe **Zarządzanie pakietami NuGet**. W polu **Przeglądaj** obszaru pakietów NuGet wpisz ciąg **Microsoft.Azure.Cosmos**. Korzystając z wyników, zainstaluj wersję **Microsoft.Azure.Cosmos** 3.0.0.1-preview. Pakiet usługi Azure Cosmos DB zostanie pobrany i zainstalowany razem z wszystkimi zależnościami, takimi jak pakiet Newtonsoft.Json. Wybierz przycisk **OK** w oknie **Podgląd** i pozycję **Akceptuję** w oknie **Akceptacja licencji**, aby zakończyć instalację.
    
@@ -129,7 +129,7 @@ Teraz możemy dodać modele, widoki i kontrolery do aplikacji MVC:
 
 1. Wybierz pozycję **Kontroler MVC 5 — pusty**, a następnie wybierz polecenie **Dodaj**.
 
-   ![Zrzut ekranu okna dialogowego Dodawanie szkieletu z wyróżnioną opcją Kontroler MVC 5 — pusty](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-controller-add-scaffold.png)
+   ![Zrzut ekranu przedstawiający okno dialogowe Dodawanie szkieletu z kontroler MVC 5 — pusty wyróżnioną](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-controller-add-scaffold.png)
 
 1. Nadaj nowemu kontrolerowi nazwę ** ItemController i zastąp kod w pliku następującym kodem:
 
@@ -151,7 +151,7 @@ Następnie utworzymy trzy następujące widoki:
 
 1. W **Eksploratorze rozwiązań** rozwiń folder **Widoki**, kliknij prawym przyciskiem myszy pusty folder **Item** utworzony wcześniej przez program Visual Studio po dodaniu elementu **ItemController**, kliknij polecenie **Dodaj**, a następnie pozycję **Widok**.
    
-   ![Zrzut ekranu Eksploratora rozwiązań przedstawiający folder Item utworzony przez program Visual Studio z wyróżnionymi poleceniami Dodaj i Widok](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view.png)
+   ![Zrzut ekranu z Eksploratora rozwiązań przedstawiający folder Item utworzony w programie Visual Studio z wyróżnionymi poleceniami Dodaj widok](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view.png)
 
 2. W oknie dialogowym **Dodawanie widoku** zaktualizuj następujące wartości:
    
@@ -160,7 +160,7 @@ Następnie utworzymy trzy następujące widoki:
    * W polu **Klasa modelu** wybierz pozycję ***Item (todo.Models)***.
    * W polu strony układu wpisz wartość ***~/Views/Shared/_Layout.cshtml***.
      
-   ![Zrzut ekranu pokazujący okno dialogowe Dodawanie widoku](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view-dialog.png)
+   ![Zrzut ekranu przedstawiający okno dialogowe dodawania widoku](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view-dialog.png)
 
 3. Po dodaniu tych wartości wybierz przycisk **Dodaj**. Program Visual Studio utworzy nowy widok szablonu. Po zakończeniu tej operacji zostanie otwarty utworzony plik cshtml. Możemy zamknąć ten plik w programie Visual Studio, ponieważ wrócimy do niego później.
 
@@ -235,32 +235,32 @@ Najpierw musisz tutaj dodać klasę, która zawiera logikę umożliwiającą po�
    defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
    ```
 
-  W ten sposób platforma ASP.NET MVC zostanie poinformowana, że jeśli nie określisz wartości elementu URL na potrzeby kontrolowania zachowania routingu, to zamiast elementu **Home** zostanie użyty element **Item** jako kontroler i element **Index** jako widok.
+   W ten sposób platforma ASP.NET MVC zostanie poinformowana, że jeśli nie określisz wartości elementu URL na potrzeby kontrolowania zachowania routingu, to zamiast elementu **Home** zostanie użyty element **Item** jako kontroler i element **Index** jako widok.
 
 Jeśli teraz uruchomisz aplikację, zostanie wywołany kontroler **ItemController**, który wywołuje metody GetItems klasy TodoItemService. Zostaną one zdefiniowane w następnej sekcji. 
 
 Jeśli skompilujesz i uruchomisz projekt teraz, zobaczysz stronę podobną do następującej.    
 
-![Zrzut ekranu przedstawiający aplikację internetową listy rzeczy do zrobienia utworzoną za pomocą tego samouczka bazy danych](./media/sql-api-dotnet-application-preview/build-and-run-the-project-now.png)
+![Zrzut ekranu przedstawiający aplikację sieci web listy zadań do wykonania utworzone w ramach tego samouczka bazy danych](./media/sql-api-dotnet-application-preview/build-and-run-the-project-now.png)
 
 
-## <a name="run-the-application"></a>Krok 6: Uruchamianie aplikacji lokalnie
+## <a name="run-the-application"></a>Krok 6. Uruchamianie aplikacji lokalnie
 
 Aby przetestować aplikację na komputerze lokalnym, wykonaj następujące czynności:
 
 1. Naciśnij klawisz F5 w programie Visual Studio, aby skompilować aplikację w trybie debugowania. Powinno to spowodować skompilowanie aplikacji i uruchomienie przeglądarki z wyświetloną stroną z pustą siatką, którą widzieliśmy wcześniej:
    
-   ![Zrzut ekranu przedstawiający aplikację internetową listy rzeczy do zrobienia utworzoną za pomocą tego samouczka bazy danych](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-create-an-item-a.png)
+   ![Zrzut ekranu przedstawiający aplikację sieci web listy zadań do wykonania utworzone w ramach tego samouczka bazy danych](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-create-an-item-a.png)
        
 2. Kliknij link **Create new** (Utwórz nowy) i dodaj wartości w polach **Name** (Nazwa) i **Description** (Opis). Nie zaznaczaj pola wyboru **Completed** (Zakończono) — w przeciwnym razie nowy element zostanie dodany jako zakończony i nie zostanie wyświetlony na początkowej liście.
    
 3. Kliknij przycisk **Create** (Utwórz) — nastąpi przekierowanie z powrotem do widoku **Index** (Indeks), a element zostanie wyświetlony na liście. Możesz także dodać kilka kolejnych elementów do listy rzeczy do zrobienia.
 
-    ![Zrzut ekranu widoku Index (Indeks)](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-create-an-item.png)
+    ![Zrzut ekranu przedstawiający widok Index](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-create-an-item.png)
   
 4. Kliknij pozycję **Edit** (Edytuj) obok **elementu** na liście. Zostanie wyświetlony widok **Edit** (Edycja), w którym można zaktualizować dowolną właściwość obiektu, w tym flagę **Completed** (Zakończono). Po zaznaczeniu flagi **Complete** (Zakończono) i kliknięciu przycisku **Save** (Zapisz) **element** zostanie usunięty z listy niezakończonych zadań.
    
-   ![Zrzut ekranu przedstawiający widok Index (Indeks) z zaznaczonym polem Completed (Zakończono)](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-completed-item.png)
+   ![Zrzut ekranu przedstawiający widok indeksu przy użyciu zaznaczone pole ukończone](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-completed-item.png)
 
 5. Po przetestowaniu aplikacji naciśnij klawisze Ctrl+F5, aby zatrzymać jej debugowanie. Wszystko jest gotowe do wdrożenia.
 
@@ -281,8 +281,8 @@ Teraz, gdy kompletna aplikacja działa poprawnie z usługą Azure Cosmos DB, wdr
 
 W ciągu kilku sekund program Visual Studio zakończy publikowanie aplikacji internetowej i uruchomi przeglądarkę, w której będzie można zobaczyć swój projekt działający na platformie Azure.
 
-## <a name="next-steps"></a>Następne kroki
-W tym samouczku omówiliśmy tworzenie aplikacji internetowej ASP.NET MVC, która umożliwia dostęp do danych przechowywanych w usłudze Azure Cosmos DB. Teraz możesz przejść do następnego artykułu:
+## <a name="next-steps"></a>Kolejne kroki
+W tym samouczku wyjaśniono sposób tworzenia aplikacji sieci web, które mają dostęp do danych przechowywanych w usłudze Azure Cosmos DB platformy ASP.NET MVC. Teraz możesz przejść do następnego artykułu:
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji Java umożliwiającej dostęp do danych przechowywanych na koncie interfejsu API SQL usługi Azure Cosmos DB]( sql-api-java-application.md)

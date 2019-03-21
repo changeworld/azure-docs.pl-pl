@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e464787919577b89b1cfec11e579cb17c18e2878
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 777aca4754d4d5dc893f930994ffe61db18362fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404226"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089339"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure AD B2C
 
@@ -37,15 +37,15 @@ Następujące przepływy nie są obsługiwane:
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Utwórz przepływ użytkownika właściciela zasobu
 
-1.  Zaloguj się do witryny Azure portal jako administrator globalny dzierżawy usługi Azure AD B2C.
-2.  Aby przełączyć się do dzierżawy usługi Azure AD B2C, wybierz katalog usługi B2C w prawym górnym rogu portalu.
-3.  Kliknij przycisk **przepływy użytkownika**i wybierz **nowy przepływ użytkownika**.
-4.  Kliknij przycisk **wszystkich** kartę, a następnie wybierz pozycję **Zaloguj się przy użyciu ROPC**.
-5.  Podaj nazwę przepływu użytkownika, takie jak *ROPC_Auth*.
-6.  W obszarze **oświadczeń aplikacji**, kliknij przycisk **Pokaż więcej**.
-7.  Wybrać oświadczenia aplikacji, które są potrzebne dla aplikacji, takich jak nazwy wyświetlanej, adresu E-mail i dostawcy tożsamości.
-8.  Wybierz przycisk **OK**, a następnie wybierz pozycję **Utwórz**.
-9.  Kliknij przycisk **uruchomić przepływ użytkownika**.
+1. Zaloguj się do witryny Azure portal jako administrator globalny dzierżawy usługi Azure AD B2C.
+2. Aby przełączyć się do dzierżawy usługi Azure AD B2C, wybierz katalog usługi B2C w prawym górnym rogu portalu.
+3. Kliknij przycisk **przepływy użytkownika**i wybierz **nowy przepływ użytkownika**.
+4. Kliknij przycisk **wszystkich** kartę, a następnie wybierz pozycję **Zaloguj się przy użyciu ROPC**.
+5. Podaj nazwę przepływu użytkownika, takie jak *ROPC_Auth*.
+6. W obszarze **oświadczeń aplikacji**, kliknij przycisk **Pokaż więcej**.
+7. Wybrać oświadczenia aplikacji, które są potrzebne dla aplikacji, takich jak nazwy wyświetlanej, adresu E-mail i dostawcy tożsamości.
+8. Wybierz przycisk **OK**, a następnie wybierz pozycję **Utwórz**.
+9. Kliknij przycisk **uruchomić przepływ użytkownika**.
 
    Następnie zobaczysz punkt końcowy, np. w tym przykładzie:
 

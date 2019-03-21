@@ -1,21 +1,21 @@
 ---
-title: Zarządzanie iteracjami eksperymentów w usłudze Machine Learning Studio
+title: Zarządzanie iteracjami eksperymentów
 titleSuffix: Azure Machine Learning Studio
 description: Jak zarządzanie iteracjami eksperymentów w usłudze Azure Machine Learning Studio. Możesz przejrzeć poprzednich przebiegów eksperymenty, w dowolnym momencie, aby wyzwanie, ponownie oraz ostatecznie upewnij się lub Popraw poprzednie założeń.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 6dfab8cb22bc2c411a87c217dcbade04c2a26221
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 34a72f2e7b6be90654c0f053d5b8978b0283d56c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890529"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Zarządzanie iteracjami eksperymentów w usłudze Azure Machine Learning Studio
 Tworzenie modelu analizy predykcyjnej jest procesem iteracyjnym - miarę modyfikowania różnych funkcji i parametrów eksperymentu, wyniki zbiegają się do momentu, aż czy masz wyuczonego, skutecznego modelu. Klucz do tego procesu służy do śledzenia różne iteracje eksperymentu, parametry i konfiguracji.

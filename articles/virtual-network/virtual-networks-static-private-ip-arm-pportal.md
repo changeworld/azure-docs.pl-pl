@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff9d025980f80cb77246ea12dbf2e9bcedd73f86
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e5efe0516d1b2dd387532d31a0a6654e6651fe41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38705888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011740"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Skonfiguruj prywatne adresy IP dla maszyny wirtualnej przy użyciu witryny Azure portal
 
@@ -49,7 +49,7 @@ Nie można ustawić statyczny prywatny adres IP podczas tworzenia maszyny Wirtua
 
 Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci wirtualnej o nazwie *TestVNet*, wykonaj następujące kroki:
 
-1. W przeglądarce przejdź do witryny http://portal.azure.com i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure.
+1. W przeglądarce przejdź do witryny https://portal.azure.com i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure.
 2. Kliknij przycisk **Utwórz zasób** > **obliczenia** > **systemu Windows Server 2012 R2 Datacenter**, zwróć uwagę, że **wybierz wdrożenie model** już liście widać **usługi Resource Manager**, a następnie kliknij przycisk **Utwórz**, jak pokazano na poniższej ilustracji.
    
     ![Tworzenie maszyny Wirtualnej w witrynie Azure portal](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
@@ -67,7 +67,7 @@ Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci w
     -**Konto magazynu**: *vnetstorage*
    
    * **Sieć**: *TestVNet*
-   * **Podsieci**: *frontonu*
+   * **Podsieć**: *Frontonu*
      
      ![Wybierz okienko rozmiar](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
 7. W **Podsumowanie** okienku kliknij **OK**. Zwróć uwagę, następujący Kafelek wyświetlany na pulpicie nawigacyjnym.

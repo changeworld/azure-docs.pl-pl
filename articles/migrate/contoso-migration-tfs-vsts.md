@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 20c1e2a4394c249b410a1253356d0ef96c30e970
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8098196abc415dedba392737fc17a4de5739339d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818901"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100244"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Migracja Contoso:  Refaktoryzowanie wdrożenia serwera Team Foundation Server do usługi Azure DevOps Services
 
@@ -225,11 +225,11 @@ Za pomocą Walidowanie ukończone Administratorzy Contoso służy narzędzie do 
 
 6. Przejrzyj ich pliku mapy tożsamości dziennika, który zawiera konta, które zostaną włączone do usługom DevOps platformy Azure podczas importowania. 
 
-    - Aktywne tożsamości można znaleźć tożsamości, które staną się użytkowników w usługach infrastruktury DevOps platformy Azure po zaimportowaniu.
-    - Na usługom DevOps platformy Azure te tożsamości będzie ono licencjonowane i są wyświetlane jako użytkownik w organizacji, które po migracji.
-    - Te tożsamości są oznaczone jako **Active** w **oczekiwany stan importu** kolumna w pliku.
+   - Aktywne tożsamości można znaleźć tożsamości, które staną się użytkowników w usługach infrastruktury DevOps platformy Azure po zaimportowaniu.
+   - Na usługom DevOps platformy Azure te tożsamości będzie ono licencjonowane i są wyświetlane jako użytkownik w organizacji, które po migracji.
+   - Te tożsamości są oznaczone jako **Active** w **oczekiwany stan importu** kolumna w pliku.
 
-    ![Przygotowanie](./media/contoso-migration-tfs-vsts/prep6.png)
+     ![Przygotowanie](./media/contoso-migration-tfs-vsts/prep6.png)
 
 
 

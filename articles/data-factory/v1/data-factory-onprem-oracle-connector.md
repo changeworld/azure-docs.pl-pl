@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1dbac37e8b3bac5ee06ac3bdc3270c04efdcd408
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536695"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084610"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do i z oprogramowania Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory
 
@@ -56,11 +56,11 @@ Brama jest wymagana, nawet wtedy, gdy programu Oracle znajduje się w infrastruk
 Ten łącznik Oracle obsługuje dwie wersje sterowników:
 
 - **Sterownik firmy Microsoft dla bazy danych Oracle (zalecane)**: Począwszy od bramą zarządzania danymi w wersji 2.7 sterownik firmy Microsoft dla oprogramowania Oracle jest automatycznie instalowany z bramą. Nie potrzebujesz zainstalować lub zaktualizować sterownik do ustanowienia połączenia Oracle. Mogą także występować podniesienia wydajności kopiowania przy użyciu tego sterownika. Obsługiwane są następujące wersje baz danych Oracle:
-    - R1 Oracle 12c (12.1)
-    - Oracle 11g R1, R2 (11.1, 11.2)
-    - Oracle 10g R1, R2 (10.1, 10.2)
-    - Oracle 9i R1, R2 (9.0.1, 9.2)
-    - Oracle 8i R3 (8.1.7)
+  - R1 Oracle 12c (12.1)
+  - Oracle 11g R1, R2 (11.1, 11.2)
+  - Oracle 10g R1, R2 (10.1, 10.2)
+  - Oracle 9i R1, R2 (9.0.1, 9.2)
+  - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
     > Serwer proxy Oracle nie jest obsługiwane.
@@ -614,7 +614,7 @@ Podczas przenoszenia danych z bazy danych Oracle, następujące mapowania są u�
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| ZNACZNIK CZASU: |DateTime |
+| SYGNATURA CZASOWA |DateTime |
 | SYGNATURA CZASOWA PRZY UŻYCIU LOKALNEJ STREFY CZASOWEJ |DateTime |
 | SYGNATURA CZASOWA ZE STREFĄ CZASOWĄ |DateTime |
 | LICZBA CAŁKOWITA BEZ ZNAKU |Liczba |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 3d5962ec097c5cd72693530328b710af915054d0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768916"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105288"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -289,13 +289,13 @@ W tym przykładzie zasady kieruje żądanie do usługi zaplecza Service fabric, 
 
 > [!IMPORTANT]
 >  Należy zauważyć, że domyślnie, gdy uzyskujesz dostęp do wiadomości, treści, za pomocą `context.Request.Body` lub `context.Response.Body`, oryginalny treść komunikatu zostanie utracony i musi być ustawiona, zwracając treści w wyrażeniu. Aby zachować zawartość treści, należy ustawić `preserveContent` parametr `true` podczas uzyskiwania dostępu do wiadomości. Jeśli `preserveContent` ustawiono `true` i różnych treści jest zwracanych przez wyrażenie, treść zwrócony jest używany.
->
+> 
 >  Należy pamiętać następujące uwagi, korzystając z `set-body` zasad.
->
->  -   Jeśli używasz `set-body` zasady, aby zwrócić nowych lub zaktualizowanych treści, nie musisz ustawić `preserveContent` do `true` ponieważ są jawnie dostarczenie nowej zawartości treści.
-> -   Zachowywanie zawartości odpowiedzi w przychodzących potoku nie ma sensu, ponieważ nie jest jeszcze żadnej odpowiedzi.
-> -   Zachowywanie zawartości żądania w potoku wychodzącego nie ma sensu, ponieważ żądania została już wysłana do wewnętrznej bazy danych na tym etapie.
-> -   Jeśli zasada ta jest używana po treści wiadomości, na przykład w GET dla ruchu przychodzącego, jest zgłaszany wyjątek.
+> 
+> - Jeśli używasz `set-body` zasady, aby zwrócić nowych lub zaktualizowanych treści, nie musisz ustawić `preserveContent` do `true` ponieważ są jawnie dostarczenie nowej zawartości treści.
+>   -   Zachowywanie zawartości odpowiedzi w przychodzących potoku nie ma sensu, ponieważ nie jest jeszcze żadnej odpowiedzi.
+>   -   Zachowywanie zawartości żądania w potoku wychodzącego nie ma sensu, ponieważ żądania została już wysłana do wewnętrznej bazy danych na tym etapie.
+>   -   Jeśli zasada ta jest używana po treści wiadomości, na przykład w GET dla ruchu przychodzącego, jest zgłaszany wyjątek.
 
  Aby uzyskać więcej informacji, zobacz `context.Request.Body`, `context.Response.Body`i `IMessage` sekcje w [zmiennej kontekstowej](api-management-policy-expressions.md#ContextVariables) tabeli.
 
@@ -586,11 +586,11 @@ OriginalUrl.
 ##  <a name="RewriteURL"></a> Ponowne zapisywanie adresów URL
  `rewrite-uri` Zasad konwertuje wartość adresie URL żądania w postaci publicznej do postaci oczekiwanej przez usługę sieci web jak pokazano w poniższym przykładzie.
 
--   Publiczny adres URL — `http://api.example.com/storenumber/ordernumber`
+- Publiczny adres URL — `http://api.example.com/storenumber/ordernumber`
 
--   Adres URL żądania — `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- Adres URL żądania — `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
- Ta zasada może służyć podczas ludzi i/lub przeglądarki przyjaznego adresu URL powinny zostać przekształcone na format adresu URL oczekiwanej przez usługę sieci web. Ta zasada tylko musi zostać zastosowana podczas udostępniania innego formatu adresu URL, takich jak czyste adresy URL, RESTful adresów URL, adresy URL przyjazne dla użytkownika lub adresy URL przyjaznych dla aparatów wyszukiwania, które są wyłącznie strukturalnych adresów URL, które zawiera ciąg zapytania, a zamiast tego zawiera tylko ścieżka (zasobów Po schemat i Urząd). Jest to często wykonywane estetycznych użyteczność i aparat wyszukiwania (SEO) optymalizacji.
+  Ta zasada może służyć podczas ludzi i/lub przeglądarki przyjaznego adresu URL powinny zostać przekształcone na format adresu URL oczekiwanej przez usługę sieci web. Ta zasada tylko musi zostać zastosowana podczas udostępniania innego formatu adresu URL, takich jak czyste adresy URL, RESTful adresów URL, adresy URL przyjazne dla użytkownika lub adresy URL przyjaznych dla aparatów wyszukiwania, które są wyłącznie strukturalnych adresów URL, które zawiera ciąg zapytania, a zamiast tego zawiera tylko ścieżka (zasobów Po schemat i Urząd). Jest to często wykonywane estetycznych użyteczność i aparat wyszukiwania (SEO) optymalizacji.
 
 > [!NOTE]
 >  Można dodawać tylko parametry ciągu zapytania za pomocą zasad. Nie można dodać szablon dodatkowe parametry ścieżki w adresie ponowne zapisywanie adresów URL.

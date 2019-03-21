@@ -14,16 +14,16 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5c5f1d8d7a9c84d807db53933f0cbb176f9fb7f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 02272ee16cf3303890a8ba6d35d38676e98c788c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551971"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006112"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura magazynu oprogramowania SAP HANA (duże wystąpienia)
 
-Układ magazynu dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) jest skonfigurowany przez platformę SAP HANA w klasycznym modelu wdrażania na SAP zalecane wytyczne. Wytyczne są udokumentowane w artykule [wymagania dotyczące magazynu oprogramowania SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) oficjalny dokument.
+Układ magazynu dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia) jest skonfigurowany przez platformę SAP HANA w klasycznym modelu wdrażania na SAP zalecane wytyczne. Wytyczne są udokumentowane w artykule [wymagania dotyczące magazynu oprogramowania SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) oficjalny dokument.
 
 Duże wystąpienie typu klasy I HANA zawiera cztery razy woluminie pamięci jako woluminu magazynu. W klasie typu II jednostek dużych wystąpień HANA magazynu nie jest cztery razy więcej. Jednostki są dostarczane z woluminu, który jest przeznaczony do przechowywania kopii zapasowych dziennika transakcji platformy HANA. Aby uzyskać więcej informacji, zobacz [zainstalować i skonfigurować oprogramowanie SAP HANA (duże wystąpienia) na platformie Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -100,10 +100,10 @@ Magazyn używany w dużych wystąpień HANA ma ograniczenie rozmiaru pliku. [Ogr
 > [!IMPORTANT]
 > Aby zapobiec próby rozwój pliki danych przekracza limit rozmiaru pliku 16 TB magazynu oprogramowania HANA, duże wystąpienie oprogramowania HANA, należy ustawić następujące parametry w pliku konfiguracyjnym global.ini Hana
 > 
-- datavolume_striping=true
-- datavolume_striping_size_gb = 15000
-- Zobacz też SAP Uwaga [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-- Należy pamiętać o Uwaga SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - datavolume_striping=true
+> - datavolume_striping_size_gb = 15000
+> - Zobacz też SAP Uwaga [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - Należy pamiętać o Uwaga SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 

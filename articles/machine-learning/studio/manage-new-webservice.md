@@ -1,21 +1,21 @@
 ---
-title: Korzystanie z portalu usług sieci Web programu Azure Machine Learning Studio
+title: Zarządzanie usługami sieci Web
 titleSuffix: Azure Machine Learning Studio
-description: Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
+description: Zarządzaj usługi Machine Learning nowe oraz klasyczne usługi sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 2d62b5a140fc4614e26d40f153f5e13d4a3b70f4
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 711cb674cb00a880eadda11b03da87631df90b0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838378"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Zarządzanie usługą sieci web przy użyciu portalu usług sieci Web programu Azure Machine Learning Studio
 Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
@@ -29,7 +29,7 @@ W portalu usług sieci Web Machine Learning możesz wykonywać następujące czy
 * Dodawanie i usuwanie punktów końcowych (tylko wersja klasyczna)
 
 >[!NOTE]
->Możesz również określić klasycznych usług sieci web w [usługi Machine Learning Studio](http://studio.azureml.net) na **usług sieci Web** kartę.
+>Możesz również określić klasycznych usług sieci web w [usługi Machine Learning Studio](https://studio.azureml.net) na **usług sieci Web** kartę.
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Uprawnienia do zarządzania nowego Menedżera zasobów na podstawie usług sieci web
 

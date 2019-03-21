@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 982a8b6ed67b955fcb68006072b67f7c59f29688
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 46f08aaa33563f620e7a011620730249e903f7b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010161"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086602"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Renderowanie danych niestandardowych na mapy rastrowej
 
@@ -135,9 +135,9 @@ Możesz również uzyskać informacje o lokalizacji ścieżki i numer pin przy u
 
 4. Wybierz **wysyłania** i przejrzyj nagłówka odpowiedzi. Nagłówek location zawiera identyfikator URI używany do uzyskanie dostępu i pobranie danych do użycia w przyszłości. Zawiera także unikatowy identyfikator `udId` przekazanych danych.  
 
-  ```HTTP
-  https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
 
 5. Użyj `udId` wartość odebrana od API przekazywanie danych do renderowania funkcje na mapie. Aby to zrobić, otwórz nową kartę w kolekcji, który został utworzony w poprzedniej sekcji. Wybierz metodę GET HTTP, na karcie konstruktora, a następnie wprowadź ten adres URL żądania GET:
 

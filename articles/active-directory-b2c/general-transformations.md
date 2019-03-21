@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4e28dff6235e869c9275a8b0ba8d80252a9ea792
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6a9a819e75e487999a2b50ae758b8d9c6c716a4f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167380"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084899"
 ---
 # <a name="general-claims-transformations"></a>Przekształcenia oświadczeń ogólne
 
@@ -48,7 +48,7 @@ Użyj tego przekształcania do Sprawdź, czy oświadczenie istnieje lub zawiera 
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **oświadczenie inputClaim**: someone@contoso.com
+  - **oświadczenie inputClaim**: someone@contoso.com
 - Oświadczeń danych wyjściowych: 
     - **oświadczenie outputClaim**: true
 
@@ -58,10 +58,10 @@ Skrótu podany tekst zwykły przy użyciu ziarna i klucz tajny.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | zwykły tekst | ciąg | Oświadczeń wejściowych do zaszyfrowania |
-| Oświadczenie InputClaim | ziarna | ciąg | Parametr ziarna. Możesz utworzyć losową wartość, przy użyciu `CreateRandomString` przekształcania oświadczeń. |
-| InputParameter | randomizerSecret | ciąg | Wskazuje na istniejące usługi Azure AD B2C **klucze zasad**. Aby utworzyć nowe konto: W ramach dzierżawy usługi Azure AD B2C wybierz **ustawieniami B2C > Struktura środowiska tożsamości**. Wybierz **klucze zasad** do wyświetlania kluczy, które są dostępne w Twojej dzierżawie. Wybierz pozycję **Dodaj**. Aby uzyskać **opcje**, wybierz opcję **ręczne**. Podaj nazwę (prefiks B2C_1A_ mogą zostać dodane automatycznie.). W polu klucza tajnego wprowadź wszystkie hasła, które chcesz użyć, takie jak 1234567890. Wybierz użycie klucza **klucz tajny**. Wybierz pozycję **Utwórz**. |
-| oświadczenie outputClaim | Skrót | ciąg | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. Oświadczenie skonfigurowane w `plaintext` oświadczenie inputClaim. |
+| Oświadczenie InputClaim | zwykły tekst | string | Oświadczeń wejściowych do zaszyfrowania |
+| Oświadczenie InputClaim | ziarna | string | Parametr ziarna. Możesz utworzyć losową wartość, przy użyciu `CreateRandomString` przekształcania oświadczeń. |
+| InputParameter | randomizerSecret | string | Wskazuje na istniejące usługi Azure AD B2C **klucze zasad**. Aby utworzyć nowe konto: W ramach dzierżawy usługi Azure AD B2C wybierz **ustawieniami B2C > Struktura środowiska tożsamości**. Wybierz **klucze zasad** do wyświetlania kluczy, które są dostępne w Twojej dzierżawie. Wybierz pozycję **Dodaj**. Aby uzyskać **opcje**, wybierz opcję **ręczne**. Podaj nazwę (prefiks B2C_1A_ mogą zostać dodane automatycznie.). W polu klucza tajnego wprowadź wszystkie hasła, które chcesz użyć, takie jak 1234567890. Wybierz użycie klucza **klucz tajny**. Wybierz pozycję **Utwórz**. |
+| oświadczenie outputClaim | Skrót | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. Oświadczenie skonfigurowane w `plaintext` oświadczenie inputClaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

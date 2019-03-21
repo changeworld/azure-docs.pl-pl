@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 3/3/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cfbbe9a5297627dec69683b819aabd721b3c33d7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: ccd62c0b0832622bbc74542674c1d09f59ea301b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470787"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848834"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware
 
@@ -41,6 +41,14 @@ Przed rozpoczęciem warto:
     - Konfigurowanie [źródła replikacji](vmware-azure-set-up-source.md) i [serwera konfiguracji](vmware-azure-deploy-configuration-server.md).
     - Konfigurowanie [miejsca docelowego replikacji](vmware-azure-set-up-target.md).
     - Konfigurowanie [zasad replikacji](vmware-azure-set-up-replication.md) i [włączanie replikacji](vmware-azure-enable-replication.md).
+- W tym samouczku pokazujemy, jak być replikowane na jednej maszynie Wirtualnej. Jeśli wdrażasz wiele maszyn wirtualnych należy użyć [narzędzie planista wdrażania](https://aka.ms/asr-deployment-planner) ułatwiające zaplanowanie wdrożenia. [Dowiedz się więcej](site-recovery-deployment-planner.md) na temat tego narzędzia.
+
+I Przejrzyj poniższe wskazówki:
+- Ten samouczek używa szablonu OVA do utworzenia maszyny wirtualnej serwera konfiguracji dla usługi VMware. Jeśli nie możesz tego zrobić, postępuj zgodnie z [te instructins](physical-manage-configuration-server.md) ręcznego konfigurowania serwera konfiguracji.
+- W tym samouczku usługa Site Recovery pobiera i instaluje bazę danych MySQL na serwerze konfiguracji. Jeśli wolisz, możesz skonfigurować go ręcznie zamiast tego. [Dowiedz się więcej](vmware-azure-deploy-configuration-server.md#configure-settings).
+  >Najnowszą wersję szablonu serwera konfiguracji można pobrać bezpośrednio z [Centrum pobierania Microsoft](https://aka.ms/asrconfigurationserver).
+  Licencja dostarczane z szablonu pakietu OVF jest ocena prawidłowe przez 180 dni. Windows uruchomione na maszynie Wirtualnej musi być aktywowany z wymaganą licencję. 
+
 
 
 ## <a name="select-a-protection-goal"></a>Wybieranie celu ochrony
@@ -52,25 +60,18 @@ Przed rozpoczęciem warto:
 5. W obszarze **Czy maszyny są zwirtualizowane** wybierz pozycję **Tak, z funkcją VMware vSphere Hypervisor**. Następnie wybierz przycisk **OK**.
 
 
-## <a name="plan-your-deployment"></a>Planowanie wdrożenia
-
-W tym samouczku pokazujemy sposób replikowania pojedynczej maszyny wirtualnej, a w sekcji **Planowanie wdrożenia** wybierzemy opcję **Tak, to już zostało zrobione**. Jeśli wdrażasz wiele maszyn wirtualnych, zaleca się, aby nie pomijać tego kroku. Firma Microsoft udostępnia ułatwiające pracę narzędzie [Planista wdrażania](https://aka.ms/asr-deployment-planner). [Dowiedz się więcej](site-recovery-deployment-planner.md) na temat tego narzędzia.
 
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-W pierwszym kroku wdrażania należy skonfigurować środowisko źródłowe. Potrzebna jest jedna maszyna lokalna o wysokiej dostępności, na której hostowane będą składniki lokalne usługi Site Recovery. Obejmują one serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy:
+W środowisku źródłowym potrzebna jest jedna o wysokiej dostępności, na komputerze lokalnym do hosta w środowisku lokalnym składniki usługi Site Recovery. Obejmują one serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy:
 
 - Serwer konfiguracji służy do koordynowania komunikacji między środowiskiem lokalnym i platformą Azure oraz do zarządzania replikacją danych.
-- Serwer przetwarzania działa jako brama replikacji. Odbiera dane replikacji, optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania, a następnie wysyła je do usługi Azure Storage. Serwer przetwarzania instaluje także usługę mobilności na maszynach wirtualnych, które będą replikowane, i automatycznie odnajduje lokalne maszyny wirtualne VMware.
+- Serwer przetwarzania działa jako brama replikacji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła go do magazynu w pamięci podręcznej konta na platformie Azure. Serwer przetwarzania instaluje także usługę mobilności na maszynach wirtualnych, które będą replikowane, i automatycznie odnajduje lokalne maszyny wirtualne VMware.
 - Główny serwer docelowy służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
 
 Aby skonfigurować serwer konfiguracji jako maszynę wirtualną VMware o wysokiej dostępności, należy pobrać przygotowany szablon Open Virtualization Application (OVA) i zaimportować go do programu VMware w celu utworzenia maszyny wirtualnej. Po skonfigurowaniu serwera konfiguracji należy zarejestrować go w magazynie. Po rejestracji usługa Site Recovery odnajduje lokalne maszyny wirtualne VMware.
 
-> [!TIP]
-> Ten samouczek używa szablonu OVA do utworzenia maszyny wirtualnej serwera konfiguracji dla usługi VMware. Jeśli nie możesz tego zrobić, możesz [ręcznie skonfigurować serwer konfiguracji](physical-manage-configuration-server.md).
 
-> [!TIP]
-> W tym samouczku usługa Site Recovery pobiera i instaluje bazę danych MySQL na serwerze konfiguracji. Jeśli nie chcesz, aby zrobiła to usługa Site Recovery, możesz skonfigurować serwer ręcznie. [Dowiedz się więcej](vmware-azure-deploy-configuration-server.md#configure-settings).
 
 
 ### <a name="download-the-vm-template"></a>Pobieranie szablonu maszyny wirtualnej
@@ -80,13 +81,10 @@ Aby skonfigurować serwer konfiguracji jako maszynę wirtualną VMware o wysokie
 3. W obszarze **Dodawanie serwera** sprawdź, czy w sekcji **Typ serwera** jest widoczna pozycja **Serwer konfiguracji dla oprogramowania VMware**.
 4. Pobierz szablon OVF dla serwera konfiguracji.
 
- > [!TIP]
- >Najnowszą wersję szablonu serwera konfiguracji można pobrać bezpośrednio z [Centrum pobierania Microsoft](https://aka.ms/asrconfigurationserver).
 
->[!NOTE]
-Licencja dostarczana z szablonem OVF jest licencją ewaluacyjną ważną przez 180 dni. Klient musi aktywować system Windows za pomocą uzyskanej licencji.
 
 ## <a name="import-the-template-in-vmware"></a>Importowanie szablonu do programu VMware
+
 
 1. Zaloguj się do serwera VMware vCenter lub hosta vSphere ESXi przy użyciu klienta VMware vSphere.
 2. W menu **File** (Plik) wybierz pozycję **Deploy OVF Template** (Wdróż szablon OVF), aby uruchomić **Kreatora wdrażania szablonu OVF**. 
@@ -100,8 +98,8 @@ Licencja dostarczana z szablonem OVF jest licencją ewaluacyjną ważną przez 1
 7. Na pozostałych stronach kreatora zaakceptuj ustawienia domyślne.
 8. Po osiągnięciu stanu **Gotowe do ukończenia** w celu skonfigurowania maszyny wirtualnej przy użyciu ustawień domyślnych wybierz pozycje **Power on after deployment** (Włącz po wdrożeniu) > **Finish** (Zakończ).
 
-    > [!TIP]
-  Jeśli chcesz dodać więcej kart sieciowych, wyczyść pole **Power on after deployment** (Włącz po wdrożeniu) > **Finish** (Zakończ). Domyślnie szablon zawiera jedną kartę sieciową. Kolejne karty sieciowe można dodać po wdrożeniu.
+   > [!TIP]
+   > Jeśli chcesz dodać więcej kart sieciowych, wyczyść pole **Power on after deployment** (Włącz po wdrożeniu) > **Finish** (Zakończ). Domyślnie szablon zawiera jedną kartę sieciową. Kolejne karty sieciowe można dodać po wdrożeniu.
 
 ## <a name="add-an-additional-adapter"></a>Dodawanie karty sieciowej
 
@@ -126,7 +124,7 @@ Aby dodać kolejną kartę sieciową do serwera konfiguracji, zrób to przed zar
 
 ### <a name="configure-settings-and-add-the-vmware-server"></a>Konfiguracja ustawień i dodawanie serwera VMware
 
-1. W kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Konfiguracja łączności**, a następnie wybierz kartę sieciową, której używa serwer przetwarzania do odbierania ruchu związanego z replikacją z maszyn wirtualnych. Następnie wybierz pozycję **Zapisz**. Po skonfigurowaniu tego ustawienia nie można go zmienić.
+1. W Kreatorze konfiguracji serwera zarządzania zaznacz **Konfiguracja łączności**. Z list rozwijanych najpierw wybierz kartę Sieciową, używanego przez serwer w tworzonym przez proces odnajdywania i wypychanie instalacji usługi mobilności na maszynach źródła, a następnie wybierz kartę Sieciową, która korzysta z serwera konfiguracji dla łączności z platformą Azure. Następnie wybierz pozycję **Zapisz**. Nie można zmienić to ustawienie, po skonfigurowaniu go.
 2. Na stronie **Wybierz magazyn usługi Recovery Services** wybierz swoją subskrypcję platformy Azure, grupę zasobów i magazyn.
 3. Na stronie **Instalowanie oprogramowania innych firm** zaakceptuj umowę licencyjną. Wybierz pozycję **Pobierz i zainstaluj**, aby zainstalować program MySQL Server. Jeśli serwer MySQL został umieszczony w ścieżce, ten krok zostanie pominięty.
 4. Wybierz pozycję **Zainstaluj interfejs PowerCLI programu VMware**. Przed wykonaniem tej czynności zamknij wszystkie okna przeglądarki. Następnie wybierz pozycję **Kontynuuj**.
@@ -150,7 +148,7 @@ Usługa Site Recovery nawiąże połączenie z serwerami VMware przy użyciu pod
 Wybierz i zweryfikuj zasoby docelowe.
 
 1. Wybierz pozycje **Przygotowanie infrastruktury** > **Cel**. Wybierz subskrypcję platformy Azure, której chcesz użyć. Firma Microsoft korzysta z modelu Resource Manager.
-2. Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure. Powinny one być dostępne po skonfigurowaniu składników Azure zgodnie z [pierwszym samouczkiem](tutorial-prepare-azure.md) z serii.
+2. Usługa Site Recovery sprawdza, czy masz jeden lub więcej sieci wirtualnych. Powinny one być dostępne po skonfigurowaniu składników Azure zgodnie z [pierwszym samouczkiem](tutorial-prepare-azure.md) z serii.
 
    ![Karta celu](./media/vmware-azure-tutorial/storage-network.png)
 
@@ -174,22 +172,22 @@ Wybierz i zweryfikuj zasoby docelowe.
 Włączanie replikacji można przeprowadzić w następujący sposób:
 
 1. Wybierz pozycje **Replikowanie aplikacji** > **Źródło**.
-2. W polu **Źródło** wybierz pozycję **Lokalne**i wybierz serwer konfiguracji z listy **Lokalizacja źródła**.
-3. W obszarze **Typ maszyny** wybierz pozycję **Maszyny wirtualne**.
-4. W obszarze **vCenter/vSphere Hypervisor** wybierz hosta vSphere lub serwer vCenter zarządzający tym hostem.
-5. Wybierz serwer przetwarzania (domyślnie instalowany na maszynie wirtualnej serwera konfiguracji). Następnie wybierz przycisk **OK**.
-6. W obszarze **Cel** wybierz subskrypcję i grupę zasobów, w której chcesz utworzyć maszyny wirtualne w trybie failover. Stosujemy model wdrażania korzystający z usługi Resource Manager. 
-7. Wybierz konto magazynu Azure, które ma być używane do replikacji danych, oraz sieć i podsieć platformy Azure, z którą nawiążą połączenie maszyny wirtualne platformy Azure, gdy zostaną uruchomione po przejściu do trybu failover.
-8. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wirtualnych, na których ma zostać włączona replikacja. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn.
-9. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie wybierz przycisk **OK**. Jeśli nie możesz wyświetlić/wybrać żadnej konkretnej maszyny wirtualnej, kliknij [tutaj](https://aka.ms/doc-plugin-VM-not-showing), aby rozwiązać ten problem.
-10. W obszarze **Właściwości** > **Konfigurowanie właściwości** wybierz konto, które będzie używane przez serwer przetwarzania w celu automatycznego zainstalowania usługi mobilności na maszynie.
-11. W obszarze **Ustawienia replikacji** > **Konfigurowanie ustawień replikacji** sprawdź, czy wybrano właściwe zasady replikacji.
-12. Wybierz pozycję **Włącz replikację**. Po włączeniu replikacji maszyny wirtualnej usługa Site Recovery instaluje usługę Mobility.
-13. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
-- Zastosowanie zmian i wyświetlenie ich w portalu może potrwać 15 minut lub dłużej.
-- Aby monitorować dodawane maszyny wirtualne, możesz sprawdzić czas ostatniego odnalezienia maszyn wirtualnych w obszarze **Serwery konfiguracji** > **Ostatni kontakt**. Aby dodać maszyny wirtualne, nie czekając na zaplanowane odnajdywanie, wyróżnij serwer konfiguracji (nie wybieraj go), a następnie wybierz pozycję **Odśwież**.
+1. W polu **Źródło** wybierz pozycję **Lokalne**i wybierz serwer konfiguracji z listy **Lokalizacja źródła**.
+1. W obszarze **Typ maszyny** wybierz pozycję **Maszyny wirtualne**.
+1. W obszarze **vCenter/vSphere Hypervisor** wybierz hosta vSphere lub serwer vCenter zarządzający tym hostem.
+1. Wybierz serwer przetwarzania (domyślnie instalowany na maszynie wirtualnej serwera konfiguracji). Następnie wybierz przycisk **OK**.
+1. W obszarze **Cel** wybierz subskrypcję i grupę zasobów, w której chcesz utworzyć maszyny wirtualne w trybie failover. Stosujemy model wdrażania korzystający z usługi Resource Manager. 
+1. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne platformy Azure, gdy zostaną uruchomione po przejściu do trybu failover.
+1. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wirtualnych, na których ma zostać włączona replikacja. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn.
+1. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie wybierz przycisk **OK**. Jeśli nie możesz wyświetlić/wybrać żadnej konkretnej maszyny wirtualnej, kliknij [tutaj](https://aka.ms/doc-plugin-VM-not-showing), aby rozwiązać ten problem.
+1. W obszarze **Właściwości** > **Konfigurowanie właściwości** wybierz konto, które będzie używane przez serwer przetwarzania w celu automatycznego zainstalowania usługi mobilności na maszynie.
+1. W obszarze **Ustawienia replikacji** > **Konfigurowanie ustawień replikacji** sprawdź, czy wybrano właściwe zasady replikacji.
+1. Wybierz pozycję **Włącz replikację**. Po włączeniu replikacji maszyny wirtualnej usługa Site Recovery instaluje usługę Mobility.
+1. Możesz śledzić postęp zadania **Włącz ochronę** w pozycji **Ustawienia** > **Zadania** > **Zadania usługi Site Recovery**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
+1. Zastosowanie zmian i wyświetlenie ich w portalu może potrwać 15 minut lub dłużej.
+1. Aby monitorować dodawane maszyny wirtualne, możesz sprawdzić czas ostatniego odnalezienia maszyn wirtualnych w obszarze **Serwery konfiguracji** > **Ostatni kontakt**. Aby dodać maszyny wirtualne, nie czekając na zaplanowane odnajdywanie, wyróżnij serwer konfiguracji (nie wybieraj go), a następnie wybierz pozycję **Odśwież**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Uruchamianie próbnego odzyskiwania po awarii](site-recovery-test-failover-to-azure.md)
+> Po włączeniu replikacji, [uruchamianie próbnego odzyskiwania po awarii](site-recovery-test-failover-to-azure.md) aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.

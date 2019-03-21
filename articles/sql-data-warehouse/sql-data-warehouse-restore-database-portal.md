@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d8bb451c821a4883c81e0e51c5d98e146e3008e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2d59235b067d9571bc8b64c33799431be6489502
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087214"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Przywracanie usługi Azure SQL Data Warehouse (portal)
 > [!div class="op_single_selector"]
@@ -23,9 +23,9 @@ ms.locfileid: "55243542"
 > * [Portal][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
->
->
-W tym artykule dowiesz się, jak przywrócić Azure SQL Data Warehouse przy użyciu witryny Azure portal.
+> 
+> 
+> W tym artykule dowiesz się, jak przywrócić Azure SQL Data Warehouse przy użyciu witryny Azure portal.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 **Sprawdź wydajność jednostek DTU.** Każde wystąpienie usługi SQL Data Warehouse jest obsługiwana przez serwer SQL (na przykład myserver.database.windows.net), która ma domyślny przydział jednostek (DTU) przepływność danych. Przed przywróceniem SQL Data Warehouse, sprawdź, czy program SQL server ma wystarczająco pozostały limit przydziału jednostek DTU w przypadku przywracania bazy danych. Aby dowiedzieć się, jak obliczyć limit przydziału jednostek DTU lub zażądać więcej jednostek Dtu, zobacz [żądanie zmiany limitu przydziału jednostek DTU][Request a DTU quota change].

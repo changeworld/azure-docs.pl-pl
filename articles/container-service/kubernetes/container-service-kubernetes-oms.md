@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 8010d7cbf960c3e2f6528687be97a47d31270696
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0d9f13003a9b81085fda9635fc8b07566a1c0c66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997204"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107529"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(PRZESTARZAŁE) Monitorowanie klastra usługi Azure Container Service z usługą Log Analytics
 
@@ -91,37 +91,37 @@ $ kubectl create -f oms-daemonset.yaml
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Instalowanie agenta usługi Log Analytics, za pomocą wpisu tajnego rozwiązania Kubernetes
 Do ochrony klucza i identyfikator obszaru roboczego usługi Log Analytics umożliwia wpisie tajnym rozwiązania Kubernetes jako część pliku DaemonSet YAML.
 
- - Skopiuj skrypt, plik klucza tajnego szablonu i pliku DaemonSet YAML (z [repozytorium](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) i upewnij się, że znajdują się w tym samym katalogu.
-      - Generowanie skryptu - gen.sh klucz tajny klucz tajny
-      - Szablon tajny - template.yaml wpisu tajnego
-   - Plik DaemonSet YAML — omsagent-ds-secrets.yaml
- - Uruchom skrypt. Skrypt poprosi o identyfikator obszaru roboczego usługi Log Analytics i klucz podstawowy. Wstaw, i skrypt utworzy plik yaml wpisu tajnego, aby można było go uruchomić.
-   ```
-   #> sudo bash ./secret-gen.sh
-   ```
+- Skopiuj skrypt, plik klucza tajnego szablonu i pliku DaemonSet YAML (z [repozytorium](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) i upewnij się, że znajdują się w tym samym katalogu.
+  - Generowanie skryptu - gen.sh klucz tajny klucz tajny
+  - Szablon tajny - template.yaml wpisu tajnego
+    - DaemonSet YAML file - omsagent-ds-secrets.yaml
+- Uruchom skrypt. Skrypt poprosi o identyfikator obszaru roboczego usługi Log Analytics i klucz podstawowy. Wstaw, i skrypt utworzy plik yaml wpisu tajnego, aby można było go uruchomić.
+  ```
+  #> sudo bash ./secret-gen.sh
+  ```
 
-   - Utwórz pod wpisami tajnymi, uruchamiając następujące: ``` kubectl create -f omsagentsecret.yaml ```
+  - Utwórz pod wpisami tajnymi, uruchamiając następujące: ``` kubectl create -f omsagentsecret.yaml ```
 
-   - Aby sprawdzić, uruchom następujące polecenie:
+  - Aby sprawdzić, uruchom następujące polecenie:
 
-   ```
-   root@ubuntu16-13db:~# kubectl get secrets
-   NAME                  TYPE                                  DATA      AGE
-   default-token-gvl91   kubernetes.io/service-account-token   3         50d
-   omsagent-secret       Opaque                                2         1d
-   root@ubuntu16-13db:~# kubectl describe secrets omsagent-secret
-   Name:           omsagent-secret
-   Namespace:      default
-   Labels:         <none>
-   Annotations:    <none>
+  ```
+  root@ubuntu16-13db:~# kubectl get secrets
+  NAME                  TYPE                                  DATA      AGE
+  default-token-gvl91   kubernetes.io/service-account-token   3         50d
+  omsagent-secret       Opaque                                2         1d
+  root@ubuntu16-13db:~# kubectl describe secrets omsagent-secret
+  Name:           omsagent-secret
+  Namespace:      default
+  Labels:         <none>
+  Annotations:    <none>
 
-   Type:   Opaque
+  Type:   Opaque
 
-   Data
-   ====
-   WSID:   36 bytes
-   KEY:    88 bytes
-   ```
+  Data
+  ====
+  WSID:   36 bytes
+  KEY:    88 bytes
+  ```
 
   - Utwórz swoje omsagent demona zestawu, uruchamiając ``` kubectl create -f omsagent-ds-secrets.yaml ```
 

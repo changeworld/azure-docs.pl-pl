@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: 272ec7298785128caebd850dc488ca01937a3960
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8fa3cd79011ab31349ec44edf52b8fd9048d0d37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548511"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077976"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji platformy Apache Spark dla klastra usługi HDInsight
 
@@ -57,10 +57,10 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 3. Wybierz pozycję **Spark Project (Scala)** w głównym oknie.
 
 4. Z listy rozwijanej **Build tool** (Narzędzie kompilacji), wybierz jedną z następujących pozycji:
-      * **Maven** — w celu obsługi kreatora tworzenia projektu Scala.
-      * **SBT** — na potrzeby zarządzania zależnościami i kompilacji projektu Scala.
+   * **Maven** — w celu obsługi kreatora tworzenia projektu Scala.
+   * **SBT** — na potrzeby zarządzania zależnościami i kompilacji projektu Scala.
 
-    ![Okno dialogowe Nowy projekt](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+     ![Okno dialogowe Nowy projekt](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 5. Wybierz opcję **Dalej**.
 

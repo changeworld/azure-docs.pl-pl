@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 4f6076407ea4745556e59d44bd37ab85288e6bd2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772939"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102588"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation
 
@@ -131,13 +131,13 @@ Usługa Azure Automation obejmuje środowisko do [przetestować element runbook]
 
 ![Test elementu runbook](media/runbook-datacollect/test-runbook.png)
 
-6. Kliknij przycisk **Zapisz** można zapisać elementu runbook.
+1. Kliknij przycisk **Zapisz** można zapisać elementu runbook.
 1. Kliknij przycisk **okienko testowania** można otworzyć elementu runbook w środowisku testowym.
-3. Ponieważ element runbook ma parametry, zostanie wyświetlony monit wpisz wartości dla nich. Wprowadź nazwę grupy zasobów i konta usługi automation, do którego zamierzasz zbierać informacje o zadaniu z.
-4. Kliknij przycisk **Start** do uruchamiania elementu runbook.
-3. Element runbook rozpocznie się ze stanem **kolejce** zanim przejdzie do **systemem**.
-3. Element runbook powinien być wyświetlany pełne dane wyjściowe z zadania, zbierane w formacie json. Jeśli nie są wyświetlane żadne zadania, następnie mógł wystąpić żadnych zadań utworzonych w ramach konta usługi automation w ciągu ostatniej godziny. Spróbuj uruchomić każdego elementu runbook w ramach konta usługi automation, a następnie ponownie wykonaj test.
-4. Upewnij się, że dane wyjściowe nie wyświetlane ewentualne błędy w poleceniu post do usługi Log Analytics. Należy mieć komunikat podobny do następującego.
+1. Ponieważ element runbook ma parametry, zostanie wyświetlony monit wpisz wartości dla nich. Wprowadź nazwę grupy zasobów i konta usługi automation, do którego zamierzasz zbierać informacje o zadaniu z.
+1. Kliknij przycisk **Start** do uruchamiania elementu runbook.
+1. Element runbook rozpocznie się ze stanem **kolejce** zanim przejdzie do **systemem**.
+1. Element runbook powinien być wyświetlany pełne dane wyjściowe z zadania, zbierane w formacie json. Jeśli nie są wyświetlane żadne zadania, następnie mógł wystąpić żadnych zadań utworzonych w ramach konta usługi automation w ciągu ostatniej godziny. Spróbuj uruchomić każdego elementu runbook w ramach konta usługi automation, a następnie ponownie wykonaj test.
+1. Upewnij się, że dane wyjściowe nie wyświetlane ewentualne błędy w poleceniu post do usługi Log Analytics. Należy mieć komunikat podobny do następującego.
 
     ![Wpis w danych wyjściowych](media/runbook-datacollect/post-output.png)
 
@@ -189,9 +189,9 @@ Najczęstszym sposobem uruchamiania elementu runbook, który służy do zbierani
 
 Po utworzeniu harmonogramu, musisz podać wartości parametrów, które będą używane przy każdym tego harmonogramu uruchamiania elementu runbook.
 
-6. Kliknij przycisk **skonfigurować parametry i parametrów uruchomieniowych**.
-7. Podaj wartości dla swojej **ResourceGroupName** i **AutomationAccountName**.
-8. Kliknij przycisk **OK**.
+1. Kliknij przycisk **skonfigurować parametry i parametrów uruchomieniowych**.
+1. Podaj wartości dla swojej **ResourceGroupName** i **AutomationAccountName**.
+1. Kliknij przycisk **OK**.
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9. Sprawdź element runbook uruchamia zgodnie z harmonogramem
 Za każdym razem, gdy element runbook jest uruchamiany, [tworzone jest zadanie](../../automation/automation-runbook-execution.md) i wszelkie dane wyjściowe rejestrowane. W rzeczywistości są one tych samych zadań, które zbiera elementu runbook. Aby sprawdzić, czy element runbook uruchamiany zgodnie z oczekiwaniami, sprawdzając zadania elementu runbook, po upływie czasu rozpoczęcia dla harmonogramu.

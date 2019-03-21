@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 56a4645c5f86e9f95e82533b7f5f81b7bca51e7b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1b6419feef96b57bafd0831531bd8cfa56142cc4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089152"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Przewodnik Szybki Start dla programu Bash w usłudze Azure Cloud Shell
 
@@ -44,14 +44,14 @@ Upewnij się, że środowisko listę rozwijaną z po lewej stronie okna powłoki
 
 ### <a name="set-your-subscription"></a>Ustaw subskrypcję
 1. Subskrypcji listy, do których masz dostęp do.
-```azurecli-interactive
-az account list
-```
+   ```azurecli-interactive
+   az account list
+   ```
 
 2. Ustaw preferowany subskrypcji: <br>
-```azurecli-interactive
-az account set --subscription my-subscription-name`
-```
+   ```azurecli-interactive
+   az account set --subscription my-subscription-name`
+   ```
 
 > [!TIP]
 > Twoja subskrypcja zostanie zapamiętane osobno dla przyszłych sesji przy użyciu `/home/<user>/.azure/azureProfile.json`.
@@ -77,26 +77,26 @@ Nazwa użytkownika na tej maszynie Wirtualnej będzie swoją nazwę użytkownika
 ### <a name="ssh-into-your-linux-vm"></a>SSH z maszyną wirtualną systemu Linux
 1. Wyszukaj nazwę maszyny Wirtualnej na pasku usługi Azure search w portalu.
 2. Kliknij przycisk "Połącz", aby uzyskać swoją nazwę maszyny Wirtualnej i publicznego adresu IP. <br>
-![](media/quickstart/sshcmd-copy.png)
+   ![](media/quickstart/sshcmd-copy.png)
 
 3. SSH z maszyną wirtualną za pomocą `ssh` cmd.
-```
-ssh username@ipaddress
-```
+   ```
+   ssh username@ipaddress
+   ```
 
 Po ustanowieniu połączenia SSH, powinien zostać wyświetlony monit powitalnej Ubuntu. <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Czyszczenie 
 1. Wyjście usługi ssh sesji.
-```azurecli-interactive
-exit
-```
+   ```azurecli-interactive
+   exit
+   ```
 
 2. Usunięcie grupy zasobów i wszystkie zasoby w niej.
-```azurecli-interactive
-az group delete -n MyRG
-```
+   ```azurecli-interactive
+   az group delete -n MyRG
+   ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się więcej o utrwalanie plików w programie Bash w usłudze Cloud Shell](persisting-shell-storage.md) <br>

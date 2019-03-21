@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: a07512c801d8e6c0f0ff3242fe1b94eeab5b2534
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 64a4e7a181f7bd24e305ef5ee8d3d6657c3f394b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105002"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081291"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Połączenia narzędzia ITSM produktów/usług za pomocą łącznika zarządzania usługami IT
 Ten artykuł zawiera informacje o tym, jak skonfigurować połączenie między jego produkt/usługę ITSM i IT Service Management Connector (ITSMC) w usłudze Log Analytics, aby centralnie zarządzać elementami roboczymi. Aby uzyskać więcej informacji na temat ITSMC zobacz [Przegląd](../../azure-monitor/platform/itsmc-overview.md).
@@ -30,7 +30,7 @@ Obsługiwane są następujące narzędzia ITSM produktów/usług. Wybierz produk
 - [Cherwell](#connect-cherwell-to-it-service-management-connector-in-azure)
 
 > [!NOTE]
-
+> 
 > Łącznik ITSM może łączyć się tylko z wystąpienia usługi ServiceNow oparte na chmurze. Wystąpienia usługi ServiceNow w środowisku lokalnym nie są obecnie obsługiwane.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Łączenie programu System Center Service Manager do usługi IT łącznika zarządzania na platformie Azure
@@ -62,7 +62,7 @@ Za pomocą poniższej procedury, aby połączyć wystąpienie usługi System Cen
 4. Podaj informacje zgodnie z opisem w poniższej tabeli, a następnie kliknij przycisk **OK** do utworzenia połączenia.
 
 > [!NOTE]
-
+> 
 > Te parametry są obowiązkowe.
 
 | **Pole** | **Opis** |
@@ -106,7 +106,7 @@ Uruchom skrypt, podając następujące wymagane szczegóły:
 - Lokalizacja
 - Szczegóły serwera programu Service Manager (nazwa serwera, domeny, nazwę użytkownika i hasło)
 - Prefiks nazwy witryny dla aplikacji sieci Web
-- Namespace magistrali usług.
+- ServiceBus Namespace.
 
 Skrypt tworzy aplikację internetową, przy użyciu nazwy, który określiłeś (wraz z kilku dodatkowe ciągi, aby była unikatowa). Generuje on **adres URL aplikacji sieci Web**, **identyfikator klienta** i **klucz tajny klienta**.
 
@@ -137,14 +137,14 @@ Poniższa procedura umożliwia skonfigurowanie połączenia hybrydowego, który 
 
 6. Wpisz następujące wartości:
 
-    - **Nazwa punktu końcowego**: Określ nazwę dla nowego połączenia hybrydowego.
-    -  **Host punktu końcowego**: Nazwa FQDN serwera zarządzania programu Service Manager.
-    - **Port punktu końcowego**: Typ 5724
-    - **Przestrzeń nazw magistrali usług**: Użyj istniejącej przestrzeni nazw magistrali usług lub Utwórz nową.
-    - **Lokalizacja**: Wybierz lokalizację.
-    -  **Nazwa**: Określ nazwę usługi servicebus, jeśli tworzysz go.
+   - **Nazwa punktu końcowego**: Określ nazwę dla nowego połączenia hybrydowego.
+   - **Host punktu końcowego**: Nazwa FQDN serwera zarządzania programu Service Manager.
+   - **Port punktu końcowego**: Typ 5724
+   - **Przestrzeń nazw magistrali usług**: Użyj istniejącej przestrzeni nazw magistrali usług lub Utwórz nową.
+   - **Lokalizacja**: Wybierz lokalizację.
+   - **Nazwa**: Określ nazwę usługi servicebus, jeśli tworzysz go.
 
-    ![Wartości połączenia hybrydowego](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
+     ![Wartości połączenia hybrydowego](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. Kliknij przycisk **OK** zamknąć **Tworzenie połączenia hybrydowego** bloku i rozpocząć tworzenie połączenia hybrydowego.
 
     Po utworzeniu połączenia hybrydowego jest wyświetlany w bloku.
@@ -171,7 +171,7 @@ Nawiązano połączenie hybrydowe.
 
 ![połączenie hybrydowe pomyślne](media/itsmc-connections/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
-
+> 
 > Po rozwiązania hybrydowego jest tworzone połączenie, sprawdź i przetestuj połączenie, przechodząc do wdrożonej aplikacji sieci Web programu Service Manager. Upewnij się, że połączenie zostanie nawiązane, zanim spróbujesz połączyć się z ITSMC na platformie Azure.
 
 Na poniższej ilustracji przykład przedstawiono szczegółowe informacje o pomyślnym nawiązaniu połączenia:
@@ -244,20 +244,20 @@ Więcej informacji: [Utwórz elementy robocze ITSM z alertów platformy Azure](.
 
 Użytkownik następującej procedury:
 
-1.  Odwiedź stronę [magazynu usługi ServiceNow](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) i zainstaluj **aplikacji przez użytkownika usługi ServiceNow i Microsoft OMS integracji** do swojego wystąpienia usługi ServiceNow.
+1. Odwiedź stronę [magazynu usługi ServiceNow](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) i zainstaluj **aplikacji przez użytkownika usługi ServiceNow i Microsoft OMS integracji** do swojego wystąpienia usługi ServiceNow.
    
    >[!NOTE]
    >W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor OMS jest teraz nazywana usługi Log Analytics.     
-2.  Po zakończeniu instalacji można znaleźć na pasku nawigacyjnym po lewej stronie wystąpienia usługi ServiceNow, wyszukiwania i wybierz pozycję Microsoft OMS integrator.  
-3.  Kliknij przycisk **listy kontrolnej instalacji**.
+2. Po zakończeniu instalacji można znaleźć na pasku nawigacyjnym po lewej stronie wystąpienia usługi ServiceNow, wyszukiwania i wybierz pozycję Microsoft OMS integrator.  
+3. Kliknij przycisk **listy kontrolnej instalacji**.
 
-    Stan jest wyświetlany jako **niemożliwe** Jeśli roli użytkownika jest jeszcze ma zostać utworzony.
+   Stan jest wyświetlany jako **niemożliwe** Jeśli roli użytkownika jest jeszcze ma zostać utworzony.
 
-4.  W polach tekstowych obok **użytkownicy integracji Utwórz**, wprowadź nazwę użytkownika dla użytkownika, które można podłączyć do ITSMC na platformie Azure.
-5.  Wprowadź hasło dla tego użytkownika, a następnie kliknij przycisk **OK**.  
+4. W polach tekstowych obok **użytkownicy integracji Utwórz**, wprowadź nazwę użytkownika dla użytkownika, które można podłączyć do ITSMC na platformie Azure.
+5. Wprowadź hasło dla tego użytkownika, a następnie kliknij przycisk **OK**.  
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > Te poświadczenia służą do nawiązania połączenia usługi ServiceNow na platformie Azure.
 
 Domyślne role przypisane wyświetlana nowo utworzonego użytkownika.
@@ -273,9 +273,9 @@ Domyślne role przypisane wyświetlana nowo utworzonego użytkownika.
 Po użytkownik została pomyślnie utworzona, stan **Sprawdź listy kontrolnej instalacji** przenosi ukończone, wyświetlanie szczegółów roli użytkownika utworzone dla aplikacji.
 
 > [!NOTE]
-
+> 
 > Łącznik ITSM może wysyłać zdarzeń do usługi ServiceNow, bez innych modułów, zainstalowanym wystąpieniem usługi ServiceNow. Jeśli przy użyciu modułu EventManagement w Twoim wystąpieniu usługi ServiceNow i chcesz, aby utworzyć zdarzenia i alerty w usługi ServiceNow przy użyciu łącznika, należy dodać następujące role użytkownika integracji:
-
+> 
 >    - evt_mgmt_integration
 >    - evt_mgmt_operator  
 
@@ -309,7 +309,7 @@ Użyj poniższej procedury, aby utworzyć połączenie Provance:
 4. Podaj informacje zgodnie z opisem w poniższej tabeli, a następnie kliknij przycisk **OK** do utworzenia połączenia.
 
 > [!NOTE]
-
+> 
 > Te parametry są obowiązkowe.
 
 | **Pole** | **Opis** |
@@ -360,7 +360,7 @@ Użyj poniższej procedury, aby utworzyć połączenie Provance:
 4. Podaj informacje zgodnie z opisem w poniższej tabeli, a następnie kliknij przycisk **OK** do utworzenia połączenia.
 
 > [!NOTE]
-
+> 
 > Te parametry są obowiązkowe.
 
 | **Pole** | **Opis** |

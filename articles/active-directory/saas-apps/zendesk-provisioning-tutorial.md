@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445546"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097995"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie systemu Zendesk dla automatycznej aprowizacji użytkowników
 
@@ -111,12 +111,12 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **nazwa użytkownika administratora**, **klucz tajny tokenu**, i **domeny** konta użytkownika systemu Zendesk. Przykłady te wartości są:
 
-    *   W **nazwa użytkownika administratora** pola, wypełnij nazwę użytkownika konta administratora w dzierżawie usługi Zendesk. Przykład: admin@contoso.com.
+   * W **nazwa użytkownika administratora** pola, wypełnij nazwę użytkownika konta administratora w dzierżawie usługi Zendesk. Przykład: admin@contoso.com.
 
-    *   W **klucz tajny tokenu** pola, wypełnij token wpisu tajnego, zgodnie z opisem w kroku 6.
+   * W **klucz tajny tokenu** pola, wypełnij token wpisu tajnego, zgodnie z opisem w kroku 6.
 
-    *   W **domeny** pola, wypełnij poddomeny dzierżawy systemu Zendesk.
-    Przykład: Dla konta, którego adres URL dzierżawy https://my-tenant.zendesk.com, Twojej domeny podrzędnej byłaby **Moje dzierżawy**.
+   * W **domeny** pola, wypełnij poddomeny dzierżawy systemu Zendesk.
+     Przykład: Dla konta, którego adres URL dzierżawy https://my-tenant.zendesk.com, Twojej domeny podrzędnej byłaby **Moje dzierżawy**.
 
 6. **Klucz tajny tokenu** dla Twojego systemu Zendesk konto znajduje się w **Administrator > Interfejs API > Ustawienia**.
    Upewnij się, że **dostęp do tokenu** ustawiono **włączone**.

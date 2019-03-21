@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9c2d6c48b9bf51062181886c8a9ef789b1c2b359
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099005"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Zastosuj aktualizacje systemu w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje dzienne Windows i Linux maszyn wirtualnych (VM) i komputerów w celu znalezienia brakujących aktualizacji systemu operacyjnego. Usługa Security Center pobiera listę dostępnych zabezpieczeń i aktualizacje krytyczne z witryny Windows Update lub Windows Server Update Services (WSUS) w zależności od którego usługa jest skonfigurowana na komputerze Windows. Centrum zabezpieczeń sprawdza również uzyskać najnowsze aktualizacje w systemach Linux. Jeśli komputera lub maszyny Wirtualnej, na których brakuje aktualizacji systemu, usługa Security Center zaleca zastosowanie aktualizacji systemu.
@@ -43,7 +43,7 @@ W tym przykładzie użyjemy **obliczenia**.
     - Całkowita liczba aktualizacje krytyczne, brakuje w maszynach wirtualnych i komputerów.
     - Całkowita liczba aktualizacji zabezpieczeń na maszynach wirtualnych i komputerów.
 
-  Dolnej części pulpitu nawigacyjnego Wyświetla wszystkie brakujące aktualizacje dla maszyn wirtualnych i komputerów oraz ważność brakujących aktualizacji.  Lista zawiera:
+   Dolnej części pulpitu nawigacyjnego Wyświetla wszystkie brakujące aktualizacje dla maszyn wirtualnych i komputerów oraz ważność brakujących aktualizacji.  Lista zawiera:
 
     - NAZWA: Nazwa brakującej aktualizacji.
     - NIE. Maszyn wirtualnych i komputerów: Całkowita liczba maszyn wirtualnych i komputerów, które mają tej aktualizacji.

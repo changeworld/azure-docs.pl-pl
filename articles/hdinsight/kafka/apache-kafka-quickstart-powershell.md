@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 6883ebe1e103f9ed1f06aa4ee0e6281667fc46b8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 5e636617a61de3c2f8e3dd891b205c17caaaf454
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424935"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090376"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Szybki start: Tworzenie platformy Apache Kafka w klastrze usługi HDInsight
 
@@ -39,9 +39,9 @@ W tym samouczku szybkiego startu dowiesz się, jak utworzyć klaster [platformy 
 
     Polecenie `ssh` jest obsługiwane domyślnie w systemach Linux, Unix i macOS. W systemie Windows 10 należy zainstalować polecenie `ssh` za pomocą jednej z następujących metod:
 
-    * Użyj usługi [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart). Usługa Cloud Shell udostępnia polecenie `ssh` i można ją skonfigurować do korzystania z programu Bash lub PowerShell jako środowiska powłoki.
+  * Użyj usługi [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart). Usługa Cloud Shell udostępnia polecenie `ssh` i można ją skonfigurować do korzystania z programu Bash lub PowerShell jako środowiska powłoki.
 
-    * [Zainstaluj podsystem Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/install-win10). Dystrybucje systemu Linux dostępne za pośrednictwem sklepu Microsoft Store udostępniają polecenie `ssh`.
+  * [Zainstaluj podsystem Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/install-win10). Dystrybucje systemu Linux dostępne za pośrednictwem sklepu Microsoft Store udostępniają polecenie `ssh`.
 
     > [!IMPORTANT]  
     > W krokach opisanych w tym dokumencie założono, że używasz jednego z klientów SSH wymienionego powyżej. Jeśli używasz innego klienta SSH i napotkasz problemy, zapoznaj się z dokumentacją swojego klienta SSH.
@@ -344,7 +344,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 > 
 > Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Używanie systemu Apache Spark z platformą Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

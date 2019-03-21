@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 5a36a1e955bf79654ae9e5cc01564a47e1a13a05
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ae8dc263e08528c6e3b3bae8c779162c96d51f43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545045"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100789"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Łączenie zestawu deweloperskiego IoT Mxchip do zdalnego monitorowania usługi Azure IoT akceleratora rozwiązań
 
@@ -76,8 +76,8 @@ Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować si�
 
 3. Podłącz Mxchip do komputera. Program VS Code automatycznie wykrywa swoje Mxchip i otwiera następujące strony:
 
-  * Strona wprowadzenia Mxchip.
-  * Przykłady Arduino: Praktyczne przykłady wprowadzenie Mxchip.
+   * Strona wprowadzenia Mxchip.
+   * Przykłady Arduino: Praktyczne przykłady wprowadzenie Mxchip.
 
 4. Po lewej stronie rozwiń **przykłady ARDUINO** sekcji, przejdź do **przykłady zestawu DEWELOPERSKIEGO az3166 usługi > AzureIoT**i wybierz **RemoteMonitoring**. Nowe okno programu VS Code zostanie otwarty z folderu projektu w nim.
 

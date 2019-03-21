@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 07e3552b58b702cb94c879dd34397010c07522db
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.openlocfilehash: 66cef8369a314a76cf619e436cd25d6bdf628c45
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791940"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076313"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w usłudze Azure Monitor
 Magazyny usługi Azure Monitor możesz rejestrować dane w obszarze roboczym usługi Log Analytics, która jest kontener, który zawiera dane i informacje konfiguracyjne. W celu zarządzania dostępem do danych logowania, należy wykonać różne zadania administracyjne dotyczące obszarów roboczych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
@@ -104,7 +104,7 @@ _Tryb dostępu_ odnosi się do sposobu użytkownik uzyskuje dostęp do obszaru r
 > - Containers
 > - Niestandardowe dzienniki utworzone przez interfejs API modułu zbierającego dane HTTP
 >
-> Możesz przetestować, jeśli dzienniki są poprawnie skojarzona z zasobami, uruchamiając zapytanie i sprawdzanie rekordy interesuje Cię. Jeżeli identyfikator odpowiedniego zasobu jest [_ResourceId](log-standard-properties.md#resourceid) właściwości, a następnie data jest dostępna dla zapytań skoncentrowane na zasób.
+> Możesz przetestować, jeśli dzienniki są poprawnie skojarzona z zasobami, uruchamiając zapytanie i sprawdzanie rekordy interesuje Cię. Jeżeli identyfikator odpowiedniego zasobu jest [_ResourceId](log-standard-properties.md#_resourceid) właściwości, a następnie data jest dostępna dla zapytań skoncentrowane na zasób.
 
 ### <a name="comparing-access-modes"></a>Porównanie trybów dostępu
 

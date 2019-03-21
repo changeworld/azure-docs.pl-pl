@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470318"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855941"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Analiza danych przy użyciu języka Scala i platformy Spark na platformie Azure
 W tym artykule pokazano, jak korzystać z języka Scala dla zadania uczenia maszynowego nadzorowanych za pomocą platformy Spark skalowalne MLlib i Spark ML pakietów w klastrze usługi Azure HDInsight Spark. Przeprowadzi Cię on zadania, które stanowią [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): pozyskiwanie danych i eksploracji, wizualizacji, technicznego opracowywania funkcji, modelowania i użycie modelu. Modele w artykule obejmują regresji logistycznej liniowego i liniowa, losowych lasów i wzmocnione gradientu drzew (GBTs), oprócz dwie typowe zadania uczenia maszynowego nadzorowanego:
@@ -26,9 +26,9 @@ W tym artykule pokazano, jak korzystać z języka Scala dla zadania uczenia masz
 
 Proces modelowania wymaga uczenie i Ewaluacja testowego zestawu danych i dokładność istotne metryki. W tym artykule nauczysz się sposobu przechowywania tych modeli usługi Azure Blob Storage oraz jak ocena i oceny wydajności predykcyjne. W tym artykule opisano również bardziej zaawansowanych tematów dotyczących sposobu optymalizacji modeli za pomocą zaczynają krzyżowego sprawdzania poprawności i parametrów. Dane używane jest przykładem 2013 NYC taksówek podróży i klasie zestawu danych dostępne w serwisie GitHub.
 
-[Scala](http://www.scala-lang.org/), języka, w oparciu o maszynę wirtualną Java integruje się koncepcje językowe zorientowane obiektowo i funkcjonalne. Jest skalowalne język, który dobrze nadaje się do przetwarzania rozproszonego w chmurze i działa w klastrach usługi Azure Spark.
+[Scala](https://www.scala-lang.org/), języka, w oparciu o maszynę wirtualną Java integruje się koncepcje językowe zorientowane obiektowo i funkcjonalne. Jest skalowalne język, który dobrze nadaje się do przetwarzania rozproszonego w chmurze i działa w klastrach usługi Azure Spark.
 
-[Platforma Spark](http://spark.apache.org/) to platforma przetwarzania równoległego typu open source, która obsługuje przetwarzanie w pamięci w celu zwiększania wydajności aplikacji do analizowania danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark ułatwiają dobrym wyborem w przypadku algorytmów iteracyjnych używanych w machine learning i obliczeniach na grafach. [Spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) pakiet zawiera zbiór jednolite interfejsy API wysokiego poziomu, zbudowany na podstawie danych klatek, które mogą pomóc Ci tworzenie i dostosowywanie praktyczne usługi machine learning potoków. [Biblioteka MLlib](http://spark.apache.org/mllib/) to biblioteka uczenia maszynowego na skalowalnej platforma Spark, który udostępnia funkcje modelowania na tym środowisku rozproszonym.
+[Platforma Spark](https://spark.apache.org/) to platforma przetwarzania równoległego typu open source, która obsługuje przetwarzanie w pamięci w celu zwiększania wydajności aplikacji do analizowania danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark ułatwiają dobrym wyborem w przypadku algorytmów iteracyjnych używanych w machine learning i obliczeniach na grafach. [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) pakiet zawiera zbiór jednolite interfejsy API wysokiego poziomu, zbudowany na podstawie danych klatek, które mogą pomóc Ci tworzenie i dostosowywanie praktyczne usługi machine learning potoków. [Biblioteka MLlib](https://spark.apache.org/mllib/) to biblioteka uczenia maszynowego na skalowalnej platforma Spark, który udostępnia funkcje modelowania na tym środowisku rozproszonym.
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) to oferta hostowanymi na platformie Azure, typu open source platformy Spark. On również obejmuje obsługę notesów Jupyter Scala w klastrze Spark i mogą uruchamiać interakcyjne zapytania Spark SQL do przekształcania, filtrować i wizualizacji danych przechowywanych w usłudze Azure Blob storage. Uruchom Scala fragmenty kodu w niniejszym artykule udostępniają rozwiązań, które pokazują odpowiednie powierzchnie, które umożliwiają wizualizację danych w aplikacji Jupyter notebooks zainstalowane w klastrach Spark. Kroki modelowania w tych tematach ma kod, który pokazuje, jak uczenie, ocenę, Zapisz i zużywać każdy rodzaj modelu.
 
@@ -368,7 +368,7 @@ Ten kod przedstawia sposób tworzenia nowej funkcji o pakowania godzin w przedzi
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>Indeksowanie i hot jeden kodowanie funkcji podzielonych na kategorie
 Modelowania i przewidywanie funkcje MLlib wymagają funkcji z podzielonych na kategorie danych wejściowych, które mają być indeksowane lub zakodowane przed użyciem. W tej sekcji pokazano, jak indeksu lub zakodować kategorii funkcji dla danych wejściowych do funkcji modelowania.
 
-Musisz indeksu lub zakodować swoje modele na różne sposoby, w zależności od modelu. Na przykład modele regresji logistycznej liniowego i liniowa wymagają hot jeden kodowania. Na przykład funkcji z trzech kategorii można rozszerzyć do trzech kolumnach funkcji. Każda kolumna będzie zawierać 0 lub 1 w zależności od kategorii wystąpienia wartości. Udostępnia MLlib [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkcja hot jeden kodowania. Ten koder mapuje kolumny indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. Za pomocą tego kodowania algorytmy, które oczekują liczbowe ważnych funkcji, takich jak regresji logistycznej, można zastosować do kategorii funkcji.
+Musisz indeksu lub zakodować swoje modele na różne sposoby, w zależności od modelu. Na przykład modele regresji logistycznej liniowego i liniowa wymagają hot jeden kodowania. Na przykład funkcji z trzech kategorii można rozszerzyć do trzech kolumnach funkcji. Każda kolumna będzie zawierać 0 lub 1 w zależności od kategorii wystąpienia wartości. Udostępnia MLlib [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkcja hot jeden kodowania. Ten koder mapuje kolumny indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. Za pomocą tego kodowania algorytmy, które oczekują liczbowe ważnych funkcji, takich jak regresji logistycznej, można zastosować do kategorii funkcji.
 
 W tym miejscu możesz przekształcić tylko cztery zmienne, aby wyświetlić przykłady, które są ciągami znaków. Możesz również indeks innych zmiennych, takich jak dni tygodnia, reprezentowane przez wartości liczbowych, jak zmienne podzielonych na kategorie.
 
@@ -853,7 +853,7 @@ Tworzenie wykresów przy użyciu języka Python matplotlib.
 ### <a name="create-a-gbt-regression-model"></a>Utworzyć model regresji GBT
 Utworzyć model regresji GBT przy użyciu Spark ML `GBTRegressor()` funkcji, a następnie ocenę modelu na danych testowych.
 
-[Wzmocnione gradientu drzew](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) są decyzyjne drzewa decyzyjne. GBTs uczenie drzew decyzyjnych interakcyjnie, aby zminimalizować funkcję utraty. Można użyć GBTs regresji i klasyfikacji. One może obsługiwać funkcje podzielonych na kategorie, skalowanie funkcja nie jest wymagane i przechwytywać nonlinearities i interakcje funkcji. Użytkownik może ich użyć także w ustawieniu kontra klasyfikacji.
+[Wzmocnione gradientu drzew](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) są decyzyjne drzewa decyzyjne. GBTs uczenie drzew decyzyjnych interakcyjnie, aby zminimalizować funkcję utraty. Można użyć GBTs regresji i klasyfikacji. One może obsługiwać funkcje podzielonych na kategorie, skalowanie funkcja nie jest wymagane i przechwytywać nonlinearities i interakcje funkcji. Użytkownik może ich użyć także w ustawieniu kontra klasyfikacji.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

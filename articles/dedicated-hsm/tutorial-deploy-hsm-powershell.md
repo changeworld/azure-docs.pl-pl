@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 4fd701c92ea2cf1447f0c3ea14db6a968ac8910e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: fdda53172bef9fb7a4a09cbacfdc5fa4ec4c7509
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115678"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122356"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Samouczek: wdrażanie modułów HSM w istniejącej sieci wirtualnej przy użyciu programu PowerShell
 
@@ -255,8 +255,8 @@ Jeśli zakończono pracę z urządzeniem HSM, to można je usunąć jako zasób 
 9. `syslog rotate`
 
 
->[!NOTE]
-Jeśli masz problemy z jakimikolwiek czynnościami konfiguracyjnymi dotyczącymi urządzeń firmy Gemalto, skontaktuj się [z pomocą techniczną firmy Gemalto](https://safenet.gemalto.com/technical-support/).
+> [!NOTE]
+> Jeśli masz problemy z jakimikolwiek czynnościami konfiguracyjnymi dotyczącymi urządzeń firmy Gemalto, skontaktuj się [z pomocą techniczną firmy Gemalto](https://safenet.gemalto.com/technical-support/).
 
 Jeśli zakończono pracę z zasobami w tej grupie zasobów, możesz usunąć je wszystkie za pomocą następującego polecenia:
 
@@ -269,7 +269,7 @@ Remove-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourc
 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po wykonaniu kroków w tym samouczku zasoby dedykowanego modułu HSM zostaną zaaprowizowane i będą dostępne w Twojej sieci wirtualnej. Jesteś teraz w stanie uzupełnić to wdrożenie dodatkowymi zasobami zgodnie z wymaganiami Twojej preferowanej architektury wdrożenia. Więcej informacji na temat ułatwiania planowania wdrożenia możesz znaleźć w dokumentach z pojęciami. Zalecany jest projekt z dwoma modułami HSM w regionie podstawowym służącym do zapewnienia dostępności na poziomie regału sprzętowego i dwoma modułami HSM w regionie pomocniczym służącym do zapewnienia dostępności regionalnej. Plik szablonu użyty w tym samouczku może zostać w łatwy sposób użyty jako podstawa dla wdrożenia z dwoma modułami HSM, ale konieczne jest zmodyfikowanie jego parametrów w celu spełnienia wymagań.
 

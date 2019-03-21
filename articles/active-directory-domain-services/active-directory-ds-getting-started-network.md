@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: 405de9b25c64b1716291a977eda8b3280515a543
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3020d7b29f19ec2ab578acbebac8db8ea320a844
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174707"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098029"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 
@@ -40,27 +40,26 @@ Następne zadanie konfiguracji jest tworzenie sieci wirtualnej platformy Azure i
 2. Na **wybierz sieć wirtualną** strony, zobacz wszystkie istniejące sieci wirtualne. Zostanie wyświetlony tylko sieci wirtualne, które należą do grupy zasobów i lokalizacji platformy Azure, wybranego na **podstawy** strony kreatora.
 3. Wybierz sieć wirtualną, w którym można włączyć usługi domenowe Azure AD. Możesz wybrać istniejącą sieć wirtualną lub utworzyć nową.
 
-  > [!TIP]
-  > **Twoja domena zarządzana nie można przenieść do innej sieci wirtualnej, po włączeniu usług domenowych Azure AD.** Wybrać właściwą sieć włączyć domenę zarządzaną. Po utworzeniu domeny zarządzanej, nie można jej przenieść do innej sieci wirtualnej bez usuwania domeny zarządzanej. Zaleca się, przeglądając [sieć zagadnienia dotyczące usługi Azure Active Directory Domain Services](active-directory-ds-networking.md) przed kontynuowaniem.  
-  >
+   > [!TIP]
+   > **Twoja domena zarządzana nie można przenieść do innej sieci wirtualnej, po włączeniu usług domenowych Azure AD.** Wybrać właściwą sieć włączyć domenę zarządzaną. Po utworzeniu domeny zarządzanej, nie można jej przenieść do innej sieci wirtualnej bez usuwania domeny zarządzanej. Zaleca się, przeglądając [sieć zagadnienia dotyczące usługi Azure Active Directory Domain Services](active-directory-ds-networking.md) przed kontynuowaniem.  
+   >
 
 4. **Tworzenie sieci wirtualnej:** Kliknij przycisk **Utwórz nową** do tworzenia nowej sieci wirtualnej. Użyj dedykowanej podsieci dla usługi Azure AD Domain Services. Na przykład utwórz podsieć o nazwie "DomainServices", co ułatwia dla innych administratorów zrozumieć, co to jest wdrażana w obrębie podsieci. Kliknij przycisk **OK** po zakończeniu.
 
     ![Wybierz sieć wirtualną](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
-  > [!WARNING]
-  > Pamiętaj wybrać przestrzeń adresów, który znajduje się w prywatnej przestrzeni adresów IP. Adresy IP, które nie są jego własnością, które znajdują się w przestrzeni adresów publicznych powodują błędy w usługach domenowych Azure AD.
+   > [!WARNING]
+   > Pamiętaj wybrać przestrzeń adresów, który znajduje się w prywatnej przestrzeni adresów IP. Adresy IP, które nie są jego własnością, które znajdują się w przestrzeni adresów publicznych powodują błędy w usługach domenowych Azure AD.
 
 5. **Istniejącej sieci wirtualnej:** Jeśli planujesz wybrać istniejącą sieć wirtualną [utworzyć dedykowaną podsieć przy użyciu rozszerzenia sieci wirtualnych](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet), a następnie wybierz odpowiednią podsieć. Kliknij przycisk **sieci wirtualnej** wybrać istniejącą sieć wirtualną. Kliknij przycisk **podsieci** pobrania dedykowaną podsieć w istniejącej sieci wirtualnej, w którym należy włączyć domenę zarządzaną. Kliknij przycisk **OK** po zakończeniu.
 
     ![Wybierz podsieci w sieci wirtualnej](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 
-  > [!NOTE]
-  > **Wskazówki dotyczące wybierania podsieci**
-  > 1. Użyj dedykowanej podsieci dla usługi Azure AD Domain Services. Nie należy wdrażać żadnych maszyn wirtualnych z tą podsiecią. Ta konfiguracja pozwala na konfigurowanie grup zabezpieczeń sieci (NSG) dla maszyn wirtualnych/obciążeń bez przerywania Twojej domeny zarządzanej. Aby uzyskać więcej informacji, zobacz [sieć zagadnienia dotyczące usługi Azure Active Directory Domain Services](active-directory-ds-networking.md).
-  2. Nie wybieraj podsieci bramy do wdrożenia usług domenowych Azure AD, ponieważ nie jest obsługiwaną konfiguracją.
-  3. Podsieć, którą wybrano musi mieć co najmniej 3 – 5 dostępnych adresów IP w jego przestrzeni adresowej.
-  >
+   > [!NOTE]
+   > **Wskazówki dotyczące wybierania podsieci**
+   > 1. Użyj dedykowanej podsieci dla usługi Azure AD Domain Services. Nie należy wdrażać żadnych maszyn wirtualnych z tą podsiecią. Ta konfiguracja pozwala na konfigurowanie grup zabezpieczeń sieci (NSG) dla maszyn wirtualnych/obciążeń bez przerywania Twojej domeny zarządzanej. Aby uzyskać więcej informacji, zobacz [sieć zagadnienia dotyczące usługi Azure Active Directory Domain Services](active-directory-ds-networking.md).
+   > 2. Nie wybieraj podsieci bramy do wdrożenia usług domenowych Azure AD, ponieważ nie jest obsługiwaną konfiguracją.
+   > 3. Podsieć, którą wybrano musi mieć co najmniej 3 – 5 dostępnych adresów IP w jego przestrzeni adresowej.
 
 6. Gdy wszystko będzie gotowe, kliknij przycisk **OK** aby przejść do **grupy Administrator** strony kreatora.
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: e574759ff8af172841db9fc94ee860a19dd14200
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 74639dee6fb548e1c9067cae6fc22f6e3cc872c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096235"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generowanie i eksportowanie certyfikatów dla punkt-lokacja przy użyciu programu PowerShell
 
@@ -30,12 +30,12 @@ Użyj polecenia cmdlet New-SelfSignedCertificate, aby utworzyć certyfikat głó
 1. Z komputera z systemem Windows 10 lub Windows Server 2016 Otwórz konsolę programu Windows PowerShell z podwyższonym poziomem uprawnień. Te przykłady nie będą działać w usłudze Azure Cloud Shell, "Wypróbuj". Te przykłady należy uruchomić lokalnie.
 2. Skorzystaj z następującego przykładu, aby utworzyć certyfikat główny z podpisem własnym. Poniższy przykład tworzy certyfikat główny z podpisem własnym o nazwie "P2SRootCert", który jest automatycznie instalowany w "Certyfikaty-bieżący użytkownik\osobisty\certyfikat". Certyfikat można wyświetlić, otwierając *certmgr.msc*, lub *Zarządzaj certyfikatami użytkowników*.
 
-  ```powershell
-  $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
-  -Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
-  -HashAlgorithm sha256 -KeyLength 2048 `
-  -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
-  ```
+   ```powershell
+   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+   -Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
+   -HashAlgorithm sha256 -KeyLength 2048 `
+   -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+   ```
 
 ## <a name="clientcert"></a>2. Generowanie certyfikatu klienta
 
@@ -65,37 +65,37 @@ Jeśli tworzysz dodatkowych certyfikatów klienta lub nie korzystają z tej same
 
 1. Zidentyfikuj certyfikat główny z podpisem własnym, który jest zainstalowany na komputerze. To polecenie cmdlet zwraca listę certyfikatów, które są zainstalowane na komputerze.
 
-  ```powershell
-  Get-ChildItem -Path “Cert:\CurrentUser\My”
-  ```
+   ```powershell
+   Get-ChildItem -Path “Cert:\CurrentUser\My”
+   ```
 2. Znajdź nazwę podmiotu na liście zwrócony, a następnie skopiuj odcisk palca, który znajduje się obok niego w pliku tekstowym. W poniższym przykładzie istnieją dwa certyfikaty. Nazwa CN jest nazwa certyfikatu głównego z podpisem własnym, z którego chcesz wygenerować certyfikat podrzędnego. W tym przypadku "P2SRootCert".
 
-  ```
-  Thumbprint                                Subject
+   ```
+   Thumbprint                                Subject
   
-  AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
-  7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
-  ```
+   AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
+   7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
+   ```
 3. Zadeklaruj zmienną dla certyfikatu głównego, używając odcisku palca z poprzedniego kroku. Zastąp odcisk PALCA odcisk palca certyfikatu głównego, z którego chcesz wygenerować certyfikat podrzędnego.
 
-  ```powershell
-  $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
-  ```
+   ```powershell
+   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
+   ```
 
-  Na przykład w poprzednim kroku, używając odcisku palca dla P2SRootCert, zmienna wygląda następująco:
+   Na przykład w poprzednim kroku, używając odcisku palca dla P2SRootCert, zmienna wygląda następująco:
 
-  ```powershell
-  $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
-  ```
-4.  Zmodyfikuj i uruchomić przykład, aby wygenerować certyfikat klienta. Jeśli uruchomisz poniższy przykład bez modyfikowania go, wynik jest certyfikat klienta o nazwie "P2SChildCert". Jeśli chcesz nazwać certyfikatu podrzędnego, coś innego, zmodyfikuj wartości nazwy Pospolitej. Nie zmieniaj TextExtension podczas uruchamiania tego przykładu. Możesz wygenerować certyfikat klienta jest automatycznie instalowany w katalogu "Certyfikaty - bieżący użytkownik\osobisty\certyfikat" na komputerze.
+   ```powershell
+   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
+   ```
+4. Zmodyfikuj i uruchomić przykład, aby wygenerować certyfikat klienta. Jeśli uruchomisz poniższy przykład bez modyfikowania go, wynik jest certyfikat klienta o nazwie "P2SChildCert". Jeśli chcesz nazwać certyfikatu podrzędnego, coś innego, zmodyfikuj wartości nazwy Pospolitej. Nie zmieniaj TextExtension podczas uruchamiania tego przykładu. Możesz wygenerować certyfikat klienta jest automatycznie instalowany w katalogu "Certyfikaty - bieżący użytkownik\osobisty\certyfikat" na komputerze.
 
-  ```powershell
-  New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
-  -Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
-  -HashAlgorithm sha256 -KeyLength 2048 `
-  -CertStoreLocation "Cert:\CurrentUser\My" `
-  -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
-  ```
+   ```powershell
+   New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
+   -Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
+   -HashAlgorithm sha256 -KeyLength 2048 `
+   -CertStoreLocation "Cert:\CurrentUser\My" `
+   -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+   ```
 
 ## <a name="cer"></a>3. Wyeksportować klucz publiczny certyfikat główny (cer)
 

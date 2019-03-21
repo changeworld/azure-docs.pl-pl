@@ -6,16 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: larryfr
-ms.author: haining
-author: hning86
+ms.author: larryfr
+author: Blackmist
 ms.date: 02/11/2019
-ms.openlocfilehash: d91cb2a98c6861695ffdc231bd979abaf24b2c6e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669996"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850081"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Utwórz obszar roboczy usługi Azure Machine Learning za pomocą szablonu
 
@@ -25,7 +24,7 @@ Aby uzyskać więcej informacji, zobacz [wdrażania aplikacji przy użyciu szabl
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcji platformy Azure**. Jeśli nie masz, spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](http://aka.ms/AMLFree).
+* **Subskrypcji platformy Azure**. Jeśli nie masz, spróbuj [bezpłatnej i płatnej wersji usługi Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Aby użyć szablonu z interfejsu wiersza polecenia, musisz mieć albo [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -193,12 +192,12 @@ Aby uzyskać więcej informacji dotyczących szablonów zobacz następujące art
 1. Postępuj zgodnie z instrukcjami w [wdrażanie zasobów za pomocą szablonu niestandardowej](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Po przyjeździe do biura __Edytuj szablon__ ekranu, Wklej w szablonie z tego dokumentu.
 1. Wybierz __Zapisz__ używać szablonu. Należy podać następujące informacje i zgody na liście warunków i postanowień:
 
-    * Subskrypcja: Wybierz subskrypcję platformy Azure do użycia dla tych zasobów.
-    * Grupa zasobów: Wybierz lub Utwórz grupę zasobów w celu uwzględnienia usług.
-    * Nazwa obszaru roboczego: Nazwa do użycia dla obszaru roboczego usługi Azure Machine Learning, która zostanie utworzona. Nazwa obszaru roboczego musi być od 3 do 33 znaków. Może zawierać tylko znaki alfanumeryczne i "-".
-    * Lokalizacja: Wybierz lokalizację, w którym zostanie utworzone zasoby.
+   * Subskrypcja: Wybierz subskrypcję platformy Azure do użycia dla tych zasobów.
+   * Grupa zasobów: Wybierz lub Utwórz grupę zasobów w celu uwzględnienia usług.
+   * Nazwa obszaru roboczego: Nazwa do użycia dla obszaru roboczego usługi Azure Machine Learning, która zostanie utworzona. Nazwa obszaru roboczego musi być od 3 do 33 znaków. Może zawierać tylko znaki alfanumeryczne i "-".
+   * Lokalizacja: Wybierz lokalizację, w którym zostanie utworzone zasoby.
 
-    ![Parametry szablonu w witrynie Azure portal](media/how-to-create-workspace-template/template-parameters.png)
+     ![Parametry szablonu w witrynie Azure portal](media/how-to-create-workspace-template/template-parameters.png)
 
 Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonu niestandardowej](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

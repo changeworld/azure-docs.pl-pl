@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 7a5a92635114be87e59fe8f779c36d4c401a1427
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075832"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087163"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Samouczek: Wykonywanie klasyfikacji obrazów na urządzeniach brzegowych za pomocą usługi Custom Vision Service
 
@@ -22,13 +22,18 @@ Usługa Azure IoT Edge może usprawnić Twoje rozwiązanie IoT przez przeniesien
 
 Na przykład usługa Custom Vision na urządzeniu usługi IoT Edge może określić, czy ruch na autostradzie jest większy, czy mniejszy niż zwykle, albo czy w hali garażowej są dostępne miejsca parkingowe w jednym rzędzie. Te informacje można udostępnić innej usłudze w celu wykonania akcji. 
 
-
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
+>
 > * Tworzenie klasyfikatora obrazów za pomocą usługi Custom Vision.
 > * Tworzenie modułu usługi IoT Edge wysyłającego zapytania do serwera internetowego usługi Custom Vision na urządzeniu.
 > * Wysyłanie wyników klasyfikatora obrazów do usługi IoT Hub.
+
+<center>
+
+![Diagram — samouczek architektury, testowanie i wdrażanie klasyfikatora](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+</center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +48,7 @@ Zasoby w chmurze:
 
 * Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Standardowa na platformie Azure. 
 * Rejestr kontenerów. W tym samouczku jest używana usługa [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/). 
-    * Znajomość poświadczeń Twojego [konta administratora](../container-registry/container-registry-authentication.md#admin-account) rejestru kontenerów.
+* Znajomość poświadczeń Twojego [konta administratora](../container-registry/container-registry-authentication.md#admin-account) rejestru kontenerów.
 
 Zasoby do programowania:
 
@@ -95,7 +100,7 @@ Do utworzenia klasyfikatora obrazów jest potrzebny zestaw obrazów szkoleniowyc
 
 3. Przejdź do sklonowanego lokalnie repozytorium git, a następnie przejdź do pierwszego folderu obrazów **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**. Zaznacz wszystkie 10 obrazów w tym folderze, a następnie wybierz pozycję **Open** (Otwórz). 
 
-4. Dodaj do tej grupy obrazów tag **choina**, a następnie naciśnij klawisz **Enter**, aby zastosować ten tag. 
+4. Dodaj do tej grupy obrazów tag **cykuta**, a następnie naciśnij klawisz **Enter**, aby zastosować ten tag. 
 
 5. Wybierz pozycję **Upload 10 files** (Przekaż 10 plików). 
 
@@ -453,7 +458,7 @@ Na urządzeniu możesz wyświetlać dzienniki modułu cameraCapture, aby zobaczy
 
 W programie Visual Studio Code kliknij prawym przyciskiem myszy nazwę urządzenia usługi IoT Edge i wybierz pozycję **Rozpocznij monitorowanie komunikatu D2C**. 
 
-Wyniki z modułu usługi Custom Vision, które są wysyłane jako komunikaty z modułu cameraCapture, uwzględniają prawdopodobieństwo, że obraz przedstawia choinę lub drzewo wiśni. Ponieważ obraz przedstawia choinę, powinno być widoczne prawdopodobieństwo 1.0. 
+Wyniki z modułu usługi Custom Vision, które są wysyłane jako komunikaty z modułu cameraCapture, uwzględniają prawdopodobieństwo, że obraz przedstawia cykutę lub drzewo wiśni. Ponieważ obraz przedstawia cykutę, powinno być widoczne prawdopodobieństwo 1.0. 
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -468,7 +473,7 @@ W przeciwnym razie możesz usunąć konfigurację lokalną i zasoby platformy Az
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wyszkoliliśmy model usługi Custom Vision i wdrożyliśmy go jako moduł na urządzeniu usługi IoT Edge. Następnie skompilowaliśmy moduł, który może wysyłać zapytania do usługi klasyfikacji obrazów i raportować wyniki do usługi IoT Hub. 
 

@@ -1,18 +1,18 @@
 ---
 title: Rozwiązywanie problemów — usługa Azure Disk Encryption dla maszyn wirtualnych IaaS | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów dla Microsoft Azure dysku Encryption for Windows i maszyn wirtualnych IaaS z systemem Linux.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/04/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e2fa8c526a1016e5b8157f5f8b3ecb38bf8ef15
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 48cf0f2e219d141a039f508f0ea948aa5c78b882
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779967"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838276"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
@@ -112,15 +112,15 @@ Aby obejść ten problem, skopiuj następujące pliki cztery Maszynę centrum da
    \windows\system32\en-US\bdehdcfg.exe.mui
    ```
 
-   2. Wprowadź następujące polecenie:
+1. Wprowadź następujące polecenie:
 
    ```
    bdehdcfg.exe -target default
    ```
 
-   3. To polecenie tworzy partycję systemową 550 MB. Ponowne uruchomienie systemu.
+1. To polecenie tworzy partycję systemową 550 MB. Ponowne uruchomienie systemu.
 
-   4. Sprawdź woluminy, a następnie przejść za pomocą narzędzia DiskPart  
+1. Sprawdź woluminy, a następnie przejść za pomocą narzędzia DiskPart  
 
 Na przykład:
 

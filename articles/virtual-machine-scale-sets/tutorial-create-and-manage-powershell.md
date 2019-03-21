@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 10fc55886e4c91a2d468704d13d3b206f4a9cf51
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 0eb5a33b91925260c89e0b1c23800614ed637bdb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980258"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990641"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i zarządzanie nim przy użyciu programu Azure PowerShell
 
@@ -140,7 +140,7 @@ IpAddress
 52.168.121.216
 ```
 
-Utwórz połączenie zdalne z pierwszym wystąpieniem maszyny wirtualnej. Podaj swój publiczny adres IP i numer portu wymaganego wystąpienia maszyny wirtualnej, jak pokazano w poprzednich poleceniach. Po wyświetleniu monitu wprowadź poświadczenia użyte do utworzenia zestawu skalowania (domyślne wartości w przykładowych poleceniach to *azureuser* i *P@ssw0rd!*). Jeśli korzystasz z usługi Azure Cloud Shell, wykonaj ten krok przy użyciu wiersza polecenia lokalnego programu PowerShell lub klienta pulpitu zdalnego. W poniższym przykładzie nawiązano połączenie z wystąpieniem maszyny wirtualnej *1*:
+Utwórz połączenie zdalne z pierwszym wystąpieniem maszyny wirtualnej. Podaj swój publiczny adres IP i numer portu wymaganego wystąpienia maszyny wirtualnej, jak pokazano w poprzednich poleceniach. Po wyświetleniu monitu wprowadź poświadczenia użyte podczas tworzenia zestawu skalowania (domyślne wartości w przykładowych poleceniach *azureuser* i *P\@ssw0rd!*). Jeśli korzystasz z usługi Azure Cloud Shell, wykonaj ten krok przy użyciu wiersza polecenia lokalnego programu PowerShell lub klienta pulpitu zdalnego. W poniższym przykładzie nawiązano połączenie z wystąpieniem maszyny wirtualnej *1*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -205,7 +205,7 @@ Rozmiar wystąpienia maszyny wirtualnej, czyli *jednostka SKU*, określa ilość
 ### <a name="vm-instance-sizes"></a>Rozmiary wystąpień maszyn wirtualnych
 W poniższej tabeli przedstawiono typowe kategorie rozmiarów maszyn wirtualnych podzielone według przypadków użycia.
 
-| Typ                     | Typowe rozmiary           |    Opis       |
+| Type                     | Typowe rozmiary           |    Opis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Zastosowania ogólne](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0–7| Zrównoważona moc procesora CPU w stosunku do pamięci. Opcja idealna w przypadku tworzenia i testowania, małych i średnich aplikacji oraz rozwiązań dotyczących danych.  |
 | [Optymalizacja pod kątem obliczeń](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Duża moc procesora CPU w stosunku do pamięci. Opcja dobra w przypadku aplikacji o średnim ruchu, urządzeń sieciowych i procesów wsadowych.        |
@@ -321,7 +321,7 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku omówiono wykonywanie niektórych podstawowych zadań w zakresie tworzenia zestawu skalowania i zarządzania nim przy użyciu programu Azure PowerShell:
 
 > [!div class="checklist"]

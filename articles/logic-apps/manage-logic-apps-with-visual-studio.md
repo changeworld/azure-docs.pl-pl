@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.openlocfilehash: dbb38336f0521f8f8e526ad3f5e13829075e7cca
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9f626e2a5c277cdce78c6e90046a1d40dac2d588
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158149"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078673"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki w programie Visual Studio
 
@@ -79,7 +79,7 @@ W programie Visual Studio możesz otworzyć aplikacji logiki wcześniej utworzy�
 
    W tym przykładzie aplikacji logiki według typów zasobów, dzięki czemu aplikacje logiki są wyświetlane w obszarze **Logic Apps** sekcji.
 
-  ![Otwórz logiki wdrożonej aplikacji z witryny Azure portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
+   ![Otwórz logiki wdrożonej aplikacji z witryny Azure portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
    Po otwarciu aplikacji logiki, w Projektancie aplikacji logiki, w dolnej części projektanta, możesz wybrać **widok kodu** tak, aby przejrzeć wewnętrzna struktura definicji aplikacji logiki. 
    Dowiedz się, jeśli chcesz utworzyć szablon wdrożenia dla aplikacji logiki [sposobu pobierania szablonu usługi Azure Resource Manager](#download-logic-app) dla tej aplikacji logiki. Dowiedz się więcej o [szablonów usługi Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment).

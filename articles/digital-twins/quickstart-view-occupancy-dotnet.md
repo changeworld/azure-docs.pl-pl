@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 12/17/2018
 ms.author: alinast
-ms.openlocfilehash: d2588090ced3e82e63397a416245ca69204f3d87
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583089"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089706"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Szybki start: Wyszukiwanie dostępnych pomieszczeń przy użyciu usługi Azure Digital Twins
 
@@ -115,8 +115,8 @@ W przykładzie są symulowane losowe wartości z dwóch czujników. Są to czujn
 1. Umieść ten wiersz polecenia obok wiersza polecenia danych czujnika i przyjrzyj się im.
 
     Jeden wiersz polecenia wysyła symulowane dane ruchu i dwutlenku węgla do usługi Digital Twins co pięć sekund. Drugie polecenie odczytuje wykres w czasie rzeczywistym, aby znaleźć dostępne pomieszczenia ze świeżym powietrzem na podstawie symulowanych danych losowych. Polecenie to wyświetla jeden z tych warunków niemal w czasie rzeczywistym na podstawie ostatnio wysłanych danych czujników:
-    - Dostępne pomieszczenia ze świeżym powietrzem.
-    - Zajęte pomieszczenie lub niska jakość powietrza w pomieszczeniu.
+   - Dostępne pomieszczenia ze świeżym powietrzem.
+   - Zajęte pomieszczenie lub niska jakość powietrza w pomieszczeniu.
 
      ![Uzyskiwanie dostępnych obszarów ze świeżym powietrzem][3]
 
@@ -149,12 +149,12 @@ W samouczkach szczegółowo omówiono następujące zagadnienia:
 Jeśli planujesz kontynuować pracę z samouczkami, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. W przeciwnym razie usuń wszystkie zasoby utworzone w tym przewodniku Szybki start.
 
 1. Usuń folder, który został utworzony podczas pobierania przykładowego repozytorium.
-1. W menu po lewej stronie w witrynie [Azure Portal](http://portal.azure.com) wybierz pozycję **Wszystkie zasoby**. Następnie wybierz zasób usługi Digital Twins. U góry okienka **Wszystkie zasoby** wybierz polecenie **Usuń**.
+1. W menu po lewej stronie w witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Wszystkie zasoby**. Następnie wybierz zasób usługi Digital Twins. U góry okienka **Wszystkie zasoby** wybierz polecenie **Usuń**.
 
     > [!TIP]
     > Jeśli podczas usuwania wystąpienia usługi Digital Twins wystąpił problem, została wdrożona aktualizacja usługi zawierająca poprawkę. Ponów próbę usunięcia wystąpienia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przedstawiono prosty scenariusz obejmujący znajdowanie pomieszczeń z dobrymi warunkami do pracy. Aby zapoznać się ze szczegółową analizą tego scenariusza, przejdź do następującego samouczka:
 

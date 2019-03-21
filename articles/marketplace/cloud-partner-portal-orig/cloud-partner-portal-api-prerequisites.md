@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e6e25424981118363070d42b2fb057b18fdb91a9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48811189"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878651"
 ---
 <a name="api-prerequisites"></a>Wymagania wstępne dotyczące interfejsu API
 ================
@@ -55,7 +55,7 @@ Aby dodać jednostkę usługi, wykonaj następujące kroki:
 
      ![Dodawanie aplikacji zarządzanej do portalu](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-4. Kliknij przycisk **Dodaj** można dodać jednostki usługi do Twojego konta.
+1. Kliknij przycisk **Dodaj** można dodać jednostki usługi do Twojego konta.
 
    ![Dodawanie jednostki usługi](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
@@ -66,7 +66,7 @@ Aby dodać jednostkę usługi, wykonaj następujące kroki:
 Interfejsów API portalu dla partnerów chmury Użyj następujących zasobów i protokoły podczas uwierzytelniania:
 
 - Token elementu nośnego tokenu sieci Web JSON (JWT), aby zażądać dostępu do zasobów
-- [OpenID Connect](http://openid.net/connect/) protokołu (OIDC) w celu zweryfikowania tożsamości
+- [OpenID Connect](https://openid.net/connect/) protokołu (OIDC) w celu zweryfikowania tożsamości
 - [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) jako źródło tożsamości
 
 Dostępne są dwie opcje zasadę, aby programowo pobierania tokenu JWT:

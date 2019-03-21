@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3aba118354c51285d714bb127e6f5984f8a50057
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329756"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096303"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Zautomatyzowane tworzenie kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "54329756"
 Zautomatyzowane tworzenie kopii zapasowej automatycznie konfiguruje [zarządzanej kopii zapasowej programu Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) dla wszystkich istniejących i nowych baz danych na Maszynie wirtualnej platformy Azure z programu SQL Server 2014 Standard lub Enterprise. Dzięki temu można skonfigurować kopie zapasowe zwykłej bazy danych, które wykorzystują trwałe usługi Azure blob storage. Zautomatyzowane tworzenie kopii zapasowej jest zależna od [rozszerzenie agenta IaaS programu SQL Server](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Aby wyświetlić wersję tego artykułu w zakresie usługi Resource Manager, zobacz [automatyczne kopie zapasowe dla programu SQL Server w usłudze Azure Virtual Machines Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Aby wyświetlić wersję tego artykułu w zakresie usługi Resource Manager, zobacz [automatyczne kopie zapasowe dla programu SQL Server w usłudze Azure Virtual Machines Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby korzystać z automatycznych kopii zapasowych, należy wziąć pod uwagę następujące wymagania wstępne:
@@ -73,7 +73,8 @@ W poniższej tabeli opisano opcje, które można skonfigurować do automatyczneg
 | **Okres przechowywania** |1 – 30 dni (30 dni) |Liczba dni przechowywania kopii zapasowej. |
 | **Konto magazynu** |Konto usługi Azure storage (konto magazynu utworzone dla określonej maszyny Wirtualnej) |Konto magazynu platformy Azure do przechowywania automatycznych kopii zapasowych plików w magazynie obiektów blob. Kontener jest tworzony w tej lokalizacji, aby zapisać wszystkie pliki kopii zapasowej. Konwencja nazewnictwa pliku kopii zapasowej zawiera daty, godziny i nazwy komputera. |
 | **Szyfrowanie** |Włącz/Wyłącz (wyłączony) |Włącza lub wyłącza funkcję szyfrowania. Gdy jest włączone szyfrowanie, certyfikaty służące do przywrócenia kopii zapasowej znajdują się w podanego konta magazynu w tym samym kontenerze automaticbackup przy użyciu tej samej konwencji nazewnictwa. Zmiana hasła nowy certyfikat jest generowany przy użyciu tego hasła, ale stary certyfikat pozostanie do przywrócenia poprzednich kopii zapasowych. |
-| **Hasło** |Tekst hasła, (Brak) |Hasło kluczy szyfrowania. Jest to tylko wymagane, jeśli szyfrowanie jest włączone. Aby przywrócić szyfrowanej kopii zapasowej, musisz mieć prawidłowe hasło i powiązane certyfikat, który został użyty w tym czasie, na których wykonano kopię zapasową. | **Bazy danych systemu tworzenia kopii zapasowych** | Włącz/Wyłącz (wyłączony) | Twórz pełne kopie zapasowe Master, Model i MSDB |
+| **Hasło** |Tekst hasła, (Brak) |Hasło kluczy szyfrowania. Jest to tylko wymagane, jeśli szyfrowanie jest włączone. Aby przywrócić szyfrowanej kopii zapasowej, musisz mieć prawidłowe hasło i powiązane certyfikat, który został użyty w tym czasie, na których wykonano kopię zapasową. |
+| **Bazy danych systemu tworzenia kopii zapasowych** | Włącz/Wyłącz (wyłączony) | Twórz pełne kopie zapasowe Master, Model i MSDB |
 | **Konfigurowanie harmonogramu tworzenia kopii zapasowych** | Ręczne/automatyczne (automatyczne) | Wybierz **automatyczne** do automatycznie twórz pełne kopie zapasowe w oparciu o wzrost dziennika dzienników. Wybierz **ręczne** Aby określić harmonogram dla pełnej i kopie zapasowe dzienników. |
 
 ## <a name="configuration-with-powershell"></a>Konfiguracja przy użyciu programu PowerShell

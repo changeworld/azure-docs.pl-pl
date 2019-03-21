@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bdc98a87a71dc7f8552f4bf869ec035409e0535e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843678"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co to jest sieć dostarczania zawartości na platformie Azure?
 Sieć dostarczania zawartości (CDN, content delivery network) to rozproszona sieć serwerów, które pozwalają wydajnie dostarczać użytkownikom zawartość internetową. Sieci CDN umożliwiają przechowywanie buforowanej zawartości na serwerach brzegowych w lokalizacjach punktu obecności (POP, Point-of-Presence), które znajdują się blisko użytkowników końcowych, co pozwala zminimalizować opóźnienie. 
@@ -59,7 +59,7 @@ Każda subskrypcja platformy Azure ma limity domyślne dla następujących zasob
  - Liczba punktów końcowych, które można utworzyć w profilu CDN. 
  - Liczba domen niestandardowych, które można zamapować na punkt końcowy.
 
-Aby dowiedzieć się więcej o limitach subskrypcji usługi CDN, zobacz [Limity usługi CDN](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits).
+Aby dowiedzieć się więcej o limitach subskrypcji usługi CDN, zobacz [Limity usługi CDN](https://docs.microsoft.com/azure/azure-subscription-service-limits).
     
 ## <a name="azure-cdn-features"></a>Funkcje usługi Azure CDN
 Usługa Azure CDN oferuje następujące kluczowe funkcje:
@@ -73,10 +73,9 @@ Usługa Azure CDN oferuje następujące kluczowe funkcje:
 
 Aby uzyskać pełną listę funkcji obsługiwanych przez każdy produkt Azure CDN, zobacz [Porównanie funkcji produktów Azure CDN](cdn-features.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby zacząć korzystać z usługi CDN, zobacz [Tworzenie punktu końcowego i profilu usługi Azure CDN](cdn-create-new-endpoint.md).
 - Zarządzaj punktami końcowymi usługi CDN za pomocą witryny [Microsoft Azure Portal](https://portal.azure.com) lub programu [PowerShell](cdn-manage-powershell.md).
 - Dowiedz się, jak zautomatyzować usługę Azure CDN przy użyciu platformy [.NET](cdn-app-dev-net.md) lub [Node.js](cdn-app-dev-node.md).
 - Aby zobaczyć usługę Azure CDN w akcji, obejrzyj [filmy wideo dotyczące usługi Azure CDN](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest).
 - Aby dowiedzieć się więcej o najnowszych funkcjach usługi Azure CDN, odwiedź [blog usługi Azure CDN](https://azure.microsoft.com/blog/tag/azure-cdn/).
-

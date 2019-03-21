@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e0942f028752b1e3db89802ee889eac7157815d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 194f422c1567103e41f3b39f8510931b1f4762b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205617"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105186"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Program Azure AD Connect: Jak usunąć limit 10 GB dla lokalnej bazy danych
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowanego z programem Azure AD Connect lub użyć własnego pełnego programu SQL. Program SQL Server Express narzuca limit rozmiaru w wysokości 10 GB. Jeśli jest używany program LocalDB i limit zostanie osiągnięty, usługa synchronizacji programu Azure AD Connect nie będzie mogła uruchomić się ani prawidłowo wykonywać synchronizacji. Ten artykuł zawiera kroki odzyskiwania.
@@ -81,13 +81,13 @@ Nazwa bazy danych utworzone dla programu Azure AD Connect jest **ADSync**. Aby w
 ### <a name="delete-run-history-data"></a>Usuwanie danych historii uruchamiania
 Domyślnie program Azure AD Connect przechowuje siedem dni, przez które dane historii uruchamiania. W tym kroku usuniemy dane historii uruchamiania w celu odzyskania miejsca w bazie danych, tak, aby uruchomić usługi Azure AD Connect synchronizacji ponowić synchronizację.
 
-1.  Rozpocznij **Menedżera usługi synchronizacji** , przechodząc do rozpoczęcia → usługi synchronizacji.
+1. Rozpocznij **Menedżera usługi synchronizacji** , przechodząc do rozpoczęcia → usługi synchronizacji.
 
-2.  Przejdź do **operacji** kartę.
+2. Przejdź do **operacji** kartę.
 
-3.  W obszarze **akcje**, wybierz opcję **uruchomień Clear**...
+3. W obszarze **akcje**, wybierz opcję **uruchomień Clear**...
 
-4.  Można wybrać **wyczyść wszystkie przebiegi** lub **wyczyść jest uruchamiany przed... <date>**  opcji. Zaleca się uruchamiania przez wyczyszczenie danych historii, które są starsze niż dwa dni uruchamiania. Jeśli będziesz kontynuować napotkać problem rozmiar bazy danych, wybierz **wyczyść wszystkie przebiegi** opcji.
+4. Można wybrać **wyczyść wszystkie przebiegi** lub **wyczyść jest uruchamiany przed... <date>**  opcji. Zaleca się uruchamiania przez wyczyszczenie danych historii, które są starsze niż dwa dni uruchamiania. Jeśli będziesz kontynuować napotkać problem rozmiar bazy danych, wybierz **wyczyść wszystkie przebiegi** opcji.
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>Skróć okres przechowywania danych historii uruchamiania
 Ten krok jest zmniejszenie prawdopodobieństwa przekroczone problem limitu 10 GB po wiele cykli synchronizacji.

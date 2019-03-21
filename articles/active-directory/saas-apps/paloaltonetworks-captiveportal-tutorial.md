@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 627275855f231f5a4336075df3864448325127f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211873"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Palo Alto Networks Captive Portal
 
@@ -105,12 +105,12 @@ Najpierw włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Port
 
     ![Okienko podstawowej konfiguracji protokołu SAML](common/idp-intiated.png)
 
-    1. W polu **Identyfikator** wprowadź adres URL ze wzorcem `https://<customer_firewall_host_name>/SAML20/SP`.
+   1. W polu **Identyfikator** wprowadź adres URL ze wzorcem `https://<customer_firewall_host_name>/SAML20/SP`.
 
-    2. W polu **Adres URL odpowiedzi** wprowadź adres URL ze wzorcem `https://<customer_firewall_host_name>/SAML20/SP/ACS`.
+   2. W polu **Adres URL odpowiedzi** wprowadź adres URL ze wzorcem `https://<customer_firewall_host_name>/SAML20/SP/ACS`.
 
-    > [!NOTE]
-    > W tym kroku zaktualizuj wartości symboli zastępczych przy użyciu rzeczywistego identyfikatora i adresów URL odpowiedzi. Aby uzyskać te rzeczywiste wartości, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Palo Alto Networks Captive Portal](https://support.paloaltonetworks.com/support).
+      > [!NOTE]
+      > W tym kroku zaktualizuj wartości symboli zastępczych przy użyciu rzeczywistego identyfikatora i adresów URL odpowiedzi. Aby uzyskać te rzeczywiste wartości, skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Palo Alto Networks Captive Portal](https://support.paloaltonetworks.com/support).
 
 5. W sekcji **Certyfikat podpisywania SAML** obok pola **Kod XML metadanych federacji** wybierz pozycję **Pobierz**. Zapisz pobrany plik na komputerze.
 
@@ -158,7 +158,7 @@ Następnie utwórz użytkownika testowego o nazwie *Britta Simon* w witrynie Azu
 
     1. W polu **Nazwa** wprowadź ciąg **BrittaSimon**.
   
-    2. W polu **Nazwa użytkownika** wprowadź ciąg **BrittaSimon@\<domena_firmy\>**. Na przykład **BrittaSimon@contoso.com**.
+    2. Aby uzyskać **nazwa_użytkownika**, wprowadź **BrittaSimon\@\<your_company_domain\>**. Na przykład **BrittaSimon\@contoso.com**.
 
     3. W polu **Hasło** wprowadź hasło. Zalecamy zapisanie i zachowanie wprowadzonego hasła. Możesz zaznaczyć pole wyboru **Pokaż hasło**, aby wyświetlić hasło.
 

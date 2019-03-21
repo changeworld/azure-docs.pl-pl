@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: c247ef748628c14074c2b5ea37df251793840b16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076755"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Integracja usługi mowy z aplikacją Language Understanding
 [Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia korzystanie z jednego żądania w celu odbierania dźwięku i zwrócenia obiektów JSON zawierających przewidywania usługi LUIS. W tym artykule pobierzesz projekt w języku C# i użyjesz go w programie Visual Studio, aby wypowiedzieć się do mikrofonu i uzyskać przewidywania usługi LUIS. Projekt wykorzystuje pakiet rozpoznawania mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) dołączony jako źródło informacji. 
@@ -49,11 +49,11 @@ Po zaimportowaniu aplikacji wybierz kolejno pozycje **Entitites** (Jednostki) i 
 
 3. Na stronie **Keys and endpoints** przypisz klucz usługi LUIS utworzony w sekcji [Tworzenie klucza punktu końcowego usługi LUIS](#create-luis-endpoint-key).
 
-  Na tej stronie zbierz informacje na temat identyfikatora aplikacji, regionu publikowania oraz identyfikatora subskrypcji klucza usługi LUIS utworzonego w sekcji [Tworzenie klucza punktu końcowego usługi LUIS](#create-luis-endpoint-key). Musisz zmodyfikować kod, aby użyć tych wartości późnej w tym artykule. 
+   Na tej stronie zbierz informacje na temat identyfikatora aplikacji, regionu publikowania oraz identyfikatora subskrypcji klucza usługi LUIS utworzonego w sekcji [Tworzenie klucza punktu końcowego usługi LUIS](#create-luis-endpoint-key). Musisz zmodyfikować kod, aby użyć tych wartości późnej w tym artykule. 
   
-  **Nie** używaj bezpłatnego klucza początkowego w tym ćwiczeniu. Wyłącznie klucz usługi **Language Understanding** utworzony w witrynie Azure Portal będzie działał w tym ćwiczeniu. 
+   **Nie** używaj bezpłatnego klucza początkowego w tym ćwiczeniu. Wyłącznie klucz usługi **Language Understanding** utworzony w witrynie Azure Portal będzie działał w tym ćwiczeniu. 
 
-  https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
+   https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
 
 
 4. Opublikuj aplikację LUIS, wybierając przycisk **Publish** (Publikuj) na pasku w górnej części strony po prawej stronie. 
@@ -95,7 +95,7 @@ Gdy aplikacja HumanResources usługi LUIS nie będzie już potrzebna, usuń ją.
 
 Pamiętaj, aby usunąć katalog, gdy nie korzystasz już z kodu przykładowego.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Integrate LUIS with a BOT (Integrowanie usługi LUIS z botem)](luis-csharp-tutorial-build-bot-framework-sample.md)

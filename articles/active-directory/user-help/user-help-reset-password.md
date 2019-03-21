@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 170b96810130d33935e54c85529129e7e0267fe9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957780"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106487"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetowanie hasła służbowego
 
@@ -93,15 +93,15 @@ Jeśli nie masz dostępu do konta usługi Azure Active Directory (Azure AD), mo�
 
 - **Zresetuj hasło przy użyciu kodu z aplikacji uwierzytelniania.** Akceptuje losowy kod podany przez aplikację uwierzytelniania. Jeśli administrator wyłączył środowisko informacje zabezpieczeń, można znaleźć więcej informacji na temat konfigurowania aplikacji authenticator podawania kodu w [ustawić informacje zabezpieczające, aby skorzystać z aplikacji uwierzytelniania (wersja zapoznawcza)](security-info-setup-auth-app.md) artykułu. Jeśli jeszcze nie używasz informacje zabezpieczające, możesz znaleźć więcej informacji na temat konfigurowania aplikacji authenticator podawania kodu w [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) artykułu.
 
-    1. Wybierz **wprowadź kod z mojej aplikacji Authenticator**, a następnie wybierz pozycję **Wyślij powiadomienie E-mail**.
+  1. Wybierz **wprowadź kod z mojej aplikacji Authenticator**, a następnie wybierz pozycję **Wyślij powiadomienie E-mail**.
 
-    2. Otwórz aplikację wystawcy uwierzytelnienia, wprowadź kod weryfikacyjny konta w polu, a następnie wybierz **dalej**.
+  2. Otwórz aplikację wystawcy uwierzytelnienia, wprowadź kod weryfikacyjny konta w polu, a następnie wybierz **dalej**.
 
-    3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
+  3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
 
-    4. Po otrzymaniu komunikatu, informujący o tym, że hasło zostało zresetowane, możesz zalogować się do konta przy użyciu nowego hasła.
+  4. Po otrzymaniu komunikatu, informujący o tym, że hasło zostało zresetowane, możesz zalogować się do konta przy użyciu nowego hasła.
         
-    Jeśli nadal nie można uzyskać dostępu do konta, powinni skontaktować się swoim administratorem w organizacji, aby uzyskać dalszą pomoc.
+     Jeśli nadal nie można uzyskać dostępu do konta, powinni skontaktować się swoim administratorem w organizacji, aby uzyskać dalszą pomoc.
 
 Po resetowania hasła, możesz otrzymać wiadomość e-mail z potwierdzeniem przychodzącą z konta, "firmy Microsoft w imieniu \< *your_organization*>." Jeśli otrzymujesz podobne wiadomości e-mail, ale nie zostały ostatnio zresetowania hasła, możesz musi natychmiast skontaktuj się z administratorem Twojej organizacji.
 
@@ -113,7 +113,7 @@ Jeśli chcesz zmienić hasło, możesz zrobić to za pośrednictwem portalu usł
 
 Jeśli masz zazwyczaj dostępu do aplikacji za pośrednictwem portalu pakietu Office, należy użyć tej metody:
 
-1. Zaloguj się do Twojej [konta usługi Office 365](https://www.office.com), przy użyciu istniejącego hasła.
+1. Zaloguj się do Twojej [konta usługi Office 365](https://portal.office.com), przy użyciu istniejącego hasła.
 
 2. Wybierz swój profil w prawym górnym rogu po stronie, a następnie wybierz **wyświetlić konto**.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 9958f5f0f1435af231c1426a249c745f4a2352c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816615"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098631"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące firm ciągłości działania i odzyskiwania po awarii w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,11 +21,11 @@ W przypadku zarządzania klastrów w usłudze Azure Kubernetes Service (AKS), cz
 To najlepsze rozwiązania, które artykuł koncentruje się na zagadnienia, które ułatwiają planowanie firm ciągłości działania i odzyskiwania po awarii w usłudze AKS. Omawiane kwestie:
 
 > [!div class="checklist"]
-* Planowanie klastrów usługi AKS w wielu regionach
-* Kierowanie ruchu przez wielu klastrów za pomocą usługi Azure Traffic Manager
-* Użycie replikacji geograficznej dla usługi rejestry obrazów kontenerów
-* Planowanie stanu aplikacji w wielu klastrach
-* Replikacja magazynu w wielu regionach
+> * Planowanie klastrów usługi AKS w wielu regionach
+> * Kierowanie ruchu przez wielu klastrów za pomocą usługi Azure Traffic Manager
+> * Użycie replikacji geograficznej dla usługi rejestry obrazów kontenerów
+> * Planowanie stanu aplikacji w wielu klastrach
+> * Replikacja magazynu w wielu regionach
 
 ## <a name="plan-for-multi-region-deployment"></a>Planowanie wdrożenia w wielu regionach
 
@@ -62,7 +62,7 @@ Aby uzyskać instrukcje dotyczące sposobu konfigurowania tych punktów końcowy
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>Routing aplikacji za pomocą usługi Azure drzwiami frontowymi warstwy 7
 
-Usługa Azure Traffic Manager wykorzystuje system DNS (warstwa 3) dla ruchu kształtu. [Usługa Azure drzwiami frontowymi (wersja zapoznawcza)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) zapewnia routing opcjonalnym HTTP/HTTPS (warstwa 7). Dodatkowe funkcje drzwiami frontowymi obejmują SSL zakończenia, domenę niestandardową, zapory aplikacji sieci Web, ponowne zapisywanie adresów URL i koligacja sesji.
+Usługa Azure Traffic Manager wykorzystuje system DNS (warstwa 3) dla ruchu kształtu. [Usługa Azure drzwiami frontowymi (obecnie w wersji zapoznawczej)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) zapewnia routing opcjonalnym HTTP/HTTPS (warstwa 7). Dodatkowe funkcje drzwiami frontowymi obejmują SSL zakończenia, domenę niestandardową, zapory aplikacji sieci Web, ponowne zapisywanie adresów URL i koligacja sesji.
 
 Sprawdź wymaga ruchu aplikacji, aby zrozumieć, jakie rozwiązanie będzie najbardziej odpowiedni.
 
