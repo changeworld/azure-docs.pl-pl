@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: 913df079b56e131a3120971b635c49c2c04b2b1e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871574"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994477"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą NetBackup
 
@@ -94,6 +94,7 @@ W poniższej tabeli przedstawiono wskazówki dotyczące początkowej architektur
 |------------------------|---------------|-----------------|
 | Pojemność magazynu lokalnego | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Pojemność magazynu w chmurze | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \* Rozmiar magazynu nie przyjmuje żadnej deduplikacji ani kompresji.
 
 **Usługa StorSimple pojemności dla głównych i dodatkowych kopii zapasowych**
@@ -207,16 +208,16 @@ Konfigurowanie rozwiązania programu zgodnie z wytycznymi podanymi w następują
 
 ### <a name="operating-system-best-practices"></a>Najlepsze rozwiązania w systemie operacyjnym
 
--   Wyłącz szyfrowanie systemu Windows Server i funkcji deduplikacji systemu plików NTFS.
--   Wyłącz defragmentacji systemu Windows Server w przypadku woluminów StorSimple.
--   Wyłączenie indeksowania systemu Windows Server, w przypadku woluminów StorSimple.
--   Uruchomienie skanowania antywirusowego na hoście źródłowym (ale nie dla woluminów StorSimple).
--   Wyłączyć domyślną [konserwacji systemu Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) w Menedżerze zadań. Użyć jednego z następujących sposobów:
-    - Wyłącz konfiguratora konserwacji w harmonogramie zadań Windows.
-    - Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) Windows Sysinternals. Po pobraniu programu PsExec, uruchom program Windows PowerShell jako administrator, a następnie wpisz:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Wyłącz szyfrowanie systemu Windows Server i funkcji deduplikacji systemu plików NTFS.
+- Wyłącz defragmentacji systemu Windows Server w przypadku woluminów StorSimple.
+- Wyłączenie indeksowania systemu Windows Server, w przypadku woluminów StorSimple.
+- Uruchomienie skanowania antywirusowego na hoście źródłowym (ale nie dla woluminów StorSimple).
+- Wyłączyć domyślną [konserwacji systemu Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) w Menedżerze zadań. Użyć jednego z następujących sposobów:
+  - Wyłącz konfiguratora konserwacji w harmonogramie zadań Windows.
+  - Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) Windows Sysinternals. Po pobraniu programu PsExec, uruchom program Windows PowerShell jako administrator, a następnie wpisz:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Najlepsze rozwiązania StorSimple
 
@@ -257,6 +258,7 @@ Na podstawie poprzedniego założeń tworzenie TiB 26 StorSimple warstwowego wol
 | Pełne roczne | 1  | 10 | 10 |
 | Wymaganie GFS |   | 38 |   |
 | Dodatkowego przydziału  | 4  |   | 42 łączna liczba wymagań GFS  |
+
 \* Mnożnik GFS jest liczba kopii, które należy chronić i zachować zgodnie z wymaganiami zasady tworzenia kopii zapasowej.
 
 ## <a name="set-up-netbackup-storage"></a>Konfigurowanie magazynu NetBackup
@@ -301,8 +303,8 @@ Oto przykład planu obrotu GFS cztery tygodnie, miesięczne i roczne:
 | Typ częstotliwości/kopia zapasowa | Pełne | Przyrostowa (1 – 5 dni)  |   
 |---|---|---|
 | Co tydzień (1 – 4 tygodnie) | Sobota | Od poniedziałku do piątku |
-| Miesięczne  | Sobota  |   |
-| Rocznie | Sobota  |   |   |
+| Co miesiąc  | Sobota  |   |
+| Rocznie | Sobota  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Przypisywanie woluminów StorSimple do zadania tworzenia kopii zapasowej NetBackup
 
@@ -310,69 +312,69 @@ Poniższa sekwencja przyjęto założenie, że NetBackup i host docelowy są sko
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>Aby przypisać woluminy StorSimple do zadania tworzenia kopii zapasowej NetBackup
 
-1.  W konsoli administracyjnej NetBackup wybierz **zarządzania NetBackup**, kliknij prawym przyciskiem myszy **zasady**, a następnie wybierz pozycję **nowe zasady**.
+1. W konsoli administracyjnej NetBackup wybierz **zarządzania NetBackup**, kliknij prawym przyciskiem myszy **zasady**, a następnie wybierz pozycję **nowe zasady**.
 
-    ![Konsola administracyjna NetBackup, Utwórz nowe zasady](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
+   ![Konsola administracyjna NetBackup, Utwórz nowe zasady](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2.  W **Add New Policy** okno dialogowe, wprowadź nazwę zasad a następnie wybierz **Użyj Kreatora konfiguracji zasad** pole wyboru. Kliknij przycisk **OK**.
+2. W **Add New Policy** okno dialogowe, wprowadź nazwę zasad a następnie wybierz **Użyj Kreatora konfiguracji zasad** pole wyboru. Kliknij przycisk **OK**.
 
-    ![Konsola administracyjna NetBackup, Dodaj okno dialogowe nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
+   ![Konsola administracyjna NetBackup, Dodaj okno dialogowe nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3.  W Kreatorze konfiguracji zasad tworzenia kopii zapasowych wybiera typ kopii zapasowej, a następnie wybierz **dalej**.
+3. W Kreatorze konfiguracji zasad tworzenia kopii zapasowych wybiera typ kopii zapasowej, a następnie wybierz **dalej**.
 
-    ![NetBackup konsoli administracyjnej, wybierz typ kopii zapasowej](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
+   ![NetBackup konsoli administracyjnej, wybierz typ kopii zapasowej](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4.  Aby ustawić typ zasad, wybierz **standardowa**, a następnie wybierz pozycję **dalej**.
+4. Aby ustawić typ zasad, wybierz **standardowa**, a następnie wybierz pozycję **dalej**.
 
-    ![Konsoli administracyjnej NetBackup typ zasad wybierz opcję](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
+   ![Konsoli administracyjnej NetBackup typ zasad wybierz opcję](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  Wybierz hosta, wybierz pozycję **wykrywanie systemu operacyjnego klienta** pole wyboru, a następnie wybierz pozycję **Dodaj**. Wybierz opcję **Dalej**.
+5. Wybierz hosta, wybierz pozycję **wykrywanie systemu operacyjnego klienta** pole wyboru, a następnie wybierz pozycję **Dodaj**. Wybierz opcję **Dalej**.
 
-    ![Konsoli administracyjnej NetBackup listę klientów w nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
+   ![Konsoli administracyjnej NetBackup listę klientów w nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
-6.  Wybierz dyski, które chcesz utworzyć kopię zapasową.
+6. Wybierz dyski, które chcesz utworzyć kopię zapasową.
 
-    ![Konsoli administracyjnej NetBackup opcje tworzenia kopii zapasowej dla nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
+   ![Konsoli administracyjnej NetBackup opcje tworzenia kopii zapasowej dla nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
 
-7.  Wybierz częstotliwość i przechowywania wartości, które spełniają wymagania rotacji kopii zapasowej.
+7. Wybierz częstotliwość i przechowywania wartości, które spełniają wymagania rotacji kopii zapasowej.
 
-    ![Konsola administracyjna NetBackup, częstotliwość wykonywania kopii zapasowych i obrót dla nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
+   ![Konsola administracyjna NetBackup, częstotliwość wykonywania kopii zapasowych i obrót dla nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8.  Wybierz **dalej** > **dalej** > **Zakończ**.  Harmonogram można zmodyfikować po utworzeniu zasad.
+8. Wybierz **dalej** > **dalej** > **Zakończ**.  Harmonogram można zmodyfikować po utworzeniu zasad.
 
-9.  Wybierz, aby rozwinąć zasad został właśnie utworzony, a następnie wybierz **harmonogramy**.
+9. Wybierz, aby rozwinąć zasad został właśnie utworzony, a następnie wybierz **harmonogramy**.
 
-    ![Konsoli administracyjnej NetBackup harmonogramy dla nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
+   ![Konsoli administracyjnej NetBackup harmonogramy dla nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10.  Kliknij prawym przyciskiem myszy **Inc różnicowej**, wybierz opcję **skopiować do nowego**, a następnie wybierz pozycję **OK**.
+10. Kliknij prawym przyciskiem myszy **Inc różnicowej**, wybierz opcję **skopiować do nowego**, a następnie wybierz pozycję **OK**.
 
     ![Konsoli administracyjnej NetBackup harmonogram kopiowania do nowych zasad](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11.  Kliknij prawym przyciskiem myszy nowo utworzony harmonogram, a następnie wybierz **zmiany**.
+11. Kliknij prawym przyciskiem myszy nowo utworzony harmonogram, a następnie wybierz **zmiany**.
 
-12.  Na **atrybuty** zaznacz **Przesłoń wybór magazynu zasad** pole wyboru, a następnie wybierz wolumin, od poniedziałku przyrostowe kopie zapasowe gdzie.
+12. Na **atrybuty** zaznacz **Przesłoń wybór magazynu zasad** pole wyboru, a następnie wybierz wolumin, od poniedziałku przyrostowe kopie zapasowe gdzie.
 
     ![Konsola administracyjna NetBackup, Zmień harmonogram](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
-13.  Na **Uruchom okno** , a następnie wybierz przedział czasu dla kopii zapasowych.
+13. Na **Uruchom okno** , a następnie wybierz przedział czasu dla kopii zapasowych.
 
     ![Konsoli administracyjnej NetBackup okno rozpoczęcia zmiany](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14.  Kliknij przycisk **OK**.
+14. Kliknij przycisk **OK**.
 
-15.  Powtórz kroki od 10 do 14 dla każdej przyrostowej kopii zapasowej. Wybierz odpowiedni wolumin i harmonogram dla każdej kopii zapasowej, który tworzysz.
+15. Powtórz kroki od 10 do 14 dla każdej przyrostowej kopii zapasowej. Wybierz odpowiedni wolumin i harmonogram dla każdej kopii zapasowej, który tworzysz.
 
-16.  Kliknij prawym przyciskiem myszy **Inc różnicowej** zaplanować, a następnie usuń ją.
+16. Kliknij prawym przyciskiem myszy **Inc różnicowej** zaplanować, a następnie usuń ją.
 
-17.  Zmodyfikuj harmonogram pełnego stosownie do potrzeb kopii zapasowej.
+17. Zmodyfikuj harmonogram pełnego stosownie do potrzeb kopii zapasowej.
 
     ![Konsoli administracyjnej NetBackup zmiany pełnego harmonogramu](./media/storsimple-configure-backup-target-using-netbackup/nbimage17.png)
 
-18.  Zmiany w oknie uruchamiania.
+18. Zmiany w oknie uruchamiania.
 
     ![Konsoli administracyjnej NetBackup zmiany okna uruchamiania](./media/storsimple-configure-backup-target-using-netbackup/nbimage18.png)
 
-19.  Ostatecznego harmonogramu wygląda następująco:
+19. Ostatecznego harmonogramu wygląda następująco:
 
     ![Konsoli administracyjnej NetBackup ostatecznego harmonogramu](./media/storsimple-configure-backup-target-using-netbackup/nbimage19.png)
 
@@ -400,6 +402,7 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 | Pełne miesięczne |Usługa StorSimple dysku (długoterminowe) | 1 | 12 | 12 |
 | Pełne roczne |Usługa StorSimple dysku (długoterminowe) | 1 | 1 | 1 |
 |Wymagany rozmiar woluminów GFS |  |  |  | 18*|
+
 \* Całkowita pojemność obejmuje 17 dysków TiB StorSimple i 1 TiB lokalnego woluminu RAID.
 
 
@@ -411,8 +414,8 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 | Tydzień 2 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 3 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 4 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
-| Miesięczne | Co miesiąc StorSimple |   |   |   |   |   |
-| Rocznie | Co rok StorSimple  |   |   |   |   |   |   |
+| Co miesiąc | Co miesiąc StorSimple |   |   |   |   |   |
+| Rocznie | Co rok StorSimple  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Przypisać woluminy StorSimple do zadania archiwum i duplikacji NetBackup
@@ -427,41 +430,41 @@ Po zdefiniowaniu pul dysków początkowej, należy zdefiniować trzy zasady cykl
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Aby przypisać woluminy StorSimple do zadania archiwum i duplikacji NetBackup
 
-1.  W konsoli administracyjnej NetBackup wybierz **magazynu** > **zasady cyklu życia magazynu** > **nowe zasady cyklu życia magazynu**.
+1. W konsoli administracyjnej NetBackup wybierz **magazynu** > **zasady cyklu życia magazynu** > **nowe zasady cyklu życia magazynu**.
 
-    ![Konsola administracyjna NetBackup, nowe zasady cyklu życia magazynu](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
+   ![Konsola administracyjna NetBackup, nowe zasady cyklu życia magazynu](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
-2.  Wprowadź nazwę dla migawki, a następnie wybierz **Dodaj**.
+2. Wprowadź nazwę dla migawki, a następnie wybierz **Dodaj**.
 
-3.  W **nową operację** dialogowym **właściwości** karcie dla **operacji**, wybierz opcję **kopii zapasowej**. Wybierz wartości dla **Magazyn docelowy**, **typ przechowywania**, i **okres przechowywania**. Kliknij przycisk **OK**.
+3. W **nową operację** dialogowym **właściwości** karcie dla **operacji**, wybierz opcję **kopii zapasowej**. Wybierz wartości dla **Magazyn docelowy**, **typ przechowywania**, i **okres przechowywania**. Kliknij przycisk **OK**.
 
-    ![Konsoli administracyjnej NetBackup nowej operacji, okno dialogowe](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
+   ![Konsoli administracyjnej NetBackup nowej operacji, okno dialogowe](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
-    To definiuje pierwszą operacją kopii zapasowej i repozytorium.
+   To definiuje pierwszą operacją kopii zapasowej i repozytorium.
 
-4.  Wybierz, aby wyróżnić poprzedniej operacji, a następnie wybierz **Dodaj**. W **operacji magazynu zmiany** okna dialogowego Wybierz wartości, które mają dla **Magazyn docelowy**, **typ przechowywania**, i **okres przechowywania**.
+4. Wybierz, aby wyróżnić poprzedniej operacji, a następnie wybierz **Dodaj**. W **operacji magazynu zmiany** okna dialogowego Wybierz wartości, które mają dla **Magazyn docelowy**, **typ przechowywania**, i **okres przechowywania**.
 
-    ![Konsola administracyjna NetBackup, okno dialogowe zmiany operacji magazynu](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
+   ![Konsola administracyjna NetBackup, okno dialogowe zmiany operacji magazynu](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
-5.  Wybierz, aby wyróżnić poprzedniej operacji, a następnie wybierz **Dodaj**. W **nowe zasady cyklu życia magazynu** okna dialogowego Dodaj comiesięczne kopie zapasowe na rok.
+5. Wybierz, aby wyróżnić poprzedniej operacji, a następnie wybierz **Dodaj**. W **nowe zasady cyklu życia magazynu** okna dialogowego Dodaj comiesięczne kopie zapasowe na rok.
 
-    ![Konsola administracyjna NetBackup, okno dialogowe nowej zasady cyklu życia magazynu](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
+   ![Konsola administracyjna NetBackup, okno dialogowe nowej zasady cyklu życia magazynu](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
 
-6.  Powtórz kroki 4 – 5, dopóki nie utworzysz zasady przechowywania SLP kompleksowe, które należy.
+6. Powtórz kroki 4 – 5, dopóki nie utworzysz zasady przechowywania SLP kompleksowe, które należy.
 
-    ![Konsola administracyjna NetBackup, Dodaj zasady w oknie dialogowym nowej zasady cyklu życia magazynu](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
+   ![Konsola administracyjna NetBackup, Dodaj zasady w oknie dialogowym nowej zasady cyklu życia magazynu](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7.  Po zdefiniowaniu SLP zasady przechowywania, w obszarze **zasad**, definiowanie zasad tworzenia kopii zapasowej, wykonując kroki opisane szczegółowo w [woluminów StorSimple przypisywanie do zadania tworzenia kopii zapasowej NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
+7. Po zdefiniowaniu SLP zasady przechowywania, w obszarze **zasad**, definiowanie zasad tworzenia kopii zapasowej, wykonując kroki opisane szczegółowo w [woluminów StorSimple przypisywanie do zadania tworzenia kopii zapasowej NetBackup](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
 
-8.  W obszarze **harmonogramy**w **Zmień harmonogram** okno dialogowe, kliknij prawym przyciskiem myszy **pełne**, a następnie wybierz **zmiany**.
+8. W obszarze **harmonogramy**w **Zmień harmonogram** okno dialogowe, kliknij prawym przyciskiem myszy **pełne**, a następnie wybierz **zmiany**.
 
-    ![Konsola administracyjna NetBackup, okno dialogowe Zmień harmonogram](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
+   ![Konsola administracyjna NetBackup, okno dialogowe Zmień harmonogram](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9.  Wybierz **Przesłoń wybór magazynu zasad** pole wyboru, a następnie wybierz zasady przechowywania SLP, który został utworzony w krokach 1 – 6.
+9. Wybierz **Przesłoń wybór magazynu zasad** pole wyboru, a następnie wybierz zasady przechowywania SLP, który został utworzony w krokach 1 – 6.
 
-    ![Konsola administracyjna NetBackup, wybór magazynu zasad przesłonięcia](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
+   ![Konsola administracyjna NetBackup, wybór magazynu zasad przesłonięcia](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10.  Wybierz **OK**, a następnie powtórz dla przyrostowych harmonogram tworzenia kopii zapasowych.
+10. Wybierz **OK**, a następnie powtórz dla przyrostowych harmonogram tworzenia kopii zapasowych.
 
     ![Konsola administracyjna NetBackup, okno dialogowe Zmień harmonogram tworzenia przyrostowych kopii zapasowych](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
@@ -474,6 +477,7 @@ Po zdefiniowaniu pul dysków początkowej, należy zdefiniować trzy zasady cykl
 | Pełne roczne | 1  | 10 | 10 |
 | Wymaganie GFS  |     |     | 38 |
 | Dodatkowego przydziału  | 4  |    | 42 łączna liczba wymagań GFS |
+
 \* Mnożnik GFS jest liczba kopii, które należy chronić i zachować zgodnie z wymaganiami zasady tworzenia kopii zapasowej.
 
 ## <a name="storsimple-cloud-snapshots"></a>Migawki w chmurze StorSimple
@@ -503,13 +507,13 @@ W poniższej sekcji opisano sposób tworzenia krótkiej skryptu do uruchamiania 
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Aby uruchomić lub usunąć migawkę w chmurze
 
-1.  [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
+1. [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
 2. Pobierz i skonfiguruj [CloudSnapshots.ps1 Zarządzaj](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) skrypt programu PowerShell.
 3. Na serwerze, który uruchamia skrypt Uruchom program PowerShell jako administrator. Upewnij się, że uruchomieniu skryptu za pomocą `-WhatIf $true` aby zobaczyć, co spowodowało skrypt spowoduje, że. Po zakończeniu sprawdzania poprawności, należy przekazać `-WhatIf $false`. Uruchom poniższe polecenie:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  Dodaj skrypt zadania tworzenia kopii zapasowych w NetBackup. Aby to zrobić, należy edytować NetBackup Opcje zadania przetwarzania wstępnego i przetwarzanie końcowe poleceń.
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. Dodaj skrypt zadania tworzenia kopii zapasowych w NetBackup. Aby to zrobić, należy edytować NetBackup Opcje zadania przetwarzania wstępnego i przetwarzanie końcowe poleceń.
 
 > [!NOTE]
 > Firma Microsoft zaleca uruchamianie usługi StorSimple cloud snapshot zasad tworzenia kopii zapasowej jako przetwarzania końcowego skryptu na końcu codzienne zadania tworzenia kopii zapasowej. Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracania środowiska tworzenia kopii zapasowej aplikacji pomagają spełniać wymagania celu punktu odzyskiwania i cel czasu odzyskiwania usługi skontaktuj się z Twojego Architekt kopii zapasowej.
@@ -536,7 +540,7 @@ Awarii może być spowodowany różnych czynników. W poniższej tabeli wymienio
 W tym artykule przywoływane następujące dokumenty:
 
 - [StorSimple Wielościeżkowe We/Wy Instalatora](storsimple-configure-mpio-windows-server.md)
-- [Scenariusze usługi Storage: Alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Scenariusze usługi Storage: alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Za pomocą GPT dysków](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Konfigurowanie kopii w tle dla folderów udostępnionych](https://technet.microsoft.com/library/cc771893.aspx)
 

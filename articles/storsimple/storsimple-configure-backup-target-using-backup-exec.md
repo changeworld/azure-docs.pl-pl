@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 8cde3402ef52747e61333c56903309259e07599a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747598"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011145"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą Backup Exec
 
@@ -94,6 +94,7 @@ W poniższej tabeli przedstawiono wskazówki dotyczące początkowej architektur
 |------------------------|---------------|-----------------|
 | Pojemność magazynu lokalnego | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Pojemność magazynu w chmurze | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \* Rozmiar magazynu nie przyjmuje żadnej deduplikacji ani kompresji.
 
 **Usługa StorSimple pojemności dla głównych i dodatkowych kopii zapasowych**
@@ -206,16 +207,16 @@ Konfigurowanie rozwiązania zgodnie z wytycznymi w poniższych sekcjach.
 
 ### <a name="operating-system-best-practices"></a>Najlepsze rozwiązania w systemie operacyjnym
 
--   Wyłącz szyfrowanie systemu Windows Server i funkcji deduplikacji systemu plików NTFS.
--   Wyłącz defragmentacji systemu Windows Server w przypadku woluminów StorSimple.
--   Wyłączenie indeksowania systemu Windows Server, w przypadku woluminów StorSimple.
--   Uruchomienie skanowania antywirusowego na hoście źródłowym (ale nie dla woluminów StorSimple).
--   Wyłączyć domyślną [konserwacji systemu Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) w Menedżerze zadań. Użyć jednego z następujących sposobów:
-   - Wyłącz konfiguratora konserwacji w harmonogramie zadań Windows.
-   - Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) Windows Sysinternals. Po pobraniu programu PsExec, uruchom program Azure PowerShell jako administrator, a następnie wpisz:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Wyłącz szyfrowanie systemu Windows Server i funkcji deduplikacji systemu plików NTFS.
+- Wyłącz defragmentacji systemu Windows Server w przypadku woluminów StorSimple.
+- Wyłączenie indeksowania systemu Windows Server, w przypadku woluminów StorSimple.
+- Uruchomienie skanowania antywirusowego na hoście źródłowym (ale nie dla woluminów StorSimple).
+- Wyłączyć domyślną [konserwacji systemu Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) w Menedżerze zadań. Użyć jednego z następujących sposobów:
+  - Wyłącz konfiguratora konserwacji w harmonogramie zadań Windows.
+  - Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) Windows Sysinternals. Po pobraniu programu PsExec, uruchom program Azure PowerShell jako administrator, a następnie wpisz:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Najlepsze rozwiązania StorSimple
 
@@ -259,6 +260,7 @@ Na podstawie poprzedniego założeń tworzenie TiB 26 StorSimple warstwowego wol
 | Pełne roczne | 1  | 10 | 10 |
 | Wymaganie GFS |   | 38 |   |
 | Dodatkowego przydziału  | 4  |   | 42 łączna liczba wymagań GFS  |
+
 \* Mnożnik GFS jest liczba kopii, które należy chronić i zachować zgodnie z wymaganiami zasady tworzenia kopii zapasowej.
 
 ## <a name="set-up-backup-exec-storage"></a>Konfigurowanie magazynu Backup Exec
@@ -311,8 +313,8 @@ Oto przykład planu obrotu GFS cztery tygodnie, miesięczne i roczne:
 | Typ częstotliwości/kopia zapasowa | Pełne | Przyrostowa (1 – 5 dni)  |   
 |---|---|---|
 | Co tydzień (1 – 4 tygodnie) | Sobota | Od poniedziałku do piątku |
-| Miesięczne  | Sobota  |   |
-| Rocznie | Sobota  |   |   |
+| Co miesiąc  | Sobota  |   |
+| Rocznie | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Przypisać woluminy StorSimple do zadania tworzenia kopii zapasowych Backup Exec
@@ -373,6 +375,7 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 | Pełne miesięczne |Usługa StorSimple dysku (długoterminowe) | 1 | 12 | 12 |
 | Pełne roczne |Usługa StorSimple dysku (długoterminowe) | 1 | 1 | 1 |
 |Wymagany rozmiar woluminów GFS |  |  |  | 18*|
+
 \* Całkowita pojemność obejmuje 17 dysków TiB StorSimple i 1 TiB lokalnego woluminu RAID.
 
 
@@ -384,8 +387,8 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 | Tydzień 2 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 3 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
 | Tydzień 4 | Tygodnie StorSimple 2 – 4 |   |   |   |   |   |
-| Miesięczne | Co miesiąc StorSimple |   |   |   |   |   |
-| Rocznie | Co rok StorSimple  |   |   |   |   |   |   |
+| Co miesiąc | Co miesiąc StorSimple |   |   |   |   |   |
+| Rocznie | Co rok StorSimple  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Przypisać woluminy StorSimple do archiwum Exec kopii zapasowej i deduplikacji zadania
@@ -445,15 +448,15 @@ W poniższej sekcji opisano sposób tworzenia krótkiej skryptu do uruchamiania 
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Aby uruchomić lub usunąć migawkę w chmurze
 
-1.  [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
+1. [Zainstalowanie programu Azure PowerShell](/powershell/azure/overview).
 2. Pobierz i skonfiguruj [CloudSnapshots.ps1 Zarządzaj](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) skrypt programu PowerShell.
 3. Na serwerze, który uruchamia skrypt Uruchom program PowerShell jako administrator. Upewnij się, że uruchomieniu skryptu za pomocą `-WhatIf $true` aby zobaczyć, co spowodowało skrypt spowoduje, że. Po zakończeniu sprawdzania poprawności, należy przekazać `-WhatIf $false`. Uruchom poniższe polecenie:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  Dodaj skrypt zadania tworzenia kopii zapasowych w Backup Exec, edytując Opcje zadania tworzenia kopii zapasowej Exec wstępnego przetwarzania i przetwarzanie końcowe poleceń.
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. Dodaj skrypt zadania tworzenia kopii zapasowych w Backup Exec, edytując Opcje zadania tworzenia kopii zapasowej Exec wstępnego przetwarzania i przetwarzanie końcowe poleceń.
 
-    ![Wykonaj kopię zapasową konsoli Exec, opcje tworzenia kopii zapasowej, karta poleceń wstępnej i przetwarzanie końcowe](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
+   ![Wykonaj kopię zapasową konsoli Exec, opcje tworzenia kopii zapasowej, karta poleceń wstępnej i przetwarzanie końcowe](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
 
 > [!NOTE]
 > Firma Microsoft zaleca uruchamianie usługi StorSimple cloud snapshot zasad tworzenia kopii zapasowej jako przetwarzania końcowego skryptu na końcu codzienne zadania tworzenia kopii zapasowej. Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracania środowiska tworzenia kopii zapasowej aplikacji pomagają spełniać wymagania celu punktu odzyskiwania i cel czasu odzyskiwania usługi skontaktuj się z Twojego Architekt kopii zapasowej.
@@ -480,7 +483,7 @@ Awarii może być spowodowany różnych czynników. W poniższej tabeli wymienio
 W tym artykule przywoływane następujące dokumenty:
 
 - [StorSimple Wielościeżkowe We/Wy Instalatora](storsimple-configure-mpio-windows-server.md)
-- [Scenariusze usługi Storage: Alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Scenariusze usługi Storage: alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Za pomocą GPT dysków](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Konfigurowanie kopii w tle dla folderów udostępnionych](https://technet.microsoft.com/library/cc771893.aspx)
 

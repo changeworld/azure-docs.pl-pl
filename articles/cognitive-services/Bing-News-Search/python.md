@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f6ae2315c14a92d72d2efa03b96397512120ab06
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 7745db722d1862e5254c0e0fb07605799a8f7457
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866240"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076721"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu języka Python i interfejsu API REST wyszukiwania wiadomości Bing
 
@@ -81,7 +81,7 @@ rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc) for desc in descriptions]
 HTML("<table>"+rows+"</table>")
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-[Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)
+> [Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)

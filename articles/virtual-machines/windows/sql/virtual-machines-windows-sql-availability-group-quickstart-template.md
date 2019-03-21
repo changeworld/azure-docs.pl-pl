@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5390885ccb4bbc3e1552d3f5e80c1b451b7bee38
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4b4527bfaacc592c13552e362de0cba620314cd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570168"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122050"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure przy użyciu szablonów szybkiego startu platformy Azure
 W tym artykule opisano, jak częściowo zautomatyzować wdrożenia zawsze włączonej konfiguracji grupy dostępności dla maszyn wirtualnych serwera SQL na platformie Azure za pomocą szablonów szybkiego startu platformy Azure. Istnieją dwa szablony szybkiego startu platformy Azure, które są używane w ramach tego procesu. 
@@ -76,8 +76,8 @@ Gdy maszyny wirtualne programu SQL Server zostały zarejestrowane przy użyciu n
 1. Jeśli wyrażasz zgodę na warunki i postanowienia, zaznacz pole wyboru obok pozycji **zgodę na warunki i postanowienia, o których wspomniano** i wybierz **zakupu** aby zakończyć wdrożenie szablonu szybkiego startu. 
 1. Aby monitorować wdrożenie, wybierz wdrożenie z **powiadomienia** dzwonka ikony w górnym menu nawigacyjnym transparencie fizyczną lub przejdź do swojej **grupy zasobów** w witrynie Azure portal wybierz  **Wdrożenia** w **ustawienia** pola, a następnie wybierz opcję wdrażania "Microsoft.Template". 
 
-  >[!NOTE]
-  > Poświadczenia podane podczas wdrażania szablonu są przechowywane tylko dla długości wdrożenia. Po zakończeniu wdrażania te hasła są usuwane, a użytkownik jest proszony o podać je ponownie powinien dodasz więcej maszyn wirtualnych programu SQL Server do klastra. 
+   >[!NOTE]
+   > Poświadczenia podane podczas wdrażania szablonu są przechowywane tylko dla długości wdrożenia. Po zakończeniu wdrażania te hasła są usuwane, a użytkownik jest proszony o podać je ponownie powinien dodasz więcej maszyn wirtualnych programu SQL Server do klastra. 
 
 
 ## <a name="step-2---manually-create-the-availability-group"></a>Krok 2 — ręcznie utworzyć grupy dostępności 
@@ -150,8 +150,8 @@ Konfigurowanie wewnętrznego modułu równoważenia obciążenia i tworzenia odb
 1. Jeśli wyrażasz zgodę na warunki i postanowienia, zaznacz pole wyboru obok pozycji **zgodę na warunki i postanowienia, o których wspomniano** i wybierz **zakupu** aby zakończyć wdrożenie szablonu szybkiego startu. 
 1. Aby monitorować wdrożenie, wybierz wdrożenie z **powiadomienia** dzwonka ikony w górnym menu nawigacyjnym transparencie fizyczną lub przejdź do swojej **grupy zasobów** w witrynie Azure portal wybierz  **Wdrożenia** w **ustawienia** pola, a następnie wybierz opcję wdrażania "Microsoft.Template". 
 
-  >[!NOTE]
-  >Jeśli wdrożenie nie powiedzie się połowy za pośrednictwem, konieczne będzie ręczne [usunąć nowo utworzony odbiornik](#remove-availability-group-listener) przy użyciu programu PowerShell przed ponownego wdrażania **101-sql-vm-aglistener — setup** szablon szybkiego startu. 
+   >[!NOTE]
+   >Jeśli wdrożenie nie powiedzie się połowy za pośrednictwem, konieczne będzie ręczne [usunąć nowo utworzony odbiornik](#remove-availability-group-listener) przy użyciu programu PowerShell przed ponownego wdrażania **101-sql-vm-aglistener — setup** szablon szybkiego startu. 
 
 ## <a name="remove-availability-group-listener"></a>Usuwanie odbiornika grupy dostępności
 Jeśli zechcesz później usunąć odbiornika grupy dostępności, które są skonfigurowane w szablonie, należy przejść przez dostawcę zasobów maszyny Wirtualnej SQL. Ponieważ odbiornika jest zarejestrowany za pośrednictwem dostawcy zasobów maszyny Wirtualnej SQL, po prostu usunięcie go za pomocą programu SQL Server Management Studio jest niewystarczająca. Którą faktycznie należy usunąć za pomocą dostawcy zasobów maszyny Wirtualnej SQL przy użyciu programu PowerShell. Ten sposób usuwa metadanych odbiornika grupy dostępności od dostawcy zasobów maszyny Wirtualnej SQL i fizycznie usuwa odbiornik z grupy dostępności. 
@@ -183,17 +183,17 @@ Ten błąd może być spowodowany przez jedną z dwóch powodów. Konto domenowe
 
  Sprawdź, że konto istnieje. Jeśli tak jest, może być uruchomiony w drugiej sytuacji. Aby rozwiązać ten problem, wykonaj następujące czynności:
 
- 1. Na kontrolerze domeny otwórz **użytkownicy usługi Active Directory i komputery** w oknie **narzędzia** opcji **Menedżera serwera**. 
- 2. Przejdź do konta, wybierając **użytkowników** w okienku po lewej stronie.
- 3. Kliknij prawym przyciskiem myszy odpowiednie konto, a następnie wybierz pozycję **właściwości**.
- 4. Wybierz **konta** kartę i sprawdź, czy **nazwa logowania użytkownika** jest pusta. Jeśli tak jest, to stanowi przyczynę błędu. 
+1. Na kontrolerze domeny otwórz **użytkownicy usługi Active Directory i komputery** w oknie **narzędzia** opcji **Menedżera serwera**. 
+2. Przejdź do konta, wybierając **użytkowników** w okienku po lewej stronie.
+3. Kliknij prawym przyciskiem myszy odpowiednie konto, a następnie wybierz pozycję **właściwości**.
+4. Wybierz **konta** kartę i sprawdź, czy **nazwa logowania użytkownika** jest pusta. Jeśli tak jest, to stanowi przyczynę błędu. 
 
-     ![Konto użytkownika puste wskazuje brak głównej nazwy użytkownika](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+    ![Konto użytkownika puste wskazuje brak głównej nazwy użytkownika](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
- 5. Wypełnij **nazwa logowania użytkownika** zgodna z nazwą użytkownika i wybierz odpowiednie domeny z listy rozwijanej. 
- 6. Wybierz **Zastosuj** Aby zapisać zmiany i zamknąć okno dialogowe, wybierając **OK**. 
+5. Wypełnij **nazwa logowania użytkownika** zgodna z nazwą użytkownika i wybierz odpowiednie domeny z listy rozwijanej. 
+6. Wybierz **Zastosuj** Aby zapisać zmiany i zamknąć okno dialogowe, wybierając **OK**. 
 
- Po dokonaniu tych zmian, spróbuj ponownie wdrożyć szablon szybkiego startu platformy Azure. 
+   Po dokonaniu tych zmian, spróbuj ponownie wdrożyć szablon szybkiego startu platformy Azure. 
 
 
 

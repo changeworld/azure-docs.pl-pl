@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f3c8fd3043f20ab34dda1f4e3762e3ebc4bb6ae1
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 422b97414142c36669ed449a21c6045fd774581a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749889"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902658"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Klucz frazy umiejętności cognitive
 
@@ -38,12 +38,14 @@ Maksymalny rozmiar rekord powinien być 50 000 znaków, gdyż jest mierzone prze
 ## <a name="skill-parameters"></a>Parametry kwalifikacji
 
 Parametrów jest rozróżniana wielkość liter.
+
 | Dane wejściowe                | Opis |
 |---------------------|-------------|
 | defaultLanguageCode | (Opcjonalnie) Kod języka stosowane do dokumentów, które jawnie określać języka.  Jeśli kod języka domyślnego nie jest określony, angielskie (en) będzie służyć jako kod języka domyślnego. <br/> Zobacz [pełną listę obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
 | maxKeyPhraseCount   | (Opcjonalnie) Maksymalna liczba frazy kluczowe do produkcji. |
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
+
 | Dane wejściowe     | Opis |
 |--------------------|-------------|
 | tekst | Tekst do analizy.|

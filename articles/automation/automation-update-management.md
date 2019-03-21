@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/04/2019
+ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8b25c0caf71835ccb5a055956d73a713efa5da0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 77f18a80c094fbaf58cfb09df38e5fa1c924329a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541217"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856196"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
-Rozwiązanie do zarządzania aktualizacjami w usłudze Azure Automation służy do zarządzania aktualizacjami systemu operacyjnego, komputerów Windows i Linux, które zostały wdrożone na platformie Azure, w środowiskach lokalnych lub w chmurze innych dostawców. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
+Rozwiązanie do zarządzania aktualizacjami w usłudze Azure Automation służy do zarządzania aktualizacjami systemu operacyjnego, komputerów Windows i Linux na platformie Azure, w środowiskach lokalnych lub w chmurze innych dostawców. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
 
 Zarządzanie aktualizacjami dla maszyn wirtualnych można włączyć bezpośrednio z konta usługi Azure Automation. Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych na koncie usługi Automation, zobacz [zarządzanie aktualizacjami dla wielu maszyn wirtualnych](manage-update-multi.md). Można również włączyć rozwiązanie Update Management dla maszyny wirtualnej na stronie maszyny wirtualnej w witrynie Azure portal. Ten scenariusz jest dostępny dla [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) i [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) maszyn wirtualnych.
 
@@ -35,7 +35,7 @@ Komputery, które są zarządzane przez zarządzania aktualizacjami do oceny i w
 
 Na poniższym diagramie przedstawiono koncepcyjny widok działania i przepływu danych przy użyciu jak oceniania i stosowania aktualizacji zabezpieczeń dla wszystkich połączonych systemu Windows Server i komputerów z systemem Linux w obszarze roboczym:
 
-![Przepływ procesu zarządzania aktualizacjami](media/automation-update-management/update-mgmt-updateworkflow.png)
+![Przepływ procesu zarządzania aktualizacjami](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy.
 
@@ -295,7 +295,7 @@ sudo yum -q --security check-update
 
 Nie jest obecnie żadna metoda metody obsługiwanej umożliwiające dostępność danych natywnych klasyfikacji na CentOS. W tej chwili jedynie optymalnych obsługa jest udostępniana klientom, którzy mogą mieć włączone to własnych.
 
-## <a name="firstparty-predownload"></a>Firmy poprawek i Pobierz wstępnie
+## <a name="firstparty-predownload"></a>Ustawienia zaawansowane
 
 Rozwiązanie Update Management opiera się na Windows Update, aby pobrać i zainstalować aktualizacje Windows. W rezultacie Szanujemy wiele ustawień używanych przez usługę Windows Update. Jeśli używasz ustawienia włączającą aktualizacje inne niż Windows rozwiązania Update Management będzie zarządzać te aktualizacje również. Jeśli chcesz umożliwić pobieranie aktualizacji, zanim nastąpi wdrożenie aktualizacji, wdrożeń aktualizacji można przyspieszyć i jest mniej prawdopodobne przekracza okna obsługi.
 
@@ -311,9 +311,18 @@ $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
 ```
 
+### <a name="disable-automatic-installation"></a>Wyłączenie automatycznej instalacji
+
+Maszyny wirtualne platformy Azure mają automatycznej instalacji aktualizacji, domyślnie włączone. Może to spowodować, że aktualizacje do zainstalowania przed możesz zaplanować do zainstalowania przez rozwiązanie Update Management. To zachowanie można wyłączyć, ustawiając `NoAutoUpdate` klucza rejestru w celu `1`. Poniższy fragment kodu programu PowerShell pokazuje, jak to zrobić.
+
+```powershell
+$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
+Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
+```
+
 ### <a name="enable-updates-for-other-microsoft-products"></a>Włącz aktualizacje dla innych produktów firmy Microsoft
 
-Domyślnie Windows Update udostępnia aktualizacje tylko dla Windows. Po włączeniu **nadać mi aktualizacje dla innych produktów firmy Microsoft, gdy aktualizuję Windows**, otrzymasz aktualizacje dla innych produktów, w tym takich rzeczy poprawek zabezpieczeń dla programu SQL Server lub inne pierwszy oprogramowanie innych firm. Tej opcji nie można skonfigurować przy użyciu zasad grupy. Uruchom następujące polecenie programu PowerShell w systemach, które chcesz włączyć innych pierwszy poprawek innych firm na i zarządzania aktualizacjami będą stosować tego ustawienia.
+Domyślnie Windows Update udostępnia aktualizacje tylko dla Windows. Po włączeniu **nadać mi aktualizacje dla innych produktów firmy Microsoft, gdy aktualizuję Windows**, otrzymasz aktualizacje dla innych produktów, w tym poprawki zabezpieczeń dla programu SQL Server lub inne pierwszy oprogramowanie innych firm. Tej opcji nie można skonfigurować przy użyciu zasad grupy. Uruchom następujące polecenie programu PowerShell w systemach, które chcesz włączyć innych pierwszy poprawek innych firm na i zarządzania aktualizacjami będą stosować tego ustawienia.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -614,10 +623,6 @@ Aby usunąć Maszynę wirtualną z rozwiązania Update Management:
 * W obszarze roboczym usługi Log Analytics, należy usunąć maszynę Wirtualną z zapisanego wyszukiwania dla konfiguracji zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć w obszarze **ogólne** w obszarze roboczym.
 * Usuń [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta usługi Log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
-## <a name="troubleshoot"></a>Rozwiązywanie problemów
-
-Aby dowiedzieć się, jak rozwiązywać problemy z Twojego rozwiązania Update Management, zobacz [Rozwiązywanie problemów z rozwiązania Update Management](troubleshoot/update-management.md)
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wirtualnych Windows.
@@ -629,4 +634,4 @@ Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wi
 * [Tworzenie alertów](automation-tutorial-update-management.md#configure-alerts) aktualizacji stanu wdrożenia.
 
 * Aby dowiedzieć się, jak korzystać z rozwiązania Update Management za pośrednictwem interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania](/rest/api/automation/softwareupdateconfigurations)
-
+* Aby dowiedzieć się, jak rozwiązywać problemy z Twojego rozwiązania Update Management, zobacz [Rozwiązywanie problemów z rozwiązania Update Management](troubleshoot/update-management.md)

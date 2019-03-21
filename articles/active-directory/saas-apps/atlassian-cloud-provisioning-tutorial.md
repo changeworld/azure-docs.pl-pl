@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2019
 ms.author: v-ant
-ms.openlocfilehash: ca9a569d28e42baafeabc15f49fb7f5206566730
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: ff6a111663df5d7e7f4f517446084ef75b009e59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57572544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092705"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie chmury Atlassian dla automatycznej aprowizacji użytkowników
 
@@ -28,7 +28,7 @@ Celem tego samouczka jest pokazują kroki do wykonania w chmurze Atlassian i us�
 
 > [!NOTE]
 > W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
-
+> 
 > Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -108,9 +108,9 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **adres URL dzierżawy** i **klucz tajny tokenu** chmury Atlassian konta. Przykłady te wartości są:
 
-    *   W **adres URL dzierżawy** pole, wprowadź punkt końcowy określonej dzierżawy otrzymasz od Atlassian, zgodnie z opisem w kroku 6. Na przykład: **https://api.atlassian.com/scim/directory/{directoryId}**
+   * W **adres URL dzierżawy** pole, wprowadź punkt końcowy określonej dzierżawy otrzymasz od Atlassian, zgodnie z opisem w kroku 6. Na przykład: **https://api.atlassian.com/scim/directory/{directoryId}**
 
-    *   W **klucz tajny tokenu** pola, wypełnij token wpisu tajnego, zgodnie z opisem w kroku 6.
+   * W **klucz tajny tokenu** pola, wypełnij token wpisu tajnego, zgodnie z opisem w kroku 6.
 
 6. Przejdź do [Menedżer organizacji Atlassian](https://admin.atlassian.com) **> aprowizacji użytkowników** i kliknij pozycję **Utwórz Token**. Kopiuj **podstawowy adres URL katalogu** i **tokenu elementu nośnego** do **adres URL dzierżawy** i **klucz tajny tokenu** odpowiednio w polach.
 

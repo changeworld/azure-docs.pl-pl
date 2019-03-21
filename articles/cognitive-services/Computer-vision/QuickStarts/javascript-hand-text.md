@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 11c6cedc830f7434a5f806e1ee1e9a8c6e5f1df5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 887e3b24a061225c2b4adbfdc5e5696ed268e349
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867294"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540359"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu odręcznego w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka JavaScript
 
-W tym przewodniku Szybki start wyodrębnisz tekst odręczny z obrazu przy użyciu interfejsu API REST przetwarzania obrazów. Metody [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) i [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) umożliwiają wykrywanie tekstu odręcznego na obrazie i wyodrębnianie rozpoznanych znaków do strumienia znaków, który może być używany przez maszyny.
+W tym przewodniku Szybki start wyodrębnisz tekst odręczny z obrazu przy użyciu interfejsu API REST przetwarzania obrazów. Za pomocą [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) interfejsu API i [wynik operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) interfejsu API, można wykryć tekstu odręcznego na obrazie, a następnie Wyodrębnij rozpoznane znaki do strumienia znaków, można używać maszyny.
 
 > [!IMPORTANT]
-> W odróżnieniu od metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metoda [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda Recognize Text zwraca identyfikator URI w wartości pola nagłówka odpowiedzi `Operation-Content`. Następnie możesz wywołać ten identyfikator URI, który reprezentuje metodę [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201), aby sprawdzić stan i zwrócić wyniki wywołania metody Recognize Text.
+> W odróżnieniu od [optyczne rozpoznawanie znaków](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metody [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metody jest uruchamiane asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metody odczytu wsadowego zwraca identyfikator URI w wartości `Operation-Content` pole nagłówka odpowiedzi. Następnie możesz wywołać ten identyfikator URI, który reprezentuje [wynik operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) metody, aby sprawdzić stan i zwracają wyniki wywołania metody odczytu wsadowego.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
@@ -38,7 +38,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 1. Skopiuj następujący kod do edytora tekstów.
 1. W razie potrzeby wprowadź następujące zmiany w kodzie:
     1. Zastąp wartość `subscriptionKey` kluczem subskrypcji.
-    1. W razie potrzeby zastąp wartość `uriBase` adresem URL punktu końcowego dla metody [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) z regionu świadczenia usługi Azure, z którego uzyskano klucze subskrypcji.
+    1. Zastąp wartość `uriBase` przy użyciu adresu URL punktu końcowego dla [odczytu wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metody z regionu platformy Azure, gdzie uzyskać klucze subskrypcji, jeśli to konieczne.
     1. Opcjonalnie zastąp wartość atrybutu `value` kontrolki `inputImage` adresem URL innego obrazu, z którego chcesz wyodrębnić tekst odręczny.
 1. Zapisz kod jako plik z rozszerzeniem `.html`. Na przykład `get-handwriting.html`.
 1. Otwórz okno przeglądarki.
@@ -50,7 +50,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 <html>
 <head>
     <title>Handwriting Sample</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
 
@@ -72,7 +72,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
+            "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
         // Request parameter.
         var params = {
@@ -198,276 +198,100 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ```json
 {
   "status": "Succeeded",
-  "recognitionResult": {
-    "lines": [
-      {
-        "boundingBox": [
-          2,
-          52,
-          65,
-          46,
-          69,
-          89,
-          7,
-          95
-        ],
-        "text": "dog",
-        "words": [
-          {
-            "boundingBox": [
-              0,
-              59,
-              63,
-              43,
-              77,
-              86,
-              3,
-              102
-            ],
-            "text": "dog"
-          }
-        ]
-      },
-      {
-        "boundingBox": [
-          6,
-          2,
-          771,
-          13,
-          770,
-          75,
-          5,
-          64
-        ],
-        "text": "The quick brown fox jumps over the lazy",
-        "words": [
-          {
-            "boundingBox": [
-              0,
-              4,
-              92,
-              5,
-              77,
-              71,
-              0,
-              71
-            ],
-            "text": "The"
-          },
-          {
-            "boundingBox": [
-              74,
-              4,
-              189,
-              5,
-              174,
-              72,
-              60,
-              71
-            ],
-            "text": "quick"
-          },
-          {
-            "boundingBox": [
-              176,
-              5,
-              321,
-              6,
-              306,
-              73,
-              161,
-              72
-            ],
-            "text": "brown"
-          },
-          {
-            "boundingBox": [
-              308,
-              6,
-              387,
-              6,
-              372,
-              73,
-              293,
-              73
-            ],
-            "text": "fox"
-          },
-          {
-            "boundingBox": [
-              382,
-              6,
-              506,
-              7,
-              491,
-              74,
-              368,
-              73
-            ],
-            "text": "jumps"
-          },
-          {
-            "boundingBox": [
-              492,
-              7,
-              607,
-              8,
-              592,
-              75,
-              478,
-              74
-            ],
-            "text": "over"
-          },
-          {
-            "boundingBox": [
-              589,
-              8,
-              673,
-              8,
-              658,
-              75,
-              575,
-              75
-            ],
-            "text": "the"
-          },
-          {
-            "boundingBox": [
-              660,
-              8,
-              783,
-              9,
-              768,
-              76,
-              645,
-              75
-            ],
-            "text": "lazy"
-          }
-        ]
-      },
-      {
-        "boundingBox": [
-          2,
-          84,
-          783,
-          96,
-          782,
-          154,
-          1,
-          148
-        ],
-        "text": "Pack my box with five dozen liquor jugs",
-        "words": [
-          {
-            "boundingBox": [
-              0,
-              86,
-              94,
-              87,
-              72,
-              151,
-              0,
-              149
-            ],
-            "text": "Pack"
-          },
-          {
-            "boundingBox": [
-              76,
-              87,
-              164,
-              88,
-              142,
-              152,
-              54,
-              150
-            ],
-            "text": "my"
-          },
-          {
-            "boundingBox": [
-              155,
-              88,
-              243,
-              89,
-              222,
-              152,
-              134,
-              151
-            ],
-            "text": "box"
-          },
-          {
-            "boundingBox": [
-              226,
-              89,
-              344,
-              90,
-              323,
-              154,
-              204,
-              152
-            ],
-            "text": "with"
-          },
-          {
-            "boundingBox": [
-              336,
-              90,
-              432,
-              91,
-              411,
-              154,
-              314,
-              154
-            ],
-            "text": "five"
-          },
-          {
-            "boundingBox": [
-              419,
-              91,
-              538,
-              92,
-              516,
-              154,
-              398,
-              154
-            ],
-            "text": "dozen"
-          },
-          {
-            "boundingBox": [
-              547,
-              92,
-              701,
-              94,
-              679,
-              154,
-              525,
-              154
-            ],
-            "text": "liquor"
-          },
-          {
-            "boundingBox": [
-              696,
-              94,
-              800,
-              95,
-              780,
-              154,
-              675,
-              154
-            ],
-            "text": "jugs"
-          }
-        ]
-      }
-    ]
-  }
+  "recognitionResults": [
+    {
+      "page": 1,
+      "clockwiseOrientation": 349.59,
+      "width": 3200,
+      "height": 3200,
+      "unit": "pixel",
+      "lines": [
+        {
+          "boundingBox": [202,618,2047,643,2046,840,200,813],
+          "text": "Our greatest glory is not",
+          "words": [
+            {
+              "boundingBox": [204,627,481,628,481,830,204,829],
+              "text": "Our"
+            },
+            {
+              "boundingBox": [519,628,1057,630,1057,832,518,830],
+              "text": "greatest"
+            },
+            {
+              "boundingBox": [1114,630,1549,631,1548,833,1114,832],
+              "text": "glory"
+            },
+            {
+              "boundingBox": [1586,631,1785,632,1784,834,1586,833],
+              "text": "is"
+            },
+            {
+              "boundingBox": [1822,632,2115,633,2115,835,1822,834],
+              "text": "not"
+            }
+          ]
+        },
+        {
+          "boundingBox": [420,1273,2954,1250,2958,1488,422,1511],
+          "text": "but in rising every time we fall",
+          "words": [
+            {
+              "boundingBox": [423,1269,634,1268,635,1507,424,1508],
+              "text": "but"
+            },
+            {
+              "boundingBox": [667,1268,808,1268,809,1506,668,1507],
+              "text": "in"
+            },
+            {
+              "boundingBox": [874,1267,1289,1265,1290,1504,875,1506],
+              "text": "rising"
+            },
+            {
+              "boundingBox": [1331,1265,1771,1263,1772,1502,1332,1504],
+              "text": "every"
+            },
+            {
+              "boundingBox": [1812, 1263, 2178, 1261, 2179, 1500, 1813, 1502],
+              "text": "time"
+            },
+            {
+              "boundingBox": [2219, 1261, 2510, 1260, 2511, 1498, 2220, 1500],
+              "text": "we"
+            },
+            {
+              "boundingBox": [2551, 1260, 3016, 1258, 3017, 1496, 2552, 1498],
+              "text": "fall"
+            }
+          ]
+        },
+        {
+          "boundingBox": [1612, 903, 2744, 935, 2738, 1139, 1607, 1107],
+          "text": "in never failing ,",
+          "words": [
+            {
+              "boundingBox": [1611, 934, 1707, 933, 1708, 1147, 1613, 1147],
+              "text": "in"
+            },
+            {
+              "boundingBox": [1753, 933, 2132, 930, 2133, 1144, 1754, 1146],
+              "text": "never"
+            },
+            {
+              "boundingBox": [2162, 930, 2673, 927, 2674, 1140, 2164, 1144],
+              "text": "failing"
+            },
+            {
+              "boundingBox": [2703, 926, 2788, 926, 2790, 1139, 2705, 1140],
+              "text": ",",
+              "confidence": "Low"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -475,7 +299,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 Gdy plik nie będzie już potrzebny, usuń go.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z aplikacją w języku JavaScript, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

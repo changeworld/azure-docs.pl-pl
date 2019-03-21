@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3a8ee51656b5521916e68ee34edda91c34ea0c35
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: dcf7d237c8cfbf52a804e428d84fff0bb328c7c8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216045"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012106"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Uwierzytelnianie dostępu do obiektów blob platformy Azure i queues, korzystając z usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -35,7 +35,7 @@ Należy pamiętać o następujących kwestiach dotyczących korzystania z wersji
 - Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC. Można przypisać role ograniczone do subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki.
 - Bibliotek klienta usługi Azure Storage, które obecnie obsługują integracji z usługą Azure AD obejmują:
     - [.NET](https://www.nuget.org/packages/WindowsAzure.Storage)
-    - [Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)
+    - [Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)
     - Python
         - [Obiekt blob, kolejki i pliki](https://github.com/Azure/azure-storage-python)
     - [Node.js](https://www.npmjs.com/package/azure-storage)

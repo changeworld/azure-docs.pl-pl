@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728713"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990732"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Instrukcje dotyczące korzystania z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service dla języka C
 
-W tym artykule przedstawiono sposób korzystania z różnych [mechanizmów zaświadczania](concepts-security.md#attestation-mechanism) przy użyciu zestawu SDK klienta usługi Device Provisioning Service dla języka C. Istnieje możliwość użycia urządzenia fizycznego lub symulatora. Usługa aprowizowania obsługuje uwierzytelnianie dwóch typów mechanizmów zaświadczania: X **.** 509 i zaufane modułu TPM (Trusted Platform).
+W tym artykule przedstawiono sposób korzystania z różnych [mechanizmów zaświadczania](concepts-security.md#attestation-mechanism) przy użyciu zestawu SDK klienta usługi Device Provisioning Service dla języka C. Istnieje możliwość użycia urządzenia fizycznego lub symulatora. Usługa aprowizowania obsługuje uwierzytelnianie dwóch typów mechanizmów zaświadczania: X.509 i moduł zaufanej platformy (TPM).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -98,14 +98,14 @@ Skompiluj zestaw SDK przed utworzeniem rejestracji urządzeń.
 
 ### <a name="windows"></a>Windows
 - Aby skompilować zestaw SDK w systemie Windows, wykonaj następujące kroki w celu wygenerowania plików projektu:
-    - Otwórz „Wiersz polecenia dla deweloperów w programie VS2015”
-    - Uruchom następujące polecenia CMake w folderze głównym repozytorium:
-      ```
-      cd azure-iot-sdk-c
-      mkdir cmake
-      cd cmake
-      cmake -G "Visual Studio 14 2015" ..
-      ```
+  - Otwórz „Wiersz polecenia dla deweloperów w programie VS2015”
+  - Uruchom następujące polecenia CMake w folderze głównym repozytorium:
+    ```
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    cmake -G "Visual Studio 14 2015" ..
+    ```
     To polecenie powoduje kompilowanie bibliotek x86. Aby kompilować dla wersji x64, zmodyfikuj argument generatora cmake: 
     ```
     cmake .. -G "Visual Studio 14 2015 Win64"

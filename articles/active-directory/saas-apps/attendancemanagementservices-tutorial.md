@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b8b157b890bcdda8c06a0dd1b208a82f7f9058
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e3642bea878ca4d1582319e5e1d964dfa43ff061
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209136"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Samouczek: Integracja usługi Azure Active Directory z usługami zarządzania produkcją
 
@@ -206,7 +206,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do usługi zarządz
 
     ![Dodawanie pracownika](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. W **OBCiD** polu tekstowym wpisz adres e-mail użytkownika, takie jak **BrittaSimon@contoso.com**.
+    a. W **OBCiD** polu tekstowym wpisz adres e-mail użytkownika, takie jak **BrittaSimon\@contoso.com**.
 
     b. W polu tekstowym **Password** (Hasło) wpisz hasło użytkownika.
 
@@ -252,7 +252,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: 5689cdb2e9f8028f8e1e05a9b43cc00719701fce
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 19fdf2e7e1c7c56b6bfe8ddbf7329d3722f4e8de
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188615"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -52,7 +52,7 @@ Można użyć następujących narzędzi do tworzenia i konfigurowania sieci wirt
 * Plik konfiguracji sieci (netcfg — tylko klasyczne sieci wirtualne). Zobacz [Konfigurowanie sieci wirtualnej przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md) artykułu.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Zakresy adresów, które można użyć w mojej sieci wirtualne?
-Dowolny zakres adresów IP określonych w [RFC 1918](http://tools.ietf.org/html/rfc1918). Na przykład: 10.0.0.0/16. Nie można dodać poniższe zakresy adresów:
+Dowolny zakres adresów IP określonych w [RFC 1918](https://tools.ietf.org/html/rfc1918). Na przykład: 10.0.0.0/16. Nie można dodać poniższe zakresy adresów:
 * 224.0.0.0/4 multiemisji)
 * 255.255.255.255/32 (emisji)
 * 127.0.0.0/8 (Loopback)
@@ -285,7 +285,7 @@ Nie. Wirtualne sieci równorzędne, lokalnych lub globalnych, nie nakłada żadn
 ## <a name="virtual-network-tap"></a>Virtual Network TAP
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Które regiony platformy Azure są dostępne dla PODSŁUCHU sieci wirtualnej?
-W wersji zapoznawczej dla deweloperów ta funkcja jest dostępna w regionie zachodnio-środkowe stany USA. Interfejsy sieciowe monitorowane, NACIŚNIJ zasób sieci wirtualnej i rozwiązania modułu zbierającego lub analiza musi zostać wdrożony w tym samym regionie.
+Naciśnij pozycję sieci wirtualnej w wersji zapoznawczej jest dostępna we wszystkich regionach platformy Azure. Interfejsy sieciowe monitorowane, NACIŚNIJ zasób sieci wirtualnej i rozwiązania modułu zbierającego lub analiza musi zostać wdrożony w tym samym regionie.
 
 ### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Virtual Network TAP obsługuje wszystkie funkcje filtrowania dublowanego pakietów?
 Funkcje filtrowania nie są obsługiwane w wersji zapoznawczej wybierz sieć wirtualną. Podczas konfiguracji wzorca TAP jest dodawana do interfejsu sieciowego głęboką kopię danych przychodzących i ruch wychodzący na interfejs sieciowy jest przesyłany strumieniowo do miejsca docelowego, naciśnij pozycję.
@@ -298,7 +298,7 @@ Tak. Tej samej sieci wirtualnej zasobów wzorca TAP może być używany do agreg
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Czy istnieją wszystkie zagadnienia związane z wydajnością na jest przesyłany ruch produkcyjny włączyć Konfiguracja wzorca TAP sieci wirtualnej w interfejsie sieciowym?
 
-Virtual network TAP jest dostępna w wersji zapoznawczej dla deweloperów. W trakcie okresu zapoznawczego nie ma żadnych umowę dotyczącą poziomu usług. Ta funkcja nie należy używać w przypadku obciążeń produkcyjnych. Po włączeniu interfejsu sieciowego maszyny wirtualnej z konfiguracją wzorca TAP tych samych zasobów na hoście platformy azure przydzielone do maszyny wirtualnej do wysyłania ruchu produkcyjnego umożliwia pełnią funkcję dublowania i wysyłania pakietów dublowanego. Wybierz poprawnego [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rozmiar maszyny wirtualnej, aby upewnić się, że wystarczające zasoby są dostępne dla maszyny wirtualnej do wysyłania ruchu produkcyjnego i dublowanych ruchu.
+Virtual network TAP jest dostępna w wersji zapoznawczej. W trakcie okresu zapoznawczego nie ma żadnych umowę dotyczącą poziomu usług. Ta funkcja nie należy używać w przypadku obciążeń produkcyjnych. Po włączeniu interfejsu sieciowego maszyny wirtualnej z konfiguracją wzorca TAP tych samych zasobów na hoście platformy azure przydzielone do maszyny wirtualnej do wysyłania ruchu produkcyjnego umożliwia pełnią funkcję dublowania i wysyłania pakietów dublowanego. Wybierz poprawnego [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rozmiar maszyny wirtualnej, aby upewnić się, że wystarczające zasoby są dostępne dla maszyny wirtualnej do wysyłania ruchu produkcyjnego i dublowanych ruchu.
 
 ### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Jest accelerated networking for [Linux](create-vm-accelerated-networking-cli.md) lub [Windows](create-vm-accelerated-networking-powershell.md) obsługiwane z usługą virtual network TAP?
 
@@ -370,7 +370,7 @@ Usuwanie konta usługi Azure jest operacją niezależne i jest obsługiwane, naw
 Po włączeniu punktów końcowych usługi sieci wirtualnej, źródłowe adresy IP zasobów w podsieci sieci wirtualnej zmienia się z używania publicznych adresów IPV4 na użycie prywatnych adresów IP platformy Azure sieci wirtualnej dla ruchu do usługi platformy Azure. Należy pamiętać, że może to spowodować określonych zapory adresów IP, które są ustawione na publiczny adres IPV4 wcześniej na usługi platformy Azure nie powiedzie się. 
 
 ### <a name="does-service-endpoint-route-always-take-precedence"></a>Trasy punktu końcowego usługi zawsze podąża priorytet?
-Punkty końcowe usługi Dodaj trasa systemowa, która pierwszeństwo trasy protokołu BGP i zapewniają optymalny routing ruchu punkt końcowy usług sieci. Punktów końcowych usługi zawsze pobierają ruch bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej platformy Microsoft Azure. Aby uzyskać więcej informacji na temat jak platforma Azure wybiera trasę, zobacz [wirtualnych platformy Azure z routingiem ruchu sieciowego] (wirtualnego — sieci — trasa zdefiniowana przez użytkownika overview.md).
+Punkty końcowe usługi Dodaj trasa systemowa, która pierwszeństwo trasy protokołu BGP i zapewniają optymalny routing ruchu punkt końcowy usług sieci. Punktów końcowych usługi zawsze pobierają ruch bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej platformy Microsoft Azure. Aby uzyskać więcej informacji na temat jak platforma Azure wybiera trasę zobacz [wirtualnych platformy Azure z routingiem ruchu sieciowego](virtual-networks-udr-overview.md).
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Jak działa sieciowej grupy zabezpieczeń w podsieci z punktami końcowymi usługi?
 Aby uzyskać dostęp do usługi platformy Azure, sieciowe grupy zabezpieczeń muszą zezwalać na łączność wychodząca. Jeśli sieciowych grup zabezpieczeń nie są otwarte dla cały ruch wychodzący z Internetu, ruch punktu końcowego usługi powinien działać. Można również ograniczyć ruch wychodzący do usługi adresy IP tylko przy użyciu tagów usługi.  

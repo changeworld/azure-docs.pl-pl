@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff46d9644848d197051e574106b029fb44efb069
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: b7556e93e6e7b7e9bdb1f19f5a6e5b3c15c7b910
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877711"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Canvas
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Canvas z usługą Azure AD, musisz doda
 
 **Aby dodać aplikację Canvas z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -150,7 +150,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Canvas, wy
 
     b. W polu tekstowym **Adres URL logowania** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    d. W polu tekstowym **Adres URL wylogowywania** wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **Adres URL wylogowywania** wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
     d. W polu tekstowym **Link do zmiany hasła** wklej wartość **linku do zmiany hasła** skopiowaną z witryny Azure Portal.
 
@@ -180,7 +180,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -239,9 +239,9 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Canva
 
    a. W polu tekstowym **Imię i nazwisko** wprowadź nazwę użytkownika, na przykład **BrittaSimon**.
 
-   b. W polu tekstowym **E-mail** wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
+   b. W **E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
-   d. W polu tekstowym **Logowanie** wprowadź adres e-mail usługi Azure AD użytkownika, na przykład **brittasimon@contoso.com**.
+   c. W **logowania** polu tekstowym wprowadź adres e-mail usługi Azure AD przez użytkownika, takich jak **brittasimon\@contoso.com**.
 
    d. Wybierz pozycję **Poinformuj użytkownika pocztą e-mail o utworzeniu tego konta**.
 
@@ -252,7 +252,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Canva
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Canvas w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Canvas, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

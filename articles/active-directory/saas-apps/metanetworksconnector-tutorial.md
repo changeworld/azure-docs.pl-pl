@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4ae5f30d-113b-4261-b474-47ffbac08bf7
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a510fcce6b004e8384ce888ad421802bc144e73f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: HT
+ms.openlocfilehash: aa0d7828534c96d9bda85e80fb297c848cec6845
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985975"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Meta Networks Connector
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację aplikacji Meta Networks Connector z usługą Azur
 
 **Aby dodać aplikację Meta Networks Connector z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -165,7 +165,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-meta-networks-connector-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Meta Networks Connector
 
@@ -194,7 +194,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
     
     b. Skopiuj wartość pola **Recipient URL (Adres URL adresata)** i wklej ją w polu tekstowym **Reply URL (Adres URL odpowiedzi)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)**.
     
-    d. Skopiuj wartość pola **Audience URI (SP Entity ID) (Identyfikator URI — identyfikator jednostki dostawcy usług)** i wklej ją w polu tekstowym **Identifier (Entity ID) (Identyfikator — identyfikator jednostki)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)**.
+    c. Skopiuj wartość pola **Audience URI (SP Entity ID) (Identyfikator URI — identyfikator jednostki dostawcy usług)** i wklej ją w polu tekstowym **Identifier (Entity ID) (Identyfikator — identyfikator jednostki)** w sekcji **Meta Networks Connector Domain and URLs (Adresy URL i domena aplikacji Meta Networks Connector)**.
     
     d. Włączanie protokołu SAML
     
@@ -206,7 +206,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Meta Netwo
 
     b. W polu **Identity Provider Issuer (Wystawca dostawcy tożsamości)** wklej wartość pola **Identyfikator usługi Azure AD** skopiowaną z witryny Azure Portal.
 
-    d. Otwórz w Notatniku certyfikat pobrany z witryny Azure Portal, a następnie wklej go w polu tekstowym **X.509 Certificate (Certyfikat X.509)**.
+    c. Otwórz w Notatniku certyfikat pobrany z witryny Azure Portal, a następnie wklej go w polu tekstowym **X.509 Certificate (Certyfikat X.509)**.
 
     d. Włącz **aprowizację typu just in time**.
 
@@ -228,7 +228,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -270,7 +270,7 @@ W tej sekcji w aplikacji Meta Networks Connector jest tworzony użytkownik o naz
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Meta Networks Connector na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Meta Networks Connector, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

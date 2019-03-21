@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3f4e87e5602b3c77178ab5bc842705cfedf64af2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448377"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897303"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: Bezpieczeństwo komunikacji | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -146,7 +146,7 @@ Ta zasada działa, zwracając kod stanu HTTP 301 (trwałe przekierowanie) po uż
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Zabezpieczenia transportu Strict HTTP OWASP Ściągawka](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Kroki** | <p>Zabezpieczenia transportu HTTP ograniczeniami (HSTS) jest ulepszeniem zabezpieczeń zgłoszenie zgody na uczestnictwo w określonym przez aplikację sieci web przy użyciu nagłówka odpowiedzi specjalne. Po obsługiwanej przeglądarki odbiera tego pliku nagłówkowego tej przeglądarki uniemożliwi każdej komunikacji z wysyłanych za pośrednictwem protokołu HTTP do określonej domeny i zamiast tego będzie wysyłać całej komunikacji za pośrednictwem protokołu HTTPS. Uniemożliwia ona kliknij HTTPS za pośrednictwem monity w przeglądarkach.</p><p>Aby zaimplementować HSTS, następujący nagłówek odpowiedzi musi być skonfigurowana globalnie, dla witryny sieci Web w w kodzie lub w pliku konfiguracyjnym. Strict — Transport — Security: max-age = 300; includeSubDomains HSTS rozwiązuje następujące zagrożenia:</p><ul><li>Zakładki użytkownika, lub ręcznie typów http://example.com i podlega atakujący ataków typu man-in--middle: HSTS automatycznie przekierowuje żądania HTTP do HTTPS dla domeny docelowej</li><li>Aplikacja sieci Web, która ma być wyłącznie HTTPS przypadkowo zawiera linki do protokołu HTTP lub obsługują zawartość przy użyciu protokołu HTTP: HSTS automatycznie przekierowuje żądania HTTP do HTTPS dla domeny docelowej</li><li>Atakujący ataków typu man-in--middle próbuje przechwycić ruch z użytkownikiem ofiarą przy użyciu nieprawidłowego certyfikatu i nadzieję, że użytkownik będzie akceptować nieprawidłowy certyfikat: HSTS pozwala użytkownikowi zastąpić komunikat nieprawidłowy certyfikat</li></ul>|
+| **Kroki** | <p>Zabezpieczenia transportu HTTP ograniczeniami (HSTS) jest ulepszeniem zabezpieczeń zgłoszenie zgody na uczestnictwo w określonym przez aplikację sieci web przy użyciu nagłówka odpowiedzi specjalne. Po obsługiwanej przeglądarki odbiera tego pliku nagłówkowego tej przeglądarki uniemożliwi każdej komunikacji z wysyłanych za pośrednictwem protokołu HTTP do określonej domeny i zamiast tego będzie wysyłać całej komunikacji za pośrednictwem protokołu HTTPS. Uniemożliwia ona kliknij HTTPS za pośrednictwem monity w przeglądarkach.</p><p>Aby zaimplementować HSTS, następujący nagłówek odpowiedzi musi być skonfigurowana globalnie, dla witryny sieci Web w w kodzie lub w pliku konfiguracyjnym. Strict — Transport — Security: max-age = 300; includeSubDomains HSTS rozwiązuje następujące zagrożenia:</p><ul><li>Zakładki użytkownika, lub ręcznie typów https://example.com i podlega atakujący ataków typu man-in--middle: HSTS automatycznie przekierowuje żądania HTTP do HTTPS dla domeny docelowej</li><li>Aplikacja sieci Web, która ma być wyłącznie HTTPS przypadkowo zawiera linki do protokołu HTTP lub obsługują zawartość przy użyciu protokołu HTTP: HSTS automatycznie przekierowuje żądania HTTP do HTTPS dla domeny docelowej</li><li>Atakujący ataków typu man-in--middle próbuje przechwycić ruch z użytkownikiem ofiarą przy użyciu nieprawidłowego certyfikatu i nadzieję, że użytkownik będzie akceptować nieprawidłowy certyfikat: HSTS pozwala użytkownikowi zastąpić komunikat nieprawidłowy certyfikat</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Upewnij się, program SQL server szyfrowania i certyfikat sprawdzania poprawności połączenia
 
@@ -339,7 +339,7 @@ string GetData(int value);
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | MVC5, MVC6 |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Wymuszanie protokołu SSL w kontrolerze interfejsu API sieci Web](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
+| **Odwołania**              | [Wymuszanie protokołu SSL w kontrolerze interfejsu API sieci Web](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
 | **Kroki** | Jeśli aplikacja ma przy użyciu protokołu HTTPS i powiązanie HTTP, klienci nadal mogą używać protokołu HTTP dostęp do witryny. Aby tego uniknąć, użyj filtru akcji, aby upewnij się, że żądania do chronionego interfejsów API zawsze przy użyciu protokołu HTTPS.|
 
 ### <a name="example"></a>Przykład 

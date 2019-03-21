@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: wizualizacja danych przy użyciu łącznika usługi Azure Data Explorer dla usługi Power BI'
+title: 'Szybki start: Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla usługi Power BI'
 description: 'Z tego przewodnika Szybki start nauczysz się, jak używać jednej z trzech opcji wizualizacji danych w usłudze Power BI: łącznika usługi Power BI dla usługi Azure Data Explorer.'
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 3cb8f52677991997a0176a9f8d408e2fd6d2d8d9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
-ms.translationtype: HT
+ms.openlocfilehash: de920a9addf9d2053a3c101c6b1f9a2c1a2feb27
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974275"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106750"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Szybki start: wizualizacja danych przy użyciu łącznika usługi Azure Data Explorer dla usługi Power BI
+# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Szybki start: Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla usługi Power BI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji.
 
@@ -53,7 +53,7 @@ Najpierw nawiąż połączenie z klastrem pomocy usługi Azure Data Explorer, a 
     |---|---|---|
     | Klaster | *https://help.kusto.windows.net* | Adres URL klastra pomocy. W przypadku innych klastrów adres URL ma postać *https://\<Nazwa_klastra\>.\<Region\>.kusto.windows.net*. |
     | Database (Baza danych) | Pozostaw puste | Baza danych hostowana w klastrze, z którą nawiązujesz połączenie. Wybierzemy ją w późniejszym kroku. |
-    | Nazwa tabeli | Pozostaw puste | Jedna z tabel w bazie danych lub zapytanie typu „StormEvents | weź 1000”. Wybierzemy ją w późniejszym kroku. |
+    | Nazwa tabeli | Pozostaw puste | Jedną z tabel w bazie danych lub zapytanie, takich jak <code>StormEvents \| take 1000</code>. Wybierzemy ją w późniejszym kroku. |
     | Opcje zaawansowane | Pozostaw puste | Opcje zapytań, na przykład rozmiar zestawu wyników. |
     | Tryb łączności danych | Tryb *DirectQuery* | Określa, czy usługa Power BI importuje dane, czy łączy się bezpośrednio ze źródłem danych. Korzystając z tego łącznika, możesz wybrać dowolną z tych opcji. |
     | | | |
@@ -88,7 +88,7 @@ Najpierw nawiąż połączenie z klastrem pomocy usługi Azure Data Explorer, a 
 
 Jeśli nie potrzebujesz już raportu, który został utworzony na potrzeby tego przewodnika Szybki start, usuń plik programu Power BI Desktop (pbix).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki start: wizualizacja danych przy użyciu zaimportowanego zapytania w usłudze Power BI](power-bi-imported-query.md)
+> [Szybki start: Wizualizuj dane przy użyciu importowanych zapytania w usłudze Power BI](power-bi-imported-query.md)

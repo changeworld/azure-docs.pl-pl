@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50b8f6c54cbefde2120dd61643c23f5175927c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e8706e839005d43ab9fa2662d13d7d3c3994c136
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211754"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077755"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>Samouczek: archiwizowanie dzienników usługi Azure AD na koncie usługi Azure Storage (wersja zapoznawcza)
 
@@ -45,11 +45,11 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 3. Wybierz pozycję **Eksportuj ustawienia**. 
 
 4. W okienku **Ustawienia diagnostyczne** wykonaj jedną z następujących czynności:
-    * Aby zmienić istniejące ustawienia, wybierz polecenie **Edytuj ustawienie**.
-    * Aby dodać nowe ustawienie, wybierz polecenie **Dodaj ustawienia diagnostyki**.  
-      Możesz mieć maksymalnie trzy ustawienia. 
+   * Aby zmienić istniejące ustawienia, wybierz polecenie **Edytuj ustawienie**.
+   * Aby dodać nowe ustawienie, wybierz polecenie **Dodaj ustawienia diagnostyki**.  
+     Możesz mieć maksymalnie trzy ustawienia. 
 
-    ![Eksportowanie ustawień](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
+     ![Eksportowanie ustawień](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
 5. Wprowadź przyjazną nazwę ustawienia, która będzie przypominała o jego przeznaczeniu (na przykład *Wyślij na konto usługi Azure Storage*). 
 
@@ -73,7 +73,7 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 
     ![Konto magazynu](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor (Interpretowanie schematu dzienników logowania w usłudze Azure Monitor)](reference-azure-monitor-sign-ins-log-schema.md)

@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: hning86
-ms.author: haining
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 513df9f68fdd54b5dc90e57bd8389688c46bf615
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 9a17f2722af187e88bebf217d56a5a80aba46bc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804250"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876531"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning przy użyciu zestawu SDK języka Python
 
@@ -49,7 +49,7 @@ Do obszaru roboczego zostaną automatycznie dodane następujące zasoby platform
 > Kod w tym artykule wymaga zestawu Azure Machine Learning SDK w wersji 1.0.2 lub nowszej i został przetestowany z wersją 1.0.8.
 
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 ## <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
@@ -57,6 +57,9 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 > Pomiń tę sekcję, jeśli używasz maszyny wirtualnej do analizy danych na platformie Azure lub Azure Databricks.
 > * Maszyny wirtualne do analizy danych na platformie Azure utworzone po 27 września 2018 r. mają preinstalowany zestaw SDK języka Python.
 > * W środowisku usługi Azure Databricks wykonaj w zamian [kroki instalacji usługi Databricks](how-to-configure-environment.md#azure-databricks).
+
+>[!NOTE]
+> Użyj tych instrukcji, aby zainstalować i korzystać z zestawu SDK w aplikacji Jupyter Notebook na komputerze lokalnym. Służące Jupyter na zdalnej maszynie wirtualnej, należy skonfigurować zdalnej, pulpitu lub X sesji terminalowej. 
 
 Przed zainstalowaniem zestawu SDK zalecamy utworzenie izolowanego środowiska języka Python. W tym artykule używane jest narzędzie [Miniconda](https://docs.conda.io/en/latest/miniconda.html), ale możesz również użyć pełnego zainstalowanego narzędzia [Anaconda](https://www.anaconda.com/) lub [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
 
@@ -94,9 +97,9 @@ Instrukcje w tym przewodniku Szybki start spowodują zainstalowanie pakietów po
 
 ### <a name="install-the-sdk"></a>Instalacja zestawu SDK
 
-1. W aktywowanym środowisku conda zainstaluj podstawowe składniki zestawu SDK uczenia maszynowego z funkcjami aplikacji Jupyter Notebook.  Instalacja trwa kilka minut; czas jej trwania zależy od konfiguracji maszyny.
+1. W aktywowanym środowisku conda zainstaluj podstawowe składniki zestawu SDK uczenia maszynowego z funkcjami aplikacji Jupyter Notebook. Instalacja trwa kilka minut; czas jej trwania zależy od konfiguracji maszyny.
 
-  ```shell
+    ```shell
     pip install --upgrade azureml-sdk[notebooks]
     ```
 
@@ -111,6 +114,13 @@ Instrukcje w tym przewodniku Szybki start spowodują zainstalowanie pakietów po
     ```shell
     pip install --upgrade azureml-sdk[automl]
     ```
+
+> [!IMPORTANT]
+> W niektórych narzędzi wiersza polecenia może być konieczne dodania znaków cudzysłowu w następujący sposób:
+> *  'azureml-sdk[notebooks]'
+> * 'azureml-sdk[automl]'
+>
+
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
@@ -196,7 +206,7 @@ Jeśli nie planujesz korzystać z zasobów, które zostały utworzone w tym arty
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=delete)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule utworzono zasoby niezbędne do eksperymentowania i wdrażania modeli. Uruchomiono kod w notesie i zbadano historię uruchamiania tego kodu w obszarze roboczym w chmurze.
 

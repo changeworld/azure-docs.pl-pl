@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cf39639c6b9e20337412b7b071f6d6840904ba6c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 32e92cb8cd6cd5d16ea8d38d178bb440420e6784
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738219"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546368"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Samouczek: monitorowanie i aktualizowanie maszyny wirtualnej z systemem Windows na platformie Azure
 
@@ -68,7 +68,7 @@ Utworzenie maszyny wirtualnej i zasobów może potrwać kilka minut.
 
 ## <a name="view-boot-diagnostics"></a>Wyświetlanie diagnostyki rozruchu
 
-Podczas rozruchu maszyn wirtualnych z systemem Windows agent diagnostyki rozruchu przechwytuje dane wyjściowe z ekranu, których można używać do rozwiązywania problemów. Ta funkcja jest domyślnie włączona. Przechwycone zrzuty ekranu są przechowywane w koncie magazynu platformy Azure, które również jest tworzone domyślnie.
+Podczas rozruchu maszyn wirtualnych z systemem Windows agent diagnostyki rozruchu przechwytuje dane wyjściowe z ekranu, których można używać do rozwiązywania problemów. Ta funkcja jest domyślnie włączona. Przechwyconych zrzuty ekranu są przechowywane na koncie magazynu platformy Azure, który również jest tworzony domyślnie.
 
 Dane diagnostyczne rozruchu można pobrać za pomocą polecenia [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata). W poniższym przykładzie dane diagnostyki rozruchu są pobierane do katalogu głównego na dysku *c:\*.
 
@@ -142,7 +142,7 @@ Aby wykonać dodatkowe akcje na maszynach wirtualnych, które wymagają aktualiz
 Proces walidacji sprawdza również, czy maszyna wirtualna jest aprowizowana za pomocą programu Microsoft Monitoring Agent (MMA) i hybrydowego procesu roboczego elementu Runbook usługi Automation.
 Ten agent jest używany do komunikacji z maszyną wirtualną i uzyskiwania informacji dotyczących stanu aktualizacji.
 
-Wybierz obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij przycisk **Włącz**, aby włączyć to rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
+Wybierz usługi Log Analytics obszar roboczy i konto usługi automation, a następnie kliknij przycisk **Włącz** Aby włączyć rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
 
 Jeśli którekolwiek z następujących wymagań wstępnych nie będzie występować podczas dołączania, zostanie ono automatycznie dołączone:
 
@@ -150,11 +150,11 @@ Jeśli którekolwiek z następujących wymagań wstępnych nie będzie występow
 * [Automatyzacja](../../automation/automation-offering-get-started.md)
 * [Hybrydowy proces roboczy elementu Runbook](../../automation/automation-hybrid-runbook-worker.md) jest włączony na maszynie wirtualnej
 
-Zostanie otwarty ekran **Rozwiązanie Update Management**. Skonfiguruj lokalizację, obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij pozycję **Włącz**. Jeśli pola są wygaszone, oznacza to, że inne rozwiązanie automatyzacji jest włączone dla maszyny wirtualnej, a tym samym należy użyć tego samego obszaru roboczego i konta automatyzacji.
+Zostanie otwarty ekran **Rozwiązanie Update Management**. Skonfiguruj lokalizację, obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij przycisk **Włącz**. Jeśli pola są wygaszone, oznacza to, że inne rozwiązanie automatyzacji jest włączone dla maszyny wirtualnej, a tym samym należy użyć tego samego obszaru roboczego i konta automatyzacji.
 
 ![Włączanie rozwiązania Update Management](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-Włączanie rozwiązania może potrwać do 15 minut. W tym czasie nie należy zamykać okna przeglądarki. Po włączeniu rozwiązania informacje dotyczące brakujących aktualizacji maszyn wirtualnych są przekazywane do usługi Log Analytics. Udostępnienie danych do analizy może potrwać od 30 minut do 6 godzin.
+Włączanie rozwiązania może potrwać do 15 minut. W tym czasie nie należy zamykać okna przeglądarki. Po włączeniu rozwiązania informacje dotyczące brakujących aktualizacji maszyny wirtualnej są przekazywane do dzienników usługi Azure Monitor. Udostępnienie danych do analizy może potrwać od 30 minut do 6 godzin.
 
 ### <a name="view-update-assessment"></a>Wyświetlanie oceny aktualizacji
 
@@ -226,7 +226,7 @@ Aby włączyć zarządzanie zmianami i spisem na maszynie wirtualnej:
 2. Z listy wybierz maszynę wirtualną.
 3. Na ekranie maszyny wirtualnej w sekcji **Operacje** kliknij pozycję **Spis** lub **Śledzenie zmian**. Zostanie otwarty ekran **Włączanie śledzenia zmian i spisu**.
 
-Skonfiguruj lokalizację, obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij pozycję **Włącz**. Jeśli pola są wygaszone, oznacza to, że inne rozwiązanie automatyzacji jest włączone dla maszyny wirtualnej, a tym samym należy użyć tego samego obszaru roboczego i konta automatyzacji. Nawet jeśli te rozwiązania są oddzielone w menu, jest to jedno rozwiązanie. Włączenie jednego z nich oznacza włączenie obydwu na maszynie wirtualnej.
+Skonfiguruj lokalizację, obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij przycisk **Włącz**. Jeśli pola są wygaszone, oznacza to, że inne rozwiązanie automatyzacji jest włączone dla maszyny wirtualnej, a tym samym należy użyć tego samego obszaru roboczego i konta automatyzacji. Nawet jeśli te rozwiązania są oddzielone w menu, jest to jedno rozwiązanie. Włączenie jednego z nich oznacza włączenie obydwu na maszynie wirtualnej.
 
 ![Włączanie śledzenia zmian i spisu](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -282,9 +282,9 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
 
 Po kilku minutach nowa maszyna wirtualna powinna pojawić się w obszarze roboczym usługi Log Analytics.
 
-![Blok usługi Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Blok obszaru roboczego usługi log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku skonfigurowano i przejrzano maszyny wirtualne w usłudze Azure Security Center. W tym samouczku omówiono:
 

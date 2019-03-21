@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3cc6cdb84b2c77b15b79c7d6a04cc7c6ae0721e5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115865"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077908"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Szybki start: Dołączanie komputerów z systemem Windows do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta Microsoft Monitoring Agent.
@@ -37,7 +37,7 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 1. Zaloguj się do [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
 
- ![Security Center — Przegląd][2]
+   ![Security Center — Przegląd][2]
 
 3. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
 4. Wybierz kartę **Rozpoczęcie pracy**.
@@ -48,13 +48,13 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
     ![Dodawanie komputera spoza platformy Azure](./media/quick-onboard-windows-computer/non-azure.png)
 
-  Zostanie otwarty blok **Agent bezpośredni** z linkiem umożliwiającym pobieranie agenta systemu Windows i kluczami identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.
+   Zostanie otwarty blok **Agent bezpośredni** z linkiem umożliwiającym pobieranie agenta systemu Windows i kluczami identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.
 
-6.  Wybierz link **Pobierz agenta systemu Windows** odpowiadający typowi procesora komputera, aby pobrać plik instalacji.
+6. Wybierz link **Pobierz agenta systemu Windows** odpowiadający typowi procesora komputera, aby pobrać plik instalacji.
 
-7.  Po prawej stronie **identyfikatora obszaru roboczego** wybierz ikonę kopiowania i wklej identyfikator do Notatnika.
+7. Po prawej stronie **identyfikatora obszaru roboczego** wybierz ikonę kopiowania i wklej identyfikator do Notatnika.
 
-8.  Po prawej stronie **klucza podstawowego** wybierz ikonę kopiowania i wklej klucz do Notatnika.
+8. Po prawej stronie **klucza podstawowego** wybierz ikonę kopiowania i wklej klucz do Notatnika.
 
 ## <a name="install-the-agent"></a>Instalowanie agenta
 Teraz musisz zainstalować pobrany plik na komputerze docelowym.
@@ -68,7 +68,7 @@ Teraz musisz zainstalować pobrany plik na komputerze docelowym.
 7. Jeśli komputer powinien wysyłać raporty do obszaru roboczego usługi Log Analytics w chmurze Azure dla instytucji rządowych, wybierz pozycję **Azure — instytucje rządowe USA** z listy rozwijanej **Azure Cloud**.  Jeśli komputer musi komunikować się z usługą Log Analytics za pośrednictwem serwera proxy, wybierz pozycję **Zaawansowane** i podaj adres URL i numer portu serwera proxy.
 8. Po zdefiniowaniu niezbędnych ustawień konfiguracji wybierz pozycję **Dalej**.
 
-  ![Instalowanie agenta][5]
+   ![Instalowanie agenta][5]
 
 9. Na stronie **Gotowe do zainstalowania** przejrzyj wybrane opcje, a następnie wybierz pozycję **Zainstaluj**.
 10. Na stronie **Konfiguracja została zakończona pomyślnie** wybierz pozycję **Zakończ**.

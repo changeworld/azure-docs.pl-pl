@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 937f6ffb9865419611c35b95ac84832bb2f1f3fe
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791818"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084102"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jądra dla notesu Jupyter w klastrach platformy Apache Spark w usłudze Azure HDInsight 
 
@@ -59,15 +59,15 @@ Poniżej przedstawiono kilka korzyści wynikające ze stosowania nowych jądra z
 
 - **Ustawienie wstępne kontekstów**. Za pomocą **PySpark**, **PySpark3**, lub **Spark** jądra, nie trzeba jawnie ustawić konteksty Spark i Hive, przed rozpoczęciem pracy z aplikacjami. Są one dostępne domyślnie. Tych kontekstach są następujące:
    
-   * **sc** — w przypadku kontekstu aparatu Spark
-   * **sqlContext** — w kontekście programu Hive
+  * **sc** — w przypadku kontekstu aparatu Spark
+  * **sqlContext** — w kontekście programu Hive
    
-   Nie trzeba więc uruchomienia instrukcji, podobnie do poniższego, do ustawiania kontekstów:
+    Nie trzeba więc uruchomienia instrukcji, podobnie do poniższego, do ustawiania kontekstów:
    
-          sc = SparkContext('yarn-client')
-          sqlContext = HiveContext(sc)
+         sc = SparkContext('yarn-client')
+         sqlContext = HiveContext(sc)
    
-   Wstępnie ustawionych kontekstów można zamiast tego należy korzystać bezpośrednio w aplikacji.
+    Wstępnie ustawionych kontekstów można zamiast tego należy korzystać bezpośrednio w aplikacji.
 
 - **Komórka poleceń magicznych**. Jądra PySpark zawiera kilka wstępnie zdefiniowanych "poleceń magicznych", które są specjalne polecenia, które można wywoływać za pomocą `%%` (na przykład `%%MAGIC` <args>). Magiczne polecenie musi być pierwszy wyraz w komórce kodu i umożliwić wiele wierszy w zawartości. Magic word powinien być pierwszy wyraz w komórce. Dodawanie czegokolwiek przed magic, a nawet komentarzy powoduje błąd.     Aby uzyskać więcej informacji na temat poleceń magicznych, zobacz [tutaj](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
@@ -87,7 +87,7 @@ Poniżej przedstawiono kilka korzyści wynikające ze stosowania nowych jądra z
    > [!NOTE]  
    > Oprócz poleceń magicznych, dodane przez jądro PySpark, można również użyć [wbudowanych poleceń magicznych IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), w tym `%%sh`. Możesz użyć `%%sh` Magic Quadrant na uruchamianie skryptów i bloku kodu na głównym węzłem klastra.
 
-2. **Automatyczna wizualizacja**. **Pyspark** jądra automatycznie wizualizuje dane wyjściowe zapytań SQL i Hive. Możesz wybrać między kilka różnych typów wizualizacji, łącznie z tabeli, kołowego, wiersz, obszaru, pasek.
+1. **Automatyczna wizualizacja**. **Pyspark** jądra automatycznie wizualizuje dane wyjściowe zapytań SQL i Hive. Możesz wybrać między kilka różnych typów wizualizacji, łącznie z tabeli, kołowego, wiersz, obszaru, pasek.
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>Parametry są obsługiwane za pomocą %% magicznym wyrażeniem sql
 `%%sql` Magic obsługuje parametry, których można użyć do kontrolowania rodzaj danych wyjściowych, który jest wyświetlany podczas uruchamiania kwerend. W poniższej tabeli wymieniono dane wyjściowe.

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 39877e01eb8b9690dc1ac7b1dbb79bab450814c4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456932"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226219"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Samouczek: Zabezpieczanie wystąpienia zarządzanego usługi Azure SQL Database przy użyciu jednostek usługi (identyfikatorów logowania) serwera Azure AD
 
@@ -148,13 +148,13 @@ Po utworzeniu jednostki usługi (identyfikatora logowania) serwera Azure AD oraz
 
 1. Połącz się z wystąpieniem zarządzanym za pomocą jednostki usługi (identyfikatora logowania) serwera Azure AD, korzystając z programu SQL Server Management Studio. Wprowadź nazwę hosta wystąpienia zarządzanego. Są trzy opcje uwierzytelniania w programie SMSS podczas logowania za pomocą konta usługi Azure AD:
 
-    - Active Directory — uniwersalne z obsługą uwierzytelniania wieloskładnikowego
-    - Active Directory — hasło
-    - Active Directory — zintegrowane </br>
+   - Active Directory — uniwersalne z obsługą uwierzytelniania wieloskładnikowego
+   - Active Directory — hasło
+   - Active Directory — zintegrowane </br>
 
-    ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
 
-    Aby uzyskać więcej informacji, zobacz następujące artykuły: [Uniwersalne uwierzytelnianie przy użyciu usługi SQL Database i SQL Data Warehouse (obsługa SSMS w przypadku uwierzytelniania wieloskładnikowego)](sql-database-ssms-mfa-authentication.md)
+     Aby uzyskać więcej informacji, zobacz następujące artykuły: [Uniwersalne uwierzytelnianie przy użyciu usługi SQL Database i SQL Data Warehouse (obsługa SSMS w przypadku uwierzytelniania wieloskładnikowego)](sql-database-ssms-mfa-authentication.md)
 
 1. Wybierz opcję **Active Directory — uniwersalne z obsługą uwierzytelniania wieloskładnikowego**. To spowoduje wywołanie okna logowania uwierzytelniania wieloskładnikowego. Zaloguj się przy użyciu hasła usługi Azure AD.
 
@@ -207,10 +207,10 @@ Po utworzeniu jednostki usługi (identyfikatora logowania) serwera Azure AD oraz
 1. W **Eksploratorze obiektów** kliknij prawym przyciskiem myszy serwer, a następnie wybierz pozycję **Nowe zapytanie** dla nowego połączenia.
 1. Sprawdź uprawnienia serwera dla nowo utworzonej jednostki usługi (identyfikatora logowania) serwera Azure AD, wykonując następujące polecenie:
 
-    ```sql
-    SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
-    GO
-    ```
+      ```sql
+      SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
+      GO
+      ```
 
 > [!NOTE]
 > Użytkownicy-goście usługi Azure AD mają możliwość obsługi identyfikatorów logowania wystąpienia zarządzanego tylko, jeśli są dodani jako członkowie grupy usługi Azure AD. Użytkownik-gość usługi Azure AD to konto zaproszone do usługi Azure AD, do której należy wystąpienie zarządzane, z innej usługi Azure AD. Na przykład joe@contoso.com (konto usługi Azure AD) lub steve@outlook.com (konto MSA) można dodać do grupy aadsqlmi usługi Azure AD. Po dodaniu użytkowników do grupy można utworzyć identyfikator logowania w bazie danych **master** wystąpienia zarządzanego dla grupy, korzystając ze składni **CREATE LOGIN**. Użytkownicy-goście, którzy są członkami tej grupy, mogą nawiązać połączenie z wystąpieniem zarządzanym, korzystając z aktualnego identyfikatora logowania (na przykład joe@contoso.com lub steve@outlook.com).
@@ -360,7 +360,7 @@ Wystąpienie zarządzane obsługuje personifikację podmiotów zabezpieczeń na 
     GO
     ```
 
-1. Użyj następującego polecenia, aby sprawdzić, czy użytkownik, którego personifikujesz podczas wykonywania procedury składowanej, to **bob@aadsqlmi.net**.
+1. Użyj następującego polecenia, aby zobaczyć, czy użytkownik jest personifikacji podczas wykonywania procedury składowanej jest **bob\@aadsqlmi.net**.
 
     ```sql
     Exec dbo.usp_Demo
@@ -435,7 +435,7 @@ Funkcja wykonywania zapytań w wielu bazach danych jest obsługiwana dla kont us
 - Przy użyciu jednostek usługi (identyfikatorów logowania) serwera Azure AD można skonfigurować usługi Service Broker i DBMail.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 ### <a name="enable-security-features"></a>Włączanie funkcji zabezpieczeń.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b39f7bc31ed286ef4a894e9d49166cd305d9e905
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 82183cefc11a1f3c39fadd639c988d8bf83fc109
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736757"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116604"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Omówienie architektury Menedżer zasobów klastra
 Menedżer zasobów klastra usługi Service Fabric jest centralnym usługa, która działa w klastrze. Zarządza żądanego stanu usług w klastrze, szczególnie w odniesieniu do zużycia zasobów i wszystkie reguły umieszczania. 
@@ -51,6 +51,7 @@ Menedżer zasobów klastra musi śledzić z wymaganiami dotyczącymi poszczegól
 Spójrzmy na poniższym diagramie:
 
 <center>
+
 ![Architektura modułu równoważenia zasobów][Image1]
 </center>
 
@@ -59,6 +60,7 @@ Podczas wykonywania istnieje wiele zmian, które może się zdarzyć. Na przykł
 Spróbujmy Spójrz na poniższym diagramie i zobacz, co dzieje się potem. Załóżmy, że Menedżer zasobów klastra Określa, czy konieczne jest wprowadzenie zmian. Współrzędne ją z innymi usługami systemu (w szczególności Menedżer trybu Failover) do wprowadź niezbędne zmiany. Następnie konieczne polecenia są wysyłane do odpowiednich węzłów (4). Załóżmy na przykład, że usługi Resource Manager zauważyć, że Węzeł5 został przeciążone, a więc postanowiła przenieść usługa B z Węzeł5 na Węzeł4. Na koniec ponowna konfiguracja (5) klastra wygląda następująco:
 
 <center>
+
 ![Architektura modułu równoważenia zasobów][Image2]
 </center>
 

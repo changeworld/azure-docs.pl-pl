@@ -14,12 +14,12 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee21080fd95815289f73654cc5bc650296c8e8dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 47128bce8dbbee1b28f6b0a3a5783e5ccee501bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433369"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177402"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Zarządzanie hasłami aplikacji weryfikacji dwuetapowej
 
@@ -89,7 +89,7 @@ Jeśli używasz weryfikacji dwuetapowej za pomocą pracy lub konta służbowego 
 
 1. Zaloguj się do swojego konta firmowego lub szkolnego.
 
-2. Przejdź do https://portal.office.com, wybierz opcję **ustawienia** ikonę w prawym górnym rogu **portalu usługi Office 365** strony, a następnie rozwiń węzeł **dodatkowej weryfikacji zabezpieczeń**.
+2. Przejdź do [ https://portal.office.com ](https://portal.office.com), wybierz opcję **ustawienia** ikonę w prawym górnym rogu **portalu usługi Office 365** strony, a następnie rozwiń **dodatkowe zabezpieczenia Weryfikacja**.
 
     ![Portal przedstawiający Office rozwinięty obszar weryfikacji zabezpieczeń](media/security-info/security-info-o365password.png)
 
@@ -105,7 +105,7 @@ Jeśli używasz weryfikacji dwuetapowej za pomocą pracy lub konta służbowego 
 
 1. Zaloguj się do swojego konta firmowego lub szkolnego.
 
-2. Przejdź do https://portal.office.com, wybierz opcję **ustawienia** ikonę w prawym górnym rogu **portalu usługi Office 365** strony, a następnie wybierz pozycję **dodatkowej weryfikacji zabezpieczeń**.
+2. Przejdź do [ https://portal.office.com ](https://portal.office.com), wybierz opcję **ustawienia** ikonę w prawym górnym rogu **portalu usługi Office 365** strony, a następnie wybierz pozycję **dodatkowe zabezpieczenia Weryfikacja**.
 
 3. Zaznacz tekst, który jest wyświetlany komunikat, **tworzenie haseł aplikacji i zarządzanie nimi** otworzyć **haseł aplikacji** strony.
 

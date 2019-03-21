@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f20cd877e4cc53490016d251c5bdb343ab0cb4b0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: acec53a99fd6d809dc01ce12b02987d66579b0c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250337"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118293"
 ---
 # <a name="manage-role-based-access-control"></a>Zarządzanie kontrolą dostępu opartej na rolach
 
@@ -41,8 +41,8 @@ Użytkownik w usłudze Azure Stack można czytnika, właściciela lub współaut
 
 ## <a name="set-access-permissions-for-a-universal-group"></a>Ustaw uprawnienia dostępu dla grup uniwersalnych 
 
-> [!Note]  
-Dotyczy tylko usługi Active Directory Sfederowana Services (AD FS).
+> [!Note]
+> Dotyczy tylko usługi Active Directory Sfederowana Services (AD FS).
 
 1. Zaloguj się przy użyciu konta, które ma uprawnienia właściciela zasobu, z którym chcesz zarządzać.
 2. W bloku zasobu kliknij **dostępu** ikonę ![](media/azure-stack-manage-permissions/image1.png).

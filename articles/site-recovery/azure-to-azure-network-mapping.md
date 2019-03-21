@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: mayg
-ms.openlocfilehash: c4309b20664520bc1912adadee72d614a085f573
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 99c7309e22d8ebe61a0a85b38c92bd3027977848
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338957"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013133"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
@@ -76,6 +76,7 @@ Adres IP dla każdego interfejsu Sieciowego docelowej maszyny wirtualnej są sko
 **Źródłowe i docelowe podsieci** | **Szczegóły**
 --- | ---
 Tą samą przestrzenią adresów | Adres IP źródłowej maszyny Wirtualnej karty Sieciowej jest ustawiony jako element docelowy adres IP karty Sieciowej maszyny Wirtualnej.<br/><br/> Jeśli adres nie jest dostępna, następny dostępny adres IP jest ustawiany jako element docelowy.
+
 Różnymi przestrzeniami adresowymi<br/><br/> Następnym dostępnym adresem IP w podsieci docelowej jest ustawiany jako element docelowy adres karty Sieciowej maszyny Wirtualnej.
 
 

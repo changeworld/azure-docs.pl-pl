@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: c34b3fa1597866e4f722fccee84f83f4caab6bfb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b5ad1a790f79b11b978c32c5751a6b9333f24c85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876300"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994927"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analiza tonacji w czasie rzeczywistym usługi Twitter w usłudze Azure Stream Analytics
 
@@ -119,10 +119,10 @@ Jeśli nie masz już aplikację usługi Twitter, używanego na potrzeby tego sam
 
 2. Utwórz nową aplikację. 
 
-    * W przypadku adresu URL witryny sieci Web należy określić prawidłowy adres URL. Nie ma być aktywnej witryny. (Nie można określić tylko `localhost`.)
-    * Pole jest puste wywołania zwrotnego. Aplikacja kliencka, których używasz na potrzeby tego samouczka nie wymagają wywołań zwrotnych.
+   * W przypadku adresu URL witryny sieci Web należy określić prawidłowy adres URL. Nie ma być aktywnej witryny. (Nie można określić tylko `localhost`.)
+   * Pole jest puste wywołania zwrotnego. Aplikacja kliencka, których używasz na potrzeby tego samouczka nie wymagają wywołań zwrotnych.
 
-    ![Tworzenie aplikacji w usłudze Twitter](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
+     ![Tworzenie aplikacji w usłudze Twitter](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
 
 3. Opcjonalnie można zmienić uprawnienia aplikacji tylko do odczytu.
 
@@ -167,19 +167,19 @@ Poniższa procedura dokumenty oba podejścia.
 
 3. Aby ustawić wartości trwałe, Edytor tekstu można otworzyć pliku TwitterWpfClient.exe.config. Następnie w `<appSettings>` elementu, w tym:
 
-    * Ustaw `oauth_consumer_key` na klucz klienta usługi Twitter (klucz interfejsu API). 
-    * Ustaw `oauth_consumer_secret` się klucz tajny klienta usługi Twitter (klucz tajny interfejsu API).
-    * Ustaw `oauth_token` do tokena dostępu usługi Twitter.
-    * Ustaw `oauth_token_secret` się klucz tajny tokenu dostępu serwisu Twitter.
+   * Ustaw `oauth_consumer_key` na klucz klienta usługi Twitter (klucz interfejsu API). 
+   * Ustaw `oauth_consumer_secret` się klucz tajny klienta usługi Twitter (klucz tajny interfejsu API).
+   * Ustaw `oauth_token` do tokena dostępu usługi Twitter.
+   * Ustaw `oauth_token_secret` się klucz tajny tokenu dostępu serwisu Twitter.
 
-    W dalszej części `<appSettings>` elementu, wprowadź następujące zmiany:
+     W dalszej części `<appSettings>` elementu, wprowadź następujące zmiany:
 
-    * Ustaw `EventHubName` do nazwy Centrum zdarzeń (czyli wartość ścieżka jednostki).
-    * Ustaw `EventHubNameConnectionString` parametry połączenia. Należy upewnić się, że parametry połączenia, które zostały usunięte `EntityPath` pary klucz wartość z.
+   * Ustaw `EventHubName` do nazwy Centrum zdarzeń (czyli wartość ścieżka jednostki).
+   * Ustaw `EventHubNameConnectionString` parametry połączenia. Należy upewnić się, że parametry połączenia, które zostały usunięte `EntityPath` pary klucz wartość z.
 
-    `<appSettings>` Sekcja wygląda podobnie jak w poniższym przykładzie. (Dla jasności i zabezpieczeń, firma Microsoft opakowane niektórych wierszy i usunąć niektóre znaki)
+     `<appSettings>` Sekcja wygląda podobnie jak w poniższym przykładzie. (Dla jasności i zabezpieczeń, firma Microsoft opakowane niektórych wierszy i usunąć niektóre znaki)
 
-    ![Plik konfiguracji aplikacji TwitterWpfClient w edytorze tekstów, kluczy usługi Twitter i wpisy tajne i informacje o parametrach połączenia Centrum zdarzeń](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
+     ![Plik konfiguracji aplikacji TwitterWpfClient w edytorze tekstów, kluczy usługi Twitter i wpisy tajne i informacje o parametrach połączenia Centrum zdarzeń](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
  
 4. Jeśli aplikacja jeszcze nie została uruchomiona, uruchom teraz TwitterWpfClient.exe. 
 
@@ -214,15 +214,15 @@ Teraz, gdy tweet zdarzenia są przesyłania strumieniowego w czasie rzeczywistym
 
 2. W **dane wejściowe** bloku kliknij  **+ &nbsp;Dodaj** a następnie wypełnij blok następującymi wartościami:
 
-    * **Alias danych wejściowych**: Użyj nazwy `TwitterStream`. Jeśli używasz innej nazwy, zanotuj je, ponieważ będą potrzebne później.
-    * **Typ źródła**: Wybierz **strumienia danych**.
-    * **Źródło**: Wybierz **Centrum zdarzeń**.
-    * **Opcja importu**: Wybierz **Użyj Centrum zdarzeń z bieżącej subskrypcji**. 
-    * **Przestrzeń nazw magistrali usług**: Wybierz przestrzeń nazw Centrum zdarzeń, który został utworzony wcześniej (`<yourname>-socialtwitter-eh-ns`).
-    * **Centrum zdarzeń**: Wybierz Centrum zdarzeń, który został utworzony wcześniej (`socialtwitter-eh`).
-    * **Nazwa zasad Centrum zdarzeń**: Wybierz zasady dostępu, który został utworzony wcześniej (`socialtwitter-access`).
+   * **Alias danych wejściowych**: Użyj nazwy `TwitterStream`. Jeśli używasz innej nazwy, zanotuj je, ponieważ będą potrzebne później.
+   * **Typ źródła**: Wybierz **strumienia danych**.
+   * **Źródło**: Wybierz **Centrum zdarzeń**.
+   * **Opcja importu**: Wybierz **Użyj Centrum zdarzeń z bieżącej subskrypcji**. 
+   * **Przestrzeń nazw magistrali usług**: Wybierz przestrzeń nazw Centrum zdarzeń, który został utworzony wcześniej (`<yourname>-socialtwitter-eh-ns`).
+   * **Centrum zdarzeń**: Wybierz Centrum zdarzeń, który został utworzony wcześniej (`socialtwitter-eh`).
+   * **Nazwa zasad Centrum zdarzeń**: Wybierz zasady dostępu, który został utworzony wcześniej (`socialtwitter-access`).
 
-    ![Utwórz nowe dane wejściowe dla zadania usługi Stream Analytics](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
+     ![Utwórz nowe dane wejściowe dla zadania usługi Stream Analytics](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
 3. Kliknij pozycję **Utwórz**.
 
@@ -297,17 +297,17 @@ W tym samouczku piszesz zdarzenia zagregowane tweet z zapytania zadania do usłu
 
 2. W **dane wyjściowe** bloku kliknij  **+ &nbsp;Dodaj** a następnie wypełnij blok następującymi wartościami:
 
-    * **Alias danych wyjściowych**: Użyj nazwy `TwitterStream-Output`. 
-    * **Obiekt sink**: Wybierz pozycję **Blob storage**.
-    * **Opcje importowania**: Wybierz **usługa blob storage z bieżącej subskrypcji**.
-    * **Konto magazynu**. Wybierz **Utwórz nowe konto magazynu.**
-    * **Konto magazynu** (drugie pole). Wprowadź `YOURNAMEsa`, gdzie `YOURNAME` jest nazwą lub inny unikatowy ciąg. Nazwę można użyć tylko małe litery i cyfry, a na platformie Azure musi być unikatowa. 
-    * **Kontener**. Wprowadź polecenie `socialtwitter`.
-    Nazwa kontenera i nazwy konta magazynu są używane razem do Podaj identyfikator URI dla magazynu obiektów blob, w następujący sposób: 
+   * **Alias danych wyjściowych**: Użyj nazwy `TwitterStream-Output`. 
+   * **Obiekt sink**: Wybierz pozycję **Blob storage**.
+   * **Opcje importowania**: Wybierz **usługa blob storage z bieżącej subskrypcji**.
+   * **Konto magazynu**. Wybierz **Utwórz nowe konto magazynu.**
+   * **Konto magazynu** (drugie pole). Wprowadź `YOURNAMEsa`, gdzie `YOURNAME` jest nazwą lub inny unikatowy ciąg. Nazwę można użyć tylko małe litery i cyfry, a na platformie Azure musi być unikatowa. 
+   * **Kontener**. Wprowadź polecenie `socialtwitter`.
+     Nazwa kontenera i nazwy konta magazynu są używane razem do Podaj identyfikator URI dla magazynu obiektów blob, w następujący sposób: 
 
-    `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
+     `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
     
-    ![Blok "Nowe dane wyjściowe" zadania usługi Stream Analytics](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
+     ![Blok "Nowe dane wyjściowe" zadania usługi Stream Analytics](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
 4. Kliknij pozycję **Utwórz**. 
 
@@ -338,7 +338,7 @@ Dane wejściowe zadania, zapytania i wyjścia są określone. Jesteś gotowy do 
 
 Po zadaniu rozpoczęło działanie i trwa jego przetwarzanie strumienia w czasie rzeczywistym usługi Twitter, można wyświetlić dane wyjściowe do analizy tonacji.
 
-Można użyć narzędzia, takiego jak [Eksploratora usługi Azure Storage](https://storageexplorer.com/) lub [Eksploratora usługi Azure](http://www.cerebrata.com/products/azure-explorer/introduction) Aby wyświetlić dane wyjściowe zadania w czasie rzeczywistym. W tym miejscu możesz użyć [usługi Power BI](https://powerbi.com/) rozszerzenie aplikacji dostosowanego pulpitu nawigacyjnego, tak jak pokazano na poniższym zrzucie ekranu:
+Można użyć narzędzia, takiego jak [Eksploratora usługi Azure Storage](https://storageexplorer.com/) lub [Eksploratora usługi Azure](https://www.cerebrata.com/products/azure-explorer/introduction) Aby wyświetlić dane wyjściowe zadania w czasie rzeczywistym. W tym miejscu możesz użyć [usługi Power BI](https://powerbi.com/) rozszerzenie aplikacji dostosowanego pulpitu nawigacyjnego, tak jak pokazano na poniższym zrzucie ekranu:
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 

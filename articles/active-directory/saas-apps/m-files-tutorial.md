@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4536fd49-3a65-4cff-9620-860904f726d0
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 13c3b74c50c8417d8d410f8a1975a8c50eb9fdd9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 3dab784d706228793c6acc0f930f39ba1962caeb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875535"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją M-Files
 
@@ -52,7 +52,7 @@ Aby skonfigurować integrację aplikacji M-Files w usłudze Azure AD, należy do
 
 **Aby dodać aplikację M-Files z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -123,7 +123,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji M-Files, w
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-m-files-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji M-Files
 
@@ -148,7 +148,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji M-Files, w
  
     b. W polu **Port Number** (Numer portu) wpisz **4466**. 
 
-    d. W polu **Protocol** (Protokół) wybierz pozycję **HTTPS**. 
+    c. W polu **Protocol** (Protokół) wybierz pozycję **HTTPS**. 
 
     d. W polu **Authentication** (Uwierzytelnianie) wybierz pozycję **Specific Windows user** (Konkretny użytkownik systemu Windows). Zostanie wyświetlona strona logowania. Wstaw swoje poświadczenia usługi Azure AD. 
 
@@ -174,7 +174,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -213,7 +213,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji M-Files. W
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka M-Files w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji M-Files, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

@@ -16,18 +16,18 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: jeconnoc
 ms.custom: seodec18
-ms.openlocfilehash: 90eaf7f57f524cb6e47d9d0f4e160855acd6daf5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 67e4f99046820aa21392ff1238318e1b48bb5354
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633661"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901087"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Tworzenie aplikacji usługi App Service z ciągłym wdrażaniem przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Ten przykładowy skrypt tworzy aplikację w usłudze App Service z powiązanymi zasobami, a następnie konfiguruje ciągłe wdrażanie z repozytorium Azure DevOps. Do pracy z tym przykładem potrzebne są:
+Ten przykładowy skrypt tworzy aplikację w usłudze App Service z powiązanymi zasobami, a następnie konfiguruje ciągłe wdrażanie z repozytorium DevOps platformy Azure. Do pracy z tym przykładem potrzebne są:
 
-* Repozytorium Azure DevOps zawierające kod aplikacji, w którym masz uprawnienia administracyjne.
+* Repozytorium DevOps platformy Azure za pomocą kod aplikacji, w którym masz uprawnienia administracyjne.
 * [Osobisty token dostępu](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) organizacji pakietu Azure DevOps.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -54,7 +54,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Tworzy aplikację usługi App Service. |
 | [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Kojarzy aplikację usługi App Service z repozytorium Git lub Mercurial. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

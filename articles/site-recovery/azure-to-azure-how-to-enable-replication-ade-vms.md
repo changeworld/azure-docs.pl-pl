@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f9abc6d79bd821ef612e9e7648b1b5af98bb5cf6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456235"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117459"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych jest włączone szyfrowanie (ADE) dysku platformy Azure do innego regionu platformy Azure
 
@@ -123,8 +123,8 @@ Można zmodyfikować domyślne ustawienia regionu docelowego używane przez usł
 
 
 2. Kliknij przycisk **Dostosuj:** obok "Ustawienia szyfrowania" Aby zmodyfikować poniższe ustawienia domyślne:
-    - W **magazynu kluczy szyfrowania dysku docelowego**, wybierz magazyn kluczy szyfrowania dysków docelowych z listy wszystkich magazynów kluczy w lokalizacji docelowej subskrypcji.
-  - W **magazynu kluczy szyfrowania klucza docelowego**, wybierz magazyn kluczy szyfrowania klucza docelowego z listy wszystkich magazynów kluczy w lokalizacji docelowej subskrypcji.
+   - W **magazynu kluczy szyfrowania dysku docelowego**, wybierz magazyn kluczy szyfrowania dysków docelowych z listy wszystkich magazynów kluczy w lokalizacji docelowej subskrypcji.
+     - W **magazynu kluczy szyfrowania klucza docelowego**, wybierz magazyn kluczy szyfrowania klucza docelowego z listy wszystkich magazynów kluczy w lokalizacji docelowej subskrypcji.
 
 3. Kliknij przycisk **Utwórz zasób docelowy** > **włączania replikacji**.
 4. Po włączeniu replikacji maszyn wirtualnych można sprawdzić stan kondycji maszyny Wirtualnej w obszarze **zreplikowane elementy**

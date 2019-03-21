@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5899b2b667df4800bf98aa6ed7b70f2f8ba4f931
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: 7d56f01aabe77680ed78927848668457344a0f2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337108"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080299"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Szybki start: Aprowizowanie urządzenia symulowanego przy użyciu kluczy symetrycznych
 
@@ -114,15 +114,15 @@ Zestaw SDK zawiera przykładowy kod dla urządzenia symulowanego. To urządzenie
 
 3. W obszarze **Dodaj rejestrację** wprowadź następujące informacje i kliknij przycisk **Zapisz**.
 
-    - **Mechanizm**: wybierz **Klucz symetryczny** jako *Mechanizm* poświadczania tożsamości.
+   - **Mechanizm**: wybierz **Klucz symetryczny** jako *Mechanizm* poświadczania tożsamości.
 
-    - **Automatycznie generuj klucze**: zaznacz to pole wyboru.
+   - **Automatycznie generuj klucze**: zaznacz to pole wyboru.
 
-    - **Identyfikator rejestracji**: wprowadź identyfikator rejestracji, aby zidentyfikować rejestrację. Użyj tylko małych znaków alfanumerycznych i kresek (-). Na przykład `symm-key-device-007`.
+   - **Identyfikator rejestracji**: wprowadź identyfikator rejestracji, aby zidentyfikować rejestrację. Użyj tylko małych znaków alfanumerycznych i kresek (-). Na przykład `symm-key-device-007`.
 
-    - **Identyfikator urządzenia usługi IoT Hub:** wprowadź identyfikator urządzenia. Na przykład **device-007**.
+   - **Identyfikator urządzenia usługi IoT Hub:** wprowadź identyfikator urządzenia. Na przykład **device-007**.
 
-    ![Dodawanie indywidualnej rejestracji dla zaświadczenia klucza symetrycznego w portalu](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
+     ![Dodawanie indywidualnej rejestracji dla zaświadczenia klucza symetrycznego w portalu](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
 4. Po zapisaniu rejestracji zostanie wygenerowany **klucz podstawowy** i **klucz pomocniczy**. Zostaną one dodane do wpisu rejestracji. Rejestracja urządzenia klucza symetrycznego jest wyświetlana jako **symm-key-device-007** w kolumnie *Identyfikator rejestracji* na karcie *Indywidualne rejestracje*. 
 
@@ -214,7 +214,7 @@ Jeśli planujesz dalszą pracę z przykładem klienta urządzenia i eksplorowani
 1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoją usługę Device Provisioning Service. Otwórz obszar **Zarządzanie rejestracjami** dla usługi, a następnie kliknij kartę **Rejestracje indywidualne**. Wybierz *IDENTYFIKATOR REJESTRACJI* urządzenia zarejestrowanego w ramach tego przewodnika Szybki start i kliknij przycisk **Usuń** u góry. 
 1. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. Otwórz blok **Urządzenia IoT** w centrum, wybierz *IDENTYFIKATOR URZĄDZENIA* zarejestrowanego w ramach tego przewodnika Szybki start, a następnie kliknij przycisk **Usuń** u góry.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start na Twojej maszynie z systemem Windows utworzono urządzenie symulowane, które zostało następnie aprowizowane do Twojego centrum IoT przy użyciu klucza symetrycznego z usługą Azure IoT Hub Device Provisioning w portalu. Aby dowiedzieć się, jak zarejestrować urządzenie programowo, przejdź do przewodnika Szybki start dotyczącego programowej rejestracji urządzeń X.509. 
 

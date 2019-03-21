@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: a09d880a1a17e429692dcb8e542657f416de7b30
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 90ca35ec899d71578a7da4061ca7842d13769072
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823539"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123576"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -48,8 +48,8 @@ Typy następnego przeskoku wymienione w powyższej tabeli określają sposób, w
 - **Internet**: Kieruje określonym przez prefiks adresu ruchem do Internetu. Domyślna trasa systemowa określa prefiks adresu 0.0.0.0/0. Jeśli nie zastąpisz domyślnych tras platformy Azure, platforma Azure kieruje ruch dla każdego adresu, który nie został określony przez zakres adresów w ramach sieci wirtualnej, do Internetu z jednym wyjątkiem. Jeśli adres docelowy jest przeznaczony dla jednej z usług platformy Azure, platforma Azure kieruje ruch bezpośrednio do usługi za pośrednictwem sieci szkieletowej platformy Azure zamiast kierować ruch do Internetu. Ruch między usługami Azure nie przechodzi przez Internet niezależnie od tego, w którym regionie platformy Azure istnieje sieć wirtualna lub w którym regionie platformy Azure zostało wdrożone wystąpienie usługi platformy Azure. Można zastąpić domyślną trasę systemową platformy Azure dla prefiksu adresu 0.0.0.0/0 za pomocą [trasy niestandardowej](#custom-routes).
 
 - **Brak**: Ruch kierowany do typu następnego przeskoku **Brak** jest porzucany, a nie kierowany poza podsieć. Platforma Azure automatycznie tworzy trasy domyślne dla następujących prefiksów adresów:
-    - **10.0.0.0/8, 172.16.0.0/12 i 192.168.0.0/16**: Zarezerwowane do użytku prywatnego w dokumencie RFC 1918.
-    - **100.64.0.0/10**: Zarezerwowane w dokumencie RFC 6598.
+  - **10.0.0.0/8, 172.16.0.0/12 i 192.168.0.0/16**: Zarezerwowane do użytku prywatnego w dokumencie RFC 1918.
+  - **100.64.0.0/10**: Zarezerwowane w dokumencie RFC 6598.
 
     Po przypisaniu dowolnego z poprzednich zakresów adresów w przestrzeni adresowej sieci wirtualnej platforma Azure automatycznie zmieni typ następnego przeskoku trasy z **Brak** na **Sieć wirtualna**. Po przypisaniu zakresu adresów do przestrzeni adresowej sieci wirtualnej, która obejmuje, ale nie jest taka sama jak, jeden z czterech zarezerwowanych prefiksów adresów, platforma Azure usuwa trasę dla tego prefiksu i dodaje trasę dla dodanego przez Ciebie prefiksu adresu, przy czym **Sieć wirtualna** jest typem następnego przeskoku.
 
@@ -82,12 +82,12 @@ Podczas tworzenia tras zdefiniowanych przez użytkownika możesz określić poni
 
 - **Urządzenie wirtualne**: Urządzenie wirtualne to maszyna wirtualna, na której zwykle działa aplikacja sieci, taka jak zapora. Aby dowiedzieć się więcej o różnych wstępnie skonfigurowanych sieciowych urządzeniach wirtualnych, które możesz wdrożyć w sieci wirtualnej, zobacz witrynę [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances). Podczas tworzenia trasy z typem przeskoku **Urządzenie wirtualne** należy określić także adres IP następnego przeskoku. Adresem IP może być:
 
-    - [Prywatny adres IP](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) interfejsu sieciowego dołączonego do maszyny wirtualnej. Każdy interfejs sieciowy dołączony do maszyny wirtualnej, która przesyła dalej ruch sieciowy do adresu innego niż własny, musi mieć w tym celu włączoną opcję *Włącz przekazywanie IP* platformy Azure. To ustawienie wyłącza sprawdzanie przez platformę Azure elementu źródłowego i docelowego interfejsu sieciowego. Dowiedz się więcej o tym, jak [włączyć przekazywanie IP dla interfejsu sieciowego](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Chociaż pozycja *Włącz przekazywanie adresu IP* to ustawienie platformy Azure, włączenie przekazywania adresu IP w ramach systemu operacyjnego maszyny wirtualnej może być konieczne, aby urządzenie przekazywało dalej ruch między prywatnymi adresami IP przypisanami do interfejsów sieciowych platformy Azure. Jeśli urządzenie musi kierować ruch do publicznego adresu IP, ruch musi zostać przekierowany przy użyciu serwera proxy albo adres sieciowy musi przetłumaczyć prywatny adres IP źródła na własny prywatny adres IP, który następnie platforma Azure tłumaczy przy użyciu adresu sieciowego na publiczny adres IP przed wysłaniem ruchu do Internetu. Aby ustalić wymagane ustawienia maszyny wirtualnej, zobacz dokumentację swojego systemu operacyjnego lub aplikacji sieciowej. Aby lepiej zrozumieć połączenia wychodzące na platformie Azure, zobacz [Understanding outbound connections (Opis połączeń wychodzących)](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+  - [Prywatny adres IP](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) interfejsu sieciowego dołączonego do maszyny wirtualnej. Każdy interfejs sieciowy dołączony do maszyny wirtualnej, która przesyła dalej ruch sieciowy do adresu innego niż własny, musi mieć w tym celu włączoną opcję *Włącz przekazywanie IP* platformy Azure. To ustawienie wyłącza sprawdzanie przez platformę Azure elementu źródłowego i docelowego interfejsu sieciowego. Dowiedz się więcej o tym, jak [włączyć przekazywanie IP dla interfejsu sieciowego](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Chociaż pozycja *Włącz przekazywanie adresu IP* to ustawienie platformy Azure, włączenie przekazywania adresu IP w ramach systemu operacyjnego maszyny wirtualnej może być konieczne, aby urządzenie przekazywało dalej ruch między prywatnymi adresami IP przypisanami do interfejsów sieciowych platformy Azure. Jeśli urządzenie musi kierować ruch do publicznego adresu IP, ruch musi zostać przekierowany przy użyciu serwera proxy albo adres sieciowy musi przetłumaczyć prywatny adres IP źródła na własny prywatny adres IP, który następnie platforma Azure tłumaczy przy użyciu adresu sieciowego na publiczny adres IP przed wysłaniem ruchu do Internetu. Aby ustalić wymagane ustawienia maszyny wirtualnej, zobacz dokumentację swojego systemu operacyjnego lub aplikacji sieciowej. Aby lepiej zrozumieć połączenia wychodzące na platformie Azure, zobacz [Understanding outbound connections (Opis połączeń wychodzących)](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-      > [!NOTE]
-      > Wdróż urządzenie wirtualne w podsieci innej niż ta, gdzie są wdrożone zasoby, które są przesyłane przez urządzenie wirtualne. Wdrożenie urządzenia wirtualnego w tej samej podsieci, a następnie zastosowanie tabeli tras do podsieci, która kieruje ruch przez urządzenie wirtualne, może spowodować zapętlenie tras, w którym ruch nigdy nie opuszcza podsieci.
+    > [!NOTE]
+    > Wdróż urządzenie wirtualne w podsieci innej niż ta, gdzie są wdrożone zasoby, które są przesyłane przez urządzenie wirtualne. Wdrożenie urządzenia wirtualnego w tej samej podsieci, a następnie zastosowanie tabeli tras do podsieci, która kieruje ruch przez urządzenie wirtualne, może spowodować zapętlenie tras, w którym ruch nigdy nie opuszcza podsieci.
 
-    - Prywatny adres IP [wewnętrznego modułu równoważenia obciążenia](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure. Moduł równoważenia obciążenia jest często używany jako część [strategii wysokiej dostępności sieciowych urządzeń wirtualnych](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json).
+  - Prywatny adres IP [wewnętrznego modułu równoważenia obciążenia](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure. Moduł równoważenia obciążenia jest często używany jako część [strategii wysokiej dostępności sieciowych urządzeń wirtualnych](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
     Możesz określić trasę 0.0.0.0/0 jako prefiks adresu i typ następnego przeskoku urządzenia wirtualnego, umożliwiając urządzeniu sprawdzanie ruchu i określanie, czy przekazać ruch dalej, czy też go porzucić. Jeśli zamierzasz utworzyć trasę zdefiniowaną przez użytkownika, która zawiera prefiks adresu 0.0.0.0/0, przeczytaj najpierw [0.0.0.0/0 address prefix (Prefiks adresu 0.0.0.0/0)](#default-route).
 
@@ -217,7 +217,7 @@ Tabela tras dla podsieci *Subnet1* na ilustracji zawiera następujące trasy:
 |8   |Domyślne|Nieprawidłowy|10.10.0.0/16        |Brama sieci wirtualnej|[X.X.X.X]          |              |
 |9   |Użytkownik   |Aktywne |10.10.0.0/16        |Urządzenie wirtualne      |10.0.100.4         |Do lokalnego    |
 |10  |Domyślne|Aktywne |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
-|11  |Domyślne|Nieprawidłowy|0.0.0.0/0           |Internet|              |                   |              |
+|11  |Domyślne|Nieprawidłowy|0.0.0.0/0           |Internet               |                   |              |
 |12  |Użytkownik   |Aktywne |0.0.0.0/0           |Urządzenie wirtualne      |10.0.100.4         |Domyślne NVA   |
 
 Objaśnienia każdego identyfikatora trasy są następujące:

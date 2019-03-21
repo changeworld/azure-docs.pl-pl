@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 60617261e14b77e9ef3a2968dc37159e961bb947
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6f3f06ff54fc76416ba63f4f09835897d546f8dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735387"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861914"
 ---
-# <a name="azure-data-factory-mapping-data-flow-window-transformation"></a>Mapowanie transformacji okna przepływu danych w usłudze Azure Data Factory
+# <a name="azure-data-factory-window-transformation"></a>Usługi Azure Data Factory okna transformacji
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -46,3 +46,6 @@ Na koniec użyj Konstruktor wyrażeń do definiowania agregacji, którą chcesz 
 
 Poniżej przedstawiono pełną listę agregacji i funkcje analitycznych, które są dostępne do użycia w ADF przepływu wyrażenie język danych za pomocą Kreatora wyrażeń: https://aka.ms/dataflowexpressions.
 
+## <a name="next-steps"></a>Kolejne kroki
+
+Jeśli szukasz prostych grupowania agregacji, należy użyć [przekształcenie agregacji](data-flow-aggregate.md)

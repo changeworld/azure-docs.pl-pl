@@ -11,24 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 53716fa343df25026dcc668ed8483673d934d1ad
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: fff213c8d1a408bf96e385f2097a5ef30dcc05d2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339128"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992097"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Zrozumienie Odmów przydziały dla zasobów platformy Azure
 
-Podobnie jak w przypadku przypisania roli *Odmów przypisania* dołącza zbiór akcje odmowy zawsze do użytkownika, grupy lub jednostki usługi w określonym zakresie na potrzeby odmowa dostępu. Odmowa przypisania Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. Niektórych zasobów, które obejmują teraz dostawców na platformie Azure odmówić przypisania. Obecnie Odmów przypisania **tylko do odczytu** i może zostać ustawiona tylko przez firmę Microsoft.
+Podobnie jak w przypadku przypisania roli *Odmów przypisania* dołącza zbiór akcje odmowy zawsze do użytkownika, grupy lub jednostki usługi w określonym zakresie na potrzeby odmowa dostępu. Odmowa przypisania Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. Niektórych zasobów, które obejmują teraz dostawców na platformie Azure odmówić przypisania.
 
 Pod pewnymi względami Odmów przypisania są inne niż przypisań ról. Odmowa przypisania można wykluczyć podmiotów zabezpieczeń i zapobiegać dziedziczeniu na zakresy podrzędne. Odmów dotyczą również przypisania [klasyczny administrator subskrypcji](rbac-and-directory-admin-roles.md) przypisania.
 
 W tym artykule opisano sposób Odmów przypisania są zdefiniowane.
+
+> [!NOTE]
+> W tej chwili jedynym sposobem, które można dodać własne odmówić przypisania polega na użyciu plany platformy Azure. Aby uzyskać więcej informacji, zobacz [chronić nowe zasoby za pomocą blokad zasobów platformy Azure, plany](../governance/blueprints/tutorials/protect-new-resources.md).
 
 ## <a name="deny-assignment-properties"></a>Odmów przypisania właściwości
 

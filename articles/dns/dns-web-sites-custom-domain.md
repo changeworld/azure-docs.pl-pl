@@ -5,18 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 2/19/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9ed0c8763835add485d6c60a43f4e4113ecde12e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 43df80e060ff698537f7fd65075006e6dfffe6c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117153"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Samouczek: Tworzenie rekordów DNS w domenie niestandardowej dla aplikacji internetowej 
 
-Możesz skonfigurować usługę Azure DNS, aby hostować domenę niestandardową dla aplikacji internetowych. Przykładowo możesz utworzyć aplikację internetową platformy Azure i zapewnić użytkownikom dostęp do niej przy użyciu www.contoso.com lub contoso.com jako w pełni kwalifikowanej nazwy domeny (FQDN).
+Możesz skonfigurować usługę Azure DNS, aby hostować domenę niestandardową dla aplikacji internetowych. Na przykład utworzyć aplikację internetową platformy Azure i mają dostęp użytkowników za pomocą obu www\.contoso.com lub domeny contoso.com jako w pełni kwalifikowaną nazwę domeny (FQDN).
 
 > [!NOTE]
 > W tym samouczku jako przykład używana jest domena contoso.com. Zastąp contoso.com swoją nazwą domeny.
@@ -47,12 +47,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Utwórz aplikację usługi App Service](../app-service/app-service-web-get-started-html.md) lub użyj aplikacji utworzonej w innym samouczku.
+* Musi mieć nazwę domeny, które jest dostępne na potrzeby testów można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
+* [Utwórz aplikację usługi App Service](../app-service/app-service-web-get-started-html.md) lub użyj aplikacji utworzonej w innym samouczku.
 
-- Utwórz strefę DNS w usłudze Azure DNS i deleguj strefę u rejestratora do usługi Azure DNS.
+* Utwórz strefę DNS w usłudze Azure DNS i deleguj strefę u rejestratora do usługi Azure DNS.
 
    1. Aby utworzyć strefę DNS, wykonaj kroki opisane w sekcji [Tworzenie strefy DNS](dns-getstarted-create-dnszone.md).
-   2. Aby delegować strefę do usługi Azure DNS, wykonaj kroki opisane w sekcji [Delegowanie domeny DNS](dns-domain-delegation.md).
+   2. Aby delegować strefę do usługi Azure DNS, wykonaj kroki opisane w sekcji [Delegowanie domeny DNS](dns-delegate-domain-azure-dns.md).
 
 Po utworzeniu strefy i oddelegowaniu jej do usługi Azure DNS możesz utworzyć rekordy dla domeny niestandardowej.
 
@@ -72,7 +73,7 @@ Na stronie **Domeny niestandardowe** skopiuj adres IPv4 aplikacji:
 
 ### <a name="create-the-a-record"></a>Tworzenie rekordu A
 
-```powershell
+```azurepowershell
 New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
  -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -IPv4Address "<your web app IP address>")
@@ -82,7 +83,10 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 
 Usługa App Services używa tego rekordu tylko podczas konfiguracji, aby sprawdzić, czy jesteś właścicielem domeny niestandardowej. Po zweryfikowaniu i skonfigurowaniu domeny niestandardowej w usłudze App Service możesz usunąć ten rekord TXT.
 
-```powershell
+> [!NOTE]
+> Jeśli chcesz zweryfikować nazwę domeny, ale nie kierowania ruchu produkcyjnego do aplikacji sieci web, wystarczy określić rekord TXT w etapie weryfikacji.  Weryfikacja nie wymaga rekord A lub CNAME, oprócz rekord TXT.
+
+```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
  -Name "@" -RecordType "txt" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
@@ -96,7 +100,7 @@ Otwórz program Azure PowerShell i utwórz nowy rekord CNAME. Ten przykład twor
 
 ### <a name="create-the-record"></a>Tworzenie rekordu
 
-```powershell
+```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
  -Name "www" -RecordType "CNAME" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -cname "contoso.azurewebsites.net")
@@ -158,7 +162,7 @@ contoso.com text =
 
 Teraz możesz dodać niestandardowe nazwy hostów do aplikacji internetowej:
 
-```powershell
+```azurepowershell
 set-AzWebApp `
  -Name contoso `
  -ResourceGroupName MyAzureResourceGroup `
@@ -180,7 +184,7 @@ Dla obu adresów URL powinna zostać wyświetlona ta sama strona. Na przykład:
 
 Jeżeli nie potrzebujesz już zasobów utworzonych w ramach tego samouczka, możesz usunąć grupę zasobów **myresourcegroup**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak tworzyć strefy prywatne usługi Azure DNS.
 

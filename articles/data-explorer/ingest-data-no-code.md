@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 2/5/2019
-ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.date: 3/14/2019
+ms.openlocfilehash: 422813c1ddb77aa11195d3021484744839c4e3bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889226"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994334"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Samouczek: Pozyskiwanie danych w usłudze Azure Data Explorer bez pisania ani jednego wiersza kodu
 
@@ -38,29 +38,44 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Dostawca danych usługi Azure Monitor: dzienniki diagnostyczne i dzienniki aktywności
 
-Wyświetlaj i interpretuj dane dostarczane przez dzienniki diagnostyczne i dzienniki aktywności usługi Azure Monitor. Utworzymy potok pozyskiwania w oparciu o te schematy danych.
+Wyświetl i zrozumieć dane udostępniane przez usługi Azure Monitor Diagnostyka i Dzienniki aktywności poniżej. Utworzymy potok pozyskiwania w oparciu o te schematy danych. Należy pamiętać, że każde zdarzenie w dzienniku ma tablicą rekordów. Ta tablica rekordów, zostanie ona podzielona w dalszej części tego samouczka.
 
 ### <a name="diagnostic-logs-example"></a>Przykład dzienników diagnostycznych
 
-Dzienniki diagnostyczne platformy Azure to metryki emitowane przez usługę platformy Azure, która dostarcza dane o działaniu tej usługi. Dane są agregowane z ziarnem czasu o wartości 1 minuty. Każde zdarzenie dziennika diagnostycznego zawiera jeden rekord. Oto przykład schematu zdarzeń metryki usługi Azure Data Explorer dotyczący czasu trwania zapytania:
+Dzienniki diagnostyczne platformy Azure to metryki emitowane przez usługę platformy Azure, która dostarcza dane o działaniu tej usługi. Dane są agregowane z ziarnem czasu o wartości 1 minuty. Oto przykład schematu zdarzeń metryki usługi Azure Data Explorer dotyczący czasu trwania zapytania:
 
 ```json
 {
-    "count": 14,
-    "total": 0,
-    "minimum": 0,
-    "maximum": 0,
-    "average": 0,
-    "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
-    "time": "2018-12-20T17:00:00.0000000Z",
-    "metricName": "QueryDuration",
-    "timeGrain": "PT1M"
+    "records": [
+    {
+        "count": 14,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-20T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    },
+    {
+        "count": 12,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-21T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    }
+    ]
 }
 ```
 
 ### <a name="activity-logs-example"></a>Przykład dzienników aktywności
 
-Dzienniki aktywności platformy Azure to dzienniki na poziomie subskrypcji, które zawierają kolekcję rekordów. Dzienniki umożliwiają wgląd w szczegółowe dane operacji wykonywanych na zasobach w ramach subskrypcji. W przeciwieństwie do dzienników diagnostycznych każde zdarzenie dziennika aktywności ma tablicę rekordów. W dalszej części samouczka trzeba będzie podzielić tę tablicę rekordów. Oto przykład zdarzenia dziennika aktywności na potrzeby sprawdzania dostępu:
+Dzienniki aktywności platformy Azure są dzienniki poziom subskrypcji, które udostępniają szczegółowe dane operacji wykonywanych na zasobach w subskrypcji. Oto przykład zdarzenia dziennika aktywności na potrzeby sprawdzania dostępu:
 
 ```json
 {
@@ -129,6 +144,8 @@ W bazie danych *TestDatabase* usługi Azure Data Explorer wybierz pozycję **Zap
 
 ### <a name="create-the-target-tables"></a>Tworzenie tabel docelowych
 
+Struktura dzienniki usługi Azure Monitor nie jest tabelarycznym. Będziesz manipulowania danymi i rozwinąć każde zdarzenie do co najmniej jeden rekord. Będzie można pozyskać danych pierwotnych do pośredniego tabeli o nazwie *ActivityLogsRawRecords* o Dzienniki aktywności i *DiagnosticLogsRawRecords* dla dzienników diagnostycznych. W tym momencie dane będą modyfikowane i rozwijane. Za pomocą zasad aktualizacji, rozwinięty danych zostanie następnie być pozyskiwane do *ActivityLogsRecords* tabeli o Dzienniki aktywności i *DiagnosticLogsRecords* dla dzienników diagnostycznych. Oznacza to, że musisz utworzyć oddzielne tabel, aby zbierać Dzienniki aktywności i oddzielnych tabel, aby zbierać dzienniki diagnostyczne.
+
 Do utworzenia tabel docelowych w bazie danych usługi Azure Data Explorer użyj internetowego interfejsu użytkownika usługi Azure Data Explorer.
 
 #### <a name="the-diagnostic-logs-table"></a>Tabela dzienników diagnostycznych
@@ -143,9 +160,13 @@ Do utworzenia tabel docelowych w bazie danych usługi Azure Data Explorer użyj 
 
     ![Uruchamianie zapytania](media/ingest-data-no-code/run-query.png)
 
-#### <a name="the-activity-logs-tables"></a>Tabele dzienników aktywności
+1. Tworzenie tabeli danych pośrednich o nazwie *DiagnosticLogsRawRecords* w *TestDatabase* bazę danych do manipulowania danymi przy użyciu następującej kwerendy. Wybierz pozycję **Uruchom**, aby utworzyć tabelę.
 
-Ponieważ struktura dzienników aktywności nie jest tabelaryczna, trzeba będzie zmodyfikować dane i rozwinąć każde zdarzenie do co najmniej jednego rekordu. Dane pierwotne zostaną pozyskane do pośredniej tabeli o nazwie *ActivityLogsRawRecords*. W tym momencie dane będą modyfikowane i rozwijane. Rozwinięte dane zostaną następnie pozyskane do tabeli *ActivityLogsRecords* za pomocą zasad aktualizacji. Oznacza to, że konieczne będzie utworzenie dwóch oddzielnych tabel na potrzeby pozyskiwania dzienników aktywności.
+    ```kusto
+    .create table DiagnosticLogsRawRecords (Records:dynamic)
+    ```
+
+#### <a name="the-activity-logs-tables"></a>Tabele dzienników aktywności
 
 1. Utwórz tabelę o nazwie *ActivityLogsRecords* w bazie danych *TestDatabase*, która będzie odbierać rekordy dziennika aktywności. Uruchom następujące zapytanie usługi Azure Data Explorer w celu utworzenia tabeli:
 
@@ -174,7 +195,7 @@ Ponieważ struktura dzienników aktywności nie jest tabelaryczna, trzeba będzi
 Użyj następującego zapytania, aby zamapować dane dzienników diagnostycznych na tabelę:
 
 ```kusto
-.create table DiagnosticLogsRecords ingestion json mapping 'DiagnosticLogsRecordsMapping' '[{"column":"Timestamp","path":"$.time"},{"column":"ResourceId","path":"$.resourceId"},{"column":"MetricName","path":"$.metricName"},{"column":"Count","path":"$.count"},{"column":"Total","path":"$.total"},{"column":"Minimum","path":"$.minimum"},{"column":"Maximum","path":"$.maximum"},{"column":"Average","path":"$.average"},{"column":"TimeGrain","path":"$.timeGrain"}]'
+.create table DiagnosticLogsRawRecords ingestion json mapping 'DiagnosticLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
 #### <a name="table-mapping-for-activity-logs"></a>Mapowanie tabeli na potrzeby dzienników aktywności
@@ -185,9 +206,11 @@ Użyj następującego zapytania, aby zamapować dane dzienników aktywności na 
 .create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-### <a name="create-the-update-policy-for-activity-logs-data"></a>Tworzenie zasad aktualizacji na potrzeby danych dzienników aktywności
+### <a name="create-the-update-policy-for-log-data"></a>Utwórz zasady aktualizacji za dane dziennika
 
-1. Utwórz [funkcję](/azure/kusto/management/functions), która rozwija kolekcję rekordów, tak aby każda wartość w kolekcji odbierała oddzielny wiersz. Użyj operatora [`mvexpand`](/azure/kusto/query/mvexpandoperator):
+#### <a name="activity-log-data-update-policy"></a>Zasady aktualizacji danych dziennika aktywności
+
+1. Tworzenie [funkcja](/azure/kusto/management/functions) , rozszerza kolekcji rekordów dziennika aktywności, aby każda wartość w kolekcji odbiera oddzielnym wierszu. Użyj operatora [`mvexpand`](/azure/kusto/query/mvexpandoperator):
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
@@ -212,6 +235,32 @@ Użyj następującego zapytania, aby zamapować dane dzienników aktywności na 
 
     ```kusto
     .alter table ActivityLogsRecords policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    ```
+
+#### <a name="diagnostic-log-data-update-policy"></a>Dane dzienników diagnostycznych aktualizowanie zasad
+
+1. Tworzenie [funkcja](/azure/kusto/management/functions) kolekcji rekordów dziennika diagnostycznego, rozszerza tak, aby każda wartość w kolekcji odbiera oddzielnym wierszu. Użyj operatora [`mvexpand`](/azure/kusto/query/mvexpandoperator):
+     ```kusto
+    .create function DiagnosticLogRecordsExpand() {
+        DiagnosticLogsRawRecords
+        | mvexpand events = Records
+        | project
+            Timestamp = todatetime(events["time"]),
+            ResourceId = tostring(events["resourceId"]),
+            MetricName = tostring(events["metricName"]),
+            Count = toint(events["count"]),
+            Total = todouble(events["total"]),
+            Minimum = todouble(events["minimum"]),
+            Maximum = todouble(events["maximum"]),
+            Average = todouble(events["average"]),
+            TimeGrain = tostring(events["timeGrain"])
+    }
+    ```
+
+2. Dodaj [zasady aktualizacji](/azure/kusto/concepts/updatepolicy) do tabeli docelowej. Ta zasada zostanie automatycznie uruchomiona zapytanie na wszystkie nowo odebrane dane w *DiagnosticLogsRawRecords* danych pośrednich tabeli i pozyskiwanie ich wyników do *DiagnosticLogsRecords* tabeli:
+
+    ```kusto
+    .alter table DiagnosticLogsRecords policy update @'[{"Source": "DiagnosticLogsRawRecords", "Query": "DiagnosticLogRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Azure Event Hubs
@@ -252,12 +301,12 @@ Wybierz zasób, z którego chcesz eksportować metryki. Istnieje kilka typów za
     ![Ustawienia diagnostyczne](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. Zostanie otwarte okienko **Ustawienia diagnostyczne**. Wykonaj następujące kroki:
-    1. Nadaj danym z dziennika diagnostycznego nazwę *ADXExportedData*.
-    1. W obszarze **METRYKA** zaznacz pole wyboru **AllMetrics** (opcjonalnie).
-    1. Zaznacz pole wyboru **Przesyłaj strumieniowo do centrum zdarzeń**.
-    1. Wybierz pozycję **Konfiguruj**.
+   1. Nadaj danym z dziennika diagnostycznego nazwę *ADXExportedData*.
+   1. W obszarze **METRYKA** zaznacz pole wyboru **AllMetrics** (opcjonalnie).
+   1. Zaznacz pole wyboru **Przesyłaj strumieniowo do centrum zdarzeń**.
+   1. Wybierz pozycję **Konfiguruj**.
 
-    ![Okienko ustawień diagnostycznych](media/ingest-data-no-code/diagnostic-settings-window.png)
+      ![Okienko ustawień diagnostycznych](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. W okienku **Wybieranie centrum zdarzeń** skonfiguruj sposób eksportowania danych z dzienników diagnostycznych do utworzonego centrum zdarzeń:
     1. Z listy **Wybierz przestrzeń nazw centrum zdarzeń** wybierz pozycję *AzureMonitoringData*.
@@ -330,7 +379,7 @@ Teraz należy utworzyć połączenia danych dla dzienników aktywności i dzienn
 
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | **Tabela** | *DiagnosticLogsRecords* | Tabela utworzona w bazie danych *TestDatabase*. |
+    | **Tabela** | *DiagnosticLogsRawRecords* | Tabela utworzona w bazie danych *TestDatabase*. |
     | **Format danych** | *JSON* | Format używany w tabeli. |
     | **Mapowanie kolumn** | *DiagnosticLogsRecordsMapping* | Mapowanie utworzone w bazie danych *TestDatabase*, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli *DiagnosticLogsRecords*.|
     | | |
@@ -400,13 +449,14 @@ ActivityLogsRecords
 ```
 
 Wyniki zapytania:
+
 |   |   |
 | --- | --- |
 |   |  avg(DurationMs) |
 |   | 768,333 |
 | | |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się, jak pisać wiele innych zapytań dotyczących danych wyodrębnionych z usługi Azure Data Explorer, zapoznaj się z następującym artykułem:
 

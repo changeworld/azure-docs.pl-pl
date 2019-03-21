@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 70159b975fd38c918f0b21a384b76666957f058b
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
+ms.openlocfilehash: a5a364c2065a7f4b9607eb4b078456324f261ce8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593152"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121880"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem informacji o śledzeniu zmian 
 W tym samouczku utworzysz fabrykę usługi Azure Data Factory z potokiem służącym do ładowania danych przyrostowych na podstawie informacji o **śledzeniu zmian** w źródłowej bazie danych Azure SQL Database do magazynu Azure Blob Storage.  
@@ -144,7 +144,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
@@ -257,7 +260,7 @@ W tym kroku utworzysz zestaw danych reprezentujący dane skopiowane z magazynu d
 
     1. Wybierz pozycję **AzureStorageLinkedService** w polu **Połączona usługa**.
     2. Wprowadź ciąg **adftutorial/incchgtracking** w części **folder** ścieżki **filePath**.
-    3. Wprowadź ciąg **@CONCAT('Incremental-', pipeline().RunId, '.txt')** w części **file** ścieżki **filePath**.  
+    3. Wprowadź  **\@CONCAT (' przyrostowe-", pipeline(). RunId, '.txt')** dla **pliku** wchodzi w skład **filePath**.  
 
        ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -369,29 +372,29 @@ W tym kroku utworzysz potok z następującymi działaniami, który będzie okres
     ![Działanie Lookup (Wyszukiwanie) — nazwa](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. Przejdź do karty **Ustawienia** w oknie **Właściwości** i wykonaj następujące czynności:
 
-    1. Wybierz pozycję **SourceDataset** dla pola **Zestaw danych będący źródłem**.
-    2. Wybierz pozycję **Zapytanie** w polu **Użyj zapytania**. 
-    3. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL. 
+   1. Wybierz pozycję **SourceDataset** dla pola **Zestaw danych będący źródłem**.
+   2. Wybierz pozycję **Zapytanie** w polu **Użyj zapytania**. 
+   3. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL. 
 
-        ```sql
-        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
-        ```
+       ```sql
+       SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
+       ```
 
-    ![Działanie Lookup (Wyszukiwanie) — ustawienia](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![Działanie Lookup (Wyszukiwanie) — ustawienia](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. W przyborniku **Działania** rozwiń pozycję **Przepływ danych**, a następnie przeciągnij i upuść działanie **Copy** (Kopiowanie) do powierzchni projektanta potoku. Ustaw nazwę działania na **IncrementalCopyActivity**. To działanie kopiuje dane między ostatnią i bieżącą wersją rozwiązania Change Tracking w docelowym magazynie danych. 
 
     ![Działanie Copy (Kopiowanie) — nazwa](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. Przejdź do karty **Źródło** w oknie **Właściwości** i wykonaj następujące czynności:
 
-    1. Wybierz pozycję **SourceDataset** w obszarze **Zestaw danych będący źródłem**. 
-    2. Wybierz pozycję **Zapytanie** w polu **Użyj zapytania**. 
-    3. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL. 
+   1. Wybierz pozycję **SourceDataset** w obszarze **Zestaw danych będący źródłem**. 
+   2. Wybierz pozycję **Zapytanie** w polu **Użyj zapytania**. 
+   3. W obszarze **Zapytanie** wprowadź następujące zapytanie SQL. 
 
-        ```sql
-        select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
-        ```
+       ```sql
+       select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
+       ```
     
-    ![Działanie Copy (Kopiowanie) — ustawienia źródła](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
+      ![Działanie Copy (Kopiowanie) — ustawienia źródła](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
 9. Przejdź na kartę **Sink** i wybierz pozycję **SinkDataset** w polu **Zestaw danych będący ujściem**. 
 
     ![Działanie Copy (Kopiowanie) — ustawienia ujścia](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
@@ -413,7 +416,7 @@ W tym kroku utworzysz potok z następującymi działaniami, który będzie okres
         | Name (Nazwa) | Typ | Wartość | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
-        | TableName | Ciąg | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
+        | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![Działanie Stored Procedure (Procedura składowana) — parametry](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
 14. **Połącz działanie Copy (Kopiowanie) z działaniem Stored Procedure (Procedura składowana)**. Przeciągnij i upuść **zielony** przycisk dołączony do działania Copy (Kopiowanie) w obszarze działania Stored Procedure (Procedura składowana). 
@@ -422,9 +425,9 @@ W tym kroku utworzysz potok z następującymi działaniami, który będzie okres
 15. Na pasku narzędzi kliknij pozycję **Weryfikuj**. Potwierdź, że weryfikacja nie zwróciła błędów. Zamknij okno **Raport weryfikacji potoku**, klikając pozycję **>>**. 
 
     ![Przycisk Weryfikuj](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  Opublikuj jednostki (usługi połączone, zestawy danych i potoki) w usłudze Data Factory, klikając przycisk **Opublikuj wszystko**. Poczekaj na wyświetlenie komunikatu **Publikowanie powiodło się**. 
+16. Opublikuj jednostki (usługi połączone, zestawy danych i potoki) w usłudze Data Factory, klikając przycisk **Opublikuj wszystko**. Poczekaj na wyświetlenie komunikatu **Publikowanie powiodło się**. 
 
-        ![Przycisk Opublikuj](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![Przycisk Opublikuj](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Uruchamianie potoku kopiowania przyrostowego
 1. Kliknij pozycję **Wyzwól** na pasku narzędzi dla potoku, a następnie kliknij pozycję **Wyzwól teraz**. 
@@ -463,7 +466,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ```
 
     
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przejdź do poniższego samouczka, aby dowiedzieć się więcej o kopiowaniu nowych i zmienionych plików tylko na podstawie ich daty ostatniej modyfikacji:
 
 > [!div class="nextstepaction"]

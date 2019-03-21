@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: ae7408ac635b2825ab17f40786c3fd60b76d78ac
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: dea66cfe63f566afc1f0186f0386525f90564708
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892460"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175738"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>Szybki start: Uzyskiwanie listy obsługiwanych języków za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator przy użyciu języka C#
 
@@ -110,9 +110,17 @@ request.RequestUri = new Uri(host + route);
 // Send request, get response
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
-// Print the response
-Console.WriteLine(jsonResponse);
+// Pretty print the response
+Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
+```
+
+Aby wydrukować odpowiedzi z "Pretty Print" (formatowanie odpowiedzi), należy dodać tę funkcję do klasy Program:
+```
+static string PrettyPrint(string s)
+{
+    return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
+}
 ```
 
 ## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
@@ -133,6 +141,8 @@ dotnet run
 ```
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
+
+Znajdź skrót kraju, w tym [listę języków](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 ```json
 {

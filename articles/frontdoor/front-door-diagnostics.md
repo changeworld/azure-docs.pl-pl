@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: d409d451385ba1f88189b12cf372845e70a87429
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 5d4d591c465cae91c59e8f86ea9d3e421db0f952
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726374"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112113"
 ---
 # <a name="monitoring-metrics-for-front-door"></a>Monitorowanie metryk drzwi
 
@@ -59,7 +59,7 @@ Aby wyświetlić dzienniki aktywności:
 3. Wybierz żądany zakres filtrowania i kliknij przycisk **Zastosuj**.
 
 ## <a name="diagnostic-logging"></a>Dzienniki diagnostyczne
-Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez zasób. Dowiedz się więcej o [dzienników diagnostycznych usługi Azure Monitor](..\azure-monitor\platform\diagnostic-logs-overview.md). 
+Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez zasób. Dowiedz się więcej o [dzienników diagnostycznych usługi Azure Monitor](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
 Aby skonfigurować dzienniki diagnostyczne dla Twojego drzwiami frontowymi:
 

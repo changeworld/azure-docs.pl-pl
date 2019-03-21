@@ -1,71 +1,84 @@
 ---
-title: 'Szybki start: Interfejs API automatycznego sugerowania Bing, Ruby'
+title: 'Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i języka Ruby'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API automatycznego sugerowania Bing.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 0093554c1d4b9b315dcf7b6171d5ed1ff5ab9057
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: c7ba0fd34c789735cd92c25a728aec346dc88fcc
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875573"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009750"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>Przewodnik Szybki start dotyczący interfejsu API automatycznego sugerowania Bing w języku Ruby 
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Szybki start: Zaproponuj zapytania wyszukiwania przy użyciu interfejsu API REST automatycznego sugerowania Bing i języka Ruby
 
-W tym artykule pokazano, jak korzystać z [interfejsu API automatycznego sugerowania Bing](https://azure.microsoft.com/services/cognitive-services/autosuggest/) przy użyciu języka Ruby. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania wprowadzanego przez użytkownika w polu wyszukiwania. Ten interfejs API jest zwykle wywoływany za każdym razem, kiedy użytkownik wpisuje nowy znak w polu wyszukiwania, a następnie wyświetla sugestie na liście rozwijanej pola wyszukiwania. W tym artykule pokazano, w jaki sposób przesłać żądanie, które zwraca sugerowane ciągi zapytania dla terminu *sail*.
+Użyj tego przewodnika Szybki Start, aby rozpocząć wprowadzanie wywołania interfejsu API automatycznego sugerowania Bing i uzyskiwania odpowiedzi JSON. Ta prosta aplikacja języka Ruby wysyła zapytanie częściowe do interfejsu API i zwraca sugestie dotyczące wyszukiwania. Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić ten kod, potrzebne jest środowisko [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) lub nowsze.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) lub nowsza wersja.
 
-Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API automatycznego sugerowania Bing w wersji 7**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/#search) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>Pobieranie wyników automatycznego sugerowania
+## <a name="create-a-new-application"></a>Tworzenie nowej aplikacji
 
-1. Utwórz nowy projekt Ruby w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `subscriptionKey` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Uruchom program.
+1. Utwórz nowy plik języka Ruby w Twoim ulubionym środowiskiem IDE lub edytora. Dodaj następujące wymagania:
 
-```ruby
-require 'net/https'
-require 'uri'
-require 'json'
+    ```ruby
+    require 'net/https'
+    require 'uri'
+    require 'json'
+    ```
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+2. Tworzenie zmiennych dla interfejsu API hosta i ścieżkę, [rynek kodu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes), zapytanie wyszukiwania częściowe.
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'enter key here'
+    ```ruby
+    subscriptionKey = 'enter your key here'
+    host = 'https://api.cognitive.microsoft.com'
+    path = '/bing/v7.0/Suggestions'
+    mkt = 'en-US'
+    query = 'sail'
+    ```
 
-host = 'https://api.cognitive.microsoft.com'
-path = '/bing/v7.0/Suggestions'
+3. Utworzyć ciąg parametrów, dodając kod rynku `?mkt=` parametru i dołączenie kodu zapytania `&q=` parametru. Następnie można utworzyć identyfikatora URI żądania, łącząc dane hosta interfejsu API, ścieżki i ciąg parametrów.
 
-mkt = 'en-US'
-query = 'sail'
+    ```ruby
+    params = '?mkt=' + mkt + '&q=' + query
+    uri = URI (host + path + params)
+    ```
 
-params = '?mkt=' + mkt + '&q=' + query
-uri = URI (host + path + params)
+## <a name="create-and-send-an-api-request"></a>Tworzenie i wysyłanie żądania interfejsu API
 
-request = Net::HTTP::Get.new(uri)
-request['Ocp-Apim-Subscription-Key'] = subscriptionKey
+1. Utwórz żądanie za pomocą identyfikatora URI i klucz subskrypcji, aby dodać `Ocp-Apim-Subscription-Key` nagłówka.
+    
+    ```ruby
+    request = Net::HTTP::Get.new(uri)
+    request['Ocp-Apim-Subscription-Key'] = subscriptionKey
+    ```
 
-response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request (request)
-end
+2. Wyślij żądanie i Przechowaj odpowiedź.
+    
+    ```ruby
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        http.request (request)
+    end
+    ```
 
-puts JSON::pretty_generate (JSON (response.body))
-```
+3. Drukowanie odpowiedź w formacie JSON.
+    
+    ```ruby
+    puts JSON::pretty_generate (JSON (response.body))
+    ```
 
-### <a name="response"></a>Odpowiedź
+## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie:
 
@@ -133,12 +146,12 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Bing Autosuggest tutorial (Samouczek dotyczący automatycznego sugerowania Bing)](../tutorials/autosuggest.md)
+> [Tworzenie jednostronicowej aplikacji internetowej](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Czym jest funkcja automatycznego sugerowania Bing?](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 reference (Dokumentacja dotycząca automatycznego sugerowania Bing w wersji 7)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

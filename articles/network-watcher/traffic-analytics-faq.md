@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 946af124c5e16620c5052ac32d47ddb5fe4537d2
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 41b80e3914c93a4baeb39f35c7281f8fe81ff37c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835320"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -120,6 +120,12 @@ Nie. Nieprzetworzonych dzienników można przechowywać w wszystkich kont magazy
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Co zrobić, jeśli nie można skonfigurować sieciowej grupy zabezpieczeń do analizy ruchu z powodu błędu "Nie znaleziono"?
 
 Wybierz obsługiwany region. Jeśli wybierzesz-obsługiwany region, komunikat o błędzie "Nie znaleziono". Obsługiwane regiony są wymienione we wcześniejszej części tego artykułu.
+
+## <a name="why-am-i-getting-the-error-failed-to-update-flow-logs-settings-for--internalservererror-when-enabling-nsgs-in-us-gov-virginia"></a>Dlaczego otrzymuję błąd "nie można zaktualizować ustawień dzienników przepływów dla... InternalServerError..." Podczas włączania sieciowej grupy zabezpieczeń w przypadku administracja USA — Wirginia?
+
+Jest to spowodowane usterkę, gdy dostawca zasobów "Microsoft.Network" nie jest ponownie zarejestrować subskrypcji w Administracja USA — Wirginia. Zespół pracuje się nad rozwiązanie tego problemu. Jako obejście, konieczne będzie [ręcznie ponownie zarejestrować "Microsoft.Network" RP](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors). 
+
+Skontaktuj się z pomocą techniczną, jeśli problem będzie się powtarzać. 
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Co zrobić, jeśli pojawia się jego stan, "nie można załadować," w obszarze strony dzienniki przepływu sieciowej grupy zabezpieczeń?
 

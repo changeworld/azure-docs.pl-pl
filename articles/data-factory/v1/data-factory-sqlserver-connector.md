@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4fd3bd635cd45b3358d47cb1cfc6e88f3fafbe0d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: be36f9ab881f2375b14ba0ea36038f9e840d199f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453358"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997517"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Przenoszenie danych do i z programu SQL Server w środowisku lokalnym lub w usłudze IaaS (maszyna wirtualna Azure), za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -553,17 +553,15 @@ Potoku zawierającego działanie kopiowania, który jest skonfigurowany do używ
 
     Zobacz [Włączanie lub wyłączanie protokołu sieciowego serwera](https://msdn.microsoft.com/library/ms191294.aspx) szczegółowe informacje i alternatywnych sposobów włączania protokołu TCP/IP.
 3. W tym samym oknie, kliknij dwukrotnie **TCP/IP** można uruchomić **właściwości protokołu TCP/IP** okna.
-4. Przełącz się do **adresów IP** kartę. Przewiń w dół, zobacz **IPWszystkie** sekcji. Zanotuj ** TCP Port ** (wartość domyślna to **1433**).
+4. Przełącz się do **adresów IP** kartę. Przewiń w dół, zobacz **IPWszystkie** sekcji. Zanotuj **TCP Port**(wartość domyślna to **1433**).
 5. Tworzenie **reguły zapory Windows** na maszynie, aby zezwolić na przychodzący ruch za pośrednictwem tego portu.
 6. **Weryfikowanie połączenia**: Aby połączyć się z serwerem SQL przy użyciu w pełni kwalifikowanej nazwy, należy użyć programu SQL Server Management Studio na innej maszynie. Na przykład: "\<maszyny\>.\< domeny\>. corp.\<firmy\>.com, 1433. "
 
    > [!IMPORTANT]
-
+   > 
    > Zobacz [przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi](data-factory-move-data-between-onprem-and-cloud.md) Aby uzyskać szczegółowe informacje.
-   >
+   > 
    > Zobacz [problemów bramy](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) porady dotyczące rozwiązywania problemów z bramy połączenia/problemy związane z usługą.
-   >
-   >
 
 
 ## <a name="identity-columns-in-the-target-database"></a>Kolumny tożsamości w docelowej bazie danych

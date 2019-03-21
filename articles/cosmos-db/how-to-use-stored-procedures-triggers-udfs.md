@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/08/2018
 ms.author: mjbrown
-ms.openlocfilehash: 374bc040cf43f89899bbe1fc5b0835cff187ec9b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: d3ab0f78cc59c94a95aac6c067ad185476502f6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037603"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998619"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak rejestrować procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika oraz jak ich używać w usłudze Azure Cosmos DB
 
-Interfejs API SQL w usłudze Azure Cosmos DB obsługuje rejestrowanie i wywoływanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF) napisanych w języku JavaScript. W celu zarejestrowania i wywoływania procedur składowanych można użyć zestawów SDK interfejsu API SQL platform [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md) lub [Python](sql-api-sdk-python.md). Po zdefiniowaniu kilku procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika można je załadować i wyświetlić w witrynie [Azure Portal](https://portal.azure.com/) za pomocą Eksploratora danych.
+Interfejs API SQL w usłudze Azure Cosmos DB obsługuje rejestrowanie i wywoływanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF) napisanych w języku JavaScript. Można użyć interfejsu API SQL [.NET](sql-api-sdk-dotnet.md), [platformy .NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md), lub [Python](sql-api-sdk-python.md) zestawy SDK służące do rejestrowania i wywoływać procedur składowanych. Po zdefiniowaniu kilku procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika można je załadować i wyświetlić w witrynie [Azure Portal](https://portal.azure.com/) za pomocą Eksploratora danych.
 
 ## <a id="stored-procedures"></a>Jak uruchamiać procedury składowane
 
-Procedury składowane pisze się przy użyciu języka JavaScript. Mogą one tworzyć, aktualizować, odczytywać i usuwać elementy oraz wysyłać o nie zapytania w kontenerze usługi Azure Cosmos. Aby uzyskać więcej informacji na temat pisania procedur składowanych w usłudze Azure Cosmos DB, zobacz artykuł [Jak pisać procedury składowane w usłudze Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures).
+Procedury składowane pisze się przy użyciu języka JavaScript. Mogą one tworzyć, aktualizować, odczytywać i usuwać elementy oraz wysyłać o nie zapytania w kontenerze usługi Azure Cosmos. Aby uzyskać więcej informacji na temat sposobu pisania procedur składowanych w usłudze Azure Cosmos DB, zobacz [sposób pisania procedur składowanych w usłudze Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) artykułu.
 
 Poniższe przykłady pokazują, jak zarejestrować i wywoływać procedurę składowaną przy użyciu zestawów SDK usługi Azure Cosmos DB. Zapoznaj się z tematem [Tworzenie dokumentu](how-to-write-stored-procedures-triggers-udfs.md#create-an-item), ponieważ źródło tej procedury składowanej jest zapisane jako `spCreateToDoItem.js`.
 
@@ -423,7 +423,7 @@ Poniższe przykłady pokazują, jak zarejestrować funkcję zdefiniowaną przez 
 Poniższy kod pokazuje, jak zarejestrować funkcję zdefiniowaną przez użytkownika przy użyciu zestawu SDK platformy .NET:
 
 ```csharp
-string udfId = "udfTax";
+string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
@@ -439,7 +439,7 @@ Poniższy kod pokazuje, jak wywołać funkcję zdefiniowaną przez użytkownika 
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
-var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000"));
+var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000"));
 
 foreach (var result in results)
 {
@@ -453,7 +453,7 @@ Poniższy kod pokazuje, jak zarejestrować funkcję zdefiniowaną przez użytkow
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-String udfId = "udfTax";
+String udfId = "Tax";
 UserDefinedFunction udf = new UserDefinedFunction();
 udf.setId(udfId);
 udf.setBody(new String(Files.readAllBytes(Paths.get(String.format("..\\js\\%s.js", udfId)))));
@@ -465,7 +465,7 @@ Poniższy kod pokazuje, jak wywołać funkcję zdefiniowaną przez użytkownika 
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-Observable<FeedResponse<Document>> queryObservable = client.queryDocuments(containerLink, "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000", new FeedOptions());
+Observable<FeedResponse<Document>> queryObservable = client.queryDocuments(containerLink, "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000", new FeedOptions());
 final CountDownLatch completionLatch = new CountDownLatch(1);
 queryObservable.subscribe(
         queryResultPage -> {
@@ -491,7 +491,7 @@ Poniższy kod pokazuje, jak zarejestrować funkcję zdefiniowaną przez użytkow
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const udfId = "udfTax";
+const udfId = "Tax";
 await container.userDefinedFunctions.create({
     id: udfId,
     body: require(`../js/${udfId}`)
@@ -501,7 +501,7 @@ Poniższy kod pokazuje, jak wywołać funkcję zdefiniowaną przez użytkownika 
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const sql = "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000";
+const sql = "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000";
 const {result} = await container.items.query(sql).toArray();
 ```
 
@@ -514,7 +514,7 @@ with open('../js/udfTax.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
-            'id': 'trgPostUpdateMetadata',
+            'id': 'Tax',
             'serverScript': file_contents,
         }
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
@@ -524,10 +524,10 @@ Poniższy kod pokazuje, jak wywołać funkcję zdefiniowaną przez użytkownika 
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000'))
+results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Poznaj dodatkowe pojęcia i dowiedz się, jak pisać procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB:
 

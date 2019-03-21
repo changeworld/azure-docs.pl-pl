@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f72738d0ca9b8c6dc170892a985d821923a4405
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000014"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894023"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
 
@@ -34,8 +34,8 @@ W tym temacie omówiono typowe scenariusze, w którym przy użyciu filtrów moż
 ## <a name="overview"></a>Przegląd
 Podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) celem użytkownika jest dostarczanie wideo o wysokiej jakości do różnych urządzeń warunki panujące w sieci. Aby osiągnąć ten cel, wykonaj następujące czynności:
 
-* kodowanie strumienia do różnych szybkościach transmisji bitów ([adaptacyjną szybkością transmisji bitów](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) strumienia wideo (to zajmie się jakość i warunki sieciowe) i 
-* zastosowania usług Media Services [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md) do dynamicznego ponownego skompilowania pakietów strumienia do różnych protokołów (ten proces obsłuży przesyłania strumieniowego na różnych urządzeniach). Usługa Media Services obsługuje dostarczanie następujących technologii przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: HTTP na żywo, przesyłania strumieniowego (HLS), Smooth Streaming i MPEG DASH. 
+* kodowanie strumienia do różnych szybkościach transmisji bitów ([adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) strumienia wideo (to zajmie się jakość i warunki sieciowe) i 
+* zastosowania usług Media Services [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md) do dynamicznego ponownego skompilowania pakietów strumienia do różnych protokołów (ten proces obsłuży przesyłania strumieniowego na różnych urządzeniach). Usługa Media Services obsługuje dostarczanie następujących technologii przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: HTTP Live Streaming (HLS), Smooth Streaming i MPEG DASH. 
 
 ### <a name="manifest-files"></a>Pliki manifestu
 Podczas kodowania zasobów do przesyłania strumieniowego o adaptacyjnej szybkości transmisji bitów, **manifestu** (listy odtwarzania), plik zostanie utworzony (pliku jest tekstowa lub opartych na języku XML). **Manifestu** plik zawiera przesyłania strumieniowego metadane, takie jak: śledzenie typu (audio, wideo lub tekst), śledzenie, name, godzina rozpoczęcia i zakończenia, szybkości transmisji bitów (właściwości), Śledź języków, okna prezentacji (przesuwającego się okna o określonej długości) i kodera-dekodera wideo ( FourCC). Informuje również gracza, aby pobrać następny fragment, podając informacje o następnej rozgrywane fragmenty wideo dostępne i ich lokalizacji. Fragmenty (lub segmentów) są rzeczywiste "fragmentów" zawartości wideo.
@@ -72,7 +72,7 @@ Oto przykład pliku manifestu:
 
     </SmoothStreamingMedia>
 
-### <a name="dynamic-manifests"></a>O nazwie manifesty dynamiczne
+### <a name="dynamic-manifests"></a>Manifesty dynamiczne
 Istnieją [scenariuszy](media-services-dynamic-manifest-overview.md#scenarios) kiedy klient wymaga większej elastyczności niż opisane w pliku manifestu zasobu domyślnego. Na przykład:
 
 * Określone urządzenie: dostarczanie tylko określonej wersji i/lub ścieżek określonego języka, które są obsługiwane przez urządzenia, które służy do odtwarzania zawartości ("odwzorowanie filtering"). 
