@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0f5de24d42ccc930a4746251b9f466f241c3508e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f0bac9d50e73ed703905545261e86796ede214e2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180844"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -193,6 +193,9 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
 
 Więcej informacji na temat wymagane porty dla oprogramowania SAP HANA na ten temat można znaleźć w rozdziale [połączenia baz danych dzierżaw](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) w [baz danych SAP HANA dzierżawy](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) przewodnika lub [2388694 Uwaga SAP][2388694].
 
+> [!IMPORTANT]
+> Nie należy włączać czasowe TCP na maszynach wirtualnych Azure umieszczonych za modułem równoważenia obciążenia platformy Azure. Włączenie protokołu TCP sygnatur czasowych spowoduje, że sondy kondycji nie powiedzie się. Ustaw parametr **net.ipv4.tcp_timestamps** do **0**. Aby uzyskać szczegółowe informacje, zobacz [sondy kondycji modułu równoważenia obciążenia](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> Uwaga SAP [2382421](https://launchpad.support.sap.com/#/notes/2382421) obecnie zawiera sprzeczną instrukcji, można ustawić net.ipv4.tcp_timestamps 1 wniosku. Dla maszyn wirtualnych platformy Azure umieszczone za modułem równoważenia obciążenia platformy Azure, ustaw parametr **net.ipv4.tcp_timestamps** do **0**. 
 
 ## <a name="create-a-pacemaker-cluster"></a>Tworzenie klastra program Pacemaker
 
