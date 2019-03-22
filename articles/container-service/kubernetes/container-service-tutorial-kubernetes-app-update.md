@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993510"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006252"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(PRZESTARZAŁE) Aktualizowanie aplikacji w rozwiązaniu Kubernetes
 
@@ -75,7 +75,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>Testowanie aplikacji w środowisku lokalnym
 
-Przejdź do adresu http://localhost:8080, aby wyświetlić zaktualizowaną aplikację.
+Przejdź do adresu `http://localhost:8080`, aby wyświetlić zaktualizowaną aplikację.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -160,7 +160,7 @@ Przejdź do adresu IP, aby wyświetlić zaktualizowaną aplikację.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zaktualizowano aplikację i wydano tę aktualizację do klastra Kubernetes. Wykonano następujące zadania:
 

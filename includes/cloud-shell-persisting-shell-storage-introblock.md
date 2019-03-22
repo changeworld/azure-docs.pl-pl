@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56247048"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051699"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w usłudze Azure Cloud Shell
 Usługa cloud Shell korzysta z usługi Azure File storage, aby utrwalać pliki między sesjami. W menu start początkowej usługi Cloud Shell monituje o skojarzyć udział plików nowej lub istniejącej utrwalanie plików między sesjami.
@@ -48,6 +48,7 @@ Gdy zostanie wyświetlony monit o konfiguracji magazynu, wybierz pozycję **Poka
 Skojarzonych kont muszą znajdować się w tym samym regionie, co komputer Cloud Shell, na którym jest zainstalowanie, ich do magazynu platformy Azure. Można znaleźć usługi bieżącego regionu, możesz uruchomić `env` w powłoce Bash i Znajdź zmienną `ACC_LOCATION`. Udziały plików wyświetlany obraz 5 GB do utrwalenia swoje `$Home` katalogu.
 
 Cloud Shell maszyn istnieją w następujących regionach:
+
 |Obszar|Region|
 |---|---|
 |Ameryki|Wschodnie stany USA, południowo-środkowe stany USA, zachodnie stany USA|

@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z ponownego uruchomienia maszyny Wirtualnej infrastruktury platformy Azure w celu osiągnięcia "wyższej dostępności" systemu SAP | Dokumentacja firmy Microsoft
-description: Korzystanie z ponownego uruchomienia maszyny Wirtualnej infrastruktury platformy Azure w celu osiągnięcia "wyższej dostępności" aplikacje SAP
+title: Korzystanie z ponownego uruchamiania maszyny Wirtualnej infrastruktury platformy Azure do osiągnięcia "wyższej dostępności" systemu SAP | Dokumentacja firmy Microsoft
+description: Korzystanie z ponownego uruchamiania maszyny Wirtualnej infrastruktury platformy Azure do osiągnięcia "wyższej dostępności" aplikacje SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82396d3a2eadd0257bbe65f36a78cf4e7731ec16
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657557"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009364"
 ---
-# <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Korzystanie z ponownego uruchomienia maszyny Wirtualnej infrastruktury platformy Azure w celu osiągnięcia "wyższej dostępności" systemu SAP
+# <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Korzystanie z ponownego uruchamiania maszyny Wirtualnej infrastruktury platformy Azure do osiągnięcia "wyższej dostępności" systemu SAP
 
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -42,7 +42,7 @@ ms.locfileid: "34657557"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -126,7 +126,7 @@ ms.locfileid: "34657557"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności identyfikatora SID multi SAP)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności — wiele identyfikatorów SID SAP)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -209,79 +209,79 @@ ms.locfileid: "34657557"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-> Ta sekcja ma zastosowanie do:
+> W tej sekcji mają zastosowanie do:
 >
-> ![Windows][Logo_Windows] System Windows i ![Linux][Logo_Linux] Linux
+> ![Windows][Logo_Windows] Windows i ![Linux][Logo_Linux] Linux
 >
 
-Jeśli nie chcesz używać funkcji takich jak Windows Server Failover Clustering (WSFC) lub rozrusznik w systemie Linux (obecnie obsługiwane tylko w systemie SUSE Linux Enterprise Server [SLES] 12 i nowszych), jest wykorzystywany ponownego uruchomienia maszyny Wirtualnej platformy Azure. Chroni systemów SAP przed planowanych lub nieplanowanych przestojów infrastruktury Azure serwera fizycznego i ogólnej podstawowej platformy Azure.
+Jeśli zdecydujesz się nie należy używać funkcji, takich jak Windows Server Failover Clustering (WSFC) lub program Pacemaker w systemie Linux (obecnie obsługiwane tylko w przypadku systemu SUSE Linux Enterprise Server [SLES] 12 i nowsze), ponowne uruchomienie maszyny Wirtualnej platformy Azure jest używana. Chroni systemów SAP przed planowanych lub nieplanowanych przestojów infrastruktury platformy Azure serwer fizyczny i ogólną podstawowej platformy Azure.
 
 > [!NOTE]
-> Azure ponownego uruchomienia maszyny Wirtualnej głównie chroni maszyny wirtualne i *nie* aplikacji. Mimo że ponowne uruchomienie maszyny Wirtualnej nie oferują wysoką dostępność aplikacji SAP, oferuje pewien poziom dostępności infrastruktury. Oferuje on również pośrednio "wyższej dostępności" systemów SAP. Dostępna jest również nie umowy SLA dla czasu, jaki zajmuje ponowne uruchomienie maszyny Wirtualnej po awarii hosta planowane lub nieplanowane, co sprawia, że ta metoda wysokiej dostępności nie nadaje się do krytycznych składników systemu SAP. Przykłady krytycznych składników może być wystąpieniem ASCS/SCS lub systemu zarządzania bazami (danych DBMS).
+> Ponownego uruchamiania maszyny Wirtualnej platformy Azure przede wszystkim chroni maszyny wirtualne i *nie* aplikacji. Mimo że ponownego uruchamiania maszyny Wirtualnej nie oferują wysoką dostępność aplikacji SAP, oferuje pewien poziom dostępność infrastruktury. Oferuje ona pośrednio "wyższą dostępność" systemów SAP. Czas, jaki zajmuje ponowne uruchomienie maszyny Wirtualnej po awarii hosta planowane lub nieplanowane, co sprawia, że ta metoda wysokiej dostępności jest nieodpowiedni dla krytycznych składników systemu SAP również jest objęta umową SLA. Przykłady krytycznych składników może być wystąpienie ASCS/SCS lub system zarządzania bazy danych (DBMS).
 >
 >
 
-Inny element ważne infrastruktury wysokiej dostępności jest magazynu. Na przykład SLA magazynu platformy Azure jest dostępności 99,9%. W przypadku wdrożenia wszystkich maszyn wirtualnych i ich dyski na koncie magazynu Azure pojedynczego, potencjalne niedostępności usługi Azure Storage spowoduje niedostępność wszystkich maszyn wirtualnych, które są umieszczone na tym koncie magazynu i wszystkie składniki SAP, które działają w ramach maszyn wirtualnych.  
+Inny element ważne infrastruktury wysokiej dostępności jest magazyn. Na przykład umowę SLA magazynu platformy Azure jest przez 99,9% czasu. W przypadku wdrożenia wszystkich maszyn wirtualnych i ich dysków na koncie jednego magazynu platformy Azure, potencjalne niedostępność usługi Azure Storage spowoduje niedostępność wszystkich maszyn wirtualnych, które są umieszczane w ramach tego konta magazynu i wszystkie składniki SAP działające wewnątrz maszyn wirtualnych.  
 
-Zamiast wprowadzania wszystkich maszyn wirtualnych do jednego konta magazynu Azure, możesz użyć kont dedykowanych dla magazynu dla każdej maszyny Wirtualnej. Przy użyciu wielu kont niezależne magazynu Azure, możesz zwiększyć ogólnej dostępności maszyny Wirtualnej i SAP aplikacji.
+Zamiast umieszczenie wszystkich maszyn wirtualnych pod uwagę pojedynczy magazyn platformy Azure, możesz użyć kont dedykowanych dla magazynu dla każdej maszyny Wirtualnej. Za pomocą wielu kont niezależnie od magazynu platformy Azure, można zwiększyć ogólną dostępność aplikacji maszyny Wirtualnej i SAP.
 
-Dyskach zarządzanych platformy Azure są automatycznie umieszczane w domenie awarii maszyny wirtualnej, które są dołączone. Jeśli umieść dwóch maszyn wirtualnych w zestawie dostępności i używać dysków zarządzanych platformy odpowiada on za dystrybucję dysków zarządzanych w również domen błędów różnych. Jeśli planujesz użyć konta magazynu premium, zdecydowanie zaleca się korzystanie z dysków zarządzanych.
+Usługi Azure managed disks są automatycznie umieszczane w domenie błędów maszyny wirtualnej, które są dołączone. Jeśli umieszczenia dwóch maszyn wirtualnych w zestawie dostępności, użyj usługi managed disks platformy zajmuje się dystrybucja dysków zarządzanych w różnych domenach błędów także. Jeśli zamierzasz używać konta usługi premium storage, zdecydowanie zalecamy używanie dysków zarządzanych.
 
-Przykładowa architektura systemu SAP NetWeaver, który używa wysokiej dostępności i magazyn kont infrastruktury platformy Azure może wyglądać następująco:
+Przykładowa architektura systemu SAP NetWeaver, który korzysta z infrastruktury platformy Azure o wysokiej dostępności kont usług i storage może wyglądać następująco:
 
-![Korzystanie z wysokiej dostępności infrastruktury platformy Azure do osiągnięcia SAP "wyższej dostępności aplikacji"][planning-guide-figure-2900]
+![Korzystanie z wysoką dostępność infrastruktury platformy Azure do osiągnięcia SAP aplikacji "wyższej dostępności"][planning-guide-figure-2900]
 
-Przykładowa architektura systemu SAP NetWeaver, który korzysta z infrastrukturą systemu Azure wysokiej dostępności i zarządzanych dysków może wyglądać następująco:
+Przykładowa architektura systemu SAP NetWeaver, który korzysta z infrastruktury platformy Azure o wysokiej dostępności i dyski zarządzane, może wyglądać następująco:
 
-![Korzystanie z wysokiej dostępności infrastruktury platformy Azure do osiągnięcia SAP "wyższej dostępności aplikacji"][planning-guide-figure-2901]
+![Korzystanie z wysoką dostępność infrastruktury platformy Azure do osiągnięcia SAP aplikacji "wyższej dostępności"][planning-guide-figure-2901]
 
-Dla krytycznych składników SAP zostały osiągnięte następujące wykonanej do tej pory:
+Dla krytycznych składników SAP otrzymano poniżej do tej pory:
 
 * Wysoką dostępność serwerów aplikacji SAP
 
-    Wystąpień serwera aplikacji SAP są działanie elementów nadmiarowych. Każde wystąpienie serwera aplikacji SAP jest wdrażana na jego własnej maszynie Wirtualnej jest uruchomiona w różnych błędów platformy Azure i domena uaktualnienia. Aby uzyskać więcej informacji, zobacz [Fault domen] [ planning-guide-3.2.1] i [uaktualnienia domen] [ planning-guide-3.2.2] sekcje. 
+    Wystąpień serwera aplikacji SAP są składnikom nadmiarowym. Każde wystąpienie serwera aplikacji SAP jest wdrażana na własnej maszynie Wirtualnej działa w różnych domenach błędów platformy Azure i domeny uaktualnień. Aby uzyskać więcej informacji, zobacz [domeny błędów] [ planning-guide-3.2.1] i [uaktualnień] [ planning-guide-3.2.2] sekcje. 
 
-    Ta konfiguracja zapewnia przy użyciu zestawów dostępności Azure. Aby uzyskać więcej informacji, zobacz [zestawami dostępności Azure] [ planning-guide-3.2.3] sekcji. 
+    Ta konfiguracja może upewnij się, korzystając z zestawami dostępności platformy Azure. Aby uzyskać więcej informacji, zobacz [zestawami dostępności platformy Azure] [ planning-guide-3.2.3] sekcji. 
 
-    Potencjalne planowane lub nieplanowane niedostępność Azure awarii lub domena uaktualnienia spowoduje niedostępność ograniczonej liczby maszyn wirtualnych z ich SAP wystąpień serwera aplikacji.
+    Potencjalne planowane lub nieplanowane niedostępność błędów platformy Azure lub domena uaktualnienia spowoduje, że niedostępność ograniczonej liczby maszyn wirtualnych z ich wystąpień serwera aplikacji SAP.
 
-    Każdego wystąpienia serwera aplikacji SAP znajduje się w jego własnej kontem magazynu platformy Azure. Potencjalne niedostępności jedno konto magazynu Azure spowoduje niedostępność tylko jedna maszyna wirtualna z wystąpieniem SAP aplikacji serwera. Należy jednak pamiętać, że istnieje limit liczby kont magazynu Azure w ramach jednej subskrypcji platformy Azure. Aby zapewnić automatyczne uruchamianie wystąpienia ASCS/SCS po ponownym uruchomieniu maszyny Wirtualnej, należy ustawić parametr Autostart w profilu uruchamiania ASCS/SCS wystąpienia, który jest opisany w [przy użyciu Autostart dla wystąpień SAP] [ planning-guide-11.5] sekcja.
+    Każde wystąpienie serwera aplikacji SAP jest umieszczany w swoje własne konta magazynu platformy Azure. Potencjalne niedostępności jedno konto magazynu platformy Azure spowoduje niedostępność tylko jednej maszyny Wirtualnej z wystąpieniem serwera aplikacji SAP. Należy jednak pamiętać, że istnieje ograniczenie liczby kont usługi Azure storage w ramach jednej subskrypcji platformy Azure. Aby zapewnić automatyczne uruchamianie wystąpienia ASCS/SCS po ponownym uruchomieniu maszyny Wirtualnej, należy ustawić parametr automatyczne uruchamianie w profilu uruchamiania wystąpienia ASCS/SCS, który został opisany w [przy użyciu funkcji Autostart dla wystąpień SAP] [ planning-guide-11.5] sekcja.
   
     Aby uzyskać więcej informacji, zobacz [wysokiej dostępności dla serwerów aplikacji SAP][planning-guide-11.4.1].
 
-    Nawet jeśli w przypadku używania dysków zarządzanych dyski są przechowywane na koncie magazynu Azure i mogą być niedostępne w przypadku awarii magazynu.
+    Nawet wtedy, gdy korzystają z dysków zarządzanych dysków są przechowywane na koncie magazynu platformy Azure i mogą być niedostępne w przypadku awarii magazynu.
 
-* *Wyższej dostępności* SAP ASCS/SCS wystąpień
+* *Wyższą dostępność* SAP ASCS/SCS wystąpień
 
-    W tym scenariuszu wykorzystywać ponownego uruchomienia maszyny Wirtualnej Azure ochronę maszyny Wirtualnej z wystąpieniem SAP ASCS/SCS zainstalowane. W przypadku planowane lub nieplanowane przestoje serwerów Azure maszyny wirtualne są ponownie uruchamiane na innym serwerze dostępne. Jak wspomniano wcześniej, ponowne uruchomienie maszyny Wirtualnej Azure przede wszystkim chroni maszyny wirtualne i *nie* aplikacji, w tym przypadku wystąpienie ASCS/SCS. Do ponownego uruchomienia maszyny Wirtualnej pośrednio osiągnąć "wyższej dostępności" SAP ASCS/SCS wystąpienia. 
+    W tym scenariuszu wykorzystywać ponownego uruchomienia maszyny Wirtualnej platformy Azure, aby chronić maszynę Wirtualną za pomocą zainstalowanego wystąpienia SAP ASCS/SCS. W przypadku planowanych lub nieplanowanych przestojów serwerami platformy Azure maszyny wirtualne zostaną uruchomione ponownie na innym serwerze dostępne. Jak wspomniano wcześniej, ponowne uruchomienie maszyny Wirtualnej platformy Azure przede wszystkim chroni maszyny wirtualne i *nie* aplikacji, w tym przypadku wystąpienia ASCS/SCS. Za pomocą ponownego uruchamiania maszyny Wirtualnej pośrednio osiągnąć "wyższa dostępność" na wystąpienie SAP ASCS/SCS. 
 
-    Aby zapewnić automatyczne uruchamianie wystąpienia ASCS/SCS po ponownym uruchomieniu maszyny Wirtualnej, ustaw dla parametru Autostart w profilu uruchamiania wystąpienia ASCS/SCS, zgodnie z opisem w [przy użyciu Autostart dla wystąpień SAP] [ planning-guide-11.5] sekcji . To ustawienie oznacza, że wystąpienia ASCS/SCS jako pojedynczy punkt awarii (SPOF) w jednej maszyny Wirtualnej określają dostępności całego poziomej SAP.
+    Aby zapewnić automatyczne uruchamianie wystąpienia ASCS/SCS po ponownym uruchomieniu maszyny Wirtualnej, ustaw dla parametru automatyczne uruchamianie w profilu uruchamiania wystąpienia ASCS/SCS, zgodnie z opisem w [przy użyciu funkcji Autostart dla wystąpień SAP] [ planning-guide-11.5] sekcji . To ustawienie oznacza, że wystąpienie ASCS/SCS jako pojedynczy punkt awarii (SPOF), uruchomiony w jednej maszynie Wirtualnej określi dostępności całe środowisko SAP.
 
-* *Wyższej dostępności* bazami danych serwera
+* *Wyższą dostępność* serwera systemu DBMS
 
-    Jak w poprzednim wystąpieniem SAP ASCS/SCS przypadek użycia, wykorzystywać ponownego uruchomienia maszyny Wirtualnej platformy Azure do ochrony maszyny Wirtualnej z zainstalowanego oprogramowania systemu DBMS i zapewnienia "wyższej dostępności" oprogramowania systemu DBMS poprzez ponowne uruchomienie maszyny Wirtualnej.
+    Tak jak w poprzednim wystąpienia SAP ASCS/SCS przypadek użycia, korzystanie z ponownego uruchomienia maszyny Wirtualnej platformy Azure w celu ochrony tej maszyny Wirtualnej z zainstalowanym oprogramowaniem DBMS i osiągnięcia "wyższą dostępność" DBMS oprogramowania za pośrednictwem ponownego uruchamiania maszyny Wirtualnej.
   
-    System DBMS, działającej w jednej maszyny Wirtualnej jest również SPOF i jest współczynnik dominującego dostępności całego poziomej SAP.
+    System DBMS, działający w pojedynczej maszyny Wirtualnej jest również SPOF i jest dominującego współczynnik dostępność całe środowisko SAP.
 
-## <a name="using-autostart-for-sap-instances"></a>Przy użyciu Autostart dla wystąpień SAP
-SAP oferuje ustawienie, który umożliwia uruchomienie wystąpienia programu SAP natychmiast po rozpoczęciu systemu operacyjnego w Maszynie wirtualnej. Instrukcje są udokumentowane w artykule bazy wiedzy SAP [1909114]. Jednak SAP już zalecane jest stosowanie ustawień, ponieważ nie umożliwia kontroli kolejności wystąpienia zostanie ponownie uruchomiony, jeśli ma to wpływ na więcej niż jedną maszynę Wirtualną lub wykonywania wielu wystąpień dla maszyny Wirtualnej. 
+## <a name="using-autostart-for-sap-instances"></a>Za pomocą funkcji Autostart dla wystąpieniami platformy SAP
+Oprogramowanie SAP udostępnia ustawienia, która umożliwia uruchamianie wystąpieniami platformy SAP natychmiast po rozpoczęciu systemu operacyjnego na maszynie wirtualnej. Instrukcje są udokumentowane w artykule bazy wiedzy SAP [1909114]. Jednak SAP nie są już zalecane jest stosowanie ustawienia, ponieważ nie zezwala na formant kolejności ponowne uruchamianie wystąpienia, jeśli występuje więcej niż jednej maszyny Wirtualnej lub wielu wystąpień są uruchomione na maszynie Wirtualnej. 
 
-Zakładając, że typowy scenariusz Azure jednego wystąpienia serwera SAP aplikacji w maszynie Wirtualnej i jednej maszyny Wirtualnej po pewnym czasie ponownie uruchomić pobieranie, Autostart nie jest krytyczna. Jednak możesz je włączyć, dodając następujący parametr do profilu uruchamiania wystąpienia SAP zaawansowane biznesowych aplikacji programowania (ABAP) lub Java:
+Zakładając, że typowy scenariusz Azure jednego wystąpienia serwera aplikacji SAP w Maszynę wirtualną i pojedynczą maszynę Wirtualną po pewnym czasie ponownie uruchomić pobieranie, Autostart nie jest krytyczny. Jednak możesz je włączyć, dodając następujący parametr do profilu uruchamiania wystąpienia SAP Advanced Business Application programowania (ABAP) lub Java:
 
       Autostart = 1
 
 
   > [!NOTE]
-  > Parametr Autostart ma również niektórych nieprawidłowości. W szczególności parametr wyzwalane początku wystąpienia SAP ABAP lub Java, po uruchomieniu pokrewne usługi systemu Windows lub Linux wystąpienia. Czy sekwencji występuje, gdy system operacyjny jest uruchamiany. Jednak ponowne uruchomienie usługi SAP są również często dochodzi do zarządzania cyklem życia oprogramowania SAP funkcje takie jak Menedżer aktualizacji oprogramowania (suma) lub innych aktualizacji lub uaktualnienia. Te funkcje nie są oczekiwane jest wystąpienie automatycznie uruchamiany ponownie. W związku z tym parametrze Autostart powinno zostać wyłączone przed rozpoczęciem realizacji tych zadań. Parametr Autostart powinien nie również w wystąpieniach programu SAP, które są klastrowane, takich jak ASCS/SCS/CI.
+  > Parametr Autostart ma również niektórych wad. W szczególności parametru wyzwalane początku wystąpienia SAP ABAP i Java, po uruchomieniu usługa Windows lub Linux pokrewna wystąpienia. Czy sekwencji występuje, gdy jest uruchamiany system operacyjny. Jednak ponowne uruchomienie usługi SAP są również wystąpieniem typowe dla funkcji zarządzania cyklem życia oprogramowania SAP, takie jak Menedżer aktualizacji oprogramowania (SUM) lub innych aktualizacji lub uaktualnienia. Te funkcje nie są oczekiwane wystąpienie, które automatycznie uruchomiony ponownie. W związku z tym parametr Autostart powinna być wyłączona, przed uruchomieniem zadania, takie. Parametr Autostart powinna nie również dla wystąpień SAP, które są klastrowane, takich jak ASCS/SCS/ciągłej integracji.
   >
   >
 
-  Aby uzyskać więcej informacji o Autostart dla wystąpień SAP zobacz następujące artykuły:
+  Aby uzyskać więcej informacji o Autostart wystąpieniami platformy SAP zobacz następujące artykuły:
 
-  * [Uruchamianie lub zatrzymywanie SAP wraz z uruchomienie serwera/zatrzymanie systemu Unix](http://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
-  * [Uruchamianie i zatrzymywanie SAP NetWeaver zarządzania agentami](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-  * [Jak włączyć automatyczne uruchamianie HANA bazy danych](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+  * [Uruchamianie lub zatrzymywanie SAP oraz usługi Unix serwera uruchomień/zatrzymań](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
+  * [Uruchamianie i zatrzymywanie agentów zarządzania środowiska SAP NetWeaver](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
+  * [Jak włączyć automatyczne uruchamianie bazy danych HANA](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Uzyskać informacji o pełnej SAP NetWeaver obsługującej wysokiej dostępności, zobacz [SAP wysoką dostępność aplikacji na platformie Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha].
+Aby uzyskać informacji na temat pełnego środowiska SAP NetWeaver wykrywaniem aplikacji wysokiej dostępności, zobacz [wysoka dostępność aplikacji SAP na platformie IaaS Azure][sap-high-availability-architecture-scenarios-sap-app-ha].

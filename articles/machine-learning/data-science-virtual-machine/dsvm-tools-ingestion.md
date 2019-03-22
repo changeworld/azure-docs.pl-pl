@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 824793c9897d7d728f621182a02a6092edc69e89
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 92ff5d21fc30d8fcafe97a2b452ff157a2cd5f86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452383"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997026"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Narzędzia do wprowadzania danych maszyny wirtualnej do nauki o danych
 
-Jest jedną z pierwszych kroków pomoc do nauki o danych lub projektu sztucznej Inteligencji do identyfikowania zestawów danych, można użyć do dostosowania ich do środowiska usługi analytics. Maszyna wirtualna do nauki o danych (DSVM) udostępnia narzędzia i biblioteki, aby wyświetlić dane z różnych źródeł w magazynie danych analitycznych, lokalnie na maszyny DSVM lub na platformie danych w chmurze lub lokalnie. 
+Jest jedną z pierwszych kroków pomoc do nauki o danych lub projektu sztucznej Inteligencji do identyfikowania zestawów danych, można użyć do dostosowania ich do środowiska usługi analytics. Maszyna wirtualna do nauki o danych (DSVM) udostępnia narzędzia i biblioteki, aby wyświetlić dane z różnych źródeł w magazynie danych analitycznych lokalnie na maszyny DSVM lub na platformie danych w chmurze lub lokalnie. 
 
 Poniżej przedstawiono niektóre narzędzia przenoszenia danych, które udostępniliśmy maszyny DSVM. 
 

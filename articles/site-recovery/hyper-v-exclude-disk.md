@@ -8,17 +8,18 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216969"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992345"
 ---
 # <a name="exclude-disks-from-replication"></a>Wykluczanie dysków z replikacji
 W tym artykule opisano sposób wykluczania dysków z replikacji. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski.
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
+
 **Funkcja** | **Z programu VMware do platformy Azure** | **Z funkcji Hyper-V do platformy Azure** | **Z platformy Azure do platformy Azure**| **Z funkcji Hyper-V do funkcji Hyper-V** 
 --|--|--|--|--
 Wykluczanie dysku | Yes | Yes | Nie | Nie
@@ -72,7 +73,7 @@ Na źródłowej maszynie wirtualnej są następujące dyski:
 DB-Disk0-OS | DYSK0 | C:\ | Dysk systemu operacyjnego
 DB-Disk1| Dysk1 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 DB-Disk2 (wykluczono dysk z ochrony) | Dysk2 | E:\ | Pliki tymczasowe
-DB-Disk3 (wykluczono dysk z ochrony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\) </br /> </br />Zanotuj ścieżkę folderu przed przełączeniem w tryb failover.
+DB-Disk3 (wykluczono dysk z ochrony) | Dysk3 | F:\ | Baza danych SQL tempdb — ścieżka folderu (F:\MSSQL\Data\) <br /> <br />Zanotuj ścieżkę folderu przed włączeniem trybu failover.
 DB-Disk4 | Dysk4 |G:\ |Baza danych użytkownika 2
 
 Ponieważ zmiany danych na dwóch dyskach maszyny wirtualnej dotyczą danych tymczasowych, podczas włączania ochrony maszyny wirtualnej bazy danych SalesDB, wyklucz dyski Dysk2 i Dysk3 z replikacji. Usługa Azure Site Recovery nie będzie replikować tych dysków. Po przełączeniu w tryb failover te dyski nie będą istnieć na maszynie wirtualnej w trybie failover na platformie Azure.
@@ -82,7 +83,7 @@ Dyski na maszynie wirtualnej platformy Azure po przełączeniu w tryb failover b
 **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | ---
 DYSK0 | C:\ | Dysk systemu operacyjnego
-Dysk1 | E:\ | Magazyn tymczasowy</br /> </br />Platforma Azure dodaje ten dysk i przypisuje mu pierwszą dostępną literę dysku.
+Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje pierwszą dostępną literę dysku.
 Dysk2 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk3 | G:\ | Baza danych użytkownika 2
 
@@ -146,7 +147,7 @@ W poprzednim przykładzie konfiguracja dysków maszyny wirtualnej platformy Azur
 **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | ---
 DYSK0 | C:\ | Dysk systemu operacyjnego
-Dysk1 | E:\ | Magazyn tymczasowy</br /> </br />Platforma Azure dodaje ten dysk i przypisuje mu pierwszą dostępną literę dysku.
+Dysk1 | E:\ | Magazyn tymczasowy<br /> <br />Platforma Azure dodaje ten dysk i przypisuje pierwszą dostępną literę dysku.
 Dysk2 | D:\ | Systemowa baza danych SQL i baza danych użytkownika 1
 Dysk3 | G:\ | Baza danych użytkownika 2
 
@@ -186,7 +187,7 @@ Po przełączeniu maszyny wirtualnej w tryb failover z funkcji Hyper-V do platfo
 **Nazwa dysku** | **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | --- | ---
 DB-Disk0-OS | DYSK0 | C:\ | Dysk systemu operacyjnego
-DB-Disk1 | Dysk1 | D:\ | Magazyn tymczasowy</br /> </br />pagefile.sys
+DB-Disk1 | Dysk1 | D:\ | Magazyn tymczasowy<br /> <br />pagefile.sys
 DB-Disk2 | Dysk2 | E:\ | Dane użytkowników 1
 DB-Disk3 | Dysk3 | F:\ | Dane użytkowników 2
 
@@ -213,10 +214,10 @@ Poniżej przedstawiono ustawienia pliku stronicowania na lokalnej maszynie wirtu
 
 Po przełączeniu maszyny wirtualnej w tryb failover z funkcji Hyper-V do platformy Azure maszyna wirtualna platformy Azure będzie mieć następujące dyski:
 
-**Nazwa dysku**| **Nr dysku systemu operacyjnego gościa**| **Litera dysku** | **Typ danych na dysku**
+**Nazwa dysku** | **Nr dysku systemu operacyjnego gościa** | **Litera dysku** | **Typ danych na dysku**
 --- | --- | --- | ---
 DB-Disk0-OS | DYSK0  |C:\ |Dysk systemu operacyjnego
-DB-Disk1 | Dysk1 | D:\ | Magazyn tymczasowy</br /> </br />pagefile.sys
+DB-Disk1 | Dysk1 | D:\ | Magazyn tymczasowy<br /> <br />pagefile.sys
 DB-Disk2 | Dysk2 | E:\ | Dane użytkowników 1
 DB-Disk3 | Dysk3 | F:\ | Dane użytkowników 2
 

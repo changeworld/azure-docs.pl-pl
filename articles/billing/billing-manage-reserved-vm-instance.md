@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: dbfb559516177d496f5b16dc31f0ef8d0603cf68
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743637"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904018"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
@@ -38,13 +38,13 @@ Aby zaktualizować zakresu rezerwacji:
 4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
 5. Zmień zakres.
 
-W przypadku zmiany z udostępnionego przez pojedynczy zakres, można wybrać tylko te subskrypcje, których jesteś właścicielem. Można wybrać tylko subskrypcje w ramach tego samego kontekstu rozliczeń, co Rezerwacja.
+W przypadku zmiany z udostępnionego przez pojedynczy zakres, można wybrać tylko te subskrypcje, których jesteś właścicielem. Wybrać można tylko subskrypcje w ramach tego samego kontekstu rozliczeń, co rezerwacja.
 
-Zakres ma zastosowanie tylko do oferty płatności, oferowanych MS-AZR - 0003 P lub MS-AZR - 0023 P, Enterprise MS-AZR - 0017 P lub MS-AZR - 0148 P lub typów subskrypcji dostawcy CSP.
+Zakres ma zastosowanie tylko do oferty płatności zgodnie z rzeczywistym użyciem MS-AZR-0003P lub MS-AZR-0023P, oferty Enterprise MS-AZR-0017P lub MS-AZR-0148P albo typów subskrypcji dostawcy rozwiązań w chmurze.
 
-## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Dodawanie lub modyfikowanie użytkowników, którzy mogą zarządzać rezerwacji
+## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Dodawanie lub zmienianie użytkowników, którzy mogą zarządzać rezerwacją
 
-Możesz delegować Zarządzanie zastrzeżenia przez dodanie osoby do ról w rezerwacji. Domyślnie osoby, które zakupione rezerwacji, a administrator konta ma rolę właściciela na rezerwacji.
+Zarządzanie rezerwacją możesz delegować, dodając osoby do ról w rezerwacji. Domyślnie osoba, która kupiła rezerwację, i administrator konta mają rolę właściciela rezerwacji.
 
 Subskrypcje, które zawierają rabat związany z rezerwacją, można zarządzać dostępu niezależnie do rezerwacji. Jeśli nadasz innej osobie uprawnienia do zarządzania rezerwacji, który nie nadaj im praw do zarządzania subskrypcją. A Jeśli nadasz innej osobie uprawnienia do zarządzania subskrypcją w zakresie rezerwacji, który nie zapewnia im praw do zarządzania rezerwacji.
 
@@ -53,8 +53,8 @@ Aby delegować zarządzanie dostępem dla rezerwacji:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkich usług** > **rezerwacji** do listy rezerwacji, które mają dostęp do.
 3. Wybierz zastrzeżenie, którego chcesz delegować dostęp do innych użytkowników.
-4. Wybierz **kontrola dostępu (IAM)**.
-5. Wybierz **Dodaj przypisanie roli** > **roli** > **właściciela**. Lub, jeśli chcesz nadać dostęp ograniczony, wybierz inną rolę.
+4. Wybierz pozycję **Kontrola dostępu (IAM)**.
+5. Wybierz **Dodaj przypisanie roli** > **roli** > **właściciela**. Ewentualnie, jeśli chcesz nadać ograniczony dostęp, wybierz inną rolę.
 6. Wpisz adres e-mail użytkownika, którego chcesz dodać jako właściciela.
 7. Wybierz użytkownika, a następnie wybierz polecenie **Zapisz**.
 
@@ -133,4 +133,4 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

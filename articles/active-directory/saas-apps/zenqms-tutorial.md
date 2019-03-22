@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9804dee56e9f099654359e7c336f706cedbd1f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d5d2e734ff9bd34a176d08e36019c826dac355bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003782"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ZenQMS
 
@@ -120,6 +120,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![ZenQMS domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/zenqms-tutorial/tutorial_zenqms_url1.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |-|-|
     | `https://<INSTANCE>.zenqms.com/<ID>`|
@@ -214,7 +215,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

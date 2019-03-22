@@ -3,7 +3,7 @@ title: Wymagania wstępne oferty aplikacji platformy Azure | Dokumentacja firmy 
 description: Wymagania wstępne dotyczące publikowania aplikacji systemu Azure oferują w portalu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097794"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007163"
 ---
 # <a name="azure-application-prerequisites"></a>Wstępnie wymagane składniki aplikacji platformy Azure
 
-W tym artykule opisano wymagania wstępne techniczne i biznesowe dotyczące publikowania w portalu Azure Marketplace oferty aplikacji zarządzanej.  Jeśli jeszcze tego nie zrobiono, Obejrzyj klip wideo [tworzenia szablonów rozwiązań, a Managed Applications dla witryny Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+W tym artykule opisano wymagania wstępne techniczne i biznesowe dotyczące publikowania w portalu Azure Marketplace oferty aplikacji zarządzanej.  Jeśli jeszcze tego nie zrobiono, zapoznaj się z następujących źródeł danych:
+- Zależnie od typu jednostki SKU, albo [aplikacji platformy Azure: Szablon rozwiązania oferują Podręcznik publikowania](../../marketplace-solution-templates.md) lub [aplikacje platformy Azure: Oferty aplikacji zarządzanej Podręcznik publikowania](../../marketplace-managed-apps.md)
+- [Tworzenie szablonów rozwiązań, a Managed Applications dla witryny Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) wideo
 
 
 ## <a name="technical-requirements"></a>Wymagania techniczne
@@ -33,7 +35,7 @@ Wymagania techniczne zawierają następujące elementy:
 *   Szablony usługi Azure Resource Manager, aby uzyskać więcej informacji, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia. 
 * Szablony szybkiego startu platformy Azure.<br> Aby uzyskać więcej informacji, zobacz:
 
-  * [Szablony szybkiego startu platformy](https://azure.microsoft.com/documentation/templates/). Wdrażaj zasoby platformy Azure, używając usługi Azure Resource Manager i szablonów współtworzonych przez społeczność, aby robić więcej. Usługa Azure Resource Manager pozwala inicjować obsługę aplikacji za pomocą deklaratywnych szablonów. W pojedynczym szablonie możesz wdrożyć wiele usług wraz z ich zależnościami. Za pomocą tego samego szablonu możesz wdrażać aplikację na każdym etapie jej cyklu życia.
+  * [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/). Wdrażaj zasoby platformy Azure, używając usługi Azure Resource Manager i szablonów współtworzonych przez społeczność, aby robić więcej. Usługa Azure Resource Manager pozwala inicjować obsługę aplikacji za pomocą deklaratywnych szablonów. W pojedynczym szablonie możesz wdrożyć wiele usług wraz z ich zależnościami. Za pomocą tego samego szablonu możesz wdrażać aplikację na każdym etapie jej cyklu życia.
   * [GitHub: Szablony szybkiego startu usługi Azure Resource Manager](https://github.com/azure/azure-quickstart-templates). To repozytorium zawiera wszystkie aktualnie dostępne usługi Azure Resource Manager Szablony udostępnione przez społeczność. Indeks szablonu z możliwością wyszukiwania jest utrzymywany na https://azure.microsoft.com/en-us/documentation/templates/.
 * Tworzenie definicji interfejsu użytkownika<br>
 Aby uzyskać więcej informacji, zobacz [interfejs użytkownika portalu tworzenie platformy Azure dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview). W tym artykule przedstawiono podstawowe pojęcia dotyczące pliku createUiDefinition.json. Azure portal używa tego pliku do generowania interfejsu użytkownika do tworzenia aplikacji zarządzanej.
@@ -43,7 +45,7 @@ Aby uzyskać więcej informacji, zobacz [interfejs użytkownika portalu tworzeni
 
 Wymagania biznesowe obejmują następujące obowiązki umowne stosowane w UE i prawne proceduralne:
 
-* Musi być zarejestrowany wydawcy chmury w witrynie Marketplace. Jeśli nie są zarejestrowane, postępuj zgodnie z instrukcjami w artykule Zostań wydawcy w witrynie Marketplace chmury.
+* Musi być zarejestrowany wydawcy chmury w witrynie Marketplace. Jeśli nie są zarejestrowane, postępuj zgodnie z instrukcjami w artykule [stają się wydawcy w witrynie Marketplace chmury](../../become-publisher.md).
 
 >[!NOTE]
 >Zalogować się do portalu Cloud Partner, należy używać tego samego konta Microsoft Developer Center w rejestracji. Powinna mieć tylko jedno konto Microsoft, dla ofert portalu Azure Marketplace. To konto nie powinny być specyficzne dla poszczególnych usług lub oferty.
@@ -65,8 +67,8 @@ Aby opublikować nową ofertę aplikacji platformy Azure, musi spełniać nastę
   * Tytuł
   * Opis (format HTML)
   * Obraz logo (w formacie PNG) i te rozmiary obrazów: 40 40 pikseli, 90 x 90 pikseli, 115 x 115 pikseli i 255 x 115 pikseli.
-* A *warunki użytkowania* i *zasady zachowania poufności informacji*
-* Dokumentacja
+* A *warunki użytkowania* i *zasady zachowania poufności informacji* dokumentów
+* Dokumentacja aplikacji
 * Kontakt z pomocą techniczną
 
 

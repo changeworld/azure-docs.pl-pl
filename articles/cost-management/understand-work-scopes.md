@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: c7eb490bdf484651613c5c7a72d2a31be5306634
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e7956e8873b552fcd73c51a51f51d99f21af324
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773796"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002938"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -146,9 +146,9 @@ Rozliczenia, użytkownicy nie mają dostępu do grup zarządzania, ponieważ jaw
 
 Partnerzy programu cloud Solution Provider (CSP) nie są obecnie obsługiwane w Cost Management. Zamiast tego można użyć [Centrum partnerskiego](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
-## <a name="how-to-switch-between-scopes-within-cost-management"></a>Jak przełączać się między zakresów w ramach zarządzania kosztami
+## <a name="switch-between-scopes-in-cost-management"></a>Przełączanie między zakresów Cost Management
 
-Wszystkie środowiska Cost Management w witrynie Azure portal obejmują **zakres** skażone po lewej górnej części bloku, który zapewnia dostęp do szybko zmienić zakres. Klikając **zakres** skażone Otwiera selektor zakresu, która konta rozliczeniowego, głównej grupy zarządzania i wszystkie subskrypcje, które nie są zagnieżdżone w grupie zarządzania głównym. Aby wybrać zakres, kliknij tło, aby go zaznaczyć, a następnie kliknij przycisk **wybierz** znajdujący się u dołu. Aby przejść do szczegółów zagnieżdżonych zakresów (np. grupy zasobów w ramach subskrypcji), kliknij łącze nazwa zakresu. Aby wybrać zakresu nadrzędnego na dowolnym poziomie zagnieżdżony, kliknij przycisk **wybierz tę opcję, <scope>**  znajdujący się u góry selektora zakresu.
+Wszystkie widoki zarządzania kosztami w witrynie Azure portal obejmują **zakres** skażone w lewym górnym widoku. Umożliwia szybką zmianę zakresu. Kliknij przycisk **zakres** skażone, aby otworzyć selektor zakresu. Pokazuje konta rozliczeniowego, głównej grupy zarządzania i wszystkich subskrypcji, które nie są zagnieżdżone w głównej grupy zarządzania. Aby wybrać zakres, kliknij tło, aby go zaznaczyć, a następnie kliknij przycisk **wybierz** u dołu. Do testowania odzyskiwania po awarii — w zagnieżdżonych zakresów, takich jak grupy zasobów w ramach subskrypcji, kliknij łącze nazwa zakresu. Aby wybrać zakresu nadrzędnego na dowolnym poziomie zagnieżdżony, kliknij przycisk **wybierz tę opcję, &lt;zakres&gt;**  u góry selektora zakresu.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Zidentyfikuj identyfikator zasobu dla zakresu
 
@@ -218,7 +218,7 @@ Podczas pracy z interfejsów API usługi Cost Management, wiedząc, że zasięg 
 4. Skopiuj wartość pola Identyfikatora zasobu.
 5. Zakres jest: `"/subscriptions/{id}/resourceGroups/{name}"`
 
-Usługa Cost Management jest obecnie obsługiwany w globalnej platformy Azure (https://management.azure.com) i Azure dla instytucji rządowych (https://management.usgovcloudapi.net). Aby uzyskać więcej informacji na temat platformy Azure Government, zobacz [punktów końcowych globalnej platformy Azure i interfejsu API dla instytucji rządowych](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
+Usługa Cost Management jest obecnie obsługiwany w [Azure Global](https://management.azure.com) i [Azure dla instytucji rządowych](https://management.usgovcloudapi.net). Aby uzyskać więcej informacji na temat platformy Azure Government, zobacz [punktów końcowych globalnej platformy Azure i interfejsu API dla instytucji rządowych](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
 
 ## <a name="next-steps"></a>Kolejne kroki
 

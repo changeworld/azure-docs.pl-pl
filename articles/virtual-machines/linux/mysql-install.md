@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 6062c31d1ec87d7b958feafef5824a5814995541
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f9e0582a1338bcae7b330c7ece7c3d8cc8593cfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431975"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004501"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak zainstalować oprogramowanie MySQL na platformie Azure
 W tym artykule dowiesz się, jak zainstalować i skonfigurować serwer MySQL na maszynie wirtualnej platformy Azure z systemem Linux.
@@ -92,7 +92,7 @@ W tym miejscu użyjemy maszyny Wirtualnej systemu Linux CentOS lub Oracle Linux.
   
     Pobierz i zainstaluj pakiet wydania MySQL:
   
-            #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+            #[root@mysqlnode ~]# wget https://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
             #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
 * Krok 2: Edytuj poniżej plik, aby umożliwić pobieranie pakietu MySQL5.6 repozytorium MySQL.
   

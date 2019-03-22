@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2019
 ms.author: ramamill
-ms.openlocfilehash: 3f500abe0ea37b35236547824c655adc1a4c4d93
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ef0e29217e03b3c5d1b2880a6ce755c6cc02ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448836"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004460"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
 Wdrażanie serwera konfiguracji w środowisku lokalnym, korzystając z [usługi Azure Site Recovery](site-recovery-overview.md) do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Konfiguracja współrzędne międzyserwerowej komunikacji lokalnych programu VMware i platformą Azure. Umożliwia także zarządzanie replikacją danych. W tym artykule przedstawiono kroki niezbędne do wdrożenia serwera konfiguracji w przypadku replikacji maszyn wirtualnych VMware na platformę Azure. [Postępuj zgodnie z tym artykule](physical-azure-set-up-source.md) Jeśli musisz skonfigurować serwer konfiguracji, replikacji serwera fizycznego.
 
->[!TIP]
-Informacje na temat roli serwera konfiguracji w ramach architektury usługi Azure Site Recovery [tutaj](vmware-azure-architecture.md).
+> [!TIP]
+> Informacje na temat roli serwera konfiguracji w ramach architektury usługi Azure Site Recovery [tutaj](vmware-azure-architecture.md).
 
 ## <a name="deployment-of-configuration-server-through-ova-template"></a>Wdrażanie serwera konfiguracji za pomocą szablonu OVA
 
@@ -46,7 +46,7 @@ Możesz zdecydować, że użytkownik z **jedną z następujących** uprawnieniam
    1. Przejdź do usługi Azure Active Directory > Ustawienia użytkownika
    1. W obszarze ** rejestracje aplikacji ","Użytkownicy mogą rejestrować aplikacje"powinna być wybrana jako"Yes".
 
-    ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
+      ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > Services(ADFS) federacji w usłudze Active Directory jest **nieobsługiwane**. Użyj konta zarządzane za pośrednictwem [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
@@ -70,11 +70,11 @@ Jeśli replikujesz więcej niż jednej maszyny Wirtualnej VMware, zapoznaj się 
 3. W obszarze **Dodawanie serwera** sprawdź, czy w sekcji **Typ serwera** jest widoczna pozycja **Serwer konfiguracji dla oprogramowania VMware**.
 4. Pobierz szablon Open Virtualization aplikacji (OVA) dla serwera konfiguracji.
 
-  > [!TIP]
->Możesz również pobrać najnowszą wersję szablonu serwera konfiguracji bezpośrednio z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+   > [!TIP]
+   >Możesz również pobrać najnowszą wersję szablonu serwera konfiguracji bezpośrednio z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
->[!NOTE]
-Licencja dostarczane z szablonem OVA jest ocena prawidłowe przez 180 dni. Post tego okresu klient musi wykonać aktywację systemu windows za pomocą licencji uzyskiwanych.
+> [!NOTE]
+> Licencja dostarczane z szablonem OVA jest ocena prawidłowe przez 180 dni. Post tego okresu klient musi wykonać aktywację systemu windows za pomocą licencji uzyskiwanych.
 
 ## <a name="import-the-template-in-vmware"></a>Importowanie szablonu do programu VMware
 
@@ -136,6 +136,7 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
     |Można pobrać & Ręczne instalowanie programu MySQL?     |  Tak. Pobierz aplikację MySQL i umieść go w folderze **C:\Temp\ASRSetup**, następnie zainstalować ręcznie. Teraz, jeśli akceptujesz jej warunki > kliknij **Pobierz i zainstaluj**, portalu jest wyświetlany komunikat *zainstalowane*. Możesz przejść do następnego kroku.       |
     |Można uniknąć pobierania oprogramowania MySQL online?     |   Tak. Umieść aplikację MySQL Instalatora w folderze **C:\Temp\ASRSetup**. Zaakceptuj warunki > kliknij **Pobierz i zainstaluj**, portal użyje Instalatora dodane przez użytkownika i instaluje aplikację. Możesz przejść do następnego kroku po instalacji.    |
     |Chcę pobieranie i instalowanie programu MySQL za pomocą usługi Azure Site Recovery     |  Zaakceptuj Umowę licencyjną i kliknij **Pobierz i zainstaluj**. Następnie możesz przejść do następnego kroku po instalacji.       |
+
 5. W obszarze **Weryfikowanie konfiguracji urządzenia** zostaną zweryfikowane wymagania wstępne, a następnie będzie można kontynuować.
 6. W obszarze **Skonfiguruj poświadczenia serwera vCenter Server/vSphere ESXi** wprowadź nazwę FQDN bądź adres IP serwera vCenter lub hosta vSphere, na którym znajdują się maszyny wirtualne, które chcesz replikować. Wprowadź port, na którym nasłuchuje serwer. Wprowadź przyjazną nazwę, która ma być używana dla serwera VMware w magazynie.
 7. Wprowadź poświadczenia, za pomocą których serwer konfiguracji będzie łączył się z serwerem VMware. Przy użyciu tych poświadczeń usługa Site Recovery automatycznie odnajduje maszyny wirtualne VMware dostępne do replikacji. Wybierz **Dodaj**, a następnie **nadal**. Poświadczenia wprowadzone w tym miejscu lokalnie są zapisywane.

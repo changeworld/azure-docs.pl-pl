@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: 224da9285ab0aef312688e4dfa1da49451abfa5a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ece8b4ac3946f543c13975e40b1025bb3cc222f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674654"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013258"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -39,10 +39,9 @@ Jeśli wolisz używać struktury Spring, spróbuj znaleźć potrzebne informacje
 1. Zaloguj się do [Portalu Microsoft Azure](https://portal.azure.com).
 2. Utwórz zasób usługi Application Insights. Jako typ aplikacji ustaw wartość Aplikacja internetowa Java.
 
-    ![Wypełnij nazwę, wybierz aplikację internetową Java i kliknij przycisk Utwórz](./media/java-get-started/02-create.png)
 3. Znajdź klucz instrumentacji nowego zasobu. Wkrótce będzie trzeba wkleić ten klucz do projektu kodu.
 
-    ![W opisie nowego zasobu kliknij opcję Właściwości i skopiuj klucz instrumentacji](./media/java-get-started/03-key.png)
+    ![W opisie nowego zasobu kliknij opcję Właściwości i skopiuj klucz instrumentacji](./media/java-get-started/instrumentation-key-001.png)
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Dodawanie zestawu SDK usługi Application Insights dla środowiska Java do projektu
 *Wybierz odpowiedni sposób dla danego projektu.*
@@ -301,13 +300,13 @@ Wróć do zasobu usługi Application Insights w witrynie [Microsoft Azure Portal
 
 W bloku przeglądu zostaną wyświetlone dane żądań HTTP. (Jeśli ich tam nie ma, odczekaj kilka sekund, a następnie kliknij przycisk Odśwież).
 
-![dane przykładowe](./media/java-get-started/5-results.png)
+![Zrzut ekranu przedstawiający Przegląd przykładowych danych](./media/java-get-started/overview-graphs.png)
 
 [Dowiedz się więcej o metrykach.][metrics]
 
 Klikaj elementy wykresów, aby wyświetlać bardziej szczegółowe metryki zagregowane.
 
-![](./media/java-get-started/6-barchart.png)
+![Okienko błędy szczegółowe informacje aplikacji przy użyciu wykresów](./media/java-get-started/006-barcharts.png)
 
 > Usługa Application Insights zakłada, że format żądania HTTP dla aplikacji MVC to: `VERB controller/action`. Na przykład żądania `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` i `GET Home/Product/sdf96vws` są grupowane w ramach pozycji `GET Home/Product`. To grupowanie umożliwia zrozumiałe agregowanie żądań, na przykład podawanie liczby żądań i średniego czasu ich wykonania.
 >
@@ -316,16 +315,12 @@ Klikaj elementy wykresów, aby wyświetlać bardziej szczegółowe metryki zagre
 ### <a name="instance-data"></a>Dane wystąpienia
 Kliknij określony typ żądania, aby wyświetlić poszczególne wystąpienia.
 
-W usłudze Application Insights są wyświetlane dwa rodzaje danych: dane zagregowane, przechowywane i wyświetlane jako średnie, liczniki i sumy, oraz dane wystąpienia — indywidualne raporty dotyczące żądań HTTP, wyjątków, wyświetleń stron lub zdarzeń niestandardowych.
-
-Podczas wyświetlania właściwości żądania można wyświetlić skojarzone zdarzenia telemetrii, takie jak żądania i wyjątki.
-
-![](./media/java-get-started/7-instance.png)
+![Przejść do określonych przykładowy](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analiza: Zaawansowany język zapytań
 W miarę zgromadzenia większej ilości danych można uruchamiać zapytania zarówno w celu agregowania danych, jak i w celu znajdowania poszczególnych wystąpień.  [Analiza](../../azure-monitor/app/analytics.md) jest zaawansowanym narzędziem, którego można używać zarówno w celu poznania wydajności i użycia, jak i do celów diagnostycznych.
 
-![Przykład analizy](./media/java-get-started/025.png)
+![Przykład analizy](./media/java-get-started/0025.png)
 
 ## <a name="7-install-your-app-on-the-server"></a>7. Instalowanie aplikacji na serwerze
 Teraz opublikuj aplikację na serwerze, pozwól z niej korzystać innym osobom, a następnie obejrzyj telemetrię wyświetlaną w portalu.
@@ -343,11 +338,25 @@ Teraz opublikuj aplikację na serwerze, pozwól z niej korzystać innym osobom, 
 
     Ten składnik umożliwia działanie liczników wydajności.
 
+## <a name="azure-app-service-config-spring-boot"></a>Usługa Azure App Service konfiguracji (Spring Boot)
+
+Spring rozruchu aplikacje uruchomione na Windows wymagają dodatkowej konfiguracji do uruchamiania w usłudze Azure App Services. Modyfikowanie **web.config** i Dodaj następujący kod:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <handlers>
+            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
+        </handlers>
+        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
+        </httpPlatform>
+    </system.webServer>
+</configuration>
+```
 
 ## <a name="exceptions-and-request-failures"></a>Wyjątki i błędy żądań
-Nieobsługiwane wyjątki są zbierane automatycznie:
-
-![Otwórz ustawienia, błędy](./media/java-get-started/21-exceptions.png)
+Nieobsługiwane wyjątki są zbierane automatycznie.
 
 Istnieją dwie opcje zbierania danych o innych wyjątkach:
 
@@ -366,9 +375,9 @@ Przychodzące konfiguracji zestawu SDK zostało wyjaśnione bardziej szczegóło
 Wychodzące konfiguracji zestawu SDK jest zdefiniowany w [Agent.xml sztucznej Inteligencji](java-agent.md) pliku.
 
 ## <a name="performance-counters"></a>Liczniki wydajności
-Otwórz pozycję **Ustawienia**, **Serwery**, aby wyświetlić zakres liczników wydajności.
+Otwórz **zbadaj**, **metryki**, aby wyświetlić zakres liczników wydajności.
 
-![](./media/java-get-started/11-perf-counters.png)
+![Zrzut ekranu przedstawiający okienko metryk z wybrane prywatne bajty procesu](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Dostosowywanie zbierania danych liczników wydajności
 Aby wyłączyć zbieranie standardowego zestawu liczników wydajności, dodaj następujący kod w węźle głównym pliku ApplicationInsights.xml:
@@ -418,10 +427,6 @@ Każdy [licznik wydajności systemu Windows](https://msdn.microsoft.com/library/
 * counterName — nazwa licznika wydajności.
 * instanceName — nazwa wystąpienia kategorii licznika wydajności lub ciąg pusty (""), jeśli kategoria zawiera jedno wystąpienie. Jeśli categoryName to Proces, a licznik wydajności, którego dane chcesz zbierać, pochodzi z bieżącego procesu maszyny JVM, na której jest uruchomiona aplikacja, podaj wartość `"__SELF__"`.
 
-Liczniki wydajności są widoczne jako metryki niestandardowe w [Eksploratorze metryk][metrics].
-
-![](./media/java-get-started/12-custom-perfs.png)
-
 ### <a name="unix-performance-counters"></a>Liczniki wydajności sytemu Unix
 * [Zainstaluj program collectd z wtyczką Application Insights](java-collectd.md), aby uzyskać szeroką gamę danych na temat systemu i sieci.
 
@@ -465,22 +470,12 @@ Teraz, po zainstalowaniu zestawu SDK, możesz użyć interfejsu API do wysyłani
 * [Wyszukiwanie zdarzeń i dzienników][diagnostic], aby łatwiej diagnozować problemy.
 
 ## <a name="availability-web-tests"></a>Testy dostępności sieci Web
-Usługa Application Insights może służyć do testowania witryny sieci Web w regularnych odstępach czasu, aby sprawdzić, czy witryna działa i odpowiada poprawnie. [Aby skonfigurować tę funkcję][availability], kliknij pozycję Testy sieci Web.
+Usługa Application Insights może służyć do testowania witryny sieci Web w regularnych odstępach czasu, aby sprawdzić, czy witryna działa i odpowiada poprawnie.
 
-![Kliknij pozycję Testy sieci Web, a następnie kliknij pozycję Dodaj test sieci Web](./media/java-get-started/31-config-web-test.png)
-
-Uzyskasz wykresy czasów odpowiedzi oraz powiadomienia e-mail w razie wyłączenia witryny.
-
-![Przykład testu sieci Web](./media/java-get-started/appinsights-10webtestresult.png)
-
-[Dowiedz się więcej o testach dostępności sieci Web.][availability]
+[Dowiedz się więcej o tym, jak skonfigurować testy sieci web dostępności.][availability]
 
 ## <a name="questions-problems"></a>Pytania? Problemy?
 [Rozwiązywanie problemów z technologią Java](java-troubleshoot.md)
-
-## <a name="video"></a>Połączenia wideo
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Monitorowanie wywołań zależności](java-agent.md)

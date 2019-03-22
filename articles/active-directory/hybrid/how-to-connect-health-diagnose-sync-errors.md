@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2924a45ae8851095944131b6fb1598775247f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194006"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885321"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Zdiagnozować i rozwiązać błędy synchronizacji zduplikowanym atrybutem
 
@@ -33,7 +33,7 @@ Aby uzyskać więcej informacji na temat usługi Azure AD, zobacz [tożsamości 
 
 ## <a name="problems"></a>Problemy
 ### <a name="a-common-scenario"></a>Typowy scenariusz
-Gdy **QuarantinedAttributeValueMustBeUnique** i **AttributeValueMustBeUnique** wystąpi błędy synchronizacji, jest częściej można zobaczyć **UserPrincipalName** lub **Adresy serwerów proxy** konflikt w usłudze Azure AD. Błędy synchronizacji może rozwiązać, aktualizując powodujące konflikt obiektu źródłowego ze strony w środowisku lokalnym. Błąd synchronizacji zostanie rozwiązany po następnej synchronizacji. Na przykład, ten obraz informuje, że dwóch użytkowników w przypadku konfliktu ich **UserPrincipalName**. Oba są **Joe.J@contoso.com**. Obiekty powodujące konflikt, zostały poddane kwarantannie w usłudze Azure AD.
+Gdy **QuarantinedAttributeValueMustBeUnique** i **AttributeValueMustBeUnique** wystąpi błędy synchronizacji, jest częściej można zobaczyć **UserPrincipalName** lub **Adresy serwerów proxy** konflikt w usłudze Azure AD. Błędy synchronizacji może rozwiązać, aktualizując powodujące konflikt obiektu źródłowego ze strony w środowisku lokalnym. Błąd synchronizacji zostanie rozwiązany po następnej synchronizacji. Na przykład, ten obraz informuje, że dwóch użytkowników w przypadku konfliktu ich **UserPrincipalName**. Oba są **Joe.J\@contoso.com**. Obiekty powodujące konflikt, zostały poddane kwarantannie w usłudze Azure AD.
 
 ![Diagnozowanie scenariusz typowych błędów synchronizacji](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -66,32 +66,34 @@ Postępuj zgodnie z instrukcjami w witrynie Azure portal, aby zawęzić szczegó
 
 W witrynie Azure portal należy wykonać kilka kroków, aby zidentyfikować konkretne scenariusze naprawić:  
 1.  Sprawdź **diagnozowania stanu** kolumny. Stan pokazuje, czy istnieje możliwy sposób naprawić błąd synchronizacji bezpośrednio z usługi Azure Active Directory. Innymi słowy, rozwiązywania problemów z przepływem istnieje, który można zawęzić przypadki błędów i potencjalnie go naprawić.
+
 | Stan | Co to oznacza? |
 | ------------------ | -----------------|
 | Nie uruchomiono | Jeszcze nie odwiedził tego procesu diagnostyki. W zależności od wyniki diagnostyki istnieje potencjalne sposób, aby naprawić błąd synchronizacji bezpośrednio z portalu. |
 | Wymagane jest ręczne wprowadzenie poprawki | Ten błąd nie mieści się kryteria dostępne poprawki z poziomu portalu. Albo wybierane powodujące konflikt nie użytkowników, lub już przeszło czynności diagnostycznych i podejmowania żadnych działań poprawka była dostępna z poziomu portalu. W tym ostatnim przypadku poprawkę ze strony w środowisku lokalnym jest nadal jedno z rozwiązań. [Dowiedz się więcej na temat poprawek lokalnych](https://support.microsoft.com/help/2647098). | 
 | Oczekuje na synchronizację | Poprawka została zastosowana. Portal czeka na następny cykl synchronizacji wyczyścić błąd. |
+
   >[!IMPORTANT]
   > W kolumnie Stan diagnostyczne zostaną zresetowane po każdym cyklu synchronizacji. 
   >
 
-2.  Wybierz **diagnozowanie** przycisku w obszarze Szczegóły błędu. Będzie Odpowiedz na kilka pytań, a następnie Zidentyfikuj informacje o błędzie synchronizacji. Odpowiedzi na pytania pomagać w identyfikacji przypadek obiektu oddzielonego.
+1. Wybierz **diagnozowanie** przycisku w obszarze Szczegóły błędu. Będzie Odpowiedz na kilka pytań, a następnie Zidentyfikuj informacje o błędzie synchronizacji. Odpowiedzi na pytania pomagać w identyfikacji przypadek obiektu oddzielonego.
 
-3.  Jeśli **Zamknij** przycisk pojawia się na końcu diagnostyki, Brak dostępnej nie szybkiej poprawki z poziomu portalu na podstawie Twojej odpowiedzi. Zapoznaj się z rozwiązaniem wyświetlane w ostatnim kroku. Poprawki ze środowiska lokalnego są nadal rozwiązania. Wybierz **Zamknij** przycisku. Stan bieżący błąd synchronizacji zmienia się na **wymagane jest ręczne wprowadzenie poprawki**. Stan pozostaje podczas bieżącego cyklu synchronizacji.
+1. Jeśli **Zamknij** przycisk pojawia się na końcu diagnostyki, Brak dostępnej nie szybkiej poprawki z poziomu portalu na podstawie Twojej odpowiedzi. Zapoznaj się z rozwiązaniem wyświetlane w ostatnim kroku. Poprawki ze środowiska lokalnego są nadal rozwiązania. Wybierz **Zamknij** przycisku. Stan bieżący błąd synchronizacji zmienia się na **wymagane jest ręczne wprowadzenie poprawki**. Stan pozostaje podczas bieżącego cyklu synchronizacji.
 
-4.  Po identyfikacji przypadek obiektu oddzielonego można naprawić zduplikowane atrybuty błędy synchronizacji bezpośrednio z portalu. Aby wyzwolić ten proces, wybierz **Zastosuj poprawkę** przycisku. Stan bieżącej aktualizacji błąd synchronizacji do **oczekująca synchronizacja**.
+1. Po identyfikacji przypadek obiektu oddzielonego można naprawić zduplikowane atrybuty błędy synchronizacji bezpośrednio z portalu. Aby wyzwolić ten proces, wybierz **Zastosuj poprawkę** przycisku. Stan bieżącej aktualizacji błąd synchronizacji do **oczekująca synchronizacja**.
 
-5.  Po następnym cyklu synchronizacji błąd powinny zostać usunięte z listy.
+1. Po następnym cyklu synchronizacji błąd powinny zostać usunięte z listy.
 
 ## <a name="how-to-answer-the-diagnosis-questions"></a>Jak odpowiedzieć na pytania diagnostyki 
 ### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>Czy użytkownik istnieje w usłudze Active Directory w środowisku lokalnym?
 
 To pytanie podejmie próbę identyfikacji źródła obiektu istniejącego użytkownika z usługi Active Directory w środowisku lokalnym.  
-1.  Sprawdź, czy usługi Azure Active Directory zawiera obiekt z podanych **UserPrincipalName**. Jeśli nie, odpowiedz **nie**.
-2.  Jeśli tak jest, sprawdź, czy obiekt jest nadal w zakresie do synchronizacji.  
-  - Wyszukiwanie w obszarze łącznika usługi Azure AD przy użyciu nazwę Wyróżniającą.
-  - Jeśli obiekt znajduje się w **oczekiwanie na dodanie** stanu, odpowiedź **nie**. Program Azure AD Connect nie może połączyć się z obiektu do obiektu bezpośrednio w usłudze Azure AD.
-  - Jeśli obiekt nie zostanie znaleziona, odpowiedz **tak**.
+1. Sprawdź, czy usługi Azure Active Directory zawiera obiekt z podanych **UserPrincipalName**. Jeśli nie, odpowiedz **nie**.
+2. Jeśli tak jest, sprawdź, czy obiekt jest nadal w zakresie do synchronizacji.  
+   - Wyszukiwanie w obszarze łącznika usługi Azure AD przy użyciu nazwę Wyróżniającą.
+   - Jeśli obiekt znajduje się w **oczekiwanie na dodanie** stanu, odpowiedź **nie**. Program Azure AD Connect nie może połączyć się z obiektu do obiektu bezpośrednio w usłudze Azure AD.
+   - Jeśli obiekt nie zostanie znaleziona, odpowiedz **tak**.
 
 W tych przykładach pytanie próbuje zidentyfikować czy **Jackson Jan** nadal istnieje w usłudze Active Directory w środowisku lokalnym.
 Dla **typowy scenariusz**, użytkownicy **Johnson Jan** i **Jackson Jan** znajdują się w usłudze Active Directory w środowisku lokalnym. Poddane kwarantannie obiekty są dwóch różnych użytkowników.
@@ -104,11 +106,11 @@ Aby uzyskać **scenariusza obiektu oddzielonego**, tylko jednego użytkownika **
 
 ### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Czy obie te konta należą do tego samego użytkownika?
 To pytanie sprawdza użytkownika przychodzącego powodujących konflikt i do istniejącego obiektu użytkownika w usłudze Azure AD, aby zobaczyć, jeśli należą do tego samego użytkownika.  
-1.  Obiekt powodujący konflikt nowo jest synchronizowana z usługą Azure Active Directory. Porównaj atrybuty obiektów:  
-  - Nazwa wyświetlana
-  - Nazwa główna użytkownika
-  - Identyfikator obiektu
-2.  W przypadku niepowodzenia usługi Azure AD w celu porównania ich Sprawdź, czy usługi Active Directory zawiera obiekty z podanych **userPrincipalName**. Odpowiedź **nie** Jeśli okaże się jednocześnie.
+1. Obiekt powodujący konflikt nowo jest synchronizowana z usługą Azure Active Directory. Porównaj atrybuty obiektów:  
+   - Nazwa wyświetlana
+   - Nazwa główna użytkownika
+   - Identyfikator obiektu
+2. W przypadku niepowodzenia usługi Azure AD w celu porównania ich Sprawdź, czy usługi Active Directory zawiera obiekty z podanych **userPrincipalName**. Odpowiedź **nie** Jeśli okaże się jednocześnie.
 
 W poniższym przykładzie dwa obiekty należą do tego samego użytkownika **Johnson Jan**.
 

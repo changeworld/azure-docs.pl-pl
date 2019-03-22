@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 914dcd02f2d35d56b50169967ca1f5c251a6e6f3
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408619"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993414"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -93,7 +93,7 @@ Tak.
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Jakie systemy operacyjne są obsługiwane dla kopii zapasowej?
 Usługa Azure Backup obsługuje następujące systemy operacyjne do wykonywania kopii zapasowych plików i folderów oraz aplikacji chronionych przez usługi Azure Backup Server i programu DPM.
 
-**OS**| **SKU** |**Szczegóły**
+**OS** | **SKU** | **Szczegóły**
 --- | --- | ---
 Stacja robocza | |
 System Windows 10 64-bitowy | Enterprise, Pro, Home | Powinna być uruchomiona maszyn, najnowsze pakiety usług i aktualizacje.
@@ -118,7 +118,7 @@ Kopii zapasowych maszyn wirtualnych platformy Azure w systemie Linux obsługuje 
 Limity rozmiarów są następujące:
 
 System operacyjny/machine | Limit rozmiaru źródła danych
---- | --- | ---
+--- | --- 
 Windows 8 lub nowszy | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 lub nowszy | 54 400 GB
