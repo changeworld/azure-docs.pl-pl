@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 300f0ddc8b738b5fd8578ed0b33cc15000c1098a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.openlocfilehash: 70a11867dded3b7156f6b212ceb4756ee7c287f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101789"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079166"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorowanie kondycji aplikacji i wysyłanie powiązanych alertów za pomocą usługi Azure Application Insights
 
@@ -69,18 +69,18 @@ Testy dostępności w usłudze Application Insights umożliwiają automatyczne t
 ## <a name="create-an-alert-from-metrics"></a>Tworzenie alertu na podstawie metryki
 Oprócz wysyłania alertów z testu dostępności można utworzyć alert na podstawie dowolnych metryk wydajności zbieranych na potrzeby aplikacji.
 
-2. Wybierz pozycję **Alerty** z menu **Konfiguruj**.  Spowoduje to otwarcie panelu alertów platformy Azure.  Mogą tu być wyświetlane inne reguły alertów skonfigurowane na potrzeby innych usług.
-3. Kliknij pozycję **Dodaj alert metryki**.  Spowoduje to otwarcie panelu umożliwiającego utworzenie nowej reguły alertu.
+1. Wybierz pozycję **Alerty** z menu **Konfiguruj**.  Spowoduje to otwarcie panelu alertów platformy Azure.  Mogą tu być wyświetlane inne reguły alertów skonfigurowane na potrzeby innych usług.
+1. Kliknij pozycję **Dodaj alert metryki**.  Spowoduje to otwarcie panelu umożliwiającego utworzenie nowej reguły alertu.
 
     ![Dodawanie alertu dotyczącego metryki](media/tutorial-alert/add-metric-alert.png)
 
-4. W polu **Nazwa** wpisz nazwę reguły alertu i z listy rozwijanej **Zasób** wybierz swoją aplikację.
-5. Wybierz **metrykę** do próbkowania.  Zostanie wyświetlony wykres wskazujący wartość tego żądania w ciągu ostatnich 24 godzin.  Ułatwia to ustawienie warunku metryki.
+1. W polu **Nazwa** wpisz nazwę reguły alertu i z listy rozwijanej **Zasób** wybierz swoją aplikację.
+1. Wybierz **metrykę** do próbkowania.  Zostanie wyświetlony wykres wskazujący wartość tego żądania w ciągu ostatnich 24 godzin.  Ułatwia to ustawienie warunku metryki.
 
     ![Dodawanie reguły alertu](media/tutorial-alert/add-alert-01.png)
 
-6. Określ **Warunek** i **Próg** alertu. Jest to liczba wskazująca, ile razy musi nastąpić przekroczenie metryki, aby został utworzony alert. 
-6. W obszarze **Metoda powiadomienia** zaznacz pole **Właściciele, współautorzy i czytelnicy poczty e-mail**, aby do tych użytkowników została wysłana wiadomość e-mail, kiedy zostanie spełniony warunek alertu, i dodaj adresy e-mail ewentualnych dodatkowych odbiorców.  W tym miejscu możesz również określić element webhook lub aplikację logiki, które będą uruchamiane, gdy warunek jest spełniony.  Za pomocą tych elementów można podjąć próbę ograniczenia wykrytego problemu. 
+1. Określ **Warunek** i **Próg** alertu. Jest to liczba wskazująca, ile razy musi nastąpić przekroczenie metryki, aby został utworzony alert. 
+1. W obszarze **Metoda powiadomienia** zaznacz pole **Właściciele, współautorzy i czytelnicy poczty e-mail**, aby do tych użytkowników została wysłana wiadomość e-mail, kiedy zostanie spełniony warunek alertu, i dodaj adresy e-mail ewentualnych dodatkowych odbiorców.  W tym miejscu możesz również określić element webhook lub aplikację logiki, które będą uruchamiane, gdy warunek jest spełniony.  Za pomocą tych elementów można podjąć próbę ograniczenia wykrytego problemu. 
 
     ![Dodawanie reguły alertu](media/tutorial-alert/add-alert-02.png)
 
@@ -90,7 +90,7 @@ Alerty są tworzone w odpowiedzi na określony zestaw problemów zidentyfikowany
 
 Aby uzyskać więcej informacji na temat tworzenia aplikacji logiki za pomocą usługi Application Insights, zobacz [Automate Application Insights processes by using Logic Apps](../../azure-monitor/app/automate-with-logic-apps.md) (Automatyzacja procesów usługi Application Insights za pomocą aplikacji logiki)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po poznaniu sposobów tworzenia alertów w odpowiedzi na problemy przejdź do następnego samouczka, aby się dowiedzieć, jak analizować sposób, w jaki użytkownicy wchodzą w interakcje z Twoją aplikacją.
 
 > [!div class="nextstepaction"]

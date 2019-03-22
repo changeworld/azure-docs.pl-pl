@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d71489194422a785ee98ec70a07c765c3d686808
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182616"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093198"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>Szybki start: Usuwanie aplikacji zarejestrowanej za pomocą platformy tożsamości firmy Microsoft (wersja zapoznawcza)
 
@@ -52,8 +52,8 @@ Aplikacje zarejestrowane przez Ciebie lub Twoją aplikację są reprezentowane p
 4. Na stronie **Przegląd** wybierz pozycję **Usuń**.
 5. Wybierz pozycję **Tak**, aby potwierdzić, że chcesz usunąć aplikację.
 
-  > [!NOTE]
-  > Aby usunąć aplikację, musisz być właścicielem aplikacji lub mieć uprawnienia administratora.
+   > [!NOTE]
+   > Aby usunąć aplikację, musisz być właścicielem aplikacji lub mieć uprawnienia administratora.
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>Usuwanie aplikacji utworzonej przez inną organizację
 
@@ -61,7 +61,7 @@ Jeśli wyświetlasz stronę **Rejestracje aplikacji** w kontekście dzierżawy, 
 
 Aby usunąć dostęp aplikacji do Twojego katalogu (po wcześniejszym udzieleniu zgody), administrator firmy musi usunąć jej jednostkę usługi. Administrator z uprawnieniami administratora globalnego może usunąć aplikację w witrynie Azure Portal lub za pomocą [poleceń cmdlet programu PowerShell usługi Azure AD](https://go.microsoft.com/fwlink/?LinkId=294151).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat innych powiązanych przewodników Szybki start dotyczących zarządzania aplikacjami:
 

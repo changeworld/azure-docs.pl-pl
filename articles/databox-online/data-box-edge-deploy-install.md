@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 243697c20f10a019a73326c3bd79e23fc3342640
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ddcaca46a2b8f9501337b3591d6ed666876e1de9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113604"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093773"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>Samouczek: Instalowanie usługi Azure Data Box Edge (wersja zapoznawcza)
 
@@ -94,15 +94,15 @@ Urządzenie należy zainstalować na standardowym, 19-calowym stojaku. Aby zamon
     ![Montowanie szyn na stojaku](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
 
 2. Zamontuj zewnętrzne szyny na pionowych elementach regału stojaka. Aby ułatwić orientację, suwaki szyn zostały oznaczone etykietą **Front** i ten koniec jest przymocowany do przedniej części obudowy.    
-    1. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Rozciągnij szynę, aby jej długość była równa odległości między pionowymi słupkami stojaka. Najpierw przyczep zewnętrzną szynę do tylnego słupka stojaka. Dopasuj tylny uchwyt montażowy tak, aby umieścić go w otworach montażowych na stojaku.   
+   1. Znajdź bolce szyny z przodu i z tyłu zestawu prowadnic. Rozciągnij szynę, aby jej długość była równa odległości między pionowymi słupkami stojaka. Najpierw przyczep zewnętrzną szynę do tylnego słupka stojaka. Dopasuj tylny uchwyt montażowy tak, aby umieścić go w otworach montażowych na stojaku.   
 
-    2. Naciśnij i przytrzymaj spust na tylnym uchwycie, aby odsłonić metalowe haki. Wyrównaj i włóż tylny uchwyt do otworów montażowych, a następnie zwolnij spust.
+   2. Naciśnij i przytrzymaj spust na tylnym uchwycie, aby odsłonić metalowe haki. Wyrównaj i włóż tylny uchwyt do otworów montażowych, a następnie zwolnij spust.
 
-    3. Wyrównaj przedni uchwyt z otworami montażowymi.
+   3. Wyrównaj przedni uchwyt z otworami montażowymi.
 
-    4. Przedni uchwyt powinien być teraz przymocowany do stojaka. Opcjonalnie można użyć śrub M5 X 10L, aby przykręcić szyny do słupków, jeśli to konieczne. 
+   4. Przedni uchwyt powinien być teraz przymocowany do stojaka. Opcjonalnie można użyć śrub M5 X 10L, aby przykręcić szyny do słupków, jeśli to konieczne. 
 
-    ![Montowanie szyn na stojaku](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
+      ![Montowanie szyn na stojaku](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
 
 3. Aby przymocować szynę wewnętrzną do obudowy, upewnij się, że otwory w szynie wewnętrznej są wyrównane z bolcami mocującymi na boku obudowy. Upewnij się, że wierzchołki bolców mocujących wystają przez otwory w szynie wewnętrznej. Pociągnij szynę w kierunku przodu obudowy, dopóki szyna nie zostanie zablokowana na miejscu ze słyszalnym kliknięciem. Powtórz te czynności dla drugiej szyny wewnętrznej. Wepchnij obudowę z przymocowaną szyną wewnętrzną do prowadnic, aby ukończyć instalację na stojaku.
 
@@ -140,7 +140,7 @@ Wykonaj poniższe kroki, aby podłączyć kable urządzenia do sieci i zasilania
 4. Co najmniej jeden PORT 2, PORT 3, PORT 4, PORT 5 lub PORT 6 łączący z Internetem/siecią centrum danych. W przypadku łączenia za pomocą portu PORT 2 użyj kabla sieciowego RJ-45. W przypadku interfejsów sieciowych 25-GbE użyj miedzianych kabli SFP+.  
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Edge, takie jak:
 

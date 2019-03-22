@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 90b6798f7b7ab3acc552135c73bb1e491e4a0111
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835524"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259588"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfiguracja i problemów z zarządzaniem usług Azure Cloud Services: Często zadawane pytania (FAQ)
 
@@ -109,7 +109,7 @@ Można zautomatyzować to zadanie przy użyciu skryptu uruchamiania (/ cmd/progr
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Co to jest celem "Microsoft Azure Service Management dla" certyfikatu MachineKey?
 
-Ten certyfikat jest używany do szyfrowania kluczy maszyn dla ról internetowych platformy Azure. Aby dowiedzieć się więcej, zapoznaj się z tym biuletynie [https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731].
+Ten certyfikat jest używany do szyfrowania kluczy maszyn dla ról internetowych platformy Azure. Aby dowiedzieć się więcej, zapoznaj się z [w tym biuletynie](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Jak skonfigurować i uruchomić zadania uruchamiania dla usługi w chmurze](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)

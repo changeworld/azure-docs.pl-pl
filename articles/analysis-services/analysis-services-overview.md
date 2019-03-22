@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 53ce82a6e1180d4493e2d4014bf6e26e9bde2466
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: a908b00022351b9a91f9381229c773d063390744
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731399"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444161"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services to w pełni zarządzana platforma jako usługa (PaaS), która oferuje modele danych klasy korporacyjnej w chmurze. Zaawansowane funkcje mieszania i modelowania umożliwiają łączenie danych z wielu źródeł, definiowanie metryk oraz zabezpieczanie danych w jednym zaufanym tabelarycznym modelu danych semantycznych. Model danych pozwala użytkownikom na łatwiejsze i szybsze przeglądanie olbrzymich ilości danych na potrzeby analizy ad-hoc danych.
+Azure Analysis Services to w pełni zarządzana platforma jako usługa (PaaS), która oferuje modele danych klasy korporacyjnej w chmurze. Zaawansowane funkcje mieszania i modelowania umożliwiają łączenie danych z wielu źródeł, definiowanie metryk oraz zabezpieczanie danych w jednym zaufanym tabelarycznym modelu danych semantycznych. Model danych umożliwia łatwiejsze i szybsze użytkownikom przeglądanie dużych ilości danych do analizy danych ad hoc.
 
 ![Źródła danych](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -247,7 +247,7 @@ Wszystko zmienia się tak szybko. Najnowsze informacje można uzyskać w [blogu 
 
 Społeczność użytkowników usług Analysis Services jest bardzo aktywna. Dołącz do konwersacji na [forum usług Azure Analysis Services](https://aka.ms/azureanalysisservicesforum).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Utwórz konto bezpłatnej wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p/)   

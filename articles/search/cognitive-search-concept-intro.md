@@ -6,16 +6,16 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: conceptual
-ms.date: 01/18/2019
+ms.topic: overview
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d2086f02cc981ad944c030ad40083d153c520359
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 3c2567564e015ef19adf9f8c776e1f377a9cdf30
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447331"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133063"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "cognitive search" w usłudze Azure Search?
 
@@ -92,31 +92,9 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 
 ## <a name="where-do-i-start"></a>Od czego zacząć?
 
-**Krok 1. [Utwórz zasób usługi Azure Search](search-create-service-portal.md) w regionie, zapewniając interfejsów API** 
+**Krok 1. [Utwórz zasób usługi Azure Search](search-create-service-portal.md)** 
 
-+ Środkowo-zachodnie stany USA
-+ Środkowo-południowe stany USA
-+ Środkowo-północne stany USA
-+ Wschodnie stany USA
-+ Wschodnie stany USA 2
-+ Zachodnie stany USA
-+ Zachodnie stany USA 2
-+ Środkowe stany USA
-+ Kanada Środkowa
-+ Europa Zachodnia
-+ Europa Północna
-+ Południowe Zjednoczone Królestwo
-+ Francja Środkowa
-+ Brazylia Południowa
-+ Azja Wschodnia
-+ Azja Południowo-Wschodnia
-+ Indie Środkowe
-+ Japonia Zachodnia
-+ Japonia Wschodnia
-+ Korea Środkowa
-+ Australia Wschodnia
-
-**Krok 2. Praktyczne doświadczenie w pracy opanuj korzystanie z przepływu pracy**
+**Krok 2. Wypróbuj niektóre przewodników Szybki Start i przykładów, aby uzyskać praktyczne doświadczenie w pracy**
 
 + [Przewodnik Szybki Start (portal)](cognitive-search-quickstart-blob.md)
 + [Samouczek (żądania HTTP)](cognitive-search-tutorial-blob.md)

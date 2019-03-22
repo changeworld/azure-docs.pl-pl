@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: e39904378edd9583cd7802d0a75f2f365a35d2b6
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 58be7b6dc9eeeadd69fe82f1dc03d959aa94f9c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791957"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088438"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
@@ -304,10 +304,10 @@ Do produkcji i wysokiej dostępności należy użyć pełnej wersji programu SQL
 
 Wystąpienie programu SQL Server dla usługi Azure App Service w usłudze Azure Stack muszą być dostępne ze wszystkich ról usługi App Service. Możesz wdrożyć program SQL Server w ramach subskrypcji dostawcy domyślne w usłudze Azure Stack. Czy też mają być wykorzystanie istniejącej infrastruktury w Twojej organizacji (o ile ma łączność do usługi Azure Stack). Jeśli używasz obrazu witryny Azure Marketplace, pamiętaj, aby odpowiednio skonfigurować zaporę.
 
->[!NOTE]
+> [!NOTE]
 > Liczba obrazów maszyn wirtualnych SQL IaaS są dostępne za pomocą funkcji zarządzania portalu Marketplace. Upewnij się, że zawsze pobieranie najnowszej wersji rozszerzenie SQL IaaS, zanim wdrożysz maszynę Wirtualną przy użyciu elementu portalu Marketplace. Obrazy SQL są takie same jak maszyn wirtualnych SQL, które są dostępne na platformie Azure. Dla maszyn wirtualnych SQL z utworzonego na podstawie tych obrazów, rozszerzenie IaaS i odpowiadających im rozszerzenia portalu oferują funkcje, takie jak automatyczne stosowanie poprawek i możliwości tworzenia kopii zapasowej.
->
-Dla każdej z ról programu SQL Server można użyć wystąpienia domyślnego lub nazwanego wystąpienia. Jeśli używasz nazwane wystąpienie, należy ręcznie uruchomić usługę SQL Server Browser i otwórz port 1434.
+> 
+> Dla każdej z ról programu SQL Server można użyć wystąpienia domyślnego lub nazwanego wystąpienia. Jeśli używasz nazwane wystąpienie, należy ręcznie uruchomić usługę SQL Server Browser i otwórz port 1434.
 
 Instalator usługi App Service sprawdzi, upewnij się, że program SQL Server ma zawierania bazy danych, włączone. Aby włączyć zawierania bazy danych w programie SQL Server, który będzie hostem bazy danych usługi App Service, uruchom następujące polecenia SQL:
 

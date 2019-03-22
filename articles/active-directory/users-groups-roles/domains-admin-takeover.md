@@ -1,5 +1,5 @@
 ---
-title: Przejęcia - Administrator — niezarządzanego katalogu usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Przejęcia przez administratora, niezarządzanego katalogu — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak przejęcie nazwy domeny DNS w katalogu niezarządzanego (dzierżawy w tle) w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af2628e1da24bd790e94306703aab797a0d56a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202490"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejąć niezarządzanego katalogu jako administrator usługi Azure Active Directory
+
 W tym artykule opisano dwa sposoby na przejęcie nazwy domeny DNS w niezarządzanego katalogu usługi Azure Active Directory (Azure AD). Gdy użytkownik samoobsługi rejestruje się w usłudze w chmurze, która korzysta z usługi Azure AD, jest dodawany do niezarządzanego katalogu usługi Azure AD na podstawie swojej domeny poczty e-mail. Więcej informacji na temat samoobsługowego lub "wirusowego" rejestracji dla usługi, zobacz [co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Decyzja w sprawie sposobu przejmowanie katalogu niezarządzanego
@@ -42,13 +43,13 @@ Niektóre produkty, które zawierają SharePoint i OneDrive, takich jak Office 3
 
 3. Wiadomość e-mail z potwierdzeniem z usługi Power BI, wybierz **tak, to ja**.
 
-4. Zaloguj się do [Centrum administracyjnego usługi Office 365](https://portal.office.com/admintakeover) przy użyciu konta użytkownika usługi Power BI. Pojawi się komunikat z monitem o **Zostań administratorem** nazwy domeny, która została już zweryfikowana w niezarządzanej dzierżawy. Wybierz **tak, chcę być administratorem**.
+4. Zaloguj się do [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com) przy użyciu konta użytkownika usługi Power BI. Pojawi się komunikat z monitem o **Zostań administratorem** nazwy domeny, która została już zweryfikowana w niezarządzanej dzierżawy. Wybierz **tak, chcę być administratorem**.
   
-  ![pierwszy zrzut ekranu przedstawiający Zostań administratorem](./media/domains-admin-takeover/become-admin-first.png)
+   ![pierwszy zrzut ekranu przedstawiający Zostań administratorem](./media/domains-admin-takeover/become-admin-first.png)
   
 5. Dodaj rekord TXT, aby potwierdzić, że jesteś właścicielem nazwy domeny **fourthcoffee.xyz** u rejestratora nazw domen. W tym przykładzie jest GoDaddy.com.
   
-  ![Dodaj rekord txt dla nazwy domeny](./media/domains-admin-takeover/become-admin-txt-record.png)
+   ![Dodaj rekord txt dla nazwy domeny](./media/domains-admin-takeover/become-admin-txt-record.png)
 
 Po zweryfikowaniu rekordy DNS TXT u rejestratora nazw domen można zarządzać dzierżawy usługi Azure AD.
 
@@ -56,23 +57,23 @@ Po ukończeniu powyższych kroków, jesteś teraz administratorem globalnym dzie
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Dodawanie nazwy domeny do zarządzanej dzierżawy w usłudze Azure AD
 
-1. Otwórz [Centrum administracyjnego usługi Office 365](https://portal.office.com/admintakeover).
-2. Wybierz **użytkowników** , a następnie utworzyć nowe konto użytkownika o nazwie, takich jak *user@fourthcoffeexyz.onmicrosoft.com* nie używa nazwy domeny niestandardowej. 
+1. Otwórz [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com).
+2. Wybierz **użytkowników** , a następnie utworzyć nowe konto użytkownika o nazwie, takich jak *użytkownika\@fourthcoffeexyz.onmicrosoft.com* nie używa nazwy domeny niestandardowej. 
 3. Upewnij się, że nowe konto użytkownika ma uprawnienia administratora globalnego dla dzierżawy usługi Azure AD.
-4. Otwórz **domen** kartę w Centrum administracyjnym usługi Office 365, wybierz nazwę domeny i wybierz **Usuń**. 
+4. Otwórz **domen** kartę w Centrum administracyjnym usługi Microsoft 365, wybierz nazwę domeny i wybierz **Usuń**. 
   
-  ![usunąć nazwę domeny w usłudze Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![usunąć nazwę domeny w usłudze Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. W przypadku jakichkolwiek użytkowników lub grup w usłudze Office 365, odwołujące się do nazwy domeny usunięte, musi zostać zmieniona na. domeny onmicrosoft.com. Jeśli wymusisz usunięcie nazwy domeny, wszyscy użytkownicy są automatycznie zmieniono jego nazwę, w tym przykładzie *user@fourthcoffeexyz.onmicrosoft.com*.
+5. W przypadku jakichkolwiek użytkowników lub grup w usłudze Office 365, odwołujące się do nazwy domeny usunięte, musi zostać zmieniona na. domeny onmicrosoft.com. Jeśli wymusisz usunięcie nazwy domeny, wszyscy użytkownicy są automatycznie zmieniono jego nazwę, w tym przykładzie *użytkownika\@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) przy użyciu konta administratora globalnego dla dzierżawy usługi Azure AD.
   
 7. Wybierz **niestandardowe nazwy domen**, następnie dodać nazwę domeny. Musisz wprowadzić rekordy DNS TXT, aby zweryfikować prawa własności nazwy domeny. 
   
-  ![Domena dodana do usługi Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
+   ![zweryfikowany w miarę dodawania do usługi Azure AD dla domeny](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Użytkowników usługi Power BI lub usługi Azure Rights Management, którzy mają licencje przypisane w ramach dzierżawy usługi Office 365 należy zapisać swoje pulpity nawigacyjne, jeśli nazwa domeny została usunięta. Muszą się zalogować się przy użyciu nazwy użytkownika, takich jak *user@fourthcoffeexyz.onmicrosoft.com* zamiast *user@fourthcoffee.xyz*.
+> Użytkowników usługi Power BI lub usługi Azure Rights Management, którzy mają licencje przypisane w ramach dzierżawy usługi Office 365 należy zapisać swoje pulpity nawigacyjne, jeśli nazwa domeny została usunięta. Muszą się zalogować się przy użyciu nazwy użytkownika, takich jak *użytkownika\@fourthcoffeexyz.onmicrosoft.com* zamiast *użytkownika\@fourthcoffee.xyz*.
 
 ## <a name="external-admin-takeover"></a>Przejęcia przez administratora zewnętrznych
 
@@ -132,46 +133,47 @@ cmdlet | Sposób użycia
 ### <a name="powershell-example"></a>Przykład programu PowerShell
 
 1. Połącz z usługą Azure AD przy użyciu poświadczeń użytych do odpowiadanie na oferty samoobsługowego:
-  ```
+   ```powershell
     Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred
-  ```
+   ```
 2. Get a list of domains:
   
-  ```
+   ```powershell
     Get-MsolDomain
-  ```
+   ```
 3. Uruchom polecenie cmdlet Get-MsolDomainVerificationDns, aby utworzyć żądanie:
-  ```
+   ```powershell
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
     For example:
   
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
-  ```
+   ```
 
 4. Skopiuj wartość (żądanie), która jest zwracana z tego polecenia. Na przykład:
-  ```
+   ```powershell
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
-  ```
+   ```
 5. W publicznej przestrzeni nazw DNS należy utworzyć rekord txt DNS, który zawiera wartości, który został skopiowany w poprzednim kroku. Nazwa tego rekordu jest nazwa domeny nadrzędnej, więc jeśli utworzysz ten rekord zasobu za pomocą roli DNS z systemem Windows Server, pozostaw Wklej puste i po prostu nazwę rekordu wartość w polu tekstowym.
 6. Uruchom polecenie cmdlet Confirm-MsolDomain, aby zweryfikować wyzwania:
   
-  ```
+   ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
-  ```
+   ```
   
-  Na przykład:
+   Na przykład:
   
-  ```
+   ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
-  ```
+   ```
 
 Pomyślne żądania powrót do wiersza polecenia bez błędów.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Dodawanie niestandardowej nazwy domeny do usługi Azure AD](../fundamentals/add-custom-domain.md)
 * [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)

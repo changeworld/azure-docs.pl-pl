@@ -3,8 +3,8 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,29 +12,29 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ac8e678d8ca006fc5b0ab52f007590ac4e334bf7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 701b08cafd2e6d38a68252ea5919c8f4cd7de9b4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203662"
 ---
-## <a name="set-up-your-project"></a>Konfigurowanie projektu
+## <a name="set-up-your-project"></a>konfigurowanie projektu
 
 W tej sekcji przedstawiono kroki, aby zainstalować i skonfigurować potoku uwierzytelniania za pomocą oprogramowania pośredniczącego OWIN w projekcie ASP.NET przy użyciu protokołu OpenID Connect.
 
 > Chcesz zamiast tego Pobierz ten przykładowy projekt programu Visual Studio? [Pobieranie projektu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) , a następnie przejdź do [kroku konfiguracji](#register-your-application) do skonfigurowania przykładowego kodu przed wykonaniem.
 
-### <a name="create-your-aspnet-project"></a>Utwórz projekt platformy ASP.NET
+### <a name="create-your-aspnet-project"></a>tworzenie projektu ASP.NET
 
 1. W programie Visual Studio: `File` > `New` > `Project`
 2. W obszarze *Visual C# \Web*, wybierz opcję `ASP.NET Web Application (.NET Framework)`.
 3. Nadaj nazwę aplikacji, a następnie kliknij przycisk *OK*
 4. Wybierz `Empty` i zaznacz pole wyboru, aby dodać `MVC` odwołania
 
-## <a name="add-authentication-components"></a>Dodaj składniki uwierzytelniania
+## <a name="add-authentication-components"></a>dodawanie składników uwierzytelniania
 
 1. W programie Visual Studio: `Tools` > `Nuget Package Manager` > `Package Manager Console`
 2. Dodaj *pakiety NuGet oprogramowania pośredniczącego OWIN*, wpisując następujące polecenie w oknie Konsola menedżera pakietów:
@@ -50,7 +50,7 @@ W tej sekcji przedstawiono kroki, aby zainstalować i skonfigurować potoku uwie
 > Powyższe biblioteki włączają logowanie jednokrotne (SSO) przy użyciu protokołu OpenID Connect za pośrednictwem uwierzytelniania w oparciu o pliki cookie. Po zakończeniu uwierzytelniania i wysłaniu tokenu reprezentującego użytkownika do aplikacji oprogramowanie pośredniczące OWIN tworzy plik cookie sesji. Przeglądarki następnie używa ten plik cookie dla kolejnych żądań, dzięki czemu użytkownik nie musiał ponownie wpisz hasło, a nie dodatkowa weryfikacja jest wymagana.
 <!--end-collapse-->
 
-## <a name="configure-the-authentication-pipeline"></a>Konfigurowanie potoku uwierzytelniania
+## <a name="configure-the-authentication-pipeline"></a>konfigurowanie potoku uwierzytelniania
 Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN Klasa początkowa, aby skonfigurować uwierzytelnianie OpenID Connect. Ta klasa zostanie wykonana automatycznie, gdy rozpoczyna się proces usług IIS.
 
 > [!TIP]

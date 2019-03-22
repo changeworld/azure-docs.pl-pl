@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 171bf94bbccd45b9be995977c9ec2a26a75d9602
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8ea3b3580cb70d0453a5ec6a38f6063788ebf7f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403485"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082028"
 ---
 # <a name="configure-expressroute-global-reach"></a>Konfigurowanie usługi ExpressRoute Global Reach
 
@@ -38,11 +38,11 @@ Przed rozpoczęciem konfiguracji upewnij się, że:
 
 1. Aby uruchomić konfigurację, zaloguj się do konta platformy Azure i wybierz subskrypcję, której chcesz użyć.
 
-  [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
+   [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 2. Zidentyfikuj obwodów usługi ExpressRoute, którego chcesz używać. Aby umożliwić zasięgu globalnym usługi ExpressRoute między wszystkie dwa obwody usługi ExpressRoute tak długo, jak znajdują się w obsługiwane kraje i zostały utworzone w różnych lokalizacjach komunikacji równorzędnej. 
 
-  * Jeśli Twoja subskrypcja jest właścicielem zarówno obwody, można wybrać albo obwodu, Uruchom konfigurację w poniższych sekcjach.
-  * Jeśli dwa obwody znajdują się w różnych subskrypcjach platformy Azure, konieczne będzie autoryzacji z jedną subskrypcją platformy Azure. Następnie są przekazywane w klucza autoryzacji podczas uruchamiania polecenia konfiguracji w ramach subskrypcji platformy Azure.
+   * Jeśli Twoja subskrypcja jest właścicielem zarówno obwody, można wybrać albo obwodu, Uruchom konfigurację w poniższych sekcjach.
+   * Jeśli dwa obwody znajdują się w różnych subskrypcjach platformy Azure, konieczne będzie autoryzacji z jedną subskrypcją platformy Azure. Następnie są przekazywane w klucza autoryzacji podczas uruchamiania polecenia konfiguracji w ramach subskrypcji platformy Azure.
 
 ## <a name="enable-connectivity"></a>Włącz połączenia
 
@@ -52,27 +52,27 @@ Włącz łączność między sieci lokalnej. Istnieją osobne zestawy instrukcji
 
 1. Użyj następujących poleceń, aby uzyskać obwodu 1 i 2 obwodu. Są dwa obwody w tej samej subskrypcji.
 
-  ```azurepowershell-interactive
-  $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
-  $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
-  ```
+   ```azurepowershell-interactive
+   $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+   $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
+   ```
 2. Uruchom następujące polecenie przed 1 obwodu i przekazać Identyfikatora prywatnej komunikacji równorzędnej obwodu 2. Przy uruchamianiu polecenia, pamiętaj o następujących kwestiach:
 
-  * Identyfikator komunikacji równorzędnej prywatnej wygląda podobnie do poniższego przykładu: 
+   * Identyfikator komunikacji równorzędnej prywatnej wygląda podobnie do poniższego przykładu: 
 
-    ```
-    /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
-    ```
-  * *-AddressPrefix* musi mieć wartość/29 IPv4 podsieci, na przykład "10.0.0.0/29". Używamy adresów IP w tej podsieci, można ustanowić łączności między dwa obwody usługi ExpressRoute. Nie można używać adresów w tej podsieci, w sieciach wirtualnych platformy Azure lub w sieci lokalnej.
+     ```
+     /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
+     ```
+   * *-AddressPrefix* musi mieć wartość/29 IPv4 podsieci, na przykład "10.0.0.0/29". Używamy adresów IP w tej podsieci, można ustanowić łączności między dwa obwody usługi ExpressRoute. Nie można używać adresów w tej podsieci, w sieciach wirtualnych platformy Azure lub w sieci lokalnej.
 
-    ```azurepowershell-interactive
-    Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
-    ```
+     ```azurepowershell-interactive
+     Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
+     ```
 3. Zapisz konfigurację w obwodzie 1 w następujący sposób:
 
-  ```azurepowershell-interactive
-  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
-  ```
+   ```azurepowershell-interactive
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
+   ```
 
 Po zakończeniu poprzedniej operacji, będą mieć łączność między sieci lokalnej po obu stronach za pośrednictwem dwóch obwodów usługi ExpressRoute.
 
@@ -82,23 +82,23 @@ Jeśli dwa obwody nie znajdują się w tej samej subskrypcji platformy Azure, ko
 
 1. Generowanie klucza autoryzacji.
 
-  ```azurepowershell-interactive
-  $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
-  Add-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $ckt_2 -Name "Name_for_auth_key"
-  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_2
-  ```
+   ```azurepowershell-interactive
+   $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
+   Add-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $ckt_2 -Name "Name_for_auth_key"
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_2
+   ```
 
-  Zanotuj Identyfikatora prywatnej komunikacji równorzędnej obwodu 2, a także klucza autoryzacji.
+   Zanotuj Identyfikatora prywatnej komunikacji równorzędnej obwodu 2, a także klucza autoryzacji.
 2. Uruchom następujące polecenie przed 1 obwodu. Przekaż Identyfikatora prywatnej komunikacji równorzędnej obwodu 2 i klucza autoryzacji.
 
-  ```azurepowershell-interactive
-  Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
-  ```
+   ```azurepowershell-interactive
+   Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
+   ```
 3. Zapisz konfigurację w obwodzie 1.
 
-  ```azurepowershell-interactive
-  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
-  ```
+   ```azurepowershell-interactive
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
+   ```
 
 Po zakończeniu poprzedniej operacji, będą mieć łączność między sieci lokalnej po obu stronach za pośrednictwem dwóch obwodów usługi ExpressRoute.
 

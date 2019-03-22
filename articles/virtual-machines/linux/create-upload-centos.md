@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: a46f2b4ed1bb3fc5fff65a627bd3d808ed85ffce
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4e32d2357636cb488d3a58b78b025860da3f74c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967286"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091362"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu CentOS dla platformy Azure
 
@@ -299,13 +299,13 @@ Przygotowywanie maszyny wirtualnej CentOS 7 dla systemu Azure jest bardzo podobn
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. Jeśli tworzenie obrazu z **KVM lub VMware, VirtualBox:** sterowniki upewnij się, że funkcja Hyper-V znajdują się w initramfs:
+10. Jeśli tworzenie obrazu z **VirtualBox, KVM lub VMware:** Upewnij się, że sterowniki funkcji Hyper-V znajdują się w initramfs:
 
-   Edytuj `/etc/dracut.conf`, Dodaj zawartość:
+    Edytuj `/etc/dracut.conf`, Dodaj zawartość:
 
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
 
-   Ponownie skompiluj initramfs:
+    Ponownie skompiluj initramfs:
 
         # sudo dracut -f -v
 
@@ -316,7 +316,7 @@ Przygotowywanie maszyny wirtualnej CentOS 7 dla systemu Azure jest bardzo podobn
 
 12. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
 
-   Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (zobacz poprzedni krok), zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (zobacz poprzedni krok), zmodyfikuj następujące parametry w `/etc/waagent.conf` odpowiednio:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4

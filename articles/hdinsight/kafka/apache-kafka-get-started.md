@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 76f09af66e362fb6b03346b43a6be1a3ec7cf681
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.openlocfilehash: a8ed25f761e3109b0b97ee9b604a7a2d58e5aa8e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081342"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Szybki start: Tworzenie platformy Apache Kafka w klastrze usługi HDInsight
 
@@ -36,9 +36,9 @@ W tym samouczku szybkiego startu dowiesz się, jak utworzyć [klaster platformy 
 
     Polecenie `ssh` jest obsługiwane domyślnie w systemach Linux, Unix i macOS. W systemie Windows 10 należy zainstalować polecenie `ssh` za pomocą jednej z następujących metod:
 
-    * Użyj usługi [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart). Usługa Cloud Shell udostępnia polecenie `ssh` i można ją skonfigurować do korzystania z programu Bash lub PowerShell jako środowiska powłoki.
+  * Użyj usługi [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart). Usługa Cloud Shell udostępnia polecenie `ssh` i można ją skonfigurować do korzystania z programu Bash lub PowerShell jako środowiska powłoki.
 
-    * [Zainstaluj podsystem Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/install-win10). Dystrybucje systemu Linux dostępne za pośrednictwem sklepu Microsoft Store udostępniają polecenie `ssh`.
+  * [Zainstaluj podsystem Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/install-win10). Dystrybucje systemu Linux dostępne za pośrednictwem sklepu Microsoft Store udostępniają polecenie `ssh`.
 
     > [!IMPORTANT]  
     > W krokach opisanych w tym dokumencie założono, że używasz jednego z klientów SSH wymienionego powyżej. Jeśli używasz innego klienta SSH i napotkasz problemy, zapoznaj się z dokumentacją swojego klienta SSH.
@@ -180,6 +180,9 @@ W tej sekcji uzyskasz informacje o hoście z interfejsu API REST Apache Ambari w
     ```
 
 2. Aby ustawić zmienną środowiskową na nazwę klastra, użyj następującego polecenia:
+
+    > [!Important]
+    > Wprowadź nazwę klastra małymi literami tego polecenia, nawet jeśli została przygotowana z wielkich liter w nazwie. Nie można używać nazw wielkie litery, dozorcy lub brokera informacji.
 
     ```bash
     read -p "Enter the Kafka on HDInsight cluster name: " CLUSTERNAME
@@ -334,7 +337,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 > 
 > Usunięcie platformy Apache Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Używanie systemu Apache Spark z platformą Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

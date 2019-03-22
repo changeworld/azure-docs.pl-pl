@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 26f60a6f1796b080df3294737ce93bfb43029bf1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439125"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108835"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Rozwiązywanie problemów z usługą Azure Load Balancer
 
@@ -128,7 +128,7 @@ Jeśli wewnętrznego modułu równoważenia obciążenia jest konfigurowana wewn
 Jeśli zdecydujesz otworzyć zgłoszenie do pomocy technicznej, Zbierz następujące informacje dotyczące rozpoznawanie szybciej. Wybierz pojedynczego zaplecza maszyny Wirtualnej w celu wykonania następujących testów:
 - Użycie programu psping od jednego z wewnętrznej bazy danych maszyn wirtualnych w sieci wirtualnej testowanie odpowiedzi port sondy (przykład: psping 10.0.0.4:3389) i Zarejestruj wyniki. 
 - Jeśli odpowiedź nie zostanie odebrana w tych testów ping, należy uruchomić jednoczesnych Netsh trace na maszynie Wirtualnej zaplecza i testowej sieci wirtualnej maszyny Wirtualnej podczas uruchamiania PsPing następnie Zatrzymaj śledzenie Netsh. 
-  
+  
 ## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli poprzednie kroki nie rozwiązują ten problem, otwórz [bilet pomocy technicznej](https://azure.microsoft.com/support/options/).

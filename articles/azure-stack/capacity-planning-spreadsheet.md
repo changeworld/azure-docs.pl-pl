@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: d140b80ecb5fe2a7211245044b08f43fde4233a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 459398f5f40ae5fb28dfa4ac73b94aecca7304eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240990"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099420"
 ---
 # <a name="azure-stack-capacity-planner"></a>Planista wydajności usługi Azure Stack
 Planisty wydajności usługi Azure Stack to arkusz kalkulacyjny, używany do planowania pojemności zasobu usługi Azure Stack. Capacity planner zapewnia możliwość projektowania różne przydziały zasobów obliczeniowych i zobacz, jak te zmieszczą się na wybór ofert sprzętu. Poniżej znajdują się szczegółowe instrukcje dotyczące użycia usługi Azure Stack kalkulatora.
@@ -61,8 +61,8 @@ Aby utworzyć model przy użyciu jednej kolekcji różnych rozmiarów i liczby m
 2. Aby modelować różne alokacji zasobów maszyny Wirtualnej względem jedną konkretną konfiguracją sprzętu, można znaleźć listy rozwijane pole bezpośrednio pod etykietą "Bieżąca jednostka SKU" w prawym górnym rogu strony. Ściągnąć tego pola listy, a następnie wybierz żądany sprzętu jednostki SKU.
 3. Teraz można przystąpić do rozpoczęcia, dodając różnych wielkości maszyny wirtualne do modelu. Aby dołączyć określonego typu maszyny Wirtualnej, należy wprowadzić wartość ilość w niebieskim polu Schemat z lewej strony tego wpisu maszyny Wirtualnej.
 
-  > [!NOTE]
-  > Całkowita ilość miejsca do maszyny Wirtualnej, który odwołuje się do całkowitej pojemności dysku danych maszyny wirtualnej (liczbę dysków obsługiwanych * maksymalną pojemność jednego dysku (1 TB)). Na podstawie wskaźników, konfiguracji możemy wypełnili tabeli dostępnych konfiguracji magazynu, w którym może wybrać żądany poziom zasobów usługi storage dla każdej maszyny Wirtualnej stosu usługi Azure. Jest jednak należy pamiętać, że możesz dodawać i Zmień tabelę dostępnych konfiguracji magazynu, zgodnie z potrzebami.<br><br>Każda maszyna wirtualna rozpoczyna się od wstępnie przypisanych lokalny magazyn tymczasowy. Aby uwzględnić alokowanie magazynu tymczasowego można zmienić numer lokalny temp miejscem, w tym ilości maksymalny dopuszczalny rozmiar magazynu tymczasowego menu rozwijanego.
+   > [!NOTE]
+   > Całkowita ilość miejsca do maszyny Wirtualnej, który odwołuje się do całkowitej pojemności dysku danych maszyny wirtualnej (liczbę dysków obsługiwanych * maksymalną pojemność jednego dysku (1 TB)). Na podstawie wskaźników, konfiguracji możemy wypełnili tabeli dostępnych konfiguracji magazynu, w którym może wybrać żądany poziom zasobów usługi storage dla każdej maszyny Wirtualnej stosu usługi Azure. Jest jednak należy pamiętać, że możesz dodawać i Zmień tabelę dostępnych konfiguracji magazynu, zgodnie z potrzebami.<br><br>Każda maszyna wirtualna rozpoczyna się od wstępnie przypisanych lokalny magazyn tymczasowy. Aby uwzględnić alokowanie magazynu tymczasowego można zmienić numer lokalny temp miejscem, w tym ilości maksymalny dopuszczalny rozmiar magazynu tymczasowego menu rozwijanego.
 
 4. W miarę dodawania maszyn wirtualnych zostaną wyświetlone wykresy pokazujące dostępnych zasobów jednostki SKU zmiany. Dzięki temu można zobaczyć efekty Dodawanie różnych rozmiarów i liczby maszyn wirtualnych w procesie modelowania. Innym sposobem, aby wyświetlić wpływ zmian jest Obejrzyj numery zużyto i nadal dostępne, bezpośrednio poniżej listy dostępnych maszyn wirtualnych. Te liczby odzwierciedlają szacowane wartości oparte na sprzęcie aktualnie wybranej jednostki SKU.
 5. Po utworzeniu zestawu maszyn wirtualnych można znaleźć sugerowane sprzętu jednostki SKU, klikając przycisk "Sugerowane jednostki SKU" w prawym górnym rogu strony, bezpośrednio pod etykietą "Bieżąca jednostka SKU". Za pomocą tego przycisku, można zmodyfikować konfiguracje maszyny Wirtualnej i zobacz, jaki sprzęt obsługuje każdej konfiguracji.

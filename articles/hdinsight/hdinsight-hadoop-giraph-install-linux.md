@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 027f8ad854cfc4c412a56a293de3b02a425d6858
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713832"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201725"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Zainstaluj Apache Giraph w klastrach usługi HDInsight Hadoop, a przetwarzanie dużych wykresów za pomocą systemu Giraph
 
@@ -76,7 +76,7 @@ Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt po
 
    * **PROCES ROBOCZY**: Ten wpis należy pozostawić puste.
 
-   * **DOZORCY**: Ten wpis należy pozostawić puste.
+   * **ZOOKEEPER**: Ten wpis należy pozostawić puste.
 
    * **PARAMETRY**: Pozostaw to pole puste.
 
@@ -171,5 +171,3 @@ Po utworzeniu klastra, wykonaj następujące kroki, aby uruchomić przykład Sim
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Instalowanie i korzystanie z rozwiązania Hue w klastrach HDInsight](hdinsight-hadoop-hue-linux.md).
-
-* [Instalowanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md).

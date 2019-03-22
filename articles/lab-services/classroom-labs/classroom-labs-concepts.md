@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: f0f45e50fba4587e604add937ed45fc78228d44f
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 82f9d7090d7283e0b00b36e0928fffb3395ca4c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960248"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102639"
 ---
 # <a name="classroom-labs-concepts"></a>Pojęcia związane z laboratoriami na potrzeby zajęć
 Poniższa lista zawiera podstawowe pojęcia Lab Services i definicje:
@@ -26,7 +26,7 @@ Poniższa lista zawiera podstawowe pojęcia Lab Services i definicje:
 ## <a name="quota"></a>Przydział
 Przydział to limit czasu (w godzinach), który nauczyciel można ustawić dla uczniów lub studentów użyć maszynę Wirtualną laboratorium. Można go ustawić na 0, nieograniczone, lub określoną liczbę godzin. Jeśli limit przydziału jest równa 0, uczniem/uczennicą można używać maszyny wirtualnej tylko, gdy działa zgodnie z harmonogramem lub nauczyciel ręcznie włącza maszyny wirtualnej dla uczniów lub studentów.
  
-##<a name="schedules"></a>Harmonogramy
+## <a name="schedules"></a>Harmonogramy
 Harmonogramy są odstępów czasu (jednorazowo lub cykliczne), tworzonych przez uczniów w klasie. Wszystkie maszyny wirtualne w laboratorium są uruchamiane automatycznie na początku z harmonogramem i pozostaną one zatrzymane na końcu harmonogramu. Godz. limit przydziału nie są używane, gdy działa zgodnie z harmonogramem.
 
 ## <a name="template-virtual-machine"></a>Szablon maszyny wirtualnej

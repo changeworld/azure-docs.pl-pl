@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 9c8803ff73b3e70c19a409ef6c1e072b5f7c8b53
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734272"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088353"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Tworzenie ustawienia automatycznego skalowania dla zasobów platformy Azure na podstawie danych wydajności lub harmonogramu
 
@@ -60,7 +60,7 @@ Kilka następnych kroków pomoże Ci w takim wypełnieniu ekranu automatycznego 
 2. Upewnij się, że w profilu domyślnym opcja **Tryb skalowania** jest ustawiona na wartość „Skaluj do określonej liczby wystąpień”.
 3. Ustaw liczbę wystąpień na **1**. To ustawienie powoduje, że kiedy żaden inny profil nie jest aktywny (nie obowiązuje), profil domyślny przywraca wartość 1 dla liczby wystąpień.
 
-  ![Przechodzenie do ustawień automatycznego skalowania](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![Przechodzenie do ustawień automatycznego skalowania](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>Tworzenie profilu cyklu
@@ -170,7 +170,7 @@ Warunek skalowania na zewnątrz w ustawieniu automatycznego skalowania jest wyzw
 
 4. Potwierdź usunięcie, wpisując w polu tekstowym wartość **tak**, a następnie kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zostały wykonane następujące czynności:  
 > [!div class="checklist"]

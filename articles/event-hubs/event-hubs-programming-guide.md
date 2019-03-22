@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ab067d09d1e161e463922eeae90fe3b46e887150
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e96abfbdbd9394d27fbffbcb64aa9cbfabbbcb69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544294"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835439"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Przewodnik programowania dotyczący usługi Azure Event Hubs
 W tym artykule omówiono kilka typowych scenariuszy, w pisaniu kodu za pomocą usługi Azure Event Hubs. Przyjęto założenie, że wstępnie znasz i rozumiesz usługę Event Hubs. Omówienie koncepcji usługi Event Hubs można znaleźć w temacie [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -26,7 +26,6 @@ Wysyła zdarzenia do Centrum zdarzeń za pomocą metody POST protokołu HTTP lub
 W przypadku używania zarządzanych interfejsów API platformy .NET głównymi konstrukcjami na potrzeby publikowania danych w usłudze Event Hubs są klasy [EventHubClient][] i [EventData][]. [EventHubClient][] udostępnia kanał komunikacji protokołu AMQP, przez który zdarzenia są wysyłane do Centrum zdarzeń. [EventData][] klasa reprezentuje zdarzenie i jest używana do publikowania komunikatów do Centrum zdarzeń. Ta klasa zawiera treść, niektóre metadane i informacje nagłówka zdarzenia. Inne właściwości są dodawane do [EventData][] przechodzi on przez Centrum zdarzeń.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
-
 .NET klasy, które obsługują usługi Event Hubs znajdują się w [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) pakietu NuGet. Można to zrobić za pomocą Eksploratora rozwiązania Visual Studio lub [Konsola Menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) w programie Visual Studio. Aby to zrobić, należy wydać następujące polecenie w oknie [konsoli menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console):
 
 ```shell
@@ -99,7 +98,6 @@ Pojedyncza partia nie może przekraczać limit 1 MB zdarzenia. Ponadto każdy ko
 Asynchronicznie wysyła zdarzenia do Centrum zdarzeń. Wysyłanie asynchroniczne zwiększa szybkość jaką klient jest w stanie wysyłać zdarzenia. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) zwraca [zadań](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) obiektu. Możesz użyć [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) opcje ponawiania klasy na kliencie do sterowania klienta.
 
 ## <a name="event-consumers"></a>Odbiorcy zdarzeń
-
 Klasa [EventProcessorHost][] przetwarza dane z usługi Event Hubs. Podczas tworzenia czytników zdarzeń na platformie .NET należy używać tej implementacji. Klasa [EventProcessorHost][] udostępnia bezpieczne wątkowo, wieloprocesowe, bezpieczne środowisko uruchomieniowe dla implementacji procesora zdarzeń, które umożliwia także tworzenie punktów kontrolnych i zarządzanie dzierżawą partycji.
 
 Aby używać klasy [EventProcessorHost][], można zaimplementować interfejs [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor). Ten interfejs zawiera cztery metody:
@@ -110,6 +108,9 @@ Aby używać klasy [EventProcessorHost][], można zaimplementować interfejs [IE
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
 Aby rozpocząć przetwarzanie zdarzeń, utworzyć [EventProcessorHost][], podając odpowiednie parametry Centrum zdarzeń. Na przykład:
+
+> [!NOTE]
+> EventProcessorHost oraz ich powiązanymi klasami znajdują się w **Microsoft.Azure.EventHubs.Processor** pakietu. Dodaj pakiet do projektu programu Visual Studio, postępując zgodnie z instrukcjami opisanymi w [w tym artykule](event-hubs-dotnet-framework-getstarted-receive-eph.md#add-the-event-hubs-nuget-package) lub wysyłając następujące polecenie w [Konsola Menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) okna:`Install-Package Microsoft.Azure.EventHubs.Processor`.
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

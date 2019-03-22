@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 974ea5803b6e31ad8f940265071f41440d5355da
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6f6440e12840538614b4092b173ab25ae37a68a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700642"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110286"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Najlepsze rozwiązania dotyczące obciążeń wyceny i zmiany rozmiaru migracji na platformę Azure
 
@@ -40,17 +40,18 @@ Aby przeprowadzić prognozowanie, rachunek miesięczny dla migrowanych obciąże
 
 - **Kalkulator cen platformy Azure**: Możesz wybrać produkty, aby oszacować, na przykład maszyny wirtualne i magazyn. Koszty są wprowadzane do Kalkulatora cen, aby zbudować oszacowanie.
 
- ![Kalkulator cen platformy Azure](./media/migrate-best-practices-costs/pricing.png) *kalkulatora cen platformy Azure*
+  ![Kalkulator cen platformy Azure](./media/migrate-best-practices-costs/pricing.png) *kalkulatora cen platformy Azure*
 
 - **Usługa Azure Migrate**: Aby oszacować koszty, należy przejrzeć i kont dla wszystkich zasobów, które są wymagane do uruchamiania obciążeń na platformie Azure. Aby uzyskać te dane, należy utworzyć spis zasobów, w tym serwerów, maszyn wirtualnych, baz danych i magazynu. Usługa Azure Migrate służy do zebrania tych informacji.
 
- - Usługa Azure Migrate umożliwia odnalezienie i ocenia środowisku lokalnych w celu zapewnienia magazynu.
- - Usługa Azure Migrate można mapować i wyświetlić zależności między maszynami wirtualnymi, aby mieć pełny obraz.
- - Ocena usługi Azure Migrate zawiera szacowany koszt.
+  - Usługa Azure Migrate umożliwia odnalezienie i ocenia środowisku lokalnych w celu zapewnienia magazynu.
+  - Usługa Azure Migrate można mapować i wyświetlić zależności między maszynami wirtualnymi, aby mieć pełny obraz.
+  - Ocena usługi Azure Migrate zawiera szacowany koszt.
     - Koszty operacji obliczeniowych: Przy użyciu rozmiaru maszyny Wirtualnej platformy Azure, zalecany, jeśli tworzysz ocenę, usługa Azure Migrate używa interfejsu API rozliczeń do obliczania szacowany miesięczny koszt maszyny Wirtualnej. Oszacowanie uwzględnia systemu operacyjnego, programu software assurance, zarezerwowane wystąpienia, maszyny Wirtualnej przestojów, lokalizacji i ustawienia waluty. Agreguje koszt wszystkich maszyn wirtualnych do oceny i oblicza łączny koszt miesięczny obliczeń.
     - Koszt usługi Storage: Usługa Azure Migrate oblicza całkowite miesięczne koszty magazynu przez agregowanie koszty magazynowania wszystkich maszyn wirtualnych w ocenie. Miesięczny koszt przechowywania dla konkretnej maszyny można obliczyć przez agregowanie miesięcznych kosztów wszystkie dyski dołączone do niego. 
 
-    ![Usługa Azure Migrate](./media/migrate-best-practices-costs/assess.png) *oceny usługa Azure Migrate*
+    ![Usługa Azure Migrate](./media/migrate-best-practices-costs/assess.png)
+    *oceny usługa Azure Migrate*
 
 **Dowiedz się więcej:**
 - [Użyj](https://azure.microsoft.com/pricing/calculator/) kalkulatora cen platformy Azure.
@@ -92,13 +93,13 @@ Dostrajanie i zachowaniu magazynu lokalnego (sieci SAN i NAS) i sieci obsługuj�
 
 System Azure oferuje różne typy magazynu danych.
 
-**Typ danych** | **Szczegóły** | **Użycie** 
---- | --- |  ---
-**Obiekty blob** | Zoptymalizowane pod kątem przechowywania dużych ilości pozbawionych struktury obiektów, takich jak dane tekstowe lub binarne<br/><br/> | Dostęp do danych z dowolnego miejsca za pośrednictwem protokołu HTTP/HTTPS. | Użycie dla scenariuszy dostępu losowa i przesyłania strumieniowego. Na przykład do udostępniania obrazów i dokumentów bezpośrednio w przeglądarce, przesyłanie strumieniowe audio i wideo i przechowywania danych odzyskiwania kopii zapasowych i odzyskiwanie po awarii.
-**Pliki** | Zarządzane udziały plików udostępnianych za pośrednictwem protokołu SMB 3.0 | Podczas migrowania lokalnych udziałów plików i w celu zapewnienia wielu połączeń/dostępu do danych plików.
-**Dyski** | Oparte na stronicowych obiektów blob.<br/><br/> Typ dysku (szybkość): Standardowa (HDD lub SSD) lub Premium (SSD).<br/><br/>Zarządzanie dyskami: Niezarządzane (zarządzasz ustawień dysku i magazynu) lub zarządzany (Wybierz typ dysku i platformy Azure zarządza dysku). | Używanie dysków w warstwie Premium dla maszyn wirtualnych. Używanie dysków zarządzanych dla proste zarządzanie i skalowania.
-**kolejki** | Store i pobierania dużej liczby wiadomości, dostępne za pośrednictwem uwierzytelnionych połączeń (HTTP lub HTTPS) | Połącz składniki aplikacji za pomocą Kolejkowanie komunikatów asynchronicznych.
-**Tabele** | Store tabel. | Teraz część interfejsu API tabeli usługi Azure Cosmos DB.
+| **Typ danych** | **Szczegóły** | **Użycie** |
+|--- | --- |  --- |
+|**Obiekty blob** | Zoptymalizowane pod kątem przechowywania dużych ilości pozbawionych struktury obiektów, takich jak dane tekstowe lub binarne<br/>Dostęp do danych z dowolnego miejsca za pośrednictwem protokołu HTTP/HTTPS. | Użycie dla scenariuszy dostępu losowa i przesyłania strumieniowego. Na przykład do udostępniania obrazów i dokumentów bezpośrednio w przeglądarce, przesyłanie strumieniowe audio i wideo i przechowywania danych odzyskiwania kopii zapasowych i odzyskiwanie po awarii.|
+|**Pliki** | Zarządzane udziały plików udostępnianych za pośrednictwem protokołu SMB 3.0 | Podczas migrowania lokalnych udziałów plików i w celu zapewnienia wielu połączeń/dostępu do danych plików.|
+|**Dyski** | Oparte na stronicowych obiektów blob.<br/><br/> Typ dysku (szybkość): Standardowa (HDD lub SSD) lub Premium (SSD).<br/><br/>Zarządzanie dyskami: Niezarządzane (zarządzasz ustawień dysku i magazynu) lub zarządzany (Wybierz typ dysku i platformy Azure zarządza dysku). | Używanie dysków w warstwie Premium dla maszyn wirtualnych. Używanie dysków zarządzanych dla proste zarządzanie i skalowania.|
+|**kolejki** | Store i pobierania dużej liczby wiadomości, dostępne za pośrednictwem uwierzytelnionych połączeń (HTTP lub HTTPS) | Połącz składniki aplikacji za pomocą Kolejkowanie komunikatów asynchronicznych.|
+|**Tabele** | Store tabel. | Teraz część interfejsu API tabeli usługi Azure Cosmos DB.|
 
 
 
@@ -211,19 +212,21 @@ W Cost Management możesz wykonywać następujące czynności:
 
 
 - **Tworzenie budżetu**: Tworzenie budżetu odpowiedzialności finansowej.
-    - Użytkownik może uwzględnić services używają lub subskrybować dla określonego okresu (co miesiąc, co kwartał, co roku) i zakresu (subskrypcjach/grupach zasobów). Na przykład można utworzyć budżetu subskrypcji platformy Azure w okresie miesięcznym, kwartałów lub.
-    - Po utworzeniu budżetu, jest wyświetlana na analizy kosztów. Przeglądanie budżetu względem bieżących wydatków jest jednym z pierwszych kroków w razie analizując koszty i wydatki.
-    - Mogą być wysyłane powiadomienia e-mail, po osiągnięciu progów budżetu.
-    - Możesz wyeksportować dane zarządzania kosztami, do usługi Azure storage do analizy.
+  - Użytkownik może uwzględnić services używają lub subskrybować dla określonego okresu (co miesiąc, co kwartał, co roku) i zakresu (subskrypcjach/grupach zasobów). Na przykład można utworzyć budżetu subskrypcji platformy Azure w okresie miesięcznym, kwartałów lub.
+  - Po utworzeniu budżetu, jest wyświetlana na analizy kosztów. Przeglądanie budżetu względem bieżących wydatków jest jednym z pierwszych kroków w razie analizując koszty i wydatki.
+  - Mogą być wysyłane powiadomienia e-mail, po osiągnięciu progów budżetu.
+  - Możesz wyeksportować dane zarządzania kosztami, do usługi Azure storage do analizy.
 
-    ![Budżet kosztów zarządzania](./media/migrate-best-practices-costs/budget.png) *budżetu w usłudze Azure Cost Management*
+    ![Budżet kosztów zarządzania](./media/migrate-best-practices-costs/budget.png)
+    *budżetu w usłudze Azure Cost Management*
 
 - **Wykonaj analizę kosztów**: Rozpoczynanie analizy kosztów, aby eksplorować i analizować koszty organizacji, które pomagają zrozumieć, jak są naliczane koszty i identyfikowania trendów wydatków.
-    - Analiza kosztów jest dostępna dla użytkowników, umowy EA.
-    - Możesz wyświetlić dane analizy kosztów liczbę zakresów, m.in. przez dział, konta, subskrypcji lub grupy zasobów.
-    - Możesz uzyskać analizy kosztów, które przedstawia łączne koszty dla bieżącego miesiąca i skumulowany dziennych kosztów. 
+  - Analiza kosztów jest dostępna dla użytkowników, umowy EA.
+  - Możesz wyświetlić dane analizy kosztów liczbę zakresów, m.in. przez dział, konta, subskrypcji lub grupy zasobów.
+  - Możesz uzyskać analizy kosztów, które przedstawia łączne koszty dla bieżącego miesiąca i skumulowany dziennych kosztów. 
 
-    ![Zarządzanie analiza kosztów](./media/migrate-best-practices-costs/analysis.png) *analizy usługi Azure Cost Management*
+    ![Zarządzanie analiza kosztów](./media/migrate-best-practices-costs/analysis.png)
+    *analizy usługi Azure Cost Management*
 - **Uzyskiwanie zaleceń dotyczących**: Uzyskuj zalecenia usługi Advisor, które pokazują, jak zoptymalizować i zwiększyć wydajność.
 
 

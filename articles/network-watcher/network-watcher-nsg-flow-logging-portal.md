@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428975"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124098"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -100,7 +100,10 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
 
 6. Z listy sieciowych grup zabezpieczeń wybierz grupę o nazwie **myVm-nsg**.
 7. W obszarze **Ustawienia dzienników przepływu** wybierz pozycję **Wł.**
-8. Wybierz wersję dzienników przepływu do rejestrowania. Wersja 2 zawiera statystyki sesji przepływu (liczba bajtów i pakietów). ![Wybieranie wersji dzienników przepływu](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+8. Wybierz wersję dzienników przepływu do rejestrowania. W wersji 2 zawiera statystyki sesji przepływu (bajtów i pakietów)
+
+   ![Wybierz wersję dzienników przepływu](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+
 9. Wybierz konto usługi Storage utworzone w kroku 3.
 10. Ustaw pozycję **Przechowywanie (dni)** na 5, a następnie wybierz pozycję **Zapisz**.
 
@@ -109,17 +112,13 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
 1. Z poziomu usługi Network Watcher w portalu wybierz pozycję **Dzienniki przepływów sieciowych grup zabezpieczeń** w obszarze **DZIENNIKI**.
 2. Wybierz pozycję **Możesz pobierać dzienniki przepływu ze skonfigurowanych kont usługi Storage**, jak pokazano na poniższej ilustracji:
 
-  ![Pobieranie dzienników przepływu](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
+   ![Pobieranie dzienników przepływu](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Wybierz konto usługi Storage skonfigurowane w kroku 2 sekcji [Włączanie dziennika przepływu sieciowej grupy zabezpieczeń](#enable-nsg-flow-log).
-4. Wybierz pozycję **Kontenery** w obszarze **BLOB SERVICE**, a następnie wybierz kontener **insights-logs-networksecuritygroupflowevent**, jak pokazano na poniższej ilustracji:
+4. W obszarze **usługi Blob service**, wybierz opcję **obiektów blob**, a następnie wybierz **insights — dzienniki networksecuritygroupflowevent** kontenera.
+5. W tym kontenerze nawigować po hierarchii folderów aż dojdziesz do pliku PT1H.json, jak pokazano na ilustracji poniżej. Pliki dziennika są zapisywane w hierarchii folderów, który następuje po następującej konwencji nazewnictwa: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/ RESOURCEGROUPS/{resourceGroupName}/Providers/Microsoft.Network/NETWORKSECURITYGROUPS/{nsgName}/y={Year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.JSON
 
-    ![Wybieranie kontenera](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
-5. W hierarchii folderów przejdź do pliku PT1H.json, jak pokazano na poniższej ilustracji:
-
-    ![Plik dziennika](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
-
-    Pliki dzienników są zapisywane w hierarchii folderów przy użyciu następującej konwencji nazw: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+   ![Dziennik przepływu](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. Wybierz symbol **...** z prawej strony pliku PT1H.json i wybierz pozycję **Pobierz**.
 
@@ -196,7 +195,6 @@ Poniższy kod JSON to przykład kodu widocznego w pliku PT1H.json dla każdego p
 }
 ```
 
-
 Wartość elementu **mac** w poprzednich danych wyjściowych to adres MAC interfejsu sieciowego, który został utworzony podczas tworzenia maszyny wirtualnej. Informacje rozdzielone przecinkami dotyczące elementu **flowTuples** są następujące:
 
 | Przykładowe dane | Co reprezentują dane   | Wyjaśnienie                                                                              |
@@ -213,8 +211,8 @@ Wartość elementu **mac** w poprzednich danych wyjściowych to adres MAC interf
 | 30 | Wysłane pakiety — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. |
 | 16978 | Wysłane bajty — ze źródła do miejsca docelowego **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP lub UDP przesłanych ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu. | 
 | 24 | Wysłane pakiety — z miejsca docelowego do źródła **tylko w wersji 2** | Całkowita liczba pakietów TCP lub UDP przesłanych z miejsca docelowego do źródła od czasu ostatniej aktualizacji. |
-| 14008| Wysłane bajty — z miejsca docelowego do źródła **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP i UDP przesłanych z miejsca docelowego do źródła od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.| |
+| 14008| Wysłane bajty — z miejsca docelowego do źródła **tylko w wersji 2** | Całkowita liczba bajtów pakietów TCP i UDP przesłanych z miejsca docelowego do źródła od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób włączania rejestrowania przepływu sieciowej grupy zabezpieczeń dla danej grupy. Przedstawiono również sposób pobierania i wyświetlania danych rejestrowanych w pliku. Nieprzetworzone dane w pliku JSON mogą być trudne do zinterpretowania. W celu zwizualizowania danych można użyć [analizy ruchu](traffic-analytics.md) w usłudze Network Watcher, usługi Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) i innych narzędzi.

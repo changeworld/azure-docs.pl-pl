@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: aabb316cf564520e6ea5e8689f1c18c98b94ab3c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488479"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111399"
 ---
 # <a name="get-started-with-azure-advisor"></a>Wprowadzenie do usługi Azure Advisor
 
@@ -35,7 +35,7 @@ Dowiedz się, jak dostęp do usługi Advisor w witrynie Azure portal, Uzyskaj za
 
 1. Aby uzyskać zalecenia dotyczące określonej kategorii, kliknij jedną z kart: **Wysoka dostępność**, **zabezpieczeń**, **wydajności**, lub **koszt**. 
 
-  ![Pulpit nawigacyjny usługi Azure Advisor](./media/advisor-overview/advisor-dashboard.png)
+   ![Pulpit nawigacyjny usługi Azure Advisor](./media/advisor-overview/advisor-dashboard.png)
 
 ## <a name="get-recommendation-details-and-implement-a-solution"></a>Pobierz szczegóły zalecenia i zaimplementować rozwiązanie
 

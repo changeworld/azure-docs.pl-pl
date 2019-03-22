@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f20d51905d90f9f80007dcaa39cf978c7100026d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 617696c842ab90fc36c68e74831ffd1d79d14bc4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762893"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225709"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Zarządzanie pojemnością magazynu dla usługi Azure Stack 
 
@@ -89,12 +89,12 @@ Operator chmury, można monitorować pojemności udziału, przy użyciu programu
 Jako operator chmury z portalu administracyjnego służy również do wyświetlania pojemności wszystkich udziałów.
 
 1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
-2. Wybierz **wszystkich usług** > **magazynu** aby otworzyć listę udziału pliku, gdzie można wyświetlić informacje o użyciu. 
+2. Wybierz **wszystkich usług** > **magazynu** > **udziałów plików** Aby otworzyć listę udziału pliku, gdzie można wyświetlić informacje o użyciu. 
 
     ![Przykład: Udziałów plików magazynu](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
-  - **Łączna liczba** jest całkowita ilość miejsca w bajtach, które są dostępne w udziale. To miejsce jest używane dla danych i metadanych, które są obsługiwane przez usługi magazynu.
-  - **UŻYWANE** ilość danych w bajtach, który jest używany przez wszystkie zakresy z plików, które przechowują dane dzierżawy i skojarzone metadane.
+   - **Łączna liczba** jest całkowita ilość miejsca w bajtach, które są dostępne w udziale. To miejsce jest używane dla danych i metadanych, które są obsługiwane przez usługi magazynu.
+   - **UŻYWANE** ilość danych w bajtach, który jest używany przez wszystkie zakresy z plików, które przechowują dane dzierżawy i skojarzone metadane.
 
 ### <a name="storage-space-alerts"></a>Alerty miejsce magazynowania
 Korzystając z portalu administratora, możesz otrzymywać alerty o udziałów, które jest mało miejsca.
@@ -140,64 +140,64 @@ Migracja konsoliduje obiektu blob kontenerów nowego udziału.
 
 #### <a name="to-migrate-containers-using-powershell"></a>Aby przeprowadzić migrację kontenerów przy użyciu programu PowerShell
 1. Upewnij się, że masz [programu Azure PowerShell zainstalowany i skonfigurowany](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). Aby uzyskać więcej informacji, zobacz temat [Using Azure PowerShell with Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkId=394767) (Używanie programu Azure PowerShell z usługą Azure Resource Manager).
-2.  Sprawdź kontener, aby zrozumieć, jakie dane są w udziale, który mają być poddane migracji. Aby zidentyfikować najlepsze kontenery Release candidate dla migracji w woluminie, należy użyć **Get AzsStorageContainer** polecenia cmdlet:
+2. Sprawdź kontener, aby zrozumieć, jakie dane są w udziale, który mają być poddane migracji. Aby zidentyfikować najlepsze kontenery Release candidate dla migracji w woluminie, należy użyć **Get AzsStorageContainer** polecenia cmdlet:
 
-    ```PowerShell  
-    $farm_name = (Get-AzsStorageFarm)[0].name
-    $shares = Get-AzsStorageShare -FarmName $farm_name
-    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
-    ```
-    Następnie sprawdź $containers:
+   ```PowerShell  
+   $farm_name = (Get-AzsStorageFarm)[0].name
+   $shares = Get-AzsStorageShare -FarmName $farm_name
+   $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
+   ```
+   Następnie sprawdź $containers:
 
-    ```PowerShell
-    $containers
-    ```
+   ```PowerShell
+   $containers
+   ```
 
-    ![Przykład: $Containers](media/azure-stack-manage-storage-shares/containers.png)
+   ![Przykład: $Containers](media/azure-stack-manage-storage-shares/containers.png)
 
-3.  Zidentyfikuj najlepsze udziałów docelowego na potrzeby przechowywania kontenerów, które można migrować:
+3. Zidentyfikuj najlepsze udziałów docelowego na potrzeby przechowywania kontenerów, które można migrować:
 
-    ```PowerShell
-    $destinationshares = Get-AzsStorageShare -SourceShareName
-    $shares[0].ShareName -Intent ContainerMigration
-    ```
+   ```PowerShell
+   $destinationshares = Get-AzsStorageShare -SourceShareName
+   $shares[0].ShareName -Intent ContainerMigration
+   ```
 
-    Następnie sprawdź $destinationshares:
+   Następnie sprawdź $destinationshares:
 
-    ```PowerShell 
-    $destinationshares
-    ```
+   ```PowerShell 
+   $destinationshares
+   ```
 
-    ![Przykład: $destination udziałów](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+   ![Przykład: $destination udziałów](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
 4. Rozpoczynanie migracji dla kontenera. Migracja jest asynchroniczna. W przypadku uruchomienia migracji dodatkowe kontenery przed zakończeniem pierwszej migracji, należy użyć zadania o identyfikatorze śledzić stan każdego z nich.
 
-  ```PowerShell
-  $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
-  ```
+   ```PowerShell
+   $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
+   ```
 
-  Następnie zbadaj $jobId. W poniższym przykładzie Zastąp *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* o identyfikatorze zadania, które chcesz zbadać:
+   Następnie zbadaj $jobId. W poniższym przykładzie Zastąp *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* o identyfikatorze zadania, które chcesz zbadać:
 
-  ```PowerShell
-  $jobId
-  d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
-  ```
+   ```PowerShell
+   $jobId
+   d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
+   ```
 
-5. Aby sprawdzić stan zadania migracji, należy użyć identyfikatora zadania. Po zakończeniu migracji kontenera **MigrationStatus** ustawiono **Complete**.
+5. Aby sprawdzić stan zadania migracji, należy użyć Identyfikatora zadania. Po zakończeniu migracji kontenera **MigrationStatus** ustawiono **Complete**.
 
-  ```PowerShell 
-  Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
-  ```
+   ```PowerShell 
+   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
+   ```
 
-  ![Przykład: Stan migracji](media/azure-stack-manage-storage-shares/migration-status1.png)
+   ![Przykład: Stan migracji](media/azure-stack-manage-storage-shares/migration-status1.png)
 
-6.  Możesz anulować zadanie migracji w toku. Anulowano migracji, które zadania są wykonywane asynchronicznie. Unieważnieniu można śledzić za pomocą $jobid:
+6. Możesz anulować zadanie migracji w toku. Anulowano migracji, które zadania są wykonywane asynchronicznie. Unieważnieniu można śledzić za pomocą $jobid:
 
-  ```PowerShell
-  Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
-  ```
+   ```PowerShell
+   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
+   ```
 
-  ![Przykład: Stan wycofania](media/azure-stack-manage-storage-shares/rollback.png)
+   ![Przykład: Stan wycofania](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. Można uruchomić polecenie z kroku 6 ponownie, dopóki stan potwierdza to zadanie migracji **anulowane**:  
 

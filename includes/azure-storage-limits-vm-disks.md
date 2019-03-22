@@ -2,30 +2,32 @@
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: 09b4f94db3464943a8367bfb3ca89f9a88446193
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554177"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261591"
 ---
 Liczba dysków z danymi można dołączyć do maszyny wirtualnej platformy Azure. Oparte na cele skalowalności i wydajności dla dysków z danymi maszyny Wirtualnej, można określić liczbę i typ dysku, który trzeba spełniaj swoje wymagania pojemności i wydajności.
 
 > [!IMPORTANT]
 > Aby uzyskać optymalną wydajność należy ograniczyć liczbę intensywnie używanych dysków dołączonych do maszyny wirtualnej w celu uniknięcia potencjalnego ograniczania. Jeśli wszystkich dołączonych dysków nie są intensywnie używane w tym samym czasie, maszyna wirtualna może obsługiwać większą liczbę dysków.
 
-* **Dyski zarządzane Azure:** 
+**Dyski zarządzane Azure:**
 
-> | Zasób | Limit domyślny | Limit maksymalny |
+W poniższej tabeli przedstawiono domyślne i maksymalnych limitów wybranej liczby zasobów, na region na subskrypcję
+
+> | Zasób | Limit domyślny  | Limit maksymalny |
 > | --- | --- | --- |
-> | Dyski zarządzane w warstwie standardowa | 10 000 | 50,000 |
-> | Zarządzane dyski SSD w warstwie Standardowa | 10 000 | 50,000 |
-> | Dyski zarządzane w warstwie Premium | 10 000 | 50,000 |
-> | Standard_LRS migawek | 10 000 | 50,000 |
-> | Standard_ZRS migawek | 10 000 | 50,000 |
-> | Zarządzany obraz | 10 000 | 50,000 |
+> | Dyski zarządzane w warstwie standardowa | 25,000 | 50,000 |
+> | Zarządzane dyski SSD w warstwie Standardowa | 25,000 | 50,000 |
+> | Dyski zarządzane w warstwie Premium | 25,000 | 50,000 |
+> | Standard_LRS migawek | 25,000 | 50,000 |
+> | Standard_ZRS migawek | 25,000 | 50,000 |
+> | Zarządzany obraz | 25,000 | 50,000 |
 
 * **W przypadku kont magazynu w warstwie standardowa:** Standardowe konto magazynu ma maksymalna całkowita liczba żądań 20 000 operacji We/Wy. Łączna liczba operacji We/Wy dla wszystkich dysków maszyny wirtualnej na koncie magazynu w warstwie standardowa nie powinna przekroczyć tego limitu.
   

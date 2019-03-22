@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b23b2c46098fb53a3a08ff86c46cc6b6c9b936bb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17dd2a8cf58066fda7f82ba53b048df8e9b89da8
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228576"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285251"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpieczanie klastra autonomicznego w Windows przy użyciu certyfikatów X.509
 W tym artykule opisano sposób zabezpieczania komunikacji między różnymi węzłami klastra autonomicznego Windows. Opisuje ona również, jak do uwierzytelniania klientów łączących się z tym klastrem przy użyciu certyfikatów X.509. Uwierzytelnianie zapewnia, że tylko autoryzowani użytkownicy mogą uzyskiwać dostęp do klastra i wdrożone aplikacje i wykonywać zadania zarządzania. Certyfikat zabezpieczeń powinna być włączona w klastrze podczas tworzenia klastra.  
@@ -175,7 +175,7 @@ Poniżej przedstawiono przykładową konfigurację klastra gdzie dostarczono kla
         "storeType": "FileShare",
         "IsEncrypted": "false",
         "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
-        }
+        },
         "security": {
             "metadata": "The Credential type X509 indicates this cluster is secured by using X509 certificates. The thumbprint format is d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
             "ClusterCredentialType": "X509",
@@ -261,7 +261,7 @@ W przypadku klastrów uruchomionych obciążeń produkcyjnych należy użyć [ce
 
 W przypadku klastrów, których używasz do celów testowych można użyć certyfikatu z podpisem własnym.
 
-## <a name="optional-create-a-self-signed-certificate"></a>Opcjonalnie: Utwórz certyfikat z podpisem własnym
+## <a name="optional-create-a-self-signed-certificate"></a>Opcjonalnie: Tworzenie certyfikatu z podpisem własnym
 Jest jednym ze sposobów tworzenia certyfikatu z podpisem własnym, które mogą być chronione prawidłowo używać skryptu CertSetup.ps1 z folderu zestawu SDK usługi Service Fabric w katalogu C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. Edytuj ten plik, aby zmienić domyślną nazwę certyfikatu. (Wyszukaj wartość CN = ServiceFabricDevClusterCert.) Uruchom ten skrypt jako `.\CertSetup.ps1 -Install`.
 
 Teraz należy wyeksportować certyfikat do chronionego hasłem pliku pfx. Najpierw pobierz odcisk palca certyfikatu. 

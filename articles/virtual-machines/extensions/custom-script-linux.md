@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: b8f343c2293df6a1dec808addf8881c27514fc06
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 19637a1fe49550d0ed7aea7e3a596f1f77f5984b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436659"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082045"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 2 za pomocą maszyn wirtualnych systemu Linux
 Rozszerzenie niestandardowego skryptu w wersji 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrażaniu, instalacja oprogramowania lub innych zadań konfiguracji i zarządzania nimi. Skrypty można pobrać z usługi Azure Storage lub w innej lokalizacji internet dostępny, lub można udostępnić je w czasie wykonywania rozszerzenia. 
@@ -124,7 +124,7 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 ### <a name="property-value-details"></a>Szczegóły dotyczące wartości właściwości
 * `skipDos2Unix`: (opcjonalne, wartość logiczna) Pomiń konwersji dos2unix adresów URL opartych na skryptach plików lub skryptu.
 * `timestamp` Użycie (opcjonalne, 32-bitowa liczba całkowita), w tym polu tylko do wyzwolenia ponownie uruchom skrypt, zmieniając wartość tego pola.  Dowolna liczba całkowita jest dopuszczalne; tylko musi być inna niż poprzednia wartość.
- * `commandToExecute`: (**wymagane** Jeśli skrypt nie został ustawiony, ciąg) skrypt punktu wejścia do wykonania. Zamiast tego użyj tego pola, jeśli polecenie zawiera wpisy tajne, takie jak hasła.
+  * `commandToExecute`: (**wymagane** Jeśli skrypt nie został ustawiony, ciąg) skrypt punktu wejścia do wykonania. Zamiast tego użyj tego pola, jeśli polecenie zawiera wpisy tajne, takie jak hasła.
 * `script`: (**wymagane** przypadku commandToExecute ciągu) zakodowane w formacie base64 (i opcjonalnie gzip'ed) skrypt wykonywany przez/bin/sh.
 * `fileUris`: (opcjonalne, tablicy ciągów) adresy URL plików mają być pobrane.
 * `storageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu. Jeśli określisz poświadczeń magazynu wszystkich `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.

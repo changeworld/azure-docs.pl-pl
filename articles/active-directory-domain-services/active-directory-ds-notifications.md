@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5c2ff4304071267e0329f0c2baab45a554d41379
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 85fcd28b5964cbe0246a7c79fa6d24d756f7bd35
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759173"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086568"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Ustawienia powiadomień w usługach domenowych Azure AD
 
@@ -47,7 +47,6 @@ Adres e-mail Określa domeny zarządzanej, który ten alert jest obecny na, zape
 
 > [!WARNING]
 > Zawsze upewnij się, że wiadomość e-mail pochodzi z zweryfikowanych nadawcy Microsoft przed kliknięciem przycisku łącza w wiadomości e-mail. Wiadomości e-mail zawsze pochodzą z wiadomości e-mail azure-noreply@microsoft.com
->
 
 
 ## <a name="why-would-i-receive-email-notifications"></a>Dlaczego będzie otrzymywać powiadomień pocztą e-mail?

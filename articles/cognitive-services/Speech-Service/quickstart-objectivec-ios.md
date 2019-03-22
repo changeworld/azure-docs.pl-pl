@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67acc7a074b26cb7614b5e08d25afd7b7c1caa74
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958511"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094926"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Szybki start: rozpoznawanie mowy w języku Objective-C w systemie iOS przy użyciu zestawu Speech SDK
 
@@ -75,7 +75,7 @@ Zastąp wygenerowany automatycznie kod XML następującym kodem:
 ## <a name="add-the-sample-code"></a>Dodawanie przykładowego kodu
 
 1. Pobierz [przykładowy plik wav](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav), klikając link prawym przyciskiem myszy i wybierając pozycję **Save target as...** (Zapisz element docelowy jako...). Dodaj plik wav do projektu jako zasób, przeciągając go z okna programu Finder do poziomu głównego widoku projektu.
-Kliknij przycisk **Finish** (Zakończ) w następującym oknie dialogowym bez modyfikowania ustawień.
+   Kliknij przycisk **Finish** (Zakończ) w następującym oknie dialogowym bez modyfikowania ustawień.
 1. Zastąp zawartość automatycznie wygenerowanego pliku `ViewController.m` następującą zawartością:
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
@@ -90,16 +90,16 @@ Kliknij przycisk **Finish** (Zakończ) w następującym oknie dialogowym bez mod
 ## <a name="building-and-running-the-sample"></a>Kompilowanie i uruchamianie przykładu
 
 1. Uwidocznij dane wyjściowe debugowania (**View** > **Debug Area** > **Activate Console** — Widok > Obszar debugowania > Aktywuj konsolę).
-1. Wybierz symulator systemu iOS lub urządzenie z systemem iOS podłączone do maszyny deweloperskiej jako lokalizację docelową dla aplikacji z listy w menu **Product** -> **Destination** (Produkt > Cel).
+1. Wybierz symulatora systemu iOS lub urządzenie z systemem iOS połączone na maszynie deweloperskiej jako lokalizacja docelowa dla aplikacji z listy w **produktu** -> **docelowy** menu.
 1. Skompiluj i uruchom przykładowy kod w symulatorze systemu iOS, wybierając pozycję **Product** -> **Run** (Produkt > Uruchom) z menu lub klikając przycisk **Play** (Odtwórz).
-Obecnie zestaw SDK usługi Mowa obsługuje tylko 64-bitowe platformy systemu iOS.
+   Obecnie zestaw SDK usługi Mowa obsługuje tylko 64-bitowe platformy systemu iOS.
 1. Po kliknięciu przycisku „Recognize (File)” (Rozpoznaj — plik) w aplikacji zawartość pliku dźwiękowego „What's the weather like?” (Jaka jest pogoda?) powinna zostać wyświetlona w dolnej części ekranu.
 
- ![Symulowana aplikacja systemu iOS](media/sdk/qs-objectivec-simulated-app.png)
+   ![Symulowana aplikacja systemu iOS](media/sdk/qs-objectivec-simulated-app.png)
 
 1. Po kliknięciu przycisku „Recognize (Microphone)” (Rozpoznaj — mikrofon) w aplikacji i wypowiedzeniu kilku słów wypowiedziany tekst powinien zostać wyświetlony w dolnej części ekranu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z przykładami dla języka Objective-C w serwisie GitHub](https://aka.ms/csspeech/samples)
