@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: dech
-ms.openlocfilehash: e23b65904d16fbd2d8ffe0412603699a9e36aa7e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 023b344d796ea5297cda202e7baa2f0e0ef5eebd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099529"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315814"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrowanie danych do usługi Azure Cosmos DB za pomocą narzędzia do migracji danych
 
@@ -195,7 +195,7 @@ Podobnie jak w przypadku źródła kodu SQL, właściwość separatora zagnieżd
 
 Zwróć uwagę na aliasy, takie jak DomainInfo.Domain_Name i RedirectInfo.Redirecting. Określając separator zagnieżdżania „.”, narzędzie importowania utworzy dokumenty podrzędne DomainInfo i RedirectInfo podczas importu. Oto przykład dokumentu wynikowego w usłudze Azure Cosmos DB:
 
-*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "<https://www.ACUS.GOV>" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV"}, "Agencja Federalna": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 Narzędzie importowania próbuje wywnioskować informacje dotyczące typu dla wartości bez cudzysłowów w plikach CSV (wartości w cudzysłowie są zawsze traktowane jak ciągi).  Typy są identyfikowane w następującej kolejności: liczba, data/godzina, wartość logiczna.  
 

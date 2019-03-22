@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 1313616818686c7a03269fc1cc837958665732d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725239"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337548"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Ciągłe wdrażanie w usłudze Azure App Service
 W tym artykule dowiesz się, jak skonfigurować ciągłe wdrażanie dla [usługi Azure App Service](overview.md). Usługa App Service umożliwia ciągłe wdrażanie z usług BitBucket, GitHub i [usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/) przez pobieranie najnowszych aktualizacji z istniejącym repozytorium w jednej z tych usług.
@@ -47,6 +47,16 @@ W **dostawcę konstrukcji** stronie, wybierz dostawcę kompilacji i kliknij pozy
 ### <a name="option-1-use-app-service-kudu-build-server"></a>Opcja 1: użycie serwer kompilacji Kudu usługi App Service
 
 W **Konfiguruj** Wybierz organizację, repozytorium i gałąź, z których chcesz wdrażać w sposób ciągły. Po zakończeniu kliknij przycisk **Kontynuuj**.
+
+Do wdrożenia z repozytorium w organizacji usługi GitHub, przejdź do serwisu GitHub, a następnie przejdź do **ustawienia** > **aplikacje** > **autoryzowanych aplikacji OAuth**. Następnie kliknij przycisk "Azure App Service".
+
+![Ustawienia > aplikacje > autoryzowanym aplikacjom OAuth > Usługa Azure App Service](media/app-service-continuous-deployment/github-settings-navigation.png)
+
+Na następnej stronie należy udzielić dostępu usługi App Service do repozytoriów w organizacji, klikając przycisk "Przydział" po prawej stronie.
+
+![Kliknij pozycję "Udziel", aby udzielić dostępu usługi App Service do repozytoriów w organizacji](media/app-service-continuous-deployment/grant-access.png)
+
+Twoja organizacja powinny być teraz wyświetlane na liście "Organizacja" w **Konfiguruj** strony Centrum wdrażania.
 
 ### <a name="option-2-use-azure-pipelines-preview"></a>Opcja 2: użycie potoków usługi Azure (wersja zapoznawcza)
 

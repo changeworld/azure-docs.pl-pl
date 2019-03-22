@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 7f079c511a32cfcf0fa018d40abb737ad08f3821
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 01783aa12f586f61583b1503c796f9b523770104
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137962"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310629"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Samouczek projektu środowiska Unity Akustyka projektu
 W tym samouczku opisano narzędzia do projektowania i przepływ pracy dla projektu Akustyka na platformie Unity.
@@ -37,16 +37,16 @@ Projekt Akustyka oferuje pewną liczbę Akustyka specyficznymi dla źródła pro
 ### <a name="adjust-distance-based-attenuation"></a>Dostosuj tłumienie na podstawie odległości
 Audio DSP dostarczone przez **Akustyka projektu** wtyczki spatializer Unity szanuje tłumienie opartego na źródło wbudowana do aparatu Unity Editor. Formanty na podstawie odległości tłumienie znajdują się w **źródła Audio** składnik znaleziony w **Inspektor** panelu dźwięk źródeł, w obszarze **3D ustawienia dźwięku**:
 
-![Tłumienie odległości](media/distance-attenuation.png)
+![Zrzut ekranu Unity odległość tłumienie opcji — panel](media/distance-attenuation.png)
 
 Akustyka wykonuje obliczenia w polu "symulacji region" skupia się wokół lokalizacji odtwarzacza. Źródła dźwięku jest oddalone przed graczem, znajduje się poza tym regionem symulacji tylko geometrii w ramach tego pola będzie mieć wpływ na dźwięk propagacji (na przykład powoduje zamknięcia.), który jest dobrze działa, gdy occluders znajdują się w pobliżu odtwarzacza. Jednak w przypadkach, gdy działa on w wolnym miejscu, ale occluders zbliżenia odległe źródła dźwięku dźwięk może stać się nierealistycznie disoccluded. Nasze rozwiązania sugerowane jest zapewnienie w takich przypadkach dźwięku tłumienie spadnie na 0 w około 45 m, odległość odtwarzacza krawędzią pola w poziomie domyślne.
 
-![SpeakerMode](media/speaker-mode.png)
+![Zrzut ekranu SpeakerMode Unity panel opcji](media/speaker-mode.png)
 
 ### <a name="adjust-occlusion-and-transmission"></a>Dostosuj zamknięcia i transmisji
 Dołączanie **AcousticsAdjust** skrypt do źródła umożliwia dostrajanie parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **Skrypty > Dostosuj Akustyka**. Skrypt zawiera sześć kontrolki:
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Zrzut ekranu AcousticsAdjust Unity skryptu](media/acoustics-adjust.png)
 
 * **Włącz Akustyka** — Określa, czy Akustyka jest stosowany do tego źródła. Po usunięciu zaznaczenia źródła będzie spatialized w aplecie HRTFs przesuwanie, ale nie będzie żadnych Akustyka. Oznacza to nie przeszkoda, zamknięcia lub parametry dynamiczne reverberation, takie jak poziom i zanikania czasu. Reverberation nadal jest stosowany przy stałym poziomie i czas zanikania.
 * **Zamknięcia** -dotyczą mnożnik zamknięcia poziom bazy danych, obliczone przez system Akustyka. Jeśli ta mnożnik jest większa niż 1, zamknięcia będzie exaggerated, podczas wartości mniejsza niż 1 Upewnij wpływ zamknięcia bardziej subtelne, a wartość 0 powoduje wyłączenie zamknięcia.
@@ -59,14 +59,14 @@ Dołączanie **AcousticsAdjust** skrypt do źródła umożliwia dostrajanie para
 
 Dołączanie **AcousticsAdjustExperimental** skrypt do źródła umożliwia eksperymentalne dostrajania parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **Skrypty > Akustyka dostosować eksperymentalne**. Obecnie jest jedną eksperymentalna kontrolka:
 
-![AcousticsAdjustExperimental](media/acoustics-adjust-experimental.png)
+![Zrzut ekranu AcousticsAdjustExperimental Unity skryptu](media/acoustics-adjust-experimental.png)
 
 * **Percepcyjna Warp odległość** — Zastosuj wykładniczy Wypaczanie odległość, używany do obliczania współczynnik mokro próbnego. System Akustyka oblicza mokrą poziomy w całej przestrzeni, które różnią się płynnie z odległości i podaj odległość Percepcyjna podpowiedzi. Zniekształcania wartości większej niż 1 exaggerate ten efekt, zwiększając poziomy reverberation powiązane odległość, co dźwięk "odległe". Wypaczanie wartości mniejszej niż 1 Upewnij reverberation na podstawie odległości zmienić bardziej subtelne, a dźwięk więcej "bieżącej".
 
 ## <a name="design-acoustics-for-all-sources"></a>Akustyka projektu dla wszystkich źródeł
 Aby dostosować parametry dla wszystkich źródeł, kliknij na pasku kanału w mechanizmu Unity **Mixer Audio**i dostosowanie parametrów w **Mixer Akustyka projektu** efekt.
 
-![Dostosowywanie Mixer](media/mixer-parameters.png)
+![Zrzut ekranu z projektu Akustyka Unity Mixer Dostosowywanie panelu](media/mixer-parameters.png)
 
 * **Dostosuj wetness** -dopasowuje pogłosu zasilania, w bazie danych, we wszystkich źródłach w scenie, oparte na odległość odbiornika źródła. Wartości dodatnich wprowadzać dźwięk bardziej reverberant podczas wartości ujemnych wprowadzić bardziej susz dźwięku.
 * **Skala RT60** — mnożenia skalarne pogłosu czas.
@@ -75,7 +75,7 @@ Aby dostosować parametry dla wszystkich źródeł, kliknij na pasku kanału w m
 ## <a name="check-proper-sound-source-placement"></a>Sprawdzanie prawidłowego źródła dźwięku umieszczania
 Źródeł dźwięku umieszczone wewnątrz zajętych voxels nie otrzyma traktowania akustyczny. Ponieważ voxels wykraczać poza geometrii sceny widoczny, istnieje możliwość umieścić źródła wewnątrz voxel, gdy pojawi się unoccluded przez geometrii visual. Możesz wyświetlić voxels Akustyka projektu, przełączając pola wyboru siatki voxel w **Gizmo** menu w prawym górnym rogu **sceny** widoku.
 
-![Elementy gizmo Menu](media/gizmos-menu.png)  
+![Zrzut ekranu Unity Gizmo menu](media/gizmos-menu.png)  
 
 Wyświetlanie voxel może również pomóc sprawdzić, czy składniki wizualne w grze się transformacji zastosowanych do nich. Jeśli tak, należy zastosować taką samą transformację z hostingiem elementy GameObject **Menedżera Akustyka**.
 
@@ -84,11 +84,11 @@ Istnieje możliwość wyświetlenia voxels w oknie edytora w czasie projektowani
 
 Voxels czasu projektowania:
 
-![VoxelsDesignTime](media/voxels-design-time.png)
+![Zrzut ekranu projektu Akustyka voxels w czasie projektowania](media/voxels-design-time.png)
 
 Voxels środowiska uruchomieniowego:
 
-![VoxelsRuntime](media/voxels-runtime.png)
+![Zrzut ekranu projektu Akustyka voxels w czasie wykonywania](media/voxels-runtime.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Poznaj analizy przypadków wyróżnianie pojęć dotyczących [Projektowanie procesu](design-process.md)

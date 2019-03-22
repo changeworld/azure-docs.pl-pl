@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: f0050a91ca8ed380c838c96cf1e485a80a0c9297
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: c15dc83929aeaf6811f4d19bfca462abfacf4014
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445399"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892459"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak delegować użytkownika rejestracji i subskrypcji produktów
 Delegowanie umożliwia istniejącej witryny sieci Web do obsługi projektanta znak — w/rejestracją i subskrypcji produktów, a nie za pomocą wbudowanej funkcji w portalu dla deweloperów. Dzięki temu dane użytkownika i przeprowadzania weryfikacji z tych kroków w niestandardowy sposób witryny sieci Web.
@@ -47,7 +47,7 @@ Teraz musisz utworzyć **punktu końcowego delegowania**. Musi przeprowadzić sz
 
 1. Otrzyma żądanie w następującej postaci:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL Źródło strony} & ziarna = {ciąg} & sig = {ciąg}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn & returnUrl = {adres URL strony źródłowej} & ziarna = {ciąg} & sig = {ciąg}*
    > 
    > 
    
@@ -104,7 +104,7 @@ Następnie upewnij się, że punkt końcowy delegowania wykonuje następujące c
 
 1. Otrzyma żądanie w następującej postaci:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product Aby subskrybować} & userId = {użytkownika zgłaszającego żądanie} & ziarna = {ciąg} & sig = {ciąg}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation= {operacji operation} & productId = {produktu do subskrybowania} & userId = {użytkownika zgłaszającego żądanie} & ziarna = {ciąg} & sig = {ciąg}*
    > 
    > 
    
@@ -120,7 +120,7 @@ Następnie upewnij się, że punkt końcowy delegowania wykonuje następujące c
    * **SIG**: obliczanej zabezpieczeń wyznaczania wartości skrótu do użycia w porównaniu do własnych obliczony skrót
 2. Sprawdź, czy żądanie, pochodzi z usługi Azure API Management (opcjonalne, lecz zdecydowanie zalecane dla zabezpieczeń)
    
-   * Obliczenia SHA512 HMAC ciągu na podstawie **productId**, ** userId, i **ziarna** parametry zapytania:
+   * Obliczenia SHA512 HMAC ciągu na podstawie **productId**, **userId**, i **ziarna** parametry zapytania:
      
      > HMAC (**ziarna** + '\n' + **productId** + '\n' + **userId**)
      > 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: bc5c4648a5efe53e3aa645bf1d6b121008eb86dd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854929"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336035"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać zarządzanych tożsamości dla usługi App Service i Azure Functions
 
@@ -252,7 +252,7 @@ Gdzie `<PRINCIPALID>` i `<CLIENTID>` są zastępowane identyfikatorów GUID. Ide
 Aplikacja może używać swoją tożsamość, uzyskiwanie tokenów do innych zasobów chronionych za pomocą usługi AAD, takich jak usługi Azure Key Vault. Tokeny te reprezentują aplikacji dostęp do zasobów i nie są ustawiane określonego użytkownika aplikacji. 
 
 > [!IMPORTANT]
-> Może być konieczne skonfigurowanie zasób docelowy, aby zezwolić na dostęp z poziomu aplikacji. Na przykład jeśli w przypadku żądania tokenu służącego do usługi Key Vault, musisz upewnij się, że dodano zasady dostępu, które obejmują tożsamość swojej aplikacji. W przeciwnym razie wywołania do usługi Key Vault zostanie odrzucone, nawet jeśli zawierają one tokenu. Aby dowiedzieć się więcej o tym, jakie zasoby obsługują tokenów usługi Azure Active Directory, zobacz [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
+> Może być konieczne skonfigurowanie zasób docelowy, aby zezwolić na dostęp z poziomu aplikacji. Na przykład jeśli w przypadku żądania tokenu służącego do usługi Key Vault, musisz upewnij się, że dodano zasady dostępu, które obejmują tożsamość swojej aplikacji. W przeciwnym razie wywołania do usługi Key Vault zostanie odrzucone, nawet jeśli zawierają one tokenu. Aby dowiedzieć się więcej o tym, jakie zasoby obsługują tokenów usługi Azure Active Directory, zobacz [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Brak prostego protokołu REST w celu uzyskania tokenu w usłudze App Service i Azure Functions. W przypadku aplikacji .NET biblioteki Microsoft.Azure.Services.AppAuthentication udostępnia abstrakcję za pośrednictwem protokołu i obsługuje środowisko rozwoju lokalnego.
 
@@ -287,7 +287,7 @@ Aplikacji za pomocą tożsamości zarządzanej ma dwie zmienne środowiskowe zde
 
 > |Nazwa parametru|W|Opis|
 > |-----|-----|-----|
-> |zasób|Zapytanie|Zasób usługi AAD identyfikator URI zasobu, dla którego mają być uzyskiwane tokenu. Może to być jeden z [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) lub innych zasobów identyfikator URI.|
+> |zasób|Zapytanie|Zasób usługi AAD identyfikator URI zasobu, dla którego mają być uzyskiwane tokenu. Może to być jeden z [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) lub innych zasobów identyfikator URI.|
 > |wersja interfejsu API|Zapytanie|Wersja token interfejsu API do użycia. "2017-09-01" jest obecnie jedyna obsługiwana wersja.|
 > |wpis tajny|Nagłówek|Wartość zmiennej środowiskowej MSI_SECRET. Tego pliku nagłówkowego jest używana w celu ograniczenia zagrożenia atakami sfałszowaniem (SSRF) żądania po stronie serwera.|
 > |clientid|Zapytanie|(Opcjonalnie) Identyfikator tożsamości przypisanych przez użytkownika ma być używany. W przypadku pominięcia jest używana tożsamości przypisanych przez system.|

@@ -1,6 +1,6 @@
 ---
-title: Jak używać wtyczki podrzędnej Azure z Hudson ciągłej integracji | Dokumentacja firmy Microsoft
-description: Informacje dotyczące używania wtyczki podrzędnej Azure z Hudson ciągłej integracji.
+title: Jak używać wtyczki podrzędnej platformy Azure z funkcją ciągłej integracji Hudson | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak używać wtyczki podrzędnej platformy Azure z funkcją ciągłej integracji Hudson.
 services: virtual-machines-linux
 documentationcenter: ''
 author: rmcmurray
@@ -14,36 +14,36 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: ef24e356c9ac8424fc519a3b16af5d37a20e706f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
-ms.locfileid: "27704804"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999801"
 ---
-# <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Jak używać wtyczki podrzędnej Azure z Hudson ciągłej integracji
-Wtyczki dla Hudson podrzędnej Azure umożliwia udostępnianie węzłów podrzędnych na platformie Azure, podczas uruchamiania rozproszonych kompilacji.
+# <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Jak używać wtyczki podrzędnej platformy Azure z funkcją ciągłej integracji Hudson
+Podrzędnej wtyczki platformy Azure dla rozwiązania Hudson umożliwia aprowizowanie węzłów podrzędnych na platformie Azure, w przypadku uruchamiania rozproszonych kompilacji.
 
-## <a name="install-the-azure-slave-plug-in"></a>Zainstaluj wtyczkę Azure podrzędnej
-1. Na pulpicie nawigacyjnym Hudson kliknij **Zarządzanie Hudson**.
-2. W **Zarządzanie Hudson** kliknij pozycję **Zarządzanie wtyczkami**.
+## <a name="install-the-azure-slave-plug-in"></a>Instalowanie wtyczki podrzędnej platformy Azure
+1. Na pulpicie nawigacyjnym rozwiązania Hudson kliknij **Zarządzanie Hudson**.
+2. W **Zarządzanie Hudson** kliknij na **Zarządzaj wtyczkami**.
 3. Kliknij przycisk **dostępne** kartę.
-4. Kliknij przycisk **wyszukiwania** i typ **Azure** do ograniczania listy do odpowiednich dodatków plug-in.
+4. Kliknij przycisk **wyszukiwania** i typ **Azure** ograniczenie listy do odpowiednich dodatków plug-in.
    
-    Jeśli wybierzesz opcję przewiń listę dostępnych wtyczek, można znaleźć Azure podrzędnej wtyczki w obszarze **klastra zarządzania i dystrybucji kompilacji** sekcji **innym** kartę.
-5. Zaznacz pole wyboru **wtyczki podrzędna Azure**.
+    Jeśli postanowisz przewijać listę dostępnych wtyczek zawiera element podrzędny platformy Azure wtyczki w obszarze **klastra zarządzania i dystrybucji kompilacji** sekcji **innych** kartę.
+5. Zaznacz pole wyboru **wtyczka podrzędna Azure**.
 6. Kliknij pozycję **Zainstaluj**.
 7. Uruchom ponownie Hudson.
 
-Teraz, gdy ta wtyczka jest zainstalowana, kolejne kroki będzie, aby skonfigurować wtyczkę do profilu subskrypcji platformy Azure i utworzyć szablon, który będzie używany podczas tworzenia maszyny Wirtualnej dla węzeł podrzędny.
+Teraz, gdy ta wtyczka jest zainstalowana, kolejne kroki będzie, aby skonfigurować wtyczkę do profilu subskrypcji platformy Azure i utworzyć szablon, który będzie używany podczas tworzenia maszyny Wirtualnej dla węzła podrzędnego.
 
-## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Konfigurowanie wtyczki podrzędnej Azure przy użyciu profilu subskrypcji
-Profil subskrypcji, również określone ustawienia, publikowania jest plik XML, który zawiera bezpiecznych poświadczeń i dodatkowe informacje, które będą potrzebne do pracy z platformą Azure w środowisku projektowania. Aby skonfigurować wtyczkę Azure podrzędnej, potrzebne są:
+## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Konfigurowanie wtyczki podrzędnej platformy Azure przy użyciu profilu subskrypcji
+Profil subskrypcji również określane jako ustawienia, publikowania jest plik XML, który zawiera bezpiecznych poświadczeń i niektóre dodatkowe informacje, które będą potrzebne do pracy z platformą Azure w środowisku programistycznym. Aby skonfigurować wtyczki podrzędnej platformy Azure, potrzebne są:
 
 * Identyfikator subskrypcji
-* Certyfikat zarządzania dla subskrypcji
+* Certyfikat zarządzania do subskrypcji
 
-Są one dostępne w Twojej [profilu subskrypcji]. Poniżej znajduje się przykład profilu subskrypcji.
+Są one dostępne w Twojej [Profil subskrypcji]. Poniżej przedstawiono przykład profilu subskrypcji.
 
     <?xml version="1.0" encoding="utf-8"?>
 
@@ -64,56 +64,56 @@ Są one dostępne w Twojej [profilu subskrypcji]. Poniżej znajduje się przykł
 
     </PublishData>
 
-Po utworzeniu profilu subskrypcji, wykonaj następujące kroki, aby skonfigurować wtyczkę Azure podrzędnej.
+Po utworzeniu profilu subskrypcji, wykonaj następujące kroki w celu skonfigurowania wtyczki podrzędnej platformy Azure.
 
-1. Na pulpicie nawigacyjnym Hudson kliknij **Zarządzanie Hudson**.
+1. Na pulpicie nawigacyjnym rozwiązania Hudson kliknij **Zarządzanie Hudson**.
 2. Kliknij przycisk **skonfigurować System**.
-3. Przewiń w dół strony, aby znaleźć **chmury** sekcji.
-4. Kliknij przycisk **Dodaj nowe chmury > Microsoft Azure**.
+3. Przewiń w dół strony Aby znaleźć **chmury** sekcji.
+4. Kliknij przycisk **Dodaj nową chmurę > Microsoft Azure**.
    
-    ![Dodaj nowy chmury][add new cloud]
+    ![Dodaj nową chmurę][add new cloud]
    
-    Wyświetli pola, w których należy wprowadzić szczegóły subskrypcji.
+    Spowoduje to wyświetlenie pola wymagających wprowadź szczegóły subskrypcji.
    
     ![Konfigurowanie profilu][configure profile]
-5. Skopiuj certyfikat zarządzania i identyfikator subskrypcji z Twojej subskrypcji i wklej je w odpowiednich polach.
+5. Skopiuj subskrypcji identyfikator i certyfikat zarządzania z Twojej subskrypcji i wklej je w odpowiednich polach.
    
-    Podczas kopiowania certyfikatu zarządzania i identyfikator subskrypcji, **nie** zawierają oferty, które należy ująć wartości.
-6. Polecenie **konfiguracji Sprawdź**.
-7. Kiedy konfiguracja nie zostanie pomyślnie zweryfikowana, kliknij przycisk **zapisać**.
+    Podczas kopiowania subskrypcji identyfikator i certyfikat zarządzania, **nie** z uwzględnieniem cudzysłowów, które należy umieścić wartości.
+6. Kliknij pozycję **konfiguracji Sprawdź, czy**.
+7. Kiedy konfiguracja nie zostanie pomyślnie zweryfikowana, kliknij przycisk **Zapisz**.
 
-## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Konfigurowanie szablonu maszyny wirtualnej dla podrzędnej Azure wtyczki
-Szablon maszyny wirtualnej definiuje parametry, które wtyczka będzie używać do tworzenia węzeł podrzędny na platformie Azure. W poniższych krokach możemy utworzyć szablon dla maszyny Wirtualnej systemu Ubuntu.
+## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Konfigurowanie szablonu maszyny wirtualnej dla podrzędnego Azure wtyczki
+Szablon maszyny wirtualnej definiuje parametry, których wtyczka zostaną użyte do utworzenia węzła podrzędnego na platformie Azure. W poniższych krokach będziemy utworzona szablonu dla maszyny Wirtualnej systemu Ubuntu.
 
-1. Na pulpicie nawigacyjnym Hudson kliknij **Zarządzanie Hudson**.
-2. Polecenie **skonfigurować System**.
-3. Przewiń w dół strony, aby znaleźć **chmury** sekcji.
-4. W ramach **chmury** sekcji, Znajdź **dodać szablon maszyny wirtualnej Azure** i kliknij przycisk **Dodaj** przycisku.
+1. Na pulpicie nawigacyjnym rozwiązania Hudson kliknij **Zarządzanie Hudson**.
+2. Kliknij pozycję **skonfigurować System**.
+3. Przewiń w dół strony Aby znaleźć **chmury** sekcji.
+4. W ramach **chmury** sekcji, Znajdź **Dodaj szablon maszyny wirtualnej platformy Azure** i kliknij przycisk **Dodaj** przycisku.
    
     ![Dodaj szablon maszyny wirtualnej][add vm template]
-5. Podaj nazwę usługi chmury w **nazwa** pola. Jeśli przez Ciebie nazwą odwołuje się do istniejącej usługi w chmurze, maszyna wirtualna zostanie zainicjowana w tej usłudze. W przeciwnym razie Azure utworzy nowy.
-6. W **opis** wprowadź tekst, który zawiera opis tworzenia szablonu. Te informacje są tylko do celów dokumentacji i nie jest używany w inicjowania obsługi maszyny Wirtualnej.
-7. W **etykiety** wprowadź **linux**. Etykieta służy do identyfikowania tworzonego szablonu i są następnie używane do odwołania szablonu podczas tworzenia zadania Hudson.
+5. Określ nazwę usługi w chmurze w **nazwa** pola. Jeśli nazwa, które określisz odnosi się do istniejącej usługi w chmurze, maszyny Wirtualnej zostaną zainicjowane w tej usłudze. W przeciwnym razie platforma Azure utworzy nową.
+6. W **opis** wprowadź tekst, który opisuje szablon tworzysz. Te informacje jest tylko na potrzeby dokumentacji i nie jest używany podczas aprowizacji maszyny Wirtualnej.
+7. W **etykiety** wprowadź **linux**. Ta etykieta jest używany do identyfikowania szablon, który tworzysz i są następnie używane podczas tworzenia zadania Hudson k odkazu szablonu.
 8. Wybierz region, w którym zostanie utworzona maszyna wirtualna.
 9. Wybierz odpowiedni rozmiar maszyny Wirtualnej.
-10. Określ konto magazynu, w którym zostanie utworzona maszyna wirtualna. Upewnij się, że jest w tym samym regionie co usługa w chmurze, który ma być używany. Jeśli chcesz nowego magazynu należy utworzyć to pole może pozostać puste.
-11. Czas przechowywania określa liczbę minut, zanim Hudson usuwa bezczynności podrzędna. Pozostaw to domyślna wartość 60.
-12. W **użycia**, wybierz odpowiedni warunek, jeśli będzie używany ten węzeł podrzędny. Teraz, wybierz **korzystać z tego węzła możliwie**.
+10. Określ konto magazynu, w którym zostanie utworzona maszyna wirtualna. Upewnij się, że jest w tym samym regionie co usługa w chmurze, który ma być używany. Jeśli chcesz, aby nowego magazynu, które ma zostać utworzony, to pole może pozostać puste.
+11. Czas przechowywania określa liczbę minut, zanim Hudson usuwa w przypadku bezczynności. Pozostaw to domyślna wartość 60.
+12. W **użycia**, wybierz odpowiedniego warunku, jeśli będzie używany ten węzeł podrzędny. Teraz wybierz **korzystanie z tego węzła możliwie**.
     
-     W tym momencie formularza będzie wyglądać nieco podobny do poniższego:
+     W tym momencie formularz powinien wyglądać nieco mniej więcej tak:
     
      ![Konfiguracja szablonu][template config]
-13. W **rodziny obrazu lub identyfikator** do określania, jakie obrazu systemu zostanie zainstalowana na maszynie Wirtualnej. Możesz wybrać z listy obrazów rodzin lub określ niestandardowy obraz.
+13. W **rodziny obrazu lub identyfikatora** należy określić, jakie obrazu systemu zostanie zainstalowany na maszynie Wirtualnej. Możesz wybrać z listy rodzin obrazu lub określ niestandardowy obraz.
     
-     Jeśli chcesz wybrać z listy rodzin obrazu, wprowadź pierwszego znaku (z uwzględnieniem wielkości liter) nazwę rodziny obrazu. Na przykład wpisanie **U** pojawi się lista rodzin Ubuntu Server. Po wybraniu na liście Wpięć użyje najnowszej wersji tego obrazu systemu z tej rodziny podczas inicjowania obsługi administracyjnej maszyny Wirtualnej.
+     Jeśli chcesz wybrać z listy rodzin obrazu, wprowadź pierwszy znak (z uwzględnieniem wielkości liter) nazwę rodziny obrazu. Na przykład wpisanie **U** spowoduje to wyświetlenie listy rodzin Ubuntu Server. Po wybraniu z listy Jenkins użyje najnowszej wersji tego obrazu systemu z tej rodziny, który po aprowizacji maszyny Wirtualnej.
     
      ![Listy rodziny systemów operacyjnych][OS family list]
     
-     Jeśli masz niestandardowego obrazu, który chcesz użyć, wprowadź nazwę niestandardowego obrazu. Nazwy niestandardowego obrazu nie są wyświetlane na liście, dlatego należy upewnić się, że jej nazwa jest wpisana poprawnie.    
+     Jeśli masz niestandardowy obraz, którego chcesz użyć, wprowadź nazwę tego obrazu niestandardowego. Nazwy obrazów niestandardowych nie są wyświetlane na liście, więc trzeba upewnić się, że jej nazwa jest wpisana poprawnie.    
     
-     W tym samouczku, wpisz **U** przywołać listę obrazów Ubuntu i wybierz **Ubuntu Server 14.04 LTS**.
-14. Dla **uruchamiania metody**, wybierz pozycję **SSH**.
-15. Skopiuj poniższy skrypt i Wklej w **skryptu Init** pola.
+     W tym samouczku wpisz **U** do wyświetlania listy obrazów systemu Ubuntu i wybierz **Ubuntu Server 14.04 LTS**.
+14. Aby uzyskać **metoda uruchomienia**, wybierz opcję **SSH**.
+15. Skopiuj poniższy skrypt i Wklej w **skryptu inicjowania** pola.
     
          # Install Java
     
@@ -137,22 +137,22 @@ Szablon maszyny wirtualnej definiuje parametry, które wtyczka będzie używać 
     
          sudo apt-get install -y ant
     
-     **Skryptu Init** zostaną wykonane po utworzeniu maszyny Wirtualnej. W tym przykładzie skrypt instaluje Java, usługi git i ant.
-16. W **Username** i **hasło** pól, wprowadź wartości preferowanych dla konta administratora, który zostanie utworzony na maszynie Wirtualnej.
-17. Polecenie **Sprawdź szablon** do sprawdzenia, jeśli zostanie określone parametry są prawidłowe.
+     **Skryptu inicjowania** zostaną wykonane po utworzeniu maszyny Wirtualnej. W tym przykładzie skrypt instaluje Java, programu git i ant.
+16. W **Username** i **hasło** wprowadź preferowany wartości dla konta administratora, który zostanie utworzony na maszynie Wirtualnej.
+17. Kliknij pozycję **Sprawdź szablon** do sprawdzenia, jeśli zostanie określone parametry są prawidłowe.
 18. Kliknij przycisk **Zapisz**.
 
-## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>Utwórz zadanie Hudson uruchamianego na węzeł podrzędny na platformie Azure
-W tej sekcji trzeba utworzyć zadania Hudson, które zostanie uruchomione w węźle podrzędna na platformie Azure.
+## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>Tworzenie zadania Hudson, które jest uruchamiane na węzeł podrzędny na platformie Azure
+W tej sekcji zostanie utworzona zadań Hudson, która zostanie uruchomiona na węzeł podrzędny na platformie Azure.
 
-1. Na pulpicie nawigacyjnym Hudson kliknij **nowe zadanie**.
-2. Wprowadź nazwę dla tworzonego zadania.
-3. Wybierz typ zadania **kompilacji zadanie oprogramowania wolne stylu**.
+1. Na pulpicie nawigacyjnym rozwiązania Hudson kliknij **nowe zadanie**.
+2. Wprowadź nazwę zadania, które tworzysz.
+3. Typ zadania **kompilacji zadanie oprogramowania stylu**.
 4. Kliknij przycisk **OK**.
-5. Na stronie Konfiguracja zadania wybierz **Ogranicz, w którym można uruchomić tego projektu**.
-6. Wybierz **węzła i etykiety menu** i wybierz **linux** (możemy określona etykieta w podczas tworzenia szablonu maszyny wirtualnej w poprzedniej sekcji).
-7. W **kompilacji** kliknij **kroku kompilacji Dodaj** i wybierz **wykonywania powłoki**.
-8. Edytuj poniższy skrypt, zastępując **{nazwa konta usługi github}**, **{nazwę projektu}**, i **{katalogu projektu}** z odpowiednie wartości, a następnie wklej edytowanych skrypt w obszarze tekst, który pojawia się.
+5. Na stronie konfiguracji zadania wybierz **ograniczanie, gdzie można uruchomić tego projektu**.
+6. Wybierz **węzła i etykiety menu** i wybierz **linux** (określonej etykiety podczas tworzenia szablonu maszyny wirtualnej w poprzedniej sekcji).
+7. W **kompilacji** kliknij **Dodaj krok kompilacji** i wybierz **wykonaj powłokę**.
+8. Edytuj następujące skrypt, zastępując **{Twoja nazwa konta usługi github}**, **{Nazwa projektu}**, i **{Twój katalog projektu}** odpowiednie wartości i Wklej edytowany skrypt w obszarze tekst, który pojawia się.
    
         # Clone from git repo
    
@@ -178,9 +178,9 @@ W tej sekcji trzeba utworzyć zadania Hudson, które zostanie uruchomione w wę�
    
         ant
 9. Kliknij przycisk **Zapisz**.
-10. Na pulpicie nawigacyjnym Hudson Znajdź właśnie utworzony zadanie i kliknij na **zaplanować kompilacji** ikony.
+10. Na pulpicie nawigacyjnym rozwiązania Hudson znaleźć zadania został utworzony i kliknij pozycję **zaplanować kompilacji** ikony.
 
-Hudson będą utworzyć szablon utworzony w poprzedniej sekcji węzeł podrzędny i uruchom skrypt określone w kroku kompilacji dla tego zadania.
+Hudson zostanie następnie utworzyć węzeł podrzędny przy użyciu szablonu utworzonego w poprzedniej sekcji i wykonywanie skryptu, który określono w kroku kompilacji dla tego zadania.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji o używaniu platformy Azure z językiem Java, zobacz [Azure Java Developer Center].
@@ -188,7 +188,7 @@ Aby uzyskać więcej informacji o używaniu platformy Azure z językiem Java, zo
 <!-- URL List -->
 
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[profilu subskrypcji]: http://go.microsoft.com/fwlink/?LinkID=396395
+[Profil subskrypcji]: https://go.microsoft.com/fwlink/?LinkID=396395
 
 <!-- IMG List -->
 

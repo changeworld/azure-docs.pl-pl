@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c65ae71350383896c81fd7057d425822069fc5aa
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 57bde67ac2259b3847f59f95eaefba9c6fddf13e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136969"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316205"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Samouczek projektowania Unreal/Wwise Akustyka projektu
 W tym samouczku opisano konfigurację projektu i przepływu pracy dla projektu Akustyka Unreal i Wwise.
@@ -35,44 +35,44 @@ Gdy aktywny jest projekt Akustyka odpowie na woluminie zamknięcia filtr niskim 
 
 To ustawienie, jeśli Symulacja Akustyka projektu oblicza zamknięcia DB-18 go zostanie użyty jako wejście do poniżej krzywej X = 18 i odpowiednie Y wartość tłumienie stosowane. W celu zamknięcia połowa należy ustawić punkt końcowy-50 dB zamiast bazy danych-100 lub dB-200 exaggerate zamknięcia. Można dostosować i dostosowywać wszystkie krzywą, która działa najlepiej w grze.
  
-![Projekt, krzywej zamknięcia.](media/wwise-occlusion-curve.png)
+![Zrzut ekranu Wwise zamknięcia krzywa edytora](media/wwise-occlusion-curve.png)
 
 ### <a name="disable-wwise-obstruction-curves"></a>Wyłącz Wwise przeszkoda krzywych
 Krzywe przeszkoda Wwise wpływa na poziom susz w izolacji, lecz Akustyka projektu używa projektu, formantów i symulacji do wymuszania współczynniki suchego /. Zaleca się wyłączenie przeszkoda krzywej woluminu. Aby zaprojektować wetness, formant dostosować Wetness opisanym w dalszej części.
  
 Jeśli używasz krzywych LPF/HPF przeszkoda do innych celów, upewnij się, że ustawiono je Y = 0 X = 0 (czyli jest brak LPF lub HPF po nie przeszkód).
 
-![Krzywa przeszkoda projektu](media/wwise-obstruction-curve.png)
+![Zrzut ekranu Wwise przeszkoda krzywej edytora](media/wwise-obstruction-curve.png)
 
 ### <a name="design-project-acoustics-mixer-parameters"></a>Projektowanie projektu Akustyka mixer parametrów
 Właściwości globalne pogłosu można kontrolować, przechodząc do karty wtyczka mixer magistrali Akustyka projektu. Kliknij dwukrotnie "Projektu Akustyka Mixer (niestandardowy)" Aby otworzyć panel ustawień wtyczki mixer.
 
 Można również zobaczyć, że wtyczka mixer ma jedną z opcji "Wykonaj Spatialization". Jeśli zostanie wykorzystany raczej projektu akustyczny spatialization wbudowanych, zaznacz pole wyboru "Spatialization wykonania" i wybrać HRTF lub sekcja Panoramowanie. Upewnij się wyłączyć wszelkie magistrale susz Aux, które zostały skonfigurowane, w przeciwnym razie otrzymasz bezpośrednią ścieżkę dwa razy. Użyj "Dostosuj Wetness" i "Współczynnik skali czasu pogłosu" sprawowanie kontroli globalnej na różnych pogłosu. Należy pamiętać, należy ponownie uruchomić Unreal, a następnie ponownie wygenerować soundbanks przed osiągnięcia play, aby wczytać mixer wtyczki config zmiany, takie jak pola wyboru "Spatialization wykonania".
 
-![Akustyka mixer wtyczki opcje projektu](media/mixer-plugin-global-settings.png)
+![Zrzut ekranu projektu Akustyka Wwise mixer wtyczki opcje](media/mixer-plugin-global-settings.png)
 
 ## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Ustaw Akustyka projektu projektu kontrolki w hierarchii Wwise mixer aktora
 Aby parametry sterujące poszczególnych mixer aktora kliknij dwukrotnie Mixer aktora, a następnie kliknij na karcie wtyczki Mixer. W tym miejscu będzie można zmienić żadnych parametrów na poziomie poszczególnych dźwięku. Te wartości, połącz się z tymi ustawiona po stronie unreal Engine (opisanych poniżej). Na przykład jeśli projektu Akustyka Unreal wtyczka ustawia Outdoorness dopasowania obiektu do 0,5 i ustawia Wwise jego -0.25, Wynikowe dopasowanie Outdoorness dotyczą, które dźwięku jest 0,25.
 
-![Dźwięk Mixer ustawienia dla](media/per-sound-mixer-settings.png)
+![Zrzut ekranu przedstawiający ustawienia mixer dźwięku w hierarchii mixer aktora Wwise dla](media/per-sound-mixer-settings.png)
 
 ### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Upewnij się, Service bus aux ma susz wysyłania i magistrali danych wyjściowych ma mokre wysyłania
 Należy pamiętać, że instalacji wymagane mixer aktora wymiany zwykle susz i mokrą routingu w Wwise. Generuje sygnału pogłosu na magistrali danych wyjściowych mixer aktora (zestaw projektu Akustyka magistrali) i susz sygnału wzdłuż magistrali aux zdefiniowanych przez użytkownika. Marszruty jest wymagana ze względu na funkcje wtyczki mixer Wwise interfejsu API, które wtyczka Wwise Akustyka projektu.
 
-![Wytyczne dotyczące projektowania głosu](media/voice-design-guidelines.png)
+![Zrzut ekranu Wwise edytora przedstawiający wytyczne dotyczące projektowania głosu Akustyka projektu](media/voice-design-guidelines.png)
  
 ### <a name="set-up-distance-attenuation-curves"></a>Konfigurowanie odległość tłumienie krzywych
 Upewnij się, wszystkie krzywej tłumienie posługują się mieszarki aktora, za pomocą projektu Akustyka mają zdefiniowane przez użytkownika aux, Wyślij ustawiona na "danych wyjściowych magistrali woluminu". Wwise robi to domyślnie dla nowo utworzonej tłumienia krzywych. Jeśli przenosisz istniejący projekt, należy sprawdzić ustawienia krzywej. 
 
 Domyślnie symulacji Akustyka projekt ma promień 45 liczniki wokół lokalizacji odtwarzacza. Ogólnie zaleca się ustawienie z krzywej tłumienie dB-200 wokół tej odległości. Odległość ta nie jest ograniczenie twardych. Dla niektórych brzmi, jak broni, możesz zechcieć większych usługi radius. W takich przypadkach zastrzeżenie: to, czy tylko geometrii w ciągu 45 m lokalizacji odtwarzacza będzie uczestniczył. Jeśli źródła dźwięku znajduje się poza pokój i natychmiast 100 mln odtwarzacz jest w pomieszczeniu, zostaną prawidłowo zamknięte. Jeśli źródłem jest w pomieszczeniu, a gracz jest poza i natychmiast 100 mln, nie będą prawidłowo zamknięte.
 
-![Tłumienie krzywych](media/atten-curve.png)
+![Zrzut ekranu Wwise tłumienie krzywych](media/atten-curve.png)
 
 ## <a name="set-up-scene-wide-project-acoustics-properties"></a>Ustawianie właściwości projektu Akustyka całej sceny
 
 Aktor miejsca Akustyka udostępnia wiele formantów, które modyfikują zachowanie systemu i są przydatne podczas debugowania.
 
-![Formanty Akustyka](media/acoustics-space-controls.png)
+![Zrzut ekranu przedstawiający Unreal Akustyka formanty](media/acoustics-space-controls.png)
 
 * **Dane Akustyka:** To pole musi być przypisany do zasobu w ramach Akustyka z katalogu zawartości/Akustyka. Wtyczka Akustyka projektu spowoduje automatyczne dodanie katalogu zawartości/Akustyka spakowanych katalogi projektu.
 * **Rozmiar fragmentu:** Zakresy obszaru wokół odbiornik, który chcesz Akustyka dane załadowane do pamięci RAM. Tak długo, jak długo odbiornik natychmiast sondy wokół odtwarzacz są ładowane w, wyniki są takie same jak ładowanie dane akustyczne dla wszystkich sondy. Większe Kafelki Użyj więcej pamięci RAM, ale Zmniejsz We/Wy dysku
@@ -88,7 +88,7 @@ Aktor miejsca Akustyka udostępnia wiele formantów, które modyfikują zachowan
 ## <a name="actor-specific-acoustics-design-controls"></a>Formanty projektowania Akustyka specyficzne dla aktora
 Te kontrolki projektu są ograniczone do poszczególnych składników audio w Unreal.
 
-![Formanty składników audio](media/audio-component-controls.png)
+![Zrzut ekranu przedstawiający formantów Unreal składnika Audio](media/audio-component-controls.png)
 
 * **Mnożnik zamknięcia.:** Określa, czy efekt zamknięcia. Wartości > 1 zwiększysz zamknięcia. Wartości < 1 zminimalizuje go.
 * **Dostosowanie wetness:** Dodatkowe pogłosu bazy danych
@@ -104,7 +104,7 @@ Aktora Akustyka miejsca jest dostępna za pośrednictwem planu, dostarczanie fun
 ### <a name="add-finer-grained-control-over-streaming-load"></a>Dodaj bardziej szczegółowej kontroli nad przesyłania strumieniowego obciążenia
 Do zarządzania dane akustyczne streaming sobie zamiast przesyłania strumieniowego automatycznie na podstawie player położenia, można użyć funkcji planu życie obciążenia kafelka:
 
-![P B przesyłania strumieniowego](media/blueprint-streaming.png)
+![Zrzut ekranu z planu przesyłania strumieniowego opcje Unreal](media/blueprint-streaming.png)
 
 * **Element docelowy:** Aktor AcousticsSpace
 * **Pozycja Center:** Załadowano Centrum regionu, który potrzebuje danych
@@ -113,12 +113,12 @@ Do zarządzania dane akustyczne streaming sobie zamiast przesyłania strumieniow
 
 Rozmiar fragmentu musi już ustawiony, przed wywołaniem życie obciążenia kafelka. Na przykład można wykonywać, podobny do poniższego, aby załadować plik ACE, ustawić rozmiar kafelka i przesyłanie strumieniowe w regionie:
 
-![Instalator przesyłania strumieniowego](media/streaming-setup.png)
+![Opcje zrzutu ekranu przesyłania strumieniowego instalacji w Unreal](media/streaming-setup.png)
 
 ### <a name="optionally-query-for-surface-proximity"></a>Opcjonalnie zapytanie dla powierzchni odległości między elementami
 Jeśli chcesz zobaczyć, jak blisko powierzchnie znajdują się w określonym kierunku wokół odbiornik, możesz użyć funkcji zapytania odległości. Ta funkcja może być przydatne, zachęcanie kierunkowe odbić opóźnione lub inną logikę gier prowadzone przez powierzchni odległości między elementami. Zapytanie jest mniej kosztowne niż rzutowania ray, ponieważ wyniki są pobierane z tabeli odnośników Akustyka.
 
-![Odległość zapytania](media/distance-query.png)
+![Zrzut ekranu przedstawiający przykładowe zapytanie odległość planu](media/distance-query.png)
 
 * **Element docelowy:** Aktor AcousticsSpace
 * **Kierunek wygląd:** Kierunek do wykonywania zapytań, a ich tematyka na odbiornik

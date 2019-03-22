@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 65940aa07c532ae3bc708d475b2d6ac60cf8d636
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308928"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901920"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Transakcje rozproszone w bazach danych w chmurze
 
@@ -127,6 +127,8 @@ Należy pamiętać, Instalator programu .NET 4.6.1 może wymagać więcej magazy
 ## <a name="transactions-across-multiple-servers"></a>Transakcje na wielu serwerach
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 Transakcje elastyczne bazy danych są obsługiwane na różnych serwerach bazy danych SQL w usłudze Azure SQL Database. Gdy transakcji przekraczają granice serwera bazy danych SQL, uczestniczących serwerów najpierw należy wprowadzić w relacji wzajemnego komunikacji. Po ustanowieniu relacji komunikacji, dowolnej bazy danych w jednym z dwóch serwerów mogą uczestniczyć w transakcji elastycznej bazy danych z innego serwera. Za pomocą transakcji obejmujące więcej niż dwa serwery baz danych SQL relacji komunikacji musi być w miejscu, aby jakaś para serwery usługi SQL Database.
 

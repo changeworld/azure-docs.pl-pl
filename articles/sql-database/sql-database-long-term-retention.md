@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 68bcddeee2cec1a77f20f8f470669f170fa50743
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 85757ace20501bea1db22ecfdd2fdb63284038d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992487"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108750"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store kopie zapasowe bazy danych SQL platformy Azure przez maksymalnie 10 lat
 
@@ -56,22 +56,20 @@ W = 12 tygodni (84 dni), M = rok (365 dni), Y = 10 lat (3650 dni), WeekOfYear = 
    ![przykład od lewej do prawej](./media/sql-database-long-term-retention/ltr-example.png)
 
 
- 
+
 Jeśli zostały do modyfikowania powyższych zasad, a zestaw W = 0 (nie cotygodniowych kopii zapasowych), tempo kopii zapasowych zmienią się jako przedstawione w powyższej tabeli przez wyróżnione daty. Wielkość magazynu potrzebnych do zapewnienia te kopie zapasowe zredukuje odpowiednio. 
 
 > [!NOTE]
-1. Kopiuje od lewej do prawej są tworzone przez usługę Azure storage, więc proces kopiowania nie wpływu na wydajność w istniejącej bazie danych.
-2. Zasada ma zastosowanie do przyszłych kopii zapasowych. Na przykład Jeśli określony WeekOfYear znajduje się w przeszłości, gdy zasada jest skonfigurowana, pierwsza kopia zapasowa od lewej do prawej zostanie utworzony następny rok. 
-3. Aby przywrócić bazę danych z magazynu od lewej do prawej, możesz wybrać określonej kopii zapasowej, oparte na jego sygnatury czasowej.   Można przywrócić bazy danych do dowolnego istniejącego serwera w ramach tej samej subskrypcji co oryginalna baza danych. 
-> 
+> 1. Kopiuje od lewej do prawej są tworzone przez usługę Azure storage, więc proces kopiowania nie wpływu na wydajność w istniejącej bazie danych.
+> 2. Zasada ma zastosowanie do przyszłych kopii zapasowych. Na przykład Jeśli określony WeekOfYear znajduje się w przeszłości, gdy zasada jest skonfigurowana, pierwsza kopia zapasowa od lewej do prawej zostanie utworzony następny rok. 
+> 3. Aby przywrócić bazę danych z magazynu od lewej do prawej, możesz wybrać określonej kopii zapasowej, oparte na jego sygnatury czasowej.   Można przywrócić bazy danych do dowolnego istniejącego serwera w ramach tej samej subskrypcji co oryginalna baza danych. 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Replikacja geograficzna i długoterminowego przechowywania kopii zapasowych
 
 Jeśli używasz grup usługi active replikacji geograficznej i trybu failover jako rozwiązania ciągłości biznesowej, należy przygotować się do ewentualnego przejścia w tryb failover i skonfigurować te same zasady LTR na pomocniczej geograficznej bazy danych. To nie spowoduje zwiększenia kosztów magazynu od lewej do prawej zgodnie z kopii zapasowych nie są generowane na podstawie pomocnicze bazy danych. Tylko wtedy, gdy pomocnicza staje się podstawowym zostaną utworzone kopie zapasowe. W ten sposób, w przypadku wyzwolenia trybu failover gwarantuje-przerwane generowania kopii zapasowych LTR podstawowego powoduje przeniesienie do regionu pomocniczego. 
 
 > [!NOTE]
-Po odzyskaniu sprawności po awarii, powodującą, że jej w tryb failover oryginalnej podstawowej bazy danych stanie się nowym serwerem pomocniczym. W związku z tym tworzenia kopii zapasowej nie zostanie wznowione, a istniejące zasady LTR nie zostanie zastosowana aż przyjmie postać podstawowego. 
-> 
+> Po odzyskaniu sprawności po awarii, powodującą, że jej w tryb failover oryginalnej podstawowej bazy danych stanie się nowym serwerem pomocniczym. W związku z tym tworzenia kopii zapasowej nie zostanie wznowione, a istniejące zasady LTR nie zostanie zastosowana aż przyjmie postać podstawowego. 
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurowanie długoterminowego przechowywania kopii zapasowych
 

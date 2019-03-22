@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: bfaa738b0f99594a3bd11541d519701ff5eb98f5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 51d8b9bad4bb4a3663b07a711f363b263f5d64db
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896164"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339690"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -25,7 +25,7 @@ Do zarządzania pomyślnie takich aplikacji należy aktywne monitorowanie i zroz
 
 > [!NOTE]
 > Usługa pliki systemu Azure nie obsługuje rejestrowania w tej chwili.
-> 
+>
 
 Praktyczny przewodnik dotyczący end-to-end Rozwiązywanie problemów w aplikacji usługi Azure Storage, zobacz [Rozwiązywanie problemów przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów End-to-End](../storage-e2e-troubleshooting.md).
 
@@ -100,7 +100,7 @@ Sekcja "[wskazówki dotyczące rozwiązywania problemów]" zawiera wskazówki do
 ## <a name="monitoring-your-storage-service"></a>Monitorowanie usługi storage
 Osoby zaznajomione z programem Windows performance monitoring można traktować metryki magazynu jako odpowiednik liczników monitora wydajności Windows Azure Storage. Metryki magazynu zawiera wszechstronny zestaw metryk (liczniki Monitora wydajności Windows terminologii), takich jak dostępność usługi, łączna liczba żądań do usługi lub Procent pomyślnych żądań do usługi. Aby uzyskać pełną listę dostępnych metryk, zobacz [schemat tabeli metryk usługi Analytics magazynu](https://msdn.microsoft.com/library/azure/hh343264.aspx). Można określić, czy chcesz, aby usługi magazynu, aby zbieranie i agregowanie metryki co godzinę lub co minutę. Aby uzyskać więcej informacji o tym, jak włączyć metryki i monitorować konta magazynu, zobacz [włączenie metryk usługi storage i wyświetlanie danych metryk](https://go.microsoft.com/fwlink/?LinkId=510865).
 
-Można wybrać, które godzinowe metryki, które mają być wyświetlane w [witryny Azure portal](https://portal.azure.com) i skonfigurować reguły powiadamiania administratorów za pośrednictwem poczty e-mail, gdy godzinowe metryki przekracza określoną wartość progową. Aby uzyskać więcej informacji, zobacz [odbieranie powiadomień o alertach](/azure/monitoring-and-diagnostics/monitoring-overview-alerts). 
+Można wybrać, które godzinowe metryki, które mają być wyświetlane w [witryny Azure portal](https://portal.azure.com) i skonfigurować reguły powiadamiania administratorów za pośrednictwem poczty e-mail, gdy godzinowe metryki przekracza określoną wartość progową. Aby uzyskać więcej informacji, zobacz [odbieranie powiadomień o alertach](/azure/monitoring-and-diagnostics/monitoring-overview-alerts).
 
 Usługa storage zbiera metryki na najlepszy nakład pracy, ale nie można rejestrować każdej operacji magazynu.
 
@@ -132,8 +132,8 @@ Ponieważ obiekty BLOB są zazwyczaj konto największą część danych przechow
 
 > [!NOTE]
 > Należy monitorować te wartości w celu wczesnego ostrzegania, że Zbliżasz się limitów pojemności konta magazynu. W witrynie Azure portal można dodać reguły alertów, aby otrzymywać powiadomienia, czy użycie agregacji magazynu przekracza spadnie poniżej progów, które określisz.
-> 
-> 
+>
+>
 
 Aby uzyskać pomoc, Szacowanie rozmiaru dla różnych obiektów, takich jak obiekty BLOB, zobacz wpis w blogu [opis rozliczeń platformy Azure Storage — przepustowość, transakcje i pojemność](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
@@ -191,8 +191,8 @@ Użytkownicy twojej aplikacji może powiadomić użytkownika o błędów zgłosz
 
 > [!NOTE]
 > Należy pamiętać, że należy się spodziewać się sporadyczne błędy: na przykład błędy ze względu na warunki przejściowe problemy z siecią lub błędy aplikacji.
-> 
-> 
+>
+>
 
 Przydatne dla zrozumienia kodów stanu i błędów związanych z magazynem są następujące zasoby:
 
@@ -214,8 +214,8 @@ Biblioteki klienta usługi Storage dla platformy .NET umożliwia zbieranie danyc
 
 > [!NOTE]
 > W niektórych sytuacjach (np. błędy autoryzacji sygnatury dostępu Współdzielonego) użytkownik może zgłaszać błąd, dla którego nie dane żądania można znaleźć w dzienników magazynu po stronie serwera. Można skorzystać z funkcji rejestrowania biblioteki klienta usługi Storage do zbadania, czy przyczyną problemu jest na komputerze klienckim, lub użyć narzędzia monitorowania sieci do sieci.
-> 
-> 
+>
+>
 
 ### <a name="using-network-logging-tools"></a>Za pomocą narzędzia rejestracji w sieci
 Można przechwytywać ruch między klientem i serwerem zawierają szczegółowe informacje o dane, które są wymiana klient i serwer i podstawowe warunki w sieci. Narzędzia rejestrowania przydatne sieci obejmują:
@@ -242,8 +242,8 @@ Biblioteka klienta magazynu automatycznie generuje identyfikator żądania klien
 
 > [!NOTE]
 > Istnieje możliwość dla wielu żądań udostępnić ten sam identyfikator żądania klienta, ponieważ klienta można przypisać tę wartość (mimo że biblioteki klienta usługi Storage, które automatycznie przypisuje nową wartość). Gdy klient ponawia próbę, wszystkie próby współużytkują ten sam identyfikator żądania klienta. W przypadku partii wysłanych z klienta usługi batch ma identyfikatora żądania dla jednego klienta.
-> 
-> 
+>
+>
 
 ### <a name="server-request-id"></a>Identyfikator żądania serwera
 Usługa storage automatycznie generuje identyfikatorów żądań serwera.
@@ -254,8 +254,8 @@ Usługa storage automatycznie generuje identyfikatorów żądań serwera.
 
 > [!NOTE]
 > Usługi storage zawsze przypisuje unikatowych serwerów identyfikator żądania do każdego żądania odebranego, więc każdej próby ponowienia z klienta i każda operacja uwzględniony w zadaniu wsadowym ma unikatowy identyfikator serwera żądania.
-> 
-> 
+>
+>
 
 Jeśli biblioteki klienta usługi Storage zgłasza **StorageException** w kliencie **RequestInformation** właściwość zawiera **RequestResult** obiektu, który zawiera  **ServiceRequestID** właściwości. Można również przejść **RequestResult** obiektu z **OperationContext** wystąpienia.
 
@@ -351,8 +351,8 @@ Usługi storage tylko w przypadku obliczania metryki **wartość AverageE2ELaten
 
 > [!NOTE]
 > Można również wyświetlić **E2ELatency** i **ServerLatency** dane dziennika dla operacji magazynu w rejestrowania magazynu.
-> 
-> 
+>
+>
 
 #### <a name="investigating-client-performance-issues"></a>Badanie problemów z wydajnością klienta
 Możliwe klienta odpowiada powoli przyczyny o ograniczonej liczbie dostępnych połączeń lub wątków lub trwa małą ilością zasobów, takich jak Procesor, pamięć lub sieć przepustowości. Dzięki temu można rozwiązać ten problem, modyfikując kod klienta, aby był bardziej wydajne, (na przykład za pomocą wywołania asynchroniczne do usługi storage) lub przy użyciu większych maszyn wirtualnych (rdzeni i więcej pamięci).
@@ -402,8 +402,8 @@ Wysoka **wartość AverageServerLatency** wartości mogą też być objawem źle
 
 > [!NOTE]
 > Można znaleźć kompleksowe Lista kontrolna dotycząca wydajności listy kontrolnej w tym miejscu: [Wydajność magazynu platformy Microsoft Azure i Lista kontrolna dotycząca skalowalności](storage-performance-checklist.md).
-> 
-> 
+>
+>
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>Występują nieoczekiwane opóźnienia w dostarczaniu komunikatów w kolejce
 Występuje opóźnienie między czasu aplikacja dodaje komunikat do kolejki i czas, który będzie dostępny do odczytu z kolejki, należy wykonać poniższe kroki, aby zdiagnozować problem:
@@ -429,8 +429,8 @@ Jeśli widzisz skokami wartości **wartości PercentThrottlingError** pokrywają
 
 > [!NOTE]
 > Ponadto mogą pojawić się skokami wartości **wartości PercentThrottlingError** , nie pokrywają się z okresy intensywnego działania aplikacji: najbardziej prawdopodobna przyczyna to usługa magazynu, przenosząc partycji w celu lepszego równoważenia obciążenia.
-> 
-> 
+>
+>
 
 #### <a name="permanent-increase-in-PercentThrottlingError"></a>Stały wzrost wartości PercentThrottlingError błąd
 Jeśli widzisz charakteryzujące się stałym wysokim wartość **wartości PercentThrottlingError** następujące wzrost stały w woluminach transakcji, lub gdy wykonujesz usługi ładowania początkowego testów w swojej aplikacji, a następnie należy ocenić jak Twoja aplikacja używa magazynu partycji i tego, czy jego zbliża się do wartości docelowe skalowalności konta magazynu. Na przykład jeśli widzisz błędy w kolejce (która jest liczona jako jednej partycji) ograniczania przepływności, następnie należy rozważyć transakcji rozkłada się na wiele partycji przy użyciu funkcji kolejek dodatkowe. Jeśli widzisz błędy w tabeli ograniczania przepływności należy wziąć pod uwagę, aby rozłożyć transakcji na wiele partycji przy użyciu większej liczbie wartości klucza partycji przy użyciu innego schematu partycjonowania. Częstą przyczyną tego problemu jest prepend/dołączanie wzorzec przed gdzie wybierz datę jako klucza partycji, a następnie wszystkie dane w określonym dniu są zapisywane do jednej partycji: pod obciążeniem, może to spowodować wąskie gardło zapisu. Należy wziąć pod uwagę różnorodności partycjonowania albo ocenić, czy za pomocą magazynu obiektów blob może być lepszym rozwiązaniem. Również Sprawdź, czy ograniczenie występuje w wyniku skoków ruchu i zbadać sposoby wygładzanie deseń żądań.
@@ -441,16 +441,16 @@ Projekt kwerendy nieefektywne może również spowodować trafień limity skalow
 
 > [!NOTE]
 > Testowanie wydajności powinno ujawnić, wszystkie projekty nieefektywne zapytania w aplikacji.
-> 
-> 
+>
+>
 
 ### <a name="metrics-show-an-increase-in-PercentTimeoutError"></a>Metryki wskazują wzrost wzrost wartości PercentTimeoutError
 Swoje metryki wskazują wzrost **wartości PercentTimeoutError** dla jednego z usługi storage. W tym samym czasie klient odbierze dużej liczby komunikatów o stanie "500 limit czasu operacji" HTTP z operacji magazynu.
 
 > [!NOTE]
 > Mogą pojawić się błędy przekroczenia limitu czasu tymczasowo jako usługi storage żądania równoważy obciążenia, przenosząc partycji na nowy serwer.
-> 
-> 
+>
+>
 
 **Wartości PercentTimeoutError** Metryka to agregacji z następujących metryk: **ClientTimeoutError**, **AnonymousClientTimeoutError**, **SASClientTimeoutError**, **ServerTimeoutError**,  **AnonymousServerTimeoutError**, i **SASServerTimeoutError**.
 
@@ -586,8 +586,8 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 > [!NOTE]
 > Narzędzia programistyczne F12 w przeglądarce Internet Explorer służy do śledzenia komunikatów wymienianych między przeglądarką i usługi storage, rozwiązując problemy z językiem JavaScript po stronie klienta.
-> 
-> 
+>
+>
 
 Te błędy, ponieważ implementuje przeglądarki sieci web [te same zasady pochodzenia](https://www.w3.org/Security/wiki/Same_Origin_Policy) pochodzi ograniczenia zabezpieczeń, który uniemożliwia wywołanie interfejsu API w innej domenie z domeny na stronie strony sieci web.
 
@@ -712,8 +712,8 @@ Dodatki opisano kilka narzędzi, które mogą być przydatne podczas diagnozowan
 
 > [!NOTE]
 > Narzędzie fiddler mogą dekodować ruchu HTTPS. należy przeczytać dokumentację programu Fiddler dokładnie zrozumieć, jak to robi i zrozumienie skutki dla bezpieczeństwa.
-> 
-> 
+>
+>
 
 Ten dodatek zawiera krótki przewodnik dotyczący sposobu konfigurowania narzędzia Fiddler do przechwytywania ruchu między komputera lokalnego, w którym jest zainstalowany program Fiddler i usług Azure storage.
 
@@ -735,7 +735,7 @@ Poniższej procedury dowiesz się, jak przechwytywanie pakietów szczegółowe i
 2. W **Start** wybierz lokalnego interfejsu sieciowego lub interfejsów, które są połączone z Internetem.
 3. Kliknij przycisk **opcje przechwytywania**.
 4. Dodaj filtr do **filtr przechwytywania** pola tekstowego. Na przykład **hosta contosoemaildist.table.core.windows.net** skonfiguruje program Wireshark w celu przechwycenia tylko pakiety wysyłane do i z punkt końcowy usługi tabel w **contosoemaildist** konta magazynu. Zapoznaj się z [pełną listę filtrów przechwytywania](https://wiki.wireshark.org/CaptureFilters).
-   
+
    ![][6]
 5. Kliknij przycisk **Uruchom**. Program Wireshark teraz Przechwyć wszystkie pakiety Wyślij do lub z punkt końcowy usługi tabel, jak używać aplikacji klienta na komputerze lokalnym.
 6. Po zakończeniu kliknij pozycję menu głównego **przechwytywania** i następnie **zatrzymać**.
@@ -751,8 +751,8 @@ Możesz również wyświetlić dane TCP, jak warstwa aplikacji widzi on, klikaj�
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat używania programu Wireshark zobacz [przewodnika użytkownicy programu Wireshark](https://www.wireshark.org/docs/wsug_html_chunked).
-> 
-> 
+>
+>
 
 ### <a name="appendix-3"></a>Dodatku 3: Do przechwytywania ruchu sieciowego przy użyciu programu Microsoft Message Analyzer
 Korzystanie z analizatora komunikatów firmy Microsoft do przechwytywania ruchu HTTP i HTTPS, w sposób podobny do programu Fiddler i przechwytywania ruchu sieciowego w sposób podobny do programu Wireshark.
@@ -766,8 +766,8 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 
 > [!NOTE]
 > Spacja oddziela nazwy hostów.
-> 
-> 
+>
+>
 
 Jeśli jesteś gotowy rozpocząć zbieranie danych śledzenia, kliknij przycisk **Start With** przycisku.
 
@@ -806,6 +806,17 @@ Można również użyć funkcji usługi Application Insights dla metodyki DevOps
 * Szybkie diagnozowanie problemów z wydajnością dowolnej wyjątków w usłudze sieci web. Dowiedz się, jeśli są rozciągnięcia procesora CPU lub innych zasobów, uzyskiwanie śladów stosu wyjątków i łatwo przeszukiwać dane dziennika śledzenia. Jeśli wydajność aplikacji spadnie poniżej wydatkami telekomunikacyjnymi, Microsoft może wysyłać wiadomości e-mail. Można monitorować usługi sieci web platformy .NET i Java.
 
 Więcej informacji można znaleźć [co to jest usługa Application Insights](../../azure-monitor/app/app-insights-overview.md).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Aby uzyskać więcej informacji na temat analizy w usłudze Azure Storage zobacz następujące zasoby:
+
+* [Monitorowanie konta magazynu w witrynie Azure portal](storage-monitor-storage-account.md)
+* [Analityka magazynu](storage-analytics.md)
+* [Metryk usługi Storage analytics](storage-analytics-metrics.md)
+* [Schematu tabeli metryk usługi Storage analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)
+* [Magazynu analizy dzienników](storage-analytics-logging.md)
+* [Format dziennika analityka magazynu](/rest/api/storageservices/storage-analytics-log-format.md)
 
 <!--Anchors-->
 [Wprowadzenie]: #introduction
