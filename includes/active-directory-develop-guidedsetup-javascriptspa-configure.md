@@ -4,7 +4,7 @@ description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,25 +14,25 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 135ee9f6b833165cd393b9c5ca582e0ee9499e0f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ec9eba4766da1afbbee568374de1ce06dc92ab2b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54057404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203328"
 ---
 ## <a name="register-your-application"></a>Rejestrowanie aplikacji
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) zarejestrować aplikację.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/), aby zarejestrować aplikację.
 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory**, a następnie pozycję **Rejestracje aplikacji (wersja zapoznawcza) > Nowa rejestracja**.
-1. Gdy **rejestrowania aplikacji** zostanie wyświetlona strona, wprowadź nazwę aplikacji.
-1. W obszarze **obsługiwane typy kont**, wybierz opcję **kont w dowolnym katalogu organizacji i osobistych kont Microsoft**.
+1. Po wyświetleniu strony **Rejestrowanie aplikacji** wprowadź nazwę aplikacji.
+1. W obszarze **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**.
 1. W obszarze **identyfikator URI przekierowania** zaznacz **Web** platformy i ustaw wartość adres URL aplikacji oparta na serwerze sieci web. Zobacz sekcje poniżej, aby uzyskać instrukcje na temat ustawiania i uzyskać adres URL przekierowania w programie Visual Studio i języka Node.
 1. Po zakończeniu wybierz pozycję **Rejestruj**.
-1. W aplikacji **Przegląd** strony, zanotuj **identyfikator aplikacji (klienta)** wartość.
-1. Ten przewodnik Szybki Start wymaga [niejawne udzielić przepływ](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) włączenia. W okienku nawigacji po lewej stronie w zarejestrowanej aplikacji wybierz **uwierzytelniania**.
-1. W **Zaawansowane ustawienia**w obszarze **przyznawanie niejawne**, włączyć zarówno **tokeny Identyfikatora** i **tokeny dostępu** pola wyboru. Identyfikator tokenów i tokenów dostępu są wymagane, ponieważ ta aplikacja wymaga logowania użytkowników i wywoływać interfejs API.
+1. Na stronie **Przegląd** aplikacji zanotuj wartość **Identyfikator aplikacji (klienta)**.
+1. Ten przewodnik Szybki start wymaga włączenia [przepływu niejawnego udzielenia](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md). W okienku nawigacji po lewej stronie w zarejestrowanej aplikacji wybierz pozycję **Uwierzytelnianie**.
+1. Na stronie **Ustawienia zaawansowane** w obszarze **Niejawne udzielenie** zaznacz obydwa pola wyboru: **Tokeny identyfikatorów** i **Tokeny dostępu**. Tokeny identyfikatorów i tokeny dostępu są wymagane, ponieważ ta aplikacja musi zalogować użytkowników i wywołać interfejs API.
 1. Wybierz pozycję **Zapisz**.
 
 > #### <a name="setting-the-redirect-url-for-node"></a>Ustawienie adresu URL przekierowania dla węzła

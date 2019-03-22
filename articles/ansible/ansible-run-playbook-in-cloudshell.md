@@ -1,19 +1,19 @@
 ---
 title: Uruchamianie rozwiązania Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell
 description: Dowiedz się, jak wykonywać różne zadania rozwiązania Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/07/2018
 ms.topic: quickstart
-ms.openlocfilehash: 61b23b5bc2620c82051b0ba1de4bb54b44a495e0
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.openlocfilehash: 37426f1cdc51734c28b2c9739e26ad35f08e606f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359191"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791396"
 ---
 # <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Uruchamianie rozwiązania Ansible przy użyciu programu Bash w usłudze Azure Cloud Shell
 
@@ -46,7 +46,7 @@ Aby sprawdzić, czy konfiguracja zakończyła się pomyślnie, użyj rozwiązani
 
 [!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-create-resource-group.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"] 
 > [Tworzenie podstawowej maszyny wirtualnej na platformie Azure za pomocą rozwiązania Ansible](/azure/virtual-machines/linux/ansible-create-vm)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b81129ada4710eff58d50bf998802e8ac1b2788
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191065"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109141"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira i Confluence podręczniku administratora usługi Azure Active Directory
 
@@ -110,33 +110,33 @@ Na poniższej ilustracji przedstawiono ekran konfiguracji w usłudze Jira i Conf
 
 ![Ekran konfiguracji dodatku typu plug-in](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **Adres URL metadanych**: Adres URL można uzyskać metadanych federacji z usługi Azure AD.
+* **Adres URL metadanych**: Adres URL można uzyskać metadanych federacji z usługi Azure AD.
 
-*   **Identyfikatory**: Adres URL usługi Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/.
+* **Identyfikatory**: Adres URL usługi Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/.
 
-*   **Adres URL odpowiedzi**: Adres URL odpowiedzi, inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
+* **Adres URL odpowiedzi**: Adres URL odpowiedzi, inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
 
-*   **Adres URL logowania**: Adres URL logowania w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
+* **Adres URL logowania**: Adres URL logowania w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
 
-*   **Identyfikator dostawcy tożsamości jednostki**: Identyfikator jednostki, która używa dostawcy tożsamości. To pole jest wypełniana po usunięciu adres URL metadanych.
+* **Identyfikator dostawcy tożsamości jednostki**: Identyfikator jednostki, która używa dostawcy tożsamości. To pole jest wypełniana po usunięciu adres URL metadanych.
 
-*   **Adres URL logowania**: Zaloguj się adres URL z dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+* **Adres URL logowania**: Zaloguj się adres URL z dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
 
-*   **Adres URL wylogowania**: Adres URL wylogowania dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+* **Adres URL wylogowania**: Adres URL wylogowania dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
 
-*   **Certyfikat X.509**: Certyfikat X.509 dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+* **Certyfikat X.509**: Certyfikat X.509 dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
 
-*   **Nazwa przycisku logowania**: Nazwa logowania przycisk, który organizacja chce, aby użytkownicy, aby wyświetlić na stronie logowania.
+* **Nazwa przycisku logowania**: Nazwa logowania przycisk, który organizacja chce, aby użytkownicy, aby wyświetlić na stronie logowania.
 
-*   **Lokalizacje identyfikator użytkownika SAML**: Lokalizacja, w którym identyfikator użytkownika w usłudze Jira lub Confluence jest oczekiwany w odpowiedzi SAML. Może być w **NameID** lub w nazwie atrybutu niestandardowego.
+* **Lokalizacje identyfikator użytkownika SAML**: Lokalizacja, w którym identyfikator użytkownika w usłudze Jira lub Confluence jest oczekiwany w odpowiedzi SAML. Może być w **NameID** lub w nazwie atrybutu niestandardowego.
 
-*   **Atrybut nazwy**: Nazwa atrybutu, gdy jest oczekiwany identyfikator użytkownika.
+* **Atrybut nazwy**: Nazwa atrybutu, gdy jest oczekiwany identyfikator użytkownika.
 
-*   **Strona główna Włącz odnajdowanie obszaru**: Zaznaczenie, aby upewnić się, jeśli firma korzysta z usługi Active Directory Federation Services (ADFS) — na podstawie logowania — w.
+* **Strona główna Włącz odnajdowanie obszaru**: Zaznaczenie, aby upewnić się, jeśli firma korzysta z usługi Active Directory Federation Services (ADFS) — na podstawie logowania — w.
 
-*   **Nazwa domeny**: Nazwa domeny, jeśli logowanie jest usług AD FS, na podstawie.
+* **Nazwa domeny**: Nazwa domeny, jeśli logowanie jest usług AD FS, na podstawie.
 
-*   **Włącz pojedynczego wylogowanie**: Zaznaczenie, aby upewnić się, jeśli chcesz wylogować się z usługi Azure AD, gdy użytkownik wylogowuje się z programu Jira lub Confluence.
+* **Włącz pojedynczego wylogowanie**: Zaznaczenie, aby upewnić się, jeśli chcesz wylogować się z usługi Azure AD, gdy użytkownik wylogowuje się z programu Jira lub Confluence.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

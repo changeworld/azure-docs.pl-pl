@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c45a19c8f6bbce2ffdfff0758eb3e57203b7cf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fd7145be5f82a90acced0f02e35f6c8880dbcad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120401"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Spark firmy Cisco dla automatycznej aprowizacji użytkowników
 
@@ -113,28 +113,28 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
     *   W **klucz tajny tokenu** pola, wypełnij klucz tajny tokenu, zgodnie z opisem w kroku 6.
 
 1. **Identyfikator dzierżawy** i **klucz tajny tokenu** dla platformy Spark Cisco konta można znaleźć, logując się do [witryny dla deweloperów platformy Spark Cisco](https://developer.webex.com/) przy użyciu konta administratora. Po zalogowaniu -
-    * Przejdź do [Getting Started page](https://developer.webex.com/getting-started.html)
-    * Przewiń w dół do [sekcji uwierzytelnianie](https://developer.webex.com/getting-started.html#authentication)
-    ![tokenu uwierzytelniania Spark firmy Cisco](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
-    * Ciąg alfanumeryczny w polu jest Twoja **klucz tajny tokenu**. Skopiuj ten token do Schowka
-    * Przejdź do [Pobierz moje własne szczegóły strony](https://developer.webex.com/endpoint-people-me-get.html)
-        * Upewnij się, że tryb testowy jest ON
-        * Wpisz słowo "Bearer" spację, a następnie wklej klucz tajny tokenu w polu autoryzacji ![tokenu uwierzytelniania Spark firmy Cisco](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
-        * Kliknij przycisk Uruchom
-    * Tekst odpowiedzi z prawej strony **identyfikator dzierżawy** jest wyświetlany jako "z identyfikatorem organizacji":
+   * Przejdź do [Getting Started page](https://developer.webex.com/getting-started.html)
+   * Przewiń w dół do [sekcji uwierzytelnianie](https://developer.webex.com/getting-started.html#authentication)
+     ![tokenu uwierzytelniania Spark firmy Cisco](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
+   * Ciąg alfanumeryczny w polu jest Twoja **klucz tajny tokenu**. Skopiuj ten token do Schowka
+   * Przejdź do [Pobierz moje własne szczegóły strony](https://developer.webex.com/endpoint-people-me-get.html)
+       * Upewnij się, że tryb testowy jest ON
+       * Wpisz słowo "Bearer" spację, a następnie wklej klucz tajny tokenu w polu autoryzacji ![tokenu uwierzytelniania Spark firmy Cisco](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
+       * Kliknij przycisk Uruchom
+   * Tekst odpowiedzi z prawej strony **identyfikator dzierżawy** jest wyświetlany jako "z identyfikatorem organizacji":
 
-    ```json
-    {
-        "id": "(...)",
-        "emails": [
-            "admin.user@contoso.com"
-        ],
-        "displayName": "John Smith",
-        "nickName": "John",
-        "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        (...)
-    }
-    ```
+     ```json
+     {
+       "id": "(...)",
+       "emails": [
+           "admin.user@contoso.com"
+       ],
+       "displayName": "John Smith",
+       "nickName": "John",
+       "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+       (...)
+     }
+     ```
 
 1. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można do platformy Spark firmy Cisco. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto platformy Spark Cisco ma uprawnienia administratora i spróbuj ponownie.
 

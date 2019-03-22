@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 104730d94134d935f56fb95fd55d05b515e9f501
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245569"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014977"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Wdrażanie programu IBM DB2 pureScale na platformie Azure
 
 W tym artykule opisano sposób wdrażania [przykład architektury](ibm-db2-purescale-azure.md) używany Klient firmowy niedawno migracji z jego środowiska programu IBM DB2 uruchomionego na z/OS do pureScale IBM DB2 na platformie Azure.
 
-Aby wykonać kroki używane do migracji, zobacz skryptów instalacji w [DB2onAzure](http://aka.ms/db2onazure) repozytorium w witrynie GitHub. Skrypty te są oparte na architektury dla obciążeń przetwarzania (OLTP) typowe, średnich transakcji online.
+Aby wykonać kroki używane do migracji, zobacz skryptów instalacji w [DB2onAzure](https://aka.ms/db2onazure) repozytorium w witrynie GitHub. Skrypty te są oparte na architektury dla obciążeń przetwarzania (OLTP) typowe, średnich transakcji online.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
-Aby wdrożyć tę architekturę, Pobierz, a następnie uruchom skrypt deploy.sh w [DB2onAzure](http://aka.ms/db2onazure) repozytorium w witrynie GitHub.
+Aby wdrożyć tę architekturę, Pobierz, a następnie uruchom skrypt deploy.sh w [DB2onAzure](https://aka.ms/db2onazure) repozytorium w witrynie GitHub.
 
 Repozytorium zawiera także skrypty do konfigurowania na pulpicie nawigacyjnym Grafana. Pulpit nawigacyjny służy do wykonywania zapytań Prometheus, typu open-source monitorowania i zgłaszania alertów system, dołączone do bazy danych DB2.
 
@@ -76,27 +76,27 @@ Po skrypty utworzyć urządzenie iSCSI, ostatnim krokiem jest zainstalowanie pur
 Repozytorium GitHub zawiera DB2server.rsp, plik odpowiedzi (rsp), który umożliwia generowanie zautomatyzowanych skryptów instalacji pureScale bazy danych DB2. Poniższej tabeli wymieniono opcje pureScale bazy danych DB2, które korzysta z pliku odpowiedzi dla instalacji. Można dostosować plik odpowiedzi, zgodnie z potrzebami w danym środowisku.
 
 > [!NOTE]
-> Przykładowy plik odpowiedzi, DB2server.rsp, znajduje się w [DB2onAzure](http://aka.ms/db2onazure) repozytorium w witrynie GitHub. Jeśli używasz tego pliku, należy zmodyfikować przed może pracować w swoim środowisku.
+> Przykładowy plik odpowiedzi, DB2server.rsp, znajduje się w [DB2onAzure](https://aka.ms/db2onazure) repozytorium w witrynie GitHub. Jeśli używasz tego pliku, należy zmodyfikować przed może pracować w swoim środowisku.
 
 | Nazwa ekranowa               | Pole                                        | Wartość                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Powitanie                   |                                              | Nowej instalacji                                                                                           |
 | Wybierz produkt          |                                              | Bazy danych DB2 wersja 11.1.3.3. Wersje serwera z pureScale bazy danych DB2                                              |
-| Konfigurowanie             | Katalog                                    | /Data1/OPT/IBM/DB2/V11.1                                                                              |
+| Konfigurowanie             | Katalog                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Wybieranie typu instalacji                 | Typowe                                                                                               |
 |                           | Wyrażam zgodę na warunki firmy IBM                     | Zaznaczone                                                                                               |
 | Właściciel wystąpienia            | Istniejące wystąpienie dla użytkownika, nazwa użytkownika        | DB2sdin1                                                                                              |
 | Ogrodzone użytkownika               | Istniejącego użytkownika, nazwa użytkownika                     | DB2sdfe1                                                                                              |
 | System plików klastra       | Udostępnione ścieżki urządzenia partycji dysku            | /dev/DM-2                                                                                             |
-|                           | Punkt instalacji                                  | / DB2sd\_1804a                                                                                         |
+|                           | Punkt instalacji                                  | /DB2sd\_1804a                                                                                         |
 |                           | Udostępniony dysk danych                         | /dev/DM-1                                                                                             |
-|                           | Punkt instalacji (dane)                           | / DB2fs/datafs1                                                                                        |
+|                           | Punkt instalacji (dane)                           | /DB2fs/datafs1                                                                                        |
 |                           | Udostępniony dysk dla dzienników                          | /dev/DM-0                                                                                             |
-|                           | Punkt instalacji (dziennik)                            | / DB2fs/logfs1                                                                                         |
+|                           | Punkt instalacji (dziennik)                            | /DB2fs/logfs1                                                                                         |
 |                           | Bazy danych DB2 Tiebreaker usług klastrowania. Ścieżka urządzenia | /dev/dm-3                                                                                             |
 | Lista hostów                 | D1 [eth1] d2 [eth1] cf1 [eth1] cf2 [eth1] |                                                                                                       |
 |                           | Preferowane podstawowej usługi CF                         | cf1                                                                                                   |
-|                           | Preferowane pomocnicze usługi CF                       | CF2                                                                                                   |
+|                           | Preferowane pomocnicze usługi CF                       | cf2                                                                                                   |
 | Plik odpowiedzi i podsumowanie | Pierwsza opcja                                 | Instalowanie serwera bazy danych DB2 w wersji z funkcją pureScale IBM DB2 i Zapisz moje ustawienia w pliku odpowiedzi |
 |                           | Nazwa pliku odpowiedzi                           | /root/DB2server.rsp                                                                                   |
 
@@ -138,7 +138,7 @@ Repozytorium GitHub zawiera wiedzy, która utrzymuje autorów. Wyświetla listę
 
 -   Usuwasz pureScale bazy danych DB2 i IBM Spectrum skali.
 
-Aby uzyskać więcej informacji na temat tych i innych znanych problemów, zobacz plik kb.md w [DB2onAzure](http://aka.ms/DB2onAzure) repozytorium.
+Aby uzyskać więcej informacji na temat tych i innych znanych problemów, zobacz plik kb.md w [DB2onAzure](https://aka.ms/DB2onAzure) repozytorium.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -148,9 +148,9 @@ Aby uzyskać więcej informacji na temat tych i innych znanych problemów, zobac
 
 -   [DB2icrt — Utwórz wystąpienie, polecenie](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 
--   [Bazy danych DB2 pureScale klastrów rozwiązanie do przetwarzania danych](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+-   [Bazy danych DB2 pureScale klastrów rozwiązanie do przetwarzania danych](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
--   [Studio danych IBM](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
+-   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 -   [Alliance modernizacji platformy: IBM DB2 na platformie Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 

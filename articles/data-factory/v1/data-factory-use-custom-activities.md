@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 6d7aeef415fcc53fda2f5d66d748dd38f6d644fb
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 1341a8fce95dff0499a698fcddf8d048f3628dba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576739"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108243"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -421,7 +421,7 @@ Poniżej przedstawiono kroki, które należy wykonać w tej sekcji:
    2. Kliknij przycisk **dane + analiza** w **New** bloku.
    3. Kliknij przycisk **Fabryka danych** w bloku **Analiza danych**.
 
-    ![Nowe menu usługi Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
+      ![Nowe menu usługi Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. W **nowa fabryka danych** bloku wprowadź **CustomActivityFactory** dla nazwy. Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **Nazwa fabryki danych "CustomActivityFactory" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład **yournameCustomActivityFactory**), a następnie spróbuj utworzyć ją ponownie.
 
     ![Nowy blok usługi Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)

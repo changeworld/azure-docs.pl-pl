@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: aebc308f6bfaddbe8e9b430096cb6698d7dd06c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736587"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099073"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Szybki start: Wdrażanie aplikacji niezawodnych usług .NET w usłudze Service Fabric
 
@@ -47,9 +47,10 @@ Aby ukończyć ten przewodnik Szybki start:
 2. [Zainstaluj oprogramowanie Git](https://git-scm.com/)
 3. [Zainstaluj zestaw SDK usługi Microsoft Azure Service Fabric](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. Uruchom następujące polecenie, aby umożliwić programowi Visual Studio wdrażanie w lokalnym klastrze usługi Service Fabric:
-    ```powershell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
-    ```
+
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+   ```
     
 ## <a name="build-a-cluster"></a>Tworzenie klastra
 
@@ -63,14 +64,14 @@ Po zainstalowaniu środowiska uruchomieniowego, zestawów SDK, narzędzi program
 1. Otwórz nowe okno programu PowerShell jako administrator.
 2. Utwórz klaster projektowy za pomocą następującego polecenia programu PowerShell:
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+   ```
 3. Uruchom menedżera klastra lokalnego za pomocą następującego polecenia:
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
+   ```
 
 >[!NOTE]
 > Przykładowa aplikacja w tym przewodniku Szybki start korzysta z funkcji, które nie są dostępne w systemie Windows 7.
@@ -131,23 +132,23 @@ Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 2. Otwórz plik **/VotingData/Controllers/VoteDataController.cs** i ustaw punkt przerwania w metodzie **Put** tego internetowego interfejsu API (wiersz 54).
 
 3. Wróć do przeglądarki i kliknij opcję głosowania lub dodaj nową opcję głosowania. Zostanie trafiony pierwszy punkt przerwania w kontrolerze interfejsu API frontonu internetowego.
-    * Jest to punkt, w którym skrypt JavaScript w przeglądarce wysyła żądanie do kontrolera internetowego interfejsu API w usłudze frontonu.
+   * Jest to punkt, w którym skrypt JavaScript w przeglądarce wysyła żądanie do kontrolera internetowego interfejsu API w usłudze frontonu.
 
-    ![Dodawanie usługi frontonu Vote (Głosowanie)](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+     ![Dodawanie usługi frontonu Vote (Głosowanie)](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    * Najpierw skonstruuj adres URL do elementu ReverseProxy dla naszej usługi zaplecza **(1)**.
-    * Następnie wyślij żądanie HTTP PUT do elementu ReverseProxy **(2)**.
-    * Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)**.
+   * Najpierw skonstruuj adres URL do elementu ReverseProxy dla naszej usługi zaplecza **(1)**.
+   * Następnie wyślij żądanie HTTP PUT do elementu ReverseProxy **(2)**.
+   * Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)**.
 
 4. Naciśnij klawisz **F5**, aby kontynuować
-    - Jeśli przeglądarka wyświetli monit, przyznaj grupie ServiceFabricAllowedUsers uprawnienia do odczytu i wykonywania dla trybu debugowania.
-    - Jesteś teraz w punkcie przerwania w usłudze zaplecza.
+   - Jeśli przeglądarka wyświetli monit, przyznaj grupie ServiceFabricAllowedUsers uprawnienia do odczytu i wykonywania dla trybu debugowania.
+   - Jesteś teraz w punkcie przerwania w usłudze zaplecza.
 
-    ![Dodawanie usługi zaplecza Vote](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
+     ![Dodawanie usługi zaplecza Vote](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    * W pierwszym wierszu metody **(1)** element `StateManager` pobiera lub dodaje niezawodny słownik o nazwie `counts`.
-    * Wszystkie interakcje z wartościami w niezawodnym słowniku wymagają transakcji — ta instrukcja using **(2)** tworzy tę transakcję.
-    * W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)**. Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
+   - W pierwszym wierszu metody **(1)** element `StateManager` pobiera lub dodaje niezawodny słownik o nazwie `counts`.
+   - Wszystkie interakcje z wartościami w niezawodnym słowniku wymagają transakcji — ta instrukcja using **(2)** tworzy tę transakcję.
+   - W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)**. Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
 5. Naciśnij klawisz **F5**, aby kontynuować
 
 Aby zatrzymać sesję debugowania, naciśnij klawisze **Shift+F5**.

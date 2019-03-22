@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 82b3349afd10b585a10619229a2bc6d849d71524
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 44ee258567ca357687feb24337f2d5974e2532b0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56247047"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57786451"
 ---
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -36,7 +36,7 @@ az storage account create \
 
 ## <a name="specify-storage-account-credentials"></a>Podawanie poświadczeń konta magazynu
 
-Większość poleceń interfejsu wiersza polecenia platformy Azure zawartych w tym samouczku wymaga poświadczeń do konta magazynu. Dostępnych jest kilka opcji podania tych poświadczeń, ale najprostszy sposób polega na ustawieniu zmiennych środowiskowych `AZURE_STORAGE_ACCOUNT` i `AZURE_STORAGE_ACCESS_KEY`.
+Większość poleceń interfejsu wiersza polecenia platformy Azure zawartych w tym samouczku wymaga poświadczeń do konta magazynu. Dostępnych jest kilka opcji podania tych poświadczeń, ale najprostszy sposób polega na ustawieniu zmiennych środowiskowych `AZURE_STORAGE_ACCOUNT` i `AZURE_STORAGE_KEY`.
 
 Najpierw wyświetl klucze konta magazynu przy użyciu polecenia [az storage account keys list](/cli/azure/storage/account/keys):
 
@@ -47,9 +47,9 @@ az storage account keys list \
     --output table
 ```
 
-Teraz ustaw zmienne środowiskowe `AZURE_STORAGE_ACCOUNT` i `AZURE_STORAGE_ACCESS_KEY`. Możesz to zrobić w powłoce Bash przy użyciu polecenia `export`:
+Teraz ustaw zmienne środowiskowe `AZURE_STORAGE_ACCOUNT` i `AZURE_STORAGE_KEY`. Możesz to zrobić w powłoce Bash przy użyciu polecenia `export`:
 
 ```bash
 export AZURE_STORAGE_ACCOUNT="mystorageaccountname"
-export AZURE_STORAGE_ACCESS_KEY="myStorageAccountKey"
+export AZURE_STORAGE_KEY="myStorageAccountKey"
 ```

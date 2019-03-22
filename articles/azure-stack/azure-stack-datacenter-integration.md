@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/14/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1c21cc778ed398c28077ef1a20ebbb7b295c2baa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207538"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012388"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integracja z centrum danych informacje dotyczące usługi Azure Stack zintegrowane systemy
 Jeśli interesuje Cię to system zintegrowany z usługi Azure Stack, należy zrozumieć główne zagadnienia dotyczące planowania wdrożenia i jak system znajdzie się w centrum danych. Ten artykuł zawiera ogólne omówienie tych zagadnień, aby łatwiej podejmować decyzje dotyczące infrastruktury ważne w systemie Azure Stack wieloma węzłami. Zrozumienie tych zagadnień pomaga podczas pracy z dostawcą sprzętu OEM, zgodnie z ich wdrażanie usługi Azure Stack w swoim centrum danych.  
@@ -162,7 +162,7 @@ W poniższej tabeli przedstawiono listę dostępnych opcji.
 | Obszar | Zewnętrzne rozwiązania do monitorowania |
 | -- | -- |
 | Usługa Azure Stack oprogramowania | [Usługa Azure Stack pakiet administracyjny programu Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Wtyczka Nagios](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>Wywołania interfejsu API opartego na protokole REST | 
-| Serwery fizyczne (kontrolery bmc za pośrednictwem interfejsu IPMI) | Sprzęt OEM — pakiet administracyjny programu Operations Manager dostawcy<br>Rozwiązanie udostępnionych przez dostawcę sprzętu producenta OEM<br>Dostawca sprzętu Nagios wtyczek | Obsługiwany przez producentów OEM partnera — rozwiązanie (dołączony) do monitorowania | 
+| Serwery fizyczne (kontrolery bmc za pośrednictwem interfejsu IPMI) | Sprzęt OEM — pakiet administracyjny programu Operations Manager dostawcy<br>Rozwiązanie udostępnionych przez dostawcę sprzętu producenta OEM<br>Dostawca sprzętu Nagios wtyczek.<br>Obsługiwany przez producentów OEM partnera — rozwiązanie (dołączony) do monitorowania | 
 | Urządzenia sieciowe (SNMP) | Odnajdywanie urządzeń sieciowych programu Operations Manager<br>Rozwiązanie udostępnionych przez dostawcę sprzętu producenta OEM<br>Nagios przełączanie wtyczki |
 | Monitorowanie kondycji subskrypcji dzierżawcy | [Pakiet administracyjny programu System Center dla systemu Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 

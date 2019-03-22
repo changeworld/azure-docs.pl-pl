@@ -10,16 +10,16 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8fede6907b2b5fac475758b1bb8b1493b86ed408
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: a1f1b464b2ac6fc62ea23a80a3887961ebe2d87e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756550"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100726"
 ---
 # <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Samouczek: tworzenie bramy aplikacji hostującej wiele witryn internetowych przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Za pomocą interfejsu wiersza polecenia platformy Azure podczas tworzenia [bramy aplikacji](overview.md) możesz [skonfigurować hostowanie wielu witryn internetowych](multiple-site-overview.md). W tym samouczku zdefiniujesz pule adresów zaplecza przy użyciu zestawów skalowania maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś właścicielem wielu domen, przykładami których są *www.contoso.com* i *www.fabrikam.com*.
+Za pomocą interfejsu wiersza polecenia platformy Azure podczas tworzenia [bramy aplikacji](overview.md) możesz [skonfigurować hostowanie wielu witryn internetowych](multiple-site-overview.md). W tym samouczku zdefiniujesz pule adresów zaplecza przy użyciu zestawów skalowania maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku założono, że posiadasz wiele domen i używa przykłady *www\.contoso.com* i *www\.fabrikam.com*.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -252,7 +252,7 @@ Gdy grupa zasobów, brama aplikacji i wszystkie pokrewne zasoby nie będą już 
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

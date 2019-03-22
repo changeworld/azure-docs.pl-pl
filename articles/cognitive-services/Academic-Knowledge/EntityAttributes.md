@@ -10,16 +10,16 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: accc2803895f3892075cdd9877ca98344ab88bd1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884821"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183496"
 ---
 # <a name="entity-attributes"></a>Atrybuty obiektu:
 
-Interfejs academic graph składa się z 7 typów jednostek. Wszystkie jednostki będą mieć identyfikator jednostki i typu jednostki.
+Interfejs academic graph składa się z 7 typów jednostek. Wszystkie jednostki mają Identyfikatora jednostki i typ jednostki.
 
 ## <a name="common-entity-attributes"></a>Wspólne atrybuty jednostki
 Name (Nazwa)    |Opis                |Type       | Operacje

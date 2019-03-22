@@ -1,19 +1,19 @@
 ---
 title: Wdrażanie szablonu rozwiązania Ansible platformy Azure w systemie CentOS
 description: Dowiedz się, w jaki sposób wdrożyć szablon rozwiązania Ansible na maszynie wirtualnej z systemem CentOS hostowanej na platformie Azure wraz z narzędziami skonfigurowanymi pod kątem pracy na platformie Azure.
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, szablon rozwiązania, maszyna wirtualna, tożsamości zarządzane dla zasobów platformy azure, centos, red hat
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 78fe5211f135b4a4c7d0fd21c66340025ad2d05d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770286"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104220"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Wdrażanie szablonu rozwiązania Ansible platformy Azure w systemie CentOS
 Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożliwić skonfigurowanie wystąpienia rozwiązania Ansible na maszynie wirtualnej z systemem CentOS wraz z rozwiązaniem Ansible oraz zestawem narzędzi skonfigurowanych pod kątem pracy na platformie Azure. Narzędzia te zawierają następujące składniki:
@@ -37,30 +37,30 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
 
 1. Na stronie **Tworzenie rozwiązania Ansible** zostanie wyświetlonych kilka kart. Na karcie **Informacje podstawowe** wprowadź wymagane informacje:
 
-    - **Nazwa** — określ nazwę wystąpienia rozwiązania Ansible. Dla celów demonstracyjnych użyto nazwy `ansiblehost`.
-    - **Nazwa użytkownika** — określ nazwę użytkownika, który będzie mieć dostęp do wystąpienia rozwiązania Ansible. Dla celów demonstracyjnych użyto nazwy `ansibleuser`.
-    - **Typ uwierzytelniania** — wybierz opcję **Hasło** lub **Klucz publiczny SSH**. Dla celów demonstracyjnych wybrano opcję **Klucz publiczny SSH**.
-    - **Hasło** i **Potwierdź hasło** — jeśli wybrano opcję **Hasło** jako **typ uwierzytelniania**, wprowadź hasło dla tych wartości.
-    - **Klucz publiczny SSH** — jeśli wybrano opcję **Klucz publiczny SSH** jako **typ uwierzytelniania**, wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od `ssh-rsa`.
-    - **Subskrypcja** — wybierz z listy rozwijanej subskrypcję platformy Azure.
-    - **Grupa zasobów** — wybierz istniejącą grupę zasobów z listy rozwijanej lub wybierz pozycję **Utwórz nową** i określ nazwę nowej grupy zasobów. Dla celów demonstracyjnych użyto nazwy `ansiblerg` dla nowej grupy zasobów.
-    - **Lokalizacja** — wybierz z listy rozwijanej lokalizację, która jest odpowiednia dla Twojego scenariusza.
+   - **Nazwa** — określ nazwę wystąpienia rozwiązania Ansible. Dla celów demonstracyjnych użyto nazwy `ansiblehost`.
+   - **Nazwa użytkownika** — określ nazwę użytkownika, który będzie mieć dostęp do wystąpienia rozwiązania Ansible. Dla celów demonstracyjnych użyto nazwy `ansibleuser`.
+   - **Typ uwierzytelniania** — wybierz opcję **Hasło** lub **Klucz publiczny SSH**. Dla celów demonstracyjnych wybrano opcję **Klucz publiczny SSH**.
+   - **Hasło** i **Potwierdź hasło** — jeśli wybrano opcję **Hasło** jako **typ uwierzytelniania**, wprowadź hasło dla tych wartości.
+   - **Klucz publiczny SSH** — jeśli wybrano opcję **Klucz publiczny SSH** jako **typ uwierzytelniania**, wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od `ssh-rsa`.
+   - **Subskrypcja** — wybierz z listy rozwijanej subskrypcję platformy Azure.
+   - **Grupa zasobów** — wybierz istniejącą grupę zasobów z listy rozwijanej lub wybierz pozycję **Utwórz nową** i określ nazwę nowej grupy zasobów. Dla celów demonstracyjnych użyto nazwy `ansiblerg` dla nowej grupy zasobów.
+   - **Lokalizacja** — wybierz z listy rozwijanej lokalizację, która jest odpowiednia dla Twojego scenariusza.
 
-    ![Karta podstawowych ustawień rozwiązania Ansible w witrynie Azure Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
+     ![Karta podstawowych ustawień rozwiązania Ansible w witrynie Azure Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
 
 1. Kliknij przycisk **OK**.
 
 1. Na karcie **Ustawienia dodatkowe** wprowadź wymagane informacje:
 
-    - **Rozmiar** — w witrynie Azure Portal domyślnie stosowany jest rozmiar standardowy. Aby określić inny rozmiar, który odpowiada potrzebom konkretnego scenariusza,wybierz ikonę strzałki i wybierz rozmiar z listy.
-    - **Typ dysku maszyny wirtualnej** — wybierz opcję **SSD** (Premium Solid-State Drive) lub **HDD** (Hard Disk Drive). Dla celów demonstracyjnych został wybrany dysk **SSD** z uwagi na lepszą wydajność. Aby uzyskać więcej informacji na temat rodzajów dysków, zobacz następujące artykuły:
-        - [Magazyn Premium Storage o wysokiej wydajności i dyski zarządzane dla maszyn wirtualnych](/azure/virtual-machines/windows/premium-storage)
-        - [Standard SSD Managed Disks for Azure Virtual machine workloads (Dyski zarządzane SSD w warstwie Standardowa dla obciążeń maszyny wirtualnej na platformie Azure)](/azure/virtual-machines/windows/disks-standard-ssd)
-    - **Publiczny adres IP** – skonfiguruj to ustawienie, jeśli chcesz nawiązać komunikację z maszyną wirtualną spoza maszyny wirtualnej. Opcją domyślną jest nowy publiczny adres IP o nazwie `ansible-pip`. Aby określić inny adres IP, wybierz ikonę strzałki i określ atrybuty, takie jak nazwa, SKU oraz Przypisanie dla tego adresu IP. 
-    - **Etykieta nazwy domeny** — wprowadź nazwę domeny publicznej maszyny wirtualnej. Nazwa musi być unikatowa i odpowiadać wymaganiom dotyczącym nazewnictwa. Aby uzyskać więcej informacji na temat nazw maszyn wirtualnych, zobacz [Naming conventions for Azure resources (Konwencja nazewnictwa dla zasobów platformy Azure)](/azure/architecture/best-practices/naming-conventions).
-    - **Wersja rozwiązania Ansible** — określ numer wersji lub wprowadź wartość `latest`, aby wdrożyć najnowszą wersję. Wybierz ikonę informacji obok pola **Wersja rozwiązania Ansible**, aby wyświetlić więcej informacji na temat dostępnych wersji.
+   - **Rozmiar** — w witrynie Azure Portal domyślnie stosowany jest rozmiar standardowy. Aby określić inny rozmiar, który odpowiada potrzebom konkretnego scenariusza,wybierz ikonę strzałki i wybierz rozmiar z listy.
+   - **Typ dysku maszyny wirtualnej** — wybierz opcję **SSD** (Premium Solid-State Drive) lub **HDD** (Hard Disk Drive). Dla celów demonstracyjnych został wybrany dysk **SSD** z uwagi na lepszą wydajność. Aby uzyskać więcej informacji na temat rodzajów dysków, zobacz następujące artykuły:
+       - [Magazyn Premium Storage o wysokiej wydajności i dyski zarządzane dla maszyn wirtualnych](/azure/virtual-machines/windows/premium-storage)
+       - [Standard SSD Managed Disks for Azure Virtual machine workloads (Dyski zarządzane SSD w warstwie Standardowa dla obciążeń maszyny wirtualnej na platformie Azure)](/azure/virtual-machines/windows/disks-standard-ssd)
+   - **Publiczny adres IP** – skonfiguruj to ustawienie, jeśli chcesz nawiązać komunikację z maszyną wirtualną spoza maszyny wirtualnej. Opcją domyślną jest nowy publiczny adres IP o nazwie `ansible-pip`. Aby określić inny adres IP, wybierz ikonę strzałki i określ atrybuty, takie jak nazwa, SKU oraz Przypisanie dla tego adresu IP. 
+   - **Etykieta nazwy domeny** — wprowadź nazwę domeny publicznej maszyny wirtualnej. Nazwa musi być unikatowa i odpowiadać wymaganiom dotyczącym nazewnictwa. Aby uzyskać więcej informacji na temat nazw maszyn wirtualnych, zobacz [Naming conventions for Azure resources (Konwencja nazewnictwa dla zasobów platformy Azure)](/azure/architecture/best-practices/naming-conventions).
+   - **Wersja rozwiązania Ansible** — określ numer wersji lub wprowadź wartość `latest`, aby wdrożyć najnowszą wersję. Wybierz ikonę informacji obok pola **Wersja rozwiązania Ansible**, aby wyświetlić więcej informacji na temat dostępnych wersji.
 
-    ![Karta dodatkowych ustawień rozwiązania Ansible w witrynie Azure Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
+     ![Karta dodatkowych ustawień rozwiązania Ansible w witrynie Azure Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
 
 1. Kliknij przycisk **OK**.
 
@@ -72,7 +72,7 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
 
 1. Na stronie **Podsumowanie** jest wyświetlony proces weryfikacji oraz lista określonych kryteriów dotyczących wdrożenia rozwiązania Ansible. Link u dołu karty umożliwia **pobranie szablonu i parametrów**, których można używać z obsługiwanymi językami i platformami na platformie Azure. 
 
-    ![Karta Podsumowanie rozwiązania Ansible w witrynie Azure Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
+     ![Karta Podsumowanie rozwiązania Ansible w witrynie Azure Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
 
 1. Kliknij przycisk **OK**.
 
@@ -80,10 +80,10 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
 
 1. Wybierz ikonę **Powiadomienia** w górnej części strony portalu, aby śledzić proces wdrażania rozwiązania Ansible. Po zakończeniu wdrażania wybierz pozycję **Przejdź do grupy zasobów**. 
 
-    ![Karta Podsumowanie rozwiązania Ansible w witrynie Azure Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
+     ![Karta Podsumowanie rozwiązania Ansible w witrynie Azure Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
 
 1. Na stronie grupy zasobów sprawdź adres IP Twojego hosta rozwiązania Ansible i zaloguj się, aby zarządzać zasobami platformy Azure przy użyciu rozwiązania Ansible.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure za pomocą rozwiązania Ansible](/azure/virtual-machines/linux/ansible-create-vm)

@@ -4,16 +4,16 @@ ms.service: azure
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
-ms.openlocfilehash: d8e7aa87deaa37f6a2e2eef572b6b7f6140e3fee
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.openlocfilehash: 05d20a701b448f8986292400fa2844d20f928a70
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572516"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261446"
 ---
 ## <a name="open-azure-cloud-shell"></a>Otwieranie usługi Azure Cloud Shell
 
-Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Typowe narzędzia platformy Azure są wstępnie zainstalowane i skonfigurowane w usłudze Cloud Shell na potrzeby użycia z poziomu konta. Po prostu wybierz przycisk **Kopiuj**, aby skopiować kod, wklej go do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby go uruchomić. Usługę Cloud Shell można otworzyć na kilka sposobów:
+Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Typowe narzędzia platformy Azure są wstępnie zainstalowane i skonfigurowane w usłudze Cloud Shell na potrzeby użycia z poziomu konta. Wybierz **kopiowania** będzie skopiować kod, wklej go w usłudze Cloud Shell, i naciśnij klawisz Enter, aby go uruchomić. Usługę Cloud Shell można otworzyć na kilka sposobów:
 
 |  |   |
 |-----------------------------------------------|---|

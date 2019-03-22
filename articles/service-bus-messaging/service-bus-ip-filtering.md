@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a8d29e7cae20c37adfeccaef01e1625b6ab3e0d0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852684"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136297"
 ---
 # <a name="use-firewall-rules"></a>Użyj reguł zapory
 
@@ -60,7 +60,7 @@ Reguły filtrowania adresów IP są stosowane w kolejności i pierwszej reguły,
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie wirtualnej sieci i reguła zapory przy użyciu szablonów usługi Azure Resource Manager
 
 > [!IMPORTANT]
-> Sieci wirtualne są obsługiwane tylko w **premium** warstwy usługi Service Bus.
+> Zapory i sieci wirtualne są obsługiwane tylko w **premium** warstwy usługi Service Bus.
 
 Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci wirtualnej do istniejącej przestrzeni nazw usługi Service Bus.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 831b17eefb971a5ed617e5cb30730ce23c87e374
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3e5d1546c658631911f25c43e94275f00c7a5140
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340462"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901886"
 ---
 # <a name="set-up-security-info-preview-to-use-security-questions"></a>Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) na użycie tych pytań zabezpieczających
 Można wykonaj następujące kroki, aby dodać metodę resetowania hasła. Po skonfigurowaniu to po raz pierwszy, można powrócić do **zabezpieczające** strony Dodawanie, aktualizowanie lub usuwanie informacji zabezpieczających.
@@ -31,10 +31,12 @@ W zależności od ustawień organizacji można wybrać i Odpowiedz na kilka pyta
 
 Jeśli używasz pytań zabezpieczających, firma Microsoft zaleca używanie ich razem z innej metody. Pytania zabezpieczeń może być mniej bezpieczne niż inne metody, ponieważ niektóre osoby mogą znać odpowiedzi na pytania.
 
->[!Note]
->Pytania zabezpieczające są przechowywane przez użytkowników i bezpiecznie w obiekcie użytkownika w katalogu, a tylko można uzyskać przez użytkownika podczas rejestracji. Nie ma możliwości dla administratora odczytać lub zmodyfikować swoje pytania lub odpowiedzi.
-
->Jeśli nie widzisz opcji pytania zabezpieczeń, jest to możliwe, że Twoja organizacja nie zezwala na użycie tych pytań zabezpieczających podczas weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+> [!Note]
+> Pytania zabezpieczające są przechowywane przez użytkowników i bezpiecznie w obiekcie użytkownika w katalogu, a tylko można uzyskać przez użytkownika podczas rejestracji. Nie ma możliwości dla administratora odczytać lub zmodyfikować swoje pytania lub odpowiedzi.
+> 
+> Jeśli nie widzisz opcji pytania zabezpieczeń, jest to możliwe, że Twoja organizacja nie zezwala na użycie tych pytań zabezpieczających podczas weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+> 
+> Konto administratora nie są dozwolone na użycie tych pytań zabezpieczających jako metody resetowania hasła. Jeśli zalogowano Cię jako administratora konta poziomu nie zobaczą te opcje.
 
 ### <a name="to-set-up-your-security-questions"></a>Aby skonfigurować pytania zabezpieczające
 

@@ -18,12 +18,12 @@ ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f7765b775706d3bdf09176bc4bfbf18533d054
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 57b7f540ccf80c6d25a7dfcfcad1ba7ca6698167
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441310"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113235"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj zatwierdzonych aplikacji klienckich w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego 
 
@@ -292,13 +292,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 5. Jako **kontrole dostępu**, musisz mieć następujące wybrane:
 
-    - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
+   - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
 
-    - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
+   - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
 
-    - **Wymagaj jednej z wybranych kontrolek**   
+   - **Wymagaj jednej z wybranych kontrolek**   
  
-    ![Dostęp warunkowy](./media/app-based-conditional-access/11.png)
+     ![Dostęp warunkowy](./media/app-based-conditional-access/11.png)
 
 
 
@@ -388,13 +388,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 5. Jako **kontrole dostępu**, musisz mieć następujące wybrane:
 
-    - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
+   - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
 
-    - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
+   - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
 
-    - **Wymagaj wszystkich wybranych kontrolek**   
+   - **Wymagaj wszystkich wybranych kontrolek**   
  
-    ![Dostęp warunkowy](./media/app-based-conditional-access/13.png)
+     ![Dostęp warunkowy](./media/app-based-conditional-access/13.png)
 
 
 
@@ -420,13 +420,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 5. Jako **kontrole dostępu**, musisz mieć następujące wybrane:
 
-    - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
+   - **Wymagaj, aby urządzenie było oznaczone jako zgodne**
 
-    - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
+   - **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)**
 
-    - **Wymagaj wszystkich wybranych kontrolek**   
+   - **Wymagaj wszystkich wybranych kontrolek**   
  
-    ![Dostęp warunkowy](./media/app-based-conditional-access/64.png)
+     ![Dostęp warunkowy](./media/app-based-conditional-access/64.png)
 
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: ab99116cabc14c70698a962c803adb87394e1796
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651108"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100074"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączanie do usługi Azure Security Center w warstwie standardowa celu uzyskania zwiększonych zabezpieczeń
 Uaktualnij do standardowej usługi Security Center z zalet zarządzania zwiększone zabezpieczenia i ochrona przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz spróbować standardowa jest bezpłatna. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
@@ -65,11 +65,11 @@ Usługa Security Center może monitorować stan bezpieczeństwa komputerów nien
 1. Wróć do **wprowadzenie**.   
 2. Wybierz kartę **Rozpoczęcie pracy**.
 
-  ![Poza platformą Azure](./media/security-center-onboarding/non-azure.png)
+   ![Poza platformą Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**. Zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 
-  ![Dodawanie komputera spoza platformy Azure][7]
+   ![Dodawanie komputera spoza platformy Azure][7]
 
 W przypadku istniejących obszarów roboczych są wymienione w obszarze **dodać nowe komputery spoza platformy Azure**. Możesz dodać komputery do istniejącego obszaru roboczego, lub Utwórz nowy obszar roboczy. Aby utworzyć nowy obszar roboczy, wybierz link **Dodaj nowy obszar roboczy**.
 
@@ -82,8 +82,8 @@ W przypadku istniejących obszarów roboczych są wymienione w obszarze **dodać
    ![Dodaj nowy obszar roboczy][4]
 
 2. W obszarze **zabezpieczenia i inspekcja**, wybierz opcję **obszaru roboczego pakietu OMS** Aby utworzyć nowy obszar roboczy.
-> [!NOTE]
-> Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.
+   > [!NOTE]
+   > Obszary robocze OMS są teraz nazywane obszarami roboczymi usługi Log Analytics.
 3. W obszarze **obszaru roboczego pakietu OMS**, wprowadź informacje o obszarze roboczym.
 4. W obszarze **obszaru roboczego pakietu OMS**, wybierz opcję **OK**.  Po wybraniu przycisku OK otrzymasz link pobierania agenta Windows lub Linux i kluczami identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.
 5. W obszarze **zabezpieczenia i inspekcja**, wybierz opcję **OK**.
@@ -105,7 +105,7 @@ Możesz dodać komputer, postępując zgodnie z przepływu pracy od **dołączan
 
    ![Dodawanie komputerów][7]
 
- **Agent bezpośredni** blok zawiera również link do pobierania agenta Windows lub Linux, a także identyfikator obszaru roboczego i klucze do użycia podczas konfigurowania agenta.   
+   **Agent bezpośredni** blok zawiera również link do pobierania agenta Windows lub Linux, a także identyfikator obszaru roboczego i klucze do użycia podczas konfigurowania agenta.   
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule pokazano, jak dołączyć platformy Azure i zasobów nienależących do platformy Azure, aby można było korzystać z zaawansowanych zabezpieczeń w Centrum zabezpieczeń.  Aby robić więcej przy użyciu zasobów dołączone, zobacz

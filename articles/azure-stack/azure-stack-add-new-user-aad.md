@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 40b26429cf4e7f218c2b5a276ae936f60bd6abe4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d7dc690f719dd9265317b2bba3b87521e9a00d6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453239"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106580"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Dodaj nowe konto dzierżawy usługi Azure Stack w usłudze Azure Active Directory
 
@@ -41,11 +41,11 @@ Musisz mieć subskrypcję platformy Azure za pomocą witryny Azure portal.
 
     ![Dodawanie nowego użytkownika, strona użytkownika o informacje o użytkowniku](media/azure-stack-add-new-user-aad/new-user-user.png)
 
-    - **Nazwa (wymagane).** Imię i nazwisko nowego użytkownika. Na przykład Joanna Parker.
-    - **Nazwa użytkownika (wymagane).** Nazwa użytkownika nowego użytkownika. Na przykład mary@contoso.com.
-        Składowa domeny nazwa użytkownika, należy użyć albo nazwa wstępnej domyślnej domeny, <_NazwaDomeny_>. onmicrosoft.com lub niestandardową nazwę domeny, taką jak contoso.com. Aby uzyskać więcej informacji na temat tworzenia niestandardowej nazwy domeny, zobacz [sposób dodawania niestandardowej nazwy domeny do usługi Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
-    - **Profil.** Opcjonalnie można dodać więcej informacji o użytkowniku. Można również dodać informacje o użytkowniku w późniejszym czasie. Aby uzyskać więcej informacji na temat dodawania informacji o użytkowniku, zobacz [jak dodać lub zmienić informacje o profilu użytkownika](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
-    - **Rola katalogu.**  Wybierz **użytkownika**.
+   - **Nazwa (wymagane).** Imię i nazwisko nowego użytkownika. Na przykład Joanna Parker.
+   - **Nazwa użytkownika (wymagane).** Nazwa użytkownika nowego użytkownika. Na przykład mary@contoso.com.
+       Składowa domeny nazwa użytkownika, należy użyć albo nazwa wstępnej domyślnej domeny, <_NazwaDomeny_>. onmicrosoft.com lub niestandardową nazwę domeny, taką jak contoso.com. Aby uzyskać więcej informacji na temat tworzenia niestandardowej nazwy domeny, zobacz [sposób dodawania niestandardowej nazwy domeny do usługi Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
+   - **Profil.** Opcjonalnie można dodać więcej informacji o użytkowniku. Można również dodać informacje o użytkowniku w późniejszym czasie. Aby uzyskać więcej informacji na temat dodawania informacji o użytkowniku, zobacz [jak dodać lub zmienić informacje o profilu użytkownika](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+   - **Rola katalogu.**  Wybierz **użytkownika**.
 
 5. Sprawdź **Pokaż hasło** i skopiuj hasło wygenerowane automatycznie w **hasło** pole. To hasło będzie potrzebne dla początkowego procesu logowania.
 

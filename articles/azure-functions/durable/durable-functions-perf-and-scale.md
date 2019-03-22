@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 170f20ae65a8ba58291a630dc76496cbdcdb36de
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138120"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286384"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie do wewnątrz funkcje trwałe (usługi Azure Functions)
 
@@ -60,7 +60,7 @@ Opóźnienie maksymalna sondowania jest można konfigurować za pomocą `maxQueu
 
 ## <a name="storage-account-selection"></a>Wybór konta magazynu
 
-Kolejek, tabel i obiektów blob używanych przez funkcje trwałe są tworzone przez skonfigurowanym koncie magazynu platformy Azure. Można określić konto do użycia przy użyciu `durableTask/azureStorageConnectionStringName` w **host.json** pliku.
+Kolejek, tabel i obiektów blob używanych przez funkcje trwałe są tworzone w ramach skonfigurowanego konta magazynu platformy Azure. Można określić konto do użycia przy użyciu `durableTask/azureStorageConnectionStringName` w **host.json** pliku.
 
 ### <a name="functions-1x"></a>Functions w wersji 1.x
 

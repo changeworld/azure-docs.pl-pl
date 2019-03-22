@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: a8c3bc7a3a659809f1602ffae303f9bd26f2c35a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: aafa115ee1e270b903e958e5b43826dfb4ff8bdb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857787"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435233"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Łączenie z interfejsem API rozpoznawania twarzy usług Cognitive Services za pomocą usług połączonych w programie Visual Studio
 
@@ -79,7 +79,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
       }
    ```
 
-1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Na potrzeby przykładu możesz użyć jednego z obrazów na tej [stronie interfejsu API rozpoznawania twarzy](https://azure.microsoft.com/services/cognitive-services/face/). Kliknij prawym przyciskiem myszy jeden z obrazów, zapisz go na lokalnym dysku twardym, a następnie w Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder images i wybierz polecenie **Dodaj** > **Istniejący element**, aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego:
+1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Na potrzeby przykładu możesz użyć jednego z obrazów na tej [stronie interfejsu API rozpoznawania twarzy](https://azure.microsoft.com/services/cognitive-services/face/). Kliknij prawym przyciskiem myszy na jeden z obrazów, Zapisz na lokalnym dysku twardym, a następnie w oknie Eksploratora rozwiązań, kliknij prawym przyciskiem myszy na folder Obrazy i wybierz **Dodaj** > **istniejący element** Aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego:
  
    ![Folder images z plikiem obrazu](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -243,6 +243,6 @@ Gdy grupa zasobów nie jest już potrzebna, usuń ją. Spowoduje to usunięcie u
 1. Wybierz pozycję **Usuń grupę zasobów**.
 1. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wpisz nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat interfejsu API rozpoznawania twarzy, czytając [dokumentację interfejsu API rozpoznawania twarzy](Overview.md).

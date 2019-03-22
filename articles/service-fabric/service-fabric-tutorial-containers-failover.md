@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: HT
+ms.openlocfilehash: f5ac1c53a97fc2a3749582c5f48b967e3ce0c2c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104271"
 ---
-# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Samouczek: omówienie trybu failover i skalowania usług kontenera za pomocą usługi Service Fabric
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Samouczek: Pokaz niepowodzenia ponad i skalowania usług kontenera za pomocą usługi Service Fabric
 
 Ten samouczek jest trzecią częścią serii. Korzystając z tego samouczka, dowiesz się, jak obsługiwany jest tryb failover w aplikacjach kontenera usługi Service Fabric. Poznasz również sposób skalowania kontenerów. W tym samouczku zostały wykonane następujące czynności:
 
@@ -63,8 +63,8 @@ Aby skalować fronton internetowy, wykonaj następujące czynności:
 
 Teraz możesz skalować liczbę wystąpień frontonu internetowego.
 
-3. Zmień liczbę na **2** i kliknij pozycję **Skaluj usługę**.
-4. Kliknij węzeł **fabric:/TestContainer/azurevotefront** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID).
+1. Zmień liczbę na **2** i kliknij pozycję **Skaluj usługę**.
+1. Kliknij węzeł **fabric:/TestContainer/azurevotefront** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID).
 
 ![sfxscaledone][sfxscaledone]
 

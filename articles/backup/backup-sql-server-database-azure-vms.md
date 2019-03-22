@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 75e85ae15ded81faf372ba018829a185e8badd60
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224621"
+ms.locfileid: "58285075"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -31,9 +31,9 @@ W tym artykule pokazano, jak utworzyć kopię zapasową bazy danych programu SQL
 
 Przed utworzeniem kopii zapasowej bazy danych programu SQL Server sprawdź następujące warunki:
 
-1. Identyfikowanie lub [tworzenie](backup-azure-sql-database.md#create-a-recovery-services-vault) magazyn usługi Recovery Services, w tym samym regionie lub ustawień regionalnych jako maszyny Wirtualnej obsługującego wystąpienie programu SQL Server.
-2. [Sprawdź uprawnienia maszyny wirtualnej](#fix-sql-sysadmin-permissions) potrzebne do tworzenia kopii zapasowych baz danych SQL.
-3. Sprawdź, czy maszyna wirtualna ma [połączenie sieciowe](backup-azure-sql-database.md#establish-network-connectivity).
+1. Identyfikowanie lub [tworzenie](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) magazyn usługi Recovery Services, w tym samym regionie lub ustawień regionalnych jako maszyny Wirtualnej obsługującego wystąpienie programu SQL Server.
+2. [Sprawdź uprawnienia maszyny wirtualnej](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) potrzebne do tworzenia kopii zapasowych baz danych SQL.
+3. Sprawdź, czy maszyna wirtualna ma [połączenie sieciowe](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 4. Sprawdź, czy bazy danych programu SQL Server są nazwane zgodnie ze [wskazówkami dotyczącymi nazewnictwa](#verify-database-naming-guidelines-for-azure-backup) dla usługi Azure Backup.
 5. Sprawdź, czy dla bazy danych nie są włączone inne rozwiązania do tworzenia kopii zapasowych. Wyłącz wszystkie inne kopie zapasowe programu SQL Server przed skonfigurowaniem tego scenariusza. Możesz bez konfliktów włączyć usługę Azure Backup dla maszyny wirtualnej platformy Azure razem z usługą Azure Backup dla bazy danych programu SQL Server uruchomioną na tej maszynie wirtualnej.
 
@@ -60,7 +60,7 @@ Usługa Azure Backup wykonuje różne operacje podczas konfigurowania kopii zapa
 - Aby odnaleźć bazy danych na maszynie wirtualnej, usługa Azure Backup tworzy konto **NT SERVICE\AzureWLBackupPluginSvc**. To konto służy do tworzenia kopii zapasowych i przywracania oraz wymaga uprawnień administratora systemu SQL.
 - Usługa Azure Backup korzysta z konta **NT AUTHORITY\SYSTEM** na potrzeby odnajdywania/zapytań dotyczących bazy danych, dlatego to konto musi być publicznym logowaniem w środowisku SQL.
 
-Jeśli nie utworzono maszyny wirtualnej programu SQL Server z witryny Azure Marketplace, może wystąpić błąd **UserErrorSQLNoSysadminMembership**. W takim przypadku [wykonaj te instrukcje](#fix-sql-sysadmin-permissions).
+Jeśli nie utworzono maszyny wirtualnej programu SQL Server z witryny Azure Marketplace, może wystąpić błąd **UserErrorSQLNoSysadminMembership**. W takim przypadku [wykonaj te instrukcje](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Wskazówki dotyczące weryfikowania nazewnictwa baz danych dla usługi Azure Backup
 

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 12/4/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: e61975d81fd5920feb5fd47845c67d0aa5293ae6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962015"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093426"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Szybki start: tworzenie strefy i rekordu usługi Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -38,20 +38,20 @@ az group create --name MyResourceGroup --location "East US"
 
 Do tworzenia strefy DNS służy polecenie `az network dns zone create`. Aby wyświetlić pomoc dla tego polecenia, wpisz `az network dns zone create -h`.
 
-Poniższy przykład obejmuje tworzenie strefy DNS o nazwie *contoso.com* w grupie zasobów o nazwie *MyResourceGroup*. Skorzystaj z tego przykładu, aby utworzyć strefę DNS, podstawiając własne wartości.
+Poniższy przykład tworzy strefę DNS o nazwie *contoso.xyz* w grupie zasobów *MyResourceGroup*. Skorzystaj z tego przykładu, aby utworzyć strefę DNS, podstawiając własne wartości.
 
 ```azurecli
-az network dns zone create -g MyResourceGroup -n contoso.com
+az network dns zone create -g MyResourceGroup -n contoso.xyz
 ```
 
 ## <a name="create-a-dns-record"></a>Tworzenie rekordu DNS
 
 Aby utworzyć rekord DNS, użyj polecenia `az network dns record-set [record type] add-record`. Aby uzyskać pomoc dotyczącą rekordów A, zobacz `azure network dns record-set A add-record -h`.
 
-W poniższym przykładzie tworzony jest rekord o nazwie względnej „www” w strefie DNS „contoso.com” w grupie zasobów „MyResourceGroup”. W pełni kwalifikowaną nazwą zestawu rekordów jest „www.contoso.com”. Typ rekordu to „A” z adresem IP „1.2.3.4”, domyślny czas wygaśnięcia to 3600 sekund (1 godzina).
+Poniższy przykład tworzy rekord o nazwie względnej "www" w strefie DNS "contoso.xyz" w grupie zasobów "MyResourceGroup". W pełni kwalifikowaną nazwą zestawu rekordów jest "www.contoso.xyz". Typ rekordu to "A" z adresem IP "10.10.10.10" i jako domyślny czas wygaśnięcia 3600 sekund (1 godzina).
 
 ```azurecli
-az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
+az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
 ```
 
 ## <a name="view-records"></a>Wyświetlanie rekordów
@@ -59,41 +59,43 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 Aby wyświetlić listę rekordów DNS w strefie, uruchom polecenie:
 
 ```azurecli
-az network dns record-set list -g MyResourceGroup -z contoso.com
+az network dns record-set list -g MyResourceGroup -z contoso.xyz
 ```
 
-## <a name="update-name-servers"></a>Aktualizowanie serwerów nazw
+## <a name="test-the-name-resolution"></a>Testowanie rozpoznawania nazw
 
-Po poprawnym skonfigurowaniu strefy i rekordów DNS należy skonfigurować nazwę domeny w celu użycia serwerów nazw usługi Azure DNS, co umożliwi innych użytkownikom w Internecie odnalezienie Twoich rekordów DNS.
+Po utworzeniu testowej strefy DNS z rekordem „A” możesz przetestować rozpoznawanie nazw za pomocą narzędzia o nazwie *nslookup*. 
 
-Serwery nazw dla strefy można wyświetlić za pomocą polecenia `az network dns zone show`. Aby wyświetlić nazwy serwerów nazw, należy użyć danych wyjściowych JSON, jak pokazano w poniższym przykładzie.
+**Aby przetestować rozpoznawanie nazw DNS:**
 
-```azurecli
-az network dns zone show -g MyResourceGroup -n contoso.com -o json
+1. Uruchom następujące polecenie cmdlet, aby uzyskać listę serwerów nazw dla strefy:
 
-{
-  "etag": "00000003-0000-0000-b40d-0996b97ed101",
-  "id": "/subscriptions/a385a691-bd93-41b0-8084-8213ebc5bff7/resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com",
-  "location": "global",
-  "maxNumberOfRecordSets": 5000,
-  "name": "contoso.com",
-  "nameServers": [
-    "ns1-01.azure-dns.com.",
-    "ns2-01.azure-dns.net.",
-    "ns3-01.azure-dns.org.",
-    "ns4-01.azure-dns.info."
-  ],
-  "numberOfRecordSets": 3,
-  "resourceGroup": "myresourcegroup",
-  "tags": {},
-  "type": "Microsoft.Network/dnszones"
-}
-```
+   ```azurecli
+   az network dns record-set ns show --resource-group MyResourceGroup --zone-name contoso.xyz --name @
+   ```
 
-Te serwery nazw powinny zostać skonfigurowane u rejestratora nazw domen (w miejscu zakupu nazwy domeny). Rejestrator zaoferuje opcję skonfigurowania serwerów nazw na potrzeby domeny. Więcej informacji znajduje się artykule [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
+1. Skopiuj jeden z nazw serwerów nazw z danych wyjściowych poprzedniego kroku.
+
+1. Otwórz wiersz polecenia i uruchom następujące polecenie:
+
+   ```
+   nslookup www.contoso.xyz <name server name>
+   ```
+
+   Na przykład:
+
+   ```
+   nslookup www.contoso.xyz ns1-08.azure-dns.com.
+   ```
+
+   Powinna zostać wyświetlona treść podobna do tej na następującym ekranie:
+
+   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+
+Nazwa hosta **www\.contoso.xyz** jest rozpoznawana jako **10.10.10.10**tak samo jak został skonfigurowany. Taki wynik potwierdza, że rozpoznawanie nazw działa poprawnie.
 
 ## <a name="delete-all-resources"></a>Usuwanie wszystkich zasobów
- 
+
 Jeśli zasoby utworzone w tym przewodniku Szybki start nie są już potrzebne, możesz je usunąć, usuwając grupę zasobów:
 
 ```azurecli

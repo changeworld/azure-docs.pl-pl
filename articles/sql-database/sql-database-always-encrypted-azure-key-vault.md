@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 27d25c0b7007489dbb3db3b44497268ad33e9b37
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: bcda6ac723101d6a907a10c5163ae1baf0ad2214
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309846"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884175"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
 
@@ -39,6 +39,8 @@ Wykonaj kroki opisane w tym artykule i Dowiedz się, jak skonfigurować Always E
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 W tym samouczku będą potrzebne:
 
@@ -609,7 +611,7 @@ Aby zobaczyć, że zaszyfrowanych kolumn nie zawierają żadnych danych w postac
 
    ![Nową aplikację konsoli](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Aby uzyskać dostęp do danych w postaci zwykłego tekstu za pomocą programu SSMS, najpierw należy upewnić się, że użytkownik ma odpowiednie uprawnienia w usłudze Azure Key Vault: *uzyskać*, *unwrapKey*, i *Sprawdź*. Aby uzyskać szczegółowe informacje, zobacz [tworzenie i klucz główny kolumny Store (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017).
+Aby uzyskać dostęp do danych w postaci zwykłego tekstu za pomocą programu SSMS, najpierw należy upewnić się, że użytkownik ma odpowiednie uprawnienia w usłudze Azure Key Vault: *uzyskać*, *unwrapKey*, i *Sprawdź*. Aby uzyskać szczegółowe informacje, zobacz [tworzenie i klucz główny kolumny Store (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Następnie dodaj *ustawienie szyfrowania kolumny = włączone* parametru podczas połączenia.
 

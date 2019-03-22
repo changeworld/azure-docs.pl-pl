@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e8a28634e554ee75eea79e69c0b73e8adec3447
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fa406ac2f1e0b89a1161660a49f2a4cb6f6d6c32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700540"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117323"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure native: Azure Portal
 
@@ -94,17 +94,17 @@ Pula adresów klienta to określony przez Ciebie zakres prywatnych adresów IP. 
 
 1. Po utworzeniu bramy sieci wirtualnej przejdź do sekcji **Ustawienia** na stronie bramy sieci wirtualnej. W sekcji **Ustawienia** kliknij pozycję **Konfiguracja punktu do lokacji**.
 
-  ![Strona połączenia typu punkt-lokacja](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
+   ![Strona połączenia typu punkt-lokacja](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
 2. Kliknij pozycję **Skonfiguruj teraz**, aby otworzyć stronę konfiguracji.
 
-  ![Skonfiguruj teraz](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
+   ![Skonfiguruj teraz](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
 3. Na stronie konfiguracja połączenia **Punkt-lokacja** w polu **Pula adresów** dodaj zakres prywatnych adresów IP, z którego chcesz korzystać. Klienci sieci VPN dynamicznie otrzymują adres IP z określonego zakresu. Kliknij pozycję **Zapisz**, aby zweryfikować i zapisać ustawienie.
 
-  ![Pula adresów klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+   ![Pula adresów klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
-  >[!NOTE]
-  >Jeśli na tej stronie w portalu nie widzisz typu tunelu lub typu uwierzytelniania, brama korzysta z podstawowej jednostki SKU. Podstawowa jednostka SKU nie obsługuje uwierzytelniania za pomocą protokołu IKEv2 ani usługi RADIUS.
-  >
+   >[!NOTE]
+   >Jeśli na tej stronie w portalu nie widzisz typu tunelu lub typu uwierzytelniania, brama korzysta z podstawowej jednostki SKU. Podstawowa jednostka SKU nie obsługuje uwierzytelniania za pomocą protokołu IKEv2 ani usługi RADIUS.
+   >
 
 ## <a name="tunneltype"></a>7. Konfigurowanie typu tunelu
 
@@ -126,13 +126,13 @@ Możesz przekazać łącznie do 20 zaufanych certyfikatów głównych. Po przeka
 2. Upewnij się, że certyfikat główny został wyeksportowany jako plik X.509 (cer) zaszyfrowany z użyciem algorytmu Base-64. Certyfikat należy wyeksportować w takim formacie, aby możliwe było jego otwarcie za pomocą edytora tekstów.
 3. Otwórz certyfikat za pomocą edytora tekstów, takiego jak Notatnik. Podczas kopiowania danych dotyczących certyfikatu upewnij się, że kopiujesz tekst jako jeden ciągły wiersz bez znaków powrotu karetki i wysuwu wiersza. Może zajść potrzeba zmodyfikowania widoku w edytorze tekstu na potrzeby pokazywania symboli lub pokazywania wszystkich znaków, aby wyświetlić znaki powrotu karetki i wysuwu wiersza. Skopiuj tylko następującą sekcję jako jeden ciągły wiersz:
 
-  ![Dane dotyczące certyfikatu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
+   ![Dane dotyczące certyfikatu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
 4. Wklej dane dotyczące certyfikatu w polu **Dane certyfikatu publicznego**. Korzystając z pola **Nazwa**, określ nazwę certyfikatu, a następnie kliknij przycisk **Zapisz**. Możesz dodać maksymalnie 20 zaufanych certyfikatów głównych.
 
-  ![Przekazywanie certyfikatu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
+   ![Przekazywanie certyfikatu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
 5. Kliknij przycisk **Zapisz** znajdujący się u góry strony, aby zapisać wszystkie ustawienia konfiguracji.
 
-  ![Zapisz](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
+   ![Zapisz](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
 ## <a name="installclientcert"></a>10. Instalowanie wyeksportowanego certyfikatu klienta
 
@@ -159,10 +159,10 @@ Pliki konfiguracji klienta sieci VPN zawierają ustawienia do konfigurowania urz
 
 2. Na stronie stanu **Połączenie** kliknij przycisk **Połącz**, aby rozpocząć połączenie. Jeśli widzisz ekran **Wybierz certyfikat**, sprawdź, czy wyświetlany certyfikat klienta to ten, który ma zostać użyty do nawiązania połączenia. Jeśli nie, kliknij strzałkę na liście rozwijanej, aby wybrać właściwy certyfikat, a następnie kliknij przycisk **OK**.
 
-  ![Łączenie klienta sieci VPN z platformą Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
+   ![Łączenie klienta sieci VPN z platformą Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
 3. Połączenie zostało ustanowione.
 
-  ![Ustanowiono połączenie](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
+   ![Ustanowiono połączenie](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
 
 #### <a name="troubleshoot-windows-p2s-connections"></a>Rozwiązywanie problemów z połączeniami punkt-lokacja w systemie Windows
 
@@ -183,8 +183,8 @@ Te instrukcje dotyczą klientów w systemie Windows.
 1. Aby sprawdzić, czy połączenie sieci VPN jest aktywne, otwórz wiersz polecenia z podwyższonym poziomem uprawnień, a następnie uruchom polecenie *ipconfig/all*.
 2. Przejrzyj wyniki. Zwróć uwagę na fakt, że otrzymany adres IP należy do określonej podczas konfiguracji połączenia punkt-lokacja puli adresów klienta sieci VPN. Wyniki są podobne, jak w następującym przykładzie:
 
-  ```
-  PPP adapter VNet1:
+   ```
+   PPP adapter VNet1:
       Connection-specific DNS Suffix .:
       Description.....................: VNet1
       Physical Address................:
@@ -194,7 +194,7 @@ Te instrukcje dotyczą klientów w systemie Windows.
       Subnet Mask.....................: 255.255.255.255
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 ## <a name="connectVM"></a>Nawiązywanie połączenia z maszyną wirtualną
 

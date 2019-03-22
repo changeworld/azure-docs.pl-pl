@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/05/2019
-ms.openlocfilehash: aa089ed53554ec697bd9430cc95a7cce78aabed2
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.date: 03/12/2019
+ms.openlocfilehash: fb1d724907c09e2eb77930f5a235336ca8cd3a25
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411529"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886851"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Jak uruchomić zadania usługi Azure Stream Analytics
 
@@ -23,7 +23,7 @@ Można uruchomić zadania usługi Azure Stream Analytics przy użyciu witryny Az
 
 Przejdź do zadania w witrynie Azure portal i wybierz pozycję **Start** na stronie Przegląd. Wybierz **czas rozpoczęcia dane wyjściowe zadania** , a następnie wybierz **Start**.
 
-Dostępne są trzy opcje **czas rozpoczęcia dane wyjściowe zadania**: *Teraz*, *niestandardowe*, i *ostatnio zatrzymane*. Wybieranie *teraz* uruchamia zadanie w danej chwili. Wybieranie *niestandardowe* pozwala ustawić niestandardowy czas w przeszłości lub w przyszłości dla zadania rozpocząć. Aby wznowić zatrzymane zadanie bez utraty danych, należy wybrać. Ostatnio zatrzymane *.
+Dostępne są trzy opcje **czas rozpoczęcia dane wyjściowe zadania**: *Teraz*, *niestandardowe*, i *ostatnio zatrzymane*. Wybieranie *teraz* uruchamia zadanie w danej chwili. Wybieranie *niestandardowe* pozwala ustawić niestandardowy czas w przeszłości lub w przyszłości dla zadania rozpocząć. Aby wznowić zatrzymane zadanie bez utraty danych, wybierz opcję *ostatnio zatrzymane*.
 
 ## <a name="visual-studio"></a>Visual Studio
 
@@ -56,7 +56,7 @@ Dostępne są trzy opcje **OutputStartMode**: *JobStartTime*, *CustomTime*, i *L
 
 *LastOutputEventTime* sprawia, że punktem początkowym dane wyjściowe strumienia zdarzeń, taka sama jak ostatnie zdarzenie godzina generowania danych wyjściowych.
 
-Aby uzyskać więcej informacji na temat `Start-AzStreamAnalyitcsJob` polecenia cmdlet widoku [odwołania Start AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob.md).
+Aby uzyskać więcej informacji na temat `Start-AzStreamAnalyitcsJob` polecenia cmdlet widoku [odwołania Start AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

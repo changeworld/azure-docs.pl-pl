@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9361c8b17d1b43b4ef63aca6ab4660571efddcde
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: a40619000998d7222781094db2829aabcc6a7fb2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492806"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100772"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Samouczek: Wdrażanie rozszerzeń maszyny wirtualnej przy użyciu szablonów usługi Azure Resource Manager
 
@@ -68,13 +68,13 @@ Szablony szybkiego startu platformy Azure to repozytorium szablonów usługi Res
 1. Wybierz pozycję **Otwórz**, aby otworzyć plik.  
     Szablon definiuje pięć zasobów:
 
-    * **Microsoft.Storage/storageAccounts**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-    * **Microsoft.Network/publicIPAddresses**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-    * **Microsoft.Network/virtualNetworks**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-    * **Microsoft.Network/networkInterfaces**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-    * **Microsoft.Compute/virtualMachines**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * **Microsoft.Storage/storageAccounts**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * **Microsoft.Network/publicIPAddresses**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * **Microsoft.Network/virtualNetworks**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * **Microsoft.Network/networkInterfaces**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * **Microsoft.Compute/virtualMachines**. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-    Warto uzyskać podstawową wiedzę na temat szablonu przed rozpoczęciem jego dostosowywania.
+     Warto uzyskać podstawową wiedzę na temat szablonu przed rozpoczęciem jego dostosowywania.
 
 1. Aby zapisać kopię pliku o nazwie *azuredeploy.json* na komputerze lokalnym, wybierz pozycję **Plik** > **Zapisz jako**.
 
@@ -108,7 +108,7 @@ Dodaj zasób rozszerzenia maszyny wirtualnej do istniejącego szablonu o następ
 
 Zobacz [informacje szczegółowe o rozszerzeniu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions), jeśli potrzebujesz więcej informacji na temat tej definicji zasobu. Poniżej przedstawiono niektóre ważne elementy:
 
-* **name**: ponieważ zasób rozszerzenia jest zasobem podrzędnym obiektu maszyny wirtualnej, nazwa musi mieć prefiks nazwy maszyny wirtualnej. Zobacz [Zasoby podrzędne](./resource-manager-templates-resources.md#child-resources).
+* **name**: ponieważ zasób rozszerzenia jest zasobem podrzędnym obiektu maszyny wirtualnej, nazwa musi mieć prefiks nazwy maszyny wirtualnej. Zobacz [Zasoby podrzędne](./resource-group-authoring-templates.md#child-resources).
 * **dependsOn**: powoduje utworzenie zasobu rozszerzenia po utworzeniu maszyny wirtualnej.
 * **fileUris**: lokalizacje, w których są przechowywane pliki skryptów. Jeśli nie chcesz używać podanej lokalizacji, musisz zaktualizować wartości.
 * **commandToExecute**: to polecenie uruchamia skrypt.  
@@ -135,7 +135,7 @@ Jeśli nie potrzebujesz już zasobów platformy Azure wdrożonych przez Ciebie, 
     W grupie zasobów jest wyświetlanych sześć zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** w górnym menu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wdrożono maszynę wirtualną i rozszerzenie maszyny wirtualnej. Rozszerzenie zainstalowało serwer internetowy usług IIS na maszynie wirtualnej. Aby dowiedzieć się, jak zaimportować plik BACPAC za pomocą rozszerzenia usługi Azure SQL Database, zobacz:
 

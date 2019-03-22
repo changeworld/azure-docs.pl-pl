@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b89c02aa0d30ec1928be2110fe6470da4f28080c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889923"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992492"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Wdrożenie programu SQL Server Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver
 
@@ -158,7 +158,7 @@ ms.locfileid: "56889923"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56889923"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -343,7 +343,7 @@ Zgodnie z ogólny opis plików wykonywalnych programu SQL Server należy się lu
 Te konfiguracje włączyć bazę danych tempdb zużywać więcej miejsca niż dysk systemowy jest w stanie zapewnić. Nietrwałe dysku D:\ oferuje również lepszą opóźnienia operacji We/Wy i przepływność (z wyjątkiem maszyny wirtualne z serii A). Aby określić rozmiar odpowiednie bazy danych tempdb, możesz sprawdzić rozmiary bazy danych tempdb na istniejących systemów. 
 
 >[!NOTE]
-> w przypadku, gdy mają zostać umieszczone pliki danych bazy danych tempdb i pliku dziennika do folderu na dysku D:\, który został utworzony, należy się upewnić, że folder istnieje po ponownym uruchomieniu maszyny Wirtualnej. Ponieważ na dysku D:\ świeżo jest inicjowana po ponowny rozruch maszyny Wirtualnej są wyczyszczone wszystkie struktury plików i katalogów. Możliwość odtworzyć struktur ostatecznej katalogów na dysku D:\, zanim uruchamiania usługi programu SQL Server są udokumentowane we [w tym artykule](http://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
+> w przypadku, gdy mają zostać umieszczone pliki danych bazy danych tempdb i pliku dziennika do folderu na dysku D:\, który został utworzony, należy się upewnić, że folder istnieje po ponownym uruchomieniu maszyny Wirtualnej. Ponieważ na dysku D:\ świeżo jest inicjowana po ponowny rozruch maszyny Wirtualnej są wyczyszczone wszystkie struktury plików i katalogów. Możliwość odtworzyć struktur ostatecznej katalogów na dysku D:\, zanim uruchamiania usługi programu SQL Server są udokumentowane we [w tym artykule](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
 
 Konfiguracja maszyny Wirtualnej, na którym działa program SQL Server z bazą danych SAP i gdzie bazy danych tempdb i bazy danych tempdb w pliku dziennika są umieszczane na dysku D:\ będzie wyglądać:
 

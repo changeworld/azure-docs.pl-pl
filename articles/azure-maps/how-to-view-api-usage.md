@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f8977a0a50103b3c2935ee27a69a53e636f5aecb
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d14088ed940ab83be29756a26f8612704bb9aebd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580399"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079882"
 ---
 # <a name="view-azure-maps-api-usage"></a>Wyświetl informacje o użyciu interfejsu API usługi Azure Maps
 
@@ -37,10 +37,10 @@ Przejdź do następnej sekcji Jeżeli trzeba dostosować te wykresy dla konkretn
 
 4. Na **metryki** okienku wybrać jedną z następujących czynności:
 
-    1. **Dostępność** — które pokazują *średni* dostępność interfejsu API w danym okresie czasu.
-    2. **Użycie** — które pokazują, jak użycie *liczba* dla swojego konta.
+   1. **Dostępność** — które pokazują *średni* dostępność interfejsu API w danym okresie czasu.
+   2. **Użycie** — które pokazują, jak użycie *liczba* dla swojego konta.
 
-    ![Okienko usługi Azure Maps metryki](media/how-to-view-api-usage/portal-metrics.png)
+      ![Okienko usługi Azure Maps metryki](media/how-to-view-api-usage/portal-metrics.png)
 
 5. Następnie możesz wybrać *zakres czasu* , klikając **ostatnie 24 godziny (automatycznie)**. Zakres czasu jest domyślnie do 24 godzin. Po kliknięciu przycisku, widoczne będą wszystkie zakresy czasu można wybierać. Możesz wybrać *stopień szczegółowości czasu* i wybierz polecenie wyświetlić czas jako *lokalnego* lub *GMT* w tej samej listy rozwijanej. Kliknij przycisk **Zastosuj**.
 

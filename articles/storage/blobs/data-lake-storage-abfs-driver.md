@@ -8,12 +8,12 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 47646a1593f01c4ea695b549bbde22260ffaf2f7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 83e2f6f42de5c729667f366a6e068f1c8bd71f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962438"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011075"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik systemu plików obiektów Blob platformy Azure (ABFS): Dedykowany sterownika usługi Azure Storage dla platformy Hadoop
 
@@ -21,7 +21,7 @@ Jedną z metod dostępu do danych usługi Azure Data Lake Storage Gen2 jest za p
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Wcześniejsze możliwości: Sterownik systemu Windows Azure Storage Blob
 
-Sterownik systemu Windows Azure Storage Blob lub [sterownika WASB](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) pod warunkiem, oryginalnym pomocy technicznej dla usługi Azure Blob Storage. Ten sterownik wykonać złożone zadania system plików mapowania semantyki (zgodnie z potrzebami przy użyciu interfejsu systemu plików usługi Hadoop) do tego obiektu przechowywania interfejs w stylu udostępnianych przez usługi Azure Blob Storage. Ten sterownik w dalszym ciągu obsługuje ten model, zapewniając wysoką wydajność dostępu do danych przechowywanych w obiektach blob, ale zawiera znaczną ilość kodu, wykonywanie tego mapowania, dzięki czemu trudne w utrzymaniu. Ponadto niektóre operacje, takie jak [FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) i [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) po zastosowaniu do katalogów wymagają sterowników do wykonania ogromną liczbę operacji (z powodu braku magazyny obiektów obsługę katalogów) co często prowadzi do pogorszenie wydajności. Sterownik ABFS został zaprojektowany w celu pokonania nieprzerwaną pracę braki WASB.
+Sterownik systemu Windows Azure Storage Blob lub [sterownika WASB](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) pod warunkiem, oryginalnym pomocy technicznej dla usługi Azure Blob Storage. Ten sterownik wykonać złożone zadania system plików mapowania semantyki (zgodnie z potrzebami przy użyciu interfejsu systemu plików usługi Hadoop) do tego obiektu przechowywania interfejs w stylu udostępnianych przez usługi Azure Blob Storage. Ten sterownik w dalszym ciągu obsługuje ten model, zapewniając wysoką wydajność dostępu do danych przechowywanych w obiektach blob, ale zawiera znaczną ilość kodu, wykonywanie tego mapowania, dzięki czemu trudne w utrzymaniu. Ponadto niektóre operacje, takie jak [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) i [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) po zastosowaniu do katalogów wymagają sterowników do wykonania ogromną liczbę operacji (z powodu braku magazyny obiektów obsługę katalogów) co często prowadzi do pogorszenie wydajności. Sterownik ABFS został zaprojektowany w celu pokonania nieprzerwaną pracę braki WASB.
 
 ## <a name="the-azure-blob-file-system-driver"></a>Sterownik systemu plików obiektów Blob platformy Azure
 
@@ -52,13 +52,13 @@ Sterownik ABFS obsługuje dwie formy uwierzytelniania, dzięki czemu aplikacji p
 
 ### <a name="configuration"></a>Konfigurowanie
 
-Cała konfiguracja sterownika ABFS są przechowywane w <code>core-site.xml</code> pliku konfiguracji. W dystrybucjach Hadoop, oferujący funkcje [Ambari](http://ambari.apache.org/), konfiguracja może być także zarządzane przy użyciu portalu sieci web lub interfejsu API REST Ambari.
+Cała konfiguracja sterownika ABFS są przechowywane w <code>core-site.xml</code> pliku konfiguracji. W dystrybucjach Hadoop, oferujący funkcje [Ambari](https://ambari.apache.org/), konfiguracja może być także zarządzane przy użyciu portalu sieci web lub interfejsu API REST Ambari.
 
-Szczegółowe informacje o wszystkich wpisów obsługiwanej konfiguracji są określone w [dokumentacji oficjalnego Hadoop](http://hadoop.apache.org/docs/current/hadoop-azure/index.html).
+Szczegółowe informacje o wszystkich wpisów obsługiwanej konfiguracji są określone w [dokumentacji oficjalnego Hadoop](https://hadoop.apache.org/docs/current/hadoop-azure/index.html).
 
 ### <a name="hadoop-documentation"></a>Dokumentacja usługi Hadoop
 
-Sterownik ABFS jest w pełni udokumentowane w [dokumentacji oficjalnego usługi Hadoop](http://hadoop.apache.org/docs/current/hadoop-azure/index.html)
+Sterownik ABFS jest w pełni udokumentowane w [dokumentacji oficjalnego usługi Hadoop](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 24132fdb23ff89045f2b497327997d95e4ceecac
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7f3b8101b633c977201b6c413ad12e4bbe55e9a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054847"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011785"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Usługa Application Insights dla aplikacji ASP.NET Core
 
@@ -88,21 +88,21 @@ Wybierz **widoku** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projektu** > **zm
 
 - Jeden nowy plik zostanie utworzony:
 
-  -  _ConnectedService.json_
+  - _ConnectedService.json_
 
     ```json
     {
-      "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-      "Version": "8.12.10405.1",
-      "GettingStartedDocument": {
-        "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-      }
+     "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
+     "Version": "8.12.10405.1",
+     "GettingStartedDocument": {
+       "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
+     }
     }
     ```
 
 - Trzy pliki są modyfikowane (dodatkowe komentarze dodane do Wyróżniaj zmiany):
 
-  - _appSettings.JSON_:
+  - _appsettings.json_:
 
     ```json
     {
@@ -180,6 +180,10 @@ Wybierz **widoku** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projektu** > **zm
           }
       }
       ```
+
+## <a name="send-ilogger-logs-to-application-insights"></a>Wysyłanie dzienników ILogger do usługi Application Insights
+
+Usługa Application Insights obsługuje przechwytywania dzienniki wysłane za pośrednictwem ILogger. Aby skonfigurować rejestrowanie wyewidencjonowania przykłady kodu [tutaj](https://docs.microsoft.com/azure/azure-monitor/app/ilogger).
 
 ## <a name="synthetic-transactions-with-powershell"></a>Transakcje syntetyczne przy użyciu programu PowerShell
 
@@ -338,7 +342,7 @@ Funkcje jest możliwe, w części ponieważ pakiet NuGet _pakiet_ przyjmuje [ _M
 
 ![Zrzut ekranu programu NuGet wykres zależności dla pakiet](./media/asp-net-core/013-dependency.png)
 
-Poza programem Visual Studio Jeśli edytowania projektem platformy ASP.NET Core w VSCode lub innym edytorze, te zestawy nie automatycznie obciążenia podczas debugowania, jeśli nie zostały jawnie dodane usługi Application Insights do projektu.
+Poza programem Visual Studio Jeśli edytowania projektu ASP.NET Core w VSCode lub innym edytorze, te zestawy nie automatycznie obciążenia podczas debugowania, jeśli nie zostały jawnie dodane usługi Application Insights do projektu.
 
 Jednak w programie Visual Studio, to oświetlenia zapasowej lokalnych funkcji usługi Application Insights z zewnętrznych zestawów odbywa się za pomocą [interfejsu interfejsu IHostingStartup](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1). Interfejsu są dodawane dynamicznie usługi Application Insights podczas debugowania.
 

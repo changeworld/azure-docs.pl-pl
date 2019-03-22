@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: dea9a73d7ac868e45d3abf2ee3ff8366fc7b65cd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57783095"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855592"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Tworzenie alertów dla usługi Azure SQL Database i Data Warehouse przy użyciu witryny Azure portal
 
@@ -59,7 +59,7 @@ Można skonfigurować i uzyskać informacje na temat przy użyciu reguł alertó
 4. **Nazwa** alert reguły, a następnie wybierz **opis**, który pokazuje także w wiadomości e-mail z powiadomieniem.
 5. Wybierz **metryki** chcesz monitorować, a następnie wybierz **warunek** i **próg** wartość metryki. Również wybrać **okres** czasu, przez jaki reguła metryki muszą być spełnione przed wyzwala alert. Na przykład jeśli używasz okres "PT5M", a alert szuka procesora CPU przekracza 80%, alert wyzwala kiedy **średni** został procesora CPU przekracza 80% przez 5 minut. Gdy wystąpi to pierwszy wyzwalacz, ponownie uaktywnia to, gdy średnie użycie procesora CPU wynosi poniżej 80% przez 5 minut. Pomiar procesora CPU występuje co minutę. Można znaleźć w poniższej tabeli opisano obsługiwane czas systemu windows, a następnie wpisz agregacji, że każdy alert nie używa wszystkich alertów należy użyć wartości średniej.   
 6. Sprawdź **wiadomości E-mail właścicielom...**  chcącym administratorów i współadministratorów, aby otrzymywać pocztą e-mail powiadomienia, gdy zostanie wyzwolony alert.
-7. Dodatkowe wiadomości e-mail, aby otrzymać powiadomienie, gdy zostanie wyzwolony alert, dodać je w **email(s) dodatkowego administratora** pola. Wiele wiadomości e-mail należy rozdzielić średnikami -  *email@contoso.com;email2@contoso.com*
+7. Dodatkowe wiadomości e-mail, aby otrzymać powiadomienie, gdy zostanie wyzwolony alert, dodać je w **email(s) dodatkowego administratora** pola. Wiele wiadomości e-mail należy rozdzielić średnikami - *e-mail\@contoso.com;email2\@contoso.com*
 8. Umieść w prawidłowym identyfikatorem URI w **elementu Webhook** jeśli ma ona wywoływana, gdy zostanie wyzwolony alert.
 9. Wybierz **OK** po zakończeniu tworzenia alertu.   
 
@@ -79,7 +79,7 @@ Po utworzeniu alertu możesz wybrać go oraz:
 | --- | --- | --- | --- | --- |
 | Baza danych SQL | cpu_percent | Procent użycia procesora CPU | Średnia | 5 minut |
 | Baza danych SQL | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 5 minut |
-| Baza danych SQL | log_write_percent | Wartość procentowa we/wy dziennika | Średnia | 5 minut |
+| Baza danych SQL | log_write_percent | We/wy dziennika (procent) | Średnia | 5 minut |
 | Baza danych SQL | dtu_consumption_percent | Procent użycia jednostek DTU | Średnia | 5 minut |
 | Baza danych SQL | magazyn | Łączny rozmiar bazy danych | Maksimum | 30 minut |
 | Baza danych SQL | connection_successful | Pomyślnie nawiązane połączenia | Łącznie | 10 minut |
@@ -88,17 +88,17 @@ Po utworzeniu alertu możesz wybrać go oraz:
 | Baza danych SQL | Zakleszczenia | Zakleszczenia | Łącznie | 10 minut |
 | Baza danych SQL | storage_percent | Procent użycia rozmiaru bazy danych | Maksimum | 30 minut |
 | Baza danych SQL | xtp_storage_percent | Percent(Preview) magazynu OLTP w pamięci | Średnia | 5 minut |
-| Baza danych SQL | workers_percent | Procent pracowników | Średnia | 5 minut |
+| Baza danych SQL | workers_percent | Procent procesów roboczych | Średnia | 5 minut |
 | Baza danych SQL | sessions_percent | Procent sesji | Średnia | 5 minut |
 | Baza danych SQL | dtu_limit | DTU limit | Średnia | 5 minut |
 | Baza danych SQL | dtu_used | Używane jednostki DTU | Średnia | 5 minut |
 ||||||
 | Pula elastyczna | cpu_percent | Procent użycia procesora CPU | Średnia | 10 minut |
 | Pula elastyczna | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 10 minut |
-| Pula elastyczna | log_write_percent | Wartość procentowa we/wy dziennika | Średnia | 10 minut |
+| Pula elastyczna | log_write_percent | We/wy dziennika (procent) | Średnia | 10 minut |
 | Pula elastyczna | dtu_consumption_percent | Procent użycia jednostek DTU | Średnia | 10 minut |
 | Pula elastyczna | storage_percent | Procent użycia magazynu | Średnia | 10 minut |
-| Pula elastyczna | workers_percent | Procent pracowników | Średnia | 10 minut |
+| Pula elastyczna | workers_percent | Procent procesów roboczych | Średnia | 10 minut |
 | Pula elastyczna | eDTU_limit | eDTU limit | Średnia | 10 minut |
 | Pula elastyczna | storage_limit | Limit magazynu | Średnia | 10 minut |
 | Pula elastyczna | eDTU_used | używane jednostki eDTU | Średnia | 10 minut |

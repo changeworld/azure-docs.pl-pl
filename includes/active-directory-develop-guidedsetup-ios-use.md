@@ -3,8 +3,8 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: andret
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 06da33b91ef9846204b33ba2cb3dea40c75d425d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d5a38d19541e59e0e2815362c0181a8e317a5d0f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988279"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203499"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Użyj Microsoft Authentication Library (MSAL), aby uzyskać token dla interfejsu API programu Microsoft Graph
 
@@ -211,7 +211,7 @@ Wywoływanie `acquireToken` metoda nie powoduje monitowanie użytkownika o Zalog
 
 #### <a name="getting-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 
-`acquireTokenSilent` Obsługiwała pozyskanie tokenu i wznowienie bez żadnej interakcji użytkownika. Po `acquireToken` jest wykonywany po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
+Metoda `acquireTokenSilent` obsługuje uzyskiwanie i odnawianie tokenów bez żadnej interakcji z użytkownikiem. Po `acquireToken` jest wykonywany po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
 
 Po pewnym czasie `acquireTokenSilent` zakończy się niepowodzeniem — np. użytkownik zalogował lub została zmieniona swojego hasła na innym urządzeniu. Gdy biblioteki MSAL wykryje, że ten problem można rozwiązać, wymagając akcję interaktywne, jest on uruchamiany `MSALErrorCode.interactionRequired` wyjątku. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 

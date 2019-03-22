@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109498"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173927"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Użyj własnego klucza dla platformy Apache Kafka w usłudze Azure HDInsight (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Bezpiecznie wymiany kluczy w magazynie kluczy, można użyć witryny Azure porta
 
 1. Tworzenie zarządzanych tożsamości dla zasobów platformy Azure.
 
-   Aby uwierzytelniać się do usługi Key Vault, Utwórz przypisanych przez użytkownika z tożsamości zarządzanej przy użyciu [witryny Azure Portal](../../active-directory/managed-service-identity/how-to-manage-ua-identity-portal.md), [programu Azure PowerShell](../../active-directory/managed-service-identity/how-to-manage-ua-identity-powershell.md), [usługi Azure Resource Manager](../../active-directory/managed-service-identity/how-to-manage-ua-identity-arm.md), lub [ Interfejs wiersza polecenia Azure](../../active-directory/managed-service-identity/how-to-manage-ua-identity-cli.md). Usługi Azure Active directory jest wymagana dla zarządzanych tożsamości i scenariusza BYOK do platformy Kafka, pakiet zabezpieczeń przedsiębiorstwa (ESP) nie jest to wymagane. Koniecznie Zapisz identyfikator zasobu tożsamości zarządzanej, podczas dodawania zasad dostępu magazynu kluczy.
+   Aby uwierzytelniać się do usługi Key Vault, Utwórz przypisanych przez użytkownika z tożsamości zarządzanej przy użyciu [witryny Azure portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [programu Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), [usługi Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md), lub [ Interfejs wiersza polecenia Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md). Aby uzyskać więcej informacji na temat zarządzanych pracy tożsamości w usłudze Azure HDInsight, zobacz [zarządzanych tożsamości w usłudze Azure HDInsight](../hdinsight-managed-identities.md). Usługi Azure Active directory jest wymagana dla zarządzanych tożsamości i scenariusza BYOK do platformy Kafka, pakiet zabezpieczeń przedsiębiorstwa (ESP) nie jest to wymagane. Koniecznie Zapisz identyfikator zasobu tożsamości zarządzanej, podczas dodawania zasad dostępu magazynu kluczy.
 
    ![Utwórz tożsamość zarządzaną przypisanych przez użytkownika w witrynie Azure portal](./media/apache-kafka-byok/user-managed-identity-portal.png)
 

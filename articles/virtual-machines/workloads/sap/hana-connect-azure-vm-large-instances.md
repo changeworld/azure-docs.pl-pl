@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9116dd8a27b268b656f688083032a127177d2d51
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 2628cafada47b2602b195c44d4b6f2e6b16012ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754564"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092773"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Łączenie maszyn wirtualnych platformy Azure do dużych wystąpień HANA
 
@@ -73,7 +73,7 @@ Poniżej przedstawiono podsumowanie ważnych informacji o sieci wirtualnej platf
 - **Przestrzeń adresową sieci wirtualnej** może być jedną większym zakresie, który obejmuje zakresy dla obu zakresu adresów IP podsieci maszyny Wirtualnej platformy Azure i bramy sieci wirtualnej.
 - Lub możesz przesłać wiele zakresów, które obejmują innym adresem IP adres zakresy adresów IP podsieci maszyny Wirtualnej i zakres adresów IP bramy sieci wirtualnej.
 - Zdefiniowane **przestrzeń adresową sieci wirtualnej** służy do propagowania routingu BGP.
-- Nazwa podsieci bramy musi być: **"Gatewaysubent"**.
+- Nazwa podsieci bramy musi być: **"GatewaySubnet"**.
 - Przestrzeń adresowa służy jako filtr na stronie dużych wystąpień HANA do Zezwalaj lub nie zezwalaj na ruch z jednostkami dużych wystąpień HANA na platformie Azure. Informacje o routingu BGP sieci wirtualnej platformy Azure i zakresy adresów IP, które są skonfigurowane w celu filtrowania po stronie dużych wystąpień HANA powinien być zgodny. W przeciwnym razie może wystąpić problemy z łącznością.
 - Istnieją pewne szczegółowe informacje o podsieci bramy, które zostały omówione w dalszej części, w sekcji **łączenie sieci wirtualnej usługi expressroute platformy HANA dużych wystąpień.**
 
@@ -85,7 +85,7 @@ Już wdrożyliśmy niektóre zakresy adresów IP, które są niezbędne do wdra�
 
 - **Przestrzeń adresowa sieci wirtualnej**: **Przestrzeń adresową sieci wirtualnej** jest zakresów adresów IP, które można przypisać do parametru przestrzeni adresów w sieciach wirtualnych platformy Azure. Te sieci, połącz się ze środowiskiem duże wystąpienie SAP HANA.
 
- Zaleca się, że ten parametr przestrzeni adresów jest wartością wiele wierszy. Powinna składać się z zakresu podsieci maszyny Wirtualnej platformy Azure i zakresy podsieci bramy platformy Azure. Ten zakres podsieci został wyświetlony w poprzednim grafiki. NIE nakładać się z lokalną lub puli adresów IP serwerów lub zakresów adresów ER P2P. 
+  Zaleca się, że ten parametr przestrzeni adresów jest wartością wiele wierszy. Powinna składać się z zakresu podsieci maszyny Wirtualnej platformy Azure i zakresy podsieci bramy platformy Azure. Ten zakres podsieci został wyświetlony w poprzednim grafiki. NIE nakładać się z lokalną lub puli adresów IP serwerów lub zakresów adresów ER P2P. 
  
 Jak uzyskać te zakresy adresów IP? 
 
@@ -108,7 +108,7 @@ Twój dostawca zespołu lub usługa sieci firmowej powinien zapewniać zakres ad
   
 - **Zakres adresów puli adresów IP serwera:** Ten zakres adresów IP można przypisywać pojedynczy adres IP do serwerów dużych wystąpień HANA. Rozmiar podsieci zalecane jest prefiksie/24 blok CIDR. Jeśli to konieczne, może być mniejsze, mających co najmniej 64 adresów IP. Z tego zakresu pierwsze 30 adresy IP są zarezerwowane do użytku przez firmę Microsoft. Upewnij się, uwzględnione ten fakt po wybraniu rozmiarem zakresu. Ten zakres nie może nakładać przy użyciu lokalnych lub innych adresów IP platformy Azure adresy. Jak uzyskać ten zakres adresów IP? Twój dostawca zespołu lub usługa sieci firmowej powinien zapewniać zakres adresów IP, który nie jest obecnie jest używany w Twojej sieci. 
 
- **Ten zakres to zakres adresów IP, która musi być przesłane do firmy Microsoft, podczas pytania o początkowe wdrożenie**.
+  **Ten zakres to zakres adresów IP, która musi być przesłane do firmy Microsoft, podczas pytania o początkowe wdrożenie**.
  
 Należy zdefiniować i Planowanie zakresów adresów IP, które zostały opisane wcześniej. Jednak nie trzeba przesyłać wszystkich z nich do firmy Microsoft. Zakresy adresów IP, które wymagają nazwy do firmy Microsoft to:
 

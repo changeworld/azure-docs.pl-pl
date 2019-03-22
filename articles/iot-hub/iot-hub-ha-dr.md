@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 308d9a04e52572e00e1cbed24548e5f09adda571
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ac47ad10f394eaf31a9f7c12d7a2a03ea23283f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985924"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092654"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Usługa IoT Hub o wysokiej dostępności i odzyskiwania po awarii
 
@@ -128,7 +128,7 @@ Aby uprościć ten krok, należy użyć operacje idempotentne. Operacje Idempote
 Oto podsumowanie opcji wysokiej dostępności i odzyskiwania po awarii, przedstawione w tym artykule, który może służyć jako odwołanie do ramki o wybranie odpowiedniej opcji dla rozwiązania.
 
 | Opcja wysokiej dostępności i odzyskiwania po awarii | CEL CZASU ODZYSKIWANIA | Cel punktu odzyskiwania | Wymaga ręcznej interwencji? | Złożoność wdrożenia | Wpływ dodatkowych kosztów|
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | Zainicjowane przez Microsoft trybu failover |2 - 26 godzin|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Nie|Brak|Brak|
 | Ręczne przejście do trybu failover |10-minutowy materiał - 2 godziny|Zapoznaj się z powyższej tabeli cel punktu odzyskiwania|Yes|Bardzo niskie. Wystarczy wyzwalać tę operację z portalu.|Brak|
 | Obejmujące wiele regionów wysokiej dostępności |< 1 min|Zależy od częstotliwości replikacji, niestandardowego rozwiązania wysokiej dostępności|Nie|Wysoka|1 > x koszt 1 usługi IoT hub|

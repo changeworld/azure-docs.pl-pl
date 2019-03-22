@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aa8f4e188761c50391cd2ead49ae8d8b9081188f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 770fa89bc08b448482b4a74d21ee307df8a9f836
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983495"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167919"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Samouczek: instalowanie stosu SQL, IIS, .NET na maszynie wirtualnej z systemem Windows przy użyciu programu Azure PowerShell
 
@@ -38,7 +38,7 @@ Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz u
 
 Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
-## <a name="create-a-iis-vm"></a>Tworzenie maszyny wirtualnej usług IIS 
+## <a name="create-an-iis-vm"></a>Tworzenie maszyny Wirtualnej usług IIS 
 
 W tym przykładzie polecenie cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) w programie PowerShell w usłudze Cloud Shell jest używane w celu szybkiego utworzenia maszyny wirtualnej systemu Windows Server 2016, a następnie zainstalowania usług IIS i platformy .NET Framework. Maszyny wirtualne usług IIS i programu SQL współużytkują grupę zasobów i sieć wirtualną, dlatego tworzone są zmienne dla tych nazw.
 
@@ -128,7 +128,7 @@ Set-AzVMSqlServerExtension `
    -Location "EastUS"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zainstalowano stos SQL&#92;IIS&#92;.NET przy użyciu programu Azure PowerShell. W tym samouczku omówiono:
 

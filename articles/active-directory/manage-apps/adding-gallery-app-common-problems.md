@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe781802309ad0945eaee23c35dda1617e47ae06
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727353"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853175"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Problem podczas dodawania aplikacji galerii usługi Azure AD
 
@@ -73,41 +73,41 @@ Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomie�
 
 ### <a name="essential-notification-items"></a>Essential Notification Items
 
--   **Tytuł** — opisowy tytuł powiadomienia
+- **Tytuł** — opisowy tytuł powiadomienia
 
   * Przykład — **ustawienia serwera proxy aplikacji**
 
--   **Opis** — opisu co nastąpiło w wyniku operacji
+- **Opis** — opisu co nastąpiło w wyniku operacji
 
-    -   Przykład — **wprowadzony wewnętrzny adres url jest już używana przez inną aplikację**
+  -   Przykład — **wprowadzony wewnętrzny adres url jest już używana przez inną aplikację**
 
--   **Identyfikator powiadomienia** — Unikatowy identyfikator powiadomienia
+- **Identyfikator powiadomienia** — Unikatowy identyfikator powiadomienia
 
-    -   Przykład — **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   Przykład — **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Identyfikator żądania klienta** — identyfikator określonego żądania przez przeglądarkę
+- **Identyfikator żądania klienta** — identyfikator określonego żądania przez przeglądarkę
 
-    -   Przykład — **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   Przykład — **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Czas UTC sygnatury** — sygnatura czasowa, w którym wystąpił powiadomienia, w formacie UTC
+- **Czas UTC sygnatury** — sygnatura czasowa, w którym wystąpił powiadomienia, w formacie UTC
 
-    -   Przykład — **2017-03-23T19:50:43.7583681Z**
+  -   Przykład — **2017-03-23T19:50:43.7583681Z**
 
--   **Wewnętrzny identyfikator transakcji** — wewnętrzny identyfikator możemy użyć, aby wyszukać błąd w naszych systemach
+- **Wewnętrzny identyfikator transakcji** — wewnętrzny identyfikator możemy użyć, aby wyszukać błąd w naszych systemach
 
-    -   Przykład — **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   Przykład — **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **Nazwa UPN** — użytkownik, który wykonał operację
+- **Nazwa UPN** — użytkownik, który wykonał operację
 
-    -   Przykład — **tperkins@f128.info**
+  -   Przykład — **tperkins\@f128.info**
 
--   **Identyfikator dzierżawy** — Unikatowy identyfikator dzierżawy, który był użytkownika, który wykonał operację
+- **Identyfikator dzierżawy** — Unikatowy identyfikator dzierżawy, który był użytkownika, który wykonał operację
 
-    -   Przykład — **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   Przykład — **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Identyfikator obiektu użytkownika** — Unikatowy identyfikator użytkownika, który wykonał operację
+- **Identyfikator obiektu użytkownika** — Unikatowy identyfikator użytkownika, który wykonał operację
 
-    -   Przykład — **17f84be4-51f8-483a-b533-383791227a99**
+  -   Przykład — **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Elementy szczegółowe powiadomienia
 
@@ -125,7 +125,7 @@ Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomie�
 
 -   **Szczegóły** — szczegółowy opis co nastąpiło w wyniku operacji
 
-    -   Przykład — **wewnętrznego adresu url "https://bing.com/" jest nieprawidłowa, ponieważ jest już używana**
+    -   Przykład — **wewnętrzny adres url `https://bing.com/` jest nieprawidłowy, ponieważ jest już używana**
 
 -   **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie z grupą pomocy technicznej lub produktów w polu tekstowym 
 -   inżynier ds

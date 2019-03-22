@@ -10,18 +10,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: ee82aab37973117b0c1960d8b75a29bfad38b7c7
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6f93bbceacff3731206e5f98ba9a252d6a046ac4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252166"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200078"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Dokumentacja pliku host.JSON dla usługi Azure Functions 1.x
 
-> [!div class="op_single_selector" title1="Wybierz wersję środowiska wykonawczego Azure Functions, którego używasz: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Wersja 1](functions-host-json-v1.md)
-> * [W wersji 2](functions-host-json.md)
+> * [Wersja 2](functions-host-json.md)
 
 *Host.json* plik metadanych zawiera opcje konfiguracji globalne, które wpływają na wszystkie funkcje dla aplikacji funkcji. Ten artykuł zawiera listę ustawień, które są dostępne dla środowiska uruchomieniowego w wersji 1. Schemat JSON wynosi http://json.schemastore.org/host.
 
@@ -220,7 +220,25 @@ Kontrolki filtrowania dla dzienników napisane przez [obiektu ILogger](functions
 
 Ustawienia konfiguracji dla [magazynu kolejki wyzwalaczy i powiązań](functions-bindings-storage-queue.md).
 
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+```json
+{
+    "queues": {
+      "maxPollingInterval": 2000,
+      "visibilityTimeout" : "00:00:30",
+      "batchSize": 16,
+      "maxDequeueCount": 5,
+      "newBatchThreshold": 8
+    }
+}
+```
+
+|Właściwość  |Domyślne | Opis |
+|---------|---------|---------| 
+|maxPollingInterval|60000|Maksymalny interwał w milisekundach między sondowaniami kolejki.| 
+|visibilityTimeout|0|Odstęp czasu między kolejnymi próbami podczas przetwarzania komunikatu nie powiedzie się.| 
+|batchSize|16|Liczba komunikatów w kolejce, które środowisko uruchomieniowe usługi Functions pobiera jednocześnie przetwarzane równolegle. Gdy liczba przetwarzanych wyświetlona w dół `newBatchThreshold`, środowisko uruchomieniowe inna partia pobiera i uruchamia przetwarzanie tych wiadomości. Dlatego jest maksymalna liczba współbieżnych komunikatów przetwarzanych dla każdej funkcji `batchSize` oraz `newBatchThreshold`. Ten limit dotyczy oddzielnie poszczególnych funkcji wyzwalanej przez kolejkę. <br><br>Jeśli chcesz uniknąć wykonywania równoległego dla wiadomości otrzymanych w jednej kolejki można ustawić `batchSize` 1. Jednak to ustawienie pozwala wyeliminować współbieżności tylko tak długo, jak aplikacja funkcji zostanie uruchomiona na jednej maszynie wirtualnej (VM). Jeśli aplikacja funkcji skalowania do wielu maszyn wirtualnych, każda maszyna wirtualna może uruchomić jedno wystąpienie każdej funkcji wyzwalanej przez kolejkę.<br><br>Maksymalna `batchSize` wynosi 32. | 
+|maxDequeueCount|5|Liczba prób przetwarzania komunikatu przed jego przeniesieniem do skażone kolejki.| 
+|newBatchThreshold|batchSize/2|Zawsze, gdy liczba komunikatów przetwarzanych jednocześnie uzyskuje na ten numer, środowisko uruchomieniowe pobiera inna partia.| 
 
 ## <a name="servicebus"></a>serviceBus
 

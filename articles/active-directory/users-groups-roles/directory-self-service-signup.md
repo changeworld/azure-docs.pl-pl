@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 02/12/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7818d184cd74da43ceac008331b4436979152557
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201266"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?
 
-W tym artykule wyjaśniono, Samoobsługowe tworzenie konta i sposobu jego obsługi w usłudze Azure Active Directory (Azure AD). Jeśli chcesz przejąć nazwę domeny z niezarządzanych do usługi Azure AD dzierżawy, zobacz [przejmowanie katalogu niezarządzanego, jako administrator](domains-admin-takeover.md).
+W tym artykule wyjaśniono, jak wypełnić organizacji w usłudze Azure Active Directory (Azure AD) za pomocą samoobsługowej. Jeśli chcesz przejąć nazwę domeny z niezarządzanego platformy Azure AD w organizacji, zobacz [przejmowanie katalogu niezarządzanego, jako administrator](domains-admin-takeover.md).
 
 ## <a name="why-use-self-service-signup"></a>Dlaczego warto używać Samoobsługowe tworzenie konta?
 * Pobierz klientów do usług, jaki mu pasuje, szybciej
@@ -71,7 +71,7 @@ Te dwa parametry może służyć w połączeniu do definiowania bardziej precyzy
 
 Następujące schemat blokowy opisano różne kombinacje tych parametrów i wynikowe warunki do katalogu i samoobsługowej.
 
-![formanty rejestracji samoobsługowego](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![Schemat blokowy samoobsługowego tworzenia konta formantów](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
 Aby uzyskać więcej informacji i przykłady dotyczące używania tych parametrów, zobacz [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 

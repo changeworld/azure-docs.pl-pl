@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 5b80dcfa5cef116bb2558f154a54d343e467ae83
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546657"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881133"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -229,7 +229,7 @@ Aby wyświetlić dane na różne sposoby, za pomocą rozwiązania do zarządzani
 
 Rozwiązania do monitorowania można zainstalować z witryny Azure marketplace, wybierając **Pobierz teraz** łącze u dołu każde z tych rozwiązań.
 
-### <a name="add-a-azure-monitor-cdn-monitoring-solution"></a>Dodawanie usługi CDN Azure Monitor rozwiązanie do monitorowania
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Dodaj rozwiązanie do monitorowania usługi Azure Monitor CDN
 
 Wykonaj następujące kroki, aby dodać usługi Azure Monitor, rozwiązanie do monitorowania:
 

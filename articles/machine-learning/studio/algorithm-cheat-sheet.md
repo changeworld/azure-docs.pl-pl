@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: 4adcef601ca84b94d88ed65278310a94c7273353
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 51a743e7578ea5bbc2acb9094bbf704a09f3cd6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433327"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858803"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning ściągawka dotycząca algorytmów dla usługi Azure Machine Learning Studio
 
@@ -38,7 +38,7 @@ Pobrać i wydrukować Machine Learning Studio algorytm da się oszukać arkusza 
 
 * Sugestie, oferowana w tym ściągawka dotycząca algorytmów są przybliżone reguły z thumb. Niektóre mogą być wygięte, a niektóre mogą flagrantly naruszone. Ta wartość jest przeznaczona do zasugerować punkt początkowy. Nie jest niejasne, należy uruchomić head-to-head konkurencji między kilka algorytmów na podstawie posiadanych danych. Występuje po prostu nie zastąpi zrozumienie zasad poszczególnych algorytmów i system, które wygenerowało dane.
 
-* Algorytmu uczenia maszynowego, co ma swój własny styl lub *indukcyjna odchylenie*. Dla konkretnego problemu odpowiednie może być kilku algorytmów i jeden algorytm może być lepszym rozwiązaniem niż inne. Ale nie zawsze jest możliwe, należy wcześniej wiedzieć, co jest najlepszym rozwiązaniem. W takich przypadkach kilka algorytmy są wyświetlane razem w cheat-sheet. Odpowiednią strategię byłoby jeden algorytm, a jeśli wyniki nie są jeszcze zadowalające, ponów innych. Oto przykład z [galerii Azure AI](http://gallery.azure.ai/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [Porównaj klasyfikatorów wieloklasowej: Litera rozpoznawania](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
+* Algorytmu uczenia maszynowego, co ma swój własny styl lub *indukcyjna odchylenie*. Dla konkretnego problemu odpowiednie może być kilku algorytmów i jeden algorytm może być lepszym rozwiązaniem niż inne. Ale nie zawsze jest możliwe, należy wcześniej wiedzieć, co jest najlepszym rozwiązaniem. W takich przypadkach kilka algorytmy są wyświetlane razem w cheat-sheet. Odpowiednią strategię byłoby jeden algorytm, a jeśli wyniki nie są jeszcze zadowalające, ponów innych. Oto przykład z [galerii Azure AI](https://gallery.azure.ai/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [Porównaj klasyfikatorów wieloklasowej: Litera rozpoznawania](https://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
 * Istnieją trzy główne kategorie usługi machine learning: **uczenia nadzorowanego**, **uczenie nienadzorowane**, i **uczenia przez wzmacnianie**.
 

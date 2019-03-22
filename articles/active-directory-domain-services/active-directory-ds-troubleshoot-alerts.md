@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c71528ed8453bcde05e29eb609ca2cde64bad8de
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7d99f5a5d027c825fa1145328bb9576229ce39b4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121999"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services — Rozwiązywanie problemów z alertami
 Ten artykuł zawiera przewodniki dotyczące rozwiązywania problemów w ramach wszystkich alertów, które mogą występować w domenie zarządzanej.
@@ -103,13 +103,13 @@ W sieci wirtualnej maszyn mogą wysyłać żądania do zasobów platformy Azure,
 
 1. [Usuwanie domeny zarządzanej](active-directory-ds-disable-aadds.md) z katalogu.
 2. Usuń zakres adresów IP w podsieci
-  1. Przejdź do [stronie sieci wirtualnej w witrynie Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
-  2. Wybierz sieć wirtualną, której planujesz używać dla usług domenowych Azure AD.
-  3. Kliknij pozycję **przestrzeń adresowa** w obszarze Ustawienia
-  4. Aktualizuj zakres adresów, klikając na istniejący zakres adresów i jej edytowanie lub dodawanie dodatkowy zakres adresów. Upewnij się, że nowy zakres adresów w zakresie prywatnych adresów IP. Zapisz zmiany.
-  5. Kliknij pozycję **podsieci** w obszarze nawigacji po lewej stronie.
-  6. Kliknij podsieć, którą chcesz edytować w tabeli.
-  7. Aktualizuj zakres adresów, a następnie zapisz zmiany.
+   1. Przejdź do [stronie sieci wirtualnej w witrynie Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
+   2. Wybierz sieć wirtualną, której planujesz używać dla usług domenowych Azure AD.
+   3. Kliknij pozycję **przestrzeń adresowa** w obszarze Ustawienia
+   4. Aktualizuj zakres adresów, klikając na istniejący zakres adresów i jej edytowanie lub dodawanie dodatkowy zakres adresów. Upewnij się, że nowy zakres adresów w zakresie prywatnych adresów IP. Zapisz zmiany.
+   5. Kliknij pozycję **podsieci** w obszarze nawigacji po lewej stronie.
+   6. Kliknij podsieć, którą chcesz edytować w tabeli.
+   7. Aktualizuj zakres adresów, a następnie zapisz zmiany.
 3. Postępuj zgodnie z [przewodnik wprowadzenie pracę przy użyciu usług domenowych Azure AD](active-directory-ds-getting-started.md) ponownie utworzyć domeny zarządzanej. Upewnij się, że możesz wybrać sieć wirtualną z zakresu prywatnych adresów IP.
 4. Aby przyłączania do domeny maszyn wirtualnych do nowej domeny, wykonaj [tego przewodnika](active-directory-ds-admin-guide-join-windows-vm-portal.md).
 8. Aby upewnić się, że alert nie zostanie rozwiązany, Sprawdź kondycję Twojej domeny w ciągu dwóch godzin.
@@ -160,13 +160,13 @@ Można przenieść subskrypcję skojarzoną z usług domenowych Azure AD, wróć
 
 Azure AD Domain Services tworzy określonych zasobów podczas wdrażania, aby działał prawidłowo, łącznie z publicznymi adresami IP, kart sieciowych i modułu równoważenia obciążenia. Jeśli dowolny nazwany zostaną usunięte, to powoduje, że Twojej domeny zarządzanej, znajdować się w nieobsługiwanym stanie i zapobiega Twojej domeny zarządzanej. Ten alert zostanie znaleziony, gdy osoba, która jest w stanie edytować zasoby usługi Azure AD Domain Services usuwa niezbędnych zasobów. Następujące kroki przedstawiają sposób przywracania Twojej domeny zarządzanej.
 
-1.  Przejdź do strony kondycji usług domenowych Azure AD
-  1.    Podróży [strony usług domenowych Azure AD](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w witrynie Azure portal.
-  2.    W obszarze nawigacji po lewej stronie, kliknij przycisk **kondycji**
-2.  Zaznacz, aby sprawdzić, czy alert jest mniejszy niż 4 godziny
-  1.    Na stronie kondycji, kliknij alert o identyfikatorze **AADDS109**
-  2.    Alert będzie mieć sygnaturę czasową dla po raz pierwszy został znaleziony. Tej sygnatury czasowej jest mniejszy niż 4 godz. temu, czy istnieje ryzyko, czy usługi domenowe Azure AD można odtworzyć usuwanego zasobu.
-3.  Jeśli alert jest więcej niż 4 godziny, domena zarządzana jest w stanie odzyskać. Należy usunąć i ponownie utwórz usług domenowych Azure AD.
+1. Przejdź do strony kondycji usług domenowych Azure AD
+   1.    Podróży [strony usług domenowych Azure AD](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) w witrynie Azure portal.
+   2.    W obszarze nawigacji po lewej stronie, kliknij przycisk **kondycji**
+2. Zaznacz, aby sprawdzić, czy alert jest mniejszy niż 4 godziny
+   1.    Na stronie kondycji, kliknij alert o identyfikatorze **AADDS109**
+   2.    Alert będzie mieć sygnaturę czasową dla po raz pierwszy został znaleziony. Tej sygnatury czasowej jest mniejszy niż 4 godz. temu, czy istnieje ryzyko, czy usługi domenowe Azure AD można odtworzyć usuwanego zasobu.
+3. Jeśli alert jest więcej niż 4 godziny, domena zarządzana jest w stanie odzyskać. Należy usunąć i ponownie utwórz usług domenowych Azure AD.
 
 
 ## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: Podsieć skojarzona z Twoją domeną zarządzaną jest pełny
@@ -203,13 +203,13 @@ Nasze jednostek usługi muszą mieć dostęp do zarządzania i tworzenia zasobó
 
 1. Usuń domenę zarządzaną z Twojej dzierżawy.
 2. Usuń zakres adresów IP w podsieci
-  1. Przejdź do [stronie sieci wirtualnej w witrynie Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
-  2. Wybierz sieć wirtualną, której planujesz używać dla usług domenowych Azure AD.
-  3. Kliknij pozycję **przestrzeń adresowa** w obszarze Ustawienia
-  4. Aktualizuj zakres adresów, klikając na istniejący zakres adresów i jej edytowanie lub dodawanie dodatkowy zakres adresów. Zapisz zmiany.
-  5. Kliknij pozycję **podsieci** w obszarze nawigacji po lewej stronie.
-  6. Kliknij podsieć, którą chcesz edytować w tabeli.
-  7. Aktualizuj zakres adresów, a następnie zapisz zmiany.
+   1. Przejdź do [stronie sieci wirtualnej w witrynie Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
+   2. Wybierz sieć wirtualną, której planujesz używać dla usług domenowych Azure AD.
+   3. Kliknij pozycję **przestrzeń adresowa** w obszarze Ustawienia
+   4. Aktualizuj zakres adresów, klikając na istniejący zakres adresów i jej edytowanie lub dodawanie dodatkowy zakres adresów. Zapisz zmiany.
+   5. Kliknij pozycję **podsieci** w obszarze nawigacji po lewej stronie.
+   6. Kliknij podsieć, którą chcesz edytować w tabeli.
+   7. Aktualizuj zakres adresów, a następnie zapisz zmiany.
 3. Postępuj zgodnie z [przewodnik wprowadzenie pracę przy użyciu usług domenowych Azure AD](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) ponownie utworzyć domeny zarządzanej. Upewnij się, że możesz wybrać sieć wirtualną z zakresu prywatnych adresów IP.
 4. Aby przyłączania do domeny maszyn wirtualnych do nowej domeny, wykonaj [tego przewodnika](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 5. Sprawdzanie kondycji domeny w ciągu dwóch godzin, aby upewnić się, że czynności zostały wykonane poprawnie.

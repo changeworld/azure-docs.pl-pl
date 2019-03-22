@@ -3,20 +3,20 @@ title: 'Samouczek: Używanie usługi Azure Database Migration Service do przepro
 description: Dowiedz się, w jaki sposób przeprowadzić migrację w trybie online z lokalnego programu MySQL do usługi Azure Database for MySQL za pomocą usługi Azure Database Migration Service.
 services: dms
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 4bfcef3b033f26b667319d5d20b295443dbd5bf7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: HT
+ms.openlocfilehash: 2fe104868e4f11b39edfb52ae0dae0365ebed954
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792008"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183207"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Samouczek: Migrowanie programu MySQL do usługi Azure Database for MySQL w trybie online przy użyciu usługi DMS
 Usługa Azure Database Migration Service służy do migrowania baz danych z lokalnego wystąpienia programu MySQL do usługi [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) z minimalnym przestojem. Innymi słowy migrację można przeprowadzić przy minimalnych przestojach w działaniu aplikacji. W tym samouczku przeprowadzisz migrację przykładowej bazy danych **Employees** z lokalnego wystąpienia programu MySQL 5.7 do usługi Azure Database for MySQL za pomocą działania migracji w trybie online w usłudze Azure Database Migration Service.

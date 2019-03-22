@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: sample
-ms.date: 08/16/2018
+ms.date: 03/16/2019
 ms.author: aahi
-ms.openlocfilehash: b1559abaf95e4af5915ffbf180be4ade8a3ffdb0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 0fcc11c2bea73bb9a5bfef7a9644f131d2821aa7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864914"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58163824"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Przykłady dla zestawu SDK wyszukiwania w sieci Web Bing
 

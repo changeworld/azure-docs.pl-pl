@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: 88bb87dea4508ba41ee97a127fc60c531f2bfcab
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 5b76d7393e78b464227e93a4c7c8a3f22ccc169e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958353"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092535"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Szybki start: Tworzenie grafowej bazy danych w usłudze Azure Cosmos DB przy użyciu języka Python i witryny Azure Portal
 
@@ -222,17 +222,17 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
 12. Teraz możemy połączyć użytkowników rakesh i ashley. Upewnij się, że użytkownik **ashley** został wybrany na liście **Wyniki**, a następnie kliknij przycisk edycji obok pozycji **Cele** u dołu po prawej. Może być konieczne rozszerzenie okna w celu wyświetlenia obszaru **Właściwości**.
 
-   ![Zmiana celu wierzchołka w grafie](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Zmiana celu wierzchołka w grafie](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. W polu **Cel** wpisz *rakesh*, a w polu **Etykieta krawędzi** wpisz *zna*, a następnie kliknij pole wyboru.
 
-   ![Dodawanie połączenia między użytkownikami ashley i rakesh w Eksploratorze danych](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    ![Dodawanie połączenia między użytkownikami ashley i rakesh w Eksploratorze danych](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Teraz wybierz użytkownika **rakesh** z listy wyników, aby zobaczyć, że użytkownicy ashley i rakesh są połączeni. 
 
-   ![Dwa wierzchołki połączone w Eksploratorze danych](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    ![Dwa wierzchołki połączone w Eksploratorze danych](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
 
-   Na tym kończy się część tego samouczka poświęcona tworzeniu zasobów. Możesz dodać do grafu kolejne wierzchołki, zmodyfikować istniejące wierzchołki lub zmienić zapytania. Teraz przejrzyjmy metryki udostępniane przez usługę Azure Cosmos DB, a następnie wyczyśćmy zasoby. 
+    Na tym kończy się część tego samouczka poświęcona tworzeniu zasobów. Możesz dodać do grafu kolejne wierzchołki, zmodyfikować istniejące wierzchołki lub zmienić zapytania. Teraz przejrzyjmy metryki udostępniane przez usługę Azure Cosmos DB, a następnie wyczyśćmy zasoby. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Przeglądanie umów SLA w witrynie Azure Portal
 

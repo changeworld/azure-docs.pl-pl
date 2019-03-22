@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0e6db6ad4d2f3dfdf6aa95c0ee2255328de7e4ef
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: b675ab9663be674ec2439bfe9139b7c79c144cbd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996325"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453392"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Szybki start: Tworzenie fabryki danych platformy Azure przy użyciu programu PowerShell
 
@@ -35,7 +35,9 @@ Ten samouczek szybki start opisuje sposób używania programu PowerShell w celu 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 #### <a name="log-in-to-powershell"></a>Logowanie do programu PowerShell
 
@@ -44,19 +46,19 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 2. Uruchom poniższe polecenie i wprowadź tę samą nazwę użytkownika platformy Azure oraz hasło, których używasz do logowania się w witrynie Azure Portal:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Uruchom poniższe polecenie, aby wyświetlić wszystkie subskrypcje dla tego konta:
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
 4. Jeśli z kontem jest skojarzonych wiele subskrypcji, uruchom poniższe polecenie, aby wybrać subskrypcję, z którą chcesz pracować. Zastąp parametr **SubscriptionId** identyfikatorem Twojej subskrypcji platformy Azure:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
@@ -72,7 +74,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 2. Aby utworzyć grupę zasobów platformy Azure, uruchom następujące polecenie:
 
     ```powershell
-    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+    $ResGrp = New-AzResourceGroup $resourceGroupName -location 'East US'
     ```
 
     Jeśli grupa zasobów już istnieje, możesz zrezygnować z jej zastąpienia. Przypisz inną wartość do zmiennej `$ResourceGroupName` i ponownie uruchom polecenie.
@@ -86,10 +88,10 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
     $dataFactoryName = "ADFQuickStartFactory";
     ```
 
-4. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet **Set-AzureRmDataFactoryV2**, używając właściwości Location i ResourceGroupName ze zmiennej $ResGrp:
+4. Aby utworzyć fabrykę danych, uruchom następujące polecenie **AzDataFactoryV2 zestaw** polecenia cmdlet, używając właściwości Location i ResourceGroupName ze zmiennej $ResGrp:
 
     ```powershell
-    $DataFactory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
+    $DataFactory = Set-AzDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
         -Location $ResGrp.Location -Name $dataFactoryName
     ```
 
@@ -137,10 +139,10 @@ Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazyn�
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2LinkedService**, aby utworzyć połączoną usługę: **AzureStorageLinkedService**.
+3. Uruchom **AzDataFactoryV2LinkedService zestaw** polecenia cmdlet, aby utworzyć połączoną usługę: **AzureStorageLinkedService**.
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureStorageLinkedService" `
         -DefinitionFile ".\AzureStorageLinkedService.json"
     ```
@@ -181,10 +183,10 @@ W tym kroku zdefiniujesz zestaw danych, który reprezentuje dane do skopiowania 
     }
     ```
 
-2. Aby utworzyć zestaw danych: **BlobDataset**, uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Dataset**.
+2. Aby utworzyć zestaw danych: **BlobDataset**Uruchom **AzDataFactoryV2Dataset zestaw** polecenia cmdlet.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
+    Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName -Name "BlobDataset" `
         -DefinitionFile ".\BlobDataset.json"
     ```
@@ -253,10 +255,10 @@ W niniejszym przewodniku Szybki start tworzysz potok, który zawiera jedno dzia�
     }
     ```
 
-2. Aby utworzyć potok: **Adfv2QuickStartPipeline** uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Pipeline**.
+2. Aby utworzyć potok: **Adfv2QuickStartPipeline**Uruchom **AzDataFactoryV2Pipeline zestaw** polecenia cmdlet.
 
     ```powershell
-    $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline `
+    $DFPipeLine = Set-AzDataFactoryV2Pipeline `
         -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName `
         -Name "Adfv2QuickStartPipeline" `
@@ -275,10 +277,10 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
         "outputPath": "adftutorial/output"
     }
     ```
-2. Uruchom polecenie cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**, aby utworzyć uruchomienie potoku i przekazać wartości parametrów. Polecenie cmdlet zwraca identyfikator uruchomienia potoku w celu monitorowania w przyszłości.
+2. Uruchom **Invoke AzDataFactoryV2Pipeline** polecenia cmdlet, aby utworzyć potok Uruchom i przekaż w wartości parametrów. Polecenie cmdlet zwraca identyfikator uruchomienia potoku w celu monitorowania w przyszłości.
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline `
+    $RunId = Invoke-AzDataFactoryV2Pipeline `
         -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName `
         -PipelineName $DFPipeLine.Name `
@@ -291,7 +293,7 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
 
     ```powershell
     while ($True) {
-        $Run = Get-AzureRmDataFactoryV2PipelineRun `
+        $Run = Get-AzDataFactoryV2PipelineRun `
             -ResourceGroupName $ResGrp.ResourceGroupName `
             -DataFactoryName $DataFactory.DataFactoryName `
             -PipelineRunId $RunId
@@ -356,7 +358,7 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
 
     ```powershell
     Write-Output "Activity run details:"
-    $Result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineRunId $RunId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $Result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineRunId $RunId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $Result
 
     Write-Output "Activity 'Output' section:"
@@ -395,6 +397,6 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-dot-net.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach.

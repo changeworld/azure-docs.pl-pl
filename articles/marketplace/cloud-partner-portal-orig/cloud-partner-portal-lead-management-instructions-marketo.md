@@ -1,5 +1,5 @@
 ---
-title: Marketo | Dokumentacja firmy Microsoft
+title: Marketo | Microsoft Docs
 description: Skonfiguruj zarządzanie potencjalnymi klientami dla usługi Marketo.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: abb0abb94d3b3e7abc4dce58cdb11fa0c2cedd34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 482d7a9662a79503bb2b197d5a6c63c9fa3c1c96
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810258"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113116"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Skonfiguruj zarządzanie potencjalnymi klientami w programu Marketo
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób konfigurowania programu Marketo, do obsługi pote
 
 1. Zaloguj się do usługi Marketo.
 2. Wybierz **projektowania Studio**.
-    ![Studio projekt programu Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo1.png)
+    ![Marketo Design Studio](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo1.png)
 
 3.  Wybierz **nowy formularz**.
     ![Nowy formularz programu Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo2.png)
@@ -50,10 +50,10 @@ W tym artykule opisano sposób konfigurowania programu Marketo, do obsługi pote
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
 
-8.  Skopiuj wartości widocznych na kod osadzania, dzięki czemu możesz skonfigurować **identyfikator serwera**, **identyfikator Munchkin**, i **identyfikator formularza** w portalu Cloud Partner pola programu Marketo.
+1. Skopiuj wartości widocznych na kod osadzania, dzięki czemu możesz skonfigurować **identyfikator serwera**, **identyfikator Munchkin**, i **identyfikator formularza** w portalu Cloud Partner pola programu Marketo.
 
 Na użytek następnym przykładzie jako przewodnik wprowadzenie identyfikatorów, o których należy z przykładu kodu osadzania usługi Marketo.
 
 - Identyfikator serwera = **ys12**
-- Identyfikator munchkin = **789-123-PQR**
+- Munchkin Id = **123-PQR-789**
 - Identyfikator formularza = **1179**\

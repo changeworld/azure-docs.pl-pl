@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 779ae6030c7d36c60dbd0ad00daaf1423a21eb04
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: fc6acb211e30af460106acd1c19b61db52f09269
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269046"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311886"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager
 
 Dowiedz się, jak wykonywać iteracje w Twoim szablonie usługi Azure Resource Manager w celu utworzenia wielu wystąpień zasobu platformy Azure. W tym samouczku zmodyfikujesz szablon w celu utworzenia trzech wystąpień konta magazynu.
+
+![Usługa Azure Resource Manager tworzy wiele wystąpień diagramu](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -151,7 +153,7 @@ Gdy zasoby platformy Azure nie będą już potrzebne, wyczyść wdrożone zasoby
 3. Wybierz nazwę grupy zasobów.  W grupie zasobów zostanie wyświetlonych łącznie sześć zasobów.
 4. Wybierz pozycję **Usuń grupę zasobów** z górnego menu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób tworzenia wielu wystąpień konta magazynu. W następnym samouczku dowiesz się, jak przenieść zasób z jednej grupy zasobów do innej grupy zasobów.
 

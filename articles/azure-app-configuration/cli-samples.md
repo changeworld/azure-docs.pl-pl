@@ -1,5 +1,5 @@
 ---
-title: Przykłady interfejsu wiersza polecenia platformy Azure — Azure App Configuration | Microsoft Docs
+title: Przykłady interfejsu wiersza polecenia platformy Azure — Konfiguracja aplikacji platformy Azure | Dokumentacja firmy Microsoft
 description: Zawiera informacje o dostępnych przykładowych skryptach dla usługi Azure App Configuration
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,25 +14,25 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 053baf072c667c46f9e6d955125c13f711c20c20
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: a8a60f23511f71128bea4cc560ad8401b238732d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884300"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223652"
 ---
 # <a name="azure-cli-samples"></a>Przykłady interfejsu wiersza polecenia platformy Azure
 
-Poniższa tabela zawiera linki do skryptów powłoki systemowej dla usługi Azure App Configuration używających interfejsu wiersza polecenia platformy Azure.
+Poniższa tabela zawiera linki do skryptów bash dla konfiguracji aplikacji platformy Azure przy użyciu wiersza polecenia platformy Azure.
 
 | | |
 |-|-|
 |**Tworzenie**||
 | [Tworzenie magazynu konfiguracji aplikacji](./scripts/cli-create-service.md) | Tworzy grupę zasobów i wystąpienie magazynu konfiguracji aplikacji.  |
 |**Korzystanie**||
-| [Praca z parami klucz-wartość](./scripts/cli-work-with-keys.md) | Tworzy, wyświetla, aktualizuje i usuwa pary klucz-wartość. |
-| [Importowanie par klucz-wartość](./scripts/cli-import.md) | Importuje pary klucz-wartość z innych źródeł. |
-| [Eksportowanie par klucz-wartość](./scripts/cli-export.md) | Eksportuje pary klucz-wartość do innych miejsc docelowych. |
+| [Praca z wartości klucza](./scripts/cli-work-with-keys.md) | Tworzy, wyświetla aktualizacje i usunięcia wartości klucza. |
+| [Importowanie wartości klucza](./scripts/cli-import.md) | Importuje wartości kluczy z innych źródeł. |
+| [Eksportuj wartości klucza](./scripts/cli-export.md) | Eksportuje wartości kluczy do innych celów. |
 |**Usuwanie**||
 | [Usuwanie magazynu konfiguracji aplikacji](./scripts/cli-delete-service.md) | Usuwa wystąpienie magazynu konfiguracji aplikacji.  |
 | | |

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 2625b4807d98359b3534b8406182cd7bed194746
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 45baf915ffbc2723d3ed5b4c4dcd96b583a12802
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882407"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122407"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -37,7 +37,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>Opis</th>
   <tr>
     <td>wersja interfejsu API</td>
-    <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
+    <td><em>Wymagany parametr</em>.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
     <td>scope</td>

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d08b1f3889136fadee68b3aa95d879b0495bddb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fce7653770d0fb3134f266137e167125b9161865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198420"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097597"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu przewodników interaktywnych Yonyx
 
@@ -174,8 +174,8 @@ Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon Yonyx interak
 
 W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu Yonyx przewodników interaktywnych, jeśli go jeszcze nie istnieje.
 
->[!NOTE]
->Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z zespołem pomocy technicznej przewodników interaktywnych Yonyx za pośrednictwem <mailto:support@yonyx.com>. 
+> [!NOTE]
+> Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z zespołem pomocy technicznej przewodników interaktywnych Yonyx za pośrednictwem <mailto:support@yonyx.com>. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -217,7 +217,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

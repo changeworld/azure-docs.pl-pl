@@ -4,27 +4,27 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: ea01900926f0a2e9b3481b64a191a58e04839513
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
+ms.openlocfilehash: 9ef71ef67f53a37e5bbd5a672569114c3cd8af4e
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752883"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305383"
 ---
-Otwórz aparat Unity i otwórz projekt w folderze `Unity`.
+Na platformie Unity, otwórz projekt w `Unity` folderu.
 
-Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** -> **Build Settings (Ustawienia kompilacji)**.
+Otwórz obszar **Build Settings (Ustawienia kompilacji)**, wybierając pozycje **File (Plik)** > **Build Settings (Ustawienia kompilacji)**.
 
 W sekcji **Platform (Platforma)** wybierz pozycję **iOS**.
 
-Wybierz pozycję **Switch Platform (Przełącz platformę)**, aby zmienić platformę na **iOS**.
+Wybierz pozycję **Switch Platform (Przełącz platformę)**, aby zmienić platformę na **iOS**. Unity może spowodować wyświetlenie monitu do zainstalowania składników obsługi systemu iOS, jeśli są one Brak.
 
-![Ustawienia kompilacji aparatu Unity](./media/spatial-anchors-unity/unity-ios-build-settings.png)
+![Okno ustawień kompilacji platformy Unity](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
 Zamknij okno **Build Settings (Ustawienia kompilacji)**.
 
 ### <a name="download-and-import-the-unity-arkit-plugin"></a>Pobieranie i importowanie wtyczki ARKit aparatu Unity
 
-Pobierz [wtyczkę ARKit aparatu Unity 2.0.0](https://bitbucket.org/Unity-Technologies/unity-arkit-plugin/get/v2.0.0.zip) i wyodrębnij archiwum.
+Pobierz [wtyczki ARKit Unity w wersji 2.0.0](https://bitbucket.org/Unity-Technologies/unity-arkit-plugin/get/v2.0.0.zip) i Wyodrębnij archiwum.
 
 Skopiuj zawartość folderu `Assets` z wyodrębnionego folderu wtyczki ARKit aparatu Unity do folderu `Assets` przykładu.

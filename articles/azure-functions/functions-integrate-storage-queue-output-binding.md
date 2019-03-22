@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 15ef1905562d04c2732016dfd1340910b3a8f699
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106461"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Dodawanie komunikatów do kolejki usługi Azure Storage przy użyciu funkcji
 
@@ -122,7 +122,7 @@ W tej sekcji dodasz kod służący do zapisywania komunikatu do kolejki wyjścio
 
 Pomiń tę sekcję, jeśli Eksplorator usługi Storage został już zainstalowany i połączony z kontem magazynu, które jest używane na potrzeby tego przewodnika Szybki start.
 
-2. Uruchom narzędzie [Microsoft Azure Storage Explorer](https://storageexplorer.com/), wybierz ikonę połączenia po lewej stronie, wybierz pozycję **Użyj klucza i nazwy konta magazynu** i wybierz przycisk **Dalej**.
+1. Uruchom narzędzie [Microsoft Azure Storage Explorer](https://storageexplorer.com/), wybierz ikonę połączenia po lewej stronie, wybierz pozycję **Użyj klucza i nazwy konta magazynu** i wybierz przycisk **Dalej**.
 
     ![Uruchamianie narzędzia Storage Account Explorer.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
@@ -140,13 +140,13 @@ Pomiń tę sekcję, jeśli Eksplorator usługi Storage został już zainstalowan
  
 1. Kliknij ikonę Pokaż/Ukryj obok pola **Klucz konta**, aby wyświetlić wartość, a następnie skopiuj wartość **Klucz konta** i wklej ją w polu **Klucz konta** w Eksploratorze usługi Storage.
   
-3. Wybierz pozycję **Dalej > Połącz**.
+1. Wybierz pozycję **Dalej > Połącz**.
 
    ![Wklej poświadczenia magazynu i nawiąż połączenie.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
 ### <a name="examine-the-output-queue"></a>Sprawdzanie kolejki wyjściowej
 
-4. W Eksploratorze usługi Storage wybierz konto magazynu używane na potrzeby tego przewodnika Szybki start.
+1. W Eksploratorze usługi Storage wybierz konto magazynu używane na potrzeby tego przewodnika Szybki start.
 
 1. Rozwiń węzeł **Kolejki**, a następnie wybierz kolejkę o nazwie **outqueue**. 
 
@@ -154,13 +154,13 @@ Pomiń tę sekcję, jeśli Eksplorator usługi Storage został już zainstalowan
 
     ![Komunikaty w kolejce wyświetlane w Eksploratorze usługi Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-2. Ponownie uruchom funkcję. W kolejce pojawi się nowy komunikat.  
+1. Ponownie uruchom funkcję. W kolejce pojawi się nowy komunikat.  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start dodano powiązanie danych wyjściowych do istniejącej funkcji. Aby uzyskać więcej informacji na temat tworzenia powiązań z kolejką magazynu, zobacz [Powiązania kolejki magazynu w usłudze Azure Functions](functions-bindings-storage-queue.md).
 

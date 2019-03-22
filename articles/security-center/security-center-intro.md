@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 16473b7814763d80f7e850acf44839f5ef640a18
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109048"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242041"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
@@ -128,7 +128,7 @@ Usługa Security Center obejmuje funkcje, które ułatwiają wykonywanie automat
 
 ## <a name="get-secure-faster"></a>Szybsze osiągnięcie bezpieczeństwa
 
-Natywna integracja z platformą Azure (w tym usługami Azure Policy i Log Analytics) w połączeniu z bezproblemową integracją z innymi rozwiązaniami zabezpieczającymi firmy Microsoft, takimi jak Microsoft Cloud App Security i Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender, daje pewność, że Twoje rozwiązanie zabezpieczeń jest kompleksowe i łatwe do wdrożenia.
+Natywna Integracja usługi Azure (w tym dzienniki usługi Azure Policy i usługi Azure Monitor) połączone z bezproblemową integrację z innymi rozwiązaniami zabezpieczeń firmy Microsoft, takich jak Microsoft Cloud App Security i zaawansowanej ochrony przed zagrożeniami programu Windows Defender upewnić się, Twoje rozwiązanie w zakresie zabezpieczeń jest kompleksowy, jak również łatwe dodawanie i wdrażanie.
 
 Ponadto można rozszerzyć pełne rozwiązanie poza platformę Azure na obciążenia działające w innych chmurach, jak i w lokalnych centrach danych.
 
@@ -138,7 +138,7 @@ Usługa Security Center zapewnia bezproblemową natywną integrację z platform�
 
 Rozbudowane kolekcje dzienników — dzienniki z systemów Windows i Linux są wykorzystywane przez aparat analizy zabezpieczeń i używane do tworzenia zaleceń i alertów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Do rozpoczęcia pracy z usługą Security Center jest wymagana subskrypcja platformy Microsoft Azure. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
 - Usługa Security Center w warstwie cenowej Bezpłatna jest włączona w ramach subskrypcji platformy Azure. Aby móc korzystać z zaawansowanych możliwości wykrywania zagrożeń i zarządzania zabezpieczeniami, musisz przeprowadzić uaktualnienie do warstwy cenowej Standardowa. Warstwę Standardowa można wypróbować bezpłatnie. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).

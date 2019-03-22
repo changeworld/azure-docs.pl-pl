@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91958a76ffb3cafd818949c1475fd13bb978a928
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 1a6aa75f3d25cd88cd1edb9b2cdcfabc3b4ec8f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731894"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103897"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Użyj protokołu SSL do zabezpieczania usług sieci web za pomocą usługi Azure Machine Learning
 
@@ -48,7 +48,7 @@ Istnieją drobne różnice podczas zabezpieczania usług sieci web w [celów wdr
 
 ## <a name="get-a-domain-name"></a>Pobierz nazwę domeny
 
-Jeśli nie jesteś już właścicielem nazwy domeny, możesz kupić jeden z __rejestratora nazw domen__. Ten proces różni się między rejestratorów, tak jak koszt. Rejestrator również udostępnia narzędzia do zarządzania nazwy domeny. Te narzędzia są używane do mapowania w pełni kwalifikowaną nazwę domeny (np. www.contoso.com) do adresu IP, obsługującego usługi sieci web.
+Jeśli nie jesteś już właścicielem nazwy domeny, możesz kupić jeden z __rejestratora nazw domen__. Ten proces różni się między rejestratorów, tak jak koszt. Rejestrator również udostępnia narzędzia do zarządzania nazwy domeny. Te narzędzia są używane do mapowania w pełni kwalifikowanej nazwy domeny (np. www\.contoso.com) do adresu IP, obsługującego usługi sieci web.
 
 ## <a name="get-an-ssl-certificate"></a>Uzyskaj certyfikat protokołu SSL
 
@@ -57,7 +57,7 @@ Istnieje wiele sposobów, aby uzyskać certyfikat SSL (certyfikat cyfrowy). Najc
 * A __certyfikatu__. Certyfikat musi zawierać łańcucha certyfikatów pełnego i musi być zakodowany w formacie PEM.
 * A __klucz__. Klucz musi być zakodowany w formacie PEM.
 
-Podczas żądania certyfikatu, podaj w pełni kwalifikowana nazwa domeny (FQDN) adresu, który ma być używany przez usługę sieci web. Na przykład www.contoso.com. Adres, który został oznaczony do certyfikatu i adres używany przez klientów, są porównywane podczas weryfikowania tożsamości usługi sieci web. Jeśli adresy różnią się od siebie, klienci spowoduje wystąpienie błędu.
+Podczas żądania certyfikatu, podaj w pełni kwalifikowana nazwa domeny (FQDN) adresu, który ma być używany przez usługę sieci web. Na przykład www\.contoso.com. Adres, który został oznaczony do certyfikatu i adres używany przez klientów, są porównywane podczas weryfikowania tożsamości usługi sieci web. Jeśli adresy różnią się od siebie, klienci spowoduje wystąpienie błędu.
 
 > [!TIP]
 > Jeśli urząd certyfikacji nie może dostarczyć certyfikat i klucz jako pliki zakodowane w formacie PEM, możesz użyć narzędzia takie jak [OpenSSL](https://www.openssl.org/) zmian w formacie.

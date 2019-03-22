@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a04b9383-3a60-4d54-9412-123daaddff3b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2c6b95d62f6210ecfdd560bc1c00a3e055be3ee
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: c24cbf8ad21c7dd5875a71532a5278e313774e66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880355"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją dmarcian
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji dmarcian z usługą Azure AD, musisz do
 
 **Aby dodać aplikację dmarcian z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -106,6 +106,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją dmarcian,
     ![Domena i adresy URL aplikacji dmarcian — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     | -- |
     | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
@@ -113,6 +114,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją dmarcian,
     | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
@@ -124,6 +126,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją dmarcian,
     ![Domena i adresy URL aplikacji dmarcian — informacje dotyczące logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
@@ -186,7 +189,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -239,15 +242,15 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji dmarc
 
     ![Nowy użytkownik](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. W polu tekstowym **New User Email** (Adres e-mail nowego użytkownika) wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
+    a. W **nowy adres E-mail użytkownika** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     b. Jeśli chcesz nadać użytkownikowi uprawnienia administratora, zaznacz pole **Make User an Admin** (Oznacz użytkownika jako administratora).
 
-    d. Kliknij pozycję **Add User** (Dodaj użytkownika).
+    c. Kliknij pozycję **Add User** (Dodaj użytkownika).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka dmarcian w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji dmarcian, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

@@ -1,20 +1,20 @@
 ---
 title: Konfigurowanie chmury dla usługi Azure IoT Hub Device Provisioning w portalu | Microsoft Docs
 description: Automatyczne aprowizowanie urządzeń usługi IoT Hub w witrynie Azure Portal
-author: sethmanheim
-ms.author: sethm
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 971b00f54d59782d5aa7ca752fc06e490d372760
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: HT
+ms.openlocfilehash: 8f06d3f033a2bf5907dc2ee324359bef0eb247d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514846"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170738"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurowanie zasobów w chmurze pod kątem aprowizowania urządzeń za pomocą usługi IoT Hub Device Provisioning
 
@@ -81,23 +81,23 @@ Następnym krokiem jest połączenie usługi Device Provisioning z centrum IoT w
 
 4. Na stronie **Dodawanie linku do centrum IoT Hub** podaj następujące informacje i kliknij przycisk **Zapisz**:
 
-    * **Subskrypcja:** upewnij się, że wybrano subskrypcję, która zawiera centrum IoT. Istnieje możliwość utworzenia linku do centrum IoT, które znajduje się innej subskrypcji.
+    * **Subskrypcja:** Upewnij się, że jest zaznaczona opcja subskrypcji, która zawiera usługę IoT hub. Istnieje możliwość utworzenia linku do centrum IoT, które znajduje się innej subskrypcji.
 
-    * **Centrum IoT:** wybierz nazwę centrum IoT, które ma zostać połączone z tym wystąpieniem usługi Device Provisioning.
+    * **Usługa IoT hub:** Wybierz nazwę Centrum IoT hub, który chcesz połączyć z tym wystąpieniem usługi Device Provisioning.
 
-    * **Zasady dostępu:** wybierz **iothubowner** jako poświadczenia używane do nawiązania połączenia z centrum IoT.
+    * **Zasady dostępu:** Wybierz **iothubowner** jako poświadczenia na potrzeby ustanawiania łącza do usługi IoT hub.
 
    ![Tworzenie powiązania nazwy centrum z usługą Device Provisioning Service w portalu](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Ustawienie zasad alokacji w usłudze Device Provisioning
 
-Zasady alokacji to ustawienie usługi IoT Hub Device Provisioning określające, w jaki sposób urządzenia są przypisane do centrum IoT. Są obsługiwane trzy zasady alokacji: 
+Zasady alokacji to ustawienie IoT Hub Device Provisioning Service, która określa sposób przypisywania urządzeń do usługi IoT hub. Są obsługiwane trzy zasady alokacji: 
 
-1. **Najmniejsze opóźnienie**: urządzenia są aprowizowane do centrum IoT z uwzględnieniem centrum z najmniejszym opóźnieniem do urządzenia.
+1. **Najmniejsze opóźnienie**: Urządzenia są aprowizowane do Centrum IoT z uwzględnieniem Centrum z najmniejszym opóźnieniem do urządzenia.
 
-2. **Dystrybucja z równymi wagami** (domyślnie): aprowizacja do każdego z połączonych centrów IoT jest jednakowo prawdopodobna. Jest to ustawienie domyślne. W przypadku aprowizowania urządzeń tylko do jednego centrum IoT można pozostawić to ustawienie. 
+2. **Dystrybucja z równymi wagami** (ustawienie domyślne): Połączone centra IoT Hub jest jednakowo prawdopodobna, urządzeń, które mu udostępnionych. Jest to ustawienie domyślne. W przypadku aprowizowania urządzeń tylko do jednego centrum IoT można pozostawić to ustawienie. 
 
-3. **Konfiguracja statyczna za pośrednictwem listy rejestracji**: określenie żądanego centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji na poziomie usługi Device Provisioning.
+3. **Konfiguracja statyczna za pośrednictwem listy rejestracji**: Określenie żądanego Centrum IoT na liście rejestracji ma wyższy priorytet niż zasady alokacji poziomu usługi Device Provisioning.
 
 Aby ustawić zasady alokacji, na stronie Usługa Device Provisioning kliknij pozycję **Zarządzanie zasadami alokacji**. Upewnij się, że dla zasad alokacji ustawiono wartość **Dystrybucja z równymi wagami** (wartość domyślną). Jeśli wprowadzisz zmiany, kliknij polecenie **Zapisz**, gdy wszystko będzie gotowe.
 
@@ -111,7 +111,7 @@ Inne samouczki w tej kolekcji zależą od tego samouczka. Jeśli planujesz konty
 
 2. W witrynie Azure Portal w menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie wybierz swoje centrum IoT. U góry strony **Wszystkie zasoby** kliknij polecenie **Usuń**.
  
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

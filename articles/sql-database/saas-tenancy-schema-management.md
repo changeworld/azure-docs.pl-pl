@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 39c4884fcca2b041603305d73526e3310ab99a21
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b2aa3eb6a117bbbdcf9c4aa44161dc25ddea2f1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441886"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081223"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Zarządzanie schematami w aplikacji SaaS przy użyciu wzorca bazy danych dla dzierżawy usługa Azure SQL Database
  
@@ -28,7 +28,7 @@ Ten samouczek analizuje dwa scenariusze — wdrażanie aktualizacji danych refer
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
+> 
 > * Utwórz agenta zadania
 > * Spowodować zadań T-SQL, należy uruchomić na wszystkich baz danych dzierżaw
 > * Aktualizowanie danych referencyjnych we wszystkich bazach danych dzierżaw
@@ -122,7 +122,7 @@ Sprawdź następujące elementy w _OnlineReindex.sql_ skryptu:
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-
+> 
 > * Utwórz zadanie agenta do uruchamiania różnych zadań T-SQL wielu baz danych
 > * Aktualizowanie danych referencyjnych we wszystkich bazach danych dzierżaw
 > * Tworzenie indeksu tabeli we wszystkich bazach danych dzierżaw

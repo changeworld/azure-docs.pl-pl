@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f3d9a2447bdbc2a1a5ce930ffa161d5a9e30069b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913158"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225063"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Wprowadzenie do zabezpieczeń platformy Apache Hadoop z pakietem Enterprise Security
 
 W przeszłości, Azure HDInsight obsługuje tylko jednego użytkownika: administratora lokalnego. Bardzo dobrze funkcjonowało to dla mniejszych zespołów aplikacji lub działów. Jak obciążeń opartych na technologii Apache Hadoop zwiększania popularności w sektorze przedsiębiorstw potrzeba do obsługi funkcji przeznaczonych dla przedsiębiorstw, takich jak uwierzytelniania opartego na usłudze Active Directory lub wielu użytkowników i kontroli dostępu opartej na rolach, staje się coraz ważniejsza. 
 
-Klaster usługi HDInsight można utworzyć za pomocą Enterprise pakietu zabezpieczeń (ESP), który jest przyłączony do domeny usługi Active Directory. Następnie można skonfigurować listę pracowników przedsiębiorstwa, którzy mogą uwierzytelniać się za pośrednictwem usługi Azure Active Directory do logowania do klastra HDInsight. Nikt spoza przedsiębiorstwa jest logowania lub uzyskiwać dostęp do klastra HDInsight. 
+Klaster usługi HDInsight można utworzyć za pomocą Enterprise pakietu zabezpieczeń (ESP), który jest przyłączony do domeny usługi Active Directory. Następnie można skonfigurować listę pracowników przedsiębiorstwa, którzy mogą uwierzytelniać się za pośrednictwem usługi Azure Active Directory, aby zarejestrować się w klastrze HDInsight. Nikt z poza firmę Zaloguj, lub uzyskać dostęp do klastra HDInsight. 
 
 Administrator przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach (RBAC) dla zabezpieczeń Apache Hive za pomocą [struktury Apache Ranger](https://hortonworks.com/apache/ranger/). Konfigurowanie funkcji RBAC ogranicza dostęp do danych tylko potrzebne elementy. Na koniec administrator może przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian zasad kontroli dostępu. Administrator może następnie osiągnąć wysoki stopień nadzoru nad zasobami firmy.
 
@@ -39,7 +39,7 @@ Kolejna warstwa zabezpieczeń brzegowych odbywa się za pośrednictwem usługi b
 ## <a name="authentication"></a>Authentication
 Administrator przedsiębiorstwa może utworzyć klaster HDInsight przy użyciu ESP w [sieci wirtualnej](https://azure.microsoft.com/services/virtual-network/). Wszystkie węzły klastra HDInsight są przyłączone do domeny, którą zarządza przedsiębiorstwo. Jest to osiągane za pośrednictwem [usługi Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
 
-W przypadku takiej konfiguracji pracownicy przedsiębiorstwa mogą logować do węzłów klastra przy użyciu swoich poświadczeń domeny. Mogą również użyć poświadczeń domeny do uwierzytelniania za pomocą innych zatwierdzonych punktów końcowych, takich jak widoków Ambari Apache, ODBC, JDBC, PowerShell i interfejsów API REST do interakcji z klastrem. Administrator ma pełną kontrolę nad ograniczaniem liczby użytkowników, którzy współpracują z klastrem za pośrednictwem tych punktów końcowych.
+W przypadku takiej konfiguracji pracownicy przedsiębiorstwa zalogować się do węzłów klastra przy użyciu swoich poświadczeń domeny. Mogą również użyć poświadczeń domeny do uwierzytelniania za pomocą innych zatwierdzonych punktów końcowych, takich jak widoków Ambari Apache, ODBC, JDBC, PowerShell i interfejsów API REST do interakcji z klastrem. Administrator ma pełną kontrolę nad ograniczaniem liczby użytkowników, którzy współpracują z klastrem za pośrednictwem tych punktów końcowych.
 
 ## <a name="authorization"></a>Autoryzacja
 Najlepszym rozwiązaniem należy wykonać większość przedsiębiorstw jest upewnienie się, że nie każdy pracownik ma dostęp do wszystkich zasobów organizacji. Analogicznie administrator może zdefiniować zasady kontroli dostępu opartej na rolach dla zasobów klastra. 

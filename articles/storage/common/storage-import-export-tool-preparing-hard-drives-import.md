@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510140"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898690"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Przygotowywanie dysków twardych do zadania importu
 
@@ -25,7 +25,7 @@ Narzędzie WAImportExport jest dysk przygotowania i napraw narzędzia które mo�
 
 - **Konfiguracja maszyny**
   - Windows 7, Windows Server 2008 R2 lub nowszy system operacyjny Windows
-  - Musi być zainstalowany program .NET framework 4. Zobacz [— często zadawane pytania](#faq) na temat sposobu sprawdzania, czy .net Framework jest zainstalowana na maszynie.
+  - Musi być zainstalowany program .NET framework 4. Zobacz [— często zadawane pytania](#faq) na temat sposobu Sprawdź, czy .NET Framework jest zainstalowana na komputerze.
 - **Klucz konta magazynu** — należy co najmniej jeden z kluczy konta dla konta magazynu.
 
 ### <a name="preparing-disk-for-import-job"></a>Przygotowywanie dysku do zadania importu
@@ -151,12 +151,12 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 Jeśli dane nie zmieściły się w określone dyski w InitialDriveset, jeden służy narzędzie można dodać dodatkowe dyski do tej samej sesji kopiowania. 
 
->[!NOTE] 
->Identyfikator sesji powinien być zgodny z identyfikatorem poprzedniej sesji. Plik dziennika powinien być zgodny określona w poprzedniej sesji.
->
-```
-WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
-```
+> [!NOTE]
+> Identyfikator sesji powinien być zgodny z identyfikatorem poprzedniej sesji. Plik dziennika powinien być zgodny określona w poprzedniej sesji.
+> 
+> ```
+> WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
+> ```
 
 **Przykład:**
 
@@ -364,7 +364,7 @@ W celu wyłączenia modułu TPM w funkcji BitLocker, należy przejść przez nas
 
 Wszystkie wersje programu Microsoft .NET Framework są zainstalowane w następującym katalogu: %windir%\Microsoft.NET\Framework\
 
-Przejdź do części wyżej wymienionych na komputerze docelowym, gdzie narzędzie musi zostać uruchomiony. Wyszukaj nazwę folderu, począwszy od wersji "4". Brak takiego katalogu oznacza, że .NET 4 nie jest zainstalowany na tym komputerze. .Net 4 można pobrać przy użyciu [Microsoft .NET Framework 4 (Instalator internetowy)](https://www.microsoft.com/download/details.aspx?id=17851).
+Przejdź do części wyżej wymienionych na komputerze docelowym, gdzie narzędzie musi zostać uruchomiony. Wyszukaj nazwę folderu, począwszy od wersji "4". Brak takiego katalogu oznacza, że .NET 4 nie jest zainstalowany na tym komputerze. .NET 4 można pobrać przy użyciu [Microsoft .NET Framework 4 (Instalator internetowy)](https://www.microsoft.com/download/details.aspx?id=17851).
 
 ### <a name="limits"></a>Limity
 

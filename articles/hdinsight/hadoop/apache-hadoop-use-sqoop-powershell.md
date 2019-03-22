@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: c3b7695b7a67a33df93b0216cfd02f762e412158
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7ddf37a2973196f458efb8ecc8e20761006996ef
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635718"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199515"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Uruchamiać zadania Apache Sqoop przy użyciu programu Azure PowerShell dla usługi Apache Hadoop w HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -166,7 +166,6 @@ HDInsight opartych na systemie Linux przedstawia następujące ograniczenia:
 Teraz masz pokazaliśmy, jak przy użyciu narzędzia Sqoop. Aby dowiedzieć się więcej, zobacz:
 
 * [Za pomocą usług Apache Oozie HDInsight](../hdinsight-use-oozie.md): Użyj narzędzia Sqoop akcji w przepływ pracy programu Oozie.
-* [Analizowanie danych dotyczących opóźnień lotów przy użyciu HDInsight](../hdinsight-analyze-flight-delay-data.md): Użyj Apache Hive do analizowania danych dotyczących opóźnień lotów, a następnie wyeksportować dane do usługi Azure SQL database przy użyciu narzędzia Sqoop.
 * [Przekazywanie danych do HDInsight](../hdinsight-upload-data.md): Znajdź innych metod do przekazywania danych do usługi HDInsight lub Azure Blob storage.
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

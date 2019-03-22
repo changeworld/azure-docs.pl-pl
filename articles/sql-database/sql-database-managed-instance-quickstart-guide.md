@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 3bf0f62b0a8d909231ad747435ce363e6686fe80
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 44ea6db1c31f0ebfbe2abe2f9f6eea165a3ff4e0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874753"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306769"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Wprowadzenie do wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -28,6 +28,7 @@ Opcja wdrożenia [wystąpienia zarządzanego](sql-database-managed-instance-inde
 Następujące przewodniki Szybki start umożliwiają szybkie utworzenie wystąpienia zarządzanego, skonfigurowanie maszyny wirtualnej lub połączenia sieci VPN typu punkt-lokacja dla aplikacji klienckiej oraz przywrócenie bazy danych w nowym wystąpieniu zarządzanym przy użyciu pliku `.bak`.
 
 ### <a name="configure-environment"></a>Konfigurowanie środowiska
+
 Pierwszym krokiem powinno być utworzenie pierwszego wystąpienia zarządzanego przy użyciu środowiska sieciowego, w którym zostanie ono umieszczone, i włączenie połączenia z komputera lub maszyny wirtualnej, gdzie są wykonywane zapytania do wystąpienia zarządzanego. Możesz użyć następujących wytycznych:
 
 - [Tworzenie wystąpienia zarządzanego przy użyciu witryny Azure Portal](sql-database-managed-instance-get-started.md). W witrynie Azure Portal skonfigurujesz wymagane parametry (nazwa użytkownika, hasło, liczba rdzeni i maksymalna pojemność magazynu) i automatycznie utworzysz środowisko sieciowe platformy Azure bez znajomości szczegółów sieci i wymagań dotyczących infrastruktury. Musisz jedynie upewnić się, że używany [typ subskrypcji](sql-database-managed-instance-resource-limits.md#supported-subscription-types) aktualnie zapewnia możliwość utworzenia wystąpienia zarządzanego. Jeśli masz własną sieć, której chcesz użyć, lub jeśli chcesz dostosować sieć, zobacz [konfigurowanie istniejącej sieci wirtualnej dla wystąpienia zarządzanego usługi Azure SQL Database](sql-database-managed-instance-configure-vnet-subnet.md) lub [tworzenie sieci wirtualnej dla wystąpienia zarządzanego usługi Azure SQL Database](sql-database-managed-instance-create-vnet-subnet.md).
@@ -39,10 +40,11 @@ Pierwszym krokiem powinno być utworzenie pierwszego wystąpienia zarządzanego 
   > [!NOTE]
   > Możesz też użyć usługi ExpressRoute lub połączenia lokacja-lokacja z sieci lokalnej, lecz te podejścia są poza zakresem tych przewodników Szybki start.
 
-### <a name="migrate-your-databases"></a>Migrowanie baz danych 
+### <a name="migrate-your-databases"></a>Migrowanie baz danych
+
 Po utworzeniu wystąpienia zarządzanego i skonfigurowaniu dostępu możesz rozpocząć migrowanie baz danych z programu SQL Server pracującego lokalnie lub na maszynach wirtualnych platformy Azure. Migracja zakończy się niepowodzeniem, jeśli migrowana źródłowa baza danych obejmuje nieobsługiwane funkcje. Aby uniknąć błędów i sprawdzić zgodność, możesz zainstalować narzędzie [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595), które przeanalizuje wszystkie bazy danych w programie SQL Server i znajdzie wszelkie problemy mogące blokować migrację do wystąpień zarządzanych, takie jak obecność funkcji [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) lub wiele plików dziennika. Po rozwiązaniu tych problemów bazy danych będą gotowe na migrację do wystąpienia zarządzanego. [Asystent eksperymentowania z bazą danych](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) to kolejne przydatne narzędzie, które umożliwia rejestrowanie obciążeń programu SQL Server i odtwarzanie ich w wystąpieniu zarządzanym, co pozwala na określenie, czy po migracji do wystąpienia zarządzanego będą miały miejsce jakiekolwiek problemy z wydajnością.
 
-Po upewnieniu się, że można migrować bazę danych do wystąpienia zarządzanego, możesz za pomocą natywnych możliwości przywracania programu SQL Server przywrócić bazę danych w wystąpieniu zarządzanym z pliku `.bak`. Tej metody możesz użyć do migracji baz danych z aparatu bazy danych programu SQL Server zainstalowanego lokalnie lub na maszynie wirtualnej platformy Azure. Aby szybko rozpocząć pracę, zobacz [Restore from backup to a managed instance](sql-database-managed-instance-get-started-restore.md) (Przywracanie z kopii zapasowej w wystąpieniu zarządzanym). W tym przewodniku Szybki start wykonasz przywracanie z pliku `.bak` przechowywanego w usłudze Azure Blob Storage przy użyciu polecenia języka Transact-SQL `RESTORE`. 
+Po upewnieniu się, że można migrować bazę danych do wystąpienia zarządzanego, możesz za pomocą natywnych możliwości przywracania programu SQL Server przywrócić bazę danych w wystąpieniu zarządzanym z pliku `.bak`. Tej metody możesz użyć do migracji baz danych z aparatu bazy danych programu SQL Server zainstalowanego lokalnie lub na maszynie wirtualnej platformy Azure. Aby szybko rozpocząć pracę, zobacz [Restore from backup to a managed instance](sql-database-managed-instance-get-started-restore.md) (Przywracanie z kopii zapasowej w wystąpieniu zarządzanym). W tym przewodniku Szybki start wykonasz przywracanie z pliku `.bak` przechowywanego w usłudze Azure Blob Storage przy użyciu polecenia języka Transact-SQL `RESTORE`.
 
 > [!TIP]
 > Aby utworzyć kopię zapasową bazy danych w usłudze Azure Blob Storage za pomocą polecenia języka Transact-SQL `BACKUP`, zobacz [SQL Server backup to URL (Tworzenie kopii zapasowej programu SQL Server pod określonym adresem URL)](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
@@ -51,7 +53,9 @@ Te przewodniki Szybki start umożliwiają szybkie utworzenie, skonfigurowanie i 
 
 ## <a name="customize-network-environment"></a>Dostosowywanie środowiska sieciowego
 
-Mimo że sieć wirtualną i podsieć można automatycznie skonfigurować podczas tworzenia wystąpienia przy użyciu witryny Azure Portal, przydatne może być utworzenie ich przed rozpoczęciem tworzenia wystąpień zarządzanych, ponieważ można wtedy skonfigurować parametry sieci wirtualnej i podsieci. Najprostszym sposobem utworzenia i skonfigurowania środowiska sieciowego jest użycie szablonu [wdrażania zasobów platformy Azure](sql-database-managed-instance-create-vnet-subnet.md), który utworzy oraz skonfiguruje sieć i podsieć dla wystąpienia zarządzanego. Wystarczy nacisnąć przycisk wdrażania usługi Azure Resource Manager i podać parametry w formularzu. 
+Mimo że sieć wirtualną i podsieć można automatycznie skonfigurować podczas tworzenia wystąpienia przy użyciu [witryny Azure Portal](sql-database-managed-instance-get-started.md), przydatne może być utworzenie ich przed rozpoczęciem tworzenia wystąpień zarządzanych, ponieważ można wtedy skonfigurować parametry sieci wirtualnej i podsieci. Najprostszym sposobem utworzenia i skonfigurowania środowisko sieciowego jest użycie szablonu [wdrażania zasobów platformy Azure](sql-database-managed-instance-create-vnet-subnet.md), który utworzy oraz skonfiguruje sieć i podsieć w miejscu przeznaczonym dla wystąpienia. Wystarczy nacisnąć przycisk wdrażania usługi Azure Resource Manager i podać parametry w formularzu.
+
+Jako alternatywy możesz użyć [skryptu programu PowerShell](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) do zautomatyzowania tworzenia sieci.
 
 Jako alternatywy możesz użyć [skryptu programu PowerShell](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) do zautomatyzowania tworzenia sieci.
 
@@ -69,8 +73,8 @@ Jeśli masz już sieć wirtualną i podsieć, w których chcesz wdrożyć wystą
 
 Artykuły w tych przewodnikach Szybki start umożliwiają szybkie skonfigurowanie wystąpienia zarządzanego i przeniesienie baz danych przy użyciu natywnej funkcji `RESTORE`. Jednak w przypadku natywnej funkcji `RESTORE` należy poczekać na przywrócenie baz danych (i skopiowanie ich do usługi Azure Blob Storage, jeśli nie są tam jeszcze przechowywane). Może to spowodować przestój aplikacji, szczególnie jeśli bazy danych są duże. Aby przenieść produkcyjną bazę danych, użyj usługi [Data Migration Service (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) w celu migrowania bazy danych z minimalnym przestojem. Usługa DMS realizuje to przez przyrostowe wypychanie zmian wprowadzanych w źródłowej bazie danych do bazy danych przywracanej w wystąpieniu zarządzanym. Dzięki niej można szybko przełączyć aplikację ze źródłowej do docelowej bazy danych z możliwie najkrótszym przestojem.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj [ogólną listę obsługiwanych funkcji wystąpienia zarządzanego](sql-database-features.md) oraz [informacje szczegółowe i znane problemy](sql-database-managed-instance-transact-sql-information.md).
-- Dowiedz się więcej o [charakterystykach technicznych wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits). 
-- Więcej instrukcji zaawansowanych można znaleźć w [dokumentacji używania wystąpienia zarządzanego w usłudze Azure SQL Database](sql-database-howto-managed-instance.md). 
+- Dowiedz się więcej o [charakterystykach technicznych wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+- Więcej instrukcji zaawansowanych można znaleźć w [dokumentacji używania wystąpienia zarządzanego w usłudze Azure SQL Database](sql-database-howto-managed-instance.md).

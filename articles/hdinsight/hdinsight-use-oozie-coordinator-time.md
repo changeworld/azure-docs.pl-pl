@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 000f8de4d40fda39f183b0824bea6a09605e6e9d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a47a30995f651204782325a9f984086fdf382a03
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977613"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202201"
 ---
 # <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Za pomocą opartego na czasie koordynatora programu Apache Oozie Apache Hadoop w HDInsight do definiowania przepływów pracy i koordynowania zadań
 W tym artykule dowiesz się, jak zdefiniować przepływy pracy i koordynatorów oraz sposób wyzwalania zadania koordynatora, w oparciu o czas. Warto poświęcić na przejście [Użyj Apache Oozie z HDInsight] [ hdinsight-use-oozie] przed przeczytaniem tego artykułu. Oprócz programu Oozie można także zaplanować zadania przy użyciu usługi Azure Data Factory. Aby poznać usługi Azure Data Factory, zobacz [Use Apache Pig i Apache Hive z usługą Data Factory](../data-factory/transform-data.md).
@@ -87,7 +87,7 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
     |Nazwa bazy danych SQL|$sqlDatabaseName||Baza danych Azure SQL, do którego Sqoop zostaną wyeksportowane dane. |
 
   > [!NOTE]   
-  > Domyślnie usługi Azure SQL database zezwala na połączenia z usług platformy Azure, takich jak Azure HDInsight. Wyłączenie tego ustawienia zapory, należy włączyć je w witrynie Azure Portal. Aby uzyskać instrukcje dotyczące tworzenia bazy danych SQL i konfigurowania reguł zapory, zobacz [tworzenie i Konfigurowanie bazy danych SQL][sqldatabase-get-started].
+  > Domyślnie usługi Azure SQL database zezwala na połączenia z usług platformy Azure, takich jak Azure HDInsight. Wyłączenie tego ustawienia zapory, należy włączyć je w witrynie Azure portal. Aby uzyskać instrukcje dotyczące tworzenia bazy danych SQL i konfigurowania reguł zapory, zobacz [tworzenie i Konfigurowanie bazy danych SQL][sqldatabase-get-started].
 
 > [!NOTE]  
 > Wypełnianie wartości w tabelach. Będzie ona przydatne w przypadku przechodzenia przez w tym samouczku.
@@ -192,7 +192,7 @@ Działanie programu Hive w przepływie pracy wywołuje plik skryptu HiveQL. Ten 
     |Zmienne przepływu pracy|Opis|
     |---|---|
     |${jobTracker}|Określ adres URL śledzenia zadań usługi Hadoop. Użyj **jobtrackerhost:9010** na HDInsight klastra w wersji 3.0 i w wersji 2.0.|
-    |${nameNode}|Podaj adres URL węzła nazwa usługi Hadoop. Użyj wasb system plików domyślne: / / adresu, na przykład *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+    |${nameNode}|Podaj adres URL węzła nazwa usługi Hadoop. Użyj wasb system plików domyślne: / / adresu, na przykład *wasb: / /&lt;containerName&gt;\@&lt;storageAccountName&gt;. blob.core.windows.net*.|
     |${queueName}|Określa nazwę kolejki, która zadania zostaną przesłane do. Użyj **domyślne**.|
 
     Zmienne akcji gałęzi
@@ -655,15 +655,15 @@ Program Azure PowerShell aktualnie nie zapewnia żadnych poleceń cmdlet do defi
 
 Usuń znaki #, jeśli chcesz uruchamiać dodatkowe funkcje.
 
-9. Jeśli Twój klaster usługi HDinsight jest w wersji 2.1, zastąp "https://$clusterName.azurehdinsight.net:443/oozie/v2/" z "https://$clusterName.azurehdinsight.net:443/oozie/v1/". Klastra HDInsight w wersji 2.1 nie nie obsługuje wersji 2, usług sieci web.
-10. Kliknij przycisk **uruchamianie skryptu** lub naciśnij **F5** do uruchomienia skryptu. Dane wyjściowe będą podobne do:
+1. Jeśli klaster HDInsight jest w wersji 2.1, należy zastąpić "https://$clusterName.azurehdinsight.net:443/oozie/v2/" z "https://$clusterName.azurehdinsight.net:443/oozie/v1/". Klastra HDInsight w wersji 2.1 nie nie obsługuje wersji 2, usług sieci web.
+1. Kliknij przycisk **uruchamianie skryptu** lub naciśnij **F5** do uruchomienia skryptu. Dane wyjściowe będą podobne do:
 
-     ![Samouczek uruchamiania danych wyjściowych przepływu pracy][img-runworkflow-output]
-11. Połącz w bazie danych SQL, aby zobaczyć wyeksportowane dane.
+    ![Samouczek uruchamiania danych wyjściowych przepływu pracy][img-runworkflow-output]
+1. Połącz w bazie danych SQL, aby zobaczyć wyeksportowane dane.
 
 **Aby Sprawdź dziennik błędów zadanie**
 
-Aby rozwiązać problemy w przepływie pracy, Oozie plik dziennika znajduje się w temacie C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log z głównym węzłem klastra. Aby uzyskać informacji na temat protokołu RDP, zobacz [administrowanie usługą HDInsight clusters, przy użyciu witryny Azure portal][hdinsight-admin-portal].
+Aby rozwiązać problemy w przepływie pracy, Oozie plik dziennika znajduje się w temacie C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log z głównym węzłem klastra. Aby uzyskać informacji na temat protokołu RDP, zobacz [Zarządzanie Apache Hadoop clusters w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md).
 
 **Aby ponownie uruchomić tego samouczka**
 
@@ -719,7 +719,6 @@ W tym samouczku pokazano, jak zdefiniować przepływ pracy programu Oozie i koor
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

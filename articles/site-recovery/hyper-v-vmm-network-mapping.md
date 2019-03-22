@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 3ca3222f47b6a728905f895007269e3c22acd66d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789946"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009973"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Przygotowywanie mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -24,8 +24,8 @@ Ten artykuł ułatwia zrozumienie i przygotowanie do mapowania sieci podczas rep
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>Przygotowywanie mapowania sieci na potrzeby replikacji do platformy Azure
 
 W przypadku replikowania do platformy Azure, mapowanie sieci działa między sieciami maszyny Wirtualnej na źródłowym serwerze programu VMM i docelowych, sieciami wirtualnymi platformy Azure. Mapowanie wykonuje następujące czynności:
-    -  **Połączenia sieciowego**— gwarantuje, czy replikowane maszyny wirtualne platformy Azure są podłączone do mapowanej sieci. Wszystkie maszyny, które w trybie Failover w tej samej sieci można połączyć ze sobą, nawet wtedy, gdy ich przełączone w tryb failover w planach odzyskiwania inny.
-    - **Brama sieci**— Jeśli brama sieci została skonfigurowana w docelowej sieci platformy Azure, maszyny wirtualne można połączyć się maszynami wirtualnymi w środowisku lokalnym.
+-  **Połączenia sieciowego**— gwarantuje, czy replikowane maszyny wirtualne platformy Azure są podłączone do mapowanej sieci. Wszystkie maszyny, które w trybie Failover w tej samej sieci można połączyć ze sobą, nawet wtedy, gdy ich przełączone w tryb failover w planach odzyskiwania inny.
+- **Brama sieci**— Jeśli brama sieci została skonfigurowana w docelowej sieci platformy Azure, maszyny wirtualne można połączyć się maszynami wirtualnymi w środowisku lokalnym.
 
 Mapowanie sieci działa w następujący sposób:
 
@@ -107,7 +107,7 @@ Aby zobaczyć, co się dzieje w przypadku powrotu po awarii (replikacja odwrotna
 
 **VM** | **Połączone z siecią maszyny Wirtualnej**
 ---|---
-Maszyna wirtualna 1 | VMNetwork1 sieci
+Maszyna wirtualna 1 | VMNetwork1-Network
 VM2 (repliki maszyny VM1) | VMNetwork1-Chicago
 
 Przy użyciu tych ustawień Omówmy się, co się dzieje w kilka możliwych scenariuszy.

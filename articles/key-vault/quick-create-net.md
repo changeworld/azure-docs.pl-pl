@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8127a7a10c117edaefc4a215366990d847a165ec
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 346d97e6e3dad6ebacaae6c789137df4f33e2e72
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238287"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316391"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Szybki start: Konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET
 
@@ -171,7 +171,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-Teraz, po uruchomieniu aplikacji, powinna pojawić się pobrana wartość wpisu tajnego. W poprzednim poleceniu określasz tożsamość uprawnień usługi App Service w celu wykonania operacji **get** i **list** dla usługi Key Vault.
+Teraz, po uruchomieniu aplikacji, powinna pojawić się pobrana wartość wpisu tajnego. W poprzednim poleceniu przygotowujesz tożsamość aplikacji usługi uprawnień do wykonywania **uzyskać** i **listy** operacji na magazynie kluczy.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Gdy grupa zasobów, maszyna wirtualna i wszystkie powiązane zasoby nie będą już potrzebne, można je usunąć. W tym celu wybierz grupę zasobów maszyny wirtualnej i kliknij pozycję **Usuń**.
@@ -184,7 +184,7 @@ az keyvault delete --name
                    [--subscription]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o usłudze Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)

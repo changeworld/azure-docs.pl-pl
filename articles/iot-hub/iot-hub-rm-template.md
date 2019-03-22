@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: fb3456f399e9fa8bbe35336a3b8933c39a0d03d9
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 4acf7a8bbc02a10468004092152b1d7c5c4d621f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008962"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075922"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Tworzenie Centrum IoT przy użyciu szablonu usługi Azure Resource Manager (.NET)
 
@@ -125,7 +125,7 @@ Tworzenie Centrum IoT w grupie zasobów przy użyciu pliku szablonu oraz paramet
       }
     }
     ```
-  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 5. W **Eksploratora serwera**, a następnie nawiązać połączenie z subskrypcją platformy Azure i w ramach konta usługi Azure Storage Utwórz kontener o nazwie **szablony**. W **właściwości** panelu, ustaw **publicznego dostępu do odczytu** uprawnienia dla **szablony** kontener **obiektu Blob**.
 

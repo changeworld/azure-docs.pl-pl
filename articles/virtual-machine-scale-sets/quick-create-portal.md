@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 0a9975b6f44a97d198dc308e263879c3358aab82
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: a2081bab2aebf0d49f3bde2467dac1fa683452ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672699"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008715"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Szybki start: Tworzenie zestawu skalowania maszyn wirtualnych w witrynie Azure Portal
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania możesz skalować ręcznie lub możesz zdefiniować reguły skalowania automatycznego na podstawie użycia takich zasobów jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. Moduł równoważenia obciążenia platformy Azure następnie dystrybuuje ruch do wystąpień maszyn wirtualnych w zestawie skalowania. W tym przewodniku Szybki start utworzysz zestaw skalowania maszyn wirtualnych w witrynie Azure Portal.
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
+Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 
 ## <a name="create-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
@@ -43,10 +43,10 @@ Możesz wdrożyć zestaw skalowania z obrazu systemu Windows Server lub obrazu s
 4. Wybierz żądany typ systemu operacyjnego, taki jak *Windows Server 2016 Datacenter*.
 5. Wprowadź żądaną nazwę grupy zasobu, taką jak *myResourceGroup*, i lokalizację, taką jak *Wschodnie stany USA*.
 6. Wprowadź żądaną nazwę użytkownika, a następnie wybierz typ uwierzytelniania, który preferujesz.
-    - **Hasło** musi mieć długość co najmniej 12 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: jedna mała litera, jedna wielka litera, jedna cyfra i jeden znak specjalny. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące nazwy użytkownika i hasła](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
-    - Jeśli wybierzesz obraz dysku systemu operacyjnego Linux, zamiast tego możesz wybrać **klucz publiczny SSH**. Podaj tylko swój klucz publiczny, taki jak *~/.ssh/id_rsa.pub*. Możesz użyć usługi Azure Cloud Shell z portalu, aby [tworzyć i używać kluczy SSH](../virtual-machines/linux/mac-create-ssh-keys.md).
+   - **Hasło** musi mieć długość co najmniej 12 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: jedna mała litera, jedna wielka litera, jedna cyfra i jeden znak specjalny. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące nazwy użytkownika i hasła](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
+   - Jeśli wybierzesz obraz dysku systemu operacyjnego Linux, zamiast tego możesz wybrać **klucz publiczny SSH**. Podaj tylko swój klucz publiczny, taki jak *~/.ssh/id_rsa.pub*. Możesz użyć usługi Azure Cloud Shell z portalu, aby [tworzyć i używać kluczy SSH](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-    ![Podstawowe informacje pozwalające tworzyć zestaw skalowania maszyn wirtualnych w witrynie Azure Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+     ![Podstawowe informacje pozwalające tworzyć zestaw skalowania maszyn wirtualnych w witrynie Azure Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
 1. Wybierz opcję równoważenia obciążenia, taką jak *Moduł równoważenia obciążenia* w obszarze **Wybierz opcje równoważenia obciążenia**. Wprowadź pozostałe szczegóły opcji równoważenia obciążenia. Na przykład w przypadku *modułu równoważenia obciążenia* musisz wprowadzić **nazwę publicznego adresu IP** i **etykietę nazwy domeny**.
 1. Wprowadź szczegóły sieci wirtualnej w obszarze **Konfigurowanie sieci wirtualnych**. Na przykład możesz utworzyć nową sieć wirtualną, *myVirtualNetwork*, i nową podsieć *domyślną*.
 1. Aby potwierdzić opcje zestawu skalowania, wybierz pozycję **Utwórz**.
@@ -77,7 +77,7 @@ Po wyświetleniu monitu wprowadź poświadczenia określone w poprzednim kroku p
 Gdy grupa zasobów, zestaw skalowania i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. Aby to zrobić, wybierz grupę zasobów dla maszyny wirtualnej i kliknij pozycję **Usuń**.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki start utworzono podstawowy zestaw skalowania w witrynie Azure Portal. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego sposobu tworzenia zestawów skalowania maszyn wirtualnych platformy Azure i zarządzania nimi.
 
 > [!div class="nextstepaction"]

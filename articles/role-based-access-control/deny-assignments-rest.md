@@ -12,19 +12,28 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ba1c60d45fb53be158d9e302748366ddf417f23e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805481"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998410"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST
 
-Obecnie Odmów przypisania **tylko do odczytu** i może zostać ustawiona tylko przez firmę Microsoft. Nawet jeśli nie możesz utworzyć własnych przypisań odmowy, możesz wyświetlić listę przypisań odmowy, ponieważ mogą one mieć wpływ na Twoje uprawnienia. W tym artykule opisano, jak na liście odmowy przypisania przy użyciu RBAC i interfejsu API REST.
+[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. W tym artykule opisano sposób użycia interfejsu API REST do listy Odmów przypisania.
+
+> [!NOTE]
+> W tej chwili jedynym sposobem, które można dodać własne odmówić przypisania polega na użyciu plany platformy Azure. Aby uzyskać więcej informacji, zobacz [chronić nowe zasoby za pomocą blokad zasobów platformy Azure, plany](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby uzyskać informacje o przypisaniu Odmów, musisz mieć:
+
+- `Microsoft.Authorization/denyAssignments/read` uprawnienie, który jest dostępny w większości [wbudowane role zasobów platformy Azure](built-in-roles.md).
 
 ## <a name="list-a-single-deny-assignment"></a>Lista jednej Odmów przypisania
 

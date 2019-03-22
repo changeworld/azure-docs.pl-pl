@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09bdffbceafc11d99889cbda1461e4af4d89168e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 778897e1a146abd0655d76ef157f64522681cb0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444620"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889679"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurowanie tożsamości zarządzanego dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST
 
@@ -63,7 +63,7 @@ Aby utworzyć Maszynę wirtualną platformy Azure z przypisany systemowo zarząd
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Pobieranie elementu nośnego tokenu dostępu, której użyjesz w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę Wirtualną z tożsamości zarządzanej przypisana przez system.
+3. Pobieranie elementu nośnego tokenu dostępu, której użyjesz w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę Wirtualną z tożsamości zarządzanej przypisana przez system.
 
    ```azurecli-interactive
    az account get-access-token
@@ -80,6 +80,7 @@ Aby utworzyć Maszynę wirtualną platformy Azure z przypisany systemowo zarząd
    ```
    
    **Nagłówki żądania**
+   
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
@@ -168,6 +169,7 @@ Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotni
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    **Nagłówki żądania**
+
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
@@ -239,6 +241,7 @@ Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotni
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.        | 
+
    **Treść żądania**
 
    ```JSON
@@ -314,7 +317,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Pobieranie elementu nośnego tokenu dostępu, której użyjesz w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę Wirtualną z tożsamości zarządzanej przypisana przez system.
+3. Pobieranie elementu nośnego tokenu dostępu, której użyjesz w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę Wirtualną z tożsamości zarządzanej przypisana przez system.
 
    ```azurecli-interactive
    az account get-access-token
@@ -507,6 +510,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
    **Nagłówki żądania**
+
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Autoryzacja*     | Wymagany. Ustawić prawidłową `Bearer` tokenu dostępu.
@@ -675,6 +679,7 @@ Aby usunąć tożsamości przypisanych przez użytkownika do maszyny Wirtualnej,
    ```
 
    **Nagłówki żądania**
+
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw `application/json`.        |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2457ef2843b0d16359b7e47fc54c58e2ef5e6034
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53430010"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125335"
 ---
 > [!NOTE]
 > Te przykłady nie dotyczą S2S/ExpressRoute współistnieją konfiguracje.
@@ -28,8 +28,8 @@ Po dodaniu bramy do sieci wirtualnej przy użyciu modelu klasycznego zasobu, nal
 1. Pobierz plik konfiguracji sieci przy użyciu kroków w [pliku konfiguracji sieci](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) artykułu. Otwórz plik za pomocą edytora tekstów.
 2. Lokacja sieci lokalnej należy dodać do pliku. Możesz użyć dowolnego prefiksu prawidłowy adres. Możesz dodać dowolny prawidłowy adres IP dla bramy sieci VPN. Adresu IP w tej sekcji nie są używane do operacji usługi ExpressRoute, ale są wymagane do weryfikacji pliku. W tym przykładzie "branch1" jest nazwą witryny. Można użyć innej nazwy, ale pamiętaj używać tej samej wartości w sekcji bramy pliku.
 
-  ```
-  <VirtualNetworkConfiguration>
+   ```
+   <VirtualNetworkConfiguration>
     <Dns />
     <LocalNetworkSites>
       <LocalNetworkSite name="branch1">
@@ -38,15 +38,15 @@ Po dodaniu bramy do sieci wirtualnej przy użyciu modelu klasycznego zasobu, nal
         </AddressSpace>
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
-  ```
+   ```
 3. Przejdź do VirtualNetworkSites i zmodyfikuj pola.
 
-  * Sprawdź, czy podsieć bramy, istnieje dla sieci wirtualnej. Jeśli nie, możesz dodać jeden w tej chwili. Nazwa musi mieć "nazwę GatewaySubnet".
-  * Sprawdź, czy istnieje brama części pliku. Jeśli nie, należy go dodać. Jest to wymagane, aby skojarzyć sieci wirtualnej z lokacją sieci lokalnej (który reprezentuje sieć, do której się łączysz).
-  * Sprawdź, czy połączenie typu = Dedicated. Jest to wymagane dla połączenia ExpressRoute.
+   * Sprawdź, czy podsieć bramy, istnieje dla sieci wirtualnej. Jeśli nie, możesz dodać jeden w tej chwili. Nazwa musi mieć "nazwę GatewaySubnet".
+   * Sprawdź, czy istnieje brama części pliku. Jeśli nie, należy go dodać. Jest to wymagane, aby skojarzyć sieci wirtualnej z lokacją sieci lokalnej (który reprezentuje sieć, do której się łączysz).
+   * Sprawdź, czy połączenie typu = Dedicated. Jest to wymagane dla połączenia ExpressRoute.
 
-  ```
-  </LocalNetworkSites>
+   ```
+   </LocalNetworkSites>
     <VirtualNetworkSites>
       <VirtualNetworkSite name="myAzureVNET" Location="East US">
         <AddressSpace>
@@ -69,9 +69,9 @@ Po dodaniu bramy do sieci wirtualnej przy użyciu modelu klasycznego zasobu, nal
         </Gateway>
       </VirtualNetworkSite>
     </VirtualNetworkSites>
-  </VirtualNetworkConfiguration>
-  </NetworkConfiguration>
-  ```
+   </VirtualNetworkConfiguration>
+   </NetworkConfiguration>
+   ```
 4. Zapisz plik i przekaż go na platformę Azure.
 
 ### <a name="create-the-gateway"></a>Tworzenie bramy
@@ -90,7 +90,7 @@ Użyj poniższego polecenia, aby sprawdzić, czy brama została utworzona. To po
 Get-AzureVNetGateway
 ```
 
-## <a name="resize-a-gateway"></a>Zmień rozmiar bramy
+## <a name="resize-a-gateway"></a>Zmienianie rozmiaru bramy
 
 Istnieje szereg [jednostki SKU bramy](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Aby zmienić jednostkę SKU bramy w dowolnym momencie, można użyć następującego polecenia.
 

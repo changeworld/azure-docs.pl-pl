@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 13042a25a0bf106dd579e7d5e8cf8553a79c8f00
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: bf2f2db57f33645389fd751c8c00f9f135416c50
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002105"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864137"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine w trybie offline, przesyłania strumieniowego dla systemu Android  
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Wersja 3](../latest/offline-widevine-for-android.md)
+> * [Wersja 2](offline-widevine-for-android.md)
 
 Oprócz ochrony zawartości online do przesyłania strumieniowego, multimediów zawartości subskrypcji i dzierżawa usługi oferty do pobrania zawartości, która działa, gdy nie są połączone z Internetem. Może być konieczne pobrać zawartość na telefonie lub tablecie do odtwarzania w tryb samolotowy, gdy pod odłączony od sieci. Dodatkowe scenariusze, w których możesz chcieć pobierania zawartości:
 

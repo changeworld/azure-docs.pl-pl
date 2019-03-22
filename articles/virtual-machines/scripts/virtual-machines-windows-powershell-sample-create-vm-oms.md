@@ -1,6 +1,6 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — Log Analytics | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — Log Analytics
+title: Przykładowy skrypt Azure PowerShell — usługa Azure Monitor dzienników | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt Azure PowerShell — usługa Azure Monitor dzienników
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 615ba2286fc8c3e920e10a4909ed336ec6a30f9d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 11ae92770f712f2e809824d9caf5981f435b25a9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001736"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541523"
 ---
-# <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>Tworzenie maszyny wirtualnej monitorowanej za pomocą usługi Log Analytics przy użyciu programu PowerShell 
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Tworzenie usługi Azure Monitor maszyny Wirtualnej przy użyciu programu PowerShell 
 
 Ten skrypt tworzy maszynę wirtualną platformy Azure, instaluje agenta usługi Log Analytics i rejestruje system w obszarze roboczym usługi Log Analytics. Po uruchomieniu skryptu maszyna wirtualna będzie widoczna w usłudze Azure Monitor. Należy również zaktualizować identyfikator obszaru roboczego usługi Log Analytics oraz klucz obszaru roboczego.
 
@@ -54,7 +54,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Dodaje rozszerzenie do maszyny wirtualnej. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

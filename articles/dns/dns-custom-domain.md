@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: e8163ad34046261d9671c57db2cd2d2052fe35e0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 78496dbc7891fe911ab0affd81f8a7d887e5d76e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550791"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111416"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Podaj ustawienia domeny niestandardowej dla usługi platformy Azure przy użyciu usługi Azure DNS
 
-Usługa Azure DNS zapewnia DNS dla domeny niestandardowej dla każdego z zasobów platformy Azure, obsługę domen niestandardowych lub które zostały w pełni kwalifikowaną nazwę domeny (FQDN). Przykładem jest aplikację internetową platformy Azure i chcesz, aby do niego dostęp przez użytkowników przy użyciu contoso.com lub www.contoso.com jako nazwy FQDN. W tym artykule przedstawiono konfigurowanie usługi platformy Azure przy użyciu usługi Azure DNS dotyczące używania domen niestandardowych.
+Usługa Azure DNS zapewnia DNS dla domeny niestandardowej dla każdego z zasobów platformy Azure, obsługę domen niestandardowych lub które zostały w pełni kwalifikowaną nazwę domeny (FQDN). Przykładem jest aplikację internetową platformy Azure i chcesz, aby do niego dostęp przez użytkowników za pomocą contoso.com lub www\.domeny contoso.com jako nazwy FQDN. W tym artykule przedstawiono konfigurowanie usługi platformy Azure przy użyciu usługi Azure DNS dotyczące używania domen niestandardowych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

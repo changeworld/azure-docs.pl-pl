@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9b36332382de1317e386af59695f993efb233e79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428641"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108447"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra usługi Service Fabric
 Klaster usługi Azure Service Fabric jest zasobem, którego jesteś właścicielem. Jest odpowiedzialny za Zabezpieczanie klastrów zapobiega nieautoryzowanym użytkownikom nawiązywanie połączeń z nich. Zabezpieczonego klastra jest szczególnie ważne w przypadku obciążeń produkcyjnych są uruchomione w klastrze. Chociaż można utworzyć z niezabezpieczonym klastrem, jeśli klaster udostępnia punktów końcowych zarządzania do publicznej sieci internet, użytkowników anonimowych można się z nim. Niezabezpieczonych klastrów nie są obsługiwane w przypadku obciążeń produkcyjnych. 
@@ -66,16 +66,16 @@ Aby dowiedzieć się, jak skonfigurować certyfikat zabezpieczeń w klastrze na 
 Aby dowiedzieć się, jak skonfigurować certyfikat zabezpieczeń klastra autonomicznego klastra systemu Windows Server, zobacz [Zabezpieczanie klastra autonomicznego w Windows przy użyciu certyfikatów X.509](service-fabric-windows-cluster-x509-security.md).
 
 ### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Węzeł klienta zabezpieczeń usługi Azure Active Directory na platformie Azure
-Usługi Azure AD umożliwia zarządzanie dostępem użytkowników do aplikacji organizacji (znanych jako dzierżaw). Aplikacje są podzielone na tych z opartą na sieci web, interfejs użytkownika logowania i te w środowisku klienta natywnego. Jeśli nie utworzono już dzierżawę, zapoznanie się z tematem [jak uzyskać dzierżawę usługi Azure Active Directory][active-directory-howto-tenant].
+Usługa Azure AD umożliwia organizacjom (znanym jako dzierżawy) zarządzanie dostępem użytkowników do aplikacji. Aplikacje są podzielone na tych z opartą na sieci web, interfejs użytkownika logowania i te w środowisku klienta natywnego. Jeśli nie utworzono już dzierżawę, zapoznanie się z tematem [jak uzyskać dzierżawę usługi Azure Active Directory][active-directory-howto-tenant].
 
 Klaster usługi Service Fabric udostępnia kilka punktów wejścia do jego funkcje zarządzania, w tym, oparta na sieci web [narzędzia Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] i [programu Visual Studio] [ service-fabric-manage-application-in-visual-studio]. W rezultacie utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra, jednej aplikacji sieci web i jednej aplikacji natywnej.
 
 W przypadku klastrów działających na platformie Azure można zabezpieczyć dostęp do punktów końcowych zarządzania przy użyciu usługi Azure Active Directory (Azure AD). Aby dowiedzieć się, jak utworzyć wymaganych artefaktów w usłudze Azure AD i wypełnić je podczas tworzenia klastra, zobacz [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
 
 ## <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
-W przypadku klastrów usługi Service Fabric wdrożone w sieci publicznych, hostowanych na platformie Azure do wzajemnego uwierzytelniania klient węzeł zaleca:
-*   Usługa Azure Active Directory dla tożsamości klienta
-*   Certyfikat tożsamości serwera oraz szyfrowania SSL dla komunikacji http
+W przypadku klastrów usługi Service Fabric wdrożonych w sieci publicznej hostowanej na platformie Azure zalecenia dla wzajemnego uwierzytelniania klienta i węzła są następujące:
+*   Używanie usługi Azure Active Directory na potrzeby określania tożsamości klienta
+*   Certyfikat na potrzeby potwierdzania tożsamości serwera oraz szyfrowania SSL komunikacji HTTP
 
 Dla klastrów usługi Service Fabric jest wdrażany w sieci publicznych, hostowanych na platformie Azure zalecenie dotyczące zabezpieczeń między węzłami jest użycie certyfikatu klastra do uwierzytelniania węzłów. 
 
@@ -112,7 +112,7 @@ Certyfikat musi spełniać następujące wymagania:
 
 Inne kwestie do rozważenia:
 
-* **Podmiotu** pole może mieć wiele wartości. Każda wartość jest poprzedzony znakiem inicjowania, aby wskazać typ wartości. Zwykle jest inicjowania **CN** (dla *nazwa pospolita*), na przykład **CN = www.contoso.com**. 
+* **Podmiotu** pole może mieć wiele wartości. Każda wartość jest poprzedzony znakiem inicjowania, aby wskazać typ wartości. Zwykle jest inicjowania **CN** (dla *nazwa pospolita*), na przykład **CN = www\.contoso.com**. 
 * **Podmiotu** pole może być pusta. 
 * Jeśli opcjonalny **alternatywna nazwa podmiotu** wypełnianie pola, musi mieć zarówno nazwa pospolita certyfikatu i jednego wpisu na sieci SAN. Są one wprowadzane jako **nazwy DNS** wartości. Aby dowiedzieć się, jak generować certyfikaty, które mają sieci SAN, zobacz [sposób dodawania alternatywna nazwa podmiotu do bezpiecznego certyfikatu LDAP](https://support.microsoft.com/kb/931351).
 * Wartość **przeznaczone do celów** pole certyfikatu powinien zawierać odpowiednią wartość, takich jak **uwierzytelniania serwera** lub **uwierzytelnianie klienta**.

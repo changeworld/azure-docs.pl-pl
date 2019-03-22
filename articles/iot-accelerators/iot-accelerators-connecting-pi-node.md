@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: af269085550f71323c8098b4cdf3c88ec8035dfe
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 20d50ac4ac4a1919077ebe67bb529e2dc5abf187
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563307"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109750"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Łączenie urządzenia Raspberry Pi do akceleratora rozwiązań zdalnego monitorowania (Node.js)
 
@@ -163,158 +163,158 @@ Wykonaj następujące czynności za pomocą `ssh` połączenie urządzenia Raspb
 
 1. Dodaj następującą funkcję pomocnika na potrzeby losowe wartości telemetryczne:
 
-    ```javascript
-    function generateRandomIncrement() {
-        return ((Math.random() * 2) - 1);
-    }
-    ```
+     ```javascript
+     function generateRandomIncrement() {
+         return ((Math.random() * 2) - 1);
+     }
+     ```
 
 1. Dodaj następującą funkcję ogólnego, aby obsłużyć wywołania metody bezpośredniej z rozwiązania. Funkcja wyświetla informacje o bezpośrednie metody, która została wywołana, ale w tym przykładzie nie powoduje modyfikacji urządzenia w dowolny sposób. Rozwiązanie używa metod bezpośrednich do działania na urządzeniach:
 
-    ```javascript
-    function onDirectMethod(request, response) {
-      // Implement logic asynchronously here.
-      console.log('Simulated ' + request.methodName);
+     ```javascript
+     function onDirectMethod(request, response) {
+       // Implement logic asynchronously here.
+       console.log('Simulated ' + request.methodName);
 
-      // Complete the response
-      response.send(200, request.methodName + ' was called on the device', function (err) {
-        if (err) console.error('Error sending method response :\n' + err.toString());
-        else console.log('200 Response to method \'' + request.methodName + '\' sent successfully.');
-      });
-    }
-    ```
+       // Complete the response
+       response.send(200, request.methodName + ' was called on the device', function (err) {
+         if (err) console.error('Error sending method response :\n' + err.toString());
+         else console.log('200 Response to method \'' + request.methodName + '\' sent successfully.');
+       });
+     }
+     ```
 
 1. Dodaj następującą funkcję, aby obsłużyć **FirmwareUpdate** bezpośrednie wywołania metody z rozwiązania. Funkcja sprawdza parametrów przekazanych w ładunku metody bezpośredniej, a następnie asynchronicznie uruchamia symulacji aktualizacji oprogramowania układowego:
 
-    ```javascript
-    function onFirmwareUpdate(request, response) {
-      // Get the requested firmware version from the JSON request body
-      var firmwareVersion = request.payload.Firmware;
-      var firmwareUri = request.payload.FirmwareUri;
+     ```javascript
+     function onFirmwareUpdate(request, response) {
+       // Get the requested firmware version from the JSON request body
+       var firmwareVersion = request.payload.Firmware;
+       var firmwareUri = request.payload.FirmwareUri;
       
-      // Ensure we got a firmware values
-      if (!firmwareVersion || !firmwareUri) {
-        response.send(400, 'Missing firmware value', function(err) {
-          if (err) console.error('Error sending method response :\n' + err.toString());
-          else console.log('400 Response to method \'' + request.methodName + '\' sent successfully.');
-        });
-      } else {
-        // Respond the cloud app for the device method
-        response.send(200, 'Firmware update started.', function(err) {
-          if (err) console.error('Error sending method response :\n' + err.toString());
-          else {
-            console.log('200 Response to method \'' + request.methodName + '\' sent successfully.');
+       // Ensure we got a firmware values
+       if (!firmwareVersion || !firmwareUri) {
+         response.send(400, 'Missing firmware value', function(err) {
+           if (err) console.error('Error sending method response :\n' + err.toString());
+           else console.log('400 Response to method \'' + request.methodName + '\' sent successfully.');
+         });
+       } else {
+         // Respond the cloud app for the device method
+         response.send(200, 'Firmware update started.', function(err) {
+           if (err) console.error('Error sending method response :\n' + err.toString());
+           else {
+             console.log('200 Response to method \'' + request.methodName + '\' sent successfully.');
 
-            // Run the simulated firmware update flow
-            runFirmwareUpdateFlow(firmwareVersion, firmwareUri);
-          }
-        });
-      }
-    }
-    ```
+             // Run the simulated firmware update flow
+             runFirmwareUpdateFlow(firmwareVersion, firmwareUri);
+           }
+         });
+       }
+     }
+     ```
 
 1. Dodaj następującą funkcję, aby symulować przepływ aktualizacji oprogramowania układowego długotrwałych, który zgłasza postępy pracy powrót do rozwiązania:
 
-    ```javascript
-    // Simulated firmwareUpdate flow
-    function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
-      console.log('Simulating firmware update flow...');
-      console.log('> Firmware version passed: ' + firmwareVersion);
-      console.log('> Firmware URI passed: ' + firmwareUri);
-      async.waterfall([
-        function (callback) {
-          console.log("Image downloading from " + firmwareUri);
-          var patch = {
-            FirmwareUpdateStatus: 'Downloading image..'
-          };
-          reportUpdateThroughTwin(patch, callback);
-          sleep(10000, callback);
-        },
-        function (callback) {
-          console.log("Downloaded, applying firmware " + firmwareVersion);
-          deviceOnline = false;
-          var patch = {
-            FirmwareUpdateStatus: 'Applying firmware..',
-            Online: false
-          };
-          reportUpdateThroughTwin(patch, callback);
-          sleep(8000, callback);
-        },
-        function (callback) {
-          console.log("Rebooting");
-          var patch = {
-            FirmwareUpdateStatus: 'Rebooting..'
-          };
-          reportUpdateThroughTwin(patch, callback);
-          sleep(10000, callback);
-        },
-        function (callback) {
-          console.log("Firmware updated to " + firmwareVersion);
-          deviceOnline = true;
-          var patch = {
-            FirmwareUpdateStatus: 'Firmware updated',
-            Online: true,
-            Firmware: firmwareVersion
-          };
-          reportUpdateThroughTwin(patch, callback);
-          callback(null);
-        }
-      ], function(err) {
-        if (err) {
-          console.error('Error in simulated firmware update flow: ' + err.message);
-        } else {
-          console.log("Completed simulated firmware update flow");
-        }
-      });
+     ```javascript
+     // Simulated firmwareUpdate flow
+     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
+       console.log('Simulating firmware update flow...');
+       console.log('> Firmware version passed: ' + firmwareVersion);
+       console.log('> Firmware URI passed: ' + firmwareUri);
+       async.waterfall([
+         function (callback) {
+           console.log("Image downloading from " + firmwareUri);
+           var patch = {
+             FirmwareUpdateStatus: 'Downloading image..'
+           };
+           reportUpdateThroughTwin(patch, callback);
+           sleep(10000, callback);
+         },
+         function (callback) {
+           console.log("Downloaded, applying firmware " + firmwareVersion);
+           deviceOnline = false;
+           var patch = {
+             FirmwareUpdateStatus: 'Applying firmware..',
+             Online: false
+           };
+           reportUpdateThroughTwin(patch, callback);
+           sleep(8000, callback);
+         },
+         function (callback) {
+           console.log("Rebooting");
+           var patch = {
+             FirmwareUpdateStatus: 'Rebooting..'
+           };
+           reportUpdateThroughTwin(patch, callback);
+           sleep(10000, callback);
+         },
+         function (callback) {
+           console.log("Firmware updated to " + firmwareVersion);
+           deviceOnline = true;
+           var patch = {
+             FirmwareUpdateStatus: 'Firmware updated',
+             Online: true,
+             Firmware: firmwareVersion
+           };
+           reportUpdateThroughTwin(patch, callback);
+           callback(null);
+         }
+       ], function(err) {
+         if (err) {
+           console.error('Error in simulated firmware update flow: ' + err.message);
+         } else {
+           console.log("Completed simulated firmware update flow");
+         }
+       });
 
-      // Helper function to update the twin reported properties.
-      function reportUpdateThroughTwin(patch, callback) {
-        console.log("Sending...");
-        console.log(JSON.stringify(patch, null, 2));
-        client.getTwin(function(err, twin) {
-          if (!err) {
-            twin.properties.reported.update(patch, function(err) {
-              if (err) callback(err);
-            });      
-          } else {
-            if (err) callback(err);
-          }
-        });
-      }
+       // Helper function to update the twin reported properties.
+       function reportUpdateThroughTwin(patch, callback) {
+         console.log("Sending...");
+         console.log(JSON.stringify(patch, null, 2));
+         client.getTwin(function(err, twin) {
+           if (!err) {
+             twin.properties.reported.update(patch, function(err) {
+               if (err) callback(err);
+             });      
+           } else {
+             if (err) callback(err);
+           }
+         });
+       }
 
-      function sleep(milliseconds, callback) {
-        console.log("Simulate a delay (milleseconds): " + milliseconds);
-        setTimeout(function () {
-          callback(null);
-        }, milliseconds);
-      }
-    }
-    ```
+       function sleep(milliseconds, callback) {
+         console.log("Simulate a delay (milleseconds): " + milliseconds);
+         setTimeout(function () {
+           callback(null);
+         }, milliseconds);
+       }
+     }
+     ```
 
 1. Dodaj następujący kod do wysyłania danych telemetrycznych do rozwiązania. Aplikacja kliencka dodaje właściwości w oknie komunikatu identyfikowanie schematów komunikatów:
 
-    ```javascript
-    function sendTelemetry(data, schema) {
-      if (deviceOnline) {
-        var d = new Date();
-        var payload = JSON.stringify(data);
-        var message = new Message(payload);
-        message.properties.add('iothub-creation-time-utc', d.toISOString());
-        message.properties.add('iothub-message-schema', schema);
+     ```javascript
+     function sendTelemetry(data, schema) {
+       if (deviceOnline) {
+         var d = new Date();
+         var payload = JSON.stringify(data);
+         var message = new Message(payload);
+         message.properties.add('iothub-creation-time-utc', d.toISOString());
+         message.properties.add('iothub-message-schema', schema);
 
-        console.log('Sending device message data:\n' + payload);
-        client.sendEvent(message, printErrorFor('send event'));
-      } else {
-        console.log('Offline, not sending telemetry');
-      }
-    }
-    ```
+         console.log('Sending device message data:\n' + payload);
+         client.sendEvent(message, printErrorFor('send event'));
+       } else {
+         console.log('Offline, not sending telemetry');
+       }
+     }
+     ```
 
 1. Dodaj następujący kod, aby utworzyć wystąpienie klienta:
 
-    ```javascript
-    var client = Client.fromConnectionString(connectionString, Protocol);
-    ```
+     ```javascript
+     var client = Client.fromConnectionString(connectionString, Protocol);
+     ```
 
 1. Dodaj następujący kod, aby:
 
@@ -324,8 +324,8 @@ Wykonaj następujące czynności za pomocą `ssh` połączenie urządzenia Raspb
     * Zarejestruj procedury obsługi dla metod bezpośrednich. W przykładzie użyto oddzielny program obsługi dla metody bezpośredniej aktualizacji oprogramowania układowego.
     * Rozpoczęcie wysyłania danych telemetrycznych.
 
-    ```javascript
-    client.open(function (err) {
+      ```javascript
+      client.open(function (err) {
       if (err) {
         printErrorFor('open')(err);
       } else {
@@ -381,15 +381,15 @@ Wykonaj następujące czynności za pomocą `ssh` połączenie urządzenia Raspb
           client.close(printErrorFor('client.close'));
         });
       }
-    });
-    ```
+      });
+      ```
 
 1. Czy zapisać zmiany **remote_monitoring.js** pliku.
 
 1. Aby uruchomić przykładową aplikację, uruchom następujące polecenie w wierszu polecenia na urządzenia Raspberry Pi:
 
-    ```sh
-    node remote_monitoring.js
-    ```
+     ```sh
+     node remote_monitoring.js
+     ```
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

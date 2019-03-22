@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.openlocfilehash: 2dcbe170a69c0c285cb6425427f94b5efced8712
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d0819b57307fc037b3be6ab04ed9ec6c8720a618
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747462"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103591"
 ---
 # <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
 
@@ -55,7 +55,7 @@ Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz�
 
     ![Konfiguracja Monitora usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-configure.png)
  
- Po zakończeniu odnajdywania odnalezionych połączenia prywatnej komunikacji równorzędnej są wymienione w tabeli. Monitorowanie te komunikacje równorzędne początkowo jest w stanie wyłączenia. 
+   Po zakończeniu odnajdywania odnalezionych połączenia prywatnej komunikacji równorzędnej są wymienione w tabeli. Monitorowanie te komunikacje równorzędne początkowo jest w stanie wyłączenia. 
 
 ### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>Aby włączyć monitorowanie połączeń komunikacji równorzędnej usługi ExpressRoute 
 

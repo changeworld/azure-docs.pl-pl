@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 883a740f1d6dd7c6ef1ce28158a92cafee44629e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: a6bfeb820b34d36fc370de7f81694086aeea8515
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556071"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193964"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -39,7 +39,7 @@ Jeśli nie wiesz, czy Twoje dane mają postać szeregów czasowych, oto informac
 
 W tym wideo omawiamy usługę Time Series Insights, platformę do analizy IoT w chmurze.
 
-> [!VIDEO https://www.youtube.com/embed/qNc9gQTLROs]
+> [!VIDEO https://youtube.com/embed/GaARrFfjoss]
 
 ## <a name="primary-scenarios"></a>Podstawowe scenariusze
 
@@ -77,7 +77,7 @@ Rozpoczęcie pracy zajmuje mniej niż 5 minut.
 ## <a name="time-series-insights-explorer"></a>Eksplorator usługi Time Series Insights
 Ten diagram przedstawia przykład szczegółowych informacji o danych szeregów czasowych wyświetlanych za pomocą eksploratora: ![Eksplorator usługi Time Series Insights](media/time-series-insights-explorer/explorer4.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
  - [Eksplorowanie przy użyciu eksploratora usługi Time Series Insights w środowisku demonstracyjnym](./time-series-quickstart.md)
  - [Planowanie własnego środowiska usługi Time Series Insights](time-series-insights-environment-planning.md)
 

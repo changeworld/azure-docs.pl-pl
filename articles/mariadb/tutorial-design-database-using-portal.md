@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 2bbe69d114df61f6ca01add0b3459220d59d83e0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 29ad35b30e7f75259b9c4d0174c16c6c9c40a917
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880519"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852555"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Samouczek: projektowanie bazy danych usługi Azure Database for MariaDB za pomocą witryny Azure Portal
 
@@ -90,7 +90,7 @@ Uzyskaj z witryny Azure Portal wartości pól **Nazwa serwera** (w pełni kwalif
 
    ![Właściwości serwera](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-W naszym przykładzie nazwa serwera to **mydemoserver.mariadb.database.azure.com**, a nazwa logowania administratora serwera to **myadmin@mydemoserver**.
+W naszym przykładzie nazwa serwera jest **mydemoserver.mariadb.database.azure.com** i nazwę logowania administratora serwera **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Nawiązywanie połączenia z serwerem za pomocą narzędzia mysql
 
@@ -178,7 +178,7 @@ Załóżmy, że przypadkowo usunięto ważną tabelę bazy danych i nie można j
    
 3. Wybierz przycisk **OK**, aby [przywrócić serwer do punktu w czasie](./howto-restore-server-portal.md) przed usunięciem tabeli. Przywrócenie serwera powoduje utworzenie nowej kopii serwera od wybranego punktu w czasie. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku opisano, jak wykonywać następujące czynności, używając witryny Azure Portal:
 
 > [!div class="checklist"]

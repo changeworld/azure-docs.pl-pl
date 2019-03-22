@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2019
+ms.date: 03/19/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 1f172035acceb75e4dc37d2f6e7e80d439f7e837
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3d4b0b143b41daca376aecc64cf734fadcc94faa
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240562"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226576"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co to są strefy dostępności na platformie Azure?
 Strefy dostępności to oferta, która chroni aplikacje i dane przed awariami centrów danych o wysokiej dostępności. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczna separacja stref dostępności w ramach regionu chroni aplikacje i dane przed awariami centrum danych. Strefowo nadmiarowe usługi replikować aplikacji i danych w różnych strefach dostępności, aby zapewnić ochronę przed pojedynczej punktami z awarią. Dzięki strefom dostępności platforma Azure oferuje najlepszą w branży umowę dotycząca poziomu usług (SLA) gwarantującą czas działania na poziomie 99,99%. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
@@ -67,13 +67,15 @@ Usługi platformy Azure, które obsługują strefy dostępności są:
 - ExpressRoute
 - Usługa Application Gateway (wersja zapoznawcza)
 
+## <a name="services-resiliency"></a>Odporność usług
+Wszystkie usługi zarządzania platformy Azure są zaprojektowana, aby była odporna z awariami na poziomie regionu. W szerokim zakresie błędów co najmniej jeden strefy dostępności w obrębie regionu mają mniejsze radius błędów w porównaniu do awarii całego regionu. Azure można odzyskać z awarią poziomu strefy usługi zarządzania w obrębie regionu lub z innego regionu platformy Azure. Platforma Azure przeprowadza konserwację krytyczne w jednej strefie w danym momencie w obrębie regionu, aby uniknąć błędów wpływające na ochronę zasobów klienta wdrożonych w różnych strefach dostępności w obrębie regionu.
 
 ## <a name="pricing"></a>Cennik
 Nie ma żadnych dodatkowych kosztów, dla maszyn wirtualnych wdrożonych w strefie dostępności. Dostępność przez 99,99% dostępności maszyn wirtualnych umowa SLA jest oferowana gdy co najmniej dwie maszyny wirtualne są wdrożone w co najmniej dwóch strefach dostępności w obrębie regionu platformy Azure. Będzie istnieć dodatkowe między dostępności maszyny Wirtualnej VM strefy opłaty za transfer danych. Aby uzyskać więcej informacji, zobacz [cen przepustowości](https://azure.microsoft.com/pricing/details/bandwidth/) strony.
 
 
 ## <a name="get-started-with-availability-zones"></a>Rozpoczynanie pracy ze strefami dostępności
-- [Utwórz maszynę wirtualną](../virtual-machines/windows/create-portal-availability-zone.md)
+- [Tworzenie maszyny wirtualnej](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Dodawanie dysku zarządzanego przy użyciu programu PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Tworzenie zestawu skalowania strefy nadmiarowe maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 - [Równoważenie obciążenia maszyn wirtualnych w strefach przy użyciu standardowego modułu równoważenia obciążenia za pomocą frontonu strefowo nadmiarowy](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)

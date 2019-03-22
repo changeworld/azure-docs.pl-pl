@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b5c43215ce1800ac162c8b5d19ba4d4c987a3bac
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b00082ec567d51c320f55210cb38dcab9547e0d9
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445810"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258755"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Zarządzanie usługi Key Vault w usłudze Azure Stack przy użyciu programu PowerShell
 
@@ -92,7 +92,7 @@ New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location 
 
 ![Nowy magazyn kluczy](media/azure-stack-key-vault-manage-powershell/image4.png)
 
-Dane wyjściowe tego polecenia są wyświetlane właściwości magazynu kluczy, który został utworzony. Gdy aplikacja uzyskuje dostęp do tego magazynu, należy użyć **identyfikator URI magazynu** właściwość, która jest "https://vault01.vault.local.azurestack.external" w tym przykładzie.
+Dane wyjściowe tego polecenia są wyświetlane właściwości magazynu kluczy, który został utworzony. Gdy aplikacja uzyskuje dostęp do tego magazynu, należy użyć **identyfikator URI magazynu** właściwość, która jest "https:\//vault01.vault.local.azurestack.external" w tym przykładzie.
 
 ### <a name="active-directory-federation-services-ad-fs-deployment"></a>Wdrażanie usługi Active Directory Federation Services (AD FS)
 
@@ -127,8 +127,8 @@ Add-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01" -verbose -Destination So
 
 Teraz możesz odwoływać utworzony klucz za pomocą jego identyfikatora URI. Jeśli tworzysz lub importowania klucza, który ma takiej samej nazwie jak istniejący klucz oryginalny klucz jest aktualizowana wartości określone w nowy klucz. Dostęp z poprzedniej wersji, korzystając z identyfikatora URI specyficzny dla wersji klucza. Na przykład:
 
-* Użyj "https://vault10.vault.local.azurestack.external:443/keys/key01" Aby zawsze uzyskać bieżącą wersję.
-* Użyj "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" Aby uzyskać tę konkretną wersję.
+* Użyj "https:\//vault10.vault.local.azurestack.external:443/keys/key01" Aby zawsze uzyskać bieżącą wersję.
+* Użyj "https:\//vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" Aby uzyskać tę konkretną wersję.
 
 ### <a name="get-a-key"></a>Pobieranie klucza
 

@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8e108d88282894a7b1bf014146083008bedd483d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316985"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095045"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nie można nawiązać połączenia RDP z maszyny Wirtualnej, ponieważ maszyna wirtualna jest uruchamiany w trybie awaryjnym
 
 W tym artykule pokazano, jak rozwiązać problem, w której nie można dołączyć do platformy Azure Windows Virtual Machines (VMs), ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym.
 
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługi Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptoms"></a>Objawy
 
@@ -47,7 +47,7 @@ Aby rozwiązać ten problem, Użyj sterowania Serial, aby skonfigurować maszyn�
 ### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
 
 1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, zobacz [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline).
+   ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, zobacz [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline).
 2. Sprawdzanie danych konfiguracji rozruchu:
 
         bcdedit /enum
@@ -55,12 +55,12 @@ Aby rozwiązać ten problem, Użyj sterowania Serial, aby skonfigurować maszyn�
     Jeśli maszyna wirtualna jest skonfigurowana do rozruchu w trybie awaryjnym, zobaczą dodatkowe flagi, w obszarze **moduł ładujący rozruchu Windows** sekcję o nazwie **tryb awaryjny**. Jeśli nie widzisz **tryb awaryjny** Flaga, maszyna wirtualna nie jest w trybie awaryjnym. W tym artykule nie ma zastosowania do danego scenariusza.
 
     **Tryb awaryjny** flagi może się pojawić, z następującymi wartościami:
-    - Minimalny
-    - Sieć
+   - Minimalny
+   - Sieć
 
-    W jednej z tych dwóch trybów RDP nie zostanie uruchomiona. W związku z tym poprawki pozostaje taki sam.
+     W jednej z tych dwóch trybów RDP nie zostanie uruchomiona. W związku z tym poprawki pozostaje taki sam.
 
-    ![Obraz dotyczący flagi trybu awaryjnego](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
+     ![Obraz dotyczący flagi trybu awaryjnego](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
 3. Usuń **safemoade** flagę, aby maszyna wirtualna zostanie uruchomiony w trybie normalnym:
 

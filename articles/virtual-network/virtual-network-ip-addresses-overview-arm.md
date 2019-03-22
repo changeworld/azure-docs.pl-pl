@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: jdial
-ms.openlocfilehash: 5240d6d4cd510eb4ea87392421fc00ae01b5e600
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9185bfea8bddff52f6183ac3e5395cdbc0b73bb1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771967"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860775"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -121,7 +121,7 @@ Usługa [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=
 
 ### <a name="application-gateways"></a>Bramy aplikacji
 
-Publiczny adres IP możesz skojarzyć z usługą [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure, przypisując go do konfiguracji **frontonu** bramy. Ten publiczny adres IP służy jako adres VIP o zrównoważonym obciążeniu. Możesz przypisać tylko *dynamiczny* podstawowy publiczny adres IP do konfiguracji frontonu w wersji 1 bramy aplikacji i tylko statyczny, podstawowy lub standardowy adres jednostki SKU do konfiguracji frontonu w wersji 2.
+Publiczny adres IP możesz skojarzyć z usługą [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure, przypisując go do konfiguracji **frontonu** bramy. Ten publiczny adres IP służy jako adres VIP o zrównoważonym obciążeniu. Możesz przypisać tylko *dynamiczne* podstawowa publiczny adres IP do konfiguracji frontonu bramy V1 aplikacji i tylko *statyczne* standardowy adres jednostki SKU do konfiguracji frontonu w wersji 2.
 
 ### <a name="at-a-glance"></a>W skrócie
 W poniższej tabeli przedstawiono określone właściwości, za pomocą których publiczny adres IP można skojarzyć z zasobem najwyższego poziomu, oraz ewentualne metody alokacji (dynamicznej lub statycznej), których można użyć.

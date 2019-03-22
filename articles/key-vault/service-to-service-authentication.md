@@ -10,12 +10,12 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 4436fc3c1bec4cdb8e301edd185f4416c931e24f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b7532dc910fae84733c04d4e16ac93a5cd0f11c8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456503"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097910"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Usługa Usługa uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET
 
@@ -153,7 +153,7 @@ Dotyczy to tylko rozwoju lokalnego. Po wdrożeniu rozwiązania na platformie Azu
 
 Gdy uruchamiasz swój kod w usłudze Azure App Service lub Maszynie wirtualnej platformy Azure za pomocą tożsamości zarządzanej włączono biblioteki automatycznie używa tożsamość zarządzaną. Wymagane są bez zmian w kodzie. 
 
-Alternatywnie można uwierzytelnić przy użyciu tożsamości przypisanych przez użytkownika. Aby uzyskać więcej informacji o tożsamości przypisanych przez użytkownika, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka). Ciąg połączenia jest określona w [Obsługa ciągu połączenia](#connection-string-support) poniższej sekcji.
+Alternatywnie można uwierzytelnić przy użyciu tożsamości przypisanych przez użytkownika. Aby uzyskać więcej informacji o tożsamości przypisanych przez użytkownika, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work). Ciąg połączenia jest określona w [Obsługa ciągu połączenia](#connection-string-support) poniższej sekcji.
 
 ## <a name="running-the-application-using-a-service-principal"></a>Uruchamianie aplikacji przy użyciu nazwy głównej usługi 
 
@@ -212,7 +212,7 @@ Obsługiwane są następujące opcje:
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Lokalne programowanie | AzureServiceTokenProvider używa programu Visual Studio w celu uzyskania tokenu. |
 | `RunAs=CurrentUser` | Lokalne programowanie | AzureServiceTokenProvider wykorzystuje zintegrowane uwierzytelnianie usługi Azure AD do pobrania tokenu. |
 | `RunAs=App` | [Tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider korzysta z tożsamości zarządzanej można uzyskać tokenu. |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Tożsamości przypisanych przez użytkownika dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka) | AzureServiceTokenProvider używa tożsamości przypisanych przez użytkownika w celu uzyskania tokenu. |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Tożsamości przypisanych przez użytkownika dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | AzureServiceTokenProvider używa tożsamości przypisanych przez użytkownika w celu uzyskania tokenu. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | Jednostka usługi | `AzureServiceTokenProvider` używa certyfikatu, aby uzyskać token z usługi Azure AD. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Jednostka usługi | `AzureServiceTokenProvider` Aby uzyskać token z usługi Azure AD, używa certyfikatu|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Jednostka usługi |`AzureServiceTokenProvider` używa tajnego klucza, aby uzyskać token z usługi Azure AD. |

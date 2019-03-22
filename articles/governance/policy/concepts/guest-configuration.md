@@ -4,17 +4,17 @@ description: Dowiedz się, jak korzysta z usługi Azure Policy konfiguracji goś
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/27/2019
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: da29065485438b402dfb8b9a41f95f435a172a01
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: d97ac99cae963ddb9df4de06736c64d5d8ceafb5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187663"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -64,7 +64,7 @@ W poniższej tabeli przedstawiono listę narzędzi lokalnego, używane we wszyst
 
 ### <a name="validation-frequency"></a>Częstotliwość sprawdzania poprawności
 
-Klient Configuration Gość sprawdza nowej zawartości co 5 minut. Po otrzymaniu przydziału gościa ustawienia są sprawdzane w 15-minutowych interwałach. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa, zaraz po ukończeniu inspekcji. Gdy zasady [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) występuje i stan maszyny są zapisywane na potrzeby dostawcy zasobów gościa konfiguracji. To zdarzenie powoduje, że usługi Azure Policy do oceny właściwości usługi Azure Resource Manager. Ocena zasad na żądanie pobiera najnowszą wartość z konfiguracji gościa dostawcy zasobów. Jednak go nie wyzwala nowy inspekcji konfiguracji maszyny wirtualnej.
+Klient Configuration Gość sprawdza nowej zawartości co 5 minut. Po otrzymaniu przydziału gościa ustawienia są sprawdzane w 15-minutowych interwałach. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa, zaraz po ukończeniu inspekcji. Gdy zasady [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) występuje i stan maszyny są zapisywane na potrzeby dostawcy zasobów gościa konfiguracji. To powoduje, że usługi Azure Policy do oceny właściwości usługi Azure Resource Manager. Ocena zasad na żądanie pobiera najnowszą wartość z konfiguracji gościa dostawcy zasobów. Jednak go nie wyzwala nowy inspekcji konfiguracji maszyny wirtualnej.
 
 ### <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
@@ -74,22 +74,18 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych n
 |-|-|-|
 |Canonical|Ubuntu Server|14.04 16.04, 18.04|
 |credativ|Debian|8, 9|
-|Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter|
+|Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
+|Microsoft|Klient systemu Windows|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
 |SUSE|SLES|12 Z DODATKIEM SP3|
 
 > [!IMPORTANT]
-> Konfiguracja gościa można przeprowadzać inspekcję dowolnego serwera z uruchomionym obsługiwanego systemu operacyjnego.  Jeśli chcesz przeprowadzić inspekcję serwery, które używają niestandardowego obrazu, należy zduplikować **DeployIfNotExists** definicji i modyfikować **Jeśli** sekcji, aby uwzględnić właściwości obrazu.
+> Konfiguracja gościa można przeprowadzać inspekcję węzły obsługiwanego systemu operacyjnego.  Jeśli chcesz przeprowadzić inspekcję maszyn wirtualnych korzystających z niestandardowego obrazu, należy zduplikować **DeployIfNotExists** definicji i modyfikować **Jeśli** sekcji, aby uwzględnić właściwości obrazu.
 
 ### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwanych
 
-W poniższej tabeli wymieniono systemy operacyjne, które nie są obsługiwane:
-
-|System operacyjny|Uwagi|
-|-|-|
-|Klient systemu Windows | Systemy operacyjne klienta (takich jak Windows 7 i Windows 10) nie są obsługiwane.
-|Windows Server 2016 Nano Server | Nieobsługiwane.|
+Windows Server Nano Server nie jest obsługiwane w dowolnej wersji.
 
 ### <a name="guest-configuration-extension-network-requirements"></a>Wymagania dotyczące sieci rozszerzenia konfiguracji gościa
 
@@ -123,8 +119,7 @@ Usługa Azure Policy korzysta z dostawców zasobów gościa konfiguracji **compl
 > [!NOTE]
 > Dla każdej definicji konfiguracji gościa zarówno **DeployIfNotExists** i **inspekcji** definicje zasad, musi istnieć.
 
-Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* inicjatywy zawiera zasady 18. Sześć **DeployIfNotExists** i **inspekcji** pary definicji zasad dla Windows i trzy pary dla systemu Linux.
-W przypadku każdego **DeployIfNotExists** [reguła definicji zasad](definition-structure.md#policy-rule) ogranicza systemów ocenione.
+Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane inicjatywę o nazwie *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* zawiera zasady 18. Sześć **DeployIfNotExists** i **inspekcji** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
 
 ## <a name="client-log-files"></a>Pliki dziennika klienta
 
@@ -134,12 +129,19 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-1.8.0/GCAgent/logs/dsc.log`
 
+## <a name="guest-configuration-samples"></a>Przykłady konfiguracji gościa
+
+Przykłady dla konfiguracji gościa zasad są dostępne w następujących lokalizacjach:
+
+- [Indeks przykładów - gościa konfiguracji](../samples/index.md#guest-configuration)
+- [Usługa Azure Policy przykłady repozytorium GitHub](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md)
-- Przegląd [struktura definicji zasad](definition-structure.md)
-- Przegląd [zrozumienia efektów zasad](effects.md)
-- Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md)
-- Dowiedz się, jak [uzyskać dane na temat zgodności](../how-to/getting-compliance-data.md)
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md)
-- Sprawdzanie, co to jest grupa zarządzania, na stronie [Organize your resources with Azure management groups (Organizowanie zasobów za pomocą grup zarządzania platformy Azure)](../../management-groups/index.md)
+- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Przejrzyj [strukturę definicji usługi Azure Policy](definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](effects.md).
+- Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md).
+- Dowiedz się, jak [Pobierz dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md).
+- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/index.md).

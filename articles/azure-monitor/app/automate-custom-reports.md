@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 74fdfed23d30dbf88b2faa6028039159010d9afc
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756638"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113082"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatyzowanie raporty niestandardowe z danymi usługi Azure Application Insights
 
@@ -110,12 +110,12 @@ availabilityResults
     
     (Wartości AI_ znajdują się w ramach dostępu do interfejsu API dla zasobu usługi Application Insights chcesz sporządzić raport na temat. Jeśli nie masz klucza interfejsu API usługi Application Insights jest możliwość **Utwórz klucz interfejsu API**.)
     
-    * AI_APP_ID = identyfikator aplikacji
-    * AI_APP_KEY = klucz interfejsu API
-    * SendGridAPI = klucz interfejsu API usługi SendGrid
+   * AI_APP_ID = identyfikator aplikacji
+   * AI_APP_KEY = klucz interfejsu API
+   * SendGridAPI = klucz interfejsu API usługi SendGrid
 
-    > [!NOTE]
-    > Jeśli nie masz konta usługi SendGrid można go utworzyć. Dokumentacja usługi SendGrid dla usługi Azure Functions jest [tutaj](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Jeśli jest to po prostu chcesz minimalny wyjaśnienie sposobu instalacji usługi SendGrid i wygeneruj klucz interfejsu API, który został dostarczony na końcu tego artykułu. 
+     > [!NOTE]
+     > Jeśli nie masz konta usługi SendGrid można go utworzyć. Dokumentacja usługi SendGrid dla usługi Azure Functions jest [tutaj](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Jeśli jest to po prostu chcesz minimalny wyjaśnienie sposobu instalacji usługi SendGrid i wygeneruj klucz interfejsu API, który został dostarczony na końcu tego artykułu. 
 
 9. Wybierz **integracja** i w obszarze danych wyjściowych kliknij **SendGrid ($return)**.
 

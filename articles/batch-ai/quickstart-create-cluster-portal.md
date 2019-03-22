@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.openlocfilehash: 49e78f1774a2998de7070453f7c098aef1761242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093232"
 ---
 # <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>Szybki start: tworzenie klastra do zadań szkoleniowych usługi Batch AI przy użyciu witryny Azure Portal
 
@@ -59,7 +59,7 @@ Rozpocznij od utworzenia obszaru roboczego usługi Batch AI w celu zorganizowani
 
 3. Wprowadź wartości w polach **Nazwa obszaru roboczego** i **Grupa zasobów**. Jeśli chcesz, wybierz różne opcje z list rozwijanych **Subskrypcja** i **Lokalizacja** obszaru roboczego. Wybierz przycisk **Utwórz obszar roboczy**.
 
-  ![Tworzenie obszaru roboczego usługi Batch AI](./media/quickstart-create-cluster-portal/create-workspace.png)
+   ![Tworzenie obszaru roboczego usługi Batch AI](./media/quickstart-create-cluster-portal/create-workspace.png)
 
 Kiedy pojawi się komunikat **Wdrażanie zakończyło się pomyślnie**, przejdź do utworzonego zasobu i wybierz obszar roboczy.
 
@@ -73,7 +73,7 @@ Serwer plików usługi Batch AI to jednowęzłowy system plików NFS, który mo�
 
 3. Wprowadź nazwę w polu **Nazwa użytkownika administratora** i skopiuj zawartość pliku klucza publicznego SSH do pola **Klucz SSH**. Zaakceptuj ustawienia domyślne dla pozostałych wartości i wybierz przycisk **Utwórz serwer plików**.
 
-  ![Tworzenie serwera plików usługi Batch AI](./media/quickstart-create-cluster-portal/create-file-server.png)
+   ![Tworzenie serwera plików usługi Batch AI](./media/quickstart-create-cluster-portal/create-file-server.png)
 
 Wdrożenie serwera plików zajmie kilka minut.
 
@@ -138,7 +138,7 @@ Opłaty za używanie klastra usługi Batch AI i serwera plików są naliczane po
 
 Kiedy nie będzie już potrzebny, usuń obszar roboczy usługi Batch AI zawierający klaster i serwer plików. Aby to zrobić, wybierz obszar roboczy usługi Batch AI, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start przedstawiono tworzenie klastra usługi Batch AI i dołączonego serwera plików przy użyciu witryny Azure Portal. Aby uzyskać informacje na temat używania klastra usługi Batch AI do szkolenia modelu, przejdź do przewodnika Szybki start dotyczącego szkolenia modelu uczenia głębokiego.
 

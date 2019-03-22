@@ -7,19 +7,21 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: e47817f70a727fe815e5d7e61ad7820121f26d97
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: a04dbd42e09ad8ec352af74950b6d71425a84a9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791413"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177674"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów przy użyciu wiersza polecenia platformy Azure
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>W wersji zapoznawczej — tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów przy użyciu wiersza polecenia platformy Azure
 
 Szybkie skalowanie obciążeń aplikacji w klastrze usługi Azure Kubernetes Service (AKS), można użyć wirtualnych węzłów. Wirtualne węzły, możesz mieć szybkiej aprowizacji zasobników i płacić tylko na sekundę na czas wykonywania uległ. Nie należy czekać do wdrożenia węzłów obliczeniowych maszyn wirtualnych, aby uruchomić dodatkowe zasobniki skalowanie klastra usługi Kubernetes. W tym artykule pokazano, jak utworzyć i skonfigurować zasoby sieci wirtualnej i klastra AKS, a następnie włącz wirtualnych węzłów.
 
 > [!IMPORTANT]
-> Wirtualne węzły dla usługi AKS jest obecnie oferowana **Podgląd**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Funkcje w wersji zapoznawczej usługi AKS są samoobsługi i opcjonalnych. Wersje zapoznawcze są udostępniane do zbierania opinii i błędy z naszej społeczności. Nie są one jednak obsługiwane przez pomoc techniczną systemu Azure. Jeśli tworzenie klastra lub Dodaj następujące funkcje do istniejących klastrów tego klastra jest obsługiwany, dopóki ta funkcja nie jest już dostępna w wersji zapoznawczej i absolwentów, które są ogólnie dostępne (GA).
+>
+> Jeśli wystąpią problemy związane z wersji zapoznawczej, [Otwórz problem w repozytorium GitHub usługi AKS] [ aks-github] o nazwie funkcja w wersji zapoznawczej w tytuł usterki.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -335,6 +337,7 @@ Wirtualne węzły są często jeden składnik skalowania rozwiązania w usłudze
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+[aks-github]: https://github.com/azure/aks/issues]
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -3,7 +3,7 @@ title: Zbieranie danych w usłudze Azure Security Center | Dokumentacja firmy Mi
 description: " Dowiedz się, jak włączyć funkcję zbierania danych w usłudze Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,41 +12,42 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
-ms.author: rkarlin
-ms.openlocfilehash: 3f837820d05f7e10524e65bd8a7775d45c4cc600
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/19/2018
+ms.author: monhaber
+ms.openlocfilehash: 7be86ae7b425c8497b017672ae2e828ccbf65049
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110430"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223703"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
-Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane przy użyciu agenta usługi Log Analytics, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń na komputerze i kopiuje dane do swojego obszaru roboczego do analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Agent usługi Log Analytics kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
+Usługa Security Center zbiera dane z maszyn wirtualnych (VM), zestawy skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych), kontenery IaaS i komputery spoza platformy Azure (z uwzględnieniem lokalnej) do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Agent Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
 
 Zbieranie danych jest wymagany do zapewniają widoczność brakujących aktualizacji, nieprawidłowo skonfigurowane ustawienia zabezpieczeń systemu operacyjnego, włączenie ochrony punktu końcowego i wykrywania zagrożeń i kondycji. 
 
-Ten artykuł zawiera wskazówki dotyczące sposobu instalowania agenta usługi Log Analytics i ustaw obszar roboczy usługi Log Analytics, w którym będą przechowywane zebrane dane. Obie operacje są wymagane do włączenia zbierania danych. 
+Ten artykuł zawiera wskazówki dotyczące sposobu instalacji programu Microsoft Monitoring Agent i ustaw obszar roboczy usługi Log Analytics, w którym będą przechowywane zebrane dane. Obie operacje są wymagane do włączenia zbierania danych. 
 
 > [!NOTE]
-> - Zbieranie danych jest potrzebna tylko dla zasobów obliczeniowych (maszyn wirtualnych i komputerów spoza platformy Azure). Mogą korzystać z usługi Azure Security Center, nawet jeśli nie możesz aprowizować agentów; jednak mają ograniczone zabezpieczeń i możliwości wymienione powyżej są nieobsługiwane.  
+
+> - Zbieranie danych jest wymagana tylko za zasoby obliczeniowe (maszyny wirtualne, zestawy skalowania maszyn wirtualnych, kontenery IaaS i komputerów spoza platformy Azure). Mogą korzystać z usługi Azure Security Center, nawet jeśli nie możesz aprowizować agentów; jednak mają ograniczone zabezpieczeń i możliwości wymienione powyżej są nieobsługiwane.  
 > - Aby uzyskać listę obsługiwanych platform, zobacz [obsługiwanych platform w usłudze Azure Security Center](security-center-os-coverage.md).
 > - Zbieranie danych dla zestawu skalowania maszyn wirtualnych nie jest obecnie obsługiwane.
 
 
-## Włączanie automatycznej aprowizacji agenta usługi Log Analytics <a name="auto-provision-mma"></a>
+## Włącz automatyczną aprowizację programu Microsoft Monitoring Agent <a name="auto-provision-mma"></a>
 
-Do zbierania danych z maszyn powinna mieć zainstalowany agent usługi Log Analytics.  Instalacja agenta może być automatycznie (zalecane) lub możesz zainstalować agenta ręcznie.  
+Aby zebrać dane z maszyn powinna mieć zainstalowany program Microsoft Monitoring Agent.  Instalacja agenta może być automatycznie (zalecane) lub możesz zainstalować agenta ręcznie.  
 
 >[!NOTE]
 > Automatyczna aprowizacja jest domyślnie wyłączona. Security Center mogła zainstalować automatycznej aprowizacji domyślnie ustawia się je **na**.
 >
 
-Gdy automatyczna aprowizacja jest włączona, usługa Security Center aprowizuje agenta usługi Log Analytics na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszelkie nowe, które są tworzone. Automatycznej aprowizacji jest zdecydowanie zalecane, ale jest również dostępna ręcznej instalacji agenta. [Dowiedz się, jak można zainstalować rozszerzenia agenta usługi Log Analytics](#manualagent).
+Gdy automatyczna aprowizacja jest włączona, usługa Security Center aprowizuje Microsoft Monitoring agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszelkie nowe, które są tworzone. Automatycznej aprowizacji jest zdecydowanie zalecane, ale jest również dostępna ręcznej instalacji agenta. [Dowiedz się, jak można zainstalować rozszerzenia Microsoft Monitoring Agent](#manualagent).
 
 
 
-Aby włączyć automatyczną aprowizację agentów usługi Log Analytics:
+Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
 1. W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
 2. Kliknij przycisk **edytować ustawienia** w kolumnie ustawień odpowiedniej subskrypcji na liście.
 
@@ -60,7 +61,7 @@ Aby włączyć automatyczną aprowizację agentów usługi Log Analytics:
 
 >[!NOTE]
 > - Aby uzyskać instrukcje, jak wykonać aprowizację wstępnie istniejącej instalacji, zobacz [automatycznej aprowizacji w przypadku istniejących instalacji agenta](#preexisting).
-> - Aby uzyskać instrukcje dotyczące ręcznego inicjowania obsługi administracyjnej, zobacz [ręcznie zainstalować rozszerzenia agenta usługi Log Analytics](#manualagent).
+> - Aby uzyskać instrukcje dotyczące ręcznego inicjowania obsługi administracyjnej, zobacz [ręcznie zainstalować rozszerzenia Microsoft Monitoring Agent](#manualagent).
 > - Aby uzyskać instrukcje na wyłączenie automatycznej aprowizacji, zobacz [Wyłącz automatyczną aprowizację](#offprovisioning).
 > - Aby uzyskać instrukcje dotyczące dołączania Centrum zabezpieczeń przy użyciu programu PowerShell, zobacz temat [automatyzacji dołączania do usługi Azure Security Center przy użyciu programu PowerShell](security-center-powershell-onboarding.md).
 >
@@ -202,16 +203,20 @@ Aby wybrać zasady filtrowania:
 
 Określ następujące przypadki użycia, jak automatyczna aprowizacja działa w przypadku, gdy istnieje już agenta lub rozszerzenia zainstalowane. 
 
-- Log Analytics agent jest zainstalowany na komputerze, ale nie jako rozszerzenie<br>
-Jeśli agenta usługi Log Analytics jest zainstalowany bezpośrednio na maszynie Wirtualnej (a nie jako rozszerzenie platformy Azure), usługa Security Center nie instaluje agenta usługi Log Analytics. Można włączyć automatycznej aprowizacji i wybierz obszar roboczy odpowiednich użytkownika w Centrum zabezpieczeń automatycznie konfigurację aprowizacji. Po wybraniu tego samego obszaru roboczego, do których maszyna wirtualna jest już połączona z istniejącego agenta zostanie zawinięta przy użyciu rozszerzenia agenta usługi Log Analytics. 
+- Program Microsoft Monitoring Agent jest zainstalowany na komputerze, ale nie jako rozszerzenie (agent bezpośredni)<br>
+Program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie Wirtualnej (a nie jako rozszerzenie platformy Azure), Centrum zabezpieczeń zainstaluje rozszerzenia Microsoft Monitoring Agent i mogą zostać uaktualnione do najnowszej wersji Microsoft Monitoring agent.
+Jest zainstalowany agent będzie kontynuował raportowanie do jego już skonfigurowanego obszarów roboczych, a ponadto będzie zgłaszać do obszaru roboczego skonfigurowane w usłudze Security Center (multihosting jest obsługiwane).
+Jeśli skonfigurowany obszar roboczy jest obszar roboczy użytkownika (nie Centrum zabezpieczeń domyślnego obszaru roboczego), a następnie będą musieli zainstalować "security / rozwiązania"securityFree"na nim usługi Security Center rozpocząć przetwarzanie zdarzeń z maszyn wirtualnych i komputerów raportujących do obszaru roboczego.<br>
+<br>
+Dla istniejących maszyn w subskrypcji dołączono do usługi Security Center, przed 2019-03-17, gdy zostanie wykryty istniejącego agenta, rozszerzenia Microsoft Monitoring Agent nie zostanie zainstalowany, a komputer nie ma wpływu na. Dla tych maszyn Zobacz zalecenie "Monitorowanie problemów dotyczących kondycji agenta na maszynach Rozwiąż", aby rozwiązać problemy z instalacją agentów na tych maszynach.
 
-> [!NOTE]
-> Jeśli zainstalowano agenta w wersji 2012 programu SCOM, **nie** Włączanie automatycznego inicjowania obsługi na. 
+  
+- SCOM agent jest zainstalowany na komputerze<br>
+Usługa Security center zostanie zainstalowany program Microsoft Monitoring Agent rozszerzenia side-by-side do istniejącego programu SCOM. Istniejącego agenta programu SCOM będą nadal normalnie raportu do serwera programu SCOM. Należy pamiętać, że SCOM agent i Microsoft Monitoring Agent współużytkują wspólne biblioteki czasu wykonywania, które zostaną zaktualizowane do wersji Najpóźniejsza podczas tego procesu.
+Uwaga — Jeśli zainstalowano agenta w wersji 2012 programu SCOM, **nie** Włączanie automatycznego inicjowania obsługi na.<br>
 
-Aby uzyskać więcej informacji, zobacz [co się stanie w przypadku pakietu OMS lub SCOM programu bezpośredni agent jest już zainstalowany na maszynie Wirtualnej?](security-center-faq.md#scomomsinstalled)
-
--   Istniejące rozszerzenia maszyny Wirtualnej jest obecny<br>
-    - Usługa Security center obsługuje istniejących instalacji rozszerzenia, a nie zastępuje istniejące połączenia. Usługa Security Center przechowuje zabezpieczeń danych z maszyny Wirtualnej w obszarze roboczym już połączony i zapewnia ochronę w oparciu o rozwiązania włączone w obszarze roboczym.   
+- Istniejące rozszerzenia maszyny Wirtualnej jest obecny<br>
+    - Po zainstalowaniu programu Monitoring Agent jako rozszerzenie Konfiguracja rozszerzenia pozwala na zgłaszanie tylko z jednym obszarem roboczym. Usługa Security Center nie zastępuje istniejące połączenia do obszarów roboczych użytkownika. Usługa Security Center będzie przechowywać dane zabezpieczeń z maszyny Wirtualnej w obszarze roboczym, który został już połączony, pod warunkiem, że "zabezpieczenia" lub "securityFree" rozwiązania została zainstalowana na nim. Usługa Security Center może Uaktualnij wersję rozszerzenia do najnowszej wersji w ramach tego procesu.  
     - Aby zobaczyć, na który obszar roboczy istniejące rozszerzenie wysyła dane, uruchom test, aby [sprawdzania poprawności łączności z usługą Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Alternatywnie można otworzyć obszarów roboczych usługi Log Analytics, wybierz obszar roboczy, wybierz maszynę Wirtualną i przyjrzyj się połączenia agenta usługi Log Analytics. 
     - Jeśli masz środowisko w którym zainstalowano agenta usługi Log Analytics na klienckich stacjach roboczych i raportowania do istniejącego obszaru roboczego usługi Log Analytics, przejrzyj listę [systemów operacyjnych obsługiwanych przez usługę Azure Security Center](security-center-os-coverage.md) aby upewnić się, system operacyjny jest obsługiwany, a następnie zobacz [istniejące log analytics klientów](security-center-faq.md#existingloganalyticscust) Aby uzyskać więcej informacji.
  

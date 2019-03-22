@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd5d724583dd4682fb6c0b01e8ec11196936289b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211907"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116269"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service to service wywołania tej tożsamości użytkownika użycia delegowanego przepływu w imieniu z
 
@@ -63,12 +63,12 @@ Rejestrowanie aplikacji klienckiej i usługi warstwy środkowej w usłudze Azure
     1. W zależności od typu aplikacji, ustawić adres URL logowania lub adres URL przekierowania do podstawowego adresu URL.
     1. Wybierz **Utwórz** do tworzenia aplikacji.
 1. Wygeneruj klucz tajny klienta przed zakończeniem pracy w witrynie Azure portal.
-    1. W witrynie Azure portal, wybierz aplikację, a następnie wybierz pozycję **ustawienia**.
-    1. Wybierz **klucze** w menu Ustawienia i dodać klucz za pomocą klucza okres jednego roku lub dwa lata.
-    1. Podczas zapisywania na tej stronie witryny Azure portal Wyświetla wartość klucza. Skopiuj i Zapisz wartość klucza w bezpiecznym miejscu.
+   1. W witrynie Azure portal, wybierz aplikację, a następnie wybierz pozycję **ustawienia**.
+   1. Wybierz **klucze** w menu Ustawienia i dodać klucz za pomocą klucza okres jednego roku lub dwa lata.
+   1. Podczas zapisywania na tej stronie witryny Azure portal Wyświetla wartość klucza. Skopiuj i Zapisz wartość klucza w bezpiecznym miejscu.
 
-    > [!IMPORTANT]
-    > Wymagany jest klucz, aby skonfigurować ustawienia aplikacji w danej implementacji. Ta wartość klucza jest on wyświetlany ponownie i nie jest możliwe do pobierania w inny sposób. Zapisz go, jak jest ona widoczna w witrynie Azure portal.
+      > [!IMPORTANT]
+      > Wymagany jest klucz, aby skonfigurować ustawienia aplikacji w danej implementacji. Ta wartość klucza jest on wyświetlany ponownie i nie jest możliwe do pobierania w inny sposób. Zapisz go, jak jest ona widoczna w witrynie Azure portal.
 
 ### <a name="register-the-client-application"></a>Rejestrowanie aplikacji klienta
 

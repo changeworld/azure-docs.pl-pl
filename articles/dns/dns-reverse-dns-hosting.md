@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: f0ab7d4063eea50b58c809aee1b0ea70f8c21c6b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546844"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118259"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostowanie odwrotnego wyszukiwania stref DNS w usłudze Azure DNS
 
@@ -131,7 +131,7 @@ Poniższy przykład przeprowadzi Cię przez proces tworzenia rekordu PTR w DNS s
 1. Aby uzyskać **nazwy domeny**, wprowadź w pełni kwalifikowana nazwa domeny (FQDN) z zasobem, który używa adres IP.
 1. Wybierz **OK** w dolnej części okienka, aby utworzyć DNS rejestrowania.
 
- ![Okienko "Dodawanie zestawu rekordów", z polami wypełnione](./media/dns-reverse-dns-hosting/figure5.png)
+   ![Okienko "Dodawanie zestawu rekordów", z polami wypełnione](./media/dns-reverse-dns-hosting/figure5.png)
 
 Następujące przykłady przedstawiają sposób wykonania tego zadania przy użyciu programu PowerShell lub wiersza polecenia platformy Azure.
 

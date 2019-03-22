@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 519f0354f2a19e106ca1072170721b27357d173e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dcc8b9fef75ba13b607d7fdda5bd55cc710165b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849211"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837018"
 ---
 <a name="private-skus-and-plans"></a>Jednostki SKU w prywatnej i plany
 ============
 
-Jednostki SKU w prywatnej pozwalają ograniczyć dostępności jednostki SKU dla specyficznych klientów. Gdy jednostka SKU jest oznaczony jako prywatny, nie jest dostępna w dowolnej publicznego katalogu, w tym na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure portal](http://portal.azure.com). W witrynie Azure portal tylko klientów z dostępem do jednostki SKU mogli je zobaczyć. Ponadto są również jest proszony mają dostęp do oferty prywatne.
+Jednostki SKU w prywatnej pozwalają ograniczyć dostępności jednostki SKU dla specyficznych klientów. Gdy jednostka SKU jest oznaczony jako prywatny, nie jest dostępna w dowolnej publicznego katalogu, w tym na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [witryny Azure portal](https://portal.azure.com). W witrynie Azure portal tylko klientów z dostępem do jednostki SKU mogli je zobaczyć. Ponadto są również jest proszony mają dostęp do oferty prywatne.
 
 >[!NOTE]
 >Prywatne jednostki SKU musi mieć nowe unikatowe identyfikatory jednostka SKU/Plan w celu uniknięcia konfliktów z od publicznego jednostek SKU.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: magattus
-ms.openlocfilehash: 4d1725b0559c34692d1a89d016fd2d6b7b1b26c1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: afe959e80b339db5112fa97fd79d0528390e3954
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193096"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096456"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Poprawianie wydajności poprzez kompresowanie plików w usłudze Azure CDN
 Kompresja plików jest prosta i skuteczna metoda zwiększanie szybkości transferu plików i poprawia wydajność ładowania strony, zmniejszając rozmiar tego pliku przed wysłaniem ich z serwera. Kompresja plików można obniżyć koszty przepustowości i zapewnić bardziej dynamiczne środowisko dla użytkowników.
@@ -31,13 +31,11 @@ Istnieją dwa sposoby, aby włączyć kompresję pliku:
 
 > [!IMPORTANT]
 > Zmiany konfiguracji w usłudze Azure CDN może zająć trochę czasu, do propagowania za pośrednictwem sieci: 
-- W przypadku profili usługi **Azure CDN Standard from Microsoft** propagacja zwykle trwa do 10 minut. 
-- W przypadku profili usługi **Azure CDN Standard from Akamai** propagacja zwykle trwa mniej niż jedną minutę. 
-- W przypadku profilów usługi **Azure CDN Standard from Verizon** oraz usługi **Azure CDN Premium from Verizon** propagacja zwykle trwa do 10 minut. 
->
+> - W przypadku profili usługi **Azure CDN Standard from Microsoft** propagacja zwykle trwa do 10 minut. 
+> - W przypadku profili usługi **Azure CDN Standard from Akamai** propagacja zwykle trwa mniej niż jedną minutę. 
+> - W przypadku profilów usługi **Azure CDN Standard from Verizon** oraz usługi **Azure CDN Premium from Verizon** propagacja zwykle trwa do 10 minut. 
+> 
 > Jeśli podczas konfigurowania kompresji po raz pierwszy dla punktu końcowego usługi CDN, należy wziąć pod uwagę oczekiwania 1 – 2 godzin przed zajmujesz upewnij się, że ustawienia kompresji wykonaniu propagacji do lokalizacji POP.
-> 
-> 
 
 ## <a name="enabling-compression"></a>Włączanie kompresji
 Sieci CDN warstw standardowa i premium zapewniają taką samą funkcjonalność kompresji, ale różni się w interfejsie użytkownika. Aby uzyskać więcej informacji na temat różnic między warstwami sieci CDN w warstwie standardowa i premium, zobacz [Omówienie usługi CDN Azure](cdn-overview.md).
@@ -49,28 +47,28 @@ Sieci CDN warstw standardowa i premium zapewniają taką samą funkcjonalność 
 > 
 
 1. Na stronie profilu usługi CDN wybierz punktu końcowego usługi CDN, którą chcesz zarządzać.
-   
+
     ![Punkty końcowe profilu usługi CDN](./media/cdn-file-compression/cdn-endpoints.png)
-   
+
     Zostanie otwarta strona punktu końcowego usługi CDN.
 2. Wybierz **kompresji**.
 
     ![Wybór kompresja sieci CDN](./media/cdn-file-compression/cdn-compress-select-std.png)
-   
+
     Zostanie otwarta strona kompresji.
 3. Wybierz **na** włączenie kompresji.
-   
+
     ![Opcje kompresją pliku CDN](./media/cdn-file-compression/cdn-compress-standard.png)
 4. Użyj domyślnych typów MIME, lub zmodyfikować tę listę, dodając lub usuwając typów MIME.
-   
+
    > [!TIP]
    > Mimo że jest to możliwe, nie zaleca się dotyczą kompresji skompresowanych formatów. Na przykład pliku ZIP, MP3, MP4 lub JPG.
    > 
-   
+
    > [!NOTE]
    > Modyfikowanie domyślną listę typów MIME nie jest obecnie obsługiwane w usłudze Azure CDN w warstwie standardowa firmy Microsoft.
    > 
- 
+
 5. Po wprowadzeniu zmian, wybierz **Zapisz**.
 
 ### <a name="premium-cdn-profiles"></a>Profile CDN w warstwie Premium
@@ -79,23 +77,23 @@ Sieci CDN warstw standardowa i premium zapewniają taką samą funkcjonalność 
 > 
 
 1. Na stronie profilu usługi CDN wybierz **Zarządzaj**.
-   
+
     ![Wybierz zarządzania sieci CDN](./media/cdn-file-compression/cdn-manage-btn.png)
-   
+
     Zostanie otwarty w portalu zarządzania usługi CDN.
 2. Umieść kursor nad **HTTP dużych** kartę, a następnie umieść kursor nad **ustawienia pamięci podręcznej** okno wysuwane. Wybierz **kompresji**.
 
     ![Wybór kompresja sieci CDN](./media/cdn-file-compression/cdn-compress-select.png)
-   
+
     Opcje kompresji są wyświetlane.
-   
+
     ![Opcje kompresją pliku CDN](./media/cdn-file-compression/cdn-compress-files.png)
 3. Włącz kompresję, wybierając **Kompresja włączona**. Wprowadź typy MIME chcesz kompresować jako listę rozdzielonych przecinkami (bez spacji) **typów plików** pole.
-   
+
    > [!TIP]
    > Mimo że jest to możliwe, nie zaleca się dotyczą kompresji skompresowanych formatów. Na przykład pliku ZIP, MP3, MP4 lub JPG.
    > 
-    
+
 4. Po wprowadzeniu zmian, wybierz **aktualizacji**.
 
 ## <a name="compression-rules"></a>Reguły kompresji
@@ -110,7 +108,7 @@ Aby uzyskać **Azure CDN Standard from Microsoft** profile, tylko odpowiednie pl
 Te profile obsługują następujące kodowania kompresji:
 - gzip (GNU zip)
 - brotli 
- 
+
 Jeśli żądanie obsługuje więcej niż jeden typ kompresji, pierwszeństwo ma brotli kompresji.
 
 Podczas żądania zasobu określa kompresję gzip i wyniki żądania to Chybienie pamięci podręcznej, usługa Azure CDN wykonuje kompresję gzip zasobu bezpośrednio na serwer protokołu POP. W efekcie skompresowanego pliku jest obsługiwany z pamięci podręcznej.
@@ -120,13 +118,13 @@ Podczas żądania zasobu określa kompresję gzip i wyniki żądania to Chybieni
 Aby uzyskać **Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile, tylko odpowiednie pliki są kompresowane. Aby kwalifikować się do kompresji, plik musi:
 - Być większa niż 128 bajtów
 - Być mniejszy niż 3 MB
- 
+
 Te profile obsługują następujące kodowania kompresji:
 - gzip (GNU zip)
 - KORYGOWANIA
 - bzip2
 - brotli 
- 
+
 Jeśli żądanie obsługuje więcej niż jeden typ kompresji, te typy kompresji mają pierwszeństwo przed brotli kompresji.
 
 Podczas żądania zasobu określa brotli kompresji (nagłówek HTTP jest `Accept-Encoding: br`), a wyniki żądania to Chybienie pamięci podręcznej usługi Azure CDN wykonuje kompresji brotli zasobu bezpośrednio na serwer protokołu POP. W efekcie skompresowanego pliku jest obsługiwany z pamięci podręcznej.

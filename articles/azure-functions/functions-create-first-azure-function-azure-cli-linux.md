@@ -5,22 +5,22 @@ services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 11/28/2018
+ms.date: 03/12/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.custom: mvc
+ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: b6df653f89f05a9b253ecea102ed8310ff2a53b7
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: 78c2f599ba7d22e6de070f5867398e111a396d45
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849741"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Tworzenie pierwszej funkcji hostowanej w systemie Linux za pomocą narzędzi Core Tools i interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 
-Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.com/serverless) systemu Linux bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. Funkcja hostowania w systemie Linux jest obecnie w wersji zapoznawczej i wymaga [środowiska uruchomieniowego usługi Functions 2.0](functions-versions.md). Aby dowiedzieć się więcej na temat uruchamiania aplikacji funkcji w wersji zapoznawczej w systemie Linux, zobacz [ten artykuł dotyczący usługi Functions w systemie Linux](https://aka.ms/funclinux).
+Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.com/serverless) systemu Linux bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. Hosting systemu Linux wymaga [funkcje w wersji 2.0 środowisko uruchomieniowe](functions-versions.md). Pomocy technicznej, aby uruchomić aplikację funkcji w systemie Linux w bez użycia serwera [planu zużycie](functions-scale.md#consumption-plan) jest obecnie dostępna w wersji zapoznawczej. Aby dowiedzieć się więcej, zobacz [w tym artykule uwagi dotyczące wersji zapoznawczej](https://aka.ms/funclinux).
 
 W tym artykule Szybki start przedstawiono sposób użycia interfejsu wiersza polecenia platformy Azure w celu utworzenia pierwszej aplikacji funkcji działającej w systemie Linux. Kod funkcji jest tworzony lokalnie, a następnie wdrażany na platformie Azure za pomocą narzędzi [Azure Functions Core Tools](functions-run-local.md).
 
@@ -49,7 +49,7 @@ func init MyFunctionProj
 Po wyświetleniu monitu użyj klawiszy strzałek, aby wybrać środowisko uruchomieniowe procesu roboczego z następujących opcji języka:
 
 + `dotnet`: tworzy projekt biblioteki klas platformy .NET (csproj).
-+ `node`: tworzy projekt w języku JavaScript.
++ `node`: tworzy projekt języka JavaScript lub TypeScript. Po wyświetleniu monitu wybierz `JavaScript`.
 + `python`: tworzy projekt w języku Python. Aby uzyskać informacje na temat języka Python, zobacz [przewodnik Szybki start dla języka Python](functions-create-first-function-python.md).
 
 Gdy polecenie zostanie wykonane, zostaną zwrócone dane wyjściowe podobne do następujących:
@@ -59,6 +59,12 @@ Writing .gitignore
 Writing host.json
 Writing local.settings.json
 Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
+```
+
+Użyj następującego polecenia, aby przejść do nowego folderu projektu `MyFunctionProj`.
+
+```bash
+cd MyFunctionProj
 ```
 
 [!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
@@ -71,23 +77,16 @@ Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
 
 [!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
 
-## <a name="create-a-linux-app-service-plan"></a>Tworzenie planu usługi App Service dla systemu Linux
-
-[!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
-
 ## <a name="create-a-linux-function-app-in-azure"></a>Tworzenie aplikacji funkcji systemu Linux na platformie Azure
 
 Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia bezserwerowe środowisko do wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. Utwórz aplikację funkcji działającą w systemie Linux przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
-W poniższym poleceniu zamiast symbolu zastępczego `<app_name>` użyj unikatowej nazwy aplikacji funkcji, a zamiast symbolu zastępczego `<storage_name>` użyj nazwy konta magazynu. `<app_name>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure. Należy również ustawić środowisko uruchomieniowe `<language>` dla aplikacji funkcji za pomocą pozycji `dotnet` (C#), `node` (JavaScript) lub `python`.
+W poniższym poleceniu zamiast symbolu zastępczego `<app_name>` użyj unikatowej nazwy aplikacji funkcji, a zamiast symbolu zastępczego `<storage_name>` użyj nazwy konta magazynu. `<app_name>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure. Należy również ustawić `<language>` środowisko uruchomieniowe dla aplikacji funkcji z `dotnet` (C#), `node` (języka JavaScript/TypeScript) lub `python`.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \
 --name <app_name> --storage-account  <storage_name> --runtime <language>
 ```
-
-> [!NOTE]
-> Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` obsługującą dowolne aplikacje usługi App Service w systemie innym niż Linux, musisz użyć innej grupy zasobów. Nie można jednocześnie hostować aplikacji systemów Windows i Linux w tej samej grupie zasobów.  
 
 Po utworzeniu aplikacji funkcji zostanie wyświetlony następujący komunikat:
 
@@ -104,9 +103,4 @@ Teraz możesz opublikować swój projekt w nowej aplikacji funkcji na platformie
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
-## <a name="next-steps"></a>Następne kroki
-
-W tym artykule pokazano, jak hostować aplikację funkcji w domyślnym kontenerze usługi Azure App Service. Swoje funkcje możesz też hostować w systemie Linux we własnym kontenerze niestandardowym.
-
-> [!div class="nextstepaction"]
-> [Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu](functions-create-function-linux-custom-image.md)
+[!INCLUDE [functions-quickstart-next-steps-cli](../../includes/functions-quickstart-next-steps-cli.md)]

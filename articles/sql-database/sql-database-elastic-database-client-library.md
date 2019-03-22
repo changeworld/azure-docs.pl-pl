@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 065b2511da568ee2cdc0a989b34905b4010ea32e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c0d50f3a66d940618f2bc421537b113120a2eaca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562491"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006288"
 ---
 # <a name="building-scalable-cloud-databases"></a>Tworzenie skalowalnych baz danych w chmurze
 
@@ -62,7 +62,7 @@ Ogólnie rzecz biorąc klienci korzystający z narzędzi elastycznych baz danych
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Biblioteka kliencka elastic Database ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) — aby **Pobierz** biblioteki.
+- Biblioteka kliencka elastic Database ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) — aby **Pobierz** biblioteki.
 
 - [Rozpocznij pracę z narzędziami elastycznej bazy danych](sql-database-elastic-scale-get-started.md) — próby **przykładową aplikację** którym przedstawiono funkcje klienta.
 

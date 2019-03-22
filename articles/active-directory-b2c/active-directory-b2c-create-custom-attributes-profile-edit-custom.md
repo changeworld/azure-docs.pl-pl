@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1f79330f12117c6ade8884165d1538623e19c7ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175268"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094630"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Użyj niestandardowych atrybutów w niestandardowym profilu edytowanie zasad
 
@@ -260,20 +260,20 @@ Identyfikator tokenu wysyłane z powrotem w aplikacji zawiera nową właściwoś
 
 1. Dodaj nowe oświadczenie do przepływów zalogować się do kont społecznościowych, zmieniając następujące **profili Technicalprofile**. Kont społecznościowych i federacyjnego służą dwa **profili Technicalprofile** do logowania. Zapisują i odczytują dane użytkownika przy użyciu **alternativeSecurityId** jako locator obiektu użytkownika.
 
-  ```xml
+   ```xml
     <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
     <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-  ```
+   ```
 
 2. Użyj tego samego atrybuty rozszerzenia między zasadami wbudowanych i niestandardowych. Po dodaniu rozszerzenia lub niestandardowego, atrybuty za pośrednictwem portalu środowisko, te atrybuty są zarejestrowane przy użyciu **b2c-extensions-app** znajdujące się w każdej dzierżawy B2C. Wykonaj poniższe kroki, aby użyć rozszerzeń atrybuty w zasadach niestandardowych:
 
-  a. W ramach dzierżawy B2C w witrynie portal.azure.com, przejdź do **usługi Azure Active Directory** i wybierz **rejestracje aplikacji**.  
-  b. Znajdź swoje **b2c-extensions-app** i wybierz ją.  
-  c. W obszarze **Essentials**, wprowadź **identyfikator aplikacji** i **obiektu o identyfikatorze**.  
-  d. Należy je uwzględnić w swojej **typowe usługi AAD** metadane profilu technicznego:  
+   a. W ramach dzierżawy B2C w witrynie portal.azure.com, przejdź do **usługi Azure Active Directory** i wybierz **rejestracje aplikacji**.  
+   b. Znajdź swoje **b2c-extensions-app** i wybierz ją.  
+   c. W obszarze **Essentials**, wprowadź **identyfikator aplikacji** i **obiektu o identyfikatorze**.  
+   d. Należy je uwzględnić w swojej **typowe usługi AAD** metadane profilu technicznego:  
 
-  ```xml
+   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
           <DisplayName>Azure Active Directory</DisplayName>
@@ -285,14 +285,14 @@ Identyfikator tokenu wysyłane z powrotem w aplikacji zawiera nową właściwoś
               <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
               <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
             </Metadata>
-  ```
+   ```
 
 3. Pozostają spójne za pomocą portalu. Korzystanie z interfejsu użytkownika portalu, zanim będziesz ich używać w niestandardowych zasad, aby utworzyć te atrybuty. Po utworzeniu atrybutu **ActivationStatus** w portalu możesz musi odwoływać się do niego w następujący sposób:
 
-  ```
-  extension_ActivationStatus in the custom policy.
-  extension_<app-guid>_ActivationStatus via Graph API.
-  ```
+   ```
+   extension_ActivationStatus in the custom policy.
+   extension_<app-guid>_ActivationStatus via Graph API.
+   ```
 
 ## <a name="reference"></a>Informacje ogólne
 

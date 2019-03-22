@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5668c3fa43130ee1a0271d6040b1989ee8ab79
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f828ff83e6b9c60eb08edef7f47e88185fb5aef8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199685"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Utworzyć grupę dynamiczną i sprawdzić stan
 
@@ -34,15 +34,15 @@ Przykłady składni, obsługiwanych właściwości, operatory i wartości dla re
 2. Wybierz **grup**.
 3. Wybierz **wszystkich grup**i wybierz **nową grupę**.
 
-   ![Dodaj nową grupę](./media/groups-create-rule/new-group-creation.png)
+   ![Wybierz polecenie, aby dodać nową grupę](./media/groups-create-rule/new-group-creation.png)
 
 4. Na **grupy** wpisz nazwę i opis dla nowej grupy. Wybierz **Typ członkostwa** dla użytkowników lub urządzeń i następnie wybierz pozycję **Dodaj zapytanie dynamiczne**. Można używać konstruktora reguły do tworzenia Prosta reguła lub [samodzielnie zapisujesz zastosowania reguły członkowskiej](groups-dynamic-membership.md).
 
-   ![Dodaj dynamiczną regułę członkostwa](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![Dodaj regułę członkostwa dla grupy dynamicznej](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 5. Aby wyświetlić dostępne dla zapytania o członkostwo właściwości niestandardowego rozszerzenia
-  1. Wybierz **pobieranie właściwości niestandardowego rozszerzenia**
-  2. Wprowadź identyfikator aplikacji, a następnie wybierz pozycję **Odśwież właściwości**. 
+   1. Wybierz **pobieranie właściwości niestandardowego rozszerzenia**
+   2. Wprowadź identyfikator aplikacji, a następnie wybierz pozycję **Odśwież właściwości**. 
 6. Po utworzeniu reguły, wybierz **Dodaj zapytanie** w dolnej części bloku.
 7. Wybierz **Utwórz** na **grupy** bloku, aby utworzyć grupę.
 
@@ -74,7 +74,7 @@ Następujące komunikaty o stanie mogą być wyświetlane dla **członkostwa Ost
 
 Jeśli wystąpi błąd podczas przetwarzania reguły członkostwa dla określonej grupy, alert jest wyświetlany w górnej części **strony Przegląd** dla grupy. Jeśli nie oczekujące członkostwo dynamiczne aktualizacje mogą być przetwarzane dla wszystkich grup w ramach dzierżawy więcej następnie 24 godziny, alert jest wyświetlany w górnej części **wszystkich grup**.
 
-![komunikat o błędzie przetwarzania](./media/groups-create-rule/processing-error.png)
+![przetwarzanie alertów komunikatów o błędach](./media/groups-create-rule/processing-error.png)
 
 Te artykuły zawierają dodatkowe informacje na temat grup w usłudze Azure Active Directory.
 

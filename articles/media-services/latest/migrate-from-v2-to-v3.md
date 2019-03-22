@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/04/2019
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.openlocfilehash: 2d7dc6eb5ee77804f0c8c87ee2e5a5dd1d0dc30a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340352"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841127"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -72,6 +72,7 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
     * Zastępuje zdarzenie na żywo kanału.<br/>Rozliczenie jest oparte na liczniki kanału na żywo wydarzeń na żywo. Aby uzyskać więcej informacji, zobacz [rozliczeń](live-event-states-billing.md) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * Dane wyjściowe na żywo zastępuje Program.
 * Na żywo dane wyjściowe nie musiały zostać uruchomione w sposób jawny, start przy tworzeniu i Zatrzymaj po usunięciu. Programy działały inaczej w interfejsach API w wersji 2, mieli oni ma zostać uruchomiony po utworzeniu.
+*  Aby uzyskać informacje o zadaniu, należy znać nazwę transformacji, w którym utworzono zadanie. 
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Funkcja luki w odniesieniu do interfejsów API w wersji 2
 
@@ -98,6 +99,7 @@ W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych sc
 |Utworzenie elementu zawartości i przekaż plik |[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Przesyłanie zadania|[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Pokazuje, jak utworzyć przekształcenie, a następnie przesyłać zadania.|
 |Publikowanie elementu zawartości przy użyciu szyfrowania AES |1. Utwórz ContentKeyAuthorizationPolicyOption<br/>2. Utwórz ContentKeyAuthorizationPolicy<br/>3. Utwórz AssetDeliveryPolicy<br/>4. Tworzenie elementu zawartości i przekazywać zawartość lub Prześlij zadanie i korzystają z danych wyjściowych elementu zawartości<br/>5. Kojarzenie AssetDeliveryPolicy z elementem zawartości<br/>6. Utwórz ContentKey<br/>7. Dołącz ContentKey do zasobu<br/>8. Utwórz AccessPolicy<br/>9. Tworzenie lokalizatora<br/><br/>[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Tworzenie zasad kluczy zawartości<br/>2. Utwórz zasób<br/>3. Przekazywanie zawartości lub Użyj zasobów jako JobOutput<br/>4. Utwórz Lokalizator przesyłania strumieniowego<br/><br/>[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Pobierz szczegóły zadania zadań i zarządzanie nimi |[Zarządzanie zadaniami za pomocą wersji 2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Zarządzanie zadaniami w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Znane problemy
 

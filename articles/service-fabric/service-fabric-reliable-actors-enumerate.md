@@ -1,6 +1,6 @@
 ---
-title: Wyliczanie złośliwych użytkowników na sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyliczyć Reliable Actors i ich metadanych.
+title: Wyliczanie aktorów w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyliczanie elementów Reliable Actors i ich metadanych.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: d5d6ac87db18815aa945d6964338626365b08e64
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 300ab4f73fdae0224d2de5e1e1dea6cc6cfa7438
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864375"
 ---
-# <a name="enumerate-service-fabric-reliable-actors"></a>Wyliczanie Reliable Actors sieci szkieletowej usług
-Usługa Reliable Actors umożliwia klientowi wyliczyć metadane dotyczące osób, które obsługuje usługę. Ponieważ usługa aktora jest partycjonowany usługi stanowej, wyliczenie jest wykonywane dla każdej partycji. Ponieważ każda partycja może zawierać wiele osób, wyliczenia jest zwracana jako zestaw wyników stronicowania. Strony są zwracane przez zapoznaniem wszystkich stron. Poniższy przykład przedstawia sposób tworzenia listy wszystkich podmiotów active w jednej partycji usługi aktora:
+# <a name="enumerate-service-fabric-reliable-actors"></a>Wyliczanie elementów Reliable Actors usługi Service Fabric
+Usługi Reliable Actors umożliwia klientowi wyliczanie metadanych dotyczących aktorów, które obsługuje usługę. Ponieważ usługa aktora jest podzielone na partycje usługi stanowej, wyliczenie odbywa się na partycję. Ponieważ każda partycja może zawierać wiele podmiotów, wyliczenia, jest zwracana jako zbiór stronicowane wyniki. Strony są zwracane przez zapoznaniem wszystkich stron. Poniższy przykład pokazuje, jak utworzyć listę wszystkich aktywnych podmiotów w jednej partycji usługi aktora:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -69,10 +69,10 @@ while (continuationToken != null);
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie stanem aktora](service-fabric-reliable-actors-state-management.md)
-* [Aktora cykl życia i odzyskiwanie pamięci](service-fabric-reliable-actors-lifecycle.md)
-* [Dokumentacji interfejsu API złośliwych użytkowników](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET przykładowy kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java przykładowy kod](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Kolekcja aktora cykl życia i odzyskiwanie](service-fabric-reliable-actors-lifecycle.md)
+* [Dokumentacja referencyjna interfejsu API aktorów](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Przykładowy kod .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Przykładowego kodu Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

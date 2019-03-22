@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d620701bc8590bee746be35f69b0da890c359601
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b51f8d9329bc86320501183d7dba7735fb369fa5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205362"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092382"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Samanage dla automatycznej aprowizacji użytkowników
 
@@ -108,9 +108,9 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **nazwa użytkownika administratora** i **hasło administratora** Samanage konta. Przykłady te wartości są:
 
-    *   W **nazwa użytkownika administratora** pola, wypełnij nazwę użytkownika konta administratora w Twojej dzierżawie Samanage. Przykład: admin@contoso.com.
+   * W **nazwa użytkownika administratora** pola, wypełnij nazwę użytkownika konta administratora w Twojej dzierżawie Samanage. Przykład: admin@contoso.com.
 
-    *   W **hasło administratora** pola, wypełnij hasło konta administratora, odpowiadający nazwa użytkownika administratora.
+   * W **hasło administratora** pola, wypełnij hasło konta administratora, odpowiadający nazwa użytkownika administratora.
 
 6. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z Samanage. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto Samanage ma uprawnienia administratora i spróbuj ponownie.
 

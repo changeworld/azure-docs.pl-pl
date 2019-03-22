@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2018
-ms.openlocfilehash: a42d2c75913b2c9fdfa0d2b7c3ec2742525a4c97
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.date: 03/13/2019
+ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806100"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188105"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionalnego odzyskiwania po awarii w przypadku klastrów usługi Azure Databricks
 
@@ -263,9 +263,14 @@ Aby utworzyć własny topologii odzyskiwania regionalnej awarii, wykonaj te wyma
 
 10. **Ręcznie zmień konfigurację i ponowne zastosowanie kontroli dostępu.**
 
-   Jeśli istniejący podstawowy obszar roboczy jest skonfigurowany do używania w warstwie Premium (SKU), prawdopodobnie też używasz [funkcji kontroli dostępu](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
+    Jeśli istniejący podstawowy obszar roboczy jest skonfigurowany do używania w warstwie Premium (SKU), prawdopodobnie też używasz [funkcji kontroli dostępu](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
 
-   Korzystając z funkcji kontroli dostępu, należy ręcznie ponownie kontroli dostępu do zasobów (notesów, klastrów, zadań, tabel).
+    Korzystając z funkcji kontroli dostępu, należy ręcznie ponownie kontroli dostępu do zasobów (notesów, klastrów, zadań, tabel).
+
+## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Odzyskiwanie po awarii dla Twojego ekosystem platformy Azure
+
+Jeśli używasz innych usług platformy Azure Pamiętaj zbyt implementacji najlepszych rozwiązań odzyskiwania po awarii dla tych usług. Na przykład, jeśli zdecydujesz się używać wystąpienia zewnętrznego magazynu metadanych Hive, należy rozważyć odzyskiwanie po awarii dla [serwera SQL Azure](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md), i/lub [— Azure Database for MySQL ](../mysql/concepts-business-continuity.md). Aby uzyskać ogólne informacje na temat odzyskiwania po awarii, zobacz [odzyskiwania po awarii dla aplikacji platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure Databricks](https://docs.azuredatabricks.net/user-guide/index.html).

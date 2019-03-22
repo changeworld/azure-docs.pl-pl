@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797ac714d3205a271fe6590a3a320e1b9e2a073e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194737"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201854"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowymi nazwami domen w usłudze Azure Active Directory
 
@@ -33,11 +33,11 @@ Po utworzeniu katalogu początkowa nazwa domeny, takich jak "contoso.onmicrosoft
 2. Wybierz pozycję **Azure Active Directory**.
 3. Wybierz pozycję **Niestandardowe nazwy domen**.
   
-   ![Otwieranie okna zarządzania użytkownikami](./media/domains-manage/add-custom-domain.png)
+   ![Otwieranie strony zarządzania użytkownikami](./media/domains-manage/add-custom-domain.png)
 4. Wybierz nazwę domeny, która ma być podstawową domeną.
 5. Wybierz **Oznacz jako podstawową** polecenia. Potwierdź wybór po wyświetleniu monitu.
   
-   ![Wprowadź nazwę domeny głównej](./media/domains-manage/make-primary-domain.png)
+   ![Wprowadź domenę nazwę podstawową](./media/domains-manage/make-primary-domain.png)
 
 Można zmienić podstawowej nazwy domeny dla katalogu jako zweryfikowanej domenie niestandardowej, która nie jest federacyjna. Domena podstawowa dla katalogu nie będzie zmiana nazwy użytkownika dla wszystkich istniejących użytkowników.
 
@@ -88,13 +88,13 @@ Zwracany jest błąd, gdy:
 ### <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 **Pyt.: Dlaczego jest usunięcie domeny kończy się niepowodzeniem z powodu błędu informujący o tym, mają grupy programu Exchange zarządzanych na tę nazwę domeny?** <br>
-**ODP.:** Obecnie pewnych grup, takich jak grupy zabezpieczeń z włączoną obsługą poczty i rozproszonych listy aprowizowanych przez program Exchange i trzeba ręcznie wyczyszczone w [Centrum administracyjnego programu Exchange (EAC)](https://outlook.office365.com/ecp/). Może być lingering ProxyAddresses, które zależą od niestandardowej nazwy domeny, a musi być ręcznie aktualizowane na inną nazwę domeny. 
+**Odp.:** Obecnie pewnych grup, takich jak grupy zabezpieczeń z włączoną obsługą poczty i rozproszonych listy aprowizowanych przez program Exchange i trzeba ręcznie wyczyszczone w [Centrum administracyjnego programu Exchange (EAC)](https://outlook.office365.com/ecp/). Może być lingering ProxyAddresses, które zależą od niestandardowej nazwy domeny, a musi być ręcznie aktualizowane na inną nazwę domeny. 
 
-**Pyt.: Jestem zalogować się jako admin@contoso.com , ale nie mogę usunąć nazwy domeny "contoso.com"?**<br>
-**ODP.:** Nie można odwoływać się nazwy domeny niestandardowej, którą chcesz usunąć nazwę konta użytkownika. Upewnij się, że konto administratora globalnego przy użyciu początkowej domyślnej nazwy domeny (. onmicrosoft.com) takich jak admin@contoso.onmicrosoft.com. Zaloguj się przy użyciu innego administratora globalnego konta, takie jak admin@contoso.onmicrosoft.com lub inną nazwę domeny niestandardowej, takich jak "fabrikam.com" gdy konto jest admin@fabrikam.com.
+**Pyt.: Jestem zalogować się jako administrator\@contoso.com, ale I nie można usunąć nazwy domeny "contoso.com"?**<br>
+**Odp.:** Nie można odwoływać się nazwy domeny niestandardowej, którą chcesz usunąć nazwę konta użytkownika. Upewnij się, że konto administratora globalnego przy użyciu początkowej domyślnej nazwy domeny (. onmicrosoft.com) takich jak admin@contoso.onmicrosoft.com. Zaloguj się przy użyciu innego administratora globalnego konta, takie jak admin@contoso.onmicrosoft.com lub inną nazwę domeny niestandardowej, takich jak "fabrikam.com" gdy konto jest admin@fabrikam.com.
 
 **Pyt.: Po kliknięciu przycisku domeny Usuń i zobacz `In Progress` stanu operacji usuwania. Jak długo trwa? Co się stanie, jeśli zakończy się niepowodzeniem?**<br>
-**ODP.:** Operacja usuwania domeny jest zadanie w tle asynchroniczną, która zmienia nazwę wszystkich odwołań do nazwy domeny. Powinno zająć minutę lub dwie. Jeśli usunięcie domeny zakończy się niepowodzeniem, upewnij się, że nie masz:
+**Odp.:** Operacja usuwania domeny jest zadanie w tle asynchroniczną, która zmienia nazwę wszystkich odwołań do nazwy domeny. Powinno zająć minutę lub dwie. Jeśli usunięcie domeny zakończy się niepowodzeniem, upewnij się, że nie masz:
 
 * Aplikacje skonfigurowane na nazwy domeny w usłudze appIdentifierURI
 * Grupy obsługujące pocztę odwołuje się do nazwy domeny niestandardowej

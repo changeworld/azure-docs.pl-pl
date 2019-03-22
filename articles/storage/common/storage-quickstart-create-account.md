@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5266ca3f50a2d8163dbab95109cb967fb5a63ed8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: ebe23c606d95baa6c79c668fc929177c8bc37e44
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474585"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862951"
 ---
 # <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -55,6 +55,10 @@ Ten przycisk służy do uruchamiania interaktywnej powłoki, której możesz uż
 
 Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+
+Brak.
+
 ---
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
@@ -80,6 +84,10 @@ Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom
 ```cli
 az login
 ```
+
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+
+ND
 
 ---
 
@@ -170,6 +178,33 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z magazynu stref
 |Magazyn geograficznie nadmiarowy (GRS)     |Standard_GRS         |
 |Magazyn geograficznie nadmiarowy dostępny do odczytu (GRS)     |Standard_RAGRS         |
 
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+
+Aby wdrożyć szablon usługi Resource Manager, aby utworzyć konto magazynu, można użyć programu Azure Powershell lub wiersza polecenia platformy Azure. Szablon używany w tym przewodniku Szybki Start jest z [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Aby uruchomić skrypty, zaznacz **wypróbuj** otworzyć usługa Azure Cloud shell. Wklej skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz **Wklej**.
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the location (i.e. centralus):" &&
+read location &&
+az group create --name $resourceGroupName --location "$location" &&
+az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+Aby dowiedzieć się, jak utworzyć szablony, zobacz:
+
+- [Dokumentacja usługi Azure Resource Manager](/azure/azure-resource-manager/).
+- [Odwołanie do szablonu kont magazynu](/azure/templates/microsoft.storage/allversions).
+- [Przykłady szablonów konta magazynu dodatkowego](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
+
 ---
 
 Aby uzyskać więcej informacji na temat dostępnych opcji replikacji, zobacz [Storage replication options (Opcje replikacji danych usługi Storage)](storage-redundancy.md).
@@ -202,9 +237,24 @@ Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazy
 az group delete --name storage-quickstart-resource-group
 ```
 
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+
+Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazynu, należy użyć programu Azure PowerShell lub wiersza polecenia platformy Azure.
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName
+```
+
 ---
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start zostało utworzone standardowe konto magazynu ogólnego przeznaczenia w wersji 2. Aby dowiedzieć się, jak przekazywać i pobierać obiekty blob z konta magazynu i do niego, przejdź do przewodnika Szybki start dotyczącego magazynu obiektów blob.
 
@@ -222,5 +272,10 @@ W tym przewodniku Szybki start zostało utworzone standardowe konto magazynu og�
 
 > [!div class="nextstepaction"]
 > [Praca z obiektami blob za pomocą interfejsu wiersza polecenia platformy Azure](../blobs/storage-quickstart-blobs-cli.md)
+
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+
+> [!div class="nextstepaction"]
+> [Praca z obiektami blob za pomocą witryny Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
 
 ---

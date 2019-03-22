@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c50e2b082c3181c37e9d129766d4bf400075d5a8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 03a56951b68163a9160cc4a57f15354b5f210eb7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410688"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125120"
 ---
 Kroki opisane w tym celu użyć sieci wirtualnej na podstawie wartości na poniższej liście konfiguracji odniesienia. Dodatkowe ustawienia i nazwy są także opisane na tej liście. Nie używamy tej listy bezpośrednio w poniższych krokach, mimo że dodamy zmiennych, na podstawie wartości na tej liście. Możesz skopiować listy, które będzie używany jako odwołanie, zastępując wartości swoimi własnymi.
 
@@ -34,52 +34,52 @@ Kroki opisane w tym celu użyć sieci wirtualnej na podstawie wartości na poni�
 ## <a name="add-a-gateway"></a>Dodawanie bramy
 1. Połącz z subskrypcją platformy Azure.
 
-  [!INCLUDE [Sign in](expressroute-cloud-shell-connect.md)]
+   [!INCLUDE [Sign in](expressroute-cloud-shell-connect.md)]
 2. Zadeklaruj swoje zmienne na potrzeby tego ćwiczenia. Pamiętaj edytować przykładu, aby odzwierciedlały ustawienia, które chcesz użyć.
 
-  ```azurepowershell-interactive 
-  $RG = "TestRG"
-  $Location = "East US"
-  $GWName = "GW"
-  $GWIPName = "GWIP"
-  $GWIPconfName = "gwipconf"
-  $VNetName = "TestVNet"
-  ```
+   ```azurepowershell-interactive 
+   $RG = "TestRG"
+   $Location = "East US"
+   $GWName = "GW"
+   $GWIPName = "GWIP"
+   $GWIPconfName = "gwipconf"
+   $VNetName = "TestVNet"
+   ```
 3. Store obiekt sieci wirtualnej jako zmienną.
 
-  ```azurepowershell-interactive
-  $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
-  ```
+   ```azurepowershell-interactive
+   $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
+   ```
 4. Dodaj podsieć bramy do sieci wirtualnej. Podsieć bramy musi mieć nazwę "GatewaySubnet". Należy utworzyć podsieć bramy, która ma wartość/27 lub większej (/ 26, / 25 itp.).
 
-  ```azurepowershell-interactive
-  Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
-  ```
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
+   ```
 5. Ustaw konfigurację.
 
-  ```azurepowershell-interactive
-  $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
-  ```
+   ```azurepowershell-interactive
+   $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+   ```
 6. Store podsieci bramy jako zmienną.
 
-  ```azurepowershell-interactive
-  $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-  ```
+   ```azurepowershell-interactive
+   $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+   ```
 7. Prześlij żądanie dotyczące publicznego adresu IP. Adres IP jest wymagany przed utworzeniem bramy. Nie można określić adres IP, który chcesz użyć. jest on przydzielany dynamicznie. Ten adres IP zostanie użyty w następnej sekcji konfiguracji. Metodę AllocationMethod muszą być dynamiczne.
 
-  ```azurepowershell-interactive
-  $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
+   ```
 8. Utwórz konfigurację dla bramy. W ramach konfiguracji bramy zostaje zdefiniowana podsieć i publiczny adres IP do użycia. W tym kroku jest określenie konfiguracji, który będzie używany podczas tworzenia bramy. Ten krok nie tworzy faktycznie obiektu bramy. Poniższy przykład umożliwia utworzenie konfiguracji bramy.
 
-  ```azurepowershell-interactive
-  $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
-  ```
+   ```azurepowershell-interactive
+   $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
+   ```
 9. Utwórz bramę. W tym kroku **- GatewayType** jest szczególnie ważne. Należy użyć wartości **ExpressRoute**. Po uruchomieniu tych poleceń cmdlet, brama może potrwać 45 minut lub więcej, aby utworzyć.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
+   ```
 
 ## <a name="verify-the-gateway-was-created"></a>Sprawdź, czy brama została utworzona
 Aby sprawdzić, czy brama została utworzona, użyj następujących poleceń:

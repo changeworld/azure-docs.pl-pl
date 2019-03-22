@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331439"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096269"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(PRZESTARZAŁE) Pełny potok ciągłej integracji/ciągłego wdrażania, aby wdrożyć aplikację obsługującą wiele kontenerów w usłudze Azure Container Service przy użyciu rozwiązania Docker Swarm przy użyciu usługi DevOps platformy Azure
 
@@ -204,14 +204,14 @@ Przepływ pracy wydania składa się z dwóch zadań, które dodajesz.
 
     Polecenie jest wykonywane przy użyciu głównego interfejsu wiersza polecenia platformy Docker i interfejsu wiersza polecenia platformy Docker-Compose, aby wykonać następujące zadania:
 
-    - Zaloguj się do usługi Azure container registry (używa trzech variab'les kompilacji, które są zdefiniowane w **zmienne** kartę)
-    - Zdefiniuj **DOCKER_HOST** zmiennej do pracy z punktu końcowego Swarm (: 2375)
-    - Przejdź do *wdrażanie* folder, który został utworzony w poprzednim zadaniu bezpiecznego kopiowania i który zawiera plik docker-compose.yml 
-    - Wykonaj `docker-compose` poleceń ściągnięcia nowych obrazów zatrzymywanie usług, Usuń usługi i tworzenia kontenerów.
+   - Zaloguj się do usługi Azure container registry (używa trzech variab'les kompilacji, które są zdefiniowane w **zmienne** kartę)
+   - Zdefiniuj **DOCKER_HOST** zmiennej do pracy z punktu końcowego Swarm (: 2375)
+   - Przejdź do *wdrażanie* folder, który został utworzony w poprzednim zadaniu bezpiecznego kopiowania i który zawiera plik docker-compose.yml 
+   - Wykonaj `docker-compose` poleceń ściągnięcia nowych obrazów zatrzymywanie usług, Usuń usługi i tworzenia kontenerów.
 
-    >[!IMPORTANT]
-    > Jak pokazano na poprzednim ekranie, pozostaw **zakończyć się niepowodzeniem ze strumienia STDERR** niezaznaczone pole wyboru. To ustawienie ważne, ponieważ `docker-compose` drukuje kilka komunikatów diagnostycznych, takich jak kontenery są zatrzymywania lub usuwany na standardowy błąd danych wyjściowych. Jeśli zaznaczysz pole wyboru, usługom DevOps platformy Azure zgłasza błędy, które wystąpiły podczas wersji, nawet jeśli wszystko przebiegnie poprawnie.
-    >
+     >[!IMPORTANT]
+     > Jak pokazano na poprzednim ekranie, pozostaw **zakończyć się niepowodzeniem ze strumienia STDERR** niezaznaczone pole wyboru. To ustawienie ważne, ponieważ `docker-compose` drukuje kilka komunikatów diagnostycznych, takich jak kontenery są zatrzymywania lub usuwany na standardowy błąd danych wyjściowych. Jeśli zaznaczysz pole wyboru, usługom DevOps platformy Azure zgłasza błędy, które wystąpiły podczas wersji, nawet jeśli wszystko przebiegnie poprawnie.
+     >
 1. Zapisz ten nowy potok wersji.
 
 

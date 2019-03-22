@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8008f96e00b0d9a4366832110c696c67a9c7257
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc3a42c280a344ef08fa23111df8652b6167cfb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165419"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Panorama9
 
@@ -114,7 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/panorama9-tutorial/tutorial_panorama9_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL jako: `https://dashboard.panorama9.com/saml/access/3262`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://dashboard.panorama9.com/saml/access/3262`
 
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.panorama9.com/saml20/<tenant-name>`
 
@@ -198,18 +198,18 @@ W przypadku Panorama9 Inicjowanie obsługi administracyjnej jest zadanie ręczne
 
 1. W menu u góry kliknij **Zarządzaj**, a następnie kliknij przycisk **użytkowników**.
    
-  ![Użytkownicy](./media/panorama9-tutorial/ic790027.png "Użytkownicy")
+   ![Użytkownicy](./media/panorama9-tutorial/ic790027.png "Użytkownicy")
 
 1. W sekcji Użytkownicy kliknij **+** można dodać nowego użytkownika.
 
- ![Użytkownicy](./media/panorama9-tutorial/ic790028.png "Użytkownicy")
+   ![Użytkownicy](./media/panorama9-tutorial/ic790028.png "Użytkownicy")
 
 1. Przejdź do sekcji danych użytkownika, wpisz adres e-mail, z którym chcesz udostępnić w prawidłowym użytkownikiem usługi Azure Active Directory **E-mail** pola tekstowego.
 
 1. Się w sekcji Użytkownicy kliknij **Zapisz**.
    
 > [!NOTE]
-    > Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
+> Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem umożliwiającym potwierdzenie konta, zanim stanie się ono aktywne.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -250,7 +250,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction t
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

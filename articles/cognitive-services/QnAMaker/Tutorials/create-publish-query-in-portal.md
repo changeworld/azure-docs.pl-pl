@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: b78c19d4fa6b2e5b69e5d7f46cea51d943b808fa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121421"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Samouczek: tworzenie bazy wiedzy, a następnie odpowiadanie na pytanie za pomocą portalu usługi QnA Maker
 
@@ -25,12 +25,12 @@ Ten samouczek przedstawia sposób tworzenia i publikowania bazy wiedzy, a nastę
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
-* Tworzenie bazy wiedzy w portalu usługi QnA Maker
-* Przegląd, zapisywanie i uczenie bazy wiedzy
-* Publikowanie bazy wiedzy
-* Używanie programu Curl do wykonywania zapytań w bazie wiedzy
-
-> [!NOTE] 
+> * Tworzenie bazy wiedzy w portalu usługi QnA Maker
+> * Przegląd, zapisywanie i uczenie bazy wiedzy
+> * Publikowanie bazy wiedzy
+> * Używanie programu Curl do wykonywania zapytań w bazie wiedzy
+> 
+> [!NOTE]
 > Wersja programowa tego samouczka jest dostępna z kompletnym rozwiązaniem w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -199,7 +199,7 @@ Każde pytanie, w przypadku którego usługa QnA Maker nie jest pewna odpowiedzi
     
     Narzędzie QnA Maker zwróciło ocenę 0, co oznacza, że nie ma żadnej pewności, ale zwróciło także odpowiedź domyślną. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zobacz [Obsługiwane źródła danych](../Concepts/data-sources-supported.md), aby uzyskać więcej informacji na temat obsługiwanych formatów plików. 
 

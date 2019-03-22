@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 5fb8f54f50d821e53ec260c67ad5cf56c7f5671b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 82910f7b29789fa777f6deb2c185c57e847e1c88
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109260"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric
 Dla wszystkich wdrożeń produkcyjnych planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę jako część tego procesu.
@@ -82,16 +82,16 @@ Warstwa trwałości jest używany do wskazania systemowi uprawnienia, których m
 
 > [!WARNING]
 > Typy węzłów z trwałością brązowa uzyskać _brakiem uprawnień_. Oznacza to, że zadania infrastruktury, które wpływają na obciążeń bezstanowych będzie nie można zatrzymać lub opóźnione, co może mieć wpływ na Twoich obciążeń. Tylko brązowa na użytek typy węzłów, które są uruchamiane tylko na obciążeniach bezstanowych. W przypadku obciążeń produkcyjnych systemem Silver lub powyżej jest zalecane. 
-
+> 
 > Niezależnie od tego, dowolny poziom trwałości [dezalokacji](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) operacji na zestawie skalowania maszyn wirtualnych zniszcz klaster
 
 **Korzyści wynikające z używania poziomów niezawodności na poziomie Silver lub Gold**
- 
+ 
 - Zmniejsza liczbę czynności w ramach operacji skalowania (czyli dezaktywacja węzła i Usuń ServiceFabricNodeState nosi nazwę automatycznie).
 - Zmniejsza ryzyko utraty danych z powodu operacji Zmień inicjowane przez klienta w miejscu jednostki SKU maszyny Wirtualnej lub operacji infrastruktury platformy Azure.
 
 **Wady używania poziomów niezawodności na poziomie Silver lub Gold**
- 
+ 
 - Wdrożeń w celu skalowania maszyn wirtualnych ustawione i inne powiązane zasoby platformy Azure może być opóźniony, przekroczyło limit czasu można i może zostać zablokowany w całości na problemy w klastrze lub na poziomie infrastruktury. 
 - Zwiększa liczbę [zdarzenia cyklu życia repliki](service-fabric-reliable-services-lifecycle.md) (na przykład podstawowego wymiany) ze względu na automatyczne deactivations węzła podczas wykonywania operacji w infrastrukturze platformy Azure.
 - Pobiera węzły na zewnątrz usługi przez czas podczas aktualizacji oprogramowania platformy Azure lub konserwacji sprzętu, które są wykonywane działania. Węzły o stanie wyłączona lub wyłączenie mogą pojawić się podczas tych działań. Tymczasowo zmniejsza pojemność klastra, ale nie wpływa na dostępność klastra lub aplikacji.

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 7fa2dad124b5ef9e93402d6d4c03d956b00184af
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442380"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188360"
 ---
-# <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo za pomocą koderów lokalnych tworzących strumienie o różnej szybkości transmisji bitów
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Praca z kanałami odbierającymi strumień na żywo o różnych szybkościach transmisji bitów z koderów lokalnych
 
 > [!NOTE]
 > Od 12 maja 2018 r. Usługa kanały na żywo będzie już obsługę strumienia transportu RTP/MPEG-2 protokołu pozyskiwania. Przeprowadź migrację z protokołu RTP/MPEG-2 do protokołu RTMP lub plików MP4 (Smooth Streaming) protokołów pozyskiwania.
@@ -146,7 +146,7 @@ Kanały zapewniają punktu końcowego (wersja zapoznawcza) (adres URL w wersji z
 
 Po utworzeniu kanału możesz uzyskać adres URL podglądu. Możesz uzyskać adres URL kanału nie muszą znajdować się w **systemem** stanu. Po uruchomieniu kanału dane wprowadzane można wyświetlać podgląd strumienia.
 
-Obecnie Podgląd strumienia mogą być dostarczane tylko w podzielonej zawartości w formacie MP4 (Smooth Streaming) format, niezależnie od określonego typu danych wejściowych. Możesz użyć [Smooth Streaming Monitor kondycji](http://playready.directtaps.net/smoothstreaming/) odtwarzacza, aby przetestować smooth stream. Można również użyć odtwarzacz, który znajduje się w witrynie Azure portal, aby wyświetlić strumień.
+Obecnie Podgląd strumienia mogą być dostarczane tylko w podzielonej zawartości w formacie MP4 (Smooth Streaming) format, niezależnie od określonego typu danych wejściowych. Możesz użyć [Smooth Streaming Monitor kondycji](https://playready.directtaps.net/smoothstreaming/) odtwarzacza, aby przetestować smooth stream. Można również użyć odtwarzacz, który znajduje się w witrynie Azure portal, aby wyświetlić strumień.
 
 #### <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
 Można zdefiniować adresy IP, które mogą nawiązywać połączenie z punktem końcowym (wersja zapoznawcza). Jeśli nie określono żadnych adresów IP, dowolny adres IP jest dozwolony. Dozwolony adres IP można określić jako jeden z następujących czynności:
@@ -185,7 +185,7 @@ Możliwe wartości dla bieżącego stanu kanału:
 W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie opłat.
 
 | Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Naliczanie opłat? |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Uruchamianie** |**Uruchamianie** |Nie (stan przejściowy) |
 | **Uruchomiono** |**Gotowe** (Brak uruchomionych programów)<p><p>lub<p>**Przesyłanie strumieniowe** (co najmniej jeden uruchomiony program) |Yes |
 | **Zatrzymywanie** |**Zatrzymywanie** |Nie (stan przejściowy) |

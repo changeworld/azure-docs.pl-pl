@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: a14f568e2485e59cb3e567eb9ee5c5eb20b02afc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f5cc06ba1a326d262c1437a941306b4d4a648260
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198426"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101231"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Tworzenie zestawu danych referencyjnych dla środowiska usługi Time Series Insights przy użyciu witryny Azure portal
 
@@ -82,19 +82,19 @@ Dane referencyjne nie jest przyłączona wstecznie. Oznacza to, że tylko danych
  
 13. Nazwa zestawu danych, wypełniając **Nazwa zestawu danych** pole powyżej siatki danych.
 
-   ![Nazwa zestawu danych.](media/add-reference-data-set/name_reference_dataset.png)
+    ![Nazwa zestawu danych.](media/add-reference-data-set/name_reference_dataset.png)
 
 14. Podaj **klucz podstawowy** kolumn w zestawie danych, wybierając przycisk listy rozwijanej powyżej siatki danych.
 
-   ![Wybierz kolumny klucza.](media/add-reference-data-set/set_primary_key.png)
+    ![Wybierz kolumny klucza.](media/add-reference-data-set/set_primary_key.png)
 
-   Opcjonalnie można zaznaczyć **+** przycisk, aby dodać kolumnę klucza pomocniczego jako złożony klucz podstawowy. Jeśli potrzebujesz cofnąć zaznaczenie, wybierz pustą wartość z listy rozwijanej można usunąć klucza pomocniczego.
+    Opcjonalnie można zaznaczyć **+** przycisk, aby dodać kolumnę klucza pomocniczego jako złożony klucz podstawowy. Jeśli potrzebujesz cofnąć zaznaczenie, wybierz pustą wartość z listy rozwijanej można usunąć klucza pomocniczego.
 
-15.  Aby przekazać dane, wybierz **przekazywania wierszy** przycisku.
+15. Aby przekazać dane, wybierz **przekazywania wierszy** przycisku.
 
-   ![Upload](media/add-reference-data-set/upload_rows.png)
+    ![Upload](media/add-reference-data-set/upload_rows.png)
 
-   Strona potwierdza ukończoną przekazywanie i wyświetli komunikat **pomyślnie przekazano zestaw danych**.
+    Strona potwierdza ukończoną przekazywanie i wyświetli komunikat **pomyślnie przekazano zestaw danych**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie danymi referencyjnymi](time-series-insights-manage-reference-data-csharp.md) na drodze programowej.

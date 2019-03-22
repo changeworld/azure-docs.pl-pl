@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 22000d92ff46d8ccb7b85e75b415b9d05784c16f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 835a7027293694551e672220a3d7db4c7085550b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095946"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188275"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Rejestrowanie w programie partnerskim programu CSP i wyświetlanie danych kosztów
 
@@ -23,12 +23,12 @@ Jako partner programu CSP możesz zarejestrować się w rozwiązaniu Cloudyn. Re
 
 
 > [!NOTE]
-> 
+>
 > Rejestracji w rozwiązaniu Cloudyn mogą dokonać tylko partnerzy programu CSP Direct i dostawcy programu CSP Indirect.
-> 
+>
 > W przypadku uwierzytelniania i dostępu do danych wymagana jest konfiguracja interfejsu API Centrum partnerskiego. Do aprowizowania dostępu przez interfejs API potrzebne jest konto administratora globalnego Centrum partnerskiego.
 > Aby uzyskać więcej informacji, zobacz [Nawiązywanie połączenia z interfejsem API Centrum partnerskiego](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx).
-> 
+>
 > Dostęp do rozwiązania Cloudyn można zapewnić odsprzedawcom programu CSP Indirect po ich zarejestrowaniu w rozwiązaniu Cloudyn przez dostawcę programu CSP Indirect. Odsprzedawcy programu CSP Indirect mogą wtedy zapewniać dostęp do rozwiązania Cloudyn posiadaczom subskrypcji oraz klientom platformy Azure.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
@@ -59,10 +59,10 @@ Jako partner programu CSP możesz zarejestrować się w rozwiązaniu Cloudyn. Re
 
 Domyślnie interfejs API Centrum partnerskiego jest dostępny tylko dla bezpośrednich programów CSP. Jednak dostawca bezpośredniego programu CSP może skonfigurować dostęp dla swoich klientów lub partnerów pośredniego programu CSP, używając grup jednostek w rozwiązaniu Cloudyn.
 
-Aby włączyć dostęp dla partnerów lub klientów bezpośredniego programu CSP, wykonaj czynności opisane w sekcji [Rejestrowanie w rozwiązaniu Cloudyn](#register-with-cloudyn) i skonfiguruj rejestrację wersji próbnej. Następnie wykonaj następujące czynności, aby posegmentować dane pośredniego programu CSP przy użyciu grup jednostek rozwiązania Cloudyn. Przypisz odpowiednie uprawnienia użytkowników do grup jednostek.
+Aby włączyć dostęp dla klientów bezpośredniego programu CSP lub partnerów, wykonaj kroki opisane w [rejestrowanie w usłudze Cloudyn](#register-with-cloudyn) konfigurowania rejestracji wersji próbnej. Następnie wykonaj następujące czynności, aby posegmentować dane pośredniego programu CSP przy użyciu grup jednostek rozwiązania Cloudyn. Przypisz odpowiednie uprawnienia użytkowników do grup jednostek.
 
 1. Utwórz grupę jednostek, korzystając z informacji zawartych w sekcji [Tworzenie jednostek](tutorial-user-access.md#create-and-manage-entities).
-2. Wykonaj czynności opisane w artykule [Przypisywanie subskrypcji do jednostek kosztów](https://support.cloudyn.com/hc/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities). Skojarz konto klienta pośredniego programu CSP i jego subskrypcje z uprzednio utworzoną jednostką.
+2. Wykonaj czynności opisane w artykule [Przypisywanie subskrypcji do jednostek kosztów](https://www.youtube.com/watch?v=d9uTWSdoQYo). Skojarz konto klienta pośredniego programu CSP i jego subskrypcje z uprzednio utworzoną jednostką.
 3. Wykonaj czynności opisane w sekcji [Tworzenie użytkownika z dostępem administratora](tutorial-user-access.md#create-a-user-with-admin-access), aby utworzyć konto użytkownika z dostępem administratora. Następnie upewnij się, że konto użytkownika ma dostęp administratora do określonych jednostek, które utworzono wcześniej dla konta pośredniego.
 
 Partnerzy pośredniego programu CSP mogą logować się do portalu Cloudyn przy użyciu utworzonych dla nich kont.

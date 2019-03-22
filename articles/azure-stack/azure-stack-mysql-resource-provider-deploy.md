@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 03/18/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 394b60a804e09565b4933118d307badef2e42449
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 52e13068b6ecd732a64b60926366ac300731dae8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445742"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58186718"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów MySQL w usłudze Azure Stack
 
@@ -95,7 +95,7 @@ Można określić te parametry, z poziomu wiersza polecenia. Jeśli nie istnieje
 | **AzCredential** | Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, które były używane do wdrażania usługi Azure Stack. | _Wymagane_ |
 | **VMLocalCredential** | Poświadczenia dla konta administratora lokalnego dostawcy zasobów MySQL maszyny Wirtualnej. | _Wymagane_ |
 | **PrivilegedEndpoint** | Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego. |  _Wymagane_ |
-| **AzureEnvironment** | Środowiska platformy Azure z konta administratora usługi, które używanych do wdrażania usługi Azure Stack. Wymagane tylko w przypadku wdrożeń usługi Azure AD. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure AD, **AzureChinaCloud**. | AzureCloud |
+| **AzureEnvironment** | Środowiska platformy Azure konto administratora usługi, które są używane do wdrażania usługi Azure Stack. Wymagane tylko w przypadku wdrożeń usługi Azure AD. Nazwy środowiska obsługiwane są **AzureCloud**, **AzureUSGovernment**, lub jeśli za pomocą (Chiny) usługi Azure AD, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Tylko zintegrowane systemy plik PFX certyfikatu musi być umieszczane w tym katalogu. W środowiskach rozłączonych Pobierz [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tego katalogu. Opcjonalnie można skopiować jeden pakiet Windows Update MSU tutaj. | _Opcjonalnie_ (_obowiązkowe_ zintegrowanych systemów lub w środowiskach rozłączonych) |
 | **DefaultSSLCertificatePassword** | Hasło dla certyfikatu pfx. | _Wymagane_ |
 | **MaxRetryCount** | Liczba przypadków, o których chcesz ponowić próbę każdej operacji w przypadku awarii.| 2 |
@@ -109,10 +109,7 @@ Można określić te parametry, z poziomu wiersza polecenia. Jeśli nie istnieje
 Aby wyeliminować żadnej ręcznej konfiguracji podczas wdrażania dostawcy zasobów, można dostosować poniższy skrypt. Zmień domyślne informacje konta i hasła dla danego wdrożenia usługi Azure Stack.
 
 ```powershell
-# Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
-Install-Module -Name AzureRm.BootStrapper -Force
-Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-Install-Module -Name AzureStack -RequiredVersion 1.5.0
+# Install the Azure and Azure Stack PowerShell modules as described in the prerequisites section above before running these commands.
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"  

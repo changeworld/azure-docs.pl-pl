@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447228"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895468"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Menedżer urządzeń StorSimple Użyj, aby zarządzać alertami dla rozwiązania StorSimple Virtual Array
 
@@ -39,7 +39,7 @@ Można wybrać, czy chcesz otrzymywać powiadomienia pocztą e-mail dotyczące w
 > [!NOTE]
 > Możesz wprowadzić maksymalnie 20 adresów e-mail na macierz wirtualną.
 
-Po włączeniu powiadomienia e-mail dla macierzy wirtualnej, członków listy powiadomień otrzymają wiadomość e-mail z każdym alert krytyczny o wystąpieniu. Wysyłane z *storsimple-alerts-noreply@mail.windowsazure.com* i opisano warunek alertu. Adresaci mogą kliknąć **Unsubscribe** aby został usunięty z listy powiadomień e-mail.
+Po włączeniu powiadomienia e-mail dla macierzy wirtualnej, członków listy powiadomień otrzymają wiadomość e-mail z każdym alert krytyczny o wystąpieniu. Wysyłane z *storsimple — alerty noreply\@mail.windowsazure.com* i opisano warunek alertu. Adresaci mogą kliknąć **Unsubscribe** aby został usunięty z listy powiadomień e-mail.
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Aby włączyć powiadomienia e-mail dla alertów
 
@@ -53,7 +53,7 @@ Po włączeniu powiadomienia e-mail dla macierzy wirtualnej, członków listy po
    
    1. W **Włącz powiadomienie e-mail** pól, zaznacz **tak**.
    2. W **E-mail administratorów usługi** pól, zaznacz **tak** Jeśli chcesz mieć administratora usługi i wszyscy współadministratorzy otrzymywać powiadomienia o alertach.
-   3. W **dodatkowi adresaci wiadomości e-mail** wprowadź adresy e-mail wszystkich pozostałych adresatów, którzy mają otrzymywać powiadomienia o alertach. Wprowadź nazwy w formacie *someone@somewhere.com*. Użyj średników do oddzielenia adresów e-mail. Można skonfigurować maksymalnie 20 adresów e-mail na urządzeniu wirtualnym.
+   3. W **dodatkowi adresaci wiadomości e-mail** wprowadź adresy e-mail wszystkich pozostałych adresatów, którzy mają otrzymywać powiadomienia o alertach. Wprowadź nazwy w formacie *ktoś\@somewhere.com*. Użyj średników do oddzielenia adresów e-mail. Można skonfigurować maksymalnie 20 adresów e-mail na urządzeniu wirtualnym.
       
        ![Konfiguracja powiadomień alertów](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. Aby Wyślij testowe powiadomienie e-mail, kliknij przycisk **Wyślij testową wiadomość e-mail**. Usługa Menedżer urządzeń StorSimple spowoduje wyświetlenie komunikatów o stanie, jak przekazuje testowe powiadomienie.
@@ -147,6 +147,7 @@ W poniższej tabeli wymieniono niektóre alerty StorSimple, które można napotk
 | Klon <*nazwy urządzenia* \> nie można ukończyć. |Klonuj niepowodzenie zadania. |Nie można utworzyć klonu. Należy wziąć pod uwagę jedną z następujących czynności:<ul><li>Na liście kopii zapasowej jest nieprawidłowy. Odśwież listę, aby sprawdzić, czy jest nadal ważny.</li><li>Problemy z łącznością mogą uniemożliwiać pomyślne ukończenie operacji klonowania. Upewnij się, że nie istnieją żadne problemy z łącznością.</li><li>Osiągnięto limit magazynowania danych. Aby zwolnić miejsce, należy rozważyć usunięcie wszelkich kopii zapasowych, które nie są już potrzebne.</li></ul>Rozwiąż problemy, wyczyść alert i spróbuj ponownie wykonać operację. |
 
 ### <a name="networking-alerts"></a>Alerty sieci
+
 | Tekst alertu | Wydarzenie | Więcej informacji / zalecane akcje |
 |:--- |:--- |:--- |
 | Nie można nawiązać połączenia z usługą uwierzytelniania. |Błąd ścieżki danych |Adres URL, który jest używany do uwierzytelniania jest nieosiągalny. Upewnij się, że reguły zapory obejmują wzorce adresów URL, określony dla urządzenia StorSimple. Aby uzyskać więcej informacji na temat wzorców adresów URL w witrynie Azure portal, przejdź do [rozwiązania StorSimple Virtual Array wymagania sieciowe](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|

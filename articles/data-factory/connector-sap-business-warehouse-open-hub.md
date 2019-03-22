@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 474ebaad60328b011e91337c46040ae37c603e21
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731059"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103914"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse, za pośrednictwem Centrum Otwórz za pomocą usługi Azure Data Factory
 
@@ -55,7 +55,7 @@ Ogólne wyodrębnianie z SAP InfoProviders do platformy Azure Data Factory (ADF)
 
 1. **Kopiowanie danych w usłudze ADF** w tym kroku tabeli Otwórz Centrum jest odczytywany przez łącznik usługi ADF 
 
-![Przepływ wyodrębniania delta](media\connector-sap-business-warehouse-open-hub\delta-extraction-flow.png)
+![Przepływ wyodrębniania delta](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
 
 W pierwszym kroku DTP jest wykonywany. Każdego wykonania utworzy nowy identyfikator żądania SAP. Identyfikator żądania są przechowywane w tabeli Centrum Otwórz, a następnie jest używany do identyfikowania danych różnicowych przez łącznik usługi ADF. Dwa kroki uruchamiane asynchronicznie: DTP jest wyzwalany przez oprogramowanie SAP, a kopiowanie danych usługi ADF jest wyzwalane za pomocą usługi ADF. 
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: eamono
-ms.openlocfilehash: d7113842aff4d6d9ec66439d1d43e5e24333d3f1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: d0764131f0e7e321a87ed383636606b2124ef7d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467574"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173774"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Samouczek: Integracja usługi Azure Automation z usługami Event Grid i Microsoft Teams
 
@@ -31,6 +31,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 Do ukończenia tego samouczka potrzebujesz [konta usługi Azure Automation](../automation/automation-offering-get-started.md), na którym będzie przechowywany element runbook wyzwolony z subskrypcji usługi Azure Event Grid.
 
@@ -117,7 +119,7 @@ Do ukończenia tego samouczka potrzebujesz [konta usługi Azure Automation](../a
 
     ![Powiadomienie usługi Microsoft Teams](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku skonfigurowano integrację usług Event Grid i Automation. W tym samouczku omówiono:
 

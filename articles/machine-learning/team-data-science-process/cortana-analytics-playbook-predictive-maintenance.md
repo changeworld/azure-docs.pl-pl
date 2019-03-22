@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 046d00eec9fd5a406a1e8bf78e48d4dd913b83fd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0785d0805027dd0bd621203ade7287e5a1840a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437572"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870150"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -401,13 +401,13 @@ Proces powyżej podano na wiele sposobów w literaturze akademickich i branży. 
 
 Jak wspomniano wcześniej, operacjonalizacja modelu dla menedżerów PdM różni się od jego elementów równorzędnych. Implementowanie scenariuszy obejmujących wykrywanie anomalii i wykrywanie awarii zazwyczaj _online oceniania_ (nazywane również _oceniania w czasie rzeczywistym_). Tutaj, model _wyniki_ każdy rekord przychodzących i zwraca prognozę. Wykrywanie anomalii prognozowania jest wskazanie, że wystąpił anomalii (przykład: One-Class SVM). Do wykrywania awarii byłoby, typ lub klasa awarii.
 
-Z kolei obejmuje menedżerów PdM _wsadowe ocenianie przez_. Aby jest zgodny z podpisu modelu, funkcji w nowych danych muszą zostać uwzględnione w taki sam sposób, jak dane szkoleniowe. Dla dużych zestawach danych, które są typowe dla nowych danych funkcje są agregowane przez czas systemu windows i ocenione w ramach usługi batch. Wsadowe ocenianie przez odbywa się zwykle w systemach rozproszonych, takich jak [Spark](http://spark.apache.org/) lub [usługi Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Istnieje kilka rozwiązań alternatywnych — zarówno nieoptymalne:
+Z kolei obejmuje menedżerów PdM _wsadowe ocenianie przez_. Aby jest zgodny z podpisu modelu, funkcji w nowych danych muszą zostać uwzględnione w taki sam sposób, jak dane szkoleniowe. Dla dużych zestawach danych, które są typowe dla nowych danych funkcje są agregowane przez czas systemu windows i ocenione w ramach usługi batch. Wsadowe ocenianie przez odbywa się zwykle w systemach rozproszonych, takich jak [Spark](https://spark.apache.org/) lub [usługi Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Istnieje kilka rozwiązań alternatywnych — zarówno nieoptymalne:
 - Aparatów danych przesyłania strumieniowego obsługuje agregacji za pośrednictwem systemu windows w pamięci. Dlatego można utrzymywał, czy obsługują one oceniania online. Jednak te systemy są odpowiednie na potrzeby gęstą dane w oknach wąskie czasu lub rozrzedzone elementów za pośrednictwem szersze systemu windows. One może nie skalować dobrze sprawdza się w danych gęstą szersze czas systemu windows, jak pokazano w scenariuszach menedżerów PdM.
 - Jeśli wsadowe ocenianie nie jest dostępna, rozwiązanie jest dostosowanie oceniania online do obsługi nowych danych w małych partiach w danym momencie.
 
 ## <a name="solution-templates-for-predictive-maintenance"></a>Szablony rozwiązań do konserwacji predykcyjnej
 
-Końcowej części tego przewodnika zawiera listę szablonów rozwiązań menedżerów PdM, samouczki i eksperymentów zastosowanych w systemie Azure. Do subskrypcji platformy Azure w ciągu kilku minut, w niektórych przypadkach można wdrożyć te aplikacje menedżerów PdM. Mogą one służyć jako weryfikacji koncepcji demonstracji, piaskownice do eksperymentowania z alternatywnych lub akceleratory dla implementacji rzeczywistej produkcji. Te szablony są zlokalizowane w [galerii Azure AI](http://gallery.azure.ai) lub [Azure w witrynie GitHub](https://github.com/Azure). Te przykłady różnych zostanie zawarta w tym szablonie rozwiązania wraz z upływem czasu.
+Końcowej części tego przewodnika zawiera listę szablonów rozwiązań menedżerów PdM, samouczki i eksperymentów zastosowanych w systemie Azure. Do subskrypcji platformy Azure w ciągu kilku minut, w niektórych przypadkach można wdrożyć te aplikacje menedżerów PdM. Mogą one służyć jako weryfikacji koncepcji demonstracji, piaskownice do eksperymentowania z alternatywnych lub akceleratory dla implementacji rzeczywistej produkcji. Te szablony są zlokalizowane w [galerii Azure AI](https://gallery.azure.ai) lub [Azure w witrynie GitHub](https://github.com/Azure). Te przykłady różnych zostanie zawarta w tym szablonie rozwiązania wraz z upływem czasu.
 
 | # | Stanowisko | Opis |
 |--:|:------|-------------|
@@ -431,9 +431,9 @@ Platforma Microsoft Azure oferuje ścieżki szkoleniowe dla podstawowe pojęcia 
 | [Deweloper sztucznej Inteligencji na platformie Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
 | [Służbowe Microsoft AI](https://aischool.microsoft.com/learning-paths) | Public |
 | [Learning sztucznej Inteligencji platformy Azure z usługi GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
-| [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | Public |
 | [Seminaria internetowe sztucznej Inteligencji firmy Microsoft w serwisie YouTube](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
-| [Pokaż sztucznej Inteligencji firmy Microsoft](http://channel9.msdn.com/Shows/AI-Show) | Public |
+| [Pokaż sztucznej Inteligencji firmy Microsoft](https://channel9.msdn.com/Shows/AI-Show) | Public |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partnerzy |
 | [Microsoft Partner Network](https://learningportal.microsoft.com) | Partnerzy |
 

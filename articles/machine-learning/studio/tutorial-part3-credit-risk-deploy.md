@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823794"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839021"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Samouczek 3. Wdrażanie modelu ryzyka kredytowego — usługa Azure Machine Learning Studio
 
@@ -72,12 +72,11 @@ Musisz usunąć następujące moduły:
 
 Wybierz każdy moduł i naciśnij klawisz Delete lub kliknij prawym przyciskiem myszy moduł i wybierz pozycję **Delete (Usuń)**. 
 
-![Usunięty model SVM](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
-
+![Wyróżnia które moduły można usunąć, aby usunąć model pomocy technicznej Vector Machine](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
 
 Nasz model powinien teraz wyglądać mniej więcej tak:
 
-![Usunięty model SVM](./media/tutorial-part3-credit-risk-deploy/publish3.png)
+![Wynikowy eksperymentu po usunięciu model pomocy technicznej wektor maszyny](./media/tutorial-part3-credit-risk-deploy/publish3.png)
 
 Teraz jesteśmy gotowi do wdrożenia tego modelu przy użyciu [dwuklasowego wzmocnionego drzewa decyzyjnego][two-class-boosted-decision-tree].
 
@@ -242,7 +241,7 @@ Aby uzyskać więcej informacji na temat korzystania z szablonów aplikacji inte
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zostały wykonane następujące kroki:
 

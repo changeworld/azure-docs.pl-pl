@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 454d06912c34a07b0b2617936769888e92adaba1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 85dd3cca081d492bfeefa3e8ea0d143c9c37af8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453664"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007947"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Zagadnienia dotyczące wydajności dla usługi Traffic Manager
 
@@ -42,11 +42,11 @@ Narzędzia te lokacje miary DNS opóźnienia i wyświetlania adresy IP rozwiąza
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>Przykładowe narzędzia, aby zmierzyć wydajność systemu DNS
 
-* [SolveDNS](http://www.solvedns.com/dns-comparison/)
+* [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
     SolveDNS oferuje wiele narzędzi wydajności. Narzędzie do porównywania DNS można pokazać, jak długo trwa rozwiązać nazwę DNS i że porównanie innych dostawców usług DNS.
 
-* [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+* [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
     Jednym z narzędzi najprostszą jest WebSitePulse. Wprowadź adres URL, aby wyświetlić czas rozpoznawania nazw DNS, pierwszy bajt, ostatni bajt i inne statystyk wydajności. Możesz wybrać trzy lokalizacje innego testu. W tym przykładzie zobaczysz pierwszym wykonaniu pokazuje, że wyszukiwanie DNS trwa 0.204 s.
 
@@ -62,15 +62,15 @@ Narzędzia te lokacje miary DNS opóźnienia i wyświetlania adresy IP rozwiąza
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
-* [Pingdom](http://tools.pingdom.com/)
+* [Pingdom](https://tools.pingdom.com/)
 
     To narzędzie udostępnia statystyk wydajności dla każdego elementu strony sieci web. Karta analizy strona przedstawia procent czasu poświęconego na wyszukiwania DNS.
 
-* [Co to jest Moja DNS?](http://www.whatsmydns.net/)
+* [Co to jest Moja DNS?](https://www.whatsmydns.net/)
 
     Ta witryna nie wyszukiwania DNS z 20 różnych lokalizacji i wyświetla wyniki na mapie.
 
-* [Szczegółowa analiza interfejsu sieci Web](http://www.digwebinterface.com)
+* [Szczegółowa analiza interfejsu sieci Web](https://www.digwebinterface.com)
 
     Ta witryna zawiera bardziej szczegółowe informacje dotyczące systemu DNS, w tym rekordy CNAME i. Upewnij się, sprawdź "Output koloruj" i "Statystyki" w obszarze Opcje i wybrać "All" w ramach serwerów nazw.
 

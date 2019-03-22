@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: ac32ec6fc1f59b87d3efb88d95d21af309681934
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: db931a3a114be101eeb5e14fa7ba100a789e7cf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587977"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094995"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Szybki start: Tworzenie grafowej bazy danych w usłudze Azure Cosmos DB przy użyciu zestawu SDK języka Java 
 
@@ -219,17 +219,17 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
 12. Teraz możesz połączyć użytkowników rakesh i ashley. Upewnij się, że użytkownik **ashley** został wybrany na liście **Wyniki**, a następnie kliknij przycisk ![Zmiana celu wierzchołka w grafie](./media/create-graph-java/edit-pencil-button.png) obok pozycji **Cele** u dołu po prawej. Może być konieczne rozszerzenie okna w celu wyświetlenia przycisku.
 
-   ![Zmiana celu wierzchołka w grafie](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Zmiana celu wierzchołka w grafie](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. W polu **Cel** wpisz *rakesh*, a w polu **Etykieta krawędzi** wpisz *zna* i kliknij pole wyboru.
 
-   ![Dodawanie połączenia między użytkownikami ashley i rakesh w Eksploratorze danych](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![Dodawanie połączenia między użytkownikami ashley i rakesh w Eksploratorze danych](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Teraz wybierz użytkownika **rakesh** z listy wyników, aby zobaczyć, że użytkownicy ashley i rakesh są połączeni. 
 
-   ![Dwa wierzchołki połączone w Eksploratorze danych](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![Dwa wierzchołki połączone w Eksploratorze danych](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-   Na tym kończy się część tego samouczka poświęcona tworzeniu zasobów. Możesz dodać do grafu kolejne wierzchołki, zmodyfikować istniejące wierzchołki lub zmienić zapytania. Teraz przejrzyjmy metryki udostępniane przez usługę Azure Cosmos DB, a następnie wyczyśćmy zasoby. 
+    Na tym kończy się część tego samouczka poświęcona tworzeniu zasobów. Możesz dodać do grafu kolejne wierzchołki, zmodyfikować istniejące wierzchołki lub zmienić zapytania. Teraz przejrzyjmy metryki udostępniane przez usługę Azure Cosmos DB, a następnie wyczyśćmy zasoby. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Przeglądanie umów SLA w witrynie Azure Portal
 

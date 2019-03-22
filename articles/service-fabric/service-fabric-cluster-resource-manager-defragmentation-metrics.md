@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a50d65940ec12f9883f8991307c3cc5692d96f06
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6c15526169a984ffdaee826fec6ac21fc42647e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738083"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086789"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentacji metryk i obciążenia w usłudze Service Fabric
 Menedżer zasobów klastra Service Fabric Service domyślną strategię zarządzania metryk obciążenia w klastrze jest rozdzielenie obciążenia. Zapewnienie, że węzły są równomiernie wykorzystywane pozwala uniknąć gorące i zimne punkty, które mogą prowadzić do rywalizacji o zasoby i ograniczenia marnowania zasobów. Dystrybucja obciążeń w klastrze jest również najbezpieczniejszy pod względem pozostałych błędy, ponieważ gwarantuje to, że błąd nie przyjmuje się znaczną część danego obciążenia. 
@@ -41,6 +41,7 @@ Defragmentacja zwiększyć impactfulness błędów, ponieważ więcej usługi s�
 Poniższy diagram oferuje wizualną reprezentację dwa klastry, taki, który jest defragmentacji i taki, który nie jest. 
 
 <center>
+
 ![Porównywanie równoważenia i defragmentacji klastrów][Image1]
 </center>
 

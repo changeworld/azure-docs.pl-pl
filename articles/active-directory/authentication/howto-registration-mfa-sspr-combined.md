@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9d7e6f7505b8af76ff6c42c040918a274d89c3c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 2a6896e2b9633b8de679e8d14a7957dc0e3229e7
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407949"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226729"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Włącz połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
@@ -44,6 +44,12 @@ Wykonaj poniższe kroki, aby włączyć rejestrację połączone:
 
 > [!NOTE]
 > Po włączeniu połączone rejestracji użytkowników, którzy zarejestrować lub upewnij się, że ich numer telefonu lub aplikacji mobilnej za pomocą nowego środowiska można ich używać uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ, jeśli te metody są włączone w zasadach uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ. Jeśli wyłączysz następnie tego środowiska, użytkownicy, którzy przejdź do poprzedniej rejestracji SSPR strony w `https:/aka.ms/ssprsetup` będą musieli wykonywać uwierzytelnianie wieloskładnikowe, przed uzyskaniem dostępu do strony.
+
+Jeśli lista witryn do stref przypisania zostały skonfigurowane w programie Internet Explorer następujące witryny muszą być w tej samej strefie:
+
+* [https://login.microsoftonline.com](https://login.microsoftonline.com)
+* [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
+* [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

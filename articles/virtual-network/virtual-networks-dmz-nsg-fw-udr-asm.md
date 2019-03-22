@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: c3a5cb540843c5ec4ceaf8522e9148cc7171149c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9632bd339956aff7558461ed391cdd21c92f06ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456469"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995188"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Przykład 3 — Tworzenie sieci obwodowej do ochrony sieci z zapory, przez i grupy NSG
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
@@ -486,7 +486,7 @@ Pamiętaj, że sieciowe grupy zabezpieczeń są w miejscu dla ruch przychodzący
 11. AppVM01 monituje o podanie hasła nazwy użytkownika
 
 #### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Dozwolone) Wyszukiwanie DNS serwera sieci Web na serwerze DNS
-1. Sieci Web Server, IIS01, potrzeb w www.data.gov strumieniowych źródeł danych, ale musi rozpoznać adresu.
+1. Wymagania serwera IIS01, strumieniowych źródeł danych w sieci Web w sieci Web\.data.gov, ale musi rozpoznać adresu.
 2. W konfiguracji sieci VNet list DNS01 (10.0.2.4 w podsieci wewnętrznej bazy danych) jako podstawowy serwer DNS, IIS01 wysyła żądania DNS DNS01
 3. Trasa zdefiniowana przez użytkownika kieruje ruch wychodzący do zapory jako następnego przeskoku
 4. Brak wychodzących reguł sieciowej grupy zabezpieczeń są powiązane z podsiecią Frontend, ruch jest dozwolony.
@@ -945,7 +945,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
 Zapisz ten plik xml z lokalizacją zaktualizowane i dodać link do tego pliku do zmiennej $NetworkConfigFile w skrypcie powyżej.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

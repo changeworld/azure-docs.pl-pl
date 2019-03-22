@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: a4041d7d2cc9d3fd42a541c316d8d739b3ab733d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233867"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539874"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL za pomocą usługi Azure Data Factory
 W tym samouczku utworzysz fabrykę danych przy użyciu interfejsu użytkownika usługi Azure Data Factory. Potok w tej fabryce danych kopiuje dane z usługi Azure Blob Storage do bazy danych SQL. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -53,7 +53,7 @@ Teraz przygotuj swój magazyn obiektów blob i bazę danych SQL na potrzeby tego
     Jane,Doe
     ```
 
-1. W magazynie obiektów blob utwórz kontener o nazwie **adftutorial**. W tym kontenerze utwórz folder o nazwie **input**. Następnie przekaż plik **emp.txt** do folderu **input**. Do wykonania tych zadań użyj witryny Azure Portal lub narzędzi takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/).
+1. W magazynie obiektów blob utwórz kontener o nazwie **adftutorial**. W tym kontenerze utwórz folder o nazwie **input**. Następnie przekaż plik **emp.txt** do folderu **input**. Do wykonania tych zadań użyj witryny Azure Portal lub narzędzi takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
 
 #### <a name="create-a-sink-sql-table"></a>Tworzenie tabeli SQL ujścia
 
@@ -77,7 +77,7 @@ Teraz przygotuj swój magazyn obiektów blob i bazę danych SQL na potrzeby tego
 
     b. Wybierz swój serwer, a następnie wybierz pozycję **Zapora** w obszarze **USTAWIENIA**.
 
-    d. Na stronie **Ustawienia zapory** wybierz pozycję **WŁĄCZ** dla ustawienia **Zezwalaj na dostęp do usług platformy Azure**.
+    c. Na stronie **Ustawienia zapory** wybierz pozycję **WŁĄCZ** dla ustawienia **Zezwalaj na dostęp do usług platformy Azure**.
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 W tym kroku utworzysz fabrykę danych i uruchomisz interfejs użytkownika usługi Data Factory, aby utworzyć potok w fabryce danych. 
@@ -176,7 +176,7 @@ W tym samouczku zaczniesz od utworzenia potoku. Następnie utworzysz usługi po�
 1. Przejdź do karty **Ujście**, a następnie wybierz pozycję **+ Nowy**, aby utworzyć zestaw danych będący ujściem. 
 
     ![Zestaw danych będący ujściem](./media/tutorial-copy-data-portal/new-sink-dataset-button.png)
-1. W oknie **Nowy zestaw danych** wprowadź „SQL” w polu wyszukiwania w celu przefiltrowania łączników, wybierz pozycję **Azure SQL Database**, a następnie wybierz przycisk **Zakończ**. W tym samouczku skopiujesz dane do bazy danych SQL. 
+1. W **nowy zestaw danych** oknie input "SQL" w polu wyszukiwania, aby filtrować łączników, a następnie wybierz **usługi Azure SQL Database**, a następnie wybierz pozycję **Zakończ**. W tym samouczku skopiujesz dane do bazy danych SQL. 
 
     ![Wybieranie bazy danych SQL](./media/tutorial-copy-data-portal/select-azure-sql-dataset.png)
 1. Na karcie **Ogólne** w oknie **Właściwości** w polu **Nazwa** wpisz wartość **OutputSqlDataset**. 
@@ -191,7 +191,7 @@ W tym samouczku zaczniesz od utworzenia potoku. Następnie utworzysz usługi po�
 
     b. W polu **Nazwa serwera** wybierz swoje wystąpienie programu SQL Server.
 
-    d. W polu **Nazwa bazy danych** wybierz swoją usługę SQL Database.
+    c. W polu **Nazwa bazy danych** wybierz swoją usługę SQL Database.
 
     d. W polu **Nazwa użytkownika** wprowadź nazwę użytkownika.
 
@@ -232,7 +232,7 @@ Przed opublikowaniem artefaktów (połączone usługi, zestawy danych i potok) w
 
 1. Aby debugować potok, wybierz na pasku narzędzi pozycję **Debuguj**. Na karcie **Dane wyjściowe** w dolnej części okna wyświetlany jest stan uruchomienia potoku. 
 
-1. Po umożliwieniu pomyślnego uruchomienia potoku wybierz na górnym pasku narzędzi pozycję **Publikuj wszystko**. Ta akcja powoduje opublikowanie utworzonych jednostek (zestawy danych i potok) w usłudze Data Factory.
+1. Po pomyślnie uruchomić potok na górnym pasku narzędzi wybierz **Opublikuj wszystkie**. Ta akcja powoduje opublikowanie utworzonych jednostek (zestawy danych i potok) w usłudze Data Factory.
 
     ![Publikowanie](./media/tutorial-copy-data-portal/publish-button.png)
 
@@ -267,7 +267,7 @@ W tym kroku utworzysz wyzwalacz harmonogramu potoku. Wyzwalacz uruchamia potok z
 
     b. W obszarze **Koniec** wybierz pozycję **W dniu**.
 
-    d. W obszarze **Dzień zakończenia** wybierz listę rozwijaną.
+    c. W obszarze **Dzień zakończenia** wybierz listę rozwijaną.
 
     d. Wybierz opcję **Bieżący dzień**. Domyślnie dzień zakończenia jest ustawiony na następny dzień.
 
@@ -302,7 +302,7 @@ W tym kroku utworzysz wyzwalacz harmonogramu potoku. Wyzwalacz uruchamia potok z
     ![Lista uruchomień wyzwalacza](./media/tutorial-copy-data-portal/trigger-runs-list.png)
 1. Sprawdź, czy do tabeli **emp** są wstawiane dwa wiersze na minutę (dla każdego uruchomienia potoku), aż do określonego czasu zakończenia. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w magazynie obiektów blob. W tym samouczku omówiono: 
 
 > [!div class="checklist"]

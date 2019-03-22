@@ -2,19 +2,19 @@
 title: Zarządzanie dziennikami klastra usługi HDInsight — usługi Azure HDInsight
 description: Określ typy, rozmiary i zasad przechowywania dla plików dziennika działań HDInsight.
 services: hdinsight
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.author: ashishth
-ms.openlocfilehash: 7b6f9ca914e9fed48463d2134eeba1cd4c103690
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.date: 03/19/2019
+ms.author: hrasheed
+ms.openlocfilehash: 0f0a22ea4a24a82cb4acf7a3b20a743ee7425c72
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225328"
+ms.locfileid: "58294913"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -43,13 +43,12 @@ Poniższe szczegóły klastra są przydatne w ułatwienia do zebrania informacji
 * Stan klastra, łącznie ze szczegółami dotyczącymi Ostatnia zmiana stanu
 * Typ i liczbę wystąpień HDInsight określony dla głównego, core oraz węzły zadania
 
-Możesz uzyskać większość z tych informacji najwyższego poziomu za pomocą witryny Azure portal.  Alternatywnie można użyć klasycznego wiersza polecenia platformy Azure, aby uzyskać informacje na temat klastry usługi HDInsight:
+Możesz uzyskać większość z tych informacji najwyższego poziomu za pomocą witryny Azure portal.  Alternatywnie, można użyć [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) Aby uzyskać informacje na temat klastry usługi HDInsight:
 
+```azurecli
+    az hdinsight list --resource-group <ResourceGroup>
+    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Można również użyć programu PowerShell Aby wyświetlić te informacje.  Aby uzyskać więcej informacji, zobacz [Apache Hadoop Zarządzanie klastrami w HDInsight przy użyciu programu Azure PowerShell](hdinsight-administer-use-powershell.md).
 
@@ -77,7 +76,7 @@ Typowe klastra HDInsight korzysta z kilku usług i pakietów oprogramowania typu
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Wyświetlanie ustawień konfiguracji klastra za pomocą interfejsu użytkownika systemu Ambari
 
-Apache Ambari upraszcza zarządzanie, konfigurowanie oraz monitorowanie klastrów HDInsight, zapewniając internetowego interfejsu użytkownika i interfejs API REST. Ambari znajduje się w klastrach HDInsight opartych na systemie Linux. Wybierz **pulpit nawigacyjny klastra** okienku na stronie portalu HDInsight systemu Azure, aby otworzyć**pulpity nawigacyjne klastra** strona łącza.  Następnie wybierz pozycję **pulpit nawigacyjny klastra HDInsight** okienku, aby otworzyć interfejsu użytkownika Ambari.  Zostanie wyświetlony monit o poświadczenia logowania do klastra.
+Apache Ambari upraszcza zarządzanie, konfigurowanie oraz monitorowanie klastrów HDInsight, zapewniając internetowego interfejsu użytkownika i interfejs API REST. Ambari znajduje się w klastrach HDInsight opartych na systemie Linux. Wybierz **pulpit nawigacyjny klastra** okienku na stronie portalu HDInsight systemu Azure, aby otworzyć **pulpity nawigacyjne klastra** strona łącza.  Następnie wybierz pozycję **pulpit nawigacyjny klastra HDInsight** okienku, aby otworzyć interfejsu użytkownika Ambari.  Zostanie wyświetlony monit o poświadczenia logowania do klastra.
 
 Aby otworzyć listę widoków usługi, wybierz **widoków Ambari** okienku na stronie portalu usługi Azure HDInsight.  Tej listy różni się w zależności od tego, które biblioteki po zainstalowaniu.  Na przykład może zostać wyświetlony Menedżer kolejki YARN, Hive View i widok aplikacji Tez.  Wybierz dowolny link usługi Aby wyświetlić konfigurację i informacje o usłudze.  Interfejsu użytkownika Ambari **stosu i wersji** strona zawiera informacje o konfiguracji usługi klastrowania i Historia wersji usługi. Aby przejść do tej części interfejsu użytkownika Ambari, wybierz **administratora** menu i następnie **stosy i wersje**.  Wybierz **wersji** kartę, aby wyświetlić informacje o wersji usługi.
 
@@ -99,7 +98,7 @@ Następnym krokiem jest przeglądanie plików dziennika wykonywania zadania dla 
 
 ### <a name="access-the-hadoop-log-files"></a>Dostęp do plików dziennika usługi Hadoop
 
-HDInsight są przechowywane pliki dzienników, zarówno w systemie plików klastra, jak i w usłudze Azure storage. Otwieranie połączenia SSH z klastrem i przeglądania systemu plików lub przy użyciu portalu platformy Hadoop YARN stanu na serwerze zdalnym węzła głównego, można sprawdzić pliki dziennika w klastrze. Można sprawdzić pliki dziennika w usłudze Azure storage przy użyciu dowolnego narzędzia, które mogą uzyskać dostęp i pobierania danych z usługi Azure storage. Przykładami są narzędzia AZCopy, CloudXplorer i Eksploratorze serwera programu Visual Studio. Dostęp do danych w usłudze Azure blob storage, można użyć programu PowerShell i biblioteki klienta magazynu Azure lub zestawów Azure .NET SDK.
+HDInsight są przechowywane pliki dzienników, zarówno w systemie plików klastra, jak i w usłudze Azure storage. Pliki dziennika w klastrze można sprawdzić, otwierając [SSH](/hdinsight-hadoop-linux-use-ssh-unix.md) połączenia do klastra i przeglądania systemu plików lub przy użyciu portalu platformy Hadoop YARN stanu na serwerze zdalnym węzła głównego. Można sprawdzić pliki dziennika w usłudze Azure storage przy użyciu dowolnego narzędzia, które mogą uzyskać dostęp i pobierania danych z usługi Azure storage. Należą do nich [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)i w Eksploratorze serwera programu Visual Studio. Dostęp do danych w usłudze Azure blob storage, można użyć programu PowerShell i biblioteki klienta magazynu Azure lub zestawów Azure .NET SDK.
 
 Hadoop uruchamia pracy zadania jako *zadań prób* w różnych węzłach w klastrze. HDInsight można zainicjować prób spekulacyjnego zadań, kończące inne próby zadania, które nie zakończą się najpierw. Spowoduje to wygenerowanie znaczące działania, który jest zalogowany do kontrolera, stderr i syslog dziennika pliki na bieżąco. Ponadto jednocześnie jest uruchomionych wiele prób zadania, ale plik dziennika mogą być wyświetlane tylko wyniki liniowo.
 
@@ -168,9 +167,9 @@ Do kontrolowania rozmiaru i liczby plików dziennika, przechowywane, ustaw nast�
 
 ### <a name="other-log-management-techniques"></a>Inne metody zarządzania dziennika
 
-Aby uniknąć korzystającym z miejsca na dysku, można użyć niektórych narzędzi systemu operacyjnego takie jak `logrotate` Zarządzanie obsługi plików dziennika. Można skonfigurować `logrotate` do uruchomienia codziennie, kompresowanie plików i dziennika usuwania starych. Swoje podejście zależy od wymagań, takich jak jak długo można przechowywać plików dziennika na węzłach lokalnym. 
+Aby uniknąć korzystającym z miejsca na dysku, można użyć niektórych narzędzi systemu operacyjnego takie jak [logrotate](https://linux.die.net/man/8/logrotate) Zarządzanie obsługi plików dziennika. Można skonfigurować `logrotate` do uruchomienia codziennie, kompresowanie plików i dziennika usuwania starych. Swoje podejście zależy od wymagań, takich jak jak długo można przechowywać plików dziennika na węzłach lokalnym.  
 
-Można również sprawdzić, czy rejestrowanie debugowania jest włączone dla co najmniej jedna usługa, która znacznie zwiększa rozmiar dziennika danych wyjściowych. 
+Można również sprawdzić, czy rejestrowanie debugowania jest włączone dla co najmniej jedna usługa, która znacznie zwiększa rozmiar dziennika danych wyjściowych.  
 
 Gromadzić dzienniki ze wszystkich węzłów w jednej centralnej lokalizacji, możesz utworzyć przepływ danych, pozyskiwanie wszystkich wpisów dziennika do platformy Solr.
 

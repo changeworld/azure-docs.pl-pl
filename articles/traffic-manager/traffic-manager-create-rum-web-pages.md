@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232009"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117272"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Jak wysyłać pomiary dotyczące prawdziwych użytkowników do usługi Azure Traffic Manager za pomocą stron sieci web
 
@@ -34,7 +34,7 @@ Aby uzyskać klucz RUM przy użyciu witryny Azure portal:
 3. W bloku profilu usługi Traffic Manager, kliknij **pomiarów rzeczywistego użytkownika** w obszarze **ustawienia**.
 4. Kliknij przycisk **Wygeneruj klucz** można utworzyć nowego klucza (rum).
  
-  ![Wygeneruj klucz pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Wygeneruj klucz pomiarów rzeczywistego użytkownika](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    **Rysunek 1: Generowanie klucza pomiarów rzeczywistego użytkownika**
 
@@ -44,7 +44,7 @@ Aby uzyskać klucz RUM przy użyciu witryny Azure portal:
 
     **Rysunek 2: Klucz pomiarów rzeczywistego użytkownika oraz kod JavaScript pomiaru**
  
-6.  Kliknij przycisk **kopiowania** przycisk, aby skopiować kod JavaScript. 
+6. Kliknij przycisk **kopiowania** przycisk, aby skopiować kod JavaScript. 
 
 >[!IMPORTANT]
 > Użyj wygenerowanego kodu JavaScript dla funkcji pomiarów rzeczywistego użytkownika, aby działać prawidłowo. Wszelkie zmiany do tego skryptu lub skrypty używane przez pomiarów rzeczywistego użytkownika może spowodować nieprzewidywalne zachowanie.

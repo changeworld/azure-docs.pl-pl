@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ff73982b706fa2d353be818f5022de8fbfec42fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 1306b97ce7fcf2cd429be31bc99d022de53805d6
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167443"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259862"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Konfigurowanie szablonu urządzenia (nowy interfejs użytkownika projekt)
 
@@ -78,6 +78,8 @@ Na przykład można dodać nowej miary telemetrii temperatury:
 !["Utwórz dane telemetryczne" formularza przy użyciu szczegółów do pomiarów temperatury](./media/howto-set-up-template/measurementsform.png)
 
 Po wybraniu **Zapisz**, **temperatury** miary, który pojawia się na liście pomiarów. W chwili, możesz zobaczyć wizualizacji dane dotyczące temperatury z symulowanego urządzenia.
+
+Podczas wyświetlania danych telemetrycznych, można wybrać spośród następujących opcji agregacji: Średnia, minimalna, maksymalna, Sum i liczba. **Średnia** jest wybrany jako domyślna agregacja na wykresie. 
 
 > [!NOTE]
 > Typ danych miary telemetrii jest zmiennoprzecinkowy numer punktu.

@@ -2,19 +2,19 @@
 title: Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure z niestandardowego obrazu narzędzia Packer przy użyciu narzędzia Terraform
 description: Za pomocą narzędzia Terraform można konfigurować i wersjonować zestaw skalowania maszyn wirtualnych platformy Azure z niestandardowego obrazu wygenerowanego przez narzędzie Packer (wraz z siecią wirtualną i zarządzanymi dołączonymi dyskami).
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, scale set, virtual machine, network, storage, modules, custom images, packer
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
-ms.openlocfilehash: 12c6ebc9b29c356ad169dbd921e71c7aa0c273b7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077508"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001991"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure z niestandardowego obrazu narzędzia Packer przy użyciu narzędzia Terraform
 
@@ -180,7 +180,7 @@ W tym kroku we wdrożonej wcześniej sieci utworzysz następujące zasoby:
 - Pula adresów zaplecza platformy Azure i przypisywanie jej do modułu równoważenia obciążenia 
 - Port sondy kondycji używany przez aplikację i skonfigurowany w module równoważenia obciążenia 
 - Zestaw skalowania maszyn wirtualnych stojący za modułem równoważenia obciążenia, który jest uruchamiany we wdrożonej wcześniej sieci wirtualnej
-- Serwer [nginx](http://nginx.org/) na węzłach skalowania maszyn wirtualnych zainstalowany z niestandardowego obrazu
+- Serwer [nginx](https://nginx.org/) na węzłach skalowania maszyn wirtualnych zainstalowany z niestandardowego obrazu
 
 
 Na końcu pliku `vmss.tf` dodaj poniższy kod.
@@ -455,7 +455,7 @@ terraform destroy
 
 Po wyświetleniu monitu o potwierdzenie usunięcia zasobów wpisz polecenie `yes`. Proces niszczenia może potrwać kilka minut.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku za pomocą narzędzia Terraform został wdrożony zestaw skalowania maszyn wirtualnych i rampa na platformie Azure. W tym samouczku omówiono:
 

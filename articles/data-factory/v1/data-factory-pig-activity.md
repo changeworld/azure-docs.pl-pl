@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fe1ef8c141c4a4daa443f800181f8e6e3199d0cc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997020"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania technologii Pig w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -82,6 +82,7 @@ Działanie HDInsight Pig w usłudze Data Factory [potoku](data-factory-create-pi
 ```
 
 ## <a name="syntax-details"></a>Szczegóły składni
+
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | name |Nazwa działania |Yes |
@@ -124,7 +125,7 @@ Aby wykonać ten skrypt programu Pig w potoku usługi fabryka danych, wykonaj na
 1. Tworzenie połączonej usługi, aby zarejestrować [HDInsight własny klaster obliczeniowy](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub skonfigurować [klastra obliczeniowego HDInsight na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Nadajmy tej połączonej usługi **HDInsightLinkedService**.
 2. Tworzenie [połączoną usługę](data-factory-azure-blob-connector.md) skonfigurować połączenie usługi Azure Blob storage, w którym znajdują się dane. Nadajmy tej połączonej usługi **StorageLinkedService**.
 3. Tworzenie [zestawów danych](data-factory-create-datasets.md) wskazującej dane wejściowe i dane wyjściowe. Nadajmy wejściowego zestawu danych **PigSampleIn** i wyjściowy zestaw danych **PigSampleOut**.
-4. Kopiuj zapytanie Pig, w pliku magazynu obiektów Blob platformy Azure, które są skonfigurowane w kroku #2. Jeśli usługa Azure storage, które hostuje dane jest inny niż ten, który znajduje się plik zapytania, należy utworzyć oddzielne połączoną usługę Azure Storage. Odnoszą się do połączonej usługi w konfiguracji działania. Użyj ** scriptPath ** Aby określić ścieżkę do pliku skryptu języka pig i **element scriptLinkedService**. 
+4. Kopiuj zapytanie Pig, w pliku magazynu obiektów Blob platformy Azure, które są skonfigurowane w kroku #2. Jeśli usługa Azure storage, które hostuje dane jest inny niż ten, który znajduje się plik zapytania, należy utworzyć oddzielne połączoną usługę Azure Storage. Odnoszą się do połączonej usługi w konfiguracji działania. Użyj **scriptPath** do określenia ścieżki do pliku skryptu języka pig i **element scriptLinkedService**. 
    
    > [!NOTE]
    > Możesz też podać wbudowany skrypt Pig w definicji działania, za pomocą **skryptu** właściwości. Jednak firma Microsoft nie zaleca się tej metody jako wszystkie znaki specjalne w skryptu musi być poprzedzone znakiem zmiany znaczenia i może spowodować problemy debugowania. Najlepszym rozwiązaniem jest przejdź do kroku #4.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: d325cfd679c2a8b878ae9a7b483431aba32b2a5a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313283"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200688"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów HDInsight opartych na systemie Linux przy użyciu akcji skryptu
 
@@ -157,7 +157,6 @@ HDInsight zapewnia skrypty dopasowane do zainstalowania następujących składni
 | Dodaj konto usługi Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobacz [dodawanie kolejnych kont magazynu do HDInsight](hdinsight-hadoop-add-storage.md). |
 | Instalowanie rozwiązania Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobacz [instalacji i używania aplikacji Hue w usłudze HDInsight Hadoop clusters](hdinsight-hadoop-hue-linux.md). |
 | Zainstaluj skrypt Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. Zobacz [instalacji i używania środowiska Presto na HDInsight opartych na usłudze Hadoop clusters](hdinsight-hadoop-install-presto.md). |
-| Zainstaluj program Solr |`https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh`. Zobacz [instalacji i używania klastrów Apache Solr w usłudze HDInsight Hadoop](hdinsight-hadoop-solr-install-linux.md). |
 | Zainstaluj program Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zobacz [zainstalować system Giraph Apache na HDInsight Hadoop clusters](hdinsight-hadoop-giraph-install-linux.md). |
 | Wstępne ładowanie bibliotek technologii Hive |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zobacz [Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight](hdinsight-hadoop-add-hive-libraries.md). |
 | Instalowanie lub aktualizowanie środowiska Mono | `https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash`. Zobacz [Instalowanie lub aktualizowanie środowiska Mono na HDInsight](hdinsight-hadoop-install-mono.md). |
@@ -410,9 +409,9 @@ Dwa typy składników typu open source są dostępne w usłudze HDInsight:
 
 * **Wbudowane składniki**. Składniki te są wstępnie zainstalowane w klastrach HDInsight i zapewnia podstawowe funkcje klastra. Poniższe składniki należą do tej kategorii:
 
-    * [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Menedżera zasobów.
-    * Język zapytań programu Hive [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
-    * [Apache Mahout](https://mahout.apache.org/). 
+  * [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Menedżera zasobów.
+  * Język zapytań programu Hive [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+  * [Apache Mahout](https://mahout.apache.org/). 
     
     Pełną listę składniki klastra jest dostępna w [jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?](hdinsight-component-versioning.md)
 
@@ -524,7 +523,6 @@ Istnieją jednak dwa wyjątki:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie skryptów Akcja skryptu dla HDInsight](hdinsight-hadoop-script-actions-linux.md)
-* [Instalowanie i używanie Apache Solr w klastrach HDInsight](hdinsight-hadoop-solr-install-linux.md)
 * [Instalowanie i używanie Apache Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Dodaj dodatkowy magazyn do klastra usługi HDInsight](hdinsight-hadoop-add-storage.md)
 

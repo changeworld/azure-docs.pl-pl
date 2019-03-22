@@ -10,21 +10,21 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 3ad657fb695d88ffc75a37ee566ce59126906748
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038436"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108073"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Utwórz trwałe funkcje przy użyciu witryny Azure portal
 
 [Funkcje trwałe](durable-functions-overview.md) rozszerzenia dla usługi Azure Functions jest podawany jako pakiet NuGet [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). To rozszerzenie musi być zainstalowany w aplikacji funkcji. W tym artykule przedstawiono sposób instalowania tego pakietu, dzięki czemu można tworzyć niezawodne funkcje w witrynie Azure portal.
 
->[!NOTE]
->
->* Jeśli tworzysz funkcje trwałe w C#, zamiast tego należy rozważyć [rozwoju Visual Studio 2017](durable-functions-create-first-csharp.md).
-* Jeśli tworzysz trwałe funkcje w języku JavaScript, zamiast tego należy rozważyć [rozwoju Visual Studio Code](./quickstart-js-vscode.md).
+> [!NOTE]
+> 
+> * Jeśli tworzysz funkcje trwałe w C#, zamiast tego należy rozważyć [rozwoju Visual Studio 2017](durable-functions-create-first-csharp.md).
+> * Jeśli tworzysz trwałe funkcje w języku JavaScript, zamiast tego należy rozważyć [rozwoju Visual Studio Code](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 

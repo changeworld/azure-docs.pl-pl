@@ -5,49 +5,67 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8f253d150a5073d2d19daf51c12180c9f7b3660b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: dd89d9645d2054f301ed999121fefc417ea5c6fa
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734527"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293910"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
-Za pomocą skalowalnego w poziomie, zapytań klienta mogą być dystrybuowane między wieloma *replikami zapytania* w puli zapytania, zmniejszając czasy odpowiedzi podczas obciążeń związanych z zapytaniami wysokiej. Można też oddzielić przetwarzania od puli zapytania, zapewnienie, że zapytań klienta nie dotkną operacji przetwarzania. Skalowalny w poziomie można skonfigurować w witrynie Azure portal lub za pomocą interfejsu API REST usługi Analysis Services.
+Za pomocą skalowalnego w poziomie, zapytań klienta mogą być dystrybuowane między wieloma *replikami zapytania* w *zapytania puli*, zmniejszając czasy odpowiedzi podczas obciążeń związanych z zapytaniami wysoka. Można też oddzielić przetwarzania od puli zapytania, zapewnienie, że zapytań klienta nie dotkną operacji przetwarzania. Skalowalny w poziomie można skonfigurować w witrynie Azure portal lub za pomocą interfejsu API REST usługi Analysis Services.
 
-## <a name="how-it-works"></a>Jak to działa
+Skalowalny w poziomie jest dostępna dla serwerów warstwy cenowej standardowa. Każdej repliki zapytania jest rozliczana przy użyciu stawki stosowanej jako serwer. Wszystkie repliki zapytania są tworzone w tym samym regionie co serwer. Liczba replik zapytań, które można skonfigurować są ograniczone według regionu, w której znajduje się serwer. Aby dowiedzieć się więcej, zobacz [Dostępność wg regionu](analysis-services-overview.md#availability-by-region). Skalowalny w poziomie nie zwiększa ilość dostępnej pamięci na serwerze. Aby zwiększyć ilość pamięci, musisz uaktualnić swój plan. 
+
+## <a name="why-scale-out"></a>Dlaczego skalowalnego w poziomie?
 
 W przypadku wdrożenia serwera typowe jeden serwer służy jako zarówno serwera przetwarzania i serwera zapytania. Jeśli liczba zapytań klienta względem modele na serwerze przekracza zapytania przetwarzania jednostek (jednostek QPU) dla planu danych na serwerze lub modelu przetwarzanie odbywa się w tym samym czasie jako obciążeń związanych z zapytaniami o wysokiej, może obniżyć wydajność. 
 
-Za pomocą skalowalnego w poziomie można utworzyć pulę zapytania przy użyciu maksymalnie siedem dodatkowe zasoby repliki (łącznie ośmioma, wliczając serwer). Możesz skalować liczbę replik zapytań do spełnienia wymagań jednostek QPU przez czas krytycznych i w dowolnym momencie możesz oddzielić serwer przetwarzania od puli zapytania. Wszystkie repliki zapytania są tworzone w tym samym regionie co serwer.
+Za pomocą skalowalnego w poziomie, można utworzyć pulę zapytania z nawet siedmioma zasobami repliki dodatkowe zapytania (osiem całkowita, włącznie z Twojej *głównej* serwera). Możesz skalować liczbę replik w puli zapytania do spełnienia wymagań jednostek QPU przez czas krytycznych i w dowolnym momencie możesz oddzielić serwer przetwarzania od puli zapytania. 
 
-Niezależnie od liczby replik zapytań, znajdującym się w puli zapytania obciążeń przetwarzania nie są dystrybuowane między replikami zapytań. Pojedynczy serwer służy jako serwer przetwarzania. Repliki zapytania służyć tylko zapytania względem modeli synchronizowane między każdej repliki zapytania w puli zapytania. 
+Niezależnie od liczby replik zapytań, znajdującym się w puli zapytania obciążeń przetwarzania nie są dystrybuowane między replikami zapytań. Serwer podstawowy służy jako serwer przetwarzania. Repliki zapytania służyć tylko zapytania względem bazy danych modelu, między serwerem podstawowym i każdej repliki w puli zapytania. 
 
-Podczas skalowania w poziomie, nowe replikami zapytania są dodawane do puli zapytania przyrostowo. Może upłynąć do pięciu minut, zanim nowe zasoby repliki zapytania mają zostać uwzględnione w puli zapytania. Gdy wszystkie nowe repliki zapytania są włączone i uruchomione, nowe połączenia klientów jest równoważone między wszystkich zasobów w puli zapytania. Istniejące połączenia klienta nie są zmieniane z zasobu, które są aktualnie połączeni.  Podczas skalowania w, wszelkie istniejące połączenia klienta do kwerendy puli zasobów, który jest usuwany z puli zapytania są kończone. Ich ponowne łączenie się pozostały zasób puli zapytania po zakończeniu skalowanie w operacji, który może zająć maksymalnie pięć minut.
+Podczas skalowania w poziomie, może upłynąć do pięciu minut, zanim nowe replikami zapytania przyrostowo zostać dodane do puli zapytania. Gdy wszystkie nowe repliki zapytania są włączone i uruchomione, nowe połączenia klientów jest równoważone między zasobami w puli zapytania. Istniejące połączenia klienta nie są zmieniane z zasobu, które są aktualnie połączeni. Podczas skalowania w, wszelkie istniejące połączenia klienta do kwerendy puli zasobów, który jest usuwany z puli zapytania są kończone. Klientów można połączyć pozostały zasób puli zapytania.
 
-Podczas przetwarzania modeli, po ukończeniu operacji przetwarzania, należy wykonać synchronizację między serwerem przetwarzania a replikami zapytania. Automatyzacja operacji przetwarzania, należy skonfigurować operacji synchronizacji po pomyślnym zakończeniu operacji przetwarzania. Można przeprowadzić synchronizację ręcznie w portalu lub przy użyciu programu PowerShell lub interfejsu API REST. 
+## <a name="how-it-works"></a>Jak to działa
+
+Podczas konfigurowania skalowalnego w poziomie po raz pierwszy, baz danych w modelu na podstawowym serwerze są *automatycznie* synchronizowane z nowej repliki w nowej puli zapytania. Automatyczna synchronizacja występuje tylko jeden raz. Podczas automatycznej synchronizacji plików danych serwera podstawowego (szyfrowane, gdy w magazynie obiektów blob) są kopiowane w innej lokalizacji, również są szyfrowane w stanie spoczynku w usłudze blob storage. Replik w puli zapytania są następnie *uwodniony* przy użyciu danych z drugiego zestawu plików. 
+
+Gdy automatyczna synchronizacja jest wykonywana tylko wtedy, gdy użytkownik skalowalnego w poziomie serwera po raz pierwszy, można również wykonać ręczną synchronizację. Synchronizowanie gwarantuje, że dane w replikach w puli zapytania pasuje do podstawowego serwera. Podczas przetwarzania modeli (odświeżanie) na serwerze podstawowym, należy wykonać synchronizację *po* są wykonywane operacje przetwarzania. Wykonanie synchronizacji kopiuje zaktualizowane dane z podstawowego serwera plików w usłudze blob storage do drugiego zestawu plików. Replik w puli zapytania są następnie uwodniony przy użyciu zaktualizowanych danych z drugiego zestawu plików w magazynie obiektów blob. 
+
+Podczas wykonywania kolejnych operacji skalowania w poziomie, na przykład liczba replik w puli zapytania od dwóch do pięciu, zwiększenie nowej repliki są uwodniony przy użyciu danych z drugiego zestawu plików w magazynie obiektów blob. Brak synchronizacji nie istnieje. Gdyby wykonaniu synchronizacji po skalowanie w poziomie, nowych replik w puli zapytania będą uwodniony dwukrotnie — nadmiarowe wypełniania zasobami. Podczas wykonywania kolejnych operacji skalowania w poziomie, ważne jest pamiętać:
+
+* Wykonaj synchronizację *przed wykonaniem operacji skalowania w poziomie* w celu uniknięcia nadmiarowe wypełniania dodano replik.
+
+* Podczas przetwarzania zarówno automatyzacji *i* operacji skalowania w poziomie, ważne jest, aby najpierw przetwarzania danych na serwerze podstawowym, a następnie przeprowadzić synchronizację, a następnie wykonaj operację skalowania w poziomie. Ta sekwencja gwarantuje minimalny wpływ na jednostek QPU i zasobów pamięci.
+
+* Synchronizacja jest dozwolone, nawet wtedy, gdy istnieją nie replik w puli zapytania. Jeśli jest skalowana na zewnątrz od zera do co najmniej jedną replikę za pomocą nowych danych z operacji przetwarzania na serwerze podstawowym, najpierw wykonać synchronizację z nie replik w puli zapytania, a następnie skalowalnego w poziomie. Synchronizowanie przed skalowanie pozwala uniknąć wypełniania nadmiarowych replik nowo dodane.
+
+* Podczas usuwania bazy danych modelu z serwera podstawowego, go nie automatycznie usuwane z replik w puli zapytania. Należy wykonać operację synchronizacji, która usuwa plik/s dla tej bazy danych z lokalizacji magazynu udostępnionego obiektu blob repliki, a następnie usuwa bazy danych modelu replik w puli zapytania.
+
+* Podczas zmiany nazwy bazy danych na serwerze podstawowym, Brak dodatkowych czynności niezbędne do zapewnienia, że baza danych jest poprawnie synchronizowane wszystkie repliki. Po zmianie nazwy, należy wykonać, określając synchronizacji `-Database` parametru przy użyciu starej nazwy bazy danych. Wykonanie synchronizacji usuwa z wszystkie repliki bazy danych i plików przy użyciu starej nazwy. Następnie wykonać, określając inną synchronizacji `-Database` parametru z nową nazwą bazy danych. Drugi synchronizacji kopiuje do drugiego zestawu plików nowo nazwanym bazy danych i hydrates wszystkie repliki. Nie można wykonać te synchronizacje poleceniem Synchronize modelu w portalu.
 
 ### <a name="separate-processing-from-query-pool"></a>Oddziel przetwarzania od puli zapytania
 
 Aby uzyskać maksymalną wydajność przetwarzania i operacje zapytań można oddzielić serwer przetwarzania od puli zapytania. Gdy oddzielone, istniejących i nowych połączeń klientów przypisanych do repliki zapytania w puli zapytania tylko. Operacje przetwarzania zajmował jedynie krótkim czasie, można oddzielić serwer przetwarzania od puli zapytania tylko ilości czasu potrzebnego do wykonywania operacji przetwarzania i synchronizacji, a następnie dołącz ją z powrotem do puli zapytania. 
 
-> [!NOTE]
-> Skalowalny w poziomie jest dostępna dla serwerów warstwy cenowej standardowa. Każdej repliki zapytania jest rozliczana przy użyciu stawki stosowanej jako serwer.
-
-> [!NOTE]
-> Skalowalny w poziomie nie zwiększa ilość dostępnej pamięci na serwerze. Aby zwiększyć ilość pamięci, musisz uaktualnić swój plan.
-
-## <a name="region-limits"></a>Limity regionu
-
-Liczba replik zapytań, które można skonfigurować są ograniczone według regionu, w której znajduje się serwer. Aby dowiedzieć się więcej, zobacz [Dostępność wg regionu](analysis-services-overview.md#availability-by-region).
-
 ## <a name="monitor-qpu-usage"></a>Użycie jednostek QPU monitora
 
- Aby ustalić, czy skalowalnego w poziomie serwera jest niezbędne, serwer w witrynie Azure portal należy monitorować za pomocą metryk. Jeśli Twoje QPU regularnie wydłużyć, oznacza to, że liczba zapytań dotyczących modeli przekracza limit jednostek QPU dla planu. Metryka długość kolejki zadania puli zapytania zwiększa także dostępne QPU przekroczenia liczby zapytań w kolejce puli wątków zapytań. Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-services-monitor.md).
+Aby ustalić, czy skalowalnego w poziomie serwera jest niezbędne, serwer w witrynie Azure portal należy monitorować za pomocą metryk. Jeśli Twoje QPU regularnie wydłużyć, oznacza to, że liczba zapytań dotyczących modeli przekracza limit jednostek QPU dla planu. Metryka długość kolejki zadania puli zapytania zwiększa także dostępne QPU przekroczenia liczby zapytań w kolejce puli wątków zapytań. 
+
+Inny dobrą metryką, aby obejrzeć to średni QPU przez ServerResourceType. Ta metryka porównuje QPU średnia dla serwera podstawowego, korzystając z niego puli zapytania. 
+
+### <a name="to-configure-qpu-by-serverresourcetype"></a>Aby skonfigurować jednostek QPU przez ServerResourceType
+1. Na wykresie liniowym metryki kliknij **Dodaj metrykę**. 
+2. W **zasobów**, wybierz serwer, a następnie w **METRYKI przestrzeni nazw**, wybierz opcję **standardowych metryk usług Analysis Services**, a następnie w obszarze **METRYKI**, Wybierz **QPU**, a następnie w polu **agregacji**, wybierz opcję **Avg**. 
+3. Kliknij przycisk **zastosować podział**. 
+4. W **wartości**, wybierz opcję **ServerResourceType**.  
+
+Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-services-monitor.md).
 
 ## <a name="configure-scale-out"></a>Skonfiguruj skalowalny w poziomie
 
@@ -55,17 +73,17 @@ Liczba replik zapytań, które można skonfigurować są ograniczone według reg
 
 1. W portalu, kliknij przycisk **skalowalnego w poziomie**. Wybierz liczbę serwerów replik zapytań za pomocą suwaka. Liczba replik, które wybierzesz jest oprócz istniejącego serwera.
 
-2. W **oddziel serwer przetwarzania od puli zapytań**, wybierz opcję Tak, aby wykluczyć serwer przetwarzania z serwerów z zapytania. Połączenia klienckie za pomocą domyślne parametry połączenia (bez: rw) są przekierowywane do replik w puli zapytania. 
+2. W **oddziel serwer przetwarzania od puli zapytań**, wybierz opcję Tak, aby wykluczyć serwer przetwarzania z serwerów z zapytania. Klient [połączeń](#connections) przy użyciu domyślne parametry połączenia (bez `:rw`) są przekierowywane do replik w puli zapytania. 
 
    ![Suwak skalowalnego w poziomie](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
 3. Kliknij przycisk **Zapisz** do aprowizowania nowych serwerów repliki zapytania. 
 
-Modele tabelaryczne na podstawowym serwerze są synchronizowane z serwerem funkcji replica. Po ukończeniu synchronizacji rozpocznie się puli zapytania, dystrybucja przychodzące zapytania na serwery repliki. 
+Podczas konfigurowania skalowalnego w poziomie serwera po raz pierwszy, modele na podstawowym serwerze są automatycznie synchronizowane z replik w puli zapytania. Automatyczna synchronizacja występuje tylko wtedy, gdy podczas pierwszej konfiguracji skalowania w poziomie do co najmniej jedną replikę. Kolejne zmiany liczby replik na tym samym serwerze *nie spowodują uruchomienia innego automatyczną synchronizację*. Automatyczna synchronizacja zostanie przeprowadzona ponownie nawet wtedy, gdy serwer na zero repliki i następnie ponownie skalowalnego w poziomie do dowolnej liczby replik. 
 
-## <a name="synchronization"></a>Synchronizacja 
+## <a name="synchronize"></a>Synchronizuj 
 
-Podczas aprowizacji nowej repliki zapytania usług Azure Analysis Services automatycznie replikuje swoje modele we wszystkich replik. Można również wykonać ręczną synchronizację za pomocą portalu lub interfejsu API REST. W przypadku przetwarzania modeli, należy wykonać synchronizację, dlatego aktualizacje są synchronizowane między repliki zapytania.
+Operacje synchronizacji należy wykonać ręcznie lub za pomocą interfejsu API REST.
 
 ### <a name="in-azure-portal"></a>W witrynie Azure portal
 
@@ -91,9 +109,9 @@ Użyj **synchronizacji** operacji.
 
 Przed rozpoczęciem korzystania z programu PowerShell, [Instalowanie lub aktualizowanie najnowszy moduł Azure PowerShell](/powershell/azure/install-az-ps). 
 
-Aby ustawić liczba replik zapytań, należy użyć [AzAnalysisServicesServer zestaw](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Określ opcjonalne `-ReadonlyReplicaCount` parametru.
-
 Aby uruchomić synchronizacji, użyj [AzAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
+
+Aby ustawić liczba replik zapytań, należy użyć [AzAnalysisServicesServer zestaw](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Określ opcjonalne `-ReadonlyReplicaCount` parametru.
 
 ## <a name="connections"></a>Połączenia
 
@@ -101,7 +119,7 @@ Na stronie przeglądu serwera istnieją dwie nazwy serwera. Jeśli nie skonfigur
 
 Dla połączeń klienckich użytkowników końcowych, takich jak Power BI Desktop, Excel i aplikacje niestandardowe, użyj **nazwy serwera**. 
 
-SSMS, SSDT i parametry połączenia w programie PowerShell, użyj aplikacji funkcji platformy Azure i AMO, **nazwa serwera zarządzania**. Nazwa serwera zarządzania obejmuje specjalny `:rw` kwalifikator (odczyt zapis). Wszystkie operacje przetwarzania są wykonywane na serwerze zarządzania.
+SSMS, SSDT i parametry połączenia w programie PowerShell, użyj aplikacji funkcji platformy Azure i AMO, **nazwa serwera zarządzania**. Nazwa serwera zarządzania obejmuje specjalny `:rw` kwalifikator (odczyt zapis). Wszystkie operacje przetwarzania są wykonywane na serwerze zarządzania (podstawowy).
 
 ![Nazwy serwerów](media/analysis-services-scale-out/aas-scale-out-name.png)
 
@@ -109,10 +127,9 @@ SSMS, SSDT i parametry połączenia w programie PowerShell, użyj aplikacji funk
 
 **Problem:** Użytkownicy otrzymują błąd **nie można odnaleźć serwera "\<nazwa serwera >" wystąpienie w trybie połączenia "ReadOnly".**
 
-**Rozwiązanie:** Podczas wybierania **oddziel serwer przetwarzania od puli zapytań** opcji połączeń klienta za pomocą domyślne parametry połączenia (bez: rw) są przekierowywane do repliki puli zapytania. Jeśli replik w puli zapytania nie zostały jeszcze w trybie online ponieważ synchronizacji nie został jeszcze zostały zakończone, połączeń przekierowanego klienckich może zakończyć się niepowodzeniem. Aby zapobiec połączenia zakończone niepowodzeniem, musi istnieć co najmniej dwa serwery w puli zapytania podczas przeprowadzania synchronizacji. Każdy serwer jest synchronizowany indywidualnie, podczas gdy inne pozostać w trybie online. Jeśli zdecydujesz się w puli zapytań podczas przetwarzania nie istnieje serwer przetwarzania, można usunąć go z puli do przetwarzania, a następnie dodaj go do puli po przetwarzanie zostało ukończone, ale przed synchronizacją. Metryki użycia pamięci i QPU, aby monitorować stan synchronizacji.
+**Rozwiązanie:** Podczas wybierania **oddziel serwer przetwarzania od puli zapytań** opcji połączeń klienta za pomocą domyślne parametry połączenia (bez `:rw`) są przekierowywane do repliki puli zapytania. Jeśli replik w puli zapytania nie zostały jeszcze w trybie online ponieważ synchronizacji nie został jeszcze zostały zakończone, połączeń przekierowanego klienckich może zakończyć się niepowodzeniem. Aby zapobiec połączenia zakończone niepowodzeniem, musi istnieć co najmniej dwa serwery w puli zapytania podczas przeprowadzania synchronizacji. Każdy serwer jest synchronizowany indywidualnie, podczas gdy inne pozostać w trybie online. Jeśli zdecydujesz się w puli zapytań podczas przetwarzania nie istnieje serwer przetwarzania, można usunąć go z puli do przetwarzania, a następnie dodaj go do puli po przetwarzanie zostało ukończone, ale przed synchronizacją. Metryki użycia pamięci i QPU, aby monitorować stan synchronizacji.
 
 ## <a name="related-information"></a>Informacje pokrewne
 
 [Monitorowanie metryk serwera](analysis-services-monitor.md)   
 [Zarządzanie usług Azure Analysis Services](analysis-services-manage.md) 
-

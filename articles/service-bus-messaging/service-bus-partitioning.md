@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: aschhab
-ms.openlocfilehash: ea5f0e1ad6af6f301b684337941c7d9bce8590c1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 699581c7ccd3f36da0cd0c1def623607b7c0a13b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444484"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891124"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partycjonowane kolejki i tematy
 
@@ -39,7 +39,7 @@ Za pomocą partycjonowane kolejki i tematy usługi Azure Service Bus, należy u�
 
 ### <a name="standard"></a>Standardowa (Standard)
 
-W warstwie standardowej obsługi komunikatów można utworzyć kolejki usługi Service Bus i tematy w 1, 2, 3, 4 lub 5 GB rozmiarów (wartość domyślna to 1 GB). Z podziałem na partycje włączone, usługi Service Bus tworzy kopie w 16 (16 partycje), jednostki za każdy GB, które określisz. Jako takie, tworząc kolejki, która ma rozmiar 5 GB, z 16 partycji maksymalny rozmiar kolejki staje się (5 \* 16) = 80 GB. Maksymalny rozmiar podzieleniu kolejki lub tematu widoczne, analizując jego wpis [witryny Azure portal][Azure portal]w **Przegląd** bloku dla tej jednostki.
+W warstwie standardowej obsługi komunikatów można utworzyć kolejki usługi Service Bus i tematy w 1, 2, 3, 4 lub 5 GB rozmiarów (wartość domyślna to 1 GB). Z podziałem na partycje włączone, Usługa Service Bus tworzy kopie 16 (16 partycje) jednostki, każdy taki sam rozmiar określony. Jako takie, tworząc kolejki, która ma rozmiar 5 GB, z 16 partycji maksymalny rozmiar kolejki staje się (5 \* 16) = 80 GB. Maksymalny rozmiar podzieleniu kolejki lub tematu widoczne, analizując jego wpis [witryny Azure portal][Azure portal]w **Przegląd** bloku dla tej jednostki.
 
 ### <a name="premium"></a>Premium
 

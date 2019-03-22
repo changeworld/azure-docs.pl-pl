@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: bd9cb76557c65832de5d249cdccdc36101edf646
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: ff8ef576a0dae0f03cc0c80f83ce0c24cf3945a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821290"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093739"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Samouczek: Ręczne przechodzenie w tryb failover dla centrum IoT (publiczna wersja zapoznawcza)
 
@@ -124,7 +124,7 @@ Aby usunąć zasoby utworzone w ramach tego samouczka, usuń grupę zasobów. Ta
 
 3. Kliknij pozycję **Usuń grupę zasobów**. Po wyświetleniu monitu wprowadź nazwę grupy zasobów i kliknij przycisk **Usuń**, aby potwierdzić. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób konfigurowania i wykonywania ręcznego przejścia w tryb failover oraz żądania powrotu po awarii przez wykonanie następujących zadań:
 
@@ -138,4 +138,4 @@ W tym samouczku przedstawiono sposób konfigurowania i wykonywania ręcznego prz
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zarządzać stanem urządzenia IoT. 
 
 > [!div class="nextstepaction"]
-[Zarządzanie stanem urządzenia IoT](tutorial-device-twins.md)
+> [Zarządzanie stanem urządzenia IoT](tutorial-device-twins.md)

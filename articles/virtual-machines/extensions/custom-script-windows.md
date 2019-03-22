@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: f29c995c4fb4a1e87c95295779ff83dd133ac61c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 520ff1dfeefc8cca66710745012ee54b550a19a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984396"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097927"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozszerzenie niestandardowego skryptu dla Windows
 
@@ -110,24 +110,24 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Wydawcy | Microsoft.Compute | ciąg |
-| type | CustomScriptExtension | ciąg |
+| Wydawcy | Microsoft.Compute | string |
+| type | CustomScriptExtension | string |
 | typeHandlerVersion | 1.9 | int |
 | fileUris (np.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tablica |
 | Sygnatura czasowa (np.) | 123456789 | 32-bitowa liczba całkowita |
-| commandToExecute (np.) | Program PowerShell - ExecutionPolicy Unrestricted - pliku skonfigurować — muzyka app.ps1 | ciąg |
-| storageAccountName (np.) | examplestorageacct | ciąg |
-| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
+| commandToExecute (np.) | Program PowerShell - ExecutionPolicy Unrestricted - pliku skonfigurować — muzyka app.ps1 | string |
+| storageAccountName (np.) | examplestorageacct | string |
+| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 >[!NOTE]
 >Nazwy tych właściwości jest rozróżniana wielkość liter. Aby uniknąć problemów z wdrażaniem, użyj nazwy, jak pokazano poniżej.
 
 #### <a name="property-value-details"></a>Szczegóły dotyczące wartości właściwości
- * `commandToExecute`: (**wymagane**, ciąg) skrypt punktu wejścia do wykonania. Zamiast tego użyj tego pola, jeśli polecenie zawiera wpisy tajne, takie jak hasła lub usługi fileUris jest wielkość liter.
-* `fileUris`: (opcjonalne, tablicy ciągów) adresy URL plików mają być pobrane.
-* `timestamp` Użycie (opcjonalne, 32-bitowa liczba całkowita), w tym polu tylko do wyzwolenia ponownie skryptu, zmieniając wartość tego pola.  Dowolna liczba całkowita jest dopuszczalne; tylko musi być inna niż poprzednia wartość.
-* `storageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu. Jeśli określisz poświadczeń magazynu wszystkich `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
-* `storageAccountKey`: (opcjonalnie, ciąg) klucz dostępu konta magazynu
+* `commandToExecute`: (**wymagane**, ciąg) skrypt punktu wejścia do wykonania. Zamiast tego użyj tego pola, jeśli polecenie zawiera wpisy tajne, takie jak hasła lub usługi fileUris jest wielkość liter.
+  * `fileUris`: (opcjonalne, tablicy ciągów) adresy URL plików mają być pobrane.
+  * `timestamp` Użycie (opcjonalne, 32-bitowa liczba całkowita), w tym polu tylko do wyzwolenia ponownie skryptu, zmieniając wartość tego pola.  Dowolna liczba całkowita jest dopuszczalne; tylko musi być inna niż poprzednia wartość.
+  * `storageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu. Jeśli określisz poświadczeń magazynu wszystkich `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
+  * `storageAccountKey`: (opcjonalnie, ciąg) klucz dostępu konta magazynu
 
 Można ustawić następujące wartości w ustawieniach publiczną lub chronioną, rozszerzenie spowoduje odrzucenie wszystkich konfiguracji, gdzie poniższe wartości są ustawione w ustawieniach zarówno publiczne i chronione.
 * `commandToExecute`

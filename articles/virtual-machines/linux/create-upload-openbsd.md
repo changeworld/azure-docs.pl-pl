@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 332382282c2b55b52bb23f278a25868c09360619
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d8640881e83084dac7f4725115f48dcf7d29e787
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729357"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007593"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Tworzenie i przekazywanie obrazu dysku OpenBSD na platformie Azure
 Ten artykuł pokazuje, jak tworzenie i przekazywanie wirtualnego dysku twardego (VHD) z systemem operacyjnym OpenBSD. Po przekazaniu go można użyć go jako swój własny obraz, aby utworzyć maszynę wirtualną (VM) na platformie Azure przy użyciu wiersza polecenia platformy Azure.
@@ -56,7 +56,7 @@ Na maszynie Wirtualnej, w którym zainstalowano system operacyjny OpenBSD 6.1, k
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Domyślnie `root` użytkownik jest wyłączony w przypadku maszyn wirtualnych na platformie Azure. Użytkownicy mogą uruchamiać polecenia z podwyższonym poziomem uprawnień przy użyciu `doas` polecenia na maszynie Wirtualnej OpenBSD. Doas jest domyślnie włączona. Aby uzyskać więcej informacji, zobacz [doas.conf](http://man.openbsd.org/doas.conf.5). 
+4. Domyślnie `root` użytkownik jest wyłączony w przypadku maszyn wirtualnych na platformie Azure. Użytkownicy mogą uruchamiać polecenia z podwyższonym poziomem uprawnień przy użyciu `doas` polecenia na maszynie Wirtualnej OpenBSD. Doas jest domyślnie włączona. Aby uzyskać więcej informacji, zobacz [doas.conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Zainstaluj i skonfiguruj wymagania wstępne dotyczące agenta usługi Azure w następujący sposób:
 
@@ -175,6 +175,6 @@ ssh azureuser@<ip address>
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Jeśli chcesz dowiedzieć się więcej na temat obsługi funkcji Hyper-V na OpenBSD6.1, zapoznaj się z [OpenBSD 6.1](https://www.openbsd.org/61.html) i [hyperv.4](http://man.openbsd.org/hyperv.4).
+Jeśli chcesz dowiedzieć się więcej na temat obsługi funkcji Hyper-V na OpenBSD6.1, zapoznaj się z [OpenBSD 6.1](https://www.openbsd.org/61.html) i [hyperv.4](https://man.openbsd.org/hyperv.4).
 
 Jeśli chcesz utworzyć Maszynę wirtualną z dysków zarządzanych, zapoznaj się z [dysku az](/cli/azure/disk). 

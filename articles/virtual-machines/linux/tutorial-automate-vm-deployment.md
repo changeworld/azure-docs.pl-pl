@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: af8d06a8eeb1c8fbce7ccc47c9f25b9d37ff83e6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: b71c48a86be13df51222069f6948642455bc77fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414650"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121268"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
 
@@ -46,7 +46,7 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
 Wraz z partnerami pracujemy nad tym, aby pakiet cloud-init był uwzględniany i uruchamiany w obrazach, których dostarczają na platformie Azure. W poniższej tabeli przedstawiono bieżącą dostępność pakietu cloud-init w obrazach na platformie Azure:
 
 | Alias | Wydawca | Oferta | SKU | Wersja |
-|:--- |:--- |:--- |:--- |:--- |:--- |
+|:--- |:--- |:--- |:--- |:--- |
 | UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |najnowsza |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |najnowsza |
 | CoreOS |CoreOS |CoreOS |Stable |najnowsza |
@@ -271,7 +271,7 @@ Zostanie wyświetlona zabezpieczona witryna serwera NGINX oraz aplikacja Node.js
 ![Wyświetlanie uruchomionej zabezpieczonej witryny serwera NGINX](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku skonfigurowano maszyny wirtualne podczas pierwszego rozruchu przy użyciu pakietu cloud-init. W tym samouczku omówiono:
 
 > [!div class="checklist"]

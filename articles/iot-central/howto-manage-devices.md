@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 59f4dffb64b0e72e8847f0b1baf947ad1d732063
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1e67c22a55068ce42cb1eb6d9c0c9bdf8215f44e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766582"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167987"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji (nowy interfejs użytkownika projekt)
 
@@ -23,7 +23,6 @@ W tym artykule opisano jak operator, aby zarządzać urządzeniami w usłudze Az
 - Prowadź rejestr aktualności urządzeń.
 - Aktualizuj metadane urządzenia, zmieniając wartości przechowywane we właściwościach urządzenia.
 - Sterowanie zachowaniem urządzeń, aktualizując ustawienia na konkretnym urządzeniu z **ustawienia** strony.
-
 
 ## <a name="view-your-devices"></a>Wyświetlanie urządzeń
 
@@ -104,7 +103,7 @@ Po zarejestrowaniu urządzenia przez uruchamianie importu w obszarze **Brak skoj
 
 ## <a name="export-devices"></a>Eksportowanie urządzeń
 
-Aby połączyć prawdziwe urządzenie z IoT Central, jego parametry połączenia będą potrzebne. Możesz wyeksportować szczegóły urządzenia w trybie zbiorczym można pobrać parametry połączenia i inne właściwości. Proces eksportowania tworzy plik CSV przy użyciu tożsamości urządzenia, nazwę urządzenia i podstawowe parametry połączenia dla wszystkich wybranych urządzeń.
+Aby połączyć prawdziwe urządzenie z IoT Central, jego parametry połączenia będą potrzebne. Możesz wyeksportować szczegóły urządzenia w trybie zbiorczym, aby uzyskać informacje potrzebne do tworzenia parametrów połączenia urządzenia. Proces eksportowania tworzy plik CSV przy użyciu tożsamości urządzenia, nazwę urządzenia i klucze dla wszystkich wybranych urządzeń.
 
 Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
@@ -130,8 +129,10 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
     * IOTC_DEVICENAME
     * IOTC_SASKEY_PRIMARY
     * IOTC_SASKEY_SECONDARY
-    * IOTC_X509THUMBPRINT_PRIMARY   
+    * IOTC_X509THUMBPRINT_PRIMARY
     * IOTC_X509THUMBPRINT_SECONDARY
+
+Zobacz [łączność urządzeń w usłudze Azure IoT Central](concepts-connectivity.md), aby uzyskać więcej informacji o parametrach połączenia i połączenie rzeczywistych urządzeń, aplikacji IoT Central.
 
 ## <a name="delete-a-device"></a>Usuwanie urządzenia
 

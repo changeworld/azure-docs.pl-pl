@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: c9e582aa530e484cfe6c11f491be748bf4f33ecb
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 7dc969fdcf8b819f5223bdbff3cc1b9d4439c370
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452583"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729140"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Rozpoczynanie pracy z usługą Notification Hubs dla aplikacji dla urządzeń Kindle
 
@@ -129,8 +129,8 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
 
     ```xml
     <amazon:enable-feature
-            android:name="com.amazon.device.messaging"
-                    android:required="true"/>
+        android:name="com.amazon.device.messaging"
+        android:required="true"/>
     <service
         android:name="[YOUR SERVICE NAME]"
         android:exported="false" />
@@ -258,7 +258,8 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
         new AsyncTask() {
                 @Override
                 protected Object doInBackground(Object... params) {
-                    try {                         MyADMMessageHandler.getNotificationHub(getApplicationContext()).register(adm.getRegistrationId());
+                    try {
+                        MyADMMessageHandler.getNotificationHub(getApplicationContext()).register(adm.getRegistrationId());
                     } catch (Exception e) {
                         Log.e("com.wa.hellokindlefire", "Failed registration with hub", e);
                         return e;
@@ -302,7 +303,7 @@ static void Main(string[] args)
 
 ![][7]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku wysłano rozgłaszane powiadomienia do wszystkich urządzeń Kindle zarejestrowanych w zapleczu. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń Kindle, przejdź do następującego samouczka:  Następujący samouczek przedstawia sposób wypychania powiadomień do konkretnych urządzeń z systemem Android, ale możesz użyć tej samej logiki do wypychania powiadomień do konkretnych urządzeń Kindle.
 

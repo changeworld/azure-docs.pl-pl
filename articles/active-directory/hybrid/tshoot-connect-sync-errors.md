@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43e84e97499010f36e3cd39c13bf61d281b66c7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d2ba74961eb549afd2fcf7c10f2d8b981e389a2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193139"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845100"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Rozwiązywanie problemów z błędami występującymi podczas synchronizacji
 Podczas synchronizowania danych tożsamości z usługi Windows Server Active Directory (AD DS) do usługi Azure Active Directory (Azure AD), mogą wystąpić błędy. Ten artykuł zawiera omówienie różnych typów błędów synchronizacji, niektóre z możliwych scenariuszy, które powodują tych błędów i potencjalne sposoby naprawienia błędy. W tym artykule zawiera z najczęściej popełnianymi typami błędów i może nie obejmować wszystkich możliwych błędów.
@@ -72,19 +72,19 @@ Schemat usługi Active Directory systemu Azure nie zezwala na dwóch lub więcej
 
 #### <a name="example-case"></a>Przykład w przypadku:
 1. **Bob Smith** jest synchronizowanych użytkowników w usłudze Azure Active Directory z na lokalne usługi Active Directory dla *contoso.com*
-2. Bob Smith **UserPrincipalName** jest ustawiony jako **bobs@contoso.com**.
+2. Bob Smith **UserPrincipalName** jest ustawiony jako **Komputer1\@contoso.com**.
 3. **"abcdefghijklmnopqrstuv =="** jest **SourceAnchor** obliczana na podstawie usługi Azure AD Connect przy użyciu Bob Smith **objectGUID** z lokalnej usługi Active Directory, czyli  **wartość immutableId** Smith Bob w usłudze Azure Active Directory.
 4. Bob ma również następujące wartości dla **proxyAddresses** atrybutu:
    * smtp: bobs@contoso.com
    * smtp: bob.smith@contoso.com
-   * **smtp: bob@contoso.com**
+   * **SMTP: Robert\@contoso.com**
 5. Nowy użytkownik **Taylora Bob**, zostanie dodany do lokalnej usłudze Active Directory.
-6. Bob Taylora **UserPrincipalName** jest ustawiony jako **bobt@contoso.com**.
+6. Bob Taylora **UserPrincipalName** jest ustawiony jako **bobt\@contoso.com**.
 7. **"abcdefghijkl0123456789 ==" "** jest **sourceAnchor** obliczana na podstawie usługi Azure AD Connect przy użyciu Taylora Bob **objectGUID** z na lokalne usługi Active Directory. Bob Taylora obiekt ma nie jest zsynchronizowane z usługą Azure Active Directory jeszcze.
 8. Bob Taylora ma następujące wartości dla atrybutu proxyAddresses
    * smtp: bobt@contoso.com
    * smtp: bob.taylor@contoso.com
-   * **smtp: bob@contoso.com**
+   * **SMTP: Robert\@contoso.com**
 9. Podczas synchronizacji Azure AD Connect rozpozna dodanie Taylora Bob w lokalne usługi Active Directory i przekażą usługi Azure AD, aby wprowadzić tę samą zmianę.
 10. Usługa Azure AD wykona najpierw twardych dopasowania. Oznacza to, wyszukiwanie będzie, jeśli dowolny obiekt wartość immutableId jest równa "abcdefghijkl0123456789 ==". Twarde dopasowanie zakończy się niepowodzeniem, żadnego innego obiektu w usłudze Azure AD będą dostępne dla tego immutableId.
 11. Usługa Azure AD podejmie próbę Taylora Bob soft-match. Oznacza to, że zostanie wyszukany w przypadku dowolnego obiektu za pomocą proxyAddresses równa trzech wartości, w tym smtp: bob@contoso.com
@@ -116,8 +116,8 @@ Gdy usługa Azure AD próbuje nietrwałe dopasować dwa obiekty, jest to możliw
 * Grupy zabezpieczeń obsługujące pocztę jest tworzony w usłudze Office 365. Administrator dodaje nowego użytkownika lub kontakt w lokalna Usługa AD (który nie jest zsynchronizowany z usługą Azure AD jeszcze) z taką samą wartość dla atrybutu ProxyAddresses jak w przypadku grupy usługi Office 365.
 
 #### <a name="example-case"></a>Przykład case
-1. Administrator tworzy nową grupę zabezpieczeń obsługujące pocztę w usłudze Office 365 dla działu podatku i przypisuje mu adres e-mail jako tax@contoso.com. Ta grupa jest przypisana wartość atrybutu ProxyAddresses **smtp: tax@contoso.com**
-2. Nowy użytkownik nie przyłączy Contoso.com i utworzeniu konta dla użytkownika w środowisku lokalnym za pomocą proxyAddress jako **smtp: tax@contoso.com**
+1. Administrator tworzy nową grupę zabezpieczeń obsługujące pocztę w usłudze Office 365 dla działu podatku i przypisuje mu adres e-mail jako tax@contoso.com. Ta grupa jest przypisana wartość atrybutu ProxyAddresses **smtp: podatku\@contoso.com**
+2. Nowy użytkownik nie przyłączy Contoso.com i utworzeniu konta dla użytkownika w środowisku lokalnym za pomocą proxyAddress jako **smtp: podatku\@contoso.com**
 3. Gdy program Azure AD Connect będzie synchronizować nowe konto użytkownika, otrzyma błąd "ObjectTypeMismatch".
 
 #### <a name="how-to-fix-objecttypemismatch-error"></a>Jak rozwiązać błąd ObjectTypeMismatch
@@ -143,16 +143,16 @@ Jeśli program Azure AD Connect próbuje dodać nowy obiekt lub zaktualizować i
 
 #### <a name="example-case"></a>Przykład w przypadku:
 1. **Bob Smith** jest synchronizowanych użytkowników w usłudze Azure Active Directory z na lokalne usługi Active Directory dla domeny contoso.com
-2. Bob Smith **UserPrincipalName** w środowisku lokalnym jest ustawiony jako **bobs@contoso.com**.
+2. Bob Smith **UserPrincipalName** w środowisku lokalnym jest ustawiony jako **Komputer1\@contoso.com**.
 3. Bob ma również następujące wartości dla **proxyAddresses** atrybutu:
    * smtp: bobs@contoso.com
    * smtp: bob.smith@contoso.com
-   * **smtp: bob@contoso.com**
+   * **SMTP: Robert\@contoso.com**
 4. Nowy użytkownik **Taylora Bob**, zostanie dodany do lokalnej usłudze Active Directory.
-5. Bob Taylora **UserPrincipalName** jest ustawiony jako **bobt@contoso.com**.
+5. Bob Taylora **UserPrincipalName** jest ustawiony jako **bobt\@contoso.com**.
 6. **Bob Taylora** ma następujące wartości dla **ProxyAddresses** atrybutu i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
 7. Obiekt Taylora Bob jest synchronizowany z usługą Azure AD pomyślnie.
-8. Administrator zdecydowała się zaktualizować Taylora Bob **ProxyAddresses** atrybutu z następującą wartością: czy mogę. **smtp: bob@contoso.com**
+8. Administrator zdecydowała się zaktualizować Taylora Bob **ProxyAddresses** atrybutu z następującą wartością: czy mogę. **SMTP: Robert\@contoso.com**
 9. Usługi Azure AD będzie próbował zaktualizować Taylora Bob obiektu w usłudze Azure AD z powyższą wartość, ale ta operacja zakończy się niepowodzeniem jako że wartość ProxyAddresses jest już przypisana do Bob Smith zostaje błąd "AttributeValueMustBeUnique".
 
 #### <a name="how-to-fix-attributevaluemustbeunique-error"></a>Jak rozwiązać błąd AttributeValueMustBeUnique
@@ -186,7 +186,7 @@ a. Upewnij się, że atrybut userPrincipalName jest obsługiwane znaki i wymagan
 Ten przypadek skutkuje **"FederatedDomainChangeError"** błąd synchronizacji, gdy sufiks domeny atrybutu UserPrincipalName użytkownika zostanie zmieniona z jednej domeny federacyjnej do innej domeny federacyjnej.
 
 #### <a name="scenarios"></a>Scenariusze
-Synchronizacja użytkownika sufiks UserPrincipalName został zmieniony z jednej domeny federacyjnej do innej domeny federacyjnej w środowisku lokalnym. Na przykład *UserPrincipalName = bob@contoso.com*  została zmieniona na *UserPrincipalName = bob@fabrikam.com* .
+Synchronizacja użytkownika sufiks UserPrincipalName został zmieniony z jednej domeny federacyjnej do innej domeny federacyjnej w środowisku lokalnym. Na przykład *UserPrincipalName = bob\@contoso.com* została zmieniona na *UserPrincipalName = bob\@fabrikam.com*.
 
 #### <a name="example"></a>Przykład
 1. Bob Smith, konto dla domeny Contoso.com, pobiera dodane jako nowy użytkownik w usłudze Active Directory za pomocą właściwości UserPrincipalName bob@contoso.com
@@ -195,7 +195,7 @@ Synchronizacja użytkownika sufiks UserPrincipalName został zmieniony z jednej 
 4. UserPrincipalName przez Boba zostaje zaktualizowana i powoduje błąd synchronizacji "FederatedDomainChangeError".
 
 #### <a name="how-to-fix"></a>Jak naprawić
-Jeśli sufiks UserPrincipalName użytkownika została zaktualizowana z bob @**contoso.com** do bob @**fabrikam.com**, gdzie oba **contoso.com** i **fabrikam.com** są **domen federacyjnych**, następnie wykonaj poniższe kroki, aby naprawić błąd synchronizacji
+Jeśli sufiks UserPrincipalName użytkownika została zaktualizowana z bob @**contoso.com** do bob\@**fabrikam.com**, gdzie oba **contoso.com** i  **Fabrikam.com** są **domen federacyjnych**, następnie wykonaj poniższe kroki, aby naprawić błąd synchronizacji
 
 1. Aktualizuj UserPrincipalName użytkownika w usłudze Azure AD z bob@contoso.com do bob@contoso.onmicrosoft.com. Za pomocą następującego polecenia programu PowerShell przy użyciu modułu Azure AD PowerShell: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Zezwalaj na następny cykl synchronizacji próby synchronizacji. Wykonanie synchronizacji czasu zakończy się pomyślnie i zaktualizuje UserPrincipalName Roberta do bob@fabrikam.com zgodnie z oczekiwaniami.

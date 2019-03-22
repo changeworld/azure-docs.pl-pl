@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 28019163cfec1a9d2e3c12346a6aba2bd00b30b1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 085a4ffbe0b615408bfd8aa70c027013e16f0136
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539551"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201436"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odwołanie - punktów końcowych usługi IoT Hub
 
@@ -22,8 +22,6 @@ ms.locfileid: "57539551"
 ## <a name="iot-hub-names"></a>Nazwy Centrum IoT Hub
 
 Można znaleźć nazwy hosta usługi IoT hub, obsługujący punktów końcowych w portalu na Twoje Centrum **Przegląd** strony. Domyślnie, nazwa DNS usługi IoT hub wygląda następująco: `{your iot hub name}.azure-devices.net`.
-
-System DNS Azure umożliwia tworzenie niestandardowej nazwy DNS dla usługi IoT hub. Aby uzyskać więcej informacji, zobacz [Use Azure DNS to provide custom domain settings for an Azure service](../dns/dns-custom-domain.md) (Korzystanie z usługi Azure DNS w celu udostępnienia niestandardowych ustawień domeny dla usługi platformy Azure).
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Lista wbudowanej punktów końcowych usługi IoT Hub
 

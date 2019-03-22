@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ba5f803f59263f9bfebfd4ec8635d5cdd6d90a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cfb56ea81abeeba83bee73356c682b3e9fae866f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171778"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292921"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nie mogę znaleźć wszystkie dane w dziennikach aktywności usługi Azure Active Directory, pobrany
 
@@ -34,11 +34,11 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
  
 ## <a name="cause"></a>Przyczyna
 
-Podczas pobierania dzienników aktywności w witrynie Azure portal ograniczamy skalowanie do 5000 rekordów posortowanych według najnowsze na początku. 
+Podczas pobierania dzienników aktywności w witrynie Azure portal ograniczamy skalowanie do 250 000 rekordów posortowanych według najnowsze na początku. 
 
 ## <a name="resolution"></a>Rozwiązanie
 
-Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu. Naszym Zalecanym podejściem jest [za pomocą skryptu zgodnie z harmonogramem](tutorial-signin-logs-download-script.md) , wywołuje interfejsy API raportowania w celu pobrania rekordów w sposób przyrostowy okresie (na przykład codziennie lub co tydzień). 
+Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

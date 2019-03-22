@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 54d98c02ee9e5202c09e333843f8c16955f4e2d4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: bf7391ea83adf852be0f989a82e89d7f316f2f85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819251"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090546"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurowanie interfejsu użytkownika z zawartością dynamiczną za pomocą zasad niestandardowych
 
@@ -196,7 +196,7 @@ Szablon języka HTML5 jest gotowy do użycia. Jednak nie jest dostępna w `Conte
     >Aby sprawdzić, czy witryny, w którym przechowujesz zawartości włączył mechanizmu CORS i przetestować żądań CORPS, przejdź do [cors.org testu](https://test-cors.org/) witryny sieci Web. 
 
 * Obsługiwane zawartość jest bezpieczna za pośrednictwem **HTTPS**.
-* Używasz *bezwzględne adresy URL*, takich jak *https://yourdomain/content*, wszystkie łącza, zawartość arkusza CSS i obrazów.
+* Używasz *bezwzględne adresy URL*, takich jak `https://yourdomain/content`, wszystkie łącza, zawartość arkusza CSS i obrazów.
 
 ## <a name="step-5-configure-your-content-definition"></a>Krok 5. Skonfiguruj swoją definicję zawartości
 Aby skonfigurować `ContentDefinition`, wykonaj następujące czynności:

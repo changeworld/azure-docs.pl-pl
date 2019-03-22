@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 42336205726823dd04e0412f29c3e7a23d134d39
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 59c69477e120facec1fbf132ce7017ca21aa8748
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092620"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Tworzenie oferty w usłudze Azure Stack
 
@@ -54,12 +54,12 @@ ms.locfileid: "57763997"
 
 Po utworzeniu oferty, możesz zmienić jego stan. Oferty muszą być wykonane **publicznych** dla użytkowników uzyskać pełny widok podczas subskrybowania. Może być oferty:
 
-   - **Publiczne**: Widoczne dla użytkowników.
-   - **Prywatne**: Jest to widoczne tylko dla administratorów w chmurze. To ustawienie jest przydatne podczas opracowywania planu lub oferty, lub jeśli chce się z administratorem chmury [tworzenia każdej subskrypcji dla użytkowników](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
-   - **Zlikwidowana**: Zamknięte dla nowych subskrybentów. Administrator chmury można zlikwidować oferty, aby uniemożliwić przyszłe subskrypcje, ale pozostawić bieżących subskrybentów bez zmian.
+- **Publiczne**: Widoczne dla użytkowników.
+- **Prywatne**: Jest to widoczne tylko dla administratorów w chmurze. To ustawienie jest przydatne podczas opracowywania planu lub oferty, lub jeśli chce się z administratorem chmury [tworzenia każdej subskrypcji dla użytkowników](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
+- **Zlikwidowana**: Zamknięte dla nowych subskrybentów. Administrator chmury można zlikwidować oferty, aby uniemożliwić przyszłe subskrypcje, ale pozostawić bieżących subskrybentów bez zmian.
 
-   > [!TIP]  
-   > Zmiany w ramach oferty nie są bezpośrednio widoczne dla użytkownika. Aby zobaczyć zmiany, użytkownicy mogą mieć wylogowania się i zaloguj się ponownie do portalu użytkowników będzie nowej oferty.
+  > [!TIP]  
+  > Zmiany w ramach oferty nie są bezpośrednio widoczne dla użytkownika. Aby zobaczyć zmiany, użytkownicy mogą mieć wylogowania się i zaloguj się ponownie do portalu użytkowników będzie nowej oferty.
 
 Istnieją dwa sposoby, aby zmienić stan oferty:
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 713068b940532331ee4a6c5f5a92816d328e41ec
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a4c9ec133b3686a92cec7e7c8d4552c1302e3074
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55736035"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125159"
 ---
 Aby móc używać interfejsu wiersza polecenia platformy Azure oraz szablonów i poleceń usługi Resource Manager w celu wdrażania obciążeń i zasobów platformy Azure przy użyciu grup zasobów, potrzebne jest konto platformy Azure. Jeśli nie posiadasz konta, możesz skorzystać z [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -31,7 +31,7 @@ W tym artykule omówiono podstawowe polecenia, które mają za pomocą klasyczne
 > 
 
 | Zadanie | Resource Manager |
-| --- | --- | --- |
+| --- | --- |
 | Tworzenie podstawowej maszyny wirtualnej |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Uzyskaj element `image-urn` z polecenia `azure vm image list`. Zapoznaj się z przykładami w [tym artykule](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). |
 | Tworzenie maszyny wirtualnej z systemem Linux |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
 | Tworzenie maszyny wirtualnej z systemem Windows |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: fd4c1220d0652139c247ffed80e995a90a93c5b1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 469213ae67f1f2bcece6afa5d9b7873bfdfe8d6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780847"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095742"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Usługa Azure Monitor w usłudze Azure Stack
 
@@ -33,8 +33,8 @@ Wprowadzenie omówienie i jak rozpocząć pracę z usługą Azure Monitor, artyk
 
 Usługa Azure Monitor to usługa platformy, która zapewnia jedno źródło monitorowania zasobów systemu Azure. Dzięki usłudze Azure Monitor może wizualizacji, zapytania, trasy, archiwum i w przeciwnym razie wykonaj działania dotyczące metryk i dzienników pochodzących z zasobów na platformie Azure. Te dane mogą pracować przy użyciu portalu administracyjnego usługi Azure Stack, poleceń cmdlet programu PowerShell monitora, Międzyplatformowego interfejsu wiersza polecenia lub interfejsów API REST usługi Azure Monitor. Określone łączności, obsługiwane przez usługę Azure Stack, zobacz [sposobu korzystania z danych monitorowania z usługi Azure Stack](azure-stack-metrics-monitor.md)
 
-> [!Note]  
-Metryki i dzienniki diagnostyczne nie są dostępne dla usługi Azure Stack Development Kit.
+> [!Note]
+> Metryki i dzienniki diagnostyczne nie są dostępne dla usługi Azure Stack Development Kit.
 
 ## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>Wymagania wstępne dotyczące usługi Azure Monitor w usłudze Azure Stack
 

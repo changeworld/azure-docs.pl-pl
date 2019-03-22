@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5ade3ac7587d4ac5c5a6d8e174e76e76088e4e57
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bc2e41fd5da4737ea1efe329b70964535daff54a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157945"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105968"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika
 
@@ -76,7 +76,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Przygotowanie punktu końcowego interfejsu API REST
 
-### <a name="step-21-add-data-models"></a>Krok 2.1: Dodawanie modeli danych
+### <a name="step-21-add-data-models"></a>Krok 2.1. Dodawanie modeli danych
 Modele reprezentują oświadczeń wejściowych i danych wyjściowych oświadczeń danych w usłudze RESTful. Kod odczytuje dane wejściowe przy deserializacji modelu oświadczeń wejściowych z ciągu JSON do obiektu języka C# (model). ASP.NET web API automatycznie deserializuje model oświadczeń danych wyjściowych do formatu JSON, a następnie zapisuje dane serializowane do treści komunikatu odpowiedzi HTTP.
 
 Utwórz model, który reprezentuje oświadczeń wejściowych, wykonując następujące czynności:
@@ -133,7 +133,7 @@ Utwórz model, który reprezentuje oświadczeń wejściowych, wykonując następ
     }
     ```
 
-### <a name="step-22-add-a-controller"></a>Krok 2.2: Dodawanie kontrolera
+### <a name="step-22-add-a-controller"></a>Krok 2.2. Dodawanie kontrolera
 W interfejsie web API _kontrolera_ jest obiektem, który obsługuje żądania HTTP. Ten kontroler zwraca dane wyjściowe oświadczenia lub, jeśli imię jest nieprawidłowe, zwraca komunikat o błędzie HTTP konflikt.
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Kontrolery**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Kontroler**.
@@ -249,10 +249,10 @@ Dostawcy oświadczeń może mieć wiele profilów technicznych z różnych powod
 Poniższy fragment kodu XML zawiera węzeł dostawcy oświadczeń, dwa profile techniczne:
 
 * **Identyfikator profilu technicznego = "REST-API-SignUp"**: Definiuje usługi RESTful.
-   * `Proprietary` jest określana jako protokół dla dostawcy usług na podstawie zgodne ze specyfikacją REST.
-   * `InputClaims` Definiuje oświadczenia, które będą wysyłane z usługi Azure AD B2C do usługi REST.
+  * `Proprietary` jest określana jako protokół dla dostawcy usług na podstawie zgodne ze specyfikacją REST.
+  * `InputClaims` Definiuje oświadczenia, które będą wysyłane z usługi Azure AD B2C do usługi REST.
 
-   W tym przykładzie zawartość oświadczenie `givenName` wysyła do usługi REST jako `firstName`, zawartość oświadczenie `surname` wysyła do usługi REST jako `lastName`, i `email` wysyła się. `OutputClaims` Element definiuje oświadczenia, które są pobierane z usługi RESTful, wróć do usługi Azure AD B2C.
+    W tym przykładzie zawartość oświadczenie `givenName` wysyła do usługi REST jako `firstName`, zawartość oświadczenie `surname` wysyła do usługi REST jako `lastName`, i `email` wysyła się. `OutputClaims` Element definiuje oświadczenia, które są pobierane z usługi RESTful, wróć do usługi Azure AD B2C.
 
 * **Identyfikator profilu technicznego = "LocalAccountSignUpWithLogonEmail"**: Dodaje profilu technicznego sprawdzania poprawności do istniejącego profilu technicznego (zdefiniowane w zasadach podstawowych). Podczas tworzenia konta podróży profilu technicznego weryfikacji wywołuje poprzedniego profilu technicznego. Jeśli usługi RESTful zwraca błąd HTTP 409 (błąd konfliktu), wyświetlony komunikat o błędzie dla użytkownika.
 

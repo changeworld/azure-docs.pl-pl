@@ -1,23 +1,22 @@
 ---
-title: Programowanie zespołowe w usłudze Azure Dev Spaces przy użyciu środowiska .NET Core i programu Visual Studio | Microsoft Docs
+title: Programowanie zespołowe za pomocą spacji deweloperów platformy Azure przy użyciu platformy .NET Core i Visual Studio
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.subservice: azds-kubernetes
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: af0a4a719f964e400119be313842f385b410406c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
+ms.openlocfilehash: 25b72b6770e088a2999f1e70f3dc3559587cd0e2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817426"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774819"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Programowanie zespołowe w usłudze Azure Dev Spaces
 

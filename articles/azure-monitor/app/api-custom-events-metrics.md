@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1383c59ca88400868f83d30d04d9b0e5f5401282
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4269f4ac24a842bf203456026234182934f1732f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268961"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878469"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -30,7 +30,7 @@ Wstaw kilka wierszy kodu w aplikacji, aby dowiedzieć się, jak użytkownicy kor
 
 Podstawowego interfejsu API jest jednolita na wszystkich platformach, oprócz kilka zmian, takich jak `GetMetric`(tylko platforma .NET).
 
-| Metoda | Używane dla |
+| Metoda | Używana do |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Strony, ekranów, bloków lub formularzy. |
 | [`TrackEvent`](#trackevent) |Akcje użytkownika i inne zdarzenia. Używane do śledzenia zachowania użytkownika lub do monitorowania wydajności. |
@@ -209,7 +209,7 @@ namespace User.Namespace.Example01
             // You can control the maximum number of number data series per metric (and thus your resource usage and cost).
             // The default limits are no more than 1000 total data series per metric, and no more than 100 different values per dimension.
             // We discuss elsewhere how to change them.
-            // We use a common .Net pattern: TryXxx(..) to make sure that the limits are observed.
+            // We use a common .NET pattern: TryXxx(..) to make sure that the limits are observed.
             // If the limits are already reached, Metric.TrackValue(..) will return False and the value will not be tracked. Otherwise it will return True.
             // This is particularly useful if the data for a metric originates from user input, e.g. a file:
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: fc594a660efe1bf90daeffa79826057a8e66c60c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 512417a228ed99a2f5b516f14084a5785bc0c1dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245171"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096745"
 ---
 # <a name="how-to-find-endpoints-and-access-keys-for-the-text-analytics-cognitive-service"></a>Jak znaleźć punktów końcowych i dostępu do kluczy usługi Cognitive analizy tekstu
 
@@ -33,7 +33,7 @@ Jeśli potrzebujesz pomocy, znajdowania klucza, lub aby określić, czy subskryp
 
 4. Kliknij link, aby otworzyć blok usługi. Możesz teraz uzyskać klucz z **zasobów > klucze** lub przez kliknięcie przycisku **Pokaż klucze dostępu** w okienku podstawy. Punkt końcowy jest również widoczne w okienku podstawy.
 
- ![Strony portalu z punktu końcowego oraz kluczami:](../media/portal-keys-endpoint.png)
+   ![Strony portalu z punktu końcowego oraz kluczami:](../media/portal-keys-endpoint.png)
 
 ## <a name="see-also"></a>Zobacz także 
 

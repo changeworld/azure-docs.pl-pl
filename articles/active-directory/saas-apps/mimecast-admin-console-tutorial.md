@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beccce5c7d2378533bdeb9f2fbcee1c742ef6bd4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 2019c61ccbffa1e68c1ef53c718d4839a604aa44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881315"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Samouczek: Integracja usługi Azure Active Directory z konsolą Mimecast Admin Console
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację konsoli Mimecast Admin Console z usługą Azure A
 
 **Aby dodać konsolę Mimecast Admin Console z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -106,6 +106,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą konsoli Mim
     ![Informacje o domenie i adresach URL logowania jednokrotnego konsoli Mimecast Admin Console](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL:
+    
     | |
     | -- |
     | `https://webmail-uk.mimecast.com`|
@@ -152,7 +153,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą konsoli Mim
     
     b. Wybierz pozycję **Wymuś uwierzytelnianie SAML dla konsoli Mimecast Admin Console**.
     
-    d. W polu **Dostawca** wybierz opcję **Azure Active Directory**.
+    c. W polu **Dostawca** wybierz opcję **Azure Active Directory**.
     
     d. W polu tekstowym **Adres URL wystawcy** wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
     
@@ -187,7 +188,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -255,7 +256,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie do konsoli Mimecast Adm
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Mimecast Admin Console na panelu dostępu powinno nastąpić automatyczne zalogowanie do konsoli Mimecast Admin Console, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

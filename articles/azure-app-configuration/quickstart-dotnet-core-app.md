@@ -14,22 +14,22 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: cd4115aaeec15d14d48dcb71cbdc75212c6dc2db
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 5501e92b9a9d977f74bf4ed028b3cd3de4e56133
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960681"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225386"
 ---
-# <a name="quickstart-create-an-net-core-app-with-app-configuration"></a>Szybki start: Tworzenie aplikacji platformy .NET Core używającej usługi App Configuration
+# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Szybki start: Utwórz .NET Core aplikacji za pomocą konfiguracji aplikacji
 
-Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Dzięki niej możesz łatwo przechowywać wszystkie ustawienia aplikacji w jednym miejscu oddzielonym od kodu i zarządzać tymi ustawieniami. W tym przewodniku Szybki start pokazano, jak zintegrować usługę z aplikacją konsolową platformy .NET Core.
+Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Umożliwia on łatwe przechowywać i zarządzać wszystkie ustawienia aplikacji w jednym miejscu, który jest oddzielony od kodu. W tym przewodniku Szybki start pokazano, jak zintegrować usługę z aplikacją konsolową platformy .NET Core.
 
-Do wykonania kroków tego przewodnika Szybki start możesz użyć dowolnego edytora kodu. Doskonałym wyborem jest program [Visual Studio Code](https://code.visualstudio.com/), dostępny na platformach Windows, macOS i Linux.
+Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start, zainstaluj zestaw [.NET Core SDK](https://dotnet.microsoft.com/download).
+Ten przewodnik Szybki Start, instaluje [zestawu .NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,25 +39,25 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj zestaw [.NET Core SDK](ht
 
 ## <a name="create-a-net-core-console-app"></a>Tworzenie aplikacji konsolowej platformy .NET Core
 
-Do utworzenia nowego projektu aplikacji konsolowej platformy .NET Core użyjesz [interfejsu wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/core/tools/). Przewagą używania interfejsu wiersza polecenia platformy .NET Core zamiast programu Visual Studio jest to, że jest dostępny na platformach Windows, macOS i Linux.
+Możesz użyć [platformy .NET Core interfejsu wiersza polecenia (CLI)](https://docs.microsoft.com/dotnet/core/tools/) Aby utworzyć nowy projekt aplikacji konsoli .NET Core. Zaletą używania interfejsu wiersza polecenia platformy .NET Core w programie Visual Studio jest, że jest ona dostępna w Windows, macOS i Linux platformy.
 
 1. Utwórz nowy folder dla projektu.
 
-2. W nowym folderze wykonaj następujące polecenie, aby utworzyć nowy projekt Aplikacja internetowa platformy ASP.NET Core MVC:
+2. W nowym folderze uruchom następujące polecenie, aby utworzyć nowy projekt aplikacji sieci web platformy ASP.NET Core MVC:
 
         dotnet new console
 
-## <a name="connect-to-app-configuration-store"></a>Łączenie z magazynem konfiguracji aplikacji
+## <a name="connect-to-an-app-configuration-store"></a>Łączenie do sklepu z aplikacjami konfiguracji
 
-1. Dodaj odwołanie do pakietu NuGet `Microsoft.Extensions.Configuration.AzureAppConfiguration`, wykonując następujące polecenie:
+1. Dodaj odwołanie do `Microsoft.Extensions.Configuration.AzureAppConfiguration` pakietu NuGet, uruchamiając następujące polecenie:
 
         dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
 
-2. Uruchom następujące polecenie, aby przywrócić pakiety dla swojego projektu.
+2. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
 
         dotnet restore
 
-3. Otwórz plik *Program.cs* i zaktualizuj metodę `Main`, tak aby używała usługi App Configuration przez wywołanie metody `builder.AddAzureAppConfiguration()`.
+3. Otwórz *Program.cs*i zaktualizuj `Main` metodę, aby można było używać konfiguracji aplikacji, wywołując `builder.AddAzureAppConfiguration()` metody.
 
     ```csharp
     static void Main(string[] args)
@@ -72,7 +72,7 @@ Do utworzenia nowego projektu aplikacji konsolowej platformy .NET Core użyjesz 
 
 ## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
-1. Ustaw zmienną środowiskową o nazwie **ConnectionString** i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Jeśli używasz wiersza polecenia systemu Windows, wykonaj następujące polecenie i ponownie uruchom wiersz polecenia, aby umożliwić zastosowanie zmiany:
+1. Ustaw zmienną środowiskową o nazwie **ConnectionString**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Korzystając z wiersza polecenia Windows, uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby umożliwić zmiana zaczęła obowiązywać:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -80,15 +80,15 @@ Do utworzenia nowego projektu aplikacji konsolowej platformy .NET Core użyjesz 
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Jeśli używasz systemu macOS lub Linux, wykonaj następujące polecenie:
+    Jeśli korzystasz z systemem macOS lub Linux, uruchom następujące polecenie:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Wykonaj następujące polecenie, aby skompilować aplikację konsoli:
+2. Uruchom następujące polecenie, aby utworzyć aplikację konsoli:
 
         dotnet build
 
-3. Po pomyślnym zakończeniu kompilacji wykonaj następujące polecenie w celu lokalnego uruchomienia aplikacji:
+3. Po pomyślnym zakończeniu kompilacji, uruchom następujące polecenie, aby uruchomić aplikację lokalnie:
 
         dotnet run
 
@@ -98,9 +98,9 @@ Do utworzenia nowego projektu aplikacji konsolowej platformy .NET Core użyjesz 
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start został utworzony nowy magazyn konfiguracji aplikacji i użyto go z aplikacją konsolową platformy .NET Core. Aby dowiedzieć się więcej o korzystaniu z usługi App Configuration, przejdź do następnego samouczka, w którym zaprezentowano uwierzytelnianie.
+W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplikacji i jej za pomocą aplikacji konsolowej .NET Core. Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 
 > [!div class="nextstepaction"]
-> [Tożsamości zarządzane na potrzeby integracji zasobów platformy Azure](./integrate-azure-managed-service-identity.md)
+> [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./integrate-azure-managed-service-identity.md)

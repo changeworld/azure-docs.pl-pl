@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9a94f76e2d1fe930d2d6d43e81a756f0cb15d23d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 8413044beff68390dbccdf16c4477e113a85f81b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453073"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124984"
 ---
 ## <a name="create-the-webapi-project"></a>Tworzenie projektu interfejsu WebAPI
 
@@ -55,7 +55,7 @@ Utwórz nowe zaplecze interfejsu WebAPI na platformie ASP.NET, wykonując nastę
     * Wybierz już utworzony plan usługi App Service.
     * Wybierz pozycję **Utwórz nowy plan usługi App Service**, a następnie utwórz plan.
 
-  Ten samouczek nie wymaga bazy danych. Po wybraniu planu usługi App Service kliknij przycisk **OK**, aby utworzyć projekt.
+   Ten samouczek nie wymaga bazy danych. Po wybraniu planu usługi App Service kliknij przycisk **OK**, aby utworzyć projekt.
 
     ![Okno Konfigurowanie aplikacji internetowej platformy Microsoft Azure][B5]
 
@@ -84,9 +84,9 @@ W tej sekcji tworzysz nową klasę procedury obsługi komunikatów o nazwie **Au
    * Żądanie używa uwierzytelniania *basic*.
    * Ciąg nazwy użytkownika i ciąg hasła to ten sam ciąg.
 
-  W przeciwnym razie żądanie jest odrzucane. To uwierzytelnianie nie reprezentuje rzeczywistego podejścia do uwierzytelniania i autoryzacji. Jest to wyłącznie prosty przykład na potrzeby tego samouczka.
+   W przeciwnym razie żądanie jest odrzucane. To uwierzytelnianie nie reprezentuje rzeczywistego podejścia do uwierzytelniania i autoryzacji. Jest to wyłącznie prosty przykład na potrzeby tego samouczka.
 
-  Jeśli komunikat żądania jest uwierzytelniany i autoryzowany przez klasę `AuthenticationTestHandler`, użytkownik uwierzytelniania podstawowego jest dołączany do bieżącego żądania w obiekcie [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx). Informacje o użytkowniku w obiekcie HttpContext zostaną później użyte przez inny kontroler (RegisterController) w celu dodania [tagu](https://msdn.microsoft.com/library/azure/dn530749.aspx) do żądania rejestracji powiadomienia.
+   Jeśli komunikat żądania jest uwierzytelniany i autoryzowany przez klasę `AuthenticationTestHandler`, użytkownik uwierzytelniania podstawowego jest dołączany do bieżącego żądania w obiekcie [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx). Informacje o użytkowniku w obiekcie HttpContext zostaną później użyte przez inny kontroler (RegisterController) w celu dodania [tagu](https://msdn.microsoft.com/library/azure/dn530749.aspx) do żądania rejestracji powiadomienia.
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler

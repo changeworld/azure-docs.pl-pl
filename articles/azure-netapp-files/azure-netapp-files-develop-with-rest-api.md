@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: b-juche
-ms.openlocfilehash: b67f7a613cd72e7a69b40741d971382276a38334
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 56667b9a47411b2abae30ff159fa6bc555fec070
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768063"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104628"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Opracowywanie zawartości dla plików NetApp platformy Azure przy użyciu interfejsu API REST 
 
@@ -29,23 +29,23 @@ Interfejs API REST usługi Azure NetApp Files definiuje operacji HTTP wykonywany
 
 1. [Zainstaluj interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Jeśli nie zostało to jeszcze zrobione.
 2. Tworzenie jednostki usługi w usłudze Active Directory Azure (Azure AD):
-    1. Sprawdź, czy [wystarczające uprawnienia](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+   1. Sprawdź, czy [wystarczające uprawnienia](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-    1. Wprowadź następujące polecenie w interfejsie wiersza polecenia platformy Azure:  
+   1. Wprowadź następujące polecenie w interfejsie wiersza polecenia platformy Azure:  
 
-            az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
+           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
 
-    Dane wyjściowe polecenia będą podobne do poniższego przykładu:  
+      Dane wyjściowe polecenia będą podobne do poniższego przykładu:  
 
-            { 
-                "appId": "appIDgoeshere", 
-                "displayName": "APPNAME", 
-                "name": "http://APPNAME", 
-                "password": "supersecretpassword", 
-                "tenant": "tenantIDgoeshere" 
-            } 
+           { 
+               "appId": "appIDgoeshere", 
+               "displayName": "APPNAME", 
+               "name": "http://APPNAME", 
+               "password": "supersecretpassword", 
+               "tenant": "tenantIDgoeshere" 
+           } 
 
-    Zachowaj dane wyjściowe polecenia.  Konieczne będzie `appId`, `password`, i `tenant` wartości. 
+      Zachowaj dane wyjściowe polecenia.  Konieczne będzie `appId`, `password`, i `tenant` wartości. 
 
 3. Żądanie tokenu dostępu OAuth:
 

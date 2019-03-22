@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: ca7f5d47d75e80a583b6613eb36fd3da9c61d707
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 28b6732745947043847ce944243bc87398e159fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761484"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892151"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Przekazywanie plików na konto usługi Media Services przy użyciu usługi Aspera Server On Demand na platformie Azure 
 
@@ -89,44 +89,44 @@ Po zalogowaniu się do witryny Azure Marketplace wykonaj te proste kroki, aby pr
 
     Następujący zrzut ekranu przedstawia tworzenie dostępu. 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
 
     Poniższy zrzut ekranu przedstawia interfejsy raportowania użycia w portalu. 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
 
 ## <a name="upload-files-with-aspera"></a>Przekazywanie plików za pomocą usługi Aspera
 
 1. Pobierz i zainstaluj oprogramowanie klienckie Aspera:
     
-    * [Wtyczka przeglądarki](http://downloads.asperasoft.com/connect2/)
-    * [Klient wzbogacony](http://downloads.asperasoft.com/en/downloads/2)
+    * [Wtyczka przeglądarki](https://downloads.asperasoft.com/connect2/)
+    * [Klient wzbogacony](https://downloads.asperasoft.com/en/downloads/2)
 
 2. Przeprowadź pierwszy transfer. Aby móc używać klienta Aspera do transferowania danych za pomocą usługi transferowania Aspera, musisz ukończyć następujące czynności: 
 
-    1. Utwórz klucz dostępu za pomocą portalu usługi Aspera.  
-    2. Pobierz i zainstaluj klienta usługi Aspera (oprogramowanie można znaleźć w portalu usługi Aspera) oraz uzyskaj dla niego licencję.  
+   1. Utwórz klucz dostępu za pomocą portalu usługi Aspera.  
+   2. Pobierz i zainstaluj klienta usługi Aspera (oprogramowanie można znaleźć w portalu usługi Aspera) oraz uzyskaj dla niego licencję.  
 
-    >[!NOTE]
-    >Przeczytaj podręcznik klienta usługi Aspera w celu uzyskania informacji o konfiguracji.
+      >[!NOTE]
+      >Przeczytaj podręcznik klienta usługi Aspera w celu uzyskania informacji o konfiguracji.
     
-    3. Pobierz niektóre informacje o swoim koncie magazynu skojarzonym z kontem usługi Azure Media za pomocą witryny [Azure Portal](https://portal.azure.com/). Konkretnie potrzebne będą nazwa i klucz oraz nazwa kontenera obiektu blob magazynu, w którym chcesz umieścić swoją zawartość. 
+   3. Pobierz niektóre informacje o swoim koncie magazynu skojarzonym z kontem usługi Azure Media za pomocą witryny [Azure Portal](https://portal.azure.com/). Konkretnie potrzebne będą nazwa i klucz oraz nazwa kontenera obiektu blob magazynu, w którym chcesz umieścić swoją zawartość. 
 
-        * Aby uzyskać informacje o magazynie z portalu: znajdź swoje konto magazynu, kliknij pozycję Klucze dostępu i skopiuj nazwę oraz klucz konta.
-        * Aby uzyskać nazwę kontenera: znajdź swoje konto magazynu, wybierz opcję **Obiekty blob** i wybierz nazwę kontenera, do którego chcesz przekazywać zawartość. 
+       * Aby uzyskać informacje o magazynie z portalu: znajdź swoje konto magazynu, kliknij pozycję Klucze dostępu i skopiuj nazwę oraz klucz konta.
+       * Aby uzyskać nazwę kontenera: znajdź swoje konto magazynu, wybierz opcję **Obiekty blob** i wybierz nazwę kontenera, do którego chcesz przekazywać zawartość. 
 
-    Poniżej znajduje się zrzut ekranu **Menedżer połączeń** klienta usługi Aspera, w którym jako typ magazynu należy określić wartość „Azure”, a także podać poświadczenia i wskazać kontener obiektów blob.
+      Poniżej znajduje się zrzut ekranu **Menedżer połączeń** klienta usługi Aspera, w którym jako typ magazynu należy określić wartość „Azure”, a także podać poświadczenia i wskazać kontener obiektów blob.
 
-    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
+      ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
 ## <a name="resources"></a>Zasoby
 
 W niniejszym artykule zostały wymienione poniższe zasoby. 
 
-* [Nawiązywanie połączenia z wtyczką przeglądarki](http://downloads.asperasoft.com/connect2/)
-* [Przewodnik po nawiązywaniu połączeń](http://downloads.asperasoft.com/en/documentation/8)
-* [Klient usługi Aspera](http://downloads.asperasoft.com/en/downloads/2)
-* [Podręcznik klienta](http://downloads.asperasoft.com/en/documentation/2)
+* [Nawiązywanie połączenia z wtyczką przeglądarki](https://downloads.asperasoft.com/connect2/)
+* [Przewodnik po nawiązywaniu połączeń](https://downloads.asperasoft.com/en/documentation/8)
+* [Klient usługi Aspera](https://downloads.asperasoft.com/en/downloads/2)
+* [Podręcznik klienta](https://downloads.asperasoft.com/en/documentation/2)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 44b0f8b3d11b737ad88f7d33b036b52d24b70e33
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dec0b8bcd5a0e0d20ead5b149405e3716589ba53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960331"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995732"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure
 Maszyny wirtualne systemu Linux (VM) na platformie Azure odbywa się zwykle z wiersza polecenia przy użyciu połączenia protokołu secure shell (SSH). Jeśli nowe z systemem Linux lub scenariuszach szybkiego rozwiązywania problemów, korzystanie z pulpitu zdalnego może być łatwiejsze. W tym artykule opisano, jak zainstalować i skonfigurować środowisko pulpitu ([xfce](https://www.xfce.org)) i usług pulpitu zdalnego ([xrdp](http://www.xrdp.org)) dla maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania usługi Resource Manager.
@@ -103,7 +103,7 @@ Po uwierzytelnieniu w środowisku komputerowym xfce zostaną załadowane i wygl�
 
 ![xfce środowiska pulpitu za pośrednictwem xrdp](./media/use-remote-desktop/xfce-desktop-environment.png)
 
-Jeśli klient lokalny RDP korzysta z uwierzytelniania na poziomie sieci (NLA), może być konieczne wyłączenie tego ustawienia połączenia. XRDP aktualnie nie obsługuje uwierzytelniania na poziomie sieci. Można również przeglądać alternatywne rozwiązania protokołu RDP, które obsługują uwierzytelniania na poziomie sieci, takich jak [FreeRDP](http://www.freerdp.com).
+Jeśli klient lokalny RDP korzysta z uwierzytelniania na poziomie sieci (NLA), może być konieczne wyłączenie tego ustawienia połączenia. XRDP aktualnie nie obsługuje uwierzytelniania na poziomie sieci. Można również przeglądać alternatywne rozwiązania protokołu RDP, które obsługują uwierzytelniania na poziomie sieci, takich jak [FreeRDP](https://www.freerdp.com).
 
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów

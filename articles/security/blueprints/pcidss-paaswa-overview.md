@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 0d9de6e5cfa8ffa0c5f67607a60d930b623413cf
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5452a1adb419a2f57e2124d5aac49f9cdcff615a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247277"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111671"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: Aplikacja sieci Web PaaS dla PCI DSS
 
@@ -228,10 +228,10 @@ Ten zabezpieczeń platformy Azure i zgodności planu automatyzacji składa się 
 2. Przejrzyj AdministrativeAccountAndPermission.md-0-instalacji, a następnie uruchom podanego polecenia.
 
 3. Wdróż rozwiązanie testu z firmy Contoso przykładowe dane lub projekt pilotażowy w środowisku produkcyjnym początkowej.
-  - 1A-ContosoWebStoreDemoAzureResources.ps1
-    - Ten skrypt służy do wdrażania zasobów platformy Azure do pokazania sklepu webstore przy użyciu Contoso przykładowych danych.
-  - 1-DeployAndConfigureAzureResources.ps1
-    - Ten skrypt służy do wdrażania zasobów platformy Azure służące do obsługi środowiska produkcyjnego dla aplikacji sieci web należącej do klienta. To środowisko powinno dodatkowo dostosowywać przez klienta na podstawie wymagań organizacyjnych.
+   - 1A-ContosoWebStoreDemoAzureResources.ps1
+     - Ten skrypt służy do wdrażania zasobów platformy Azure do pokazania sklepu webstore przy użyciu Contoso przykładowych danych.
+   - 1-DeployAndConfigureAzureResources.ps1
+     - Ten skrypt służy do wdrażania zasobów platformy Azure służące do obsługi środowiska produkcyjnego dla aplikacji sieci web należącej do klienta. To środowisko powinno dodatkowo dostosowywać przez klienta na podstawie wymagań organizacyjnych.
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 

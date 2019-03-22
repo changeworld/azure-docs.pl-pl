@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 84d98d6b3af884c959e8f0e4d9c117192af32d3a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.openlocfilehash: 267e790cec3c915330f8f72053458527ee7bfead
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095572"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Znajdowanie i diagnozowanie wyjątków czasu wykonywania za pomocą usługi Azure Application Insights
 
@@ -96,11 +96,11 @@ Rozszerzenie Snapshot Debugger zbiera migawki najczęściej występujących wyj�
 ## <a name="use-analytics-data"></a>Korzystanie z danych analizy
 Wszystkie dane zbierane przez usługę Application Insights są przechowywane w usłudze Azure Log Analytics, która oferuje rozbudowany język zapytań umożliwiający analizowanie danych na różne sposoby.  Możemy użyć tych danych do przeanalizowania żądań, które spowodowały badany wyjątek. 
 
-8. Kliknij informacje CodeLens nad kodem, aby wyświetlić dane telemetryczne dostarczane przez usługę Application Insights.
+1. Kliknij informacje CodeLens nad kodem, aby wyświetlić dane telemetryczne dostarczane przez usługę Application Insights.
 
     ![Kod](media/tutorial-runtime-exceptions/codelens.png)
 
-9. Kliknij pozycję **Analiza wpływu**, aby otworzyć okno Application Insights — analiza.  Jest ono wypełnione kilkoma zapytaniami udostępniającymi szczegóły żądań zakończonych niepowodzeniem, takie jak użytkownicy, przeglądarki i regiony dotknięte niepowodzeniem.<br><br>![Analiza](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. Kliknij pozycję **Analiza wpływu**, aby otworzyć okno Application Insights — analiza.  Jest ono wypełnione kilkoma zapytaniami udostępniającymi szczegóły żądań zakończonych niepowodzeniem, takie jak użytkownicy, przeglądarki i regiony dotknięte niepowodzeniem.<br><br>![Analiza](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>Dodawanie elementu roboczego
 Jeśli usługa Application Insights zostanie połączona z systemem śledzenia, takim jak Azure DevOps lub GitHub, element roboczy można utworzyć bezpośrednio z usługi Application Insights.
@@ -111,7 +111,7 @@ Jeśli usługa Application Insights zostanie połączona z systemem śledzenia, 
 
     ![Nowy element roboczy](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy już wiesz, jak identyfikować wyjątki czasu wykonywania, przejdź do następnego samouczka, aby dowiedzieć się, jak identyfikować i diagnozować problemy z wydajnością.
 
 > [!div class="nextstepaction"]

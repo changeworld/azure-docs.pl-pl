@@ -11,19 +11,20 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 481c82eb74bcf80c3d0546324009ec0bf6495cfb
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.date: 03/13/2019
+ms.openlocfilehash: 6aa8f362f067a4e3e391f435ee849f96abdf752f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587059"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997497"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Szybki start: Tworzenie wystąpienia zarządzanego usługi Azure SQL Database
 
 Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia [wystąpienia zarządzanego](sql-database-managed-instance.md) usługi Azure SQL Database w witrynie Azure Portal.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+> [!IMPORTANT]
+> Aby uzyskać informacje o ograniczeniach, zobacz [obsługiwane regiony](sql-database-managed-instance-resource-limits.md#supported-regions) i [obsługiwane typy subskrypcji](sql-database-managed-instance-resource-limits.md#supported-subscription-types).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -49,7 +50,7 @@ Poniższe kroki przedstawiają sposób tworzenia wystąpienia zarządzanego.
    |**Hasło**|Dowolne prawidłowe hasło|Hasło musi mieć co najmniej 16 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Sortowanie**|Sortowanie, którego chcesz użyć dla wystąpienia zarządzanego|W przypadku migrowania baz danych z programu SQL Server sprawdź sortowanie źródła przy użyciu elementu `SELECT SERVERPROPERTY(N'Collation')` i użyj tej wartości. Aby uzyskać informacje na temat sortowań, zobacz [Server-level collations (Sortowania na poziomie serwera)](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
    |**Lokalizacja**|Lokalizacja, w której chcesz utworzyć wystąpienie zarządzane|Aby uzyskać informacje na temat regionów, zobacz [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
-   |**Sieć wirtualna**|Wybierz opcję **Utwórz nową sieć wirtualną** lub prawidłową sieć wirtualną i podsieć.| Jeśli sieć/podsieć jest wyszarzona, musi zostać [zmodyfikowana, aby spełnić wymagania dotyczące sieci](sql-database-managed-instance-configure-vnet-subnet.md), zanim będzie można wybrać ją jako miejsce docelowe dla nowego wystąpienia zarządzanego. Aby uzyskać informacje o wymaganiach dotyczących konfigurowania środowiska sieci dla wystąpienia zarządzanego, zobacz [Configure a VNet for a managed instance (Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego)](sql-database-managed-instance-connectivity-architecture.md). |
+   |**Sieć wirtualna**|Wybierz opcję **Utwórz nową sieć wirtualną** lub prawidłową sieć wirtualną i podsieć.| Jeśli sieć/podsieć jest niedostępny jest musi być [zmodyfikowana, aby spełnić wymagania dotyczące sieci](sql-database-managed-instance-configure-vnet-subnet.md) można wybrać jako miejsce docelowe dla nowego wystąpienia zarządzanego. Aby uzyskać informacje o wymaganiach dotyczących konfigurowania środowiska sieci dla wystąpienia zarządzanego, zobacz [Configure a VNet for a managed instance (Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego)](sql-database-managed-instance-connectivity-architecture.md). |
    |**Grupa zasobów**|Nowa lub istniejąca grupa zasobów|Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa).|
 
    ![formularz wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
@@ -102,7 +103,7 @@ Po pomyślnym ukończeniu wdrażania przejrzyj utworzone zasoby i pobierz w peł
 
    Nazwa jest podobna do **nazwa_maszyny.a1b2c3d4e5f6.database.windows.net**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej na temat nawiązywania połączenia z wystąpieniem zarządzanym, zobacz:
   - Aby uzyskać omówienie opcji połączenia dla aplikacji, zobacz [Connect your applications to a managed instance (Łączenie aplikacji z wystąpieniem zarządzanym)](sql-database-managed-instance-connect-app.md).

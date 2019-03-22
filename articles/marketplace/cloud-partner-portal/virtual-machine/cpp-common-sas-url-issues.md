@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b20b1506dfcd32ea7d5bfca0847393d1652afb78
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: cdee17185b7051220f66ede3b9da50a333409e6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639995"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119279"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>Typowe problemy adresu URL sygnatury dostępu Współdzielonego i poprawki
 
@@ -27,7 +27,7 @@ W poniższej tabeli wymieniono niektóre typowe problemy występujące podczas p
 
 | **Problem** | **Komunikat o błędzie** | **Fix** | 
 | --------- | ------------------- | ------- | 
-| &emsp;  *Wystąpił błąd podczas kopiowania obrazów* |  |  |  |
+| &emsp;  *Wystąpił błąd podczas kopiowania obrazów* |  |  |
 | "?" nie znajduje się w adresie URL sygnatury dostępu Współdzielonego | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Zaktualizować adres URL sygnatury dostępu Współdzielonego za pomocą narzędzia zalecane. |
 | parametrów "st" i "se" nie w URL sygnatury dostępu Współdzielonego | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Zaktualizuj adres URL sygnatury dostępu Współdzielonego przy użyciu własnych **Data rozpoczęcia** i **Data zakończenia** wartości w nim. | 
 | "sp = rl" nie w URL sygnatury dostępu Współdzielonego | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Zaktualizuj adres URL sygnatury dostępu Współdzielonego z uprawnieniami ustawionymi jako `Read` i `List`. | 

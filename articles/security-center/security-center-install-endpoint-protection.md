@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c2cb4c2f1154be56b7237a6cb12c87fcc3e00467
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6d9c5b080c491d3a6f35f591c69d4c39989b22a8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455874"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099801"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemy z ochroną punktu końcowego w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje stan ochrony przed złośliwym kodem i to w raportach w obszarze bloku problemy dotyczące ochrony punktu końcowego. Usługa Security Center wyróżnia problemy, takie jak wykrytych zagrożeń i ochronę niewystarczające, co może narazić Twoje maszyny wirtualne (VM) i komputerów na zagrożenia ochrony przed złośliwym oprogramowaniem. Korzystając z informacji podanych w ramach **problemy z ochroną punktu końcowego**, można zidentyfikować plan, aby rozwiązać wszystkie zidentyfikowane problemy.
@@ -30,15 +30,15 @@ Usługa Security Center raportów następujące problemy związane z ochroną pu
 - Program Endpoint protection nie jest zainstalowany na komputerach nienależących do platformy Azure — obsługiwane ochrony przed złośliwym kodem nie jest zainstalowany na tych komputerach nienależących do platformy Azure.
 - Kondycji programu Endpoint protection:
 
-   - Nieaktualny podpis — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany na tych maszynach wirtualnych i komputerów, ale to rozwiązanie nie ma najnowszych sygnatur złośliwego oprogramowania.
-   - Brak ochrony w czasie rzeczywistym — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany na tych maszynach wirtualnych i komputerów, ale nie została ona skonfigurowana do ochrony w czasie rzeczywistym.   Usługi mogą być wyłączone lub Centrum zabezpieczeń może być nie można uzyskać stanu, ponieważ rozwiązania nie jest obsługiwany. Zobacz [Integracja z partnerami](security-center-partner-integration.md) Aby uzyskać listę obsługiwanych rozwiązań.
-   - Nie zgłasza — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany, ale nie zgłasza danych.
-   - Nieznany — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany, ale jego stan jest nieznany lub raportowania wystąpił nieznany błąd.
+  - Nieaktualny podpis — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany na tych maszynach wirtualnych i komputerów, ale to rozwiązanie nie ma najnowszych sygnatur złośliwego oprogramowania.
+  - Brak ochrony w czasie rzeczywistym — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany na tych maszynach wirtualnych i komputerów, ale nie została ona skonfigurowana do ochrony w czasie rzeczywistym.   Usługi mogą być wyłączone lub Centrum zabezpieczeń może być nie można uzyskać stanu, ponieważ rozwiązania nie jest obsługiwany. Zobacz [Integracja z partnerami](security-center-partner-integration.md) Aby uzyskać listę obsługiwanych rozwiązań.
+  - Nie zgłasza — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany, ale nie zgłasza danych.
+  - Nieznany — rozwiązanie do ochrony przed złośliwym kodem jest zainstalowany, ale jego stan jest nieznany lub raportowania wystąpił nieznany błąd.
 
-   > [!NOTE]
-   > Zobacz [integracja rozwiązań zabezpieczeń](security-center-partner-integration.md#integrated-azure-security-solutions) listę rozwiązań zabezpieczeń ochrony punktów końcowych zintegrowane z usługą Security Center.
-   >
-   >
+    > [!NOTE]
+    > Zobacz [integracja rozwiązań zabezpieczeń](security-center-partner-integration.md#integrated-azure-security-solutions) listę rozwiązań zabezpieczeń ochrony punktów końcowych zintegrowane z usługą Security Center.
+    >
+    >
 
 ## <a name="implement-the-recommendation"></a>Zaimplementuj zalecenia
 Problemy z ochroną punktu końcowego jest przedstawiany jako zalecenia w usłudze Security Center.  Jeśli środowisko jest narażony na zagrożenia ochrony przed złośliwym oprogramowaniem, tego zalecenia zostanie wyświetlona w **zalecenia** i w obszarze **obliczenia**. Aby wyświetlić **programu Endpoint protection generuje pulpit nawigacyjny**, należy wykonać obliczeń przepływu pracy.

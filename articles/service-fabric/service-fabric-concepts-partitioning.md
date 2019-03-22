@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 492afcdd5143aa5a6597ba8c296d15059f9c7d64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 82b95080a9c93d8c02d4129ef93b1a6c9deba7aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852767"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partycjonowanie usług reliable services usługi Service Fabric
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć dotyczących partycjonowanie usług reliable services w usłudze Azure Service Fabric. Kodu źródłowego użytego w artykule jest dostępna również na [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -113,7 +113,7 @@ Ważnym elementem wyznaczania wartości skrótu jest wybór algorytm wyznaczania
 
 Cechy dobrej algorytmu wyznaczania wartości skrótu są jest łatwy do obliczenia, ma ona kilka kolizje i dystrybuuje kluczy równomiernie. Dobrym przykładem algorytmu wyznaczania wartości skrótu w wydajny jest [FNV 1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) algorytmu wyznaczania wartości skrótu.
 
-Dobry zasobem ogólne wyznaczania wartości skrótu kodu algorytm wyboru tych elementów jest [strony Wikipedii dla funkcji skrótu](http://en.wikipedia.org/wiki/Hash_function).
+Dobry zasobem ogólne wyznaczania wartości skrótu kodu algorytm wyboru tych elementów jest [strony Wikipedii dla funkcji skrótu](https://en.wikipedia.org/wiki/Hash_function).
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>Tworzenie stanowej usługi z różnych partycji
 Utwórzmy pierwszej niezawodne usługi stanowe z wielu partycji. W tym przykładzie utworzysz bardzo prostą aplikację, której chcesz przechowywać wszystkie ostatnie o nazwach zaczynających tę samą literę w tej samej partycji.

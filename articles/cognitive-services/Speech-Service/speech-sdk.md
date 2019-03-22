@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1d81426853a9a8e28fa04e34fada3ce64798ccfd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 73dcddf796faa3b39dbb124fe6c528bb19eda3a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958154"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841229"
 ---
 # <a name="about-the-speech-sdk"></a>Temat mowy zestawu SDK
 
-Mowy Software Development Kit (SDK) daje aplikacji natywnej dostęp do funkcji usługi rozpoznawania mowy, ułatwia tworzenie oprogramowania. Obecnie, zestaw SDK zapewnia dostęp do **zamiana mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawanie intencji**.
+Mowy Software Development Kit (SDK) daje dostęp aplikacji do funkcji usług rozpoznawania mowy, co ułatwia tworzenie oprogramowania dla komputerów z obsługą mowy. Obecnie zestawy SDK zapewniają dostęp do **zamiana mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawanie intencji**. Ogólne omówienie o możliwościach i obsługiwanych platform można znaleźć w dokumentacji [strony wprowadzania](https://aka.ms/csspeech).
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

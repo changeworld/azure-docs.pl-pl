@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie centrum powiadomień platformy Azure przy użyciu ustawień systemu powiadomień platformy | Microsoft Docs
-description: Z tego przewodnika Szybki start dowiesz się, jak skonfigurować centrum powiadomień w witrynie Azure Portal przy użyciu ustawień systemu powiadomień platformy.
+title: Konfigurowanie powiadomień wypychanych w usłudze Azure Notification Hubs | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować usługi Azure Notification Hubs w witrynie Azure portal za pomocą ustawień systemu (powiadomień platformy PNS) powiadomień platformy.
 services: notification-hubs
 author: jwargo
 manager: patniko
@@ -10,96 +10,126 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: 7f7e4a4d75a8e118da6f026817bc4ecfcc7a60db
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 8d2b54e65c1409c01a4c38ca8fcdfeca5f031277
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314026"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113337"
 ---
-# <a name="configure-an-azure-notification-hub-with-platform-notification-system-settings-in-the-azure-portal"></a>Konfigurowanie centrum powiadomień platformy Azure przy użyciu ustawień systemu powiadomień platformy w witrynie Azure Portal 
-Usługa Azure Notification Hubs oferuje łatwy w użyciu, skalowany w poziomie mechanizm, który umożliwia wysyłanie powiadomień do dowolnej platformy (iOS, Android, Windows, Kindle, Baidu, itp.) z poziomu dowolnego zaplecza (w chmurze lub w środowisku lokalnym). Aby uzyskać więcej informacji na temat usługi, zobacz [Co to jest usługa Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
+# <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Konfigurowanie powiadomień wypychanych w Centrum powiadomień, w witrynie Azure portal
 
-[Utwórz centrum powiadomień platformy Azure przy użyciu witryny Azure Portal](create-notification-hub-portal.md), jeśli ta czynność nie została jeszcze wykonana. Z tego przewodnika Szybki start dowiesz się, jak skonfigurować centrum powiadomień w witrynie Azure Portal przy użyciu ustawień systemu powiadomień platformy.
+Usługa Azure Notification Hubs zapewnia, jest łatwa w użyciu i skalowania, który aparat wypychania. Usługa Notification Hubs umożliwia wysyłanie powiadomień na dowolną platformę (iOS, Android, Windows, Kindle, Baidu) i z dowolnego zaplecza (w chmurze lub lokalnie). Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-## <a name="apple-push-notification-service-apns"></a>Apple Push Notification Service (APNS)
-1. Na stronie **Centrum powiadomień** w witrynie Azure Portal wybierz pozycję **Apple (APNS)** w menu **Ustawienia** po lewej stronie.
-2. Jeśli wybierzesz pozycję **Certyfikat**, wykonaj następujące czynności:
-    1. Wybierz **ikonę pliku** i wybierz plik w formacie **p12** do przekazania. 
-    2. Podaj **hasło**.
-    3. Wybierz tryb **Piaskownica**. Tryb **Produkcja** należy wybrać wyłącznie wówczas, gdy chcesz wysyłać powiadomienia wypychane do użytkowników, którzy kupili Twoją aplikację w sklepie.
+W tym przewodniku Szybki Start użyjesz systemu (powiadomień platformy PNS) ustawienia powiadomień platformy w usłudze Notification Hubs do skonfigurowania powiadomień wypychanych na wielu platformach. Samouczek Szybki Start przedstawiono kroki do wykonania w witrynie Azure portal.
 
-        ![Konfigurowanie certyfikacji APNs w witrynie Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
-3. Jeśli wybierzesz pozycję **Token**, wykonaj następujące czynności: 
-    1. Wprowadź wartości w polach **Identyfikator klucza**, **Identyfikator pakietu**, **Identyfikator zespołu** i **Token**.
-    2. Wybierz tryb **Piaskownica**. Tryb **Produkcja** należy wybrać wyłącznie wówczas, gdy chcesz wysyłać powiadomienia wypychane do użytkowników, którzy kupili Twoją aplikację w sklepie.
+Jeśli nie zostało jeszcze utworzone Centrum powiadomień, utwórz ją teraz. Aby uzyskać więcej informacji, zobacz [Tworzenie Centrum powiadomień platformy Azure w witrynie Azure portal](create-notification-hub-portal.md). 
 
-        ![Konfigurowanie tokenu usługi APNS w witrynie Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
-Aby uzyskać kompletny opis wysyłania powiadomień push do urządzeń z systemem iOS przy użyciu usług Azure Notification Hubs i Apple Push Notification Service (APNS), zapoznaj się z [tym samouczkiem](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+Aby ustawić się Apple Push Notification Service (APNS):
 
-## <a name="google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messaging (FCM)
-1. Na stronie **Centrum powiadomień** w witrynie Azure Portal wybierz pozycję **Google (GCM/FCM)** w menu **Ustawienia** po lewej stronie. 
-2. Wklej **klucz serwera** dla projektu usługi FCM, który został zapisany wcześniej. 
-3. Wybierz pozycję **Zapisz** na pasku narzędzi. 
+1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Apple (APNS)**.
 
-    ![Azure Notification Hubs — Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
-4. Wśród alertów pojawi się komunikat o pomyślnym zaktualizowaniu centrum powiadomień. Przycisk **Save** (Zapisz) będzie wyłączony. 
+1. Aby uzyskać **tryb uwierzytelniania**, wybierz opcję **certyfikatu** lub **tokenu**.
 
-Aby uzyskać kompletny opis wysyłania powiadomień push do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs and Google Firebase Cloud Messaging, zapoznaj się z [tym samouczkiem](notification-hubs-android-push-notification-google-fcm-get-started.md).
+   a. Jeśli wybierzesz **certyfikatu**:
+   * Wybierz ikonę pliku, a następnie wybierz *.p12* pliku, który chcesz przekazać.
+   * Wprowadź hasło.
+   * Wybierz tryb **Piaskownica**. Aby wysyłać powiadomienia wypychane do użytkowników, którzy kupili twoją aplikację ze sklepu, zaznacz **produkcji** trybu.
 
-## <a name="windows-push-notification-service-wns"></a>Usługa powiadomień WNS
-1. Na stronie **Centrum powiadomień** w witrynie Azure Portal wybierz pozycję **Windows (WNS)** w menu **Ustawienia** po lewej stronie.
+     ![Zrzut ekranu przedstawiający APNS certyfikatu konfiguracji w witrynie Azure portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+
+   b. Jeśli wybierzesz **tokenu**:
+
+   * Wprowadź wartości w polach **identyfikator klucza**, **identyfikator pakietu**, **identyfikator zespołu**, i **tokenu**.
+   * Wybierz tryb **Piaskownica**. Aby wysyłać powiadomienia wypychane do użytkowników, którzy kupili twoją aplikację ze sklepu, zaznacz **produkcji** trybu.
+
+     ![Zrzut ekranu przedstawiający APNS token konfiguracji w witrynie Azure portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+
+Aby uzyskać więcej informacji, zobacz [powiadomienia wypychane do systemu iOS przy użyciu usługi Azure Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+
+## <a name="google-firebase-cloud-messaging"></a>Usługi Google Firebase Cloud Messaging
+
+Aby skonfigurować powiadomienia wypychane dla Google Firebase Cloud Messaging (FCM):
+
+1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Google (GCM/FCM)**. 
+2. Wklej **klucz interfejsu API** w projekcie usługi FCM, który został wcześniej zapisany. 
+3. Wybierz pozycję **Zapisz**. 
+
+   ![Zrzut ekranu pokazujący sposób konfigurowania usługi Notification Hubs dla usługi FCM Google](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+
+Po wykonaniu tych kroków, alert oznacza pomyślnie zaktualizowano Centrum powiadomień. Przycisk **Save** (Zapisz) będzie wyłączony. 
+
+Aby uzyskać więcej informacji, zobacz [wysyłać powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Notification Hubs i Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
+
+## <a name="windows-push-notification-service"></a>Windows Push Notification Service
+
+Aby ustawić się Windows wypychanie powiadomień WNS (Service):
+
+1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Windows (WNS)**.
 2. Wprowadź wartości w polach **Identyfikator SID pakietu** i **Klucz zabezpieczeń**.
-3. Wybierz pozycję **Zapisz** na pasku narzędzi.
+3. Wybierz pozycję **Zapisz**.
 
-    ![Pola Identyfikator SID pakietu i Klucz zabezpieczeń](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![Zrzut ekranu pokazujący pola Identyfikator SID pakietu i klucz zabezpieczeń](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
+Aby uzyskać informacje, zobacz [wysyłać powiadomienia do aplikacji platformy uniwersalnej systemu Windows za pomocą usługi Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-Aby uzyskać kompletny opis wysyłania powiadomień push do aplikacji platformy uniwersalnej systemu Windows (UWP) działającej na urządzeniu z systemem Windows, zapoznaj się z [tym samouczkiem](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+## <a name="microsoft-push-notification-service-for-windows-phone"></a>Usługi powiadomień wypychanych firmy Microsoft dla Windows Phone
 
-## <a name="windows-phone---microsoft-push-notification-service"></a>Windows Phone — usługa powiadomień wypychanych firmy Microsoft
-1. Na stronie **Centrum powiadomień** w witrynie Azure Portal wybierz pozycję **Windows Phone (MPNS)** w obszarze **Ustawienia**.
-2. Aby włączyć nieuwierzytelnione wypychanie, wybierz pozycję **Włącz nieuwierzytelnione wypychanie**, a następnie wybierz pozycję **Zapisz** na pasku narzędzi.
+Aby ustawić się Microsoft Push Notification usługi (MPNS) dla Windows Phone: 
 
-    ![Witryna Azure Portal — włączanie nieuwierzytelnionych powiadomień push](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
-3. Jeśli chcesz używać **nieuwierzytelnionego** wypychania, wykonaj następujące kroki:
-    1. Wybierz pozycję **Przekaż certyfikat** na pasku narzędzi.
-    2. Wybierz **ikonę pliku** i wybierz plik certyfikatu.
-    3. Wprowadź **hasło** certyfikatu. 
-    4. Wybierz przycisk **OK**, aby zamknąć stronę **Przekazywanie certyfikatu**. 
-    5. Na stronie **Windows Phone(MPNS)** wybierz pozycję **Zapisz** na pasku narzędzi.
+1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Windows Phone (MPNS)**.
+1. Włącz nieuwierzytelnione lub uwierzytelniony powiadomień wypychanych:
 
-Aby uzyskać kompletny opis wysyłania powiadomień push do aplikacji systemu Windows Phone 8 przy użyciu usługi wypychania powiadomień firmy Microsoft (MPNS), zapoznaj się z [tym samouczkiem](notification-hubs-windows-mobile-push-notifications-mpns.md).
+   a. Aby włączyć nieuwierzytelnione wypychanie powiadomień, wybierz **Włącz nieuwierzytelnione wypychanie** > **Zapisz**.
+
+      ![Zrzut ekranu pokazujący sposób Włącz nieuwierzytelnione wypychanie powiadomień](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+
+   b. Aby włączyć powiadomienia wypychane uwierzytelnionego:
+      * Na pasku narzędzi wybierz **Przekaż certyfikat**.
+      * Wybierz ikonę pliku, a następnie wybierz plik certyfikatu.
+      * Wprowadź hasło certyfikatu.
+      * Kliknij przycisk **OK**.
+      * Na **Windows Phone (MPNS)** wybierz opcję **Zapisz**.
+
+Aby uzyskać więcej informacji, zobacz [powiadomienia wypychane do aplikacji Windows Phone przy użyciu usługi Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
       
-## <a name="amazon-device-messaging-adm"></a>Amazon Device Messaging (ADM)
-1. Na stronie **Centrum powiadomień** w witrynie Azure Portal wybierz pozycję **Amazon (ADM)** w menu **Ustawienia** po lewej stronie.
-2. Wprowadź wartości w polach **Identyfikator klienta** i **Klucz tajny klienta**.
-3. Wybierz pozycję **Zapisz** na pasku narzędzi.
-    
-    ![Azure Notification Hubs — ustawienia usługi ADM](./media/notification-hubs-kindle-get-started/notification-hub-adm-settings.png)
+## <a name="amazon-device-messaging"></a>Amazon Device Messaging
 
-Aby uzyskać kompletny opis sposobu używania powiadomień wypychanych usługi Azure Notification Hubs do aplikacji na urządzenia Kindle, zapoznaj się z [tym samouczkiem](notification-hubs-kindle-amazon-adm-push-notification.md).
+Aby skonfigurować powiadomienia wypychane dla Amazon Device Messaging (ADM):
+
+1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Amazon (ADM)**.
+2. Wprowadź wartości w polach **identyfikator klienta** i **klucz tajny klienta**.
+3. Wybierz pozycję **Zapisz**.
+    
+   ![Zrzut ekranu usługi ADM ustawienia w witrynie Azure portal](./media/notification-hubs-kindle-get-started/notification-hub-adm-settings.png)
+
+Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Notification Hubs dla aplikacji na urządzenie Kindle](notification-hubs-kindle-amazon-adm-push-notification.md).
 
 ## <a name="baidu-android-china"></a>Baidu (Android China)
-1. Na stronie **Centrum powiadomień** w witrynie Azure Portal wybierz pozycję **Baidu (Android China)** w menu **Ustawienia** po lewej stronie. 
-2. Wprowadź **klucz interfejsu API** uzyskany w konsoli Baidu dla projektu powiadomień push w chmurze Baidu. 
-3. Wprowadź **klucz tajny** uzyskany w konsoli Baidu dla projektu powiadomień push w chmurze Baidu. 
-4. Wybierz pozycję **Zapisz** na pasku narzędzi. 
 
-    ![Azure Notification Hubs — Baidu (Android China)](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
-4. Wśród alertów pojawi się komunikat o pomyślnym zaktualizowaniu centrum powiadomień. Przycisk **Save** (Zapisz) będzie wyłączony. 
+Aby skonfigurować powiadomienia wypychane dla usługi Baidu:
 
-Aby uzyskać kompletny opis wysyłania powiadomień push za pomocą powiadomień push w usłudze Azure Notification Hubs i chmurze Baidu, zapoznaj się z [tym samouczkiem](notification-hubs-baidu-china-android-notifications-get-started.md).
+1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Baidu (Android China)**. 
+2. Wprowadź **klucz interfejsu Api** uzyskany w konsoli Baidu w projektu powiadomień wypychanych w chmurze Baidu. 
+3. Wprowadź **klucz tajny** uzyskany w konsoli Baidu w projektu powiadomień wypychanych w chmurze Baidu. 
+4. Wybierz pozycję **Zapisz**. 
 
-## <a name="next-steps"></a>Następne kroki
-W tym przewodniku Szybki start pokazano, jak konfigurować inne systemy powiadomień platformy dla centrum powiadomień w witrynie Azure Portal. 
+    ![Zrzut ekranu z usługi Notification Hubs przedstawiający konfigurację powiadomień wypychanych Baidu (Android China)](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
-Aby uzyskać pełne instrukcje krok po kroku dotyczące wysyłania powiadomień push do różnych platform, zapoznaj się z samouczkami w sesji **Samouczki**.
+Po wykonaniu tych kroków, alert oznacza pomyślnie zaktualizowano Centrum powiadomień. Przycisk **Save** (Zapisz) będzie wyłączony. 
 
-- [Wysyłanie powiadomień push do urządzeń z systemem iOS przy użyciu usług Azure Notification Hubs i Apple Push Notification Service (APNS)](notification-hubs-ios-apple-push-notification-apns-get-started.md).
-- [Wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
-- [Wysyłanie powiadomień push do aplikacji platformy uniwersalnej systemu Windows działającej na urządzeniu z systemem Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-- [Wysyłanie powiadomień push do aplikacji systemu Windows Phone 8 przy użyciu usługi wypychania powiadomień firmy (MPNS)](notification-hubs-windows-mobile-push-notifications-mpns.md).
-- [Wysyłanie powiadomień push do aplikacji dla urządzenia Kindle](notification-hubs-kindle-amazon-adm-push-notification.md).
-- [Wysyłanie powiadomień push za pomocą usługi Azure Notification Hubs i funkcji wypychania do chmury usługi Baidu](notification-hubs-baidu-china-android-notifications-get-started.md).
+Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Notification Hubs przy użyciu usługi Baidu](notification-hubs-baidu-china-android-notifications-get-started.md).
+
+## <a name="next-steps"></a>Kolejne kroki
+W tym przewodniku Szybki Start przedstawiono sposób konfigurowania ustawień systemu powiadomień platformy Centrum powiadomień w witrynie Azure portal. 
+
+Aby dowiedzieć się więcej o tym, jak wypychać powiadomienia do różnych platform, zobacz następujące samouczki:
+
+- [Wypychanie powiadomień do urządzeń z systemem iOS przy użyciu usługi Notification Hubs i usługi APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+- [Wysyłanie powiadomień wypychanych do urządzeń z systemem Android przy użyciu usługi Notification Hubs i Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
+- [Powiadomienia wypychane do aplikacji platformy uniwersalnej systemu Windows uruchomione na urządzeniu z systemem Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+- [Powiadomienia wypychane do aplikacji Windows Phone 8 przy użyciu usługi MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
+- [Powiadomienia wypychane do aplikacji dla urządzeń Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)
+- [Powiadomienia wypychane przy użyciu usługi Notification Hubs i Baidu wypychane w chmurze](notification-hubs-baidu-china-android-notifications-get-started.md)

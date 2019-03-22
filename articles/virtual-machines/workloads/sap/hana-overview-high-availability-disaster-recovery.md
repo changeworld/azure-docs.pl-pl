@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61f536ee5eb27982bd63daf0b278e6c7a836fe08
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 4d60f6752bf369e875c350823f76854408fcb806
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390743"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000595"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Duże wystąpienia SAP HANA wysoką dostępność i odzyskiwanie awaryjne na platformie Azure 
 
@@ -33,9 +33,9 @@ Wysoka dostępność i odzyskiwanie po awarii (DR) to kluczowe aspekty uruchomio
 
 Firma Microsoft obsługuje niektóre funkcje wysokiej dostępności platformy SAP HANA z dużymi wystąpieniami platformy HANA. Te funkcje obejmują:
 
-- **Replikacja magazynu**: system magazynowania możliwość replikowanie wszystkich danych do innej sygnatury dużych wystąpień HANA w innym regionie platformy Azure. SAP HANA działa niezależnie od tej metody. Ta funkcja jest domyślny mechanizm odzyskiwania po awarii, oferowana w przypadku dużych wystąpień HANA.
-- **Replikacji systemu HANA**: [replikacji wszystkich danych na platformie SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) do oddzielnego systemu SAP HANA. Cel czasu odzyskiwania jest zminimalizowany przez funkcję replikacji danych w regularnych odstępach czasu. SAP HANA obsługuje asynchroniczne, synchronicznej tryby w pamięci i synchroniczne. Synchroniczne tryb jest używany tylko w przypadku systemów SAP HANA, które znajdują się w tym samym centrum danych lub mniej niż 100 km od siebie. W bieżącym projekcie sygnatury dużych wystąpień HANA replikacji systemu HANA może służyć do wysokiej dostępności w ramach jednego regionu tylko. Replikacji systemu HANA wymaga zwrotny serwer proxy innych firm lub składnik routingu w przypadku konfiguracji odzyskiwania po awarii w innym regionie platformy Azure. 
-- **Hostowanie automatyczny tryb failover**: rozwiązania lokalnego odzyskiwania po uszkodzeniu platformy SAP Hana, który stanowi alternatywę dla replikacji systemu HANA. Jeśli węzła głównego staje się niedostępny, skonfiguruj rezerwy co najmniej jeden węzeł oprogramowania SAP HANA w trybie skalowalnego w poziomie i SAP HANA automatycznie przełącza się do węzła wstrzymania.
+- **Replikacja magazynu**: System magazynowania możliwość replikowania wszystkie dane do innej sygnatury dużych wystąpień HANA w innym regionie platformy Azure. SAP HANA działa niezależnie od tej metody. Ta funkcja jest domyślny mechanizm odzyskiwania po awarii, oferowana w przypadku dużych wystąpień HANA.
+- **Replikacji systemu HANA**: [Replikacji wszystkich danych na platformie SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) do oddzielnego systemu SAP HANA. Cel czasu odzyskiwania jest zminimalizowany przez funkcję replikacji danych w regularnych odstępach czasu. SAP HANA obsługuje asynchroniczne, synchronicznej tryby w pamięci i synchroniczne. Synchroniczne tryb jest używany tylko w przypadku systemów SAP HANA, które znajdują się w tym samym centrum danych lub mniej niż 100 km od siebie. W bieżącym projekcie sygnatury dużych wystąpień HANA replikacji systemu HANA może służyć do wysokiej dostępności w ramach jednego regionu tylko. Replikacji systemu HANA wymaga zwrotny serwer proxy innych firm lub składnik routingu w przypadku konfiguracji odzyskiwania po awarii w innym regionie platformy Azure. 
+- **Hostowanie automatyczny tryb failover**: Rozwiązania lokalnego odzyskiwania po uszkodzeniu platformy SAP Hana, który stanowi alternatywę dla replikacji systemu HANA. Jeśli węzła głównego staje się niedostępny, skonfiguruj rezerwy co najmniej jeden węzeł oprogramowania SAP HANA w trybie skalowalnego w poziomie i SAP HANA automatycznie przełącza się do węzła wstrzymania.
 
 Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) jest oferowana w dwóch regionach platformy Azure w czterech obszarów geopolitycznych (USA, Australia, Europie i Japonia). Dwoma regionami w regionie geopolitycznym, obsługujące sygnatury dużych wystąpień HANA są podłączone do oddzielnej sieci dedykowanej obwodów. Są one używane do replikacji migawek magazynu zapewnienie metody odzyskiwania po awarii. Replikacja nie zostanie nawiązane domyślnie, ale jest skonfigurowane dla klientów, którzy kolejność funkcji odzyskiwania po awarii. Replikacja magazynu jest zależny od użycia magazynu migawek dla dużych wystąpień HANA. Nie jest możliwe wybrać region platformy Azure jako regionie odzyskiwania po awarii, który znajduje się w różnych obszarze geopolitycznych. 
 
@@ -44,7 +44,7 @@ W poniższej tabeli przedstawiono aktualnie obsługiwany wysoką dostępność i
 | Scenariusz jest obsługiwany w dużych wystąpień HANA | Opcję wysokiej dostępności | Opcję odzyskiwania po awarii | Komentarze |
 | --- | --- | --- | --- |
 | Jeden węzeł | Niedostępne. | Dedykowany Konfiguracja odzyskiwania po awarii.<br /> Konfigurowanie odzyskiwania po awarii Multipurpose. | |
-| Hostowanie automatyczny tryb failover: skalowalnego w poziomie (z lub bez w stanie wstrzymania)<br /> w tym 1 + 1 | Możliwa biorąc aktywną rolę w stanie wstrzymania.<br /> HANA kontrolki przełącznika roli. | Dedykowany Konfiguracja odzyskiwania po awarii.<br /> Konfigurowanie odzyskiwania po awarii Multipurpose.<br /> Synchronizacja odzyskiwania po awarii przy użyciu funkcji replikacji magazynu. | Zestawy platformy HANA są dołączone do wszystkich węzłów.<br /> Odzyskiwanie po awarii lokacji musi mieć taką samą liczbę węzłów. |
+| Host automatyczny tryb failover: Skalowalny w poziomie (z lub bez w stanie wstrzymania)<br /> w tym 1 + 1 | Możliwa biorąc aktywną rolę w stanie wstrzymania.<br /> HANA kontrolki przełącznika roli. | Dedykowany Konfiguracja odzyskiwania po awarii.<br /> Konfigurowanie odzyskiwania po awarii Multipurpose.<br /> Synchronizacja odzyskiwania po awarii przy użyciu funkcji replikacji magazynu. | Zestawy platformy HANA są dołączone do wszystkich węzłów.<br /> Odzyskiwanie po awarii lokacji musi mieć taką samą liczbę węzłów. |
 | Replikacji systemu HANA | Możliwa podstawowej lub dodatkowej konfiguracji.<br /> Pomocniczy przenosi podstawową rolą w przypadku pracy awaryjnej.<br /> Replikacji systemu HANA i system operacyjny sterujący trybu failover. | Dedykowany Konfiguracja odzyskiwania po awarii.<br /> Konfigurowanie odzyskiwania po awarii Multipurpose.<br /> Synchronizacja odzyskiwania po awarii przy użyciu funkcji replikacji magazynu.<br /> Odzyskiwanie po awarii za pomocą replikacji systemu HANA nie jest jeszcze możliwe bez składników innych firm. | Osobny zestaw woluminów dysków, które są dołączone do każdego węzła.<br /> Tylko dysku woluminy repliki pomocniczej w lokacji produkcyjnej są replikowane do lokalizacji odzyskiwania po awarii.<br /> Jeden zestaw woluminów jest wymagany w lokacji odzyskiwania po awarii. | 
 
 Dedykowanej konfiguracji odzyskiwania po awarii jest, gdzie jednostka duże wystąpienie oprogramowania HANA w lokacji odzyskiwania po awarii nie jest używany do uruchamiania innych obciążeń lub system nieprodukcyjnych. Jednostka jest w stanie pasywnym i jest wdrażana tylko wtedy, gdy tryb failover po awarii jest wykonywany. Jednak ta konfiguracja nie jest preferowanych przez dla wielu klientów.
@@ -59,9 +59,9 @@ Multipurpose konfiguracji odzyskiwania po awarii jest, gdzie jednostka duże wys
 
 Więcej informacji na temat oprogramowania SAP HANA wysokiej dostępności można znaleźć w następujących artykułach SAP: 
 
-- [Oficjalny dokument dotyczący programu SAP HANA wysoką dostępność](http://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
-- [Przewodnik administratora programu SAP HANA](http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
-- [SAP HANA Academy wideo na replikacji systemu SAP HANA](http://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
+- [Oficjalny dokument dotyczący programu SAP HANA wysoką dostępność](https://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
+- [Przewodnik administratora programu SAP HANA](https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
+- [SAP HANA Academy wideo na replikacji systemu SAP HANA](https://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
 - [Obsługa Uwaga #1999880 — często zadawane pytania dotyczące replikacji systemu SAP HANA SAP](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
 - [SAP Uwaga pomocy technicznej 2165547 # — SAP HANA tworzenie kopii zapasowej i przywracania w środowisku replikacji systemu HANA SAP](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
 - [SAP Uwaga pomocy technicznej 1984882 # — za pomocą replikacji systemu SAP HANA dla wymiany sprzętu z co najmniej/żadnych przestojów](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
@@ -86,7 +86,7 @@ Oprócz poprzedniego wymaganiami Instalator odzyskiwania po awarii przy użyciu 
 - Kolejność dodatkowy magazyn w lokacji odzyskiwania po awarii dla każdego środowiska SAP HANA na platformie Azure (duże wystąpienia) jednostek SKU, które mają zostać odzyskane w lokacji odzyskiwania po awarii. Kupowania dodatkowego miejsca do magazynowania pozwala przydzielić odpowiedniej wielkości magazynu. Można alokować woluminy, które są celem replikacji magazynu z w środowisku produkcyjnym region platformy Azure do odzyskiwania po awarii w regionie platformy Azure.
 - W przypadku, gdy skonfigurowano replikacji systemu HANA na maszynie podstawowej i Konfigurowanie replikacji magazynu opartego na lokacji odzyskiwania po awarii, musi zakupić dodatkowy magazyn w lokacji odzyskiwania po awarii więc podstawowych i dodatkowych węzłów danych pobiera replikowane do lokacji odzyskiwania po awarii.
 
- **Następne kroki**
+  **Następne kroki**
 - Zapoznaj się [kopii zapasowej i przywracania](hana-backup-restore.md).
 
 

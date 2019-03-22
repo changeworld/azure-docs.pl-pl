@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5cb3a029795dd69c80cfa580aa1bd135c67e609e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ac627907e3f595ef59edc606f34fd27353e4c577
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451956"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850047"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Zespół danych dla celów naukowych w działaniu — przy użyciu klastra usługi Azure HDInsight Hadoop na zestawie danych 1 TB
 
-W tym instruktażu przedstawiono sposób użycia zespołu danych dla celów naukowych w scenariuszu end-to-end z [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) do przechowywania, zapoznaj się z, inżynier ds. funkcji i w dół przykładowe dane z jednego z publicznie dostępnych [ Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) zestawów danych. Aby zbudować model klasyfikacji binarnej na tych danych używa usługi Azure Machine Learning. Pokazano również, jak do publikowania jednego z tych modeli jako usług sieci Web.
+W tym instruktażu przedstawiono sposób użycia zespołu danych dla celów naukowych w scenariuszu end-to-end z [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) do przechowywania, zapoznaj się z, inżynier ds. funkcji i w dół przykładowe dane z jednego z publicznie dostępnych [ Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) zestawów danych. Aby zbudować model klasyfikacji binarnej na tych danych używa usługi Azure Machine Learning. Pokazano również, jak do publikowania jednego z tych modeli jako usług sieci Web.
 
 Istnieje również możliwość użycia IPython notebook do wykonywania zadań przedstawionych w tym przewodniku. Użytkownicy, którzy chcieliby Wypróbuj to podejście powinni skontaktować się [wskazówki Criteo przy użyciu połączenia ODBC programu Hive](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) tematu.
 
 ## <a name="dataset"></a>Opis elementu Criteo zestawu danych
-Criteo, danych jest zestaw danych prognozowania kliknij przycisk, który ma wielkość około 370 GB plików TSV gzip skompresowane (~1.3TB nieskompresowane) wchodzących w skład ponad miliard 4.3 rekordów. Jest ona pobierana z 24 dni kliknij dane udostępniane przez [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/). Dla wygody analityków danych dane dostępne dla nas, aby eksperymentować z zostało rozpakowane.
+Criteo, danych jest zestaw danych prognozowania kliknij przycisk, który ma wielkość około 370 GB plików TSV gzip skompresowane (~1.3TB nieskompresowane) wchodzących w skład ponad miliard 4.3 rekordów. Jest ona pobierana z 24 dni kliknij dane udostępniane przez [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/). Dla wygody analityków danych dane dostępne dla nas, aby eksperymentować z zostało rozpakowane.
 
 Każdy rekord w tym zestawie danych zawiera kolumny 40:
 
@@ -68,7 +68,7 @@ Konfigurowanie środowiska nauki o danych platformy Azure do tworzenia rozwiąza
 3. [Tworzenie obszaru roboczego usługi Azure Machine Learning studio](../studio/create-workspace.md): Ten obszar roboczy usługi Azure Machine Learning służy do tworzenia modeli uczenia maszynowego po eksplorację danych początkowych i w dół próbkowania w klastrze HDInsight.
 
 ## <a name="getdata"></a>Pobierz i korzystają z publicznych źródła danych
-[Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) zestawu danych może zostać oceniony przez kliknięcie linku, akceptując warunki użytkowania i podając nazwę. Jak to wygląda migawka jest następujący:
+[Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) zestawu danych może zostać oceniony przez kliknięcie linku, akceptując warunki użytkowania i podając nazwę. Jak to wygląda migawka jest następujący:
 
 ![Zaakceptuj warunki Criteo](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
@@ -306,7 +306,7 @@ Daje to:
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Należy pamiętać, że Col15 ma unikatowe wartości 19M! Za pomocą prostego technik, takich jak "hot jeden kodowania" do zakodowania takich o wielu wymiarach zmiennych kategorii nie jest możliwe. W szczególności o nazwie technika zaawansowanych, niezawodnych [uczenia z zlicza](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) co dzień do czynienia ten problem efektywnie wyjaśniono i przedstawione w artykule.
+Należy pamiętać, że Col15 ma unikatowe wartości 19M! Za pomocą prostego technik, takich jak "hot jeden kodowania" do zakodowania takich o wielu wymiarach zmiennych kategorii nie jest możliwe. W szczególności o nazwie technika zaawansowanych, niezawodnych [uczenia z zlicza](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) co dzień do czynienia ten problem efektywnie wyjaśniono i przedstawione w artykule.
 
 Na koniec Przyjrzyj się liczba unikatowych wartości dla niektórych innych kategorii kolumn także. Zawartość [przykładowe&#95;hive&#95;criteo&#95;unikatowy&#95;wartości&#95;wielu&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) są:
 
@@ -405,10 +405,10 @@ Dzięki temu możesz przystąpić do naszych dół train próbkowanych i testów
 Przed przejściem do usługi Azure Machine Learning, która dotyczy tabeli liczba ma końcowe ważnym elementem. W następnej sekcji podrzędnych Tabela liczba została szczegółowo opisana w niektórych.
 
 ## <a name="count"></a> Krótki opis dyskusji w tabeli liczba
-Jak kilku zmiennych podzielonych na kategorie ma bardzo wysokie wymiarach. W instruktażu, o nazwie zaawansowane techniki [uczenia z zlicza](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) do kodowania tych zmiennych w wydajny, niezawodny sposób zostanie wyświetlony. Więcej informacji na temat tej techniki jest podany link.
+Jak kilku zmiennych podzielonych na kategorie ma bardzo wysokie wymiarach. W instruktażu, o nazwie zaawansowane techniki [uczenia z zlicza](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) do kodowania tych zmiennych w wydajny, niezawodny sposób zostanie wyświetlony. Więcej informacji na temat tej techniki jest podany link.
 
 [!NOTE]
->W tym przewodniku koncentruje się na użycie liczba tabel do produkcji compact reprezentacje funkcji o wielu wymiarach podzielonych na kategorie. Nie jest jedynym sposobem, aby zakodować kategorii funkcji Aby uzyskać więcej informacji na temat innych metod zainteresowanych użytkowników można wyewidencjonować [jednego hot-encoding](http://en.wikipedia.org/wiki/One-hot) i [Tworzenie skrótu funkcji](http://en.wikipedia.org/wiki/Feature_hashing).
+>W tym przewodniku koncentruje się na użycie liczba tabel do produkcji compact reprezentacje funkcji o wielu wymiarach podzielonych na kategorie. Nie jest jedynym sposobem, aby zakodować kategorii funkcji Aby uzyskać więcej informacji na temat innych metod zainteresowanych użytkowników można wyewidencjonować [jednego hot-encoding](https://en.wikipedia.org/wiki/One-hot) i [Tworzenie skrótu funkcji](https://en.wikipedia.org/wiki/Feature_hashing).
 >
 
 Tworzenia liczba tabel na dane dotyczące liczby, należy użyć danych w folderze nieprzetworzone/liczby. W sekcji modelowania użytkownicy są instruowani, jak tworzyć te tabele liczba kategorii funkcji od podstaw, lub też używać tabeli liczbę wstępnie skompilowanych dla ich eksploracji. W poniżej gdy "wstępnie utworzone tabele liczba" są określane, mamy na myśli przy użyciu tabel liczba, która została podana. W następnej sekcji znajdują się szczegółowe instrukcje dotyczące sposobu dostępu do tych tabel.

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567387"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994920"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Wdrażanie i eksplorowanie aplikacji z wieloma dzierżawami podzielonej na fragmenty
 
@@ -66,9 +66,9 @@ Teraz wybierz nazwy i zanotuj je.
 ### <a name="steps"></a>Kroki
 
 1. Kliknij poniższy niebieski **Wdróż na platformie Azure** przycisku.
-    - Zostanie otwarta witryna Azure portal za pomocą szablonu wdrożenia SaaS o nazwie Wingtip Tickets.
+   - Zostanie otwarta witryna Azure portal za pomocą szablonu wdrożenia SaaS o nazwie Wingtip Tickets.
 
-    [![Przycisk Wdróż na platformie Azure.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![Przycisk Wdróż na platformie Azure.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. Wprowadź wymagane wartości parametrów wdrożenia.
 
@@ -125,9 +125,9 @@ Każde miejsce otrzymuje spersonalizowaną aplikację sieci web do wyświetlania
 Centralna **Centrum zdarzeń** strony sieci Web zawiera listę linków dla dzierżaw w ramach danego wdrożenia. Wykonaj następujące kroki, aby środowisko **Centrum zdarzeń** strony sieci Web i aplikację internetową poszczególnych:
 
 1. Otwórz **Centrum zdarzeń** w przeglądarce sieci web:
-    - http://events.wingtip-mt.&lt; użytkownika&gt;. trafficmanager.net &nbsp; *(Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia.)*
+   - http://events.wingtip-mt.&lt; użytkownika&gt;. trafficmanager.net &nbsp; *(Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia.)*
 
-    ![centrum zdarzeń](media/saas-multitenantdb-get-started-deploy/events-hub.png)
+     ![centrum zdarzeń](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. Kliknij przycisk **Fabrikam Jazz Club** w **Centrum zdarzeń**.
 
@@ -208,7 +208,7 @@ Następnie możemy Zapewnij innej dzierżawy, tym razem w oddzielnej bazie danyc
 
 Teraz przyjrzymy się niektóre zasoby, które zostały wdrożone:
 
-1. W [witryny Azure portal](http://portal.azure.com), przejdź do listy grup zasobów. Otwórz grupę zasobów, który został utworzony podczas wdrożono aplikację.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do listy grup zasobów. Otwórz grupę zasobów, który został utworzony podczas wdrożono aplikację.
 
    ![grupa zasobów](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
@@ -275,7 +275,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 -->
 
-[link-aka-ms-deploywtp-mtapp-52k]: http://aka.ms/deploywtp-mtapp
+[link-aka-ms-deploywtp-mtapp-52k]: https://aka.ms/deploywtp-mtapp
 
 
 [link-azure-get-started-powershell-41q]: https://docs.microsoft.com/powershell/azure/get-started-azureps
@@ -286,7 +286,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 <!--  Image references.
 
-[image-deploy-to-azure-blue-48d]: http://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
+[image-deploy-to-azure-blue-48d]: https://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
 -->
 
 [image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Przycisk wdrażanie na platformie Azure."

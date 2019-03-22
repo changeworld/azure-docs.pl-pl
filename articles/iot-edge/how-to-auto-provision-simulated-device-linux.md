@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a1dba3b497807841f9b86d685f5bb560ebdd9316
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9a549221a9e1864e1b7565f35139cb4c2a6ca65e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093130"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Tworzenie i aprowizowanie urządzenia usługi IoT Edge z wirtualnego TPM na maszynie wirtualnej systemu Linux
 
@@ -234,17 +234,17 @@ Możesz udzielić dostępu modułu TPM do środowiska uruchomieniowego usługi I
 
 11. Sprawdź, czy zastąpienie zakończyła się pomyślnie.
 
-   ```bash
-   sudo systemctl cat iotedge.service
-   ```
+    ```bash
+    sudo systemctl cat iotedge.service
+    ```
 
-   Pomyślne dane wyjściowe wyświetla **iotedge** domyślne zmienne usługę i następnie pokazuje zmiennej środowiskowej, można ustawić w **override.conf**. 
+    Pomyślne dane wyjściowe wyświetla **iotedge** domyślne zmienne usługę i następnie pokazuje zmiennej środowiskowej, można ustawić w **override.conf**. 
 
 12. Załaduj ponownie ustawienia.
 
-   ```bash
-   sudo systemctl daemon-reload
-   ```
+    ```bash
+    sudo systemctl daemon-reload
+    ```
 
 ## <a name="restart-the-iot-edge-runtime"></a>Uruchom ponownie środowisko uruchomieniowe usługi IoT Edge
 

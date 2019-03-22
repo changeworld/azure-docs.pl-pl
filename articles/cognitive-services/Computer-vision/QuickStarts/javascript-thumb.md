@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 095866c08ca160664ba03ae0d0bdc4840f9ac954
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 20ce4ce311e657f4d34359c96dda939d0ced01b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865050"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834391"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-javascript-in-computer-vision"></a>Szybki start: generowanie miniatury przy użyciu interfejsu API REST i języka JavaScript podczas przetwarzania obrazów
 
-W tym przewodniku Szybki start wygenerujesz miniaturę na podstawie obrazu, korzystając z interfejsu API REST przetwarzania obrazów. Metoda [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) umożliwia wygenerowanie miniatury obrazu. Należy określić wysokość i szerokość, które mogą mieć inny współczynnik proporcji niż obraz wejściowy. Interfejs API przetwarzania obrazów wykorzystuje inteligentne przycinanie, aby określić obszar zainteresowania i wygenerować współrzędne przycinania na podstawie tego obszaru.
+W tym przewodniku Szybki start wygenerujesz miniaturę na podstawie obrazu, korzystając z interfejsu API REST przetwarzania obrazów. Należy określić wysokość i szerokość, które mogą różnić się w proporcjach z obrazu wejściowego. Interfejs API przetwarzania obrazów wykorzystuje inteligentne przycinanie, aby określić obszar zainteresowania i na jego podstawie wygenerować współrzędne przycinania.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
@@ -165,11 +165,7 @@ Image for thumbnail:
 
 Pomyślna odpowiedź jest zwracana jako dane binarne, które reprezentują dane obrazu miniatury. Jeśli żądanie zakończy się powodzeniem, miniatura zostanie wygenerowana na podstawie danych binarnych w odpowiedzi i wyświetlona w oknie przeglądarki. Jeśli żądanie zakończy się niepowodzeniem, odpowiedź zostanie wyświetlona w oknie konsoli. Odpowiedź na nieudane żądanie zawiera kod błędu oraz komunikat, który umożliwi określenie, co poszło nie tak.
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Gdy plik nie będzie już potrzebny, usuń go.
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z aplikacją w języku JavaScript, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

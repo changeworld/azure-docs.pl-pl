@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 29ca8c4114d48fa0d3756930354660712b1b35b3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cc07aa9c1b2c540c33949a8c591bd98f91b04666
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820420"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225454"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Wdrażanie procesu roboczego elementu Runbook dla hybrydowych w systemie Linux
 
@@ -71,7 +71,7 @@ Przed kontynuowaniem należy pamiętać, Twoje konto usługi Automation jest po�
 
 1. Zainstaluj agenta usługi Log Analytics dla systemu Linux, uruchamiając następujące polecenie. Zastąp \<WorkspaceID\> i \<klucz WorkspaceKey\> odpowiednimi wartościami z obszaru roboczego.
 
-  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
    ```bash
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -84,6 +84,9 @@ Przed kontynuowaniem należy pamiętać, Twoje konto usługi Automation jest po�
    ```
 
 1. Po wykonaniu polecenia **grupy hybrydowych procesów roboczych** strona w witrynie Azure portal zawiera nową grupę i liczba elementów członkowskich. Jeśli jest to istniejącą grupę, liczba elementów członkowskich jest zwiększany. Możesz wybrać grupę, z listy na **grupy hybrydowych procesów roboczych** strony i wybierz **hybrydowych procesów roboczych** kafelka. Na **hybrydowych procesów roboczych** stronie zobaczysz każdy członek grupy na liście.
+
+> [!NOTE]
+> Jeśli używane są rozszerzenia maszyny wirtualnej usługi Azure Monitor dla systemu Linux na Maszynie wirtualnej platformy Azure, firma Microsoft zaleca ustawienie `autoUpgradeMinorVersion` o wartości false jako automatyczne uaktualnianie wersji może spowodować problemy z hybrydowego procesu roboczego elementu Runbook. Aby dowiedzieć się, jak ręcznie uaktualnić rozszerzenia, zobacz [wdrożenia wiersza polecenia platformy Azure ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
 ## <a name="turning-off-signature-validation"></a>Wyłączenie sprawdzania poprawności podpisu
 
@@ -111,12 +114,8 @@ Następujące typy elementów runbook nie działa w systemie Linux hybrydowego p
 * Graficzne
 * Graficzny przepływ pracy programu PowerShell
 
-## <a name="troubleshoot"></a>Rozwiązywanie problemów
-
-Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów z systemem Linux hybrydowych procesów roboczych Runbook](troubleshoot/hybrid-runbook-worker.md#linux)
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
 * Aby uzyskać instrukcje dotyczące sposobu usuwania hybrydowych procesów roboczych Runbook, zobacz [Usuń usługi Azure Automation hybrydowych procesów roboczych Runbook](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
-
+* Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów z systemem Linux hybrydowych procesów roboczych Runbook](troubleshoot/hybrid-runbook-worker.md#linux)

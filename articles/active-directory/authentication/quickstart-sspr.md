@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6cd463a728d8362221aaf7789258d7815566b23
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: eabc30b28ec6c32295c5eeff0f19b31fba622056
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176258"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095623"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Szybki start: Samoobsługowe resetowanie haseł
 
@@ -42,11 +42,11 @@ W tym przewodniku Szybki start opisano konfigurowanie funkcji samoobsługowego r
 3. Na stronie **Metody uwierzytelniania** wybierz następujące opcje:
    * Liczba metod wymaganych do zresetowania: **1**
    * Metody dostępne dla użytkowników:
-      * **Telefon komórkowy**
-      * **Telefon biurowy**
+      * **Wiadomość e-mail**
+      * **Kod aplikacji mobilnej (wersja zapoznawcza)**
    * Kliknij pozycję **Zapisz**.
 
-    ![Uwierzytelnianie][Authentication]
+     ![Uwierzytelnianie][Authentication]
 
 4. Na stronie **Rejestracja** wybierz następujące opcje:
    * Wymaganie od użytkowników rejestrowania się podczas logowania: **Tak**
@@ -67,7 +67,7 @@ Teraz możesz przetestować konfigurację funkcji samoobsługowego resetowania h
 
 Samoobsługowe resetowanie haseł można w łatwy sposób wyłączyć. Otwórz dzierżawę usługi Azure AD, przejdź do obszaru **Właściwości** > **Resetowanie hasła**, a następnie wybierz pozycję **Brak** w obszarze **Funkcja samoobsługowego resetowania hasła** jest włączona.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po zapoznaniu się z tym przewodnikiem szybkiego startu wiesz już, jak szybko skonfigurować samoobsługowe resetowanie haseł dla swoich użytkowników korzystających tylko z chmury. Aby dowiedzieć się, jak wykonać bardziej szczegółowe wdrożenie, przejdź do naszego przewodnika dotyczącego wdrożenia.
 

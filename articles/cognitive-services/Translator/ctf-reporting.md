@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: e1af2ef3be2b6cf4b75357107caf9d74c7199e8d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a2f8a9c5ceaac6209391df17f4ec08027991382b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539786"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123423"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak korzystać z raportowania na platformie CTF (Collaborative Translation Framework)
 
 > [!NOTE]
 > Ta metoda jest przestarzała. Nie jest dostępna w wersji 3.0 z interfejsu API tłumaczenia tekstu.
-
+> 
 > Współpracy tłumaczenia Framework (CTF), wcześniej dostępne dla V2.0 interfejsu API tłumaczenia tekstu, została zakończona, począwszy od 1 lutego 2018 r. Funkcje AddTranslation i AddTranslationArray umożliwiają użytkownikom włączanie poprawek za pomocą współpracy Framework tłumaczenia. Po 31 stycznia 2018 r. te dwie funkcje nie zaakceptował nowe zgłoszenia zdania, a użytkownicy otrzymają komunikat o błędzie. Te funkcje zostały zostanie wycofana i nie podlegają wymianie.
-
->Podobne funkcje są dostępne w interfejsie API Centrum usługi Translator, co umożliwia stworzenie systemu tłumaczenia niestandardowych terminologii i stylu i wywołać go przy użyciu Identyfikatora kategorii w interfejsie API tekstu usługi Translator. Centrum usługi Translator: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). W usłudze Translator Centrum interfejsu API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
+> 
+> Podobne funkcje są dostępne w interfejsie API Centrum usługi Translator, co umożliwia stworzenie systemu tłumaczenia niestandardowych terminologii i stylu i wywołać go przy użyciu Identyfikatora kategorii w interfejsie API tekstu usługi Translator. Centrum usługi Translator: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). W usłudze Translator Centrum interfejsu API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
 Interfejs API raportowania współpracy Translation Framework (CTF) zwraca statystyki i rzeczywistej zawartości w magazynie CTF. Ten interfejs API różni się od metody GetTranslations() ponieważ go:
 * Zwraca tłumaczonej zawartości i jego łączna liczba tylko z Twojego konta (appId lub konto w portalu Azure Marketplace).
@@ -56,21 +56,21 @@ Ta metoda pobiera liczbę tłumaczeń, które są tworzone przez użytkownika. Z
 **Składnia**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslationCount[]GetUserTranslationCounts(
-           string appId,
-           string uriPrefix,
-           string from,
-           string to,
-           int? minRating,
-           int? maxRating,
-           string user,
-           string category
-           DateTime? minDateUtc,
-           DateTime? maxDateUtc,
-           int? skip,
-           int? take);
-```
+> ```cs
+> UserTranslationCount[]GetUserTranslationCounts(
+>            string appId,
+>            string uriPrefix,
+>            string from,
+>            string to,
+>            int? minRating,
+>            int? maxRating,
+>            string user,
+>            string category
+>            DateTime? minDateUtc,
+>            DateTime? maxDateUtc,
+>            int? skip,
+>            int? take);
+> ```
 
 **Parametry**
 
@@ -127,21 +127,21 @@ Ta metoda pobiera tłumaczenia, które są tworzone przez użytkownika. Zapewnia
 **Składnia**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslation[] GetUserTranslations (
-            string appId,
-            string uriPrefix,
-            string from,
-            string to,
-            int? minRating,
-            int? maxRating,
-            string user,
-            string category
-            DateTime? minDateUtc,
-            DateTime? maxDateUtc,
-            int? skip,
-            int? take);
-```
+> ```cs
+> UserTranslation[] GetUserTranslations (
+>             string appId,
+>             string uriPrefix,
+>             string from,
+>             string to,
+>             int? minRating,
+>             int? maxRating,
+>             string user,
+>             string category
+>             DateTime? minDateUtc,
+>             DateTime? maxDateUtc,
+>             int? skip,
+>             int? take);
+> ```
 
 **Parametry**
 

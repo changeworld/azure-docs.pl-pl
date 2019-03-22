@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881873"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122896"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Tworzenie potoku CI/CD dla usługi IoT Edge przy użyciu usługi Azure DevOps Projects (wersja zapoznawcza)
 
@@ -127,7 +127,7 @@ W poprzednich sekcjach usługi Azure DevOps Projects automatycznie konfigurowane
 
 12. Wybierz z menu dla potok wydania **zadania** wybierz **dev** etap z listy rozwijanej. Usługa DevOps Projects tworzone etapu wydania tworzy Centrum IoT, utworzenie urządzenia usługi IoT Edge w tym Centrum, wdraża moduł próbki z potoku kompilacji, która aprowizuje maszyny wirtualnej, aby był uruchamiany jako urządzenia usługi IoT Edge. Aby dowiedzieć się więcej na temat zadań usługi Azure IoT Edge na dysk CD, zobacz [konfigurowania Azure potoków ciągłego wdrażania](how-to-ci-cd.md#configure-continuous-deployment).
 
-   ![Wyświetl zadania ciągłego wdrażania](media/how-to-devops-project/dev-release.png)
+    ![Wyświetl zadania ciągłego wdrażania](media/how-to-devops-project/dev-release.png)
 
 13. Po prawej stronie wybierz pozycję **Wyświetl wydania**. Ten widok przedstawia historię wersji.
 

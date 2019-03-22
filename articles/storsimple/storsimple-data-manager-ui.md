@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: e773986d11a11c6cc84df367aa48ac1b01a9183e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157126"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121506"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Zarządzanie usługą StorSimple Data Manager w witrynie Azure portal
 
@@ -46,19 +46,19 @@ Wykonaj poniższe kroki, aby utworzyć usługę StorSimple Data Manager.
 
 3. Dla nowej usługi określ następujące ustawienia:
 
-    1. Podaj unikatową **nazwa usługi** dla usługi StorSimple Data Manager. To jest przyjazna nazwa, która może służyć do identyfikowania usługi. Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. Nazwa musi zaczynać i kończyć się literą lub cyfrą.
+   1. Podaj unikatową **nazwa usługi** dla usługi StorSimple Data Manager. To jest przyjazna nazwa, która może służyć do identyfikowania usługi. Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. Nazwa musi zaczynać i kończyć się literą lub cyfrą.
 
-    2. Wybierz **subskrypcji** z listy rozwijanej. Subskrypcja jest połączona z kontem rozliczeniowym. To pole jest wypełniane automatycznie (i nie można wybierać) Jeśli masz tylko jedną subskrypcję.
+   2. Wybierz **subskrypcji** z listy rozwijanej. Subskrypcja jest połączona z kontem rozliczeniowym. To pole jest wypełniane automatycznie (i nie można wybierać) Jeśli masz tylko jedną subskrypcję.
 
-    3. Wybierz istniejącą grupę zasobów lub Utwórz nową grupę. Aby uzyskać więcej informacji, zobacz [Grupy zasobów na platformie Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. Wybierz istniejącą grupę zasobów lub Utwórz nową grupę. Aby uzyskać więcej informacji, zobacz [Grupy zasobów na platformie Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
 
-    4. Określ **lokalizacji** dla Twojej usługi, która zawiera wszystkie konta magazynu i usługi StorSimple Data Manager. Usługi Menedżer urządzeń StorSimple, usługi Data Manager i skojarzonego konta magazynu powinny być w obsługiwanych regionach.
+   4. Określ **lokalizacji** dla Twojej usługi, która zawiera wszystkie konta magazynu i usługi StorSimple Data Manager. Usługi Menedżer urządzeń StorSimple, usługi Data Manager i skojarzonego konta magazynu powinny być w obsługiwanych regionach.
     
-    5. Aby uzyskać link do tej usługi na pulpicie nawigacyjnym, wybierz **Przypnij do pulpitu nawigacyjnego**.
+   5. Aby uzyskać link do tej usługi na pulpicie nawigacyjnym, wybierz **Przypnij do pulpitu nawigacyjnego**.
     
-    6. Kliknij pozycję **Utwórz**.
+   6. Kliknij pozycję **Utwórz**.
 
-    ![Utwórz usługę StorSimple Data Manager 3](./media/storsimple-data-manager-ui/create-service-4.png)
+      ![Utwórz usługę StorSimple Data Manager 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
 Tworzenie usługi potrwa kilka minut. Zostanie wyświetlone powiadomienie po pomyślnym utworzeniu usługi i Nowa usługa jest wyświetlana.
 
@@ -88,33 +88,33 @@ Wykonaj poniższe kroki, aby utworzyć definicję zadania.
 
     ![Dodawanie nowego repozytorium danych](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-    1. Wybierz **serii StorSimple 8000 Menedżera** jako typ repozytorium danych.
+   1. Wybierz **serii StorSimple 8000 Menedżera** jako typ repozytorium danych.
     
-    2. Wprowadź przyjazną nazwę dla repozytorium źródła danych.
+   2. Wprowadź przyjazną nazwę dla repozytorium źródła danych.
     
-    3. Z listy rozwijanej wybierz subskrypcję skojarzoną z usługi Menedżer urządzeń StorSimple.
+   3. Z listy rozwijanej wybierz subskrypcję skojarzoną z usługi Menedżer urządzeń StorSimple.
     
-    4. Podaj nazwę Menedżer urządzeń StorSimple dla **zasobów**.
+   4. Podaj nazwę Menedżer urządzeń StorSimple dla **zasobów**.
 
-    5. Wprowadź **szyfrowania danych usługi** klucza dla usługi Menedżer urządzeń StorSimple. 
+   5. Wprowadź **szyfrowania danych usługi** klucza dla usługi Menedżer urządzeń StorSimple. 
 
-    ![Konfigurowanie repozytorium danych źródła 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
+      ![Konfigurowanie repozytorium danych źródła 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-    Kliknij przycisk **OK** po zakończeniu. Spowoduje to zapisanie repozytorium danych. Ponowne użycie tego Menedżera urządzeń StorSimple w innych definicjach zadań bez konieczności ponownego wprowadzania tych parametrów. Zajmuje kilka sekund po kliknięciu **OK** repozytorium danych nowo utworzone źródło pojawienie się na liście rozwijanej.
+      Kliknij przycisk **OK** po zakończeniu. Spowoduje to zapisanie repozytorium danych. Ponowne użycie tego Menedżera urządzeń StorSimple w innych definicjach zadań bez konieczności ponownego wprowadzania tych parametrów. Zajmuje kilka sekund po kliknięciu **OK** repozytorium danych nowo utworzone źródło pojawienie się na liście rozwijanej.
 
 7. Z listy rozwijanej dla **repozytorium danych prognostycznych**, wybierz repozytorium danych został utworzony. 
 
-    1. Wprowadź nazwę urządzenia StorSimple 8000 series, zawierający potrzebne dane.
+   1. Wprowadź nazwę urządzenia StorSimple 8000 series, zawierający potrzebne dane.
 
-    2. Określ nazwę woluminu, znajdującej się na urządzeniu StorSimple, które ma Twoje dane.
+   2. Określ nazwę woluminu, znajdującej się na urządzeniu StorSimple, które ma Twoje dane.
 
-    3. W **filtru** podsekcję, wprowadź katalogu głównego, który zawiera dane zainteresowanie _\MyRootDirectory\Data_ formatu. Litery dysków takie _\C:\Data_ nie są obsługiwane. Można również dodać wszelkie filtry pliku.
+   3. W **filtru** podsekcję, wprowadź katalogu głównego, który zawiera dane zainteresowanie _\MyRootDirectory\Data_ formatu. Litery dysków takie _\C:\Data_ nie są obsługiwane. Można również dodać wszelkie filtry pliku.
 
-    4. Działa usługa przekształcania danych na dane, które wypchnięty na platformie Azure przy użyciu migawek. Po uruchomieniu tego zadania, można wybrać utworzyć kopię zapasową za każdym razem, gdy to zadanie zostanie uruchomione (nad najnowszych danych) lub za pomocą ostatniej kopii zapasowej istniejącej w chmurze (Jeśli pracujesz nad niektórych danych archiwalnych).
+   4. Działa usługa przekształcania danych na dane, które wypchnięty na platformie Azure przy użyciu migawek. Po uruchomieniu tego zadania, można wybrać utworzyć kopię zapasową za każdym razem, gdy to zadanie zostanie uruchomione (nad najnowszych danych) lub za pomocą ostatniej kopii zapasowej istniejącej w chmurze (Jeśli pracujesz nad niektórych danych archiwalnych).
 
-    5. Kliknij przycisk **OK**.
+   5. Kliknij przycisk **OK**.
 
-    ![Konfigurowanie repozytorium danych źródła 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+      ![Konfigurowanie repozytorium danych źródła 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
 8. Następnie konieczne jest skonfigurowanie repozytorium danych docelowych. Wybieranie kont magazynu, aby umieścić pliki do obiektów blob w ramach tego konta. Z listy rozwijanej wybierz **Dodaj nowe** i następnie **konfigurowania ustawień**.
 

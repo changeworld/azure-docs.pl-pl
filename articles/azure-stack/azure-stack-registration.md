@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 2ed9598ecfb45323505e8527cfb3ab9fe7d8b58e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 1f6edd871d6815dab93bf9e8d582b0cb1ba6c78f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764731"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109243"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -173,7 +173,7 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
    ```
    Aby uzyskać więcej informacji na temat polecenia cmdlet Set-AzsRegistration, zobacz [dokumentacja rejestracji](#registration-reference).
 
-  Ten proces może potrwać od 10 do 15 minut. Po zakończeniu wykonywania polecenia zostanie wyświetlony komunikat **"środowiska jest teraz zarejestrowany i aktywować przy użyciu podanych parametrów."**
+   Ten proces może potrwać od 10 do 15 minut. Po zakończeniu wykonywania polecenia zostanie wyświetlony komunikat **"środowiska jest teraz zarejestrowany i aktywować przy użyciu podanych parametrów."**
 
 ## <a name="register-connected-with-capacity-billing"></a>Zarejestruj się związanych z rozliczeniami pojemności
 
@@ -210,20 +210,20 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
 
 5. Uruchom program PowerShell ISE jako administrator i przejdź do **rejestracji** folderu w **AzureStack Narzędzia główne** Katalog utworzony podczas pobierania narzędzia Azure Stack. Importuj **RegisterWithAzure.psm1** modułu przy użyciu programu PowerShell:
 
-  ```PowerShell  
-  $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
-  $RegistrationName = "<unique-registration-name>"
-  Set-AzsRegistration `
+   ```PowerShell  
+   $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $RegistrationName = "<unique-registration-name>"
+   Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
       -AgreementNumber <EA agreement number> `
       -BillingModel Capacity `
       -RegistrationName $RegistrationName
-  ```
+   ```
    > [!Note]  
    > Można wyłączyć raportowanie z parametrem UsageReportingEnabled dla użycia **AzsRegistration zestaw** polecenia cmdlet przez ustawienie parametru na wartość false. 
    
-  Aby uzyskać więcej informacji na temat polecenia cmdlet Set-AzsRegistration, zobacz [dokumentacja rejestracji](#registration-reference).
+   Aby uzyskać więcej informacji na temat polecenia cmdlet Set-AzsRegistration, zobacz [dokumentacja rejestracji](#registration-reference).
 
 ## <a name="register-disconnected-with-capacity-billing"></a>Zarejestruj bez połączenia z rozliczeniem pojemności
 

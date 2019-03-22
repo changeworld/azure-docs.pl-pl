@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e940d7593b6760a81a781fd72c0bb45347b00c2a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4494996ed54b25be71367dd3e3043023d0958074
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168156"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Strona stanu
 
@@ -114,23 +114,25 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Konfigurowanie logowania jednokrotnego](./media/statuspage-tutorial/tutorial_statuspage_url.png)
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
     | `https://<subdomain>.statuspage.io/` |
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: 
+    
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/sso/saml/consume` |
     | `https://<subdomain>.statuspage.io/sso/saml/consume` |
 
-    > [!NOTE]
-    > Skontaktuj się z zespołem pomocy technicznej Strona stanu na [ SupportTeam@statuspage.io ](mailto:SupportTeam@statuspage.io)żądanie metadanych niezbędne do skonfigurowania logowania jednokrotnego. 
-    >
-    >a. Skopiuj wartość wystawcy z metadanych, a następnie wklej go do **identyfikator** pola tekstowego.
-    >
-    >b. Z metadanych, skopiuj adres URL odpowiedzi, a następnie wklej go do **adres URL odpowiedzi** pola tekstowego.
+   > [!NOTE]
+   > Skontaktuj się z zespołem pomocy technicznej Strona stanu na [ SupportTeam@statuspage.io ](mailto:SupportTeam@statuspage.io)żądanie metadanych niezbędne do skonfigurowania logowania jednokrotnego. 
+   > 
+   > a. Skopiuj wartość wystawcy z metadanych, a następnie wklej go do **identyfikator** pola tekstowego.
+   > 
+   > b. Z metadanych, skopiuj adres URL odpowiedzi, a następnie wklej go do **adres URL odpowiedzi** pola tekstowego.
 
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
@@ -156,15 +158,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Na stronie ustawień logowania jednokrotnego wykonaj następujące czynności:
    
-    ![Konfigurowanie logowania jednokrotnego](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+      ![Konfigurowanie logowania jednokrotnego](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-    ![Konfigurowanie logowania jednokrotnego](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+      ![Konfigurowanie logowania jednokrotnego](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-    a. W **logowania jednokrotnego, docelowy adres URL** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, który skopiowano z witryny Azure portal.
+      a. W **logowania jednokrotnego, docelowy adres URL** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, który skopiowano z witryny Azure portal.
 
-    b. Otwórz pobranego certyfikatu w programie Notatnik, skopiuj zawartość, a następnie wklej go do **certyfikatu** pola tekstowego. 
+      b. Otwórz pobranego certyfikatu w programie Notatnik, skopiuj zawartość, a następnie wklej go do **certyfikatu** pola tekstowego. 
 
-    c. Kliknij przycisk **Zapisywanie konfiguracji**.
+      c. Kliknij przycisk **Zapisywanie konfiguracji**.
 
 > [!TIP]
 > Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -269,7 +271,7 @@ Po kliknięciu kafelka Strona stanu, w panelu dostępu, użytkownik powinien uzy
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

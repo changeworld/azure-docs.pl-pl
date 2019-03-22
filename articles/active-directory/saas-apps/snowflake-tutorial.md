@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3488ac27-0417-4ad9-b9a3-08325fe8ea0d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 617a01fdce71e76cf4783ee6a274ee428b0b3b57
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867052"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Snowflake
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji Snowflake z usługą Azure AD, musisz d
 
 **Aby dodać usługę Snowflake z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -109,7 +109,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Snowflake
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/login`
 
-    d. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez dostawcę usług:
+    c. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez dostawcę usług:
 
     ![Domena i adresy URL aplikacji Snowflake — informacje dotyczące logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
@@ -134,29 +134,29 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Snowflake
 
 ### <a name="configure-snowflake-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Snowflake
 
-8. W innym oknie przeglądarki internetowej zaloguj się do aplikacji Snowflake jako administrator zabezpieczeń.
+1. W innym oknie przeglądarki internetowej zaloguj się do aplikacji Snowflake jako administrator zabezpieczeń.
 
-9. **Przełącz rolę** na **ACCOUNTADMIN**, klikając **profil** w prawej górnej części strony.
+1. **Przełącz rolę** na **ACCOUNTADMIN**, klikając **profil** w prawej górnej części strony.
 
     > [!NOTE]
     > Jest to oddzielone od kontekstu wybranego w prawym górnym rogu pod Twoją nazwą użytkownika
     
     ![Administrator aplikacji Snowflake](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-10. Otwórz **pobrany certyfikat Base 64** w Notatniku. Skopiuj wartość z zakresu od „---BEGIN CERTIFICATE---” do „---END CERTIFICATE---” i wklej ją w znaki cudzysłowu obok **certyfikatu** poniżej. W polu **ssoUrl** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal. Wybierz pozycję **Wszystkie zapytania** i kliknij przycisk **Uruchom**.
+1. Otwórz **pobrany certyfikat Base 64** w Notatniku. Skopiuj wartość z zakresu od „---BEGIN CERTIFICATE---” do „---END CERTIFICATE---” i wklej ją w znaki cudzysłowu obok **certyfikatu** poniżej. W polu **ssoUrl** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal. Wybierz pozycję **Wszystkie zapytania** i kliknij przycisk **Uruchom**.
 
-    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
+   ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
-    ```
-    use role accountadmin;
-    alter account set saml_identity_provider = '{
-    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
-    "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
-    "type":"custom",
-    "label":"AzureAD"
-    }';
-    alter account set sso_login_page = TRUE;
-    ```
+   ```
+   use role accountadmin;
+   alter account set saml_identity_provider = '{
+   "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+   "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
+   "type":"custom",
+   "label":"AzureAD"
+   }';
+   alter account set sso_login_page = TRUE;
+   ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -176,7 +176,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -232,7 +232,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie do aplikacji Snowflake,
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Snowflake w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Snowflake, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 50f55ca3b05a6902841f1b1268cfbde742a9d589
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b45c5abb66d927f247f62692f12bd9207958a3e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181286"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dla deweloperów aplikacji do zarządzania zasobami w usłudze Azure Kubernetes Service (AKS)
 
 Podczas tworzenia i uruchamiania aplikacji w usłudze Azure Kubernetes Service (AKS), istnieje kilka kluczowe obszary, które należy wziąć pod uwagę. Jak zarządzać wdrożenia aplikacji może niekorzystnie wpłynąć na środowisko użytkownika końcowego usługi, które należy podać. Ułatwiające pomyślnie, należy pamiętać, niektóre najlepsze rozwiązania można wykonać podczas tworzenia i uruchamiania aplikacji w usłudze AKS.
 
-Najlepsze rozwiązania dotyczące tej koncentruje się na sposób uruchamiania klastra i obciążeń usługi z perspektywy dewelopera aplikacji. Aby uzyskać informacji na temat administracyjne najlepszych rozwiązań, zobacz [klastra operator najlepsze rozwiązania dotyczące izolacji i zarządzanie zasobami w usłudze Azure Kubernetes Service (AKS)][operator-best-practices-isolation]. W tym artykule dowiesz się:
+Najlepsze rozwiązania dotyczące tej koncentruje się na sposób uruchamiania klastra i obciążeń usługi z perspektywy dewelopera aplikacji. Aby uzyskać informacji na temat administracyjne najlepszych rozwiązań, zobacz [klastra operator najlepsze rozwiązania dotyczące izolacji i zarządzanie zasobami w usłudze Azure Kubernetes Service (AKS)][operator-best-practices-isolation]. W tym artykule omówiono następujące zagadnienia:
 
 > [!div class="checklist"]
 > * Jakie są limity i żądania zasobu pod
@@ -84,9 +84,9 @@ Ten zintegrowany proces projektowania i testowania spacjami Dev ogranicza potrze
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Regularne sprawdzanie problemów z aplikacjami przy użyciu klastra kubernetes w usłudze advisor
 
-**Najważniejsze wskazówki** -regularnie uruchomić najnowszą wersję `kube-advisor` do wykrywania problemów w klastrze. Jeśli zastosujesz limity przydziałów zasobów w istniejącym klastrze usługi AKS, uruchom `kube-advisor` najpierw po to, aby znaleźć zasobników, które nie mają żądania zasobów i ograniczeń.
+**Najważniejsze wskazówki** -regularnie uruchomić najnowszą wersję `kube-advisor` narzędzia typu open source do wykrywania problemów w klastrze. Jeśli zastosujesz limity przydziałów zasobów w istniejącym klastrze usługi AKS, uruchom `kube-advisor` najpierw po to, aby znaleźć zasobników, które nie mają żądania zasobów i ograniczeń.
 
-[Klastra kubernetes w usłudze advisor] [ kube-advisor] narzędzie skanuje klastra Kubernetes i raporty dotyczące problemów, które znajdzie. Jest jeden wyboru przydatne do identyfikowania zasobników, które nie mają i limity zasobów w miejscu.
+[Klastra kubernetes w usłudze advisor] [ kube-advisor] narzędzie jest skojarzone projekt typu open source AKS, które skanuje klastra Kubernetes i raporty dotyczące problemów, które znajdzie. Jest jeden wyboru przydatne do identyfikowania zasobników, które nie mają i limity zasobów w miejscu.
 
 W klastrze AKS, który hostuje wiele zespołów deweloperów i aplikacji może być trudne do śledzenia zasobników, bez tych zasobów żądania i ogranicza zestaw. Najlepszym rozwiązaniem jest regularne uruchamianie `kube-advisor` w klastrach usługi AKS.
 

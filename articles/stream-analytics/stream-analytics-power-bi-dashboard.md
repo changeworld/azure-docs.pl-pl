@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d7f67015d4df20ea39c1225d52be36340b8f65d1
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556980"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116185"
 ---
 # <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Samouczek: Stream Analytics i usługa Power BI: Pulpit nawigacyjny analizy w czasie rzeczywistym dla danych przesyłanych strumieniowo
 Usługa Azure Stream Analytics umożliwia korzystanie z zalet jednej z wiodących narzędzi analizy biznesowej, [Microsoft Power BI](https://powerbi.com/). W tym artykule dowiesz się, jak utworzyć narzędzia do analizy biznesowej za pomocą usługi Power BI jako dane wyjściowe dla zadań usługi Azure Stream Analytics. Poznasz również sposób tworzenia i używania pulpitu nawigacyjnego w czasie rzeczywistym.
@@ -56,16 +56,16 @@ W tym samouczku wykrywanie oszustw w czasie rzeczywistym dane wyjściowe są wys
 
 7. Gdy następuje powrót do **nowe dane wyjściowe** bloku, wprowadź następujące informacje:
 
-    * **Obszar roboczy grupy**: Wybierz obszar roboczy w dzierżawie usługi Power BI, w której chcesz utworzyć zestaw danych.
-    * **Nazwa zestawu danych**:  Wprowadź polecenie `sa-dataset`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj go na później.
-    * **Nazwa tabeli**: Wprowadź polecenie `fraudulent-calls`. Obecnie usługa Power BI dane wyjściowe zadania usługi Stream Analytics może mieć tylko jedną tabelę w zestawie danych.
+   * **Obszar roboczy grupy**: Wybierz obszar roboczy w dzierżawie usługi Power BI, w której chcesz utworzyć zestaw danych.
+   * **Nazwa zestawu danych**:  Wprowadź polecenie `sa-dataset`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj go na później.
+   * **Nazwa tabeli**: Wprowadź polecenie `fraudulent-calls`. Obecnie usługa Power BI dane wyjściowe zadania usługi Stream Analytics może mieć tylko jedną tabelę w zestawie danych.
 
-    ![Zestaw danych do programu Power BI obszaru roboczego i tabeli](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
+     ![Zestaw danych do programu Power BI obszaru roboczego i tabeli](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
 
-    > [!WARNING]
-    > Jeśli usługa Power BI zawiera zestaw danych i tabelę, która ma takie same nazwy te, które określisz w zadaniu Stream Analytics, istniejące zostaną zastąpione.
-    > Zaleca się, że nie jawnie utworzysz ten zestaw danych i tabeli na koncie usługi Power BI. Są one tworzone automatycznie podczas uruchamiania zadania usługi Stream Analytics, a zadanie zostanie uruchomione przekazujący dane wyjściowe do usługi Power BI. Jeśli zapytanie dotyczące zadań nie zwraca żadnych wyników, zestaw danych i tabeli nie są tworzone.
-    >
+     > [!WARNING]
+     > Jeśli usługa Power BI zawiera zestaw danych i tabelę, która ma takie same nazwy te, które określisz w zadaniu Stream Analytics, istniejące zostaną zastąpione.
+     > Zaleca się, że nie jawnie utworzysz ten zestaw danych i tabeli na koncie usługi Power BI. Są one tworzone automatycznie podczas uruchamiania zadania usługi Stream Analytics, a zadanie zostanie uruchomione przekazujący dane wyjściowe do usługi Power BI. Jeśli zapytanie dotyczące zadań nie zwraca żadnych wyników, zestaw danych i tabeli nie są tworzone.
+     >
 
 8. Kliknij pozycję **Utwórz**.
 
@@ -189,13 +189,13 @@ Zadanie usługi Stream Analytics uruchamia wyszukiwanie fałszywych połączeń 
     * Dodaj wartość i wybierz pozycję **fraudulentcalls**.
     * W ustawieniu **Okno czasowe do wyświetlenia** wybierz ostatnie 10 minut.
 
-    ![Tworzenie kafelka wykresu liniowego w usłudze Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
+      ![Tworzenie kafelka wykresu liniowego w usłudze Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
 9. Kliknij przycisk **dalej**, Dodaj tytuł i podtytuł, a kliknij **Zastosuj**.
 
-    Pulpit nawigacyjny usługi Power BI teraz oferuje dwa widoki danych o fałszywych połączeń wykryciu danych przesyłanych strumieniowo.
+     Pulpit nawigacyjny usługi Power BI teraz oferuje dwa widoki danych o fałszywych połączeń wykryciu danych przesyłanych strumieniowo.
 
-    ![Zakończono pulpitu nawigacyjnego usługi Power BI, przedstawiający dwa Kafelki dla fałszywych połączeń](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
+     ![Zakończono pulpitu nawigacyjnego usługi Power BI, przedstawiający dwa Kafelki dla fałszywych połączeń](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
 ## <a name="learn-more-about-power-bi"></a>Dowiedz się więcej o usłudze Power BI

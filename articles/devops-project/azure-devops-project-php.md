@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka PHP za pomocą usługi Azure DevOps Projects'
+title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka PHP za pomocą usługi Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Umożliwia uruchomienie aplikacji w wybranej usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 24a957260e3e3f161ce9e2e61b746f9b052e784d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.openlocfilehash: 82310857276c53c85af033ae32a3aeef4f33c8da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264373"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109379"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka PHP za pomocą usługi Azure DevOps Projects
 
@@ -65,7 +65,7 @@ Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za
 
     ![Widok pulpitu nawigacyjnego](_img/azure-devops-project-php/dashboardnopreview.png) 
     
- Usługa DevOps Projects automatycznie skonfigurowała wyzwalacz kompilacji i wydania ciągłej integracji.  Możesz teraz rozpocząć pracę w zespole nad aplikacją w języku PHP w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrożenie najnowszej wersji w witrynie internetowej.
+   Usługa DevOps Projects automatycznie skonfigurowała wyzwalacz kompilacji i wydania ciągłej integracji.  Możesz teraz rozpocząć pracę w zespole nad aplikacją w języku PHP w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrożenie najnowszej wersji w witrynie internetowej.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Zatwierdzanie zmian kodu i wykonywanie ciągłej integracji/ciągłego wdrażania
 
@@ -144,7 +144,7 @@ W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany s�
 
 Gdy usługa Azure App Service i inne powiązane zasoby nie będą już potrzebne, możesz je usunąć. Użyj funkcji **Usuń** na pulpicie nawigacyjnym usługi DevOps Projects.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Podczas konfigurowania procesu ciągłej integracji/ciągłego wdrażania zostały automatycznie utworzone potoki kompilacji i wydania. Możesz zmodyfikować potoki kompilacji i wydania, aby dopasować je do potrzeb swojego zespołu. Aby dowiedzieć się więcej na temat potoku ciągłej integracji/ciągłego wdrażania, zapoznaj się z tym samouczkiem:
 

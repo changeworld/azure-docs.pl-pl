@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 45b8b4398953e06245731c11fed23d2d7a8e8f32
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: c9a72bc435517241cf705660a669e9fb57ae2a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009328"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103115"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Tworzenie Centrum IoT przy użyciu szablonu usługi Azure Resource Manager (PowerShell)
 
@@ -131,7 +131,7 @@ Szablon JSON do tworzenia Centrum IoT w grupie zasobów. Można również użyć
     ```powershell
     New-AzResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
     ```
-  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 4. Dane wyjściowe wyświetla klucze dla usługi IoT hub, który został utworzony.
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 0fd0fe06c218c6ad7427f6495fb315b42dd87101
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 4400b466927253e6eb81cf2ec29994d0606beea6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728475"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176705"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-python"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem języka Python
 
@@ -127,6 +127,8 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
 
+Znajdź skrót kraju, w tym [listę języków](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
+
 ```json
 [
     {
@@ -156,12 +158,12 @@ Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny 
 
 Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby usunąć ten klucz subskrypcji po zakończeniu pracy z przewodnikiem Szybki start.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla języka Python w usłudze GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 Dowiedz się, jak używać interfejsu API tłumaczenia tekstu w usłudze Translator w następujących celach:
 

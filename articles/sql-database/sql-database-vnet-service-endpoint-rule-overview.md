@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 15ca464e8e44183b445bfdabe9abf5dd560a4f70
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887123"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Punkty końcowe usługi sieci wirtualnej i reguł na użytek serwerów baz danych
 
@@ -175,58 +175,60 @@ Program PolyBase jest najczęściej używany do ładowania danych do usługi Azu
 #### <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 1.  Zainstaluj program Azure PowerShell za pomocą tego [przewodnik](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, należy najpierw uaktualnić do ogólnego przeznaczenia w wersji 2 za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Konieczne jest posiadanie **dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu** włączone w ramach konta usługi Azure Storage **zapory i sieci wirtualne** menu Ustawienia. Zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Aby uzyskać więcej informacji.
  
 #### <a name="steps"></a>Kroki
-1.  W programie PowerShell **zarejestrować serwer bazy danych SQL** za pomocą usługi Azure Active Directory (AAD):
+1. W programie PowerShell **zarejestrować serwer bazy danych SQL** za pomocą usługi Azure Active Directory (AAD):
 
-    ```powershell
-    Connect-AzAccount
-    Select-AzSubscription -SubscriptionId your-subscriptionId
-    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-    ```
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
     
- 1. Tworzenie **ogólnego przeznaczenia w wersji 2, konto magazynu** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+   1. Tworzenie **ogólnego przeznaczenia w wersji 2, konto magazynu** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 
-    > [!NOTE]
-    > - Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, musisz najpierw **najpierw przeprowadzić uaktualnienie do wersji 2** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-    > - Znane problemy związane z usługi Azure Data Lake Storage Gen2, można znaleźć na stronie to [przewodnik](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+   > [!NOTE]
+   > - Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, musisz najpierw **najpierw przeprowadzić uaktualnienie do wersji 2** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Znane problemy związane z usługi Azure Data Lake Storage Gen2, można znaleźć na stronie to [przewodnik](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1.  W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** rolę RBAC do serwera usługi SQL Database.
+1. W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** rolę RBAC do serwera usługi SQL Database.
 
-    > [!NOTE] 
-    > Tylko elementy członkowskie z uprawnieniami właściciela można wykonać ten krok. Dla różnych ról wbudowanych dla zasobów platformy Azure, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > [!NOTE] 
+   > Tylko elementy członkowskie z uprawnieniami właściciela można wykonać ten krok. Dla różnych ról wbudowanych dla zasobów platformy Azure, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
-1.  **Program Polybase łączności z kontem usługi Azure Storage:**
+1. **Program Polybase łączności z kontem usługi Azure Storage:**
 
-    1. Tworzenie bazy danych **[klucz główny](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** Jeśli nie zostały one utworzone wcześniej:
-        ```SQL
-        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
-        ```
+   1. Tworzenie bazy danych **[klucz główny](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** Jeśli nie zostały one utworzone wcześniej:
+       ```SQL
+       CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+       ```
     
-    1. Tworzenie poświadczeń o zakresie bazy danych przy użyciu **tożsamość = "Tożsamości usługi zarządzanej"**:
+   1. Tworzenie poświadczeń o zakresie bazy danych przy użyciu **tożsamość = "Tożsamości usługi zarządzanej"**:
 
-        ```SQL
-        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-        ```
-        > [!NOTE] 
-        > - Nie trzeba określać klucz TAJNY kluczem dostępu do usługi Azure Storage, ponieważ korzysta z tego mechanizmu [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) dzieje się w tle.
-        > - Nazwa tożsamości, powinna być **"Tożsamości usługi zarządzanej"** łączności programu PolyBase do pracy z konta usługi Azure Storage, chronione w sieci wirtualnej.    
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - Nie trzeba określać klucz TAJNY kluczem dostępu do usługi Azure Storage, ponieważ korzysta z tego mechanizmu [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) dzieje się w tle.
+       > - Nazwa tożsamości, powinna być **"Tożsamości usługi zarządzanej"** łączności programu PolyBase do pracy z konta usługi Azure Storage, chronione w sieci wirtualnej.    
     
-    1. Tworzenie zewnętrznego źródła danych za pomocą abfss: / / schemat do łączenia się z konta magazynu ogólnego przeznaczenia w wersji 2 przy użyciu programu PolyBase:
+   1. Tworzenie zewnętrznego źródła danych za pomocą abfss: / / schemat do łączenia się z konta magazynu ogólnego przeznaczenia w wersji 2 przy użyciu programu PolyBase:
 
-        ```SQL
-        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
-        ```
-        > [!NOTE] 
-        > - Jeśli masz już tabel zewnętrznych skojarzone z kontem magazynu ogólnego przeznaczenia w wersji 1 lub obiektu blob, należy najpierw Porzuć te tabele zewnętrzne, a następnie upuść odpowiedniego zewnętrznego źródła danych. Następnie utwórz zewnętrznego źródła danych za pomocą abfss: / / schemat nawiązywania połączenia z konta magazynu ogólnego przeznaczenia w wersji 2 opisanych powyżej i ponowne utworzenie tabel zewnętrznych za pomocą tego nowego zewnętrznego źródła danych. Można użyć [Generowanie i Kreator publikowania skrypty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017) do generowania skryptów tworzenia tabel zewnętrznych w celu ułatwienia.
-        > - Aby uzyskać więcej informacji na temat abfss: / / schemat, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
-        > - Aby uzyskać więcej informacji na temat CREATE EXTERNAL DATA SOURCE, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+       ```SQL
+       CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+       ```
+       > [!NOTE] 
+       > - Jeśli masz już tabel zewnętrznych skojarzone z kontem magazynu ogólnego przeznaczenia w wersji 1 lub obiektu blob, należy najpierw Porzuć te tabele zewnętrzne, a następnie upuść odpowiedniego zewnętrznego źródła danych. Następnie utwórz zewnętrznego źródła danych za pomocą abfss: / / schemat nawiązywania połączenia z konta magazynu ogólnego przeznaczenia w wersji 2 opisanych powyżej i ponowne utworzenie tabel zewnętrznych za pomocą tego nowego zewnętrznego źródła danych. Można użyć [Generowanie i Kreator publikowania skrypty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) do generowania skryptów tworzenia tabel zewnętrznych w celu ułatwienia.
+       > - Aby uzyskać więcej informacji na temat abfss: / / schemat, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+       > - Aby uzyskać więcej informacji na temat CREATE EXTERNAL DATA SOURCE, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
         
-    1. Zapytania, ponieważ przy użyciu normalnych [tabel zewnętrznych](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Zapytania, ponieważ przy użyciu normalnych [tabel zewnętrznych](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
 ### <a name="azure-sql-database-blob-auditing"></a>Usługi Azure SQL Database, inspekcji obiektów Blob
 
@@ -256,7 +258,7 @@ Błąd połączenia 40914 odnosi się do *reguł sieci wirtualnej*, jak określo
 
 *Tekst komunikatu:* Nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient o adresie IP{1}"nie może uzyskać dostępu do serwera.
 
-*Opis błędu:* Klient próbuje nawiązać połączenie z adresu IP, który nie ma uprawnień do łączenia się z serwerem usługi Azure SQL Database. Zapory serwera nie ma adresu IP adres reguły, klient będzie mógł komunikować się z danego adresu IP do bazy danych SQL.
+*Opis błędu:* Klient próbuje nawiązać połączenie z adresu IP, który nie ma uprawnień do łączenia się z serwerem usługi Azure SQL Database. Zapora serwera nie ma reguły adresu IP zezwalającej klientowi na komunikację z usługą SQL Database z tego adresu IP.
 
 *Błąd podczas rozpoznawania:* Wprowadź adres IP klienta jako reguła adresów IP. W tym za pomocą okienka zapory w witrynie Azure portal.
 

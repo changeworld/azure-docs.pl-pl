@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 08/14/2018
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2cf135cc984ce032113de65bead210bd4c5e95ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861803"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847987"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Co to jest interfejs API wyszukiwania w sieci Web Bing?
 
-Interfejs API wyszukiwania w Internecie Bing jest usługą RESTful, która zapewnia błyskawiczne odpowiedzi na zapytania użytkowników. Wyniki wyszukiwania można łatwo konfigurować tak, aby obejmowały strony internetowe, obrazy, wideo, wiadomości, tłumaczenia i więcej. Wyniki są podawane w formacie JSON oraz oparte na istotności wyszukiwania i subskrypcjach wyszukiwania w Internecie Bing.
+Interfejs API wyszukiwania w Internecie Bing jest usługą RESTful, która zapewnia błyskawiczne odpowiedzi na zapytania użytkowników. Wyniki wyszukiwania można łatwo konfigurować tak, aby obejmowały strony internetowe, obrazy, wideo, wiadomości, tłumaczenia i więcej. Wyszukiwania w Internecie Bing zapewnia wyniki w formacie JSON na podstawie wyszukiwania wg istotności i subskrypcjami wyszukiwania w Internecie Bing.
 
 Ten interfejs API jest optymalny dla aplikacji, które muszą mieć dostęp do całej zawartości odpowiedniej dla zapytania wyszukiwania użytkownika. Jeśli tworzysz aplikację, która wymaga określonego typu wyniku, rozważ użycie [interfejsu API wyszukiwania obrazów Bing](../Bing-Image-Search/overview.md), [interfejsu API wyszukiwania wideo Bing](../Bing-Video-Search/search-the-web.md) lub [interfejsu API wyszukiwania wiadomości Bing](../Bing-News-Search/search-the-web.md). Aby uzyskać pełny wykaz interfejsów API wyszukiwania Bing, zobacz [Interfejsy API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services).
 
@@ -28,7 +28,7 @@ Chcesz zobaczyć, jak to działa? Wypróbuj [Pokaz interfejsu API wyszukiwania w
 
 ## <a name="features"></a>Funkcje  
 
-Oprócz błyskawicznych odpowiedzi, wyszukiwanie w Internecie Bing udostępnia dodatkowe funkcje i możliwości, które pozwalają dostosowywać wyniki wyszukiwania dla użytkowników.
+Wyszukiwania w Internecie Bing tylko nie zapewnia dostępu do błyskawiczne odpowiedzi. Udostępnia także dodatkowe funkcje i możliwości, które umożliwiają dostosowywanie wyników wyszukiwania dla użytkowników.
 
 | Cecha | Opis |
 |---------|-------------|
@@ -40,13 +40,13 @@ Oprócz błyskawicznych odpowiedzi, wyszukiwanie w Internecie Bing udostępnia d
 
 ## <a name="workflow"></a>Przepływ pracy
 
-Interfejs API wyszukiwania w Internecie Bing jest łatwo wywołać z dowolnego języka programowania, który może wysyłać żądania HTTP i analizować odpowiedzi w formacie JSON. Usługa jest dostępna za pomocą [interfejsu API REST](quickstarts/python.md) lub [zestawów SDK wyszukiwania w Internecie Bing](web-sdk-python-quickstart.md).  
+Interfejs API wyszukiwania w Internecie Bing jest łatwo wywołać z dowolnego języka programowania, który może wysyłać żądania HTTP i analizować odpowiedzi w formacie JSON. Usługa jest dostępna za pomocą [interfejsu API REST](quickstarts/python.md) lub [zestawów SDK wyszukiwania w Internecie Bing](web-sdk-python-quickstart.md).
 
 1. Utwórz [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  
 2. Wyślij [żądanie do interfejsu API wyszukiwania w Internecie Bing](quickstarts/python.md).
 3. Przeanalizuj odpowiedź w formacie JSON.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Użyj naszego artykułu [Szybki start dla języka Python](quickstarts/python.md), aby wykonać swoje pierwsze wywołanie interfejsu API wyszukiwania w Internecie Bing.  
 * [Utwórz jednostronicową aplikację internetową](tutorial-bing-web-search-single-page-app.md).

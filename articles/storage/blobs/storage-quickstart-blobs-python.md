@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: 94e9d19302c4a51d1401a88248431f237bf59758
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.openlocfilehash: 95b960245e00a353bb165e1f1d38db56bce62a8f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743512"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996729"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Python
 
@@ -69,7 +69,7 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 ```
 Przed kontynuowaniem sprawdź, czy w folderze *Documents* znajdują się te dwa pliki. Możesz je otworzyć i sprawdzić, czy są takie same.
 
-Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](http://storageexplorer.com). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
+Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
 
 Po zweryfikowaniu plików naciśnij dowolny klawisz, aby zakończyć demonstrację i usunąć pliki testowe. Teraz, gdy wiesz już, jak działa aplikacja przykładowa, otwórz plik *example.py* i przyjrzyj się kodowi. 
 
@@ -178,7 +178,7 @@ Aby uzyskać dodatkowe informacje dotyczące tworzenia aplikacji w języku Pytho
 - Aby uzyskać więcej informacji na temat biblioteki klienta Python, zapoznaj się z [dokumentacją interfejsu API języka Python](https://docs.microsoft.com/python/api/overview/azure/storage).
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob) napisanymi przy użyciu biblioteki klienta Python.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
  
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Python. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do instrukcji dotyczących magazynu obiektów blob.
 

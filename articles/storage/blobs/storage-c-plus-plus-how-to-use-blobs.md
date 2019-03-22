@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: a9b7d15bebdef40c983eaf4d5eee6953b5a10994
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d86b2c71515900405b0e7714d2c36cd8e4cbc7fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236942"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993224"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Jak używać magazynu obiektów Blob w języku C++
 
-Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Azure Blob storage. W przykładach pokazano, jak przekazywanie, listy, pobieranie i usuwanie obiektów blob. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
+Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Azure Blob storage. W przykładach pokazano, jak przekazywanie, listy, pobieranie i usuwanie obiektów blob. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
 
 Aby dowiedzieć się więcej o usłudze Blob storage, zobacz [wprowadzenie do usługi Azure Blob storage](storage-blobs-introduction.md).
 
 > [!NOTE]
-> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Firma Microsoft zaleca używanie najnowszej wersji biblioteki klienta usługi Storage dla języka C++, dostępne za pośrednictwem [NuGet](http://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp).
+> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Firma Microsoft zaleca używanie najnowszej wersji biblioteki klienta usługi Storage dla języka C++, dostępne za pośrednictwem [NuGet](https://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
@@ -34,7 +34,7 @@ W tym celu należy zainstalować bibliotekę klienta usługi Azure Storage dla j
 Możesz zainstalować bibliotekę klienta usługi Azure Storage dla języka C++, korzystając z następujących metod:
 
 * **Linux:** Wykonaj instrukcje podane w [biblioteki klienta usługi Azure Storage dla języka C++ w pliku README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.  
-* **Windows:** W programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.  
+* **Windows:** W programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.  
   
      Install-Package wastorage
 
@@ -258,7 +258,7 @@ Teraz, kiedy znasz już podstawy usługi blob storage, skorzystaj z poniższych 
 * [Jak używać magazynu kolejek w języku C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Jak używać magazynu tabel w języku C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Lista zasobów usługi Azure Storage w języku C++](../storage-c-plus-plus-enumeration.md)
-* [Biblioteka klienta usługi Storage for C++ Concepts](http://azure.github.io/azure-storage-cpp)
+* [Biblioteka klienta usługi Storage for C++ Concepts](https://azure.github.io/azure-storage-cpp)
 * [Dokumentacja usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](../storage-use-azcopy.md)
 

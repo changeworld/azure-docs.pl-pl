@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: df89f8fd4dd5c7690d858009e250a474f702f1a8
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125038"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098138"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Szyfrowanie danych w usłudze Azure Data Lake magazynu Gen1
 
@@ -21,7 +21,7 @@ Szyfrowanie w usłudze Azure Data Lake magazynu Gen1 pomaga chronić dane, imple
 
 Data Lake Storage Gen1 obsługuje szyfrowanie danych zarówno magazynowanych, jak i podczas przesyłania. Dla danych magazynowanych usługa Data Lake Storage Gen1 obsługuje "na domyślnie" przezroczyste szyfrowanie. Poniżej przedstawiono bardziej szczegółowe wyjaśnienie tych terminów:
 
-* **Na domyślnie**: podczas tworzenia nowego konta Data Lake Storage Gen1 domyślne ustawienie włącza szyfrowanie. Dzięki temu dane są przechowywane w Data Lake Storage Gen1 są zawsze szyfrowane jeszcze przed zapisaniem na nośniku trwałym. Takie działanie dotyczy wszystkich danych i nie można go zmienić po utworzeniu konta.
+* **Na domyślnie**: Podczas tworzenia nowego konta Data Lake Storage Gen1 domyślne ustawienie włącza szyfrowanie. Dzięki temu dane są przechowywane w Data Lake Storage Gen1 są zawsze szyfrowane jeszcze przed zapisaniem na nośniku trwałym. Takie działanie dotyczy wszystkich danych i nie można go zmienić po utworzeniu konta.
 * **Przezroczysty**: Data Lake Storage Gen1 automatycznie szyfruje dane przed utrwaleniem i odszyfrowuje przed pobraniem. Szyfrowanie jest konfigurowane i zarządzane na poziomie konta Data Lake Storage Gen1 przez administratora. W interfejsach API dostępu do danych nie są wprowadzane żadne zmiany. W związku z tym żadne zmiany nie są wymagane w aplikacjach i usługach, współpracujące z usługą Data Lake Storage Gen1 z powodu szyfrowania.
 
 Dane przesyłane (znany także jako dane w ruchu) również są zawsze szyfrowane w Data Lake Storage Gen1. Oprócz tego, że dane są szyfrowane przed zapisaniem na nośniku trwałym, są również zawsze zabezpieczane podczas przesyłania przy użyciu protokołu HTTPS. Protokół HTTPS jest jedynym protokołem obsługiwanym przez interfejsy REST Gen1 magazynu jeziora danych. Na poniższym diagramie przedstawiono sposób szyfrowania danych w Data Lake Storage Gen1:
@@ -74,7 +74,7 @@ Podczas wybierania trybu głównych kluczy szyfrowania należy pamiętać o nast
 
 W projekcie szyfrowania danych używane są trzy typy kluczy. Poniższa tabela zawiera podsumowanie:
 
-| Klucz                   | Skrót | Skojarzony z | Lokalizacja magazynu                             | Typ       | Uwagi                                                                                                   |
+| Klucz                   | Skrót | Skojarzony z | Lokalizacja magazynu                             | Type       | Uwagi                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Główny klucz szyfrowania | GKS          | Konta Data Lake Storage Gen1 | Usługa Key Vault                              | Asymetryczny | Można nim zarządzać, Data Lake Storage Gen1 lub.                                                              |
 | Klucz szyfrowania danych   | KSD          | Konta Data Lake Storage Gen1 | Magazyn trwały zarządzany przez usługę Data Lake Storage Gen1 | Symetryczny  | Klucz szyfrowania danych jest szyfrowany przy użyciu głównego klucza szyfrowania. Na nośniku trwałym jest zapisywany zaszyfrowany klucz szyfrowania danych. |
@@ -120,17 +120,17 @@ Należy pamiętać, że jeśli używasz domyślnych opcji szyfrowania, Twoje dan
 
     ![Zrzut ekranu usługi Key Vault](./media/data-lake-store-encryption/keyvault.png)
 
-3.  Wybierz klucz skojarzony z kontem usługi Data Lake Storage Gen1 i Utwórz nową wersję tego klucza. Należy pamiętać, że Data Lake Storage Gen1 obecnie obsługuje wyłącznie wymianę kluczy do nowej wersji klucza. Wymiana na inny klucz nie jest obsługiwana.
+3. Wybierz klucz skojarzony z kontem usługi Data Lake Storage Gen1 i Utwórz nową wersję tego klucza. Należy pamiętać, że Data Lake Storage Gen1 obecnie obsługuje wyłącznie wymianę kluczy do nowej wersji klucza. Wymiana na inny klucz nie jest obsługiwana.
 
    ![Zrzut ekranu okna Klucze z wyróżnionym przyciskiem Nowa wersja](./media/data-lake-store-encryption/keynewversion.png)
 
-4.  Przejdź do konta Data Lake Storage Gen1, a następnie wybierz pozycję **szyfrowania**.
+4. Przejdź do konta Data Lake Storage Gen1, a następnie wybierz pozycję **szyfrowania**.
 
-    ![Zrzut ekranu z Data Lake Storage Gen1 okna konta z wyróżnioną pozycją szyfrowanie](./media/data-lake-store-encryption/select-encryption.png)
+   ![Zrzut ekranu z Data Lake Storage Gen1 okna konta z wyróżnioną pozycją szyfrowanie](./media/data-lake-store-encryption/select-encryption.png)
 
-5.  Zostanie wyświetlony komunikat informujący o dostępności nowej wersji klucza. Kliknij pozycję **Wymień klucz**, aby zaktualizować klucz do nowej wersji.
+5. Zostanie wyświetlony komunikat informujący o dostępności nowej wersji klucza. Kliknij pozycję **Wymień klucz**, aby zaktualizować klucz do nowej wersji.
 
-    ![Zrzut ekranu z Data Lake Storage Gen1 okno z komunikatem i wyróżnioną pozycją Wymień klucz](./media/data-lake-store-encryption/rotatekey.png)
+   ![Zrzut ekranu z Data Lake Storage Gen1 okno z komunikatem i wyróżnioną pozycją Wymień klucz](./media/data-lake-store-encryption/rotatekey.png)
 
 Ta operacja powinna zająć mniej niż dwie minuty i nie powinna powodować żadnego przestoju. Po zakończeniu operacji jest używana nowa wersja klucza.
 

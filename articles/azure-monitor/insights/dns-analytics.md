@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6e3c456b3ee92f30b3b152a39faf3f1fe483013f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: fdc3c42da7f3d2290806a8cd00d7c90d16f3b87d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876606"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103931"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbierz informacje na temat infrastruktury DNS za pomocą rozwiązania DNS Analytics w wersji zapoznawczej
 
@@ -66,7 +66,7 @@ Na pulpicie nawigacyjnym rozwiązania kliknij **konfiguracji** aby otworzyć str
 
 - **Nazwy domen na liście dozwolonych**. Rozwiązanie nie przetwarza wszystkie zapytania wyszukiwania. Przechowuje go z listy dozwolonych sufiksów nazw domen. Zapytania dotyczące wyszukiwania rozpoznawane jako nazwy domen zgodne z sufiksami nazw domen na tej liście dozwolonych elementów nie są przetwarzane przez to rozwiązanie. Nie przetwarza nazwy domen na liście dozwolonych pomaga zoptymalizować dane wysyłane do usługi Azure Monitor. Domyślna lista dozwolonych zawiera popularne publiczne nazwy domen, takie jak www.google.com i www.facebook.com. Możesz wyświetlić domyślną pełną listę, przewijając.
 
- Można zmodyfikować listę, aby dodać do sufiks nazwy domeny, który chcesz wyświetlić szczegółowe informacje wyszukiwania. Można również usunąć wszystkie sufiks nazwy domeny, których nie chcesz, aby wyświetlić szczegółowe informacje wyszukiwania.
+  Można zmodyfikować listę, aby dodać do sufiks nazwy domeny, który chcesz wyświetlić szczegółowe informacje wyszukiwania. Można również usunąć wszystkie sufiks nazwy domeny, których nie chcesz, aby wyświetlić szczegółowe informacje wyszukiwania.
 
 - **Próg klienta z**. Klientów DNS, które przekraczają wartość progową, dla liczby żądań wyszukiwania zostaną wyróżnione w **klientów DNS** bloku. Domyślny próg wynosi 1000. Można edytować wartość progową.
 

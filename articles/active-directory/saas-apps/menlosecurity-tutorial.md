@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 9e63fe6b-0ad0-405d-9e41-6a1a40a41df8
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a83a72320a035bdb28ba0b52fd5ca1b3a17e7a9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: c2964169996aa3b2ac18c9c2accf358b7213c1c1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873971"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Menlo Security
 
@@ -52,7 +52,7 @@ Aby skonfigurować integrację aplikacji Menlo Security z usługą Azure AD, nal
 
 **Aby dodać aplikację Menlo Security z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -123,7 +123,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Menlo Sec
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 ### <a name="configure-menlo-security-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Menlo Security
 
@@ -137,7 +137,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Menlo Sec
 
     b. Dla opcji **Allow External Access** (Zezwól na dostęp zewnętrzny) wybierz wartość **Yes** (Tak).
 
-    d. W obszarze **SAML Provider** (Dostawca protokołu SAML) wybierz pozycję **Azure Active Directory**.
+    c. W obszarze **SAML Provider** (Dostawca protokołu SAML) wybierz pozycję **Azure Active Directory**.
 
     d. **SAML 2.0 Endpoint** (Punkt końcowy SAML 2.0): Wklej **adres URL logowania** skopiowany z witryny Azure Portal.
 
@@ -165,7 +165,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -204,7 +204,7 @@ W tej sekcji utworzysz w aplikacji Menlo Security użytkownika o nazwie Britta S
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Menlo Security w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Menlo Security, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

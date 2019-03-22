@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6f7eaa91faabfea7bb951eb9863ffecd2f5499
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182378"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183156"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?
 
@@ -49,7 +49,7 @@ Poniżej przedstawiono główne funkcje licencjonowania opartego na grupach:
 
 - Obsługiwane są wszystkie usługi w chmurze firmy Microsoft, które wymagają licencjonowania na poziomie użytkownika. Ta obsługa obejmuje wszystkie produkty, pakietu Enterprise Mobility + Security i Dynamics 365, usługi Office 365.
 
-- Licencjonowanie oparte na grupach jest obecnie dostępne wyłącznie za pośrednictwem [witryny Azure Portal](https://portal.azure.com). Jeśli do zarządzania użytkownikami i grupami używasz głównie innych portali zarządzania, takich jak portal usługi Office 365, możesz to robić nadal. Jednak do zarządzania licencjami na poziomie grupy należy używać witryny Azure Portal.
+- Licencjonowanie oparte na grupach jest obecnie dostępna wyłącznie za pośrednictwem [witryny Azure portal](https://portal.azure.com). Jeśli przede wszystkim używasz innych portalach zarządzania dla użytkowników i grupy zarządzania, takich jak [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com), możesz to zrobić. Jednak do zarządzania licencjami na poziomie grupy należy używać witryny Azure Portal.
 
 - Usługa Azure AD automatycznie zarządza modyfikacjami licencji wynikającymi ze zmian członkostwa w grupie. Zazwyczaj modyfikacje licencji zaczynają obowiązywać w ciągu minut od zmiany członkostwa.
 

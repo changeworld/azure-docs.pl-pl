@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 389578cb45977890645020fe7fcd6c69c08c41f5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694255"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991870"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Sugerowane przez społeczność firm VPN ustawienia lub urządzenia zapory dla bramy sieci VPN platformy Azure
 
@@ -40,7 +40,7 @@ W poniższej tabeli wymieniono kilka wspólnych urządzeń i powiązana Pomoc:
 |Cisco ASR  |[Sugerowane przez społeczność rozwiązania firmy Cisco automatycznego odzyskiwania systemu w sieci VPN platformy Azure](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |Sonicwall |Wyszukaj **sieci VPN platformy Azure** na [witryny Sonicwall](https://www.sonicwall.com/en-us/support) |
 | Checkpoint    |Wyszukaj **sieci VPN platformy Azure** na [punktu kontrolnego lokacji](https://supportcenter.checkpoint.com/supportcenter/portal) |
-|Juniper |Wyszukaj **sieci VPN platformy Azure** na [Juniper lokacji]( http://www.juniper.net/search/public/)|
+|Juniper |Wyszukaj **sieci VPN platformy Azure** na [Juniper lokacji]( https://www.juniper.net/search/public/)|
 |Barracuda  |[Rozwiązania sugerowane przez społeczność dla Barracuda w sieci VPN platformy Azure](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[Rozwiązania sugerowane przez społeczność dla F5 w sieci VPN platformy Azure](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
 |Palo       |[Rozwiązania sugerowane przez społeczność dla firmy w sieci VPN platformy Azure](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |

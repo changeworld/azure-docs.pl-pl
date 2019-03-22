@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 1b157d8292eacff87a28554939a6f144b9f5d0e9
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.openlocfilehash: 7dcbfdaf00b0e628541cfd1a3b79df8cf8334ed3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092097"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536882"
 ---
-# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Samouczek: konfigurowanie rekordu aliasu w celu odwoływania się do publicznego adresu IP platformy Azure 
+# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Samouczek: Konfigurowanie rekordu aliasu do odwoływania się do platformy Azure, publiczny adres IP 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -30,13 +30,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Aby uzyskać instrukcje, Hostuj swoją domenę, w usłudze Azure DNS, zobacz [samouczka: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Przykładowa domena używana w tym samouczku to contoso.com, ale skorzystaj z własnej nazwy domeny.
 
 ## <a name="create-the-network-infrastructure"></a>Tworzenie infrastruktury sieci
 Najpierw utwórz sieć wirtualną i podsieć, aby umieścić w nich serwery internetowe.
-1. Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
+1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 2. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób**. W polu wyszukiwania wprowadź *grupę zasobów*, a następnie utwórz grupę zasobów o nazwie **RG-DNS-Alias-pip**.
 3. Wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
 4. Utwórz sieć wirtualną o nazwie **VNet-Servers**. Umieść ją w grupie zasobów **RG-DNS-Alias-pip**, a następnie nadaj podsieci nazwę **SN-Web**.
@@ -89,7 +89,7 @@ Wykonanie procedury kończy się pomyślnie, ponieważ użyto rekordu aliasu w c
 Jeśli nie potrzebujesz już zasobów utworzonych w ramach tego samouczka, usuń grupę zasobów **RG-DNS-Alias-pip**.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku został skonfigurowany rekord aliasu w celu odwoływania się do publicznego adresu IP platformy Azure. Aby dowiedzieć się więcej o usłudze Azure DNS i aplikacjach internetowych, przejdź do samouczka dotyczącego aplikacji internetowych.
 

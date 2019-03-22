@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 0a03bfe61da6a1de073401fca9c61f3212b9d0bb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ffded5705e61538a8bec886483a49705bb2298c1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440101"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203034"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Z usługą Hadoop w HDInsight przy użyciu narzędzia Apache Sqoop
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -56,7 +56,7 @@ Klaster HDInsight jest dostarczany z pewnymi przykładowymi danymi. Możesz uży
 W tym samouczku użyjesz tymi dwoma zestawami danych do testowania Sqoop importu i eksportu.
 
 ## <a name="create-cluster-and-sql-database"></a>Tworzenie klastra i bazy danych SQL
-W tej sekcji dowiesz się, jak utworzyć klaster, bazy danych SQL i schematy bazy danych SQL do wykonywania instrukcji samouczka przy użyciu witryny Azure portal i szablonu usługi Azure Resource Manager. Szablon można znaleźć w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Szablon usługi Resource Manager wywołuje pakiet bacpac do wdrożenia schematów tabel do usługi SQL database.  Pakiet bacpac znajduje się w publicznym kontenerze obiektów blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Jeśli chcesz użyć kontenera prywatnych dla plików bacpac, użyj następujących wartości w szablonie:
+W tej sekcji dowiesz się, jak utworzyć klaster, bazy danych SQL i schematy bazy danych SQL do wykonywania instrukcji samouczka przy użyciu witryny Azure portal i szablonu usługi Azure Resource Manager. Szablon można znaleźć w [szablony szybkiego startu platformy](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Szablon usługi Resource Manager wywołuje pakiet bacpac do wdrożenia schematów tabel do usługi SQL database.  Pakiet bacpac znajduje się w publicznym kontenerze obiektów blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Jeśli chcesz użyć kontenera prywatnych dla plików bacpac, użyj następujących wartości w szablonie:
    
 ```json
 "storageKeyType": "Primary",
@@ -627,7 +627,6 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-provision]: ../hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md

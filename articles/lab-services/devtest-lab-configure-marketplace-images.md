@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 2bf059b9ebf73f6ea801b8e5a5440baa2e6c19c4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d0375713c4881c0b73b91fc07bda3ceac2dbc620
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249612"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093494"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurowanie ustawień obrazu portalu Azure Marketplace w usłudze Azure DevTest Labs
 DevTest Labs obsługuje tworzenia maszyn wirtualnych opartych na obrazach portalu Azure Marketplace, w zależności od sposobu skonfigurowania obrazów portalu Azure Marketplace do użycia w środowisku laboratoryjnym. W tym artykule pokazano, jak określić, które ewentualnie obrazów portalu Azure Marketplace, mogą być używane podczas tworzenia maszyn wirtualnych w laboratorium. Zapewnia to, że Twój zespół ma dostęp tylko do obrazów portalu Marketplace, które są im potrzebne. 
@@ -36,7 +36,7 @@ DevTest Labs obsługuje tworzenia maszyn wirtualnych opartych na obrazach portal
    * Obraz, który używa usługi Azure Resource Manager do aprowizacji maszyn wirtualnych, **i**
    * Obraz, który nie wymaga zakupu dodatkowych licencji planu
      
-    Jeśli chcesz, aby żadnych obrazów, które mają być dozwolone lub, aby określić, które obrazy mogą być używane, wybierz **nie**.
+     Jeśli chcesz, aby żadnych obrazów, które mają być dozwolone lub, aby określić, które obrazy mogą być używane, wybierz **nie**.
      
      ![Opcję, aby umożliwić wszystkich obrazów Marketplace, które ma być używany jako obrazy podstawowe dla maszyn wirtualnych](./media/devtest-lab-configure-marketplace-images/allow-all-marketplace-images.png)
 7. Jeśli wybierzesz **nie** do poprzedniego kroku **dozwolone obrazów/wybrać wszystkie** pole wyboru jest włączone. 
@@ -44,7 +44,7 @@ DevTest Labs obsługuje tworzenia maszyn wirtualnych opartych na obrazach portal
    * Wybierz obrazów portalu Azure Marketplace, które chcesz zezwolić na potrzeby tworzenia maszyn wirtualnych pojedynczo, zaznaczając odpowiednie pole wyboru każdego obrazu.
    * Wybierz nothing z listy, jeśli nie chcesz umożliwić żadnych obrazów portalu Azure Marketplace do użycia w środowisku laboratoryjnym.
    
-    ![Można określić, które obrazów portalu Azure Marketplace może służyć jako obrazy podstawowe dla maszyn wirtualnych](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
+     ![Można określić, które obrazów portalu Azure Marketplace może służyć jako obrazy podstawowe dla maszyn wirtualnych](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

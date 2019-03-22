@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 94d49edb93e4c7b2daff3c58c02b349612f1ee92
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998283"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259299"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach w usłudze Azure Monitor
 Ten artykuł pokazuje, jak skonfigurować wyzwalaczy, aby było wywołanie konkretne adresy URL lub wysyłać wiadomości e-mail oparte na akcje skalowania automatycznego na platformie Azure.  
@@ -71,7 +71,7 @@ Korzystając z interfejsu API REST lub Menedżera zasobów szablonu, obejmują e
 | properties |tak |Wartość musi być pusta {} lub może zawierać pary klucz wartość |
 
 ## <a name="authentication-in-webhooks"></a>Uwierzytelnianie w elementów webhook
-Element webhook można uwierzytelnić przy użyciu uwierzytelniania opartego na tokenach, oszczędzić elementu webhook identyfikatora URI identyfikatorem token jako parametr zapytania. Na przykład: https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
+Element webhook można uwierzytelnić przy użyciu uwierzytelniania opartego na tokenach, oszczędzić elementu webhook identyfikatora URI identyfikatorem token jako parametr zapytania. Na przykład https: \/ /mysamplealert/webcallback? tokenid = sometokenid & someparameter = wartość somevalue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Schematu ładunek elementu webhook powiadomienia skalowania automatycznego
 Po wygenerowaniu powiadomienia skalowania automatycznego, następujące metadane są objęte ładunek elementu webhook:

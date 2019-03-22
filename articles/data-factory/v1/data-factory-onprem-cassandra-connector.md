@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 38d5d469c920cafa33e0cc5b37846df2dc6d6ab9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236423"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892646"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Przenoszenie danych z bazy danych Cassandra w środowisku lokalnym za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -260,7 +260,7 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listy w
 ```
 
 ### <a name="type-mapping-for-cassandra"></a>Mapowanie typu dla bazy danych Cassandra
-| Typ bazy danych Cassandra | Typ oparte na platformie .net |
+| Typ bazy danych Cassandra | Typ oparte na platformie .NET |
 | --- | --- |
 | ASCII |String |
 | BIGINT |Int64 |
@@ -272,7 +272,7 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listy w
 | INET |String |
 | INT |Int32 |
 | TEKST |String |
-| ZNACZNIK CZASU: |DateTime |
+| SYGNATURA CZASOWA |DateTime |
 | TIMEUUID |Guid |
 | IDENTYFIKATOR UUID |Guid |
 | VARCHAR |String |

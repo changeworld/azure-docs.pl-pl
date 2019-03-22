@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5622c179b6eb767f4c608e8c36c2ba154aac0906
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 4cda09a6b407621e595b0cb8ed9103b1fbbd5cc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594699"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097961"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Instrukcje: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -83,12 +83,12 @@ Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw
     * Jeśli chcesz dodać aplikację do listy w galerii przy użyciu protokołu OpenID Connect, wybierz **OpenID Connect i OAuth 2.0** tak jak powyżej.
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **SAML 2.0** lub **WS-Fed**: Jeśli aplikacja obsługuje SAML 2.0, można zintegrować go bezpośrednio z dzierżawy usługi Azure AD przy użyciu [instrukcje dotyczące dodawania aplikacji niestandardowej](../active-directory-saas-custom-apps.md).
+- **SAML 2.0** lub **WS-Fed**: Jeśli aplikacja obsługuje SAML 2.0, można zintegrować go bezpośrednio z dzierżawy usługi Azure AD przy użyciu [instrukcje dotyczące dodawania aplikacji niestandardowej](../active-directory-saas-custom-apps.md).
 
-    ![Oś czasu wyświetlanie protokołu SAML 2.0 i WS-Fed aplikacji w galerii](./media/howto-app-gallery-listing/saml.png)
+  ![Oś czasu wyświetlanie protokołu SAML 2.0 i WS-Fed aplikacji w galerii](./media/howto-app-gallery-listing/saml.png)
 
-    * Jeśli chcesz dodać aplikację do listy w galerii, używając **SAML 2.0** lub **WS-Fed**, wybierz opcję **SAMl 2.0/WS-Fed** tak jak powyżej.
-    * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+  * Jeśli chcesz dodać aplikację do listy w galerii, używając **SAML 2.0** lub **WS-Fed**, wybierz opcję **SAMl 2.0/WS-Fed** tak jak powyżej.
+  * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="implementing-sso-using-password-sso"></a>Implementowanie logowania jednokrotnego przy użyciu hasła logowania jednokrotnego
 

@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b6fcdb117033e69db82d8f9bb083891794ed72
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8706414b27969efd6aa26085370f8a0b1f891d69
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187087"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095198"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Samouczek: Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure Active Directory z certyfikatami
 
@@ -87,15 +87,15 @@ W tym samouczku dowiesz się, jak dostęp do interfejsu API programu Graph MS dl
   
 7. Teraz możesz uzyskać dostęp do tokenu dla interfejsu API programu Graph MS przy użyciu tego certyfikatu. Użyj **Get MSCloudIdMSGraphAccessTokenFromCert** polecenia cmdlet z modułu MSCloudIdUtils PowerShell, przekazując Identyfikatora aplikacji i odcisk palca uzyskanego w poprzednim kroku. 
 
- ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 8. Korzystanie z tokenu dostępu za pomocą skryptu programu Powershell do wykonywania zapytań interfejsu API programu Graph. Użyj **Invoke MSCloudIdMSGraphQuery** polecenia cmdlet z MSCloudIDUtils wyliczyć plik logowań do i directoryAudits punkt końcowy. To polecenie cmdlet obsługuje wyniki wielostronicowe, a następnie wysyła te wyniki do potoku programu PowerShell.
 
 9. Wyślij zapytanie do endpoint directoryAudits, aby pobrać dzienniki inspekcji. 
- ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 10. Wyślij zapytanie do endpoint plik logowań do można pobrać dzienników logowania.
- ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 11. Teraz możesz wyeksportować te dane do woluminu CSV i zapisywanie w systemie SIEM. Skrypt można również opakować w zaplanowane zadanie, aby okresowo uzyskiwać dane usługi Azure AD od dzierżawcy bez konieczności przechowywania kluczy aplikacji w kodzie źródłowym. 
 

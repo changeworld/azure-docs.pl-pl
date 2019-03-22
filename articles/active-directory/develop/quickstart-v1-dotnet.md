@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b06ceb86e8406657766be1375889fcfe1b4673d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2b55f7e615f2c2edb604d5b9433db6cc48d9f36f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204546"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223397"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Szybki start: Logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji .NET Desktop (WPF)
 
@@ -77,9 +77,9 @@ Gdy masz już aplikację w usłudze Azure AD, możesz zainstalować bibliotekę 
 
 1. W projekcie `DirectorySearcher` otwórz plik `app.config`.
 1. Zastąp wartości elementów w sekcji `<appSettings>`, aby odzwierciedlały wartości wprowadzone w witrynie Azure Portal. Twój kod będzie odwoływał się do tych wartości podczas każdego użycia biblioteki ADAL.
-  * `ida:Tenant` to domena dzierżawy usługi Azure AD, na przykład contoso.onmicrosoft.com.
-  * `ida:ClientId` to identyfikator klienta Twojej aplikacji skopiowany z portalu.
-  * `ida:RedirectUri` to adres URL przekierowania zarejestrowany w portalu.
+   * `ida:Tenant` to domena dzierżawy usługi Azure AD, na przykład contoso.onmicrosoft.com.
+   * `ida:ClientId` to identyfikator klienta Twojej aplikacji skopiowany z portalu.
+   * `ida:RedirectUri` to adres URL przekierowania zarejestrowany w portalu.
 
 ## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>Krok 3: Uzyskiwanie tokenów z usługi Azure AD przy użyciu biblioteki ADAL
 
@@ -172,7 +172,7 @@ Podstawowa zasada działania biblioteki ADAL polega na tym, że za każdym razem
                 MessageBox.Show(ex.Message);
             }
 
-            // If user interaction is required, proceed to main page without singing the user in.
+            // If user interaction is required, proceed to main page without signing the user in.
             return;
         }
 
@@ -188,7 +188,7 @@ Biblioteka ADAL ułatwia dodanie tych typowych funkcji tożsamości do aplikacji
 
 Gotowa próbka (bez wartości konfiguracji) jest dostępna w serwisie [GitHub](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak chronić internetowy interfejs API przy użyciu tokenów dostępu elementu nośnego protokołu OAuth 2.0.
 > [!div class="nextstepaction"]

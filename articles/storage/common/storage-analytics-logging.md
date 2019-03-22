@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 8137e59de7ad33ea806fcc2be36bb778448c9adc
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: ab235c67e3a0e60999a0348d03a6e938944f7030
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58077279"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260194"
 ---
 # <a name="azure-storage-analytics-logging"></a>Rejestrowania analizy magazynu platformy Azure
 
@@ -37,7 +37,7 @@ Usługa Storage Analytics rejestruje szczegółowe informacje na temat udane i n
 - Żądania przy użyciu sygnatury dostępu współdzielonego (SAS) lub protokołu OAuth, w tym realizowania żądań nie powiodło się, jak i pomyślnie
 - Żądania do analizy danych
 
-  Żądania wysyłane przez analityka magazynu, takie jak tworzenie dziennika lub usuwanie, nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) i [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format.md) tematów.
+  Żądania wysyłane przez analityka magazynu, takie jak tworzenie dziennika lub usuwanie, nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) i [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format) tematów.
 
 ### <a name="logging-anonymous-requests"></a>Rejestrowanie żądań anonimowych
 
@@ -48,7 +48,7 @@ Usługa Storage Analytics rejestruje szczegółowe informacje na temat udane i n
 - Błędy przekroczenia limitu czasu dla klienta i serwera
 - Żądania GET zakończone niepowodzeniem z kodem błędu 304 (nie zmodyfikowano)
 
-  Inne zakończone niepowodzeniem żądania anonimowe nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) i [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format.md) tematów.
+  Inne zakończone niepowodzeniem żądania anonimowe nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) i [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format) tematów.
 
 ## <a name="how-logs-are-stored"></a>Jak są przechowywane dzienniki
 
@@ -200,9 +200,9 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
 
  Na przykład jak programowo pobrać dane dziennika, zobacz wpis w blogu [rejestrowanie usługi Windows Azure Storage: Korzystanie z dzienników do śledzenia żądań magazynu](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) i wyszukaj słowa "DumpLogs" na stronie.  
 
- Po pobraniu danych dziennika można wyświetlić wpisy dziennika w plikach. Te pliki dziennika użyć format tekstu rozdzielanego tę liczbę dziennika odczytywanie narzędzi są w stanie przeanalizować, włącznie z Microsoft Message Analyzer (Aby uzyskać więcej informacji, zobacz podręcznik [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). Różne narzędzia mają różne funkcje służące do formatowania, filtrowanie, sortowanie, wyszukiwanie zawartości plików dzienników usługi ad. Aby uzyskać więcej informacji na temat rejestrowania magazynu format pliku dziennika i zawartości, zobacz [Format dziennika analizy magazynu](storage-analytics-logging.md) i [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md).
+ Po pobraniu danych dziennika można wyświetlić wpisy dziennika w plikach. Te pliki dziennika użyć format tekstu rozdzielanego tę liczbę dziennika odczytywanie narzędzi są w stanie przeanalizować, włącznie z Microsoft Message Analyzer (Aby uzyskać więcej informacji, zobacz podręcznik [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). Różne narzędzia mają różne funkcje służące do formatowania, filtrowanie, sortowanie, wyszukiwanie zawartości plików dzienników usługi ad. Aby uzyskać więcej informacji na temat rejestrowania magazynu format pliku dziennika i zawartości, zobacz [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format) i [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format.md)
-* [Usługa Storage Analytics rejestrowane komunikaty o stanie i operacje](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)
+* [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format)
+* [Usługa Storage Analytics rejestrowane komunikaty o stanie i operacje](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Metryk usługi Storage Analytics (wersja klasyczna)](storage-analytics-metrics.md)

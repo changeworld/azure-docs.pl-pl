@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8e81d5513f43882093883256cf9eab4a22e9ca01
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268442"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875278"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów przez zadanie administratora w usłudze Azure Active Directory
 
@@ -144,18 +144,18 @@ Aktualizowanie właściwości rejestracji jednokrotnej | Właściciel aplikacji 
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie licencji | Administrator kont użytkowników | 
-Utwórz grupę | Administrator kont użytkowników | 
-Tworzenie, aktualizowanie lub usuwanie przeglądu dostępu grupy lub aplikacji | Administrator kont użytkowników | 
-Zarządzanie wygasaniem grupy | Administrator kont użytkowników | 
+Przypisywanie licencji | Administrator użytkownika | 
+Utwórz grupę | Administrator użytkownika | 
+Tworzenie, aktualizowanie lub usuwanie przeglądu dostępu grupy lub aplikacji | Administrator użytkownika | 
+Zarządzanie wygasaniem grupy | Administrator użytkownika | 
 Zarządzenie ustawieniami grup | Administrator globalny | 
 Przeczytaj całą konfigurację (z wyjątkiem ukrytych członkostwa) | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Odczytuj informacje o ukrytym członkostwie | Członek grupy | Właściciel grupy, hasło administratora, administrator programu Exchange, administratora programu SharePoint, zespoły administratora, administrator kont użytkowników
-Przeczytaj członkostwa w grupach z ukrytym członkostwie | Administrator pomocy technicznej | Administrator kont użytkowników, administrator zespołów
-Odwoływanie licencji | Administrator licencji | Administrator kont użytkowników
-Zaktualizuj członkostwo w grupie | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator kont użytkowników
-Właściciele grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator kont użytkowników
-Właściwości grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator kont użytkowników
+Odczytuj informacje o ukrytym członkostwie | Członek grupy | Właściciel grupy, hasło administratora, administrator programu Exchange, administrator programu SharePoint, zespoły administratora, administrator użytkowników
+Przeczytaj członkostwa w grupach z ukrytym członkostwie | Administrator pomocy technicznej | Administrator użytkowników, administrator zespołów
+Odwoływanie licencji | Administrator licencji | Administrator użytkownika
+Zaktualizuj członkostwo w grupie | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
+Właściciele grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
+Właściwości grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
 
 ## <a name="identity-protection"></a>Identity Protection
 
@@ -176,9 +176,9 @@ Przeczytaj luk w zabezpieczeniach | Odczytywanie zabezpieczeń |
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie licencji | Administrator licencji | Administrator kont użytkowników
+Przypisywanie licencji | Administrator licencji | Administrator użytkownika
 Przeczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Odwoływanie licencji | Administrator licencji | Administrator kont użytkowników
+Odwoływanie licencji | Administrator licencji | Administrator użytkownika
 Wypróbuj i Kup subskrypcję | Administrator rozliczeń | 
 
 
@@ -315,21 +315,21 @@ Przeczytaj użytkowników oznaczonych flagą ryzyka | Odczytywanie zabezpieczeń
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
 Dodawanie użytkownika do roli w katalogu | Administrator roli uprzywilejowanej | 
-Dodaj użytkownika do grupy | Administrator kont użytkowników | 
-Przypisywanie licencji | Administrator licencji | Administrator kont użytkowników
-Tworzenie użytkownika-gościa | Osoba zapraszająca gości | Administrator kont użytkowników
-Tworzenie użytkownika | Administrator kont użytkowników | 
-Usuwanie użytkowników | Administrator kont użytkowników | 
-Unieważnienie tokenów odświeżania z administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator kont użytkowników | 
-Unieważnienie tokenów odświeżania dla użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator kont użytkowników
+Dodaj użytkownika do grupy | Administrator użytkownika | 
+Przypisywanie licencji | Administrator licencji | Administrator użytkownika
+Tworzenie użytkownika-gościa | Osoba zapraszająca gości | Administrator użytkownika
+Tworzenie użytkownika | Administrator użytkownika | 
+Usuwanie użytkowników | Administrator użytkownika | 
+Unieważnienie tokenów odświeżania z administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkownika | 
+Unieważnienie tokenów odświeżania dla użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator użytkownika
 Unieważnienie tokenów odświeżania uprzywilejowanych administratorów (w dokumentacji) | Administrator globalny | 
 Odczyt konfiguracji podstawowej | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
-Resetowanie hasła dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator kont użytkowników | 
-Resetowanie hasła użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator kont użytkowników
+Resetowanie hasła dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkownika | 
+Resetowanie hasła użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator użytkownika
 Resetuj hasło uprzywilejowanych administratorów | Administrator globalny | 
-Odwoływanie licencji | Administrator licencji | Administrator kont użytkowników
-Aktualizuj wszystkie właściwości, z wyjątkiem główna nazwa użytkownika | Administrator kont użytkowników | 
-Zaktualizuj główną nazwę użytkownika dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator kont użytkowników | 
+Odwoływanie licencji | Administrator licencji | Administrator użytkownika
+Aktualizuj wszystkie właściwości, z wyjątkiem główna nazwa użytkownika | Administrator użytkownika | 
+Zaktualizuj główną nazwę użytkownika dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkownika | 
 Zaktualizuj właściwość główną nazwę użytkownika w uprzywilejowanych administratorów (w dokumentacji) | Administrator globalny | 
 Aktualizowanie ustawień użytkownika | Administrator globalny | 
 
