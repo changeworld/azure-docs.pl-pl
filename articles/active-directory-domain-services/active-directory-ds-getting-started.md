@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: 4c533921b0c88a4f61cd96896b72306adb9a23cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 637ad62744affa37630df9c841f3c7529674e788
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175710"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122913"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 W tym artykule przedstawiono sposób włączania Azure Active Directory Domain Services (Azure AD DS) w witrynie Azure portal.
@@ -62,14 +62,13 @@ W **podstawy** strona kreatora określ nazwę domeny DNS dla domeny zarządzanej
    > [!NOTE]
    > **Wskazówki dotyczące wybierania nazwy domeny DNS**
    > * **Nazwa domeny wbudowane:** Domyślnie Kreator określa nazwy domen wbudowana/domyślnego katalogu (przy użyciu **. onmicrosoft.com** sufiks) dla Ciebie. Jeśli wybierzesz umożliwić dostęp do domeny zarządzanej secure LDAP przez internet, należy się spodziewać problemy, tworzenie publiczny Rekord DNS i uzyskiwanie bezpiecznego certyfikatu LDAP z publicznego urzędu certyfikacji dla tej nazwy domeny. Firma Microsoft posiada *. onmicrosoft.com* domeny i urzędy certyfikacji nie będzie wystawiać certyfikatów zagwarantowanie dla tej domeny.
-   * **Niestandardowe nazwy domen:** Można także wpisać niestandardową nazwę domeny. W tym przykładzie niestandardową nazwą domeny jest *contoso100.com*.
-   * **Sufiksy domeny bez obsługi routingu:** Ogólnie zaleca się unikanie sufiks nazwy domeny bez obsługi routingu. Na przykład zaleca się unikanie tworzenia domeny przy użyciu nazwy domeny DNS "contoso.local". Sufiks DNS ".local" nie podlega routingowi i mogą powodować problemy rozpoznawania nazw DNS.
-   * **Ograniczenia prefiks domeny:** Prefiks określony dla nazwy domeny (przykładowo contoso100 w nazwie domeny *contoso100.com*) nie może zawierać więcej niż 15 znaków. Nie można utworzyć domeny zarządzanej, z prefiksem dłuższa niż 15 znaków.
-   * **Wystąpił konflikt między nazwą sieci:** Upewnij się, że nazwa domeny DNS wybrana dla domeny zarządzanej nie istnieje już w sieci wirtualnej. W szczególności sprawdź, czy:
-       * Masz już domeny usługi Active Directory, z tą samą nazwą domeny DNS w sieci wirtualnej.
-       * Sieć wirtualna, której zamierzasz włączyć domena zarządzana ma połączenie sieci VPN z siecią lokalną. W tym scenariuszu upewnij się, że nie masz domenę z tą samą nazwą domeny DNS w sieci lokalnej.
-       * masz istniejącą usługę w chmurze z tą nazwą w sieci wirtualnej.
-    >
+   > * **Niestandardowe nazwy domen:** Można także wpisać niestandardową nazwę domeny. W tym przykładzie niestandardową nazwą domeny jest *contoso100.com*.
+   > * **Sufiksy domeny bez obsługi routingu:** Ogólnie zaleca się unikanie sufiks nazwy domeny bez obsługi routingu. Na przykład zaleca się unikanie tworzenia domeny przy użyciu nazwy domeny DNS "contoso.local". Sufiks DNS ".local" nie podlega routingowi i mogą powodować problemy rozpoznawania nazw DNS.
+   > * **Ograniczenia prefiks domeny:** Prefiks określony dla nazwy domeny (przykładowo contoso100 w nazwie domeny *contoso100.com*) nie może zawierać więcej niż 15 znaków. Nie można utworzyć domeny zarządzanej, z prefiksem dłuższa niż 15 znaków.
+   > * **Wystąpił konflikt między nazwą sieci:** Upewnij się, że nazwa domeny DNS wybrana dla domeny zarządzanej nie istnieje już w sieci wirtualnej. W szczególności sprawdź, czy:
+   >     * Masz już domeny usługi Active Directory, z tą samą nazwą domeny DNS w sieci wirtualnej.
+   >     * Sieć wirtualna, której zamierzasz włączyć domena zarządzana ma połączenie sieci VPN z siecią lokalną. W tym scenariuszu upewnij się, że nie masz domenę z tą samą nazwą domeny DNS w sieci lokalnej.
+   >     * masz istniejącą usługę w chmurze z tą nazwą w sieci wirtualnej.
 
 2. Wybierz pozycję Azure **subskrypcji** , w której chcesz utworzyć domeny zarządzanej.
 

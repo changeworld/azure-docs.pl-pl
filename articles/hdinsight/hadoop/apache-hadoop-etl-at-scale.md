@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 7897c677df38bb9b71222730a8b6a9ea11fb40bc
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: c200ca98f2a5ea32886ec12d3e732af6598254f7
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912667"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337616"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę
 
@@ -128,7 +128,7 @@ Sqoop używa MapReduce, aby importować i eksportować dane, w celu dostarczania
 
 Apache Flume to usługa rozproszonej, niezawodnej i dostępnej efektywnie zbieranie, agregowania i przenoszenie dużych ilości danych dziennika. Flume ma architektury prosty i elastyczny, oparty na tym strumieniu przepływów danych. Flume będzie niezawodne i odporne na uszkodzenia za pomocą mechanizmów niezawodności możliwą do dostosowania i wiele mechanizmów trybu failover i odzyskiwania. Flume korzysta z modelu prostego extensible danych, umożliwiający online aplikacji analitycznych.
 
-Nie można użyć Apache Flume przy użyciu usługi Azure HDInsight.  Instalacja usługi Hadoop w środowisku lokalnym służy Flume do przesyłania danych do usługi Azure Storage Blobs lub usługi Azure Data Lake Storage.  Aby uzyskać więcej informacji, zobacz [przy użyciu Apache Flume z HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Nie można użyć Apache Flume przy użyciu usługi Azure HDInsight.  Instalacja usługi Hadoop w środowisku lokalnym służy Flume do przesyłania danych do usługi Azure Storage Blobs lub usługi Azure Data Lake Storage.  Aby uzyskać więcej informacji, zobacz [przy użyciu Apache Flume z HDInsight](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
 ## <a name="transform"></a>Przekształcanie
 
@@ -138,4 +138,4 @@ Po danych istnieje w wybranej lokalizacji, należy go wyczyścić, połączyć g
 
 * [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
 * [Za pomocą programu Apache Hive jako narzędzia ETL](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
-* [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
