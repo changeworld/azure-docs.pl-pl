@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 197010271518347025157968012be31c71b3b667
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c31f3ec503f22ab0d272ff96b85cf0f76a837d11
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121030"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316073"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -107,7 +107,7 @@ Rozszerzenie usług Reliable Services usługi Service Fabric dla programu VS Cod
 **Usługi Service Fabric: Wdrażanie aplikacji** polecenie służy do wdrażania aplikacji usługi Service Fabric w klastrze lokalnym. Upewnij się, że klaster lokalny jest uruchomiony przed użyciem polecenia. 
 
 1. Wybierz **usługi Service Fabric: Wdrażanie aplikacji** polecenia
-2. Wyświetlanie klastra lokalnego przy użyciu narzędzia Service Fabric Explorer (http://localhost:19080/Explorer) aby upewnić się, że aplikacja została zainstalowana. To może trochę potrwać, więc o cierpliwość.
+2. Wyświetlanie klastra lokalnego przy użyciu narzędzia Service Fabric Explorer (http:\//localhost:19080 / Explorer) aby upewnić się, że aplikacja została zainstalowana. To może trochę potrwać, więc o cierpliwość.
 3. Można również użyć **usługi Service Fabric: Opublikuj aplikację** polecenia bez parametrów, ustawione w pliku Cloud.json do wdrożenia w lokalnym klastrze.
 
 > [!NOTE]

@@ -4,21 +4,22 @@ description: Dowiedz się, jak dodać dostawców tożsamości do aplikacji w us�
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 2a1843f941c6abc46928b38a66025fa87c4bcea5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.subservice: B2C
+ms.openlocfilehash: ef264622be1e66c98f8c7f17cf3e04b3239e8553
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757681"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338279"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dodawanie dostawcy tożsamości do aplikacji w usłudze Azure Active Directory B2C
 
-W swoich aplikacjach możesz umożliwić użytkownikom logowanie za pomocą dostawcy tożsamości innej. *Dostawcy tożsamości* tworzy, przechowuje i zarządza informacjami o tożsamości przy jednoczesnym zapewnieniu usług uwierzytelniania do aplikacji. Możesz dodać dostawców tożsamości, które są obsługiwane przez usługi Azure Active Directory (Azure AD) B2C, aby Twoje [przepływy użytkownika](active-directory-b2c-reference-policies.md) przy użyciu witryny Azure portal.
+W swoich aplikacjach możesz umożliwić użytkownikom logowanie się za pomocą różnych dostawców tożsamości. *Dostawca tożsamości* tworzy, i przechowuje informacje dotyczące tożsamości oraz zarządza nimi, zapewniając jednocześnie aplikacjom usługi uwierzytelniania. Możesz dodać dostawców tożsamości, które są obsługiwane przez usługi Azure Active Directory (Azure AD) B2C, aby Twoje [przepływy użytkownika](active-directory-b2c-reference-policies.md) przy użyciu witryny Azure portal.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -91,7 +92,7 @@ Po utworzeniu aplikacji dostawcy tożsamości, który chcesz dodać, możesz dod
 ### <a name="add-the-azure-active-directory-identity-provider"></a>Dostawca tożsamości usługi Azure Active Directory
 
 1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera dzierżawy usługi Azure AD B2C.
-2. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+2. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 3. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
 4. Wprowadź **nazwa**. Na przykład, wprowadź *firmy Contoso w usłudze Azure AD*.
 5. Wybierz **typ dostawcy tożsamości**, wybierz opcję **Open ID Connect (wersja zapoznawcza)**, a następnie kliknij przycisk **OK**.
@@ -142,7 +143,7 @@ W tym samouczku ukończono jako część wymagań wstępnych utworzono przepływ
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób:
+W tym artykule zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie aplikacji dostawcy tożsamości

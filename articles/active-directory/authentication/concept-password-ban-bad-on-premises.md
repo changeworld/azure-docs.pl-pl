@@ -1,5 +1,5 @@
 ---
-title: Ochrona haseł w usłudze Azure AD
+title: Usługa Azure AD ochrona za pomocą hasła — usługi Azure Active Directory
 description: Zablokuj słabe hasła w usłudze Active Directory w środowisku lokalnym za pomocą ochrona za pomocą hasła usługi Azure AD
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1b3660d256e4beda948f723035aa75ca8a9ed2e
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: e0a25dd3a2228f0b1b3ab33db0c9c689d7b2899d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284872"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310561"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 

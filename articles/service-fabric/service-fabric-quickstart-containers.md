@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 05f8c1898e565e145aedbfdc13e0a88ad09486dc
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: 4c7de6738e30cd883257f3b2ea873c933364c003
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804657"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311887"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Windows w usłudze Service Fabric
 
@@ -149,7 +149,7 @@ Kliknij przycisk **Opublikuj**.
 
 Każda aplikacja w klastrze musi mieć unikatową nazwę. Jeśli występuje konflikt nazw, zmień nazwę projektu programu Visual Studio i wdróż ponownie.
 
-Otwórz przeglądarkę i przejdź do adresu, który został umieszczony w polu **Punkt końcowy połączenia** w poprzednim kroku. Adres URL można opcjonalnie poprzedzić identyfikatorem schematu `http://` i dołączyć port `:80`. Na przykład http://mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
+Otwórz przeglądarkę i przejdź do adresu, który został umieszczony w polu **Punkt końcowy połączenia** w poprzednim kroku. Adres URL można opcjonalnie poprzedzić identyfikatorem schematu `http://` i dołączyć port `:80`. Na przykład http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 
  Powinna zostać wyświetlona domyślna strona internetowa usług IIS: ![Domyślna strona internetowa usług IIS][iis-default]
 
@@ -157,7 +157,7 @@ Otwórz przeglądarkę i przejdź do adresu, który został umieszczony w polu *
 
 Podczas działania klastra nadal są naliczane opłaty. Rozważ [usunięcie klastra](service-fabric-cluster-delete.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 

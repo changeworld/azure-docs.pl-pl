@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225676b144d042c51a97fe14a20a5a78f0a77244
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 623d684f701df8b1a7c4b84a2bd3840f039ad174
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013099"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312703"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji galerii, skonfigurowanej do obsługi federacyjnego logowania jednokrotnego
 
@@ -33,7 +33,7 @@ Aby rozwiązać problemy dotyczące logowania poniżej, zaleca się, że postęp
 
 ## <a name="application-not-found-in-directory"></a>Nie można odnaleźć w katalogu aplikacji
 
-*Błąd AADSTS70001: Aplikacja z identyfikatorem "https://contoso.com" nie został znaleziony w katalogu*.
+*Błąd AADSTS70001: Aplikacja z identyfikatorem "https:\//contoso.com" nie został znaleziony w katalogu*.
 
 **Możliwa przyczyna**
 
@@ -63,7 +63,7 @@ Upewnij się, że `Issuer` pasuje do atrybutu w żądaniu języka SAML wartość
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres zwrotny jest niezgodny z adresami zwrotnymi skonfigurowanymi dla aplikacji
 
-*Błąd AADSTS50011: Jako adres zwrotny https://contoso.com"jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji*
+*Błąd AADSTS50011: Adres zwrotny "https:\//contoso.com" jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji*
 
 **Możliwa przyczyna**
 

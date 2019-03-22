@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 78bf30c01bc240d4fc7439ab14868bf7be90b17e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: c27938ad28abc62f42024faae7931196704b9b1b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895835"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314573"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Parametr *name* umożliwia nadanie nazwy działającemu kontenerowi (zamiast identyfikatora kontenera).
 
-Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz adres IP zwrócony na porcie 4000, na przykład „http://localhost:4000”. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
+Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz adres IP zwrócony na porcie 4000, na przykład "http:\//localhost:4000". W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
 
 ![Hello World!][hello-world]
 
@@ -271,9 +271,9 @@ Użyj skryptu instalacji udostępnionego w szablonach w https://github.com/Azure
 ./install.sh
 ```
 
-Otwórz przeglądarkę i przejdź do narzędzia Service Fabric Explorer dostępnego pod adresem http://localhost:19080/Explorer (zastąp ciąg localhost prywatnym adresem IP maszyny wirtualnej w przypadku używania narzędzia Vagrant w systemie Mac OS X). Rozwiń węzeł Aplikacje i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
+Otwórz przeglądarkę i przejdź do narzędzia Service Fabric Explorer pod http:\//localhost:19080 / Explorer (Zastąp łańcuch localhost prywatnym adresem IP maszyny Wirtualnej w przypadku używania narzędzia Vagrant w systemie Mac OS X). Rozwiń węzeł Aplikacje i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
 
-Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz adres IP zwrócony na porcie 4000, na przykład „http://localhost:4000”. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
+Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz adres IP zwrócony na porcie 4000, na przykład "http:\//localhost:4000". W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
 
 ![Hello World!][hello-world]
 

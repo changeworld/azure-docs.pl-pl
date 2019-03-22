@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d67d8462c177d19dfa3cebbd0b4b000fbe3f41b8
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: d687665a7f9b18d42dcd45953c15d2fbc6d71d2f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57894985"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335831"
 ---
 # <a name="text-to-speech-rest-api"></a>Interfejs API REST zamiany tekstu na mowę
 
@@ -33,6 +33,12 @@ Przed użyciem tego interfejsu API, należy zrozumieć:
 * Zamiany tekstu na mowę interfejsu API REST wymaga nagłówka autoryzacji. Oznacza to, trzeba wykonać wymiany tokenu dostępu do usługi. Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
+
+## <a name="regions-and-endpoints"></a>Regiony i punktów końcowych
+
+Te regiony są obsługiwane w przypadku przekształcania mowy na tekst przy użyciu interfejsu API REST. Upewnij się, wybierz pozycję punkt końcowy, który odpowiada Twoim regionie subskrypcji.
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 ## <a name="request-headers"></a>Nagłówki żądań
 

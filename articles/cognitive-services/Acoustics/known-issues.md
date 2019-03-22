@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kylestorck
-ms.openlocfilehash: 4cbede768409596365bea0cdbbb451cc5195ac4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136263"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309949"
 ---
 # <a name="project-acoustics-known-issues"></a>Projekt Akustyka znane problemy
 W przypadku używania projektanta w wersji zapoznawczej dla Akustyka projektu, mogą wystąpić następujące znane problemy.
@@ -28,8 +28,9 @@ Jeśli zmienisz scenę, wszystko, czego akustyczny parametry, które należą do
 
 Na najnowsze wersje aparatu Unity (2018.2 +) jest to znana usterka, w którym Unity ulegnie awarii po zamknięciu projektu. To jest śledzona przez [ten problem Unity](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project).
 
-## <a name="trouble-deploying-to-android"></a>Problemy z wdrożenia w systemie Android
-Aby użyć Akustyka projektu w systemie Android, zmień urządzenie docelowe kompilacji systemu Android. Niektóre wersje programu Unity mają usterkę z wdrażaniem audio wtyczek. Upewnij się, że nie używasz wersji dotyczy [tej usterki](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player).
+## <a name="deploying-to-android-from-some-unity-versions"></a>Wdrożenia w systemie Android z niektórych wersji aparatu Unity
+
+Niektóre wersje programu Unity mają usterkę przy użyciu wdrożenia wtyczek audio w systemie Android. Upewnij się, że nie używasz wersji dotyczy [tej usterki](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player).
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>Otrzymuję komunikat o błędzie tego "nie można znaleźć pliku metadanych System.Security.dll"
 

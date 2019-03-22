@@ -4,17 +4,18 @@ description: Dowiedz się, jak tworzyć przepływy użytkownika dla aplikacji w 
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 7f017583a6eeb61b11df86a908d573dba9bd5929
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.subservice: B2C
+ms.openlocfilehash: b76d56b17973c04992a8855917c814ced649bd0f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750294"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338262"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Samouczek: Tworzenie przepływów użytkownika w usłudze Azure Active Directory B2C
 
@@ -40,11 +41,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Przepływ rejestracji i logowania użytkownika obsługuje środowiska rejestracji i logowania za pomocą jednej konfiguracji. Użytkownicy twojej aplikacji są prowadzone w dół prawidłową ścieżkę, w zależności od kontekstu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
 
     ![Przejdź do katalogu subskrypcji](./media/tutorial-create-user-flows/switch-directories.png)
 
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. W menu po lewej stronie wybierz **przepływy użytkownika**, a następnie wybierz pozycję **nowy przepływ użytkownika**.
 
     ![Wybierz nowy przepływ użytkownika](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
@@ -116,7 +117,7 @@ Istnieje możliwość włączenia użytkownika aplikacji do zresetowania swojego
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób:
+W tym artykule zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie przepływu rejestracji i logowania użytkowników

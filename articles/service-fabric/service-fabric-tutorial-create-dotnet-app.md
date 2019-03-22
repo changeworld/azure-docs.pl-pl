@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff6475637b07f50aaea93caac85e65356bc9b96b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57851367"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317208"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Samouczek: Tworzenie i wdrażanie aplikacji przy użyciu usługi frontonu platformy ASP.NET Core z internetowym interfejsem API oraz stanowej usługi zaplecza
 
@@ -466,7 +466,7 @@ W tym samouczku użyj [internetowego interfejsu API platformy ASP.NET Core](serv
         ],
 ```
 Aby odnaleźć port zwrotnego serwera proxy użyty w lokalnym klastrze programowania, wyświetl element **HttpApplicationGatewayEndpoint** w manifeście klastra lokalnej usługi Service Fabric:
-1. Otwórz przeglądarkę i przejdź do strony http://localhost:19080, aby otworzyć narzędzie Service Fabric Explorer.
+1. Otwórz okno przeglądarki i przejdź do protokołu http:\//localhost:19080, aby otworzyć narzędzie Service Fabric Explorer.
 2. Wybierz kolejno pozycje **Klaster > Manifest**.
 3. Zanotuj port elementu HttpApplicationGatewayEndpoint. Domyślnie port to 19081. Jeśli port jest inny niż 19081, musisz zmienić go w metodzie GetProxyAddress następującego kodu VotesController.cs.
 

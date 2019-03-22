@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 1a07661d97561319b847323981dd2aa8522b0e84
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 645f3177913b903e8262c1fec08c452130e2a671
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537596"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337871"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie podstawowego indeksu w usłudze Azure Search
 
@@ -46,7 +46,7 @@ Otrzymywanych projekt prawo indeksu zwykle odbywa się za pośrednictwem wiele i
 
 6. Kontynuuj używanie kodu do wykonywania iteracji projektu.  
 
-Ponieważ struktury fizyczne są tworzone w usłudze [porzucenie i ponowne tworzenie indeksów](search-howto-reindex.md) zachodzi po każdym wprowadzeniu znaczących zmian do ab istniejącej definicji pola. Oznacza to, że podczas tworzenia aplikacji, należy zaplanować na częste ponowne kompilowanie. Warto rozważyć pracy przy użyciu podzestawu danych, aby wprowadzić odbudowuje go szybciej. 
+Ponieważ struktury fizyczne są tworzone w usłudze [porzucenie i ponowne tworzenie indeksów](search-howto-reindex.md) zachodzi po każdym wprowadzeniu znaczących zmian do istniejącej definicji pola. Oznacza to, że podczas tworzenia aplikacji, należy zaplanować na częste ponowne kompilowanie. Warto rozważyć pracy przy użyciu podzestawu danych, aby wprowadzić odbudowuje go szybciej. 
 
 Kod, a nie podejście portalu, jest zalecane w przypadku iteracyjne projektowania. Jeśli użytkownik korzysta w portalu do definicji indeksu, trzeba będzie Wypełnij definicję indeksu na każdym ponownej kompilacji. Jako alternatywę, narzędzi, takich jak [interfejsu API REST i narzędzia Postman](search-fiddler.md) są przydatne do testowania weryfikacji koncepcji, w przypadku projektów programistycznych w wczesnych faz. Można dokonać zmiany przyrostowe definicji indeksu w treści żądania, a następnie wyślij żądanie do usługi Usługa umożliwiająca ponowne utworzenie indeksu za pomocą zaktualizowanego schematu.
 

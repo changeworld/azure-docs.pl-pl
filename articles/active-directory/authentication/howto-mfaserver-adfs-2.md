@@ -1,5 +1,5 @@
 ---
-title: Używanie serwera usługi Azure MFA z usługami AD FS 2.0 | Microsoft Docs
+title: Użyj serwera usługi Azure MFA z usługami AD FS 2.0 — usługa Azure Active Directory
 description: Ta strona dotyczy usługi Azure Multi-Factor Authentication i zawiera informacje umożliwiające rozpoczęcie korzystania z usługi Azure MFA i usług AD FS 2.0.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09ff573683ef681a053f2bcd37325d48b3823371
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b60ca0058125aea0124051570fefb031a022456c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100823"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317582"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication do współdziałania z usługami AD FS 2.0
 

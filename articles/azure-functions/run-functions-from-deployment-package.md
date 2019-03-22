@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: 292b25987f183df2091667312d4e6730b7f40dda
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 57126c87879da9f99d224457433bbbd5f95ef021
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990904"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336732"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Uruchamianie usługi Azure Functions z pliku pakietu
 
@@ -44,7 +44,7 @@ Aby umożliwić zarządzanie aplikacją funkcji do uruchomienia z pakietu, wysta
 
 | Wartość  | Opis  |
 |---------|---------|
-| **`1`**  | Zalecane w przypadku aplikacji funkcji w systemie Windows. Uruchom z pliku pakietu w `d:\home\data\SitePackages` folderu aplikacji funkcji. W przeciwnym razie [wdrażania przy użyciu pliku zip wdrażania] (#integration z zip — wdrożenie], ta opcja wymaga folder musi mieć również w pliku o nazwie `packagename.txt`. Ten plik zawiera tylko nazwę pliku pakietu w folderze, bez żadnych odstępów. |
+| **`1`**  | Zalecane w przypadku aplikacji funkcji w systemie Windows. Uruchom z pliku pakietu w `d:\home\data\SitePackages` folderu aplikacji funkcji. W przeciwnym razie [wdrażanie przy użyciu pliku zip wdrażanie](#integration-with-zip-deployment), ta opcja wymaga folder musi mieć również w pliku o nazwie `packagename.txt`. Ten plik zawiera tylko nazwę pliku pakietu w folderze, bez żadnych odstępów. |
 |**`<url>`**  | Lokalizacja pliku określonego pakietu, który chcesz uruchomić. Korzystając z usługi Blob storage, skorzystaj z kontenera prywatnych przy użyciu [sygnatury dostępu współdzielonego (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) Aby włączyć środowisko uruchomieniowe usługi Functions w celu uzyskania dostępu do pakietu. Możesz użyć [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) do przekazywania plików pakietu do konta usługi Blob storage.         |
 
 > [!CAUTION]

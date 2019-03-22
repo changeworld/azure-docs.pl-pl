@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: ea41f09269e3ad46db1f254965fd7d7df25232be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: d66db88dd1e962acc63c960270bb5685218aa391
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095606"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316074"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -88,7 +88,7 @@ Na przykład obsługi uzgadnianie sprawdzania poprawności subskrypcji, zobacz [
 
 ### <a name="checklist"></a>Lista kontrolna
 
-Podczas tworzenia subskrypcji zdarzeń, jeśli jest wyświetlany komunikat o błędzie, taki jak "próby sprawdź poprawność podanego punktu końcowego https://your-endpoint-here nie powiodło się. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/esvalidation"oznacza, że jest błąd uzgadnianie sprawdzania poprawności. Aby rozwiązać ten problem, sprawdź następujące aspekty:
+Podczas tworzenia subskrypcji zdarzeń, jeśli jest wyświetlany komunikat o błędzie, taki jak "próby sprawdź poprawność podanego punktu końcowego https:\//your-endpoint-here nie powiodło się. Aby uzyskać więcej informacji, odwiedź stronę https:\//aka.ms/esvalidation ", wskazuje, że jest błąd uzgadnianie sprawdzania poprawności. Aby rozwiązać ten problem, sprawdź następujące aspekty:
 
 * Masz kontrolę nad kodem aplikacji w docelowy punkt końcowy? Na przykład jeśli piszesz wyzwalacz HTTP na podstawie funkcji platformy Azure, czy masz dostęp do kodu aplikacji, aby wprowadzić zmiany?
 * Jeśli masz dostęp do kodu aplikacji, należy zaimplementować mechanizm uzgadnianie ValidationCode na podstawie, jak pokazano w powyższym przykładzie.

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 7872ed2c9d6f094907ae4d11adef6bc7a99be8e4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: aff9dade7fe0238c0ea8ccc3ae5bba57437c6f89
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782891"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339571"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy limitów przydziału w usłudze Azure Stack
 
@@ -29,7 +29,7 @@ ms.locfileid: "57782891"
 
 [Przydziały](azure-stack-plan-offer-quota-overview.md#plans) definiowania ograniczeń zasobów, które subskrypcji użytkownika można aprowizować lub zużywają. Na przykład limit przydziału może zezwolić użytkownikowi na utworzenie maksymalnie pięć maszyn wirtualnych. Każdy zasób może mieć własne typy przydziałów.
 
-## <a name="compute-quota-types"></a>Typy limitów przydziału obliczeniowych 
+## <a name="compute-quota-types"></a>Typy limitów przydziału obliczeniowych
 
 | **Typ** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
@@ -40,16 +40,15 @@ ms.locfileid: "57782891"
 | Maksymalną pojemność dysku zarządzanego w warstwie standardowa (w GB) | 2048 | Maksymalna pojemność standardowych dysków zarządzanych, które mogą być tworzone w tej lokalizacji. |
 | Maksymalną pojemność dysku zarządzanego w warstwie premium (w GB) | 2048 | Maksymalna pojemność premium usługa managed disks, które mogą być tworzone w tej lokalizacji. |
 
-## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu 
+## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu
 
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
-| Maksymalna pojemność (GB) |2048 |Pojemność pamięci masowej (w tym obiektów blob i wszystkie migawki assiociated, tabele i kolejki), które mogą być używane przez subskrypcji w tej lokalizacji. |
+| Maksymalna pojemność (GB) |2048 |Pojemność pamięci masowej (w tym obiektów blob i wszystkie skojarzone migawki, tabele i kolejki), które mogą być używane przez subskrypcji w tej lokalizacji. |
 | Łączna liczba kont magazynu |20 |Maksymalna liczba kont magazynu, które można utworzyć subskrypcji, w tej lokalizacji. |
 
 > [!NOTE]  
 > Może upłynąć do dwóch godzin, zanim przydział magazynowania jest wymuszany.
-
 
 ## <a name="network-quota-types"></a>Typy przydziałów sieci
 
@@ -69,10 +68,10 @@ Istnieją dwa różne sposoby, aby wyświetlić istniejące limitu przydziału:
 
 ### <a name="plans"></a>Plany
 
-1.  W okienku nawigacji po lewej stronie portalu administratora, wybierz **plany**.
-2.  Wybierz plan, który chcesz wyświetlić szczegółowe informacje, klikając jego nazwę.
-3.  W otwartym bloku wybierz **usług i przydziałów**.
-4.  Wybierz limit przydziału, czy chcesz wyświetlić, klikając go w **nazwa** kolumny.
+1. W okienku nawigacji po lewej stronie portalu administratora, wybierz **plany**.
+2. Wybierz plan, który chcesz wyświetlić szczegółowe informacje, klikając jego nazwę.
+3. W otwartym bloku wybierz **usług i przydziałów**.
+4. Wybierz limit przydziału, czy chcesz wyświetlić, klikając go w **nazwa** kolumny.
 
     [![Przydziały](media/azure-stack-quota-types/quotas1sm.png "Wyświetl limity przydziału")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
@@ -88,14 +87,14 @@ Istnieją dwa różne sposoby, aby edytować limit przydziału:
 
 ### <a name="edit-a-plan"></a>Edytuj plan
 
-1.  W okienku nawigacji po lewej stronie portalu administratora, wybierz **plany**.
-2.  Wybierz plan, dla którego chcesz edytować limit przydziału, klikając jego nazwę.
-3.  W otwartym bloku wybierz **usług i przydziałów**.
-4.  Wybierz limit przydziału, czy chcesz edytować, klikając go w **nazwa** kolumny.
+1. W okienku nawigacji po lewej stronie portalu administratora, wybierz **plany**.
+2. Wybierz plan, dla którego chcesz edytować limit przydziału, klikając jego nazwę.
+3. W otwartym bloku wybierz **usług i przydziałów**.
+4. Wybierz limit przydziału, czy chcesz edytować, klikając go w **nazwa** kolumny.
     [![Przydziały](media/azure-stack-quota-types/quotas1sm.png "Wyświetl limity przydziału")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
-5.  W otwartym bloku wybierz **edytować w obliczeniowej**, **edytowania w sieci**, lub **edycji w magazynie**.
-    ![Przydziały](media/azure-stack-quota-types/quotas3.png "Wyświetl limity przydziału")    
+5. W otwartym bloku wybierz **edytować w obliczeniowej**, **edytowania w sieci**, lub **edycji w magazynie**.
+    ![Przydziały](media/azure-stack-quota-types/quotas3.png "Wyświetl limity przydziału")
 
 Alternatywnie możesz wykonać tę procedurę, aby edytować limit przydziału:
 
@@ -106,9 +105,9 @@ Alternatywnie możesz wykonać tę procedurę, aby edytować limit przydziału:
 
 ### <a name="edit-original-configuration"></a>Edytuj oryginalnej konfiguracji
   
-Użytkownik może edytować oryginalną konfigurację przydziału zamiast [przy użyciu planu dodatku](create-add-on-plan.md). Podczas edytowania limit przydziału nową konfigurację automatycznie stosuje globalnie wszystkie plany, które używają tego limitu przydziału, a wszystkie istniejące subskrypcje, korzystających z tych planów. Edytowanie przydziału jest inny niż zastosowania planu dodatku zapewnienie zmodyfikowane limit przydziału, który użytkownik zdecyduje, aby subskrybować. 
+Użytkownik może edytować oryginalną konfigurację przydziału zamiast [przy użyciu planu dodatku](create-add-on-plan.md). Podczas edytowania limit przydziału nową konfigurację automatycznie stosuje globalnie wszystkie plany, które używają tego limitu przydziału, a wszystkie istniejące subskrypcje, korzystających z tych planów. Edytowanie przydziału jest inny niż zastosowania planu dodatku zapewnienie zmodyfikowane limit przydziału, który użytkownik zdecyduje, aby subskrybować.
 
-Nowe wartości dla limitu przydziału stosowane globalnie do wszystkie plany, które używają przydziału zmodyfikowane i wszystkie istniejące subskrypcje, korzystających z tych planów. 
+Nowe wartości dla limitu przydziału stosowane globalnie do wszystkie plany, które używają przydziału zmodyfikowane i wszystkie istniejące subskrypcje, korzystających z tych planów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

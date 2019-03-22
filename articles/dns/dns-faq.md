@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1d0506179f9f0044f9f05edd3395d2677310c2d0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098097"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337119"
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -103,9 +103,11 @@ Obecnie ta funkcja jest niedostępna dla rekordy TXT, utworzone w witrynie Azure
 ## <a name="alias-records"></a>Rekordy aliasu
 
 ### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Co to są sytuacje, w którym rekordów aliasów są przydatne?
+
 Zobacz scenariusze w temacie [Azure alias DNS rekordów — omówienie](dns-alias.md).
 
 ### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Jakie typy rekordów są obsługiwane dla zestawów rekordów alias?
+
 Zestawy rekordów aliasów są obsługiwane następujące typy rekordów w strefie usługi Azure DNS:
  
 - A 
@@ -116,30 +118,36 @@ Zestawy rekordów aliasów są obsługiwane następujące typy rekordów w stref
 
 - **Wskaż publicznego zasobu adresu IP z usługi DNS A/AAAA zestawu rekordów.** Można utworzyć zestawu rekordów A/AAAA i ułatwiają zestawie aliasu rekordu, aby wskazywał publiczny zasób adresu IP.
 - **Wskaż profil usługi Traffic Manager z zestawu rekordów DNS A/AAAA/CNAME.** Możesz wskazać CNAME profilu usługi Traffic Manager, z zestawu rekordów CNAME w systemie DNS. Przykładem jest contoso.trafficmanager.net. Teraz możesz też wskazać profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe z rekordu A lub AAAA ustawiana w strefie DNS.
+- **Wskaż punktu końcowego usługi Azure Content Delivery Network (CDN)**. Jest to przydatne podczas tworzenia statycznych witryn internetowych przy użyciu usługi Azure storage i Azure CDN.
 - **Wskaż inny zestaw rekordów DNS w ramach tej samej strefie.** Alias rekordy mogą odwoływać się do innych zestawów rekordów tego samego typu. Na przykład zestaw rekordów DNS CNAME może być aliasem dla innego zestawu rekordów CNAME tego samego typu. To rozwiązanie jest przydatne w przypadku niektórych zestawów rekordów aliasów się i niektórych innych aliasów.
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Czy mogę tworzyć i aktualizować alias rekordów w witrynie Azure portal?
+
 Tak. Można utworzyć lub zarządzać rekordów aliasów w witrynie Azure portal, wraz z interfejsów API REST platformy Azure, programu PowerShell, interfejsu wiersza polecenia i zestawy SDK.
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Rekordów aliasów pomoże upewnij się, że mojego zestawu rekordów DNS zostanie usunięty po usunięciu podstawowej publiczny adres IP?
+
 Tak. Ta funkcja jest jednym z podstawowych możliwości rekordów aliasów. Ułatwia on uniknięcia potencjalnych przestojów dla użytkowników aplikacji.
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Będzie alias rejestruje pomoc, aby upewnić się, że mojego zestawu rekordów DNS zostały zaktualizowane do prawidłowego adresu IP po zmianie podstawowy publiczny adres IP?
+
 Tak. Ta funkcja jest jednym z podstawowych możliwości rekordów aliasów. Pomaga unikać potencjalnych awarii lub zagrożenia dla bezpieczeństwa aplikacji.
 
 ### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Czy istnieją jakieś ograniczenia podczas przy użyciu rekordu aliasu ustawia for A lub AAAA rejestruje, aby wskazywały do usługi Traffic Manager?
+
 Tak. Wskaż profil usługi Traffic Manager jako alias z A lub AAAA zestawu rekordów, usługi Traffic Manager profil korzystać tylko zewnętrzne punkty końcowe. Tworząc zewnętrzne punkty końcowe w usłudze Traffic Manager, podaj rzeczywiste adresy IP punktów końcowych.
 
 ### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Czy istnieje dodatkowe opłaty za używanie rekordów aliasów?
+
 Alias rekordy są kwalifikacji na prawidłowy zestaw rekordów DNS. Nie istnieje żadne dodatkowe opłaty rekordów aliasów.
 
 ## <a name="use-azure-dns"></a>Używanie systemu Azure DNS
 
-### <a name="can-i-cohost-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Czy można cohost domeny, za pomocą usługi Azure DNS i innego dostawcy DNS?
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Czy mogę współprowadzącym domeny przy użyciu usługi Azure DNS i innego dostawcy DNS?
 
-Tak. Usługa DNS platformy Azure obsługuje cohosting domeny z innymi usługami DNS.
+Tak. Usługa DNS platformy Azure obsługuje wspólnej hosting domeny z innymi usługami DNS.
 
-Aby skonfigurować cohosting, należy zmodyfikować rekordy NS dla domeny wskazywał serwery nazw obu dostawców. The name server (NS) records control which providers receive DNS queries for the domain. Możesz zmodyfikować te rekordy NS w usłudze Azure DNS, u innego dostawcy i w strefie nadrzędnej. Strefy nadrzędnej jest zazwyczaj skonfigurowany, za pomocą rejestratora nazw domen. Aby uzyskać więcej informacji na temat delegowania usługi DNS, zobacz [Delegowanie domeny DNS](dns-domain-delegation.md).
+Aby skonfigurować wspólnej hostingu, należy zmodyfikować rekordy NS dla domeny wskazywał serwery nazw obu dostawców. The name server (NS) records control which providers receive DNS queries for the domain. Możesz zmodyfikować te rekordy NS w usłudze Azure DNS, u innego dostawcy i w strefie nadrzędnej. Strefy nadrzędnej jest zazwyczaj skonfigurowany, za pomocą rejestratora nazw domen. Aby uzyskać więcej informacji na temat delegowania usługi DNS, zobacz [Delegowanie domeny DNS](dns-domain-delegation.md).
 
 Upewnij się również, czy rekordy DNS dla domeny są zsynchronizowane między obu dostawców usługi DNS. Usługa Azure DNS nie obsługuje obecnie transferu strefy DNS. Rekordy DNS muszą być synchronizowane za pomocą [portalu zarządzania usługi Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md), lub [Narzędzie interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
 
@@ -271,10 +279,9 @@ Strefy prywatne, które zostały już utworzone za pomocą interfejsów API, Pow
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Dowiedz się więcej o usłudze Azure DNS](dns-overview.md).
-<br>
-- [Dowiedz się więcej o tym, jak używać usługi Azure DNS dla domen prywatnych](private-dns-overview.md).
-<br>
-- [Dowiedz się więcej na temat stref DNS i rekordów](dns-zones-records.md).
-<br>
-- [Rozpoczynanie pracy z usługą Azure DNS](dns-getstarted-portal.md).
 
+- [Dowiedz się więcej o tym, jak używać usługi Azure DNS dla domen prywatnych](private-dns-overview.md).
+
+- [Dowiedz się więcej na temat stref DNS i rekordów](dns-zones-records.md).
+
+- [Rozpoczynanie pracy z usługą Azure DNS](dns-getstarted-portal.md).

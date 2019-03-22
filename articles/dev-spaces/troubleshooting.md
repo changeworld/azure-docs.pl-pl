@@ -9,16 +9,18 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: eff7f88ec6cbf8064df42fa3b22d61bb44baa451
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898086"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339588"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
 Ten przewodnik zawiera informacje o typowych problemów, które mogą mieć w przypadku korzystania z usługi Azure Dev miejsca do magazynowania.
+
+Jeśli masz problem podczas korzystania z usługi Azure Dev miejsca do magazynowania, należy utworzyć [problemu w repozytorium Azure Dev miejsca do magazynowania w witrynie GitHub](https://github.com/Azure/dev-spaces/issues).
 
 ## <a name="enabling-detailed-logging"></a>Włączanie rejestrowania szczegółowe
 
@@ -262,11 +264,13 @@ az provider register --namespace Microsoft.DevSpaces
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Limit czasu tworzenia miejsca do magazynowania w *oczekiwania na kompilację obrazu kontenera...*  kroku przy użyciu wirtualnych węzłów AKS
 
 ### <a name="reason"></a>Przyczyna
-Ten błąd występuje podczas próby użycia miejsca do magazynowania Dev do uruchamiania usługi, który jest skonfigurowany do uruchamiania na [AKS wirtualnego węzła](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Miejsca do magazynowania dev aktualnie nie obsługuje kompilowania lub debugowania usług wirtualnych węzłów.
+Limit czasu występuje, gdy próbują użyć standardowego miejsca do magazynowania, aby uruchomić to usługa, która jest skonfigurowana do uruchamiania [AKS wirtualnego węzła](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Miejsca do magazynowania dev aktualnie nie obsługuje kompilowania lub debugowania usług wirtualnych węzłów.
 
 Jeśli uruchamiasz `azds up` z `--verbose` przełącznika lub Włącz pełne rejestrowanie w programie Visual Studio, zobacz dodatkowe szczegóły:
 
 ```cmd
+$ azds up --verbose
+
 Installed chart in 2s
 Waiting for container image build...
 pods/mywebapi-76cf5f69bb-lgprv: Scheduled: Successfully assigned default/mywebapi-76cf5f69bb-lgprv to virtual-node-aci-linux
@@ -274,7 +278,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-Pokazuje to, że zasobnika usługi został przypisany do *wirtualnego node-aci-linux*, który jest węzłem wirtualnym.
+Powyższe polecenie pokazuje, że zasobnika usługi został przypisany do *wirtualnego node-aci-linux*, który jest węzłem wirtualnym.
 
 ### <a name="try"></a>Wypróbuj:
 Aktualizowanie wykresu Helm dla usługi usunąć wszystkie *nodeSelector* i/lub *tolerations* wartości, które usługa do uruchamiania na wirtualny węzeł. Te wartości są zazwyczaj zdefiniowane na wykresie `values.yaml` pliku.

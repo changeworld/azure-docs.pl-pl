@@ -2,17 +2,18 @@
 title: Migrowanie maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
 description: W tym artykule opisano sposób migrowania maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0daa25cce434b2e97995963918e52df974e2ef9c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110311"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336552"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -113,7 +114,7 @@ Uruchom tryb failover dla maszyn, które chcesz migrować.
 5. Sprawdź, czy maszyna wirtualna Azure jest wyświetlana na platformie Azure zgodnie z oczekiwaniami.
 6. W obszarze **Replikowane elementy** kliknij prawym przyciskiem myszy maszynę wirtualną > **Zakończ migrację**. Spowoduje to wykonanie następujących czynności:
 
-   - Powoduje zakończenie procesu migracji, zatrzymanie replikacji maszyny wirtualnej usług AWS oraz zatrzymanie naliczania opłat za usługę Site Recovery dla maszyny wirtualnej.
+   - Zakończenie procesu migracji, zatrzymanie replikacji maszyny Wirtualnej w środowisku lokalnym i zatrzymanie naliczania opłat za Site Recovery dla maszyny Wirtualnej.
    - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne.
 
      ![Kończenie migracji](./media/migrate-tutorial-on-premises-azure/complete-migration.png)

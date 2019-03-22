@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812042"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317514"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Podczas wdrażania rozwiązania StorSimple Virtual Array — zestaw się jako serwera iSCSI za pośrednictwem witryny Azure portal
 
@@ -98,7 +98,7 @@ Poniższe instrukcje umożliwiają instalowanie i konfigurowanie rozwiązania St
    
     Na **serwera proxy sieci Web** strony:
    
-   1. Podaj **adres URL serwera proxy sieci Web** w następującym formacie:  *http://host-IP adres* lub *FQDN: port numer*. Należy pamiętać, że adresy URL HTTPS nie są obsługiwane.
+   1. Podaj **adres URL serwera proxy sieci Web** w następującym formacie: *http:\/adres /host-IP* lub *FQDN: port numer*. Należy pamiętać, że adresy URL HTTPS nie są obsługiwane.
    2. Określ **uwierzytelniania** jako **podstawowe** lub **Brak**.
    3. Jeśli używasz uwierzytelniania, należy również zapewnienie **Username** i **hasło**.
    4. Kliknij przycisk **Zastosuj**. Spowoduje to zweryfikować i zastosowania ustawień serwera proxy sieci web skonfigurowany.

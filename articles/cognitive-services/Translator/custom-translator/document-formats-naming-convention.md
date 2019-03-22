@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 0b578bfdb75b0ad4d4065d8793a74e7c4284eb74
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dec5ce37aa3b4e9d4d6fcab964c1e48b606a4cd0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781592"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338058"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Formaty i nazewnictwa wskazówki Konwencji dokumentów
 
@@ -31,7 +31,7 @@ Poniższa tabela zawiera wszystkie obsługiwane formaty plików, które można u
 | Microsoft Word    | .DOCX        | Dokument programu Microsoft Word                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Adobe Acrobat przenośny dokument                                                                                                                                                                                                                                                |
 | HTML              | .HTML, .HTM  | Dokument HTML                                                                                                                                                                                                                                                                  |
-| Plik tekstowy         | .TXT         | UTF-16 lub UTF-8 zakodowane pliki tekstowe                                                                                                                                                                                                                                             |
+| Plik tekstowy         | .TXT         | UTF-16 lub UTF-8 zakodowane pliki tekstowe. Nazwa pliku nie może zawierać znaki japońskie.                                                                                                                                                                                        |
 | Tekst wyrównany w pliku | . DOPASUJ       | Rozszerzenie `.ALIGN` to specjalne rozszerzenie, które można użyć, jeśli wiesz, że zdań w parze dokumentu są dokładnie wyrównana. Jeśli podasz `.ALIGN` pliku, niestandardowe w usłudze Translator nie zostaną wyrównane zdania dla Ciebie. |
 | Plik programu Excel        | .XLSX        | Plik programu Excel (2013 lub nowszy). Pierwszy wiersz / wiersz arkusz kalkulacyjny powinien być kod języka.                                                                                                                                                                                                                                                      |
 

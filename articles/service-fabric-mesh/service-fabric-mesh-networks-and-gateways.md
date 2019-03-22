@@ -3,7 +3,7 @@ title: Wprowadzenie do usługi Azure Service Fabric sieci | Dokumentacja firmy M
 description: Więcej informacji na temat sieci, bramy i routing ruchu inteligentne w usługi Service Fabric siatki.
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/26/2018
-ms.author: ryanwi
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8d9f5c71d05477094d733fd6b798831b3ff02ce1
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892609"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339265"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Wprowadzenie do sieci w aplikacji usługi Service Fabric siatki
 W tym artykule opisano różnego rodzaju moduły równoważenia obciążenia, jak połączyć sieć bramy za pomocą aplikacji do innych sieci i jak ruch jest przekierowywany między usługami w swoich aplikacjach.
@@ -32,7 +32,7 @@ Równoważenie obciążenia mogą być wykonywane w różnych warstwach w [OSI m
 
 - Moduł równoważenia obciążenia L7 działa w warstwie aplikacji, która zajmuje się zawartość każdego pakietu. Sprawdza ono zawartość pakietu, ponieważ sam protokołów, takich jak HTTP, HTTPS i WebSockets. Moduł równoważenia obciążenia daje możliwość wykonywania zaawansowanego routingu. Na przykład klient nawiązuje połączenie TCP protokołu HTTP/2 do modułu równoważenia obciążenia. Moduł równoważenia obciążenia, która jest następnie przechodzi nawiązać dwa połączenia wewnętrznej bazy danych. Gdy klient wysyła dwóch strumieni HTTP/2 do modułu równoważenia obciążenia, strumienia, jeden są wysyłane do wewnętrznej bazy danych jedną i strumienia dwa są wysyłane do zaplecza dwa. W związku z tym nawet Multipleksowanie klientów, którzy mają bardzo różne żądania obciążenia będzie być równoważone wydajnie w zaplecza. 
 
-## <a name="networks-and-gateways"></a>Bram i sieci
+## <a name="networks-and-gateways"></a>Sieci i bramy
 W [Model zasobów sieci szkieletowej usług](service-fabric-mesh-service-fabric-resources.md), zasobu sieciowego jest zasobem indywidualnie do wdrożenia, niezależnie od zasób aplikacji lub usługi, który może odwoływać się do niego jako ich zależności. Służy do tworzenia sieci dla aplikacji, która jest otwarta dla Internetu. Wiele usług z różnych aplikacji może być częścią tej samej sieci. Tej sieci prywatnej jest tworzony i zarządzany przez usługę Service Fabric i nie jest siecią wirtualną platformy Azure (VNET). Aplikacje mogą być dynamicznie dodawane i usuwane z zasobu sieciowego, który pozwala włączać i wyłączać połączenie między SIECIAMI. 
 
 Brama jest używane do zestawiania dwie sieci. Wdraża zasobu bramy [proxy usługa Envoy](https://www.envoyproxy.io/) zapewniający P4 dla wszystkich protokołów i L7 routingu dla zaawansowanych routing aplikacji protokołu HTTP (S). Brama kieruje ruchem w sieci z poziomu zewnętrznej sieci i określa, które usługi na potrzeby kierowania ruchu do.  Zewnętrznej sieci może być siecią open (zasadniczo publicznej sieci internet) lub siecią wirtualną platformy Azure, która umożliwia łączenie się z innymi aplikacjami platformy Azure i zasobów. 
@@ -44,7 +44,7 @@ Po utworzeniu zasobu sieciowego przy użyciu `ingressConfig`, publiczny adres IP
 Po utworzeniu aplikacji siatki go odwoływać się istniejącego zasobu sieciowego. Można dodawać nowych portów publicznego lub istniejących portów mogą być usunięte z konfiguracji transferu danych przychodzących. Usuwania zasobu sieciowego zakończy się niepowodzeniem, jeśli zasób aplikacji jest do niego odwoływać. Aplikacja zostanie usunięta, usunięcie zasobu sieciowego.
 
 ## <a name="next-steps"></a>Kolejne kroki 
-Aby dowiedzieć się więcej na temat usługi Service Fabric siatki, zapoznaj się z omówieniem:
-- [Omówienie usługi Service Fabric siatki](service-fabric-mesh-overview.md)
+Aby dowiedzieć się więcej na temat usługi Service Fabric Mesh, zapoznaj się z omówieniem:
+- [Omówienie usługi Service Fabric Mesh](service-fabric-mesh-overview.md)
 
 [Image1]: media/service-fabric-mesh-networks-and-gateways/NetworkAndGateway.png

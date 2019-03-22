@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 46da7c7931eaf163c24f057bac5de35f3c727519
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57836967"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311870"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra usługi Service Fabric, którą można dostosować. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych dostosować ustawienia, aktualizując *ClusterConfig.json* plików i przeprowadzania konfiguracji uaktualnienia w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -614,13 +614,13 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="security"></a>Bezpieczeństwo
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|ciąg, domyślna to ""|Statyczny|Usługi AAD certyfikat punktu końcowego formatu, domyślnej wersji Azure Commercial określonego środowiska innych niż domyślne, takie jak Azure dla instytucji rządowych "https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
+|AADCertEndpointFormat|ciąg, domyślna to ""|Statyczny|Usługi AAD certyfikat punktu końcowego formatu, domyślnej wersji Azure Commercial określonego środowiska innych niż domyślne, takie jak Azure dla instytucji rządowych "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|ciąg, domyślna to ""|Statyczny|Nazwa klienta natywnego w aplikacji lub identyfikator reprezentujący klientów sieci szkieletowej |
 |AADClusterApplication|ciąg, domyślna to ""|Statyczny|Nazwa aplikacji interfejsu API sieci Web lub identyfikator reprezentujący klastra |
-|AADLoginEndpoint|ciąg, domyślna to ""|Statyczny|Usługi AAD punkt końcowy logowania, domyślnej wersji Azure Commercial określona dla innych niż domyślne środowisko, takich jak Azure dla instytucji rządowych "https://login.microsoftonline.us" |
+|AADLoginEndpoint|ciąg, domyślna to ""|Statyczny|Usługi AAD punkt końcowy logowania, domyślnej wersji Azure Commercial określona dla innych niż domyślne środowisko, takich jak Azure dla instytucji rządowych "https:\//login.microsoftonline.us" |
 |AADTenantId|ciąg, domyślna to ""|Statyczny|Identyfikator dzierżawy (GUID) |
 |AdminClientCertThumbprints|ciąg, domyślna to ""|Dynamiczny|Odciski palców certyfikatów używanych przez klientów w roli administratora. Jest to lista rozdzielonych przecinkami nazw. |
-|AADTokenEndpointFormat|ciąg, domyślna to ""|Statyczny|Usługi AAD punktu końcowego tokenu, domyślnej wersji Azure Commercial określona dla innych niż domyślne środowisko, takich jak Azure dla instytucji rządowych "https://login.microsoftonline.us/{0}" |
+|AADTokenEndpointFormat|ciąg, domyślna to ""|Statyczny|Usługi AAD punktu końcowego tokenu, domyślnej wersji Azure Commercial określona dla innych niż domyślne środowisko, takich jak Azure dla instytucji rządowych "https:\//login.microsoftonline.us/{0}" |
 |AdminClientClaims|ciąg, domyślna to ""|Dynamiczny|Wszystkie oświadczenia można oczekiwać od klientów administratora. tym samym formacie co ClientClaims; Ta lista pobiera wewnętrznie dodane do ClientClaims; więc nie trzeba również dodać ten sam wpisy do ClientClaims. |
 |AdminClientIdentities|ciąg, domyślna to ""|Dynamiczny|Windows tożsamości klientów w sieci szkieletowej w roli administratora; używane do autoryzowania operacje uprzywilejowane sieci szkieletowej. Jest to rozdzielana przecinkami lista; Każdy wpis jest nazwa konta domeny lub nazwę grupy. Dla wygody; konto, na którym uruchomiono fabric.exe automatycznie przypisano rolę administratora; Dlatego jest grupy ServiceFabricAdministrators. |
 |AppRunAsAccountGroupX509Folder|ciąg, domyślny jest /home/sfuser/sfusercerts |Statyczny|Folder, gdzie znajdują się AppRunAsAccountGroup X509 certyfikaty i klucze prywatne |

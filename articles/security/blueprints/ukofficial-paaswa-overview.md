@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: b30ef7d0b373f0d9a440b6649f819e429e28328c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891107"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314930"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
@@ -119,7 +119,7 @@ Ten szablon wdraża następujące funkcje usługi App Service:
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
-Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. SQL Database oferuje zarządzane pojedynczej bazy danych SQL, zarządzane bazy danych SQL w [puli elastycznej](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool), SQL i [wystąpienia zarządzane przez usługę](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (w publicznej wersji zapoznawczej). Zapewnia możliwość [dynamicznie skalowalną wydajność])https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) i udostępnia opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) dla używane w skomplikowanych analizach i raportowaniu, oraz [OLTP w pamięci](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) dla extreme przetwarzanie transakcyjne. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą.
+Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. SQL Database oferuje zarządzane pojedynczej bazy danych SQL, zarządzane bazy danych SQL w [puli elastycznej](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool), SQL i [wystąpienia zarządzane przez usługę](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (w publicznej wersji zapoznawczej). Zapewnia [dynamicznie skalowalną wydajność](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers) i udostępnia opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview), używane w skomplikowanych analizach i raportowaniu, oraz [przetwarzanie OLTP danych w pamięci](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) na potrzeby ekstremalnego przetwarzania transakcyjnego. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą.
 
 Usługa Azure SQL Database w tym planie
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/20/2019
 ms.author: victorh
-ms.openlocfilehash: ae55f2abf9815174e7258c2ace949078794c380d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: f549f9c612797c1c956d6921fe4898a5f8bee9e6
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286197"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319418"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -59,7 +59,7 @@ Przekierowywanie jest obsługiwane. Zobacz [Application Gateway redirect overvie
 
 ### <a name="in-what-order-are-listeners-processed"></a>W jakiej kolejności odbiorników przetwarzania?
 
-Odbiorniki są przetwarzane w kolejności, w której są wyświetlane. Dlatego jeśli podstawowy odbiornik pasuje do przychodzącego żądania przetwarza je najpierw.  Odbiorników obejmujących wiele lokacji, należy skonfigurować przed odbiornika podstawowego, aby upewnić się, że ruch jest kierowany do poprawne zaplecza.
+Zobacz [kolejność przetwarzania odbiorników](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners).
 
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>Gdzie znaleźć adres IP bramy aplikacji i DNS
 
@@ -83,16 +83,13 @@ Tylko jeden publiczny adres IP jest obsługiwany w bramie aplikacji.
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Jak duże powinny utworzyć mojej podsieci dla bramy Application Gateway?
 
-Bramy Application Gateway zużywa jeden prywatny adres IP dla każdego wystąpienia, a także innym prywatnym adresem IP, jeśli konfiguracji IP frontonu prywatnego jest skonfigurowany. Ponadto platforma Azure rezerwuje pierwsze cztery i ostatniego adresu IP w każdej podsieci, do wewnętrznego użycia.
-Na przykład, jeśli bramy aplikacji jest ustawiona na trzy wystąpienia, a nie adresu IP frontonu prywatnych, następnie wartość/29 podsieć, rozmiar lub nowszej jest wymagana. W tym przypadku brama aplikacji używa trzech adresów IP. Jeśli masz trzy wystąpienia i adres IP dla prywatnych konfiguracji adresu IP frontonu, następnie o rozmiarze/28 podsieć, rozmiar lub nowszej jest wymagany, ponieważ cztery adresy IP są wymagane.
-
-Najlepszym rozwiązaniem jest użycie co najmniej o rozmiarze/28 rozmiar podsieci. Dzięki temu 11 brakować adresów. Jeśli Twoje obciążenia aplikacji wymaga więcej niż 10 wystąpień, należy rozważyć/27 lub/26 rozmiar podsieci.
+Zobacz [zagadnienia rozmiar podsieci bramy Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet) zrozumienie rozmiar podsieci, wymagane dla danego wdrożenia.
 
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>PYTANIE: Do jednej podsieci można wdrażać więcej niż jednego zasobu usługi Application Gateway?
 
 Tak, oprócz posiadanie wielu wystąpień danego wdrożenia bramy Application Gateway, można udostępnić innym unikatowy zasobu usługi Application Gateway do istniejącej podsieci, który zawiera różne zasobu usługi Application Gateway.
 
-Mieszanie Standard_v2 i standardowa usługa Application Gateway w tej samej podsieci nie jest obsługiwane. Ponadto jeśli włączono automatyczne skalowanie, podsieć może mieć tylko jedną bramę aplikacji.
+Mieszanie Standard_v2 i standardowa usługa Application Gateway w tej samej podsieci nie jest obsługiwane.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Usługa Application Gateway obsługuje nagłówków x-forwarded dla?
 
@@ -152,13 +149,7 @@ Nie, ale można wdrożyć inne bramy aplikacji w podsieci.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Czy sieciowe grupy zabezpieczeń są obsługiwane w podsieci bramy aplikacji?
 
-Sieciowe grupy zabezpieczeń (NSG) są obsługiwane w podsieci bramy aplikacji z następującymi zastrzeżeniami:
-
-* Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503 65534 w usłudze Application Gateway v1 jednostki SKU i porty 65200 – 65535 dla jednostki SKU w wersji 2. Zakres portów jest wymagany do komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowych certyfikatów podmioty zewnętrzne, w tym klienci tych bram, nie będą mogli zainicjować wszelkie zmiany w tych punktach końcowych.
-
-* Nie można zablokować wychodzące połączenie z Internetem. Domyślne reguły ruchu wychodzącego w sieciowej grupie zabezpieczeń umożliwiają już połączenie z Internetem. Firma Microsoft zaleca, nie usuwaj domyślne reguły ruchu wychodzącego i że nie utworzono inne reguły ruchu wychodzącego, które odmawiają wychodzące połączenie z Internetem.
-
-* Ruch z AzureLoadBalancer tag musi być zablokowany.
+Zobacz [ograniczenia sieciowe grupy zabezpieczeń w podsieci bramy Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-supported-on-the-application-gateway-subnet) Dowiedz się więcej na temat sieciowych grup zabezpieczeń obsługiwane w podsieci bramy aplikacji.
 
 ### <a name="are-user-defined-routes-supported-on-the-application-gateway-subnet"></a>Czy trasy zdefiniowane przez użytkownika są obsługiwane w podsieci bramy aplikacji?
 
@@ -190,7 +181,7 @@ Niestandardowe sondy nie obsługują symboli wieloznacznych lub wyrażenie regul
 
 ### <a name="how-are-rules-processed"></a>Jak są przetwarzane reguły
 
-Reguły są przetwarzane w kolejności, w której są one konfigurowane. Zalecane jest, czy połączenia obejmujące wiele lokacji skonfigurowanych reguł przed podstawowych reguł, aby zmniejszyć prawdopodobieństwo, że ruch jest kierowany do zaplecza nieodpowiedni jako podstawowa zasada będzie odpowiadać na ruch na podstawie portu przed reguły obejmujące wiele lokacji oceniane.
+Zobacz [kolejność przetwarzania reguły](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules) zrozumienie, jak reguły routingu są procesy w usłudze Application Gateway.
 
 ### <a name="what-does-the-host-field-for-custom-probes-signify"></a>Co to oznaczającego pole Host dla sond niestandardowych?
 
@@ -356,7 +347,7 @@ Opublikowane dotychczas również szablon usługi Resource Manager, która jest 
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>Kondycja wewnętrznej bazy danych zwraca stan nieznany w poznaniu przyczyny tego stanu?
 
-Najbardziej typową przyczyną jest dostęp do wewnętrznej bazy danych jest blokowany przez sieciową grupę zabezpieczeń lub niestandardowe DNS. Zobacz [zaplecza kondycji, rejestrowanie diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md) Aby dowiedzieć się więcej.
+Najbardziej typową przyczyną jest dostęp do wewnętrznej bazy danych jest blokowany przez sieciową grupę zabezpieczeń, niestandardowe DNS lub masz trasy zdefiniowanej przez użytkownika w podsieci bramy aplikacji. Zobacz [zaplecza kondycji, rejestrowanie diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md) Aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Następne kroki
 

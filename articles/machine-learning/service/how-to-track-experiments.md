@@ -1,7 +1,7 @@
 ---
-title: Śledź eksperymentów & metrykę szkolenia
+title: Rejestruj metryki podczas wysyłanie przebiegów szkoleniowych
 titleSuffix: Azure Machine Learning service
-description: Za pomocą usługi Azure Machine Learning można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. Dowiedz się, jak dodać rejestrowania skrypt szkolenia, jak przesyłanie eksperymentu, sprawdzanie postępu zadania uruchomione i jak wyświetlać wyniki przebiegu.
+description: Można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. Dowiedz się, jak dodać rejestrowania skrypt szkolenia, jak przesyłanie eksperymentu, sprawdzanie postępu zadania uruchomione i jak wyświetlać wyniki przebiegu.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 835d1f41ffe940422554a8ca59d0a91ac8e98607
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008819"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336599"
 ---
-# <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Śledzenie eksperymentów i szkolenia metryk w usłudze Azure Machine Learning
+# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Rejestruj metryki podczas szkolenia jest uruchamiany w usłudze Azure Machine Learning
 
 W usłudze Azure Machine Learning można śledzić eksperymenty i monitorować metryki, aby ulepszyć proces tworzenia modelu. W tym artykule Dowiedz się, jak dodawanie rejestrowania do skryptu szkolenia, przesłać przebieg eksperymentu, monitorować działanie i wyświetlić wyniki przebiegu.
 
@@ -218,7 +218,7 @@ W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklear
    ```
 
 ## <a name="cancel-a-run"></a>Anuluj przebieg
-Uruchom plik jest przesyłany, możesz to anulować nawet wtedy, gdy odwołanie do obiektu zostało utracone, tak długo, jak znać nazwę eksperymentu i Identyfikator przebiegu. 
+Po przesłaniu przebiegu można anulować nawet wtedy, gdy odwołanie do obiektu zostało utracone, tak długo, jak znać nazwę eksperymentu i Identyfikator przebiegu. 
 
 ```python
 from azureml.core import Experiment

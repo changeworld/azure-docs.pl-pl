@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 1298e7d7ed9c3760ff5022b5b97e8444eb1bcad1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007050"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316630"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Rozwiązywanie problemów z błędami alokacji występującymi podczas tworzenia lub ponownego uruchomienia lub zmienianie rozmiaru maszyn wirtualnych na platformie Azure
 
@@ -25,7 +25,7 @@ Utwórz maszynę wirtualną (VM), ponowne uruchamianie zatrzymano (cofnięto prz
 
 **Kod błędu:**: AllocationFailed lub ZonalAllocationFailed
 
-**Komunikat o błędzie**: "Niepowodzenie alokacji. Nie mamy wystarczającej pojemności dla żądanego rozmiaru maszyny Wirtualnej w tym regionie. Przeczytaj więcej na temat zwiększania prawdopodobieństwa pomyślnej alokacji sukcesu w `https://aka.ms/allocation-guidance`"
+**Komunikat o błędzie**: "Niepowodzenie alokacji. Nie mamy wystarczającej pojemności dla żądanego rozmiaru maszyny Wirtualnej w tym regionie. Przeczytaj więcej na temat zwiększania prawdopodobieństwa pomyślnej alokacji sukcesu na https:\//aka.ms/allocation-guidance "
 
 W tym artykule opisano przyczyny niektórych typowych błędów alokacji i sugeruje możliwe środki zaradcze.
 

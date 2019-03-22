@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002957"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313655"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Cross-Origin Resource Sharing (CORS) obsługę usług Azure Storage
 Począwszy od wersji 2013-08-15, usług Azure storage obsługuje udostępniania zasobów między źródłami (CORS) dla usług obiektów Blob, tabela, kolejka i pliku. CORS to funkcja protokołu HTTP, który umożliwia aplikacji sieci web uruchomionej w jednej domenie dostęp do zasobów w innej domenie. Przeglądarki sieci Web wdrażają ograniczenie bezpieczeństwa nazywane [zasadami tego samego źródła](https://www.w3.org/Security/wiki/Same_Origin_Policy) która zapobiega wywoływaniu interfejsów API w innej domenie; strony sieci web Mechanizm CORS zapewnia bezpieczną metodę umożliwiania jednej domenie (domenie źródłowej) wywoływania interfejsów API z innej domeny. Zobacz [specyfikacji CORS](https://www.w3.org/TR/cors/) szczegółowe informacje na mechanizmu CORS.
@@ -67,7 +67,7 @@ Oto przykład jednej reguły CORS określona za pomocą operacji ustawiania wła
 
 Poniżej opisano każdy element do reguły CORS:
 
-* **AllowedOrigins**: Domeny pochodzenia, które są dozwolone, aby utworzyć żądanie względem usługi storage przy użyciu mechanizmu CORS. Domena pochodzenia jest domeny, z której pochodzi żądanie. Należy pamiętać, że punkt początkowy musi być uwzględniana wielkość liter dokładnych źródło, które wieku użytkownika wysyła do usługi. Można również użyć znaku wieloznacznego "*" Aby zezwolić na wszystkie domeny pochodzenia żądań za pośrednictwem mechanizmu CORS. W przykładzie powyżej domen [ http://www.contoso.com ](http://www.contoso.com) i [ http://www.fabrikam.com ](http://www.fabrikam.com) mogą wysyłać żądania usługi przy użyciu mechanizmu CORS.
+* **AllowedOrigins**: Domeny pochodzenia, które są dozwolone, aby utworzyć żądanie względem usługi storage przy użyciu mechanizmu CORS. Domena pochodzenia jest domeny, z której pochodzi żądanie. Należy pamiętać, że punkt początkowy musi być uwzględniana wielkość liter dokładnych źródło, które wieku użytkownika wysyła do usługi. Można również użyć znaku wieloznacznego "*" Aby zezwolić na wszystkie domeny pochodzenia żądań za pośrednictwem mechanizmu CORS. W przykładzie powyżej protokołu http domeny:\//www.contoso.com i http: \/ /www.fabrikam.com mogą wysyłać żądania usługi przy użyciu mechanizmu CORS.
 * **AllowedMethods**: Metody (polecenia żądań protokołu HTTP), które domena pochodzenia może używać do żądania CORS. W powyższym przykładzie są dozwolone tylko żądania PUT i GET.
 * **AllowedHeaders**: Nagłówki żądania, które określić domenę pochodzenia dla żądania CORS. W powyższym przykładzie są dozwolone wszystkie nagłówki metadanych, począwszy od x-ms-meta-data, x-ms-meta-target i x-ms-meta-abc. Należy pamiętać, że symbol wieloznaczny "*" wskazuje, czy jest dozwolone dowolnego nagłówka rozpoczynający się od określonego prefiksu.
 * **ExposedHeaders**: Nagłówki odpowiedzi, które mogą być wysyłany w odpowiedzi na żądanie CORS i ujawniane wydawcy żądania. W powyższym przykładzie przeglądarki jest zobowiązany do udostępnienia dowolnego nagłówka rozpoczynający się od x-ms-meta.
@@ -130,9 +130,9 @@ Następnie należy wziąć pod uwagę następujące żądania CORS:
 | Żądanie |  |  | Odpowiedź |  |
 | --- | --- | --- | --- | --- |
 | **Metoda** |**Origin** |**Nagłówki żądań** |**Rule Match** |**wynik** |
-| **PUT** |http://www.contoso.com |x-ms-blob-content-type |Pierwsza reguła |Powodzenie |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |Druga reguła |Powodzenie |
-| **GET** |http://www.contoso.com |x-ms-client-request-id |Druga reguła |Niepowodzenie |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Pierwsza reguła |Powodzenie |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Druga reguła |Powodzenie |
+| **GET** |http:\//www.contoso.com |x-ms-client-request-id |Druga reguła |Niepowodzenie |
 
 Pierwsze żądanie pasuje pierwszym reguły — domena pochodzenia jest zgodna dozwolonych źródeł, metoda dopasowuje dozwolone metody i nagłówek odpowiada dozwolone nagłówki — i tak zakończy się pomyślnie.
 

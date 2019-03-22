@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 9d18b1382bdb421afcc8aee92fd99b7ef0d09e32
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: a9baf36221c99ece0703e2caa3f3e6c3b9364480
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540150"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312210"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights
 
@@ -54,7 +54,7 @@ Przed skompilowaniem aplikacji trzeba ją zarejestrować za pomocą usługi Azur
    ---|---
    **Nazwa** | Podaj opisową nazwę rejestracji.  
    **Typ aplikacji** | Ponieważ kompilujesz aplikację internetową SPA, pozostaw typ „Aplikacja internetowa/interfejs API”.
-   **Adres URL logowania** | Wprowadź adres URL strony głównej/logowania w aplikacji. Ponieważ aplikacja będzie hostowana w usłudze Azure App Service (później), musisz użyć adresu URL w domenie „https://azurewebsites.net”. W tym przykładzie nazwa jest oparta na nazwie rejestracji.
+   **Adres URL logowania** | Wprowadź adres URL strony głównej/logowania w aplikacji. Ponieważ aplikacja będzie hostowana w usłudze Azure App Service (dalej), należy użyć adresu URL w ciągu "https:\//azurewebsites.net" domeny. W tym przykładzie nazwa jest oparta na nazwie rejestracji.
 
    Gdy skończysz, kliknij przycisk **Utwórz** w celu utworzenia rejestracji nowej aplikacji.
 
@@ -133,7 +133,7 @@ Przed skompilowaniem aplikacji trzeba ją zarejestrować za pomocą usługi Azur
       postLogoutRedirectUri: 'https://tsispaapp.azurewebsites.net',
       ``` 
 
-   d. Zapisz plik **index.html** po zakończeniu edytowania.
+   c. Zapisz plik **index.html** po zakończeniu edytowania.
 
 1. Teraz opublikuj aplikację internetową w obrębie swojej subskrypcji platformy Azure jako usługę Azure App Service:  
 
@@ -148,7 +148,7 @@ Przed skompilowaniem aplikacji trzeba ją zarejestrować za pomocą usługi Azur
 
       ![VS — profil publikowania](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)  
 
-   d. Wybierz subskrypcję do użycia na potrzeby publikowania aplikacji, a następnie kliknij pozycję „Nowa”: 
+   c. Wybierz subskrypcję do użycia na potrzeby publikowania aplikacji, a następnie kliknij pozycję „Nowa”: 
 
       ![VS — profil publikowania — usługa aplikacji](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)  
 
@@ -191,7 +191,7 @@ W menu portalu Azure po lewej stronie:
 1. Kliknij ikonę **Grupy zasobów**, a następnie wybierz grupę zasobów utworzoną dla środowiska TSI. W górnej części strony kliknij opcję **Usuń grupę zasobów**, wprowadź nazwę grupy zasobów, a następnie kliknij przycisk **Usuń**. 
 1. Kliknij ikonę **Grupy zasobów**, a następnie wybierz grupę zasobów, która została utworzona przez akcelerator rozwiązania symulacji urządzeń. W górnej części strony kliknij opcję **Usuń grupę zasobów**, wprowadź nazwę grupy zasobów, a następnie kliknij przycisk **Usuń**. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

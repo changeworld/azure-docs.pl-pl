@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109294"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309815"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(PRZESTARZAŁE) Zarządzanie kontenerem DC/OS za pomocą interfejsu API REST platformy Marathon
 
@@ -30,7 +30,7 @@ Przed przystąpieniem do pracy nad tymi przykładami będziesz potrzebować klas
 * [Łączenie z klastrem usługi Azure Container Service](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>Dostęp do interfejsów API platformy DC/OS
-Po połączeniu z klastrem usługi kontenera platformy Azure są dostępne DC/OS i powiązanych interfejsów API REST za pośrednictwem http://localhost:local-port. W przykładach przedstawionych w tym dokumencie założono, że tunelowanie korzysta z portu 80. Na przykład punkty końcowe platformy Marathon można skontaktować, identyfikatorów URI począwszy od `http://localhost/marathon/v2/`. 
+Po połączeniu z klastrem usługi kontenera platformy Azure jest dostępne DC/OS i powiązanych interfejsów API REST za pośrednictwem protokołu http:\//localhost:local-port. W przykładach przedstawionych w tym dokumencie założono, że tunelowanie korzysta z portu 80. Na przykład punkty końcowe platformy Marathon można skontaktować, identyfikatorów URI rozpoczynający się za pośrednictwem protokołu http: \/ /localhost/marathon/2 /. 
 
 Aby uzyskać więcej informacji o różnych interfejsach API, zobacz dokumentację Mesosphere dotyczącą [interfejsu API platformy Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html) i [interfejsu API programu Chronos](https://mesos.github.io/chronos/docs/api.html) oraz dokumentację Apache dotyczącą [interfejsu API aplikacji Mesos Scheduler](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
@@ -123,7 +123,7 @@ Można użyć interfejsu API platformy Marathon, aby skalować w poziomie lub w 
 Z połączenia tunelowania uruchom następujące polecenie, aby skalować aplikację w poziomie.
 
 > [!NOTE]
-> Identyfikator URI jest http://localhost/marathon/v2/apps/ następuje identyfikator aplikacji do skalowania. Jeśli używasz przykładowych Nginx, dostępnym tutaj identyfikator URI będzie mieć http://localhost/marathon/v2/apps/nginx.
+> Identyfikator URI jest protokół http: \/ /localhost/marathon/2/aplikacji/następuje identyfikator aplikacji do skalowania. Jeśli używasz próbka Nginx, która została podana w tym miejscu będą http identyfikatora URI:\//localhost/marathon/v2/apps/nginx.
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -180,7 +180,7 @@ Interfejs API platformy Marathon umożliwia także skalowanie w poziomie oraz sk
 Uruchom następujące polecenie, aby skalować aplikację w poziomie:
 
 > [!NOTE]
-> Identyfikator URI jest http://localhost/marathon/v2/apps/ następuje identyfikator aplikacji do skalowania. W tym miejscu używasz przykładowym Nginx, identyfikator URI będzie mieć http://localhost/marathon/v2/apps/nginx.
+> Identyfikator URI jest protokół http: \/ /localhost/marathon/2/aplikacji/następuje identyfikator aplikacji do skalowania. W tym miejscu używasz przykładowym Nginx, identyfikator URI będzie mieć http:\//localhost/marathon/v2/apps/nginx.
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'

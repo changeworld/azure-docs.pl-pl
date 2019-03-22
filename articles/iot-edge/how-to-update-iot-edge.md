@@ -5,33 +5,33 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b11f11aa3966bc57caa5b8dd0379f4d5c59c8375
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672903"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311921"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizowanie demona zabezpieczeń usługi IoT Edge i środowiska uruchomieniowego
 
-Jak usługa IoT Edge wydaje nowe wersje, należy zaktualizować urządzenia usługi IoT Edge, aby mieć najnowsze funkcje i poprawki zabezpieczeń. Ten artykuł zawiera informacje o sposobie aktualizowania urządzenia usługi IoT Edge, gdy dostępna jest nowa wersja. 
+Jak usługa IoT Edge wydaje nowe wersje, należy zaktualizować urządzeniach usługi IoT Edge w taki sposób, aby uzyskać najnowsze funkcje i poprawki zabezpieczeń. Ten artykuł zawiera informacje o sposobie aktualizowania urządzenia usługi IoT Edge, gdy dostępna jest nowa wersja. 
 
 Dwa składniki urządzenia usługi IoT Edge należy zaktualizować, jeśli chcesz przejść do nowszej wersji. Pierwsza to demona zabezpieczeń, który działa lokalnie na urządzeniu i rozpoczyna się moduły środowiska uruchomieniowego, gdy urządzenie zostanie uruchomione. Obecnie usługa demona zabezpieczeń można aktualizować tylko z samego urządzenia. Drugi składnik to środowisko uruchomieniowe, składa się z Centrum usługi IoT Edge i moduły agenta usługi IoT Edge. W zależności od strukturą wdrożenia środowisko uruchomieniowe może zostać zaktualizowana z urządzenia lub zdalnie. 
+
+Aby uzyskać najnowszą wersję usługi Azure IoT Edge, zobacz [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
 >[!IMPORTANT]
 >Jeśli używasz usługi Azure IoT Edge na urządzeniu z systemem Windows, nie są uaktualniane do wersji 1.0.5, jedną z następujących dotyczy urządzenia: 
 >* Urządzenie nie zostały uaktualnione do Windows 17763 kompilacji. Wersja usługi IoT Edge 1.0.5 nie obsługuje Windows tworzy starsze niż 17763.
 >* Moduły języka Java lub Node.js możesz uruchomić na urządzeniu z systemem Windows. Pomiń wersji 1.0.5, nawet jeśli urządzenie Windows zostały zaktualizowane do najnowszej kompilacji. 
 >
->Aby uzyskać więcej informacji na temat usługi IoT Edge wersji 1.0.5 zobacz [informacje o wersji 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Aby uzyskać więcej informacji na temat sposobów zabezpieczania własne narzędzia programistyczne z aktualizacji do najnowszej wersji, zobacz [blog deweloperów IoT](https://devblogs.microsoft.com/iotdev/).
+>Aby uzyskać więcej informacji na temat usługi IoT Edge wersji 1.0.5 zobacz [informacje o wersji 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Aby uzyskać więcej informacji na temat uniemożliwić własne narzędzia programistyczne aktualizowanie do najnowszej wersji, zobacz [blog deweloperów IoT](https://devblogs.microsoft.com/iotdev/).
 
-
-Aby uzyskać najnowszą wersję usługi Azure IoT Edge, zobacz [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
 ## <a name="update-the-security-daemon"></a>Aktualizacja demona zabezpieczeń
 
@@ -59,9 +59,9 @@ Odinstaluj demona zabezpieczeń w sesji programu PowerShell administratora.
 Uninstall-SecurityDaemon
 ```
 
-Uruchamianie `Uninstall-SecurityDaemon` polecenie bez parametrów usuwa demona zabezpieczeń z urządzenia, oraz dwa obrazy kontenera środowiska uruchomieniowego. Plik config.yaml jest przechowywany na urządzeniu, a także dane z aparatu kontenera Moby. Zachowywanie konfiguracji oznacza, że nie trzeba podać parametry połączenia lub informacji usługi Device Provisioning Service dla Twojego urządzenia ponownie podczas procesu instalacji. 
+Uruchamianie `Uninstall-SecurityDaemon` polecenie bez parametrów usuwa tylko demona zabezpieczeń z urządzenia, oraz dwa obrazy kontenera środowiska uruchomieniowego. Plik config.yaml jest przechowywany na urządzeniu, a także dane z aparatu kontenera Moby. Utrzymywanie oznacza informacje o konfiguracji, że nie musisz podać parametry połączenia lub informacji usługi Device Provisioning Service dla Twojego urządzenia ponownie podczas procesu instalacji. 
 
-Zainstaluj ponownie demona zabezpieczeń, w zależności od tego, czy urządzenia usługi IoT Edge korzysta z kontenerów Windows lub kontenerów systemu Linux. Zastąp wyrażenie **\<Windows lub Linux\>** przy użyciu jednego z systemów operacyjnych kontenera. Użyj **- ExistingConfig** flagę, aby wskazać istniejący plik config.yaml na urządzeniu. 
+Zainstaluj ponownie demona zabezpieczeń, w zależności od tego, czy urządzenia usługi IoT Edge korzysta z kontenerów Windows lub kontenerów systemu Linux. Zastąp wyrażenie **\<Windows lub Linux\>** z systemami operacyjnymi odpowiedniego kontenera. Użyj **- ExistingConfig** flagę, aby wskazać istniejący plik config.yaml na urządzeniu. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -91,7 +91,7 @@ Jeśli używasz stopniowe tagów w danym wdrożeniu (na przykład mcr.microsoft.
 
 Usuń lokalną wersję obrazu z urządzenia usługi IoT Edge. Na maszynach Windows odinstalowywanie demona zabezpieczeń powoduje również usunięcie obrazów środowiska uruchomieniowego, dzięki czemu nie trzeba wykonać ten krok ponownie. 
 
-```cmd/sh
+```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
@@ -106,7 +106,7 @@ Korzystając z określonymi tagami w danym wdrożeniu (na przykład mcr.microsof
 
 W witrynie Azure portal, obrazy do wdrażania środowiska uruchomieniowego są deklarowane w **skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge** sekcji. 
 
-[Skonfiguruj zaawansowane ustawienia usługi edge środowiska uruchomieniowego](./media/how-to-update-iot-edge/configure-runtime.png)
+![Skonfiguruj zaawansowane ustawienia usługi edge środowiska uruchomieniowego](./media/how-to-update-iot-edge/configure-runtime.png)
 
 W manifeście wdrożenia JSON, należy zaktualizować obrazy modułu w **systemModules** sekcji. 
 

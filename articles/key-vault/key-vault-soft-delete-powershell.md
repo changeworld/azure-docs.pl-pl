@@ -5,14 +5,14 @@ author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/19/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3da4662885b2b09c6474a1a6ceafd627e71cf236
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d34ef1bb5bea6f5f099f7fa2a24ddec2362b44ea
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081036"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336188"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak używać usuwania nietrwałego w usłudze Key Vault przy użyciu programu PowerShell
 
@@ -101,7 +101,7 @@ Przy użyciu opcji soft-delete włączone:
 Możesz wyświetlić stan usunięto magazynów kluczy, powiązaną z Twoją subskrypcją za pomocą następującego polecenia:
 
 ```powershell
-PS C:\> Get-AzKeyVault -InRemovedState 
+Get-AzKeyVault -InRemovedState 
 ```
 
 - *Identyfikator* może służyć do identyfikacji zasobu podczas odzyskiwania lub czyszczenia. 
@@ -233,8 +233,27 @@ Wyświetlanie listy obiektów usuniętych usługi key vault pokazuje również, 
 >[!IMPORTANT]
 >Obiekt magazynu przeczyszczone wyzwolone przez jego *zaplanowana data przeczyścić* polu, zostaną trwale usunięte. Nie jest możliwe do odzyskania!
 
+## <a name="enabling-purge-protection"></a>Włączenie ochrony przeczyszczania
+
+Gdy ochrona przed czyszczeniem jest włączona, magazynu lub obiektu w usuniętej stanu nie można przeczyścić, dopóki minął okres przechowywania 90 dni. Nadal można odzyskać taki magazyn lub obiektu. Ta funkcja zapewnia dodano pewność, że magazyn lub obiektu nigdy nie można trwale usunąć, dopóki przechowywania okres został przekazany.
+
+Ochrona przed czyszczeniem można włączyć tylko wtedy, gdy włączona jest również opcji soft-delete. 
+
+Aby włączyć zarówno usuwanie nietrwałe i przeczyścić ochrony podczas tworzenia magazynu, należy użyć [New AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) polecenia cmdlet:
+
+```powershell
+New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
+```
+
+Aby dodać ochrona przed czyszczeniem do istniejącego magazynu (który jest już włączone usuwanie nietrwałe), użyj [Get AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0), i [AzResource zestaw](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) poleceń cmdlet:
+
+```
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
+
+Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
+```
+
 ## <a name="other-resources"></a>Inne zasoby
 
 - Aby uzyskać omówienie funkcji usuwania nietrwałego w usłudze Key Vault, zobacz [omówienie usuwania nietrwałego w usłudze Azure Key Vault](key-vault-ovw-soft-delete.md).
-- Aby uzyskać ogólne omówienie użycia usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md).
-
+- Aby uzyskać ogólne omówienie użycia usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Utwórz = Powodzenie}

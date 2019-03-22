@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa46fbce9d11a8fd380a5ee1990c0e7924079a9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078690"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309422"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Tworzenie testu automatycznego klienta w celu wstępnego zweryfikowania obrazów maszyn wirtualnych platformy Azure
 
@@ -54,7 +54,7 @@ Na poniższym diagramie przedstawiono, jak działa autoryzacji dla wywołań us�
 Interfejs API automatycznego testu zawiera jeden punkt końcowy, który obsługuje tylko metody POST.  Ma ona następującą strukturę.
 
 ```
-Uri:             https://isvapp.azurewebsites.net/selftest-vm
+Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -260,7 +260,7 @@ Wykonaj następujące kroki, aby zarejestrować aplikację klienta.
 
    - **Nazwa** — Wprowadź przyjazną nazwę dla aplikacji. Na przykład "SelfTestClient".
    - **Typ aplikacji** — wybierz **aplikacji sieci Web/interfejsu API**
-   - **Adres URL logowania** — typu "https://isvapp.azurewebsites.net/selftest-vm"
+   - **Adres URL logowania** — typu "https:\//isvapp.azurewebsites.net/selftest-vm"
 
 4. Wybierz pozycję **Utwórz**.
 5. W obszarze **rejestracje aplikacji** lub **zarejestrowana aplikacja**, kopia **identyfikator aplikacji**.

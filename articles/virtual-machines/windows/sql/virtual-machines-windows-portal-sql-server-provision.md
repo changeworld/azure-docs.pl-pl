@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ee6c05b2da4347ed034ae6e7318d6f5d90ea7884
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f777ab238ed0774c4ad6afd862da1584cb06b94
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099648"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317378"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak aprowizować maszynę wirtualną Windows SQL Server w witrynie Azure portal
 
@@ -247,7 +247,7 @@ Poniższa tabela zawiera listę parametrów wymaganych do skonfigurowania integr
 
 | PARAMETR | OPIS | PRZYKŁAD |
 | --- | --- | --- |
-| **Adres URL magazynu kluczy** |Lokalizacja magazynu kluczy. |<https://contosokeyvault.vault.azure.net/> |
+| **Adres URL magazynu kluczy** |Lokalizacja magazynu kluczy. |https:\//contosokeyvault.vault.azure.net/ |
 | **Nazwa główna** |Nazwa główna usługi Azure Active Directory. Ta nazwa jest również nazywana identyfikatorem klienta. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **Główny klucz tajny** |Główny klucz tajny usługi Azure Active Directory. Ten klucz tajny jest również nazywany kluczem tajnym klienta. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **Nazwa poświadczenia** |**Nazwa poświadczenia**: Integracja utworzenie poświadczenia w programie SQL Server, dzięki czemu maszyny Wirtualnej, aby mieć dostęp do magazynu kluczy. Wybierz nazwę tego poświadczenia. |moje_poświadczenie_1 |

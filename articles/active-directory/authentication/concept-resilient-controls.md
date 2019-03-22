@@ -1,5 +1,5 @@
 ---
-title: Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
+title: Tworzenie strategii zarządzania kontroli dostępu odporne na błędy — usługi Azure Active Directory
 description: Niniejszy dokument zawiera wskazówki dotyczące strategii wiadomość organizacji powinna przyjąć zapewnienie odporności, aby zmniejszyć ryzyko blokady podczas przerw w działaniu nieprzewidziane
 services: active-directory
 author: martincoetzer
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c7a61d8c1b9ec15327836f7d31e9e299c57cb21
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082147"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316341"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 

@@ -1,20 +1,20 @@
 ---
 title: Monitorowanie usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Monitorowanie i rozwiązywanie problemów dotyczących problemów z replikacją usługi Azure Site Recovery i operacje przy użyciu portalu
-author: bsiva
-manager: abhemra
+author: raynew
+manager: carmonm
 ms.service: site-recovery
-ms.topic: troubleshooting
-ms.date: 11/27/2018
-ms.author: bsiva
-ms.openlocfilehash: 5bbde2f1059982424c2557d6a767692b3491f6aa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.topic: conceptual
+ms.date: 03/18/2019
+ms.author: rayne-wiselman
+ms.openlocfilehash: 605421196c2ec7f62826e2f6c823d50262af8144
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098478"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316647"
 ---
-# <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorowanie i rozwiązywanie problemów Site Recovery
+# <a name="monitor-site-recovery"></a>Monitor Usługa Site Recovery
 
 W tym artykule dowiesz się, jak używać usługi Azure Site Recovery w wbudowanych funkcji monitorowania do monitorowania i rozwiązywania problemów. 
 

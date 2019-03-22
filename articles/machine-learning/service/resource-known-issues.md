@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5814e05aa65bf005a3156aa75e65747bbd46733c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fdc718429991a7bba30739d09882c51f8baf5dc9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58171061"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336273"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
@@ -57,7 +57,7 @@ Problemy z usługi Databricks i Azure Machine Learning.
 Azure Machine Learning SDK nie można zainstalować w usłudze Azure Databricks podczas instalowania dodatkowych pakietów. Niektóre pakiety, takich jak `psutil`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety zamrażanie wersji biblioteki. Ten problem jest związany, Databricks, a nie zestaw SDK usługi Azure Machine Learning. Ten problem z innymi bibliotekami, może wystąpić zbyt. Przykład:
 
 ```python
-pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 ```
 
 Alternatywnie można użyć skryptów init, jeśli możesz zachować problemów z instalacją biblioteki języka Python. To podejście nie jest oficjalnie obsługiwany. Aby uzyskać więcej informacji, zobacz [skrypty należące do klastra init](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).

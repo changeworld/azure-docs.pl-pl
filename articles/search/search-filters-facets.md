@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 94a0d3f19e595ac040d908ea47d6332ceae0943c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314809"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339435"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak utworzyć filtr zestawu reguł w usłudze Azure Search 
 
@@ -45,7 +45,7 @@ Wszelkie [typ pola](https://docs.microsoft.com/rest/api/searchservice/supported-
 + Edm.DateTimeOffset
 + Edm.Boolean
 + Edm.Collections
-+ Typy pól liczbowych: Typem Edm.Int32, Edm.Int64, Edm.Double
++ Typy pól liczbowych: Edm.Int32, Edm.Int64, Edm.Double
 
 Nie można używać Edm.GeographyPoint nawigacji aspektowej. Zestawy reguł są konstruowane na podstawie ludzi można odczytać tekstu lub liczb. Jako takie aspekty, nie są obsługiwane dla współrzędnych geograficznych. Będziesz potrzebować miasta lub regionu pola do reguł według lokalizacji.
 
@@ -84,7 +84,7 @@ W interfejsie API .NET filtrowania atrybutów muszą być jawnie ustawione. W in
 
 ## <a name="build-and-load-an-index"></a>Tworzenie i ładowanie indeksu
 
-Etap pośredni (i prawdopodobnie oczywisty) jest, że trzeba [kompilacji i wypełnić indeks](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) przed formułowanie zapytania. Firma Microsoft wspominać o tym kroku, w tym miejscu aby informacje były kompletne. Jednym ze sposobów, aby ustalić, czy indeks jest dostępna jest sprawdzanie listy indeksów w [portal](https://portal.azure.com).
+Etap pośredni (i prawdopodobnie oczywisty) jest, że trzeba [kompilacji i wypełnić indeks](https://docs.microsoft.com/azure/search/search-create-index-dotnet#3---construct-index) przed formułowanie zapytania. Firma Microsoft wspominać o tym kroku, w tym miejscu aby informacje były kompletne. Jednym ze sposobów, aby ustalić, czy indeks jest dostępna jest sprawdzanie listy indeksów w [portal](https://portal.azure.com).
 
 ## <a name="add-facet-filters-to-a-query"></a>Dodaj filtry aspektów do kwerendy
 
@@ -128,4 +128,3 @@ Chociaż jest to typowy przypadek użycia, nie jest coś, co aspektów struktury
 + [Filtry w usłudze Azure Search](search-filters.md)
 + [Tworzenie interfejsu API REST indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Wyszukiwanie w dokumentach interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-

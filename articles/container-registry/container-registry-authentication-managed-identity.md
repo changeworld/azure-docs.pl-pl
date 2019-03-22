@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: fdba8969ad326565834625fe1ca7ece5e089a904
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b09348e98a0dee85338cc9f20289d83b658eb719
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984209"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338466"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Skorzystaj z platformy Azure zarządzane tożsamości do uwierzytelniania w usłudze Azure container registry 
 
@@ -31,7 +31,7 @@ Konfiguracji rejestru kontenera i wypchniesz obraz kontenera do niego, musi rów
 
 ## <a name="why-use-a-managed-identity"></a>Dlaczego warto korzystać z tożsamości zarządzanej?
 
-Tożsamość zarządzaną dla zasobów platformy Azure udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (Azure AD). Można skonfigurować [niektórych zasobów platformy Azure](../active-directory/managed-identities-azure-resources/services-support-msi.md), tym usługi virtual machines przy użyciu tożsamości zarządzanej. Następnie użyj tożsamości, aby uzyskać dostęp do innych zasobów platformy Azure, bez przekazywania poświadczeń w kodzie albo skryptach.
+Tożsamość zarządzaną dla zasobów platformy Azure udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (Azure AD). Można skonfigurować [niektórych zasobów platformy Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), tym usługi virtual machines przy użyciu tożsamości zarządzanej. Następnie użyj tożsamości, aby uzyskać dostęp do innych zasobów platformy Azure, bez przekazywania poświadczeń w kodzie albo skryptach.
 
 Istnieją dwa typy zarządzanych tożsamości:
 
@@ -41,7 +41,7 @@ Istnieją dwa typy zarządzanych tożsamości:
 
 Po skonfigurowaniu zasobu platformy Azure za pomocą tożsamości zarządzanej oferowanie tożsamości dostępu, który ma inny zasób, podobnie jak wszelkie podmiotu zabezpieczeń. Na przykład przypisać tożsamość zarządzaną rolę za pomocą ściągania, wypychania i ściągania lub inne uprawnienia do prywatnego rejestru na platformie Azure. (Aby uzyskać pełną listę ról rejestru, zobacz [uprawnienia i role usługi Azure Container Registry](container-registry-roles.md).) Możesz udzielić dostępu tożsamości do co najmniej jednego zasobu.
 
-Następnie należy użyć do uwierzytelniania tożsamości [usługa, która obsługuje uwierzytelnianie za pomocą usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication), bez żadnych poświadczeń w kodzie. Aby uzyskać dostęp do usługi Azure container registry z maszyny wirtualnej przy użyciu tożsamości, uwierzytelniać się przy użyciu usługi Azure Resource Manager. Wybierz sposób uwierzytelniania przy użyciu tożsamości zarządzanej, w zależności od scenariusza:
+Następnie należy użyć do uwierzytelniania tożsamości [usługa, która obsługuje uwierzytelnianie za pomocą usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), bez żadnych poświadczeń w kodzie. Aby uzyskać dostęp do usługi Azure container registry z maszyny wirtualnej przy użyciu tożsamości, uwierzytelniać się przy użyciu usługi Azure Resource Manager. Wybierz sposób uwierzytelniania przy użyciu tożsamości zarządzanej, w zależności od scenariusza:
 
 * [Uzyskiwanie tokenu dostępu usługi Azure AD](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) programowo przy użyciu wywołania HTTP lub REST
 
@@ -164,13 +164,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Protokół SSH z maszyną wirtualną platformy Docker, który jest skonfigurowany przy użyciu tożsamości. Uruchom następujące polecenia wiersza polecenia platformy Azure przy użyciu wiersza polecenia platformy Azure zainstalowany na maszynie Wirtualnej.
 
-Najpierw zaloguj się do wiersza polecenia platformy Azure za pomocą [az login][az-login], przy użyciu tożsamości skonfigurowane na maszynie Wirtualnej. Aby uzyskać <userID>, Zastąp identyfikator tożsamości, pobrać w poprzednim kroku. 
+Najpierw uwierzytelniania dla interfejsu wiersza polecenia platformy Azure za pomocą [az login][az-login], przy użyciu tożsamości skonfigurowane na maszynie Wirtualnej. Aby uzyskać <userID>, Zastąp identyfikator tożsamości, pobrać w poprzednim kroku. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Następnie zaloguj się do rejestru przy użyciu [az acr login][az-acr-login]. Gdy to polecenie interfejsu wiersza polecenia używa tokenu usługi Active Directory, utworzony podczas wykonywania `az login` bezproblemowe uwierzytelnianie sesji za pomocą rejestru kontenerów. (W zależności od konfiguracji maszyny Wirtualnej może być konieczne uruchomienie tego polecenia i poleceń platformy docker z `sudo`.)
+Następnie, uwierzytelnianie rejestru za pomocą [az acr login][az-acr-login]. Gdy to polecenie interfejsu wiersza polecenia używa tokenu usługi Active Directory, utworzony podczas wykonywania `az login` bezproblemowe uwierzytelnianie sesji za pomocą rejestru kontenerów. (W zależności od konfiguracji maszyny Wirtualnej może być konieczne uruchomienie tego polecenia i poleceń platformy docker z `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
@@ -216,13 +216,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Protokół SSH z maszyną wirtualną platformy Docker, który jest skonfigurowany przy użyciu tożsamości. Uruchom następujące polecenia wiersza polecenia platformy Azure przy użyciu wiersza polecenia platformy Azure zainstalowany na maszynie Wirtualnej.
 
-Najpierw zaloguj się do wiersza polecenia platformy Azure za pomocą [az login][az-login], przy użyciu tożsamości przypisanych przez system na maszynie Wirtualnej.
+Najpierw uwierzytelnić wiersza polecenia platformy Azure za pomocą [az login][az-login], przy użyciu tożsamości przypisanych przez system na maszynie Wirtualnej.
 
 ```azurecli
 az login --identity
 ```
 
-Następnie zaloguj się do rejestru przy użyciu [az acr login][az-acr-login]. Gdy to polecenie interfejsu wiersza polecenia używa tokenu usługi Active Directory, utworzony podczas wykonywania `az login` bezproblemowe uwierzytelnianie sesji za pomocą rejestru kontenerów. (W zależności od konfiguracji maszyny Wirtualnej może być konieczne uruchomienie tego polecenia i poleceń platformy docker z `sudo`.)
+Następnie, uwierzytelnianie rejestru za pomocą [az acr login][az-acr-login]. Gdy to polecenie interfejsu wiersza polecenia używa tokenu usługi Active Directory, utworzony podczas wykonywania `az login` bezproblemowe uwierzytelnianie sesji za pomocą rejestru kontenerów. (W zależności od konfiguracji maszyny Wirtualnej może być konieczne uruchomienie tego polecenia i poleceń platformy docker z `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry

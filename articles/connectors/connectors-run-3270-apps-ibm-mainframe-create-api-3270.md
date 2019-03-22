@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: ebf858ba86758b11ee896d745d70bdf2f0d0cde6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878384"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313196"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrowanie 3270 aplikacje oparte na ekranie, na komputery mainframe firmy IBM z platformą Azure za pomocą łącznika usługi Azure Logic Apps i IBM 3270
 
@@ -410,7 +410,7 @@ Po zakończeniu wszystkie te kroki, można użyć akcji, którą utworzysz w apl
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i limit, który opisano przez łącznika interfejsu OpenAPI (dawniej Swagger) opis, przejrzyj strona referencyjna łącznika: [ https://docs.microsoft.com/connectors/<replace-with-api-topic-file-name> ](/connectors/).
+Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i limit, który opisano przez łącznika interfejsu OpenAPI (dawniej Swagger) opis, przejrzyj [strona referencyjna łącznika](/connectors/si3270/).
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 

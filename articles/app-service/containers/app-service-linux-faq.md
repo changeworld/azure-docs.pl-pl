@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871497"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339563"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -42,10 +42,10 @@ Możesz znaleźć wszystkie pliki Docker na [GitHub](https://github.com/azure-ap
 | Stos     | Oczekiwana wartość                                                                |
 |-----------|-------------------------------------------------------------------------------|
 | Java SE   | polecenie, aby uruchomić usługi `.jar` aplikacji                                    |
-| Tomcat    | Lokalizacja skrypt, aby wykonać wszelkie niezbędne configruations dla aplikacji |
-| Node.js   | pliku konfiguracji PM2 lub pliku skryptu                                |          
+| Tomcat    | Lokalizacja skryptu, aby wykonać wszystkie konfiguracje dla aplikacji          |
+| Node.js   | pliku konfiguracji PM2 lub pliku skryptu                                |
 | .Net Core | nazwę skompilowanej biblioteki DLL jako `dotnet <myapp>.dll`                                 |
-| Ruby      | Skrypt języka Ruby, który chcesz zainicjować swoją aplikację przy użyciu                     
+| Ruby      | Skrypt języka Ruby, który chcesz zainicjować swoją aplikację przy użyciu                     |
 
 ## <a name="management"></a>Zarządzanie
 

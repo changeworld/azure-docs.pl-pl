@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4b5196a995576e5b00a988e14183eb720d5b2eae
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d0bb72361e1bff3615f6785ac4c91a10ea773498
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989874"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312975"
 ---
 # <a name="widevine-license-template-overview"></a>Omówienie szablonu licencji Widevine 
 Aby skonfigurować i żądania licencji Google Widevine, można użyć usługi Azure Media Services. Gdy gracz próbuje odtwarzanie zawartości chronionej przez technologię Widevine, żądanie jest wysyłane do usługi dostarczania licencji uzyskanie licencji. Jeśli usługa licencji zatwierdza żądanie, problemy z usługą licencji. Ona są wysyłane do klienta i jest używany do odszyfrowania i odtwarzania określonej zawartości.
@@ -63,8 +63,8 @@ Aby skonfigurować i żądania licencji Google Widevine, można użyć usługi A
 | --- | --- | --- |
 | ładunek |Ciąg kodowany w formacie Base64 |Żądanie dotyczące licencji wysłane przez klienta. |
 | content_id |Ciąg kodowany w formacie Base64 |Identyfikator używany do uzyskania kluczowych identyfikator i zawartości klucza dla każdego content_key_specs.track_type. |
-| Dostawcy |ciąg |Używane w celu wyszukania zawartości kluczy i zasad. Jeśli dostarczania kluczy firmy Microsoft jest używana do dostarczania licencji Widevine, ten parametr jest ignorowany. |
-| nazwa_zasady |ciąg |Nazwa zasady wcześniej zarejestrowany. Opcjonalny. |
+| dostawca |string |Używane w celu wyszukania zawartości kluczy i zasad. Jeśli dostarczania kluczy firmy Microsoft jest używana do dostarczania licencji Widevine, ten parametr jest ignorowany. |
+| nazwa_zasady |string |Nazwa zasady wcześniej zarejestrowany. Opcjonalny. |
 | allowed_track_types |Wyliczenia |SD_ONLY lub SD_HD. Formanty, które zawartości klucze są uwzględnione w licencji. |
 | content_key_specs |Tablica JSON struktur, zobacz sekcję "Specyfikacje klucza zawartości."  |Bardziej szczegółowej kontroli na które kluczy zawartości do zwrócenia. Aby uzyskać więcej informacji zobacz sekcję "Specyfikacje klucza zawartości." Można określić tylko jedną z wartości allowed_track_types i content_key_specs. |
 | use_policy_overrides_exclusively |Wartość logiczna PRAWDA lub FAŁSZ |Używanie atrybutów zasady określone przez policy_overrides i pominąć wszystkie zasady wcześniej przechowywanych. |
@@ -79,7 +79,7 @@ Każda wartość content_key_specs należy określić dla wszystkich ścieżek, 
 
 | Name (Nazwa) | Wartość | Opis |
 | --- | --- | --- |
-| content_key_specs. track_type |ciąg |Nazwa typu ścieżki. Jeśli content_key_specs jest określony w żądaniu licencji, upewnij się, do określania, że wszystkie typy śledzenia jawnie. Niewykonanie tej czynności powoduje niepowodzenie odtwarzania ostatnie 10 sekund. |
+| content_key_specs. track_type |string |Nazwa typu ścieżki. Jeśli content_key_specs jest określony w żądaniu licencji, upewnij się, do określania, że wszystkie typy śledzenia jawnie. Niewykonanie tej czynności powoduje niepowodzenie odtwarzania ostatnie 10 sekund. |
 | content_key_specs  <br/> security_level |uint32 |Określa wymagania dotyczące niezawodności klienta do odtwarzania. <br/> Oprogramowania oparte na kryptografii biały pole jest wymagane. <br/> — Kryptografia oprogramowanie i zaciemnionego dekodera są wymagane. <br/> Kluczowych operacji materiał i kryptografii muszą być wykonywane w środowisku sprzętowej zaufanych wykonywania. <br/> Kryptografii i dekodowania zawartości muszą być wykonywane w środowisku sprzętowej zaufanych wykonywania.  <br/> Kryptografii dekodowanie i obsługę wszystkich nośnika (skompresowanym i nieskompresowanym formatem) muszą być obsługiwane w środowisku sprzętowej zaufanych wykonywania. |
 | content_key_specs <br/> required_output_protection.hdc |string, one of HDCP_NONE, HDCP_V1, HDCP_V2 |Wskazuje, czy HDCP jest wymagana. |
 | content_key_specs <br/>key |Base64 —<br/>Ciąg zakodowany |Klucz zawartości do użycia dla tej ścieżki. Jeśli zostanie określony, track_type lub key_id jest wymagany. Dostawcy zawartości można użyć tej opcji do dodania klucza zawartości dla tej ścieżki samodzielny serwer licencji Widevine wygenerować lub wyszukać klucz. |
@@ -94,7 +94,7 @@ Każda wartość content_key_specs należy określić dla wszystkich ścieżek, 
 | policy_overrides. license_duration_seconds |int64 |Określa przedział czasu dla tej konkretnej licencji. Wartość 0 wskazuje, że nie ma żadnego limitu czasu trwania. Domyślna to 0. |
 | policy_overrides. rental_duration_seconds |int64 |Określa przedział czasu, podczas odtwarzania jest dozwolone. Wartość 0 wskazuje, że nie ma żadnego limitu czasu trwania. Domyślna to 0. |
 | policy_overrides. playback_duration_seconds |int64 |Wyświetlanie okna czas po rozpoczęciu w trakcie trwania licencji. Wartość 0 wskazuje, że nie ma żadnego limitu czasu trwania. Domyślna to 0. |
-| policy_overrides. renewal_server_url |ciąg |Wszystkie żądania pulsu (odnowienie) dla tej licencji są kierowane do określonego adresu URL. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. |
+| policy_overrides. renewal_server_url |string |Wszystkie żądania pulsu (odnowienie) dla tej licencji są kierowane do określonego adresu URL. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. |
 | policy_overrides. renewal_delay_seconds |int64 |Ile sekund po license_start_time, zanim odnawianie najpierw zostanie podjęta. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. Domyślna to 0. |
 | policy_overrides. renewal_retry_interval_seconds |int64 |Określa opóźnienie w ciągu kilku sekund między żądaniami odnowy kolejnych licencji w przypadku awarii. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. |
 | policy_overrides. renewal_recovery_duration_seconds |int64 |Okno czasu, w których odtwarzania można kontynuować, gdy podejmowana jest próba odnowienia jeszcze się niepowodzeniem z powodu problemów z zaplecza z serwerem licencji. Wartość 0 wskazuje, że nie ma żadnego limitu czasu trwania. To pole jest używane tylko wtedy, gdy can_renew ma wartość true. |

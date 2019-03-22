@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: geg
-ms.openlocfilehash: 44b8d57af83f53c73868a84104da7a7f72cb1e81
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 2253e729daedc3b130919913c1616449245f9cc1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202592"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315389"
 ---
 # <a name="restore-azure-vms"></a>Przywracanie maszyn wirtualnych platformy Azure
 
@@ -23,7 +23,7 @@ W tym artykule opisano sposób przywracania danych maszyny Wirtualnej platformy 
 Aby przywrócić Maszynę wirtualną, upewnij się, masz wymagane [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) uprawnień.
 
 > [!NOTE]
-> Jeśli nie masz [RABAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) uprawnienia, które można wykonywać [przywracanie dysku](backup-azure-arm-restore-vms.md#create-new-restore-disks) i utworzyć maszynę Wirtualną przy użyciu [wdrażania szablonu](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkcji.
+> Jeśli nie masz [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) uprawnienia, które można wykonywać [przywracanie dysku](backup-azure-arm-restore-vms.md#create-new-restore-disks) i utworzyć maszynę Wirtualną przy użyciu [wdrażania szablonu](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkcji.
 
 ### <a name="restore-options"></a>Opcje przywracania
 

@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 5c5b32eaf3066abe4489d909e224d2aa65e884a7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: efdb82f891b21fa03a338c56d3f3e897e684bdf6
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238032"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337074"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych SQL Azure
 
@@ -142,17 +142,18 @@ Uruchom następujący kod z instrukcją [INSERT](https://msdn.microsoft.com/libr
    ```sql
    SELECT * FROM [SalesLT].[Product] 
    WHERE Name='myNewProduct' 
+   ```
+   
+2. Wybierz pozycję **Wykonaj**. Zostanie wyświetlone następujące wyniki. 
 
-2. Select **Execute**. The following result appears. 
-
-   ![result](./media/sql-database-connect-query-ssms/result.png)
+   ![wynik](./media/sql-database-connect-query-ssms/result.png)
 
  
-## Update data
+## <a name="update-data"></a>Aktualizowanie danych
 
-Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
+Uruchom to [aktualizacji](https://msdn.microsoft.com/library/ms177523.aspx) kod języka Transact-SQL, aby zmodyfikować nowego produktu.
 
-1. Replace the previous query with this one.
+1. Wpisz to zapytanie w miejsce poprzedniego.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -175,7 +176,7 @@ Uruchom następujący kod z instrukcją [DELETE](https://msdn.microsoft.com/libr
 
 2. Wybierz polecenie **Wykonaj**, aby usunąć określony wiersz z tabeli `Product`. W okienku **Komunikaty** zostanie wyświetlony komunikat **(dotyczy 1 wiersza)**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać więcej informacji o programie SSMS, zobacz [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (Program SQL Server Management Studio).
 - Aby połączyć się i wykonać zapytanie za pomocą witryny Azure Portal, zobacz [Connect and query with the Azure portal SQL Query editor (Nawiązywanie połączeń i wykonywanie zapytań za pomocą edytora zapytań SQL w witrynie Azure Portal)](sql-database-connect-query-portal.md).

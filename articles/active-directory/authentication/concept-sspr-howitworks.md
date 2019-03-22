@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Active Directory haseł szczegółowe dane
+title: Samoobsługowe resetowanie haseł szczegółowe dane — w usłudze Azure Active Directory
 description: Jak samoobsługowego resetowania haseł pracy
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 65c64e420bd22498fa2d778095def96cce218055
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214762"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313961"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 

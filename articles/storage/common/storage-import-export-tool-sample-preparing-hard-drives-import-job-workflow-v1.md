@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459056"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311717"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Przykładowy przepływ pracy przygotowywania dysków twardych do zadania importu
 W tym temacie przedstawiono pełny proces przygotowywania dysków do zadania importu.  
@@ -31,12 +31,12 @@ Zadania importu importuje dane do następujących miejsc docelowych w ramach kon
   
 |Element źródłowy|Katalog wirtualny docelowego lub obiektu blob|  
 |------------|-------------------------------------------|  
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovie.ISO|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|https:\//mystorageaccount.blob.core.windows.net/music|  
   
-Z tego mapowania pliku `H:\Video\Drama\GreatMovie.mov` jest importowany do obiektu blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
+Z tego mapowania pliku `H:\Video\Drama\GreatMovie.mov` jest importowany HTTPS obiektów blob:\//mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov.  
   
 Następnie aby ustalić, ile dyski twarde są potrzebne, obliczenia rozmiar danych:  
   
@@ -46,11 +46,11 @@ Na przykład dwa 3 TB, dyski twarde powinny być wystarczające. Jednak poniewa�
   
 |Lokalizacja|Rozmiar|Katalog wirtualny docelowego lub obiektu blob|  
 |--------------|----------|-------------------------------------------|  
-|H:\Video1|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Video2|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|30 GB|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|10 GB|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video1|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Video2|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|30 GB|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovies.ISO|25 GB|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|10 GB|https:\//mystorageaccount.blob.core.windows.net/music|  
   
  Mimo że `H:\Video`katalogu została podzielona w celu dwa katalogi, które one wskazują ten sam katalog wirtualny docelowym koncie magazynu. Dzięki temu wszystkie pliki wideo są obsługiwane w ramach pojedynczej `video` kontenera na koncie magazynu.  
   

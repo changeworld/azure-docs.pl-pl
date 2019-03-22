@@ -4,18 +4,16 @@ description: Dowiedz się, jak używać klienta z usługi Beeline do uruchamiani
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
-keywords: z usługi beeline hive, hive z usługi beeline
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: ba9746566f0f69ea2131b8f77a14939ea561638a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 00cf441247b9adf8547f373891bba4db29029d3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200485"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336001"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive za pomocą klienta programu Apache z usługi Beeline
 
@@ -24,8 +22,11 @@ Dowiedz się, jak używać [Apache z usługi Beeline](https://cwiki.apache.org/c
 Z usługi beeline jest klientem programu Hive, który znajduje się na węzłów głównych klastra usługi HDInsight. Z usługi beeline używa sterownika JDBC, aby nawiązać połączenie serwera HiveServer2, usługa hostowana w klastrze usługi HDInsight. Można również korzystanie z usługi Beeline, dostęp do programu Hive na HDInsight zdalnie za pośrednictwem Internetu. Poniższe przykłady zawierają najbardziej typowe parametry połączenia używane do nawiązywania HDInsight z z usługi Beeline:
 
 * __Używanie z usługi Beeline z poziomu połączenia SSH do węzłem głównym lub węzłem krawędzi__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
+
 * __Korzystanie z usługi Beeline na kliencie, połączenie z HDInsight za pośrednictwem usługi Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
-* __Korzystanie z usługi Beeline na kliencie, łączenie z klastrem usługi HDInsight Enterprise Security pakietu (ESP) za pośrednictwem usługi Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>`
+
+* __Korzystanie z usługi Beeline na kliencie, łączenie z klastrem usługi HDInsight Enterprise Security pakietu (ESP) za pośrednictwem usługi Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-DOMAIN>;auth-kerberos;transportMode=http' -n <username>` 
+
 * __Korzystanie z usługi Beeline na kliencie, połączenie z HDInsight za pośrednictwem publicznej sieci internet__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]  
@@ -37,7 +38,7 @@ Z usługi beeline jest klientem programu Hive, który znajduje się na węzłów
 >
 > Podczas nawiązywania połączenia z klastrem za pośrednictwem sieci wirtualnej, Zamień `<headnode-FQDN>` z w pełni kwalifikowaną nazwę domeny z węzłem głównym klastra.
 >
-> Podczas nawiązywania połączenia z klastrem pakietu zabezpieczeń przedsiębiorstwa (ESP), Zastąp `<AAD-Domain>` o nazwie z usługi Azure Active Directory (AAD) dołączonego do klastra. Zastąp `<username>` o nazwie konta domeny z uprawnieniami dostępu do klastra.
+> Podczas nawiązywania połączenia z klastrem pakietu zabezpieczeń przedsiębiorstwa (ESP), Zastąp `<AAD-DOMAIN>` o nazwie z usługi Azure Active Directory (AAD) dołączonego do klastra. Użyj wielkimi literami ciągu dla `<AAD-DOMAIN>` wartość, w przeciwnym razie nie można odnaleźć poświadczeń. Sprawdź `/etc/krb5.conf` obszaru nazw, w razie potrzeby. Zastąp `<username>` o nazwie konta domeny z uprawnieniami dostępu do klastra. 
 
 ## <a id="prereq"></a>Wymagania wstępne
 

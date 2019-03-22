@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/12/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d7dc6eb5ee77804f0c8c87ee2e5a5dd1d0dc30a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 61ebebaf61d1cbbc72f3e12b5ff516924cc9b8c7
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841127"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317752"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -29,7 +29,7 @@ W tym artykule opisano zmiany, które zostały wprowadzone w usłudze Azure Medi
 Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej wersji usługi Media Services v2 API](../previous/media-services-overview.md), należy przejrzeć następujące wskazówki i uwagi dotyczące przed przeprowadzeniem migracji do interfejsów API w wersji 3. Istnieje wiele korzyści i nowe funkcje w wersji 3 interfejsu API, które zwiększają Środowisko deweloperskie i możliwości usługi Media Services. Jednak jako o nazwie w [znane problemy](#known-issues) sekcji tego artykułu, również istnieją pewne ograniczenia z powodu zmian między wersjami interfejsu API. Ta strona zostanie zachowana, jak zespół usługi Media Services umożliwia dalsze ulepszenia do interfejsów API w wersji 3 i luki między wersjami. 
 
 > [!NOTE]
-> Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
+> Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref), lub jeden z obsługiwanych [zestawów SDK](developers-guide.md).
 
 ## <a name="benefits-of-media-services-v3"></a>Zalety Media Services v3
 

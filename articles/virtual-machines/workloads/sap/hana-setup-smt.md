@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9fe644b7cc7d1a13cb9ed2f7016f25b3e346dfb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233178"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313139"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Konfigurowanie serwera SMT dla systemu Linux SUSE
 Duże wystąpienia SAP HANA nie ma bezpośredniego połączenia z Internetem. Nie jest dość proste, aby zarejestrować takiej jednostki z dostawcą systemu operacyjnego i pobieranie i stosowanie aktualizacji. Rozwiązania dla systemu SUSE Linux jest konfigurowanie serwera SMT w maszynie wirtualnej platformy Azure. Hosta maszyny wirtualnej w sieci wirtualnej platformy Azure, który jest podłączony do dużych wystąpień HANA. Za pomocą takiego serwera SMT jednostki dużych wystąpień HANA można zarejestrować i pobierania aktualizacji. 
@@ -84,7 +84,7 @@ Możesz także narzędzie YAST, aby zainstalować pakiety smt. W YAST, przejdź 
 ![Zrzut ekranu przedstawiający SMT w YAST](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Zaakceptuj wybór instalacji na smtserver. Po zakończeniu instalacji przejdź do konfiguracji serwera SMT. Wprowadzanie poświadczeń w organizacji z Centrum klienta SUSE pobranym wcześniej. Jako adres URL serwera SMT wprowadzenia nazwy hosta usługi maszyny wirtualnej platformy Azure. W tej prezentacji przedstawiono w nim https://smtserver.
+Zaakceptuj wybór instalacji na smtserver. Po zakończeniu instalacji przejdź do konfiguracji serwera SMT. Wprowadzanie poświadczeń w organizacji z Centrum klienta SUSE pobranym wcześniej. Jako adres URL serwera SMT wprowadzenia nazwy hosta usługi maszyny wirtualnej platformy Azure. Podczas tego pokazu tego protokołu https:\//smtserver.
 
 ![Zrzut ekranu SMT konfiguracji serwera](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

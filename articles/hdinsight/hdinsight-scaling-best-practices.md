@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: e8a85401c0c7282d64ebcbe2f9180f25f36f7289
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cae0c97cb3084b0578f277852d646c199d1e2313
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108158"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316256"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skaluj klastry HDInsight
 
@@ -120,7 +120,7 @@ Po wyjściu z trybu awaryjnego, można ręcznie usunąć pliki tymczasowe lub po
 
 * Wyświetl H100 nie można przesłać instrukcji bazy danych: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Nawiązać połączenie z hn0-clustername.servername.internal.cloudapp.net:10001 [hn0 clustername.servername. internal.cloudapp.net/1.1.1.1] failed: **Połączenie zostało odrzucone**
 
-* Nie można H020 ustanowić połączenie hn0 hdisrv.servername.bx.internal.cloudapp .net: 10001: org.apache.thrift.transport.TTransportException: Nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Nawiązywanie połączenia hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodło się: Połączenie zostało odrzucone: org.apache.thrift.transport.TTransportException: Nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Nawiązywanie połączenia hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodło się: **Połączenie zostało odrzucone**
+* Nie można H020 ustanowić połączenie hn0 hdisrv.servername.bx.internal.cloudapp .net: 10001: org.apache.thrift.transport.TTransportException: Nie można utworzyć połączenia http http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Nawiązywanie połączenia hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodło się: Połączenie zostało odrzucone: org.apache.thrift.transport.TTransportException: Nie można utworzyć połączenia http http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Nawiązywanie połączenia hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodło się: **Połączenie zostało odrzucone**
 
 * Z dzienniki programu Hive: OSTRZEGAJ [main]: serwer. Usługi HiveServer2 (HiveServer2.java:startHiveServer2(442)) — wystąpił błąd podczas uruchamiania usługi HiveServer2 przy próbie 21, spróbuje ponowić operację w 60 sekund java.lang.RuntimeException: Błąd podczas stosowania zasad autoryzacji w konfiguracji programu hive: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Nie można utworzyć katalogu** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Nazwa węzła jest w trybie awaryjnym**.
     Bloki zgłoszonych 0 wymaga dodatkowe bloki 9 do osiągnięcia progu 0.9900 łączna liczba bloków 9.
@@ -326,4 +326,4 @@ Ostatnia opcja polega na obserwowanie rzadkich przypadkach, w którym system pli
 
 * [Wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md)
 * [Skalowanie klastrów](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Zarządzanie klastrami HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Zarządzanie klastrami HDInsight przy użyciu internetowego interfejsu użytkownika systemu Apache Ambari](hdinsight-hadoop-manage-ambari.md)

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 55e61158b2c0f21809be7d172f208fa5fea44713
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 314cb943585247189baeb6ab3c90f78e1a1ad445
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792564"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313156"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -51,7 +51,7 @@ W tym samouczku przedstawiono sposób uruchamiania próbnego odzyskiwania po awa
 5. Po zakończeniu trybu failover w obszarze Azure Portal > **Maszyny wirtualne** będzie widoczna replika maszyny wirtualnej platformy Azure. Upewnij się, że maszyna wirtualna jest uruchomiona, ma właściwy rozmiar i została połączona z odpowiednią siecią.
 6. Aby usunąć maszyny wirtualne utworzone podczas testowania trybu failover, kliknij pozycję **Wyczyść test pracy w trybie failover** w replikowanym elemencie w planie odzyskiwania. W obszarze **Uwagi** zarejestruj i zapisz wszelkie obserwacje związane z testem pracy w trybie failover.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Uruchamianie produkcyjnego trybu failover](azure-to-azure-tutorial-failover-failback.md)

@@ -6,22 +6,28 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 3/3/2019
+ms.date: 3/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ccd62c0b0832622bbc74542674c1d09f59ea301b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06d18ccd6f14f0a2b31f579b0ed7250b2c4f0c92
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848834"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310595"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii (BCDR, business continuity and disaster recovery) przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych lub nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
 
 
-W tym samouczku opisano sposób konfigurowania i włączania replikacji maszyny wirtualnej VMware na platformie Azure za pomocą usługi Azure Site Recovery. Samouczki opisują wdrażanie usługi Site Recovery z podstawowymi ustawieniami. Używane są najprostsze ścieżki i nie są pokazane wszystkie opcje. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek pokazuje, jak wdrożyć usługę Site Recovery z podstawowymi ustawieniami bez nimi. Bardziej złożone opcje można znaleźć w artykułach, w jaki sposób.
+
+    - Konfigurowanie [źródła replikacji](vmware-azure-set-up-source.md) i [serwera konfiguracji](vmware-azure-deploy-configuration-server.md).
+    - Konfigurowanie [miejsca docelowego replikacji](vmware-azure-set-up-target.md).
+    - Konfigurowanie [zasad replikacji](vmware-azure-set-up-replication.md) i [włączanie replikacji](vmware-azure-enable-replication.md).
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Wprowadzanie źródła i celu replikacji.
@@ -37,14 +43,10 @@ Przed rozpoczęciem warto:
 - Skorzystać z następujących zasobów, aby dowiedzieć się więcej o konfigurowaniu odzyskiwania po awarii dla maszyn wirtualnych VMware:
     - [Przeczytaj często zadawane pytania](vmware-azure-common-questions.md) dotyczące odzyskiwania po awarii dla oprogramowania VMware.
     - [Dowiedz się](vmware-physical-azure-support-matrix.md), co obsługuje i czego wymaga oprogramowanie VMware.
--  Przeczytać nasze **poradniki**, aby uzyskać szczegółowe instrukcje, które obejmują wszystkie opcje wdrażania oprogramowania VMware:
-    - Konfigurowanie [źródła replikacji](vmware-azure-set-up-source.md) i [serwera konfiguracji](vmware-azure-deploy-configuration-server.md).
-    - Konfigurowanie [miejsca docelowego replikacji](vmware-azure-set-up-target.md).
-    - Konfigurowanie [zasad replikacji](vmware-azure-set-up-replication.md) i [włączanie replikacji](vmware-azure-enable-replication.md).
 - W tym samouczku pokazujemy, jak być replikowane na jednej maszynie Wirtualnej. Jeśli wdrażasz wiele maszyn wirtualnych należy użyć [narzędzie planista wdrażania](https://aka.ms/asr-deployment-planner) ułatwiające zaplanowanie wdrożenia. [Dowiedz się więcej](site-recovery-deployment-planner.md) na temat tego narzędzia.
 
 I Przejrzyj poniższe wskazówki:
-- Ten samouczek używa szablonu OVA do utworzenia maszyny wirtualnej serwera konfiguracji dla usługi VMware. Jeśli nie możesz tego zrobić, postępuj zgodnie z [te instructins](physical-manage-configuration-server.md) ręcznego konfigurowania serwera konfiguracji.
+- Ten samouczek używa szablonu OVA do utworzenia maszyny wirtualnej serwera konfiguracji dla usługi VMware. Jeśli nie możesz tego zrobić, postępuj zgodnie z [w instrukcjach](physical-manage-configuration-server.md) ręcznego konfigurowania serwera konfiguracji.
 - W tym samouczku usługa Site Recovery pobiera i instaluje bazę danych MySQL na serwerze konfiguracji. Jeśli wolisz, możesz skonfigurować go ręcznie zamiast tego. [Dowiedz się więcej](vmware-azure-deploy-configuration-server.md#configure-settings).
   >Najnowszą wersję szablonu serwera konfiguracji można pobrać bezpośrednio z [Centrum pobierania Microsoft](https://aka.ms/asrconfigurationserver).
   Licencja dostarczane z szablonu pakietu OVF jest ocena prawidłowe przez 180 dni. Windows uruchomione na maszynie Wirtualnej musi być aktywowany z wymaganą licencję. 

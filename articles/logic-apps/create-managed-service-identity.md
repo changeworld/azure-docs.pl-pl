@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: a22512a960426cc21f4f012e06b9df4fa86e637e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807273"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337599"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie i dostęp do zasobów z zarządzanych tożsamości w usłudze Azure Logic Apps
 
@@ -152,7 +152,7 @@ Po skonfigurowaniu aplikacji logiki przy użyciu systemu przypisane tożsamości
 
 1. Podaj odpowiednie szczegóły dla tej akcji, takich jak żądania **metoda** i **URI** lokalizacji zasobu ma zostać wywołana.
 
-   Załóżmy, że używasz uwierzytelniania usługi Azure Active Directory (Azure AD) przy użyciu [jedną z tych usług platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   Załóżmy, że używasz uwierzytelniania usługi Azure Active Directory (Azure AD) przy użyciu [jedną z tych usług platformy Azure, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
    W **URI** wprowadź adres URL punktu końcowego dla tej usługi platformy Azure. 
    Dlatego jeśli używasz usługi Azure Resource Manager, wprowadź wartość w **URI** właściwości:
 
@@ -167,7 +167,7 @@ Po skonfigurowaniu aplikacji logiki przy użyciu systemu przypisane tożsamości
    > [!IMPORTANT]
    > 
    > W **odbiorców** właściwości wartość Identyfikatora zasobu musi dokładnie odpowiadać oczekiwaniom usługi Azure AD, wraz ze wszystkimi wymagane końcowych ukośników. 
-   > Te wartości Identyfikator zasobu można znaleźć w tym [Tabela zawierająca opis usługi Azure usług, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   > Te wartości Identyfikator zasobu można znaleźć w tym [Tabela zawierająca opis usługi Azure usług, które obsługują usługę Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
    > Na przykład jeśli używasz Identyfikatora zasobu Menedżera zasobów platformy Azure, upewnij się, że identyfikator URI ma znaku ukośnika na końcu.
 
 1. Kontynuuj Kompilowanie aplikacji logiki w żądany sposób.

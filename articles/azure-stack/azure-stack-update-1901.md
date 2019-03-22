@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/20/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 682ff9b139d7315604da70fbba47b5e81a290921
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886375"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226865"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizacja usługi Azure Stack 1901
 
@@ -58,7 +58,7 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 
 - **1809**: [KB 4481548 — usługa Azure Stack poprawkę 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: Nie dostępnych poprawki bieżącego.
-- **1901**: Nie dostępnych poprawki bieżącego.
+- **1901**: [KB 4481548 — usługa Azure Stack poprawkę 1.1901.2.103](https://support.microsoft.com/help/4494720)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 023662f0293debb1b40fc8ea10bb725eab7be4d8
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 22090bf89e469f7e8defcd50b311c555949b9bde
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649938"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317728"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtrowanie ruchu sieciowego z sieciową grupą zabezpieczeń, za pomocą programu PowerShell
 
@@ -101,7 +101,7 @@ W tym artykule protokołu RDP (port 3389) jest uwidaczniany w Internecie *myAsgM
 
 ### <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-Utwórz sieciową grupę zabezpieczeń z [New AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsg*:
+Utwórz sieciową grupę zabezpieczeń przy użyciu polecenia [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsg*:
 
 ```powershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -242,7 +242,7 @@ Tworzenie maszyny wirtualnej zajmuje kilka minut. Nie przechodź do następnego 
 
 ## <a name="test-traffic-filters"></a>Testowanie filtrów ruchu
 
-Użyj [Get AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) aby zwrócić publiczny adres IP maszyny Wirtualnej. W poniższym przykładzie zwracany jest publiczny adres IP maszyny wirtualnej o nazwie *myVmMgmt*:
+Użyj polecenia [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress), aby uzyskać publiczny adres IP maszyny wirtualnej. W poniższym przykładzie zwracany jest publiczny adres IP maszyny wirtualnej o nazwie *myVmMgmt*:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -277,7 +277,7 @@ Użyj następującego polecenia, aby zainstalować usługi Microsoft IIS na masz
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Po zakończeniu instalacji usług IIS odłącz się od maszyny wirtualnej *myVmWeb*, co spowoduje pozostanie w połączeniu pulpitu zdalnego z maszyną wirtualną *myVmMgmt*. Aby wyświetlić ekran powitalny usług IIS, otwórz przeglądarkę internetową i przejdź do adresu http://myVmWeb.
+Po zakończeniu instalacji usług IIS odłącz się od maszyny wirtualnej *myVmWeb*, co spowoduje pozostanie w połączeniu pulpitu zdalnego z maszyną wirtualną *myVmMgmt*. Aby wyświetlić ekran powitalny usług IIS, otwórz przeglądarkę internetową i przejdź do protokołu http:\//myVmWeb.
 
 Odłącz się od maszyny wirtualnej *myVmMgmt*.
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f854c8b27065c2d2bf0c9964fe9dfce66aba423a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9fcc6cb40d83c06a1c9f0a97c72565464e74e655
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104509"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336082"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory
 
@@ -29,7 +29,7 @@ Dowiedz się, jak Znajdowanie i eliminowanie [logowanie jednokrotne](../manage-a
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Zaleca się zainstalowanie [Moje zabezpieczenia aplikacji logowania rozszerzenia](../user-help/active-directory-saas-access-panel-user-help.md#i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension). To rozszerzenie przeglądarki ułatwia zbieranie żądanie języka SAML i SAML odpowiedzi informacje potrzebne do rozwiązywania problemów związanych z logowania jednokrotnego. W przypadku, gdy nie można zainstalować rozszerzenia, w tym artykule pokazano, jak rozwiązać problemy z usługą i bez zainstalowane rozszerzenie.
+Zaleca się zainstalowanie [Moje zabezpieczenia aplikacji logowania rozszerzenia](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). To rozszerzenie przeglądarki ułatwia zbieranie żądanie języka SAML i SAML odpowiedzi informacje potrzebne do rozwiązywania problemów związanych z logowania jednokrotnego. W przypadku, gdy nie można zainstalować rozszerzenia, w tym artykule pokazano, jak rozwiązać problemy z usługą i bez zainstalowane rozszerzenie.
 
 Aby pobrać i zainstalować Moje zabezpieczenia aplikacji logowania rozszerzenia, użyj jednej z poniższych linków.
 
@@ -64,7 +64,7 @@ Podczas próby Zaloguj się na Twojej firmy strony logowania podobną do poniżs
 
 Aby debugować ten błąd, konieczne jest komunikat o błędzie i żądanie języka SAML. Zabezpieczanie aplikacji My logowania rozszerzenie automatycznie zbiera te informacje i zawiera wskazówki dotyczące rozwiązania w usłudze Azure AD. 
 
-### <a name="to-resolve-the-sign-in-error-with-the-myapps-secure-sign-in-extension-installed"></a>Aby rozwiązać błąd logowania za pomocą MyApps Secure zainstalować rozszerzenia w logowania
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Aby rozwiązać błąd logowania za pomocą Secure Moje aplikacje logowania rozszerzenia zainstalowane
 
 1. Gdy wystąpi błąd, rozszerzenie przekieruje Cię do usługi Azure AD **Test rejestracji jednokrotnej** bloku. 
 1. Na **Test rejestracji jednokrotnej** bloku wybierz **pobrać żądanie języka SAML**. 
@@ -73,14 +73,14 @@ Aby debugować ten błąd, konieczne jest komunikat o błędzie i żądanie jęz
 
 Jeśli rozwiązanie jest dostępne w błędu logowania, zaleca się, użyj pola tekstowego opinii na firmę Microsoft.
 
-### <a name="to-resolve-the-error-without-installing-the-myapps-secure-sign-in-extension"></a>Aby rozwiązać problem bez konieczności instalowania MyApps bezpiecznego logowania rozszerzenia
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>Aby rozwiązać problem bez konieczności instalowania Moje zabezpieczenia aplikacji logowania rozszerzenia
 
 1. Kopiuj komunikat o błędzie w prawym dolnym rogu strony. Zawiera komunikat o błędzie:
     - Identyfikator korelacji i sygnaturę czasową. Te wartości są ważne podczas tworzenia zgłoszenia do pomocy technicznej firmy Microsoft, ponieważ one pomóc inżynierom, aby zidentyfikować problem i uzyskać dokładne rozwiązania problemu.
     - Oświadczenie identyfikuje główną przyczynę problemu.
 1. Wróć do usługi Azure AD i Znajdź **Test rejestracji jednokrotnej** bloku.
 1. W polu tekstowym powyżej **Uzyskaj wskazówki dotyczące rozwiązywania**, Wklej komunikat o błędzie.
-1. Kliknij przycisk **zapoznaj się ze wskazówkami rozpoznawania** do wyświetlenia kroki dotyczące rozwiązania tego problemu. Wytyczne mogą wymagać informacji z żądania SAML lub odpowiedzi SAML. Jeśli nie używasz MyApps bezpiecznego logowania rozszerzenia, możesz potrzebować narzędzia takie jak [Fiddler](https://www.telerik.com/fiddler) można pobrać żądanie języka SAML i odpowiedzi.
+1. Kliknij przycisk **zapoznaj się ze wskazówkami rozpoznawania** do wyświetlenia kroki dotyczące rozwiązania tego problemu. Wytyczne mogą wymagać informacji z żądania SAML lub odpowiedzi SAML. Jeśli nie używasz Moje zabezpieczenia aplikacji logowania rozszerzenia, to narzędzie może być konieczne takich jak [Fiddler](https://www.telerik.com/fiddler) można pobrać żądanie języka SAML i odpowiedzi.
 1. Sprawdź, czy miejsce docelowe w żądaniu języka SAML odpowiada SAML pojedynczego logowania jednokrotnego adresu URL usługi uzyskany z usługi Azure AD.
 1. Sprawdź, czy wystawcy żądania języka SAML jest taki sam identyfikator, które zostały skonfigurowane dla aplikacji w usłudze Azure AD. Usługa Azure AD używa wystawca do znajdowania aplikacji w Twoim katalogu.
 1. Sprawdź, czy AssertionConsumerServiceURL jest, gdy aplikacja oczekuje otrzymać SAML token z usługi Azure AD. Wartość tę można skonfigurować w usłudze Azure AD, ale nie jest to konieczne, jeśli jest on częścią żądania języka SAML.

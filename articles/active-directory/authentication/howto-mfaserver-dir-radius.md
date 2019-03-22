@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie usługi RADIUS i serwer usługi Azure MFA | Microsoft Docs
+title: Serwer MFA uwierzytelnianie usługi RADIUS i na platformie Azure — usługa Azure Active Directory
 description: Wdrażanie uwierzytelniania usługi RADIUS i serwera Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d21ff9b56a7fcb33fbdb6bbb82c64ef97abf71
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 34cfd37caf45d709fdc0b3639a218e2e587e8164
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085783"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314352"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrowanie uwierzytelniania usługi RADIUS z serwerem usługi Azure Multi-Factor Authentication
 

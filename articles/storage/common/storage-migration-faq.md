@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 2272414c185388df0ccbc9e21b7d166432fc7a52
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110413"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310850"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -282,7 +282,7 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
 
     - **Token sygnatury dostępu Współdzielonego**: Użyj tokenu sygnatury dostępu Współdzielonego na dostęp do danych z punktu końcowego. Aby uzyskać więcej informacji, zobacz [używanie sygnatury dostępu współdzielonego](storage-dotnet-shared-access-signature-part-1.md).
 
-**Jak używać protokołu HTTPS domeny niestandardowej z moim kontem magazynu? Na przykład, jak zrobić "<https://mystorageaccountname.blob.core.windows.net/images/image.gif>"są wyświetlane jako"<https://www.contoso.com/images/image.gif>"?**
+**Jak używać protokołu HTTPS domeny niestandardowej z moim kontem magazynu? Na przykład, jak zrobić "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" są wyświetlane jako "https:\//www.contoso.com/images/image.gif"?**
 
 Protokół SSL nie jest obecnie obsługiwane dla kont magazynu z zastosowaniem domen niestandardowych.
 Jednak można użyć innych niż HTTPS domen niestandardowych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego usługi Blob storage](../blobs/storage-custom-domain-name.md).

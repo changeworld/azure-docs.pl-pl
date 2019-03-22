@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 923931eec2a7deaa8cf92bec61bc623615c9420d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3f42aa57a4db445f0fb222905a6350b57c2c2a62
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847063"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315619"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -39,16 +39,12 @@ Usługa jest dostępna w regionach platformy Azure jest ogólnie dostępna. Nie 
 
 Regiony                                        | Dostępność?                                 | Obsługiwane wersje
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
-[Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Chińska wersja platformy Azure](https://www.azure.cn/)                                                           | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Publiczne zachodnie środkowe stany USA](https://azure.microsoft.com/regions/)     | Ogólnie dostępne   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Chińska wersja platformy Azure](https://www.azure.cn/)                                                           | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 
 Ta tabela jest aktualizowany, gdy są dostępne aktualizacje usług i/lub nowych wersji są dostępne.
-
-> [!NOTE]
-> 2018-10-01 aktualnie jest wprowadzenie wdrażana i jest dostępny w innych regionach wkrótce. Ta tabela jest aktualizowany, gdy są dostępne aktualizacje usługi i/lub nowych wersji są dostępne
 
 Aby wypróbować Instance Metadata Service, Utwórz Maszynę wirtualną z [usługi Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) lub [witryny Azure portal](https://portal.azure.com) w regionach powyżej i postępuj zgodnie z poniższych przykładów.
 
@@ -355,7 +351,7 @@ resourceGroupName | [Grupa zasobów](../../azure-resource-manager/resource-group
 placementGroupId | [Grupy umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyn wirtualnych | 2017-08-01
 Plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) dla maszyny Wirtualnej w jej obraz Azure Marketplace zawiera nazwę, produktu i wydawcy | 2018-04-02
 dostawca | Dostawca maszyny wirtualnej | 2018-10-01
-publicKeys | Kolekcja kluczy publicznych [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey] przypisane do maszyny Wirtualnej i ścieżek | 2018-04-02
+publicKeys | [Kolekcja kluczy publicznych](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) przypisane do maszyny Wirtualnej i ścieżek | 2018-04-02
 vmScaleSetName | [Nazwa zestawu skalowania maszyny wirtualnej](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zestawu skalowania maszyn wirtualnych | 2017-12-01
 strefa | [Strefa dostępności](../../availability-zones/az-overview.md) maszyny wirtualnej | 2017-12-01
 ipv4/privateIpAddress | Lokalny adres IPv4 maszyny wirtualnej | 2017-04-02

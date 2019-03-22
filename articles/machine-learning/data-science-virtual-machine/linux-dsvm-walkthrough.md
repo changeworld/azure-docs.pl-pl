@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 0ca3cee0c818bf9d5dda4a7ea8a1f356ed017973
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891090"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319469"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
@@ -423,7 +423,7 @@ Jedna z funkcji nieuprzywilejowany Rattle polega na ich szybkie oceny i uruchomi
 Po zakończeniu procesu tworzenia modeli wybierz **dziennika** kartę, aby wyświetlić kod R, uruchamiając Rattle podczas sesji. Możesz wybrać **wyeksportować** przycisk, aby go zapisać.
 
 > [!NOTE]
-> W bieżącej wersji Rattle znajduje się błąd. Aby zmodyfikować skrypt, lub użyć go do nowszej Powtórz kroki, należy wstawić znak # przed * Eksportuj... ten dziennik * w tekście dziennika.
+> W bieżącej wersji Rattle znajduje się błąd. Aby zmodyfikować skrypt, lub użyć go do nowszej Powtórz kroki, należy wstawić znak # przed *eksportowanie tego dziennika...*  w tekście dziennika.
 >
 >
 

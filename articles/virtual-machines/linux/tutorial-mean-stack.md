@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a8f756385b62dfb21e910b9373dc275c7f679d3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: eac10cd735ae16cf1c7c6d6987a3b53060caa1cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009658"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315831"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Samouczek: tworzenie stosu MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure
 
@@ -324,7 +324,7 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Otwórz w przeglądarce internetowej adres zarejestrowany dla maszyny wirtualnej. Na przykład *http://13.72.77.9:3300*. Powinna zostać wyświetlona zawartość podobna do tej strony:
+2. Otwórz w przeglądarce internetowej adres zarejestrowany dla maszyny wirtualnej. Na przykład *http:\//13.72.77.9:3300*. Powinna zostać wyświetlona zawartość podobna do tej strony:
 
     ![Rekord książki](media/tutorial-mean/meanstack-init.png)
 

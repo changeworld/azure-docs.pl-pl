@@ -1,0 +1,377 @@
+---
+title: Przygotuj i dostosowywania obrazu wirtualnego dysku twardego master - Azure
+description: Jak przygotować, dostosować i przekazać obrazu wzorcowego Windows pulpitu wirtualnego (wersja zapoznawcza) na platformę Azure.
+services: virtual-desktop
+author: Heidilohr
+ms.service: virtual-desktop
+ms.topic: how-to
+ms.date: 03/21/2019
+ms.author: helohr
+ms.openlocfilehash: 53bf33aad6511cc282f53659bbe43873cacfc3ff
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58318422"
+---
+# <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotuj i dostosowanie głównego obrazu wirtualnego dysku twardego
+
+W tym artykule poinformuje sposób przygotowania głównego obrazu wirtualnego dysku twardego (VHD) w celu przekazania na platformę Azure, w tym sposobu tworzenia maszyn wirtualnych (VM) i zainstalowanie i skonfigurowanie oprogramowania na nich. Te instrukcje dotyczą konfiguracji wirtualnej Windows Desktop specyficzne (wersja zapoznawcza), który może być używany z istniejącymi procesami w Twojej organizacji.
+
+## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
+
+Wiele sesji systemu Windows 10 Enterprise jest dostępna w galerii obrazów systemu Azure. Dostępne są dwie opcje dostosowywania tego obrazu.
+
+Pierwsza opcja jest aprowizowanie maszyny wirtualnej (VM) na platformie Azure, postępując zgodnie z instrukcjami w [Utwórz Maszynę wirtualną z obrazu zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed), a następnie przejdź do sekcji [przygotowania oprogramowania i instalacji](set-up-customize-master-image.md#software-preparation-and-installation).
+
+Drugą opcją jest do utworzenia obrazu lokalnie przez pobieranie obrazu, inicjowanie obsługi administracyjnej maszyny Wirtualnej funkcji Hyper-V i dostosowania jej do swoich potrzeb, które omówimy w poniższej sekcji.
+
+### <a name="local-image-creation"></a>Tworzenie obrazu lokalnego
+
+Po pobraniu obrazu w lokalizacji lokalnej, należy otworzyć **Menedżera funkcji Hyper-V** utworzyć maszynę Wirtualną z dyskiem VHD został skopiowany. Oto prosta wersja, ale można znaleźć bardziej szczegółowe instrukcje w [Utwórz maszynę wirtualną funkcji Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+
+Aby utworzyć Maszynę wirtualną za pomocą skopiowanego wirtualnego dysku twardego:
+
+1. Otwórz **Kreatora nowej maszyny wirtualnej**.
+
+2. Na stronie Określanie generacji wybierz **generacja 1**.
+
+    ![Zrzut ekranu przedstawiający stronę Określanie generacji. Opcja "Generacji 1" jest zaznaczona.](media/a41174fd41302a181e46385e1e701975.png)
+
+3. W obszarze Typ punktu kontrolnego należy wyłączyć punkty kontrolne, usuwając zaznaczenie pola wyboru.
+
+    ![Zrzut ekranu przedstawiający sekcję typ punktu kontrolnego na stronie punkty kontrolne.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+
+Można również uruchomić następujące polecenie cmdlet programu PowerShell, aby wyłączyć punkty kontrolne.
+
+```powershell
+Set-VM -Name <VMNAME> -CheckpointType Disabled
+```
+
+### <a name="fixed-disk"></a>Dysku stałego
+
+Jeśli tworzysz Maszynę wirtualną z istniejącego wirtualnego dysku twardego, tworzy dysk dynamiczny domyślnie. Można ją zmienić na dysk stały, wybierając **Edytuj dysk...**  jak pokazano na poniższej ilustracji. Aby uzyskać szczegółowe instrukcje, zobacz [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+
+![Zrzut ekranu przedstawiający opcję Edytuj dysk.](media/35772414b5a0f81f06f54065561d1414.png)
+
+Można również uruchomić następujące polecenie cmdlet programu PowerShell, aby zmienić dysku na dysk stały.
+
+```powershell
+Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.vhd -VHDType Fixed
+```
+
+## <a name="software-preparation-and-installation"></a>Przygotowanie oprogramowania i instalacji
+
+W tej sekcji opisano, jak przygotować i instalowanie usługi Office 365 ProPlus, OneDrive, FSLogix, usługa Windows Defender i innymi aplikacjami. Jeśli użytkownicy potrzebują dostępu do niektórych aplikacji biznesowych, zalecamy instalowanie po wykonaniu instrukcji w tej sekcji.
+
+W tej sekcji założono, że mają podwyższony poziom dostępu na maszynie Wirtualnej, czy jest zainicjowany na platformie Azure lub Menedżera funkcji Hyper-V.
+
+### <a name="install-office-in-shared-computer-activation-mode"></a>Instalowanie pakietu Office w trybie Aktywacja współużytkowanego komputera
+
+Użyj [narzędzia wdrażania pakietu Office](https://www.microsoft.com/download/details.aspx?id=49117) do zainstalowania pakietu Office. Wiele sesji systemu Windows 10 Enterprise obsługuje tylko usługi Office 365 ProPlus, nie Perpetual 2019 pakietu Office.
+
+Narzędzia wdrażania pakietu Office wymaga pliku XML konfiguracji. Aby dostosować poniższego przykładu, zobacz [opcji konfiguracji dla narzędzia wdrażania pakietu Office](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
+
+Tej przykładowej konfiguracji XML udostępniliśmy będzie wykonywać następujące czynności:
+
+- Instalowanie pakietu Office z kanału dla niejawnych testerów i dostarczać aktualizacje z kanału dla niejawnych testerów, gdy są one wykonywane.
+- Architektura użycia x64.
+- Wyłącz Aktualizacje automatyczne.
+- Instalowanie programu Visio i projektu.
+- Usuń wszystkie istniejące instalacje pakietu Office, a następnie przeprowadzić migrację ustawień.
+- Włącz komputer współużytkowany licencjonowania dla operacji w środowisku serwera terminali.
+
+Oto, co nie zrobi tej przykładowej konfiguracji XML:
+
+- Instalację programu Skype dla firm
+- Instalowanie usługi OneDrive w trybie użytkownika. Aby dowiedzieć się więcej, zobacz [zainstalować usługi OneDrive w trybie poszczególnych komputerów](#install-onedrive-in-per-machine-mode).
+
+>[!NOTE]
+>Licencjonowanie komputerów udostępnione można skonfigurować za pomocą obiektów zasad grupy (GPO) lub ustawienia rejestru. Obiekt zasad grupy znajduje się w **konfiguracji komputera\\zasady\\Szablony administracyjne\\Microsoft Office 2016 (komputer)\\ustawienia licencjonowania**
+
+Narzędzia wdrażania pakietu Office zawiera setup.exe. Aby zainstalować pakiet Office, uruchom następujące polecenie w wierszu polecenia:
+
+```batch
+Setup.exe /configure configuration.xml
+```
+
+#### <a name="sample-configurationxml"></a>Przykładowy konfiguracja.XML
+
+Poniższy przykładowy plik XML zainstaluje wydania dla niejawnych testerów, znana także jako testerom szybkie lub dla niejawnych testerów Main.
+
+```xml
+<Configuration>
+    <Add OfficeClientEdition="64" SourcePath="http://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
+        <Product ID="O365ProPlusRetail">
+            <Language ID="en-US" />
+            <Language ID="MatchOS" Fallback = "en-US"/>
+            <Language ID="MatchPreviousMSI" />
+            <ExcludeApp ID="Groove" />
+            <ExcludeApp ID="Lync" />
+            <ExcludeApp ID="OneDrive" />
+            <ExcludeApp ID="Teams" />
+        </Product>
+        <Product ID="VisioProRetail">
+            <Language ID="en-US" />
+            <Language ID="MatchOS" Fallback = "en-US"/>
+            <Language ID="MatchPreviousMSI" />
+            <ExcludeApp ID="Teams" /> 
+        </Product>
+        <Product ID="ProjectProRetail">
+            <Language ID="en-US" />
+            <Language ID="MatchOS" Fallback = "en-US"/>
+            <Language ID="MatchPreviousMSI" />
+            <ExcludeApp ID="Teams" />
+        </Product>
+    </Add>
+    <RemoveMSI All="True" />
+    <Updates Enabled="FALSE" UpdatePath="http://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
+    <Display Level="None" AcceptEULA="TRUE" />
+    <Logging Level="Verbose" Path="%temp%\WVDOfficeInstall" />
+    <Property Value="TRUE" Name="FORCEAPPSHUTDOWN"/>
+    <Property Value="1" Name="SharedComputerLicensing"/>
+    <Property Value="TRUE" Name="PinIconsToTaskbar"/>
+</Configuration>
+```
+
+>[!NOTE]
+>Zespół usługi Office zaleca się za pomocą 64-bitowej instalacji dla **OfficeClientEdition** parametru.
+
+Po zainstalowaniu pakietu Office, należy zaktualizować domyślne zachowanie pakietu Office. Uruchom następujące polecenia, pojedynczo lub w pliku wsadowym, aby zaktualizować zachowanie.
+
+```batch
+rem Mount the default user registry hive
+reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
+rem Must be executed with default registry hive mounted.
+reg add HKU\TempDefault\SOFTWARE\Policies\Microsoft\office\16.0\common /v InsiderSlabBehavior /t REG_DWORD /d 2 /f
+rem Set Outlook's Cached Exchange Mode behavior
+rem Must be executed with default registry hive mounted.
+reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v enable /t REG_DWORD /d 1 /f
+reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v syncwindowsetting /t REG_DWORD /d 1 /f
+reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSetting /t REG_DWORD /d 1 /f
+reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSettingMonths  /t REG_DWORD /d 1 /f
+rem Unmount the default user registry hive
+reg unload HKU\TempDefault
+
+rem Set the Office Update UI behavior.
+reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideupdatenotifications /t REG_DWORD /d 1 /f
+reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
+```
+
+Można ręcznie wyłączyć aktualizacji automatycznych.
+
+Aby wyłączyć automatyczne aktualizacje:
+
+1. Instalowanie usługi Office 365, postępując zgodnie z instrukcjami wyświetlanymi w [przygotowywania obrazu Office](set-up-customize-master-image.md#office-image-preparation).
+2. Zainstaluj wszystkie dodatkowe aplikacje wypełniając instrukcje w [ustawienia profilu użytkownika (FSLogix)](set-up-customize-master-image.md#user-profile-setup-fslogix), [usługi Windows Defender](set-up-customize-master-image.md#windows-defender), i [inne aplikacje i konfiguracji rejestru](set-up-customize-master-image.md#other-applications-and-registry-configuration).
+3. Wyłączenie Windows automatycznej aktualizacji usługi na lokalnej maszynie Wirtualnej.
+4. Otwórz **Edytora lokalnych zasad grupy\\Szablony administracyjne\\składników Windows\\Windows Update**.
+5. Kliknij prawym przyciskiem myszy **Konfigurowanie aktualizacji automatycznych** i ustaw ją na **wyłączone**.
+
+Można również uruchomić następujące polecenie w wierszu polecenia, aby wyłączyć automatyczne aktualizacje.
+
+```batch
+reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
+```
+
+Uruchom następujące polecenie, aby określić układ Start dla komputerów z systemem Windows 10.
+
+```batch
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
+```
+
+### <a name="install-onedrive-in-per-machine-mode"></a>Instalowanie usługi OneDrive w trybie poszczególnych komputerów
+
+OneDrive jest zazwyczaj instalowana dla poszczególnych użytkowników. W tym środowisku, należy go zainstalować na maszynie.
+
+Poniżej przedstawiono sposób instalowania usługi OneDrive w trybie poszczególnych komputerów:
+
+1. Najpierw utwórz lokalizację w której etap Instalatora usługi OneDrive. Folder na dysku lokalnym lub [\\\\unc] (file://unc) znajduje się w dobrym stanie.
+
+2. Pobierz OneDriveSetup.exe do lokalizacji przygotowanych za pomocą tego łącza: <https://aka.ms/OneDriveWVD-Installer>
+
+3. Po zainstalowaniu pakietu office z usługą OneDrive, pomijając  **\<ExcludeApp ID = "OneDrive" /\>**, odinstaluj wszelkie istniejące instalacje na użytkownika OneDrive z wiersza polecenia z podwyższonym poziomem uprawnień, uruchamiając następujące polecenie:
+    
+    ```batch
+    "[staged location]\OneDriveSetup.exe" /uninstall
+    ```
+
+4. Uruchom następujące polecenie z wiersza polecenia z podwyższonym poziomem uprawnień, aby ustawić **AllUsersInstall** wartości rejestru:
+
+    ```batch
+    REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
+    ```
+
+5. Uruchom następujące polecenie, aby zainstalować usługi OneDrive w trybie poszczególnych komputerów:
+
+    ```batch
+    Run "[staged location]\OneDriveSetup.exe /allusers"
+    ```
+
+6. Uruchom następujące polecenie, aby skonfigurować usługi OneDrive do uruchomienia podczas logowania dla wszystkich użytkowników:
+
+    ```batch
+    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
+    ```
+
+7. Włącz **dyskretnie skonfigurować konto użytkownika** , uruchamiając następujące polecenie.
+
+    ```batch
+    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
+    ```
+
+8. Przekierowywanie i Przenieś Windows znanych folderów w usłudze OneDrive, uruchamiając następujące polecenie.
+
+    ```batch
+    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
+    ```
+
+### <a name="teams-and-skype"></a>Zespoły i Skype
+
+Windows pulpitu wirtualnego nie obsługuje oficjalnie programu Skype dla firm i zespołów.
+
+### <a name="set-up-user-profile-container-fslogix"></a>Konfigurowanie kontenera profil użytkownika (FSLogix)
+
+Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami [skonfiguruj udział profilu użytkownika dla puli hosta](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).
+
+Podczas konfigurowania klucza rejestru udziału pliku, użyj udziału plików, został utworzony w [konfigurowania uprawnień dla serwera plików](set-up-customize-master-image.md#configure-permissions-for-the-file-server) gdzie planujesz przechowywać kontenery profilu. Możesz także testować funkcje za pomocą tego kontenera FSLogix [Szybki Start](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
+
+### <a name="configure-windows-defender"></a>Konfigurowanie usługi Windows Defender
+
+Jeśli usługa Windows Defender jest skonfigurowana w maszynie Wirtualnej, upewnij się, że jej została skonfigurowana do skanowania nie całą zawartość plików VHD i VHDX podczas dołączania takie same.
+
+Ta konfiguracja tylko usuwa skanowanie plików VHD i VHDX podczas załącznik, ale nie mają wpływu na skanowanie w czasie rzeczywistym.
+
+Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania usługi Windows Defender w systemie Windows Server, zobacz [wykluczenia konfigurowania programu antywirusowego Windows Defender w systemie Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+
+Aby dowiedzieć się więcej na temat sposobu konfigurowania usługi Windows Defender, aby wykluczyć pewne pliki ze skanowania, zobacz [Konfigurowanie i weryfikowanie wykluczeń na podstawie lokalizacji pliku rozszerzenie i folder](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
+
+### <a name="configure-session-timeout-policies"></a>Konfigurowanie zasad limitu czasu sesji
+
+Zasady sesji zdalnej, mogą być wymuszane na poziomie zasad grupy, ponieważ wszystkie maszyny wirtualne w puli hostów są częścią tej samej grupy zabezpieczeń.
+
+Aby skonfigurować zasady sesji zdalnej:
+
+1. Przejdź do **Szablony administracyjne** > **składników Windows** > **usług pulpitu zdalnego**  >  **Hosta sesji usług pulpitu zdalnego** > **limity czasu sesji**.
+2. W panelu po prawej stronie zaznacz **ustawiony limit czasu dla aktywnych, ale bezczynności sesji usług pulpitu zdalnego** zasad.
+3. Po pojawi się okno modalne, należy zmienić opcję zasady z **nieskonfigurowane** do **włączone** można aktywować zasad.
+4. W menu rozwijanym poniżej opcji zasad, należy ustawić ilość czasu **4 godziny**.
+
+Zasady sesji zdalnego można również skonfigurować ręcznie, uruchamiając następujące polecenia:
+
+```batch
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 600000 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 5000 /f
+```
+
+### <a name="set-up-time-zone-redirection"></a>Konfigurowanie przekierowania strefy czasowej
+
+Ponieważ wszystkie maszyny wirtualne w puli hostów są częścią tej samej grupy zabezpieczeń, można wymusić przekierowanie strefy czasowej na poziomie zasad grupy.
+
+Aby przekierować stref czasowych:
+
+1. Na serwerze usługi Active Directory otwórz **konsoli zarządzania zasadami grupy**.
+2. Rozwiń węzeł swojej domeny i obiekty zasad grupy.
+3. Kliknij prawym przyciskiem myszy **obiektu zasad grupy** utworzony dla ustawień zasad grupy i wybierz pozycję **Edytuj**.
+4. W **Edytor zarządzania zasadami grupy**, przejdź do **konfiguracji komputera** > **zasady** > **administracyjne Szablony** > **składników Windows** > **Horizon wyświetlanie RDSH usług** > **sesji usług pulpitu zdalnego Host** > **przekierowywanie urządzeń i zasobów**.
+5. Włącz **Zezwalaj na przekierowanie strefy czasowej** ustawienie.
+
+To polecenie można również uruchomić na obrazu wzorcowego przekierowywanie stref czasowych:
+
+```batch
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
+```
+
+### <a name="disable-storage-sense"></a>Wyłączyć wykrywanie magazynu
+
+Dla hosta sesji pulpitu wirtualnego Windows korzystających z systemu Windows 10 Enterprise lub Windows 10 Enterprise sesji zaleca się wyłączenie wykrywanie magazynu. Wykrywanie magazynu można wyłączyć w menu Ustawienia w obszarze **magazynu**, jak pokazano na poniższym zrzucie ekranu:
+
+![Zrzut ekranu przedstawiający menu magazynu, w obszarze Ustawienia. Opcja "Wykrywanie magazynu" jest wyłączona.](media/storagesense.png)
+
+Możesz również zmienić ustawienie z rejestru, uruchamiając następujące polecenie:
+
+```batch
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy /v 01 /t REG_DWORD /d 0 /f
+```
+
+### <a name="include-additional-language-support"></a>Zapewnia obsługę dodatkowych języków
+
+W tym artykule nie opisano, jak skonfigurować język i wsparcie regionalne. Aby uzyskać więcej informacji zobacz następujące artykuły:
+
+- [Dodaj języki do Windows obrazów](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
+- [Funkcje na żądanie](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
+- [Funkcje języka i regionu na żądanie (FDZ)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+
+### <a name="other-applications-and-registry-configuration"></a>Inne aplikacje i konfiguracji rejestru
+
+W tej sekcji omówiono aplikacji i konfiguracji systemu operacyjnego. Wszystkie konfiguracje w tej sekcji odbywa się za pośrednictwem wpisów rejestru, które mogą być wykonywane przez wiersza polecenia i narzędzia regedit.
+
+>[!NOTE]
+>Najlepsze rozwiązania można wdrożyć w konfiguracji za pomocą obiektów zasad ogólnych (GPO) lub importuje rejestru. Administrator może wybrać jedną z opcji na podstawie wymagań swojej organizacji.
+
+W przypadku opinii centrum zbierania danych telemetrycznych na wiele sesji systemu Windows 10 Enterprise uruchom następujące polecenie:
+
+```batch
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 3
+```
+
+Uruchom następujące polecenie, aby naprawić Watson awarii:
+
+```batch
+remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
+```
+
+Wprowadź następujące polecenia do edytora rejestru, aby naprawić 5 obsługę rozwiązywania k. Aby można było włączyć stosu side-by-side, należy uruchomić polecenia.
+
+```batch
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
+"MaxMonitors"=dword:00000004
+"MaxXResolution"=dword:00001400
+"MaxYResolution"=dword:00000b40
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs]
+"MaxMonitors"=dword:00000004
+"MaxXResolution"=dword:00001400
+"MaxYResolution"=dword:00000b40
+```
+
+## <a name="prepare-the-image-for-upload-to-azure"></a>Przygotowywanie obrazu do przekazywania na platformie Azure
+
+Po zakończeniu konfiguracji i wszystkie aplikacje zainstalowane, postępuj zgodnie z instrukcjami [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) Aby przygotować obraz.
+
+Po przygotowaniu obrazu do przekazywania, upewnij się, że maszyna wirtualna pozostaje w stanie wyłączone lub przydział zostanie cofnięty.
+
+## <a name="upload-master-image-to-a-storage-account-in-azure"></a>Przekazywanie obrazu wzorcowego na konto magazynu na platformie Azure
+
+Ta sekcja dotyczy tylko podczas tworzenia obrazu wzorcowego lokalnie.
+
+Poniżej opisano, jak do przekazania obrazu wzorcowego na konto magazynu platformy Azure. Jeśli nie masz jeszcze konta usługi Azure storage, postępuj zgodnie z instrukcjami [w tym artykule](https://code.visualstudio.com/tutorials/static-website/create-storage) ją utworzyć.
+
+1. Konwertuj obraz maszyny Wirtualnej (VHD) na stałe, jeśli jeszcze go. Jeśli obraz nie Konwertuj na stałe, nie można pomyślnie utworzyć obrazu.
+
+2. Przekazywanie wirtualnego dysku twardego do kontenera obiektów blob na koncie magazynu. Możesz przekazać szybko przy użyciu [narzędzia Eksploratora usługi Storage](https://azure.microsoft.com/features/storage-explorer/). Aby dowiedzieć się więcej o narzędziu do Eksploratora usługi Storage, zobacz [w tym artykule](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+
+    ![Zrzut ekranu przedstawiający okno Wyszukiwanie narzędzie Eksplorator magazynu platformy Microsoft. Zaznaczono pole wyboru "Przekaż pliki VHD lub vhdx jako stronicowe obiekty BLOB (zalecane)".](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+
+3. Następnie przejdź do witryny Azure portal w przeglądarce i wyszukaj "Obrazy". Wyszukiwanie powinny prowadzić do **Tworzenie obrazu** strony, jak pokazano na poniższym zrzucie ekranu:
+
+    ![Zrzut ekranu strony tworzenia obrazu w witrynie Azure Portal, wypełniony przykładowe wartości dla obrazu.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+
+4. Po utworzeniu obrazu powinno zostać wyświetlone powiadomienie, podobne do pokazanego na poniższym zrzucie ekranu:
+
+    ![Zrzut ekranu przedstawiający powiadomienie "Pomyślnie utworzono obraz".](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Teraz, gdy masz obrazu, możesz utworzyć lub zaktualizować pul hosta. Aby dowiedzieć się więcej o sposobie tworzenia i aktualizowania pule hosta, zobacz następujące artykuły:
+
+- [Utwórz pulę hosta przy użyciu szablonu usługi Azure Resource Manager (wersja zapoznawcza)](create-host-pools-arm-template.md)
+- [Samouczek: Utwórz pulę hosta za pomocą portalu Azure Marketplace (wersja zapoznawcza)](create-host-pools-azure-marketplace.md)
+- [Utwórz pulę hosta przy użyciu programu PowerShell (wersja zapoznawcza)](create-host-pools-powershell.md)
+- [Skonfiguruj udział profilu użytkownika dla puli hosta](create-host-pools-user-profile.md)
+- [Konfigurowanie metody równoważenia obciążenia wirtualnego pulpitu Windows](configure-host-pool-load-balancing.md)

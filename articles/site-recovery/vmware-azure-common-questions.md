@@ -1,19 +1,19 @@
 ---
 title: Często zadawane pytania — program VMware do odzyskiwania po awarii platformy Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera podsumowanie często zadawane pytania, podczas konfigurowania odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery
-author: mayurigupta13
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/14/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: raynew
+ms.openlocfilehash: 82ae36eaaf4616dbd85760a0962f301a2b1a20f5
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901852"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319384"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -165,6 +165,10 @@ Nie, przełączanie z zarządzane do niezarządzanego jest nieobsługiwane.
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?
 
 Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie publicznych punktów końcowych usługi Azure Storage, dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa.
+
+### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Czy można używać Riverbed SteelHeads w przypadku replikacji?
+
+Nasz partner Riverbed, zawiera szczegółowe wskazówki na temat pracy z usługą Azure Site Recovery. Zapoznaj się ich [Przewodnik po rozwiązaniu](https://community.riverbed.com/s/article/DOC-4627).
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Co to są replikowane wymagań dotyczących maszyn wirtualnych?
 

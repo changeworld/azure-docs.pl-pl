@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1ab9fcd50ad7081f8047d62e545287fa75db75e4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5057c0c781cb9ec60ecde7dd3f4bf96089b902df
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457049"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312686"
 ---
 # <a name="hosted-test-drive"></a>Hostowanej wersji testowej
 
@@ -48,12 +48,12 @@ Podaj następujące pola \'konfiguracji technicznej\' sekcji:
 - **Typ wersji testowej**: Wybierz \'Hosted firmy Microsoft (np. Dynamics 365 for Customer Engagement) "opcji. Oznacza to, że firma Microsoft hosta i obsługa usługi przeprowadzające użytkownika wersji testowej aprowizacji i cofania aprowizacji.
 - **Wersji testowych maksymalnej liczby równoczesnych**: Ustawienie to pole liczby równoczesnych użytkowników, które mogą mieć aktywne wersji testowej w dowolnym czasie. Każdy użytkownik zużyje licencją Dynamics podczas ich wersji testowej jest aktywny, więc należy upewnić się, że masz co najmniej następującą liczbę licencji Dynamics dostępne dla użytkowników wersji testowej. Zalecanej wartości wynoszącej 3 – 5.
 - **Dysk czas trwania testu (godziny)**: Ustaw to pole do liczby godzin wersji testowej zostanie uaktywniona dla użytkowników. Po tym wiele godzin użytkownik będzie można anulować aprowizację z dzierżawy. Zalecana wartość 2 – 24 godzin w zależności od złożoności aplikacji. Użytkownik może zażądać zawsze innej wersji testowej, gdyby zabrakło czasu i chcesz ponownie uzyskać dostęp w wersji testowej.
-- **Adres URL wystąpienia**: Podaj adres URL, który użytkownika wersji testowej początkowo nastąpi przejście po uruchomieniu wersji testowej. Zazwyczaj jest to adres URL wystąpienia usługi Dynamics 365, która aplikacja ma i przykładowe dane są zainstalowane na urządzeniu. Przykładowa wartość:https://testdrive.crm.dynamics.com
+- **Adres URL wystąpienia**: Podaj adres URL, który użytkownika wersji testowej początkowo nastąpi przejście po uruchomieniu wersji testowej. Zazwyczaj jest to adres URL wystąpienia usługi Dynamics 365, która aplikacja ma i przykładowe dane są zainstalowane na urządzeniu. Przykładowa wartość: https:\//testdrive.crm.dynamics.com
 - **Identyfikator dzierżawy usługi Azure AD**: Podaj identyfikator dzierżawy platformy Azure dla wystąpienia usługi Dynamics 365. Do pobierania tej wartości, zaloguj się do witryny Azure portal i przejdź do \'usługi Azure Active Directory\'  - \> wybierz właściwości z menu bloku -\> skopiuj nazwę katalogu. Przykładowa wartość: 72f988bf-86f1-41af-91ab-2d7cd0111234
 - **Identyfikator aplikacji w usłudze Azure AD**: Identyfikator aplikacji usługi Azure AD został utworzony w kroku 7. \ Przykładowa wartość: 53852862-a2ae-4e43-9461-faa49650a096
 - **Klucz aplikacji w usłudze Azure AD**: Tajny aplikacji usługi AD Azure utworzone w kroku 7. \ Przykładowa wartość: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
 - **Nazwa dzierżawy usługi Azure AD**: Podaj nazwę dzierżawy platformy Azure dla wystąpienia usługi Dynamics 365. Użyj formatu \<tenantname.\> onmicrosoft.com. Przykładowa wartość: testdrive.onmicrosoft.com
-- **Adres URL interfejsu API sieci Web wystąpienia**: Podaj adres URL interfejsu API sieci Web dla wystąpienia usługi Dynamics 365. Tę wartość można pobrać, logując się do swojego wystąpienia programu Microsoft Dynamics 365 i przechodząc do ustawienia -\> dostosowania —\> zasoby dla deweloperów —\> wystąpienia interfejsu API sieci Web (kopia tego adresu URL). Przykładowa wartość:  https://testdrive.crm.dynamics.com/api/data/v9.0 
+- **Adres URL interfejsu API sieci Web wystąpienia**: Podaj adres URL interfejsu API sieci Web dla wystąpienia usługi Dynamics 365. Tę wartość można pobrać, logując się do swojego wystąpienia programu Microsoft Dynamics 365 i przechodząc do ustawienia -\> dostosowania —\> zasoby dla deweloperów —\> wystąpienia interfejsu API sieci Web (kopia tego adresu URL). Przykładowa wartość: https:\//testdrive.crm.dynamics.com/api/data/v9.0 
 - **Nazwa roli**: Podaj nazwę roli zabezpieczeń niestandardowej Dynamics 365 utworzone dla wersji testowej. Jest to rola, która zostanie przypisana do użytkowników podczas ich wersji testowej. Przykładowa wartość: testdriverole
 
 ## <a name="next-steps"></a>Kolejne kroki

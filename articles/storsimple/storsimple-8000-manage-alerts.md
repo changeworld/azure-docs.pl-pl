@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4128ad53f30e74fb72f6256b78587cc222f4c282
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838718"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314454"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Użyj usługi Menedżer urządzeń StorSimple, aby wyświetlić alerty i zarządzaj nimi StorSimple
 
@@ -202,7 +202,7 @@ Jeśli łączność z chmurą nie powiedzie się na urządzeniu StorSimple w śr
 | Nie można uruchomić usług StorSimple. |Błąd ścieżki danych |Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
 | Wykryto "Data0" zduplikowanego adresu IP. | |System wykrył konflikt adresu IP "10.0.0.1". Zasób sieciowy "Data0" na urządzeniu *<device1>* jest w trybie offline. Upewnij się, że ten adres IP nie jest używany przez żadną inną jednostkę w tej sieci. Aby rozwiązać problemy z siecią, przejdź do [Rozwiązywanie problemów za pomocą polecenia cmdlet Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Aby uzyskać pomoc w rozwiązaniu tego problemu, skontaktuj się z administratorem sieci. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
 | Adres IPv4 (lub IPv6) dla "Data0" jest w trybie offline. | |Zasób sieciowy "Data0" z adresem IP "10.0.0.1". i długość "22" na urządzeniu prefiksu *<device1>* jest w trybie offline. Upewnij się, że porty przełącznika, z którymi jest połączony ten interfejs operacyjnej. Aby rozwiązać problemy z siecią, przejdź do [Rozwiązywanie problemów za pomocą polecenia cmdlet Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Nie można nawiązać połączenia z usługą uwierzytelniania. |Błąd ścieżki danych |URLthat jest używany do uwierzytelniania jest nieosiągalny. Upewnij się, że reguły zapory obejmują wzorce adresów URL, określony dla urządzenia StorSimple. Aby uzyskać więcej informacji na temat wzorców adresów URL w witrynie Azure portal, przejdź do https://aka.ms/ss-8000-network-reqs. Jeśli używasz chmury dla instytucji rządowych platformy Azure, przejdź do wzorców adresów URL w https://aka.ms/ss8000-gov-network-reqs.|
+| Nie można nawiązać połączenia z usługą uwierzytelniania. |Błąd ścieżki danych |URLthat jest używany do uwierzytelniania jest nieosiągalny. Upewnij się, że reguły zapory obejmują wzorce adresów URL, określony dla urządzenia StorSimple. Aby uzyskać więcej informacji na temat wzorców adresów URL w witrynie Azure portal, przejdź do protokołu https:\//aka.ms/ss-8000-network-reqs. Jeśli używasz chmury dla instytucji rządowych platformy Azure, przejdź do wzorców adresów URL przy użyciu protokołu https:\//aka.ms/ss8000-gov-network-reqs.|
 
 ### <a name="performance-alerts"></a>Alerty wydajności
 

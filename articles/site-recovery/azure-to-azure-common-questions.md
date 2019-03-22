@@ -4,30 +4,19 @@ description: Ten artykuł zawiera podsumowanie często zadawane pytania, podczas
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 12/12/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c1890570f153de68d187c37dc0a7bca156c2d47
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008658"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312057"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Często zadawane pytania: Replikacji Azure – Azure
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące wdrażania odzyskiwania po awarii (DR) maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu usługi Azure Site Recovery. Jeśli masz pytania dotyczące po przeczytaniu tego artykułu, opublikuj je na [forum usług Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
-
-
-## <a name="in-this-article"></a>W tym artykule 
-1.  **[Pytania ogólne na platformie Azure na platformie Azure](#general)** 
-1.  **[Replikacji](#replication)** 
-1.  **[Zasady replikacji](#replication-policy)** 
-1.  **[Spójność wielu maszyn wirtualnych](#multi-vm-consistency)** 
-1.  **[Plan odzyskiwania](#recovery-plan)** 
-1.  **[Ponownego włączania ochrony i powrotu po awarii](#reprotection-and-failback)** 
-2.  **[Pojemność](#capacity)**
-1.  **[Zabezpieczenia](#security)** 
 
 
 ## <a name="general"></a>Ogólne
@@ -46,7 +35,7 @@ Tak, nawet jeśli usługa Azure Site Recovery będzie bezpłatna przez pierwsze 
 4. [Wykonywanie testu przejścia w tryb failover](azure-to-azure-tutorial-dr-drill.md)
 5. [Tryb failover i powrót po awarii do regionu podstawowego](azure-to-azure-tutorial-failover-failback.md)
 
-## <a name="replication"></a>Replikacji
+## <a name="replication"></a>Replikacja
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Czy można replikować maszyny wirtualne, włączana za pomocą szyfrowania dysków Azure?
 Tak, można replikować je. Zapoznaj się z artykułem [maszyny wirtualne w innym regionie platformy Azure obsługujące replikacja usługi Azure disk encryption](azure-to-azure-how-to-enable-replication-ade-vms.md). Obecnie usługi Azure Site Recovery obsługuje tylko maszyny wirtualne platformy Azure są z systemem operacyjnym Windows i włączonego szyfrowania za pomocą aplikacji usługi Azure Active Directory (Azure AD).
@@ -186,7 +175,7 @@ Możesz wyzwolić tryb failover, po awarii. Usługa Site Recovery nie wymaga ł�
 ### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Co to jest RTO przejścia w tryb failover maszyny wirtualnej?
 Usługa Site Recovery ma [SLA RTO 2 godziny](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Jednak w większości przypadków, Usługa Site Recovery pracy awaryjnej maszyn wirtualnych w ciągu kilku minut. Można obliczyć czas RTO, przechodząc do pracy w trybie failover zadań, która przedstawia czas, jaki zajęło Aby przenieść maszynę wirtualną. Do odzyskiwania należy zaplanować czas RTO, można znaleźć poniżej. 
 
-## <a name="recovery-plan"></a>Plan odzyskiwania
+## <a name="recovery-plans"></a>Plany odzyskiwania
 
 ### <a name="what-is-a-recovery-plan"></a>Co to jest plan odzyskiwania?
 Plan odzyskiwania w usłudze Site Recovery organizuje odzyskiwanie maszyn wirtualnych w trybie failover. Jego ułatwia odzyskiwanie spójnie dokładne, powtarzalnych i zautomatyzowanych. Plan odzyskiwania rozwiązuje następujące wymagania dla użytkownika:
@@ -226,7 +215,7 @@ Po ponownego włączania ochrony ilość czasu na potrzeby powrotu po awarii jes
 Tak, możesz kupić [zarezerwować wystąpień](https://azure.microsoft.com/pricing/reserved-vm-instances/) w DR region i operacji trybu failover usługi ASR będą z nich korzystać. </br> Dodatkowa konfiguracja nie jest wymagana od klientów.
 
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Czy dane replikacji są wysyłane do usługi Site Recovery?
 Nie, Usługa Site Recovery nie przechwytuje replikowanych danych, nie ma żadnych informacji na temat co działa na maszynach wirtualnych. Do usługi Site Recovery są wysyłane jedynie metadane wymagane do organizowania replikacji i trybu failover.  
 Usługa Site Recovery jest ISO 27001: 2013, 27018, HIPAA, DPA certyfikowane i jest w trakcie SOC2 i FedRAMP JAB.

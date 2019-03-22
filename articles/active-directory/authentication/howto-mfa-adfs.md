@@ -1,5 +1,5 @@
 ---
-title: Zabezpieczanie zasobów w chmurze za pomocą usługi Azure MFA i usług AD FS | Microsoft Docs
+title: Zabezpieczanie zasobów w chmurze za pomocą usługi Azure MFA i usług AD FS — usługi Azure Active Directory
 description: Ta strona dotyczy usługi Azure Multi-Factor Authentication i zawiera informacje umożliwiające rozpoczęcie korzystania z usługi Azure MFA i usług AD FS w chmurze.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89559c1c42255bf1050cbb96f38e6d7394c21103
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7f508475166346c56b3bd0c8607c27beb7aba66c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191410"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316477"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpieczanie zasobów w chmurze przy użyciu usługi Azure Multi-Factor Authentication i usług AD FS
 

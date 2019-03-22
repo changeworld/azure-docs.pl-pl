@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 938d8efeaa88cc5bebbf33e525132a030f1b3c7c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: HT
+ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112507"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313009"
 ---
-# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Samouczek: monitorowanie aplikacji usługi Service Fabric przy użyciu rozwiązania ELK
+# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Samouczek: Monitorowanie aplikacji usługi Service Fabric przy użyciu rozwiązania ELK
 
 Niniejszy samouczek jest czwartą częścią serii. Przedstawiono w nim sposób używania rozwiązania ELK (Elasticsearch Logstash i Kibana) do monitorowania aplikacji usługi Service Fabric działających na platformie Azure.
 
@@ -44,7 +44,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Konfigurowanie aplikacji do emitowania dzienników do lokalizacji określonej w [części drugiej](service-fabric-tutorial-debug-log-local-cluster.md).
 * Wykonaj czynności z [części trzeciej](service-fabric-tutorial-java-deploy-azure.md), aby skonfigurować uruchomiony klaster usługi Service Fabric do wysyłania dzienników do usługi Event Hubs.
 * Zasady w usłudze Event Hubs mają uprawnienia do nasłuchiwania oraz skojarzony klucz podstawowy z trzeciej części serii.
@@ -109,7 +109,7 @@ W tym samouczku możesz używać wstępnie skonfigurowanego środowiska ELK. Je�
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. Utwórz lub zmodyfikuj istniejący plik konfiguracji Logstash z następującą zawartością: w przypadku korzystania z obrazu ELK Bitnami na platformie Azure plik należy utworzyć w lokalizacji ```/opt/bitnami/logstash/conf/access-log.conf```.
+4. Utwórz lub zmodyfikuj istniejący plik konfiguracji Logstash z następującą zawartością: W przypadku tworzenia pliku musi odbywać się w ```/opt/bitnami/logstash/conf/access-log.conf``` korzystania z obrazu ELK Bitnami na platformie Azure.
 
     ```json
     input
@@ -149,7 +149,7 @@ W tym samouczku możesz używać wstępnie skonfigurowanego środowiska ELK. Je�
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Uzyskaj dostęp do pulpitu nawigacyjnego Kibana w lokalizacji **http://SERVER-IP**, a następnie wprowadź nazwę użytkownika i hasło rozwiązania Kibana. Jeśli używasz obrazu ELK na platformie Azure, domyślna nazwa użytkownika to „user”, a hasło jest uzyskiwane z **diagnostyki rozruchu**.
+8. Dostęp do pulpitu nawigacyjnego Kibana w **http:\//SERVER-IP** i wprowadź nazwę użytkownika i hasło rozwiązania kibana. Jeśli używasz obrazu ELK na platformie Azure, domyślna nazwa użytkownika to „user”, a hasło jest uzyskiwane z **diagnostyki rozruchu**.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

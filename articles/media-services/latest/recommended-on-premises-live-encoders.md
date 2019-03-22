@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: cc55466dac7344053e0cce3cad5f8161cef5226a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438129"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317327"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery transmisji strumieniowej na żywo
 
@@ -34,8 +34,7 @@ Aby uzyskać szczegółowe informacje na temat kodowania na żywo za pomocą us�
 Usługa Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają RTMP jako dane wyjściowe. Obsługiwane schematy adresów URL są `rtmp://` lub `rtmps://`.
 
 > [!NOTE]
- > Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP, sprawdź ustawienia zapory i/lub serwer proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.<br/>
- Podczas przesyłania strumieniowego za pośrednictwem RTMPS, sprawdź ustawienia zapory i/lub serwer proxy, aby upewnić się, że porty TCP ruchu wychodzącego 2935 i 2936 są otwarte.
+> Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP, sprawdź ustawienia zapory i/lub serwer proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.
 
 - Adobe Flash Media Live Encoder 3.2
 - Haivision KB

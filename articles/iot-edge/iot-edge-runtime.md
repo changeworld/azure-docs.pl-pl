@@ -4,17 +4,17 @@ description: Dowiedz się, jak moduły, zabezpieczeń, komunikacji i raportowani
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2018
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a2412a286015cb403fe9a2af7754c7e5346fe98c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: bb2df9c32d5adc8160da82148e4a66a4ab68d182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230428"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311603"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury
 
@@ -22,17 +22,17 @@ ms.locfileid: "54230428"
 
 Środowisko uruchomieniowe usługi IoT Edge wykonuje następujące funkcje na urządzeniach IoT Edge:
 
-* Instaluje i aktualizuje obciążenia na urządzeniu.
-* Zapewnia zachowanie standardów zabezpieczeń usługi Azure IoT Edge na urządzeniu.
-* Zapewnia, że [moduły usługi IoT Edge](iot-edge-modules.md) nieprzerwane działanie.
+* Instaluje i aktualizuje pakiety robocze na urządzeniu.
+* Utrzymuje standardy zabezpieczeń usługi Azure IoT Edge na urządzeniu.
+* Upewnij się, że [moduły usługi IoT Edge](iot-edge-modules.md) nieprzerwane działanie.
 * Przesyła raporty o kondycji modułów do chmury na potrzeby zdalnego monitorowania.
-* Usprawnia komunikację między podrzędnymi urządzeniami liścia a urządzenia usługi IoT Edge.
-* Usprawnia komunikację między modułami na urządzeniu usługi IoT Edge.
-* Usprawnia komunikację między urządzeniem usługi IoT Edge a chmurą.
+* Usprawnij komunikację między podrzędnymi urządzeniami liścia a urządzenia usługi IoT Edge.
+* Usprawnij komunikację między modułami na urządzeniu usługi IoT Edge.
+* Usprawnij komunikację między chmurą a urządzeniem usługi IoT Edge.
 
 ![Środowisko uruchomieniowe komunikuje się szczegółowe informacje i kondycji modułów do usługi IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
-Obowiązki środowiska uruchomieniowego usługi IoT Edge można podzielić na dwie kategorie: Zarządzanie komunikacji i moduł. Te dwie role są wykonywane przez dwa składniki, które tworzą środowisko uruchomieniowe usługi IoT Edge. Centrum usługi IoT Edge jest odpowiedzialny za komunikację, podczas gdy zarządza agent usługi IoT Edge, wdrażania i monitorowania modułów. 
+Obowiązki środowiska uruchomieniowego usługi IoT Edge można podzielić na dwie kategorie: Zarządzanie komunikacji i moduł. Te dwie role są wykonywane przez dwa składniki, które tworzą środowisko uruchomieniowe usługi IoT Edge. *Centrum usługi IoT Edge* jest odpowiedzialny za komunikację, podczas gdy *agenta usługi IoT Edge* służy do wdrażania i monitoruje modułów. 
 
 Zarówno Centrum IoT Edge, jak i agent usługi IoT Edge są moduły, podobnie jak każdy inny moduł, działające na urządzeniu usługi IoT Edge. 
 
@@ -52,11 +52,11 @@ W celu zmniejszenia obciążenia przepustowości rozwiązania usługi IoT Edge k
 
 ![Centrum usługi IoT Edge jest brama między urządzeniami fizycznymi i IoT Hub](./media/iot-edge-runtime/Gateway.png)
 
- Centrum usługi IoT Edge można określić, czy jest ona dołączona do usługi IoT Hub. W przypadku utraty połączenia Centrum IoT Edge zapisuje komunikaty lub lokalnie w aktualizacji bliźniaczej reprezentacji. Po ustanowieniu połączenia, synchronizuje wszystkie dane. Lokalizacja używana dla tego tymczasowa pamięć podręczna jest określany przez właściwość z bliźniaczej reprezentacji modułu usługi IoT Edge hub. Rozmiar pamięci podręcznej nie jest ograniczone i będzie się zwiększać tak długo, jak urządzenie ma pojemność magazynu. 
+Centrum usługi IoT Edge można określić, czy jest ona dołączona do usługi IoT Hub. W przypadku utraty połączenia Centrum IoT Edge zapisuje komunikaty lub lokalnie w aktualizacji bliźniaczej reprezentacji. Po ustanowieniu połączenia, synchronizuje wszystkie dane. Lokalizacja używana dla tego tymczasowa pamięć podręczna jest określany przez właściwość z bliźniaczej reprezentacji modułu usługi IoT Edge hub. Rozmiar pamięci podręcznej nie jest ograniczone i będzie się zwiększać tak długo, jak urządzenie ma pojemność magazynu. 
 
 ### <a name="module-communication"></a>Moduł komunikacji
 
- Centrum usługi IoT Edge usprawnia komunikację na moduł. Za pomocą usługi IoT Edge hub jako broker komunikatów przechowuje moduły niezależni od siebie nawzajem. Moduły muszą tylko określić danych wejściowych, które akceptują wiadomości i danych wyjściowych, do których one zapisywania komunikatów. Rozwiązanie dla deweloperów następnie odwzorowywały te dane wejściowe i dane wyjściowe ze sobą tak, aby moduły przetwarzać dane w kolejności, które są specyficzne dla tego rozwiązania. 
+Centrum usługi IoT Edge usprawnia komunikację na moduł. Za pomocą usługi IoT Edge hub jako broker komunikatów przechowuje moduły niezależni od siebie nawzajem. Moduły muszą tylko określić danych wejściowych, które akceptują wiadomości i danych wyjściowych, do których one zapisywania komunikatów. Rozwiązanie dla deweloperów następnie odwzorowywały te dane wejściowe i dane wyjściowe ze sobą tak, aby moduły przetwarzać dane w kolejności, które są specyficzne dla tego rozwiązania. 
 
 ![Usługi IoT Edge Hub usprawnia komunikację na moduł](./media/iot-edge-runtime/module-endpoints.png)
 

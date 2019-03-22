@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: b4eedabbc47738eb2f5797ffd67a3e3ebc9529ca
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 468c5584d21c226d6ffce55ff3981e629d872c56
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136227"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317191"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Szybki Start Unity Akustyka projektu
 Użyj projektu Akustyka przykładowe zawartości dla aparatu Unity do eksperymentowania z kontrolkami projektowania opartych na symulacji.
 
 Wymagania dotyczące oprogramowania:
 * [Unity 2018.2 +](http://unity3d.com) dla Windows
-* [Akustyka projektu przykładowego pakietu zawartości](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+* [Akustyka projektu przykładowego pakietu zawartości](https://www.microsoft.com/download/details.aspx?id=57346)
 
 Co obejmuje przykładowego pakietu?
 * Unity sceny przy użyciu geometrii, źródeł dźwięku i formanty rozgrywkę
@@ -33,7 +33,7 @@ Co obejmuje przykładowego pakietu?
 Zaimportować przykładowy pakiet do nowego projektu środowiska Unity. 
 * Na platformie Unity, przejdź do **zasoby > Importuj pakiet > Pakiet niestandardowy...**
 
-    ![Importowanie pakietu](media/import-package.png)  
+    ![Opcje zrzut ekranu z importowanie pakietu Unity](media/import-package.png)  
 
 * Wybierz **ProjectAcoustics.unitypackage**
 
@@ -44,23 +44,23 @@ Tworzenie części toolkit Akustyka wymaga wersji programu .NET 4.x skryptów ś
 
 Możesz sprawdzić to ustawienie weszło w życie, otwierając **ustawienia odtwarzacza**:
 
-![Ustawienia odtwarzacza](media/player-settings.png)
+![Zrzut ekranu Unity Player ustawienia panelu](media/player-settings.png)
 
-![.NET 4.5](media/net45.png)
+![Zrzut ekranu Unity ustawienia odtwarzacza panel .NET 4.5 wybrane](media/net45.png)
 
 ## <a name="experiment-with-design-controls"></a>Eksperymentowanie z kontrolkami projektu
 Otwórz przykładowy sceny w **ProjectAcousticsSample** folder i kliknij przycisk play programu Unity editor. Użyj W, A, S, D i myszy, aby poruszać się. Aby porównać, jak brzmi scena z akustyką i bez niej, naciskaj przycisk **R** do momentu, w którym tekst nakładki zmieni się na czerwony i będzie wyświetlany komunikat „Akustyka: wyłączona”. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Formanty są również użyteczny przez kliknięcie prawym przyciskiem myszy, aby wybrać akcję do wykonania, pozostanie kliknięcie do wykonania akcji.
 
 Skrypt **AcousticsAdjust** jest dołączony do źródeł dźwięku w scenie próbki, co umożliwia parametry projektu-source. 
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Zrzut ekranu AcousticsAdjust Unity skryptu](media/acoustics-adjust.png)
 
 Następujące analizuje niektóre efekty, których można tworzyć za pomocą podanego kontrolek. Aby uzyskać szczegółowe informacje dotyczące każdego formantu, zobacz [samouczek projektu środowiska Unity Akustyka projektu](unreal-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Modyfikowanie tłumienie na podstawie odległości
 Audio DSP dostarczone przez **Akustyka projektu** wtyczki spatializer Unity szanuje tłumienie opartego na źródło wbudowana do aparatu Unity Editor. Formanty na podstawie odległości tłumienie znajdują się w **źródła Audio** składnik znaleziony w **Inspektor** panelu dźwięk źródeł, w obszarze **3D ustawienia dźwięku**:
 
-![Tłumienie odległości](media/distance-attenuation.png)
+![Zrzut ekranu Unity odległość tłumienie opcji — panel](media/distance-attenuation.png)
 
 Projekt Akustyka wykonuje obliczenia w polu "symulacji region" skupia się wokół lokalizacji odtwarzacza. Ponieważ zasoby Akustyka w pakiecie przykładowych zostały wbudowanymi o rozmiarze region symulacji 45m otaczającego odtwarzacza, powinny być zaprojektowane dźwięku Tłumienie można podzielić na 0 w około 45 m.
 

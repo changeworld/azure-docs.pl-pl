@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 03/21/2018
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 29e4bb23b4b80f6e472d2dcb27fe5e5279a35890
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871047"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337718"
 ---
 # <a name="region-management-in-azure-stack"></a>Zarządzanie regionami w usłudze Azure Stack
 
@@ -29,7 +29,7 @@ ms.locfileid: "56871047"
 
 Usługi Azure Stack korzysta z koncepcji *regionów*, które są jednostek logicznych składa się zasoby sprzętowe, które tworzą infrastruktury Azure Stack. Zarządzanie regionami zawiera wszystkie zasoby, które są wymagane do pomyślnie działać infrastruktury Azure Stack.
 
-Jedna zintegrowana wdrożenia systemu (nazywane *chmurą usługi Azure Stack*) tworzy w jednym regionie. Każdy zestaw Azure Stack Development Kit ma jednego regionu, o nazwie **lokalnego**. Jeśli wdrażanie drugiego system zintegrowany z usługi Azure Stack lub skonfigurować inne wystąpienie development kit na oddzielnych sprzętu, ta chmura usługi Azure Stack jest innym regionem.
+Jedna zintegrowana wdrożenia systemu (nazywane *chmurą usługi Azure Stack*) tworzy w jednym regionie. Każdej usługi Azure Stack Development Kit (ASDK) ma jednego regionu, o nazwie **lokalnego**. Jeśli wdrażanie drugiego system zintegrowany z usługi Azure Stack lub skonfigurować inne wystąpienie development kit na oddzielnych sprzętu, ta chmura usługi Azure Stack jest innym regionem.
 
 ## <a name="information-available-through-the-region-management-tile"></a>Informacje o dostępnych za pośrednictwem Kafelek Zarządzanie regionu
 
@@ -43,7 +43,7 @@ Jeśli klikniesz regionu w **zarządzanie regionami** kafelka dostęp następuj�
 
 1. **W menu zasobów**. Dostęp do obszarów zarządzania określonej infrastruktury oraz wyświetlanie i zarządzanie zasobów użytkownika, takie jak konta magazynu i sieci wirtualnych.
 
-2. **Alerty**. Zawiera listę całego systemu alertów i szczegółów na temat każdego z tych alertów.
+2. **Alerty**. Lista alertów całego systemu i zawierają szczegółowe informacje dotyczące każdego z tych alertów.
 
 3. **Aktualizacje**. Wyświetl bieżącą wersję infrastruktury Azure Stack, dostępne aktualizacje i historię aktualizacji. Można również zaktualizować zintegrowanego systemu.
 

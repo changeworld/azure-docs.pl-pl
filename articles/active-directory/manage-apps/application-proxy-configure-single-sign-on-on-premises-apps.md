@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef5679ba2a6a62955f5402e8bfaa4f1884df722d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 415b33dce42945c40aedd996d4dcfa5c6b987b44
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840600"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336222"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML logowania jednokrotnego dla aplikacji w środowisku lokalnym dzięki serwerowi Proxy aplikacji (wersja zapoznawcza)
 
@@ -54,8 +54,8 @@ Jeśli masz instrukcje z samouczka, należy pamiętać o następujących czynno�
 
      ![Wprowadzanie podstawowych danych konfiguracji protokołu SAML](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
-     > [!NOTE]
-     > Jeśli aplikacja wewnętrznej bazy danych oczekuje **adres URL odpowiedzi** jako wewnętrzny adres URL, musisz zainstalować Moje aplikacje bezpiecznego logowania rozszerzenie na urządzeniach użytkowników. To rozszerzenie automatycznie nastąpi przekierowanie do odpowiedniej usługi serwera Proxy aplikacji. Aby zainstalować rozszerzenie, zobacz [Moje aplikacje bezpiecznego logowania rozszerzenia](../user-help/active-directory-saas-access-panel-introduction.md#my-apps-secure-sign-in-extension).
+    > [!NOTE]
+    > Jeśli aplikacja wewnętrznej bazy danych oczekuje **adres URL odpowiedzi** jako wewnętrzny adres URL, musisz zainstalować Moje aplikacje bezpiecznego logowania rozszerzenie na urządzeniach użytkowników. To rozszerzenie automatycznie nastąpi przekierowanie do odpowiedniej usługi serwera Proxy aplikacji. Aby zainstalować rozszerzenie, zobacz [Moje aplikacje bezpiecznego logowania rozszerzenia](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
 
 ## <a name="test-your-app"></a>Testowanie aplikacji
 

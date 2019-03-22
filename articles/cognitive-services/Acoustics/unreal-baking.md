@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: afe4421bea27ff029bd4a1a7808241a54027a6ac
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136395"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311573"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Samouczek Unreal tworzenie Akustyka projektu
 W tym dokumencie opisano proces przesyłania tworzenie Akustyka przy użyciu rozszerzenia edytora unreal Engine.
@@ -32,7 +32,7 @@ Istnieje pięć kroków do tworzenie czynności:
 
 Zaimportować pakiet wtyczki Akustyka projektu do projektu. Aby uzyskać pomoc dotyczącą tego, zobacz [Unreal integracji](unreal-integration.md) tematu. Po zintegrowaniu wtyczki Otwórz Akustyka interfejsu użytkownika, klikając ikonę Nowy tryb Akustyka.
 
-![Tryb Akustyka Otwórz](media/acoustics-mode.png)
+![Zrzut ekranu edytora Unreal Akustyka tryb](media/acoustics-mode.png)
 
 ## <a name="tag-actors-for-acoustics"></a>Aktorzy tagu dla Akustyka
 
@@ -42,7 +42,7 @@ Wybierz jeden lub więcej obiektów w tworzenie konspektu świata, lub użyj **z
 
 ### <a name="for-reference-the-objects-tab-parts"></a>Aby uzyskać informacje dotyczące: Części karty obiektów
 
-![Szczegóły karty unreal obiektów](media/unreal-objects-tab-details.png)
+![Zrzut ekranu Akustyka obiektów karcie Unreal](media/unreal-objects-tab-details.png)
 
 1. Przyciski wyboru karty (**obiektów** wybraną kartą). Użyj tych przycisków, aby poznać procedurę różne działania tworzenie Akustyka od góry do dołu.
 2. Krótki opis co należy zrobić, korzystając z tej strony.
@@ -75,11 +75,11 @@ Akustyczny materiałów kontroli ilości energii dźwięku odzwierciedlone powr�
 
 Czas reverberation danego materiału w pomieszczeniu odwrotnie jest powiązana z jego współczynnik, materiałami większość posiada absorpcji wartości z zakresu od 0,01 do 0,20. Materiały z współczynniki absorpcji powyżej tego zakresu są bardzo pochłaniający. Na przykład dźwięki pokoju zbyt reverberant, zmiana akustyczny materiał ściany, piętro lub limitu na coś absorptivity wyższy. Akustyczny przydziału materiału ma zastosowanie do wszystkich podmiotów, korzystających z tego materiału sceny.
 
-![Wykres czasu pogłosu](media/reverb-time-graph.png)
+![Wykres przedstawiający korelacja ujemna reverberation czasu współczynnik](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie materiały
 
-![Szczegóły karty unreal obiektów](media/unreal-materials-tab-details.png)
+![Zrzut ekranu Akustyka obiektów karcie Unreal](media/unreal-materials-tab-details.png)
 
 1. **Materiałów** kartę przycisku używane do tej strony.
 2. Krótki opis co należy zrobić, korzystając z tej strony.
@@ -94,7 +94,7 @@ Po przypisaniu materiałów, przełącz się do **sondy** kartę.
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie sondy
 
-![Karta sondy — szczegóły](media/unreal-probes-tab-details.png)
+![Zrzut ekranu sondy Akustyka karcie Unreal](media/unreal-probes-tab-details.png)
 
 1. **Sondy** przycisk karta umożliwia wyświetlenie na tej stronie
 2. Krótki opis co należy zrobić, korzystając z tej strony
@@ -124,11 +124,11 @@ Po zakończeniu tych obliczeń możesz wyświetlić podgląd danych voxel i loka
 
 Po zakończeniu obliczania sondowania nowych aktora pojawi się w świecie Tworzenie konspektu, o nazwie **AcousticsDebugRenderer**. Sprawdzanie **renderowania sondy** i **renderowania Voxels** pola wyboru spowoduje wyświetlanie debugowania w edytorze okienka ekranu.
 
-![Akustyka debugowania programu renderującego](media/acoustics-debug-renderer.png)
+![Zrzut ekranu przedstawiający renderowania debugowania Akustyka aktora w edytorze Unreal](media/acoustics-debug-renderer.png)
 
 Jeśli nie widzisz żadnych voxels lub sond nałożony na Twoim poziomie, upewnij się, że renderowania w czasie rzeczywistym jest włączona w okienku ekranu.
 
-![Włącz renderowania w czasie rzeczywistym](media/unreal-real-time-rendering.png)
+![Zrzut ekranu przedstawiający opcję renderowania w czasie rzeczywistym w Unreal](media/unreal-real-time-rendering.png)
 
 ### <a name="voxels"></a>Voxels
 
@@ -137,7 +137,7 @@ Poruszanie się sceny i sprawdzić, czy geometrii pod względem akustycznym occl
 
 Możesz porównać voxels utworzone przy użyciu rozpoznawania poprawnie vs zgrubnym rozwiązania, pojawi się zgrubnym voxels dwukrotnie są tak duże.
 
-![Voxel (wersja zapoznawcza)](media/unreal-voxel-preview.png)
+![Zrzut ekranu Akustyka voxels w wersji zapoznawczej w edytorze Unreal](media/unreal-voxel-preview.png)
 
 ### <a name="probe-points"></a>Punkty sondy
 
@@ -145,7 +145,7 @@ Sonda punkty oznaczają to samo z lokalizacjami możliwe player (odbiornika). Gd
 
 Należy sprawdzić punkty sondy istnieje wszędzie tam, gdzie gracz oczekuje się przechodzić w scenie. Sondy punkty są umieszczane w siatce nawigacji przez aparat Akustyka projektu i nie można przenieść lub edytowane, więc upewnij się, obejmuje siatki nawigacji wszystkie lokalizacje możliwe odtwarzacza, sprawdzając punktów sondowania.
 
-![Sondy (wersja zapoznawcza)](media/unreal-probes-preview.png)
+![Zrzut ekranu Akustyka sondy w Unreal w wersji zapoznawczej](media/unreal-probes-preview.png)
 
 ### <a name="Coarse-vs-Fine-Resolution"></a>Rozpoznawanie poprawnie zdalnego programu vs
 
@@ -159,9 +159,9 @@ A to może wydawać się prosty, ma wiele skutki akustyczny symulacji:
 * Dźwięk źródła nie może znajdować się wewnątrz "wypełnione" voxels będącego voxels, który zawiera geometrii — skutkuje to Brak dźwięku. Jest trudniejsze do umieszczenia źródeł dźwięku, dzięki czemu nie wewnątrz większych voxels z grubą, niż gdyby poprawnie ustawienie.
 * Większe voxels będzie mającym więcej do portali, jak pokazano poniżej. Pierwszy obraz został utworzony przy użyciu zdalnego, podczas gdy druga jest tego samego pola, za pomocą cienkiej rozpoznawania. Wskazane przez czerwony oznaczenia, jest znacznie mniej nieautoryzowanego dostępu do pola przy użyciu ustawień w dobrym stanie. Niebieska linia jest bramą, zgodnie z definicją geometrii, podczas gdy czerwona linia jest skuteczne portal akustyczne, zależy od rozmiaru voxel. Jak ta włamań odgrywa w danej sytuacji zależy od całkowicie jak voxels wiersz w górę przy użyciu geometrii portalu, który zależy od rozmiaru i lokalizacje obiektów w scenie.
 
-![Gruba drzwi](media/unreal-coarse-bake.png)
+![Zrzut ekranu przedstawiający zgrubnym voxels, wypełniając pola w Unreal](media/unreal-coarse-bake.png)
 
-![Fine Doorway](media/unreal-fine-bake.png)
+![Zrzut ekranu przedstawiający voxels dobrym rozwiązaniem w pola w Unreal](media/unreal-fine-bake.png)
 
 ## <a name="bake-your-level-using-azure-batch"></a>Tworzenie poziomu przy użyciu usługi Azure Batch
 
@@ -169,7 +169,7 @@ Można wprowadzić sceny z klastra obliczeniowego w chmurze przy użyciu usługi
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie Tworzenie
 
-![Tworzenie Karta Szczegóły](media/unreal-bake-tab-details.png)
+![Zrzut ekranu tworzenie Akustyka karcie Unreal](media/unreal-bake-tab-details.png)
 
 1. Tworzenie karty przycisku używane do tej strony.
 2. Krótki opis, co można zrobić na tej stronie.

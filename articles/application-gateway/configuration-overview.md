@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 61b3a9e066a3ee20effa97f1c6c7a0bd1ae90ac0
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: 18013050546cc5e204d9cc07a2f499388596164c
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285842"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319452"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -33,9 +33,9 @@ Usługa Application gateway to dedykowane wdrożenie w sieci wirtualnej. W ramac
 
 #### <a name="size-of-the-subnet"></a>Rozmiar podsieci
 
-Bramy Application Gateway zużywa jeden prywatny adres IP dla każdego wystąpienia, a także innym prywatnym adresem IP, jeśli konfiguracji IP frontonu prywatnego jest skonfigurowany. Ponadto platforma Azure rezerwuje pierwsze cztery i ostatniego adresu IP w każdej podsieci, do wewnętrznego użycia. Na przykład jeśli bramy aplikacji jest ustawiony na trzy wystąpienia i nie adresu IP frontonu prywatnych, następnie co najmniej 8 adresów IP będzie wymagane w podsieci — pięć adresów IP do wewnętrznego użycia i trzech adresów IP dla trzech wystąpień bramy application gateway. W związku z tym, w tym przypadku wartość/29 podsieć, rozmiar lub nowszej jest wymagana. Jeśli masz trzy wystąpienia i dziewięć adresy IP będą wymagane — w przypadku konfiguracji adresów IP frontonu prywatnych adresów IP trzech adresów IP dla trzech wystąpień bramy application Gateway jeden adres IP dla adresu IP frontonu prywatne i pięciu adresów IP adresy Użycie wewnętrznego. W związku z tym, w tym przypadku o rozmiarze/28 podsieć, rozmiar lub nowszej jest wymagana.
+Bramy Application Gateway zużywa jeden prywatny adres IP dla każdego wystąpienia, a także innym prywatnym adresem IP, jeśli konfiguracji IP frontonu prywatnego jest skonfigurowany. Ponadto platforma Azure rezerwuje 5 adresów IP — pierwsze cztery ostatnie IP adresów i — w każdej podsieci, do wewnętrznego użycia. Na przykład jeśli bramy aplikacji jest równa 15 wystąpień i nie adresu IP frontonu prywatnych, następnie co najmniej 20 adresów IP będzie wymagane w podsieci - pięciu adresów IP do wewnętrznego użycia i 15 adresów IP dla 15 wystąpień bramy application gateway. W związku z tym, w tym przypadku/27 podsieć, rozmiar lub nowszej jest wymagana. Jeśli masz 27 wystąpień i adresów IP dla prywatnych frontonu Konfiguracja protokołu IP, a następnie 33 adresów IP będzie wymagana - 27 adresów IP dla 27 wystąpień bramy application Gateway jeden adres IP dla adresu IP frontonu prywatne i pięć IP adresów dla wewnętrznego użycia. W związku z tym, w tym przypadku /26 podsieć, rozmiar lub nowszej jest wymagana.
 
-Najlepszym rozwiązaniem jest użycie co najmniej o rozmiarze/28 rozmiar podsieci. Dzięki temu 11 brakować adresów. Jeśli Twoje obciążenia aplikacji wymaga więcej niż 10 wystąpień, należy rozważyć/27 lub/26 rozmiar podsieci.
+Zalecane jest użycie co najmniej o rozmiarze/28 rozmiar podsieci. Dzięki temu 11 brakować adresów. Jeśli Twoje obciążenia aplikacji wymaga więcej niż 10 wystąpień, należy rozważyć/27 lub/26 rozmiar podsieci.
 
 #### <a name="network-security-groups-supported-on-the-application-gateway-subnet"></a>Sieciowe grupy zabezpieczeń obsługiwane w podsieci bramy aplikacji
 

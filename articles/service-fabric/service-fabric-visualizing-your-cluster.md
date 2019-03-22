@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: ba6a9a09945f0e822dfe02a74f2cdb8e21a1691c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 47b5e89164173869d6964e2c5e392bb99e0c8555
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674671"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317395"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer
 
@@ -46,7 +46,7 @@ Aby pobrać narzędzia Service Fabric Explorer, jak aplikacja komputerowa, użyj
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>Uruchamianie narzędzia Service Fabric Explorer z klastra
 
-Narzędzie Service Fabric Explorer również znajduje się w punkcie końcowym zarządzania HTTP klaster usługi Service Fabric. Aby uruchomić SFX w przeglądarce sieci web, przejdź do punktu końcowego zarządzania HTTP klastra z dowolnej przeglądarki — na przykład https://clusterFQDN:19080.
+Narzędzie Service Fabric Explorer również znajduje się w punkcie końcowym zarządzania HTTP klaster usługi Service Fabric. Aby uruchomić SFX w przeglądarce sieci web, przejść do punktu końcowego zarządzania HTTP klastra z poziomu dowolnej przeglądarce — na przykład https:\//clusterFQDN:19080.
 
 Dla konfiguracji stacji roboczej dla deweloperów, możesz uruchomić narzędzie Service Fabric Explorer w klastrze lokalnym, przechodząc do https://localhost:19080/Explorer. Ten artykuł, aby przyjrzeć się [przygotowywanie środowiska projektowego](service-fabric-get-started.md).
 

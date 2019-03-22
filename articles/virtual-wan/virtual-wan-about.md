@@ -8,20 +8,20 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6f2f002c5ff08e21741927d07a0facfd09ec0914
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295695"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336256"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co to jest usługa Azure Virtual WAN?
 
 Usługa Azure wirtualne sieci WAN jest sieci usługi, która zapewnia łączność zoptymalizowane i zautomatyzowanych oddziału, aby i za pośrednictwem platformy Azure. Koncentratorów, które można wybrać opcję połączenia gałęziach, aby pełnić rolę regionów świadczenia usługi Azure. Gdy gałęzie, które są połączone, mogą korzystać z sieci szkieletowej platformy Azure do ustanowienia połączenia gałęzi między sieciami wirtualnymi i gałęzi do gałęzi. Aby uzyskać listę partnerzy i lokalizacje, które obsługują wirtualnej VPN w sieci WAN, zobacz [wirtualne sieci WAN partnerzy i lokalizacje](virtual-wan-locations-partners.md) artykułu.
 
-Usługa Azure wirtualne sieci WAN łączy wiele usług łączności chmury platformy Azure, takich jak site-to-site VPN (dostępne ogólnie), usługi ExpressRoute (wersja zapoznawcza), użytkownik Point-to-site VPN (wersja zapoznawcza) w jednym interfejsie operacyjnej. Łączność z sieciami wirtualnymi platformy Azure została ustanowiona przy użyciu połączenia sieć wirtualna.
+Usługa Azure wirtualne sieci WAN łączy wiele usług łączności chmury platformy Azure, takich jak site-to-site VPN (dostępne ogólnie), usługi ExpressRoute (wersja zapoznawcza), użytkownik point-to-site VPN (wersja zapoznawcza) w jednym interfejsie operacyjnej. Łączność z sieciami wirtualnymi platformy Azure została ustanowiona przy użyciu połączenia sieć wirtualna.
 
-![Diagram usługi Virtual WAN](./media/virtual-wan-about/vwangraphic.png)
+![Diagram usługi Virtual WAN](./media/virtual-wan-about/virtualwan1.png)
 
 Ten artykuł zawiera szybki wgląd w łączności sieciowej w sieci platformy Azure z wirtualnych WAN. Usługa Virtual WAN oferuje następujące korzyści:
 
@@ -71,7 +71,7 @@ Aby uzyskać listę dostępnych partnerzy i lokalizacje, zobacz [wirtualne sieci
 
 ### <a name="p2s"></a>Połączenia sieci VPN typu punkt lokacja (wersja zapoznawcza)
 
-Połączenie typu punkt-lokacja pozwala na bezpieczną komunikację między koncentratorem wirtualnym i komputerem klienckim. Połączenie typu punkt-lokacja jest ustanawiane przez uruchomienie z komputera klienckiego. To rozwiązanie jest przydatne dla osób pracujących zdalnie, które chcą łączyć się na przykład z domu lub sali konferencyjnej. Połączenie sieci VPN typu punkt-lokacja przydaje się również w przypadku niewielkiej liczby klientów, ponieważ pozwala zrezygnować z połączeń sieci VPN typu lokacja-lokacja.
+Połączenie punkt lokacja (P2S) pozwala utworzyć bezpieczne połączenie z wirtualnego Centrum z indywidualnego komputera klienckiego. Połączenie typu punkt-lokacja jest ustanawiane przez uruchomienie z komputera klienckiego. To rozwiązanie jest przydatne dla osób pracujących zdalnie, które chcą łączyć się na przykład z domu lub sali konferencyjnej. Połączenie sieci VPN typu punkt-lokacja przydaje się również w przypadku niewielkiej liczby klientów, ponieważ pozwala zrezygnować z połączeń sieci VPN typu lokacja-lokacja.
 
 Aby utworzyć połączenie, zobacz [utworzyć połączenie punkt lokacja przy użyciu wirtualnej sieci WAN](virtual-wan-point-to-site-portal.md).
 

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c7519a166bfbfe5d2a7695a077b809aa971489
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb1632fe8c0ae873afcf37504dbd13bcfc753e8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904035"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338075"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -104,7 +104,7 @@ Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne w pr
 
    ![Skonfigurować diagnostykę dla pul elastycznych](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Oprócz konfigurowania dane diagnostyczne i telemetryczne dla puli elastycznej, należy skonfigurujesz również dane diagnostyczne i telemetryczne dla każdej bazy danych w puli elastycznej, zgodnie z opisem poniżej. 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-datatbase-or-database-in-elastic-pool"></a>Skonfigurować transmisję strumieniową z dane diagnostyczne i telemetryczne datatbase pojedynczego lub bazy danych w puli elastycznej
@@ -159,7 +159,7 @@ Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla 
 
    ![Skonfigurować diagnostykę dla wystąpienia zarządzanego](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Oprócz konfigurowania dane diagnostyczne i telemetryczne dla wystąpienia zarządzanego, również należy skonfigurować dane diagnostyczne i telemetryczne dla każdej bazy danych do wystąpienia, zgodnie z opisem poniżej. 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Skonfigurować transmisję strumieniową z dane diagnostyczne i telemetryczne dla wystąpienia bazy danych

@@ -1,21 +1,21 @@
 ---
-title: Nawiązać połączenie z Dynamics 365 — Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Nawiązać połączenie z Dynamics 365 — Azure Logic Apps
 description: Tworzenie i zarządzanie nimi przy użyciu interfejsów API REST (online) Dynamics 365 i Azure Logic Apps
+services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: Mattp123
 ms.author: matp
-ms.service: logic-apps
-services: logic-apps
 ms.reviewer: estfan, LADocs
-ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295304"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310578"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Zarządzanie rekordami Dynamics 365 z usługą Azure Logic Apps
 
@@ -26,13 +26,13 @@ Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jes
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
 
 * A [konta Dynamics 365](https://dynamics.microsoft.com)
 
 * Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Dynamics 365. Aby uruchomić aplikację logiki z wyzwalaczem Dynamics 365, musisz mieć [pusta aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Dynamics 365. Aby uruchomić aplikację logiki z wyzwalaczem Dynamics 365, musisz mieć [pusta aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-dynamics-365-trigger"></a>Dodawanie wyzwalacza Dynamics 365
 
@@ -50,8 +50,8 @@ Najpierw dodaj wyzwalacz Dynamics 365, która jest uruchamiana, gdy nowy rekord 
 
 1. Podaj te szczegóły wyzwalacza:
 
-   | Właściwość | Wymagane | Opis | 
-   |----------|----------|-------------| 
+   | Właściwość | Wymagane | Opis |
+   |----------|----------|-------------|
    | **Nazwa organizacji** | Yes | Nazwa wystąpienia Dynamics 365 Twojej organizacji do monitorowania, na przykład "Contoso" |
    | **Nazwa jednostki** | Yes | Nazwa jednostkę którą chcesz monitorować, na przykład "prowadzi" | 
    | **Częstotliwość** | Yes | Jednostka czasu do użycia z interwałami podczas sprawdzania dostępności aktualizacji związanych z wyzwalacza |
@@ -72,21 +72,21 @@ Teraz Dodaj akcję Dynamics 365, która tworzy rekord zadania dla nowego rekordu
 
 1. Podaj te szczegóły działań:
 
-   | Właściwość | Wymagane | Opis | 
-   |----------|----------|-------------| 
+   | Właściwość | Wymagane | Opis |
+   |----------|----------|-------------|
    | **Nazwa organizacji** | Yes | W tym przykładzie wystąpienia Dynamics 365, w którym chcesz utworzyć rekord, który nie musi to być to samo wystąpienie w wyzwalacza, ale jest "Contoso" |
-   | **Nazwa jednostki** | Yes | Jednostki, której chcesz utworzyć rekord, na przykład "Zadania" | 
+   | **Nazwa jednostki** | Yes | Jednostki, której chcesz utworzyć rekord, na przykład "Zadania" |
    | | |
 
    ![Szczegóły akcji](./media/connectors-create-api-crmonline/action-details.png)
 
 1. Gdy **podmiotu** pojawi się okno w akcji, kliknij wewnątrz **podmiotu** polu, aby wyświetlić listę zawartości dynamicznej. Na tej liście wybierz wartości pól, które mają zostać objęte rekord zadania skojarzonego z rekordem nowego potencjalnego klienta:
 
-   | Pole | Opis | 
-   |-------|-------------| 
+   | Pole | Opis |
+   |-------|-------------|
    | **Nazwisko** | Nazwisko z potencjalnego klienta jako głównej osoby kontaktowej w rekordzie |
-   | **Temat** | Opisowa nazwa potencjalnego klienta w rekordzie | 
-   | | | 
+   | **Temat** | Opisowa nazwa potencjalnego klienta w rekordzie |
+   | | |
 
    ![Szczegóły rekordu zadania](./media/connectors-create-api-crmonline/create-record-details.png)
 
@@ -109,7 +109,7 @@ Na przykład można użyć zapytania filtru uzyskać tylko aktywne konta i kolej
 
    ![Określ filtru i ustalania kolejności](./media/connectors-create-api-crmonline/advanced-options.png)
 
-Aby uzyskać więcej informacji zobacz te opcje zapytań systemu Dynamics 365 Customer Engagement Web API: 
+Aby uzyskać więcej informacji zobacz te opcje zapytań systemu Dynamics 365 Customer Engagement Web API:
 
 * [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
 * [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
@@ -128,19 +128,19 @@ W tej tabeli opisano niektóre typy pól oraz typy danych wymaganych do ich wart
 | Typ pola wymagające Identyfikatora rekordu i wyszukiwania | Klucz podstawowy | Niektóre pola odwołujące się do innego rekordu jednostki wymagają zarówno Identyfikatora rekordu i typu wyszukiwania. | 
 ||||
 
-Rozszerzając te typy pól, poniżej przedstawiono przykładowe pola w Dynamics 365 wyzwalacze i akcje, które wymagają Identyfikatora rekordu i typu wyszukiwania. Wymaganie to oznacza, że wartości, które należy wybrać z listy dynamicznej nie będzie działać. 
+Rozszerzając te typy pól, poniżej przedstawiono przykładowe pola w Dynamics 365 wyzwalacze i akcje, które wymagają Identyfikatora rekordu i typu wyszukiwania. Wymaganie to oznacza, że wartości, które należy wybrać z listy dynamicznej nie będzie działać.
 
-| Pole | Opis | 
+| Pole | Opis |
 |-------|-------------|
-| **Właściciel** | Musi to być identyfikator prawidłowego użytkownika lub zespołu identyfikator rekordu. | 
-| **Typ właściciela** | Musi być albo **użytkownicy systemowi** lub **zespoły**. | 
-| **Dotyczy** | Musi być prawidłowym Identyfikatorem rekordu, np. identyfikator konta, lub skontaktuj się z identyfikator rekordu. | 
-| **Typ obiektu dotyczy** | Musi być typem wyszukiwania, takie jak **kont** lub **kontakty**. | 
-| **Odbiorcy** | Musi być prawidłowym Identyfikatorem rekordu, np. identyfikator konta, lub skontaktuj się z identyfikator rekordu. | 
-| **Typ klienta** | Musi być typem wyszukiwania, takie jak **kont** lub **kontakty**. | 
+| **Właściciel** | Musi to być identyfikator prawidłowego użytkownika lub zespołu identyfikator rekordu. |
+| **Typ właściciela** | Musi być albo **użytkownicy systemowi** lub **zespoły**. |
+| **Dotyczy** | Musi być prawidłowym Identyfikatorem rekordu, np. identyfikator konta, lub skontaktuj się z identyfikator rekordu. |
+| **Typ obiektu dotyczy** | Musi być typem wyszukiwania, takie jak **kont** lub **kontakty**. |
+| **Odbiorcy** | Musi być prawidłowym Identyfikatorem rekordu, np. identyfikator konta, lub skontaktuj się z identyfikator rekordu. |
+| **Typ klienta** | Musi być typem wyszukiwania, takie jak **kont** lub **kontakty**. |
 |||
 
-W tym przykładzie akcji o nazwie **Utwórz nowy rekord** tworzy nowy rekord zadania: 
+W tym przykładzie akcji o nazwie **Utwórz nowy rekord** tworzy nowy rekord zadania:
 
 ![Tworzenie rekordu zadania przy użyciu identyfikatorów rekordów i wyszukiwania typów](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
@@ -148,13 +148,13 @@ Ta akcja przypisuje rekord zadania określony identyfikator użytkownika lub ide
 
 ![Wpisz identyfikator rekordu właściciela i wyszukiwania](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-Ta akcja spowoduje dodanie rekord konta który jest skojarzony z rekordem Identyfikator dodany w **dotyczące** pola lub wyszukiwania wpisz **typ obiektu dotyczy** pola: 
+Ta akcja spowoduje dodanie rekord konta który jest skojarzony z rekordem Identyfikator dodany w **dotyczące** pola lub wyszukiwania wpisz **typ obiektu dotyczy** pola:
 
 ![Wpisz dotyczące Identyfikatora rekordu i wyszukiwania](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
 ## <a name="find-record-id"></a>Znajdowanie Identyfikatora rekordu
 
-Aby znaleźć identyfikator rekordu, wykonaj następujące kroki: 
+Aby znaleźć identyfikator rekordu, wykonaj następujące kroki:
 
 1. Dynamics 365 otwórz rekord, np. rekord konta.
 
@@ -175,7 +175,7 @@ Aby znaleźć i przejrzyj kroki zakończone niepowodzeniem w aplikacji logiki, m
 
    ![Stan uruchomienia aplikacji logiki](./media/connectors-create-api-crmonline/run-history.png)
 
-1. Rozwiń krok zakończony niepowodzeniem, aby można było wyświetlić więcej szczegółów. 
+1. Rozwiń krok zakończony niepowodzeniem, aby można było wyświetlić więcej szczegółów.
 
    ![Rozwiń krok zakończony niepowodzeniem](./media/connectors-create-api-crmonline/expand-failed-step.png)
 
@@ -187,7 +187,7 @@ Aby uzyskać więcej informacji na temat rozwiązywania problemów z aplikacjami
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [strona referencyjna łącznika](/connectors/dynamicscrmonline/). 
+Szczegóły techniczne, takich jak wyzwalacze, akcje i ograniczeń, zgodnie z opisem w łącznika interfejsu OpenAPI (dawniej Swagger) plików, zobacz [strona referencyjna łącznika](/connectors/dynamicscrmonline/).
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 

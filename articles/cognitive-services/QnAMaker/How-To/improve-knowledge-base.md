@@ -1,29 +1,29 @@
 ---
 title: Poprawa wiedzy — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Aktywna nauka można poprawić jakość bazy wiedzy w postaci sugerowanych alternatywnych pytania, oparte na użytkownika — wiadomości, do Twojego pary pytań i odpowiedzi. Albo dodanie ich do istniejącego pytania lub odrzucenia ich przejrzenie tych propozycji. Bazy wiedzy nie zmienia się automatycznie. Sugestie dotyczące wszelkie zmiany zaczęły obowiązywać, należy zaakceptować. Tego rodzaju sugestie dodać pytania, ale nie Zmień lub usuń istniejące pytania.
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 739ae64c6b32958271260bcbd01b339c1b108f11
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537902"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337429"
 ---
-# <a name="use-active-learning-to-improve-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Użyj aktywnej nauki usprawniających bazy wiedzy
 
 Aktywna nauka można poprawić jakość bazy wiedzy w postaci sugerowanych alternatywnych pytania, oparte na użytkownika — wiadomości, do Twojego pary pytań i odpowiedzi. Albo dodanie ich do istniejącego pytania lub odrzucenia ich przejrzenie tych propozycji. 
 
 Bazy wiedzy nie zmienia się automatycznie. Sugestie, aby zmiany zaczęły obowiązywać, należy zaakceptować. Tego rodzaju sugestie dodać pytania, ale nie Zmień lub usuń istniejące pytania.
 
-## <a name="active-learning"></a>Aktywne uczenie
+## <a name="what-is-active-learning"></a>Co to jest aktywna nauka?
 
 Usługa QnA Maker uzyskuje informacje o nowych zmian pytanie jawne i niejawne opinii.
  
@@ -42,7 +42,7 @@ Wszystkie sugestie są zgrupowane razem wg podobieństwa i najbardziej oczekiwan
 
 Po pytania są sugerowane w portalu narzędzia QnA Maker, należy przejrzeć i zaakceptować lub odrzucić te sugestie. 
 
-## <a name="upgrade-version-to-use-active-learning"></a>Uaktualnij wersję na korzystanie z aktywnej nauki
+## <a name="upgrade-your-version-to-use-active-learning"></a>Uaktualnienie z wersji na korzystanie z aktywnej nauki
 
 Aktywne uczenie jest obsługiwana w wersji środowiska uruchomieniowego 4.4.0 i nowszych. Jeśli wiedzy został utworzony we wcześniejszej wersji, [uaktualnić swoje środowisko uruchomieniowe](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) Aby użyć tej funkcji. 
 
@@ -64,12 +64,12 @@ Aktywna nauka jest domyślnie wyłączona. Włącz ją wyświetlić sugerowane p
 
 1. Aby włączyć aktywne uczenie się na, kliknij pozycję Twoje **nazwa**, przejdź do [ **ustawienia usługi** ](https://www.qnamaker.ai/UserSettings) w prawym górnym rogu portalu narzędzia QnA Maker.  
 
-    ![Na stronie Ustawienia usługi Włącz opcję Aktywne uczenie](../media/improve-knowledge-base/Endpoint-Keys.png)
+    ![Włącz aktywne uczenie alternatywy sugerowanych pytań, na stronie ustawień usługi. Wybierz swoją nazwę użytkownika w prawym górnym menu, a następnie wybierz pozycję Ustawienia usługi.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
 1. Znajdź usługę QnA Maker, a następnie przełącz **aktywne uczenie**. 
 
-    [![Na stronie Ustawienia usługi Włącz opcję Aktywne uczenie](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![Na stronie Ustawienia usługi Włącz opcję Aktywne uczenie funkcji. Jeśli nie jest możliwe włączyć tę funkcję, może być konieczne uaktualnienie usługi.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     Gdy **aktywne uczenie** jest włączona, wiedza sugeruje nowe pytania w regularnych odstępach czasu, w oparciu o przesłane przez użytkownika pytań. Możesz wyłączyć **aktywne uczenie** przełączając ustawienia ponownie.
 
@@ -77,15 +77,15 @@ Aktywna nauka jest domyślnie wyłączona. Włącz ją wyświetlić sugerowane p
 
 1. Aby można było wyświetlić sugerowane pytania na **Edytuj** bazy wiedzy knowledge base, wybierz **Pokaż sugestie**. 
 
-    [![Na stronie Ustawienia usługi przycisk Pokaż sugestie dotyczące przełączania](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![W sekcji edycji w portalu wybierz Pokaż sugestie, aby można było wyświetlić aktywne uczenie nowe pytanie alternatyw.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. Filtruj wiedzy za pomocą pary pytań i odpowiedzi, aby pokazać tylko sugestie, wybierając **Filtruj według sugestii**.
 
-    [![Na stronie Ustawienia usługi filtrowanie według sugestii, aby wyświetlić tylko te pytania/odpowiedzi par](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![Użyj filtru za pomocą przełącznika sugestie, aby wyświetlić tylko aktywne uczenie sugerowanych pytań alternatyw.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
 1.  Każda sekcja zapytania z sugestiami pokazuje nowe pytania ze znacznikiem wyboru `✔` , aby zaakceptować pytanie lub `x` do odrzucenia sugestie. Kliknij znacznik wyboru, aby dodać pytanie. 
 
-    [![Na stronie Ustawienia usługi Włącz opcję Aktywne uczenie](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Wybierz lub Odrzuć alternatywy sugerowanych pytań aktywne uczenie, wybierając zielony znacznik wyboru lub usuń czerwony znak.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     Można dodawać lub usuwać _wszystkie sugestie_ , wybierając **Dodaj wszystkie** lub **Odrzuć wszystkie**.
 
@@ -154,7 +154,13 @@ Gdy aplikacja kliencka (takie jak czatbot) odbiera odpowiedź, zwracane są najc
 
 Aplikacja kliencka Wyświetla wszystkie pytania przy użyciu opcji użytkownikowi na wybranie pytanie najlepiej odpowiadającej reprezentuje zamiar. 
 
-Gdy użytkownik wybierze jeden z istniejących pytań. Opinie użytkowników są wysyłane do usługi QnA Maker [Train](https://www.aka.ms/activelearningsamplebot) interfejsu API, aby kontynuować opinii aktywne uczenie pętli. 
+Po użytkownik wybiera jeden z istniejących pytań, aplikacja kliencka wysyła wybrany przez użytkownika jako opinii przy użyciu interfejsu API Train usługi QnA Maker. Ta opinia zakończeniu aktywnej nauki sprzężenia zwrotnego. 
+
+Użyj [Azure Bot C# przykład](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot) Aby wyświetlić aktywne uczenie w scenariuszu end-to-end.
+
+## <a name="train-api"></a>Szkolenie interfejsu API
+
+Aktywne uczenie opinie są wysyłane do usługi QnA Maker żądania POST API pociągu. Podpis interfejsu API jest:
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -163,9 +169,42 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-Dowiedz się więcej o sposobie używania aktywne uczenie z [Azure Bot C# przykład](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+|Właściwości żądania HTTP|Name (Nazwa)|Type|Przeznaczenie|
+|--|--|--|--|
+|Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
+|Host poddomeny|Nazwa zasobu QnAMaker|string|Nazwa hosta usługi QnA Maker w subskrypcji platformy Azure. Jest on dostępny na stronie ustawień, po opublikowaniu w bazie wiedzy knowledge base. |
+|Nagłówek|Content-Type|string|Typ nośnika treści wysłanej do interfejsu API. Wartość domyślna to: `application/json`|
+|Nagłówek|Autoryzacja|string|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Treść wpisu|Obiekt JSON|JSON|Opinie szkolenia|
 
-## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>Aktywna nauka są zapisywane w pliku tsv Wyeksportowano aplikację
+Treść kodu JSON ma kilka ustawień:
+
+|Właściwość treść JSON|Type|Przeznaczenie|
+|--|--|--|--|
+|`feedbackRecords`|tablica|Lista opinii.|
+|`userId`|string|Identyfikator użytkownika osoby, akceptując sugerowane pytania. Format Identyfikatora użytkownika zależy od użytkownika. Na przykład adres e-mail może być prawidłowy identyfikator użytkownika w ramach architektury. Opcjonalny.|
+|`userQuestion`|string|Dokładne tekst pytania. Wymagany.|
+|`qnaID`|numer|Identyfikator zapytania, znaleziono w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
+
+Przykładowy kod JSON wygląda następująco:
+
+```json
+{
+    "feedbackRecords": [
+        {
+            "userId": "1",
+            "userQuestion": "<question-text>",
+            "qnaId": 1
+        }
+    ]
+}
+```
+
+Stan 204 i nie treści odpowiedzi JSON zwrócą pomyślne odpowiedzi. 
+
+<a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
+
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktywna nauka jest zapisywany w bazie wiedzy wyeksportowanego
 
 Gdy Twoja aplikacja ma aktywne uczenie włączone i wyeksportować aplikację, `SuggestedQuestions` kolumna w pliku tsv przechowuje dane aktywne uczenie. 
 
@@ -193,4 +232,4 @@ Gdy możesz ponownie zaimportować tej aplikacji, aktywne uczenie nadal zbierać
 ## <a name="next-steps"></a>Kolejne kroki
  
 > [!div class="nextstepaction"]
-> [Użyj usługi QnA Maker API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Metadane za pomocą interfejsu API GenerateAnswer](metadata-generateanswer-usage.md)

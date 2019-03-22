@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: bef2e5da1a151fd6178298f3b993337fd07bd294
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 780f87924bcd25f0485bfed1b9640915b7d8e1d3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313335"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309473"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>wdrażanie klastra usługi Service Fabric systemu Linux w sieci wirtualnej platformy Azure
 
@@ -35,7 +35,7 @@ Przed rozpoczęciem:
 * Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
 * Aby uzyskać kluczowe pojęcia związane z klastrów, przeczytaj [klastrów omówienie platformy Azure](service-fabric-azure-clusters-overview.md)
 
-Poniższe procedury tworzenia klastra usługi Service Fabric siedem. Aby obliczyć koszt działania klastra usługi Service Fabric na platformie Azure, skorzystaj z [Kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/).
+Następujące procedury umożliwiają utworzenie klastra usługi Service Fabric z siedmioma węzłami. Aby obliczyć koszt działania klastra usługi Service Fabric na platformie Azure, skorzystaj z [Kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="download-and-explore-the-template"></a>Pobieranie i eksplorowanie szablonu
 
@@ -50,7 +50,7 @@ Ten szablon umożliwia wdrożenie bezpiecznego klastra z siedmiu maszyn wirtualn
 
 W zasobie **Microsoft.ServiceFabric/clusters** został wdrożony klaster systemu Linux o następujących właściwościach:
 
-* trzy typy węzłów
+* Trzy typy węzła
 * pięć węzłów typu węzła podstawowego (z możliwością konfiguracji za pomocą parametrów szablonu), jednego węzła w każdego typu węzła
 * System operacyjny: Ubuntu 16.04 LTS (z możliwością konfiguracji w parametrach szablonu)
 * Zabezpieczenie przy użyciu certyfikatu (z możliwością konfiguracji za pomocą parametrów szablonu)
@@ -89,7 +89,7 @@ Plik parametrów [AzureDeploy.Parameters][parameters] deklaruje wiele wartości 
 |clusterName|mojklastersf123| Nazwa klastra. |
 |location|southcentralus| Lokalizacja klastra. |
 |certificateThumbprint|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość odcisku palca SHA1 certyfikatu. Na przykład „6190390162C988701DB5676EB81083EA608DCCF3”. </p>|
-|certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład „https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346”.</p>|
+|certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość magazynu źródłowego. Na przykład „/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT”.</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
@@ -98,7 +98,7 @@ Plik parametrów [AzureDeploy.Parameters][parameters] deklaruje wiele wartości 
 
 Następnym etapem jest skonfigurowanie topologii sieci i wdrożenie klastra usługi Service Fabric. Plik [AzureDeploy.json][template] szablonu usługi Resource Manager tworzy sieć wirtualną (VNET) i podsieć dla usługi Service Fabric. Szablon pozwala również wdrożyć klaster z włączonymi zabezpieczeniami opartymi na certyfikacie.  W przypadku klastrów produkcyjnych jako certyfikatu klastra należy używać certyfikatu z urzędu certyfikacji. Do zabezpieczenia klastrów testowych może służyć certyfikat z podpisem własnym.
 
-Szablon w tym artykule wdrażanie klastra, który używa odcisk palca certyfikatu do identyfikowania certyfikatu klastra.  Nie dwóch certyfikatów może mieć ten sam odcisk palca, co sprawia, że certyfikat zarządzania jest trudniejsze. Przełączanie wdrożonego klastra z za pomocą odcisków palca certyfikatu za pomocą nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami znacznie prostsze.  Aby dowiedzieć się, jak zaktualizować klaster pod kątem używania nazwy pospolite certyfikatów dla certyfikatu zarządzania, przeczytaj [zmienić klastra do wspólnego zarządzania nazwę certyfikatu](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+Szablon w tym artykule wdrażanie klastra, który używa odcisk palca certyfikatu do identyfikowania certyfikatu klastra.  Nie dwóch certyfikatów może mieć ten sam odcisk palca, co sprawia, że certyfikat zarządzania jest trudniejsze. Przełączenie wdrożonego klastra z używania odcisków palca certyfikatu na używanie nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami jest znacznie prostsze.  Aby dowiedzieć się, jak zaktualizować klaster pod kątem używania nazw pospolitych certyfikatów do zarządzania certyfikatami, przeczytaj artykuł [Modyfikacja klastra pod kątem zarządzania certyfikatami za pomocą nazw pospolitych](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Tworzenie klastra przy użyciu istniejącego certyfikatu
 
@@ -165,7 +165,7 @@ Jeśli nie przechodzisz od razu do następnego artykułu, rozważ [usunięcie kl
 
 Dowiedz się, jak [skalowanie klastra](service-fabric-tutorial-scale-cluster.md).
 
-Szablon w tym artykule wdrażanie klastra, który używa odcisk palca certyfikatu do identyfikowania certyfikatu klastra.  Nie dwóch certyfikatów może mieć ten sam odcisk palca, co sprawia, że certyfikat zarządzania jest trudniejsze. Przełączanie wdrożonego klastra z za pomocą odcisków palca certyfikatu za pomocą nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami znacznie prostsze.  Aby dowiedzieć się, jak zaktualizować klaster pod kątem używania nazwy pospolite certyfikatów dla certyfikatu zarządzania, przeczytaj [zmienić klastra do wspólnego zarządzania nazwę certyfikatu](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+Szablon w tym artykule wdrażanie klastra, który używa odcisk palca certyfikatu do identyfikowania certyfikatu klastra.  Nie dwóch certyfikatów może mieć ten sam odcisk palca, co sprawia, że certyfikat zarządzania jest trudniejsze. Przełączenie wdrożonego klastra z używania odcisków palca certyfikatu na używanie nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami jest znacznie prostsze.  Aby dowiedzieć się, jak zaktualizować klaster pod kątem używania nazw pospolitych certyfikatów do zarządzania certyfikatami, przeczytaj artykuł [Modyfikacja klastra pod kątem zarządzania certyfikatami za pomocą nazw pospolitych](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: d2e890110194b1fbe0528191fa645628cc3a1345
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9da735f10063649222a38498af17e0404137a706
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161365"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315355"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Twórz C# aplikacji usługi Service Fabric za pomocą programu Visual Studio Code
 
@@ -70,11 +70,11 @@ Po skonstruowaniu aplikacji można wdrożyć w klastrze lokalnym.
 
    ![Wdrażanie polecenia aplikacji w programie VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Po zakończeniu wdrażania Uruchom przeglądarkę i Otwórz narzędzie Service Fabric Explorer: http://localhost:19080/Explorer. Powinieneś zobaczyć, że aplikacja jest uruchomiona. To może trochę potrwać, więc o cierpliwość. 
+4. Po zakończeniu wdrażania Uruchom przeglądarkę i Otwórz narzędzie Service Fabric Explorer: http:\//localhost:19080 / Explorer. Powinieneś zobaczyć, że aplikacja jest uruchomiona. To może trochę potrwać, więc o cierpliwość. 
 
    ![Licznik aplikacji usługi Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Po upewnieniu się, aplikacja jest uruchomiona, uruchom przeglądarkę i otwórz tę stronę: http://localhost:31002. Jest to frontonu w aplikacji sieci web. Odśwież stronę Aby wyświetlić bieżącą wartość licznika, ponieważ zwiększa.
+4. Po upewnieniu się, aplikacja jest uruchomiona, uruchom przeglądarkę i otwórz tę stronę: http:\//localhost:31002. Jest to frontonu w aplikacji sieci web. Odśwież stronę Aby wyświetlić bieżącą wartość licznika, ponieważ zwiększa.
 
    ![Licznik aplikacji usługi w przeglądarce](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
@@ -91,7 +91,7 @@ Aby ustawić punkt przerwania i debugowania, wykonaj następujące czynności:
 
    ![Debugowanie ikonę w obszarze roboczym programu VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Otwórz narzędzie Service Fabric Explorer w przeglądarce: http://localhost:19080/Explorer. Kliknij przycisk **aplikacje** i testowania odzyskiwania po awarii w dół, aby określić węzła podstawowego, który CounterService działa na. Na ilustracji poniżej węzła podstawowego dla CounterService jest węzłem 0.
+3. Otwórz narzędzie Service Fabric Explorer w przeglądarce: http:\//localhost:19080 / Explorer. Kliknij przycisk **aplikacje** i testowania odzyskiwania po awarii w dół, aby określić węzła podstawowego, który CounterService działa na. Na ilustracji poniżej węzła podstawowego dla CounterService jest węzłem 0.
 
    ![Podstawowy węzeł CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

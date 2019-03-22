@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 432dcf4608d23f269c5005b86d2c58b7f70b3068
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007581"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313604"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Łącznik SAP LaMa na platformie Azure
 
@@ -77,7 +77,7 @@ Przeczytaj również [portalu pomocy SAP dla LaMa SAP](https://help.sap.com/view
 1. Otwórz blok usługi Azure Active Directory
 1. Kliknij pozycję rejestracje aplikacji
 1. Kliknij pozycję Dodaj.
-1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład `http://localhost`) i kliknij pozycję Utwórz
+1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład http:\//localhost) i kliknij pozycję Utwórz
 1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
 1. Wybierz nową aplikację, a następnie kliknij przycisk na kluczach, na karcie Ustawienia
 1. Wprowadź opis nowego klucza, wybierz pozycję "Nigdy nie wygasa" i kliknij przycisk przy zapisywaniu

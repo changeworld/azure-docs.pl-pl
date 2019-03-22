@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: df9bc1680f20fe6264da0109cd52db1072fd9fc5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217295"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311139"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnienie do konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -29,14 +29,14 @@ Uaktualnienie do konta magazynu ogólnego przeznaczenia v2 z Twojej ogólnego pr
 2. Przejdź do swojego konta magazynu.
 3. W **ustawienia** kliknij **konfiguracji**.
 4. W obszarze **Rodzaj konta** kliknij pozycję **Uaktualnij**.
-5. W obszarze **Potwierdź uaktualnianie** wpisz nazwę konta. 
+5. W obszarze **Potwierdź uaktualnianie** wpisz nazwę konta.
 6. Kliknij przycisk **uaktualnienia** w dolnej części bloku.
 
 ## <a name="upgrade-with-powershell"></a>Podnoszenie poziomu przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Aby podnieść poziom konta ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu programu PowerShell, należy najpierw zaktualizować program PowerShell w celu używania najnowszej wersji programu **Az.Storage** modułu. Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). 
+Aby podnieść poziom konta ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu programu PowerShell, należy najpierw zaktualizować program PowerShell w celu używania najnowszej wersji programu **Az.Storage** modułu. Aby uzyskać więcej informacji na temat instalowania programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 Następnie wywołaj następujące polecenie, aby uaktualnić konto, zastępując nazwę grupy zasobów i konto magazynu:
 
@@ -46,17 +46,17 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 ## <a name="upgrade-with-azure-cli"></a>Podnoszenie poziomu za pomocą interfejsu wiersza polecenia platformy Azure
 
-Aby podnieść poziom konta ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu wiersza polecenia platformy Azure, należy najpierw zainstalować najnowszą wersję interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia, zobacz [Instalacja interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
+Aby podnieść poziom konta ogólnego przeznaczenia w wersji 1 do konta ogólnego przeznaczenia w wersji 2 przy użyciu wiersza polecenia platformy Azure, należy najpierw zainstalować najnowszą wersję interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia, zobacz [Instalacja interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Następnie wywołaj następujące polecenie, aby uaktualnić konto, zastępując nazwę grupy zasobów i konto magazynu:
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
-``` 
+```
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Określenie warstwy dostępu do danych obiektów blob
 
-Konta ogólnego przeznaczenia v2 obsługują wszystkie usługi Azure storage i obiekty danych, ale warstwy dostępu są dostępne tylko dla blokowych obiektów blob w magazynie obiektów Blob. Podczas uaktualniania do konta magazynu ogólnego przeznaczenia w wersji 2 można określić warstwy dostępu do danych obiektów blob. 
+Konta ogólnego przeznaczenia v2 obsługują wszystkie usługi Azure storage i obiekty danych, ale warstwy dostępu są dostępne tylko dla blokowych obiektów blob w magazynie obiektów Blob. Podczas uaktualniania do konta magazynu ogólnego przeznaczenia w wersji 2 można określić warstwy dostępu do danych obiektów blob.
 
 Warstwy dostępu umożliwiają wybranie najbardziej ekonomiczny magazyn na podstawie wzorców Twojej oczekiwanego użycia. Blokowe obiekty BLOB mogą być przechowywane w warstwie gorąca, chłodna lub archiwalna. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: Gorąca, chłodna i archiwalnego](../blobs/storage-blob-storage-tiers.md).
 
@@ -96,7 +96,7 @@ Aby oszacować koszty magazynowania i uzyskiwania dostępu do danych obiektów b
     - Ile danych jest przechowywanych na koncie magazynu?
     - Jak zmienia się ilość danych w miesiącu? Czy nowe dane nieustannie zastępują stare dane?
 * Wzorzec dostępu dane magazynu obiektów Blob, w tym:
-    - Jak dużo danych jest odczytywanych i zapisywanych do konta magazynu? 
+    - Jak dużo danych jest odczytywanych i zapisywanych do konta magazynu?
     - Jak wiele operacji odczytu i zapisu operacje są wykonywane na danych w ramach konta magazynu?
 
 Aby wybrać najważniejsze dla Twoich potrzeb warstwę dostępu, może być przydatne do określenia pojemnością danych obiektów blob i sposobu korzystania z tych danych. To jest najlepsze możliwe, analizując metryki monitorowania dla swojego konta.
@@ -108,7 +108,7 @@ Aby monitorować istniejące konta magazynu i gromadzić uzyskane dane, można s
 Aby uzyskać więcej informacji, zapoznaj się z artykułami [About Storage Analytics Metrics (Informacje o metrykach w usłudze Storage Analytics)](https://msdn.microsoft.com/library/azure/hh343258.aspx) i [Storage Analytics Metrics Table Schema (Schemat tabeli metryk usługi Storage Analytics)](https://msdn.microsoft.com/library/azure/hh343264.aspx)
 
 > [!NOTE]
-> Konta usługi Blob Storage ujawniają punkt końcowy usługi tabel tylko w odniesieniu do przechowywania i uzyskiwania dostępu do danych metryk dla tego konta. 
+> Konta usługi Blob Storage ujawniają punkt końcowy usługi tabel tylko w odniesieniu do przechowywania i uzyskiwania dostępu do danych metryk dla tego konta.
 
 Aby monitorować użycie magazynu dla usługi Blob Storage, należy włączyć metryki pojemności.
 Dzięki włączeniu tej opcji dane pojemności są rejestrowane codziennie dla konta usługi Blob Storage oraz rejestrowane jako wpis tabeli, który jest zapisywany w tabeli *$MetricsCapacityBlob* w obrębie tego samego konta magazynu.
@@ -120,7 +120,7 @@ Aby monitorować wzorce dostępu do danych dla usługi Blob Storage, należy wł
 
 Aby uzyskać najbardziej zbliżone do prawdziwych informacje o użyciu danych i wzorcu dostępu, zalecamy wybranie takiego okresu przechowywania dla metryk, który odzwierciedla normalne użycie, i ekstrapolację. Jedną z opcji jest przechowywanie danych metryk przez siedem dni i zbieranie danych co tydzień, aby przeprowadzić analizę pod koniec miesiąca. Innym rozwiązaniem jest przechowywanie danych metryk z ostatnich 30 dni i zbieranie oraz analizowanie danych z końcem 30-dniowego okresu.
 
-Aby uzyskać szczegółowe informacje na temat włączania metryk oraz gromadzenia i wyświetlania danych metryk, zobacz temat [Włączanie metryk usługi Azure Storage i wyświetlanie danych metryk](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Aby uzyskać więcej informacji na temat włączania, gromadzenia i wyświetlania danych metryk, zobacz [Storage analytics metrics](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Za przechowywanie i pobieranie danych analitycznych oraz uzyskiwanie dostępu do nich również są naliczane opłaty, podobnie jak za zwykłe dane użytkowników.

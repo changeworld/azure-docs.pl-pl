@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094756"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339495"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfiguracje obciążeń SAP o strefy dostępności platformy Azure
 [Strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) to jedna z funkcji wysokiej dostępności, zapewnianymi przez platformę Azure. Przy użyciu stref dostępności zwiększa ogólną dostępność obciążeń SAP na platformie Azure. Ta funkcja jest już dostępna w niektórych [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/). W przyszłości będzie on dostępny w większej liczbie regionów.
@@ -93,7 +93,7 @@ Podejmując decyzje te, również wziąć pod uwagę SAP zalecenia dotyczące op
 > Oczekuje się, zapewnia pomiary, opisanych wcześniej różne wyniki w każdym regionie platformy Azure, która obsługuje [strefy dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview). Nawet jeśli wymagań opóźnienia sieci są takie same, może być konieczne przyjęcie strategii wdrażania różne w różnych regionach platformy Azure, ponieważ opóźnienie sieci między strefami mogą być różne. W niektórych regionach platformy Azure opóźnienie sieci między trzy strefy może być bardzo różne. W innych regionach opóźnienie sieci między trzy strefy może być bardziej jednolite. Oświadczenie, które zawsze istnieje opóźnienie sieciowe między 1 i 2 milisekund jest nieprawidłowy. Opóźnienie sieci w różnych strefach dostępności w regionach platformy Azure nie może być uogólniony.
 
 ## <a name="activeactive-deployment"></a>Wdrożenie aktywny/aktywny
-Ta architektura wdrożenia jest nazywany aktywny/aktywny, ponieważ wdrażania aktywnych wystąpień okna dialogowego SAP w dwóch lub trzech strefach. Wystąpienie usług SAP Central Services, który używa umieścić w kolejce replikacji będą wdrażane między dwiema strefami. Dotyczy to także warstwy system DBMS, która zostanie wdrożony w tej samej strefach jako usługi centralne SAP.
+Ta architektura wdrożenia jest nazywany aktywny/aktywny, ponieważ wdrożenia aktywnych serwerów aplikacji SAP w dwóch lub trzech strefach. Wystąpienie usług SAP Central Services, który używa umieścić w kolejce replikacji będą wdrażane między dwiema strefami. Dotyczy to także warstwy system DBMS, która zostanie wdrożony w tej samej strefach jako usługi centralne SAP.
 
 Rozważając tę konfigurację, trzeba znaleźć dwóch strefach dostępności w Twoim regionie tego opóźnienia sieci między strefami oferty, który jest dopuszczalny dla obciążenia i usługi replikacji synchronicznej DBMS. Należy zawsze mieć pewność, że różnica między opóźnienia sieci w ramach stref, które wybrano i opóźnienie sieci między strefami nie jest zbyt duży. Jest to, ponieważ nie ma duże różnice, w zależności od tego, czy zadanie jest uruchamiane w strefie z serwerem systemu DBMS lub na strefy, w razie uruchomione zadania wsadowe lub procesami biznesowymi. Niektóre zmiany są akceptowane, ale nie czynniki różnica.
 

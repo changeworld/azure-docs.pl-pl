@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a85fb65ad971bfc70bdab0689e99921e616b56ac
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308863"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337143"
 ---
 # <a name="categorize-images"></a>Kategoryzowanie obrazów
 
@@ -24,7 +24,7 @@ Oprócz tagów i opis przetwarzania obrazów zwraca kategorie na podstawie takso
 
 ## <a name="the-86-category-concept"></a>Koncepcja 86 kategorii
 
-Przetwarzanie obrazów umożliwia klasyfikowanie obrazu szeroko lub ściślej mówiąc, przy użyciu listy 86 categroies na poniższym diagramie. Aby uzyskać informacje dotyczące pełnej taksonomii w formacie tekstowym, zobacz temat [Taksonomia kategorii](category-taxonomy.md).
+Przetwarzanie obrazów umożliwia klasyfikowanie obrazu szeroko lub ściślej mówiąc, przy użyciu listy kategorii 86 na poniższym diagramie. Aby uzyskać informacje dotyczące pełnej taksonomii w formacie tekstowym, zobacz temat [Taksonomia kategorii](category-taxonomy.md).
 
 ![zgrupowane listy wszystkie kategorie Taksonomia kategorii](./Images/analyze_categories-v2.png)
 

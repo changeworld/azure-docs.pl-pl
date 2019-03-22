@@ -1,5 +1,5 @@
 ---
-title: 'Tworzenie i instalowanie plików konfiguracji klienta sieci VPN P2S do uwierzytelniania certyfikatu platformy Azure: Azure | Microsoft Docs'
+title: 'Tworzenie i instalowanie plików konfiguracji klienta sieci VPN P2S do uwierzytelniania certyfikatu platformy Azure: Azure'
 description: Tworzenie i instalowanie Windows, Linux, systemu Linux (strongSwan) i Mac OS X w sieci VPN z plików konfiguracji klienta do uwierzytelniania certyfikatów P2S.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: c8bc0ad7c5113f8ffdcda0ae9e6b1df43975bbcb
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: fdf5f07f9b27a17eb4c15495c4ac9776d77f525c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294947"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313944"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN dla konfiguracji uwierzytelniania P2S natywnych certyfikatu platformy Azure
 

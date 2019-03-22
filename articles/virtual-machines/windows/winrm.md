@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 77b575de3a84d582c11fb31952120e1079e23ffb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 89739aa51748e7bc69fc42b8b745994bbe50e39d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091107"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309805"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie dostępu WinRM dla maszyn wirtualnych w usłudze Azure Resource Manager
 
@@ -83,7 +83,7 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 Dostawcy zasobów Microsoft.Compute musi mieć adres URL wpisu tajnego wewnątrz usługi Key Vault podczas aprowizowania maszyny Wirtualnej. Dzięki temu dostawcy zasobów Microsoft.Compute pobrać klucz tajny i utworzyć równoważne certyfikat na maszynie Wirtualnej.
 
 > [!NOTE]
-> Adres URL wpisu tajnego musi obejmować wersji, jak również. Przykładowy adres URL wygląda jak poniżej https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Adres URL wpisu tajnego musi obejmować wersji, jak również. Przykładowy adres URL wygląda jak poniżej https:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Szablony
 Można uzyskać link do adresu URL w szablonie, używając poniższego kodu

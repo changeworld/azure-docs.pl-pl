@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 60623ab4b41c343cab0f9be1abd8ab45051b3f9e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 78d6ac0a4ecde8d60a0ef3aa22515c7ce1ea4e07
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889362"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309542"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>Zdefiniuj filtry kont i zasobów filtry  
 
@@ -74,7 +74,7 @@ Użyj tej właściwości, za pomocą **filtry zasobów**. Nie zaleca się ustawi
 |**startTimestamp**|Ma zastosowanie do wideo na żądanie (VoD) lub transmisji strumieniowej na żywo.<br/>Jest to wartość typu long reprezentujący punkt początkowy bezwzględne strumienia. Wartość jest zaokrąglana do najbliższej następnym uruchomieniu GOP. Jednostka jest skala czasu, więc będzie startTimestamp 150000000 15 sekund.<br/>Użyj startTimestamp i endTimestampp można przycięcia fragmentów, które będą znajdować się na liście odtwarzania (manifest).<br/>Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 przy użyciu skali czasu domyślne wygeneruje listy odtwarzania, który zawiera fragmenty znajdujące 4 sekundy, a następnie 10 sekund prezentacja wideo na żądanie. Jeśli fragment pokrywającej granicy, całego fragmentu będą uwzględniane w manifeście.|
 |**Skala czasu**|Dotyczy wszystkich sygnatur czasowych i czasów trwania prezentacji zakres czasu, w jednej sekundy jako liczbę przyrostów określono.<br/>Domyślna to przyrosty 10000000 - dziesięć milionów w 1 sekundę, gdy każdy przyrost jest długa 100 nanosekund.<br/>Na przykład jeśli chcesz ustawić startTimestamp na 30 sekund, można użyć wartości 300000000 podczas korzystania z domyślnej skali czasu.|
 
-### <a name="tracks"></a>Ścieżki
+### <a name="tracks"></a>ścieżki
 
 Należy określić listę warunków właściwość śledzenie filtru (FilterTrackPropertyConditions) podstawie, na którym ścieżki strumienia (transmisji strumieniowej na żywo lub wideo na żądanie) powinny zostać uwzględnione w manifeście utworzony dynamicznie. Filtry są połączone przy użyciu logicznych **i** i **lub** operacji.
 
@@ -88,7 +88,11 @@ Warunki właściwości śledzenie filtru opisano typy ścieżek, wartości (opis
 |**Nazwa**|Użyj nazwy ścieżki w celu filtrowania.|
 |**Typ**|Użyj typu ścieżki do filtrowania.<br/><br/>Dozwolone są następujące wartości: "wideo", "audio" lub "text".|
 
-## <a name="example"></a>Przykład
+## <a name="associate-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatora przesyłania strumieniowego
+
+Można określić listę filtrów zasobów lub konta, które będzie dotyczyć Twojego lokalizatora przesyłania strumieniowego. [Funkcji dynamicznego pakowania](dynamic-packaging-overview.md) ma zastosowanie ta lista filtrów wraz z tymi klienta określa się w adresie URL. Ta kombinacja generuje [dyanamic manifest](filters-dynamic-manifest-overview.md), która jest oparta na filtry w adresie URL i filtry, możesz określić na lokalizatora przesyłania strumieniowego. Zaleca się korzystania z tej funkcji, jeśli chcesz zastosować filtry, ale nie należy udostępniać nazwy filtru w adresie URL.
+
+## <a name="definition-example"></a>Przykład definicji
 
 ```json
 {

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: b6717bc76caffb9c4b6f7743cc5356a80a8f742b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111858"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316953"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Samouczek: Korzystanie z systemu Apache Storm z platformą Apache Kafka w usłudze HDInsight
 
@@ -129,7 +129,7 @@ Ten samouczek obejmuje dwie topologie:
     >
     > Jeśli nie używasz szablonu dostępnego w tym dokumencie do utworzenia klastra Storm, musisz ręcznie zastosować akcję skryptu dla klastra.
     >
-    > Akcja skryptu znajduje się pod adresem `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh` i jest stosowana do węzłów nadzorcy i Nimbus klastra Storm. Aby uzyskać więcej informacji dotyczących akcji skryptu, zobacz dokument [Dostosowywanie usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+    > Akcja skryptu znajduje się w [ https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh ](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) i zastosowano je do węzłów nadzorcy i nimbus klaster Storm. Aby uzyskać więcej informacji dotyczących akcji skryptu, zobacz dokument [Dostosowywanie usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 Topologie definiuje się przy użyciu struktury [Flux](https://storm.apache.org/releases/1.1.2/flux.html). Struktura Flux została wprowadzona w systemie Storm 0.10.x i umożliwia rozdzielenie konfiguracji topologii i kodu. Topologie wykorzystujące strukturę Flux są definiowane w pliku YAML. Plik YAML może sam być częścią topologii. Istnieje także możliwość użycia go jako pliku autonomicznego podczas przesyłania topologii. Struktura Flux obsługuje również podstawianie wartości zmiennych w czasie wykonywania, które jest używane w tym przykładzie.
 

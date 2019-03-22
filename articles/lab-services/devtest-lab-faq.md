@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551827"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337701"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
@@ -27,8 +27,27 @@ Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azur
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **Ogólne**
+
+## <a name="blog-post"></a>Wpis na blogu
+Naszym blogu zespołu laboratoria DevTest został wycofany z 20 marca 2019 r. 
+
+### <a name="where-can-i-track-feature-updates-going-forward"></a>Gdzie można śledzić aktualizacji funkcji w przyszłości?
+Idąc dalej, firma Microsoft będzie można publikowanie aktualizacji dotyczących funkcji i/lub wpisów w blogu informacyjne na blogu platformy Azure i aktualizacje platformy Azure. Wpisy na blogu również połączy się z naszą dokumentację, wszędzie tam, gdzie wymagane.
+
+Subskrybuj [DevTest Labs — Blog dotyczący platformy Azure](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) i [aktualizacji usługi DevTest Labs Azure](https://azure.microsoft.com/updates/?product=devtest-lab) uzyskiwania informacji o nowych funkcjach w usłudze DevTest Labs.
+
+### <a name="what-happens-to-the-existing-blog-posts"></a>Co się dzieje z istniejących wpisów w blogu?
+Obecnie pracujemy nad Migrowanie istniejących wpisów w blogu (z wyjątkiem aktualizacji awarii) do naszych [dokumentacja usługi DevTest Labs](devtest-lab-overview.md). Gdy na blogu MSDN jest przestarzały, zostaną przekierowani do Przegląd dokumentacji dla usługi DevTest Labs. Gdy przekierowanie, możesz wyszukać artykuł, którego szukasz w tytule "Filtrowanie według". Należy pamiętać, firma Microsoft nie zostały jeszcze zmigrowane wszystkie wpisy, ale powinna być podejmowana z końcem tego miesiąca. 
+
+
+### <a name="where-do-i-see-outage-updates"></a>Gdzie mogę zobaczyć aktualizacje awarii?
+Firma Microsoft będzie publikowanie aktualizacji awarii za pomocą naszych uchwyt Twitter w przyszłości. Obserwuj nas w serwisie Twitter w celu uzyskania najnowszych aktualizacji na awarie i znanych błędów.
+
+### <a name="twitter"></a>Twitter 
+Nasze uchwyt Twitter: azlabservices
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli moje pytanie nie ma tutaj odpowiedzi?
-Jeśli Twoje pytanie nie ma na liście, dać nam znać, abyśmy mogli pomóc Ci znaleźć odpowiedź.
+Jeśli Twoje pytanie nie ma na liście, dać nam znać, a pomożemy Ci znaleźć odpowiedzi.
 
 * Zadaj je na końcu tego — często zadawane pytania. Skontaktuj się z zespołem usługi Azure Cache i inni członkowie społeczności, informacje o tym artykule.
 * Aby uzyskać dostęp do większej liczby osób, należy zadać pytanie na [forum usługi Azure DevTest Labs MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Skontaktuj się z zespołem usługi Azure DevTest Labs i inni członkowie społeczności.
@@ -41,7 +60,7 @@ Usługa Azure DevTest Labs można zapisać Twojego zespołu, czas i pieniądze. 
 Samoobsługa bez zmartwień oznacza, że deweloperom i testerom tworzyć własne środowiska zgodnie z potrzebami. Administratorzy mają bezpieczeństwa, wiedząc, że usługa DevTest Labs może pomóc zminimalizować straty i kontrolować koszty. Administratorzy mogą określić rozmiary maszyn wirtualnych, które są dozwolone, maksymalna liczba maszyn wirtualnych, a podczas pracy maszyny wirtualne i zamknij. DevTest Labs ułatwia także monitorowanie kosztów i Ustawiaj alerty zwiększające wiedzieć, jak są używane zasoby laboratorium.
 
 ## <a name="how-can-i-use-devtest-labs"></a>Jak używać usługi DevTest Labs?
-DevTest Labs jest przydatne w dowolnym momencie wymagane deweloperów lub środowisk testowych, a chcesz odtworzyć je szybko ani zarządzać nimi za pomocą zasad oszczędne.
+DevTest Labs jest przydatne w dowolnym momencie wymagają deweloperów lub środowisk testowych i chcesz odtworzyć je szybko ani zarządzać nimi za pomocą zasad oszczędności.
 
 Poniżej przedstawiono kilka scenariuszy, w których nasi klienci będą korzystać usługi DevTest Labs dla:
 
@@ -106,8 +125,8 @@ Dla innych ciągłej integracji (CI) / kompilatorach ciągłe dostarczanie (CD) 
 
 
 **Maszyny wirtualne**
-## <a name="why-cant-i-see-vms-on-the-virtual-machines-blade-that-i-see-in-devtest-labs"></a>Dlaczego nie widzę maszyn wirtualnych w bloku maszyny wirtualnej, wyświetlaną w usłudze DevTest Labs?
-Po utworzeniu maszyny Wirtualnej w usłudze DevTest Labs są podane uprawnienia dostępu do tej maszyny Wirtualnej. Możesz wyświetlić maszyny Wirtualnej w bloku labs i na **maszyn wirtualnych** bloku. Użytkownicy przypisani do roli użytkownika laboratorium DevTest Labs widoczne wszystkie maszyny wirtualne, które zostały utworzone w laboratorium w laboratorium **wszystkie maszyny wirtualne** bloku. Jednak użytkownicy, którzy mają roli laboratorium DevTest Labs, nie są automatycznie przyznawane dostęp do odczytu do zasobów maszyny Wirtualnej, które zostały utworzone przez innych użytkowników. W związku z tym, te maszyny wirtualne nie są wyświetlane na **maszyn wirtualnych** bloku.
+## <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Dlaczego nie widzę maszyn wirtualnych na stronie maszyny wirtualne, które widzę w usłudze DevTest Labs?
+Po utworzeniu maszyny Wirtualnej w usłudze DevTest Labs są podane uprawnienia dostępu do tej maszyny Wirtualnej. Możesz wyświetlić maszyny Wirtualnej na stronie labs i na **maszyn wirtualnych** strony. Użytkownicy przypisani do roli użytkownika laboratorium DevTest Labs widoczne wszystkie maszyny wirtualne, które zostały utworzone w laboratorium w laboratorium **wszystkie maszyny wirtualne** strony. Jednak użytkownicy, którzy mają roli laboratorium DevTest Labs, nie są automatycznie przyznawane dostęp do odczytu do zasobów maszyny Wirtualnej, które zostały utworzone przez innych użytkowników. W związku z tym, te maszyny wirtualne nie są wyświetlane na **maszyn wirtualnych** strony.
 
 ## <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Jaka jest różnica między niestandardowego obrazu i formuły?
 Obraz niestandardowy jest wirtualny dysk twardy (VHD). Formuła jest obraz, który można skonfigurować z użyciem ustawień dodatkowych, a następnie zapisz i odtworzenia. Niestandardowy obraz może być korzystniejsze, jeśli chcesz szybko utworzyć kilka środowisk przy użyciu tego samego obrazu podstawowego, niezmienne. Formuła może być lepiej, jeśli chcesz odtworzyć konfiguracji maszyny wirtualnej za pomocą najnowsze elementy w ramach sieci wirtualnej lub podsieci lub jako Maszynę wirtualną o określonym rozmiarze. Aby uzyskać szczegółowe informacje, zobacz [porównanie niestandardowych obrazów i formuł w usłudze DevTest Labs](devtest-lab-comparing-vm-base-image-types.md).
@@ -184,7 +203,7 @@ Działanie w środowisku laboratoryjnym w witrynie Azure portal, można usunąć
 
 **Artefakty**
 ## <a name="what-are-artifacts"></a>Co to są artefaktów?
-Artefakty są możliwe do dostosowania elementy, które można użyć, aby wdrożyć swoje najnowsze elementy lub wdrożyć narzędzia programistyczne na maszynie Wirtualnej. Podczas tworzenia maszyny Wirtualnej, dołączyć artefaktów z maszyną wirtualną. Po aprowizacji maszyny Wirtualnej artefakty wdrażanie i konfigurowanie maszyny Wirtualnej. Różne przeniosła istniejące wcześniej artefaktów dostępnych w naszej [publicznego repozytorium GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Możesz również [tworzyć własne artefaktów](devtest-lab-artifact-author.md).
+Artefakty są możliwe do dostosowania elementy, które można użyć, aby wdrożyć swoje najnowsze elementy lub wdrożyć narzędzia programistyczne na maszynie Wirtualnej. Podczas tworzenia maszyny Wirtualnej, dołączyć artefaktów z maszyną wirtualną. Po aprowizacji maszyny Wirtualnej artefakty wdrażanie i konfigurowanie maszyny Wirtualnej. Różne istniejące artefaktów dostępnych w naszej [publicznego repozytorium GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Możesz również [tworzyć własne artefaktów](devtest-lab-artifact-author.md).
 
 
 **Konfiguracja laboratorium**
@@ -232,7 +251,7 @@ Jeśli jeden zasób jest nadrzędny do innego zasobu, zasób nadrzędny musi ist
 Maszyny wirtualne są zasobami podrzędnymi w ramach laboratorium w grupie zasobów. Korzystając z szablonów usługi Resource Manager do wdrażania maszyn wirtualnych przy użyciu programu PowerShell, nazwa grupy zasobów, które są udostępniane w skrypcie programu PowerShell powinna być nazwa grupy zasobów w środowisku laboratoryjnym. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie typowych problemów z wdrożeniem platformy](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors).
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Gdzie można znaleźć więcej informacji o błędzie w przypadku niepowodzenia wdrożenia maszyny Wirtualnej?
-Błędy wdrożenia maszyny Wirtualnej są przechwytywane w dziennikach aktywności. Laboratorium można znaleźć w dziennikach aktywności maszyn wirtualnych w ramach **dzienniki inspekcji** lub **diagnostyki maszyny wirtualnej** w menu zasobów w bloku maszyny Wirtualnej w laboratorium (bloku pojawia się po wybraniu maszyny Wirtualnej z **Moje wirtualny maszyny** listy).
+Błędy wdrożenia maszyny Wirtualnej są przechwytywane w dziennikach aktywności. Laboratorium można znaleźć w dziennikach aktywności maszyn wirtualnych w ramach **dzienniki inspekcji** lub **diagnostyki maszyny wirtualnej** w menu zasobów na stronie maszyny Wirtualnej w laboratorium (zostanie wyświetlona po wybraniu maszyny Wirtualnej z **Moje wirtualny maszyny** listy).
 
 Czasami błąd wdrożenia występuje przed rozpoczęciem wdrażania maszyny Wirtualnej. Przykładem jest, gdy zostanie przekroczony limit subskrypcji dla zasobu, który został utworzony z maszyną Wirtualną. W tym przypadku szczegóły błędu są przechwytywane w dziennikach aktywności lab poziomie. Dzienniki aktywności znajdują się w dolnej części **konfiguracji i zasad** ustawienia. Więcej informacji na temat używania działania dzienników na platformie Azure, zobacz [wyświetlanie dzienników aktywności do inspekcji akcje na zasobach](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 

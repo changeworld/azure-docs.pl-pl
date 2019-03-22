@@ -6,71 +6,54 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 68eb3f3e5c568bb518251aca2a4e76932ce2eee5
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 58f666d7ebf8ac02d393a42f55e00f08d82b8cae
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416212"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337092"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów usługi Azure Automation
 
 Zamiast tworzenia własnych elementów runbook i modułów w usłudze Azure Automation, możesz uzyskać dostęp do scenariuszy, które zostały już utworzone przez firmę Microsoft i społeczność.
 
-Można uzyskać elementów runbook z [galerii elementów Runbook](#runbooks-in-runbook-gallery) i moduły z [galerii programu PowerShell](#modules-in-powerShell-gallery).  Można również przyczyniają się do społeczności, udostępniając scenariusze, które tworzysz, zobacz [Dodawanie elementu runbook do galerii](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
+Możesz uzyskać [elementy runbook programu PowerShell](#runbooks-in-runbook-gallery) i [modułów](#modules-in-powerShell-gallery) z galerii programu PowerShell i [elementy runbook języka Python](#python-runbooks) z galerii Centrum skryptów. Można również przyczyniają się do społeczności, udostępniając scenariusze, które tworzysz, zobacz [Dodawanie elementu runbook do galerii](#adding-a-runbook-to-the-runbook-gallery)
 
-## <a name="runbooks-in-runbook-gallery"></a>Elementy Runbook w galerii elementów Runbook
+## <a name="runbooks-in-powershell-gallery"></a>Elementy Runbook w galerii programu PowerShell
 
-[Galerii elementów Runbook](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) firmy Microsoft i społeczności, który można zaimportować do usługi Azure Automation jest dostępnych wiele elementów runbook. Aby użyć jednego, Pobierz element runbook z galerii, która jest hostowana w [Centrum skryptów TechNet](https://gallery.technet.microsoft.com/scriptcenter/site/upload), lub bezpośrednio można zaimportować elementy runbook z galerii w witrynie Azure portal.
+[Galerii programu PowerShell](https://www.powershellgallery.com/packages) firmy Microsoft i społeczności, który można zaimportować do usługi Azure Automation jest dostępnych wiele elementów runbook. Aby użyć jednego, Pobierz element runbook z galerii lub bezpośrednio można zaimportować elementy runbook z galerii lub na koncie usługi Automation w witrynie Azure portal.
 
-Można importować tylko bezpośrednio z poziomu galerii elementów Runbook przy użyciu witryny Azure portal. Nie można wykonać tej funkcji przy użyciu programu Windows PowerShell.
+Można importować tylko bezpośrednio z galerii programu PowerShell przy użyciu witryny Azure portal. Nie można wykonać tej funkcji przy użyciu programu PowerShell.
 
 > [!NOTE]
-> Należy sprawdzić, czy zawartość wszelkie elementy runbook pobierany z galerii elementów Runbook i zachować szczególną ostrożność przy instalacji i uruchamiania ich w środowisku produkcyjnym.
+> Należy sprawdzić, czy zawartość wszelkie elementy runbook pobierany z galerii programu PowerShell i zachować szczególną ostrożność przy instalacji i uruchamiania ich w środowisku produkcyjnym.
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Aby zaimportować element runbook z galerii elementów Runbook za pomocą witryny Azure portal
+### <a name="to-import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Aby zaimportować element runbook programu PowerShell z galerii elementów Runbook za pomocą witryny Azure portal
 
 1. W witrynie Azure Portal otwórz konto usługi Automation.
 2. W obszarze **automatyzacji procesów**, kliknij pozycję **Galeria elementów Runbook**
-3. Znajdź element galerii ma i wybierz ją, aby wyświetlić jego szczegóły. Po lewej stronie możesz wprowadzić parametry dodatkowe wyszukiwania dla wydawcy i typu.
+3. Wybierz **źródła: Galeria programu PowerShell**.
+4. Znajdź element galerii ma i wybierz ją, aby wyświetlić jego szczegóły. Po lewej stronie możesz wprowadzić parametry dodatkowe wyszukiwania dla wydawcy i typu.
 
    ![Przeglądaj galerię](media/automation-runbook-gallery/browse-gallery.png)
 
-4. Kliknij pozycję **Wyświetl projekt źródłowy** do wyświetlania elementu w [Centrum skryptów TechNet](https://gallery.technet.microsoft.com/).
-5. Aby zaimportować element, kliknij go, aby wyświetlić jego szczegóły, a następnie kliknij przycisk **zaimportować** przycisku.
+5. Kliknij pozycję **Wyświetl projekt źródłowy** do wyświetlania elementu w [Centrum skryptów TechNet](https://gallery.technet.microsoft.com/).
+6. Aby zaimportować element, kliknij go, aby wyświetlić jego szczegóły, a następnie kliknij przycisk **zaimportować** przycisku.
 
    ![Przycisk Importuj](media/automation-runbook-gallery/gallery-item-detail.png)
 
-6. Opcjonalnie można zmienić nazwy elementu runbook, a następnie kliknij przycisk **OK** można zaimportować elementu runbook.
-7. Element runbook jest wyświetlany na **elementów Runbook** karcie dla konta usługi Automation.
+7. Opcjonalnie można zmienić nazwy elementu runbook, a następnie kliknij przycisk **OK** można zaimportować elementu runbook.
+8. Element runbook jest wyświetlany na **elementów Runbook** karcie dla konta usługi Automation.
 
-### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Dodawanie elementu runbook do galerii elementów runbook
+### <a name="adding-a-powershell-runbook-to-the-gallery"></a>Dodawanie elementu runbook programu PowerShell do galerii
 
-Firma Microsoft zaleca, aby dodać elementy runbook do galerii elementów Runbook, które uważasz, że powinien być przydatny dla innych klientów.  Można dodać elementu runbook przez [przekazać go do Centrum skryptów](https://gallery.technet.microsoft.com/site/upload) biorąc pod uwagę następujące informacje.
+Firma Microsoft zaleca, aby dodać elementy runbook do galerii programu PowerShell, które uważasz, że powinien być przydatny dla innych klientów. Galeria programu PowerShell akceptuje modułów programu PowerShell i skryptów programu PowerShell. Można dodać elementu runbook przez [przekazać go do galerii programu PowerShell](/powershell/gallery/how-to/publishing-packages/publishing-a-package).
 
-* Należy określić *Windows Azure* dla **kategorii** i *automatyzacji* dla **podkategorii** dla elementu runbook, które mają być wyświetlane w Kreator.  
-* Przekazywanie musi być pojedynczym `.ps1` lub `.graphrunbook` pliku.  Jeśli element runbook wymaga żadnych modułów podrzędnych elementów runbook i zasoby, powinien zawierać te elementy w opisie przesyłania i w sekcji komentarzy elementu runbook.  W przypadku scenariusza wymagające wiele elementów runbook przekazać każdy oddzielnie i wyświetlić listę nazw powiązanych elementów runbook we wszystkich ich opisy. Upewnij się, że używane te same znaczniki, dzięki czemu są one wyświetlane w tej samej kategorii. Użytkownik będzie miał odczytać opis, aby dowiedzieć się, że inne elementy runbook są wymagane scenariusz do pracy.
-* Dodaj tag "GraphicalPS", jeśli publikujesz **graficzny element runbook** (nie graficzny przepływ pracy).
-* Wstaw fragment kodu programu PowerShell lub przepływie pracy programu PowerShell do opisu przy użyciu **Wstaw sekcję kodu** ikony.
-* Podsumowanie dla przekazywania jest wyświetlana w wynikach galerii elementów Runbook, dlatego należy zadbać o szczegółowe informacje, które pomaga w identyfikacji funkcji elementu runbook użytkownika.
-* Jednego do trzech z następujących tagów, należy przypisać do przekazywania.  Element runbook jest wymieniony w Kreatorze w obszarze kategorii, które odpowiada jego tagów.  Dowolne tagi nie na tej liście są ignorowane przez kreatora. Jeśli nie określisz żadnych znaczników pasującego elementu runbook znajduje się w innych kategorii.
-  
-  * Backup
-  * Zarządzanie pojemnością
-  * Zmień kontrolę
-  * Zgodność
-  * Dev / Test środowisk
-  * Odzyskiwanie po awarii
-  * Monitorowanie
-  * Poprawianie
-  * Inicjowanie obsługi
-  * Korygowanie
-  * Zarządzanie cyklem życia maszyn wirtualnych
-
-* Automation aktualizacji galerii raz na godzinę, więc przesłane materiały nie będą widoczne natychmiast.
+> [!NOTE]
+> Graficzne elementy runbook nie są obsługiwane w galerii programu PowerShell.
 
 ## <a name="modules-in-powershell-gallery"></a>Moduły w galerii programu PowerShell
 
@@ -100,7 +83,7 @@ Moduły programu PowerShell zawierają polecenia cmdlet, które można użyć w 
 6. Aby zainstalować moduł bezpośrednio do usługi Azure Automation, kliknij przycisk **importu** przycisku.
 7. Po kliknięciu przycisk Importuj **zaimportować** okienko, zobaczysz nazwę modułu, który zamierzasz zaimportować. Jeśli wszystkie zależności są zainstalowane, **OK** zostanie aktywowany przycisk. W przypadku braku zależności, należy zaimportować te zależności, zanim będzie można zaimportować tego modułu.
 8. Na **zaimportować** kliknij **OK** Aby zaimportować moduł. Gdy usługa Azure Automation importuje moduł do swojego konta, wyodrębnia metadane dotyczące modułu i poleceń cmdlet. Ta akcja może potrwać kilka minut, ponieważ każde działanie ma zostać wyodrębniony.
-9.  Otrzymasz powiadomienie zainicjowane przez moduł jest wdrażana i kolejne powiadomienie po zakończeniu.
+9. Otrzymasz powiadomienie zainicjowane przez moduł jest wdrażana i kolejne powiadomienie po zakończeniu.
 10. Po zaimportowaniu modułu zobaczysz dostępne działania. Możesz użyć jej zasoby w elementów runbook i Desired State Configuration.
 
 > [!NOTE]
@@ -108,7 +91,10 @@ Moduły programu PowerShell zawierają polecenia cmdlet, które można użyć w 
 
 ## <a name="python-runbooks"></a>Elementy Runbook języka Python
 
-Elementy Runbook języka Python są dostępne w [galerii Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Elementy runbook języka Python, aby Galeria Centrum skryptów może współtworzyć zawartość. Po użytkownik upewnij się, dodać tag **Python** podczas przekazywania Twojego wkładu.
+Elementy Runbook języka Python są dostępne w [galerii Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Możesz współtworzyć elementów runbook galerii Centrum skryptów języka Python, klikając **Przekaż wkład**. Po użytkownik upewnij się, dodać tag **Python** podczas przekazywania Twojego wkładu.
+
+> [!NOTE]
+> Aby przekazać zawartość do [Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter) wymagany jest co najmniej 100 punktów. 
 
 ## <a name="requesting-a-runbook-or-module"></a>Żądanie runbook lub modułu
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202694"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314998"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z rozwiązania Hue w klastrach usługi HDInsight Hadoop
 
@@ -95,7 +95,7 @@ Tunelowanie SSH jest jedynym sposobem na dostęp do aplikacji Hue w klastrze, gd
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Jest nazwą hosta z podstawowym węzłem głównym, gdzie znajduje się witryna sieci Web aplikacji Hue.
-4. Otwieranie portalu Hue w przy użyciu przeglądarki http://HOSTNAME:8888. Zastąp nazwy hosta o nazwie uzyskanego w poprzednim kroku.
+4. Otwieranie portalu Hue HTTP przy użyciu przeglądarki:\//HOSTNAME:8888. Zastąp nazwy hosta o nazwie uzyskanego w poprzednim kroku.
 
    > [!NOTE]  
    > Po zalogowaniu się po raz pierwszy, zostanie wyświetlony monit o utworzenie konta do logowania do portalu Hue. Poświadczenia określone w tym miejscu będzie ograniczona do portalu i nie są związane z administratora lub poświadczeń użytkownika SSH określone w podczas aprowizacji klastra.

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 1eab0be59de90ad68cbf9601b7e2200e640875f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58178071"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317497"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Używanie schematu CloudEvents za pomocą usługi Event Grid
 
@@ -70,7 +70,7 @@ CloudEvents v0.1 ma następujące właściwości dostępne:
 | source             | URI      | "/ mycontext"                     | W tym artykule opisano producenta zdarzeń                                       | temat #subject
 | Identyfikator zdarzenia            | String   | "1234-1234-1234"                 | Identyfikator zdarzenia                                                    | id
 | eventTime          | Znacznik czasu| "2018-04-05T17:31:00Z"           | Sygnatura czasowa gdy zdarzenie wystąpiło (opcjonalnie)                    | eventTime
-| schemaURL          | URI      | „https://myschema.com”           | Link do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
+| schemaURL          | URI      | "https:\//myschema.com"           | Link do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
 | contentType        | String   | "application/json"               | Opisz format kodowania danych (opcjonalnie)                       | *nie jest używany*
 | Rozszerzenia         | Mapa      | { "extA": "vA", "extB", "vB" }  | Wszelkie dodatkowe metadane (opcjonalnie)                                 | *nie jest używany*
 | dane               | Obiekt   | {"objA": "oceny luk w zabezpieczeniach", "objB", "vB"}  | Ładunek zdarzenia (opcjonalnie)                                       | dane

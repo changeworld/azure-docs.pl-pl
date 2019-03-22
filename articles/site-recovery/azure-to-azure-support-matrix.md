@@ -1,5 +1,5 @@
 ---
-title: Macierz obsługi usługi Azure Site Recovery do odzyskiwania po awarii maszyn wirtualnych IaaS platformy Azure między regionami platformy Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+title: Macierz obsługi na potrzeby odzyskiwania po awarii maszyn wirtualnych platformy Azure między regionami platformy Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Zawiera podsumowanie obsługiwanych systemów operacyjnych i konfiguracji do usługi Azure Site Recovery replikacji maszyn wirtualnych (VM) z jednego regionu do innego na potrzeby odzyskiwania po awarii.
 services: site-recovery
 author: rayne-wiselman
@@ -8,33 +8,33 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 0dac046c359bb8affd69145c73a66cf4ac079012
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: b0fb84131f33d216e099978a7c9ba5481c1691d1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287200"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312822"
 ---
-# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
+# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Macierz obsługi na potrzeby replikacji maszyn wirtualnych platformy Azure z jednego regionu do innego
 
 Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników podczas wdrażania odzyskiwania po awarii dzięki replikacji, trybu failover i odzyskiwania maszyn wirtualnych platformy Azure między regionami platformy Azure do innego, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
 
 
 ## <a name="deployment-method-support"></a>Obsługa metody wdrażania
 
-**Metoda wdrażania** |  **Obsługiwane / nieobsługiwane**
+**Wdrożenie** |  **Pomoc techniczna**
 --- | ---
-**Azure Portal** | Obsługiwane
-**Program PowerShell** | [Replikacji Azure – Azure przy użyciu programu PowerShell](azure-to-azure-powershell.md)
-**Interfejs API REST** | Obsługiwane
+**Azure Portal** | Obsługiwane.
+**Program PowerShell** | Obsługiwane. [Dowiedz się więcej](azure-to-azure-powershell.md)
+**Interfejs API REST** | Obsługiwane.
 **Interfejs wiersza polecenia** | Nie jest obecnie obsługiwany
 
 
 ## <a name="resource-support"></a>Obsługa zasobów
 
 **Akcja zasobu** | **Szczegóły**
---- | --- 
-**Przenoszenie magazynu między grupami zasobów** | Nieobsługiwane
+--- | --- | ---
+**Przenieś magazynów między grupami zasobów** | Nieobsługiwane
 **Przenoszenie zasobów obliczeniowych i magazynu/sieci między grupami zasobów** | Nieobsługiwane.<br/><br/> Po maszyny Wirtualnej jest replikowany, przenieść Maszynę wirtualną lub skojarzone składniki, takie jak storage i sieci, należy wyłączyć i ponownie włączyć replikację dla maszyny Wirtualnej.
 **Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory.
 **Migrowanie maszyn wirtualnych między regionami w ramach klastrów geograficzne obsługiwane (wewnątrz i między subskrypcjami)** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory.
@@ -57,12 +57,12 @@ Chiny | Chiny wschodnie, Chiny Północne, Chiny North2, 2 (Chiny)
 
 >[!NOTE]
 >
-> - Aby uzyskać **Brazylia Południowa** regionu, możesz zreplikować i trybie Failover do jednej z następujących czynności: Południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA. Należy zauważyć, Usługa Site Recovery włączył tylko regionu Brazylia Południowa, ma być używany jako region źródła, z których mogą być chronione maszyny wirtualne. Jego **nie może pełnić roli regionie docelowym odzyskiwania po awarii** dla każdej z regionów platformy Azure, takich jak południowo-środkowe stany USA. Przyczyną tego jest opóźnienie obserwuje z powodu położenia geograficznego, zalecana jest wybierz region żadnych innych Ameryka niż Brazylia Południowa.
->
-> - Jeśli jesteś **nie mogli zobaczyć region** miejscu **utworzyć magazyn** następnie upewnij się, że Twoja subskrypcja ma dostęp do tworzenia zasobów w danym regionie. Na przykład: Jeśli nie można utworzyć magazyn w Francja Południowa Twoja subskrypcja nie ma dostępu do regionu południowo-(Francja). Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "subskrypcji listy dozwolonych adresów dla XXX region platformy Azure"
->
-> - Jeśli jesteś **nie mogli zobaczyć region** w ramach klastra geograficzne **podczas włączania replikacji** następnie upewnij się, że Twoja subskrypcja ma dostęp do utworzenia maszyny wirtualnej w danym regionie. Na przykład: Jeśli próbujesz chronić maszyny wirtualne z Francja środkowa do Francja Południowa, a nie widzisz Francja Południowa w regionie listy rozwijanej, a następnie Twoja subskrypcja nie ma dostępu, aby wdrożyć maszynę Wirtualną, w tym regionie. Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "subskrypcji listy dozwolonych adresów dla XXX region platformy Azure"
-> - Nie można wybrać regionów, w klastrach geograficzne wymienionych powyżej.
+> - Aby uzyskać **Brazylia Południowa**, możesz zreplikować i awaryjnej w tych regionach: Południowo-środkowe stany USA, zachodnie środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i Północnośrodkowa.
+> - Brazylia Południowa należy używać tylko jako region źródła, z którego maszyny wirtualne można replikować przy użyciu Site Recovery. Nie może pełnić roli regionie docelowym. Jest to z powodu problemów z opóźnieniem z powodu geograficznej odległości. 
+> - Możesz pracować w regionach, do których użytkownik ma odpowiedni dostęp.
+> - Jeśli region, w którym chcesz utworzyć magazyn nie pokazuje, upewnij się, że Twoja subskrypcja ma dostęp do tworzenia zasobów w danym regionie. 
+> - Jeśli nie widzisz region w ramach klastra geograficzne po włączeniu replikacji, upewnij się, że Twoja subskrypcja ma uprawnienia do tworzenia maszyn wirtualnych w tym regionie. 
+
 
 
 ## <a name="cache-storage"></a>Magazyn pamięci podręcznej
@@ -195,7 +195,7 @@ Szyfrowanie danych magazynowanych (SSE) | Obsługiwane | Funkcja SSE jest ustawi
 Usługa Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Włączone dla maszyn wirtualnych [szyfrowanie za pomocą aplikacji usługi Azure AD](https://aka.ms/ade-aad-app) są obsługiwane |
 Usługa Azure Disk Encryption (ADE) dla systemu Linux, systemu operacyjnego | Nieobsługiwane |
 Dodaj lub usuń gorąco dysku | Nieobsługiwane | Dodaj lub Usuń dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
-Wykluczanie dysku | [obsługiwane za pomocą programu powershell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine) |   Dysk tymczasowy jest domyślnie wykluczony.
+Wykluczanie dysku | Pomoc techniczna. Należy użyć [Powershell](azure-to-azure-exclude-disks.md) do skonfigurowania. |  Dyski tymczasowe są wyłączone domyślnie.
 Bezpośrednie miejsca do magazynowania  | Obsługiwane w przypadku punktów odzyskiwania spójnego na poziomie awarii. Punkty odzyskiwania zapewniających spójność aplikacji nie są obsługiwane. |
 Serwer plików skalowalny w poziomie  | Obsługiwane w przypadku punktów odzyskiwania spójnego na poziomie awarii. Punkty odzyskiwania zapewniających spójność aplikacji nie są obsługiwane. |
 LRS | Obsługiwane |
@@ -203,17 +203,22 @@ GRS | Obsługiwane |
 RA-GRS | Obsługiwane |
 ZRS | Nieobsługiwane |
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
-Usługa Azure Storage zapory sieci wirtualnej  | Obsługiwane | Jeśli do kont magazynu, jest ograniczenie dostępu sieci wirtualnej, upewnij się, że ["Zezwalaj na zaufane usługi firmy Microsoft"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+Usługa Azure Storage zapory dla sieci wirtualnych  | Obsługiwane | Jeśli ograniczanie dostępu do sieci wirtualnej do konta magazynu, należy włączyć [dozwolonych zaufanych usług firmy Microsoft](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Konta magazynu ogólnego przeznaczenia w wersji 2 (zarówno gorąca i chłodna warstwa) | Nie | Wzrost kosztów transakcji znacznie w porównaniu do ogólnego przeznaczenia w wersji 1 konta magazynu
 
 >[!IMPORTANT]
-> Upewnij się, że przestrzegasz maszyn wirtualnych dysku cele skalowalności i wydajności dla [Linux](../virtual-machines/linux/disk-scalability-targets.md) lub [Windows](../virtual-machines/windows/disk-scalability-targets.md) maszyn wirtualnych, aby uniknąć problemów z wydajnością. Jeśli stosujesz ustawienia domyślne, Usługa Site Recovery utworzy wymagane dyski i kont magazynu, w oparciu o konfigurację źródła. Dostosowywanie i wybrać własne ustawienia, upewnij się, wykonaj cele dotyczące skalowalności i wydajności dysku dla źródła maszyn wirtualnych.
+> Aby uniknąć problemów z wydajnością, upewnij się, postępuj zgodnie z maszyny Wirtualnej cele skalowalności i wydajności dysku dla [Linux](../virtual-machines/linux/disk-scalability-targets.md) lub [Windows](../virtual-machines/windows/disk-scalability-targets.md) maszyn wirtualnych. Jeśli używasz ustawienia domyślne, Site Recovery tworzy wymagane dyski i kont magazynu, w oparciu o konfigurację źródła. Jeśli możesz dostosować i wybrać własne ustawienia, należy wykonać cele skalowalności i wydajności dysku, źródłowe maszyny wirtualne.
 
-## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>Częstotliwość zmiany limity platformy Azure Site Recovery do replikacji danych
-W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. Limity te są oparte na naszych testach, ale nie obejmują wszystkich możliwych kombinacji operacji we/wy aplikacji. Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji. Firma Microsoft należy należy również zauważyć, że istnieją dwa ograniczenia należy wziąć pod uwagę na dysk danych na dane maszyny wirtualnej postępów i współczynnika zmian.
-Na przykład, jeśli spojrzymy na dysk Premium P20 w poniższej tabeli, Usługa Site Recovery może obsługiwać 5 MB/s współczynniku dysku na maksymalnie pięciu tych dysków na maszynę Wirtualną z powodu limitu 25 MB/s łącznym dziennym współczynniku maszyny Wirtualnej.
+## <a name="limits-and-data-change-rates"></a>Limity i danych częstotliwość zmiany
 
-**Cel magazynu replikacji** | **Średni rozmiar źródłowych operacji we/wy na dysku** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
+W poniższej tabeli przedstawiono limity Site Recovery.
+
+- Te limity są oparte na naszych testach, ale oczywiście nie obejmują wszystkich możliwych operacji We/Wy kombinacji aplikacji.
+- Rzeczywiste wyniki mogą się różnić zależnie od różnych aplikacji we/wy.
+- Istnieją dwa ograniczenia należy wziąć pod uwagę na dysk danych na dane maszyny wirtualnej postępów i współczynnika zmian.
+- Na przykład jeśli używamy dysk Premium P20, zgodnie z opisem w poniższej tabeli, Usługa Site Recovery może obsługiwać 5 MB, o współczynniku dysku, za pomocą na maksymalnie pięciu tych dysków na maszynę Wirtualną, ze względu na limit wynoszący 25 MB/s łącznym dziennym współczynniku maszyny Wirtualnej.
+
+**Cel magazynu** | **We/Wy dysku średni źródłowy** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
 ---|---|---|---
 Standard Storage | 8 KB | 2 MB/s | 168 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk
@@ -222,7 +227,7 @@ Dysk w warstwie Premium P10 lub P15 | 32 KB lub większy | 8 MB/s | 672 GB na dy
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |20 MB/s | 1684 GB na dysk
 ## <a name="replicated-machines---networking"></a>Replikowane maszyny — sieci
-**Konfiguracja** | **Pomoc techniczna** | **Szczegóły**
+**Ustawienie** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
 NIC | Maksymalna liczba obsługiwanych dla określonego rozmiaru maszyny Wirtualnej platformy Azure | Karty sieciowe są tworzone podczas tworzenia maszyny Wirtualnej podczas pracy awaryjnej.<br/><br/> Liczba kart sieciowych na maszynie Wirtualnej w trybie failover zależy od liczba kart sieciowych źródłowej maszyny Wirtualnej po włączeniu replikacji. Jeśli dodasz lub usuniesz kartę Sieciową po włączeniu replikacji, wpływa nie liczba kart sieciowych zreplikowaną maszyną Wirtualną po włączeniu trybu failover.
 Internetowy moduł równoważenia obciążenia | Obsługiwane | Kojarzenie modułu równoważenia obciążenia wstępnie skonfigurowane, za pomocą skryptu usługi Azure Automation w planie odzyskiwania.
@@ -235,15 +240,15 @@ Dynamiczny adres IP | Obsługiwane | Karta sieciowa w źródle ma dynamicznych a
 Traffic Manager     | Obsługiwane | Tak, aby ruch jest kierowany do punktu końcowego w regionie źródłowym w regularnych odstępach czasu, a do punktu końcowego w regionie docelowym w przypadku trybu failover, można wstępnie skonfigurować usługi Traffic Manager.
 System DNS platformy Azure | Obsługiwane |
 Niestandardowe DNS  | Obsługiwane |
-Nieuwierzytelnione serwera Proxy | Obsługiwane | Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)    
+Nieuwierzytelnione serwera proxy | Obsługiwane | [Dowiedz się więcej]. (site-recovery-azure-to-azure-networking-guidance.md)   
 Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna korzysta z uwierzytelnionego serwera proxy dla połączenia wychodzącego, nie może być replikowane za pomocą usługi Azure Site Recovery.    
-Sieć VPN między lokacjami, z lokalnych (z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch odzyskiwania lokacji nie jest kierowany do sieci lokalnej. Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)  
-Połączenie między sieciami Wirtualnymi | Obsługiwane | Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)  
+Połączenie lokacja lokacja sieci VPN do sieci lokalnej<br/><br/>(z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch odzyskiwania lokacji nie jest kierowany do sieci lokalnej. [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)    
+Połączenie między sieciami Wirtualnymi | Obsługiwane | [Dowiedz się więcej](site-recovery-azure-to-azure-networking-guidance.md)  
 Punkty końcowe usługi sieci wirtualnej | Obsługiwane | Jeśli jest ograniczenie dostępu sieci wirtualnej, dla kont magazynu, upewnij się, że zaufanych usług firmy Microsoft będą miały dostęp do konta magazynu.
-Accelerated Networking | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Wydajniejsze sieci | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Odczyt [wskazówki dotyczące replikowania maszyn wirtualnych platformy Azure networking](site-recovery-azure-to-azure-networking-guidance.md).
+- Odczyt [sieć wskazówki](site-recovery-azure-to-azure-networking-guidance.md) replikowania maszyn wirtualnych platformy Azure.
 - Wdrażanie odzyskiwania po awarii przez [replikowanie maszyn wirtualnych platformy Azure](site-recovery-azure-to-azure.md).

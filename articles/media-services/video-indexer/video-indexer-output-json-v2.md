@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: feb74b923a1f15105a2d80f8fefb09184162cb9b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0eedc32ee96c94b8b3621afc0ee211ed2ff19f5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990466"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314879"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
 
@@ -85,7 +85,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |thumbnailId|Miniatura wideo identyfikatora. Aby uzyskać rzeczywiste miniatury, wywołanie Get miniatury (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) i przekaż go thumbnailVideoId i thumbnailId.|
 |twarzy|Może zawierać zero lub więcej twarzy. Aby uzyskać więcej informacji, zobacz [twarzy](#faces).|
 |słowa kluczowe|Może zawierać zero lub więcej słów kluczowych. Aby uzyskać więcej informacji, zobacz [słowa kluczowe](#keywords).|
-|opinie|Może zawierać zero lub więcej tonacji. Aby uzyskać więcej informacji, zobacz [tonacji](#sentiments).|
+|tonacje|Może zawierać zero lub więcej tonacji. Aby uzyskać więcej informacji, zobacz [tonacji](#sentiments).|
 |audioEffects| Może zawierać zero lub więcej audioEffects. Aby uzyskać więcej informacji, zobacz [audioEffects](#audioeffects).|
 |etykiety| Może zawierać zero lub więcej etykiet. Aby uzyskać szczegółowe więcej informacji, zobacz [etykiety](#labels).|
 |marek| Może zawierać zero lub więcej marek. Aby uzyskać więcej informacji, zobacz [marek](#brands).|
@@ -164,7 +164,7 @@ Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoic
 |zrzuty|[Zrzuty](#shots) wymiaru.|
 |marek|[Marek](#brands) wymiaru.|
 |audioEffects|[AudioEffects](#audioEffects) wymiaru.|
-|opinie|[Tonacji](#sentiments) wymiaru.|
+|tonacje|[Tonacji](#sentiments) wymiaru.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) wymiaru.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) wymiaru.|
 |emocji| [Emocji](#emotions) wymiaru.|
@@ -245,34 +245,26 @@ Przykład:
 |zaufania|Rozpoznawanie zaufania.|
 |language|Język optyczne rozpoznawanie znaków.|
 |wystąpienia|Lista zakresów czasu, w którym znajdowały się tym optyczne rozpoznawanie znaków (OCR tego samego mogą pojawiać się wielokrotnie).|
+|Wysokość|Wysokość prostokąta optyczne rozpoznawanie znaków|
+|top|Najważniejsze lokalizacji w piks.|
+|po lewej stronie| Po lewej stronie lokalizacji w piks.|
+|Szerokość|Szerokość prostokąta optyczne rozpoznawanie znaków|
 
 ```json
 "ocr": [
     {
       "id": 0,
       "text": "LIVE FROM NEW YORK",
-      "confidence": 0.91,
+      "confidence": 675.971,
+      "height": 35,
       "language": "en-US",
+      "left": 31,
+      "top": 97,
+      "width": 400,      
       "instances": [
         {
           "start": "00:00:26",
           "end": "00:00:52"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "text": "NOTICIAS EN VIVO",
-      "confidence": 0.9,
-      "language": "es-ES",
-      "instances": [
-        {
-          "start": "00:00:26",
-          "end": "00:00:28"
-        },
-        {
-          "start": "00:00:32",
-          "end": "00:00:38"
         }
       ]
     }
@@ -585,7 +577,7 @@ Firmy i produkt nazw marek wykryte w zamiana mowy na tekst transkrypcji i/lub op
 ]
 ```
 
-#### <a name="sentiments"></a>opinie
+#### <a name="sentiments"></a>tonacje
 
 Opinie są agregowane według ich pola sentimentType (neutralna/plus/minus). Na przykład 0-0.1, 0.2 0,1.
 

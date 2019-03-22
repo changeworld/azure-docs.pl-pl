@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 2b2f5a441209b76f4c90c1a4682215d388b2d53a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 29e851772e665b4130ee58b04c264d55bcd54523
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242895"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317786"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Analiza biznesowa programu SQL Server w usłudze Azure Virtual Machines
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Galeria maszyny wirtualnej Microsoft Azure zawiera obrazy, które zawierają instalacji programu SQL Server. Wersje programu SQL Server w galerii obrazów obsługiwane są te same pliki instalacji, które można zainstalować na komputerach lokalnych i maszyn wirtualnych. Ten temat zawiera podsumowanie funkcji programu SQL Server Business Intelligence (BI) zainstalowanych na obrazach i procedury konfiguracji wymaganej po zaaprowizowaniu maszyny wirtualnej. W tym temacie opisano obsługiwane topologie wdrażania funkcji analizy Biznesowej i najlepsze rozwiązania.
 
@@ -70,15 +70,15 @@ Aby uzyskać więcej informacji na temat wersji i funkcji obsługiwanych przez p
 W poniższej tabeli podsumowano funkcje analizy biznesowej, zainstalowanym typowe obrazy galerii maszyny wirtualnej Microsoft Azure dla programu SQL Server:
 
 * SQL Server 2016 SP1 Enterprise
-* SQL Server 2016 z dodatkiem SP1 Standard
+* SQL Server 2016 SP1 Standard
 * SQL Server 2014 SP2 Enterprise
-* SQL Server 2014 z dodatkiem SP2 Standard
+* SQL Server 2014 SP2 Standard
 * SQL Server 2012 SP3 Enterprise
 * SQL Server 2012 SP3 Standard
 
 | Funkcję analizy Biznesowej programu SQL Server | Instalowany w obrazie galerii | Uwagi |
 | --- | --- | --- |
-| **Tryb macierzysty usług raportowania** |Yes |Zainstalowany, ale wymaga konfiguracji, w tym adres URL Menedżera raportów. Zobacz sekcję [konfigurowania usług Reporting Services](#configure-reporting-services). |
+| **Reporting Services Native Mode** |Yes |Zainstalowany, ale wymaga konfiguracji, w tym adres URL Menedżera raportów. Zobacz sekcję [konfigurowania usług Reporting Services](#configure-reporting-services). |
 | **Reporting Services w trybie programu SharePoint** |Nie |Obraz galerii maszyny wirtualnej Microsoft Azure nie ma programu SharePoint lub SharePoint pliki instalacyjne. <sup>1</sup> |
 | **Wyszukiwania danych i wielowymiarowych usług Analysis Services (OLAP)** |Yes |Zainstalowany i skonfigurowany jako domyślne wystąpienie usług Analysis Services |
 | **Tabelaryczne usługi Analysis Services** |Nie |Obsługiwane w programie SQL Server 2012, 2014 i 2016 obrazy, ale go nie zainstalowano domyślnie. Zainstaluj inne wystąpienie usług Analysis Services. Zobacz sekcję dotyczącą instalowania innych usług SQL Server i funkcji w tym temacie. |
@@ -107,7 +107,7 @@ W poniższej tabeli podsumowano funkcje analizy biznesowej, zainstalowanym typow
   > [!NOTE]
   > Aparat bazy danych programu SQL Server jest wymagany w obsługiwanych scenariuszach Power BI. Na serwerze jednej maszyny Wirtualnej topologii aparatu bazy danych musi działać w tej samej maszyny Wirtualnej.
   
-    Aby uzyskać więcej informacji, zobacz: [odinstalowania usług Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) i [odinstalować wystąpienia Analysis Services](https://msdn.microsoft.com/library/ms143687.aspx).
+    Aby uzyskać więcej informacji zobacz następujące tematy: [Odinstalowywanie usług Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) i [wystąpienia usług Analysis Services](https://msdn.microsoft.com/library/ms143687.aspx).
 * Sprawdź **Windows Update** nowe "ważne aktualizacje". Często są odświeżane obrazów maszyn wirtualnych platformy Azure firmy Microsoft; jednak ważne aktualizacje może stać się niedostępne z **Windows Update** po ostatniego odświeżania obrazu maszyny Wirtualnej.
 
 ## <a name="example-deployment-topologies"></a>Przykładowe topologie wdrażania
@@ -168,13 +168,13 @@ W **systemu Windows Server 2012/2016**:
 W **systemu Windows Server 2008 R2**:
 
 1. Kliknij przycisk **Start**, a następnie kliknij przycisk **wszystkie programy**.
-2. Kliknij przycisk **programu Microsoft SQL Server 2016**.
+2. Click **Microsoft SQL Server 2016**.
 3. Kliknij przycisk **narzędzia konfiguracji**.
 4. Kliknij prawym przyciskiem myszy **Reporting Services Configuration Manager** i kliknij przycisk **Uruchom jako Administrator**.
 
 lub:
 
-1. Kliknij przycisk **Start**.
+1. Kliknij przycisk **Uruchom**.
 2. W **Wyszukaj programy i pliki** typ okna dialogowego **usług reporting services**. Jeśli maszyna wirtualna działa w systemie Windows Server 2012, wpisz **usług reporting services** na ekranie Start do systemu Windows Server 2012.
 3. Kliknij prawym przyciskiem myszy **Reporting Services Configuration Manager** i kliknij przycisk **Uruchom jako Administrator**.
    
@@ -217,7 +217,7 @@ Aby uzyskać informacje na temat uprawnień serwera raportów, zobacz [udzielani
 Aby sprawdzić konfigurację, przejdź do Menedżera raportów na maszynie Wirtualnej.
 
 1. Na maszynie Wirtualnej Uruchom program Internet Explorer z uprawnieniami administratora.
-2. Przejdź do http://localhost/reports na maszynie Wirtualnej.
+2. Przejdź do protokołu http: \/ /localhost/raporty na maszynie Wirtualnej.
 
 ### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>Nawiązywanie połączenia zdalnego w sieci web portalu lub Menedżera raportów, 2014 i 2012
 Jeśli chcesz połączyć z portalu sieci web lub Menedżera raportów dla 2014 i 2012 na maszynie wirtualnej z komputera zdalnego, należy utworzyć nową maszynę wirtualną punktu końcowego TCP. Domyślnie serwer raportów nasłuchuje żądań HTTP na **portu 80**. Jeśli skonfigurujesz adresów URL serwera raportów, aby użyć innego portu, należy określić ten numer portu w poniższych instrukcjach.
@@ -226,22 +226,22 @@ Jeśli chcesz połączyć z portalu sieci web lub Menedżera raportów dla 2014 
 2. Otwórz port 80 w zaporze maszyny wirtualnej.
 3. Przejdź do portalu sieci web lub raportu manager, za pomocą maszyny wirtualnej platformy Azure **nazwy DNS** jako nazwy serwera w adresie URL. Na przykład:
    
-    **Serwer raportów**: http://uebi.cloudapp.net/reportserver **portalu sieci Web**:   http://uebi.cloudapp.net/reports
+    **Serwer raportów**: http://uebi.cloudapp.net/reportserver  **Portal sieci Web**: http://uebi.cloudapp.net/reports
    
     [Konfigurowanie zapory dla dostępu do serwera raportów](https://msdn.microsoft.com/library/bb934283.aspx)
 
 ### <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>Można tworzyć i publikować raporty do maszyny wirtualnej platformy Azure
 Poniższa tabela zawiera podsumowanie opcji, aby opublikować istniejące raporty z komputera lokalnego na serwerze raportów hostowany na maszynie wirtualnej platformy Microsoft:
 
-* **Report Builder**: maszyna wirtualna zawiera kliknięcie — raz wersji programu Microsoft SQL Server Report Builder dla programu SQL 2014 i 2012. Uruchomienie raportu konstruktora pierwszej maszynie wirtualnej z programem SQL 2016:
+* **Report Builder**: Maszyna wirtualna zawiera kliknięcie — raz wersji programu Microsoft SQL Server Report Builder dla programu SQL 2014 i 2012. Uruchomienie raportu konstruktora pierwszej maszynie wirtualnej z programem SQL 2016:
   
   1. Uruchom przeglądarkę z uprawnieniami administracyjnymi.
   2. Przejdź do portalu sieci web na maszynie wirtualnej, a następnie wybierz pozycję **Pobierz** ikonę w prawym górnym rogu.
   3. Wybierz **Report Builder**.
      
      Aby uzyskać więcej informacji, zobacz [uruchomić program Report Builder](https://msdn.microsoft.com/library/ms159221.aspx).
-* **SQL Server Data Tools**: maszyna wirtualna: SQL Server Data Tools jest zainstalowany na maszynie wirtualnej i może służyć do tworzenia **projekty z serwera raportów** i raporty na maszynie wirtualnej. SQL Server Data Tools mogą publikować raporty serwera raportów na maszynie wirtualnej.
-* **Program SQL Server Data Tools: Zdalny**: na komputerze lokalnym Utwórz projekt usług Reporting Services w programie SQL Server Data Tools, która zawiera raporty usług Reporting Services. Skonfiguruj projekt, aby nawiązać połączenie z adresu URL usługi internetowej.
+* **SQL Server Data Tools**: VM:  SQL Server Data Tools jest zainstalowany na maszynie wirtualnej i może służyć do tworzenia **projekty z serwera raportów** i raporty na maszynie wirtualnej. SQL Server Data Tools mogą publikować raporty serwera raportów na maszynie wirtualnej.
+* **SQL Server Data Tools: Zdalne**:  Na komputerze lokalnym Utwórz projekt usług Reporting Services w programie SQL Server Data Tools, która zawiera raporty usług Reporting Services. Skonfiguruj projekt, aby nawiązać połączenie z adresu URL usługi internetowej.
   
     ![Program SSDT właściwości projektu dla projektu usług SSRS](./media/virtual-machines-windows-classic-ps-sql-bi/IC650114.gif)
 * Tworzenie. Wirtualnego dysku twardego dysku twardym, który zawiera raporty i następnie przekaż i dołączanie dysku.
@@ -258,7 +258,7 @@ Aby zainstalować dodatkowy serwer SQL usług, takich jak usługi Analysis Servi
 2. Kliknij przycisk **Microsoft SQL Server 2016**, **Microsoft SQL Server 2014** lub **Microsoft SQL Server 2012** a następnie kliknij przycisk **narzędzia konfiguracji** .
 3. Kliknij przycisk **Centrum instalacji SQL Server**.
 
-Lub uruchamiania C:\SQLServer_13.0_full\setup.exe, C:\SQLServer_12.0_full\setup.exe lub C:\SQLServer_11.0_full\setup.exe
+Or run C:\SQLServer_13.0_full\setup.exe, C:\SQLServer_12.0_full\setup.exe or C:\SQLServer_11.0_full\setup.exe
 
 > [!NOTE]
 > Podczas pierwszego uruchomienia Instalatora programu SQL Server więcej plików instalacyjnych może zostać pobrana i wymaga ponownego uruchomienia maszyny wirtualnej i ponownie uruchomić Instalatora programu SQL Server.
@@ -317,7 +317,7 @@ Ta sekcja zawiera podsumowanie punktów końcowych maszyny wirtualnej platformy 
   * Tworzenie punktów końcowych maszyny wirtualnej dla portów dostrzeżone (*).
 * Jeśli maszyna wirtualna jest przyłączona do domeny przy użyciu tunelu VPN, takich jak sieci wirtualne platformy Azure, punktów końcowych, które nie są wymagane. Jednak otworzyć porty w zaporze na maszynie Wirtualnej.
   
-  | Port | Typ | Opis |
+  | Port | Type | Opis |
   | --- | --- | --- |
   | **80** |TCP |Raport serwera dostępu zdalnego (*). |
   | **1433** |TCP |SQL Server Management Studio (*). |

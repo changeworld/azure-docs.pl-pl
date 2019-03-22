@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847131"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310021"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Instalowanie aplikacji w portalu wydawców
 
@@ -53,7 +53,7 @@ Formularz ustawień oferty jest podstawowej postaci, aby określić ustawienia o
 
 Jest to unikatowy identyfikator oferty w ramach profilu wydawcy. Ten identyfikator będzie widoczny w adresach URL produktu. Może składać się tylko z małych znaków alfanumerycznych i łączników (-). Identyfikator nie może kończyć się kreską i nie może przekraczać 50 znaków. To pole jest zablokowane, gdy oferty przechodzi na żywo.
 
-na przykład, jeśli Wydawca **"contoso"** wydawców tworzy oferty z Identyfikatorem oferty **"Przykładowy WebApp"**, pojawi się w usłudze AppSource, jako "https://appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+na przykład, jeśli Wydawca **"contoso"** wydawców tworzy oferty z Identyfikatorem oferty **"Przykładowy WebApp"**, pojawi się w usłudze AppSource, jako "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>Identyfikator wydawcy
 

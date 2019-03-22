@@ -1,33 +1,33 @@
 ---
-title: Przełączanie w tryb failover i powrót po awarii maszyn wirtualnych IaaS platformy Azure replikowanych do dodatkowego regionu świadczenia usługi Azure na potrzeby odzyskiwania po awarii za pomocą usługi Azure Site Recovery.
-description: Dowiedz się, jak przełączać w tryb failover i przywracać po awarii maszyny wirtualne platformy Azure replikowane do dodatkowego regionu świadczenia usługi Azure na potrzeby odzyskiwania po awarii za pomocą usługi Azure Site Recovery.
+title: Tryb failover i ponownie włączyć ochronę maszyn wirtualnych platformy Azure replikowane do regionu pomocniczego platformy Azure w celu odzyskiwania po awarii przy użyciu usługi Azure Site Recovery.
+description: Dowiedz się, jak w trybie Failover i ponownie włączyć ochronę maszyn wirtualnych platformy Azure replikowane do regionu pomocniczego platformy Azure do odzyskiwania po awarii, za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ba1e65ca915c576d2424b166488b89baa92c24a9
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: HT
+ms.openlocfilehash: c19e554571927efa907350df1f1fbbd8ff491c42
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729040"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314760"
 ---
-# <a name="fail-over-and-reprotect-azure-vms-between-azure-regions"></a>Tryb failover i ponownie włączyć ochronę maszyn wirtualnych platformy Azure między regionami platformy Azure
+# <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Tryb failover i ponownie włączyć ochronę maszyn wirtualnych platformy Azure między regionami
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do realizacji strategii odzyskiwania po awarii przez zarządzanie replikacją, przełączaniem do trybu failover i powrotem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure oraz koordynowanie tych procesów.
 
-W tym samouczku opisano sposób przełączania w tryb failover jednej maszyny wirtualnej platformy Azure do pomocniczego regionu świadczenia usługi Azure. Po przełączeniu w tryb failover możesz przywrócić ją po awarii do regionu podstawowego, kiedy stanie się dostępny. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku opisano sposób awaryjnego przełączania maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure. Po przełączeniu w tryb failover, należy ponownie maszynę Wirtualną włączyć ochronę. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Przełączanie w tryb failover maszyny wirtualnej platformy Azure
 > * Ponowne włączanie ochrony pomocniczej maszyny Wirtualnej platformy Azure w celu replikowania jej do regionu podstawowego.
 
 > [!NOTE]
-> Ten samouczek prowadzi użytkownika przez kroki procedury przełączenia w tryb failover do regionu docelowego i z powrotem przy minimalnym dostosowaniu. Jeśli chcesz dowiedzieć się więcej o różnych aspektach związanych z trybem failover, w tym o zagadnieniach dotyczących sieci, automatyzacji lub rozwiązywania problemów, zapoznaj się z dokumentami w sekcji „Instrukcje” dla maszyn wirtualnych platformy Azure.
+> Ten samouczek zawiera to najprostsza ścieżka przy użyciu domyślnych ustawień oraz dostosowywania minimalnej. W przypadku bardziej złożonych scenariuszy należy użyć tych artykułów, w obszarze "How to" maszyn wirtualnych platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,18 +42,18 @@ W tym samouczku opisano sposób przełączania w tryb failover jednej maszyny wi
 
 2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, do którego przełączenie w tryb failover ma zostać wykonane. Możesz użyć jednej z następujących opcji:
 
-   * **Najnowszy** (domyślna): ta opcja przetwarza wszystkie dane w usłudze Site Recovery i udostępnia najniższy cel punktu odzyskiwania.
-   * **Najnowszy przetworzony**: ta opcja przywraca maszynę wirtualną do ostatniego punktu odzyskiwania, który został przetworzony przez usługę Site Recovery.
-   * **Niestandardowy**: użyj tej opcji, aby przełączyć w tryb failover do określonego punktu odzyskiwania. Ta opcja jest przydatna na potrzeby wykonywania testu trybu failover.
+   * **Najnowszy** (domyślna): Przetwarza wszystkie dane w usłudze Site Recovery i udostępnia najniższy cel punktu odzyskiwania (RPO).
+   * **Najnowszy przetworzony**: Przywraca maszynę wirtualną do ostatniego punktu odzyskiwania, które zostały przetworzone przez usługę Site Recovery.
+   * **Niestandardowy**: Wprowadza tryb failover do określonego punktu odzyskiwania. Ta opcja jest przydatna na potrzeby wykonywania testu trybu failover.
 
-3. Wybierz opcję **Zamknij maszynę przed rozpoczęciem pracy w trybie failover**, jeśli usługa Site Recovery ma spróbować przeprowadzić zamknięcie źródłowych maszyn wirtualnych przed wyzwoleniem trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Pamiętaj, że usługa Site Recovery nie obsługuje czyszczenia źródła po włączeniu trybu failover.
+3. Wybierz **Zamknij maszynę przed rozpoczęciem pracy awaryjnej** Jeśli chcesz, aby Usługa Site Recovery ma spróbować przeprowadzić zamknięcie źródłowych maszyn wirtualnych przed wyzwoleniem trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Usługa Site Recovery nie usuwaj źródła po włączeniu trybu failover.
 
 4. Postęp przełączania w tryb failover można śledzić na karcie **Zadania**.
 
 5. Po przejściu w tryb failover zweryfikuj maszynę wirtualną, logując się do niej. Jeśli chcesz przejść do innego punktu odzyskiwania dla maszyny wirtualnej, możesz użyć opcji **Zmień punkt odzyskiwania**.
 
 6. Po poprawnym skonfigurowaniu przełączania maszyny wirtualnej w tryb failover możesz **zatwierdzić** tryb failover.
-   Zatwierdzenie powoduje usunięcie wszystkich punktów odzyskiwania dostępnych w usłudze. Opcja **Zmień punkt odzyskiwania** nie jest już dostępna.
+   Zatwierdzenie powoduje usunięcie wszystkich punktów odzyskiwania dostępnych w usłudze. Obecnie nie można zmienić punktu odzyskiwania.
 
 ## <a name="reprotect-the-secondary-vm"></a>Ponowne włączanie ochrony pomocniczej maszyny wirtualnej
 
@@ -64,13 +64,10 @@ Po przełączeniu maszyny wirtualnej w tryb failover należy ponownie włączyć
 
    ![Kliknięcie prawym przyciskiem myszy w celu ponownego włączenia ochrony](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
 
-2. Zwróć uwagę, że kierunek ochrony z regionu pomocniczego do regionu podstawowego, jest już wybrany.
-3. Przejrzyj informacje o **grupie zasobów, sieci, magazynie i zestawach dostępności**. Wszystkie zasoby oznaczone jako (nowy) są tworzone w ramach operacji ponownej ochrony.
+2. Sprawdź, że kierunek ochrony z regionu pomocniczego do regionu podstawowego, jest zaznaczona.
+3. Przejrzyj informacje o **grupie zasobów, sieci, magazynie i zestawach dostępności**. Wszystkie zasoby oznaczone jako nowe są tworzone w ramach operacji ponownej ochrony.
 4. Kliknij przycisk **OK**, aby wyzwolić zadanie włączania ponownej ochrony. To zadanie inicjuje lokację docelową przy użyciu najnowszych danych. Następnie replikuje zmiany do regionu podstawowego. Maszyna wirtualna jest teraz w stanie chronionym.
 
-> [!NOTE]
-> Zobacz [sekcję z instrukcjami](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection), aby uzyskać więcej informacji na temat przepływu pracy ponownego objęcia ochroną i tego, co się dzieje podczas ponownego obejmowania ochroną.
-
-
 ## <a name="next-steps"></a>Kolejne kroki
-- Odczyt [instrukcje powrotu po awarii. ](azure-to-azure-tutorial-failback.md).
+- Po ponowne włączanie ochrony [Dowiedz się, jak](azure-to-azure-tutorial-failback.md) powracać po awarii do regionu podstawowego, gdy będzie ona dostępna.
+- [Dowiedz się więcej](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) o przepływie ponownego włączania ochrony.

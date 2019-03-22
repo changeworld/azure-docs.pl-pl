@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3711277ca11346cf73ff37c37ef4185d8bfdf6b9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e20e2a094e1fd88dfc2a25b586dc6c894f92b418
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329875"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312448"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Konfigurowanie integracji usługi Azure Key Vault dla programu SQL Server na maszynach wirtualnych platformy Azure (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "54329875"
 Istnieje wiele funkcji szyfrowania programu SQL Server, takich jak [technologii transparent data encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [szyfrowania na poziomie kolumny (CLE)](https://msdn.microsoft.com/library/ms173744.aspx), i [szyfrowania kopii zapasowych](https://msdn.microsoft.com/library/dn449489.aspx). Te rodzaje szyfrowania wymagają przechowywania kluczy kryptograficznych używanego do szyfrowania i zarządzania nimi. Usługa Azure Key Vault (AKV) zaprojektowano w celu poprawy zabezpieczeń i zarządzania tych kluczy w bezpiecznych i wysoko dostępnych lokalizacji. [Łącznik usług SQL Server](https://www.microsoft.com/download/details.aspx?id=45344) umożliwia SQL Server, aby użyć tych kluczy z usługi Azure Key Vault.
 
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Jeśli używasz programu SQL Server na maszynach w środowisku lokalnym, istnieją [kroki można wykonać, aby uzyskać dostęp do usługi Azure Key Vault z komputera programu SQL Server w środowisku lokalnym](https://msdn.microsoft.com/library/dn198405.aspx). Ale programu SQL Server na maszynach wirtualnych platformy Azure, możesz zaoszczędzić czas przy użyciu *integracji magazynu kluczy Azure* funkcji. Za pomocą kilka poleceń cmdlet programu Azure PowerShell, aby włączyć tę funkcję możesz zautomatyzować konfiguracji niezbędne do maszyny Wirtualnej SQL w celu dostępu do magazynu kluczy.
 
@@ -53,7 +53,7 @@ Poniższa tabela zawiera listę parametrów wymaganych do uruchomienia skryptu p
 
 | Parametr | Opis | Przykład |
 | --- | --- | --- |
-| **$akvURL** |**Adres URL magazynu kluczy** |„https://contosokeyvault.vault.azure.net/” |
+| **$akvURL** |**Adres URL magazynu kluczy** |"https:\//contosokeyvault.vault.azure.net/" |
 | **$spName** |**Główna nazwa usługi** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**Klucz tajny jednostki usługi** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
 | **$credName** |**Nazwa poświadczenia**: Integracja utworzenie poświadczenia w programie SQL Server, dzięki czemu maszyny Wirtualnej, aby mieć dostęp do magazynu kluczy. Wybierz nazwę tego poświadczenia. |"mycred1" |
@@ -65,7 +65,7 @@ Poniższa tabela zawiera listę parametrów wymaganych do uruchomienia skryptu p
 
 1. W programie Azure PowerShell najpierw skonfigurować parametrów wejściowych przy użyciu określonych wartości zgodnie z opisem w poprzednich sekcjach tego tematu. Przykładem jest poniższy skrypt.
    
-        $akvURL = "https://contosokeyvault.vault.azure.net/"
+        $akvURL = "https:\//contosokeyvault.vault.azure.net/"
         $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
         $spSecret = "9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="
         $credName = "mycred1"

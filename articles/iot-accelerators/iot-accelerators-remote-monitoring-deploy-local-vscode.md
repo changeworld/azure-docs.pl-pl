@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 93935aa36c53e1d5de1bba215826d0754ee83b8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 946f815cecea4cc172fac35c0b260d795317e6e1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902845"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316222"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Visual Studio Code
 
@@ -79,7 +79,7 @@ npm install
 npm start
 ```
 
-Po zakończeniu początkowego przeglądarki zostanie wyświetlona strona **http://localhost:3000/dashboard**. Oczekiwane są błędy na tej stronie. Aby wyświetlić aplikację bez błędów, wykonaj poniższe czynności.
+Po zakończeniu początkowego przeglądarki zostanie wyświetlona strona **http:\//localhost:3000 / pulpit nawigacyjny**. Oczekiwane są błędy na tej stronie. Aby wyświetlić aplikację bez błędów, wykonaj poniższe czynności.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurowanie i uruchamianie serwera NGINX
 
@@ -92,7 +92,7 @@ Aby uzyskać więcej informacji o uruchamianiu **nginx**, zobacz [nginx dla Wind
 
 ### <a name="connect-to-the-dashboard"></a>Łączenie do pulpitu nawigacyjnego
 
-Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania monitorowania zdalnego, przejdź do [ http://localhost:9000 ](http://localhost:9000) w przeglądarce.
+Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania monitorowania zdalnego, przejdź do protokołu http:\//localhost:9000 w przeglądarce.
 
 ## <a name="clean-up"></a>Czyszczenie
 

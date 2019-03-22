@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: 4133379ff7c1c0a64bd2d9aefdafdd5cdb530491
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 91b694070147cb0591bcc1763905f471161bf07b
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875072"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336766"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 
@@ -153,7 +153,7 @@ Jeśli to polecenie nie zwróci żadnych wyników, uruchom następujące polecen
 docker inspect my-web-site
 ```
 
-Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz zwrócony adres IP, na przykład „<http://172.31.194.61>”. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
+Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz adres IP zwrócony, na przykład "http:\//172.31.194.61". W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
 
 Aby zatrzymać kontener, uruchom polecenie:
 
@@ -360,10 +360,12 @@ Usługa Service Fabric, następnie używa domyślnych poświadczeń repozytorium
 * IsDefaultContainerRepositoryPasswordEncrypted (wartość logiczna)
 * DefaultContainerRepositoryPasswordType (ciąg)---obsługiwane począwszy od 6,4 środowiska uruchomieniowego
 
-Oto przykład elementy, które można dodać wewnątrz `Hosting` sekcji w pliku ClusterManifestTemplate.json. Aby uzyskać więcej informacji, zobacz [ustawienia klastra usługi Azure Service Fabric zmiany](service-fabric-cluster-fabric-settings.md) i [wpisów tajnych aplikacji zarządzania usługi Azure Service Fabric](service-fabric-application-secret-management.md)
+Oto przykład elementy, które można dodać wewnątrz `Hosting` sekcji w pliku ClusterManifestTemplate.json. `Hosting` Sekcji można dodać podczas tworzenia klastra lub później w przypadku uaktualniania konfiguracji. Aby uzyskać więcej informacji, zobacz [ustawienia klastra usługi Azure Service Fabric zmiany](service-fabric-cluster-fabric-settings.md) i [wpisów tajnych aplikacji zarządzania usługi Azure Service Fabric](service-fabric-application-secret-management.md)
 
 ```json
-      {
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -388,6 +390,7 @@ Oto przykład elementy, które można dodać wewnątrz `Hosting` sekcji w pliku 
           }
         ]
       },
+]
 ```
 
 ## <a name="configure-isolation-mode"></a>Konfigurowanie trybu izolacji
@@ -618,10 +621,12 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurowanie interwału czasu wymuszania przerwania działania kontenera
 
-Możesz skonfigurować interwał czasu środowiska uruchomieniowego, po upływie którego kontener ma zostać usunięty po rozpoczęciu usuwania usługi (lub przenoszenia do innego węzła). Skonfigurowanie interwału czasu powoduje wysłanie polecenia `docker stop <time in seconds>` do kontenera.  Aby uzyskać więcej informacji, zobacz [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Interwał czasu oczekiwania jest określony w sekcji `Hosting`. W poniższym fragmencie manifestu klastra pokazano, jak ustawić interwał oczekiwania:
+Możesz skonfigurować interwał czasu środowiska uruchomieniowego, po upływie którego kontener ma zostać usunięty po rozpoczęciu usuwania usługi (lub przenoszenia do innego węzła). Skonfigurowanie interwału czasu powoduje wysłanie polecenia `docker stop <time in seconds>` do kontenera.  Aby uzyskać więcej informacji, zobacz [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Interwał czasu oczekiwania jest określony w sekcji `Hosting`. `Hosting` Sekcji można dodać podczas tworzenia klastra lub później w przypadku uaktualniania konfiguracji. W poniższym fragmencie manifestu klastra pokazano, jak ustawić interwał oczekiwania:
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -630,7 +635,8 @@ Możesz skonfigurować interwał czasu środowiska uruchomieniowego, po upływie
           },
           ...
         ]
-}
+    }
+]
 ```
 Domyślny interwał to 10 sekund. Ta konfiguracja jest dynamiczna, dlatego uaktualnienie samej konfiguracji w klastrze powoduje zaktualizowanie limitu czasu. 
 
@@ -641,7 +647,9 @@ Możesz skonfigurować klaster usługi Service Fabric w celu usuwania nieużywan
 
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -655,7 +663,8 @@ Możesz skonfigurować klaster usługi Service Fabric w celu usuwania nieużywan
           ...
           }
         ]
-} 
+    } 
+]
 ```
 
 Jeśli nie chcesz usuwać pewnych obrazów, określ je przy użyciu parametru `ContainerImagesToSkip`.  
@@ -666,7 +675,9 @@ Jeśli nie chcesz usuwać pewnych obrazów, określ je przy użyciu parametru `C
 Środowisko uruchomieniowe usługi Service Fabric przydziela 20 minut na pobieranie i wyodrębnianie obrazów kontenerów, co sprawdza się w przypadku większości obrazów kontenerów. W przypadku dużych obrazów lub wolnego połączenia sieciowego może być konieczne wydłużenie czasu oczekiwania przed przerwaniem pobierania i wyodrębniania obrazu. Ten limit czasu można ustawić przy użyciu atrybutu **ContainerImageDownloadTimeout** w sekcji **Hosting** manifestu klastra, jak pokazano w poniższym fragmencie kodu:
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -674,7 +685,8 @@ Jeśli nie chcesz usuwać pewnych obrazów, określ je przy użyciu parametru `C
               "value": "1200"
           }
         ]
-}
+    }
+]
 ```
 
 
@@ -694,7 +706,9 @@ W środowisku uruchomieniowym usługi Service Fabric w wersji 6.2 lub nowszej mo
  
 
 ```json
-{ 
+"fabricSettings": [
+    ...,
+    { 
         "name": "Hosting", 
         "parameters": [ 
           { 
@@ -702,8 +716,8 @@ W środowisku uruchomieniowym usługi Service Fabric w wersji 6.2 lub nowszej mo
             "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
           } 
         ] 
-} 
-
+    } 
+]
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

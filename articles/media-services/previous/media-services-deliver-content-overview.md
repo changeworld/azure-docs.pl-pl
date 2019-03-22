@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 51d0c7ade46143ecbf6fe46bc54e5d383d50b382
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3314ad4558fdd55429a5a68326dd46b5920d7daa
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58173080"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316239"
 ---
 # <a name="deliver-content-to-customers"></a>Dostarczanie zawartości do klientów
 Podczas przesyłania strumieniowego lub wideo na żądanie zawartość dostarczać klientom, celem jest dostarczanie wideo wysokiej jakości do różnych urządzeń warunki panujące w sieci.
@@ -92,22 +92,22 @@ Można tylko przesyłanie strumieniowe za pośrednictwem protokołu SSL Jeśli u
 ### <a name="mpeg-dash-format"></a>Format MPEG-DASH
 {przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Format V4 Apple HTTP Live Streaming (HLS)
 {przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Format V3 Apple HTTP Live Streaming (HLS)
 {przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Format Apple HTTP Live Streaming (HLS), za pomocą filtru tylko dane audio
 Domyślnie ścieżek zawierających tylko dane audio są objęte HLS manifestu. Jest to wymagane do certyfikacji firmy Apple Store sieci komórkowej. W takim przypadku klient nie ma wystarczającą przepustowością lub jest połączony za pośrednictwem połączenia 2G, odtwarzania przechodzi do tylko dane audio. Pomaga to zachować strumieniowania zawartości, bez buforowania, ale nie ma żadnego obrazu. W niektórych scenariuszach odtwarzacza, buforowanie może mieć pierwszeństwo tylko dane audio. Jeśli chcesz usunąć tylko dane audio śledzenie, Dodaj **tylko dane audio = false** do adresu URL.
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3tylko dane audio = false)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
 Aby uzyskać więcej informacji, zobacz [dodatkowe funkcje wyjściowe obsługę tworzenia manifestów dynamicznych i HLS](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
@@ -116,14 +116,14 @@ Aby uzyskać więcej informacji, zobacz [dodatkowe funkcje wyjściowe obsługę 
 
 Przykład:
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 ### <a id="fmp4_v20"></a>Smooth Streaming 2.0 manifestu (starszej wersji manifestu)
 Domyślnie Smooth Streaming format manifestu zawiera tag powtórzeń (r-tag). Jednak niektóre odtwarzacze nie obsługują tagu języka r. Klientów za pomocą tych odtwarzaczy można użyć formatu, który wyłącza r-tag:
 
 {przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>Pobierania progresywnego
 Przy użyciu pobierania progresywnego możesz rozpocząć odtwarzanie multimediów, zanim cały plik został pobrany. Nie można pobrać progresywnie ISM * (ismv isma, ismt pliki lub ismc).

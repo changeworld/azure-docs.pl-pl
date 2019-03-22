@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 7f0bfa407705f4c9535e6dddc9a27a4f7130931d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 2464424b537f6187542fb612626cff115711d6e5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113834"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336290"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co to są usługi Azure Cognitive Services?
 
@@ -93,6 +93,14 @@ Szukasz region nie obsługujemy jeszcze? Daj nam znać, wypełniając zgłoszeni
 ## <a name="container-support"></a>Obsługa kontenerów
 
  Usługi cognitive Services zapewnia kontenery do wdrożenia w chmurze platformy Azure lub lokalnie. Dowiedz się więcej o [kontenerów usługi Cognitive Services](cognitive-services-container-support.md).
+
+## <a name="certifications-and-compliance"></a>Certyfikaty i zgodność
+
+Certyfikaty, takich jak CSA STAR certyfikacji FedRAMP umiarkowany oraz umową HIPAA BAA zostały wydane usług cognitive Services. 
+
+Możesz [Pobierz](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) certyfikatów dla własnych inspekcje i przeglądy zabezpieczeń. 
+
+Aby dowiedzieć się, ochrony prywatności i zarządzania danymi, przejdź do [Centrum zaufania](https://servicetrust.microsoft.com/). 
 
 ## <a name="support"></a>Pomoc techniczna
 

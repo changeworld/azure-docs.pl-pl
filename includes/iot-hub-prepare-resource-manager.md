@@ -4,12 +4,12 @@ ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 163b479fdf2d6a4885604c52f36f707e558dc3a0
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: b7d043b15cad23c9c9eca60c9a24096fee12e14a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011773"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319759"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Przygotowanie do uwierzytelniania żądań w usłudze Azure Resource Manager
 Musisz uwierzytelnić wszystkich operacji wykonywanych na zasobach za pomocą [usługi Azure Resource Manager] [ lnk-authenticate-arm] za pomocą usługi Azure Active Directory (AD). Najprostszym sposobem skonfigurowania tego ustawienia jest użycie programu PowerShell lub wiersza polecenia platformy Azure.
@@ -41,8 +41,8 @@ Poniższe kroki pokazują sposób konfigurowania uwierzytelniania hasła dla apl
 3. Utwórz nową aplikację usługi Azure Active Directory, używając następującego polecenia, zastępując symbole zastępcze:
    
    * **{Nazwa wyświetlana}:** nazwę wyświetlaną dla swojej aplikacji, takich jak **MySampleApp**
-   * **{Adres URL strony głównej}:** adres URL strony głównej aplikacji takich jak **http://mysampleapp/home**. Ten adres URL nie musi wskazywać rzeczywistej aplikacji.
-   * **{Identyfikator aplikacji:}** Unikatowy identyfikator **http://mysampleapp**. Ten adres URL nie musi wskazywać rzeczywistej aplikacji.
+   * **{Adres URL strony głównej}:** adres URL strony głównej aplikacji takich jak **http:\//mysampleapp/home**. Ten adres URL nie musi wskazywać rzeczywistej aplikacji.
+   * **{Identyfikator aplikacji:}** Unikatowy identyfikator **http:\//mysampleapp**. Ten adres URL nie musi wskazywać rzeczywistej aplikacji.
    * **{Password}:** Hasło używane do uwierzytelniania za pomocą aplikacji.
      
      ```powershell

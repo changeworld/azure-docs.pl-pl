@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8de47aab231c66f3539c2d2f0f0e4c535a04038a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4822de6f6470547b47ecaa3874bed0df4ad20cf6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085375"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309592"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Często zadawane pytania
 
@@ -45,16 +45,16 @@ Poniżej zamieszczono niepełna lista aplikacji, które można wysyłać te para
 
 | Nazwa aplikacji | Adres URL aplikacji ma być używany |
 | -- | -- |
-| Panel dostępu | https://myapps.microsoft.com/contoso.com |
-| Program Outlook w sieci Web | https://outlook.office365.com/contoso.com |
-| Portale usługi Office 365 | <https://portal.office.com?domain_hint=contoso.com>, <https://www.office.com?domain_hint=contoso.com> |
+| Panel dostępu | https:\//myapps.microsoft.com/contoso.com |
+| Program Outlook w sieci Web | https:\//outlook.office365.com/contoso.com |
+| Portale usługi Office 365 | protokół https:\//portal.office.com?domain_hint=contoso.com, https:\//www.office.com?domain_hint=contoso.com |
 
-Ponadto użytkownicy uzyskują dyskretnej środowisko logowania jednokrotnego, jeśli aplikacja wysyła żądania rejestrowania do punktów końcowych usługi Azure AD jako dzierżawy — czyli https://login.microsoftonline.com/contoso.com/<..> lub https://login.microsoftonline.com/<tenant_ID>/<..> — zamiast usługi Azure AD wspólnego punktu końcowego — czyli https://login.microsoftonline.com/common/<...>. Poniżej zamieszczono niepełna lista aplikacji, które tego rodzaju żądań logowania.
+Ponadto użytkownicy uzyskują dyskretnej środowisko logowania jednokrotnego, jeśli aplikacja wysyła żądania rejestrowania do punktów końcowych usługi Azure AD skonfigurowany jako dzierżawy — czyli https:\//login.microsoftonline.com/contoso.com/ <... > lub https:\//login.microsoftonline.com/ < tenant_ID > / <... > — zamiast usługi Azure AD wspólnej — oznacza to, że protokół https punktu końcowego:\//login.microsoftonline.com/common/ <... >. Poniżej zamieszczono niepełna lista aplikacji, które tego rodzaju żądań logowania.
 
 | Nazwa aplikacji | Adres URL aplikacji ma być używany |
 | -- | -- |
-| SharePoint Online | https://contoso.sharepoint.com |
-| Azure Portal | https://portal.azure.com/contoso.com |
+| SharePoint Online | protokół https:\//contoso.sharepoint.com |
+| Azure Portal | protokół https:\//portal.azure.com/contoso.com |
 
 W tabelach powyżej Zastąp "ciąg contoso.com" nazwy domeny, aby przejść do adresu URL aplikacji odpowiednie dla Twojej dzierżawy.
 

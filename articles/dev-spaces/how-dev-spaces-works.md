@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
-ms.openlocfilehash: 4d0b2d24335b03fb1afc729e4cb8f7fc07f8a77e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8d17be31acc6868399e8f785255d28fa2314d48c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456874"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316120"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 
@@ -59,7 +59,7 @@ Narzędzia klienta umożliwia użytkownikowi:
 
 Gdy aplikacja jest uruchomiona, klienta również narzędzia:
 * Odbiera i wyświetla stdout i stderr z aplikacji uruchomionej w usłudze AKS.
-* Używa [do przodu portu](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) zezwolić na dostęp w sieci web do swojej aplikacji za pomocą http://locahost.
+* Używa [do przodu portu](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) Aby zezwolić na dostęp do aplikacji przy użyciu protokołu http w sieci web:\//localhost.
 * Dołącza debuger do uruchomionej aplikacji w usłudze AKS.
 * Synchronizacje źródła kodu, Twój obszar deweloperów po wykryciu zmiany dla kompilacje przyrostowe, pozwalając na szybkie iteracji.
 

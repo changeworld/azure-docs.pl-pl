@@ -3,18 +3,18 @@ title: Omówienie usługi Azure Service Fabric Mesh | Microsoft Docs
 description: Dowiedz się więcej o usłudze Azure Service Fabric Mesh. Za pomocą usługi Service Fabric Mesh możesz wdrożyć i skalować aplikację bez martwienia się o wymagania infrastruktury aplikacji.
 services: service-fabric-mesh
 keywords: ''
-author: rwike77
-ms.author: ryanwi
+author: dkkapur
+ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: da5370e274aa1904f803227d8c85912a7d26c533
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 44c58e09c478c9dba9143b10d150babc553f4695
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000656"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337684"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Co to jest Service Fabric Mesh?
 
@@ -64,7 +64,7 @@ Usługa Service Fabric Mesh umożliwia:
 - Wdrażanie aplikacji w [strefach dostępności](/azure/availability-zones/az-overview) i w wielu regionach na potrzeby niezawodności replikacji geograficznej.
 - Korzystanie ze wszystkich funkcji zabezpieczeń i zgodności udostępnianych przez platformę Azure.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wystarczy parę kroków, aby wdrożyć przykładowy projekt za pomocą programu Visual Studio. Aby uzyskać więcej informacji, zobacz [Tworzenie witryny internetowej platformy ASP.NET Core](service-fabric-mesh-quickstart-dotnet-core.md). 
 

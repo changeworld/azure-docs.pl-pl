@@ -8,12 +8,12 @@ ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 782f68c52285e787b9dfc6d21352ab2d53876085
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f328c4edeaa35210c5379d84fa47980cb2f07cf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353145"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317089"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Aktualizacje **usługi Azure Data Catalog** są regularnie wydawane. Nie każda wersja zawiera nowe funkcje widocznych dla użytkownika, niektórych wersjach koncentrują się na możliwości usługi zaplecza. Ta strona prezentuje nowe możliwości widocznych dla użytkownika dodane do usługi Azure Data Catalog.
@@ -240,7 +240,7 @@ Począwszy od września 2015 r. następujące funkcje zostały dodane do usługi
 * Nowe dane "wprowadzenie" źródła środowiska odnajdywania w portalu usługi Azure Data Catalog. Gdy użytkownicy wprowadzają "wykryć" stronie w portalu usługi Azure Data Catalog, bez konieczności wprowadzania wyszukiwany termin, zobaczą z omówieniem zawartości katalogu, w tym najczęściej używane znaczniki, ekspertami, typów źródeł danych i typów obiektów.
 * Obsługa rejestracji i odnajdywania obiektów magazynu danych SQL Azure i bazy danych. Aby uzyskać dodatkowe informacje na temat usługi Azure SQL Data Warehouse, zobacz [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 * Obsługa rejestracji i odnajdywania usług SQL Server Analysis Services, modeli i serwerów SQL Server Reporting Services jako kontenery. Podczas rejestrowania obiektów SSAS i SSRS, Azure Data Catalog tworzy wpis modelem usług SSAS i serwera usług SSRS oraz raportów i innych obiektów. Kontenery mogą być wykrywane i przy użyciu portalu Azure Data Catalog. Użytkownicy mogą również wyszukiwanie i filtrowanie zawartości modelu lub serwerze oprócz wyszukiwania i filtrowania zawartości katalogu.
-* Obsługa rejestracji i odnajdywania obiektów SQL Server Analysis Services za pośrednictwem protokołu HTTP/HTTPS. Użytkownicy mogą teraz łączyć się serwerów SSAS przy użyciu adresu URL (takie jak https://servername/olap/msmdpump.dll) zamiast serwera nazwę, a następnie użyć uwierzytelnianie podstawowe i anonimowe połączenia oprócz uwierzytelniania Windows. Aby uzyskać dodatkowe informacje na temat połączeń HTTP/HTTPS do usług SSAS, zobacz [Konfigurowanie HTTP dostępu do usług Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
+* Obsługa rejestracji i odnajdywania obiektów SQL Server Analysis Services za pośrednictwem protokołu HTTP/HTTPS. Użytkownicy mogą teraz łączyć się serwerów SSAS przy użyciu adresu URL (taki jak https:\//servername/olap/msmdpump.dll) zamiast serwera nazwę, a następnie użyć uwierzytelnianie podstawowe i anonimowe połączenia oprócz uwierzytelniania Windows. Aby uzyskać dodatkowe informacje na temat połączeń HTTP/HTTPS do usług SSAS, zobacz [Konfigurowanie HTTP dostępu do usług Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
 * Pomoc techniczna dla źródeł danych Hive HDInsight. Użytkownicy mogą teraz zarejestrować i Odkryj tabel programu Hive dla Apache Hive na platformie Hadoop w HDInsight źródeł danych. Aby uzyskać dodatkowe informacje na temat programu Hive na HDInsight, zobacz [Centrum dokumentacji HDInsight](../hdinsight/hadoop/hdinsight-use-hive.md).
 * Obsługa rejestracji i odnajdywania baz danych Oracle i klastrów systemu plików HDFS jako kontenery. Podczas rejestrowania programu Oracle tabele i widoki lub systemu plików HDFS, Azure Data Catalog tworzy wpis dla bazy danych, tabel i widoków. Bazy danych mogą być wykrywane i przy użyciu portalu Azure Data Catalog. Użytkownicy mogą również wyszukiwanie i filtrowanie zawartości bazy danych lub klastra, oprócz wyszukiwania i filtrowania zawartości katalogu.
 * Obsługa ręcznie rejestrowanie typów źródeł danych nieznany. Użytkownikom można ręcznie wprowadzić informacje o źródle danych za pomocą portalu usługi Azure Data Catalog, dzięki czemu źródła danych nie są jawnie obsługiwane przez narzędzia rejestracji źródła danych można dodawać adnotacje i odnalezione.

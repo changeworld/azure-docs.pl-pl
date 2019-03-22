@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7d877f467f06768c31679752d9deff1ca19d0003
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 023d12764e3dcfcf2f5471cb431528a14fbc1fed
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882879"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339639"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -115,7 +115,7 @@ Aby pobrać pliki dziennika przy użyciu interfejsu wiersza polecenia platformy 
 
     az webapp log download --resource-group resourcegroupname --name appname
 
-To polecenie zapisuje w dziennikach aplikacji o nazwie "appname" w pliku o nazwie **diagnostics.zip** w bieżącym katalogu.
+To polecenie zapisuje w dziennikach aplikacji o nazwie "appname" w pliku o nazwie **webapp_logs.zip** w bieżącym katalogu.
 
 > [!NOTE]
 > Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie został skonfigurowany do korzystania z subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).

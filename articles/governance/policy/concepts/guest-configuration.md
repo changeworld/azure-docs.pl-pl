@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d97ac99cae963ddb9df4de06736c64d5d8ceafb5
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: HT
+ms.openlocfilehash: 045339ec0a725359593797bda172a2e93f7c2890
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58187663"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339027"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -125,9 +125,11 @@ Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do g
 
 Rozszerzenie konfiguracji gościa zapisuje pliki dziennika w następujących lokalizacjach:
 
-Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\1.10.0.0\dsc\logs\dsc.log`
+Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
-Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-1.8.0/GCAgent/logs/dsc.log`
+Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
+
+Gdzie `<version>` odwołuje się do bieżący numer wersji.
 
 ## <a name="guest-configuration-samples"></a>Przykłady konfiguracji gościa
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b8ae86a5c13573fbe80c8f06d5ce97c72d8e341
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
-ms.translationtype: HT
+ms.openlocfilehash: 7ff2e89c116ee74665c0e3a74505476972af5d9c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257674"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317157"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy
 > [!div class="op_single_selector"]
@@ -164,7 +164,7 @@ Klient musi wyodrębnić adres URL (zawierający zawartość [Kącik] identyfika
 
 W przypadku HLS manifest główny jest dzielony na pliki segmentu. 
 
-Na przykład to manifest głównego: http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl). Zawiera listę nazw plików segmentu.
+Na przykład to manifest głównego: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl). Zawiera listę nazw plików segmentu.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -173,7 +173,7 @@ Na przykład to manifest głównego: http://test001.origin.mediaservices.windows
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Jeśli otworzysz jeden z plików segmentu w edytorze tekstów (na przykład http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video, format = m3u8-aapl), zawiera on #EXT-X-KEY, co oznacza, że plik jest zaszyfrowany.
+Jeśli otworzysz jeden z plików segmentu w edytorze tekstów (na przykład http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl), zawiera ona #EXT-X-KEY, co oznacza, że plik jest zaszyfrowany.
 
     #EXTM3U
     #EXT-X-VERSION:4

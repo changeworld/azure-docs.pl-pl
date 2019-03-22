@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: aljo
-ms.openlocfilehash: bd92ac2a36fdb15741799571d3ceff7fbbb36eef
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: 270fa85f7f51c2f29e8dd67dd68c6dc605929c6e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807528"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313349"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: Wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
 
@@ -166,7 +166,7 @@ Podczas tworzenia klastra:
 
     b. Opcjonalnie: możesz zmodyfikować liczbę węzłów. Domyślne ustawienie to trzy węzły, czyli minimalna liczba wymagana do testowania scenariuszy usługi Service Fabric.
 
-    d. Wybierz kartę **Certyfikat**. Na tej karcie wpisz hasło zabezpieczające certyfikat klastra. Ten certyfikat pomaga zabezpieczyć klaster. Możesz również zmodyfikować ścieżkę, w której ma zostać zapisany certyfikat. Program Visual Studio może również automatycznie zaimportować certyfikat, ponieważ jest to krok wymagany do opublikowania aplikacji w klastrze.
+    c. Wybierz kartę **Certyfikat**. Na tej karcie wpisz hasło zabezpieczające certyfikat klastra. Ten certyfikat pomaga zabezpieczyć klaster. Możesz również zmodyfikować ścieżkę, w której ma zostać zapisany certyfikat. Program Visual Studio może również automatycznie zaimportować certyfikat, ponieważ jest to krok wymagany do opublikowania aplikacji w klastrze.
 
     d. Wybierz kartę **Szczegóły maszyny wirtualnej**. Określ hasło, którego chcesz używać dla maszyn wirtualnych wchodzących w skład klastra. Za pomocą nazwy użytkownika i hasła można zdalnie łączyć się z maszynami wirtualnymi. Należy również wybrać rozmiar maszyny wirtualnej oraz zmienić obraz maszyny wirtualnej, jeśli jest to konieczne. 
 
@@ -232,7 +232,7 @@ Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze platformy Azure bez
 
 ![Publikowanie aplikacji][publish-app]
 
-Śledzenie postępu wdrażania w oknie danych wyjściowych.  Gdy aplikacja jest wdrażana, otwórz przeglądarkę, a następnie wpisz adres klastra i port aplikacji. Na przykład http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
+Śledzenie postępu wdrażania w oknie danych wyjściowych.  Gdy aplikacja jest wdrażana, otwórz przeglądarkę, a następnie wpisz adres klastra i port aplikacji. Na przykład http:\//fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![Przykład internetowy dla firmy Fabrikam][fabrikam-web-page-deployed]
 
@@ -257,7 +257,7 @@ Remove-AzureRmResourceGroup -Name $acrresourcegroupname
 Remove-AzureRmResourceGroup -Name $clusterresourcegroupname
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

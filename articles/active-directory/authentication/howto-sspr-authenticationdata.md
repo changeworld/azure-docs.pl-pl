@@ -1,5 +1,5 @@
 ---
-title: Wymagania dotyczące danych usługi Azure AD SSPR | Dokumentacja firmy Microsoft
+title: Azure AD SSPR wymagania dotyczące danych — Azure Active Directory
 description: Dane dotyczące haseł usługi Azure AD resetowania oraz sposób ich spełnienia
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf665147c8fea0e2ce44161ef0b5df085649a0b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 580c9080bb2b019e120ea57e5fe4444a71c24e76
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179048"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314794"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wdrażanie resetowania haseł bez wymagania rejestracji użytkowników końcowych
 
@@ -42,7 +42,7 @@ Jeśli używasz domyślne ustawienia Azure AD Connect zostały wprowadzone nast�
 
 Gdy użytkownik zweryfikuje numeru telefonu komórkowego, pole telefonu w obszarze informacje kontaktowe uwierzytelniania w usłudze Azure AD również zostaną wypełnione przy użyciu tego numeru.
 
-## <a name="authentication-contact-info"></a>Informacje kontaktowe uwierzytelniania
+## <a name="authentication-contact-info"></a>Informacje kontaktowe dotyczące uwierzytelniania
 
 Administrator globalny, można ręcznie ustawić informacje kontaktowe uwierzytelniania użytkownika wyświetlane w poniższy zrzut ekranu.
 

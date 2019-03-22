@@ -1,5 +1,5 @@
 ---
-title: Łączenie się z magazynem obiektów blob platformy Azure — Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Łączenie się z magazynem obiektów blob platformy Azure — Azure Logic Apps
 description: Tworzenie i zarządzanie obiektami BLOB w usłudze Azure storage z usługą Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -10,36 +10,36 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7d6845624c838ac0cf49e5963cae1ca0ea15ec15
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230611"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310374"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Tworzenie i zarządzanie obiektami BLOB w usłudze Azure blob storage z usługą Azure Logic Apps
 
 W tym artykule pokazano, jak uzyskać dostęp i zarządzanie plikami przechowywane jako obiekty BLOB na koncie magazynu platformy Azure z wewnątrz aplikacji logiki za pomocą łącznika usługi Azure Blob Storage. Dzięki temu można tworzyć aplikacje logiki, które automatyzują zadania i przepływów pracy na potrzeby zarządzania plikami. Na przykład można tworzyć aplikacje logiki, które tworzenie, pobieranie, aktualizowanie i usuwanie plików w ramach konta magazynu.
 
-Załóżmy, że masz narzędzie, które zostanie zaktualizowany w witrynie sieci Web platformy Azure. który działa jako wyzwalacz aplikacji logiki. Gdy to zdarzenie występuje, może mieć swoją aplikację logiki, zaktualizować niektóre pliki w kontenerze magazynu obiektów blob, czyli akcję w aplikacji logiki. 
+Załóżmy, że masz narzędzie, które zostanie zaktualizowany w witrynie sieci Web platformy Azure. który działa jako wyzwalacz aplikacji logiki. Gdy to zdarzenie występuje, może mieć swoją aplikację logiki, zaktualizować niektóre pliki w kontenerze magazynu obiektów blob, czyli akcję w aplikacji logiki.
 
 > [!NOTE]
-> Usługa Logic Apps nie obsługuje bezpośredniego połączenia z konta usługi Azure storage za pośrednictwem zapór. Aby uzyskać dostęp do tych kont magazynu, użyj tutaj jedną z opcji: 
+> Usługa Logic Apps nie obsługuje bezpośredniego połączenia z konta usługi Azure storage za pośrednictwem zapór. Aby uzyskać dostęp do tych kont magazynu, użyj tutaj jedną z opcji:
 >
-> * Tworzenie [środowisko usługi integracji](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które mogą łączyć się z zasobami w sieci wirtualnej platformy Azure. 
-> 
+> * Tworzenie [środowisko usługi integracji](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które mogą łączyć się z zasobami w sieci wirtualnej platformy Azure.
+>
 > * Jeśli używasz już usługi API Management, można użyć tej usługi, w tym scenariuszu. Aby uzyskać więcej informacji, zobacz [Architektura integracji przedsiębiorstw proste](https://aka.ms/aisarch).
 
-Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">dokumentacja łączników usługi Azure Blob Storage</a>.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
 
 * [Konta magazynu platformy Azure i kontener magazynu](../storage/blobs/storage-quickstart-blobs-portal.md)
 
-* Aplikacja logiki gdzie potrzebujesz dostępu do konta magazynu obiektów blob platformy Azure. Aby uruchomić aplikację logiki z wyzwalaczem usługi Azure Blob Storage, musisz mieć [pusta aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Aplikacja logiki gdzie potrzebujesz dostępu do konta magazynu obiektów blob platformy Azure. Aby uruchomić aplikację logiki z wyzwalaczem usługi Azure Blob Storage, musisz mieć [pusta aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-trigger"></a>
 
@@ -53,7 +53,7 @@ Ten przykład przedstawia, jak można uruchomić przepływu pracy aplikacji logi
 
 2. W polu wyszukiwania wprowadź "obiektów blob platformy azure" jako filtr. Z listy wyzwalaczy wybierz wyzwalacz, który ma.
 
-   W tym przykładzie użyto tego wyzwalacza: **usługi Azure Blob Storage — gdy obiekt blob jest dodawany lub modyfikowany (tylko właściwości)**
+   W tym przykładzie użyto tego wyzwalacza: **Usługa Azure Blob Storage — gdy obiekt blob jest dodawany lub modyfikowany (tylko właściwości)**
 
    ![Wybierz wyzwalacz](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -63,7 +63,7 @@ Ten przykład przedstawia, jak można uruchomić przepływu pracy aplikacji logi
 
    1. W **kontenera** wybierz ikonę folderu.
 
-   2. Na liście folderów, wybierz nawias po prawej stronie ( **>** ), a następnie przejdź do momentu Znajdź i wybierz folder ma. 
+   2. Na liście folderów, wybierz nawias po prawej stronie ( **>** ), a następnie przejdź do momentu Znajdź i wybierz folder ma.
 
       ![Wybierz folder](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
@@ -90,11 +90,11 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
 
 3. W polu wyszukiwania wprowadź "obiektów blob platformy azure" jako filtr. Z listy akcji wybierz akcję, którą chcesz.
 
-   W tym przykładzie użyto tej akcji: **magazyn obiektów Blob platformy Azure, Pobierz zawartość obiektu blob**
+   W tym przykładzie użyto tej akcji: **Usługa Azure Blob Storage — Pobierz zawartość obiektu blob**
 
    ![Wybierz akcję](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
 
-4. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenie usługi Azure Blob Storage teraz](#create-connection). Lub, jeśli istnieje już połączenie, podaj informacje niezbędne do działania. 
+4. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenie usługi Azure Blob Storage teraz](#create-connection). Lub, jeśli istnieje już połączenie, podaj informacje niezbędne do działania.
 
    W tym przykładzie wybierz żądany plik.
 
@@ -119,7 +119,7 @@ W tym przykładzie pobiera tylko zawartość obiektu blob. Aby wyświetlić jego
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegóły techniczne, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [strona referencyjna łącznika](/connectors/azureblobconnector/). 
+Aby uzyskać szczegółowe informacje techniczne, takich jak wyzwalacze, akcje i ograniczeń, zgodnie z opisem w otwartych interfejsów API łącznika (dawniej Swagger) plików, zobacz [strona referencyjna łącznika](/connectors/azureblobconnector/).
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 

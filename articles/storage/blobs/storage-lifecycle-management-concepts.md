@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 93c19bc39f64df21dfa9db2490ab2103aba8191d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 1428c2925ab57642899732bd4504b2d5b38781a8
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086109"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315151"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie usługą Azure Blob storage w cyklu życia (wersja zapoznawcza)
 
@@ -190,7 +190,7 @@ W trakcie okresu zapoznawczego dostępne są następujące filtry prawidłowy:
 | Nazwa filtru | Typ filtru | Uwagi | Wymagany |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Tablica wartości wyliczenia wstępnie zdefiniowane. | Wersja zapoznawcza obsługuje tylko `blockBlob`. | Yes |
-| prefixMatch | Tablica ciągów dla prefiksów dopasować się. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład, jeśli chcesz dopasować wszystkich obiektów blob w obszarze "<https://myaccount.blob.core.windows.net/container1/foo/>..." w przypadku reguły jest prefixMatch `container1/foo`. | Jeśli nie zdefiniowano prefixMatch, reguły mają zastosowanie do wszystkich obiektów blob w ramach konta. | Nie |
+| prefixMatch | Tablica ciągów dla prefiksów dopasować się. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład, jeśli chcesz dopasować wszystkich obiektów blob w ramach "https:\//myaccount.blob.core.windows.net/container1/foo/..." w przypadku reguły jest prefixMatch `container1/foo`. | Jeśli nie zdefiniowano prefixMatch, reguły mają zastosowanie do wszystkich obiektów blob w ramach konta. | Nie |
 
 ### <a name="rule-actions"></a>Akcje reguły
 

@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
-ms.date: 09/25/2017
-ms.openlocfilehash: 526b0b135c8d5c1741ddf5f3fe6fb32f259a3e2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/19/2019
+ms.openlocfilehash: f222b37e8ca6efcfe28146ee948511d887f547a4
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092994"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339146"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Omówienie usuwania nietrwałego w usłudze Azure Key Vault
 
@@ -23,9 +23,7 @@ Funkcja usuwania nietrwałego w usłudze Key Vault umożliwia odzyskiwanie usuni
 
 ## <a name="supporting-interfaces"></a>Obsługa interfejsów
 
-Funkcja usuwania nietrwałego początkowo są dostępne za pośrednictwem interfejsu REST, .NET / C#, interfejsy programu PowerShell i interfejsu wiersza polecenia.
-
-Aby uzyskać ogólne informacje znajdują się odwołania ich, aby uzyskać więcej informacji, [magazynu kluczach](https://docs.microsoft.com/azure/key-vault/).
+Funkcja usuwania nietrwałego jest początkowo dostępna za pośrednictwem [REST](/rest/api/keyvault/), [interfejsu wiersza polecenia](key-vault-soft-delete-cli.md), [PowerShell](key-vault-soft-delete-powershell.md) i [.NET /C# ](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) interfejsów.
 
 ## <a name="scenarios"></a>Scenariusze
 
@@ -39,26 +37,21 @@ Usługa Azure Key Vault są śledzone zasoby, zarządzane przez usługę Azure R
 
 Za pomocą tej funkcji operacja usunięcia usługi key vault lub obiektu usługi key vault jest usuwania nietrwałego, efektywnie zawierającą te zasoby, dla okresu przechowywania danego (90 dni), zapewniając wygląd, że obiekt zostanie usunięta. Dodatkowo usługa zapewnia mechanizm odzyskiwania usuniętego obiektu, zasadniczo Cofnięcie usunięcia. 
 
-Opcji soft-delete jest opcjonalne zachowanie usługi Key Vault i jest **nie jest włączona domyślnie** w tej wersji. 
+Opcji soft-delete jest opcjonalne zachowanie usługi Key Vault i jest **nie jest włączona domyślnie** w tej wersji. Można je włączyć za pośrednictwem [interfejsu wiersza polecenia](key-vault-soft-delete-cli.md) lub [Powershell](key-vault-soft-delete-powershell.md).
 
-### <a name="purge-protection--flag"></a>Wyczyść flagę ochrony
-Przeczyść ochrony (**— ochrona przed czyszczeniem Włącz** w interfejsie wiersza polecenia platformy Azure) flaga jest domyślnie wyłączona. Gdy ta flaga jest włączona, magazynu lub obiektu w stanie usunięty, nie można przeczyścić aż do minął okres przechowywania 90 dni. Nadal można odzyskać taki magazyn lub obiektu. Ta flaga zapewnia dodano dla klientów, magazynu lub obiektu można nigdy trwale usunąć, dopóki nie upłynął okres przechowywania. Flaga ochrony przeczyszczania można włączyć tylko wtedy, gdy flaga opcji soft-delete znajduje się na lub podczas tworzenia magazynu włączyć obu opcji soft-delete i przeczyścić ochrony.
+### <a name="purge-protection"></a>Przeczyść ochrony 
 
-> [!NOTE]
->    Warunek wstępny do włączania ochrona przed czyszczeniem to musi mieć włączone usuwanie nietrwałe.
-> To polecenie, aby to zrobić w wersji 2 interfejsu wiersza polecenia platformy Azure
+Podczas przeczyszczania ochrony znajduje się w magazynie lub nie można przeczyścić obiektu w stanie usunięty, dopóki nie upłynął okres przechowywania 90 dni. Te magazyny i obiekty nadal można odzyskać, zapewniając klientom zostanie uzupełniona zasady przechowywania. 
 
-```
-az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
-```
+Przeczyść ochrony jest opcjonalne zachowanie usługi Key Vault i **nie jest włączona domyślnie**. Można je włączyć za pośrednictwem [interfejsu wiersza polecenia](key-vault-soft-delete-cli.md#enabling-purge-protection) lub [Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection).
 
 ### <a name="permitted-purge"></a>Dozwolone przeczyszczania
 
 Trwałe usuwanie przeczyszczanie, magazyn kluczy jest możliwe za pośrednictwem operacji POST, w zasobie serwer proxy i wymaga specjalnych uprawnień. Ogólnie rzecz biorąc tylko właściciel subskrypcji będzie można przeczyścić magazynu kluczy. Operację POST wyzwala natychmiastową i nieodwracalny usunięcie tego magazynu. 
 
-Są wyjątki od tej reguły
-- tak w przypadku subskrypcji platformy Azure została oznaczona jako *nieusuwalnej*. W tym przypadku jedyną usługą następnie może wykonać rzeczywiste usunięcie i odbywa się to jako proces w zaplanowanym. 
-- Gdy — ochrona przed czyszczeniem Włącz flaga jest włączona na sam magazyn. W tym przypadku usługi Key Vault będzie czekać przez 90 dni od, gdy oryginalny obiekt tajny został oznaczony do usunięcia trwale usunąć obiekt.
+Dostępne są następujące wyjątki:
+- Jeśli subskrypcja platformy Azure została oznaczona jako *nieusuwalnej*. W tym przypadku jedyną usługą następnie może wykonać rzeczywiste usunięcie i odbywa się to jako proces w zaplanowanym. 
+- Gdy enable-— ochrona przed czyszczeniem flaga jest włączona na sam magazyn. W tym przypadku usługi Key Vault będzie czekać przez 90 dni od, gdy oryginalny obiekt tajny został oznaczony do usunięcia trwale usunąć obiekt.
 
 ### <a name="key-vault-recovery"></a>Odzyskiwanie usługi Key vault
 
@@ -66,7 +59,7 @@ Po usunięciu magazynu kluczy, usługa umożliwia utworzenie zasobu serwera prox
 
 ### <a name="key-vault-object-recovery"></a>Odzyskiwanie obiektów magazynu kluczy
 
-Podczas usuwania obiektów magazynu kluczy, takie jak klucz usługi spowoduje umieszczenie obiektu w stanie usunięty, co czyni niedostępny do wszelkich operacji pobierania. W tym stanie obiektu magazynu kluczy może wystąpić tylko, odzyskana lub wymuszone/trwale usunięte. 
+Podczas usuwania obiektów magazynu kluczy, takie jak klucz, usługa będzie umieścić obiekt w stanie usunięty niedostępny dla wszystkich operacji pobierania. W tym stanie obiektu magazynu kluczy może wystąpić tylko, odzyskana lub wymuszone/trwale usunięte. 
 
 W tym samym czasie usługi Key Vault będą planować usunięcie danych bazowych, odpowiadający usunięty magazyn kluczy lub obiektu usługi key vault do wykonania po upływie czasu przechowywania wcześniej. Rekord DNS odpowiadający magazynu również są przechowywane przez czas trwania okresu przechowywania.
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 0a3dfce10fc8ea76bc8f99e2459295bc637017dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878412"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339401"
 ---
 # <a name="enable-custom-pronunciation"></a>Włącz Wymowa niestandardowe
 
-Za pomocą niestandardowych wymowa, można zdefiniować fonetycznych formularza i wyświetlanie słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt.
+Za pomocą niestandardowych wymowa, można zdefiniować fonetycznych formularza i wyświetlanie słowa lub terminy (akronim). Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt.
 
 Oto, jak to działa. W pliku txt pojedynczego można wprowadzić kilka niestandardowych Wymowa wpisów. Struktura jest następująca:
 
@@ -32,11 +32,12 @@ W poniższej tabeli przedstawiono kilka przykładów:
 
 | Formularz wyświetlania | Mówionej formy |
 |----------|-------|
-| C3PO | Zobacz trzy PLA o |
+| 3CPO | Zobacz trzy PLA o |
 | L8R | Rozpoznanie późnego są |
-| CNTK | Zobacz n herbaty k|
+| CNTK | k k, n t|
 
 ## <a name="requirements-for-the-spoken-form"></a>Wymagania dotyczące mówionej formy
+
 Mówionej formy musi być pisana małymi literami i co można wymusić podczas importowania. Należy również podać zaewidencjonuje odbierający dane. Nie karty w mówionej formy lub formularz wyświetlania jest dozwolone. Jednak może być bardziej zabronione znaki w formularzu wyświetlania (na przykład ~ i ^).
 
 Każdy plik txt może mieć wiele wpisów, jak pokazano na poniższej ilustracji:
@@ -46,18 +47,20 @@ Każdy plik txt może mieć wiele wpisów, jak pokazano na poniższej ilustracji
 Mówionej formy jest ciągiem fonetycznych formularz wyświetlania. Składa się z liter, słowa lub sylab. Obecnie nie ma żadnych dalszych wskazówek lub zestaw standardów, aby pomóc w tworzeniu mówionej formy.
 
 ## <a name="supported-pronunciation-characters"></a>Wymowa obsługiwane znaki
+
 Wymowa niestandardowego jest obecnie obsługiwane dla języka angielskiego (en US) i niemiecki (de-de). Zestaw znaków, który służy do express mówionej formy termin (w pliku niestandardowego Wymowa) są wyświetlane w poniższej tabeli:
 
 | Język | Znaki |
 |---------- |----------|
-| Angielski (en US) | , b, c, d, e, f, g, h, i, "j", k, l, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
-| Niemiecki (de-de) | ä strumień świetlny, znaki ü,?, a, b, c, d, e, f, g, h, i, "j", k, l, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
+| Angielski (en US) | , b, c, d, e, f, g, h, i, "j", k, l, m, n, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
+| Niemiecki (de-de) | ä, ö, ü, ?, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 > [!NOTE]
 > Formularz wyświetlania termin (w pliku Wymowa) zapisywane taki sam sposób w zestawie danych dostosowywania języka.
 
 ## <a name="requirements-for-the-display-form"></a>Wymagania dotyczące formularz wyświetlania
-Formularz wyświetlania można tylko niestandardowe słowa, czasu trwania umowy, akronim lub wyrazy złożone łączące istniejące słowa. Można również wprowadzić alternatywne wymowy popularne wyrazy.
+
+Formularz wyświetlania można tylko niestandardowe słowo, akronim lub wyrazy złożone łączące istniejące słowa.
 
 >[!NOTE]
 >Nie zaleca się używania tej funkcji, aby sformułować popularnych wyrazów lub zmodyfikować mówionej formy. Zaleca dekodera, aby zobaczyć, czy niektóre nietypowe wyrazów (np. skróty wyrazy techniczne i obce słowa) są niepoprawnie zdekodowane. W takim przypadku należy dodać je do pliku Wymowa niestandardowych. W model języka należy zawsze i tylko używać formularz wyświetlania wyrazu.

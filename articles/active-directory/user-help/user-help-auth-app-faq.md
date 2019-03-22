@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c071629ba18ab9f40ecec3b2e09290f57ad2fe
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 996b4df9d8723da3d1df799ea9f8656debb1395b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996552"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311938"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikacja Microsoft Authenticator — często zadawane pytania
 
@@ -50,7 +50,7 @@ Aplikacja Microsoft Authenticator zastępowane aplikacji Azure Authenticator, a 
 |Dlaczego nie jest aplikacja Microsoft Authenticator pomocnika dla Apple Watch synchronizowanie lub pojawia się na Moje Obejrzyj?|Jeśli aplikacja nie jest wyświetlane na zegarku, spróbuj wykonać następujące czynności: <ol><li>Upewnij się, że urządzenia Watch działa systemu watchOS, 4.0 lub nowszy.</li><li>Ponownie Synchronizuj zegarka.</li></ol>|
 |Moja aplikacja pomocnika Apple Watch wystąpiła awaria. Czy mogę wysyłać możesz Moje dzienniki awarii dzięki którym możesz zbadać? |Musisz najpierw upewnij się, że został wybrany, aby udostępnić nam analizy. Jeśli jesteś użytkownikiem usługi TestFlight, już masz konta. W przeciwnym razie możesz przejść do **Ustawienia > Prywatność > Analytics** i zaznacz **udostępnianie urządzenia iPhone i analiza Obejrzyj** i **udziału z deweloperami aplikacji** opcje.<br><br>Po zarejestrowaniu się możesz odtworzyć awarii sieci, więc dzienniki awarii są automatycznie wysyłane do nas podczas analiz. Jednak jeśli nie można odtworzyć awarii sieci, można ręcznie skopiować pliki dzienników i wysyłać je do nas.<ol><li>Otwórz w aplikacji Watch na Twój telefon, przejdź do **Ustawienia > Ogólne**, a następnie kliknij przycisk **Analytics Obejrzyj kopiowania**.</li><li>Znaleźć odpowiedniego awarii w ramach **Ustawienia > Prywatność > Analytics > danych analitycznych**i ręcznie skopiować cały tekst.</li><li>Otwórz aplikację Microsoft Authenticator na telefonie i Wklej, który skopiowany tekst do **udziału z deweloperami aplikacji** pola tekstowego **Wyślij dzienniki** strony.</li></ol>|
 |Co to jest funkcja blokady aplikacji i w jaki sposób pomaga chronić mnie więcej?|Aby zachować bezpieczniejsze jednorazowe kodów dostępu, informacje o aplikacji i ustawień aplikacji, można włączyć funkcję blokady aplikacji w aplikacji Microsoft Authenticator. Włączanie blokady aplikacji z **ustawienia** ekranu aplikacji Microsoft Authenticator oznacza, że użytkownik zostanie zapytany do uwierzytelniania przy użyciu PIN lub biometrycznych, za każdym razem, gdy otworzysz aplikację Microsoft Authenticator. Funkcja ta zapewnia dodatkową ochronę, sposób zatwierdzenie powiadomienia w aplikacji Microsoft Authenticator nie ulegnie zmianie.<br><br>**Uwaga**<br>Po powrocie do aplikacji Microsoft Authenticator, uruchomione na urządzeniu z systemem Android w mniej niż 30 sekund, monit nie uwierzytelnić się ponownie.|
-|Dlaczego otrzymuję powiadomienia o mojej aktywności konta?|Aby zapewnić Ci więcej wiedzieć, co się dzieje z osobistego konta Microsoft, wysyłamy działania powiadomień do aplikacji Microsoft Authenticator. Te powiadomienia są wyświetlane od razu po zmieni się coś, co ułatwia zapewnienie możesz bardziej bezpieczne. Firma Microsoft wcześniej wysyłane te powiadomienia za pośrednictwem poczty e-mail i wiadomości SMS, a teraz zostały rozszerzone, aby uwzględnić w aplikacji. Aby uzyskać więcej informacji na temat tych działań powiadomień zobacz [co się stanie, jeśli występuje nietypowe zachowanie podczas logowania na koncie](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Aby zmienić sposób ich otrzymywania powiadomień, zaloguj się do https://account.live.com/SecurityNotifications/Update.
+|Dlaczego otrzymuję powiadomienia o mojej aktywności konta?|Aby zapewnić Ci więcej wiedzieć, co się dzieje z osobistego konta Microsoft, wysyłamy działania powiadomień do aplikacji Microsoft Authenticator. Te powiadomienia są wyświetlane od razu po zmieni się coś, co ułatwia zapewnienie możesz bardziej bezpieczne. Firma Microsoft wcześniej wysyłane te powiadomienia za pośrednictwem poczty e-mail i wiadomości SMS, a teraz zostały rozszerzone, aby uwzględnić w aplikacji. Aby uzyskać więcej informacji na temat tych działań powiadomień zobacz [co się stanie, jeśli występuje nietypowe zachowanie podczas logowania na koncie](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Aby zmienić sposób ich otrzymywania powiadomień, zaloguj się do protokołu https:\//account.live.com/SecurityNotifications/Update.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

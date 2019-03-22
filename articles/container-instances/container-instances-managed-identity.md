@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311567"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336528"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Jak używać zarządzanych tożsamości z usługi Azure Container Instances
 
@@ -33,7 +33,7 @@ Dostosuj przykłady do włączenia i używania tożsamości w usłudze Azure Con
 
 ## <a name="why-use-a-managed-identity"></a>Dlaczego warto korzystać z tożsamości zarządzanej?
 
-Umożliwia uwierzytelnienie przez dowolny tożsamość zarządzaną w kontenerze uruchomiona [usługa, która obsługuje uwierzytelnianie za pomocą usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) bez konieczności zarządzania poświadczeniami w kodzie kontenera. Dla usług, które nie obsługują uwierzytelnianie w usłudze AD można przechowywać wpisy tajne w usłudze Azure Key Vault i umożliwiają dostęp do usługi Key Vault można pobrać poświadczeń tożsamości zarządzanej. Aby uzyskać więcej informacji o korzystaniu z tożsamości zarządzanej, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md)
+Umożliwia uwierzytelnienie przez dowolny tożsamość zarządzaną w kontenerze uruchomiona [usługa, która obsługuje uwierzytelnianie za pomocą usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) bez konieczności zarządzania poświadczeniami w kodzie kontenera. Dla usług, które nie obsługują uwierzytelnianie w usłudze AD można przechowywać wpisy tajne w usłudze Azure Key Vault i umożliwiają dostęp do usługi Key Vault można pobrać poświadczeń tożsamości zarządzanej. Aby uzyskać więcej informacji o korzystaniu z tożsamości zarządzanej, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna. Obecnie zarządzanych tożsamości są obsługiwane tylko w wystąpieniach kontenera systemu Linux.
@@ -252,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Teraz można używać tokenu dostępu do uwierzytelniania w usłudze Key Vault i odczytu wpisu tajnego. Pamiętaj podstawić nazwę magazynu kluczy w adresie URL (*https://mykeyvault.vault.azure.net/...*):
+Teraz można używać tokenu dostępu do uwierzytelniania w usłudze Key Vault i odczytu wpisu tajnego. Pamiętaj podstawić nazwę magazynu kluczy w adresie URL (*https:\//mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

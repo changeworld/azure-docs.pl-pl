@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 68ac03a8aba4042a842b5e740d67ab4198236275
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013166"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317735"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopiowanie danych z kwadrat przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Następujące właściwości są obsługiwane w przypadku kwadratowy połączone
 | host | Adres URL wystąpienia kwadrat. (i.e. mystore.mysquare.com)  | Yes |
 | clientId | Identyfikator klienta skojarzony z aplikacją w kształcie kwadratu.  | Yes |
 | clientSecret | Klucz tajny klienta skojarzonego z aplikacją w kształcie kwadratu. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| redirectUri | Adres URL przekierowania przypisane na pulpicie nawigacyjnym aplikacji w kształcie kwadratu. (tj.) http://localhost:2500)  | Yes |
+| redirectUri | Adres URL przekierowania przypisane na pulpicie nawigacyjnym aplikacji w kształcie kwadratu. (i.e. http:\//localhost:2500)  | Yes |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
 | useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 | usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: bf2f2db57f33645389fd751c8c00f9f135416c50
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 9570982e18f2698400c2798dd3e29b0ca6160b8c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864137"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309746"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine w trybie offline, przesyłania strumieniowego dla systemu Android  
 
@@ -153,7 +153,7 @@ W przypadku uaktualnienia dla programu Chrome przeglądarce dla urządzeń przen
 
 Powyższe aplikacji typu open source w PWA jest tworzone w środowisku Node.js. Jeśli chcesz hostować własnej wersji w systemie Ubuntu server, należy pamiętać następujące typowe problemy napotkano, które mogą uniemożliwić odtwarzania:
 
-1. Problem CORS: Wideo w przykładowej aplikacji przykładowych znajduje się w https://storage.googleapis.com/biograf-video-files/videos/. Google ma ustawienia mechanizmu CORS dla ich przykłady testu hostowanej w usłudze Google Cloud Storage zasobnika. Są one obsługiwane z nagłówków CORS, jawne określenie wpis mechanizmu CORS: https://biograf-155113.appspot.com (domeny, w których google hostuje ich próbki) blokowanie dostępu przez inne witryny. Jeśli spróbujesz, zostanie wyświetlony następujący błąd HTTP: Nie można załadować https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: Brak nagłówka "Access-Control-Allow-Origin" jest obecny dla żądanego zasobu. Źródło "https://13.85.80.81:8080" nie ma związku z tym mieć dostęp. Jeśli odpowiedź nieprzezroczyste spełnia Twoje potrzeby, ustaw tryb żądania "nie-cors" można pobrać zasobu z mechanizmem CORS wyłączone.
+1. Problem CORS: Wideo w przykładowej aplikacji przykładowych znajduje się w https://storage.googleapis.com/biograf-video-files/videos/. Google ma ustawienia mechanizmu CORS dla ich przykłady testu hostowanej w usłudze Google Cloud Storage zasobnika. Są one obsługiwane z nagłówków CORS, jawne określenie wpis mechanizmu CORS: https://biograf-155113.appspot.com (domeny, w których google hostuje ich próbki) blokowanie dostępu przez inne witryny. Jeśli spróbujesz, zostanie wyświetlony następujący błąd HTTP: Nie można załadować https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: Brak nagłówka "Access-Control-Allow-Origin" jest obecny dla żądanego zasobu. Źródło "https:\//13.85.80.81:8080" nie ma związku z tym mieć dostęp. Jeśli odpowiedź nieprzezroczyste spełnia Twoje potrzeby, ustaw tryb żądania "nie-cors" można pobrać zasobu z mechanizmem CORS wyłączone.
 2. Wystawienie certyfikatu: Począwszy od Chrome v 58, EME dla Widevine wymaga protokołu HTTPS. Dlatego należy do hostowania przykładowej aplikacji przy użyciu protokołu HTTPS z X509 certyfikatu. Certyfikat testowy zwykle nie działa ze względu na następujące wymagania: Należy uzyskać certyfikat spełniających poniższe wymagania minimalne:
     - Chrome i Firefox wymagane ustawienie alternatywna nazwa podmiotu dla sieci SAN ma ich w certyfikacie
     - Certyfikat musi być zaufany urząd certyfikacji i certyfikat programistyczny z podpisem własnym nie działa

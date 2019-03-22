@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: ef75ec40df50931f5a49c06184c61d2f78608dcf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 73def6b659676cc4fecf1d9ef499247c23888566
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014996"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310289"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii Azure – Azure
 
@@ -101,7 +101,7 @@ W poniższej tabeli opisano różne typy spójności.
 --- | --- | ---
 Migawki spójne awarii przechwytuje dane na dysku podczas migawka została utworzona. Nie zawiera żadnych w pamięci.<br/><br/> Zawiera ona odpowiednikiem dane na dysku, które będą obecne, jeśli maszyna wirtualna wystąpiła awaria lub przewód zasilający została ściągnięta z serwera na moment, że migawka została utworzona.<br/><br/> Spójne na poziomie awarii nie gwarantuje spójności danych dla systemu operacyjnego lub aplikacji na maszynie Wirtualnej. | Usługa Site Recovery tworzy punkty odzyskiwania spójne na poziomie awarii co pięć minut domyślnie. Nie można zmodyfikować to ustawienie.<br/><br/>  | Obecnie większość aplikacji może odzyskać dobrze punktów spójnych awaryjnie.<br/><br/> Punkty odzyskiwania spójne na poziomie awarii są zwykle wystarczające do replikacji systemów operacyjnych i aplikacji, takich jak serwery DHCP i serwery wydruku.
 
-### <a name="app-consistent"></a>App-consistent
+### <a name="app-consistent"></a>Spójne na poziomie aplikacji
 
 **Opis** | **Szczegóły** | **Zalecenie**
 --- | --- | ---

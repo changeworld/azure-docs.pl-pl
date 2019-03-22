@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097614"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336079"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia
 
@@ -222,6 +222,24 @@ Wyświetlanie listy obiektów usuniętych usługi key vault pokazuje również, 
 
 >[!IMPORTANT]
 >Obiekt magazynu przeczyszczone wyzwolone przez jego *zaplanowana data przeczyścić* polu, zostaną trwale usunięte. Nie jest możliwe do odzyskania!
+
+## <a name="enabling-purge-protection"></a>Włączenie ochrony przeczyszczania
+
+Gdy ochrona przed czyszczeniem jest włączona, magazynu lub obiektu w usuniętej stanu nie można przeczyścić, dopóki minął okres przechowywania 90 dni. Nadal można odzyskać taki magazyn lub obiektu. Ta funkcja zapewnia dodano pewność, że magazyn lub obiektu nigdy nie można trwale usunąć, dopóki przechowywania okres został przekazany.
+
+Ochrona przed czyszczeniem można włączyć tylko wtedy, gdy włączona jest również opcji soft-delete. 
+
+Aby włączyć zarówno usuwanie nietrwałe i przeczyścić ochrony podczas tworzenia magazynu, należy użyć [tworzenie az keyvault](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) polecenia:
+
+```
+az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
+```
+
+Aby dodać ochrona przed czyszczeniem do istniejącego magazynu (który jest już włączone usuwanie nietrwałe), użyj [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) polecenia:
+
+```
+az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
+```
 
 ## <a name="other-resources"></a>Inne zasoby
 

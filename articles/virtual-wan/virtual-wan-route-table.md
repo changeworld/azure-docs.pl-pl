@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: ac1384827ceede0f66fd08c6c08fa8e934b1ae42
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc8dd6770efa1c057a56374ddc0094c2d88d2eb5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076160"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335739"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Utwórz koncentrator wirtualny tabelę tras w celu kierowania ruchu do wirtualnego urządzenia sieciowego
 
@@ -36,7 +36,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 Sprawdź, czy są spełnione następujące kryteria:
 
-1. Masz wirtualnego urządzenia sieciowego (WUS) to oprogramowanie innych firm wybranych przez użytkownika jest zazwyczaj zainicjowanym do obsługi administracyjnej z witryny Azure Marketplace (Link) w sieci wirtualnej.
+1. Masz wirtualnego urządzenia sieciowego (WUS). To jest oprogramowanie innych firm w wybranym aprowizowanego zwykle z witryny Azure Marketplace w sieci wirtualnej.
 2. Masz prywatny adres IP przypisany do interfejsu sieciowego urządzenia WUS. 
 3. Nie można wdrożyć urządzenie WUS w koncentrator wirtualny. Musi zostać wdrożony w oddzielnych sieci wirtualnej. W tym artykule sieci wirtualnej urządzenie WUS nazywa się "strefy DMZ sieci wirtualnej".
 4. "Strefy DMZ sieci wirtualnej" może zawierać jeden lub wiele sieci wirtualnych połączonych z nim. W tym artykule ta sieć wirtualna nazywa się "Pośrednich sieć wirtualną będącą szprychą". Tych sieciach wirtualnych mogą być połączone z siecią wirtualną strefy DMZ przy użyciu komunikacji równorzędnej sieci wirtualnych.
@@ -117,14 +117,6 @@ Zatwierdź zmiany do koncentratora wirtualnego.
 
 ```powershell
 Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
-```
-
-## <a name="cleanup"></a>Oczyszczanie zasobów
-
-Jeśli te zasoby nie są już potrzebne, możesz użyć [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby. Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

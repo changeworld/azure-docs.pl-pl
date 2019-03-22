@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 242c2f63735be33fe933ae3229f7aa28356ea697
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e7f292db06d4da9206aabd14a68e6acde867f92d
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548391"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337004"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkcje i terminologią dotyczącą usługi Azure Event Hubs
 
@@ -79,7 +79,7 @@ Usługa Event Hubs przechowuje dane przez skonfigurowany czas przechowywania, st
 
 Liczba partycji jest określana podczas tworzenia i musi należeć do zakresu od 2 do 32. Liczby partycji nie można zmieniać, dlatego ustawiając liczbę partycji, trzeba planować długoterminowo. Partycje stanowią mechanizm organizacji danych powiązany z równoległością podrzędną wymaganą w aplikacjach korzystających z tych danych. Liczba partycji w centrum zdarzeń jest bezpośrednio związana z oczekiwaną liczbą jednoczesnych czytników. Możesz zwiększyć liczbę partycji ponad 32, kontaktując się z zespołem ds. usługi Event Hubs.
 
-Chociaż partycje są identyfikowalne i mogą być wysyłane bezpośrednio do, wysyłając bezpośrednio do partycji nie jest zalecane. Zamiast tego można użyć konstrukcji wyższego poziomu przedstawionych w sekcjach [Wydawca zdarzeń](#event-publishers) i [Pojemność](#capacity). 
+Chociaż partycje są identyfikowalne i mogą być wysyłane bezpośrednio do, wysyłając bezpośrednio do partycji nie jest zalecane. Zamiast tego można użyć konstrukcji wyższego poziomu wprowadzonych w [wydawca zdarzeń](#event-publishers) i sekcje pojemności. 
 
 Partycje są wypełnione sekwencją danych zdarzenia, które obejmują treść zdarzenia, zdefiniowany przez użytkownika zbiór właściwości oraz metadane, takie jak jego przesunięcie w partycji i jego numer w sekwencji strumienia.
 
@@ -152,13 +152,15 @@ Dane zdarzenia:
 
 Zarządzanie przesunięciem jest Twoim obowiązkiem.
 
-## <a name="capacity"></a>Pojemność
+## <a name="scaling-with-event-hubs"></a>Skalowanie za pomocą usługi Event Hubs
 
-Usługa Event Hubs ma wysoce skalowalną architekturę równoległą i istnieje kilka kluczowych czynników, które należy rozważyć podczas określania rozmiaru i skalowania.
+Istnieją dwa czynniki, które mają wpływ na skalowanie za pomocą usługi Event Hubs.
+*   Jednostki przepływności
+*   Partycje
 
 ### <a name="throughput-units"></a>Jednostki przepływności
 
-Pojemność przepływności usługi Event Hubs jest kontrolowana przez *jednostki przepływności*. Jednostki przepływności to zakupione wcześniej jednostki pojemności. Pojedyncza jednostka przepływności ma następującą pojemność:
+Pojemność przepływności usługi Event Hubs jest kontrolowana przez *jednostki przepływności*. Jednostki przepływności to zakupione wcześniej jednostki pojemności. Przepływność pojedynczego zapewnia następujące możliwości:
 
 * Transfer danych przychodzących: Do 1 MB na sekundę lub 1000 zdarzeń na sekundę (w zależności od tego osiągnięty pierwszy).
 * Transfer danych wychodzących: Do 2 MB na sekundę lub 4096 zdarzeń na sekundę.
@@ -167,9 +169,13 @@ Po przekroczeniu pojemności zakupionych jednostek przepływności ruch przychod
 
 Jednostki przepływności to zakupione wcześniej i jest rozliczana godzinowo. Po zakupieniu jednostki przepływności są rozliczane za co najmniej jedną godzinę. Przepływność maksymalnie 20 jednostek dla przestrzeni nazw usługi Event Hubs można kupić i są udostępniane we wszystkich centrach zdarzeń w tej przestrzeni nazw.
 
-Aby kupić więcej jednostek przepływności w blokach po 20 maksymalnie 100 jednostek przepływności, kontaktując się z pomocą techniczną platformy Azure. Po przekroczeniu tego limitu możesz kupić blokach po 100 jednostek przepływności.
+### <a name="partitions"></a>Partycje
 
-Zalecane jest równoważenie jednostek przepływności i partycji w celu osiągnięcia optymalnej skali. Jedna partycja ma minimalne skalę wynoszącą jedną jednostkę przepływności. Liczba jednostek przepływności powinna być mniejsza lub równa liczbie partycji w ramach centrum zdarzeń.
+Partycje pozwalają skalowaniu dla Twojego przetwarzania transmisji dla klientów. Ze względu na partycjonowanego modelu odbiorców oferująca usługi Event Hubs z partycjami użytkownik może skalowalnego w poziomie podczas przetwarzania zdarzeń jednocześnie. Centrum zdarzeń mogą mieć maksymalnie 32 partycjami.
+
+Zalecane jest równoważenie jednostek przepływności 1:1 i partycji w celu osiągnięcia optymalnej skali. Jedna partycja ma gwarantowaną ruchu przychodzącego i wychodzącego więcej niż jedną jednostkę przepływności. Może być możliwe do uzyskania większej przepływności na partycji, wydajności nie jest gwarantowana. Jest to, dlaczego firma Microsoft zaleca, że liczba partycji w Centrum zdarzeń jest większa lub równa liczbie jednostek przepływności.
+
+Biorąc pod uwagę łącznej przepływności, w którym planujesz wymagające, wiesz, że liczba jednostek przepływności, które są wymagane i minimalna liczba partycji, ale jak wiele partycji, należy mieć? Wybierz liczbę partycji, oparte na równoległością, który chcesz osiągnąć, jak również w zakresie przyszłych przepływności. Nie ma opłat za liczbę partycji, posiadanych w ramach Centrum zdarzeń.
 
 Aby uzyskać szczegółowe informacje o cenach za korzystanie z usługi Event Hubs, zobacz [Usługa Event Hubs — cennik](https://azure.microsoft.com/pricing/details/event-hubs/).
 

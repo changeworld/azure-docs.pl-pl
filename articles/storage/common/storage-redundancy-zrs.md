@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.subservice: common
-ms.openlocfilehash: 11891153f1ffce438597dc4f2799a9f25d76c2f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8928e59b97143038e0850132196f1ce9a1da131d
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992606"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337888"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -64,7 +64,7 @@ Aby wykonać ręczną migrację, możesz skorzystać z opcji:
 
 Ręcznej migracji może spowodować przerwy w działaniu aplikacji. Jeśli aplikacja wymaga wysokiej dostępności, firma Microsoft oferuje także opcję migracji na żywo. Migracja na żywo jest migracja w miejscu. 
 
-Podczas migracji na żywo można użyć konta magazynu podczas migracji danych między sygnatury magazynu źródłowego i docelowego. Podczas procesu migracji ma taki sam poziom trwałości i umowy SLA zapewniającej dostępność, jak zwykle.
+Podczas migracji na żywo można użyć konta magazynu podczas migracji danych między sygnatury magazynu źródłowego i docelowego. Podczas procesu migracji masz taki sam poziom trwałości i umowy SLA zapewniającej dostępność jak zwykły sposób.
 
 Mieć na uwadze następujące ograniczenia dotyczące migracji na żywo:
 
@@ -88,7 +88,33 @@ Możesz poprosić o migracji na żywo za pośrednictwem [portalu pomocy technicz
 6. Sprawdź poprawność na informacje kontaktowe **informacje kontaktowe** bloku.
 7. Wybierz pozycję **Utwórz**.
 
-Działu pomocy technicznej będą z Tobą skontaktować i zapewniają pomoc, której potrzebujesz. 
+Działu pomocy technicznej będą z Tobą skontaktować i zapewniają pomoc, której potrzebujesz.
+
+## <a name="live-migration-to-zrs-faq"></a>Migracja na żywo do magazynu ZRS — często zadawane pytania
+
+**Należy zaplanować żadnego przestoju podczas migracji?**
+
+Brak przestojów spowodowanych migracją. Podczas migracji na żywo można nadal konta magazynu podczas migracji danych między sygnatury magazynu źródłowego i docelowego. Podczas procesu migracji masz taki sam poziom trwałości i umowy SLA zapewniającej dostępność jak zwykły sposób.
+
+**Czy istnieje utraty danych skojarzonych z migracji?**
+
+Brak bez utraty danych skojarzonych z migracji. Podczas procesu migracji masz taki sam poziom trwałości i umowy SLA zapewniającej dostępność jak zwykły sposób.
+
+**Po zakończeniu migracji, są aktualizacje wymagane do aplikacji?**
+
+Po zakończeniu migracji typu replikacji konta lub kont zostanie zmieniona na "Magazyn strefowo nadmiarowy (ZRS)". Punkty końcowe usługi dostępu do kluczy sygnatury dostępu Współdzielonego, a inne opcje konfiguracji konta pozostaną niezmienione i bez zmian.
+
+**Czy mogę zażądać mojego konta ogólnego przeznaczenia w wersji 1 do magazynu ZRS migrację na żywo?**
+
+Magazyn ZRS obsługuje tylko konta ogólnego przeznaczenia w wersji 2, więc przed przesłaniem żądania dla migracji na żywo magazynu ZRS Pamiętaj uaktualnić konta na potrzeby do ogólnego przeznaczenia w wersji 2. Zobacz [Przegląd konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview) i [uaktualnić do konta magazynu ogólnego przeznaczenia v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) Aby uzyskać więcej informacji.
+
+**Czy mogę zażądać mojego konta dostępu do odczytu magazynu geograficznie nadmiarowego (RA-GRS) do magazynu ZRS migrację na żywo?**
+
+Przed przesłaniem żądania dla migracji na żywo magazynu ZRS upewnij się, Twoje aplikacje lub workload(s) nie jest już wymagany dostęp do pomocniczego punktu końcowego tylko do odczytu i zmień typ replikacji konta magazynu na magazyn geograficznie nadmiarowy (GRS). Zobacz [zmianę strategii replikacji](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) Aby uzyskać więcej informacji.
+
+**Czy mogę zażądać migrację na żywo mojego konta magazynu do magazynu ZRS do innego regionu?**
+
+Jeśli chcesz przeprowadzić migrację danych do konta magazynu ZRS, znajduje się w regionie innym niż region konta źródłowego, należy wykonać ręczną migrację.
 
 ## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>Klasyczny magazyn ZRS: Starsze opcji blokowych obiektów blob nadmiarowość
 > [!NOTE]
@@ -101,6 +127,8 @@ Klasyczny magazyn ZRS asynchronicznie replikuje dane między centrami danych w j
 Klasyczny magazyn ZRS jest dostępna tylko dla **blokowe obiekty BLOB** w ogólnego przeznaczenia w wersji 1 (GPv1) konta magazynu. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](storage-account-overview.md) (Omówienie konta usługi Azure Storage).
 
 Z konta magazynu LRS, klasycznego magazynu ZRS, GRS lub RA-GRS lub ręcznego przeprowadzania migracji danych z konta magazynu ZRS, użyj jednej z następujących narzędzi: Interfejs wiersza polecenia narzędzia AzCopy, Eksplorator usługi Azure Storage, programu Azure PowerShell lub Azure. Możesz także tworzyć własne rozwiązanie migracji przy użyciu jednego z biblioteki klienta usługi Azure Storage.
+
+Możesz również uaktualnić swoje konta klasycznego magazynu ZRS do magazynu ZRS w portalu lub przy użyciu programu Azure PowerShell lub wiersza polecenia platformy Azure.
 
 ## <a name="see-also"></a>Zobacz także
 - [Replikacja usługi Azure Storage](storage-redundancy.md)

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: b9304e151bbce691b752f12aeec8a5376e517a8d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f1bc19833e0e0cc2026ae22977d9a3b371924fe2
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120775"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337133"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -63,6 +63,9 @@ Cortana, który wstępnie skompilowanych aplikacji zostały zaniechane w 2017 r.
 
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak przenieść własność aplikacją usługi LUIS?
 Aby przetransferować aplikacją usługi LUIS do innej subskrypcji platformy Azure, Eksportuj aplikacji LUIS, a następnie importować go za pomocą nowego konta. Zaktualizuj identyfikator aplikacji usługi LUIS w aplikacji klienta, który ją wywołuje. Nowa aplikacja może zwrócić LUIS nieco inne wyniki z oryginalnej aplikacji.
+
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Próba importowania aplikacji lub wersji pliku, ale wystąpił błąd, co się stało? 
+Przeczytaj więcej na temat [błędy importu wersji](luis-how-to-manage-versions.md#import-errors) i [błędy importowania aplikacji](luis-how-to-start-new-app.md#import-errors).
 
 <a name="luis-collaborating"></a>
 

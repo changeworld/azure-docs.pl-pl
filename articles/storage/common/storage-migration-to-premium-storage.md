@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 5f2052576d0c6a1e663e3b84534fa0784a26e175
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: fd72e2a75c00c30fdc5497e0d88e9c83dc5fcad8
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006514"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317361"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrowanie do usługi Azure Premium Storage (dyski niezarządzane)
 
@@ -158,7 +158,7 @@ Utwórz konto magazynu, obsługę sieci wirtualnych dysków twardych. Podczas pl
 W przypadku dysków danych można wybrać zachować niektóre dyski danych na koncie magazynu w warstwie standardowa (na przykład, dyski, na których chłodniejszej magazynu), ale zdecydowanie zalecamy przeniesienie wszystkich danych dla obciążenia produkcyjnego do użycia magazynu w warstwie premium.
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>Krok 3. Skopiuj wirtualny dysk twardy za pomocą narzędzia AzCopy lub programu PowerShell
-Musisz znaleźć usługi kontenera ścieżki i klucza konta magazynu do jednej z tych dwóch opcji przetwarzania. Kontener ścieżki i klucza konta magazynu można znaleźć w **witryny Azure Portal** > **magazynu**. Kontener, adres URL będzie miał takie jak "https://myaccount.blob.core.windows.net/mycontainer/".
+Musisz znaleźć usługi kontenera ścieżki i klucza konta magazynu do jednej z tych dwóch opcji przetwarzania. Kontener ścieżki i klucza konta magazynu można znaleźć w **witryny Azure Portal** > **magazynu**. Kontener, adres URL będzie miał takie jak "https:\//myaccount.blob.core.windows.net/mycontainer/".
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Opcja 1: Skopiuj wirtualny dysk twardy za pomocą narzędzia AzCopy (kopia asynchroniczny)
 Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru wirtualnych dysków twardych to może potrwać. Pamiętaj sprawdzić ruch przychodzący i wychodzący limity konta magazynu przy użyciu tej opcji. Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md) Aby uzyskać szczegółowe informacje.

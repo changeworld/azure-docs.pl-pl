@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dfbb618bafd9ae3cbb0c691e63a243ab2c2c31e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 645fb4e939e308eecdd2b6933197493919c2dd1d
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996541"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338585"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure dotyczące logowania 
 
@@ -80,7 +80,7 @@ Poniższy skrypt pokazuje, jak:
 
 ## <a name="resource-ids-for-azure-services"></a>Identyfikatory zasobów dla usług platformy Azure
 
-Zobacz [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](services-support-msi.md#azure-services-that-support-azure-ad-authentication) listę zasobów, które obsługują usługę Azure AD i zostały przetestowane z zarządzanych tożsamości dla zasobów platformy Azure oraz ich odpowiednich identyfikatorów zasobów.
+Zobacz [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) listę zasobów, które obsługują usługę Azure AD i zostały przetestowane z zarządzanych tożsamości dla zasobów platformy Azure oraz ich odpowiednich identyfikatorów zasobów.
 
 ## <a name="error-handling-guidance"></a>Wskazówki dotyczące obsługi błędów 
 

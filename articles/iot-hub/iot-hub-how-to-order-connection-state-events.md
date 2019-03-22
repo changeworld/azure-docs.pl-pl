@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 5580d67f796efc809ef536818419ab91e8ee54a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: edaa0cdcd98ce529ccbf9bf6aafaacf57a3ea383
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540015"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337531"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Zamówienie urządzenia zdarzenia połączeń z usługi Azure IoT Hub przy użyciu usługi Azure Cosmos DB
 
@@ -24,9 +24,9 @@ Numer sekwencji jest ciąg reprezentujący liczbę szesnastkową. Porównanie ci
 
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
-* Aktywne konto interfejsu API SQL usługi Azure Cosmos DB. Jeśli jeden nie utworzono jeszcze, zobacz [Tworzenie konta bazy danych](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account) przewodnik.
+* Aktywne konto interfejsu API SQL usługi Azure Cosmos DB. Jeśli jeden nie utworzono jeszcze, zobacz [Tworzenie konta bazy danych](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-an-account) przewodnik.
 
-* Kolekcja w bazie danych. Zobacz [dodania kolekcji](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-collection) przewodnik.
+* Kolekcja w bazie danych. Zobacz [dodania kolekcji](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-database-and-a-collection) przewodnik.
 
 * Centrum IoT Hub na platformie Azure. Jeśli jeszcze go nie masz, zobacz przewodnik [Wprowadzenie do usługi IoT Hub](../iot-hub/iot-hub-csharp-csharp-getstarted.md). 
 
@@ -350,5 +350,3 @@ Aby usunąć konto usługi Azure Cosmos DB w witrynie Azure portal, kliknij praw
 * [Wypróbuj samouczek zdarzeń usługi IoT Hub](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
 * Dowiedz się więcej o tym, co jeszcze można zrobić za pomocą [usługi Event Grid](../event-grid/overview.md)
-
-

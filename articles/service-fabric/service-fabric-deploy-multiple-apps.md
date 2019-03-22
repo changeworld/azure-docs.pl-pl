@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ed8159f38e2763cb897212ae4f51fecb7343a683
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854470"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315595"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Wdrażanie wielu aplikacji wykonywalnych gości
 Ten artykuł pokazuje, jak pakowanie i wdrażanie wielu aplikacji wykonywalnych gości w usłudze Azure Service Fabric. Do tworzenia i wdrażania jednego pakietu usługi Service Fabric przeczytaj, jak do [wdrażanie pliku wykonywalnego gościa w usłudze Service Fabric](service-fabric-deploy-existing-app.md).
@@ -204,7 +204,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-Po pomyślnym opublikowaniu aplikacji w klastrze lokalnym, można uzyskać dostęp do aplikacji Node.js, przy użyciu portu, który możemy wprowadzono w manifeście usługi aplikacji Node.js — na przykład http://localhost:3000.
+Po pomyślnym opublikowaniu aplikacji w klastrze lokalnym, można uzyskać dostęp aplikacji Node.js przy użyciu portu, który możemy wprowadzony w manifeście usługi aplikacji Node.js — na przykład http:\//localhost:3000.
 
 W ramach tego samouczka wiesz jak łatwo spakować dwa istniejące aplikacje jako jedna aplikacja usługi Service Fabric. Masz również pokazaliśmy, jak je wdrożyć do usługi Service Fabric, dzięki czemu mogą korzystać z niektórych funkcji usługi Service Fabric, takich jak wysoka dostępność i kondycji, integracji systemów.
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: d194a5929e648c09eb204860c528e48bc55259ee
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f6708a9c22939395f992c2ac58a7e510b35f763
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635409"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317276"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Wdrażanie topologii Apache Storm w usłudze Azure HDInsight i zarządzanie 
 
@@ -96,7 +96,7 @@ Można programowo wdrażanie topologii przy użyciu usługi Nimbus. [https://git
 
 Podczas przesyłania topologii przy użyciu programu Visual Studio **topologii Storm** zostanie wyświetlony widok. Wybierz topologię z listy, aby wyświetlić informacje o uruchomionej topologii.
 
-![Monitorowanie programu Visual studio](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
+![visual studio monitor](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
 
 > [!NOTE]  
 > Można również wyświetlić **topologii Storm** z **Eksploratora serwera** , rozwijając **Azure** > **HDInsight**, a następnie Kliknij prawym przyciskiem myszy platformy Storm w klastrze HDInsight, a następnie wybierając **wyświetl topologie Storm**.
@@ -184,7 +184,7 @@ Link z wybraniu **podsumowanie topologii** sekcja wyświetla następujące infor
 
   * **Aktywuj**: Wznowienie przetwarzania dezaktywowanej topologii.
   * **Dezaktywuj**: Wstrzymanie uruchomionej topologii.
-  * **Ponowne zrównoważenie**: To dostosować równoległość topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Ta operacja umożliwia topologię, aby dostosować równoległość topologii w celu kompensacji zwiększenia lub zmniejszenia liczby węzłów w klastrze.
+  * **Rebalance**: To dostosować równoległość topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Ta operacja umożliwia topologię, aby dostosować równoległość topologii w celu kompensacji zwiększenia lub zmniejszenia liczby węzłów w klastrze.
 
     Aby uzyskać więcej informacji, zobacz <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">pojęcie równoległości w topologii Apache Storm</a>.
   * **Kill**: Kończy topologii Storm po określonym czasie.
@@ -215,13 +215,13 @@ Aby uzyskać więcej informacji, zobacz [Apache Storm Interfejsu REST API](https
 
 ### <a name="base-uri"></a>Podstawowy identyfikator URI
 
-Podstawowy identyfikator URI dla interfejsu API REST w klastrach HDInsight opartych na systemie Linux jest dostępna w węźle głównym w **https://HEADNODEFQDN:8744/api/v1/**. Nazwa domeny węzła głównego jest generowany podczas tworzenia klastra i nie jest statyczne.
+Podstawowy identyfikator URI dla interfejsu API REST w klastrach HDInsight opartych na systemie Linux jest dostępna w węźle głównym w **https:\//HEADNODEFQDN:8744/api/v1/**. Nazwa domeny węzła głównego jest generowany podczas tworzenia klastra i nie jest statyczne.
 
 W pełni kwalifikowana nazwa domeny (FQDN) węzła głównego klastra można znaleźć na kilka różnych sposobów:
 
 * **W sesji SSH**: Użyj polecenia `headnode -f` w sesji SSH do klastra.
 * **Z sieci Web Ambari**: Wybierz **usług** w górnej części strony, następnie wybierz pozycję **Storm**. Z **Podsumowanie** zaznacz **Server interfejsu użytkownika Storm**. Nazwa FQDN węzła, który hostuje interfejs użytkownika platformy Storm i interfejsu API REST jest wyświetlany w górnej części strony.
-* **Z interfejsu API REST Ambari**: Użyj polecenia `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` można pobrać informacji na temat węzeł, w którym są uruchomione interfejs użytkownika platformy Storm i interfejsu API REST. Zastąp **CLUSTERNAME** nazwą klastra. Po wyświetleniu monitu wprowadź hasło dla konta logowania (administratora). W odpowiedzi wpis "host_name" zawiera nazwę FQDN węzła.
+* **Z interfejsu API REST Ambari**: Użyj polecenia `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` można pobrać informacji na temat węzeł, w którym są uruchomione interfejs użytkownika platformy Storm i interfejsu API REST. Zastąp **CLUSTERNAME** nazwą klastra. Po wyświetleniu monitu wprowadź hasło dla konta logowania (administratora). W odpowiedzi wpis "host_name" zawiera nazwę FQDN węzła.
 
 ### <a name="authentication"></a>Authentication
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d48f47f66bea0bb8c5e3c982f983f3673bcb157
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884680"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317026"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 
@@ -144,9 +144,9 @@ Po zalogowaniu do maszyny Wirtualnej przy użyciu klienta SSH lub graficznego pu
 
 ### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub i JupyterLab
 
-Uruchamia Ubuntu DSVM [JupyterHub](https://github.com/jupyterhub/jupyterhub), serwer programu Jupyter wielu użytkowników. Aby nawiązać połączenie, przejdź do https://your-vm-ip:8000 na komputerze przenośnym lub pulpit, wprowadź nazwę użytkownika i hasło, których użyto do utworzenia maszyny Wirtualnej, a następnie zaloguj się. Wiele notesów próbki są dostępne do przeglądania i wypróbować.
+Uruchamia Ubuntu DSVM [JupyterHub](https://github.com/jupyterhub/jupyterhub), serwer programu Jupyter wielu użytkowników. Aby nawiązać połączenie, przejdź do protokołu https:\// z-maszyny wirtualnej — ip:8000 na komputerze przenośnym lub pulpit, wprowadź nazwę użytkownika i hasło, których użyto do utworzenia maszyny Wirtualnej, a następnie zaloguj się. Wiele notesów próbki są dostępne do przeglądania i wypróbować.
 
-JupyterLab, następna generacja notesów Jupyter i JupyterHub, jest również dostępna. Aby uzyskać do niego dostęp, zaloguj się do JupyterHub, a następnie przejdź do adresu URL https://your-vm-ip:8000/user/your-username/lab. JupyterLab można ustawić jako domyślny serwer notesu, dodając ten wiersz do /etc/jupyterhub/jupyterhub_config.py:
+JupyterLab, następna generacja notesów Jupyter i JupyterHub, jest również dostępna. Aby uzyskać do niego dostęp, zaloguj się do JupyterHub, a następnie przejdź do adresu URL https:\// z-maszyny wirtualnej — ip:8000/użytkownik/your-username/laboratorium. JupyterLab można ustawić jako domyślny serwer notesu, dodając ten wiersz do /etc/jupyterhub/jupyterhub_config.py:
 
     c.Spawner.default_url = '/lab'
 

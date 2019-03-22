@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 512e07f2892f9c4adf47956d3a5b07debf870e46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 637ec63d1c3e5a3eb1ce26765b1ab22e9823e9a1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849911"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317429"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń i Azure virtual machines (VMs). Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usługą Azure Backup.
@@ -82,6 +82,7 @@ Dla kopii zapasowych systemu Linux maszyny Wirtualnej platformy Azure, Azure Bac
 - Usługa Azure Backup nie obsługuje systemu operacyjnego Linux Core.
 - Usługa Azure Backup nie obsługuje 32-bitowych systemach operacyjnych.
 - Inne dystrybucje systemu Linux bring your own może działać tak długo, jak [agenta maszyny Wirtualnej platformy Azure dla systemu Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) jest dostępny na maszynie Wirtualnej i tak długo, jak obsługuje język Python.
+- Usługa Azure Backup nie obsługuje maszyny Wirtualnej z systemem  **języka Python w wersji 2.6* tylko** z skonfigurowany serwer proxy.
 
 
 

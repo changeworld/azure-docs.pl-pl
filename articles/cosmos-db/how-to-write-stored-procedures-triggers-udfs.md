@@ -6,18 +6,21 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: b0c09c5b425beef6badff7fb6ec298f96591abc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990534"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339316"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak pisać procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika w usłudze Azure Cosmos DB
 
 Usługa Azure Cosmos DB zapewnia zintegrowane z językiem, transakcyjne wykonywanie kodu JavaScript, które umożliwia pisanie **procedur składowanych**, **wyzwalaczy** i **funkcji zdefiniowanych przez użytkownika (UDF)**. Korzystając z interfejsu API SQL w usłudze Azure Cosmos DB, można definiować procedury składowane, wyzwalacze i funkcje UDF w języku JavaScript. Logikę można napisać w języku JavaScript, a następnie wykonać ją w aparacie bazy danych. Wyzwalacze, procedury składowane i funkcje UDF można tworzyć i wykonywać przy użyciu witryny [Azure Portal](https://portal.azure.com/), [zintegrowanego interfejsu API zapytań języka JavaScript w usłudze Azure Cosmos DB](javascript-query-api.md) i [zestawów SDK klienta interfejsu API SQL usługi Cosmos DB](sql-api-dotnet-samples.md). 
 
 Aby wywołać procedurę składowaną, wyzwalacz i funkcję zdefiniowaną przez użytkownika, należy je zarejestrować. Aby uzyskać więcej informacji, zobacz [Jak pracować z procedurami składowanymi, wyzwalaczami i funkcjami zdefiniowanymi przez użytkownika w usłudze Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md).
+
+> [!NOTE]
+> W przypadku kontenerów podzielonych na partycje podczas wykonywania procedury składowanej w opcjach żądania należy podać wartość klucza partycji. Procedury składowane są zawsze ograniczone do klucza partycji. Elementy, które mają inną wartość klucza partycji, nie będą widoczne dla procedury składowanej. Ma to również zastosowanie do wyzwalaczy.
 
 ## <a id="stored-procedures"></a>Jak pisać procedury składowane
 

@@ -1,5 +1,5 @@
 ---
-title: Zagadnienia dotyczące projektowania przy użyciu symulacji Akustyka
+title: Zagadnienia dotyczące projektowania symulacji akustyki
 titlesuffix: Azure Cognitive Services
 description: To omówienie pojęć dotyczących wyjaśnia, jak projekt Akustyka dołącza akustyczny symulację do procesu projektowania dźwięku.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: dd27b660dfdd1f4bcec89291b10fd87750ad4c49
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136160"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316086"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Pojęcia procesu projektowania Akustyka projektu
 
@@ -29,7 +29,7 @@ W tytule interaktywne dźwięki i odbiornika przeniesieniu w całej przestrzeni 
 
 Tytuły 3D używać udziału oświetlenia i kinematyczna fizyki systemami są uzasadnione fizyki, ale Projektant dostosowane do różnych celów — szczegółowe informacje i gra osiągnięcia. Projektant wizualny nie zostały ustawione wartości poszczególnych pikseli, ale raczej dostosowuje modele 3D, materiały i światła systemów, które są wszystkie fizycznie oparte na handlu visual wyglądu i koszty procesora CPU. Jaki byłyby równoważne proces dźwięk? Akustyka projektu jest pierwszym etapem eksplorowania to pytanie. Firma Microsoft będzie dotknij najpierw na znaczenia transportu akustyczne energii poprzez spację.
 
-![pogłosu stref](media/reverb-zones-altspace.png)
+![Zrzut ekranu AltSpace sceny nałożony ze strefami pogłosu](media/reverb-zones-altspace.png)
 
 ## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulsów odpowiedzi: Pod względem akustycznym łączenie dwóch punktów w przestrzeni
 
@@ -45,7 +45,7 @@ Odpowiedź impulsów zawiera każdy interesujące (i każdy postrzegać) akustyc
 
 Ale jeśli Symulacja jest podłączony bezpośrednio do audio parametrów DSP, gdzie jest dostosowanie projektanta? Co ich? Dobrze ponownie, odrzucając impulsów odpowiedzi i utrzymywanie kilku parametrów DSP ich znacznej ilości pamięci. I zapewnienie projektanta nieco energii w wyniku końcowego, należy tylko znaleźliśmy sposób wstawiania projektanta między symulacji i dźwięk DSP.
 
-![parametrów odpowiedzi impulsów](media/acoustic-parameters.png)
+![Wykres z odpowiedzią stylizowane impuls z parametrami nałożony](media/acoustic-parameters.png)
 
 ## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Zaprojektowaniu poprzez przekształcanie audio DSP parametry symulacji
 

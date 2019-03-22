@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c43c81d42a39bda504b02eb6c053a16a2cf53aec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138052"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317310"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akustyka — często zadawane pytania
 
@@ -25,7 +25,7 @@ Pakiet Akustyka projektu wtyczek to system Akustyka obliczający zachowanie dźw
 
 ## <a name="where-can-i-download-the-plugin"></a>Gdzie można pobrać wtyczkę?
 
-Możesz pobrać Akustyka projektu z [strony Centrum pobierania Akustyka projektu](https://www.microsoft.com/en-us/download/details.aspx?id=57346).
+Możesz pobrać [wtyczki projektu Akustyka Unity](https://www.microsoft.com/download/details.aspx?id=57346) lub [wtyczki projektu Akustyka Unreal](https://www.microsoft.com/download/details.aspx?id=58090).
 
 ## <a name="does-project-acoustics-support-x-platform"></a>Obsługuje Akustyka projektu <x> platformy?
 

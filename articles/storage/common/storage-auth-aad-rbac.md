@@ -1,19 +1,19 @@
 ---
-title: Zarządzanie prawami dostępu do usługi Azure AD do kontenerów i kolejek o RBAC (wersja zapoznawcza) — usługi Azure Storage za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
+title: Zarządzanie prawami dostępu do usługi Azure AD do kontenerów i kolejek o RBAC (wersja zapoznawcza) — usługi Azure Storage za pomocą witryny Azure portal
 description: Kontrola dostępu oparta na rolach (RBAC) w witrynie Azure portal umożliwia przypisywanie dostępu do kontenerów i kolejek do podmiotów zabezpieczeń. Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC do uwierzytelniania za pomocą usługi Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8050027bac3d2f13ac457edcdad9275c040305da
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a38cce7d15b4796bb66803d06f3589569985cb37
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431860"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319503"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Udzielanie dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)
 
@@ -101,14 +101,6 @@ Wykonaj następujące kroki, aby przypisać **czytnika** roli, aby użytkownik m
 
 > [!NOTE]
 > Przypisywanie roli Czytelnik jest niezbędne tylko w przypadku użytkowników, którzy potrzebują dostępu do obiektów blob lub kolejkach przy użyciu witryny Azure portal. 
-
-## <a name="use-azure-ad-credentials-with-the-portal"></a>Użyj poświadczeń usługi Azure AD za pomocą portalu
-
-Dostęp do obiektów blob lub kolejkach w witrynie Azure portal przy użyciu poświadczeń usługi Azure AD, należy użyć łączy w wersji zapoznawczej pokazano na poniższej ilustracji:
-
-![Dostęp do obiektów blob i kolejki przy użyciu poświadczeń usługi Azure AD w portalu](media/storage-auth-aad-rbac/access-data-azure-ad.png)
-
-Jeśli uzyskujesz dostęp do danych obiektów blob lub kolejki przy użyciu łącza w środowisku produkcyjnym, a nie łącza (wersja zapoznawcza), witryny Azure portal używa Twój klucz konta do autoryzowania dostępu, a nie przy użyciu usługi Azure AD.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

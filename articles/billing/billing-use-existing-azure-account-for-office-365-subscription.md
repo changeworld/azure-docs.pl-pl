@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: 5ac05991bc79dcfd24a527a13084b3a9383b4839
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903995"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339231"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Zamów subskrypcję usługi Office 365 przy użyciu konta platformy Azure
 Jeśli jesteś subskrybenta platformy Azure, można użyć konta platformy Azure w celu uzyskania subskrypcji usługi Office 365. Jeśli jesteś częścią organizacji, która ma subskrypcję platformy Azure, można utworzyć subskrypcji usługi Office 365 dla użytkowników w usłudze istniejącej usługi Azure Active Directory (Azure AD). Zarejestruj się do usługi Office 365 za pomocą konta mającego uprawnienia administratora globalnego lub administratorem rozliczeń w dzierżawie usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Sprawdź moje uprawnienia konta w usłudze Azure AD](#RoleInAzureAD) i [przypisywanie ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -43,12 +43,13 @@ Jeśli masz już konto usługi Office 365 i subskrypcję platformy Azure, możes
 
     ![Zrzut ekranu przedstawiający po otrzymaniu potwierdzenia zamówienia usługi Office 365](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
 
-Teraz wszystko jest gotowe. Jeśli utworzono subskrypcję usługi Office 365 w Twojej organizacji, należy użyć następujące kroki do sprawdzenia, czy użytkownikom usługi Azure AD są teraz w usłudze Office 365.
+Teraz wszystko jest gotowe.
+Jeśli utworzono subskrypcję usługi Office 365 w Twojej organizacji, należy użyć następujące kroki do sprawdzenia, czy użytkownikom usługi Azure AD są teraz w usłudze Office 365.
 
-1. Otwórz Centrum administracyjne usługi Office 365.
+1. Otwórz Centrum administracyjne usługi Microsoft 365.
 2. Rozwiń **użytkowników**, a następnie kliknij przycisk **aktywni użytkownicy**.
 
-    ![Zrzut ekranu przedstawiający użytkowników Centrum administracyjnego usługi Office 365](./media/billing-use-existing-azure-account-office-365-subscription/16-office-365-admin-center-users.png)
+    ![Zrzut ekranu przedstawiający użytkownicy Centrum administratora usługi Microsoft 365](./media/billing-use-existing-azure-account-office-365-subscription/16-microsoft-365-admin-center-users.png)
 
 Po zarejestrowaniu się subskrypcji usługi Office 365 jest dodawany do tego samego wystąpienia usługi Azure Active Directory, której należy do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [więcej informacji na temat subskrypcji platformy Azure i usługi Office 365](billing-use-existing-office-365-account-azure-subscription.md#more-about-subs) i [jak subskrypcje platformy Azure są skojarzone z usługą Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -58,12 +59,12 @@ Po zarejestrowaniu się subskrypcji usługi Office 365 jest dodawany do tego sam
 
     ![Zrzut ekranu z usługi Active Directory w witrynie Azure portal](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
 3. Kliknij przycisk **użytkowników i grup** > **wszyscy użytkownicy**.
-4. Wybierz nazwę użytkownika. 
+4. Wybierz nazwę użytkownika.
 
     ![Zrzut ekranu pokazujący użytkowników usługi Azure Active Directory](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)
 
 5. Kliknij przycisk **roli w katalogu**.
-  
+
     ![Zrzut ekranu przedstawiający rolę katalogu portalu platformy Azure](./media/billing-use-existing-azure-account-office-365-subscription/billing-user-directory-role.png)
 6.  Rola **administratora globalnego** lub **ograniczony administrator** > **administrator rozliczeń** jest wymagana do utworzenia subskrypcji usługi Office 365 dla użytkowników Twoje istniejące usługi Azure Active Directory.
 
@@ -71,4 +72,4 @@ Po zarejestrowaniu się subskrypcji usługi Office 365 jest dodawany do tego sam
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458). 
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

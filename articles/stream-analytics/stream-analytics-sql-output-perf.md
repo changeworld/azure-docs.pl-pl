@@ -2,19 +2,19 @@
 title: Usługa Azure Stream Analytics dane wyjściowe usługi Azure SQL Database
 description: Dowiedz się więcej o wyprowadzanie danych SQL Azure z usługi Azure Stream Analytics i osiągnięcia wyższej przepływności zapisu.
 services: stream-analytics
-author: chetang
-ms.author: chetang
-manager: katicad
+author: chetanmsft
+ms.author: chetanmsft
+manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 3/18/2019
+ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303279"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338432"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure SQL Database
 
@@ -33,7 +33,7 @@ Poniżej przedstawiono niektóre konfiguracje w ramach każdej usługi, który m
 
 - **Wielkość partii** — konfiguracja danych wyjściowych SQL pozwala określić maksymalny rozmiar partii w danych wyjściowych SQL usługi Azure Stream Analytics, oparte na rodzaju obciążenia/tabeli docelowej. Rozmiar partii to maksymalną liczbę rekordów, które są wysyłane z każdego zbiorczego Wstaw transakcję. W klastrowanych indeksach magazynu kolumn, batch rozmiary wokół [100 tysięcy](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) umożliwiają więcej przetwarzania równoległego, minimalnego rejestrowania i blokowanie optymalizacji. W tabelach opartej na dyskach 10 (ustawienie domyślne) lub niższego może być optymalne rozwiązanie zgodnie z wyższym rozmiary partii mogą wyzwalać przekazanie blokady podczas operacji wstawiania zbiorczego.
 
-- **Wprowadź komunikat dostrajania** — jeśli zostały zoptymalizowane przy użyciu odziedziczyć rozmiar partycjonowania i usługi batch, zwiększenie liczby zdarzeń wejściowych na komunikat na partycję pomaga dalsze wzrostu przepływność zapisu. Komunikat wejściowy dostrajania umożliwia rozmiary partii w ramach usługi Azure Stream Analytics jako zgodnie z podanym rozmiarem partii, zwiększając w ten sposób przepływności. Można to osiągnąć przy użyciu [kompresji](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) lub jednostka SKU Premium usługi Centrum EventHub większe rozmiary wiadomości.
+- **Wprowadź komunikat dostrajania** — jeśli zostały zoptymalizowane przy użyciu odziedziczyć rozmiar partycjonowania i usługi batch, zwiększenie liczby zdarzeń wejściowych na komunikat na partycję pomaga dalsze wzrostu przepływność zapisu. Komunikat wejściowy dostrajania umożliwia rozmiary partii w ramach usługi Azure Stream Analytics jako zgodnie z podanym rozmiarem partii, zwiększając w ten sposób przepływności. Można to osiągnąć przy użyciu [kompresji](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) lub zwiększenie wielkości komunikat wejściowy w Centrum zdarzeń lub obiektu Blob.
 
 ## <a name="sql-azure"></a>Usługi SQL Azure
 
@@ -43,7 +43,16 @@ Poniżej przedstawiono niektóre konfiguracje w ramach każdej usługi, który m
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory i tabelach w pamięci
 
-- **W pamięci tabeli jako tabeli tymczasowej** — [tabelach w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) umożliwienia ładowania danych bardzo dużej szybkości, ale dane muszą mieszczą się w pamięci. Testy porównawcze ładowanie zbiorcze show z tabeli w pamięci do tabeli na dysku jest około 10 razy szybciej niż bezpośrednio zbiorcze wstawianie za pomocą jednego elementu zapisującego do opartej na dyskach tabeli z kolumną tożsamości i indeks klastrowany. Aby korzystać z tego wydajności wstawiania zbiorczego, skonfiguruj [zadanie kopiowania za pomocą usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database) który kopiuje dane z tabeli w pamięci do tabeli na dysku.
+- **W pamięci tabeli jako tabeli tymczasowej** — [tabelach w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) umożliwienia ładowania danych bardzo szybkie, ale dane muszą mieszczą się w pamięci. Testy porównawcze ładowanie zbiorcze show z tabeli w pamięci do tabeli na dysku jest około 10 razy szybciej niż bezpośrednio zbiorcze wstawianie za pomocą jednego elementu zapisującego do opartej na dyskach tabeli z kolumną tożsamości i indeks klastrowany. Aby korzystać z tego wydajności wstawiania zbiorczego, skonfiguruj [zadanie kopiowania za pomocą usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database) który kopiuje dane z tabeli w pamięci do tabeli na dysku.
+
+## <a name="avoiding-performance-pitfalls"></a>Unikanie problemów z wydajnością
+Zbiorcze Wstawianie danych jest znacznie szybsze niż załadowanie danych za pomocą pojedynczych wstawień, ponieważ powtarzanych unika się obciążenie związane z przesyłania danych, analizy instrukcji insert, działająca instrukcja i wydawanie rekord transakcji. Zamiast tego ścieżką bardziej efektywne jest używany w aparacie magazynu do strumienia danych. Koszt instalacji ta ścieżka jest jednak znacznie wyższa niż pojedynczy instrukcję w tabeli na dysku. Próg rentowności jest zwykle około 100 wierszy, po przekroczeniu której zbiorcze ładowanie jest prawie zawsze więcej wydajne. 
+
+Jeśli szybkość odbierania zdarzeń jest niska, jego można łatwo utworzyć rozmiary partii niższych niż 100 wierszy, które sprawia, że zbiorcze Wstawianie jest nieefektywne i zużywa zbyt dużej ilości miejsca na dysku. Aby obejść to ograniczenie, wykonaj jedną z następujących czynności:
+* Utwórz INSTEAD OF [wyzwalacza](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-trigger-transact-sql) używać prostych insert dla każdego wiersza.
+* Użyj tabeli tymczasowej w pamięci, zgodnie z opisem w poprzedniej sekcji.
+
+Inny scenariusz taki występuje podczas zapisywania na nieklastrowany indeks magazynu kolumn (NCCI), w której mniejszych zbiorcze operacje wstawiania może tworzyć zbyt wiele segmentów, które mogą ulec awarii indeksu. W tym przypadku zaleca się użyć indeksu klastrowanego magazynu kolumn.
 
 ## <a name="summary"></a>Podsumowanie
 

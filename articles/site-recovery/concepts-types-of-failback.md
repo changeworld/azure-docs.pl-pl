@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 16233c9013e97a7db7ef799b79526abac4741612
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 6f178ef1a0aec7f742bce4c2570962b995876026
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318444"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316273"
 ---
-# <a name="overview-of-failback"></a>Omówienie powrotu po awarii
+# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>Powrót po awarii po odzyskaniu po awarii maszyn wirtualnych programu VMware
 
 Po użytkownik nie powiodło za pośrednictwem platformy Azure jako część procesu odzyskiwania po awarii, może zakończyć się niepowodzeniem, wróć do witryny w środowisku lokalnym. Istnieją dwa różne typy powrotu po awarii, które można wykonać za pomocą usługi Azure Site Recovery: 
 
@@ -25,7 +25,7 @@ Po użytkownik nie powiodło za pośrednictwem platformy Azure jako część pro
 W przypadku niepowodzenia przełączania maszyny wirtualnej programu VMware mogą powrotu po awarii do tej samej maszyny wirtualnej w środowisku lokalnym źródła Jeśli nadal istnieje. W tym scenariuszu tylko zmiany są replikowane z powrotem. Ten scenariusz jest nazywany **odzyskiwanie do oryginalnej lokalizacji**. Jeśli maszyna wirtualna w środowisku lokalnym nie istnieje, jest scenariusz **odzyskiwanie do lokalizacji alternatywnej**.
 
 > [!NOTE]
-> Możesz to zrobić tylko podczas powrotu po awarii do oryginalnej vCenter i serwerem konfiguracji. Nie można wdrożyć nowy serwer konfiguracji i zakończyć się niepowodzeniem, ponownie za pomocą. Ponadto nie można dodać nowego vCenter do istniejącego serwera konfiguracji i powrotu po awarii na nowy serwer vCenter.
+> Można tylko powrotu po awarii do oryginalnej vCenter i serwerem konfiguracji. Nie można wdrożyć nowy serwer konfiguracji i zakończyć się niepowodzeniem, ponownie za pomocą. Ponadto nie można dodać nowego vCenter do istniejącego serwera konfiguracji i powrotu po awarii na nowy serwer vCenter.
 
 ## <a name="original-location-recovery-olr"></a>Odzyskiwanie do oryginalnej lokalizacji (OLR)
 Jeśli chcesz powrócić po awarii do oryginalnej maszyny wirtualnej muszą zostać spełnione następujące warunki:

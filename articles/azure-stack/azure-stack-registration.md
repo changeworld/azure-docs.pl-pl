@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/21/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 1f6edd871d6815dab93bf9e8d582b0cb1ba6c78f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: ab5679f374753d6620b6a0eccca12ac9f162f199
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109243"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337929"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -62,6 +62,9 @@ Po zarejestrowaniu uprawnienia administratora globalnego usługi Azure Active Di
 Użytkownik, który rejestruje usługi Azure Stack jest właścicielem usługi nazwy głównej usługi Azure Active Directory. Tylko użytkownik, który jest zarejestrowany w usłudze Azure Stack można zmodyfikować rejestracji w usłudze Azure Stack. Jeśli użytkownik bez uprawnień administratora, który nie jest właścicielem nazwy głównej usługi rejestracji próbuje zarejestrować lub ponownie zarejestrować w usłudze Azure Stack, które mogą oni natrafić odpowiedź 403. Odpowiedź 403 wskazuje, że użytkownik nie ma wystarczających uprawnień do ukończenia tej operacji.
 
 Jeśli nie masz subskrypcji platformy Azure, która spełnia te wymagania, możesz to zrobić [Utwórz w tym miejscu Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?b=17.06). Rejestrowanie usługi Azure Stack jest naliczana opłata bez kosztów związanych z subskrypcją platformy Azure.
+
+> [!NOTE]
+> Jeśli masz więcej niż jednej usługi Azure Stack, najlepszym rozwiązaniem jest zarejestrować każdej usługi Azure Stack do jego własnej subskrypcji. Ułatwi umożliwiające śledzenie użycia.
 
 ### <a name="powershell-language-mode"></a>Tryb języka programu PowerShell
 
@@ -240,7 +243,7 @@ W przypadku rejestracji usługi Azure Stack w środowisku bez połączenia (bez 
 2. Aby uzyskać tokenu rejestracji, uruchom następujące polecenia cmdlet programu PowerShell:  
 
    ```Powershell
-   $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
+   $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
    $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$False -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
    Aby uzyskać więcej informacji na temat polecenia cmdlet Get-AzsRegistrationToken, zobacz [dokumentacja rejestracji](#registration-reference).

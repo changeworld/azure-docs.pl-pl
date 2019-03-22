@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 78ef88d0710e8a82d30fa26b60073aa75e363c15
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080069"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315304"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -82,7 +82,7 @@ Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby za
 ### <a name="connect-to-the-internet-via-a-proxy"></a>Połącz się z Internetem za pośrednictwem serwera proxy
 
 - Serwer proxy wymaga uwierzytelniania, można określić nazwę użytkownika i hasło, podczas konfigurowania modułu zbierającego.
-- Adres IP/nazwę FQDN serwera Proxy, należy określać jako *http://IPaddress* lub *http://FQDN*.
+- Adres IP/nazwę FQDN serwera Proxy, należy określać jako *http:\//IPaddress* lub *http:\//FQDN*.
 - Obsługiwane są tylko serwery proxy HTTP. Serwery proxy oparty na protokole HTTPS nie są obsługiwane przez moduł zbierający.
 - Jeśli serwer proxy jest przechwytujący serwer proxy, należy zaimportować certyfikat serwera proxy na maszynie wirtualnej modułu zbierającego.
   1. W maszynie Wirtualnej modułu zbierającego, przejdź do **Start Menu** > **zarządzania certyfikatami komputera**.

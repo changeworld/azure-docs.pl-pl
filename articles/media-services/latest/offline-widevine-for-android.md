@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 18c83717e761f22363ccc69c827f5e383f8a9e85
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5d7dccfecc47b14be62a78600561a8ff0f7ca501
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122322"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312261"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine w trybie offline, przesyłania strumieniowego dla systemu Android
 
@@ -76,7 +76,7 @@ W [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-serv
     ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
     ```
 
-3. Utwórz ContentKeyPolicyOptions:
+3. Create ContentKeyPolicyOptions:
 
     ```csharp
     options.Add(
@@ -109,7 +109,7 @@ Poniższa lista klas ułatwia trybu offline w zestawie SDK ExoPlayer dla systemu
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
 - library/core/src/main/java/com/google/android/exoplayer2/offline/SegmentDownloader.java
 - library/core/src/main/java/com/google/android/exoplayer2/offline/DownloaderConstructorHelper.java 
-- Library/Core/src/main/Java/com/Google/android/exoplayer2/offline/Downloader.Java
+- library/core/src/main/java/com/google/android/exoplayer2/offline/Downloader.java
 - library/dash/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
 
 Deweloperzy powinny odwoływać się [przewodnik dla deweloperów ExoPlayer](https://google.github.io/ExoPlayer/guide.html) i odpowiedni [Blog deweloperów](https://medium.com/google-exoplayer) podczas tworzenia aplikacji. Google nie opublikowała kod odwołania w pełni udokumentowane implementacji lub przykładowej aplikacji ExoPlayer wspieranie Widevine w trybie offline w tej chwili, więc informacje są ograniczone do przewodnika i blog przez deweloperów. 
@@ -144,7 +144,7 @@ W przypadku uaktualnienia dla programu Chrome przeglądarce dla urządzeń przen
 
 Powyższe aplikacji typu open source w PWA jest tworzone w środowisku Node.js. Jeśli chcesz hostować własnej wersji w systemie Ubuntu server, należy pamiętać następujące typowe problemy napotkano, które mogą uniemożliwić odtwarzania:
 
-1. Problem CORS: Wideo w przykładowej aplikacji przykładowych znajduje się w https://storage.googleapis.com/biograf-video-files/videos/. Google ma ustawienia mechanizmu CORS dla ich przykłady testu hostowanej w usłudze Google Cloud Storage zasobnika. Są one obsługiwane z nagłówków CORS, jawne określenie wpis mechanizmu CORS: https://biograf-155113.appspot.com (domeny, w których google hostuje ich próbki) blokowanie dostępu przez inne witryny. Jeśli spróbujesz, zostanie wyświetlony następujący błąd HTTP: Nie można załadować https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: Brak nagłówka "Access-Control-Allow-Origin" jest obecny dla żądanego zasobu. Źródło "https://13.85.80.81:8080" nie ma związku z tym mieć dostęp. Jeśli odpowiedź nieprzezroczyste spełnia Twoje potrzeby, ustaw tryb żądania "nie-cors" można pobrać zasobu z mechanizmem CORS wyłączone.
+1. Problem CORS: Wideo w przykładowej aplikacji przykładowych znajduje się w https://storage.googleapis.com/biograf-video-files/videos/. Google ma ustawienia mechanizmu CORS dla ich przykłady testu hostowanej w usłudze Google Cloud Storage zasobnika. Są one obsługiwane z nagłówków CORS, jawne określenie wpis mechanizmu CORS: https://biograf-155113.appspot.com (domeny, w których google hostuje ich próbki) blokowanie dostępu przez inne witryny. Jeśli spróbujesz, zostanie wyświetlony następujący błąd HTTP: Nie można załadować https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: Brak nagłówka "Access-Control-Allow-Origin" jest obecny dla żądanego zasobu. Źródło "https:\//13.85.80.81:8080" nie ma związku z tym mieć dostęp. Jeśli odpowiedź nieprzezroczyste spełnia Twoje potrzeby, ustaw tryb żądania "nie-cors" można pobrać zasobu z mechanizmem CORS wyłączone.
 2. Wystawienie certyfikatu: Począwszy od Chrome v 58, EME dla Widevine wymaga protokołu HTTPS. Dlatego należy do hostowania przykładowej aplikacji przy użyciu protokołu HTTPS z X509 certyfikatu. Certyfikat testowy zwykle nie działa ze względu na następujące wymagania: Należy uzyskać certyfikat spełniających poniższe wymagania minimalne:
     - Chrome i Firefox wymagane ustawienie alternatywna nazwa podmiotu dla sieci SAN ma ich w certyfikacie
     - Certyfikat musi być zaufany urząd certyfikacji i certyfikat programistyczny z podpisem własnym nie działa
@@ -189,9 +189,9 @@ Zarówno poziomy zabezpieczeń są definiowane przez Google Widevine. Różnica 
 
 | **Poziomy zabezpieczeń zdefiniowane w architekturze Widevine** |**Poziomy zabezpieczeń używane w Widevine interfejsu API**|
 |---|---| 
-| **Poziom zabezpieczeń 1**: Przetwarzanie zawartości, kryptografii i kontrolki są wykonywane w ramach środowiska zaufane wykonywanie (TEE). W niektórych modelach wdrażania przetwarzanie zabezpieczeń może być wykonywane w różnych mikroukładami.|**security_level = 5**: Kryptograficznego dekodowania i wszystkie Obsługa nośnika (skompresowanym i nieskompresowanym formatem) muszą być obsługiwane w ramach sprzętowego kopii TEE.<br/><br/>**security_level = 4**: Usług kryptograficznych i dekodowania zawartości jest wykonywana w ramach sprzętowego kopii TEE.|
+| **Poziom zabezpieczeń 1**: Przetwarzanie zawartości, kryptografii i kontrolki są wykonywane w ramach środowiska zaufane wykonywanie (TEE). W niektórych modelach wdrażania przetwarzanie zabezpieczeń może być wykonywane w różnych mikroukładami.|**security_level = 5**: Kryptograficznego dekodowania i wszystkie Obsługa nośnika (skompresowanym i nieskompresowanym formatem) muszą być obsługiwane w ramach sprzętowego kopii TEE.<br/><br/>**security_level=4**: Usług kryptograficznych i dekodowania zawartości jest wykonywana w ramach sprzętowego kopii TEE.|
 **Poziom zabezpieczeń 2**: Wykonuje kryptografii (ale przetwarzanie wideo nie) w ramach TEE: odszyfrowany buforów są zwracane do domeny aplikacji i przetwarzane przez oddzielny wideo sprzętu lub oprogramowania. Na poziomie 2, jednak kryptograficznych informacje są nadal przetwarzane tylko w obrębie TEE.| **security_level = 3**: Materiał klucza i operacje kryptograficzne, należy wykonać w ramach sprzętowego kopii TEE. |
-| **Poziom ochrony 3**: Nie ma TEE na urządzeniu. Odpowiednie środki mogą chronić informacje kryptograficzne i odszyfrowania zawartości w systemie operacyjnym hosta. Implementacja Level 3 mogą również obejmować aparatem kryptograficznych sprzętu, ale tylko zwiększa to wydajność, nie zabezpieczeń. | **security_level = 2**: Crypto oprogramowania i zaciemnionego dekodera są wymagane.<br/><br/>**security_level = 1**: Wymagany jest oparty na oprogramowaniu whitebox kryptograficznego.|
+| **Poziom ochrony 3**: Nie ma TEE na urządzeniu. Odpowiednie środki mogą chronić informacje kryptograficzne i odszyfrowania zawartości w systemie operacyjnym hosta. Implementacja Level 3 mogą również obejmować aparatem kryptograficznych sprzętu, ale tylko zwiększa to wydajność, nie zabezpieczeń. | **security_level=2**: Crypto oprogramowania i zaciemnionego dekodera są wymagane.<br/><br/>**security_level=1**: Wymagany jest oparty na oprogramowaniu whitebox kryptograficznego.|
 
 ### <a name="question"></a>Pytanie
 

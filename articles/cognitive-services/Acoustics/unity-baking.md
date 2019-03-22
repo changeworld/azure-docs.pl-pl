@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: cb5ad8e4ff3d5a28fa38c7e8972e7e3e69d2762d
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136953"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309645"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Samouczek tworzenie Unity Akustyka projektu
 W tym samouczku opisano Akustyka pieczenie przy użyciu Akustyka projektu na platformie Unity.
@@ -28,7 +28,7 @@ Wymagania dotyczące oprogramowania:
 ## <a name="open-the-project-acoustics-bake-window"></a>Otwórz okno Akustyka projektu tworzenie
 Wybierz **okna > Akustyka** menu aparatu Unity:
 
-![Otwórz Akustyka okna](media/window-acoustics.png)
+![Zrzut ekranu programu Unity editor z podświetloną opcją menu okna Akustyka](media/window-acoustics.png)
 
 ## <a name="create-a-navigation-mesh"></a>Tworzenie siatki nawigacji
 Akustyka projekt używa siatki nawigacji można umieścić punkty sondy odbiornika symulacji. Można użyć mechanizmu Unity [nawigacyjne siatki w przepływie pracy](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html), lub użyj innego pakietu modelowanie 3D projektować własne siatki. 
@@ -68,15 +68,15 @@ Części strony karty są:
 
 Jeśli masz niczego nie wybrano w sceny kartę obiekty będzie wyglądać jak na poniższym obrazie:
 
-![Obiekty karcie Brak zaznaczenia](media/objects-tab-no-selection-detail.png)
+![Zrzut ekranu Akustyka obiektów karty z Brak zaznaczenia](media/objects-tab-no-selection-detail.png)
 
 Jeśli masz coś, co jest wybrane w oknie sceny lub hierarchię, będzie to wyglądać jak na poniższym obrazie:
 
-![Obiekty karcie Brak zaznaczenia](media/objects-tab-selection-detail.png)
+![Zrzut ekranu z Akustyka kartę obiekty z wyborem pokazano](media/objects-tab-selection-detail.png)
 
 Jeśli niektóre obiekty są oznaczone, a niektóre nie są odpowiednie pole wyboru wyświetli wartość "mieszany":
 
-![Mieszane wartości pola wyboru](media/mixed-object-selection-detail.png)
+![Zrzut ekranu Akustyka obiektów karty z wyróżnioną ikoną Wybór mieszany](media/mixed-object-selection-detail.png)
 
 Kliknięcie pola wyboru spowoduje to wymuszenie wszystkie obiekty był oznaczony jako, a następnie ponownie klikając spowoduje usunięcie zaznaczenia wszystkich obiektów.
 
@@ -89,10 +89,10 @@ Akustyczny materiałów kontroli ilości energii dźwięku odzwierciedlone powr�
 
 Czas reverberation danego materiału w pomieszczeniu odwrotnie jest powiązana z jego współczynnik, materiałami większość posiada absorpcji wartości z zakresu od 0,01 do 0,20. Materiały z współczynniki absorpcji poza tym zakresem są bardzo pochłaniający.
 
-![Wykres czasu pogłosu](media/reverb-time-graph.png)
+![Wykres przedstawiający korelacja ujemna reverberation czasu współczynnik](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie materiały
-![Karta materiałów — szczegóły](media/materials-tab-detail.png)
+![Zrzut ekranu Akustyka materiałów kartę na platformie Unity](media/materials-tab-detail.png)
 
 1. **Materiałów** kartę przycisku używane do tej strony.
 2. Krótki opis co należy zrobić, korzystając z tej strony.
@@ -117,23 +117,23 @@ W zależności od rozmiaru sceny i szybkość maszyny tych obliczeń może potrw
 ### <a name="review-voxel-and-probe-placement"></a>Przegląd voxel i badania umieszczania
 Wyświetl podgląd danych voxel i lokalizacje punktu sondowania, aby upewnić się, że wszystko jest gotowe do tworzenie sceny. Niekompletne nawigacyjne siatki lub brakujące lub bardzo akustyczny geometrii będzie zazwyczaj szybko widoczne w wersji zapoznawczej. Umieszczanie Voxel i badania można włączyć lub wyłączyć za pomocą menu Gizmo:
 
-![Elementy gizmo Menu](media/gizmos-menu.png)
+![Zrzut ekranu Gizmo menu na platformie Unity](media/gizmos-menu.png)
 
 Voxels zawierający akustyczny geometrii są wyświetlane jako zielony modułów. Eksplorować Scena i sprawdź, czy ma wszystko, co powinno być geometrii voxels. Aparat sceny musi można w ciągu około 5 liczniki obiektu dla voxels do wyświetlenia.
 
 Możesz porównać voxels utworzone przy użyciu rozpoznawania poprawnie vs zgrubnym rozwiązania, pojawi się zgrubnym voxels dwukrotnie są tak duże.
 
-![Voxel (wersja zapoznawcza)](media/voxel-cubes-preview.png)
+![Zrzut ekranu przedstawiający zgrubnym voxels (wersja zapoznawcza) w programie Unity editor](media/voxel-cubes-preview.png)
 
 Symulacja wyniki są interpolowane między odbiornika sondy punktu w czasie wykonywania. Sprawdź istnieją sondy punkty niemal dowolnym miejscu odtwarzacz oczekuje się przechodzić w scenie.
 
-![Sondy (wersja zapoznawcza)](media/probes-preview.png)
+![Zrzut ekranu przedstawiający sondy (wersja zapoznawcza) w programie Unity editor](media/probes-preview.png)
 
 ### <a name="take-care-with-scene-renames"></a>Zadbać o zmienia nazwę sceny
 Nazwa sceny jest używana do sceny łączenie się z plikami przechowywania położenie punktu sondowania i voxelization. Jeśli sceny zostanie zmieniona po sondy punkty są obliczane, materiału przypisania i położenia danych zostaną utracone i wymaga ponownego uruchomienia.
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie sondy
-![Karta sondy — szczegóły](media/probes-tab-detail.png)
+![Zrzut ekranu sondy Akustyka kartę na platformie Unity](media/probes-tab-detail.png)
 
 1. **Sondy** przycisk karta umożliwia wyświetlenie na tej stronie
 2. Krótki opis co należy zrobić, korzystając z tej strony
@@ -157,15 +157,15 @@ A to może wydawać się prosty, ma wiele skutki akustyczny symulacji:
 * Dźwięk źródła nie może znajdować się wewnątrz "wypełnione" voxels będącego voxels, który zawiera geometrii — skutkuje to Brak dźwięku. Jest trudniejsze do zlokalizowania źródeł dźwięku, dzięki czemu nie wewnątrz większych voxels z grubą niż ustawienie dobrym rozwiązaniem.
 * Większe voxels będzie mającym więcej do portali, jak pokazano poniżej. Pierwszy obraz został utworzony przy użyciu zdalnego, podczas gdy druga jest tego samego pola, za pomocą cienkiej rozpoznawania. Wskazane przez czerwony oznaczenia, jest znacznie mniej nieautoryzowanego dostępu do pola przy użyciu ustawień w dobrym stanie. Niebieska linia jest bramą, zgodnie z definicją geometrii, podczas gdy czerwona linia jest skuteczne portal akustyczne, zależy od rozmiaru voxel. Jak ta włamań odgrywa w danej sytuacji zależy od całkowicie jak voxels wiersz w górę przy użyciu geometrii portalu, który zależy od rozmiaru i lokalizacje obiektów w scenie.
 
-![Gruba drzwi](media/coarse-voxel-doorway.png)
+![Zrzut ekranu przedstawiający zgrubnym voxels w drzwi](media/coarse-voxel-doorway.png)
 
-![Fine Doorway](media/fine-voxel-doorway.png)
+![Zrzut ekranu przedstawiający voxels dobrym rozwiązaniem w drzwi](media/fine-voxel-doorway.png)
 
 ## <a name="bake-your-scene-using-azure-batch"></a>Tworzenie sceny za pomocą usługi Azure Batch
 Można wprowadzić sceny z klastra obliczeniowego w chmurze przy użyciu usługi Azure Batch. Wtyczka Unity Akustyka projekt łączy się bezpośrednio z usługi Azure Batch do utworzenia wystąpienia, zarządzanie i zatrzymywania klastra usługi Azure Batch dla każdego tworzenie. Na **tworzenie** kartę, wprowadź swoje poświadczenia platformy Azure, wybierz typ komputera klastra i rozmiar i kliknij przycisk **tworzenie**.
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>Aby uzyskać informacje dotyczące: Elementy na karcie Tworzenie
-![Tworzenie Karta Szczegóły](media/bake-tab-details.png)
+![Zrzut ekranu tworzenie Akustyka kartę na platformie Unity](media/bake-tab-details.png)
 
 1. Tworzenie karty przycisku używane do tej strony.
 2. Krótki opis, co można zrobić na tej stronie.
@@ -209,8 +209,8 @@ Na przykład podczas testów na komputerze o architekturze Intel Xeon E5-1660 8-
 ### <a name="setup-docker"></a>Setup Docker
 Instalowanie i konfigurowanie platformy Docker na komputerze, który będzie przetwarzał Symulacja-
 1. Zainstaluj [zestawu narzędzi platformy Docker](https://www.docker.com/products/docker-desktop).
-2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowane", a następnie konfiguruje zasoby, które mają co najmniej 8GB pamięci RAM. Więcej procesorów można przydzielić do platformy Docker, tym szybsze tworzenie zostanie ukończone. ![Przykład ustawień platformy Docker](media/docker-settings.png)
-3. Przejdź do "Udostępnione dyski" i Włącz udostępnianie dla dysku używana na potrzeby przetwarzania.![DockerDriveSharing](media/docker-shared-drives.png)
+2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowane", a następnie konfiguruje zasoby, które mają co najmniej 8GB pamięci RAM. Więcej procesorów można przydzielić do platformy Docker, tym szybsze tworzenie zostanie ukończone. ![Zrzut ekranu przedstawiający przykładowy ustawień platformy Docker](media/docker-settings.png)
+3. Przejdź do "Udostępnione dyski" i Włącz udostępnianie dla dysku używana na potrzeby przetwarzania.![Opcje dysku Screnshot Docker udostępnione](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Tworzenie lokalnego uruchomienia
 1. Kliknij przycisk "Przygotowanie lokalnego tworzenie" **tworzenie** karcie, a następnie wybierz folder, w którym zostaną zapisane pliki wejściowe i wykonywania skryptów. Następnie można uruchomić tworzenie na dowolnym komputerze, tak długo, jak spełnia minimalne wymagania sprzętowe i ma platforma Docker jest zainstalowana przez skopiowanie folderu do tej maszyny.
@@ -234,11 +234,11 @@ Edytor plików danych:
 ## <a name="set-up-the-acoustics-lookup-table"></a>Konfigurowanie Akustyka tabeli odnośników
 Przeciąganie i upuszczanie **Akustyka projektu** prefab z panelu Projekt do sceny:
 
-![Prefab Akustyka](media/acoustics-prefab.png)
+![Zrzut ekranu Akustyka prefab na platformie Unity](media/acoustics-prefab.png)
 
 Kliknij pozycję **ProjectAcoustics** obiektu gry, a następnie przejść do jego panelu Inspektor. Określ lokalizację zawartości tworzenie wyników ("". ACE pliku w **zasobów/AcousticsData**) przez przeciąganie i upuszczanie go w skrypcie Menedżera Akustyka lub przez kliknięcie przycisku kółko obok pola tekstowego.
 
-![Menedżer Akustyka](media/acoustics-manager.png)  
+![Zrzut ekranu Menedżera Akustyka prefab na platformie Unity](media/acoustics-manager.png)  
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zapoznaj się z [projektowania formanty dla aparatu Unity](unity-workflow.md)

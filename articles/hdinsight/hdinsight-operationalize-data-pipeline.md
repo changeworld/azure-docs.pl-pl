@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744449"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311683"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operacjonalizacja potoku analizy danych
 
@@ -150,7 +150,7 @@ Wyświetl stan usługi Koordynator i wystąpienia przepływu pracy za pomocą ko
 
 2. Sprawdź, czy działa tunelu, przechodząc do narzędzia Ambari w węźle głównym, przechodząc do:
 
-    http://headnodehost:8080
+    http:\//headnodehost:8080
 
 3. Dostęp do **konsoli sieci Web programu Oozie** w ramach Ambari, zaznacz **Oozie**, **szybkie linki**, a następnie wybierz pozycję **konsoli sieci Web programu Oozie**.
 
@@ -176,7 +176,7 @@ Możesz skopiować plik przy użyciu punktu połączenia usługi w swojej `bash`
 
 Przykładowe dane, jest teraz dostępna. Potok wymaga jednak dwie tabele programu Hive do przetwarzania, jeden dla danych przychodzących (`rawFlights`) i jeden dla podsumowane dane (`flights`). Utworzenie tych tabel w Ambari w następujący sposób.
 
-1. Zaloguj się do narzędzia Ambari, przechodząc do [ http://headnodehost:8080 ](http://headnodehost:8080).
+1. Zaloguj się do narzędzia Ambari, przechodząc do protokołu http:\//headnodehost:8080.
 2. Z listy usług wybierz **Hive**.
 
     ![Wybierając Hive narzędzia Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
@@ -464,7 +464,7 @@ Użyj połączenia usługi z sesji programu bash, aby wdrożyć przepływ pracy 
 
 7. Sprawdź, czy stan za pomocą konsoli sieci Web programu Oozie. W ramach Ambari, zaznacz **Oozie**, **szybkich łączy**, a następnie **konsoli sieci Web programu Oozie**. W obszarze **zadania przepływu pracy** zaznacz **wszystkie zadania**.
 
-    ![Przepływy pracy konsoli sieci Web programu Oozie](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![Oozie Web Console Workflows](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
 8. Jeśli stan jest zakończyło się pomyślnie, zapytanie tabeli bazy danych SQL, aby wyświetlić wstawione wiersze. Przy użyciu witryny Azure portal, przejdź do okienka dla usługi SQL Database, wybierz **narzędzia**, a następnie otwórz **edytora zapytań**.
 

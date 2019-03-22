@@ -6,21 +6,21 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b8ec726c81dfab710d30c37d6fb1aac97c12265
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: c689a8fe35133456c476106e96336420640ebf66
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293979"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335984"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
 Kontrola źródła pozwala na zachowanie elementów runbook w automatyzacji konta są aktualne za pomocą skryptów w repozytorium kontroli źródła GitHub i repozytoriów platformy Azure. Kontrola źródła pozwala łatwo współpracować z zespołem, śledzenie zmian i wrócić do wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęzi w kontroli źródła do kont usługi Automation rozwoju, testów lub produkcji. Ułatwia promowanie kod, który został przetestowany w środowisku projektowym konta usługi Automation w środowisku produkcyjnym. Integracja kontroli źródła z usługą automation obsługuje jeden kierunek synchronizacji z repozytorium kontroli źródła.
 
-Usługa Azure Automation obsługuje 3 typy kontroli źródła:
+Usługa Azure Automation obsługuje trzy typy kontroli źródła:
 
 * GitHub
 * Repozytoriów platformy Azure (Git)
@@ -30,6 +30,7 @@ Usługa Azure Automation obsługuje 3 typy kontroli źródła:
 
 * Repozytorium kontroli źródła (GitHub i repozytoriów platformy Azure)
 * A [konto Uruchom jako](manage-runas-account.md)
+* Upewnij się, że [najnowszych modułów platformy Azure](automation-update-azure-modules.md) na koncie usługi Automation
 
 > [!NOTE]
 > Zadania synchronizacji kontroli źródła uruchamiane w ramach użytkownicy konta usługi Automation i są rozliczane według stawki takie same, jak inne zadania automatyzacji.
@@ -49,7 +50,7 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 |Nazwa kontroli źródła     | Przyjazna nazwa, do kontroli źródła        |
 |Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> GitHub</br>Repozytoriów platformy Azure (Git)</br> Repozytoriów platformy Azure (TFVC)        |
 |Repozytorium     | Nazwa repozytorium lub projektu. Pierwszych 200 repozytoria są zwracane. Aby znaleźć repozytorium, wpisz nazwę w polu, a następnie kliknij przycisk **wyszukiwania w witrynie GitHub**.|
-|Branch     | Odgałęzienie do pobierania plików źródłowych z. Gałąź określania wartości docelowej nie jest dostępna dla kontrolek typu źródłowego TFVC.          |
+|Branch     | Odgałęzienie do pobierania plików źródłowych z. Przeznaczone dla gałęzi jest niedostępna dla kontrolek typu źródłowego TFVC.          |
 |Ścieżka folderu     | Folder, który zawiera elementy runbook w celu synchronizacji. Przykład: /Runbooks </br>*Tylko elementy runbook w folderze określonym są synchronizowane. Rekursja nie jest obsługiwane.*        |
 |Automatyczna synchronizacja     | Włącza lub wyłącza automatyczne synchronizacji, gdy przeprowadzane jest zatwierdzenie w repozytorium kontroli źródła         |
 |Publikowanie elementu Runbook     | Jeśli ustawiono **na**po elementach runbook są synchronizowane z kontroli źródła będzie były automatycznie publikowane.         |
@@ -62,7 +63,7 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 
 ## <a name="configure-source-control---powershell"></a>Konfigurowanie kontroli źródła — PowerShell
 
-Program PowerShell umożliwia również konfigurowanie kontroli źródła w usłudze Azure Automation. Aby skonfigurować kontroli źródła przy użyciu poleceń cmdlet programu PowerShell [osobisty token dostępu (PAT)](#personal-access-token) jest wymagana. Możesz użyć [New AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) do utworzenia połączenia z kontrolą źródła. Polecenie cmdlet wymaga bezpiecznego ciągu osobisty Token dostępu, aby dowiedzieć się, jak utworzyć bezpieczny ciąg, zobacz [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
+Program PowerShell umożliwia również konfigurowanie kontroli źródła w usłudze Azure Automation. Aby skonfigurować kontrolę źródła za pomocą poleceń cmdlet programu PowerShell, osobistego tokenu dostępu (PAT) jest wymagana. Możesz użyć [New AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) do utworzenia połączenia z kontrolą źródła. Polecenie cmdlet wymaga bezpiecznego ciągu osobisty Token dostępu, aby dowiedzieć się, jak utworzyć bezpieczny ciąg, zobacz [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
 ### <a name="azure-repos-git"></a>Repozytoriów platformy Azure (Git)
 
@@ -113,7 +114,7 @@ Aby uzyskać więcej informacji o tworzeniu osobistego tokenu dostępu w repozyt
 |Elementy robocze (odczyt)    |
 |Połączenia usługi (Odczyt, zapytań i zarządzanie nimi)<sup>1</sup>    |
 
-<sup>1</sup>uprawnień połączenia usługi jest tylko wymagane, jeśli włączono autosync.
+<sup>1</sup> uprawnień połączenia usługi jest tylko wymagane, jeśli włączono autosync.
 
 ## <a name="syncing"></a>Synchronizowanie
 
@@ -168,7 +169,7 @@ Wybierz kontrolę źródła, które chcesz usunąć. Na **źródło sterowania �
 
 ## <a name="encoding"></a>Kodowanie
 
-Wiele osób edytowania elementów runbook w Twoim repozytorium kontroli źródła z różnymi edytorami istnieje możliwość napotkania problemów kodowania. To jest wstawienie nieprawidłowych znaków w elemencie runbook. Aby dowiedzieć się więcej na ten temat, zobacz [typowe przyczyny problemów z kodowaniem](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+Wiele osób edytowania elementów runbook w Twoim repozytorium kontroli źródła z różnymi edytorami, istnieje możliwość napotkania problemów kodowania. Taka sytuacja może prowadzić do nieprawidłowych znaków w elemencie runbook. Aby dowiedzieć się więcej na ten temat, zobacz [typowe przyczyny problemów z kodowaniem](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

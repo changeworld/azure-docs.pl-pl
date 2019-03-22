@@ -4,21 +4,21 @@ description: Moduły platformy Azure IoT Edge to jednostki konteneryzowanych log
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 976b46a26d95b5e252b0df2383ea94b4dd280d24
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d1e2e35dafd90c16e9d0dbf38afb1e981653d1fe
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229629"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311105"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Omówienie modułów usługi Azure IoT Edge
 
-Usługa Azure IoT Edge umożliwia wdrażanie i zarządzanie nimi logiki biznesowej na urządzeniach brzegowych w formie *modułów*. Moduły platformy Azure IoT Edge to najmniejsza obliczeń zarządzane przez usługi IoT Edge i może zawierać usług platformy Azure (np. usługi Azure Stream Analytics) lub kodu specyficznego dla rozwiązania. Aby dowiedzieć się, jak moduły są opracowane, wdrażane i obsługiwane, warto traktować czterech koncepcyjny fragmentów, które tworzą modułu:
+Usługa Azure IoT Edge umożliwia wdrażanie i zarządzanie nimi logiki biznesowej na urządzeniach brzegowych w formie *modułów*. Moduły platformy Azure IoT Edge to najmniejsza obliczeń zarządzane przez usługi IoT Edge i może zawierać usług platformy Azure (np. usługi Azure Stream Analytics) lub kodu specyficznego dla rozwiązania. Aby dowiedzieć się, jak moduły są opracowane, wdrażane i obsługiwane, warto traktować czterech elementów koncepcyjny modułu:
 
 * A **obraz modułu** to pakiet zawierający wersję oprogramowania, który definiuje moduł.
 * A **wystąpienia modułu** jest konkretnej jednostki obliczeń systemem obraz modułu urządzenia usługi IoT Edge. Wystąpienia modułu jest uruchomiona przez środowisko uruchomieniowe usługi IoT Edge.
@@ -43,6 +43,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 ## <a name="module-identities"></a>Moduł tożsamości
 
 Po utworzeniu nowego wystąpienia modułu przez środowisko uruchomieniowe usługi IoT Edge to wystąpienie jest skojarzony z odpowiedniej tożsamości modułu. Tożsamość modułu jest przechowywany w usłudze IoT Hub, a jako zakres adresowania i zabezpieczeń dla wszystkich lokalnych i chmurze komunikacji dla tego wystąpienia określonego modułu.
+
 Tożsamość skojarzoną z wystąpieniem modułu zależy od tożsamości urządzenia działającego wystąpienia i nazwę tego modułu jest zapewnienie w rozwiązaniu. Na przykład jeśli wywołasz `insight` moduł, który korzysta z usługi Azure Stream Analytics i wdrożyć go na urządzenie o nazwie `Hannover01`, środowisko uruchomieniowe usługi IoT Edge tworzy odpowiedniej tożsamości modułu o nazwie `/devices/Hannover01/modules/insight`.
 
 Wyraźnie widać w scenariuszach, gdy należy wdrożyć jeden obraz modułu wiele razy w tym samym urządzeniu, można wdrożyć ten sam obraz wielokrotnie pod różnymi nazwami.
@@ -68,7 +69,7 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>Możliwości w trybie offline
 
-Usługa Azure IoT Edge obsługuje operacje w trybie offline na urządzeniach usługi IoT Edge. Te możliwości są ograniczone do teraz. 
+Usługa Azure IoT Edge obsługuje operacje w trybie offline na urządzeniach usługi IoT Edge. Te możliwości są ograniczone do teraz. Dodatkowe możliwości w trybie offline są dostępne w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [opis rozszerzony możliwości w trybie offline dla usługi IoT Edge, urządzeń, moduły i urządzeń podrzędnych](offline-capabilities.md).
 
 Moduły usługi IoT Edge może być w trybie offline przez dłuższy czas, tak długo, jak są spełnione następujące wymagania: 
 
@@ -77,11 +78,8 @@ Moduły usługi IoT Edge może być w trybie offline przez dłuższy czas, tak d
 * **Moduł, który wysyłane wiadomości w trybie offline nadal działa po wznowieniu działania łączności**. Po połączeniu usługi IoT Hub, Centrum usługi IoT Edge wymagane jest sprawdzenie nowy token modułu (Jeśli poprzedni wygasła) przed można przesyłać dalej wiadomości modułu. Jeśli moduł nie jest w stanie udzielić nowego tokenu, Centrum usługi IoT Edge nie może działać na modułu przechowywanych wiadomości. 
 * **Centrum usługi IoT Edge ma miejsce na dysku do przechowywania wiadomości**. Domyślnie komunikaty są przechowywane w kontenerze Centrum IoT Edge w systemie plików. Brak opcji konfiguracji, aby określić zainstalowany wolumin do przechowywania komunikatów, zamiast tego. W obu przypadkach musi istnieć miejsca do przechowywania komunikatów odroczonego dostarczanie do usługi IoT Hub.  
 
-Dodatkowe możliwości w trybie offline są dostępne w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [opis rozszerzony możliwości w trybie offline dla usługi IoT Edge, urządzeń, moduły i urządzeń podrzędnych](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
  - [Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge](module-development.md)
  - [Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md)
 
-<!-- Images -->
-[2]: ./media/iot-edge-modules/identity.png

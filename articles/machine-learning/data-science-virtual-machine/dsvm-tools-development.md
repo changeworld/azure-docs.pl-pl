@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: dd60c5d0210ffba373839fd0f194496c5dbcc20d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 7983169c2b1123c57a48471e3f4d9ad6f19c84dc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999403"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314726"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Narzędzia programistyczne na maszynie wirtualnej do nauki o danych
 
@@ -65,7 +65,7 @@ Maszyna wirtualna do nauki o danych (DSVM) oferuje wydajne środowisko dla rozwo
 | Co to jest?   | Środowisko IDE oparte na sieci Web dla języka R    |
 | Wersje maszyny DSVM obsługiwane      | Linux      |
 | Typowe zastosowania      |  Programowanie w języku R     |
-| Jak używać / ją uruchomić?      | Aktywuj usługę za pomocą _systemctl Włączanie programu rstudio server_, następnie uruchom usługę za pomocą _systemctl start programu rstudio server_. Możesz następnie zalogować się do programu RStudio Server w http://your-vm-ip:8787.       |
+| Jak używać / ją uruchomić?      | Aktywuj usługę za pomocą _systemctl Włączanie programu rstudio server_, następnie uruchom usługę za pomocą _systemctl start programu rstudio server_. Możesz następnie zalogować się do programu RStudio Server http:\// z-vm-ip:8787.       |
 | Pokrewne narzędzia na maszyny DSVM      |   Program Visual Studio 2017, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
