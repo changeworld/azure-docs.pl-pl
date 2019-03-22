@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7f162412a099078302bb348dab9ad3171f9e2913
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794502"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199498"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Rozpoczynanie pracy z przykładem bazy danych Apache HBase w usłudze HDInsight
 
@@ -31,9 +31,9 @@ Przed rozpoczęciem prób korzystania z tego przykładu bazy danych HBase należ
 * [Program curl](https://curl.haxx.se/download.html).
 
 ## <a name="create-apache-hbase-cluster"></a>Tworzenie klastra Apache HBase
-W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat korzystania z Data Lake Storage Gen2, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat korzystania z usługi Data Lake Storage Gen2, zobacz [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-1. Kliknij poniższy obraz, aby otworzyć szablon w usłudze Azure Portal. Szablon znajduje się w [szablonach szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/).
+1. Kliknij poniższy obraz, aby otworzyć szablon w usłudze Azure Portal. Szablon znajduje się w [szablony szybkiego startu platformy](https://azure.microsoft.com/resources/templates/).
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. W bloku **Wdrożenie niestandardowe** wprowadź następujące wartości:
@@ -56,7 +56,7 @@ W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworz
 > 
 
 ## <a name="create-tables-and-insert-data"></a>Tworzenie tabel i wstawianie danych
-Protokół SSH umożliwia połączenie z klastrami HBase, a następnie użyj [powłoki HBase Apache](https://hbase.apache.org/0.94/book/shell.html) do tworzenia tabel bazy danych HBase, wstawiania danych i zapytania o dane. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Protokół SSH umożliwia połączenie z klastrami HBase, a następnie korzystanie z [powłoki Apache HBase](https://hbase.apache.org/0.94/book/shell.html) w celu tworzenia tabel bazy danych HBase, wstawiania danych i wykonywania zapytań o dane. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Dla większości użytkowników dane są wyświetlane w formacie tabelarycznym:
 
@@ -111,7 +111,7 @@ W bazie danych HBase (implementacja [BigTable chmury](https://cloud.google.com/b
 
 Baza danych HBase obsługuje kilka metod ładowania danych do tabel.  Aby uzyskać więcej informacji, zobacz temat [Ładowanie zbiorcze](https://hbase.apache.org/book.html#arch.bulk.load).
 
-Przykładowy plik danych znajduje się w publicznym kontenerze obiektów blob, *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Plik danych ma następującą zawartość:
+Przykładowy plik danych znajdują się w publicznym kontenerze obiektów blob, *wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt*.  Plik danych ma następującą zawartość:
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -175,14 +175,14 @@ Wykonywanie zapytań danych w tabelach HBase przy użyciu [Apache Hive](https://
 
 Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego](https://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS (HTTP Secure), aby mieć pewność, że poświadczenia są bezpiecznie wysyłane do serwera.
 
-2. Użyj następującego polecenia, aby wyświetlić listę istniejących tabel HBase:
+1. Użyj następującego polecenia, aby wyświetlić listę istniejących tabel HBase:
 
     ```bash
     curl -u <UserName>:<Password> \
     -G https://<ClusterName>.azurehdinsight.net/hbaserest/
     ```
 
-3. Użyj następującego polecenia, aby utworzyć nową tabelę HBase z dwiema rodzinami kolumn:
+1. Użyj następującego polecenia, aby utworzyć nową tabelę HBase z dwiema rodzinami kolumn:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -194,7 +194,7 @@ Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego]
     ```
 
     Schemat jest podany w formacie JSon.
-4. Użyj następującego polecenia, aby wstawić dane:
+1. Użyj następującego polecenia, aby wstawić dane:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -207,12 +207,12 @@ Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego]
    
     Należy zakodować wartości określone w przełączniku -d w formacie base64. W przykładzie:
    
-   * MTAwMA ==: 1000
-   * UGVyc29uYWw6TmFtZQ ==: Osobisty: Nazwa
+   * MTAwMA==: 1000
+   * UGVyc29uYWw6TmFtZQ==: Personal:Name
    * Sm9obiBEb2xl: John Dole
      
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) umożliwia wstawianie wielu wartości (w partiach).
-5. Użyj następującego polecenia, aby pobrać wiersz:
+1. Użyj następującego polecenia, aby pobrać wiersz:
    
     ```bash 
     curl -u <UserName>:<Password> \
@@ -247,15 +247,15 @@ Baza danych HBase w usłudze HDInsight jest dostarczana z interfejsem użytkowni
 2. W menu po lewej kliknij pozycję **HBase**.
 3. Na górze strony kliknij pozycję **Szybkie linki**, wskaż aktywny link węzła dozorcy, a następnie kliknij pozycję **Główny interfejs użytkownika bazy danych HBase**.  Interfejs użytkownika zostanie otwarty w innej karcie przeglądarki:
 
-  ![Główny interfejs użytkownika HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![Główny interfejs użytkownika HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-  Główny interfejs użytkownika HBase zawiera następujące sekcje:
+   Główny interfejs użytkownika HBase zawiera następujące sekcje:
 
-  - serwery regionów
-  - wzorce kopii zapasowej
-  - tabele
-  - zadania
-  - atrybuty oprogramowania
+   - serwery regionów
+   - wzorce kopii zapasowej
+   - tabele
+   - zadania
+   - atrybuty oprogramowania
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 Aby uniknąć niespójności, zaleca się wyłączenie tabel HBase przed usunięciem klastra.
@@ -272,8 +272,6 @@ W tym artykule pokazano, jak utworzyć klaster Apache HBase i tworzyć tabele or
 Aby dowiedzieć się więcej, zobacz:
 
 * [Omówienie bazy danych HDInsight HBase][hdinsight-hbase-overview]: Apache HBase to Apache, typu open-source, baza danych NoSQL oparta na technologii Apache Hadoop, która zapewnia dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych z częściową strukturą i bez struktury.
-
-[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hbase-reference]: https://hbase.apache.org/book.html#importtsv

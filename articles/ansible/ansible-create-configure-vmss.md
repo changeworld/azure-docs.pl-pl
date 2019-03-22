@@ -1,19 +1,19 @@
 ---
 title: Tworzenie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 description: Dowiedz się, jak utworzyć i skonfigurować zestaw skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: 920a631ed379651751641c22e4b43f6731197377
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 1176987ab318a97a7db6a12e619e7b7db06ad2da
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054162"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097893"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tworzenie zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible umożliwia zarządzanie zestawem skalowania maszyn wirtualnych na platformie Azure, tak jak ma to miejsce w przypadku każdego innego zasobu platformy Azure. W tym artykule przedstawiono sposób tworzenia i skalowania na zewnątrz zestawu skalowania maszyn wirtualnych za pomocą rozwiązania Ansible. 
@@ -273,8 +273,8 @@ Wynik uruchomienia polecenia w usłudze Cloud Shell pokazuje, że istnieją tera
   }
   ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"] 
 > [Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
-
+> 
 > [Automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 220c419142f31261a193795da85eedd841183db9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7308d5715b1ac8abc62bb26ad3636423bbd727ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202710"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889764"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej systemu Windows w celu uzyskania dostępu do usługi Azure Storage
 
@@ -30,8 +30,8 @@ W tym samouczku przedstawiono sposób używania tożsamości zarządzanej przypi
 
 > [!div class="checklist"]
 > * Tworzenie kontenera obiektów blob na koncie magazynu
-> * Udzielenie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows dostępu do konta magazynu 
-> * Uzyskiwanie dostępu i używanie go do wywoływania usługi Azure Storage 
+> * Udzielenie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows dostępu do konta magazynu
+> * Uzyskiwanie dostępu i używanie go do wywoływania usługi Azure Storage
 
 > [!NOTE]
 > Uwierzytelnianie usługi Azure Active Directory dla usługi Azure Storage jest dostępne w publicznej wersji zapoznawczej.
@@ -40,14 +40,14 @@ W tym samouczku przedstawiono sposób używania tożsamości zarządzanej przypi
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Tworzenie konta magazynu 
+## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-W tej sekcji utworzysz konto magazynu. 
+W tej sekcji utworzysz konto magazynu.
 
 1. Kliknij przycisk **+ Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure Portal.
 2. Kliknij pozycję **Storage**, a następnie pozycję **Konto usługi Storage — Blob, File, Table, Queue**.
-3. W obszarze **Nazwa** wprowadź nazwę konta magazynu.  
-4. Opcje **Model wdrażania** i **Rodzaj konta** należy ustawić na **Resource Manager** i **Magazyn (ogólnego przeznaczenia, wersja 1)**. 
+3. W obszarze **Nazwa** wprowadź nazwę konta magazynu.
+4. Opcje **Model wdrażania** i **Rodzaj konta** należy ustawić na **Resource Manager** i **Magazyn (ogólnego przeznaczenia, wersja 1)**.
 5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.
 6. Kliknij pozycję **Utwórz**.
 
@@ -64,22 +64,22 @@ Pliki wymagają magazynu obiektów blob, dlatego musimy utworzyć kontener obiek
 
     ![Tworzenie kontenera magazynu](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-5. Za pomocą wybranego edytora utwórz plik o nazwie *hello world.txt* na maszynie lokalnej.  Otwórz plik i dodaj tekst (bez cudzysłowów) „Hello world! :)”, a następnie zapisz plik. 
+5. Za pomocą wybranego edytora utwórz plik o nazwie *hello world.txt* na maszynie lokalnej. Otwórz plik i dodaj tekst (bez cudzysłowów) „Hello world! :)”, a następnie zapisz plik.
 6. Przekaż plik do nowo utworzonego kontenera, klikając nazwę kontenera, a następnie pozycję **Przekaż**
 7. W okienku **Przekazywanie obiektu blob** w obszarze **Pliki** kliknij ikonę folderu i przejdź do pliku **hello_world.txt** na maszynie lokalnej, wybierz plik, a następnie kliknij pozycję **Przekaż**.
     ![Przekazywanie pliku tekstowego](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Udzielanie maszynie wirtualnej dostępu do kontenera usługi Azure Storage 
+## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Udzielanie maszynie wirtualnej dostępu do kontenera usługi Azure Storage
 
-Przypisanej przez system tożsamości zarządzanej maszyny wirtualnej można użyć do pobierania danych w obiekcie blob usługi Azure Storage.   
+Przypisanej przez system tożsamości zarządzanej maszyny wirtualnej można użyć do pobierania danych w obiekcie blob usługi Azure Storage.
 
-1. Przejdź z powrotem do nowo utworzonego konta magazynu.  
-2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  
+1. Przejdź z powrotem do nowo utworzonego konta magazynu.
+2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.
 3. Kliknij przycisk **+ Dodaj przypisanie roli** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej.
-4. W obszarze **Rola** wybierz z listy rozwijanej pozycję **Czytnik danych obiektu blob magazynu (wersja zapoznawcza)**. 
-5. Z następnej listy rozwijanej w obszarze **Przypisz dostęp do** wybierz pozycję **Maszyna wirtualna**.  
-6. Następnie upewnij się, że odpowiednia subskrypcja znajduje się na liście rozwijanej **Subskrypcja**, po czym ustaw opcję **Grupa zasobów** na wartość **Wszystkie grupy zasobów**.  
-7. W obszarze **Wybierz** wskaż maszynę wirtualną, a następnie kliknij pozycję **Zapisz**. 
+4. W obszarze **Rola** wybierz z listy rozwijanej pozycję **Czytnik danych obiektu blob magazynu (wersja zapoznawcza)**.
+5. Z następnej listy rozwijanej w obszarze **Przypisz dostęp do** wybierz pozycję **Maszyna wirtualna**.
+6. Następnie upewnij się, że odpowiednia subskrypcja znajduje się na liście rozwijanej **Subskrypcja**, po czym ustaw opcję **Grupa zasobów** na wartość **Wszystkie grupy zasobów**.
+7. W obszarze **Wybierz** wskaż maszynę wirtualną, a następnie kliknij pozycję **Zapisz**.
 
     ![Przypisywanie uprawnień](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
@@ -87,7 +87,7 @@ Przypisanej przez system tożsamości zarządzanej maszyny wirtualnej można uż
 
 Usługa Azure Storage natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane przy użyciu tożsamości zarządzanej. Jest to część integracji usługi Azure Storage z usługą Azure AD. Takie rozwiązanie różni się od podawania poświadczeń w parametrach połączenia.
 
-Poniżej przedstawiono przykładowy kod .Net umożliwiający otworzenie połączenia z usługą Azure Storage przy użyciu tokenu dostępu, a następnie odczytanie zawartości wcześniej utworzonego pliku. Ten kod należy uruchomić na maszynie wirtualnej, aby mógł uzyskać dostęp do punktu końcowego tożsamości zarządzanej maszyny wirtualnej. Wymagany jest program .Net Framework 4.6 (lub nowszy) w celu użycia metody tokenu dostępu. Zastąp odpowiednio wartość `<URI to blob file>`. Tę wartość można uzyskać poprzez przejście do utworzonego i przekazanego do magazynu obiektów blob pliku, a następnie skopiowanie **adresu URL** w sekcji **Właściwości** na stronie **Przegląd**.
+Poniżej przedstawiono przykładowy kod .NET otwarcia połączenia z usługą Azure Storage przy użyciu tokenu dostępu, a następnie odczytanie zawartości pliku została utworzona wcześniej. Ten kod należy uruchomić na maszynie wirtualnej, aby mógł uzyskać dostęp do punktu końcowego tożsamości zarządzanej maszyny wirtualnej. .NET framework 4.6 lub nowszy jest wymagany przy użyciu metody token dostępu. Zastąp odpowiednio wartość `<URI to blob file>`. Tę wartość można uzyskać poprzez przejście do utworzonego i przekazanego do magazynu obiektów blob pliku, a następnie skopiowanie **adresu URL** w sekcji **Właściwości** na stronie **Przegląd**.
 
 ```csharp
 using System;
@@ -97,7 +97,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
-using System.Web.Script.Serialization; 
+using System.Web.Script.Serialization;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -109,7 +109,7 @@ namespace StorageOAuthToken
         {
             //get token
             string accessToken = GetMSIToken("https://storage.azure.com/");
-           
+
             //create token credential
             TokenCredential tokenCredential = new TokenCredential(accessToken);
 
@@ -120,7 +120,7 @@ namespace StorageOAuthToken
 
             //create block blob using storage credentials
             CloudBlockBlob blob = new CloudBlockBlob(blobAddress, storageCredentials);
-        
+
             //retrieve blob contents
             Console.WriteLine(blob.DownloadText());
             Console.ReadLine();
@@ -152,7 +152,7 @@ namespace StorageOAuthToken
                 string errorText = String.Format("{0} \n\n{1}", e.Message, e.InnerException != null ? e.InnerException.Message : "Acquire token failed");
                 return accessToken;
             }
-        }            
+        }
     }
 }
 ```
@@ -167,6 +167,3 @@ W tym samouczku pokazano, jak umożliwić przypisanej przez system tożsamości 
 
 > [!div class="nextstepaction"]
 > [Azure Storage](/azure/storage/common/storage-introduction)
-
-
-

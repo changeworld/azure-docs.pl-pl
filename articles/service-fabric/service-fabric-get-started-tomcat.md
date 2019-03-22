@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 29208bcbdbe6ad01d0e1ac7343bd921f3287260a
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 3e93e822c5764a23bba124152ef5dfabf2d3f94f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581591"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223873"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Tworzenie kontenera usługi Service Fabric z systemem serwera Apache Tomcat w systemie Linux
 Apache Tomcat to popularne, typu open-source implementacja technologii Java Servlet i serwer Java. W tym artykule przedstawiono sposób tworzenia kontenera za pomocą oprogramowania Apache Tomcat i prostą aplikację sieci Web, miało miejsce wdrożenie kontenera w klastrze usługi Service Fabric z systemem Linux i połączyć się z aplikacją sieci Web.  
 
-Aby dowiedzieć się więcej na temat oprogramowania Apache Tomcat, zobacz [strona główna oprogramowania Apache Tomcat](http://tomcat.apache.org/). 
+Aby dowiedzieć się więcej na temat oprogramowania Apache Tomcat, zobacz [strona główna oprogramowania Apache Tomcat](https://tomcat.apache.org/). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Komputer dewelopera z następującym oprogramowaniem:
@@ -95,9 +95,9 @@ Wykonaj kroki opisane w tej sekcji, aby utworzyć obraz platformy Docker na pods
 
 1. Aby przetestować kontenera, otwórz przeglądarkę i wprowadź jedną z następujących adresów URL. Zostanie wyświetlony wariant "Hello World!" ekran powitalny dla każdego adresu URL.
 
-   - http://localhost:8080/hello 
-   - http://localhost:8080/hello/sayhello 
-   - http://localhost:8080/hello/sayhi 
+   - `http://localhost:8080/hello` 
+   - `http://localhost:8080/hello/sayhello` 
+   - `http://localhost:8080/hello/sayhi` 
 
    ![Witaj świecie /sayhi](./media/service-fabric-get-started-tomcat/hello.png)
 
@@ -144,79 +144,79 @@ Teraz, gdy obraz Tomcat zostały wypchnięte do rejestru kontenera, można tworz
    * Nadaj nazwę aplikacji: ServiceFabricTomcat
    * Nazwa usługi aplikacji: TomcatService
    * Wprowadź nazwę obrazu: Podaj adres URL obrazu kontenera w rejestru kontenerów. na przykład myregistry.azurecr.io/samples/tomcattest.
-   * Polecenia: To pole puste. Ponieważ ten obraz ma zdefiniowany punkt wejścia obciążenia, nie musisz jawnie określić poleceń wejściowych (są to polecenia uruchamiane wewnątrz kontenera, które zapewnią działanie kontenera po uruchomieniu).
+   * Polecenia: Pozostaw to pole puste. Ponieważ ten obraz ma zdefiniowany punkt wejścia obciążenia, nie musisz jawnie określić poleceń wejściowych (są to polecenia uruchamiane wewnątrz kontenera, które zapewnią działanie kontenera po uruchomieniu).
    * Liczba wystąpień aplikacji kontenera gościa: 1
 
    ![Generator Yeoman usługi Service Fabric dla kontenerów](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
 10. W manifeście usługi (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml*), Dodaj następujący kod XML w katalogu głównym **ServiceManfest** tag, aby otworzyć port usługi aplikacja nasłuchuje żądań. **Punktu końcowego** tag deklaruje protokół i port punktu końcowego. W tym artykule konteneryzowana usługa nasłuchuje na porcie 8080: 
 
-    ```xml
-    <Resources>
-      <Endpoints>
-        <!-- This endpoint is used by the communication listener to obtain the port on which to 
-         listen. Please note that if your service is partitioned, this port is shared with 
-         replicas of different partitions that are placed in your code. -->
-        <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
-      </Endpoints>
-    </Resources>
-    ```
+   ```xml
+   <Resources>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+       listen. Please note that if your service is partitioned, this port is shared with 
+       replicas of different partitions that are placed in your code. -->
+      <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
+    </Endpoints>
+   </Resources>
+   ```
 
 11. W manifeście aplikacji (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) w obszarze **ServiceManifestImport** tag, Dodaj następujący kod XML. Zastąp **AccountName** i **hasło** w **RepositoryCredentials** tagu o nazwie usługi container registry i hasła wymagane do logowania się do niego.
 
-    ```xml
-    <Policies>
-      <ContainerHostPolicies CodePackageRef="Code">
-        <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-      </ContainerHostPolicies>
-    </Policies>
-    ```
+   ```xml
+   <Policies>
+    <ContainerHostPolicies CodePackageRef="Code">
+      <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
+      <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
+    </ContainerHostPolicies>
+   </Policies>
+   ```
 
-    **ContainerHostPolicies** tag określa zasady do aktywacji na hostach kontenerów.
+   **ContainerHostPolicies** tag określa zasady do aktywacji na hostach kontenerów.
     
-    * **PortBinding** tag konfiguruje zasady mapowania portów kontenera typu port do hosta. **ContainerPort** atrybut jest ustawiony na 8080, ponieważ kontener uwidacznia port 8080, jak określono w pliku Dockerfile. **EndpointRef** atrybut jest ustawiony na "endpointTest" punkt końcowy zdefiniowany w manifeście usługi w poprzednim kroku. W związku z tym żądania przychodzące do usługi na porcie 8080 są mapowane na port 8080 w kontenerze. 
-    * **RepositoryCredentials** tag Określa poświadczenia, które wymaga uwierzytelniania repozytorium (prywatny), gdzie ściągania obrazów z kontenera. Jeśli obraz będzie pobierany z publicznego repozytorium, nie potrzebujesz tych zasad.
+   * **PortBinding** tag konfiguruje zasady mapowania portów kontenera typu port do hosta. **ContainerPort** atrybut jest ustawiony na 8080, ponieważ kontener uwidacznia port 8080, jak określono w pliku Dockerfile. **EndpointRef** atrybut jest ustawiony na "endpointTest" punkt końcowy zdefiniowany w manifeście usługi w poprzednim kroku. W związku z tym żądania przychodzące do usługi na porcie 8080 są mapowane na port 8080 w kontenerze. 
+   * **RepositoryCredentials** tag Określa poświadczenia, które wymaga uwierzytelniania repozytorium (prywatny), gdzie ściągania obrazów z kontenera. Jeśli obraz będzie pobierany z publicznego repozytorium, nie potrzebujesz tych zasad.
     
 
 12. W *ServiceFabricTomcat* folderze połączenia z klastrem usługi Service fabric. 
 
-    * Aby połączyć się z lokalnym klastrem usługi Service Fabric, uruchom polecenie:
+   * Aby połączyć się z lokalnym klastrem usługi Service Fabric, uruchom polecenie:
 
-       ```bash
-       sfctl cluster select --endpoint http://localhost:19080
-       ```
+     ```bash
+     sfctl cluster select --endpoint http://localhost:19080
+     ```
     
-    * Aby nawiązać połączenie z zabezpieczonym klastrem platformy Azure, upewnij się, certyfikat klienta jest obecny jako plik PEM na *ServiceFabricTomcat* katalogu i uruchom: 
+   * Aby nawiązać połączenie z zabezpieczonym klastrem platformy Azure, upewnij się, certyfikat klienta jest obecny jako plik PEM na *ServiceFabricTomcat* katalogu i uruchom: 
 
-       ```bash
-       sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
-       ```
-       W poprzednim poleceniu zastąp `your-certificate.pem` o nazwie pliku z certyfikatem klienta. W środowiskach tworzenia i testowania certyfikat klastra jest często używany jako certyfikat klienta. Jeśli certyfikat nie jest podpisem własnym, Pomiń `-no-verify` parametru. 
+     ```bash
+     sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
+     ```
+     W poprzednim poleceniu zastąp `your-certificate.pem` o nazwie pliku z certyfikatem klienta. W środowiskach tworzenia i testowania certyfikat klastra jest często używany jako certyfikat klienta. Jeśli certyfikat nie jest podpisem własnym, Pomiń `-no-verify` parametru. 
        
-       Certyfikatów klastra są zwykle pobierane lokalnie jako pliki PFX. Jeśli nie masz jeszcze certyfikatu w formacie PEM, możesz uruchomić następujące polecenie, aby utworzyć plik PEM z pliku PFX:
+     Certyfikatów klastra są zwykle pobierane lokalnie jako pliki PFX. Jeśli nie masz jeszcze certyfikatu w formacie PEM, możesz uruchomić następujące polecenie, aby utworzyć plik PEM z pliku PFX:
 
-       ```bash
-       openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
-       ```
+     ```bash
+     openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
+     ```
 
-       Jeśli plik PFX nie jest chroniony hasłem, użyj `-passin pass:` ostatniego parametru.
+     Jeśli plik PFX nie jest chroniony hasłem, użyj `-passin pass:` ostatniego parametru.
 
 
 13. Uruchamianie skryptu instalacji udostępnionego w szablonie, aby wdrożyć aplikację w klastrze. Skrypt kopiuje pakiet aplikacji do magazynu obrazów klastra, rejestruje typ aplikacji i tworzy wystąpienie aplikacji.
 
-       ```bash
-       ./install.sh
-       ```
+     ```bash
+     ./install.sh
+     ```
 
-    Po uruchomieniu skryptu instalacji, otwórz przeglądarkę i przejdź do narzędzia Service Fabric Explorer:
+   Po uruchomieniu skryptu instalacji, otwórz przeglądarkę i przejdź do narzędzia Service Fabric Explorer:
     
-    * W klastrze lokalnym, użyj http://localhost:19080/Explorer (Zastąp *localhost* prywatnym adresem IP maszyny wirtualnej w przypadku używania narzędzia Vagrant w systemie Mac OS X).
-    * W zabezpieczonym klastrze platformy Azure, użyj https://PublicIPorFQDN:19080/Explorer. 
+   * W klastrze lokalnym, użyj `http://localhost:19080/Explorer` (Zastąp *localhost* prywatnym adresem IP maszyny wirtualnej w przypadku używania narzędzia Vagrant w systemie Mac OS X).
+   * W zabezpieczonym klastrze platformy Azure, użyj `https://PublicIPorFQDN:19080/Explorer`. 
     
-    Rozwiń **aplikacje** węzeł i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji **ServiceFabricTomcatType**i inny wpis dla pierwszego wystąpienia tego typu. Może upłynąć kilka minut dla aplikacji do wdrożenia w pełni, więc o cierpliwość.
+   Rozwiń **aplikacje** węzeł i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji **ServiceFabricTomcatType**i inny wpis dla pierwszego wystąpienia tego typu. Może upłynąć kilka minut dla aplikacji do wdrożenia w pełni, więc o cierpliwość.
 
-    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
+   ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
 1. Dostępu do aplikacji na serwerze Tomcat, Otwórz okno przeglądarki i wprowadzić dowolne z następujących adresów URL. Jeśli wdrożono w klastrze lokalnym, użyj *localhost* dla *PublicIPorFQDN*. Zostanie wyświetlony wariant "Hello World!" ekran powitalny dla każdego adresu URL.

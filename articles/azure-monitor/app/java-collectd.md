@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116538"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011189"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>zebrane: Metryki wydajności systemu Linux w usłudze Application Insights
 
@@ -26,14 +26,12 @@ Aby zapoznać się z metryk wydajności systemu Linux w [usługi Application Ins
 
 Zazwyczaj służy zebrane Jeśli masz już [Instrumentacji usługi sieci web Java za pomocą usługi Application Insights][java]. Oferuje on większej ilości danych, aby pomóc zwiększyć wydajność aplikacji lub diagnozować problemy. 
 
-![Przykładowe wykresy](./media/java-collectd/sample.png)
-
 ## <a name="get-your-instrumentation-key"></a>Uzyskaj klucz Instrumentacji
 W [portalu Microsoft Azure](https://portal.azure.com), otwórz [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) zasobów, w którym ma się pojawić się dane. (Lub [Utwórz nowy zasób](../../azure-monitor/app/create-new-resource.md ).)
 
 Wykonaj kopię klucza instrumentacji, który identyfikuje zasób.
 
-![Przeglądaj wszystko, otwórz zasób usługi w rozwijanej podstawy, a następnie wybierz, skopiuj klucz Instrumentacji](./media/java-collectd/02-props.png)
+![Przeglądaj wszystko, otwórz zasób usługi w rozwijanej podstawy, a następnie wybierz, skopiuj klucz Instrumentacji](./media/java-collectd/instrumentation-key-001.png)
 
 ## <a name="install-collectd-and-the-plug-in"></a>Zainstaluj zebrane i wtyczki
 Na komputerach serwerów Linux:
@@ -93,9 +91,7 @@ Konfigurowanie innych [wtyczek zebrane](https://collectd.org/wiki/index.php/Tabl
 Uruchom ponownie zebrane zgodnie z opisem w jego [ręczne](https://collectd.org/wiki/index.php/First_steps).
 
 ## <a name="view-the-data-in-application-insights"></a>Wyświetlanie danych w usłudze Application Insights
-Otwórz zasób usługi Application Insights [Eksploratora metryk i dodać wykresy][metrics], wybierając metryki mają być wyświetlane z kategorię niestandardową.
-
-![](./media/java-collectd/result.png)
+Otwórz zasób usługi Application Insights [metryki i dodać wykresy][metrics], wybierając metryki mają być wyświetlane z kategorię niestandardową.
 
 Domyślnie metryki są agregowane dla wszystkich maszyn hosta, z których zostały pobrane metryki. Aby wyświetlić metryki na hoście, w bloku szczegóły wykresu, należy włączyć grupowanie, a następnie wybierz grupowanie według hosta zebrane.
 

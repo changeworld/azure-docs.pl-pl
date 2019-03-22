@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c145f100e22dbb268a7cd491eb8a43b51988c69
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002341"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 
@@ -72,7 +72,7 @@ Odp.: Aby uzyskać dostęp do obszaru roboczego na platformie Azure, musi mieć 
 Odp.: Projektant widoków jest dostępna tylko w dziennikach dla użytkowników przypisanych z uprawnieniami współautora lub nowszej.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>PYTANIE: Można nadal korzystać z portalu usługi analiza spoza platformy Azure?
-A. Tak, stronie dzienniki na platformie Azure i portalu analizy zaawansowanej opierają się na ten sam kod. Usługa log Analytics jest integrowany jako funkcję w usłudze Azure Monitor, aby zapewnić bardziej ujednoliconego środowiska monitorowania. Nadal możesz uzyskiwać dostęp do portalu analizy przy użyciu adresu URL: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+A. Tak, stronie dzienniki na platformie Azure i portalu analizy zaawansowanej opierają się na ten sam kod. Usługa log Analytics jest integrowany jako funkcję w usłudze Azure Monitor, aby zapewnić bardziej ujednoliconego środowiska monitorowania. Nadal możesz uzyskiwać dostęp do portalu analizy przy użyciu adresu URL: https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
 
 
 

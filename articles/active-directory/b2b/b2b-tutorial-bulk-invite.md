@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 183a6ddf3fd47be552ba13ce42c1f6e29fca4410
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a30281012d28489a40e3366585164628d87c220
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994611"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Samouczek: zbiorcze zapraszanie użytkowników współpracy B2B w usłudze Azure AD
 
@@ -119,7 +119,7 @@ Aby sprawdzić, czy zaproszeni użytkownicy zostali dodani do usługi Azure AD, 
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-Powinna zostać wyświetlona lista zaproszonych użytkowników z główną nazwą użytkownika (UPN) w formacie *adres_e-mail*#EXT#@*domena*. Na przykład *lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com*, gdzie contoso.onmicrosoft.com jest organizacją, z której zostały wysłane zaproszenia.
+Powinien zostać wyświetlony, użytkownicy, którzy zaproszeni wyświetlany na liście, główną nazwę użytkownika (UPN) w formacie *emailaddress*EXT #\@*domeny*. Na przykład *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, gdzie contoso.onmicrosoft.com jest organizacji, z którego są wysyłane zaproszeń.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -131,7 +131,7 @@ Testowe konta użytkowników możesz usunąć z katalogu, gdy nie będą już po
 Na przykład: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku wysłano zaproszenia zbiorcze do użytkowników-gości spoza organizacji. Następnie dowiesz się, jak działa proces realizacji zaproszenia.
 
 > [!div class="nextstepaction"]

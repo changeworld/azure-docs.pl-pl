@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: c711ea3636a3ea045b4a145481f9da156b8c5bfc
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 30f6d08594bdf2e5d78bc8c7881a135d6e57f397
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246988"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852224"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Dołączyć wartownik platformy Azure (wersja zapoznawcza)
 
@@ -43,8 +43,9 @@ Po nawiązaniu połączenia ze źródłami danych, wybierz z galerii profesjonal
 - Uprawnienia współautora do dzierżawy usługi, aby włączyć usługi Azure przez wartownika
 
 - Globalny dzierżawy lub uprawnienia administratora zabezpieczeń
+ 
 
-## <a name="enable-azure-sentinel"></a>Włącz wartownik platformy Azure
+## Włącz wartownik platformy Azure <a name="enable"></a>
 
 1. Przejdź do witryny Azure portal.
 2. Upewnij się, czy wybrano subskrypcję, w którym przez wartownika Azure zostanie utworzona. 
@@ -56,9 +57,10 @@ Po nawiązaniu połączenia ze źródłami danych, wybierz z galerii profesjonal
 
    ![szukaj](./media/quickstart-onboard/choose-workspace.png)
 
-  >[!NOTE] 
-  > - **Lokalizacja obszaru roboczego** jest ważne dowiedzieć się, że wszystkie dane przesyłania strumieniowego przez wartownika Azure znajduje się w lokalizacji geograficznej wybranego obszaru roboczego.  
-  > - Domyślne obszary robocze utworzone przez usługę Azure Security Center nie będą widoczne na liście przez wartownika Azure nie można zainstalować na nich.
+   >[!NOTE] 
+   > - **Lokalizacja obszaru roboczego** jest ważne dowiedzieć się, że wszystkie dane przesyłania strumieniowego przez wartownika Azure znajduje się w lokalizacji geograficznej wybranego obszaru roboczego.  
+   > - Domyślne obszary robocze utworzone przez usługę Azure Security Center nie będą widoczne na liście przez wartownika Azure nie można zainstalować na nich.
+   > - Wartownik platformy Azure można uruchamiać na obszarach roboczych, które zostały wdrożone w jednym z następujących regionów:  Australia Południowo-Wschodnia, Kanada Środkowa, Indie środkowe, wschodnie stany USA, wschodnie stany USA 2 — EUAP (Wyspy Kanaryjskie), Japonia Wschodnia, Azja południowo-wschodnia, Zjednoczone Królestwo Południowa, Europa Zachodnia, zachodnie stany USA 2.
 
 6. Kliknij przycisk **Dodaj Azure wartownik**.
   

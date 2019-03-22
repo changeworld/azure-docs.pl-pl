@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 7358f259d4c38157a203369e9eadae28710f4290
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: fb24c856138bb9e59d9cb3ea07c9182454e6463a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993711"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080205"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Tworzenie zaawansowanych przepływów pracy kodowania za pomocą projektanta przepływu pracy  
 ## <a name="overview"></a>Przegląd
@@ -37,8 +37,6 @@ To narzędzie może również modyfikować żadnego z naszych [opublikowane prze
 
 > [!NOTE]
 > Aby uzyskać swoją kopię narzędzia projektanta przepływów pracy, skontaktuj się z pomocą mepd@microsoft.com.
-> 
-> 
 
 Po utworzeniu pliku przepływu pracy można przekazać jako zasób usługi, a następnie używane do kodowania plików multimedialnych. Aby uzyskać informacje na temat kodowania za pomocą **Media Encoder Premium Workflow** przy użyciu **.NET**, zobacz [Zaawansowane kodowanie za pomocą Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md).
 

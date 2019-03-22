@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896232"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
 
@@ -47,7 +47,7 @@ W tej sekcji utworzysz nowy potok kompilacji. Konfigurowanie potoku do automatyc
 >
 >Aby uzyskać więcej informacji, zobacz [instrukcje tworzenia potoku kompilacji](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline).
 
-1. Zaloguj się do Twojej organizacji DevOps platformy Azure ( **https://dev.azure.com/{your organizacji} /**), a następnie otwórz projekt, który zawiera repozytorium rozwiązania usługi IoT Edge.
+1. Zaloguj się do Twojej organizacji DevOps platformy Azure (**https:\/organizacji /dev.azure.com/{your} /**), a następnie otwórz projekt, który zawiera repozytorium rozwiązania usługi IoT Edge.
 
    W tym artykule, utworzyliśmy repozytorium o nazwie **IoTEdgeRepo**. Tego repozytorium zawiera **IoTEdgeSolution** który ma kod dla modułu o nazwie **filtermodule**. 
 
@@ -69,13 +69,13 @@ W tej sekcji utworzysz nowy potok kompilacji. Konfigurowanie potoku do automatyc
 
 4. Po utworzeniu potoku, nastąpi przekierowanie do edytora potoku. W opisie potoku wybierz pulę prawidłowych odpowiadające platformie docelowej: 
     
-    * Jeśli chcesz tworzyć moduły w amd64 platformy dla kontenerów systemu Linux, wybierz opcję **hostowanych 1604 Ubuntu**
+   * Jeśli chcesz tworzyć moduły w amd64 platformy dla kontenerów systemu Linux, wybierz opcję **hostowanych 1604 Ubuntu**
 
-    * Jeśli chcesz tworzyć moduły w amd64 platformy dla kontenerów Windows 1809, musisz [skonfiguruj samodzielnie hostowanego agenta na Windows](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+   * Jeśli chcesz tworzyć moduły w amd64 platformy dla kontenerów Windows 1809, musisz [skonfiguruj samodzielnie hostowanego agenta na Windows](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
-    * Jeśli chcesz tworzyć moduły w arm32v7 platformy dla kontenerów systemu Linux, musisz [Konfigurowanie własnego agenta w systemie Linux](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
+   * Jeśli chcesz tworzyć moduły w arm32v7 platformy dla kontenerów systemu Linux, musisz [Konfigurowanie własnego agenta w systemie Linux](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
-    ![Konfigurowanie puli agentów kompilacji](./media/how-to-ci-cd/configure-env.png)
+     ![Konfigurowanie puli agentów kompilacji](./media/how-to-ci-cd/configure-env.png)
 
 5. Potok jest wstępnie skonfigurowana za pomocą zadania o nazwie **zadania agenta 1**. Wybierz znak plus (**+**) można dodać trzy zadania dla zadania: **Usługa Azure IoT Edge** dwa razy, a **publikowanie artefaktów kompilacji** po. (Kursor na nazwie każdego zadania, aby zobaczyć **Dodaj** przycisku.)
 
@@ -158,11 +158,11 @@ Utwórz nowy potok, a następnie skonfiguruj jego pierwszego etapu wdrożeń kon
 
 10. Wybierz nowe zadanie usługi Azure IoT Edge i skonfiguruj je przy użyciu następujących wartości:
 
-   * **Nazwa wyświetlana**: Nazwa wyświetlana jest automatycznie aktualizowany po zmianie pola akcji. 
-   * **Akcja**: Użyj listy rozwijanej, aby wybrać **wdrażanie na urządzeniu usługi IoT Edge**. Zmiana wartości akcji aktualizuje również nazwa wyświetlana zadania do dopasowania.
-   * **Subskrypcja platformy Azure**: Wybierz subskrypcję, która zawiera Centrum IoT Hub.
-   * **Nazwa centrum IoT Hub**: Wybierz Centrum IoT hub. 
-   * **Wybierz urządzenie z jednym/wiele**: Wybierz, czy potok wydania do wdrażania na jednym lub kilku urządzeń. 
+    * **Nazwa wyświetlana**: Nazwa wyświetlana jest automatycznie aktualizowany po zmianie pola akcji. 
+    * **Akcja**: Użyj listy rozwijanej, aby wybrać **wdrażanie na urządzeniu usługi IoT Edge**. Zmiana wartości akcji aktualizuje również nazwa wyświetlana zadania do dopasowania.
+    * **Subskrypcja platformy Azure**: Wybierz subskrypcję, która zawiera Centrum IoT Hub.
+    * **Nazwa centrum IoT Hub**: Wybierz Centrum IoT hub. 
+    * **Wybierz urządzenie z jednym/wiele**: Wybierz, czy potok wydania do wdrażania na jednym lub kilku urządzeń. 
       * Jeśli wdrażasz do jednego urządzenia, wprowadź **identyfikator urządzenia usługi IoT Edge**. 
       * Jeśli są wdrażane na wielu urządzeniach, określ urządzenie **warunek docelowy**. Warunek docelowy jest filtr, aby dopasować zbiór urządzeń brzegowych w usłudze IoT Hub. Jeśli chcesz użyć znaczników urządzenia jako warunek, należy zaktualizować urządzenie odpowiednie tagi z bliźniaczej reprezentacji urządzenia usługi IoT Hub. Aktualizacja **identyfikator wdrożenia usługi IoT Edge** i **priorytetem wdrożenia usługi IoT Edge** w zaawansowanych ustawieniach. Aby uzyskać więcej informacji na temat tworzenia wdrożenia dla wielu urządzeń, zobacz [zrozumieć usługi IoT Edge automatycznego wdrożenia](module-deployment-monitoring.md).
 

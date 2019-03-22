@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb5a06aa4eb21ba374344623f9f96ce92a59ff5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 39f3f0954a271f3abd30e99e306ebfc940e20a7f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168821"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547813"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Szybki start: pobieranie raportu logowania przy użyciu witryny Azure Portal
 
-W tym przewodniku Szybki start dowiesz się, jak pobrać dane dotyczące logowania dla swojej dzierżawy z ostatnich 24 godzin. Z witryny Azure Portal można pobrać maksymalnie 5000 rekordów. Rekordy są sortowane w kolejności od najnowszego, więc domyślnie otrzymujesz 5000 najnowszych rekordów. 
+W tym przewodniku Szybki start dowiesz się, jak pobrać dane dotyczące logowania dla swojej dzierżawy z ostatnich 24 godzin. Do 250 000 rekordów można pobrać z witryny Azure portal. Rekordy są sortowane według większość ostatnie, więc domyślnie otrzymujesz najnowszej 250 000 rekordów. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -41,11 +41,11 @@ Potrzebne elementy:
 2. Wybierz usługę **Azure Active Directory** z okienka nawigacji po lewej stronie i za pomocą przycisku **Przełącz katalog** wybierz swój katalog Active Directory.
 3. Na pulpicie nawigacyjnym wybierz pozycję **Azure Active Directory**, a następnie **Logowania**. 
 4. Wybierz pozycję **Ostatnie 24 godziny** z listy rozwijanej filtru **Data** i wybierz przycisk **Zastosuj**, aby wyświetlić logowania z ostatnich 24 godzin. 
-5. Wybierz przycisk **Pobierz**, aby pobrać plik CSV zawierający odfiltrowane rekordy. 
+5. Wybierz **Pobierz** przycisku Wybierz **CSV** jako plik formatu i określ nazwę pliku do pobrania plik CSV zawierający przefiltrowane rekordy. 
 
 ![Raportowanie](./media/quickstart-download-sign-in-report/download-sign-ins.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Raporty dotyczące logowań w portalu Azure Active Directory](concept-sign-ins.md)
 * [Azure Active Directory reporting retention (Przechowywanie raportów w usłudze Azure Active Directory)](reference-reports-data-retention.md)

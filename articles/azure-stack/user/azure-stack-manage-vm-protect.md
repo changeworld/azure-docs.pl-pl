@@ -15,24 +15,19 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 50b3499a52ac646b6c896dd79b2191651c5b277e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 3/19/2018
+ms.openlocfilehash: de57ebbf0c0c4e8a18c955200d1692ea4ae9afae
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782942"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295015"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrona maszyn wirtualnych wdrożonych w usłudze Azure Stack
 
 Użyj tego artykułu jako przewodnika do opracowywania planu ochrony maszyn wirtualnych (VM), które użytkownicy wdrożenia w usłudze Azure Stack.
 
-Do ochrony przed utratą danych i nieplanowanych przestojów, konieczne jest wdrożenie planu odzyskiwania kopii zapasowej lub odzyskiwania po awarii dla aplikacji użytkownika i ich danych. Ten plan muszą być unikatowe dla każdej aplikacji, ale platforma ustanowione przez kompleksowy zestaw funkcji ciągłości Twojej organizacji i strategia odzyskiwania (BC i odzyskiwania po awarii) jest zgodna. To dobry punkt wyjścia [projektowanie aplikacji odpornych na błędy dla platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency), co umożliwia ogólne wzorce i rozwiązania dostępności aplikacji i zwiększa odporność.
-
->[!IMPORTANT]
-> Testowanie planów odzyskiwania kopii zapasowych i odzyskiwania po awarii w sposób ciągły. Musisz tutaj, aby upewnić się, że:
-> * Plany działają
-> * Plany nadal spełniają wymagania, które zostały zaprojektowane dla.
+Do ochrony przed utratą danych i nieplanowanych przestojów, konieczne jest wdrożenie planu odzyskiwania kopii zapasowej lub odzyskiwania po awarii dla aplikacji użytkownika i ich danych. Ten plan muszą być unikatowe dla każdej aplikacji, ale platforma ustanowione przez kompleksowy zestaw funkcji ciągłości Twojej organizacji i strategia odzyskiwania (BC i odzyskiwania po awarii) jest zgodna. To dobry punkt wyjścia [usługi Azure Stack: Zagadnienia dotyczące firm ciągłości działania i odzyskiwania po awarii](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## <a name="azure-stack-infrastructure-recovery"></a>Usługa Azure Stack infrastruktury odzyskiwania
 
@@ -47,6 +42,9 @@ Czy chmurą usługi Azure Stack jest w trybie offline przez dłuższy czas trwal
 * Umożliwia aplikacjom zapewnić obsługę żądań użytkowników
 
 Operator chmury Azure Stack jest odpowiedzialny za tworzenie planu odzyskiwania dla podstawowej infrastruktury Azure Stack i usług. Aby dowiedzieć się więcej, przeczytaj artykuł [sprawności po utracie danych w wyniku katastrofy](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
+
+## <a name="considerations-for-iaas-vms"></a>Uwagi dotyczące maszyn wirtualnych IaaS
+System operacyjny zainstalowany na maszynie Wirtualnej IaaS ograniczy zawiera produktów, które można użyć do ochrony danych. Dla Windows opartych na maszynach wirtualnych IaaS, można użyć produktów firmy Microsoft i partnerów w celu ochrony danych. Maszyny wirtualne IaaS opartej na systemie Linux, jedyną opcją jest używane produkty partnerów. Zapoznaj się [ten arkusz danych dla wszystkich partnerów BC i odzyskiwania po awarii przy użyciu zweryfikowanych produkty dla usługi Azure Stack](https://aka.ms/azurestackbcdrpartners).
 
 ## <a name="sourcetarget-combinations"></a>Źródłowymi/docelowymi kombinacje
 

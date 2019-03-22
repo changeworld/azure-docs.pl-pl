@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 33ada343738e113e8f14e1e5ac4a0e8aee481670
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 144b3f8ae210d515695c2184c2c3193084755746
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185469"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841025"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w lokalnym komputerze deweloperskim
 
@@ -35,7 +35,7 @@ Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów z umożliwi
 
 ## <a name="debugging-service-fabric-java-applications"></a>Debugowanie aplikacji Java usługi Service Fabric
 
-W przypadku aplikacji Java [wiele struktur rejestrowania](http://en.wikipedia.org/wiki/Java_logging_framework) są dostępne. Ponieważ `java.util.logging` to opcja domyślna, za pomocą środowiska JRE, służy również do [przykładów kodu w serwisie GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started). Następujące dyskusji opisano sposób konfigurowania `java.util.logging` framework.
+W przypadku aplikacji Java [wiele struktur rejestrowania](https://en.wikipedia.org/wiki/Java_logging_framework) są dostępne. Ponieważ `java.util.logging` to opcja domyślna, za pomocą środowiska JRE, służy również do [przykładów kodu w serwisie GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). Następujące dyskusji opisano sposób konfigurowania `java.util.logging` framework.
 
 Za pomocą java.util.logging można przekierować Dzienniki aplikacji do pamięci, strumienie wyjściowe, pliki konsoli lub gniazda. Dla każdej z tych opcji Brak obsługi domyślne poprawiał w ramach. Możesz utworzyć `app.properties` plik do skonfigurowania obsługi plików dla aplikacji w taki sposób przekierować wszystkie dzienniki do pliku lokalnego.
 
@@ -64,7 +64,7 @@ Ta konfiguracja powoduje dzienniki są zbierane w sposób rotacji na `/tmp/servi
 
 Domyślnie jeśli żadna procedura obsługi nie jest jawnie skonfigurowany, obsługi konsoli jest zarejestrowany. Jeden można przeglądać dzienniki usługi SYSLOG w obszarze /var/log/syslog.
 
-Aby uzyskać więcej informacji, zobacz [przykładów kodu w serwisie GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started).
+Aby uzyskać więcej informacji, zobacz [przykładów kodu w serwisie GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Debugowanie aplikacji usługi Service Fabric C#

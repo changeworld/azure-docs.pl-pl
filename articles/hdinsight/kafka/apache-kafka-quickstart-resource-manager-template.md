@@ -8,18 +8,18 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 75bd3f5b508fc47a07ab07f6f375ddbc87bcdcf1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b359716db5a30f8a77b9f54c2b0bc7b4d00a7f39
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104033"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225760"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Szybki start: Tworzenie platformy Apache Kafka w klastrze usługi HDInsight
 
 [Apache Kafka](https://kafka.apache.org/) to rozproszona platforma przesyłania strumieniowego typu open source. Jest ona często używana jako broker komunikatów, ponieważ oferuje funkcje podobne do kolejki komunikatów dotyczących publikowania i subskrybowania. 
 
-W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster platformy [Apache Kafka](https://kafka.apache.org) przy użyciu szablonu usługi Azure Resource Manager. Dowiesz się także, jak używać dołączonych narzędzi do wysyłania i odbierania komunikatów na platformie Kafka. Podobne szablony można wyświetlać w obszarze [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular). Dokumentację szablonu można znaleźć [tutaj](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
+W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster platformy [Apache Kafka](https://kafka.apache.org) przy użyciu szablonu usługi Azure Resource Manager. Dowiesz się także, jak używać dołączonych narzędzi do wysyłania i odbierania komunikatów na platformie Kafka. Można wyświetlić podobne szablony na [szablony szybkiego startu platformy](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular). Dokumentację szablonu można znaleźć [tutaj](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 

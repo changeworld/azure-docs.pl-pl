@@ -9,14 +9,15 @@ ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03652329acaeb737cb7cb4010ef48938caa17acc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: c7a652ab4283321c5934b32fdc5478bb5d79e4a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096915"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293134"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurowanie aplikacji SaaS na potrzeby współpracy B2B
 
@@ -53,7 +54,7 @@ Aby umożliwić użytkownikom na logowanie przy użyciu swojego konta organizacj
 
 5. Zaloguj się do usługi Dropbox na adres URL logowania jednokrotnego z **logowanie jednokrotne** strony.
 
-   ![Na stronie logowania usługi Dropbox](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![Zrzut ekranu przedstawiający stronę logowania w usłudze Dropbox](media/configure-saas-apps/sign-in-to-dropbox.png)
 
 6. W menu, wybierz **konsoli administracyjnej**.
 
@@ -78,7 +79,7 @@ Możesz umożliwić użytkownikom uwierzytelnianie użytkowników-gości pole za
 
 2. Skonfiguruj logowanie jednokrotne w następującej kolejności:
 
-   ![Konfiguruj okno logowania jednokrotnego](media/configure-saas-apps/configure-box-sso.png)
+   ![Zrzut ekranu przedstawiający ustawienia konfiguracji rejestracji jednokrotnej](media/configure-saas-apps/configure-box-sso.png)
 
    a. W **adres URL logowania** Sprawdź, czy adres URL logowania jest odpowiednio ustawiony dla pola w witrynie Azure portal. Ten adres URL jest adres URL dzierżawy usługi Box.com. Powinien on być zgodny konwencji nazewnictwa *https://.box.com*.  
    **Identyfikator** nie ma zastosowania do tej aplikacji, ale nadal jest wyświetlany jako wymaganym polem.

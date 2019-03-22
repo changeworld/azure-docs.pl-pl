@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 6a26b4c08915b44d24290fde2c74d71b9362c11c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338573"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000919"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Samouczek: Optymalizowanie kosztów od zalecanych
 
@@ -41,7 +41,9 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="view-cost-optimization-recommendations"></a>Wyświetl zalecenia dotyczące optymalizacji kosztów
 
-W witrynie Azure Portal kliknij pozycję **Zarządzanie kosztami i rozliczenia** na liście usług. Następnie na liście w obszarze **Cost Management**, wybierz opcję **zalecenia usługi Advisor**. Klasyfikator koszt zalecenia są wyświetlane.
+Aby wyświetlić zaleceń dotyczących optymalizacji kosztów w ramach subskrypcji, otwórz żądany zakres w witrynie Azure portal i wybierz pozycję **zalecenia usługi Advisor**.
+
+Aby wyświetlić zalecenia dotyczące grupy zarządzania, otwórz żądany zakres w witrynie Azure portal i wybierz pozycję **analiza kosztów** w menu. Użyj **zakres** skażone, aby przełączyć się do innego zakresu, takich jak grupy zarządzania. Wybierz **zalecenia usługi Advisor** w menu. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
 
 ![Klasyfikator zarządzania zalecenia dotyczące kosztów wyświetlane w witrynie Azure portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 

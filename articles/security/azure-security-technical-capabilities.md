@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: aa003d5c56e374c99b26beb884fce27b9b16298e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440067"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839104"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -75,7 +75,7 @@ Zabezpieczeń zapewnianych przez usługi Azure Active Directory (Azure AD) mogą
 
 - Zapewnij bezpieczny dostęp zdalny do aplikacji sieci web w środowisku lokalnym za pośrednictwem serwera Proxy aplikacji usługi Azure AD.
 
-[Portalu Azure Active Directory](http://aad.portal.azure.com/) jest dostępna w ramach witryny Azure portal. Z tego pulpitu nawigacyjnego zapoznaj się z omówieniem Państwa organizacji i Poznaj łatwe zarządzanie katalogu, użytkowników lub dostęp do aplikacji.
+[Portalu Azure Active Directory](https://aad.portal.azure.com/) jest dostępna w ramach witryny Azure portal. Z tego pulpitu nawigacyjnego zapoznaj się z omówieniem Państwa organizacji i Poznaj łatwe zarządzanie katalogu, użytkowników lub dostęp do aplikacji.
 
 ![Usługa Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -113,7 +113,7 @@ Nie tylko użytkowników nie trzeba zarządzać wiele zestawów nazwy użytkowni
 
 Monitorowanie zabezpieczeń i alerty oraz oparte na nauce maszynowej raporty maszynowej, które identyfikują niespójne wzorce dostępu może pomóc chronić Twoją firmę. Dostęp do usługi Azure Active Directory i raporty użycia umożliwia wgląd w integralność i bezpieczeństwo katalogu organizacji. Dzięki tym informacjom administratora katalogu można lepiej zidentyfikować potencjalne zagrożenia bezpieczeństwa może być tak, aby ich odpowiednio zaplanować ograniczyć te zagrożenia.
 
-W witrynie Azure portal lub za pomocą [portalu Azure Active Directory](http://aad.portal.azure.com/), [raporty](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) są podzielone na następujące sposoby:
+W witrynie Azure portal lub za pomocą [portalu Azure Active Directory](https://aad.portal.azure.com/), [raporty](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) są podzielone na następujące sposoby:
 
 - Raporty anomalii — zawierają logowania zdarzenia, które znaleźliśmy jako nietypowe. Naszym celem jest na należy pamiętać o takiej działalności i Włącz, aby można było zdecydować, czy zdarzenie jest podejrzane.
 
@@ -274,7 +274,7 @@ Możesz dowiedzieć się więcej na temat opcji sieci VPN platformy Azure, przec
 
 [Usługa Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) używa zasad szyfrowania, tożsamości i autoryzacji, aby ułatwić zabezpieczanie plików oraz wiadomości e-mail. Usługa Azure RMS działa na wielu urządzeniach — telefonach, tabletach i komputerach, aby chronić w obrębie organizacji i spoza Twojej organizacji. Ta funkcja jest możliwe, ponieważ usługa Azure RMS dodaje poziom ochrony, która jest powiązana z danymi, nawet wtedy, gdy opuszczą teren organizacji.
 
-Gdy używasz usługi Azure RMS do ochrony plików za pomocą branżowego standardu kryptografii pełną obsługę [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html). Gdy możesz korzystać z usługi Azure RMS w celu ochrony danych, masz pewność, że ta ochrona pozostanie z plikiem, nawet wtedy, gdy jest kopiowany do magazynu, który nie jest pod kontrolą IT, takiego jak Usługa magazynu w chmurze. Taki sam występuje w przypadku plików udostępnianych za pośrednictwem poczty e-mail, plik jest chroniony jako załącznik do wiadomości e-mail z instrukcjami sposób otwierania chronionego załącznika.
+Gdy używasz usługi Azure RMS do ochrony plików za pomocą branżowego standardu kryptografii pełną obsługę [FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html). Gdy możesz korzystać z usługi Azure RMS w celu ochrony danych, masz pewność, że ta ochrona pozostanie z plikiem, nawet wtedy, gdy jest kopiowany do magazynu, który nie jest pod kontrolą IT, takiego jak Usługa magazynu w chmurze. Taki sam występuje w przypadku plików udostępnianych za pośrednictwem poczty e-mail, plik jest chroniony jako załącznik do wiadomości e-mail z instrukcjami sposób otwierania chronionego załącznika.
 Podczas planowania wdrożenia usługi Azure RMS zalecamy wykonanie poniższych czynności:
 
 - Zainstaluj [aplikacji RMS sharing](https://technet.microsoft.com/library/dn339006.aspx). Ta aplikacja integruje się z pakietem Office, aplikacje, instalując pakiet Office dodatku, aby ułatwiający użytkownikom ochronę plików bezpośrednio.

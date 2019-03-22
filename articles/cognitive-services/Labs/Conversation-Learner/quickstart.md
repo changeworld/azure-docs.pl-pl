@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 82738d6d97dc2c14c83ed483c4a1d76604d0cd91
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545335"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994368"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Tworzenie modelu uczeń konwersacji za pomocą środowiska Node.js
 
@@ -78,35 +78,35 @@ Uczeń konwersacji projekt składa się z zestawu SDK, Dodaj do bota i usługi w
 
     Spowoduje to uruchomienie ogólnego bot pusty `cl-bot-01/src/app.ts`.
 
-3. Otwórz przeglądarkę, aby http://localhost:3978
+3. Otwórz przeglądarkę, aby `http://localhost:3978`
 
 Obecnie używasz uczeń konwersacji i można tworzyć i uczenie modelu uczeń konwersacji.  
 
 > [!NOTE]
-> Po uruchomieniu projektu uczeń konwersacji jest dostępna na zaproszenie.  Jeśli http://localhost:3978/ui pokazuje HTTP `403` błąd, to oznacza, że Twoje konto nie otrzymało zaproszenia.  Proszę [poproś o zaproszenie](https://aka.ms/conversation-learner-request-invite).
+> Po uruchomieniu projektu uczeń konwersacji jest dostępna na zaproszenie.  Jeśli `http://localhost:3978/ui` pokazuje HTTP `403` błąd, to oznacza, że Twoje konto nie otrzymało zaproszenia.  Proszę [poproś o zaproszenie](https://aka.ms/conversation-learner-request-invite).
 
 ## <a name="tutorials-demos-and-switching-between-bots"></a>W samouczkach, pokazy i przełączania się między botów
 
 Zgodnie z instrukcjami pracę ogólnego bot puste.  Uruchom samouczek lub pokaz bot zamiast tego:
 
-1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w http://localhost:3978/ui/home.
+1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w `http://localhost:3978/ui/home`.
     
 2. Jeśli jest uruchomiony inny bot (takich jak `npm start` lub `npm run demo-pizza`), zatrzymaj ją.  Nie musisz zatrzymać proces interfejsu użytkownika, lub zamknij przeglądarkę sieci web.
 
 3. Bot pokaz należy uruchomić z wiersza polecenia (krok 2 powyżej).  Prezentacje obejmują:
 
-  ```bash
-  npm run tutorial-general
-  npm run tutorial-entity-detection
-  npm run tutorial-session-callbacks
-  npm run tutorial-api-calls
-  npm run tutorial-hybrid
-  npm run demo-password
-  npm run demo-pizza
-  npm run demo-storage
-  ```
+   ```bash
+   npm run tutorial-general
+   npm run tutorial-entity-detection
+   npm run tutorial-session-callbacks
+   npm run tutorial-api-calls
+   npm run tutorial-hybrid
+   npm run demo-password
+   npm run demo-pizza
+   npm run demo-storage
+   ```
 
-4. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:3978/ui/home. 
+4. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując `http://localhost:3978/ui/home`. 
 
 5. Kliknij pozycję "Importuj samouczki" i wybierz model pokaz w interfejsie użytkownika uczeń konwersacji, odpowiadającą wersję demonstracyjną, którego rozpoczęto.
 
@@ -114,7 +114,7 @@ Pokazy pliki źródłowe znajdują się w `cl-bot-01/src/demos`
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>Tworzenie botów, która zawiera kod zaplecza
 
-1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w http://localhost:3978/ui/home.
+1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w `http://localhost:3978/ui/home`.
     
 2. Jeśli działa robota (takich jak `npm run demo-pizza`), zatrzymaj ją.  Nie musisz zatrzymać proces interfejsu użytkownika, lub zamknij przeglądarkę sieci web.
 
@@ -127,7 +127,7 @@ Pokazy pliki źródłowe znajdują się w `cl-bot-01/src/demos`
     npm start
     ```
 
-5. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:3978/ui/home. 
+5. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując `http://localhost:3978/ui/home`. 
 
 6. Utwórz nowy model uczeń konwersacji w interfejsie użytkownika, a następnie uruchom nauczania.
 

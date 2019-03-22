@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: 13c5d194ca5e6a606b319a42fdba7a597a8d4852
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9c7e6640bdb17e9f996545c2c3315c0c1ade42d1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781208"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902216"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i w usłudze Azure Stack
 
@@ -78,17 +78,17 @@ W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy
 ### <a name="azure-stack-requirements"></a>Wymagania dotyczące usługi Azure Stack
 
 * Użyj to system zintegrowany z usługi Azure Stack lub wdrażania usługi Azure Stack Development Kit (ASDK). Aby wdrożyć ASDK:
-    * [Samouczek: Wdrażanie ASDK za pomocą Instalatora](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) zawiera instrukcje wdrożenia są szczegółowo.
-    * Użyj [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) skrypt programu PowerShell do automatyzowania czynności po wdrożeniu ASDK.
+  * [Samouczek: Wdrażanie ASDK za pomocą Instalatora](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) zawiera instrukcje wdrożenia są szczegółowo.
+  * Użyj [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) skrypt programu PowerShell do automatyzowania czynności po wdrożeniu ASDK.
 
     > [!Note]
     > Instalacji ASDK trwa około siedmiu godziny zakończenia, więc odpowiednio zaplanować.
 
- * Wdrażanie [usługi App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) usługi PaaS do usługi Azure Stack.
- * Tworzenie [planu/ofert](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) w usłudze Azure Stack.
- * Tworzenie [dzierżawy subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) w usłudze Azure Stack.
- * Tworzenie aplikacji sieci Web w ramach subskrypcji dzierżawy. Zanotuj nowy adres URL aplikacji sieci Web dla później użyć.
- * Wdróż maszynę wirtualną systemu Windows Server 2012 w ramach subskrypcji dzierżawy. Użyjesz tego serwera jako serwera kompilacji i uruchamiania usługi DevOps platformy Azure.
+  * Wdrażanie [usługi App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) usługi PaaS do usługi Azure Stack.
+  * Tworzenie [planu/ofert](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) w usłudze Azure Stack.
+  * Tworzenie [dzierżawy subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) w usłudze Azure Stack.
+  * Tworzenie aplikacji sieci Web w ramach subskrypcji dzierżawy. Zanotuj nowy adres URL aplikacji sieci Web dla później użyć.
+  * Wdróż maszynę wirtualną systemu Windows Server 2012 w ramach subskrypcji dzierżawy. Użyjesz tego serwera jako serwera kompilacji i uruchamiania usługi DevOps platformy Azure.
 * Udostępnij obrazu systemu Windows Server 2016 platformy .NET 3.5 dla maszyny wirtualnej (VM). Ta maszyna wirtualna zostanie utworzona na usługi Azure Stack jako funkcja agentów kompilacji prywatnych.
 
 ### <a name="developer-tool-requirements"></a>Wymagania dotyczące narzędzi dla deweloperów
@@ -97,8 +97,8 @@ W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy
 * [Instalowanie programu Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) i [logowania do usługi Azure DevOps Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Połącz się z projektem i [go sklonować lokalnie](https://www.visualstudio.com/docs/git/gitquickstart).
 
- > [!Note]
- > Środowisko usługi Azure Stack musi poprawne obrazów, zespolone do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożony w usłudze App Service.
+  > [!Note]
+  > Środowisko usługi Azure Stack musi poprawne obrazów, zespolone do uruchomienia systemu Windows Server i programu SQL Server. Musi mieć również wdrożony w usłudze App Service.
 
 ## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>Przygotowanie agenta prywatnego potoki platformy Azure do integracji z usługami DevOps platformy Azure
 
@@ -363,7 +363,7 @@ Hybrydowe, ciągłą Integrację/ciągłe dostarczanie może dotyczyć zarówno 
 
 2. Przejdź do **tworzenie aplikacji sieci Web** strony dla projektu.
 
-3. W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna za pomocą.Net Core.
+3. W **argumenty**, Dodaj **- r dla systemu win10-x64** kodu. Jest to wymagane, aby wyzwolić wdrożenie niezależna z platformą .NET Core.
 
     ![Dodaj argument kompilacji potoku](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
 

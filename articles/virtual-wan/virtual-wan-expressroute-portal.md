@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/5/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 17d80d07f9b272b0dcb7449404d5d6626e72ce65
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692887"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842949"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Samouczek: Tworzenie skojarzenia usługi ExpressRoute przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
 
@@ -37,11 +37,13 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>Rejestrowanie tej funkcji
 
-Aby móc skonfigurować usługę Virtual WAN, należy najpierw zarejestrować swoją subskrypcję w wersji zapoznawczej. Jeśli tego nie zrobisz, usługa Virtual WAN nie będzie dostępna w portalu. Aby się zarejestrować, wyślij wiadomość e-mail na adres **azurevirtualwan@microsoft.com**, podając identyfikator subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail.
+Aby móc skonfigurować usługę Virtual WAN, należy najpierw zarejestrować swoją subskrypcję w wersji zapoznawczej. Jeśli tego nie zrobisz, usługa Virtual WAN nie będzie dostępna w portalu. Aby zarejestrować urządzenie, Wyślij wiadomość e-mail do **azurevirtualwan\@microsoft.com** przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail.
 
 **Zagadnienia dotyczące wersji zapoznawczej:**
 
@@ -69,15 +71,15 @@ Przejdź w przeglądarce do witryny [Azure Portal](https://aka.ms/azurevirtualwa
 ## <a name="hub"></a>4. Wyszukiwanie obwodu i kojarzenie go z koncentratorem
 
 1. Wybierz swoją wirtualną sieć WAN, a następnie w obszarze **Architektura wirtualnej sieci WAN** wybierz pozycję **Obwody usługi ExpressRoute**
-2. Jeśli obwód usługi ExpressRoute znajduje się w tej samej subskrypcji, co Twoja wirtualna sieć WAN, kliknij pozycję **Wybierz obwód usługi ExpressRoute** ze swoich subskrypcji 
-3. Z menu rozwijanego wybierz obwód usługi ExpressRoute, który chcesz skojarzyć z koncentratorem.
-4. Jeśli obwód usługi ExpressRoute nie znajduje się w tej samej subskrypcji lub udostępniony został [klucz autoryzacji i identyfikator komunikacji równorzędnej](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md), wybierz pozycję **Znajdź obwód realizujący klucz autoryzacji**
-5. Wprowadź następujące wartości:
-* **Klucz autoryzacji** — wygenerowany przez właściciela obwodu zgodnie z powyższym opisem
-* **Identyfikator URI obwodu równorzędnego** — identyfikator URI obwodu udostępniony przez właściciela obwodu będący jego unikatowym identyfikatorem
-* **Waga routingu** - [Waga routingu](../expressroute/expressroute-optimize-routing.md) umożliwia preferowanie określonych ścieżek, gdy wiele obwodów z różnych lokalizacji komunikacji równorzędnej jest połączonych z tym samym koncentratorem
-6. Kliknij pozycję **Wyszukaj obwód**, a następnie wybierz obwód, jeśli został odnaleziony
-7. Wybierz co najmniej jeden koncentrator z listy rozwijanej, a następnie kliknij pozycję **Zapisz**
+1. Jeśli obwód usługi ExpressRoute znajduje się w tej samej subskrypcji, co Twoja wirtualna sieć WAN, kliknij pozycję **Wybierz obwód usługi ExpressRoute** ze swoich subskrypcji 
+1. Z menu rozwijanego wybierz obwód usługi ExpressRoute, który chcesz skojarzyć z koncentratorem.
+1. Jeśli obwód usługi ExpressRoute nie znajduje się w tej samej subskrypcji lub udostępniony został [klucz autoryzacji i identyfikator komunikacji równorzędnej](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md), wybierz pozycję **Znajdź obwód realizujący klucz autoryzacji**
+1. Wprowadź następujące wartości:
+1. **Klucz autoryzacji** — wygenerowany przez właściciela obwodu zgodnie z powyższym opisem
+1. **Identyfikator URI obwodu równorzędnego** — identyfikator URI obwodu udostępniony przez właściciela obwodu będący jego unikatowym identyfikatorem
+1. **Waga routingu** - [Waga routingu](../expressroute/expressroute-optimize-routing.md) umożliwia preferowanie określonych ścieżek, gdy wiele obwodów z różnych lokalizacji komunikacji równorzędnej jest połączonych z tym samym koncentratorem
+1. Kliknij pozycję **Wyszukaj obwód**, a następnie wybierz obwód, jeśli został odnaleziony
+1. Wybierz co najmniej jeden koncentrator z listy rozwijanej, a następnie kliknij pozycję **Zapisz**
 
 ## <a name="vnet"></a>5. Łączenie sieci wirtualnej z koncentratorem
 
@@ -110,13 +112,13 @@ Utwórz połączenie, aby monitorować komunikację pomiędzy maszyną wirtualn�
 
 ## <a name="cleanup"></a>9. Oczyszczanie zasobów
 
-Gdy grupa zasobów i zawarte w niej zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
+Jeśli te zasoby nie są już potrzebne, możesz użyć [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby. Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

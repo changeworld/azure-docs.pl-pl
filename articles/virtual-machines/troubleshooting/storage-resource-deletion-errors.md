@@ -11,22 +11,22 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 19a0e7f3317a5c4a87b2622de170b0fc2cc137be
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: a1eb946d3f1b18aaa86735dedcfbaa1fd6a89621
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326827"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089985"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usuwania zasobów magazynu
 
 W niektórych przypadkach może wystąpić jeden z następujących błędów podczas próby usunięcia konta magazynu platformy Azure, kontenera lub obiektu blob we wdrożeniu usługi Azure Resource Manager:
 
->**Nie można usunąć konta magazynu "StorageAccountName". Błąd: Nie można usunąć konta magazynu, ponieważ jego artefakty są nadal używane.**
-
->**Nie można usunąć # poza # kontenerów:<br>wirtualne dyski twarde: Obecnie jest dzierżawy w kontenerze i identyfikator dzierżawy nie został określony w żądaniu.**
-
->**Nie można usunąć # poza # obiektów blob:<br>BlobName.vhd: Obecnie jest dzierżawy w obiekcie blob i identyfikator dzierżawy nie został określony w żądaniu.**
+> **Nie można usunąć konta magazynu "StorageAccountName". Błąd: Nie można usunąć konta magazynu, ponieważ jego artefakty są nadal używane.**
+> 
+> **Nie można usunąć # poza # kontenerów:<br>wirtualne dyski twarde: Obecnie jest dzierżawy w kontenerze i identyfikator dzierżawy nie został określony w żądaniu.**
+> 
+> **Nie można usunąć # poza # obiektów blob:<br>BlobName.vhd: Obecnie jest dzierżawy w obiekcie blob i identyfikator dzierżawy nie został określony w żądaniu.**
 
 Wirtualne dyski twarde używane w maszynach wirtualnych platformy Azure to pliki VHD przechowywane jako stronicowe obiekty BLOB na koncie magazynu w warstwie standardowa lub premium na platformie Azure. Aby uzyskać więcej informacji o dyskach platformy Azure, zobacz nasze [wprowadzenie do usługi managed disks](../linux/managed-disks-overview.md).
 

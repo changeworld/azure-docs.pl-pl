@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 66ba6aa874e84ce86d54d5ea0f827a83dc6564b4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208555"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008939"
 ---
 # <a name="azure-and-linux"></a>Azure i Linux
 Platforma Microsoft Azure to rosnący zbiór zintegrowanych usług publicznych w chmurze, obejmujący maszyny wirtualne, usługi analityczne, bazodanowe, mobilne, sieciowe, magazynowe oraz internetowe &mdash; — idealne do hostowania rozwiązań.  Microsoft Azure to skalowalna platforma obliczeniowa, która pozwala na płacenie tylko za używane usługi, z których można korzystać w dowolnej chwili — bez konieczności inwestowania w sprzęt lokalny.  Platforma Azure jest gotowa wraz z Tobą do skalowania rozwiązań tak, aby sprostać wymaganiom klientów.
@@ -59,7 +59,7 @@ Aby uzyskać właściwą kulturę DevOps, cała infrastruktura musi być zawarta
 * [Szablony platformy Azure](create-ssh-secured-vm-from-template.md)
 * [Rozszerzenie Azure VMAccess](using-vmaccess-extension.md)
 
-Platforma Azure wprowadza obsługę pakietu [cloud-init](http://cloud-init.io/) we wszystkich dystrybucjach systemu Linux, które go obsługują.  Obecnie maszyny wirtualne systemu Ubuntu firmy Canonical są wdrażane z domyślnie włączonym pakietem cloud-init.  Systemy RHEL, CentOS i Fedora firmy Red Hat obsługują pakiet cloud-init, ale obrazy platformy Azure obsługiwane przez firmę Red Hat nie mają obecnie zainstalowanego pakietu cloud-init.  Aby korzystać z pakietu cloud-init w systemie operacyjnym z rodziny Red Hat, należy utworzyć obraz niestandardowy z zainstalowanym pakietem cloud-init.
+Platforma Azure wprowadza obsługę pakietu [cloud-init](https://cloud-init.io/) we wszystkich dystrybucjach systemu Linux, które go obsługują.  Obecnie maszyny wirtualne systemu Ubuntu firmy Canonical są wdrażane z domyślnie włączonym pakietem cloud-init.  Systemy RHEL, CentOS i Fedora firmy Red Hat obsługują pakiet cloud-init, ale obrazy platformy Azure obsługiwane przez firmę Red Hat nie mają obecnie zainstalowanego pakietu cloud-init.  Aby korzystać z pakietu cloud-init w systemie operacyjnym z rodziny Red Hat, należy utworzyć obraz niestandardowy z zainstalowanym pakietem cloud-init.
 
 * [Korzystanie z pakietu cloud-init na maszynach wirtualnych platformy Azure z systemem Linux](using-cloud-init.md)
 

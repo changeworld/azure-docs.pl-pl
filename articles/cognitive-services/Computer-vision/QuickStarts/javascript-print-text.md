@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 004b7033666dd575c94992b9a099944033680bdf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: fc755c888d2f5affd755ea8de8febcdf0a49663f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875132"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892697"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-javascript-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu drukowanego (OCR) przy użyciu interfejsu API REST i języka JavaScript w przetwarzaniu obrazów
 
@@ -47,7 +47,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 <html>
 <head>
     <title>OCR Sample</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
 
@@ -244,11 +244,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Gdy plik nie będzie już potrzebny, usuń go.
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zapoznaj się z aplikacją w języku JavaScript, w której zastosowano interfejs API przetwarzania obrazów do optycznego rozpoznawania znaków (OCR), inteligentnego przycinania miniatur oraz wykrywania, kategoryzowania, tagowania i opisywania elementów wizualnych, w tym twarzy, na obrazie. Aby szybko zacząć eksperymentować z interfejsem API przetwarzania obrazów, wypróbuj [konsolę testowania interfejsu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

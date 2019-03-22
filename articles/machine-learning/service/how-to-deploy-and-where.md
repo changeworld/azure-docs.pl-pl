@@ -11,26 +11,23 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2a88781e17313557438e64492ab84f59018f9914
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: f2d2ded849af5054935b6bec8f74e021078b7641
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730186"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860429"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
-Usługa Azure Machine Learning zapewnia kilka metod, które można wdrożyć uczonego modelu przy użyciu zestawu SDK. W tym dokumencie informacje o sposobie wdrażania swojego modelu jako usługi sieci web w chmurze platformy Azure lub na urządzeniach usługi IoT Edge.
-
-> [!IMPORTANT]
-> Współużytkowanie zasobów między źródłami (cors) nie jest obecnie obsługiwane w przypadku wdrażania modelu w postaci usługi sieci web.
+Zestaw SDK usługi Azure Machine Learning udostępnia uczony model jest wdrażany na kilka sposobów. W tym dokumencie informacje o sposobie wdrażania swojego modelu jako usługi sieci web w chmurze platformy Azure lub na urządzeniach usługi IoT Edge.
 
 Można wdrażać modele do następujących celów obliczeń:
 
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
 | [Usługa Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
-| [Usługa Azure środowiska obliczeniowego usługi ML](#azuremlcompute) | Wnioskowanie usługi Batch | Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje normalne lub niskiego priorytetu maszyn wirtualnych. |
+| [Usługa Azure środowiska obliczeniowego usługi ML](#azuremlcompute) | Wnioskowanie usługi Batch | Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
 | [Usługa Azure Container Instances (ACI)](#aci) | Testowanie | Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
 | [Tablica programowalny bramy (FPGA)](#fpga) | (Wersja zapoznawcza) Usługa sieci Web | Bardzo niskimi opóźnieniami dla wnioskowania w czasie rzeczywistym. |
@@ -42,6 +39,8 @@ Proces wdrażania modelu jest podobnych dla wszystkich celów obliczeń:
 1. Wdrażania obrazu obliczeniowego elementu docelowego.
 1. Testowanie wdrożenia
 
+Poniższy klip wideo pokazuje, wdrażanie w usłudze Azure Container Instances:
+
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Kwk3]
 
 
@@ -49,32 +48,34 @@ Aby uzyskać więcej informacji na temat pojęć, które są zaangażowane w prz
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](http://aka.ms/AMLFree) już dziś.
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 - Obszar roboczy usługi Azure Machine Learning i Azure Machine Learning SDK dla język Python jest zainstalowany. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [wprowadzenie do przewodnika Szybki Start usługi Azure Machine Learning](quickstart-get-started.md).
 
 - Uczonego modelu. Jeśli nie masz trenowanego modelu, wykonaj kroki w [uczyć modele](tutorial-train-models-with-aml.md) samouczka, aby uczyć i zarejestrować jeden z usługą Azure Machine Learning.
 
     > [!NOTE]
-    > Gdy usługa Azure Machine Learning można pracować z model ogólny, który może zostać załadowany w wersji 3 języka Python, przykłady w niniejszym dokumencie pokazują, przy użyciu modelu są przechowywane w formacie pakietu pickle.
+    > Gdy usługa Azure Machine Learning można pracować z model ogólny, który może zostać załadowany w wersji 3 języka Python, przykłady w niniejszym dokumencie pokazują, przy użyciu modelu są przechowywane w formacie pickle języka Python.
     > 
     > Aby uzyskać więcej informacji na temat korzystania z modelami ONNX, zobacz [ONNX i Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentu.
 
 ## <a id="registermodel"></a> Rejestrowanie uczonego modelu
 
-Rejestr modelu jest sposób przechowywać i organizować swoje wytrenowane modele w chmurze platformy Azure. Modele są rejestrowane w obszarze roboczym usługi Azure Machine Learning. Model może być uczony przy użyciu usługi Azure Machine Learning lub innej usługi. Aby zarejestrować model z pliku, użyj następującego kodu:
+Rejestr modelu jest sposób przechowywać i organizować swoje wytrenowane modele w chmurze platformy Azure. Modele są rejestrowane w obszarze roboczym usługi Azure Machine Learning. Model może być uczony przy użyciu usługi Azure Machine Learning lub innej usługi. Poniższy kod przedstawia sposób zarejestrować modelu z pliku, należy ustawić nazwę, tagi i opis:
 
 ```python
 from azureml.core.model import Model
 
-model = Model.register(model_path = "model.pkl",
-                       model_name = "Mymodel",
+model = Model.register(model_path = "outputs/sklearn_mnist_model.pkl",
+                       model_name = "sklearn_mnist",
                        tags = {"key": "0.1"},
                        description = "test",
                        workspace = ws)
 ```
 
 **Szacowany czas**: Około 10 sekund.
+
+Na przykład zarejestrować model, zobacz [szkolenie klasyfikatora obraz](tutorial-train-models-with-aml.md).
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [klasa modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
@@ -92,9 +93,7 @@ from azureml.core.image import ContainerImage
 # Image configuration
 image_config = ContainerImage.image_configuration(execution_script = "score.py",
                                                  runtime = "python",
-                                                 conda_file = "myenv.yml",
-                                                 description = "Image with ridge regression model",
-                                                 tags = {"data": "diabetes", "type": "regression"}
+                                                 conda_file = "myenv.yml"}
                                                  )
 ```
 
@@ -108,15 +107,19 @@ Ważne parametry w tym przykładzie opisano w poniższej tabeli:
 | `runtime` | Wskazuje, że obraz używany jest język Python. Druga opcja to `spark-py`, która używa języka Python z platformą Apache Spark. |
 | `conda_file` | Używane do udostępniania plików środowiska conda. Ten plik definiuje środowiska conda wdrożony model. Aby uzyskać więcej informacji na temat tworzenia tego pliku, zobacz [Utwórz plik środowiska (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file). |
 
+Aby uzyskać przykład tworzenia konfiguracji obrazu, zobacz [wdrażanie klasyfikatora obraz](tutorial-deploy-models-with-aml.md).
+
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [ContainerImage, klasa](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)
 
 ### <a id="script"></a> Wykonanie skryptu
 
-Wykonanie skryptu odbiera dane przesłane do wdrożonego obrazu i przekazuje je do modelu. Następnie pobiera odpowiedź zwrócona przez model i zwraca go do klienta. Skrypt jest specyficzny dla modelu; jego musisz poznać model oczekuje i zwraca dane. Skrypt zwykle zawiera dwie funkcje, które ładują i uruchomić model:
+Wykonanie skryptu odbiera dane przesłane do wdrożonego obrazu i przekazuje je do modelu. Następnie pobiera odpowiedź zwrócona przez model i zwraca go do klienta. **Skrypt jest specyficzny dla modelu**; należy zrozumieć, dane, które oczekuje modelu i zwraca. Aby uzyskać przykładowy skrypt, która współdziała z model klasyfikacji obrazów, zobacz [wdrażanie klasyfikatora obraz](tutorial-deploy-models-with-aml.md).
 
-* `init()`: Zazwyczaj ta funkcja ładuje modelu do obiektów globalnych. Ta funkcja jest uruchamiana tylko raz, po uruchomieniu kontenera platformy Docker. 
+Skrypt zawiera dwie funkcje, które ładują i uruchomić model:
 
-* `run(input_data)`: Ta funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe, uruchom zazwyczaj korzystają w ramach serializacji i deserializacji JSON. Może również współdziałać z nieprzetworzone dane binarne. Można przekształcać dane przed wysłaniem do modelu lub przed zwróceniem do klienta. 
+* `init()`: Zazwyczaj ta funkcja ładuje modelu do obiektów globalnych. Ta funkcja jest uruchamiana tylko raz, po uruchomieniu kontenera platformy Docker.
+
+* `run(input_data)`: Ta funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe, uruchom zazwyczaj korzystają w ramach serializacji i deserializacji JSON. Może również współdziałać z nieprzetworzone dane binarne. Można przekształcać dane przed wysłaniem do modelu lub przed zwróceniem do klienta.
 
 #### <a name="working-with-json-data"></a>Praca z danymi w formacie JSON
 
@@ -210,21 +213,18 @@ Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [klasy Conta
 
 Gdy pojawi się do wdrożenia, proces jest nieco inne w zależności od wdrażanego na docelowym obliczeń. Użyj informacji w poniższych sekcjach, aby dowiedzieć się, jak wdrożyć:
 
-* [Azure Container Instances](#aci)
-* [Usługi Azure Kubernetes](#aks)
-* [Project Brainwave (tablic programowalny bramy)](#fpga)
-* [Urządzenia w usłudze Azure IoT Edge](#iotedge)
+| Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
+| ----- | ----- | ----- |
+| [Usługa Azure Kubernetes Service (AKS)](#aks) | Usługa sieci Web (wnioskowania w czasie rzeczywistym)| Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
+| [Usługa Azure środowiska obliczeniowego usługi ML](#azuremlcompute) | Usługa sieci Web (wnioskowanie usługi Batch)| Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
+| [Usługa Azure Container Instances (ACI)](#aci) | Usługa sieci Web (Tworzenie i testowanie)| Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
+| [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
+| [Tablica programowalny bramy (FPGA)](#fpga) | (Wersja zapoznawcza) Usługa sieci Web | Bardzo niskimi opóźnieniami dla wnioskowania w czasie rzeczywistym. |
 
-> [!NOTE]
-> Gdy **wdrażanie jako usługi sieci web**, istnieją trzy metody wdrażania, możesz użyć:
->
-> | Metoda | Uwagi |
-> | ----- | ----- |
-> | [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) | Należy zarejestrować model i utworzyć obraz przed rozpoczęciem korzystania z tej metody. |
-> | [Wdrażanie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) | Przy użyciu tej metody, nie należy zarejestrować model lub utworzyć obraz. Jednak nie można kontrolować nazwę modelu lub obraz, lub skojarzonych tagów i opisy. |
-> | [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) | Przy użyciu tej metody, nie musisz utworzyć obrazu. Ale nie masz kontrolę nad nazwę obrazu, który jest tworzony. |
->
-> Przykłady w tym dokumentów użyj `deploy_from_image`.
+> [!IMPORTANT]
+> Współużytkowanie zasobów między źródłami (cors) nie jest obecnie obsługiwane w przypadku wdrażania modelu w postaci usługi sieci web.
+
+Przykłady w tej sekcji użyto [deploy_from_image](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-), który wymaga zarejestrowania modelu i obrazów przed wykonaniem wdrożenia. Aby uzyskać więcej informacji na temat innych metod wdrażania, zobacz [wdrażanie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) i [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-).
 
 ### <a id="aci"></a> Wdrażanie w usłudze Azure Container Instances (DEVTEST)
 
@@ -235,7 +235,7 @@ Użyj usługi Azure Container Instances dla wdrażając swoje modele jako usług
 
 Do wdrożenia usługi Azure Container Instances, wykonaj następujące kroki:
 
-1. Definiowanie konfiguracji wdrożenia. W poniższym przykładzie zdefiniowano konfiguracji, który używa jednego rdzenia procesora CPU i 1 GB pamięci:
+1. Definiowanie konfiguracji wdrożenia. Ta konfiguracja zależy od wymagań modelu. W poniższym przykładzie zdefiniowano konfiguracji, który używa jednego rdzenia procesora CPU i 1 GB pamięci:
 
     [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=configAci)]
 
@@ -243,7 +243,7 @@ Do wdrożenia usługi Azure Container Instances, wykonaj następujące kroki:
 
     [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option3Deploy)]
 
-    **Szacowany czas**: Około 3 minuty.
+    **Szacowany czas**: Mniej więcej 5 minut.
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) i [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) klasy.
 
@@ -251,7 +251,10 @@ Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AciWebservi
 
 Aby wdrożyć modelu w postaci usługi sieci web o dużej skali w środowisku produkcyjnym, należy użyć usługi Azure Kubernetes Service (AKS). Można użyć istniejącego klastra AKS lub utworzyć nowe konto, przy użyciu zestawu SDK usługi Azure Machine Learning, interfejsu wiersza polecenia lub witryny Azure portal.
 
-Tworzenie klastra AKS jest czas procesu dla obszaru roboczego. Można ponownie użyć klastra dla wielu wdrożeń. Po usunięciu klastra, następnie musisz utworzyć nowe klaster przy następnym zajdzie potrzeba wdrożenia.
+Tworzenie klastra AKS jest czas procesu dla obszaru roboczego. Można ponownie użyć klastra dla wielu wdrożeń. 
+
+> [!IMPORTANT]
+> Po usunięciu klastra, następnie musisz utworzyć nowe klaster przy następnym zajdzie potrzeba wdrożenia.
 
 Usługa Azure Kubernetes Service zapewnia następujące możliwości:
 
@@ -275,7 +278,7 @@ aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True,
 
 Zniżki w stosunku do wykorzystania bieżącej repliki kontenera opiera się decyzji dotyczących skalowania w górę/w dół. Liczba replik, które są zajęte, (przetwarzania żądania) podzielony przez łączną liczba replik w bieżącym jest bieżące użycie. Jeśli ta liczba przekracza wykorzystanie docelowe, większa liczba replik są tworzone. Jeśli jest ona niższa, repliki są mniejsze. Domyślnie wykorzystanie docelowe wynosi 70%.
 
-Decyzje, aby dodać repliki to eager i szybko (około 1 sekunda). Decyzje, aby usunąć repliki są konserwatywnego (około 1 minuta).
+Decyzje, aby dodać repliki są wykonywane i zaimplementowane szybko (około 1 sekunda). Decyzje, aby usunąć repliki trwa dłużej (około 1 minuta). To zachowanie przechowuje bezczynności replik na minutę w przypadku, gdy dotrze nowe żądanie, że może obsłużyć.
 
 Wymagane repliki można obliczyć przy użyciu następującego kodu:
 
@@ -296,7 +299,7 @@ concurrentRequests = targetRps * reqTime / targetUtilization
 replicas = ceil(concurrentRequests / maxReqPerContainer)
 ```
 
-Aby uzyskać więcej informacji na temat ustawień dotyczących `autoscale_target_utilization`, `autoscale_max_replicas`, i `autoscale_min_replicas`, zobacz [AksWebservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) odwołania do modułu.
+Aby uzyskać więcej informacji na temat ustawień dotyczących `autoscale_target_utilization`, `autoscale_max_replicas`, i `autoscale_min_replicas`, zobacz [AksWebservice.deploy_configuration](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-) odwołania.
 
 #### <a name="create-a-new-cluster"></a>Tworzenie nowego klastra
 
@@ -349,7 +352,7 @@ aks_target.wait_for_completion(True)
 
 Aby uzyskać więcej informacji na temat tworzenia klastra usługi AKS w taki sposób, poza zestawem SDK usługi Azure Machine Learning zobacz następujące artykuły:
 
-* [Tworzenie clsuter AKS](https://docs.microsoft.com/cli/azure/aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Tworzenie klastra AKS](https://docs.microsoft.com/cli/azure/aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Tworzenie klastra AKS (portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 #### <a name="deploy-the-image"></a>Wdrażanie obrazu

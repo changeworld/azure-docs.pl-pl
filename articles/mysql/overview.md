@@ -6,16 +6,17 @@ author: ajlam
 ms.author: andrela
 ms.custom: mvc
 ms.topic: conceptual
-ms.date: 11/14/2018
-ms.openlocfilehash: 99039c4d6abb8a839886e9d623e92c9fb2c41787
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 03/20/2019
+ms.openlocfilehash: 2852cab05fab8e15b7e60a22f54cc866d2f0f178
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353332"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295406"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co to jest Azure Database for MySQL?
-Usługa Azure Database for MySQL to usługa relacyjnej bazy danych w chmurze firmy Microsoft, w oparciu o [MySQL Community Edition](https://www.mysql.com/products/community/) aparatu bazy danych, w wersji 5.6 i w wersji 5.7. Usługa Azure Database for MySQL oferuje:
+
+Usługa Azure Database for MySQL to usługa relacyjnej bazy danych w chmurze firmy Microsoft, w oparciu o [MySQL Community Edition](https://www.mysql.com/products/community/) (dostępne w ramach licencji GPLv2) Aparat bazy danych, w wersji 5.6 i w wersji 5.7. Usługa Azure Database for MySQL oferuje:
 
 - Wbudowana wysoka dostępność bez dodatkowych kosztów
 - Przewidywalna wydajność dzięki płatnościom zgodnym z rzeczywistym użyciem
@@ -29,10 +30,12 @@ Powyższe możliwości prawie w ogóle nie wymagają administracji i są udostę
 ![Usługa Azure Database for MySQL — diagram koncepcyjny](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
 
 Ten artykuł stanowi wprowadzenie do usługi Azure Database for MySQL — podstawowe pojęcia i funkcje dotyczące wydajności, skalowalności i możliwości zarządzania za pomocą łącza, aby poznać szczegóły. Zobacz te przewodniki Szybki start, aby rozpocząć pracę:
+
 - [Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Tworzenie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Aby uzyskać zestaw przykładów interfejsu wiersza polecenia platformy Azure, zobacz:
+
 - [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for MySQL](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Dostosowanie wydajności i skalowania w kilka sekund
@@ -55,12 +58,14 @@ Domyślnie usługa Azure Database for MySQL jest skonfigurowany do żądania [za
 W przypadku jakichkolwiek pytań lub sugestie, które mogą się pojawić w pracę z usługą Azure Database for MySQL, Wyślij wiadomość e-mail do usługi Azure Database dla MySQL zespołu ([ @Ask Azure DB dla MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Należy pamiętać, że nie jest to alias pomocy technicznej.
 
 Ponadto, w zależności od potrzeb, należy wziąć pod uwagę następujące punkty kontaktowe:
+
 - Aby skontaktować się z pomocą techniczną platformy Azure, [wyślij zgłoszenie z witryny Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Aby rozwiązać problem z Twoim kontem, wyślij [żądanie obsługi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) w portalu Azure Portal.
 - Aby przekazać opinię lub poprosić o nowe funkcje, utwórz wpis w platformie [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Skoro już przeczytaj wprowadzenie do usługi Azure Database for MySQL i udzielenie odpowiedzi na pytanie "Co to jest Azure Database dla MySQL?", możesz przystąpić do:
+
 - Odwiedzenie strony cennika zawierającej porównania kosztów i kalkulatory. [Cennik](https://azure.microsoft.com/pricing/details/mysql/)
 - Rozpoczęcie pracy przez utworzenie pierwszego serwera. [Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - Tworzenie pierwszej aplikacji przy użyciu preferowanego języka: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md)  |  [.NET (C#)](./connect-csharp.md) | [przejdź](./connect-go.md)

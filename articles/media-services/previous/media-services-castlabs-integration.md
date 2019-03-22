@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: 0b3d8759f13f48e5fa95ff709fa283ed41e0ea25
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003214"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863261"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Korzystanie z castLabs w celu dostarczania licencji Widevine do usługi Azure Media Services 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "56003214"
 
 W tym artykule opisano, jak Azure Media Services (AMS) umożliwia dostarczanie dynamicznie szyfrowanych przez usługi AMS przy użyciu technologii PlayReady i Widevine protokołów DRM strumienia. Licencja PlayReady pochodzi z serwera licencji PlayReady usługi Media Services i licencji Widevine są dostarczane przez **castLabs** serwera licencji.
 
-Aby odtworzyć ponownie przesyłania strumieniowego zawartości chronionej przez CENC (PlayReady i Widevine), można użyć [usługi Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Zobacz [dokumentu AMP](http://amp.azure.net/libs/amp/latest/docs/) Aby uzyskać szczegółowe informacje.
+Aby odtworzyć ponownie przesyłania strumieniowego zawartości chronionej przez CENC (PlayReady i Widevine), można użyć [usługi Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html). Zobacz [dokumentu AMP](https://amp.azure.net/libs/amp/latest/docs/) Aby uzyskać szczegółowe informacje.
 
 Poniższy diagram przedstawia wysokiego poziomu usługi Azure Media Services i architektura integracyjna castLabs.
 
@@ -101,10 +101,10 @@ Aby użyć aplikacji sieci Web (STS):
 
 ## <a name="playing-back-a-video"></a>Odtwarzanie filmu wideo
 
-Aby odtworzyć wideo zaszyfrowany przy użyciu szyfrowania common encryption (PlayReady i Widevine), można użyć [usługi Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Podczas uruchamiania aplikacji konsolowej, powtarzane Identyfikatora klucza zawartości i adres URL manifestu.
+Aby odtworzyć wideo zaszyfrowany przy użyciu szyfrowania common encryption (PlayReady i Widevine), można użyć [usługi Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html). Podczas uruchamiania aplikacji konsolowej, powtarzane Identyfikatora klucza zawartości i adres URL manifestu.
 
 1. Otwórz nową kartę, a następnie uruchom usługi STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
-2. Przejdź do [usługi Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+2. Przejdź do [usługi Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 3. Wklej adres URL przesyłania strumieniowego.
 4. Kliknij przycisk **zaawansowane opcje** pola wyboru.
 5. W **ochrony** listy rozwijanej wybierz PlayReady i Widevine.

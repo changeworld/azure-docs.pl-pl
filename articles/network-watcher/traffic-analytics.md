@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: bc738dd93a43a1a3610323b9dd05abfd5b5c0091
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d4c3ab7e33d3d4bd8d5d5ee15c8264d1d41c858e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408806"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081070"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -201,7 +201,7 @@ Niektóre szczegółowe informacje, które możesz chcieć uzyskać po w pełni 
 - Statystyka zablokowanego ruchu.
     - Dlaczego hoście blokuje znacząca ilość nieszkodliwy ruch? To zachowanie wymaga dalszych badań, prawdopodobnie optymalizacji konfiguracji
 - Statystyki złośliwy ruch dozwolone/zablokowane
-    - Dlaczego host odbiera złośliwy ruch i dlaczego jest dozwolone przepływy z złośliwego źródła? To zachowanie wymaga dalszego dochodzenia, prawdopodobnie optymalizacji konfiguracji.
+  - Dlaczego host odbiera złośliwy ruch i dlaczego jest dozwolone przepływy z złośliwego źródła? To zachowanie wymaga dalszego dochodzenia, prawdopodobnie optymalizacji konfiguracji.
 
     Wybierz **holograficznych**w obszarze **hosta**, jak pokazano na poniższej ilustracji:
 
@@ -260,8 +260,8 @@ Niektóre szczegółowe informacje, które możesz chcieć uzyskać po w pełni 
 **Szukać**
 
 - Dystrybucja ruchu w centrum danych, takie jak najważniejsze źródła ruchu do centrum danych, sieci nieautoryzowany najważniejsze konwersację z centrum danych a górnej konwersację protokołów aplikacji.
-    - Jeśli zauważysz większe obciążenie w centrum danych, możesz zaplanować do dystrybucji ruchu wydajne.
-    - Jeśli nieautoryzowany sieci są konwersację w centrum danych, następnie Rozwiąż reguły sieciowej grupy zabezpieczeń, aby je zablokować.
+  - Jeśli zauważysz większe obciążenie w centrum danych, możesz zaplanować do dystrybucji ruchu wydajne.
+  - Jeśli nieautoryzowany sieci są konwersację w centrum danych, następnie Rozwiąż reguły sieciowej grupy zabezpieczeń, aby je zablokować.
 
     Wybierz **wyświetlanie mapy** w obszarze **środowiska**, jak pokazano na poniższej ilustracji:
 
@@ -282,8 +282,8 @@ Niektóre szczegółowe informacje, które możesz chcieć uzyskać po w pełni 
 **Szukać**
 
 - Dystrybucja ruchu na sieć wirtualną, topologia, najważniejsze źródła ruchu w sieci wirtualnej, sieci nieautoryzowany najważniejsze konwersację do sieci wirtualnej i górnym konwersację protokołów aplikacji.
-    - Wiedząc, sieć wirtualną, która jest konwersację na sieć wirtualną, która. Konwersacji nie oczekuje się, można rozwiązać.
-    - Jeśli nieautoryzowany sieci są konwersację z wirtualnych sieci, można rozwiązać reguły sieciowej grupy zabezpieczeń, aby zablokować sieci nieautoryzowany.
+  - Wiedząc, sieć wirtualną, która jest konwersację na sieć wirtualną, która. Konwersacji nie oczekuje się, można rozwiązać.
+  - Jeśli nieautoryzowany sieci są konwersację z wirtualnych sieci, można rozwiązać reguły sieciowej grupy zabezpieczeń, aby zablokować sieci nieautoryzowany.
  
     Wybierz **sieci wirtualne widoku** w obszarze **środowiska**, jak pokazano na poniższej ilustracji:
 
@@ -323,7 +323,7 @@ Dystrybucja ruchu dla bramy Application gateway i modułu równoważenia obcią�
 **Szukać**
 
 - Otwórz porty są konwersację za pośrednictwem Internetu?
-    - Jeśli porty nieoczekiwany zostaną znalezione open, można poprawić konfigurację:
+  - Jeśli porty nieoczekiwany zostaną znalezione open, można poprawić konfigurację:
 
     ![Pulpit nawigacyjny którym przedstawiane są porty, odbierania i wysyłania ruchu do Internetu](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
 
@@ -347,9 +347,9 @@ Czy masz złośliwy ruch w środowisku? Gdzie jest ona pochodzące z komputera? 
 
 - Następujące obrazy Pokaż czas Trend dla trafień reguł sieciowych grup zabezpieczeń i szczegóły przepływu źródłowego i docelowego dla sieciowej grupy zabezpieczeń:
 
-    - Szybkie wykrycie sieciowej grupy zabezpieczeń i sieciowe grupy zabezpieczeń, które zasady są przechodzenie przez złośliwe przepływy i które są najważniejsze złośliwy adres IP pozwalająca też sprostać dostęp do środowiska chmury
-    - Określenie, które reguły sieciowej grupy zabezpieczeń lub grupę zabezpieczeń umożliwiające/blokują ruch sieciowy znaczne
-    - Wybierz opcję top filtry dla szczegółowej kontroli sieciowej grupy zabezpieczeń lub sieciowej grupy zabezpieczeń reguły
+  - Szybkie wykrycie sieciowej grupy zabezpieczeń i sieciowe grupy zabezpieczeń, które zasady są przechodzenie przez złośliwe przepływy i które są najważniejsze złośliwy adres IP pozwalająca też sprostać dostęp do środowiska chmury
+  - Określenie, które reguły sieciowej grupy zabezpieczeń lub grupę zabezpieczeń umożliwiające/blokują ruch sieciowy znaczne
+  - Wybierz opcję top filtry dla szczegółowej kontroli sieciowej grupy zabezpieczeń lub sieciowej grupy zabezpieczeń reguły
 
     ![Prezentacja czas na popularności trafienia reguł sieciowych grup zabezpieczeń i najważniejsze reguły sieciowej grupy zabezpieczeń](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
 

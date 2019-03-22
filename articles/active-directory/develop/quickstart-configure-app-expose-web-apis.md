@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 940ca126eb18b81fd31f1ee2876948563e9d97af
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188380"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080849"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Szybki start: Konfigurowanie aplikacji w celu uwidocznienia internetowych interfejsów API (wersja zapoznawcza)
 
@@ -106,10 +106,10 @@ Aby uwidocznić nowy zakres za pomocą manifestu aplikacji:
       }
       ```
 
-  > [!NOTE]
-  > Wartość `id` musi zostać wygenerowana programowo lub za pomocą narzędzia do generowania identyfikatora GUID, takiego jak [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Wartość `id` reprezentuje unikatowy identyfikator dla zakresu w formie uwidocznionej przez internetowy interfejs API. Po odpowiednim skonfigurowaniu klienta za pomocą uprawnień dostępu do internetowego interfejsu API usługa Azure AD wystawi token dostępu OAuth 2.0. Gdy klient wywołuje internetowy interfejs API, prezentuje on token dostępu, który ma oświadczenie zakresu (scp) ustawione na uprawnienia żądane w jego rejestracji aplikacji.
-  >
-  > Jeśli jest to konieczne, później można uwidocznić dodatkowe zakresy. Należy pamiętać, że internetowy interfejs API może uwidoczniać wiele zakresów powiązanych z różnymi funkcjami. Zasób może kontrolować dostęp do internetowego interfejsu API w czasie wykonywania, oceniając oświadczenia zakresu (`scp`) w odebranym tokenie dostępu OAuth 2.0.
+   > [!NOTE]
+   > Wartość `id` musi zostać wygenerowana programowo lub za pomocą narzędzia do generowania identyfikatora GUID, takiego jak [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Wartość `id` reprezentuje unikatowy identyfikator dla zakresu w formie uwidocznionej przez internetowy interfejs API. Po odpowiednim skonfigurowaniu klienta za pomocą uprawnień dostępu do internetowego interfejsu API usługa Azure AD wystawi token dostępu OAuth 2.0. Gdy klient wywołuje internetowy interfejs API, prezentuje on token dostępu, który ma oświadczenie zakresu (scp) ustawione na uprawnienia żądane w jego rejestracji aplikacji.
+   >
+   > Jeśli jest to konieczne, później można uwidocznić dodatkowe zakresy. Należy pamiętać, że internetowy interfejs API może uwidoczniać wiele zakresów powiązanych z różnymi funkcjami. Zasób może kontrolować dostęp do internetowego interfejsu API w czasie wykonywania, oceniając oświadczenia zakresu (`scp`) w odebranym tokenie dostępu OAuth 2.0.
 
 1. Po skończeniu kliknij przycisk **Zapisz**. Teraz internetowy interfejs API jest skonfigurowany do użycia przez inne aplikacje w katalogu.
 1. Wykonaj kroki, aby [zweryfikować, czy internetowy interfejs API został uwidoczniony dla innych aplikacji](#verify-the-web-api-is-exposed-to-other-applications).
@@ -129,7 +129,7 @@ Manifest aplikacji pełni rolę mechanizmu aktualizowania jednostki Application,
 
 Aby uzyskać więcej informacji na temat ogólnych pojęć dotyczących manifestu aplikacji, zobacz [Omówienie manifestu aplikacji usługi Azure Active Directory](reference-app-manifest.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej na temat innych powiązanych przewodników Szybki start dotyczących zarządzania aplikacjami:
 

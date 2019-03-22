@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 7bc3ea054056ac67cf0a116fb1538bc1483ab4d4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 61b3a9e066a3ee20effa97f1c6c7a0bd1ae90ac0
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223533"
+ms.locfileid: "58285842"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -33,7 +33,9 @@ Usługa Application gateway to dedykowane wdrożenie w sieci wirtualnej. W ramac
 
 #### <a name="size-of-the-subnet"></a>Rozmiar podsieci
 
-W przypadku jednostki SKU w wersji 1 i application Gateway zużywa jeden prywatny adres IP dla każdego wystąpienia, a także innym prywatnym adresem IP, skonfigurowanie konfigurację adresu IP frontonu prywatnych. Ponadto platforma Azure rezerwuje pierwsze cztery i ostatniego adresu IP w każdej podsieci, do wewnętrznego użycia. Na przykład, jeśli bramy aplikacji jest ustawiona na trzy wystąpienia, a nie adresu IP frontonu prywatnych, następnie wartość/29 podsieć, rozmiar lub nowszej jest wymagana. W tym przypadku brama aplikacji używa trzech adresów IP. Jeśli masz trzy wystąpienia i adres IP dla prywatnych konfiguracji adresu IP frontonu, następnie o rozmiarze/28 podsieć, rozmiar lub nowszej jest wymagany, ponieważ cztery adresy IP są wymagane.
+Bramy Application Gateway zużywa jeden prywatny adres IP dla każdego wystąpienia, a także innym prywatnym adresem IP, jeśli konfiguracji IP frontonu prywatnego jest skonfigurowany. Ponadto platforma Azure rezerwuje pierwsze cztery i ostatniego adresu IP w każdej podsieci, do wewnętrznego użycia. Na przykład jeśli bramy aplikacji jest ustawiony na trzy wystąpienia i nie adresu IP frontonu prywatnych, następnie co najmniej 8 adresów IP będzie wymagane w podsieci — pięć adresów IP do wewnętrznego użycia i trzech adresów IP dla trzech wystąpień bramy application gateway. W związku z tym, w tym przypadku wartość/29 podsieć, rozmiar lub nowszej jest wymagana. Jeśli masz trzy wystąpienia i dziewięć adresy IP będą wymagane — w przypadku konfiguracji adresów IP frontonu prywatnych adresów IP trzech adresów IP dla trzech wystąpień bramy application Gateway jeden adres IP dla adresu IP frontonu prywatne i pięciu adresów IP adresy Użycie wewnętrznego. W związku z tym, w tym przypadku o rozmiarze/28 podsieć, rozmiar lub nowszej jest wymagana.
+
+Najlepszym rozwiązaniem jest użycie co najmniej o rozmiarze/28 rozmiar podsieci. Dzięki temu 11 brakować adresów. Jeśli Twoje obciążenia aplikacji wymaga więcej niż 10 wystąpień, należy rozważyć/27 lub/26 rozmiar podsieci.
 
 #### <a name="network-security-groups-supported-on-the-application-gateway-subnet"></a>Sieciowe grupy zabezpieczeń obsługiwane w podsieci bramy aplikacji
 
@@ -41,7 +43,7 @@ Sieciowe grupy zabezpieczeń (NSG) są obsługiwane w podsieci bramy aplikacji z
 
 - Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503 65534 w usłudze Application Gateway v1 jednostki SKU i porty 65200 – 65535 dla jednostki SKU w wersji 2. Zakres portów jest wymagany do komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowych certyfikatów podmioty zewnętrzne, w tym klienci tych bram, nie będą mogli zainicjować wszelkie zmiany w tych punktach końcowych.
 
-- Nie można zablokować wychodzące połączenie z Internetem.
+- Nie można zablokować wychodzące połączenie z Internetem. Domyślne reguły ruchu wychodzącego w sieciowej grupie zabezpieczeń umożliwiają już połączenie z Internetem. Firma Microsoft zaleca, nie usuwaj domyślne reguły ruchu wychodzącego i że nie utworzono inne reguły ruchu wychodzącego, które odmawiają wychodzące połączenie z Internetem.
 
 - Ruch z AzureLoadBalancer tag musi być zablokowany.
 
@@ -57,11 +59,12 @@ W tym scenariuszu można zrobić przy użyciu sieciowych grup zabezpieczeń w po
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>Trasy zdefiniowane przez użytkownika, obsługiwane w podsieci bramy aplikacji
 
-W przypadku jednostki SKU w wersji 1 i trasy zdefiniowane przez użytkownika (Udr) są obsługiwane w podsieci bramy aplikacji, tak długo, jak nie wpływają one komunikacji end-to-end żądania/odpowiedzi.
-
-Na przykład można skonfigurować trasy zdefiniowanej przez użytkownika w podsieci bramy aplikacji, aby wskazywał urządzenie zapory dla inspekcję pakietów, ale należy upewnić się, że pakiet może osiągnąć jego przeznaczenia wpis inspekcji. Niewykonanie tej czynności może spowodować nieprawidłowe kondycji sondy lub ruch zachowania routingu. Obejmuje to zapamiętane trasy lub domyślne trasy 0.0.0.0/0 propagowane przez usługi ExpressRoute lub bram sieci VPN w sieci wirtualnej.
+W przypadku jednostki SKU w wersji 1 i trasy zdefiniowane przez użytkownika (Udr) są obsługiwane w podsieci bramy aplikacji, tak długo, jak nie wpływają one komunikacji end-to-end żądania/odpowiedzi. Na przykład można skonfigurować trasy zdefiniowanej przez użytkownika w podsieci bramy aplikacji, aby wskazywał urządzenie zapory dla inspekcję pakietów, ale należy upewnić się, że pakiet może osiągnąć jego przeznaczenia wpis inspekcji. Niewykonanie tej czynności może spowodować nieprawidłowe kondycji sondy lub ruch zachowania routingu. Obejmuje to zapamiętane trasy lub domyślne trasy 0.0.0.0/0 propagowane przez usługi ExpressRoute lub bram sieci VPN w sieci wirtualnej.
 
 W przypadku v2 jednostki SKU, tras zdefiniowanych przez użytkownika w podsieci bramy aplikacji nie są obsługiwane. Aby uzyskać więcej informacji, zobacz [Skalowanie automatyczne i strefowo nadmiarowe Application Gateway (publiczna wersja zapoznawcza)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+
+> [!NOTE]
+> Przy użyciu tras zdefiniowanych przez użytkownika w podsieci bramy aplikacji spowoduje, że stan kondycji w [widoku kondycji zaplecza](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) mają być wyświetlane jako **nieznany** i spowoduje również failue generowania dzienników usługi application gateway i metryki. Zalecane jest, że nie używasz tras zdefiniowanych przez użytkownika w podsieci bramy aplikacji można wyświetlić kondycję wewnętrznej bazy danych, dzienników i metryk.
 
 ## <a name="frontend-ip"></a>Adresu IP frontonu
 
@@ -87,10 +90,11 @@ Możesz wybrać między [odbiornika podstawowego lub połączenia obejmujące wi
 
 - Jeśli konfigurujesz więcej niż jednej aplikacji sieci web lub wieloma poddomenami tej samej domeny nadrzędnej na tym samym wystąpieniu bramy aplikacji, wybierz odbiornika wielu lokacji. Dla odbiornika wielu lokacji należy dodatkowo wprowadź nazwę hosta. Jest to spowodowane Application Gateway bazuje na nagłówkach hosta HTTP 1.1 do obsługi więcej niż jednej witryny sieci Web na tym samym publicznym adresem IP i porcie.
 
-> [!NOTE]
-> W przypadku jednostek SKU v1 odbiorniki są przetwarzane w kolejności, w której są wyświetlane. Dlatego jeśli podstawowy odbiornik pasuje do przychodzącego żądania przetwarza je najpierw. W związku z tym należy skonfigurować odbiorników obejmujących wiele lokacji przed odbiornika podstawowego, aby upewnić się, że ruch jest kierowany do poprawne zaplecza.
->
-> W przypadku jednostek SKU v2 odbiorników obejmujących wiele lokacji są przetwarzane przed podstawowe odbiorników.
+#### <a name="order-of-processing-listeners"></a>Kolejność przetwarzania odbiorniki
+
+W przypadku jednostek SKU v1 odbiorniki są przetwarzane w kolejności, w której są wyświetlane. Dlatego jeśli podstawowy odbiornik pasuje do przychodzącego żądania przetwarza je najpierw. W związku z tym należy skonfigurować odbiorników obejmujących wiele lokacji przed odbiornika podstawowego, aby upewnić się, że ruch jest kierowany do poprawne zaplecza.
+
+W przypadku jednostek SKU v2 odbiorników obejmujących wiele lokacji są przetwarzane przed podstawowe odbiorników.
 
 ### <a name="frontend-ip"></a>Adresu IP frontonu
 
@@ -110,9 +114,9 @@ Należy wybrać protokół HTTP i HTTPS.
 
   Aby skonfigurować kończenie żądań protokołu Secure Sockets Layer (SSL) i kompleksowe szyfrowanie SSL, certyfikat jest wymagany do dodania do odbiornika tak, aby umożliwić Application Gateway do wyprowadzenia klucza symetrycznego zgodnie z specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany do szyfrowania i odszyfrowywania ruch wysyłany do bramy. Certyfikat bramy musi mieć format wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, wymagane przez tę bramę aplikacji z realizacją szyfrowania i odszyfrowywania ruchu. 
 
-#### <a name="supported-certs"></a>Obsługiwane certyfikatów
+#### <a name="supported-certificates"></a>Obsługiwane certyfikatów
 
-Certyfikaty z podpisem własnym, certyfikaty urzędu certyfikacji i certyfikatów z symbolami wieloznacznymi oraz Weryfikacją certyfikatów są obsługiwane.
+Zobacz [certyfikatów obsługiwana w przypadku kończenia żądań SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination).
 
 ### <a name="additional-protocol-support"></a>Obsługa dodatkowych protokołów
 
@@ -160,11 +164,11 @@ Możesz wybrać między [zasada podstawowa lub opartego na ścieżkach](https://
 - Wybierz opartego na ścieżkach odbiornik, aby kierować żądania przy użyciu określonej ścieżki adresu URL do pul zaplecza określone. Wzorzec ścieżki jest stosowane tylko do ścieżki adresu URL, z jego parametrów zapytania.
 
 
-> [!NOTE]
->
-> W przypadku jednostek SKU v1 dopasowania wzorca żądania przychodzące są przetwarzane w kolejności, w którym ścieżki są wymienione w Mapa ścieżki adresu URL opartego na ścieżkach reguły. Z tego powodu jeśli żądanie jest zgodny ze wzorcem w dwóch lub więcej ścieżek w Mapa ścieżki adresu URL, następnie ścieżkę, która znajduje się najpierw zostaną dopasowane, a zostanie ona przesłana do wewnętrznej bazy danych skojarzonych z tej ścieżki.
->
-> W przypadku jednostek SKU v2 dokładne dopasowanie przechowuje wyższy priorytet nad kolejności, w którym ścieżki są wymienione w Mapa ścieżki adresu URL. W tym przyczynę, jeśli żądanie pasuje do wzorca w co najmniej dwóch ścieżek, a następnie zostanie ona przesłana do wewnętrznej bazy danych skojarzone z tej ścieżki, która jest zgodna dokładnie z żądaniem. Jeśli ścieżka w żądaniu przychodzącym nie jest dokładnie dopasowana dowolną ścieżkę na mapie ścieżki adresu URL, następnie dopasowania wzorca przychodzące żądania są przetwarzane w kolejności, w którym ścieżki są wymienione w Mapa ścieżki adresu URL opartego na ścieżkach reguły.
+#### <a name="order-of-processing-rules"></a>Kolejność przetwarzania reguły
+
+W przypadku jednostek SKU v1 dopasowania wzorca żądania przychodzące są przetwarzane w kolejności, w którym ścieżki są wymienione w Mapa ścieżki adresu URL opartego na ścieżkach reguły. Z tego powodu jeśli żądanie jest zgodny ze wzorcem w dwóch lub więcej ścieżek w Mapa ścieżki adresu URL, następnie ścieżkę, która znajduje się najpierw zostaną dopasowane, a zostanie ona przesłana do wewnętrznej bazy danych skojarzonych z tej ścieżki.
+
+W przypadku jednostek SKU v2 dokładne dopasowanie przechowuje wyższy priorytet nad kolejności, w którym ścieżki są wymienione w Mapa ścieżki adresu URL. W tym przyczynę, jeśli żądanie pasuje do wzorca w co najmniej dwóch ścieżek, a następnie zostanie ona przesłana do wewnętrznej bazy danych skojarzone z tej ścieżki, która jest zgodna dokładnie z żądaniem. Jeśli ścieżka w żądaniu przychodzącym nie jest dokładnie dopasowana dowolną ścieżkę na mapie ścieżki adresu URL, następnie dopasowania wzorca przychodzące żądania są przetwarzane w kolejności, w którym ścieżki są wymienione w Mapa ścieżki adresu URL opartego na ścieżkach reguły.
 
 ### <a name="associated-listener"></a>Skojarzony odbiornik
 
@@ -176,7 +180,7 @@ Kojarzenie puli zaplecza, zawierająca elementy docelowe wewnętrznej bazy danyc
 
 ### <a name="associated-backend-http-setting"></a>Ustawienia HTTP zaplecza skojarzone
 
-Dodaj ustawienia HTTP zaplecza, dla każdej reguły. Żądania będą kierowane z bramy aplikacji do celów wewnętrznej bazy danych przy użyciu numeru portu, protokołu i inne ustawienia określone w tym ustawieniu. W przypadku podstawową regułę tylko jedno ustawienie protokołu HTTP zaplecza jest dozwolone, ponieważ wszystkie żądania na skojarzony odbiornik, które zostaną przekazane do odpowiednich elementów docelowych wewnętrznej bazy danych przy użyciu tego ustawienia protokołu HTTP. W przypadku reguły opartego na ścieżkach należy dodać wiele ustawień HTTP zaplecza odpowiadający każdej ścieżki adresu URL. Żądania, które zgodna ze ścieżką URL wprowadzone w tym miejscu, zostanie przesłana do odpowiedniego celów wewnętrznej bazy danych przy użyciu ustawień HTTP odpowiadający każdej ścieżki adresu URL. Ponadto należy dodać domyślne ustawienia HTTP, ponieważ żądania, które nie są zgodne z dowolną ścieżkę adresu URL wprowadzony w tej regule zostaną przekazane do domyślna pula zaplecza przy użyciu domyślnych ustawień protokołu HTTP.
+Dodaj ustawienia HTTP zaplecza, dla każdej reguły. Żądania będą kierowane z bramy aplikacji do celów wewnętrznej bazy danych przy użyciu numeru portu, protokołu i inne ustawienia określone w tym ustawieniu. W przypadku podstawową regułę tylko jedno ustawienie protokołu HTTP zaplecza jest dozwolone, ponieważ wszystkie żądania na skojarzony odbiornik, które zostaną przekazane do odpowiednich elementów docelowych wewnętrznej bazy danych przy użyciu tego ustawienia protokołu HTTP. W przypadku reguły opartego na ścieżkach należy dodać wiele ustawień HTTP zaplecza odpowiadający każdej ścieżki adresu URL. Żądania, które zgodna ze ścieżką URL wprowadzone w tym miejscu, zostanie przesłana do odpowiedniego celów wewnętrznej bazy danych przy użyciu ustawień HTTP odpowiadający każdej ścieżki adresu URL. Ponadto należy dodać domyślne ustawienie protokołu HTTP, ponieważ żądania, które nie są zgodne z dowolną ścieżkę adresu URL wprowadzony w tej regule zostaną przekazane do domyślna pula zaplecza przy użyciu domyślnego ustawienia protokołu HTTP.
 
 ### <a name="redirection-setting"></a>Ustawienie przekierowywania
 
@@ -186,7 +190,7 @@ Aby uzyskać informacji na temat możliwości przekierowania, zobacz [omówienie
 
 - #### <a name="redirection-type"></a>Typ przekierowania
 
-  Wybierz typ przekierowania wymaganej od: Trwałe, tymczasowego, znaleziono lub zobacz inne.
+  Wybierz typ przekierowania wymaganej od: Other(303) Permanent(301), Temporary(307), Found(302) lub zobacz.
 
 - #### <a name="redirection-target"></a>Miejsce docelowe przekierowania
 
@@ -236,14 +240,14 @@ Liczba sekund oczekiwania przez bramę aplikacji do odbierania odpowiedzi z puli
 
 To ustawienie pozwala skonfigurować ścieżkę opcjonalne przekazywanie niestandardowej do użycia podczas żądania są przekazywane do zaplecza. Spowoduje to skopiowanie dowolnej części ścieżki przychodzącej, który pasuje do niestandardowa ścieżka określona w **zastąpienia ścieżka zaplecza** pole przekazywane ścieżki. Zobacz tabelę poniżej, aby zrozumieć, jak działa ta funkcja.
 
-- Gdy ustawienia protokołu HTTP jest dołączony do reguły routingu podstawowego żądania:
+- Gdy ustawienie protokołu HTTP jest dołączony do reguły routingu podstawowego żądania:
 
   | Oryginalne żądanie  | Zastąp ścieżkę zaplecza | Żądanie przekazywane do zaplecza |
   | ----------------- | --------------------- | ---------------------------- |
   | /Home/            | /override/            | / zastąpienia/home /              |
   | / home/secondhome / | /override/            | / zastępowanie/home/secondhome /   |
 
-- Gdy ustawienia protokołu HTTP jest dołączony do reguły routingu opartego na ścieżkach żądania:
+- Gdy ustawienie protokołu HTTP jest dołączony do reguły routingu opartego na ścieżkach żądania:
 
   | Oryginalne żądanie           | Reguła ścieżki       | Zastąp ścieżkę zaplecza | Żądanie przekazywane do zaplecza |
   | -------------------------- | --------------- | --------------------- | ---------------------------- |

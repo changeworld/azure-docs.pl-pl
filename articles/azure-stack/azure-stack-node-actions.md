@@ -15,12 +15,12 @@ ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 8073dff6dbd8bbceb16d7fdcf8d39012233c32d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 24c500251c8e91b7542c5c9d3e77676205c88c1f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240459"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090971"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Liczba akcji skalowania jednostki węzła w usłudze Azure Stack
 
@@ -42,15 +42,15 @@ Aby wyświetlić stan jednostki skalowania:
 3. W wynikach wybierz jednostkę skalowania.
 4. Po lewej stronie w obszarze **ogólne**, wybierz opcję **węzłów**.
 
-  Wyświetl następujące informacje:
+   Wyświetl następujące informacje:
 
-  - Lista pojedynczych węzłów
-  - Stan operacyjny (patrz lista poniżej)
-  - Stan zasilania (uruchomiona lub zatrzymana)
-  - model serwera
-  - Adres IP kontrolera zarządzania płytą główną (BMC)
-  - Łączna liczba rdzeni
-  - Całkowita ilość pamięci
+   - Lista pojedynczych węzłów
+   - Stan operacyjny (patrz lista poniżej)
+   - Stan zasilania (uruchomiona lub zatrzymana)
+   - model serwera
+   - Adres IP kontrolera zarządzania płytą główną (BMC)
+   - Łączna liczba rdzeni
+   - Całkowita ilość pamięci
 
 ![stan jednostki skalowania](media/azure-stack-node-actions/multinodeactions.png)
 

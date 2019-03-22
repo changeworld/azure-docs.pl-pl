@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d7ef018b376b96f967a065857839761fc5822239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cb0e079eee78f865d472b55b162fb65b5eadaf44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876314"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900492"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Zestaw Speech Devices SDK (wersja zapoznawcza) — informacje
 
-[Usługa rozpoznawania mowy](overview.md) współpracuje z szerokiej gamy urządzeń i źródła audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK jest biblioteką pretuned, który jest powiązany z systemom, mikrofon tablicy development Kit.
+[Usług przetwarzania mowy](overview.md) działają z szeroką gamę urządzeń i źródła audio. Teraz możesz korzystać z aplikacji mowy na wyższy poziom dzięki dopasowane sprzętu i oprogramowania. Zestawu Speech Devices SDK jest biblioteką pretuned, który jest powiązany z systemom, mikrofon tablicy development Kit.
 
 Zestawu Speech Devices SDK może ułatwić:
 * Szybko przetestować nowe scenariusze głosu.
-* Łatwo zintegrować usługę rozpoznawania mowy opartej na chmurze urządzenia.
+* Łatwo Zintegruj usług rozpoznawania mowy opartej na chmurze urządzenia.
 * Utwórz środowisko użytkownika wyjątkowych dla swoich klientów.
 
-Korzysta z zestawu Speech Devices SDK [zestaw SDK rozpoznawania mowy](speech-sdk.md). Zestaw SDK rozpoznawania mowy używa do wysyłania dźwięk, który jest przetwarzany przez naszych algorytm zaawansowane przetwarzanie audio z tablicy mikrofonu urządzenia do [usługa rozpoznawania mowy](overview.md). Aby zapewnić bardziej precyzyjne daleko pole używa audio wielokanałowe [rozpoznawania mowy](speech-to-text.md) za pośrednictwem pomijanie szumu, echa i kształtowaniem wiązki oraz dereverberation.
+Korzysta z zestawu Speech Devices SDK [zestaw SDK rozpoznawania mowy](speech-sdk.md). Zestaw SDK rozpoznawania mowy używa do wysyłania dźwięk, który jest przetwarzany przez naszych algorytm zaawansowane przetwarzanie audio z tablicy mikrofonu urządzenia do [usług przetwarzania mowy](overview.md). Aby zapewnić bardziej precyzyjne daleko pole używa audio wielokanałowe [rozpoznawania mowy](speech-to-text.md) za pośrednictwem pomijanie szumu, echa i kształtowaniem wiązki oraz dereverberation.
 
 Umożliwia także zestawu Speech Devices SDK do tworzenia otoczenia urządzeń, które mają własne [dostosowane słowo aktywujące](speech-devices-sdk-create-kws.md)— więc wskaźnika, który inicjuje interakcji z użytkownikiem jest unikatowy dla Twojej marki.
 
@@ -39,7 +39,7 @@ Obecnie dostępne są te projekty referencyjne kompletny system end-to-end:
 
 |||
 |-|-|
-|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO oferuje kompletny sztucznej inteligencji (AI) system rozwiązania gospodarstwa domowego electric, samochodów i robotów, zabawki oraz inne branże. Projekty referencyjne firmy ROOBO znacznie skrócić rozwoju czas wprowadzenia na rynek za pomocą integracji z usługą Microsoft Speech. [Odwiedź stronę ROOBO](http://ddk.roobo.com/).|
+|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO oferuje kompletny sztucznej inteligencji (AI) system rozwiązania gospodarstwa domowego electric, samochodów i robotów, zabawki oraz inne branże. Projekty referencyjne firmy ROOBO znacznie skrócić rozwoju czas wprowadzenia na rynek za pomocą integracji z usługami mowy platformy Azure. [Odwiedź stronę ROOBO](http://ddk.roobo.com/).|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

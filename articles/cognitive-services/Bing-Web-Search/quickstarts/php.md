@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a02862d3ea2e17cfa25a2a2d96e1454699ae7f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166287"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858205"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka PHP  
 
-Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w Internecie Bing i odebranie odpowiedzi JSON. Ta aplikacja Node.js wysyła żądanie wyszukiwania do interfejsu API i wyświetla odpowiedź. Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w Internecie Bing i odebranie odpowiedzi JSON. Ta aplikacja Node.js wysyła żądanie wyszukiwania do interfejsu API i pokazuje odpowiedzi. Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
 
-* [PHP 5.6.x](http://php.net/downloads.php) lub nowsza wersja
+* [PHP 5.6.x](https://php.net/downloads.php) lub nowsza wersja
 * Klucz subskrypcji  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
@@ -34,11 +35,11 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 
 Przed rozpoczęciem odszukaj plik `php.ini` i usuń znaczniki komentarza z tego wiersza:
 
-```
-;extension=php_openssl.dll
+```php
+; extension=php_openssl.dll
 ```
 
-## <a name="create-a-project-and-define-variables"></a>Tworzenie projektu i definiowanie zmiennych  
+## <a name="create-a-project-and-define-variables"></a>Tworzenie projektu i definiowanie zmiennych
 
 Utwórz nowy projekt PHP w ulubionym środowisku IDE lub edytorze. Nie zapomnij o dodaniu tagów otwierających i zamykających: `<?php` i `?>`.
 
@@ -280,7 +281,7 @@ Odpowiedzi z interfejsu API wyszukiwania w sieci Web Bing są zwracane w formaci
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania w sieci Web Bing](../tutorial-bing-web-search-single-page-app.md)

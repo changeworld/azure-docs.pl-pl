@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 145c6ac01cce9a70f3753b54a46638bf9d9c23b4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729750"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000408"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Lista Azure Marketplace, wytycznych
 
@@ -72,16 +72,18 @@ Wszystkie oferty muszą spełniać [wszystkie wymagania ofercie](https://docs.mi
 ----
 
 ## <a name="container-offer-requirements"></a>Wymagania oferty kontenera
+
 |  | Element listy | Wymagania dotyczące podstawowej | Optymalne wymagania | 
 |:--- |:--- |:--- |:--- |
 |1 |Ustawienia oferty | <br>• Identyfikator oferty: Maksymalnie 50 znaków <br>• Identyfikator wydawcy: Wybierz z listy rozwijanej <br>• Nazwa: Maksymalna liczba 50 znaków | Duplikatów, które mają być już dostępne w opis — styl tytułu długie tytułów. | 
-| 2 | Jednostki SKU | Partner kliknie nowych jednostek SKU| Duplikatów, które mają być już dostępne w opis — styl tytułu długie tytułów.  |  |
+| 2 | Jednostki SKU | Partner kliknie nowych jednostek SKU| Duplikatów, które mają być już dostępne w opis — styl tytułu długie tytułów.  |
 | 3 | Artefakty portalu Marketplace | Logo wyświetlane nieprawidłowo |<br>• Logo obejmuje "hero obraz" duże format obrazu w witrynie Azure Portal <br>• Logo: Mała liczba godzin (48 x 48) i Large (216 x 216) znajdują się wymagania <br>Wymagania dotyczące obrazu Hero •: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>Zrzut ekranu • (maks. 5):  CPP wymaga obraz PNG o rozdzielczości 1280 x 720.|
 | 4 | Zarządzanie potencjalnymi klientami |<br>• Zarządzanie potencjalnych klientów: Wybierz system przechowywania potencjalnymi klientami. <br>• Dowiedz się, jak połączyć systemu CRM [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) | |
 
 ----
 
 ## <a name="consulting-offer-requirements"></a>Usługi doradcze wymagania oferty
+
 |  | Element listy | Wymagania dotyczące podstawowej | Optymalne wymagania |
 |:--- |:--- |:--- |:--- |
 | 1 | Tytuł oferty  |  <br>• Musi wyraźnie listy Typ usługi i czasu trwania w następującym formacie: NAZWA: TYP CZASU TRWANIA. (czyli "oferty usługi Engagement: 1 tydzień z koncepcji")  | <br>• Nie powtarza nazwa wydawcy <br>• Odzwierciedla stylu tytułu już dostępne w opisie — nie chcesz długich tytułów. | 

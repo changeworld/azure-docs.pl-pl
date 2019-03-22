@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 3240878507249d22a8d791ced9332878907a818c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543087"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57873795"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor
 
@@ -47,29 +47,29 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
 1. Zdefiniuj warunek alertu przy użyciu **wybierz zasób** łącze i określenie docelowej wybierz zasób. Filtr, wybierając _subskrypcji_, _typ zasobu_oraz wymagane _zasobów_.
 
-    >[!NOTE]
-
-    > Do tworzenia dziennika alertów — weryfikowanie **dziennika** sygnał jest dostępna dla wybranego zasobu, przed kontynuowaniem.
-    ![Wybierz zasób](media/alerts-log/Alert-SelectResourceLog.png)
+   > [!NOTE]
+   > 
+   > Do tworzenia dziennika alertów — weryfikowanie **dziennika** sygnał jest dostępna dla wybranego zasobu, przed kontynuowaniem.
+   >  ![Wybierz zasób](media/alerts-log/Alert-SelectResourceLog.png)
 
 1. *Alerty dzienników*: Upewnij się, **typ zasobu** jest źródłem analizy, takie jak *usługi Log Analytics* lub *usługi Application Insights* i sygnałów typ jako **dziennika**, niż raz odpowiednie **zasobów** jest wybrana, kliknij przycisk *gotowe*. Dalej używać **Dodaj kryteria** przycisk, aby wyświetlić listę sygnałów dostępnymi dla zasobu, a z listy sygnału **przeszukiwania dzienników niestandardowych** opcję dla wybranego dziennika usługi monitor, takich jak *dziennika Analiza* lub *usługi Application Insights*.
 
    ![Wybierz zasób — wyszukiwanie dzienników niestandardowych](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
-
+   > 
    > Listy można zaimportować zapytania usługi analytics jako typ sygnału — alerty **dziennika (zapisane zapytanie)**, jak pokazano powyżej ilustracji. Dzięki temu użytkownicy może zapytania w usłudze Analytics udoskonalania i zapisać je do użytku w przyszłości w alertach — więcej szczegółowych informacji na temat korzystania z Zapisywanie zapytań dostępne pod adresem [przy użyciu przeszukiwania dzienników w usłudze log analytics](../../azure-monitor/log-query/log-query-overview.md) lub [udostępnionego zapytania w usłudze application insights Analiza](../../azure-monitor/log-query/log-query-overview.md).
 
 1. *Alerty dzienników*: Po wybraniu zapytania dotyczące alertów może być wyrażona w **zapytania wyszukiwania** pola; Jeśli składnia zapytania jest nieprawidłowa, pola są wyświetlane w kolorze CZERWONYM błędu. Jeśli składnia zapytania jest poprawna, — do użytku w danych historycznych w określonej kwerendy jest wyświetlany jako wykres z opcją, aby dostosować okno czasowe z ostatnich sześciu godzin do ostatniego tygodnia.
 
     ![Konfigurowanie reguły alertu](media/alerts-log/AlertsPreviewAlertLog.png)
 
-    > [!NOTE]
-    
-    > Wizualizacja danych historycznych mogą być wyświetlane tylko jeśli wyniki zapytania mają szczegóły godziny. Jeśli zapytanie powoduje podsumowane dane lub wartości określonej kolumny — sama jest wyświetlany jako pojedynczej powierzchni.
-    > Pomiar metryki typu alertów dzienników za pomocą usługi Application Insights lub [przełączona do nowego interfejsu API](alerts-log-api-switch.md), można określić, które określonej zmiennej, aby pogrupować dane przy użyciu **agregowane na** opcji; zgodnie z opisami w poniżej:
-    >
-    > ![Agreguj według opcji](media/alerts-log/aggregate-on.png)
+   > [!NOTE]
+   > 
+   > Wizualizacja danych historycznych mogą być wyświetlane tylko jeśli wyniki zapytania mają szczegóły godziny. Jeśli zapytanie powoduje podsumowane dane lub wartości określonej kolumny — sama jest wyświetlany jako pojedynczej powierzchni.
+   > Pomiar metryki typu alertów dzienników za pomocą usługi Application Insights lub [przełączona do nowego interfejsu API](alerts-log-api-switch.md), można określić, które określonej zmiennej, aby pogrupować dane przy użyciu **agregowane na** opcji; zgodnie z opisami w poniżej:
+   > 
+   > ![Agreguj według opcji](media/alerts-log/aggregate-on.png)
 
 1. *Alerty dzienników*: Za pomocą wizualizacji w miejscu **Alert Logic** można wybrać opcje pokazano warunku, agregacji i na koniec próg. Wskaż w logice, czas oceny pod kątem określonego warunku, przy użyciu **okres** opcji. Wraz z częstotliwość uruchamiania alertu, wybierając **częstotliwość**. **Alerty dzienników** może opierać się na:
     - [Liczba rekordów](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Alert jest tworzony, jeśli liczba rekordów zwróconych przez zapytanie jest większa lub mniejsza niż podana wartość.
@@ -102,9 +102,9 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
 1. Jeśli wszystkie pola są prawidłowe i za pomocą znaczników zielony **Utwórz regułę alertu** kliknięcie przycisku, a alert jest tworzony w usłudze Azure Monitor — alerty. Wszystkie alerty mogą być wyświetlane z alerty pulpitu nawigacyjnego.
 
-    ![Tworzenie reguł](media/alerts-log/AlertsPreviewCreate.png)
+     ![Tworzenie reguł](media/alerts-log/AlertsPreviewCreate.png)
 
-    W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
+     W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
 
 Użytkownicy mogą również zakończona ich zapytania usługi analytics w [dziennika analizy](../log-query/portals.md) i Wypchnij go do utworzenia alertu, klikając przycisk "Ustaw Alert" - następnie postępując zgodnie z instrukcjami krok 6 lub nowszym w tym samouczku powyżej.
 
@@ -318,7 +318,7 @@ Usługa Azure Monitor — zaplanowane reguł zapytań interfejsu API] (https://d
 > [!NOTE]
 > Alerty dzienników usługi Log Analytics mogą być także zarządzane przy użyciu starszej wersji [interfejsu API Log Analytics alertu](../../azure-monitor/platform/api-alerts.md) i starszej wersji szablony z [usługi Log Analytics zapisane wyszukiwania i alerty](../../azure-monitor/insights/solutions-resources-searches-alerts.md) także. Aby uzyskać więcej informacji na temat korzystania z nowego interfejsu API ScheduledQueryRules przedstawione w tym miejscu domyślnie, zobacz [przełączyć się do nowego interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
 
-Alerty dzienników obecnie nie masz dedykowanych poleceń programu PowerShell lub interfejsu wiersza polecenia obecnie; ale jak przedstawiono poniżej może służyć za pomocą polecenia cmdlet programu PowerShell usługi Resource Manager platformy Azure w przykładzie przedstawionym wcześniej szablon zasobu (sampleScheduledQueryRule.json) w [sekcji zasobów szablonu](#azure-resource-template-for-application-insights) :
+Alerty dzienników obecnie nie masz dedykowanych poleceń programu PowerShell lub interfejsu wiersza polecenia obecnie; ale jak przedstawiono poniżej może służyć za pomocą polecenia cmdlet programu PowerShell usługi Resource Manager platformy Azure w przykładzie przedstawionym wcześniej szablon zasobu (sampleScheduledQueryRule.json) w sekcji zasobów szablonu:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"

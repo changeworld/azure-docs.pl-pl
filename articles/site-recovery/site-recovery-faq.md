@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/3/2019
 ms.author: mayg
-ms.openlocfilehash: c63a5205f58d014d06b79b075b3d3d9328502e48
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: MT
+ms.openlocfilehash: 1abd18e294ef73e989191d189ea599bca2b4d903
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881082"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Usługa Azure Site Recovery: często zadawane pytania (FAQ)
 Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Site Recovery. Jeśli masz pytania dotyczące po przeczytaniu tego artykułu, opublikuj je na [Forum usług odzyskiwania Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -119,10 +119,10 @@ Potrzebny jest magazyn LRS lub GRS. Zalecamy użycie konta GRS, dzięki czemu da
 * **Maszyny wirtualne platformy Azure, VMware i serwery fizyczne:** Częstotliwość replikacji nie jest tutaj istotna. Replikacja jest ciągły.
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Czy mogę rozszerzyć replikację z istniejącej lokacji odzyskiwania do innej lokacji trzeciorzędna
-Replikacja rozszerzona lub łańcuchowa nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+Replikacja rozszerzona lub łańcuchowa nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-replication-the-first-time-i-replicate-to-azure"></a>Czy mogę przeprowadzić replikację w trybie offline podczas pierwszej replikacji do platformy Azure?
-Ta funkcja nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Ta funkcja nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-specific-disks-from-replication"></a>Czy z replikacji można wykluczyć określone dyski?
 Jest to obsługiwane w przypadku replikacji maszyn wirtualnych funkcji Hyper-V i maszyn wirtualnych VMware na platformę Azure przy użyciu witryny Azure portal.

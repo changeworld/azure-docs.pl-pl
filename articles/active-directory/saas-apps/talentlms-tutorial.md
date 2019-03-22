@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b5c4779605922bf6d523a9bc6e65e4d9a27f32a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fa78ec2b5623dfd010a8fe5709916a47e221a9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą TalentLMS
 
@@ -215,11 +215,11 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do TalentLMS, musi 
    
     ![Dodawanie użytkownika](./media/talentlms-tutorial/IC777299.png "Dodawanie użytkownika")  
 
-    a. W **imię** polu tekstowym Wprowadź imię użytkownika, takich jak **Britta**.
+    a. W polu tekstowym **First name (Imię)** wprowadź imię użytkownika, na przykład **Britta**.
 
-    b. W **nazwisko** polu tekstowym Wprowadź nazwisko użytkownika, takich jak **Simon**.
+    b. W polu tekstowym **Last name (Nazwisko)** wprowadź nazwisko użytkownika, na przykład **Simon**.
  
-    c. W **adres E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
+    c. W **adres E-mail** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     d. Kliknij pozycję **Add User** (Dodaj użytkownika).
 
@@ -265,7 +265,7 @@ Po kliknięciu kafelka TalentLMS w panelu dostępu, użytkownik powinien uzyska�
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

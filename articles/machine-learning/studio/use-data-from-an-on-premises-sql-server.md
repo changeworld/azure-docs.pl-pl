@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 77e8a951d806d93eb2a0a59152ec8388e2a6397b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818616"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888352"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Przeprowadzanie analiz przy użyciu usługi Azure Machine Learning Studio korzystania z bazy danych programu SQL Server w środowisku lokalnym
 
@@ -54,7 +54,7 @@ Rozważ następujące opcje podczas konfigurowania i używania danych fabryki w�
 * Możesz skonfigurować IRs dla tylko jednego obszaru roboczego w danym momencie. Obecnie IRs nie można udostępnić w obszarach roboczych.
 * Można skonfigurować wiele IRs dla jednego obszaru roboczego. Na przykład można użyć środowiska IR, który jest połączony ze źródłami danych testowych podczas rozwoju i produkcji IR, gdy wszystko będzie gotowe do obsługi operacji.
 * Środowisko IR nie musi znajdować się na tym samym komputerze co źródło danych. Jednak dokonywanie aktualizacji na bliżej źródła danych skraca czas dla bramy do połączenia ze źródłem danych. Firma Microsoft zaleca instalowanie środowiska IR na komputerze, który jest inny niż ten, który jest hostem lokalnym źródłem danych, aby bramy i źródła danych nie konkurują o zasoby.
-* Jeśli masz już IR, zainstalowana na danym komputerze obsługująca scenariusze usługi Power BI lub usługi Azure Data Factory, należy zainstalować oddzielne środowiska IR Azure Machine Learning Studio na innym komputerze.
+* Jeśli masz już środowisko IR zainstalowana na danym komputerze obsługująca scenariusze usługi Power BI lub usługi Azure Data Factory, należy zainstalować oddzielne środowiska IR Azure Machine Learning Studio na innym komputerze.
 
   > [!NOTE]
   > Nie można uruchomić produktu Integration Runtime usługi Data Factory i Power BI Gateway, w tym samym komputerze.

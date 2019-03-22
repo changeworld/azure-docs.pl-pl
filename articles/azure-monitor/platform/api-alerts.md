@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 61dd4930d7c34b30a4cedb34a4d815aa553d001e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 31d9e2170461b9c4023bfe6b3e01fb1d7dda7fee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697690"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895893"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST
 Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w usłudze Log Analytics.  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
@@ -101,7 +101,7 @@ Wszystkie działania mają właściwości podane w poniższej tabeli.  Różne t
 ### <a name="retrieving-actions"></a>Pobieranie akcji
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Aby pobrać wszystkie akcje w przypadku harmonogramu, należy użyć metody Get.
 
@@ -124,7 +124,7 @@ Format żądania do tworzenia nowej akcji zależy od typu akcji, dzięki czemu t
 ### <a name="deleting-actions"></a>Usuwanie akcji
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Za pomocą metody Delete ID akcji można usunąć danej akcji.
 
@@ -145,7 +145,7 @@ Harmonogram powinien mieć jeden i tylko jeden Akcja alertu.  Akcje alertu mają
 | Akcje elementu Webhook | Wypychanie danych z alertami, do żądanej usługi w formacie JSON |Nie jest to wymagane, jeśli alerty zostały rozszerzone na platformę Azure|
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md).
 
 #### <a name="thresholds"></a>Progi
 Akcji alertu powinna mieć tylko jedną wartość progową.  Gdy wyniki zapisanego kryterium wyszukiwania są zgodne próg w akcji skojarzonej z tym wyszukiwaniem, są uruchamiane inne procesy, w tym działaniu.  Akcji może również zawierać tylko wartości progowej, dzięki czemu można z działaniami innych typów, które nie zawierają wartości progowe.
@@ -354,7 +354,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akc
 Powiadomienia e-mail Wyślij wiadomości e-mail do co najmniej jednego adresata.  Obejmują one właściwości w poniższej tabeli.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcji, takich jak powiadomienia E-Mail są teraz kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcji, takich jak powiadomienia E-Mail są teraz kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
    
 
 | Właściwość | Opis |
@@ -398,7 +398,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcji poc
 Korygowania funkcję uruchamiania elementu runbook w usłudze Azure Automation, która podejmuje próbę rozwiązania problemu wskazanego przez alert.  Należy utworzyć element webhook dla elementu runbook użytego w akcje naprawcze, a następnie określ identyfikator URI, we właściwości WebhookUri.  Po utworzeniu tej akcji, używając witryny Azure portal, nowy element webhook jest tworzony automatycznie dla elementu runbook.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje, takie jak korygowania, korzystając z elementu runbook są teraz kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje, takie jak korygowania, korzystając z elementu runbook są teraz kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Korygowania funkcję obejmują właściwości w poniższej tabeli.
 
@@ -457,7 +457,7 @@ Poniżej znajduje się pełny przykład można utworzyć nowego alertu wiadomoś
 Akcje elementu Webhook Uruchom proces, przez wywołanie adresu URL i opcjonalnie podania ładunku do wysłania.  Są one podobne do akcji korygowania, z wyjątkiem są przeznaczone dla elementów webhook, które może wywoływać procesy inne niż elementów runbook usługi Azure Automation.  Zapewniają także dodatkowe opcji związanych z udostępnianiem ładunek został dostarczony do zdalnego procesu.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 r. wszystkie alerty w przypadku chmury publicznej platformy Azure, obszaru roboczego usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje, takie jak element Webhook teraz są kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics zostaną automatycznie rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z usługą Log Analytics](../../azure-monitor/platform/alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje, takie jak element Webhook teraz są kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 
 Akcje elementu Webhook nie mają wartości progowej, ale zamiast tego powinny zostać dodane do harmonogram, który ma akcji alertu o progu.  

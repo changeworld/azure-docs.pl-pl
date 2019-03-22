@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 133905c86bc6afdb46756005bfd38425338b6367
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: cf89d814d6d46482c54d6991ba16b3050b882d05
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435791"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993993"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Kierowanie ruchu internetowego na podstawie adresu URL za pomocą programu Azure PowerShell
 
@@ -36,9 +36,11 @@ Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza p
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 3.6 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie ` Get-Module -ListAvailable AzureRM`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli zdecydujesz się zainstalować i korzystać z programu PowerShell lokalnie, ten samouczek wymaga programu Azure PowerShell w wersji modułu 1.0.0 lub nowszym. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie ` Get-Module -ListAvailable Az`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 Ze względu na czas potrzebny na utworzenie zasobów, ukończenie tego samouczka może zająć do 90 minut.
 
@@ -46,34 +48,34 @@ Ze względu na czas potrzebny na utworzenie zasobów, ukończenie tego samouczka
 
 Należy utworzyć grupę zasobów zawierającą wszystkie zasoby aplikacji. 
 
-Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).  
+Utwórz grupę zasobów platformy Azure za pomocą [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).  
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
+New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 
 Niezależnie od tego, czy masz istniejącą sieć wirtualną, czy tworzysz nową, musisz upewnić się, że zawiera ona podsieć używaną wyłącznie na potrzeby bram aplikacji. W ramach pracy z tym samouczkiem utworzysz podsieci dla bramy aplikacji i dla zestawów skalowania. Utworzysz publiczny adres IP, aby umożliwić dostęp do zasobów przy użyciu bramy aplikacji.
 
-Utwórz konfiguracje podsieci o nazwie *myAGSubnet* i *myBackendSubnet* za pomocą polecenia [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Utwórz sieć wirtualną o nazwie *myVNet*, używając polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) z konfiguracjami podsieci. Na koniec utwórz publiczny adres IP o nazwie *myAGPublicIPAddress*, korzystając z polecenia [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Te zasoby służą do zapewniania łączności sieciowej z bramą aplikacji i skojarzonymi z nią zasobami.
+Utwórz konfiguracje podsieci *myAGSubnet* i *myBackendSubnet* przy użyciu [New AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Utwórz sieć wirtualną o nazwie *myVNet* przy użyciu [New AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) za pomocą konfiguracji podsieci. A na koniec Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu [New AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Te zasoby służą do zapewniania łączności sieciowej z bramą aplikacji i skojarzonymi z nią zasobami.
 
 ```azurepowershell-interactive
-$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
   -AddressPrefix 10.0.1.0/24
 
-$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myAGSubnet `
   -AddressPrefix 10.0.2.0/24
 
-$vnet = New-AzureRmVirtualNetwork `
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $backendSubnetConfig, $agSubnetConfig
-$pip = New-AzureRmPublicIpAddress `
+$pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
@@ -90,41 +92,41 @@ W tej części utworzysz zasoby, które obsługują bramę aplikacji, a na konie
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Tworzenie konfiguracji adresów IP i portu frontonu
 
-Skojarz wcześniej utworzoną podsieć *myAGSubnet* z bramą aplikacji za pomocą polecenia [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Przypisz adres *myAGPublicIPAddress* do bramy aplikacji przy użyciu polecenia [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig).
+Skojarz *myAGSubnet* wcześniej utworzony do bramy aplikacji przy użyciu [New AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Przypisz *myAGPublicIPAddress* do bramy aplikacji przy użyciu [New AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Name myVNet
 
 $subnet=$vnet.Subnets[0]
 
-$pip = Get-AzureRmPublicIpAddress `
+$pip = Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Name myAGPublicIPAddress
 
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
+$gipconfig = New-AzApplicationGatewayIPConfiguration `
   -Name myAGIPConfig `
   -Subnet $subnet
 
-$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig `
+$fipconfig = New-AzApplicationGatewayFrontendIPConfig `
   -Name myAGFrontendIPConfig `
   -PublicIPAddress $pip
 
-$frontendport = New-AzureRmApplicationGatewayFrontendPort `
+$frontendport = New-AzApplicationGatewayFrontendPort `
   -Name myFrontendPort `
   -Port 80
 ```
 
 ### <a name="create-the-default-pool-and-settings"></a>Tworzenie puli domyślnej i ustawień
 
-Utwórz domyślną pulę zaplecza o nazwie *appGatewayBackendPool* dla bramy aplikacji przy użyciu polecenia [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli zaplecza przy użyciu polecenia [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
+Utwórz domyślną pulę zaplecza o nazwie *appGatewayBackendPool* dla bramy aplikacji przy użyciu [New AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli zaplecza za pomocą [New AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsettings).
 
 ```azurepowershell-interactive
-$defaultPool = New-AzureRmApplicationGatewayBackendAddressPool `
+$defaultPool = New-AzApplicationGatewayBackendAddressPool `
   -Name appGatewayBackendPool
 
-$poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
+$poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -Name myPoolSettings `
   -Port 80 `
   -Protocol Http `
@@ -136,18 +138,18 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
 
 Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki. Pierwszy, podstawowy odbiornik, który utworzysz, nasłuchuje ruchu pod głównym adresem URL. Drugi odbiornik, który utworzysz, nasłuchuje ruchu pod innymi określonymi adresami URL.
 
-Utwórz odbiornik domyślny o nazwie *mydefaultListener* przy użyciu polecenia [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener), stosując wcześniej utworzone konfiguracje i port frontonu. 
+Utwórz odbiornik domyślnego o nazwie *myDefaultListener* przy użyciu [New AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) z konfiguracji frontonu i port frontonu, która została wcześniej utworzona. 
 
-Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Utwórz regułę podstawową o nazwie *rule1* przy użyciu polecenia [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule).
+Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Utwórz podstawową regułę o nazwie *rule1* przy użyciu [New AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
-$defaultlistener = New-AzureRmApplicationGatewayHttpListener `
+$defaultlistener = New-AzApplicationGatewayHttpListener `
   -Name myDefaultListener `
   -Protocol Http `
   -FrontendIPConfiguration $fipconfig `
   -FrontendPort $frontendport
 
-$frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+$frontendRule = New-AzApplicationGatewayRequestRoutingRule `
   -Name rule1 `
   -RuleType Basic `
   -HttpListener $defaultlistener `
@@ -157,15 +159,15 @@ $frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Teraz, po utworzeniu niezbędnych zasobów pomocniczych, określ parametry bramy aplikacji o nazwie *myAppGateway* przy użyciu polecenia [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku), a następnie utwórz tę bramę aplikacji za pomocą polecenia [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
+Teraz, gdy utworzono niezbędne zasoby pomocnicze, należy określić parametry dla bramy aplikacji o nazwie *myAppGateway* przy użyciu [New AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku), a następnie utwórz ją za pomocą [Nowe AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
 
 ```azurepowershell-interactive
-$sku = New-AzureRmApplicationGatewaySku `
+$sku = New-AzApplicationGatewaySku `
   -Name Standard_Medium `
   -Tier Standard `
   -Capacity 2
 
-$appgw = New-AzureRmApplicationGateway `
+$appgw = New-AzApplicationGateway `
   -Name myAppGateway `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
@@ -183,129 +185,129 @@ Tworzenie bramy aplikacji może potrwać do 30 minut. Zanim przejdziesz do nast�
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Dodawanie pul zaplecza i portu na potrzeby obsługi obrazów i wideo
 
-Dodaj pule zaplecza o nazwach *imagesBackendPool* i *videoBackendPool* do bramy aplikacji, używając polecenia [Add-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/add-azurermapplicationgatewaybackendaddresspool). Dodaj port frontonu dla tych pul, używając polecenia [Add-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/add-azurermapplicationgatewayfrontendport). Prześlij zmiany do bramy aplikacji za pomocą polecenia [Set-AzureRmApplicationGateway](/powershell/module/azurerm.network/set-azurermapplicationgateway).
+Dodawanie pul zaplecza o nazwie *imagesBackendPool* i *videoBackendPool* do Twojej bramy application gateway[AzApplicationGatewayBackendAddressPool Dodaj](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Dodaj port frontonu dla pul baz danych przy użyciu [AzApplicationGatewayFrontendPort Dodaj](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Przesyłanie zmian do bramy aplikacji przy użyciu [AzApplicationGateway zestaw](/powershell/module/az.network/set-azapplicationgateway).
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-Add-AzureRmApplicationGatewayBackendAddressPool `
+Add-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name imagesBackendPool
 
-Add-AzureRmApplicationGatewayBackendAddressPool `
+Add-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name videoBackendPool
 
-Add-AzureRmApplicationGatewayFrontendPort `
+Add-AzApplicationGatewayFrontendPort `
   -ApplicationGateway $appgw `
   -Name bport `
   -Port 8080
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 Aktualizowanie bramy aplikacji również może potrwać do 20 minut.
 
 ### <a name="add-backend-listener"></a>Dodawanie odbiornika zaplecza
 
-Dodaj odbiornik zaplecza o nazwie *backendListener*, wymagany do kierowania ruchu, używając polecenia [Add-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/add-azurermapplicationgatewayhttplistener).
+Dodawanie odbiornika wewnętrznej bazy danych o nazwie *backendListener* , potrzebne do kierowania ruchu przy użyciu [AzApplicationGatewayHttpListener Dodaj](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$backendPort = Get-AzureRmApplicationGatewayFrontendPort `
+$backendPort = Get-AzApplicationGatewayFrontendPort `
   -ApplicationGateway $appgw `
   -Name bport
 
-$fipconfig = Get-AzureRmApplicationGatewayFrontendIPConfig `
+$fipconfig = Get-AzApplicationGatewayFrontendIPConfig `
   -ApplicationGateway $appgw
 
-Add-AzureRmApplicationGatewayHttpListener `
+Add-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw `
   -Name backendListener `
   -Protocol Http `
   -FrontendIPConfiguration $fipconfig `
   -FrontendPort $backendPort
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ### <a name="add-url-path-map"></a>Dodawanie mapy ścieżek URL
 
-Mapy ścieżek URL zapewniają kierowanie adresów URL wysyłanych do aplikacji do określonych pul zaplecza. Utwórz mapy ścieżek URL o nazwach *imagePathRule* i *videoPathRule* za pomocą poleceń [New-AzureRmApplicationGatewayPathRuleConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewaypathruleconfig) i [Add-AzureRmApplicationGatewayUrlPathMapConfig](/powershell/module/azurerm.network/add-azurermapplicationgatewayurlpathmapconfig).
+Mapy ścieżek URL zapewniają kierowanie adresów URL wysyłanych do aplikacji do określonych pul zaplecza. Utwórz adres URL mapy ścieżek o nazwie *imagePathRule* i *videoPathRule* przy użyciu [New AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) i [ Dodaj AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig).
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$poolSettings = Get-AzureRmApplicationGatewayBackendHttpSettings `
+$poolSettings = Get-AzApplicationGatewayBackendHttpSettings `
   -ApplicationGateway $appgw `
   -Name myPoolSettings
 
-$imagePool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$imagePool = Get-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name imagesBackendPool
 
-$videoPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$videoPool = Get-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name videoBackendPool
 
-$defaultPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$defaultPool = Get-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name appGatewayBackendPool
 
-$imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig `
+$imagePathRule = New-AzApplicationGatewayPathRuleConfig `
   -Name imagePathRule `
   -Paths "/images/*" `
   -BackendAddressPool $imagePool `
   -BackendHttpSettings $poolSettings
 
-$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig `
+$videoPathRule = New-AzApplicationGatewayPathRuleConfig `
   -Name videoPathRule `
     -Paths "/video/*" `
     -BackendAddressPool $videoPool `
     -BackendHttpSettings $poolSettings
 
-Add-AzureRmApplicationGatewayUrlPathMapConfig `
+Add-AzApplicationGatewayUrlPathMapConfig `
   -ApplicationGateway $appgw `
   -Name urlpathmap `
   -PathRules $imagePathRule, $videoPathRule `
   -DefaultBackendAddressPool $defaultPool `
   -DefaultBackendHttpSettings $poolSettings
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ### <a name="add-routing-rule"></a>Dodawanie reguły routingu
 
-Reguła routingu kojarzy mapę adresów URL z utworzonym odbiornikiem. Dodaj regułę o nazwie *rule2* przy użyciu polecenia [Add-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/add-azurermapplicationgatewayrequestroutingrule).
+Reguła routingu kojarzy mapę adresów URL z utworzonym odbiornikiem. Dodaj regułę o nazwie *reguły rule2* przy użyciu [AzApplicationGatewayRequestRoutingRule Dodaj](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$backendlistener = Get-AzureRmApplicationGatewayHttpListener `
+$backendlistener = Get-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw `
   -Name backendListener
 
-$urlPathMap = Get-AzureRmApplicationGatewayUrlPathMapConfig `
+$urlPathMap = Get-AzApplicationGatewayUrlPathMapConfig `
   -ApplicationGateway $appgw `
   -Name urlpathmap
 
-Add-AzureRmApplicationGatewayRequestRoutingRule `
+Add-AzApplicationGatewayRequestRoutingRule `
   -ApplicationGateway $appgw `
   -Name rule2 `
   -RuleType PathBasedRouting `
   -HttpListener $backendlistener `
   -UrlPathMap $urlPathMap
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ## <a name="create-virtual-machine-scale-sets"></a>Tworzenie zestawów skalowania maszyn wirtualnych
@@ -313,23 +315,23 @@ Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 W tym przykładzie utworzysz trzy zestawy skalowania maszyn wirtualnych do obsługi trzech utworzonych pul zaplecza. Utworzone zestawy skalowania będą miały nazwy *myvmss1*, *myvmss2* i *myvmss3*. Zestaw skalowania przypisuje się do puli zaplecza podczas konfigurowania ustawień adresu IP.
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Name myVNet
 
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$backendPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$backendPool = Get-AzApplicationGatewayBackendAddressPool `
   -Name appGatewayBackendPool `
   -ApplicationGateway $appgw
 
-$imagesPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$imagesPool = Get-AzApplicationGatewayBackendAddressPool `
   -Name imagesBackendPool `
   -ApplicationGateway $appgw
 
-$videoPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$videoPool = Get-AzApplicationGatewayBackendAddressPool `
   -Name videoBackendPool `
   -ApplicationGateway $appgw
 
@@ -348,36 +350,36 @@ for ($i=1; $i -le 3; $i++)
     $poolId = $videoPool.Id
   }
 
-  $ipConfig = New-AzureRmVmssIpConfig `
+  $ipConfig = New-AzVmssIpConfig `
     -Name myVmssIPConfig$i `
     -SubnetId $vnet.Subnets[1].Id `
     -ApplicationGatewayBackendAddressPoolsId $poolId
 
-  $vmssConfig = New-AzureRmVmssConfig `
+  $vmssConfig = New-AzVmssConfig `
     -Location eastus `
     -SkuCapacity 2 `
     -SkuName Standard_DS2 `
     -UpgradePolicyMode Automatic
 
-  Set-AzureRmVmssStorageProfile $vmssConfig `
+  Set-AzVmssStorageProfile $vmssConfig `
     -ImageReferencePublisher MicrosoftWindowsServer `
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
     -ImageReferenceVersion latest
     -OsDiskCreateOption FromImage
 
-  Set-AzureRmVmssOsProfile $vmssConfig `
+  Set-AzVmssOsProfile $vmssConfig `
     -AdminUsername azureuser `
     -AdminPassword "Azure123456!" `
     -ComputerNamePrefix myvmss$i
 
-  Add-AzureRmVmssNetworkInterfaceConfiguration `
+  Add-AzVmssNetworkInterfaceConfiguration `
     -VirtualMachineScaleSet $vmssConfig `
     -Name myVmssNetConfig$i `
     -Primary $true `
     -IPConfiguration $ipConfig
 
-  New-AzureRmVmss `
+  New-AzVmss `
     -ResourceGroupName myResourceGroupAG `
     -Name myvmss$i `
     -VirtualMachineScaleSet $vmssConfig
@@ -394,15 +396,15 @@ $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azu
 
 for ($i=1; $i -le 3; $i++)
 {
-  $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss$i
-  Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+  $vmss = Get-AzVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss$i
+  Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
     -Name "customScript" `
     -Publisher "Microsoft.Compute" `
     -Type "CustomScriptExtension" `
     -TypeHandlerVersion 1.8 `
     -Setting $publicSettings
 
-  Update-AzureRmVmss `
+  Update-AzVmss `
     -ResourceGroupName myResourceGroupAG `
     -Name myvmss$i `
     -VirtualMachineScaleSet $vmss
@@ -411,10 +413,10 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, użyj polecenia [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Na przykład *http://52.168.55.24*, *http://52.168.55.24:8080/images/test.htm* lub *http://52.168.55.24:8080/video/test.htm*.
+Użyj [Get AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) na publiczny adres IP bramy aplikacji. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Takie jak `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`, lub `http://52.168.55.24:8080/video/test.htm`.
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
+Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
@@ -429,13 +431,13 @@ Zmień adres URL na http://&lt;adres-ip&gt;:8080/video/test.htm, zamieniając ci
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów, brama aplikacji i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Gdy nie jest już potrzebny, Usuń grupę zasobów, usługa application gateway i wszystkie pokrewne zasoby za pomocą [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup).
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroupAG
+Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

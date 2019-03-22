@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: fa0edaaa3ee785f89faceb51419d360752bb9825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53636007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051906"
 ---
 Agent usługi Azure File Sync jest aktualizowana w regularnych odstępach czasu, aby dodać nowe funkcje i rozwiązania problemów. Firma Microsoft zaleca się skonfigurowanie Microsoft Update, aby pobrać aktualizacje dla agenta usługi Azure File Sync, ponieważ są one dostępne.
 
 #### <a name="major-vs-minor-agent-versions"></a>Główne a wersji pomocniczej agentów
-* Wersje główne agentów często zawierają nowe funkcje i mieć coraz jako pierwsza część numeru wersji. Na przykład: *2.\*.\**
-* Wersje agentów pomocnicze są również nazywane "poprawki" i są wydawane częściej niż wersje główne. Zawierają one często poprawki błędów i ulepszenia mniejszy, ale żadne nowe funkcje. Na przykład:  *\*.3.\**
+* Wersje główne agentów często zawierają nowe funkcje i mieć coraz jako pierwsza część numeru wersji. Na przykład: \*2.\*.\*\*
+* Wersje agentów pomocnicze są również nazywane "poprawki" i są wydawane częściej niż wersje główne. Zawierają one często poprawki błędów i ulepszenia mniejszy, ale żadne nowe funkcje. Na przykład: \* \*.3.\*\*
 
 #### <a name="upgrade-paths"></a>Ścieżki uaktualnienia
 Istnieją cztery zatwierdzone i przetestowane sposobów instalowania aktualizacji agenta usługi Azure File Sync. 

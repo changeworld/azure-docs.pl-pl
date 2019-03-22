@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 6288a976547cc405c804eaeca9b83e9dccc72240
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: cf03872607546f38d19a280f65f641abf627268b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092240"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857729"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher przy użyciu wiersza polecenia platformy Azure
 
@@ -226,7 +226,7 @@ az network watcher packet-capture delete --name packetCaptureName --location wes
 
 ## <a name="download-a-packet-capture"></a>Pobierz przechwytywania pakietów
 
-Po zakończeniu sesji przechwytywania pakietów pliku przechwytywania można przekazać do magazynu obiektów blob lub do pliku lokalnego na maszynie Wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest zdefiniowany podczas tworzenia sesji. Wygodne narzędzie do nich dostęp pliki przechwytywania zapisane na koncie magazynu jest Microsoft Azure Storage Explorer, który można pobrać tutaj:  http://storageexplorer.com/
+Po zakończeniu sesji przechwytywania pakietów pliku przechwytywania można przekazać do magazynu obiektów blob lub do pliku lokalnego na maszynie Wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest zdefiniowany podczas tworzenia sesji. Wygodne narzędzie do nich dostęp pliki przechwytywania zapisane na koncie magazynu jest Microsoft Azure Storage Explorer, który można pobrać tutaj:  https://storageexplorer.com/
 
 Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane na koncie magazynu w następującej lokalizacji:
 

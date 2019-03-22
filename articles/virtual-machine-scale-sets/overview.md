@@ -16,12 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: manayar
-ms.openlocfilehash: 5cd9593bba1e97f52bfa37467920959b1ef0f698
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 1ace0ddd3b29f844488eb7579934541fa8273fa0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329617"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199906"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co to są zestawy skalowania maszyn wirtualnych?
 Zestawy skalowania maszyn wirtualnych platformy Azure pozwalają utworzyć grupę identycznych, mających zrównoważone obciążenie maszyn wirtualnych i zarządzać nimi. Liczba wystąpień maszyn wirtualnych może automatycznie zwiększać lub zmniejszać się w reakcji na zapotrzebowanie lub zdefiniowany harmonogram. Zestawy skalowania zapewniają wysoką dostępność Twoim aplikacjom i pozwalają na centralnie zarządzanie, konfigurowanie i aktualizowanie dużej liczby maszyn wirtualnych. Za pomocą zestawów skalowania maszyn wirtualnych możesz tworzyć usługi na dużą skalę dla takich obszarów jak obliczenia, dane big data i obciążenia kontenera.
@@ -46,7 +46,7 @@ Zestawy skalowania maszyn wirtualnych platformy Azure zapewniają możliwości z
     - Funkcja automatycznego skalowania minimalizuje również liczbę niepotrzebnych wystąpień maszyn wirtualnych, na których jest uruchomiona Twoja aplikacja, gdy zapotrzebowanie jest niskie, przy czym klienci nadal mają zapewniony akceptowalny poziom wydajności w miarę wzrostu zapotrzebowania, a dodatkowe wystąpienia maszyn wirtualnych są automatycznie dodawane. Ta możliwość ułatwia obniżenie kosztów i efektywnie tworzy zasoby platformy Azure zgodnie z potrzebami.
 
 - **Działa na dużą skalę**
-    - Zestaw skalowania obsługuje maksymalnie 1000 wystąpień maszyn wirtualnych. Jeśli utworzysz i przekażesz własne niestandardowe obrazy maszyn wirtualnych, wtedy limit wynosi 300 wystąpień maszyn wirtualnych.
+    - Zestaw skalowania obsługuje maksymalnie 1000 wystąpień maszyn wirtualnych. Jeśli utworzysz i przekazania własnych niestandardowych obrazów maszyn wirtualnych limit wynosi 600 wystąpień maszyn wirtualnych.
     - Aby uzyskać najlepszą wydajność dla obciążeń produkcyjnych, użyj usługi [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
 
@@ -63,7 +63,7 @@ Zestawy skalowania są tworzone z maszyn wirtualnych. Zestawy skalowania udostę
 Używanie zestawów skalowania nie pociąga za sobą dodatkowych kosztów. Płacisz tylko za podstawowe zasoby obliczeniowe, takie jak wystąpienia maszyn wirtualnych, moduł równoważenia obciążenia lub miejsce na dysku zarządzanym. Funkcje zarządzania i automatyzacji, takie jak skalowanie automatyczne i nadmiarowość, nie pociągają za sobą dodatkowych opłat za korzystanie z maszyn wirtualnych.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby rozpocząć, utwórz swój pierwszy zestaw skalowania maszyn wirtualnych w witrynie Azure Portal.
 
 > [!div class="nextstepaction"]

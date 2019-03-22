@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: c7019eac4edc530de5ef64ba9eb32e8e4994e75b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 20f9655e1c3e7cce652802957f5eef1f333870e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245203"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176501"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Może być konieczne Dostosowywanie tych wartości ochładzania. Domyślne warto
 
 ## <a name="cluster-autoscaler"></a>Skalowanie klastra
 
-Aby reagować na zmieniające się potrzeby zasobników, Kubernetes oferuje skalowanie klastra, który dostosowuje liczbę węzłów, w oparciu o żądanej zasobów w puli węzłów obliczeniowych. Skalowanie klastra używa Parametry uruchamiania dla elementów, takich jak przedziałów czasu między imprez i progi zasobów. Jeśli automatyczne skalowanie klastra okaże się, że zmiana jest wymagane, liczbę węzłów w klastrze AKS zwiększania lub zmniejszania odpowiednio. Uruchom klastrów usługi AKS, korzystających z skalowanie klastra na zestawach skalowania maszyn wirtualnych, aby zarządzać skalowania w górę i skalowania w dół zdarzenia węzłów AKS.
+Aby reagować na zmieniające się potrzeby zasobników, Kubernetes ma skalowanie klastra (obecnie dostępna w wersji zapoznawczej w usłudze AKS), która dostosowuje liczbę węzłów na podstawie zasobów żądanego obliczeniowych w puli węzłów. Domyślnie skalowanie klastra umożliwia sprawdzenie serwera interfejsu API co 10 sekund, wymaga zmian w liczby węzłów. Jeśli automatyczne skalowanie klastra okaże się, że zmiana jest wymagane, liczbę węzłów w klastrze AKS zwiększania lub zmniejszania odpowiednio. Skalowanie klastra działa z klastrami usługi AKS z włączoną funkcją RBAC, systemem Kubernetes 1.10.x lub nowszej.
 
 ![Skalowanie klastra usługi Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 
@@ -81,7 +81,7 @@ Szybkie skalowanie klastra usługi AKS, można zintegrować z usługi Azure Cont
 
 ![Skalowanie w usłudze aci Uzyskaj — seria rozwiązania Kubernetes](media/concepts-scale/burst-scaling.png)
 
-ACI umożliwia szybkie wdrażanie wystąpień kontenera bez zwiększania dodatkowej infrastruktury. Po nawiązaniu połączenia za pomocą usługi AKS, ACI staje się zabezpieczonej logiczne rozszerzenie klastra usługi AKS. Składnik rozwiązania Virtual Kubelet jest zainstalowany w klastrze AKS prezentuje ACI jako wirtualnej węzeł rozwiązania Kubernetes. Kubernetes można następnie zaplanować zasobników działających jako wystąpień usługi ACI za pośrednictwem wirtualnych węzłów, a nie jako zasobników w węzłach maszyny Wirtualnej bezpośrednio w klastrze AKS.
+ACI umożliwia szybkie wdrażanie wystąpień kontenera bez zwiększania dodatkowej infrastruktury. Po nawiązaniu połączenia za pomocą usługi AKS, ACI staje się zabezpieczonej logiczne rozszerzenie klastra usługi AKS. Składnik rozwiązania Virtual Kubelet jest zainstalowany w klastrze AKS prezentuje ACI jako wirtualnej węzeł rozwiązania Kubernetes. Kubernetes można następnie zaplanować zasobników działających jako wystąpień usługi ACI za pośrednictwem wirtualnych węzłów, a nie jako zasobników w węzłach maszyny Wirtualnej bezpośrednio w klastrze AKS. Wirtualne węzły są obecnie dostępne w wersji zapoznawczej w usłudze AKS.
 
 Aplikacja nie wymaga żadnych modyfikacji, aby użyć wirtualnych węzłów. Wdrożeń można skalować w usłudze AKS i ACI, i bez opóźnień jako klaster skalowania automatycznego wdrażania nowych węzłów w klastrze AKS.
 

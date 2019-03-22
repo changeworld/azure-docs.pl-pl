@@ -1,19 +1,19 @@
 ---
 title: Zarządzanie ruchem internetowym przy użyciu usługi Azure Application Gateway za pomocą rozwiązania Ansible
 description: Dowiedz się, jak za pomocą rozwiązania Ansible tworzyć i konfigurować bramę usługi Azure Application Gateway do zarządzania ruchem internetowym
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, application gateway, load balancer, web traffic
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: 43e8681e5266f113d466a138abeeda77aff1c18b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 83f21573af7ec523acc376c4b3364cdcfb47f96f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052261"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792144"
 ---
 # <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Zarządzanie ruchem internetowym przy użyciu usługi Azure Application Gateway za pomocą rozwiązania Ansible
 
@@ -287,7 +287,7 @@ Zapisz ten element playbook jako plik *rg_delete.yml*. Aby uruchomić element pl
 ansible-playbook rg_delete.yml
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Rozwiązanie Ansible na platformie Azure](https://docs.microsoft.com/azure/ansible/)

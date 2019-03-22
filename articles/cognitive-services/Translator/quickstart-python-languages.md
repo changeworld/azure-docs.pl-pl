@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 705bc49cef13ae80d648ca59b50021250dede3bd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: e455b0167810c6e08853f3bce665cb6f314eec52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181456"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Szybki start: Uzyskiwanie listy obsługiwanych języków za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator przy użyciu języka Python
 
@@ -95,6 +95,8 @@ python get-languages.py
 Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny w witrynie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
 
 ## <a name="sample-response"></a>Przykładowa odpowiedź
+
+Znajdź skrót kraju, w tym [listę języków](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 Ten przykład został obcięty w celu pokazania fragmentu kodu wyniku:
 
@@ -186,12 +188,12 @@ Ten przykład został obcięty w celu pokazania fragmentu kodu wyniku:
 
 Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby usunąć ten klucz subskrypcji po zakończeniu pracy z przewodnikiem Szybki start.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Poznaj przykłady dla języka Python w usłudze GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 Dowiedz się, jak używać interfejsu API tłumaczenia tekstu w usłudze Translator w następujących celach:
 

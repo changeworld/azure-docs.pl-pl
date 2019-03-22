@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 811d75ec2246199662a25afd6b96b23035444211
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 75c97a7feb63a100d322610b7e6d2e5c57bebda2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889696"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Rozwiązywanie problemów podczas przechodzenia w tryb failover maszyny Wirtualnej VMware lub maszyny fizyczne na platformie Azure
 
@@ -24,7 +24,7 @@ Może pojawić się jeden z następujących błędów podczas wykonywania pracy 
 
 Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualnej platformy Azure. Może się zdarzyć z jednego z następujących powodów:
 
-* Nie ma wystarczającego limitu przydziału, które są dostępne do utworzenia maszyny wirtualnej: Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](http://aka.ms/getazuresupport) Aby zwiększyć limit przydziału.
+* Nie ma wystarczającego limitu przydziału, które są dostępne do utworzenia maszyny wirtualnej: Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](https://aka.ms/getazuresupport) Aby zwiększyć limit przydziału.
 
 * Próbujesz trybu failover maszyny wirtualne rozmiar różnych rodzin w tym samym zestawie dostępności. Upewnij się, wybierz ten sam rodzina rozmiarów dla wszystkich maszyn wirtualnych w tym samym zestawie dostępności. Zmiana rozmiaru, przechodząc do ustawień obliczenia i sieć maszyny wirtualnej, a następnie ponów próbę pracy awaryjnej.
 
@@ -32,7 +32,7 @@ Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualn
 
 ## <a name="failover-failed-with-error-id-28092"></a>Tryb failover nie powiodło się z Identyfikator błędu 28092
 
-Usługa Site Recovery nie mogła utworzyć interfejsu sieciowego dla nieudane przez maszynę wirtualną. Upewnij się, że masz wystarczającego limitu przydziału, które są dostępne w celu utworzenia interfejsów sieciowych w ramach subskrypcji. Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](http://aka.ms/getazuresupport) Aby zwiększyć limit przydziału. Jeśli masz wystarczającego limitu przydziału, a następnie może to być tymczasowy wysyłania, spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występować po ponawianiu prób, pozostaw komentarz na końcu tego dokumentu.  
+Usługa Site Recovery nie mogła utworzyć interfejsu sieciowego dla nieudane przez maszynę wirtualną. Upewnij się, że masz wystarczającego limitu przydziału, które są dostępne w celu utworzenia interfejsów sieciowych w ramach subskrypcji. Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](https://aka.ms/getazuresupport) Aby zwiększyć limit przydziału. Jeśli masz wystarczającego limitu przydziału, a następnie może to być tymczasowy wysyłania, spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występować po ponawianiu prób, pozostaw komentarz na końcu tego dokumentu.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Tryb failover nie powiodło się z Identyfikator błędu 70038
 
@@ -48,7 +48,7 @@ Aby wyświetlić wszystkie maszyny na platformie Azure, w środowisku systemu Az
 
 Aby ręcznie zmienić typ uruchamiania sterowników dla **systemie operacyjnym gościa Windows**, wykonaj poniższe kroki:
 
-1. [Pobierz](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) nie wypełniania skrypt i uruchom go jako zgodny. Ten skrypt sprawdza, czy maszyna wirtualna wymaga wypełniania zasobami.
+1. [Pobierz](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) nie wypełniania skrypt i uruchom go jako zgodny. Ten skrypt sprawdza, czy maszyna wirtualna wymaga wypełniania zasobami.
 
     `.\Script-no-hydration.ps1`
 

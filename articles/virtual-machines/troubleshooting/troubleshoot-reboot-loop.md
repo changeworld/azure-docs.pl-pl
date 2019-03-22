@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 693f28c04be5cd0acf1d5face2630a3f6d62328c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 032bc1b9c4b1b0e3bf8040ed52bf4db65ba7b6c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381091"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085596"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Pętli ponownego uruchamiania Windows na Maszynie wirtualnej platformy Azure
 W tym artykule opisano pętli ponownego uruchamiania, które mogą występować na Windows maszyn wirtualnych (VM) w systemie Microsoft Azure.
@@ -83,9 +83,9 @@ Aby rozwiązać ten problem, [Utwórz kopię zapasową dysku systemu operacyjneg
 
 12. Jeśli istnieją następujące klucze mają wartości **2** lub **3**, a następnie zmień te wartości do **1** odpowiednio:
 
-  - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupCoordinatorSvc\ErrorControl`
-  - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
-  - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
+    - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupCoordinatorSvc\ErrorControl`
+    - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
+    - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
 13. Wybierz **BROKENSYSTEM** klucza, a następnie wybierz pozycję **pliku** > **Załaduj gałąź rejestru** z menu.
 

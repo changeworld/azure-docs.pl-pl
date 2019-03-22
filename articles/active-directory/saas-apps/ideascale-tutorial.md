@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dafb074375cc310daa747c19503f23eff6ec18
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 88d181c2e761679d7f52208b2086404411bc2012
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879224"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją IdeaScale
 
@@ -53,7 +53,7 @@ Aby skonfigurować integrację aplikacji IdeaScale z usługą Azure AD, należy 
 
 **Aby dodać aplikację IdeaScale z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -108,6 +108,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<companyname>.ideascale.com`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca:
+    
     | |
     |--|
     | `http://<companyname>.ideascale.com`  |
@@ -154,7 +155,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     b. Otwórz w Notatniku plik metadanych pobrany z witryny Azure Portal, skopiuj jego zawartość i wklej ją w polu tekstowym **SAML IdP Metadata** (Metadane dostawcy tożsamości SAML).
 
-    d. W polu tekstowym **Logout Success URL** (Adres URL pomyślnego wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+    c. W polu tekstowym **Logout Success URL** (Adres URL pomyślnego wylogowywania) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
 
     d. Kliknij przycisk **Save Changes** (Zapisz zmiany).
 
@@ -176,7 +177,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -243,7 +244,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji IdeaSc
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka IdeaScale w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji IdeaScale, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

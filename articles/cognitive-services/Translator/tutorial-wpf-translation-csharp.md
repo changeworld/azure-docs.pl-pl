@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 97766472ea5f7b62a452e6cc5a71a77426e975ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078129"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: tworzenie aplikacji do tłumaczenia przy użyciu platformy WPF
 
@@ -240,11 +240,11 @@ Cały nasz projekt jest hermetyzowany w klasie `MainWindow : Window`. Zacznijmy 
    // In the following sections, we'll add code below this.
    }
    ```
-   4. Dodaj klucz subskrypcji usług Cognitive Services i zapisz.
+   1. Dodaj klucz subskrypcji usług Cognitive Services i zapisz.
 
 W tym bloku kodu zadeklarowaliśmy dwie zmienne składowe, które zawierają informacje o dostępnych językach na potrzeby tłumaczenia:
 
-| Zmienna | Typ | Opis |
+| Zmienna | Type | Opis |
 |----------|------|-------------|
 |`languageCodes` | Tablica ciągów |Buforuje kody języków. Usługa Translator identyfikuje języki za pomocą krótkich kodów, takich jak `en` dla języka angielskiego. |
 |`languageCodesAndTitles` | Posortowany słownik | Mapuje „przyjazne” nazwy w interfejsie użytkownika z powrotem na krótkie kody używane w interfejsie API. Jest posortowana alfabetycznie, bez uwzględniania wielkości liter. |
@@ -571,7 +571,7 @@ Kod źródłowy tego projektu jest dostępny w serwisie GitHub.
 
 * [Zapoznaj się z kodem źródłowym](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp-Tutorial)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API tłumaczenia tekstu w usłudze Microsoft Translator](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

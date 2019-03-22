@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2018
+ms.date: 03/20/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ae3a17c9756a38414ee25fd24f7d12d6179e95f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b1a9d93d9fccf02ba1517e429625150736e539e9
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285786"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305363"
 ---
-Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA.
+Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA. Dla bramy sieci wirtualnej jednostek SKU w języku strefy dostępności platformy Azure, zobacz [SKU bramy stref dostępności platformy Azure](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).
 
 ###  <a name="benchmark"></a>Jednostki SKU bramy według tunelowania, połączenia i przepływności
 
@@ -29,13 +29,13 @@ Nowa brama sieci VPN jednostki SKU usprawnić zestawy funkcji oferowane w bramac
 
 | **SKU**| **Funkcje**|
 | ---    | ---         |
-|**Podstawowe** (\*\*)   | **Sieć VPN oparta na trasy**: 10 tuneli dla połączeń S2S /; nie uwierzytelniania RADIUS na potrzeby P2S; bez protokołu IKEv2 dla P2S<br>**Sieć VPN oparta na zasadach**: (IKEv1): 1 tunel S2S i połączenie; bez P2S|
+|**Podstawowe** (*)   | **Sieć VPN oparta na trasy**: 10 tunele S2S/połączeń; nie uwierzytelniania RADIUS na potrzeby P2S; bez protokołu IKEv2 dla P2S<br>**Sieć VPN oparta na zasadach**: (IKEv1): 1 tunelu S2S/połączenia; bez P2S|
 | **VpnGw1, VpnGw2 i VpnGw3** | **Sieć VPN oparta na trasy**: maksymalnie 30 tuneli (*) P2S, BGP, aktywne aktywne, niestandardowe protokołu IPsec/IKE zasady, współistnienie ExpressRoute/VPN |
 |        |             |
 
 ( * ) Można skonfigurować „PolicyBasedTrafficSelectors” do łączenia bramy sieci VPN opartej na trasach (VpnGw1, VpnGw2, VpnGw3) z wieloma lokalnymi urządzeniami zapory opartymi na zasadach. Aby zapoznać się ze szczegółami, zobacz artykuł [Connect VPN gateways to multiple on-premises policy-based VPN devices using PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (Połączenie bram sieci VPN z wieloma lokalnymi urządzeniami sieci VPN opartymi na zasadach przy użyciu programu PowerShell).
 
-(\*\*) Podstawowa jednostka SKU jest uznawany za starszej wersji jednostki SKU. Podstawowa jednostka SKU ma pewne ograniczenia funkcji. Nie można zmienić rozmiaru bramy, która korzysta z podstawowej jednostki SKU do jednego z nowych jednostek SKU bramy, należy zmienić do nowej jednostki SKU, który obejmuje usunięcie i ponowne utworzenie bramy sieci VPN.
+(\*\*) Podstawowa jednostka SKU jest uznawany za starszej wersji jednostki SKU. Podstawowa jednostka SKU ma pewne ograniczenia w zakresie funkcji. Rozmiaru bramy, która korzysta z podstawowej jednostki SKU, nie można zmienić na jedną z nowych jednostek SKU bramy. Zamiast tego należy przejść na nową jednostkę SKU, co wiąże się z koniecznością usunięcia i ponownego utworzenia bramy sieci VPN.
 
 ###  <a name="workloads"></a>Jednostki SKU bramy — vs w środowisku produkcyjnym. w środowisku tworzenia i testowania
 
@@ -44,9 +44,9 @@ Z powodu różnic w umowach SLA i zestawach funkcji zaleca się następujące je
 | **Obciążenie**                       | **Jednostki SKU**               |
 | ---                                | ---                    |
 | **Tryb produkcyjny, obciążenia krytyczne** | VpnGw1, VpnGw2, VpnGw3 |
-| **Środowisko tworzenia i testowania lub weryfikacja koncepcji**   | Basic (\*\*)                 |
+| **Środowisko tworzenia i testowania lub weryfikacja koncepcji**   | Basic (*)                 |
 |                                    |                        |
 
-(\*\*) Podstawowa jednostka SKU jest uznawany za starszej wersji jednostki SKU i ma ograniczenia funkcji. Sprawdź, czy funkcji, które są potrzebne jest obsługiwana przed skorzystaniem z podstawowej jednostki SKU.
+(\*\*) Podstawowa jednostka SKU jest uznawany za starszej wersji jednostki SKU i ma ograniczenia funkcji. Zanim użyjesz podstawowej jednostki SKU sprawdź, czy potrzebna Ci funkcja jest obsługiwana.
 
 Jeśli używasz starych jednostek SKU (starsza wersja) produkcyjnym zalecane są jednostki SKU Standard i HighPerformance. Aby uzyskać informacje i instrukcje dla starych jednostek SKU, zobacz [jednostki SKU bramy (starsze)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).

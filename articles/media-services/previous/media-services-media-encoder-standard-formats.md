@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/18/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 6d64a0779040fd2e473fbbf93e5d091cdc927bc8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c862de2eec4e6c116218457a20b567dc02778685
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088948"
+ms.locfileid: "58190026"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Formaty i kodeki narzędzia Media Encoder Standard
 

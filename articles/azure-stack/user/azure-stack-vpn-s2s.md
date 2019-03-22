@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 96cb07ca4ede26e9bf0e5ceba28f1549061d0bf3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 07e598d6fd4ed2937d86f31593a220c0c28ba328
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815680"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074662"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>Konfigurowanie zasad protokołu IPsec/IKE dla połączeń VPN typu lokacja lokacja
 
@@ -76,7 +76,7 @@ W poniższej tabeli wymieniono obsługiwane algorytmy kryptograficzne i siły kl
 | Szyfrowanie IPsec                                     | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Brak |
 | Integralność IPsec                                      | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                       |
 | Grupa PFS                                            | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Brak                         |
-| Okres istnienia skojarzeń zabezpieczeń QM                                       | (Opcjonalne: wartości domyślne są stosowane, jeśli nie określono)<br />                         Sekundy (liczba całkowita; min. 300/domyślne 27 000 sekund)<br />                         KB (liczba całkowita; min. 1024/domyślne 102400000 KB) |                                                                          |
+| Okres istnienia skojarzeń zabezpieczeń QM                                       | (Opcjonalne: wartości domyślne są stosowane, jeśli nie określono)<br />                         Sekundy (liczba całkowita; min. 300/domyślne 27 000 sekund)<br />                         KB (liczba całkowita; min. 1024/domyślne 102400000 KB) |
 | Selektor ruchu                                     | Selektory ruchu na podstawie zasad nie są obsługiwane w usłudze Azure Stack.         |
 
 - Konfiguracja lokalnego urządzenia sieci VPN musi być zgodna z następującymi algorytmami (lub je zawierać) oraz z następującymi parametrami określonymi w zasadach protokołu IPsec/IKE platformy Azure (lub je zawierać):

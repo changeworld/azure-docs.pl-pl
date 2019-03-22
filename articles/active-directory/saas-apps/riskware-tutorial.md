@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab9750620d6d7c34de1d6e3404b4ea721f330ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3de8422efdbb7802e0532503e2733518e8050f6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203917"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Riskware
 
@@ -110,6 +110,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Riskware domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/riskware-tutorial/tutorial_riskware_url.png)
 
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+
     | Środowisko| Wzorzec URL|
     |--|--|
     | Testowanie akceptacyjne przez użytkowników|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
@@ -118,6 +119,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     |||
 
     b. W **identyfikator jednostki** pole tekstowe, wpisz adres URL:
+    
     | Środowisko| Wzorzec URL|
     |--|--|
     | Testowanie akceptacyjne przez użytkowników| `https://riskcloud.net/uat` |
@@ -247,7 +249,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Riskware, musi b
 
     a. W obszarze **uwierzytelniania** zaznacz **uwierzytelniania** trybu, który ma ustawienia, takie jak konfiguracji platformy AZURE dla logowania jednokrotnego.
 
-    b. W obszarze **szczegóły logowania** sekcji w **identyfikator użytkownika** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
+    b. W obszarze **szczegóły logowania** sekcji w **identyfikator użytkownika** polu tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon\@contoso.com**.
 
     c. W **hasło** polu tekstowym Wprowadź hasło użytkownika.
 
@@ -302,7 +304,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

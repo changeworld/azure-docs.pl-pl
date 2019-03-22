@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 11/06/2018
-ms.openlocfilehash: 4dd9634d5d5e6ce749a4ee563903b07e22bc45ee
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: ddcde2956da774e687c1e587649e65b79003bf3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652336"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448990"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight
 
@@ -83,7 +83,7 @@ Po utworzeniu tabeli możesz uruchomić interakcyjne zapytanie na danych.
 
 10. W menu **File** (Plik) w notesie wybierz pozycję **Save and Checkpoint** (Zapisz i ustaw punkt kontrolny). 
 
-11. Jeśli zamierzasz teraz otworzyć [następny samouczek](apache-spark-use-bi-tools.md), pozostaw notes otwarty. W przeciwnym razie zamknij notes, aby zwolnić zasoby klastra: w menu **File** (Plik) wybierz pozycję **Close and Halt** (Zamknij i zatrzymaj).
+11. Jeśli zamierzasz teraz otworzyć [następny samouczek](apache-spark-use-bi-tools.md), pozostaw notes otwarty. Jeśli nie, zamknij notes w celu zwolnienia zasobów klastra: z **pliku** menu w notesie, wybierz opcję **Zamknij i zatrzymanie**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -95,7 +95,7 @@ Otwórz klaster w witrynie Azure Portal, a następnie wybierz pozycję **Usuń**
 
 Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zasobów, a następnie wybrać pozycję **Usuń grupę zasobów**. Usunięcie grupy zasobów powoduje usunięcie zarówno klastra Spark w usłudze HDInsight, jak i domyślnego konta magazynu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

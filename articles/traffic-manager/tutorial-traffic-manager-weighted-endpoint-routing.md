@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 50790e50602fbc8d302a67ea9963a4e492ce2f0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467336"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009755"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Samouczek: sterowanie routingiem ruchu za pomocą punktów końcowych z wagami przy użyciu usługi Traffic Manager
 
@@ -60,6 +60,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne (*myIISVMEastUS* i *myIISVMWEurope
     |Grupa zasobów| Wybierz pozycję **Nowa**, a następnie wprowadź wartość **myResourceGroupTM1**.|
     |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
     |||
+
 4. Wybierz rozmiar maszyny wirtualnej w obszarze **Wybierz rozmiar**.
 5. Wybierz następujące wartości w obszarze **Ustawienia**, a następnie wybierz przycisk **OK**:
     
@@ -69,6 +70,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne (*myIISVMEastUS* i *myIISVMWEurope
     |Sieciowa grupa zabezpieczeń|Wybierz pozycję **Podstawowa**. Z listy rozwijanej **Dodaj publiczne porty wejściowe** wybierz opcje **HTTP** i **RDP**. |
     |Diagnostyka rozruchu|Wybierz opcję **Wyłączone**.|
     |||
+
 6. W obszarze **Utwórz** na stronie **Podsumowanie** wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej.
 
 7. Wykonaj ponownie kroki 1–6 z następującymi zmianami:
@@ -80,6 +82,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne (*myIISVMEastUS* i *myIISVMWEurope
     |Nazwa maszyny wirtualnej | Wprowadź wartość **myIISVMWEurope**.|
     |Sieć wirtualna | Wybierz pozycję **Sieć wirtualna**. W bloku **Tworzenie sieci wirtualnej** w polu **Nazwa** wprowadź wartość **myVNet2**. W polu **Podsieć** wprowadź wartość **mySubnet**.|
     |||
+
 8. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie wykonuj pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 
 ![Tworzenie maszyny wirtualnej](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -137,6 +140,7 @@ W tej sekcji utworzysz maszynę wirtualną *mVMEastUS*. Ta maszyna wirtualna zos
 
 4. Wybierz rozmiar maszyny wirtualnej w obszarze **Wybierz rozmiar**.
 5. Wybierz następujące wartości w obszarze **Ustawienia**, a następnie wybierz przycisk **OK**:
+
     |Ustawienie|Wartość|
     |---|---|
     |Sieć wirtualna| Wybierz pozycję **Sieć wirtualna**. W bloku **Tworzenie sieci wirtualnej** w polu **Nazwa** wprowadź wartość **myVNet3**. W polu Podsieć wprowadź wartość **mySubnet**.|
@@ -173,7 +177,7 @@ Dodaj dwie maszyny wirtualne, na których działają serwery IIS, myIISVMEastUS 
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Typ                    | Wprowadź punkt końcowy platformy Azure.                                   |
+    | Type                    | Wprowadź punkt końcowy platformy Azure.                                   |
     | Name (Nazwa)           | Wprowadź wartość **myEastUSEndpoint**.                                        |
     | Typ zasobu docelowego           | Wybierz pozycję **Publiczny adres IP**.                          |
     | Zasób docelowy          | Wybierz publiczny adres IP, aby wyświetlić listę zasobów z publicznymi adresami IP w ramach tej samej subskrypcji. W obszarze **Zasób** wybierz publiczny adres IP o nazwie **myIISVMEastUS-ip**. Jest to publiczny adres IP serwera usług IIS maszyny wirtualnej w regionie Wschodnie stany USA.|
@@ -214,7 +218,7 @@ W tej sekcji zobaczysz działanie usługi Traffic Manager.
 ## <a name="delete-the-traffic-manager-profile"></a>Usuwanie profilu usługi Traffic Manager
 Jeżeli nie potrzebujesz już grup zasobów utworzonych w ramach tego samouczka, możesz je usunąć. Aby to zrobić, wybierz grupę zasobów (**ResourceGroupTM1** lub **ResourceGroupTM2**), a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Kierowanie ruchu do określonych punktów końcowych na podstawie lokalizacji geograficznej użytkownika](traffic-manager-configure-geographic-routing-method.md)

@@ -8,20 +8,20 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/11/2019
-ms.openlocfilehash: c31d260c99707f4231a6833479517b9b69575d55
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 03/12/2019
+ms.openlocfilehash: 8bbbe7a924c98c9628ce967892177599a1d13017
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778913"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854997"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
 > [!NOTE]
 > Ta funkcja jest w [ *publicznej wersji zapoznawczej*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-W scenariuszach, w której muszą mieć dostęp do usługi logic apps i kont integracji [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE jest prywatne i izolowanym środowisku, używającej dedykowanego magazynu i inne zasoby oddzielone z usługi Logic Apps publicznej lub "global". Ta separacja zmniejsza żadnego wpływu, której innych dzierżaw usługi Azure może występować na wydajność Twojej aplikacji. Twoje ISE jest *wprowadzony* w sieci wirtualnej platformy Azure, który następnie wdraża usługę Logic Apps do sieci wirtualnej. Podczas tworzenia konta aplikacji lub Integracja z usługą Logic Apps, wybierz ten ISE ich lokalizacji. Twoje konto aplikacji lub Integracja z usługą Logic Apps mogą uzyskiwać bezpośrednio dostęp do zasobów, takich jak maszyny wirtualne (VM), serwery, systemów i usług w Twojej sieci wirtualnej.
+W scenariuszach, w której muszą mieć dostęp do usługi logic apps i kont integracji [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE to prywatne i izolowanym środowisku, korzystającą z dedykowanych dla magazynu i innych zasobów, które są oddzielone od usługi Logic Apps publicznego lub "global". Ta separacja zmniejsza żadnego wpływu, której innych dzierżaw usługi Azure może występować na wydajność Twojej aplikacji. Twoje ISE jest *wprowadzony* w sieci wirtualnej platformy Azure, który następnie wdraża usługę Logic Apps do sieci wirtualnej. Podczas tworzenia konta aplikacji lub Integracja z usługą Logic Apps, wybierz ten ISE ich lokalizacji. Twoje konto aplikacji lub Integracja z usługą Logic Apps mogą uzyskiwać bezpośrednio dostęp do zasobów, takich jak maszyny wirtualne (VM), serwery, systemów i usług w Twojej sieci wirtualnej.
 
 ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
@@ -50,7 +50,7 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 
   * Upewnij się, że Twoja sieć wirtualna [udostępnia te porty](#ports) swoje ISE działa poprawnie i pozostaje dostępna.
 
-* Na potrzeby wdrażania w sieci wirtualnej platformy Azure co najmniej jeden niestandardowe serwery DNS [Konfigurowanie tych serwerów następujące wskazówki te](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) przed wdrożeniem usługi ISE z siecią wirtualną. W przeciwnym razie po każdej zmianie serwera DNS, musisz też ponowne uruchomienie usługi ISE, co jest to funkcja, która jest dostępna w publicznej wersji zapoznawczej środowiska ISE.
+* Jeśli chcesz użyć niestandardowych serwerów DNS dla sieci wirtualnej platformy Azure [Konfigurowanie tych serwerów, wykonując następujące kroki](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) przed wdrożeniem usługi ISE z siecią wirtualną. W przeciwnym razie po każdej zmianie serwera DNS, musisz też ponowne uruchomienie usługi ISE, co jest to funkcja, która jest dostępna w publicznej wersji zapoznawczej środowiska ISE.
 
 * Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -60,10 +60,10 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 
 Aby działać poprawnie i pozostają dostępne, środowiska integration service environment (ISE) musi mieć określone porty dostępne w sieci wirtualnej. W przeciwnym razie jeśli którekolwiek z tych portów są niedostępne, mogą utracić dostęp do ISE może spowodować nieoczekiwane zatrzymanie. Gdy używasz środowiska ISE w sieci wirtualnej powszechny problem konfiguracji ma co najmniej jeden port blokowania. W przypadku połączeń między swoje ISE i systemu docelowego łącznik, którego używasz, że własne wymagania dotyczące portów. Na przykład jeśli komunikować się z systemem FTP za pomocą łącznika usługi FTP, upewnij się, port, z którego korzystasz na dostępnej systemu FTP, takich jak port 21 do wysyłania poleceń.
 
-Aby kontrolować ruch przychodzący i wychodzący między podsieciami sieci wirtualnej, w którym wdrożyć swoje ISE, można skonfigurować [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) dla tych podsieci ucząc [jak filtrowanie ruchu sieciowego między podsieci](../virtual-network/tutorial-filter-network-traffic.md). Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobierz użycia tych portów. [Tag usługi](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, które zminimalizować złożoność podczas tworzenia reguł zabezpieczeń. 
+Do sterowania ruchem między podsieciami sieci wirtualnej, w którym wdrożyć swoje ISE, można skonfigurować [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) dla tych podsieci przez [filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobierz użycia tych portów. [Tag usługi](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, które zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
 
 > [!IMPORTANT]
-> Do wewnętrznej komunikacji wewnątrz podsieci ISE wymaga otwarcia wszystkich portów w ramach tych podsieci. 
+> Do wewnętrznej komunikacji wewnątrz podsieci ISE wymaga otwarcia wszystkich portów w ramach tych podsieci.
 
 | Przeznaczenie | Kierunek | Porty | Tag usługi źródłowej | Docelowy tag usługi | Uwagi |
 |---------|-----------|-------|--------------------|-------------------------|-------|
@@ -122,10 +122,10 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
    **Tworzenie podsieci**
 
-   Twoje ISE wymaga czterech *pusty* podsieci, *nie są delegowane* do dowolnej usługi do tworzenia zasobów w danym środowisku. 
-   Możesz *nie można zmienić* tych adresów podsieci po utworzeniu środowiska. Każda podsieć musi spełniać następujące kryteria:
+   Do tworzenia zasobów w danym środowisku, Twoje ISE wymaga czterech *pusty* podsieci, które nie są delegowane do każdej usługi. 
+   Możesz *nie* zmienić tych adresów podsieci, po utworzeniu środowiska. Każda podsieć musi spełniać następujące kryteria:
 
-   * Używa nazwy nie zaczyna się od numeru lub łącznik.
+   * Ma nazwę, która rozpoczyna się od litery alfabetu lub znakiem podkreślenia i nie zawiera następujących znaków: `<`, `>`, `%`, `&`, `\\`, `?`, `/`
 
    * Używa [formatu Bezklasowego routingu międzydomenowego (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) i przestrzeń adresów klasy B.
 
@@ -180,7 +180,7 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
 ### <a name="add-capacity"></a>Dodawaj możliwości obliczeniowe
 
-Jednostkę podstawową ISE ma ustaloną pojemność, więc jeśli potrzebujesz więcej przepływności, można dodać kolejne jednostki skalowania. Możesz wybrać opcję skalowania automatycznego w oparciu o metryki wydajności lub na podstawie określonej liczby jednostek. Jeśli wybierzesz opcję skalowania automatycznego na podstawie metryk, należy wybrać różnych kryteriów i określić warunki progowe spełniających kryteria tego.
+Jednostkę podstawową ISE ma ustaloną pojemność, więc jeśli potrzebujesz więcej przepływności, można dodać kolejne jednostki skalowania. Możesz to zrobić skalowania automatycznego w oparciu o metryki wydajności lub na podstawie liczby jednostek. Jeśli wybierzesz opcję skalowania automatycznego na podstawie metryk, należy wybrać różnych kryteriów i określić warunki progowe spełniających kryteria tego.
 
 1. W witrynie Azure portal Znajdź swoje ISE.
 

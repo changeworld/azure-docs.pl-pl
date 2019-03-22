@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 03/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 39d0813eab49f526842eec171e3355326bd13c44
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 91325b7884eae4c6f4c85c142b1e81cf2121c039
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727806"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295338"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Zdefiniuj kolejność wdrażania zasobów w szablonach usługi Resource Manager platformy Azure
 Dla danego zasobu może być inne zasoby, które muszą istnieć przed wdrożeniem tego zasobu. Na przykład programu SQL server musi istnieć przed podjęciem próby wdrożenia bazy danych SQL. Należy zdefiniować tę relację, oznaczając jeden zasób jako zależny od innego zasobu. Definiowanie zależności za pomocą **dependsOn** elementu, lub za pomocą **odwołania** funkcji. 
@@ -65,7 +65,7 @@ Podczas definiowania zależności, może zawierać przestrzeń nazw dostawcy zas
 Chociaż może żądać Mapowanie relacji między zasobami za pomocą dependsOn, jest ważne, aby zrozumieć, dlaczego wykonujesz go. Na przykład do dokumentów, jak zasoby są ze sobą połączone, dependsOn nie ma właściwej metody postępowania. Nie można wykonać zapytania, które zasoby zostały zdefiniowane w elemencie dependsOn po wdrożeniu. Za pomocą dependsOn, możesz mogłoby to wpłynąć na czas wdrażania, ponieważ Menedżer zasobów nie wdroży w równoległych dwa zasoby, które mają zależności. 
 
 ## <a name="child-resources"></a>Zasoby podrzędne
-Właściwość zasobów pozwala określić zasoby podrzędne, that are related to zasób jest zdefiniowany. Zasoby podrzędne mogą być tylko zdefiniowanych pięć poziomów w głąb. Należy zauważyć, że niejawne zależność nie jest tworzone między zasobu podrzędnego i zasobu nadrzędnego. Jeśli potrzebujesz zasobu podrzędnego do wdrożenia po zasobu nadrzędnego, musi jawnie określać tej zależności z właściwością dependsOn. 
+Właściwość zasobów pozwala określić zasoby podrzędne, that are related to zasób jest zdefiniowany. Zasoby podrzędne mogą być tylko zdefiniowanych pięć poziomów w głąb. Należy zauważyć, że zależności niejawne wdrożenia nie jest tworzone między zasobu podrzędnego i zasobu nadrzędnego. Jeśli potrzebujesz zasobu podrzędnego do wdrożenia po zasobu nadrzędnego, musi jawnie określać tej zależności z właściwością dependsOn. 
 
 Każdy zasób nadrzędny akceptuje tylko niektóre typy zasobów jako zasoby podrzędne. Typy zasobów akceptowane są określone w [schemat szablonu](https://github.com/Azure/azure-resource-manager-schemas) zasobu nadrzędnego. Nazwa typu zasobu podrzędnego obejmuje takie jak nazwa typu zasobu nadrzędnego **Microsoft.Web/sites/config** i **Microsoft.Web/sites/extensions** są zasobami podrzędnymi zarówno **Microsoft.Web/sites**.
 

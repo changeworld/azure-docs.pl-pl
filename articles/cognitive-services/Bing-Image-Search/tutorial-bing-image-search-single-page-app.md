@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 9/12/2018
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 1c8e08cdf6238064e6ec2468a00bbc65ec46b675
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 353641c514c9171e211221b84b13c5f09a413a48
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880753"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341226"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania obrazów Bing
 
@@ -402,11 +402,11 @@ Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
 Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wyodrębnianie szczegółów obrazu przy użyciu interfejsu API wyszukiwania obrazów Bing](tutorial-image-post.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

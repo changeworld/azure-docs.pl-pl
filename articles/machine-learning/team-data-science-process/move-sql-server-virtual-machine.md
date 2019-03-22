@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcab8d1cfd076e57a25ee3d36fadd86f158c53b8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880601"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835125"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Przenoszenie danych do programu SQL Server na maszynie wirtualnej platformy Azure
 
@@ -58,7 +58,7 @@ Narzędzie BCP jest narzędziem wiersza polecenia, zainstalowane z programem SQL
 
 > [!NOTE]
 > **Gdzie należy Moje dane dla narzędzia BCP**  
-> Mimo że nie jest wymagany, o pliki zawierające źródło danych znajduje się na tym samym komputerze co docelowego programu SQL Server umożliwia szybszy transfer (sieci szybkość vs lokalny dysk szybkości operacji We/Wy). Można przenieść pliki proste zawierający dane do maszyny w przypadku, gdy jest zainstalowany program SQL Server przy użyciu różnych kopiowanie plików narzędzia takie jak [AZCopy](../../storage/common/storage-use-azcopy.md), [Eksploratora usługi Azure Storage](http://storageexplorer.com/) lub skopiuj/Wklej systemu windows za pomocą pulpitu zdalnego Protocol (RDP).
+> Mimo że nie jest wymagany, o pliki zawierające źródło danych znajduje się na tym samym komputerze co docelowego programu SQL Server umożliwia szybszy transfer (sieci szybkość vs lokalny dysk szybkości operacji We/Wy). Można przenieść pliki proste zawierający dane do maszyny w przypadku, gdy jest zainstalowany program SQL Server przy użyciu różnych kopiowanie plików narzędzia takie jak [AZCopy](../../storage/common/storage-use-azcopy.md), [Eksploratora usługi Azure Storage](https://storageexplorer.com/) lub skopiuj/Wklej systemu windows za pomocą pulpitu zdalnego Protocol (RDP).
 >
 >
 
@@ -75,10 +75,10 @@ CREATE TABLE <tablename>
 )
 ```
 
-2. Wygeneruj plik formatu, opisujący schematu dla tabeli, wydając polecenie z wiersza polecenia maszyny zainstalowanym bcp.
+1. Wygeneruj plik formatu, opisujący schematu dla tabeli, wydając polecenie z wiersza polecenia maszyny zainstalowanym bcp.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-3. Wstawianie danych do bazy danych za pomocą polecenia bcp w następujący sposób. Powinno to działać z wiersza polecenia, przy założeniu, że serwer SQL jest zainstalowany na tym samym komputerze:
+1. Wstawianie danych do bazy danych za pomocą polecenia bcp w następujący sposób. Powinno to działać z wiersza polecenia, przy założeniu, że serwer SQL jest zainstalowany na tym samym komputerze:
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -142,7 +142,7 @@ Poniżej przedstawiono niektóre przykładowe polecenia dla Bulk Insert są tak 
 ```sql
 SET DATEFORMAT ymd;
 ```
-2. Importowanie danych przy użyciu instrukcji importowania zbiorczego:
+1. Importowanie danych przy użyciu instrukcji importowania zbiorczego:
 
 ```sql
 BULK INSERT <tablename>
@@ -195,7 +195,7 @@ Różne metody może służyć do zbiorczego Eksportuj dane z programu SQL Serve
 4. Użyć dowolnej z metod opisanych w sekcji [przenoszenie danych ze źródła pliku](#filesource_to_sqlonazurevm) Aby przenieść dane z plików prostych do programu SQL Server.
 
 ### <a name="sql-migration"></a>Kreator migracji bazy danych SQL
-[Kreator migracji bazy danych programu SQL Server](http://sqlazuremw.codeplex.com/) oferuje przyjazny dla użytkownika sposób przenoszenia danych między dwa wystąpienia programu SQL server. Umożliwia użytkownikowi do mapy schematu danych między źródłami a tabel docelowych, wybierz typy kolumn i różnych innych funkcji. Używa ona kopiowania masowego (BCP) w sposób niewidoczny. Poniżej przedstawiono zrzut ekranu przedstawiający ekran powitalny Kreatora migracji bazy danych SQL.  
+[Kreator migracji bazy danych programu SQL Server](https://sqlazuremw.codeplex.com/) oferuje przyjazny dla użytkownika sposób przenoszenia danych między dwa wystąpienia programu SQL server. Umożliwia użytkownikowi do mapy schematu danych między źródłami a tabel docelowych, wybierz typy kolumn i różnych innych funkcji. Używa ona kopiowania masowego (BCP) w sposób niewidoczny. Poniżej przedstawiono zrzut ekranu przedstawiający ekran powitalny Kreatora migracji bazy danych SQL.  
 
 ![Kreator migracji programu SQL Server][2]
 

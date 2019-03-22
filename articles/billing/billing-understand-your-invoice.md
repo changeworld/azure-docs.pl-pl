@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
-ms.openlocfilehash: 506910ffa46cb3fbd4be9dcecf9df0f9fdd291e5
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901024"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897456"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Zrozumienie warunki na fakturze Microsoft Azure
 
-Faktury zawiera podsumowanie opłat i zawiera instrukcje dotyczące płatności. Jest dostępna do pobrania w Portable Document Format (PDF) z [witryny Azure portal](https://portal.azure.com/) lub mogą być wysyłane za pośrednictwem poczty e-mail. Aby uzyskać więcej informacji, zobacz [sposobu uzyskania usługi Azure billing faktury i dane dziennego użycia](billing-download-azure-invoice-daily-usage-date.md).
+Faktura zawiera podsumowanie opłat i instrukcje dotyczące płatności. Jest dostępna do pobrania w Portable Document Format (PDF) z [witryny Azure portal](https://portal.azure.com/) lub mogą być wysyłane za pośrednictwem poczty e-mail. Aby uzyskać więcej informacji, zobacz [sposobu uzyskania usługi Azure billing faktury i dane dziennego użycia](billing-download-azure-invoice-daily-usage-date.md).
 
 Kilka kwestii, które należy zwrócić uwagę:
 
@@ -31,7 +31,7 @@ Kilka kwestii, które należy zwrócić uwagę:
 
 -   Maksymalnie 24 godziny użycia na końcu poprzedniego okresu rozliczeniowego może być wyświetlane w Twojej bieżącej faktury.
 
--   Opłaty wymienione na zestawienia faktur dla klientów międzynarodowych służą wyłącznie do szacowania. Banki mogą mieć różne koszty współczynniki konwersji.
+-   Opłaty wymienione na rozliczeniach dla klientów międzynarodowych służą jedynie do oszacowania kosztów. Banki mogą mieć różne koszty współczynniki konwersji.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
@@ -100,7 +100,7 @@ W poniższej tabeli opisano nagłówki kolumn opłaty za użycie na fakturze.
 | Termin |Opis |
 | --- | --- |
 | Name (Nazwa) |Określa usługę najwyższego poziomu do użycia |
-| Typ |Definiuje typ usługi platformy Azure, który może wpływać na stawkę |
+| Type |Definiuje typ usługi platformy Azure, który może wpływać na stawkę |
 | Zasób |Określa jednostkę miary dla mierników, są używane |
 | Region |Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych |
 | Zużyte |Ilość miernika, używany w trakcie okresu rozliczeniowego |
@@ -116,4 +116,4 @@ Jeśli na który chcesz uzyskać więcej informacji znajduje się na fakturze je
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

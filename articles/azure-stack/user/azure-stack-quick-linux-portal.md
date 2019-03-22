@@ -12,12 +12,12 @@ ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: d9a17bdad0bfa4965d36fbe2a2cf3a7890060e98
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 39298d34a0d29eb1e5a4234ffe0e0fcca844226e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772572"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858188"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Szybki Start: tworzenie maszyny wirtualnej z systemem Linux server za pomocą portalu usługi Azure Stack
 
@@ -43,7 +43,7 @@ Aby utworzyć maszynę wirtualną Ubuntu Server 16.04 LTS, należy za pomocą po
 
    Jeśli używasz usługi Azure Stack Development Kit (ASDK), możesz utracić dostęp do klienta SSH. Jeśli potrzebujesz klienta, istnieje kilka pakietów, które zawierają klienta SSH. Na przykład program PuTTY zawiera klient SSH i generatora klucza SSH (puttygen.exe). Aby uzyskać więcej informacji na temat dostępnych pakietów przeczytaj następujący artykuł platformy Azure: [Jak używać kluczy protokołu SSH z Windows Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
-   Ten przewodnik Szybki Start używa programu PuTTY, można wygenerować kluczy SSH i łączenie z maszyną wirtualną serwera dla systemu Linux. Aby pobrać i zainstalować program PuTTY, przejdź do [ https://www.putty.org/ ](http://www.putty.org).
+   Ten przewodnik Szybki Start używa programu PuTTY, można wygenerować kluczy SSH i łączenie z maszyną wirtualną serwera dla systemu Linux. Aby pobrać i zainstalować program PuTTY, przejdź do [ https://www.putty.org/ ](https://www.putty.org).
 
 ## <a name="create-an-ssh-key-pair"></a>Tworzenie pary kluczy SSH
 
@@ -77,8 +77,8 @@ Zaloguj się do portalu usługi Azure Stack. Adres portalu usługi Azure Stack z
 
 4. Wpisz informacje o maszynie wirtualnej. W obszarze **Typ uwierzytelniania** wybierz pozycję **Klucz publiczny SSH**. Wklej klucz publiczny SSH, zapisać, a następnie kliknij przycisk **OK**.
 
-   >[!NOTE]
- Upewnij się, że usuniesz wszelkie odstępy wiodące lub końcowe one klucza.
+   > [!NOTE]
+   > Upewnij się, że usuniesz wszelkie odstępy wiodące lub końcowe one klucza.
 
    ![Podstawowe informacje dotyczące panelu — Konfigurowanie maszyny wirtualnej](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
@@ -88,10 +88,10 @@ Zaloguj się do portalu usługi Azure Stack. Adres portalu usługi Azure Stack z
 
 6. Na **ustawienia** strony, wprowadź potrzebne zmiany do ustawień domyślnych.
    
-    - Począwszy od wersji usługi Azure Stack 1808, można skonfigurować **magazynu** której użytkownik może użyć *usługi managed disks*. Przed wersją 1808 można tylko dyski niezarządzane.    
-      ![Skonfiguruj magazyn dla dysków zarządzanych](media/azure-stack-quick-linux-portal/linux-03.PNG)
+   - Począwszy od wersji usługi Azure Stack 1808, można skonfigurować **magazynu** której użytkownik może użyć *usługi managed disks*. Przed wersją 1808 można tylko dyski niezarządzane.    
+     ![Skonfiguruj magazyn dla dysków zarządzanych](media/azure-stack-quick-linux-portal/linux-03.PNG)
     
-    Jeśli konfiguracje są gotowe, wybierz **OK** aby kontynuować.
+     Jeśli konfiguracje są gotowe, wybierz **OK** aby kontynuować.
 
 7. Na **Podsumowanie** kliknij **OK** rozpocząć wdrażanie maszyny wirtualnej.  
    ![Wdrażanie](media/azure-stack-quick-linux-portal/deploy.png)

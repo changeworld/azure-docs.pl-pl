@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312995"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260064"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródło danych usługi Power BI z usługi Application Insights
 [Usługa Power BI](https://www.powerbi.com/) jest zestaw narzędzi biznesowej, która pomaga analizować dane i dziel się spostrzeżeniami. Zaawansowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak zapytania usługi Analytics z [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -96,7 +96,7 @@ Może to nastąpić, jeśli token odświeżania nie został zaktualizowany. Spr�
 1. Zaloguj się do witryny Azure portal i upewnij się, że można uzyskać dostępu do zasobu.
 2. Spróbuj odświeżyć poświadczenia dla pulpitu nawigacyjnego.
 
- Jeśli masz dostęp, i odświeżyć poświadczenia nie działa, otwórz bilet pomocy technicznej.
+   Jeśli masz dostęp, i odświeżyć poświadczenia nie działa, otwórz bilet pomocy technicznej.
 
 ### <a name="bad-gateway-502"></a>Nieprawidłową bramą (502)
 Jest to zazwyczaj spowodowane zapytania usługi Analytics, która zwraca zbyt dużej ilości danych. Spróbuj użyć mniejszego zakresu czasu dla zapytania. 
@@ -105,8 +105,8 @@ Jeśli zmniejszyć zestaw danych pochodzących z zapytania analizy nie spełnia 
 
 1. Tworzenie [klucz interfejsu API](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Zaktualizuj skrypt usługi Power BI M, który został wyeksportowany z analizy, zamieniając adres URL usługi Azure Resource Manager przy użyciu interfejsu API usługi Application Insights.
-   * Zastąp  **https://management.azure.com/subscriptions/...**
-   * za pomocą  **https://api.applicationinsights.io/beta/apps/...**
+   * Zastąp **https:\//management.azure.com/subscriptions/...**
+   * za pomocą **https:\//api.applicationinsights.io/beta/apps/...**
 3. Na koniec Zaktualizuj poświadczenia do warstwy podstawowa, a następnie użyj swój klucz interfejsu API.
 
 **Istniejący skrypt**

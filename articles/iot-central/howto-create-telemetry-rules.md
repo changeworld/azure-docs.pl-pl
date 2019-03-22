@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4668ffd30742f81552cd29f6cdba4c0f82549687
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5f6bc30c318e2f5511b352f1a52f0a5360e4b6f1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773507"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081563"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Utwórz regułę telemetrii i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -56,13 +56,13 @@ Warunek definiuje kryteria, które są monitorowane przez regułę.
 1. Wybierz dane telemetryczne, którą chcesz monitorować z **pomiaru** listy rozwijanej.
 
 1. Następnie wybierz pozycję **agregacji**, **Operator**i podaj **próg** wartość.
-    - Agregacja jest opcjonalne. Bez agregacji, wyzwolenie reguły dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład jeśli reguła jest skonfigurowany do wyzwalania, gdy temperatura przekracza 80, a następnie wyzwolenie reguły niemal natychmiast gdy urządzenie zgłosi temperatury > 80.
-    - Jeśli funkcja agregująca takie jak średnia, wartość minimalna, maksymalna, liczba jest wybierany następnie użytkownik musi podać **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. Na przykład jeśli ustawisz okres na "5 minut" i reguła szuka średnia temperatura powyżej 80, reguła jest wyzwalana w przypadku średnia temperatura przekracza 80 dla co najmniej 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut.
+   - Agregacja jest opcjonalne. Bez agregacji, wyzwolenie reguły dla każdego punktu danych telemetrii, który spełnia warunek. Na przykład jeśli reguła jest skonfigurowany do wyzwalania, gdy temperatura przekracza 80, a następnie wyzwolenie reguły niemal natychmiast gdy urządzenie zgłosi temperatury > 80.
+   - Jeśli funkcja agregująca takie jak średnia, wartość minimalna, maksymalna, liczba jest wybierany następnie użytkownik musi podać **przedział czasu agregacji** za pośrednictwem której warunek musi zostać ocenione. Na przykład jeśli ustawisz okres na "5 minut" i reguła szuka średnia temperatura powyżej 80, reguła jest wyzwalana w przypadku średnia temperatura przekracza 80 dla co najmniej 5 minut. Częstotliwość oceny reguły jest taka sama jak **przedział czasu agregacji**, oznacza to, w tym przykładzie reguła jest szacowana co 5 minut.
 
-    ![Warunek](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
+     ![Warunek](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE]
-    >Można dodać więcej niż jednej miary dane telemetryczne w ramach **warunek**. Jeśli określono wiele warunków, wszystkie warunki muszą być spełnione dla tej reguły wyzwolić. Każdy warunek pobiera przyłączone niejawnie przez klauzulę "I". Korzystając z agregacji, musi być agregowana co miary.
+     >[!NOTE]
+     >Można dodać więcej niż jednej miary dane telemetryczne w ramach **warunek**. Jeśli określono wiele warunków, wszystkie warunki muszą być spełnione dla tej reguły wyzwolić. Każdy warunek pobiera przyłączone niejawnie przez klauzulę "I". Korzystając z agregacji, musi być agregowana co miary.
 
 ### <a name="configure-actions"></a>Konfigurowanie akcji
 

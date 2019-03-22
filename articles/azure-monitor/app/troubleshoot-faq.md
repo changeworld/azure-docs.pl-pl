@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 810a4708974d18a4bba048e3e402a172868178f3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429693"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905068"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Często zadawane pytania
 
@@ -257,7 +257,7 @@ Przejrzyj pełną listę usług i adresy IP [tutaj](../../azure-monitor/app/ip-a
 
 Zezwalaj na serwerze sieci web do wysyłania telemetrii do naszych punktów końcowych. 
 
-### <a name="proxy-redirect"></a>Przekierowania serwera proxy
+### <a name="gateway-redirect"></a>Przekieruj bramy
 
 Kierowanie ruchu z serwera bramy w sieci intranet, zastępując punktów końcowych w konfiguracji.
 Jeśli te właściwości "Punktu końcowego" nie są obecne w pliku config, w ramach tych zajęć użyje wartości domyślne, pokazana poniżej w przykładzie plik ApplicationInsights.config. 
@@ -288,7 +288,19 @@ Brama powinna kierować ruch do naszych punkt końcowy adres podstawowy. W konfi
 
 _Uwaga ApplicationIdProvider jest dostępna, począwszy od v2.6.0_
 
+### <a name="proxy-passthrough"></a>Przekazywanie serwera proxy
 
+Przekazywanie proxy można osiągnąć, skonfigurować poziom maszyny lub z poziomu aplikacji serwera proxy.
+Aby uzyskać więcej informacji zobacz artykuł w dotnet w [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
+ 
+ Przykład pliku Web.config:
+ ```xml
+<system.net>
+    <defaultProxy>
+      <proxy proxyaddress="http://xx.xx.xx.xx:yyyy" bypassonlocal="true"/>
+    </defaultProxy>
+</system.net>
+```
  
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Na serwerze sieci intranet można uruchomić testy sieci web dostępności?

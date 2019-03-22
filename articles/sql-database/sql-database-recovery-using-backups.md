@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: f54e715f555f01a265ed89ac633f207546a73904
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: ff3f1e405dc7a1e69c3b1d1d20936ca78b97fcda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576365"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855099"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 
@@ -114,9 +114,6 @@ Aby odzyskać usuniętą bazę danych przy użyciu witryny Azure portal podczas 
 
 Możesz przywrócić bazę danych SQL na dowolnym serwerze w dowolnym regionie systemu Azure z najnowszej kopii zapasowych replikacją geograficzną. Przywracanie geograficzne korzysta z geograficznie nadmiarowej kopii zapasowej jako źródła i może służyć do odzyskiwania bazy danych, nawet jeśli bazy danych lub centrum danych jest niedostępna z powodu awarii.
 
-> [!Note]
-> Przywracanie geograficzne nie jest dostępny w wystąpieniu zarządzanym.
-
 Funkcja przywracania geograficznego jest domyślną opcję odzyskiwania, gdy baza danych jest niedostępna z powodu zdarzenia w regionie, w którym hostowana jest baza danych. Jeśli na dużą skalę zdarzenia w regionie skutkuje brakiem dostępu aplikacji bazy danych, można przywrócić bazę danych z replikacją geograficzną kopii zapasowych na serwerze w każdym innym regionie. Występuje opóźnienie między podczas tworzenia kopii zapasowej i jego replikacją geograficzną na platformie Azure blob w innym regionie. To opóźnienie może trwać do godziny, więc w przypadku poważnej awarii, może wystąpić do utraty danych jedną godzinę. Poniższa ilustracja przedstawia przywracania bazy danych z ostatnią dostępną kopią zapasową w innym regionie.
 
 ![Funkcja przywracania geograficznego](./media/sql-database-geo-restore/geo-restore-2.png)
@@ -133,6 +130,9 @@ W momencie przywracania na pomocnicza geograficzna nie jest obecnie obsługiwane
 
 Do przywracania geograficznego w bazie danych podczas jego [okres przechowywania modelu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [okres przechowywania model oparty na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) przy użyciu witryny Azure portal, otwórz stronę bazy danych SQL, a następnie kliknij przycisk **Dodaj** . W **wybierz źródło** pola tekstowego, wybierz **kopii zapasowej**. Określ kopię zapasową, z którego można przeprowadzić operację odzyskiwania, w regionie, jak i na serwerze wybranym.
 
+> [!Note]
+> Funkcja przywracania geograficznego w witrynie Azure portal nie jest dostępny w wystąpieniu zarządzanym. Zamiast tego użyj programu PowerShell.
+
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programowe odzyskiwanie systemu za pomocą automatycznych kopii zapasowych
 
 Jak już wspomniano, oprócz witryny Azure portal odzyskiwanie bazy danych można wykonać programowo przy użyciu programu Azure PowerShell lub interfejsu API REST. W poniższych tabelach opisano zestaw poleceń dostępnych.
@@ -140,6 +140,8 @@ Jak już wspomniano, oprócz witryny Azure portal odzyskiwanie bazy danych możn
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 - Aby przywrócić autonomiczny lub baza danych w puli, zobacz [AzSqlDatabase przywracania](/powershell/module/az.sql/restore-azsqldatabase).
 
@@ -173,7 +175,7 @@ Aby przywrócić bazę pojedynczego lub w puli przy użyciu interfejsu API REST:
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 - Aby przywrócić bazę pojedynczego lub w puli przy użyciu wiersza polecenia platformy Azure, zobacz [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
-- Aby przywrócić wystąpienia zarządzanego przy użyciu wiersza polecenia platformy Azure, zobacz [az sql fragment przywracania](/cli/azure/sql/db#az-sql-midb-restore)
+- Aby przywrócić wystąpienia zarządzanego przy użyciu wiersza polecenia platformy Azure, zobacz [az sql fragment przywracania](/cli/azure/sql/db)
 
 ## <a name="summary"></a>Podsumowanie
 

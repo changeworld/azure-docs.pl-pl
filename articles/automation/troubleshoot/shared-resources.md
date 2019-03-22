@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy związane z zasobami usłu
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/22/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: abce40958f8d775e0a579a18cf8d1351740031ff
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 35e39a070a4c976655296d2ea141478d13e43bbc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671067"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902828"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Rozwiązywanie problemów z udostępnionymi zasobami
 
@@ -137,6 +137,30 @@ Nie masz uprawnień, które należy utworzyć lub zaktualizować konto Uruchom j
 Aby utworzyć lub zaktualizować konto Uruchom jako, musi mieć odpowiednie uprawnienia do różnych zasobów, które są używane przez konto Uruchom jako. Aby dowiedzieć się o uprawnienia potrzebne do tworzenia lub aktualizowania konta Uruchom jako, zobacz [Uruchom jako uprawnień konta](../manage-runas-account.md#permissions).
 
 Jeśli problem będzie się ze względu na blokadę, sprawdź, czy blokada jest ok, aby go usunąć. Następnie przejdź do zasobu, który jest zablokowany, kliknij prawym przyciskiem myszy blokady i wybierz **Usuń** usunięcia blokady.
+
+### <a name="iphelper"></a>Scenariusz: Pojawia się błąd "Nie można odnaleźć punktu wejścia o nazwie"GetPerAdapterInfo"w pliku DLL"iplpapi.dll"" podczas wykonywania elementu runbook.
+
+#### <a name="issue"></a>Problem
+
+Podczas wykonywania elementu runbook jest wyświetlany następujący wyjątek:
+
+```error
+Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd jest prawdopodobnie spowodowane przez niepoprawnie skonfigurowany [konto Uruchom jako](../manage-runas-account.md).
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Upewnij się, że Twoje [konto Uruchom jako](../manage-runas-account.md) jest poprawnie skonfigurowany. Gdy został on poprawnie skonfigurowany, upewnij się, że masz prawidłowego kodu w elemencie runbook do uwierzytelniania za pomocą usługi Azure. Fragment kodu do uwierzytelniania na platformie Azure w elemencie runbook za pomocą konta Uruchom jako można znaleźć w poniższym przykładzie.
+
+```powershell
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
+-ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

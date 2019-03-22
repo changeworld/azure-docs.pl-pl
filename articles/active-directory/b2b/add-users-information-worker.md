@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16caf8b6fd48b5dca676b1c8ee046ad01264ca03
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 561d7f5b28775e5f431d35d956cff6f800cc11b2
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211431"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294521"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Jak użytkownicy w organizacji mogą zapraszać gości do aplikacji
 
@@ -36,15 +37,15 @@ Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można uży
 1. Otwórz Panel dostępu, przechodząc do `https://myapps.microsoft.com`.
 2. Wskaż aplikacji, wybierz wielokropek (**...** ), a następnie wybierz pozycję **aplikacji Zarządzanie**.
  
-   ![Panelach dostępu Zarządzanie aplikacją](media/add-users-iw/access-panel-manage-app.png)
+   ![Zrzut ekranu przedstawiający Zarządzanie aplikacji podmenu aplikacji Salesforce](media/add-users-iw/access-panel-manage-app.png)
  
 3. W górnej części listy użytkowników, wybierz **+**.
    
-   ![Panel dostępu — Dodawanie użytkownika](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![Zrzut ekranu przedstawiający symbol znaku plus dotyczące dodawania członków do aplikacji](media/add-users-iw/access-panel-manage-app-add-user.png)
    
 4. W **dodawać członków** polu wyszukiwania, wpisz adres e-mail do użytkownika gościa. Opcjonalnie możesz dodać komunikat powitalny.
    
-   ![Zaproszenie do panelu dostępu](media/add-users-iw/access-panel-invitation.png)
+   ![Zrzut ekranu przedstawiający dodawanie członków okno dodawania gościa](media/add-users-iw/access-panel-invitation.png)
    
 5. Wybierz **Dodaj** można wysłać zaproszenia do użytkownika gościa. Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do katalogu jako gość.
 
@@ -55,19 +56,19 @@ Po skonfigurowaniu aplikacji do samoobsługi właścicieli aplikacji można zapr
 2. Otwórz Panel dostępu, przechodząc do `https://myapps.microsoft.com`.
 3. Wybierz **grup** aplikacji.
    
-   ![Dostęp do panelu grup aplikacji](media/add-users-iw/access-panel-groups.png)
+   ![Zrzut ekranu przedstawiający aplikację grup na panelu dostępu](media/add-users-iw/access-panel-groups.png)
    
 4. W obszarze **grup własnym**, wybierz grupę, która ma dostęp do aplikacji, którą chcesz udostępnić.
    
-   ![Panel dostępu — grupy należące do mnie](media/add-users-iw/access-panel-groups-i-own.png)
+   ![Zrzut ekranu przedstawiający miejsce wybrać grupę, w obszarze grupy jestem właścicielem](media/add-users-iw/access-panel-groups-i-own.png)
    
 5. W górnej części listy członków grupy wybierz **+**.
    
-   ![Panel dostępu — grupy dodać członka](media/add-users-iw/access-panel-groups-add-member.png)
+   ![Zrzut ekranu przedstawiający symbol znaku plus dotyczące dodawania członków do grupy](media/add-users-iw/access-panel-groups-add-member.png)
    
 6. W **dodawać członków** polu wyszukiwania, wpisz adres e-mail do użytkownika gościa. Opcjonalnie możesz dodać komunikat powitalny.
    
-   ![Zaproszenie grupy panelu dostępu](media/add-users-iw/access-panel-invitation.png)
+   ![Zrzut ekranu przedstawiający dodawanie członków okno dodawania gościa](media/add-users-iw/access-panel-invitation.png)
    
 7. Wybierz **Dodaj** można automatycznie wysłać zaproszenia do użytkownika gościa. Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do katalogu jako gość.
 

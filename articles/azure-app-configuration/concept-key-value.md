@@ -1,6 +1,6 @@
 ---
 title: Magazyn klucz-wartość usługi Azure App Configuration | Microsoft Docs
-description: Omówienie sposobu przechowywania danych konfiguracji w usłudze Azure App Configuration
+description: Omówienie przechowywania danych konfiguracji w konfiguracji aplikacji platformy Azure
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,36 +12,36 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: f04067358b0b2bae745727a5dd7a1f5554f9f70e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 352bc20bb4082dd14b810a6afe85653cfd67e7e1
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884984"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224473"
 ---
 # <a name="key-value-store"></a>Magazyn wartości klucza
 
-Usługa Azure App Configuration przechowuje dane konfiguracji jako pary klucz-wartość — jest to prosty, a przy tym elastyczny sposób reprezentowania różnorodnych ustawień aplikacji, znany deweloperom.
+Konfiguracja aplikacji Azure przechowuje dane konfiguracji jako pary klucz wartość. Pary klucz wartość to proste, ale elastyczny sposób reprezentują różne rodzaje ustawień aplikacji, które deweloperzy, którzy znają.
 
 ## <a name="keys"></a>Klucze
 
-Klucze służą jako nazwy dla par klucz-wartość i są używane do przechowywania i pobierania odpowiednich wartości. Powszechną praktyką jest organizowanie kluczy w hierarchicznej przestrzeni nazw przy użyciu ogranicznika znaku (takiego jak `/` lub `:`) na podstawie konwencji, która jest najbardziej odpowiednia dla danej aplikacji. Usługa App Configuration traktuje klucze jako jedną całość. Klucze nie są analizowane w celu ustalenia ich struktury i nie są na nich wymuszane żadne reguły.
+Klucze służą jako nazwy dla par klucz wartość i są używane do przechowywania i pobierania odpowiednie wartości. Jest to powszechną praktyką w celu zorganizowania klucze hierarchicznej przestrzeni nazw przy użyciu znaku ogranicznika, takich jak `/` lub `:`. Należy użyć Konwencji, który jest najbardziej odpowiedni dla aplikacji. Usługa App Configuration traktuje klucze jako jedną całość. Go nie przeanalizować klucze, aby zorientować się, jak ich nazwy są skonstruowane ani wymuszać reguły na nich.
 
-Użycie magazynu konfiguracji w ramach struktury aplikacji może wymagać określonych schematów nazewnictwa dla par klucz-wartość. Na przykład struktura Spring Cloud języka Java definiuje zasoby `Environment`, które zawierają ustawienia dla aplikacji platformy Spring, tak, aby były parametryzowane za pomocą zmiennych, takich jak *nazwa aplikacji* i *profil*. Klucze dla danych konfiguracji związanych z platformą Spring Cloud zazwyczaj zaczynają się od tych dwóch elementów oddzielonych ogranicznikiem.
+Użycie magazynu konfiguracji w ramach struktury aplikacji może określać określonych systemów nazewnictwa dla wartości klucza. Na przykład w języku Java Spring Cloud framework definiuje `Environment` zasoby, które określania ustawień dla aplikacji platformy Spring, aby zostać sparametryzowane przez zmienne, które obejmują *Nazwa aplikacji* i *profilu*. Klucze dla danych konfiguracji odnoszące się do Spring Cloud zaczynają się zwykle te dwa elementy, oddzielając ogranicznika.
 
-Klucze przechowywane w usłudze App Configuration są opartymi na standardzie Unicode ciągami uwzględniającymi wielkość liter. W magazynie konfiguracji aplikacji klucze *app1* i *App1* są rozróżniane. Należy o tym pamiętać, korzystając z ustawień konfiguracji w aplikacji, ponieważ niektóre struktury obsługują klucze konfiguracji bez uwzględniania wielkości liter. Na przykład system konfiguracji platformy ASP.NET Core traktuje klucze jako ciągi bez uwzględniania wielkości liter. Aby uniknąć nieprzewidywalnych zachowań podczas wykonywania zapytań względem usługi App Configuration w ramach aplikacji platformy ASP.NET Core, nie należy używać kluczy, które różnią się tylko wielkością liter.
+Klucze przechowywane w usłudze App Configuration są opartymi na standardzie Unicode ciągami uwzględniającymi wielkość liter. W magazynie konfiguracji aplikacji klucze *app1* i *App1* są rozróżniane. Miej to na uwadze, korzystając z ustawień konfiguracji w aplikacji, ponieważ niektóre środowiska obsługi kluczy konfiguracji uwzględniania wielkości liter. Na przykład system konfiguracji platformy ASP.NET Core traktuje klucze jako ciągi bez uwzględniania wielkości liter. Aby uniknąć nieprzewidywalnych zachowania, gdy zapytanie konfiguracji aplikacji w aplikacji platformy ASP.NET Core, nie używaj kluczy, które różnią się jedynie wielkość liter.
 
-W nazwach kluczy wprowadzanych do usługi App Configuration można używać dowolnych znaków Unicode z wyjątkiem znaków `*`, `,` i `\`, które są zastrzeżone. Jeśli chcesz uwzględnić znak zastrzeżony, musisz to zrobić w następujący sposób: `\{Reserved Character}`. Limit łącznego rozmiaru dla pary klucz-wartość wynosi 10K znaków. Obejmuje to wszystkie znaki w kluczu, w jego wartości i we wszystkich skojarzonych atrybutach opcjonalnych. W ramach tego limitu możesz mieć wiele poziomów hierarchii dla kluczy.
+Można użyć dowolnych znaków unicode w nazwach kluczy wprowadzane do konfiguracji aplikacji, z wyjątkiem `*`, `,`, i `\`. Następujące znaki są zastrzeżone. Jeśli potrzebujesz uwzględnić zastrzeżonego znaku, musisz wyjść z niego przy użyciu `\{Reserved Character}`. Obowiązuje limit łącznego rozmiaru 10 000 znaków w pary klucz wartość. Ten limit obejmuje wszystkie znaki w kluczu, a jego wartość i wszystkie skojarzone z opcjonalnych atrybutów. W ramach tego limitu możesz mieć wiele poziomów hierarchii dla kluczy.
 
-### <a name="designing-key-namespaces"></a>Projektowanie przestrzeni nazw kluczy
+### <a name="design-key-namespaces"></a>Projektowanie przestrzeni nazw kluczy
 
-Istnieją dwie ogólne metody nadawania nazw kluczom używanym na potrzeby danych konfiguracji: płaska i hierarchiczna. Te metody są bardzo podobne z punktu widzenia użycia aplikacji, jednak ta druga metoda oferuje szereg korzyści:
+Istnieją dwie ogólne metody nadawania nazw kluczom używanym na potrzeby danych konfiguracji: płaska i hierarchiczna. Te metody są podobne, z punktu widzenia użycia aplikacji, ale hierarchiczne nazewnictwa oferuje następujące korzyści:
 
-* Łatwość odczytywania. Zamiast jednej długiej sekwencji znaków są ograniczniki, które w hierarchicznej nazwie klucza działają jak spacje w zdaniu i zapewniają naturalne przerwy między wyrazami.
+* Łatwość odczytywania. Zamiast jednego długo sekwencja znaków ograniczniki w hierarchiczne nazwa klucza pełnią miejsca do magazynowania w zdaniu. Zapewniają także naturalne przerwy między wyrazami.
 * Łatwość zarządzania. Hierarchia nazw kluczy reprezentuje grupy logiczne danych konfiguracji.
-* Łatwość użycia. Łatwiej jest napisać zapytanie, które dopasowuje klucze do wzorca w strukturze hierarchicznej i pobiera tylko część danych konfiguracji. Ponadto wiele nowszych środowisk programistycznych oferuje natywną obsługę hierarchicznych danych konfiguracji, dzięki czemu Twoja aplikacja może wykorzystać określone zestawy konfiguracji.
+* Łatwość użycia. Łatwiej jest napisać zapytanie, które dopasowuje klucze do wzorca w strukturze hierarchicznej i pobiera tylko część danych konfiguracji. Ponadto wiele struktur programowania nowszej mieć natywną obsługę danych hierarchicznych konfiguracji, takie, które mogą ułatwić aplikacji wykorzystujących konkretnych zestawów konfiguracji.
 
-Klucze w usłudze App Configuration można organizować hierarchicznie na wiele sposobów. Takie klucze można traktować jako [identyfikatory URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). Każdy klucz hierarchiczny jest *ścieżką* zasobu złożoną z jednego lub kilku składników połączonych za pomocą ograniczników. Możesz wybrać, jakiego znaku użyć jako ogranicznika, w zależności od tego, czego potrzebuje Twoja aplikacja, język programowania lub struktura. W usłudze App Configuration można użyć wielu ograniczników dla różnych kluczy.
+Klucze w usłudze App Configuration można organizować hierarchicznie na wiele sposobów. Traktować te klucze jak [identyfikatorów URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). Każdy klucz hierarchicznej jest zasobem *ścieżki* składa się z co najmniej jednego składnika, które są łączone ze sobą za ograniczniki. Wybierz jakie znaków do użycia jako ogranicznika, dla jakich aplikacji, język programowania, lub potrzebuje framework. Wiele ograniczników na użytek różnych kluczy w konfiguracji aplikacji.
 
 Poniżej przedstawiono kilka przykładów, jak można ustrukturyzować nazwy kluczy w hierarchię:
 
@@ -65,45 +65,45 @@ Poniżej przedstawiono kilka przykładów, jak można ustrukturyzować nazwy klu
         AppName:Production:Region1:DB:Endpoint
         AppName:Production:Region2:DB:Endpoint
 
-### <a name="versioning-key-values"></a>Przechowywanie wersji par klucz-wartość
+### <a name="version-key-values"></a>Wartości klucza wersji
 
-Pary klucz-wartość w usłudze App Configuration mogą opcjonalnie mieć atrybut **etykiety**. Etykiety umożliwiają rozróżnienie par klucz-wartość z tym samym kluczem. Klucz *app1* z etykietami *v1* i *v2* tworzy dwie oddzielne pary klucz-wartość w magazynie konfiguracji aplikacji. Domyślnie etykieta dla pary klucz-wartość jest pusta (lub równa `null`).
+Wartości klucza w konfiguracji aplikacji mogą opcjonalnie mieć atrybut etykiety. Etykiety umożliwiają odróżnienie wartości klucza z tego samego klucza. Klucz *app1* z etykietami *v1* i *v2* tworzą dwie oddzielne wartości kluczy w magazynie konfiguracji aplikacji. Domyślnie etykiety wartość klucza jest pusta, lub `null`.
 
-Usługa App Configuration nie tworzy wersji par klucz-wartość automatycznie, gdy są one modyfikowane. Przy użyciu etykiet można tworzyć wiele wersji pary klucz-wartość. W etykietach można na przykład umieścić numer wersji aplikacji lub identyfikator zatwierdzenia usługi Git, aby identyfikować pary klucz-wartość skojarzone z określoną kompilacją oprogramowania.
+Konfiguracja aplikacji automatycznie nie wartości klucza wersji ich modyfikacji. Używanie etykiet jako sposób tworzenia wielu wersji wartość klucza. Na przykład można wpisać numer wersji aplikacji lub identyfikator zatwierdzenia usługi Git w etykiecie do identyfikowania wartości klucza skojarzone z kompilacji konkretnego oprogramowania.
 
-W etykietach można używać dowolnych znaków Unicode z wyjątkiem znaków `*`, `,` i `\`, które są zastrzeżone. Jeśli chcesz uwzględnić znak zastrzeżony, musisz to zrobić w następujący sposób: `\{Reserved Character}`.
+Można użyć dowolnych znaków unicode w etykiecie, z wyjątkiem `*`, `,`, i `\`. Następujące znaki są zastrzeżone. Aby dołączyć zastrzeżonego znaku, musisz wyjść z niego przy użyciu `\{Reserved Character}`.
 
-### <a name="querying-key-values"></a>Wysyłanie zapytań względem par klucz-wartość
+### <a name="query-key-values"></a>Wartości klucza zapytania
 
-Każda para klucz-wartość jest unikatowo identyfikowana za pomocą klucza oraz etykiety, która może mieć wartość `null`. Aby wysłać zapytanie do magazynu konfiguracji aplikacji dotyczące par klucz-wartość, należy określić wzorzec. Magazyn konfiguracji aplikacji zwróci wszystkie pary klucz-wartość pasujące do wzorca wraz z odpowiadającymi im wartościami i atrybutami. W wywołaniach interfejsu API REST do usługi App Configuration możesz użyć następujących wzorców klucza:
+Każda wartość klucza jest unikatowo identyfikowana przez jego klucza oraz etykiety, które mogą być `null`. Konfiguracja sklepu z aplikacjami dla wartości klucza są zapytania, określając wzorca. Konfiguracja sklepu zwraca wszystkie wartości kluczy, które pasują do wzorca oraz odpowiadające im wartości i atrybutów. Użyj następujących wzorców klucza w wywołaniach interfejsu API REST konfiguracji aplikacji:
 
 | Klucz | |
 |---|---|
 | Element `key` jest pomijany lub `key=*` | Pasuje do wszystkich kluczy |
-| `key=abc` | Dokładnie pasuje do nazwy klucza **abc**. |
+| `key=abc` | Nazwa klucza dopasowania **abc** dokładnie |
 | `key=abc*` | Pasuje do nazw kluczy, które zaczynają się od ciągu **abc** |
 | `key=*abc` | Pasuje do nazw kluczy, które kończą się ciągiem **abc** |
 | `key=*abc*` | Pasuje do nazw kluczy, które zawierają ciąg **abc** |
-| `key=abc,xyz` | Pasuje do nazw kluczy **abc** lub **xyz**, z ograniczeniem do 5 plików CSV |
+| `key=abc,xyz` | Dopasowania nazw kluczy **abc** lub **xyz**, maksymalnie pięć udostępnionych woluminów klastra |
 
-Możesz również uwzględnić następujące wzorce etykiety:
+Może zawierać również następujące wzorce etykiety:
 
 | Label | |
 |---|---|
-| Element `label` jest pomijany lub `label=*` | Pasuje do każdej etykiety, także równej `null` |
-| `label=%00` | Pasuje do etykiety `null`. |
+| Element `label` jest pomijany lub `label=*` | Dopasowuje wszelkie etykiety, która zawiera `null` |
+| `label=%00` | Dopasowuje `null` etykiety |
 | `label=1.0.0` | Dokładnie pasuje do etykiety **1.0.0** |
 | `label=1.0.*` | Pasuje do etykiet zaczynających się od **1.0.** |
 | `label=*.0.0` | Pasuje do etykiet kończących się na **.0.0** |
 | `label=*.0.*` | Pasuje do etykiet zawierających **.0.** |
-| `label=%00,1.0.0` | Pasuje do etykiet `null` lub **1.0.1**, z ograniczeniem do 5 plików CSV |
+| `label=%00,1.0.0` | Pasuje do etykiety `null` lub **1.0.1**, maksymalnie pięć udostępnionych woluminów klastra |
 
 ## <a name="values"></a>Wartości
 
-Wartości przypisane do kluczy są również ciągami Unicode. W przypadku wartości można używać wszystkich znaków Unicode. Istnieje opcjonalny, zdefiniowany przez użytkownika **typ zawartości** skojarzony z każdą wartością. Za pomocą tego atrybutu można przechowywać informacje (na przykład schemat kodowania) dotyczące wartości, które pomagają aplikacji w jej poprawnym przetworzeniu.
+Wartości przypisane do kluczy są również ciągami Unicode. W przypadku wartości można używać wszystkich znaków Unicode. Brak opcjonalne zdefiniowanych przez użytkownika typ zawartości skojarzone z każdą wartość. Użyj tego atrybutu do przechowywania informacji, na przykład schemat kodowania, o wartość, która pomaga aplikacjom poprawnie go przetworzyć.
 
-Dane konfiguracji przechowywane w magazynie konfiguracji aplikacji, w tym wszystkie klucze i wartości, są szyfrowane podczas przechowywania i podczas przesyłania. Niemniej jednak usługa App Configuration nie jest rozwiązaniem zastępującym usługę Azure Key Vault. Nie należy w niej przechowywać kluczy tajnych aplikacji.
+Dane konfiguracji przechowywane w magazynie konfiguracji aplikacji, która zawiera wszystkie klucze i wartości, są szyfrowane podczas przechowywania i podczas przesyłania. Konfiguracja aplikacji nie jest rozwiązaniem zastąpienia dla usługi Azure Key Vault. Nie należy przechowywać w nim wpisów tajnych aplikacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Pojęcie: Migawka punktu w czasie](concept-point-time-snapshot.md)  

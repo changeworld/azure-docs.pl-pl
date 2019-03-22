@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/14/2019
+ms.date: 3/20/2019
 ms.author: mayg
-ms.openlocfilehash: cd486fa504ac819684d8c547e7a0f740b3eed4e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109631"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286350"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analizowanie raportu Planisty wdrożenia usługi Azure Site Recovery dla odzyskiwania po awarii programu VMware na platformę Azure
 
@@ -279,7 +279,7 @@ Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 16 KB | 4 MB/s |  336 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 32 KB lub większy | 8 MB/s | 672 GB na dysk
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dysk
-Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |10 MB/s | 842 GB na dysk
+Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy | 20 MB/s | 1684 GB na dysk
 
 **Źródłowy współczynnik zmian danych** | **Limit maksymalny**
 ---|---

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 733ae4451988651df2a62a22aa6eb1b6fae44309
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ea4cf03b368cebbfc7d1229be28014b54f2c11d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331728"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004314"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Blob Storage przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -181,6 +181,7 @@ Przyjrzyjmy się jak szybko skopiować dane z usługi Azure blob storage. W tym 
     John, Doe
     Jane, Doe
     ```
+
 ### <a name="create-the-data-factory"></a>Tworzenie fabryki danych
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Kliknij przycisk **Utwórz zasób** w lewym górnym rogu, kliknij **rozwiązania inteligentne + analiza**i kliknij przycisk **usługi Data Factory**.
@@ -249,14 +250,14 @@ Przyjrzyjmy się jak szybko skopiować dane z usługi Azure blob storage. W tym 
     4. Wybierz swoje konto usługi Azure storage.
     5. Kliknij przycisk **Dalej**.
 10. Na **Wybieranie wyjściowego pliku lub folderu** strony:  
-    6. Określ **ścieżka folderu** jako **adfblobconnector/output / {year} / {month} / {day}**. Wprowadź **kartę**.
-    7. Aby uzyskać **roku**, wybierz opcję **rrrr**.
-    8. Aby uzyskać **miesiąca**, upewnij się, że jest ustawiona na **MM**.
-    9. Aby uzyskać **dzień**, upewnij się, że jest ustawiona na **dd**.
-    10. Upewnij się, że **typ kompresji** ustawiono **Brak**.
-    11. Upewnij się, że **skopiuj zachowanie** ustawiono **scalania plików**. Jeśli plik wyjściowy o takiej samej nazwie już istnieje, Nowa zawartość jest dodawany do tego samego pliku, na końcu.
-    12. Kliknij przycisk **Dalej**.
-    ![Narzędzie kopiowania — Wybieranie pliku lub folderu wyjściowego](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+    1. Określ **ścieżka folderu** jako **adfblobconnector/output / {year} / {month} / {day}**. Wprowadź **kartę**.
+    1. Aby uzyskać **roku**, wybierz opcję **rrrr**.
+    1. Aby uzyskać **miesiąca**, upewnij się, że jest ustawiona na **MM**.
+    1. Aby uzyskać **dzień**, upewnij się, że jest ustawiona na **dd**.
+    1. Upewnij się, że **typ kompresji** ustawiono **Brak**.
+    1. Upewnij się, że **skopiuj zachowanie** ustawiono **scalania plików**. Jeśli plik wyjściowy o takiej samej nazwie już istnieje, Nowa zawartość jest dodawany do tego samego pliku, na końcu.
+    1. Kliknij przycisk **Dalej**.
+       ![Narzędzie kopiowania — Wybieranie pliku lub folderu wyjściowego](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. Na **ustawienia formatu pliku** strony, przejrzyj ustawienia, a następnie kliknij przycisk **dalej**. Jednym z dodatkowych opcji w tym miejscu jest dodanie nagłówka do pliku wyjściowego. Jeśli wybierzesz tę opcję, wiersz nagłówka dodaje się nazwy kolumn ze schematu źródła. Podczas wyświetlania schematu dla źródła, można zmienić domyślne nazwy kolumn. Na przykład możesz zmienić pierwszej kolumny, imię i nazwisko drugą kolumnę. Następnie plik wyjściowy jest generowany przy użyciu nagłówka o tych nazwach jako nazwy kolumn.
     ![Narzędzie kopiowania — ustawienia formatu pliku dla miejsca docelowego](media/data-factory-azure-blob-connector/file-format-destination.png)
 12. Na **ustawienia wydajności** strony, upewnij się, że **jednostki w chmurze** i **równoległe kopie** są ustawione na **automatycznie**i kliknij przycisk Dalej. Aby uzyskać szczegółowe informacje o tych ustawieniach, zobacz [skopiuj dostrajania przewodnik dotyczący wydajności działania i](data-factory-copy-activity-performance.md#parallel-copy).
@@ -281,7 +282,7 @@ Przyjrzyjmy się jak szybko skopiować dane z usługi Azure blob storage. W tym 
     2017/04/24
     2017/04/25
     ```
-Aby uzyskać szczegółowe informacje o monitorowaniu i zarządzaniu fabryki danych, zobacz [monitorowanie i zarządzanie nimi w potoku usługi Data Factory](data-factory-monitor-manage-app.md) artykułu.
+   Aby uzyskać szczegółowe informacje o monitorowaniu i zarządzaniu fabryki danych, zobacz [monitorowanie i zarządzanie nimi w potoku usługi Data Factory](data-factory-monitor-manage-app.md) artykułu.
 
 ### <a name="data-factory-entities"></a>Jednostek usługi fabryka danych
 Teraz przejdź do karty z strona główna fabryki danych. Należy zauważyć, że istnieją dwie połączone usługi, dwa zestawy danych i jednego potoku w fabryce danych teraz.

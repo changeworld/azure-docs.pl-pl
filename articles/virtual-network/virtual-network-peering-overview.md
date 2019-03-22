@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 5141cd083469d51a067bbc993f598393768fe99f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000189"
+ms.locfileid: "58200586"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -79,7 +79,7 @@ Informacje na ten temat zawiera również artykuł [Troubleshooter for virtual n
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia
 
 Następujące ograniczenia mają zastosowanie tylko wtedy, gdy sieci wirtualne są globalnie połączone za pomocą sieci równorzędnych:
-- Zasoby w jednej sieci wirtualnej nie może komunikować się z adresu IP frontonu podstawowe wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Obsługa podstawowego modułu równoważenia obciążenia istnieje tylko w obrębie tego samego regionu. Obsługa standardowego modułu równoważenia obciążenia istnieje dla globalnych wirtualnych sieci równorzędnych.  — Zasoby w jednej sieci wirtualnej nie może komunikować się z adres IP frontonu podstawowe wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Obsługa podstawowego modułu równoważenia obciążenia istnieje tylko w obrębie tego samego regionu. Obsługa standardowego modułu równoważenia obciążenia dla istnieje, wirtualnych sieci równorzędnych i globalnych wirtualnych sieci równorzędnych.
+- Zasoby w jednej sieci wirtualnej nie może komunikować się z adresu IP frontonu podstawowe wewnętrznego modułu równoważenia obciążenia globalne równorzędne sieci wirtualnych. Obsługa podstawowego modułu równoważenia obciążenia istnieje tylko w obrębie tego samego regionu. Obsługa standardowego modułu równoważenia obciążenia istnieje dla globalnych wirtualnych sieci równorzędnych.
 - Można użyć bram zdalnych lub Zezwalaj na tranzyt przez bramę na globalne równorzędne sieci wirtualne w wersji zapoznawczej. Podgląd jest dostępny we wszystkich regionach platformy Azure, regionów chmury w Chinach i regionów chmury dla instytucji rządowych. Wymagany jest nie umieszczania na białej liście. Możesz przetestować w wersji zapoznawczej za pośrednictwem interfejsu wiersza polecenia, programu PowerShell, szablonów i interfejsu API. Portal nie jest obsługiwana w wersji zapoznawczej.
 
 Aby dowiedzieć się więcej na temat wymagań i ograniczeń, zobacz [Wymagania i ograniczenia dotyczące komunikacji równorzędnej między sieciami wirtualnymi](virtual-network-manage-peering.md#requirements-and-constraints). Aby dowiedzieć się więcej na temat limitów liczby komunikacji równorzędnych, które można utworzyć dla sieci wirtualnej, zobacz [Ograniczenia sieci platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 

@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3904a59a3462d7d83f976583bd7e714763af2c69
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: c3a7c089bcc6dca2379c84330d3b937b9c7f1167
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446736"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450298"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Szybki start: Tworzenie usługi Azure Data Factory i potoku przy użyciu interfejsu API REST
 
@@ -34,10 +34,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji, możesz utworzyć konto [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 * **Konto usługi Azure Storage**. Magazyn obiektów blob jest używany jako magazyn **źródła** i **ujścia** danych. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 * Utwórz **kontener obiektów blob** w usłudze Blob Storage, utwórz **folder** wejściowy w kontenerze i przekaż niektóre pliki do folderu. Narzędzia, takie jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/), umożliwiają łączenie z usługą Azure Blob Storage, tworzenie kontenera obiektów blob, przekazywanie pliku wejściowego i weryfikację pliku wyjściowego.
-* Zainstaluj program **Azure PowerShell**. Wykonaj instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Ten samouczek Szybki start używa programu PowerShell do wywoływania interfejsu API REST.
+* Zainstaluj program **Azure PowerShell**. Wykonaj instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps). Ten samouczek Szybki start używa programu PowerShell do wywoływania interfejsu API REST.
 * **Utwórz aplikację w usłudze Azure Active Directory**, wykonując [tę instrukcję](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Zapisz następujące wartości, których użyjesz w kolejnych krokach: **identyfikator aplikacji**, **klucz uwierzytelniania** i **identyfikator dzierżawy**. Przypisz aplikację do roli „**Współautor**”.
 
 ## <a name="set-global-variables"></a>Ustawianie zmiennych globalnych
@@ -47,17 +49,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     Uruchom poniższe polecenie i wprowadź nazwę użytkownika oraz hasło, których używasz do logowania się w witrynie Azure Portal:
     
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
     Uruchom poniższe polecenie, aby wyświetlić wszystkie subskrypcje dla tego konta:
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
     Uruchom poniższe polecenie, aby wybrać subskrypcję, z którą chcesz pracować. Zastąp parametr **SubscriptionId** identyfikatorem Twojej subskrypcji platformy Azure:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
 2. Uruchom następujące polecenia, zastępując symbole zastępcze własnymi wartościami, aby ustawić zmienne globalne, które zostaną użyte w kolejnych krokach.
 
@@ -438,14 +440,14 @@ Zasoby, które zostały utworzone w ramach tego przewodnika Szybki start, możes
 
 Uruchom poniższe polecenie, aby usunąć całą grupę zasobów:
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 Uruchom następujące polecenie, aby usunąć tylko fabrykę danych:
 
 ```powershell
-Remove-AzureRmDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<NameOfResourceGroup>"
+Remove-AzDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<NameOfResourceGroup>"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-dot-net.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 4eb4db9a4057d072f348de48bee2f746f77cbb84
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6001d291581dc317da89cadbf3891e334362062b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715345"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897592"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight
 
@@ -51,7 +51,7 @@ Aby uzyskać **klastrów Windows**: [https://hdiconfigactions.blob.core.windows.
 
 * Konto magazynu zawierające biblioteki pliki jar **musi** można połączyć w klaster HDInsight podczas tworzenia. Musi to być domyślne konto magazynu lub konto dodane za pośrednictwem __opcjonalna konfiguracja__.
 
-* Ścieżka WASB do kontenera należy określić jako parametru akcji skryptu. Na przykład, jeśli w plikach JAR są przechowywane w kontenerze o nazwie **libs** na koncie magazynu o nazwie **mój_magazyn**, wartość parametru może być **wasb://libs@mystorage.blob.core.windows.net/**.
+* Ścieżka WASB do kontenera należy określić jako parametru akcji skryptu. Na przykład, jeśli w plikach JAR są przechowywane w kontenerze o nazwie **libs** na koncie magazynu o nazwie **mój_magazyn**, wartość parametru może być **wasb://libs\@ mystorage.blob.Core.Windows.NET/**.
 
   > [!NOTE]  
   > W tym dokumencie przyjęto założenie, że masz już utworzone konto magazynu, kontener obiektów blob, a przekazać pliki do niego.
@@ -77,9 +77,9 @@ Aby uzyskać **klastrów Windows**: [https://hdiconfigactions.blob.core.windows.
 
    * **PROCES ROBOCZY**: Zaznacz tę opcję.
 
-   * **DOZORCY**: Pozostaw to pole puste.
+   * **ZOOKEEPER**: Pozostaw to pole puste.
 
-   * **PARAMETRY**: Wprowadź adres WASB kontener i konto magazynu zawierającego plikach JAR. Na przykład **wasb://libs@mystorage.blob.core.windows.net/**.
+   * **PARAMETRY**: Wprowadź adres WASB kontener i konto magazynu zawierającego plikach JAR. Na przykład **wasb://libs\@mystorage.blob.core.windows.net/**.
 
 3. W dolnej części **akcji skryptu**, użyj **wybierz** przycisk, aby zapisać konfigurację.
 

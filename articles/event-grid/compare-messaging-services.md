@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/30/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 0a71b88f6ad85cbd76f9bc789e87ad5b032418c9
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297110"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540809"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Wybór usługi do obsługi wiadomości na platformie Azure — Event Grid, Event Hubs i Service Bus
 
@@ -34,7 +34,7 @@ Należy pamiętać o istotnej różnicy między usługami dostarczającymi zdarz
 
 Zdarzenie to lekkie powiadomienie z informacją o zmianie stanu lub warunku. Wydawca zdarzenia nie ma żadnych oczekiwań dotyczących sposobu obsługi zdarzenia. Odbiorca zdarzenia decyduje o tym, co zrobić z powiadomieniem. Zdarzenia mogą być odrębnymi jednostkami lub częścią serii.
 
-Zdarzenia odrębne zgłaszają zmianę stanu i umożliwiają wykonanie akcji. Aby wykonać kolejny krok, odbiorca musi tylko wiedzieć, że coś się wydarzyło. Dane zdarzenia zawierają informacje o tym, co się stało, ale nie zawierają danych, które wyzwoliły zdarzenie. Na przykład zdarzenie powiadamia odbiorców, że utworzono plik. Może ono zawierać ogólne informacje o pliku, ale nie zawiera samego pliku. Zdarzenia odrębne doskonale sprawdzają się w rozwiązaniach [bez serwera](http://azure.com/serverless) wymagających skalowania.
+Zdarzenia odrębne zgłaszają zmianę stanu i umożliwiają wykonanie akcji. Aby wykonać kolejny krok, odbiorca musi tylko wiedzieć, że coś się wydarzyło. Dane zdarzenia zawierają informacje o tym, co się stało, ale nie zawierają danych, które wyzwoliły zdarzenie. Na przykład zdarzenie powiadamia odbiorców, że utworzono plik. Może ono zawierać ogólne informacje o pliku, ale nie zawiera samego pliku. Zdarzenia odrębne doskonale sprawdzają się w rozwiązaniach [bez serwera](https://azure.com/serverless) wymagających skalowania.
 
 Zdarzenia w serii zgłaszają warunek i nadają się do analizy. Zdarzenia są uporządkowane według czasu i powiązane. Odbiorca potrzebuje sekwencyjnej serii zdarzeń, aby móc przeanalizować, co się zdarzyło.
 
@@ -44,7 +44,7 @@ Komunikat to nieprzetworzone dane utworzone przez usługę, które mają zostać
 
 ## <a name="comparison-of-services"></a>Porównanie usług
 
-| Usługa | Przeznaczenie | Typ | Kiedy stosować |
+| Usługa | Przeznaczenie | Type | Kiedy stosować |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Programowanie reaktywne | Dystrybucja zdarzeń (odrębne) | Reagowanie na zmiany stanu |
 | Event Hubs | Potok danych big data | Przesyłanie strumieniowe zdarzeń (serie) | Przesyłanie strumieniowe rozproszonych danych i telemetrii |
@@ -96,7 +96,7 @@ W innych przypadkach można je połączyć ze sobą w celu utworzenia potoku zda
 
 ![Omówienie przesyłania strumieniowego danych](./media/compare-messaging-services/overview.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły: 
 
 - [Zdarzenia, punkty danych i komunikaty — wybieranie usługi platformy Azure do obsługi wiadomości właściwej dla Twoich danych](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).

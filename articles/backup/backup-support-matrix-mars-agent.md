@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: e12ca7561181412318fa594093b047cd95e4e6bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448041"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894397"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta usługi Microsoft Azure Recovery Services (MARS)
 
@@ -26,9 +26,7 @@ Usługa Azure Backup używa agenta usług MARS, wykonywanie kopii zapasowych dan
 - Tak, aby ich kopię zapasową można wykonać bezpośrednio do magazynu, należy uruchomić na maszynach wirtualnych Windows.
 - Uruchom na serwerze System Center Data Protection Manager (DPM) lub Microsoft Azure Backup Server (MABS). W tym scenariuszu maszyn i obciążeń Utwórz kopię zapasową serwera usługi Mab lub serwerze programu DPM. Agenta usług MARS, a następnie tworzy kopię zapasową tego serwera do magazynu na platformie Azure. 
 
-Opcje kopii zapasowej zależą od tego, gdzie agent jest zainstalowany. Aby uzyskać więcej informacji, zobacz [architektury usługi Azure Backup przy użyciu agenta usług MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders). Aby uzyskać informacje o architekturze usługi tworzenia kopii zapasowej programu DPM i serwera usługi Mab, zobacz [wykonaj kopię zapasową programu DPM lub MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Zobacz też [wymagania](backup-support-matrix-mabs-dpm.md) architektury kopii zapasowej.
-
-## <a name="supported-installations"></a>Obsługiwane urządzenia
+Opcje kopii zapasowej zależą od tego, gdzie agent jest zainstalowany. Aby uzyskać więcej informacji, zobacz [architektury usługi Azure Backup przy użyciu agenta usług MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Aby uzyskać informacje o architekturze usługi tworzenia kopii zapasowej programu DPM i serwera usługi Mab, zobacz [wykonaj kopię zapasową programu DPM lub MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Zobacz też [wymagania](backup-support-matrix-mabs-dpm.md) architektury kopii zapasowej.
 
 **Instalacja** | **Szczegóły**
 --- | ---
@@ -139,14 +137,12 @@ Usługa Azure Backup obsługuje *rozmieszczanie w trybie offline* transferu dany
 
 Kopie zapasowe offline, nie może służyć do pliki stanu systemu.
 
-
 ## <a name="support-for-data-restoration"></a>Obsługa przywracaniem danych
 
 Za pomocą [natychmiastowe Przywracanie](backup-instant-restore-capability.md) funkcji usługi Azure Backup można przywrócić dane, przed skopiowaniem ich do magazynu. Maszyny wykonujesz kopie zapasowe musi działać .NET Framework 4.5.2 lub nowszej.
 
 Nie można przywrócić kopii zapasowych na komputerze docelowym z systemem wcześniejszej wersji systemu operacyjnego. Na przykład kopii zapasowej z komputera z systemem Windows 7 można przywrócić w systemie Windows 8 lub nowszym. Ale nie można przywrócić kopii zapasowej z komputera z systemem Windows 8 na komputerze z uruchomionym systemem Windows 7.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [kopii zapasowej architektury, która używa agenta usług MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders).
+- Dowiedz się więcej o [kopii zapasowej architektury, która używa agenta usług MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Dowiedz się, co jest obsługiwane w przypadku możesz [Uruchom agenta MARS na serwerze programu DPM lub MABS](backup-support-matrix-mabs-dpm.md).

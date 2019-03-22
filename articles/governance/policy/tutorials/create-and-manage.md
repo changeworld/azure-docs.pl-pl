@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e49cffc5ba08d400c733ef7c211132c4909f9ef4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343565"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780290"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 
@@ -87,32 +87,32 @@ Teraz, gdy wbudowana definicja zasad została przypisana, możesz wykonywać dal
       - Warunki/reguły zasad, w tym przypadku jest to rozmiar jednostki SKU maszyny wirtualnej, który jest równy serii G
       - Efekt zasad, w tym przypadku **Deny**.
 
-    Oto, jak powinien wyglądać kod JSON. Wklej poprawiony kod do witryny Azure Portal.
+   Oto, jak powinien wyglądać kod JSON. Wklej poprawiony kod do witryny Azure Portal.
 
-    ```json
-    {
-        "policyRule": {
-            "if": {
-                "allOf": [{
-                        "field": "type",
-                        "equals": "Microsoft.Compute/virtualMachines"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/sku.name",
-                        "like": "Standard_G*"
-                    }
-                ]
-            },
-            "then": {
-                "effect": "deny"
-            }
-        }
-    }
-    ```
+   ```json
+   {
+       "policyRule": {
+           "if": {
+               "allOf": [{
+                       "field": "type",
+                       "equals": "Microsoft.Compute/virtualMachines"
+                   },
+                   {
+                       "field": "Microsoft.Compute/virtualMachines/sku.name",
+                       "like": "Standard_G*"
+                   }
+               ]
+           },
+           "then": {
+               "effect": "deny"
+           }
+       }
+   }
+   ```
 
-    Właściwość *field* reguły zasad musi mieć jedną z następujących wartości: Name (Nazwa), Type (Typ), Location (Lokalizacja), Tags (Tagi) lub alias. Przykładem aliasu może być `"Microsoft.Compute/VirtualMachines/Size"`.
+   Właściwość *field* reguły zasad musi mieć jedną z następujących wartości: Name (Nazwa), Type (Typ), Location (Lokalizacja), Tags (Tagi) lub alias. Przykładem aliasu może być `"Microsoft.Compute/VirtualMachines/Size"`.
 
-    Aby wyświetlić więcej przykładowych zasad Azure, zobacz [Przykłady dla usługi Azure Policy](../samples/index.md).
+   Aby wyświetlić więcej przykładowych zasad Azure, zobacz [Przykłady dla usługi Azure Policy](../samples/index.md).
 
 1. Wybierz pozycję **Zapisz**.
 
@@ -445,7 +445,7 @@ Jeśli nie planujesz dalszej pracy z zasobami utworzonymi w tym samouczku, wykon
 
 1. Kliknij prawym przyciskiem myszy wiersz albo wybierz wielokropek na końcu definicji lub przypisania, a następnie wybierz pozycję **Usuń definicję** (lub **Usuń przypisanie**).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku pomyślnie wykonano następujące czynności:
 

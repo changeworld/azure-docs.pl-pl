@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 8c66b603bd8c974bcaa63ee2aad58f7fd8fe04e6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555124"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003687"
 ---
 # <a name="azure-signalr-service-authentication"></a>Uwierzytelnianie w usłudze Azure SignalR Service
 
@@ -61,9 +61,9 @@ Do ukończenia tego samouczka niezbędne są:
     | Nazwa ustawienia | Sugerowana wartość | Opis |
     | ------------ | --------------- | ----------- |
     | Nazwa aplikacji | *Azure SignalR Chat* | Użytkownik usługi GitHub powinien mieć możliwość rozpoznania i zaufania aplikacji, za pomocą której następuje uwierzytelnienie.   |
-    | Homepage URL (Adres URL strony głównej) | *http://localhost:5000/home* | |
+    | Homepage URL (Adres URL strony głównej) | `http://localhost:5000/home` | |
     | Application description (Opis aplikacji) | *Przykład pokoju rozmów z użyciem usługi Azure SignalR Service z uwierzytelnianiem usługi GitHub* | Przydatny opis aplikacji, który pomoże użytkownikom Twojej aplikacji zrozumieć kontekst używanego uwierzytelniania. |
-    | Authorization callback URL (Adres URL wywołania zwrotnego autoryzacji) | *http://localhost:5000/signin-github* | To ustawienie jest najważniejszym ustawieniem Twojej aplikacji OAuth. To jest adres URL wywołania zwrotnego, który usługa GitHub zwraca użytkownikowi po pomyślnym uwierzytelnieniu. W tym samouczku musisz użyć domyślnego adresu URL wywołania zwrotnego dla pakietu *AspNet.Security.OAuth.GitHub*, czyli */signin-github*.  |
+    | Authorization callback URL (Adres URL wywołania zwrotnego autoryzacji) | `http://localhost:5000/signin-github` | To ustawienie jest najważniejszym ustawieniem Twojej aplikacji OAuth. To jest adres URL wywołania zwrotnego, który usługa GitHub zwraca użytkownikowi po pomyślnym uwierzytelnieniu. W tym samouczku musisz użyć domyślnego adresu URL wywołania zwrotnego dla pakietu *AspNet.Security.OAuth.GitHub*, czyli */signin-github*.  |
 
 4. Po zakończeniu rejestracji nowej aplikacji OAuth dodaj wartości *Client ID* i *Client Secret* do narzędzia Secret Manager za pomocą następujących poleceń. Zastąp wartości *Your_GitHub_Client_Id* i *Your_GitHub_Client_Secret* wartościami dla Twojej aplikacji OAuth.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a434453d6164dbb9fed7aebc3b3636b45daafa21
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d0a32f45326eb307bc31d10f4efb842d811a38c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313246"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842513"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie Windows hybrydowego procesu roboczego Runbook
 
@@ -138,14 +138,9 @@ Ponieważ podstawowym celem funkcji hybrydowego procesu roboczego Runbook do zar
 
 Moduły, które są zainstalowane musi znajdować się w lokalizacji, odwołuje się **PSModulePath** zmiennej środowiskowej, aby można je automatycznie zaimportować do hybrydowego procesu roboczego. Aby uzyskać więcej informacji, zobacz [Modyfikowanie ścieżki instalacji PSModulePath](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
 
-## <a name="troubleshoot"></a>Rozwiązywanie problemów
-
-Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów z Windows hybrydowych procesów roboczych Runbook](troubleshoot/hybrid-runbook-worker.md#windows)
-
-Aby uzyskać dodatkowe instrukcje dotyczące sposobu rozwiązywania problemów z zarządzaniem aktualizacjami, zobacz [rozwiązania Update Management: Rozwiązywanie problemów z](troubleshoot/update-management.md).
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
 * Aby uzyskać instrukcje dotyczące sposobu usuwania hybrydowych procesów roboczych Runbook, zobacz [Usuń usługi Azure Automation hybrydowych procesów roboczych Runbook](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
-
+* Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów z Windows hybrydowych procesów roboczych Runbook](troubleshoot/hybrid-runbook-worker.md#windows)
+* Aby uzyskać dodatkowe instrukcje dotyczące sposobu rozwiązywania problemów z zarządzaniem aktualizacjami, zobacz [rozwiązania Update Management: Rozwiązywanie problemów z](troubleshoot/update-management.md).

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1f1fbc49a42ec9b72ebe74a96ee099630d7416b1
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570664"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087401"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Składnia wyrażenia OData, filtry i klauzule w klauzuli order by w usłudze Azure Search
 
@@ -55,62 +55,62 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 ### <a name="filter-operators"></a>Operatory filtru  
 
--   Operatory logiczne (i, czy nie).  
+- Operatory logiczne (i, czy nie).  
 
--   Wyrażeniach porównania (`eq, ne, gt, lt, ge, le`). W porównaniach ciągów jest rozróżniana wielkość liter.  
+- Wyrażeniach porównania (`eq, ne, gt, lt, ge, le`). W porównaniach ciągów jest rozróżniana wielkość liter.  
 
--   Stałe obsługiwane [modelu Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) typów (EDM) (zobacz [obsługiwanych typów danych &#40;usługi Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) Aby uzyskać listę obsługiwanych typów). Stałe typów kolekcji nie są obsługiwane.  
+- Stałe obsługiwane [modelu Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) typów (EDM) (zobacz [obsługiwanych typów danych &#40;usługi Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) Aby uzyskać listę obsługiwanych typów). Stałe typów kolekcji nie są obsługiwane.  
 
--   Odwołania do nazw pól. Tylko `filterable` pola mogą być używane w wyrażeniach filtru.  
+- Odwołania do nazw pól. Tylko `filterable` pola mogą być używane w wyrażeniach filtru.  
 
--   `any` bez parametrów. To sprawdzenie, czy pole typu `Collection(Edm.String)` zawiera wszystkie elementy.  
+- `any` bez parametrów. To sprawdzenie, czy pole typu `Collection(Edm.String)` zawiera wszystkie elementy.  
 
--   `any` i `all` z obsługą wyrażenia lambda ograniczone. 
+- `any` i `all` z obsługą wyrażenia lambda ograniczone. 
     
-    -   `any/all` są obsługiwane na polach typu `Collection(Edm.String)`. 
+  -   `any/all` są obsługiwane na polach typu `Collection(Edm.String)`. 
     
-    -   `any` można używać tylko wyrażeń proste równości lub z `search.in` funkcji. Proste wyrażenia składają się z porównanie jednego pola, a wartość literału, np. `Title eq 'Magna Carta'`.
+  -   `any` można używać tylko wyrażeń proste równości lub z `search.in` funkcji. Proste wyrażenia składają się z porównanie jednego pola, a wartość literału, np. `Title eq 'Magna Carta'`.
     
-    -   `all` można używać tylko wyrażeń nierówności proste lub z `not search.in`.   
+  -   `all` można używać tylko wyrażeń nierówności proste lub z `not search.in`.   
 
--   Funkcje Geoprzestrzenne `geo.distance` i `geo.intersects`. `geo.distance` Funkcja zwraca odległość w kilometrach między dwoma punktami, jednego pola, a drugi jest stałą przekazywanej jako część filtru. `geo.intersects` Funkcja zwraca wartość true, jeśli dany punkt znajduje się w danym wielokąta, w którym punkt znajduje się pole i Wielokąt jest określony jako stała przekazanych jako część filtru.  
+- Funkcje Geoprzestrzenne `geo.distance` i `geo.intersects`. `geo.distance` Funkcja zwraca odległość w kilometrach między dwoma punktami, jednego pola, a drugi jest stałą przekazywanej jako część filtru. `geo.intersects` Funkcja zwraca wartość true, jeśli dany punkt znajduje się w danym wielokąta, w którym punkt znajduje się pole i Wielokąt jest określony jako stała przekazanych jako część filtru.  
 
-    Wielokąt jest Powierzchnia dwuwymiarowa przechowywany jako sekwencja punktów Definiowanie blokujących cyklicznego (Zobacz przykład poniżej). Wielokąt musi zostać zamknięty, czyli pierwszy i ostatni punkt zestawów musi być taka sama. [Punkty wielokąta musi znajdować się w kolejności do ruchu wskazówek zegara](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+  Wielokąt jest Powierzchnia dwuwymiarowa przechowywany jako sekwencja punktów Definiowanie blokujących cyklicznego (Zobacz przykład poniżej). Wielokąt musi zostać zamknięty, czyli pierwszy i ostatni punkt zestawów musi być taka sama. [Punkty wielokąta musi znajdować się w kolejności do ruchu wskazówek zegara](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-    `geo.distance` Zwraca odległość w kilometrach w usłudze Azure Search. To różni się od innych usług, które obsługują operacje geoprzestrzenne OData, które zwracają zazwyczaj odległości liczniki.  
+  `geo.distance` Zwraca odległość w kilometrach w usłudze Azure Search. To różni się od innych usług, które obsługują operacje geoprzestrzenne OData, które zwracają zazwyczaj odległości liczniki.  
 
-    > [!NOTE]  
-    >  Korzystając z geo.distance w filtrze, możesz porównać odległość zwrócona przez funkcję przy użyciu stałej `lt`, `le`, `gt`, lub `ge`. Operatory `eq` i `ne` nie są obsługiwane podczas porównywania odległości. Na przykład, jest to poprawne użycie geo.distance: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
+  > [!NOTE]  
+  >  Korzystając z geo.distance w filtrze, możesz porównać odległość zwrócona przez funkcję przy użyciu stałej `lt`, `le`, `gt`, lub `ge`. Operatory `eq` i `ne` nie są obsługiwane podczas porównywania odległości. Na przykład, jest to poprawne użycie geo.distance: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
 
--   `search.in` Funkcja sprawdza, czy dany ciąg znaków jest równa jeden z danej listy wartości. Jego można również w dowolnych lub wszystkich porównać jedną wartość pola kolekcji ciągu z danej listy wartości. Równość pola i każdej wartości na liście jest określana w czasie wielkość liter, taki sam sposób jak w przypadku `eq` operatora. W związku z tym, takie jak wyrażenie `search.in(myfield, 'a, b, c')` jest odpowiednikiem `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, chyba że `search.in` przyniesie znacznie lepszej wydajności. 
+- `search.in` Funkcja sprawdza, czy dany ciąg znaków jest równa jeden z danej listy wartości. Jego można również w dowolnych lub wszystkich porównać jedną wartość pola kolekcji ciągu z danej listy wartości. Równość pola i każdej wartości na liście jest określana w czasie wielkość liter, taki sam sposób jak w przypadku `eq` operatora. W związku z tym, takie jak wyrażenie `search.in(myfield, 'a, b, c')` jest odpowiednikiem `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, chyba że `search.in` przyniesie znacznie lepszej wydajności. 
 
-    Pierwszy parametr `search.in` funkcja jest odwołanie do pola ciągu (lub zmiennej zakresu nad polem ciągu kolekcji, w przypadku których `search.in` jest używana wewnątrz `any` lub `all` wyrażenia). Drugi parametr jest ciąg zawierający listę wartości rozdzielonych spacjami i/lub przecinkami. Jeśli musisz użyć separatory niż spacje i przecinki, ponieważ wartości obejmują te znaki, które można określić opcjonalny trzeci parametr `search.in`. 
+  Pierwszy parametr `search.in` funkcja jest odwołanie do pola ciągu (lub zmiennej zakresu nad polem ciągu kolekcji, w przypadku których `search.in` jest używana wewnątrz `any` lub `all` wyrażenia). Drugi parametr jest ciąg zawierający listę wartości rozdzielonych spacjami i/lub przecinkami. Jeśli musisz użyć separatory niż spacje i przecinki, ponieważ wartości obejmują te znaki, które można określić opcjonalny trzeci parametr `search.in`. 
 
-    To trzeci parametr jest to ciąg, gdzie każdy znak w ciągu lub podzbiór ten ciąg jest traktowany jako separator podczas analizowania listy wartości w drugim parametrze.
+  To trzeci parametr jest to ciąg, gdzie każdy znak w ciągu lub podzbiór ten ciąg jest traktowany jako separator podczas analizowania listy wartości w drugim parametrze.
 
-    > [!NOTE]   
-    > Niektóre scenariusze wymagają porównanie pola na dużej liczbie wartości stałych. Na przykład implementacji dostosowanie do zabezpieczeń przy użyciu filtrów może wymagać porównanie pola Identyfikator dokumentu z listą identyfikatorów, do których użytkownik zgłaszający żądanie ma uprawnienia odczytu. W scenariuszach, takich jak to zdecydowanie zaleca się przy użyciu `search.in` zamiast bardziej skomplikowanych rozłączenia wyrażeń równości. Na przykład użyć `search.in(Id, '123, 456, ...')` zamiast `Id eq 123 or Id eq 456 or ....`. 
-    >
-    > Jeśli używasz `search.in`, można oczekiwać, że gdy drugi parametr zawiera listę setek lub tysięcy wartości czas odpowiedzi sekundy. Należy pamiętać, że nie ma limitu jawne na liczbę elementów, które można przekazać do `search.in`, chociaż można nadal obowiązują ograniczenia rozmiaru maksymalnego żądania. Jednak opóźnienie rośnie wraz ze wzrostem natężenia liczbę wartości.
+  > [!NOTE]   
+  > Niektóre scenariusze wymagają porównanie pola na dużej liczbie wartości stałych. Na przykład implementacji dostosowanie do zabezpieczeń przy użyciu filtrów może wymagać porównanie pola Identyfikator dokumentu z listą identyfikatorów, do których użytkownik zgłaszający żądanie ma uprawnienia odczytu. W scenariuszach, takich jak to zdecydowanie zaleca się przy użyciu `search.in` zamiast bardziej skomplikowanych rozłączenia wyrażeń równości. Na przykład użyć `search.in(Id, '123, 456, ...')` zamiast `Id eq 123 or Id eq 456 or ....`. 
+  >
+  > Jeśli używasz `search.in`, można oczekiwać, że gdy drugi parametr zawiera listę setek lub tysięcy wartości czas odpowiedzi sekundy. Należy pamiętać, że nie ma limitu jawne na liczbę elementów, które można przekazać do `search.in`, chociaż można nadal obowiązują ograniczenia rozmiaru maksymalnego żądania. Jednak opóźnienie rośnie wraz ze wzrostem natężenia liczbę wartości.
 
--   `search.ismatch` Funkcja daje w wyniku zapytania wyszukiwania jako część wyrażenia filtru. Dokumenty, które odpowiada zapytaniu wyszukiwania zostaną zwrócone w zestawie wyników. Dostępne są następujące przeciążenia tej funkcji:
-    - `search.ismatch(search)`
-    - `search.ismatch(search, searchFields)`
-    - `search.ismatch(search, searchFields, queryType, searchMode)`
+- `search.ismatch` Funkcja daje w wyniku zapytania wyszukiwania jako część wyrażenia filtru. Dokumenty, które odpowiada zapytaniu wyszukiwania zostaną zwrócone w zestawie wyników. Dostępne są następujące przeciążenia tej funkcji:
+  - `search.ismatch(search)`
+  - `search.ismatch(search, searchFields)`
+  - `search.ismatch(search, searchFields, queryType, searchMode)`
 
-    gdzie: 
+  gdzie: 
   
-    - `search`: zapytanie wyszukiwania (albo [proste](query-simple-syntax.md) lub [pełne](query-lucene-syntax.md) składni zapytania). 
-    - `queryType`: "prosta" lub "pełnej", wartość domyślna to "simple". Określa, jakiego języka zapytania użyto w `search` parametru.
-    - `searchFields`: rozdzielana przecinkami lista pola z możliwością wyszukiwania do przeszukania, wartość domyślna to wszystkie pola z możliwością wyszukiwania w indeksie.    
-    - `searchMode`: "wszystkie" lub "wszystkie", wartość domyślna to "dowolne". Wskazuje, czy dowolne lub wszystkie terminy wyszukiwania muszą się zgadzać aby można było policzyć dokumentu jako dopasowanie.
+  - `search`: zapytanie wyszukiwania (albo [proste](query-simple-syntax.md) lub [pełne](query-lucene-syntax.md) składni zapytania). 
+  - `queryType`: "prosta" lub "pełnej", wartość domyślna to "simple". Określa, jakiego języka zapytania użyto w `search` parametru.
+  - `searchFields`: rozdzielana przecinkami lista pola z możliwością wyszukiwania do przeszukania, wartość domyślna to wszystkie pola z możliwością wyszukiwania w indeksie.    
+  - `searchMode`: "wszystkie" lub "wszystkie", wartość domyślna to "dowolne". Wskazuje, czy dowolne lub wszystkie terminy wyszukiwania muszą się zgadzać aby można było policzyć dokumentu jako dopasowanie.
 
-    Powyższych parametrów są równoważne do odpowiednich [wyszukiwania parametry żądania](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+  Powyższych parametrów są równoważne do odpowiednich [wyszukiwania parametry żądania](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
--   `search.ismatchscoring` Działanie, takie jak `search.ismatch` funkcji, zwraca wartość true, dokumentów, pasujących do zapytania wyszukiwania przekazany jako parametr. Różnica między nimi jest, czy wskaźnik istotności wyników pasujących dokumentów `search.ismatchscoring` zapytania przyczyni się do ogólny wynik dokumentu znajduje się w przypadku `search.ismatch`, nie będzie można zmienić na wynik dokumentu. Następujące przeciążenia tej funkcji są dostępne z parametrami identycznych z właściwościami `search.ismatch`:
-    - `search.ismatchscoring(search)`
-    - `search.ismatchscoring(search, searchFields)`
-    - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
+- `search.ismatchscoring` Działanie, takie jak `search.ismatch` funkcji, zwraca wartość true, dokumentów, pasujących do zapytania wyszukiwania przekazany jako parametr. Różnica między nimi jest, czy wskaźnik istotności wyników pasujących dokumentów `search.ismatchscoring` zapytania przyczyni się do ogólny wynik dokumentu znajduje się w przypadku `search.ismatch`, nie będzie można zmienić na wynik dokumentu. Następujące przeciążenia tej funkcji są dostępne z parametrami identycznych z właściwościami `search.ismatch`:
+  - `search.ismatchscoring(search)`
+  - `search.ismatchscoring(search, searchFields)`
+  - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
   `search.ismatch` i `search.ismatchscoring` funkcje są w pełni prostopadły sobą i pozostałe algebry filtru. Oznacza to, że obie funkcje mogą być używane w tym samym wyrażeniu filtru. 
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 05af196d115376d744df1976c6a3d9fe9cab74e0
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9dcb79e7f4ebd43da3f6c6fd35fa0707898d7ec8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958903"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111008"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorowanie usługi Azure Database for MySQL
 Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for MySQL zapewnia różne metryki, które zapewniają wgląd w zachowania serwera.
@@ -23,7 +23,7 @@ Wszystkie metryki usługi Azure mieć częstotliwość co minutę, a wszystkie m
 Te metryki są dostępne dla usługi Azure Database for MySQL:
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Opis|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|Procent użycia Procesora|Procent|Procent użycia Procesora w użyciu.|
 |memory_percent|Procent pamięci|Procent|Procent pamięci w użyciu.|
 |io_consumption_percent|% Operacji We/Wy|Procent|Procent we/wy w użyciu.|

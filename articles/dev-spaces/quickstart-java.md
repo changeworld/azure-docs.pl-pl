@@ -1,22 +1,21 @@
 ---
-title: Tworzenie obszaru deweloperskiego Kubernetes w chmurze | Microsoft Docs
+title: Utwórz obszar dev Kubernetes w chmurze
 titleSuffix: Azure Dev Spaces
 author: stepro
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
 manager: mmontwil
-ms.openlocfilehash: c8c85c9220574a3e18e5549e1607dafe1aec03ab
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: 98f7669a34d65d42e2437b440446b3a3066853d9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818174"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904069"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-java-and-vs-code"></a>Szybki start: Tworzenie obszaru deweloperskiego Kubernetes za pomocą usługi Azure Dev Spaces (język Java i program VS Code)
 
@@ -38,7 +37,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.10.9 --generate-ssh-keys
+    az aks create -g MyResourceGroup -n myAKS --location <region> --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>Konfigurowanie usługi Azure Dev Spaces
@@ -57,13 +56,13 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
    ```output
     (pending registration) Service 'webfrontend' port 'http' will be available at <url>
-    Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+    Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
    ```
 
    Otwórz ten adres URL w oknie przeglądarki — aplikacja internetowa powinna zostać załadowana.
 
    > [!Note]
-   > Przy pierwszym uruchomieniu przygotowanie publicznego serwera DNS może potrwać kilka minut. Jeśli publiczny adres URL nie zostanie rozpoznany, możesz użyć alternatywnego adresu URL http://localhost:<portnumber>, który jest wyświetlany w danych wyjściowych konsoli. Jeśli używasz adresu URL hosta lokalnego, może się wydawać, że kontener działa lokalnie, ale faktycznie jest on uruchamiany w usłudze AKS. Dla Twojej wygody i ułatwienia interakcji z usługą z komputera lokalnego usługa Azure Dev Spaces tworzy tymczasowy tunel SSH do kontenera uruchomionego na platformie Azure. Później, gdy rekord DNS będzie gotowy, możesz wrócić i wypróbować publiczny adres URL.
+   > Przy pierwszym uruchomieniu przygotowanie publicznego serwera DNS może potrwać kilka minut. Jeśli publiczny adres URL nie został rozwiązany, możesz użyć alternatywnej `http://localhost:<portnumber>` adresu URL, który jest wyświetlany w danych wyjściowych konsoli. Jeśli używasz adresu URL hosta lokalnego, może się wydawać, że kontener działa lokalnie, ale faktycznie jest on uruchamiany w usłudze AKS. Dla Twojej wygody i ułatwienia interakcji z usługą z komputera lokalnego usługa Azure Dev Spaces tworzy tymczasowy tunel SSH do kontenera uruchomionego na platformie Azure. Później, gdy rekord DNS będzie gotowy, możesz wrócić i wypróbować publiczny adres URL.
 
 ### <a name="update-a-code-file"></a>Aktualizowanie pliku kodu
 
@@ -132,7 +131,7 @@ Odśwież aplikację internetową w przeglądarce. Twój komunikat powinien zost
 
 **Umiesz już korzystać z metody szybkiego wprowadzania zmian w kodzie i debugowania bezpośrednio w środowisku Kubernetes.**
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak usługa Azure Dev Spaces pomaga tworzyć bardziej złożone aplikacje w wielu kontenerach i jak można uprościć programowanie zespołowe przez pracę z różnymi wersjami lub gałęziami kodu w różnych obszarach.
 

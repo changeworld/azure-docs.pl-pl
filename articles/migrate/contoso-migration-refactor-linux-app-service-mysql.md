@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 60bd3aef20e39a9f451f54164ef3fb8ef682bc3e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4ff3f129838a43bd7684dc10e1653dab969e9c1e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809693"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087010"
 ---
 # <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Migracja Contoso: Refaktoryzuj Contoso Linux usługi app Service desk do wielu regionów za pomocą usługi Azure App Service, Traffic Manager i usługi Azure MySQL
 
@@ -109,7 +109,7 @@ Contoso zakończy proces migracji w następujący sposób:
 **Usługa** | **Opis** | **Koszty**
 --- | --- | ---
 [Azure App Service](https://azure.microsoft.com/services/app-service/) | Usługa jest uruchamiana i skalowanie aplikacji przy użyciu usługi PaaS platformy Azure dla witryn sieci Web.  | Cennik zależy od rozmiaru wystąpienia i funkcje wymagane. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/app-service/windows/).
-[Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) | Moduł równoważenia obciążenia przy użyciu serwera DNS, udostępniając użytkownikom platformy Azure lub zewnętrznych witryn i usług. | Cennik zależy od liczby odebranych zapytań DNS, a liczba monitorowanych punktów końcowych. | [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/traffic-manager/).
+[Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) | Moduł równoważenia obciążenia przy użyciu serwera DNS, udostępniając użytkownikom platformy Azure lub zewnętrznych witryn i usług. | Cennik zależy od liczby odebranych zapytań DNS, a liczba monitorowanych punktów końcowych. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/traffic-manager/).
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) | Baza danych jest oparta na aparacie serwer MySQL typu open source. Zapewnia społeczności w pełni zarządzana i gotowa do użycia w przedsiębiorstwie w przypadku bazy danych MySQL jako usługi w celu tworzenia i wdrażania aplikacji. | Cennik oparty na wystąpienia obliczeniowe, Magazyn i wymagań kopii zapasowej. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/mysql/).
 
  

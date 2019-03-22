@@ -1,6 +1,6 @@
 ---
-title: Rejestrowanie nazwy hostów na platformie Azure przy użyciu dynamicznych DNS | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować dynamicznych DNS do rejestrowania nazwy hostów w serwerach DNS.
+title: Używanie dynamicznej usługi DNS do rejestrowania nazw hostów na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować dynamicznej usługi DNS do rejestrowania nazw hostów na serwerach DNS.
 services: dns
 documentationcenter: na
 author: subsarma
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: bbbce45b7c321fd4934374c76f2a4421b125d46f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600958"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994685"
 ---
-# <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Użyj dynamicznych DNS, aby zarejestrować nazwy hostów na serwerze DNS
+# <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Używanie dynamicznej usługi DNS do rejestrowania nazw hostów na serwerze DNS
 
-[Platforma Azure udostępnia rozpoznawanie nazw](virtual-networks-name-resolution-for-vms-and-role-instances.md) dla maszyn wirtualnych (VM) i wystąpień ról. Gdy programu rozpoznawania nazw musi przekracza możliwości oferowane przez domyślny Azure DNS, musisz podać własne serwery DNS. Przy użyciu serwerów DNS umożliwia można dostosować do własnych potrzeb określonego rozwiązania DNS. Na przykład konieczne może uzyskiwać dostęp do zasobów lokalnych za pomocą kontrolera domeny usługi Active Directory.
+[Platforma Azure udostępnia rozpoznawanie nazw](virtual-networks-name-resolution-for-vms-and-role-instances.md) dla maszyn wirtualnych (VM) i wystąpień roli. W przypadku usługi rozpoznawania nazw musi przekracza możliwości oferowane przez domyślne platformy Azure DNS, można zapewnić własnych serwerów DNS. Przy użyciu serwerów DNS daje możliwość dostosowywania rozwiązania DNS do własnych konkretnych potrzeb. Na przykład należy uzyskać dostęp do zasobów lokalnych za pośrednictwem kontrolera domeny usługi Active Directory.
 
-Gdy niestandardowe serwery DNS są przechowywane jako maszynach wirtualnych platformy Azure, może przekazywać kwerendy nazwy hosta dla tej samej sieci wirtualnej Azure do rozpoznania nazwy hostów. Jeśli nie chcesz użyć tej opcji, możesz zarejestrować Twojej nazwy hostów maszyny Wirtualnej na serwerze DNS przy użyciu dynamicznych DNS (DDNS). Azure nie ma poświadczenia, aby bezpośrednio utworzyć rekordy w serwerach DNS, potrzebne są często alternatywne uzgodnienia. Należy wykonać kilka typowych scenariuszy, alternatyw:
+Jeśli niestandardowe serwery DNS są hostowane jako maszyny wirtualne platformy Azure, możesz przekazywać zapytania nazwę hosta dla tej samej sieci wirtualnej Azure, aby rozpoznać nazwy hostów. Jeśli nie chcesz użyć tej opcji, możesz zarejestrować swojej nazwy hostów maszyn wirtualnych na serwerze DNS przy użyciu dynamicznych DNS (DDNS). Azure nie ma poświadczeń bezpośrednio utworzyć rekordy w serwerach DNS, więc alternatywne ustalenia często są wymagane. Wykonaj kilka typowych scenariuszy z alternatyw:
 
-## <a name="windows-clients"></a>Klienci systemu Windows
-Klienci z systemem Windows przyłączonych do domeny inne niż podejmować niezabezpieczona DDNS aktualizacji po uruchomieniu lub zmianie ich adresów IP. Nazwa DNS jest nazwą hosta i sufiks podstawowej domeny DNS. Azure pozostawia puste sufiks podstawowej domeny DNS, ale sufiks w Maszynie wirtualnej, można ustawić za pomocą [interfejsu użytkownika](https://technet.microsoft.com/library/cc794784.aspx) lub [PowerShell](/powershell/module/dnsclient/set-dnsclient).
+## <a name="windows-clients"></a>Klienci Windows
+Klientów przyłączonych do domeny inne niż Windows próba niezabezpieczony DDNS aktualizacji po uruchomieniu lub zmianie ich adresów IP. Nazwa DNS jest nazwą hosta, a także sufiks podstawowej domeny DNS. Azure pozostawia pustą sufiks podstawowej domeny DNS, ale sufiks w maszynie Wirtualnej, można ustawić za pomocą [interfejsu użytkownika](https://technet.microsoft.com/library/cc794784.aspx) lub [PowerShell](/powershell/module/dnsclient/set-dnsclient).
 
-Klienci z systemem Windows przyłączonych do domeny rejestrują swoje adresy IP z kontrolerem domeny przy użyciu bezpiecznego DDNS. Proces przyłączania do domeny ustawia sufiks podstawowej domeny DNS na kliencie i tworzy i obsługuje relacji zaufania.
+Klienci Windows przyłączone do domeny rejestrują swoje adresy IP z kontrolerem domeny przy użyciu bezpiecznego DDNS. Procesu przyłączania do domeny ustawia sufiks podstawowej domeny DNS na kliencie i tworzy i obsługuje relacji zaufania.
 
 ## <a name="linux-clients"></a>Klienci systemu Linux
-Klienci systemu Linux zazwyczaj nie rejestrują się z serwera DNS podczas uruchamiania, ich przyjęto założenie, że jest serwer DHCP. Serwery DHCP platformy Azure nie mają poświadczenia do zarejestrowania rekordów znajdujących się na serwerze DNS. Można użyć narzędzia o nazwie `nsupdate`, który jest uwzględniony w pakiecie Bind, aby wysłać DDNS aktualizacji. Ponieważ jest standardowym protokołem DDNS, można użyć `nsupdate` nawet jeśli nie używasz Bind na serwerze DNS.
+Klienci systemu Linux ogólnie nie rejestrują się za pomocą serwera DNS podczas uruchamiania, ich przyjęto założenie, że serwer DHCP jest. Serwery DHCP platformy Azure nie mają poświadczenia do zarejestrowania rekordów na serwerze DNS. Można użyć z narzędzia o nazwie `nsupdate`, który znajduje się w pakiecie Bind, aby wysłać DDNS aktualizacji. Ponieważ protokół DDNS ustandaryzowany, możesz użyć `nsupdate` nawet jeśli nie używasz Bind na serwerze DNS.
 
-Możesz użyć punkty zaczepienia, które są udostępniane przez klienta DHCP można tworzyć i obsługiwać wpis nazwy hosta na serwerze DNS. Podczas cyklu DHCP, klient wykonuje skryptów w */etc/dhcp/dhclient-exit-hooks.d/*. Punkty zaczepienia można użyć, aby zarejestrować nowy adres IP przy użyciu `nsupdate`. Na przykład:
+Możesz użyć punkty zaczepienia, które są udostępniane przez klienta DHCP, aby tworzyć i obsługiwać wpis nazwy hosta na serwerze DNS. Podczas cyklu DHCP, klient wykonuje skrypty w */etc/dhcp/dhclient-exit-hooks.d/*. Punkty zaczepienia można użyć, aby zarejestrować nowy adres IP, korzystając `nsupdate`. Na przykład:
 
 ```bash
 #!/bin/sh
@@ -61,11 +61,11 @@ then
 fi
 ```
 
-Można również użyć `nsupdate` polecenie do wykonania bezpiecznego DDNS aktualizacji. Na przykład podczas korzystania z serwera Bind DNS, to pary kluczy publiczno prywatnych [wygenerowany](http://linux.yyz.us/nsupdate/). Serwer DNS jest [skonfigurowane](http://linux.yyz.us/dns/ddns-server.html) z publicznej części klucza, tak że można zweryfikować podpisu na żądanie. Zapewnienie para klucz do `nsupdate`, użyj `-k` opcję DDNS aktualizacji żądania do podpisania.
+Można również użyć `nsupdate` polecenie, aby wykonać bezpiecznego DDNS aktualizacji. Na przykład podczas korzystania z serwera DNS Powiąż pary kluczy publiczny prywatny jest [generowane](http://linux.yyz.us/nsupdate/). Serwer DNS jest [skonfigurowane](http://linux.yyz.us/dns/ddns-server.html) z publiczną część klucza, tak że można sprawdzić podpis na żądanie. Aby zapewnić pary kluczy do `nsupdate`, użyj `-k` opcję dla DDNS aktualizowanie żądania były podpisane.
 
-Podczas korzystania z serwera DNS systemu Windows, można użyć uwierzytelniania Kerberos z `-g` parametru w `nsupdate`, ale nie jest dostępna w wersji Windows `nsupdate`. Aby użyć protokołu Kerberos, użyj `kinit` można załadować poświadczenia. For example, można załadować poświadczeń z [pliku keytab](http://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)), następnie `nsupdate -g` przejmuje poświadczenia z pamięci podręcznej.
+Podczas korzystania z serwera Windows DNS można korzystać z uwierzytelniania Kerberos z `-g` parametru w `nsupdate`, ale nie jest dostępna w wersji Windows `nsupdate`. Aby korzystać z protokołu Kerberos, należy użyć `kinit` można załadować poświadczeń. Adapterem, można załadować poświadczeń z [pliku keytab](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)), następnie `nsupdate -g` przejmuje poświadczenia, z pamięci podręcznej.
 
-W razie potrzeby można dodać sufiks wyszukiwania DNS do maszyn wirtualnych. Sufiks DNS jest określona w */etc/resolv.conf* pliku. Większość dystrybucjach systemu Linux automatycznie zarządzać zawartość tego pliku, dlatego zazwyczaj nie można edytować go. Jednak można zastąpić sufiks przy użyciu klienta DHCP `supersede` polecenia. Aby zastąpić sufiks, Dodaj następujący wiersz do */etc/dhcp/dhclient.conf* pliku:
+Jeśli to konieczne, można dodać sufiks wyszukiwania DNS do maszyn wirtualnych. Sufiks DNS jest określona w */etc/resolv.conf* pliku. Dystrybucjach systemu Linux automatycznie zarządzać zawartość tego pliku, więc zazwyczaj nie można edytować go. Jednak można zastąpić sufiks za pomocą klienta DHCP `supersede` polecenia. Aby zastąpić sufiks, Dodaj następujący wiersz do */etc/dhcp/dhclient.conf* pliku:
 
 ```
 supersede domain-name <required-dns-suffix>;

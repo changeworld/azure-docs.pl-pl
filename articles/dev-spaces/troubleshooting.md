@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: 7a944b87192236ba7401fe62d52275bea8be5076
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769799"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898086"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -209,7 +209,7 @@ Uruchamianie debugera programu VS Code czasami może spowodować błąd.
 Uruchamianie debugera programu VS Code zgłasza błąd: `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>Przyczyna
-Nie masz rozszerzenia kodu programu VS dla języka C# zainstalowane na komputerze deweloperskim. Rozszerzenie języka C# zawiera obsługę debugowania dla.Net Core (CoreCLR).
+Nie masz rozszerzenia kodu programu VS dla języka C# zainstalowane na komputerze deweloperskim. C# Rozszerzenie zawiera obsługę debugowania dla platformy .NET Core (CoreCLR).
 
 ### <a name="try"></a>Wypróbuj:
 Zainstaluj [rozszerzenia kodu programu VS dla języka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).

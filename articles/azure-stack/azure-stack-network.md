@@ -16,18 +16,18 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 97fcfa20e474edb8108474ef02c6542688d627ff
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 3705b2dda7da8df2e6e3c98d5f6003bd3d771daf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243491"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098580"
 ---
 # <a name="network-connectivity"></a>Połączenie sieciowe
 Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby ułatwić podjęcie decyzji o sposobie najlepiej Zintegruj usługę Azure Stack z istniejącym środowiskiem sieci. 
 
 > [!NOTE]
-> Aby rozwiązać zewnętrzne nazwy DNS z usługi Azure Stack (na przykład www.bing.com), musisz podać serwery DNS do przesyłania żądań DNS. Aby uzyskać więcej informacji na temat wymagań dotyczących usługi Azure Stack DNS Zobacz [Integracja z centrum danych usługi Azure Stack — DNS](azure-stack-integrate-dns.md).
+> Rozpoznawanie zewnętrznych nazw DNS z usługi Azure Stack (na przykład www\.bing.com), musisz podać serwery DNS do przesyłania żądań DNS. Aby uzyskać więcej informacji na temat wymagań dotyczących usługi Azure Stack DNS Zobacz [Integracja z centrum danych usługi Azure Stack — DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Projekt sieci fizycznej
 Rozwiązanie usługi Azure Stack wymaga odpornej i wysoce dostępnej infrastruktury fizycznej do obsługi jego działania i usług. Łącza nadrzędne z sieci ToR do przełączników obramowania są ograniczone do SFP + lub SFP28 nośnika i 1 GB, 10 GB lub szybkości 25 GB. Skontaktuj się z dostawcą sprzętu producenta sprzętu (OEM) dla dostępności. Na poniższym diagramie przedstawiono naszych zalecany projekt:

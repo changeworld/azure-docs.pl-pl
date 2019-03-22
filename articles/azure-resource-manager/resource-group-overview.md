@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 03/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: d275455f502cf20eaa573c1716c38023f8e7236e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: HT
+ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821904"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409857"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 
@@ -51,7 +51,16 @@ Usługa Resource Manager zapewnia kilka korzyści:
 * Możliwość dodawania tagów do zasobów w celu logicznego uporządkowania wszystkich zasobów w ramach subskrypcji.
 * Możliwość wyjaśniania rozliczeń w organizacji przez wyświetlanie kosztów dla grupy zasobów korzystających z tego samego tagu.
 
+## <a name="understand-management-scope"></a>Zrozumieć zakres zarządzania
+
+System Azure oferuje cztery poziomy zakresem zarządzania: grup zarządzania, subskrypcji, grupy zasobów i zasobów. [Grupy zarządzania](../governance/management-groups/index.md) są w wersji zapoznawczej. Na poniższej ilustracji przedstawiono takie przykładowe warstwy.
+
+![Zakres](./media/resource-group-overview/scope-levels.png)
+
+Ustawienia zarządzania są stosowane na dowolnych z tych poziomów zakresu. Zasięg zastosowania ustawienia jest określany na podstawie wybranego poziomu. Niższe poziomy dziedziczą ustawienia z wyższych poziomów. Na przykład, po zastosowaniu [zasad](../governance/policy/overview.md) do subskrypcji, zasady są stosowane do wszystkich grup zasobów i zasobów w ramach subskrypcji. Po zastosowaniu zasad w grupie zasobów, które zasady są stosowane grupy zasobów i wszystkie jej zasoby. Jednak innej grupy zasobów nie ma tego przypisania zasad.
+
 ## <a name="guidance"></a>Wskazówki
+
 Poniższe sugestie pomogą Ci w pełni wykorzystać możliwości usługi Resource Manager w pracy z rozwiązaniami.
 
 * Definiuj i wdrażaj infrastrukturę za pomocą składni deklaratywnej w szablonach usługi Resource Manager, a nie za pomocą poleceń imperatywnych.
@@ -167,7 +176,7 @@ Usługa Deployment Manager jest obecnie dostępna w prywatnej wersji zapoznawcze
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule przedstawiono sposób wdrażania zasobów na platformie Azure, kontrolowania dostępu do tych zasobów oraz zarządzania nimi za pomocą usługi Azure Resource Manager. Przejdź do następnego artykułu, aby dowiedzieć się, jak utworzyć swój pierwszy szablon usługi Azure Resource Manager.
 

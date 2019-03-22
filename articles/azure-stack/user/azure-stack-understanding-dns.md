@@ -15,18 +15,18 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 32d00a1c0daf383d41d6bbc7c9fe105b3a2a6ab1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ab867af76821f90c6a87c08d42affdef8192e201
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774919"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258143"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Wprowadzenie do międzynarodowych nazw domen dla usługi Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-międzynarodowych nazw domen jest funkcją sieci usługi Azure Stack, która umożliwia rozpoznawanie nazw DNS zewnętrzne (na przykład https://www.bing.com.) umożliwia również zarejestrować nazwy wewnętrznej sieci wirtualnej. W ten sposób można naprawić maszyny wirtualne na tej samej sieci wirtualnej, nazwy, a nie adresu IP. To podejście usuwa potrzebę zapewnienia niestandardowe wpisami serwera DNS. Aby uzyskać więcej informacji na temat systemu DNS, zobacz [Omówienie usługi Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview).
+międzynarodowych nazw domen jest funkcją sieci usługi Azure Stack, która umożliwia rozpoznawanie nazw DNS zewnętrzne (na przykład https:\//www.bing.com.) Umożliwia on również zarejestrować nazwy wewnętrznej sieci wirtualnej. W ten sposób można naprawić maszyny wirtualne na tej samej sieci wirtualnej, nazwy, a nie adresu IP. To podejście usuwa potrzebę zapewnienia niestandardowe wpisami serwera DNS. Aby uzyskać więcej informacji na temat systemu DNS, zobacz [Omówienie usługi Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview).
 
 ## <a name="what-does-idns-do"></a>Do czego służy międzynarodowych nazw domen.
 

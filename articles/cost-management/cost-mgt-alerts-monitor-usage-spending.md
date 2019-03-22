@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: d6f7a597ff5737bb5e9a3f07122ece313bd432ff
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: feb7fcdd9005ef131acadfc63defbe4caeaca014
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337784"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991928"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Używać alertów koszt monitorowanie użycia i wydatków
 
@@ -39,7 +39,7 @@ Dział wydatków przydziału alerty powiadamiają użytkownika wydatków działu
 
 Obsługa typów alertów, zależy od typu konta platformy Azure, czy masz (Microsoft oferują). W poniższej tabeli przedstawiono funkcje alertów, które są obsługiwane przez różne oferty firmy Microsoft. Można wyświetlić pełną listę ofert Microsoft [danych rozwiązania Cost Management zrozumieć](understand-cost-mgt-data.md).
 
-| Typ alertu | Umowa Enterprise | Umowa klienta firmy Microsoft | W sieci Web bezpośrednio/płatności-zgodnie-You-rzeczywistym |
+| Typ alertu | Enterprise Agreement | Umowa klienta firmy Microsoft | W sieci Web bezpośrednio/płatności-zgodnie-You-rzeczywistym |
 |---|---|---|---|
 | Budżet | ✔ | ✔ | ✔ |
 | Środki | ✔ |✘ | ✘ |
@@ -49,7 +49,7 @@ Obsługa typów alertów, zależy od typu konta platformy Azure, czy masz (Micro
 
 ## <a name="view-cost-alerts"></a>Wyświetlanie kosztów alertów
 
-W witrynie Azure Portal kliknij pozycję **Zarządzanie kosztami i rozliczenia** na liście usług. Następnie na liście w obszarze **Cost Management**, wybierz opcję **koszt alerty**.
+Aby wyświetlić alerty kosztów, otwórz żądany zakres w witrynie Azure portal i wybierz pozycję **budżetów** w menu. Użyj **zakres** skażone, aby przełączyć się do innego zasięgu. Wybierz **koszt alerty** w menu. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
 
 ![Przykładowy obraz alertów przedstawianych w Cost Management](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 

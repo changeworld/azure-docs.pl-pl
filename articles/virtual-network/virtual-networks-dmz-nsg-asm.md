@@ -1,5 +1,5 @@
 ---
-title: Przykład sieci obwodowej Azure — Tworzenie prostej sieci obwodowej z grup NSG | Dokumentacja firmy Microsoft
+title: Przykład sieci obwodowej na platformie Azure — Tworzenie prostej sieci obwodowej z grup NSG | Dokumentacja firmy Microsoft
 description: Tworzenie sieci obwodowej z grup zabezpieczeń sieci (NSG)
 services: virtual-network
 documentationcenter: na
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 115a459c6a9e4ea96931c89272a49396f0656258
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23928888"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993340"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>Przykład 1 — Tworzenie prostej sieci obwodowej za pomocą grup NSG z klasycznego środowiska PowerShell
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
 
 > [!div class="op_single_selector"]
 > * [Szablon usługi Resource Manager](virtual-networks-dmz-nsg.md)
-> * [Classic — PowerShell](virtual-networks-dmz-nsg-asm.md)
+> * [Klasyczny — PowerShell](virtual-networks-dmz-nsg-asm.md)
 > 
 >
 
-W tym przykładzie tworzy sieć obwodową pierwotnych z czterech serwerów z systemem Windows i grupy zabezpieczeń sieci. W tym przykładzie przedstawiono wszystkich odpowiednich poleceń programu PowerShell w celu zapewnienia głębsze zrozumienie każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w sieci obwodowej. Ponadto w odwołaniach sekcja jest kompletny kod i instrukcje do tworzenia tego środowiska, aby przetestować i wypróbować różne scenariusze. 
+W tym przykładzie tworzy sieć obwodową pierwotnych z czterech serwerów z systemem Windows i grupy zabezpieczeń sieci. W tym przykładzie przedstawiono listę odpowiednich poleceń programu PowerShell, aby zapewnić lepiej zrozumieć każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w sieci obwodowej. Na koniec w odwołaniach sekcja jest kompletny kod i instrukcje umożliwiające tworzenie tego środowiska do testowania i eksperymentowania z różnymi scenariuszami. 
 
 ![Przychodząca sieć obwodowa z grupy NSG][1]
 
-## <a name="environment-description"></a>Opis elementu środowiska
+## <a name="environment-description"></a>Opis środowiska
 W tym przykładzie subskrypcja zawiera następujące zasoby:
 
 * Dwie usługi w chmurze: "FrontEnd001" i "BackEnd001"
-* Sieć wirtualną "CorpNetwork", z dwoma podsieciami; "FrontEnd" i "Wewnętrzna"
-* Grupy zabezpieczeń sieci jest stosowany do obu podsieci
-* Windows Server, który reprezentuje serwer sieci web aplikacji ("IIS01")
-* Dwóch systemów windows Server, które reprezentują serwery zaplecza aplikacji ("AppVM01", "AppVM02")
-* Windows server, który reprezentuje serwer DNS ("DNS01")
+* Sieć wirtualną "CorpNetwork" z dwiema podsieciami; "Fronton" i "Wewnętrzna"
+* Sieciowa grupa zabezpieczeń, która jest stosowana do obu podsieci
+* Windows Server, który reprezentuje serwer aplikacji sieci web ("IIS01")
+* Serwery dwa okna, które reprezentują serwery zaplecza aplikacji ("AppVM01", "AppVM02")
+* Serwer Windows, który reprezentuje serwer DNS ("DNS01")
 
-W sekcji odwołań jest skrypt programu PowerShell, która tworzy większość środowiska opisane w tym przykładzie. Tworzenie maszyn wirtualnych i sieci wirtualnych, chociaż są realizowane przez skrypt przykładowy nie opisano szczegółowo w tym dokumencie. 
+W sekcji odwołań istnieje skrypt programu PowerShell, który tworzy większość środowiska opisane w tym przykładzie. Tworzenie maszyn wirtualnych i sieci wirtualne, chociaż są wykonywane tylko przez przykładowy skrypt, nie opisano szczegółowo w tym dokumencie. 
 
-Tworzenie środowiska;
+Do tworzenia środowiska;
 
-1. Zapisz plik xml konfiguracji sieci zawarte w sekcji odwołań (zaktualizowany o nazwy, lokalizacji i IP adresów do dopasowania danego scenariusza)
-2. Zaktualizuj zmienne użytkownika w skrypcie, aby dopasować środowiska, które jest skrypt do uruchomienia przed (subskrypcje, nazwy usługi, itp.)
+1. Zapisz plik xml konfiguracji sieci znajdujących się w części odwołania (zaktualizowane przy użyciu nazwy, lokalizacji i adresów IP adresy, które mają odpowiadać danym scenariuszu)
+2. Zaktualizuj zmienne użytkownika w skrypcie, aby dopasować środowiska, które skrypt ma być uruchamiana względem (subskrypcji, nazwy usług itp.)
 3. Uruchom skrypt programu PowerShell
 
 >[!Note]
@@ -59,30 +59,30 @@ Tworzenie środowiska;
 
 Po uruchomieniu skryptu pomyślnie dodatkowe opcjonalne kroki mogą zostać podjęte, w sekcji odwołań są dwa skrypty do konfiguracji serwera sieci web oraz serwer aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji sieci obwodowej.
 
-Poniższe sekcje zawierają szczegółowy opis grup zabezpieczeń sieci i ich działania w tym przykładzie przez Instruktaż klucza wierszy skryptu programu PowerShell.
+Poniższe sekcje zawierają szczegółowy opis grupy zabezpieczeń sieci i jak działają w tym przykładzie na Instruktaż kluczowych wierszy skryptu programu PowerShell.
 
 ## <a name="network-security-groups-nsg"></a>Sieciowe grupy zabezpieczeń (NSG)
-Na przykład grupy NSG jest wbudowana i następnie ładowane przy użyciu sześciu reguł. 
+W tym przykładzie grupa sieciowej grupy zabezpieczeń jest utworzone i następnie ładowany za pomocą sześciu reguł. 
 
 > [!TIP]
-> Ogólnie rzecz biorąc należy najpierw utworzyć określonych reguł "Zezwalaj", a następnie ostatni bardziej ogólnym reguły "Deny". Określają priorytetem, do których zasady są oceniane pierwszej. Po znalezieniu ruchu do zastosowania do określonej reguły nie dalsze reguły są sprawdzane. Reguły NSG można zastosować w jednym kierunku ruchu przychodzącego lub wychodzącego (z punktu widzenia podsieci).
+> Ogólnie rzecz biorąc należy najpierw utworzyć określone reguły "Zezwalaj", a następnie ostatniego bardziej ogólnymi zasadami "Deny". Określają priorytetem, których zasady są oceniane pierwszy. Nie dodatkowe reguły są oceniane, po znalezieniu ruchu do zastosowania do określonej reguły. Reguły sieciowej grupy zabezpieczeń można stosować w jednym kierunku ruchu przychodzącego lub wychodzącego (z punktu widzenia podsieci).
 > 
 > 
 
-Deklaratywnie są tworzone następujące reguły dla ruchu przychodzącego:
+Deklaratywne są tworzone następujące reguły dla ruchu przychodzącego:
 
-1. Wewnętrzny ruch DNS (port 53) jest dozwolony
-2. Ruch RDP (port 3389) z Internetu do żadnej maszyny Wirtualnej jest dozwolone.
+1. Ruch DNS wewnętrzny (port 53) jest dozwolone.
+2. Ruch protokołu RDP (port 3389) z Internetu do dowolnej maszyny Wirtualnej jest dozwolony.
 3. Ruch HTTP (port 80) z Internetu do serwera sieci web (IIS01) jest dozwolone.
-4. Cały ruch (wszystkie porty) z IIS01 do AppVM1 jest dozwolone.
-5. Cały ruch (wszystkie porty) z Internetu do całej sieci wirtualnej (obie podsieci) jest zabroniony.
-6. Odmowa cały ruch (wszystkie porty) z podsieci frontonu do podsieci wewnętrznej bazy danych
+4. Cały ruch (wszystkich portów) z IIS01 do AppVM1 jest dozwolone.
+5. Cały ruch (wszystkich portów) z Internetu do całej sieci wirtualnej (zarówno podsieci) zostanie odrzucone.
+6. Cały ruch (wszystkich portów) z podsieci Frontend do podsieci zaplecza jest zabroniony.
 
-Przy użyciu tych reguł powiązany z każdej podsieci, jeśli żądanie HTTP zostało przychodzące z Internetu do serwera sieci web, obie zasady 3 (Zezwalaj) i 5 (odmówić go) będą miały zastosowania, ale ponieważ reguła 3 ma wyższy priorytet tylko będą miały zastosowania i reguły 5 nie przybyły do gry. W związku z tym żądania HTTP będą dozwolone na serwerze sieci web. Jeśli ten sam ruch próbował uzyskać dostęp do serwera DNS01, reguły 5 (odmowa) będzie pierwszy do zastosowania, a ruch będzie niedozwolone do przekazania na serwer. Reguła 6 (Odmów) blokuje podsieci frontonu z rozmowie z podsieci wewnętrznej bazy danych (z wyjątkiem dozwolonego ruchu w regułach 1 i 4), ten zestaw reguł chroni sieć zaplecze w przypadku dokonywania atakująca aplikacja sieci web frontonu, osoba atakująca może mieć ograniczony dostęp do sieci wewnętrznej bazy danych "chronionej" (tylko dla zasobów udostępniane na serwerze AppVM01).
+Przy użyciu tych reguł powiązany z każdej podsieci, jeśli żądanie HTTP zostało ruch przychodzący z Internetu do serwera sieci web, obie reguły 3 (Zezwalaj na) i 5 (odmowa) będzie miało zastosowanie, ale ponieważ reguła 3 ma wyższy priorytet, tylko naliczona zostałaby i reguły 5 nie przybyły, aby wpływające na. Dlatego żądania HTTP dozwolone będzie serwer sieci web. Jeśli ten sam ruch próbował uzyskać dostęp do serwera DNS01, reguła 5 (odmowa) może być pierwszy do zastosowania, a ruch będzie nie można przekazać do serwera. Reguła 6 (Odmów) blokuje podsieć frontonu w rozmowie z podsieci wewnętrznej bazy danych (z wyjątkiem dozwolonego ruchu w regułach 1 i 4), ten zestaw reguł ochronę sieci wewnętrznej bazy danych w przypadku, gdy naruszeń osoba atakująca aplikacji sieci web we frontonie, osoba atakująca będzie mieć ograniczone dostęp do wewnętrznej bazy danych "chroniony" sieci (tylko do zasobów udostępnianych na serwerze AppVM01).
 
-Brak domyślnej regule wychodzącej, która umożliwia ruchu wychodzącego do Internetu. Na przykład firma Microsoft zezwala na ruch wychodzący i nie modyfikowanie reguł wychodzących. Do blokowania ruchu w obu kierunkach, zdefiniowane routingu użytkownika jest wymagany i jest przedstawione w "W przykładzie 3" na [strony najlepsze rozwiązania w zakresie granic zabezpieczeń][HOME].
+Brak domyślną regułę ruchu wychodzącego, która umożliwia ruchu wychodzącego z Internetem. W tym przykładzie firma Microsoft zezwala na ruch wychodzący i nie modyfikowanie żadnych reguł dla ruchu wychodzącego. Zablokować ruch w obu kierunkach, routingu zdefiniowanego użytkownika jest wymagana i zbadano w "W przykładzie 3", na [strony najlepsze rozwiązania w zakresie granic zabezpieczeń][HOME].
 
-Każda reguła omówiono bardziej szczegółowo w następujący sposób (**Uwaga**: dowolny element w poniższej listy rozpoczynający się znakiem dolara (na przykład: $NSGName) jest zmienną użytkownika ze skryptu zamieszczone w tej sekcji tego dokumentu):
+Każda reguła jest omówiona bardziej szczegółowo w następujący sposób (**Uwaga**: dowolnego elementu w następujące listy rozpoczynający się od znaku dolara (na przykład: $NSGName) jest zdefiniowany przez użytkownika zmienną ze skryptu zamieszczone w tej sekcji tego dokumentu):
 
 1. Najpierw sieciowej grupy zabezpieczeń muszą zostać skompilowane do przechowywania reguł:
 
@@ -92,23 +92,23 @@ Każda reguła omówiono bardziej szczegółowo w następujący sposób (**Uwaga
         -Label "Security group for $VNetName subnets in $DeploymentLocation"
     ```
 
-2. Pierwsza reguła w tym przykładzie zezwala na ruch DNS od wszystkich sieci wewnętrznej na serwerze DNS w podsieci wewnętrznej bazy danych. Reguła ma pewne ważne parametry:
+2. Pierwszą regułę w tym przykładzie zezwala na ruch DNS między wszystkie sieci wewnętrznej na serwerze DNS w podsieci wewnętrznej bazy danych. Reguła ma kilka ważnych parametrów:
    
-   * "Typ" oznacza, że w kierunku przepływu ruchu obowiązuje tej reguły. Kierunek jest z punktu widzenia podsieci lub maszyny wirtualnej (w zależności od tego, gdzie jest powiązany ten NSG). W związku z tym jeśli typ to "Przychodzącego" i ruchu jest wprowadzanie podsieci, reguła powinna zostać zastosowana i ruchu wychodzącego do podsieci nie może mieć wpływ na przez tę regułę.
-   * "Priority" Ustawia kolejność, w jakiej są oceniane przepływu ruchu. Im mniejsza liczba wyższy priorytet. Jeśli reguła ma zastosowanie do określonego ruchu, żadne dalsze reguły są przetwarzane. W związku z tym jeśli reguła o priorytecie 1 zezwala na ruch i reguły o priorytecie 2 nie zezwala na ruch i obie zasady są stosowane do ruchu, a następnie ruch będzie dozwolony przepływ (ponieważ reguła 1 ma wyższy priorytet trwało efektu i żadne dodatkowe reguły zostały zastosowane).
-   * "Akcja" oznacza, że jeśli ruch wpływ ta reguła jest zablokowane lub dozwolone.
+   * "Type" oznacza, w jakim kierunku przepływu ruchu tej reguły staje się skuteczny. Kierunek jest z punktu widzenia podsieci lub maszyn wirtualnych (zależnie od tego, gdzie powiązana jest ta sieciowa grupa zabezpieczeń). Dlatego jeśli typ to "Ruchu przychodzącego" ruch wchodzi podsieci, reguła będzie stosowana i ruchu wychodzącego z podsieci nie mogą być naruszone przez tę regułę.
+   * "Priority" Ustawia kolejność, w którym jest oceniana przepływu ruchu. Im mniejsza liczba wyższy priorytet. Gdy reguła ma zastosowanie do przepływu ruchu określone, nie dodatkowe reguły są przetwarzane. Dlatego jeśli reguła z priorytetem 1 zezwala na ruch oraz reguły o priorytecie 2 nie zezwala na ruch i obie reguły są stosowane do ruchu, a następnie dozwolone ruch będzie przepływać (ponieważ reguła 1 ma wyższy priorytet, jaki zajęło efektu i nie dodatkowe reguły były stosowane).
+   * "Action" oznacza, jeśli ruch dotyczy ta reguła jest zablokowane lub dozwolone.
 
-    ```PowerShell    
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
+     ```PowerShell    
+     Get-AzureNetworkSecurityGroup -Name $NSGName | `
         Set-AzureNetworkSecurityRule -Name "Enable Internal DNS" `
         -Type Inbound -Priority 100 -Action Allow `
         -SourceAddressPrefix VIRTUAL_NETWORK -SourcePortRange '*' `
         -DestinationAddressPrefix $VMIP[4] `
         -DestinationPortRange '53' `
         -Protocol *
-    ```
+     ```
 
-3. Ta reguła zezwala na ruch RDP mogą przepływać z Internetu z portem RDP na dowolnym serwerze podsieci powiązania. Ta zasada wykorzystuje dwa typy specjalne prefiksy adresów; "VIRTUAL_NETWORK" i "INTERNET". Tagi te są łatwe większych kategorię prefiksy adresów.
+3. Ta zasada umożliwia RDP przepływ ruchu z Internetu do portów protokołu RDP na każdym serwerze w powiązanej podsieci. Ta reguła używa dwa specjalne rodzaje prefiksy adresów; "VIRTUAL_NETWORK" i "INTERNET". Tagi te są łatwy sposób większych kategorię prefiksy adresów.
 
     ```PowerShell
     Get-AzureNetworkSecurityGroup -Name $NSGName | `
@@ -120,7 +120,7 @@ Każda reguła omówiono bardziej szczegółowo w następujący sposób (**Uwaga
          -Protocol *
     ```
 
-4. Ta zasada umożliwia ruch przychodzący z Internetu trafienie serwera sieci web. Ta zasada nie powoduje zmiany zachowania routingu. Ta reguła zezwala tylko ruch kierowany do IIS01 do przekazania. W związku z tym jeśli ruch z Internetu miał serwera sieci web jako miejsca docelowego tej reguły spowoduje zezwolenie i zatrzymać dalsze przetwarzanie reguł. (W regule priorytetem 140 wszystkich innych przychodzącego ruchu internetowego jest zablokowana). Tylko w przypadku przetwarzania ruchu HTTP, ta zasada można dodatkowo ograniczony umożliwiają tylko docelowy Port 80.
+4. Ta reguła zezwala na ruch przychodzący z Internetu do trafień serwer sieci web. Ta zasada nie powoduje zmiany zachowania routingu. Ta reguła zezwala tylko ruch przeznaczony dla IIS01 do przekazania. Dlatego jeśli ruch z Internetu, gdyby serwer sieci web jako miejsca docelowego, ta zasada będzie zezwalała i zatrzymać dalsze przetwarzanie reguł. (W regule priorytetem 140 wszystkich innych ruch przychodzący z Internetu jest zablokowana). Tylko w przypadku przetwarzania ruchu HTTP, ta zasada można dodatkowo ograniczone umożliwia tylko docelowy Port 80.
 
     ```PowerShell
     Get-AzureNetworkSecurityGroup -Name $NSGName | `
@@ -132,7 +132,7 @@ Każda reguła omówiono bardziej szczegółowo w następujący sposób (**Uwaga
          -Protocol *
     ```
 
-5. Ta zasada umożliwia ruch z serwera IIS01 na serwerze AppVM01 nowsze bloków reguł innych frontonu dla ruchu wewnętrznej bazy danych. Aby poprawić tej reguły, jeśli znane jest port, który ma zostać dodany. Na przykład, jeśli serwer usług IIS jest naciśnięcie tylko programu SQL Server na AppVM01, zakres portów docelowych należy zmienić "*" (Any) 1433 (SQL port), dzięki czemu mniejsze przychodzących ataki AppVM01 aplikacji sieci web kiedykolwiek zagrożenia bezpieczeństwa.
+5. Ta reguła zezwala na ruch do przekazania z serwera IIS01 serwerowi AppVM01 bloków reguł w późniejszym innych frontonu dla ruchu zaplecza. Aby zwiększyć tę regułę, jeśli port jest znany, że ma zostać dodany. Na przykład, jeśli na serwerze usług IIS powoduje osiągnięcie tylko program SQL Server na AppVM01, zakres portów docelowych należy zmienić "*" (wszystkie) 1433 (SQL port), dzięki czemu mniejszych przychodzących ataków na AppVM01 powinien aplikacji sieci web nigdy nie zostaną ujawnione.
 
     ```PowerShell
     Get-AzureNetworkSecurityGroup -Name $NSGName | `
@@ -144,7 +144,7 @@ Każda reguła omówiono bardziej szczegółowo w następujący sposób (**Uwaga
         -Protocol *
     ```
 
-6. Ta reguła nie zezwala na ruch z Internetu do serwerów w sieci. Z regułami priorytetem 110 i 120 efekt jest umożliwienie tylko internet ruchu przychodzącego zapory i porty protokołu RDP na serwerach i bloków, wszystkie inne elementy. Ta reguła jest regułą "awaryjnego" Aby zablokować wszystkie przepływy nieoczekiwany.
+6. Ta zasada nie zezwala na ruch z Internetu do serwerów w sieci. Za pomocą reguł priorytetem 110 i 120 efekt jest umożliwienie tylko ruch przychodzący z Internetu do zapory i porty protokołu RDP na serwerach i bloków, wszystkie inne elementy. Ta reguła jest "odporne na uszkodzenia" regułę blokującą wszystkie przepływy nieoczekiwany.
     ```PowerShell
     Get-AzureNetworkSecurityGroup -Name $NSGName | `
         Set-AzureNetworkSecurityRule `
@@ -155,7 +155,7 @@ Każda reguła omówiono bardziej szczegółowo w następujący sposób (**Uwaga
         -DestinationPortRange '*' `
         -Protocol *
     ```
-7. Reguła końcowego nie zezwala na ruch z podsieci frontonu do podsieci wewnętrznej bazy danych. Ponieważ ta reguła jest tylko regułę ruchu przychodzącego, odwrotnej ruch jest dozwolony (z wewnętrznej bazy danych do serwera sieci Web).
+7. Końcowa reguła nie zezwala na ruch z podsieci Frontend do podsieci wewnętrznej bazy danych. Ponieważ ta reguła jest tylko Reguła ruchu przychodzącego, ruch powrotny jest dozwolone (z wewnętrznej bazy danych do serwera sieci Web).
 
     ```PowerShell
     Get-AzureNetworkSecurityGroup -Name $NSGName | `
@@ -169,117 +169,117 @@ Każda reguła omówiono bardziej szczegółowo w następujący sposób (**Uwaga
     ```
 
 ## <a name="traffic-scenarios"></a>Scenariusze ruchu
-#### <a name="allowed-internet-to-web-server"></a>(*Dozwolone*) Internetu do serwera sieci web
-1. Użytkownik internet zażąda strony HTTP z FrontEnd001.CloudApp.Net (Internet ukierunkowane usługa w chmurze)
-2. W chmurze usługi przekazuje ruch przez otwarty punkt końcowy na porcie 80 kierunku IIS01 (serwer sieci web)
-3. Podsieci frontonu rozpoczyna przetwarzanie przychodzących reguł:
-   1. Reguły NSG 1 DNS (Domain Name System) nie są spełnione, przejść do następnej reguły
-   2. 2 reguły NSG (RDP) nie są spełnione, przejść do następnej reguły
-   3. Zastosować grupy NSG zasady 3 (Internet w celu IIS01), ruch jest dozwolony, stop reguły przetwarzania
-4. Ruch trafienia wewnętrzny adres IP serwera sieci web IIS01 (10.0.1.5)
-5. IIS01 nasłuchuje ruchu w sieci web, otrzymuje tego żądania i rozpoczyna przetwarzanie żądania
-6. IIS01 żąda od serwera SQL na AppVM01 informacji
-7. Ponieważ nie ma żadnych reguł dla ruchu wychodzącego w podsieci frontonu, ruch jest dozwolony
-8. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-   1. Reguły NSG 1 DNS (Domain Name System) nie są spełnione, przejść do następnej reguły
-   2. 2 reguły NSG (RDP) nie są spełnione, przejść do następnej reguły
-   3. Grupy NSG zasady 3 (Internet do zapory) nie są spełnione, przejść do następnej reguły
-   4. 4 reguły NSG zastosować (IIS01 do AppVM01), ruch jest dozwolony, Zatrzymaj przetwarzania zasad
+#### <a name="allowed-internet-to-web-server"></a>(*Dozwolone*) Internet do serwera sieci web
+1. Użytkownik internet żądań na stronie HTTP od FrontEnd001.CloudApp.Net (usługa chmury połączonego z Internetem)
+2. Chmury usługi przekazuje ruch przez otwarty punkt końcowy na porcie 80 w kierunku IIS01 (serwer sieci web)
+3. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
+   3. Zastosuj 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
+4. Ruch osiąga wewnętrzny adres IP serwera sieci web IIS01 (10.0.1.5)
+5. IIS01 nasłuchuje ruchu w sieci web, odbiera żądania i rozpoczyna przetwarzanie żądania
+6. IIS01 programu SQL Server na AppVM01 monituje o podanie informacji
+7. Ponieważ nie ma żadnych reguł ruchu wychodzącego na podsieć frontonu, ruch jest dozwolony
+8. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
+   3. 3 reguły sieciowej grupy zabezpieczeń (Internet do zapory) nie zastosować, przenieść następną regułę
+   4. 4 reguły sieciowej grupy zabezpieczeń (IIS01 do AppVM01) są spełnione, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł
 9. AppVM01 odbiera zapytanie SQL i odpowiada
-10. Ponieważ nie ma żadnych reguł dla ruchu wychodzącego w podsieci wewnętrznej bazy danych, odpowiedzi jest dozwolona
-11. Podsieci frontonu rozpoczyna przetwarzanie przychodzących reguł:
-    1. Nie zasady grupy NSG, która ma zastosowanie do przychodzącego ruchu w podsieci wewnętrznej bazy danych do podsieci frontonu, aby żadna grupa NSG zasady stosowane
-    2. Domyślna reguła system zezwala na ruch między podsieciami pozwala tego rodzaju ruch, ruch jest dozwolony.
-12. Serwer usług IIS otrzyma odpowiedź SQL i kończy odpowiedź HTTP i przesyła do żądającego
-13. Ponieważ nie ma żadnych reguł dla ruchu wychodzącego w podsieci frontonu odpowiedzi jest dozwolone, a internet użytkownik otrzymuje żądanej strony sieci web.
+10. Ponieważ na podsieci wewnętrznej bazy danych nie ma żadnych reguł dla ruchu wychodzącego, odpowiedź jest dozwolone
+11. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
+    2. Reguła systemu domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
+12. Na serwerze usług IIS odbiera odpowiedź SQL i kończy odpowiedź HTTP i wysyła do obiektu żądającego
+13. Ponieważ brak reguł ruchu wychodzącego w podsieci Frontend jest dozwolony odpowiedzi i internet użytkownik otrzymuje żądanej strony sieci web.
 
-#### <a name="allowed-rdp-to-backend"></a>(*Dozwolone*) RDP do wewnętrznej bazy danych
-1. Administrator serwera w Internecie żądań sesji protokołu RDP do AppVM01 na BackEnd001.CloudApp.Net:xxxxx gdzie xxxxx jest numerem losowo przypisany port protokołu RDP do AppVM01 (przypisanego portu można znaleźć w portalu Azure lub za pomocą programu PowerShell)
-2. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-   1. Reguły NSG 1 DNS (Domain Name System) nie są spełnione, przejść do następnej reguły
-   2. Zastosuj 2 reguły NSG (RDP), ruch jest dozwolony, stop reguły przetwarzania
-3. Z nie reguł dla ruchu wychodzącego Zastosuj reguły domyślne i zwracany ruch jest dozwolony
-4. Włączono sesji protokołu RDP
-5. AppVM01 monit o podanie nazwy użytkownika i hasła
+#### <a name="allowed-rdp-to-backend"></a>(*Dozwolone*) protokołu RDP do wewnętrznej bazy danych
+1. Administrator serwera w Internecie żądań sesji protokołu RDP, aby AppVM01 na BackEnd001.CloudApp.Net:xxxxx gdzie xxxxx jest liczbą losowo przypisany port dla protokołu RDP do AppVM01 (przypisanego portu można znaleźć w witrynie Azure portal lub za pośrednictwem programu PowerShell)
+2. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. Stosowanie 2 reguły sieciowej grupy zabezpieczeń (RDP), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
+3. Za pomocą reguł ruchu wychodzącego domyślne reguły i ruch powrotny jest dozwolone
+4. Sesję RDP jest włączona.
+5. AppVM01 wyświetla monit o podanie nazwy użytkownika i hasła
 
 #### <a name="allowed-web-server-dns-look-up-on-dns-server"></a>(*Dozwolone*) wyszukiwanie nazwy DNS serwera sieci Web na serwerze DNS
-1. Sieci Web serwera, IIS01, musi na www.data.gov strumieniowego źródła danych, ale musi rozpoznać adresu.
-2. Konfigurację sieci dla listy sieci wirtualnej DNS01 (10.0.2.4 podsieci wewnętrznej bazy danych) jako podstawowy serwer DNS, IIS01 wysyła żądanie DNS DNS01
-3. Nie reguł dla ruchu wychodzącego w podsieci frontonu, ruch jest dozwolony
-4. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-   * Zastosuj reguły NSG 1 DNS (Domain Name System), ruch jest dozwolony, stop reguły przetwarzania
+1. Sieci Web Server, IIS01, potrzeb w www.data.gov strumieniowych źródeł danych, ale musi rozpoznać adresu.
+2. W konfiguracji sieci VNet list DNS01 (10.0.2.4 w podsieci wewnętrznej bazy danych) jako podstawowy serwer DNS, IIS01 wysyła żądania DNS DNS01
+3. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
+4. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+   * Zastosuj 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
 5. Serwer DNS odbiera żądanie
-6. Serwer DNS nie ma adresu w pamięci podręcznej i prosi o główny serwer DNS w Internecie
-7. Nie reguł dla ruchu wychodzącego w podsieci wewnętrznej bazy danych, ruch jest dozwolony
-8. DNS w Internecie serwer odpowiada, ponieważ ta sesja została zainicjowana wewnętrznie, odpowiedź jest dozwolone.
-9. Serwer DNS będzie buforować odpowiedź i odpowiada na żądania początkowego do IIS01
-10. Nie reguł dla ruchu wychodzącego w podsieci wewnętrznej bazy danych, ruch jest dozwolony
-11. Podsieci frontonu rozpoczyna przetwarzanie przychodzących reguł:
-    1. Nie zasady grupy NSG, która ma zastosowanie do przychodzącego ruchu w podsieci wewnętrznej bazy danych do podsieci frontonu, aby żadna grupa NSG zasady stosowane
-    2. Domyślna reguła system zezwala na ruch między podsieciami pozwala tego rodzaju ruch, ruch jest dozwolony
-12. IIS01 odbiera odpowiedź z DNS01
+6. Serwer DNS nie ma adresu pamięci podręcznej i prosi główny serwer DNS w Internecie
+7. Nie reguł ruchu wychodzącego w podsieci zaplecza ruch jest dozwolony.
+8. Odpowiada internetowym serwerze DNS, ponieważ ta sesja została zainicjowana wewnętrznie, odpowiedź jest dozwolone.
+9. Serwer DNS będzie buforować odpowiedź i odpowiada na żądanie początkowy powrót do IIS01
+10. Nie reguł ruchu wychodzącego w podsieci zaplecza ruch jest dozwolony.
+11. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+    1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
+    2. Reguła systemowa domyślnej zezwalającej na ruch pomiędzy podsieciami będzie zezwalającej na ten ruch, więc ruch jest dozwolony
+12. IIS01 odbiera odpowiedź od DNS01
 
 #### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Dozwolone*) pliku dostępu do serwera sieci Web na AppVM01
-1. IIS01 żąda pliku na AppVM01
-2. Nie reguł dla ruchu wychodzącego w podsieci frontonu, ruch jest dozwolony
-3. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie przychodzących reguł:
-   1. Reguły NSG 1 DNS (Domain Name System) nie są spełnione, przejść do następnej reguły
-   2. 2 reguły NSG (RDP) nie są spełnione, przejść do następnej reguły
-   3. Grupa NSG zasady 3 (Internet w celu IIS01) nie są spełnione, przejść do następnej reguły
-   4. 4 reguły NSG zastosować (IIS01 do AppVM01), ruch jest dozwolony, Zatrzymaj przetwarzania zasad
-4. AppVM01 odbiera żądanie i odpowiada plik (przy założeniu, że autoryzacji dostępu)
-5. Ponieważ nie ma żadnych reguł dla ruchu wychodzącego w podsieci wewnętrznej bazy danych, odpowiedzi jest dozwolona
-6. Podsieci frontonu rozpoczyna przetwarzanie przychodzących reguł:
-   1. Nie zasady grupy NSG, która ma zastosowanie do przychodzącego ruchu w podsieci wewnętrznej bazy danych do podsieci frontonu, aby żadna grupa NSG zasady stosowane
-   2. Domyślna reguła system zezwala na ruch między podsieciami pozwala tego rodzaju ruch, ruch jest dozwolony.
-7. Serwer usług IIS odbiera plik
+1. IIS01 poprosi o podanie pliku na AppVM01
+2. Nie reguł ruchu wychodzącego w podsieci Frontend jest dozwolony ruch
+3. Podsieci wewnętrznej bazy danych rozpoczyna się przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
+   3. 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01) nie zastosować, przenieść następną regułę
+   4. 4 reguły sieciowej grupy zabezpieczeń (IIS01 do AppVM01) są spełnione, ruch jest dozwolony, Zatrzymaj przetwarzanie reguł
+4. AppVM01 odbiera żądanie i odpowiada za pomocą pliku (przy założeniu, że dostęp jest autoryzowany)
+5. Ponieważ na podsieci wewnętrznej bazy danych nie ma żadnych reguł dla ruchu wychodzącego, odpowiedź jest dozwolone
+6. Podsieć frontonu rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. Istnieje nie reguły sieciowej grupy zabezpieczeń, która ma zastosowanie do ruchu przychodzącego ruchu sieciowego z podsieci zaplecza do podsieci frontonu, aby Brak sieciowej grupy zabezpieczeń reguły, zastosuj
+   2. Reguła systemu domyślnej zezwalającej na ruch pomiędzy podsieciami umożliwia ten ruch, ruch jest dozwolony.
+7. Serwer IIS odbiera pliku
 
 #### <a name="denied-web-to-backend-server"></a>(*Odmowa*) do serwera wewnętrznej bazy danych w sieci Web
-1. Użytkownik internet próbuje uzyskać dostęp do pliku na AppVM01 za pośrednictwem usługi BackEnd001.CloudApp.Net
-2. Ponieważ nie ma żadnych punktów końcowych otwarty do udziału plików, tego rodzaju ruch nie przejdzie usługi w chmurze, a nie dociera do serwera
-3. Jeśli punktów końcowych, które były otwarte jakiegoś powodu, reguły NSG 5 (Internet do sieci wirtualnej) czy zablokować ruch
+1. Użytkownik internet próbuje dostęp do pliku na AppVM01 za pośrednictwem usługi BackEnd001.CloudApp.Net
+2. Punkty końcowe nie są otwarte dla udziału plików, ten ruch nie przejdzie z usługą w chmurze, a nie dociera do serwera
+3. W przypadku punktów końcowych, które były otwarte niektóre przyczyny, ten ruch mogłyby spowodować zablokowanie reguły sieciowej grupy zabezpieczeń 5 (Internetu do sieci wirtualnej)
 
 #### <a name="denied-web-dns-look-up-on-dns-server"></a>(*Odmowa*) wyszukiwanie nazwy DNS w sieci Web na serwerze DNS
-1. Internet próby odszukania wewnętrzny rekord DNS na DNS01 za pośrednictwem usługi BackEnd001.CloudApp.Net
-2. Ponieważ nie ma żadnych punktów końcowych otwarte dla serwera DNS, tego rodzaju ruch nie przejdzie usługi w chmurze, a nie dociera do serwera
-3. Jeśli punktów końcowych, które były otwarte jakiegoś powodu, reguły NSG 5 (Internet do sieci wirtualnej) czy zablokować ruch (Uwaga: nie ma zastosowania tej reguły 1 (DNS) z dwóch przyczyn, najpierw adresu źródłowego jest internet, ta reguła ma zastosowanie tylko do lokalnej sieci wirtualnej jako źródło, również ta reguła jest Reguła zezwalająca, nigdy nie będzie go odmówić ruchu)
+1. Użytkownik internet próbuje do wyszukania wewnętrzny rekord DNS na DNS01 za pośrednictwem usługi BackEnd001.CloudApp.Net
+2. Punkty końcowe nie są otwarte w systemie DNS, ten ruch nie przejdzie z usługą w chmurze, a nie dociera do serwera
+3. W przypadku punktów końcowych, które były otwarte niektóre przyczyny, ten ruch mogłyby spowodować zablokowanie reguły sieciowej grupy zabezpieczeń 5 (Internet z siecią wirtualną) (Uwaga: nie ma zastosowania tej reguły 1 domen (DNS) z dwóch przyczyn, najpierw adres źródłowy jest internet, ta zasada ma zastosowanie tylko do lokalnej sieci wirtualnej jako źródło również ta reguła ma regułę zezwalającą, więc go może nigdy nie zezwalają na ruch)
 
-#### <a name="denied-web-to-sql-access-through-firewall"></a>(*Odmowa*) sieci Web SQL dostępu przez zaporę
-1. Użytkownik internet żąda danych SQL z FrontEnd001.CloudApp.Net (Internet ukierunkowane usługa w chmurze)
-2. Ponieważ nie ma żadnych punktów końcowych otwarte dla bazy danych SQL, tego rodzaju ruch nie przejdzie usługi w chmurze i nie dotrzeć zapory
-3. Jeśli punkty końcowe zostały otwarte jakiegoś powodu, podsieci frontonu rozpoczyna przetwarzanie przychodzącej reguły:
-   1. Reguły NSG 1 DNS (Domain Name System) nie są spełnione, przejść do następnej reguły
-   2. 2 reguły NSG (RDP) nie są spełnione, przejść do następnej reguły
-   3. Zastosować grupy NSG zasady 3 (Internet w celu IIS01), ruch jest dozwolony, stop reguły przetwarzania
-4. Wewnętrzny adres IP IIS01 trafienia ruchu (10.0.1.5)
-5. IIS01 nie nasłuchuje na porcie 1433, więc nie ma odpowiedzi na żądanie
+#### <a name="denied-web-to-sql-access-through-firewall"></a>(*Odmowa*) na dostęp SQL przez zaporę w sieci Web
+1. Użytkownik internet żąda danych SQL z FrontEnd001.CloudApp.Net (usługa chmury połączonego z Internetem)
+2. Punkty końcowe nie są otwarte dla programu SQL, ten ruch nie przejdzie z usługą w chmurze i w takich sytuacjach przydałaby dotrzeć do zapory
+3. Jeśli punkty końcowe były otwarte niektóre przyczyny, z podsiecią Frontend rozpoczyna przetwarzanie reguł dla ruchu przychodzącego:
+   1. 1 regułę sieciowej grupy zabezpieczeń (DNS, Domain Name System) nie zastosować, przenieść następną regułę
+   2. 2 reguły sieciowej grupy zabezpieczeń (RDP) nie są spełnione, przenieść następną regułę
+   3. Zastosuj 3 reguły sieciowej grupy zabezpieczeń (Internet do IIS01), ruch jest przetwarzanie reguł dozwolonych, Zatrzymaj
+4. Ruch osiąga wewnętrzny adres IP IIS01 (10.0.1.5)
+5. IIS01 nie nasłuchuje na porcie 1433, więc nie odpowiedź na żądanie
 
 ## <a name="conclusion"></a>Podsumowanie
-W tym przykładzie jest stosunkowo proste i bezpośrednio do przodu sposobem izolowanie podsieci wewnętrznej z ruchu przychodzącego.
+W tym przykładzie jest stosunkowo prosta i proste sposób odizolowanie podsieci zaplecza z ruchu przychodzącego.
 
-Więcej przykładów i Przegląd granic zabezpieczeń sieci można znaleźć [tutaj][HOME].
+Więcej przykładów i przegląd granice zabezpieczeń sieci można znaleźć [tutaj][HOME].
 
 ## <a name="references"></a>Dokumentacja
 ### <a name="main-script-and-network-config"></a>Główne config skryptu i sieci
-Zapisz skrypt pełna w pliku skryptu programu PowerShell. Zapisz konfigurację sieci w pliku o nazwie "NetworkConf1.xml."
-Modyfikuj zmienne zdefiniowane przez użytkownika, zgodnie z potrzebami, a następnie uruchom skrypt.
+Pełny skrypt należy zapisać w pliku skryptu programu PowerShell. Zapisanie konfiguracji sieci w pliku o nazwie "NetworkConf1.xml."
+Zmodyfikuj zmienne zdefiniowane przez użytkownika, zgodnie z potrzebami, a następnie uruchom skrypt.
 
 #### <a name="full-script"></a>Pełny skrypt
-Ten skrypt zostanie, na podstawie zmiennych zdefiniowanych przez użytkownika;
+Ten skrypt spowoduje, na podstawie zmiennych zdefiniowanych przez użytkownika;
 
 1. Łączenie się z subskrypcją platformy Azure
 2. Tworzenie konta magazynu
 3. Tworzenie sieci wirtualnej z dwoma podsieciami, zgodnie z definicją w pliku konfiguracji sieci
-4. Tworzenie maszyn wirtualnych serwera cztery systemu windows
-5. Skonfiguruj grupy NSG w tym:
-   * Utworzenie grupy NSG
+4. Tworzenie czterech systemu windows server w maszynach wirtualnych
+5. Konfigurowanie sieciowej grupy zabezpieczeń w tym:
+   * Tworzenie sieciowej grupy zabezpieczeń
    * Zapełnianie reguły
-   * Powiązanie grupy NSG z odpowiednich podsieci
+   * Powiązanie odpowiednie podsieci sieciową grupę zabezpieczeń
 
-Ten skrypt programu PowerShell powinien zostać uruchomiony lokalnie na się, że połączenie internetowe, komputera lub serwera.
+Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Internetem, komputera lub serwera.
 
 > [!IMPORTANT]
-> Uruchomienie tego skryptu można ostrzeżenia lub inne komunikaty informacyjne, które pop w programie PowerShell. Tylko komunikaty o błędach na czerwono są przyczyną problemu.
+> Po uruchomieniu tego skryptu można ostrzeżenia lub inne komunikaty informacyjne, które punktów obecności w programie PowerShell. Tylko komunikaty o błędach w kolorze czerwonym są zaniepokoić.
 > 
 >
 
@@ -541,10 +541,10 @@ Else { Write-Host "Validation passed, now building the environment." -Foreground
 ```
 
 #### <a name="network-config-file"></a>Plik konfiguracji sieci
-Zapisz ten plik xml z lokalizacji zaktualizowane i dodać link do tego pliku do zmiennej $NetworkConfigFile w powyższy skrypt.
+Zapisz ten plik xml z lokalizacją zaktualizowane i dodać link do tego pliku do zmiennej $NetworkConfigFile w poprzednim skrypcie.
 
 ```XML
-<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns>
       <DnsServers>
@@ -576,12 +576,12 @@ Zapisz ten plik xml z lokalizacji zaktualizowane i dodać link do tego pliku do 
 ```
 
 #### <a name="sample-application-scripts"></a>Przykładowe skrypty aplikacji
-Jeśli chcesz zainstalować przykładową aplikację dla tej i innych przykładowych sieci obwodowych, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
+Jeśli chcesz zainstalować przykładową aplikację w tym i inne przykłady strefy DMZ, jedno zostało podane z łącza: [Przykładowy skrypt aplikacji][SampleApp]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aktualizowanie i Zapisz plik XML
+* Aktualizacji, a następnie zapisz plik XML
 * Uruchom skrypt programu PowerShell do tworzenia środowiska
-* Instalowanie przykładowej aplikacji
+* Zainstaluj przykładową aplikację.
 * Testowanie różnego ruchu za pośrednictwem tej sieci obwodowej
 
 <!--Image References-->

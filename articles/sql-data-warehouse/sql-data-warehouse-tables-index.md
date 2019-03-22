@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fe19510d9b4c6311923b4b2ea15f133249e6cbd5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190043"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indeksowanie tabel w usłudze SQL Data Warehouse
 Zalecenia i przykłady dla indeksowania tabel w usłudze Azure SQL Data Warehouse.
@@ -45,12 +45,12 @@ Istnieje kilka scenariuszy, w którym klastrowanego magazynu kolumn nie może by
 
 - Tabele magazynu kolumn nie obsługują, varchar(max), nvarchar(max) i varbinary(max). Zamiast tego należy rozważyć stosu lub indeksu klastrowanego.
 - Tabele magazynu kolumn może być mniej wydajne rozwiązanie dla danych przejściowych. Należy wziąć pod uwagę sterty i tabele tymczasowe wręcz Fatalne.
-- Małe tabele z mniej niż 100 milionów wierszy. Należy wziąć pod uwagę tabel stosów.
+- Małe tabele z mniej niż 60 milionami wierszy. Należy wziąć pod uwagę tabel stosów.
 
 ## <a name="heap-tables"></a>Tabele stosu
-Gdy dane są tymczasowo docelowa w usłudze SQL Data Warehouse, może się okazać, że użycie tabeli stosu sprawia, że cały proces. Jest to spowodowane obciążenia odnoszące się do stert są realizowane szybciej niż tabele indeksów i w niektórych przypadkach kolejny odczyt może odbywać się z pamięci podręcznej.  Jeśli są ładowane tylko dane i przygotowania uruchomienia kolejnych przekształceń, załadowanie tabeli do stosu jest znacznie szybsze niż załadowanie danych do tabeli klastrowanego magazynu kolumn. Ponadto załadowanie danych do [tabeli tymczasowej](sql-data-warehouse-tables-temporary.md) ładuje szybsze niż załadowanie tabeli do pamięci trwałej.  
+Gdy dane są tymczasowo kierowanych do magazynu danych SQL, może się okazać, że użycie tabeli stosu sprawia, że cały proces. Jest to spowodowane obciążenia odnoszące się do stert są realizowane szybciej niż tabele indeksów i w niektórych przypadkach kolejny odczyt może odbywać się z pamięci podręcznej.  Jeśli są ładowane tylko dane i przygotowania uruchomienia kolejnych przekształceń, załadowanie tabeli do stosu jest znacznie szybsze niż załadowanie danych do tabeli klastrowanego magazynu kolumn. Ponadto załadowanie danych do [tabeli tymczasowej](sql-data-warehouse-tables-temporary.md) ładuje szybsze niż załadowanie tabeli do pamięci trwałej.  
 
-W przypadku tabel odnośników małych, mniej niż 100 milionów wierszy, często tabel stosów sens.  Rozpocznij tabel magazynu kolumn klastra w celu uzyskania optymalnej kompresji po ponad 100 milionów wierszy.
+W przypadku tabel odnośników małych, mniej niż 60 milionami wierszy często tabel stosów sens.  Rozpocznij tabel magazynu kolumn klastra w celu uzyskania optymalnej kompresji po ponad 60 milionów wierszy.
 
 Aby utworzyć tabelę sterty, wystarczy określić STERTY w klauzuli WITH:
 
@@ -79,7 +79,7 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-Aby dodać indeksu nieklastrowanego dla tabeli, po prostu użyj następującej składni:
+Aby dodać indeksu nieklastrowanego dla tabeli, użyj następującej składni:
 
 ```SQL
 CREATE INDEX zipCodeIndex ON myTable (zipCode);
@@ -182,7 +182,7 @@ Po zidentyfikowaniu tabel z segmentu słabą jakością, chcesz odkryć ich gł�
 Te czynniki mogą powodować indeksu magazynu kolumn, aby znacznie mniejsza niż optymalne 1 milion wierszy na grupę wierszy. Może to powodować również wiersze przejść do grupę wierszy delta, a nie grupą skompresowany wiersza. 
 
 ### <a name="memory-pressure-when-index-was-built"></a>Wykorzystanie pamięci podczas kompilowania indeksu
-Liczba wierszy na grupę wierszy skompresowany są bezpośrednio związane z szerokość wiersza i ilość pamięci przetworzyć grupę wierszy.  Jeśli wiersze są zapisywane w tabelach magazynu kolumn przy dużym wykorzystaniu pamięci, może to spowodować obniżenie jakości segmentów w magazynie kolumn.  W związku z tym najlepszym rozwiązaniem jest zapewnienie sesji, która zapisuje dostępu tabele indeksów magazynu kolumn do tak dużej ilości pamięci, jak to możliwe.  Ponieważ istnieje zależność między pamięcią i współbieżności, wskazówki na temat przydziału pamięci prawo zależy od danych w każdym wierszu tabeli, jednostki magazynu danych, które są przydzielane do systemu i liczby gniazd współbieżności można przekazać sesji której zapisuje dane do tabeli.  Najlepszym rozwiązaniem jest firma Microsoft zaleca uruchamianie mniej largerc lub xlargerc, jeśli używasz DW300, jeśli używasz DW400 do wartości DW600 i mediumrc, jeśli używasz DW1000 lub nowszym.
+Liczba wierszy na grupę wierszy skompresowany są bezpośrednio związane z szerokość wiersza i ilość pamięci przetworzyć grupę wierszy.  Jeśli wiersze są zapisywane w tabelach magazynu kolumn przy dużym wykorzystaniu pamięci, może to spowodować obniżenie jakości segmentów w magazynie kolumn.  W związku z tym najlepszym rozwiązaniem jest zapewnienie sesji, która zapisuje dostępu tabele indeksów magazynu kolumn do tak dużej ilości pamięci, jak to możliwe.  Ponieważ istnieje zależność między pamięcią i współbieżności, wskazówki na temat przydziału pamięci prawo zależy od danych w każdym wierszu tabeli, jednostki magazynu danych, które są przydzielane do systemu i liczby gniazd współbieżności można przekazać sesji której zapisuje dane do tabeli.
 
 ### <a name="high-volume-of-dml-operations"></a>Duża liczba operacji DML
 Duża liczba operacji DML, aktualizowanie i usuwanie wierszy, które można wprowadzać nieefektywne podejście do magazynu kolumn. Jest to szczególnie istotne, po zmodyfikowaniu większość wierszy w grupy wierszy.
@@ -205,7 +205,7 @@ Po tabele zostały załadowane z danymi, wykonaj poniższe kroki, aby zidentyfik
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Ponowne tworzenie indeksów w celu zwiększenia jakości segmentów
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: Określ lub Utwórz użytkownika, który używa klasy właściwy zasób
-Szybkim sposobem natychmiast poprawiać jakość segmentu jest odbudowanie indeksu.  SQL zwrócone przez widok powyżej zwraca instrukcji ALTER INDEX REBUILD, która może służyć do odbudowywania indeksów. Podczas odbudowywania indeksów, pamiętaj, że przydzielić wystarczającej ilości pamięci do sesji, która odbudowania indeksu.  Aby to zrobić, należy zwiększyć klasy zasobów użytkownika, który ma uprawnienia do odbudowania indeksu w tej tabeli do minimum zalecane. Nie można zmienić klasy zasobów użytkownika właściciela bazy danych, więc jeśli nie utworzono użytkownika w systemie, należy najpierw zrobić. Klasa zasobów zalecaną minimalną jest xlargerc Jeśli używasz DW300 lub mniej, largerc Jeśli używasz DW400 do wartości DW600 i mediumrc, jeśli używasz DW1000 lub nowszym.
+Szybkim sposobem natychmiast poprawiać jakość segmentu jest odbudowanie indeksu.  SQL zwrócone przez widok powyżej zwraca instrukcji ALTER INDEX REBUILD, która może służyć do odbudowywania indeksów. Podczas odbudowywania indeksów, pamiętaj, że przydzielić wystarczającej ilości pamięci do sesji, która odbudowania indeksu.  Aby to zrobić, należy zwiększyć klasy zasobów użytkownika, który ma uprawnienia do odbudowania indeksu w tej tabeli do minimum zalecane. 
 
 Poniżej znajduje się przykład jak przydzielanie większej ilości pamięci do użytkownika, zwiększając ich klasy zasobów. Aby pracować z klasami zasobów, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md).
 
@@ -216,7 +216,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Odbuduj indeksy klastrowanego magazynu kolumn użytkownikowi wyższe klasy zasobów
 Zaloguj się jako użytkownik z kroku 1 (np. LoadUser), która jest teraz przy użyciu z wyższą klasą zasobu, i wykonywanie instrukcji ALTER INDEX. Pamiętaj, że ten użytkownik ma uprawnienie ALTER do tabel, gdzie jest odbudować indeksu. Te przykłady przedstawiają sposób odbudowywania indeksu magazynu kolumn w całej lub sposobie odbudowania jednej partycji. W dużych tabel jest więcej praktyczne, aby ponownie utworzyć indeksy jednej partycji w danym momencie.
 
-Alternatywnie zamiast odbudowanie indeksu, można skopiować tabelę do nowej tabeli [użycie instrukcji CTAS](sql-data-warehouse-develop-ctas.md). Jaki sposób jest najlepsza? Dla dużych ilości danych, jest zwykle szybsze niż CTAS [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Dla mniejszych ilości danych ALTER INDEX jest łatwiejsze w użyciu i nie wymagają wymienić w tabeli. Zobacz **ponowne tworzenie indeksów za pomocą instrukcji CTAS i przełączanie partycji** poniżej Aby uzyskać więcej informacji na temat sposobu Odbuduj indeksy za pomocą instrukcji CTAS.
+Alternatywnie zamiast odbudowanie indeksu, można skopiować tabelę do nowej tabeli [użycie instrukcji CTAS](sql-data-warehouse-develop-ctas.md). Jaki sposób jest najlepsza? Dla dużych ilości danych, jest zwykle szybsze niż CTAS [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Dla mniejszych ilości danych ALTER INDEX jest łatwiejsze w użyciu i nie wymagają wymienić w tabeli. 
 
 ```sql
 -- Rebuild the entire clustered index
@@ -263,25 +263,8 @@ WHERE   [OrderDateKey] >= 20000101
 AND     [OrderDateKey] <  20010101
 ;
 
--- Step 2: Create a SWITCH out table
-CREATE TABLE dbo.FactInternetSales_20000101
-    WITH    (   DISTRIBUTION = HASH(ProductKey)
-            ,   CLUSTERED COLUMNSTORE INDEX
-            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
-                                (20000101
-                                )
-                            )
-            )
-AS
-SELECT *
-FROM    [dbo].[FactInternetSales]
-WHERE   1=2 -- Note this table will be empty
-
--- Step 3: Switch OUT the data 
-ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales_20000101] PARTITION 2;
-
--- Step 4: Switch IN the rebuilt data
-ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
+-- Step 2: Switch IN the rebuilt data with TRUNCATE_TARGET option
+ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
 Aby uzyskać więcej szczegółów na temat następuje ponowne tworzenie partycji za pomocą instrukcji CTAS zobacz [za pomocą partycji w usłudze SQL Data Warehouse](sql-data-warehouse-tables-partition.md).

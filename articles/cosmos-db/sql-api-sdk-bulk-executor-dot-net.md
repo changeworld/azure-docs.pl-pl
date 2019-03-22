@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 76a40c7e9f32deea798441ce53be7c7ef262e2bd
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 4f2d8b3246901f139695998224dfe036cccb9833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770673"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855788"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka przetwarzania zbiorczego .NET: Pobieranie informacji 
 
@@ -36,7 +36,7 @@ ms.locfileid: "55770673"
 | **Opis**| Biblioteka przetwarzania zbiorczego pozwala aplikacji klienckich wykonywały operacje zbiorcze na kontach usługi Azure Cosmos DB. Biblioteka przetwarzania zbiorczego zawiera przestrzenie nazw elementów BulkImport BulkUpdate i usuwania zbiorczego. Elementów BulkImport, który zbiorczo moduł pozyskiwania dokumenty w sposób zoptymalizowany taki sposób, że przepływnością aprowizowaną dla kolekcji jest używane do jego najszerszym. BulkUpdate, który zbiorczo modułu zaktualizować istniejące dane w kontenerach usługi Azure Cosmos DB jako poprawki. Moduł usuwania zbiorczego zbiorczo delete dokumenty w sposób zoptymalizowany taki sposób, że przepływnością aprowizowaną dla kolekcji jest używane do jego dozwolonym zakresie.|
 |**Zestaw SDK do pobrania**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Biblioteka BulkExecutor w usłudze GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API platformy .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Wprowadzenie**|[Wprowadzenie do przetwarzania zbiorczego biblioteki zestawu SDK platformy .NET](bulk-executor-dot-net.md)|
 | **Bieżącej struktury obsługiwanej**| Microsoft .NET Framework 4.5.2, 4.6.1 i .NET Standard 2.0 |
 

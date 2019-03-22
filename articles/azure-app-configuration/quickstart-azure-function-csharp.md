@@ -14,24 +14,24 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 5f28e213a5f824562df62a05b98f0f92f71bc591
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 22ec05660682f000d8bc3b9780732d5adf9b5c24
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957440"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226712"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Szybki start: Tworzenie funkcji platformy Azure przy użyciu usługi App Configuration
 
-Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Dzięki niej możesz łatwo przechowywać wszystkie ustawienia aplikacji w jednym miejscu oddzielonym od kodu i zarządzać tymi ustawieniami. W tym przewodniku Szybki start pokazano, jak zintegrować usługę z funkcją platformy Azure. 
+Usługa Azure App Configuration to zarządzana usługa konfiguracji na platformie Azure. Umożliwia on łatwe przechowywać i zarządzać wszystkie ustawienia aplikacji w jednym miejscu, który jest oddzielony od kodu. Ten przewodnik Szybki Start pokazano, jak zintegrować usługę z funkcji platformy Azure. 
 
-Do wykonania kroków tego przewodnika Szybki start możesz użyć dowolnego edytora kodu. Doskonałym wyborem jest program [Visual Studio Code](https://code.visualstudio.com/), dostępny na platformach Windows, macOS i Linux.
+Wykonaj kroki w tym przewodniku Szybki Start, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałą opcją dostępne w Windows, macOS i platformy Linux.
 
-![Przewodnik Szybki start ukończony, wersja lokalna](./media/quickstarts/dotnet-core-function-launch-local.png)
+![Lokalny kompletny przewodnik Szybki Start](./media/quickstarts/dotnet-core-function-launch-local.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start, zainstaluj [program Visual Studio 2017](https://visualstudio.microsoft.com/vs) (i upewnij się, że zainstalowano również pakiet roboczy **Programowanie na platformie Azure**) oraz [najnowsze narzędzia usługi Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version).
+Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://visualstudio.microsoft.com/vs). Upewnij się, że obciążenie **programowanie na platformie Azure** jest również instalowane. Zainstaluj również [najnowsze narzędzia usługi Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,9 +43,9 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj [program Visual Studio 20
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-## <a name="connect-to-app-configuration-store"></a>Łączenie z magazynem konfiguracji aplikacji
+## <a name="connect-to-an-app-configuration-store"></a>Łączenie do sklepu z aplikacjami konfiguracji
 
-1. Otwórz plik *Function1.cs* i dodaj odwołanie do dostawcy konfiguracji platformy .NET Core dla usługi App Configuration.
+1. Otwórz *Function1.cs*i Dodaj odwołanie do dostawcy usługi konfiguracji aplikacji konfiguracji platformy .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -77,7 +77,7 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj [program Visual Studio 20
 
 ## <a name="test-the-function-locally"></a>Lokalne testowanie funkcji
 
-1. Ustaw zmienną środowiskową o nazwie **ConnectionString** i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Jeśli używasz wiersza polecenia systemu Windows, wykonaj następujące polecenie i ponownie uruchom wiersz polecenia, aby umożliwić zastosowanie zmiany:
+1. Ustaw zmienną środowiskową o nazwie **ConnectionString**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Korzystając z wiersza polecenia Windows, uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby umożliwić zmiana zaczęła obowiązywać:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -85,17 +85,17 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj [program Visual Studio 20
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Jeśli używasz systemu macOS lub Linux, wykonaj następujące polecenie:
+    Jeśli korzystasz z systemem macOS lub Linux, uruchom następujące polecenie:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Aby przetestować funkcję, naciśnij klawisz **F5**. Po wyświetleniu monitu zaakceptuj żądanie programu Visual Studio dotyczące pobrania i zainstalowania zestawu narzędzi **Azure Functions Core (CLI)**. Może także być konieczne włączenie wyjątku zapory, aby umożliwić narzędziom obsługę żądań HTTP.
+2. Aby przetestować funkcję, naciśnij klawisz F5. Po wyświetleniu monitu zaakceptuj żądanie programu Visual Studio dotyczące pobrania i zainstalowania zestawu narzędzi **Azure Functions Core (CLI)**. Również może być konieczne włączenie wyjątku zapory, aby umożliwić narzędziom obsługę żądań HTTP.
 
 3. Skopiuj adres URL funkcji z danych wyjściowych środowiska uruchomieniowego usługi Azure Functions.
 
     ![Debugowanie funkcji w programie VS z przewodnika Szybki start](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Wklej adres URL żądania HTTP w pasku adresu przeglądarki. Na poniższym obrazie przedstawiono wyświetloną w przeglądarce odpowiedź na lokalne żądanie GET zwróconą przez funkcję:
+4. Wklej adres URL żądania HTTP w pasku adresu przeglądarki. Na poniższej ilustracji przedstawiono odpowiedzi w przeglądarce, aby lokalne żądanie GET zwróconą przez funkcję.
 
     ![Lokalne uruchamianie funkcji z przewodnika Szybki start](./media/quickstarts/dotnet-core-function-launch-local.png)
 
@@ -103,9 +103,9 @@ Aby ukończyć ten przewodnik Szybki start, zainstaluj [program Visual Studio 20
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start został utworzony nowy magazyn konfiguracji aplikacji i użyto go z funkcją platformy Azure. Aby dowiedzieć się więcej o korzystaniu z usługi App Configuration, przejdź do następnego samouczka, w którym zaprezentowano uwierzytelnianie.
+W tym przewodniku Szybki Start został utworzony nowy magazyn konfiguracji aplikacji i jej za pomocą funkcji platformy Azure. Aby dowiedzieć się więcej o tym, jak używać konfiguracji aplikacji, przejdź do następnego samouczka, który demonstruje uwierzytelniania.
 
 > [!div class="nextstepaction"]
-> [Tożsamości zarządzane na potrzeby integracji zasobów platformy Azure](./integrate-azure-managed-service-identity.md)
+> [Zarządzanych tożsamości dla integracji zasobów platformy Azure](./integrate-azure-managed-service-identity.md)

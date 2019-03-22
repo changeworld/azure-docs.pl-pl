@@ -3,7 +3,7 @@ title: Kontenery usługi Azure oferują wymagania wstępne | Dokumentacja firmy 
 description: Wymagania wstępne dotyczące publikowania kontenerów platformy Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: fd308c645593a401736a0a1ab1d336d63d900217
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 09c9afcf3126f7f84c20f5514bc038a65b2ea1b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979749"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990721"
 ---
 # <a name="container-publishing-prerequisites"></a>Wymagania wstępne dotyczące publikowania kontenera
 
-W tym artykule opisano wymagania wstępne dotyczące publikowania oferty kontenera w witrynie Azure Marketplace.
+W tym artykule opisano wymagania wstępne dotyczące publikowania oferty kontenera w witrynie Azure Marketplace.  Jeśli jeszcze tego nie zrobiono, należy zapoznać się [kontenerów zaoferować Podręcznik publikowania](../../marketplace-containers.md).
 
 ## <a name="publishing-prerequisites"></a>Wymagania wstępne publikowania
 
@@ -36,11 +36,10 @@ Aby opublikować nowy obraz kontenera, musisz spełnić następujące wymagania 
   - Tytuł
   - Opis (format HTML)
   - Obraz logo (w formacie PNG) i te rozmiary obrazów: 40 x 40 pikseli, 90 x 90 pikseli, 115 x 115 pikseli i 255 x 115 pikseli.
-- Warunki użytkowania i zasady zachowania poufności informacji
-- Dokumentacja
+- A *warunki użytkowania* i *zasady zachowania poufności informacji* instrukcji
+- Dokumentacja rozwiązania kontenera
 - Kontakt z pomocą techniczną
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przygotowanie kontenera zasoby techniczne](./cpp-create-technical-assets.md)
-- [Tworzenie oferty usługi kontenera](./cpp-create-offer.md) 
+Jeśli jeszcze tego nie zrobiono, należy najpierw [przygotowanie kontenera zasoby techniczne](./cpp-create-technical-assets.md) przed [Utwórz ofertę kontenera](./cpp-create-offer.md).  

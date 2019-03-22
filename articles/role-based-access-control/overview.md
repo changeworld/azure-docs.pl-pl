@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2019
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: eb8791a4031eeeeeccddda024514af208ff66251
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
-ms.translationtype: HT
+ms.openlocfilehash: fd5c47bb3c7bc3dfc9c0e140531ff832e7e6ef56
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806579"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011041"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?
 
@@ -108,7 +108,10 @@ Co więc się dzieje w przypadku wielu nakładających się przypisań ról? RBA
 
 ## <a name="deny-assignments"></a>Przypisania odmowy
 
-Poprzedni model kontroli dostępu opartego na rolach umożliwiał wyłącznie zezwolenie, bez możliwości odmowy. Obecny model obsługuje w ograniczony sposób również przypisania odmowy. Podobnie jak przypisanie roli *przypisanie odmowy* dołącza zestaw akcji odmowy do użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w określonym zakresie w celu odmowy dostępu. Przypisanie roli definiuje zestaw akcji, które są *dozwolone*, podczas gdy przypisanie odmowy definiuje zestaw akcji, które są *niedozwolone*. Innymi słowy przypisanie odmowy uniemożliwia użytkownikom wykonywanie określonych akcji, nawet jeśli przypisanie roli daje im taki dostęp. Przypisanie odmowy ma pierwszeństwo przed przypisaniem roli. Obecnie przypisania odmowy są **tylko do odczytu** i mogą zostać ustawione wyłącznie przez firmę Microsoft. Aby uzyskać więcej informacji, zobacz [Opis przypisań odmowy dla zasobów platformy Azure](deny-assignments.md) i [Wyświetlanie przypisań odmowy dla zasobów platformy Azure za pomocą witryny Azure Portal](deny-assignments-portal.md).
+Poprzedni model kontroli dostępu opartego na rolach umożliwiał wyłącznie zezwolenie, bez możliwości odmowy. Obecny model obsługuje w ograniczony sposób również przypisania odmowy. Podobnie jak przypisanie roli *przypisanie odmowy* dołącza zestaw akcji odmowy do użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w określonym zakresie w celu odmowy dostępu. Przypisanie roli definiuje zestaw akcji, które są *dozwolone*, podczas gdy przypisanie odmowy definiuje zestaw akcji, które są *niedozwolone*. Innymi słowy przypisanie odmowy uniemożliwia użytkownikom wykonywanie określonych akcji, nawet jeśli przypisanie roli daje im taki dostęp. Przypisanie odmowy ma pierwszeństwo przed przypisaniem roli. Aby uzyskać więcej informacji, zobacz [Opis przypisań odmowy dla zasobów platformy Azure](deny-assignments.md) i [Wyświetlanie przypisań odmowy dla zasobów platformy Azure za pomocą witryny Azure Portal](deny-assignments-portal.md).
+
+> [!NOTE]
+> W tej chwili jedynym sposobem, które można dodać własne odmówić przypisania polega na użyciu plany platformy Azure. Aby uzyskać więcej informacji, zobacz [chronić nowe zasoby za pomocą blokad zasobów platformy Azure, plany](../governance/blueprints/tutorials/protect-new-resources.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>W jaki sposób kontrola dostępu oparta na rolach określa, czy użytkownik ma dostęp do zasobu
 
@@ -130,7 +133,7 @@ Poniżej przedstawiono główne kroki wykorzystywane przez kontrolę dostępu op
 
 1. Jeśli tak, dostęp jest blokowany. Jeśli nie, dostęp jest udzielany.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Szybki start: Wyświetlanie informacji o dostępie użytkownika do zasobów platformy Azure przy użyciu witryny Azure Portal](check-access.md)
 - [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md)

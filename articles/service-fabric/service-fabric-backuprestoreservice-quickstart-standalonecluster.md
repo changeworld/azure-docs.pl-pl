@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 84403729d6d31ef9dea82b228a1c21bfb847b0ce
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f3a0651d3641a547722528fb33f688cce1913e6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453443"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886647"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe kopii zapasowej i przywracania w usłudze Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Usługa Service Fabric udostępnia zestaw interfejsów API, aby osiągnąć nast
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Klaster usługi Service Fabric za pomocą Service Fabric w wersji 6.2 i nowszych. Należy skonfigurować klaster w systemie Windows Server. Zapoznaj się z tym [artykułu](service-fabric-cluster-creation-for-windows-server.md) kroki pobrać wymagany pakiet.
 * Certyfikat X.509 do szyfrowania wymagane do połączenia z magazynem kluczy tajnych do przechowywania kopii zapasowych. Zapoznaj się [artykułu](service-fabric-windows-cluster-x509-security.md) wiedzieć, jak można uzyskać lub utworzyć certyfikat z podpisem własnym X.509.
-* Aplikacja usługi Service Fabric Reliable Stateful utworzone przy użyciu zestawu SDK usługi Service Fabric w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych na.Net Core 2.0, aplikacji powinny zostać skompilowane przy użyciu zestawu SDK usługi Service Fabric w wersji 3.1 lub nowszej.
+* Aplikacja usługi Service Fabric Reliable Stateful utworzone przy użyciu zestawu SDK usługi Service Fabric w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych dla platformy .NET Core 2.0, aplikacja powinna utworzona przy użyciu zestawu SDK usługi Service Fabric w wersji 3.1 lub nowszej.
 
 ## <a name="enabling-backup-and-restore-service"></a>Włączanie usługi Kopia zapasowa i przywracanie
 Najpierw należy włączyć _kopia zapasowa i przywracanie usługi_ w klastrze. Pobierz szablon dla klastra, który chcesz wdrożyć. Możesz użyć [przykładowe szablony](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples). Włącz _kopia zapasowa i przywracanie usługi_ następujące czynności:

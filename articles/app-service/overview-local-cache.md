@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea17db9af92887ff775e580224b66fed22c65d41
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 1d6e233509b50f0b03678f2e62267169d02133a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963866"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990779"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Omówienie lokalnej pamięci podręcznej App Service na platformie Azure
 
@@ -35,7 +35,7 @@ Zawartość usługi Azure App Service są przechowywane w usłudze Azure Storage
 * Zawartość jest udostępniana w wielu wystąpieniach maszyny wirtualnej (VM) w aplikacji.
 * Zawartość jest trwałe i mogą być modyfikowane przez uruchamianie aplikacji.
 * Plików dziennika i plików danych diagnostycznych są dostępne w ramach tego samego folderu zawartości udostępnionej.
-* Publikowanie nowej zawartości bezpośrednio aktualizuje folder zawartości. Natychmiast zobaczysz tę samą zawartość, za pośrednictwem witryny sieci Web funkcji SCM i jej uruchamianie aplikacji (zwykle niektóre technologie, takie jak ASP.NET inicjować ponownego uruchomienia aplikacji na pewne zmiany pliku, aby pobrać najnowszą zawartość).
+* Publikowanie nowej zawartości bezpośrednio aktualizuje folder zawartości. Natychmiast zobaczysz tę samą zawartość, za pośrednictwem witryny sieci Web funkcji SCM i jej uruchamianie aplikacji (zwykle niektóre technologie, takie jak ASP.NET zainicjować ponowne uruchomienie aplikacji na pewne zmiany pliku, aby pobrać najnowszą zawartość).
 
 Podczas, gdy wiele aplikacji użyj co najmniej jedną z tych funkcji, niektóre aplikacje wymagają tylko niezwykle wydajny i tylko do odczytu magazynu zawartości, którą można uruchomić z o wysokiej dostępności. Te aplikacje mogą korzystać z wystąpienia maszyny Wirtualnej określonej lokalnej pamięci podręcznej.
 

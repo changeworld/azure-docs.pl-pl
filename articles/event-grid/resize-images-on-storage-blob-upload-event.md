@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 0bd602ff6c6d42730439dac2b898899b07dcb2cc
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: 919bd20bc5650bc2a843680770fad6190ef01361
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301455"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182340"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Samouczek: Automatyzowanie zmiany rozmiaru przekazanych obrazów za pomocą usługi Event Grid
 
@@ -49,6 +49,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie subskrypcji zdarzeń usługi Blob Storage w usłudze Event Grid
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 W celu ukończenia tego samouczka:
 
@@ -274,7 +276,7 @@ Kliknij pozycję **Choose File** (Wybierz plik), aby wybrać plik, a następnie 
 
 ![Opublikowana aplikacja internetowa w przeglądarce](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 03/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 58936fa85567dcac624b15e95bbd84e68e0ae117
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: c8bc0ad7c5113f8ffdcda0ae9e6b1df43975bbcb
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009898"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294947"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN dla konfiguracji uwierzytelniania P2S natywnych certyfikatu platformy Azure
 
@@ -74,7 +74,7 @@ Wykonaj następujące kroki, aby skonfigurować natywnego klienta sieci VPN Wind
 
 ## <a name="installmac"></a>Mac (OS X)
 
- Należy ręcznie skonfigurować natywnego klienta sieci VPN z protokołem IKEv2 na każdym komputerze Mac, który jest połączony z platformą Azure. Platforma Azure nie zapewnia pliku mobileconfig dla uwierzytelniania natywnego certyfikatu platformy Azure. **Ogólny** zawiera wszystkie informacje potrzebne do konfiguracji. Jeśli nie widzisz folderu Generic w elementach pobranych, prawdopodobnie nie wybrano protokołu IKEv2 jako typu tunelu. Po wybraniu protokołu IKEv2 należy ponownie wygenerować plik zip, aby pobrać folder Generic.<br>Folder Generic zawiera następujące pliki:
+ Należy ręcznie skonfigurować natywnego klienta sieci VPN z protokołem IKEv2 na każdym komputerze Mac, który jest połączony z platformą Azure. Platforma Azure nie zapewnia pliku mobileconfig dla uwierzytelniania natywnego certyfikatu platformy Azure. **Ogólny** zawiera wszystkie informacje potrzebne do konfiguracji. Jeśli nie widzisz folderu Generic w elementach pobranych, prawdopodobnie nie wybrano protokołu IKEv2 jako typu tunelu. Należy pamiętać, że podstawowa jednostka SKU bramy sieci VPN nie obsługuje protokół IKEv2. Po wybraniu protokołu IKEv2 należy ponownie wygenerować plik zip, aby pobrać folder Generic.<br>Folder Generic zawiera następujące pliki:
 
 * **VpnSettings.xml**, zawierającą ważnych ustawień, takich jak typ serwera adres i tunelowania. 
 * **VpnServerRoot.cer**, który zawiera certyfikat główny wymagany do sprawdzania poprawności bramy sieci VPN Azure podczas konfigurowania połączenia P2S.

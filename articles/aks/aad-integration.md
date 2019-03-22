@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 0cf83180647c142c9db2a1229674de96fec6a6bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099262"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087537"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service
 
@@ -40,47 +40,47 @@ Pierwszą aplikację usługi Azure AD umożliwia uzyskiwanie członkostwa grupy 
 
 1. Wybierz pozycję **Azure Active Directory** > **Rejestracje aplikacji** > **Rejestrowanie nowej aplikacji**.
 
-  Nadaj aplikacji nazwę, wybierz opcję **aplikacji sieci Web / interfejs API** dla typu aplikacji i wprowadzić dowolną wartość identyfikatora URI sformatowane dla **adres URL logowania**. Wybierz **Utwórz** po zakończeniu.
+   Nadaj aplikacji nazwę, wybierz opcję **aplikacji sieci Web / interfejs API** dla typu aplikacji i wprowadzić dowolną wartość identyfikatora URI sformatowane dla **adres URL logowania**. Wybierz **Utwórz** po zakończeniu.
 
-  ![Utwórz rejestrację w usłudze Azure AD](media/aad-integration/app-registration.png)
+   ![Utwórz rejestrację w usłudze Azure AD](media/aad-integration/app-registration.png)
 
 2. Wybierz **manifestu** i edytować `groupMembershipClaims` wartość `"All"`.
 
-  Zapisz aktualizacje po wykonaniu tych czynności.
+   Zapisz aktualizacje po wykonaniu tych czynności.
 
-  ![Członkostwo w grupie aktualizacji do wszystkich](media/aad-integration/edit-manifest.png)
+   ![Członkostwo w grupie aktualizacji do wszystkich](media/aad-integration/edit-manifest.png)
 
 3. Po powrocie na aplikację usługi Azure AD wybierz **ustawienia** > **klucze**.
 
-  Dodaj opis klucza, wybierz termin wygaśnięcia i wybierz **Zapisz**. Zanotuj wartość klucza. Podczas wdrażania usługi Azure AD włączone klastra AKS, ta wartość jest określany jako `Server application secret`.
+   Dodaj opis klucza, wybierz termin wygaśnięcia i wybierz **Zapisz**. Zanotuj wartość klucza. Podczas wdrażania usługi Azure AD włączone klastra AKS, ta wartość jest określany jako `Server application secret`.
 
-  ![Pobieranie klucza prywatnego aplikacji](media/aad-integration/application-key.png)
+   ![Pobieranie klucza prywatnego aplikacji](media/aad-integration/application-key.png)
 
 4. Wróć do aplikacji usługi Azure AD, wybierz pozycję **ustawienia** > **wymagane uprawnienia** > **Dodaj**  >   **Wybierz interfejs API** > **programu Microsoft Graph** > **wybierz**.
 
-  ![Wybierz interfejs API programu graph](media/aad-integration/graph-api.png)
+   ![Wybierz interfejs API programu graph](media/aad-integration/graph-api.png)
 
 5. W obszarze **uprawnienia aplikacji** należy zaznaczyć **Odczyt danych katalogu**.
 
-  ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/read-directory.png)
+   ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/read-directory.png)
 
 6. W obszarze **DELEGOWANE uprawnienia**, należy zaznaczyć **Zaloguj się i odczytuj profil użytkownika** i **Odczyt danych katalogu**. Zapisz aktualizacje po zakończeniu.
 
-  ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/delegated-permissions.png)
+   ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/delegated-permissions.png)
 
-  Wybierz pozycję **Done** (Gotowe).
+   Wybierz pozycję **Done** (Gotowe).
 
 7. Wybierz *programu Microsoft Graph* wybierz z listy interfejsów API, następnie **Udziel uprawnień**. Ten krok zakończy się niepowodzeniem, jeśli bieżące konto nie jest administratorem dzierżawy.
 
-  ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/grant-permissions.png)
+   ![Ustaw uprawnienia aplikacji do wykresu](media/aad-integration/grant-permissions.png)
 
-  Po pomyślnym przyznano uprawnienia, w portalu zostanie wyświetlone następujące powiadomienie:
+   Po pomyślnym przyznano uprawnienia, w portalu zostanie wyświetlone następujące powiadomienie:
 
-  ![Powiadomienie o pomyślnym uprawnienia przyznane](media/aad-integration/permissions-granted.png)
+   ![Powiadomienie o pomyślnym uprawnienia przyznane](media/aad-integration/permissions-granted.png)
 
 8. Wróć do aplikacji i zwróć uwagę na **identyfikator aplikacji**. W przypadku wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest określany jako `Server application ID`.
 
-  ![Uzyskiwanie Identyfikatora aplikacji](media/aad-integration/application-id.png)
+   ![Uzyskiwanie Identyfikatora aplikacji](media/aad-integration/application-id.png)
 
 ## <a name="create-client-application"></a>Tworzenie aplikacji klienckiej
 
@@ -88,27 +88,27 @@ Druga aplikacja usługi Azure AD jest używany podczas logowania się przy użyc
 
 1. Wybierz pozycję **Azure Active Directory** > **Rejestracje aplikacji** > **Rejestrowanie nowej aplikacji**.
 
-  Nadaj aplikacji nazwę, wybierz opcję **natywnych** dla typu aplikacji i wprowadzić dowolną wartość identyfikatora URI sformatowane dla **identyfikator URI przekierowania**. Wybierz **Utwórz** po zakończeniu.
+   Nadaj aplikacji nazwę, wybierz opcję **natywnych** dla typu aplikacji i wprowadzić dowolną wartość identyfikatora URI sformatowane dla **identyfikator URI przekierowania**. Wybierz **Utwórz** po zakończeniu.
 
-  ![Tworzenie rejestracji usługi AAD](media/aad-integration/app-registration-client.png)
+   ![Tworzenie rejestracji usługi AAD](media/aad-integration/app-registration-client.png)
 
 2. W aplikacji Azure AD wybierz **ustawienia** > **wymagane uprawnienia** > **Dodaj** > **wybierz Interfejs API** i wyszukaj nazwę aplikacji serwera, utworzony w poprzednim kroku w tym dokumencie.
 
-  ![Skonfiguruj uprawnienia aplikacji](media/aad-integration/select-api.png)
+   ![Skonfiguruj uprawnienia aplikacji](media/aad-integration/select-api.png)
 
 3. Umieść znacznik wyboru obok aplikacji i kliknij przycisk **wybierz**.
 
-  ![Wybierz punkt końcowy aplikacji serwera usługi AAD usługi AKS](media/aad-integration/select-server-app.png)
+   ![Wybierz punkt końcowy aplikacji serwera usługi AAD usługi AKS](media/aad-integration/select-server-app.png)
 
-  Wybierz **gotowe**
+   Wybierz **gotowe**
 
 4. Wybierz swój serwer interfejsu API z listy, a następnie wybierz **Udziel uprawnień**:
 
-  ![Udzielenie uprawnień](media/aad-integration/grant-permissions-client.png)
+   ![Udzielenie uprawnień](media/aad-integration/grant-permissions-client.png)
 
 5. Wstecz w aplikacji usługi AD, zwróć uwagę na **identyfikator aplikacji**. W przypadku wdrażania klastra usługi AKS z obsługą usługi AD systemu Azure, ta wartość jest określany jako `Client application ID`.
 
-  ![Uzyskiwanie Identyfikatora aplikacji](media/aad-integration/application-id-client.png)
+   ![Uzyskiwanie Identyfikatora aplikacji](media/aad-integration/application-id-client.png)
 
 ## <a name="get-tenant-id"></a>Pobieranie identyfikatora dzierżawy
 

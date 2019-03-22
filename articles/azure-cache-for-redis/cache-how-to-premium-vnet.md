@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313096"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994385"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować Obsługa sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. Sieć wirtualna jest prywatna sieć w chmurze. Po skonfigurowaniu usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej nie jest adresowany publicznie i może zostać oceniony jedynie z maszyn wirtualnych i aplikacji w ramach sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej dla warstwy premium usługi Azure Cache dla wystąpienia usługi Redis.
@@ -106,7 +106,7 @@ Kiedy pamięci podręcznej Azure redis Cache znajduje się w sieci wirtualnej, s
 
 Istnieje siedem wymagań wychodząca przez port.
 
-- Jeśli żądany, wszystkie wychodzące połączenia z Internetem, może się za pośrednictwem klienta lokalnej inspekcji urządzenia.
+- Wszystkie wychodzące połączenia z Internetem, może się za pośrednictwem klienta użytkownika lokalnej inspekcji urządzenia.
 - Trzy porty kierować ruch do punkty końcowe platformy Azure, obsługę usługi Azure Storage i Azure DNS.
 - Pozostałe zakresy portów i komunikacji podsieci wewnętrznej pamięci podręcznej Redis. Nie reguły sieciowej grupy zabezpieczeń w podsieci są wymagane do komunikacji podsieci wewnętrznej pamięci podręcznej Redis.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5639984c6eef7d1c081fd52061988d3535c00fa
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
-ms.translationtype: MT
+ms.openlocfilehash: 6888a8787856ef23c459c7ffc18f8e2b4de17f6f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901148"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -36,19 +36,19 @@ Zasada dwóch bram wymaga dwóch rodzajów danych uwierzytelniania, takich jak *
   * Administrator rozliczeń
   * Pomoc techniczna dla partnerów (warstwa 1)
   * Pomoc techniczna dla partnerów (warstwa 2)
-  * Administrator usługi Exchange
-  * Administrator usługi Lync
-  * Administrator kont użytkowników
+  * Administrator programu Exchange
+  * Administrator programu Skype dla firm
+  * Administrator użytkownika
   * Zapisywanie katalogów
   * Administrator globalny lub administrator firmy
-  * Administrator usługi SharePoint
+  * Administrator programu SharePoint
   * Administrator do spraw zgodności
   * Administrator aplikacji
   * Administrator zabezpieczeń
   * Administrator roli uprzywilejowanej
-  * Administrator usługi Microsoft Intune
+  * Administrator usługi Intune
   * Administrator usługi serwera proxy aplikacji
-  * Administrator usługi CRM
+  * Administrator usługi Dynamics 365
   * Administrator usługi Power BI
   * Administrator uwierzytelniania
   * Administrator uprzywilejowanych uwierzytelniania
@@ -81,7 +81,7 @@ W poniższej tabeli opisano ustawienia zasad haseł, które są stosowane do kon
 
 | Właściwość | Wymagania |
 | --- | --- |
-| Dozwolona liczba znaków |<ul><li>A – Z</li><li>z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
+| Dozwolona liczba znaków |<ul><li>A – Z</li><li>z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> |
 | Znaki nie są dozwolone |<ul><li>Znaki Unicode.</li><li>Miejsca do magazynowania.</li><li> Nie może zawierać znaku kropki "." bezpośrednio przed "\@ \" symbol".</li></ul> |
 | Ograniczenia haseł |<ul><li>Co najmniej 8 znaków i nie więcej niż 16 znaków.</li><li>Wymaga trzech spośród czterech z następujących czynności:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Cyfry (0 – 9).</li><li>Symbole (patrz poprzednie ograniczenia haseł).</li></ul></li></ul> |
 | Okres wygasania haseł |<ul><li>Wartość domyślna: **90** dni.</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet usługi Azure Active Directory modułu dla Windows PowerShell.</li></ul> |
@@ -110,7 +110,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 1. Łączenie z programu Windows PowerShell za pomocą poświadczeń administratora firmy.
 1. Wykonaj jedną z następujących poleceń:
 
-   * Aby zobaczyć, jeśli ustawiono pojedynczego użytkownika, hasło nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN (na przykład *aprilr@contoso.onmicrosoft.com*) lub identyfikator użytkownika ma być sprawdzana: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * Aby zobaczyć, jeśli ustawiono pojedynczego użytkownika, hasło nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN (na przykład *aprilr\@contoso.onmicrosoft.com*) lub identyfikator użytkownika ma być sprawdzana: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * Aby wyświetlić **hasło nigdy nie wygasa** ustawienia dla wszystkich użytkowników, uruchom następujące polecenie cmdlet: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
 
 ### <a name="set-a-password-to-expire"></a>Ustaw hasło wygaśnie

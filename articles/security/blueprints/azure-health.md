@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 92b7714e9f6635cf0b44a98a16ddb4616643ba81
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5f23435a43d139ecb9f20e5036124f175b1830c9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544566"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225369"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -359,7 +359,7 @@ Rozwiązanie obsługuje usługi Azure Event Grid, pojedynczą usługę zarządza
 - [Usługa Application Insights](/azure/application-insights/app-insights-overview) to rozszerzalna Usługa zarządzania wydajnością aplikacji (APM) dla deweloperów sieci web na wielu platformach. Użyj tej usługi do monitorowania aplikacji internetowej na żywo. Wykrywa anomalie wydajność. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników. Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań.
 
 ### <a name="azure-alerts"></a>Alerty platformy Azure
-- [Alerty oferują metodą monitorowania usług systemu Azure i pozwala na skonfigurowanie warunków nad danymi. Alerty zapewniają również powiadomienia, gdy warunek alertu jest zgodna z danych monitorowania.
+- [Alerty](/azure/azure-monitor/platform/alerts-metric) oferują metodą monitorowania usług systemu Azure i pozwala na skonfigurowanie warunków nad danymi. Alerty zapewniają również powiadomienia, gdy warunek alertu jest zgodna z danych monitorowania.
 
 ### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 [Dzienniki platformy Azure Monitor](/azure/operations-management-suite/operations-management-suite-overview) to zbiór usług zarządzania.
@@ -372,7 +372,7 @@ Rozwiązanie obsługuje usługi Azure Event Grid, pojedynczą usługę zarządza
 
     -   Tożsamość i dostęp
 
-    -   Zabezpieczenia i inspekcja
+    -   Security and Audit
 
     -   Azure SQL DB Analytics
 

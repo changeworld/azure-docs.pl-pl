@@ -15,12 +15,12 @@ ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6bf5ae22fe8bf06d29c8c812a18cffcef14865c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550808"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002040"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Uaktywnij Moje role zasobów platformy Azure w usłudze PIM
 
@@ -36,9 +36,13 @@ Gdy zachodzi potrzeba podjęcia roli zasobów platformy Azure, możesz poprosić
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**. Aby uzyskać informacje dotyczące sposobu dodawania kafelka PIM do pulpitu nawigacyjnego, zobacz [rozpocząć korzystanie z usługi PIM](pim-getting-started.md).
 
-1. Kliknij przycisk **Moje role** umożliwia wyświetlenie listy z kwalifikujących się ról katalogu usługi Azure AD i role zasobów platformy Azure.
+1. Kliknij przycisk **Moje role**.
 
     ![Role katalogu usługi Azure AD i role zasobów platformy Azure — Moje role](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+
+1. Kliknij przycisk **role zasobów platformy Azure** umożliwia wyświetlenie listy z ról uprawnionych zasobów platformy Azure.
+
+   ![Role zasobów platformy Azure](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
 1. W **role zasobów platformy Azure** listy, Znajdź rolę, którą chcesz aktywować.
 

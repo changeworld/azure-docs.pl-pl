@@ -8,16 +8,16 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: fe020ab1091b91ba21174b59d0ce25ab0c6122ca
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c851044393adbacb6b80e264c6a4393b1c083efb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878310"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006118"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Użyj Gen2 usługi Azure Data Lake Storage — identyfikator URI
 
-[System plików Hadoop](http://www.aosabook.org/en/hdfs.html) sterownika, który jest zgodny z usługi Azure Data Lake Storage Gen2 określane przez jego identyfikator schematu `abfs` (systemu plików obiektów Blob platformy Azure). Zgodnie z innych sterowników systemu plików usługi Hadoop, sterownik ABFS stosuje format identyfikatora URI, adresowanie plików i katalogów w ramach konta Data Lake Storage Gen2 stanie.
+[System plików Hadoop](https://www.aosabook.org/en/hdfs.html) sterownika, który jest zgodny z usługi Azure Data Lake Storage Gen2 określane przez jego identyfikator schematu `abfs` (systemu plików obiektów Blob platformy Azure). Zgodnie z innych sterowników systemu plików usługi Hadoop, sterownik ABFS stosuje format identyfikatora URI, adresowanie plików i katalogów w ramach konta Data Lake Storage Gen2 stanie.
 
 ## <a name="uri-syntax"></a>Składnia identyfikatora URI
 

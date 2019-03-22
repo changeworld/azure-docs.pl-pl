@@ -1,20 +1,20 @@
 ---
 title: Wysyłanie danych telemetrycznych do usługi Azure IoT Hub — Szybki start | Microsoft Docs
 description: W tym przewodniku Szybki start uruchomisz przykładową aplikację systemu iOS wysyłającą symulowane dane telemetryczne do centrum IoT oraz odczytującą dane telemetryczne z centrum IoT na potrzeby przetwarzania w chmurze.
-author: kgremban
+author: wesmc7777
 manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: 05ae99425bbe16c27ca7efd475757499996e06b9
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 5def12acf3aa87c06ea7cd2f8a1102018750d36d
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672121"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009498"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Szybki start: Wysyłanie danych telemetrycznych z urządzenia do centrum IoT (iOS)
 
@@ -129,7 +129,7 @@ Poniższy zrzut ekranu przedstawia typ danych telemetrycznych wyświetlanych w l
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule opisano konfigurowanie centrum IoT, rejestrowanie urządzenia, wysyłanie symulowanych danych telemetrycznych do centrum z urządzenia z systemem iOS oraz odczytywanie danych telemetrycznych z centrum. 
 

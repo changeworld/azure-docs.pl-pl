@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: e389df02966146b217802d4e93f844a4fee425a3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856094"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -32,7 +32,7 @@ Jest to wersja poprawki i na komputerach z zestawu SDK natywnego/zarządzanego. 
 
 **Nowe funkcje**
 
-* Zestaw SDK rozpoznawania mowy obsługuje wyboru wejściowego mikrofonu za pośrednictwem klasy AudioConfig. Umożliwia przesyłanie strumieniowe audio danych do usługi rozpoznawania mowy z mikrofonu innych niż domyślne. Aby uzyskać więcej informacji, zobacz temat opisujący dokumentacji [wybór urządzenia wejściowe audio](how-to-select-audio-input-devices.md). To nie jest jeszcze dostępna z poziomu języka JavaScript.
+* Zestaw SDK rozpoznawania mowy obsługuje wyboru wejściowego mikrofonu za pośrednictwem klasy AudioConfig. Umożliwia przesyłanie strumieniowe audio danych do usług przetwarzania mowy z mikrofonu innych niż domyślne. Aby uzyskać więcej informacji, zobacz temat opisujący dokumentacji [wybór urządzenia wejściowe audio](how-to-select-audio-input-devices.md). To nie jest jeszcze dostępna z poziomu języka JavaScript.
 * Zestaw SDK rozpoznawania mowy obsługuje teraz Unity w wersji beta. Prześlij opinię za pośrednictwem sekcji problem [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples). Ta wersja obsługuje platformy Unity na Windows x86 i x64 (pulpitu lub aplikacji Universal Windows Platform) i Android (ARM32/64 x86). Więcej informacji znajduje się w naszym [Szybki Start Unity](quickstart-csharp-unity.md).
 * Plik `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dostarczane w poprzednich wersjach) nie jest już potrzebny. Funkcje jest teraz zintegrowany zestaw SDK core.
 
@@ -89,13 +89,13 @@ To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. 
 **Nowe funkcje**
 
 * Python
-  * Wersji Beta programu obsługi języka Python (w wersji 3.5 i nowsze) jest dostępna w tej wersji. Aby uzyskać więcej informacji [opublikujemy](quickstart-python.md).
+  * Wersji Beta programu obsługi języka Python (w wersji 3.5 i nowsze) jest dostępna w tej wersji. Aby uzyskać więcej informacji zobacz here](quickstart-python.md).
 * JavaScript
   * Zestaw SDK rozpoznawania mowy dla języka JavaScript została open source. Kod źródłowy jest dostępny na [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   * Obsługujemy teraz Node.js, więcej informacji można znaleźć [tutaj](quickstart-js-node.md).
   * Została usunięta ograniczenia długości sesji audio, ponowne łączenie nastąpi automatycznie w ramach pokrycia.
 * Obiekt połączenia
-  * Z aparatu rozpoznawania może uzyskać dostęp do obiektu połączenia. Ten obiekt umożliwia jawnie zainicjować połączenia z usługą i subskrypcji do nawiązywania połączeń i zdarzenia rozłączenia.
+  * Z aparatu rozpoznawania można uzyskać dostęp do obiektu połączenia. Ten obiekt umożliwia jawnie zainicjować połączenia z usługą i subskrypcji do nawiązywania połączeń i zdarzenia rozłączenia.
     (To nie jest jeszcze dostępny w języku JavaScript i Python).
 * Obsługa systemu Ubuntu 18.04.
 * Android
@@ -122,7 +122,7 @@ To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. 
 
 **Przykłady**
 
-* Zaktualizowane i Naprawiono kilka przykładów (na przykład danych wyjściowych głosów tłumaczenia, itp.).
+* Zaktualizowane i Naprawiono kilka przykładów (na przykład danych wyjściowych głosów tłumaczenia itp.).
 * Dodano przykłady dla platformy Node.js w [przykładowego repozytorium](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-sdk-110"></a>Zestaw SDK 1.1.0 mowy

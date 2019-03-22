@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: bf272262d8279dea034440c9ffcf8c49f9fd75ab
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57458013"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57964242"
 ---
 Ten artykuł zawiera informacje dotyczące poprzednie generacje rozmiarów maszyn wirtualnych. Nadal można korzystać z tych rozmiarów, ale są dostępne nowsze generacji.
 
 
 ## <a name="ds-series"></a>Seria DS
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Magazyn w warstwie Premium:  Obsługiwane
 
@@ -33,11 +33,12 @@ Buforowanie Premium Storage:  Obsługiwane
 | Standardowa_DS3 |4 |14 |28 |16 |16 000 / 128 (172) |12 800 / 128 |4 / 2000 |
 | Standardowa_DS4 |8 |28 |56 |32 |32 000 / 256 (344) |25 600 / 256 |8 / 4000 |
 
+<sup>1</sup> rodziny maszyn wirtualnych można uruchomić na jednym z następujących procesora CPU: 2.2 GHz Intel Xeon® E5 2660 w wersji 2 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="ds-series---memory-optimized"></a>Seria DS — zoptymalizowane pod kątem pamięci
 
-ACU: 160 <sup>1</sup>
+ACU: 160-250 <sup>1,2</sup>
 
 Magazyn w warstwie Premium:  Obsługiwane
 
@@ -52,11 +53,11 @@ Buforowanie Premium Storage:  Obsługiwane
 
 <sup>1</sup> maksymalna przepływność dysków (na SEKUNDĘ lub MB/s) możliwa dla maszyny Wirtualnej serii DS może być ograniczona przez liczbę, rozmiar i rozkładanie dołączonych dysków.  Aby uzyskać więcej informacji, zobacz [projektowanie pod kątem wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md).
 
-
+<sup>2</sup> rodziny maszyn wirtualnych można uruchomić na jednym z następujących procesora CPU: 2.2 GHz Intel Xeon® E5 2660 w wersji 2 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 
 ## <a name="d-series"></a>Seria D 
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Magazyn w warstwie Premium:  Nieobsługiwane
 
@@ -69,11 +70,12 @@ Buforowanie Premium Storage:  Nieobsługiwane
 | Standardowa_D3  | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 2000                     |
 | Standardowa_D4  | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 4000                     |
 
+<sup>1</sup> rodziny maszyn wirtualnych można uruchomić na jednym z następujących procesora CPU: 2.2 GHz Intel Xeon® E5 2660 w wersji 2 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="d-series---memory-optimized"></a>Seria D — zoptymalizowane pod kątem pamięci
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Magazyn w warstwie Premium:  Nieobsługiwane
 
@@ -86,6 +88,7 @@ Buforowanie Premium Storage:  Nieobsługiwane
 | Standardowa_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 4000                     |
 | Standardowa_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 8000                |
 
+<sup>1</sup> rodziny maszyn wirtualnych można uruchomić na jednym z następujących procesora CPU: 2.2 GHz Intel Xeon® E5 2660 w wersji 2 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="a-series---compute-intensive-instances"></a>Seria A — wystąpienia intensywnie korzystające z mocy obliczeniowej
@@ -127,6 +130,7 @@ Buforowanie Premium Storage:  Nieobsługiwane
 | Standardowa_A5 |2 |14 |135 |4 |4 x 500 |2 / 500 |
 | Standardowa_A6 |4 |28 |285 |8 |8 x 500 |2 / 1000 |
 | Standardowa_A7 |8 |56 |605 |16 |16 x 500 |4 / 2000 |
+
 <br>
 
 <sup>1</sup> rozmiar A0 jest nadmiernie subskrybowany na sprzęcie fizycznym. Tylko w przypadku tego konkretnego rozmiaru inne wdrożenia klienta mogą mieć wpływ na wydajność uruchomionego obciążenia. Wydajność względna jest przedstawiona poniżej jako oczekiwana linia bazowa, podlegająca przybliżonej zmienności w granicach 15 procent.

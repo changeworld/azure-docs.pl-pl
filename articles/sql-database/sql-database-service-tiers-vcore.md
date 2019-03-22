@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: a9a38d30ec2a8e9139470531960d47fef1025269
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: a14912c48f27c4f4d0e54239f8e0523ffa62324f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328626"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888506"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
 

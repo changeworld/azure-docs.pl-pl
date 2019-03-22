@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: d3154e137aec8dcedcb066e2c9aab046b5a7b6e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: d726006d3ecce69f129b1576c7c6d12833582873
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108827"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081994"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Samouczek: Reagowanie na zdarzenia związane z zabezpieczeniami
 Usługa Security Center w sposób ciągły analizuje obciążenia chmury hybrydowej i ostrzega o złośliwych działaniach, używając zaawansowanych funkcji analitycznych oraz funkcji analizy zagrożeń. Ponadto można integrować alerty z innymi produktami i usługami zabezpieczeń w usłudze Security Center oraz tworzyć niestandardowe alerty bazujące na własnych wskaźnikach lub źródłach analiz. Po wygenerowaniu alertu potrzebne jest sprawne działanie w celu zbadania i skorygowania jego przyczyny. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -45,28 +45,28 @@ Usługa Security Center zapewnia spójny widok wszystkich alertów zabezpieczeń
 
 1. W menu głównym usługi Security Center w sekcji **WYKRYWANIE** wybierz pozycję **Alerty zabezpieczeń**:
 
-  ![Alerty zabezpieczeń](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Alerty zabezpieczeń](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
 
 2. Na liście alertów kliknij zdarzenie zabezpieczeń będące kolekcją alertów, aby dowiedzieć się więcej na temat tego zdarzenia. Zostanie otwarte okno **Wykryto zdarzenie zabezpieczeń**.
 
-  ![Zdarzenie naruszenia zabezpieczeń](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![Zdarzenie naruszenia zabezpieczeń](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. U góry tego ekranu znajduje się opis zdarzenia zabezpieczeń, a poniżej lista alertów będących częścią tego zdarzenia. Kliknij alert, który chcesz zbadać dokładniej, aby uzyskać więcej informacji.
 
-  ![Zdarzenie naruszenia zabezpieczeń](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![Zdarzenie naruszenia zabezpieczeń](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-  Typy alertów mogą być różne. Aby uzyskać więcej szczegółowych informacji na temat typu alertu i możliwych czynności korygujących, przeczytaj [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). W przypadku alertów, które można bezpiecznie odrzucić, możesz kliknąć alert prawym przyciskiem myszy i wybrać pozycję **Odrzuć**:
+   Typy alertów mogą być różne. Aby uzyskać więcej szczegółowych informacji na temat typu alertu i możliwych czynności korygujących, przeczytaj [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). W przypadku alertów, które można bezpiecznie odrzucić, możesz kliknąć alert prawym przyciskiem myszy i wybrać pozycję **Odrzuć**:
 
-  ![Alerty](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+   ![Alerty](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
 4. Jeśli główna przyczyna i zakres złośliwych działań są nieznane, przejdź do następnego kroku, aby zbadać problem dokładniej.
 
 ## <a name="investigate-an-alert-or-incident"></a>Badanie alertu lub zdarzenia
 1. Na stronie **Alert zabezpieczeń** kliknij przycisk **Rozpocznij badanie** (jeśli badanie jest już rozpoczęte, nazwa przycisku zmienia się na **Kontynuuj badanie**).
 
-  ![Badanie](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+   ![Badanie](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
 
-  Mapa badania jest graficzną reprezentacją obiektów związanych z tym alertem lub zdarzeniem zabezpieczeń. Kliknięcie obiektu na mapie powoduje, że w informacjach o tym obiekcie są wyświetlane nowe obiekty, a mapy są rozwijane. Właściwości obiektu zaznaczonego na mapie są wyróżnione w okienku po prawej stronie. Informacje dostępne na poszczególnych kartach różnią się w zależności od wybranego obiektu. W procesie badania przejrzyj wszystkie istotne informacje, aby lepiej zrozumieć poczynania osoby atakującej.
+   Mapa badania jest graficzną reprezentacją obiektów związanych z tym alertem lub zdarzeniem zabezpieczeń. Kliknięcie obiektu na mapie powoduje, że w informacjach o tym obiekcie są wyświetlane nowe obiekty, a mapy są rozwijane. Właściwości obiektu zaznaczonego na mapie są wyróżnione w okienku po prawej stronie. Informacje dostępne na poszczególnych kartach różnią się w zależności od wybranego obiektu. W procesie badania przejrzyj wszystkie istotne informacje, aby lepiej zrozumieć poczynania osoby atakującej.
 
 2. Jeśli potrzebujesz więcej dowodów lub musisz dokładniej zbadać obiekty, które zostały znalezione w trakcie badania, przejdź do następnego kroku.
 

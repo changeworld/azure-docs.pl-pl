@@ -3,20 +3,20 @@ title: Artykuł na temat znanych problemów/migracja ograniczeń dotyczących mi
 description: Więcej informacji na temat znanych problemów/migracja ograniczeń dotyczących migracji online do usługi Azure SQL Database.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: 2261e2143a460bad812a49ba9d8a593c3f3b7b00
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091498"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Znane problemy dotyczące/migracja ograniczeń dotyczących migracji online do usługi Azure SQL DB
 
@@ -62,9 +62,9 @@ Może zostać wyświetlony sugerowanie "ntext jest niezgodny z hierarchyid" podc
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
- 2. Wyklucz te tabele z **Konfiguruj ustawienia migracji** bloku, w którym określisz tabel dla migracji.
+   1. Wyklucz te tabele z **Konfiguruj ustawienia migracji** bloku, w którym określisz tabel dla migracji.
 
- 3. Należy ponownie uruchomić działanie migracji.
+   1. Należy ponownie uruchomić działanie migracji.
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Błędy migracji z różnych naruszenia integralności za pomocą wyzwalaczy active w schemacie podczas "pełne ładowanie danych" lub "Przyrostowa synchronizacja danych"
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 03/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa9872ef76264956430bb69856a197042c196dfd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 6399f5b208bc4d7182622f29bd522cfc9a088e9d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550194"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224553"
 ---
 # <a name="combined-security-information-registration-preview"></a>Połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
@@ -68,11 +68,11 @@ Ponieważ stale dodajemy więcej metod uwierzytelniania, takich do usługi Azure
 
 ## <a name="combined-registration-modes"></a>Łączna rejestracja tryby
 
-Istnieją dwa "tryby" połączone rejestracji: przerwań i zarządzanie nimi. 
+Istnieją dwa "tryby" połączone rejestracji: przerwań i zarządzanie nimi.
 
-Tryb przerwań, to środowisko podobne do kreatora, wyświetlana użytkownikowi podczas rejestrowania, lub Odśwież swoje informacje zabezpieczające podczas logowania. 
+Tryb przerwań, to środowisko podobne do kreatora, wyświetlana użytkownikowi podczas rejestrowania, lub Odśwież swoje informacje zabezpieczające podczas logowania.
 
-Zarządzanie tryb jest częścią profilu użytkownika oraz pozwala na zarządzanie swoje informacje zabezpieczające. 
+Zarządzanie tryb jest częścią profilu użytkownika oraz pozwala na zarządzanie swoje informacje zabezpieczające.
 
 Dla obu trybów Jeśli użytkownik został wcześniej zarejestrowane metody, która może służyć do uwierzytelniania Wieloskładnikowego, należy wykonać uwierzytelnianie wieloskładnikowe, przed uzyskaniem dostępu do swoich informacji zabezpieczających.
 

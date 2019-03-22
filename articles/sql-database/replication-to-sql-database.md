@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b9d6569504b5352c6187afe12d903c986019c517
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860707"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja bazy danych SQL pojedynczych i puli baz danych
 
@@ -40,7 +40,7 @@ Można skonfigurować replikacji programu SQL Server do pojedynczych i puli baz 
 - CU10 RTM programu SQL Server 2014 (12.x)
 - SQL Server 2012 (11.x) z dodatkiem SP2 CU8 lub z dodatkiem SP3
 - Próba skonfigurowania replikacji za pomocą starszej wersji może spowodować błąd, numer MSSQL_REPL20084 (ten proces nie może połączyć się subskrybenta.) i MSSQL_REPL40532 (nie można otworzyć serwera \<name > żądanego podczas logowania. Logowanie powiodło się.).  
-- Aby korzystać ze wszystkich funkcji usługi Azure SQL Database, należy używać najnowszej wersji [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017).  
+- Aby korzystać ze wszystkich funkcji usługi Azure SQL Database, należy używać najnowszej wersji [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
   
 ## <a name="remarks"></a>Uwagi
 

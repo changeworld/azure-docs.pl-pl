@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 73b13dcea84ba322072217c3feacebdefb3bf1e6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6650eed6bf2559e9fb76b573189179a7f5df81ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052043"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896708"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Co to są kolekcje obszarów roboczych usługi Power BI?
 
@@ -87,4 +87,4 @@ Można teraz edytować istniejące raporty lub tworzenia nowych raportów bezpo�
 [Repozytorium Git języka CSharp usługi Power BI](https://github.com/Microsoft/PowerBI-CSharp)  
 [Repozytorium Git w węźle usługi Power BI](https://github.com/Microsoft/PowerBI-Node)  
 
-Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](http://community.powerbi.com/)
+Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](https://community.powerbi.com/)

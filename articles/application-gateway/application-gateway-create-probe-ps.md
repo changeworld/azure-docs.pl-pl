@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: b5ea7822d96e45d61ecef384d15d78e6a75fa46c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310736"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014050"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Tworzenie niestandardowej sondy dla usługi Azure Application Gateway przy użyciu programu PowerShell dla usługi Azure Resource Manager
 
@@ -41,27 +41,27 @@ W tym artykule należy dodać niestandardowej sondy do istniejącej bramy aplika
 
 1. Użyj `Connect-AzAccount` do uwierzytelniania.
 
-  ```powershell
-  Connect-AzAccount
-  ```
+   ```powershell
+   Connect-AzAccount
+   ```
 
 1. Uzyskaj subskrypcje dla konta.
 
-  ```powershell
-  Get-AzSubscription
-  ```
+   ```powershell
+   Get-AzSubscription
+   ```
 
 1. Wybierz subskrypcję platformy Azure do użycia.
 
-  ```powershell
-  Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
-  ```
+   ```powershell
+   Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
+   ```
 
 1. Utwórz grupę zasobów. Jeśli masz istniejącą grupę zasobów, można pominąć ten krok.
 
-  ```powershell
-  New-AzResourceGroup -Name appgw-rg -Location 'West US'
-  ```
+   ```powershell
+   New-AzResourceGroup -Name appgw-rg -Location 'West US'
+   ```
 
 Usługa Azure Resource Manager wymaga, aby wszystkie grupy zasobów określały lokalizację. Ta lokalizacja będzie używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że wszystkich poleceniach służących do tworzenia bramy aplikacji użyj tej samej grupie zasobów.
 
@@ -105,7 +105,7 @@ Możesz skonfigurować wszystkie elementy konfiguracji przed utworzeniem bramy a
 |**Reguły**| Trasy ruchu do odpowiedniego serwera zaplecza zgodnie z ustawieniami protokołu HTTP.|
 
 ```powershell
-# Creates a application gateway Frontend IP configuration named gatewayIP01
+# Creates an application gateway Frontend IP configuration named gatewayIP01
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
 #Creates a back-end IP address pool named pool01 with IP addresses 134.170.185.46, 134.170.188.221, 134.170.185.50.

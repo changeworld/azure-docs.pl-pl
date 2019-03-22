@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 43f2694f597d99edaf127a6afd64376cca33dad2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448156"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107886"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurowanie modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na platformie Azure
 W tym artykule opisano sposób tworzenia modułu równoważenia obciążenia dla grupy dostępności programu SQL Server Always On w maszynach wirtualnych platformy Azure, które działają z usługą Azure Resource Manager. Grupy dostępności wymaga modułu równoważenia obciążenia w przypadku wystąpienia programu SQL Server na maszynach wirtualnych platformy Azure. Moduł równoważenia obciążenia przechowuje adres IP dla odbiornika grupy dostępności. Jeśli grupy dostępności obejmuje wiele regionów, każdy region wymaga modułu równoważenia obciążenia.
@@ -235,18 +235,18 @@ Aby dodać adres IP do modułu równoważenia obciążenia za pomocą witryny Az
 
 10. Skonfiguruj nowy obciążenia, reguły równoważenia przy użyciu następujących ustawień:
 
-   |Ustawienie |Wartość
-   |:-----|:----
-   |**Nazwa** |Nazwa do identyfikacji reguły równoważenia obciążenia. 
-   |**Adres IP frontonu** |Wybierz adres IP, który został utworzony. 
-   |**Protokół** |TCP
-   |**Port** |Użyj portu, którego wystąpienia programu SQL Server. Domyślne wystąpienie korzysta z portu 1433, o ile nie został zmieniony. 
-   |**Port zaplecza** |Użyj taką samą wartość jak **portu**.
-   |**Pula zaplecza** |Puli, która zawiera maszyny wirtualne z wystąpienia programu SQL Server. 
-   |**Sonda kondycji** |Wybierz utworzoną przez sondy.
-   |**Trwałość sesji** |Brak
-   |**Limit czasu bezczynności (minuty)** |Domyślne (4)
-   |**Pływający adres IP (bezpośredni zwrot serwera)** | Enabled (Włączony)
+    |Ustawienie |Wartość
+    |:-----|:----
+    |**Nazwa** |Nazwa do identyfikacji reguły równoważenia obciążenia. 
+    |**Adres IP frontonu** |Wybierz adres IP, który został utworzony. 
+    |**Protokół** |TCP
+    |**Port** |Użyj portu, którego wystąpienia programu SQL Server. Domyślne wystąpienie korzysta z portu 1433, o ile nie został zmieniony. 
+    |**Port zaplecza** |Użyj taką samą wartość jak **portu**.
+    |**Pula zaplecza** |Puli, która zawiera maszyny wirtualne z wystąpienia programu SQL Server. 
+    |**Sonda kondycji** |Wybierz utworzoną przez sondy.
+    |**Trwałość sesji** |Brak
+    |**Limit czasu bezczynności (minuty)** |Domyślne (4)
+    |**Pływający adres IP (bezpośredni zwrot serwera)** | Enabled (Włączony)
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Konfigurowanie grupy dostępności do korzystania z nowego adresu IP
 

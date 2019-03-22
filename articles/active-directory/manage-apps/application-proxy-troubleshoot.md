@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5895325aa929e44128c331db847252835f563796
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 32d218e057fa040eded07f0adc813485ddaa52fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437555"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080103"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpią błędy podczas uzyskiwania dostępu do opublikowanej aplikacji lub publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji programu Microsoft Azure AD działa prawidłowo:
@@ -36,7 +36,7 @@ Aby uzyskać więcej informacji o narzędziu Azure AD rozwiązywania problemów,
 ## <a name="the-page-is-not-rendered-correctly"></a>Strona nie jest poprawnie renderowana.
 Masz problemy z aplikacją renderowania lub działać poprawnie bez otrzymania określone komunikaty o błędach. Może to wystąpić, jeśli opublikowane Ścieżka artykułu, ale aplikacja wymaga zawartości, który istnieje poza tej ścieżki.
 
-Na przykład w przypadku publikowania ścieżki https://yourapp/app , ale aplikacja wywołuje obrazów https://yourapp/media, nie będą renderowane. Upewnij się, że publikowanie aplikacji przy użyciu najwyższego poziomu ścieżki, konieczne jest uwzględnienie wszystkich odpowiedniej zawartości. W tym przykładzie będzie http://yourapp/.
+Na przykład w przypadku publikowania ścieżki `https://yourapp/app` , ale aplikacja wywołuje obrazów `https://yourapp/media`, nie będą renderowane. Upewnij się, że publikowanie aplikacji przy użyciu najwyższego poziomu ścieżki, konieczne jest uwzględnienie wszystkich odpowiedniej zawartości. W tym przykładzie będzie `http://yourapp/`.
 
 Jeśli zmienisz ścieżce obejmują zawartość odwołania, ale nadal potrzebują użytkownicy powiązana z głębiej łączy w ścieżce, zobacz wpis w blogu [ustawienie łącze odpowiednie dla aplikacji serwera Proxy aplikacji w usłudze Azure AD dostęp do panelu i uruchamianie aplikacji usługi Office 365](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Uzyskiwanie wyników automatycznego sugerowania przy użyciu interfejsu API automatycznego sugerowania Bing'
+title: 'Samouczek: Uzyskiwanie automatyczne sugestii wyniki za pomocą interfejsu API automatycznego sugerowania Bing'
 titlesuffix: Azure Cognitive Services
 description: Jak korzystać z automatycznego sugerowania Bing.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/28/2017
+ms.date: 02/20/2019
 ms.author: v-jaswel
-ms.openlocfilehash: 47115159501195209257e4657f09ae1f93039c5e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 8a338eb6ea3dfeea2027d44487138f290f6c8803
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869912"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010382"
 ---
-# <a name="tutorial-build-a-web-page-autosuggest-client"></a>Samouczek: Tworzenie klienta automatycznego sugerowania w postaci strony internetowej
+# <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Samouczek: Pobierz sugestie dotyczące wyszukiwania na stronie sieci web
 
 Podczas pracy z tym samouczkiem utworzysz stronę internetową umożliwiającą użytkownikom wysyłanie zapytań do interfejsu API automatycznego sugerowania Bing.
 
@@ -349,7 +349,7 @@ Otwórz utworzoną stronę internetową w przeglądarce. Gdy zostanie wyświetlo
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Use and display requirements (Wymagania dotyczące użycia i wyświetlania)](../UseAndDisplayRequirements.md)

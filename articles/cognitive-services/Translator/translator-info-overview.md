@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 02/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 80c9944628eaa828a34ea16eb9f79271d6cd5728
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
+ms.openlocfilehash: 79f0474950cf1f48f3552b1ae843a29b5d8dbb24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729223"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883376"
 ---
 # <a name="what-is-translator-text-api"></a>Czym jest interfejs API tłumaczenia tekstu w usłudze Translator?
 
@@ -28,7 +28,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator to część [kolekcji in
 
 Microsoft Translator to oparta na chmurze usługa tłumaczenia maszynowego. Rdzeniem usługi jest interfejs API tłumaczenia tekstu w usłudze Translator, który współpracuje z wieloma produktami i usługami firmy Microsoft, a także jest używany przez tysiące firm na całym świecie w ich aplikacjach i przepływach pracy, co pozwala ich zawartości na dotarcie do odbiorców na całym świecie.
 
-Tłumaczenie mowy obsługiwane przez interfejs API tłumaczenia tekstu w usłudze Translator jest również dostępne za pośrednictwem usługi [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Łączy ona funkcje interfejsu API tłumaczenia mowy w usłudze Translator, interfejsu API rozpoznawania mowy Bing oraz usługi Custom Speech Service (w wersji zapoznawczej) w ujednoliconej i w pełni dostosowywalnej usłudze. Usługa rozpoznawania mowy zastępuje interfejs API tłumaczenia mowy w usłudze Translator, który zostanie zlikwidowany 15 października 2019 r.
+Tłumaczenie mowy obsługiwane przez interfejs API tłumaczenia tekstu w usłudze Translator jest również dostępne za pośrednictwem usługi [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Łączy ona funkcje interfejsu API tłumaczenia mowy i Custom Speech Service w usłudze ujednolicone i w pełni dostosowywalny. Usługa rozpoznawania mowy zastępuje interfejs API tłumaczenia mowy w usłudze Translator, który zostanie zlikwidowany 15 października 2019 r.
 
 ## <a name="language-support"></a>Obsługa języków
 
@@ -52,7 +52,7 @@ Korzystając z rozszerzenia Custom Translator, można tworzyć systemy tłumacze
 
 Dowiedz się więcej o [dostosowywaniu języków](customization.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Utwórz konto](translator-text-how-to-signup.md), aby uzyskać klucz dostępu.
 - [Dokumentacja interfejsu API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) zawiera dokumentację techniczną interfejsów API.

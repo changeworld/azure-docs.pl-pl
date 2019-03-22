@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5295f2d341ce104ae51776af5c4477304b1dacb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31e9746c0739a2ddd6267428f428e977151077b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187240"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099784"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Problem podczas konfigurowania federacyjnego logowania jednokrotnego dla aplikacji galerii usługi Azure AD
 
@@ -42,33 +42,33 @@ Jeśli nie możesz skonfigurować identyfikator lub adres URL odpowiedzi, upewni
 
 Aby dowiedzieć się wzorców wstępnie skonfigurowane na potrzeby aplikacji:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.** Przejdź do kroku 7. Jeśli jesteś już w bloku Konfiguracja aplikacji w usłudze Azure AD.
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.** Przejdź do kroku 7. Jeśli jesteś już w bloku Konfiguracja aplikacji w usłudze Azure AD.
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+4. Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
    * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne.
+6. Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8.  Wybierz **opartej na SAML logowania jednokrotnego** z **tryb** listy rozwijanej.
+8. Wybierz **opartej na SAML logowania jednokrotnego** z **tryb** listy rozwijanej.
 
-9.  Przejdź do **identyfikator** lub **adres URL odpowiedzi** pole tekstowe, w obszarze **sekcji domena i adresy URL.**
+9. Przejdź do **identyfikator** lub **adres URL odpowiedzi** pole tekstowe, w obszarze **sekcji domena i adresy URL.**
 
 10. Istnieją trzy sposoby, aby wiedzieć, obsługiwane wzorce dla aplikacji:
 
-   * W polu tekstowym, obsługiwanych wzorców zostanie wyświetlony jako symbol zastępczy *przykład:* <https://contoso.com>.
+    * W polu tekstowym, obsługiwanych wzorców zostanie wyświetlony jako symbol zastępczy *przykład:* <https://contoso.com>.
 
-   * Jeśli wzorzec nie jest obsługiwana, zobaczysz czerwony wykrzyknik, podczas próby wprowadź wartość w polu tekstowym. Jeśli wskaźnik myszy nad czerwony wykrzyknik, zostanie wyświetlony obsługiwane wzorce.
+    * Jeśli wzorzec nie jest obsługiwana, zobaczysz czerwony wykrzyknik, podczas próby wprowadź wartość w polu tekstowym. Jeśli wskaźnik myszy nad czerwony wykrzyknik, zostanie wyświetlony obsługiwane wzorce.
 
-   * W tym samouczku aplikacji można także uzyskać informacje dotyczące obsługiwanych wzorców. W obszarze **usługi Azure AD Konfigurowanie logowania jednokrotnego** sekcji. Przejdź do kroku, aby skonfigurować wartości w polach **domena i adresy URL** sekcji.
+    * W tym samouczku aplikacji można także uzyskać informacje dotyczące obsługiwanych wzorców. W obszarze **usługi Azure AD Konfigurowanie logowania jednokrotnego** sekcji. Przejdź do kroku, aby skonfigurować wartości w polach **domena i adresy URL** sekcji.
 
 Jeśli wartości nie są zgodne ze wzorcami wstępnie skonfigurowane w usłudze Azure AD. Możesz:
 
@@ -86,23 +86,23 @@ Wybrana usługa Azure AD wybierz pozycję formatu NameID atrybutu (identyfikator
 
 Aby pobrać metadanych aplikacji lub certyfikatu z usługi Azure AD, wykonaj następujące kroki:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+4. Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
    * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, zostały skonfigurowane logowanie jednokrotne.
+6. Wybierz aplikację, zostały skonfigurowane logowanie jednokrotne.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8.  Przejdź do **certyfikat podpisywania SAML** sekcji, a następnie kliknij przycisk **Pobierz** wartości w kolumnie. W zależności od tego, jakie aplikacji wymagane jest skonfigurowanie logowania jednokrotnego zobaczysz opcję Pobierz kod XML metadanych albo certyfikatu.
+8. Przejdź do **certyfikat podpisywania SAML** sekcji, a następnie kliknij przycisk **Pobierz** wartości w kolumnie. W zależności od tego, jakie aplikacji wymagane jest skonfigurowanie logowania jednokrotnego zobaczysz opcję Pobierz kod XML metadanych albo certyfikatu.
 
 Usługa Azure AD nie zawiera adres URL, aby pobrać metadane. Można pobrać metadanych jako plik XML.
 

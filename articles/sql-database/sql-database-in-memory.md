@@ -7,27 +7,33 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: fcfe8ed0bc132377fbaefaccb03e1d6a9374b8d6
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/19/2019
+ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312483"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226984"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optymalizowanie wydajności przy użyciu technologii w pamięci w bazie danych SQL
 
-Technologie w pamięci w usłudze Azure SQL Database pozwalają zwiększyć wydajność aplikacji i zmniejszyć koszt bazy danych. Przy użyciu technologii w pamięci w usłudze Azure SQL Database, można osiągnąć ulepszenia wydajności z różnych obciążeniach:
+Technologie w pamięci w usłudze Azure SQL Database pozwalają zwiększyć wydajność aplikacji i zmniejszyć koszt bazy danych. 
+
+## <a name="when-to-use-in-memory-technologies"></a>Kiedy należy używać technologii w pamięci
+
+Przy użyciu technologii w pamięci w usłudze Azure SQL Database, można osiągnąć ulepszenia wydajności z różnych obciążeniach:
 
 - **Transakcyjne** (online przetwarzanie transakcyjne (OLTP)) gdzie większość żądań odczytać lub zaktualizować mniejszy zestaw danych (na przykład operacje CRUD).
 - **Analityczne** (przetwarzania analitycznego online (OLAP)) gdzie większość zapytań ma złożonych obliczeń do raportowania do celów, z określoną liczbą zapytań, które obciążenia i dołączyć dane do istniejące tabele (tzw. ładowanie zbiorcze) lub usunięcie dane z tabel. 
 - **Mieszane** (hybrydowe przetwarzanie analityczne/transakcji (HTAP)) gdzie OLTP i OLAP zapytania są wykonywane względem tego samego zestawu danych.
 
-Technologiom pamięci może zwiększyć wydajność tych obciążeń, przechowując dane, które mają być przetwarzane do pamięci, za pomocą natywnej kompilacji zapytań lub zaawansowanego przetwarzania, takich jak usługi batch przetwarzania i instrukcje SIMD, które są dostępne na podstawowy sprzęt.
+Technologiom pamięci może zwiększyć wydajność tych obciążeń, przechowując dane, które mają być przetwarzane do pamięci, za pomocą natywnej kompilacji zapytań lub zaawansowanego przetwarzania, takich jak usługi batch przetwarzania i instrukcje SIMD, które są dostępne na podstawowy sprzęt. 
+
+## <a name="overview"></a>Przegląd
 
 Usługa Azure SQL Database zawiera następujące technologie w pamięci:
 - *[Przetwarzanie OLTP danych w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)*  zwiększa się liczba transakcji na sekundę i zmniejsza opóźnienia i przetwarzania transakcji. Scenariusze, które korzystają z OLTP w pamięci są: przetwarzania, takich jak handlowych i gier, pozyskiwania danych ze zdarzeń lub urządzenia IoT, buforowanie, ładowanie danych i tabeli tymczasowej i scenariuszy zmiennej tabeli transakcji o wysokiej przepływności.
@@ -77,7 +83,7 @@ Technologia OLTP w pamięci zapewnia bardzo krótkie czasy operacji dostępu prz
 
 - **Zoptymalizowane pod kątem pamięci magazynu wierszy** format, w którym każdy wiersz jest obiektem osobną pamięć. Jest klasycznego format OLTP w pamięci, zoptymalizowane pod kątem wysokiej wydajności obciążeń OLTP. Istnieją dwa typy tabel zoptymalizowanych pod kątem pamięci, które mogą być używane w formacie zoptymalizowane pod kątem pamięci magazynu wierszy:
   - *Trwałe tabel* (SCHEMA_AND_DATA) gdzie wierszy umieszczane w pamięci są zachowywane po ponownym uruchomieniu serwera. Tego rodzaju tabel zachowuje się jak tradycyjnego magazynu wierszy tabeli z dodatkowych zalet optymalizacje w pamięci.
-  - *Tabele nietrwałe* (SCEMA_ONLY) gdzie wiersze są zachowywane nie po ponownym uruchomieniu. Ten typ tabeli jest przeznaczona dla danych tymczasowych (np. wymiana tabele tymczasowe) lub tabele, których potrzebujesz, aby szybko ładowania danych, przed przejściem do niektórych utrwalonych tabeli (tzw. Tabele przemieszczania).
+  - *Tabele nietrwałe* (SCHEMA_ONLY) gdzie wiersze są zachowywane nie po ponownym uruchomieniu. Ten typ tabeli jest przeznaczona dla danych tymczasowych (np. wymiana tabele tymczasowe) lub tabele, których potrzebujesz, aby szybko ładowania danych, przed przejściem do niektórych utrwalonych tabeli (tzw. Tabele przemieszczania).
 - **Zoptymalizowane pod kątem pamięci magazynu kolumn** format, w którym dane są organizowane w formacie kolumnowym. Ta struktura jest przeznaczona dla scenariuszy HTAP wymagających uruchamianie zapytań analitycznych na tę samą strukturę danych, gdzie jest uruchomione Twoje obciążenie OLTP.
 
 > [!Note]

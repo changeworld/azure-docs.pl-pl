@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 995f9d2bc0ad0a6b985790d75a63866a3a2d55bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f8db5552ad81a1a47db72a5372e643a6fc167888
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091209"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nie może uzyskiwać dostęp do tej aplikacji firmowej" błąd, podczas korzystania z aplikacji serwera Proxy aplikacji
 
@@ -75,19 +75,19 @@ Pierwszym krokiem szybki, sprawdź i rozwiązać wewnętrzny adres URL, otwieraj
 
 Do weryfikowania aplikacji jest przypisany do pracy grupy łączników:
 
-1.  Otwórz aplikację w portalu, przechodząc do **usługi Azure Active Directory**, klikając na **aplikacje dla przedsiębiorstw**, następnie **wszystkich aplikacji.** Otwórz aplikację, a następnie wybierz **serwera Proxy aplikacji** menu po lewej stronie.
+1. Otwórz aplikację w portalu, przechodząc do **usługi Azure Active Directory**, klikając na **aplikacje dla przedsiębiorstw**, następnie **wszystkich aplikacji.** Otwórz aplikację, a następnie wybierz **serwera Proxy aplikacji** menu po lewej stronie.
 
-2.  Przyjrzyj się pole grupy łączników. W przypadku Brak aktywnych łączników w grupie, jest wyświetlane ostrzeżenie. Jeśli nie widzisz żadnych ostrzeżeń, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty".
+2. Przyjrzyj się pole grupy łączników. W przypadku Brak aktywnych łączników w grupie, jest wyświetlane ostrzeżenie. Jeśli nie widzisz żadnych ostrzeżeń, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty".
 
-3.  Jeśli Nieprawidłowa grupa łączników jest wyświetlany, wybierz za pomocą listy rozwijanej właściwej grupy, a upewnij się, że nie są już wyświetlane ostrzeżenia. Jeśli wyświetlana jest zamierzony grupy łączników, kliknij przycisk z komunikatem ostrzegawczym, aby otworzyć stronę za pomocą funkcji zarządzania łącznika.
+3. Jeśli Nieprawidłowa grupa łączników jest wyświetlany, wybierz za pomocą listy rozwijanej właściwej grupy, a upewnij się, że nie są już wyświetlane ostrzeżenia. Jeśli wyświetlana jest zamierzony grupy łączników, kliknij przycisk z komunikatem ostrzegawczym, aby otworzyć stronę za pomocą funkcji zarządzania łącznika.
 
-4.  W tym miejscu istnieje kilka sposobów, aby przejść do szczegółów dalszych:
+4. W tym miejscu istnieje kilka sposobów, aby przejść do szczegółów dalszych:
 
-  * Łącznik usługi active przenieść do grupy: Jeśli masz aktywny łącznik, powinny należeć do tej grupy, która ma linii wzroku do docelowej aplikacji zaplecza, można przenieść łącznika w przypisanej grupie. Aby to zrobić, kliknij przycisk łącznika. W polu "Grupa łączników" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
+   * Łącznik usługi active przenieść do grupy: Jeśli masz aktywny łącznik, powinny należeć do tej grupy, która ma linii wzroku do docelowej aplikacji zaplecza, można przenieść łącznika w przypisanej grupie. Aby to zrobić, kliknij przycisk łącznika. W polu "Grupa łączników" Użyj listy rozwijanej wybierz poprawną grupę, a następnie kliknij przycisk Zapisz.
 
-  * Pobierz nowy łącznik dla tej grupy: Na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Zazwyczaj łącznik jest zainstalowany na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
+   * Pobierz nowy łącznik dla tej grupy: Na tej stronie można uzyskać link do [pobrać nowy łącznik](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Łącznik można zainstalować na komputerze przy użyciu bezpośredniego linii wzroku do aplikacji zaplecza. Zazwyczaj łącznik jest zainstalowany na tym samym serwerze co aplikacja. Umożliwia pobieranie łącznika link Pobierz łącznik na komputerze docelowym. Następnie kliknij łącznik, a następnie użyć listy rozwijanej "łącznik grupy", aby upewnij się, że należy on do odpowiedniej grupy.
 
-  * Badanie nieaktywne łącznika: Jeśli łącznik jest wyświetlana jako nieaktywny, nie może uzyskać dostęp do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty."
+   * Badanie nieaktywne łącznika: Jeśli łącznik jest wyświetlana jako nieaktywny, nie może uzyskać dostęp do usługi. Ten błąd jest zwykle z powodu niektóre porty wymagane blokowane. Aby rozwiązać ten problem, przejdź do "Weryfikuj dozwolonych elementów znajdują się wszystkie wymagane porty."
 
 Po zakończeniu korzystania z następujące kroki, aby upewnić się, że aplikacja została przypisana do grupy z pracy łączniki, przetestuj aplikację ponownie. Jeśli nadal nie działa, przejdź do następnej sekcji.
 

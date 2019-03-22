@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 58d1d47b548569f7542e24bd09a41299f12e496e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 3e1738c3e5acbe63faf1d614e2435088efd8c4d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787889"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014771"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Transferowanie obiektów do i z usługi Azure Blob Storage za pomocą języka PHP
 Dzięki tej skróconej instrukcji dowiesz się, w jaki sposób za pomocą języka PHP przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze usługi Azure Blob Storage. 
@@ -24,7 +24,7 @@ Dzięki tej skróconej instrukcji dowiesz się, w jaki sposób za pomocą język
 
 Upewnij się, że masz zainstalowane następujące dodatkowe elementy wymagane wstępnie:
 
-* [PHP](http://php.net/downloads.php)
+* [PHP](https://php.net/downloads.php)
 * [Zestaw SDK usługi Azure Storage dla języka PHP](https://github.com/Azure/azure-storage-php)
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
@@ -74,7 +74,7 @@ This is the content of the blob uploaded: Hello Azure!
 ```
 Po naciśnięciu wyświetlonego przycisku aplikacja przykładowa usunie kontener magazynu i pliki. Przed kontynuowaniem sprawdź, czy w folderze na serwerze znajdują się te dwa pliki. Możesz je otworzyć i sprawdzić, czy są identyczne.
 
-Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](http://storageexplorer.com). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
+Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu. 
 
 Po zweryfikowaniu plików naciśnij dowolny klawisz, aby zakończyć demonstrację i usunąć pliki testowe. Teraz, gdy wiesz już, jak działa aplikacja przykładowa, otwórz plik example.rb i przyjrzyj się kodowi. 
 
@@ -203,7 +203,7 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji PHP z magazynem obi
 - W witrynie GitHub wyświetl [kod źródłowy biblioteki klienta PHP](https://github.com/Azure/azure-storage-php) dla usługi Azure Storage, a następnie pobierz i zainstaluj go.
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob) napisanymi przy użyciu biblioteki klienta PHP.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
  
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka PHP. Aby dowiedzieć się więcej o pracy z językiem PHP, przejdź do naszego Centrum deweloperów języka PHP.
 

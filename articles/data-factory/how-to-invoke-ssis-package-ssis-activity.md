@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 03/19/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 846fc5de6470326fbd51d19397503e4eee2ee15b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7287dc2fccf461cf23c45202336e3d92bc5a40aa
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436089"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259707"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchamianie pakietów SSIS za pomocą działania wykonywania pakietów SSIS w usłudze Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SSIS w potoku usługi Azure Data Factory (ADF) za pomocą działania wykonywanie pakietu SSIS. 
@@ -51,19 +51,19 @@ W tym kroku używasz ADF interfejsu użytkownika/aplikacji do tworzenia potoku. 
 
    ![Ustaw właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. Na **ustawienia** wykonywanie pakietu SSIS działania, a następnie wybierz usługi Azure-SSIS IR, który jest skojarzony z bazy danych SSISDB wdrożonym pakiecie. Jeśli pakiet wymaga 32-bitowe środowisko uruchomieniowe do uruchomienia, sprawdź **32-bitowe środowisko uruchomieniowe** pola wyboru. Aby uzyskać **poziom rejestrowania**, wybierz wstępnie zdefiniowany zakres rejestrowania dla swojej wykonanie pakietu. Sprawdź **dostosowany** pole wyboru, jeśli chcesz zamiast tego wprowadź swoją nazwę Rejestrowanie niestandardowe. Gdy środowiska IR Azure-SSIS jest uruchomiony i **ręcznego wprowadzania** pole wyboru jest zaznaczone, możesz przeglądać i wybrać istniejące foldery/projektów/pakietów/środowiska z bazy danych SSISDB. Kliknij przycisk **Odśwież** przycisk, aby pobrać nowo dodanych folderów/projektów/pakietów/środowiska z bazy danych SSISDB, dzięki czemu są one dostępne do przeglądania i wybór. 
+4. Na **ustawienia** wykonywanie pakietu SSIS działania, a następnie wybierz usługi Azure-SSIS IR, który jest skojarzony z bazy danych SSISDB wdrożonym pakiecie. Jeśli pakiet korzysta z uwierzytelniania Windows, aby mieć dostęp do magazynów danych, np. plik serwerów SQL udostępnia lokalnie, usługi Azure Files, itp., sprawdź **uwierzytelniania Windows** pole wyboru i wprowadź domenę, nazwę użytkownika i hasło dla pakietu wykonanie. Jeśli pakiet wymaga 32-bitowe środowisko uruchomieniowe do uruchomienia, sprawdź **32-bitowe środowisko uruchomieniowe** pola wyboru. Aby uzyskać **poziom rejestrowania**, wybierz wstępnie zdefiniowany zakres rejestrowania dla swojej wykonanie pakietu. Sprawdź **dostosowany** pole wyboru, jeśli chcesz zamiast tego wprowadź swoją nazwę Rejestrowanie niestandardowe. Gdy środowiska IR Azure-SSIS jest uruchomiony i **ręcznego wprowadzania** pole wyboru jest zaznaczone, możesz przeglądać i wybrać istniejące foldery/projektów/pakietów/środowiska z bazy danych SSISDB. Kliknij przycisk **Odśwież** przycisk, aby pobrać nowo dodanych folderów/projektów/pakietów/środowiska z bazy danych SSISDB, dzięki czemu są one dostępne do przeglądania i wybór. 
 
    ![Ustaw właściwości na karcie Ustawienia — automatyczne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   Gdy środowiska IR Azure-SSIS nie jest uruchomiona lub **ręcznego wprowadzania** pole wyboru jest zaznaczone, możesz wprowadzić Twoje ścieżki pakietu i środowisko z bazy danych SSISDB w następujących formatach: `<folder name>/<project name>/<package name>.dtsx` i `<folder name>/<environment name>`.
+   Gdy środowiska IR Azure-SSIS nie jest uruchomiona lub **ręcznego wprowadzania** pole wyboru jest zaznaczone, możesz wprowadzić Twoje ścieżki pakietu i środowisko z bazy danych SSISDB, bezpośrednio w następujących formatach: `<folder name>/<project name>/<package name>.dtsx` i `<folder name>/<environment name>`.
 
    ![Ustaw właściwości na karcie Ustawienia - Podręcznik](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-5. Na **parametry SSIS** karcie wykonywanie pakietu SSIS działania, gdy działa środowiska IR Azure-SSIS i **ręcznego wprowadzania** pole wyboru na **ustawienia** karta nie jest zaznaczone, Przypisywanie wartości do nich pojawi się istniejących parametrów SSIS do wybranego projektu/pakietu, z bazy danych SSISDB. W przeciwnym razie można je wprowadzić konflikty po kolei, aby przypisać do nich wartości ręcznie — upewnij się, że istnieją i zostaną wprowadzone poprawnie dla wykonywanie pakietu zakończyło się sukcesem. Można również dodać zawartość dynamiczną, do ich wartości, korzystając z wyrażenia, funkcje, zmienne systemowe ADF i zmienne parametrów potoku usługi ADF.
+5. Na **parametry SSIS** karcie wykonywanie pakietu SSIS działania, gdy działa środowiska IR Azure-SSIS i **ręcznego wprowadzania** pole wyboru na **ustawienia** karta nie jest zaznaczone, Przypisywanie wartości do nich pojawi się istniejących parametrów SSIS do wybranego projektu/pakietu, z bazy danych SSISDB. W przeciwnym razie można je wprowadzić konflikty po kolei, aby przypisać do nich wartości ręcznie — upewnij się, że istnieją i zostaną wprowadzone poprawnie dla wykonywanie pakietu zakończyło się sukcesem. Możesz dodać zawartość dynamiczna na ich wartości, przy użyciu wyrażeń, funkcje, zmienne systemowe ADF i zmienne parametrów potoku usługi ADF. Alternatywnie można użyć kluczy tajnych przechowywanych w usługi Azure Key Vault (AKV) jako ich wartości. W tym celu należy kliknąć **usługi AZURE KEY VAULT** pole wyboru obok odpowiedniego parametru wybierz/edytowanie istniejącej usługi AKV połączone lub Utwórz nową, a następnie wybierz wpisu tajnego nazwa/wersja dla wartości parametru.  Po użytkownik Utwórz/Edytuj AKV połączone usługi, możesz wybrać/Edytuj swoje istniejące AKV lub Utwórz nową, ale Udziel dostępu tożsamości usługi ADF zarządzanych do usługi AKV Jeśli nie zostało to jeszcze zrobione. Możesz też wprowadzić klucze tajne bezpośrednio w następującym formacie: `<AKV linked service name>/<secret name>/<secret version>`.
 
    ![Ustaw właściwości na karcie Parametry SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-6. Na **Menedżerowie połączeń** karcie wykonywanie pakietu SSIS działania, gdy działa środowiska IR Azure-SSIS i **ręcznego wprowadzania** pole wyboru na **ustawienia** karta nie jest zaznaczone, Przypisywanie wartości do nich pojawi się istniejących Menedżerowie połączeń do wybranego projektu/pakietu, z bazy danych SSISDB. W przeciwnym razie można je wprowadzić konflikty po kolei, aby przypisać do nich wartości ręcznie — upewnij się, że istnieją i zostaną wprowadzone poprawnie dla wykonywanie pakietu zakończyło się sukcesem. Można również dodać zawartość dynamiczną, do ich wartości, korzystając z wyrażenia, funkcje, zmienne systemowe ADF i zmienne parametrów potoku usługi ADF.
+6. Na **Menedżerowie połączeń** karcie wykonywanie pakietu SSIS działania, gdy działa środowiska IR Azure-SSIS i **ręcznego wprowadzania** pole wyboru na **ustawienia** karta nie jest zaznaczone, istniejące Menedżerowie połączeń do wybranego projektu/pakietu, z bazy danych SSISDB, pojawi się przypisywanie wartości do ich właściwości. W przeciwnym razie można je wprowadzić konflikty po kolei, aby ręcznie przypisać wartości do ich właściwości — upewnij się, że istnieją i zostaną wprowadzone poprawnie dla wykonywanie pakietu zakończyło się sukcesem. Możesz dodać zawartość dynamiczną, ich wartości właściwości, za pomocą wyrażenia, funkcje, zmienne systemowe ADF i zmienne parametrów potoku usługi ADF. Alternatywnie można użyć kluczy tajnych przechowywanych w usługi Azure Key Vault (AKV) jako wartości ich właściwości. W tym celu należy kliknąć **usługi AZURE KEY VAULT** pole wyboru obok odpowiednie właściwości, wybierz/edytowanie istniejącej usługi AKV połączone lub Utwórz nową, a następnie wybierz wpisu tajnego nazwa/wersja dla wartości właściwości.  Po użytkownik Utwórz/Edytuj AKV połączone usługi, możesz wybrać/Edytuj swoje istniejące AKV lub Utwórz nową, ale Udziel dostępu tożsamości usługi ADF zarządzanych do usługi AKV Jeśli nie zostało to jeszcze zrobione. Możesz też wprowadzić klucze tajne bezpośrednio w następującym formacie: `<AKV linked service name>/<secret name>/<secret version>`.
 
    ![Ustaw właściwości na karcie Menedżerowie połączeń](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
@@ -139,6 +139,14 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
                        "referenceName": "myAzureSSISIR",
                        "type": "IntegrationRuntimeReference"
                    },
+                   "executionCredential": {
+                       "domain": "MyDomain",
+                       "userName": "MyUsername",
+                       "password": {
+                           "type": "SecureString",
+                           "value": "**********"
+                       }
+                   },
                    "runtime": "x64",
                    "loggingLevel": "Basic",
                    "packageLocation": {
@@ -148,11 +156,27 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
                    "projectParameters": {
                        "project_param_1": {
                            "value": "123"
+                       },
+                       "project_param_2": {
+                           "value": {
+                               "value": "@pipeline().parameters.MyPipelineParameter",
+                               "type": "Expression"
+                           }
                        }
                    },
                    "packageParameters": {
                        "package_param_1": {
                            "value": "345"
+                       },
+                       "package_param_2": {
+                           "value": {
+                               "type": "AzureKeyVaultSecret",
+                               "store": {
+                                   "referenceName": "myAKV",
+                                   "type": "LinkedServiceReference"
+                               },
+                               "secretName": "MySecret"
+                           }
                        }
                    },
                    "projectConnectionManagers": {
@@ -171,12 +195,20 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
                    "packageConnectionManagers": {
                        "MyOledbCM": {
                            "userName": {
-                               "value": "sa"
+                               "value": {
+                                   "value": "@pipeline().parameters.MyUsername",
+                                   "type": "Expression"
+                               }
                            },
                            "passWord": {
                                "value": {
-                                   "type": "SecureString",
-                                   "value": "def"
+                                   "type": "AzureKeyVaultSecret",
+                                   "store": {
+                                       "referenceName": "myAKV",
+                                       "type": "LinkedServiceReference"
+                                   },
+                                   "secretName": "MyPassword",
+                                   "secretVersion": "3a1b74e361bf4ef4a00e47053b872149"
                                }
                            }
                        }

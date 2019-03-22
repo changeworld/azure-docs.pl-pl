@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be975a7a0e004e29aaee9433c727d1d456ff03c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 42ba62dafd935da0cb43bdaa9cffa4960c571ffc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866134"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Lifesize Cloud
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację aplikacji Lifesize Cloud z usługą Azure AD, nal
 
 **Aby dodać aplikację Lifesize Cloud z galerii, wykonaj następujące kroki:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -111,7 +111,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Lifesize C
 
     b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://login.lifesizecloud.com/<companyname>`
 
-    d. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
+    c. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
     d. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://webapp.lifesizecloud.com/?ent=<identifier>`
 
@@ -152,7 +152,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Lifesize C
 
     b.  W polu tekstowym **Login URL** (Adres URL logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    d. Otwórz w Notatniku swój certyfikat zakodowany w formacie base-64 pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat X.509**.
+    c. Otwórz w Notatniku swój certyfikat zakodowany w formacie base-64 pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat X.509**.
   
     d. W mapowaniach atrybutu protokołu SAML dla pola tekstowego Imię wprowadź wartość jako `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
@@ -187,7 +187,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -226,7 +226,7 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Lifesize C
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Lifesize Cloud w panelu dostępu przejdziesz do strony logowania aplikacji Lifesize Cloud. W tym miejscu musisz wprowadzić swoją nazwę użytkownika, a następnie zostaniesz przekierowany do strony głównej aplikacji.
 

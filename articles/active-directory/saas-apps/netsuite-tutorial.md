@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dafa0864-aef2-4f5e-9eac-770504688ef4
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9c1b7b60069b4ea59828bc552c4dc1e6da6b001
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: HT
+ms.openlocfilehash: 73bb37607af681fcd505706ae99b308024be2c2d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869058"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją NetSuite
 
@@ -55,7 +55,7 @@ Aby skonfigurować integrację aplikacji NetSuite w usłudze Azure AD, należy d
 
 **Aby dodać aplikację NetSuite z galerii, wykonaj następujące czynności:**
 
-1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -205,7 +205,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
 
     b. W polu oznaczonym jako **SAMLV2 IDENTITY PROVIDER METADATA** (METADANE DOSTAWCY TOŻSAMOŚCI SAMLV2) wybierz opcję **UPLOAD IDP METADATA FILE** (PRZEKAŻ PLIK METADANYCH DOSTAWCY TOŻSAMOŚCI). Następnie kliknij przycisk **Browse** (Przeglądaj), aby przekazać plik metadanych, który został pobrany z witryny Azure Portal.
 
-    d. Kliknij przycisk **Prześlij**.
+    c. Kliknij przycisk **Prześlij**.
 
 9. W aplikacji NetSuite kliknij pozycję **Setup** (Konfiguracja), następnie przejdź do pozycji **Company** (Firma) i kliknij przycisk **Company Information** (Informacje o firmie) w górnym menu nawigacji.
 
@@ -215,7 +215,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
 
     b. Ze strony **Company Information** (Informacje o firmie) skopiuj wartość **ACCOUNT ID** (IDENTYFIKATOR KONTA), znajdującą się w prawej kolumnie.
 
-    d. Wklej wartość **Identyfikator konta** skopiowaną z konta aplikacji NetSuite w polu **Wartość atrybutu** w usłudze Azure AD. 
+    c. Wklej wartość **Identyfikator konta** skopiowaną z konta aplikacji NetSuite w polu **Wartość atrybutu** w usłudze Azure AD. 
 
 10. Zanim użytkownicy będą mogli wykonywać logowanie jednokrotne do aplikacji NetSuite, należy im wcześniej przypisać odpowiednie uprawnienia w tej aplikacji. Postępuj zgodnie z poniższymi instrukcjami, aby przypisać te uprawnienia.
 
@@ -227,7 +227,7 @@ Aby skonfigurować funkcję logowania jednokrotnego usługi Azure AD z aplikacj�
 
     ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-manage-roles.png)
 
-    d. Kliknij opcję **New Role** (Nowa rola).
+    c. Kliknij opcję **New Role** (Nowa rola).
 
     d. Wpisz nazwę nowej roli w polu **Name**.
 
@@ -279,7 +279,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -318,7 +318,7 @@ W tej sekcji w aplikacji NetSuite tworzony jest użytkownik o nazwie Britta Simo
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka NetSuite w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji NetSuite, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 

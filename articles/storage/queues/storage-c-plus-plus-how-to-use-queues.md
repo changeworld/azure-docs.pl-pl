@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
 ms.subservice: queues
-ms.openlocfilehash: b1a566c4179e940b82790c69b3036e3be9e352cc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 08c865e5383e4095a22aa6c10c8b181f916d1d30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564531"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999424"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Jak używać magazynu kolejek w języku C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -23,10 +23,10 @@ ms.locfileid: "55564531"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Przegląd
-W przewodniku opisano, jak realizować typowe scenariusze za pomocą usługi Azure Queue storage. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Omówione scenariusze obejmują **wstawianie**, **wgląd do**, **wprowadzenie**, i **usuwanie** kolejki komunikatów, a także  **Tworzenie i usuwanie kolejek**.
+W przewodniku opisano, jak realizować typowe scenariusze za pomocą usługi Azure Queue storage. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Omówione scenariusze obejmują **wstawianie**, **wgląd do**, **wprowadzenie**, i **usuwanie** kolejki komunikatów, a także  **Tworzenie i usuwanie kolejek**.
 
 > [!NOTE]
-> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Zalecana wersja biblioteki klienta usługi Storage to wersja 2.2.0, dostępna za pośrednictwem narzędzia [NuGet](http://www.nuget.org/packages/wastorage) lub witryny [GitHub](http://github.com/Azure/azure-storage-cpp/).
+> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Zalecana wersja biblioteki klienta usługi Storage to wersja 2.2.0, dostępna za pośrednictwem narzędzia [NuGet](https://www.nuget.org/packages/wastorage) lub witryny [GitHub](https://github.com/Azure/azure-storage-cpp/).
 > 
 > 
 
@@ -42,7 +42,7 @@ W tym celu należy zainstalować bibliotekę klienta usługi Azure Storage dla j
 Możesz zainstalować bibliotekę klienta usługi Azure Storage dla języka C++, korzystając z następujących metod:
 
 * **Linux:** Wykonaj instrukcje podane w [biblioteki klienta usługi Azure Storage dla języka C++ w pliku README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.
-* **Windows:** W programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.
+* **Windows:** W programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.
 
 ```powershell
 Install-Package wastorage
@@ -266,5 +266,5 @@ Teraz, kiedy znasz już podstawy usługi Queue storage, skorzystaj z poniższych
 * [Jak używać magazynu obiektów Blob w języku C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Jak używać magazynu tabel w języku C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Lista zasobów usługi Azure Storage w języku C++](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-* [Biblioteka klienta usługi Storage for C++ Concepts](http://azure.github.io/azure-storage-cpp)
+* [Biblioteka klienta usługi Storage for C++ Concepts](https://azure.github.io/azure-storage-cpp)
 * [Dokumentacja usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

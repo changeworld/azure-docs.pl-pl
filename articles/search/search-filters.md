@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 539a7fc5b9d3038424059f1ee599c6966a968781
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629601"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079149"
 ---
 # <a name="filters-in-azure-search"></a>Filtry w usłudze Azure Search 
 
@@ -32,17 +32,17 @@ Przykładowe scenariusze obejmują następujące czynności:
 
 1. Użyj filtru w celu wycinek, indeksu na podstawie wartości danych w indeksie. Biorąc pod uwagę schematu z Miasto, mieszkalnictwa typu i pozwalającego, można utworzyć filtr, aby jawnie wybrać dokumenty, które spełniają kryteria (w Seattle condos, waterfront). 
 
-  Wyszukiwanie pełnotekstowe przy użyciu tych samych wejściach często daje podobne wyniki, ale filtru jest bardziej precyzyjne, że wymaga dokładnego dopasowania termin z filtru dla treści w indeksie. 
+   Wyszukiwanie pełnotekstowe przy użyciu tych samych wejściach często daje podobne wyniki, ale filtru jest bardziej precyzyjne, że wymaga dokładnego dopasowania termin z filtru dla treści w indeksie. 
 
 2. Użyj filtru, jeśli środowisko wyszukiwania jest dostarczany z wymogiem filtru:
 
- * [Nawigacja aspektowa](search-faceted-navigation.md) używa filtru ponownie przekazać kategorii aspekt wybrane przez użytkownika.
- * Wyszukiwanie geograficzne używa filtru do przekazania aplikacji współrzędne bieżącego położenia w "Znajdź w pobliżu". 
- * Filtry zabezpieczeń należy przekazać identyfikatorów zabezpieczeń jako kryteria filtrowania, jeśli dopasowanie w indeksie służy jako serwer proxy dla prawa dostępu do dokumentu.
+   * [Nawigacja aspektowa](search-faceted-navigation.md) używa filtru ponownie przekazać kategorii aspekt wybrane przez użytkownika.
+   * Wyszukiwanie geograficzne używa filtru do przekazania aplikacji współrzędne bieżącego położenia w "Znajdź w pobliżu". 
+   * Filtry zabezpieczeń należy przekazać identyfikatorów zabezpieczeń jako kryteria filtrowania, jeśli dopasowanie w indeksie służy jako serwer proxy dla prawa dostępu do dokumentu.
 
 3. Użyj filtru, jeśli chcesz, aby kryteria wyszukiwania dotyczącej pola liczbowego. 
 
-  Pola numeryczne są możliwe do pobierania w dokumencie i mogą być wyświetlane w wynikach wyszukiwania, ale nie są one można wyszukiwać (zależnie od wyszukiwanie pełnotekstowe) indywidualnie. Kryteria wyboru oparte na danych liczbowych, należy użyć filtru.
+   Pola numeryczne są możliwe do pobierania w dokumencie i mogą być wyświetlane w wynikach wyszukiwania, ale nie są one można wyszukiwać (zależnie od wyszukiwanie pełnotekstowe) indywidualnie. Kryteria wyboru oparte na danych liczbowych, należy użyć filtru.
 
 ### <a name="alternative-methods-for-reducing-scope"></a>Alternatywne metody zmniejszenie zakresu
 
@@ -141,10 +141,8 @@ W zestawie SDK platformy .NET jest filtrowanie *poza* domyślnie. Interfejs API 
 
 Jeśli pole jest inne niż można filtrować i ma być filtrowania, należy dodać nowe pola lub ponownie skompiluj istniejącego pola. Zmiana definicji pola zmienia Struktura fizyczna indeksu. W usłudze Azure Search wszystkich ścieżek dostępu dozwolone są indeksowane w celu szybkość szybkie zapytania wymaga ponownej kompilacji struktur danych, gdy zmienią się definicje pól. 
 
-Ponowne tworzenie poszczególnych pól może być operacją mały wpływ wymagające tylko operację scalania, która wysyła do indeksu, pozostawiając bez zmian w pozostałej części dokumentu, każdy istniejący klucz dokumentu i skojarzone wartości. Jeśli napotkasz wymagania ponowną kompilację, zobacz następujące linki do instrukcji:
+Ponowne tworzenie poszczególnych pól może być operacją mały wpływ wymagające tylko operację scalania, która wysyła do indeksu, pozostawiając bez zmian w pozostałej części dokumentu, każdy istniejący klucz dokumentu i skojarzone wartości. Jeśli wystąpią wymagania ponowną kompilację, zobacz [akcji indeksowania (przekazanie, scalenie, mergeOrUpload, Usuń)](search-what-is-data-import.md#indexing-actions) listę opcji.
 
- + [Indeksowanie akcji przy użyciu zestawu .NET SDK](https://docs.microsoft.com/azure/search/search-import-data-dotnet#decide-which-indexing-action-to-use)
- + [Indeksowanie akcji przy użyciu interfejsu API REST](https://docs.microsoft.com/azure/search/search-import-data-rest-api#decide-which-indexing-action-to-use)
 
 ## <a name="text-filter-fundamentals"></a>Podstawowe informacje dotyczące tekstu filtru
 
@@ -157,8 +155,8 @@ Ciągi tekstowe jest rozróżniana wielkość liter. Istnieje nie małe-wielkoś
 
 | Podejście | Opis | 
 |----------|-------------|
-| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkcja, zapewniając rozdzielana przecinkami lista ciągów dla danego pola. Ciągi obejmują kryteria filtrowania, które są stosowane do wszystkich pól w zakresie dla zapytania. <br/><br/>`search.in(f, ‘a, b, c’)` są semantycznie równoważne `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, z tą różnicą, że znacznie szybciej wykonuje po duże listy wartości.<br/><br/>Firma Microsoft zaleca **search.in** działać w ramach [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) i w polu wszelkie filtry składa się z nieprzetworzony tekst do dopasowania wartości w danym polu. Ta metoda jest przeznaczona dla danej szybkości. Można oczekiwać, że czas odpowiedzi subsecond setki tysięcy wartości. W trakcie nie jawnego limit liczby elementów, które można przekazać do funkcji opóźnienie zwiększa się proporcjonalnie do liczby parametrów, których udzielasz. | 
-| [Search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkcja, która pozwala łączyć operacji wyszukiwania pełnotekstowego przy użyciu operacji ściśle logiczna filtrów w tym samym wyrażeniu filtru. Dzięki temu wiele kombinacji filtr zapytania w jednym żądaniu. Można również użyć go do *zawiera* filtr do filtru na częściowe ciągu w dłuższym ciągu. |  
+| [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkcja, zapewniając rozdzielana przecinkami lista ciągów dla danego pola. Ciągi obejmują kryteria filtrowania, które są stosowane do wszystkich pól w zakresie dla zapytania. <br/><br/>`search.in(f, ‘a, b, c’)` są semantycznie równoważne `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, z tą różnicą, że znacznie szybciej wykonuje po duże listy wartości.<br/><br/>Firma Microsoft zaleca **search.in** działać w ramach [filtrów zabezpieczeń](search-security-trimming-for-azure-search.md) i w polu wszelkie filtry składa się z nieprzetworzony tekst do dopasowania wartości w danym polu. Ta metoda jest przeznaczona dla danej szybkości. Można oczekiwać, że czas odpowiedzi subsecond setki tysięcy wartości. W trakcie nie jawnego limit liczby elementów, które można przekazać do funkcji opóźnienie zwiększa się proporcjonalnie do liczby parametrów, których udzielasz. | 
+| [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkcja, która pozwala łączyć operacji wyszukiwania pełnotekstowego przy użyciu operacji ściśle logiczna filtrów w tym samym wyrażeniu filtru. Dzięki temu wiele kombinacji filtr zapytania w jednym żądaniu. Można również użyć go do *zawiera* filtr do filtru na częściowe ciągu w dłuższym ciągu. |  
 | [$filter = ciąg operator pola](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Wyrażenie zdefiniowanych przez użytkownika, składa się z pola, operatory i wartości. | 
 
 ## <a name="numeric-filter-fundamentals"></a>Podstawowe informacje dotyczące filtru liczbowego

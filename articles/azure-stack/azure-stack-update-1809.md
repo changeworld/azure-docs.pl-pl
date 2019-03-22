@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: fd1e49a8bab3b6133a476bbafaa45e0e61fe1f1b
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 58117bce8de667c9750b2e0c19992b99716945cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730559"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124205"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -63,12 +63,12 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
 - Następujące problemy z dysków zarządzanych zostały usunięte w 1809 i również zostały usunięte w 1808 [usługi Azure Stack poprawkę 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
-   - Rozwiązany problem, w których dołączający SSD dysków z danymi premium rozmiar maszyn wirtualnych dysku zarządzanego (DS, DSv2, Fs i Fs_V2) nie powiodło się z powodu błędu:  *Nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: Żądanie, nie można wykonać operacji, ponieważ typ konta magazynu "Premium_LRS" nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*. 
+  - Rozwiązany problem, w których dołączający SSD dysków z danymi premium rozmiar maszyn wirtualnych dysku zarządzanego (DS, DSv2, Fs i Fs_V2) nie powiodło się z powodu błędu:  *Nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: Żądanie, nie można wykonać operacji, ponieważ typ konta magazynu "Premium_LRS" nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*. 
    
-   - Tworzenie dysku zarządzanego maszyny Wirtualnej przy użyciu **createOption**: **Dołącz** kończy się niepowodzeniem z powodu następującego błędu: *Długie wykonywanie operacji nie powiodło się ze stanem "Niepowodzenie". Dodatkowe informacje: "Wystąpił błąd wewnętrzny wykonania."*
-   Kod błędu: InternalExecutionError komunikat o błędzie: Wystąpił błąd wewnętrzny wykonania.
+  - Tworzenie dysku zarządzanego maszyny Wirtualnej przy użyciu **createOption**: **Dołącz** kończy się niepowodzeniem z powodu następującego błędu: *Długie wykonywanie operacji nie powiodło się ze stanem "Niepowodzenie". Dodatkowe informacje: "Wystąpił błąd wewnętrzny wykonania."*
+    Kod błędu: InternalExecutionError komunikat o błędzie: Wystąpił błąd wewnętrzny wykonania.
    
-   Ten problem został rozwiązany.
+    Ten problem został rozwiązany.
 
 - <!-- 2702741 -  IS, ASDK --> Rozwiązano problem, w której publiczne adresy IP, które zostały wdrożone za pomocą dynamicznej alokacji metoda nie jest gwarantowana zostaną zachowane po wystawieniu Zatrzymaj anulowanie. Teraz są zachowywane.
 
@@ -297,10 +297,10 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 <!-- TBD - IS ASDK --> 
 - Po zastosowaniu 1809 aktualizacji, można napotkać następujące problemy podczas wdrażania maszyn wirtualnych z usługą Managed Disks:
 
-   - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażanie maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
-      1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
-      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **AzureStack DiskRP klienta** roli znajduje się na liście.
-   2. Po skonfigurowaniu środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się komunikat o błędzie wewnętrznym. Aby naprawić błąd, wykonaj następujące kroki w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
+  - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażanie maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
+     1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
+     2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **AzureStack DiskRP klienta** roli znajduje się na liście.
+  - Po skonfigurowaniu środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się komunikat o błędzie wewnętrznym. Aby naprawić błąd, wykonaj następujące kroki w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
 
 - Maszyny Wirtualnej systemu Ubuntu 18.04 utworzonej z autoryzacją SSH włączone uniemożliwi używanie kluczy SSH do logowania. Obejść ten problem użyj dostęp do maszyny Wirtualnej dla rozszerzenia systemu Linux do zaimplementowania kluczy SSH po zainicjowaniu obsługi administracyjnej, lub korzystać z uwierzytelniania opartego na hasłach.
 

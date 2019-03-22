@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: e34856704b474ac1b7d25d589be5f98be2b113cc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 02f973af71f0ee7e1fd1bcf712a08e001ec41667
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671560"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224961"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Samouczek: uaktualnianie środowiska uruchomieniowego klastra usługi Service Fabric na platformie Azure
 
-Ten samouczek to trzecia część serii. Przedstawia on sposób uaktualniania środowiska uruchomieniowego usługi Service Fabric w klastrze usługi Azure Service Fabric. Tę część samouczka opracowano pod kątem klastrów usługi Service Fabric działających na platformie Azure. Nie dotyczy ona autonomicznych klastrów usługi Service Fabric.
+Ten samouczek jest czwartą częścią serii i pokazano, jak uaktualnić środowisko uruchomieniowe usługi Service Fabric w klastrze usługi Azure Service Fabric. Tę część samouczka opracowano pod kątem klastrów usługi Service Fabric działających na platformie Azure. Nie dotyczy ona autonomicznych klastrów usługi Service Fabric.
 
 > [!WARNING]
 > Na potrzeby tej części samouczka wymagany jest program PowerShell. Uaktualnianie środowiska uruchomieniowego klastra nie jest jeszcze obsługiwane przez narzędzia interfejsu wiersza polecenia platformy Azure. Alternatywnie klaster możesz uaktualnić w portalu. Aby uzyskać więcej informacji, zobacz [Uaktualnianie klastra usługi Azure Service Fabric](service-fabric-cluster-upgrade.md).
@@ -40,6 +40,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure przy użyciu szablonu
+> * [Monitorowanie klastra](service-fabric-tutorial-monitor-cluster.md)
 > * [Skalowanie klastra na zewnątrz lub do wewnątrz](service-fabric-tutorial-scale-cluster.md)
 > * Uaktualnianie środowiska uruchomieniowego klastra
 > * [Usuwanie klastra](service-fabric-tutorial-delete-cluster.md)

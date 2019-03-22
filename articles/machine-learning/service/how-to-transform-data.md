@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fa6d90866be93645625fa82410f8dd0e3bd33d00
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 12a914b2cdef0a40493dac1a539cf0c2a7703093
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999814"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
@@ -45,7 +45,7 @@ dflow.head(3)
 
 ||ID|Liczba przypadków|Date|Blokuj|IUCR|Typ podstawowy|Opis|Opis lokalizacji|Aresztowania|Krajowych|Przyciski ...|Lej|Obszar społeczności|FBI kodu|Współrzędna x|Współrzędna Y|Rok|Aktualizacja:|Szerokość geograficzna|Długość geograficzna|Lokalizacja|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-|0|10140490|HY329907|2015-07-05 11:50:00 PM|ZAPISZ NEWLAND N 050XX|0820|PRZED KRADZIEŻĄ|500 USD I W OBSZARZE|ULICA|false|false|Przyciski ...|41|10|06|1129230|1933315|2015|2015-07-12 |GODZINA 12:42:46|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
+|0|10140490|HY329907|2015-07-05 11:50:00 PM|ZAPISZ NEWLAND N 050XX|0820|PRZED KRADZIEŻĄ|500 USD I W OBSZARZE|ULICA|false|false|Przyciski ...|41|10|06|1129230|1933315|2015|2015-07-12 12:42:46: 00|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
 |1|10139776|HY329265|2015-07-05 11:30:00 PM|ZAPISZ MORSE'A W 011XX|0460|BATERIA|PROSTE|ULICA|false|true|Przyciski ...|49|1|08B|1167370|1946271|2015|2015-07-12 12:42:46: 00|42.008124017|-87.65955018|(42.008124017,-87.65955018)|
 |2|10140270|HY329253|2015-07-05 11:20:00 PM|Z PRZODU APISZ 121XX|0486|BATERIA|PROSTE ŚWIATOWEGO BATERII|ULICA|false|true|Przyciski ...|9|53|08B|||2015|2015-07-12 12:42:46: 00|
 
@@ -60,9 +60,9 @@ case_category = dflow.add_column(new_column_name='Case Category',
 case_category.head(3)
 ```
 
-||ID|Liczba przypadków|Kategoria przypadku|Date|Blokuj|IUCR|Typ podstawowy|Opis|Opis lokalizacji|Aresztowania|Przyciski ...|Lej|Obszar społeczności|FBI kodu|Współrzędna x|Współrzędna Y|Rok|Aktualizacja:|Szerokość geograficzna|Długość geograficzna|Lokalizacja|
+||ID|Liczba przypadków|Kategoria przypadku|Date|Blokuj|IUCR|Typ podstawowy|Opis|Opis lokalizacji|Aresztowania|Krajowych|Przyciski ...|Lej|Obszar społeczności|FBI kodu|Współrzędna x|Współrzędna Y|Rok|Aktualizacja:|Szerokość geograficzna|Długość geograficzna|Lokalizacja|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
-|0|10140490|HY329907|AZJATYCKA|2015-07-05 11:50:00 PM|ZAPISZ NEWLAND N 050XX|0820|PRZED KRADZIEŻĄ|500 USD I W OBSZARZE|ULICA|false|false|Przyciski ...|41|10|06|1129230|1933315|2015|2015-07-12 |GODZINA 12:42:46|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
+|0|10140490|HY329907|AZJATYCKA|2015-07-05 11:50:00 PM|ZAPISZ NEWLAND N 050XX|0820|PRZED KRADZIEŻĄ|500 USD I W OBSZARZE|ULICA|false|false|Przyciski ...|41|10|06|1129230|1933315|2015|2015-07-12 12:42:46: 00|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
 |1|10139776|HY329265|AZJATYCKA|2015-07-05 11:30:00 PM|ZAPISZ MORSE'A W 011XX|0460|BATERIA|PROSTE|ULICA|false|true|Przyciski ...|49|1|08B|1167370|1946271|2015|2015-07-12 12:42:46: 00|42.008124017|-87.65955018|(42.008124017,-87.65955018)|
 |2|10140270|HY329253|AZJATYCKA|2015-07-05 11:20:00 PM|Z PRZODU APISZ 121XX|0486|BATERIA|PROSTE ŚWIATOWEGO BATERII|ULICA|false|true|Przyciski ...|9|53|08B|||2015|2015-07-12 12:42:46: 00|
 
@@ -236,6 +236,7 @@ builder.preview(skip=75, count=5)
 builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
 builder.preview(skip=75, count=5)
 ```
+
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|3 stycznia 2015 6: 00 - 8: 00|
@@ -409,7 +410,7 @@ dflow.head(2)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|------|-----|
+|-----|-------|---------| -------|------|-----|------|
 |0|ALABAMA|1|101710|Hale hrabstwa|10171002158| |
 |1|ALABAMA|1|101710|Hale hrabstwa|10171002162| |
 
@@ -423,7 +424,7 @@ dflow.head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|
+|-----|-------|---------| -------|------|
 |0|ALABAMA|Hale hrabstwa|1.017100e + 10|Brak|
 |1|ALABAMA|Hale hrabstwa|1.017100e + 10|Brak|
 
@@ -434,7 +435,7 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|
+|-----|-------|---------| -------|------|
 |0|ALABAMA|Hale hrabstwa|1.017100e + 10|Brak|
 |1|ALABAMA|Hale hrabstwa|1.017100e + 10|Brak|
 
@@ -454,7 +455,7 @@ df.head(2)
 ```
 
 ||stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|
+|-----|-------|---------| -------|------|
 |0|ALABAMA|Hale hrabstwa|1.017100e + 10|0.0|
 |1|ALABAMA|Hale hrabstwa|1.017100e + 10|0.0|
 

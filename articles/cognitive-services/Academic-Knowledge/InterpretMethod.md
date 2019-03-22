@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860528"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975495"
 ---
 # <a name="interpret-method"></a>Interpretowanie — metoda
 
@@ -37,9 +37,11 @@ Name (Nazwa)     | Wartość | Wymagana?  | Opis
 **count**    | Liczba | Nie<br>domyślny: 10 | Maksymalna liczba interpretacji do zwrócenia.         
 **offset**   | Liczba | Nie<br>domyślna: 0  | Indeks pierwszego interpretacji do zwrócenia. Na przykład *count = 2 & przesunięcie = 0* zwraca interpretacje 0 i 1. *liczba = 2 & przesunięcie = 2* zwraca interpretacje 2 i 3.       
 **limit czasu**  | Liczba | Nie<br>default:1000 | Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
+
 <br>
   
 ## <a name="response-json"></a>Odpowiedź (JSON)
+
 Name (Nazwa)     | Opis
 ---------|---------
 **Zapytanie** |*Zapytania* parametrów z żądania.
@@ -54,6 +56,7 @@ Name (Nazwa)     | Opis
 **aborted** | Wartość true, jeśli upłynął limit czasu żądania.
 
 <br>
+
 #### <a name="example"></a>Przykład:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2

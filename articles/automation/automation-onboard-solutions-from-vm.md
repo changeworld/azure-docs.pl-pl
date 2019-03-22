@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 894fc42954182171588d81e2f7f1e37141af9add
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821255"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837766"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Dołączanie rozwiązań zarządzania aktualizacjami, śledzenie zmian i spisu z maszyną wirtualną platformy Azure
 
@@ -26,7 +26,7 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>Włączanie rozwiązania
 
-Przejdź do istniejącej maszyny wirtualnej. W obszarze **operacji**, wybierz opcję **rozwiązanie Update management**, **spisu**, lub **śledzenie zmian**.
+Przejdź do istniejącej maszyny wirtualnej. W obszarze **operacji**, wybierz opcję **rozwiązanie Update management**, **spisu**, lub **śledzenie zmian**. Maszyna wirtualna może znajdować się w dowolnym regionie, bez względu na to lokalizacja konta usługi Automation.
 
 Aby włączyć rozwiązanie tylko maszyny wirtualnej, upewnij się, że **Włącz dla tej maszyny Wirtualnej** jest zaznaczone. Aby dołączyć wiele maszyn do rozwiązania, wybierz pozycję **włączanie dla maszyn wirtualnych w ramach tej subskrypcji**, a następnie wybierz pozycję **kliknij, aby wybrać maszyny do włączenia**. Aby dowiedzieć się, aby dołączyć wiele maszyn jednocześnie, zobacz temat [rozwiązania dołączanie rozwiązania Update Management, śledzenia zmian i spisu](automation-onboard-solutions-from-automation-account.md).
 

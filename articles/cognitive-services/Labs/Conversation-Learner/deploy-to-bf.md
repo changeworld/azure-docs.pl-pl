@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bc04afead8742c9f384287ecb8d33c54770456b6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447391"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994642"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Jak wdrożyć bot uczeń konwersacji
 
@@ -45,7 +45,7 @@ Oto jak uzyskać identyfikator modelu:
     npm run ui
     ```
 
-2. Otwórz przeglądarkę, aby http://localhost:5050 
+2. Otwórz przeglądarkę, aby `http://localhost:5050` 
 
 3. Kliknij w celu uzyskania Identyfikatora modelu uczeń konwersacji
 
@@ -109,20 +109,20 @@ Poniżej przedstawiono instrukcje krok po kroku dotyczące wdrażania Bot uczeń
 
 3. W witrynie Azure portal Edytuj zasób Bot aplikacji sieci Web, który został utworzony.
 
-    1. Kliknij pozycję "Ustawienia aplikacji" element nawigacji po lewej stronie
-    1. Przewiń w dół do sekcji "Ustawienia aplikacji"
-    2. Dodaj następujące ustawienia:
+   1. Kliknij pozycję "Ustawienia aplikacji" element nawigacji po lewej stronie
+   1. Przewiń w dół do sekcji "Ustawienia aplikacji"
+   2. Dodaj następujące ustawienia:
 
-        Zmienna środowiskowa | wartość
-        --- | --- 
-        CONVERSATION_LEARNER_SERVICE_URI | „https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/”
-        CONVERSATION_LEARNER_MODEL_ID      | Identyfikator GUID identyfikatora aplikacji, uzyskany z poziomu interfejsu użytkownika uczeń konwersacji w obszarze "ustawienia" dla modelu >
-        LUIS_AUTHORING_KEY               | Tworzenie klucza dla tego modelu usługi LUIS
-        LUIS_SUBSCRIPTION_KEY            | Nie jest wymagane, ale zalecane do opublikowanych Boty, które należy unikać tworzenia limitu przydziału.
+       Zmienna środowiskowa | wartość
+       --- | --- 
+       CONVERSATION_LEARNER_SERVICE_URI | „https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/”
+       CONVERSATION_LEARNER_MODEL_ID      | Identyfikator GUID identyfikatora aplikacji, uzyskany z poziomu interfejsu użytkownika uczeń konwersacji w obszarze "ustawienia" dla modelu >
+       LUIS_AUTHORING_KEY               | Tworzenie klucza dla tego modelu usługi LUIS
+       LUIS_SUBSCRIPTION_KEY            | Nie jest wymagane, ale zalecane do opublikowanych Boty, które należy unikać tworzenia limitu przydziału.
     
-    4. Kliknij przycisk "Zapisz" u góry strony
-    5. Otwórz element nav "Kompilacja" po lewej stronie
-    6. Kliknij pozycję "Konfiguruj ciągłe wdrażanie" 
-    7. Kliknij ikonę "Setup" w ramach wdrożenia
-    8. Kliknij pozycję "Required ustawienia"
-    9. Wybierz źródło, gdzie Twój kod bot jest dostępny i skonfigurować źródło.
+   4. Kliknij przycisk "Zapisz" u góry strony
+   5. Otwórz element nav "Kompilacja" po lewej stronie
+   6. Kliknij pozycję "Konfiguruj ciągłe wdrażanie" 
+   7. Kliknij ikonę "Setup" w ramach wdrożenia
+   8. Kliknij pozycję "Required ustawienia"
+   9. Wybierz źródło, gdzie Twój kod bot jest dostępny i skonfigurować źródło.

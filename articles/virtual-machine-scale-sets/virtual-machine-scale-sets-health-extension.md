@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 34f1b023b2ea2451f3308666d156278e92afb4aa
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565976"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084399"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Inicjowanie zestawów rozszerzenie skalowania maszyn wirtualnych za pomocą kondycji aplikacji
 Monitorowanie kondycji aplikacji jest ważne sygnał dla uaktualnienie wdrożenie i zarządzanie nimi. Zestawy skalowania maszyn wirtualnych platformy Azure zapewniają obsługę [uaktualnień stopniowych](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) w tym [automatyczne uaktualnienia obrazu systemu operacyjnego](virtual-machine-scale-sets-automatic-upgrade.md), które polegają na monitorowanie kondycji poszczególnych wystąpień, aby uaktualnić wdrożenie .
@@ -64,19 +64,19 @@ Następujący kod JSON zawiera schemat dla rozszerzenia kondycji aplikacji. Rozs
 ### <a name="property-values"></a>Wartości właściwości
 
 | Name (Nazwa) | Wartość / przykład | Typ danych
-| ---- | ---- | ---- | ----
+| ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| Wydawcy | `Microsoft.ManagedServices` | ciąg |
-| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | ciąg |
+| Wydawcy | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Ustawienia
 
 | Name (Nazwa) | Wartość / przykład | Typ danych
 | ---- | ---- | ----
-| protokół | `http` lub `tcp` | ciąg |
+| protokół | `http` lub `tcp` | string |
 | port | Opcjonalnie, protokołu `http`obowiązujący protokołu `tcp` | int |
-| requestPath | Obowiązkowe protokołu `http`, niedozwolone, gdy protokół jest `tcp` | ciąg |
+| requestPath | Obowiązkowe protokołu `http`, niedozwolone, gdy protokół jest `tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Wdrażanie rozszerzenia kondycji aplikacji
 Istnieje wiele sposobów wdrażania kondycji aplikacji, Ustawia rozszerzenie do skalowania, zgodnie z opisem w poniższych przykładach.

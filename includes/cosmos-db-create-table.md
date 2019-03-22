@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 37d7b1d44c2a4b2f3cd2fd3ac881b106d5056279
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: a91c42ca32fb356b418dcd412c0690b01ff85789
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38726130"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57908175"
 ---
 Teraz możesz użyć narzędzia Eksplorator danych w witrynie Azure Portal, aby utworzyć bazę danych i tabelę. 
 
@@ -28,11 +28,10 @@ Teraz możesz użyć narzędzia Eksplorator danych w witrynie Azure Portal, aby 
     Ustawienie|Sugerowana wartość|Opis
     ---|---|---
     Identyfikator tabeli|sample-table|Identyfikator nowej tabeli. W przypadku nazw tabel obowiązują takie same wymagania dotyczące znaków, jak dla identyfikatorów baz danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/ \ # ?` ani mieć spacji na końcu.
-    Pojemność magazynu| Stała (10 GB)|Użyj wartości domyślnej **Stała (10 GB)**. Ta wartość to pojemność magazynu bazy danych.
     Przepływność|400 jednostek żądania|Zmień przepływność na 400 jednostek żądania na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.
 
-    Kliknij przycisk **OK**.
+3. Kliknij przycisk **OK**.
 
-    W Eksploratorze danych zostanie wyświetlona nowa baza danych i tabela.
+4. W Eksploratorze danych zostanie wyświetlona nowa baza danych i tabela.
 
-    ![Eksplorator danych w witrynie Azure Portal z widoczną nową bazą danych i kolekcją](./media/cosmos-db-create-table/azure-cosmos-db-new-table.png)
+   ![Eksplorator danych w witrynie Azure Portal z widoczną nową bazą danych i kolekcją](./media/cosmos-db-create-table/azure-cosmos-db-new-table.png)

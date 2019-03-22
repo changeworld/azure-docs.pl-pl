@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 93beef5702df9b4cf0a51a01fb286a3f023f9839
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876623"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905226"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Ramka zabezpieczeń: Danych poufnych | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [MSDN: autouzupełniania atrybut](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [za pomocą automatycznego uzupełniania w języku HTML](https://msdn.microsoft.com/library/ms533032.aspx), [luki w zabezpieczeniach Sanityzacji HTML](https://technet.microsoft.com/security/bulletin/MS10-071), [Autouzupełnianie., ponownie?!](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Odwołania**              | [MSDN: autouzupełniania atrybut](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [za pomocą automatycznego uzupełniania w języku HTML](https://msdn.microsoft.com/library/ms533032.aspx), [luki w zabezpieczeniach Sanityzacji HTML](https://technet.microsoft.com/security/bulletin/MS10-071), [Autouzupełnianie., ponownie?!](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Kroki** | Atrybut autouzupełniania Określa, czy formularz powinien mają autouzupełniania, lub wyłączyć. Gdy autouzupełniania jest włączona, przeglądarki automatycznego ukończenia wartości na podstawie wartości, które użytkownik wprowadził przed. Na przykład po wprowadzeniu nowej nazwy i hasła w postaci i przesłaniu formularza, przeglądarka zapyta, czy można zapisywać hasła. Następnie podczas wyświetlania formularza, nazwę i hasło są wypełniane automatycznie lub odbywa się zgodnie z jej nazwa jest wpisana. Osoba atakująca z lokalnym dostępem można uzyskać zwykłego tekstu w pamięci podręcznej przeglądarki. Autouzupełnianie jest domyślnie włączona i musi jawnie wyłączone. |
 
 ### <a name="example"></a>Przykład
@@ -182,7 +182,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Hashing hasła przy użyciu interfejsów API kryptografii platformy .NET](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **Odwołania**              | [Hashing hasła przy użyciu interfejsów API kryptografii platformy .NET](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
 | **Kroki** | Hasła nie powinien być przechowywany w użytkownika niestandardowego magazynu w bazach danych. Skróty haseł powinny być przechowywane przy użyciu wartości zaburzającej zamiast tego. Upewnij się, ziarna dla użytkownika jest zawsze unikatowa i zastosować b-crypt, s-crypt lub PBKDF2 przed zapisaniem hasło, wraz z liczbą pracy minimalny współczynnik iteracji 150 000 pętli, aby wyeliminować możliwości ataków siłowych.| 
 
 ## <a id="db-encrypted"></a>Upewnij się, że poufne dane w kolumnach bazy danych są szyfrowane
@@ -399,7 +399,7 @@ Jeśli aplikacja nie jest aplikacja dla przedsiębiorstw, następnie za pomocą 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Zasłanianie kryptograficznych dla platformy .net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **Odwołania**              | [Zasłanianie kryptograficznych dla platformy .net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **Kroki** | Wygenerowane pliki binarne (zestawów w pliku apk) powinny być zaciemniona Aby zatrzymać odtwarzanie zestawów. Narzędzia takie jak `CryptoObfuscator` mogą być używane do tego celu. |
 
 ## <a id="cert"></a>Ustaw właściwości ClientCredentialType o wartości certyfikatu lub Windows
@@ -429,7 +429,7 @@ Ustaw właściwości ClientCredentialType o wartości do certyfikatu lub Windows
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólne, .NET Framework 3 |
 | **Atrybuty**              | Zabezpieczenia trybu — transportu, tryb zabezpieczeń — komunikat |
-| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [podstawy zabezpieczeń WCF kodu Magazyn](http://www.codemag.com/article/0611051) |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnia Królestwo](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [podstawy zabezpieczeń WCF kodu Magazyn](https://www.codemag.com/article/0611051) |
 | **Kroki** | Bez zabezpieczeń transportu lub komunikat został zdefiniowany. Aplikacje, które przesyłają komunikaty bez transportu lub zabezpieczeń nie może zagwarantować integralności i poufność komunikatów przesyłanych wiadomości. Powiązanie zabezpieczeń WCF jest ustawiona na wartość None, zabezpieczeń transportu i wiadomości są wyłączone. |
 
 ### <a name="example"></a>Przykład
@@ -453,8 +453,8 @@ Tryb zabezpieczeń we wszystkich powiązań usługi są pięć tryby możliwych 
 * Oba. Umożliwia określanie wartości ustawień transportu i zabezpieczenia na poziomie komunikatu (tylko usługi MSMQ obsługuje tę funkcję). 
 * TransportWithMessageCredential. Poświadczenia są przekazywane z komunikatem i ochrona wiadomości oraz uwierzytelnianie serwera są dostarczane przez warstwy transportowej. 
 * TransportCredentialOnly. Poświadczenia klienta są przekazywane z warstwy transportowej i ma zabezpieczenia wiadomości są stosowane. Użyj zabezpieczeń transportu i komunikat, aby chronić integralności i poufności informacji. Informuje usługę do korzystania z zabezpieczeń transportu przy użyciu poświadczeń wiadomości o konfiguracji poniżej.
-```
-<system.serviceModel>
+  ```
+  <system.serviceModel>
   <bindings>
     <wsHttpBinding>
     <binding name=""MyBinding""> 
@@ -462,5 +462,5 @@ Tryb zabezpieczeń we wszystkich powiązań usługi są pięć tryby możliwych 
     <message clientCredentialType=""Windows""/> 
     </binding> 
   </bindings> 
-</system.serviceModel> 
-```
+  </system.serviceModel> 
+  ```

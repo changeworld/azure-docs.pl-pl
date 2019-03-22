@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 3add2b6800463cf9320d2fcfdd87897d2e38d32d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 4d6d26bd142a62d57b55caa290a2a94a3988737d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008712"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Tworzenie aplikacji internetowej w języku Java za pomocą usługi Azure Cosmos DB i interfejsu API SQL
 
@@ -42,7 +42,7 @@ W tym samouczku aplikacji w języku Java pokazano, jak utworzyć aplikację do z
 ## <a id="Prerequisites"></a>Wymagania wstępne dotyczące tego samouczka aplikacji internetowej w języku Java
 Przed rozpoczęciem korzystania z tego samouczka tworzenia aplikacji należy dysponować następującymi elementami:
 
-*  Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -722,7 +722,7 @@ Usługa Azure Web Sites sprawia, że wdrożenie aplikacji Java sprowadza się do
 3. Teraz, gdy masz już plik WAR, możesz go po prostu przesłać do katalogu **webapps** swojej usługi Azure Web Sites. Aby uzyskać instrukcje dotyczące przekazywania pliku, zobacz [Add a Java application to Azure App Service Web Apps](../app-service/web-sites-java-add-app.md) (Dodawanie aplikacji Java do usługi Web Apps w usłudze Azure App Service).
    
     Po przesłaniu pliku WAR do katalogu webapps środowisko uruchomieniowe wykryje, że plik został dodany, i załaduje go automatycznie.
-4. Aby wyświetlić gotową aplikację, przejdź do http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/ i zacznij dodawać zadania.
+4. Aby wyświetlić gotową aplikację, przejdź do `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` i zacznij dodawać zadania.
 
 ## <a id="GetProject"></a>Pobieranie projektu z usługi GitHub
 Wszystkie przykłady w tym samouczku są zawarte w projekcie [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) w usłudze GitHub. Aby zaimportować projekt todo do środowiska Eclipse, upewnij się, że dysponujesz oprogramowaniem i zasobami wymienionymi w sekcji [Wymagania wstępne](#Prerequisites), a następnie wykonaj następujące czynności:
@@ -747,6 +747,6 @@ Wszystkie przykłady w tym samouczku są zawarte w projekcie [todo](https://gith
 18. Na karcie **Servers** (Serwery) w dolnej części ekranu kliknij prawym przyciskiem myszy pozycję **Tomcat v7.0 Server at localhost**, a następnie kliknij pozycję **Add and Remove** (Dodaj i usuń).
 19. W oknie **Add and Remove** (Dodaj i usuń) przenieś pozycję **azure-documentdb-java-sample** w pole **Configured** (Skonfigurowane), a następnie kliknij przycisk **Finish** (Zakończ).
 20. Na karcie **Servers** (Serwery) kliknij prawym przyciskiem myszy pozycję **Tomcat v7.0 Server at localhost**, a następnie kliknij pozycję **Restart** (Uruchom ponownie).
-21. W przeglądarce przejdź do http://localhost:8080/azure-documentdb-java-sample/ i zacznij dodawać zadania do listy zadań. Należy pamiętać, że jeśli zmieniono domyślne wartości portów, zmień 8080 na wybraną wartość.
+21. W przeglądarce przejdź do `http://localhost:8080/azure-documentdb-java-sample/` i zacznij dodawać zadania do listy zadań. Należy pamiętać, że jeśli zmieniono domyślne wartości portów, zmień 8080 na wybraną wartość.
 22. Aby wdrożyć projekt w witrynie sieci Web platformy Azure, zobacz [Krok 6. Wdrożenie aplikacji w języku Java w usłudze Azure Web Sites](#Deploy).
 

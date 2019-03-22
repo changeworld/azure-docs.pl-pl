@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
-ms.translationtype: HT
+ms.openlocfilehash: f5cfa3de962c51ac7ff43d9b83bdea9f408f5bcf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616193"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097427"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
 
@@ -26,12 +26,12 @@ Przy użyciu usługi Azure Backup można chronić serwer z systemem Windows prze
 > [!div class="checklist"]
 > * Pobieranie i konfigurowanie agenta usług MARS
 > * Konfigurowanie harmonogramu tworzenia i przechowywania kopii zapasowych serwera
-> * Tworzenie kopii zapasowej ad hoc
+> * Wykonaj ad-hoc, tworzenie kopii zapasowej
 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
+Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
@@ -88,11 +88,11 @@ Agent usługi Microsoft Azure Recovery Services (MARS) tworzy skojarzenie międz
 
 1. Znajdź i kliknij dwukrotnie pobrany plik **MARSagentinstaller.exe**.
 2. Zostanie wyświetlony **Kreator instalacji agenta usługi Microsoft Azure Recovery Services**. Podczas pracy z kreatorem wprowadź następujące informacje po wyświetleniu monitów, a następnie kliknij pozycję **Zarejestruj**.
-    - Lokalizacja folderu instalacji i folderu pamięci podręcznej.
-    - Informacje o serwerze proxy, jeśli korzystasz z niego do łączenia się z Internetem.
-    - Nazwa użytkownika i hasło, jeśli korzystasz z uwierzytelnionego serwera proxy.
+   - Lokalizacja folderu instalacji i folderu pamięci podręcznej.
+   - Informacje o serwerze proxy, jeśli korzystasz z niego do łączenia się z Internetem.
+   - Nazwa użytkownika i hasło, jeśli korzystasz z uwierzytelnionego serwera proxy.
 
-    ![Przygotowywanie infrastruktury](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
+     ![Przygotowywanie infrastruktury](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
 
 3. Po zakończeniu pracy z kreatorem kliknij pozycję **Przejdź do rejestracji** i wskaż plik **poświadczeń magazynu** pobrany w poprzedniej procedurze.
  
@@ -128,7 +128,7 @@ Agent usługi Microsoft Azure Recovery Services umożliwia zaplanowanie tworzeni
 
 11. Po ukończeniu harmonogramu tworzenia kopii zapasowej przez kreatora kliknij przycisk **Zamknij**.
 
-## <a name="perform-an-ad-hoc-back-up"></a>Tworzenie kopii zapasowej ad hoc
+## <a name="perform-an-ad-hoc-back-up"></a>Wykonaj ad-hoc, tworzenie kopii zapasowej
 
 Został określony harmonogram uruchamiania zadań tworzenia kopii zapasowej. Nie utworzono jednak jeszcze kopii zapasowej serwera. Najlepszym rozwiązaniem w zakresie odzyskiwania po awarii jest utworzenie kopii zapasowej na żądanie w celu zapewnienia, że dane na serwerze będą odporne na awarie.
 
@@ -142,7 +142,7 @@ Został określony harmonogram uruchamiania zadań tworzenia kopii zapasowej. Ni
 4.  Po zakończeniu tworzenia pierwszej kopii zapasowej w okienku **Zadania** konsoli agenta usług MARS zostanie wyświetlony stan **Ukończono zadanie**.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Podczas pracy z tym samouczkiem wykonano następujące czynności przy użyciu witryny Azure Portal: 
  

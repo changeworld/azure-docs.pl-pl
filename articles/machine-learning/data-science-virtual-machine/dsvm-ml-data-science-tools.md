@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473350"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847369"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Narzędzia do analizy nauki i dane maszyny
 Maszyn wirtualnych do nauki o danych zawiera bogaty zestaw narzędzi i biblioteki dla usługi machine learning (ML) dostępna w popularnych języków, takich jak Python, R i Julia. 
@@ -71,7 +71,7 @@ Poniżej przedstawiono niektóre narzędzia ML i bibliotek na maszynach wirtualn
 | Obsługiwane wersje     | Windows, Linux     |
 | Typowe zastosowania      | Narzędzie uczenia Maszynowego ogólnego     |
 | Jak za pomocą lub uruchomić go      | W Windows wyszukaj Weka, w Start menu. W systemie Linux, zaloguj się przy użyciu X2Go, a następnie przejdź do **aplikacje** > **rozwoju** > **Weka**. |
-| Łącza do przykładów      | [Przykłady weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| Łącza do przykładów      | [Przykłady weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Pokrewnych narzędzi      |XGBoost LightGBM, Rattle,   |
 
 ## <a name="rattle"></a>Rattle

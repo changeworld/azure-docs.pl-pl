@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 62d17670a068304e0764c85d49da0aa9a736c477
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7776e0005facb57d223a1ba1e73d1efa30edec49
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444442"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004902"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Ubuntu dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="official-ubuntu-cloud-images"></a>Oficjalne obrazy w chmurze systemu Ubuntu
-Ubuntu teraz publikuje oficjalne wirtualnych dysków twardych platformy Azure do pobrania na [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/). Jeśli potrzebujesz do tworzenia własnych wyspecjalizowanego obrazu systemu Ubuntu na platformie Azure, zamiast niż wykonać poniższą procedurę ręcznego, zaleca się rozpoczynać się one znane pracy wirtualne dyski twarde i dostosowywać odpowiednio do potrzeb. Zainstalowane najnowsze wersje obrazu, zawsze można znaleźć w następujących lokalizacjach:
+Ubuntu teraz publikuje oficjalne wirtualnych dysków twardych platformy Azure do pobrania na [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/). Jeśli potrzebujesz do tworzenia własnych wyspecjalizowanego obrazu systemu Ubuntu na platformie Azure, zamiast niż wykonać poniższą procedurę ręcznego, zaleca się rozpoczynać się one znane pracy wirtualne dyski twarde i dostosowywać odpowiednio do potrzeb. Zainstalowane najnowsze wersje obrazu, zawsze można znaleźć w następujących lokalizacjach:
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
-* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/cosmic/current/cosmic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/cosmic/current/cosmic-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że już zainstalowano system operacyjny Ubuntu Linux do wirtualnego dysku twardego. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji takich jak funkcji Hyper-V. Aby uzyskać instrukcje, zobacz [należy zainstalować rolę funkcji Hyper-V i konfigurowanie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
@@ -47,7 +47,7 @@ W tym artykule założono, że już zainstalowano system operacyjny Ubuntu Linux
 
 ## <a name="manual-steps"></a>Wymagane ręczne wykonanie czynności
 > [!NOTE]
-> Przed próbą utworzenia własnego niestandardowego obrazu systemu Ubuntu na platformie Azure, rozważ użycie obrazów wstępnie skompilowane i przetestowane z [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/) zamiast tego.
+> Przed próbą utworzenia własnego niestandardowego obrazu systemu Ubuntu na platformie Azure, rozważ użycie obrazów wstępnie skompilowane i przetestowane z [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/) zamiast tego.
 > 
 > 
 
@@ -122,8 +122,8 @@ W tym artykule założono, że już zainstalowano system operacyjny Ubuntu Linux
         # sudo apt-get update
         # sudo apt-get install walinuxagent
 
-    >[!Note]
-    `walinuxagent` Pakietów może spowodować usunięcie `NetworkManager` i `NetworkManager-gnome` pakietów, jeśli są zainstalowane.
+   > [!Note]
+   >  `walinuxagent` Pakietów może spowodować usunięcie `NetworkManager` i `NetworkManager-gnome` pakietów, jeśli są zainstalowane.
 
 Dla Ubuntu 18.04/18.10 aktualizacji źródła danych platformy Azure, edytowanie, to: /etc/cloud/cloud.cfg.d/90-azure.cfg, Dodaj następujący kod na końcu pliku:
 
@@ -135,13 +135,13 @@ datasource:
      agent_command: [service, walinuxagent, start]
 ```
 
-8. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
+1. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
    
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-9. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
+1. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 
 ## <a name="references"></a>Dokumentacja
 [Ubuntu sprzętu (HWE) umożliwia jądra](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)

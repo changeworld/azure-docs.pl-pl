@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c2b1c85a59686433cbab152bae1d1105ff725818
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: ffae38f8c5ba3a8b66ec49deaef987762ab9c510
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753202"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863614"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>Tworzenie i Znajdź kotwic przy użyciu Azure przestrzenne kotwice w języku Swift
 
@@ -25,9 +25,11 @@ ms.locfileid: "56753202"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między różnymi urządzeniami. Ma zostały dopasowane do sprawnej współpracy z preferowanego środowiska deweloperskiego. W tym artykule przejdziemy dowiesz się, jak to zrobić w języku Swift.
+Usługa Azure Spatial Anchors umożliwia udostępnianie kotwic na całym świecie między różnymi urządzeniami. Obsługuje ona wiele środowisk deweloperskich. W tym artykule przejdziemy dowiesz się, jak to zrobić w języku Swift.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
+
+Dowiedz się więcej o [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) klasy.
 
 ```swift
     var _cloudSession : ASACloudSpatialAnchorSession? = nil
@@ -36,6 +38,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
+
+Dowiedz się więcej o [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) klasy.
 
 ```swift
     _cloudSession!.configuration.accountKey = "MyAccountKey"
@@ -48,6 +52,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
+
+Dowiedz się więcej o [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokołu metody.
 
 ```swift
     internal func tokenRequired(_ cloudSession:ASACloudSpatialAnchorSession!, _ args:ASATokenRequiredEventArgs!) {
@@ -101,6 +107,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
+Dowiedz się więcej o [start](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) metody.
+
 ```swift
     _cloudSession!.session = self.sceneView.session;
     _cloudSession!.delegate = self;
@@ -109,11 +117,15 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
+Dowiedz się więcej o [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) metody.
+
 ```swift
     _cloudSession?.processFrame(self.sceneView.session.currentFrame)
 ```
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
+
+Dowiedz się więcej o [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokołu metody.
 
 ```swift
     internal func sessionUpdated(_ cloudSession:ASACloudSpatialAnchorSession!, _ args:ASASessionUpdatedEventArgs!) {
@@ -126,6 +138,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
+
+Dowiedz się więcej o [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) klasy.
 
 ```swift
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -154,6 +168,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
+Dowiedz się więcej o [getStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) metody.
+
 ```swift
     _cloudSession?.getStatusWithCompletionHandler( { (value:ASASessionStatus, error:Error?) in
         if (error != nil) {
@@ -169,6 +185,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
+Dowiedz się więcej o [parametr appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) właściwości.
+
 ```swift
     var cloudAnchor : ASACloudSpatialAnchor? = nil
     cloudAnchor = ASACloudSpatialAnchor()
@@ -181,6 +199,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
+Dowiedz się więcej o [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) metody.
+
 ```swift
     var anchor : ASACloudSpatialAnchor? = /* locate your anchor */;
     anchor!.appProperties["last-user-access"] = "just now"
@@ -192,6 +212,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
+
+Dowiedz się więcej o [getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) metody.
 
 ```swift
     _cloudSession?.getAnchorProperties("anchorId", withCompletionHandler: { (anchor:SCCCloudSpatialAnchor?, error:Error?) in
@@ -210,6 +232,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
+Dowiedz się więcej o [wygaśnięcia](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) właściwości.
+
 ```swift
     let secondsInAWeek = 60.0 * 60.0 * 24.0 * 7.0
     let oneWeekFromNow = Date(timeIntervalSinceNow: secondsInAWeek)
@@ -218,6 +242,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
+Dowiedz się więcej o [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) metody.
+
 ```swift
     let criteria = ASAAnchorLocateCriteria()!
     criteria.identifiers = [ "id1", "id2", "id3" ]
@@ -225,6 +251,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 ```
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
+
+Dowiedz się więcej o [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokołu metody.
 
 ```swift
     internal func anchorLocated(_ cloudSession: ASACloudSpatialAnchorSession!, _ args: ASAAnchorLocatedEventArgs!) {
@@ -252,6 +280,8 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
+Dowiedz się więcej o [Usuń](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) metody.
+
 ```swift
     _cloudSession?.delete(cloudAnchor!, withCompletionHandler: { (error: Error?) in
         // Perform any processing you may want when delete finishes
@@ -260,11 +290,15 @@ Azure kotwic przestrzenne zezwala na udostępnianie kotwice w świecie między r
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
+Dowiedz się więcej o [zatrzymać](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) metody.
+
 ```swift
     _cloudSession!.stop()
 ```
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
+
+Dowiedz się więcej o [resetowania](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) metody.
 
 ```swift
     _cloudSession!.reset()

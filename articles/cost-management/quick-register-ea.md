@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 7a3ed93814407df8f3adfe7d16ba50258fcb323e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 9f8ef97042d3ff5bbebc299ae212be8ed6c3b25b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082339"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096796"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Rejestracja umowy Enterprise Agreement platformy Azure i wyświetlanie danych kosztów
 
@@ -36,9 +36,9 @@ Usługa Azure Cost Management oferuje podobne funkcje jak rozwiązanie Cloudyn. 
 4. Na stronie rejestracji wersji próbnej rozwiązania Cloudyn wpisz nazwę swojej firmy i wybierz pozycję **Azure Enterprise Enrollment Administrator** (Administrator rejestracji umowy Enterprise Agreement platformy Azure).  
 5. Wprowadź klucz interfejsu API rejestracji Enterprise Portal. Jeśli nie masz klucza pod ręką, kliknij link [Enterprise Portal](https://ea.azure.com) i wykonaj następujące kroki:  
     ![Wklej swój klucz interfejsu API na karcie Billing](./media/quick-register-ea/trial-reg.png) (Rozliczenia)
-  1. Zaloguj się do witryny Azure Enterprise i przycisk **Reports** (Raporty), kliknij przycisk **API Access Key** (Klucz dostępu API), a następnie skopiuj klucz podstawowy.  
+   1. Zaloguj się do witryny Azure Enterprise i przycisk **Reports** (Raporty), kliknij przycisk **API Access Key** (Klucz dostępu API), a następnie skopiuj klucz podstawowy.  
     ![Przykład klucza interfejsu API EA w portalu EA](./media/quick-register-ea/ea-key.png)
-  3. Wróć do strony rejestracji i wklej swój klucz API.
+   3. Wróć do strony rejestracji i wklej swój klucz API.
 6. Zaakceptuj warunki użytkowania i zweryfikuj swój klucz. Kliknij przycisk **Next** (Dalej), aby autoryzować rozwiązanie Cloudyn do zbierania danych zasobów platformy Azure. Te dane obejmują dane dotyczące użycia, wydajności, rozliczeń i tagów z Twoich subskrypcji.  
     ![Przykład pomyślnej weryfikacji klucza interfejsu API EA](./media/quick-register-ea/ea-key-validated.png)
 7. W obszarze **Invite other stakeholders** (Zaproś innych uczestników projektu) możesz dodać użytkowników, wpisując ich adresy e-mail. Po zakończeniu kliknij przycisk **Next** (Dalej). W zależności od rodzaju rejestracji platformy Azure dodanie wszystkich danych dotyczących rozliczeń do rozwiązania Cloudyn może potrwać do 24 godzin.
@@ -48,7 +48,7 @@ Aby obejrzeć film wideo dotyczący rejestrowania umowy Enterprise Agreement, zo
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki start opisano rejestrację w rozwiązaniu Cloudyn przy użyciu danych umowy Enterprise Agreement platformy Azure. Przedstawiono także logowanie się do portalu Cloudyn i rozpoczęcie wyświetlania danych kosztów. Aby dowiedzieć się więcej na temat rozwiązania Cloudyn, przejdź do samouczka dotyczącego rozwiązania Cloudyn.
 

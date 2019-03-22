@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: c0a6feb1eba1e409c29a650741eadc31f1017342
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: 30c342ca31b33d910406bf74d90d49979e5c46bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004812"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838101"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Umożliwia tworzenie podsumowań wideo miniatur wideo multimediów platformy Azure  
 ## <a name="overview"></a>Przegląd
@@ -37,10 +37,10 @@ W niektórych przypadkach Jeśli Twój film wideo nie składa się z różnych s
 Poniżej przedstawiono kilka przykładów, co robić procesor multimediów miniatur wideo multimediów Azure:
 
 ### <a name="original-video"></a>Oryginalne wideo
-[Oryginalne wideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
+[Oryginalne wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
 
 ### <a name="video-thumbnail-result"></a>Wynik miniatur wideo
-[Wynik miniatur wideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[Wynik miniatur wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
 Podczas tworzenia zadania miniatury wideo z **miniatur wideo multimediów Azure**, należy określić ustawienie wstępne konfiguracji. Powyższe przykładowe miniatury został utworzony za pomocą następujących podstawowych konfiguracji JSON:
@@ -62,7 +62,7 @@ Obecnie można zmienić następujące parametry:
 W poniższej tabeli opisano domyślny czas trwania, gdy **maxMotionThumbnailInSecs** nie jest używany.
 
 |  |  |  |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | Czas trwania wideo |d < 3 min |3 min < d < 15 min |
 | Czas trwania miniatury |15 sek (sceny 2 – 3) |30 sekund (sceny 3 – 5) |
 
@@ -276,7 +276,7 @@ Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu info
 ```
 
 ### <a name="video-thumbnail-output"></a>Wyjście miniatur wideo
-[Wyjście miniatur wideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[Wyjście miniatur wideo](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -287,5 +287,5 @@ Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu info
 ## <a name="related-links"></a>Powiązane linki
 [Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
 
-[Pokazy usługi Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Pokazy usługi Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

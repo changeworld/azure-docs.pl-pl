@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 7631ec91b70e781b2818e99012e59e2aeafb3614
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 87db25bbfd68aea1b8835211d7b51dfddcd43038
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317020"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899387"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Skopiuj spójnej transakcyjnie kopii bazy danych Azure SQL
 
@@ -49,6 +49,8 @@ Aby skopiować bazę danych przy użyciu witryny Azure portal, otwórz stronę b
 ## <a name="copy-a-database-by-using-powershell"></a>Kopiowanie bazy danych przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Moduł programu PowerShell usługi Azure Resource Manager jest nadal obsługiwane przez usługę Azure SQL Database, ale wszystkie przyszłego rozwoju jest Az.Sql modułu. Dla tych poleceń cmdlet, zobacz [elementu AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w Az module, a w modułach AzureRm są zasadniczo identyczne.
 
 Aby skopiować bazę danych przy użyciu programu PowerShell, należy użyć [New AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) polecenia cmdlet. 
 

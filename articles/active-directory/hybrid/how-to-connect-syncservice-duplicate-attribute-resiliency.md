@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd05913a982d88a1e4fe4ff72bca0387e280e230
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fc27e5cd6af19f06a5eab73e30d3034fada0ccc2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211635"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838395"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizacja tożsamości i odporność względem zduplikowanych atrybutów
 Odporność na zduplikowane atrybuty to funkcja usługi Azure Active Directory, która zostanie całkowicie wyeliminować zajmowania się przyczyną **UserPrincipalName** i **ProxyAddress** powoduje konflikt podczas uruchamiania jednego z firmy Microsoft narzędzia do synchronizacji.
@@ -40,7 +40,7 @@ W przypadku próby aprowizacji nowego obiektu przy użyciu nazwy UPN lub ProxyAd
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Zachowanie przy użyciu odporność na zduplikowane atrybuty
 Zamiast całkowicie przełączenia do aprowizowania lub aktualizowania obiektu za pomocą zduplikowany atrybut, usługi Azure Active Directory "poddaje" zduplikowany atrybut, który mógłby naruszyć ograniczenie unikatowości. Jeśli ten atrybut jest wymagany do obsługi administracyjnej, np. UserPrincipalName, usługa przypisuje wartość symbolu zastępczego. Format wartości tymczasowej  
-"***<OriginalPrefix>+ < 4DigitNumber > @<InitialTenantDomain>. onmicrosoft.com***".  
+“***<OriginalPrefix>+<4DigitNumber>\@<InitialTenantDomain>.onmicrosoft.com***”.  
 Jeśli ten atrybut nie jest wymagane, takie jak **ProxyAddress**, usługi Azure Active Directory, po prostu poddaje atrybut konfliktu i kontynuuje tworzenie obiektów lub aktualizacji.
 
 Po poddawania atrybutu, informacje dotyczące konfliktu są wysyłane w ten sam błąd raportu wiadomości e-mail używany w stare zachowanie. Te informacje pojawia się tylko do raportów o błędach jeden raz w sytuacji informującą o kwarantannie nie nadal mają być rejestrowane w przyszłych wiadomości e-mail. Ponadto, ponieważ Eksport dla tego obiektu zakończyła się pomyślnie, klienta synchronizacji nie rejestruje błąd i nie ponawia próby tworzenia / operacja przy kolejnej synchronizacji cykli aktualizacji.
@@ -144,9 +144,9 @@ Następujący artykuł zawiera opis różnych strategii rozwiązywania problemó
 1. Obiekty z konfiguracjami określonych atrybutów w dalszym ciągu otrzymywać komunikaty o błędach eksportu zamiast zduplikowanych atrybutów, które są objęte kwarantanną.  
    Na przykład:
    
-    a. Nowy użytkownik jest tworzony w AD za pomocą nazwy UPN **Joe@contoso.com** i ProxyAddress **smtp:Joe@contoso.com**
+    a. Nowy użytkownik jest tworzony w AD za pomocą nazwy UPN **Jan\@contoso.com** i ProxyAddress **smtp:Joe\@contoso.com**
    
-    b. Właściwości tego obiektu powodują konflikt z istniejącą grupą, gdzie jest ProxyAddress **SMTP:Joe@contoso.com**.
+    b. Właściwości tego obiektu powodują konflikt z istniejącą grupą, gdzie jest ProxyAddress **SMTP:Joe\@contoso.com**.
    
     c. Podczas eksportu **konflikt ProxyAddress** zamiast atrybutów konflikt poddane kwarantannie, zostanie zgłoszony błąd. Jest próba powtórzenia operacji podczas każdego cyklu kolejnej synchronizacji, ponieważ miałoby to miejsce przed włączeniem funkcji odporności.
 2. Jeśli dwie grupy są tworzone w środowisku lokalnym za pomocą tego samego adresu SMTP, zawiedzie aprowizację przy pierwszej próbie ze zduplikowanymi standardowa **ProxyAddress** błędu. Jednak zduplikowaną wartość jest objęte kwarantanną prawidłowo po następnym cyklu synchronizacji.
@@ -156,13 +156,13 @@ Następujący artykuł zawiera opis różnych strategii rozwiązywania problemó
 1. Szczegółowy komunikat o błędzie dla dwóch obiektów w zestawie konflikt nazwy UPN jest taka sama. Oznacza to, że oba miały, ich nazwy UPN zmienione / poddane kwarantannie, gdy w rzeczywistości tylko jeden z nich ma wszelkie zmiany danych.
 2. Szczegółowy komunikat o błędzie dla konflikt nazwy UPN zawiera nieprawidłową wartość displayName dla użytkownika, który miał ich nazwy UPN, zmienić kwarantannie. Na przykład:
    
-    a. **Użytkownik A** synchronizuje się najpierw w **UPN = User@contoso.com** .
+    a. **Użytkownik A** synchronizuje się najpierw w **nazwy UPN użytkownika =\@contoso.com**.
    
-    b. **Użytkownik B** podejmowana jest próba zostanie on zsynchronizowany się dalej z **UPN = User@contoso.com** .
+    b. **Użytkownik B** podejmowana jest próba zostanie on zsynchronizowany się dalej z **nazwy UPN użytkownika =\@contoso.com**.
    
-    c. **Użytkownik B** nazwy UPN jest zmieniana na **User1234@contoso.onmicrosoft.com** i **User@contoso.com** jest dodawany do **DirSyncProvisioningErrors**.
+    c. **Użytkownik B** nazwy UPN jest zmieniana na **User1234\@contoso.onmicrosoft.com** i **użytkownika\@contoso.com** jest dodawany do **DirSyncProvisioningErrors** .
    
-    d. Komunikat o błędzie dla **użytkownikowi B** powinny wskazywać, że **użytkownik A** ma już **User@contoso.com** jak pokazano na nazwy UPN, ale **użytkownikowi B** własne displayName.
+    d. Komunikat o błędzie dla **użytkownikowi B** powinny wskazywać, że **użytkownik A** ma już **użytkownika\@contoso.com** jak pokazano na nazwy UPN, ale **przez użytkownika B** własnych displayName.
 
 **Raport o błędach synchronizacji tożsamości**:
 

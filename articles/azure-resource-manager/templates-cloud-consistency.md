@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: aa55dce4b06eb895ef0b8745978d644e4e2f52b5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 4b1c829a417d050b4d931611d9f2952e01582f04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408857"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089475"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 
@@ -63,13 +63,13 @@ Możliwości usługi Azure Resource Manager będzie zawsze wprowadzane do global
 
 1. Zaimportuj moduł psm1 i wykonaj następujące polecenie cmdlet Test-AzureRmureRmTemplateFunctions:
 
-  ```powershell
-  # Import the module
-  Import-module <path to local clone>\AzTemplateFunctions.psm1
+   ```powershell
+   # Import the module
+   Import-module <path to local clone>\AzTemplateFunctions.psm1
 
-  # Execute the Test-AzureRmTemplateFunctions cmdlet
-  Test-AzureRmTemplateFunctions -path <path to local clone>
-  ```
+   # Execute the Test-AzureRmTemplateFunctions cmdlet
+   Test-AzureRmTemplateFunctions -path <path to local clone>
+   ```
 
 Skrypt wdroży wiele szablonów, z których każdy zawiera tylko unikatowe template — funkcje zminimalizowane. Dane wyjściowe skryptu raporty funkcje szablonu obsługiwane i dostępne.
 

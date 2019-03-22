@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: pozyskiwanie danych przy użyciu zestawu Azure Data Explorer .NET Standard SDK (wersja zapoznawcza)'
+title: 'Szybki start: Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)'
 description: Z tego przewodnika Szybki start dowiesz się, jak pozyskiwać (ładować) dane do usługi Azure Data Explorer za pomocą zestawu .NET Standard SDK.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: e734f11fb3f6a833b8c080deb57b9153c6c12dde
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
-ms.translationtype: HT
+ms.openlocfilehash: 0197ae8077a00111e005e5686efcd2597b995bcb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290692"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007038"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Szybki start: pozyskiwanie danych przy użyciu zestawu Azure Data Explorer .NET Standard SDK (wersja zapoznawcza)
+# <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Szybki start: Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)
 
 Azure Data Explorer (ADX) to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa ADX udostępnia dwie biblioteki klienckie dla platformy .NET Standard: [bibliotekę pozyskiwania](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) i [bibliotekę danych](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Te biblioteki umożliwiają pozyskiwanie (ładowanie) danych do klastra i wykonywanie zapytań o dane z kodu. W tym przewodniku Szybki start najpierw utworzysz tabelę i mapowanie danych w klastrze testowym. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
 
@@ -100,6 +100,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
                 Tuple.Create("State", "System.String"),
                 Tuple.Create("EventType", "System.String"),
                 Tuple.Create("InjuriesDirect", "System.Int32"),
+                Tuple.Create("InjuriesIndirect", "System.Int32"),
                 Tuple.Create("DeathsDirect", "System.Int32"),
                 Tuple.Create("DeathsIndirect", "System.Int32"),
                 Tuple.Create("DamageProperty", "System.Int32"),
@@ -137,8 +138,10 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
             {
                 new CsvColumnMapping { ColumnName = "StartTime", Ordinal = 0 },
                 new CsvColumnMapping { ColumnName = "EndTime", Ordinal = 1 },
+                new CsvColumnMapping { ColumnName = "EpisodeId", Ordinal = 2 },
                 new CsvColumnMapping { ColumnName = "EventId", Ordinal = 3 },
                 new CsvColumnMapping { ColumnName = "State", Ordinal = 4 },
+                new CsvColumnMapping { ColumnName = "EventType", Ordinal = 5 },
                 new CsvColumnMapping { ColumnName = "InjuriesDirect", Ordinal = 6 },
                 new CsvColumnMapping { ColumnName = "InjuriesIndirect", Ordinal = 7 },
                 new CsvColumnMapping { ColumnName = "DeathsDirect", Ordinal = 8 },
@@ -148,13 +151,13 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
                 new CsvColumnMapping { ColumnName = "Source", Ordinal = 12 },
                 new CsvColumnMapping { ColumnName = "BeginLocation", Ordinal = 13 },
                 new CsvColumnMapping { ColumnName = "EndLocation", Ordinal = 14 },
-                new CsvColumnMapping { ColumnName = "BeginLat", Ordinal = 16 },
-                new CsvColumnMapping { ColumnName = "BeginLon", Ordinal = 17 },
-                new CsvColumnMapping { ColumnName = "EndLat", Ordinal = 18 },
-                new CsvColumnMapping { ColumnName = "EndLon", Ordinal = 19 },
-                new CsvColumnMapping { ColumnName = "EpisodeNarrative", Ordinal = 20 },
-                new CsvColumnMapping { ColumnName = "EventNarrative", Ordinal = 21 },
-                new CsvColumnMapping { ColumnName = "StormSummary", Ordinal = 22 },
+                new CsvColumnMapping { ColumnName = "BeginLat", Ordinal = 15 },
+                new CsvColumnMapping { ColumnName = "BeginLon", Ordinal = 16 },
+                new CsvColumnMapping { ColumnName = "EndLat", Ordinal = 17 },
+                new CsvColumnMapping { ColumnName = "EndLon", Ordinal = 18 },
+                new CsvColumnMapping { ColumnName = "EpisodeNarrative", Ordinal = 19 },
+                new CsvColumnMapping { ColumnName = "EventNarrative", Ordinal = 20 },
+                new CsvColumnMapping { ColumnName = "StormSummary", Ordinal = 21 },
             });
 
     kustoClient.ExecuteControlCommand(command);
@@ -230,7 +233,7 @@ Jeśli zamierzasz skorzystać z naszych pozostałych przewodników Szybki start 
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Pisanie zapytań](write-queries.md)

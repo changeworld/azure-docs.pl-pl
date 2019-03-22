@@ -1,6 +1,6 @@
 ---
 title: Szybki start — Azure Application Insights | Microsoft Docs
-description: W tym artykule przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową ASP.NET Core w celu monitorowania za pomocą usługi Application Insights
+description: Przedstawiono instrukcje pozwalające szybko skonfigurować aplikację internetową ASP.NET Core, do monitorowania za pomocą usługi Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 14295bca12e64174d03cfd1c2bd8d214d801e8e5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: fe986d24df8dce6a390d21a262056f7ab857070c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261064"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886732"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 
 Usługa Azure Application Insights umożliwia łatwe monitorowanie dostępności, wydajności i użycia aplikacji internetowej. Pozwala też szybko identyfikować i diagnozować błędy w aplikacji bez oczekiwania na zgłoszenie ich przez użytkownika. 
 
-Ten przewodnik Szybki start przeprowadzi Cię przez proces dodawania zestawu SDK usługi Application Insights do istniejącej aplikacji internetowej ASP.Net Core. 
+Ten przewodnik Szybki Start przeprowadzi Cię przez proces dodawania zestawu SDK usługi Application Insights do istniejącej aplikacji sieci web platformy ASP.NET Core. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,7 +33,7 @@ Aby ukończyć ten przewodnik Szybki start:
 - [Instalowanie zestawu SDK programu .NET Core 2.0](https://www.microsoft.com/net/core)
 - Wymagana jest subskrypcja platformy Azure i istniejąca aplikacja internetowa .NET Core.
 
-Jeśli nie masz aplikacji internetowej ASP.NET Core, możesz skorzystać z naszego szczegółowego przewodnika, aby [utworzyć aplikację ASP.NET Core i dodać usługę Application Insights.](../../azure-monitor/app/asp-net-core.md)
+Jeśli masz aplikację sieci web platformy ASP.NET Core, można użyć naszego przewodnik krok po kroku [tworzenie aplikacji ASP.NET Core i Dodaj usługę Application Insights.](../../azure-monitor/app/asp-net-core.md)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -124,7 +124,7 @@ Jeśli planujesz kontynuować pracę z kolejnymi przewodnikami Szybki start lub 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **myResourceGroup**.
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę **myResourceGroup**, a następnie kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Wyszukiwanie i diagnozowanie wyjątków w czasie wykonywania](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

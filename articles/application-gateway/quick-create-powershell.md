@@ -8,108 +8,112 @@ ms.topic: quickstart
 ms.date: 1/11/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 35af6a6113fd61c7faee7eb371f416fa7f2507dd
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: de1162be381a905a3b04fbf7ae7dec59eb7d209a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423361"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549599"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure PowerShell
 
-W tym przewodniku Szybki start przedstawiono sposób użycia witryny Azure Portal do tworzenia bramy aplikacji z dwiema maszynami wirtualnymi w puli zaplecza. Następnie będzie można ją przetestować, aby sprawdzić, czy działa prawidłowo. Dzięki usłudze Azure Application Gateway kierujesz ruch internetowy aplikacji do określonych zasobów, przypisując odbiorniki do portów, tworząc reguły i dodając zasoby do puli zaplecza.
+Ten przewodnik Szybki Start dowiesz się, jak szybko utworzyć bramę aplikacji za pomocą witryny Azure portal.  Po utworzeniu bramy aplikacji, możesz następnie go przetestować, aby upewnić się, że działa prawidłowo. Za pomocą usługi Azure Application Gateway możesz przekazać ruchu aplikacji sieci web do określonych zasobów, przypisując odbiorników portów, tworząc reguły i dodawanie zasobów do puli zaplecza. Dla uproszczenia w tym artykule używany jest prostą konfigurację obejmującą publicznego adresu IP frontonu, podstawowy odbiornik do hosta jednej lokacji w tej bramy application gateway, dwie maszyny wirtualne, które służy do puli zaplecza i regułę routingu podstawowego żądania.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-## <a name="run-azure-powershell-locally"></a>Uruchamianie programu Azure PowerShell w środowisku lokalnym
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli postanowisz zainstalować program Azure PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 3.6 lub nowszej.
+### <a name="azure-powershell-module"></a>Moduł programu Azure PowerShell
 
-1. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `Get-Module -ListAvailable AzureRM`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
-2. Aby utworzyć połączenie z platformą Azure, uruchom polecenie `Login-AzureRmAccount`.
+Jeśli zdecydujesz się zainstalować i korzystać z programu Azure PowerShell lokalnie, ten samouczek wymaga programu Azure PowerShell w wersji modułu 1.0.0 lub nowszym.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+1. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `Get-Module -ListAvailable Az`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). 
+2. Aby utworzyć połączenie z platformą Azure, uruchom polecenie `Login-AzAccount`.
 
-Na platformie Azure możesz przydzielić powiązane zasoby do grupy zasobów. Utwórz grupę zasobów za pomocą polecenia cmdlet [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) w następujący sposób: 
+### <a name="resource-group"></a>Grupa zasobów
+
+Na platformie Azure możesz przydzielić powiązane zasoby do grupy zasobów. Możesz użyć istniejącej grupy zasobów lub Utwórz nową. W tym przykładzie utworzymy nową grupę zasobów za pomocą [New AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) polecenia cmdlet w następujący sposób: 
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
+New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 
-## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
+### <a name="required-network-resources"></a>Wymaganych zasobów sieciowych
 
-Utwórz sieć wirtualną, aby brama aplikacji mogła komunikować się z innymi zasobami. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla serwerów zaplecza. Podsieć bramy aplikacji może zawierać tylko bramy aplikacji. Inne zasoby nie są dozwolone.
+Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej.  Podsieć bramy aplikacji może zawierać tylko bramy aplikacji. Inne zasoby nie są dozwolone.  Możesz utworzyć nową podsieć dla bramy Application Gateway lub użyć istniejącego. W tym przykładzie utworzysz dwie podsieci, w tym przykładzie: jeden dla bramy application gateway i drugi dla serwerów wewnętrznej bazy danych. Można skonfigurować adresu IP frontonu bramy Application Gateway to publicznych lub prywatnych zgodnie z danego przypadku użycia. W tym przykładzie Wybierzmy publicznego adresu IP frontonu.
 
-1. Utwórz konfiguracje podsieci, wywołując polecenie [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig).
-2. Utwórz sieć wirtualną z konfiguracjami podsieci, wywołując polecenie [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork).
-3. Utwórz publiczny adres IP, wywołując polecenie [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress).
+1. Utwórz konfiguracje podsieci, wywołując [New AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig).
+2. Tworzenie sieci wirtualnej za pomocą konfiguracji podsieci, wywołując [New AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork). 
+3. Tworzenie publicznego adresu IP przez wywołanie metody [New AzPublicIpAddress](/powershell/module/Az.network/new-Azpublicipaddress). 
 
 ```azurepowershell-interactive
-$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myAGSubnet `
   -AddressPrefix 10.0.1.0/24
-$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
   -AddressPrefix 10.0.2.0/24
-New-AzureRmVirtualNetwork `
+New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $agSubnetConfig, $backendSubnetConfig
-New-AzureRmPublicIpAddress `
+New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
   -AllocationMethod Dynamic
 ```
-## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
+### <a name="backend-servers"></a>Serwerów wewnętrznej bazy danych
 
-W tym przykładzie utworzysz dwie maszyny wirtualne platformy Azure, które będą używane jako serwery zaplecza dla bramy aplikacji. Zainstalujesz również usługi IIS na maszynach wirtualnych, aby sprawdzić, czy platforma Azure pomyślnie utworzyła bramę aplikacji.
+Zaplecze może składać się z kartami sieciowymi, zestawy skalowania maszyn wirtualnych, publiczne adresy IP, wewnętrzne adresy IP, w pełni kwalifikowaną nazwę (FQDN), a wielodostępne zaplecza takich jak usługa Azure App Service. W tym przykładzie utworzysz dwie maszyny wirtualne platformy Azure, które będą używane jako serwery zaplecza dla bramy aplikacji. Zainstalujesz również usługi IIS na maszynach wirtualnych, aby sprawdzić, czy platforma Azure pomyślnie utworzyła bramę aplikacji.
 
-### <a name="create-two-virtual-machines"></a>Tworzenie dwóch maszyn wirtualnych
+#### <a name="create-two-virtual-machines"></a>Tworzenie dwóch maszyn wirtualnych
 
-1. Utwórz interfejs sieciowy za pomocą polecenia [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). 
-2. Utwórz konfigurację maszyny wirtualnej za pomocą polecenia [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig).
-3. Utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+1. Utwórz interfejs sieciowy z [New AzNetworkInterface](/powershell/module/Az.network/new-Aznetworkinterface). 
+2. Utwórz konfigurację maszyny wirtualnej za pomocą [New AzVMConfig](/powershell/module/Az.compute/new-Azvmconfig).
+3. Utwórz maszynę wirtualną za pomocą polecenia [New-AzVM](/powershell/module/Az.compute/new-Azvm).
 
 Po uruchomieniu następującego przykładowego kodu w celu utworzenia maszyn wirtualnych na platformie Azure zostanie wyświetlony monit o podanie poświadczeń. Wprowadź *azureuser* jako nazwę użytkownika i *Azure123456!* jako hasło:
     
 ```azurepowershell-interactive
-$vnet   = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name myBackendSubnet
+$vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name myBackendSubnet
 $cred = Get-Credential
 for ($i=1; $i -le 2; $i++)
 {
-  $nic = New-AzureRmNetworkInterface `
+  $nic = New-AzNetworkInterface `
     -Name myNic$i `
     -ResourceGroupName myResourceGroupAG `
     -Location EastUS `
     -SubnetId $subnet.Id
-  $vm = New-AzureRmVMConfig `
+  $vm = New-AzVMConfig `
     -VMName myVM$i `
     -VMSize Standard_DS2_v2
-  Set-AzureRmVMOperatingSystem `
+  Set-AzVMOperatingSystem `
     -VM $vm `
     -Windows `
     -ComputerName myVM$i `
     -Credential $cred
-  Set-AzureRmVMSourceImage `
+  Set-AzVMSourceImage `
     -VM $vm `
     -PublisherName MicrosoftWindowsServer `
     -Offer WindowsServer `
     -Skus 2016-Datacenter `
     -Version latest
-  Add-AzureRmVMNetworkInterface `
+  Add-AzVMNetworkInterface `
     -VM $vm `
     -Id $nic.Id
-  Set-AzureRmVMBootDiagnostics `
+  Set-AzVMBootDiagnostics `
     -VM $vm `
     -Disable
-  New-AzureRmVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm
-  Set-AzureRmVMExtension `
+  New-AzVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm
+  Set-AzVMExtension `
     -ResourceGroupName myResourceGroupAG `
     -ExtensionName IIS `
     -VMName myVM$i `
@@ -125,37 +129,37 @@ for ($i=1; $i -le 2; $i++)
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Tworzenie konfiguracji adresów IP i portu frontonu
 
-1. Użyj polecenia [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration), aby utworzyć konfigurację, która kojarzy utworzoną podsieć z bramą aplikacji. 
-2. Użyj polecenia [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig), aby utworzyć konfigurację, która przypisuje utworzony wcześniej publiczny adres IP do bramy aplikacji. 
-3. Użyj polecenia [New-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendport), aby przypisać port 80 na potrzeby uzyskiwania dostępu do bramy aplikacji.
+1. Użyj [New AzApplicationGatewayIPConfiguration](/powershell/module/Az.network/new-Azapplicationgatewayipconfiguration) umożliwia utworzenie konfiguracji, które odpowiadają za skojarzenie podsieci utworzono za pomocą bramy application gateway. 
+2. Użyj [New AzApplicationGatewayFrontendIPConfig](/powershell/module/Az.network/new-Azapplicationgatewayfrontendipconfig) umożliwia utworzenie konfiguracji, który przypisuje publiczny adres IP, który został wcześniej utworzony do usługi application gateway. 
+3. Użyj [New AzApplicationGatewayFrontendPort](/powershell/module/Az.network/new-Azapplicationgatewayfrontendport) można przypisać portu 80, dostępu do bramy aplikacji.
 
 ```azurepowershell-interactive
-$vnet   = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name myAGSubnet
-$pip    = Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress 
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
+$vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name myAGSubnet
+$pip    = Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress 
+$gipconfig = New-AzApplicationGatewayIPConfiguration `
   -Name myAGIPConfig `
   -Subnet $subnet
-$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig `
+$fipconfig = New-AzApplicationGatewayFrontendIPConfig `
   -Name myAGFrontendIPConfig `
   -PublicIPAddress $pip
-$frontendport = New-AzureRmApplicationGatewayFrontendPort `
+$frontendport = New-AzApplicationGatewayFrontendPort `
   -Name myFrontendPort `
   -Port 80
 ```
 
 ### <a name="create-the-backend-pool"></a>Tworzenie puli zaplecza
 
-1. Użyj polecenia [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool), aby utworzyć pulę zaplecza dla bramy aplikacji. 
-2. Skonfiguruj ustawienia dla puli zaplecza przy użyciu polecenia [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
+1. Użyj [New AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) do utworzenia puli wewnętrznej bazy danych w usłudze application gateway. 
+2. Skonfiguruj ustawienia dla puli zaplecza za pomocą [New AzApplicationGatewayBackendHttpSettings](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsettings).
 
 ```azurepowershell-interactive
-$address1 = Get-AzureRmNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
-$address2 = Get-AzureRmNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic2
-$backendPool = New-AzureRmApplicationGatewayBackendAddressPool `
+$address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
+$address2 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic2
+$backendPool = New-AzApplicationGatewayBackendAddressPool `
   -Name myAGBackendPool `
   -BackendIPAddresses $address1.ipconfigurations[0].privateipaddress, $address2.ipconfigurations[0].privateipaddress
-$poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
+$poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -Name myPoolSettings `
   -Port 80 `
   -Protocol Http `
@@ -167,16 +171,16 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
 
 Platforma Azure wymaga odbiornika, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. Platforma Azure wymaga również reguły, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. 
 
-1. Utwórz odbiornik przy użyciu polecenia [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener), stosując wcześniej utworzone konfiguracje i port frontonu. 
-2. Użyj polecenia [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) do utworzenia reguły o nazwie *rule1*. 
+1. Utworzyć odbiornik, używając [New AzApplicationGatewayHttpListener](/powershell/module/Az.network/new-Azapplicationgatewayhttplistener) z konfiguracji frontonu i port frontonu, która została wcześniej utworzona. 
+2. Użyj [New AzApplicationGatewayRequestRoutingRule](/powershell/module/Az.network/new-Azapplicationgatewayrequestroutingrule) można utworzyć regułę o nazwie *rule1*. 
 
 ```azurepowershell-interactive
-$defaultlistener = New-AzureRmApplicationGatewayHttpListener `
+$defaultlistener = New-AzApplicationGatewayHttpListener `
   -Name myAGListener `
   -Protocol Http `
   -FrontendIPConfiguration $fipconfig `
   -FrontendPort $frontendport
-$frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+$frontendRule = New-AzApplicationGatewayRequestRoutingRule `
   -Name rule1 `
   -RuleType Basic `
   -HttpListener $defaultlistener `
@@ -188,15 +192,15 @@ $frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
 
 Teraz po utworzeniu niezbędnych zasobów pomocniczych utwórz bramę aplikacji:
 
-1. Użyj polecenia [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku), aby określić parametry bramy aplikacji.
-2. Użyj polecenia [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway) w celu utworzenia bramy aplikacji.
+1. Użyj [New AzApplicationGatewaySku](/powershell/module/Az.network/new-Azapplicationgatewaysku) do określania parametrów dla usługi application gateway.
+2. Użyj [New AzApplicationGateway](/powershell/module/Az.network/new-Azapplicationgateway) do tworzenia bramy aplikacji.
 
 ```azurepowershell-interactive
-$sku = New-AzureRmApplicationGatewaySku `
+$sku = New-AzApplicationGatewaySku `
   -Name Standard_Medium `
   -Tier Standard `
   -Capacity 2
-New-AzureRmApplicationGateway `
+New-AzApplicationGateway `
   -Name myAppGateway `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
@@ -214,11 +218,11 @@ New-AzureRmApplicationGateway `
 
 Mimo że zainstalowanie usług IIS nie jest wymagane do utworzenia bramy aplikacji, zainstalowano je w ramach tego przewodnika Szybki start, aby sprawdzić, czy platforma Azure pomyślnie utworzyła bramę aplikacji. Użyj usług do przetestowania bramy aplikacji:
 
-1. Uruchom polecenie [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress), aby uzyskać publiczny adres IP bramy aplikacji. 
-2. Skopiuj i wklej publiczny adres IP na pasku adresu przeglądarki. Po odświeżeniu przeglądarki powinna zostać wyświetlona nazwa maszyny wirtualnej.
+1. Uruchom [Get AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) na publiczny adres IP bramy aplikacji. 
+2. Skopiuj i wklej publiczny adres IP na pasku adresu przeglądarki. Po odświeżeniu przeglądarki powinna zostać wyświetlona nazwa maszyny wirtualnej. Prawidłowe odpowiedzi sprawdza, czy brama aplikacji został pomyślnie utworzony, i jest w stanie pomyślnym nawiązaniu połączenia z zapleczem.
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
+Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
 ![Testowanie bramy aplikacji](./media/quick-create-powershell/application-gateway-iistest.png)
@@ -228,13 +232,13 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 Jeśli nie potrzebujesz już zasobów utworzonych za pomocą bramy aplikacji, usuń grupę zasobów. Usuwając grupę zasobów, usuwasz również bramę aplikacji i wszystkie powiązane z nią zasoby. 
 
-Aby usunąć grupę zasobów, wywołaj polecenie cmdlet [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) w następujący sposób:
+Aby usunąć grupę zasobów, należy wywołać [AzResourceGroup Usuń](/powershell/module/Az.resources/remove-Azresourcegroup) polecenia cmdlet w następujący sposób:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroupAG
+Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Zarządzanie ruchem internetowym przy użyciu bramy aplikacji za pomocą programu Azure PowerShell](./tutorial-manage-web-traffic-powershell.md)

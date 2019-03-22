@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 5f142192571bdd15a33575a425d75baf3e5caea2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 336a2a3fd98f7829694eb095ff2646d9d361afd3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243491"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097324"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Samouczek: Wdrażanie hybrydowe rozwiązanie w chmurze dzięki platformie Azure i usługi Azure Stack
 
@@ -65,7 +65,7 @@ Przed rozpoczęciem tego samouczka, upewnij się, że spełniasz następujące w
   - Obraz systemu Windows Server 2016
   - Ustawienia systemu Windows Server 2016 z obrazem programu Microsoft SQL Server
   - Odpowiednie plany i oferty
- - Nazwy domeny dla aplikacji sieci web. Jeśli nie masz nazwy domeny, możesz kupić go od dostawcy domeny, np. GoDaddy, Bluehost i InMotion informacji.
+  - Nazwy domeny dla aplikacji sieci web. Jeśli nie masz nazwy domeny, możesz kupić go od dostawcy domeny, np. GoDaddy, Bluehost i InMotion informacji.
 - Certyfikat SSL dla domeny z zaufanego urzędu certyfikacji takich jak LetsEncrypt.
 - Aplikacja sieci web, który komunikuje się z bazą danych programu SQL Server i obsługuje usługę Application Insights. Możesz pobrać [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) przykładowej aplikacji z usługi GitHub.
 - Sieć hybrydowa między siecią wirtualną platformy Azure i siecią wirtualną usługi Azure Stack. Aby uzyskać szczegółowe instrukcje, zobacz [skonfigurować łączność w chmurze hybrydowej z platformą Azure i usługi Azure Stack](azure-stack-solution-hybrid-connectivity.md).
@@ -94,19 +94,19 @@ Przed rozpoczęciem tego samouczka, upewnij się, że spełniasz następujące w
 
 7. W obszarze **Ustawienia > Konfiguruj funkcje opcjonalne**, skonfiguruj następujące ustawienia:
 
-    - **Konto magazynu**. Utwórz nowe konto, jeśli potrzebna jest jedna.
-    - **Sieć wirtualna**
+   - **Konto magazynu**. Utwórz nowe konto, jeśli potrzebna jest jedna.
+   - **Sieć wirtualna**
 
-      > [!Important]  
-      > Upewnij się, że maszyna wirtualna serwera SQL został wdrożony w tej samej sieci wirtualnej jako bramy sieci VPN.
+     > [!Important]  
+     > Upewnij się, że maszyna wirtualna serwera SQL został wdrożony w tej samej sieci wirtualnej jako bramy sieci VPN.
 
-    - **Publiczny adres IP**. Można użyć ustawień domyślnych.
-    - **Sieciowa grupa zabezpieczeń** (NSG). Tworzenie nowej sieciowej grupy zabezpieczeń.
-    - **Monitorowanie i rozszerzenia**. Zachowaj ustawienia domyślne.
-    - **Konto magazynu diagnostyki**. Utwórz nowe konto, jeśli potrzebna jest jedna.
-    - Wybierz **OK** Aby zapisać konfigurację.
+   - **Publiczny adres IP**. Można użyć ustawień domyślnych.
+   - **Sieciowa grupa zabezpieczeń** (NSG). Tworzenie nowej sieciowej grupy zabezpieczeń.
+   - **Monitorowanie i rozszerzenia**. Zachowaj ustawienia domyślne.
+   - **Konto magazynu diagnostyki**. Utwórz nowe konto, jeśli potrzebna jest jedna.
+   - Wybierz **OK** Aby zapisać konfigurację.
 
-    ![Konfigurowanie funkcji opcjonalnych](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![Konfigurowanie funkcji opcjonalnych](media/azure-stack-solution-hybrid-cloud/image4.png)
 
 1. W obszarze **ustawień programu SQL Server**, skonfiguruj następujące ustawienia:
    - Aby uzyskać **łączność z serwerem SQL**i wybierz opcję **publiczne (Internet)**.
@@ -118,7 +118,7 @@ Przed rozpoczęciem tego samouczka, upewnij się, że spełniasz następujące w
 
    - Dla pozostałych ustawień pozostaw wartości domyślne. Kliknij przycisk **OK**.
 
-    ![Skonfiguruj ustawienia programu SQL Server](media/azure-stack-solution-hybrid-cloud/image5.png)
+     ![Skonfiguruj ustawienia programu SQL Server](media/azure-stack-solution-hybrid-cloud/image5.png)
 
 9. Na **Podsumowanie**, sprawdź konfigurację maszyny wirtualnej, a następnie wybierz **OK** rozpocząć wdrażanie.
 
@@ -391,7 +391,7 @@ Będzie Tworzenie profilu usługi Traffic Manager na platformie Azure, a następ
 
     ![Tworzenie profilu usługi Traffic Manager](media/azure-stack-solution-hybrid-cloud/image19.png)
 
- Po zakończeniu globalnego wdrażania profilu usługi Traffic Manager jest wyświetlana na listy zasobów dla grupy zasobów, w której został utworzony w obszarze.
+   Po zakończeniu globalnego wdrażania profilu usługi Traffic Manager jest wyświetlana na listy zasobów dla grupy zasobów, w której został utworzony w obszarze.
 
 ### <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 

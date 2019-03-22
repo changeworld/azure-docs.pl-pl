@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ff68bfc9cdd13563fa8f938870742e9e9ceac9c2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3621ca198ec2bac24791a2515ade51b990194bf2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313263"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003858"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów przy użyciu planów usługi Azure
 
@@ -24,7 +24,7 @@ Mogą występować błędy podczas tworzenia lub przypisywanie schematy. W tym a
 
 Wiele błędów będzie wynik przypisanie planu do zakresu. Jeśli przypisanie zakończy się niepowodzeniem, planu zawiera szczegółowe informacje o wdrożenie nie powiodło się. Te informacje wskazują problem, aby można było usunąć i dalej wdrożenie zakończy się pomyślnie.
 
-1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz **przypisane plany** ze strony po lewej stronie i stosowania pole wyszukiwania, aby filtrować przypisań planu można znaleźć przypisania nie powiodło się. Możesz również sortować tabelę przypisania według **stan inicjowania obsługi** kolumny, aby wyświetlić wszystkie nieudane przypisania zgrupowane.
 
@@ -71,6 +71,6 @@ Aby przekazać za pośrednictwem funkcji jako parametr, ucieczki cały ciąg z `
 
 Jeśli nie był widoczny problemu lub są w stanie rozwiązać problemu, odwiedź jedną z następujących kanałów obsługi więcej:
 
-- Uzyskaj odpowiedzi od ekspertów w zakresie platformy Azure na [forach dotyczących platformy Azure](https://azure.microsoft.com/support/forums/)
+- Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [fora platformy Azure](https://azure.microsoft.com/support/forums/).
 - Połącz się z kontem [@AzureSupport](https://twitter.com/azuresupport) — oficjalnym kontem platformy Microsoft Azure utworzonym w celu podniesienia jakości obsługi klientów przez połączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 - Jeśli potrzebujesz więcej pomocy, mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz **uzyskiwanie pomocy technicznej**.
