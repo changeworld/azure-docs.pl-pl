@@ -7,21 +7,23 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/21/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6a813cbcb6a0335d80ae7763a43c68915659e99f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 00d5316af58a1d88c666b9e5fe3c648e8b1b2f65
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214249"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352021"
 ---
-# <a name="sign-up-for-content-moderator"></a>Rejestracja w usłudze Content Moderator #
-Przejdź do [Zarejestruj pakiet Content Moderator](https://contentmoderator.cognitive.microsoft.com/Account/Signup) strony. Możesz zarejestrować się przy użyciu konta Microsoft lub utworzyć konto w witrynie sieci web pakietu Content Moderator.
+# <a name="sign-up-for-content-moderator"></a>Rejestracja w usłudze Content Moderator
+
+Zarejestruj się pod adresem Content Moderator [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com) witryny sieci Web. Możesz zarejestrować się przy użyciu konta Microsoft lub utworzyć konto w witrynie.
 
 ![Rejestrowanie](images/0-signup-1.PNG)
 
-## <a name="name-your-team"></a>Nadaj nazwę zespołowi ##
+## <a name="name-your-team"></a>Nadaj nazwę zespołowi
+
 Podaj nazwę dla Twojego zespołu. Opcjonalnie możesz zaprosić współpracowników do dołączenia do Twojego zespołu.
 
 ![Tworzenie zespołu](images/1-Team-Name.PNG)

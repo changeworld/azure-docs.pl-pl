@@ -8,54 +8,33 @@ ms.topic: include
 ms.date: 03/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0201776914610ddaca50a670fc500156a65cd734
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 88a4110d68dc8aa921d647f90de654d2ebb4e17d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58124686"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395597"
 ---
 ## <a name="premium-ssd"></a>Premium, SSD
 
 Usługa Azure premium SSD dostarczać obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych (VM) z operacji wejścia/wyjścia (IO)-intensywnych obciążeń. Aby móc korzystać z szybkości i wydajności dysków usługi premium storage, należy przeprowadzić migrację istniejących dysków maszyny Wirtualnej na dyski SSD w warstwie Premium. Dyski SSD w warstwie Premium są odpowiednie dla aplikacji produkcyjnych o kluczowym znaczeniu.
 
 ### <a name="disk-size"></a>Rozmiar dysku
-
-Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
-
-| Rozmiary dysków SSD — wersja Premium | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60* | P70* | P80* |
-|-------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| Rozmiar dysku w GiB | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,095 | 8192 | 16,384 | 32,767 |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk | Do 120 | Maksymalnie 240 | Maks. 500 | Maksymalnie 1100 | Maksymalnie 2300 | Maksymalnie 5000 | Maksymalnie 7500 | Maksymalnie 7500 | Maksymalnie 12 500 | Maksymalnie 15 000 | Maksymalnie 20 000 |
-| Przepływność na dysk | Maksymalnie 25 MiB/s | Maksymalnie 50 MiB/s | Maksymalnie 100 MiB/s | Maksymalnie 125 MiB/s | Maksymalnie 150 MiB/s | Maksymalnie 200 MiB/s | Do 250 MiB/s | Do 250 MiB/s| Maksymalnie 480 MiB/s | Do 750 MiB/s | Do 750 MiB/s |
+[!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="standard-ssd"></a>Standardowa, SSD
 
 Azure standardowe dyski SSD są opcji ekonomicznego magazynowania, zoptymalizowanych pod kątem obciążeń wymagających spójną wydajność na niższych poziomach operacji We/Wy. SSD w warstwie standardowa oferuje środowisko dobre klasy podstawowej dla osób, które chcesz przenieść do chmury, zwłaszcza, jeśli występują problemy z wariancję obciążeń działających na dysk twardy rozwiązań w środowisku lokalnym. Standardowa SSD zapewniają lepsze dostępności, spójności, niezawodności i opóźnienia w porównaniu do dysków HDD. Standardowe dyski SSD są odpowiednie dla serwerów sieci Web, niski serwerów aplikacji operacje We/Wy, aplikacje dla przedsiębiorstw używana w niewielkim stopniu i obciążeń deweloperskich/testowych.
 
 ### <a name="disk-size"></a>Rozmiar dysku
-
-Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
-
-| Standardowe rozmiary dysków SSD | E4 | E6 | E10 | E15 | E20 | E30 | E40 | E50 | E60* | E70* | E80* |
-|--------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| Rozmiar dysku w GiB | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,095 | 8192 | 16,384 | 32,767 |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk | Do 120 | Maksymalnie 240 | Maks. 500 | Maks. 500 | Maks. 500 | Maks. 500 | Maks. 500 | Maks. 500 | Maksymalnie 1300 | Do 2000 | Do 2000 |
-| Przepływność na dysk |  Maksymalnie 25 MiB/s |  Maksymalnie 50 MiB/s  |  Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s| Maksymalnie 300 MiB/s |  Maks. 500 MiB/s | Maks. 500 MiB/s |
+[!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
 ## <a name="standard-hdd"></a>Standardowa, dysk twardy
 
 Azure standardowych dysków twardych dostarczanie obsługi niezawodne, niedrogie dysków dla maszyn wirtualnych obciążeń niewrażliwego na opóźnienia. Obsługuje również obiekty BLOB, tabel, kolejek i plików. Dzięki usłudze standard storage dane są przechowywane dyski twarde (HDD). Podczas pracy z maszynami wirtualnymi, używając dysków SSD i HDD w warstwie standardowa dla scenariuszy deweloperskich lub testowych oraz mniej krytycznych obciążeń. Magazynu w warstwie standardowa jest dostępna we wszystkich regionach platformy Azure.
 
 ### <a name="disk-size"></a>Rozmiar dysku
-
-Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
-
-| Typ dysku standardowego | S4 | S6 | S10 | S15 | S20 | S30 | S40 | S50 | S60* | S70* | S80* |
-|--------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| Rozmiar dysku w GiB | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,095 | 8192 | 16,384 | 32,767 |
-| Liczba operacji wejścia/wyjścia na sekundę na dysk | Maks. 500 | Maks. 500 | Maks. 500 | Maks. 500 | Maks. 500 | Maks. 500 | Maks. 500 | Maks. 500 | Maksymalnie 1300 | Do 2000 | Do 2000 |
-| Przepływność na dysk | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s | Maksymalnie 60 MiB/s| Maksymalnie 300 MiB/s | Maks. 500 MiB/s | Maks. 500 MiB/s |
+[!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
 ## <a name="billing"></a>Rozliczenia
 

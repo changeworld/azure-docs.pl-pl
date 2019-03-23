@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/11/2019
+ms.date: 03/22/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97e5976603ee1574e8410702069b97a9f0ef6198
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: be66ead6521bdb21626caaecd582fac4da6f664b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768757"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351273"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: Blokuj starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego   
 
@@ -54,6 +54,8 @@ Usługa Azure AD obsługuje niektóre z najczęściej używanych protokołów uw
 Uwierzytelnianie pojedynczy czynnik (na przykład nazwę użytkownika i hasło) nie jest wystarczająco dużo, te dni. Hasła są uszkodzone, są one łatwe do odgadnięcia i firma Microsoft (ludzi) będą nieprawidłowe na wybranie dobre hasła. Hasła są również narażone na różnych atakami, takimi jak osłony techniki wyłudzania informacji oraz hasło. Jeden najprostszym rzeczy, które można zrobić, aby chronić przed zagrożeniami hasła jest zaimplementowanie usługi MFA. Za pomocą usługi MFA nawet wtedy, gdy osoba atakująca uzyskuje w posiadaniu hasła użytkownika samego hasła nie jest wystarczające, aby pomyślnie uwierzytelnić i uzyskać dostęp do danych.
 
 Jak można zapobiec aplikacji korzystających z uwierzytelniania starszej wersji, uzyskiwanie dostępu do zasobów dzierżawy Zalecane jest po prostu je zablokować przy użyciu zasad dostępu warunkowego. Jeśli to konieczne, możesz zezwolić tylko niektórych użytkowników i określone lokalizacje sieciowe korzystać z aplikacji, które są oparte na starszych uwierzytelniania.
+
+Zasady dostępu warunkowego są wymuszane po zakończeniu uwierzytelniania pierwszego stopnia. Dlatego dostęp warunkowy nie ma służyć jako pierwsza linia obrony w takich scenariuszach jak ataki typu „odmowa usługi” (ataki DoS), ale może korzystać z sygnałów z tych zdarzeń (np. poziomu ryzyka logowania, lokalizacji żądania, itp.) w celu określenia dostępu.
 
 
 

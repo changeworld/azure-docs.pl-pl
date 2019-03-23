@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: e6185a7b62e3c599a7c3588824e3a9c4ac60cb53
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467632"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371473"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatyczne włączanie ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu usługi Resource Manager
-W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych dla zasobu, podczas jego tworzenia. Umożliwia to automatyczne uruchamianie usługi Dzienniki diagnostyczne i metryki usługi Event hubs, ich archiwizowanie na koncie magazynu lub wysyłając je do usługi Log Analytics, po utworzeniu zasobu przesyłania strumieniowego.
+W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych dla zasobu, podczas jego tworzenia. Dzięki temu można automatycznie rozpocząć przesyłanie strumieniowe swoje dzienniki diagnostyczne i metryki usługi Event hubs, ich archiwizowanie na koncie magazynu lub wysyłając je do obszaru roboczego usługi Log Analytics, po utworzeniu zasobu.
 
 > [!WARNING]
 > Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -40,7 +40,7 @@ Poniżej podajemy przykładowy plik JSON szablonu, czego potrzebujesz do generow
 ## <a name="non-compute-resource-template"></a>Zasób obliczeniowy inne niż szablonu
 W przypadku zasobów-Compute należy wykonać dwie czynności:
 
-1. Dodawanie parametrów do obiektu blob parametry dla nazwy konta magazynu, identyfikator reguły autoryzacji Centrum zdarzeń i/lub identyfikator obszaru roboczego usługi Log Analytics (Włączanie archiwizowanie dzienników diagnostycznych na koncie magazynu, przesyłanie strumieniowe dzienników do usługi Event Hubs i/lub wysyłania dzienników do usługi Log Analytics).
+1. Dodawanie parametrów do obiektu blob parametry dla nazwy konta magazynu, identyfikator reguły autoryzacji Centrum zdarzeń i/lub identyfikator obszaru roboczego usługi Log Analytics (Włączanie archiwizowanie dzienników diagnostycznych na koncie magazynu, przesyłanie strumieniowe dzienników do usługi Event Hubs i/lub wysyłania dzienników do usługi Azure Monitor).
    
     ```json
     "settingName": {

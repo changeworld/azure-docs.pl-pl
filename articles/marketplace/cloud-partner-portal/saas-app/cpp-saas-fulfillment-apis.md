@@ -14,19 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9c3fbe7cd7ebd41f59be360f40d66b8d38dbce5e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318936"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349522"
 ---
 # <a name="saas-fulfillment-apis"></a>Interfejsy API realizacji SaaS
 
 Interfejs API realizacji SaaS umożliwia niezależnym dostawcom oprogramowania (ISV), aby zintegrować swoje aplikacje SaaS przy użyciu portalu Azure Marketplace. Ten interfejs API umożliwia aplikacji niezależnych dostawców oprogramowania do wzięcia udziału w wszystkie kanały commerce włączone: bezpośrednie, prowadzonej przez partnera (odsprzedawcy) i doprowadziło do pola.  Ten interfejs API jest wymagana dla list transactable SaaS oferty w portalu Azure Marketplace.
-
-Bieżąca wersja tego interfejsu API jest w wersji 2, który powinien być używany dla wszystkich nowych SaaS oferuje.  W wersji 1 interfejsu API jest przestarzały i jest już uaktualniana do obsługi istniejących ofert.
-
 
 ## <a name="business-model-support"></a>Wsparcia modelu biznesowego
 
@@ -40,4 +37,4 @@ Ten interfejs API obsługuje następujące funkcje modeli biznesowych; Można:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Użyj najnowszej wersji tego interfejsu do tworzenia aplikacji: [Wersja interfejsu API realizacji SaaS 2](./cpp-saas-fulfillment-api-v2.md).
+Do tworzenia aplikacji, należy użyć tego interfejsu: [Wersja interfejsu API realizacji SaaS 2](./cpp-saas-fulfillment-api-v2.md).

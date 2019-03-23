@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/12/2019
+ms.date: 03/22/2019
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b475eae337b7e6a7e26b3e5a7518be0e461c9fa4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6a303319a3f87f684b72bcddd8d30cd4a2c60642
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170619"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351528"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -144,20 +144,25 @@ Zasady dostępu warunkowego, można wybrać **przeglądarek** jako aplikację kl
 To ustawienie działa ze wszystkimi przeglądarkami. Jednak do zasad urządzenia, takie jak wymaganie zgodnego urządzenia spełniają następujące systemy operacyjne i przeglądarki są obsługiwane:
 
 
-| System operacyjny                     | Przeglądarki                            | Pomoc techniczna     |
-| :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     | ![Zaznacz][1] |
-| Windows 8 / 8.1        | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
-| Windows 7              | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
-| iOS                    | Safari, usługa Intune Managed Browser      | ![Zaznacz][1] |
-| Android                | Chrome, usługa Intune Managed Browser      | ![Zaznacz][1] |
-| Windows Phone          | Internet Explorer, Microsoft Edge             | ![Zaznacz][1] |
-| Windows Server 2016    | Internet Explorer, Microsoft Edge             | ![Zaznacz][1] |
-| Windows Server 2016    | Chrome                              | Wkrótce |
-| Windows Server 2012 R2 | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
-| Windows Server 2008 R2 | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
-| macOS                  | Chrome, Safari                      | ![Zaznacz][1] |
+| System operacyjny                     | Przeglądarki                                      |
+| :--                    | :--                                           |
+| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
+| Windows 8 / 8.1        | Program Internet Explorer, Chrome                     |
+| Windows 7              | Program Internet Explorer, Chrome                     |
+| iOS                    | Safari, usługa Intune Managed Browser                |
+| Android                | Chrome, usługa Intune Managed Browser                |
+| Windows Phone          | Internet Explorer, Microsoft Edge             |
+| Windows Server 2016    | Internet Explorer, Microsoft Edge             |
+| Windows Server 2016    | Chrome                                        |
+| Windows Server 2012 R2 | Program Internet Explorer, Chrome                     |
+| Windows Server 2008 R2 | Program Internet Explorer, Chrome                     |
+| macOS                  | Chrome, Safari                                |
+ 
 
+
+#### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Dlaczego widzą monit w przeglądarce certyfikat
+
+W Windows 7, iOS, Android i macOS usługi Azure AD identyfikuje urządzenia przy użyciu certyfikatu klienta, którego zainicjowano, gdy urządzenie jest zarejestrowane w usłudze Azure AD.  Gdy użytkownik najpierw loguje się za pośrednictwem przeglądarki użytkownik jest monitowany o wybierz certyfikat. Użytkownik musi wybrać ten certyfikat przed rozpoczęciem korzystania z przeglądarki.
 
 
 #### <a name="chrome-support"></a>Pomocy technicznej dla programu Chrome

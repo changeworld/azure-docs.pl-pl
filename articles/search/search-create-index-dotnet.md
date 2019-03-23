@@ -1,6 +1,6 @@
 ---
-title: Tworzenie indeksu za pomocą kodu przy użyciu interfejsu API .NET — Azure Search
-description: Dowiedz się, jak utworzyć indeks wyszukiwania pełnotekstowego przy użyciu zestawu SDK .NET usługi Azure Search i przykładowego kodu w języku C#.
+title: Tworzenie indeksu w C# — usługa Azure Search
+description: Dowiedz się, jak utworzyć indeks wyszukiwanie pełnotekstowe w C# przy użyciu zestawu .NET SDK usługi Azure Search.
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/20/2019
-ms.openlocfilehash: dbaac1478fdbf1b42fc6b597c3a5c541e007e413
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/22/2019
+ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287149"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370588"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Szybki start: 1 — Tworzenie indeksu usługi Azure Search wC#
 
@@ -23,7 +23,7 @@ Ten artykuł przeprowadzi Cię przez proces tworzenia [indeksu usługi Azure Sea
 
 > [!div class="checklist"]
 > * Tworzenie [ `SearchServiceClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) obiekt, aby nawiązać połączenie z usługą wyszukiwania.
-> * Tworzenie [ `Index` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) obiekt można przekazać jako parametru `Indexes.Create`.
+> * Tworzenie [ `Index` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) obiekt można przekazać jako parametru, aby `Indexes.Create`.
 > * Wywołaj `Indexes.Create` metody `SearchServiceClient` wysyłać `Index` do usługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -32,7 +32,7 @@ Ten artykuł przeprowadzi Cię przez proces tworzenia [indeksu usługi Azure Sea
 
 [Program Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), w każdej wersji. Przykładowy kod i instrukcje zostały przetestowane na bezpłatna wersja Community.
 
-Adres URL punktu końcowego i administratora klucz interfejsu api usługi search. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Pobierz adres URL punktu końcowego i administratora klucz interfejsu api usługi search. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
   1. W witrynie Azure portal w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
@@ -200,7 +200,9 @@ serviceClient.Indexes.Delete("hotels");
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym przewodniku Szybki Start utworzono pusty indeksu usługi Azure Search na podstawie schematu, który definiuje typy danych pola i zachowania. Kolejnym przewodniku Szybki Start w tej serii opisano, jak załadować indeks z możliwością wyszukiwania zawartości.
+W tym przewodniku Szybki Start utworzono pusty indeksu usługi Azure Search na podstawie schematu, który definiuje typy danych pola i zachowania. Indeks jest indeksem "bare kości" składający się z nazwy i kolekcji pól opartego na atrybutach. Bardziej realistycznego indeksu będzie obejmować inne elementy, takie jak [profile oceniania](index-add-scoring-profiles.md), [sugestory](index-add-suggesters.md) do obsługi typeahead [synonimy](search-synonyms.md)i ewentualnie [ niestandardowe analizatory](index-add-custom-analyzers.md). Firma Microsoft zaleca ponowne przeanalizowanie tych funkcji po zidentyfikowaniu podstawowy przepływ pracy.
+
+Kolejnym przewodniku Szybki Start w tej serii opisano, jak załadować indeks z możliwością wyszukiwania zawartości.
 
 > [!div class="nextstepaction"]
 > [Ładowanie danych do indeksu usługi Azure Search przy użyciuC#](search-import-data-dotnet.md)

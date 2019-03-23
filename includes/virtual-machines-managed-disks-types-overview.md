@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f36ce51a9f385933cbc21e27280828b0ff0e43e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58016691"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395616"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
 
@@ -27,9 +27,9 @@ Poniższa tabela zawiera porównanie ultra solid-Województwo dyski (SSD) (wersj
 |---------|---------|---------|---------|---------|
 |Typ dysku   |SSD   |SSD   |SSD   |HDD   |
 |Scenariusz   |Obciążeń intensywnie korzystających z operacji We/Wy, takich jak SAP HANA, baz danych w warstwie najwyższego (na przykład SQL, Oracle) i innych obciążeń dużej transakcji.   |Obciążenia produkcyjne i wrażliwe na wydajność   |Serwery sieci Web, aplikacje dla przedsiębiorstw używana w niewielkim stopniu i tworzenie i testowanie   |Tworzenie kopii zapasowej, zastosowania niekrytyczne, rzadkie dostępu   |
-|Rozmiar dysku   |gibibajt 65 536 (GiB) (wersja zapoznawcza)   |4095 giB (GA), 32 767 GiB (wersja zapoznawcza)    |4095 GiB (GA), 32 767 GiB (wersja zapoznawcza)   |4095 giB (GA), 32 767 GiB (wersja zapoznawcza)   |
-|Maksymalna przepływność   |2000 MiB/s (wersja zapoznawcza)   |250 MiB (GA) / s, 750 MiB/s (wersja zapoznawcza)   |60 MiB/s (GA), 500 MiB/s (wersja zapoznawcza)   |60 Mib/s (GA), 500 MiB/s (wersja zapoznawcza)   |
-|Maks. IOPS   |160,000 (wersja zapoznawcza)   |7500 (GA), 20 000 (wersja zapoznawcza)   |500 (GA), 2000 (wersja zapoznawcza)   |500 (GA), 2000 (wersja zapoznawcza)   |
+|Rozmiar dysku   |gibibajt 65 536 (GiB) (wersja zapoznawcza)   |32,767 GiB    |32,767 GiB   |32,767 GiB   |
+|Maksymalna przepływność   |2000 MiB/s (wersja zapoznawcza)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maks. IOPS   |160,000 (wersja zapoznawcza)   |20,000   |6,000   |2000   |
 
 ## <a name="ultra-ssd-preview"></a>Największa SSD (wersja zapoznawcza)
 

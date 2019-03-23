@@ -1,6 +1,6 @@
 ---
-title: Tworzenie indeksu w kodzie przy użyciu programu PowerShell i interfejsu API REST — usługa Azure Search
-description: Tworzenie indeksu wyszukiwania pełnotekstowego w kodzie za pomocą żądań HTTP i interfejsu API REST usługi Azure Search.
+title: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu programu PowerShell i interfejsu API REST — usługa Azure Search
+description: Tworzenie, obciążenia i tworzenie zapytań względem indeksu przy użyciu programu PowerShell, wywołaj RestMethod i interfejsu API REST usługi Azure Search.
 ms.date: 03/15/2019
 author: heidisteen
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 87da5cdd31abb41a774a46d3891006eb58ac5e4d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285138"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372118"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Szybki start: Tworzenie indeksu usługi Azure Search przy użyciu programu PowerShell i interfejsu API REST
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Ten artykuł przeprowadzi Cię przez proces tworzenia, ładowanie i wykonywanie 
 
 [Program PowerShell 5.1 lub nowszej](https://github.com/PowerShell/PowerShell)przy użyciu [Invoke RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) czynności sekwencyjne i interaktywne.
 
-Adres URL punktu końcowego i administratora klucz interfejsu api usługi search. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Pobierz adres URL punktu końcowego i administratora klucz interfejsu api usługi search. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
 1. W witrynie Azure portal w usłudze wyszukiwania **Przegląd** strony, Pobierz adres URL. Przykładowy punkt końcowy może wyglądać jak https:\//my-service-name.search.windows.net.
 
@@ -371,11 +371,7 @@ Spróbuj dodać francuska opisy do indeksu. Poniższy przykład zawiera francusk
         {
             "@search.action": "merge",
             "hotelId": "2",
-            "description_fr": "Hôtel le moins cher en ville",
-        },
-        {
-            "@search.action": "delete",
-            "hotelId": "6"
+            "description_fr": "Hôtel le moins cher en ville"
         }
     ]
 }

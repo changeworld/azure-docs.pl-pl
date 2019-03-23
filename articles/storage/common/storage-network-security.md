@@ -5,21 +5,21 @@ services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c7f7768406ae64615b46abeb396b5469caf2f6e9
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: c34af90f946542608eaf20f4f21d4986f3c80e6b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750654"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369398"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
 Usługa Azure Storage oferuje model zabezpieczeń warstwowych. Ten model umożliwia Zabezpieczanie kont magazynu do określonego zestawu sieci, obsługiwane. Po skonfigurowaniu reguł sieci tylko te aplikacje, które wnioskujące o udostępnienie danych z ponad określonego zestawu sieci mają dostęp do konta magazynu.
 
-Aplikacja, która uzyskuje dostęp do konta magazynu, gdy zasady sieci wymaga prawidłowego autoryzacji w żądaniu. Autoryzacja jest obsługiwana przy użyciu poświadczeń usługi Azure Active Directory (AD) (dla obiektów blob i kolejki) (wersja zapoznawcza), prawidłowe konto dostępu do klucza lub tokenu sygnatury dostępu Współdzielonego.
+Aplikacja, która uzyskuje dostęp do konta magazynu, gdy zasady sieci wymaga prawidłowego autoryzacji w żądaniu. Autoryzacja jest obsługiwana przy użyciu poświadczeń usługi Azure Active Directory (Azure AD) dla kolejek i obiektów blob, prawidłowe konto dostępu do klucza lub tokenu sygnatury dostępu Współdzielonego.
 
 > [!IMPORTANT]
 > Włączenie reguły zapory dla konta magazynu domyślnie blokuje żądań przychodzących danych, chyba, że żądania pochodzą z usługi, która działa w ramach usługi Azure Virtual Network (VNet). Żądania, które są blokowane obejmują z innymi usługami platformy Azure w witrynie Azure portal, rejestrowania i metryk usług i tak dalej.

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 84251b16d91ca74e11298c7aa54c9a7a8b7fd6d6
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: ca6b072ba81f55802bc01d61ed44b06680cedbb2
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576722"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362003"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w HDInsight
 
@@ -248,6 +248,8 @@ Z poziomu interfejsu użytkownika sieci Web Ambari wybierz usługę, którą chc
 
 ## <a name="how-to-configure-the-node-size"></a>Jak skonfigurować rozmiar węzła
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Można znaleźć listę dostępnych rozmiarów maszyn wirtualnych różnych HDInsight na [HDInsight stronę z cennikiem](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 Podczas tworzenia klastra, można określić rozmiar węzłów. Poniższe informacje znajdują się wskazówki dotyczące sposobu określania rozmiaru, za pomocą [witryny Azure portal][preview-portal], [programu Azure PowerShell][azure-powershell]i [Klasycznego wiersza polecenia platformy azure][azure-cli]:
@@ -258,7 +260,7 @@ Podczas tworzenia klastra, można określić rozmiar węzłów. Poniższe inform
 
 * **Klasyczny interfejs wiersza polecenia Azure**: Korzystając z `azure hdinsight cluster create` polecenia, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `--headNodeSize`, `--workerNodeSize`, i `--zookeeperNodeSize` parametrów.
 
-* **Azure PowerShell**: Korzystając z `New-AzureRmHDInsightCluster` polecenia cmdlet, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `-HeadNodeVMSize`, `-WorkerNodeSize`, i `-ZookeeperNodeSize` parametrów.
+* **Azure PowerShell**: Korzystając z `New-AzHDInsightCluster` polecenia cmdlet, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `-HeadNodeVMSize`, `-WorkerNodeSize`, i `-ZookeeperNodeSize` parametrów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -10,12 +10,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9848ed6baab240556e9eda59fbc3815c0767e899
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bb5770f4e09c0ed764d17998936c0fe97bdaebfb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108587"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370639"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault
 
@@ -55,7 +55,7 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Azure Key Vault 
 > Należy pamiętać o następujących ograniczeniach konfiguracji:
 > * Dozwolone są maksymalnie 127 reguł sieci wirtualnej i 127 reguły protokołu IPv4. 
 > * Używające zakresy adresów małych "/ 31" lub "/ 32" prefiks rozmiary nie są obsługiwane. Zamiast tego należy skonfigurować te zakresy, za pomocą poszczególne reguły dotyczące adresów IP.
-> * Reguły sieciowych adresów IP są dozwolone tylko dla publicznych adresów IP. Zakresy adresów IP zarezerwowanych dla sieci prywatnych (zgodnie z definicją w dokumencie RFC 1918) są niedozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się **10.**, **172.16.**, i **192.168.**. 
+> * Reguły sieciowych adresów IP są dozwolone tylko dla publicznych adresów IP. Zakresy adresów IP zarezerwowanych dla sieci prywatnych (zgodnie z definicją w dokumencie RFC 1918) są niedozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się **10.**, **172.16 31**, i **192.168.**. 
 > * W tej chwili obsługiwane są tylko adresy IPv4.
 
 ## <a name="trusted-services"></a>Zaufanych usług

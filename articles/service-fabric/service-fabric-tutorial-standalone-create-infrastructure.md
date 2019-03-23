@@ -3,7 +3,7 @@ title: 'Samouczek: tworzenie infrastruktury klastra usługi Service Fabric w us�
 description: W tym samouczku dowiesz się, jak skonfigurować infrastrukturę usług AWS na potrzeby uruchamiania klastra usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: david-stanford
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/11/2018
-ms.author: dastanfo
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6b7d2223d33abb429ab5f59b14c80d43c70598dc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 9a0c56ecb20857b8fe2f5e55851e5d0d98ed3038
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209654"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369120"
 ---
-# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: tworzenie infrastruktury usług AWS do obsługi klastra usługi Service Fabric
+# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: Tworzenie infrastruktury usługi AWS do hostowania klastra usługi Service Fabric
 
 Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. Ta seria samouczków przedstawia proces tworzenia klastra autonomicznego hostowanego w usłudze AWS i instalowania w nim aplikacji.
 
@@ -50,7 +50,7 @@ Wybierz pozycję **Uruchom wystąpienie**. Na następnym ekranie wybierz przycis
 
 ![Wybór wystąpienia EC2][aws-ec2instance]
 
-Wybierz pozycję **t2.medium**, a następnie pozycję **Dalej: skonfiguruj szczegóły wystąpienia**. Na następnym ekranie zmień liczbę wystąpień na `3` i wybierz pozycję  **Szczegóły zaawansowane**, aby rozwinąć tę sekcję.
+Wybierz **t2.medium**, a następnie wybierz **dalej: Skonfiguruj Szczegóły wystąpienia**na następnym ekranie zmienić liczbę wystąpień `3`, a następnie wybierz **szczegóły zaawansowane** aby rozwinąć tę sekcję.
 
 Aby połączyć maszyny wirtualne z usługą Service Fabric, maszyny wirtualne, które hostują infrastrukturę, muszą mieć takie same poświadczenia.  Istnieją dwa podstawowe sposoby na uzyskanie spójnych poświadczeń: dołączenie wszystkich hostów do tej samej domeny lub ustawienie takiego samego hasła administratora na każdej maszynie wirtualnej.  W tym samouczku użyto skryptu danych użytkownika w celu ustawienia dla wszystkich wystąpień EC2 takiego samego hasła.  W środowisku produkcyjnym dołączenie hostów do domeny systemu Windows jest bardziej bezpieczne.
 
@@ -110,7 +110,7 @@ Po zanotowaniu wszystkich adresów IP wybierz jedno z wystąpień, z którym ma 
 
 Po pomyślnym nawiązaniu połączenia z wystąpieniem zweryfikuj połączenie i możliwość udostępnienia plików.  Wcześniej zebrano adresy IP wszystkich wystąpień. Wybierz wystąpienie, z którym aktualnie nawiązano połączenie. Przejdź do menu **Start**, wprowadź `cmd` i wybierz pozycję **Wiersz polecenia**.
 
-W tych przykładach nawiązano połączenie RDP z następującym adresem IP: 172.31.21.141. Wszystkie testy łączności są następnie przeprowadzane względem drugiego adresu IP: 172.31.20.163.
+W tych przykładach nawiązano połączenie RDP do następującego adresu IP: 172.31.21.141. Połączenie wszystkich testów, a następnie występują na adres IP: 172.31.20.163.
 
 Aby sprawdzić, czy podstawowe połączenie działa, użyj polecenia ping.
 
@@ -144,7 +144,7 @@ W celu otwarcia portów w zaporze użyto tego polecenia programu PowerShell:
 New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W części pierwszej tej serii przedstawiono sposób uruchamiania trzech wystąpień EC2 i ich konfigurowania na potrzeby instalacji usługi Service Fabric:
 

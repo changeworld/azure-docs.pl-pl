@@ -7,26 +7,26 @@ author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: sample
-ms.date: 05/03/2018
+ms.topic: article
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: a285bc4c6eecf1a8cdda758af9df1a697c374b5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e50933ea0231b4be22c2d0f82d33fd02dd0918f5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533973"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351613"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Użyj punktu końcowego przewidywania, aby przetestować obrazy programowo przy użyciu klasyfikatora usługi Custom Vision Service
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically"></a>Użyj endpoint prognoz, aby przetestować obrazy programowe
 
-Po wyszkoleniu modelu można przetestować obrazy programowo, przesyłając je do interfejsu API przewidywania. 
+Po wyszkoleniu modelu można przetestować obrazy programowo, przesyłając je do interfejsu API przewidywania.
 
 > [!NOTE]
 > W tym dokumencie przedstawiono przesyłanie obrazu do interfejsu API przewidywania przy użyciu języka C#. Aby uzyskać więcej informacji i przykładów użycia interfejsu API, zobacz [dokumentację interfejsu API przewidywania](https://go.microsoft.com/fwlink/?linkid=865445).
 
 ## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i klucza predykcyjnego
 
-Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__. Aby wyświetlić informacje o korzystaniu z interfejsu API przewidywania w tym __Klucza predykcyjnego__, wybierz __Adres URL przewidywania__. W przypadku projektów dołączonych do zasobu platformy Azure __Klucz predykcyjny__ można również znaleźć na stronie [Azure Portal](https://portal.azure.com) dotyczącej powiązanego zasobu platformy Azure, pod nagłówkiem __Klucze__. Skopiuj następujące informacje, aby ich użyć w aplikacji:
+Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__. Aby wyświetlić informacje o korzystaniu z interfejsu API przewidywania w tym __Klucza predykcyjnego__, wybierz __Adres URL przewidywania__. Dla projektów dołączonych do zasobu platformy Azure Twoje __prognozowania klucz__ można także znaleźć w [witryny Azure portal](https://portal.azure.com) strona skojarzonego zasobu platformy Azure w ramach __klucze__. Skopiuj następujące informacje, aby ich użyć w aplikacji:
 
 * __Adres URL__ do korzystania z __pliku obrazu__.
 * Wartość __Klucza predykcyjnego__.
@@ -40,7 +40,7 @@ Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a na
 
 1. Utwórz nową aplikację konsoli w języku C# w programie Visual Studio.
 
-2. Użyj poniższego kodu jako treści pliku __Program.cs__.
+1. Użyj poniższego kodu jako treści pliku __Program.cs__.
 
     > [!IMPORTANT]
     > Zmień następujące informacje:

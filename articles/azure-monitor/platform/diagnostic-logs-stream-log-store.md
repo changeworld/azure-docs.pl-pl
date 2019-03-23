@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309319"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351567"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream dzienniki diagnostyczne platformy Azure do usługi Log Analytics
 
@@ -100,6 +100,39 @@ Dodatkowe kategorie można dodawać do dzienników diagnostycznych, dodając sł
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Jak zapytanie danych w usłudze Log Analytics?
 
 W bloku przeszukiwania dzienników w portalu lub środowisku Advanced Analytics w ramach usługi Log Analytics można badać dzienniki diagnostyczne, jako część z rozwiązaniem zarządzanie dziennikiem pod tabelą AzureDiagnostics. Dostępne są także [kilka rozwiązań dla zasobów platformy Azure](../../azure-monitor/insights/solutions.md) można zainstalować na uzyskiwanie natychmiastowego wglądu w dane dziennika są wysyłane do usługi Log Analytics.
+
+### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Znane ograniczenia: kolumny limitu w AzureDiagnostics
+Ponieważ wiele zasobów wysyłać typy danych są wysyłane do tej samej tabeli (_AzureDiagnostics_), schemat ta tabela jest bardzo zestaw schematów typami danych zbieranych. Na przykład jeśli utworzono ustawień diagnostycznych dla kolekcji następujących typów danych, wszystkie wysyłane do tego samego obszaru roboczego:
+- Przeprowadź inspekcję dzienników 1 zasobu (o schemacie składający się z kolumn, A, B i C)  
+- Dzienniki błędów 2 zasobów (o schemacie składający się z kolumn, D, E i f.)  
+- Dzienniki przepływu danych 3 zasobów (o składający się z kolumn G, H i I schematu)  
+ 
+Tabela AzureDiagnostics będzie wyglądać następująco, z pewnymi przykładowymi danymi:  
+ 
+| ResourceProvider | Kategoria | A | B | C | D | E | F | G | H | I |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+| Microsoft.Resource2 | Przesłano | | | | q1 | w1 | e1 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+| Microsoft.Resource2 | Przesłano | | | | q2 | w2 | e2 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+| Przyciski ... |
+ 
+Ma limitu jawne dowolnej podanej tabeli dziennika platformy Azure, nie ma więcej niż 500 kolumn. Po osiągnięciu wszystkie wiersze zawierające dane z dowolnej kolumny poza wyświetlanie 500 pierwszych zostanie porzucony w momencie pozyskiwania. Tabela AzureDiagnostics znajduje się w szczególności wrażliwych, to wpływ ten limit. Zwykle dzieje się tak, ponieważ szerokiej gamy źródeł danych są wysyłane do tego samego obszaru roboczego lub kilku źródeł bardzo pełne dane są wysyłane do tego samego obszaru roboczego. 
+ 
+#### <a name="azure-data-factory"></a>Azure Data Factory  
+Usługa Azure Data Factory, ze względu na zestaw bardzo szczegółowych dzienników, jest zasobem, który jest znany szczególnie dotyczy to ograniczenie. W szczególności:  
+- *Parametry użytkownika zdefiniowane w odniesieniu do dowolnych działań w potoku*: będzie nową kolumnę utworzone dla każdego parametru unikatową nazwę użytkownika względem wszelkich działań. 
+- *Działanie wejściami i wyjściami*: te różnią się działanie do działania i generowanie dużej liczby kolumn z powodu ich pełne charakter. 
+ 
+Jako szersze propozycje rozwiązania poniżej, zalecane jest ich do dzienników usługi ADF własne obszar roboczy, aby zminimalizować prawdopodobieństwo te dzienniki wywierania wpływu na inne typy dzienników są zbierane w obszarach roboczych. Oczekujemy odpowiednie dzienniki usługi Azure Data Factory połowy kwietnia 2019 r.
+ 
+#### <a name="workarounds"></a>Rozwiązania
+Krótkoterminowe, dopóki nie zostało ponownie zdefiniowane limit 500 kolumny, zalecane jest oddzielenie typy pełnych danych do oddzielnych obszarów roboczych, aby zmniejszyć prawdopodobieństwo osiągnięcia limitu.
+ 
+Dłuższy okres Diagnostyka Azure będziemy przenosić od schematu ujednolicone, sparse do poszczególnych tabel dla każdego typu danych; sparowane z obsługą typów dynamicznych, to znacznie poprawi użyteczność dane przesyłane do dzienników platformy Azure za pośrednictwem mechanizmu diagnostyki platformy Azure. Już widać to typy zasobów platformy Azure wybierz pozycję na przykład [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) lub [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) dzienniki. Przejrzyj najnowsze wiadomości dotyczące nowych typów zasobów na platformie Azure, obsługuje te wyselekcjonowane dzienniki na [aktualizacje platformy Azure](https://azure.microsoft.com/updates/) blogu!
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

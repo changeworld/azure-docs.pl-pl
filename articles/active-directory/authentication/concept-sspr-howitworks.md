@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65c64e420bd22498fa2d778095def96cce218055
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313961"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370010"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -76,7 +76,7 @@ Użytkownicy mogą zresetować swoje hasło tylko, jeśli mają one dane już ob
 > [!WARNING]
 > Konta przypisane role administratora platformy Azure będą musieli używać metod, zgodnie z definicją w sekcji [Administrator zresetować różnice zasad](concept-sspr-policy.md#administrator-reset-policy-differences).
 
-![Uwierzytelnianie][Authentication]
+![Wybór metody uwierzytelniania w witrynie Azure portal][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>Liczba metod uwierzytelniania, wymagany
 
@@ -160,7 +160,7 @@ Przykład: Istnieją cztery Administratorzy w środowisku. Administrator, A Rese
 
 Jeśli zainstalować, skonfigurować i włączyć program Azure AD Connect, masz następujące dodatkowe opcje integracji środowiska lokalnego. Jeśli te opcje są wygaszone, następnie zapisywania zwrotnego nie został poprawnie skonfigurowany. Aby uzyskać więcej informacji, zobacz [Konfigurowanie funkcji zapisywania zwrotnego haseł](howto-sspr-writeback.md).
 
-![Writeback][Writeback]
+![Sprawdzanie poprawności funkcji zapisywania zwrotnego haseł jest włączony i pracą z nimi][Writeback]
 
 Ta strona zawiera szybkie stan lokalnego klienta zapisywania zwrotnego, wyświetlony zostanie jeden z następujących komunikatów na podstawie bieżącej konfiguracji:
 
@@ -180,7 +180,7 @@ Ten formant określa, czy funkcja zapisywania zwrotnego haseł jest włączony d
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Zezwalaj użytkownikom na odblokowywanie kont bez resetowania hasła
 
-Ten formant wskazuje, czy użytkownicy odwiedzający portal resetowania haseł należy skorzystać z opcji odblokowanie ich kont usługi Active Directory w środowisku lokalnym bez konieczności, zresetować swoje hasło. Domyślnie usługa Azure AD umożliwia odblokowanie konta podczas resetowania hasła. To ustawienie umożliwia oddzielić te dwie operacje. 
+Ten formant wskazuje, czy użytkownicy odwiedzający portal resetowania haseł należy skorzystać z opcji odblokowanie ich kont usługi Active Directory w środowisku lokalnym bez konieczności, zresetować swoje hasło. Domyślnie usługa Azure AD umożliwia odblokowanie konta podczas resetowania hasła. To ustawienie umożliwia oddzielić te dwie operacje.
 
 * Jeśli ustawiona na **tak**, a następnie użytkownicy otrzymują możliwość zresetowania swojego hasła i odblokowania konta lub odblokowania konta bez resetowania hasła.
 * Jeśli ustawiono **nie**, następnie użytkownicy są tylko mogli przeprowadzić resetowanie hasła połączone i operacji odblokowania konta.
@@ -193,9 +193,9 @@ Samoobsługowe haseł usługi Azure AD resetowania wykonuje odpowiednik inicjowa
 
 Resetowanie hasła i zmiany są w pełni obsługiwane na wszystkich konfiguracji z business-to-business (B2B). Resetowanie hasła użytkownika B2B jest obsługiwane w następujących trzech przypadkach:
 
-   * **Użytkownicy z organizacji partnerskiej z istniejącej dzierżawy usługi Azure AD**: Jeśli organizacja nawiązaliśmy partnerstwo z firmą korzysta z istniejącej dzierżawy usługi Azure AD, firma Microsoft *przestrzegać, niezależnie od zasady resetowania hasła są włączone dla tej dzierżawy*. Do resetowania hasła, aby pracować organizacji partnerskiej po prostu musi upewnij się, że włączono usługi Azure AD SSPR. Nie ma dodatkowych opłat dla klientów usługi Office 365 i można ją włączyć, wykonując kroki opisane w naszym [wprowadzenie do zarządzania hasłami](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) przewodnik.
-   * **Użytkownicy, którzy utworzą konto za pomocą** samoobsługowego tworzenia nowego konta: Jeśli w organizacji możesz nawiązaliśmy partnerstwo z firmą używane [samoobsługowej](../users-groups-roles/directory-self-service-signup.md) są wyposażone w dzierżawie, umożliwialiśmy je zresetować hasło za pomocą adresu e-mail one zarejestrowane.
-   * **Użytkowników B2B**: Żadnych nowych użytkowników B2B utworzone za pomocą nowego [możliwości usługi Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) będą również mogli resetować swoje hasła przy użyciu adresu e-mail zarejestrowani w procesie zaproszenia.
+* **Użytkownicy z organizacji partnerskiej z istniejącej dzierżawy usługi Azure AD**: Jeśli organizacja nawiązaliśmy partnerstwo z firmą korzysta z istniejącej dzierżawy usługi Azure AD, firma Microsoft *przestrzegać, niezależnie od zasady resetowania hasła są włączone dla tej dzierżawy*. Do resetowania hasła, aby pracować organizacji partnerskiej po prostu musi upewnij się, że włączono usługi Azure AD SSPR. Nie ma dodatkowych opłat dla klientów usługi Office 365 i można ją włączyć, wykonując kroki opisane w naszym [wprowadzenie do zarządzania hasłami](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) przewodnik.
+* **Użytkownicy, którzy utworzą konto za pomocą** samoobsługowego tworzenia nowego konta: Jeśli w organizacji możesz nawiązaliśmy partnerstwo z firmą używane [samoobsługowej](../users-groups-roles/directory-self-service-signup.md) są wyposażone w dzierżawie, umożliwialiśmy je zresetować hasło za pomocą adresu e-mail one zarejestrowane.
+* **Użytkowników B2B**: Żadnych nowych użytkowników B2B utworzone za pomocą nowego [możliwości usługi Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) będą również mogli resetować swoje hasła przy użyciu adresu e-mail zarejestrowani w procesie zaproszenia.
 
 Do przetestowania tego scenariusza, przejdź do https://passwordreset.microsoftonline.com przy użyciu jednego z tych użytkowników z firm partnerskich. Jeśli mają alternatywny adres e-mail lub adres e-mail uwierzytelniania zdefiniowane resetowania haseł działa zgodnie z oczekiwaniami.
 

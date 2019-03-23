@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: c7dd2fba852881680b43ceabafec2ac6b2751df4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839597"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359924"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Tworzenie i zarządzanie obszarami roboczymi usługi Azure Machine Learning
 
@@ -28,24 +28,19 @@ Aby utworzyć obszar roboczy, musisz mieć subskrypcję platformy Azure. Jeśli 
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="view-a-workspace"></a>Wyświetlanie obszaru roboczego
+## <a name="view"></a>Wyświetlanie obszaru roboczego
 
 1. W lewym górnym rogu portalu, wybierz **wszystkich usług**. 
 
-1. W **wszystkich usług** polu filtrowania, należy wpisać **obszaru roboczego usługi Machine Learning**.  
+1. W **wszystkich usług** polu filtrowania, należy wpisać **usługi machine learning service**.  
 
-   ![Wyszukaj w obszarze roboczym usługi Azure Machine Learning](media/how-to-manage-workspace/allservices-search1.png)
+1. Wybierz **obszary robocze usługi Machine Learning**.
 
-1. W wynikach filtrowania, wybierz **obszaru roboczego usługi Machine Learning** Aby wyświetlić listę swoich obszarów roboczych. 
-
-   ![Lista obszarów roboczych usługi Azure Machine Learning](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Wyszukaj w obszarze roboczym usługi Azure Machine Learning](media/how-to-manage-workspace/all-services.png)
 
 1. Przejrzyj listę obszarów roboczych, można odnaleźć. Można filtrować na podstawie subskrypcji, grupy zasobów i lokalizacji.  
 
-   ![Wyświetl obszary robocze](media/how-to-manage-workspace/allservices_view_workspace.PNG)
-
-1. Wybierz obszar roboczy został utworzony, aby wyświetlić jego właściwości.
-
+1. Wybierz obszar roboczy, aby wyświetlić jego właściwości.
    ![Właściwości obszaru roboczego](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Usuwanie obszaru roboczego

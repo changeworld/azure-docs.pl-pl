@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 297d32311b6b697b0141488878d170b3f2f4c359
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315491"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369789"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Rozwiązywanie problemów z samoobsługowego resetowania haseł
 
@@ -35,7 +35,6 @@ Należy rozwiązać problem z usługi Azure Active Directory (Azure AD) samoobs�
 | UserNotProperlyConfigured = 14 | Niestety, nie możesz zresetować hasło w tej chwili, ponieważ brakuje niezbędne informacji z Twojego konta. Nie istnieje żadne dalsze akcje, które można wykonać, aby rozwiązać ten problem. Skontaktuj się z administratorem i poproś go o zresetowania hasła. Po użytkownik ma dostęp do Twojego konta ponownie, musisz zarejestrować niezbędne informacje. Aby zarejestrować informacje, wykonaj kroki opisane w [rejestracji samoobsługowego resetowania haseł](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register) artykułu. | SSPR_0014: Do zresetowania hasła wymagane jest dodatkowe informacje zabezpieczające. Aby kontynuować, skontaktuj się z administratorem i poproś go, aby zresetować hasło. Po użytkownik ma dostęp do Twojego konta, możesz zarejestrować dodatkowe informacje zabezpieczające na https://aka.ms/ssprsetup. Administrator można dodać dodatkowe informacje zabezpieczające do Twojego konta, wykonując kroki opisane w [zestawu i dane odczytu uwierzytelniania do resetowania hasła](howto-sspr-authenticationdata.md). |
 | OnPremisesAdminActionRequired = 29 | Niestety, nie możemy zresetować Twojego hasła w tej chwili ze względu na problem z konfiguracją resetowania haseł w organizacji. Nie istnieje żadne dalsze akcje, które można wykonać, aby rozwiązać ten problem. Skontaktuj się z administratorem i poproś go o zbadanie. Aby dowiedzieć się więcej o potencjalnym problemie, zobacz [Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback). | SSPR_0029: Nie możemy zresetować Twojego hasła ze względu na błąd w konfiguracji lokalnej. Skontaktuj się z administratorem i poproś go o zbadanie. |
 | OnPremisesConnectivityError = 30 | Niestety, nie możemy zresetować Twojego hasła w tej chwili ze względu na problemy z łącznością z Twojej organizacji. Brak trzeba teraz podejmować żadnych działań, ale problem może być rozwiązany, jeśli ponowisz próbę później. Jeśli problem będzie się powtarzać, skontaktuj się z administratorem i poproś go o zbadanie. Aby dowiedzieć się więcej na temat problemów z łącznością, zobacz [Rozwiązywanie problemów z łącznością zapisywania zwrotnego haseł](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity). | SSPR_0030: Nie możemy zresetować Twojego hasła ze względu na słabe połączenie ze środowiska lokalnego. Skontaktuj się z administratorem i poproś go o zbadanie.|
-
 
 ## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>Rozwiązywanie problemów z konfiguracji resetowania hasła w witrynie Azure portal
 
@@ -94,7 +93,7 @@ Należy rozwiązać problem z usługi Azure Active Directory (Azure AD) samoobs�
 
 ## <a name="password-writeback-event-log-error-codes"></a>Kody błędów w dzienniku zdarzeń zapisywania zwrotnego haseł
 
-Najlepszym rozwiązaniem podczas rozwiązywania problemów z zapisywaniem zwrotnym haseł jest sprawdzić dziennik zdarzeń aplikacji na komputerze program Azure AD Connect. Ten dziennik zdarzeń zawiera zdarzenia z dwóch źródeł znaczenie w odniesieniu do zapisywania zwrotnego haseł. Źródło PasswordResetService opisuje operacje, jak i problemów związanych z operacji zapisywania zwrotnego haseł. Źródło ADSync opisuje operacje, jak i problemów związanych z ustawieniem hasła w środowisku usługi Active Directory.
+Najlepszym rozwiązaniem podczas rozwiązywania problemów z zapisywaniem zwrotnym haseł jest Sprawdź w dzienniku zdarzeń aplikacji na komputerze program Azure AD Connect. Ten dziennik zdarzeń zawiera zdarzenia z dwóch źródeł znaczenie w odniesieniu do zapisywania zwrotnego haseł. Źródło PasswordResetService opisuje operacje, jak i problemów związanych z operacji zapisywania zwrotnego haseł. Źródło ADSync opisuje operacje, jak i problemów związanych z ustawieniem hasła w środowisku usługi Active Directory.
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Jeśli źródłem zdarzenia jest ADSync
 
@@ -168,8 +167,8 @@ Najbardziej typowe punkt awarii jest zaporą i lub nieprawidłowo skonfigurowany
 
 Dla usługi Azure AD Connect w wersji 1.1.443.0 lub nowszej możesz potrzebować wychodzącego HTTPS dostępu do następującego:
 
-   - passwordreset.microsoftonline.com
-   - servicebus.windows.net
+* passwordreset.microsoftonline.com
+* servicebus.windows.net
 
 Większą szczegółowość odwoływać się zaktualizowaną listę [zakresów IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653) aktualizowany co środę i zaczyna obowiązywać od następnego poniedziałku.
 
@@ -184,7 +183,7 @@ Aby rozwiązać problemy z łącznością lub inne przejściowe problemy z usłu
 1. Wyszukaj **Microsoft Azure AD Sync** wpisu.
 1. Kliknij prawym przyciskiem myszy wpisu usługi, wybierz **ponowne uruchomienie**, a następnie poczekaj na zakończenie operacji.
 
-   ![Uruchom ponownie usługę Azure AD Sync][Service restart]
+   ![Uruchom ponownie usługę Azure AD Sync, przy użyciu graficznego interfejsu użytkownika][Service restart]
 
 Te kroki ponownie ustanowić połączenia z usługą w chmurze i rozwiązać przerw, który może występować. Jeśli ponowne uruchomienie usługi ADSync nie rozwiąże problemu, firma Microsoft zaleca, aby próbować wyłączenie i ponowne włączenie funkcji zapisywania zwrotnego haseł.
 
@@ -215,7 +214,6 @@ Firma Microsoft zaleca wykonanie tego kroku, tylko wtedy, gdy spróbujesz pierws
 
 > [!WARNING]
 > Jeśli dostosowano reguły synchronizacji poza pole *wykonać ich kopię zapasową przed kontynuowaniem uaktualniania, a następnie ręcznie je wdrożyć ponownie po zakończeniu.*
->
 
 1. Pobierz najnowszą wersję programu Azure AD Connect z [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=615771).
 1. Ponieważ masz już zainstalowany program Azure AD Connect, musisz wykonać uaktualnienie w miejscu do aktualizacji instalacji programu Azure AD Connect do najnowszej wersji.
@@ -231,33 +229,27 @@ Azure AD Connect wymaga usługi Active Directory **Resetuj hasło** uprawnienia 
 
 1. Zaloguj się do serwera Azure AD Connect i uruchom **Menedżera usługi synchronizacji** , wybierając **Start** > **usługi synchronizacji**.
 1. W obszarze **łączników** , a następnie wybierz lokalną **Active Directory Domain Services** łącznika, a następnie wybierz **właściwości**.  
-   ![Czynnych uprawnień — krok 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+   ![Przedstawiająca sposób edytować właściwości Menedżera usługi synchronizacji](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. W oknie podręcznym wybierz **nawiązywanie połączenia z lasu usługi Active Directory** i zanotuj **nazwa_użytkownika** właściwości. Ta właściwość jest konto usług AD DS używany przez program Azure AD Connect do wykonywania synchronizacji katalogów. Dla usługi Azure AD Connect, aby wykonać funkcję zapisywania zwrotnego haseł konto usług AD DS należy zresetować hasło uprawnień.  
-   
-   ![Czynnych uprawnień — krok 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
+
+   ![Wyszukiwanie konta użytkownika usługi Active Directory usługi synchronizacji](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
 1. Zaloguj się do kontrolera domeny w środowisku lokalnym i rozpocząć **użytkownicy usługi Active Directory i komputery** aplikacji.
 1. Wybierz **widoku** i upewnij się, że **funkcje zaawansowane** opcja jest włączona.  
-   
-   ![Czynnych uprawnień — krok 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
+
+   ![Active Directory Użytkownicy i komputery Pokaż opcje zaawansowane](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
 1. Wyszukaj konta użytkownika usługi Active Directory, którą chcesz zweryfikować. Kliknij prawym przyciskiem myszy nazwę konta i wybierz **właściwości**.  
-   
-   ![Czynnych uprawnień — krok 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
-
 1. W oknie podręcznym, przejdź do **zabezpieczeń** kartę, a następnie wybierz pozycję **zaawansowane**.  
-   
-   ![Czynnych uprawnień — krok 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
-   
 1. W **Zaawansowane ustawienia zabezpieczeń dla administratora** oknie podręcznym, przejdź do **dostęp czynny** kartę.
 1. Wybierz **wybierz użytkownika**, wybierz konto usług AD DS używany przez usługę Azure AD Connect (zobacz krok 3), a następnie wybierz **wyświetlić skutecznego dostępu**.
 
-   ![Czynnych uprawnień — kroku 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
+   ![Skuteczne karcie dostęp do przedstawiający konto synchronizacji](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
 1. Przewiń w dół i poszukaj **Resetuj hasło**. Jeśli zaznaczono pozycję konto usług AD DS ma uprawnienia do resetowania hasła wybranego konta użytkownika usługi Active Directory.  
-   
-   ![Czynnych uprawnień — kroku 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
+
+   ![Weryfikowanie, czy konto synchronizacji ma uprawnienia do resetowania hasła](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Fora poświęcone systemowi Azure AD
 
@@ -272,17 +264,17 @@ Aby prawidłowo pomóc, poprosimy Podaj jak najdokładniejsze informacje jak to 
 * **Ogólny opis błędu**: Co to jest błąd? Jaki był zachowanie, które zostało już? Jak można odtworzyć błąd? Jak to możliwe, podaj jak najdokładniejsze informacje.
 * **Strona**: Które strony były na kiedy zauważyć błąd? To adres URL, jeśli jesteś w stanie i zrzut ekranu przedstawiający stronę.
 * **Obsługuje kodu**: Jaki był kod pomocy technicznej, który został wygenerowany, gdy użytkownik był wyświetlany błąd?
-  * Aby znaleźć ten kod, należy odtworzyć błąd, a następnie wybierz **obsługuje kodu** link w dolnej części ekranu i wysłać ze specjalistą pomocy technicznej identyfikator GUID, który powoduje.
+   * Aby znaleźć ten kod, należy odtworzyć błąd, a następnie wybierz **obsługuje kodu** link w dolnej części ekranu i wysłać ze specjalistą pomocy technicznej identyfikator GUID, który powoduje.
 
-    ![Znajdź kod pomocy technicznej w dolnej części ekranu][Support code]
+   ![Znajdź kod pomocy technicznej w dolnej części ekranu][Support code]
 
   * Jeśli na stronie bez kodu pomocy technicznej u dołu wybierz F12 i wyszukaj identyfikator SID i CID i wysyłać te dwa wyniki ze specjalistą pomocy technicznej.
 * **Daty, godziny i strefy czasowej**: Obejmują dokładnej daty i godziny *ze strefą czasową* których wystąpił błąd.
 * **Identyfikator użytkownika**: Kto był użytkownika, który był wyświetlany błąd? Na przykład *użytkownika\@contoso.com*.
-    * Jest to użytkownik federacyjny?
-    * Jest to użytkownik uwierzytelniania przekazywanego
-    * Jest to użytkownik synchronizację skrótów haseł?
-    * Jest to użytkowników tylko w chmurze?
+   * Jest to użytkownik federacyjny?
+   * Jest to użytkownik uwierzytelniania przekazywanego
+   * Jest to użytkownik synchronizację skrótów haseł?
+   * Jest to użytkowników tylko w chmurze?
 * **Licencjonowanie**: Czy użytkownik ma przypisaną licencję usługi Azure AD Premium lub usługi Azure AD podstawowa?
 * **Dziennik zdarzeń aplikacji**: Jeśli używasz zapisywania zwrotnego haseł i błąd, to w infrastrukturze lokalnej, zawierać kopię plików z rozszerzeniem zip dzienniku zdarzeń aplikacji z serwera usługi Azure AD Connect.
 

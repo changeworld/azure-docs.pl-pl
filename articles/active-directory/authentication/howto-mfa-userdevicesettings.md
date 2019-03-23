@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19ae32f5b11d9da5b5e03fc68f1120caa54b4890
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c78d6d901c050f6d1df8b53b34f0088d3ad8b0f8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314335"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368480"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Zarządzanie ustawieniami użytkownika przy użyciu usługi Azure Multi-Factor Authentication w chmurze
 
@@ -24,56 +24,61 @@ Jako administrator możesz zarządzać następującymi ustawieniami użytkownik�
 
 * Wymagaj od użytkowników ponownego podania metod kontaktu
 * Usuwanie hasła aplikacji
-* Wymagać uwierzytelniania Wieloskładnikowego na wszystkie zaufane urządzenia 
+* Wymagać uwierzytelniania Wieloskładnikowego na wszystkie zaufane urządzenia
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>Wymagaj od użytkowników ponownego podania metod kontaktu
+
 To ustawienie wymusza na użytkowniku, aby ukończyć proces rejestracji ponownie. Aplikacje korzystające z przeglądarki w dalszym ciągu działać, jeśli użytkownik ma hasła aplikacji dla nich.  Możesz usunąć hasła aplikacji użytkowników, wybierając również **Usuń wszystkie istniejące hasła aplikacji wygenerowane przez wybranych użytkowników**.
 
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>Sposób wymagać od użytkowników ponownego podania metod kontaktu
+
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie, wybierz **usługi Azure Active Directory** > **użytkowników** > **wszyscy użytkownicy**.
-3. Po prawej stronie, wybierz **uwierzytelnianie wieloskładnikowe** na pasku narzędzi. Zostanie otwarta strona uwierzytelniania wieloskładnikowego. 
-4. Zaznacz pole obok użytkowników, których chcesz zarządzać. Lista opcji szybkiego kroku są wyświetlane po prawej stronie. 
+3. Po prawej stronie, wybierz **uwierzytelnianie wieloskładnikowe** na pasku narzędzi. Zostanie otwarta strona uwierzytelniania wieloskładnikowego.
+4. Zaznacz pole obok użytkowników, których chcesz zarządzać. Lista opcji szybkiego kroku są wyświetlane po prawej stronie.
 5. Wybierz **Zarządzaj ustawieniami użytkownika**.
 6. Pole wyboru dla **Wymagaj od wybranych użytkowników ponownego podania metod kontaktu**.
-   ![Podania metod kontaktu](./media/howto-mfa-userdevicesettings/reproofup.png)
+   ![Wymagaj od użytkowników ponownego podania metod kontaktu](./media/howto-mfa-userdevicesettings/reproofup.png)
 7. Kliknij pozycję **Zapisz**.
 8. Kliknij przycisk **Zamknij**.
 
 ## <a name="delete-users-existing-app-passwords"></a>Usuwanie użytkowników z istniejących haseł aplikacji
+
 To ustawienie powoduje usunięcie wszystkich haseł aplikacji utworzonych przez użytkownika. Aplikacje korzystające z przeglądarki, które zostały skojarzone z haseł aplikacji działać dopiero po utworzeniu nowe hasło aplikacji.
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Jak usunąć użytkowników z istniejących haseł aplikacji
+
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie, wybierz **usługi Azure Active Directory** > **użytkowników** > **wszyscy użytkownicy**.
-3. Po prawej stronie, wybierz **uwierzytelnianie wieloskładnikowe** na pasku narzędzi. Zostanie otwarta strona uwierzytelniania wieloskładnikowego. 
-6. Zaznacz pole obok użytkowników, których chcesz zarządzać. Lista opcji szybkiego kroku są wyświetlane po prawej stronie. 
-7. Wybierz **Zarządzaj ustawieniami użytkownika**.
-8. Pole wyboru dla **Usuń wszystkie istniejące hasła aplikacji wygenerowane przez wybranych użytkowników**.
-   ![Usuwanie hasła aplikacji](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
-9. Kliknij pozycję **Zapisz**.
-10. Kliknij przycisk **Zamknij**.
+3. Po prawej stronie, wybierz **uwierzytelnianie wieloskładnikowe** na pasku narzędzi. Zostanie otwarta strona uwierzytelniania wieloskładnikowego.
+4. Zaznacz pole obok użytkowników, których chcesz zarządzać. Lista opcji szybkiego kroku są wyświetlane po prawej stronie.
+5. Wybierz **Zarządzaj ustawieniami użytkownika**.
+6. Pole wyboru dla **Usuń wszystkie istniejące hasła aplikacji wygenerowane przez wybranych użytkowników**.
+   ![Usuń wszystkie istniejące hasła aplikacji](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+7. Kliknij pozycję **Zapisz**.
+8. Kliknij przycisk **Zamknij**.
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>Przywróć uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach użytkownika
+
 Jedna z funkcji można skonfigurować usługi Azure Multi-Factor Authentication jest przyznawanie użytkownikom możliwość oznaczania urządzenia jako zaufany. Aby uzyskać więcej informacji, zobacz [ustawienia skonfiguruj usługę Azure Multi-Factor Authentication](howto-mfa-mfasettings.md#remember-multi-factor-authentication).
 
 Użytkownicy mogą zrezygnować z weryfikacji dwuetapowej dla konfigurowalną liczbę dni na swoich urządzeniach regularne. Jeśli konto zostanie naruszony lub zaufanego urządzenia zostaną utracone, musisz mieć możliwość usunięcia stanu zaufania i ponownie weryfikacji dwuetapowej.
 
-**Przywracania usługi uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach** ustawienie oznacza, że użytkownik będzie zmagać się z weryfikacji dwuetapowej podczas następnego logowania, niezależnie od tego, czy wybrana do oznaczania urządzenia jako zaufany. 
+**Przywracania usługi uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach** ustawienie oznacza, że użytkownik będzie zmagać się z weryfikacji dwuetapowej podczas następnego logowania, niezależnie od tego, czy wybrana do oznaczania urządzenia jako zaufany.
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Jak przywrócić usługę MFA na wszystkich urządzeniach wstrzymania dla użytkownika
+
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Po lewej stronie, wybierz **usługi Azure Active Directory** > **użytkowników** > **wszyscy użytkownicy**.
-3. Po prawej stronie, wybierz **uwierzytelnianie wieloskładnikowe** na pasku narzędzi. Zostanie otwarta strona uwierzytelniania wieloskładnikowego. 
-6. Zaznacz pole obok użytkowników, których chcesz zarządzać. Lista opcji szybkiego kroku są wyświetlane po prawej stronie. 
-7. Wybierz **Zarządzaj ustawieniami użytkownika**.
-8. Pole wyboru dla **przywracania usługi uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach**
-   ![Usuwanie hasła aplikacji](./media/howto-mfa-userdevicesettings/rememberdevices.png)
-9. Kliknij pozycję **Zapisz**.
-10. Kliknij przycisk **Zamknij**.
+3. Po prawej stronie, wybierz **uwierzytelnianie wieloskładnikowe** na pasku narzędzi. Zostanie otwarta strona uwierzytelniania wieloskładnikowego.
+4. Zaznacz pole obok użytkowników, których chcesz zarządzać. Lista opcji szybkiego kroku są wyświetlane po prawej stronie.
+5. Wybierz **Zarządzaj ustawieniami użytkownika**.
+6. Pole wyboru dla **przywracania usługi uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach**
+   ![przywracania usługi uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach](./media/howto-mfa-userdevicesettings/rememberdevices.png)
+7. Kliknij pozycję **Zapisz**.
+8. Kliknij przycisk **Zamknij**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Uzyskaj więcej informacji o sposobie [ustawienia skonfigurować uwierzytelnianie wieloskładnikowe systemu Azure](howto-mfa-mfasettings.md)
-
 - Jeśli użytkownicy potrzebują pomocy, wskazujące kierunku [Podręcznik użytkownika na potrzeby weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user.md)

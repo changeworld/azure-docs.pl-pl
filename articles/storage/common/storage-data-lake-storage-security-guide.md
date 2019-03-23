@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 22b070e6d70208057c85ad6a2322cc440d12a0fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ce01301455c7abcd26006e622fcfbb8127e1c511
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008208"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372492"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Przewodnik po zabezpieczeniach usługi Azure Data Lake Storage Gen2
 
@@ -134,7 +134,7 @@ Bezpieczeństwo płaszczyzny danych odnosi się do metody używane do zabezpiecz
 Są trzy opcje do autoryzowania dostępu do obiektów danych w usłudze Azure Storage, w tym:
 
 - Używanie programu Azure AD do autoryzowania dostępu do systemów plików i kolejek. Usługa Azure AD zapewnia korzyści w porównaniu do innych metod do autoryzacji, łącznie z usunięciem konieczności przechowywania wpisów tajnych w kodzie. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage przy użyciu usługi Azure Active Directory](storage-auth-aad.md). 
-- Przy użyciu kluczy konta magazynu, aby autoryzować dostęp za pomocą klucza wspólnego. Uwierzytelnianie za pomocą klucza wspólnego wymaga przechowywania kluczy konta magazynu w aplikacji, dzięki czemu firma Microsoft zaleca używanie usługi Azure AD zamiast tego, gdzie to możliwe. Dla aplikacji produkcyjnych, lub Autoryzowanie dostępu do tabel platformy Azure i plików nadal przy użyciu klucza wspólnego, podczas integracji z usługą Azure AD jest w wersji zapoznawczej.
+- Przy użyciu kluczy konta magazynu, aby autoryzować dostęp za pomocą klucza wspólnego. Uwierzytelnianie za pomocą klucza wspólnego wymaga przechowywania kluczy konta magazynu w aplikacji, dzięki czemu firma Microsoft zaleca używanie usługi Azure AD zamiast tego, gdzie to możliwe.
 - Za pomocą sygnatur dostępu współdzielonego, aby udzielić kontrolowanymi uprawnieniami do obiektów danych specyficznych dla określonego przedziału czasu.
 
 Oprócz ograniczania dostępu do autoryzacji, można również użyć [zapory i sieci wirtualne](storage-network-security.md) do ograniczania dostępu do konta magazynu, na podstawie reguł sieci.  Dzięki temu podejście odmowa dostępu do publicznego ruch internetowy i przyznać dostęp tylko do określonych sieci wirtualnych platformy Azure lub publicznej sieci internet zakresów adresów IP.

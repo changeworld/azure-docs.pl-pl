@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f508475166346c56b3bd0c8607c27beb7aba66c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316477"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371532"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpieczanie zasobów w chmurze przy użyciu usługi Azure Multi-Factor Authentication i usług AD FS
 
@@ -30,15 +30,15 @@ Aby zabezpieczyć zasób w chmurze, skonfiguruj regułę oświadczeń, tak aby u
 2. Po lewej stronie wybierz pozycję **Relacje zaufania jednostek zależnych**.
 3. Kliknij prawym przyciskiem myszy pozycję **Platforma tożsamości usługi Microsoft Office 365** i wybierz pozycję **Edytuj reguły oświadczeń**.
 
-   ![Chmura](./media/howto-mfa-adfs/trustedip1.png)
+   ![Konsola usługi AD FS — jednostek uzależnionych](./media/howto-mfa-adfs/trustedip1.png)
 
 4. Na karcie Reguły przekształcania wystawiania kliknij pozycję **Dodaj regułę**.
 
-   ![Chmura](./media/howto-mfa-adfs/trustedip2.png)
+   ![Edytowanie reguły przekształcania wystawiania](./media/howto-mfa-adfs/trustedip2.png)
 
 5. W Kreatorze dodawania reguły przekształcania oświadczeń wybierz z listy rozwijanej pozycję **Przekazywanie lub filtrowanie oświadczenia przychodzącego**, a następnie kliknij przycisk **Dalej**.
 
-   ![Chmura](./media/howto-mfa-adfs/trustedip3.png)
+   ![Dodaj kreatora reguły oświadczenia Transform](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Nadaj regule nazwę. 
 7. Wybierz wartość **Odwołania metod uwierzytelniania** jako typ oświadczenia przychodzącego.
@@ -58,15 +58,15 @@ W pierwszej kolejności należy skonfigurować oświadczenia usług AD FS. Utwó
 
 1. Otwórz przystawkę zarządzania usługami AD FS.
 2. Po lewej stronie wybierz pozycję **Relacje zaufania jednostek zależnych**.
-3. Kliknij prawym przyciskiem myszy pozycję **Platforma tożsamości usługi Microsoft Office 365** i wybierz pozycję **Edytuj reguły oświadczeń...**
-   ![Chmura](./media/howto-mfa-adfs/trustedip1.png)
-4. Na karcie Reguły przekształcania wystawiania kliknij pozycję **Dodaj regułę.**
-   ![Chmura](./media/howto-mfa-adfs/trustedip2.png)
+3. Kliknij prawym przyciskiem myszy **platforma tożsamości usługi Microsoft Office 365** i wybierz **Edytuj reguły oświadczeń... ** 
+    ![Konsoli usług AD FS — Edycja reguł oświadczeń](./media/howto-mfa-adfs/trustedip1.png)
+4. Na karcie reguły przekształcania wystawiania, kliknij przycisk **Dodaj regułę.** 
+    ![Dodanie reguły oświadczeń](./media/howto-mfa-adfs/trustedip2.png)
 5. W Kreatorze dodawania reguły przekształcania oświadczeń wybierz z listy rozwijanej pozycję **Przekazywanie lub filtrowanie oświadczenia przychodzącego**, a następnie kliknij przycisk **Dalej**.
-   ![Chmura](./media/howto-mfa-adfs/trustedip3.png)
+   ![Kreator dodawania reguły przekształcania dotyczącej oświadczeń](./media/howto-mfa-adfs/trustedip3.png)
 6. W polu Nazwa reguły oświadczenia wpisz nazwę reguły, Na przykład: InsideCorpNet.
 7. Dla pola Typ oświadczenia przychodzącego wybierz z listy rozwijanej pozycję **Wewnątrz sieci firmowej**.
-   ![Chmura](./media/howto-mfa-adfs/trustedip4.png)
+   ![Dodawanie wewnątrz sieci firmowej oświadczeń](./media/howto-mfa-adfs/trustedip4.png)
 8. Kliknij przycisk **Zakończ**.
 9. Na karcie Reguły przekształcania wystawiania kliknij pozycję **Dodaj regułę**.
 10. W Kreatorze dodawania reguły przekształcania oświadczeń wybierz z listy rozwijanej pozycję **Wysyłanie oświadczeń przy użyciu reguły niestandardowej**, a następnie kliknij przycisk **Dalej**.
@@ -75,7 +75,7 @@ W pierwszej kolejności należy skonfigurować oświadczenia usług AD FS. Utwó
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![Chmura](./media/howto-mfa-adfs/trustedip5.png)
+    ![Tworzenie oświadczenia niestandardowego, aby zachować zalogowania użytkowników](./media/howto-mfa-adfs/trustedip5.png)
 13. Kliknij przycisk **Zakończ**.
 14. Kliknij przycisk **Zastosuj**.
 15. Kliknij przycisk **OK**.

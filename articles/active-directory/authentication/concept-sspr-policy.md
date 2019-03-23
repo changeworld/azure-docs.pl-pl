@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36959582a3866426f8dc0e9969210e29e751ea60
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311904"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360507"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -93,7 +93,7 @@ W poniższej tabeli opisano ustawienia zasad haseł, które są stosowane do kon
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Konfigurowanie zasad wygasania haseł w usłudze Azure AD
 
-Administratora globalnego dla usługi w chmurze firmy Microsoft można użyć modułu Microsoft Azure AD dla programu Windows PowerShell można ustawić hasła użytkowników, aby nie wygaśnie. Można również użyć poleceń cmdlet programu Windows PowerShell do usunięcia nigdy nie — wygasa konfiguracji lub aby zobaczyć, który użytkownik hasła są ustawione na nigdy nie wygasa. 
+Administrator globalny lub administrator użytkowników dla usługi w chmurze firmy Microsoft można użyć modułu Microsoft Azure AD dla programu Windows PowerShell można ustawić hasła użytkowników, aby nie wygaśnie. Można również użyć poleceń cmdlet programu Windows PowerShell do usunięcia nigdy nie — wygasa konfiguracji lub aby zobaczyć, który użytkownik hasła są ustawione na nigdy nie wygasa. 
 
 Niniejsze wytyczne mają zastosowanie do innych dostawców, takich jak usługi Intune i Office 365, które polegają również na usłudze Azure AD dla tożsamości i usługi katalogowe. Wygaśnięcie hasła jest tylko część zasady, które mogą być zmieniane.
 
@@ -107,7 +107,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Sprawdzanie zasad wygasania haseł
 
-1. Łączenie z programu Windows PowerShell za pomocą poświadczeń administratora firmy.
+1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
 1. Wykonaj jedną z następujących poleceń:
 
    * Aby zobaczyć, jeśli ustawiono pojedynczego użytkownika, hasło nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN (na przykład *aprilr\@contoso.onmicrosoft.com*) lub identyfikator użytkownika ma być sprawdzana: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -115,7 +115,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 
 ### <a name="set-a-password-to-expire"></a>Ustaw hasło wygaśnie
 
-1. Łączenie z programu Windows PowerShell za pomocą poświadczeń administratora firmy.
+1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
 1. Wykonaj jedną z następujących poleceń:
 
    * Konfigurowanie hasła jednego użytkownika i hasło wygaśnie, należy uruchomić następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
@@ -123,7 +123,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 
 ### <a name="set-a-password-to-never-expire"></a>Ustaw hasło nigdy nie wygasa
 
-1. Łączenie z programu Windows PowerShell za pomocą poświadczeń administratora firmy.
+1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
 1. Wykonaj jedną z następujących poleceń:
 
    * Aby ustawić hasło jeden użytkownik nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`

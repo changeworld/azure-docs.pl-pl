@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c537b061619aa458663a9dcfcc97155d8a6614
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59663346fce415d73609f09345048ff321f1a234
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106801"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359836"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD
 
@@ -60,7 +60,8 @@ Jeśli masz te trzy wymagania gotowe, wykonaj następujące kroki, aby skonfigur
 
 6. Przekazywanie certyfikatu PFX, a następnie wprowadź hasło dla certyfikatu. 
 7. Wybierz **Zapisz** Aby zapisać zmiany. 
-8. Dodaj [rekordu DNS](../../dns/dns-operations-recordsets-portal.md) który przekierowuje nowy zewnętrzny adres URL do domeny msappproxy.net. 
+8. Dodaj [rekordu DNS](../../dns/dns-operations-recordsets-portal.md) który przekierowuje nowy zewnętrzny adres URL do domeny msappproxy.net.
+9. Sprawdź, czy rekord DNS jest skonfigurowany poprawnie za pomocą [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) polecenie, aby zobaczyć, jeśli zewnętrzny adres URL jest osiągalny i domeny msapproxy.net pojawia się jako alias.
 
 >[!TIP] 
 >Wystarczy przekazać jeden certyfikat dla domeny niestandardowej. Po przekazaniu certyfikatu, możesz wybrać domeny niestandardowej podczas publikowania nowej aplikacji i nie trzeba wykonać dodatkowe czynności konfiguracyjne z wyjątkiem rekordu DNS. 

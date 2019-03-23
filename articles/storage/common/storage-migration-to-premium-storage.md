@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: fd72e2a75c00c30fdc5497e0d88e9c83dc5fcad8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fdca10c54c798bd47a34eb0f8af091908bcc2711
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317361"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372322"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrowanie do usługi Azure Premium Storage (dyski niezarządzane)
 
@@ -69,10 +69,10 @@ Kont usługi Premium Storage ma następujące cele skalowalności, oprócz [usł
 |:--- |:--- |
 | Pojemność dysku: 35TB<br />Pojemność migawki: 10 TB |Maksymalnie 50 gigabity na sekundę dla ruchu przychodzącego i ruchu wychodzącego |
 
-Aby uzyskać więcej informacji o specyfikacjach usługi Premium Storage, zapoznaj się [cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md#premium-storage-account-scale-limits).
+Aby uzyskać więcej informacji o specyfikacjach usługi Premium Storage, zapoznaj się [cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
 
 #### <a name="disk-caching-policy"></a>Zasady buforowania dysku
-Domyślnie zasady buforowania dysku jest *tylko do odczytu* wszystkich dysków w warstwie Premium danych, a *odczytu i zapisu* dla dysku systemu operacyjnego w warstwie Premium dołączonych do maszyny Wirtualnej. To ustawienie konfiguracji jest zalecane, aby osiągnąć optymalną wydajność dla aplikacji systemu IOs. Dla dysków z danymi zapisu przy odczycie czy tylko do zapisu (takich jak pliki dziennika programu SQL Server) należy wyłączyć buforowanie dysku, dzięki czemu można osiągnąć lepszą wydajność aplikacji. Ustawienia pamięci podręcznej dla istniejących dysków z danymi można zaktualizować przy użyciu [witryny Azure Portal](https://portal.azure.com) lub *- HostCaching* parametru *AzureDataDisk zestaw* polecenia cmdlet.
+Domyślnie zasady buforowania dysku jest *tylko do odczytu* wszystkich dysków w warstwie Premium danych, a *odczytu i zapisu* dla dysku systemu operacyjnego w warstwie Premium dołączonych do maszyny Wirtualnej. To ustawienie konfiguracji jest zalecane, aby osiągnąć optymalną wydajność dla aplikacji systemu IOs. Dla dysków z danymi zapisu przy odczycie czy tylko do zapisu (takich jak pliki dziennika programu SQL Server) należy wyłączyć buforowanie dysku, dzięki czemu można osiągnąć lepszą wydajność aplikacji. Ustawienia pamięci podręcznej dla istniejących dysków z danymi można zaktualizować przy użyciu [witryny Azure portal](https://portal.azure.com) lub *- HostCaching* parametru *AzureDataDisk zestaw* polecenia cmdlet.
 
 #### <a name="location"></a>Lokalizacja
 Wybierz lokalizację, w których usługi Azure Premium Storage jest dostępna. Zobacz [usług platformy Azure według regionu](https://azure.microsoft.com/regions/#services) dla aktualnych informacji o dostępnych lokalizacji. Maszyny wirtualne znajdujące się w tym samym regionie co konto magazynu, że dyski maszyny Wirtualnej będzie sklepy znacznie lepszą wydajność niż jeśli znajdują się w oddzielnych regionach.

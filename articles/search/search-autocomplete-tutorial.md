@@ -1,23 +1,25 @@
 ---
-title: Przykład dotyczący dodawania automatycznego uzupełniania do pola wyszukiwania — usługa Azure Search
-description: Przykłady ulepszania środowiska użytkownika końcowego w aplikacjach opartych na danych przy użyciu funkcji autouzupełniania usługi Azure Search i interfejsów API sugestii.
+title: Przykład funkcji autouzupełniania dodawania typeahead do pola wyszukiwania — usługa Azure Search
+description: Włącz typeahead akcji zapytania w usłudze Azure Search, tworząc sugestory i sformułowania żądań, które wypełnić pole wyszukiwania z ukończonych terminów ani fraz.
 manager: pablocas
 author: mrcarter8
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 03/22/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: b754f00e9bed34717734c4aec81e5489d2c12b63
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b78fdf0c493e4631e4cdd7e26b154570b6226d1f
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200280"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369583"
 ---
-# <a name="example-add-autocomplete-to-your-search-box-using-azure-search"></a>Przykład: Dodawanie autouzupełniania do pola wyszukiwania przy użyciu usługi Azure Search
+# <a name="example-add-autocomplete-to-partial-term-inputs-in-azure-search"></a>Przykład: Dodawanie funkcji autouzupełniania do wejść częściowe termin w usłudze Azure Search
+
+Tę funkcję wersji zapoznawczej "zakończy się" wprowadzanie terminu częściowe poprzez dostarczenie ukończone termin z dokumentów do indeksu usługi Azure Search. Zwróć uwagę, tę funkcję w komercyjnych wyszukiwarek. Obecnie w publicznej wersji zapoznawczej można teraz dodać tej funkcji, do rozwiązania usługi Azure Search, aby uprościć pobierać zapytania.
 
 W tym przykładzie dowiesz się, jak używać [sugestie](https://docs.microsoft.com/rest/api/searchservice/suggestions), [autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) i [aspektami](search-faceted-navigation.md) w [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/) i [Zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) do kompilacji okno wyszukiwania zaawansowanego. 
 

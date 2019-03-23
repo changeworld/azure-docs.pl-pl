@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: danlep
-ms.openlocfilehash: 9aa80cf3cb02237cea11e370151eda8c67c7b10e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3c1c83bb0c3e46a7eaab519050d9c556e2cc1a7a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856755"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372288"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Zainstaluj wolumin tajny w usłudze Azure Container Instances
 
@@ -31,7 +31,7 @@ Aby wdrożyć kontener z jednego lub więcej wpisów tajnych za pomocą wiersza 
 az container create \
     --resource-group myResourceGroup \
     --name secret-volume-demo \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --secrets mysecret1="My first secret FOO" mysecret2="My second secret BAR" \
     --secrets-mount-path /mnt/secrets
 ```
@@ -68,7 +68,7 @@ properties:
   - name: aci-tutorial-app
     properties:
       environmentVariables: []
-      image: microsoft/aci-helloworld:latest
+      image: mcr.microsoft.com/azuredocs/aci-helloworld:latest
       ports: []
       resources:
         requests:
@@ -105,7 +105,8 @@ Następnie dla każdego kontenera w grupie kontenerów, w którym chcesz zainsta
 
 Następujący szablon usługi Resource Manager definiuje grupę kontenerów za pomocą jednego kontenera, który instaluje *klucz tajny* woluminu w `/mnt/secrets`. Wolumin tajny ma dwa klucze tajne, "mysecret1" i "mysecret2."
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json --> [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
+[!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
 Wdrażanie przy użyciu szablonu usługi Resource Manager, należy zapisać w pliku o nazwie powyższego kodu JSON `deploy-aci.json`, a następnie wykonaj [Utwórz wdrożenie grupy az] [ az-group-deployment-create] polecenia `--template-file` parametru:
 

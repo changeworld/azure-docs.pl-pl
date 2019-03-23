@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: 7f123187ea869931b0701fd9d68372deb0b272e1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879075"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351868"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Samouczek: używanie modelu ONNX z usługi Custom Vision z funkcją Windows ML (wersja zapoznawcza)
 
@@ -51,7 +51,7 @@ Przykładowa aplikacja jest dostępna na stronie [https://github.com/Azure-Sampl
 
 1. Naciśnij klawisz `F5`, aby uruchomić aplikację z poziomu programu Visual Studio. Może zostać wyświetlony monit o włączenie trybu dewelopera. Więcej informacji można znaleźć w artykule [Enable your device for development](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) (Konfigurowanie urządzenia pod kątem tworzenia aplikacji).
 
-2. Po uruchomieniu aplikacji wybierz obraz do ocenienia przy użyciu przycisku.
+1. Po uruchomieniu aplikacji wybierz obraz do ocenienia przy użyciu przycisku.
 
 ## <a name="use-your-own-model"></a>Używanie własnego modelu
 
@@ -65,8 +65,8 @@ Aby używać własnego modelu, wykonaj następujące czynności:
 
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder Assets, a następnie wybierz pozycję __Dodaj istniejący element__. Wybierz plik ONNX.
 
-1. W Eksploratorze rozwiązań wybierz plik ONNX z folderu Assets. Zmień następujące właściwości pliku: 
-    
+1. W Eksploratorze rozwiązań wybierz plik ONNX z folderu Assets. Zmień następujące właściwości pliku:
+
     * __Akcja kompilacji__  ->  __Zawartość__
     * __Kopiuj do katalogu wyjściowego__  ->  __Kopiuj, jeśli nowszy__
 
@@ -76,7 +76,7 @@ Aby używać własnego modelu, wykonaj następujące czynności:
 
 1. Kliknij przycisk, aby wybrać obraz do oceny.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby poznać więcej sposobów eksportowania i używania modeli Custom Vision, przeczytaj następujące artykuły:
 
