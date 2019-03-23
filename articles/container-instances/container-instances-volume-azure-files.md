@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f3d4bfa7d8ffda1ab2789927d03a777fab0ed89c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 365264d40554f45533e2ddf0aeb9d85f3e8f8d2d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281585"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370622"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Instalowanie udziału plików platformy Azure w usłudze Azure Container Instances
 
@@ -70,7 +70,7 @@ Aby zainstalować udział plików platformy Azure jako woluminu w kontenerze, na
 az container create \
     --resource-group $ACI_PERS_RESOURCE_GROUP \
     --name hellofiles \
-    --image microsoft/aci-hellofiles \
+    --image mcr.microsoft.com/azuredocs/aci-hellofiles \
     --dns-name-label aci-demo \
     --ports 80 \
     --azure-file-volume-account-name $ACI_PERS_STORAGE_ACCOUNT_NAME \
@@ -83,7 +83,7 @@ Wartość `--dns-name-label` musi być unikatowa w regionie platformy Azure, w k
 
 ## <a name="manage-files-in-mounted-volume"></a>Zarządzanie plikami w woluminie
 
-Po uruchomieniu kontenera, można użyć prostej aplikacji sieci web wdrażane za pomocą [microsoft/aci-hellofiles] [ aci-hellofiles] obrazu do tworzenia małych plików tekstowych w udziale plików platformy Azure w określonej ścieżce instalacji. Uzyskaj aplikację internetową w pełni kwalifikowaną nazwę domeny (FQDN) za pomocą [az container show] [ az-container-show] polecenia:
+Po uruchomieniu kontenera, można użyć prostej aplikacji sieci web wdrażane za pomocą programu Microsoft [aci hellofiles] [ aci-hellofiles] obrazu do tworzenia małych plików tekstowych w udziale plików platformy Azure w określonej ścieżce instalacji. Uzyskaj aplikację internetową w pełni kwalifikowaną nazwę domeny (FQDN) za pomocą [az container show] [ az-container-show] polecenia:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
@@ -140,7 +140,7 @@ Dowiedz się, jak zainstalować inne typy woluminu w usłudze Azure Container In
 * [Zainstaluj wolumin tajny w usłudze Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->
-[aci-hellofiles]: https://hub.docker.com/r/microsoft/aci-hellofiles/
+[aci-hellofiles]: https://hub.docker.com/_/microsoft-azuredocs-aci-hellofiles 
 [portal]: https://portal.azure.com
 [storage-explorer]: https://storageexplorer.com
 

@@ -10,18 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4c1d7357dc78ca6c9387fc594f3d49f043008631
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95a78fafcd83e6f56f26ef6670beaa179085de62
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120580"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359584"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Opracowywanie programów MapReduce przesyłania strumieniowego HDInsight w języku Python
 
 Dowiedz się, jak używać języka Python w transmisji strumieniowej działania MapReduce. Apache Hadoop udostępnia interfejs API przesyłania strumieniowego dla MapReduce, która pozwala na zapis mapy i zmniejszyć funkcji w językach innych niż Java. Kroki opisane w tym dokumencie zaimplementować mapy i zmniejszyć składniki w języku Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Apache Hadoop oparte na systemie Linux w klastrze HDInsight
 
@@ -33,7 +35,7 @@ Dowiedz się, jak używać języka Python w transmisji strumieniowej działania 
   > [!IMPORTANT]
   > Edytor tekstu, należy użyć LF, jako koniec wiersza. Za pomocą rsza z CRLF powoduje, że błędy podczas uruchamiania zadania MapReduce w klastrach HDInsight opartych na systemie Linux.
 
-* `ssh` i `scp` poleceń lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-3.8.0)
+* `ssh` i `scp` poleceń lub [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 
 ## <a name="word-count"></a>Liczba słów
 

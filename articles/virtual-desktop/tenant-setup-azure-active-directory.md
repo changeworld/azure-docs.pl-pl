@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 2dafb58a805a2da89852c84ebad08f1c495adb83
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 26bcae12ee5e053289dd18c9f378eff43a0b0e04
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318120"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368174"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Samouczek: Utwórz dzierżawę w Windows pulpitu wirtualnego (wersja zapoznawcza)
 
@@ -53,16 +53,16 @@ Aby udzielić uprawnień usługi:
 
 ## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>Przypisanie roli aplikacji TenantCreator do użytkownika w dzierżawie usługi Azure Active Directory
 
-Przypisanie użytkownika usługi Azure Active Directory TenantCreator roli aplikacji umożliwia użytkownikowi tworzenie dzierżawy Windows pulpit wirtualny skojarzony z usługą Azure Active Directory. Należy przypisać rolę TenantCreator do konta administratora globalnego.
+Przypisanie użytkownika usługi Azure Active Directory TenantCreator roli aplikacji umożliwia użytkownikowi tworzenie dzierżawy Windows pulpit wirtualny skojarzony z usługą Azure Active Directory. Należy użyć konta administratora globalnego usługi, aby przypisać rolę TenantCreator.
 
-Aby przypisać TenantCreator roli aplikacji do konta administratora globalnego:
+Aby przypisać rolę TenantCreator aplikacji przy użyciu konta administratora globalnego:
 
 1. Otwórz przeglądarkę i połącz się z [portalu Azure Active Directory](https://aad.portal.azure.com) przy użyciu konta administratora globalnego.
    - Jeśli pracujesz z wieloma dzierżawami usługi Azure AD, jest najlepszym rozwiązaniem, aby otworzyć sesję przeglądarki prywatnej i skopiuj i Wklej adresy URL do adresu.
-2. Wybierz **aplikacje dla przedsiębiorstw**, wyszukaj **pulpitu wirtualnego Windows** i wybierz aplikację.
+2. Wybierz **aplikacje dla przedsiębiorstw**, wyszukaj **pulpitu wirtualnego Windows**. Zostaną wyświetlone dwie aplikacje, które podałeś zgodę dotyczącą w poprzedniej sekcji. Te dwie aplikacje, wybierz **pulpitu wirtualnego Windows**.
 3. Wybierz **użytkowników i grup**, a następnie wybierz **Dodaj użytkownika**.
 4. Wybierz użytkowników i grup w **Dodaj przydziału** bloku
-5. Wyszukiwanie konta użytkownika, który spowoduje utworzenie dzierżawy Windows pulpitu wirtualnego. 
+5. Wyszukiwanie konta użytkownika, który spowoduje utworzenie dzierżawy Windows pulpitu wirtualnego.
    - Dla uproszczenia może to być konto administratora globalnego.
 6. Wybierz konto użytkownika, kliknij przycisk **wybierz** przycisk, a następnie wybierz **przypisać**.
 

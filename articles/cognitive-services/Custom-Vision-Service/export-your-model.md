@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 080a4691869c4deaf86f0e27961e80b60d439f05
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857257"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351302"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Eksportowanie modelu do użytku z urządzeniami przenośnymi
 
-Usługa Custom Vision Service umożliwia klasyfikatorów, które mają zostać wyeksportowane do uruchamiania w trybie offline. Można osadzać klasyfikatora wyeksportowany w aplikacji i uruchom lokalnie na urządzeniu w czasie rzeczywistym klasyfikacji. 
+Usługa Custom Vision Service umożliwia klasyfikatorów, które mają zostać wyeksportowane do uruchamiania w trybie offline. Można osadzać klasyfikatora wyeksportowany w aplikacji i uruchom lokalnie na urządzeniu w czasie rzeczywistym klasyfikacji.
 
 Usługa Custom Vision Service obsługuje polecenie eksportuje następujące:
 
@@ -37,7 +37,7 @@ Usługa Custom Vision Service obsługuje polecenie eksportuje następujące:
 
 > [!NOTE]
 > Kroki opisane w tej sekcji jest stosowane tylko wtedy, jeśli masz istniejące klasyfikatora, który nie jest ustawiony na compact domeny.
- 
+
 Aby przekonwertować domeny istniejącego klasyfikatora, użyj następujących kroków:
 
 1. Z [Custom vision strony](https://customvision.ai), wybierz opcję __Home__ ikonę, aby wyświetlić listę projektów. Można również użyć [ https://customvision.ai/projects ](https://customvision.ai/projects) Aby wyświetlić swoje projekty.

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: ''
-ms.date: 03/13/2019
+ms.date: 03/23/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: 1c105548f19994c4ca0ce161eedcfe11736864c7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285670"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370027"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Wdrażanie usługi App Service w konfiguracji wysokiej dostępności
 
@@ -54,8 +54,7 @@ Przed rozpoczęciem korzystania z tego szablonu, upewnij się, że następujące
 ### <a name="deploy-the-app-service-infrastructure"></a>Wdrażanie infrastruktury usługi App Service
 Wykonaj kroki w tej sekcji, aby utworzyć niestandardowe wdrożenie przy użyciu **appservice-udziału plików — sqlserver-ha** szablonu szybkiego startu platformy Azure Stack.
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Wybierz **\+** **Utwórz zasób** > **niestandardowe**, a następnie **wdrożenie szablonu**.
 
@@ -94,8 +93,7 @@ Upewnij się, że rejestrowania każdej z tych wartości danych wyjściowych:
 
 Wykonaj następujące kroki, aby odnaleźć wartości danych wyjściowych szablonu:
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. W portalu administracyjnym wybierz **grup zasobów** i następnie nazwę grupy zasobów utworzoną w ramach wdrożenia niestandardowego (**app-service-ha** w tym przykładzie). 
 
@@ -168,9 +166,20 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
     ![Informacje o danych wyjściowych udziale plików](media/app-service-deploy-ha/07.png)
 
-9. Ponieważ maszyny są używane do instalowania usługi App Service nie znajduje się w tej samej sieci wirtualnej jako serwera plików używany do hostowania udziału plików w usłudze App Service, nie można rozpoznać nazwy. Jest to oczekiwane zachowanie.<br><br>Sprawdź poprawność wprowadzonej informacje konta i ścieżka UNC udziału plików, a następnie naciśnij klawisz **tak** w oknie dialogowym alertu, aby kontynuować instalację usługi App Service.
+9. Ponieważ maszyny są używane do instalowania usługi App Service nie znajduje się w tej samej sieci wirtualnej jako serwera plików używany do hostowania udziału plików w usłudze App Service, nie można rozpoznać nazwy. **Jest to oczekiwane zachowanie**.<br><br>Sprawdź poprawność wprowadzonej informacje konta i ścieżka UNC udziału plików, a następnie naciśnij klawisz **tak** w oknie dialogowym alertu, aby kontynuować instalację usługi App Service.
 
     ![Oczekiwano pojawia się okno dialogowe](media/app-service-deploy-ha/08.png)
+
+    Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików. Przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+    - Źródło: Dowolne
+    - Zakres portów źródłowych: *
+    - Miejsce docelowe: Adresy IP
+    - Docelowy zakres adresów IP: Zakres adresów IP dla serwera plików
+    - Zakres portów docelowych: 445
+    - Protokół: TCP
+    - Akcja: Zezwalaj
+    - Priorytet: 700
+    - Nazwa: Outbound_Allow_SMB445
 
 10. Podaj identyfikator aplikacji tożsamości i ścieżki i hasła, certyfikaty tożsamości, a następnie kliknij przycisk **dalej**:
     - Certyfikat aplikacji tożsamości (w formacie **sso.appservice.local.azurestack.external.pfx**)
@@ -189,7 +198,7 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
     ![Informacje o połączeniu programu SQL Server](media/app-service-deploy-ha/10.png)
 
-12. Ponieważ maszyny są używane do instalowania usługi App Service nie znajduje się w tej samej podsieci co program SQL server używana do hostowania baz danych usługi App Service, nie będziesz w stanie rozpoznać nazwę.  Jest to oczekiwane zachowanie.<br><br>Sprawdź poprawność wprowadzonej nazwy i konta informacje programu SQL Server, a następnie naciśnij klawisz **tak** w celu kontynuowania instalacji usługi App Service. Kliknij przycisk **Dalej**.
+12. Ponieważ maszyny są używane do instalowania usługi App Service nie znajduje się w tej samej podsieci co program SQL server używana do hostowania baz danych usługi App Service, nie będziesz w stanie rozpoznać nazwę.  **Jest to oczekiwane zachowanie**.<br><br>Sprawdź poprawność wprowadzonej nazwy i konta informacje programu SQL Server, a następnie naciśnij klawisz **tak** w celu kontynuowania instalacji usługi App Service. Kliknij przycisk **Dalej**.
 
     ![Informacje o połączeniu programu SQL Server](media/app-service-deploy-ha/11.png)
 
@@ -231,3 +240,5 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 [Skalowanie usługi App Service](azure-stack-app-service-add-worker-roles.md). Może być konieczne dodanie dodatkowych usługi App Service infrastruktury ról procesów roboczych do spełnienia określonych wymagań oczekiwanych aplikacji w danym środowisku. Domyślnie usługi App Service w usłudze Azure Stack obsługuje warstwy bezpłatna i współdzielona procesu roboczego. Aby dodać inne warstwy procesu roboczego, należy dodać większej liczby ról procesów roboczych.
 
 [Konfigurowanie źródeł wdrożenia](azure-stack-app-service-configure-deployment-sources.md). Dodatkowa konfiguracja jest wymagana do obsługi wdrożenia na żądanie od wielu dostawców kontroli źródła, takich jak GitHub, BitBucket, OneDrive i DropBox.
+
+[Tworzenie kopii zapasowej usługi App Service](app-service-back-up.md). Po pomyślnie wdrażanie i konfigurowanie usługi App Service należy upewnić się, że wszystkie składniki niezbędne do odzyskiwania po awarii kopie zapasowe są tworzone zapobiegania utracie danych i unikanie niepotrzebnych przestojów podczas operacji odzyskiwania.

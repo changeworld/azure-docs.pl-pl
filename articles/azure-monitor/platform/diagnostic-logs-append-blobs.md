@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f626ef4cfb385a62f68ab611b77dd0c307cd3820
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882383"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370061"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Przygotowanie do zmiany formatu do dzienników diagnostycznych usługi Azure Monitor zarchiwizować na koncie magazynu
 
@@ -24,7 +24,7 @@ ms.locfileid: "54882383"
 
 ## <a name="what-is-changing"></a>Co ulega zmianie
 
-Usługa Azure Monitor udostępnia możliwości, które pozwala wysyłać dane diagnostyczne zasobów i dane dzienników aktywności do konta usługi Azure storage, przestrzeń nazw usługi Event Hubs, lub do usługi Log Analytics. Aby rozwiązać problem z wydajnością systemu, na **1 listopada 2018, 12:00 do północy czasu UTC** zmieni format dziennika danych wysyła do magazynu obiektów blob. Jeśli masz, czyli narzędzia odczytywania danych z magazynu obiektów blob, należy zaktualizować narzędzi w taki sposób, aby zrozumieć nowego formatu danych.
+Usługa Azure Monitor udostępnia możliwości, który umożliwia wysyłanie danych diagnostycznych zasobów i dane dzienników aktywności do konta usługi Azure storage, przestrzeń nazw usługi Event Hubs, lub do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor. Aby rozwiązać problem z wydajnością systemu, na **1 listopada 2018, 12:00 do północy czasu UTC** zmieni format dziennika danych wysyła do magazynu obiektów blob. Jeśli masz, czyli narzędzia odczytywania danych z magazynu obiektów blob, należy zaktualizować narzędzi w taki sposób, aby zrozumieć nowego formatu danych.
 
 * Czwartek, listopad 1 2018 północy czasu UTC, 12:00, format obiektów blob zmieni się [wierszy JSON](http://jsonlines.org/). Oznacza to, że każdy rekord będzie rozdzielone znakami nowego wiersza, z tablicą nie rekordów zewnętrzne i nie przecinkami, między rekordami JSON.
 * Zmiany formatu obiektu blob dla wszystkich ustawień diagnostycznych dla wszystkich subskrypcji na raz. Pierwszy plik PT1H.json wysyłanego do 1 listopada użyje ten nowy format. Nazwy obiektów blob i kontener pozostają takie same.

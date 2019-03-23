@@ -1,17 +1,17 @@
 ---
 title: Pojęcia wysokiej dostępności w usłudze Azure Database dla serwera MariaDB
 description: Ten temat zawiera informacje o wysokiej dostępności, korzystając z usługi Azure Database dla serwera MariaDB
-author: jasonwhowell
-ms.author: jasonh
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: e1e4103360c2864f6a63f2eb0c7f146cac779cb6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ba561cba21b0b83b6a19fffc2fdfebe8ec8b8ed9
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538161"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351239"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Pojęcia wysokiej dostępności w usłudze Azure Database dla serwera MariaDB
 Usługa Azure Database for MariaDB oferuje gwarantowaną wysoką dostępność. Finansowo umowy dotyczącej poziomu usług (SLA) wynosi 99,99% po ogólnym udostępnieniu. Nie ma praktycznie nie aplikacji, czas przestoju podczas korzystania z tej usługi.

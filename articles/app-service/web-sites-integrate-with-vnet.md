@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112623"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369704"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z siecią wirtualną platformy Azure
 Ten dokument zawiera opis funkcji integracji sieci wirtualnej usługi Azure App Service i pokazuje, jak je skonfigurować za pomocą aplikacji w [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure] [ VNETOverview] (Vnet) pozwala na umieszczenie wielu zasobów platformy Azure w sieci, lecz-internet. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu technologii sieci VPN. 
@@ -247,7 +247,7 @@ Istnieją trzy funkcje, które umożliwiają dostęp do zasobów hostowanych w s
 
 Połączenia hybrydowe wymagają zainstalowania agenta przekazywania o nazwie Manager(HCM) połączenie hybrydowe w sieci. HCM, musi mieć możliwość łączenia z platformy Azure, a także aplikacji. Połączenia hybrydowe nie wymaga dla ruchu przychodzącego internet dostępnym punkcie końcowym sieci zdalnej, w jakim są wymagane dla połączenia sieci VPN. HCM działa tylko w Windows, i może mieć maksymalnie pięć wystąpień do zapewnienia wysokiej dostępności. Mimo że połączeń hybrydowych TCP obsługuje tylko, a każdy punkt końcowy połączenia Hybrydowego musi być zgodna z kombinacji określonego hosta: port. 
 
-Funkcja środowiska App Service umożliwia uruchamianie wystąpienia pojedynczej dzierżawy usługi Azure App Service w sieci wirtualnej. Jeśli Twoje aplikacje znajdują się w środowisku usługi App Service, aplikacje mają dostęp zasobów w sieci wirtualnej bez żadnych dodatkowych czynności. Za pomocą i App Service Environment w wersji aplikacji, uruchom na pracowników bardziej wydajne i można skalować do 100 wystąpień ASP. Środowiska usługi App Service działa z wszystkich funkcji sieciowych, w tym usługi ExpressRoute i punktów końcowych usługi.  
+Funkcja środowiska App Service umożliwia uruchamianie wystąpienia pojedynczej dzierżawy usługi Azure App Service w sieci wirtualnej. Jeśli Twoje aplikacje znajdują się w środowisku usługi App Service, aplikacje mają dostęp zasobów w sieci wirtualnej bez żadnych dodatkowych czynności. W środowisku usługi App Service swoje aplikacje na bardziej zaawansowanych procesów roboczych a można skalować do 100 wystąpień ASP. Środowiska usługi App Service działa z wszystkich funkcji sieciowych, w tym usługi ExpressRoute i punktów końcowych usługi.  
 
 Choć używać niektórych przypadków nakładają się, żadna z tych funkcji można zastąpić, pozostałe. Wiedząc, jakie funkcji jest powiązany do Twoich potrzeb. Na przykład:
 

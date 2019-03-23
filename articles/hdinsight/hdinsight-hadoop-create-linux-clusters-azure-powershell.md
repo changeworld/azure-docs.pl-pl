@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 82f54e31b76b2b2f7dbf0afb59fa706e916fe2d0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 264b4737974010baffd82b38275a8fe56163e1f2
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438528"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361442"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu programu Azure PowerShell
 
@@ -26,15 +26,18 @@ Azure PowerShell to zaawansowane środowisko obsługi skryptów, którego można
 > Program Azure PowerShell jest dostępna tylko na komputerach klienckich Windows. Jeśli używasz klienta systemu Linux, Unix lub Mac OS X, zobacz [Tworzenie klastra HDInsight opartych na systemie Linux przy użyciu wiersza polecenia platformy Azure Classic](hdinsight-hadoop-create-linux-clusters-azure-cli.md) informacji o używaniu klasyczny interfejs wiersza polecenia, aby utworzyć klaster.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Musi być następujące oprogramowanie przed rozpoczęciem tej procedury:
 
 * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
+* [Azure PowerShell](/powershell/azure/install-Az-ps)
 
     > [!IMPORTANT]  
     > Obsługa programu Azure PowerShell do celów zarządzania zasobami usługi HDInsight przy użyciu usługi Azure Service Manager jest **przestarzała** i została usunięta z dniem 1 stycznia 2017 r. W czynnościach opisanych w niniejszym dokumencie są używane nowe polecenia cmdlet usługi HDInsight współpracujące z usługą Azure Resource Manager.
     >
-    > Wykonaj poniższe kroki w [Instalowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Aby zainstalować najnowszą wersję programu Azure PowerShell. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet współpracujących z usługą Azure Resource Manager, zobacz temat [Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów usługi HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md), aby uzyskać więcej informacji.
+    > Wykonaj poniższe kroki w [Instalowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) Aby zainstalować najnowszą wersję programu Azure PowerShell. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet współpracujących z usługą Azure Resource Manager, zobacz temat [Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów usługi HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md), aby uzyskać więcej informacji.
 
 ## <a name="create-cluster"></a>Tworzenie klastra
 
@@ -64,7 +67,7 @@ Może potrwać do 20 minut, aby utworzyć klaster.
 
 ## <a name="create-cluster-configuration-object"></a>Tworzenie klastra: Obiekt konfiguracji
 
-Można również utworzyć HDInsight konfiguracji obiekt przy użyciu `New-AzureRmHDInsightClusterConfig` polecenia cmdlet. Następnie można zmodyfikować ten obiekt konfiguracji, aby włączyć dodatkowe opcje konfiguracji dla klastra. Na koniec użyj `-Config` parametru `New-AzureRmHDInsightCluster` polecenia cmdlet do korzystania z konfiguracji.
+Można również utworzyć HDInsight konfiguracji obiekt przy użyciu `New-AzHDInsightClusterConfig` polecenia cmdlet. Następnie można zmodyfikować ten obiekt konfiguracji, aby włączyć dodatkowe opcje konfiguracji dla klastra. Na koniec użyj `-Config` parametru `New-AzHDInsightCluster` polecenia cmdlet do korzystania z konfiguracji.
 
 Poniższy skrypt tworzy obiekt konfiguracji, aby skonfigurować serwer R Server na typ klastra HDInsight. Konfiguracja umożliwia węzeł krawędzi, RStudio i dodatkowe konto magazynu.
 

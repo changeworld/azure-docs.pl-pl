@@ -3,7 +3,7 @@ title: 'Samouczek: instalowanie aplikacji w autonomicznym klastrze usługi Servi
 description: W tym samouczku dowiesz się, jak zainstalować aplikację w autonomicznym klastrze usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: david-stanford
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/11/2018
-ms.author: dastanfo
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 65c0ca98393fbb4f54eee2f4864218f231765904
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 392fcdd9b9df3eb37c8e105c846a6bddfddeb4d1
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208577"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370435"
 ---
-# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Samouczek: wdrażanie aplikacji w autonomicznym klastrze usługi Service Fabric
+# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Samouczek: Wdrażanie aplikacji na klastra autonomicznego usługi Service Fabric
 
 Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. Ta seria samouczków przedstawia proces tworzenia klastra autonomicznego hostowanego w usłudze AWS i wdrażania w nim aplikacji.
 
@@ -67,7 +67,7 @@ Po pobraniu aplikacji można ją wdrożyć w klastrze bezpośrednio z programu V
 
     ![Odpowiedź interfejsu API z klastra](./media/service-fabric-tutorial-standalone-cluster/deployed-app.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W części trzeciej tej serii przedstawiono sposób wdrażania aplikacji w klastrze:
 

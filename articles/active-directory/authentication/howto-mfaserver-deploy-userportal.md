@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbee5316b78838bedc62454e8c1954eb5f9205ff
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317133"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370367"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Portal użytkowników serwera usługi Azure Multi-Factor Authentication
 
@@ -28,7 +28,7 @@ Można skonfigurować administratorów portalu użytkowników oraz przyznać im 
 
 W zależności od środowiska można wdrożyć portal użytkowników na tym samym serwerze co serwer usługi Azure Multi-Factor Authentication lub na innym serwerze internetowym.
 
-![Portal użytkowników usługi MFA](./media/howto-mfaserver-deploy-userportal/portal.png)
+![Strony logowania portalu użytkowników serwera usługi MFA](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
 > Portal użytkowników jest dostępny tylko na serwerze usługi Azure Multi-Factor Authentication. Jeśli korzystasz z usługi Multi-Factor Authentication w chmurze, przekieruj użytkowników do artykułu [Konfigurowanie konta na potrzeby weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-first-time.md) lub [Zarządzanie ustawieniami weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-manage-settings.md).
@@ -118,6 +118,7 @@ Po zainstalowaniu portalu użytkowników należy skonfigurować serwer usługi A
 3. Zdefiniuj, którzy użytkownicy powinni być administratorami, na karcie **Administratorzy**. Możesz utworzyć szczegółowe uprawnienia administracyjne, korzystając z pól wyboru i list rozwijanych w polach Dodaj/Edytuj.
 
 Konfiguracja opcjonalna:
+
 - **Pytania zabezpieczające** — zdefiniuj zatwierdzone pytania zabezpieczające dla środowiska oraz język, w którym mają być wyświetlane.
 - **Przekazane sesje** — skonfiguruj integrację portalu użytkownika z opartą na formularzu witryną internetową przy użyciu usługi MFA.
 - **Zaufane adresy IP** — zezwól użytkownikom na pomijanie usługi MFA podczas uwierzytelniania na podstawie listy zaufanych zakresów lub adresów IP.
@@ -141,9 +142,12 @@ Serwer usługi Azure Multi-Factor Authentication zapewnia kilka opcji związanyc
 | Użyj tokenu OATH w przypadku uwierzytelniania rezerwowego | Umożliwia korzystanie z tokenów OATH w przypadku niepowodzenia weryfikacji dwuetapowej. Można również określić limit czasu sesji w minutach. |
 | Włącz rejestrowanie | Włącza funkcję rejestrowania w portalu użytkowników. Pliki dziennika znajdują się w lokalizacji: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
+> [!IMPORTANT]
+> Począwszy od marca 2019 opcji połączenia telefonicznego nie będą dostępne dla użytkowników serwera usługi MFA w dzierżawach bezpłatnej/wersji próbnej usługi Azure AD. Ta zmiana nie wpływa na wiadomości SMS. Połączenie telefoniczne będą nadal dostępne dla użytkowników w płatną dzierżaw usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżaw bezpłatnej/wersji próbnej usługi Azure AD.
+
 Te ustawienia stają się widoczne dla użytkownika w portalu po ich włączeniu oraz po zalogowaniu się do tego portalu.
 
-![Ustawienia portalu użytkowników](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![Zarządzanie kontem serwera usługi MFA za pomocą portalu użytkownika](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Samodzielna rejestracja użytkownika
 
@@ -159,7 +163,7 @@ Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika nu
 
 Jeśli użytkownik wybierze metodę weryfikacji Wiadomość SMS lub jeśli wstępna konfiguracja zakłada użycie tej metody, na stronie jest wyświetlany monit o wprowadzenie numeru telefonu komórkowego. Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika numeru PIN, na stronie wyświetla się także monit o wprowadzenie numeru PIN.  Po wprowadzeniu numeru telefonu i numeru PIN (jeśli dotyczy) użytkownik klika przycisk **Wyślij teraz do mnie wiadomość SMS w celu uwierzytelnienia**. Usługa Azure Multi-Factor Authentication przeprowadza weryfikację SMS z użyciem telefonu komórkowego użytkownika. Użytkownik otrzymuje wiadomość SMS z jednorazowym kodem dostępu, a następnie w odpowiedzi na wiadomość podaje ten kod oraz numer PIN (jeśli dotyczy).
 
-![Wiadomość SMS z portalu użytkowników](./media/howto-mfaserver-deploy-userportal/text.png)
+![Weryfikacja portalu użytkownika, za pomocą wiadomości SMS](./media/howto-mfaserver-deploy-userportal/text.png)
 
 Jeśli użytkownik wybierze metodę weryfikacji z użyciem aplikacji mobilnej, na stronie jest wyświetlany monit o zainstalowanie aplikacji Microsoft Authenticator na urządzeniu i wygenerowanie kodu aktywacji. Po zainstalowaniu aplikacji użytkownik klika przycisk Generuj kod aktywacji.
 

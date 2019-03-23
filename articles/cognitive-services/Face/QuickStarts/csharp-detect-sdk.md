@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: eaaeda1460ecffc2b1a53bb46901aedc2e9563c4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: e9f613b6cd02bd1e85b75db7a3b2c2b4adccce3f
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313317"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372135"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu zestawu .NET SDK rozpoznawania twarzy
 
@@ -32,8 +32,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)** i nadaj jej nazwę **FaceDetection**. 
 1. Jeśli w rozwiązaniu istnieją inne projekty, wybierz ten projekt jako pojedynczy projekt startowy.
-1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Kliknij kartę **Przeglądaj**, wybierz pozycję **Uwzględnij wersję wstępną**, a następnie znajdź i zainstaluj następujący pakiet:
+1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Kliknij przycisk **Przeglądaj** kartę, a następnie wybierz pozycję **Uwzględnij wersję wstępną**; Znajdź i zainstaluj następujące pakiety:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
+    - Microsoft.Rest.ClientRuntime
+    - Microsoft.Rest.ClientRuntime.Azure
+    - Newtonsoft.Json
 
 ## <a name="add-face-detection-code"></a>Dodawanie kodu służącego do wykrywania twarzy
 
@@ -92,7 +95,7 @@ https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg
 Male 37   Female 56
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym przewodniku Szybki Start utworzono prostą aplikację konsolową .NET, która używa interfejsu API rozpoznawania twarzy do wykrywania twarzy na obrazach lokalnych i zdalnych. Następnie postępuj zgodnie z informacjami zawartymi w bardziej szczegółowym samouczku, aby dowiedzieć się, jak w intuicyjny sposób prezentować informacje o twarzy użytkownikom.
 

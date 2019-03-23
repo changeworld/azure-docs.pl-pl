@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93313557781c6b3788d8b4d43d6676fc17625709
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d8f7808401b2e11a38b239a353e3b7af2ffcffb3
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201317"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361306"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Tworzenie akcji skryptu skryptów dla klastrów HDInsight Windows
 Dowiedz się, jak można tworzyć skrypty Akcja skryptu dla HDInsight. Aby uzyskać informacji na temat za pomocą skryptów akcji skryptu, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md). Aby uzyskać ten sam artykuł, przeznaczony dla klastrów HDInsight opartych na systemie Linux, zobacz [skrypty opracowywanie akcji skryptu do HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -32,6 +32,8 @@ Akcja skryptu może służyć do instalowania dodatkowego oprogramowania, urucho
 > System.Management.Automation.CommandNotFoundException; ExceptionMessage : Termin "Save-HDIFile" nie został rozpoznany jako nazwa polecenia cmdlet, funkcji, pliku skryptu lub program wykonywalny. Sprawdź pisownię nazwy lub jeśli ścieżka został uwzględniony, sprawdź, czy ścieżka jest poprawna i spróbuj ponownie.
 > 
 > Jest on, ponieważ nie włączono metody pomocnika.  Zobacz [metody pomocnika do niestandardowych skryptów](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="sample-scripts"></a>Przykładowe skrypty
 W przypadku tworzenia klastrów HDInsight w systemie operacyjnym Windows, akcji skryptu jest skrypt programu Azure PowerShell. Poniższy skrypt to przykład konfigurowania plików konfiguracji lokacji:
@@ -191,8 +193,8 @@ Skrypty służące do dostosowywania klastra musi być albo w domyślne konto ma
 
 W tym przykładzie należy zagwarantować, że kontener `somecontainer` na koncie magazynu `somestorageaccount` jest publicznie dostępny. W przeciwnym razie skrypt zgłasza wyjątek "Nie znaleziono" i zakończyć się niepowodzeniem.
 
-### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Parametry są przekazywane do polecenia cmdlet Add-AzureRmHDInsightScriptAction
-Aby przekazać wiele parametrów do polecenia cmdlet Add-AzureRmHDInsightScriptAction, należy sformatować wartość ciągu, który zawiera wszystkie parametry skryptu. Na przykład:
+### <a name="pass-parameters-to-the-add-azhdinsightscriptaction-cmdlet"></a>Parametry są przekazywane do polecenia cmdlet Add-AzHDInsightScriptAction
+Aby przekazać wiele parametrów do polecenia cmdlet Add-AzHDInsightScriptAction, należy sformatować wartość ciągu, który zawiera wszystkie parametry skryptu. Na przykład:
 
     "-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
 

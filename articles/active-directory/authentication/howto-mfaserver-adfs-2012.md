@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213a55cb02c718628a4a2d64bdee98ab66af5ce3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 970e570d9ad27da2690cd38fe480823128322db0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317055"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370707"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication do współdziałania z usługami AD FS w systemie Windows Server
 
@@ -45,30 +45,22 @@ Przed rozpoczęciem należy uwzględnić następujące informacje:
 2. W konsoli zarządzania serwerem usługi Azure Multi-Factor Authentication kliknij ikonę **AD FS**. Wybierz opcje **Zezwalaj na rejestrację użytkownika** i **Zezwalaj użytkownikom na wybór metody**.
 3. Wybierz wszystkie dodatkowe opcje, które chcesz określić dla Twojej organizacji.
 4. Kliknij pozycję **Zainstaluj adapter ADFS**.
-   
-   <center>
-   
-   ![Chmura](./media/howto-mfaserver-adfs-2012/server.png)</center>
+
+   ![Zainstaluj Adapter AD FS za pomocą konsoli serwera usługi MFA](./media/howto-mfaserver-adfs-2012/server.png)
 
 5. Jeśli zostanie wyświetlone okno usługi Active Directory, oznacza to dwie rzeczy. Komputer jest przyłączony do domeny, a konfiguracja usługi Active Directory pod kątem zabezpieczenia komunikacji między adapterem AD FS a usługą Multi-Factor Authentication nie została ukończona. Kliknij przycisk **Dalej**, aby przeprowadzić tę konfigurację automatycznie, lub zaznacz pole wyboru **Pomiń automatyczną konfigurację usługi Active Directory i skonfiguruj ustawienia ręcznie**. Kliknij przycisk **Dalej**.
 6. Jeśli zostanie wyświetlone okno grupy lokalnej, oznacza to dwie rzeczy. Komputer nie jest przyłączony do domeny, a konfiguracja grupy lokalnej pod kątem zabezpieczenia komunikacji między adapterem AD FS a usługą Multi-Factor Authentication nie została ukończona. Kliknij przycisk **Dalej**, aby przeprowadzić tę konfigurację automatycznie, lub zaznacz pole wyboru **Pomiń automatyczną konfigurację grupy lokalnej i skonfiguruj ustawienia ręcznie**. Kliknij przycisk **Dalej**.
 7. W Kreatorze instalacji kliknij przycisk **Dalej**. Serwer Azure Multi-Factor Authentication tworzy grupę PhoneFactor Admins i dodaje do niej konto usług AD FS.
-   <center>
-   
-   ![Chmura](./media/howto-mfaserver-adfs-2012/adapter.png)</center>
 8. Na stronie **Uruchamianie instalatora** kliknij przycisk **Dalej**.
 9. W oknie instalatora adaptera AD FS usługi Multi-Factor Authentication kliknij przycisk **Dalej**.
 10. Po zakończeniu instalacji kliknij przycisk **Zamknij**.
-11. Po zainstalowaniu adaptera należy zarejestrować go za pomocą usług AD FS. Uruchom program Windows PowerShell i uruchom następujące polecenie:<br>
+11. Po zainstalowaniu adaptera należy zarejestrować go za pomocą usług AD FS. Uruchom program Windows PowerShell i uruchom następujące polecenie:
+
     `C:\Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1`
-    <center>
-    
-    ![Chmura](./media/howto-mfaserver-adfs-2012/pshell.png)</center>
+
 12. Aby używać nowo zarejestrowanego adaptera, edytuj globalne zasady uwierzytelniania w usługach AD FS. W konsoli zarządzania usług AD FS przejdź do węzła **Zasady uwierzytelniania**. W sekcji **Uwierzytelnianie wieloskładnikowe** kliknij link **Edytuj** obok sekcji **Ustawienia globalne**. W oknie **Edytowanie globalnych zasad uwierzytelniania** wybierz pozycję **Uwierzytelnianie wieloskładnikowe** jako dodatkową metodę uwierzytelniania, a następnie kliknij przycisk **OK**. Adapter zostanie zarejestrowany jako element WindowsAzureMultiFactorAuthentication. Uruchom ponownie usługę AD FS, aby zmiany wprowadzone w ramach rejestracji zaczęły obowiązywać.
 
-<center>
-
-![Chmura](./media/howto-mfaserver-adfs-2012/global.png)</center>
+![Edytuj globalne zasady uwierzytelniania](./media/howto-mfaserver-adfs-2012/global.png)
 
 Serwer usługi Multi-Factor Authentication jest teraz skonfigurowany jako dodatkowy dostawca uwierzytelniania do używania z usługami AD FS.
 
@@ -85,6 +77,7 @@ Serwer usługi Multi-Factor Authentication jest teraz skonfigurowany jako dodatk
 5. Po zakończeniu instalacji kliknij przycisk **Zamknij**.
 
 ## <a name="edit-the-multifactorauthenticationadfsadapterconfig-file"></a>Edytowanie pliku MultiFactorAuthenticationAdfsAdapter.config
+
 Edytuj plik MultiFactorAuthenticationAdfsAdapter.config, wykonując następujące czynności:
 
 1. Dla węzła **UseWebServiceSdk** ustaw wartość **true**.  
@@ -138,20 +131,22 @@ Aby zabezpieczyć zasób w chmurze, skonfiguruj regułę oświadczeń, tak aby u
 2. Po lewej stronie wybierz pozycję **Relacje zaufania jednostek zależnych**.
 3. Kliknij prawym przyciskiem myszy pozycję **Platforma tożsamości usługi Microsoft Office 365** i wybierz pozycję **Edytuj reguły oświadczeń...**
 
-   ![Chmura](./media/howto-mfaserver-adfs-2012/trustedip1.png)
+   ![Edytuj reguły oświadczeń w konsoli usług AD FS](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
 4. Na karcie Reguły przekształcania wystawiania kliknij pozycję **Dodaj regułę**.
 
-   ![Chmura](./media/howto-mfaserver-adfs-2012/trustedip2.png)
+   ![Edytuj reguły przekształcania w konsoli usług AD FS](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. W Kreatorze dodawania reguły przekształcania oświadczeń wybierz z listy rozwijanej pozycję **Przekazywanie lub filtrowanie oświadczenia przychodzącego**, a następnie kliknij przycisk **Dalej**.
 
-   ![Chmura](./media/howto-mfaserver-adfs-2012/trustedip3.png)
+   ![Dodaj kreatora reguły oświadczenia transform](./media/howto-mfaserver-adfs-2012/trustedip3.png)
 
 6. Nadaj regule nazwę.
 7. Wybierz wartość **Odwołania metod uwierzytelniania** jako typ oświadczenia przychodzącego.
 8. Wybierz pozycję **Przekazuj wszystkie wartości oświadczeń**.
-    ![Kreator dodawania reguły przekształcania dotyczącej oświadczeń](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+
+    ![Dodaj kreatora reguły oświadczenia Transform](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+
 9. Kliknij przycisk **Zakończ**. Zamknij konsolę zarządzania usługami AD FS.
 
 ## <a name="troubleshooting-logs"></a>Dzienniki rozwiązywania problemów

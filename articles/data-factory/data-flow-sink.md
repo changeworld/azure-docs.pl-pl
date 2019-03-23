@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a56f391aa76bd1216fd51d516adb836a2093bcba
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852444"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371143"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Mapowanie przekształcenie obiektu Sink przepływu danych
 
@@ -57,7 +57,7 @@ Jeśli chcesz zresetować mapowania kolumn, naciśnij przycisk "Ponownie zamapow
 ## <a name="file-name-options"></a>Opcje nazwy pliku
 
    * Domyślne: Zezwalaj na platformy Spark do nazwy plików na podstawie ustawień domyślnych część
-   * Wzorzec: Wprowadź nazwę dla plików danych wyjściowych
+   * Wzorzec: Wprowadź wzorzec dla plików danych wyjściowych. Na przykład "pożyczek [n]" spowoduje utworzenie loans1.csv, loans2.csv,...
    * Dla każdej partycji: Wprowadź nazwę pliku na partycję
    * Jako dane w kolumnie: Ustaw plik wyjściowy do wartości kolumny
 
@@ -66,11 +66,16 @@ Jeśli chcesz zresetować mapowania kolumn, naciśnij przycisk "Ponownie zamapow
 
 ## <a name="database-options"></a>Opcje bazy danych
 
-* Zezwalaj na insert, update, delete, wykonuje operację UPSERT. Wartość domyślna to umożliwia operacje wstawiania. Jeśli użytkownik chce aktualizacji, upsert lub Wstaw wiersze, należy najpierw dodać Przekształcenie wiersza polecenia alter do tagu wierszy dla tych określonych akcji.
+* Zezwalaj na insert, update, delete, wykonuje operację UPSERT. Wartość domyślna to umożliwia operacje wstawiania. Jeśli użytkownik chce aktualizacji, upsert lub usunąć wiersze, należy najpierw dodać Przekształcenie wiersza polecenia alter do tagu wierszy dla tych określonych akcji. Wyłączenie opcji "Zezwalaj insert" przestanie ADF z wstawianie nowych wierszy ze źródła.
 * Obcinanie tabeli (spowoduje to usunięcie wszystkich wierszy z tabeli docelowej przed ukończeniem przepływu danych)
 * Utwórz tabelę (sprawdza pozycję listy/Tworzenie tabeli docelowej przed ukończeniem przepływu danych)
 * Rozmiar wsadu dla dużej ilości danych. Wprowadź liczbę do zasobnika zapisy na fragmenty
 * Włącz tryb przejściowy: Spowoduje to poinstruować usługi ADF, aby podczas ładowania usługi Azure Data Warehouse jako zestaw danych ujścia przy użyciu technologii Polybase
+
+> [!NOTE]
+> W przepływu danych możesz poprosić usługi ADF, aby utworzyć nową definicję tabeli w docelowej bazie danych przez ustawienie zestawu danych podczas przekształcania ujścia, który ma nową nazwę tabeli. W zestawie danych SQL kliknij przycisk "Edit" poniżej nazwę tabeli i wprowadź nową nazwę tabeli. Następnie podczas przekształcania ujścia, włącz "Zezwalaj na schemat odejściem od tego stanu". Seth ustawienie "Importuj schemat" na wartość None.
+
+![Źródło przekształcenia schematu](media/data-flow/dataset2.png "schematu SQL")
 
 ![SQL ujścia opcje](media/data-flow/alter-row2.png "opcje SQL")
 

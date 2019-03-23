@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 03/05/2019
 ms.author: tamram
-ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444059"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370401"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Zarządzanie ustawieniami konta magazynu w witrynie Azure portal
 
@@ -20,9 +20,9 @@ Różne ustawienia dla konta magazynu są dostępne w [witryny Azure portal](htt
 
 ## <a name="access-control"></a>Kontrola dostępu
 
-Usługa Azure Storage obsługuje uwierzytelnianie przy użyciu usługi Azure Active Directory dla usługi Blob storage i Queue storage (wersja zapoznawcza) za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat uwierzytelniania za pomocą usługi Azure AD, zobacz [uwierzytelnienia dostępu do platformy Azure obiekty BLOB i kolejki, przy użyciu usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
+Usługa Azure Storage obsługuje uwierzytelnianie przy użyciu usługi Azure Active Directory dla usługi Blob storage i Queue storage przy użyciu kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat uwierzytelniania za pomocą usługi Azure AD, zobacz [uwierzytelnienia dostępu do platformy Azure obiekty BLOB i kolejki, przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
 
-**Kontroli dostępu** ustawień w portalu Azure oferują prosty sposób Przypisz role RBAC do użytkowników, grup, nazw głównych usług i zarządzanych tożsamości. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [Zarządzaj praw dostępu do danych obiektów blob i kolejek przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+**Kontroli dostępu** ustawień w portalu Azure oferują prosty sposób Przypisz role RBAC do użytkowników, grup, nazw głównych usług i zarządzanych tożsamości. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [Zarządzaj praw dostępu do danych obiektów blob i kolejek przy użyciu RBAC](storage-auth-aad-rbac.md).
 
 > [!NOTE]
 > Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD udostępnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z innej metody autoryzacji. Gdy możesz kontynuować klucza wspólnego autoryzacji za pomocą aplikacji, za pomocą usługi Azure AD zmierzone konieczności przechowywania klucza dostępu do konta za pomocą kodu. Nadal m ożna również udzielić szczegółową kontrolę dostępu do zasobów na koncie magazynu przy użyciu sygnatury dostępu współdzielonego (SAS), ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokeny sygnatur dostępu Współdzielonego ani martwić się o odwołaniu ze złamanymi zabezpieczeniami sygnatury dostępu Współdzielonego. 

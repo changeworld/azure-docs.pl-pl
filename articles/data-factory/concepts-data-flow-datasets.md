@@ -1,18 +1,18 @@
 ---
 title: Mapowanie przepływu danych w zestawach danych w usłudze Azure Data Factory
-description: Azure Data Factory mapowania przepływ danych ma sepecific zestawu danych zgodności
+description: Azure Data Factory mapowania przepływ danych ma zgodności określonego zestawu danych
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ad6cfdad519ab3901c58979970ea07439b3106e9
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 4e36e96947e6a8595230023065eb9f44a5a1f3d2
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726927"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371319"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapowanie przepływu danych w zestawach danych
 
@@ -42,6 +42,12 @@ Tworząc nowy zestaw danych jest pole wyboru "Data Flow zgodny" w prawym górnym
 ## <a name="import-schemas"></a>Importuj schematy
 
 Podczas importowania schematu przepływ danych zestawów danych, zostanie wyświetlony przycisk Importuj schemat. Kliknięcie tego przycisku spowoduje wyświetlenie dwóch opcji: Importuj ze źródła lub Importuj z pliku lokalnego. W większości przypadków będzie zaimportować schemat bezpośrednio ze źródła. Jednak jeśli masz istniejący plik schematu (pliku Parquet lub CSV z nagłówkami), możesz wskazać czy lokalnego pliku i Data Factory definiowania schematu, w zależności od tego pliku schematu.
+
+## <a name="create-new-table"></a>Tworzenie nowej tabeli
+
+W przepływu danych możesz poprosić usługi ADF, aby utworzyć nową definicję tabeli w docelowej bazie danych przez ustawienie zestawu danych podczas przekształcania ujścia, który ma nową nazwę tabeli. W zestawie danych SQL kliknij przycisk "Edit" poniżej nazwę tabeli i wprowadź nową nazwę tabeli. Następnie podczas przekształcania ujścia, włącz "Zezwalaj na schemat odejściem od tego stanu". Seth ustawienie "Importuj schemat" na wartość None.
+
+![Źródło przekształcenia schematu](media/data-flow/dataset2.png "schematu SQL")
 
 ## <a name="delimited-text-dataset"></a>Zestaw danych tekstu rozdzielanego
 

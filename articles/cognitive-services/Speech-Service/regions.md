@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1be51c4f5aede58a975dc9441b3bec7a83f7becd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 90fa56bb0e2044d24533c35a051d3f4b644e05b5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900917"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349641"
 ---
 # <a name="speech-service-supported-regions"></a>Usługa rozpoznawania mowy obsługiwane regiony
 
@@ -41,6 +41,7 @@ Zestaw SDK rozpoznawania mowy jest dostępna w regionach w celu **rozpoznawania 
  Środkowe stany USA | 'centralus' | https://centralus.cris.ai
  Środkowo-północne stany USA | 'northcentralus' | https://northcentralus.cris.ai
  Środkowo-południowe stany USA | 'southcentralus' | https://southcentralus.cris.ai
+ Indie Środkowe | "centralindia" | https://centralindia.cris.ai
  Azja Wschodnia | `eastasia` | https://eastasia.cris.ai
  Azja Południowo-Wschodnia | `southeastasia` | https://southeastasia.cris.ai
  Japonia Wschodnia | `japaneast` | https://japaneast.cris.ai

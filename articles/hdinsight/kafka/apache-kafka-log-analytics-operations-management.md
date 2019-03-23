@@ -9,18 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 281b4b8d20957cbbbf0f4ff52166e8c3a78b3e7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5154058bb1562b670e24f8813e979588a536f086
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108141"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359861"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla platformy Apache Kafka w HDInsight
 
 Dowiedz się, jak analizować dzienniki generowane przez platformy Apache Kafka w HDInsight przy użyciu dzienników usługi Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Włączanie dzienników usługi Azure Monitor dla platformy Apache Kafka
 
@@ -33,7 +35,7 @@ Kroki, aby włączyć dzienniki usługi Azure Monitor for HDInsight są takie sa
 3. Skonfiguruj klaster platformy Kafka przy użyciu dzienników usługi Azure Monitor. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Monitor dzienników do monitorowania HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
 
     > [!NOTE]  
-    > Możesz również skonfigurować klaster do używania usługi Azure Monitor dzienników za pomocą `Enable-AzureRmHDInsightOperationsManagementSuite` polecenia cmdlet. To polecenie cmdlet wymaga następujących informacji:
+    > Możesz również skonfigurować klaster do używania usługi Azure Monitor dzienników za pomocą `Enable-AzHDInsightOperationsManagementSuite` polecenia cmdlet. To polecenie cmdlet wymaga następujących informacji:
     >
     > * Nazwa klastra HDInsight.
     > * Identyfikator obszaru roboczego dla dzienników usługi Azure Monitor. Identyfikator obszaru roboczego można znaleźć w obszarze roboczym usługi Log Analytics.

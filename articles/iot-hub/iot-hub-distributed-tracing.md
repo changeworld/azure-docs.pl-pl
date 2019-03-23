@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f685521adbbd8b9be9128ff77ab38b42860518b6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100364"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351052"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów urządzenie chmura usługi Azure IoT za pomocą rozproszonego śledzenia (wersja zapoznawcza)
 
@@ -170,9 +170,16 @@ Te instrukcje dotyczą tworzenia przykładu na Windows. W innych środowiskach, 
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 
-### <a name="using-third-party-clients"></a>Przy użyciu klientów innych firm
+### <a name="workaround-for-third-party-clients"></a>Rozwiązania dla klientów innych firm
 
-Jeśli nie używasz zestawu SDK języka C, a mimo to chcesz do usługi IoT Hub w wersji zapoznawczej rozproszonego śledzenia, należy utworzyć komunikat, który ma zawierać `tracestate` właściwość aplikacji przy użyciu czasu utworzenia wiadomości w formacie sygnatura czasowa systemu unix. Na przykład `tracestate=timestamp=1539243209`. Aby określić procent komunikaty zawierające tę właściwość, należy zaimplementować logikę do nasłuchiwania zdarzeń zainicjowane w chmurze, takich jak liczba aktualizacji bliźniaczej reprezentacji.
+Ma ona **nie uproszczonych** się bez korzystania z zestawu SDK języka C w wersji zapoznawczej funkcja rozproszonego śledzenia. W związku z tym takie podejście nie jest zalecane.
+
+Najpierw musi implementować wszystkich podstawowych protokołu IoT Hub w wiadomości, postępując zgodnie z przewodnikiem dev [tworzenie i odczytu komunikatów usługi IoT Hub](iot-hub-devguide-messages-construct.md). Następnie edytuj właściwości protokołu MQTT/AMQP wiadomości w celu dodania `tracestate` jako **właściwość systemu**. Są to:
+
+* Dla protokołu MQTT, Dodaj `%24.tracestate=timestamp%3d1539243209` do tematu wiadomości, gdzie `1539243209` powinny być zastąpione przez czas utworzenia wiadomości w formacie sygnatura czasowa systemu unix. Na przykład można znaleźć implementacji [zestawu SDK języka C](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
+* W przypadku protokołu AMQP, dodać `key("tracestate")` i `value("timestamp=1539243209")` komunikatu jako adnotacji. Aby uzyskać implementację referencyjną, zobacz [tutaj](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
+
+Aby określić procent komunikaty zawierające tę właściwość, należy zaimplementować logikę do nasłuchiwania zdarzeń zainicjowane w chmurze, takich jak liczba aktualizacji bliźniaczej reprezentacji.
 
 ## <a name="update-sampling-options"></a>Opcje próbkowania aktualizacji 
 

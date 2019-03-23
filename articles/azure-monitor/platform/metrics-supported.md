@@ -8,14 +8,15 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e9b562cb04bb8916245d9df7b9b6d526bd443a24
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113303"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352140"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
+
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
@@ -660,7 +661,6 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 | MetadataRequests |    Żądania metadanych   |Licznik| Licznik   | Liczba żądań metadanych. Usługa Azure Cosmos DB obsługuje kolekcji metadanych systemowych dla każdego konta, które pozwala wyliczyć kolekcje, bazami danych itp i ich konfiguracji bezpłatnie.    | DatabaseName, StatusCode CollectionName, Region,| Wszyscy|  |Używana do monitorowania ograniczenia ze względu na żądania metadanych.|
 | MongoRequests |   Żądania MONGO| Licznik | Licznik|  Liczba żądań Mongo   | DatabaseName CollectionName, Region, CommandName, kod błędu| Wszyscy |Liczba żądań zapytanie MONGO, Mongo aktualizacji żądania wskaźnik, Mongo usunąć liczba żądań, Mongo Wstaw liczba żądań Mongo liczby żądań zakończonych|   Umożliwia monitorowanie błędów żądania Mongo, użycia dla polecenia należy wpisać. |
 
-
 ### <a name="request-unit-metrics"></a>Metryki jednostki żądania
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
@@ -673,7 +673,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
 |---|---|---|---|---|---| ---| ---| ---|
-| AvailableStorage| Dostępna pamięć   |Bajty| Łącznie|  Całkowita ilość miejsca dostępna zgłoszone w 5 minut szczegółowości na region|   DatabaseName, CollectionName, Region|   5 MIN| Dostępna pamięć|   Służy do monitorowania dostępny magazyn szczegółowości minimalnej pojemności (dotyczy tylko w przypadku magazynu stałej kolekcji) powinien wynosić 5 minut.| 
+| AvailableStorage| Dostępna pamięć   |Bajty| Łącznie|  Całkowita ilość miejsca dostępna zgłoszone w 5 minut szczegółowości na region|   DatabaseName, CollectionName, Region|   5 MIN| Dostępna pamięć|   Służy do monitorowania dostępny magazyn szczegółowości minimalnej pojemności (dotyczy tylko w przypadku magazynu stałej kolekcji) powinien wynosić 5 minut.|
 | DataUsage |Użycie danych |Bajty| Łącznie   |Łączna ilość danych użycia zgłoszonych w 5 minut szczegółowości na region|    DatabaseName, CollectionName, Region|   5 MIN  |Rozmiar danych  | Umożliwia monitorowanie użycia łączna ilość danych, kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut.|
 | IndexUsage|   Użycie indeksu|    Bajty|  Łącznie   |Łączne użycie indeksu zgłoszone w 5 minut szczegółowości na region|    DatabaseName, CollectionName, Region|   5 MIN| Rozmiar indeksu| Umożliwia monitorowanie użycia łączna ilość danych, kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut. |
 | DocumentQuota|    Limit przydziału dokumentu| Bajty|  Łącznie|  Przydział pamięci masowej zgłoszone w 5 minut szczegółowości na region. Odpowiednie dla kolekcji magazynu stałych| DatabaseName, CollectionName, Region|   5 MIN  |Pojemność magazynu|  Umożliwia monitorowanie łącznego limitu przydziału na poziomie kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut.|
@@ -805,6 +805,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |ScaleActionsInitiated|Zainicjowane akcje skalowania|Licznik|Łącznie|Kierunek operacji skalowania.|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
+
 (Publiczna wersja zapoznawcza)
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -1224,7 +1225,6 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Aktualizacja|Aktualizacja|Licznik|Średnia|Aktualizacja|Komputer, produktów, klasyfikacji, UpdateState, opcjonalnie, zatwierdzone|
 |Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, komputer, EventCategory, EventLevel EventLevelName, identyfikator zdarzenia|
 
-
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -1608,7 +1608,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |MemoryPercentage|Procent pamięci|Procent|Średnia|Procent pamięci|Wystąpienie|
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Przeczytaj o metrykach w usłudze Azure Monitor](../../azure-monitor/platform/data-collection.md)
 * [Tworzenie alertów dotyczących metryk](../../azure-monitor/platform/alerts-overview.md)
 * [Eksportowanie metryk do magazynu, Centrum zdarzeń lub usługi Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
-

@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ff8beb1995359bad93449744718091c338e4994
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 334f69390e4506c6db76c1814f8ec8f1e4417ee9
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226559"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372339"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Jak utworzyć maszynę wirtualną z systemem Linux przy użyciu szablonów usługi Azure Resource Manager
 
-W tym artykule pokazano, jak szybko wdrożyć maszynę wirtualną systemu Linux (VM) za pomocą szablonów usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure. 
+Dowiedz się, jak utworzyć maszynę wirtualną (VM) systemu Linux przy użyciu szablonu usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure w usłudze Azure Cloud shell. Aby utworzyć maszynę wirtualną Windows, zobacz [Utwórz maszynę wirtualną Windows za pomocą szablonu usługi Resource Manager](../windows/ps-template.md).
 
 ## <a name="templates-overview"></a>Przegląd szablonów
 
@@ -84,8 +84,8 @@ W tym przykładzie utworzono Maszynę wirtualną systemu Linux podstawowe. Aby u
 
 Aby dowiedzieć się więcej na temat tworzenia szablonów, wyświetlić składnię JSON i właściwości dla typów zasobów, które można wdrożyć:
 
-* [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-* [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

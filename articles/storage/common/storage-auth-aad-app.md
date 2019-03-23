@@ -1,27 +1,27 @@
 ---
-title: Uwierzytelnianie za pomocą usługi Azure Active Directory do dostępu do danych obiektów blob i kolejek, z poziomu aplikacji (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Usługa Azure Active Directory do uwierzytelniania z poziomu aplikacji, a następnie Autoryzuj żądania do obiektów blob i kolejek (wersja zapoznawcza).
+title: Uwierzytelnianie za pomocą usługi Azure Active Directory dostępu do obiektów blob i kolejek danych z poziomu aplikacji | Dokumentacja firmy Microsoft
+description: Usługa Azure Active Directory do uwierzytelniania z poziomu aplikacji, a następnie Autoryzuj żądania do obiektów blob i kolejek.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 11/21/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6d283840116a5e1f996602fd792456d3b8e8d9a0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a313061f89d33ee2bf5379dbd37495db06b64440
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456095"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369517"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji do dostępu do obiektów blob i kolejek (wersja zapoznawcza)
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory z aplikacji do dostępu do obiektów blob i kolejek
 
 Kluczową zaletą usługi Azure Storage przy użyciu usługi Azure Active Directory (Azure AD) to, czy poświadczenia nie są już potrzebne, mają być przechowywane w kodzie. Zamiast tego możesz zażądać token dostępu OAuth 2.0 z usługi Azure AD. Usługa Azure AD obsługuje uwierzytelnianie podmiotu zabezpieczeń (użytkownika, grupy lub jednostki usługi) uruchomiona jest aplikacja. Jeśli uwierzytelnianie zakończy się powodzeniem, usługa Azure AD zwraca token dostępu do aplikacji i aplikacji można następnie użyć tokenu dostępu do autoryzacji żądania do usługi Azure Storage.
 
 W tym artykule przedstawiono sposób konfigurowania aplikacji na potrzeby uwierzytelniania przy użyciu usługi Azure AD. Podobne metody, z których można użyć .NET funkcji przykładowy kod, ale w innych językach.
 
-Zanim podmiot zabezpieczeń można uwierzytelnić aplikację usługi Azure Storage, należy skonfigurować ustawienia kontroli dostępu opartej na rolach dla tego podmiotu zabezpieczeń. Usługa Azure Storage określa role RBAC, które obejmują uprawnienia do kontenerów i kolejek. Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń, tego podmiotu zabezpieczeń ma uprawnienia do tego zasobu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+Zanim podmiot zabezpieczeń można uwierzytelnić aplikację usługi Azure Storage, należy skonfigurować ustawienia kontroli dostępu opartej na rolach dla tego podmiotu zabezpieczeń. Usługa Azure Storage określa role RBAC, które obejmują uprawnienia do kontenerów i kolejek. Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń, tego podmiotu zabezpieczeń ma uprawnienia do tego zasobu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC](storage-auth-aad-rbac.md).
 
 Aby uzyskać omówienie przepływie przyznawania kodu OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci web usługi Azure Active Directory przy użyciu kodu uwierzytelniania OAuth 2.0 udzielić przepływ](../../active-directory/develop/v1-protocols-oauth-code.md).
 
@@ -29,7 +29,7 @@ Aby uzyskać omówienie przepływie przyznawania kodu OAuth 2.0, zobacz [Autoryz
 
 ## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Przypisz rolę RBAC do podmiotu zabezpieczeń usługi Azure AD
 
-Na potrzeby uwierzytelniania podmiotu zabezpieczeń z poziomu aplikacji usługi Azure Storage, należy najpierw skonfigurować ustawienia kontroli (RBAC) dostępu opartej na rolach dla tego podmiotu zabezpieczeń. Usługa Azure Storage określa role RBAC, które obejmują uprawnienia do kontenerów i kolejek. Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń, tego podmiotu zabezpieczeń ma uprawnienia do tego zasobu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do danych obiektów Blob platformy Azure i kolejek przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+Na potrzeby uwierzytelniania podmiotu zabezpieczeń z poziomu aplikacji usługi Azure Storage, należy najpierw skonfigurować ustawienia kontroli (RBAC) dostępu opartej na rolach dla tego podmiotu zabezpieczeń. Usługa Azure Storage określa role RBAC, które obejmują uprawnienia do kontenerów i kolejek. Gdy rola RBAC jest przypisywana do podmiotu zabezpieczeń, tego podmiotu zabezpieczeń ma uprawnienia do tego zasobu. Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do danych obiektów Blob platformy Azure i kolejek przy użyciu RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Zarejestruj swoją aplikację z dzierżawy usługi Azure AD
 
@@ -73,7 +73,7 @@ Przykład kodu pokazuje, jak uzyskiwanie dostępu do tokenu z usługi Azure AD. 
 > [!NOTE]
 > Jako właściciel konta usługi Azure Storage możesz nie są automatycznie przypisywane uprawnienia dostępu do danych. Należy jawnie przypisać sobie rolę RBAC dla usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konto magazynu lub kontenera lub kolejki. 
 >
-> Na przykład aby uruchomić przykładowy kod na koncie magazynu, których jesteś właścicielem, a w obszarze tożsamość użytkownika, musisz przypisać rolę RBAC dla Współautor danych obiektu Blob do siebie. W przeciwnym razie wywołanie w celu utworzenia obiektu blob zakończy się niepowodzeniem z kodem stanu HTTP 403 (zabronione). Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+> Na przykład aby uruchomić przykładowy kod na koncie magazynu, których jesteś właścicielem, a w obszarze tożsamość użytkownika, musisz przypisać rolę RBAC dla Współautor danych obiektu Blob do siebie. W przeciwnym razie wywołanie w celu utworzenia obiektu blob zakończy się niepowodzeniem z kodem stanu HTTP 403 (zabronione). Aby uzyskać więcej informacji, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC](storage-auth-aad-rbac.md).
 
 ### <a name="well-known-values-for-authentication-with-azure-ad"></a>Dobrze znane wartości do uwierzytelniania przy użyciu usługi Azure AD
 
@@ -105,7 +105,7 @@ Aby uzyskać identyfikator dzierżawy, wykonaj następujące kroki:
 
 ### <a name="add-references-and-using-statements"></a>Dodaj odwołania i przy użyciu instrukcji  
 
-W programie Visual Studio należy zainstalować wersję zapoznawczą biblioteki klienta usługi Azure Storage. Z **narzędzia** menu, wybierz opcję **Menedżera pakietów Nuget**, następnie **Konsola Menedżera pakietów**. Wpisz następujące polecenie w konsoli, aby zainstalować najnowszą wersję biblioteki klienta dla platformy .NET:
+W programie Visual Studio zainstaluj bibliotekę klienta usługi Azure Storage. Z **narzędzia** menu, wybierz opcję **Menedżera pakietów Nuget**, następnie **Konsola Menedżera pakietów**. Wpisz następujące polecenie w konsoli, aby zainstalować najnowszą wersję biblioteki klienta dla platformy .NET:
 
 ```
 Install-Package WindowsAzure.Storage
@@ -187,14 +187,10 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-Aby uzyskać więcej informacji na temat autoryzowanie operacje usługi Azure Storage z resztą zobacz [uwierzytelnianie w usłudze Azure Active Directory (wersja zapoznawcza)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory).
+Aby uzyskać więcej informacji na temat autoryzowanie operacje usługi Azure Storage z resztą zobacz [uwierzytelnianie w usłudze Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
-- Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)](storage-auth-aad-msi.md).
-- Aby dowiedzieć się, jak zalogować się do wiersza polecenia platformy Azure i programu PowerShell przy użyciu tożsamości usługi Azure AD, zobacz [tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)](storage-auth-aad-script.md).
-- Aby uzyskać dodatkowe informacje na temat integracji z usługą Azure AD dla kolejek i obiektów blob platformy Azure, zobacz blog zespołu usługi Azure Storage, publikowania, [ogłoszenie uwierzytelniania w wersji zapoznawczej programu Azure AD dla usługi Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
-
-
-
+- Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC](storage-auth-aad-rbac.md).
+- Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure](storage-auth-aad-msi.md).
+- Aby dowiedzieć się, jak zalogować się do wiersza polecenia platformy Azure i programu PowerShell przy użyciu tożsamości usługi Azure AD, zobacz [tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell](storage-auth-aad-script.md).

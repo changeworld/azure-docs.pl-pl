@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 56c09d9c6d1249713de7c6a0428ad2a124eee157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e0c8d4883bb9183f866450477df972fc66c960c5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013075"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369755"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu platformy Azure
 
@@ -22,7 +22,7 @@ Usługa Azure Storage udostępnia rozbudowany zestaw funkcji zabezpieczeń, umo�
 - Wszystkie dane zapisane w usłudze Azure Storage są automatycznie szyfrowane przy użyciu [szyfrowanie usługi Storage (SSE)](storage-service-encryption.md). Aby uzyskać więcej informacji, zobacz [ogłoszenie domyślne szyfrowanie obiektów blob platformy Azure, pliki, tabela i Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Azure Active Directory (Azure AD) i kontrola dostępu oparta na rolach (RBAC) są obsługiwane dla usługi Azure Storage zarówno dla zasobów operacje zarządzania i operacje na danych, w następujący sposób:   
     - Można przypisać role RBAC ograniczone do konta magazynu do podmiotów zabezpieczeń i użyj usługi Azure AD, aby autoryzować operacji zarządzania zasobów, takich jak zarządzanie kluczami.
-    - Integracja z usługą Azure AD jest obsługiwana w wersji zapoznawczej dla operacje na danych w usługach obiektów Blob i kolejek. Można przypisać role RBAC ograniczone do subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki do podmiotu zabezpieczeń lub tożsamość zarządzaną dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).   
+    - Integracja z usługą Azure AD jest obsługiwana dla operacji danych obiektów blob i kolejek. Można przypisać role RBAC ograniczone do subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki do podmiotu zabezpieczeń lub tożsamość zarządzaną dla zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage przy użyciu usługi Azure Active Directory](storage-auth-aad.md).   
 - Dane mogą być chronione przesyłane między aplikacją i platformy Azure przy użyciu [szyfrowania po stronie klienta](../storage-client-side-encryption.md), HTTPS lub SMB 3.0.  
 - Dysków systemu operacyjnego i danych, które są używane przez maszyny wirtualne platformy Azure może być szyfrowana przy użyciu [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption.md). 
 - Delegowanego dostępu do obiektów danych w usłudze Azure Storage można przyznać za pomocą [sygnatur dostępu współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).
@@ -155,8 +155,8 @@ Bezpieczeństwo płaszczyzny danych odnosi się do metody używane do zabezpiecz
 
 Są trzy opcje do autoryzowania dostępu do obiektów danych w usłudze Azure Storage, w tym:
 
-- Używanie programu Azure AD do autoryzowania dostępu do kontenerów i kolejek (wersja zapoznawcza). Usługa Azure AD zapewnia korzyści w porównaniu do innych metod do autoryzacji, łącznie z usunięciem konieczności przechowywania wpisów tajnych w kodzie. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md). 
-- Przy użyciu kluczy konta magazynu, aby autoryzować dostęp za pomocą klucza wspólnego. Uwierzytelnianie za pomocą klucza wspólnego wymaga przechowywania kluczy konta magazynu w aplikacji, dzięki czemu firma Microsoft zaleca używanie usługi Azure AD zamiast tego, gdzie to możliwe. Dla aplikacji produkcyjnych, lub Autoryzowanie dostępu do tabel platformy Azure i plików nadal przy użyciu klucza wspólnego, podczas integracji z usługą Azure AD jest w wersji zapoznawczej.
+- Używanie programu Azure AD do autoryzowania dostępu do kontenerów i kolejek. Usługa Azure AD zapewnia korzyści w porównaniu do innych metod do autoryzacji, łącznie z usunięciem konieczności przechowywania wpisów tajnych w kodzie. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage przy użyciu usługi Azure Active Directory](storage-auth-aad.md). 
+- Przy użyciu kluczy konta magazynu, aby autoryzować dostęp za pomocą klucza wspólnego. Uwierzytelnianie za pomocą klucza wspólnego wymaga przechowywania kluczy konta magazynu w aplikacji, dzięki czemu firma Microsoft zaleca używanie usługi Azure AD zamiast tego, gdzie to możliwe.
 - Za pomocą sygnatur dostępu współdzielonego, aby udzielić kontrolowanymi uprawnieniami do obiektów danych specyficznych dla określonego przedziału czasu.
 
 Ponadto dla magazynu obiektów Blob, można zezwolić publicznego dostępu do obiektów blob, ustawiając poziom dostępu dla kontener, który zawiera obiekty BLOB w związku z tym. Jeśli ustawisz dostępu dla kontenera obiektów Blob lub kontenera, umożliwi publicznego dostępu do odczytu dla obiektów blob w kontenerze. Oznacza to, że każda osoba mająca adres URL wskazuje obiekt blob w kontenerze otwórz go w przeglądarce, bez przy użyciu podpisu dostępu współdzielonego oraz korzystanie z kluczy konta magazynu.

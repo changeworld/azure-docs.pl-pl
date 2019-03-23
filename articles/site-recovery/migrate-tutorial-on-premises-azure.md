@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0daa25cce434b2e97995963918e52df974e2ef9c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336552"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360371"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -38,7 +38,7 @@ Jest to trzeci samouczek z tej serii. Założono w nim, że zostały już wykona
 Przed rozpoczęciem warto zapoznać się z architekturami [VMware](vmware-azure-architecture.md) lub [Hyper-V](hyper-v-azure-architecture.md) na potrzeby odzyskiwania po awarii.
 
 > [!TIP]
-> Szukasz bez wykorzystania agentów sposób migrowania maszyn wirtualnych VMware na platformę Azure? [Kliknij tutaj](https://aka.ms/migrateVMs-signup)
+> Czy chcesz uczestniczyć w naszego nowego środowiska bez wykorzystania agentów dla migracji maszyn wirtualnych VMware na platformę Azure? [Więcej informacji można znaleźć](https://aka.ms/migrateVMs-signup).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -129,7 +129,7 @@ W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, któ
 
 Po zmigrowaniu maszyn do platformy Azure należy wykonać kilka czynności.
 
-Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyciu wbudowanej funkcji skryptów automatyzacji w [planach odzyskiwania]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation).   
+Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyciu wbudowanej funkcji skryptów automatyzacji w [planach odzyskiwania](site-recovery-runbook-automation.md).   
 
 
 ### <a name="post-migration-steps-in-azure"></a>Czynności wykonywane na platformie Azure po migracji
@@ -140,7 +140,7 @@ Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyc
     - Podczas migrowania maszyn VMware i serwerów fizycznych razem z usługą mobilności na maszynach z systemem Windows jest instalowany dostępny agent maszyny wirtualnej platformy Azure. Na maszynach wirtualnych z systemem Linux zaleca się zainstalowanie agenta po włączeniu trybu failover.
     - Podczas migrowania maszyn wirtualnych platformy Azure do regionu pomocniczego agenta maszyny Wirtualnej platformy Azure należy ustanowić na maszynie wirtualnej przed migracją.
     - Podczas migrowania maszyn wirtualnych funkcji Hyper-V do platformy Azure agenta maszyny wirtualnej platformy Azure na maszynie wirtualnej platformy Azure instaluje się po zakończeniu migracji.
-- Usuń ręcznie z maszyny wirtualnej wszelkie programy typu dostawca/agent usługi Site Recovery. Podczas migrowania maszyn wirtualnych VMware lub serwerów fizycznych [odinstaluj usługę mobilności][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] z maszyny wirtualnej.
+- Usuń ręcznie z maszyny wirtualnej wszelkie programy typu dostawca/agent usługi Site Recovery. W przypadku migrowania maszyn wirtualnych VMware lub serwery fizyczne, odinstaluj usługę mobilności z maszyny Wirtualnej.
 - Aby zwiększyć elastyczność:
     - Zapewnij bezpieczeństwo danych – utwórz kopie zapasowe maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup. [Dowiedz się więcej]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
     - Zadbaj, aby pakiety robocze były uruchomione i stale dostępne, replikując maszyny wirtualne platformy Azure do regionu pomocniczego za pomocą usługi Site Recovery. [Dowiedz się więcej](azure-to-azure-quickstart.md).

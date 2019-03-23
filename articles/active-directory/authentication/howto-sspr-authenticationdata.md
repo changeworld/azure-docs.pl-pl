@@ -11,18 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 580c9080bb2b019e120ea57e5fe4444a71c24e76
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314794"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371370"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wdrażanie resetowania haseł bez wymagania rejestracji użytkowników końcowych
 
 Aby wdrożyć usługi Azure Active Directory (Azure AD) samoobsługowego resetowania haseł (SSPR), dane uwierzytelniania musi być obecny. Niektóre organizacje mają użytkownikom, podaj swoje dane uwierzytelniania, samodzielnie. Jednak wiele organizacji chce synchronizować z danymi, która już istnieje w usłudze Active Directory. Zsynchronizowane dane będą dostępne dla usługi Azure AD i funkcji samoobsługowego resetowania HASEŁ, bez konieczności interakcji z użytkownikiem, jeśli użytkownik:
-   * Poprawnie formatowanie danych w Twoim katalogu w środowisku lokalnym.
-   * Konfigurowanie [program Azure AD Connect przy użyciu ustawień ekspresowych](../hybrid/how-to-connect-install-express.md).
+
+* Poprawnie formatowanie danych w Twoim katalogu w środowisku lokalnym.
+* Konfigurowanie [program Azure AD Connect przy użyciu ustawień ekspresowych](../hybrid/how-to-connect-install-express.md).
 
 Aby działać poprawnie, numerów telefonów musi być w formacie *+ CountryCode PhoneNumber*, na przykład 4255551234 + 1.
 
@@ -46,7 +47,7 @@ Gdy użytkownik zweryfikuje numeru telefonu komórkowego, pole telefonu w obszar
 
 Administrator globalny, można ręcznie ustawić informacje kontaktowe uwierzytelniania użytkownika wyświetlane w poniższy zrzut ekranu.
 
-![Skontaktuj się z][Contact]
+![Uwierzytelnianie skontaktuj się z pomocą informacji dotyczących użytkownika w usłudze Azure AD][Contact]
 
 Jeśli pole telefonu jest wypełniana i telefonu komórkowego jest włączony w zasadach funkcji samoobsługowego resetowania HASEŁ, użytkownik będzie widział przepływ pracy resetowania numeru strony rejestracji resetowania hasła i podczas hasło.
 
@@ -84,7 +85,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Ustaw dane uwierzytelniania przy użyciu programu PowerShell w wersji 1
 
-```
+```PowerShell
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
@@ -96,7 +97,7 @@ Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("emai
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>Odczytywanie danych uwierzytelniania przy użyciu programu PowerShell w wersji 1
 
-```
+```PowerShell
 Connect-MsolService
 
 Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
@@ -110,7 +111,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 Aby przeczytać **numer telefonu uwierzytelniania** i **adres E-mail uwierzytelniania** korzystając z programu PowerShell w wersji 1, użyj następujących poleceń:
 
-```
+```PowerShell
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
@@ -122,7 +123,7 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu PowerShell 
 
 Aby szybko zainstalować z najnowszych wersji programu PowerShell, które obsługują Install-Module, uruchom następujące polecenia. (Pierwszy wiersz sprawdza, czy moduł jest już zainstalowany.)
 
-```
+```PowerShell
 Get-Module AzureADPreview
 Install-Module AzureADPreview
 Connect-AzureAD
@@ -130,7 +131,7 @@ Connect-AzureAD
 
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>Ustaw dane uwierzytelniania przy użyciu programu PowerShell w wersji 2
 
-```
+```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
@@ -142,7 +143,7 @@ Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mo
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>Odczytywanie danych uwierzytelniania przy użyciu programu PowerShell w wersji 2
 
-```
+```PowerShell
 Connect-AzureAD
 
 Get-AzureADUser -ObjectID user@domain.com | select otherMails

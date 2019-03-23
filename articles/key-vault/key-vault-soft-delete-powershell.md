@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d34ef1bb5bea6f5f099f7fa2a24ddec2362b44ea
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336188"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368694"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak używać usuwania nietrwałego w usłudze Key Vault przy użyciu programu PowerShell
 
@@ -49,9 +49,6 @@ Aby uzyskać więcej informacji na temat uprawnień i kontroli dostępu, zobacz 
 ## <a name="enabling-soft-delete"></a>Włączenie opcji soft-delete
 
 Możesz włączyć "opcji soft-delete" umożliwić odzyskiwanie usuniętych usługi key vault lub obiektów przechowywanych w magazynie kluczy.
-
-> [!IMPORTANT]
-> Trwa włączanie nietrwałe usuwanie na magazyn kluczy jest czynnością nieodwracalną. Gdy właściwość usuwania nietrwałego została ustawiona "true", nie można zmienić ani usunąć.  
 
 ### <a name="existing-key-vault"></a>Istniejącego magazynu kluczy
 

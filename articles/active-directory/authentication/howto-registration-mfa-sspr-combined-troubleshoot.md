@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f799b671e6216b402aa988aa66da4c2cfc44693
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d926f7312b62e788289939dfd81c236a33503b43
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317531"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370469"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Rozwiązywanie problemów z połączone rejestracji informacje zabezpieczeń (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Informacje zawarte w tym artykule mogą ukierunkować administratorów, którzy 
 
 Zdarzenia zarejestrowane dla rejestracji połączone znajdują się w kategorii "Metody uwierzytelniania" w usłudze Azure AD dzienniki inspekcji.
 
-![Inspekcji platformy Azure AD rejestruje interfejs wydarzeń pewne zabezpieczenia informacji o rejestracji dla nowego użytkownika w katalogu](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Inspekcji platformy Azure AD rejestruje zdarzenia rejestracji przedstawiający interfejsu](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 Poniższa lista zawiera wszystkie zdarzeń inspekcji generowanych przez połączone rejestracji:
 
@@ -162,4 +162,4 @@ Użytkownicy otrzymują monit nie będzie można zarejestrować za pomocą środ
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się więcej na temat publicznej wersji zapoznawczej połączone rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)
+* [Dowiedz się więcej na temat publicznej wersji zapoznawczej połączone rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

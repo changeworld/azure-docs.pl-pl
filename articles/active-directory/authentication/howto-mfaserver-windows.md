@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43c21fb3c3e7c00ecdbadb1e730ba5ce303dc869
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 36172850c345fc190c3326413f2883dc2b070e98
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312193"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367902"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Uwierzytelnianie systemu Windows i serwer usługi Azure Multi-Factor Authentication
 
@@ -29,9 +29,10 @@ Sekcja Uwierzytelnianie systemu Windows w ramach serwera Azure Multi-Factor Auth
 > [!NOTE]
 > Ta funkcja nie jest obsługiwana w kontekście zabezpieczania sesji usług terminalowych w systemie Windows Server 2012 R2.
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Do zabezpieczenia aplikacji z użyciem uwierzytelniania systemu Windows należy zastosować następującą procedurę.
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Aby zabezpieczyć aplikację przy użyciu uwierzytelniania Windows, należy użyć poniższej procedury
+
 1. Kliknij ikonę uwierzytelniania systemu Windows na serwerze usługi Azure Multi-Factor Authentication.
-   ![Uwierzytelnianie systemu Windows](./media/howto-mfaserver-windows/windowsauth.png)
+   ![Uwierzytelnianie Windows na serwerze MFA](./media/howto-mfaserver-windows/windowsauth.png)
 2. Zaznacz pole wyboru **Włącz uwierzytelnianie systemu Windows**. Domyślnie to pole nie jest zaznaczone.
 3. Na karcie Aplikacje administrator może skonfigurować co najmniej jedną aplikację na potrzeby uwierzytelniania systemu Windows.
 4. Wybierz serwer lub aplikację — określ, czy serwer lub aplikacja są włączone. Kliknij przycisk **OK**.

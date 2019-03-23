@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 6e4a83eb8b3488c4ce2816151ca31b4a594dd742
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ce66d44c0ddb84ed8c2908d02b8062195d6b461d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338636"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351019"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Usługa Azure policy wycofywania i możliwości obsługi systemu operacyjnego gościa
 Informacje na tej stronie dotyczą systemu operacyjnego gościa platformy Azure ([systemu operacyjnego gościa](cloud-services-guestos-update-matrix.md)) dla role usług w chmurze sieci web i proces roboczy (PaaS). Nie ma zastosowania do maszyn wirtualnych (IaaS).
@@ -57,7 +57,7 @@ W ciągu 60 dni do czasu działania, jest to wersja "*wyłączone*". "Wyłączon
 
 Później, po staje się "wyłączone", wersja systemu operacyjnego gościa "wygasa", a wszelkie instalacje z tego wygasłą wersją są narażone na zabezpieczenia i problemy z luk w zabezpieczeniach. Ogólnie rzecz biorąc wygaśnięcia odbywa się w partiach, więc okres inwalidztwem do wygaśnięcia może się różnić.
 
-Klienci, którzy konfigurują swoje usługi, aby zaktualizować system operacyjny gościa ręcznie, należy upewnić się, że ich wdrożenia są uruchomione na obsługiwanych systemów operacyjnych gościa. Jeśli usługa jest skonfigurowany do automatycznej aktualizacji systemu operacyjnego gościa, podstawowej platformy zapewnia zgodność i zostanie uaktualniona do najnowszej systemu operacyjnego gościa.
+Klienci, którzy konfigurują swoje usługi, aby zaktualizować system operacyjny gościa ręcznie, należy upewnić się, że jego usługi są uruchomione na obsługiwanych systemów operacyjnych gościa. Jeśli usługa jest skonfigurowany do automatycznej aktualizacji systemu operacyjnego gościa, podstawowej platformy zapewnia zgodność i zostanie uaktualniona do najnowszej systemu operacyjnego gościa.
 
 Okresy te mogą wydłużać według uznania firmy Microsoft do jej obsługi ułatwiają realizację przejścia klienta. Wszelkie zmiany zostaną przekazane na [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](cloud-services-guestos-update-matrix.md).
 

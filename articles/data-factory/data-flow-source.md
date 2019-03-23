@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 54302f97913fd01dc8f8e4a8d987a407c8bdf9a7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569029"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369177"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapowanie przekształceń źródła przepływu danych
 
@@ -74,16 +74,16 @@ Opcjonalnie można podzielić połączenia na podstawie zapytania. Dla tej opcji
 ## <a name="source-file-management"></a>Zarządzanie plikami źródła
 ![Nowe ustawienia źródła](media/data-flow/source2.png "nowe ustawienia")
 
-* Symbol wieloznaczny ścieżka do pobrania szeregu pliki z folderu źródłowego, które pasują do wzorca. Spowoduje to zastąpienie dowolnego pliku ustawionym w definicji zestawu danych.
+* Ścieżka symboli wieloznacznych do pobrania szeregu pliki z folderu źródłowego, które pasują do wzorca. Spowoduje to zastąpienie dowolnego pliku ustawionym w definicji zestawu danych.
 * Lista plików. Tak samo jak zestaw plików. Wskaż plik tekstowy, który utworzysz listę plików ścieżkę względną do przetworzenia.
 * Kolumny do przechowywania nazwy pliku będzie przechowywać nazwę pliku ze źródła, w kolumnie w Twoich danych. Wprowadź nową nazwę do przechowywania ciągu nazwy pliku.
 * Po zakończeniu (istnieje możliwość nic nie rób z plikiem źródłowym, po wykonaniu przepływu danych, usuń plik źródłowy lub Przenieś pliki źródłowe. Ścieżki do przeniesienia są ścieżki względne.
 
-### <a name="sql-datasets"></a>SQL Datasets
+### <a name="sql-datasets"></a>Zestawy danych SQL
 
 Gdy używasz usługi Azure SQL DB lub Azure SQL DW jako źródło, masz dodatkowe opcje.
 
-* Zapytanie: Wprowadź kwerendę SQL dla źródła. Ustawianie zapytania spowoduje zastąpienie wszelkich tabelę, która została wybrana w zestawie danych. Należy pamiętać, że klauzuli Order By nie są obsługiwane w tym miejscu.
+* Zapytanie: Wprowadź kwerendę SQL dla źródła. Ustawianie zapytania spowoduje zastąpienie wszelkich tabelę, która została wybrana w zestawie danych. Należy pamiętać, że klauzuli Order By nie są obsługiwane w tym miejscu. Jednak można ustawić pełną instrukcję SELECT FROM tutaj.
 
 * Rozmiar partii: Wprowadź rozmiar partii, Podziel duże ilości danych do odczytu rozmiar partii.
 

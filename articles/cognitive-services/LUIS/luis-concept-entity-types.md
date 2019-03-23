@@ -1,7 +1,7 @@
 ---
 title: Typy jednostek
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Dodaj jednostki (kluczowe dane w domenie aplikacji) w aplikacjach Language Understanding Intelligent Service (LUIS).
+description: 'Jednostki wyodrębnianie danych z wypowiedź. Typy jednostek zapewniają przewidywalne wyodrębniania danych. Istnieją dwa typy jednostek: przedstawiono maszyny i przedstawiono maszyny. Warto wiedzieć, jakiego typu jednostki, w przypadku korzystania z wypowiedzi.'
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d12ea20f9f510b0e2d3d3512d8d8c71a3fb96eec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844592"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372526"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
-Jednostki są wyrazy lub frazy w wypowiedzi, które są kluczowe dane w domenie aplikacji.
+Jednostki wyodrębnianie danych z wypowiedź. Typy jednostek zapewniają przewidywalne wyodrębniania danych. Istnieją dwa typy jednostek: przedstawiono maszyny i przedstawiono maszyny. Warto wiedzieć, jakiego typu jednostki, w przypadku korzystania z wypowiedzi. 
 
 ## <a name="entity-compared-to-intent"></a>Jednostki w porównaniu do intencji
 
@@ -190,7 +190,7 @@ Jednostka jest bardzo dopasowania, gdy:
 
 * Dane są zgodne typowy przypadek użycia, obsługiwane przez wstępnie utworzone jednostki dla Twojej kulturze języka. 
 
-Wstępnie utworzone jednostki mogą być dodawane lub usuwane w dowolnym momencie. Jeśli okaże się, że wypowiedź przykład wykrycia wstępnie utworzone jednostki, co uniemożliwia, oznaczanie niestandardowej jednostki usunąć wstępnie utworzone jednostki z aplikacji, oznacz jednostki, a następnie dodaj ponownie wstępnie utworzone jednostki. 
+Wstępnie utworzone jednostki mogą być dodawane lub usuwane w dowolnym momencie.
 
 ![Liczba wstępnie utworzone jednostki](./media/luis-concept-entities/number-entity.png)
 
@@ -198,6 +198,29 @@ Wstępnie utworzone jednostki mogą być dodawane lub usuwane w dowolnym momenci
 [Przykładowa odpowiedź JSON dla jednostki](luis-concept-data-extraction.md#prebuilt-entity-data)
 
 Niektóre z tych wstępnie utworzonych jednostek są zdefiniowane w typu open-source [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text) projektu. Jeśli z określoną kulturę lub jednostki nie jest obecnie obsługiwane, przyczyniają się do projektu. 
+
+### <a name="troubleshooting-prebuilt-entities"></a>Rozwiązywanie problemów ze wstępnie utworzonych jednostek
+
+W portalu usługi LUIS Jeśli wstępnie utworzone jednostki zostanie oznaczony zamiast swojej jednostki niestandardowej, masz kilka opcji sposobu rozwiązać ten problem.
+
+Wstępnie utworzonych jednostek dodana do aplikacji będzie _zawsze_ zostać zwrócone, nawet wtedy, gdy wypowiedź należy wyodrębnić jednostki niestandardowe, ten sam tekst. 
+
+#### <a name="change-tagged-entity-in-example-utterance"></a>Zmień jednostki oznakowanych w przykładzie wypowiedź
+
+Jeśli wstępnie utworzone jednostki jest ten sam tekst lub tokenów jako jednostkę niestandardową, zaznacz tekst w polu wypowiedź przykład i zmienić wypowiedź oznakowane. 
+
+Jeśli wstępnie utworzone jednostki jest oznaczane więcej tekstu lub tokeny od swojej jednostki niestandardowej, masz kilka opcji, jak rozwiązać ten problem:
+
+* [Usuń wypowiedź przykład](#remove-example-utterance-to-fix-tagging) — metoda
+* [Usuwanie wstępnie utworzone jednostki](#remove-prebuilt-entity-to-fix-tagging) — metoda
+
+#### <a name="remove-example-utterance-to-fix-tagging"></a>Usuń wypowiedź przykładu, aby naprawić znakowanie 
+
+Twój pierwszy wybór jest wypowiedź przykład usunąć i ponownie ucz aplikacji. Dodaj ponownie tylko słowo lub frazę jednostki jako przykład wypowiedź, a następnie oznaczyć jednostki i szkolenie. Teraz dodać z powrotem ze wstępnie utworzonych jednostek i oryginalnego wypowiedź przykład. Jednostki niestandardowej, powinna w dalszym ciągu można oznaczyć zamiast wstępnie utworzone jednostki. 
+
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Usuwanie wstępnie utworzone jednostki, aby naprawić znakowanie
+
+Wybranych drugim jest usunięcie wstępnie utworzone jednostki z poziomu aplikacji, następnie tag jednostki niestandardowej w wypowiedź przykładu, a następnie dodaj wstępnie utworzone jednostki do aplikacji. Ta poprawka przyjęto założenie, że wstępnie utworzone jednostki nie należały do obiektu złożonego. 
 
 ## <a name="regular-expression-entity"></a>Jednostka wyrażenia regularnego 
 

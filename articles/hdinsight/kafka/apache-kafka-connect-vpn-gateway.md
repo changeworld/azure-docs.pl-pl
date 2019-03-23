@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0b1ba5c6d342fb0bf6f888af4bc3a4e1c8ef939e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6807a14bb7b46389abbc4c5a44e7699c79e29dff
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074721"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361627"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać połączenie z platformy Apache Kafka w HDInsight przy użyciu sieci wirtualnej platformy Azure
 
@@ -22,6 +22,8 @@ Dowiedz się, jak łączyć się bezpośrednio do platformy Apache Kafka w HDIns
 
 * Z zasobów w sieci lokalnej. To połączenie jest nawiązywane za pomocą urządzenia sieci VPN (oprogramowania lub sprzętu) w sieci lokalnej.
 * Z poziomu środowiska projektowego, przy użyciu oprogramowania klienta VPN.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="architecture-and-planning"></a>Planowanie i architektura
 
@@ -87,9 +89,9 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
 2. Otwórz wiersz polecenia programu PowerShell i użyj poniższego kodu, aby zalogować się do subskrypcji platformy Azure:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     # If you have multiple subscriptions, uncomment to set the subscription
-    #Select-AzureRmSubscription -SubscriptionName "name of your subscription"
+    #Select-AzSubscription -SubscriptionName "name of your subscription"
     ```
 
 3. Użyj poniższego kodu, aby utworzyć zmienne, które zawierają informacje o konfiguracji:
@@ -133,35 +135,35 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
 
     ```powershell
     # Create the resource group that contains everything
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create the subnet configuration
-    $defaultSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $defaultSubnetName `
+    $defaultSubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $defaultSubnetName `
         -AddressPrefix $defaultSubnetPrefix
-    $gatewaySubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
+    $gatewaySubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
         -AddressPrefix $gatewaySubnetPrefix
 
     # Create the subnet
-    New-AzureRmVirtualNetwork -Name $networkName `
+    New-AzVirtualNetwork -Name $networkName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
         -AddressPrefix $networkAddressPrefix `
         -Subnet $defaultSubnetConfig, $gatewaySubnetConfig
 
     # Get the network & subnet that were created
-    $network = Get-AzureRmVirtualNetwork -Name $networkName `
+    $network = Get-AzVirtualNetwork -Name $networkName `
         -ResourceGroupName $resourceGroupName
-    $gatewaySubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
+    $gatewaySubnet = Get-AzVirtualNetworkSubnetConfig -Name $gatewaySubnetName `
         -VirtualNetwork $network
-    $defaultSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $defaultSubnetName `
+    $defaultSubnet = Get-AzVirtualNetworkSubnetConfig -Name $defaultSubnetName `
         -VirtualNetwork $network
 
     # Set a dynamic public IP address for the gateway subnet
-    $gatewayPublicIp = New-AzureRmPublicIpAddress -Name $gatewayPublicIpName `
+    $gatewayPublicIp = New-AzPublicIpAddress -Name $gatewayPublicIpName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
         -AllocationMethod Dynamic
-    $gatewayIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $gatewayIpConfigName `
+    $gatewayIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $gatewayIpConfigName `
         -Subnet $gatewaySubnet `
         -PublicIpAddress $gatewayPublicIp
 
@@ -170,11 +172,11 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
     $rootCertFile = Get-ChildItem $rootCert
     $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($rootCertFile)
     $certBase64 = [System.Convert]::ToBase64String($cert.RawData)
-    $p2sRootCert = New-AzureRmVpnClientRootCertificate -Name $vpnRootCertName `
+    $p2sRootCert = New-AzVpnClientRootCertificate -Name $vpnRootCertName `
         -PublicCertData $certBase64
 
     # Create the VPN gateway
-    New-AzureRmVirtualNetworkGateway -Name $vpnName `
+    New-AzVirtualNetworkGateway -Name $vpnName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
         -IpConfigurations $gatewayIpConfig `
@@ -193,20 +195,20 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
 
     ```powershell
     # Create the storage account
-    New-AzureRmStorageAccount `
+    New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $storageName `
         -Type Standard_GRS `
         -Location $location
 
     # Get the storage account keys and create a context
-    $defaultStorageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName `
+    $defaultStorageKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
         -Name $storageName)[0].Value
-    $storageContext = New-AzureStorageContext -StorageAccountName $storageName `
+    $storageContext = New-AzStorageContext -StorageAccountName $storageName `
         -StorageAccountKey $defaultStorageKey
 
     # Create the default storage container
-    New-AzureStorageContainer -Name $defaultContainerName `
+    New-AzStorageContainer -Name $defaultContainerName `
         -Context $storageContext
     ```
 
@@ -214,7 +216,7 @@ Wykonaj kroki w tej sekcji, aby utworzyć następującą konfigurację:
 
     ```powershell
     # Create the HDInsight cluster
-    New-AzureRmHDInsightCluster `
+    New-AzHDInsightCluster `
         -ResourceGroupName $resourceGroupName `
         -ClusterName $clusterName `
         -Location $location `
@@ -296,7 +298,7 @@ Aby zweryfikować połączenie do platformy Kafka, należy użyć do tworzenia i
     ```powershell
     $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
 
-    $clusterNICs = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName | where-object {$_.Name -like "*node*"}
+    $clusterNICs = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName | where-object {$_.Name -like "*node*"}
 
     $nodes = @()
     foreach($nic in $clusterNICs) {

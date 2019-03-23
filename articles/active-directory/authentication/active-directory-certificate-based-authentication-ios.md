@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7243249e7aabf588115ef74f838be8ca67a94c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309507"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369432"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory na podstawie certyfikatu uwierzytelniania w systemie iOS
 
@@ -35,16 +35,16 @@ Ta funkcja jest dostępna w wersji zapoznawczej w planach usług Office 365 dla 
 
 | Aplikacje | Pomoc techniczna |
 | --- | --- |
-| Usługa Azure Information Protection app |![Zaznacz][1] |
-| Portal firmy usługi Intune |![Zaznacz][1] |
-| Microsoft Teams |![Zaznacz][1] |
-| OneNote |![Zaznacz][1] |
-| OneDrive |![Zaznacz][1] |
-| Outlook |![Zaznacz][1] |
-| Power BI |![Zaznacz][1] |
-| Skype dla firm |![Zaznacz][1] |
-| Word / Excel / PowerPoint |![Zaznacz][1] |
-| Yammer |![Zaznacz][1] |
+| Usługa Azure Information Protection app |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| Portal firmy usługi Intune |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| Microsoft Teams |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| OneNote |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| OneDrive |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| Outlook |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| Power BI |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| Skype dla firm |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| Word / Excel / PowerPoint |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| Yammer |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
 
 ## <a name="requirements"></a>Wymagania
 

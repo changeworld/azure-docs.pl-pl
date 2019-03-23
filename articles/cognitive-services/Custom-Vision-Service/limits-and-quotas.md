@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 58109e17ed33e6af8dedf3ed8c1cc9ddf546a05e
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: a3fdd39cdbd4204fece145bde23b23e155500bdb
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588673"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351392"
 ---
 # <a name="pricing-and-limits"></a>Ceny i limity
 
@@ -42,5 +42,3 @@ Liczba uczone obrazy na projekt i tagi dla poszczególnych projektów powinny ro
 |[Inne wywołania interfejsu API](https://go.microsoft.com/fwlink/?linkid=865446) (transakcje na sekundę)|10|10|10|
 |Maksymalny rozmiar obrazu (szkolenie przekazywania obrazów) |6 MB|6 MB|6 MB|
 |Maksymalny rozmiar obrazu (Prognozowane)|4 MB|4 MB|4 MB|
-
-

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 949bf52a586603fc6a82c0da553cf70877a8f4be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3b5da6c9046fc694bd5eb0f55cf031b82b6d0103
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085018"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370537"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optymalizuj środowisko usługi Active Directory za pomocą rozwiązania Active Directory Health Check w usłudze Azure Monitor
 
@@ -55,7 +55,7 @@ Aby sprawdzić kondycję na kontrolerach domeny, które są członkami domeny, k
 
 1. Zainstaluj [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Jeśli kontroler domeny nie jest już monitorowane przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
 2. Jeśli grupa zarządzania nie jest zintegrowana z usługą Azure Monitor jest monitorowana przy użyciu programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2, kontroler domeny może być wieloadresowych z usługą Azure Monitor do zbierania danych i przekazywać je do usługi i nadal monitorowane przez program Operations Manager.  
-3. W przeciwnym razie, jeśli grupa zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny do zbierania danych przez usługę, wykonaj czynności w ramach [dodać komputery zarządzane z wykorzystaniem agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) po włączeniu rozwiązania w Twoim obszarze roboczym.  
+3. W przeciwnym razie, jeśli grupa zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny do zbierania danych przez usługę, wykonaj czynności w ramach [dodać komputery zarządzane z wykorzystaniem agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w Twoim obszarze roboczym.  
 
 Agenta na kontrolerze domeny, które raporty z grupą zarządzania programu Operations Manager służy do zbierania danych, przekazuje do jego serwera zarządzania w przypisanej, a następnie będą wysyłane bezpośrednio z serwera zarządzania do usługi Azure Monitor.  Dane nie są zapisywane w bazach danych programu Operations Manager.  
 

@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f8f3da82d5c8747398882fd589e3ff91aaaa9739
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c9f8e13ad089fd40cde22bb76587b171a1c52c7b
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849214"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361901"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co to jest usługa Azure Machine Learning?
 
@@ -87,7 +87,7 @@ Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyc
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Utwórz obszar roboczy usługi Machine Learning, aby rozpocząć pracę [przy użyciu witryny Azure portal](quickstart-get-started.md) (podejście niewymagające instalacji) lub [w języku Python](quickstart-create-workspace-with-python.md) (podejście wymagające zainstalowania zestawu SDK).
+- [Tworzenie obszaru roboczego usługi Machine Learning](setup-create-workspace.md) na rozpoczęcie pracy.
 
 - Wykonaj kompleksowe samouczki: 
   + [Uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md) 
@@ -99,4 +99,4 @@ Możesz uzyskać środki do wydania na usługi platformy Azure. Nawet po ich wyc
 
 - Przeczytaj uważnie artykuł poświęcony [architekturze usługi Azure Machine Learning i powiązanym pojęciom](concept-azure-machine-learning-architecture.md).
 
-- Aby uzyskać więcej informacji, zobacz [inne produkty firmy Microsoft do uczenia maszynowego](./overview-more-machine-learning.md).
+- Aby uzyskać więcej informacji, zobacz [inne produkty firmy Microsoft do uczenia maszynowego](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning).

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 946d8196fbe49e452dab8fa36e4c746a1bcaf490
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c99380faee8fd1bc42922f7f0e367edde1154a9b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137627"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368905"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Szybki start: Odkrywaj interfejsy API REST usługi Azure Search przy użyciu narzędzi Postman lub Fiddler
 
@@ -85,7 +85,7 @@ Sformułuj takie żądanie, jak przedstawiono na poniższym zrzucie ekranu. Wybi
 > [!Tip]
 > Wyłącz ruch internetowy do ukrycia nadmiarowe, niezależne aktywności protokołu HTTP. W narzędziu Fiddler firmy **pliku** menu, wyłącz **Przechwytywanie ruchu**. 
 
-## <a name="1---create-an-index"></a>1. Tworzenie indeksu
+## <a name="1---create-an-index"></a>1 — Tworzenie indeksu
 
 Treść żądania zawiera definicję indeksu. Dodanie treści żądania kończy żądanie, które spowoduje utworzenie Twojego indeksu.
 
@@ -145,6 +145,7 @@ Obszar Request Body (Treść żądania) zawiera cztery dokumenty, które mają z
              "hotelId": "1",
              "baseRate": 199.0,
              "description": "Best hotel in town",
+             "description_fr": "Meilleur hôtel en ville"
              "hotelName": "Fancy Stay",
              "category": "Luxury",
              "tags": ["pool", "view", "wifi", "concierge"],
@@ -159,6 +160,7 @@ Obszar Request Body (Treść żądania) zawiera cztery dokumenty, które mają z
              "hotelId": "2",
              "baseRate": 79.99,
              "description": "Cheapest hotel in town",
+             "description_fr": "Hôtel le moins cher en ville",
              "hotelName": "Roach Motel",
              "category": "Budget",
              "tags": ["motel", "budget"],
@@ -219,7 +221,7 @@ Zmień zlecenie na **POST**. Zmień adres URL, aby uwzględnić `/docs/index`. S
 
 ![Ładunek żądania narzędzia Fiddler][9]
 
-## <a name="3---search-an-index"></a>3 - przeszukiwanie indeksu
+## <a name="3---search-an-index"></a>3 — Przeszukiwanie indeksu
 Teraz, gdy indeks i dokumenty są załadowane, można wykonywać zapytania względem nich za pomocą [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents) interfejsu API REST.
 
 + Dla tego kroku zmień zlecenie na **GET**.

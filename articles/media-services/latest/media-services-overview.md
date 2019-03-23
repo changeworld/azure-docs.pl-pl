@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 251a2a3fed57e957de11a20189b6b6d553d98a78
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310272"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351460"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co to jest usługa Azure Media Services w wersji 3?
 
@@ -77,24 +77,11 @@ Przykłady obejmują:
 
 Zobacz przykład [Get content key policy — .NET](get-content-key-policy-dotnet-howto.md) (Pobieranie zasad dotyczących klucza zawartości — .NET).
 
-## <a name="how-can-i-get-started-with-v3"></a>Jak można zacząć korzystać z wersji 3?
-
-Aby uzyskać informacje na temat rozpoczynania programowania za pomocą interfejsu API usługi Media Services v3 oraz różnych narzędzi i zestawów SDK, zobacz [Rozpoczynanie programowania](developers-guide.md).
-
-## <a name="v3-content-map"></a>Mapa zawartości wersji 3
-
-Zawartość usługi Media Services w wersji 3 ma następującą organizację (uwzględnioną również w spisie treści):
-
-|Sekcje| Opis|
-|---|---|
-| Przegląd | Opis funkcjonalności i zastosowania usługi Media Services.|
-| Przewodniki Szybki start | Podstawowe instrukcje wprowadzające, które pozwalają nowym klientom szybko wypróbować usługę Media Services.|
-| Samouczki | Procedury oparte na scenariuszach dotyczące niektórych typowych zadań wykonywanych przy użyciu usługi Media Services.|
-| Przykłady | Linki do przykładów kodu. |
-| Pojęcia | Szczegółowe objaśnienie [funkcji usługi Media Services v3 i związanych z nią pojęć](concepts-overview.md). Przed rozpoczęciem programowania należy zapoznać się z opisami podstawowych pojęć zawartymi w tych tematach.<br/><br/>* Przekazywanie do chmury i magazynowanie w niej<br/>* Kodowanie<br/>* Media Analytics<br/>* Tworzenie pakietów, dostarczanie, ochrona<br/>* Transmisja strumieniowa na żywo<br/>* Monitorowanie<br/>* Odtwarzacze klienckie<br/><br/>Wiele innych funkcji |
-| Przewodniki z instrukcjami | Sposób wykonania zadania.|
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby sprawdzić, jak łatwo rozpocząć kodowanie i strumieniowe przesyłanie plików wideo, zobacz [Strumieniowe przesyłanie plików](stream-files-dotnet-quickstart.md). 
+Jak można zacząć korzystać z wersji 3? 
+
+> [!div class="nextstepaction"]
+> [Dowiedz się więcej o podstawowych pojęciach](concepts-overview.md)<br/>
+> [Programowanie za pomocą usługi Media Services v3 interfejsu API przy użyciu zestawów SDK](developers-guide.md) 
 

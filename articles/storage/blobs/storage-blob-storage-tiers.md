@@ -1,186 +1,180 @@
 ---
-title: — Wersja Premium, gorąca, chłodna i archiwalna magazynu obiektów blob — usługi Azure Storage
-description: — Wersja Premium, gorąca, chłodna i archiwalna magazynu dla konta usługi Azure storage.
+title: Gorąca chłodna i archiwum warstwy dostępu dla obiektów blob — usługi Azure Storage
+description: Gorąca chłodna i archiwum warstwy dostępu dla konta usługi Azure storage.
 services: storage
-author: kuhussai
+author: Xansky
 ms.service: storage
-ms.topic: article
-ms.date: 03/06/2019
-ms.author: kuhussai
+ms.topic: conceptual
+ms.date: 03/23/2019
+ms.author: mhopkins
 ms.subservice: blobs
-ms.openlocfilehash: ec024f8f1cd411455a6cbb2a0b12e7b4751af5fe
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 424ca1cccd1b82c26a801af3f85f41eb2991e2d7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405338"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370129"
 ---
-# <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob storage: — Wersja Premium (wersja zapoznawcza), warstw magazynowania gorąca, chłodna i archiwum
+# <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Usługa Azure Blob storage: gorąca, chłodna i archiwalna dostępu
 
-## <a name="overview"></a>Przegląd
+Usługa Azure storage oferuje dostęp do różnych warstw, które umożliwiają przechowywanie danych obiektów blob w sposób najbardziej efektywny. Warstwy dostępu obejmują:
 
-Usługa Azure storage oferuje warstw innego magazynu, które umożliwiają przechowywanie danych obiektów Blob w sposób najbardziej efektywny. Dostępne warstwy obejmują:
+- **Gorąca** — zoptymalizowana pod kątem przechowywania danych, z których korzysta się często.
+- **Chłodna** — zoptymalizowana pod kątem magazynowania danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni.
+- **Archiwum** — zoptymalizowana pod kątem magazynowania danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 180 dni elastyczne wymagania dotyczące opóźnień (rzędu kilku godzin).
 
-- **Usługa Premium storage (wersja zapoznawcza)** udostępnia sprzętu wysokiej wydajności dla danych, z których korzysta się często.
- 
-- **Gorąco magazynu**: jest zoptymalizowana pod kątem magazynowania danych, z których korzysta się często. 
+Do dostępu do różnych warstw obowiązują następujące zastrzeżenia:
 
-- **Chłodna magazynu** została zoptymalizowana pod kątem magazynowania danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni.
- 
-- **Magazyn archiwum** została zoptymalizowana pod kątem magazynowania danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 180 dni elastyczne wymagania dotyczące opóźnień (rzędu kilku godzin).
-
-Następujące zagadnienia dotyczące towarzyszyć warstw innego magazynu:
-
-- Warstwa magazynowania archiwum jest dostępna tylko na poziomie obiektów blob, a nie na poziomie konta magazynu.
- 
-- Dane w warstwie magazynu chłodnego mogą tolerować nieco niższą dostępność, ale nadal wymagane wysoka trwałość oraz podobny czas dostępu i parametry przepływności jak gorących danych. Dla chłodnych danych umowa SLA dotycząca nieco niższej dostępności i wyższe dostępu koszty w porównaniu z gorącymi danymi to dopuszczalne wady, biorąc pod uwagę niższe koszty magazynowania.
-
+- Warstwa dostępu archiwalna jest dostępna tylko na poziomie obiektów blob, a nie na poziomie konta magazynu.
+- Dane w warstwie dostępu chłodna może tolerować nieco niższą dostępność, ale nadal wymagane wysoka trwałość oraz podobny czas dostępu i parametry przepływności jak gorących danych. Chłodnych danych, nieco niższą dostępności umowy poziomu usług (SLA) i wyższych dostępu koszty w porównaniu z gorącymi danymi to dopuszczalne wady, biorąc pod uwagę niższe koszty magazynowania.
 - Magazyn Archiwum działa w trybie offline i ma najniższe koszty magazynowania, ale także najwyższe koszty dostępu.
- 
-- Można ustawić tylko warstwy magazynu gorąca i chłodna na poziomie konta. Obecnie w warstwie archiwum nie można ustawić na poziomie konta.
- 
-- Gorąca, chłodna, i warstwy archiwum można ustawić na poziomie obiektu.
+- Można ustawić tylko warstwy dostępu gorąca i chłodna na poziomie konta.
+- Gorąca, chłodna i archiwalna można ustawić na poziomie obiektu.
 
-Dane przechowywane w chmurze rośnie w tempie wykładniczym. Aby zarządzać kosztami zwiększających się potrzeb dotyczących magazynowania, warto zorganizować dane na podstawie atrybutów, takich jak częstotliwość dostępu i planowany okres przechowywania. Pozwoli to na optymalizację kosztów. Dane przechowywane w chmurze mogą być różne pod względem sposobu ich generowania i przetwarzania oraz uzyskiwania do nich dostępu przez cały okres ich istnienia. Do niektórych danych często uzyskuje się dostęp. Są one również często modyfikowane w trakcie całego okresu istnienia. Do niektórych danych często uzyskuje się dostęp na początkowym etapie istnienia, a z czasem już zdecydowanie rzadziej. Niektóre dane pozostają nieużywane w chmurze i dostęp do nich uzyskuje się rzadko (lub w ogóle) po umieszczeniu ich w magazynie.
+Dane przechowywane w chmurze rośnie w tempie wykładniczym. Aby zarządzać kosztami zwiększających się potrzeb dotyczących magazynowania, warto zorganizować dane na podstawie atrybutów, takich jak częstotliwość dostępu i planowany okres przechowywania. Pozwoli to na optymalizację kosztów. Dane przechowywane w chmurze mogą być różne pod względem jak został wygenerowany, przetwarzane i dostępne przez cały okres ich istnienia. Do niektórych danych często uzyskuje się dostęp. Są one również często modyfikowane w trakcie całego okresu istnienia. Do niektórych danych często uzyskuje się dostęp na początkowym etapie istnienia, a z czasem już zdecydowanie rzadziej. Niektóre dane pozostają nieużywane w chmurze i rzadko, jeśli, uzyskuje się dostęp po jego zapisaniu.
 
-W przypadku każdego z tych scenariuszy dostępu do danych istnieją korzyści płynące z różnych warstw magazynowania, zoptymalizowanych pod kątem określonego wzorca dostępu. Z warstwami magazynowania gorąca, chłodna i archiwum usługi Azure Blob storage zaspokaja potrzebę korzystania ze zróżnicowanych warstw magazynowania z oddzielnymi modelami cenowymi.
+Każda z tych scenariuszy dostępu do danych istnieją korzyści płynące z warstwy dostępu do innego, zoptymalizowana pod kątem określonego wzorca dostępu. Za pomocą hot adresy magazynu chłodna i archiwalna dostępu do obiektów Blob platformy Azure to potrzebę warstw zróżnicowany dostęp z oddzielnymi modelami cenowymi.
 
 ## <a name="storage-accounts-that-support-tiering"></a>Konta magazynu z obsługą warstw
 
-Może być tylko warstwy dane magazynu obiektów na warstwę gorąca, chłodna i archiwum w usłudze Blob storage i ogólnego przeznaczenia w wersji 2 (GPv2) konta. Konta ogólnego przeznaczenia w wersji 1 (GPv1) nie obsługują warstw. Klienci mogą jednak łatwo przekształcać istniejące konta GPv1 lub konta usługi Blob Storage w konta GPv2 w ramach prostego procesu uruchamianego jednym kliknięciem w witrynie Azure Portal. Konto GPv2 oferuje nową strukturę cen obiektów blob, plików i kolejek oraz dostęp do różnych nowych funkcji magazynu. Co więcej, w przyszłości niektóre nowe funkcje i rabaty cenowe będą oferowane tylko w przypadku kont GPv2. W związku z tym klienci powinni zastanowić się nad korzystaniem z konta GPv2, ale podjąć taką decyzję mogą tylko po zapoznaniu się z cenami wszystkich usług, ponieważ niektóre obciążenia mogą być droższe na kontach GPv2 niż na kontach GPv1. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../common/storage-account-overview.md).
+Może być tylko warstwy dane magazynu obiektów do warstw gorąca, chłodna lub archiwum w usłudze Blob storage i ogólnego przeznaczenia w wersji 2 (GPv2) konta. Konta ogólnego przeznaczenia w wersji 1 (GPv1) nie obsługują warstw. Można jednak łatwo przekształcać istniejące konta GPv1 lub usługi Blob storage do kont GPv2 w procesie jednym kliknięciem w witrynie Azure portal. Konto GPv2 oferuje nową strukturę cen obiektów blob, plików, kolejek i dostęp do różnych innych nowych funkcji magazynu. Idąc dalej, niektóre nowe funkcje i rabaty cenowe będą oferowane tylko na kontach GPv2. W związku z tym należy zastanowić się nad korzystaniem kont GPv2, ale tylko ich używać po zapoznaniu się z cenami wszystkich usług. Niektóre obciążenia mogą być droższe na kontach GPv2 niż na kontach GPv1. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../common/storage-account-overview.md).
 
-Blob storage i GPv2 kont udostępniają **warstwy dostępu** atrybut na poziomie konta, co pozwala na określanie domyślnej warstwy magazynowania jako gorąca lub chłodna dla dowolnego obiektu blob na koncie magazynu, który nie ma jawnie ustawionej warstwy na poziom obiektu. W przypadku obiektów z warstwą ustawioną na poziomie obiektu warstwa konta nie będzie stosowana. Warstwę archiwum można stosować tylko na poziomie obiektu. W dowolnym momencie można przełączać się między tymi warstwami magazynowania.
+Blob storage i GPv2 kont udostępniają **warstwy dostępu** atrybut na poziomie konta. Ten atrybut umożliwia określanie domyślnej warstwy dostępu gorąca lub chłodna dla dowolnego obiektu blob na koncie magazynu, który nie ma jawnie ustawionej warstwy na poziomie obiektu. W przypadku obiektów z warstwą ustawioną na poziomie obiektu warstwa konta nie będzie stosowana. Warstwę archiwum można można stosować tylko na poziomie obiektu. Możesz przełączać się między tymi warstwami dostępu w dowolnym momencie.
 
-## <a name="premium-access-tier"></a>Warstwa dostępu — wersja Premium
+## <a name="premium-performance-block-blob-storage"></a>Magazyn Premium wydajności block blob storage
 
-Dostępna w wersji zapoznawczej jest dostępu w warstwie Premium, co sprawia, że często używane dane dostępne za pośrednictwem sprzętu wysokiej wydajności. Dane przechowywane w tej warstwie jest przechowywana na dyskach SSD, które są optymalizowane w celu zmniejszenia opóźnień i wyższej szybkości transakcji w porównaniu do tradycyjnych dysków twardych. Warstwa dostępu — wersja Premium jest dostępna za pośrednictwem typu konta magazynu blokowych obiektów Blob tylko.
+Magazyn Premium wydajności block blob storage udostępnia rzadziej używanych danych za pomocą sprzętu wysokiej wydajności. Dane w tej warstwie wydajności są przechowywane na dyskach półprzewodnikowych (SSD), które są zoptymalizowane pod kątem opóźnień niski i spójne. Dyski SSD zapewniają większe transakcyjne i przepustowość, w porównaniu do tradycyjnych dysków twardych.
 
-Ta warstwa jest idealny dla obciążeń wymagających czasy reakcji szybkie i spójne. Dane, które obejmuje użytkowników końcowych, takich jak interaktywne wideo edycji statyczne zawartość sieci web, transakcji w trybie online i jak dobrze nadają się dla warstwy dostępu do wersji Premium. Ta warstwa jest przeznaczony dla obciążeń, które wykonują wiele małych transakcji, takich jak przechwytywanie danych telemetrycznych, wiadomości błyskawiczne i transformacji danych.
+Magazyn Premium wydajności block blob storage jest idealny dla obciążeń wymagających czasy reakcji szybkie i spójne. Najlepiej w przypadku obciążeń, które wykonują wiele małych transakcji, takich jak przechwytywanie danych telemetrycznych, wiadomości błyskawiczne i transformacji danych. Nadaje się również dane, które obejmuje użytkowników końcowych, takich jak interakcyjne edytowania materiałów wideo, zawartość statyczną sieci web i transakcji w trybie online.
 
-Aby uzyskać więcej informacji na temat korzystania z wersji zapoznawczej, zobacz [publicznej wersji zapoznawczej usługi Azure Storage Blob Premium](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
+Magazyn Premium wydajności block blob storage jest dostępna tylko za pośrednictwem typu konta magazynu blokowych obiektów blob, a nie obsługuje obecnie obsługą warstw pozwalająca na warstwę gorąca, chłodna lub archiwalna dostępu.
 
 ## <a name="hot-access-tier"></a>Warstwa dostępu Gorąca
 
-Magazynu gorącego ma wyższe koszty magazynowania, niż w warstwach chłodna i archiwum magazynu, ale najniższe koszty dostępu. Przykładowe scenariusze użycia dotyczące warstwy magazynu gorącego obejmują:
+Warstwa dostępu gorąca ma wyższe koszty magazynowania, niż w warstwach chłodna i archiwum, ale najniższe koszty dostępu. Przykładowe scenariusze użycia dotyczące warstwy dostępu gorąca obejmują:
 
-* Dane, które są często używane lub przewiduje się do nich częsty dostęp (odczyt i zapis danych).
-* Dane, które są przygotowywane do przetwarzania i ewentualnej migracji do warstwy magazynu chłodnego.
+- Dane, które jest aktywnie używany lub, że można uzyskać dostęp (Odczyt i zapis) często.
+- Dane, które są przygotowywane do przetwarzania i ewentualnej migracji do warstwy dostępu chłodna.
 
 ## <a name="cool-access-tier"></a>Warstwa dostępu Chłodna
 
-Warstwa magazynowania chłodna ma niższe koszty magazynowania i wyższe koszty dostępu w porównaniu do magazynu gorącego. Ta warstwa jest przeznaczona dla danych, które pozostaną w warstwie chłodna przez co najmniej 30 dni. Przykładowe scenariusze użycia dotyczące warstwy magazynu chłodnego obejmują:
+Warstwa dostępu chłodna ma niższe koszty magazynowania i wyższe koszty dostępu w porównaniu do magazynu gorącego. Ta warstwa jest przeznaczona dla danych, które pozostaną w warstwie Chłodna przez co najmniej 30 dni. Przykładowe scenariusze użycia dotyczące warstwy dostępu chłodna obejmują:
 
-* Krótkoterminowe kopie zapasowe i zestawy danych odzyskiwania po awarii.
-* Starszą zawartość nośników, która nie jest już często wyświetlana, ale oczekiwane jest, że będzie ona natychmiast dostępna, gdy będzie to wymagane.
-* Duże zbiory danych, które muszą być przechowywane w sposób ekonomiczny, podczas gdy na potrzeby przyszłego przetwarzania zbierana jest większa ilość danych (*np.* długoterminowe magazynowanie danych naukowych lub nieprzetworzonych danych telemetrycznych z zakładu produkcyjnego).
+- Krótkoterminowe kopie zapasowe i zestawy danych odzyskiwania po awarii.
+- Starszą zawartość nośników, która nie jest już często wyświetlana, ale oczekiwane jest, że będzie ona natychmiast dostępna, gdy będzie to wymagane.
+- Duże zbiory danych, które muszą być przechowywane w sposób ekonomiczny, podczas gdy na potrzeby przyszłego przetwarzania zbierana jest większa ilość danych (*np.* długoterminowe magazynowanie danych naukowych lub nieprzetworzonych danych telemetrycznych z zakładu produkcyjnego).
 
 ## <a name="archive-access-tier"></a>Warstwa dostępu Archiwum
 
-Usługa Archive storage ma najniższy koszt magazynowania i wyższe koszty pobierania danych w porównaniu do warstwy gorąca i chłodna. Ta warstwa jest przeznaczona dla danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni.
+Warstwa dostępu archiwalna ma najniższy koszt magazynowania i wyższe koszty pobierania danych w porównaniu do warstwy gorąca i chłodna. Ta warstwa jest przeznaczona dla danych, które można pobierać z opóźnieniem kilku godzin i które pozostaną w warstwie Archiwum przez co najmniej 180 dni.
 
-Gdy obiekt blob znajduje się w magazynie archiwalnym, danych obiektów blob jest w trybie offline i nie można odczytać skopiowany, zastąpione lub zmodyfikowane. Nie można również tworzyć migawek obiektu blob w magazynie archiwalnym. Jednak metadane obiektu blob pozostaje online i dostępne, co umożliwia wyświetlanie listy obiektów blob i jego właściwości. W przypadku obiektów blob w warstwie Archiwum jedynymi prawidłowymi operacjami są: GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier oraz DeleteBlob. 
+Gdy obiekt blob znajduje się w magazynie archiwalnym, danych obiektów blob jest w trybie offline i nie można odczytać skopiowany, zastąpione lub zmodyfikowane. Nie można wykonać migawki obiektu blob w magazynie archiwalnym. Jednak metadane obiektu blob pozostaje online i dostępne, co umożliwia wyświetlanie listy obiektów blob i jego właściwości. Dla obiektów blob w warstwie archiwum jedynymi prawidłowymi operacjami są GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier oraz DeleteBlob.
 
+Przykładowe scenariusze użycia dotyczące warstwy dostępu do archiwum obejmują:
 
-Przykładowe scenariusze użycia dotyczące warstwy magazynu archiwum obejmują:
-
-* Długoterminowe kopie zapasowe, dodatkowe kopie zapasowej i archiwalne zestawy danych
-* Oryginalne (nieprzetworzone) dane, które muszą zostać zachowane, nawet po przetworzeniu ich do ostatecznej użytecznej postaci (*np.* nieprzetworzone pliki multimedialne po transkodowaniu do innych formatów).
-* Dane zgodności i dane archiwalne, które muszą być przechowywane przez długi czas, i do których bardzo rzadko uzyskuje się dostęp (*np.* zapisy z kamer monitorujących, stare zdjęcia rentgenowskie lub zdjęcia z rezonansu magnetycznego dla organizacji opieki zdrowotnej, nagrania audio i zapisy rozmów telefonicznych z klientami dla firm z branży usług finansowych).
+- Długoterminowe kopie zapasowe, dodatkowe kopie zapasowej i archiwalne zestawy danych
+- Oryginalne (nieprzetworzone) dane, które muszą zostać zachowane, nawet po przetworzeniu ich do ostatecznej użytecznej postaci (*np.* nieprzetworzone pliki multimedialne po transkodowaniu do innych formatów).
+- Dane zgodności i dane archiwalne, które muszą być przechowywane przez długi czas, i do których bardzo rzadko uzyskuje się dostęp (*Na przykład*, monitorujących, stare rentgenowskie-kamer/MRIs dla organizacji opieki zdrowotnej, nagrania audio i zapisy klient wywołuje dla usług finansowych)
 
 ### <a name="blob-rehydration"></a>Ponowne wypełnianie obiektów blob
-Do odczytywania danych w magazynie archiwalnym, należy najpierw zmienić warstwę obiektu blob na gorącą lub chłodną. Proces ten, określany jako „ponowne wypełnianie” (ang. rehydration), może potrwać do 15 godzin. Dla uzyskania optymalnej wydajności zaleca się dużych rozmiarów obiektów blob. Ponowne wypełnianie kilku małych obiektów blob równocześnie może spowodować dalsze przedłużenie czasu.
 
-Podczas ponownego wypełniania można sprawdzać właściwość obiektu blob **Stan archiwum**, aby upewnić się, że warstwa została zmieniona. Właściwość ta ma wartość „rehydrate-pending-to-hot” (ponowne wypełnianie w celu przejścia do warstwy gorącej) lub „rehydrate-pending-to-cool” (ponowne wypełnianie w celu przejścia do warstwy chłodnej) w zależności od warstwy docelowej. Po zakończeniu właściwość stan archiwum zostanie usunięty, a **warstwy dostępu** właściwość obiektu blob odzwierciedla nowej warstwy gorąca lub chłodna warstwa.  
+Aby odczytać dane w magazynie archiwalnym, należy najpierw zmienić warstwę obiektu blob na gorącą lub chłodną. Proces ten, określany jako „ponowne wypełnianie” (ang. rehydration), może potrwać do 15 godzin. Dla uzyskania optymalnej wydajności zaleca się dużych rozmiarów obiektów blob. Ponowne wypełnianie kilku małych obiektów blob równocześnie może spowodować dalsze przedłużenie czasu.
+
+Podczas ponownego wypełniania można sprawdzać właściwość obiektu blob **Stan archiwum**, aby upewnić się, że warstwa została zmieniona. Właściwość ta ma wartość „rehydrate-pending-to-hot” (ponowne wypełnianie w celu przejścia do warstwy gorącej) lub „rehydrate-pending-to-cool” (ponowne wypełnianie w celu przejścia do warstwy chłodnej) w zależności od warstwy docelowej. Po zakończeniu tego procesu właściwość obiektu blob „stan archiwum” jest usuwana, a wartość właściwości **Warstwa dostępu** odpowiada nowej warstwie Gorąca lub Chłodna.  
 
 ## <a name="blob-level-tiering"></a>Obsługa warstw na poziomie obiektów blob
 
-Funkcja obsługi warstw na poziomie obiektów blob umożliwia zmianę warstwy danych na poziomie obiektu przy użyciu jednej operacji o nazwie [Ustawianie warstwy obiektu blob](/rest/api/storageservices/set-blob-tier). Zmiany wzorców użycia, można łatwo zmienić warstwę dostępu obiektu blob między warstwami gorąca, chłodna lub archiwalna, bez konieczności przenoszenia danych między kontami. Wszystkie zmiany warstw natychmiast. Jednak ponownego wypełniania obiektu blob z archiwum może potrwać kilka godzin. 
+Funkcja obsługi warstw na poziomie obiektów blob umożliwia zmianę warstwy danych na poziomie obiektu przy użyciu jednej operacji o nazwie [Ustawianie warstwy obiektu blob](/rest/api/storageservices/set-blob-tier). W odpowiedzi na zmiany wzorców użycia można łatwo zmieniać warstwy dostępu do obiektu blob (wybierając warstwę gorącą, chłodną lub archiwalną) bez przenoszenia danych między kontami. Wszystkie zmiany warstw natychmiast. Jednak ponownego wypełniania obiektu blob z archiwum może potrwać kilka godzin.
 
 Czas ostatniej zmiany warstwy obiektu blob jest uwidaczniany za pomocą właściwości obiektu blob **Czas zmiany warstwy dostępu**. Jeśli obiekt blob znajduje się w warstwie archiwum, go nie można zastąpić, więc przekazanie tego samego obiektu blob nie jest dozwolona w tym scenariuszu. Może spowodować zastąpienie obiektu blob w gorącej lub chłodnej warstwy, w których przypadku nowy obiekt blob dziedziczy warstwę obiektu blob, który został zastąpiony.
 
-W obrębie jednego konta jest możliwe współistnienie obiektów blob należących do wszystkich trzech warstw magazynowania. Obiekt blob bez jawnie przypisanej warstwy korzysta z warstwy zgodnie z ustawieniem warstwy dostępu konta. Jeśli warstwa dostępu jest wnioskowana z konta, możesz zobaczyć **wywnioskowana Warstwa dostępu** obiektu blob właściwość ustawioną na wartość "true", a obiekt blob **warstwy dostępu** właściwość obiektu blob jest zgodna z warstwą konta. W witrynie Azure Portal właściwość Wywnioskowana warstwa dostępu jest wyświetlana z warstwą dostępu obiektu blob, np. Gorąca (wywnioskowana) lub Chłodna (wywnioskowana).
+Obiekty BLOB we wszystkich warstwach dostępu trzy mogą współistnieć w obrębie tego samego konta. Obiekt blob bez jawnie przypisanej warstwy korzysta z warstwy zgodnie z ustawieniem warstwy dostępu konta. Jeśli warstwa dostępu jest wnioskowana z konta, możesz zobaczyć **wywnioskowana Warstwa dostępu** obiektu blob właściwość ustawioną na wartość "true", a obiekt blob **warstwy dostępu** właściwość obiektu blob jest zgodna z warstwą konta. W witrynie Azure portal wywnioskowana Warstwa dostępu, właściwości jest wyświetlana z warstwą dostępu obiektu blob (na przykład **gorąca (wywnioskowana)** lub **chłodna (wywnioskowana)**).
 
 > [!NOTE]
 > Magazyn Archiwum i funkcja obsługi warstw na poziomie obiektów blob obsługują tylko blokowe obiekty blob. Nie można także zmienić warstwy blokowego obiektu blob, który ma migawki.
 
 > [!NOTE]
-> Dane przechowywane w warstwie Premium i dostępu nie może obecnie należeć do warstwy gorąca, chłodna lub archiwum, przy użyciu [Ustawianie warstwy obiektu Blob](/rest/api/storageservices/set-blob-tier) lub za pomocą zarządzania cyklem życia usługi Azure Blob Storage. W celu przeniesienia danych należy synchronicznie skopiować obiekty BLOB z dostępu Premium do korzystania z gorącej [umieścić blok z adresu URL interfejsu API](/rest/api/storageservices/put-block-from-url) lub wersję narzędzia AzCopy, która obsługuje ten interfejs API. *Umieścić blok z adresu URL* API synchronicznie kopiuje dane na serwerze, co oznacza ukończenia wywołania tylko raz wszystkie dane są przenoszone z oryginalnej lokalizacji serwera do lokalizacji docelowej.
+> Dane przechowywane na koncie magazynu blokowych obiektów blob nie może obecnie należeć do warstwy gorąca, chłodna lub archiwum, przy użyciu [Ustawianie warstwy obiektu Blob](/rest/api/storageservices/set-blob-tier) lub za pomocą zarządzania cyklem życia usługi Azure Blob Storage.
+> W celu przeniesienia danych musisz synchronicznie skopiować obiekty BLOB z konta usługi block blob storage Warstwa dostępu gorąca przy użyciu innego konta [umieścić blok z adresu URL interfejsu API](/rest/api/storageservices/put-block-from-url) lub wersję narzędzia AzCopy, która obsługuje ten interfejs API.
+> *Umieścić blok z adresu URL* API synchronicznie kopiuje dane na serwerze, co oznacza ukończenia wywołania tylko raz wszystkie dane są przenoszone z oryginalnej lokalizacji serwera do lokalizacji docelowej.
 
 ### <a name="blob-lifecycle-management"></a>Zarządzanie cyklem życia obiektów blob
+
 Zarządzanie cyklem życia magazynu obiektów blob (wersja zapoznawcza) oferuje zaawansowane, oparte na regułach zasadę, która umożliwia przeniesienie danych do najlepszych warstwy dostępu i wygasanie danych na końcu jej cyklu projektowania. Zobacz [Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure](storage-lifecycle-management-concepts.md) Aby dowiedzieć się więcej.  
 
 ### <a name="blob-level-tiering-billing"></a>Rozliczanie obsługi warstw na poziomie obiektów blob
 
-Gdy obiekt blob jest przenoszony do chłodniejszej warstwy (gorąca -> chłodna, gorąca -> archiwum lub chłodna -> archiwum), operacja jest rozliczana jako operacja zapisu do warstwy docelowej, gdzie operacje zapisu (za 10 000 operacji) i opłaty za zapisu (za GB) danych w warstwie docelowej mają zastosowanie. Gdy obiekt blob jest przenoszony do cieplejszej warstwy (archiwum -> chłodna, archiwum -> gorąca lub chłodna -> gorąca), operacja jest rozliczana jako odczyt z warstwy źródłowej, w których obowiązują operacje odczytu (za 10 000 operacji) i opłaty za pobieranie (za GB) danych z warstwy źródłowej. W poniższej tabeli przedstawiono, jak są rozliczane zmiany warstwy.
+Gdy obiekt blob jest przenoszony do chłodniejszej warstwy (gorąca -> chłodna, gorąca -> archiwum lub chłodna -> archiwum), operacja jest rozliczana jako operacja zapisu do warstwy docelowej, gdzie operacje zapisu (za 10 000 operacji) i opłaty za zapisu (za GB) danych w warstwie docelowej mają zastosowanie.
 
-| | **Zapis opłaty (Operacja + dostępu)** | **Opłaty odczytu (Operacja + dostępu)** 
+Gdy obiekt blob jest przenoszony do cieplejszej warstwy (archiwum -> chłodna, archiwum -> gorąca lub chłodna -> gorąca), operacja jest rozliczana jako odczyt z warstwy źródłowej, w których obowiązują operacje odczytu (za 10 000 operacji) i opłaty za pobieranie (za GB) danych z warstwy źródłowej. W poniższej tabeli przedstawiono, jak są rozliczane zmiany warstwy.
+
+| | **Zapis opłaty (Operacja + dostępu)** | **Opłaty odczytu (Operacja + dostępu)**
 | ---- | ----- | ----- |
-| **SetBlobTier Direction** | Gorąca -> chłodna, gorąca -> archiwum, chłodna -> archiwum | Archiwum -> chłodna, archiwum -> gorąca, chłodna -> gorąca
+| **SetBlobTier Direction** | gorąca -> chłodna, gorąca -> archiwum, chłodna -> archiwum | archiwum -> chłodna, archiwum -> gorąca, chłodna -> gorąca
 
-W przypadku przełączania warstwy konta z gorąca na chłodna, opłata wyniesie za operacje zapisu (za 10 000 operacji) dla wszystkich obiektów blob bez ustawionej warstwy tylko na kontach GPv2. Nie ma opłat dla tej zmiany w kontach magazynu obiektów Blob. Opłata wyniesie zarówno dla operacji odczytu (za 10 000 operacji) i pobieranie danych (za GB) w przypadku przełączania usługi Blob storage lub GPv2 Zmiana warstwy konta z chłodna na gorąca. Opłaty za wczesne usunięcie dla dowolnego obiektu blob przeniesionych z warstwy chłodna lub archiwum mogą także obowiązywać.
+W przypadku przełączania warstwy konta z Gorąca na Chłodna opłaty zostaną naliczone za operacje zapisu (za 10 000 operacji) dla wszystkich obiektów blob bez ustawionej warstwy tylko na kontach GPv2. Nie ma opłat dla tej zmiany w kontach magazynu obiektów Blob. Zostanie naliczona opłata za operacje odczytu (za 10 000 operacji) i pobieranie danych (za GB), jeśli przełączasz konta magazynu usługi Blob Storage lub GPv2 z warstwy Chłodna na Gorąca. Mogą również obowiązywać opłaty za wczesne usunięcie dla dowolnego obiektu przeniesionego z warstwy Chłodna lub Archiwum.
 
 ### <a name="cool-and-archive-early-deletion"></a>Opłaty za wcześniejsze usunięcie w warstwach Chłodna i Archiwum
 
-Dodatkowo za GB danych, opłaty miesięcznej za każdy obiekt blob jest przenoszony do warstwy chłodna (tylko konta GPv2) podlega ciekawe wcześniejsze usunięcie w okresie 30 dni, a każdy obiekt blob jest przenoszony do warstwy archiwum podlega okresem wcześniejszego usunięcia 180 dni. Ta opłata jest naliczana proporcjonalnie. Na przykład, jeśli obiekt blob jest przenoszony do archiwum i następnie usunięty lub przeniesiony do warstwy gorąca po 45 dniach, możesz opłata będzie naliczana wczesne usunięcie odpowiadająca 135 (180 minus 45) dniom przechowywania tego obiektu blob w warstwie archiwum.
+Oprócz opłaty miesięcznej za GB, każdy obiekt blob przenoszony do warstwy Chłodna (tylko konta GPv2) jest objęty okresem wcześniejszego usunięcia z warstwy Chłodna przez 30 dni, a każdy obiekt przenoszony do warstwy Archiwum jest objęty okresem wcześniejszego usunięcia z warstwy Chłodna przez 180 dni. Ta opłata jest naliczana proporcjonalnie. Jeśli na przykład obiekt blob zostanie przeniesiony do warstwy Archiwum, a następnie usunięty lub przeniesiony do warstwy Gorąca po 45 dniach, zostanie naliczona opłata za wczesne usunięcie odpowiadająca 135 (180 minus 45) dniom przechowywania tego obiektu blob w archiwum.
 
-Wcześniejsze usunięcie może obliczyć przy użyciu właściwość obiektu blob **czas utworzenia**, jeśli wystąpił brak dostępu do zmiany warstwy. W przeciwnym razie można używać podczas ostatniej modyfikacji warstwy dostępu chłodna lub archiwum, wyświetlając właściwość obiektu blob: **Zmień czas, dostęp do warstwy w-**. Aby uzyskać więcej informacji na temat właściwości obiektu blob, zobacz [uzyskać właściwości obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
+Wcześniejsze usunięcie może obliczyć przy użyciu właściwość obiektu blob **czas utworzenia**, jeśli wystąpił brak dostępu do zmiany warstwy. W przeciwnym razie można skorzystać w przypadku warstwy dostępu do ostatniej modyfikacji się do warstwy chłodna lub archiwalna, wyświetlając właściwość obiektu blob: **Zmień czas, dostęp do warstwy w-**. Aby uzyskać więcej informacji na temat właściwości obiektu blob, zobacz [uzyskać właściwości obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
 
-## <a name="comparison-of-the-storage-tiers"></a>Porównanie warstw magazynowania
+## <a name="comparing-block-blob-storage-options"></a>Porównanie opcji magazynu obiektów blob bloku
 
-W poniższej tabeli przedstawiono porównanie gorącej, chłodna i archiwalna magazynu.
+Poniższej tabeli przedstawiono porównanie magazynu premium wydajności block blob storage i gorąca, chłodna i archiwum warstwy dostępu.
 
-| | **Warstwa magazynu gorącego** | **Warstwa magazynu chłodnego** | **Warstwa magazynowania Archiwum**
-| ---- | ----- | ----- | ----- |
-| **Dostępność** | 99,9% | 99% | ND |
-| **Dostępność** <br> **(odczyty RA-GRS)**| 99,99% | 99,9% | ND |
-| **Opłaty za użycie** | Wyższe koszty magazynowania, niższe, koszty dostępu i transakcji | Niższe koszty magazynowania, wyższe, koszty dostępu i transakcji | Najniższe koszty magazynowania, najwyższy, koszty dostępu i transakcji |
-| **Minimalny rozmiar obiektu** | ND | ND | ND |
-| **Minimalny czas magazynowania** | ND | 30 dni (tylko GPv2) | 180 dni
-| **Opóźnienie** <br> **(czas do pierwszego bajtu)** | milisekundy | milisekundy | mniej niż 15 godz.
-| **Cele dotyczące skalowalności i wydajności** | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia |
+|                                           | **Wydajność warstwy Premium** | **Warstwy gorąca i używanie** | **Warstwa chłodna** | **Warstwę archiwum**
+| ----------------------------------------- | ---------------- | ------------ | ----- | ----- |
+| **Dostępność**                          | 99,9%            | 99,9%        | 99% | ND |
+| **Dostępność** <br> **(odczyty RA-GRS)**  | ND              | 99,99%       | 99,9% | ND |
+| **Opłaty za użycie**                         | Wyższe koszty magazynowania, niższe dostępu i koszt transakcji | Wyższe koszty magazynowania, niższe, koszty dostępu i transakcji | Niższe koszty magazynowania, wyższe, koszty dostępu i transakcji | Najniższe koszty magazynowania, najwyższy, koszty dostępu i transakcji |
+| **Minimalny rozmiar obiektu**                   | ND | ND | ND | ND |
+| **Minimalny czas magazynowania**              | ND | ND | 30 dni (tylko GPv2) | 180 dni
+| **Opóźnienie** <br> **(czas do pierwszego bajtu)** | Oznaczona jedną cyfrą MS | milisekundy | milisekundy | mniej niż 15 godz.
 
 > [!NOTE]
-> Konta Magazynu obiektów blob obsługują te same cele wydajności i skalowalności co konta magazynu ogólnego przeznaczenia. Aby uzyskać więcej informacji, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
+> Aby uzyskać cele dotyczące skalowalności i wydajności, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ## <a name="quickstart-scenarios"></a>Scenariusze typu Szybki start
 
 W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny Azure Portal:
 
-* Jak zmienić domyślną warstwę dostępu konta GPv2 lub usługi Blob Storage.
-* Jak zmienić warstwę obiektu blob na koncie GPv2 lub usługi Blob Storage.
+- Jak zmienić domyślną warstwę dostępu konta GPv2 lub usługi Blob Storage.
+- Jak zmienić warstwę obiektu blob na koncie GPv2 lub usługi Blob Storage.
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Zmienianie domyślnej warstwy dostępu konta GPv2 lub usługi Blob Storage
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Aby przejść do konta magazynu, zaznacz pozycję Wszystkie zasoby, a następnie wybierz konto magazynu.
+1. Aby przejść do konta magazynu, zaznacz pozycję Wszystkie zasoby, a następnie wybierz konto magazynu.
 
-3. W bloku Ustawienia kliknij pozycję **Konfiguracja**, aby wyświetlić i/lub zmienić konfigurację konta.
+1. W bloku Ustawienia kliknij pozycję **Konfiguracja**, aby wyświetlić i/lub zmienić konfigurację konta.
 
-4. Wybierz odpowiednią warstwę magazynu do własnych potrzeb: Ustaw **warstwy dostępu** do jednej **chłodna** lub **gorąca**.
+1. Wybierz dla Twoich potrzeb warstwę dostępu: Ustaw **warstwy dostępu** do jednej **chłodna** lub **gorąca**.
 
-5. Kliknij pozycję Zapisz w górnej części bloku.
+1. Kliknij pozycję **Zapisz** w górnej części bloku.
 
-### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Zmień warstwę obiektu blob na koncie GPv2 lub usługi Blob Storage.
+### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Dokonywanie zmiany warstwy obiektu blob na koncie GPv2 lub usługi Blob storage
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Aby przejść do obiektu blob na koncie magazynu, wybierz pozycję Wszystkie zasoby, wybierz konto magazynu, wybierz kontener, a następnie wybierz obiekt blob.
+1. Aby przejść do obiektu blob na koncie magazynu, wybierz pozycję **wszystkie zasoby**, wybierz konto magazynu, wybierz kontener, a następnie wybierz obiekt blob.
 
-3. W bloku Właściwości obiektu blob kliknij menu rozwijane **Warstwa dostępu**, aby wybrać warstwę magazynowania **Gorąca**, **Chłodna** lub **Archiwum**.
+1. W **właściwości obiektu Blob** bloku wybierz **warstwy dostępu** menu rozwijane, aby wybrać **gorąca**, **chłodna**, lub **archiwum**  warstwy dostępu.
 
-5. Kliknij pozycję Zapisz w górnej części bloku.
+1. Kliknij pozycję **Zapisz** w górnej części bloku.
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
 Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów Blob opartego na warstwie każdego obiektu blob. Mieć na uwadze następujące zagadnienia dotyczące rozliczeń:
 
-* **Koszty magazynowania**: Oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy magazynowania. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
-* **Koszty dostępu do danych**: Dostęp do danych opłat wzrostu, jak warstwa staje się chłodniejsza. W przypadku danych w warstwie chłodna i warstwa magazynowania archiwum jest naliczana opłata dostępu do danych za każdy gigabajt dla operacji odczytu.
-* **Koszty transakcji**: Brak opłat każdej transakcji dla wszystkich warstw, która zwiększa się, jak warstwa staje się chłodniejsza.
-* **Koszty transferu danych replikacji geograficznej**: Ta opłata dotyczy tylko kont ze skonfigurowaną replikacją geograficzną, w tym GRS i RA-GRS. Transfer danych w ramach replikacji geograficznej powoduje naliczanie opłaty za każdy gigabajt.
-* **Koszty transferu danych wychodzących**: Wychodzące transfery danych (dane przesyłane poza region platformy Azure) Naliczanie opłat za zużycie przepustowości za każdy gigabajt, co jest spójne z kontami magazynu ogólnego przeznaczenia.
-* **Zmiana warstwy magazynowania**: Zmiana warstwy magazynowania konta z chłodna na gorąca spowoduje naliczenie opłaty równej odczytanie wszystkich danych na koncie magazynu. Jednak zmiana warstwy magazynowania konta z gorąca na chłodna spowoduje naliczenie opłaty równej zapisanie wszystkich danych w warstwie chłodna (tylko konta GPv2).
+- **Koszty magazynowania**: Oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy dostępu. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
+- **Koszty dostępu do danych**: Dostęp do danych opłat wzrostu, jak warstwa staje się chłodniejsza. W przypadku danych w warstwie dostępu chłodna i archiwum jest naliczana opłata dostępu do danych za każdy gigabajt dla operacji odczytu.
+- **Koszty transakcji**: Brak opłat każdej transakcji dla wszystkich warstw, która zwiększa się, jak warstwa staje się chłodniejsza.
+- **Koszty transferu danych replikacji geograficznej**: Ta opłata dotyczy tylko kont ze skonfigurowaną replikacją geograficzną, w tym GRS i RA-GRS. Transfer danych w ramach replikacji geograficznej powoduje naliczanie opłaty za każdy gigabajt.
+- **Koszty transferu danych wychodzących**: Wychodzące transfery danych (dane przesyłane poza region platformy Azure) Naliczanie opłat za zużycie przepustowości za każdy gigabajt, co jest spójne z kontami magazynu ogólnego przeznaczenia.
+- **Zmiana warstwy dostępu**: Zmiana warstwy dostępu konta z chłodna na gorąca spowoduje naliczenie opłaty równej odczytanie wszystkich danych na koncie magazynu. Jednak zmiana warstwy dostępu konta z gorąca na chłodna spowoduje naliczenie opłaty równej zapisanie wszystkich danych w warstwie chłodna (tylko konta GPv2).
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat cen kont usługi Blob storage, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/) strony. Więcej informacji dotyczących opłat za transfer danych wychodzących można znaleźć na stronie [Szczegóły cennika transferów danych](https://azure.microsoft.com/pricing/details/data-transfers/).
@@ -193,62 +187,62 @@ Zalecamy korzystanie z kont GPv2 zamiast kont usługi Blob Storage na potrzeby o
 
 Struktury cen kont GPv1 i GPv2 są różne, a klienci powinni dokładnie je sprawdzić przed podjęciem decyzji o użyciu kont GPv2. Istniejące konto usługi Blob Storage lub GPv1 można łatwo przekonwertować na konto GPv2 w ramach prostego procesu uruchamianego jednym kliknięciem. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../common/storage-account-overview.md).
 
-**Czy mogę przechowywać obiekty w wszystkich trzech (gorąca, chłodna i archiwalna) warstw magazynowania na tym samym koncie?**
+**Czy mogę przechowywać obiekty we wszystkich trzech (gorąca, chłodna i archiwum) dostęp do warstwy na tym samym koncie?**
 
-Tak. Atrybut **Warstwa dostępu** ustawiany na poziomie konta to domyślna warstwa mająca zastosowanie do wszystkich obiektów na tym koncie bez jawnie ustawionej warstwy. Jednak obsługa warstw na poziomie obiektów blob umożliwia ustawienie warstwy dostępu na poziomie obiektu niezależnie od ustawienia warstwy dostępu konta. Obiekty BLOB we wszystkich trzech warstw magazynowania (gorąca, chłodna lub archiwalna) mogą istnieć w ramach tego samego konta.
+Tak. Atrybut **Warstwa dostępu** ustawiany na poziomie konta to domyślna warstwa mająca zastosowanie do wszystkich obiektów na tym koncie bez jawnie ustawionej warstwy. Jednak obsługa warstw na poziomie obiektów blob umożliwia ustawienie warstwy dostępu na poziomie obiektu niezależnie od ustawienia warstwy dostępu konta. Obiekty BLOB we wszystkich warstwach trzy dostępu (gorąca, chłodna lub archiwum) mogą istnieć w ramach tego samego konta.
 
-**Czy mogę zmienić domyślną warstwę magazynowania na moim koncie usługi Blob Storage lub koncie magazynu GPv2?**
+**Czy można zmienić domyślną warstwę dostępu konta magazynu blob Storage lub GPv2?**
 
-Tak, zmiana domyślnej warstwy magazynowania jest możliwa przez ustawienie atrybutu **Warstwa dostępu** dla konta magazynu. Zmiana warstwy magazynowania będzie miała zastosowanie do wszystkich obiektów przechowywanych na koncie, które nie mają jawnie ustawionej warstwy. Zmiana warstwy magazynowania z gorąca na chłodna spowoduje naliczenie operacje zapisu (za 10 000 operacji) dla wszystkich obiektów blob bez ustawionej warstwy tylko na kontach GPv2 i zmiana warstwy z chłodna na gorąca spowoduje naliczenie operacje odczytu (za 10 000 operacji) i pobieranie danych (za GB), opłaty za wszystkie obiekty BLOB w magazynie obiektów Blob i gpv2.
+Tak, możesz zmienić domyślną warstwę dostępu przez ustawienie **warstwy dostępu** atrybutu na koncie magazynu. Zmiana warstwy dostępu ma zastosowanie do wszystkich obiektów przechowywanych na koncie, które nie mają jawnie ustawionej warstwy. Zmiana warstwy dostępu z gorąca na chłodna spowoduje naliczenie operacje zapisu (za 10 000 operacji) dla wszystkich obiektów blob bez ustawionej warstwy tylko na kontach GPv2 i zmiana warstwy z chłodna na gorąca spowoduje naliczenie operacje odczytu (za 10 000 operacji) i pobieranie danych (za GB), opłaty za wszystkie obiekty BLOB w magazynie obiektów Blob i gpv2.
 
-**Mogę ustawić Moje domyślną warstwę dostępu konta do archiwum?**
+**Czy mogę ustawić domyślną warstwę dostępu do konta na Archiwum?**
 
-Nie. Tylko warstwy magazynu gorąca i chłodna można ustawić jako domyślną warstwę dostępu konta. Archiwum można ustawić tylko na poziomie obiektu.
+Nie. Tylko warstwy dostępu gorąca i chłodna można ustawić jako domyślną warstwę dostępu konta. Archiwum można ustawić tylko na poziomie obiektu.
 
-**W którym regionach warstw magazynowania gorąca, chłodna i archiwum w są dostępne?**
+**W którym regionach są gorąca, chłodna i archiwum dostępne warstwy dostępu?**
 
-Warstwy magazynowania gorąca i chłodna oraz obsługa warstw na poziomie obiektów blob są dostępne we wszystkich regionach. Magazyn w warstwie Archiwum będzie początkowo dostępny tylko w wybranych regionach. Pełną listę można znaleźć w temacie [Dostępność produktów platformy Azure według regionów](https://azure.microsoft.com/regions/services/).
+Warstwy dostępu gorąca i chłodna oraz obsługa warstw na poziomie obiektów blob są dostępne we wszystkich regionach. Magazyn w warstwie Archiwum będzie początkowo dostępny tylko w wybranych regionach. Pełną listę można znaleźć w temacie [Dostępność produktów platformy Azure według regionów](https://azure.microsoft.com/regions/services/).
 
-**Czy obiekty BLOB w chłodniej warstwie magazynowania będą działały inaczej niż w gorącej warstwie magazynowania?**
+**Czy obiekty BLOB w warstwie dostępu chłodna będą działały inaczej niż w warstwie dostępu gorąca?**
 
-Obiekty BLOB w gorącej warstwie magazynowania mają takie samo opóźnienie jak obiekty BLOB na kontach magazynu GPv1, GPv2 i Blob. Obiekty BLOB w chłodniej warstwie magazynowania mają podobne opóźnienie (w milisekundach) jak obiekty BLOB na kontach magazynu GPv1, GPv2 i Blob. Obiekty BLOB w warstwie magazynowania archiwum mają kilka godzin opóźnienia na kontach magazynu GPv1, GPv2 i Blob.
+Obiekty BLOB w warstwie dostępu gorąca mają takie samo opóźnienie jak obiekty BLOB na kontach magazynu GPv1, GPv2 i Blob. Obiekty BLOB w warstwie dostępu chłodna mają podobne opóźnienie (w milisekundach) jak obiekty BLOB na kontach magazynu GPv1, GPv2 i Blob. Obiekty BLOB w warstwie dostępu do archiwum mają kilka godzin opóźnienia na kontach magazynu GPv1, GPv2 i Blob.
 
-Obiekty BLOB w chłodniej warstwie magazynowania mają nieco niższy poziom dostępności usług (SLA) niż obiekty BLOB przechowywane w gorącej warstwie magazynowania. Aby uzyskać więcej informacji, zobacz [Magazyn — umowa SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
+Obiekty BLOB w warstwie dostępu chłodna miały nieco niższy poziom dostępności usług (SLA) niż obiekty BLOB przechowywane w ramach warstwy dostępu gorąca. Aby uzyskać więcej informacji, zobacz [Magazyn — umowa SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
 
-**Operacje między warstwy gorąca, chłodna i archiwum są takie same?**
+**Czy operacje w warstwach Gorąca, Chłodna i Archiwum są takie same?**
 
-Tak. Wszystkie operacje w warstwach gorąca i chłodna są w 100% spójne. Wszystkie prawidłowe operacje w warstwie archiwum tym usuwanie, list, get blob właściwości/metadanych i ustawianie warstwy obiektu blob są w 100% spójne z warstwy gorąca i chłodna. Obiekt blob nie może odczytać lub zmodyfikować znajduje się w warstwie archiwum.
+Tak. Wszystkie operacje w warstwach Gorąca i Chłodna są w 100% spójne. Wszystkie prawidłowe operacje w warstwie Archiwum, w tym usuwanie, tworzenie listy, pobieranie właściwości/metadanych obiektów blob i ustawianie warstwy obiektu blob, są w 100% spójne z warstwami Gorąca i Chłodna. Obiektu blob znajdującego się w warstwie Archiwum nie można odczytywać ani modyfikować.
 
-**Kiedy podczas ponownego wypełniania obiektu blob z warstwy archiwum do gorąca lub chłodna warstwa, skąd mam wiedzieć, ten proces został ukończony?**
+**Kiedy podczas ponownego wypełniania obiektu blob z warstwy Archiwum do warstwy Gorąca lub Chłodna będę wiedzieć, że ten proces został ukończony?**
 
-Podczas ponownego wypełniania można używać operacji pobierania właściwości obiektu blob, aby sondować atrybut **Stan archiwum** w celu potwierdzenia ukończenia zmiany warstwy. Właściwość ta ma wartość „rehydrate-pending-to-hot” (ponowne wypełnianie w celu przejścia do warstwy gorącej) lub „rehydrate-pending-to-cool” (ponowne wypełnianie w celu przejścia do warstwy chłodnej) w zależności od warstwy docelowej. Po zakończeniu właściwość stan archiwum zostanie usunięty, a **warstwy dostępu** właściwość obiektu blob odzwierciedla nowej warstwy gorąca lub chłodna warstwa.  
+Podczas ponownego wypełniania można używać operacji pobierania właściwości obiektu blob, aby sondować atrybut **Stan archiwum** w celu potwierdzenia ukończenia zmiany warstwy. Właściwość ta ma wartość „rehydrate-pending-to-hot” (ponowne wypełnianie w celu przejścia do warstwy gorącej) lub „rehydrate-pending-to-cool” (ponowne wypełnianie w celu przejścia do warstwy chłodnej) w zależności od warstwy docelowej. Po zakończeniu tego procesu właściwość obiektu blob „stan archiwum” jest usuwana, a wartość właściwości **Warstwa dostępu** odpowiada nowej warstwie Gorąca lub Chłodna.  
 
 **Kiedy po ustawieniu warstwy obiektu blob rozpocznie się naliczanie opłat przy użyciu odpowiedniej stawki?**
 
-Każdy obiekt blob jest zawsze rozliczane zgodnie z warstwą określoną przez obiektu blob **warstwy dostępu** właściwości. Podczas ustawiania nowej warstwy obiektu blob, **warstwy dostępu** właściwość odzwierciedla natychmiast nową warstwę dla wszystkich przejść. Jednak ponownego wypełniania obiektu blob z warstwy archiwum do gorąca lub chłodna warstwa może potrwać kilka godzin. W takich przypadkach stosowana jest stawka przy użyciu stawek warstwy archiwum do czasu ukończenia, w tym momencie ponownego wypełniania **warstwy dostępu** właściwość odzwierciedla nową warstwę. W tym momencie są rozliczane dla tego obiektu blob w gorącej lub chłodnej szybkość.
+Każdy obiekt blob jest zawsze rozliczane zgodnie z warstwą określoną przez obiektu blob **warstwy dostępu** właściwości. Podczas ustawiania nowej warstwy obiektu blob, **warstwy dostępu** właściwość odzwierciedla natychmiast nową warstwę dla wszystkich przejść. Jednak ponowne wypełnienie obiektu blob z warstwy Archiwum w warstwie Gorąca lub Chłodna może potrwać kilka godzin. W takich przypadkach stosowana jest stawka przy użyciu stawek warstwy archiwum do czasu ukończenia, w tym momencie ponownego wypełniania **warstwy dostępu** właściwość odzwierciedla nową warstwę. W tym momencie są rozliczane dla tego obiektu blob zgodnie ze stawką gorąca lub chłodna.
 
-**Jak określić, jeśli będę płacić za wczesne usunięcie w przypadku usunięcia lub przeniesienia obiektu blob z warstwy chłodna lub archiwum warstwy?**
+**Jak mogę ustalić, czy będę płacić za wczesne usunięcie w przypadku usunięcia lub przeniesienia obiektu blob z warstwy Chłodna lub Archiwum?**
 
-Każdy obiekt blob usuniętych lub przeniesionych z warstwy chłodna (tylko konta GPv2) lub warstwy archiwum przed 30 lub 180 dni odpowiednio zostaną naliczone proporcjonalnie wczesne usunięcie. Można określić, jak długo obiekt blob został w warstwie chłodna lub archiwum, sprawdzając **czas zmiany warstwy dostępu** właściwość, która udostępnia znacznik ostatniej zmiany warstwy obiektu blob. Aby uzyskać więcej informacji, zobacz [w warstwach chłodna i archiwum opłaty za wcześniejsze usunięcie](#cool-and-archive-early-deletion).
+Proporcjonalne opłaty za wczesne usunięcie będą dotyczyć wszystkich obiektów blob usuniętych lub przeniesionych z warstwy Chłodna (tylko konta GPv2) lub Archiwum przed upływem odpowiednio 30 lub 180 dni. Można określić, jak długo obiekt blob został w warstwie chłodna lub archiwum, sprawdzając **czas zmiany warstwy dostępu** właściwość, która udostępnia znacznik ostatniej zmiany warstwy obiektu blob. Aby uzyskać więcej informacji, zobacz [wcześniejsze usunięcie w warstwach chłodna i archiwum](#cool-and-archive-early-deletion).
 
-**Zestawy SDK i narzędzi platformy Azure, która obsługuje obsługi warstw na poziomie obiektów blob i Magazyn w warstwie archiwum?**
+**Które narzędzia i zestawy SDK platformy Azure obsługują warstwy na poziomie obiektów blob i magazyn w warstwie Archiwum?**
 
-Witryna Azure portal, programu PowerShell i interfejsu wiersza polecenia narzędzia i biblioteki klienta .NET, Java, Python i Node.js obsługują warstwy na poziomie obiektów blob i Magazyn w warstwie archiwum.  
+Następujące rozwiązania: witryna Azure Portal, program PowerShell, narzędzia interfejsu wiersza polecenia oraz biblioteki klienta środowisk .NET, Java, Python i Node.js obsługują warstwy na poziomie obiektów blob i magazyn w warstwie Archiwum.  
 
-**Jak dużo danych można przechowywać w warstwach gorąca, chłodna i archiwum?**
+**Ile danych można przechowywać w warstwach Gorąca, Chłodna i Archiwum?**
 
-Limity magazynu danych i inne są ustawiane na poziomie konta, a nie na poziomie warstwy magazynowania. W związku z tym można korzystać ze wszystkich limitu w jednej warstwy lub we wszystkich trzech warstwach. Aby uzyskać więcej informacji, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Magazyn danych, wraz z innych ograniczeń są ustawiane na poziomie konta, a nie na warstwę dostępu. W związku z tym można korzystać ze wszystkich limitu w jednej warstwy lub we wszystkich trzech warstwach. Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>Oceń gorąca, chłodna i archiwum na kontach magazynu obiektów Blob z konta GPv2
+### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>Ocena warstw Gorąca, Chłodna i Archiwum na kontach GPv2 i usługi Blob Storage
 
-[Sprawdzanie dostępności gorąca, chłodna i archiwum według regionu](https://azure.microsoft.com/regions/#services)
+[Sprawdzanie dostępności warstw Gorąca, Chłodna i Archiwum według regionu](https://azure.microsoft.com/regions/#services)
 
 [Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure](storage-lifecycle-management-concepts.md)
 
 [Ocena użycia bieżących kont magazynu przez włączenie metryk usługi Azure Storage](../common/storage-enable-and-view-metrics.md)
 
-[Sprawdź gorąca, chłodna i archiwum ceny w usłudze Blob storage i GPv2 kont według regionu](https://azure.microsoft.com/pricing/details/storage/)
+[Sprawdzanie cen warstw Gorąca, Chłodna i Archiwum na kontach usługi Blob Storage i GPv2 według regionu](https://azure.microsoft.com/pricing/details/storage/)
 
 [Sprawdzanie ceny transferu danych](https://azure.microsoft.com/pricing/details/data-transfers/)

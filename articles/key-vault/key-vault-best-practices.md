@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: prashanthyv
-ms.openlocfilehash: 85bd1858bc3f2d505e1e4d0a88e8c77a46ae4447
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: ee4418700cec5de1dc404c3669dd5de315aab983
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57882037"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368614"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Najlepsze rozwiązania za pomocą usługi Key Vault
 
@@ -36,7 +36,7 @@ Sugestie podczas kontroli dostępu do magazynu są następujące:
 
 Nasze zaleca się użycie magazynu dla aplikacji dla środowiska (rozwój, przedprodukcyjnych i produkcyjnych). To pomoże Ci udostępniaj wpisów tajnych w środowiskach i zmniejsza zagrożenie w razie naruszenia zabezpieczeń.
 
-## <a name="backup-your-vault"></a>Magazyn usługi Backup
+## <a name="backup"></a>Backup
 
 Upewnij się, zapoznasz się z regularne tworzenie kopii zapasowych Twojej [magazynu](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) na update/delete/tworzenia obiektów w magazynie.
 

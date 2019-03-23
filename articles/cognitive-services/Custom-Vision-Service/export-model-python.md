@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 05/17/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 02f93b86bc53b482127bdd6df963f75680242bcd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1e4c08c1e1f9c32c7c397cf187ad2ef91a25c59d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007138"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350458"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Samouczek: Uruchamianie modelu TensorFlow w języku Python
 
@@ -24,16 +24,14 @@ W tym przewodniku Szybki start opisano, jak po [wyeksportowaniu modelu TensorFlo
 > [!NOTE]
 > Ten samouczek dotyczy tylko modeli wyeksportowane z projektów klasyfikacji obrazów.
 
-## <a name="install-required-components"></a>Instalacja wymaganych składników
-
-### <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby korzystać z tego samouczka, należy wykonać następujące czynności:
 
 - Zainstalować język Python 2.7+ lub Python 3.5+.
-- Zainstalować program pip.
+- Zainstaluj program pip.
 
-Należy również zainstalować następujące pakiety:
+Następnie należy zainstalować następujące pakiety:
 
 ```
 pip install tensorflow
@@ -114,7 +112,6 @@ max_square_image = crop_center(image, min_dim, min_dim)
 augmented_image = resize_to_256_square(max_square_image)
 ```
 
-
 ### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>Przycinanie środka do określonego rozmiaru danych wejściowych dla modelu
 
 ```Python
@@ -185,6 +182,7 @@ input_node = 'Placeholder:0'
 with tf.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
+        predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
     except KeyError:
         print ("Couldn't find classification output layer: " + output_layer + ".")
         print ("Verify this a model exported from an Object Detection project.")
@@ -208,10 +206,10 @@ Wyniki uruchomienia tensora obrazu za pośrednictwem modelu trzeb będzie wtedy 
         print (labels[label_index], truncated_probablity)
         label_index += 1
 ```
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Można również opakować model w aplikację mobilną:
+Dowiedz się, jak opakowywać modelu w aplikacji mobilnej:
 * [Używanie wyeksportowanego modelu TensorFlow w aplikacji systemu Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Używanie wyeksportowanego modelu CoreML w aplikacji języka Swift systemu iOS](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Używanie wyeksportowanego modelu CoreML w aplikacji systemu iOS na platformie Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
-

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce9635c108a948b4773c7d27cb254f01d06896f8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ca71fdc8074e56adc8595ee905d5b1db3b60cef1
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544243"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371814"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -84,20 +84,14 @@ Usługa Azure Storage udostępnia różne opcje do uzyskiwania dostępu do danyc
 
 Są warstwy dostępu:
 
-> [!NOTE]
-> [Dostępu w warstwie premium (wersja zapoznawcza)](../blobs/storage-blob-storage-tiers.md#premium-access-tier), który jest zoptymalizowany pod kątem wydajności aplikacji poufnych, zapewnia niski i spójnych opóźnień w przypadku intensywne przepustowości i transakcji. Warstwa dostępu — wersja premium jest dostępna tylko z kontami magazynu blokowych obiektów Blob (wersja zapoznawcza). Aby uzyskać więcej informacji, zobacz [publicznej wersji zapoznawczej usługi Azure Storage Blob Premium](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
-
 * **Gorąca** warstwy dostępu, które jest zoptymalizowane pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej ekonomiczne, a nieco wyższe koszty magazynowania. Tworzy nowego konta magazynu w warstwie gorąca warstwa domyślnie.
 * **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być nieco bardziej kosztowne niż dostęp do danych w warstwie gorąca.
 * **Archiwum** warstwę, która jest dostępna tylko dla poszczególnych blokowych obiektów blob. Warstwę archiwum jest zoptymalizowany pod kątem danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwę archiwum jest najbardziej ekonomiczna opcja do przechowywania danych, ale dostęp do tych danych jest droższe niż dostęp do danych w gorąca lub chłodna. 
 
-
-W przypadku zmiany wzorca użycia danych można przełączać się między tymi warstwami dostępu w dowolnym momencie. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: Premium (wersja zapoznawcza), gorąca, chłodna i archiwalna magazynu](../blobs/storage-blob-storage-tiers.md).
+W przypadku zmiany wzorca użycia danych można przełączać się między tymi warstwami dostępu w dowolnym momencie. Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: gorąca, chłodna i archiwalna dostępu](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
 > Zmiana warstwy dostępu dla istniejącego konta magazynu lub obiektu blob może spowodować naliczenie dodatkowych opłat. Aby uzyskać więcej informacji, zobacz [konta magazynu, w sekcji rozliczeń](#storage-account-billing).
-
-
 
 ## <a name="replication"></a>Replikacja
 
@@ -135,7 +129,7 @@ Musi być autoryzowana każdego żądania skierowanego do swojego konta magazynu
 
 Możesz udzielić dostępu do danych na koncie magazynu przy użyciu dowolnej z następujących metod:
 
-- **Azure Active Directory:** Użyj poświadczeń usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkownika, grupy lub innych tożsamości do uzyskiwania dostępu do danych obiektów blob i kolejek (wersja zapoznawcza). W przypadku pomyślnego uwierzytelnienia tożsamości usługi Azure AD zwraca token do użycia w autoryzowania żądania do usługi Azure Blob storage i Queue storage. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
+- **Azure Active Directory:** Użyj poświadczeń usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkownika, grupy lub innych tożsamości do uzyskiwania dostępu do danych obiektów blob i kolejek. W przypadku pomyślnego uwierzytelnienia tożsamości usługi Azure AD zwraca token do użycia w autoryzowania żądania do usługi Azure Blob storage i Queue storage. Aby uzyskać więcej informacji, zobacz [uwierzytelniania dostępu do usługi Azure Storage przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
 - **Udostępniony klucz autoryzacji:** Klucz dostępu konta magazynu należy używać do tworzenia parametrów połączenia używanych przez aplikację w środowisku uruchomieniowym dostępu do magazynu Azure. Wartości w parametrach połączenia są używane do konstruowania *autoryzacji* nagłówek, który jest przekazywany do usługi Azure Storage. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Azure Storage, parametry połączenia](storage-configure-connection-string.md).
 - **Sygnatura dostępu współdzielonego:** Jeśli nie używasz uwierzytelniania usługi Azure AD można delegować dostępu do zasobów na koncie magazynu za pomocą sygnatury dostępu współdzielonego. Sygnatury dostępu współdzielonego to token, który hermetyzuje wszystkie informacje wymagane do autoryzowania żądania do usługi Azure Storage w polu adres URL. Można określić zasobów magazynu, uprawnień i interwał, które uprawnienia są prawidłowe w ramach sygnatury dostępu współdzielonego. Aby uzyskać więcej informacji, zobacz [Using shared access signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 

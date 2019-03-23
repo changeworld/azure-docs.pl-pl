@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e960f662fda4272bbc9763eb04fdb739c4776af8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189652"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371336"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka C#
 <a name="HOLTop"></a>
@@ -35,7 +35,7 @@ Musisz również mieć [punkt końcowy i klucz dostępu](../How-tos/text-analyti
 1. Kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
 1. Zaznacz pole wyboru **Uwzględnij wersję wstępną**.
 1. Wybierz kartę **Przeglądaj** i wyszukaj ciąg **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**
-1. Wybierz pakiet NuGet i zainstaluj go. Może być konieczne v2.8.0 dla teraz (3-18-2019 r), w przeciwieństwie do 3.0.0, dopóki usterki w oprogramowaniu został rozwiązany.
+1. Wybierz pakiet NuGet i zainstaluj go. Może być konieczne zmiany na starszą v2.8.0 teraz (ponieważ są z 3-18-2019 r) do momentu przykładowy kod jest aktualizowana 3.0.0.
 
 > [!Tip]
 >  [Punkty końcowe HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) można wywołać bezpośrednio z języka C#, ale zestaw SDK Microsoft.Azure.CognitiveServices.Language znacznie ułatwia wywołanie usługi bez martwienia się o serializację i deserializację danych JSON.

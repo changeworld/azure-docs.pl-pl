@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a51e57cfac326663d41b545c9f2883a446467d3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1d4144a2a6cf41d594ee096d8802ccc5b29009a5
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340766"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361799"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -40,7 +40,7 @@ Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczą
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md).
+- Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md).
 
 - Albo [Anaconda](https://www.anaconda.com/download/) lub [Miniconda](https://conda.io/miniconda.html) Menedżera pakietów.
 
@@ -61,7 +61,7 @@ Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczą
 * Zestaw SDK usługi Azure Machine Learning jest już zainstalowana.
 * Po utworzeniu obszaru roboczego usługi Azure Machine Learning w witrynie Azure portal, możesz kliknąć przycisk, aby automatycznie skonfigurować środowisko notesu platformy Azure do pracy z obszarem roboczym.
 
-Aby rozpocząć tworzenie aplikacji za pomocą notesów usługi Azure, zobacz [wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md).
+Aby rozpocząć tworzenie aplikacji za pomocą notesów usługi Azure, zobacz [wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 Domyślnie notesów usługi Azure korzysta z warstwy bezpłatna usługa, która jest ograniczony do 4GB pamięci i 1GB danych. Można jednak usunąć te limity, dołączając wystąpienia maszyny wirtualnej do nauki o danych do projektu notesy platformy Azure. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesy platformy Azure — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
@@ -156,7 +156,7 @@ Podczas korzystania z komputera lokalnego, (które mogą być także zdalnego ma
     conda activate myenv
     ```
 
-    W tym przykładzie tworzy środowisko przy użyciu języka python 3.6.5, ale można wybrać żadnych szczególnych subversions. Zgodność z zestawu SDK nie może być gwarantowane działanie z niektórych wersji głównych (3.5 + jest zalecane) i zaleca się spróbuj różnych wersji/subversion w środowisku pakietu Anaconda, jeśli wystąpią błędy. Potrwa kilka minut, aby utworzyć środowisko, gdy składniki i pakiety zostaną pobrane.
+    W tym przykładzie tworzy środowisko przy użyciu języka python 3.6.5, ale można wybrać żadnych szczególnych subversions. Zgodność z zestawu SDK nie może być gwarantowane działanie z niektórych wersji głównych (3.5 + jest zalecane) i zaleca się spróbuj różnych wersji/subversion w środowisku pakietu Anaconda, jeśli wystąpią błędy. Utworzenie środowiska, podczas gdy składniki i pakiety będą pobierane, potrwa kilka minut.
 
 1. Uruchom następujące polecenia w nowe środowisko umożliwiające specyficznymi dla środowiska ipython jądra. To pewność, że oczekiwane jądra i pakietu zaimportować zachowanie podczas pracy z notesów programu Jupyter w środowiskach Anaconda:
 
@@ -350,7 +350,7 @@ Aby użyć tego pliku w kodzie, należy użyć `ws=Workspace.from_config()`. Ten
 
 Można utworzyć pliku konfiguracji na trzy sposoby:
 
-* **Postępuj zgodnie z [szybkiego startu usługi Azure Machine Learning](quickstart-get-started.md)**: A *config.json* plik zostanie utworzony w bibliotece notesy platformy Azure. Plik zawiera informacje o konfiguracji dla obszaru roboczego. Można pobrać lub skopiuj *config.json* do innych środowisk programowania.
+* **Postępuj zgodnie z instrukcjami w [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md#sdk)**: A *config.json* plik zostanie utworzony w bibliotece notesy platformy Azure. Plik zawiera informacje o konfiguracji dla obszaru roboczego. Można pobrać lub skopiuj *config.json* do innych środowisk programowania.
 
 * **Ręcznie utworzyć plik**: Przy użyciu tej metody korzystanie z edytora tekstu. Można znaleźć wartości, które przejdź do pliku konfiguracyjnego, przechodząc do obszaru roboczego w [witryny Azure portal](https://portal.azure.com). Skopiuj nazwę obszaru roboczego, grupy zasobów i wartości Identyfikatora subskrypcji i używać ich w pliku konfiguracji.
 

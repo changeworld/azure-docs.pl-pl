@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8fe8b365974086ef530b83988c63eda338a6079f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ace13b8802c86b3ad40725554c698851ff421b0
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014574"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360524"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -356,7 +356,7 @@ response = requests.post(published_pipeline1.endpoint,
 Zobacz listę wszystkich potoków i ich szczegóły przebiegu:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).  
 
-1. [Wyświetlanie obszaru roboczego](how-to-manage-workspace.md#view-a-workspace) listy potoków.
+1. [Wyświetlanie obszaru roboczego](how-to-manage-workspace.md#view) listy potoków.
  ![listy potoków uczenia maszynowego](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Wybierz określone potoku, aby zobaczyć wyniki jego działania.

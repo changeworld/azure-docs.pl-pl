@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 02/18/2019
+ms.date: 03/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9dbe641c5e22129f7db3d3f3b886fea4501300b0
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 6508e90f76a374d628fdd5032c475e4dde8ffa78
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416143"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351783"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Samouczek: Analizowanie wideo za pomocą usługi Media Services w wersji 3 przy użyciu platformy .NET
 
@@ -66,7 +66,7 @@ W przykładzie są wykonywane następujące akcje:
 6. Pobiera pliki, które powstały w wyniku uruchomienia zadania. 
 
 > [!NOTE]
-> Jeśli używasz wstępnych ustawień analizatora wideo lub dźwięku, skorzystaj z witryny Azure Portal i ustaw na koncie 10 jednostek zarezerwowanych multimediów S3. Aby uzyskać więcej informacji, zobacz temat [Scale media processing (Skalowanie przetwarzania multimediów)](../previous/media-services-scale-media-processing-overview.md).
+> Jeśli używasz wstępnych ustawień analizatora wideo lub dźwięku, skorzystaj z witryny Azure Portal i ustaw na koncie 10 jednostek zarezerwowanych multimediów S3. Aby uzyskać więcej informacji, zobacz temat [Scale media processing (Skalowanie przetwarzania multimediów)](media-reserved-units-cli-how-to.md).
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Rozpoczynanie korzystania z interfejsów API usługi Media Services przy użyciu zestawu .NET SDK
 

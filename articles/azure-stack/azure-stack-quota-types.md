@@ -16,12 +16,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: aff9dade7fe0238c0ea8ccc3ae5bba57437c6f89
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 3d9376ba5945c97d18f6cf68c242d5217beee679
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339571"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349709"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy limitów przydziału w usłudze Azure Stack
 
@@ -40,7 +40,10 @@ ms.locfileid: "58339571"
 | Maksymalną pojemność dysku zarządzanego w warstwie standardowa (w GB) | 2048 | Maksymalna pojemność standardowych dysków zarządzanych, które mogą być tworzone w tej lokalizacji. |
 | Maksymalną pojemność dysku zarządzanego w warstwie premium (w GB) | 2048 | Maksymalna pojemność premium usługa managed disks, które mogą być tworzone w tej lokalizacji. |
 
-## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu
+> [!NOTE]  
+> Maksymalna pojemność dysku niezarządzanego (stronicowych obiektów blob) różni się od limitu przydziału dysku zarządzanego, należy ją ustawić limit przydziału magazynu.
+
+## <a name="storage-quota-types"></a>Typy limitów przydziału magazynu 
 
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
@@ -48,7 +51,7 @@ ms.locfileid: "58339571"
 | Łączna liczba kont magazynu |20 |Maksymalna liczba kont magazynu, które można utworzyć subskrypcji, w tej lokalizacji. |
 
 > [!NOTE]  
-> Może upłynąć do dwóch godzin, zanim przydział magazynowania jest wymuszany.
+> Może upłynąć do dwóch godzin, zanim przydział magazynowania jest wymuszany. Maksymalna pojemność dysku zarządzanego jest oddzielony od limitu przydziału pamięci masowej, powinna być ustawiona w przydziału obliczeniowego.
 
 ## <a name="network-quota-types"></a>Typy przydziałów sieci
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ab235c67e3a0e60999a0348d03a6e938944f7030
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: a350576742a9bcb899405aae19c032cc9b966975
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260194"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351333"
 ---
 # <a name="azure-storage-analytics-logging"></a>Rejestrowania analizy magazynu platformy Azure
 
@@ -144,15 +144,13 @@ Można określić usługi magazynu, które mają być rejestrowane i okres przec
  Następujące polecenie zmienia rejestrowania do odczytu, zapisu i usuwania żądań w usłudze kolejki w domyślnym kontem magazynu za pomocą pięciu dni przechowywania:  
 
 ```  
-Set-AzureStorageServiceLoggingProperty -ServiceType Queue   
--LoggingOperations read,write,delete -RetentionDays 5  
+Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  Następujące polecenie wyłącza rejestrowania w usłudze table service na koncie magazynu domyślnego:  
 
 ```  
-Set-AzureStorageServiceLoggingProperty -ServiceType Table   
--LoggingOperations none  
+Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Aby uzyskać informacje o sposobie konfigurowania poleceń cmdlet programu Azure PowerShell do pracy z subskrypcją platformy Azure i jak wybrać domyślne konto magazynu do użycia, zobacz: [Jak zainstalować i skonfigurować program Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  

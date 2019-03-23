@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 402a2d6afc7b58d4dfc1c9fa67e354b4d157bd4c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310238"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370194"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Usługa Azure Active Directory, inteligentnej blokady
 
@@ -40,8 +40,8 @@ Blokada Smart można zintegrować z hybrydowych wdrożeń, przy użyciu synchron
 
 Korzystając z [uwierzytelniania przekazywanego](../hybrid/how-to-connect-pta.md), należy upewnić się, że:
 
-   * Wartość progowa blokady usługi Azure AD jest **mniej** niż próg blokady konta usługi Active Directory. Ustaw wartości, tak aby próg blokady konta usługi Active Directory to co najmniej dwa lub trzy razy dłużej niż wartość progowa blokady usługi Azure AD. 
-   * Czas trwania blokady usługi Azure AD **w ciągu kilku sekund** jest **dłużej** niż Active Directory Zresetuj licznik blokady konta po okresie **minut**.
+* Wartość progowa blokady usługi Azure AD jest **mniej** niż próg blokady konta usługi Active Directory. Ustaw wartości, tak aby próg blokady konta usługi Active Directory to co najmniej dwa lub trzy razy dłużej niż wartość progowa blokady usługi Azure AD. 
+* Czas trwania blokady usługi Azure AD **w ciągu kilku sekund** jest **dłużej** niż Active Directory Zresetuj licznik blokady konta po okresie **minut**.
 
 > [!IMPORTANT]
 > Aktualnie administrator nie można odblokować kont użytkowników w chmurze, jeśli zostały one zablokowane przez możliwość inteligentnej blokady. Administrator musi czekać na czas trwania blokady wygaśnie.
@@ -55,7 +55,7 @@ Użyj poniższych instrukcji, aby sprawdzić zasady blokady konta usługi lokaln
 3. Przejdź do **konfiguracji komputera** > **zasady** > **ustawienia Windows** > **ustawienia zabezpieczeń**   >  **Zasady konta** > **zasady blokady konta**.
 4. Sprawdź swoje **próg blokady konta** i **zerowanie licznika blokady konta po** wartości.
 
-![Zmodyfikuj Zasady blokady konta usługi Active Directory w środowisku lokalnym za pomocą obiektu zasad grupy](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![Zmodyfikuj Zasady blokady konta w usłudze Active Directory w środowisku lokalnym](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Zarządzanie wartościami inteligentnej blokady w usłudze Azure AD
 
@@ -78,9 +78,7 @@ Po wyzwoleniu próg blokady smart zablokowaniu konta zostanie wyświetlony nast�
 
 **Twoje konto zostało tymczasowo zablokowane, aby zapobiec nieautoryzowanemu użyciu. Spróbuj ponownie później, a jeśli nadal występują problemy, skontaktuj się z administratorem.**
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się, jak zablokować nieprawidłowych haseł w organizacji za pomocą usługi Azure AD.](howto-password-ban-bad.md)
-
-[Konfigurowanie samoobsługowego resetowania hasła, aby umożliwić użytkownikom odblokować własne konta.](quickstart-sspr.md)
+* [Dowiedz się, jak zablokować nieprawidłowych haseł w organizacji za pomocą usługi Azure AD.](howto-password-ban-bad.md)
+* [Konfigurowanie samoobsługowego resetowania hasła, aby umożliwić użytkownikom odblokować własne konta.](quickstart-sspr.md)

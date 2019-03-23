@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: c1a0e77f98d269185bc065c86a367c3ed6519fb5
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 28210048cd007fc10dcd4cf5e92577cbd121e2a3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961979"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368276"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Usługi Azure Managed Disks stosu: różnice i zagadnienia dotyczące
 
@@ -134,13 +134,27 @@ Platforma Azure obsługuje stosu *zarządzanych obrazów*, umożliwiające dysku
 - Zostały uogólnione niezarządzanych maszyn wirtualnych i chcesz używać dysków zarządzanych w przyszłości.
 - Masz zarządzanego uogólnionej maszyny Wirtualnej i chcesz utworzyć wiele, podobne zarządzanych maszyn wirtualnych.
 
-### <a name="migrate-unmanaged-vms-to-managed-disks"></a>Migrowanie maszyn wirtualnych niezarządzanych do dysków zarządzanych
+### <a name="step-1-generalize-the-vm"></a>Krok 1: Uogólnianie maszyny Wirtualnej
+Windows należy wykonać w poniżej sekcji "Windows VM Generalize za pomocą programu Sysprep": https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep Dla systemu Linux wykonaj krok 1, w tym miejscu: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm 
+
+Uwaga: Pamiętaj uogólnić maszyny Wirtualnej. Tworzenie maszyny Wirtualnej z obrazu, która nie została uogólniona prawidłowo doprowadzi do błędu VMProvisioningTimeout.
+
+### <a name="step-2-create-the-managed-image"></a>Krok 2: Tworzenie obrazu zarządzanego
+Aby to zrobić, może używać witryny portal, programu powershell lub interfejsu wiersza polecenia. W tym miejscu dokument postępuj zgodnie z platformy Azure: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource
+
+### <a name="step-3-choose-the-use-case"></a>Krok 3: Wybierz przypadek użycia:
+#### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>Przypadek 1: Migrowanie maszyn wirtualnych niezarządzanych do dysków zarządzanych
+Pamiętaj uogólnić maszyny Wirtualnej prawidłowo, przed wykonaniem tego kroku. Post Generalizacja, ta maszyna wirtualna nie może być używany kolejne. Tworzenie maszyny Wirtualnej z obrazu, która nie została uogólniona prawidłowo doprowadzi do błędu VMProvisioningTimeout. 
 
 Postępuj zgodnie z instrukcjami [tutaj](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) do tworzenie obrazu zarządzanego na podstawie uogólnionego wirtualnego dysku twardego w ramach konta magazynu. Ten obraz może służyć do tworzenia zarządzanych maszyn wirtualnych w przyszłości.
 
-### <a name="create-managed-image-from-vm"></a>Tworzenie obrazu zarządzanego z maszyny Wirtualnej
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>Przypadek 2: Tworzenie zarządzanej maszyny Wirtualnej na podstawie obrazu zarządzanego przy użyciu programu Powershell
 
 Po utworzeniu obrazu z istniejącego zarządzanego dysku maszyny Wirtualnej przy użyciu skryptu [tutaj](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell) , następujący skrypt przykładowy tworzy podobne maszyny Wirtualnej systemu Linux na podstawie istniejącego obiektu obrazu:
+
+Moduł programu powershell w usłudze Azure Stack 1.7.0 lub nowszy: Postępuj zgodnie z instrukcjami [tutaj](../../virtual-machines/windows/create-vm-generalized-managed.md) 
+
+Moduł programu powershell w usłudze Azure Stack 1.6.0 lub poniżej:
 
 ```powershell
 # Variables for common values
@@ -191,7 +205,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-Aby uzyskać więcej informacji, zobacz platformy Azure zarządzanego obrazu artykuły [utworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](../../virtual-machines/windows/capture-image-resource.md) i [Utwórz Maszynę wirtualną z obrazu zarządzanego](../../virtual-machines/windows/create-vm-generalized-managed.md).
+Można także użyć portalu, aby utworzyć Maszynę wirtualną z obrazu zarządzanego. Aby uzyskać więcej informacji, zobacz platformy Azure zarządzanego obrazu artykuły [utworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](../../virtual-machines/windows/capture-image-resource.md) i [Utwórz Maszynę wirtualną z obrazu zarządzanego](../../virtual-machines/windows/create-vm-generalized-managed.md).
 
 ## <a name="configuration"></a>Konfigurowanie
 

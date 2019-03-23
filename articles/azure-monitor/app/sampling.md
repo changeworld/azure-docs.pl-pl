@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 83c286be6429376d4d0b4009b18c5f751a4b158f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: cd0369f45529082ac929b1d87608204033cd78f6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226695"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370520"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -517,7 +517,14 @@ Po stronie klienta (JavaScript) zestawu SDK uczestniczy w stałej stawki próbko
 
 *Brak niektórych rzadkich zdarzeń, które można zawsze mają być wyświetlane. Jak można je poza moduł próbkowania?*
 
-* Zainicjuj osobne wystąpienie TelemetryClient za pomocą nowego TelemetryConfiguration (nie domyślnie aktywna). Używać, aby wysyłać zdarzenia rzadkie.
+* Najlepszym sposobem osiągnięcia tego jest napisanie niestandardowego [TelemetryProcessor](../../azure-monitor/app/api-filtering-sampling.md#filtering), który konfiguruje `SamplingPercentage` 100 dla elementu telemetrii chcesz zachowane, jak pokazano poniżej. Daje to gwarancję, że wszystkie metody pobierania próbek zignoruje ten element od dowolnego zagadnienia dotyczące pobierania próbek.
+
+```csharp
+    if(somecondition)
+    {
+        ((ISupportSampling)item).SamplingPercentage = 100;
+    }
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

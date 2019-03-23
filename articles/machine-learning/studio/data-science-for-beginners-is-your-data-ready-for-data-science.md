@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: garyericson
-ms.author: garye
+author: sdgilley
+ms.author: sgilleye
 ms.custom: seodec18
-ms.date: 01/03/2018
-ms.openlocfilehash: 9cd2d1264d08887f75eaf7ae624b6a45ec8d6a34
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.date: 03/22/2019
+ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817579"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370350"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Czy Twoje dane są gotowe na analizę danych?
 ## <a name="video-2-data-science-for-beginners-series"></a>Wideo 2: Analiza danych dla początkujących serii
@@ -33,7 +33,7 @@ Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejd�
 
 * Wideo 1: [5 pytań, analiza danych daje odpowiedzi](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
 * Wideo 2: Czy Twoje dane są gotowe na analizę danych?
-* Wideo 3: [Zadaj pytanie, można odpowiedzieć za pomocą danych](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek.)*
+* Wideo 3: [Zadaj pytanie, na które można odpowiedzieć za pomocą danych](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek.)*
 * Wideo 4: [Prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek.)*
 * Wideo 5: [Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
 

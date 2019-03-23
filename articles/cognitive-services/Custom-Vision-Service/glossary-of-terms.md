@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/08/2017
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: e659367ae13026dbe48ed681d0a68058d686e3ec
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884352"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352106"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>Słownik terminów dla usługi Custom Vision Service
 
-Poniżej przedstawiono niektóre pojęcia używane w usłudze Custom Vision Service oraz ich znaczenie.
+Poniżej przedstawiono niektóre terminy często używane w usłudze Custom Vision Service:
 
 ## <a name="classifier"></a>Klasyfikator
 
@@ -37,33 +37,21 @@ Podczas tworzenia projektu, możesz wybrać "domena" dla tego projektu. Domeny o
 
 Modeli generowanych przez **compact domen** można wyeksportować za pomocą funkcji eksportu iteracji. Są one zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Klasyfikatorów utworzonych za pomocą compact domeny mogą być nieco mniej dokładne standardowej w domenę przy użyciu tej samej ilości danych szkoleniowych. Kosztem jest, że są one wystarczająco mała, aby uruchomić lokalnie w niemal w czasie rzeczywistym. 
 
-## <a name="training-image"></a>Obraz szkolenia
+## <a name="evaluation"></a>Ocena
 
-Aby utworzyć klasyfikatora dużej dokładności, usługi Custom Vision Service wymaga kilku uczone obrazy. Obraz szkolenia jest fotografii obraz, który chcesz, aby usługi Custom Vision Service do klasyfikowania. Na przykład można klasyfikować Pomarańcze, należałoby Przekaż kilka obrazów Pomarańcze do usługi Custom Vision Service, aby umożliwić usłudze klasyfikatora, który może rozpoznawać Pomarańcze utworzyć. Zalecamy co najmniej 30 obrazy na tag.
+Gdy ma skonfigurowanych pod kątem klasyfikatora, możesz przesłać dowolnego obrazu do oceny przy użyciu punktu końcowego https wygenerowany automatycznie. Klasyfikatora zwraca zestaw przewidywane tagów w kolejności zaufania.
 
 ## <a name="iteration"></a>Iteracja
 
 Co godzinę Train lub ponownie uczyć klasyfikatory, możesz utworzyć nową iterację modelu. Przechowujemy kilka ostatnich iteracji, aby umożliwić porównywanie postęp wraz z upływem czasu. Można usuwać dowolną iterację, które nie są już być przydatne. Należy pamiętać, że usunięcie iteracji jest trwały i zostaną również usunięte wszelkie obrazy i zmiany, które są unikatowe dla tej iteracji. 
 
-## <a name="workspace"></a>Obszar roboczy
+## <a name="precision"></a>Precyzja
 
-Obszar roboczy zawiera wszystkie obrazy szkolenia i odzwierciedla wszystkie zmiany z Twojej ostatnich iteracji, takich jak usunięte lub dodane obrazów. Możesz uczyć klasyfikatory, możesz utworzyć nową iterację klasyfikatora, przy użyciu obrazów obecny w obszarze roboczym.
-
-## <a name="tags"></a>Tagi
-
-Za pomocą tagów można oznaczyć obiekty do obrazów do szkolenia. Jeśli tworzysz klasyfikatora do identyfikowania psów i kucyków możesz umieścić tag "dog" na obrazach, które zawierają psy, znacznikiem "pony", na obrazach, które zawierają kuców i zarówno "dog" i "pony" obrazów zawierających pies i pony.
-
-## <a name="evaluation"></a>Ocena
-
-Gdy ma skonfigurowanych pod kątem klasyfikatora, możesz przesłać dowolnego obrazu do oceny przy użyciu punktu końcowego https wygenerowany automatycznie. Klasyfikatora zwraca zestaw przewidywane tagów w kolejności zaufania.
+Podczas klasyfikowania obrazu, jak prawdopodobnie jest klasyfikatory poprawnie klasyfikowania obrazów? Poza wszystkie obrazy używane do trenowania klasyfikatora (psów i kuców) jaki procent czy modelu wyświetlony poprawne? 99 prawidłowe tagi poza 100 obrazów zapewnia dokładność 99%.
 
 ## <a name="predictions"></a>Prognozy
 
 Jak klasyfikatora akceptuje nowych obrazów do klasyfikowania, obrazy są przechowywane dla Ciebie. Te obrazy można użyć, aby poprawić dokładność klasyfikatora poprawnie, oznaczając źle przewidziane obrazów. Następnie można te nowe obrazy ponownie uczyć klasyfikatory.
-
-## <a name="precision"></a>Precyzja
-
-Podczas klasyfikowania obrazu, jak prawdopodobnie jest klasyfikatory poprawnie klasyfikowania obrazów? Poza wszystkie obrazy używane do trenowania klasyfikatora (psów i kuców) jaki procent czy modelu wyświetlony poprawne? 99 prawidłowe tagi poza 100 obrazów zapewnia dokładność 99%.
 
 ## <a name="recall"></a>Odwołaj
 
@@ -73,7 +61,7 @@ Poza wszystkie obrazy, które powinny mieć został poprawnie klasyfikowane ile 
 
 Istnieją dwa rodzaje ustawień i ustawienia na poziomie projektu i ustawień na poziomie użytkownika.
 
-- Ustawienia na poziomie projektu: 
+- Ustawienia na poziomie projektu:
   
   Ustawienia na poziomie projektu mają zastosowanie do projektu lub klasyfikatora. Obejmują one:
 
@@ -90,3 +78,15 @@ Istnieją dwa rodzaje ustawień i ustawienia na poziomie projektu i ustawień na
    - Użycie:
       - Liczba projektów utworzonych
       - Liczba wywołań interfejsu API w wersji ewaluacyjnej/prognozy.
+
+## <a name="tags"></a>Tagi
+
+Za pomocą tagów można oznaczyć obiekty do obrazów do szkolenia. Jeśli tworzysz klasyfikatora do identyfikowania psów i kucyków możesz umieścić tag "dog" na obrazach, które zawierają psy, znacznikiem "pony", na obrazach, które zawierają kuców i zarówno "dog" i "pony" obrazów zawierających pies i pony.
+
+## <a name="training-image"></a>Obraz szkolenia
+
+Aby utworzyć klasyfikatora dużej dokładności, usługi Custom Vision Service wymaga kilku uczone obrazy. Obraz szkolenia jest fotografii obraz, który chcesz, aby usługi Custom Vision Service do klasyfikowania. Na przykład można klasyfikować Pomarańcze, należałoby Przekaż kilka obrazów Pomarańcze do usługi Custom Vision Service, aby umożliwić usłudze klasyfikatora, który może rozpoznawać Pomarańcze utworzyć. Zalecamy co najmniej 30 obrazy na tag.
+
+## <a name="workspace"></a>Obszar roboczy
+
+Obszar roboczy zawiera wszystkie obrazy szkolenia i odzwierciedla wszystkie zmiany z Twojej ostatnich iteracji, takich jak usunięte lub dodane obrazów. Możesz uczyć klasyfikatory, możesz utworzyć nową iterację klasyfikatora, przy użyciu obrazów obecny w obszarze roboczym.

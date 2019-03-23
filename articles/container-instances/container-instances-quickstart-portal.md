@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 41313a8b140886247b830db7ca9b34a22257de96
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729144"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369449"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Szybki start: Wdrożenia wystąpienia kontenera na platformie Azure przy użyciu witryny Azure portal
 
@@ -38,12 +38,12 @@ Wybierz kolejno pozycje **Utwórz zasób** > **Kontenery** > **Container Instanc
 Wprowadź następujące wartości w polach tekstowych **Nazwa kontenera**, **Obraz kontenera** oraz **Grupa zasobów**. Pozostaw domyślne wartości w pozostałych polach i kliknij przycisk **OK**.
 
 * Nazwa kontenera: `mycontainer`
-* Obraz kontenera: `microsoft/aci-helloworld`
+* Obraz kontenera: `mcr.microsoft.com/azuredocs/aci-helloworld`
 * Grupa zasobów: **Utwórz nowy element** > `myResourceGroup`
 
 ![Konfigurowanie podstawowych ustawień nowego wystąpienia kontenera w witrynie Azure Portal][aci-portal-03]
 
-Na potrzeby tego przewodnika Szybki Start Pozostaw domyślne ustawienie **publicznych** do wdrażania publicznej `microsoft/aci-helloworld` obrazu. Ten obraz zawiera małą aplikację internetową napisaną w języku Node.js, która udostępnia statyczną stronę HTML.
+Na potrzeby tego przewodnika Szybki Start Pozostaw domyślne ustawienie **publicznych** do wdrażania publicznej Microsoft `aci-helloworld` obrazu. Ten obraz zawiera małą aplikację internetową napisaną w języku Node.js, która udostępnia statyczną stronę HTML.
 
 W obszarze **Konfiguracja** określ wartość w polu **Etykieta nazwy DNS** swojego kontenera. Nazwa musi być unikatowa w obrębie regionu świadczenia usługi Azure, w którym tworzysz wystąpienie kontenera. Twój kontener będzie dostępny publicznie pod adresem `<dns-name-label>.<region>.azurecontainer.io`. Jeśli zostanie wyświetlony komunikat o błędzie „Etykieta nazwy DNS nie jest dostępna”, spróbuj użyć innej etykiety nazwy DNS.
 
@@ -89,7 +89,7 @@ Po pojawieniu się okna dialogowego potwierdzenia wybierz pozycję **Tak**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Podczas pracy z tym przewodnikiem Szybki start utworzono wystąpienie kontenera platformy Azure na podstawie obrazu z publicznego rejestru Docker Hub. Jeśli chcesz skompilować obraz kontenera i wdrożyć go za pomocą prywatnej usługi Azure Container Registry, przejdź do samouczka dotyczącego usługi Azure Container Instances.
+W tym przewodniku Szybki Start utworzono wystąpienie kontenera platformy Azure za pomocą publicznego obrazu firmy Microsoft. Jeśli chcesz skompilować obraz kontenera i wdrożyć go za pomocą prywatnej usługi Azure Container Registry, przejdź do samouczka dotyczącego usługi Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący usługi Azure Container Instances](./container-instances-tutorial-prepare-app.md)

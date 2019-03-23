@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26dd1bd6717fe0216545d6b3aa729ac2cb19dc9d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 47e8541b82a1cd38f07684508a96b9789df20e92
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313332"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370393"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie telefonem bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 
 Aplikacja Microsoft Authenticator może służyć do logowania się do dowolnego konta usługi Azure AD bez użycia hasła. Podobne do technologii [Windows Hello dla firm](/windows/security/identity-protection/hello-for-business/hello-identity-verification), Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby umożliwić poświadczeń użytkownika, który jest powiązany z urządzeniem i używa biometryczne lub numer PIN.
 
-![Przykład w przeglądarce logowaniu pytaniem, czy użytkownika zatwierdzić próba logowania w aplikacji Microsoft Authenticator](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
+![Przykład w przeglądarce logowaniu pytaniem do użytkownika zatwierdzić logowanie](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
 
 Zamiast zobaczyć monit o podanie hasła, po wprowadzeniu nazwy użytkownika, osoba, która ma włączone logowanie za pomocą telefonu w aplikacji Microsoft Authenticator, zostanie wyświetlony komunikat z informacją o mogą wybrać liczbę w swojej aplikacji. W aplikacji użytkownik musi być zgodna z liczbą, wybierz Zatwierdź, a następnie podać swoje numery PIN lub biometrycznych, następnie uwierzytelniania zostanie ukończone.
 
@@ -40,17 +40,20 @@ W publicznej wersji zapoznawczej administrator musi najpierw dodać zasad za pom
 ### <a name="steps-to-enable"></a>Kroki, aby włączyć
 
 1. Upewnij się, że masz najnowszą wersję publicznej wersji zapoznawczej usługi Azure Active Directory w wersji 2 modułu programu PowerShell. Możesz też chcieć odinstalowanie i ponowne zainstalowanie, aby to sprawdzić, wykonując następujące polecenia:
+
     ```powershell
     Uninstall-Module -Name AzureADPreview
     Install-Module -Name AzureADPreview
     ```
 
 2. Uwierzytelnianie w dzierżawie usługi Azure AD, aby użyć modułu programu PowerShell usługi Azure AD w wersji 2. Konto używane musi być Administrator zabezpieczeń lub Administrator globalny.
+
     ```powershell
     Connect-AzureAD
     ```
 
 3. Utwórz zasady uwierzytelniania logowania:
+
     ```powershell
     New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
     ```

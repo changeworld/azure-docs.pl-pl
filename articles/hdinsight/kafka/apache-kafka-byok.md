@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 61a4be19000265910493963db9f29df143a7e21c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58173927"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360354"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Użyj własnego klucza dla platformy Apache Kafka w usłudze Azure HDInsight (wersja zapoznawcza)
 
@@ -26,6 +26,8 @@ Szyfrowanie BYOK jest jednoetapowy proces obsługi podczas tworzenia klastra bez
 Wszystkie komunikaty z klastrem Kafka (w tym replik obsługiwane przez platformę Kafka) są zaszyfrowane za pomocą symetrycznego danych szyfrowania Key (klucz szyfrowania danych). Klucz szyfrowania danych jest chroniona przy użyciu klucza szyfrowania klucza (KEK) z magazynu kluczy. Procesy szyfrowania i odszyfrowywania są obsługiwane wyłącznie przez usługi Azure HDInsight. 
 
 Bezpiecznie wymiany kluczy w magazynie kluczy, można użyć witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. Obraca się klucz, klaster HDInsight Kafka zostanie uruchomiony w ciągu kilku minut przy użyciu nowego klucza. Włącz funkcje ochrony klucza "Przeczyszczanie" i "Usuwanie nietrwałe" zapewnić ochronę przed oprogramowaniem wymuszającym okup scenariuszy i przypadkowym usunięciem. Klucze bez funkcji ochrony nie są obsługiwane.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-byok"></a>Rozpoczynanie pracy z funkcją BYOK
 
@@ -99,7 +101,7 @@ Bezpiecznie wymiany kluczy w magazynie kluczy, można użyć witryny Azure porta
 
 **Jak można odzyskać klastra, jeśli kluczy zostaną usunięte?**
 
-   Ponieważ tylko "Usuwanie nietrwałe" włączone klucze są obsługiwane w przypadku kluczy zostaną przywrócone w usłudze key vault, klastra należy odzyskać dostęp do kluczy. Aby przywrócić klucz usługi Azure Key Vault, zobacz [Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey).
+   Ponieważ tylko "Usuwanie nietrwałe" włączone klucze są obsługiwane w przypadku kluczy zostaną przywrócone w usłudze key vault, klastra należy odzyskać dostęp do kluczy. Aby przywrócić klucz usługi Azure Key Vault, zobacz [AzKeyVaultKey przywracania](/powershell/module/az.keyvault/restore-azkeyvaultkey).
 
 **Czy można mieć producenta i odbiorcy aplikacji przy użyciu funkcji BYOK i klastrze bez BYOK jednocześnie?**
 

@@ -3,7 +3,7 @@ title: 'Samouczek: czyszczenie klastra autonomicznego usługi Service Fabric —
 description: Z tego samouczka dowiesz się, jak wyczyścić klaster autonomiczny
 services: service-fabric
 documentationcenter: .net
-author: david-stanford
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/11/2018
-ms.author: dastanfo
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: d92712200920f135e362e15e1d9536dc2342ebaa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: e3e618bfd141e5cf7159d8df5b2b59f0d17d000f
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211093"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372203"
 ---
-# <a name="tutorial-clean-up-your-standalone-cluster"></a>Samouczek: czyszczenie klastra autonomicznego
+# <a name="tutorial-clean-up-your-standalone-cluster"></a>Samouczek: Czyszczenie klastra autonomicznego
 
 Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. Ta seria samouczków przedstawia proces tworzenia klastra autonomicznego hostowanego w usłudze AWS i instalowania w nim aplikacji.
 
@@ -65,7 +65,7 @@ The cluster is successfully removed.
 * Wybierz trzy węzły utworzone w pierwszej części samouczka.
 * Kliknij kolejno pozycje **Actions** (Działania)  >  **Instance State** (Stan wystąpienia)  >  **Terminate** (Zakończ).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W czwartej części samouczka przedstawiono proces czyszczenia zasobów utworzonych w poprzednich częściach.
 

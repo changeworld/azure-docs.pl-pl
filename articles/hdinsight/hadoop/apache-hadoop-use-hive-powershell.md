@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8bd754533758d2c736e3951e5c7a10f63bb72bd8
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 77d2d0b5b9f994668abdd02640a9c6d5f463e137
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410180"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360762"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu programu PowerShell
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -25,6 +25,8 @@ Ten dokument zawiera przykład przy użyciu programu Azure PowerShell w trybie g
 > Ten dokument zawiera szczegółowy opis działania instrukcje HiveQL, które są używane w przykładach. Informacje na temat HiveQL, który jest używany w tym przykładzie można zobaczyć [używanie programu Apache Hive przy użyciu technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Linux Apache Hadoop oparte na wersji klastra HDInsight 3.4 lub nowszą.
 
@@ -41,13 +43,13 @@ Azure PowerShell udostępnia *poleceń cmdlet* umożliwiającą zdalne uruchamia
 
 Następujące polecenia cmdlet są używane podczas uruchamiania zapytań programu Hive w zdalnym klastrze HDInsight:
 
-* `Connect-AzureRmAccount`: Uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
-* `New-AzureRmHDInsightHiveJobDefinition`: Tworzy *definicji zadania* przy użyciu określonego instrukcje HiveQL.
-* `Start-AzureRmHDInsightJob`: Wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
-* `Wait-AzureRmHDInsightJob`: Używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż do ukończenia zadania lub przekroczenia czasu oczekiwania.
-* `Get-AzureRmHDInsightJobOutput`: Używany do pobierania danych wyjściowych zadania.
-* `Invoke-AzureRmHDInsightHiveJob`: Używane do uruchamiania instrukcje HiveQL. To polecenie cmdlet bloki zapytania kończy, a następnie zwraca wyniki.
-* `Use-AzureRmHDInsightCluster`: Ustawia bieżący klaster na potrzeby `Invoke-AzureRmHDInsightHiveJob` polecenia.
+* `Connect-AzAccount`: Uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
+* `New-AzHDInsightHiveJobDefinition`: Tworzy *definicji zadania* przy użyciu określonego instrukcje HiveQL.
+* `Start-AzHDInsightJob`: Wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
+* `Wait-AzHDInsightJob`: Używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż do ukończenia zadania lub przekroczenia czasu oczekiwania.
+* `Get-AzHDInsightJobOutput`: Używany do pobierania danych wyjściowych zadania.
+* `Invoke-AzHDInsightHiveJob`: Używane do uruchamiania instrukcje HiveQL. To polecenie cmdlet bloki zapytania kończy, a następnie zwraca wyniki.
+* `Use-AzHDInsightCluster`: Ustawia bieżący klaster na potrzeby `Invoke-AzHDInsightHiveJob` polecenia.
 
 Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zadań w klastrze usługi HDInsight:
 
@@ -81,7 +83,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
    > [!NOTE]  
    > W przypadku dłużej zapytań HiveQL, można użyć programu Azure PowerShell **ciągi tutaj** polecenia cmdlet lub HiveQL pliki skryptów. Poniższy fragment kodu przedstawia sposób użycia `Invoke-Hive` polecenia cmdlet do uruchamiania pliku skryptu HiveQL. Plik skryptu HiveQL muszą być przesłane do wasb: / /.
    >
-   > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+   > `Invoke-AzHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
    > Aby uzyskać więcej informacji na temat **ciągi tutaj**, zobacz <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">za pomocą Windows PowerShell tutaj ciągi</a>.
 
@@ -91,7 +93,7 @@ Jeśli nie informacje są zwracane po zakończeniu zadania, wyświetlać dzienni
 
 ```powershell
 # Print the output of the Hive job.
-Get-AzureRmHDInsightJobOutput `
+Get-AzHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $job.JobId `
         -HttpCredential $creds `

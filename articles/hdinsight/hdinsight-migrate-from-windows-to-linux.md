@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 02f698d531555aa9b5498060918a2a361b28817e
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743650"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361255"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migracja z klastra HDInsight z systemem Windows do klastra opartego na systemie Linux
 
@@ -24,6 +24,8 @@ HDInsight oparte na Windows zapewnia łatwy sposób korzystać z technologii Apa
 
 > [!NOTE]  
 > Klastry HDInsight użyć długoterminowe pomocy technicznej Ubuntu (LTS) jako systemu operacyjnego dla węzłów w klastrze. Aby uzyskać informacji na temat wersji ubuntu, które są dostępne z HDInsight, oraz inne informacje na temat wersji składnika, zobacz [wersje składników HDInsight](hdinsight-component-versioning.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="migration-tasks"></a>Zadania migracji
 
@@ -63,7 +65,7 @@ Wykonaj następujące kroki, aby skopiować dane z klastra produkcyjnego do klas
 
     ```powershell
     $clusterName="Your existing HDInsight cluster name"
-    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
     write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
     write-host "Default container: $clusterInfo.DefaultStorageContainer"
     ```
@@ -93,7 +95,7 @@ Wykonaj następujące kroki, aby skopiować dane z klastra produkcyjnego do klas
 
 #### <a name="direct-copy-between-blobs-in-azure-storage"></a>Bezpośrednie kopiowanie między obiektami BLOB w usłudze Azure Storage
 
-Alternatywnie, możesz chcieć użyć `Start-AzureStorageBlobCopy` polecenia cmdlet programu Azure PowerShell, aby kopiować obiekty BLOB między kontami magazynu poza HDInsight. Aby uzyskać więcej informacji, zobacz, jak zarządzać sekcji obiektów blob platformy Azure przy użyciu programu Azure PowerShell z usługą Azure Storage.
+Alternatywnie, możesz chcieć użyć `Start-AzStorageBlobCopy` polecenia cmdlet programu Azure PowerShell, aby kopiować obiekty BLOB między kontami magazynu poza HDInsight. Aby uzyskać więcej informacji, zobacz, jak zarządzać sekcji obiektów blob platformy Azure przy użyciu programu Azure PowerShell z usługą Azure Storage.
 
 ## <a name="client-side-technologies"></a>Technologie po stronie klienta
 
@@ -147,7 +149,7 @@ Wiele sieci web UI, które zostało użyte z systemem Windows HDInsight, takie j
 
 Aby uzyskać więcej informacji na temat pracy za pomocą systemu Ambari zobacz następujące dokumenty:
 
-* [Apache Ambari w sieci Web](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari Web](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 
 ### <a name="ambari-alerts"></a>Alerty systemu Ambari
@@ -195,7 +197,7 @@ Poniższej tabeli znajdują się wskazówki dotyczące migracji obciążenia Hiv
 
 | Na podstawie Windows używam... | Na opartą na systemie Linux... |
 | --- | --- |
-| **Edytor hive** |[Apache Hive widoku systemu Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md) |
+| **Hive Editor** |[Apache Hive widoku systemu Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md) |
 | `set hive.execution.engine=tez;` Aby umożliwić aplikacji Tez |Apache Tez jest domyślny aparat wykonywania dla klastrów opartych na systemie Linux, więc instrukcji set nie są już potrzebne. |
 | C# funkcje zdefiniowane przez użytkownika | Aby uzyskać informacje na temat weryfikacji składników języka C# za pomocą HDInsight opartych na systemie Linux, zobacz [.NET Migrowanie rozwiązania HDInsight opartych na systemie Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | Pliki CMD lub skrypty na serwerze wywoływanych jako część zadania Hive |za pomocą skryptów powłoki Bash |

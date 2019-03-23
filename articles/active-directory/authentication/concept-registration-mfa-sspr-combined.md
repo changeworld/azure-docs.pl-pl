@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2865c19e747ca1c5b0a6cda84b8be18bfaeb9335
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 536d26abf563f18ed7cec6668fcd1d4223f5a135
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317667"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370163"
 ---
 # <a name="combined-security-information-registration-preview"></a>Połączone zabezpieczeń informacji o rejestracji (wersja zapoznawcza)
 
 Przed rejestracją połączone użytkownicy zarejestrowani metod uwierzytelniania dla usługi Azure Multi-Factor Authentication (MFA) i samoobsługowego resetowania haseł (SSPR) w dwóch różnych środowiskach. Osoby zostały mylić podobne metody były używane dla usługi Azure MFA i samoobsługowego resetowania HASEŁ, ale musieli zarejestrować dla każdej funkcji oddzielnie. Łączna rejestracja w usłudze Użytkownicy mogą teraz zarejestrować jeden raz i Uzyskaj korzyści z usługi Azure MFA i samoobsługowego resetowania HASEŁ.
 
-![Połączone informacje o zabezpieczeniach — Mój profil przedstawiający zarejestrowane informacje zabezpieczające dla użytkownika, w tym Microsoft Authenticator i telefonu dla przykładowego użytkownika w katalogu.](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Mój profil przedstawiający zarejestrowane informacje zabezpieczające dla użytkownika](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 Przed włączeniem nowe środowisko, przejrzyj tej dokumentacji skoncentrowane na administratora i dokumentacji skoncentrowane na użytkownika, aby upewnić się, że rozumiesz, funkcje i wpływ tej funkcji. Bazowy szkolenia na temat dokumentacji użytkownika przygotowanie użytkowników do nowego środowiska i aby zapewnić pomyślne wdrożenie.
 
@@ -36,7 +36,7 @@ Przed włączeniem nowe środowisko, przejrzyj tej dokumentacji skoncentrowane n
 
 Strony Mój profil są zlokalizowane w oparciu o bieżące ustawienia języka na komputerze uzyskiwanie dostępu do strony. Firma Microsoft przechowuje najnowszych języka, wykorzystywane w pamięci podręcznej przeglądarki, więc kolejnych prób dostępu będzie w dalszym ciągu renderowane w ostatnim język używany. Wyczyszczenie pamięci podręcznej spowoduje, że strony w celu ponownego renderowania. Jeśli chcesz wymusić, dodając określonego języka `?lng=de-DE` na końcu adresu URL gdzie `de-DE` jest ustawiony na odpowiedni język kodu wymusi strony do renderowania, w tym języku.
 
-![Interfejs Mój profil przedstawiający informacje o zabezpieczeniach i możliwości dla użytkownika, które można skonfigurować funkcji samoobsługowego resetowania HASEŁ lub innych metod weryfikacji zabezpieczeń.](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![Konfigurowanie samoobsługowego resetowania HASEŁ lub innych metod weryfikacji zabezpieczeń](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
 ## <a name="methods-available-in-converged-registration"></a>Metody dostępne w konwergentnej rejestracji
 
@@ -99,7 +99,7 @@ Przykład:
 
 Następujące schemat blokowy opisano metody, które są wyświetlane dla użytkownika, w przypadku przerwania do rejestracji podczas logowania:
 
-![Połączone zabezpieczeń informacji schemat blokowy wyjaśniające, liczba metod wymaganych podczas logowania jest wymaganych więcej informacji. Ta zmiana, jeśli tylko jest wymagana usługa MFA lub tylko funkcji samoobsługowego resetowania HASEŁ](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![Schemat blokowy informacje zabezpieczeń połączone](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
 Jeśli masz zarówno usługi MFA, jak i funkcji samoobsługowego resetowania HASEŁ jest włączony, firma Microsoft zaleca wymuszania rejestracji usługi MFA.
 

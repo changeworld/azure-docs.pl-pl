@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9f6698eebf184d1df80920b7779512e2fda83a0c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012781"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369092"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Storage
 
@@ -266,7 +266,7 @@ Teraz, gdy już rozumiesz sposób utworzenia żądania, wywoła usługę i przea
 ## <a name="creating-the-authorization-header"></a>Tworzenie nagłówka autoryzacji
 
 > [!TIP]
-> Usługa Azure Storage obsługuje teraz integrację usługi Azure Active Directory (Azure AD) dla usług obiektów Blob i kolejek (wersja zapoznawcza). Usługi Azure AD oferuje znacznie prostsze środowisko do autoryzowania żądania do usługi Azure Storage. Aby uzyskać więcej informacji na temat korzystania z usługi Azure AD do autoryzowania operacje REST, zobacz [uwierzytelnianie w usłudze Azure Active Directory (wersja zapoznawcza)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Omówienie integracji z usługą Azure AD z usługą Azure Storage, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
+> Usługa Azure Storage obsługuje teraz integrację usługi Azure Active Directory (Azure AD) dla kolejek i obiektów blob. Usługi Azure AD oferuje znacznie prostsze środowisko do autoryzowania żądania do usługi Azure Storage. Aby uzyskać więcej informacji na temat korzystania z usługi Azure AD do autoryzowania operacje REST, zobacz [uwierzytelnianie w usłudze Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Omówienie integracji z usługą Azure AD z usługą Azure Storage, zobacz [uwierzytelniania dostępu do usługi Azure Storage przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
 
 Znajduje się artykuł, który objaśnia, koncepcyjnie (Brak kodu) sposób wykonywania [uwierzytelniania dla usług Azure Storage](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services).
 Umożliwia wyodrębnianie określonych tego artykułu, aby dokładnie jest wymagany i wyświetlany jest kod.

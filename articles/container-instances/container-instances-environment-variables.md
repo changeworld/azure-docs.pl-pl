@@ -5,20 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: 0c43c81528c2de656e1d788f6af6ba337d7aacb8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 3e7e292f36296ce09af89f03e8b154b57e18b55c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403026"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370002"
 ---
 # <a name="set-environment-variables"></a>Ustawianie zmiennych środowiskowych
 
 Ustawianie zmiennych środowiskowych w usługi container instances umożliwia przekazanie dynamiczną konfigurację aplikację lub skrypt uruchamiany przez kontener. Aby ustawić zmienne środowiskowe w kontenerze, należy je określić podczas tworzenia wystąpienia kontenera. Można ustawić zmienne środowiskowe, podczas uruchamiania kontenera za pomocą [wiersza polecenia platformy Azure](#azure-cli-example), [programu Azure PowerShell](#azure-powershell-example)i [witryny Azure portal](#azure-portal-example).
 
-Na przykład jeśli uruchomisz [microsoft/aci-wordcount] [ aci-wordcount] obraz kontenera, jego zachowanie można zmienić, określając następujące zmienne środowiskowe:
+Na przykład po uruchomieniu programu Microsoft [aci wordcount] [ aci-wordcount] obraz kontenera, jego zachowanie można zmienić, określając następujące zmienne środowiskowe:
 
 *NumWords*: Liczba słów wysyłane do strumienia wyjściowego STDOUT.
 
@@ -28,13 +28,13 @@ Jeśli musisz przekazać wpisów tajnych jako zmienne środowiskowe usługi Azur
 
 ## <a name="azure-cli-example"></a>Przykład interfejsu wiersza polecenia platformy Azure
 
-Aby wyświetlić domyślne dane wyjściowe z [microsoft/aci-wordcount] [ aci-wordcount] kontener, uruchom go z tym [utworzyć kontener az] [ az-container-create] polecenie (nie zmienne środowiskowe określone):
+Aby wyświetlić domyślne dane wyjściowe z [aci wordcount] [ aci-wordcount] kontener, uruchom go z tym [utworzyć kontener az] [ az-container-create] polecenie (nie zmienne środowiskowe określone):
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer1 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -44,7 +44,7 @@ Aby zmodyfikować dane wyjściowe, uruchom drugi kontener z `--environment-varia
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
@@ -83,13 +83,13 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 Ustawianie zmiennych środowiskowych w programie PowerShell jest podobny do interfejsu wiersza polecenia, ale używa `-EnvironmentVariable` argument wiersza polecenia.
 
-Najpierw uruchom [microsoft/aci-wordcount] [ aci-wordcount] kontenera w konfiguracji domyślnej z tym [New AzContainerGroup] [ new-Azcontainergroup] polecenie:
+Najpierw uruchom [aci wordcount] [ aci-wordcount] kontenera w konfiguracji domyślnej z tym [New AzContainerGroup] [ new-Azcontainergroup] polecenia:
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer1 `
-    -Image microsoft/aci-wordcount:latest
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
 Teraz uruchom następujące polecenie [New AzContainerGroup] [ new-Azcontainergroup] polecenia. Ta określa *NumWords* i *MinLength* zmienne środowiskowe po wypełnieniu zmienną tablicową `envVars`:
@@ -99,7 +99,7 @@ $envVars = @{'NumWords'='5';'MinLength'='8'}
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer2 `
-    -Image microsoft/aci-wordcount:latest `
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest `
     -RestartPolicy OnFailure `
     -EnvironmentVariable $envVars
 ```
@@ -143,7 +143,7 @@ Do ustawiania zmiennych środowiskowych podczas uruchamiania kontenera w witryni
 
 Podczas wdrażania za pomocą portalu, jest obecnie ograniczona do trzech zmiennych i należy wprowadzić je w następującym formacie: `"variableName":"value"`
 
-Aby zobaczyć przykład, uruchom [microsoft/aci-wordcount] [ aci-wordcount] kontener za pomocą *NumWords* i *MinLength* zmiennych.
+Aby zobaczyć przykład, uruchom [aci wordcount] [ aci-wordcount] kontener za pomocą *NumWords* i *MinLength* zmiennych.
 
 1. W **konfiguracji**ustaw **zasady ponownego uruchamiania** do *w przypadku niepowodzenia*
 2. Wprowadź `"NumWords":"5"` pierwszej zmiennej wybierz **tak** w obszarze **Dodaj dodatkowe zmienne środowiskowe**, a następnie wprowadź `"MinLength":"8"` drugiej zmiennej. Wybierz **OK** sprawdzić, a następnie wdrożyć kontener.
@@ -246,7 +246,7 @@ Oparta na zadaniach scenariuszach, na przykład wsadowo duży zestaw danych za p
 [portal-env-vars-02]: ./media/container-instances-environment-variables/portal-env-vars-02.png
 
 <!-- LINKS - External -->
-[aci-wordcount]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

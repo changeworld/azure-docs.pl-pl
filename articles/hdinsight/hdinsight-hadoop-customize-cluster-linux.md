@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200688"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361697"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów HDInsight opartych na systemie Linux przy użyciu akcji skryptu
 
@@ -26,6 +26,8 @@ Usługa Azure HDInsight udostępnia metodę konfiguracji o nazwie **akcji skrypt
 > Linux jest jedynym systemem operacyjnym na HDInsight w wersji 3.4 lub nowszej. Aby uzyskać więcej informacji, zobacz [wycofanie Windows HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Akcje skryptu można także publikować w portalu Azure Marketplace jako aplikacji HDInsight. Aby uzyskać więcej informacji na temat aplikacji HDInsight, zobacz [publikowania aplikacji HDInsight w portalu Azure Marketplace](hdinsight-apps-publish-applications.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -131,7 +133,7 @@ Wystąpił błąd podczas uruchamiania w klastrze już uruchomionego skryptu nie
 >
 > Akcje skrypty uruchamiane przy użyciu uprawnień głównych. Upewnij się, że rozumiesz, co to jest skryptem przed zastosowaniem do klastra.
 
-Jeśli zastosujesz skrypt w klastrze, stan klastra zmieni się z **systemem** do **zaakceptowano**. A następnie zmienia się na **konfiguracji HDInsight** a na koniec z powrotem do **systemem** pomyślne skryptów. Stan skryptu są rejestrowane w historii akcji skryptu. Te informacje informujący o tym, czy skrypt zakończonych powodzeniem lub niepowodzeniem. Na przykład `Get-AzureRmHDInsightScriptActionHistory` polecenia cmdlet programu PowerShell pokazuje stan skryptu. Zwraca informacje podobne do następującego tekstu:
+Jeśli zastosujesz skrypt w klastrze, stan klastra zmieni się z **systemem** do **zaakceptowano**. A następnie zmienia się na **konfiguracji HDInsight** a na koniec z powrotem do **systemem** pomyślne skryptów. Stan skryptu są rejestrowane w historii akcji skryptu. Te informacje informujący o tym, czy skrypt zakończonych powodzeniem lub niepowodzeniem. Na przykład `Get-AzHDInsightScriptActionHistory` polecenia cmdlet programu PowerShell pokazuje stan skryptu. Zwraca informacje podobne do następującego tekstu:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -223,7 +225,7 @@ Uzyskaj więcej informacji na temat sposobu wdrażania szablonu:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Za pomocą akcji skryptu, podczas tworzenia klastra za pomocą programu Azure PowerShell
 
-W tej sekcji użyjesz [AzureRmHDInsightScriptAction Dodaj](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) polecenia cmdlet, wywoływanie skryptów, aby dostosować klastra. Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchamiania poleceń cmdlet programu HDInsight PowerShell, zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+W tej sekcji użyjesz [AzHDInsightScriptAction Dodaj](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) polecenia cmdlet, wywoływanie skryptów, aby dostosować klastra. Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchamiania poleceń cmdlet programu HDInsight PowerShell, zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Poniższy skrypt pokazuje, jak zastosować akcji skryptu, podczas tworzenia klastra przy użyciu programu PowerShell:
 
@@ -368,13 +370,13 @@ Na przykład zastosować skryptów do klastra przy użyciu zestawu .NET SDK, zob
 
 | cmdlet | Funkcja |
 | --- | --- |
-| `Get-AzureRmHDInsightPersistedScriptAction` |Pobieranie informacji na temat akcji utrwalonego skryptu. |
-| `Get-AzureRmHDInsightScriptActionHistory` |Pobieranie historii akcji skryptu, stosowane do klastra lub szczegóły dotyczące określonego skryptu. |
-| `Set-AzureRmHDInsightPersistedScriptAction` |Przyczyniają się do akcji skryptów ad hoc Akcja utrwalonego skryptu. |
-| `Remove-AzureRmHDInsightPersistedScriptAction` |Obniż poziom akcji utrwalonego skryptu ad-hoc akcję. |
+| `Get-AzHDInsightPersistedScriptAction` |Pobieranie informacji na temat akcji utrwalonego skryptu. |
+| `Get-AzHDInsightScriptActionHistory` |Pobieranie historii akcji skryptu, stosowane do klastra lub szczegóły dotyczące określonego skryptu. |
+| `Set-AzHDInsightPersistedScriptAction` |Przyczyniają się do akcji skryptów ad hoc Akcja utrwalonego skryptu. |
+| `Remove-AzHDInsightPersistedScriptAction` |Obniż poziom akcji utrwalonego skryptu ad-hoc akcję. |
 
 > [!IMPORTANT]  
-> `Remove-AzureRmHDInsightPersistedScriptAction` nie cofnięcie akcji wykonywanych przez skrypt. To polecenie cmdlet usuwa tylko Flaga utrwalonych.
+> `Remove-AzHDInsightPersistedScriptAction` nie cofnięcie akcji wykonywanych przez skrypt. To polecenie cmdlet usuwa tylko Flaga utrwalonych.
 
 Następujący skrypt przykładowy pokazuje promowania i następnie obniżenie poziomu skryptu za pomocą polecenia cmdlet.
 

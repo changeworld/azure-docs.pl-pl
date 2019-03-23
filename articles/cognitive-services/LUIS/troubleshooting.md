@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: f1bc19833e0e0cc2026ae22977d9a3b371924fe2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: aed7d4fedd4781eac8c127744e5fe93fb054b99d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337133"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369721"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -64,7 +64,12 @@ Cortana, który wstępnie skompilowanych aplikacji zostały zaniechane w 2017 r.
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak przenieść własność aplikacją usługi LUIS?
 Aby przetransferować aplikacją usługi LUIS do innej subskrypcji platformy Azure, Eksportuj aplikacji LUIS, a następnie importować go za pomocą nowego konta. Zaktualizuj identyfikator aplikacji usługi LUIS w aplikacji klienta, który ją wywołuje. Nowa aplikacja może zwrócić LUIS nieco inne wyniki z oryginalnej aplikacji.
 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Wstępnie utworzone jednostki jest oznaczony w wypowiedź przykładzie zamiast Moje jednostkę niestandardową. Jak to naprawić? 
+
+Zobacz [rozwiązywania problemów ze wstępnie utworzonych jednostek](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Próba importowania aplikacji lub wersji pliku, ale wystąpił błąd, co się stało? 
+
 Przeczytaj więcej na temat [błędy importu wersji](luis-how-to-manage-versions.md#import-errors) i [błędy importowania aplikacji](luis-how-to-start-new-app.md#import-errors).
 
 <a name="luis-collaborating"></a>

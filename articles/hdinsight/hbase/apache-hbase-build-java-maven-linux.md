@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 1eab8b248fd8ad42adf8c0a747565fed9bbc14e8
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fa831ad878d214515849787988ccb32f6c57ce20
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652561"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361765"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Tworzenie aplikacji bazy danych Apache HBase w języku Java
 
@@ -29,6 +29,8 @@ Kroki opisane w tej dokumentów użyj [narzędzia Apache Maven](https://maven.ap
 > Procedura przedstawiona w tym dokumencie wymaga klastra usługi HDInsight używającego systemu Linux. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="requirements"></a>Wymagania
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * [Platforma Java JDK](https://aka.ms/azure-jdks) 8 lub nowszy.
 
@@ -56,7 +58,7 @@ Kroki opisane w tej dokumentów użyj [narzędzia Apache Maven](https://maven.ap
 
     To polecenie tworzy katalog o takiej samej nazwie jak **artifactID** parametru (**hbaseapp** w tym przykładzie.) Ten katalog zawiera następujące elementy:
 
-   * **pom.XML**:  Model obiektu projektu ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) zawiera informacje i szczegóły konfiguracji używane do tworzenia projektu.
+   * **pom.xml**:  Model obiektu projektu ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) zawiera informacje i szczegóły konfiguracji używane do tworzenia projektu.
    * **SRC**: Katalog, który zawiera **main/java/com/microsoft/przykłady** katalogu, w którym można utworzyć aplikacji.
 
 3. Usuń `src/test/java/com/microsoft/examples/apptest.java` pliku. Nie jest on używany w tym przykładzie.
@@ -470,32 +472,32 @@ Poniższe kroki przekazać plik JAR do domyślnego magazynu klastra Apache HBase
     $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
 
     # The job definition
-    $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
+    $jobDefinition = New-AzHDInsightMapReduceJobDefinition `
         -JarFile $jarFile `
         -ClassName $className `
         -Arguments $emailRegex
 
     # Get the job output
-    $job = Start-AzureRmHDInsightJob `
+    $job = Start-AzHDInsightJob `
         -ClusterName $clusterName `
         -JobDefinition $jobDefinition `
         -HttpCredential $creds
     Write-Host "Wait for the job to complete ..." -ForegroundColor Green
-    Wait-AzureRmHDInsightJob `
+    Wait-AzHDInsightJob `
         -ClusterName $clusterName `
         -JobId $job.JobId `
         -HttpCredential $creds
     if($showErr)
     {
     Write-Host "STDERR"
-    Get-AzureRmHDInsightJobOutput `
+    Get-AzHDInsightJobOutput `
                 -Clustername $clusterName `
                 -JobId $job.JobId `
                 -HttpCredential $creds `
                 -DisplayOutputType StandardError
     }
     Write-Host "Display the standard output ..." -ForegroundColor Green
-    Get-AzureRmHDInsightJobOutput `
+    Get-AzHDInsightJobOutput `
                 -Clustername $clusterName `
                 -JobId $job.JobId `
                 -HttpCredential $creds
@@ -556,7 +558,7 @@ Poniższe kroki przekazać plik JAR do domyślnego magazynu klastra Apache HBase
         $storage = GetStorage -clusterName $clusterName
 
         # Upload file to storage, overwriting existing files if -force was used.
-        Set-AzureStorageBlobContent -File $localPath `
+        Set-AzStorageBlobContent -File $localPath `
             -Blob $destinationPath `
             -force:$force `
             -Container $storage.container `
@@ -565,10 +567,10 @@ Poniższe kroki przekazać plik JAR do domyślnego magazynu klastra Apache HBase
 
     function FindAzure {
         # Is there an active Azure subscription?
-        $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+        $sub = Get-AzSubscription -ErrorAction SilentlyContinue
         if(-not($sub))
         {
-            throw "No active Azure subscription found! If you have a subscription, use the Connect-AzureRmAccount cmdlet to login to your subscription."
+            throw "No active Azure subscription found! If you have a subscription, use the Connect-AzAccount cmdlet to login to your subscription."
         }
     }
 
@@ -577,7 +579,7 @@ Poniższe kroki przekazać plik JAR do domyślnego magazynu klastra Apache HBase
             [Parameter(Mandatory = $true)]
             [String]$clusterName
         )
-        $hdi = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        $hdi = Get-AzHDInsightCluster -ClusterName $clusterName
         # Does the cluster exist?
         if (!$hdi)
         {
@@ -591,14 +593,14 @@ Poniższe kroki przekazać plik JAR do domyślnego magazynu klastra Apache HBase
         $resourceGroup = $hdi.ResourceGroup
         $storageAccountName=$hdi.DefaultStorageAccount.split('.')[0]
         $container=$hdi.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
+        $storageAccountKey=(Get-AzStorageAccountKey `
             -Name $storageAccountName `
         -ResourceGroupName $resourceGroup)[0].Value
         # Get the resource group, in case we need that
         $return.resourceGroup = $resourceGroup
         # Get the storage context, as we can't depend
         # on using the default storage context
-        $return.context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+        $return.context = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
         # Get the container, so we know where to
         # find/store blobs
         $return.container = $container

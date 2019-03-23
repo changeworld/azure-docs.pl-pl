@@ -1,7 +1,7 @@
 ---
-title: Zamiarach użytkownika
+title: Intencje
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub celem wyrażone w wypowiedź użytkownika.
+description: Pojedynczy intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub celem wyrażone w wypowiedź użytkownika. Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chcą w aplikacji.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae1dd16e3296c11d6bce6ea623f590deaee8f65d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871357"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371115"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Pojęcia dotyczące intencje w aplikacją usługi LUIS
 
@@ -31,7 +31,7 @@ Przeznaczeniu podróży   |   Przykładowe wypowiedzi   |
  CheckWeather | "Co to jest dane takie jak pogody w Bostonie?" <br/> "Pokaż prognozy dla tego weekend" |
  Brak         | "Dostać się ze mną przepisu plik cookie"<br>"Czy Lakers wygrać?" |
 
-Wszystkie aplikacje dołączone wstępnie zdefiniowane opcje "[Brak](#none-intent-is-fallback-for-app)" który jest celem rezerwowego. 
+Wszystkie aplikacje dołączone wstępnie zdefiniowane opcje "[Brak](#none-intent-is-fallback-for-app)", który jest celem rezerwowego. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Ze wstępnie utworzonych domen zapewniają intencji
 Oprócz intencji, które definiujesz można użyć wbudowanych intencji z jednego ze wstępnie utworzonych domen. Aby uzyskać więcej informacji, zobacz [korzystać ze wstępnie utworzonych domen w aplikacjach usługi LUIS](luis-how-to-use-prebuilt-domains.md) Aby dowiedzieć się więcej o dostosowywaniu intencji z wbudowanych domeny do użycia w aplikacji.
@@ -57,7 +57,11 @@ Podobnie tych [wypowiedzi](luis-concept-utterance.md) odpowiadają jednej intenc
 
 [Ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md) mają intencji z wypowiedzi.  
 
-## <a name="none-intent-is-fallback-for-app"></a>Żadna funkcja nie jest rezerwowe dla aplikacji
+## <a name="none-intent"></a>Intencja None
+
+**Brak** ważne jest, aby każda aplikacja i nie powinny mieć zerowej wypowiedzi.
+
+### <a name="none-intent-is-fallback-for-app"></a>Żadna funkcja nie jest rezerwowe dla aplikacji
 **Brak** celem jest celem wychwytywania lub rezerwowej. Służy do nauki LUIS wypowiedzi, które nie są istotne w domenie aplikacji (obszar podmiotu). **Brak** intencji powinny mieć od 10 do 20 procent całkowitej wypowiedzi w aplikacji. Nie pozostawiaj brak puste. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Brak elementu intent pomaga kierunek konwersacji
@@ -76,6 +80,12 @@ Jakiego rodzaju wypowiedzi pozostało dla żadnego elementu intent? Uruchom przy
 
 ## <a name="negative-intentions"></a>Ujemna intencji 
 Jeśli chcesz określić zamiarach ujemny i dodatni, takie jak "I **ma** samochód" i "I **nie** ma samochód", można utworzyć dwa intencji (jedną pozytywną i jedną negatywną) i dodawanie wypowiedzi odpowiednie dla Każdy. Lub można utworzyć pojedynczy intencji i oznaczyć te dwa różne terminy dodatnie i ujemne jako jednostka.  
+
+## <a name="intents-and-patterns"></a>Intencje i wzorce
+
+Jeśli masz wypowiedzi przykładu, które mogą być zdefiniowane w części lub całości jako wyrażenie regularne, należy wziąć pod uwagę przy użyciu [jednostki wyrażenia regularnego](luis-concept-entity-types.md#regular-expression-entity) parowania z [wzorzec](luis-concept-patterns.md). 
+
+Jednostki wyrażenia regularnego gwarantuje wyodrębnianie danych, tak, aby odbywa się dopasowanie. Dopasowanie wzorca gwarancję, że zwracany jest dokładna intencji. 
 
 ## <a name="intent-balance"></a>Saldo intencji
 Przeznaczeniu domeny powinien mieć saldo wypowiedzi w każdej intencji. Nie masz zamiar jednego z 10 wypowiedzi i inną intencji z wypowiedzi 500. Nie jest równoważone. Jeśli masz tę sytuację, zapoznaj się z celem z wypowiedzi 500, aby zobaczyć, jeśli wiele intencji można zreorganizować do [wzorzec](luis-concept-patterns.md). 
@@ -96,6 +106,8 @@ Dowiedz się więcej na temat łączenia aplikacji twórcy LUIS i pytań i odpow
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Prosić o pomoc dla aplikacji za pomocą znacznej liczby intencji
 Zmniejszenie liczby intencji lub podzielenie Twoje intencje w wielu aplikacjach nie działa, należy się z pomocą techniczną. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

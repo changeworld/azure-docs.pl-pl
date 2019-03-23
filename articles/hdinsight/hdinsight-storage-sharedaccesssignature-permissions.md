@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d248db787db1e3945fb632c6770d45e4bf9a8f02
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202677"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361000"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Ograniczania dostępu do danych w HDInsight za pomocą sygnatur dostępu współdzielonego magazynu platformy Azure
 
@@ -27,6 +27,8 @@ HDInsight ma pełny dostęp do danych w ramach kont usługi Azure Storage skojar
 > HDInsight musi mieć pełny dostęp do domyślnego magazynu klastra.
 
 ## <a name="requirements"></a>Wymagania
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Subskrypcja platformy Azure
 * C# lub języka Python. Przykładowy kod języka C# jest dostarczany jako rozwiązanie programu Visual Studio.
@@ -160,12 +162,12 @@ Przykładem tworzenia klastra usługi HDInsight, który korzysta z sygnatury dos
 1. W wierszu polecenia użyj następującego polecenia do uwierzytelniania w Twojej subskrypcji platformy Azure:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
     Po wyświetleniu monitu zaloguj się przy użyciu konta dla subskrypcji platformy Azure.
 
-    Jeśli Twoje konto jest skojarzone z wieloma subskrypcjami platformy Azure, może być konieczne użycie `Select-AzureRmSubscription` Wybierz subskrypcję, o których chcesz użyć.
+    Jeśli Twoje konto jest skojarzone z wieloma subskrypcjami platformy Azure, może być konieczne użycie `Select-AzSubscription` Wybierz subskrypcję, o których chcesz użyć.
 
 4. W wierszu polecenia Zmień katalogi do `CreateCluster` katalog zawierający plik HDInsightSAS.ps1. Następnie użyj następującego polecenia do uruchomienia skryptu
 
@@ -273,11 +275,11 @@ Po nawiązaniu połączenia z klastrem, wykonaj następujące kroki, aby zweryfi
 
 **Objawy**: Podczas tworzenia klastra przy użyciu skryptu programu PowerShell, mogą pojawić się następujący komunikat o błędzie:
 
-    New-AzureRmHDInsightCluster : A task was canceled.
+    New-AzHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
-    +     New-AzureRmHDInsightCluster `
+    +     New-AzHDInsightCluster `
     +     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
+        + CategoryInfo          : NotSpecified: (:) [New-AzHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
 **Przyczyna**: Ten błąd może wystąpić, jeśli używasz hasła dla użytkownika administracyjnego/HTTP dla klastra lub (w przypadku klastrów opartych na systemie Linux) użytkownika SSH.

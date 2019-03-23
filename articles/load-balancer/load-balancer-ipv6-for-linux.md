@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2019
 ms.author: kumud
-ms.openlocfilehash: ea1ef845f55fbdadeea1992e167ef6568572abc9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141717"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369636"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux
 
@@ -54,7 +54,18 @@ Ten dokument opisuje sposób włączania protokołu DHCPv6, tak aby maszyny wirt
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
+Począwszy od Ubuntu 17.10 domyślnego mechanizmu konfiguracja sieci jest [NETPLAN]( https://netplan.io).  W czasie instalacji/wystąpienia NETPLAN odczytuje konfigurację sieci z YAML pliki konfiguracyjne w tej lokalizacji: / {lib,etc,run}/netplan/*.yaml.
 
+Zawsze podawaj *dhcp6:true* instrukcji dla każdego interfejsu ethernet w konfiguracji.  Na przykład:
+  
+        network:
+          version: 2
+          ethernets:
+            eno1:
+              dhcp6: true
+
+Podczas rozruchu wczesne netplan "sieciowa modułu renderowania" zapisuje konfiguracji/uruchomić ręcznie, wyłącz kontrolę nad urządzeniami do określonego demona sieci, aby uzyskać informacje na temat NETPLAN, zobacz https://netplan.io/reference.
+ 
 ## <a name="debian"></a>Debian
 
 1. Edytuj */etc/dhcp/dhclient6.conf* pliku i Dodaj następujący wiersz:

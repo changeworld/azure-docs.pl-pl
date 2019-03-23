@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dd26bbb06310439aae065349c14c6df1c1c12e6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1f78a3135fca290d50370652b33fe0a4d16a6f83
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316936"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369058"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Raporty w usłudze Azure Multi-Factor Authentication
 
@@ -36,9 +36,7 @@ Usługa Azure Multi-Factor Authentication zawiera kilka raportów, które mogą 
 2. Po lewej stronie, wybierz **usługi Azure Active Directory** > **serwera MFA**.
 3. Wybierz raport, który chcesz wyświetlić.
 
-   <center>
-   
-   ![Chmura](./media/howto-mfa-reporting/report.png)</center>
+   ![Raport o stanie serwera serwer usługi MFA w witrynie Azure portal](./media/howto-mfa-reporting/report.png)
 
 ## <a name="azure-ad-sign-ins-report"></a>Raport logowań w portalu usługi Azure AD
 
@@ -55,7 +53,7 @@ W raporcie logowań można udostępniać informacje na temat użycia zarządzany
 
 Dane te są dostępne za pośrednictwem [witryny Azure portal](https://portal.azure.com) i [interfejsu API raportowania](../reports-monitoring/concept-reporting-api.md).
 
-![Chmura](./media/howto-mfa-reporting/sign-in-report.png)
+![Raport logowania usługi Azure AD w witrynie Azure portal](./media/howto-mfa-reporting/sign-in-report.png)
 
 ### <a name="sign-ins-report-structure"></a>Struktura raportów logowania
 

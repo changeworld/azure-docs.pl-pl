@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 47b589d32accc4a699e7260b9e4b2de4cca58f2b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314674"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369619"
 ---
-# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics
+# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics w usłudze Azure Monitor
 
 >[!NOTE]
 >Zgodnie z programu Microsoft Operations Management Suite (OMS) przejścia do systemu Microsoft Azure Monitor, terminologii ulegnie zmianie. Ten artykuł odnosi się do bramy pakietu OMS jako bramy usługi Azure Log Analytics. 
 >
 
-W tym artykule opisano sposób konfigurowania komunikacji przy użyciu usługi Azure Automation i Log Analytics przy użyciu bramy usługi Log Analytics, gdy komputery, które są połączone bezpośrednio lub które są monitorowane przez program Operations Manager mają Brak dostępu do Internetu. 
+W tym artykule opisano sposób konfigurowania komunikacji przy użyciu usługi Azure Automation i Azure Monitor przy użyciu bramy usługi Log Analytics, gdy komputery, które są połączone bezpośrednio lub które są monitorowane przez program Operations Manager mają Brak dostępu do Internetu. 
 
-Brama usługi Log Analytics jest przekierowania serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP. Ta brama można zbierać dane i wysyłanie do usługi Azure Automation i Log Analytics, w imieniu komputerów, które nie są połączone z Internetem.  
+Brama usługi Log Analytics jest przekierowania serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP. Ta Brama może zbierać dane i wysyłać je do usługi Azure Automation i obszar roboczy usługi Log Analytics w usłudze Azure Monitor imieniu komputerów, które nie są połączone z Internetem.  
 
 Brama usługi Log Analytics obsługuje:
 
 * Raportowanie do tego samego cztery usługi Log Analytics agenci obszaru roboczego, które są pod nim, które są skonfigurowane przy użyciu usługi Azure Automation hybrydowego Runbook Worker.  
-* Komputery Windows, na których program Microsoft Monitoring Agent bezpośrednio połączone z obszarem roboczym usługi Log Analytics.
-* Komputery z systemem Linux na których agenta usługi Log Analytics dla systemu Linux jest bezpośrednio połączony z obszarem roboczym usługi Log Analytics.  
+* Komputery Windows, na których program Microsoft Monitoring Agent bezpośrednio połączone z obszarem roboczym usługi Log Analytics w usłudze Azure Monitor.
+* Komputery z systemem Linux na których agenta usługi Log Analytics dla systemu Linux jest bezpośrednio połączony z obszarem roboczym usługi Log Analytics w usłudze Azure Monitor.  
 * System Center Operations Manager 2012 z dodatkiem SP1 z pakietem zbiorczym aktualizacji 7, Operations Manager 2012 R2 przy użyciu UR3 lub grupy zarządzania w programie Operations Manager 2016 lub nowszym zintegrowanej z usługą Log Analytics.  
 
-Niektóre z zasadami bezpieczeństwa IT nie zezwalaj na połączenia internetowego komputerów w sieci. Te komputery niepołączonych może być punktu sprzedaży (POS) urządzeniami lub serwerami obsługującymi funkcję usług informatycznych, na przykład. Do łączenia z tych urządzeń do usługi Azure Automation lub usługi Log Analytics, co umożliwia zarządzanie i monitorowanie ich je skonfigurować do komunikowania się bezpośrednio z bramą usługi Log Analytics. Brama usługi Log Analytics może odbierać informacje o konfiguracji i przekazują dane w ich imieniu. Jeśli komputery są skonfigurowane przy użyciu agenta usługi Log Analytics można łączyć się bezpośrednio do obszaru roboczego usługi Log Analytics, komputery zamiast komunikowania się z bramą usługi Log Analytics.  
+Niektóre z zasadami bezpieczeństwa IT nie zezwalaj na połączenia internetowego komputerów w sieci. Te komputery niepołączonych może być punktu sprzedaży (POS) urządzeniami lub serwerami obsługującymi funkcję usług informatycznych, na przykład. Do łączenia z tych urządzeń do usługi Azure Automation lub obszaru roboczego usługi Log Analytics, co umożliwia zarządzanie i monitorowanie ich je skonfigurować do komunikowania się bezpośrednio z bramą usługi Log Analytics. Brama usługi Log Analytics może odbierać informacje o konfiguracji i przekazują dane w ich imieniu. Jeśli komputery są skonfigurowane przy użyciu agenta usługi Log Analytics można łączyć się bezpośrednio do obszaru roboczego usługi Log Analytics, komputery zamiast komunikowania się z bramą usługi Log Analytics.  
 
 Brama usługi Log Analytics przesyła dane z agentów do usługi bezpośrednio. Nie analizować dane podczas przesyłania.
 
 W przypadku grupy zarządzania programu Operations Manager jest zintegrowany z usługą Log Analytics, do połączenia z bramą usługi Log Analytics do odbierania informacji o konfiguracji i wysyłać zebrane dane, w zależności od rozwiązania, które można skonfigurować serwery zarządzania .  Agenci programu Operations Manager wysyłać dane do serwera zarządzania. Na przykład agentów może wysyłać alertów programu Operations Manager, dane oceny konfiguracji, dane przestrzeni wystąpienia i dane wydajności. Inne dane w dużej liczby, takich jak dzienniki, dane dotyczące wydajności i zdarzeń zabezpieczeń Internet Information Services (IIS) są wysyłane bezpośrednio do bramy usługi Log Analytics. 
 
-Jeśli jeden lub więcej serwerów bramę programu Operations Manager są wdrażane do monitorowania niezaufanych systemów w sieci obwodowej lub sieci izolowanej, te serwery nie mogą komunikować się z bramą usługi Log Analytics.  Serwery programu Operations Manager Gateway może zgłaszać tylko na serwerze zarządzania.  Gdy grupy zarządzania programu Operations Manager jest skonfigurowany do komunikowania się z bramą usługi Log Analytics, informacje o konfiguracji serwera proxy jest automatycznie przekazywana do każdego komputera zarządzanego przez agenta, który jest skonfigurowany do gromadzenia danych dla usługi Log Analytics, nawet Jeśli ustawienie jest pusty.    
+Jeśli jeden lub więcej serwerów bramę programu Operations Manager są wdrażane do monitorowania niezaufanych systemów w sieci obwodowej lub sieci izolowanej, te serwery nie mogą komunikować się z bramą usługi Log Analytics.  Serwery programu Operations Manager Gateway może zgłaszać tylko na serwerze zarządzania.  Gdy grupy zarządzania programu Operations Manager jest skonfigurowany do komunikowania się z bramą usługi Log Analytics, informacje o konfiguracji serwera proxy jest automatycznie przekazywana do każdego komputera zarządzanego przez agenta, który jest skonfigurowany do gromadzenia danych dziennika dla usługi Azure Monitor nawet jeśli ustawienie jest pusty.    
 
-Aby zapewnić wysoką dostępność bezpośrednio połączone lub grupy zarządzania operacjami, które komunikują się z usługą Log Analytics za pośrednictwem bramy, użyj równoważenia obciążenia sieciowego (NLB) do przekierowywania i dystrybuowanie ruchu między wieloma serwerami bramy. W ten sposób, jeśli jeden serwer bramy ulegnie awarii, ruch jest przekierowywany do innego węzła dostępności.  
+Aby zapewnić wysoką dostępność bezpośrednio połączone lub grupy zarządzania operacjami, które komunikują się z obszarem roboczym usługi Log Analytics za pośrednictwem bramy, użyj równoważenia obciążenia sieciowego (NLB) do przekierowywania i dystrybuowanie ruchu między wieloma serwerami bramy. W ten sposób, jeśli jeden serwer bramy ulegnie awarii, ruch jest przekierowywany do innego węzła dostępności.  
 
 Komputer z uruchomioną bramą usługi Log Analytics wymaga agenta Log Analytics Windows do identyfikacji punktów końcowych usługi, które musi komunikować się z bramą. Agenta należy również kierować bramy do raportowania do tego samego obszaru roboczego, agentów lub grupy zarządzania programu Operations Manager za bramą są skonfigurowane przy użyciu. Ta konfiguracja umożliwia bramy i agenta do komunikowania się z ich przypisanej obszaru roboczego.
 

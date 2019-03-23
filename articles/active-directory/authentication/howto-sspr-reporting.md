@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f8411cf2aebf5ab3e25239d1cb1a9b81cfda4c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163907"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369534"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania w zarządzaniu hasłami w usłudze Azure AD
 
 Po wdrożeniu w wielu organizacjach chcą wiedzieć, jak elementy są używane lub jeśli samoobsługowego resetowania haseł (SSPR). Funkcja raportowania, która zapewnia usługi Azure Active Directory (Azure AD) pomaga w uzyskaniu odpowiedzi na pytania za pomocą wbudowanych raportów. Jeśli masz odpowiednio licencję, można również utworzyć niestandardowe zapytania.
 
-![Raportowanie][Reporting]
+![Raportowanie dotyczące samoobsługowego resetowania HASEŁ przy użyciu inspekcji dzienników w usłudze Azure AD][Reporting]
 
 Można odpowiedzieć na następujące pytania, przez raporty, które istnieją w [witryny Azure portal](https://portal.azure.com/):
 
@@ -48,7 +48,7 @@ Jeśli jesteś użytkownikiem usługi Power BI, ma pakietu zawartości dla usłu
 W środowisku witryny Azure portal firma Microsoft ulepszyła sposobu można wyświetlić resetowania hasła i rejestracji aktywność resetowania haseł. Użyj następujących kroków, aby znaleźć hasło resetowania i zdarzenia rejestracji resetowania hasła:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług** w okienku po lewej stronie.
+2. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**.
 3. Wyszukaj **usługi Azure Active Directory** na liście usług i wybierz ją.
 4. Wybierz pozycję **Użytkownicy i grupy**.
 5. Wybierz **dzienników inspekcji** z **użytkowników i grup** menu. To pokazuje wszystkie zdarzenia inspekcji, które wystąpiły dla wszystkich użytkowników w katalogu. Możesz filtrować ten widok, aby zobaczyć wszystkie zdarzenia związane z hasłami.
@@ -97,7 +97,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Działanie aktora**: Użytkownik, który został ograniczana wykonywać dodatkowe operacje resetowania. Użytkownik może być użytkownik końcowy lub administrator.
 * **Działania docelowego**: Użytkownik, który został ograniczana wykonywać dodatkowe operacje resetowania. Użytkownik może być użytkownik końcowy lub administrator.
 * **Stan działania**:
-  * _Powodzenie_: Wskazuje, że użytkownik została ograniczona z wykonywania żadnych dodatkowych resetuje, podjęto żadnych dodatkowych metod uwierzytelniania lub Sprawdzanie poprawności dowolnego dodatkowych numerów telefonów przez następne 24 godziny.
+  * _Success_: Wskazuje, że użytkownik została ograniczona z wykonywania żadnych dodatkowych resetuje, podjęto żadnych dodatkowych metod uwierzytelniania lub Sprawdzanie poprawności dowolnego dodatkowych numerów telefonów przez następne 24 godziny.
 * **Przyczyny niepowodzenia stanu działania**: Nie dotyczy.
 
 ### <a name="activity-type-change-password-self-service"></a>Typ działania: Zmienianie hasła (samoobsługa)
@@ -108,7 +108,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Działanie aktora**: Użytkownik, który ich hasło zostało zmienione. Użytkownik może być użytkownik końcowy lub administrator.
 * **Działania docelowego**: Użytkownik, który ich hasło zostało zmienione. Użytkownik może być użytkownik końcowy lub administrator.
 * **Stany działania**:
-  * _Powodzenie_: Wskazuje, że użytkownik pomyślnie zmieniono hasło.
+  * _Success_: Wskazuje, że użytkownik pomyślnie zmieniono hasło.
   * _Błąd_: Wskazuje, że użytkownik nie można zmienić swoje hasło. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
 * **Przyczyny niepowodzenia stanu działania**:
   * _FuzzyPolicyViolationInvalidPassword_: Użytkownik wybrał hasła, które zostało automatycznie zablokowane, ponieważ możliwości wykrywania hasło zakazane Microsoft uznała, że zbyt popularne lub szczególnie słabe.
@@ -121,7 +121,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Działanie aktora**: Administrator, który resetowania w imieniu innego użytkownika lub administratora hasła. Musi być albo administrator globalny, administrator haseł, użytkownika administrator lub administrator pomocy technicznej.
 * **Działania docelowego**: Użytkownik, którego hasło zostało zresetowane. Użytkownik może być użytkownik końcowy lub innego administratora.
 * **Stany działania**:
-  * _Powodzenie_: Wskazuje, że administrator pomyślnie zresetowano hasło użytkownika.
+  * _Success_: Wskazuje, że administrator pomyślnie zresetowano hasło użytkownika.
   * _Błąd_: Wskazuje, że administrator nie można zmienić hasła użytkownika. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
 
 ### <a name="activity-type-reset-password-self-service"></a>Typ działania: Resetowanie hasła (samoobsługa)
@@ -132,7 +132,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Działanie aktora**: Użytkownik, który zresetują swoje hasło. Użytkownik może być użytkownik końcowy lub administrator.
 * **Działania docelowego**: Użytkownik, który zresetują swoje hasło. Użytkownik może być użytkownik końcowy lub administrator.
 * **Stany działania**:
-  * _Powodzenie_: Wskazuje, że użytkownik pomyślnie resetowania ich własnych haseł.
+  * _Success_: Wskazuje, że użytkownik pomyślnie resetowania ich własnych haseł.
   * _Błąd_: Wskazuje, że użytkownik nie można zresetować swoje hasła. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
 * **Przyczyny niepowodzenia stanu działania**:
   * _FuzzyPolicyViolationInvalidPassword_: Administrator wybrane hasło, które zostało automatycznie zablokowane, ponieważ możliwości wykrywania hasło zakazane Microsoft uznała, że zbyt popularne lub szczególnie słabe.
@@ -145,7 +145,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Działanie aktora**: Użytkownik, który wykonał część hasło zresetować przepływu. Użytkownik może być użytkownik końcowy lub administrator.
 * **Działania docelowego**: Użytkownik, który wykonał część hasło zresetować przepływu. Użytkownik może być użytkownik końcowy lub administrator.
 * **Stany działania**:
-  * _Powodzenie_: Wskazuje, że użytkownik pomyślnie określonego kroku przepływu resetowania hasła.
+  * _Success_: Wskazuje, że użytkownik pomyślnie określonego kroku przepływu resetowania hasła.
   * _Błąd_: Wskazuje, że określony krok hasła resetowania przepływ zakończył się niepowodzeniem. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
 * **Przyczyny stanu działania**:   Zobacz w poniższej tabeli [wszystkich resetowania dopuszczalne działania stanu powodów](#description-of-the-report-columns-in-the-azure-portal).
 
@@ -157,7 +157,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Działanie aktora**: Użytkownik, który odblokowania konta bez resetowania hasła. Użytkownik może być użytkownik końcowy lub administrator.
 * **Działania docelowego**: Użytkownik, który odblokowania konta bez resetowania hasła. Użytkownik może być użytkownik końcowy lub administrator.
 * **Dozwolone Stany działania**:
-  * _Powodzenie_: Wskazuje, że użytkownik pomyślnie odblokowane własnego konta.
+  * _Success_: Wskazuje, że użytkownik pomyślnie odblokowane własnego konta.
   * _Błąd_: Wskazuje, że użytkownik nie można odblokować konto. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
 
 ### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Typ działania: Użytkownik zarejestrowany do samoobsługowego resetowania haseł
@@ -168,12 +168,11 @@ Poniżej opisano to działanie szczegółowo:
 * **Działanie aktora**: Użytkownik zarejestrowany do resetowania haseł. Użytkownik może być użytkownik końcowy lub administrator.
 * **Działania docelowego**: Użytkownik zarejestrowany do resetowania haseł. Użytkownik może być użytkownik końcowy lub administrator.
 * **Dozwolone Stany działania**:
-  * _Powodzenie_: Wskazuje, że użytkownik pomyślnie zarejestrowano na potrzeby resetowania zgodnie z obecnych zasad haseł. 
+  * _Success_: Wskazuje, że użytkownik pomyślnie zarejestrowano na potrzeby resetowania zgodnie z obecnych zasad haseł. 
   * _Błąd_: Wskazuje, że użytkownik nie może zarejestrować do resetowania hasła. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
 
      >[!NOTE]
      >Błąd nie oznacza, że użytkownik nie może zresetować własne hasło. Oznacza to, że nie kończą proces rejestracji. W przypadku niezweryfikowanych danych na ich konta, które jest poprawna, takie jak numer telefonu nie zostanie zweryfikowana, nawet jeśli ich nie została zweryfikowana ten numer telefonu, mogą nadal używać go do zresetowania swojego hasła.
-     >
 
 ## <a name="next-steps"></a>Kolejne kroki
 

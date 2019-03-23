@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 21d8f6a3b10de17172ff59463cca4162585fe40f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d516cee81aef66ec58399cb5ff23c89db16bf2ab
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858994"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350440"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testowanie i ponowne szkolenie modelu z usługi Custom Vision Service
 
@@ -35,7 +35,7 @@ Obraz, który wybierzesz pojawia się w środku strony. Następnie wyniki są wy
 
 Możesz teraz dodać ten obraz testowy do modelu, a następnie ponowne szkolenie modelu.
 
-## <a name="use-the-predicted-image-for-training"></a>Przewidywane obrazu można użyć do trenowania.
+## <a name="use-the-predicted-image-for-training"></a>Korzystanie z obrazu przewidywane potrzeby szkolenia
 
 Aby użyć obrazu przesłane wcześniej, szkolenia, użyj następujących czynności:
 

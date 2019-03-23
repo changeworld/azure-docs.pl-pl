@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f8fd3cdcf73749d787fc6f1c2222946961091f80
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6c57367a3a11aeb5bdded8e19ce57b7e265aeea9
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849843"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369245"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell
 
-Usługa Azure Storage udostępnia rozszerzenia dla wiersza polecenia platformy Azure i programu PowerShell, które umożliwiają użytkownikowi Zaloguj się i uruchamianie poleceń skryptu z tożsamością usługi Azure Active Directory (Azure AD). Tożsamość usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być [tożsamości zarządzanej dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Możesz przypisywać uprawnienia dostępu do zasobów magazynu tożsamości usługi Azure AD za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat ról RBAC w usłudze Azure Storage, zobacz [Zarządzaj prawa dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+Usługa Azure Storage udostępnia rozszerzenia dla wiersza polecenia platformy Azure i programu PowerShell, które umożliwiają użytkownikowi Zaloguj, a następnie uruchom polecenia skryptu z tożsamością usługi Azure Active Directory (Azure AD). Tożsamość usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być [tożsamości zarządzanej dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md). Możesz przypisywać uprawnienia dostępu do zasobów magazynu tożsamości usługi Azure AD za pomocą kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat ról RBAC w usłudze Azure Storage, zobacz [Zarządzaj prawa dostępu do danych usługi Azure Storage za pomocą funkcji RBAC](storage-auth-aad-rbac.md).
 
 Po zalogowaniu do wiersza polecenia platformy Azure lub programu PowerShell przy użyciu tożsamości usługi Azure AD, token dostępu jest zwracany do uzyskiwania dostępu do usługi Azure Storage w ramach tej tożsamości. Ten token jest następnie automatycznie używany przez interfejs wiersza polecenia lub programu PowerShell można autoryzować operacji dotyczących usługi Azure Storage. Dla obsługiwanych operacji nie trzeba przekazać klucz konta lub token sygnatury dostępu Współdzielonego za pomocą polecenia.
 
 ## <a name="supported-operations"></a>Obsługiwane operacje
 
-Rozszerzenia są obsługiwane operacje na kontenerach i kolejek. Jakie operacje może wywołać zależy od uprawnienia udzielone do tożsamości usługi Azure AD za pomocą którego możesz Zaloguj się do wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów usługi Azure Storage lub kolejki są przypisywane przy użyciu kontroli dostępu opartej na rolach (RBAC). Na przykład jeśli rola czytnik danych jest przypisany do odpowiedniej tożsamości, następnie można uruchomić poleceń skryptu, które odczytują dane z kontenera lub kolejki. Jeśli rola Współautor Data jest przypisany do odpowiedniej tożsamości, można uruchomić poleceń skryptu, które odczytu, zapisu lub usuwania kontenera lub kolejki lub danych, które zawierają. 
+Rozszerzenia są obsługiwane operacje na kontenerach i kolejek. Jakie operacje może wywołać zależy od uprawnienia udzielone do tożsamości usługi Azure AD za pomocą którego logowania się do wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów usługi Azure Storage lub kolejki są przypisywane przy użyciu kontroli dostępu opartej na rolach (RBAC). Na przykład jeśli rola czytnik danych jest przypisany do odpowiedniej tożsamości, następnie można uruchomić poleceń skryptu, które odczytują dane z kontenera lub kolejki. Jeśli rola Współautor Data jest przypisany do odpowiedniej tożsamości, można uruchomić poleceń skryptu, które odczytu, zapisu lub usuwania kontenera lub kolejki lub danych, które zawierają. 
 
 Aby uzyskać szczegółowe informacje o uprawnieniach wymaganych dla każdej operacji magazynu platformy Azure, kontenera lub kolejki, zobacz [uprawnień do wywoływania operacji REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 
@@ -61,10 +61,10 @@ Poniższy przykład pokazuje, jak utworzyć kontener w nowe konto magazynu z wie
         --encryption-services blob
     ```
     
-1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielać dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielać dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
-    > W trakcie okresu zapoznawczego obsługę usługi Azure AD dla kolejek i obiektów blob przypisania ról RBAC może potrwać do 5 minut na propagację.
+    > Przypisania ról RBAC może potrwać kilka minut na propagację.
     
 1. Wywołaj [utworzyć kontenera magazynu az](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) polecenia `--auth-mode` parametr `login` do utworzenia kontenera przy użyciu poświadczeń usługi Azure AD:
 
@@ -114,10 +114,10 @@ Poniższy przykład przedstawia sposób tworzenia kontenera na nowym koncie maga
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielać dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)](storage-auth-aad-rbac.md).
+1. Przed utworzeniem kontenera, Przypisz [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) roli do siebie. Nawet jeśli jesteś właścicielem konta, konieczne jest jawne uprawnienia do wykonywania operacji na danych na koncie magazynu. Aby uzyskać więcej informacji na temat przypisywania ról RBAC, zobacz [udzielać dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
-    > W trakcie okresu zapoznawczego obsługę usługi Azure AD dla kolejek i obiektów blob przypisania ról RBAC może potrwać do 5 minut na propagację.
+    > Przypisania ról RBAC może potrwać kilka minut na propagację.
 
 1. Utwórz kontener, wywołując [New AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer). Ponieważ to wywołanie używa kontekstu utworzony w poprzednich krokach, ten kontener jest tworzony przy użyciu poświadczeń usługi Azure AD. 
 
@@ -128,6 +128,6 @@ Poniższy przykład przedstawia sposób tworzenia kontenera na nowym koncie maga
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC (wersja zapoznawcza)](storage-auth-aad-rbac.md).
-- Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure (wersja zapoznawcza)](storage-auth-aad-msi.md).
+- Aby dowiedzieć się więcej na temat ról RBAC dla usługi Azure storage, zobacz [Zarządzaj praw dostępu do magazynu danych przy użyciu RBAC](storage-auth-aad-rbac.md).
+- Aby dowiedzieć się więcej o korzystaniu z zarządzanych tożsamości dla zasobów platformy Azure z usługą Azure Storage, zobacz [uwierzytelnienia dostępu do obiektów blob i kolejki przy użyciu platformy Azure zarządzanych tożsamości dla zasobów platformy Azure](storage-auth-aad-msi.md).
 - Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejki ze w aplikacjach pamięci masowej, zobacz [Użyj usługi Azure AD z magazynu aplikacji](storage-auth-aad-app.md).

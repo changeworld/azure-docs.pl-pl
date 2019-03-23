@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a77c6ce205c40b5814f9b26f9099d868d434d3ce
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316460"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369228"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Dostosowywanie funkcji usługi Azure AD dla samoobsługowego resetowania haseł
 
@@ -26,12 +26,12 @@ Informatycy, którzy mają zostać wdrożone samoobsługowego resetowania haseł
 
 Nawet jeśli nie włączono funkcji samoobsługowego resetowania HASEŁ, użytkownicy nadal mają link "Skontaktuj się z administratorem" hasła portal resetowania. Jeśli użytkownik wybierze ten link go albo:
 
-   * Wysłanie wiadomości e-mail administratorów i pyta, aby uzyskać pomoc podczas zmieniania hasła użytkownika.
-   * Wysyła użytkowników do adresu URL, który należy określić w celu uzyskania pomocy.
+* Wysłanie wiadomości e-mail administratorów i pyta, aby uzyskać pomoc podczas zmieniania hasła użytkownika.
+* Wysyła użytkowników do adresu URL, który należy określić w celu uzyskania pomocy.
 
 Zaleca się Ustaw ten kontakt na coś adres e-mail lub witrynę sieci Web, które użytkownicy już używane w przypadku pytań dotyczących pomocy technicznej.
 
-![Skontaktuj się z][Contact]
+![Przykładowe żądanie, aby zresetować wysyłanie wiadomości e-mail do administratora][Contact]
 
 Kontaktowy adres e-mail są wysyłane do następujących adresatów w następującej kolejności:
 
@@ -68,8 +68,8 @@ Grafiki, które wybierzesz są wyświetlane w następujących okolicznościach:
 
 * Po użytkownik musi wprowadzić swoją nazwę użytkownika
 * Jeśli użytkownik uzyskuje dostęp do dostosowany adres URL:
-    * Przekazując `whr` parametr hasła resetowania strony, takie jak `https://login.microsoftonline.com/?whr=contoso.com`
-    * Przekazując `username` parametr hasła resetowania strony, takie jak `https://login.microsoftonline.com/?username=admin@contoso.com`
+   * Przekazując `whr` parametr hasła resetowania strony, takie jak `https://login.microsoftonline.com/?whr=contoso.com`
+   * Przekazując `username` parametr hasła resetowania strony, takie jak `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 Informacje dotyczące sposobu konfigurowania firmowe w artykule [dodać znakowanie firmowe do strony logowania w usłudze Azure AD](../fundamentals/customize-branding.md).
 

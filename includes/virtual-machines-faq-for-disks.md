@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 03e10497b033fc3d97fde4cd524b358c05fdc943
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 94893a5b5716c9bd207ad2a8bc8ca457974dddd4
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57457912"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395511"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -105,7 +105,7 @@ Tak, dyski zarządzane i niezarządzane są obsługiwane. Zaleca się, że korzy
 
 Nie.
 
-**Jeśli I Utwórz dysk 128 GB, a dopiero potem zwiększyć jej rozmiar na 130 GiB, czy opłata dalej rozmiar dysku (256 GiB)?**
+**Jeśli I Utwórz dysk 128 GB, a dopiero potem zwiększyć jej rozmiar na 130 gibibajtach (GiB), czy opłata dalej rozmiar dysku (256 GiB)?**
 
 Tak.
 
@@ -115,7 +115,7 @@ Usługa Azure Managed Disks obsługuje obecnie tylko lokalnie nadmiarowy magazyn
 
 **Można zmniejszyć lub downsize Moje dyski zarządzane?**
 
-Nie. Ta funkcja nie jest obecnie obsługiwana. 
+Nie. Ta funkcja nie jest obecnie obsługiwana.
 
 **Czy można przerwać dzierżawy, na tym dysku?**
 
@@ -179,7 +179,7 @@ Tak, możesz. Zapoznaj się [przekonwertować zarządzanego usługi Azure dyski 
 -AccountType StandardSSD_LRS
 
 **Zaletą używania dysków SSD w warstwie standardowa zamiast HDD co to jest?**
-Dyski SSD w warstwie standardowa dostarczać lepsze opóźnienia spójnością, dostępnością i niezawodnością w porównaniu do dysków HDD. Obciążenia aplikacji znacznie lepsze działanie na SSD w warstwie standardowa z tego powodu. Pamiętaj, że dyski SSD w warstwie Premium są zalecanym rozwiązaniem dla większości obciążeń produkcyjnych intensywnie korzystających z operacji We/Wy. 
+Dyski SSD w warstwie standardowa dostarczać lepsze opóźnienia, spójnością, dostępnością i niezawodnością w porównaniu do dysków HDD. Obciążenia aplikacji znacznie lepsze działanie na SSD w warstwie standardowa z tego powodu. Pamiętaj, że dyski SSD w warstwie Premium są zalecanym rozwiązaniem dla większości obciążeń produkcyjnych intensywnie korzystających z operacji We/Wy.
 
 **Czy można użyć standardowych dysków SSD, jako dyski niezarządzane?**
 Nie, dyski standardowe dyski SSD są dostępne tylko jako dyski Managed Disks.
@@ -191,7 +191,7 @@ Nie, standardowe dyski SSD występuje pojedynczego wystąpienia maszyny Wirtualn
 
 **Czy istnieje dowolnego wpływ migracji na wydajność dysków zarządzanych?**
 
-Migracja dotyczy przenoszenia dysku z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, co może zająć kilka godzin, zazwyczaj mniej niż 24 godziny, w zależności od ilości danych na dyskach. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.  
+Migracja dotyczy przenoszenia dysku z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopii danych, co może zająć kilka godzin, zazwyczaj mniej niż 24 godziny, w zależności od ilości danych na dyskach. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.  
 
 **Jakie zmiany są wymagane w przypadku istniejących kopia zapasowa Azure usługi konfiguracji przed lub po migracji do usługi Managed Disks?**
 
@@ -205,7 +205,7 @@ Tak, kopie zapasowe działają bezproblemowo.
 
 Żadne zmiany nie są wymagane.
 
-**Jest automatycznej migracji istniejących skalowania maszyn wirtualnych zestawów z dysków niezarządzanych do usługi Managed Disks, które są obsługiwane?**
+**Jest automatycznej migracji skalowania maszyn wirtualnych z istniejącego zestawu z dysków niezarządzanych do usługi Managed Disks, które są obsługiwane?**
 
 Nie. Można utworzyć nowego zestawu skalowania z przy użyciu obrazu z swoje stare zestawu skalowania przy użyciu dysków niezarządzanych dysków Managed Disks.
 
@@ -300,7 +300,7 @@ Nie ma żadnych wadą wykorzystania PRZYCINANIEM na dyskach platformy Azure w we
 
 **Co to jest największy rozmiar dysku zarządzanego, obsługiwane w przypadku systemu operacyjnego i dysków z danymi?**
 
-Typ partycji, które platforma Azure obsługuje dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). MBR format obsługuje maksymalnie 2 TiB rozmiaru dysku. Największy rozmiar, jak platforma Azure obsługuje dla dysku systemu operacyjnego jest 2 TiB. Platforma Azure obsługuje maksymalnie 32 TiB dysków zarządzanych danych. Zarządzanych dysków o rozmiarach większych niż 4 TiB są w wersji zapoznawczej. Aby uzyskać więcej informacji na temat ich Zobacz nasze [wpis w blogu](https://aka.ms/azure-large-disk-32TB-preview-blog).
+Typ partycji, które platforma Azure obsługuje dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). MBR format obsługuje maksymalnie 2 TiB rozmiaru dysku. Największy rozmiar, jak platforma Azure obsługuje dla dysku systemu operacyjnego jest 2 TiB. Platforma Azure obsługuje maksymalnie 32 TiB dysków zarządzanych danych. Zarządzanych dysków o rozmiarach większych niż 4 TiB są w wersji zapoznawczej. Aby uzyskać więcej informacji na temat ich, zobacz nasze [wpis w blogu](https://aka.ms/azure-large-disk-32TB-preview-blog).
 
 **Co to jest największy rozmiar dysku niezarządzanego, obsługiwane w przypadku systemu operacyjnego i dysków z danymi?**
 
@@ -333,25 +333,29 @@ Istniejące premium małe dyski mniejsze niż 64 GiB w dalszym ciągu naliczane 
 
 Można migawki małych dysków, a następnie utworzyć automatyczne przełączanie warstwy cenowej P4 lub P6, w zależności od rozmiaru aprowizowanego dysku.
 
-**Możesz zmienić rozmiar istniejących dysków zarządzanych z rozmiarów mniej niż 4 TiB do nowych rozmiarów dysków nowo wprowadzonych do 32 TiB?**
+**Można zmiany rozmiaru istniejących dysków zarządzanych z rozmiarów mniej niż 4 tebibajtów (TiB) do nowych rozmiarów dysków nowo wprowadzonych do 32 TiB?**
 
 Nowe rozmiary dysków zarządzanych, 8 TiB, 16 TiB i 32 TiB są obecnie dostępne w wersji zapoznawczej. Nie jest jeszcze obsługiwane zmiany rozmiaru istniejących dysków o rozmiarach na nowe rozmiary dysków.
 
-**Co to jest największy rozmiary dysków obsługiwanych przez usługę Azure Backup i Azure Site Recovery?**
+**Co to są największych rozmiary dysków obsługiwanych przez usługę Azure Backup i Azure Site Recovery?**
 
 Największy rozmiar dysku obsługiwane przez usługę Azure Backup i usługi Azure Site Recovery jest 4 TiB.
 
-**Co to jest zalecaną maszynę Wirtualną dla dużych rozmiarów dysków o rozmiarach (> 4TiB) dla dysków standardowych dysków Twardych i SSD w warstwie standardowa w celu osiągnięcia zoptymalizowane pod kątem operacji We/Wy i przepustowości dysku?**
+**Co to jest zalecaną maszynę Wirtualną o rozmiarach większych rozmiarów dysków (> 4 TiB) dla dysków standardowych dysków Twardych i SSD w warstwie standardowa w celu osiągnięcia zoptymalizowane pod kątem operacji We/Wy i przepustowości dysku?**
 
-Aby osiągnąć przepływność dysku SSD w warstwie standardowa i standardowych dysków Twardych dyski o dużych rozmiarach (> 4TB) ponad 500 operacji We/Wy i 60 MiB/s, należy użyć jednego z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: Seria B, seria DSv2 serii Dsv3, serii ESv3 serii Fs, Fsv2 serii serii M serii GS serią NCv2, seria NCv3 lub maszyny wirtualne z serii Ls.
+Aby osiągnąć przepływność dysku SSD w warstwie standardowa i standardowych dysków Twardych dyski o dużych rozmiarach (> 4 TiB) ponad 500 operacji We/Wy i 60 MiB/s, zaleca się wdrożyć nową maszynę Wirtualną z jednej z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: Seria B, seria DSv2 serii Dsv3, serii ESv3 serii Fs, Fsv2 serii serii M serii GS serią NCv2, seria NCv3 lub maszyny wirtualne z serii Ls. Dołączanie dużych dysków do istniejących maszyn wirtualnych lub maszyn wirtualnych, które nie korzystają z zalecanych rozmiarów powyżej może wystąpić obniżenie wydajności.
 
-**Jakie regiony są większe niż 4 TiB obsługiwane w rozmiary dysków zarządzanych?**
+**Jak uaktualnić Moje dyski (> 4 TiB) które zostały wdrożone zapoznawczej większe rozmiary dysków w celu uzyskania wyższej operacje We/Wy i przepustowości w wersji ogólnie dostępnej?**
 
-Rozmiary dysków zarządzanych, ponad 4 TiB w wersji zapoznawczej są obsługiwane we wszystkich regionach platformy Azure w środowisku produkcyjnym, z wyjątkiem klientów rządowych, Chinach i Niemczech. 
+Można zatrzymać i uruchomić maszynę Wirtualną, która dysk jest podłączony do lub, odłącz i ponownie podłącz dysk. Elementy docelowe wydajności większe rozmiary dysków zostały zwiększone zarówno dla dysków SSD w warstwie premium i standardowa dysków SSD na zasadach dostępności ogólnej
 
-**Czy firma Microsoft obsługuje włączenie buforowania hosta na nowsze rozmiary dysków**
+**Jakie regiony są rozmiary dysków zarządzanych, 8 TiB, 16 TiB i 32 TiB obsługiwane w?**
 
-Obsługujemy na rozmiary dysków mniejszą niż 4TiB hosta pamięci podręcznej z tylko do odczytu/zapisu i odczytu. W przypadku rozmiarów dysków więcej niż 4 TiB nie obsługujemy ustawiania opcji innych niż Brak buforowania. Firma Microsoft zaleca korzystanie z buforowania dla mniejsze rozmiary dysków, w których można oczekiwać, że do obserwowania lepsze zwiększeniu wydajności przy użyciu danych z pamięci podręcznej do maszyny Wirtualnej.
+8 TiB 16 TiB, 32 TiB dysków jednostek SKU i są obsługiwane we wszystkich regionach w ramach globalnej platformy Azure. Obsługa platformy Microsoft Azure Government i platformy Azure China 21Vianet nie jest jeszcze dostępna.
+
+**Czy firma Microsoft obsługuje włączenie buforowania hosta na wszystkie rozmiary dysków**
+
+Firma Microsoft obsługuje hosta pamięci podręcznej z tylko do odczytu/zapisu i odczytu na rozmiary dysków mniej niż 4 TiB. W przypadku rozmiarów dysków więcej niż 4 TiB nie obsługujemy ustawiania opcji innych niż Brak buforowania. Firma Microsoft zaleca korzystanie z buforowania dla mniejsze rozmiary dysków, w których można oczekiwać, że do obserwowania lepsze zwiększeniu wydajności przy użyciu danych z pamięci podręcznej do maszyny Wirtualnej.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli moje pytanie nie ma tutaj odpowiedzi?
 

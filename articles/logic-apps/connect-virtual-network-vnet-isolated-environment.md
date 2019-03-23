@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 8bbbe7a924c98c9628ce967892177599a1d13017
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cb3abff10482ec7e58b4b049f051e99178cb742
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854997"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371990"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
@@ -46,7 +46,14 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 
 * [Sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli nie masz sieci wirtualnej, Dowiedz się, jak [tworzenie sieci wirtualnej platformy Azure](../virtual-network/quick-create-portal.md). 
 
-  * Twoja sieć wirtualna musi mieć cztery *pusty* podsieci w celu wdrażania i tworzenia zasobów w Twojej ISE. Te podsieci można utworzyć wcześniej lub możesz poczekać do czasu utworzenia Twojego środowiska ISE, gdzie można utworzyć podsieci, w tym samym czasie. Dowiedz się więcej o [wymagania podsieci](#create-subnet).
+  * Twoja sieć wirtualna musi mieć cztery *pusty* podsieci w celu wdrażania i tworzenia zasobów w Twojej ISE. Te podsieci można utworzyć wcześniej lub możesz poczekać do czasu utworzenia Twojego środowiska ISE, gdzie można utworzyć podsieci, w tym samym czasie. Dowiedz się więcej o [wymagania podsieci](#create-subnet). 
+  
+    > [!NOTE]
+    > Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), zapewniającą prywatnego połączenia z usługami w chmurze firmy Microsoft, należy najpierw [Dodaj następujące trasy do każdej podsieci](../virtual-network/virtual-network-manage-subnet.md) używane przez usługi platformy ISE. Jeśli używasz tabeli tras podsieci, [dodać następującą trasę do tabeli tras](../virtual-network/manage-route-table.md):
+    > 
+    > **Nazwa**: D3655BASE-route<br>
+    > **Prefiks adresu**: 0.0.0.0/0<br>
+    > **Dla następnego przeskoku**: Internet
 
   * Upewnij się, że Twoja sieć wirtualna [udostępnia te porty](#ports) swoje ISE działa poprawnie i pozostaje dostępna.
 
@@ -138,6 +145,12 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
      * `10.0.0.0/28` ma tylko 16 adresów i jest za mały, ponieważ 2<sup>(32-28)</sup> 2<sup>4</sup> lub 16.
 
      Aby dowiedzieć się więcej na temat obliczania adresów, zobacz [bloków IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
+
+   * Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), pamiętaj, aby [Dodaj następujące trasy do każdej podsieci](../virtual-network/virtual-network-manage-subnet.md) używane przez usługi platformy ISE. Jeśli używasz tabeli tras podsieci, [Dodaj następujące trasy do tej tabeli tras](../virtual-network/manage-route-table.md):
+
+     **Nazwa**: D3655BASE-route<br>
+     **Prefiks adresu**: 0.0.0.0/0<br>
+     **Dla następnego przeskoku**: Internet
 
    1. W obszarze **podsieci** wybierz **konfigurację podsieci Zarządzaj**.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f88a560d4fa819a055534530ddc0862e4aa330fe
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004951"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351885"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Rozwiązywanie problemów z end-to-end, przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -29,12 +29,12 @@ Ten samouczek zawiera praktyczne eksploracji rozwiązywaniu end-to-end. Aby uzys
 Rozwiązywać problemy z aplikacji klienckich za pomocą usługi Microsoft Azure Storage, różnych narzędzi służy do określenia, kiedy wystąpił problem, i co może być przyczyną tego problemu. Do tych narzędzi należą:
 
 * **Usługa Azure Storage Analytics**. [Analizy usługi Azure Storage](/rest/api/storageservices/Storage-Analytics) udostępnia metryki i rejestrowanie dla usługi Azure Storage.
-  
+
   * **Metryki magazynu** śledzenie metryk transakcji i metryki pojemności konta magazynu. Przy użyciu metryk, należy określić, jak aplikacja działa zgodnie z szeregu różnych miar. Zobacz [schemat tabeli metryk usługi Analytics magazynu](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) Aby uzyskać więcej informacji o typach metryki śledzone przez analityka magazynu.
   * **Rejestrowanie magazynu** rejestruje każdego żądania do usługi Azure Storage do dziennika po stronie serwera. Dziennik śledzenia szczegółowe dane dla każdego żądania, w tym operacji wykonywanych, stan operacji, a informacje o opóźnieniu. Zobacz [Format dziennika analizy magazynu](/rest/api/storageservices/Storage-Analytics-Log-Format) Aby uzyskać więcej informacji na temat danych żądań i odpowiedzi, które są zapisywane w dziennikach przez analityka magazynu.
 
 * **Witryna Azure portal**. Rejestrowanie i metryki można skonfigurować dla konta magazynu w [witryny Azure portal](https://portal.azure.com). Można również wyświetlać wykresy i diagramy, które pokazują, jak działa aplikacja wraz z upływem czasu i Konfigurowanie alertów, aby otrzymywać powiadomienia, jeśli Twoja aplikacja działa inaczej niż oczekiwano dla określonej metryki.
-  
+
     Zobacz [monitorowania na koncie magazynu w witrynie Azure portal](storage-monitor-storage-account.md) informacji o konfigurowaniu monitorowania w witrynie Azure portal.
 * **AzCopy**. Dzienniki serwera usługi Azure Storage są przechowywane jako obiekty BLOB, aby można było używać narzędzia AzCopy do kopiowania obiektów blob dziennika do katalogu lokalnego do analizy przy użyciu programu Microsoft Message Analyzer. Zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md) Aby uzyskać więcej informacji na temat narzędzia AzCopy.
 * **Narzędzie Microsoft Message Analyzer**. Message Analyzer jest narzędziem, które korzysta z plików dziennika i wyświetla dane dzienników w formacie wizualny, który ułatwia filter, search i dane dziennika dla grupy w zestawach użyteczne, służących do analizowania błędów i problemów z wydajnością. Zobacz [komunikatów analizatora działających w Przewodniku dotyczącym Microsoft](https://technet.microsoft.com/library/jj649776.aspx) Aby uzyskać więcej informacji na temat analizatora komunikatów.
@@ -79,51 +79,7 @@ W tym samouczku użyjemy analizatora komunikatów do pracy z trzech różnych ty
 * **Dziennika śledzenia sieci HTTP**, który zbiera dane na danych żądań i odpowiedzi HTTP/HTTPS, w tym dla operacji w ramach usługi Azure Storage. W tym samouczku polega na wygenerowaniu śledzenia sieci za pomocą analizatora komunikatów.
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Konfigurowanie metryk i rejestrowania po stronie serwera
-Najpierw musimy skonfigurować rejestrowanie usługi Azure Storage i metryki, tak, że mamy dane od aplikacji klienckiej do analizy. Rejestrowanie i metryki w na różne sposoby — można skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), przy użyciu programu PowerShell, lub programowo. Zobacz [Włączanie metryk usługi Storage i wyświetlanie danych metryk](https://msdn.microsoft.com/library/azure/dn782843.aspx) i [uzyskiwania dostępu do danych dzienników i włączanie rejestrowania magazynu](https://msdn.microsoft.com/library/azure/dn782840.aspx) w witrynie MSDN, aby uzyskać szczegółowe informacje o konfigurowaniu rejestrowanie i metryki.
-
-**W witrynie Azure portal**
-
-Aby skonfigurować rejestrowanie i metryki do obsługi magazynu konta przy użyciu [witryny Azure portal](https://portal.azure.com), postępuj zgodnie z instrukcjami w artykule [monitorowania na koncie magazynu w witrynie Azure portal](storage-monitor-storage-account.md).
-
-> [!NOTE]
-> Nie jest możliwe ustawienie metryki minut przy użyciu witryny Azure portal. Jednak zaleca się, że zostaną ustawione na potrzeby tego samouczka i badania problemów z wydajnością za pomocą aplikacji. Możesz ustawić metryki minut przy użyciu programu PowerShell, jak pokazano poniżej, lub programowo przy użyciu biblioteki klienta usługi storage.
-> 
-> Należy pamiętać, że witryny Azure portal nie można wyświetlić metryki minut tylko godzinowe metryki.
-> 
-> 
-
-**Via PowerShell**
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Aby rozpocząć pracę przy użyciu programu PowerShell dla platformy Azure, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
-
-1. Użyj [AzAccount Dodaj](/powershell/module/servicemanagement/azure/add-azureaccount) polecenia cmdlet, aby dodać konto użytkownika usługi Azure do okna programu PowerShell:
-   
-    ```powershell
-    Add-AzAccount
-    ```
-
-2. W **Zaloguj się w usłudze Microsoft Azure** okna, wpisz adres e-mail i hasło skojarzone z Twoim kontem. Nastąpi uwierzytelnienie i zapisanie informacji o poświadczeniach na platformie Azure, a następnie zamknięcie okna.
-3. Ustaw domyślne konto magazynu na konto magazynu, którego używasz dla tego samouczka, wykonując następujące polecenia w oknie programu PowerShell:
-   
-    ```powershell
-    $SubscriptionName = 'Your subscription name'
-    $StorageAccountName = 'yourstorageaccount'
-    Set-AzSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
-    ```
-
-4. Włącz rejestrowanie danych magazynu dla usługi Blob:
-   
-    ```powershell
-    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
-    ```
-
-5. Włączanie metryk usługi storage dla usługi Blob, upewniając się ustawić **- MetricsType** do `Minute`:
-   
-    ```powershell
-    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
-    ```
+Najpierw musimy skonfigurować rejestrowanie usługi Azure Storage i metryki, więc, że mamy dane ze strony usługi do analizy. Rejestrowanie i metryki w na różne sposoby — można skonfigurować za pomocą [witryny Azure portal](https://portal.azure.com), przy użyciu programu PowerShell, lub programowo. Zobacz [włączyć metryki](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal) i [włączyć rejestrowanie](storage-analytics-logging.md#enable-storage-logging) szczegółowe informacje na temat konfigurowania, rejestrowanie i metryki.
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurowanie rejestrowania po stronie klienta platformy .NET
 Aby skonfigurować rejestrowanie po stronie klienta dla aplikacji platformy .NET, Włącz diagnostykę platformy .NET w pliku konfiguracyjnym aplikacji (web.config lub app.config). Zobacz [klienta rejestrowanie za pomocą biblioteki klienckiej magazynu .NET](https://msdn.microsoft.com/library/azure/dn782839.aspx) i [klienta rejestrowanie za pomocą zestawu Microsoft Azure Storage SDK dla języka Java](https://msdn.microsoft.com/library/azure/dn782844.aspx) w witrynie MSDN, aby uzyskać szczegółowe informacje.
@@ -159,8 +115,8 @@ Samouczek Zbieraj najpierw zapisać w analizatora komunikatów śledzenia sieci,
 
 > [!NOTE]
 > Po zakończeniu zbierania ślad sieci zdecydowanie zaleca się przywrócenie ustawień, które być może zmieniono w narzędziu Fiddler do odszyfrowywania ruchu HTTPS. W oknie dialogowym Opcje programu Fiddler, usuń zaznaczenie opcji **nawiązuje połączenie z protokołu HTTPS przechwytywania** i **odszyfrować ruch HTTPS** pola wyboru.
-> 
-> 
+>
+>
 
 Zobacz [korzystanie z funkcji śledzenia sieci](https://technet.microsoft.com/library/jj674819.aspx) w witrynie Technet, aby uzyskać więcej informacji.
 
@@ -175,8 +131,8 @@ Aby uzyskać szczegółowe informacje na temat dodawania i dostosowywanie wykres
 
 > [!NOTE]
 > Może potrwać kilka danych metryki są wyświetlane w witrynie Azure portal, po włączeniu metryk usługi storage. Jest to spowodowane godzinowe metryki dla poprzedniej godziny nie są wyświetlane w witrynie Azure portal, dopóki nie upłynie bieżącej godziny. Ponadto metryki minut nie są obecnie wyświetlane w witrynie Azure portal. Dlatego zależnie od tego, po włączeniu metryki, może potrwać do dwóch godzin, aby wyświetlić dane metryk.
-> 
-> 
+>
+>
 
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Kopiowanie dzienników serwera do katalogu lokalnego za pomocą narzędzia AzCopy
 Usługa Azure Storage zapisuje dane dziennika serwera obiektów blob, a metryki są zapisywane w tabelach. Obiekty BLOB dziennika są dostępne w dobrze znanych `$logs` kontenera konta magazynu. Obiekty BLOB dziennika są nazywane hierarchicznie przez rok, miesiąc, dzień i godzinę, dzięki czemu można łatwo zlokalizować przedział czasu, który chcesz zbadać. Na przykład w `storagesample` konto, kontener obiektów blob dziennika dla 01/02/2015, od 8 do 9 am, `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Poszczególne obiekty BLOB w tym kontenerze są nazywane kolejno, począwszy od `000000.log`.
@@ -211,8 +167,8 @@ Analizator komunikatów obejmuje zasoby dla usługi Azure Storage, które ułatw
 
 > [!NOTE]
 > Zainstaluj wszystkie zasoby usługi Azure Storage wyświetlana na potrzeby tego samouczka.
-> 
-> 
+>
+>
 
 ### <a name="import-your-log-files-into-message-analyzer"></a>Importowanie plików dzienników do analizatora komunikatów
 Możesz zaimportować wszystkie zapisane pliki dziennika (po stronie serwera, klienta i sieci) w jednej sesji w Microsoft Message Analyzer do analizy.
@@ -255,8 +211,8 @@ Obraz poniżej przedstawia ten widok układu stosowane do przykładowych danych 
 
 > [!NOTE]
 > Pliki dziennika mają różne kolumny, więc gdy dane z wielu plików dziennika jest wyświetlana w siatce analizy, niektóre kolumny nie może zawierać żadnych danych dla danego wiersza. Na przykład na powyższym rysunku wierszy dziennika klienta są wyświetlane wszystkie dane dla **sygnatura czasowa**, **TimeElapsed**, **źródła**, i **docelowy**kolumn, ponieważ te kolumny nie istnieją w dzienniku klienta, ale istnieje w śledzenia sieci. Podobnie **sygnatura czasowa** kolumna zawiera znacznik czasu: dane z dziennika serwera, ale nie zostaną wyświetlone dane dla **TimeElapsed**, **źródła**, i  **Miejsce docelowe** kolumn, które nie są częścią dziennika serwera.
-> 
-> 
+>
+>
 
 Oprócz używania usługi Azure Storage układów widoku, można także definiować i Zapisz układów widoku. Można wybrać inne żądane pola do grupowania danych i zapisać grupowanie jako część Twojego niestandardowe układy.
 
@@ -289,12 +245,12 @@ Po zastosowaniu tego filtru, zobaczysz, że wiersze z dziennika klienta są wył
 
 > [!NOTE]
 > Można filtrować według **StatusCode** kolumny, a jeszcze wyświetlania danych z wszystkich trzech dzienników, w tym dziennika klienta, jeśli wyrażenie jest dodawane do filtru, który zawiera wpisy dziennika, w którym kod stanu: ma wartość null. Do utworzenia tego wyrażenia filtru, należy użyć:
-> 
+>
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
-> 
+>
 > Ten filtr zwraca wszystkie wiersze z klienta dziennika i tylko wiersze z dziennik server i dziennik HTTP których kod stanu jest większa niż 400. Jeśli zastosujesz układ widoku, pogrupowane według Identyfikatora żądania klienta i moduł możesz wyszukiwać i przewiń za pośrednictwem wpisy dziennika, aby znaleźć te, gdzie znajdują się wszystkie trzy dzienniki.   
-> 
-> 
+>
+>
 
 ### <a name="filter-log-data-to-find-404-errors"></a>Filtruj dane dziennika, aby znaleźć błędy 404
 Zasoby magazynu obejmują wstępnie zdefiniowane filtry, które można wykorzystać do zawężenia dane dziennika, aby znaleźć błędy lub trendy, którego szukasz. Następnie będzie Zastosuj dwa wstępnie zdefiniowane filtry: jeden, który filtruje server i dzienniki śledzenia sieci dla błędów 404 oraz jedną, która filtruje dane dotyczące określonego przedziału czasu.

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d433a480165424e47d4d84e67e7fd02648ebe2d1
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: f9df65d143fbb0eaf6276a0f38971e19c0741786
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223431"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370962"
 ---
-# <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Łączenie komputerów Windows do usługi Log Analytics na platformie Azure
+# <a name="connect-windows-computers-to-azure-monitor"></a>Łączenie komputerów Windows z usługą Azure Monitor
 
-Aby monitorować i zarządzać maszyn wirtualnych lub fizycznych komputerów w lokalnym centrum danych lub w innym środowisku chmury, za pomocą usługi Log Analytics, należy wdrożyć agenta Log Analytics (nazywane także jako Microsoft Monitoring Agent (MMA)) i skonfigurować go do raporty do jednego lub więcej obszarów roboczych usługi Log Analytics. Agent obsługuje również roli hybrydowego procesu roboczego Runbook usługi Azure Automation.  
+Aby monitorować i zarządzać maszyn wirtualnych lub fizycznych komputerów w lokalnym centrum danych lub w innym środowisku chmury dzięki usłudze Azure Monitor, należy wdrożyć agenta Log Analytics (nazywane także jako Microsoft Monitoring Agent (MMA)) i skonfigurować go do raporty do jednego lub więcej obszarów roboczych usługi Log Analytics. Agent obsługuje również roli hybrydowego procesu roboczego Runbook usługi Azure Automation.  
 
-Na monitorowanym komputerze Windows agent jest wyświetlany jako usługa Microsoft Monitoring Agent. Usługa Microsoft Monitoring Agent zbiera dane zdarzeń z plików dziennika i Windows dziennika zdarzeń, dane dotyczące wydajności i inną telemetrią. Nawet wtedy, gdy agent nie może komunikować się z usługą Log Analytics, którego wysyła raporty, agent będzie nadal działać i umieszcza w kolejce zebranych danych na dysku monitorowanego komputera. Po przywróceniu połączenia usługa Microsoft Monitoring Agent wysyła zebrane dane do usługi.
+Na monitorowanym komputerze Windows agent jest wyświetlany jako usługa Microsoft Monitoring Agent. Usługa Microsoft Monitoring Agent zbiera dane zdarzeń z plików dziennika i Windows dziennika zdarzeń, dane dotyczące wydajności i inną telemetrią. Nawet wtedy, gdy agent nie może komunikować się z usługą Azure Monitor wysyła raporty, agent będzie nadal działać i umieszcza w kolejce zebranych danych na dysku monitorowanego komputera. Po przywróceniu połączenia usługa Microsoft Monitoring Agent wysyła zebrane dane do usługi.
 
 Agenta można zainstalować przy użyciu jednej z następujących metod. Większości instalacji jest używana kombinacja tych metod w celu zainstalowania różnych zestawów komputerów, zgodnie z potrzebami.  Szczegółowe informacje na temat korzystania z poszczególnych metod znajdują się w dalszej części tego artykułu.
 
@@ -40,7 +40,7 @@ Agenta można zainstalować przy użyciu jednej z następujących metod. Większ
 Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwanych systemów operacyjnych Windows](log-analytics-agent.md#supported-windows-operating-systems) oraz [konfiguracji zapory sieciowej](log-analytics-agent.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Uzyskiwanie identyfikatora i klucza obszaru roboczego
-Przed zainstalowaniem agenta usługi Log Analytics dla Windows, potrzebne są identyfikator obszaru roboczego i klucz obszaru roboczego usługi Log Analytics.  Te informacje są wymagane podczas instalacji z poszczególnych metod instalacji w celu poprawnego skonfigurowania agenta i upewnij się, że może się skutecznie komunikować z usługi Log Analytics na platformie Azure komercyjnych i w chmurze dla instytucji rządowych USA.  
+Przed zainstalowaniem agenta usługi Log Analytics dla Windows, potrzebne są identyfikator obszaru roboczego i klucz obszaru roboczego usługi Log Analytics.  Te informacje są wymagane podczas instalacji z poszczególnych metod instalacji w celu poprawnego skonfigurowania agenta i upewnij się, że może się skutecznie komunikować z usługi Azure Monitor na platformie Azure komercyjnych i w chmurze dla instytucji rządowych USA.  
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. Na liście obszarów roboczych usługi Log Analytics wybierz obszar roboczy, którego zamierzasz na skonfigurowanie agenta raportowania do.
@@ -184,15 +184,14 @@ Po zakończeniu instalacji agenta zweryfikowaniem jej został pomyślnie połąc
 
 Z komputera w **Panelu sterowania**, Znajdź element **Microsoft Monitoring Agent**.  Zaznacz go i **usługi Azure Log Analytics** karcie agent powinien być wyświetlany komunikat z informacją: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite.**<br><br> ![Stan połączenia programu MMA z usługą Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
-Wyszukiwanie w dzienniku proste można również wykonać w witrynie Azure portal.  
+Można również wykonać zapytanie dziennika proste w witrynie Azure portal.  
 
-1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.  
-2. Na stronie obszaru roboczego usługi Log Analytics wybierz docelowy obszar roboczy, a następnie wybierz **wyszukiwanie w dzienniku** kafelka. 
-2. W okienku przeszukiwanie dzienników w polu zapytania wpisz:  
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **usługi Azure Monitor**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **usługa Azure Monitor**.  
+2. Wybierz **dzienniki** w menu. 
+2. W okienku dzienników w polu zapytania wpisz:  
 
     ```
-    search * 
-    | where Type == "Heartbeat" 
+    Heartbeat 
     | where Category == "Direct Agent" 
     | where TimeGenerated > ago(30m)  
     ```

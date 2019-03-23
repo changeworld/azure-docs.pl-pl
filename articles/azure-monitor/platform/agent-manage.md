@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 963fd1bfd67a20033f0712d3b447091abda40d11
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262493"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369909"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzania i konserwacji agenta usługi Log Analytics dla Windows i Linux
 
-Po początkowym wdrożeniu agenta programu Windows lub Linux do usługi Log Analytics konieczne może być ponownie skonfigurować agenta lub usuń go z komputera, jeśli został osiągnięty na etapie wycofanie etapie jej cyklu życia. Te zadania rutynowej konserwacji umożliwia łatwe zarządzanie, ręcznie lub za pomocą automatyzacji, co zmniejsza zarówno błędu operacyjnego, jak i koszty.
+Po początkowym wdrożeniu programu Windows Analytics dziennika lub agenta systemu Linux w usłudze Azure Monitor konieczne może być ponownie skonfigurować agenta, lub usuń go z komputera, jeśli został osiągnięty na etapie wycofanie etapie jej cyklu życia. Te zadania rutynowej konserwacji umożliwia łatwe zarządzanie, ręcznie lub za pomocą automatyzacji, co zmniejsza zarówno błędu operacyjnego, jak i koszty.
 
 ## <a name="adding-or-removing-a-workspace"></a>Dodawanie lub usuwanie obszaru roboczego
 
@@ -115,7 +115,7 @@ Aby skonfigurować agenta do komunikowania się z usługą za pośrednictwem ser
 
 #### <a name="update-settings-using-powershell"></a>Ustawienia aktualizacji przy użyciu programu PowerShell
 
-Skopiuj następujący przykładowy kod programu PowerShell, zaktualizuj go informacjami specyficznymi dla środowiska i zapisz go z rozszerzeniem nazwy pliku PS1. Uruchom skrypt na każdym komputerze, który łączy się bezpośrednio z usługi Log Analytics.
+Skopiuj następujący przykładowy kod programu PowerShell, zaktualizuj go informacjami specyficznymi dla środowiska i zapisz go z rozszerzeniem nazwy pliku PS1. Uruchom skrypt na każdym komputerze, który łączy się bezpośrednio z obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.
 
 ```PowerShell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))

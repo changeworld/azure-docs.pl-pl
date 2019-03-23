@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 34076b790a91b1c0e9d8bee224423aab0db7c8f3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6f878e05255be8f65868d8d1dcdbacb3ccfa2729
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891811"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369942"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Bezpieczny dostęp w usłudze Azure Logic Apps
 
@@ -34,7 +34,7 @@ Poniżej przedstawiono elementów w aplikacji logiki gdzie można zabezpieczyć 
 Gdy Twoja aplikacja logiki używa wyzwalacz na podstawie żądań HTTP, takich jak [żądania](../connectors/connectors-native-reqres.md) lub [elementu Webhook](../connectors/connectors-native-webhook.md) wyzwalacz, możesz ograniczyć dostęp, tylko autoryzowani klienci mogą uruchomić swoją aplikację logiki. Wszystkich żądań odebranych przez aplikację logiki są szyfrowane i chronione przy użyciu protokołu Secure Sockets Layer (SSL). Poniżej przedstawiono różne sposoby, można zabezpieczyć dostęp do tego typu wyzwalacza:
 
 * [Generowanie sygnatury dostępu współdzielonego](#sas)
-* [Ogranicz przychodzące adresy IP](#restrict-incoming-IP)
+* [Ogranicz przychodzące adresy IP](#restrict-incoming-ip-addresses)
 * [Dodawanie usługi Azure Active Directory, OAuth lub innych zabezpieczeń](#add-authentication)
 
 <a name="sas"></a>

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a7752fac54f9dfb2f8fb0aecd3b6249c52c3bcf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316358"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370452"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Instrukcje: Włącz Resetowanie z Windows 7, 8 i 8.1 haseł
 
@@ -46,7 +46,7 @@ Inaczej niż w przypadku maszyn z systemem Windows 10, Windows 7, 8 i 8.1 maszyn
 1. Po ponownym uruchomieniu komputera na ekranie logowania wybrać użytkownika i kliknij przycisk "Nie pamiętasz hasła?" Aby zainicjować hasło zresetować przepływu pracy.
 1. Ukończ przepływ pracy, zgodnie z wyświetlanymi na ekranie kroki, aby zresetować hasło.
 
-![Przykład Windows 7 kliknięto "Nie pamiętasz hasła?" Samoobsługowe resetowanie haseł przepływu](media/howto-sspr-windows-7-8/windows-7-sspr.png)
+![Przykład Windows 7 kliknięto "Nie pamiętasz hasła?" Przepływu samoobsługowego resetowania HASEŁ](media/howto-sspr-windows-7-8/windows-7-sspr.png)
 
 ### <a name="silent-installation"></a>Instalacja dyskretna
 
@@ -67,13 +67,11 @@ Zarówno na komputerze, jak i w usłudze Azure AD, będą rejestrowane zdarzenia
 
 Zdarzenia usługi Azure AD zostaną wyświetlone informacje dotyczące adresu IP i typu klienta, w którym wystąpił resetowania hasła.
 
-![Przykład Windows 7 logowania ekranu resetowania hasła w w dzienniku inspekcji usługi AD platformy Azure](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
+![Przykład Windows 7 resetowania haseł w dzienniku inspekcji usługi AD platformy Azure](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
 
 Jeśli wymagane jest dodatkowe rejestrowanie, można zmienić klucza rejestru na komputerze, aby włączyć pełne rejestrowanie. Włącz pełne rejestrowanie na potrzeby tylko rozwiązywania problemów.
 
-```
-HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}
-```
+`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
 * Aby włączyć pełne rejestrowanie, należy utworzyć REG_DWORD: "EnableLogging" i ustaw ją na 1.
 * Aby wyłączyć pełne rejestrowanie, należy zmienić REG_DWORD "EnableLogging" na wartość 0.
@@ -82,4 +80,4 @@ W przypadku maszyn z systemem Windows 7, 8 i 8.1 znajdują się za serwerem prox
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Umożliwianie użytkownikom systemu Windows 10 do zresetowania swojego hasła na ekranie logowania](tutorial-sspr-windows.md)
+* [Umożliwianie użytkownikom systemu Windows 10 do zresetowania swojego hasła na ekranie logowania](tutorial-sspr-windows.md)

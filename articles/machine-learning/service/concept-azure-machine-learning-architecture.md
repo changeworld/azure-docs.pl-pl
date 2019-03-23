@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1640b1cdb9410f33f6556667f36aafcfe575a082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080326"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361102"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -70,7 +70,7 @@ Taksonomia obszaru roboczego zostało zilustrowane na poniższym diagramie:
 
 Eksperyment to zbiór wielu uruchomień z określonego skryptu. Zawsze należy do obszaru roboczego. Po przesłaniu przebiegu można podać nazwę eksperymentu. Informacje dotyczące uruchomienia są przechowywane w ramach tego eksperymentu. Jeśli przesłać przebiegu i określ nazwę eksperymentu, który nie istnieje, automatycznie zostanie utworzony nowy eksperyment o tej nazwie nowo określonego.
 
-Na przykład z użyciem eksperymentu zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md).
+Na przykład z użyciem eksperymentu zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 ## <a name="model"></a>Modelowanie
 
@@ -80,7 +80,7 @@ Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Moż
 
 Usługa Azure Machine Learning jest niezależny od framework. Podczas tworzenia modelu, używając dowolną platformę nauczania popularnych maszyn, takie jak Scikit-learn, XGBoost, PyTorch, TensorFlow, Chainer i Microsoft Cognitive Toolkit (wcześniej znanego jako CNTK).
 
-Aby uzyskać przykład uczenia modelu, zobacz [Szybki Start: Tworzenie obszaru roboczego usługi Machine Learning](quickstart-get-started.md).
+Aby uzyskać przykład uczenia modelu, zobacz [samouczka: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 ### <a name="model-registry"></a>Model rejestru
 
@@ -143,7 +143,7 @@ Aby uzyskać informacji o wybieraniu obliczeniowego elementu docelowego dla wdro
 
 Do nauczenia modelu, można określić katalog, który zawiera skrypt szkolenia i skojarzone pliki. Należy również określić nazwę eksperymentu, który jest używany do przechowywania informacji, które są zbierane podczas szkolenia. Podczas szkolenia, cały katalog jest kopiowany do treningowe (obiekt docelowy obliczeniowe) i uruchomieniu skryptu, który określono za pomocą konfiguracji uruchamiania. Migawka katalogu znajduje się również w obszarze eksperymentu, w obszarze roboczym.
 
-Aby uzyskać przykład, zobacz [Utwórz obszar roboczy za pomocą języka Python](quickstart-get-started.md).
+Przykład — patrz [Tutorial: uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 ## <a name="run"></a>Uruchom polecenie
 
@@ -156,7 +156,7 @@ Przebieg jest rekord, który zawiera następujące informacje:
 
 Uruchom zostanie wyświetlony po przesłaniu skryptu w celu nauczenia modelu. Uruchom może mieć zero lub więcej uruchomień podrzędnych. Na przykład uruchom najwyższego poziomu może mieć dwa przebiegi podrzędnych, z których każdy może mieć własne podrzędne uruchamiania.
 
-Na przykład wyświetlanie uruchomień, które są produkowane przez uczenia modelu, zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md).
+Na przykład wyświetlanie uruchomień, które są produkowane przez uczenia modelu, zobacz [Szybki Start: Wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 ## <a name="snapshot"></a>Snapshot
 
@@ -227,6 +227,6 @@ Podczas opracowywania rozwiązania do rejestrowania dowolnego metryki należy u�
 Aby rozpocząć korzystanie z usługi Azure Machine Learning, zobacz:
 
 * [Co to jest usługa Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Szybki start: Tworzenie obszaru roboczego przy użyciu języka Python](quickstart-get-started.md)
+* [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md)
 * [Samouczek: trenowanie modelu](tutorial-train-models-with-aml.md)
-* [Tworzenie obszaru roboczego przy użyciu szablonu usługi resource manager](how-to-create-workspace-template.md)
+* [Tworzenie obszaru roboczego przy użyciu szablonu usługi Resource Manager](how-to-create-workspace-template.md)

@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e30e65ba2efaf60a0e2d0a6df409c96db4d6285e
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8fa77409f1f5c32bc1e8f8644111c38f6115a92d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295814"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362054"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Samouczek: Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
 
@@ -67,22 +67,11 @@ Po wykonaniu poniższych czynności uruchom notes **tutorials/regression-part2-a
 
 ### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
 
-Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Po wykonaniu kroków, uruchom notes **tutorials/regresssion-part2-automated-ml.ipynb**.
+Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Upewnij się, że instalujesz program `matplotlib` i `automl` i `notebooks` dodatki w danym środowisku.
 
-1. Wykonaj czynności opisane w [przewodniku Szybki start dotyczącym języka Python dla usługi Azure Machine Learning](quickstart-create-workspace-with-python.md) w celu utworzenia środowiska Miniconda i obszaru roboczego.
-1. Zainstaluj dodatki `automl` i `notebooks` w swoim środowisku przy użyciu `pip install azureml-sdk[automl,notebooks]`.
-1. Zainstaluj `maplotlib` przy użyciu `pip install maplotlib`.
-1. Sklonuj [repozytorium GitHub](https://aka.ms/aml-notebooks).
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. Uruchom serwer notesów z poziomu sklonowanego katalogu.
-
-    ```shell
-    jupyter notebook
-    ```
+Po wykonaniu kroków, uruchom notes **tutorials/regresssion-part2-automated-ml.ipynb**.
 
 ## <a name="start"></a>Konfigurowanie środowiska projektowego
 

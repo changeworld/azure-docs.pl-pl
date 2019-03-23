@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 69a45a0c2c21ffafde8a4b366e1f3e90b7c8f59a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb00f6ccd22be75a235d9cd6fc174741207a76e0
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012615"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359164"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>Wykonywanie zadań Apache Pig z usługą HDInsight przy użyciu programu Azure PowerShell
 
@@ -26,6 +26,8 @@ Ten dokument zawiera przykład możliwości przesyłania zadań Apache Pig na te
 > Ten dokument zawiera szczegółowy opis działania instrukcji Pig Latin przykłady. Aby uzyskać informacje na temat Pig Latin, używany w tym przykładzie, zobacz [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md).
 
 ## <a id="prereq"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Klaster usługi Azure HDInsight**
 
@@ -40,11 +42,11 @@ Azure PowerShell udostępnia *poleceń cmdlet* umożliwiającą zdalne uruchamia
 
 Następujące polecenia cmdlet są używane podczas uruchamiania zadania Pig w zdalnym klastrze HDInsight:
 
-* **Connect-AzureRmAccount**: Uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
-* **New-AzureRmHDInsightPigJobDefinition**: Tworzy *definicji zadania* przy użyciu określonej instrukcji Pig Latin.
-* **Start-AzureRmHDInsightJob**: Wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
-* **Wait-AzureRmHDInsightJob**: Używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż zadanie zostało zakończone, lub przekroczono czas oczekiwania.
-* **Get-AzureRmHDInsightJobOutput**: Używany do pobierania danych wyjściowych zadania.
+* **Połącz AzAccount**: Uwierzytelnianie programu Azure PowerShell do subskrypcji platformy Azure.
+* **New-AzHDInsightPigJobDefinition**: Tworzy *definicji zadania* przy użyciu określonej instrukcji Pig Latin.
+* **Start-AzHDInsightJob**: Wysyła definicji zadania do HDInsight i uruchamia zadanie. A *zadania* obiekt jest zwracany.
+* **Wait-AzHDInsightJob**: Używa obiektu zadania, aby sprawdzić stan zadania. Oczekuje, aż zadanie zostało zakończone, lub przekroczono czas oczekiwania.
+* **Get-AzHDInsightJobOutput**: Używany do pobierania danych wyjściowych zadania.
 
 Poniższe kroki pokazują, jak używać tych poleceń cmdlet, aby uruchomić zadanie w klastrze usługi HDInsight.
 
@@ -76,7 +78,7 @@ Jeśli nie informacje są zwracane po zakończeniu zadania, wyświetlać dzienni
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
-    Get-AzureRmHDInsightJobOutput `
+    Get-AzHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
             -HttpCredential $creds `

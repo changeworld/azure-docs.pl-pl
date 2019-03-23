@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b433d8556377206ea53ece2764e251dcb266eb95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192357"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369143"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Dołącz swoje urządzenie pracy do sieci organizacji
 Dołączanie urządzenia należące do pracy systemu Windows 10 do sieci w organizacji, aby dostęp do zasobów z potencjalnie ograniczeniami.
@@ -26,7 +26,7 @@ Dołączanie urządzenia należące do pracy systemu Windows 10 do sieci w organ
 ## <a name="what-happens-when-you-join-your-device"></a>Co się stanie po dołączeniu do urządzenia
 Gdy dołączasz urządzenia z systemem Windows 10 do sieci w organizacji, będzie miało miejsce następujące akcje:
 
-- Rejestry Windows urządzenie z siecią organizacji, umożliwiając można dostępu do zasobów przy użyciu konta osobistego. Po zarejestrowaniu urządzenia Windows następnie łączy urządzenie z siecią, aby można było używać nazwy użytkownika i hasła w organizacji mogą się zalogować, a dostęp do zasobów z ograniczeniami.
+- Windows wykonywana jest rejestracja urządzenia do sieci w organizacji, umożliwiając dostęp do zasobów przy użyciu konta osobistego. Po zarejestrowaniu urządzenia Windows następnie łączy urządzenie z siecią, aby można było używać nazwy użytkownika i hasła w organizacji mogą się zalogować, a dostęp do zasobów z ograniczeniami.
 
 - Opcjonalnie, oparte na opcje Twojej organizacji, użytkownik może zostać poproszona o skonfigurowaną weryfikację dwuetapową, przy użyciu jednej [uwierzytelnianie wieloskładnikowe](multi-factor-authentication-end-user-first-time.md) lub [zabezpieczające](user-help-security-info-overview.md).
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388276"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369670"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Zainstalować woluminu gitRepo w usłudze Azure Container Instances
 
@@ -33,17 +33,17 @@ Podczas instalowania *gitRepo* woluminu, można ustawić trzy właściwości, ab
 | `directory` | Nie | Katalog, w którym można sklonować repozytorium. Ścieżka musi nie zawierały lub rozpoczynały się "`..`".  Jeśli określisz "`.`", repozytorium został sklonowany w katalogu woluminu. W przeciwnym razie repozytorium Git został sklonowany w podkatalogu o podanej nazwie w katalogu woluminu. |
 | `revision` | Nie | Skrót zatwierdzenia poprawki, aby sklonować. Jeśli nie zostanie podany, `HEAD` został sklonowany poprawki. |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>Wolumin instalacji gitRepo: wiersza polecenia platformy Azure
+## <a name="mount-gitrepo-volume-azure-cli"></a>Wolumin gitRepo instalacji: Interfejs wiersza polecenia platformy Azure
 
 Aby zainstalować wolumin gitRepo podczas wdrażania wystąpień kontenera za pomocą [wiersza polecenia platformy Azure](/cli/azure), dostarczają `--gitrepo-url` i `--gitrepo-mount-path` parametry [utworzyć kontener az] [ az-container-create] polecenia. Opcjonalnie można określić katalog, w obrębie woluminu, aby sklonować do (`--gitrepo-dir`) oraz skrót zatwierdzenia poprawki do sklonowania (`--gitrepo-revision`).
 
-To przykładowe polecenie klonuje [aci-helloworld] [ aci-helloworld] przykładowej aplikacji do `/mnt/aci-helloworld` w wystąpieniu kontenera:
+To przykładowe polecenie klonuje Microsoft [aci-helloworld] [ aci-helloworld] przykładowej aplikacji do `/mnt/aci-helloworld` w wystąpieniu kontenera:
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name hellogitrepo \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --dns-name-label aci-demo \
     --ports 80 \
     --gitrepo-url https://github.com/Azure-Samples/aci-helloworld \
@@ -62,13 +62,14 @@ total 16
 drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 ```
 
-## <a name="mount-gitrepo-volume-resource-manager"></a>Wolumin instalacji gitRepo: Resource Manager
+## <a name="mount-gitrepo-volume-resource-manager"></a>Wolumin gitRepo instalacji: Resource Manager
 
 Aby zainstalować wolumin gitRepo podczas wdrażania wystąpień kontenera za pomocą [szablonu usługi Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups), najpierw wypełnić `volumes` tablicy w grupie kontenerów `properties` części szablonu. Następnie dla każdego kontenera w grupie kontenerów, w którym chcesz zainstalować *gitRepo* woluminu, wypełnij `volumeMounts` tablicy w `properties` sekcja definicji kontenera.
 
 Na przykład następujący szablon usługi Resource Manager tworzy grupę kontenerów składające się z jednego kontenera. Kontener klony dwóch repozytoriów GitHub, określony przez *gitRepo* bloków woluminu. Drugi wolumin zawiera dodatkowe właściwości, określając katalog w celu sklonowania oraz skrót zatwierdzenia określoną poprawkę, aby sklonować.
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
+[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 Wynikowy struktura katalogów dwóch sklonowanych repozytoriów zdefiniowane w szablonie poprzedzającego jest:
 
@@ -99,7 +100,7 @@ Aby uzyskać więcej informacji na temat osobiste tokeny dostępu usługi GitHub
 
 GitHub: [Tworzenie osobistego tokenu dostępu dla wiersza polecenia][pat-github]
 
-Repozytoriów platformy Azure: [tworzyć osobiste tokeny dostępu do uwierzytelniania dostępu][pat-repos]
+Azure Repos: [Tworzyć osobiste tokeny dostępu do uwierzytelniania dostępu][pat-repos]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

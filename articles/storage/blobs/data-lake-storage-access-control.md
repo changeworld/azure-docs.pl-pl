@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 906b1dde3d145268df4fb1ff5c243c7daa8396ec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992442"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370112"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
 
@@ -279,7 +279,18 @@ Użytkownik będący właścicielem może zmienić uprawnienia do pliku, aby prz
 
 ### <a name="why-do-i-sometimes-see-guids-in-acls"></a>Dlaczego czasami wyświetlane identyfikatory GUID list ACL?
 
-Identyfikator GUID jest wyświetlany, jeśli wpis reprezentuje użytkownika, a użytkownik nie istnieje w usłudze Azure AD już. Zwykle dzieje się tak, gdy użytkownik opuścił firmę lub jego konto w usłudze Azure AD zostało usunięte. Ponadto jednostki usługi i grupy zabezpieczeń nie mają główną nazwę użytkownika (UPN) umożliwiający ich zidentyfikowanie i dlatego są reprezentowane przez ich atrybut identyfikatora OID (guid). 
+Identyfikator GUID jest wyświetlany, jeśli wpis reprezentuje użytkownika, a użytkownik nie istnieje w usłudze Azure AD już. Zwykle dzieje się tak, gdy użytkownik opuścił firmę lub jego konto w usłudze Azure AD zostało usunięte. Ponadto jednostki usługi i grupy zabezpieczeń nie mają główną nazwę użytkownika (UPN) umożliwiający ich zidentyfikowanie i dlatego są reprezentowane przez ich atrybut identyfikatora OID (guid).
+
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Jak ustawić list ACL poprawnie usługi głównej?
+
+Podczas definiowania listy ACL dla nazw głównych usług, ważne jest, aby użyć Identyfikatora obiektu (OID) z *nazwy głównej usługi* rejestracji aplikacji, który został utworzony. Ważne jest, aby należy zauważyć, że zarejestrowanych aplikacji nazwy głównej usługi oddzielne w konkretnym dzierżawy usługi Azure AD. Zarejestrowane aplikacje mają identyfikatora OID, który jest widoczny w witrynie Azure portal, ale *nazwy głównej usługi* ma inny identyfikator OID w (inny).
+
+Aby uzyskać identyfikator OID nazwy głównej usługi tego corresonds do rejestracji aplikacji, można użyć `az ad sp show` polecenia. Określ identyfikator aplikacji jako parametr. Oto przykład umożliwiające uzyskanie OID dla jednostki usługi, umożliwiająca rejestrowanie aplikacji przy użyciu identyfikatora aplikacji = 18218b12-1895-43e9-ad80-6e8fc1ea88ce. Uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
+
+`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>`
+
+Jeśli masz prawidłowy identyfikator OID dla jednostki usługi, przejdź do Eksploratora usługi Storage **zarządzanie dostępem** strony, aby dodać identyfikator OID i przypisać odpowiednie uprawnienia, aby uzyskać identyfikator OID. Upewnij się, możesz wybrać **Zapisz**.
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Usługa Data Lake Storage Gen2 obsługuje dziedziczenie list ACL?
 

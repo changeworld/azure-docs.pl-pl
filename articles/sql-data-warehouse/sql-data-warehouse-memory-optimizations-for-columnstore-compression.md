@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/18/2019
+ms.date: 03/22/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e7ab09522184f5c2d1c5168b24b2948f58e5189e
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189568"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368973"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizacja jakości i magazynu kolumn
 
@@ -67,7 +67,7 @@ from cte;
 ```
 
 Trim_reason_desc informuje, czy została przycięta grupy wierszy (trim_reason_desc = NO_TRIM oznacza wystąpił brak przycinania i grupę wierszy jest optymalne jakości). Przyczyny przycinania wskazują przedwczesne przycinanie grupy wierszy:
-- BULKLOAD: Z tego powodu przycinania jest używany, gdy przychodzący partii wierszy dla obciążenia było mniej niż 1 milion wierszy. Aparat tworzenia skompresowanych grup wierszy, jeśli istnieje większa niż 100 000 wierszy, jest wstawiany (w przeciwieństwie do wstawiania do magazynu delta), ale ustawia BULKLOAD Przyczyna przycinania. W tym scenariuszu należy rozważyć zwiększenie okna obciążenia usługi batch do większej liczby wierszy. Ponadto to ponowne ocenienie schematu partycji w celu zapewnienia, że nie jest zbyt szczegółową jako granice partycji nie mogą rozciągać się grupy wierszy.
+- BULKLOAD: Z tego powodu przycinania jest używany, gdy przychodzący partii wierszy dla obciążenia było mniej niż 1 milion wierszy. Aparat tworzenia skompresowanych grup wierszy, jeśli istnieje większa niż 100 000 wierszy, jest wstawiany (w przeciwieństwie do wstawiania do magazynu delta), ale ustawia BULKLOAD Przyczyna przycinania. W tym scenariuszu należy rozważyć zwiększenie obciążenia usługi batch do uwzględnienia większej liczby wierszy. Ponadto to ponowne ocenienie schematu partycji w celu zapewnienia, że nie jest zbyt szczegółową jako granice partycji nie mogą rozciągać się grupy wierszy.
 - MEMORY_LIMITATION: Aby utworzyć grupy wierszy z 1 milion wierszy, pewna ilość pamięci pracy jest wymagany przez aparat. Gdy dostępna pamięć sesji ładowania jest mniejsza niż wymaganej ilości pamięci w pracy, grupy wierszy przedwcześnie Pobierz spacje. W poniższych sekcjach opisano sposób szacowania pamięci wymaganej i przydzielanie większej ilości pamięci.
 - DICTIONARY_SIZE: Z tego powodu przycinania wskazuje, że przycinania i wystąpił, ponieważ wystąpił co najmniej jedną kolumnę ciągu z ciągami o szerokim lub wysokiej kardynalności. Rozmiar słownika jest ograniczony do 16 MB w pamięci, a po osiągnięciu tego limitu grupę wierszy jest skompresowany. Jeśli napotkasz ten problem, należy wziąć pod uwagę izolowanie problematyczne kolumny w osobnej tabeli.
 

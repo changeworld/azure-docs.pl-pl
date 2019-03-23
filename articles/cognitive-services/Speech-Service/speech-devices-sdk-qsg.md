@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 114e0b951b2bfe83e8b989646bd07a5fd75b3ee6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894414"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352072"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
@@ -64,7 +64,7 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
 
     ![Orientacja kit liniowej dev](media/speech-devices-sdk/qsg-2.png)
 
-1. Zainstaluj certyfikaty i plik tabeli wznawiania programu word (słowo kluczowe), a następnie ustaw uprawnienia urządzenia dźwiękowego. W oknie wiersza polecenia, wpisz następujące polecenia:
+1. Zainstaluj certyfikaty i ustaw uprawnienia urządzenia dźwiękowego. W oknie wiersza polecenia, wpisz następujące polecenia:
 
    ```
    adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/

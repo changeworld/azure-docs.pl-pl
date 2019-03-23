@@ -9,14 +9,15 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: 18ba86ce7876ba8275eb4853e4fc9ea0f35fa186
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 8d8b314965253dc00b39d0b068b1d6fb3e4aa471
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302214"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395649"
 ---
-1. Wykonaj czynności opisane w [przewodniku Szybki start dotyczącym języka Python dla usługi Azure Machine Learning](../articles/machine-learning/service/quickstart-create-workspace-with-python.md) w celu zainstalowania zestawu SDK i utworzenia obszaru roboczego.  Jeśli chcesz, możesz pominąć sekcję **Korzystanie z notesu**.
+1. Postępuj zgodnie z instrukcjami w [Utwórz obszar roboczy usługi Azure Machine Learning](../articles/machine-learning/service/setup-create-workspace.md#portal) Aby utworzyć środowisko Miniconda, Utwórz obszar roboczy, a następnie zapisać pliku konfiguracji obszaru roboczego (**aml_config/config.json**) .
+
 1. Sklonuj [repozytorium GitHub](https://aka.ms/aml-notebooks).
 
     ```
@@ -24,7 +25,7 @@ ms.locfileid: "55302214"
     ```
 
 1. Dodaj plik konfiguracji obszaru roboczego przy użyciu jednej z następujących metod:
-    * Do sklonowanego katalogu skopiuj plik **aml_config\config.json** utworzony podczas wykonywania czynności z przewodnika Szybki start stanowiącego wymagania wstępne.
+    * Kopiuj **aml_config/config.json** plików, które zostały utworzone za pomocą przewodnika Szybki Start wymagań wstępnych w sklonowanym katalogu.
     * Utwórz nowy obszar roboczy za pomocą kodu w pliku [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
 1. Uruchom serwer notesów z poziomu sklonowanego katalogu.
     

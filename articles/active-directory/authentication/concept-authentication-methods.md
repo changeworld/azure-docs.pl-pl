@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6bd67e500756fe5a7ba5ee29db88b9aedb103e4
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315984"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371863"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -155,13 +155,13 @@ Użytkownicy mogą mieć kombinację tokenów OATH do 5 w sprzętu lub aplikacji
 
 OATH jest otwarty standard, który określa sposób jednorazowe hasła (OTP) kody są generowane. Usługa Azure AD będzie obsługiwać korzystanie z tokenów OATH-TOTP SHA-1 odmiany 30 sekund lub 60 sekund. Klienci mogą uzyskać te tokeny od dostawcy wybranych przez nich. Należy pamiętać, że klucze tajne są ograniczone do 128 znaków, które mogą nie być zgodna z wszystkich tokenów.
 
-![Przekazywanie tokenów OATH do bloku tokenów OATH serwera usługi MFA w witrynie Azure portal](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![Przekazywanie tokenów OATH do bloku tokenów OATH serwera MFA](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
 Tokeny sprzętowe OATH są są obsługiwane w ramach publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 Po drogą kupna tokeny muszą być przesłane w formacie wartości rozdzielanych przecinkami (CSV) jako przykład poniżej przedstawiono w tym nazwy UPN, numer seryjny, klucz tajny, interwał czasu, producenta i modelu.
 
-```
+```csv
 upn,serial number,secret key,timeinterval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```

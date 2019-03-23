@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd0ce02a92c0a2e803866b6f070dba113c566f5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9ce388c53a28d6b04bf7685da397eade4b1fd94
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112215"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371778"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>Protokoły — przy użyciu niejawnego przepływu aplikacji jednostronicowych w wersji 2.0
 
@@ -55,7 +55,7 @@ Na poniższym diagramie przedstawiono, jak wygląda całego niejawny przepływ l
 Początkowo utworzyć użytkownika w swojej aplikacji, możesz wysłać [OpenID Connect](v2-protocols-oidc.md) żądanie autoryzacji i zyskaj `id_token` z punktu końcowego v2.0.
 
 > [!IMPORTANT]
-> Aby pomyślnie zażądać identyfikator tokenu rejestracji aplikacji w [portalu rejestracji](https://apps.dev.microsoft.com) musi mieć **Zezwalaj na niejawny przepływ** włączone dla klienta sieci Web. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: **Podana wartość parametru wejściowego "response_type" jest niedozwolone dla tego klienta. Oczekiwana wartość to "code"**
+> Aby pomyślnie zażądać identyfikator tokenu rejestracji aplikacji w [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony musi mieć włączone poprawnie, wybierając przepływ przyznawanie niejawne **tokeny dostępu** i **Tokeny Identyfikatora** w obszarze **przyznawanie niejawne** sekcji. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: **Podana wartość parametru wejściowego "response_type" jest niedozwolone dla tego klienta. Oczekiwana wartość to "code"**
 
 ```
 // Line breaks for legibility only
@@ -77,7 +77,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr |  | Opis |
 | --- | --- | --- |
 | `tenant` | wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | wymagane |Identyfikator aplikacji, portal rejestracji ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) przypisanych aplikacji. |
+| `client_id` | wymagane |Identyfikator aplikacji (klienta) [witryna Azure portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) strony przypisany do aplikacji. |
 | `response_type` | wymagane |Musi zawierać `id_token` dla logowania OpenID Connect. Może również obejmować response_type `token`. Za pomocą `token` w tym miejscu pozwoli aplikację do odbierania token dostępu bezpośrednio z punktu końcowego autoryzacji bez konieczności wykonywania drugie żądanie do punktu końcowego autoryzacji. Jeśli używasz `token` elementu response_type, `scope` parametr musi zawierać wskazujący zasobu, który można wystawić tokenu dla zakresu. |
 | `redirect_uri` | Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. |
 | `scope` | wymagane |Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md). Dla protokołu OpenID Connect, musi on zawierać zakres `openid`, co przekłada się na uprawnienia "Logowanie się w" w zgody interfejsu użytkownika. Opcjonalnie możesz również chcieć dołączyć `email` lub `profile` zakresy do uzyskania dostępu do danych dodatkowych użytkowników. W tym żądaniu do żądania zgody z różnymi zasobami, może również obejmować inne zakresy. |

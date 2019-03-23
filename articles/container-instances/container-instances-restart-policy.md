@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321037"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369980"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Uruchamianie zadań konteneryzowanych za pomocą zasady ponownego uruchamiania
 
@@ -26,7 +26,7 @@ Przykłady przedstawione w tym artykule wiersza polecenia platformy Azure. Konie
 
 Po utworzeniu [grupy kontenerów](container-instances-container-groups.md) w usłudze Azure Container Instances, możesz określić jedną z trzech ustawień zasady ponownego uruchamiania.
 
-| Zasady ponownego uruchamiania   | Opis |
+| Zasada ponownego uruchamiania   | Opis |
 | ---------------- | :---------- |
 | `Always` | Zawsze zostaną ponownie uruchomione kontenery w grupie kontenerów. Jest to **domyślne** ustawienia stosowane, gdy nie zasady ponownego uruchamiania jest określana podczas tworzenia kontenera. |
 | `Never` | Nigdy nie zostaną ponownie uruchomione kontenery w grupie kontenerów. Kontenery są uruchamiane co najwyżej raz. |
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Uruchom do ukończenia przykładu
 
-Aby wyświetlić zasady ponownego uruchamiania w akcji, Utwórz wystąpienie kontenera z [microsoft/aci-wordcount] [ aci-wordcount-image] obrazu, a następnie określ `OnFailure` zasady ponownego uruchamiania. Ten przykład kontener uruchamia skrypt w języku Python, który domyślnie analizuje tekst w Szekspir [osady](http://shakespeare.mit.edu/hamlet/full.html), zapisuje 10 najczęściej słowa do strumienia wyjściowego STDOUT, a następnie kończy działanie.
+Aby wyświetlić zasady ponownego uruchamiania w akcji, Utwórz wystąpienie kontenera z firmy Microsoft [aci wordcount] [ aci-wordcount-image] obrazu, a następnie określ `OnFailure` zasady ponownego uruchamiania. Ten przykład kontener uruchamia skrypt w języku Python, który domyślnie analizuje tekst w Szekspir [osady](http://shakespeare.mit.edu/hamlet/full.html), zapisuje 10 najczęściej słowa do strumienia wyjściowego STDOUT, a następnie kończy działanie.
 
 Uruchom kontener przykład następującym kodem [utworzyć kontener az] [ az-container-create] polecenia:
 
@@ -54,7 +54,7 @@ Uruchom kontener przykład następującym kodem [utworzyć kontener az] [ az-con
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -129,7 +129,7 @@ Na przykład można zmodyfikować zachowanie skryptów w kontenerze przykład po
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=5 MinLength=8
 ```
@@ -164,7 +164,7 @@ Na przykład, aby określić 3 pierwszych pięć wyrazów w *Romeo i Juliet*:
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer3 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=3 MinLength=5 \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
@@ -189,7 +189,7 @@ Dane wyjściowe:
 Aby uzyskać więcej informacji na temat sposobu utrwalanie danych wyjściowych z kontenerów, które zostało ukończone, zobacz [instalowania udziału plików platformy Azure przy użyciu usługi Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
 <!-- LINKS - External -->
-[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create

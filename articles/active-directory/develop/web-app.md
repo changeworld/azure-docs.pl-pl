@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e9704ce014e520350360c336c7a17940cae95fb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0337f3de40e75ada86c0a5265fc99b34f1c2ecae
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197899"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367920"
 ---
 # <a name="web-apps"></a>Aplikacje internetowe
 
@@ -48,7 +48,7 @@ Zobacz przykłady kodu dla scenariuszy aplikacji sieci web w przeglądarce inter
 Aby zarejestrować aplikację sieci web, zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md).
 
 * Pojedynczej dzierżawy — Jeśli tworzysz aplikację tylko dla Twojej organizacji, należy zarejestrować w katalogu firmy przy użyciu witryny Azure portal.
-* Multi-tenan — Jeśli tworzysz aplikację, która może być używane przez użytkowników spoza organizacji, z jest musi być zarejestrowana w katalogu firmy, ale musi być zarejestrowana w każdej organizacji katalogu, który będzie używany w aplikacji. Aby udostępnić aplikację w jego katalogu, możesz dołączyć procesu rejestracji dla klientów, co pozwala na wyrażanie zgody na aplikację. Po utworzeniu konta dla aplikacji, zobaczą okno dialogowe, które przedstawiono uprawnienia, których wymaga aplikacja i opcji do wyrażenia zgody. W zależności od wymagane uprawnienia administratora w innej organizacji może być konieczne wyrazić zgodę. Po użytkownik lub administrator wyraża zgodę, aplikacja jest zarejestrowana w ich katalogu.
+* Wielodostępne — Jeśli tworzysz aplikację, która może być używane przez użytkowników spoza organizacji, ten musi być zarejestrowana w katalogu firmy, ale musi być zarejestrowana w każdej organizacji katalogu, który będzie używany w aplikacji. Aby udostępnić aplikację w jego katalogu, możesz dołączyć procesu rejestracji dla klientów, co pozwala na wyrażanie zgody na aplikację. Po utworzeniu konta dla aplikacji, zobaczą okno dialogowe, które przedstawiono uprawnienia, których wymaga aplikacja i opcji do wyrażenia zgody. W zależności od wymagane uprawnienia administratora w innej organizacji może być konieczne wyrazić zgodę. Po użytkownik lub administrator wyraża zgodę, aplikacja jest zarejestrowana w ich katalogu.
 
 ## <a name="token-expiration"></a>Wygaśnięcie tokenu
 

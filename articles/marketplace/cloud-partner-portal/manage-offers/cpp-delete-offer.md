@@ -14,19 +14,21 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 7b4ee33d3e231dc59ce1d7b4ae6337efb11e96bc
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: f26597022b89bcd113ee250db75a842c634273eb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355853"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371387"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Usuwanie ofert portalu Azure Marketplace i AppSource lub jednostek SKU
 
 Z różnych powodów może podjąć decyzję wycofania oferty z jej witryny Microsoft marketplace, co może zająć do dwóch formach:
 
 - *Usunięcie oferty* gwarantuje, że nowi klienci mogą już zakup lub wdrożenie oferty, ale nie ma wpływu na istniejących klientów, których musi obsługiwać zgodnie ze swoją umowę licencyjną i stosownych przepisów. 
-- *Zakończenie oferty* to proces zakończenia świadczenia usługi i/lub umowę między Tobą i Twoimi obecnymi klientami licencjonowania. Wskazówki i zasady dotyczące usuwania i kończenia oferty podlegają [umowie wydawcy portalu Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) (sekcja 7) i [— zasady udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (sekcja 6.2). 
+- *Zakończenie oferty* to proces zakończenia świadczenia usługi i/lub umowę między Tobą i Twoimi obecnymi klientami licencjonowania. 
+
+Wskazówki i zasady dotyczące usuwania i kończenia oferty podlegają [umowie wydawcy portalu Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) (sekcja 7) i [— zasady udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (sekcja [ Zawieszenie i usunięcie oferty](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
 
 Rozmowy tego artykułu, o różnych obsługiwane usunięcia scenariusze i kroki wymagane do wykonania każdego.  
 
