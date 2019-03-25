@@ -1,22 +1,22 @@
 ---
-title: Skonfiguruj udział profilu użytkownika dla zestawu hostów - Azure
-description: Jak skonfigurować FSLogix kontener profilu dla zestawu hostów Windows pulpitu wirtualnego (wersja zapoznawcza).
+title: Skonfiguruj udział profilu użytkownika dla puli hosta Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
+description: Jak skonfigurować kontener profilu FSLogix puli hosta Windows wirtualnego Desktop w wersji zapoznawczej.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 9dfbda6e17cf954369fd6caa533ba9eef41fd451
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336018"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403718"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Skonfiguruj udział profilu użytkownika dla puli hosta
 
-Usługa Windows pulpitu wirtualnego (wersja zapoznawcza) oferuje FSLogix profilu kontenery jako rozwiązanie profilu użytkownika zalecane. Nie zaleca się przy użyciu rozwiązania dysku profilu użytkownika (UPD) i zostaną wycofane w kolejnych wersjach systemu Windows pulpitu wirtualnego.
+Usługa Windows wirtualnego pulpitu (wersja zapoznawcza) oferuje FSLogix profilu kontenery jako rozwiązanie profilu użytkownika zalecane. Nie zaleca się przy użyciu rozwiązania dysku profilu użytkownika (UPD) i zostaną wycofane w kolejnych wersjach systemu Windows pulpitu wirtualnego.
 
 W tej sekcji opisano, jak skonfigurować udział FSLogix profilu kontener dla zestawu hostów.
 

@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 79648e30e832a056016b8842fdc39e27e206c9ee
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: ec5fbffdf7df5ef3a952e21b79ab02f355fb8e29
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57897816"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403650"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Zarządzanie udziałami na krawędzi sieci Azure Data Box za pomocą witryny Azure portal
 
 W tym artykule opisano sposób zarządzania udziałami na krawędzi sieci Azure Data Box. Można zarządzać krawędź pola danych platformy Azure za pośrednictwem witryny Azure portal lub za pomocą lokalnego interfejsu użytkownika sieci web. Witryna Azure portal umożliwia dodawanie, usuwanie, Odśwież udziałów lub synchronizacji klucz magazynu dla konta magazynu skojarzonego z udziałów.
-
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="about-shares"></a>Udziały — informacje
 
@@ -67,8 +63,10 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby utworzyć udział.
 
         ![Dodawanie udziału NFS](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Kliknij pozycję **Utwórz**, aby utworzyć udział. Zostanie wyświetlone powiadomienie, że trwa tworzenie udziału. Po utworzeniu udziału z określonymi ustawieniami blok **Udziały** zostanie zaktualizowany, aby odzwierciedlić nowy udział.
- 
+7. Aby łatwo uzyskiwać dostęp do udziałów z modułów obliczeń brzegowych, użyj punktu instalacji lokalnej. Wybierz **udziału za pomocą obliczeń brzegowych** tak, aby udział jest automatycznie instalowane po jego utworzony. Gdy ta opcja jest zaznaczona, moduł usługi Edge umożliwia również zasoby obliczeniowe z punktem instalacji lokalnej.
+
+8. Kliknij pozycję **Utwórz**, aby utworzyć udział. Zostanie wyświetlone powiadomienie, że trwa tworzenie udziału. Po utworzeniu udziału z określonymi ustawieniami blok **Udziały** zostanie zaktualizowany, aby odzwierciedlić nowy udział.
+
 ## <a name="add-a-local-share"></a>Dodawanie udziału lokalnego
 
 1. W witrynie Azure portal przejdź do zasobu krawędź pola danych, a następnie przejdź do **bramy > udziałów**. Wybierz **+ Dodaj udział** na pasku poleceń.
@@ -93,11 +91,32 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby utworzyć udział.
 
     Zostanie wyświetlone powiadomienie, że trwa tworzenie udziału. Po utworzeniu udziału z określonymi ustawieniami blok **Udziały** zostanie zaktualizowany, aby odzwierciedlić nowy udział.
 
-    ![Wyświetl aktualizacje udziałów bloku](media/data-box-edge-manage-shares/add-local-share-4.png)
+    ![Wyświetl aktualizacje udziałów bloku](media/data-box-edge-manage-shares/add-local-share-3.png)
     
     Wybierz udział, aby wyświetlić lokalnego punktu instalacji dla modułów obliczeń brzegowych dla tego udziału.
 
     ![Wyświetl szczegóły udziału lokalnego](media/data-box-edge-manage-shares/add-local-share-4.png)
+
+
+## <a name="unmount-a-share"></a>Odinstaluj udział
+
+Wykonaj następujące czynności w witrynie Azure portal, aby odinstalować udziału.
+
+1. W witrynie Azure portal przejdź do zasobu krawędź pola danych, a następnie przejdź do **bramy > udziałów**.
+
+    ![Wybieranie udziału](media/data-box-edge-manage-shares/select-share-unmount.png)
+
+2. Z listy akcji wybierz udziału, do którego chcesz odinstalować. Chcesz upewnić się, czy udział, który możesz odinstalować nie jest używany przez wszystkie moduły. Jeśli udział jest używany przez moduł, zostanie wyświetlone problemy związane z odpowiedniego modułu. Wybierz **Odinstaluj**.
+
+    ![Wybierz pozycję Odinstaluj](media/data-box-edge-manage-shares/select-unmount.png)
+
+3. Po wyświetleniu monitu o potwierdzenie, wybierz **tak**. Odinstaluj obraz udziału.
+
+    ![Upewnij się, odinstaluj](media/data-box-edge-manage-shares/confirm-unmount.png)
+
+4. Gdy udział zostanie odinstalowane, przejdź do listy udziałów. Zobaczysz, że **używane do obliczeń** kolumna pokazuje stan udziału jako **wyłączone**.
+
+    ![Odinstalować udziału](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Usuwanie udziału
 

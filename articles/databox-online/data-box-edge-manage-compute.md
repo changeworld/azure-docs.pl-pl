@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/13/2019
+ms.date: 03/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8128afa7078c396156d2cbffb47effeb7de68a0b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: de8ddd0d2886cd7798160e830094b295c62e17e9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58002087"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400694"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Zarządzanie obliczeniami na krawędzi sieci Azure Data Box
 
@@ -132,6 +132,23 @@ Wykonaj następujące kroki w witrynie Azure portal, aby zsynchronizować klucze
      ![Wybierz pozycję Tak, po wyświetleniu monitu](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. Po zakończeniu synchronizacji zamknij okno dialogowe.
+
+## <a name="enable-a-network-interface-for-compute"></a>Włączanie interfejsu sieciowego dla środowiska obliczeniowego
+
+Może być konieczne dostępu modułu, uruchomione na urządzeniu usługi Edge pola danych. Aby uzyskać dostęp do modułu zewnętrznie, musisz przypisać adres IP do interfejsu sieciowego na urządzeniu z systemem. Możesz zarządzać te obliczenia ustawienia z Twojego lokalnego internetowego interfejsu użytkownika.
+
+Wykonaj następujące kroki w lokalnej sieci web UI, aby skonfigurować ustawienia obliczeń.
+
+1. W lokalnym internetowym interfejsie użytkownika, przejdź do **konfiguracji > Compute ustawienia**.  
+
+2. **Włącz** interfejsu sieciowego, który ma być używana do łączenia z modułami obliczeń na urządzeniu. 
+
+    - Jeśli używasz statycznych adresów IP, wprowadź adres IP dla interfejsu sieciowego.
+    - Jeśli używasz protokołu DHCP, następnie adresów IP zostanie automatycznie przypisana.
+
+3. Wybierz **Zastosuj** mają zostać zastosowane ustawienia.
+
+    ![Włącz ustawienia obliczeń](media/data-box-edge-manage-compute/compute-settings-1.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

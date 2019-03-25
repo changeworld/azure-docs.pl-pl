@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
+ms.date: 03/22/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 605598d1470cbb535d626c15a5e8e4e08aa4d571
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3a260102e9964cfc248ed3dbabab487bd1c5dfc2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883818"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403769"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Użyj usługi Azure Stream Analytics z usługą SQL Data Warehouse
 Usługa Azure Stream Analytics jest w pełni zarządzaną usługę, zapewniając przetwarzanie złożonych zdarzeń o małych opóźnieniach, wysokiej dostępności i skalowalności za pośrednictwem przesyłania strumieniowego danych w chmurze. Dowiedz się podstawowe informacje, zapoznając [wprowadzenie do usługi Azure Stream Analytics][Introduction to Azure Stream Analytics]. Można następnie dowiesz się, jak utworzyć rozwiązanie end-to-end za pomocą usługi Stream Analytics, postępując zgodnie z [rozpoczęcie korzystania z usługi Azure Stream Analytics] [ Get started using Azure Stream Analytics] samouczka.
@@ -34,12 +34,10 @@ Następnie utwórz bazę danych Azure SQL Data Warehouse
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Określ dane wyjściowe zadania: Usługa Azure SQL Data Warehouse bazy danych.
 ### <a name="step-1"></a>Krok 1
-W ramach zadania usługi Stream Analytics kliknij **dane wyjściowe** w górnej części strony, a następnie kliknij przycisk **Dodaj dane wyjściowe**.
+W ramach zadania usługi Stream Analytics kliknij **dane wyjściowe** w górnej części strony, a następnie kliknij przycisk **Dodaj**.
 
 ### <a name="step-2"></a>Krok 2
-Wybierz bazę danych SQL, a następnie kliknij przycisk Dalej.
-
-![][add-output]
+Wybierz bazę danych SQL.
 
 ### <a name="step-3"></a>Krok 3
 Na następnej stronie, wprowadź następujące wartości:
@@ -62,9 +60,7 @@ Na następnej stronie, wprowadź następujące wartości:
 ### <a name="step-4"></a>Krok 4
 Kliknij przycisk wyboru, aby dodać te dane wyjściowe zadania i sprawdź, czy usługi Stream Analytics można pomyślnie nawiązać połączenie bazy danych.
 
-![][test-connection]
-
-Gdy połączenie z bazą danych powiedzie się, zostanie wyświetlone powiadomienie u dołu portalu. Na dole, aby przetestować połączenie z bazą danych, możesz kliknąć Testuj połączenie.
+Gdy połączenie z bazą danych powiedzie się, zostanie wyświetlone powiadomienie w portalu. Możesz kliknąć Test, aby przetestować połączenie z bazą danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Omówienie integracji, zobacz [Omówienie integracji usługa SQL Data Warehouse][SQL Data Warehouse integration overview].

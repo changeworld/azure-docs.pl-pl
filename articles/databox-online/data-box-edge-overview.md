@@ -6,27 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 11/13/2018
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
-ms.translationtype: HT
+ms.openlocfilehash: 696f4fee95926009ebda0be3c28672838d89edda
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685960"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400433"
 ---
-# <a name="what-is-azure-data-box-edge-preview"></a>Czym jest rozwiązanie Azure Data Box Edge (w wersji zapoznawczej)? 
+# <a name="what-is-azure-data-box-edge"></a>Co to jest usługa Azure Data Box Edge? 
 
 Azure Data Box Edge to rozwiązanie magazynu umożliwiające przetwarzanie danych i wysyłanie ich za pośrednictwem sieci na platformę Azure. Ten artykuł zawiera omówienie rozwiązania Data Box Edge, jego zalety, najważniejsze funkcje oraz scenariusze, w których można wdrożyć to urządzenie. 
 
 Rozwiązanie Data Box Edge przyspiesza bezpieczny transfer danych, używając urządzenia fizycznego dostarczanego przez firmę Microsoft. Urządzenie fizyczne znajduje się w środowisku lokalnym, a dane są na nim zapisywane przy użyciu protokołów NFS i SMB. 
 
 Rozwiązanie Data Box Edge ma wszystkie funkcje bramy usługi Data Box Gateway. Rozwiązanie Data Box jest dodatkowo wyposażone w funkcje obliczeń brzegowych z obsługą sztucznej inteligencji, które ułatwiają analizowanie, przetwarzanie i filtrowanie danych podczas ich przenoszenia do blokowego obiektu blob na platformie Azure, stronicowego obiektu blob lub usługi Azure Files.  
-
-> [!IMPORTANT]
-> - Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Aby korzystać z tej usługi, [utwórz konto](#sign-up).
-> - Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami użytkowania dotyczącymi wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="use-cases"></a>Przypadki zastosowań
 
@@ -76,7 +71,7 @@ Urządzenie fizyczne Data Box Edge oferuje następujące funkcje:
 
 | Funkcje/dane techniczne                                          | Opis              |
 |---------------------------------------------------------|--------------------------|
-| Wymiary   | Szerokość: 17,25 cala Głębokość: 27,25 cala Wysokość: 1,75 cala<br>(bez oczek i uchwytów zasilacza)  |            
+| Wymiary   | Szerokość: 17.25" głębi: 27.25" height: 1.75”<br>(bez oczek i uchwytów zasilacza)  |            
 | Miejsce w stojaku|1U po umieszczeniu w stojaku|
 | Kable| 2 kable zasilające<br>2 kable RJ-45 1 GB/s<br>2 kable miedziane SFP+ 10 GB/s|
 | Składniki|2 wbudowane zasilacze|
@@ -135,7 +130,7 @@ Rozwiązanie Data Box Edge jest dostępne w wersji zapoznawczej i musisz utworzy
 
 4. Po utworzeniu konta i włączeniu opcji korzystania z wersji zapoznawczej można zamówić usługę Data Box Edge.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj [wymagania systemowe rozwiązania Data Box Edge](https://aka.ms/dbe-docs).
 - Zapoznaj się z [limitami rozwiązania Data Box Edge](https://aka.ms/dbe-docs).

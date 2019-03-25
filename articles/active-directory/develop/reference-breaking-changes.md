@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4a04f1598b3ab0efd9ff95a707d3837bb37503
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196029"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401296"
 ---
 # <a name="whats-new-for-authentication"></a>What's new do uwierzytelniania? 
 
@@ -42,6 +42,37 @@ System uwierzytelniania zmienia i dodaje funkcje na bieżąco, aby zwiększyć b
 ## <a name="upcoming-changes"></a>Nadchodzących zmianach
 
 Brak zaplanowane w tej chwili. 
+
+## <a name="march-2019"></a>Marca 2019 r
+
+### <a name="looping-clients-will-be-interrupted"></a>Tworzenie pętli klientów zostaną przerwane
+
+**Data rozpoczęcia obowiązywania**: 25 marca 2019 r.
+
+**Punkty końcowe wpływ**: Zarówno w wersji 1.0, jak i w wersji 2.0
+
+**Protokół wpływ**: Wszystkie przepływy
+
+Aplikacje klienckie mogą czasami błędne działanie, wystawianie setki tego samego żądania logowania w krótkim przedziale czasu.  Te żądania mogą lub nie może zakończyć się powodzeniem, ale wszystkie przyczyniają się do słabej komfortu i obciążeń podwyższonym dla dostawcy tożsamości, poprawia czas oczekiwania dla wszystkich użytkowników i zmniejsza dostępności przez dostawcę tożsamości.  Te aplikacje działają poza granicami normalnego użycia i powinien zostać zaktualizowany do działają poprawnie.  
+
+Klienci, którzy wysyłają żądania zduplikowane wiele razy powoduje wysłanie `invalid_grant` błąd: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`. 
+
+Większość klientów nie trzeba zmienić zachowanie, aby uniknąć tego błędu.  Ten błąd będzie mieć wpływ tylko nieprawidłowej konfiguracji klientów (bez buforowania tokenu lub te już wykazujących monitu pętli).  Klienci są śledzone na podstawie poszczególnych wystąpień lokalnie (za pomocą plików cookie) od następujących czynników:
+
+* Wskazówka użytkownika, jeśli istnieje
+
+* Zakresy lub żądanych zasobów
+
+* Identyfikator klienta
+
+* Identyfikator URI przekierowania
+
+* Typ odpowiedzi i tryb
+
+Aplikacje, dzięki czemu wiele żądań (15 +) w krótkim czasie (5 minut) zostanie wyświetlony `invalid_grant` błąd z informacją, ich pętli.  Tokeny żądanej zawierać dostatecznie długotrwałe okresy istnienia (minimum 10 minut, 60 minut domyślnie), więc powtarzających się żądań w tym okresie nie są konieczne.  
+
+Wszystkie aplikacje powinny obsługiwać `invalid_grant` wyświetlanie monitu interakcyjnego, zamiast dyskretnie żądania tokenu.  Aby uniknąć tego błędu, klienci upewnić się, że są one poprawnie pamięci podręcznej tokenów, które otrzymują.
+
 
 ## <a name="october-2018"></a>Październik 2018 r.
 

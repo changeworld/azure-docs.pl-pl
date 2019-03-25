@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341958"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402358"
 ---
 # <a name="azure-managed-applications-overview"></a>Omówienie usługi Azure Managed Applications
 
@@ -32,6 +32,8 @@ Aplikacje zarządzane pozwalają nawiązać trwałe relacje z klientami. Ty okre
 Klienci wdrażają aplikacje zarządzane w swoich subskrypcjach, ale nie muszą ich konserwować, aktualizować ani obsługiwać. Można zagwarantować, że wszyscy klienci używają zatwierdzonych wersji. Klienci nie zarządzają aplikacjami, więc nie wymaga się od nich znajomości domeny specyficznej dla aplikacji. Automatycznie otrzymują oni aktualizacje aplikacji i nie muszą rozwiązywać problemów ani diagnozować usterek związanych z aplikacjami. 
 
 Aplikacje zarządzane umożliwiają zespołom IT udostępnianie wstępnie zatwierdzonych rozwiązań użytkownikom w organizacji. Wiesz, że te rozwiązania są zgodne ze standardami używanymi w organizacji.
+
+Aplikacje zarządzane aktualnie nie obsługują [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="types-of-managed-applications"></a>Typy aplikacji zarządzanych
 
@@ -75,7 +77,7 @@ Usunięcie aplikacji zarządzanej powoduje również usunięcie zarządzanej gru
 
 Do aplikacji zarządzanej możesz zastosować [zasady Azure Policy](../governance/policy/overview.md). Zasady są stosowane, aby zapewnić zgodność wdrożonych wystąpień aplikacji zarządzanych z wymaganiami dotyczącymi danych i zabezpieczeń. Jeśli aplikacja wchodzi w interakcje z danymi poufnymi, upewnij się, że oceniono sposoby ochrony tych danych. Jeśli na przykład aplikacja wchodzi w interakcje z danymi usługi Office 365, zastosuj zasady zapewniające włączenie szyfrowania danych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule omówiono korzyści z używania aplikacji zarządzanych. Przejdź do następnego artykułu, aby utworzyć definicję aplikacji zarządzanej.
 

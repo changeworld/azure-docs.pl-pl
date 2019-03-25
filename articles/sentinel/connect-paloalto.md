@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych Palo Alto w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zbierać dane Palo Alto przez wartownika platformy Azure.
+title: Zbieranie danych Palo Alto Networks w wersji zapoznawczej Azure przez wartownika | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zbierać dane Palo Alto Networks przez wartownika platformy Azure.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 149b3b813091033bf5c1685e8b0793f955169808
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6145d77e6485a33ea3a9f9d66a4356587966bc5f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841212"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403565"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Łączenie urządzenia Palo Alto Networks
 
@@ -27,14 +27,14 @@ ms.locfileid: "57841212"
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Możesz połączyć przez wartownika platformy Azure do dowolnego urządzenia Palo Alto Networks zapisując pliki dziennika w formacie Syslog CEF. Integracja z platformy Azure przez wartownika pozwala łatwo uruchamiać analizy i zapytań dla danych pliku dziennika z Palo Alto. Aby uzyskać więcej informacji na temat sposobu przez wartownika Azure pozyskuje dane CEF, zobacz [CEF łączenie urządzeń](connect-common-event-format.md).
+Możesz połączyć przez wartownika platformy Azure do dowolnego urządzenia Palo Alto Networks zapisując pliki dziennika w formacie Syslog CEF. Integracja z platformy Azure przez wartownika pozwala łatwo uruchamiać analizy i zapytań dla danych pliku dziennika z Palo Alto Networks. Aby uzyskać więcej informacji na temat sposobu przez wartownika Azure pozyskuje dane CEF, zobacz [CEF łączenie urządzeń](connect-common-event-format.md).
 
 > [!NOTE]
-> - Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
+> Dane będą przechowywane w lokalizacji geograficznej w obszarze roboczym, na którym są uruchomione przez wartownika platformy Azure.
 
-## <a name="step-1-connect-your-palo-alto-appliance-using-an-agent"></a>Krok 1: Łączenie urządzenia Palo Alto przy użyciu agenta
+## <a name="step-1-connect-your-palo-alto-networks-appliance-using-an-agent"></a>Krok 1: Łączenie urządzenia Palo Alto Networks przy użyciu agenta
 
-Aby połączyć urządzenia Palo Alto przez wartownika platformy Azure, musisz wdrożyć agenta na dedykowanym komputerze (maszyny Wirtualnej lub lokalnie) na potrzeby obsługi komunikacji między urządzeniem i przez wartownika Azure. Agenta można wdrożyć automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
+Aby połączyć urządzenia Palo Alto Networks z platformy Azure przez wartownika, należy wdrożyć agenta na dedykowanym komputerze (maszyny Wirtualnej lub lokalnie) na potrzeby obsługi komunikacji między urządzeniem i przez wartownika Azure. Agenta można wdrożyć automatycznie lub ręcznie. Automatyczne wdrażanie jest dostępna tylko w przypadku dedykowanej maszynie nową maszynę Wirtualną, tworzysz na platformie Azure. 
 
 Alternatywnie można wdrożyć agenta ręcznie na istniejącej Maszynie wirtualnej platformy Azure, na maszynie Wirtualnej w innej chmurze lub na maszynie lokalnej.
 
@@ -46,7 +46,7 @@ Aby wyświetlić diagram sieciowy obie opcje, zobacz [połączyć źródeł dany
 1. W portalu Azure przez wartownika kliknij **zbierania danych** i wybierz typ urządzenia. 
 
 1. W obszarze **konfiguracji agenta systemu Linux Syslog**:
-   - Wybierz **wdrażania automatycznego** Jeśli chcesz utworzyć nową maszynę, jest wstępnie zainstalowany za pomocą agenta usługi Azure przez wartownika, która obejmuje wszystkie niezbędne konfiguracji zgodnie z powyższym opisem. Wybierz **wdrażania automatycznego** i kliknij przycisk **wdrożenia agentami automatycznymi**. Spowoduje to przejście do strony zakupu dla dedykowanych maszynę Wirtualną, która jest automatycznie połączony z obszarem roboczym, jest. Maszyna wirtualna jest **standardowa D2s v3 (2 procesorów wirtualnych vcpu, 8 GB pamięci RAM)** i ma publiczny adres IP.
+   - Wybierz **wdrażania automatycznego** Jeśli chcesz utworzyć nową maszynę, jest wstępnie zainstalowany za pomocą agenta usługi Azure przez wartownika, która obejmuje wszystkie niezbędne konfiguracji zgodnie z powyższym opisem. Wybierz **wdrażania automatycznego** i kliknij przycisk **wdrożenia agentami automatycznymi**. Spowoduje to przejście do strony zakupu dla dedykowanych maszynę Wirtualną, która jest automatycznie połączony z obszarem roboczym, jest. Maszyna wirtualna jest **standardowa D2s v3 (2 procesorów wirtualnych Vcpu, 8 GB pamięci RAM)** i ma publiczny adres IP.
       1. W **wdrożenie niestandardowe** strony, zapewniają szczegółowe informacje i wybierz nazwę użytkownika i hasło i jeśli zgadzasz się na warunki i postanowienia, zakup maszyny Wirtualnej.
       1. Konfigurowanie urządzenia w taki sposób, aby wysłać dzienniki przy użyciu ustawień wymienionych w na stronie połączenia. Łącznik ogólnego Common Event Format Użyj następujących ustawień:
          - Protokół = UDP
@@ -98,12 +98,12 @@ Jeśli nie używasz platformy Azure, ręcznie wdrożyć agenta przez wartownika 
       1. Uruchom ponownie agenta usługi Syslog za pomocą tego polecenia: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Upewnij się, że nie ma żadnych błędów w dzienniku agenta, uruchamiając następujące polecenie: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-palo-alto-logs-to-the-syslog-agent"></a>Krok 2: Do przodu Palo Alto dzienników do agenta usługi Syslog
+## <a name="step-2-forward-palo-alto-networks-logs-to-the-syslog-agent"></a>Krok 2: Przekazywania dzienników Palo Alto Networks z agentem programu Syslog
 
 Skonfiguruj Palo Alto Networks do przesyłania dalej komunikatów Syslog w formacie CEF do obszaru roboczego platformy Azure za pomocą agenta usługi Syslog:
-1.  Przejdź do [przewodniki konfiguracji Common Event Format (CEF)](https://docs.paloaltonetworks.com/resources/cef) i Pobierz plik pdf dla danego typu urządzenia. Wykonaj wszystkie instrukcje w przewodniku, aby skonfigurować urządzenia Palo Alto służąca do gromadzenia zdarzeń CEF. 
+1.  Przejdź do [przewodniki konfiguracji Common Event Format (CEF)](https://docs.paloaltonetworks.com/resources/cef) i Pobierz plik pdf dla danego typu urządzenia. Wykonaj wszystkie instrukcje w przewodniku, aby skonfigurować urządzenia Palo Alto Networks służąca do gromadzenia zdarzeń CEF. 
 
-1.  Przejdź do [Syslog Konfigurowanie monitorowania](https://aka.ms/asi-syslog-paloalto-forwarding) i wykonaj kroki 2 i 3, aby skonfigurować przekazywanie zdarzeń CEF z Twojego urządzenia Palo Alto do platformy Azure przez wartownika.
+1.  Przejdź do [Syslog Konfigurowanie monitorowania](https://aka.ms/asi-syslog-paloalto-forwarding) i wykonaj kroki 2 i 3, aby skonfigurować przekazywanie zdarzeń CEF z Twojego urządzenia Palo Alto Networks do platformy Azure przez wartownika.
 
     1. Upewnij się ustawić **formatu serwera Syslog** do **BSD**.
     1. Upewnij się, możesz ustawić **numer instrumentu** taką samą wartość można ustawić w agencie usługi Syslog.
@@ -130,7 +130,7 @@ Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiaj
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym dokumencie przedstawiono sposób połączyć urządzenia Palo Alto się przez wartownika platformy Azure. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
+W tym dokumencie pokazaliśmy ci, jak połączyć urządzenia Palo Alto Networks z platformy Azure przez wartownika. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
 - Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
 

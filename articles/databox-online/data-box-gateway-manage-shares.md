@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: fd58bf9582663e64e1aefd8193d48d92f51dcd0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 50a505b7f4cc1e8fd840703b1f1aa0111dafdec4
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165671"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400567"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Zarządzanie udziałami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal 
 
 W tym artykule opisano sposób zarządzania udziałami w usłudze Azure Data Box Gateway. Usługą Azure Data Box Gateway można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika. Witryna Azure Portal umożliwia dodawanie, usuwanie i odświeżanie udziałów oraz synchronizowanie klucza magazynu dla konta magazynu skojarzonego z udziałami.
-
-> [!IMPORTANT]
-> - Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="about-shares"></a>Udziały — informacje
 
@@ -132,6 +128,6 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby zsynchronizować k
 > Wystarczy zrobić to raz dla danego konta magazynu. Nie trzeba powtarzać tej czynności dla wszystkich udziałów powiązanych z tym samym kontem magazynu.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [Zarządzać użytkownikami w witrynie Azure Portal](data-box-gateway-manage-users.md).

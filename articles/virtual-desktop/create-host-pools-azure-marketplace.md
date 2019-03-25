@@ -1,22 +1,22 @@
 ---
-title: Utwórz pulę hosta za pomocą portalu Azure Marketplace (wersja zapoznawcza) — platformy Azure
-description: Jak utworzyć pulę hosta Windows pulpitu wirtualnego przy użyciu portalu Azure Marketplace.
+title: Utwórz pulę hosta Windows wirtualnego pulpitu (wersja zapoznawcza) przy użyciu portalu Azure Marketplace — Azure
+description: Jak utworzyć pulę hosta Windows wirtualnego pulpitu (wersja zapoznawcza) przy użyciu portalu Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: a1d172f219580b390ba4855928d6f6a68c8269b9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: cc404c84bf855ab6e49d13207f40b9faa32cdbb2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318113"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399865"
 ---
-# <a name="tutorial-create-a-host-pool-with-azure-marketplace-preview"></a>Samouczek: Utwórz pulę hosta za pomocą portalu Azure Marketplace (wersja zapoznawcza)
+# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Samouczek: Utwórz pulę hosta za pomocą portalu Azure Marketplace
 
-Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy (wersja zapoznawcza) Windows pulpitu wirtualnego. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
+Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy Windows wirtualnego Desktop w wersji zapoznawczej. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
 
 W tym artykule opisano sposób tworzenia puli hosta w ramach dzierżawy Windows pulpitu wirtualnego przy użyciu oferty Microsoft Azure Marketplace. Obejmuje to tworzenie puli hosta w Windows pulpitu wirtualnego, tworząc grupę zasobów z maszynami wirtualnymi w subskrypcji platformy Azure, dołączenie do tych maszyn wirtualnych do domeny usługi Active Directory i rejestrowanie maszyn wirtualnych przy użyciu wirtualnego pulpitu Windows.
 
@@ -64,7 +64,7 @@ Do bloku ustawienia maszyny wirtualnej:
 3. Wybierz sieć wirtualną, który ma połączenie z serwerem usługi Active Directory, a następnie wybierz podsieć do hostowania maszyn wirtualnych.
 4. Kliknij przycisk **OK**.
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Informacje o dzierżawie Windows pulpitu wirtualnego
+### <a name="windows-virtual-desktop-preview-tenant-information"></a>Informacje o dzierżawie Windows wirtualnego pulpitu (wersja zapoznawcza)
 
 Bloku informacji o dzierżawie pulpitu wirtualnego Windows:
 

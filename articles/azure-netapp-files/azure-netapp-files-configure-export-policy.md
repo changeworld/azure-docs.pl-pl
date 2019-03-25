@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie zasad eksportu dla woluminu usługi Azure NetApp Files | Microsoft Docs
-description: W tym artykule opisano sposób konfigurowania zasad eksportu w celu kontrolowania dostępu do woluminu usługi Azure NetApp Files
+title: Konfigurowanie zasad eksportu dla woluminu systemu plików NFS przy użyciu usługi Azure Files NetApp | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania zasad eksportu do kontrolowania dostępu do woluminu systemu plików NFS przy użyciu usługi Azure Files NetApp
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 03/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 1098c5c2f42b242b3ba2f68ec7480de90dd7c22e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766652"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401482"
 ---
-# <a name="configure-export-policy-for-a-volume"></a>Konfigurowanie zasad eksportu dla woluminu
+# <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurowanie zasad eksportu dla woluminu systemu plików NFS
 
-Masz możliwość opcjonalnego skonfigurowania zasad eksportu w celu kontrolowania dostępu do woluminu usługi Azure NetApp Files. 
+Masz możliwość opcjonalnego skonfigurowania zasad eksportu w celu kontrolowania dostępu do woluminu usługi Azure NetApp Files. Eksportowanie zasad jest obsługiwane tylko woluminy systemu plików NFS. 
 
 ## <a name="steps"></a>Kroki 
 
@@ -47,7 +47,7 @@ Masz możliwość opcjonalnego skonfigurowania zasad eksportu w celu kontrolowan
 
     * **Protokoły**   
         Określ, jaki protokół będzie używany przez zasady eksportu.   
-        Obecnie usługa Azure NetApp Files obsługuje tylko protokół NFSv3.
+        Obecnie zasady eksportu plików NetApp Azure obsługuje tylko NFSv3.
 
     ![Zasady eksportu](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

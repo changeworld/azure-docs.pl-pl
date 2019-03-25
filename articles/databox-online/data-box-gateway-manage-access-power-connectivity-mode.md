@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d46d74544181a6b9cbfd049b2f5461b20b928483
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873023"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401446"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Zarządzanie dostępem, power i tryb łączności bramy pola danych platformy Azure (wersja zapoznawcza)
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Zarządzanie dostępem, power i tryb łączności bramy pola danych platformy Azure
 
 W tym artykule opisano sposób zarządzania trybu dostępu, moc i łączności bramy pola danych platformy Azure. Te operacje są wykonywane za pomocą lokalnego Interfejsu w przeglądarce lub w portalu Azure.
 
@@ -26,16 +26,13 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Zarządzanie tryb łączności
 > * Zarządzanie energią
 
-> [!IMPORTANT]
-> Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="manage-device-access"></a>Zarządzanie dostępem do urządzeń
 
-Dostęp do Twojego urządzenia bramy pole danych jest kontrolowany przy użyciu hasła administratora urządzenia. Można zmienić hasło administratora za pomocą lokalnego Interfejsu w przeglądarce. Mogą również resetować hasła administratora urządzenia w witrynie Azure portal.
+Dostęp do Twojego urządzenia bramy pole danych jest kontrolowany przy użyciu hasła urządzenia. Można zmienić hasło przy użyciu lokalnego Interfejsu w przeglądarce. Mogą również resetować hasła urządzenia w witrynie Azure portal.
 
-### <a name="change-device-administrator-password"></a>Zmienianie hasła administratora urządzenia
+### <a name="change-device-password"></a>Zmienianie hasła urządzenia
 
-Wykonaj następujące kroki w interfejsie użytkownika lokalnego, aby zmienić hasło administratora urządzenia.
+Wykonaj następujące kroki w interfejsie użytkownika lokalnego, aby zmienić hasło urządzenia.
 
 1. W lokalnym internetowym interfejsie użytkownika, przejdź do **konserwacji > zmiany hasła**.
 2. Wprowadź bieżące hasło, a następnie nowe hasło. Podane hasło musi mieć długość od 8 do 16 znaków. Hasło musi zawierać 3 z następujących znaków: wielkie litery, małe litery, cyfry i znaki specjalne. Potwierdź nowe hasło.
@@ -44,7 +41,7 @@ Wykonaj następujące kroki w interfejsie użytkownika lokalnego, aby zmienić h
 
 3. Kliknij przycisk **Zmień hasło**.
  
-### <a name="reset-device-administrator-password"></a>Resetowanie hasła administratora urządzenia
+### <a name="reset-device-password"></a>Resetowanie hasła urządzenia
 
 Resetowanie przepływ pracy wymaga od użytkownika przywołać stare hasło i jest przydatne, gdy hasło zostanie utracone. Ten przepływ pracy jest wykonywane w witrynie Azure portal.
 

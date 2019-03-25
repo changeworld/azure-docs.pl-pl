@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 997babef5860488232f0b530c90b44aba6608ac5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5102755c9e830f43fa92e8546e5125960e0a2f9a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008237"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401555"
 ---
 # <a name="about-using-javascript-and-page-contract-versions-in-a-user-flow"></a>O wersji JavaScript i strony umowy w ramach przepływu użytkownika
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Usługa Azure AD B2C zawiera zbiór zawartość pakietu zawierający elementy interfejsu użytkownika w swoich przepływach użytkowników HTML, CSS i JavaScript. Jeśli zamierzasz włączyć [JavaScript](javascript-samples.md) przepływów kodu po stronie klienta w użytkowników, należy mieć pewność, że elementy Twój kod JavaScript jest tworzony na są niezmienne. W przeciwnym razie zmiany może spowodować nieoczekiwane zachowanie na użytkownika strony przepływu. Aby uniknąć tych problemów, można wymusić użycie kontraktu strony dla przepływu użytkownika i określić wersję strony umowy. W ten sposób będzie upewnij się, że wszystkie definicje zawartości, które Twój kod JavaScript jest oparty na niezmienne. Nawet jeśli nie zamierzasz włączyć język JavaScript dla przepływu użytkownika, można określić wersja kontraktu strony stron przepływu użytkownika.
 

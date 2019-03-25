@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ff14afc9e438c2b493219e9fa207b2e8793b3c87
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189210"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403078"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Osadzanie MPEG-DASH adaptacyjne przesyłanie strumieniowe filmów wideo w aplikacji HTML5 z implementacją DASH.js  
 
@@ -55,7 +55,7 @@ Pierwszym krokiem jest utworzenie, standard zawierający HTML strony **wideo** e
 ```
 
 ## <a name="adding-the-dashjs-player"></a>Dodawanie Player implementacją DASH.js
-Aby dodać implementację referencyjną implementacją dash.js do aplikacji, należy do pobrania pliku dash.all.js z wersji 1.0 z implementacją dash.js projektu. To powinien zostać zapisany w folderze JavaScript w aplikacji. Ten plik jest plikiem wygody, który zbiera cały kod z implementacją dash.js niezbędne do pojedynczego pliku. Jeśli masz się wokół repozytorium implementacją dash.js możesz wyszukiwania poszczególnych plików, testowanie kodu i wiele innych, ale jeśli wszystko, czego chcemy jest implementacją dash.js, plik dash.all.js jest to, czego potrzebujesz.
+Aby dodać implementację referencyjną implementacją dash.js do aplikacji, należy do pobrania pliku dash.all.js z najnowszej wersji z implementacją dash.js projektu. To powinien zostać zapisany w folderze JavaScript w aplikacji. Ten plik jest plikiem wygody, który zbiera cały kod z implementacją dash.js niezbędne do pojedynczego pliku. Jeśli masz się wokół repozytorium implementacją dash.js możesz wyszukiwania poszczególnych plików, testowanie kodu i wiele innych, ale jeśli wszystko, czego chcemy jest implementacją dash.js, plik dash.all.js jest to, czego potrzebujesz.
 
 Aby dodać player implementacją dash.js do aplikacji, należy dodać tag skryptu do sekcji head basicPlayer.html:
 

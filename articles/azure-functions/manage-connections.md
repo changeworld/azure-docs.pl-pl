@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 965fa1e82be3fb87bf58a0114f97091bad212738
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 079fe74ec11570b26cbba93e4aba26d7359bef20
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450740"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402375"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Zarządzanie połączeniami w usłudze Azure Functions
 
@@ -57,7 +57,7 @@ public static async Task Run(string input)
 
 Często zadawane pytania dotyczące [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) na platformie .NET jest "Powinien I usunięcia danych klienta?" Ogólnie rzecz biorąc, usuwania obiektów, które implementują `IDisposable` po zakończeniu korzystania z nich. Ale nie dispose statyczne klienta, ponieważ nie są wykonywane przy użyciu jej, gdy funkcja skończy działanie. Kliencki statyczny czas trwania aplikacji na żywo.
 
-### <a name="http-agent-examples-nodejs"></a>Przykłady agenta HTTP (Node.js)
+### <a name="http-agent-examples-javascript"></a>Przykłady agenta HTTP (JavaScript)
 
 Ponieważ zapewnia lepsze połączenia opcji zarządzania, należy użyć natywnych [ `http.agent` ](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) klasy zamiast obce metod, takich jak `node-fetch` modułu. Parametry połączenia są skonfigurowane za pomocą opcji na `http.agent` klasy. Aby uzyskać szczegółowe opcje dostępne za pośrednictwem protokołu HTTP agenta, zobacz [nowy Agent (\[opcje\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
@@ -105,6 +105,25 @@ public static async Task Run(string input)
     await documentClient.UpsertDocumentAsync(collectionUri, document);
     
     // Rest of function
+}
+```
+
+### <a name="cosmosclient-code-example-javascript"></a>Przykładowy kod CosmosClient (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) łączy się z wystąpieniem usługi Azure Cosmos DB. Dokumentacja usługi Azure Cosmos DB zaleca, aby użytkownik [okres istnienia aplikacji za pomocą klienta usługi Azure Cosmos DB pojedyncze](../cosmos-db/performance-tips.md#sdk-usage). Jednym ze wzorców tą operacją w funkcji można znaleźć w poniższym przykładzie:
+
+```javascript
+const cosmos = require('@azure/cosmos');
+const endpoint = process.env.COSMOS_API_URL;
+const masterKey = process.env.COSMOS_API_KEY;
+const { CosmosClient } = cosmos;
+
+const client = new CosmosClient({ endpoint, auth: { masterKey } });
+// All function invocations also reference the same database and container.
+const container = client.database("MyDatabaseName").container("MyContainerName");
+
+module.exports = async function (context) {
+    const { result: itemArray } = await container.items.readAll().toArray();
+    context.log(itemArray);
 }
 ```
 

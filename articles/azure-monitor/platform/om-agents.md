@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 3e11c4dc8aa082723223fb998e599aa514febd3b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d2ecebf47c77baa81193939b64c27348541f7686
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369970"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403412"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Łączenie programu Operations Manager do usługi Azure Monitor
 
@@ -43,9 +43,10 @@ Jeśli Twoje informatyczne zasady zabezpieczeń nie zezwalają na komputerach w 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 Przed rozpoczęciem sprawdź następujące wymagania.
 
-* Usługa Azure Monitor obsługuje wyłącznie System Center Operations Manager 1807, Operations Manager 1801, Operations Manager 2016 Operations Manager 2012 SP1 UR6 lub nowszej, a programu Operations Manager 2012 R2 UR2 lub nowszej. Obsługa serwera proxy została dodana w programach Operations Manager 2012 SP1 UR7 i Operations Manager 2012 R2 UR3.
+* Usługa Azure Monitor obsługuje wyłącznie System Center Operations Manager 2016 lub nowszego, programu Operations Manager 2012 SP1 UR6 lub nowszej, a programu Operations Manager 2012 R2 UR2 lub nowszej. Obsługa serwera proxy została dodana w programach Operations Manager 2012 SP1 UR7 i Operations Manager 2012 R2 UR3.
+* Integracja programu System Center Operations Manager 2016 z chmury dla instytucji rządowych USA wymaga zaktualizowany pakiet zarządzania klasyfikatora się z pakietem zbiorczym aktualizacji 2 lub nowszym. System Center Operations Manager 2012 R2 wymaga zaktualizowany pakiet zarządzania klasyfikatora się z pakietem zbiorczym aktualizacji 3 lub nowszym.
 * Wszystkie agenty programu Operations Manager muszą spełniać minimalne wymagania dotyczące obsługi. Upewnij się, że agenci są przy minimalnej aktualizacji, w przeciwnym razie komunikacji agenta Windows może zakończyć się niepowodzeniem i generować błędy w dzienniku zdarzeń programu Operations Manager.
-* Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, przejrzyj [Omówienie obszaru roboczego usługi Log Analytics](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).
+* Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, przejrzyj [Omówienie obszaru roboczego usługi Log Analytics](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).   
 * Uwierzytelnianie na platformie Azure przy użyciu konta będącego członkiem [roli Współautor usługi Log Analytics](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]

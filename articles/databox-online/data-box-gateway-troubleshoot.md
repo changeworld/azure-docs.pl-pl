@@ -6,23 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: c07293971c4cadd8b7bccc608f69faa3baa19ba7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 86cd4190647586ec47519ca481f78267f8999cef
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100857"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402205"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Rozwiązywanie problemów związanych z usługą Azure Data Box Gateway 
 
-W tym artykule opisano sposoby rozwiązywania problemów z usługą Azure Data Box Gateway. 
-
-> [!IMPORTANT]
-> - Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-W tym artykule omówiono sposób wykonywania następujących zadań:
+W tym artykule opisano sposoby rozwiązywania problemów z usługą Azure Data Box Gateway. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Uruchamianie diagnostyki
@@ -53,7 +48,7 @@ Wykonaj następujące czynności, aby zebrać pakiet dla pomocy technicznej.
 
     ![Klikanie przycisku Dodaj użytkownika](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. Po utworzeniu pakietu dla pomocy technicznej kliknij przycisk **Pobierz pakiet dla pomocy technicznej**. Skompresowany pakiet zostanie pobrany w wybranej ścieżce. Można rozpakować pakiet i wyświetlić systemowe pliki dziennika.
+2. Po utworzeniu pakietu dla pomocy technicznej kliknij przycisk **Pobierz pakiet dla pomocy technicznej**. Skompresowany pakiet zostanie pobrany w wybranej ścieżce. Można rozpakować pakiet.
 
     ![Klikanie przycisku Dodaj użytkownika](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 

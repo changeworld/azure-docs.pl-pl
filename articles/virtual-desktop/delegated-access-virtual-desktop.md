@@ -1,22 +1,22 @@
 ---
-title: Delegowanego dostępu w Windows pulpitu wirtualnego (wersja zapoznawcza) — platformy Azure
-description: Jak delegować funkcje administracyjne we wdrożeniu Windows pulpitu wirtualnego, wraz z przykładami.
+title: Delegowanego dostępu w Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
+description: Jak delegować funkcje administracyjne we wdrożeniu Windows wirtualnego Desktop w wersji zapoznawczej, wraz z przykładami.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 49645b697071abb8a2f8c85ebde1e6761a3536ab
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336103"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400011"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegowanego dostępu w Windows pulpitu wirtualnego (wersja zapoznawcza)
+# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegowany dostęp w wersji zapoznawczej pulpitu wirtualnego Windows
 
-Windows pulpitu wirtualnego (wersja zapoznawcza) ma modelu delegowanego dostępu, który pozwala zdefiniować ilość dostępu, który jest dany użytkownik może mieć, przypisując im rolę. Przypisanie roli ma trzy składniki: podmiot zabezpieczeń, definicja roli i zakresu. Model delegowanego dostępu Windows pulpitu wirtualnego jest oparty na modelu RBAC platformy Azure. Aby dowiedzieć się więcej na temat przypisania ról określonych oraz ich składników, zobacz [Omówienie kontroli dostępu opartej na rolach na platformie Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
+Windows wirtualnego pulpitu (wersja zapoznawcza) ma modelu delegowanego dostępu, który pozwala zdefiniować ilość dostępu, który jest dany użytkownik może mieć, przypisując im rolę. Przypisanie roli ma trzy składniki: podmiot zabezpieczeń, definicja roli i zakresu. Model delegowanego dostępu Windows pulpitu wirtualnego jest oparty na modelu RBAC platformy Azure. Aby dowiedzieć się więcej na temat przypisania ról określonych oraz ich składników, zobacz [Omówienie kontroli dostępu opartej na rolach na platformie Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
 
 Pulpit wirtualny Windows delegowanego dostępu obsługuje następujące wartości dla każdego elementu przypisania roli:
 
@@ -66,4 +66,4 @@ Można zmodyfikować podstawowe trzy polecenia cmdlet z następującymi parametr
 
 Aby uzyskać bardziej szczegółowy wykaz każda rola może używać poleceń cmdlet programu PowerShell, zobacz [dokumentacja programu PowerShell](/powershell/windows-virtual-desktop/overview).
 
-Aby uzyskać wskazówki dotyczące sposobu konfigurowania środowiska pulpitu wirtualnego Windows, zobacz [skonfiguruj środowisko pulpitu wirtualnego Windows](environment-setup.md).
+Aby uzyskać wskazówki dotyczące sposobu konfigurowania środowiska pulpitu wirtualnego Windows, zobacz [środowisko w wersji zapoznawczej pulpitu wirtualnego Windows](environment-setup.md).

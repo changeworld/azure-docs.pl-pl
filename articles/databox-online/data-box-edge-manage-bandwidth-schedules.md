@@ -6,23 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/12/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 2c8d21a9494bace7d60b90637450cb10a5f3576e
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: f88003e38a34eb3396b83158ff71e4739080cd9d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58109362"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401404"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>Użyj witryny Azure portal do zarządzania harmonogramami przepustowości na krawędzi sieci Azure Data Box  
 
 W tym artykule opisano, jak zarządzać użytkownikami na krawędzi sieci Azure Data Box. Harmonogramy przepustowości pozwalają konfigurować użycie przepustowości sieci w wielu harmonogramach dotyczących pory dnia. Te harmonogramy można zastosować do operacji przekazywania i pobierania wykonywanych z urządzenia do chmury.
 
 Możesz dodawać, modyfikowanie lub usuwanie harmonogramów przepustowości dla usługi Edge pola danych za pośrednictwem witryny Azure portal.
-
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 

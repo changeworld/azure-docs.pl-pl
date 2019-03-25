@@ -2,23 +2,18 @@
 title: Co to jest Azure Reservations? | Microsoft Docs
 description: Więcej informacji na temat rezerwacji platformy Azure i ceny, aby zaoszczędzić na maszynach wirtualnych, baz danych SQL, Azure Cosmos DB i innych kosztów zasobów.
 services: billing
-documentationcenter: ''
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/06/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: a4ad3574849d3c80f671abc93e463b06454289e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3081ab352152d6d736f20da94ed0b513121e231b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904171"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401797"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
@@ -44,17 +39,11 @@ Dla maszyn wirtualnych Windows i usługi SQL Database, mogą obejmują koszty li
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kto może skorzystać kupić rezerwację?
 
-Klienci platformy Azure z następujących typów subskrypcji kupić rezerwację:
+Aby kupić plan, musi mieć rolę właściciela subskrypcji w subskrypcji płatności (MS-AZR - 003P lub MS-AZR - 0023P) lub Enterprise (MS-AZR - 0017P lub MS-AZR - 0148P). Dostawców rozwiązań w chmurze można użyć witryny Azure portal lub [Centrum partnerskiego](/partner-center/azure-reservations) do zakupu rezerwacji platformy Azure.
 
-- Enterprise agreement typu oferty subskrypcji (MS-AZR - 0017P lub MS-AZR - 0148P).
-- Płatność za rzeczywiste użycie typu oferty subskrypcji (MS-AZR - 003P lub MS-AZR - 0023P).
-- Partnerzy programu cloud Solution Provider (CSP) mogą korzystać z portalu Azure lub [Centrum partnerskiego](https://docs.microsoft.com/partner-center/azure-reservations) do zakupu rezerwacji platformy Azure.
+Klienci z umową EA, można ograniczyć zakupów dla administratorów umowy EA, wyłączając **Dodawanie wystąpień zarezerwowanych** opcji w portalu EA. Administratorzy EA musi być właścicielem subskrypcji dla co najmniej jednej subskrypcji umowy EA, aby kupić rezerwację. Opcja jest przydatna dla przedsiębiorstw, które scentralizowane zespołu do zakupu rezerwacji dla centrów kosztów. Po zakupie zespoły scentralizowanego można dodać właścicieli Centrum kosztów do rezerwacji. Właściciele mogą następnie zakresu rezerwacji do swojej subskrypcji. Centralny zespół nie musi mieć dostęp właściciela subskrypcji, w którym zakupu rezerwacji.
 
 Rabat związany z rezerwacją dotyczy tylko zasobów skojarzonych z typów subskrypcji Enterprise, płatność za rzeczywiste użycie lub dostawcy usług Kryptograficznych.
-
- Aby kupić plan:
-
-- Musisz być w roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.
 
 ## <a name="how-is-a-reservation-billed"></a>Jak jest rozliczana rezerwacji
 

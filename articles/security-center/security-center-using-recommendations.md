@@ -3,7 +3,7 @@ title: Usługa Azure Security Center zaleceń, aby zwiększyć poziom bezpiecze�
 description: " Dowiedz się, jak używać zasad zabezpieczeń i zalecenia w usłudze Azure Security Center aby ułatwić uniknięcie atak na zabezpieczenia. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/2/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5ff59a9ed7dc44bb7a4176f7a174be1e7d0ec9b6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 3/24/2019
+ms.author: monhaber
+ms.openlocfilehash: 8c8108697e39153aef8727942c166a741cb8398c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104910"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402766"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Usługa Azure Security Center zaleceń, aby zwiększyć poziom bezpieczeństwa
-Konfigurowanie zasad zabezpieczeń, a następnie wdrażanie zaleceń dotyczących, dostarczone przez usługę Azure Security Center może zmniejszyć prawdopodobieństwo zdarzeń zabezpieczeń. W tym artykule przedstawiono sposób używania zasad zabezpieczeń i zalecenia w usłudze Security Center, aby ułatwić uniknięcie atak na zabezpieczenia.
+Konfigurowanie zasad zabezpieczeń, a następnie wdrażanie zaleceń dotyczących, dostarczone przez usługę Azure Security Center może zmniejszyć prawdopodobieństwo zdarzeń zabezpieczeń. W tym artykule przedstawiono sposób używania zasad zabezpieczeń i zalecenia w usłudze Security Center, aby ułatwić uniknięcie atak na zabezpieczenia. 
 
-Usługa Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania kontroli zabezpieczeń potrzebne.
+Usługa Security Center automatycznie uruchamia ciągłe skanowania, aby analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania kontroli zabezpieczeń potrzebne. Usługa Security Center aktualizuje zalecenia co 24 godziny.
 
 ## <a name="scenario"></a>Scenariusz
 W tym scenariuszu pokazano, jak zmniejszają prawdopodobieństwo wystąpienia zdarzenia zabezpieczeń, monitorując zaleceń usługi Security Center i podjęcia działań za pomocą usługi Security Center. Scenariuszu fikcyjnej firmy, Contoso i ról znajdujące się w Centrum zabezpieczeń [przewodnik planowania i obsługi](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). W tym scenariuszu firma Microsoft jest koncentrujących się na rolach następujących:

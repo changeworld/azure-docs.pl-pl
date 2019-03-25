@@ -7,12 +7,12 @@ ms.date: 03/23/2019
 author: twooley
 ms.author: twooley
 ms.subservice: blobs
-ms.openlocfilehash: 16ecade7a8d0049e098bb06bd14828b19934f5f5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f4d3e3ad923b6a603902bc007107cb41dae8cf6c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373048"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400461"
 ---
 # <a name="create-a-block-blob-storage-account"></a>Utwórz konto magazynu blokowych obiektów blob
 
@@ -54,7 +54,7 @@ Aby utworzyć konto usługi block blob storage w witrynie Azure portal, wykonaj 
 
 1. Wybierz pozycję **Utwórz**.
 
-### <a name="create-account-using-azure-powershell"></a>Tworzenie konta przy użyciu programu Azure PowerShell
+## <a name="create-account-using-azure-powershell"></a>Tworzenie konta przy użyciu programu Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 8adec2986a286e55ee71f0fddca695d1800b5317
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: fb61567818196c3b501819534a1e5b406c06e8b9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167192"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403735"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Zarządzanie użytkownikami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal 
 
 W tym artykule opisano sposób zarządzania użytkownikami w usłudze Azure Data Box Gateway. Usługą Azure Data Box Gateway można zarządzać w witrynie Azure Portal lub za pomocą lokalnego internetowego interfejsu użytkownika. Witryna Azure Portal umożliwia dodawanie, modyfikowanie i usuwanie użytkowników.
-
-> [!IMPORTANT]
-> - Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -52,7 +49,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby dodać użytkownik
     ![Klikanie przycisku Dodaj użytkownika](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
-    > Oto użytkownicy zarezerwowani przez system, których nie należy używać: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
+    > Ci użytkownicy są zastrzeżone przez system i nie powinny być używane: Administrator, EdgeUser EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, konta domyślnego, gościa.  
 
 3. Otrzymasz powiadomienie, gdy tworzenie użytkownika zostanie rozpoczęte i zakończone. Po utworzeniu użytkownika na pasku poleceń kliknij przycisk **Odśwież**, aby wyświetlić zaktualizowaną listę użytkowników.
 
@@ -81,6 +78,6 @@ Lista użytkowników zostanie zaktualizowana w celu uwzględnienia usuniętego u
 ![Usuwanie użytkownika](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [zarządzać przepustowością](data-box-gateway-manage-bandwidth-schedules.md).

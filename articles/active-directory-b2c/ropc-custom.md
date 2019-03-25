@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 816d25473bfe5f9dc61d6d6f2e50d6cd82ace50c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 265f1405a8779cdca101f18cf37b64f1933c2ff3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562200"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400758"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurowanie zasobów przepływ poświadczeń hasła właściciela w usłudze Azure Active Directory B2C za pomocą zasad niestandardowych
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 W usłudze Azure Active Directory (Azure AD) B2C zasobów przepływ poświadczeń hasła właściciela (ROPC) jest przepływ standardowego uwierzytelniania OAuth. W tym przepływie aplikacji, znany także jako podmiotu zależnego wymienia prawidłowe poświadczenia dla tokenów. Poświadczenia obejmują nazwę użytkownika i hasło. Tokeny, zwracane są tokenu identyfikator, token dostępu i token odświeżania.
 
@@ -42,9 +42,9 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych w usłudze Azure Active Di
 ## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
-4. Wybierz **aplikacje**, a następnie wybierz pozycję **Dodaj**.
+2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
+4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, taką jak *ROPC_Auth_app*.
 6. Wybierz **nie** dla **interfejsu API sieci Web i aplikacji sieci Web**, a następnie wybierz pozycję **tak** dla **Native client**.
 7. Pozostaw inne wartości, ponieważ są, a następnie wybierz **Utwórz**.

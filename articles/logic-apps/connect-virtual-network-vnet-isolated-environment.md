@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 9cb3abff10482ec7e58b4b049f051e99178cb742
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2f84c48092581a313ff7bead7a862221e0fe4eee
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371990"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400919"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
@@ -49,9 +49,9 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
   * Twoja sieć wirtualna musi mieć cztery *pusty* podsieci w celu wdrażania i tworzenia zasobów w Twojej ISE. Te podsieci można utworzyć wcześniej lub możesz poczekać do czasu utworzenia Twojego środowiska ISE, gdzie można utworzyć podsieci, w tym samym czasie. Dowiedz się więcej o [wymagania podsieci](#create-subnet). 
   
     > [!NOTE]
-    > Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), zapewniającą prywatnego połączenia z usługami w chmurze firmy Microsoft, należy najpierw [Dodaj następujące trasy do każdej podsieci](../virtual-network/virtual-network-manage-subnet.md) używane przez usługi platformy ISE. Jeśli używasz tabeli tras podsieci, [dodać następującą trasę do tabeli tras](../virtual-network/manage-route-table.md):
+    > Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), zapewniającą prywatnego połączenia z usługami w chmurze firmy Microsoft, należy najpierw [Utwórz tabelę tras](../virtual-network/manage-route-table.md) ma następujące trasy i połączyć tę tabelę z każdej podsieci używane przez usługi platformy ISE:
     > 
-    > **Nazwa**: D3655BASE-route<br>
+    > **Nazwa**: <*nazwa trasy*><br>
     > **Prefiks adresu**: 0.0.0.0/0<br>
     > **Dla następnego przeskoku**: Internet
 
@@ -146,9 +146,9 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
      Aby dowiedzieć się więcej na temat obliczania adresów, zobacz [bloków IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
-   * Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), pamiętaj, aby [Dodaj następujące trasy do każdej podsieci](../virtual-network/virtual-network-manage-subnet.md) używane przez usługi platformy ISE. Jeśli używasz tabeli tras podsieci, [Dodaj następujące trasy do tej tabeli tras](../virtual-network/manage-route-table.md):
+   * Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), pamiętaj, aby [Utwórz tabelę tras](../virtual-network/manage-route-table.md) ma następujące trasy i połączyć tę tabelę z każdej podsieci używane przez usługi platformy ISE:
 
-     **Nazwa**: D3655BASE-route<br>
+     **Nazwa**: <*nazwa trasy*><br>
      **Prefiks adresu**: 0.0.0.0/0<br>
      **Dla następnego przeskoku**: Internet
 

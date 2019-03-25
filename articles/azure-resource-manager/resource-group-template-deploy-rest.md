@@ -10,28 +10,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd574eb2d3537d3e5c0774f57e37283817cc7879
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3468f5b625911cd637b22e2c1d35a47fb7d7b0e4
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112028"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402834"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)
 
 W tym artykule wyjaśniono, jak używać interfejsu REST API usługi Resource Manager przy użyciu szablonów usługi Resource Manager do wdrażania zasobów na platformie Azure.  
 
-> [!TIP]
-> Aby uzyskać pomoc w debugowaniu wystąpił błąd podczas wdrażania zobacz:
-> 
-> * [Wyświetlanie operacji wdrażania](resource-manager-deployment-operations.md) Aby dowiedzieć się więcej o pobieraniu informacje ułatwiające rozwiązywanie problemów z błędu
-> * [Rozwiązywanie typowych problemów podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md) dowiesz się, jak rozwiązywać typowe błędy związane z wdrażaniem
-> 
-> 
-
 Można dołączyć do szablonu w treści żądania lub link do pliku. Podczas korzystania z pliku, można go w lokalnym pliku lub pliku zewnętrznego, który jest dostępny za pośrednictwem identyfikatora URI. Gdy szablon będzie na koncie magazynu, można ograniczyć dostęp do szablonu, a także dostarczają token sygnatury (SAS) dostępu współdzielonego podczas wdrażania.
+
+## <a name="deployment-scope"></a>Zakres wdrożenia
+
+Można wskazać wdrożenia do subskrypcji platformy Azure lub grupy zasobów w ramach subskrypcji. W większości przypadków będzie wskazywać wdrożenie w grupie zasobów. Subskrypcja wdrożeń umożliwiają stosowanie zasad i przypisań ról w ramach subskrypcji. Subskrypcja wdrożeń możesz także użyć do tworzenia grupy zasobów i wdrażania zasobów. W zależności od zakresu wdrożenia możesz używać różnych poleceń.
+
+Aby wdrożyć **grupy zasobów**, użyj [tworzenie wdrożenia -](/rest/api/resources/deployments/createorupdate).
+
+Aby wdrożyć **subskrypcji**, użyj [wdrożenia — Utwórz w zakres subskrypcji](/rest/api/resources/deployments/createorupdateatsubscriptionscope).
+
+W przykładach w tym artykule używany wdrożenia grupy zasobów. Aby uzyskać więcej informacji o wdrożeniach subskrypcji, zobacz [tworzenia grupy zasobów i zasobów na poziomie subskrypcji](deploy-to-subscription.md).
 
 ## <a name="deploy-with-the-rest-api"></a>Wdrażanie przy użyciu interfejsu API REST
 1. Ustaw [wspólnych parametrów i nagłówki](/rest/api/azure/), łącznie z tokenami uwierzytelniania.

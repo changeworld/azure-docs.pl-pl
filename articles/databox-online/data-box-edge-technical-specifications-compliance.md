@@ -8,19 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 8ef35709e90c0a58cc0ff8df1afb6e864adc0a23
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ab3d3a13f8bfa69bd9e13dae344cfbcc3731cc77
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57994718"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402596"
 ---
-# <a name="azure-data-box-edge-technical-specifications-preview"></a>Specyfikacja techniczna systemu Azure krawędź pola danych (wersja zapoznawcza)
+# <a name="azure-data-box-edge-technical-specifications"></a>Usługa Azure specyfikacji technicznej krawędź pola danych
 
 Składniki sprzętowe w urządzeniu pole danych platformy Azure przeglądarki Microsoft Edge stosować się do specyfikacji technicznych i standardowych wymagań prawnych opisane w tym artykule. Specyfikacja techniczna opisują jednostki dostaw zasilania (PSUs), pojemność pamięci masowej, obudów i standardów środowiska. 
-
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="power-supply-unit-specifications"></a>Specyfikacje jednostki dostaw energii
 
@@ -28,7 +25,7 @@ Urządzenie brzegowe pole danych ma dwa 100 – 240 V dostaw jednostki zasilania
 
 | Specyfikacja           | 750 ZASILANIA W                  |
 |-------------------------|----------------------------|
-| Maksymalna moc zasilania    |  750 W                     |
+| Maksymalna moc zasilania    | 750 W                     |
 | Częstotliwość               | 50/60 Hz                   |
 | Wybór zakresu napięcia | Auto, zakresu: 100-240 V AC |
 | Hot plug           | Yes                        |

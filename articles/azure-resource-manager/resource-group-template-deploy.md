@@ -10,38 +10,51 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: daeff897cf284df6e820afbcdd35ee54bf88db08
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8005b187f300375b62c254516a61f4993675b0b9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405406"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403112"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)
 
 Dowiedz się, jak używać programu Azure PowerShell przy użyciu szablonów usługi Resource Manager do wdrażania zasobów na platformie Azure. Aby uzyskać więcej informacji na temat pojęć związanych z wdrażaniem i zarządzaniem nimi Twoich rozwiązań platformy Azure, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).
 
-Aby wdrożyć szablon, potrzebne są zazwyczaj dwa kroki:
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Utwórz grupę zasobów. Grupa zasobów służy jako kontener dla wdrożonych zasobów. Nazwa grupy zasobów może zawierać tylko znaki alfanumeryczne, kropki, podkreślenia, łączniki i nawiasy. Może być maksymalnie 90 znaków. Nie może kończyć się kropką.
-2. Wdrażanie szablonu. Szablon definiuje zasoby do utworzenia.  Wdrożenie utworzy zasoby w określonej grupie zasobów.
+## <a name="deployment-scope"></a>Zakres wdrożenia
 
-Ta metoda wdrażania dwuetapowej jest używana w tym artykule.  Inną możliwością jest wdrażanie grupy zasobów i zasobów, w tym samym czasie.  Aby uzyskać więcej informacji, zobacz [Tworzenie grupy zasobów i wdrażanie zasobów](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+Można wskazać wdrożenia do subskrypcji platformy Azure lub grupy zasobów w ramach subskrypcji. W większości przypadków będzie wskazywać wdrożenie w grupie zasobów. Subskrypcja wdrożeń umożliwiają stosowanie zasad i przypisań ról w ramach subskrypcji. Subskrypcja wdrożeń możesz także użyć do tworzenia grupy zasobów i wdrażania zasobów. W zależności od zakresu wdrożenia możesz używać różnych poleceń.
+
+Aby wdrożyć **grupy zasobów**, użyj [New AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+```
+
+Aby wdrożyć **subskrypcji**, użyj [New AzDeployment](/powershell/module/az.resources/new-azdeployment):
+
+```azurepowershell
+New-AzDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+W przykładach w tym artykule używany wdrożenia grupy zasobów. Aby uzyskać więcej informacji o wdrożeniach subskrypcji, zobacz [tworzenia grupy zasobów i zasobów na poziomie subskrypcji](deploy-to-subscription.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+Potrzebne do wdrożenia szablonu. Jeśli nie masz jeszcze jeden, Pobierz i Zapisz [przykładowy szablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z repozytorium szablonów szybkiego startu platformy Azure. Nazwa pliku lokalnego, używane w tym artykule jest **c:\MyTemplates\azuredeploy.json**.
+
 Jeśli nie używasz [usługa Azure Cloud shell](#deploy-templates-from-azure-cloud-shell) do wdrażania szablonów, należy zainstalować program Azure PowerShell i łączenie z platformą Azure:
+
 - **Zainstaluj polecenia cmdlet programu Azure PowerShell na komputerze lokalnym.** Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](/powershell/azure/get-started-azureps).
 - **Połącz z platformą Azure za pomocą [Connect AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Jeśli masz wiele subskrypcji platformy Azure, być może trzeba będzie również uruchomić [AzContext zestaw](/powershell/module/Az.Accounts/Set-AzContext). Aby uzyskać więcej informacji, zobacz [użycie większej liczby subskrypcji platformy Azure](/powershell/azure/manage-subscriptions-azureps).
-- * Pobrać i zapisać [szablon szybkiego startu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) . Nazwa pliku lokalnego, używane w tym artykule jest **c:\MyTemplates\azuredeploy.json**.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="deploy-local-template"></a>Wdrażanie lokalnego szablonu
 
-## <a name="deploy-templates-stored-locally"></a>Wdrażanie szablonów przechowywanych lokalnie
-
-Poniższy przykład tworzy grupę zasobów i służy do wdrażania szablonu z komputera lokalnego:
+Poniższy przykład tworzy grupę zasobów i służy do wdrażania szablonu z maszyny lokalnej. Nazwa grupy zasobów może zawierać tylko znaki alfanumeryczne, kropki, podkreślenia, łączniki i nawiasy. Może być maksymalnie 90 znaków. Nie może kończyć się kropką.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -52,11 +65,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
-Note *c:\MyTemplates\azuredeploy.json* is a quickstart template.  Zobacz [Wymagania wstępne](#prerequisites).
-
 Wdrożenie może potrwać kilka minut.
 
-## <a name="deploy-templates-stored-externally"></a>Wdrażanie szablonów przechowywane zewnętrznie
+## <a name="deploy-remote-template"></a>Wdrażanie szablonu zdalnego
 
 Zamiast przechowywać szablonów usługi Resource Manager na komputerze lokalnym, użytkownik może chcieć przechowywać je w lokalizacji zewnętrznej. Szablony można przechowywać w repozytorium kontroli źródła (na przykład GitHub). Lub można przechowywać na koncie magazynu platformy Azure w celu zapewnienia dostępu współdzielonego w Twojej organizacji.
 
@@ -73,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 Poprzedni przykład wymaga publicznie identyfikator URI dla szablonu, który działa w przypadku większości scenariuszy, ponieważ szablon nie powinna zawierać dane poufne. Jeśli musisz określić dane poufne (na przykład hasło administratora), należy przekazać tę wartość jako parametru secure. Jednak jeśli nie chcesz, aby szablon był dostępny publicznie, można go chronić dzięki przechowywaniu go w kontenerze magazynu prywatnego. Aby uzyskać informacji o wdrażaniu szablonu, który wymaga tokenu (SAS) sygnatury dostępu współdzielonego, zobacz [wdrażanie prywatnego szablonu przy użyciu tokenu sygnatury dostępu Współdzielonego](resource-manager-powershell-sas-token.md). Aby wykonać kroki samouczka, zobacz [samouczka: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md).
 
-## <a name="deploy-templates-from-azure-cloud-shell"></a>Wdrażanie szablonów z usługi Azure Cloud shell
+## <a name="deploy-from-azure-cloud-shell"></a>Wdrażanie z usługi Azure Cloud shell
 
 Możesz użyć [usługi Azure Cloud Shell](https://shell.azure.com) do wdrażania szablonu. Aby wdrożyć szablon zewnętrznych, podaj identyfikator URI szablonu. Aby wdrożyć szablon lokalnego, musisz najpierw załadować swój szablon do konta magazynu dla usługi Cloud Shell. Aby przekazać pliki do powłoki, wybierz **przekazywanych/pobieranych plików** ikonę menu z okna powłoki.
 
@@ -89,10 +100,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 ```
 
 Aby wkleić kod w powłoce, kliknij prawym przyciskiem myszy wewnątrz powłoki, a następnie wybierz pozycję **Wklej**.
-
-## <a name="deploy-to-multiple-resource-groups-or-subscriptions"></a>Wdrażanie w wielu grupach zasobów lub subskrypcjach
-
-Zazwyczaj można wdrażać wszystkich zasobów w szablonie do pojedynczej grupy zasobów. Jednak istnieją scenariusze, w której chcesz wdrożyć zestaw zasobów ze sobą, ale umieścić je w różnych grupach zasobów lub subskrypcji. Można wdrożyć tylko pięć grup zasobów w ramach pojedynczego wdrożenia. Aby uzyskać więcej informacji, zobacz [wdrażania zasobów platformy Azure do wielu grup zasobów i subskrypcji](resource-manager-cross-resource-group-deployment.md).
 
 ## <a name="redeploy-when-deployment-fails"></a>Wdróż ponownie, gdy wdrożenie zakończy się niepowodzeniem
 

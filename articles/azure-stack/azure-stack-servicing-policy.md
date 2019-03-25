@@ -16,12 +16,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: b358609526c61b5acab83c02bdedd8cc06721425
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a61820dc05752d43774b13399d071c5a2be98483
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536489"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400530"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
 
@@ -35,7 +35,7 @@ Miesięczne pakiety aktualizacji znajdują się w bezpieczny punkt końcowy plat
 
 Pakiety aktualizacji poprawki znajdują się w tej samej bezpieczny punkt końcowy platformy Azure. Możesz pobrać je ręcznie przy użyciu łącza osadzonego we wszystkich artykułach bazy wiedzy odpowiednich poprawek; na przykład [usługi Azure Stack poprawkę 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Podobnie jak pakiety aktualizacji pełną, miesięczną, Operatorzy usługi Azure Stack można pobrać plików XML, bin i .exe i zaimportować je za pomocą procedury w [stosowanie aktualizacji w usłudze Azure Stack](azure-stack-apply-updates.md). Operatorzy usługi Azure Stack przy użyciu jednostek skalowania połączonych zobaczą poprawki są automatycznie wyświetlane w portalu administratora z komunikatem **dostępna aktualizacja**.
 
-Jeśli chcesz otrzymywać powiadomienia o każdym wydaniu poprawek jednostki skalowania nie jest połączony, Subskrybuj [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … ) lub [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …) kanał zauważyć w każdej wersji.  
+Jeśli chcesz otrzymywać powiadomienia o każdym wydaniu poprawek jednostki skalowania nie jest połączony, Subskrybuj [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) lub [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) kanał zauważyć w każdej wersji.  
 
 ## <a name="update-package-types"></a>Typy pakietów aktualizacji
 

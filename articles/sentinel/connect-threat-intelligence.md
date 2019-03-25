@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c5a7dc08886e21ef8e287540d9139ec555b11a2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242296"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400628"
 ---
 # <a name="collect-data-from-threat-intelligence-providers"></a>Zbieranie danych od dostawców analizy zagrożeń 
 
@@ -31,6 +31,8 @@ Po obejmuje strumieniowe przesyłanie danych do platformy Azure przez wartownika
 Umożliwia wielu sprawdzić alerty i reguły z analizy zagrożeń wartość true, jeśli alert zostanie wygenerowany z określonego adresu IP, na przykład integracją dostawcy analizy zagrożeń będą mogli Cię powiadomić, jeśli ten adres IP ostatnio stwierdzono, być złośliwy , Wartownik platformy azure umożliwia integrację z [dostawców analizy zagrożeń](https://aka.ms/graphsecuritytips). 
 
 Można przesyłać strumieniowo dzienniki z dostawców analizy zagrożeń na platformie Azure przez wartownika, za pomocą jednego kliknięcia. To połączenie umożliwia dołączenie wskaźniki zawierające różne rodzaje dostrzegalne elementy, takie jak adres IP, domeny, adres URL i skrótu pliku, wyszukiwanie i tworzenie niestandardowych alertów reguły w przez wartownika platformy Azure.  
+> [!NOTE]
+> Można wpisać wskaźniki dostosowane przed zagrożeniami na platformie Azure przez wartownika do użycia w reguł alertów, pulpitów nawigacyjnych i myślistwo scenariuszy dzięki integracji z usługą [tiIndicator Microsoft Graph Security](https://aka.ms/graphsecuritytiindicators) jednostki lub za pomocą [firmy Microsoft Wykres zabezpieczenia zintegrowane platformy analizy zagrożeń](https://aka.ms/graphsecuritytips).
 
 ## <a name="prerequisites"></a>Wymagania wstępne  
 

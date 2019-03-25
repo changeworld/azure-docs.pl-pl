@@ -1,22 +1,22 @@
 ---
-title: Utwórz dzierżawę w Windows pulpitu wirtualnego (wersja zapoznawcza) — platformy Azure
-description: W tym artykule opisano sposób konfigurowania dzierżaw pulpitu wirtualnego Windows w usłudze Azure Active Directory.
+title: Tworzenie dzierżawy w Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
+description: W tym artykule opisano sposób konfigurowania dzierżaw Windows wirtualnego pulpitu (wersja zapoznawcza) w usłudze Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 26bcae12ee5e053289dd18c9f378eff43a0b0e04
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b8b5c2cef1db5018ce0d61e1950f49a3bd215ac2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368174"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402902"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Samouczek: Utwórz dzierżawę w Windows pulpitu wirtualnego (wersja zapoznawcza)
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Samouczek: Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego Windows
 
-Tworzenie dzierżawy w Windows pulpitu wirtualnego (wersja zapoznawcza) to pierwszy krok w kierunku zbudowaniu rozwiązania do wirtualizacji pulpitu. Dzierżawa to grupy co najmniej jedna pula hosta. Każda pula hosta składa się z wielu hostów sesji, uruchomione jako maszyny wirtualne na platformie Azure i zarejestrowane w usłudze Windows pulpitu wirtualnego. Każda pula hosta również składa się z co najmniej jedną grupę aplikacji, które są używane do publikowania zasobów zdalnego pulpitu i zdalnej aplikacji dla użytkowników. Z dzierżawą można budować pule hosta, tworzenie grupy aplikacji, przypisywanie użytkowników i nawiązywać połączenia za pośrednictwem usługi.
+Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego Windows jest pierwszy krok w kierunku zbudowaniu rozwiązania do wirtualizacji pulpitu. Dzierżawa to grupy co najmniej jedna pula hosta. Każda pula hosta składa się z wielu hostów sesji, uruchomione jako maszyny wirtualne na platformie Azure i zarejestrowane w usłudze Windows pulpitu wirtualnego. Każda pula hosta również składa się z co najmniej jedną grupę aplikacji, które są używane do publikowania zasobów zdalnego pulpitu i zdalnej aplikacji dla użytkowników. Z dzierżawą można budować pule hosta, tworzenie grupy aplikacji, przypisywanie użytkowników i nawiązywać połączenia za pośrednictwem usługi.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -32,7 +32,7 @@ Oto, co jest potrzebne do skonfigurowania dzierżawy pulpitu wirtualnego Windows
    * Dotyczy to również organizacjom Cloud Solution Provider (CSP), tworzenia dzierżawy pulpitu wirtualnego Windows dla swoich klientów. Jeśli w organizacji dostawcy usług Kryptograficznych, należy zalogować się jako administrator globalny przez klienta usługi Azure Active Directory.
 * Identyfikator subskrypcji platformy Azure
 
-## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-service"></a>Uprawnienia GRANT usługi Azure Active Directory z usługą Windows pulpitu wirtualnego
+## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Uprawnienia GRANT usługi Azure Active Directory z usługą Windows wirtualnego pulpitu (wersja zapoznawcza)
 
 Jeśli masz już uprawnień do pulpitu wirtualnego Windows dla tej usługi Azure Active Directory, należy pominąć tę sekcję.
 
@@ -66,7 +66,7 @@ Aby przypisać rolę TenantCreator aplikacji przy użyciu konta administratora g
    - Dla uproszczenia może to być konto administratora globalnego.
 6. Wybierz konto użytkownika, kliknij przycisk **wybierz** przycisk, a następnie wybierz **przypisać**.
 
-## <a name="create-a-windows-virtual-desktop-tenant"></a>Tworzenie dzierżawy Windows pulpitu wirtualnego
+## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Tworzenie dzierżawy Windows wirtualnego pulpitu (wersja zapoznawcza)
 
 Skoro już przyznane uprawnienia usługi pulpitu wirtualnego Windows do wykonywania zapytań w usłudze Azure Active Directory i przypisano rolę TenantCreator do konta użytkownika, możesz utworzyć dzierżawę Windows pulpitu wirtualnego.
 

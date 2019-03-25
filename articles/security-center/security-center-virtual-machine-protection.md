@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/25/2019
+ms.date: 3/20/2019
 ms.author: monhaber
-ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa664952f3eb7d6f9e611fb87a9e484e97f388a2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106563"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403837"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
-Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
+Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure, poza platformą Azure, serwerów i maszyn wirtualnych. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
 
 W tym artykule opisano zaleceń, które są stosowane do maszyn i aplikacji.
 
@@ -53,7 +53,7 @@ Aby kontynuować, wybierz **obliczenia i aplikacje** w obszarze **higieny zabezp
 Na każdej karcie znajduje się kilka sekcji, a w każdej sekcji można wybrać poszczególne opcje, aby wyświetlić więcej szczegółowych informacji dotyczących zalecanych kroków rozwiązania konkretnego problemu.
 
 ### Niemonitorowane maszyny wirtualne i komputery <a name="unmonitored-vms-and-computers"></a>
-Maszynę Wirtualną lub komputer jest niemonitorowana przez usługę Security Center, jeśli komputer nie jest uruchomiona rozszerzenia Microsoft Monitoring Agent. Komputer może mieć zainstalowanego lokalnego agenta, na przykład OMS bezpośrednie lub agent SCOM. Maszyny z tymi agentami są identyfikowane jako niemonitorowane, ponieważ ci agenci nie są w pełni obsługiwane w usłudze Security Center. Aby w pełni skorzystać ze wszystkich funkcji usługi Security Center, wymagane jest rozszerzenie programu Microsoft Monitoring Agent.
+Maszynę Wirtualną lub komputer jest niemonitorowana przez usługę Security Center, jeśli komputer nie jest uruchomiona rozszerzenia Microsoft Monitoring Agent. Komputer może mieć zainstalowanego lokalnego agenta, na przykład OMS bezpośrednie lub agent programu System Center Operations Manager. Maszyny z tymi agentami są identyfikowane jako niemonitorowane, ponieważ ci agenci nie są w pełni obsługiwane w usłudze Security Center. Aby w pełni skorzystać ze wszystkich funkcji usługi Security Center, wymagane jest rozszerzenie programu Microsoft Monitoring Agent.
 
 Rozszerzenie można zainstalować na niemonitorowanej maszynie Wirtualnej lub komputerze oprócz już zainstalowanego lokalnego agenta. Obu agentów należy skonfigurować tak samo, łącząc ich z tym samym obszarem roboczym. Dzięki temu usługa Security Center może wchodzić w interakcje z rozszerzeniem programu Microsoft Monitoring Agent i zbierać dane. Zobacz [Włączanie rozszerzenia maszyny wirtualnej](../azure-monitor/learn/quick-collect-azurevm.md), aby uzyskać instrukcje dotyczące sposobu instalowania rozszerzenia programu Microsoft Monitoring Agent.
 
@@ -103,7 +103,7 @@ Istnieją cztery typy ikon przedstawianych na tej liście:
 ![Klasyczne maszyny Wirtualnej platformy Azure](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Klasyczna maszyna wirtualna platformy Azure.
 
 
-![Maszyny wirtualne wskazane w obszarze roboczym](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Maszyny wirtualne, które są identyfikowane tylko z obszaru roboczego będącego częścią przeglądanej subskrypcji. Obejmuje to maszyny wirtualne z innych subskrypcji, które podlegają obszarowi roboczemu w tej subskrypcji, oraz maszyny wirtualne, które zostały zainstalowane z agentem bezpośrednim programu SCOM i nie mają identyfikatora zasobu.
+![Maszyny wirtualne wskazane w obszarze roboczym](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Maszyny wirtualne, które są identyfikowane tylko z obszaru roboczego będącego częścią przeglądanej subskrypcji. To obejmuje maszyny wirtualne z innych subskrypcji tego raportu do obszaru roboczego w tej subskrypcji i maszyn wirtualnych, które zostały zainstalowane przy użyciu programu Operations Manager agent bezpośredni i mieć nie identyfikatora zasobu.
 
 Ikona wyświetlana pod każdym zaleceniem pomaga szybko zidentyfikować maszyny Wirtualnej, a komputer, który wymaga uwagi oraz jakiego typu zalecenie ma do nich. Umożliwia także filtry wyszukiwania listę według **typ zasobu** i **ważność**.
 

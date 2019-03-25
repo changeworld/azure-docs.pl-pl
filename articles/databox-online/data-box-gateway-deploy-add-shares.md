@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: f36e13ccf91c983c54897dcff7e1c02689fb055c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
+ms.openlocfilehash: d930b1db48e3a5c4bda96f0b7d80a9c9f24d53d9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592659"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400641"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>Samouczek: Transfer danych za pomocą usługi Azure Data Box Gateway (wersja zapoznawcza)
+# <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Samouczek: Transferowanie danych za pomocą usługi Azure Gateway pole danych
 
 
 ## <a name="introduction"></a>Wprowadzenie
 
-W tym artykule opisano sposób dodawania udziałów i łączenia się z nimi na urządzeniu usługi Data Box Gateway. Po dodaniu udziałów urządzenie usługi Data Box Gateway może przesłać dane na platformę Azure.
+W tym artykule opisano sposób dodawania i łączyć się z udziałami w bramie pola danych. Po dodaniu akcji urządzenia bramy pola danych może transferować dane do platformy Azure.
 
-Wykonanie tej procedury może zająć około 10 minut. 
+Wykonanie tej procedury może zająć około 10 minut.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -30,62 +30,63 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Dodawanie udziału
 > * Łączenie się z udziałem
 
-> [!IMPORTANT]
-> - Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
- 
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed dodaniem udziałów do urządzenia usługi Data Box Gateway upewnij się, że spełniono następujące warunki:
 
-* Aprowizowano urządzenie wirtualne i nawiązano z nim połączenie zgodnie z procedurą opisaną w temacie [Aprowizowanie urządzenia usługi Data Box Gateway w funkcji Hyper-V](data-box-gateway-deploy-provision-hyperv.md) lub [Aprowizowanie urządzenia usługi Data Box Gateway w środowisku VMware](data-box-gateway-deploy-provision-vmware.md). 
+- Po zainicjowaniu obsługi urządzenia wirtualnego i dołączone do niego zgodnie z opisem w [Aprowizowanie bramy pola danych w funkcji Hyper-V](data-box-gateway-deploy-provision-hyperv.md) lub [Aprowizowanie bramy pola danych w środowisku VMware](data-box-gateway-deploy-provision-vmware.md).
 
-    Urządzenie wirtualne zostało aktywowane zgodnie z procedurą opisaną w temacie [Łączenie i aktywowanie usługi Azure Data Box Gateway](data-box-gateway-deploy-connect-setup-activate.md) i jest gotowe do utworzenia udziałów i transferu danych.
+- Aktywowano urządzenia wirtualnego, opisanego w [Connect i Aktywuj okno usługi Azure Data Gateway](data-box-gateway-deploy-connect-setup-activate.md).
 
+- Urządzenie jest gotowe do tworzenia udziałów i przesyłania danych.
 
 ## <a name="add-a-share"></a>Dodawanie udziału
 
-Wykonaj poniższe czynności w witrynie [Azure Portal](https://portal.azure.com/), aby utworzyć udział.
+Aby utworzyć czy udziału następującej procedury:
 
-1. Wróć do witryny Azure Portal. Przejdź do obszaru **Wszystkie zasoby** i wyszukaj zasób usługi Data Box Gateway.
-    
-2. Na filtrowanej liście zasobów wybierz zasób usługi Data Box Gateway, a następnie przejdź do sekcji **Omówienie**. Kliknij przycisk **+ Dodaj udział** na pasku poleceń urządzenia.
+1. W [witryny Azure portal](https://portal.azure.com/), wybierz zasób bramy pola danych, a następnie przejdź do **Przegląd**. Urządzenie powinno być w trybie online. Wybierz **+ Dodaj udział** na pasku poleceń urządzenia.
    
    ![Dodawanie udziału](./media/data-box-gateway-deploy-add-shares/click-add-share.png)
 
-4. W obszarze **Dodawanie udziału** określ ustawienia udziału. Podaj unikatową nazwę udziału. 
+4. W **Dodaj udział**, należy wykonać następującą procedurę:
 
-   Nazwy udziałów mogą zawierać tylko cyfry, małe litery i łączniki. Nazwa udziału musi mieć długość od 3 do 63 znaków i rozpoczynać się literą lub cyfrą. Przed i za każdym łącznikiem musi znajdować się znak inny niż łącznik.
+    1. Podaj unikatową nazwę udziału. Nazwy udziałów może mieć tylko małe litery, cyfry i łączniki. Nazwa udziału musi mieć długość od 3 do 63 znaków i rozpoczynać się literą lub cyfrą. Przed i za każdym łącznikiem musi znajdować się znak inny niż łącznik.
     
-5. Wybierz **Typ** dla udziału. Dostępne są dwa typy — SMB i NFS — przy czym typ SMB jest domyślny. Typ SMB jest standardem dla klientów systemu Windows, natomiast typ NFS jest używany dla klientów systemu Linux. W zależności od tego, czy wybrano udział SMB czy NFS, wyświetlone opcje są nieco inne. 
+    2. Wybierz **Typ** dla udziału. Dostępne są dwa typy — SMB i NFS — przy czym typ SMB jest domyślny. Typ SMB jest standardem dla klientów systemu Windows, natomiast typ NFS jest używany dla klientów systemu Linux. W zależności od tego, czy wybrano udział SMB czy NFS, wyświetlone opcje są nieco inne.
 
-6. Należy podać konto magazynu, w którym zostanie umieszczony udział. Na koncie magazynu zostanie utworzony kontener z nazwą udziału (jeśli jeszcze nie istnieje). Jeśli kontener już istnieje, zostanie użyty istniejący kontener. 
+    3. Podaj konto magazynu, w którym zostaną umieszczone udziału. Jeśli kontener jeszcze nie istnieje, zostanie on utworzony z nowo utworzoną nazwą udziału na koncie magazynu. Jeśli kontener już istnieje, zostanie on użyty.
     
-7. W obszarze **Usługa magazynu** wybierz blokowy obiekt blob, stronicowy obiekt blob lub pliki. Wybrany typ usługi zależy od tego, jaki format mają mieć dane na platformie Azure. Na przykład w tym wypadku chcemy, aby dane zostały umieszczone na platformie Azure jako blokowe obiekty blob, dlatego wybierzemy opcję Blokowy obiekt blob. Jeśli wybierzesz opcję Stronicowy obiekt blob, upewnij się, że dane są wyrównane o 512 bajtów. Należy pamiętać, że dysk VHDX jest zawsze wyrównany o 512 bajtów.
+    4. W obszarze **Usługa magazynu** wybierz blokowy obiekt blob, stronicowy obiekt blob lub pliki. Wybrany typ usługi zależy od tego, jaki format mają mieć dane na platformie Azure. Na przykład w tym wypadku chcemy, aby dane zostały umieszczone na platformie Azure jako blokowe obiekty blob, dlatego wybierzemy opcję Blokowy obiekt blob. Jeśli wybierzesz opcję Stronicowy obiekt blob, upewnij się, że dane są wyrównane o 512 bajtów. Na przykład dysk VHDX jest zawsze wyrównany o 512 bajtów.
    
-8. Ten krok zależy od tego, czy tworzysz udział SMB, czy udział NFS. 
+    5. Ten krok zależy od tego, czy tworzysz udział SMB, czy udział NFS.
      
-    - **W przypadku tworzenia udziału SMB** — W polu Użytkownik lokalny ze wszystkimi uprawnieniami wybierz pozycję **Utwórz nowy** lub **Użyj istniejącego**. W przypadku tworzenia nowego użytkownika lokalnego, podaj **nazwę użytkownika**, **hasło**, a następnie **potwierdź hasło**. Spowoduje to przypisanie uprawnień do użytkownika lokalnego. Po przypisaniu uprawnień w tym miejscu możesz następnie zmodyfikować te uprawnienia przy użyciu Eksploratora plików.
+    - **Udział SMB** — w obszarze **wszystkich użytkowników lokalnych uprawnień**, wybierz opcję **Utwórz nową** lub **Użyj istniejącej**. Po utworzeniu nowego użytkownika lokalnego, wprowadź **username** i **hasło**, a następnie **Potwierdź hasło**. Ta akcja przypisuje uprawnienia użytkownika lokalnego. Po przypisaniu uprawnień dostępną tutaj, można użyć Eksploratora plików, aby zmodyfikować te uprawnienia.
     
         ![Dodawanie udziału SMB](./media/data-box-gateway-deploy-add-shares/add-share-smb-1.png)
         
-        Jeśli zaznaczysz opcję **Zezwalaj tylko na operacje odczytu** dla tego udziału danych, będziesz mieć możliwość określenia użytkowników z uprawnieniami tylko do odczytu.
+        Jeśli wybierzesz **Zezwalaj tylko operacji odczytu** pole wyboru dla tego udziału danych, należy określić tylko do odczytu.
         
-    - **W przypadku tworzenia udziału NFS** — Należy podać adresy IP dozwolonych klientów, którzy mogą uzyskiwać dostęp do udziału.
+    - **Udziału NFS** -wprowadź adresy IP dozwolonych klientów, którzy mogą uzyskać dostęp do udziału.
 
         ![Dodawanie udziału NFS](./media/data-box-gateway-deploy-add-shares/add-share-nfs-1.png)
    
-9. Kliknij pozycję **Utwórz**, aby utworzyć udział. 
+9. Wybierz pozycję **Utwórz**, aby utworzyć udział.
     
-    Zostanie wyświetlone powiadomienie, że trwa tworzenie udziału. Po utworzeniu udziału z określonymi ustawieniami blok **Udziały** zostanie zaktualizowany, aby odzwierciedlić nowy udział. 
+    Zostanie wyświetlone powiadomienie, że trwa tworzenie udziału. Po utworzeniu udziału z określonymi ustawieniami **udziałów** Kafelek aktualizacji w celu odzwierciedlenia nowego udziału.
     
-    ![Zaktualizowana lista udziałów](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
+    ![Zaktualizowano kafelku udziałów](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
 
 ## <a name="connect-to-the-share"></a>Łączenie z udziałem
 
-Aby połączyć się z udziałami, wykonaj następujące kroki na kliencie systemu Windows Server połączonym z urządzeniem usługi Data Box Gateway.
+Teraz możesz połączyć się z jednym lub kilkoma udziałami utworzonymi w ostatnim kroku. W zależności od tego, czy masz udział SMB, czy NFS, kroki mogą się różnić.
+
+### <a name="connect-to-an-smb-share"></a>Łączenie z udziałem SMB
+
+Na komputerze klienckim systemu Windows Server podłączone do bramy pola danych Połącz się z udziału SMB przez wprowadzenie polecenia:
 
 
-1. Otwórz okno polecenia. W wierszu polecenia wpisz polecenie:
+1. W oknie polecenia wpisz:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -93,17 +94,18 @@ Aby połączyć się z udziałami, wykonaj następujące kroki na kliencie syste
 
     ```powershell
     Microsoft Windows [Version 18.8.16299.192) 
-    (c) 2817 microsoft Corporation. All rights reserved . 
+    (c) 2017 microsoft Corporation. All rights reserved . 
     
     C: \Users\GatewayUser>net use \\10.10.10.60\newtestuser /u:Tota11yNewUser 
-    Enter the password for 'TotallyNewUser' to connect to '10.10.10.60' • 
+    Enter the password for 'TotallyNewUser' to connect to '10.10.10.60'  
     The command completed successfully. 
     
     C: \Users\GatewayUser>
     ```   
 
 
-2. Naciśnij klawisze Windows + R. W oknie **Uruchamianie** podaj `\\<device IP address>`. Kliknij przycisk **OK**. Spowoduje to otworzenie Eksploratora plików. Teraz utworzone przez Ciebie udziały powinny być widoczne jako foldery. Wybierz i kliknij dwukrotnie udział (folder) w celu wyświetlenia jego zawartości.
+2. Na klawiaturze wybierz pozycję Windows + R. 
+3. W **Uruchom** okna, podaj `\\<device IP address>` , a następnie wybierz **OK**. Zostanie otwarty Eksplorator plików. Teraz utworzone przez Ciebie udziały powinny być widoczne jako foldery. W Eksploratorze plików kliknij dwukrotnie udział (folder) w celu wyświetlenia jego zawartości.
  
     ![Łączenie z udziałem SMB](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -111,7 +113,7 @@ Aby połączyć się z udziałami, wykonaj następujące kroki na kliencie syste
 
 ### <a name="connect-to-an-nfs-share"></a>Łączenie z udziałem NFS
 
-Wykonaj poniższe kroki na kliencie systemu Linux połączonym z urządzeniem usługi Data Box Edge.
+Na kliencie systemu Linux połączonym z urządzeniem Data Box Edge wykonaj następująca procedurę:
 
 1. Upewnij się, że na kliencie zainstalowano klienta NFSv4. Aby zainstalować klienta NFS, użyj następującego polecenia:
 
@@ -130,12 +132,12 @@ Wykonaj poniższe kroki na kliencie systemu Linux połączonym z urządzeniem us
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
-> Do wersji zapoznawczej mają zastosowanie następujące zastrzeżenia:
-> - Po utworzeniu pliku w udziałach nie można zmienić nazwy pliku. 
+> Następujące ostrzeżenia mają zastosowanie do tej wersji:
+> - Po utworzeniu pliku w udziałach nie można zmienić nazwy pliku.
 > - Usunięcie pliku z udziału nie powoduje usunięcia wpisu na koncie magazynu.
 > - W przypadku kopiowania danych za pomocą narzędzia `rsync` opcja `rsync -a` nie jest obsługiwana.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Gateway, takie jak:
 

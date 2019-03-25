@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113774"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401753"
 ---
-# <a name="azure-data-box-edge-system-requirements-preview"></a>Wymagania systemowe krawędź pola danych platformy Azure (wersja zapoznawcza)
+# <a name="azure-data-box-edge-system-requirements"></a>Wymagania dotyczące systemu Azure krawędź pola danych
 
 W tym artykule opisano wymagania systemowe dla rozwiązania pole danych platformy Azure przeglądarki Microsoft Edge i klientów nawiązywania połączenia z usługi Azure Data Box Edge. Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed wdrożeniem usługi krawędź pola danych. Można wrócić do tych informacji zgodnie z potrzebami, podczas wdrażania i kolejna operacja.
 
@@ -23,9 +23,6 @@ Wymagania systemowe na krawędzi ramki danych obejmują:
 
 - **Wymagania programowe dotyczące hostów** — zawiera opis obsługiwanych platform, przeglądarki dla interfejsu użytkownika konfiguracji lokalnej, klientów protokołu SMB i wszelkie dodatkowe wymagania dotyczące klientów uzyskujących dostęp do urządzenia.
 - **Wymagania dotyczące sieci dla urządzenia** — informacje na temat wszelkie wymagania sieciowe związane z działaniem urządzenia fizycznego.
-
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Zapoznaj się z [warunkami użytkowania wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) przed wdrożeniem tego rozwiązania.
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Obsługiwane systemy operacyjne dla klientów podłączonych do urządzenia
 
@@ -63,10 +60,7 @@ Konfiguracja portu dla serwerów obsługujących środowisko uruchomieniowe usł
 
 | Nr portu. | Wewnątrz lub na zewnątrz | Zakres portów | Wymagane | Wskazówki |
 |----------|-----------|------------|----------|----------|
-| TCP 5671 (AMQP)| Wyjście       | WAN        | Yes      | Protokół komunikacji domyślnego dla usługi IoT Edge. Musi być otwarty, czy usługi Azure IoT Edge nie jest skonfigurowany dla innych obsługiwanych protokołów AMQP jest protokół komunikacyjny żądaną. <br>5672 dla protokołu AMQP nie jest obsługiwany przez usługi IoT Edge. <br>Zablokować tego portu, w przypadku usługi Azure IoT Edge, używa innej usługi IoT Hub z obsługiwanych protokołów. |
-| TCP 443 (HTTPS)| Wyjście       | WAN        | Yes      | Otwórz ruchu wychodzącego dla usługi IoT Edge inicjowania obsługi administracyjnej. Jeśli masz z urządzeniami liścia, które może wysyłać żądania do metody przezroczystej bramy. W tym przypadku portu 443 nie musi być otwarty z sieciami zewnętrznymi, aby połączyć się z Centrum IoT lub świadczenia usług IoT Hub za pomocą usługi Azure IoT Edge. Ten sposób przychodzącej reguły może być ograniczony do otwierać tylko ruch przychodzący z siecią wewnętrzną. |
-| TCP 5671 (AMQP) | W        |            | Nie       | Połączenia przychodzące, powinien być blokowany.|
-| TCP 443 (HTTPS) | W        |            | W niektórych przypadkach Zobacz komentarze | Połączenia przychodzące powinny być otwierane tylko w przypadku określonych scenariuszy. W przypadku innych niż HTTP protokoły, np. nie można skonfigurować protokołu AMQP, MQTT, komunikaty mogą być wysyłane przez protokół WebSockets przy użyciu portu 443. |
+| TCP 443 (HTTPS)| Wyjście       | Sieć WAN        | Yes      | Otwórz ruchu wychodzącego dla usługi IoT Edge inicjowania obsługi administracyjnej. Ta konfiguracja jest wymagana w przypadku korzystania z ręcznego skryptów lub usługi Azure IoT urządzenia inicjowania obsługi usługi (DPS).|
 
 Aby uzyskać pełne informacje, przejdź do [Zapora i reguły konfiguracji portów dla wdrożenia usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

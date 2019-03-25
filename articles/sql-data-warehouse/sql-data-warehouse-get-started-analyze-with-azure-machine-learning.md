@@ -2,20 +2,20 @@
 title: Analizowanie danych przy użyciu usługi Azure Machine Learning | Microsoft Docs
 description: Używając usługi Azure Machine Learning, można utworzyć predykcyjny model uczenia maszynowego korzystający z danych przechowywanych w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
-ms.author: kavithaj
+ms.date: 03/22/2019
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 8a33d733f4737bf19e7baad6d80d8fa72999268f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7f9500adc6871c4c9f81c32bf456bc36cf91db4b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477662"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402562"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analizowanie danych przy użyciu usługi Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -42,9 +42,9 @@ Do wykonania kroków opisanych w tym samouczku potrzebne są:
 Dane znajdują się w widoku dbo.vTargetMail w bazie danych AdventureWorksDW. Aby odczytać te dane:
 
 1. Zaloguj się do programu [Azure Machine Learning Studio][Azure Machine Learning studio] i kliknij eksperymenty.
-2. Kliknij przycisk **+ NOWE** i wybierz pozycję **Blank Experiment** (Pusty eksperyment).
+2. Kliknij przycisk **+ nowy** w lewym dolnym rogu ekranu i wybierz pozycję **pusty eksperyment**.
 3. Wprowadź nazwę swojego eksperymentu: Nakierowane działania marketingowe.
-4. Przeciągnij moduł **Reader** (Czytnik) z okienka modułów do kanwy.
+4. Przeciągnij **importowania danych** moduł **danych wejściowych i wyjściowych** z okienka modułów do kanwy.
 5. Określ szczegóły bazy danych usługi SQL Data Warehouse w okienku Properties (Właściwości).
 6. Określ **zapytanie** do bazy danych, aby odczytać potrzebne dane.
 
@@ -77,7 +77,7 @@ Po pomyślnym wykonaniu eksperymentu kliknij port wyjściowy na dole modułu Rea
 ## <a name="2-clean-the-data"></a>2. Czyszczenie danych
 Aby wyczyścić dane, usuń kilka kolumn, które nie są istotne dla modelu. W tym celu:
 
-1. Przeciągnij moduł **Project Columns** (Kolumny projektu) na kanwę.
+1. Przeciągnij **Select Columns in Dataset** moduł **przekształcania danych < manipulowania** na kanwę. Ten moduł, aby połączyć **importu danych** modułu.
 2. Kliknij pozycję **Launch column selector** (Uruchom selektor kolumn) w okienku Properties (Właściwości), aby wskazać kolumny do usunięcia.
    ![Kolumny projektu][4]
 3. Wyklucz dwie kolumny: CustomerAlternateKey i GeographyKey.
@@ -87,21 +87,19 @@ Aby wyczyścić dane, usuń kilka kolumn, które nie są istotne dla modelu. W t
 Podzielimy dane w proporcji 80 – 20: 80% do trenowania modelu uczenia maszynowego i 20% do testowania modelu. Użyjemy algorytmów „dwuklasowych” do rozwiązania tego problemu klasyfikacji binarnej.
 
 1. Przeciągnij moduł **Split** (Podział) na kanwę.
-2. Wprowadź wartość 0,8 w polu Fraction of rows in the first output dataset (Ułamek wierszy w pierwszym zestawie danych wyjściowych) w okienku Properties (Właściwości).
+2. W okienku właściwości wprowadź wartość 0,8 w ułamek wierszy w pierwszym zestawie danych wyjściowych.
    ![Podział danych na zestaw szkoleniowy i zestaw testowy][6]
 3. Przeciągnij moduł **Two-Class Boosted Decision Tree** (Dwuklasowe wzmocnione drzewo decyzyjne) na kanwę.
-4. Przeciągnij moduł **Train Model** (Model szkoleniowy) na kanwę i określ dane wejściowe. Następnie kliknij przycisk **Launch column selector** (Uruchom selektor kolumn) w okienku Properties (Właściwości).
-   * Pierwszy element danych wejściowych: Algorytm uczenia Maszynowego.
-   * Drugie dane wejściowe: Dane do szkolenia w zakresie algorytmu na.
+4. Przeciągnij **uczenie modelu** modułu na kanwę i określ dane wejściowe, łącząc ją do **Two-Class Boosted Decision drzewa** (Algorytm uczenia Maszynowego) i **podziału** (dane do szkolenia Moduły algorytmu). 
      ![Łączenie modułu Train Model (Model szkoleniowy)][7]
-5. Wybierz kolumnę **BikeBuyer** (Nabywca roweru) jako kolumnę do prognozowania.
+5. Następnie kliknij przycisk **Launch column selector** (Uruchom selektor kolumn) w okienku Properties (Właściwości). Wybierz kolumnę **BikeBuyer** (Nabywca roweru) jako kolumnę do prognozowania.
    ![Wybór kolumny do prognozowania][8]
 
 ## <a name="4-score-the-model"></a>4. Ocena modelu
 Teraz przetestujemy działanie modelu na danych testowych. Porównamy wybrany algorytm z innym algorytmem, aby zobaczyć, który działa lepiej.
 
-1. Przeciągnij moduł **Score model** (Model klasyfikacyjny) na kanwę.
-    Pierwszy element danych wejściowych: Drugie dane wejściowe uczonego modelu: Dane testowe ![Klasyfikacja modelu][9]
+1. Przeciągnij **Score Model** modułu na kanwę i połącz go **Train Model** i **podziału danych** modułów.
+   ![Klasyfikacja modelu][9]
 2. Przeciągnij moduł **Two-Class Bayes Point Machine** (Dwuklasowa maszyna punktu Bayesa) do kanwy eksperymentu. Porównamy działanie tego algorytmu z algorytmem Two-Class Boosted Decision Tree (Dwuklasowe wzmocnione drzewo decyzyjne).
 3. Skopiuj i wklej moduły Train Model (Model szkoleniowy) i Score Model (Model klasyfikacyjny) do kanwy.
 4. Przeciągnij moduł **Evaluate Model** (Ocena modelu) do kanwy, aby porównać oba algorytmy.
@@ -124,18 +122,18 @@ Porównując wartości w kolumnach BikeBuyer (Nabywca roweru) (rzeczywiste) oraz
 Aby dowiedzieć się więcej o tworzeniu predykcyjnych modeli uczenia maszynowego, zapoznaj się z artykułem [Wprowadzenie do usługi Machine Learning na platformie Azure][Introduction to Machine Learning on Azure].
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
-[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2_visualize.png
-[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3_readerdata.png
-[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4_projectcolumns.png
-[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5_columnselector.png
-[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6_split.png
-[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7_train.png
-[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8_traincolumnselector.png
-[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9_score.png
-[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10_evaluate.png
-[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11_evalresults.png
-[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12_scoreresults.png
+[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png
+[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2-visualize-new.png
+[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png
+[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png
+[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png
+[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6-split-new.png
+[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7-train-new.png
+[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8-traincolumnselector-new.png
+[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9-score-new.png
+[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10-evaluate-new.png
+[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11-evalresults-new.png
+[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png
 
 
 <!--Article references-->

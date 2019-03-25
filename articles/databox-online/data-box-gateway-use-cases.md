@@ -1,18 +1,18 @@
 ---
-title: Usługa Microsoft Azure Data Box Gateway usecases | Dokumentacja firmy Microsoft
-description: W tym artykule opisano usecases dla bramy pola danych platformy Azure, rozwiązanie magazynu urządzenie wirtualne, które pozwala na przesyłanie danych do platformy Azure
+title: Usługa Microsoft Azure Data Box Gateway przypadki użycia | Dokumentacja firmy Microsoft
+description: W tym artykule opisano przypadki użycia dla bramy pola danych platformy Azure, rozwiązanie magazynu urządzenie wirtualne, które pozwala na przesyłanie danych do platformy Azure
 services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 03/2/2019
 ms.author: alkohli
-ms.openlocfilehash: d1367504182eb8d8335796dc37800c30e0a563b8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 37ec1d05d07f33343b9ff21380a277d00b242b7c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438596"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403803"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Przypadki użycia dla bramy pola danych platformy Azure
 
@@ -26,8 +26,6 @@ Użyj bramy pola danych w następujących scenariuszach:
 
 Każdy z tych scenariuszy opisano szczegółowo w kolejnych sekcjach.
 
-> [!IMPORTANT]
-> Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Zapoznaj się z [warunkami użytkowania wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) przed wdrożeniem tego rozwiązania.
 
 ## <a name="continuous-data-ingestion"></a>Pozyskiwanie danych ciągłego
 

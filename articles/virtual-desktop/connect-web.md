@@ -1,22 +1,22 @@
 ---
-title: Połącz się z klienta sieci web (wersja zapoznawcza) — na platformie Azure
-description: Jak połączyć się z klienta sieci web Windows wirtualnego pulpitu w języku HTML5.
+title: Połącz się z klienta sieci web Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
+description: Jak połączyć się z klienta sieci web Windows wirtualnego pulpitu (wersja zapoznawcza) w języku HTML5.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 23c830549ed2b63eb2330f3e1c0a78bfb236adc1
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 231dc2b777ce7fa37f445215863a55e93562e411
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339462"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403752"
 ---
-# <a name="connect-with-the-web-client-preview"></a>Połącz się z klienta sieci web (wersja zapoznawcza)
+# <a name="connect-with-the-web-client"></a>Połącz się z klienta sieci web
 
-Klient sieci web umożliwia dostęp do zasobów pulpitu wirtualnego Windows (wersja zapoznawcza) w przeglądarce sieci web bez proces długich instalacji.
+Klient sieci web umożliwia dostęp do zasobów Windows wirtualnego pulpitu (wersja zapoznawcza) w przeglądarce sieci web bez proces długich instalacji.
 
 >[!NOTE]
 >Klient sieci web nie ma obecnie mobilny system operacyjny obsługuje.

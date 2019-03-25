@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08f84a3e037301837da984b0891d978027dc2e11
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0a16fbda662ee1d3718dbafc4231de67aab277e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083168"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400672"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Samouczek: Wykrywanie zagrożeń za pomocą platformy Azure przez wartownika w wersji zapoznawczej
 
@@ -27,18 +27,21 @@ ms.locfileid: "58083168"
 > Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ten samouczek ułatwia wykrywanie zagrożeń za pomocą platformy Azure przez wartownika.
-
 Po zakończeniu [połączonych źródeł danych](quickstart-onboard.md) do platformy Azure przez wartownika, chcesz otrzymywać powiadomienia, gdy coś podejrzanego się dzieje. Umożliwia to zrobić, przez wartownika Azure pozwala tworzenia zaawansowanych reguł alertów, które generują przypadki, które można przypisać do użytkowania głęboko badania anomalii i zagrożeń w danym środowisku. 
 
-
+Ten samouczek ułatwia wykrywanie zagrożeń za pomocą platformy Azure przez wartownika.
 > [!div class="checklist"]
 > * Tworzenie reguł wykrywania
 > * Reagowanie na zagrożenia
 
 ## <a name="create-detection-rules"></a>Tworzenie reguł wykrywania
 
-Aby zbadać przypadków, należy najpierw utworzyć reguły wykrywania. Reguły wykrywania bazują na typy zagrożeń i anomalie, które mogą być podejrzane w danym środowisku, którą chcesz wiedzieć o natychmiast, zapewniając są udostępniane, zbadać i skorygować. 
+Aby zbadać przypadków, należy najpierw utworzyć reguły wykrywania. 
+
+> [!NOTE]
+> Alerty generowane przez wartownika platformy Azure są dostępne za pośrednictwem [Microsoft Graph Security](https://aka.ms/securitygraphdocs). Zapoznaj się [Microsoft Graph Security alerty dokumentacji](https://aka.ms/graphsecurityreferencebetadocs) uzyskać dalsze szczegóły oraz integracja z partnerami.
+
+Reguły wykrywania bazują na typy zagrożeń i anomalie, które mogą być podejrzane w danym środowisku, którą chcesz wiedzieć o natychmiast, zapewniając są udostępniane, zbadać i skorygować. 
 
 1. W witrynie Azure portal w obszarze Azure przez wartownika wybierz **analizy**.
 
@@ -87,7 +90,9 @@ Wartownik Azure daje dwie podstawowe opcje reagowanie na zagrożenia za pomocą 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku pokazaliśmy ci, jak rozpocząć pracę, wykrywanie zagrożeń przy użyciu platformy Azure przez wartownika. Przejdź do samouczka dotyczącego [sposobu reagowania na zagrożenia za pomocą automatycznych elementy playbook](tutorial-respond-threats-playbook.md).
+W tym samouczku pokazaliśmy ci, jak rozpocząć pracę, wykrywanie zagrożeń przy użyciu platformy Azure przez wartownika. 
+
+Aby dowiedzieć się, jak zautomatyzować Twoje odpowiedzi na zagrożenia [sposobu reagowania na zagrożenia za pomocą automatycznych elementy playbook](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
 > [Reagowanie na zagrożenia](tutorial-respond-threats-playbook.md) do automatyzowania odpowiedzi na zagrożenia.
 

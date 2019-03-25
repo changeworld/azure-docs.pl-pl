@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b66b293e5d6e422c994e2b7cef13fd4100144cbf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297008"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402749"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
+
+> [!NOTE]
+> W tej chwili usługi AAD w wersji 2 (w tym MSAL) nie jest obsługiwana dla usługi Azure App Services i Azure Functions. Sprawdź, czy aktualizacje.
+>
 
 Usługa Azure App Service udostępnia wbudowanego uwierzytelniania i autoryzacji pomocy technicznej, aby można było logowania użytkowników i uzyskać dostęp do danych przez zapisywanie minimalny lub Brak kodu w aplikacji sieci web, interfejsów API RESTful i zapleczem aplikacji mobilnej, a także [usługi Azure Functions](../azure-functions/functions-overview.md). W tym artykule opisano, jak usługa App Service pomaga uprościć uwierzytelniania i autoryzacji dla aplikacji. 
 

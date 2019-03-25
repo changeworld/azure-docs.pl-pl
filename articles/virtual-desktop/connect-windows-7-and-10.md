@@ -1,24 +1,24 @@
 ---
-title: Połącz się z Windows 7 i Windows 10 (wersja zapoznawcza) — platformy Azure
-description: Jak połączyć się z klienta sieci web Windows wirtualnego pulpitu w języku HTML5.
+title: Nawiązać połączenie z Windows wirtualnego pulpitu (wersja zapoznawcza) przy użyciu Windows 7 i Windows 10 — platformy Azure
+description: Jak połączyć się z Windows wirtualnego Desktop w wersji zapoznawczej klienta Windows 7 lub Windows 10.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 925d762bb065567f6462fdb1614fc308e87b5247
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 644a1d650384f151d9c43b9efa5f47532c58ce14
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318242"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399741"
 ---
-# <a name="connect-with-windows-7-and-windows-10-preview"></a>Połącz się z Windows 7 i Windows 10 (wersja zapoznawcza)
+# <a name="connect-with-windows-7-and-windows-10"></a>Połącz się z Windows 7 i Windows 10
 
 > Dotyczy Windows 7 i Windows 10.
 
-Dostępny jest dostępny do pobrania klient, który zapewnia dostęp do zasobów pulpitu wirtualnego Windows (wersja zapoznawcza) z urządzeń z systemem Windows 7 i Windows 10.
+Dostępny jest dostępny do pobrania klient, który zapewnia dostęp do zasobów Windows wirtualnego pulpitu (wersja zapoznawcza) z urządzeń z systemem Windows 7 i Windows 10.
 
 ## <a name="install-the-client"></a>Instalowanie klienta
 

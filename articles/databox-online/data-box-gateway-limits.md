@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 34aac9a589516ace080906095ef3c14b34469bbd
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311192"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401594"
 ---
-# <a name="azure-data-box-gateway-limits-preview"></a>Limity bramy pola danych platformy Azure (wersja zapoznawcza)
-
+# <a name="azure-data-box-gateway-limits"></a>Limity bramy pola danych platformy Azure
 
 Te limity wziąć pod uwagę wdrażania i obsługi rozwiązania Microsoft Azure Data Box Gateway. 
-
-> [!IMPORTANT] 
-> Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami użytkowania dotyczącymi wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="data-box-gateway-service-limits"></a>Limity usługi bramy pola danych

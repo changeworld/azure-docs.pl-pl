@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/4/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1d54ac521fb8b81ed5fa135f68af420bda261661
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a80c4db1b81dd2bc0b223a2781e28ccb1f5ba68e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246954"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402885"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Szybki start: Rozpoczynanie pracy z usługą Azure przez wartownika w wersji zapoznawczej
 
@@ -118,7 +118,22 @@ Można utworzyć kwerendę, która zawiera dane ze źródeł wielokrotności. Mo
 
 Można utworzyć różnych pulpitów nawigacyjnych na podstawie roli osoby spojrzenie na dane i ich wyszukiwanie. Na przykład można utworzyć pulpit nawigacyjny administratorowi sieci, zawierająca dane zapory. Można również tworzyć pulpity nawigacyjne oparte na jak często chcesz przyjrzeć się im, czy istnieją czynności, które chcesz przejrzeć codziennie i inne elementy, które chcesz sprawdzić godzinę, na przykład możesz chcieć Przyjrzyj się logowań usługi Azure AD co godzinę do wyszukania anomali ES. 
 
+## <a name="create-new-detections"></a>Utwórz nowe funkcje wykrywania
 
+Generowanie wykrywania na [źródeł danych, które są podłączone do platformy Azure przez wartownika](connect-data-sources.md) do badanie zagrożeń w Twojej organizacji.
+
+Kiedy tworzysz nowe wykrycie, wykorzystaj wbudowane funkcje wykrywania specjalnie przez badaczy zabezpieczeń firmy Microsoft, dostosowanych do źródeł danych, z którym nawiązano.
+
+1. [W społeczności usługi GitHub](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) przejdź do **wykrywania** folder, a następnie wybierz odpowiednie foldery.
+   ![odpowiednie foldery](./media/qs-get-visibility/detection-folders.png)
+ 
+3.  Przejdź do **Analytics** kartę, a następnie wybierz pozycję **Dodaj**.
+   ![Tworzenie reguły w usłudze Log Analytics](./media/qs-get-visibility/query-params.png)
+
+3.  Skopiuj wszystkie parametry reguły, a następnie kliknij przycisk **Utwórz**.
+   ![Utwórz regułę alertu](./media/qs-get-visibility/create-alert-rule.png)
+
+ 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym przewodniku Szybki Start przedstawiono sposób rozpocząć korzystanie z platformy Azure przez wartownika. Przejdź do samouczka dotyczącego [jak wykrywać zagrożenia](tutorial-detect-threats.md).
 > [!div class="nextstepaction"]

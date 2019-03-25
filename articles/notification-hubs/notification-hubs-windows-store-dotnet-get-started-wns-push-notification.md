@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/14/2018
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: d91e4d33bdecc23bc79e2cf975789bcaeb7ca69a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 093528dff09c71b999d58f0285044340fa0ec360
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837631"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403208"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs
 
@@ -52,7 +52,7 @@ Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wsz
 
 Aby wysyłać powiadomienia push do aplikacji platformy UWP, skojarz aplikację ze Sklepem Windows. Następnie skonfiguruj integrację centrum powiadomień z usługą WNS.
 
-1. Przejdź do [Centrum deweloperów systemu Windows](https://dev.windows.com/overview), zaloguj się przy użyciu konta Microsoft, a następnie wybierz pozycję **Utwórz nową aplikację**.
+1. Przejdź do [Centrum deweloperów systemu Windows](https://partner.microsoft.com/en-us/dashboard/windows/first-run-experience), zaloguj się przy użyciu konta Microsoft, a następnie wybierz pozycję **Utwórz nową aplikację**.
 
     ![Przycisk Nowa aplikacja](./media/notification-hubs-windows-store-dotnet-get-started/windows-store-new-app-button.png)
 2. Wpisz nazwę aplikacji i wybierz pozycję **Rezerwuj nazwę produktu**. Spowoduje to utworzenie nowej rejestracji aplikacji w Sklepie Windows.

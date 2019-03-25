@@ -1,6 +1,6 @@
 ---
-title: Różnice i zagadnienia dotyczące dysków Managed Disks w usłudze Azure Stack | Dokumentacja firmy Microsoft
-description: Poznaj różnice i zagadnienia podczas pracy z usługą Managed Disks w usłudze Azure Stack.
+title: Różnice i zagadnienia dotyczące dysków zarządzanych i zarządzane obrazy w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Poznaj różnice i zagadnienia podczas pracy z dysków zarządzanych i obrazy zarządzanych w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,27 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 28210048cd007fc10dcd4cf5e92577cbd121e2a3
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: c1975c885efc0a2a22b2ab478f8bc9afbcc8bce3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368276"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400363"
 ---
-# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Usługi Azure Managed Disks stosu: różnice i zagadnienia dotyczące
+# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Dyski zarządzane w usłudze Azure Stack: różnice i zagadnienia
 
-Ten artykuł zawiera podsumowanie znane różnice między [stosu usługi Azure Managed Disks](azure-stack-manage-vm-disks.md) i [Managed Disks na platformie Azure](../../virtual-machines/windows/managed-disks-overview.md). Aby dowiedzieć się więcej o różnicach wysokiego poziomu usługi Azure Stack i platformą Azure, zobacz [kluczowe zagadnienia](azure-stack-considerations.md) artykułu.
+Ten artykuł zawiera podsumowanie znane różnice między [dysków zarządzanych w usłudze Azure Stack](azure-stack-manage-vm-disks.md) i [dysków zarządzanych dla platformy Azure](../../virtual-machines/windows/managed-disks-overview.md). Aby dowiedzieć się więcej o różnicach wysokiego poziomu usługi Azure Stack i platformą Azure, zobacz [kluczowe zagadnienia](azure-stack-considerations.md) artykułu.
 
-Usługa Managed Disks upraszcza zarządzanie dyskami dla maszyn wirtualnych IaaS dzięki zarządzaniu [kont magazynu](../azure-stack-manage-storage-accounts.md) skojarzone z dyskami maszyn wirtualnych.
+Usługa Managed disks upraszcza zarządzanie dyskami dla maszyn wirtualnych IaaS dzięki zarządzaniu [kont magazynu](../azure-stack-manage-storage-accounts.md) skojarzone z dyskami maszyn wirtualnych.
 
 > [!Note]  
-> Dyski zarządzane w usłudze Azure Stack jest dostępna aktualizacja 1808. Włączono domyślnie podczas tworzenia maszyn wirtualnych przy użyciu portalu Azure Stack z 1811 aktualizacji.
+> Dyski zarządzane w usłudze Azure Stack jest dostępna aktualizacja 1808. Włączono domyślnie podczas tworzenia maszyn wirtualnych przy użyciu portalu Azure Stack, począwszy od aktualizacji 1811.
   
-## <a name="cheat-sheet-managed-disk-differences"></a>Ściągawka: Różnice dysku zarządzanego
+## <a name="cheat-sheet-managed-disk-differences"></a>Ściągawka: różnice dysku zarządzanego
 
 | Cecha | Azure (globalna) | Azure Stack |
 | --- | --- | --- |
@@ -50,7 +50,7 @@ Usługa Managed Disks upraszcza zarządzanie dyskami dla maszyn wirtualnych IaaS
 |Migracja      |Zapewnia narzędzia do migracji z istniejącego niezarządzanych Menedżera zasobów maszyn wirtualnych platformy Azure bez konieczności ponowne utworzenie maszyny Wirtualnej  |Nie jest jeszcze obsługiwany |
 
 > [!NOTE]  
-> Zarządzane dyski operacje We/Wy i Przepływność w usłudze Azure Stack jest liczbą limit zamiast elastycznie numer, który może wpływ na sprzęt i obciążeń działających w usłudze Azure Stack.
+> Usługa Managed disks operacje We/Wy i Przepływność w usłudze Azure Stack jest liczbą limit zamiast elastycznie numer, który może wpływać na sprzęt i obciążeń działających w usłudze Azure Stack.
 
 ## <a name="metrics"></a>Metryki
 
@@ -61,7 +61,7 @@ Istnieją różnice za pomocą metryk usługi storage:
 
 ## <a name="api-versions"></a>Wersje interfejsu API
 
-Usługa Azure Stack Managed Disks obsługuje następujące wersje interfejsu API:
+Usługa Azure Stack zarządzane dyski następujący interfejs API obsługuje wersje:
 
 - 2017-03-30
 - 2017-12-01
@@ -135,26 +135,31 @@ Platforma Azure obsługuje stosu *zarządzanych obrazów*, umożliwiające dysku
 - Masz zarządzanego uogólnionej maszyny Wirtualnej i chcesz utworzyć wiele, podobne zarządzanych maszyn wirtualnych.
 
 ### <a name="step-1-generalize-the-vm"></a>Krok 1: Uogólnianie maszyny Wirtualnej
-Windows należy wykonać w poniżej sekcji "Windows VM Generalize za pomocą programu Sysprep": https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep Dla systemu Linux wykonaj krok 1, w tym miejscu: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm 
 
-Uwaga: Pamiętaj uogólnić maszyny Wirtualnej. Tworzenie maszyny Wirtualnej z obrazu, która nie została uogólniona prawidłowo doprowadzi do błędu VMProvisioningTimeout.
+Windows, postępuj zgodnie z [uogólnianie maszyny Wirtualnej Windows za pomocą programu Sysprep](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) sekcji. Dla systemu Linux, postępuj zgodnie z kroku 1 [tutaj](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
+
+> [!NOTE]
+> Pamiętaj uogólnić maszyny Wirtualnej. Tworzenie maszyny Wirtualnej z obrazu, który nie został prawidłowo uogólniony doprowadzi do **VMProvisioningTimeout** błędu.
 
 ### <a name="step-2-create-the-managed-image"></a>Krok 2: Tworzenie obrazu zarządzanego
-Aby to zrobić, może używać witryny portal, programu powershell lub interfejsu wiersza polecenia. W tym miejscu dokument postępuj zgodnie z platformy Azure: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource
 
-### <a name="step-3-choose-the-use-case"></a>Krok 3: Wybierz przypadek użycia:
+Można użyć witryny portal, programu PowerShell lub interfejsu wiersza polecenia, aby utworzyć obrazu zarządzanego. Postępuj zgodnie z instrukcjami w artykule Azure [tutaj](/azure/virtual-machines/windows/capture-image-resource).
+
+### <a name="step-3-choose-the-use-case"></a>Krok 3: Wybierz przypadek użycia
+
 #### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>Przypadek 1: Migrowanie maszyn wirtualnych niezarządzanych do dysków zarządzanych
-Pamiętaj uogólnić maszyny Wirtualnej prawidłowo, przed wykonaniem tego kroku. Post Generalizacja, ta maszyna wirtualna nie może być używany kolejne. Tworzenie maszyny Wirtualnej z obrazu, która nie została uogólniona prawidłowo doprowadzi do błędu VMProvisioningTimeout. 
 
-Postępuj zgodnie z instrukcjami [tutaj](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) do tworzenie obrazu zarządzanego na podstawie uogólnionego wirtualnego dysku twardego w ramach konta magazynu. Ten obraz może służyć do tworzenia zarządzanych maszyn wirtualnych w przyszłości.
+Upewnij się, że poprawnie uogólnianie maszyny Wirtualnej przed wykonaniem tego kroku. Po Generalizacja można już używać tej maszyny. Tworzenie maszyny Wirtualnej z obrazu, który nie został prawidłowo uogólniony doprowadzi do **VMProvisioningTimeout** błędu.
+
+Postępuj zgodnie z instrukcjami [tutaj](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) do tworzenie obrazu zarządzanego na podstawie uogólnionego wirtualnego dysku twardego w ramach konta magazynu. Można użyć tego obrazu idąc dalej, aby tworzyć zarządzane maszyny wirtualne.
 
 #### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>Przypadek 2: Tworzenie zarządzanej maszyny Wirtualnej na podstawie obrazu zarządzanego przy użyciu programu Powershell
 
-Po utworzeniu obrazu z istniejącego zarządzanego dysku maszyny Wirtualnej przy użyciu skryptu [tutaj](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell) , następujący skrypt przykładowy tworzy podobne maszyny Wirtualnej systemu Linux na podstawie istniejącego obiektu obrazu:
+Po utworzeniu obrazu z istniejącego zarządzanego dysku maszyny Wirtualnej przy użyciu skryptu [tutaj](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell), następujący skrypt przykładowy tworzy podobne maszyny Wirtualnej systemu Linux na podstawie istniejącego obiektu obrazu:
 
-Moduł programu powershell w usłudze Azure Stack 1.7.0 lub nowszy: Postępuj zgodnie z instrukcjami [tutaj](../../virtual-machines/windows/create-vm-generalized-managed.md) 
+Moduł usługi Azure Stack PowerShell 1.7.0 lub nowszej: postępuj zgodnie z instrukcjami [tutaj](../../virtual-machines/windows/create-vm-generalized-managed.md).
 
-Moduł programu powershell w usłudze Azure Stack 1.6.0 lub poniżej:
+Moduł usługi Azure Stack PowerShell 1.6.0 lub wcześniej:
 
 ```powershell
 # Variables for common values
@@ -195,6 +200,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
 $image = get-azurermimage -ResourceGroupName $imagerg -ImageName $imagename
+
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
 Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred | `
@@ -205,7 +211,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-Można także użyć portalu, aby utworzyć Maszynę wirtualną z obrazu zarządzanego. Aby uzyskać więcej informacji, zobacz platformy Azure zarządzanego obrazu artykuły [utworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](../../virtual-machines/windows/capture-image-resource.md) i [Utwórz Maszynę wirtualną z obrazu zarządzanego](../../virtual-machines/windows/create-vm-generalized-managed.md).
+Portal umożliwia również tworzenie maszyny Wirtualnej na podstawie obrazu zarządzanego. Aby uzyskać więcej informacji, zobacz platformy Azure zarządzanego obrazu artykuły [utworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](../../virtual-machines/windows/capture-image-resource.md) i [Utwórz Maszynę wirtualną z obrazu zarządzanego](../../virtual-machines/windows/create-vm-generalized-managed.md).
 
 ## <a name="configuration"></a>Konfigurowanie
 

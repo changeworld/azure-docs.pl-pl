@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094681"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401730"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Tworzenie modułu C# usługi IoT Edge, aby przenieść pliki na krawędzi pola danych (wersja zapoznawcza)
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Twórz C# moduł usługi IoT Edge, aby przenieść pliki na krawędzi pola danych
 
 Ten artykuł przeprowadzi Cię przez jak utworzyć moduł usługi IoT Edge dla wdrożenia przy użyciu urządzenia usługi Edge pola danych. Azure Data Box Edge to rozwiązanie magazynu umożliwiające przetwarzanie danych i wysyłanie ich za pośrednictwem sieci na platformę Azure.
 
@@ -27,19 +27,13 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Tworzenie rejestru kontenerów do przechowywania i zarządzania nimi moduły (obrazy platformy Docker).
 > * Utwórz moduł usługi IoT Edge można wdrożyć na urządzeniu usługi Edge pola danych.
 
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="about-the-iot-edge-module"></a>Moduł usługi IoT Edge — informacje
 
 Urządzenie brzegowe pole danych wdrażać i uruchamiać moduły usługi IoT Edge. Moduły usługi Edge to zasadniczo kontenerów platformy Docker, które wykonywania określonych zadań, takich jak odbieranie komunikatów z urządzenia, przekształcić wiadomość lub wysyłania komunikatu do usługi IoT Hub. W tym artykule utworzy moduł, który kopiuje pliki z udziału lokalnego do udziału chmury na twoim urządzeniu krawędź pola danych.
 
 1. Pliki są zapisywane w udziale lokalnym na swoim urządzeniu krawędź pola danych.
-2. Generator zdarzeń pliku Tworzy zdarzenie pliku dla każdego pliku zapisywane do udziału lokalnego. Zdarzenia w pliku są następnie wysyłane do usługi IoT Edge Hub (środowisko uruchomieniowe usługi IoT Edge).
-
-   > [!IMPORTANT]
-   > Zdarzenia pliku są generowane tylko dla nowo tworzonych plików. Modyfikowanie istniejących plików nie generuje żadnych zdarzeń w pliku.
-
+2. Generator zdarzeń pliku Tworzy zdarzenie pliku dla każdego pliku zapisywane do udziału lokalnego. Zdarzenia pliku również są generowane, gdy plik zostanie zmodyfikowany. Zdarzenia w pliku są następnie wysyłane do usługi IoT Edge Hub (środowisko uruchomieniowe usługi IoT Edge).
 3. Niestandardowy moduł usługi IoT Edge przetwarza zdarzenia pliku do utworzenia obiektu zdarzenia pliku, który również zawiera ścieżkę względną do pliku. Moduł generuje przy użyciu ścieżki względnej ścieżki bezwzględnej i kopiuje plik z udziału lokalnego do udziału w chmurze. Moduł następnie usuwa plik z lokalnego udziału.
 
 ![Jak działa moduł usługi Azure IoT Edge na krawędzi pola danych](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
@@ -52,8 +46,9 @@ Przed rozpoczęciem upewnij się, że masz następujące elementy:
 
 - Urządzenie krawędź pola danych, które jest uruchomiona.
 
-    - Urządzenie ma również skojarzony zasób usługi IoT Hub. Aby uzyskać więcej informacji, przejdź do [Utwórz zasób usługi IoT Hub](data-box-edge-deploy-configure-compute.md#create-an-iot-hub-resource) na krawędzi sieci pola danych.
-    - Urządzenie ma krawędzi obliczenia skonfigurowaną rolą. Aby uzyskać więcej informacji, przejdź do [konfigurowanie roli obliczeniowej](data-box-edge-deploy-configure-compute.md#set-up-compute-role) na krawędzi sieci pola danych.
+    - Urządzenie ma również skojarzony zasób usługi IoT Hub.
+    - Urządzenie ma krawędzi obliczenia skonfigurowaną rolą.
+    Aby uzyskać więcej informacji, przejdź do [Konfigurowanie obliczeń](data-box-edge-deploy-configure-compute.md#configure-compute) na krawędzi sieci pola danych.
 
 - Programowanie w następujących zasobach:
 
@@ -128,7 +123,7 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizowanie modułu przy użyciu kodu niestandardowego
 
-1. Otwórz w Eksploratorze programu VS Code **modułów > CSharpModule > Program.cs**.
+1. Otwórz w Eksploratorze programu VS Code **modułów > FileCopyModule > Program.cs**.
 2. W górnej części **przestrzeni nazw FileCopyModule**, Dodaj następujące instrukcje using dla typów, które są używane w dalszej części. **Microsoft.Azure.Devices.Client.Transport.Mqtt** jest protokołem, aby wysyłać komunikaty do usługi IoT Edge Hub.
 
     ```
@@ -141,12 +136,9 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
     class Program
         {
             static int counter;
-            private const string InputFolderPath = "/home/LocalShare";
-            private const string OutputFolderPath = "/home/CloudShare";
+            private const string InputFolderPath = "/home/input";
+            private const string OutputFolderPath = "/home/output";
     ```
-
-    > [!IMPORTANT]
-    > Zwróć uwagę na `InputFolderPath` i `OutputFolderPath`. Należy podać te ścieżki, podczas wdrażania tego modułu.
 
 4. Dodaj **Element MessageBody** klasy do klasy Program. Te klasy definiują oczekiwany schemat treści komunikatów przychodzących.
 
@@ -189,7 +181,7 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
 6. Wstaw kod **operacja FileCopy**.
 
     ```
-            /// <summary>
+        /// <summary>
         /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
@@ -241,8 +233,6 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
             Console.WriteLine($"Processed event.");
             return MessageResponse.Completed;
         }
-
-    }
     ```
 
 7. Zapisz ten plik.
@@ -251,7 +241,8 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
 
 W poprzedniej sekcji utworzyliśmy rozwiązanie IoT Edge i dodać kod do FileCopyModule do kopiowania plików z udziału lokalnego do udziału w chmurze. Teraz należy skompilować to rozwiązanie jako obraz kontenera i wypchnąć go do rejestru kontenerów.
 
-1. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w zintegrowanym terminalu programu Visual Studio Code.
+1. W programu VSCode, przejdź do terminala > nowe terminalu, aby otworzyć nowy zintegrowany terminal programu Visual Studio Code.
+2. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w zintegrowanym terminalu.
 
     `docker login <ACR login server> -u <ACR username>`
 
@@ -282,4 +273,4 @@ W poprzedniej sekcji utworzyliśmy rozwiązanie IoT Edge i dodać kod do FileCop
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby wdrożyć i uruchomić ten moduł na krawędzi pola danych, zobacz kroki opisane w [Dodawanie niestandardowego modułu](data-box-edge-deploy-configure-compute.md#add-a-custom-module).
+Aby wdrożyć i uruchomić ten moduł na krawędzi pola danych, zobacz kroki opisane w [Dodaj moduł](data-box-edge-deploy-configure-compute.md#add-a-module).

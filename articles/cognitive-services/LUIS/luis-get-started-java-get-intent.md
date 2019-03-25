@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02e03868f5a48088b78d5d9b0221387212f248cf
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 5e5a186be19c0ecc9730bc79bddff41fb6bbb571
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958715"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401662"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Szybki start: pobieranie intencji przy użyciu języka Java
 
@@ -29,9 +29,8 @@ W tym przewodniku Szybki start przekażesz wypowiedzi do punktu końcowego aplik
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/) lub ulubionego środowiska IDE
 * Identyfikator aplikacji publicznej: df67dcdb-c37d-46af-88e1-8b97951ca1c2
-
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
@@ -43,9 +42,9 @@ W tym przewodniku Szybki start przekażesz wypowiedzi do punktu końcowego aplik
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="get-intent-programmatically"></a>Pobieranie intencji w sposób programistyczny 
+## <a name="get-intent-programmatically"></a>Pobieranie intencji w sposób programistyczny
 
-Aby uzyskać dostęp do tych samych wyników, które zostały wyświetlone w oknie przeglądarki w poprzednim kroku, możesz użyć języka Java. 
+Aby uzyskać dostęp do tych samych wyników, które zostały wyświetlone w oknie przeglądarki w poprzednim kroku, możesz użyć języka Java. Pamiętaj dodać biblioteki Apache do projektu.
 
 1. Skopiuj następujący kod, aby utworzyć klasę w pliku o nazwie `LuisGetRequest.java`:
 
@@ -53,9 +52,9 @@ Aby uzyskać dostęp do tych samych wyników, które zostały wyświetlone w okn
 
 2. Zastąp wartość zmiennej `YOUR-KEY` swoim kluczem usługi LUIS.
 
-3. Skompiluj program Java przy użyciu polecenia `javac -cp ":lib/*" LuisGetRequest.java`. 
+3. Zamień ścieżka pliku, a następnie skompilować program java przy użyciu wiersza polecenia: `javac -cp .;<FILE_PATH>\* LuisGetRequest.java`.
 
-4. Uruchom aplikację klawiszem `java -cp ":lib/*" LuisGetRequest.java`. Wyświetli ona ten sam wynik JSON, który został wyświetlony wcześniej w oknie przeglądarki.
+4. Zamień na ścieżce pliku, a następnie uruchom aplikację z wiersza polecenia: `java -cp .;<FILE_PATH>\* LuisGetRequest.java`. Wyświetli ona ten sam wynik JSON, który został wyświetlony wcześniej w oknie przeglądarki.
 
     ![W oknie konsoli zostanie wyświetlony wynik w formacie JSON z usługi LUIS](./media/luis-get-started-java-get-intent/console-turn-on.png)
     
@@ -65,8 +64,8 @@ Aby uzyskać dostęp do tych samych wyników, które zostały wyświetlone w okn
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Usuń plik Java. 
+Usuń folder pliku/projektu języka Java.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi](luis-get-started-java-add-utterance.md)

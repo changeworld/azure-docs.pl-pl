@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 8e583ac1c8ac4b6f32c2fa9f8b7ed07c2e7033e8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890002"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402460"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Samouczek: wysyłanie powiadomień push do konkretnych urządzeń z systemem Windows z uruchomionymi aplikacjami platformy uniwersalnej systemu Windows
 
@@ -222,30 +222,28 @@ W tej sekcji rejestrujesz się w centrum powiadomień przy uruchamianiu przy uż
 
 Aplikacja jest teraz ukończona. Może przechowywać zestaw kategorii w magazynie lokalnym na urządzeniu, który jest używany do rejestrowania w centrum powiadomień, gdy użytkownicy dokonają zmian w wyborach kategorii. W następnej sekcji zdefiniujesz zaplecze, które może wysyłać do tej aplikacji powiadomienia w odpowiednich kategoriach.
 
-## <a name="send-tagged-notifications"></a>Wysyłanie powiadomień z tagami
-
-[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
-
-## <a name="run-the-app-and-generate-notifications"></a>Uruchamianie aplikacji i generowanie powiadomień
-
+## <a name="run-the-uwp-app"></a>Uruchamianie aplikacji platformy uniwersalnej systemu Windows 
 1. W programie Visual Studio naciśnij klawisz **F5**, aby skompilować i uruchomić aplikację. Interfejs użytkownika aplikacji udostępnia zestaw przełączników pozwalających wybrać kategorie do zasubskrybowania.
 
-    ![Aplikacja Breaking News][1]
+    ![Aplikacja Breaking News](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
 
 2. Włącz co najmniej jeden przełącznik kategorii, a następnie kliknij przycisk **Subscribe** (Subskrybuj).
 
     Aplikacja konwertuje wybrane kategorie na tagi i żąda nowej rejestracji urządzenia dla wybranych tagów z centrum powiadomień. Zarejestrowane kategorie są zwracane i wyświetlane w oknie dialogowym.
 
-    ![Przełączniki kategorii i przycisk Subscribe (Subskrybuj)][19]
+    ![Przełączniki kategorii i przycisk Subscribe (Subskrybuj)](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
 
-3. Wyślij nowe powiadomienie z zaplecza, korzystając z jednego z następujących sposobów:
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>Tworzenie aplikacji konsolowej do wysyłania powiadomień oznakowane
 
-   * **Aplikacja konsolowa**: uruchom aplikację konsolową.
-   * **Java/PHP**: uruchom aplikację lub skrypt.
+[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-     Powiadomienia dla wybranych kategorii będą wyświetlane jako powiadomienia wyskakujące.
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>Uruchom aplikację konsoli, aby wysyłać powiadomienia oznakowane
 
-     ![Powiadomienia wyskakujące][14]
+1. Uruchom aplikację utworzoną w poprzedniej sekcji.
+2. Powiadomienia dla wybranych kategorii będą wyświetlane jako powiadomienia wyskakujące. Jeśli wybierzesz opcję powiadomienia, zobaczysz pierwszym okna aplikacji platformy uniwersalnej systemu Windows. 
+
+     ![Powiadomienia wyskakujące](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -260,11 +258,6 @@ W tym artykule przedstawiono sposób rozgłaszania ważnych wiadomości według 
 [Send notifications from your back-end]: #send
 [Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
-
-<!-- Images. -->
-[1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
-[14]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png
-[19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
 [get-started]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md

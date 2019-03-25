@@ -1,22 +1,22 @@
 ---
-title: Zarządzanie grupami aplikacji dla Windows pulpitu wirtualnego (wersja zapoznawcza) — platformy Azure
-description: W tym artykule opisano sposób konfigurowania dzierżaw pulpitu wirtualnego Windows w usłudze Azure Active Directory.
+title: Zarządzanie grupami aplikacji dla Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
+description: W tym artykule opisano sposób konfigurowania dzierżaw Windows wirtualnego pulpitu (wersja zapoznawcza) w usłudze Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 455e3b4ac4a5020f68b5201bc19f85892ef62cb1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2baabe6837d25cce5e9f5d9e1071af8417fe5f4d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368990"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401866"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Samouczek: Zarządzanie grupami aplikacji dla Windows pulpitu wirtualnego (wersja zapoznawcza)
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Samouczek: Zarządzanie grupami aplikacji dla Windows wirtualnego pulpitu (wersja zapoznawcza)
 
-Domyślna grupa aplikacji utworzonych dla nowej puli hosta, publikuje również pełnego pulpitu. Ponadto można utworzyć co najmniej jedną grupę aplikacji programów RemoteApp (wersja zapoznawcza) dla puli hosta. Postępuj zgodnie z tym samouczkiem, aby utworzyć grupę aplikacji programów RemoteApp i publikowanie poszczególnych aplikacji w menu Start.
+Domyślna grupa aplikacji utworzonych dla nowej puli hosta Windows wirtualnego pulpitu (wersja zapoznawcza) są również publikowane pełnego pulpitu. Ponadto można utworzyć co najmniej jedną grupę aplikacji programów RemoteApp puli hosta. Postępuj zgodnie z tym samouczkiem, aby utworzyć grupę aplikacji programów RemoteApp i publikowanie poszczególnych aplikacji w menu Start.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

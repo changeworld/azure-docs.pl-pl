@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: 30f6d08594bdf2e5d78bc8c7881a135d6e57f397
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852224"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399679"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Dołączyć wartownik platformy Azure (wersja zapoznawcza)
 
@@ -75,7 +75,6 @@ Na przykład kliknij pozycję **usługi Azure Active Directory**. Jeśli można 
 Na dole przez wartownika Azure zapewnia zaleceń, które pulpity nawigacyjne należy zainstalować przez każdy łącznik dzięki czemu możesz można natychmiast uzyskać interesujących szczegółowych informacji danych. <br> Postępuj zgodnie z instrukcjami instalacji lub [można znaleźć w podręczniku właściwego połączenia](connect-data-sources.md) Aby uzyskać więcej informacji. Aby uzyskać informacji na temat łączników danych, zobacz [usług Connect Microsoft](connect-data-sources.md).
 
 Po dane, które są połączone źródła i danych rozpoczyna się przesyłania strumieniowego na platformie Azure przez wartownika i jest gotowe do rozpoczęcia pracy z. Można przeglądać dzienniki w [wbudowane pulpity nawigacyjne](quickstart-get-visibility.md) i rozpocząć tworzenie zapytań w usłudze Log Analytics [badanie danych](tutorial-investigate-cases.md).
-
 
 
 

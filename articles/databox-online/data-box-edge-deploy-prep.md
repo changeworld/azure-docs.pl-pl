@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 03/07/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7764b0ceee1b540e9650d232b7087811d7376f28
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 19c4fc96653f966ea5642149d944886e4b7f4483
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452092"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401676"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Samouczek: Przygotowywanie do wdrażania usługi Azure Data Box Edge  
 
 
-To jest pierwszy samouczek z serii samouczków dotyczących wdrażania, wymaganych do pełnego wdrożenia usługi Azure Data Box Edge. W tym samouczku opisano sposób przygotowania witryny Azure Portal do wdrożenia zasobu usługi Data Box Edge. 
+To jest pierwszy samouczek z serii samouczków dotyczących wdrażania, wymaganych do pełnego wdrożenia usługi Azure Data Box Edge. W tym samouczku opisano sposób przygotowania witryny Azure Portal do wdrożenia zasobu usługi Data Box Edge.
 
 Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia administratora. Przygotowanie portalu zajmuje mniej niż 10 minut.
 
@@ -31,9 +31,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).  
 
 ### <a name="get-started"></a>Rozpoczęcie pracy
 
@@ -57,12 +54,14 @@ Poniżej opisano wymagania wstępne dotyczące konfiguracji zasobu usługi Data 
 
 Przed rozpoczęciem upewnij się, że:
 
-* Twoja subskrypcja platformy Microsoft Azure obsługuje zasób usługi Data Box Edge.
-* Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
+- Twoja subskrypcja platformy Microsoft Azure obsługuje zasób usługi Data Box Edge. Płatność za rzeczywiste użycie subskrypcje nie są obsługiwane.
+- Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
 
 ### <a name="for-the-data-box-edge-device"></a>Urządzenie Data Box Edge
 
 Przed wdrożeniem urządzenia fizycznego upewnij się, że są spełnione następujące warunki:
+
+- Przejrzeniu informacji bezpieczeństwa, która została uwzględniona w pakiecie wydania.
 - Na standardowym stojaku 19” w centrum danych masz dostępne gniazdo 1U w celu zamontowania urządzenia. 
 - Masz dostęp do płaskiej, stabilnej i poziomej powierzchni roboczej, gdzie można bezpiecznie umieścić urządzenie.
 - Miejsce, w którym chcesz skonfigurować urządzenie, ma standardowe zasilanie prądem przemiennym z niezależnego źródła lub jednostkę dystrybucji zasilania na stojaku (PDU, rack power distribution unit) z zasilaczem UPS.
@@ -73,55 +72,85 @@ Przed wdrożeniem urządzenia fizycznego upewnij się, że są spełnione nastę
 
 Przed rozpoczęciem upewnij się, że:
 
-* Sieć w centrum danych jest skonfigurowana zgodnie z wymaganiami sieciowymi dla urządzenia Data Box Edge. Aby uzyskać więcej informacji, zobacz [wymagania systemowe usługi Data Box Edge](data-box-gateway-system-requirements.md).
+- Sieć w centrum danych jest skonfigurowana zgodnie z wymaganiami sieciowymi dla urządzenia Data Box Edge. Aby uzyskać więcej informacji, zobacz [wymagania systemowe usługi Data Box Edge](data-box-edge-system-requirements.md).
 
-* Usługa Data Box Edge dysponuje przez cały czas dedykowanym połączeniem internetowym o przepustowości co najmniej 20 Mb/s. Ta przepustowość nie powinna być współużytkowana z żadną inną aplikacją. Jeśli korzystasz z ograniczania przepustowości sieci, zaleca się użycie połączenia internetowego o przepustowości co najmniej 32 Mb/s.
+- W normalnych warunkach pracy krawędzi pola danych masz:
+
+    - Co najmniej 10 MB/s Pobierz przepustowość tak, aby upewnić się, że urządzenie jest w pełni zaktualizowany.
+    - Co najmniej 20 MB/s dedykowanych przekazywanie i pobieranie przepustowości do transferu plików.
 
 ## <a name="create-a-new-resource"></a>Tworzenie nowego zasobu
-
-Wykonaj poniższe kroki, aby utworzyć nowy zasób usługi Data Box Edge. 
 
 Jeśli masz istniejący zasób usługi Data Box Edge, którego możesz użyć do zarządzania urządzeniem fizycznym, pomiń ten krok i przejdź do sekcji [Uzyskiwanie klucza aktywacji](#get-the-activation-key).
 
 Aby utworzyć zasób usługi Data Box Edge, wykonaj poniższe czynności w witrynie Azure Portal.
 
-1. Użyj swoich poświadczeń platformy Microsoft Azure, aby zalogować się do witryny Azure Portal w wersji zapoznawczej pod tym adresem URL: [https://aka.ms/databox-edge](https://aka.ms/databox-edge). 
+1. Użyj swoich poświadczeń Microsoft Azure do logowania się na 
+    
+    - Witryny Azure portal pod tym adresem URL: [ https://portal.azure.com ](http://portal.azure.com).
+    - Lub portalu Azure dla instytucji rządowych pod tym adresem URL: [https://portal.azure.us](https://portal.azure.us)
 
-2. Wybierz subskrypcję, w której chcesz używać usługi Data Box Edge w wersji zapoznawczej. Wybierz region, w którym chcesz wdrożyć zasób rozwiązania Data Box Edge. W opcji usługi **Data Box Edge** wybierz pozycję **Utwórz**.
+2. W okienku po lewej stronie wybierz **+ Utwórz zasób**. Wyszukaj **Data Box Edge / Data Box bramy**. Wybierz **Data Box Edge / Data Box bramy**. Wybierz pozycję **Utwórz**.
+3. Wybierz subskrypcję, dla której chcesz użyć dla tego urządzenia krawędź pola danych. Wybierz region, w którym chcesz wdrożyć zasób rozwiązania Data Box Edge. W tej wersji są dostępne wschodnie stany USA, Azja południowo-wschodnia i Europa Zachodnia. Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie. W opcji usługi **Data Box Edge** wybierz pozycję **Utwórz**.
 
     ![Wyszukiwanie usługi Data Box Edge](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
-3. Dla nowego zasobu wprowadź lub wybierz następujące informacje.
+3. Na **podstawy** karcie wpisz lub wybierz następujące pozycje **projektu szczegóły**.
     
     |Ustawienie  |Wartość  |
     |---------|---------|
-    |Nazwa zasobu   | Przyjazna nazwa identyfikująca zasób.<br>Nazwa zasobu może zawierać od 2 do 50 znaków, w tym litery, cyfry i łączniki.<br> Nazwa rozpoczyna się i kończy literą lub cyfrą.        |
-    |Subskrypcja    |Subskrypcja jest połączona z kontem rozliczeniowym. |
+    |Subskrypcja    |To jest automatycznie wypełniane na podstawie wybranych wcześniej. Subskrypcja jest połączona z kontem rozliczeniowym. |
     |Grupa zasobów  |Wybierz istniejącą grupę lub utwórz nową.<br>Dowiedz się więcej o [grupach zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md).     |
-    |Lokalizacja     |W tej wersji są dostępne następujące regiony: Wschodnie stany USA, Zachodnie stany USA 2, Azja Południowo-Wschodnia i Europa Zachodnia. <br> Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie.|
-    
-    ![Tworzenie zasobu usługi Data Box Edge](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
-    
-4. Kliknij przycisk **OK**.
- 
-Tworzenie zasobu trwa kilka minut. Po pomyślnym utworzeniu zasobu otrzymasz odpowiednie powiadomienie.
 
+4. Wprowadź lub wybierz następujące pozycje **wystąpienia szczegóły**.
+
+    |Ustawienie  |Wartość  |
+    |---------|---------|
+    |Name (Nazwa)   | Przyjazna nazwa identyfikująca zasób.<br>Nazwa może zawierać od 2 do 50 znaków, w tym litery, cyfry i łączniki.<br> Nazwa rozpoczyna się i kończy literą lub cyfrą.        |
+    |Region     |W tej wersji są dostępne do wdrożenia usługi resource wschodnie stany USA, Azja południowo-wschodnia i Europa Zachodnia. Jeśli używasz platformy Azure Government, wszystkie regiony dla instytucji rządowych są dostępne, jak pokazano na [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie.|
+
+    ![Szczegóły projektu i wystąpienia](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
+
+5. Wybierz opcję **Dalej: Adres wysyłkowy**.
+
+    - Jeśli masz już urządzenia, zaznacz pole kombi **mam urządzenie krawędzi pola danych**.
+    - Jeśli jest to nowe urządzenie, które są kolejność, wprowadź nazwisko osoby kontaktowej, firmy, adres odesłanie urządzenia i informacje kontaktowe.
+
+    ![Adres wysyłkowy dla nowego urządzenia](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
+
+6. Wybierz opcję **Dalej: Przeglądanie + tworzenie**.
+
+7. Na **Przejrzyj + Utwórz** kartę, przejrzyj **szczegóły cennika**, **warunki użytkowania**oraz szczegóły zasobu bazy danych. Zaznacz pole kombi **przejrzeć postanowienia dotyczące prywatności**.
+
+    ![Przejrzyj szczegóły zasobu krawędź pola danych i zasadami zachowania poufności informacji](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
+
+8. Wybierz pozycję **Utwórz**.
+
+Tworzenie zasobu trwa kilka minut. Po pomyślnym utworzeniu i wdrożeniu zasobu, otrzymasz powiadomienie. Wybierz pozycję **Przejdź do zasobu**.
+
+![Przejdź do zasobu krawędź pola danych](media/data-box-edge-deploy-prep/data-box-edge-resource3.png)
+
+Po umieszczeniu kolejności, firma Microsoft przeglądów kolejności i łączy się z usługą (za pomocą poczty e-mail) przy użyciu szczegóły dotyczące wysyłki.
+
+![Powiadomienie dla Przejrzyj zamówienia krawędź pola danych](media/data-box-edge-deploy-prep/data-box-edge-resource4.png)
 
 ## <a name="get-the-activation-key"></a>Uzyskiwanie klucza aktywacji
 
 Po skonfigurowaniu i uruchomieniu zasobu usługi Data Box Edge konieczne będzie uzyskanie klucza aktywacji. Ten klucz jest używany do aktywowania urządzenia Data Box Edge i nawiązania połączenia z zasobem. Ten klucz można uzyskać już teraz za pośrednictwem witryny Azure Portal.
 
-1. Wybierz utworzony zasób, a następnie wybierz pozycję **Przegląd**.
+1. Wybierz zasób, który został utworzony. Wybierz **Przegląd** , a następnie wybierz **konfiguracji urządzenia**.
 
-2. Wybierz pozycję **Generuj klucz**, aby utworzyć klucz aktywacji. Wybierz ikonę kopiowania, aby skopiować klucz i zapisać go do użytku w przyszłości.
+    ![Wybierz konfigurację urządzenia](media/data-box-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+
+2. Na **Aktywuj** kafelka, wybierz opcję **Wygeneruj klucz** można utworzyć klucza aktywacji. Wybierz ikonę kopiowania, aby skopiować klucz i zapisać go do użytku w przyszłości.
 
     ![Pobieranie klucza aktywacji](media/data-box-edge-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - Klucz aktywacji wygasa po trzech dniach od jego wygenerowania. 
+> - Klucz aktywacji wygasa po trzech dniach od jego wygenerowania.
 > - Jeśli klucz wygaśnie, wygeneruj nowy klucz. Starszy klucz nie jest prawidłowy.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Edge, takie jak:
 
@@ -129,7 +158,7 @@ W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Edge, taki
 > * Tworzenie nowego zasobu
 > * Uzyskiwanie klucza aktywacji
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zainstalować urządzenie Data Box Edge. 
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zainstalować urządzenie Data Box Edge.
 
 > [!div class="nextstepaction"]
 > [Instalowanie urządzenia Data Box Edge](./data-box-edge-deploy-install.md)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: e0aa3468bda9f904d62e9e20545ac5f990cef521
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: e0b8b35c654f0716fae1e6ab785f57dcf04e1a5a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57902150"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400902"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>Zarządzanie dostępem, power i tryb łączności dla usługi Azure krawędź pola danych (wersja zapoznawcza)
 
@@ -31,11 +31,11 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="manage-device-access"></a>Zarządzanie dostępem do urządzeń
 
-Dostęp do urządzenia usługi Edge pole danych jest kontrolowany przy użyciu hasła administratora urządzenia. Można zmienić hasło administratora za pomocą lokalnego Interfejsu w przeglądarce. Mogą również resetować hasła administratora urządzenia w witrynie Azure portal.
+Dostęp do urządzenia usługi Edge pole danych jest kontrolowany przy użyciu hasła urządzenia. Można zmienić hasło przy użyciu lokalnego Interfejsu w przeglądarce. Mogą również resetować hasła urządzenia w witrynie Azure portal.
 
-### <a name="change-device-administrator-password"></a>Zmienianie hasła administratora urządzenia
+### <a name="change-device-password"></a>Zmienianie hasła urządzenia
 
-Wykonaj następujące kroki w interfejsie użytkownika lokalnego, aby zmienić hasło administratora urządzenia.
+Wykonaj następujące kroki w interfejsie użytkownika lokalnego, aby zmienić hasło urządzenia.
 
 1. W lokalnym internetowym interfejsie użytkownika, przejdź do **konserwacji > zmiany hasła**.
 2. Wprowadź bieżące hasło, a następnie nowe hasło. Podane hasło musi mieć długość od 8 do 16 znaków. Hasło musi zawierać 3 z następujących znaków: wielkie litery, małe litery, cyfry i znaki specjalne. Potwierdź nowe hasło.
@@ -44,7 +44,7 @@ Wykonaj następujące kroki w interfejsie użytkownika lokalnego, aby zmienić h
 
 3. Wybierz **Zmień hasło**.
  
-### <a name="reset-device-administrator-password"></a>Resetowanie hasła administratora urządzenia
+### <a name="reset-device-password"></a>Resetowanie hasła urządzenia
 
 Resetowanie przepływ pracy wymaga od użytkownika przywołać stare hasło i jest przydatne, gdy hasło zostanie utracone. Ten przepływ pracy jest wykonywane w witrynie Azure portal.
 
@@ -63,7 +63,7 @@ Oprócz to domyślny tryb w pełni połączone urządzenia można również uruc
 
 - **W pełni połączone** — jest to normalne domyślny tryb, w której działa urządzenie. Chmura przekazywania i pobierania danych jest włączona w tym trybie. Witryna Azure portal lub lokalnego Interfejsu w przeglądarce służy do zarządzania urządzeniami.
 
-- **Częściowo odłączony** — w tym trybie urządzenia nie można przekazywać dowolne dane do udziałów jednak mogą być zarządzane za pośrednictwem witryny Azure portal.
+- **Częściowo odłączony** — w tym trybie urządzenia nie można przekazywać i pobierać każdy udział dane jednak mogą być zarządzane za pośrednictwem witryny Azure portal.
 
     W tym trybie zwykle jest używana podczas sieci satelitarnych mierzonego i celem jest minimalizacja zużycie przepustowości sieci. Użycie sieci minimalnej nadal może być operacje monitorowania urządzeń.
 

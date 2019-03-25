@@ -1,22 +1,22 @@
 ---
-title: Utwórz pulę hosta przy użyciu szablonu usługi Azure Resource Manager (wersja zapoznawcza) — platformy Azure
-description: Jak utworzyć pulę hosta w Windows pulpitu wirtualnego przy użyciu szablonu usługi Azure Resource Manager.
+title: Utwórz pulę hosta Windows wirtualnego pulpitu (wersja zapoznawcza) przy użyciu szablonu usługi Azure Resource Manager — platformy Azure
+description: Jak utworzyć pulę hosta w wersji zapoznawczej pulpitu wirtualnego Windows przy użyciu szablonu usługi Azure Resource Manager.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7f4849c19d56bb385e7ad3ce0aa95e16d5c53c23
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 262ec35a8a177652dff12bccb3b5435cb5856d81
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318467"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401412"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template-preview"></a>Utwórz pulę hosta przy użyciu szablonu usługi Azure Resource Manager (wersja zapoznawcza)
+# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Utwórz pulę hosta przy użyciu szablonu usługi Azure Resource Manager
 
-Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy (wersja zapoznawcza) Windows pulpitu wirtualnego. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
+Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy Windows wirtualnego Desktop w wersji zapoznawczej. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
 
 Wykonaj instrukcje w tej sekcji, aby utworzyć pulę hosta dla dzierżawy Windows pulpitu wirtualnego przy użyciu szablonu usługi Azure Resource Manager dostarczane przez firmę Microsoft. W tym artykule informacje dotyczące tworzenia puli hosta w Windows pulpitu wirtualnego, Utwórz grupę zasobów z maszynami wirtualnymi w subskrypcji platformy Azure, Dołącz do tych maszyn wirtualnych do domeny usługi AD i rejestrowanie maszyn wirtualnych w usłudze Windows pulpitu wirtualnego.
 

@@ -1,22 +1,22 @@
 ---
-title: Identyfikuj problemy z funkcji diagnostyki (wersja zapoznawcza) — na platformie Azure
-description: Zawiera opis funkcji diagnostyki Windows pulpitu wirtualnego i jak z niej korzystać.
+title: Identyfikowanie problemów z funkcją Diagnostyka Windows wirtualnego pulpitu (wersja zapoznawcza) — Azure
+description: Zawiera opis funkcji diagnostyki Windows wirtualnego pulpitu (wersja zapoznawcza) i jak z niej korzystać.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f44f4d632fa1fc607f3933be8e15eb939e20a8ae
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: a9b8be58e8dfb27fbe896cf1c8d8dc0e91e3b24c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318617"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402851"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature-preview"></a>Identyfikowanie problemów z funkcją Diagnostyka (wersja zapoznawcza)
+# <a name="identify-issues-with-the-diagnostics-feature"></a>Identyfikowanie problemów z funkcją Diagnostyka
 
-Windows pulpitu wirtualnego (wersja zapoznawcza) oferuje funkcję diagnostyki (wersja zapoznawcza), która służy administratorowi do identyfikowania problemów przez pojedynczy interfejs. Role pulpitu wirtualnego Windows rejestrowanie diagnostyczne działania zawsze wtedy, gdy użytkownik korzysta z systemu. Każdy dziennik zawiera istotne informacje, takie jak role pulpitu wirtualnego Windows zaangażowane w transakcji, komunikaty o błędach, informacji o dzierżawie i informacje o użytkowniku. Działania diagnostyczne są tworzone przez użytkowników końcowych i czynności administracyjnych i mogą zostać podzielone na trzy przedziały główne:
+Windows wirtualnego pulpitu (wersja zapoznawcza) oferuje funkcję diagnostyki, która pozwala administratorowi na identyfikowaniu problemów za pomocą jednego interfejsu. Role pulpitu wirtualnego Windows rejestrowanie diagnostyczne działania zawsze wtedy, gdy użytkownik korzysta z systemu. Każdy dziennik zawiera istotne informacje, takie jak role pulpitu wirtualnego Windows zaangażowane w transakcji, komunikaty o błędach, informacji o dzierżawie i informacje o użytkowniku. Działania diagnostyczne są tworzone przez użytkowników końcowych i czynności administracyjnych i mogą zostać podzielone na trzy przedziały główne:
 
 * Źródła danych subskrypcji działań: użytkownik końcowy uruchamia te działania zawsze wtedy, gdy użytkownik próbuje nawiązać połączenie z ich źródła danych za pośrednictwem aplikacji pulpitu zdalnego firmy Microsoft.
 * Działania połączenia: użytkownik końcowy uruchamia te działania zawsze wtedy, gdy spróbują połączyć się z pulpitu lub programów RemoteApp za pośrednictwem aplikacji pulpitu zdalnego firmy Microsoft.
@@ -145,7 +145,7 @@ W poniższej tabeli wymieniono typowe błędy napotkać administratorów.
 |8000|InvalidAuthorizationRoleScope|Wprowadzona nazwa roli nie odpowiada wszelkich istniejących nazw ról. Sprawdź nazwę roli literówki i spróbuj ponownie. |
 |8001|UserNotFound |Wprowadzona nazwa użytkownika nie odpowiada wszelkich istniejących nazw użytkowników. Sprawdź nazwę pisowni i spróbuj ponownie.|
 |8005|UserNotFoundInAAD |Wprowadzona nazwa użytkownika nie odpowiada wszelkich istniejących nazw użytkowników. Sprawdź nazwę pisowni i spróbuj ponownie.|
-|8008|TenantConsentRequired|Postępuj zgodnie z instrukcjami [tutaj](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-service) dostarczyć zgodę dla dzierżawy.|
+|8008|TenantConsentRequired|Postępuj zgodnie z instrukcjami [tutaj](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service) dostarczyć zgodę dla dzierżawy.|
 
 ### <a name="external-connection-error-codes"></a>Kody błędów połączenia zewnętrznego
 
@@ -164,6 +164,6 @@ W poniższej tabeli wymieniono typowe błędy napotkać administratorów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat ról w ramach pulpitu wirtualnego Windows, zobacz [środowiska pulpitu wirtualnego Windows](environment-setup.md).
+Aby dowiedzieć się więcej na temat ról w ramach pulpitu wirtualnego Windows, zobacz [środowisko w wersji zapoznawczej pulpitu wirtualnego Windows](environment-setup.md).
 
 Aby wyświetlić listę dostępnych poleceń cmdlet programu PowerShell dla pulpitu wirtualnego Windows, zobacz [dokumentacja programu PowerShell](/powershell/windows-virtual-desktop/overview).

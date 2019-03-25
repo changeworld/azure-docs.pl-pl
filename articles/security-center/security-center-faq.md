@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 7e4a4572a53338dc0c7b5d7d11dca7130c8979be
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 276b2815b36f05aa49183681b6c9e622155938e9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226899"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401133"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -291,11 +291,14 @@ Usługa Security Center jest usługą platformy Azure, która stale monitoruje �
 Usługa Azure Security Center monitoruje następujących zasobów platformy Azure:
 
 * Maszyny wirtualne (VM) (w tym [usług w chmurze](../cloud-services/cloud-services-choose-me.md))
+* Zestawy skalowania maszyn wirtualnych (VMSSs)
 * Sieci wirtualne platformy Azure
 * Usługa Azure SQL
 * Konto usługi Azure Storage
 * Aplikacje sieci Web platformy Azure (w [środowiska App Service Environment](../app-service/environment/intro.md))
 * Rozwiązań partnerskich zintegrowanych z subskrypcją platformy Azure, takich jak zapory aplikacji sieci web na maszynach wirtualnych i w środowisku App Service Environment
+
+Ponadto komputery spoza platformy Azure (z uwzględnieniem lokalnej) można również monitorować przez usługę Azure Security Center (zarówno [komputerów Windows](./quick-onboard-windows-computer.md) i [komputerów z systemem Linux](./quick-onboard-linux-computer.md) są obsługiwane)
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
 ### <a name="what-types-of-virtual-machines-are-supported"></a>Jakie typy maszyn wirtualnych są obsługiwane?

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: e3a24117cfd01c1c0bd0f08e8eca5adddf5ee7b6
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 43de22f7e56178559df4fc45980d064962580d2b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58119789"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403395"
 ---
-# <a name="data-box-edge-security-and-data-protection-preview"></a>Bezpieczeństwo Edge pola danych i ochrony danych (wersja zapoznawcza)
+# <a name="data-box-edge-security-and-data-protection"></a>Bezpieczeństwo Edge pola danych i ochrony danych
 
 Zabezpieczenia są głównym problemem podczas wdrażania nowej technologii, zwłaszcza, jeśli jest to technologia używana przy użyciu danych poufnych lub zastrzeżonych. Microsoft Azure Data Box nowoczesne rozwiązanie pomaga upewnić się, że tylko autoryzowani jednostki można wyświetlić, zmodyfikować lub usunąć swoje dane.
 
@@ -27,9 +27,6 @@ Rozwiązanie usługi Azure Data Box Edge składa się z czterech głównych skł
 - **Urządzenie brzegowe pole danych** — urządzenie do transferu, który jest dostarczany w celu zaimportowania danych lokalnych na platformę Azure.
 - **Klienci/hosty są połączone z urządzeniem** — klientów w infrastrukturze, połączyć się z urządzeniem krawędź pola danych, które zawierają dane, które muszą być chronione.
 - **Magazyn w chmurze** — lokalizacja w chmurze platformy Azure, w której są przechowywane dane. Ta lokalizacja jest zazwyczaj konto magazynu, połączone z zasobu krawędź pola danych, który został utworzony.
-
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="data-box-edgedata-box-gateway-service-protection"></a>Ochrona usługi bramy okno usługi Edge i dane pole danych
@@ -44,7 +41,7 @@ Usługa bramy okno usługi Edge i dane pole danych jest usługą zarządzania ho
 Urządzenie brzegowe pole danych jest lokalnym urządzeniem, która pomaga przekształcać dane, przetwarza go lokalnie, a następnie wysyłając je na platformie Azure. Urządzenia:
 
 - Wymaga klucza aktywacji dostępu do usługi bramy okno usługi Edge i dane pole danych.
-- Jest chroniony na cały czas hasło administratora urządzenia.
+- Jest chroniony na cały czas hasła urządzenia.
 - To urządzenie w trybie blokady. Urządzenie BMC i systemu BIOS są chronione hasłem z ograniczonym dostępem użytkownika systemu BIOS.
 - Bezpieczny rozruch został włączony.
 - Uruchamia program Windows Defender Device Guard. Funkcja Device Guard umożliwia uruchamianie tylko zaufane aplikacje zdefiniowane w zasadach integralności kodu. 
@@ -68,14 +65,14 @@ Haseł upewnij się, że Twoje dane są dostępne tylko dla autoryzowanych użyt
 Możesz:
 
 - Nawiązać połączenie z lokalnego interfejsu użytkownika urządzenia za pośrednictwem przeglądarki sieci web, a następnie podaj hasło do logowania się do urządzenia.
-- Zdalne łączenie się z interfejsu programu PowerShell urządzenia za pośrednictwem protokołu HTTP. Zdalne zarządzanie jest domyślnie włączona. Możesz także podać hasło administratora urządzenia, aby zalogować się do urządzenia. Aby uzyskać więcej informacji, przejdź do [Connect zdalnie na urządzenia brzegowe pole danych](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Zdalne łączenie się z interfejsu programu PowerShell urządzenia za pośrednictwem protokołu HTTP. Zdalne zarządzanie jest domyślnie włączona. Następnie możesz podać hasło urządzenia, aby zalogować się do urządzenia. Aby uzyskać więcej informacji, przejdź do [Connect zdalnie na urządzenia brzegowe pole danych](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 Należy pamiętać poniższe najlepsze rozwiązania:
 
 - Usługa krawędź pola danych nie można pobrać istniejących haseł: je mogą tylko je zresetować za pośrednictwem witryny Azure portal. Zaleca się przechowywanie wszystkie hasła w bezpiecznym miejscu, tak, aby nie trzeba zresetować hasło, zapomnienia jest. Jeśli możesz zresetować hasła, pamiętaj powiadomić wszystkich użytkowników, zanim je zresetować.
 - Użyj lokalnego internetowego interfejsu użytkownika do [zmiany hasła](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access). Jeśli zmienisz hasło, pamiętaj powiadomić wszystkich użytkowników dostępu zdalnego tak, aby nie będą dotykać logowania awarii.
 - Możesz zdalnie dostęp do interfejsu programu Windows PowerShell urządzenia, za pośrednictwem protokołu HTTP. Ze względów bezpieczeństwa HTTP należy używać tylko w sieciach zaufanych.
-- Upewnij się, że hasła administratora urządzenia silnych i dobrze chronione. Postępuj zgodnie z [najlepsze rozwiązania dotyczące haseł](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
+- Upewnij się, że hasła urządzenia silnych i dobrze chronione. Postępuj zgodnie z [najlepsze rozwiązania dotyczące haseł](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
 
 ## <a name="protect-the-data"></a>Ochrona danych
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2018
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15707e9854e79b3aa05ff9024fc5b3c7a38fa8f2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106889"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402120"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center (wersja zapoznawcza)
 
@@ -112,7 +112,7 @@ Każda kategoria ma swój własny zestaw atrybutów. Można zmienić następują
 
     - Lista dozwolonych grup użytkowników, na przykład: *Administratorzy*, *Operatorzy kopii zapasowych*
 
--   **Stan**: Ciąg może zawierać odpowiednie opcje *wyłączone* lub *włączone*. W tej wersji prywatnej wersji zapoznawczej ciąg jest rozróżniana wielkość liter.
+-   **Stan**: Ciąg może zawierać odpowiednie opcje *wyłączone* lub *włączone*. W tej wersji ciąg jest rozróżniana wielkość liter.
 
 Są to tylko pola, które można skonfigurować. Jeśli możesz naruszyć format pliku lub rozmiaru, nie można zapisać zmiany. Zostanie wyświetlony błąd informujący, że należy przekazać prawidłowy plik konfiguracji JSON.
 

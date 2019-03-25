@@ -1,22 +1,22 @@
 ---
-title: Host puli metod równoważenia obciążenia (wersja zapoznawcza) — platformy Azure
-description: Host puli metod równoważenia obciążenia dla środowiska wirtualnego pulpitu Windows.
+title: Windows wirtualnego Desktop w wersji zapoznawczej hosta puli metod równoważenia obciążenia — platformy Azure
+description: Host puli metod równoważenia obciążenia w środowisku Windows wirtualnego Desktop w wersji zapoznawczej.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 0a07406c8bad4ad0bef2949103d1f2c78e7dd8af
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8b18224339654c067d8ab9b543fa49a9c7d55ddd
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318512"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400181"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Hostowanie metod równoważenia obciążenia w puli
 
-Windows pulpitu wirtualnego (wersja zapoznawcza) obsługuje dwie metody równoważenia obciążenia. Każda metoda określa, które hostów sesji będzie obsługiwać sesji użytkownika, gdy łączą się z zasobem w puli hosta.
+Windows wirtualnego pulpitu (wersja zapoznawcza) obsługuje dwie metody równoważenia obciążenia. Każda metoda określa, które hostów sesji będzie obsługiwać sesji użytkownika, gdy łączą się z zasobem w puli hosta.
 
 Poniższych metod równoważenia obciążenia są dostępne w Windows pulpitu wirtualnego:
 

@@ -6,74 +6,77 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/22/2019
 ms.author: raynew
-ms.openlocfilehash: c6d6e380cded18a089f624f90d998477a89293be
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 3133f22a4d9ecd8a0ee4bff9f8b0be9c1f4eb705
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259045"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403667"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
 
-W tym artykule opisano sposób tworzenia kopii zapasowej dla maszyny Wirtualnej platformy Azure przy użyciu [kopia zapasowa Azure](backup-overview.md) przez wdrożenie i opcja włączania kopii zapasowych w magazynie usługi Recovery Services.
+W tym artykule opisano sposób tworzenia kopii zapasowej maszyn wirtualnych platformy Azure w magazynach usługi Recovery Services za pomocą [kopia zapasowa Azure](backup-overview.md) usługi. 
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Sprawdź obsługiwane scenariusze i wymagania wstępne.
+> * Sprawdź pomoc techniczna i wymagania wstępne dotyczące kopii zapasowych.
 > * Przygotowywanie maszyn wirtualnych platformy Azure. Zainstaluj agenta maszyny Wirtualnej platformy Azure, jeśli to konieczne i Sprawdź dostęp ruchu wychodzącego dla maszyn wirtualnych.
 > * Utwórz magazyn.
-> * Konfigurowanie magazynu dla magazynu
-> * Odnajdywanie maszyn wirtualnych, skonfiguruj ustawienia kopii zapasowych i zasady.
-> * Włącz wykonywanie kopii zapasowej maszyn wirtualnych platformy Azure
+> * Odnajdywanie maszyn wirtualnych i konfigurowanie zasad tworzenia kopii zapasowej.
+> * Włączanie tworzenia kopii zapasowej maszyn wirtualnych platformy Azure.
 
 
 > [!NOTE]
-   > W tym artykule opisano sposób tworzenia kopii zapasowej maszyn wirtualnych platformy Azure, konfigurowania magazynu i wybierając pozycję maszyny wirtualne, aby utworzyć kopię zapasową. Jest to przydatne, jeśli chcesz utworzyć kopię zapasową wielu maszyn wirtualnych. Możesz również [kopii zapasowej maszyny Wirtualnej platformy Azure](backup-azure-vms-first-look-arm.md) bezpośrednio z poziomu ustawień maszyny Wirtualnej.
+   > W tym artykule opisano jak skonfigurować Magazyn i wybrać maszyny wirtualne, aby utworzyć kopię zapasową. Jest to przydatne, jeśli chcesz utworzyć kopię zapasową wielu maszyn wirtualnych. Alternatywnie możesz [Utwórz kopię zapasową jednej maszyny Wirtualnej platformy Azure](backup-azure-vms-first-look-arm.md) bezpośrednio z poziomu ustawień maszyny Wirtualnej.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Usługa Azure Backup tworzy kopie zapasowe maszyn wirtualnych platformy Azure, instalowanie rozszerzenia na maszynie agenta maszyny Wirtualnej platformy Azure.
 
-1. [Przegląd](backup-architecture.md#architecture-direct-backup-of-azure-vms) architektura kopii zapasowych maszyn wirtualnych platformy Azure.
-[Dowiedz się więcej o](backup-azure-vms-introduction.md) kopii zapasowych maszyn wirtualnych platformy Azure, a rozszerzenie kopii zapasowej.
-2. [Przejrzyj macierz obsługi](backup-support-matrix-iaas.md) do utworzenia kopii zapasowej maszyny Wirtualnej platformy Azure.
-3. Przygotowywanie maszyn wirtualnych platformy Azure. Zainstaluj agenta maszyny Wirtualnej, jeśli nie jest on zainstalowany i Sprawdź dostęp ruchu wychodzącego dla maszyn wirtualnych, aby utworzyć kopię zapasową.
+- [Przegląd](backup-architecture.md#architecture-direct-backup-of-azure-vms) architektura kopii zapasowych maszyn wirtualnych platformy Azure.
+- [Dowiedz się więcej o](backup-azure-vms-introduction.md) kopii zapasowych maszyn wirtualnych platformy Azure, a rozszerzenie kopii zapasowej.
+- [Przejrzyj macierz obsługi](backup-support-matrix-iaas.md) do utworzenia kopii zapasowej maszyny Wirtualnej platformy Azure.
 
 
 ## <a name="prepare-azure-vms"></a>Przygotowywanie maszyn wirtualnych platformy Azure
 
-Zainstaluj agenta maszyny Wirtualnej, jeśli to konieczne i Sprawdź dostęp ruchu wychodzącego z maszyn wirtualnych.
+W niektórych sytuacjach może być konieczne Konfigurowanie agenta maszyny Wirtualnej platformy Azure na maszynach wirtualnych platformy Azure lub jawnie zezwolić na dostęp ruchu wychodzącego na maszynie Wirtualnej.
 
-### <a name="install-the-vm-agent"></a>Zainstaluj agenta maszyny Wirtualnej
-Jeśli to konieczne, zainstaluj agenta w następujący sposób.
+### <a name="install-the-vm-agent"></a>Zainstaluj agenta maszyny Wirtualnej 
+
+Usługa Azure Backup tworzy kopie zapasowe maszyn wirtualnych platformy Azure, instalowanie rozszerzenia na maszynie agenta maszyny Wirtualnej platformy Azure. Jeśli maszyna wirtualna została utworzona z obrazu w witrynie Azure marketplace, agent jest zainstalowany i uruchomiony. Jeśli tworzysz niestandardową maszynę Wirtualną lub migrowania maszyny w środowisku lokalnym, należy zainstalować agenta ręcznie, zgodnie z opisem w tabeli.
 
 **VM** | **Szczegóły**
 --- | ---
-**Maszyny wirtualne z systemem Windows** | [Pobierz i zainstaluj](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) pliku MSI agenta. Zainstaluj z uprawnieniami administratora na komputerze.<br/><br/> Aby zweryfikować instalację, w *C:\WindowsAzure\Packages* na maszynie Wirtualnej, kliknij prawym przyciskiem myszy WaAppAgent.exe > **właściwości**, > **szczegóły** kartę. **Wersja produktu** powinien znajdować się wartość 2.6.1198.718 lub wyższa.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, żadne operacje tworzenia kopii zapasowej są uruchomione, i [ponownie zainstalować agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Maszyny wirtualne z systemem Linux** | Instalację przy użyciu RPM lub DEB pakietu z repozytorium pakietów w Twojej dystrybucji jest preferowaną metodą instalacji i uaktualniania agenta systemu Linux dla platformy Azure. Wszystkie [zatwierdzonego dla dostawców dystrybucji](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Zintegruj pakiet Azure Linux agent repozytoriów i obrazów. Agent jest dostępna w [GitHub](https://github.com/Azure/WALinuxAgent), ale nie jest zalecane instalowanie z tego miejsca.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, żadna operacja tworzenia kopii zapasowej jest uruchomiony i aktualizowanie plików binarnych.
+**Maszyny wirtualne z systemem Windows** | 1. [Pobierz i zainstaluj](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) pliku MSI agenta.<br/><br/> 2. Zainstaluj z uprawnieniami administratora na komputerze.<br/><br/> 3. Zweryfikuj instalację. W *C:\WindowsAzure\Packages* na maszynie Wirtualnej, kliknij prawym przyciskiem myszy WaAppAgent.exe > **właściwości**, > **szczegóły** kartę. **Wersja produktu** powinien znajdować się wartość 2.6.1198.718 lub wyższa.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, żadne operacje tworzenia kopii zapasowej są uruchomione, i [ponownie zainstalować agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Maszyny wirtualne z systemem Linux** | Instalacja za pomocą RPM lub DEB pakietu z repozytorium pakietów w Twojej dystrybucji. Jest to preferowana metoda instalowania i uaktualniania agenta systemu Linux dla platformy Azure. Wszystkie [zatwierdzonego dla dostawców dystrybucji](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Zintegruj pakiet Azure Linux agent repozytoriów i obrazów. Agent jest dostępna w [GitHub](https://github.com/Azure/WALinuxAgent), ale nie jest zalecane instalowanie z tego miejsca.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, żadne operacje tworzenia kopii zapasowej są uruchomione i aktualizowanie plików binarnych.
 
 
 ### <a name="establish-network-connectivity"></a>Ustawianie łączności sieciowej
 
-Zapasowy numer wewnętrzny, uruchomione na maszynie Wirtualnej musi mieć dostęp ruchu wychodzącego do platformy Azure z publicznymi adresami IP.
+Zapasowy numer wewnętrzny, uruchomione na maszynie Wirtualnej musi wychodzący dostęp do platformy Azure publicznych adresów IP.
 
-- Brak dostępu do jawnego sieciowego ruchu wychodzącego jest wymagane dla maszyny Wirtualnej platformy Azure do komunikowania się z usługą Azure Backup.
-- Jednak niektóre starsze maszyny wirtualne mogą występować problemy i zakończyć się niepowodzeniem z powodu błędu **ExtensionSnapshotFailedNoNetwork** podczas próby połączenia. W tym przypadku użyj jednej z następujących opcji, aby zapasowy numer wewnętrzny może komunikować się do platformy Azure publicznych adresów IP dla ruchu kopii zapasowej.
+- Zazwyczaj nie trzeba jawnie zezwolić na dostęp ruchu wychodzącego sieci maszyny wirtualnej platformy Azure w celu użycia go do komunikowania się z usługą Azure Backup.
+- Jeśli napotkasz problemy z maszynami wirtualnymi łączenie i jeśli zostanie wyświetlony błąd **ExtensionSnapshotFailedNoNetwork** podczas próby połączenia, należy jawnie zezwolisz na dostęp, zapasowy numer wewnętrzny można przekazać do publicznej platformy Azure Adresy IP dla ruchu kopii zapasowej.
 
-   **Opcja** | **Akcja** | **Zalety** | **Wady**
-   --- | --- | --- | ---
-   **Skonfiguruj reguły sieciowej grupy zabezpieczeń** | Zezwalaj na [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/>  Można dodać regułę, która zezwala na dostęp do usługi Azure Backup przy użyciu [tag usługi](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure), a nie indywidualnie umożliwiając i zarządzanie nimi każdego zakresu adresów. [Dowiedz się więcej](../virtual-network/security-overview.md#service-tags) o tagi usługi. | Brak dodatkowych kosztów. Łatwo zarządzać za pomocą tagów usługi
-   **Wdrażanie serwera proxy** | Wdrażanie serwera proxy HTTP dla routingu ruchu. | Zapewnia dostęp do całej platformy Azure i nie tylko magazyn. Ścisła kontrola nad adresy URL magazynu jest dozwolone.<br/><br/> Pojedynczy punkt internet access dla maszyn wirtualnych.<br/><br/> Dodatkowe koszty dla serwera proxy.<br/><br/>
-   **Konfigurowanie zapory platformy Azure** | Zezwalaj na ruch przez zaporę platformy Azure na maszynie Wirtualnej za pomocą tagu w pełni kwalifikowaną nazwę domeny dla usługi Azure Backup.|  Łatwa w użyciu, jeśli masz zapory usługi Azure w podsieci sieci wirtualnej | Nie można utworzyć własne tagi nazwy FQDN lub zmodyfikować nazwy FQDN w tagu.<br/><br/> Jeśli używasz usługi Azure Managed Disks, może być konieczne otwarcie dodatkowych portów (na porcie 8443) na zaporach.
 
-#### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Skonfiguruj regułę sieciowej grupy zabezpieczeń, aby zezwolić na dostęp ruchu wychodzącego do usługi Azure
+#### <a name="explicitly-allow-outbound-access"></a>Jawnie zezwolić na dostęp ruchu wychodzącego
 
-Jeśli maszyna wirtualna platformy Azure ma dostęp do zarządzanych przez sieciową grupę zabezpieczeń, należy zezwolić na dostęp ruchu wychodzącego w magazynie kopii zapasowej do wymaganych zakresów adresów i portów.
+Jeśli maszyna wirtualna nie może nawiązać połączenia usługi Backup, jawnie zezwolić na dostęp ruchu wychodzącego, używając jednej z metod podsumowane w tabeli.
 
-1. Na maszynie wirtualnej > **sieć**, kliknij przycisk **Dodaj regułę portu wyjściowego**.
+**Opcja** | **Akcja** | **Szczegóły** 
+--- | --- | --- 
+**Skonfiguruj reguły sieciowej grupy zabezpieczeń** | Zezwalaj na [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Zamiast umożliwiając i zarządzania nimi każdego zakresu adresów, można dodać regułę, która zezwala na dostęp do usługi Azure Backup przy użyciu [tag usługi](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). [Dowiedz się więcej](../virtual-network/security-overview.md#service-tags).<br/><br/> Brak dodatkowych kosztów.<br/><br/> Łatwo zarządzać za pomocą tagów usługi.
+**Wdrażanie serwera proxy** | Wdrażanie serwera proxy HTTP dla routingu ruchu. | Zapewnia dostęp do całej platformy Azure i nie tylko magazyn.<br/><br/> Ścisła kontrola nad adresy URL magazynu jest dozwolone.<br/><br/> Pojedynczy punkt internet access dla maszyn wirtualnych.<br/><br/> Dodatkowe koszty dla serwera proxy.
+**Konfigurowanie zapory platformy Azure** | Zezwalaj na ruch przez zaporę platformy Azure na maszynie Wirtualnej za pomocą tagu w pełni kwalifikowaną nazwę domeny dla usługi Azure Backup. |  Łatwa w użyciu, jeśli masz zapory usługi Azure w podsieci sieci wirtualnej<br/><br/> Nie można utworzyć własne tagi nazwy FQDN lub zmodyfikować nazwy FQDN w tagu.<br/><br/> Jeśli używasz usługi Azure Managed Disks, może być konieczne otwarcie dodatkowych portów (na porcie 8443) na zaporach.
+
+##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Skonfiguruj regułę sieciowej grupy zabezpieczeń, aby zezwolić na dostęp ruchu wychodzącego do usługi Azure
+
+Jeśli dostęp do maszyny Wirtualnej jest zarządzany przez sieciową grupę zabezpieczeń, należy zezwolić na dostęp ruchu wychodzącego dla magazynu kopii zapasowych, aby wymaganych zakresów adresów i portów.
+
+1. We właściwościach maszyny Wirtualnej > **sieć**, kliknij przycisk **Dodaj regułę portu wyjściowego**.
 2. W **Dodawanie reguły zabezpieczeń dla ruchu wychodzącego**, kliknij przycisk **zaawansowane**.
 3. W **źródła**, wybierz opcję **VirtualNetwork**.
 4. W **zakresów portów źródłowych**, wpisz znak gwiazdki (*), aby zezwolić na dostęp ruchu wychodzącego z dowolnego portu.
@@ -83,30 +86,29 @@ Jeśli maszyna wirtualna platformy Azure ma dostęp do zarządzanych przez sieci
     - Niezarządzanej maszyny Wirtualnej za pomocą zaszyfrowanego konta magazynu: 443 (ustawienie domyślne)
     - Zarządzanych maszyn wirtualnych: 8443.
 7. W **protokołu**, wybierz opcję **TCP**.
-8. W **priorytet**, określ wartość priorytetu z mniej niż wyżej reguł odmowy. W przypadku regułę odmawiającą dostępu nową Zezwalaj na reguła musi być wyższa. Na przykład, jeśli masz **Deny_All** reguły priorytetem 1000, nową regułę, musi być ustawione na mniej niż 1000.
+8. W **priorytet**, określ wartość priorytetu z mniej niż wyżej reguł odmowy.
+   - W przypadku regułę odmawiającą dostępu nową Zezwalaj na reguła musi być wyższa.
+   - Na przykład, jeśli masz **Deny_All** reguły priorytetem 1000, nową regułę, musi być ustawione na mniej niż 1000.
 9. Podaj nazwę i opis reguły, a następnie kliknij przycisk **OK**.
 
-Reguły sieciowej grupy zabezpieczeń można zastosować do wielu maszyn wirtualnych, aby zezwolić na dostęp ruchu wychodzącego.
-
-W tym wideo przeprowadzi Cię przez proces.
+Reguły sieciowej grupy zabezpieczeń można zastosować do wielu maszyn wirtualnych, aby zezwolić na dostęp ruchu wychodzącego. W tym wideo przeprowadzi Cię przez proces.
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 
-#### <a name="route-backup-traffic-through-a-proxy"></a>Kierowanie ruchu kopii zapasowych za pośrednictwem serwera proxy
+##### <a name="route-backup-traffic-through-a-proxy"></a>Kierowanie ruchu kopii zapasowych za pośrednictwem serwera proxy
 
-Można kierować ruchem kopii zapasowych za pośrednictwem serwera proxy, a następnie udzielić dostępu do serwera proxy do wymaganych zakresów platformy Azure.
-Należy skonfigurować serwer proxy maszyny Wirtualnej, aby umożliwić następujące czynności:
+Można kierować ruchem kopii zapasowych za pośrednictwem serwera proxy, a następnie udzielić dostępu do serwera proxy do wymaganych zakresów platformy Azure. Skonfiguruj serwer proxy maszyny Wirtualnej, aby umożliwić następujące czynności:
 
 - Maszyna wirtualna platformy Azure należy kierować cały ruch HTTP do publicznej sieci internet za pośrednictwem serwera proxy.
 - Serwer proxy powinien zezwalać na ruch przychodzący z maszyn wirtualnych w odpowiednich sieci wirtualnych (VNet).
 - Sieciowa grupa zabezpieczeń **blokady NF** musi regułę zezwalającą na ruch wychodzący z Internetu z maszyną Wirtualną serwera proxy.
 
-##### <a name="set-up-the-proxy"></a>Konfigurowanie serwera proxy
+###### <a name="set-up-the-proxy"></a>Konfigurowanie serwera proxy
+
 Jeśli nie masz konta serwera proxy systemu skonfigurowane w następujący sposób:
 
 1. Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
-
 2. Uruchom **PsExec.exe -i -s cmd.exe** do uruchamiania wiersza polecenia przy użyciu konta system.
 3. Uruchom przeglądarkę w kontekście systemowym. Na przykład: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** programu Internet Explorer.  
 4. Zdefiniuj ustawienia serwera proxy.
@@ -127,18 +129,22 @@ Jeśli nie masz konta serwera proxy systemu skonfigurowane w następujący spos�
 
        ```
 
-##### <a name="allow-incoming-connections-on-the-proxy"></a>Zezwalaj na połączenia przychodzące na serwerze proxy
+###### <a name="allow-incoming-connections-on-the-proxy"></a>Zezwalaj na połączenia przychodzące na serwerze proxy
 
 Zezwalaj na połączenia przychodzące w ustawień serwera proxy.
 
-- Na przykład otworzyć **Zapora Windows z zabezpieczeniami zaawansowanymi**.
-    - Kliknij prawym przyciskiem myszy **reguły dla ruchu przychodzącego** > **nową regułę**.
-    - W **typ reguły** wybierz **niestandardowe** > **dalej**.
-    - W **Program**, wybierz opcję **wszystkie programy** > **dalej**.
-    - W **protokoły i porty** Ustaw typ **TCP**, **portów lokalnych** do **określonych portów**, i **port zdalny**do **wszystkie porty**.
-    - Zakończ pracę kreatora, a następnie określ nazwę dla tej reguły.
+1, Zapora Windows otwórz **Zapora Windows z zabezpieczeniami zaawansowanymi**.
+2. Kliknij prawym przyciskiem myszy **reguły dla ruchu przychodzącego** > **nową regułę**.
+3. W **typ reguły** wybierz **niestandardowe** > **dalej**.
+4. W **Program**, wybierz opcję **wszystkie programy** > **dalej**.
+5. W **protokoły i porty**:
+   - Ustaw typ **TCP**
+   - Ustaw **portów lokalnych** do **określonych portów**
+   - Ustaw **port zdalny** do **wszystkie porty**.
+  
+6. Zakończ pracę kreatora, a następnie określ nazwę dla tej reguły.
 
-##### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Dodaj regułę wyjątku do sieciowej grupy zabezpieczeń dla serwera proxy
+###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Dodaj regułę wyjątku do sieciowej grupy zabezpieczeń dla serwera proxy
 
 W sieciowej grupie zabezpieczeń **blokady NF**, zezwalają na ruch z dowolnego portu na 10.0.0.5 do dowolnego adresu internetowego na porcie 80 (HTTP) lub 443 (HTTPS).
 
@@ -157,16 +163,17 @@ Możesz skonfigurować zaporę usługi Azure, aby zezwolić na dostęp ruchu wyc
 - [Dowiedz się więcej o](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) wdrożenie zapory usługi Azure.
 - [Przeczytaj o](https://docs.microsoft.com/azure/firewall/fqdn-tags) tagów w pełni kwalifikowaną nazwę domeny.
 
-## <a name="set-up-storage-replication"></a>Konfigurowanie replikacji magazynu
+## <a name="modify-storage-replication-settings"></a>Modyfikuj ustawienia replikacji magazynu
 
-Domyślnie Magazyn jest [magazyn geograficznie nadmiarowy (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). Zalecamy użycie konta GRS dla Twoja podstawowa kopia zapasowa, ale można użyć[magazyn lokalnie nadmiarowy](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) tańszych opcji.
+Domyślnie Magazyn jest [magazyn geograficznie nadmiarowy (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
 
-Usługa Azure Backup automatycznie obsługuje magazynu dla magazynu. Należy określić sposób replikowania tego magazynu.
-Zmodyfikuj replikacja magazynu w następujący sposób:
+- Zalecamy użycie konta GRS dla Twoja podstawowa kopia zapasowa.
+- Możesz użyć [magazyn lokalnie nadmiarowy (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) tańszych opcji.
 
-1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn. W obszarze **ustawienia** kliknij **właściwości**.
+Zmodyfikuj typ replikacji magazynu w następujący sposób:
+
+1. W portalu kliknij nowy magazyn. W obszarze **ustawienia** kliknij **właściwości**.
 2. W **właściwości**w obszarze **konfiguracji kopii zapasowej**, kliknij przycisk **aktualizacji**.
-
 3. Wybierz typ replikacji magazynu, a następnie kliknij przycisk **Zapisz**.
 
       ![Ustawianie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
@@ -213,8 +220,7 @@ Po włączeniu kopii zapasowej:
 - Tworzenie początkowej kopii zapasowej jest uruchamiane zgodnie z harmonogramem kopii zapasowej.
 - Usługa Backup instaluje rozszerzenie kopii zapasowej, czy maszyna wirtualna jest uruchomiona.
     - Uruchomiona maszyna wirtualna zapewnia największe prawdopodobieństwo uzyskania punktu odzyskiwania spójnego z aplikacją.
-    -  Jednak maszyna wirtualna jest kopii zapasowej, nawet jeśli jest ona wyłączona i nie można zainstalować rozszerzenia. Jest to nazywane *maszyny Wirtualnej w trybie offline*. W takim przypadku punkt odzyskiwania będzie *awaryjnie spójny*.
-    Należy pamiętać, że usługi Azure Backup nie obsługuje zegara automatyczne dostosowanie zmian letniego dla kopii zapasowych maszyn wirtualnych platformy Azure. Modyfikowanie zasad tworzenia kopii zapasowej ręcznego zgodnie z potrzebami.
+    -  Jednak maszyna wirtualna jest kopii zapasowej, nawet jeśli jest ona wyłączona i nie można zainstalować rozszerzenia. Wiadomo, jako Maszynę wirtualną w trybie offline. W tym przypadku punkt odzyskiwania będzie spójna w razie awarii. [Dowiedz się więcej]() Uwaga usługi Azure Backup nie obsługuje dostosowanie zegara automatycznej zmiany letniego dla kopii zapasowych maszyn wirtualnych platformy Azure. Modyfikowanie zasad tworzenia kopii zapasowej ręcznego zgodnie z potrzebami.
 
 ## <a name="run-the-initial-backup"></a>Uruchom tworzenie początkowej kopii zapasowej
 
@@ -231,5 +237,6 @@ Początkowa kopia zapasowa zostanie uruchomione zgodnie z harmonogramem, chyba �
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Rozwiązanie wszelkich problemów, które występują w [agentów maszyny Wirtualnej platformy Azure](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) lub [kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-vms-troubleshoot.md).
-- [Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-vms-first-look-arm.md)
+- Rozwiązywanie problemów z [agentów maszyny Wirtualnej platformy Azure](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) lub [kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-vms-troubleshoot.md).
+- [Przywróć](backup-azure-arm-restore-vms.md) maszyn wirtualnych platformy Azure.
+

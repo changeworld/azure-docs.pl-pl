@@ -1,22 +1,22 @@
 ---
-title: Tworzenie jednostek usługi i przypisań ról za pomocą programu Azure PowerShell (wersja zapoznawcza) —
-description: Jak utworzyć jednostki usługi i przypisz role przy użyciu programu PowerShell w programie Windows pulpitu wirtualnego.
+title: Tworzenie jednostek usługi Windows wirtualnego pulpitu (wersja zapoznawcza) i przypisań ról za pomocą programu PowerShell — platformy Azure
+description: Jak utworzyć jednostki usługi i przypisz role przy użyciu programu PowerShell w wersji zapoznawczej pulpitu wirtualnego Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 86dafa5ccfb28a174a268c23d7dbc847272aaa3f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1bbe89484d72a21c4432d452d4ddae83ea2d2553
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318148"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400026"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Samouczek: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
 
-Jednostki usługi stanowią tożsamości, utworzone w usłudze Azure Active Directory do przypisywania ról i uprawnień do określonego celu. W Windows pulpitu wirtualnego (wersja zapoznawcza) można utworzyć usługę podmiotu zabezpieczeń, aby:
+Jednostki usługi stanowią tożsamości, utworzone w usłudze Azure Active Directory do przypisywania ról i uprawnień do określonego celu. W Windows wirtualnego pulpitu (wersja zapoznawcza) można utworzyć usługę podmiotu zabezpieczeń, aby:
 
 - Automatyzowanie zadań zarządzania w usłudze określonych Windows pulpitu wirtualnego
 - Użyj jako poświadczeń zamiast użytkowników wymagane uwierzytelnianie wieloskładnikowe, podczas uruchamiania dowolnego szablonu Windows wirtualnego pulpitu usługi Azure Resource Manager
@@ -58,7 +58,7 @@ $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayNa
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Utwórz przypisanie roli w Windows pulpitu wirtualnego
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Utwórz przypisanie roli w Windows wirtualnego pulpitu (wersja zapoznawcza)
 
 Teraz, po utworzeniu usługi jednostki, można użyć go do logowania się na Windows pulpitu wirtualnego. Pamiętaj zalogować się przy użyciu konta które ma uprawnienia do utworzenia przypisania roli.
 
@@ -112,4 +112,4 @@ Poniżej przedstawiono trzy poświadczeń, których należy zanotować i polece�
 W tym samouczku przedstawiono sposób utworzyć jednostkę usługi i zaloguj się do wirtualnego pulpitu Windows z nim. Aby dowiedzieć się więcej o tym, jak zalogować się do wirtualnego pulpitu Windows, przejdź do nawiązywania połączenia z wirtualnego How-tos pulpitu Windows.
 
 - [Nawiązać połączenie z klienta pulpitu zdalnego na Windows 7 i Windows 10](connect-windows-7-and-10.md)
-- [Nawiązywać połączenia z klientem w sieci web Windows pulpitu wirtualnego](connect-web.md)
+- [Nawiązywać połączenia z klientem w sieci web Windows wirtualnego pulpitu (wersja zapoznawcza)](connect-web.md)

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: dbfb559516177d496f5b16dc31f0ef8d0603cf68
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b37f198052ee927ea986d2a6046bfd93b6ee5d5e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904018"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399977"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
@@ -28,7 +28,7 @@ Jeśli zakupiono Azure Reserved Virtual Machine Instances, możesz zmienić usta
 
 ## <a name="change-the-scope-for-a-reservation"></a>Zmień zakres dla rezerwacji
 
- Rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych, baz danych SQL, Azure Cosmos DB i innych zasobów, która pasuje do rezerwacji i uruchamiane w ramach zakresu rezerwacji. Zakres rezerwacji może być pojedynczej subskrypcji, czy wszystkie subskrypcje w kontekstu rozliczeń. Jeśli zakres jest ustawiona na jedną subskrypcję, rezerwacja jest dopasowany do uruchomionego zasobów w wybranej subskrypcji. Jeśli ustawiono zakres udostępniony, Azure pasuje rezerwacji do zasobów, które są uruchamiane w przypadku wszystkich subskrypcji w ramach kontekstu rozliczeń. Kontekstu rozliczeń zależy od subskrypcji zakupu rezerwacji.
+ Rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych, baz danych SQL, Azure Cosmos DB i inne zasoby, które odpowiada rezerwacji i uruchamiać w zakresie rezerwacji. Kontekstu rozliczeń zależy od subskrypcji zakupu rezerwacji.
 
 Aby zaktualizować zakresu rezerwacji:
 
@@ -115,6 +115,10 @@ Aby zaktualizować ustawienia optymalizacji dla rezerwacji:
 4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
 5. Zmiana **Optymalizuj pod kątem** ustawienie.
 
+## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
+
+Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
@@ -130,7 +134,3 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
-
-Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://go.microsoft.com/fwlink/?linkid=2083458).

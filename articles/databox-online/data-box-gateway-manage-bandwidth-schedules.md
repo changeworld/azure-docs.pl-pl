@@ -1,28 +1,25 @@
 ---
-title: Zarządzanie harmonogramami przepustowości w usłudze Azure Data Box Gateway | Microsoft Docs
+title: Zarządzanie harmonogramami przepustowości w usłudze Azure Data Box Gateway | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób zarządzania harmonogramami przepustowości w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a50091ec8878cbc8c1167c03acddaf269d697f31
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102128"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400419"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Zarządzanie harmonogramami przepustowości w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal  
 
 W tym artykule opisano sposób zarządzania harmonogramami przepustowości w usłudze Azure Data Box Gateway. Harmonogramy przepustowości pozwalają konfigurować użycie przepustowości sieci w wielu harmonogramach dotyczących pory dnia. Te harmonogramy można zastosować do operacji przekazywania i pobierania wykonywanych z urządzenia do chmury. 
 
 Harmonogramy przepustowości w usłudze Data Box Gateway można dodawać, modyfikować lub usuwać za pomocą witryny Azure Portal.
-
-> [!IMPORTANT]
-> - Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 

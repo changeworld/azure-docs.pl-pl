@@ -1,22 +1,22 @@
 ---
-title: Utwórz pulę hosta przy użyciu programu Azure PowerShell (wersja zapoznawcza) —
-description: Jak utworzyć pulę hosta w Windows pulpitu wirtualnego przy użyciu poleceń cmdlet programu PowerShell.
+title: Utwórz pulę hosta Windows wirtualnego pulpitu (wersja zapoznawcza) przy użyciu programu PowerShell — platformy Azure
+description: Jak utworzyć pulę hosta w wersji zapoznawczej pulpitu wirtualnego Windows za pomocą poleceń cmdlet programu PowerShell.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 4b65d7614db94a9cc3fdca3f4b784c2c84ebaef8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7b9b7ffbb034a7fb1256d9cc44048cfa55b02245
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318542"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402732"
 ---
-# <a name="create-a-host-pool-with-powershell-preview"></a>Utwórz pulę hosta przy użyciu programu PowerShell (wersja zapoznawcza)
+# <a name="create-a-host-pool-with-powershell"></a>Utwórz pulę hosta przy użyciu programu PowerShell
 
-Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy (wersja zapoznawcza) Windows pulpitu wirtualnego. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
+Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy Windows wirtualnego Desktop w wersji zapoznawczej. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Umożliwia utworzenie puli hosta przez klienta programu PowerShell
 
@@ -70,12 +70,12 @@ Można utworzyć maszynę wirtualną na wiele sposobów:
 - [Tworzenie maszyny wirtualnej na podstawie obrazu zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [Utwórz maszynę wirtualną z obrazu niezarządzanego](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>Przygotowywanie maszyn wirtualnych w przypadku instalacji agenta Windows pulpitu wirtualnego
+## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>Przygotowywanie maszyn wirtualnych w przypadku instalacji agenta Windows wirtualnego pulpitu (wersja zapoznawcza)
 
 Należy wykonać następujące czynności na przygotowanie maszyn wirtualnych, aby można było zainstalować agentów pulpitu wirtualnego Windows i rejestrowania maszyn wirtualnych do puli hosta wirtualnego pulpitu Windows:
 
 - Należy najpierw przyłączania do domeny komputera. Dzięki temu przychodzących użytkownikom Windows pulpitu wirtualnego można mapować ze swojego konta usługi Azure Active Directory do swojego konta usługi Active Directory i pomyślnie miały dostęp do maszyny wirtualnej.
-- Jeśli maszyna wirtualna jest uruchomiona systemie operacyjnym Windows Server, należy zainstalować rolę hosta sesji usług pulpitu zdalnego (RDSH) (wersja zapoznawcza). Rola RDSH umożliwia agentów Windows pulpitu wirtualnego, aby poprawnie zainstalowany.
+- Jeśli maszyna wirtualna jest uruchomiona systemie operacyjnym Windows Server, należy zainstalować rolę hosta sesji usług pulpitu zdalnego (RDSH). Rola RDSH umożliwia agentów Windows pulpitu wirtualnego, aby poprawnie zainstalowany.
 
 Aby pomyślnie przyłączania do domeny wykonaj następujące czynności na każdej maszynie wirtualnej:
 
@@ -85,7 +85,7 @@ Aby pomyślnie przyłączania do domeny wykonaj następujące czynności na każ
 4. Wybierz **domeny** , a następnie wprowadź domeny usługi Active Directory w sieci wirtualnej.
 5. Uwierzytelnianie przy użyciu konta domeny, które ma uprawnienia do przyłączania do domeny komputerów.
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Rejestrowanie maszyn wirtualnych do puli hosta Windows pulpitu wirtualnego
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Rejestrowanie maszyn wirtualnych do puli hosta Windows wirtualnego pulpitu (wersja zapoznawcza)
 
 Rejestrowanie maszyn wirtualnych do puli hosta Windows pulpitu wirtualnego jest tak proste, jak instalowanie agentów Windows pulpitu wirtualnego.
 
@@ -114,7 +114,7 @@ Aby zarejestrować agentów pulpitu wirtualnego Windows, wykonaj następujące c
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, gdy wprowadzono puli hosta, nadszedł czas na wypełniona RemoteApps (wersja zapoznawcza). Aby dowiedzieć się więcej na temat sposobu zarządzania aplikacjami w Windows pulpitu wirtualnego, zobacz samouczek grup aplikacji Zarządzanie.
+Teraz, gdy wprowadzono puli hosta, możesz go wypełnić RemoteApps. Aby dowiedzieć się więcej na temat sposobu zarządzania aplikacjami w Windows pulpitu wirtualnego, zobacz samouczek grup aplikacji Zarządzanie.
 
 > [!div class="nextstepaction"]
 > [Zarządzać samouczek grup aplikacji](./manage-app-groups.md)

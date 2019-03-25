@@ -1,22 +1,22 @@
 ---
-title: Środowisko pulpitu wirtualnego Windows (wersja zapoznawcza) — platformy Azure
-description: Podstawowe elementy w środowisku Windows pulpitu wirtualnego.
+title: Środowisko Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
+description: Podstawowe elementy w środowisku Windows wirtualnego Desktop w wersji zapoznawczej.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: c503f665e3e2f99cd59f207c3fc4823b927eaac3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ceed6a8bb74206b7c6689ce542482148800e4ba9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318452"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403514"
 ---
-# <a name="windows-virtual-desktop-environment-preview"></a>Środowisko pulpitu wirtualnego Windows (wersja zapoznawcza)
+# <a name="windows-virtual-desktop-preview-environment"></a>Środowisko Windows wirtualnego pulpitu (wersja zapoznawcza)
 
-Windows pulpitu wirtualnego (wersja zapoznawcza) to usługa, która zapewnia użytkownikom łatwy i bezpieczny dostęp do ich pulpity nawigacyjne i wirtualizacją RemoteApps. Ten temat informuje o nieco więcej informacji na temat ogólną strukturę środowiska wirtualnego pulpitu Windows.
+Windows wirtualnego pulpitu (wersja zapoznawcza) to usługa, która zapewnia użytkownikom łatwy i bezpieczny dostęp do ich pulpity nawigacyjne i wirtualizacją RemoteApps. Ten temat informuje o nieco więcej informacji na temat ogólną strukturę środowiska wirtualnego pulpitu Windows.
 
 ## <a name="tenants"></a>Dzierżaw
 
@@ -57,11 +57,11 @@ Po przypisaniu użytkowników do ich grup aplikacji, można nawiązać wdrożeni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o delegowany dostęp i jak przypisać role do użytkowników w [delegowany dostęp w pulpitu wirtualnego Windows](delegated-access-virtual-desktop.md).
+Dowiedz się więcej o delegowany dostęp i jak przypisać role do użytkowników w [delegowany dostęp w wersji zapoznawczej pulpitu wirtualnego Windows](delegated-access-virtual-desktop.md).
 
-Aby dowiedzieć się, jak skonfigurować swoją dzierżawę, pulpitu wirtualnego Windows, zobacz [utworzyć dzierżawę w pulpitu wirtualnego Windows](tenant-setup-azure-active-directory.md).
+Aby dowiedzieć się, jak skonfigurować swoją dzierżawę, pulpitu wirtualnego Windows, zobacz [utworzyć dzierżawę w wersji zapoznawczej pulpitu wirtualnego Windows](tenant-setup-azure-active-directory.md).
 
 Aby dowiedzieć się, jak nawiązać połączenie z pulpitem wirtualnym Windows, zobacz jeden z następujących artykułów:
 
 - [Nawiązać połączenie z klienta pulpitu zdalnego na Windows 7 i Windows 10](connect-windows-7-and-10.md)
-- [Nawiązywać połączenia z klientem w sieci web Windows pulpitu wirtualnego](connect-web.md)
+- [Nawiązywać połączenia z klientem w sieci web Windows wirtualnego pulpitu (wersja zapoznawcza)](connect-web.md)

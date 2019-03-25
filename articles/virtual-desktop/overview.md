@@ -1,22 +1,22 @@
 ---
-title: Co to jest pulpit wirtualny Windows? (wersja zapoznawcza) — platformy Azure
-description: Przegląd Windows pulpitu wirtualnego.
+title: Co to jest Windows wirtualnego pulpitu (wersja zapoznawcza)?  — Azure
+description: Przegląd Windows wirtualnego Desktop w wersji zapoznawczej.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 679c7d3c84237747fd341f92c5dfcc0588d23be2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4443d71d5c0b84ac7dbc18129338229c40323d2c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338551"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401052"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Co to jest pulpit wirtualny Windows? 
+# <a name="what-is-windows-virtual-desktop-preview"></a>Co to jest Windows wirtualnego pulpitu (wersja zapoznawcza)? 
 
-Teraz dostępna w publicznej wersji zapoznawczej, jest pulpitu wirtualnego Windows desktop i aplikacji usługa wirtualizacji, która działa w chmurze.
+Windows wirtualnego pulpitu (wersja zapoznawcza), teraz dostępna w publicznej wersji zapoznawczej, jest usługa wirtualizacji pulpitu i aplikacji, która działa w chmurze.
 
 Oto, co można zrobić podczas uruchamiania pulpitu wirtualnego Windows na platformie Azure:
 
@@ -39,7 +39,7 @@ Za pomocą Windows pulpitu wirtualnego można skonfigurować skalowalne i elasty
 
 Można wdrażać i zarządzać pulpitami wirtualnymi:
 
-* Użyj interfejsów środowiska PowerShell pulpitu wirtualnego Windows i REST, można skonfigurować pule hosta, tworzenie grupy aplikacji, przypisywanie użytkowników i publikowania zasobów
+* Można skonfigurować pule hosta, tworzenie grupy aplikacji, przypisywanie użytkowników i publikowania zasobów, należy użyć programu PowerShell pulpitu wirtualnego Windows i REST interfejsów.
 * Publikowanie pełnej pulpitu lub poszczególne aplikacje zdalne z puli jednego hosta, tworzenie grup poszczególnych aplikacji dla różnych zestawów użytkowników lub nawet przypisać użytkowników do wielu grup aplikacji w celu zmniejszenia liczby obrazów.
 * W przypadku zarządzania środowiska, umożliwia delegowany dostęp do wbudowanych przypisywanie ról i zbieranie danych diagnostycznych, aby poznać różne błędy konfiguracji lub użytkownika.
 * Nowa usługa diagnostyki umożliwia rozwiązywanie problemów z błędami.
@@ -97,4 +97,4 @@ Odwiedź stronę [społeczności technicznej pulpitu wirtualnego Windows](https:
 Aby rozpocząć pracę, należy utworzyć dzierżawę. Aby dowiedzieć się więcej o tym, jak utworzyć dzierżawę, przejdź do samouczka tworzenia dzierżawy.
 
 > [!div class="nextstepaction"]
-> [Utwórz dzierżawę w Windows pulpitu wirtualnego](tenant-setup-azure-active-directory.md)
+> [Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego Windows](tenant-setup-azure-active-directory.md)
