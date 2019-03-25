@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 22615d07e69d707c90e3ff9bda83bfa6f0852996
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890750"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360288"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co się stało z aplikacją Azure Machine Learning Workbench?
 
@@ -40,7 +40,7 @@ Najnowsza wersja usługi Azure Machine Learning Service obejmuje następujące f
 + Nowy, bardziej kompleksowy <a href="https://aka.ms/aml-sdk" target="_blank">zestaw SDK</a> języka Python.
 + Nowe, rozbudowane [rozszerzenie interfejsu wiersza polecenia platformy Azure](reference-azure-machine-learning-cli.md) na potrzeby uczenia maszynowego.
 
-[Architektura](concept-azure-machine-learning-architecture.md) została zaprojektowana od nowa, aby ułatwić obsługę. Zamiast wielu zasobów i kont platformy Azure, będziesz potrzebować tylko aplikacji [Azure Machine Learning Service Workspace](concept-azure-machine-learning-architecture.md#workspace). Obszary robocze można szybko tworzyć w witrynie [Azure Portal](quickstart-get-started.md). Dzięki użyciu obszaru roboczego wielu użytkowników może przechowywać cele obliczeniowe szkoleń i wdrożeń, eksperymenty dotyczące modeli, obrazy platformy Docker, wdrożone modele itd.
+[Architektura](concept-azure-machine-learning-architecture.md) została zaprojektowana od nowa, aby ułatwić obsługę. Zamiast wielu zasobów i kont platformy Azure, będziesz potrzebować tylko aplikacji [Azure Machine Learning Service Workspace](concept-azure-machine-learning-architecture.md#workspace). Możesz szybko utworzyć obszary robocze w [portal]((setup-create-workspace.md#portal) platformy Azure. Dzięki użyciu obszaru roboczego wielu użytkowników może przechowywać cele obliczeniowe szkoleń i wdrożeń, eksperymenty dotyczące modeli, obrazy platformy Docker, wdrożone modele itd.
 
 Bieżąca wersja udostępnia nowe, ulepszone klienty interfejsu wiersza polecenia i zestawu SDK, ale sama klasyczna aplikacja Workbench została wycofana z użytku. Eksperymentami można zarządzać na [pulpicie nawigacyjnym obszaru roboczego w witrynie Azure Portal](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal). Pulpit nawigacyjny umożliwia pobieranie historii, zarządzanie celami obliczeniowymi dołączonymi do obszaru roboczego, zarządzanie modelami i obrazami platformy Docker, a nawet wdrażanie usług internetowych.
 
@@ -50,7 +50,7 @@ Bieżąca wersja udostępnia nowe, ulepszone klienty interfejsu wiersza poleceni
 
 9 stycznia 2019 r. zakończyła się obsługa kont aplikacji Machine Learning Workbench, Eksperymentowania w usłudze Azure Machine Learning i Zarządzania modelami oraz skojarzonego z nimi zestawu SDK i interfejsu wiersza polecenia. 
 
-Wszystkie najnowsze możliwości są dostępne za pomocą tego <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK</a>, [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) i [portalu](quickstart-get-started.md).
+Wszystkie najnowsze możliwości są dostępne za pomocą tego <a href="https://aka.ms/aml-sdk" target="_blank">zestawu SDK</a>, [interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) i [portalu](setup-create-workspace.md#portal).
 
 ## <a name="what-about-run-histories"></a>A co z historią uruchamiania?
 
@@ -81,7 +81,7 @@ Większa część zawartości projektu znajduje się już na komputerze lokalnym
 run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 ```
 
-Dowiedz się, jak rozpocząć pracę w [języku Python za pomocą głównego zestawu SDK](quickstart-create-workspace-with-python.md) lub witryny [Azure Portal](quickstart-get-started.md).
+[Utwórz obszar roboczy](setup-create-workspace.md#portal) na rozpoczęcie pracy.
 
 ## <a name="what-about-my-registered-models-and-images"></a>Co się stanie z moimi zarejestrowanymi modelami i obrazami?
 
@@ -121,6 +121,6 @@ Dowiedz się więcej o [najnowszej architekturze usługi Azure Machine Learning]
 
 Aby zapoznać się z omówieniem usługi, przeczytaj temat [What is Azure Machine Learning service? (Co to jest usługa Azure Machine Learning?)](overview-what-is-azure-ml.md)
 
-Przewodnik Szybki start omawiający sposób tworzenia obszaru roboczego, tworzenia projektu, uruchamiania skryptu oraz eksplorowania historii uruchamiania skryptu przy użyciu najnowszej wersji usługi Azure Machine Learning można znaleźć w temacie [Get started with Azure Machine Learning service (Wprowadzenie do usługi Azure Machine Learning)](quickstart-get-started.md).
+Szybki Start omawiający uruchomić skrypt, a także Eksplorowanie historii uruchamiania skryptu z najnowszą wersją usługi Azure Machine Learning, spróbuj [wprowadzenie do usługi Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 Aby uzyskać więcej informacji na temat środowiska tego przepływu pracy, wykonaj czynności opisane w [kompleksowym samouczku](tutorial-train-models-with-aml.md), który zawiera szczegółowy opis kroków uczenia i wdrażania modeli przy użyciu usługi Azure Machine Learning. 
