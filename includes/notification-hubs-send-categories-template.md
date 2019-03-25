@@ -8,22 +8,26 @@ ms.topic: include
 ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
-ms.translationtype: HT
+ms.openlocfilehash: ce8496596f25b85719b8a6dff849ebf0fc3e5dc3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33835852"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58405605"
 ---
 W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami powiadomień szablonu z aplikacji konsoli .NET. 
 
-1. W programie Visual Studio utwórz nową aplikację konsoli języka Visual C#:
+1. W programie Visual Studio, tworzenie nowej wizualizacji C# konsoli aplikacji:. W menu, wybierz **pliku** > **New** > **projektu**.
+    b. Rozwiń **Visual C#** i wybierz **pulpitu Windows**. 
+    c. Wybierz **Aplikacja konsoli (.NET Framework)** na liście szablonów. 
+    d. Wprowadź **nazwa** dla aplikacji. 
+    e. Wybierz **folderu** dla aplikacji.
+    f. Wybierz przycisk **OK**, aby utworzyć projekt. 
+2. W menu głównym programu Visual Studio wybierz **narzędzia** > **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów** a następnie w oknie konsoli Wprowadź następujący ciąg:
    
-      ![Link do aplikacji konsolowej][13]
-
-2. W menu głównym programu Visual Studio wybierz kolejno pozycje **Narzędzia** > **Menedżer pakietów biblioteki** > **Konsola menedżera pakietów**, a następnie w oknie konsoli wprowadź następujący ciąg:
-   
-        Install-Package Microsoft.Azure.NotificationHubs
+    ```
+    Install-Package Microsoft.Azure.NotificationHubs
+    ```
    
 3. Kliknij przycisk **Wprowadź**.  
     Ta akcja spowoduje dodanie odwołania do zestawu SDK usługi Azure Notification Hubs z użyciem [Pakiet NuGet Microsoft.Azure.Notification Hubs].

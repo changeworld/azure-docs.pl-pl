@@ -1,0 +1,79 @@
+items:
+- name: Azure Dev Spaces
+  items:
+  - name: Omówienie
+    href: index.yml
+  - name: Przewodniki Szybki start
+    items:
+    - name: Java (VS Code i interfejs wiersza polecenia)
+      href: quickstart-java.md
+    - name: .NET Core (VS Code oraz interfejs wiersza polecenia)
+      href: quickstart-netcore.md
+    - name: .NET Core (Visual Studio 2017)
+      href: quickstart-netcore-visualstudio.md
+    - name: Node.js (VS Code oraz interfejs wiersza polecenia)
+      href: quickstart-nodejs.md
+  - name: Samouczki
+    items:
+    - name: Java (VS Code i interfejs wiersza polecenia)
+      items:
+      - name: 1 — Wprowadzenie
+        href: get-started-java.md
+      - name: 2 — Programowanie wielu usług
+        href: multi-service-java.md
+      - name: 3 — Programowanie zespołowe
+        href: team-development-java.md
+    - name: .NET Core (VS Code oraz interfejs wiersza polecenia)
+      items:
+      - name: 1 — Wprowadzenie
+        href: get-started-netcore.md
+      - name: 2 — Programowanie wielu usług
+        href: multi-service-netcore.md
+      - name: 3 — Programowanie zespołowe
+        href: team-development-netcore.md
+    - name: .NET Core (Visual Studio 2017)
+      items:
+      - name: 1 — Wprowadzenie
+        href: get-started-netcore-visualstudio.md
+      - name: 2 — Programowanie wielu usług
+        href: multi-service-netcore-visualstudio.md
+      - name: 3 — Programowanie zespołowe
+        href: team-development-netcore-visualstudio.md
+    - name: Node.js (VS Code oraz interfejs wiersza polecenia)
+      items:
+      - name: 1 — Wprowadzenie
+        href: get-started-nodejs.md
+      - name: 2 — Programowanie wielu usług
+        href: multi-service-nodejs.md
+      - name: 3 — Programowanie zespołowe
+        href: team-development-nodejs.md
+  - name: Pojęcia
+    items:
+    - name: Jak działa usługa Dev Spaces
+      href: how-dev-spaces-works.md
+  - name: Instrukcje
+    items:
+    - name: Tworzenie klastra Kubernetes za pomocą usługi Azure Cloud Shell
+      href: how-to/create-cluster-cloud-shell.md
+    - name: Udostępnianie obszarów Azure Dev Spaces
+      href: how-to/share-dev-spaces.md
+    - name: Zarządzanie wpisami tajnymi
+      href: how-to/manage-secrets.md
+    - name: Korzystanie z niestandardowego źródła danych NuGet
+      href: how-to/use-custom-nuget-feed.md
+    - name: Używanie narzędzia kubectl w ramach usługi Azure Dev Spaces
+      href: how-to/use-kubectl-with-azure-dev-spaces.md
+    - name: Uaktualnianie rozszerzenia Azure Dev Spaces Tools
+      href: how-to/upgrade-tools.md
+    - name: Używanie ciągłej integracji/ciągłego wdrażania w ramach usługi Azure Dev Spaces
+      href: how-to/setup-cicd.md
+    - name: Ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR) dla usługi Azure Dev Spaces
+      href: how-to/dev-spaces-business-continuity.md
+  - name: Rozwiązywanie problemów
+    href: troubleshooting.md
+ms.openlocfilehash: 2584af119ba13e87d4249ce7cc7f605d88baa88e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341326"

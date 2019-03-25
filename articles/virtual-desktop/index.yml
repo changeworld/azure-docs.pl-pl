@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 06b95c24914574a2aea59c6c597e3d9b3d5097cc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58318739"
+documentType: LandingData
+title: Dokumentacja usługi Windows Virtual Desktop
+metadata:
+  title: Dokumentacja usługi Windows Virtual Desktop — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
+  description: Usługa Windows Virtual Desktop dla platformy Azure to środowisko systemu Windows 10 Enterprise dla wielu użytkowników wirtualizowane w chmurze.
+  author: Heidilohr
+  manager: dansimp
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  ms.date: 02/20/2019
+  ms.author: helohr
+abstract:
+  description: Dostarczaj środowisko pulpitu wirtualnego i aplikacje zdalne na każde urządzenie. Połącz usługę Microsoft 365 i platformę Azure, aby udostępnić użytkownikom jedyne środowisko systemu Windows 10 obsługujące wiele sesji — przy wyjątkowej skali i obniżonych kosztach IT.
+sections:
+- title: Omówienie
+  items:
+  - type: paragraph
+    text: Poznaj usługę Windows Virtual Desktop i dowiedz się, jak z niej korzystać. Samouczki, poradniki, dokumentacja i inna zawartość pokazują, jak konfigurować pule hostów i dzierżawy oraz przypisywać role użytkownikom dla środowiska usługi Windows Virtual Desktop.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/virtual-desktop/overview">Co to jest Windows Virtual Desktop? (wersja zapoznawcza)</a>
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak zainstalować i skonfigurować usługę Windows Virtual Desktop oraz jak nawiązywać połączenie z klientem, gdy będzie ona gotowa.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Tworzenie dzierżawy w usłudze Windows Virtual Desktop</a>
+    - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Tworzenie puli hostów za pomocą witryny Azure Marketplace</a>
+    - html: <a href="/azure/virtual-desktop/manage-app-groups">Zarządzanie grupami aplikacji dla usługi Windows Virtual Desktop</a>
+    - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell (wersja zapoznawcza)</a>

@@ -24,6 +24,12 @@ items:
       href: azure-to-azure-tutorial-failover-failback.md
     - name: Uruchamianie powrotu po awarii
       href: azure-to-azure-tutorial-failback.md
+  - name: Przenoszenie maszyn wirtualnych platformy Azure
+    items:
+    - name: Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
+      href: azure-to-azure-tutorial-migrate.md
+    - name: Przenoszenie maszyn wirtualnych platformy Azure do stref dostępności
+      href: move-Azure-VMs-AVset-Azone.md
   - name: Odzyskiwanie po awarii maszyn wirtualnych programu VMware na platformę Azure
     items:
     - name: Przygotowywanie platformy Azure
@@ -60,19 +66,11 @@ items:
       href: migrate-tutorial-windows-server-2008.md
     - name: Migrowanie wystąpień usługi AWS na platformę Azure
       href: migrate-tutorial-aws-azure.md
-  - name: Przenoszenie maszyn wirtualnych platformy Azure
-    items:
-    - name: Omówienie
-      href: azure-to-azure-move-overview.md
-    - name: Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
-      href: azure-to-azure-tutorial-migrate.md
-    - name: Przenoszenie maszyn wirtualnych platformy Azure do stref dostępności
-      href: move-Azure-VMs-AVset-Azone.md
 - name: Pojęcia
   items:
   - name: Typowe pytania o usługę Site Recovery
     href: site-recovery-faq.md
-  - name: Informacje o odzyskiwaniu po awarii maszyn wirtualnych platformy Azure na platformę Azure
+  - name: Informacje o odzyskiwaniu po awarii dla maszyn wirtualnych platformy Azure
     items:
     - name: Architektura Azure–Azure
       href: azure-to-azure-architecture.md
@@ -80,12 +78,14 @@ items:
       href: azure-to-azure-common-questions.md
     - name: Tabela obsługi replikacji Azure–Azure
       href: azure-to-azure-support-matrix.md
+    - name: Używanie usługi Site Recovery z usługą Azure Backup
+      href: site-recovery-backup-interoperability.md
     - name: Przyspieszona sieć na potrzeby odzyskiwania po awarii maszyny wirtualnej platformy Azure
       href: azure-vm-disaster-recovery-with-accelerated-networking.md
     - name: Usługa ExpressRoute z odzyskiwaniem po awarii maszyny wirtualnej platformy Azure
       href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Odzyskiwanie po awarii maszyny wirtualnej platformy Azure i współdziałanie usługi Azure Backup
-      href: site-recovery-backup-interoperability.md
+  - name: Informacje o przenoszeniu maszyn wirtualnych platformy Azure
+    href: azure-to-azure-move-overview.md
   - name: Informacje o odzyskiwaniu po awarii maszyn wirtualnych programu VMware na platformę Azure
     items:
     - name: Omówienie odzyskiwania po awarii programu VMware
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizacje usług
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 5286e3479561e6effd279978e84f045207a0a7a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 66b14ba7100b8bd8e4bb3a100e8fd10d226f555e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835303"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317106"

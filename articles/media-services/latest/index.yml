@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fdda67921db38b912679d27bf5a8c897775ad82b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d4e80fd18de40c7df806f0a72612cec7bb71e2d2
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137994"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339185"
 documentType: LandingData
 title: Dokumentacja usługi Azure Media Services w wersji 3
 metadata:
@@ -18,11 +18,27 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10-15-2018
+  ms.date: 03/20/2019
   ms.author: juliako
 abstract:
   description: Dowiedz się, jak przesyłać strumieniowo wideo na żądanie, prowadzić emisję na żywo i analizować filmy wideo za pomocą usługi Media Services w wersji 3. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników. <br/> Te zestawy SDK są oparte na <a href="https://aka.ms/ams-v3-rest-sdk">specyfikacji interfejsu OpenAPI (Swagger) usługi Media Services w wersji 3</a>.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - image:
+        src: 
+      html: <p>Dowiedz się więcej o podstawowych pojęciach dotyczących usługi Media Services.</p>
+      href: /azure/media-services/latest/concepts-overview/
+      title: Poznaj pojęcia
+    - image:
+        src: 
+      html: <p>Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj interfejsu API REST, interfejsu wiersza polecenia lub jednego z obsługiwanych zestawów SDK.</p>
+      href: /azure/media-services/latest/developers-guide/
+      title: Programowanie za pomocą interfejsu API w wersji 3
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph

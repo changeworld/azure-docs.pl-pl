@@ -1,0 +1,45 @@
+items:
+- name: Omówienie
+  items:
+  - name: Informacje o maszynach wirtualnych z programem SQL Server i systemem Linux
+    href: sql-server-linux-virtual-machines-overview.md
+- name: Przewodniki Szybki start
+  items:
+  - name: Tworzenie maszyny wirtualnej SQL — portal
+    href: provision-sql-server-linux-virtual-machine.md
+- name: Dokumentacja
+  items:
+  - name: Interfejs wiersza polecenia platformy Azure
+    href: /cli/azure/
+  - name: PowerShell
+    href: /powershell/azure/overview
+  - name: T-SQL
+    href: https://msdn.microsoft.com/library/azure/bb510741.aspx
+  - name: Sterowniki programu SQL Server
+    href: https://msdn.microsoft.com/library/mt654049.aspx
+  - name: REST
+    href: /rest/api/
+- name: Zasoby
+  items:
+  - name: Często zadawane pytania
+    href: sql-server-linux-faq.md
+  - name: Dokumentacja programu SQL Server w systemie Linux
+    href: https://docs.microsoft.com/sql/linux/sql-server-linux-overview
+  - name: Cennik
+    href: ../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json
+  - name: PaaS czy IaaS?
+    href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
+  - name: SQL Server Data Tools (SSDT)
+    href: https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt
+  - name: Narzędzia programu SQL Server
+    href: https://docs.microsoft.com/sql/tools/overview-sql-tools
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server
+ms.openlocfilehash: 3e44ef418b474ddd88fa232362e1b38db791e0ba
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341428"

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 51d8b9bad4bb4a3663b07a711f363b263f5d64db
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
+ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339690"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351919"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -246,7 +246,7 @@ Biblioteka klienta magazynu automatycznie generuje identyfikator żądania klien
 >
 
 ### <a name="server-request-id"></a>Identyfikator żądania serwera
-Usługa storage automatycznie generuje identyfikatorów żądań serwera.
+Usługa storage automatycznie generuje żądanie serwera identyfikatorów.
 
 * W dzienniku magazynu rejestrowania po stronie serwera, zostanie wyświetlony identyfikator żądania serwera **nagłówka Identyfikatora żądania** kolumny.
 * W śledzenia sieci taki przechwycone przez narzędzie Fiddler, identyfikator żądania serwera pojawia się w komunikatach odpowiedzi jako **x-ms-request-id** wartość nagłówka HTTP.
@@ -814,9 +814,9 @@ Aby uzyskać więcej informacji na temat analizy w usłudze Azure Storage zobacz
 * [Monitorowanie konta magazynu w witrynie Azure portal](storage-monitor-storage-account.md)
 * [Analityka magazynu](storage-analytics.md)
 * [Metryk usługi Storage analytics](storage-analytics-metrics.md)
-* [Schematu tabeli metryk usługi Storage analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)
+* [Schematu tabeli metryk usługi Storage analytics](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [Magazynu analizy dzienników](storage-analytics-logging.md)
-* [Format dziennika analityka magazynu](/rest/api/storageservices/storage-analytics-log-format.md)
+* [Format dziennika analityka magazynu](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
 [Wprowadzenie]: #introduction

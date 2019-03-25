@@ -1,0 +1,35 @@
+items:
+- name: Omówienie
+  items:
+  - name: Uwagi dotyczące maszyn wirtualnych Oracle
+    href: oracle-considerations.md
+- name: Przewodniki Szybki start
+  items:
+  - name: Tworzenie bazy danych Oracle
+    href: oracle-database-quick-create.md
+- name: Samouczki
+  items:
+  - name: Konfigurowanie programu Oracle ASM
+    href: configure-oracle-asm.md
+  - name: Konfigurowanie programu Oracle DataGuard
+    href: configure-oracle-dataguard.md
+  - name: Konfigurowanie środowiska Oracle GoldenGate
+    href: configure-oracle-golden-gate.md
+- name: Pojęcia
+  items:
+  - name: Tworzenie architektury bazy danych Oracle
+    href: oracle-design.md
+  - name: Strategia tworzenia kopii zapasowych bazy danych Oracle
+    href: oracle-backup-recovery.md
+  - name: Opcje odzyskiwania po awarii programu Oracle
+    href: oracle-disaster-recovery.md
+- name: Zasoby
+  items:
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 9c8aba887e728904aed51d3db2db5bb02c03d7b8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340612"

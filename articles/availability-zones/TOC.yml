@@ -1,0 +1,104 @@
+items:
+- name: Odporność platformy Azure
+  items:
+  - name: Strona funkcji odporności platformy Azure
+    href: https://azure.microsoft.com/features/resiliency
+  - name: Projektowanie aplikacji odpornych na błędy dla platformy Azure
+    href: https://docs.microsoft.com/azure/architecture/resiliency/
+- name: Wysoka dostępność
+  items:
+  - name: Wysoka dostępność dla aplikacji platformy Azure
+    href: https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications
+  - name: Dokumentacja dotycząca stref dostępności
+    items:
+    - name: Co to są strefy dostępności?
+      href: az-overview.md
+    - name: Maszyny wirtualne
+      items:
+      - name: Tworzenie maszyny wirtualnej z systemem Linux w strefie dostępności przy użyciu interfejsu wiersza polecenia
+        href: ../virtual-machines/linux/create-cli-availability-zone.md
+      - name: Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu programu PowerShell
+        href: ../virtual-machines/windows/create-powershell-availability-zone.md
+      - name: Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu witryny Azure Portal
+        href: ../virtual-machines/windows/create-portal-availability-zone.md
+    - name: Dyski zarządzane
+      items:
+      - name: Dodawanie dysku zarządzanego w strefach dostępności przy użyciu interfejsu wiersza polecenia
+        href: ../virtual-machines/linux/add-disk.md#use-managed-disks
+      - name: Dodawanie dysku zarządzanego w strefach dostępności przy użyciu programu PowerShell
+        href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
+    - name: Zestawy skalowania maszyn wirtualnych
+      items:
+      - name: Tworzenie zestawu skalowania w strefie dostępności
+        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
+    - name: Moduł równoważenia obciążenia
+      items:
+      - name: Co to jest moduł równoważenia obciążenia?
+        href: ../load-balancer/load-balancer-standard-overview.md
+      - name: Usługa Load Balancer w warstwie Standardowa i strefy dostępności
+        href: ../load-balancer/load-balancer-standard-availability-zones.md
+      - name: Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa
+        href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+        items:
+        - name: Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)
+          href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+        - name: Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)
+          href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+      - name: Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa
+        href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        items:
+        - name: Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)
+          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+        - name: Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)
+          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+      - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
+        href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+        items:
+        - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności za pomocą platformy Azure (interfejs wiersza polecenia)
+          href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+    - name: Publiczny adres IP
+      href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
+    - name: SQL Database
+      items:
+      - name: Strefy dostępności z usługą SQL Database
+        href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
+    - name: Magazyn
+      items:
+      - name: Magazyn strefowo nadmiarowy
+        href: ../storage/common/storage-redundancy-zrs.md
+    - name: Event Hubs
+      items:
+      - name: Geograficzne odzyskiwanie po awarii w usłudze Event Hubs
+        href: ../event-hubs/event-hubs-geo-dr.md#availability-zones-preview
+    - name: Service Bus
+      items:
+      - name: Geograficzne odzyskiwanie po awarii w usłudze Service Bus
+        href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview
+    - name: VPN Gateway
+      items:
+      - name: Tworzenie strefowo nadmiarowej bramy sieci wirtualnej
+        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+    - name: ExpressRoute
+      items:
+      - name: Tworzenie strefowo nadmiarowej bramy sieci wirtualnej
+        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+- name: Odzyskiwanie po awarii
+  items:
+  - name: Korzystanie z usługi Azure Site Recovery
+    href: https://docs.microsoft.com/azure/site-recovery/
+- name: Azure Backup
+  items:
+  - name: Korzystanie z usługi Azure Backup
+    href: https://docs.microsoft.com/azure/backup/
+- name: Zasoby
+  items:
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+  - name: Regiony platformy Azure
+    href: https://azure.microsoft.com/regions/
+ms.openlocfilehash: 45a73ec4d5e3649be38133e5ce055f206ecf80ab
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340680"

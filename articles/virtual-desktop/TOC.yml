@@ -1,0 +1,57 @@
+items:
+- name: Windows Virtual Desktop
+  href: index.yml
+- name: Omówienie
+  items:
+  - name: Co to jest Windows Virtual Desktop?
+    href: overview.md
+- name: Samouczki
+  items:
+  - name: 1. Tworzenie dzierżawy w usłudze Windows Virtual Desktop
+    href: tenant-setup-azure-active-directory.md
+  - name: 2. Tworzenie puli hostów za pomocą witryny Azure Marketplace
+    href: create-host-pools-azure-marketplace.md
+  - name: 3. Zarządzanie grupami aplikacji
+    href: manage-app-groups.md
+  - name: 4. Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
+    href: create-service-principal-role-powershell.md
+- name: Porady
+  items:
+  - name: Łączenie się z zasobami usługi Windows Virtual Desktop
+    items:
+    - name: Łączenie się z systemami Windows 7 i Windows 10
+      href: connect-windows-7-and-10.md
+    - name: Łączenie się z klientem internetowym
+      href: connect-web.md
+  - name: Tworzenie puli hostów za pomocą szablonu usługi Azure Resource Manager
+    href: create-host-pools-arm-template.md
+  - name: Tworzenie puli hostów przy użyciu programu PowerShell
+    href: create-host-pools-powershell.md
+  - name: Konfigurowanie udziału profilu użytkownika dla puli hostów
+    href: create-host-pools-user-profile.md
+  - name: Konfigurowanie metody równoważenia obciążenia usługi Windows Virtual Desktop
+    href: configure-host-pool-load-balancing.md
+  - name: Identyfikowanie problemów za pomocą funkcji diagnostyki
+    href: diagnostics-role-service.md
+  - name: Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
+    href: set-up-customize-master-image.md
+  - name: Automatyczne skalowanie hostów sesji
+    href: set-up-scaling-script.md
+- name: Pojęcia
+  items:
+  - name: Środowisko usługi Windows Virtual Desktop
+    href: environment-setup.md
+  - name: Dostęp delegowany w usłudze Windows Virtual Desktop
+    href: delegated-access-virtual-desktop.md
+  - name: Metody równoważenia obciążenia puli hostów
+    href: host-pool-load-balancing.md
+- name: Dokumentacja
+  items:
+  - name: PowerShell
+    href: /powershell/windows-virtual-desktop/overview
+ms.openlocfilehash: 2f321b25d6ba1ad8545bf161dd37e270890efcec
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58318773"

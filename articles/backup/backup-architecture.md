@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: b12809627bc7a3ab3f17f4c3b11bc3a899fd0485
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849928"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368963"
 ---
 # <a name="azure-backup-architecture"></a>Architektura usługi Azure Backup
 
@@ -179,7 +179,7 @@ Aby uzyskać więcej informacji o dysku i typy dostępnego miejsca na dysku dla 
 Korzystając z usługi premium storage z usługą Azure Backup można tworzyć kopie zapasowe maszyn wirtualnych platformy Azure:
 
 - Podczas procesu tworzenia kopii zapasowych maszyn wirtualnych dzięki usłudze premium storage usługa Backup tworzy tymczasową lokalizację, o nazwie *AzureBackup -*, w ramach konta magazynu. Rozmiar lokalizacji przejściowej jest równy rozmiar migawki punktu odzyskiwania.
-- Upewnij się, że konta usługi premium storage ma odpowiednią ilością wolnego miejsca do obsługi tymczasowej lokalizacji przejściowej. [Dowiedz się więcej](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits). Nie należy modyfikować lokalizacji tymczasowej.
+- Upewnij się, że konta usługi premium storage ma odpowiednią ilością wolnego miejsca do obsługi tymczasowej lokalizacji przejściowej. [Dowiedz się więcej](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Nie należy modyfikować lokalizacji tymczasowej.
 - Po zakończeniu zadania tworzenia kopii zapasowej Lokalizacja tymczasowa zostanie usunięta.
 - Cena przestrzeni dyskowej użytej do lokalizacji tymczasowej jest zgodna z [cennikiem usługi premium storage](../virtual-machines/windows/disks-types.md#billing).
 
