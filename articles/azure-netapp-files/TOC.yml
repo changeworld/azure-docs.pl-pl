@@ -31,11 +31,11 @@ items:
     href: azure-netapp-files-delegate-subnet.md
   - name: Tworzenie woluminu dla usługi Azure NetApp Files
     href: azure-netapp-files-create-volumes.md
-  - name: Konfigurowanie zasad eksportu dla woluminu
+  - name: Konfigurowanie zasad eksportu dla woluminu NFS
     href: azure-netapp-files-configure-export-policy.md
   - name: Zarządzanie woluminami
     href: azure-netapp-files-manage-volumes.md
-  - name: Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych
+  - name: Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux
     href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
   - name: Zarządzanie migawkami
     href: azure-netapp-files-manage-snapshots.md
@@ -51,9 +51,9 @@ items:
     href: https://docs.microsoft.com/rest/api/netapp/
   - name: Szablon usługi Resource Manager
     href: /azure/templates/microsoft.netapp/allversions
-ms.openlocfilehash: 99091c5e5e9a991508c9eb915c8003de60404ae8
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 164a65bb8875d6c46d71ee7875e94e0b09a57c56
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587416"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401501"

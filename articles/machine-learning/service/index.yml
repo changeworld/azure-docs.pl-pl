@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b7765fc5506129cdf594ef3fd0424f8771de5ef4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a97c11b49574d0014ea7fa97f42420b22f9568d7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651672"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371160"
 documentType: LandingData
 title: Dokumentacja usługi Azure Machine Learning
 metadata:
@@ -36,12 +36,12 @@ sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: 'Aby używać tej usługi, potrzebujesz obszaru roboczego i skojarzonych zasobów.  Rozpocznij pracę, korzystając z następujących zasobów:'
+    text: 'Po   <a href="setup-create-workspace">utworzeniu obszaru roboczego</a> usługi Azure Machine Learning Service możesz zacząć pracę, korzystając z tych przewodników Szybki start:'
   - type: list
     style: unordered
     items:
-    - html: '<a href="quickstart-get-started">Przewodnik Szybki start na temat witryny Azure Portal</a>: uzyskaj obszar roboczy i uruchamiaj eksperymenty bez instalowania czegokolwiek.'
-    - html: '<a href="quickstart-create-workspace-with-python">Przewodnik Szybki start na temat języka Python</a>: zainstaluj główny zestaw SDK, utwórz obszar roboczy i eksperymentuj na lokalnym serwerze notesów.'
+    - html: <a href="quickstart-run-cloud-notebook">Przeprowadzanie eksperymentu w chmurze</a> (nie jest wymagana instalacja)
+    - html: <a href="quickstart-run-local-notebook">Przeprowadzanie eksperymentu przy użyciu lokalnego serwera notesów</a> (instalacja lokalna zestawu SDK)
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
