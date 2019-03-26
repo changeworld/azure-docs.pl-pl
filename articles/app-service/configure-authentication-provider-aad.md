@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 0c5ceda99fe35fafff23f2bcf4ea766d7dd42b75
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403225"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438228"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Skonfigurować aplikację App Service do używania logowania usługi Azure Active Directory
 
@@ -43,8 +43,6 @@ W tym artykule przedstawiono sposób konfigurowania usługi Azure App Services d
 5. (Opcjonalnie) Aby ograniczyć dostęp do witryny tylko użytkownikom uwierzytelniony przez usługę Azure Active Directory, należy ustawić **akcji do wykonania w przypadku nieuwierzytelnionego żądania** do **Zaloguj się przy użyciu usługi Azure Active Directory**. Wymaga to, że wszystkie żądania uwierzytelnienia, a wszystkie nieuwierzytelnione żądania są przekierowywane do usługi Azure Active Directory do uwierzytelniania.
 6. Kliknij pozycję **Zapisz**.
 
-Teraz można przystąpić do użycia usługi Azure Active Directory do uwierzytelniania w aplikacji usługi app Service.
-
 ## <a name="advanced"> </a>Konfigurowanie przy użyciu ustawień zaawansowanych
 
 Możesz też podać ustawienia konfiguracji ręcznie. Jest to preferowane rozwiązanie, jeśli dzierżawy usługi Azure Active Directory, do której chcesz użyć różni się od dzierżawcy za pomocą którego zalogujesz się do platformy Azure. Aby ukończyć konfigurację, należy najpierw utworzyć rejestracji w usłudze Azure Active Directory, a następnie należy podać szczegóły rejestracji w usłudze App Service.
@@ -57,8 +55,12 @@ Możesz też podać ustawienia konfiguracji ręcznie. Jest to preferowane rozwi�
 4. W ciągu kilku sekund powinien zostać wyświetlony Rejestracja nowej aplikacji, który został utworzony.
 5. Po dodaniu rejestracji aplikacji, kliknij nazwę rejestracji aplikacji, kliknij pozycję **ustawienia** u góry strony, następnie kliknij pozycję **właściwości** 
 6. W **identyfikator URI Identyfikatora aplikacji** pole, wklej adres URL aplikacji (z kroku 1), również w **adres URL strony głównej** Wklej adres URL aplikacji (z kroku 1), następnie kliknij przycisk **Zapisz**
-7. Teraz kliknąć **adresy URL odpowiedzi**, Edytuj **adres URL odpowiedzi**, wklej adres URL aplikacji (z kroku 1), a następnie dołączany na końcu adresu URL, */.auth/login/aad/callback* (dla przykład `https://contoso.azurewebsites.net/.auth/login/aad/callback`). Kliknij pozycję **Zapisz**.   
-8.  W tym momencie Skopiuj **identyfikator aplikacji** dla aplikacji. Utrzymaj w celu późniejszego użycia. Należy skonfigurować aplikację App Service.
+7. Teraz kliknąć **adresy URL odpowiedzi**, Edytuj **adres URL odpowiedzi**, wklej adres URL aplikacji (z kroku 1), a następnie dołącz go na końcu adresu URL, */.auth/login/aad/callback* (dla przykład `https://contoso.azurewebsites.net/.auth/login/aad/callback`). Kliknij pozycję **Zapisz**.
+
+   > [!NOTE]
+   > Można użyć tego samego rejestracji aplikacji dla wielu domen przez dodanie dodatkowych **adresy URL odpowiedzi**. Upewnij się, że każde wystąpienie usługi App Service przy użyciu własnej rejestracji modelu, dlatego ma swoje własne uprawnienia i zgody. Również rozważyć użycie rejestracje aplikacji oddzielne gniazda oddzielnej lokacji. Pozwoli to uniknąć uprawnienia są udostępniane między środowiskami, tak aby usterkę w nowym kodzie, które testujesz nie ma wpływu na produkcyjne.
+    
+8. W tym momencie Skopiuj **identyfikator aplikacji** dla aplikacji. Utrzymaj w celu późniejszego użycia. Należy skonfigurować aplikację App Service.
 9. Zamknij **zarejestrowana aplikacja** strony. Na **rejestracje aplikacji** kliknij na **punktów końcowych** przycisk u góry, a następnie skopiuj **punkt końcowy logowania protokołu WS-FEDERATION** adresu URL, ale Usuń `/wsfed` końcowa z adresu URL. Wynik końcowy powinien wyglądać `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000`. Nazwa domeny może być różne dla suwerennych chmur. Ten element będzie służyć jako adres URL wystawcy na później.
 
 ### <a name="secrets"> </a>Dodawanie informacji o usłudze Azure Active Directory do aplikacji usługi app Service

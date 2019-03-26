@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb9c7087b8c8241d352cfa67d5d6158899fa8a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35c231f043261b65baa40eff32535eeab014bee9
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174014"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437964"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak usługa Azure AD używa protokołu SAML
 
@@ -37,7 +37,7 @@ Usługa Azure AD używa usługi w chmurze **URI metadanych** można pobrać kluc
 
 Usługa Azure Active Directory uwidacznia specyficznym dla dzierżawy i wspólne (niezależny od dzierżawcy) pojedynczego logowania jednokrotnego i jednym wylogowania punkty końcowe. Te adresy URL przedstawiają lokalizacji mogą być adresowane — nie są one tylko identyfikatory — dzięki czemu można przejść do punktu końcowego do odczytu metadanych.
 
-* Punkt końcowy specyficznym dla dzierżawy znajduje się w `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`. *<TenantDomainName>* Symbol zastępczy reprezentuje zarejestrowaną nazwę domeny lub identyfikator GUID identyfikatora dzierżawy dzierżawę usługi Azure AD. Na przykład metadanych Federacji dzierżawy contoso.com wynosi: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Punkt końcowy specyficznym dla dzierżawy znajduje się w `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  *\<TenantDomainName >* symbol zastępczy reprezentuje zarejestrowaną nazwę domeny lub identyfikator GUID identyfikatora dzierżawy dzierżawę usługi Azure AD. Na przykład metadanych Federacji dzierżawy contoso.com wynosi: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * Punkt końcowy dzierżawy niezależny znajduje się w `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. W tym adres punktu końcowego **wspólnej** pojawia się zamiast nazwy domeny dzierżawy lub identyfikatora organizacji.
 
