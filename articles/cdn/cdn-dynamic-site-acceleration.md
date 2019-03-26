@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 4fa681e800197ea241ba1c6cf2180ba04b6e565b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6bd1d24cdece91265a7355678ea2bc0b0f9e3910
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092591"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439162"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Przyspieszanie witryn dynamicznych za pomocą usługi Azure CDN
 
@@ -27,7 +27,7 @@ Za pomocą rozłożenie mediów społecznościowych, handlu elektronicznego i hy
 
 Standardowa dostarczania zawartości (CDN) do sieci obejmuje możliwość plików w pamięci podręcznej bliżej użytkowników końcowych, aby przyspieszyć dostarczanie plików statycznych. Jednak przy użyciu dynamicznych aplikacji sieci web, buforowanie tę zawartość w lokalizacjach nie jest możliwe, ponieważ serwer generuje zawartość w odpowiedzi na zachowania użytkowników. Przyspieszania dostarczania zawartości jest bardziej skomplikowane niż tradycyjne krawędzi buforowania i wymaga rozwiązania end-to-end, który dostrajać każdego elementu w ścieżce danych całej od powstania dostarczania. Z optymalizacją przyspieszanie (witryn dynamicznych DSA) witryn dynamicznych usługi Azure CDN znaczącym ulepszaniu warunków życia zwiększona wydajność stron sieci web z zawartością dynamiczną.
 
-**Usługa Azure CDN from Akamai** i **Azure CDN from Verizon** oba programy oferują DSA optymalizacji za pośrednictwem **zoptymalizowane pod kątem** menu podczas tworzenia punktu końcowego.
+**Usługa Azure CDN from Akamai** i **Azure CDN from Verizon** oba programy oferują DSA optymalizacji za pośrednictwem **zoptymalizowane pod kątem** menu podczas tworzenia punktu końcowego. Przyspieszanie witryn dynamicznych od firmy Microsoft jest oferowana za pośrednictwem [usługi Azure Service drzwiami frontowymi](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
 
 > [!Important]
 > Aby uzyskać **Azure CDN from Akamai** profile, możesz zmienić optymalizacji punktu końcowego usługi CDN, po jego utworzeniu.
@@ -109,9 +109,9 @@ TCP *wolne start* jest algorytm protokołu TCP, który uniemożliwia przeciąże
 
 1. Przepustowość monitorowania kondycji i służy do pomiaru przepustowości połączenia między serwerami punktu obecności krawędzi.
     
-2. Metryki są udostępniane między serwerami punktu obecności krawędzi tak, aby każdy serwer ma informacje o warunkach sieciowych i serwera zdrowia lokalizacji POP wokół nich.  
+2. Metryki są udostępniane między serwerami punktu obecności krawędzi tak, aby każdy serwer ma informacje o warunkach sieciowych i serwera zdrowia lokalizacji POP wokół nich.  
     
-3. Serwerów granicznych usługi CDN zakładają niektóre parametry transmisji, takie jak jakie optymalnego rozmiaru okna powinny być podczas komunikowania się z innych serwerów granicznych usługi CDN w jego odległości między elementami. W tym kroku oznacza, że przeciążenia początkowy rozmiar okna można zwiększyć, jeśli kondycję połączenia między serwerów granicznych usługi CDN jest w stanie wyższe transfery danych pakietu.  
+3. Serwerów granicznych usługi CDN zakładają niektóre parametry transmisji, takie jak jakie optymalnego rozmiaru okna powinny być podczas komunikowania się z innych serwerów granicznych usługi CDN w jego odległości między elementami. W tym kroku oznacza, że przeciążenia początkowy rozmiar okna można zwiększyć, jeśli kondycję połączenia między serwerów granicznych usługi CDN jest w stanie wyższe transfery danych pakietu.  
 
 #### <a name="leveraging-persistent-connections"></a>Korzystanie z połączeń trwałych
 
@@ -157,7 +157,7 @@ Dla **Azure CDN Standard from Verizon** i **Azure CDN Standard from Akamai** pro
 
 Dostęp do reguły buforowania:
 
-1. Z **profil CDN** stronie w obszarze Ustawienia wybierz **reguły buforowania**.  
+1. Z **profil CDN** stronie w obszarze Ustawienia wybierz **reguły buforowania**.  
     
     ![Przycisk Reguły buforowania usługi CDN](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -169,7 +169,7 @@ Aby uzyskać **Azure CDN Premium from Verizon** tylko profile, włączenie bufor
 
 Dostęp do aparatu reguł:
     
-1. Z **profil CDN** wybierz opcję **Zarządzaj**.  
+1. Z **profil CDN** wybierz opcję **Zarządzaj**.  
     
     ![Profil CDN Zarządzanie przycisku](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
@@ -183,7 +183,7 @@ Dostęp do aparatu reguł:
 
 Alternatywnie, można użyć dwóch punktów końcowych usługi CDN: jeden punkt końcowy zoptymalizowanej przy użyciu DSA dynamicznych zasobów i innego punktu końcowego, zoptymalizowanej przy użyciu typu statycznego optymalizacji, na przykład ogólne dostarczanie w Internecie, aby zasoby podlega buforowaniu, dostawy. Zmodyfikuj swoje adresy URL strony sieci Web, połączyć się bezpośrednio do elementu zawartości w punkcie końcowym usługi CDN, której planujesz używać. 
 
-Na przykład: `mydynamic.azureedge.net/index.html` jest stroną dynamiczne, a także jest ładowany z punktu końcowego DSA.  Strony html odwołuje się do wielu zasobów statycznych, takich jak biblioteki JavaScript lub obrazów, które są ładowane z statycznego punktu końcowego usługi CDN, takie jak `mystatic.azureedge.net/banner.jpg` i `mystatic.azureedge.net/scripts.js`. 
+Na przykład: `mydynamic.azureedge.net/index.html` jest stroną dynamiczne, a także jest ładowany z punktu końcowego DSA.  Strony html odwołuje się do wielu zasobów statycznych, takich jak biblioteki JavaScript lub obrazów, które są ładowane z statycznego punktu końcowego usługi CDN, takie jak `mystatic.azureedge.net/banner.jpg` i `mystatic.azureedge.net/scripts.js`. 
 
 
 

@@ -3,7 +3,7 @@ title: Jak rozwiązywać problemy z logowania w raportach usługi Azure Active D
 description: Dowiedz się, jak rozwiązywać problemy z logowania w raportach usługi Azure Active Directory w witrynie Azure portal
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22126114f2d4fcb865485d9cebc69f0e35f70201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26a3594b00f19c2790e9dfd5f09fbdc7d73d478f
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198477"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434895"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Instrukcje: Rozwiązywanie problemów z logowania w raportach usługi Azure Active Directory
 
@@ -37,7 +37,7 @@ Ponadto w raporcie logowań może również pomóc rozwiązać logowań dla uży
 Potrzebne elementy:
 
 * Dzierżawa usługi Azure AD z licencją premium (P1/P2). Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md).
-* Użytkownik mający rolę **administratora globalnego**, **administratora zabezpieczeń**, **czytelnika zabezpieczeń** lub **czytelnika raportów** dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
+* Użytkownik, który znajduje się w **administratora globalnego**, **administrator zabezpieczeń**, **Czytelnik zabezpieczeń**, lub **czytnika raportu** roli dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Rozwiązywanie problemów z logowania za pomocą funkcji Zgłoś logowania
 
@@ -47,7 +47,7 @@ Potrzebne elementy:
 
     ![Filtrowanie wyników](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Zidentyfikuj Nieudane logowania, którą chcesz zbadać, a następnie wybierz ją. Spowoduje to otwarcie okna dodatkowe szczegóły o więcej informacji na temat logowania nie powiodło się. Zanotuj **logowania kod błędu:** i **Przyczyna niepowodzenia**. 
+4. Zidentyfikuj Nieudane logowania, które chcesz zbadać. Wybierz ją, aby otworzyć okno dodatkowe szczegóły o więcej informacji na temat logowania nie powiodło się. Zanotuj **logowania kod błędu:** i **Przyczyna niepowodzenia**. 
 
     ![Wybierz rekord](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
@@ -55,7 +55,7 @@ Potrzebne elementy:
 
     ![Rozwiązywanie problemów i pomoc techniczna](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. Przyczyna niepowodzenia opisuje błąd. Na przykład w powyższym scenariuszu Usługa Przyczyna niepowodzenia jest **nieprawidłowej nazwy użytkownika lub hasła lub nieprawidłowa nazwa użytkownika w środowisku lokalnym lub hasła**. Oznacza to, że użytkownik wprowadził niepoprawna nazwa użytkownika lub hasło, aby zalogować się do witryny Azure portal. Poprawka jest po prostu Zaloguj się ponownie, podając prawidłową nazwę użytkownika i hasło.
+6. Przyczyna niepowodzenia opisuje błąd. Na przykład w powyższym scenariuszu Usługa Przyczyna niepowodzenia jest **nieprawidłowej nazwy użytkownika lub hasła lub nieprawidłowa nazwa użytkownika w środowisku lokalnym lub hasła**. Poprawka jest po prostu Zaloguj się ponownie, podając prawidłową nazwę użytkownika i hasło.
 
 7. Dodatkowe informacje, w tym koncepcji korygowania, szukając kodu błędu, można uzyskać **50126** w tym przykładzie w [odwołania kody błędów logowania](reference-sign-ins-error-codes.md). 
 

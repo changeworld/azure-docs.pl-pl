@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 310e0e77b898171aea3fdcf5996cbc53f9f582a6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 32faab707b7a40a9f637e4ee5863690a9d9ff4c3
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864613"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439283"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Tworzenie bramy aplikacji za pomocą opartego na ścieżkach reguł routingu adresów URL przy użyciu programu Azure PowerShell
 
@@ -355,11 +355,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Zmień adres URL do http://<ip-address>:8080/video/test.htm, zastępując adresu IP dla < adres ip >, i powinny zostać wyświetlone, informacje jak w poniższym przykładzie:
+Zmień adres URL do `http://<ip-address>:8080/video/test.htm`, zastępując adres IP adres `<ip-address>`, powinien zostać wyświetlony coś tak jak w poniższym przykładzie:
 
 ![Testowanie adresu URL obrazów w bramie aplikacji](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-Zmień adres URL do http://<ip-address>:8080/video/test.htm i powinny zostać wyświetlone, informacje jak w poniższym przykładzie:
+Zmień adres URL do `http://<ip-address>:8080/video/test.htm` powinien zostać wyświetlony coś tak jak w poniższym przykładzie:
 
 ![Testowanie adresu URL wideo w bramie aplikacji](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 
