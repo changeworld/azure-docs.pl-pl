@@ -26,10 +26,6 @@ items:
     href: gen2-migration-schedule.md
   - name: Zarchiwizowane informacje o wersji
     items:
-    - name: Grudzień 2018 r.
-      href: release-notes-december-2018.md
-    - name: Październik 2018 r.
-      href: release-notes-october-2018.md
     - name: Wrzesień 2018 r.
       href: release-notes-september-2018.md
     - name: Sierpień 2018 r.
@@ -245,16 +241,18 @@ items:
     items:
     - name: Analizowanie obciążenia
       href: analyze-your-workload.md
-  - name: Monitorowanie i dostrajanie
+  - name: Zarządzanie i monitorowanie
     items:
-    - name: Monitorowanie obciążenia za pomocą widoków DMV
-      href: sql-data-warehouse-manage-monitor.md
     - name: Uaktualnianie do wersji Gen2
       href: upgrade-to-latest-generation.md
-    - name: Monitorowanie pamięci podręcznej Gen2
-      href: sql-data-warehouse-how-to-monitor-cache.md
     - name: Przywracanie magazynu danych
       href: sql-data-warehouse-restore.md
+    - name: Monitorowanie obciążenia — portal
+      href: sql-data-warehouse-monitor-workload-portal.md
+    - name: Monitorowanie obciążenia — widoki DMV
+      href: sql-data-warehouse-manage-monitor.md
+    - name: Monitorowanie pamięci podręcznej Gen2
+      href: sql-data-warehouse-how-to-monitor-cache.md
   - name: Integracja
     items:
     - name: Korzystanie z uczenia maszynowego
@@ -319,9 +317,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Zarządzanie danymi
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 1ee4b1806047d93cbdbe0758b728dd4d835cf8eb
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e206a9a171736ac7755e670838ee4854dabcdffb
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309456"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402868"

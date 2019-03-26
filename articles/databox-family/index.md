@@ -17,7 +17,7 @@ ms.author: alkohli
 <p>Rodzina Azure Data Box oferuje produkty o różnych pojemnościach magazynu, które ułatwiają wysyłanie terabajtów (TB) danych na platformę Azure w szybki, niedrogi i niezawodny sposób. Firma Microsoft przyspiesza bezpieczny transfer danych, wysyłając do Ciebie własne urządzenia magazynujące, które umożliwiają przesyłanie danych w trybie offline lub za pośrednictwem sieci.</p>
 <h2>Transfer danych offline</h2>
 <p>Ograniczona przepustowość sieci lub brak przepustowości</p>
-<ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
+<ul class="cardsA panelContent singlePanelContent cols cols3">
     <li>
         <a href="/azure/databox/data-box-disk-overview">
             <div class="cardSize">
@@ -29,7 +29,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk</b> — rozmiary danych poniżej 40 TB. Firma Microsoft wysyła od 1 do 5 zaszyfrowanych dysków półprzewodnikowych (SSD) do skopiowania danych i odesłania.</p>
+                            <p><b>Data Box Disk</b> — rozmiary danych &lt; 40 TB. Firma Microsoft wysyła od 1 do 5 zaszyfrowanych dysków półprzewodnikowych (SSD) do skopiowania danych i odesłania.</p>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk<SUP>wersja zapoznawcza</SUP></b> — rozmiary danych > 500 TB. Firma Microsoft wysyła za pośrednictwem frachtu urządzenie o pojemności 1 petabajta (PB) do skopiowania danych i odesłania.</p>
+                            <p><b>Data Box Heavy</b> — rozmiary danych &gt; 500 TB. Firma Microsoft wysyła za pośrednictwem frachtu urządzenie o pojemności 1 petabajta (PB) do skopiowania danych i odesłania.</p>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p>Urządzenie wirtualne <b>Data Box Gateway<SUP>wersja zapoznawcza</SUP></b> z magazynem. Użyj tego urządzenia do wysyłania danych za pośrednictwem sieci na platformę Azure.</p>
+                            <p>Urządzenie wirtualne <b>Data Box Gateway</b> z magazynem. Użyj tego urządzenia do wysyłania danych za pośrednictwem sieci na platformę Azure.</p>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p>Urządzenie fizyczne <b>Data Box Edge<SUP>wersja zapoznawcza</SUP></b> z magazynem i możliwościami obliczeniowymi. Użyj tego urządzenia, jeśli planujesz analizowanie, przekształcanie lub filtrowanie danych podczas ich przenoszenia na platformę Azure.</p>
+                            <p>Urządzenie fizyczne <b>Data Box Edge</b> z magazynem i możliwościami obliczeniowymi. Użyj tego urządzenia, jeśli planujesz analizowanie, przekształcanie lub filtrowanie danych podczas ich przenoszenia na platformę Azure.</p>
                         </div>
                     </div>
                 </div>
