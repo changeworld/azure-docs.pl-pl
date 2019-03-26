@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 03/21/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 82ae36eaaf4616dbd85760a0962f301a2b1a20f5
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: cdb8fe5deb71c014f7e0af01d070e5004d8c9994
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319384"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418797"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -57,12 +57,12 @@ Dyski zarządzane są naliczane trochę różnić się od konta magazynu. Zobacz
 
 * Konto magazynu w warstwie standardowa programu Vs. Standardowy dysk twardy, dysk zarządzany
 
-    - **Dysk magazynu aprowizowanego przez usługę ASR**: S10
+    - **Dysk magazynu aprowizowanego przez usługę Azure Site Recovery**: S10
     - **Konto magazynu w warstwie standardowa opłata na używane woluminu**: 5 USD miesięcznie
     - **Standardowy dysk zarządzany na aprowizowanego woluminu**: $5.89 na miesiąc
 
 * Konto magazynu Premium storage programu Vs. Dysk zarządzany w warstwie Premium SSD 
-    - **Dysk magazynu aprowizowanego przez usługę ASR**: P10
+    - **Dysk magazynu aprowizowanego przez usługę Azure Site Recovery**: P10
     - **Konto magazynu Premium storage jest naliczana na aprowizowanego woluminu**: $17.92 na miesiąc
     - **Rozliczane w systemie aprowizowanego woluminu dysku zarządzanego w warstwie Premium**: $17.92 na miesiąc
 
@@ -203,7 +203,7 @@ Tak, można dodać nowe maszyny wirtualne do istniejącej grupy replikacji po w�
 Potrzeby replikacji oprogramowania VMware do platformy Azure można zmodyfikować rozmiaru dysku. Jeśli chcesz dodać nowe dyski, czego potrzebujesz, aby dodać dysk, a następnie ponownie włączyć ochronę maszyny Wirtualnej.
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Czy mogę zmigrować na komputerach lokalnych, aby nowe Vcenter bez wywierania wpływu na trwającą replikację?
-Nie, zmiany Vcenter lub migracji będzie miało wpływ na trwającą replikację. Należy skonfigurować usługi ASR za pomocą nowego Vcenter i włączyć replikację dla maszyn.
+Nie, zmiany Vcenter lub migracji będzie miało wpływ na trwającą replikację. Należy skonfigurować usługę Azure Site Recovery z programem Vcenter nowe i włączyć replikację dla maszyn.
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Można replikować do pamięci podręcznej/docelowego konta magazynu, która ma sieci wirtualnej (przy użyciu zapór usługi Azure storage) skonfigurowane na nim?
 Nie, usługa Azure Site Recovery nie obsługuje replikację do magazynu w sieci wirtualnej.
@@ -275,7 +275,7 @@ W **magazyn usług Recovery Services**, **zarządzanie** > **infrastruktura usł
 Pliki instalacyjne są przechowywane w **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** folderu na serwerze konfiguracji.
 
 ## <a name="how-do-i-install-the-mobility-service"></a>Jak zainstalować usługę mobilności?
-Zainstaluj na każdej maszynie Wirtualnej, którą chcesz replikować, za pomocą [instalacja wypychana](vmware-azure-install-mobility-service.md), lub [Instalacja ręczna](vmware-physical-mobility-service-install-manual.md) z interfejsu użytkownika lub środowiska Powershell. Alternatywnie, można wdrożyć przy użyciu narzędzia wdrażania, takich jak [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
+Zainstaluj na każdej maszynie Wirtualnej, którą chcesz replikować, za pomocą [instalacja wypychana](vmware-physical-mobility-service-overview.md#push-installation), lub [Instalacja ręczna](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) z interfejsu użytkownika lub środowiska Powershell. Alternatywnie, można wdrożyć przy użyciu narzędzia wdrażania, takich jak [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
 
 
 

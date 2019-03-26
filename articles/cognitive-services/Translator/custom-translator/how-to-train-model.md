@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 8fee19b4d7a1ae05ca9a38c5a9ba374c0674a867
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2045041a9ee4872e4510e5ee0deba258b0342557
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776261"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437292"
 ---
 # <a name="train-a-model"></a>Szkolenie modelu
 
@@ -51,6 +51,9 @@ Do nauczenia modelu:
 6.  Niestandardowe w usłudze Translator przesłać szkolenia i wyświetlić stan szkolenia na karcie modeli.
 
     ![Szkolenie modelu strony](media/how-to/how-to-train-model-3.png)
+
+>[!Note]
+>Niestandardowe w usłudze Translator obsługuje 10 równoczesnych szkoleniach, w obszarze roboczym w dowolnym momencie w czasie.
 
 
 ## <a name="edit-a-model"></a>Edytowanie modelu

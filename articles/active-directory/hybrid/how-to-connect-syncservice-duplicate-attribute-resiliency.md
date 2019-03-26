@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc27e5cd6af19f06a5eab73e30d3034fada0ccc2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838395"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438305"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizacja tożsamości i odporność względem zduplikowanych atrybutów
 Odporność na zduplikowane atrybuty to funkcja usługi Azure Active Directory, która zostanie całkowicie wyeliminować zajmowania się przyczyną **UserPrincipalName** i **ProxyAddress** powoduje konflikt podczas uruchamiania jednego z firmy Microsoft narzędzia do synchronizacji.
@@ -40,7 +40,7 @@ W przypadku próby aprowizacji nowego obiektu przy użyciu nazwy UPN lub ProxyAd
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Zachowanie przy użyciu odporność na zduplikowane atrybuty
 Zamiast całkowicie przełączenia do aprowizowania lub aktualizowania obiektu za pomocą zduplikowany atrybut, usługi Azure Active Directory "poddaje" zduplikowany atrybut, który mógłby naruszyć ograniczenie unikatowości. Jeśli ten atrybut jest wymagany do obsługi administracyjnej, np. UserPrincipalName, usługa przypisuje wartość symbolu zastępczego. Format wartości tymczasowej  
-“***<OriginalPrefix>+<4DigitNumber>\@<InitialTenantDomain>.onmicrosoft.com***”.  
+“***\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com***”.  
 Jeśli ten atrybut nie jest wymagane, takie jak **ProxyAddress**, usługi Azure Active Directory, po prostu poddaje atrybut konfliktu i kontynuuje tworzenie obiektów lub aktualizacji.
 
 Po poddawania atrybutu, informacje dotyczące konfliktu są wysyłane w ten sam błąd raportu wiadomości e-mail używany w stare zachowanie. Te informacje pojawia się tylko do raportów o błędach jeden raz w sytuacji informującą o kwarantannie nie nadal mają być rejestrowane w przyszłych wiadomości e-mail. Ponadto, ponieważ Eksport dla tego obiektu zakończyła się pomyślnie, klienta synchronizacji nie rejestruje błąd i nie ponawia próby tworzenia / operacja przy kolejnej synchronizacji cykli aktualizacji.
@@ -66,7 +66,7 @@ Aby sprawdzić, jeśli ta funkcja jest włączona dla Twojej dzierżawy, możesz
 > Polecenia cmdlet Set-MsolDirSyncFeature umożliwia nie jest już aktywnie włączyć funkcję odporność na zduplikowane atrybuty, zanim jest włączona dla Twojej dzierżawy. Aby można było przetestować funkcję, należy utworzyć nową dzierżawę usługi Azure Active Directory.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Identyfikowania obiektów z DirSyncProvisioningErrors
-Istnieją obecnie dwie metody, aby zidentyfikować obiekty, które mają te błędy z powodu konfliktów zduplikowaną właściwość, programu PowerShell usługi Azure Active Directory i portalu administracyjnego usługi Office 365. Planujemy rozszerzenie dodatkowe portalu na podstawie raportowania w przyszłości.
+Obecnie istnieją dwie metody, aby zidentyfikować obiekty, które mają te błędy z powodu konfliktów zduplikowaną właściwość, programu PowerShell usługi Azure Active Directory i [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com). Planujemy rozszerzenie dodatkowe portalu na podstawie raportowania w przyszłości.
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
 Dla poleceń cmdlet programu PowerShell w tym temacie są spełnione następujące warunki:
@@ -113,17 +113,17 @@ Celu użyj wyszukiwania szerokiego ciągu **- Ciągwyszukiwania** flagi. Może t
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>Ograniczona ilość lub wszystkie
-1. **MaxResults <Int>**  może służyć do ograniczania zapytanie do określonej liczby wartości.
+1. **MaxResults \<Int >** może służyć do ograniczania zapytanie do określonej liczby wartości.
 2. **Wszystkie** może służyć do zapewnienia wszystkie wyniki są pobierane w przypadku, że istnieje duża liczba błędów.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="office-365-admin-portal"></a>Portal administracyjny usługi Office 365
-Błędy synchronizacji katalogu można wyświetlić w Centrum administracyjnym usługi Office 365. Raport w portalu usługi Office 365 tylko Wyświetla **użytkownika** obiektów, które mają te błędy. Nie są wyświetlane informacje na temat konflikty między **grup** i **kontakty**.
+## <a name="microsoft-365-admin-center"></a>Centrum administracyjne usługi Microsoft 365
+Błędy synchronizacji katalogu można wyświetlić w Centrum administracyjnym usługi Microsoft 365. Raport w administratora usługi Microsoft 365 Centrum przedstawia tylko **użytkownika** obiektów, które mają te błędy. Nie są wyświetlane informacje na temat konflikty między **grup** i **kontakty**.
 
 ![Aktywni użytkownicy](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "aktywni użytkownicy")
 
-Aby uzyskać instrukcje dotyczące sposobu wyświetlania błędów synchronizacji katalogu w Centrum administracyjnym usługi Office 365, zobacz [identyfikowanie błędów synchronizacji katalogu w usłudze Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Aby uzyskać instrukcje dotyczące sposobu wyświetlania błędów synchronizacji katalogu w Centrum administracyjnym usługi Microsoft 365, zobacz [identyfikowanie błędów synchronizacji katalogu w usłudze Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Raport o błędach synchronizacji tożsamości
 Gdy odbywa się obiekt powodujący konflikt zduplikowany atrybut z tym działaniem nowe powiadomienie znajduje się w standardowych raport o błędach synchronizacji tożsamości wiadomości e-mail są wysyłane do powiadomienie techniczne skontaktuj się z pomocą dla dzierżawy. Istnieje jednak ważne zmiany w tym zachowaniu. W przeszłości informacji o konflikcie zduplikowany atrybut będzie uwzględniane w raporcie każdy kolejny błąd, aż konflikt został rozwiązany. Z tym zachowaniem nowe powiadomienia o błędzie dla danej konfliktu występować tylko raz — w momencie atrybutem sprzecznych jest objęte kwarantanną.

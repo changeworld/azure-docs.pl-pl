@@ -1,7 +1,7 @@
 ---
 title: Publikowanie regionów i punktów końcowych
 titleSuffix: Azure Cognitive Services
-description: Region, w którym możesz opublikować aplikację usługi LUIS odnosi się do regionu lub lokalizacji w witrynie Azure portal podczas tworzenia klucza punktu końcowego usługi LUIS platformy Azure. Po opublikowaniu aplikacji LUIS automatycznie generuje adres URL punktu końcowego dla regionu skojarzonego z kluczem.
+description: 3 regiony tworzenia pakietów administracyjnych i ich portale obsługi wielu regionów publikowania. Region, w którym możesz opublikować aplikację usługi LUIS odnosi się do regionu lub lokalizacji w witrynie Azure portal podczas tworzenia klucza punktu końcowego usługi LUIS platformy Azure. Po opublikowaniu aplikacji LUIS automatycznie generuje adres URL punktu końcowego dla regionu skojarzonego z kluczem.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,27 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01444cec798763bc4e44bcabe0d7ebb640e537a8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765174"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436340"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Tworzenie i publikowanie regionów i skojarzonych kluczy
 
-Region, w którym możesz opublikować aplikację usługi LUIS odnosi się do regionu lub lokalizacji w witrynie Azure portal podczas tworzenia klucza punktu końcowego usługi LUIS platformy Azure. Gdy użytkownik [publikowanie aplikacji](./luis-how-to-publish-app.md), LUIS automatycznie generuje adres URL punktu końcowego dla regionu skojarzonego z kluczem. Aby opublikować więcej niż jeden region z aplikacją usługi LUIS, potrzebujesz co najmniej jeden klucz dla regionu. 
+Trzy regiony tworzenia pakietów administracyjnych i ich portali obsługi wielu regionów publikowania. Region, w którym możesz opublikować aplikację usługi LUIS odnosi się do regionu lub lokalizacji w witrynie Azure portal podczas tworzenia klucza punktu końcowego usługi LUIS platformy Azure. Gdy użytkownik [publikowanie aplikacji](./luis-how-to-publish-app.md), LUIS automatycznie generuje adres URL punktu końcowego dla regionu skojarzonego z kluczem. Aby opublikować więcej niż jeden region z aplikacją usługi LUIS, potrzebujesz co najmniej jeden klucz dla regionu. 
 
-## <a name="luis-website"></a>Witryny sieci Web usługi LUIS
+<a name="luis-website"></a>
+
+## <a name="luis-authoring-regions"></a>Tworzenie usługi LUIS regionów
 Istnieją trzy usługi LUIS witryn sieci Web, na podstawie regionu. Należy tworzyć i publikować w tym samym regionie. 
 
-|LUIS|Region|
-|--|--|
-|[www.Luis.AI][www.luis.ai]|Federalna<br>nie Europa<br>nie Australia|
-|[AU.Luis.AI][au.luis.ai]|Australia|
-|[EU.Luis.AI][eu.luis.ai]|Europa|
+|LUIS|Globalne regionu|Tworzenie regionu w systemie Azure|
+|--|--|--|
+|[www.Luis.AI][www.luis.ai]|Federalna<br>nie Europa<br>nie Australia| `westus`|
+|[AU.Luis.AI][au.luis.ai]|Australia| `australiaeast`|
+|[EU.Luis.AI][eu.luis.ai]|Europa|`westeurope`|
+
+Tworzenia region służy do interakcji z wdrożonej usługi LUIS w innym regionie publikowania platformy Azure.  
+
+Regiony tworzenia pakietów administracyjnych z [sparowane regiony pracy awaryjnej](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 ## <a name="regions-and-azure-resources"></a>Regiony i zasobów platformy Azure
 Aplikacja została opublikowana do wszystkich regionów skojarzonych z zasobami usługi LUIS dodane w portalu usługi LUIS. Na przykład aplikacja utworzona na [www.luis.ai][www.luis.ai], jeśli utworzysz zasób usługi LUIS w **westus** i dodać go do aplikacji jako zasób, aplikacja zostanie opublikowana w danym regionie. 

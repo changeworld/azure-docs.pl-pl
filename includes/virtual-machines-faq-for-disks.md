@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 94893a5b5716c9bd207ad2a8bc8ca457974dddd4
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 233834bd040362e27ffadc3d0003a87827012352
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395511"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407887"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -300,7 +300,7 @@ Nie ma żadnych wadą wykorzystania PRZYCINANIEM na dyskach platformy Azure w we
 
 **Co to jest największy rozmiar dysku zarządzanego, obsługiwane w przypadku systemu operacyjnego i dysków z danymi?**
 
-Typ partycji, które platforma Azure obsługuje dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). MBR format obsługuje maksymalnie 2 TiB rozmiaru dysku. Największy rozmiar, jak platforma Azure obsługuje dla dysku systemu operacyjnego jest 2 TiB. Platforma Azure obsługuje maksymalnie 32 TiB dysków zarządzanych danych. Zarządzanych dysków o rozmiarach większych niż 4 TiB są w wersji zapoznawczej. Aby uzyskać więcej informacji na temat ich, zobacz nasze [wpis w blogu](https://aka.ms/azure-large-disk-32TB-preview-blog).
+Typ partycji, które platforma Azure obsługuje dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). MBR format obsługuje maksymalnie 2 TiB rozmiaru dysku. Największy rozmiar, jak platforma Azure obsługuje dla dysku systemu operacyjnego jest 2 TiB. Platforma Azure obsługuje maksymalnie 32 TiB dysków zarządzanych danych na platformie Azure globalnego 4 TiB w chmurach suwerennych platformy Azure.
 
 **Co to jest największy rozmiar dysku niezarządzanego, obsługiwane w przypadku systemu operacyjnego i dysków z danymi?**
 
@@ -335,7 +335,7 @@ Można migawki małych dysków, a następnie utworzyć automatyczne przełączan
 
 **Można zmiany rozmiaru istniejących dysków zarządzanych z rozmiarów mniej niż 4 tebibajtów (TiB) do nowych rozmiarów dysków nowo wprowadzonych do 32 TiB?**
 
-Nowe rozmiary dysków zarządzanych, 8 TiB, 16 TiB i 32 TiB są obecnie dostępne w wersji zapoznawczej. Nie jest jeszcze obsługiwane zmiany rozmiaru istniejących dysków o rozmiarach na nowe rozmiary dysków.
+Tak.
 
 **Co to są największych rozmiary dysków obsługiwanych przez usługę Azure Backup i Azure Site Recovery?**
 

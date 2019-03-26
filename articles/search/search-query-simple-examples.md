@@ -1,5 +1,5 @@
 ---
-title: Przykłady prostego zapytania — usługa Azure Search
+title: Przykłady zapytań przy użyciu składni "prosta" wyszukiwania — usługa Azure Search
 description: Przykłady prostego zapytania wyszukiwania pełnotekstowego, filtr wyszukiwania, wyszukiwanie geograficzne, wyszukiwanie aspektowe i inne ciągi zapytań, które umożliwia tworzenie zapytań względem indeksu usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -7,17 +7,17 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a975c95af75e9f3e09e5d0142716795ab4b90e28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136482"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439136"
 ---
-# <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Prosta składnia zapytań przykłady do tworzenia zapytań w usłudze Azure Search
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Przykłady zapytań przy użyciu składni "prosta" wyszukiwania w usłudze Azure Search
 
 [Prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wywołuje analizator składni zapytań domyślne do wykonywania zapytań wyszukiwania pełnotekstowego względem indeksu usługi Azure Search. Analizator prostego zapytania jest szybkie i obsługuje typowych scenariuszy w usłudze Azure Search, takich jak wyszukiwanie pełnotekstowe, wyszukiwanie filtrowane i aspektowa i wyszukiwanie geograficzne. W tym artykule należy przejrzeć przykłady pokazujące dostępne operacje zapytań, korzystając z prostą składnię.
 
@@ -55,7 +55,9 @@ Kompozycja adresu URL zawiera następujące elementy:
 
 ## <a name="send-your-first-query"></a>Wyślij pierwszego zapytania
 
-Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij przycisk **wysyłania**. Wyniki są zwracane w postaci pełnych dokumentów JSON. Użytkownik może kopiowanie i wklejanie tego adresu URL w pierwszym przykładzie poniżej.
+Jako kroku weryfikacji, wklej następujące żądanie GET, a następnie kliknij przycisk **wysyłania**. Wyniki są zwracane w postaci pełnych dokumentów JSON. Całe dokumenty zostaną zwrócone, co pozwala wyświetlić wszystkie pola i wszystkie wartości.
+
+Wklej ten adres URL do klienta REST, jako kroku weryfikacji i wyświetlić strukturę dokumentu.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -74,6 +76,20 @@ Dla zapytań interakcyjnych, nie trzeba niczego określać: proste jest ustawien
 W pierwszym przykładzie nie jest specyficzne dla analizatora składni, ale możemy prowadzić z nim wprowadzenie pierwszego zapytanie podstawowe pojęcia: zawierania. W tym przykładzie zakresów, wykonywania zapytań i odpowiedzi na kilka konkretnych pól. Ważne jest wiedza, jak i struktury można odczytać odpowiedź w formacie JSON, po narzędzie Postman lub wyszukiwania Eksploratora. 
 
 Celu skrócenia programu, zapytanie jest przeznaczona tylko *business_title* pola, a następnie określa tylko tytuły biznesowe są zwracane. Składnia jest **searchFields** ograniczyć wykonywanie zapytania do tylko pola business_title i **wybierz** można określić pola, które mają zostać uwzględnione w odpowiedzi.
+
+### <a name="partial-query-string"></a>Ciąg zapytania częściowego
+
+```http
+searchFields=business_title&$select=business_title&search=*
+```
+
+W tym miejscu jest tego samego zapytania przy użyciu wielu pól na liście rozdzielonych przecinkami.
+
+```http
+search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+```
+
+### <a name="full-url"></a>Pełny adres URL
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*

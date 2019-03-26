@@ -1,24 +1,38 @@
 ---
 title: Uaktualnianie usługi QnA Maker — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Można uaktualnić poszczególne składniki stosu usługi QnA Maker po pierwszym utworzeniu.
+description: Udostępnianie lub uaktualnienia usługi QnA Maker, aby można było zarządzać zasobami lepiej.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/25/2019
 ms.author: tulasim
-ms.openlocfilehash: e37a903112f30917ff5051305bb2144981de1c9d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883275"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437991"
 ---
-# <a name="upgrade-your-qna-maker-service"></a>Uaktualnianie usługi QnA Maker
+# <a name="share-or-upgrade-your-qna-maker-service"></a>Udostępnianie lub Uaktualnij usługi QnA Maker
+Udostępnianie lub uaktualnienia usługi QnA Maker, aby można było zarządzać zasobami lepiej. 
+
 Można uaktualnić poszczególne składniki stosu usługi QnA Maker po pierwszym utworzeniu. Zobacz szczegóły dotyczące składników zależnych i wybór jednostki SKU [tutaj](https://aka.ms/qnamaker-docs-capacity).
+
+## <a name="share-existing-services-with-qna-maker"></a>Udostępnianie istniejące usługi QnA Maker
+
+Usługa QnA Maker tworzy kilka zasobów platformy Azure. Aby można było ograniczyć zarządzanie, a następnie korzystać z dzieleniem kosztów, skorzystaj z poniższej tabeli, aby dowiedzieć się tym, co można, a czego nie można udostępnić:
+
+|Usługa|Udostępnij|
+|--|--|
+|Cognitive Services|X|
+|Plan usługi aplikacji|✔|
+|App Service|X|
+|Application Insights|✔|
+|Search Service|✔|
 
 ## <a name="upgrade-qna-maker-management-sku"></a>Uaktualnianie usługi QnA Maker zarządzania jednostki SKU
 

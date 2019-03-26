@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9b82b1e17a62aa9b3d606b0b16295acf04eb85
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901546"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418758"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integracja kontroli źródła w usłudze Azure Automation — starsza wersja
 
@@ -65,17 +65,17 @@ Jeśli masz już konto w usłudze GitHub i repozytorium, którego chcesz utworzy
      
      | **Parametr** | **Wartość** |
      |:--- |:--- |
-     | Name (Nazwa) |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Type |String |
-     | Wartość |{"Gałąź":\<*swoją nazwę gałęzi*>, "RunbookFolderPath":\<*ścieżka folderu elementów Runbook*>, "Typ dostawcy":\<*ma wartość 1 dla GitHub*>, "Repozytorium":\<*nazwę repozytorium*>, "Username":\<*nazwę użytkownika usługi GitHub*>} |
+     | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
+     | `Type`  |String |
+     | `Value` |{"Gałąź":\<*swoją nazwę gałęzi*>, "RunbookFolderPath":\<*ścieżka folderu elementów Runbook*>, "Typ dostawcy":\<*ma wartość 1 dla GitHub*>, "Repozytorium":\<*nazwę repozytorium*>, "Username":\<*nazwę użytkownika usługi GitHub*>} |
 
      * Zmienna **Microsoft.Azure.Automation.SourceControl.OAuthToken**, zawiera wartość zaszyfrowanych bezpiecznego swoje OAuthToken.  
 
      |**Parametr**            |**Wartość** |
      |:---|:---|
-     | Name (Nazwa)  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-     | Type | Unknown(Encrypted) |
-     | Wartość | <*Zaszyfrowane OAuthToken*> |  
+     | `Name`  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
+     | `Type`  | Unknown(Encrypted) |
+     | `Value` | <*Zaszyfrowane OAuthToken*> |  
 
      ![Zmienne](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 

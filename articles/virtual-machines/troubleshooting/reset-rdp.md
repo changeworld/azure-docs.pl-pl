@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 875f2d9dbbece4e9587462c6e8bdb2b2d8536c86
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c61e606bde4b50fa10c194c76c79a3d8a27a4b8e
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979891"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407695"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetowanie usług pulpitu zdalnego lub jego hasło administratora na maszynie wirtualnej Windows
 Jeśli nie możesz połączyć z maszyną wirtualną (VM) Windows, możesz zresetować hasło administratora lokalnego lub zresetowanie konfiguracji usług pulpitu zdalnego (nie obsługiwany na kontrolerach domeny Windows). Możesz zresetować hasło w witrynie Azure Portal lub za pośrednictwem rozszerzenia VM Access w programie Azure PowerShell. Po zalogowaniu się na maszynie wirtualnej zresetuj hasło administratora lokalnego.  
@@ -39,18 +39,19 @@ Najpierw zaloguj się do [witryny Azure portal](https://portal.azure.com) , a na
 
 1. Wybierz maszynę Wirtualną Windows, a następnie wybierz pozycję **Resetuj hasło** w obszarze **pomoc techniczna i rozwiązywanie problemów**. **Resetuj hasło** zostanie wyświetlone okno.
 
-1. Wybierz **Resetuj hasło**, wprowadź nazwę użytkownika i hasło, a następnie wybierz **aktualizacji**. 
+2. Wybierz **Resetuj hasło**, wprowadź nazwę użytkownika i hasło, a następnie wybierz **aktualizacji**. 
 
-1. Spróbuj ponownie nawiązać połączenie z maszyną wirtualną.
+3. Spróbuj ponownie nawiązać połączenie z maszyną wirtualną.
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**Zresetowanie konfiguracji usług pulpitu zdalnego**
 
+Ten proces włączyć usługi pulpitu zdalnego na maszynie wirtualnej i tworzenie reguły zapory dla portu RDP domyślne 3389.
+
 1. Wybierz maszynę Wirtualną Windows, a następnie wybierz pozycję **Resetuj hasło** w obszarze **pomoc techniczna i rozwiązywanie problemów**. **Resetuj hasło** zostanie wyświetlone okno. 
 
-1. Wybierz **tylko konfiguracji resetowania** , a następnie wybierz **aktualizacji**. 
+2. Wybierz **tylko konfiguracji resetowania** , a następnie wybierz **aktualizacji**. 
 
-1. Spróbuj ponownie nawiązać połączenie z maszyną wirtualną.
-
+3. Spróbuj ponownie nawiązać połączenie z maszyną wirtualną.
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Resetuj przy użyciu programu PowerShell i rozszerzenie VMAccess
 

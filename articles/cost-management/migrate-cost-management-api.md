@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 9f5ea30c458954a3e87b9575b5632fbfb0df97b8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 283808c0bd3f5297011b25619d6f978c99d4dc32
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318602"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439230"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migracja z umową Enterprise Agreement do interfejsów API umowy klienta firmy Microsoft
 
@@ -463,7 +463,7 @@ Następujące pola nie są dostępne w interfejsów API arkusza cen umowy klient
 | offerId | Nie dotyczy. Odnosi się do productOrderName w MCA. |
 | meterCategory  | Nie dotyczy. Odnosi się do usługi w MCA. |
 | jednostka | Nie dotyczy. Może być pochodzącą z analizy unitOfMeasure. |
-| currencyCode | Taki sam jak pricingCurrency w MCA. |
+| currencyCode | Taka sama jak pricingCurrency w MCA. |
 | meterLocation | Taka sama jak meterRegion w MCA. |
 | partNumber partnumber | Nie dotyczy, ponieważ nie ma na liście numer części MCA faktur. Zamiast partnumber należy użyć kombinacji meterId i productOrderName do unikatowego identyfikowania ceny. |
 | totalIncludedQuantity | Nie dotyczy. |

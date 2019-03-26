@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285789"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418860"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
 Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak *alain\@contoso.com*.
@@ -84,6 +84,8 @@ Po zarejestrowaniu niestandardową nazwę domeny, należy upewnić się, że jes
 4. Na **Contoso** wybierz opcję **Sprawdź** aby upewnić się, domena niestandardowa jest poprawnie zarejestrowany i jest prawidłowy dla usługi Azure AD.
 
     ![Strona firmy Contoso z informacji wpis DNS i przycisku Weryfikuj](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
+
+Po zweryfikowaniu niestandardową nazwę domeny, można usunąć pliku TXT lub MX weryfikacji.
 
 ## <a name="common-verification-issues"></a>Typowe problemy weryfikacji
 - Jeśli usługa Azure AD nie można zweryfikować niestandardowej nazwy domeny, należy spróbować wykonać następujące czynności:

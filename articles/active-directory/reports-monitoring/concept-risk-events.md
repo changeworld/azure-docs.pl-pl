@@ -3,7 +3,7 @@ title: Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory | Doku
 description: Ta artice zapewnia szczegółowe omówienie zdarzeń o podwyższonym ryzyku są.
 services: active-directory
 keywords: Usługa Azure active directory identity protection, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed1b7dfa19644fa558cafd8df5fed72490f24ff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 02fc505c8f14f4cc0e486502060a16af47c68bbc
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195689"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439026"
 ---
 # <a name="azure-active-directory-risk-events"></a>Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory
 

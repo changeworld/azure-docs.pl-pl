@@ -4,14 +4,14 @@ description: Wyświetla listę typów zasobów platformy Azure, które mogą zos
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 2/13/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: f82c3adc0049c7386206fb4be10d3e634627a25a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236893"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438472"
 ---
 # <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
 W tym artykule wymieniono, czy typ zasobu platformy Azure obsługuje operacji przenoszenia. Mimo że typ zasobu obsługuje operację przenoszenia, może to być warunki, które uniemożliwiają przenoszonego zasobu. Aby uzyskać szczegółowe informacje o warunkach, które wpływają na operacji przenoszenia, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
@@ -153,7 +153,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
 | availabilitysets | Yes | Yes |
-| Dyski | Yes | Yes |
+| dyski | Yes | Yes |
 | Galerie | Nie | Nie |
 | galerie/obrazów | Nie | Nie |
 | Galerie/obrazy/wersji | Nie | Nie |
@@ -241,7 +241,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| Pakiety | Nie | Nie |
+| pakiety | Nie | Nie |
 | Plany | Nie | Nie |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
@@ -422,7 +422,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | ----------- | ---------- |
-| labaccounts | Yes | Yes |
+| labaccounts | Nie | Nie |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -533,7 +533,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | expressroutecrossconnections | Nie | Nie |
 | expressroutegateways | Nie | Nie |
 | expressrouteports | Nie | Nie |
-| frontdoors | Yes | Yes |
+| usługi Frontdoor | Yes | Yes |
 | frontdoorwebapplicationfirewallpolicies | Yes | Yes |
 | interfaceendpoints | Nie | Nie |
 | loadbalancers | Yes | Yes |
@@ -782,7 +782,7 @@ Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobier
 | customapis | Yes | Yes |
 | hostingenvironments | Nie | Nie |
 | farm serwerów | Yes | Yes |
-| Lokacje | Yes | Yes |
+| lokacje | Yes | Yes |
 | sites/premieraddons | Yes | Yes |
 | Lokacje/miejsca | Yes | Yes |
 

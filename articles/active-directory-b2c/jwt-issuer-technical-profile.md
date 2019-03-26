@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: dabffd88965a10fe4feca2b600cfaf5741e2f664
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157911"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436058"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego wystawcy tokenów JWT, w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -54,7 +54,7 @@ W poniższym przykładzie pokazano profilu technicznego dla `JwtIssuer`:
 | rolling_refresh_token_lifetime_secs | Nie | Odśwież okres istnienia okna przewijania tokenu. Po upłynięciu tego okresu użytkownik jest zmuszony do ponownego uwierzytelnienia, niezależnie od ostatniego okresu ważności tokenu odświeżania uzyskanego przez aplikację. Jeśli nie chcesz wymusić okres istnienia okna przewijania, ustaw wartość allow_infinite_rolling_refresh_token do `true`. Wartość domyślna to 7,776,000 sekund (90 dni). Minimum (włącznie) jest 86 400 sekund (24 godziny). Maksymalna (włącznie) to 31,536,000 sekund (365 dni). | 
 | allow_infinite_rolling_refresh_token | Nie | Jeśli ustawiono `true`, token odświeżania oknem kroczącym okres istnienia nigdy nie wygasa. |
 | IssuanceClaimPattern | Yes | Określa, czy oświadczenie wystawcy (iss) Jedna z wartości:<ul><li>AuthorityAndTenantGuid - oświadczenia iss obejmuje nazwę domeny, takie jak `login.microsoftonline` lub `tenant-name.b2clogin.com`oraz że identyfikator dzierżawy https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - oświadczenia iss obejmuje nazwę domeny, takie jak `login.microsoftonline` lub `tenant-name.b2clogin.com`, dzierżawy, identyfikator i nazwę jednostki uzależnionej zasad firmy. https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> | 
-| AuthenticationContextReferenceClaimPattern | Nie | Formanty `acr` wartości oświadczenia.<ul><li>Brak — usługi Azure AD B2C nie wystawiać oświadczeń acr</li><li>PolicyId - `acr` oświadczeń zawiera nazwę zasad</li></ul>Opcje ustawienie tej wartości są TFP (zasady zaufania framework) i ACR (odwołanie w kontekście uwierzytelniania). Zaleca się ustawienie tej wartości na TFP, aby ustawić wartość, upewnij się, `<Item>` z `Key="AuthenticationContextReferenceClaimPattern"` istnieje, a wartość to `None`. W zasadach strony jednostki uzależnionej, należy dodać <OutputClaims> , należy dodać ten element `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Ponadto upewnij się, że Twoje zasady zawiera typ oświadczenia `<ClaimType Id="trustFrameworkPolicy"> <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` | 
+| AuthenticationContextReferenceClaimPattern | Nie | Formanty `acr` wartości oświadczenia.<ul><li>Brak — usługi Azure AD B2C nie wystawiać oświadczeń acr</li><li>PolicyId - `acr` oświadczeń zawiera nazwę zasad</li></ul>Opcje ustawienie tej wartości są TFP (zasady zaufania framework) i ACR (odwołanie w kontekście uwierzytelniania). Zaleca się ustawienie tej wartości na TFP, aby ustawić wartość, upewnij się, `<Item>` z `Key="AuthenticationContextReferenceClaimPattern"` istnieje, a wartość to `None`. W zasadach strony jednostki uzależnionej, należy dodać `<OutputClaims>` , należy dodać ten element `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Ponadto upewnij się, że Twoje zasady zawiera typ oświadczenia `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` | 
 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
 

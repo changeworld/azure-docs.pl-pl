@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 287a4104104c12e33fa2c50c398f422f9e6ea8c5
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107597"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418707"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Rozwiązywanie problemów z konfiguracją serwera
 
@@ -48,11 +48,10 @@ Po zainstalowaniu agenta mobilności na maszynie źródłowej rejestruje się z 
     3. Upewnij się, że foldery na liście [wykluczenia folderów Site Recovery z programów antywirusowych](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) są wykluczane z oprogramowania antywirusowego.  
     4. Po rozwiązaniu problemów i spróbuj ponownie rejestracji się następującymi wskazówkami [zarejestrowania komputera źródłowego z serwerem konfiguracji](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-7. W systemie Linux Jeśli wartość platformy w < INSTALLATION_DIR\>/etc/drscout.conf jest uszkodzony, rejestracja kończy się niepowodzeniem. Aby zidentyfikować ten problem, otwórz plik /var/log/ua_install.log. Wyszukaj ciąg **przerywanie konfiguracji, ponieważ VM_PLATFORM wartość null lub go nie jest VmWare/Azure**. Platforma powinien być ustawiony na **VmWare** lub **Azure**. Jeśli plik drscout.conf jest uszkodzony, zalecamy możesz [Odinstaluj agenta mobilności](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) i ponownie zainstaluj agenta mobilności. Jeśli odinstalowanie kończy się niepowodzeniem, wykonaj następujące czynności:
-    1. Otwórz plik Installation_Directory/uninstall.sh i komentarz wywołanie **StopServices** funkcji.
-    2. Otwórz plik Installation_Directory/Vx/bin/uninstall.sh i komentarz wywołanie **stop_services** funkcji.
-    3. Otwórz plik Installation_Directory/Fx/uninstall.sh i komentarz dla całej sekcji, które podejmuje próbę zatrzymania usługi Fx.
-    4. [Odinstaluj](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) agenta mobilności. Po pomyślnej dezinstalacji należy ponownie uruchomić system, a następnie spróbuj ponownie zainstalować agenta mobilności.
+7. W systemie Linux Jeśli wartość platformy w < INSTALLATION_DIR\>/etc/drscout.conf jest uszkodzony, rejestracja kończy się niepowodzeniem. Aby zidentyfikować ten problem, otwórz plik /var/log/ua_install.log. Wyszukaj ciąg **przerywanie konfiguracji, ponieważ VM_PLATFORM wartość null lub go nie jest VmWare/Azure**. Platforma powinien być ustawiony na **VmWare** lub **Azure**. Jeśli plik drscout.conf jest uszkodzony, zalecamy możesz [Odinstaluj agenta mobilności](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) i ponownie zainstaluj agenta mobilności. Jeśli odinstalowanie kończy się niepowodzeniem, wykonaj następujące czynności:. Otwórz plik Installation_Directory/uninstall.sh i komentarz wywołanie **StopServices** funkcji.
+    b. Otwórz plik Installation_Directory/Vx/bin/uninstall.sh i komentarz wywołanie **stop_services** funkcji.
+    c. Otwórz plik Installation_Directory/Fx/uninstall.sh i komentarz dla całej sekcji, które podejmuje próbę zatrzymania usługi Fx.
+    d. [Odinstaluj](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) agenta mobilności. Po pomyślnej dezinstalacji należy ponownie uruchomić system, a następnie spróbuj ponownie zainstalować agenta mobilności.
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Błąd instalacji: Nie można załadować kont
 
@@ -80,9 +79,9 @@ Aby uniknąć tego błędu, upewnij się, że czas zegara systemowego nie jest t
 
 Nie można utworzyć certyfikatu, które są wymagane do uwierzytelniania Usługa Site Recovery. Po upewnieniu się, że korzystasz z Instalatora jako administrator lokalny, uruchom ponownie Instalatora.
 
-## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Nie można aktywować licencji Windows Server Standard w wersji EWALUACYJNEJ do serwera w warstwie standardowa
+## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Nie można aktywować licencji Windows z Server Standard w wersji EWALUACYJNEJ do serwera w warstwie standardowa
 
-1. W ramach wdrożenia serwera konfiguracji za pomocą pakietu OVF licencji ewaluacyjnej jest używana, która jest ważna przez 180 dni. Należy aktywować tej licencji, zanim to pobiera wygasł. W przeciwnym wypadku to powodować częste zamykania serwera konfiguracji i powoduje hinderance do działań replikacji.
+1. W ramach wdrożenia serwera konfiguracji za pomocą pakietu OVF licencji ewaluacyjnej jest używana, która jest ważna przez 180 dni. Należy aktywować tej licencji, zanim to pobiera wygasł. W przeciwnym wypadku to powodować częste zamykania serwera konfiguracji i powodując przeszkodą dla działania replikacji.
 2. Jeśli nie można aktywować licencji Windows skontaktowanie się z [zespołu pomocy technicznej Windows](https://aka.ms/Windows_Support) Aby rozwiązać ten problem.
 
 ## <a name="register-source-machine-with-configuration-server"></a>Zarejestrowanie komputera źródłowego serwera konfiguracji
@@ -146,7 +145,7 @@ Aby usunąć stare chronionej maszyny, na serwerze konfiguracji, użyj następuj
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    Jeśli masz wpis serwera źródłowego "Lokalnego VM01" przy użyciu adresu IP 10.0.0.4 następnie użyć następującego polecenia.
+    Jeśli masz wpis serwera źródłowego "Lokalnego VM01" z adresem ip 10.0.0.4 następnie użyć następującego polecenia.
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e0b8b35c654f0716fae1e6ab785f57dcf04e1a5a
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 813563b500b9365289285a89536f2724fb87acad
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400902"
+ms.locfileid: "58417806"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>Zarządzanie dostępem, power i tryb łączności dla usługi Azure krawędź pola danych (wersja zapoznawcza)
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Zarządzanie dostępem, power i tryb łączności na krawędzi sieci Azure Data Box
 
 W tym artykule opisano sposób zarządzania trybu dostępu, moc i łączności na krawędzi sieci Azure Data Box. Te operacje są wykonywane za pomocą lokalnego Interfejsu w przeglądarce lub w portalu Azure.
 
@@ -26,8 +26,6 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Zarządzanie tryb łączności
 > * Zarządzanie energią
 
-> [!IMPORTANT]
-> Usługa Data Box Edge jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="manage-device-access"></a>Zarządzanie dostępem do urządzeń
 

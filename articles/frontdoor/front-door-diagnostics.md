@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5d4d591c465cae91c59e8f86ea9d3e421db0f952
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3097f4a1716718df5d67769e234562a234623cfe
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112113"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407032"
 ---
-# <a name="monitoring-metrics-for-front-door"></a>Monitorowanie metryk drzwi
+# <a name="monitoring-metrics-and-logs-for-front-door"></a>Monitorowanie metryk i dzienników drzwi
 
 Za pomocą usługi Azure Service drzwiami frontowymi, można monitorować zasoby w następujący sposób:
-* [Dzienniki](#diagnostic-logging): Dzienniki umożliwiają wydajności, dostępu i inne dane, które mają być zapisane lub używane z zasobu do celów monitorowania.
 
 * [Metryki](#metrics): Usługa Application Gateway obecnie ma siedem metryki, aby wyświetlić liczniki wydajności.
+* [Dzienniki](#diagnostic-logging): Dzienniki umożliwiają wydajności, dostępu i inne dane, które mają być zapisane lub używane z zasobu do celów monitorowania.
 
 ## <a name="metrics"></a>Metryki
 

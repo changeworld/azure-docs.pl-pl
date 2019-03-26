@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: b367251e6799031ed96058d21e606446e14636c7
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730100"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407610"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure App Service
 
@@ -278,7 +278,7 @@ Przy zakupie domeny w witrynie Azure portal, aplikacji usługi App Service autom
 
 **Aby wskazywały na Maszynie wirtualnej platformy Azure zamiast tego można używać domenę, kupić w witrynie Azure portal?**
 
-Tak, może wskazywać domeny maszyny Wirtualnej, Magazyn itp. Aby uzyskać więcej informacji, zobacz [tworzenie niestandardowe nazwy FQDN w witrynie Azure portal dla maszyny Wirtualnej z systemem Windows](../virtual-machines/windows/portal-create-fqdn.md).
+Tak, może wskazywać domeny maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Use Azure DNS to provide custom domain settings for an Azure service](../dns/dns-custom-domain.md) (Korzystanie z usługi Azure DNS w celu udostępnienia niestandardowych ustawień domeny dla usługi platformy Azure).
 
 **Czy moja domena jest obsługiwana przez GoDaddy lub system DNS Azure?**
 

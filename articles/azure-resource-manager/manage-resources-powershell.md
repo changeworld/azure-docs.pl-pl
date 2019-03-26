@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 241b820122fe1c82b9a68829db87635745c051d9
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8e6c4047182901c5282f280f59fa95eca6571ecc
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825157"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417925"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Zarządzanie zasobami platformy Azure przy użyciu programu Azure PowerShell
 
@@ -25,7 +25,7 @@ Dowiedz się, jak używać programu Azure PowerShell za pomocą [usługi Azure R
 Inne artykuły dotyczące zarządzania zasobami:
 
 - [Zarządzanie zasobami platformy Azure przy użyciu witryny Azure portal](./manage-resources-portal.md)
-- [Zarządzanie zasobami platformy Azure przy użyciu programu Azure PowerShell](./manage-resources-powershell.md)
+- [Zarządzanie zasobami platformy Azure przy użyciu wiersza polecenia platformy Azure](./manage-resources-cli.md)
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Wdrażanie zasobów do istniejącej grupy zasobów
 

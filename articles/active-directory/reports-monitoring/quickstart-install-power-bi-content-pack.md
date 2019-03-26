@@ -3,7 +3,7 @@ title: Instalowanie pakietu zawartości Azure AD Power BI | Microsoft Docs
 description: Dowiedz się, jak zainstalować pakiet zawartości Azure AD Power BI.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 981360793179faa4e79f6c7b77951c0e74a2fc67
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 69a69732d8cb42c248fa954ef9047e5876f40837
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171031"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437428"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Szybki start: Instalowanie pakietu zawartości usługi Power BI dla usługi Azure Active Directory
 
@@ -58,7 +58,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 
    ![Pakiet zawartości usługi Power BI dla usługi Azure Active Directory](./media/quickstart-install-power-bi-content-pack/dashboard.png) 
     
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Korzystanie z pakietu zawartości usługi Power BI](howto-power-bi-content-pack.md).
 * [Rozwiązywanie problemów z błędami pakietu zawartości](troubleshoot-content-pack.md).

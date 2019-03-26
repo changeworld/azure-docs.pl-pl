@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 7c38de9c1dbb5e8a286fa1b72d0461dd74ed6f25
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e1ea3d822c8b032617b7f202f1c176aeb966210
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770531"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436782"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Przykłady integracji usług Azure Service Bus i Event Grid
 
@@ -27,7 +27,7 @@ W tym artykule przedstawiamy sposób konfigurowania aplikacji logiki i funkcji p
  
 * Utworzenie prostej funkcji testowej platformy Azure na potrzeby debugowania i wyświetlania początkowego przepływu zdarzeń z usługi Event Grid. Wykonaj ten krok niezależnie od tego, czy wykonasz pozostałe.
 * Utworzenie funkcji platformy Azure na potrzeby odbierania i przetwarzania komunikatów usługi Azure Service Bus na podstawie zdarzeń usługi Event Grid.
-* Użycie funkcji Logic Apps usługi Azure App Service.
+* Korzystanie z funkcji Logic Apps w usłudze Azure App Service.
 
 Na potrzeby tworzonego przykładu przyjęto, że temat usługi Service Bus ma dwie subskrypcje. Przyjęto także, że utworzono subskrypcję usługi Event Grid na potrzeby wysyłania zdarzeń tylko dla jednej subskrypcji usługi Service Bus. 
 

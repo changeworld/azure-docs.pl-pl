@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 836d36cc6f220bb544e0c7723506c624c5f9fc39
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294515"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407304"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności w usłudze Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Kondycja spójności odczytu mają zastosowanie do jednej operacji odczytu, o ok
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurowanie domyślnego poziomu spójności
 
-W dowolnym momencie można skonfigurować domyślny poziom spójności na Twoim koncie usługi Azure Cosmos. Domyślny poziom spójności skonfigurowane na Twoje konto ma zastosowanie do wszystkich baz danych Azure Cosmos DB i kontenerów w ramach tego konta. Wszystkie operacje odczytu i zapytania względem kontenera lub bazę danych domyślnie używają poziomu spójności określony. Aby dowiedzieć się więcej, zobacz temat jak [skonfigurować domyślny poziom spójności](how-to-manage-consistency.md#configure-the-default-consistency-level).
+W dowolnym momencie można skonfigurować domyślny poziom spójności na Twoim koncie usługi Azure Cosmos. Domyślny poziom spójności skonfigurowane na Twoim koncie ma zastosowanie do wszystkich baz danych Azure Cosmos i kontenerów w ramach tego konta. Wszystkie operacje odczytu i zapytania względem kontenera lub bazę danych domyślnie używają poziomu spójności określony. Aby dowiedzieć się więcej, zobacz temat jak [skonfigurować domyślny poziom spójności](how-to-manage-consistency.md#configure-the-default-consistency-level).
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Gwarancje skojarzone z poziomów spójności
 
@@ -41,31 +41,31 @@ Semantyka poziomów spójności pięć są opisane poniżej:
 
 - **Silne**: Zapewnia wysoki poziom spójności [atomowych](https://aphyr.com/posts/313-strong-consistency-models) gwarantuje. Operacje odczytu mają gwarancję do zwrócenia zatwierdzone najbardziej aktualną wersję elementu. Klient nigdy nie widzi zapisu niezatwierdzone lub jego część. Użytkownicy są zawsze gwarantowane odczyt najnowsza wersja zatwierdzone/zapis.
 
-- **Powiązana nieaktualność**: Operacje odczytu mają gwarancję respektować gwarancja spójnego prefiksu. Odczyty mogą być opóźnione stosunku do zapisów przez co najwyżej wersje "K" (to znaczy "aktualizacji") elementu lub przedziału czasu "t". Po wybraniu powiązana nieaktualność, "nieaktualność", można skonfigurować na dwa sposoby: 
+- **Powiązana nieaktualność**: Operacje odczytu mają gwarancję respektować gwarancja spójnego prefiksu. Odczyty mogą być opóźnione stosunku do zapisów o co najwyżej *"K"* wersji (czyli "aktualizacji") elementu lub przez *"T"* przedział czasu. Innymi słowy gdy wybierzesz powiązana nieaktualność, "nieaktualność" można skonfigurować na dwa sposoby: 
 
-  * Liczba wersji (KB) elementu
-  * Za pomocą którego odczyty mogą być opóźnione w stosunku do zapisów przedział czasu (t) 
+  * Liczba wersji (*K*) elementu
+  * Przedział czasu (*T*), który odczyty mogą być opóźnione w stosunku do zapisów 
 
-  Powiązana nieaktualność oferty całkowitej globalnej kolejności z wyjątkiem w ramach "okno nieaktualność." Istnieje monotoniczny gwarancje odczytu w regionie wewnątrz lub na zewnątrz okna nieaktualność. Wysoki poziom spójności ma tą samą semantyką jako te oferowane przez powiązana nieaktualność. Okno nieaktualność jest równa zero. Powiązana nieaktualność jest również określany jako atomowych opóźnione czasu. Gdy klient wykonuje operacje odczytu w regionie, który akceptuje zapisy, gwarancji spójności powiązana nieaktualność są identyczne te gwarancje silnej spójności.
+  Powiązana nieaktualność oferty całkowitej globalnej kolejności z wyjątkiem w ramach "okno nieaktualność." Istnieje monotoniczny gwarancje odczytu w regionie wewnątrz lub na zewnątrz okna nieaktualność. Wysoki poziom spójności ma tą samą semantyką jako jeden oferowany przez powiązana nieaktualność. Okno nieaktualność jest równa zero. Powiązana nieaktualność jest również określany jako atomowych opóźnione czasu. Gdy klient wykonuje operacje odczytu w regionie, który akceptuje zapisy, gwarancji spójności powiązana nieaktualność są identyczne z tych gwarancji, wysoki poziom spójności.
 
 - **Sesja**: Operacje odczytu mają gwarancję respektować spójny prefiks (przy założeniu sesji jednego elementu "zapisującego"), monotoniczne odczyty, zapisy monotoniczny, gwarancje odczytu swoich zapisów i write poniżej — operacje odczytu. Spójność sesji jest ograniczony do sesji klienta.
 
-- **Spójny prefiks**: Aktualizacje, które są zwracane zawierają pewne prefiksy ze wszystkich aktualizacji, bez przerw. Spójny prefiks gwarantuje, że odczyty nigdy nie zobaczy zapisów poza kolejnością.
+- **Spójny prefiks**: Aktualizacje, które są zwracane zawierają pewne prefiksy ze wszystkich aktualizacji, bez przerw. Poziom spójności spójny prefiks gwarantuje, że odczyty nigdy nie zobaczy zapisów poza kolejnością.
 
 - **Ostateczna**: Nie ma szeregowania gwarancji dla odczytów. W przypadku braku dalszy zapis replik ostatecznie zbiegają się.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Poziomy spójności baseballu
 
-Jako przykład Weźmy mecz scenariusz gier. Wyobraź sobie sekwencji operacji zapisu, które reprezentują wynik z baseballu. Ocena linii inning przez inning jest opisana w [replikowane spójności danych przy użyciu mecz](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) papieru. Ta hipotetyczny baseballu jest obecnie w trakcie inning siódmego. Jest stretch inning — siódmego. Gości znajdują się za z wynikiem 2 do 5.
+Jako przykład Weźmy mecz scenariusz gier. Wyobraź sobie sekwencji operacji zapisu, które reprezentują wynik z baseballu. Ocena linii inning przez inning jest opisana w [replikowane spójności danych przy użyciu mecz](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) papieru. Ta hipotetyczny baseballu jest obecnie w trakcie inning siódmego. Jest stretch inning — siódmego. Za z wynikiem 2 do 5 są gości, jak pokazano poniżej:
 
 | | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **Przebiegi** |
 | - | - | - | - | - | - | - | - | - | - | - |
 | **Goście** | 0 | 0 | 1 | 0 | 1 | 0 | 0 |  |  | 2 |
 | **Strona główna** | 1 | 0 | 1 | 1 | 0 | 2 |  |  |  | 5 |
 
-Kontener usługi Azure Cosmos DB zawiera odwiedzających i domowej zespołu Uruchom sum. Gra w trakcie, różnych odczytu gwarancje może prowadzić do odczytywania różne wyniki klientom. W poniższej tabeli wymieniono kompletny zestaw wyników, które mogą być zwrócone przez odczytywanie odwiedzających i macierzystego wyniki z każdym gwarancje spójności pięć. Osoby odwiedzające wynik jest wymienione jako pierwsze. Różne możliwe wartości zwracane są oddzielone przecinkami.
+Kontener usługi Azure Cosmos przechowuje wykonywania łączne wartości dla gości i zespołów macierzystego. Gra w trakcie, różnych odczytu gwarancje może prowadzić do odczytywania różne wyniki klientom. W poniższej tabeli wymieniono kompletny zestaw wyników, które mogą być zwrócone przez odczytywanie odwiedzających i macierzystego wyniki z każdym gwarancje spójności pięć. Osoby odwiedzające wynik jest wymienione jako pierwsze. Różne możliwe wartości zwracane są oddzielone przecinkami.
 
-| **Poziom spójności** | **Wyniki** |
+| **Poziom spójności** | **Ocenia (odwiedzających, strona główna)** |
 | - | - |
 | **Silne** | 2 – 5 |
 | **Powiązana nieaktualność** | Wyniki są co najwyżej jeden inning nieaktualna: 2-3, 2-4, 2-5 |

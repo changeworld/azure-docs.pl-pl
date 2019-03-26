@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 16899c833d996902cf7a0a3f7ab57479869fbdd9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e18a63892f000eff0f72656082d5e6e1f0ca159b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737794"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437479"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -282,7 +282,7 @@ W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następ
   {
       ....
   }
-  ```
+   ```
 
   Aby uzyskać kompletny przykład, zobacz [wyzwalacza — przykład w języku C#](#trigger---c-example).
 
@@ -318,8 +318,8 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |---------|---------|----------------------|
 |**type** | Nie dotyczy | Musi być równa `blobTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
 |**direction** | Nie dotyczy | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. Wyjątki są zaznaczone w [użycia](#trigger---usage) sekcji. |
-|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji. | 
-|**path** | **BlobPath** |[Kontenera](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) do monitorowania.  Może być [wzorzec nazwy obiektu blob](#trigger---blob-name-patterns). | 
+|**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt blob w kodzie funkcji. |
+|**path** | **BlobPath** |[Kontenera](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) do monitorowania.  Może być [wzorzec nazwy obiektu blob](#trigger---blob-name-patterns). |
 |**połączenia** | **Połączenie** | Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji rozpoczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy w tym miejscu. Na przykład jeśli ustawisz `connection` do "Mój_magazyn", środowisko uruchomieniowe usługi Functions wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage." Jeśli pozostawisz `connection` pusta, środowisko uruchomieniowe usługi Functions korzysta z domyślne parametry połączenia magazynu w ustawieniach aplikacji, który nosi nazwę `AzureWebJobsStorage`.<br><br>Parametry połączenia nie może być dla konta magazynu ogólnego przeznaczenia, [konta magazynu obiektów Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -450,7 +450,9 @@ Funkcje języka JavaScript i Java załadować cały obiekt blob do pamięci, a C
 
 ## <a name="trigger---polling"></a>Wyzwalanie - sondowania
 
-Jeśli kontener obiektów blob, które są monitorowane zawiera ponad 10 000 obiektów blob, skanowania środowisko uruchomieniowe funkcji plików dziennika do obserwacji nowych lub zmienionych obiektów blob. Ten proces może powodować opóźnienia. Funkcja może nie wyzwalane do kilku minut lub dłużej po utworzeniu obiektu blob. Ponadto [dzienników magazynu są tworzone na "starań"](/rest/api/storageservices/About-Storage-Analytics-Logging) podstawy. Nie ma żadnej gwarancji, że wszystkie zdarzenia są przechwytywane. W niektórych warunkach Dzienniki mogą zostać pominięci. Jeśli konieczne jest przetworzenie szybsze i bardziej niezawodne obiektów blob, należy rozważyć utworzenie [komunikatu w kolejce](../storage/queues/storage-dotnet-how-to-use-queues.md) podczas tworzenia obiektu blob. Następnie użyj [wyzwalacz kolejki](functions-bindings-storage-queue.md) zamiast wyzwalacz obiektu blob do przetwarzania obiektu blob. Innym rozwiązaniem jest użycie usługi Event Grid; Zapoznaj się z samouczkiem [automatyzacja zmiany rozmiaru przekazanych obrazów, które przy użyciu usługi Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
+Jeśli kontener obiektów blob, które są monitorowane zawiera ponad 10 000 obiektów blob (we wszystkich kontenerów), funkcje skanowania środowiska uruchomieniowego plików dziennika do obserwacji nowych lub zmienionych obiektów blob. Ten proces może powodować opóźnienia. Funkcja może nie wyzwalane do kilku minut lub dłużej po utworzeniu obiektu blob. Ponadto [dzienników magazynu są tworzone na "starań"](/rest/api/storageservices/About-Storage-Analytics-Logging) podstawy. Nie ma żadnej gwarancji, że wszystkie zdarzenia są przechwytywane. W niektórych warunkach Dzienniki mogą zostać pominięci.
+
+Jeśli konieczne jest przetworzenie szybsze i bardziej niezawodne obiektów blob, należy rozważyć utworzenie [komunikatu w kolejce](../storage/queues/storage-dotnet-how-to-use-queues.md) podczas tworzenia obiektu blob. Następnie użyj [wyzwalacz kolejki](functions-bindings-storage-queue.md) zamiast wyzwalacz obiektu blob do przetwarzania obiektu blob. Innym rozwiązaniem jest użycie usługi Event Grid; Zapoznaj się z samouczkiem [automatyzacja zmiany rozmiaru przekazanych obrazów, które przy użyciu usługi Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
 
 ## <a name="input"></a>Dane wejściowe
 
@@ -479,7 +481,7 @@ public static void Run(
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
-```        
+```
 
 ### <a name="input---c-script-example"></a>Dane wejściowe — przykładowy skrypt w języku C#
 
@@ -802,7 +804,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
     { ImageSize.Small,      (640, 400) },
     { ImageSize.Medium,     (800, 600) }
 };
-```        
+```
 
 ### <a name="output---c-script-example"></a>Dane wyjściowe — przykładowy skrypt w języku C#
 

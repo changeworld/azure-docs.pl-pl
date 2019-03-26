@@ -9,17 +9,17 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: 'Docker, Kubernetes, Azure, usługi AKS, usłudze Azure Kubernetes Service, kontenerów, narzędzia Helm, usługa siatki, routing siatki usługi, narzędzia kubectl, k8s '
-ms.openlocfilehash: f0fc1e693f3eccd0b6f6b69339f210785df6ea69
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5d89ac6a0a8918b30cac31580e7fc95c3f770b1a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773236"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436765"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 
 ### <a name="make-a-code-change"></a>Wprowadzanie zmiany w kodzie
-Przejdź do okna programu VS Code, aby uzyskać dostęp do aplikacji `mywebapi`, i zmodyfikuj kod, aby uzyskać domyślną procedurę obsługi GET `/`, na przykład:
+Przejdź do okna programu VS Code `mywebapi` i wprowadź kod edytować domyślnych GET `/` obsługi w `server.js`, na przykład:
 
 ```javascript
 app.get('/', function (req, res) {

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b9b39cfc6ac760c41b58c050cb1ebf39d3f93a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f008e981abb11a4927ec045c33342bbac9a05bd8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180933"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436807"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie ThousandEyes dla automatycznej aprowizacji użytkowników
 
@@ -33,11 +33,14 @@ Celem tego samouczka jest pokazanie czynności, które należy wykonać w Thousa
 Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
 
 *   Dzierżawy usługi Azure Active directory
-*   Dzierżawcy ThousandEyes z [plan w warstwie standardowa](https://www.thousandeyes.com/pricing) lub lepiej nie są włączone 
-*   Konto użytkownika ThousandEyes z uprawnieniami administratora 
+*   Aktywne [ThousandEyes konta](https://www.thousandeyes.com/pricing)
+*   Konto użytkownika ThousandEyes, któremu przypisano rolę, która zawiera następujące uprawnienia 3:
+    * Wyświetl wszystkich użytkowników
+    * Edytuj użytkownika
+    * Uprawnienia dostępu do interfejsu API
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [API Standard SCIM ThousandEyes](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK), co jest dostępne dla zespołów ThousandEyes z planem Standard lub większą.
+> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [API Standard SCIM ThousandEyes](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK_ThousandEyes-support-for-SCIM). 
 
 ## <a name="assigning-users-to-thousandeyes"></a>Przypisywanie użytkowników do ThousandEyes
 
@@ -51,7 +54,19 @@ Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie uży
 
 *   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do ThousandEyes do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
 
-*   Podczas przypisywania użytkowników do ThousandEyes, należy wybrać **użytkownika** roli, lub inną prawidłową specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. **Domyślnego dostępu** roli nie działa w przypadku inicjowania obsługi administracyjnej i Ci użytkownicy są pomijane.
+*   Podczas przypisywania użytkowników do ThousandEyes, należy wybrać **użytkownika** roli lub inną prawidłową specyficzne dla aplikacji (jeśli jest dostępny) w dialogu przypisania. **Domyślnego dostępu** roli nie działa w przypadku inicjowania obsługi administracyjnej i Ci użytkownicy są pomijane.
+
+## <a name="configure-auto-provisioned-user-roles-in-thousandeyes"></a>Konfigurowanie ról użytkownika automatycznie aprowizowane w ThousandEyes
+
+Dla każdej grupy konta są na automatycznej aprowizacji użytkowników do możesz skonfigurować zestaw ról, które mają być stosowane podczas tworzenia nowego konta użytkownika. Domyślnie są przypisane użytkownikom automatycznej aprowizacji _zwykły użytkownik_ roli dla wszystkich kont grupy, chyba że skonfigurowano inaczej.
+
+1. Aby określić nowy zestaw ról dla użytkowników automatycznie aprowizowane w dzienniku ThousandEyes i przejdź do sekcji Ustawienia Standard SCIM **> ikona użytkownika w prawym górnym rogu > Ustawienia konta > organizacji > zabezpieczeń i uwierzytelniania.** 
+
+   ![Przejdź do ustawień interfejsu API Standard SCIM](https://monosnap.com/file/kqY8Il7eysGFAiCLCQWFizzM27PiBG)
+
+2. Dodaj wpis dla każdej grupy konta, należy następnie przypisać zestaw ról *Zapisz* zmiany.
+
+   ![Ustaw domyślne role i grupy konta użytkowników utworzone za pomocą interfejsu API Standard SCIM](https://monosnap.com/file/16siam6U8xDQH1RTnaxnmIxvsZuNZG)
 
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>Konfigurowaniem aprowizowania użytkowników w ThousandEyes 
@@ -59,7 +74,7 @@ Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie uży
 Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika w ThousandEyes aprowizujący interfejs API i konfigurowanie usługi aprowizacji, aby utworzyć, zaktualizować, a następnie wyłącz konta użytkowników przypisane w ThousandEyes na podstawie przypisania użytkowników i grup w usłudze Azure AD .
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla ThousandEyes, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+> Można też włączyć opartej na SAML pojedynczego logowania jednokrotnego (SSO) dla ThousandEyes, zgodnie z [instrukcje podane w Azure wiedzy](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-tutorial) do ukończenia rejestracji Jednokrotnej. Chociaż te dwie funkcje uzupełniają się wzajemnie, można skonfigurować logowanie Jednokrotne niezależnie od automatycznej aprowizacji.
 
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Skonfiguruj automatyczne aprowizowaniem kont użytkowników do ThousandEyes w usłudze Azure AD

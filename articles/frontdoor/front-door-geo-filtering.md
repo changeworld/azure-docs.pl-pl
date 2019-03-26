@@ -3,29 +3,29 @@ title: Filtrowanie geograficzne domeny w usłudze Azure Front Door Service | Mic
 description: W tym artykule poznasz zasady filtrowania geograficznego usługi Azure Front Door Service
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: KumudD
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/09/2018
-ms.author: sharadag
-ms.openlocfilehash: a2ba0fb34dd34129a134aa2639d06816f3523408
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 03/21/2019
+ms.author: kumud;tyao
+ms.openlocfilehash: a7b4975a81c0966e5cbff0c8b940c9231e66f32b
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865509"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407644"
 ---
-# <a name="geo-filtering-geographic-based-access-control-to-azure-front-door-service-frontends"></a>Filtrowanie geograficzne: geograficzna kontrola dostępu do frontonów usługi Azure Front Door Service
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co to jest filtrowania geograficznego w domenie usługi Azure drzwiami frontowymi?
 
-Domyślnie usługa Azure Front Door Service odpowiada na żądania użytkowników niezależnie od lokalizacji użytkownika wysyłającego żądanie. Jednak czasami może być konieczne ograniczenie dostępu do aplikacji internetowych według kraju. Zabezpieczenia warstwy aplikacji usługi Azure Front Door pozwalają zdefiniować zasady zezwalania lub blokowania dostępu z określonych krajów przy użyciu niestandardowych reguł ochrony dla określonej ścieżki w punkcie końcowym. 
+Domyślnie usługa Azure Front Door Service odpowiada na żądania użytkowników niezależnie od lokalizacji użytkownika wysyłającego żądanie. Jednak czasami może być konieczne ograniczenie dostępu do aplikacji internetowych według kraju. Usługa umożliwiającymi zainstalowanie zapory aplikacji sieci Web na wejściu umożliwia zdefiniowanie zasad przy użyciu reguły niestandardowej dostępu do określonej ścieżki w punkcie końcowym usługi do zezwalania lub blokowania dostępu z określonym krajów. 
 
-Zasady zabezpieczeń aplikacji zwykle obejmują zestaw reguł niestandardowych. Reguła składa się z warunków dopasowań, akcji i priorytetu. W warunku dopasowania należy zdefiniować zmienną dopasowania, operator i wartość dopasowania.  W przypadku reguły filtrowania geograficznego zmienna dopasowania to REMOTE_ADDR, operator to GeoMatch, a wartość to dwuliterowy kod kraju. Możesz połączyć warunek GeoMatch i warunek dopasowania ciągu REQUEST_URI, aby utworzyć regułę filtrowania geograficznego opartą na ścieżkach.
+Zasady zapory aplikacji sieci Web zwykle zawiera zestaw reguł niestandardowych. Reguła składa się z warunków dopasowań, akcji i priorytetu. W warunku dopasowania należy zdefiniować zmienną dopasowania, operator i wartość dopasowania.  W przypadku reguły filtrowania geograficznego zmienna dopasowania to REMOTE_ADDR, operator to GeoMatch, a wartość to dwuliterowy kod kraju. Możesz połączyć warunek GeoMatch i warunek dopasowania ciągu REQUEST_URI, aby utworzyć regułę filtrowania geograficznego opartą na ścieżkach.
 
-Możesz skonfigurować zasady filtrowania geograficznego dla usługi Front Door za pomocą programu [Azure PowerShell](front-door-tutorial-geo-filtering.md) lub naszego [szablonu Szybki start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+Można skonfigurować zasady filtrowania geograficznego dla Twojego drzwiami frontowymi za pomocą [programu Azure PowerShell](front-door-tutorial-geo-filtering.md) lub za pomocą naszych [szablon szybkiego startu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
 ## <a name="country-code-reference"></a>Odwołanie do kodu kraju
 

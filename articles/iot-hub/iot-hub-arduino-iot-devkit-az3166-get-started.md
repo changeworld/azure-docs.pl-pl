@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 941455e39a32405097563b043046866aeb5c7964
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0c6189dfd02a4bdd3662f4fa50dbb812fe995884
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351936"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438486"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -24,7 +24,9 @@ Możesz użyć [zestawu deweloperskiego IoT Mxchip](https://microsoft.github.io/
 
 ## <a name="what-you-do"></a>Co należy zrobić
 
-Mxchip nawiązać połączenia usługi Azure IoT hub, którą tworzysz. Zbieranie danych temperatury i wilgotności z czujników i wysłać dane do usługi IoT hub.
+W tym artykule używasz [programu Visual Studio Code](https://code.visualstudio.com/), źródła dla wielu platform code editor, wraz z [narzędzia IoT Azure](https://aka.ms/azure-iot-tools) pakietu rozszerzenia.
+
+Mxchip połączy się do usługi Azure IoT hub, którą tworzysz. Zbieranie danych temperatury i wilgotności z czujników i wysłać dane do usługi IoT hub.
 
 Nie masz jeszcze Mxchip? Spróbuj [symulator Mxchip](https://azure-samples.github.io/iot-devkit-web-simulator/) lub [zakupu Mxchip](https://aka.ms/iot-devkit-purchase).
 
@@ -119,7 +121,9 @@ Naciśnij przycisk B, aby przetestować czujników. Kontynuuj, naciskając klawi
 
 ### <a name="install-azure-iot-tools"></a>Instalowanie narzędzi usługi Azure IoT
 
-Firma Microsoft zaleca [narzędzia IoT Azure](https://aka.ms/azure-iot-tools) pakiet rozszerzenia programu Visual Studio Code do tworzenia na Mxchip. Zawiera narzędzia usługi Azure IoT [Workbench urządzenia IoT Azure](https://aka.ms/iot-workbench) do tworzenia i debugowania na różnych urządzeniach mxchip IoT i [Azure IoT Hub Toolkit](https://aka.ms/iot-toolkit) zarządzanie i interakcję z usługą Azure IoT Hub.
+W tej sekcji zostanie zainstalowana [środowisku IDE Arduino](https://www.arduino.cc/en/Main/Software) wraz z [programu Visual Studio Code](https://code.visualstudio.com/), Edytor kodu źródłowego dla wielu platform.
+
+Zostanie również zainstalowana [narzędzia IoT Azure](https://aka.ms/azure-iot-tools) pakiet rozszerzenia programu Visual Studio Code. Firma Microsoft zaleca używanie [narzędzia IoT Azure](https://aka.ms/azure-iot-tools) pakiet rozszerzenia programu Visual Studio Code do tworzenia aplikacji na Mxchip. Pakiet rozszerzenia Azure IoT Tools zawiera [Workbench urządzenia IoT Azure](https://aka.ms/iot-workbench) używany do tworzenia i debugowania na różnych urządzeniach mxchip IoT. [Azure IoT Hub Toolkit](https://aka.ms/iot-toolkit), również składnikiem pakietu rozszerzenia Azure IoT Tools, jest używany do zarządzania i wchodzić w interakcje z usługą Azure IoT Hubs.
 
 Możesz obserwować te [witryny Channel 9](https://channel9.msdn.com/) filmy wideo, aby mieć Przegląd temat ich działania:
 * [Wprowadzenie do nowego rozszerzenia IoT Workbench dla programu VS Code](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code)

@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: d861eba6ce905ccaf0d08a08cdd9998a199889da
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: c2a11422398b3cdb99c9f71accddfcd78237c64c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287518"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417908"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Tworzenie klastra Eksplorator danych platformy Azure i bazy danych przy użyciuC#
 
@@ -25,20 +25,19 @@ ms.locfileid: "58287518"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-Ten przewodnik Szybki Start opisuje sposób tworzenia klastra Azure Eksploratora danych i bazy danych przy użyciu C#.
+Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki Start tworzysz klaster i bazy danych przy użyciu C#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+* Jeśli nie masz zainstalowanego programu Visual Studio 2017, możesz pobrać i używać **bezpłatne** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
 
-- Do wykonania kroków tego przewodnika Szybki start jest potrzebna subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="install-c-nuget"></a>Zainstaluj C# nuget
 
-- Konieczne będzie pakiet nuget dla platformy Azure Eksplorator danych (Kusto), można znaleźć tutaj Nuget: https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/
-- Należy również nuget Microsoft.IdentityModel.Clients.ActiveDirectory uwierzytelniania https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/
+1. Zainstaluj [pakietu nuget Eksplorator danych platformy Azure (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
+1. Zainstaluj [pakietu nuget Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) do uwierzytelniania.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Tworzenie klastra usługi Azure Data Explorer
 
@@ -72,10 +71,10 @@ Ten przewodnik Szybki Start opisuje sposób tworzenia klastra Azure Eksploratora
    | resourceGroupName | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
 
     Istnieją dodatkowe parametry opcjonalne, których można używać, takie jak pojemność klastra.
-    
-    Ustaw poświadczenia do poświadczeń użytkownika (Aby uzyskać więcej informacji, zobacz https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet )
 
-2. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
+1. Ustaw [poświadczeń](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
+
+1. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
 
     ```C#-interactive
     KustoManagementClient.Clusters.Get(resourceGroupName, clusterName);

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a72182091721dd6a1104cb8e3495aee1a3b25eb8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867745"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439393"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage
 Konta magazynu GPv2 platformy Azure umożliwiają obsługę zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) bezpośrednio z kontenera magazynu o nazwie *$web*. Korzystając z zalet hosting w usłudze Azure Storage pozwala na używanie architektur bez użycia serwera, w tym [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
@@ -46,6 +46,9 @@ https://contoso.z4.web.core.windows.net/image.png
 ```
 
 Wybrane domyślnej nazwy pliku jest używana w katalogu głównym i wszystkich podkatalogach podczas nie podano nazwy pliku. Jeśli serwer zwraca błąd 404 — nie zostanie określona ścieżka dokumentu błędu, domyślna strona 404 jest zwracana do użytkownika.
+
+> [!NOTE]
+> Domyślny poziom dostępu publicznego dla plików jest prywatny. Ponieważ pliki są udostępniane za pośrednictwem żądań dostępu anonimowego, to ustawienie jest ignorowane. Brak publicznego dostępu do wszystkich plików i uprawnień RBAC są ignorowane.
 
 ## <a name="cdn-and-ssl-support"></a>Obsługa sieci CDN i protokołu SSL
 

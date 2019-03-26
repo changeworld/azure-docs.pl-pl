@@ -1,24 +1,24 @@
 ---
 title: Zrozumienie kolejność sekwencji wdrażania
-description: Informacje o cyklu życia, które przechodzi planu i szczegółowe informacje o każdym etapie.
+description: Informacje o cyklu życia, które przechodzi definicji planu i szczegółowe informacje o każdym etapie.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/12/2018
+ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990562"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434810"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Zrozumienie sekwencję wdrażania w plany usługi Azure
 
-Usługa Azure korzysta plany **sekwencjonowania** Aby określić kolejność tworzenia zasobów, podczas przetwarzania przypisanie planu. W tym artykule opisano następujące pojęcia:
+Usługa Azure korzysta plany **sekwencjonowania** Aby określić kolejność tworzenia zasobów, podczas przetwarzania przypisywanie definicji planu. W tym artykule opisano następujące pojęcia:
 
 - Domyślna kolejność sekwencjonowania, który jest używany
 - Dostosowywanie kolejności
@@ -30,7 +30,7 @@ W przykładach JSON, musisz zastąpić własnymi wartościami, które są zmienn
 
 ## <a name="default-sequencing-order"></a>Domyślna kolejność sekwencji
 
-Jeśli planu nie zawiera żadnych dyrektywy za zlecenie Wdrażaj artefakty, lub dyrektywa ma wartość null, jest używany następującej kolejności:
+Jeśli definicji planu zawiera nie dyrektywy za zlecenie Wdrażaj artefakty, lub dyrektywa ma wartość null, jest używany następującej kolejności:
 
 - Poziom subskrypcji **przypisania roli** artefaktów sortowane według nazwy artefaktu
 - Poziom subskrypcji **przypisania zasad** artefaktów sortowane według nazwy artefaktu
@@ -45,16 +45,14 @@ W ramach każdej **grupy zasobów** artefaktu, w następującej kolejności sekw
 
 ## <a name="customizing-the-sequencing-order"></a>Dostosowywanie kolejności sekwencji
 
-Podczas redagowania dużych schematy, może być konieczne dla zasobów w określonej kolejności. Najczęstszym wzorcem użycia tego scenariusza jest, gdy plan zawiera kilka szablonów usługi Azure Resource Manager. Plany obsługi tego wzorca, umożliwiając kolejności sekwencjonowania należy zdefiniować.
+Podczas tworzenia definicji planu dużych, może być konieczne dla zasobów w określonej kolejności. Najczęstszym wzorcem użycia tego scenariusza jest po definicji planu zawiera kilka szablonów usługi Azure Resource Manager. Plany obsługi tego wzorca, umożliwiając kolejności sekwencjonowania należy zdefiniować.
 
-Kolejność odbywa się przez definiowanie `dependsOn` właściwości w formacie JSON. Tylko plan (dla grup zasobów) i obiekty artefaktu obsługują tej właściwości. `dependsOn` jest tablicą ciągów nazw artefaktów, które określonego artefaktu musi zostać utworzona przed jego tworzenia.
+Kolejność odbywa się przez definiowanie `dependsOn` właściwości w formacie JSON. Definicji planu dla grupy zasobów i obiektów artefaktu obsługują tej właściwości. `dependsOn` jest tablicą ciągów nazw artefaktów, które określonego artefaktu musi zostać utworzona przed jego tworzenia.
 
-> [!NOTE]
-> **Grupa zasobów** obsługuje artefaktów `dependsOn` właściwości, ale nie może być celem `dependsOn` przez dowolny typ artefaktu.
+### <a name="example---ordered-resource-group"></a>Przykład — określona grupa zasobów
 
-### <a name="example---blueprint-with-ordered-resource-group"></a>Przykład — planu z grupą zasobów uporządkowany
-
-Ten przykładowy plan zawiera grupę zasobów, która została zdefiniowana kolejność niestandardowych sekwencjonowania przez zadeklarowanie wartość `dependsOn`, wraz z grupą zasobów standardowych. W tym przypadku o nazwie artefaktu **assignPolicyTags** zostanie przetworzone przed **uporządkowane rg** grupy zasobów. **Standardowa rg** będą przetwarzane na domyślną kolejność sekwencji.
+Ta definicja planu przykład zawiera grupę zasobów, która została zdefiniowana kolejność niestandardowych sekwencjonowania przez zadeklarowanie wartość `dependsOn`, wraz z grupą zasobów standardowych. W tym przypadku o nazwie artefaktu **assignPolicyTags** zostanie przetworzone przed **uporządkowane rg** grupy zasobów.
+**Standardowa rg** będą przetwarzane na domyślną kolejność sekwencji.
 
 ```json
 {
@@ -101,6 +99,42 @@ W tym przykładzie jest artefaktu zasad, który zależy od szablonu usługi Azur
     "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/assignPolicyTags",
     "type": "Microsoft.Blueprint/artifacts",
     "name": "assignPolicyTags"
+}
+```
+
+### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Przykład — artefaktu szablonu poziomu subskrypcji w zależności od grupy zasobów
+
+W tym przykładzie jest wdrożony na poziomie subskrypcji, aby była zależna od grupy zasobów szablonu usługi Resource Manager. W domyślnej kolejności, artefakty poziomu subskrypcji zostałyby utworzone przed wszystkie grupy zasobów i artefaktów podrzędne w tych grupach zasobów. Grupa zasobów jest zdefiniowana w definicji planu następująco:
+
+```json
+"resourceGroups": {
+    "wait-for-me": {
+        "metadata": {
+            "description": "Resource Group that is deployed prior to the subscription level template artifact"
+        }
+    }
+}
+```
+
+Artefakt szablon poziomu subskrypcji, w zależności od **oczekiwania for mnie** grupy zasobów jest zdefiniowany następująco:
+
+```json
+{
+    "properties": {
+        "template": {
+            ...
+        },
+        "parameters": {
+            ...
+        },
+        "dependsOn": ["wait-for-me"],
+        "displayName": "SubLevelTemplate",
+        "description": ""
+    },
+    "kind": "template",
+    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "subtemplateWaitForRG"
 }
 ```
 

@@ -14,22 +14,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: b-juche
-ms.openlocfilehash: 6c1a6bf4e7042c28239f57af6b39c0822b63b5e8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1cac267be026d0e472db9a7a321f5fff6ab3e917
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768080"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434776"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegowanie podsieci do usługi Azure NetApp Files 
 
 Podsieć należy delegować do usługi Azure NetApp Files.   Podczas tworzenia woluminu należy określić delegowaną podsieć.
 
-## <a name="about-this-task"></a>Informacje dotyczące tego zadania
+## <a name="considerations"></a>Zagadnienia do rozważenia
 * Kreator tworzenia nowej podsieci przyjmuje wartość domyślną maski sieci /24, która zapewnia 251 dostępnych adresów IP. Użycie maski sieci /28, która zapewnia 16 adresów IP, jest wystarczająca dla tej usługi.
-* W delegowanej podsieci nie można wyznaczyć sieciowej grupy zabezpieczeń ani punktu końcowego usługi. Jeśli się to zrobi, delegowanie podsieci nie powiedzie się.
 * W każdej sieci wirtualnej Azure Virtual Network można delegować tylko jedną podsieć do usługi Azure NetApp Files.
-* Dostęp do woluminu z równorzędnej sieci wirtualnej nie jest obecnie obsługiwany.
+* W delegowanej podsieci nie można wyznaczyć sieciowej grupy zabezpieczeń ani punktu końcowego usługi. Jeśli się to zrobi, delegowanie podsieci nie powiedzie się.
+* Dostęp do woluminu z globalnie równorzędnej sieci wirtualnej nie jest obecnie obsługiwane.
+* Tworzenie [zdefiniowanych przez użytkownika trasy niestandardowe](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) w podsieci maszyny Wirtualnej przy użyciu adresu prefiksu (docelowy) do podsieci delegować domenę do usługi Azure Files NetApp nie jest obsługiwane i ma wpływ na łączność maszyn wirtualnych.
 
 ## <a name="steps"></a>Kroki 
 1.  Przejdź do bloku **Sieci wirtualne** w witrynie Azure Portal i wybierz sieć wirtualną, której chcesz użyć na potrzeby usługi Azure NetApp Files.    

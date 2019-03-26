@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b1b5dffed0a82e3e3c91efd4024bafdc64f0d3d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119041"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417773"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Dzienniki serwera w usłudze Azure Database for MySQL
 W usłudze Azure Database for MySQL w dzienniku wolnych zapytań jest dostępna dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwane. Dziennik dotyczący wolnego zapytania może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów. 
@@ -53,31 +53,31 @@ W poniższej tabeli opisano, co znajduje się w każdym dzienniku. W zależnośc
 
 | **Właściwość** | **Opis** |
 |---|---|
-| TenantId | Identyfikator dzierżawy |
-| SourceSystem | `Azure` |
-| TimeGenerated [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
-| Type | Typ dziennika. zawsze `AzureDiagnostics` |
-| SubscriptionId | Identyfikator GUID dla subskrypcji, do której należy serwer |
-| ResourceGroup | Nazwa grupy zasobów, do której należy serwer |
-| ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
-| ResourceType | `Servers` |
-| ResourceId | Identyfikator URI zasobu |
-| Zasób | Nazwa serwera |
-| Kategoria | `MySqlSlowLogs` |
-| OperationName | `LogEvent` |
-| Logical_server_name_s | Nazwa serwera |
-| start_time_t [UTC] | Czas rozpoczęcia zapytania |
-| query_time_s | Całkowity czas trwania zapytania zajęło wykonanie |
-| lock_time_s | Całkowity czas trwania zapytania został zablokowany. |
-| user_host_s | Nazwa użytkownika |
-| rows_sent_s | Liczba wierszy, wysłane |
-| rows_examined_s | Liczba wierszy, które badania |
-| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
-| insert_id_s | Wstaw identyfikator |
-| sql_text_s | Pełne zapytanie w języku |
-| server_id_s | Identyfikator serwera |
-| thread_id_s | Identyfikator wątku |
-| \_ResourceId | Identyfikator URI zasobu |
+| `TenantId` | Identyfikator dzierżawy |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated` [UTC] | Sygnatura czasowa podczas rejestrowania w formacie UTC |
+| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
+| `SubscriptionId` | Identyfikator GUID dla subskrypcji, do której należy serwer |
+| `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
+| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | Identyfikator URI zasobu |
+| `Resource` | Nazwa serwera |
+| `Category` | `MySqlSlowLogs` |
+| `OperationName` | `LogEvent` |
+| `Logical_server_name_s` | Nazwa serwera |
+| `start_time_t` [UTC] | Czas rozpoczęcia zapytania |
+| `query_time_s` | Całkowity czas trwania zapytania zajęło wykonanie |
+| `lock_time_s` | Całkowity czas trwania zapytania został zablokowany. |
+| `user_host_s` | Nazwa użytkownika |
+| `rows_sent_s` | Liczba wierszy, wysłane |
+| `rows_examined_s` | Liczba wierszy, które badania |
+| `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| `insert_id_s` | Wstaw identyfikator |
+| `sql_text_s` | Pełne zapytanie w języku |
+| `server_id_s` | Identyfikator serwera |
+| `thread_id_s` | Identyfikator wątku |
+| `\_ResourceId` | Identyfikator URI zasobu |
 
 ## <a name="next-steps"></a>Następne kroki
 - [Jak skonfigurować i uzyskać dostęp do dzienników serwera z wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md).

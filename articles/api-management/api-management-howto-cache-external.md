@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 7d44f7f5d97e558121c5611bc34282989b12f535
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761246"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407627"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Używanie zewnętrznej pamięci podręcznej Azure Cache for Redis w usłudze Azure API Management
 
@@ -66,7 +66,7 @@ Wykonaj poniższe kroki, aby dodać zewnętrzną pamięć podręczną Azure Cach
 ![Dodawanie własnej pamięci podręcznej do usługi APIM](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
-> Ustawienie **Używane z** określa, które wdrożenie regionalne usługi API Management będzie komunikować się za pomocą skonfigurowanej pamięci podręcznej w przypadku konfiguracji usługi API Management w wielu regionach. Pamięci podręczne określone jako **Domyślne** zostaną zastąpione przez pamięci podręczne z wartością regionalną.
+> **Korzystać z** ustawienie określa, które usługa API Management regionalne wdrożenia będą komunikować się za pomocą skonfigurowanej pamięci podręcznej w przypadku wielu regionalnych konfigurację usługi API Management. Pamięci podręczne określone jako **Domyślne** zostaną zastąpione przez pamięci podręczne z wartością regionalną.
 >
 > Jeśli na przykład usługa API Management jest hostowana w regionach Wschodnie stany USA, Azja Południowo-Wschodnia i Europa Zachodnia, i skonfigurowano dwie pamięci podręczne, jedną jako **domyślną** i jedną dla regionu **Azja Południowo-Wschodnia**, to usługa API Management w regionie **Azja Południowo-Wschodnia** będzie używać własnej pamięci podręcznej, a dwa pozostałe regiony będą używać **domyślnej** pamięci podręcznej.
 
@@ -76,7 +76,7 @@ Wykonaj poniższe kroki, aby dodać zewnętrzną pamięć podręczną Azure Cach
 2. Wybierz kartę **Zewnętrzna pamięć podręczna** z menu po lewej stronie.
 3. Kliknij przycisk **+ Dodaj**.
 4. Wybierz swoją pamięć podręczną w polu rozwijanym **Wystąpienie pamięci podręcznej**.
-5. Wybierz pozycję **Domyślne** lub określ żądany region w polu rozwijanym **Używane z**.
+5. Wybierz **domyślne** lub określ żądany region w **korzystać z** pole listy rozwijanej.
 6. Kliknij pozycję **Zapisz**.
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Dodawanie pamięci podręcznej Azure Cache for Redis hostowanej poza bieżącą subskrypcją platformy Azure lub poza samą platformą Azure
@@ -85,7 +85,7 @@ Wykonaj poniższe kroki, aby dodać zewnętrzną pamięć podręczną Azure Cach
 2. Wybierz kartę **Zewnętrzna pamięć podręczna** z menu po lewej stronie.
 3. Kliknij przycisk **+ Dodaj**.
 4. Wybierz pozycję **Niestandardowe** w polu rozwijanym **Wystąpienie pamięci podręcznej**.
-5. Wybierz pozycję **Domyślne** lub określ żądany region w polu rozwijanym **Używane z**.
+5. Wybierz **domyślne** lub określ żądany region w **korzystać z** pole listy rozwijanej.
 6. W polu **Parametry połączenia** podaj parametry połączenia swojej pamięci podręcznej Azure Cache for Redis.
 7. Kliknij pozycję **Zapisz**.
 

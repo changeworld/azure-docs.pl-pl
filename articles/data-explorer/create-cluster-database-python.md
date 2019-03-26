@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 4f87c5996ea323c26c32c1680ba6f627bf8f95c2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: db6064feb379bf7da4f2c2e6417583c3d8b8b0d3
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287527"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417891"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Tworzenie klastra Eksplorator danych platformy Azure i bazy danych przy użyciu języka Python
 
@@ -25,11 +25,11 @@ ms.locfileid: "58287527"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Ten przewodnik Szybki Start opisuje sposób tworzenia klastra Azure Eksploratora danych i bazy danych przy użyciu języka Python.
+Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki Start utworzysz klaster i bazę danych przy użyciu języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania kroków tego przewodnika Szybki start jest potrzebna subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
 
@@ -53,9 +53,9 @@ pip install azure-mgmt-kusto
 
     Istnieją dodatkowe parametry opcjonalne, których można używać, takie jak pojemność klastra.
     
-    Ustaw poświadczenia do poświadczeń użytkownika (Aby uzyskać więcej informacji, zobacz https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python )
+1. Ustaw [ *poświadczeń*](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)
 
-2. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
+1. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
 
     ```Python
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
@@ -91,7 +91,7 @@ Jeśli wynik zawiera element `provisioningState` o wartości `Succeeded`, klaste
    | soft_delete_period | *3650 dni, 0:00:00* | Okres przechowywania danych na potrzeby zapytań. |
    | hot_cache_period | *3650 dni, 0:00:00* | Okres przechowywania danych w pamięci podręcznej. |
 
-2. Uruchom następujące polecenie, aby wyświetlić utworzoną bazę danych:
+1. Uruchom następujące polecenie, aby wyświetlić utworzoną bazę danych:
 
     ```Python
     database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)

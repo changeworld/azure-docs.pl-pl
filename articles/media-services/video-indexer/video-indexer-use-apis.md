@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c2c22d2d3d68080b1d4e05410121ea1d1be283d
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862727"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439190"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Samouczek: Korzystanie z interfejsu API usługi Video Indexer
 
@@ -73,19 +73,6 @@ Aby ułatwić sprawę, można uzyskać informacje o kontach za pomocą pozycji *
 Tokeny dostępu wygasają po godzinie. Przed skorzystaniem z interfejsu API operacji upewnij się, że token dostępu jest ważny. Jeśli wygaśnie, ponownie wywołaj interfejs API autoryzacji, aby uzyskać nowy token dostępu.
  
 Możesz już rozpocząć integrowanie z interfejsem API. Zapoznaj się ze [szczegółowymi opisami poszczególnych interfejsów API REST usługi Video Indexer](https://api-portal.videoindexer.ai/).
-
-## <a name="location"></a>Lokalizacja
-
-Wszystkie interfejsy API operacji wymagają parametru lokalizacji wskazującego region, do którego powinno zostać skierowane wywołanie i w którym utworzono konto.
-
-Zastosowanie mają wartości opisane w poniższej tabeli. **Wartość parametru** to wartość przekazywana podczas korzystania z interfejsu API.
-
-|**Nazwa**|**Wartość parametru**|**Opis**|
-|---|---|---|
-|Wersja próbna|Dziennik|Używany w przypadku kont wersji próbnej.|
-|Zachodnie stany USA|westus2|Używany w przypadku regionu platformy Azure Zachodnie stany USA 2.|
-|Europa Północna |northeurope|Używany w przypadku regionu platformy Azure Europa Północna.|
-|Azja Wschodnia|eastasia|Używany w przypadku regionu platformy Azure Azja Wschodnia.|
 
 ## <a name="account-id"></a>Identyfikator konta 
 
@@ -224,6 +211,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Sprawdzanie szczegółów danych wyjściowych JSON](video-indexer-output-json-v2.md).
-
-[Omówienie usługi Video Indexer](video-indexer-overview.md)
+- [Sprawdzanie szczegółów danych wyjściowych JSON](video-indexer-output-json-v2.md).
+- [Omówienie usługi Video Indexer](video-indexer-overview.md)
+- [Regiony](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: b4553a392795bb8578f24848ccacc870b654bce9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116236"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439247"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Szybki start: Tworzenie bazy wiedzy przy użyciu portalu usługi QnA Maker API
 
@@ -69,6 +69,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Gdy skończysz z bazy wiedzy knowledge base, usuń go w portalu narzędzia QnA Maker.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+Miary oszczędności kosztów, możesz [udostępnianie](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker) niektórych, ale nie wszystkie zasoby platformy Azure utworzonych dla usługi QnA Maker.
 
 > [!div class="nextstepaction"]
 > [Dodaj osobiste chit rozmowy](./chit-chat-knowledge-base.md)

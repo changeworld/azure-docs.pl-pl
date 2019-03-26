@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 7c8e2297426b098fa6e86a5cda81afc2d71b08f4
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: cdc3e7ec6ec55c3376aeb545e1f64079ad1f6323
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214643"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407406"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Przełącz preferencji interfejsu API dla dziennika alertów
 
@@ -37,13 +37,18 @@ Ma kilka zalet tworzenia i zarządzania alertów za pomocą [scheduledQueryRules
 
 ## <a name="process-of-switching-from-legacy-log-alerts-api"></a>Proces przełączania ze starszej wersji interfejsu API z alertów dziennika
 
-Proces przechodzenia reguł alertów z [interfejsu API starszych Log Analytics alertu](api-alerts.md) nie wymaga zmian w definicji alertu, kwerenda lub konfigurację w jakikolwiek sposób. Użytkownicy mogą użyć [starszej wersji Log Analytics alertu interfejsu API](api-alerts.md) lub do nowej [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Reguły utworzone przez interfejs API, albo będą alertów *mógł być zarządzany przez ten sam interfejs API tylko* — oraz jak w witrynie Azure portal. Domyślnie usługa Azure Monitor będzie nadal używać [interfejsu API starszych Log Analytics alertu](api-alerts.md) tworzenia żadnych nową regułę alertu z witryny Azure portal.
+Proces przechodzenia reguł alertów z [interfejsu API starszych Log Analytics alertu](api-alerts.md) nie wymaga zmian w definicji alertu, kwerenda lub konfigurację w jakikolwiek sposób. Regułami alertów i monitorowania są bez zmian oraz alertów nie powoduje wstrzymania lub wstrzymany w trakcie lub po przełącznika.
+
+Użytkownicy mogą użyć [starszej wersji Log Analytics alertu interfejsu API](api-alerts.md) lub do nowej [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Reguły utworzone przez interfejs API, albo będą alertów *mógł być zarządzany przez ten sam interfejs API tylko* — oraz jak w witrynie Azure portal. Domyślnie usługa Azure Monitor będzie nadal używać [interfejsu API starszych Log Analytics alertu](api-alerts.md) tworzenia żadnych nową regułę alertu z witryny Azure portal.
 
 Wpływ przełącznika preferencję scheduledQueryRules interfejsu API są kompilowane poniżej:
 
 - Wszystkie interakcje wykonywane Zarządzanie alertów dzienników za pośrednictwem interfejsów programistycznych teraz jest to niezbędne przy użyciu [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) zamiast tego. Aby uzyskać więcej informacji znajduje się pozycja [próbki użycia za pomocą szablonu usługi Azure Resource](alerts-log.md#managing-log-alerts-using-azure-resource-template) i [próbki użycia za pomocą wiersza polecenia platformy Azure i programu PowerShell](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)
-- Wszelkie nowe reguł alertów dzienników utworzone w witrynie Azure portal, zostanie utworzona z użyciem [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) tylko i zezwolić użytkownikom na stosowanie [dodatkowe funkcje nowego interfejsu API](#Benefits-of-switching-to-new-Azure-API) także w portalu Azure
+- Wszelkie nowe reguł alertów dzienników utworzone w witrynie Azure portal, zostanie utworzona z użyciem [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) tylko i zezwolić użytkownikom na stosowanie [dodatkowe funkcje nowego interfejsu API](#benefits-of-switching-to-new-azure-api) także w portalu Azure
 - Poziom ważności w przypadku reguł alertów dzienników będą przesunięcie z: *Krytyczne, ostrzeżenie i komunikat o charakterze informacyjnym*, *wartości ważności 0, 1 i 2*. Wraz z opcją do utworzenia/zaktualizowania reguł alertów o ważności oraz 4.
+
+> [!CAUTION]
+> Po użytkownik zdecyduje się przełączyć preferencji do nowego [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), zasady nie mogą zrezygnować z powrotem lub Przywróć użycia starszej wersji [starszej wersji Log Analytics alertu interfejsu API](api-alerts.md).
 
 Każdy klient, który zamierza dobrowolnie przełączyć się do nowego [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) i zablokować użycie od [interfejsu API starszych Log Analytics alertu](api-alerts.md); to zrobić, wykonując wywołania PUT na poniżej interfejsu API, aby przełączyć wszystkie alertu reguły skojarzone z określonym obszarem roboczym usługi Log Analytics.
 

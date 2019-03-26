@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 98236133a90cfddfe2ea476486556318b2c88b10
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081257"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418894"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -49,7 +49,7 @@ Skontaktuj się z pomocą [obsługuje](https://portal.azure.com/#blade/Microsoft
 
 ## <a name="services-that-can-be-moved"></a>Usługi, które mogą zostać przeniesione
 
-Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mogą zostać przeniesione do nowej grupy zasobów i subskrypcji. Aby uzyskać więcej szczegółów, zobacz [przenoszenie obsługi operacji dla zasobów](move-support-resources.md).
+Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mogą zostać przeniesione do nowej grupy zasobów i subskrypcji. Aby uzyskać listę zasobów, które typy obsługuje przenoszenia, zobacz [przenoszenie obsługi operacji dla zasobów](move-support-resources.md).
 
 * Analysis Services
 * API Management
@@ -143,7 +143,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
-* Włączono Lab Services — przejście do nowej grupy zasobów w tej samej subskrypcji, ale przenoszenie między subskrypcjami nie jest włączona.
+* Lab Services - laboratorium na potrzeby zajęć, nie można przenieść do nowej grupy zasobów lub subskrypcji. DevTest Labs, mogą być przenoszone do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
 * Aplikacje zarządzane
 * Microsoft Genomics
 * Oprogramowanie SAP HANA na platformie Azure

@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 5be1835de2aa1631c4ec2115dd34ea85f0267403
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 954d19fb557540e4fdc6b17f313127e01eba97a7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870894"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435612"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optymalizacja usługi Azure CDN dla typu dostarczania zawartości
 
@@ -38,6 +38,8 @@ Ten artykuł zawiera omówienie różnych funkcji optymalizacji i kiedy należy 
 
 * [Ogólne dostarczanie w Internecie](#general-web-delivery). Tego rodzaju optymalizacji jest również używany do przesyłania strumieniowego multimediów i pobierania dużych plików.
 
+> [!NOTE]
+> Przyspieszanie witryn dynamicznych od firmy Microsoft jest oferowana za pośrednictwem [usługi Azure Service drzwiami frontowymi](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
 
 **Usługa Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** profile obsługują następujące optymalizacje:
 
@@ -120,6 +122,9 @@ Aby uzyskać więcej informacji na temat Optymalizacja dużych plików, zobacz [
 ### <a name="dynamic-site-acceleration"></a>Przyspieszanie witryn dynamicznych
 
  Przyspieszanie witryn dynamicznych (DSA) jest dostępna dla **Azure CDN Standard from Akamai**, **Azure CDN Standard from Verizon**, i **Azure CDN Premium from Verizon** profilów. Tego rodzaju optymalizacji pociąga za sobą dodatkowych opłat do użycia Aby uzyskać więcej informacji, zobacz [cennik usługi Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
+
+> [!NOTE]
+> Przyspieszanie witryn dynamicznych od firmy Microsoft jest oferowana za pośrednictwem [usługi Azure Service drzwiami frontowymi](https://docs.microsoft.com/azure/frontdoor/front-door-overview) co jest globalnym [emisji dowolnej](https://en.wikipedia.org/wiki/Anycast) service korzystanie z prywatnej globalnej sieci firmy Microsoft do świadczenia obciążeń aplikacji.
 
 DSA obejmuje różne techniki, które korzyści opóźnienie i wydajność zawartości dynamicznej. Techniki obejmują optymalizacji routingu i sieci, optymalizacja protokołu TCP i inne. 
 

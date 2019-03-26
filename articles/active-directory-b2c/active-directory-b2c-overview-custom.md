@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 92bd57822226e683f17582bb1534b84961f61032
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187168"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417937"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Zasady niestandardowe w usłudze Azure Active Directory B2C
 
@@ -29,10 +29,10 @@ Zasady niestandardowe są pliki konfiguracji definiujące zachowanie Twojej dzie
 |-|-------------------|-----------------|
 | Użytkowników docelowych | Wszystkich deweloperów aplikacji z użyciem lub bez wiedzy tożsamości. | Specjaliści tożsamości, integratorów systemów, konsultantów i zespołów wewnętrznych tożsamości. Są doświadczenia z przepływów OpenIDConnect i zrozumieć dostawców tożsamości i uwierzytelniania opartego na oświadczeniach. |
 | Metody konfiguracji | Witryny Azure portal na przyjazny dla użytkownika — interfejs użytkownika (UI). | Bezpośrednie edytowanie plików XML, a następnie przekazaniu do witryny Azure portal. |
-| Dostosowywanie interfejsu użytkownika | Pełne dostosowanie interfejsu użytkownika w tym HTML i CSS.<br><br>Obsługa wielu języków przy użyciu niestandardowych ciągów. | Ten sam |
+| Dostosowywanie interfejsu użytkownika | Pełne dostosowanie interfejsu użytkownika, w tym HTML, CSS i JavaScript.<br><br>Obsługa wielu języków przy użyciu niestandardowych ciągów. | Ten sam |
 | Dostosowywanie atrybutu | Standardowe i niestandardowe atrybuty. | Ten sam |
 | Token i sesji zarządzania | Token niestandardowy i wiele opcji sesji. | Ten sam |
-| Dostawcy tożsamości | Wstępnie zdefiniowane dostawcy uwierzytelniania lokalnego lub społecznościowych. | Oparte na standardach OIDC, uwierzytelnianiem OAUTH i SAML. |
+| Dostawcy tożsamości | Wstępnie zdefiniowane dostawcy uwierzytelniania lokalnego lub społecznościowych i większość dostawców tożsamości OIDC, takich jak federacji z dzierżawami usługi Azure Active Directory. | Oparte na standardach OIDC, uwierzytelnianiem OAUTH i SAML.  Uwierzytelnianie jest również możliwe za pomocą integracji z interfejsami API REST. |
 | Tożsamość zadania | Zarejestruj się lub zaloguj się przy użyciu lokalnego lub wiele kont społecznościowych.<br><br>Samoobsługowe resetowanie haseł.<br><br>Edytuj profil.<br><br>Multi-Factor Authentication.<br><br>Dostosowywanie tokenów i sesji.<br><br>Przepływy tokenu dostępu. | Wykonaj te same zadania, co przepływy użytkownika przy użyciu niestandardowych dostawców tożsamości, lub użyj zakresy niestandardowe.<br><br>Ustanowienie konta użytkownika w innym systemie, w chwili rejestracji.<br><br>Wysłać powitalną wiadomość e-mail przy użyciu własnego dostawcę usługi poczty e-mail.<br><br>Użyj magazynu użytkowników spoza usługi Azure AD B2C.<br><br>Sprawdź podane informacje o systemie zaufanego za pomocą interfejsu API przez użytkownika. |
 
 ## <a name="policy-files"></a>Pliki zasad

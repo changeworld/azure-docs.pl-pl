@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0c22d4421aa984a9862f83b9be1095d548e5841
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314489"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436672"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Zbieranie danych użytkownika w usłudze Azure Multi-Factor Authentication
 
@@ -138,7 +138,7 @@ Następujący proces serwera usługi MFA w wersji 8.0 lub nowszej umożliwia Adm
 - Zaloguj się do serwera usługi MFA, przejdź do folderu **użytkowników** karty, wybierz użytkownika, a następnie kliknij przycisk **Edytuj** przycisku. Zrób zrzuty ekranu (Alt-PrtScn), każdą kartę, aby udostępniać użytkownikom ich bieżących ustawień usługi MFA.
 - Z serwera usługi MFA w wierszu polecenia wpisz następujące polecenie Zmiana ścieżki zgodnie z instalacji `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` aby wygenerować JSON w formacie pliku.
 - Administratorzy mogą również użyć operacji GetUserGdpr zestawu SDK usługi sieci Web jako opcja do wyeksportowania informacji usługi chmury usługi MFA w wszystkie zebrane dla danego użytkownika lub dołączyć do większych rozwiązanie do raportowania.
-- Wyszukiwanie `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` i wszelkich kopii zapasowych dla "<username>" (z uwzględnieniem cudzysłowów w wyszukiwaniu) aby znaleźć wszystkie wystąpienia elementu rekord użytkownika jest dodane lub zmienione.
+- Wyszukiwanie `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` i wszelkich kopii zapasowych dla "\<nazwa_użytkownika >" (z uwzględnieniem cudzysłowów w wyszukiwaniu) aby znaleźć wszystkie wystąpienia elementu rekord użytkownika jest dodane lub zmienione.
    - Te rekordy mogą być ograniczone (ale nie eliminuje), usuwając zaznaczenie pola **"Log zmiany wprowadzane przez użytkownika"** w Interfejsie serwera MFA, sekcja rejestrowanie, karta pliki dziennika.
    - Skonfigurowanie usługi syslog i **"Log zmiany wprowadzane przez użytkownika"** zaznaczono w Interfejsie serwera MFA, sekcja rejestrowanie, karta dziennik systemowy, a następnie wpisy dziennika można gromadzić z syslog zamiast tego.
 - Inne zdarzenia, nazwy użytkownika w dziennikach MultiFactorAuthSvc.log i inny serwer MFA logowania pliki należące do uwierzytelniania prób są traktowane jak działa i jest niezamawianymi podany przy użyciu eksportu MultiFactorAuthGdpr.exe lub zestawu SDK usługi sieci Web GetUserGdpr.

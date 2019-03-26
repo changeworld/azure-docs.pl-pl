@@ -1,5 +1,5 @@
 ---
-title: Dynamics CRM | Dokumentacja firmy Microsoft
+title: Dynamics CRM | Microsoft Docs
 description: Skonfiguruj zarządzanie potencjalnymi klientami dla usługi Dynamics CRM.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8c432146d33db992a0ae612dfc56ace9460ade17
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a1398d172a5c578ec3c0f16627eadd1da3fd1e45
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870863"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437622"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurowanie — Zarządzanie potencjalnymi klientami dla usługi Dynamics CRM online
 
@@ -63,6 +63,7 @@ Wykonaj następujące kroki, aby skonfigurować usługę Azure Active Directory 
 1.  Zaloguj się do [witryny Azure portal](https://portal.azure.com/) a następnie wybierz usługę Azure Active Directory.
 
 2.  Wybierz **właściwości** , a następnie skopiuj **identyfikator katalogu**. To jest identyfikator konta Twojej dzierżawy, który należy używać w portalu Cloud Partner.
+
     ![Pobierz identyfikator katalogu](./media/cloud-partner-portal-lead-management-instructions-dynamics/directoryid.png)
 
 3.  Wybierz **rejestracje aplikacji**, a następnie wybierz pozycję **rejestrowanie nowej aplikacji**.
@@ -77,6 +78,7 @@ Wykonaj następujące kroki, aby skonfigurować usługę Azure Active Directory 
 11. W menu klucze wybierz **skopiuj wartość klucza.** Zapisz kopię tej wartości, ponieważ będzie potrzebny do portalu Cloud Partner.
     
     ![Dynamics Pobierz klucz zarejestrowane](./media/cloud-partner-portal-lead-management-instructions-dynamics/registerkeys.png)
+    
 12. Wybierz **wymagane uprawnienia** , a następnie wybierz **Dodaj**. 
 13. Wybierz **Dynamics CRM Online** jako nowy interfejs API oraz czy uprawnienia do *dostępu usługi CRM Online jako użytkownicy organizacji*.
 
@@ -84,24 +86,27 @@ Wykonaj następujące kroki, aby skonfigurować usługę Azure Active Directory 
     
     ![Użytkownicy aplikacji](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuserfirst.PNG)
 
-15. Wybierz **New** do utworzenia nowego użytkownika. Wybierz **użytkownika: użytkownik aplikacji** listy rozwijanej.
+15. Wybierz **New** do utworzenia nowego użytkownika. Wybierz **użytkownika: UŻYTKOWNIK aplikacji** listy rozwijanej.
     
     ![Dodawanie nowego użytkownika aplikacji](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuser.PNG)
 
 16. W **nowego użytkownika**, podaj nazwę i wiadomości e-mail chcesz użyć z tym połączeniem. Wklej **identyfikator aplikacji** aplikacji utworzonej w witrynie Azure portal.
+
      ![Konfigurowanie nowego użytkownika](./media/cloud-partner-portal-lead-management-instructions-dynamics/leadgencreateuser.PNG)
 
 17. Wybierz pozycję "Ustawienia zabezpieczeń" w tym artykule, aby ukończyć konfigurowanie połączenia dla tego użytkownika.
 
 ### <a name="office-365"></a>Office 365
 
-Jeśli nie chcesz używać usługi Azure Active Directory, można zarejestrować nowego użytkownika w portalu administracyjnym usługi Office 365. Możliwe będzie wymagany do zaktualizowania nazwy użytkownika/hasła co 90 dni, aby nadal korzystać z potencjalnymi klientami.
+Jeśli nie chcesz używać usługi Azure Active Directory, możesz zarejestrować nowego użytkownika na *Centrum administracyjnego usługi Microsoft 365*. Możliwe będzie wymagany do zaktualizowania nazwy użytkownika/hasła co 90 dni, aby nadal korzystać z potencjalnymi klientami.
 
 Wykonaj następujące kroki, aby skonfigurować usługi Office 365 dla usługi Dynamics CRM.
 
-1. Zaloguj się do [portalu administracyjnego usługi Microsoft Office 365](https://go.microsoft.com/fwlink/?LinkId=225975).
+1. Zaloguj się do [Centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com).
 
-2. Wybierz **administratora** Kafelek ![Centrum administracyjnego usługi Office Online](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline3.png)
+2. Wybierz **administratora** kafelka.
+
+    ![Centrum administracyjnego usługi Office Online](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline3.png)
 
 3. Wybierz **Dodawanie użytkownika**.
 
@@ -112,6 +117,7 @@ Wykonaj następujące kroki, aby skonfigurować usługi Office 365 dla usługi D
     -   Podaj hasło, a następnie usuń zaznaczenie opcji "Ustaw tego użytkownika, zmiana hasła podczas pierwszego logowania".
     -   Wybierz "Użytkownik (bez dostępu administratora)" jako rolę dla użytkownika.
     -   Wybierz licencję produktu, pokazane na następnym zrzucie ekranu. Użytkownik zostanie naliczona opłata licencji, którą wybierzesz. Rozwiązanie współdziałają z usługą Dynamics CRM Online Basic licencji.
+    
     ![Skonfiguruj uprawnienia użytkowników i licencji](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline5.png)
 
 ## <a name="security-settings"></a>Ustawienia zabezpieczeń
@@ -124,12 +130,14 @@ Ostatnim krokiem jest włączanie użytkownika został utworzony do zapisu poten
     ![Ustawienia zabezpieczeń](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline6.png)
 
 3.  Wybierz użytkownika, który został utworzony w **uprawnienia użytkownika**, a następnie wybierz pozycję **Zarządzanie rolami użytkowników**. Sprawdź **Microsoft Marketplace prowadzić Writer** Aby przypisać rolę.
+
     ![Przypisanie roli użytkownika](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline7.png)\
 
     >[!NOTE]
     >Ta rola jest tworzony przez to rozwiązanie, możesz zaimportować i ma tylko uprawnienia do zapisu potencjalnych klientów i śledzenia wersji rozwiązania w celu zapewnienia zgodności.
 
 4.  Zabezpieczenia, wybierz **role zabezpieczeń** i Znajdź rolę Microsoft Marketplace prowadzić Writer.
+    
     ![Skonfiguruj moduł zapisujący potencjalnego klienta zabezpieczeń](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline10.jpg)\
 
 5. Wybierz **rekordy podstawowe** kartę. Włącz tworzenie/odczyt/zapis jednostki użytkownika interfejsu użytkownika.
@@ -140,5 +148,5 @@ Ostatnim krokiem jest włączanie użytkownika został utworzony do zapisu poten
 
 Zakończ konfigurowanie programu Dynamics CRM na potrzeby zarządzania potencjalnymi klientami, dodając informacje o koncie wygenerowane do portalu Cloud Partner. Na przykład:
 
--   **Usługa Azure Active Directory** - **identyfikator aplikacji** (przykład: *23456052-aaaa-bbbb-8662-1234df56788f*), **identyfikator katalogu** (przykład: *12345678-8af1-4asf-1234-12234d01db47*), a **klucz aplikacji** (przykład: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc =*).
+-   **Usługa Azure Active Directory** - **identyfikator aplikacji** (przykład: *23456052-AAAA-bbbb-8662-1234df56788f*), **identyfikator katalogu** (przykład: *12345678-8af1-4asf-1234-12234d01db47*), a **klucz aplikacji** (przykład: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
 -   **Usługi Office 365** - **adresu Url** (przykład: *https://contoso.crm4.dynamics.com*), **nazwa_użytkownika** (przykład: *contoso\@ contoso.onmicrosoft.com*), a **hasło** (przykład: *P\@ssw0rd*).

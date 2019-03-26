@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2daaa1275d9a97bec43f277e726518ead6eca9ff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 92294700ac9a491bfdbfa3b3d3f781eb18d5339e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876368"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437105"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -338,6 +338,39 @@ Chociaż usługi IoT Edge zapewnia rozszerzoną konfigurację do zabezpieczania 
 |AMQP|5671|ZABLOKOWANE (ustawienie domyślne)|Otwórz (ustawienie domyślne)|<ul> <li>Protokół komunikacji domyślnego dla usługi IoT Edge. <li> Musi być skonfigurowany jako Otwórz, czy usługi Azure IoT Edge nie jest skonfigurowany dla innych obsługiwanych protokołów AMQP jest protokół komunikacyjny żądaną.<li>5672 dla protokołu AMQP nie jest obsługiwany przez usługi IoT Edge.<li>Zablokować tego portu, w przypadku usługi Azure IoT Edge, używa innej usługi IoT Hub z obsługiwanych protokołów.<li>Połączenia przychodzące (przychodzące) powinien być blokowany.</ul></ul>|
 |HTTPS|443|ZABLOKOWANE (ustawienie domyślne)|Otwórz (ustawienie domyślne)|<ul> <li>Skonfiguruj wychodzące (wychodzące) to Open na porcie 443 dla usługi IoT Edge inicjowania obsługi administracyjnej. Ta konfiguracja jest wymagana w przypadku korzystania z ręcznego skryptów lub usługi Azure IoT urządzenia inicjowania obsługi usługi (DPS). <li>Połączenia przychodzącego (przychodzące) powinny być otwarte tylko w określonych scenariuszach: <ul> <li>  Jeśli masz z urządzeniami liścia, które może wysyłać żądania do metody przezroczystej bramy. W tym przypadku Port 443 nie musi być otwarty z sieciami zewnętrznymi, aby połączyć się IoTHub lub świadczyć usługi IoTHub za pośrednictwem usługi Azure IoT Edge. Ten sposób przychodzącej reguły może być ograniczony do otwierać tylko przychodzące (przychodzący) z siecią wewnętrzną. <li> Klient scenariuszy dotyczących urządzeń (C2D).</ul><li>80 dla protokołu HTTP nie jest obsługiwany przez usługi IoT Edge.<li>Jeśli nie można skonfigurować protokołów innych niż HTTP (na przykład protokół AMQP lub MQTT) w przedsiębiorstwie; komunikaty mogą być wysyłane przez protokół WebSockets. Port 443 będzie służyć do komunikacji protokołu WebSocket w takiej sytuacji.</ul>|
 
+## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Moduł agenta usługi Edge stale raportów "pliku konfiguracji puste" i nie modułów uruchomione na urządzeniu
+
+Urządzenie ma problemów podczas uruchamiania moduły zdefiniowane we wdrożeniu. Tylko edgeAgent jest uruchomiona, ale ciągle raportowania "pliku konfiguracji puste...".
+
+### <a name="potential-root-cause"></a>Potencjalną główną przyczynę
+Domyślnie usługi IoT Edge uruchamia moduły w sieci do izolowanego kontenera. Urządzenie może mieć problemy z rozpoznawaniem nazw DNS w ramach tej sieci prywatnej.
+
+### <a name="resolution"></a>Rozwiązanie
+Określenie serwera DNS dla danego środowiska, w ustawieniach aparatu kontenera. Utwórz plik o nazwie `daemon.json` Określanie serwera DNS, należy użyć. Na przykład:
+
+```
+{
+    "dns": ["1.1.1.1"]
+}
+```
+
+Powyższy przykład ustawia serwer DNS publicznie usługi DNS. Jeśli urządzenia usługi edge nie dostępu do tego adresu IP w swoim środowisku, należy ją zastąpić adres serwera DNS, który jest dostępny.
+
+Miejsce `daemon.json` we właściwym miejscu dla danej platformy: 
+
+| Platforma | Lokalizacja |
+| --------- | -------- |
+| Linux | `/etc/docker` |
+| Host Windows za pomocą kontenerów Windows | `C:\ProgramData\iotedge-moby-data\config` |
+
+Jeśli lokalizacja zawiera już `daemon.json` Dodaj **dns** klawisz, aby go, a następnie zapisz plik.
+
+*Uruchom ponownie aparat container aktualizacji zastosować zmiany*
+
+| Platforma | Polecenie |
+| --------- | -------- |
+| Linux | `sudo systemctl restart docker` |
+| Windows (Admin Powershell) | `Restart-Service iotedge-moby -Force` |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iotedge/issues) tak, aby mogli dalej ulepszać. 

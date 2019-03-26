@@ -3,7 +3,7 @@ title: Rozpoczynanie pracy z usługą Azure AD, interfejsu API raportowania | Do
 description: Jak rozpocząć pracę z usługą Azure Active Directory, interfejsu API raportowania
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0cab77617a72aeb43d7bb1786c7ccfad0382bf9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2ff3e530dae3a6db4b7c84292a25e83c11000baf
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166202"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437768"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Rozpoczynanie pracy z usługą Azure Active Directory, interfejsu API raportowania
 

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: ca186090f28f04811030e83b159782a9bfeb87f9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ccea3ebae4bcc19410cfb5537a7140f69b04c4e7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400774"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438788"
 ---
-# <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotuj i dostosowanie głównego obrazu wirtualnego dysku twardego
+# <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
 W tym artykule poinformuje sposób przygotowania głównego obrazu wirtualnego dysku twardego (VHD) w celu przekazania na platformę Azure, w tym sposobu tworzenia maszyn wirtualnych (VM) i zainstalowanie i skonfigurowanie oprogramowania na nich. Te instrukcje dotyczą konfiguracji specyficznych dla Windows pulpitu wirtualnego (wersja zapoznawcza), który może być używany z istniejącymi procesami w Twojej organizacji.
 
@@ -162,8 +162,8 @@ Można ręcznie wyłączyć aktualizacji automatycznych.
 
 Aby wyłączyć automatyczne aktualizacje:
 
-1. Instalowanie usługi Office 365, postępując zgodnie z instrukcjami wyświetlanymi w [przygotowywania obrazu Office](set-up-customize-master-image.md#office-image-preparation).
-2. Zainstaluj wszystkie dodatkowe aplikacje wypełniając instrukcje w [ustawienia profilu użytkownika (FSLogix)](set-up-customize-master-image.md#user-profile-setup-fslogix), [usługi Windows Defender](set-up-customize-master-image.md#windows-defender), i [inne aplikacje i konfiguracji rejestru](set-up-customize-master-image.md#other-applications-and-registry-configuration).
+1. Instalowanie usługi Office 365, postępując zgodnie z instrukcjami wyświetlanymi w [przygotowania oprogramowania i instalacji](set-up-customize-master-image.md#software-preparation-and-installation).
+2. Zainstaluj wszystkie dodatkowe aplikacje wypełniając instrukcje w [Konfigurowanie kontenera profil użytkownika (FSLogix)](set-up-customize-master-image.md#set-up-user-profile-container-fslogix), [skonfigurować usługę Windows Defender](set-up-customize-master-image.md#configure-windows-defender), i [inne aplikacje i rejestru Konfiguracja](set-up-customize-master-image.md#other-applications-and-registry-configuration).
 3. Wyłączenie Windows automatycznej aktualizacji usługi na lokalnej maszynie Wirtualnej.
 4. Otwórz **Edytora lokalnych zasad grupy\\Szablony administracyjne\\składników Windows\\Windows Update**.
 5. Kliknij prawym przyciskiem myszy **Konfigurowanie aktualizacji automatycznych** i ustaw ją na **wyłączone**.
@@ -171,7 +171,7 @@ Aby wyłączyć automatyczne aktualizacje:
 Można również uruchomić następujące polecenie w wierszu polecenia, aby wyłączyć automatyczne aktualizacje.
 
 ```batch
-reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
+reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
 Uruchom następujące polecenie, aby określić układ Start dla komputerów z systemem Windows 10.
@@ -232,9 +232,7 @@ Windows pulpitu wirtualnego nie obsługuje oficjalnie programu Skype dla firm i 
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Konfigurowanie kontenera profil użytkownika (FSLogix)
 
-Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami [skonfiguruj udział profilu użytkownika dla puli hosta](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).
-
-Podczas konfigurowania klucza rejestru udziału pliku, użyj udziału plików, został utworzony w [konfigurowania uprawnień dla serwera plików](set-up-customize-master-image.md#configure-permissions-for-the-file-server) gdzie planujesz przechowywać kontenery profilu. Możesz także testować funkcje za pomocą tego kontenera FSLogix [Szybki Start](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
+Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami [skonfiguruj udział profilu użytkownika dla puli hosta](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Możesz przetestować funkcje FSLogix kontener za pomocą [ten przewodnik Szybki Start](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
 
 ### <a name="configure-windows-defender"></a>Konfigurowanie usługi Windows Defender
 

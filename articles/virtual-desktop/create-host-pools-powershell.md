@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7b9b7ffbb034a7fb1256d9cc44048cfa55b02245
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bd46e5f7428bab58508521b2c7d4d7cca25d689b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402732"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439077"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>Utwórz pulę hosta przy użyciu programu PowerShell
+# <a name="create-a-host-pool-with-powershell"></a>Tworzenie puli hostów przy użyciu programu PowerShell
 
 Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy Windows wirtualnego Desktop w wersji zapoznawczej. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
 
@@ -54,7 +54,7 @@ Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGr
 
 **RdsAppGroupUser Dodaj** polecenie cmdlet nie obsługuje dodawania grup zabezpieczeń i doda tylko z jednym użytkownikiem w czasie do grupy aplikacji. Jeśli chcesz dodać wielu użytkowników do grupy aplikacji, należy ponownie uruchomić polecenie cmdlet z głównych nazw użytkowników.
 
-Uruchom następujące polecenie cmdlet można wyeksportować tokenu rejestracji do zmiennej, której użyjesz później w [rejestrowania maszyn wirtualnych do puli hosta wirtualnego pulpitu Windows](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
+Uruchom następujące polecenie cmdlet można wyeksportować tokenu rejestracji do zmiennej, której użyjesz później w [rejestrowania maszyn wirtualnych do puli hosta wirtualnego pulpitu Windows](#register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool).
 
 ```powershell
 $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token

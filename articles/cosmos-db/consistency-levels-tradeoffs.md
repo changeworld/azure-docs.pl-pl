@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cf3dc71e96dac96a6406c97a433398b31a370869
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: ac5b6e0d44376332e005d30b4a8fcc97021c4eda
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571171"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407525"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
 
@@ -20,11 +20,11 @@ Rozproszonych baz danych, które zależą od replikacji dla wysokiej dostępnoś
 
 Wyjaśnienie pojęcia spójności danych jako liczne opcje zbliża się do usługi Azure Cosmos DB. Ta metoda obejmuje więcej opcji niż dwoma skrajnymi poziomami spójności silną i ostateczną. Możesz wybrać z pięciu dobrze zdefiniowanych modeli na spektrum spójności. Od najsilniejszej do najsłabszej, modele są:
 
-- Silna
-- Powiązana nieaktualność
-- Sesja
-- Spójny prefiks
-- Ostateczna
+- *Silne*
+- *Powiązana nieaktualność*
+- *Sesji*
+- *Spójny prefiks*
+- *Ostateczna*
 
 Każdy model zawiera wpływ na dostępność i wydajność i jest wspierana przez kompleksowe umowy SLA.
 
@@ -34,9 +34,9 @@ Opóźnienie odczytu dla wszystkich poziomów spójności zawsze może być mnie
 
 Opóźnienie zapisu dla wszystkich poziomów spójności zawsze może być mniejsza niż 10 milisekund w 99. percentylu. To opóźnienie zapisu są objęte umową SLA. Opóźnienie zapisu średnia, na 50. percentyl jest zazwyczaj 5 milisekund lub mniej.
 
-Dla konta usługi Azure Cosmos skonfigurowano wysoki poziom spójności z więcej niż jednym regionie opóźnienie zapisu może być mniejsza niż dwa razy czas obustronnej konwersji (RTT) między dowolnymi dwoma regionami położony plus 10 milisekund w 99. percentylu. Ta opcja jest obecnie w wersji zapoznawczej.
+Dla konta usługi Azure Cosmos skonfigurowano wysoki poziom spójności z więcej niż jednym regionie opóźnienie zapisu może być mniejsza niż dwa razy czas obustronnej konwersji (RTT) między dowolnymi dwoma regionami położony plus 10 milisekund w 99. percentylu.
 
-Dokładny czas oczekiwania RTT jest funkcja odległości szybkość świateł i topologię sieci platformy Azure. Sieci platformy Azure nie zapewnia żadnych opóźnień umowy SLA dla RTT między wszystkie dwóch regionach platformy Azure. Konta usługi Azure Cosmos opóźnienia w replikacji są wyświetlane w witrynie Azure portal. Za pomocą witryny Azure portal do monitorowania opóźnienia w replikacji między różnych regionów, które są skojarzone z Twoim kontem.
+Dokładny czas oczekiwania RTT jest funkcja odległości szybkość świateł i topologię sieci platformy Azure. Sieci platformy Azure nie zapewnia żadnych opóźnień umowy SLA dla RTT między wszystkie dwóch regionach platformy Azure. Konta usługi Azure Cosmos opóźnienia w replikacji są wyświetlane w witrynie Azure portal. Za pomocą witryny Azure portal (Przejdź do bloku metryk) do monitorowania opóźnienia w replikacji między różnych regionów, które są skojarzone z kontem usługi Azure Cosmos.
 
 ## <a name="consistency-levels-and-throughput"></a>Poziomy spójności i przepływności
 
@@ -46,21 +46,22 @@ Dokładny czas oczekiwania RTT jest funkcja odległości szybkość świateł i 
 
 ## <a id="rto"></a>Spójność poziomy i danych trwałości
 
-W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO).
+W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako **cel czasu odzyskiwania** (**RTO**). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest znany jako **cel punktu odzyskiwania** (**RPO**).
 
-Tabela definiuje relację między trwałości danych i modelu spójności obecności awarii szerokiego regionu. Należy pamiętać, że w rozproszonym systemie wysoki poziom spójności, nawet w przypadku jest niemożliwe do rozproszonej bazy danych za pomocą RPO i RTO zero z powodu kolejnego elementu teorii CAP. Aby dowiedzieć się więcej o tym, dlaczego, zobacz [poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md).
+Poniższa tabela definiuje relację między trwałości danych i modelu spójności obecności awarii szerokiego regionu. Należy pamiętać, że w rozproszonym systemie wysoki poziom spójności, nawet w przypadku jest niemożliwe do rozproszonej bazy danych za pomocą RPO i RTO zero z powodu kolejnego elementu teorii CAP. Aby dowiedzieć się więcej na temat przyczyn, zobacz [poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md).
 
 |**Regiony**|**Tryb replikacji**|**Poziom spójności**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Jednego lub wielu wzorców|Dowolny poziom spójności|< 240 minut|< 1 tydzień|
 |>1|Wzorca pojedynczej|Sesja, spójny prefiks i ostateczna|< 15 minut|< 15 minut|
-|>1|Wzorca pojedynczej|Powiązana nieaktualność|K & T|< 15 minut|
+|>1|Wzorca pojedynczej|Powiązana nieaktualność|*K* & *T*|< 15 minut|
 |>1|Multi-Master|Sesja, spójny prefiks i ostateczna|< 15 minut|0|
-|>1|Multi-Master|Powiązana nieaktualność|K & T|0|
+|>1|Multi-Master|Powiązana nieaktualność|*K* & *T*|0|
 |>1|Jednego lub wielu wzorców|Silna|0|< 15 minut|
 
-K = liczba "K" wersji (aktualizacje) elementu.
-T = "T" Godzina przedział czasu od momentu ostatniej aktualizacji.
+*K* = liczba *"K"* wersjach (tj. aktualizacje) elementu.
+
+*T* = przedział czasu *"T"* od czasu ostatniej aktualizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

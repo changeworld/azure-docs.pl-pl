@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: d12ea20f9f510b0e2d3d3512d8d8c71a3fb96eec
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: efe50533a03551a673583265e107263d79cff90a
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372526"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418690"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
@@ -216,11 +216,20 @@ Jeśli wstępnie utworzone jednostki jest oznaczane więcej tekstu lub tokeny od
 
 #### <a name="remove-example-utterance-to-fix-tagging"></a>Usuń wypowiedź przykładu, aby naprawić znakowanie 
 
-Twój pierwszy wybór jest wypowiedź przykład usunąć i ponownie ucz aplikacji. Dodaj ponownie tylko słowo lub frazę jednostki jako przykład wypowiedź, a następnie oznaczyć jednostki i szkolenie. Teraz dodać z powrotem ze wstępnie utworzonych jednostek i oryginalnego wypowiedź przykład. Jednostki niestandardowej, powinna w dalszym ciągu można oznaczyć zamiast wstępnie utworzone jednostki. 
+Twój pierwszy wybór jest usunięcie wypowiedź przykładu. 
+
+1. Usuń wypowiedź przykładu.
+1. Ponowne szkolenie aplikacji. 
+1. Dodaj ponownie tylko słowo lub frazę jednostki, która jest oznaczona jako wstępnie utworzone jednostki, jako wypowiedź kompletny przykład. Wyraz lub frazę, będą nadal mieć wstępnie utworzone jednostki oznaczone. 
+1. Wybierz jednostkę w wypowiedź przykład **intencji** strony i zmianę do swojej jednostki niestandardowej i uczenie się ponownie. Powinno to zapobiec oznaczenie tego tekstu do dokładnego dopasowania jako wstępnie utworzone jednostki w wypowiedzi przykład korzystających z tego tekstu usługi LUIS. 
+1. Cały, oryginalnym wypowiedź przykład ponownie dodać do intencji. Jednostki niestandardowej, powinna w dalszym ciągu można oznaczyć zamiast wstępnie utworzone jednostki. Jeśli nie jest oznaczona jednostki niestandardowej, należy dodać więcej przykładów ten tekst w wypowiedzi.
 
 #### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Usuwanie wstępnie utworzone jednostki, aby naprawić znakowanie
 
-Wybranych drugim jest usunięcie wstępnie utworzone jednostki z poziomu aplikacji, następnie tag jednostki niestandardowej w wypowiedź przykładu, a następnie dodaj wstępnie utworzone jednostki do aplikacji. Ta poprawka przyjęto założenie, że wstępnie utworzone jednostki nie należały do obiektu złożonego. 
+1. Wstępnie utworzone jednostki można usunąć z aplikacji. 
+1. Na **intencji** strony, oznacz jednostki niestandardowej w wypowiedź przykładu.
+1. Przeszkol aplikację.
+1. Dodawanie wstępnie utworzone jednostki do aplikacji i uczenie aplikacji. Ta poprawka przyjęto założenie, że wstępnie utworzone jednostki nie należały do obiektu złożonego.
 
 ## <a name="regular-expression-entity"></a>Jednostka wyrażenia regularnego 
 

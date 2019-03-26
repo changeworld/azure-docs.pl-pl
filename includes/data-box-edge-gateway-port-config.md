@@ -1,8 +1,16 @@
-      ---
-Autor: alkohli ms.service: databox  
-MS.topic: ms.date obejmują: 2019-03/21 ms.author: alkohli
 ---
-
+author: alkohli
+ms.service: databox
+ms.topic: include
+ms.date: 03/25/2019
+ms.author: alkohli
+ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58431397"
+---
 | Nr portu.| Wewnątrz lub na zewnątrz | Zakres portów| Wymagane|   Uwagi |   |
 |--------|-----|-----|-----------|----------|-----------|
 | TCP 80 (HTTP)|Wyjście|Sieć WAN |Nie|Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |
@@ -15,4 +23,3 @@ MS.topic: ms.date obejmują: 2019-03/21 ms.author: alkohli
 | TCP 443 (HTTPS)|Poza/w|Sieć LAN|Yes|Ten port jest port wejściowy dla lokalnego interfejsu użytkownika na urządzeniu na potrzeby zarządzania lokalnego. |
 | TCP 445 (SMB)|W|Sieć LAN|W niektórych przypadkach<br>Zobacz uwagi|Ten port jest wymagany tylko wtedy, gdy jest nawiązywane za pośrednictwem protokołu SMB. |
 | TCP 2049 (NFS)|W|Sieć LAN|W niektórych przypadkach<br>Zobacz uwagi|Ten port jest wymagany tylko wtedy, gdy jest nawiązywane za pośrednictwem systemu plików NFS. |
-

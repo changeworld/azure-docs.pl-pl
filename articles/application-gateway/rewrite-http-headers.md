@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 846f07051ee65a542b56624fa84a9bdc4ca0f4e6
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119296"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418010"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
 
@@ -96,10 +96,12 @@ Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych se
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Zwraca listę szyfrów obsługiwanych przez klienta          |
 | ciphers_used               | Zwraca ciąg mechanizmów szyfrowania używany do ustanowionego połączenia SSL |
+| client_ip                  | Adres IP klienta; szczególnie przydatne w scenariuszach, w których klienci mają do przepisania nagłówek X-Forwarded-dla ustawiony przez usługę Application Gateway, tak aby nagłówek zawiera tylko adres IP bez informacji o porcie. |
 | client_port                | port klienta                                                  |
 | client_tcp_rtt             | informacje na temat klienta połączenie TCP. dostępna w systemach, które obsługują opcję gniazda TCP_INFO |
 | client_user                | Korzystając z uwierzytelniania HTTP, nazwa użytkownika podana dla uwierzytelniania |
 | host                       | w następującej kolejności: Nazwa hosta z wiersz żądania lub nazwy hosta z pola nagłówka żądania "Host" lub nazwę serwera, dopasowywanie na żądanie |
+| cookie_*nazwy*              | *nazwa* plików cookie |
 | http_method                | Metoda użyta do utworzenia adresu URL żądania. Na przykład pobrać POST itp. |
 | http_status                | Stan sesji, na przykład: 200, 400, 403 itp.                       |
 | http_version               | żądanie protokołu, zazwyczaj "HTTP/1.0", "HTTP/1.1" lub "HTTP/2.0" |
@@ -120,10 +122,6 @@ Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych se
 - Obsługa ponownego napisania nagłówka HTTP jest obsługiwana tylko w nowej jednostki SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). Ta funkcja nie będzie obsługiwana w starych jednostek SKU.
 
 - Ponowne napisanie nagłówki Connect, uaktualniania i hosta nie jest jeszcze obsługiwany.
-
-- Dwie zmienne serwera ważne, client_ip (adres IP klienta wysyłającego żądanie) i cookie_*nazwa* ( *nazwa* plików cookie), nie są jeszcze obsługiwane. Zmienna serwera client_ip jest szczególnie przydatne w scenariuszach, w których klienci mają do przepisania nagłówek x-forwarded dla ustawiony przez usługę Application Gateway, tak aby nagłówek zawiera tylko adres IP klienta i nie informacje o porcie.
-
-  Te zmienne serwera będzie wkrótce obsługiwany.
 
 - Możliwość warunkowo ponownie zapisuje nagłówki http będzie dostępna wkrótce.
 

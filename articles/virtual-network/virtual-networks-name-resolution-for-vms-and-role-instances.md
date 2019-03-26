@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 3/25/2019
 ms.author: subsarma
-ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193997"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418741"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -74,6 +74,7 @@ Kwestie do rozważenia, gdy używasz rozpoznawania nazw platformy Azure:
 * Nazwy hostów musi być zgodny z DNS. Nazwy, należy użyć tylko 0-9, a – z, i "-" i nie może zaczynać ani kończyć się znakiem "-".
 * Ruch DNS jest ograniczane dla poszczególnych maszyn wirtualnych. Ograniczanie nie powinny mieć wpływ na większość aplikacji. Jeśli zostanie wykryty ograniczanie żądań, upewnij się, że włączone jest buforowanie po stronie klienta. Aby uzyskać więcej informacji, zobacz [Konfiguracja klienta DNS](#dns-client-configuration).
 * Tylko maszyny wirtualne pierwszej 180 w usługach w chmurze są rejestrowane dla każdej sieci wirtualnej w klasycznym modelu wdrażania. To ograniczenie nie ma zastosowania do sieci wirtualnych w usłudze Azure Resource Manager.
+* Adres IP serwera DNS platformy Azure to 168.63.129.16. Jest statyczny adres IP i nie ulegnie zmianie.
 
 ## <a name="dns-client-configuration"></a>Konfiguracja klienta DNS
 

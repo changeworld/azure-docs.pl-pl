@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 650bdc5cdf99645bc2be6c8e85737dacd10a6b27
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: ec012f85c4b4e93e9be475781e9da79f686cbf9e
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287522"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417721"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Tworzenie klastra Eksplorator danych platformy Azure i bazy danych przy użyciu programu PowerShell
 
@@ -25,20 +25,21 @@ ms.locfileid: "58287522"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-Ten przewodnik Szybki Start opisuje sposób tworzenia klastra Azure Eksploratora danych i bazy danych przy użyciu programu PowerShell.
-
-Można uruchomić polecenia cmdlet programu PowerShell i skryptów na Windows, Linux, lub w [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) do tworzenia i konfigurowania [Eksploratora danych usługi Azure](https://docs.microsoft.com/azure/kusto/ ).
-
-The [**Az.Kusto**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto ). Za pomocą programu Azure PowerShell i **Az.Kusto**, można wykonywać następujące zadania:
+Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki Start utworzysz klaster i bazę danych przy użyciu programu Powershell. Można uruchomić polecenia cmdlet programu PowerShell i skryptów na Windows, Linux, lub w [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) wraz z [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) do tworzenia i konfigurowania klastrów Eksploratora danych platformy Azure i bazy danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania kroków tego przewodnika Szybki start jest potrzebna subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby sprawdzić wersję. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-parameters"></a>Konfigurowanie parametrów
 
-Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Azure Cloud Shell. Jeśli korzystasz z interfejsu wiersza polecenia lokalnie, wykonaj następujące kroki, aby zalogować się do platformy Azure i ustawić bieżącą subskrypcję:
+Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Azure Cloud Shell. Jeśli korzystasz z interfejsu wiersza polecenia lokalnie, wykonaj kroki 1 i 2, zaloguj się do platformy Azure i ustawienie bieżącej subskrypcji:
 
 1. Uruchom następujące polecenia, aby zalogować się na platformie Azure:
 
@@ -46,12 +47,12 @@ Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Azure 
     Connect-AzAccount
     ```
 
-2. Ustaw subskrypcję, w której chcesz utworzyć klaster.
+2. Ustaw subskrypcję, którego ma zostać utworzony klaster:
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-3. Instalowanie modułu Az.Kusto na twoim urządzeniu:
+3. Podczas uruchamiania wiersza polecenia platformy Azure, lokalnie lub w usłudze Azure Cloud Shell, musisz zainstalować moduł Az.Kusto na twoim urządzeniu:
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
@@ -116,7 +117,5 @@ Masz teraz klaster i bazę danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Można znaleźć więcej poleceń Az.Kusto [ **tutaj**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto )
-
-> [!div class="nextstepaction"]
-> [Szybki start: Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)](net-standard-ingest-data.md)
+* [Dodatkowe polecenia Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto)
+* [Szybki start: Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)](net-standard-ingest-data.md)

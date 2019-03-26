@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 0790b7d5280b3fdf26c34c3903a6257d21bc877c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28aef1c1b5091db75b4a1fb6786ee712b42a1ea2
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835836"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418775"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -33,9 +33,9 @@ Korzystanie z punktu dystrybucji umożliwia:
 W tym artykule opisano następujące cztery zastosowań:
 
 1. [Szybkie łączenie pojedynczego urządzenia przy użyciu sygnatury dostępu Współdzielonego](#connect-a-single-device)
-1. Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu Współdzielonego
+1. [Łączenie urządzeń na dużą skalę przy użyciu sygnatury dostępu Współdzielonego](#connect-devices-at-scale-using-sas)
 1. [Łączenie urządzeń na dużą skalę za pomocą certyfikatów X.509](#connect-devices-using-x509-certificates) jest to zalecane podejście do środowisk produkcyjnych.
-1. Połączenia bez pierwszej rejestracji urządzenia 
+1. [Połączenia bez pierwszej rejestracji urządzenia](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>Łączenie pojedynczego urządzenia
 

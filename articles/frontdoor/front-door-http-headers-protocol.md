@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure drzwiami frontowymi — Obsługa protokołu nagłówki HTTP | Dokumentacja firmy Microsoft
+title: Usługa Azure drzwiami frontowymi — nagłówki HTTP obsługuje | Dokumentacja firmy Microsoft
 description: Ten artykuł pomoże Ci zrozumieć obsługiwanych protokołów nagłówka HTTP przy wejściu
 services: frontdoor
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: b34ab417ab1d9ef77c3141d5aa130c338fb89188
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 40bfdfc3837da12f62864433508482a65def291c
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726332"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407321"
 ---
-# <a name="azure-front-door-service---http-headers-protocol-support"></a>Usługa Azure drzwiami frontowymi — Obsługa protokołu nagłówki HTTP
+# <a name="azure-front-door-service---http-headers-support"></a>Usługa Azure drzwiami frontowymi — Obsługa nagłówków HTTP
 W tym dokumencie przedstawiono protokołu, obsługującego usługi drzwiami frontowymi platformy Azure przy użyciu różnych części ścieżki wywołanie przedstawione na poniższej ilustracji. Poniższe sekcje zawierają więcej szczegółowych informacji nagłówków HTTP, który obsługuje drzwiami frontowymi.
 
 ![Azure protokołu nagłówki HTTP usługi drzwiami frontowymi][1]
@@ -36,10 +36,10 @@ Drzwi wejściowe będą zawierać nagłówki z żądania przychodzącego, chyba 
 
 | Nagłówek  | Przykład i opis |
 | ------------- | ------------- |
-| Przez |  *Za pomocą: 1.1 azure* </br> Drzwiami frontowymi dodaje następuje "Azure", jako wartość pozycji za pomocą nagłówka wersji HTTP klienta. Jest dodawany do wskazania wersji HTTP klienta i tym drzwi Azure była pośrednich adresata dla żądania między klientem i wewnętrznej bazy danych.  |
+| Przez |  *Za pomocą: 1.1 azure* </br> Drzwiami frontowymi dodaje następuje "Azure", jako wartość pozycji za pomocą nagłówka wersji HTTP klienta. Jest ona dodawana do wskazania wersji HTTP klienta i tego drzwi Azure była pośrednich adresata dla żądania między klientem i wewnętrznej bazy danych.  |
 | X-Azure-ClientIP | *X-Azure-ClientIP: 127.0.0.1* </br> Reprezentuje adres protokołu internetowego "client" skojarzony z żądaniem przetwarzany. Na przykład żądanie pochodzące z serwera proxy może dodać nagłówek X-Forwarded-dla do wskazywania adresu IP, oryginalnym obiektu wywołującego. |
-| X-Azure-SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Reprezentuje adres protokołu internetowego gniazda skojarzonego z połączeniem TCP, bieżące żądanie pochodzi z. Adres IP klienta żądania może nie być równa jego adres IP gniazda, ponieważ może być dowolnie zastąpiona przez użytkownika końcowego.|
-| X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Jest to ciąg unikatowy odwołania, który identyfikuje żądanie obsługiwanej przez drzwi wejściowe. Koniecznie do rozwiązywania problemów, ponieważ jest używany do wyszukiwania dzienników dostępu.|
+| X-Azure-SocketIP | *X-Azure-SocketIP: 127.0.0.1* </br> Reprezentuje adres protokołu internetowego gniazda skojarzonego z połączeniem TCP, bieżące żądanie pochodzi z. Adres IP klienta z żądania nie może być równa jego adres IP gniazda, ponieważ może zostać arbitralnie zastąpiona przez użytkownika końcowego.|
+| X-Azure-Ref | *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Jest to ciąg unikatowy odwołania, który identyfikuje żądanie obsługiwanej przez drzwi wejściowe. Koniecznie do rozwiązywania problemów, ponieważ jest używany do wyszukiwania dzienników dostępu.|
 | X-Azure-RequestChain |  *X-Azure-RequestChain: przeskoki = 1* </br> Jest to nagłówek, w którym wejściu do wykrywania pętli żądania i użytkownicy nie powinna przyjmować zależności na nim. |
 | X-Forwarded-For | *X-Forwarded-For: 127.0.0.1* </br> Pola nagłówka X-Forwarded-For (XFF) HTTP jest powszechnie używaną metodą do identyfikowania źródłowy adres IP klienta, nawiązywania połączenia z serwerem sieci web za pośrednictwem protokołu HTTP serwera proxy lub moduł równoważenia obciążenia. Jeśli było istniejący nagłówek XFF, a następnie drzwiami frontowymi dołącza IP gniazda klienta do niej inne dodaje nagłówek XFF z adresem IP gniazda klienta. |
 | X-Forwarded-Host | *X-Forwarded-Host: contoso.azurefd.net* </br> Pola nagłówka HTTP X-Forwarded-Host jest powszechnie używaną metodą do identyfikowania pierwotny host zażądane przez klienta w nagłówku żądania HTTP hosta, ponieważ nazwa hosta z drzwiami frontowymi mogą się różnić dla serwera wewnętrznej bazy danych, obsługa żądania. |

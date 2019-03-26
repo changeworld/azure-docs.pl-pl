@@ -4,7 +4,7 @@ description: Dokumentacja prosta składnia zapytań umożliwiający zapytaniach 
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/25/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 99729141e5e1478f45ad385cf671c44a8e08f21a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441564"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437496"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Prosta składnia zapytań w usłudze Azure Search
 Usługa Azure Search implementuje dwóch języków zapytań Lucene: [Prosty analizator zapytań](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) i [analizator składni zapytań Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). W usłudze Azure Search prosta składnia zapytań nie obejmuje opcje rozmyte/odstojnika.  
 
 > [!NOTE]  
->  Usługa Azure Search jest alternatywą [składnia zapytań Lucene](query-lucene-syntax.md) dla bardziej złożonych zapytań. Aby dowiedzieć się więcej na temat analizowania architektury i zalety każdego składni zapytania, zobacz [jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+>  Usługa Azure Search jest alternatywą [składnia zapytań Lucene](query-lucene-syntax.md) dla bardziej złożonych zapytań. Aby dowiedzieć się więcej na temat analizowania architektury i zalety każdego składni zapytania, zobacz [jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search](search-lucene-query-architecture.md).
 
 ## <a name="how-to-invoke-simple-parsing"></a>Jak wywołać prostą analizy
 
@@ -44,38 +44,38 @@ Jako ten dźwięki utrudnione jest jednym z aspektów wykonywania zapytań w us�
 
 Zwykle jest bardziej prawdopodobne wyświetlić te zachowania we wzorcach interakcji użytkownika dla aplikacji, które przeszukiwać zawartość, której użytkownicy są bardziej prawdopodobne uwzględnić operator w zapytaniu, w przeciwieństwie do witryny handlu elektronicznego, które mają więcej wbudowanych struktury nawigacji. Aby uzyskać więcej informacji, zobacz [NOT operator](#not-operator). 
 
-## <a name="operators-in-simple-search"></a>Operatory w proste wyszukiwanie
+## <a name="boolean-operators-and-or-not"></a>Operatory logiczne (AND, OR, NOT) 
 
 Operatorzy mogą osadzać w ciągu zapytania, aby zbudować bogaty zestaw kryteriów, wobec których zostaną znalezione pasujących dokumentów. 
 
-## <a name="and-operator-"></a>AND — operator `+`
+### <a name="and-operator-"></a>AND — operator `+`
 
 Operator i jest znak plus. Na przykład `wifi+luxury` wyszuka dokumentów zawierających zarówno `wifi` i `luxury`.
 
-## <a name="or-operator-"></a>OR — operator `|`
+### <a name="or-operator-"></a>OR — operator `|`
 
 OR operator jest pionowy pasek lub znaku kreski pionowej. Na przykład `wifi | luxury` wyszuka dokumenty zawierające jedną `wifi` lub `luxury` lub obu.
 
 <a name="not-operator"></a>
 
-## <a name="not-operator--"></a>NOT — operator `-`
+### <a name="not-operator--"></a>NOT — operator `-`
 
 Operator nie jest znakiem minus. Na przykład `wifi –luxury` wyszukiwanie dokumentów, których `wifi` termin i/lub nie masz `luxury` (i/lub jest kontrolowana przez `searchMode`).
 
 > [!NOTE]  
 >  `searchMode` Opcji kontrolki, czy termin za pomocą operatora nie jest wykonywana operacja logiczna inne warunki zapytania w przypadku braku `+` lub `|` operatora. Pamiętamy `searchMode` może być ustawiony na `any` (ustawienie domyślne) lub `all`. Jeśli używasz `any`, zwiększy odwołania zapytań, tym więcej wyników i domyślnie `-` będzie interpretowana jako "Lub NOT". Na przykład `wifi -luxury` będzie pasował do dokumentów, albo zawierają wyrażenia `wifi` lub tych, które nie zawierają termin `luxury`. Jeśli używasz `all`, zwiększy dokładność zapytania umieszczając mniejszej liczby wyników i domyślnie -, będzie interpretowany jako ", a nie". Na przykład `wifi -luxury` będzie pasował do dokumentów, które zawierają termin `wifi` i nie zawierają termin "luksusowe". Prawdopodobnie jest to bardziej intuicyjne zachowanie `-` operatora. W związku z tym, należy rozważyć użycie `searchMode=all` zamiast `searchMode=any` Jeśli chcesz zoptymalizować wyszukuje dokładności zamiast odwołania, *i* użytkownicy często korzystają z `-` operatora w wynikach wyszukiwania.
 
-## <a name="suffix-operator-"></a>Operator sufiks `*`
+## <a name="suffix-operator"></a>Operator sufiks
 
-Operator sufiks jest znak gwiazdki. Na przykład `lux*` wyszukiwanie dokumentów, które mają termin, który rozpoczyna się od `lux`, bez uwzględnienia wielkości liter.  
+Operator sufiks jest znak gwiazdki `*`. Na przykład `lux*` wyszukiwanie dokumentów, które mają termin, który rozpoczyna się od `lux`, bez uwzględnienia wielkości liter.  
 
-## <a name="phrase-search-operator--"></a>Operator wyszukiwania fraz `" "`
+## <a name="phrase-search-operator"></a>Operator wyszukiwania fraz
 
-Operator frazy otacza frazę w cudzysłów. Na przykład `Roach Motel` (bez cudzysłowu) będzie wyszukiwać dokumenty zawierające `Roach` i/lub `Motel` w dowolnej kolejności, w dowolnym miejscu `"Roach Motel"` (z cudzysłowami) spowoduje dopasowanie tylko dokumentów zawierających tego cała fraza razem i w tym kolejność (nadal obowiązuje ograniczenie Analiza tekstu).
+Operator frazy otacza frazę w cudzysłów `" "`. Na przykład `Roach Motel` (bez cudzysłowu) będzie wyszukiwać dokumenty zawierające `Roach` i/lub `Motel` w dowolnej kolejności, w dowolnym miejscu `"Roach Motel"` (z cudzysłowami) spowoduje dopasowanie tylko dokumentów zawierających tego cała fraza razem i w tym kolejność (nadal obowiązuje ograniczenie Analiza tekstu).
 
-## <a name="precedence-operator--"></a>Pierwszeństwo operatorów `( )`
+## <a name="precedence-operator"></a>Pierwszeństwo operatorów
 
-Operator pierwszeństwo dodaje ciągu w nawiasach. Na przykład `motel+(wifi | luxury)` wyszuka dokumenty zawierające termin motel, a następnie `wifi` lub `luxury` (lub obu). |  
+Operator pierwszeństwo dodaje ciągu w nawiasach `( )`. Na przykład `motel+(wifi | luxury)` wyszuka dokumenty zawierające termin motel, a następnie `wifi` lub `luxury` (lub obu).  
 
 ## <a name="escaping-search-operators"></a>Anulowanie operatory wyszukiwania  
 

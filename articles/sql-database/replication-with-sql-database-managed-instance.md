@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 164448f2e96b796d21419e90a3965390f22d7d38
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b20a119a69ac796bc9ea85083d335f0a7d2fdf2d
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762980"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417959"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w bazie danych wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -45,13 +45,13 @@ Konfigurowanie wystąpienia zarządzanego do działania jako wydawca lub dystryb
 Obsługuje:
 
 - Replikacji transakcyjnej i migawki różnych lokalnego programu SQL Server i wystąpienia zarządzanego usługi Azure SQL Database.
-- Subskrybenci mogą należeć do bazy danych programu SQL Server w środowisku lokalnym, pojedynczych baz danych w usłudze Azure SQL Database lub bazy danych w puli w elastycznych pulach usługi Azure SQL Database.
+- Subskrybenci mogą znajdować się w lokalnych baz danych programu SQL Server, pojedynczej bazy danych/wystąpienia zarządzane przez usługę Azure SQL Database lub bazy danych w puli w elastycznych pulach usługi Azure SQL Database.
 - Jednokierunkowa lub replikację dwukierunkową.
 
 Następujące funkcje nie są obsługiwane w wystąpieniu zarządzanym usługi Azure SQL Database:
 
 - Aktualizowalne subskrypcje.
-- Replikacja aktywnej replikacji geograficznej.
+- [Replikacji dla aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) i [automatyczny tryb failover grupy](sql-database-auto-failover-group.md) nie powinny być używane, jeśli skonfigurowano replikacji transakcyjnej.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Skonfiguruj publikowanie i dystrybucję przykład
 

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: ed91425ca56278eccf21c10db6360b4f770b0660
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226542"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437581"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -48,7 +48,6 @@ FunctionsProject
  | - host.json
  | - package.json
  | - extensions.csproj
- | - bin
 ```
 
 W folderze głównym projektu jest wspólny [host.json](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma folder z pliku z kodem (js) i plik konfiguracji powiązania (function.json). Nazwa `function.json`w katalogu nadrzędnym jest zawsze nazwę funkcji.
@@ -616,6 +615,10 @@ Podczas tworzenia aplikacji funkcji, która korzysta z planu usługi App Service
 ### <a name="cold-start"></a>Zimny Start
 
 Po rozpoczęciu tworzenia usługi Azure Functions w bez użycia serwera modelu hostingu zimnych są mogą stać się rzeczywistością. *Zimnego* odnosi się do faktu, że podczas uruchamiania aplikacji funkcji po raz pierwszy po okresie braku aktywności, zajmuje więcej czasu uruchamiania. Dla funkcji języka JavaScript przy użyciu drzewa duże zależności w szczególności zimnego mogą być znaczące. Aby przyspieszyć proces zimnego [uruchamiać swoje funkcje jako plik pakietu](run-functions-from-deployment-package.md) gdy jest to możliwe. Wiele metod wdrożenia za pomocą polecenia Uruchom z modelu pakietu domyślnie, ale jeśli występują duże zimnych startów i nie działają w ten sposób, ta zmiana może oferować wprowadzono znaczące ulepszenia.
+
+### <a name="connection-limits"></a>Limity połączeń
+
+Korzystając z klienta specyficzne dla usługi w aplikacji usługi Azure Functions, nie należy tworzyć nowych klientów za pomocą każdego wywołania funkcji. Zamiast tego utworzyć pojedynczy statyczny klienta w zakresie globalnym. Aby uzyskać więcej informacji, zobacz [Zarządzanie połączeniami w usłudze Azure Functions](manage-connections.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

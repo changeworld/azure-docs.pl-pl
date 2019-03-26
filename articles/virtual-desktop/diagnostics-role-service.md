@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: a9b8be58e8dfb27fbe896cf1c8d8dc0e91e3b24c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402851"
+ms.locfileid: "58418639"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>Identyfikowanie problemów z funkcją Diagnostyka
+# <a name="identify-issues-with-the-diagnostics-feature"></a>Identyfikowanie problemów za pomocą funkcji diagnostyki
 
 Windows wirtualnego pulpitu (wersja zapoznawcza) oferuje funkcję diagnostyki, która pozwala administratorowi na identyfikowaniu problemów za pomocą jednego interfejsu. Role pulpitu wirtualnego Windows rejestrowanie diagnostyczne działania zawsze wtedy, gdy użytkownik korzysta z systemu. Każdy dziennik zawiera istotne informacje, takie jak role pulpitu wirtualnego Windows zaangażowane w transakcji, komunikaty o błędach, informacji o dzierżawie i informacje o użytkowniku. Działania diagnostyczne są tworzone przez użytkowników końcowych i czynności administracyjnych i mogą zostać podzielone na trzy przedziały główne:
 
@@ -32,20 +32,20 @@ Wirtualny diagnostyki pulpitu Windows używa tylko jednego polecenia cmdlet prog
 
 ### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Pobrać diagnostycznych działania w ramach dzierżawy
 
-Możesz pobrać działania diagnostyczne, wprowadzając **Get RdsDiagnosticsActivities** polecenia cmdlet. Następujące przykładowe polecenie cmdlet zwróci listę działań diagnostycznych, posortowane od najczęściej do najrzadziej najstarsza.
+Możesz pobrać działania diagnostyczne, wprowadzając **Get RdsDiagnosticActivities** polecenia cmdlet. Następujące przykładowe polecenie cmdlet zwróci listę działań diagnostycznych, posortowane od najczęściej do najrzadziej najstarsza.
 
 ```powershell
-Get-RdsDiagnosticsActivities -TenantName <tenantName>
+Get-RdsDiagnosticActivities -TenantName <tenantName>
 ```
 
 Podobnie jak inne polecenia cmdlet programu PowerShell pulpitu wirtualnego Windows, należy użyć **- TenantName** parametru do określenia nazwy dzierżawy, którego chcesz użyć dla zapytania. Nazwa dzierżawy jest stosowana dla prawie wszystkich zapytań działania diagnostyczne.
 
 ### <a name="retrieve-detailed-diagnostic-activities"></a>Pobrać szczegółowe działania diagnostyczne
 
-**— Szczegółowe** parametru udostępnia dodatkowe szczegóły dla każdego działania diagnostyczne zwracane. Format dla każdego działania różni się w zależności od typu działania. **— Szczegółowe** parametru można dodać do dowolnego **Get RdsDiagnosticsActivities** zbadać, jak pokazano w poniższym przykładzie.
+**— Szczegółowe** parametru udostępnia dodatkowe szczegóły dla każdego działania diagnostyczne zwracane. Format dla każdego działania różni się w zależności od typu działania. **— Szczegółowe** parametru można dodać do dowolnego **Get RdsDiagnosticActivities** zbadać, jak pokazano w poniższym przykładzie.
 
 ```powershell
-Get-RdsDiagnosticsActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
 ```
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Pobieranie określonego Identyfikatora działania przez działania diagnostyczne

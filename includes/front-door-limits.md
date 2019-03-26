@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 9/17/2018
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: e3fa5616518675d8475937ec63afdd8e1742e8c6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a3a43c56a49c243390eac964d31988b7d30fbb56
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553841"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407774"
 ---
 | Zasób | Limit domyślny |
 | --- | --- |
@@ -41,4 +41,4 @@ ms.locfileid: "57553841"
 |  | Za pomocą (CTE) Kodowanie fragmentaryczne transferu | Bez segmentu HTTP |
 | ---- | ------- | ------- |
 | **Pobieranie** | Nie ma żadnego limitu na rozmiar pobieranych elementów. | Nie ma żadnego limitu na rozmiar pobieranych elementów. |
-| **Przekazywanie** |  Nie ma żadnego limitu, tak długo, jak każde przekazanie CTE jest mniejszy niż 28.6 MB. | Rozmiar nie może być większa niż 28.6. MB. |
+| **Przekazywanie** |  Nie ma żadnego limitu, tak długo, jak każde przekazanie CTE jest mniejszy niż 2 GB. | Rozmiar nie może być większa niż 2 GB. |

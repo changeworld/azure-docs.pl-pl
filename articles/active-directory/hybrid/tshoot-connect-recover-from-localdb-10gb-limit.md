@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 194f422c1567103e41f3b39f8510931b1f4762b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105186"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435603"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Program Azure AD Connect: Jak usunąć limit 10 GB dla lokalnej bazy danych
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowanego z programem Azure AD Connect lub użyć własnego pełnego programu SQL. Program SQL Server Express narzuca limit rozmiaru w wysokości 10 GB. Jeśli jest używany program LocalDB i limit zostanie osiągnięty, usługa synchronizacji programu Azure AD Connect nie będzie mogła uruchomić się ani prawidłowo wykonywać synchronizacji. Ten artykuł zawiera kroki odzyskiwania.
@@ -87,7 +87,7 @@ Domyślnie program Azure AD Connect przechowuje siedem dni, przez które dane hi
 
 3. W obszarze **akcje**, wybierz opcję **uruchomień Clear**...
 
-4. Można wybrać **wyczyść wszystkie przebiegi** lub **wyczyść jest uruchamiany przed... <date>**  opcji. Zaleca się uruchamiania przez wyczyszczenie danych historii, które są starsze niż dwa dni uruchamiania. Jeśli będziesz kontynuować napotkać problem rozmiar bazy danych, wybierz **wyczyść wszystkie przebiegi** opcji.
+4. Można wybrać **wyczyść wszystkie przebiegi** lub **wyczyść jest uruchamiany przed... \<daty >** opcji. Zaleca się uruchamiania przez wyczyszczenie danych historii, które są starsze niż dwa dni uruchamiania. Jeśli będziesz kontynuować napotkać problem rozmiar bazy danych, wybierz **wyczyść wszystkie przebiegi** opcji.
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>Skróć okres przechowywania danych historii uruchamiania
 Ten krok jest zmniejszenie prawdopodobieństwa przekroczone problem limitu 10 GB po wiele cykli synchronizacji.

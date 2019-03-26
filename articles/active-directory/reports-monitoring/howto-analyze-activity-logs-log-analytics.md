@@ -3,7 +3,7 @@ title: Analizowanie dzienników aktywności usługi Azure Active Directory przy 
 description: Dowiedz się, jak analizować Dzienniki aktywności usługi Azure Active Directory przy użyciu dzienników usługi Azure Monitor (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aca7f0dbe0906ea0e1572f4580d8937ebf3eee64
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6e195dd0e52b4938e829ea0aec1f4cc3ef7107c0
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823261"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436816"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Analizowanie usługi Azure AD dzienników aktywności przy użyciu dzienników usługi Azure Monitor (wersja zapoznawcza)
 
@@ -102,7 +102,7 @@ Widoki analizy dziennika wstępnie utworzonych dla działania usługi Azure AD m
 * **Zdarzenia logowania**: Ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności logowania, takich jak logowania w aplikacji, użytkowników, urządzeń, a także śledzenia liczby operacji logowania wraz z upływem czasu widok podsumowania.
 * **Użytkownicy wyrażania zgody**: Ten widok przedstawia raportów związanych z zgody użytkownika, takie jak zgody przyznaje przez użytkownika, logowania przez użytkowników, którzy uzyska zatwierdzenie, a także logowania przez aplikację dla wszystkich aplikacji opartych na zgody. 
 
-Dowiedz się, jak [Instalowanie i używanie widoków analizy dzienników dla działania usługi Azure AD dzienniki](howto-install-use-log-analytics-views.md). 
+Dowiedz się, jak [zainstalować widoki usługi Log Analytics dla dzienników aktywności usługi Azure AD i używać ich](howto-install-use-log-analytics-views.md). 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

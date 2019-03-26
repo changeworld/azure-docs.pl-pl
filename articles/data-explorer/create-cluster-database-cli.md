@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia'
+title: 'Szybki start: Tworzenie klastra Eksploratora danych usługi Azure i bazy danych przy użyciu wiersza polecenia platformy Azure'
 description: Dowiedz się, w jaki sposób utworzyć klaster i bazę danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia platformy Azure
 services: data-explorer
 author: radennis
@@ -7,15 +7,15 @@ ms.author: radennis
 ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 2/4/2019
-ms.openlocfilehash: ca4ffce1ae966d2bb8fb187c9b04938330969641
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 3/25/2019
+ms.openlocfilehash: 2a77671ca405a69ec87e335004a84acb2e649c2c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286333"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418656"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>Tworzenie klastra i bazy danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Tworzenie klastra Eksploratora danych usługi Azure i bazy danych przy użyciu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
@@ -23,9 +23,9 @@ ms.locfileid: "58286333"
 > * [Program PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+>
 
-W tym przewodniku Szybki start opisano sposób tworzenia klastra i bazy danych usługi Azure Data Explorer przy użyciu interfejsu wiersza polecenia platformy Azure.
+Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki Start utworzysz klaster i bazę danych przy użyciu wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,7 +45,7 @@ Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Azure 
     az login
     ```
 
-2. Ustaw subskrypcję, w której chcesz utworzyć klaster. Zastąp wartość `MyAzureSub` nazwą subskrypcji platformy Azure, której chcesz użyć:
+1. Ustaw subskrypcję, w której chcesz utworzyć klaster. Zastąp wartość `MyAzureSub` nazwą subskrypcji platformy Azure, której chcesz użyć:
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
@@ -67,7 +67,7 @@ Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Azure 
 
     Istnieją dodatkowe parametry opcjonalne, których można używać, takie jak pojemność klastra.
 
-2. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
+1. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
 
     ```azurecli-interactive
     az kusto cluster show --name azureclitest --resource-group testrg
@@ -91,7 +91,7 @@ Jeśli wynik zawiera element `provisioningState` o wartości `Succeeded`, klaste
    | soft-delete-period | *3650:00:00:00* | Okres przechowywania danych na potrzeby zapytań. |
    | hot-cache-period | *3650:00:00:00* | Okres przechowywania danych w pamięci podręcznej. |
 
-2. Uruchom następujące polecenie, aby wyświetlić utworzoną bazę danych:
+1. Uruchom następujące polecenie, aby wyświetlić utworzoną bazę danych:
 
     ```azurecli-interactive
     az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest

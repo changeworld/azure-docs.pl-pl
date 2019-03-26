@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 73f97128dc7b71179c0b0ab41340af6c0f371da1
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 0d898c8d2273c431967603c36c8ff9d0dd8b4b7b
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402970"
+ms.locfileid: "58417857"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Wymagania systemowe w usłudze Azure brama pola danych
 
@@ -31,7 +31,7 @@ Bazowego systemu hosta dla bramy pole danych jest w stanie dedykować następuj�
 
 | Specyfikacje                                          | Opis              |
 |---------------------------------------------------------|--------------------------|
-| Procesory wirtualne (rdzenie)   | Minimum 4 |            
+| Procesory wirtualne (rdzenie)   | Minimum 4 |
 | Memory (Pamięć)  | Minimum 8 GB|
 | Dostępność|Jeden węzeł|
 | Dyski| Dysk systemu operacyjnego: 250 GB <br> Dysk z danymi: minimum 2 TB, alokowany elastycznie, wymagane dyski SSD|

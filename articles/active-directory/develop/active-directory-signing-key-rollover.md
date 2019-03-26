@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5597937ff0bc44b55deb43ccc45b618a1bb8fec
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 82e9941a6c468a3b0ed9d1f22a2970cfa6584617
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186103"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439349"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza w usłudze Azure Active Directory podpisywania
 W tym artykule opisano, co musisz wiedzieć o publiczne klucze, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy zauważyć, że te przerzucania kluczy w regularnych odstępach czasu, a w nagłych wypadkach można od razu przenoszone. Wszystkie aplikacje, które używają usługi Azure AD powinien móc programowo obsługuje procesu przerzucania klucza lub ustanowienia okresowe ręczne Przerzucanie procesu. Kontynuuj czytanie, aby zrozumieć, jak działają klawisze jak ocenić wpływ przerzucania do aplikacji i jak zaktualizować aplikację lub ustanowienia procesu okresowe ręczne Przerzucanie do obsługi Przerzucanie klucza, jeśli to konieczne.
@@ -278,7 +278,7 @@ Po wykonaniu tych kroków pliku Web.config aplikacji zostaną zaktualizowane prz
 
 Wykonaj poniższe kroki, aby sprawdzić, czy działa logiki przerzucania klucza.
 
-1. Po upewnieniu się, że aplikacja używa powyższy kod, otwórz **Web.config** plików i przejdź do **<issuerNameRegistry>** bloku, w szczególności wyszukiwania dla następujących kilka wierszy:
+1. Po upewnieniu się, że aplikacja używa powyższy kod, otwórz **Web.config** plików i przejdź do  **\<issuerNameRegistry >** bloku, w szczególności wyszukiwanie Po kilku wierszy:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -286,7 +286,7 @@ Wykonaj poniższe kroki, aby sprawdzić, czy działa logiki przerzucania klucza.
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. W **<add thumbprint="">** Zmień wartość odcisku palca, zastępując inny dowolny znak. Zapisz **Web.config** pliku.
+2. W  **\<dodać odcisk palca = "" >** Zmień wartość odcisku palca, zastępując inny dowolny znak. Zapisz **Web.config** pliku.
 3. Kompiluj aplikację, a następnie uruchom go. Jeśli można ukończyć procesu logowania, aplikacja pomyślnie aktualizuje klucz pobierając wymaganych informacji z dokumentu metadanych federacji w Twoim katalogu. Jeśli występują problemy z logowaniem, upewnij się, zmiany w aplikacji są poprawne, czytając [Dodawanie logowania jednokrotnego do usługi sieci Web Application Using usługi Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) artykułu, lub pobierania i zapoznanie się poniższy przykładowy kod: [Aplikacja w chmurze wielu dzierżaw usługi Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Windows Identity Foundation (WIF) w wersji 1.0 programu .NET 3.5 i aplikacji sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2008 lub 2010

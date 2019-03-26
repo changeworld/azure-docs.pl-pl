@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 696f4fee95926009ebda0be3c28672838d89edda
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 31a50d1dab0d5b62ab4dd549127e9092148bd88c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400433"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438091"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Co to jest usługa Azure Data Box Edge? 
 
@@ -65,22 +65,6 @@ Rozwiązanie Data Box Edge oferuje następujące możliwości:
 |Odporność     | Wbudowana odporność sieci.        |
 
 
-## <a name="features-and-specifications"></a>Funkcje i specyfikacje
-
-Urządzenie fizyczne Data Box Edge oferuje następujące funkcje:
-
-| Funkcje/dane techniczne                                          | Opis              |
-|---------------------------------------------------------|--------------------------|
-| Wymiary   | Szerokość: 17.25" głębi: 27.25" height: 1.75”<br>(bez oczek i uchwytów zasilacza)  |            
-| Miejsce w stojaku|1U po umieszczeniu w stojaku|
-| Kable| 2 kable zasilające<br>2 kable RJ-45 1 GB/s<br>2 kable miedziane SFP+ 10 GB/s|
-| Składniki|2 wbudowane zasilacze|
-| Procesor CPU|2 10-rdzeniowe procesory Intel Xeon  |
-| Memory (Pamięć)| 64 GB pamięci RAM|
-| Dyski| 8 dysków SSD NVMe, każdy dysk o pojemności 1,6 TB <br> Awaria jednego dysku SSD NVMe powoduje awarię systemu. |
-| Pojemność magazynu lokalnego| Całkowita pojemność 12,8 TB|
-| Interfejsy sieciowe| 2 interfejsy 1 GbE — 1 do zarządzania, bez możliwości konfigurowania przez użytkownika, używany do konfiguracji początkowej. Drugi interfejs może być konfigurowany przez użytkownika i służyć do transferu danych. Domyślnie jest interfejsem DHCP. <br>2 interfejsy 25 GbE — mogą również działać jako interfejsy 10 GbE. Te interfejsy danych mogą być konfigurowane przez użytkownika jako DHCP (ustawienie domyślne) lub statyczne. <br> 2 interfejsy 25 GbE — te interfejsy danych mogą być konfigurowane przez użytkownika jako DHCP (ustawienie domyślne) lub statyczne.|
-
 ## <a name="components"></a>Składniki
 
 Rozwiązanie Data Box Edge składa się z zasobu rozwiązania Data Box Edge, urządzenia fizycznego Data Box Edge i lokalnego internetowego interfejsu użytkownika.
@@ -105,30 +89,16 @@ Rozwiązanie Data Box Edge składa się z zasobu rozwiązania Data Box Edge, urz
 Urządzenie fizyczne Data Box Edge, zasób platformy Azure i docelowe konto magazynu, do którego są transferowane dane, nie muszą znajdować się w tym samym regionie.
 
 - **Dostępność zasobu** — w tej wersji zasób rozwiązania Data Box Edge jest dostępny w następujących regionach:
-    - **Stany Zjednoczone** — Zachodnie stany USA 2 i Wschodnie stany USA
+    - **Stany Zjednoczone** — wschodnie stany USA
     - **Unia Europejska** — Europa Zachodnia
     - **Azja i Pacyfik** — Azja Południowo-Wschodnia
-
+    
+    Brama pola danych można wdrożyć w taki sposób, w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest platforma Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+    
 - **Docelowe konta magazynu** — konta magazynu, w których są przechowywane dane, są dostępne we wszystkich regionach platformy Azure. 
 
     Regiony, w których znajdują się konta magazynu zawierające dane przesłane za pomocą rozwiązania Data Box, powinny mieścić się blisko lokalizacji urządzenia, aby zapewnić optymalną wydajność. Duża odległość konta magazynu od urządzenia powoduje długie opóźnienia i mniejszą wydajność. 
 
-
-## <a name="sign-up"></a>Rejestrowanie
-
-Rozwiązanie Data Box Edge jest dostępne w wersji zapoznawczej i musisz utworzyć jego konto. Wykonaj poniższe kroki, aby utworzyć konto usługi Data Box Gateway:
-
-1. Zaloguj się do witryny Azure Portal pod adresem [https://aka.ms/databox-edge](https://aka.ms/databox-edge).
-
-2. Wybierz subskrypcję, w której chcesz używać rozwiązania Data Box Edge w wersji zapoznawczej. Wybierz region, w którym chcesz wdrożyć zasób rozwiązania Data Box Edge. W opcji rozwiązania Data Box Edge kliknij pozycję **Utwórz konto**.
-
-    ![Tworzenie konta rozwiązania Data Box Edge 3](media/data-box-edge-overview/data-box-edge-sign-up3.png)
-
-3.  Odpowiedz na pytania dotyczące kraju przechowywania danych, przedziału czasowego, docelowej usługi platformy Azure na potrzeby transferu danych, przepustowości sieci i częstotliwości transferu danych. Przejrzyj **zasady ochrony prywatności i warunki** i zaznacz pole wyboru obok pozycji **Firma Microsoft może używać Twojego adresu e-mail do kontaktu**.
-
-    ![Tworzenie konta rozwiązania Data Box Edge 4](media/data-box-edge-overview/data-box-edge-sign-up4.png)
-
-4. Po utworzeniu konta i włączeniu opcji korzystania z wersji zapoznawczej można zamówić usługę Data Box Edge.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,62 +1,53 @@
 ---
-title: Informacje o wersji usługi Azure Data Box — wersja zapoznawcza bramy | Dokumentacja firmy Microsoft
-description: Opisuje krytyczne nierozwiązane problemy i rozwiązania dla usługi Azure Gateway pole danych, systemem w wersji zapoznawczej.
+title: Informacje o wersji platformy Azure Data Box bramy ogólnodostępnej | Dokumentacja firmy Microsoft
+description: W tym artykule opisano krytyczne nierozwiązane problemy i rozwiązania dla bramy Azure pole danych, w wersji ogólnodostępnej.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 0265de5b224e62d188fe6e3b9322d5c2e3f77fa1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f3e07d745d83041afc9dafd64678a3ac4a65012
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883138"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418036"
 ---
-# <a name="azure-data-box-gateway-preview-release-notes"></a>Informacje o wersji usługi Azure Data Box — wersja zapoznawcza bramy
+# <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Informacje o wersji platformy Azure dane pole Edge/Azure dane pole bramy ogólnodostępnej
 
 ## <a name="overview"></a>Przegląd
 
-W poniższych informacjach o Zidentyfikuj krytyczne nierozwiązane problemy i rozwiązane problemy w wersji zestawu pole bramy pakietu Microsoft Azure danych w wersji zapoznawczej.
+W poniższych informacjach o Zidentyfikuj krytyczne nierozwiązane problemy i rozwiązane problemy dla ogólna dostępność (GA) wersji dla usługi Azure Data Box Edge i bramy pola danych platformy Azure.
 
-Informacje o wersji są ciągle aktualizowane, a ponieważ są wszystkie wykrywane krytyczne problemy wymagające obejścia są dodawane. Przed wdrożeniem bramy pola danych, należy uważnie przeczytaj informacje zawarte w informacjach o wersji.
+Informacje o wersji są ciągle aktualizowane, a ponieważ są wszystkie wykrywane krytyczne problemy wymagające obejścia są dodawane. Przed wdrożeniem bramy okno usługi Edge i dane pole danych, należy uważnie przeczytaj informacje zawarte w informacjach o wersji.
 
-W wersji zapoznawczej odnosi się do wersji oprogramowania **dane pole bramy (wersja zapoznawcza) wersja 2.0**.
+Wersja Ogólnodostępna odnosi się do wersji oprogramowania:
 
-## <a name="issues-fixed-in-preview-release"></a>Problemy rozwiązane w wersji zapoznawczej
-
-Poniższa tabela zawiera podsumowanie problemów rozwiązanych w tej wersji.
-
-| Nie. | Problem |
-| --- | --- |
-| **1.** | W tej wersji gdy plik, który został przekazany przez inne narzędzie (AzCopy) jest odświeżane, a następnie zaktualizowane w taki sposób, że wzrost/rozszerza rozmiar pliku następnie następujący błąd zostanie wykryty: *Błąd 400: InvalidBlobOrBlock (określona zawartość obiektu blob lub bloku jest nieprawidłowy).*|
-| **2.** |Z powodu błędu w tej wersji, może zostać wyświetlony wystąpień kod błędu: 110 w *error.xml* z nazwami nierozpoznany element. | 
-| **3.** |Z powodu błędu w tej wersji może zostać wyświetlony wystąpień 2003. kod błędu w trakcie przekazywania określonych plików. | 
-| **4.** |W tej wersji można odświeżyć tylko jeden udział w danym momencie. | 
+- **Brama pola danych 1903 (1.5.810.441)**
+- **Data Box Edge 1903 (1.5.810.441)**
 
 
-## <a name="known-issues-in-preview-release"></a>Znane problemy w wersji zapoznawczej
+## <a name="whats-new"></a>Co nowego
 
-Poniższa tabela zawiera podsumowanie znanych problemów występujących dla bramy pola danych, systemem w wersji zapoznawczej.
+- **Nowe obrazy dysku wirtualnego** -nowego dysku VHDX i VMDK są teraz dostępne w witrynie Azure portal. Pobierz te obrazy do aprowizowanie, konfigurowanie i wdrażanie nowych urządzeń bramy pola danych wersji ogólnie dostępnej. Urządzenia bramy pola danych, utworzony w starszej wersji zapoznawczej, nie można zaktualizować wersji do tej wersji. Aby uzyskać więcej informacji, przejdź do [przygotowanie do wdrożenia usługi Azure Gateway pole danych](data-box-gateway-deploy-prep.md).
+- **Obsługa systemu plików NFS** — Obsługa systemu plików NFS jest obecnie w wersji zapoznawczej i jest dostępna w wersji 3.0 i 4.1 klientów uzyskujących dostęp do urządzeń krawędź pola danych i bramy pola danych.
+- **Odporność magazynu** — urządzenia usługi Edge pole danych może wytrzymać awarii dysk z danymi za pomocą funkcji odporność magazynu. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Odporność magazynu można włączyć, zaznaczając **odporne na błędy** opcji **ustawienia magazynu** lokalnej interfejs użytkownika sieci web.
+
+
+## <a name="known-issues-in-ga-release"></a>Znane problemy w wersji ogólnie dostępnej wersji
+
+Poniższa tabela zawiera podsumowanie znanych problemów występujących dla bramy pola danych z wersją.
 
 | Nie. | Cecha | Problem | Obejście/komentarzy |
 | --- | --- | --- | --- |
-| **1.** |Aktualizacje |Urządzenia bramy pola danych, utworzony w starszej wersji zapoznawczej, nie można zaktualizować wersji do tej wersji. |Pobieranie obrazów dysku wirtualnego z nowej wersji i konfigurowanie i wdrażanie nowych urządzeń. Aby uzyskać więcej informacji, przejdź do [przygotowanie do wdrożenia usługi Azure Gateway pole danych](data-box-gateway-deploy-prep.md). |
-| **2.** |Dysk aprowizowane dane |Po aprowizowaniu dysk z danymi o określonym rozmiarze określonym i utworzyć odpowiednią bramę pole danych, należy nie zmniejszania dysk z danymi. Podjęto próbę zmniejszania wyniki dysku spowoduje utratę wszystkich danych lokalnych na urządzeniu. | |
-| **3.** |Zmiana nazwy |Zmiana nazwy obiektów nie jest obsługiwana. |Jeśli ta funkcja ma kluczowe znaczenie podczas przepływu pracy, skontaktuj się z Microsoft Support. |
-| **4.** |Copy| Jeśli plik tylko do odczytu jest kopiowany do urządzenia, właściwości tylko do odczytu nie są zachowywane. | |
-| **5.** |Typy plików | Nie są obsługiwane następujące typy plików systemu Linux: znak plików bloku, gniazda, potoki, plików łącza symbolicznego.  |Kopiowanie tych plików wyników w plikach długość 0 tworzonych na systemu plików NFS jest udostępnianie. Te pliki pozostają w stanie błędu i są również zgłaszane w *error.xml*. |
-| **6.** |Usuwanie | Z powodu błędu w tej wersji usunięcie udziału NFS następnie udział mogą nie zostać usunięte. Będzie wyświetlany stan udziału *usuwanie*.  |Dzieje się tak, tylko wtedy, gdy udział jest przy użyciu nazwy pliku nieobsługiwany. |
-| **7.** |Odświeżanie | Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w ramach operacji odświeżania.  | |
-| **8.** |Copy | Kopiowanie danych kończy się niepowodzeniem z powodu błędu:  Nie można ukończyć żądanej operacji ze względu na ograniczenia systemu plików.  |Ten błąd występuje, gdy alternatywne Data Stream (ADS) skojarzone z plikiem przekracza 128 KB (maksymalny limit dla systemu plików ReFS).  |
-| **9.** |Linki symboliczne |Łącza symbolicznego nie są obsługiwane.  |Linki symboliczne z katalogami spowodować katalogi, które nigdy nie wprowadzenie oznaczone w trybie offline. W rezultacie nie widać szarego między na katalogi, które wskazuje, że katalogi są w trybie offline i powiązanej zawartości całkowicie został przekazany na platformę Azure. |
-| **10.** |Udziały |Odświeżanie istniejącego kontenera za pomocą stronicowych obiektów blob, Udostępnij blokowych obiektów Blob (lub odwrotnie) prowadzi do przekazywania błędów w modyfikacji pliku.  |To zachowanie występuje, gdy należy wykonać następujące kroki: <li> Utwórz udział blokowych obiektów Blob na urządzeniu. </li><li> Skojarzyć udział z istniejącego kontenera w chmurze zawierającej stronicowych obiektów blob.</li><li>Odśwież tego udziału. </li><li>Modyfikowanie niektórych plików odświeżenia, które już są przechowywane jako stronicowe obiekty BLOB w chmurze.</li> Przekazywanie błędów są widoczne. |
-| **11.** |Pomoc online |Linki pomocy w witrynie Azure portal nie może połączyć się z dokumentacją.|Linki pomocy będzie działać w wersji ogólnodostępnej. |
+| **1.** |Typy plików | Nie są obsługiwane następujące typy plików: znak plików bloku, gniazda, potoki, plików łącza symbolicznego.  |Kopiowanie tych plików wyników w plikach długość 0 tworzonych na systemu plików NFS jest udostępnianie. Te pliki pozostają w stanie błędu i są również zgłaszane w *error.xml*. <br> Linki symboliczne z katalogami spowodować katalogi, które nigdy nie wprowadzenie oznaczone w trybie offline. W rezultacie nie widać szarego między na katalogi, które wskazuje, że katalogi są w trybie offline i powiązanej zawartości całkowicie został przekazany na platformę Azure. |
+| **2.** |Usuwanie | Z powodu błędu w tej wersji usunięcie udziału NFS następnie udział mogą nie zostać usunięte. Będzie wyświetlany stan udziału *usuwanie*.  |Dzieje się tak, tylko wtedy, gdy udział jest przy użyciu nazwy pliku nieobsługiwany. |
+| **3.** |Copy | Kopiowanie danych kończy się niepowodzeniem z powodu błędu:  Nie można ukończyć żądanej operacji ze względu na ograniczenia systemu plików.  |Alternatywne Data Stream (ADS) skojarzony z plików większych niż 128 KB nie jest obsługiwane.   |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Przygotowanie do wdrożenia usługi Azure Gateway pole danych](data-box-gateway-deploy-prep.md).
-
-
+- [Przygotowanie do wdrożenia usługi Azure Data Box Edge](data-box-edge-deploy-prep.md).

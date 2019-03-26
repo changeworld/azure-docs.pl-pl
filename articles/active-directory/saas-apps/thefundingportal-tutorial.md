@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3654168d5bd733c87c48d808ab4a668c5c03655e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: da06b8772cbf4f9f805952e19cff03791a86e4c7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370146"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437970"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą portalu finansowania
 
@@ -194,7 +194,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 2. Na liście aplikacji wybierz **Portal finansowania**.
 
-    ![Link Portal finansowania na liście aplikacji](common/all-applications.png)
+    ![Link finansowania portalu na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -212,13 +212,13 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 ### <a name="create-the-funding-portal-test-user"></a>Tworzenie użytkownika testowego finansowania Portal
 
-W tej sekcji utworzysz użytkownika w portalu finansowania o nazwie Britta Simon. Praca z [zespołem pomocy technicznej Portal finansowania](mailto:info@regenteducation.com) Aby dodać użytkowników na platformie finansowania Portal. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika w portalu finansowania o nazwie Britta Simon. Praca z [zespołem pomocy technicznej Portal finansowania](mailto:info@regenteducation.com) dodać użytkowników w portalu finansowania platformy. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Portal finansowania w panelu dostępu, możesz powinny być automatycznie zalogowany do portalu finansowanie, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Portal finansowania w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze finansowania Portal, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

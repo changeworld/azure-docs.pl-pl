@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 99148332a8310428cb73287d861ef71c35d59a26
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233204"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418605"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak utworzyć i zarządzać pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
 > [!div class="op_single_selector"]
@@ -50,16 +50,16 @@ Następujące właściwości są używane podczas tworzenia i aktualizowania pam
 | grupa zasobów |-g,--grupy zasobów |Nazwa grupy zasobów. |
 | location |-l,--lokalizacji |Lokalizacja, aby utworzyć pamięć podręczną. |
 | rozmiar |-z, — rozmiar |Rozmiar pamięci podręcznej platformy Azure dla usługi Redis. Prawidłowe wartości: [C0 C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
-| jednostka SKU |-x, --sku |Usługa redis jednostki SKU. Powinien być jednym z: [podstawowa, standardowa, Premium] |
+| sku |-x, --sku |Usługa redis jednostki SKU. Powinien być jednym z: [podstawowa, standardowa, Premium] |
 | EnableNonSslPort |-e,--enable bez protokołu ssl — portu |Właściwość EnableNonSslPort pamięci podręcznej Azure redis Cache. Dodaj tę flagę, jeśli chcesz włączyć Port bez protokołu SSL dla pamięci podręcznej |
 | Konfigurowanie pamięci podręcznej redis |-c, — konfiguracja pamięci podręcznej redis |Konfigurowanie pamięci podręcznej redis. Wprowadź ciąg formatu JSON konfiguracji kluczy i wartości w tym miejscu. Format: "{" ":""," ":" "}" |
 | Konfigurowanie pamięci podręcznej redis |-f, — plik w przypadku konfiguracji pamięci podręcznej redis |Konfigurowanie pamięci podręcznej redis. Wprowadź ścieżkę pliku zawierającego kluczy i wartości w tym miejscu konfiguracji. Format wpisu pliku: {"": "","": ""} |
 | Liczba fragmentów |-r,--liczba fragmentów |Liczba fragmentów, aby utworzyć na Cache klaster w warstwie Premium z usługą klastrowania. |
 | Virtual Network |-v,--sieci wirtualnej |W przypadku hostowania pamięci podręcznej w sieci Wirtualnej, określa dokładną ARM identyfikator zasobu sieci wirtualnej do wdrożenia usługi Azure Cache dla Redis w. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Typ klucza |-t, — typ klucza |Typ klucza do odnowienia. Prawidłowe wartości: [podstawowego, pomocniczego] |
-| StaticIP |-p,--static ip < static ip > |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podana, jeden jest wybierany automatycznie z podsieci. |
-| Podsieć |t, — podsieci <subnet> |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa nazwę podsieci, w której ma zostać wdrożony w pamięci podręcznej. |
-| VirtualNetwork |-v,--sieci wirtualnej <-sieci wirtualnej > |W przypadku hostowania pamięci podręcznej w sieci Wirtualnej, określa dokładną ARM identyfikator zasobu sieci wirtualnej do wdrożenia usługi Azure Cache dla Redis w. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| StaticIP |-p,--static ip \<static ip\> |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podana, jeden jest wybierany automatycznie z podsieci. |
+| Podsieć |t, — podsieci \<podsieci\> |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa nazwę podsieci, w której ma zostać wdrożony w pamięci podręcznej. |
+| VirtualNetwork |-v,--sieci wirtualnej \<sieci wirtualnej\> |W przypadku hostowania pamięci podręcznej w sieci Wirtualnej, określa dokładną ARM identyfikator zasobu sieci wirtualnej do wdrożenia usługi Azure Cache dla Redis w. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Subskrypcja |-s,--subskrypcji |Identyfikator subskrypcji. |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>Zobacz wszystkie usługi Azure Cache poleceń pamięci podręcznej Redis

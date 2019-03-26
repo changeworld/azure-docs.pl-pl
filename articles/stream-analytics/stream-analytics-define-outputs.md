@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c22b82dcd3438a8175457aa0963d52e84d582abf
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898877"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438503"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych.
@@ -127,6 +127,7 @@ Istnieje kilka parametrów, które są wymagane do skonfigurowania strumieni dan
 | Kodowanie | Dla woluminu CSV i JSON UTF-8 jest obsługiwany tylko format kodowania w tej chwili. |
 | Ogranicznik | Stosuje się tylko do serializacji woluminów CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, kartę i pionowy pasek. |
 | Format | Dotyczy tylko serializacji JSON. Rozdzielone Określa, że dane wyjściowe są formatowane przez każdy obiekt JSON, oddzielone znakiem nowego wiersza. Tablica Określa, że dane wyjściowe są formatowane jako tablica obiektów JSON. Ta tablica jest zamknięty, tylko wtedy, gdy zadanie zostanie zatrzymane lub usługi Stream Analytics została przeniesiona następny przedział czasu. Ogólnie rzecz biorąc, lepiej jest używać wiersza rozdzielonych JSON, ponieważ nie wymaga żadnej specjalnej obsługi, gdy nadal trwa zapisywanie pliku wyjściowego do. |
+| Kolumny właściwości [opcjonalnie] | Kolumny, które muszą być dołączane jako użytkownika właściwości komunikatu wychodzącego zamiast ładunku rozdzielone przecinkami. Więcej informacji na temat tej funkcji w sekcji "Niestandardowe właściwości metadanych dla danych wyjściowych" |
 
 ## <a name="power-bi"></a>Power BI
 [Usługa Power BI](https://powerbi.microsoft.com/) może służyć jako dane wyjściowe zadania usługi Stream Analytics zapewnienie rozbudowanego środowiska wizualizacji wyników analiz. Ta funkcja może służyć do operacyjne pulpity nawigacyjne, generowania raportu i metryk opartych na zgłoszenie.
@@ -230,6 +231,7 @@ Poniższa tabela zawiera listę nazw właściwości i ich opisy tworzenia kolejk
 | Kodowanie |Dla woluminu CSV i JSON UTF-8 jest obsługiwany tylko format kodowania w tej chwili |
 | Ogranicznik |Stosuje się tylko do serializacji woluminów CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, kartę i pionowy pasek. |
 | Format |Dotyczy tylko typu JSON. Rozdzielone Określa, że dane wyjściowe są formatowane przez każdy obiekt JSON, oddzielone znakiem nowego wiersza. Tablica Określa, że dane wyjściowe są formatowane jako tablica obiektów JSON. |
+| Kolumny właściwości [opcjonalnie] | Kolumny, które muszą być dołączane jako użytkownika właściwości komunikatu wychodzącego zamiast ładunku rozdzielone przecinkami. Więcej informacji na temat tej funkcji w sekcji "Niestandardowe właściwości metadanych dla danych wyjściowych" |
 
 Liczba partycji wynosi [na podstawie jednostki SKU magistrali usług i rozmiaru](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.
 
@@ -248,6 +250,7 @@ Poniższa tabela zawiera listę nazw właściwości i ich opisy, tworzenia danyc
 | Format serializacji zdarzeń |Format serializacji danych wyjściowych. JSON, CSV i format Avro są obsługiwane. |
 | Kodowanie |Jeśli przy użyciu formatu CSV lub JSON, należy określić kodowania. UTF-8 jest obsługiwany tylko format kodowania w tej chwili |
 | Ogranicznik |Stosuje się tylko do serializacji woluminów CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, kartę i pionowy pasek. |
+| Kolumny właściwości [opcjonalnie] | [Opcjonalnie] Kolumny, które muszą być dołączane jako użytkownika właściwości komunikatu wychodzącego zamiast ładunku rozdzielone przecinkami. Więcej informacji na temat tej funkcji w sekcji "Niestandardowe właściwości metadanych dla danych wyjściowych" |
 
 Liczba partycji wynosi [na podstawie jednostki SKU magistrali usług i rozmiaru](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.
 
@@ -293,6 +296,25 @@ W przypadku usługi Azure Stream Analytics otrzymuje 413 (żądanie podmiotu zby
 
 Ponadto w sytuacji, gdy istnieje żadne zdarzenie kierowanych do przedział czasu, jest generowane żadne dane wyjściowe. W rezultacie nie jest wywoływana funkcja computeResult. To zachowanie jest zgodne z wbudowanych funkcji agregujących okna.
 
+## <a name="custom-metadata-properties-for-output"></a>Właściwości niestandardowych metadanych dla danych wyjściowych 
+
+Ta funkcja umożliwia dołączenie kolumn kwerendy jako właściwości użytkownika do wiadomości wychodzących. Te kolumny, które nie przejdą w ładunku. Te właściwości są obecne w formie słownika komunikatu wyjściowego. Klucz jest nazwa kolumny, a wartość jest wartością kolumny ze słownika właściwości. Wszystkie typy danych usługi Stream Analytics są obsługiwane z wyjątkiem rekordu i tablicy.  
+
+Obsługiwane dane wyjściowe: 
+* Kolejki usługi Service Bus 
+* Tematy dotyczące usługi Service Bus 
+* Centrum zdarzeń 
+
+Przykład: W poniższym przykładzie dodamy 2 pola DeviceId i DeviceStatus metadanych. 
+* Zapytanie: `select *, DeviceId, DeviceStatus from iotHubInput` .
+* Konfiguracja danych wyjściowych: `DeviceId,DeviceStatus`.
+
+![Kolumny właściwości](./media/stream-analytics-define-outputs/10-stream-analytics-property-columns.png)
+
+Dane wyjściowe właściwości komunikatów inspekcji w Centrum zdarzeń za pomocą [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer).
+
+   ![Niestandardowe właściwości zdarzenia](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
 ## <a name="partitioning"></a>Partycjonowanie
 
 Poniższa tabela zawiera podsumowanie obsługi partycji i liczby modułów zapisywania danych wyjściowych, dla każdego typu danych wyjściowych:
@@ -302,7 +324,7 @@ Poniższa tabela zawiera podsumowanie obsługi partycji i liczby modułów zapis
 | Azure Data Lake Store | Yes | Użyj {date} i {time} tokenów w wzorzec prefiksu ścieżki. Wybierz format daty, takich jak RRRR/MM/DD, DD/MM/RRRR, MM-DD-RRRR. HH jest używany dla formatu godziny. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
 | Azure SQL Database | Yes | Oparte na klauzuli PARTITION BY w zapytaniu | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). Aby dowiedzieć się więcej na temat osiągania lepiej przepływności wydajność zapisu podczas ładowania danych do bazy danych SQL Azure, odwiedź stronę [dane wyjściowe usługi Azure Stream Analytics, do usługi Azure SQL Database](stream-analytics-sql-output-perf.md). |
 | Azure Blob Storage | Yes | Użyj {date} i {time} tokeny od pól zdarzeń we wzorcu ścieżki. Wybierz format daty, takich jak RRRR/MM/DD, DD/MM/RRRR, MM-DD-RRRR. HH jest używany dla formatu godziny. Dane wyjściowe obiektu blob można podzielić na partycje atrybut pojedyncze zdarzenie niestandardowe {fieldname} lub {daty/godziny:\<specyfikator >}. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). |
-| Centrum zdarzeń Azure | Yes | Yes | Różni się w zależności od wyrównania partycji.<br /> Gdy dane wyjściowe, które Centrum zdarzeń klucza partycji jest równie powiązana z nadrzędnego (poprzednia wersja) krok zapytania, liczba składników zapisywania jest taka sama liczba danych wyjściowych partycji Centrum zdarzeń. Każdy moduł zapisujący korzysta z Centrum EventHub w [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. <br /> Gdy danych wyjściowych Centrum zdarzeń, klucz partycji nie jest wyrównana z nadrzędnego (poprzednia wersja) krok zapytania, liczba składników zapisywania jest taka sama jak liczba partycji w tym w poprzednim kroku. Każdy moduł zapisujący używa EventHubClient [klasy SendBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
+| Centrum zdarzeń Azure | Yes | Yes | Różni się w zależności od wyrównania partycji.<br /> Gdy dane wyjściowe, które Centrum zdarzeń klucza partycji jest równie powiązana z nadrzędnego (poprzednia wersja) krok zapytania, liczba składników zapisywania jest taka sama liczba danych wyjściowych partycji Centrum zdarzeń. Każdy moduł zapisujący korzysta z Centrum EventHub w [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. <br /> Gdy danych wyjściowych Centrum zdarzeń, klucz partycji nie jest wyrównana z nadrzędnego (poprzednia wersja) krok zapytania, liczba składników zapisywania jest taka sama jak liczba partycji w tym w poprzednim kroku. Każdy moduł zapisujący używa EventHubClient [klasy SendBatchAsync](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
 | Power BI | Nie | Brak | Nie dotyczy. |
 | Azure Table Storage | Yes | Wszystkie kolumny wyjściowej.  | Następuje partycjonowania danych wejściowych dla [pełni zrównoleglona zapytania](stream-analytics-scale-jobs.md). |
 | Temat usługi Azure Service Bus | Yes | Wybierane automatycznie. Liczba partycji jest oparty na [usługi Service Bus w jednostki SKU i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji jest unikatową wartością całkowitą dla każdej partycji.| Taka sama jak liczba partycji w temacie dotyczącym danych wyjściowych.  |

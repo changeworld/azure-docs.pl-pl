@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 88abd3d17218f1168119a66701f1474d27244acf
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122930"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438261"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Dostosowywanie interfejsu użytkownika dla podróży użytkownika za pomocą zasad niestandardowych
 
@@ -150,7 +150,7 @@ Poniższa tabela opisuje przeznaczenie stron HTML5.
 
 Można dodać łącze do szablonów HTML5/CSS do swoją podróż po użytkownik bezpośrednio edytując zasad niestandardowych.
 
-Niestandardowe szablony HTML5/CSS w podróż użytkownika, musisz określić listę definicji zawartości, które mogą być używane w tych podróży użytkownika. W tym celu, opcjonalny *<ContentDefinitions>* — element XML musi być zadeklarowana w obszarze *<BuildingBlocks>* sekcji w pliku XML zasady niestandardowe.
+Niestandardowe szablony HTML5/CSS w podróż użytkownika, musisz określić listę definicji zawartości, które mogą być używane w tych podróży użytkownika. W tym celu, opcjonalny  *\<ContentDefinitions >* — element XML musi być zadeklarowana w obszarze  *\<BuildingBlocks >* sekcji w pliku XML zasady niestandardowe.
 
 W poniższej tabeli opisano zestaw identyfikatorów definicji rozpoznał tożsamości usługi Azure AD B2C środowiska aparatu i na typ stron, które odnoszą się do nich zawartości.
 
