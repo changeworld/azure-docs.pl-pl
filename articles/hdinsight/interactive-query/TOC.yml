@@ -139,21 +139,6 @@ items:
       - name: Publikowanie aplikacji usługi HDInsight w portalu Azure Marketplace
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: Bezpieczeństwo
     items:
     - name: Używanie protokołu SSH z usługą HDInsight
@@ -287,9 +272,6 @@ items:
       - name: Usuwanie błędów związanych z brakiem pamięci za pomocą ustawień technologii Apache Hive
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Debugowanie zadań środowiska Apache TEZ przy użyciu widoków systemu Apache Ambari
-        href: ../hdinsight-debug-ambari-tez-view.md
-        maintainContext: true
       - name: Optymalizowanie zapytań technologii Apache Hive
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
@@ -383,9 +365,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: c948dfdffe08512b8ac6e69e1ef6175c8a4a03ce
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 4ff59bd9aeb59ad3dd835edaff3d1e5048f2e58e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361034"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444120"
