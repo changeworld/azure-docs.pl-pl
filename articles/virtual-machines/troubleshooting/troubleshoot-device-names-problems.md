@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: bb33427712533e669ecf41f48474c02313e2a411
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568900"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443987"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Rozwiązywanie problemów z zmiany nazwy urządzenia maszyny Wirtualnej systemu Linux
 
@@ -36,15 +36,17 @@ Podczas uruchamiania maszyn wirtualnych systemu Linux na platformie Microsoft Az
 
 Ścieżki urządzenia w systemie Linux nie są gwarantowane być spójny na ponowne uruchomienie. Nazwy urządzeń składają się z głównych numerów (litery) oraz pomocniczych. Gdy sterownik urządzenia pamięci masowej systemu Linux wykryje nowe urządzenie, sterownik przypisuje głównych i pomocniczych numerów z zakresu dostępne na urządzeniu. Po usunięciu urządzenia z systemem numery urządzenia są zwalniane do ponownego wykorzystania.
 
-Ten problem występuje, ponieważ urządzenie skanowanie w systemie Linux jest zaplanowane przez podsystem SCSI ma być wykonywana asynchronicznie. W rezultacie nazwa ścieżki urządzenia mogą się różnić między ponowne uruchomienie. 
+Ten problem występuje, ponieważ urządzenie skanowanie w systemie Linux jest zaplanowane przez podsystem SCSI ma być wykonywana asynchronicznie. W rezultacie nazwa ścieżki urządzenia mogą się różnić między ponowne uruchomienie.
 
 ## <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, należy użyć trwałych nazewnictwa. Istnieją cztery sposoby korzystania z trwałego nazewnictwa: przez system plików etykietę, identyfikatora UUID, identyfikator lub ścieżka. Zalecamy używanie etykiety systemu plików lub identyfikator UUID dla maszyn wirtualnych systemu Linux platformy Azure. 
+Aby rozwiązać ten problem, należy użyć trwałych nazewnictwa. Istnieją cztery sposoby korzystania z trwałego nazewnictwa: przez system plików etykietę, identyfikatora UUID, identyfikator lub ścieżka. Zalecamy używanie etykiety systemu plików lub identyfikator UUID dla maszyn wirtualnych systemu Linux platformy Azure.
 
-Podaj większości dystrybucji `fstab` **nofail** lub **nobootwait** parametrów. Te parametry Włącz rozruch z dysku niepowodzenia instalacji podczas uruchamiania systemu. Zajrzyj do dokumentacji dystrybucji, aby uzyskać więcej informacji na temat tych parametrów. Aby uzyskać informacje na temat konfigurowania maszyny Wirtualnej z systemem Linux do użycia to identyfikator UUID, w przypadku dodania dysku danych, zobacz [nawiązywanie połączenia z maszyny Wirtualnej systemu Linux zainstaluj nowy dysk](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk). 
+Podaj większości dystrybucji `fstab` **nofail** lub **nobootwait** parametrów. Te parametry Włącz rozruch z dysku niepowodzenia instalacji podczas uruchamiania systemu. Zajrzyj do dokumentacji dystrybucji, aby uzyskać więcej informacji na temat tych parametrów. Aby uzyskać informacje na temat konfigurowania maszyny Wirtualnej z systemem Linux do użycia to identyfikator UUID, w przypadku dodania dysku danych, zobacz [nawiązywanie połączenia z maszyny Wirtualnej systemu Linux zainstaluj nowy dysk](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 Po zainstalowaniu agenta systemu Linux platformy Azure na maszynie Wirtualnej agenta przy użyciu reguł Udev do konstruowania zestaw łączy symbolicznych w ścieżce /dev/disk/azure. Aplikacje i skrypty należy użyć reguły Udev, aby zidentyfikować dyski, które są dołączone do maszyny Wirtualnej, oraz typ dysku i jednostki LUN.
+
+Jeśli masz już edytować Twojego fstab w taki sposób, że Twoja maszyna wirtualna nie jest uruchamiany i nie będzie SSH z maszyną wirtualną, możesz użyć [konsoli szeregowej maszyny Wirtualnej](./serial-console-linux.md) wprowadzenia [trybie jednego użytkownika](./serial-console-grub-single-user-mode.md) i modyfikować Twojego fstab.
 
 ### <a name="identify-disk-luns"></a>Identyfikowanie jednostek LUN dysku
 
@@ -83,29 +85,29 @@ Informacje o jednostce LUN gościa jest używany z metadanymi subskrypcji platfo
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
-      {
-        "caching": "None",
-          "createOption": "empty",
-        "diskSizeGb": 1023,
-          "image": null,
-        "lun": 0,
-        "managedDisk": null,
-        "name": "testVM-20170619-114353",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-        }
-      },
-      {
-        "caching": "None",
-        "createOption": "empty",
-        "diskSizeGb": 512,
-        "image": null,
-        "lun": 1,
-        "managedDisk": null,
-        "name": "testVM-20170619-121516",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-        }
+    {
+    "caching": "None",
+      "createOption": "empty",
+    "diskSizeGb": 1023,
+      "image": null,
+    "lun": 0,
+    "managedDisk": null,
+    "name": "testVM-20170619-114353",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+    }
+    },
+    {
+    "caching": "None",
+    "createOption": "empty",
+    "diskSizeGb": 512,
+    "image": null,
+    "lun": 1,
+    "managedDisk": null,
+    "name": "testVM-20170619-121516",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+      }
       }
     ]
 
@@ -138,7 +140,7 @@ Wszelkie dodatkowe partycje z `blkid` listy znajdują się na dysku z danymi. Ap
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
-    
+
 ### <a name="get-the-latest-azure-storage-rules"></a>Pobierz najnowsze reguły usługi Azure Storage
 
 Aby uzyskać najnowsze zasady usługi Azure Storage, uruchom następujące polecenia:

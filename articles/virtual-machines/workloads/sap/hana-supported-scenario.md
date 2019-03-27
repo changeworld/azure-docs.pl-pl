@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e8253238bf5edb5e0ea3f89fe67d6aa39f4a2d7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855459"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482967"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Obsługiwane scenariusze dla dużych wystąpień HANA
 W tym dokumencie opisano obsługiwane scenariusze wraz z ich szczegółami dotyczącymi architektury dla platformy HANA wystąpienia duże (HLI).
@@ -56,7 +56,7 @@ W tym dokumencie opisano szczegóły dwa składniki w każdej obsługiwanej arch
 
 Każdy serwer aprowizacji ma wstępnie skonfigurowany zestawy interfejsów ethernet. Poniżej przedstawiono szczegółowe informacje o interfejsy sieci ethernet, skonfigurowane w każdej jednostce HLI.
 
-- **A**: Ten interfejs jest wykorzystywany do/przez dostępu klienta.
+- **Odp.:** Ten interfejs jest wykorzystywany do/przez dostępu klienta.
 - **B**: Ten interfejs jest używany do komunikacji między węzłami. Ten interfejs jest skonfigurowana na wszystkich serwerach (niezależnie od topologii, na żądanie), ale tylko używane dla 
 - scenariusze skalowalnego w poziomie.
 - **C**: Ten interfejs jest używany dla węzła do łączności z magazynu.
@@ -68,10 +68,10 @@ Każdy serwer aprowizacji ma wstępnie skonfigurowany zestawy interfejsów ether
 | B | TYP I | eth2.tenant | eno3.tenant | Węzła do węzła |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | STONITH |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Węzła do węzła |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | STONITH |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Węzła do węzła |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | STONITH |
 
 Możesz użyć interfejsów oparte na topologii skonfigurowane w jednostce HLI. Na przykład "B" interfejs skonfigurowano tak, komunikacji między węzłami, co jest przydatne w przypadku topologii skalowalnego w poziomie, skonfigurowana. Ten interfejs nie jest używana w przypadku konfiguracji skalowania w górę jednego węzła. Aby uzyskać więcej informacji na temat użycia interfejsu, należy przejrzeć wymagane scenariuszy (w dalszej części tego dokumentu). 
 
@@ -101,7 +101,7 @@ W przypadku wdrażania replikacji systemu HANA lub HANA skalowalnego w poziomie 
 Magazyn został wstępnie skonfigurowany na podstawie topologii żądane. Woluminy o maksymalnym rozmiarze i punktu instalacji różnią się zależnie od liczby serwerów, jednostki SKU i topologii skonfigurowana. Aby uzyskać więcej informacji, należy przejrzeć wymagane scenariuszy (w dalszej części tego dokumentu). Jeśli wymagana jest więcej pamięci masowej, możesz kupić go w jedną jednostkę TB.
 
 >[!NOTE]
->Punktinstalacji/usr/sap/<SID> łącze symboliczne do punktu instalacji/hana/udostępnione.
+>Punktinstalacji/usr/sap/\<SID > łącze symboliczne do punktu instalacji/hana/udostępnione.
 
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
@@ -142,10 +142,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Skonfigurowane, ale nie jest używany |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Skonfigurowane, ale nie jest używany |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -177,10 +177,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Skonfigurowane, ale nie jest używany |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Skonfigurowane, ale nie jest używany |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -217,10 +217,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Skonfigurowane, ale nie jest używany |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Skonfigurowane, ale nie jest używany |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -258,10 +258,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Skonfigurowane, ale nie jest używany |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Skonfigurowane, ale nie jest używany |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -312,10 +312,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Skonfigurowane, ale nie jest używany |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Używany do pomocą metody STONITH |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Używany do pomocą metody STONITH |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Używany do pomocą metody STONITH |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -360,10 +360,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Skonfigurowane, ale nie jest używany |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Używany do pomocą metody STONITH |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Używany do pomocą metody STONITH |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Skonfigurowane, ale nie jest używany |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Używany do pomocą metody STONITH |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -419,10 +419,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Węzeł, aby węzłami |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Skonfigurowane, ale nie jest używany |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Węzeł, aby węzłami |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Węzeł, aby węzłami |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -460,10 +460,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Węzeł, aby węzłami |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Skonfigurowane, ale nie jest używany |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Węzeł, aby węzłami |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Węzeł, aby węzłami |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -496,10 +496,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Węzeł, aby węzłami |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Skonfigurowane, ale nie jest używany |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Węzeł, aby węzłami |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Węzeł, aby węzłami |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:
@@ -535,10 +535,10 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | B | TYP I | eth2.tenant | eno3.tenant | Węzeł, aby węzłami |
 | C | TYP I | eth1.tenant | eno2.tenant | Węzeł magazynu |
 | D | TYP I | eth4.tenant | eno4.tenant | Skonfigurowane, ale nie jest używany |
-| A | TYP II | sieci VLAN<tenantNo> | team0.tenant | Klient HLI |
-| B | TYP II | vlan<tenantNo+2> | team0.tenant + 2 | Węzeł, aby węzłami |
-| C | TYP II | vlan<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
-| D | TYP II | vlan<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
+| A | TYP II | vlan\<tenantNo> | team0.tenant | Klient HLI |
+| B | TYP II | vlan\<tenantNo+2> | team0.tenant + 2 | Węzeł, aby węzłami |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant + 1 | Węzeł magazynu |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant + 3 | Skonfigurowane, ale nie jest używany |
 
 ### <a name="storage"></a>Magazyn
 Następujące punkty instalacji są wstępnie skonfigurowane:

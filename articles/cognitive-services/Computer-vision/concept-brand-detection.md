@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 7bfda764c418258a7bc555697530214240a5f0d3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: abeca204296bcb3933013f2b7434b8c558f62e50
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734323"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496591"
 ---
 # <a name="brand-detection"></a>Wykrywanie na marki
 
@@ -91,7 +91,8 @@ W niektórych przypadkach wykrywacz marki przejmą obraz logo i nazwę marki sty
 ```
 
 ## <a name="use-the-api"></a>Za pomocą interfejsu API
-Funkcja wykrywania marki jest częścią [analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API. Można wywołać tego interfejsu API za pomocą natywnego zestawu SDK lub wywołania REST. Po otrzymaniu pełną odpowiedź JSON po prostu przeanalizować składni ciągu zawartości `"brands"` sekcji.
+
+Funkcja wykrywania marki jest częścią [analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API. Można wywołać tego interfejsu API za pomocą natywnego zestawu SDK lub wywołania REST. Obejmują `Brands` w **visualFeatures** parametr zapytania. Następnie, po otrzymaniu pełną odpowiedź JSON po prostu przeanalizować składni ciągu zawartości `"brands"` sekcji.
 
 * [Szybki start: Analizowanie obrazu (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Szybki start: Analizowanie obrazu (interfejs API REST)](./quickstarts/csharp-analyze.md)

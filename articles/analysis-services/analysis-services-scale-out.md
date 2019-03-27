@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dd89d9645d2054f301ed999121fefc417ea5c6fa
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6a69d8d60b2e588ded9ccca20521195ae11ff136
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293910"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449417"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
@@ -45,9 +45,9 @@ Podczas wykonywania kolejnych operacji skalowania w poziomie, na przykład liczb
 
 * Synchronizacja jest dozwolone, nawet wtedy, gdy istnieją nie replik w puli zapytania. Jeśli jest skalowana na zewnątrz od zera do co najmniej jedną replikę za pomocą nowych danych z operacji przetwarzania na serwerze podstawowym, najpierw wykonać synchronizację z nie replik w puli zapytania, a następnie skalowalnego w poziomie. Synchronizowanie przed skalowanie pozwala uniknąć wypełniania nadmiarowych replik nowo dodane.
 
-* Podczas usuwania bazy danych modelu z serwera podstawowego, go nie automatycznie usuwane z replik w puli zapytania. Należy wykonać operację synchronizacji, która usuwa plik/s dla tej bazy danych z lokalizacji magazynu udostępnionego obiektu blob repliki, a następnie usuwa bazy danych modelu replik w puli zapytania.
+* Podczas usuwania bazy danych modelu z serwera podstawowego, go nie automatycznie usuwane z replik w puli zapytania. Operacja synchronizacji należy wykonać przy użyciu [AzAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) polecenia programu PowerShell, która usuwa plik/s dla tej bazy danych z lokalizacji magazynu udostępnionego obiektu blob repliki, a następnie usuwa modelu Baza danych w replikach w puli zapytania.
 
-* Podczas zmiany nazwy bazy danych na serwerze podstawowym, Brak dodatkowych czynności niezbędne do zapewnienia, że baza danych jest poprawnie synchronizowane wszystkie repliki. Po zmianie nazwy, należy wykonać, określając synchronizacji `-Database` parametru przy użyciu starej nazwy bazy danych. Wykonanie synchronizacji usuwa z wszystkie repliki bazy danych i plików przy użyciu starej nazwy. Następnie wykonać, określając inną synchronizacji `-Database` parametru z nową nazwą bazy danych. Drugi synchronizacji kopiuje do drugiego zestawu plików nowo nazwanym bazy danych i hydrates wszystkie repliki. Nie można wykonać te synchronizacje poleceniem Synchronize modelu w portalu.
+* Podczas zmiany nazwy bazy danych na serwerze podstawowym, Brak dodatkowych czynności niezbędne do zapewnienia, że baza danych jest poprawnie synchronizowane wszystkie repliki. Po zmianie nazwy, należy wykonać synchronizacji przy użyciu [AzAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) polecenie, określając `-Database` parametru przy użyciu starej nazwy bazy danych. Wykonanie synchronizacji usuwa z wszystkie repliki bazy danych i plików przy użyciu starej nazwy. Następnie wykonać, określając inną synchronizacji `-Database` parametru z nową nazwą bazy danych. Drugi synchronizacji kopiuje do drugiego zestawu plików nowo nazwanym bazy danych i hydrates wszystkie repliki. Nie można wykonać te synchronizacje poleceniem Synchronize modelu w portalu.
 
 ### <a name="separate-processing-from-query-pool"></a>Oddziel przetwarzania od puli zapytania
 
@@ -67,7 +67,7 @@ Inny dobrą metryką, aby obejrzeć to średni QPU przez ServerResourceType. Ta 
 
 Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-services-monitor.md).
 
-## <a name="configure-scale-out"></a>Skonfiguruj skalowalny w poziomie
+## <a name="configure-scale-out"></a>Konfigurowanie zwiększania skali w poziomie
 
 ### <a name="in-azure-portal"></a>W witrynie Azure portal
 
@@ -103,6 +103,20 @@ Użyj **synchronizacji** operacji.
 
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
+Zwróć kodów stanu:
+
+
+|Kod  |Opis  |
+|---------|---------|
+|-1     |  Nieprawidłowy       |
+|0     | Replikowanie        |
+|1     |  Ponownego wypełniania       |
+|2     |   Zakończone       |
+|3     |   Niepowodzenie      |
+|4     |    Kończenie     |
+|||
+
+
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -112,6 +126,8 @@ Przed rozpoczęciem korzystania z programu PowerShell, [Instalowanie lub aktuali
 Aby uruchomić synchronizacji, użyj [AzAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
 Aby ustawić liczba replik zapytań, należy użyć [AzAnalysisServicesServer zestaw](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Określ opcjonalne `-ReadonlyReplicaCount` parametru.
+
+Aby oddzielić serwer przetwarzania od puli zapytania, należy użyć [AzAnalysisServicesServer zestaw](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Określ opcjonalne `-DefaultConnectionMode` parametr do użycia `Readonly`.
 
 ## <a name="connections"></a>Połączenia
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774442"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487321"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: Konfigurowanie filtrowania
 Za pomocą filtrowania, możesz kontrolować obiekty, które są wyświetlane w usłudze Azure Active Directory (Azure AD) z katalogu lokalnego. Domyślna konfiguracja pobiera wszystkie obiekty we wszystkich domenach w lesie skonfigurowanym. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkowników przy użyciu obciążeń usługi Office 365, takich jak Exchange Online i Skype dla firm, korzystają z pełną globalnej listy adresowej, dzięki czemu mogą wysyłać wiadomości e-mail i wywołać wszystkich użytkowników. W przypadku domyślnej konfiguracji zostałyby taki sam sposób, że współpracujemy z implementacją lokalnego programu Exchange lub Lync.
@@ -99,6 +99,12 @@ Konfiguracja filtrowania opartego na domenie składa się z następujących czyn
 3. [Zastosuj i Zweryfikuj zmiany](#apply-and-verify-changes).
 
 ### <a name="select-the-domains-to-be-synchronized"></a>Wybierz domeny, które mają być synchronizowane
+Istnieją dwa sposoby, aby wybrać domeny, które mają być synchronizowane:
+    - Za pomocą usługi synchronizacji
+    - Za pomocą Kreatora programu Azure AD Connect.
+
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>Wybierz domeny, które mają być synchronizowane za pomocą usługi synchronizacji
 Aby ustawić filtr domeny, wykonaj następujące czynności:
 
 1. Zaloguj się do serwera, na którym działa synchronizacja programu Azure AD Connect przy użyciu konta będącego członkiem **ADSyncAdmins** grupy zabezpieczeń.
@@ -112,6 +118,17 @@ Aby ustawić filtr domeny, wykonaj następujące czynności:
    ![Wymagane odświeżenie](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Gdy skończysz, Zamknij **właściwości** okno dialogowe, klikając **OK**. Usunięcie domen z lasu wyskakującego komunikat informuje, że usunięto domenę i konfiguracji zostaną wyczyszczone.
 7. W dalszym ciągu dopasować profile uruchamiania.
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Wybierz domeny, które mają być synchronizowane za pomocą Kreatora programu Azure AD Connect
+Aby ustawić filtr domeny, wykonaj następujące czynności:
+
+1.  Uruchom Kreatora programu Azure AD Connect
+2.  Kliknij pozycję **Konfiguruj**.
+3.  Wybierz **Dostosowywanie opcji synchronizacji** i kliknij przycisk **dalej**.
+4.  Wprowadzanie poświadczeń usługi Azure AD
+5.  Na **połączone katalogi** ekranu kliknij **dalej**.
+6.  Na **domenę i jednostkę Organizacyjną filtrowania strony** kliknij **Odśwież**.  Pojawiają się nowe domeny ill i usunięto domen zniknie.
+   ![Partycje](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>Aktualizowanie profilów przebiegu
 Jeśli zaktualizowano filtr domeny, należy zaktualizować profile uruchamiania.

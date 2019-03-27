@@ -1,6 +1,6 @@
 ---
 title: Oracle wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP | Dokumentacja firmy Microsoft
-description: Oracle wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
+description: Wdrażanie systemu DBMS usługi Azure Virtual Machines oprogramowania Oracle dla obciążenia SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6abfd26e63cc8001f501371fffce0a4c10f4ff85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327786"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483523"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 
@@ -158,7 +158,7 @@ ms.locfileid: "56327786"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56327786"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -314,7 +314,7 @@ W tym dokumencie opisano kilka różnych obszarów, aby wziąć pod uwagę podcz
 Można znaleźć informacje o wersji programu Oracle i odpowiednie wersje systemów operacyjnych, które są obsługiwane przez uruchamianie oprogramowania SAP w bazie danych Oracle na platformie Azure w Uwaga SAP [2039619].
 
 Ogólne informacje o systemie SAP Business Suite Oracle znajduje się w temacie [SAP w bazie danych Oracle](https://www.sap.com/community/topic/oracle.html).
-Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchamiać w systemie Microsoft Azure. Aby uzyskać więcej informacji na temat ogólną pomoc techniczną dla funkcji Windows Hyper-V i platformą Azure, sprawdź [Oracle i często zadawane pytania dotyczące programu Microsoft Azure](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchamiać w systemie Microsoft Azure. Aby uzyskać więcej informacji na temat ogólną pomoc techniczną dla funkcji Windows Hyper-V i platformą Azure, sprawdź [Oracle i często zadawane pytania dotyczące programu Microsoft Azure](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 ## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>SAP Notes istotne dla Oracle, SAP i platformy Azure 
 
@@ -426,7 +426,7 @@ W przypadku wdrożeń oprogramowania Oracle na Windows zalecamy przyspieszonej �
 [Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) opisano inne ważne pojęcia związane z wdrożeniami maszyn wirtualnych przy użyciu bazy danych Oracle, łącznie z zestawami dostępności platformy Azure i monitorowanie SAP.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Szczegółowe informacje o bazy danych Oracle w systemie Oracle Linux
-Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchomić na Microsoft Azure z systemem Oracle Linux jako system operacyjny gościa. Aby uzyskać więcej informacji na temat ogólną pomoc techniczną dla funkcji Windows Hyper-V i platformą Azure, zobacz [platformy Azure i Oracle — często zadawane pytania](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchomić na Microsoft Azure z systemem Oracle Linux jako system operacyjny gościa. Aby uzyskać więcej informacji na temat ogólną pomoc techniczną dla funkcji Windows Hyper-V i platformą Azure, zobacz [platformy Azure i Oracle — często zadawane pytania](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 Obsługiwane jest również konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle. Szczegóły zostały omówione w następnej części tego dokumentu.
 
@@ -463,12 +463,13 @@ Jeśli używasz dysków strona usługi Azure blob storage lub dyski Managed Disk
 Aby określić obsługiwane typy maszyn wirtualnych platformy Azure, zobacz uwagę [1928533].
 
 Minimalna konfiguracja:
+
 | Składnik | Dysk | Buforowanie | Obcięcie * |
 | --- | ---| --- | --- |
-| /Oracle/<SID>/origlogaA & mirrlogB | Premium | Brak | Nie jest wymagany |
-| /Oracle/<SID>/origlogaB & mirrlogA | Premium | Brak | Nie jest wymagany |
-| /oracle/<SID>/sapdata1...n | Premium | Tylko do odczytu | Mogą być używane. |
-| /Oracle/<SID>/oraarch | Standardowa (Standard) | Brak | Nie jest wymagany |
+| /Oracle/\<SID > / origlogaA & mirrlogB | Premium | Brak | Nie jest wymagany |
+| /Oracle/\<SID > / origlogaB & mirrlogA | Premium | Brak | Nie jest wymagany |
+| /oracle/\<SID>/sapdata1...n | Premium | Tylko do odczytu | Mogą być używane. |
+| /Oracle/\<SID > / oraarch | Standardowa (Standard) | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | | Nie jest wymagany |
 
 * Obcięcie: LVM stripe lub MDADM przy użyciu RAID0
@@ -476,15 +477,16 @@ Minimalna konfiguracja:
 Wybranego dysku do obsługi dzienników Powtórz online firmy Oracle powinien opierać się przez wymagania dotyczące operacji We/Wy. Istnieje możliwość przechowywania wszystkich sapdata1... n (obszary tabel) na jednym dysku zainstalowanego tak długo, jak wolumin, operacje We/Wy i przepływność spełniają wymagania. 
 
 Konfiguracja wydajności:
+
 | Składnik | Dysk | Buforowanie | Obcięcie * |
 | --- | ---| --- | --- |
-| /Oracle/<SID>/origlogaA | Premium | Brak | Mogą być używane.  |
-| /Oracle/<SID>/origlogaB | Premium | Brak | Mogą być używane. |
-| /Oracle/<SID>/mirrlogAB | Premium | Brak | Mogą być używane. |
-| /Oracle/<SID>/mirrlogBA | Premium | Brak | Mogą być używane. |
-| /oracle/<SID>/sapdata1...n | Premium | Tylko do odczytu | Zalecane  |
-| /oracle/SID/sapdata(n+1)* | Premium | Brak | Mogą być używane. |
-| /Oracle/<SID>/oraarch* | Premium | Brak | Nie jest wymagany |
+| /Oracle/\<SID > / origlogaA | Premium | Brak | Mogą być używane.  |
+| /Oracle/\<SID > / origlogaB | Premium | Brak | Mogą być używane. |
+| /Oracle/\<SID > / mirrlogAB | Premium | Brak | Mogą być używane. |
+| /Oracle/\<SID > / mirrlogBA | Premium | Brak | Mogą być używane. |
+| /oracle/\<SID>/sapdata1...n | Premium | Tylko do odczytu | Zalecane  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium | Brak | Mogą być używane. |
+| /Oracle/\<SID > / oraarch * | Premium | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | Nie jest wymagany |
 
 * Obcięcie: LVM stripe lub MDADM przy użyciu RAID0

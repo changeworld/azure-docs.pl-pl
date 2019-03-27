@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f407d87249c44ad3a4773b2cd8fc85ee09506ceb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010981"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445655"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konsola szeregowa maszyny wirtualnej dla systemu Linux
 
@@ -41,9 +41,9 @@ Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych Windows, zobacz [
 
 - Konta, które używa konsoli szeregowej muszą mieć [rola Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) dla maszyny Wirtualnej i [diagnostykę rozruchu](boot-diagnostics.md) konta magazynu:
 
-    - Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, musisz mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcji rozszerzenia dostępu do maszyny Wirtualnej. Wybierz **Resetuj hasło** z **pomoc techniczna i rozwiązywanie problemów z** sekcji.
+- Maszyna wirtualna, w którym uzyskujesz dostęp do konsoli szeregowej, musisz mieć konto opartego na hasłach. Możesz je utworzyć za pomocą [Resetuj hasło](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkcji rozszerzenia dostępu do maszyny Wirtualnej. Wybierz **Resetuj hasło** z **pomoc techniczna i rozwiązywanie problemów z** sekcji.
 
-    - Ustawienia specyficzne dla dystrybucji systemu Linux, zobacz [konsoli szeregowej dostępności dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
+- Ustawienia specyficzne dla dystrybucji systemu Linux, zobacz [konsoli szeregowej dostępności dystrybucji systemu Linux](#serial-console-linux-distribution-availability).
 
 
 
@@ -85,12 +85,11 @@ Niestandardowych obrazów systemu Linux     | Aby włączyć konsoli szeregowej 
 
 Scenariusz          | Akcje w konsoli szeregowej
 :------------------|:-----------------------------------------
-Uszkodzony *FSTAB* pliku | Naciśnij klawisz **Enter** klawisz, aby kontynuować, a następnie użyj edytora tekstów, aby naprawić *FSTAB* pliku. Konieczne może być w trybie jednego użytkownika, aby to zrobić. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) i [Użyj konsoli szeregowej, dostęp do programu GRUB i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
-Reguły zapory niepoprawne | Dostęp do konsoli szeregowej i naprawić iptables.
-System plików uszkodzenie/wyboru | Dostęp do konsoli szeregowej i odzyskiwanie systemu plików.
-Problemy z konfiguracją protokołu RDP/SSH | Dostęp do konsoli szeregowej i zmienić ustawienia.
-Blokowanie sieci w systemie| W witrynie Azure portal do zarządzania systemem, należy uzyskać dostęp do konsoli szeregowej.
-Interakcja z programu inicjującego | Ponowne uruchomienie Twojej maszyny Wirtualnej z w ramach bloku konsoli szeregowej dostępu CHODNIKÓW na maszynie Wirtualnej systemu Linux. Aby uzyskać więcej informacji, zobacz [Użyj konsoli szeregowej, dostęp do programu GRUB i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
+Uszkodzony *FSTAB* pliku | Naciśnij klawisz **Enter** klawisz, aby kontynuować, a następnie użyj edytora tekstów, aby naprawić *FSTAB* pliku. Konieczne może być w trybie jednego użytkownika, aby to zrobić. Aby uzyskać więcej informacji, zobacz sekcję konsoli szeregowej [Rozwiązywanie problemów z fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) i [Użyj konsoli szeregowej, dostęp do programu GRUB i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
+Reguły zapory niepoprawne |  Jeśli skonfigurowano iptables w celu blokowania łączności SSH, można użyć konsoli szeregowej wchodzić w interakcje z maszyną Wirtualną bez konieczności używania protokołu SSH. Więcej informacji znajduje się w temacie [iptables man strony](https://linux.die.net/man/8/iptables). Podobnie po użytkownik firewalld blokuje dostęp SSH, możesz dostęp do maszyny Wirtualnej za pośrednictwem konsoli szeregowej i ponownie skonfigurować firewalld. Więcej szczegółów można znaleźć w [dokumentacji firewalld](https://firewalld.org/documentation/).
+System plików uszkodzenie/wyboru | Można znaleźć w sekcji konsoli szeregowej [maszyny Wirtualnej systemu Linux platformy Azure nie można uruchomić z powodu błędów systemu plików](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) Aby uzyskać więcej informacji na temat rozwiązywania problemów uszkodzony systemów plików za pomocą konsoli szeregowej.
+Problemy z konfiguracją protokołu SSH | Dostęp do konsoli szeregowej i zmienić ustawienia. Konsola szeregowa może służyć niezależnie od konfiguracji SSH maszyny wirtualnej nie wymaga maszyny Wirtualnej w celu zapewnienia łączności sieciowej do pracy. Przewodnik rozwiązywania problemów znajduje się w temacie [Rozwiązywanie problemów z połączeń protokołu SSH z maszyny Wirtualnej systemu Linux platformy Azure, który zakończy się niepowodzeniem, błędy, lub odmówiono](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection). Szczegółowe informacje są dostępne pod adresem [szczegółowe SSH kroki rozwiązywania problemów dotyczących problemy z połączeniem do maszyny Wirtualnej z systemem Linux na platformie Azure](./detailed-troubleshoot-ssh-connection.md)
+Interakcja z programu inicjującego | Ponowne uruchomienie Twojej maszyny Wirtualnej z w ramach bloku konsoli szeregowej dostępu CHODNIKÓW na maszynie Wirtualnej systemu Linux. Aby uzyskać bardziej szczegółowe informacje i informacje specyficzne dla dystrybucji, zobacz [Użyj konsoli szeregowej, dostęp do programu GRUB i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Wyłącz konsoli szeregowej
 Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.

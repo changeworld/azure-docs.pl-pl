@@ -10,12 +10,12 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: 8d2b54e65c1409c01a4c38ca8fcdfeca5f031277
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04108c4b5a8ce04b971a0529393ea442cb1cf226
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113337"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480127"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Konfigurowanie powiadomień wypychanych w Centrum powiadomień, w witrynie Azure portal
 
@@ -29,7 +29,7 @@ Jeśli nie zostało jeszcze utworzone Centrum powiadomień, utwórz ją teraz. A
 
 Aby ustawić się Apple Push Notification Service (APNS):
 
-1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Apple (APNS)**.
+1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Apple (APNS)** menu po lewej stronie.
 
 1. Aby uzyskać **tryb uwierzytelniania**, wybierz opcję **certyfikatu** lub **tokenu**.
 
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji, zobacz [powiadomienia wypychane do systemu iOS 
 
 Aby skonfigurować powiadomienia wypychane dla Google Firebase Cloud Messaging (FCM):
 
-1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Google (GCM/FCM)**. 
+1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Google (GCM/FCM)** menu po lewej stronie. 
 2. Wklej **klucz interfejsu API** w projekcie usługi FCM, który został wcześniej zapisany. 
 3. Wybierz pozycję **Zapisz**. 
 
@@ -67,7 +67,7 @@ Aby uzyskać więcej informacji, zobacz [wysyłać powiadomienia wypychane do ur
 
 Aby ustawić się Windows wypychanie powiadomień WNS (Service):
 
-1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Windows (WNS)**.
+1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Windows (WNS)** menu po lewej stronie.
 2. Wprowadź wartości w polach **Identyfikator SID pakietu** i **Klucz zabezpieczeń**.
 3. Wybierz pozycję **Zapisz**.
 
@@ -79,7 +79,7 @@ Aby uzyskać informacje, zobacz [wysyłać powiadomienia do aplikacji platformy 
 
 Aby ustawić się Microsoft Push Notification usługi (MPNS) dla Windows Phone: 
 
-1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Windows Phone (MPNS)**.
+1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Windows Phone (MPNS)** menu po lewej stronie.
 1. Włącz nieuwierzytelnione lub uwierzytelniony powiadomień wypychanych:
 
    a. Aby włączyć nieuwierzytelnione wypychanie powiadomień, wybierz **Włącz nieuwierzytelnione wypychanie** > **Zapisz**.
@@ -99,7 +99,7 @@ Aby uzyskać więcej informacji, zobacz [powiadomienia wypychane do aplikacji Wi
 
 Aby skonfigurować powiadomienia wypychane dla Amazon Device Messaging (ADM):
 
-1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Amazon (ADM)**.
+1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Amazon (ADM)** menu po lewej stronie.
 2. Wprowadź wartości w polach **identyfikator klienta** i **klucz tajny klienta**.
 3. Wybierz pozycję **Zapisz**.
     
@@ -111,7 +111,7 @@ Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Notifica
 
 Aby skonfigurować powiadomienia wypychane dla usługi Baidu:
 
-1. W witrynie Azure portal w **Centrum powiadomień**, wybierz opcję **Baidu (Android China)**. 
+1. W witrynie Azure portal na **Centrum powiadomień** wybierz opcję **Baidu (Android China)** menu po lewej stronie. 
 2. Wprowadź **klucz interfejsu Api** uzyskany w konsoli Baidu w projektu powiadomień wypychanych w chmurze Baidu. 
 3. Wprowadź **klucz tajny** uzyskany w konsoli Baidu w projektu powiadomień wypychanych w chmurze Baidu. 
 4. Wybierz pozycję **Zapisz**. 

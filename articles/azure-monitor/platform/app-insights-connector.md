@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4e91e193b3980901e7778a8826989e729517a29a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878459"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481760"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Rozwiązanie do zarządzania Insights Connector aplikacji (przestarzałe)
 
@@ -272,7 +272,7 @@ To rozwiązanie nie ma zbiór przykładowe wyszukiwania dzienników wyświetlane
 ## <a name="removing-the-connector-with-powershell"></a>Usunięcie łącznika przy użyciu programu PowerShell
 Za pomocą obsługi portalu pakietu OMS nie ma możliwości do konfigurowania i usunąć istniejące połączenia z portalu. Możesz usunąć istniejące połączenia za pomocą następującego skryptu programu PowerShell. Musi być właściciela lub współautora obszaru roboczego i czytnika zasób usługi Application Insights, aby wykonać tę operację.
 
-```PowerShell
+```powershell
 $Subscription_app = "App Subscription Name"
 $ResourceGroup_app = "App ResourceGroup"
 $Application = "Application Name"
@@ -289,7 +289,7 @@ Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceG
 
 Możesz pobrać listę aplikacji za pomocą poniższy skrypt programu PowerShell, który wywołuje wywołania interfejsu API REST. 
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount
 $Tenant = "TenantId"
 $Subscription_workspace = "Workspace Subscription Name"

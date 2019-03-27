@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/14/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: b1ac2edd39ac2e5a765eaf6223ba01c9f9e5df91
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4dc0be045bceaaac4b71c653d82f7f9db834c3ec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238344"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486062"
 ---
 # <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Samouczek: Umożliwia dostęp do danych w usłudze Azure SQL Data Warehouse zapytania elastycznego z usługi Azure SQL Database
 
@@ -94,8 +94,8 @@ W następnych kilku krokach utworzymy tabelę w naszym wystąpienie magazynu dan
    ```sql
    CREATE TABLE [dbo].[OrderInformation]
    ( 
-       [OrderID] [int] NOT NULL 
-   ,   [CustomerID] [int] NOT NULL 
+       [OrderID] [int] NOT NULL, 
+       [CustomerID] [int] NOT NULL 
    ) 
    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (123, 1) 
    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (149, 2) 
@@ -106,19 +106,19 @@ W następnych kilku krokach utworzymy tabelę w naszym wystąpienie magazynu dan
 
 3. Za pomocą programu SSMS lub innego klienta zapytań Otwórz nowe zapytanie dotyczące **bazy danych SQL** na serwerze logicznym.
 
-4. Prześlij następujące zapytanie w celu utworzenia definicji tabeli zewnętrznej, który wskazuje na **OrdersInformation** tabeli w wystąpieniu magazynu danych.
+4. Prześlij następujące zapytanie w celu utworzenia definicji tabeli zewnętrznej, który wskazuje na **OrderInformation** tabeli w wystąpieniu magazynu danych.
 
    ```sql
    CREATE EXTERNAL TABLE [dbo].[OrderInformation]
    ( 
-       [OrderID] [int] NOT NULL
-   ,   [CustomerID] [int] NOT NULL 
+       [OrderID] [int] NOT NULL,
+       [CustomerID] [int] NOT NULL 
    ) 
    WITH 
    (
-        DATA_SOURCE = EnterpriseDwSrc
-   ,    SCHEMA_NAME = N'dbo'
-   ,    OBJECT_NAME = N'OrderInformation'
+        DATA_SOURCE = EnterpriseDwSrc,
+    SCHEMA_NAME = N'dbo',
+    OBJECT_NAME = N'OrderInformation'
    )
    ```
 

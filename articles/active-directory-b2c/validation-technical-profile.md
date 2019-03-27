@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3172354752e2c6a1a7368b297e3cc6e763cd2fcb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900577"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483900"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego sprawdzania poprawności w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -65,8 +65,8 @@ Samodzielnie profilu technicznego mogą definiować profilu technicznego sprawdz
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Type | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia warunek wstępny. Albo `ClaimsExist` jest określony, aby upewnić się, że akcje, należy wykonać, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub `ClaimEquals` określono, że akcje można wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa Określona wartość. |
-| ExecuteActionsIf | Yes | Wskazuje, czy akcje warunek wstępny należy przeprowadzić, gdy wynikiem testu jest wartość PRAWDA lub FAŁSZ. |
+| `Type` | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia warunek wstępny. Albo `ClaimsExist` jest określony, aby upewnić się, że akcje, należy wykonać, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub `ClaimEquals` określono, że akcje można wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa Określona wartość. |
+| `ExecuteActionsIf` | Yes | Wskazuje, czy akcje warunek wstępny należy przeprowadzić, gdy wynikiem testu jest wartość PRAWDA lub FAŁSZ. |
 
 **Wstępnym** element zawiera następujące elementy:
 

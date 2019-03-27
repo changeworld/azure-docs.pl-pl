@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: a0f22e7940a2be442bdf836c0e76e29bad2e9b36
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a7271eb6b8cbc8a117b5a8e75edfe02985ec3452
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769935"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487468"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Przy użyciu narzędzia MirrorMaker platformy Kafka z usługą Event Hubs dla platformy Apache Kafka
 
@@ -119,6 +119,12 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 Aby sprawdzić, czy zdarzenia osiągają do Centrum zdarzeń z obsługą platformy Kafka, zobacz statystyk transferu danych przychodzących w [witryny Azure portal](https://azure.microsoft.com/features/azure-portal/), lub uruchamiać konsumentów Centrum zdarzeń.
 
 Przy użyciu narzędzia MirrorMaker, uruchamianie wszelkie zdarzenia wysyłane do źródła klastra platformy Kafka są odbierane przez klaster platformy Kafka i Kafka dublowanego włączono usługę Centrum zdarzeń. Przy użyciu narzędzia MirrorMaker i punktu końcowego usługi Event Hubs Kafka, można migrować istniejący potok Kafka do zarządzanej usługi Azure Event Hubs, bez zmieniania istniejącego klastra lub przerywania dowolnego przepływu bieżące dane.
+
+## <a name="samples"></a>Przykłady
+Zobacz poniższe przykłady w witrynie GitHub:
+
+- [Przykładowy kod w tym samouczku w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+- [Azure Event Hubs platformy Kafka narzędzia MirrorMaker uruchomionych w wystąpieniu kontenera platformy Azure](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

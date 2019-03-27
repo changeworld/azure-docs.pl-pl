@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 6b06ee7710dedbf2283fc4e365b767aa57547e7c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 0e5e4e207542a74ef3fc5ff7fc78431b7956e54c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417823"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449254"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Temat usługi mobilności na potrzeby maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -43,7 +43,8 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 2. Po pomyślnie skopiowano agenta na sprawdzanie wymagań wstępnych serwera są wykonywane na serwerze. Instalacja kończy się niepowodzeniem, jeśli co najmniej jeden [wymagania wstępne](vmware-physical-azure-support-matrix.md) nie są spełnione. Jeśli wszystkie wymagania wstępne są spełnione, instalacja zostanie wywołany.
 3. Dostawca usługi Azure Site Recovery VSS jest zainstalowany na serwerze jako część instalacji agenta mobilności. Ten dostawca jest używany do generowania punkty spójne aplikacji. W przypadku niepowodzenia instalacji dostawcy usługi VSS, ten krok zostanie pominięty, i będzie kontynuować instalację agenta.
 4. Jeśli instalacja agenta zakończy się pomyślnie, ale instalacja dostawcy VSS nie powiedzie się, stan zadania jest oznaczona jako "Ostrzeżenie". Nie ma to wpływu na generowanie punktów spójności awarii.
-    a. Aby wygenerować punkty spójne aplikacji, zapoznaj się [nasze wskazówki](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) do ukończenia instalacji dostawcy usługi VSS programu Site Recovery ręcznie.
+
+    a. Aby wygenerować punkty spójne aplikacji, zapoznaj się [nasze wskazówki](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) do ukończenia instalacji dostawcy usługi VSS programu Site Recovery ręcznie. </br>
     b.  Jeśli nie chcesz, aby punkty spójne aplikacji zostanie wygenerowany [zmodyfikować zasady replikacji](vmware-azure-set-up-replication.md#create-a-policy) wyłączyć punkty spójne aplikacji.
 
 ### <a name="before-922-versions"></a>Przed 9.22 wersji

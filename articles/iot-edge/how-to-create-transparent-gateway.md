@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096711"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482950"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -71,7 +71,7 @@ Zainstaluj biblioteki OpenSSL dla Windows na komputerze, którego używasz w cel
    
    2. Po zainstalowaniu vcpkg w wierszu polecenia programu powershell uruchom następujące polecenie, aby zainstalować pakiet biblioteki OpenSSL dla Windows x64. Instalacja trwa zwykle około 5 minut.
 
-      ```PowerShell
+      ```powershell
       .\vcpkg install openssl:x64-windows
       ```
    3. Dodaj `<VCPKGDIR>\installed\x64-windows\tools\openssl` do zmiennej środowiskowej PATH, aby plik openssl.exe jest dostępny do wywołania.
@@ -84,7 +84,7 @@ Zestaw SDK urządzeń Azure IoT dla języka C zawiera skrypty używane do genero
 
 2. Sklonuj repozytorium git, zawierający skrypty w celu wygenerowania certyfikatów nieprodukcyjnych. Te skrypty pomocne podczas tworzenia wymagane certyfikaty, aby skonfigurować przezroczystej bramy. Użyj `git clone` polecenia lub [Pobierz plik ZIP](https://github.com/Azure/azure-iot-sdk-c/archive/master.zip). 
 
-   ```PowerShell
+   ```powershell
    git clone https://github.com/Azure/azure-iot-sdk-c.git
    ```
 
@@ -92,7 +92,7 @@ Zestaw SDK urządzeń Azure IoT dla języka C zawiera skrypty używane do genero
 
 4. Skopiuj pliki konfiguracji i skrypt w katalogu roboczym. 
 
-   ```PowerShell
+   ```powershell
    copy <path>\azure-iot-sdk-c\tools\CACertificates\*.cnf .
    copy <path>\azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
    ```
@@ -101,25 +101,25 @@ Zestaw SDK urządzeń Azure IoT dla języka C zawiera skrypty używane do genero
 
 5. Ustaw zmienną środowiskową OPENSSL_CONF przy użyciu pliku konfiguracji openssl_root_ca.cnf.
 
-    ```PowerShell
+    ```powershell
     $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
     ```
 
 6. Włącz program PowerShell w celu uruchamiania skryptów.
 
-   ```PowerShell
+   ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
 7. Przenieś funkcje używane przez skrypty w globalnej przestrzeni nazw programu PowerShell.
    
-   ```PowerShell
+   ```powershell
    . .\ca-certs.ps1
    ```
 
 8. Sprawdź, czy biblioteki OpenSSL został poprawnie zainstalowany i upewnij się, że nie będzie konfliktów nazw z istniejących certyfikatów. Jeśli wystąpią problemy, skrypt powinna opisywać sposób rozwiązać problemy w systemie.
 
-   ```PowerShell
+   ```powershell
    Test-CACertsPrerequisites
    ```
 
@@ -129,19 +129,19 @@ W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczen
 
 1. Utwórz certyfikat z urzędu certyfikacji właścicielem i go zarejestrować jeden certyfikat pośredniego. Certyfikaty są umieszczane w  *\<WRKDIR >*.
 
-      ```PowerShell
+      ```powershell
       New-CACertsCertChain rsa
       ```
 
 2. Utwórz certyfikat urzędu certyfikacji urządzenia usługi Edge i klucza prywatnego za pomocą następującego polecenia. Podaj nazwę dla urządzenia bramy, która będzie służyć do nazwy plików i podczas generowania certyfikatów. 
 
-   ```PowerShell
+   ```powershell
    New-CACertsEdgeDevice "<gateway name>"
    ```
 
 3. Tworzenie łańcucha certyfikatów z certyfikatu urzędu certyfikacji właściciela, pośredniego certyfikatu i certyfikat urzędu certyfikacji urządzeń brzegowych za pomocą następującego polecenia. 
 
-   ```PowerShell
+   ```powershell
    Write-CACertsCertificatesForEdgeDevice "<gateway name>"
    ```
 

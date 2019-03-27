@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 871eb1663d6cba550f1403215b1d3ce5fe8278d3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652564"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486108"
 ---
 # <a name="cloud-tiering-overview"></a>Omówienie obsługi warstw w chmurze
 Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często używanych plików są buforowane lokalnie na serwerze, podczas gdy inne pliki są organizowane w warstwy do usługi Azure Files na podstawie ustawień zasad. Gdy plik jest warstwowe, filtru systemu plików usługi Azure File Sync (StorageSync.sys) zamienia plik lokalnie wskaźnik lub punkt ponownej analizy. Punkt ponownej analizy reprezentuje adres URL do pliku w usłudze Azure Files. Plik warstwowy zawiera zarówno atrybut "offline", jak i atrybut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ustawiony w systemie plików NTFS, dzięki czemu aplikacje innych firm można bezpiecznie zidentyfikować pliki warstwowe.
@@ -85,7 +85,7 @@ Istnieje kilka sposobów, aby sprawdzić, czy plik został warstwy do udziału p
    * **Użyj `fsutil` pod kątem punktów ponownej analizy z pliku.**
        Zgodnie z opisem w poprzedniej opcji, plikami warstwowym zawsze ma zestaw punktu ponownej analizy. Wskaźnikiem ponownej analizy to specjalne wskaźnika dla filtru systemu plików usługi Azure File Sync (StorageSync.sys). Aby sprawdzić, czy plik ma punkt ponownej analizy, w oknie wiersza polecenia lub programu PowerShell z podwyższonym poziomem uprawnień, uruchom `fsutil` narzędzie:
     
-        ```PowerShell
+        ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
 
@@ -101,7 +101,7 @@ Najprostszym sposobem odwołania pliku na dysku jest można otworzyć pliku. Fil
 
 Również umożliwia PowerShell wymuszenie można wycofać. Ta opcja może być przydatne, jeśli chcesz odwołać wielu plików jednocześnie, np. wszystkie pliki w folderze. Otwórz sesję programu PowerShell, aby węzeł serwera, na którym zainstalowano usługę Azure File Sync, a następnie uruchom następujące polecenia środowiska PowerShell:
     
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
     ```
@@ -114,7 +114,7 @@ Eksploratora plików Windows udostępnia dwie właściwości do reprezentowania 
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Jak wymusić, plik lub katalog do umieszczane?
 Gdy jest włączona funkcja obsługi warstw w chmurze, obsługi warstw automatycznie pliki warstw w chmurze oparte na ostatni dostęp i zmodyfikuj czas do osiągnięcia procent wolnego miejsca na woluminie określone na punkt końcowy w chmurze. Czasami jednak warto to wymuszone ręcznie plik do warstwy. Może to być przydatne, jeśli zapiszesz dużych plików, które nie będą do ponownego użycia przez długi czas i mają ilość wolnego miejsca na woluminie teraz do użycia dla innych plików i folderów. Można wymusić warstw przy użyciu następujących poleceń programu PowerShell:
 
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
     ```

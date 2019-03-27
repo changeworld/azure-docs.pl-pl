@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: 21119816477d460aa48560b8ca231f23144a901b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888502"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444878"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programowe tworzenie pulpitów nawigacyjnych platformy Azure
 
@@ -28,7 +28,7 @@ W tym dokumencie przedstawiono proces programowe tworzenie i publikowanie pulpit
 
 ## <a name="overview"></a>Przegląd
 
-Udostępnione pulpity nawigacyjne w usłudze Azure czy [zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) tak jak maszyny wirtualne i konta magazynu.  W związku z tym, mogą być zarządzane programowo za pośrednictwem [interfejsów API REST usługi Azure Resource Manager](/rest/api/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure), [poleceń programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0)i wiele [ Witryna Azure portal](https://portal.azure.com) funkcje są oparte na tych interfejsów API, aby ułatwić zarządzanie zasobami.  
+Udostępnione pulpity nawigacyjne w usłudze Azure czy [zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) tak jak maszyny wirtualne i konta magazynu.  W związku z tym, mogą być zarządzane programowo za pośrednictwem [interfejsów API REST usługi Azure Resource Manager](/rest/api/), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure), [poleceń programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)i wiele [ Witryna Azure portal](https://portal.azure.com) funkcje są oparte na tych interfejsów API, aby ułatwić zarządzanie zasobami.  
 
 Każda z tych narzędzi i interfejsów API oferuje sposoby tworzenia, wyświetlania list, pobieranie, modyfikowanie i usuwanie zasobów.  Ponieważ pulpity nawigacyjne są zasoby, należy wybrać ulubionego interfejsu API / narzędzia do użycia.
 

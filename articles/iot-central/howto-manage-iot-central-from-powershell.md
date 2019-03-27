@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 450b27d21cf4079bdef6fc20c3f2e83f4e47cbd2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 8d432d588cfd563ee48b93f9042339e9590bb5e2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806580"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481777"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Zarządzanie usługą IoT Central z programu Azure PowerShell
 
@@ -33,13 +33,13 @@ Jeśli chcesz uruchomić programu Azure PowerShell na komputerze lokalnym, zobac
 
 Uruchom następujące polecenie, aby sprawdzić [moduł IoT Central](https://docs.microsoft.com/powershell/module/az.iotcentral/) jest zainstalowana w Twoim środowisku programu PowerShell:
 
-```PowerShell
+```powershell
 Get-InstalledModule -name Az.I*
 ```
 
 Jeśli nie zawiera listę zainstalowanych modułów **Az.IotCentral**, uruchom następujące polecenie:
 
-```PowerShell
+```powershell
 Install-Module Az.IotCentral
 ```
 
@@ -47,13 +47,13 @@ Install-Module Az.IotCentral
 
 Użyj [New AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) polecenia cmdlet do tworzenia aplikacji IoT Central w subskrypcji platformy Azure. Na przykład:
 
-```PowerShell
+```powershell
 # Create a resource group for the IoT Central application
 New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Location "East US"
 ```
 
-```PowerShell
+```powershell
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
@@ -89,7 +89,7 @@ Użyj [Get AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotc
 
 Użyj [AzIotCentralApp zestaw](https://docs.microsoft.com/powershell/module/az.iotcentral/set-aziotcentralapp) polecenia cmdlet w celu zaktualizowania metadanych aplikacji IoT Central. Na przykład, aby zmienić nazwę wyświetlaną aplikacji:
 
-```PowerShell
+```powershell
 Set-AzIotCentralApp -Name "myiotcentralapp" `
   -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My new display name"
@@ -99,7 +99,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 Użyj [AzIotCentralApp Usuń](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) polecenia cmdlet, aby usunąć aplikację IoT Central. Na przykład:
 
-```PowerShell
+```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
  -Name "myiotcentralapp"
 ```

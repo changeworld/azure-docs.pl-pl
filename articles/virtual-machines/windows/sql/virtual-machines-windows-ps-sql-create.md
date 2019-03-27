@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3feb691f1f708452b6560dbe92b77ed0417ffb82
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 68fa8510b45d5bd00128b57ffcccd19b1c55359b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329408"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481822"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak wykonać aprowizację maszyn wirtualnych programu SQL Server przy użyciu programu Azure PowerShell
 
@@ -33,9 +33,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="configure-your-subscription"></a>Konfigurowanie subskrypcji
 
-1. Otwórz program PowerShell i nawiąż połączenie z kontem platformy Azure, uruchamiając **Connect AzAccount** polecenia.
+1. Otwórz program PowerShell i nawiąż połączenie z kontem platformy Azure, uruchamiając polecenie **Connect-AzAccount**.
 
-   ```PowerShell
+   ```powershell
    Connect-AzAccount
    ```
 
@@ -49,7 +49,7 @@ Zdefiniuj region danych i grupy zasobów, do którego możesz utworzyć inne zas
 
 Zmodyfikuj, ile chcesz, a następnie uruchom te polecenia cmdlet do inicjowania tych zmiennych.
 
-```PowerShell
+```powershell
 $Location = "SouthCentralUS"
 $ResourceGroupName = "sqlvm2"
 ```
@@ -59,7 +59,7 @@ Zdefiniuj konto magazynu i typ magazynu, który będzie używany przez maszynę 
 
 Zmodyfikuj, ile chcesz, a następnie uruchom następujące polecenie cmdlet do inicjowania tych zmiennych. Firma Microsoft zaleca używanie [premium SSD](../disks-types.md#premium-ssd) dla obciążeń produkcyjnych.
 
-```PowerShell
+```powershell
 $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
@@ -77,7 +77,7 @@ Zdefiniuj właściwości, które ma być używany przez sieć maszyny wirtualnej
 
 Zmodyfikuj, ile chcesz, a następnie uruchom to polecenie cmdlet do inicjowania tych zmiennych.
 
-```PowerShell
+```powershell
 $InterfaceName = $ResourceGroupName + "ServerInterface"
 $NsgName = $ResourceGroupName + "nsg"
 $TCPIPAllocationMethod = "Dynamic"
@@ -93,7 +93,7 @@ Zdefiniuj nazwę maszyny wirtualnej, nazwę komputera, rozmiar maszyny wirtualne
 
 Zmodyfikuj, ile chcesz, a następnie uruchom to polecenie cmdlet do inicjowania tych zmiennych.
 
-```PowerShell
+```powershell
 $VMName = $ResourceGroupName + "VM"
 $ComputerName = $ResourceGroupName + "Server"
 $VMSize = "Standard_DS13"
@@ -106,13 +106,13 @@ Aby zdefiniować obrazu programu SQL Server do użycia dla maszyny wirtualnej, n
 
 1. Najpierw Wyświetl listę wszystkich ofert dotyczących obrazów programu SQL Server przy użyciu `Get-AzVMImageOffer` polecenia. To polecenie wyświetla listę bieżących obrazów, które są dostępne w witrynie Azure Portal, a także starsze obrazy, które mogą być instalowane tylko przy użyciu programu PowerShell:
 
-   ```PowerShell
+   ```powershell
    Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
    ```
 
 1. Na potrzeby tego samouczka należy użyć następujących zmiennych do określania programu SQL Server 2017 w systemie Windows Server 2016.
 
-   ```PowerShell
+   ```powershell
    $OfferName = "SQL2017-WS2016"
    $PublisherName = "MicrosoftSQLServer"
    $Version = "latest"
@@ -120,13 +120,13 @@ Aby zdefiniować obrazu programu SQL Server do użycia dla maszyny wirtualnej, n
 
 1. Następnie Wyświetl dostępne wersje oferty.
 
-   ```PowerShell
+   ```powershell
    Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
 1. W tym samouczku, należy użyć wersji programu SQL Server 2017 Developer edition (**SQLDEV**). Developer edition jest bezpłatnie licencjonowane na potrzeby projektowania i testowania, a płacisz tylko kosztów obsługi maszyny Wirtualnej.
 
-   ```PowerShell
+   ```powershell
    $Sku = "SQLDEV"
    ```
 
@@ -135,7 +135,7 @@ Przy użyciu modelu wdrażania usługi Resource Manager pierwszy obiekt, który 
 
 Uruchom to polecenie cmdlet do tworzenia nowej grupy zasobów.
 
-```PowerShell
+```powershell
 New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
@@ -144,7 +144,7 @@ Maszyna wirtualna wymaga zasobów magazynu dla dysku systemu operacyjnego i plik
 
 Uruchom to polecenie cmdlet do tworzenia nowego konta magazynu.
 
-```PowerShell
+```powershell
 $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
    -Name $StorageName -SkuName $StorageSku `
    -Kind "Storage" -Location $Location
@@ -168,7 +168,7 @@ Rozpocznij od utworzenia konfiguracji podsieci dla sieci wirtualnej. Na potrzeby
 
 Uruchom to polecenie cmdlet umożliwia utworzenie konfiguracji podsieci wirtualnej.
 
-```PowerShell
+```powershell
 $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
 ```
 
@@ -177,7 +177,7 @@ Następnie utwórz sieć wirtualną w nowych zasobów grupy przy użyciu [New Az
 
 Uruchom to polecenie cmdlet do tworzenia sieci wirtualnej.
 
-```PowerShell
+```powershell
 $VNet = New-AzVirtualNetwork -Name $VNetName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -AddressPrefix $VNetAddressPrefix -Subnet $SubnetConfig
@@ -191,7 +191,7 @@ Skoro zdefiniowano sieci wirtualnej, należy skonfigurować adres IP dla połąc
 
 Uruchom to polecenie cmdlet do tworzenia publicznego adresu IP.
 
-```PowerShell
+```powershell
 $PublicIp = New-AzPublicIpAddress -Name $InterfaceName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -AllocationMethod $TCPIPAllocationMethod -DomainNameLabel $DomainName
@@ -202,14 +202,14 @@ Aby zabezpieczyć ruch maszyny Wirtualnej i programu SQL Server, Utwórz sieciow
 
 1. Najpierw utwórz reguły sieciowej grupy zabezpieczeń dla protokołu RDP zezwolić na połączenia pulpitu zdalnego.
 
-   ```PowerShell
+   ```powershell
    $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
    ```
 1. Skonfiguruj reguły sieciowej grupy zabezpieczeń zezwalającą na ruch na porcie TCP 1433. Ten krok umożliwia połączenia z programem SQL Server za pośrednictwem Internetu.
 
-   ```PowerShell
+   ```powershell
    $NsgRuleSQL = New-AzNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
       -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 1433 -Access Allow
@@ -217,7 +217,7 @@ Aby zabezpieczyć ruch maszyny Wirtualnej i programu SQL Server, Utwórz sieciow
 
 1. Utwórz sieciową grupę zabezpieczeń.
 
-   ```PowerShell
+   ```powershell
    $Nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
       -Location $Location -Name $NsgName `
       -SecurityRules $NsgRuleRDP,$NsgRuleSQL
@@ -228,7 +228,7 @@ Teraz możesz przystąpić do tworzenia interfejsu sieciowego dla maszyny wirtua
 
 Uruchom to polecenie cmdlet do tworzenia interfejsu sieciowego.
 
-```PowerShell
+```powershell
 $Interface = New-AzNetworkInterface -Name $InterfaceName `
    -ResourceGroupName $ResourceGroupName -Location $Location `
    -SubnetId $VNet.Subnets[0].Id -PublicIpAddressId $PublicIp.Id `
@@ -248,7 +248,7 @@ Rozpocznij od określenia rozmiaru maszyny wirtualnej. W tym samouczku należy o
 
 Uruchom to polecenie cmdlet do tworzenia obiektu maszyny wirtualnej.
 
-```PowerShell
+```powershell
 $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 ```
 
@@ -257,7 +257,7 @@ Zanim będzie można skonfigurować właściwości systemu operacyjnego dla masz
 
 Uruchom następujące polecenie cmdlet, a następnie w oknie żądania poświadczenie programu PowerShell, wpisz nazwę i hasło dla konta administratora lokalnego na maszynie wirtualnej.
 
-```PowerShell
+```powershell
 $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
 ```
 
@@ -271,7 +271,7 @@ Teraz możesz przystąpić do ustawiania właściwości systemu operacyjnego mas
 
 Uruchom to polecenie cmdlet, aby ustawić właściwości systemu operacyjnego dla maszyny wirtualnej.
 
-```PowerShell
+```powershell
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
    -Windows -ComputerName $ComputerName -Credential $Credential `
    -ProvisionVMAgent -EnableAutoUpdate
@@ -282,7 +282,7 @@ Następnie użyj [AzVMNetworkInterface Dodaj](https://docs.microsoft.com/powersh
 
 Uruchom to polecenie cmdlet, aby ustawić interfejsu sieciowego dla maszyny wirtualnej.
 
-```PowerShell
+```powershell
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
 ```
 
@@ -291,7 +291,7 @@ Następnym etapem jest skonfigurowanie dysku maszyny Wirtualnej przy użyciu zmi
 
 Uruchom to polecenie cmdlet, aby ustawić lokalizacji magazynu obiektów blob.
 
-```PowerShell
+```powershell
 $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName + ".vhd"
 ```
 
@@ -304,7 +304,7 @@ Następnym etapem jest skonfigurowanie systemu operacyjnego właściwości dysku
 
 Uruchom to polecenie cmdlet, aby ustawić właściwości dysku dla maszyny wirtualnej systemu operacyjnego.
 
-```PowerShell
+```powershell
 $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name `
    $OSDiskName -VhdUri $OSDiskUri -Caching ReadOnly -CreateOption FromImage
 ```
@@ -314,7 +314,7 @@ Ostatnim krokiem konfiguracji jest do określenia obrazu platformy dla swojej ma
 
 Uruchom to polecenie cmdlet, aby określić obrazu platformy dla swojej maszyny wirtualnej.
 
-```PowerShell
+```powershell
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
    -PublisherName $PublisherName -Offer $OfferName `
    -Skus $Sku -Version $Version
@@ -328,7 +328,7 @@ Teraz, po zakończeniu kroków konfiguracji możesz przystąpić do tworzenia ma
 
 Uruchom to polecenie cmdlet, aby utworzyć maszynę wirtualną.
 
-```PowerShell
+```powershell
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 ```
 
@@ -341,7 +341,7 @@ Maszyna wirtualna jest tworzona.
 Maszyny wirtualne programu SQL Server obsługują funkcje automatyczne zarządzanie za pomocą [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md). Aby zainstalować agenta na nowej maszyny Wirtualnej, uruchom następujące polecenie, po jego utworzeniu.
 
 
-   ```PowerShell
+   ```powershell
    Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
@@ -349,16 +349,16 @@ Maszyny wirtualne programu SQL Server obsługują funkcje automatyczne zarządza
 
 Jeśli maszyna wirtualna nie musi działać w sposób ciągły, możesz uniknąć niepotrzebnych opłat, zatrzymując ją, gdy jest nieużywana. Następujące polecenie zatrzyma maszynę wirtualną, ale pozostawi ją dostępną do użycia w przyszłości.
 
-```PowerShell
+```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Możesz również trwale usunąć wszystkie zasoby skojarzone z maszyną wirtualną za pomocą **AzResourceGroup Usuń** polecenia. Spowoduje to również trwałe usunięcie maszyny wirtualnej, dlatego tego polecenia należy używać z rozwagą.
+Możesz również trwale usunąć wszystkie zasoby skojarzone z maszyną wirtualną, korzystając z polecenia **Remove-AzResourceGroup**. Spowoduje to również trwałe usunięcie maszyny wirtualnej, dlatego tego polecenia należy używać z rozwagą.
 
 ## <a name="example-script"></a>Przykładowy skrypt
 Poniższy skrypt zawiera kompletny skrypt programu PowerShell na potrzeby tego samouczka. Przyjęto założenie, że już skonfigurowaniu subskrypcji platformy Azure za pomocą **Connect AzAccount** i **AzSubscription wybierz** poleceń.
 
-```PowerShell
+```powershell
 # Variables
 
 ## Global

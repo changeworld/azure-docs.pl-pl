@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 19910782142bf78c10dda155f40a5c41bdd64958
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842757"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486322"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -222,7 +222,7 @@ Następnym krokiem jest, aby skonfigurować klaster trybu failover przy użyciu 
 
    Aby zainstalować funkcję Klaster trybu Failover przy użyciu programu PowerShell, uruchom następujący skrypt w sesji programu PowerShell administratora na jednej z maszyn wirtualnych.
 
-   ```PowerShell
+   ```powershell
    $nodes = ("<node1>","<node2>")
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
@@ -253,7 +253,7 @@ Aby sprawdzić poprawność klastra przy użyciu interfejsu użytkownika, wykona
 
 Aby sprawdzić poprawność klastra przy użyciu programu PowerShell, uruchom następujący skrypt w sesji programu PowerShell administratora na jednej z maszyn wirtualnych.
 
-   ```PowerShell
+   ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
@@ -270,7 +270,7 @@ Aby utworzyć klaster trybu failover, potrzebne są:
 
 Następujące polecenie programu PowerShell umożliwia utworzenie klastra trybu failover. Zaktualizuj skrypt o nazwach węzłów (nazwy maszyn wirtualnych) i dostępnego adresu IP z sieci Wirtualnej platformy Azure:
 
-```PowerShell
+```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
@@ -294,7 +294,7 @@ Dyski S2D muszą być puste i bez partycji ani innych danych. Aby wyczyścić po
 
    Następujące polecenie programu PowerShell umożliwia bezpośrednie miejsca do magazynowania magazynu.  
 
-   ```PowerShell
+   ```powershell
    Enable-ClusterS2D
    ```
 
@@ -304,7 +304,7 @@ Dyski S2D muszą być puste i bez partycji ani innych danych. Aby wyczyścić po
 
    Jedna z funkcji S2D jest on automatycznie tworzy pulę magazynu po jej włączeniu. Teraz możesz przystąpić do tworzenia woluminu. Polecenia cmdlet programu PowerShell `New-Volume` automatyzuje proces tworzenia woluminu, w tym formatowania, dodać do klastra i utworzenie udostępnionego woluminu klastra (CSV). Poniższy przykład tworzy 800 gigabajt (GB) pliku CSV.
 
-   ```PowerShell
+   ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
    ```   
 
@@ -431,7 +431,7 @@ Ustaw parametr port sondy klastra w programie PowerShell.
 
 Aby ustawić parametr port sondy klastra, zaktualizuj zmienne w poniższy skrypt z wartościami z używanego środowiska. Usuń nawiasy kątowe `<>` ze skryptu. 
 
-   ```PowerShell
+   ```powershell
    $ClusterNetworkName = "<Cluster Network Name>"
    $IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
    $ILBIP = "<n.n.n.n>" 
@@ -457,7 +457,7 @@ W poprzednim skrypcie Ustaw wartości dla danego środowiska. Poniższa lista za
 
 Po ustawieniu sondy klastra, możesz zobaczyć wszystkie parametry klastra w programie PowerShell. Uruchom następujący skrypt:
 
-   ```PowerShell
+   ```powershell
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
   ```
 

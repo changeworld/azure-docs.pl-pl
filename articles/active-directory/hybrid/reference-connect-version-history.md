@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 840ea818c7c2e197f1ab65f4bd61067bf5e51283
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ab0e7ce1891dc3553f89f652c7dac70e66a4df0
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57836984"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499917"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -40,6 +40,56 @@ Pobierz | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink
 
 >[!NOTE]
 >Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnienie automatyczne. Stan wersji wskazuje, czy wydanie jest udostępniana dla uaktualnienie automatyczne lub tylko pobieranie. Jeśli automatyczne uaktualnianie zostało włączone na serwerze programu Azure AD Connect tego serwera zostanie automatycznie uaktualniona do najnowszej wersji programu Azure AD Connect, wydawanego dla uaktualnienie automatyczne. Należy pamiętać, że nie wszystkie konfiguracje program Azure AD Connect kwalifikujące się do automatycznego uaktualnienia. Postępuj zgodnie z tego linku, aby dowiedzieć się więcej o [automatyczne uaktualnianie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+
+## <a name="13900"></a>1.3.90.0 
+
+### <a name="release-status"></a>Stan zlecenia 
+
+3/25/2019: Nie została jeszcze ogólnie 
+ 
+### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia 
+
+
+
+- Dodano obsługę Odśwież domeny 
+- Funkcja foldery publiczne poczty programu Exchange przechodzi GA 
+- Poprawa Kreatora obsługi błędów dla błędów usługi 
+- Dodano łącze ostrzeżenie dla starego interfejsu użytkownika na stronie właściwości łącznika. 
+- Ta funkcja ujednoliconego zapisywania zwrotnego grup jest teraz ogólnie 
+- Ulepszone samoobsługowego resetowania HASEŁ komunikat o błędzie podczas kontroler domeny nie ma kontrolki LDAP 
+- Dodano diagnostykę dla modelu DCOM rejestru błędy podczas instalacji  
+- Ulepszone śledzenie błędów wersji RPC 
+- Zezwalaj na poświadczenia EA z domeny podrzędnej 
+- Zezwalaj na nazwę bazy danych ma zostać nawiązane podczas instalacji (domyślna nazwa ADSync)
+- Uaktualnij do biblioteki ADAL 3.19.8 na odebranie poprawkę WS-Trust, dla polecenia Ping i dodanie obsługi dla nowych wystąpień platformy Azure 
+- Modyfikuj grupę reguł synchronizacji przepływ samAccountName, DomainNetbios i DomainFQDN do chmury — wymagane oświadczenia 
+- Zmodyfikowane domyślna obsługa reguły synchronizacji — Dowiedz się więcej [tutaj](how-to-connect-fix-default-rules.md).
+- Dodano nowy agent, uruchomione jako usługa systemu windows. Ten agent o nazwie "Admin Agent", umożliwia bardziej szczegółową diagnostykę zdalnego z serwera Azure AD Connect, aby ułatwić Engineers firmy Microsoft rozwiązywanie problemów podczas otwierania zgłoszenia do pomocy technicznej. Dowiedz się więcej o Agent administracyjny [tutaj](whatis-aadc-admin-agent.md). 
+- Zaktualizowana Umowa licencyjna użytkownika (oprogramowania EULA) 
+- Dodano obsługę uaktualniania automatycznie w przypadku wdrożeń korzystających z usług AD FS jako ich typ logowania.  To również usunięcie wymagania aktualizacji usługi AD FS Azure AD zaufania jednostki uzależnionej w ramach procesu uaktualniania. 
+- Dodano zadanie zarządzania zaufania usługi Azure AD, która oferuje dwie opcje: analizowanie/zaktualizuj zaufania i resetowania relacji zaufania. 
+- Zmienione zachowanie relacji zaufania jednostki uzależnionej strona usługi AD FS Azure AD, aby zawsze używa przełącznika - SupportMultipleDomain (obejmuje zaufania i domeny usługi Azure AD aktualizacji). 
+- Tak, że wymaga certyfikatu PFX, usuwając możliwość korzystania z wstępnie zainstalowany certyfikat, należy zmienić zachowanie instalacji nowej usługi AD FS farmy.
+- Zaktualizowany przepływ pracy instalacji nowej usługi AD FS farmy umożliwia tylko wdrożenie 1 AD FS i 1 serwer proxy aplikacji sieci Web.  Wszystkie dodatkowe serwery zostaną wykonane po wstępnej instalacji. 
+
+### <a name="fixed-issues"></a>Rozwiązane problemy 
+
+
+- Poprawka SQL ponowne łączenie logiki dla usługi ADSync 
+- Napraw, aby umożliwić czysta instalacja przy użyciu pustego SQL DB AOA 
+- Napraw skrypt PS uprawnień, aby dostosować uprawnienia GWB 
+- Napraw błędy usługi VSS z bazą danych LocalDB  
+- Naprawiono mylący komunikat o błędzie, gdy typ obiektu jest poza zakresem 
+- Rozwiązany problem gdzie instalacji programu Azure AD PowerShell na serwerze może powodować konflikt typu zestawu za pomocą usługi Azure AD Connect. 
+- Usunięto usterkę występującą na serwer przejściowy, po zaktualizowaniu poświadczenia łącznika w Interfejsie użytkownika starej wersji. 
+- Rozwiązano niektóre przecieki pamięci 
+- Różne poprawki Autoupgrade 
+- Różne poprawki do eksportowania i niepotwierdzone przetwarzania importu 
+- Usunięto usterkę za pomocą obsługi ukośnik odwrotny w domenie i jednostce Organizacyjnej filtrowania 
+- Rozwiązano problem, w którym ma więcej niż 2 minuty, aby zatrzymać usługi ADSync, a powoduje, że problem podczas uaktualniania. 
+
+
+
 
 ## <a name="12700"></a>1.2.70.0
 

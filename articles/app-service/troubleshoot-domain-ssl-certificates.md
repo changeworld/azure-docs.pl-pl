@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: b367251e6799031ed96058d21e606446e14636c7
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: c316176094f6d9b8b45b812acaad04ad37f4bce2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407610"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449124"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Rozwiązywanie problemów z domeny i problemy z certyfikatem SSL w usłudze Azure App Service
 
@@ -314,7 +314,7 @@ Tak. Gdy uzyskujesz dostęp do bloku domeny niestandardowe i protokół SSL w wi
 
 **Czy mogę przenieść domenę z jednej subskrypcji do innej subskrypcji?**
 
-Domeny można przenieść do innej grupy zasobów/subskrypcji przy użyciu [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) polecenia cmdlet programu PowerShell.
+Domeny można przenieść do innej grupy zasobów/subskrypcji przy użyciu [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource) polecenia cmdlet programu PowerShell.
 
 **Jak można zarządzać Mój domeny niestandardowej, jeśli obecnie nie mam aplikację usługi Azure App Service?**
 

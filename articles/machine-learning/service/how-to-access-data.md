@@ -11,18 +11,18 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: c171e35c6542febffc666ad5abfab50e093bb698
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 25da234e4210c98ce17bdeb502493c5c649dab28
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359283"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481641"
 ---
 # <a name="access-data-from-your-datastores"></a>Dostęp do danych z usługi magazynów danych
 
-Magazynów danych umożliwiają interakcję i uzyskiwać dostęp do danych, czy używasz kodu lokalnie, w klastrze obliczeniowym, lub na maszynie wirtualnej. W tym artykule, Dowiedz się, że przepływy pracy usługi Azure Machine Learning, upewnij się, Twoje magazynów danych, które są dostępne i udostępnione do kontekstu obliczeniowego.
+ W usłudze Azure Machine Learning magazynów danych są zasobów obliczeniowych niezależnie od lokalizacji mechanizmy dostęp do magazynu bez konieczności wprowadzania zmian w kodzie źródłowym. Czy napisać kod szkolenia przepływał ścieżką jako parametr lub podaj magazyn danych bezpośrednio do szacowania przepływy pracy usługi Azure Machine Learning upewnij się, lokalizacjach magazynu danych są dostępne i udostępnione do kontekstu obliczeniowego.
 
-Niniejszy instruktaż zawiera przykłady dla następujących zadań:
+Niniejszy instruktaż zawiera przykłady następujących zadań:
 * [Wybierz magazyn danych](#access)
 * [Pobieranie danych](#get)
 * [Przekazywanie i pobieranie danych do magazynów danych](#up-and-down)
@@ -30,7 +30,7 @@ Niniejszy instruktaż zawiera przykłady dla następujących zadań:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z magazynów danych, musisz mieć [obszaru roboczego](concept-azure-machine-learning-architecture.md#workspace) pierwszy. 
+Aby korzystać z magazynów danych, należy najpierw [obszaru roboczego](concept-azure-machine-learning-architecture.md#workspace).
 
 Rozpocznij od albo [tworzenia nowego obszaru roboczego](setup-create-workspace.md#sdk) lub pobierania istniejące:
 
@@ -49,14 +49,16 @@ Możesz użyć domyślnego magazynu danych lub skorzystaj z własnych.
 
 ### <a name="use-the-default-datastore-in-your-workspace"></a>Użyj domyślnego magazynu danych w obszarze roboczym
 
-Nie ma potrzeby tworzenia i konfigurowania konta magazynu, ponieważ każdy obszar roboczy ma domyślny magazyn danych. Można go używać, Magazyn danych razu postaci, w jakiej jest już zarejestrowany w obszarze roboczym. 
+ Każdy obszar roboczy został zarejestrowany, domyślny magazyn danych można użyć od razu.
 
 Aby uzyskać magazyn danych z domyślnego obszaru roboczego:
+
 ```Python
 ds = ws.get_default_datastore()
 ```
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>Zarejestruj własny magazyn danych z obszarem roboczym
+
 Jeśli masz istniejące usługi Azure Storage, należy zarejestrować go jako magazyn danych w obszarze roboczym usługi.   Wszystkie metody register znajdują się na [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) klasy i mieć register_azure_ formularza *. 
 
 W poniższych przykładach pokazano można zarejestrować kontenera obiektów Blob platformy Azure lub udziału plików platformy Azure jako magazynu danych.
@@ -145,19 +147,17 @@ ds.download(target_path='your target path',
 <a name="train"></a>
 ## <a name="access-datastores-during-training"></a>Dostęp do magazynów danych w trakcie szkolenia
 
-Po udostępnieniu usługi magazynu danych na zdalne zasoby obliczeniowe, możesz do niego dostęp podczas przebiegów szkoleniowych (na przykład, szkoleń lub sprawdzania poprawności danych), po prostu przekazując ścieżkę do niego jako parametr w skrypcie szkolenia.
+Po udostępnieniu usługi magazynu danych na obliczeniowego elementu docelowego, możesz do niego dostęp podczas przebiegów szkoleniowych (na przykład, szkoleń lub sprawdzania poprawności danych), po prostu przekazując ścieżkę do niego jako parametr w skrypcie szkolenia.
 
-W poniższej tabeli wymieniono typowe [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) metody, które udostępnia magazynów danych na zdalne zasoby obliczeniowe.
+W poniższej tabeli wymieniono [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) metody, które informują obliczeniowego elementu docelowego, jak korzystać z magazynu danych w czasie uruchomienia.
 
-# #
-
-sposób|Metoda|Opis
+sposób|Metoda|Opis|
 ----|-----|--------
-Instalacja| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Użyj, aby zainstalować Magazyn danych w usłudze obliczeniowej zdalnego. Domyślny tryb dla magazynów danych.
-Do pobrania|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Użyj, aby pobrać dane z lokalizacji określonej przez `path_on_compute` na usługi magazynu danych na zdalne zasoby obliczeniowe.
-Upload|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Służy do przekazywania danych do katalogu głównego usługi magazynu danych z lokalizacji określonej przez `path_on_compute`.
+Instalacja| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Zainstaluj za pomocą magazynu danych na obliczeniowego elementu docelowego.
+Do pobrania|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Służy do pobierania zawartości z magazynu danych do lokalizacji określonej przez `path_on_compute`. <br> W kontekście szkolenia, uruchom ten plik do pobrania ma miejsce przed uruchomieniem.
+Upload|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Służy do przekazywania pliku z lokalizacji określonej przez `path_on_compute` z magazynem danych. <br> W kontekście szkolenia, uruchom to przekazywanie odbywa się po ich zakończeniu.
 
-```Python
+ ```Python
 import azureml.data
 from azureml.data import DataReference
 
@@ -166,22 +166,38 @@ ds.as_download(path_on_compute='your path on compute')
 ds.as_upload(path_on_compute='yourfilename')
 ```  
 
-Aby odwoływać się do określonego folderu lub pliku w swojej magazynu danych, należy użyć magazynu danych [ `path()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) funkcji.
+Aby odwoływać się do określonego folderu lub pliku w swojej magazynu danych i udostępnić go w miejscu docelowym obliczeń, należy użyć magazynu danych [ `path()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) funkcji.
 
 ```Python
-#download the contents of the `./bar` directory from the datastore to the remote compute
+#download the contents of the `./bar` directory in ds to the compute target
 ds.path('./bar').as_download()
 ```
 
+> [!NOTE]
+> Wszelkie `ds` lub `ds.path` obiektu jest rozpoznawana jako nazwę zmiennej środowiskowej formatu `"$AZUREML_DATAREFERENCE_XXXX"` których wartość reprezentuje ścieżkę instalacji/pobierania w usłudze obliczeniowej docelowego. Ścieżka magazynu danych w usłudze obliczeniowej docelowego nie może być taka sama jak ścieżka wykonywania skryptu szkolenia.
+
+### <a name="compute-context-and-datastore-type-matrix"></a>Obliczenia macierzy typu kontekstu i magazynu danych
+
+Następujące macierzy Wyświetla funkcje dostępu do danych o dostępności dla scenariuszy obliczeniowej magazynu danych i kontekstu. Termin "Pipeline" w tej macierzy odnosi się do możliwości korzystać z magazynów danych jako dane wejściowe lub wyjściowe w [potoków uczenia maszynowego Azure](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines).
+
+||Local Compute|Usługi Azure Machine Learning obliczeń|Transfer danych|Databricks|HDInsight|Azure Batch|Azure DataLake Analytics|Maszyny wirtualne|
+-|--|-----------|----------|---------|-----|--------------|---------|---------|
+|AzureBlobDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] <br> Potok|Potok|Potok|[`as_download()`] <br> [`as_upload()`]|Potok||[`as_download()`] <br> [`as_upload()`]|
+|AzureFileDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] Potoku |||[`as_download()`] [`as_upload()`]|||[`as_download()`] [`as_upload()`]|
+|AzureDataLakeDatastore|||Potok|Potok|||Potok||
+|AzureDataLakeGen2Datastore|||Potok||||||
+|AzureDataPostgresSqlDatastore|||Potok||||||
+|AzureSqlDatabaseDataDatastore|||Potok||||||
 
 
 > [!NOTE]
-> Wszelkie `ds` lub `ds.path` obiektu jest rozpoznawana jako nazwę zmiennej środowiskowej formatu `"$AZUREML_DATAREFERENCE_XXXX"` których wartość reprezentuje ścieżkę instalacji/pobierania na zdalne zasoby obliczeniowe. Ścieżka magazynu danych w usłudze obliczeniowej zdalnego nie może być taka sama jak ścieżka wykonywania skryptu szkolenia.
+> Mogą istnieć scenariusze, w których wysoce iteracyjną, duże ilości danych procesy są uruchamiane szybciej przy użyciu [`as_download()`] zamiast [`as_mount()`]; może to być weryfikowane doświadczalnie.
 
 ### <a name="examples"></a>Przykłady 
 
-Następujące pokazują przykłady specyficzne dla [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) klasy do uzyskiwania dostępu do usługi magazynu danych podczas szkolenia.
+Poniższe przykłady kodu są specyficzne dla [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) klasy do uzyskiwania dostępu do usługi magazynu danych podczas szkolenia.
 
+Ten kod tworzy narzędzie do szacowania za pomocą skryptu programu szkolenia `train.py`, z katalogu wskazanego źródła, przy użyciu parametrów zdefiniowanych w `script_params`, na określonym obliczeniowego elementu docelowego.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -191,17 +207,16 @@ script_params = {
 }
 
 est = Estimator(source_directory='your code directory',
+                entry_script='train.py',
                 script_params=script_params,
-                compute_target=compute_target,
-                entry_script='train.py')
+                compute_target=compute_target
+                )
 ```
 
-Ponieważ `as_mount()` jest to domyślny tryb dla magazynu danych, można także bezpośrednio przekazać `ds` do `'--data_dir'` argumentu.
-
-Lub przekazać listę magazynów danych do konstruktora narzędzie do szacowania `inputs` parametru, aby zainstalować, lub skopiować do i z niej swoje magazyny danych. Ten przykład kodu:
-* Pliki do pobrania całej zawartości w magazynie danych `ds1` do zdalnego obliczeń przed skrypt szkolenia `train.py` jest uruchamiany
-* Folder pobierania `'./foo'` w magazynie danych `ds2` do zdalnego obliczeń przed `train.py` jest uruchamiany
-* Przekazuje plik `'./bar.pkl'` ze zdalnego obliczeniowego do magazynu danych `ds3` po uruchomieniu skryptu
+Można również przekazać listę magazynów danych do konstruktora narzędzie do szacowania `inputs` parametru, aby zainstalować, lub skopiować do i z niej swoje magazyny danych. Ten przykład kodu:
+* Pliki do pobrania całej zawartości w magazynie danych `ds1` do obliczeniowego elementu docelowego przed skrypt szkolenia `train.py` jest uruchamiany
+* Folder pobierania `'./foo'` w magazynie danych `ds2` do obliczeniowego elementu docelowego przed `train.py` jest uruchamiany
+* Przekazuje plik `'./bar.pkl'` z obliczeniowego elementu docelowego do magazynu danych `ds3` po uruchomieniu skryptu
 
 ```Python
 est = Estimator(source_directory='your code directory',
@@ -209,7 +224,6 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
 ```
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

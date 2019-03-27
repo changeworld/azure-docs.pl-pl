@@ -8,33 +8,49 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/26/2019
 ms.author: anroth
-ms.openlocfilehash: e50933ea0231b4be22c2d0f82d33fd02dd0918f5
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 715fa526c83608c9922315e3a0d89b67b31e0d16
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351613"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472731"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically"></a>Użyj endpoint prognoz, aby przetestować obrazy programowe
+#  <a name="use-your-model-with-the-prediction-api"></a>Model za pomocą interfejsu API prognoz.
 
 Po wyszkoleniu modelu można przetestować obrazy programowo, przesyłając je do interfejsu API przewidywania.
 
 > [!NOTE]
-> W tym dokumencie przedstawiono przesyłanie obrazu do interfejsu API przewidywania przy użyciu języka C#. Aby uzyskać więcej informacji i przykładów użycia interfejsu API, zobacz [dokumentację interfejsu API przewidywania](https://go.microsoft.com/fwlink/?linkid=865445).
+> W tym dokumencie przedstawiono przesyłanie obrazu do interfejsu API przewidywania przy użyciu języka C#. Aby uzyskać więcej informacji i przykładów użycia interfejsu API, zobacz [dokumentację interfejsu API przewidywania](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
+
+## <a name="publish-your-trained-iteration"></a>Publikowanie swojej uczonego iteracji
+
+Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__.
+
+Do przesyłania obrazów do interfejsu API prognoz, najpierw należy do publikowania swojej iteracji w celu prognozowania, co można zrobić, wybierając __Publikuj__ i określając nazwę opublikowanych iteracji. Spowoduje to włączenie modelu w taki sposób umożliwić dostęp do interfejsu API prognozowania usługi Custom Vision w usłudze Azure resource. 
+
+![Na karcie Wydajność jest wyświetlana z czerwonym prostokątem otaczającego przycisk Publikuj.](./media/use-prediction-api/unpublished-iteration.png)
+
+Po pomyślnym opublikowaniu modelu zobaczysz etykietę "Opublikowano", pojawiają się obok swojej iteracji w lewym pasku bocznym, a także nazwę opublikowanych iteracji w opisie iteracji.
+
+![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego etykiety opublikowano i nazwy opublikowanej iteracji.](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>Pobieranie adresu URL i klucza predykcyjnego
 
-Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a następnie kartę __Wydajność__. Aby wyświetlić informacje o korzystaniu z interfejsu API przewidywania w tym __Klucza predykcyjnego__, wybierz __Adres URL przewidywania__. Dla projektów dołączonych do zasobu platformy Azure Twoje __prognozowania klucz__ można także znaleźć w [witryny Azure portal](https://portal.azure.com) strona skojarzonego zasobu platformy Azure w ramach __klucze__. Skopiuj następujące informacje, aby ich użyć w aplikacji:
+Po opublikowaniu modelu można pobrać informacji o korzystaniu z interfejsu API prognoz, wybierając __URL prognozowania__. Zostanie otwarte okno dialogowe podobny do przedstawionego poniżej informacje dotyczące korzystania z interfejsu API prognoz, w tym __URL prognozowania__ i __prognozowania klucz__.
 
-* __Adres URL__ do korzystania z __pliku obrazu__.
-* Wartość __Klucza predykcyjnego__.
+![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego przycisk prognozowania adresu URL.](./media/use-prediction-api/published-iteration-prediction-url.png)
+
+![Na karcie Wydajność jest wyświetlany za pomocą czerwonego prostokąta otaczającego wartość adresu URL prognozy przy użyciu pliku obrazu i wartości klucza prognozowania.](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> Jeśli masz wiele iteracji, możesz określić, która z nich będzie używana, ustawiając ją jako domyślną. Wybierz iterację w sekcji __Iteracje__, a następnie zaznacz opcję __Ustaw jako domyślną__ w górnej części strony.
+> Twoje __klucz prognozowania__ można także znaleźć w [witryny Azure Portal](https://portal.azure.com) strony dla zasobów platformy Azure Custom Vision związanych z projektem, w obszarze __klucze__. 
 
-![Na karcie wydajności czerwonym prostokątem otoczono adres URL przewidywania.](./media/use-prediction-api/prediction-url.png)
+Okno dialogowe skopiuj następujące informacje do użycia w aplikacji:
+
+* __Adres URL prognozowania__ używania __plik obrazu__.
+* __Klucz prognozowania__ wartość.
 
 ## <a name="create-the-application"></a>Tworzenie aplikacji
 
@@ -46,8 +62,8 @@ Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a na
     > Zmień następujące informacje:
     >
     > * Ustaw __przestrzeń nazw__ na nazwę projektu.
-    > * Ustaw wartość __klucza predykcyjnego__ otrzymaną wcześniej w linii, która rozpoczyna się od `client.DefaultRequestHeaders.Add("Prediction-Key",`.
-    > * Ustaw wartość __adresu URL__ otrzymanego wcześniej w linii, która rozpoczyna się od `string url =`.
+    > * Ustaw __klucz prognozowania__ pobrane wcześniej w wierszu, który rozpoczyna się od wartości `client.DefaultRequestHeaders.Add("Prediction-Key",`.
+    > * Ustaw __URL prognozowania__ pobrane wcześniej w wierszu, który rozpoczyna się od wartości `string url =`.
 
     ```csharp
     using System;
@@ -56,37 +72,30 @@ Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a na
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    namespace CSPredictionSample
+    namespace CVSPredictionSample
     {
-        static class Program
+        public static class Program
         {
-            static void Main()
+            public static void Main()
             {
                 Console.Write("Enter image file path: ");
                 string imageFilePath = Console.ReadLine();
 
                 MakePredictionRequest(imageFilePath).Wait();
 
-                Console.WriteLine("\n\n\nHit ENTER to exit...");
+                Console.WriteLine("\n\nHit ENTER to exit...");
                 Console.ReadLine();
             }
 
-            static byte[] GetImageAsByteArray(string imageFilePath)
-            {
-                FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
-            }
-
-            static async Task MakePredictionRequest(string imageFilePath)
+            public static async Task MakePredictionRequest(string imageFilePath)
             {
                 var client = new HttpClient();
 
-                // Request headers - replace this example key with your valid subscription key.
-                client.DefaultRequestHeaders.Add("Prediction-Key", "13hc77781f7e4b19b5fcdd72a8df7156");
+                // Request headers - replace this example key with your valid Prediction-Key.
+                client.DefaultRequestHeaders.Add("Prediction-Key", "3b9dde6d1ae1453a86bfeb1d945300f2");
 
-                // Prediction URL - replace this example URL with your valid prediction URL.
-                string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/prediction/d16e136c-5b0b-4b84-9341-6a3fff8fa7fe/image?iterationId=f4e573f6-9843-46db-8018-b01d034fd0f2";
+                // Prediction URL - replace this example URL with your valid Prediction URL.
+                string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/8622c779-471c-4b6e-842c-67a11deffd7b/classify/iterations/Cats%20vs.%20Dogs%20-%20Published%20Iteration%203/image";
 
                 HttpResponseMessage response;
 
@@ -100,23 +109,30 @@ Na stronie [Custom Vision ](https://customvision.ai) wybierz swój projekt, a na
                     Console.WriteLine(await response.Content.ReadAsStringAsync());
                 }
             }
+
+            private static byte[] GetImageAsByteArray(string imageFilePath)
+            {
+                FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                return binaryReader.ReadBytes((int)fileStream.Length);
+            }
         }
     }
     ```
 
 ## <a name="use-the-application"></a>Użycie aplikacji
 
-Podczas uruchamiania aplikacji należy wprowadzić ścieżkę do pliku obrazu. Obraz jest przesyłany do interfejsu API, a wyniki są zwracane jako dokument JSON. Następujący kod JSON jest przykładem odpowiedzi
+Po uruchomieniu aplikacji, wprowadź ścieżkę do pliku obrazu, w konsoli. Obraz, który jest przesyłany do interfejsu API prognoz i przewidywane wyniki są zwracane jako dokument JSON. Następujące dane JSON znajduje się przykład odpowiedzi.
 
 ```json
 {
-    "Id":"3f76364c-b8ae-4818-a2b2-2794cfbe377a",
-    "Project":"2277aca4-7aff-4742-8afb-3682e251c913",
-    "Iteration":"84105bfe-73b5-4fcc-addb-756c0de17df2",
-    "Created":"2018-05-03T14:15:22.5659829Z",
+    "Id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
+    "Project":"8622c779-471c-4b6e-842c-67a11deffd7b",
+    "Iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
+    "Created":"2019-03-20T16:47:31.322Z",
     "Predictions":[
-        {"TagId":"35ac2ad0-e3ef-4e60-b81f-052a1057a1ca","Tag":"dog","Probability":0.102716163},
-        {"TagId":"28e1a872-3776-434c-8cf0-b612dd1a953c","Tag":"cat","Probability":0.02037274}
+        {"TagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","TagName":"cat", "Probability":1.0},
+        {"TagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","TagName":"dog", "Probability":0.1087869}
     ]
 }
 ```
@@ -124,3 +140,13 @@ Podczas uruchamiania aplikacji należy wprowadzić ścieżkę do pliku obrazu. O
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Eksportowanie modelu na potrzeby urządzeń mobilnych](export-your-model.md)
+
+[Rozpoczynanie pracy z zestawami SDK platformy .NET](csharp-tutorial.md)
+
+[Rozpoczynanie pracy z zestawami SDK języka Python](python-tutorial.md)
+
+[Rozpoczynanie pracy z zestawami SDK języka Java](java-tutorial.md)
+
+[Rozpoczynanie pracy z zestawami SDK węzła](node-tutorial.md)
+
+[Rozpoczynanie pracy z usługą Przejdź zestawów SDK](go-tutorial.md)

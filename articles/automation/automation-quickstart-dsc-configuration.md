@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 8bb035a02b8ab684bc1efb7accd785518cb151c2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a30f9c1a61044c0911a5afc27ad95fc758b4c83e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107614"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449092"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurowanie maszyny wirtualnej systemu Linux za pomocą DSC
 
@@ -143,6 +143,6 @@ W tym przewodniku Szybki Start maszyna wirtualna systemu Linux została dołącz
 > [Continuous deployment to a VM using DSC and Chocolatey](./automation-dsc-cd-chocolatey.md) (Ciągłe wdrażanie na maszynie wirtualnej za pomocą DSC i Chocolatey)
 
 * Aby dowiedzieć się więcej na temat konfiguracji DSC programu PowerShell, zobacz [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/dsc/overview) (Omówienie środowiska PowerShell żądanego stanu konfiguracji).
-* Aby dowiedzieć się więcej o zarządzaniu Konfiguracją DSC usługi Automation z programem PowerShell, zobacz [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0) (Program Azure PowerShell)
+* Aby dowiedzieć się więcej o zarządzaniu Konfiguracją DSC usługi Automation z programem PowerShell, zobacz [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/) (Program Azure PowerShell)
 * Aby dowiedzieć się, jak przekazywać raporty DSC do dzienników usługi Azure Monitor w celu raportowania i przekazywania alertów, zobacz [Przekazywanie raportów DSC do dzienników usługi Azure Monitor](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

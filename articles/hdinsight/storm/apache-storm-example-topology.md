@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 73a7c2ef80291920a6d19f0c3ab01b45c1d6b22a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 42780eae0a85ec8a2ca7e9d6ca1149f6530c25e1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53627728"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448977"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Przykład topologii Apache Storm i składniki dla Storm Apache na HDInsight
 
@@ -46,7 +46,7 @@ Poniżej przedstawiono listę przykładów tworzone i konserwowane przez firmę 
 * [Dowiedz się, jak wdrażanie topologii Apache Storm z platformą Apache Storm w HDInsight i zarządzanie][6eb0d3b8]
 
 [2b8c3488]:apache-storm-tutorial-get-started-linux.md "Dowiedz się, jak utworzyć Apache Storm w klastrze HDInsight i korzystać z pulpitu nawigacyjnego Storm, aby wdrożyć przykładowe topologie."
-[6eb0d3b8]:apache-storm-deploy-monitor-topology.md "Dowiedz się, jak wdrażanie topologii i zarządzanie nimi za pomocą opartego na sieci web Apache Storm pulpitu nawigacyjnego i interfejs użytkownika platformy Storm lub narzędzi HDInsight dla programu Visual Studio."
+[6eb0d3b8]:apache-storm-deploy-monitor-topology-linux.md "Dowiedz się, jak wdrażanie topologii i zarządzanie nimi za pomocą opartego na sieci web Apache Storm pulpitu nawigacyjnego i interfejs użytkownika platformy Storm lub narzędzi HDInsight dla programu Visual Studio."
 [16fce2d1]:apache-storm-develop-csharp-visual-studio-topology.md "Dowiedz się, jak tworzenie topologii Storm języka C# za pomocą narzędzi HDInsight dla programu Visual Studio."
 [5797064f]:apache-storm-develop-java-topology.md "Dowiedz się, jak tworzenie topologii Storm w języku Java, przy użyciu narzędzia Maven, tworząc topologii wordcount podstawowe."
 [844d1d81]:apache-storm-develop-csharp-event-hub-topology.md "Dowiedz się, jak odczytywać i zapisywać dane z usługi Azure Event Hubs przy użyciu systemu Storm na HDInsight."

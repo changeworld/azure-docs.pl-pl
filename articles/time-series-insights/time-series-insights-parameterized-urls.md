@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558468"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487876"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 
@@ -81,13 +81,13 @@ Parametr „multiChartStack=<true/false>” umożliwia umieszczanie na stosie na
 - „multiChartStack=false&multiChartSameScale=true” 
   - Układanie na stosie musi mieć możliwość użycia takiej samej skali osi Y dla warunków.  Domyślnie jest równe „false”, więc przekazanie wartości „true” włącza tę funkcję.  
   
-„timeBucketUnit=<Unit>&timeBucketSize=<integer>” umożliwia dostosowanie suwaka odstępu czasu, aby zapewnić bardziej szczegółowy lub płynniejszy, bardziej zagregowany widok wykresu.  
-- „timeBucketUnit=<Unit>&timeBucketSize=<integer>”
+`timeBucketUnit=<Unit>&timeBucketSize=<integer>` Umożliwia dostosowanie suwaka odstępu, aby zapewnić bardziej szczegółowy lub płynniejszy, bardziej zagregowany widok wykresu.  
+- `timeBucketUnit=<Unit>&timeBucketSize=<integer>`
   - Jednostki = dni, godziny, minuty, sekundy, milisekundy.  Jednostka zawsze wielką literą.
   - Zdefiniuj liczbę jednostek, przekazując żądaną liczbę całkowitą do timeBucketSize.  Zapamiętaj, że zostało wygładzonych do 7 dni.  
   
-Parametr „timezoneOffset=<integer>” umożliwia ustawienie strefy czasowej dla wykresu, która jest wyświetlana jako przesunięcie względem czasu UTC.  
-  - „timezoneOffset=<integer>”
+`timezoneOffset=<integer>` Parametr umożliwia ustawienie strefy czasowej dla wykresu, która jest wyświetlana jako przesunięcie względem czasu UTC.  
+  - `timezoneOffset=-<integer>`
     - Liczba całkowita jest zawsze w milisekundach.  
     - Zapamiętaj, ta funkcja jest nieco inna niż ta, którą włączyliśmy w Eksploratorze TSI, gdzie umożliwiliśmy wybranie czasu lokalnego (czasu przeglądarki) lub czasu UTC.  
  

@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cbbc710c9408c84c601d7b9eb9560641b5313a05
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090937"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484699"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Zarządzanie grupami zasobów usługi Azure Resource Manager przy użyciu witryny Azure portal
 
@@ -122,7 +122,7 @@ Istnieją dwa sposoby eksportowania szablonu:
 
 Ta metoda umożliwia wyeksportowanie szablonów w przypadku niektórych wdrożeń. Jeśli zasoby zostały zmienione z portalu lub są dodawani lub usuwani zasobów w wielu wdrożeniach, zobacz [eksportowanie szablonów z grup zasobów](#export-templates-from-resource-groups).
 
-1. Otwórz grupę zasobów, które chcesz usunąć.  Zobacz [Otwórz grup zasobów](#open-resource-groups).
+1. Otwórz grupę zasobów, które chcesz wyeksportować.  Zobacz [Otwórz grup zasobów](#open-resource-groups).
 2. W okienku po lewej stronie wybierz **wdrożeń**, lub wybierz link w obszarze **wdrożeń**.  Na poniższym zrzucie ekranu przedstawiono **4 Powodzenie** ponieważ wystąpiły cztery rozdzielonych wdrożeń w cztery nazwą innego wdrożenia. Może zostać wyświetlony **1 Powodzenie**.
 
     ![Szablony eksportowanie grupy zasobów platformy Azure](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
@@ -148,8 +148,8 @@ Ta metoda umożliwia wyeksportowanie szablonów w przypadku niektórych wdroże�
 
 Jeśli zmieniono zasobów z poziomu portalu lub dodane/Usuń zasoby w wielu wdrożeniach, szablon pobrany z historii wdrożenia nie odzwierciedla bieżący stan grupy zasobów. W tej sekcji pokazano, jak wyeksportować szablon, który reprezentuje bieżący stan grupy zasobów. Jest on przeznaczony jako migawkę grupy zasobów, które służy do ponownego wdrożenia w tej samej grupie zasobów. Aby użyć wyeksportowanego szablonu do innych rozwiązań, należy go znacznie zmodyfikować.
 
-1. Otwórz grupę zasobów, które chcesz usunąć.  Zobacz [Otwórz grup zasobów](#open-resource-groups).
-2. W okienku po lewej stronie wybierz **skrypt automatyzacji**. Usługa Resource Manager pobiera następujące sześć plików:
+1. Otwórz grupę zasobów, które chcesz wyeksportować.  Zobacz [Otwórz grup zasobów](#open-resource-groups).
+2. W okienku po lewej stronie wybierz **Eksportuj szablon**. Usługa Resource Manager pobiera następujące sześć plików:
 
    - **Szablon** — szablon, który definiuje infrastrukturę Twojego rozwiązania. Po utworzeniu konta magazynu za pośrednictwem portalu usługa Resource Manager użyła szablonu w celu jego wdrożenia i zapisała ten szablon do użytku w przyszłości.
    - **Parametry** — plik parametrów, który służy do przekazywania wartości podczas wdrażania. Zawiera on wartości, które podano podczas pierwszego wdrażania. Podczas ponownego wdrażania szablonu można zmienić dowolne z tych wartości.

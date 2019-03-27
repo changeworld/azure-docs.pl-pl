@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3a0df408e70ed61355ffba319f6261f90d8e4348
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881388"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499162"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -345,7 +345,7 @@ Oto przykład żądane właściwości dla tego modułu: ![ustaw żądane właśc
     }
 
    ```
-  ## <a name="logs"></a>Dzienniki
+## <a name="logs"></a>Dzienniki
 
 Wykonaj poniższe instrukcje [skonfigurować dzienniki platformy docker dla modułów usługi IoT Edge](production-checklist.md#set-up-logs-and-diagnostics)
 
@@ -383,9 +383,10 @@ Języki, które są również obsługiwane przez usługi IoT Edge, dzięki czemu
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Eksplorator usługi Azure Storage
-Możesz też spróbować [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nawiązać połączenia z kontem magazynu lokalnego. Próbowaliśmy z [poprzedniej wersji 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) Eksploratora usługi Azure.
+Można też spróbować "Eksploratora usługi Azure Storage" do łączenia się z kontem magazynu lokalnego. Współdziała ona z [Eksploratora usługi Azure Storage w wersji 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0).
+
 > [!NOTE]
-> Może wystąpić błędy podczas wykonywania poniższych kroków, Ignoruj i Odśwież. 
+> Mogą wystąpić błędy, wykonując następujące czynności, takie jak dodawanie połączenia z kontem magazynu lokalnego lub tworzenia kontenerów na koncie magazynu lokalnego. Zignoruj ten komunikat i odświeżania. 
 
 1. Pobieranie i instalowanie Eksploratora usługi Azure Storage
 2. Łączenie z usługą Azure Storage przy użyciu parametrów połączenia

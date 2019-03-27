@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c9bd14128a6874f06983aa99ebb5a8a9a85843a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550688"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486737"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events dla maszyn wirtualnych Windows
 
@@ -46,7 +46,9 @@ Przy użyciu zaplanowanych zdarzeń aplikacji może odnajdywać podczas konserwa
 
 Scheduled Events dostępne są zdarzenia w następujących przypadkach użycia:
 - Konserwacja zainicjowana platformy (np. aktualizacji systemu operacyjnego hosta)
+- Obniżonej wydajności sprzętu
 - Użytkownik zainicjował konserwacji (np. ponownego uruchamiania lub ponownie wdraża Maszynę wirtualną)
+- [Maszyna wirtualna o niskim priorytecie eksmisji](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets) w skali ustawia
 
 ## <a name="the-basics"></a>Podstawowe informacje  
 
@@ -55,15 +57,16 @@ Usługi Azure Metadata service udostępnia informacje o uruchamianiu maszyn wirt
 ### <a name="endpoint-discovery"></a>Odnajdywanie punktu końcowego
 Dla maszyn wirtualnych z włączoną sieci Wirtualnej, usługa metadanych jest dostępne ze statycznego adresu IP bez obsługi routingu, `169.254.169.254`. Pełny punkt końcowy dla najnowszej wersji Scheduled Events to: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
 
 Jeśli maszyna wirtualna nie została utworzona w sieci wirtualnej, a przypadki domyślne usług cloud services i klasycznych maszyn wirtualnych, dodatkowej logiki jest wymagana do odnajdywania adres IP do użycia. Odnoszą się do tego przykładu, aby dowiedzieć się, jak [odnajdywanie punktu końcowego hosta](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="version-and-region-availability"></a>Wersja i dostępność regionów
-Usługa zdarzeń według harmonogramu jest wersjonowany. Wersje są obowiązkowe, a bieżąca wersja to `2017-08-01`.
+Usługa zdarzeń według harmonogramu jest wersjonowany. Wersje są obowiązkowe, a bieżąca wersja to `2017-11-01`.
 
 | Wersja | Typ zlecenia | Regiony | Informacje o wersji | 
 | - | - | - | - |
+| 2017-11-01 | Ogólna dostępność | Wszyscy | <li> Dodano obsługę maszyn wirtualnych o niskim priorytecie eksmisji typ zdarzenia "Preempt"<br> | 
 | 2017-08-01 | Ogólna dostępność | Wszyscy | <li> Usunięte poprzedzona znakiem podkreślenia z nazwy zasobów dla maszyn wirtualnych IaaS<br><li>Nagłówek metadanych wymaganie wymuszone dla wszystkich żądań | 
 | 2017-03-01 | Wersja zapoznawcza | Wszyscy |<li>Wersja początkowa
 
@@ -90,7 +93,7 @@ Można wyszukiwać Scheduled Events, po prostu, tworząc następujące wywołani
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
 ```
 
 Odpowiedź zawiera tablicę zaplanowanych zdarzeń. Pusta tablica oznacza, że są obecnie żadne zdarzenia według harmonogramu.
@@ -101,7 +104,7 @@ W przypadku których zaplanowanych zdarzeń, odpowiedź zawiera szereg zdarzeń:
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -116,7 +119,7 @@ DocumentIncarnation jest element ETag i zapewnia prosty sposób sprawdzić jeśl
 |Właściwość  |  Opis |
 | - | - |
 | Identyfikator zdarzenia | Globalnie unikatowy identyfikator dla tego zdarzenia. <br><br> Przykład: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Wpływ, który powoduje, że to zdarzenie. <br><br> Wartości: <br><ul><li> `Freeze`: Maszyna wirtualna jest zaplanowana do wstrzymywania w kilka sekund. Procesor jest wstrzymana, ale nie ma to wpływu na pamięci, otwartych plików lub połączeń sieciowych. <li>`Reboot`: Maszyna wirtualna jest zaplanowana do ponownego uruchomienia (— trwałej pamięci jest utracona). <li>`Redeploy`: Maszyna wirtualna jest zaplanowane na przeniesienie do innego węzła (efemeryczne dyski zostaną utracone). |
+| EventType | Wpływ, który powoduje, że to zdarzenie. <br><br> Wartości: <br><ul><li> `Freeze`: Maszyna wirtualna jest zaplanowana do wstrzymywania w kilka sekund. Procesor jest wstrzymana, ale nie ma to wpływu na pamięci, otwartych plików lub połączeń sieciowych. <li>`Reboot`: Maszyna wirtualna jest zaplanowana do ponownego uruchomienia (— trwałej pamięci jest utracona). <li>`Redeploy`: Maszyna wirtualna jest zaplanowane na przeniesienie do innego węzła (efemeryczne dyski zostaną utracone). <li>`Preempt`: Trwa usuwanie maszyny wirtualnej o niskim priorytecie (efemeryczne dyski zostaną utracone).|
 | ResourceType | Typ zasobu, który ma wpływ na to zdarzenie. <br><br> Wartości: <ul><li>`VirtualMachine`|
 | Zasoby| Lista zasobów, które ma wpływ na to zdarzenie. Gwarantuje zawierają maszyn z co najwyżej jeden [domena aktualizacji](manage-availability.md), ale może nie zawierać wszystkich maszyn w UD. <br><br> Przykład: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Stan zdarzenia | Stan tego zdarzenia. <br><br> Wartości: <ul><li>`Scheduled`: To zdarzenie jest zaplanowane do uruchomienia po upływie czasu określonego w `NotBefore` właściwości.<li>`Started`: To zdarzenie zostało rozpoczęte.</ul> Nie `Completed` lub podobne stan nigdy nie są dostarczane; zdarzenia nie zostaną zwrócone, po zakończeniu zdarzenia.
@@ -130,6 +133,7 @@ Każde zdarzenie jest zaplanowane minimalną ilość czasu w przyszłości na po
 | Freeze| 15 minut |
 | Ponowne uruchamianie | 15 minut |
 | Ponowne wdrożenie | 10 minut |
+| Wywłaszczenia | 30 sekund |
 
 ### <a name="event-scope"></a>Zakres zdarzeń     
 Zaplanowane zdarzenia są dostarczane do:        
@@ -156,7 +160,7 @@ Poniżej znajduje się za pomocą pliku json w oczekiwany `POST` treść żądan
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```
 
 > [!NOTE] 
@@ -167,7 +171,7 @@ curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": 
 
 Poniższy przykład wykonuje kwerendę usługi metadanych dla zaplanowanych zdarzeń i zatwierdza każdego zdarzenia zaległe.
 
-```PowerShell
+```powershell
 # How to get scheduled events 
 function Get-ScheduledEvents($uri)
 {
@@ -202,7 +206,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-08-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI

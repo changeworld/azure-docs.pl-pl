@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 715b0f9c5a5a68bb1fc42ed4206ca81ad85b844f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4ebd53db9622c5a40f67cba04aa35cbfbaa78c8d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450689"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446100"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Tworzenie klastra usługi Service Fabric przy użyciu usługi Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Szablon, który jest używany jest dostępna w [przykłady szablonów usługi Az
 Następujące polecenie, można utworzyć albo Windows lub klastrach systemu Linux, należy odpowiednio określić systemu operacyjnego. Polecenia programu PowerShell/interfejsu wiersza polecenia również danych wyjściowych dla certyfikatu w określonym *CertificateOutputFolder*; Jednakże, upewnij się, że folder certyfikat już utworzony. Wykonanie tego polecenia może w innych parametrów oraz przykład jednostki SKU maszyny Wirtualnej.
 
 > [!NOTE]
-> Następujące polecenie programu PowerShell działa tylko z programem Azure PowerShell Resource Manager w wersji > 6.1. Aby sprawdzić bieżącą wersję programu Azure PowerShell Resource Manager w wersji, uruchom następujące polecenie programu PowerShell "Get-Module AzureRM". Postępuj zgodnie z [ten link](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.3.0) uaktualnienie wersji usługi Azure Resource Manager w programie PowerShell. 
+> Następujące polecenie programu PowerShell działa tylko z programem Azure PowerShell Resource Manager w wersji > 6.1. Aby sprawdzić bieżącą wersję programu Azure PowerShell Resource Manager w wersji, uruchom następujące polecenie programu PowerShell "Get-Module AzureRM". Postępuj zgodnie z [ten link](/powershell/azure/azurerm/install-azurerm-ps) uaktualnienie wersji usługi Azure Resource Manager w programie PowerShell. 
 >
 >
 

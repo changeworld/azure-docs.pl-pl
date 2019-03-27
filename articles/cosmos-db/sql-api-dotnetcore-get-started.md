@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a .NET Core application to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities that Azure Cosmos DB offers.
-ms.openlocfilehash: 1aad68a3248561c86e195b55c1d509ab7a15964e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 52e39b705b8bd0e20c846f065702bcaf7b3a45f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035682"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487282"
 ---
 # <a name="tutorial-build-a-net-core-app-to-manage-data-stored-in-a-sql-api-account"></a>Samouczek: Tworzenie aplikacji .NET Core do zarządzania danymi zapisanymi na koncie interfejsu API SQL
 
@@ -76,7 +76,7 @@ Aby utworzyć konto usługi Azure Cosmos, wykonaj następujące czynności:
 
    ![Zrzut ekranu przedstawiający menu projektu kliknięte prawym przyciskiem myszy](./media/sql-api-dotnetcore-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 
-6. Na karcie **NuGet** wybierz pozycję **Przeglądaj** w górnej części okna i wpisz ciąg **azure documentdb** w polu wyszukiwania.
+6. Na karcie **NuGet** wybierz pozycję **Przeglądaj** w górnej części okna i wpisz ciąg **azure documentdb** w polu wyszukiwania. Upewnij się, że **Uwzględnij wersję wstępną** zaznaczono pole wyboru.
 
 7. W wynikach znajdź pozycję **Microsoft.Azure.DocumentDB.Core**, a następnie wybierz przycisk **Zainstaluj**.
 
@@ -545,7 +545,7 @@ Pomyślnie ukończono ten samouczek i utworzono działającą aplikację konsolo
 
 Możesz usunąć grupę zasobów, konto usługi Azure Cosmos oraz wszystkie powiązane zasoby, gdy nie będą już potrzebne. Aby to zrobić, wybierz grupę zasobów maszyny wirtualnej, wybierz pozycję **Usuń**, a następnie potwierdź nazwę grupy zasobów, którą chcesz usunąć.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób kompilowania aplikacji .NET Core w celu zarządzania danymi zapisanymi na koncie interfejsu API SQL usługi Azure Cosmos DB. Teraz możesz przejść do następnego artykułu:
 

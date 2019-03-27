@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: b0842bfc4c9d60420f6409afc4bc42692346050b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a2e03a548b403262dca7e7a76b84cc99661242c6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999661"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487368"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -563,6 +563,36 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    params pcmk_delay_max="15" \
    op monitor interval="15" timeout="15"
 </code></pre>
+
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Program pacemaker konfiguracji dla platformy Azure zaplanowane zdarzenia
+
+Platforma Azure oferuje [zaplanowane zdarzenia](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/scheduled-events). Zaplanowane zdarzenia są dostarczane za pośrednictwem usługi metadanych i poczekanie, aż aplikacji przygotować się do zdarzeń, takich jak zamknięcie maszyny Wirtualnej, ponowne wdrożenie maszyny Wirtualnej itd. Zasób agenta **[zdarzeń azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** monitorów zaplanowanych zdarzeń platformy Azure. W przypadku wykrycia zdarzenia agent spróbuje zatrzymać wszystkie zasoby objęte wpływem maszyny wirtualnej i przenieść je do innego węzła w klastrze. Aby osiągnąć tego dodatkowe zasoby program Pacemaker musi być skonfigurowany. 
+
+1. **[A]**  Zainstalować **zdarzeń azure** agenta. 
+
+<pre><code>sudo zypper install resource-agents
+</code></pre>
+
+2. **[1]**  Konfigurowanie zasobów w program Pacemaker. 
+
+<pre><code>
+#Place the cluster in maintenance mode
+sudo crm configure property maintenance-mode=true
+
+#Create Pacemaker resources for the Azure agent
+sudo crm configure primitive rsc_azure-events ocf:heartbeat:azure-events op monitor interval=10s
+sudo crm configure clone cln_azure-events rsc_azure-events
+
+#Take the cluster out of maintenance mode
+sudo crm configure property maintenance-mode=false
+</code></pre>
+
+   > [!NOTE]
+   > Po skonfigurowaniu zasobów program Pacemaker dla agenta zdarzenia platformy azure, po umieszczeniu klastra na lub z trybu konserwacji, może nastąpić komunikaty ostrzegawcze, takich jak:  
+     Ostrzeżenie: w cib opcje ładowania początkowego: nieznany atrybut "hostName_  <strong>hostname</strong>"  
+     Ostrzeżenie: w cib opcje ładowania początkowego: nieznany atrybut "azure-events_globalPullState"  
+     Ostrzeżenie: w cib opcje ładowania początkowego: nieznany atrybut "hostName_ <strong>hostname</strong>"  
+   > Można zignorować te ostrzeżenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

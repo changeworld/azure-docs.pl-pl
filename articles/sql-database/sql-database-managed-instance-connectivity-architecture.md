@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: 6ef020ff1054416e2b9af5af824b9aa27f0b1e64
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ad005ff879ef5e4c0fb2fb72ce3062a5dd25d99a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247243"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486788"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego usługi Azure SQL Database 
 
@@ -67,7 +67,7 @@ Przyjrzyjmy się szczegółowo z wizualizacją do architektura łączności dla 
 
 ![Architektura łączności klastra wirtualnego](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienci łączą się wystąpienia zarządzanego z przy użyciu nazwy hosta, który ma postać `<mi_name>.<dns_zone>.database.windows.net`. Ta nazwa hosta jest rozpoznawany jako prywatny adres IP jest zarejestrowany w strefie systemu nazw domen (DNS) domeny publicznej, i jest rozpoznania publicznie. `zone-id` Jest generowana automatycznie podczas tworzenia klastra. Jeśli nowo utworzony klaster hostów dodatkowej wystąpienia zarządzanego, udostępnia Identyfikatora strefy za pomocą klastra podstawowego. Aby uzyskać więcej informacji, zobacz [umożliwiają grup autofailover przejrzyste i skoordynowany pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Klienci łączą się wystąpienia zarządzanego z przy użyciu nazwy hosta, który ma postać `<mi_name>.<dns_zone>.database.windows.net`. Ta nazwa hosta jest rozpoznawany jako prywatny adres IP jest zarejestrowany w strefie systemu nazw domen (DNS) domeny publicznej, i jest rozpoznania publicznie. `zone-id` Jest generowana automatycznie podczas tworzenia klastra. Jeśli nowo utworzony klaster hostów dodatkowej wystąpienia zarządzanego, udostępnia Identyfikatora strefy za pomocą klastra podstawowego. Aby uzyskać więcej informacji, zobacz [umożliwiają automatyczne grupy trybu failover można weryfikować i skoordynowany pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Ten prywatny adres IP należy do wystąpienia zarządzanego wewnętrznego modułu równoważenia obciążenia. Moduł równoważenia obciążenia kieruje ruch do wystąpienia zarządzanego bramy. Ponieważ w tym samym klastrze można uruchomić wiele wystąpień zarządzanych, brama używa nazwy hosta wystąpienia zarządzanego przekierowywanie ruchu na prawidłowe usługi aparatu programu SQL.
 
@@ -109,6 +109,8 @@ Wdrażanie wystąpienia zarządzanego w dedykowanej podsieci w sieci wirtualnej.
 |------------|--------------|--------|-----------------|-----------|------|
 |zarządzanie  |80, 443, 12000|TCP     |Dowolne              |Internet   |Zezwalaj |
 |mi_subnet   |Dowolne           |Dowolne     |Dowolne              |MI PODSIECI *  |Zezwalaj |
+
+> Upewnij się, że istnieje tylko jedna reguła ruchu przychodzącego dla portów 9000, 9003, 1438 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 80, 443, 12000. Zarządzane wystąpienia obsługę administracyjną przy użyciu wdrożenia ARM może zakończyć się niepowodzeniem, jeśli reguły ruchu przychodzącego i dane wyjściowe są skonfigurowane osobno dla poszczególnych portów. 
 
 \* PODSIECI wystąpienia Zarządzanego odnosi się do zakresu adresów IP dla podsieci w 10.x.x.x/y formularza. Te informacje można znaleźć w witrynie Azure portal, w oknie właściwości podsieci.
 
@@ -167,6 +169,6 @@ Jeśli sieć wirtualna zawiera niestandardowe DNS, należy dodać wpis dla adres
 - [Oblicz rozmiar podsieci](sql-database-managed-instance-determine-size-vnet-subnet.md) potrzebne do wdrożenia wystąpienia zarządzanego.
 - Dowiedz się, jak utworzyć wystąpienie zarządzane:
   - Z [witryny Azure portal](sql-database-managed-instance-get-started.md).
-  - Za pomocą [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+  - Za pomocą [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Za pomocą [szablonu usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
   - Za pomocą [szablonu usługi Azure Resource Manager (przy użyciu serwera Przesiadkowego, za pomocą programu SSMS uwzględnione)](https://portal.azure.com/).

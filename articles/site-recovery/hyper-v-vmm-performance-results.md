@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 62137f64f0f138ea1c2dfbdf97bde791227617db
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793040"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482804"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla replikacji funkcji Hyper-V do lokacji dodatkowej
 
@@ -108,7 +108,7 @@ Wyniki wyraźnego wyświetlania informacji dotyczących odzyskiwania lokacji, w 
 
 | Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | NIC | Oprogramowanie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST11<br />ESTLAB HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 ma 256 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |4 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 ma 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |4 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
 | Serwer programu VMM |2 | | |2 |1 Gb/s |System Windows Server Database 2012 R2 (x 64) i program VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Lokacja dodatkowa
@@ -120,9 +120,9 @@ Wyniki wyraźnego wyświetlania informacji dotyczących odzyskiwania lokacji, w 
 
 | Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | NIC | Oprogramowanie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Firmy Dell™ PowerEdge R720 |Intel(R) Xeon(R) E5 procesora CPU — 2630 0 \@ 2.30 GHz |2 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
-| ESTLAB HOST17 |128 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
-| ESTLAB-HOST24 |256 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) E5 procesora CPU — 2630 0 \@ 2.30 GHz |2 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
 | Serwer programu VMM |2 | | |2 |1 Gb/s |System Windows Server Database 2012 R2 (x 64) i program VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Obciążenie serwera
@@ -175,10 +175,10 @@ W tabeli przedstawiono metryki wydajności i liczniki, które zostały mierzone 
 | Procesor CPU |\Processor(_Total)\% Processor Time |
 | Dostępna pamięć |\Memory\Available pamięć (MB) |
 | Operacje wejścia/wyjścia |Transfery \Disk \PhysicalDisk (%) (_łącznie) na sekundę |
-| Maszyna wirtualna (IOPS) operacje odczytu/s |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Read OP./s |
-| Operacje zapisu (IOPS) maszyny Wirtualnej/s |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Write operacji/S |
-| Przepływność zapisu maszyny Wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Read bajty/s |
-| Przepływność zapisu na maszynie Wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Write bajty/s |
+| Maszyna wirtualna (IOPS) operacje odczytu/s |\Hyper-V wirtualne urządzenie magazynujące (\<wirtualnego dysku twardego >) \Read OP./s |
+| Operacje zapisu (IOPS) maszyny Wirtualnej/s |\Hyper-V wirtualne urządzenie magazynujące (\<wirtualnego dysku twardego >) \Write operacji/S |
+| Przepływność zapisu maszyny Wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (\<wirtualnego dysku twardego >) \Read bajty/s |
+| Przepływność zapisu na maszynie Wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (\<wirtualnego dysku twardego >) \Write bajty/s |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

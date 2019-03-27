@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure SQL Database odnajdywanie i klasyfikacja danych | Dokumentacja firmy Microsoft
-description: Usługa Azure SQL Database odnajdywanie i klasyfikacja danych
+title: Usługa Azure SQL Database i SQL Data Warehouse odnajdywanie i klasyfikacja danych | Dokumentacja firmy Microsoft
+description: Usługa Azure SQL Database i data odnajdywanie i klasyfikacja
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/22/2019
+ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202983"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58495990"
 ---
-# <a name="azure-sql-database-data-discovery--classification"></a>Usługa Azure SQL Database odnajdywanie i klasyfikacja danych
+# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Usługa Azure SQL Database i SQL Data Warehouse odnajdywanie i klasyfikacja danych
 
 Odnajdywanie i klasyfikacja (obecnie w wersji zapoznawczej) danych zapewnia zaawansowane możliwości wbudowane w usłudze Azure SQL Database dla **odnajdywania**, **klasyfikowania**, **etykietowania**  &  **ochrony** poufnych danych w bazach danych.
 Odnajdowanie i klasyfikowanie najbardziej poufnych danych (biznesowe, finansowych, ochrony zdrowia, dane osobowe (PII) i itp.), można odtwarzać zasadniczą rolę w stature ochrony Twojej organizacji. Może służyć jako infrastruktury:
@@ -28,10 +28,10 @@ Odnajdowanie i klasyfikowanie najbardziej poufnych danych (biznesowe, finansowyc
 - Różne scenariusze zabezpieczeń, takich jak monitorowanie (inspekcji) i alarmując nietypowego dostępu do poufnych danych.
 - Kontrolowanie dostępu do i wzmacniania ochrony bezpieczeństwa baz danych zawierających poufne dane.
 
-Odnajdywanie i klasyfikacja danych jest częścią [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Odnajdywanie i klasyfikacja danych można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
+Odnajdywanie i klasyfikacja danych jest częścią [zaawansowane zabezpieczenia danych](sql-database-advanced-data-security.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Odnajdywanie i klasyfikacja danych można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
 
 > [!NOTE]
-> Ten dokument dotyczy tylko usługi Azure SQL Database. Dla programu SQL Server (lokalnie), zobacz [odnajdywanie danych SQL i klasyfikacji](https://go.microsoft.com/fwlink/?linkid=866999).
+> W tym dokumencie odnosi się do usługi Azure SQL Database i Azure SQL Data Warehouse. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. Dla programu SQL Server (lokalnie), zobacz [odnajdywanie danych SQL i klasyfikacji](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Co to jest odnajdywanie i klasyfikacja danych
 

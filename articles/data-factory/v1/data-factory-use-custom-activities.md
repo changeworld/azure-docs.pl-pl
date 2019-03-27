@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 1341a8fce95dff0499a698fcddf8d048f3628dba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ddc235064d99e9d6385ab48e78f893952eefa15
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108243"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487485"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -113,12 +113,12 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
 
 3. W konsoli Menedżera pakietów, wykonaj następujące polecenie, aby zaimportować **Microsoft.Azure.Management.DataFactories**.
 
-    ```PowerShell
+    ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
 4. Importuj **usługi Azure Storage** pakietu NuGet w projekcie.
 
-    ```PowerShell
+    ```powershell
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 
@@ -709,7 +709,7 @@ Rozwiązywanie problemów z obejmuje kilka podstawowych technik:
 
     Jeśli używasz 4.3.0 wersję pakietu usługi Azure Storage, Usuń istniejące odwołanie do pakietu wersji > 4.3.0 usługi Azure Storage. Następnie uruchom następujące polecenie z poziomu konsoli Menedżera pakietów NuGet.
 
-    ```PowerShell
+    ```powershell
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 

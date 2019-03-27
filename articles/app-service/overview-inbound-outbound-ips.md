@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 56ca87f318aa5f1843a3b28480be834df1669c71
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811013"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480808"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Przychodzące i wychodzące adresy IP w usłudze Azure App Service
 
@@ -45,11 +45,11 @@ Bez względu na liczbę wystąpień skalowanych w poziomie każda aplikacja ma o
 
 Zbiór wychodzących adresów IP adresy do wprowadzania zmian w aplikacji, skalowanie aplikacji od niższych warstwach (**podstawowe**, **standardowa**, i **Premium**) i  **Warstwa Premium V2** warstwy.
 
-Możesz znaleźć zbiór wszystkich możliwych wychodzące adresy IP można używać aplikacji, niezależnie od tego, w warstwach cenowych, wyszukując `possibleOutboundIPAddresses` właściwości. Zobacz [znaleźć adresy IP ruchu wychodzącego](#find-outbound-ips).
+Możesz znaleźć zbiór wszystkich możliwych wychodzące adresy IP można używać aplikacji, niezależnie od tego, w warstwach cenowych, wyszukując `possibleOutboundIPAddresses` właściwości lub **dodatkowe adresy IP ruchu wychodzącego** pole **właściwości**  bloku w witrynie Azure portal. Zobacz [znaleźć adresy IP ruchu wychodzącego](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Znajdź wychodzące adresy IP
 
-Aby znaleźć wychodzące adresy IP używane przez aplikację w witrynie Azure portal, kliknij **właściwości** w nawigacji po lewej stronie Twojej aplikacji. 
+Aby znaleźć wychodzące adresy IP używane przez aplikację w witrynie Azure portal, kliknij **właściwości** w nawigacji po lewej stronie Twojej aplikacji. Są one wymienione w **wychodzące adresy IP** pola.
 
 Te same informacje można znaleźć, uruchamiając następujące polecenie w [Cloud Shell](../cloud-shell/quickstart.md).
 
@@ -61,7 +61,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-Aby znaleźć wszystkie możliwe wychodzące adresy IP dla swojej aplikacji, niezależnie od tego, ceny warstw, uruchom następujące polecenie [Cloud Shell](../cloud-shell/quickstart.md).
+Aby znaleźć _wszystkich_ możliwe wychodzące adresy IP dla swojej aplikacji, niezależnie od tego, ceny warstw, kliknij przycisk **właściwości** w nawigacji po lewej stronie Twojej aplikacji. Są one wymienione w **dodatkowe adresy IP ruchu wychodzącego** pola.
+
+Te same informacje można znaleźć, uruchamiając następujące polecenie w [Cloud Shell](../cloud-shell/quickstart.md).
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv

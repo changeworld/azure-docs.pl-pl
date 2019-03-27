@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a10b4d7fac29a6b016b5660b0430d042f2443fbd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210598"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498081"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
 
@@ -55,7 +55,7 @@ Następujące właściwości kolejki i tematu są niezmienne. To ograniczenie po
 ## <a name="pricing"></a>Cennik
 W tej sekcji odpowiedzi na niektóre często zadawane pytania dotyczące cennika struktury usługi Service Bus.
 
-[Usługi Service Bus, cen i rozliczeń](service-bus-pricing-billing.md) artykule wyjaśniono liczników rozliczeń w usłudze Service Bus. Aby uzyskać szczegółowe informacje o opcje cennika usługi Service Bus, zobacz [szczegóły cennika usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
+[Usługi Service Bus, cen i rozliczeń](https://azure.microsoft.com/pricing/details/service-bus/) artykule wyjaśniono liczników rozliczeń w usłudze Service Bus. Aby uzyskać szczegółowe informacje o opcje cennika usługi Service Bus, zobacz [szczegóły cennika usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
 Możesz również odwiedzić [— często zadawane pytania dla pomocy technicznej Azure](https://azure.microsoft.com/support/faq/) for Azure ogólne informacje o cenach. 
 

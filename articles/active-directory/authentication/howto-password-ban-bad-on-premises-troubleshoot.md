@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f214688aa1e33bd58e8460baab75228d7c5d1a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 12cbd9bebf001eb902147175c89b5d7ce49e8449
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317242"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487238"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Rozwiązywanie problemów z usługi Azure AD ochrony hasłem
 
@@ -105,7 +105,7 @@ Jeśli zostanie podjęta decyzja, aby odinstalować oprogramowanie do ochrony ha
 2. Odinstaluj oprogramowanie agenta kontrolera domeny ze wszystkich kontrolerów domeny. W tym kroku **wymaga** ponowne uruchomienie komputera.
 3. Ręcznie usuń wszystkie punkty połączenia usługi serwera Proxy w każdym kontekście nazewnictwa domeny. Może zostać odnalezionych lokalizacji tych obiektów za pomocą następującego polecenia środowiska PowerShell usługi Active Directory:
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -117,7 +117,7 @@ Jeśli zostanie podjęta decyzja, aby odinstalować oprogramowanie do ochrony ha
 
 4. Ręcznie usuń wszystkie punkty połączenia agenta kontrolera domeny w każdym kontekście nazewnictwa domeny. Może istnieć tylko jeden tych obiektów na kontrolerze domeny w lesie, w zależności od tego, jak oprogramowanie zostało wdrożone. Lokalizacja tego obiektu może zostać odnalezionych za pomocą następującego polecenia środowiska PowerShell usługi Active Directory:
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -129,7 +129,7 @@ Jeśli zostanie podjęta decyzja, aby odinstalować oprogramowanie do ochrony ha
 
 5. Ręcznie usuń stan konfiguracji na poziomie lasu. Stan konfiguracji lasu jest zachowywana w kontenerze w kontekście nazewnictwa konfiguracji w usłudze Active Directory. Można go odnalezione i usunięte w następujący sposób:
 
-   ```PowerShell
+   ```powershell
    $passwordProtectionConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject -Recursive $passwordProtectionConfigContainer
    ```

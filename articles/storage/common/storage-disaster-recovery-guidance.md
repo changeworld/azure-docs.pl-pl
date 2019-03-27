@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871540"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486068"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -121,14 +121,14 @@ Korzystania z wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcy
 
 Aby zarejestrować się do korzystania z wersji zapoznawczej, uruchom następujące polecenia w programie PowerShell. Upewnij się, że Zamień symbol zastępczy w nawiasach identyfikator subskrypcji:
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount -SubscriptionId <subscription-id>
 Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 Może upłynąć, 1 – 2 dni, aby uzyskać zatwierdzenie wersji zapoznawczej. Aby sprawdzić, proces rejestracji został zatwierdzony, uruchom następujące polecenie:
 
-```PowerShell
+```powershell
 Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
@@ -164,6 +164,7 @@ Następujące funkcje lub usługi nie są obsługiwane dla konta trybu failover,
 - Kontami magazynu przy użyciu usługi Azure Data Lake Storage Gen2 hierarchicznej przestrzeni nazw nie może być przełączone w tryb failover.
 - Konto magazynu zawierające obiekty BLOB zarchiwizowane nie przełączenie do trybu failover. Obsługa zarchiwizowane obiektów blob w oddzielne konto magazynu, którego nie chcesz w trybie Failover.
 - Konto magazynu zawierające obiekty BLOB typu block w warstwie premium nie przełączenie do trybu failover. Kont magazynu, które obsługują obiekty BLOB typu block w warstwie premium nie obsługują obecnie nadmiarowości geograficznej.
+- Po zakończeniu pracy w trybie failover następujące funkcje przestaną działać, jeśli pierwotnie włączone: [Subskrypcje zdarzeń](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [zasady cyklu życia](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics rejestrowania](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopiowanie danych jako alternatywę do trybu failover
 

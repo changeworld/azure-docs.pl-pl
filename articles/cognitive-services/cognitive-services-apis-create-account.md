@@ -1,20 +1,20 @@
 ---
 title: Utwórz konto usług Cognitive Services w witrynie Azure portal
 titlesuffix: Azure Cognitive Services
-description: Jak utworzyć konta interfejsów API firmy Microsoft Cognitive Services w witrynie Azure portal.
+description: Jak utworzyć konta interfejsów API usługi Azure Cognitive Services w witrynie Azure portal.
 services: cognitive-services
 author: garyericson
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/22/2019
 ms.author: garye
-ms.openlocfilehash: 21e1eb00f688f2e7061e876cc4375d6d780838fc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7df429aa848c6f9fb9abe09fbf4357db20fcde6a
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534807"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472858"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal
 
@@ -29,7 +29,7 @@ W tym przewodniku Szybki Start dowiesz się, jak utworzyć konto usług Azure Co
 Przed rozpoczęciem pracy należy wiedzieć, że istnieją dwa rodzaje subskrypcji usług Azure Cognitive Services. Pierwsza to subskrypcji do pojedynczej usługi, takie jak przetwarzanie obrazów lub usług przetwarzania mowy. Subskrypcja jednousługowa jest ograniczona do tego zasobu. Druga to subskrypcja wielu usług dla usług Azure Cognitive Services. Ta subskrypcja zezwala przy użyciu pojedynczej subskrypcji dla większości usług Azure Cognitive Services. Ta opcja również konsoliduje rozliczeń. Zobacz [cennik usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) Aby uzyskać dodatkowe informacje.
 
 >[!WARNING]
-> W tej chwili tych usług **nie** obsługi wielu usług kluczy: Usługa QnA Maker usług przetwarzania mowy i Custom Vision.
+> W tej chwili tych usług **nie** obsługi wielu usług kluczy: Usługa QnA Maker usług przetwarzania mowy, Custom Vision i wykrywanie anomalii.
 
 W kolejnych sekcjach prowadzą użytkownika przez proces tworzenia subskrypcji jednej lub wielu usług.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5fa553d63a33f06432d8ae3e5247d7eca0fde90a
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351902"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487791"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -283,12 +283,12 @@ Można wyłączanie/włączanie funkcji Aktualizacje automatyczne, wykonując na
 2. Przejdź do folderu C:\Program Files\Microsoft integracji Runtime\3.0\PowerShellScript\.
 3. Uruchom następujące polecenie, aby włączyć Aktualizacje automatyczne są wyposażone w OFF (wyłączone).
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
 4. Aby włączyć ją ponownie:
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
    [Bramy o wysokiej dostępności i skalowalności wielowęzłowego](data-factory-data-management-gateway-high-availability-scalability.md)
@@ -297,12 +297,12 @@ Można wyłączanie/włączanie funkcji Aktualizacje automatyczne, wykonując na
 3. Uruchom następujące polecenie, aby włączyć Aktualizacje automatyczne są wyposażone w OFF (wyłączone).
 
     Dla bramy przy użyciu funkcji wysokiej dostępności wymagany jest dodatkowy param AuthKey.
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
 4. Aby włączyć ją ponownie:
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
@@ -485,12 +485,12 @@ W tej sekcji opisano, jak utworzyć i zarejestrować bramę przy użyciu polece�
 1. Uruchom **programu Azure PowerShell** w trybie administratora.
 2. Zaloguj się do konta platformy Azure, uruchamiając następujące polecenie i wprowadź swoje poświadczenia platformy Azure.
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. Użyj **New AzDataFactoryGateway** polecenie cmdlet do tworzenia logicznej bramy w następujący sposób:
 
-    ```PowerShell
+    ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **Przykładowe polecenie z danymi wyjściowymi**:
@@ -513,7 +513,7 @@ W tej sekcji opisano, jak utworzyć i zarejestrować bramę przy użyciu polece�
 
 1. W programie Azure PowerShell przejdź do folderu: **C:\\Program Files\Microsoft danych zarządzania Gateway\2.0\PowerShellScript\\**. Uruchom **RegisterGateway.ps1** skojarzone ze zmienną lokalnej **$Key** jak pokazano w poniższym poleceniu. Ten skrypt rejestruje agenta klienta, zainstalowane na komputerze z bramą logiczne, utworzonej wcześniej.
 
-    ```PowerShell
+    ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
     ```
     ```
@@ -521,25 +521,25 @@ W tej sekcji opisano, jak utworzyć i zarejestrować bramę przy użyciu polece�
     ```
     Za pomocą parametru IsRegisterOnRemoteMachine można zarejestrować bramę na komputerze zdalnym. Przykład:
 
-    ```PowerShell
+    ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
 2. Możesz użyć **Get AzDataFactoryGateway** polecenia cmdlet, aby uzyskać listę bram w fabryce danych. Gdy **stan** pokazuje **online**, oznacza to, brama jest gotowa do użycia.
 
-    ```PowerShell        
+    ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
    Możesz usunąć za pomocą bramy **AzDataFactoryGateway Usuń** polecenia cmdlet i zaktualizuj opis bramy przy użyciu **AzDataFactoryGateway zestaw** polecenia cmdlet. Informacje o składni i inne szczegóły dotyczące tych poleceń cmdlet Zobacz Data Factory Cmdlet Reference.  
 
 ### <a name="list-gateways-using-powershell"></a>Lista bram przy użyciu programu PowerShell
 
-```PowerShell
+```powershell
 Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>Usuwanie bramy za pomocą programu PowerShell
 
-```PowerShell
+```powershell
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 

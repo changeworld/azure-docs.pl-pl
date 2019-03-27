@@ -8,17 +8,25 @@ tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 03/25/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5ba19c5156f25c2ff4a616e1482b6dfc83cadc27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 72d750022f9dc7005a5d20b012b47680ba69a270
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894465"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446175"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Włączanie zapory aplikacji internetowej przy użyciu programu Azure PowerShell
+
+> [!div class="op_single_selector"]
+>
+> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
+> - [Program PowerShell](tutorial-restrict-web-traffic-powershell.md)
+> - [Interfejs wiersza polecenia platformy Azure](tutorial-restrict-web-traffic-cli.md)
+>
+> 
 
 Ruch na [bramie aplikacji](overview.md) można ograniczyć za pomocą [zapory aplikacji internetowych](waf-overview.md). Zapora aplikacji internetowych chroni Twoje aplikacje, używając reguł [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Reguły te obejmują ochronę przed atakami, takimi jak iniekcja kodu SQL, działanie skryptów między witrynami i porywanie sesji. 
 

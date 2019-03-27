@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 8fd43228c5129395f9a61778fb83d32906fc85df
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 9f47ba44e7940414932371ef1b7a360d0b01e1ff
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311767"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483866"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor
 
@@ -361,7 +361,7 @@ Zakładając, że powyższe pliku parametrów jest zapisywany jako metricfromLog
 
 Jeden alternatywnie także użyć poniższego polecenia programu Azure Powershell:
 
-```PowerShell
+```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
 ```
 
@@ -677,7 +677,7 @@ Zakładając, że powyższe pliku parametrów jest zapisywany jako metricfromLog
 
 Jeden alternatywnie także użyć poniższego polecenia programu Azure Powershell:
 
-```PowerShell
+```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
 ```
 

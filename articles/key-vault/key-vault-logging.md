@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: afec42551f124890dd2cc7b03cce48c359fc88c4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 25ebd72c512eb92c5d9a464a4b4d74f9e41ae389
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194099"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484116"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 
@@ -55,7 +55,7 @@ Pierwszym krokiem w procesie konfigurowania klucza rejestracji jest punkt Azure 
 
 Uruchom sesję programu Azure PowerShell, a następnie zaloguj się do konta platformy Azure przy użyciu następującego polecenia:  
 
-```PowerShell
+```powershell
 Connect-AzAccount
 ```
 
@@ -63,13 +63,13 @@ W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla kon
 
 Może być określić subskrypcję, który został użyty do utworzenia magazynu kluczy. Wprowadź następujące polecenie, aby zobaczyć subskrypcje dla konta:
 
-```PowerShell
+```powershell
 Get-AzSubscription
 ```
 
 Następnie aby określić subskrypcję, która jest skojarzona z magazynem kluczy, który będzie można się zalogować, wprowadź:
 
-```PowerShell
+```powershell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
@@ -81,7 +81,7 @@ Chociaż można użyć istniejącego konta magazynu dla dzienników, utworzymy k
 
 W celu ułatwienia zarządzania użyjemy tej samej grupie zasobów, która zawiera usługi key vault. Z [samouczek ułatwiający rozpoczęcie](key-vault-get-started.md), ta grupa zasobów nosi nazwę **ContosoResourceGroup**, i będziemy używać lokalizacji Azja Wschodnia. Zastąp te wartości własnymi, zgodnie z wymaganiami:
 
-```PowerShell
+```powershell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
@@ -94,7 +94,7 @@ W celu ułatwienia zarządzania użyjemy tej samej grupie zasobów, która zawie
 
 W [samouczek ułatwiający rozpoczęcie](key-vault-get-started.md), nazwa usługi key vault **ContosoKeyVault**. Będziemy używać tej nazwy i przechowywać dane w zmiennej o nazwie **kv**:
 
-```PowerShell
+```powershell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
@@ -102,7 +102,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 Aby włączyć rejestrowanie dla usługi Key Vault, użyjemy **AzDiagnosticSetting zestaw** polecenia cmdlet, wraz ze zmiennymi utworzone dla nowego konta magazynu i magazynu kluczy. Ustawimy też **— włączone** flaga **$true** i Ustaw kategorię **AuditEvent** (jedyna kategoria rejestrowania usługi Key Vault):
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
@@ -122,7 +122,7 @@ Te dane wyjściowe potwierdzają, że włączono rejestrowanie dla magazynu kluc
 
 Opcjonalnie można ustawić zasady przechowywania dla dzienników tak, aby starsze dzienniki są automatycznie usuwane. Na przykład ustawić zasady przechowywania, ustawiając **- Retentionenable** flaga **$true**i ustaw **- RetentionInDays** parametr **90**tak, aby dzienniki starsze niż 90 dni są automatycznie usuwane.
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
@@ -141,13 +141,13 @@ Dzienniki magazynu kluczy są przechowywane w **insights-logs-auditevent** konte
 
 Najpierw utwórz zmienną dla nazwy kontenera. Użyjesz tej zmiennej w pozostałej części przewodnika.
 
-```PowerShell
+```powershell
 $container = 'insights-logs-auditevent'
 ```
 
 Aby wyświetlić listę wszystkich obiektów blob w tym kontenerze, wpisz:
 
-```PowerShell
+```powershell
 Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
@@ -174,19 +174,19 @@ Ponieważ korzystają z tego samego konta magazynu, do zbierania dzienników dla
 
 Utwórz folder w celu pobrania obiektów blob. Na przykład:
 
-```PowerShell 
+```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 ```
 
 Następnie uzyskaj listę wszystkich obiektów blob:  
 
-```PowerShell
+```powershell
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 Prześlij tę listę, za pośrednictwem **Get AzStorageBlobContent** pobierania obiektów blob do folderu docelowego:
 
-```PowerShell
+```powershell
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
@@ -196,19 +196,19 @@ Aby selektywnie pobierać obiekty blob, użyj symboli wieloznacznych. Na przykł
 
 * Jeśli masz wiele magazynów kluczy i chcesz pobrać dzienniki dla tylko jednego magazynu kluczy o nazwie CONTOSOKEYVAULT3:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * Jeśli masz wiele grup zasobów i chcesz pobrać dzienniki dla tylko jednej grupy zasobów, użyj parametru `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * Aby pobrać wszystkie dzienniki w miesiącu 2019 stycznia, należy użyć `-Blob '*/year=2019/m=01/*'`:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
@@ -221,7 +221,7 @@ Teraz możesz rozpocząć wyszukiwanie informacji zawartych w dziennikach. Jedna
 
 Poszczególne obiekty blob są przechowywane jako tekst w formacie obiektu blob JSON. Przyjrzyjmy się przykładowy wpis dziennika. Uruchom następujące polecenie:
 
-```PowerShell
+```powershell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 

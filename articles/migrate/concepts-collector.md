@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 78ef88d0710e8a82d30fa26b60073aa75e363c15
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315304"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498421"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -150,6 +150,9 @@ Program vCenter Server | TCP 443 | Moduł zbierający musi mieć możliwość ko
 RDP | TCP 3389 |
 
 ## <a name="collected-metadata"></a>Zebrano metadane
+
+> [!NOTE]
+> Metadanych wykrytych przez usługę Azure Migrate służy urządzenia modułu zbierającego ułatwiające odpowiedniego rozmiaru aplikacji podczas migracji na platformę Azure, wykonywać analizy gotowości platformy Azure, analiza zależności aplikacji i planowanie kosztów. Firma Microsoft używa tych danych w odniesieniu do dowolnego inspekcja zgodności licencji.
 
 Urządzenie modułu zbierającego umożliwia odnalezienie następujących metadanych konfiguracji dla każdej maszyny Wirtualnej. Dane konfiguracji dla maszyn wirtualnych są dostępne godziny po uruchomieniu odnajdywania.
 

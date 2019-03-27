@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 2df08968ad66bd330611b975c045c9e9c9b240aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6f0d2d59ed50c743adb19027c404bfa83a1886f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735557"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484867"
 ---
 W zależności od środowiska i opcje skryptu można utworzyć cała infrastruktura klastra, w tym sieci wirtualnej platformy Azure, konta magazynu, usługi w chmurze, kontroler domeny, lokalnej lub zdalnej bazy danych SQL, węzeł główny i dodatkowe węzły klastra. Alternatywnie skryptu można już istniejącą infrastrukturę platformy Azure i tworzyć węzły klastra HPC.
 
@@ -22,7 +22,7 @@ Aby uzyskać ogólne informacje o planowaniu klastra pakietu HPC Pack, zobacz [w
 * **Plik konfiguracji skryptu**: Utwórz plik XML, używany przez skrypt do konfigurowania klastra HPC. Aby uzyskać informacje i przykłady zobacz sekcje w dalszej części tego artykułu i plik Manual.rtf, który towarzyszy skrypt wdrożenia.
 
 ## <a name="syntax"></a>Składnia
-```PowerShell
+```powershell
 New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminPassword] <String>] [[-HPCImageName] <String>] [[-LogFile] <String>] [-Force] [-NoCleanOnFailure] [-PSSessionSkipCACheck] [<CommonParameters>]
 ```
 > [!NOTE]
@@ -53,7 +53,7 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 ### <a name="example"></a>Przykład
 Poniższy przykład obejmuje tworzenie klastra pakietu HPC Pack za pomocą pliku konfiguracji *MyConfigFile.xml*i określa poświadczenia administratora dla instalacji klastra.
 
-```PowerShell
+```powershell
 .\New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> –AdminPassword <password>
 ```
 

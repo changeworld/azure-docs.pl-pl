@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bc4896f634bb98b4663dfc3fbc6bad7ba9bace3e
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: 5a4426b665c58dd2c0bf7f5b5b41ebfca158e782
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319706"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444722"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Azure Portal umożliwia dostęp do danych obiektów blob i kolejki
 
@@ -43,7 +43,7 @@ Aby uzyskać dostęp do danych obiektów blob i kolejki, w witrynie Azure portal
 - Przypisano Ci usługi Azure Resource Manager [czytnika](../../role-based-access-control/built-in-roles.md#reader) roli, co najmniej o określonym zakresie na poziomie konta magazynu lub nowszej. **Czytnika** rola przyznaje najbardziej ograniczone uprawnienia, ale dopuszczalne jest również innej roli usługi Azure Resource Manager, która udziela dostępu do zasobów zarządzania konta magazynu.
 - Przypisano Ci albo wbudowanych lub niestandardowych rolę, która zapewnia dostęp do obiektów blob i kolejki danych.
 
-**Czytnika** przypisania roli lub innego przypisania roli usługi Azure Resource Manager jest niezbędne, aby użytkownik można przeglądać i nawigować zasobów zarządzania konta magazynu w witrynie Azure portal. Role RBAC, określającymi udzielenie dostępu do danych obiektów blob i kolejki nie może udzielać dostępu do zasobów zarządzania konta magazynu. Aby uzyskać dostęp do danych obiektów blob lub kolejki w portalu, użytkownik musi uprawnienia do nawigacji zasobów konta magazynu. Aby uzyskać więcej informacji na temat tego wymagania, zobacz [przypisania roli Czytelnik do dostępu do portalu](../common/storage-auth-aad-rbac.md#assign-the-reader-role-for-portal-access).
+**Czytnika** przypisania roli lub innego przypisania roli usługi Azure Resource Manager jest niezbędne, aby użytkownik można przeglądać i nawigować zasobów zarządzania konta magazynu w witrynie Azure portal. Role RBAC, określającymi udzielenie dostępu do danych obiektów blob i kolejki nie może udzielać dostępu do zasobów zarządzania konta magazynu. Aby uzyskać dostęp do danych obiektów blob lub kolejki w portalu, użytkownik musi uprawnienia do nawigacji zasobów konta magazynu. Aby uzyskać więcej informacji na temat tego wymagania, zobacz [przypisania roli Czytelnik do dostępu do portalu](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
 
 Wbudowane role, które obsługują dostęp do danych obiektów blob lub kolejki obejmują:
 
@@ -96,5 +96,7 @@ Należy zauważyć, że nie obiekty BLOB są wyświetlane na liście, jeśli nie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Uwierzytelnianie dostępu do obiektów blob platformy Azure i queues, korzystając z usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md)
-- [Udzielanie dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal (wersja zapoznawcza)](storage-auth-aad-rbac.md)
+- [Uwierzytelnianie dostępu do obiektów blob platformy Azure i queues, korzystając z usługi Azure Active Directory](storage-auth-aad.md)
+- [Udzielanie dostępu do kontenerów platformy Azure i kolejek o ROLACH w witrynie Azure portal](storage-auth-aad-rbac-portal.md)
+- [Udzielanie dostępu do danych platformy Azure obiektów blob i kolejek przy użyciu RBAC przy użyciu wiersza polecenia platformy Azure](storage-auth-aad-rbac-cli.md)
+- [Udzielanie dostępu do danych platformy Azure obiektów blob i kolejek przy użyciu kontroli RBAC przy użyciu programu PowerShell](storage-auth-aad-rbac-powershell.md)

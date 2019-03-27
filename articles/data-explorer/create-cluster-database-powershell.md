@@ -8,12 +8,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: ec012f85c4b4e93e9be475781e9da79f686cbf9e
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 86fbf5801e9ff1c8bd9dead8be14aeeea1b58a29
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417721"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472484"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Tworzenie klastra Eksplorator danych platformy Azure i bazy danych przy użyciu programu PowerShell
 
@@ -25,7 +25,7 @@ ms.locfileid: "58417721"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki Start utworzysz klaster i bazę danych przy użyciu programu Powershell. Można uruchomić polecenia cmdlet programu PowerShell i skryptów na Windows, Linux, lub w [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) wraz z [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) do tworzenia i konfigurowania klastrów Eksploratora danych platformy Azure i bazy danych.
+Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki Start utworzysz klaster i bazę danych przy użyciu programu Powershell. Można uruchomić polecenia cmdlet programu PowerShell i skryptów na Windows, Linux, lub w [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) z [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) do tworzenia i konfigurowania klastrów Eksploratora danych platformy Azure i bazy danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -47,12 +47,12 @@ Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Azure 
     Connect-AzAccount
     ```
 
-2. Ustaw subskrypcję, którego ma zostać utworzony klaster:
+1. Ustaw subskrypcję, którego ma zostać utworzony klaster:
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-3. Podczas uruchamiania wiersza polecenia platformy Azure, lokalnie lub w usłudze Azure Cloud Shell, musisz zainstalować moduł Az.Kusto na twoim urządzeniu:
+1. Podczas uruchamiania wiersza polecenia platformy Azure, lokalnie lub w usłudze Azure Cloud Shell, musisz zainstalować moduł Az.Kusto na twoim urządzeniu:
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
@@ -74,7 +74,7 @@ Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Azure 
 
     Istnieją dodatkowe parametry opcjonalne, których można używać, takie jak pojemność klastra.
 
-2. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
+1. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
 
     ```azurepowershell-interactive
     Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
@@ -98,7 +98,7 @@ Jeśli wynik zawiera element `provisioningState` o wartości `Succeeded`, klaste
    | SoftDeletePeriod | *3650:00:00:00* | Okres przechowywania danych na potrzeby zapytań. |
    | HotCachePeriod | *3650:00:00:00* | Okres przechowywania danych w pamięci podręcznej. |
 
-2. Uruchom następujące polecenie, aby wyświetlić utworzoną bazę danych:
+1. Uruchom następujące polecenie, aby wyświetlić utworzoną bazę danych:
 
     ```azurepowershell-interactive
     Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase

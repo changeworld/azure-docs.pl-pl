@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 71a5ca62dc5d21e30a4944f8be57a77040f4f204
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ef408022174bc53300626b71f28bafe0561dc343
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733692"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486244"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpieczanie usługi RESTful za pomocą podstawowego uwierzytelniania protokołu HTTP
 
@@ -46,7 +46,7 @@ Wykonaj kroki [integracja interfejsu API REST oświadczeń wymianą swoją podr�
 
     Aby wygenerować hasło złożone, uruchom następujący kod programu PowerShell. Można użyć dowolną wartość.
 
-    ```PowerShell
+    ```powershell
     $bytes = New-Object Byte[] 32
     $rand = [System.Security.Cryptography.RandomNumberGenerator]::Create()
     $rand.GetBytes($bytes)
@@ -222,7 +222,7 @@ Aby opublikować projekt, w Eksploratorze rozwiązań, kliknij prawym przyciskie
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>Krok 3: Dodawanie usług RESTful identyfikator i aplikacji klucz tajny aplikacji do usługi Azure AD B2C
 Po włączeniu ochrony usługi RESTful według Identyfikatora klienta (nazwa użytkownika) i klucz tajny, poświadczenia muszą być przechowywane w dzierżawie usługi Azure AD B2C. Niestandardowe zasady dostarcza poświadczenia, gdy wywołuje usługi RESTful.
 
-### <a name="step-31-add-a-restful-services-client-id"></a>Krok 3.1 Dodaj identyfikator klienta usługi RESTful
+### <a name="step-31-add-a-restful-services-client-id"></a>Krok 3.1. Dodaj identyfikator klienta usługi RESTful
 1. W ramach dzierżawy usługi Azure AD B2C wybierz **ustawieniami B2C** > **struktura środowiska tożsamości**.
 
 

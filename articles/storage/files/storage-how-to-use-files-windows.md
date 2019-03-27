@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 93ba17c58dfcb5955bafbcc63655778903f60c18
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2bf323b34c5a5301094bdecdc9fa705fe9077320
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076347"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482134"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziałów plików platformy Azure można bezproblemowo używać w systemach Windows i Windows Server. W tym artykule omówiono zagadnienia dotyczące korzystania z udziału plików platformy Azure w systemach Windows i Windows Server.
@@ -49,7 +49,7 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 
     W następującym kodzie programu PowerShell przyjęto założenie, że jest zainstalowany moduł AzureRM PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resource-group-name>` nazwami odpowiednimi dla konta magazynu.
 
-    ```PowerShell
+    ```powershell
     $resourceGroupName = "<your-resource-group-name>"
     $storageAccountName = "<your-storage-account-name>"
 
@@ -87,7 +87,7 @@ Typowym sposobem na przeniesienie na platformę Azure aplikacji biznesowych (LOB
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>Utrwalanie poświadczeń udziału plików platformy Azure w systemie Windows  
 Narzędzie [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) umożliwia przechowywanie poświadczeń konta magazynu w systemie Windows. Oznacza to, że podczas próby dostępu do udziału plików platformy Azure za pośrednictwem ścieżki UNC lub próby zainstalowania udziału plików platformy Azure nie będzie konieczne podawanie poświadczeń. Aby zapisać poświadczenia konta magazynu, uruchom następujące polecenia programu PowerShell, zastępując elementy `<your-storage-account-name>` i `<your-resource-group-name>` zgodnie z wymaganiami.
 
-```PowerShell
+```powershell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 
@@ -107,7 +107,7 @@ Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Con
 
 Aby sprawdzić, czy narzędzie cmdkey zapisało poświadczenia dla konta magazynu, możesz użyć parametru „list”:
 
-```PowerShell
+```powershell
 cmdkey /list
 ```
 
@@ -128,7 +128,7 @@ Istnieją dwa dodatkowe scenariusze użycia narzędzia cmdkey, które warto pozn
 
 Przechowywanie poświadczeń dla innego użytkownika na tej samej maszynie jest bardzo proste: po zalogowaniu się do swojego konta po prostu wykonaj następujące polecenie programu PowerShell:
 
-```PowerShell
+```powershell
 $password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
 Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
@@ -141,7 +141,7 @@ Przechowywanie poświadczeń na maszynie zdalnej za pomocą komunikacji zdalnej 
 ### <a name="mount-the-azure-file-share-with-powershell"></a>Instalowanie udziału plików platformy Azure za pomocą programu PowerShell
 Uruchom następujące polecenia w standardowej (czyli bez podwyższonego poziomu uprawnień) sesji programu PowerShell, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić elementy `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` i `<desired-drive-letter>` odpowiednimi informacjami.
 
-```PowerShell
+```powershell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 $fileShareName = "<your-file-share-name>"
@@ -172,7 +172,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 
 Jeśli to konieczne, możesz odinstalować udział plików platformy Azure przy użyciu następującego polecenia cmdlet programu PowerShell.
 
-```PowerShell
+```powershell
 Remove-PSDrive -Name <desired-drive-letter>
 ```
 
@@ -252,7 +252,7 @@ Przed usunięciem protokołu SMB 1 ze środowiska można przeprowadzić inspekcj
 
 Aby włączyć inspekcję, wykonaj następujące polecenie cmdlet w sesji programu PowerShell z podwyższonym poziomem uprawnień:
 
-```PowerShell
+```powershell
 Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
@@ -261,7 +261,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 
 Aby usunąć protokół SMB 1 z wystąpienia systemu Windows Server, wykonaj następujące polecenie cmdlet w sesji programu PowerShell z podwyższonym poziomem uprawnień:
 
-```PowerShell
+```powershell
 Remove-WindowsFeature -Name FS-SMB1
 ```
 
@@ -275,7 +275,7 @@ Aby ukończyć proces usuwania, ponownie uruchom serwer.
 
 Aby usunąć protokół SMB 1 z klienta systemu Windows, wykonaj następujące polecenie cmdlet w sesji programu PowerShell z podwyższonym poziomem uprawnień:
 
-```PowerShell
+```powershell
 Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ```
 
@@ -288,7 +288,7 @@ Protokołu SMB 1 nie można całkowicie usunąć ze starszych wersji systemu Win
 
 Jest to łatwe do wykonania za pomocą następującego polecenia cmdlet programu PowerShell:
 
-```PowerShell
+```powershell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
 ```
 

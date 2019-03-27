@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d62fd909d10515c9217a4dd0aa760afa376b8d7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9b3ba8d216f3e82c9aff7f2b49b9c24115b32f2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838905"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487910"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Używanie raportów kondycji systemu do rozwiązywania problemów
 Składniki usługi Service Fabric platformy Azure udostępniają raportów kondycji systemu na wszystkich jednostek w klastrze, gotową do. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) tworzy i usuwa jednostki na podstawie raportów systemu. On również organizuje ich w hierarchii, która przechwytuje interakcje jednostki.
@@ -84,7 +84,7 @@ System.FM raporty jako OK, gdy węzeł dołącza ring (jest uruchomiona). Zgłas
 
 Poniższy przykład przedstawia zdarzenie System.FM ze stanem kondycji OK węzła:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
 
 NodeName              : _Node_0
@@ -137,7 +137,7 @@ System.CM raportów, jako OK, gdy aplikacja została utworzona lub zaktualizowan
 
 W poniższym przykładzie pokazano zdarzenia stanu na **Service fabric: / WordCount** aplikacji:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
 
 ApplicationName                 : fabric:/WordCount
@@ -169,7 +169,7 @@ System.FM raporty jako OK po utworzeniu usługi. Usuwa jednostki z magazynu kond
 
 W poniższym przykładzie pokazano zdarzenia stanu usługi **Service fabric: / WordCount/WordCountWebService**:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
 
 
@@ -224,7 +224,7 @@ Poniższe przykłady przedstawiają niektóre z tych raportów.
 
 Poniższy przykład przedstawia partycji dobrej kondycji:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountWebService | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics -ReplicasFilter None
 
 PartitionId           : 8bbcd03a-3a53-47ec-a5f1-9b77f73c53b2
@@ -246,7 +246,7 @@ HealthEvents          :
 
 Poniższy przykład przedstawia kondycję partycję, która jest poniżej docelowej liczba replik. Następnym krokiem jest, aby uzyskać opis partycji, który pokazuje, jak skonfigurowano: **MinReplicaSetSize** trzy i **TargetReplicaSetSize** to siedem. Następnie Pobierz liczbę węzłów w klastrze, co w tym przypadku jest pięć. Tak w tym przypadku dwie repliki nie można umieścić, ponieważ docelowa liczba replik jest większa niż liczba dostępnych węzłów.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
 
 
@@ -324,7 +324,7 @@ PS C:\> @(Get-ServiceFabricNode).Count
 
 Poniższy przykład przedstawia kondycję partycji, który jest zablokowany w ponownej konfiguracji przez użytkownika nie zapewniane anulowania tokenu w **RunAsync** metody. Badanie raport o kondycji z repliką oznaczony jako podstawowy (P) może pomóc przejść dalsze analizowanie problemu.
 
-```PowerShell
+```powershell
 PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
 
 
@@ -388,7 +388,7 @@ Po utworzeniu repliki, System.RA raporty OK.
 
 Poniższy przykład przedstawia repliki w dobrej kondycji:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
 
 PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
@@ -419,7 +419,7 @@ Tych ostrzeżeń są wywoływane po ponowieniu próby akcji lokalnie pewnej licz
 
 Poniższy przykład przedstawia kondycję repliki, który zgłasza `TargetInvocationException` z jego metody open. Opis zawiera punkt awarii, **IStatefulServiceReplica.Open**, typ wyjątku **wyjątek TargetInvocationException**i ślad stosu.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
 
 
@@ -470,7 +470,7 @@ Exception has been thrown by the target of an invocation.
 
 Poniższy przykład przedstawia repliki, która stale uległa awarii podczas zamykania:
 
-```PowerShell
+```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
 
 
@@ -515,7 +515,7 @@ W rzadkich przypadkach nowej konfiguracji może zablokowane z powodu komunikacji
 
 Poniższy przykład przedstawia raport o kondycji, w którym rekonfiguracja została zablokowana w lokalnej replice. W tym przykładzie go jest ze względu na to usługa nie zapewniane token anulowania.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
 
 
@@ -601,7 +601,7 @@ Aby odblokować ponownej konfiguracji:
 
 W poniższym przykładzie pokazano zdarzenie kondycji z System.RAP niezawodne usługi, która nie jest zapewniane anulowania tokenu w **RunAsync**:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
 
 
@@ -679,7 +679,7 @@ Podczas operacji Naming trwa dłużej, niż oczekiwano, operacja zostanie oflago
 
 Poniższy przykład pokazuje usługi operacji tworzenia. Operacja trwała dłużej niż skonfigurowany czas trwania. "AO" ponawia próbę i wysyła pracy "No" "NO" ukończyć ostatniej operacji z przekroczeniem limitu czasu. W tym przypadku samej repliki jest kluczem podstawowym dla "AO" i "NO" ról.
 
-```PowerShell
+```powershell
 PartitionId           : 00000000-0000-0000-0000-000000001000
 ReplicaId             : 131064359253133577
 AggregatedHealthState : Warning
@@ -736,7 +736,7 @@ System.Hosting raporty jako OK po pomyślnym aktywowaniu aplikacji w węźle. W 
 
 Poniższy przykład przedstawia pomyślnej aktywacji:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ExcludeHealthStatistics
 
 ApplicationName                    : fabric:/WordCount
@@ -793,7 +793,7 @@ System.Hosting raportów jako OK, jeśli pomyślnie zarejestrowano typ usługi. 
 
 Pakiet usług wdrożonych w dobrej kondycji można znaleźć w poniższym przykładzie:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
 
 

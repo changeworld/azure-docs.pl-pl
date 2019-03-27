@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: iainfou
-ms.openlocfilehash: 691decb88188a428edfeab1ea9e99c48876b6d9f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110072"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496178"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -91,9 +91,9 @@ Aby uzyskać więcej informacji na temat opcji klasy magazynu, zobacz [magazynu 
 
 ## <a name="secure-and-back-up-your-data"></a>Zabezpieczanie i kopii zapasowej danych
 
-**Najważniejsze wskazówki** — wykonywanie kopii zapasowych danych przy użyciu odpowiedniego narzędzia dla danego typu magazynu, takich jak Heptio Ark lub usługi Azure Site Recovery. Sprawdź integralność i bezpieczeństwo tych kopii zapasowych.
+**Najważniejsze wskazówki** — wykonywanie kopii zapasowych danych przy użyciu odpowiedniego narzędzia dla danego typu magazynu, takich jak Velero lub usługi Azure Site Recovery. Sprawdź integralność i bezpieczeństwo tych kopii zapasowych.
 
-Gdy Twoje aplikacje przechowują i zużywać dane utrwalone na dyskach lub w plikach, należy wykonać, regularnie Twórz kopie zapasowe lub migawki danych. Dyski platformy Azure można użyć technologii wbudowanych migawek. Może być konieczne podłączania do aplikacji, aby opróżnić zapisuje na dysku przed wykonaniem operacji migawki. [Heptio Ark] [ heptio-ark] można utworzyć kopię zapasową woluminów stałych wraz z konfiguracjami oraz zasobów klastra dodatkowe. Jeśli z jakiegoś powodu [usunięcie stanu z poziomu aplikacji][remove-state], wykonaj kopię zapasową danych z woluminów trwałe i regularnie Testuj operacje przywracania, aby sprawdzić integralność danych i procesów wymaganych.
+Gdy Twoje aplikacje przechowują i zużywać dane utrwalone na dyskach lub w plikach, należy wykonać, regularnie Twórz kopie zapasowe lub migawki danych. Dyski platformy Azure można użyć technologii wbudowanych migawek. Może być konieczne podłączania do aplikacji, aby opróżnić zapisuje na dysku przed wykonaniem operacji migawki. [Velero] [ velero] można utworzyć kopię zapasową woluminów stałych wraz z konfiguracjami oraz zasobów klastra dodatkowe. Jeśli z jakiegoś powodu [usunięcie stanu z poziomu aplikacji][remove-state], wykonaj kopię zapasową danych z woluminów trwałe i regularnie Testuj operacje przywracania, aby sprawdzić integralność danych i procesów wymaganych.
 
 Omówienie ograniczeń różne podejścia do tworzenia kopii zapasowych danych i jeśli musisz przełączyć w stan spoczynku dane przed migawki. Kopie zapasowe danych nie zawsze pozwalają na przywrócenie środowiska aplikacji, wdrażania klastra. Aby uzyskać więcej informacji na temat tych scenariuszy, zobacz [najlepszych rozwiązań biznesowych ciągłość działalności biznesowej i odzyskiwanie po awarii w usłudze AKS][best-practices-multi-region].
 
@@ -102,7 +102,7 @@ Omówienie ograniczeń różne podejścia do tworzenia kopii zapasowych danych i
 Ten artykuł koncentruje się na magazyn najlepsze rozwiązania w usłudze AKS. Aby uzyskać więcej informacji na temat podstawy magazynu na platformie Kubernetes, zobacz [kwestie dotyczące magazynu dla aplikacji w usłudze AKS][aks-concepts-storage].
 
 <!-- LINKS - External -->
-[heptio-ark]: https://github.com/heptio/ark
+[velero]: https://github.com/heptio/velero
 [dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 

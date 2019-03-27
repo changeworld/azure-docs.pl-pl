@@ -10,14 +10,22 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3ce40c2e0726094113253258d3b3f0bf6d876f6f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 1387dc5bb2cabf9a3078474564aadc81b28fd9a7
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452646"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443620"
 ---
-# <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>Samouczek: włączanie zapory aplikacji internetowej przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="enable-web-application-firewall-using-the-azure-cli"></a>włączanie zapory aplikacji internetowej przy użyciu interfejsu wiersza polecenia platformy Azure
+
+> [!div class="op_single_selector"]
+>
+> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
+> - [Program PowerShell](tutorial-restrict-web-traffic-powershell.md)
+> - [Interfejs wiersza polecenia platformy Azure](tutorial-restrict-web-traffic-cli.md)
+>
+> 
 
 Ruch na [bramie aplikacji](overview.md) można ograniczyć za pomocą [zapory aplikacji internetowych](waf-overview.md). Zapora aplikacji internetowych chroni Twoje aplikacje, używając reguł [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Reguły te obejmują ochronę przed atakami, takimi jak iniekcja kodu SQL, działanie skryptów między witrynami i porywanie sesji. 
 
@@ -191,7 +199,7 @@ Gdy grupa zasobów, brama aplikacji i wszystkie pokrewne zasoby nie będą już 
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

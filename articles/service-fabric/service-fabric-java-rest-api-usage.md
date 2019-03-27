@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 116defb43126932c1a9ce0e7a9d588e731abff78
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a6cb5ffe6c21c6eda9eb8b7f610952e92707a6bd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182034"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483475"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Usługa Azure Service Fabric Java klienta API
 
@@ -126,11 +126,11 @@ Wykonaj kroki wymienione poniżej, aby wygenerować kod klienta Java usługi Ser
 Dla każdego interfejsu API zawiera cztery przeciążenia implementacji. Jeśli istnieją następujące parametry opcjonalne czy możesz znaleźć cztery więcej zmian, łącznie z tych parametrów opcjonalnych. Na przykład rozważmy interfejsu API ``removeReplica``.
  1. **publiczne removeReplica void (nodeName ciąg identyfikatora UUID partycji, replicaId ciągu, logiczna forceRemove, długi limit czasu)**
     * Jest to wariant synchroniczne wywołanie removeReplica interfejsu API
- 2. **publiczne ServiceFuture<Void> removeReplicaAsync (ciąg nodeName, identyfikatora UUID partycji, replicaId ciągu, logiczna forceRemove, długi limit czasu, ostatnim ServiceCallback<Void> serviceCallback)**
+ 2. **publiczne ServiceFuture\<Void > removeReplicaAsync (ciąg nodeName, identyfikatora UUID partycji, replicaId ciągu, logiczna forceRemove, długi limit czasu, ostatnim ServiceCallback\<Void > serviceCallback)**
     * Ten wariant wywołania interfejsu API może być używany, jeśli chcesz używać przyszłości na podstawie programowania asynchronicznego i wywołania zwrotne
- 3. **publiczne Obserwowalnymi<Void> removeReplicaAsync (nodeName ciągu, identyfikatora UUID partycji, replicaId ciąg)**
+ 3. **publiczne Obserwowalnymi\<Void > removeReplicaAsync (nodeName ciągu, identyfikatora UUID partycji, replicaId ciąg)**
     * Ten wariant wywołania interfejsu API może być używany, jeśli chcesz użyć programowania asynchronicznego
- 4. **możliwość obserwowania publiczny < ServiceResponse<Void>> removeReplicaWithServiceResponseAsync (nodeName ciągu, identyfikatora UUID partycji, replicaId ciąg)**
+ 4. **publiczne Obserwowalnymi\<ServiceResponse\<Void >> removeReplicaWithServiceResponseAsync (nodeName ciągu, identyfikatora UUID partycji, replicaId ciąg)**
     * Ten wariant wywołania interfejsu API może być używany, jeśli chcesz użyć programowania asynchronicznego i przeciwdziałania odpowiedź rest NIEPRZETWORZONE
 
 ## <a name="next-steps"></a>Kolejne kroki

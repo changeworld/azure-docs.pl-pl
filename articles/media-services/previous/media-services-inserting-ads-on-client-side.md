@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c3c2101576f9b0d0c7908e62bd5cc1d6e6eeb0b2
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 8b0f5cdcf5a24513b89a2523be71dd74a1a2859b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189805"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484835"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Wstawianie reklam po stronie klienta
 Ten artykuł zawiera informacje na temat sposobu Wstaw różnego rodzaju reklam po stronie klienta.
@@ -96,7 +96,7 @@ OGROMNA plik Określa, jakie usługi ad lub AD, aby wyświetlić. Następujący 
 
 Liniowy ad jest opisana przez <**liniowej**> element. Określa czas trwania ad, śledzenia zdarzeń, kliknij za pośrednictwem śledzenie kliknięć i liczbę **MediaFile** elementów. Zdarzenia śledzenia są określone w <**TrackingEvents**> element i Zezwól serwerowi usługi ad do śledzenia różnych zdarzeń, które występują podczas wyświetlania ad. W takim przypadku rozpoczęcia punktu środkowego zakończone i rozwiń listę zdarzeń są śledzone. Zdarzenie rozpoczęcia występuje, gdy jest wyświetlana ad. Zdarzenie punktu środkowego występuje, gdy co najmniej wyświetlił 50% ad osi czasu. Zdarzenie ukończenia występuje, gdy ad zostało uruchomione na końcu. Zdarzenie rozwinięcia występuje, gdy użytkownik rozwija odtwarzacza wideo do pełnego ekranu. W witrynie są określane za pomocą <**przeglądowe**> elemencie <**VideoClicks**> elementu i określa identyfikator URI do zasobu do wyświetlenia, gdy użytkownik kliknie ad. ClickTracking została określona w <**ClickTracking**> elementu również w ramach <**VideoClicks**> elementu i Określa zasób śledzenia dla gracza, aby zażądać, gdy użytkownik kliknie ad . <**MediaFile**> elementy Określ informacje dotyczące określonego kodowania usługi ad. Gdy istnieje więcej niż jeden <**MediaFile**> elementu odtwarzacza wideo można wybrać optymalne kodowanie dla platformy.
 
-Liniowy reklam, mogą być wyświetlane w określonej kolejności. Aby to zrobić, Dodaj dodatkowe <Ad> elementów do VAST pliku i określić kolejność przy użyciu atrybutu sekwencji. Ilustruje to poniższy przykład:
+Liniowy reklam, mogą być wyświetlane w określonej kolejności. Aby to zrobić, Dodaj dodatkowe `<Ad>` elementów do VAST pliku i określić kolejność przy użyciu atrybutu sekwencji. Ilustruje to poniższy przykład:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -143,7 +143,7 @@ Liniowy reklam, mogą być wyświetlane w określonej kolejności. Aby to zrobi�
     </VAST>
 ```
 
-Reklamy nieliniowych są określone w <Creative> również element. W poniższym przykładzie przedstawiono <Creative> element, który opisuje nieliniowych ad.
+Reklamy nieliniowych są określone w `<Creative>` również element. W poniższym przykładzie przedstawiono `<Creative>` element, który opisuje nieliniowych ad.
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -170,7 +170,7 @@ Application/x-shockwave-flash — zasób jest wyświetlany w odtwarzaczu Flash.
 
 **IFrameResource** opisuje zasobu HTML, która może być wyświetlana w ramce IFrame. **HTMLResource** opisuje fragment kodu HTML, które mogą być wstawiane do strony sieci web. **TrackingEvents** Określ zdarzenia śledzenia i identyfikatora URI żądania po wystąpieniu zdarzenia. W tym przykładzie acceptInvitation i Zwiń zdarzeń są śledzone. Aby uzyskać więcej informacji na temat **NonLinearAds** elementu i jego elementy podrzędne, zobacz IAB.NET/VAST. Należy pamiętać, że **TrackingEvents** element znajduje się w obrębie **NonLinearAds** elementu zamiast **NonLinear** elementu.
 
-Pomocnik reklam są zdefiniowane w ramach <CompanionAds> elementu. <CompanionAds> Element może zawierać jeden lub więcej <Companion> elementów. Każdy <Companion> element w tym artykule opisano ad pomocnika i może zawierać <StaticResource>, <IFrameResource>, lub <HTMLResource> określone w taki sam sposób jak nieliniowych ad. OGROMNA plik może zawierać wiele reklam pomocnika, a aplikacja odtwarzacza można wybrać najbardziej odpowiedni ad, aby wyświetlić. Aby uzyskać więcej informacji na temat VAST zobacz [OGROMNA 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Pomocnik reklam są zdefiniowane w ramach `<CompanionAds>` elementu. `<CompanionAds>` Element może zawierać jeden lub więcej `<Companion>` elementów. Każdy `<Companion>` element w tym artykule opisano ad pomocnika i może zawierać `<StaticResource>`, `<IFrameResource>`, lub `<HTMLResource>` określone w taki sam sposób jak nieliniowych ad. OGROMNA plik może zawierać wiele reklam pomocnika, a aplikacja odtwarzacza można wybrać najbardziej odpowiedni ad, aby wyświetlić. Aby uzyskać więcej informacji na temat VAST zobacz [OGROMNA 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>#Using Digital Video wielu Ad listy odtwarzania (VMAP)
 Plik VMAP można określić po wystąpieniu przerwy ad, jak długo trwa każdego podziału, jak wiele reklam, może być wyświetlana w podziału i jakie typy AD może być wyświetlany podczas podziału. Następujące opcje w VMAP przykładowy plik, który definiuje podziału pojedynczej usługi ad:
@@ -224,14 +224,14 @@ Plik VMAP można określić po wystąpieniu przerwy ad, jak długo trwa każdego
     </vmap:VMAP>
 ```
 
-Plik VMAP zaczyna się od <VMAP> element, który zawiera co najmniej jeden <AdBreak> elementów, definiowanie przerwanie usługi ad. Każdy podziału ad Określa typ podziału, identyfikator przerwania i przesunięcie czasu. Atrybut breakType Określa typ ad, która może być odtwarzany podczas przerwy: liniowych, nieliniowych, lub wyświetlić. Wyświetl reklamy, mapy do OGROMNYCH pomocnika reklam. Można określić więcej niż jeden typ usługi ad w listę rozdzielanych przecinkami (bez spacji). BreakID jest opcjonalny identyfikator ad. TimeOffset Określa, kiedy ad powinna być wyświetlana. Można wybrać jeden z następujących sposobów:
+Plik VMAP zaczyna się od `<VMAP>` element, który zawiera co najmniej jeden `<AdBreak>` elementów, definiowanie przerwanie usługi ad. Każdy podziału ad Określa typ podziału, identyfikator przerwania i przesunięcie czasu. Atrybut breakType Określa typ ad, która może być odtwarzany podczas przerwy: liniowych, nieliniowych, lub wyświetlić. Wyświetl reklamy, mapy do OGROMNYCH pomocnika reklam. Można określić więcej niż jeden typ usługi ad w listę rozdzielanych przecinkami (bez spacji). BreakID jest opcjonalny identyfikator ad. TimeOffset Określa, kiedy ad powinna być wyświetlana. Można wybrać jeden z następujących sposobów:
 
 1. Godzina w formacie: mm: ss lub GG:mm:ss.mmm, w którym .mmm jest milisekund. Wartość tego atrybutu określa czas od początku osi czasu w wideo na początku tego podziału usługi ad.
 2. Procent — format n %, gdzie n to wartość procentowa wideo osi czasu do odtwarzania przed odtwarzanie ad
 3. Rozpoczęcia/zakończenia — określa, że usługi ad powinna być wyświetlana przed lub po film wideo został wyświetlony
 4. Umieść — określa kolejność podziały ad, gdy czas przerwy ad jest nieznany, takiego jak transmisja strumieniowa na żywo. Kolejność każdego podziału ad jest określona w formacie #n, gdzie n to liczba całkowita 1 lub większą. 1 oznacza ad powinna być odtwarzane przy okazji pierwszego 2 oznacza ad powinna być odtworzona w drugiej szansy sprzedaży i tak dalej.
 
-W ramach <AdBreak> elementu, może istnieć tylko jeden <**AdSource**> element. <**AdSource**> element zawiera następujące atrybuty:
+W ramach `<AdBreak>` elementu, może istnieć tylko jeden <**AdSource**> element. <**AdSource**> element zawiera następujące atrybuty:
 
 1. Identyfikator — Określa identyfikator źródła usługi ad
 2. allowMultipleAds — wartość logiczna określająca, czy wiele reklam, mogą być wyświetlane podczas przerwy ad
@@ -239,11 +239,11 @@ W ramach <AdBreak> elementu, może istnieć tylko jeden <**AdSource**> element. 
 
 <**AdSource**> element udostępnia odtwarzacz odpowiedź ad wbudowanych lub odwołanie do odpowiedzi usługi ad. Nazwa może zawierać jedną z następujących elementów:
 
-* <VASTAdData> Wskazuje, że odpowiedź OGROMNA ad jest osadzony w pliku VMAP
-* <AdTagURI> Identyfikator URI, który odwołuje się do ad odpowiedzi z innego systemu
-* <CustomAdData> -dowolny ciąg, który reprezentuje odpowiedź — duże
+* `<VASTAdData>` Wskazuje, że odpowiedź OGROMNA ad jest osadzony w pliku VMAP
+* `<AdTagURI>` Identyfikator URI, który odwołuje się do ad odpowiedzi z innego systemu
+* `<CustomAdData>` -dowolny ciąg, który reprezentuje odpowiedź — duże
 
-W tym przykładzie odpowiedź ad w tekście jest określony za pomocą <VASTAdData> element, który zawiera odpowiedź OGROMNA ad. Aby uzyskać więcej informacji na temat innych elementów zobacz [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+W tym przykładzie odpowiedź ad w tekście jest określony za pomocą `<VASTAdData>` element, który zawiera odpowiedź OGROMNA ad. Aby uzyskać więcej informacji na temat innych elementów zobacz [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
 <**AdBreak**> element może także zawierać jeden <**TrackingEvents**> element. <**TrackingEvents**> element służy do śledzenia początku lub końcu parametru break ad lub tego, czy wystąpił błąd podczas podziału usługi ad. <**TrackingEvents**> element zawiera co najmniej jeden <**śledzenia**> elementy, z których każdy określa zdarzenie śledzenia i śledzenie identyfikatora URI. Zdarzenia śledzenia możliwe są:
 
@@ -325,16 +325,16 @@ Plik MASZTÓW umożliwia określenie wyzwalacze, które określają, kiedy jest 
 ```
 
 
-Plik MASZTÓW zaczyna się od **MASZTÓW** element, który zawiera jeden **wyzwalaczy** elementu. <triggers> Elementu zawiera jeden lub więcej **wyzwalacza** elementy, które określają, kiedy powinna być odtworzona usługi ad.
+Plik MASZTÓW zaczyna się od **MASZTÓW** element, który zawiera jeden **wyzwalaczy** elementu. `<triggers>` Elementu zawiera jeden lub więcej **wyzwalacza** elementy, które określają, kiedy powinna być odtworzona usługi ad.
 
-**Wyzwalacza** element zawiera **startConditions** element określające rozpoczęcia reklamy do odtwarzania. **StartConditions** elementu zawiera jeden lub więcej <condition> elementów. Podczas każdego <condition> jest spełniony, wyzwalacz jest inicjowana lub odwoływane, w zależności od czy <condition> znajduje się w obrębie **startConditions** lub **endConditions** — element odpowiednio. Gdy wiele <condition> znajdują się elementy, będą one traktowane jako niejawny lub dowolny warunek oceny na wartość true powoduje, że wyzwalacz inicjujący. <condition> elementy mogą być zagnieżdżone. Gdy podrzędny <condition> elementy są ustawione wstępnie tak, będą one traktowane jako i niejawne, wszystkie warunki musi zwrócić wartość true dla wyzwalacza do inicjowania. <condition> Element zawiera następujące atrybuty, które określają warunek:
+**Wyzwalacza** element zawiera **startConditions** element określające rozpoczęcia reklamy do odtwarzania. **StartConditions** elementu zawiera jeden lub więcej `<condition>` elementów. Podczas każdego `<condition>` jest spełniony, wyzwalacz jest inicjowana lub odwoływane, w zależności od czy `<condition>` znajduje się w obrębie **startConditions** lub **endConditions** — element odpowiednio. Gdy wiele `<condition>` znajdują się elementy, będą one traktowane jako niejawny lub dowolny warunek oceny na wartość true powoduje, że wyzwalacz inicjujący. `<condition>` elementy mogą być zagnieżdżone. Gdy podrzędny `<condition>` elementy są ustawione wstępnie tak, będą one traktowane jako i niejawne, wszystkie warunki musi zwrócić wartość true dla wyzwalacza do inicjowania. `<condition>` Element zawiera następujące atrybuty, które określają warunek:
 
 1. **Typ** — Określa typ zdarzenia, właściwość lub warunku
 2. **Nazwa** — nazwa właściwości lub zdarzenia, które ma być używany podczas oceny
 3. **wartość** — wartość, która będzie porównywany właściwość
 4. **operator** — operacja ma być używany podczas oceny: EQ (równe), NEQ (nie równa się), GTR (większe), GEQ (większe lub równe), LT (mniejsze niż), LEQ (mniejsze niż lub równe), dzielenie MODULO (modulo)
 
-**endConditions** również zawierać <condition> elementów. Jeśli wynikiem warunku jest wartość true, wyzwalacz jest resetowany. <trigger> Zawiera również element <sources> element, który zawiera co najmniej jeden <source> elementów. <source> Elementy Definiowanie identyfikator URI odpowiedzi usługi ad i typ odpowiedzi usługi ad. W tym przykładzie identyfikator URI znajduje się do OGROMNYCH odpowiedzi.
+**endConditions** również zawierać `<condition>` elementów. Jeśli wynikiem warunku jest wartość true, wyzwalacz jest resetowany. `<trigger>` Zawiera również element `<sources>` element, który zawiera co najmniej jeden `<source>` elementów. `<source>` Elementy Definiowanie identyfikator URI odpowiedzi usługi ad i typ odpowiedzi usługi ad. W tym przykładzie identyfikator URI znajduje się do OGROMNYCH odpowiedzi.
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -352,7 +352,7 @@ Plik MASZTÓW zaczyna się od **MASZTÓW** element, który zawiera jeden **wyzwa
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>Za pomocą odtwarzacza wideo — Ad definicji interfejsu (VPAID)
 VPAID to interfejs API, umożliwiających jednostki ad pliku wykonywalnego do komunikowania się z odtwarzacza wideo. Dzięki temu ad wysoce interaktywnych środowisk. Użytkownik może korzystać z usług ad i ad mogą odpowiadać na akcje wykonywane przez przeglądarkę. Na przykład usługi ad mogą być wyświetlane przyciski, dzięki czemu można wyświetlić więcej informacji lub dłuższej wersji z usług ad. Odtwarzacz wideo musi obsługiwać interfejs API VPAID i pliku wykonywalnego usługi ad musi implementować interfejs API. Gdy gracz żądania usługi ad z serwera ad serwer może odpowiadać z OBSZERNYM odpowiedź, która zawiera VPAID ad.
 
-Wykonywalny ad jest tworzony w kodzie, który musi zostać wykonana w środowisku uruchomieniowym, takie jak Adobe Flash™ lub JavaScript, która może być wykonywana w przeglądarce sieci web. Po powrocie z serwera ad OGROMNA odpowiedź zawierającą VPAID ad wartość apiFramework atrybutu w <MediaFile> element musi być "VPAID". Ten atrybut definiuje zawarte ad ad do pliku wykonywalnego VPAID. Atrybut typu musi być równa typ MIME pliku wykonywalnego, takie jak "application/x-shockwave-flash" lub "application/x-javascript". Poniższy fragment kodu przedstawia XML <MediaFile> elementu z OBSZERNYM odpowiedź zawierającą ad do pliku wykonywalnego VPAID.
+Wykonywalny ad jest tworzony w kodzie, który musi zostać wykonana w środowisku uruchomieniowym, takie jak Adobe Flash™ lub JavaScript, która może być wykonywana w przeglądarce sieci web. Po powrocie z serwera ad OGROMNA odpowiedź zawierającą VPAID ad wartość apiFramework atrybutu w `<MediaFile>` element musi być "VPAID". Ten atrybut definiuje zawarte ad ad do pliku wykonywalnego VPAID. Atrybut typu musi być równa typ MIME pliku wykonywalnego, takie jak "application/x-shockwave-flash" lub "application/x-javascript". Poniższy fragment kodu przedstawia XML `<MediaFile>` elementu z OBSZERNYM odpowiedź zawierającą ad do pliku wykonywalnego VPAID.
 
 ```xml
     <MediaFiles>
@@ -363,7 +363,7 @@ Wykonywalny ad jest tworzony w kodzie, który musi zostać wykonana w środowisk
     </MediaFiles>
 ```
 
-Wykonywalny ad mogą być inicjowane przy użyciu <AdParameters> elemencie <Linear> lub <NonLinear> elementów w OBSZERNYM odpowiedzi. Aby uzyskać więcej informacji na temat <AdParameters> elementu, zobacz [OGROMNA 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Aby uzyskać więcej informacji na temat interfejsu API VPAID zobacz [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Wykonywalny ad mogą być inicjowane przy użyciu `<AdParameters>` elemencie `<Linear>` lub `<NonLinear>` elementów w OBSZERNYM odpowiedzi. Aby uzyskać więcej informacji na temat `<AdParameters>` elementu, zobacz [OGROMNA 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Aby uzyskać więcej informacji na temat interfejsu API VPAID zobacz [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementowanie Windows lub Windows Phone 8 Player z obsługą usługi Ad
 Microsoft Media Platform: Player Framework dla systemu Windows 8 i Windows Phone 8 zawiera kolekcję przykładowych aplikacji, które pokazują, jak wdrażanie przy użyciu platformy aplikacji odtwarzacza wideo. Możesz pobrać Player Framework i przykładów z poziomu [Player Framework dla systemu Windows 8 i Windows Phone 8](https://playerframework.codeplex.com).
@@ -383,7 +383,7 @@ Po otwarciu rozwiązania Microsoft.PlayerFramework.Xaml.Samples, zobaczysz liczb
 Każda próbka używa MediaPlayer — klasa zdefiniowana przez strukturę odtwarzacza. Większość przykładów za pomocą wtyczki, który dodano obsługę różnych formatach odpowiedzi usługi ad. Przykładowe ProgrammaticAdPage programowo współdziała z wystąpienia elementu MediaPlayer.
 
 ### <a name="adpodpage-sample"></a>Przykładowe AdPodPage
-W tym przykładzie używa AdSchedulerPlugin w celu zdefiniowania, kiedy będą wyświetlane przy użyciu usług ad. W tym przykładzie anonsu środku wdrożenie jest zaplanowane do odtwarzania po 5 sekundach. Zasobnik ad (grupa reklam, aby wyświetlić w kolejności) jest określone w pliku OGROMNA zwrócony z serwera usługi ad. Identyfikator URI do OGROMNYCH plików jest określony w <RemoteAdSource> elementu.
+W tym przykładzie używa AdSchedulerPlugin w celu zdefiniowania, kiedy będą wyświetlane przy użyciu usług ad. W tym przykładzie anonsu środku wdrożenie jest zaplanowane do odtwarzania po 5 sekundach. Zasobnik ad (grupa reklam, aby wyświetlić w kolejności) jest określone w pliku OGROMNA zwrócony z serwera usługi ad. Identyfikator URI do OGROMNYCH plików jest określony w `<RemoteAdSource>` elementu.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -408,7 +408,7 @@ W tym przykładzie używa AdSchedulerPlugin w celu zdefiniowania, kiedy będą w
 Aby uzyskać więcej informacji na temat AdSchedulerPlugin zobacz [reklamowych w ramach odtwarzacza systemu Windows 8 i Windows Phone 8](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-W tym przykładzie używa również AdSchedulerPlugin. Planuje ona trzy reklam, ad wstępne wdrożenie, ad środku procesu i ad po wdrożenie. Identyfikator URI do VAST w przypadku każdej reklamy została określona w <RemoteAdSource> elementu.
+W tym przykładzie używa również AdSchedulerPlugin. Planuje ona trzy reklam, ad wstępne wdrożenie, ad środku procesu i ad po wdrożenie. Identyfikator URI do VAST w przypadku każdej reklamy została określona w `<RemoteAdSource>` elementu.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -530,7 +530,7 @@ Ta próbka używa AdSchedulerPlugin można zaplanować ad środku procesu, okre�
 ```
 
 ### <a name="vastlinearcompanionpage"></a>VastLinearCompanionPage
-Ten przykład ilustruje sposób użycia AdSchedulerPlugin można zaplanować środku procesu liniowego usługi ad z usługą ad pomocnika. <RemoteAdSource> Element określa lokalizację pliku OGROMNYCH.
+Ten przykład ilustruje sposób użycia AdSchedulerPlugin można zaplanować środku procesu liniowego usługi ad z usługą ad pomocnika. `<RemoteAdSource>` Element określa lokalizację pliku OGROMNYCH.
 
 ```xml
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -552,7 +552,7 @@ Ten przykład ilustruje sposób użycia AdSchedulerPlugin można zaplanować śr
 ```
 
 ### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-Ta próbka używa AdSchedulerPlugin można zaplanować liniowych i nieliniowych ad. Lokalizacja pliku OGROMNA jest określony za pomocą <RemoteAdSource> elementu.
+Ta próbka używa AdSchedulerPlugin można zaplanować liniowych i nieliniowych ad. Lokalizacja pliku OGROMNA jest określony za pomocą `<RemoteAdSource>` elementu.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -574,7 +574,7 @@ Ta próbka używa AdSchedulerPlugin można zaplanować liniowych i nieliniowych 
 ```
 
 ### <a name="vmappage"></a>VMAPPage
-Ta próbka używa VmapSchedulerPlugin można zaplanować przy użyciu pliku VMAP reklam. Identyfikator URI pliku VMAP jest określony w atrybut źródłowy <VmapSchedulerPlugin> elementu.
+Ta próbka używa VmapSchedulerPlugin można zaplanować przy użyciu pliku VMAP reklam. Identyfikator URI pliku VMAP jest określony w atrybut źródłowy `<VmapSchedulerPlugin>` elementu.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">

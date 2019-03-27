@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ae84b5fd5647ef6c54006c0411e334b14173392e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836587"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488046"
 ---
 1. Przejdź do konsoli [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) i zaloguj się przy użyciu poświadczeń konta Google. 
 2. Wybierz opcję **Create Project** (Utwórz projekt) na pasku narzędzi. 
    
     ![Tworzenie nowego projektu](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. Aby uzyskać **nazwę projektu**, wprowadź nazwę swojego projektu i kliknij przycisk **Utwórz**.
-4. Naciśnij przycisk **alerty** na pasku narzędzi i wybierz swój projekt z listy. Zostanie wyświetlony pulpit nawigacyjny projektu. Możesz też przejść bezpośrednio do pulpitu nawigacyjnego, korzystając z adresu URL: https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+4. Naciśnij przycisk **alerty** na pasku narzędzi i wybierz swój projekt z listy. Zostanie wyświetlony pulpit nawigacyjny projektu. Możesz także przejść bezpośrednio do pulpitu nawigacyjnego przy użyciu adresu URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 
     ![Wybieranie projektu w alertach](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
 5. Zanotuj **Numer projektu** na kafelku pulpitu nawigacyjnego **Informacje o projekcie**. 
@@ -51,5 +51,5 @@ ms.locfileid: "33836587"
 
     ![Kopiowanie klucza interfejsu API](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    Ta wartość klucza interfejsu API zostanie użyta do włączenia na platformie Azure funkcji uwierzytelniania za pomocą usługi GCM i wysyłania powiadomień wypychanych w imieniu aplikacji. Aby wrócić do pulpitu nawigacyjnego projektu, użyj adresu URL: https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+    Ta wartość klucza interfejsu API zostanie użyta do włączenia na platformie Azure funkcji uwierzytelniania za pomocą usługi GCM i wysyłania powiadomień wypychanych w imieniu aplikacji. Aby przejść z powrotem do pulpitu nawigacyjnego projekt, należy użyć adresu URL: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

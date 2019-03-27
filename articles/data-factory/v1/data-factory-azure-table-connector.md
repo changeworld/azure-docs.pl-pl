@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7156249e720416161cd56af7589ed85827c6034b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: aed341c50332b424a1149c129629cd451a4e5133
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812554"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500087"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Przenoszenie danych do i z usługi Azure Table przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,6 +31,8 @@ ms.locfileid: "55812554"
 W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do przenoszenia danych z usługi Azure Table Storage. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania. 
 
 Możesz skopiować dane z obsługiwanego źródłowego magazynu danych do usługi Azure Table Storage lub Azure Table Storage do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako źródła lub ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>Wprowadzenie
 Utworzysz potok z działaniem kopiowania, które przenosi dane z usługi Azure Table Storage przy użyciu różnych narzędzi/interfejsów API.
@@ -476,7 +478,7 @@ Podczas przenoszenia danych do i z usługi Azure Table następujące [mapowania 
 | Typ danych OData | Typ architektury .NET | Szczegóły |
 | --- | --- | --- |
 | Edm.Binary |byte[] |Tablica bajtów do 64 KB. |
-| Edm.Boolean |wartość logiczna |Wartość logiczna. |
+| Edm.Boolean |bool |Wartość logiczna. |
 | Edm.DateTime |DateTime |Wartość 64-bitową, wyrażone jako uniwersalny czas koordynowany (UTC). Obsługiwanym zakresem daty/godziny, który zaczyna się od 12:00, a 1 stycznia, 1601 r. N.E. (C.E.), UTC. Zakres kończy się w dniu 31 grudnia 9999 r. |
 | Edm.Double |double |64-bitowy zmiennoprzecinkowy wartość punktu. |
 | Edm.Guid |Guid |Globalnie unikatowy identyfikator 128-bitowego. |
@@ -535,7 +537,7 @@ Biorąc pod uwagę mapowania typów z typu OData tabeli platformy Azure na typ a
 
 | Nazwa kolumny | Type |
 | --- | --- |
-| Identyfikator użytkownika |Edm.Int64 |
+| userid |Edm.Int64 |
 | name |Edm.String |
 | lastlogindate |Edm.DateTime |
 

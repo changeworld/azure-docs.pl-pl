@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d87fe608b92dd70cb2dee78c817e0055445b7c70
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ee4a78148c36c7838edcc36f8f76ad612ac87ab0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732528"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487961"
 ---
-# <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostki usługi
+# <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostek usługi
 
 Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w ramach dzierżawy w celu przeprowadzania nienadzorowanych operacji na poziomie zasobu lub usługi. Są one unikatowego typu *tożsamość użytkownika* przy użyciu Identyfikatora aplikacji i hasło lub certyfikat. Jednostka usługi ma tylko uprawnienia niezbędne do wykonywania zadań określone przez role i uprawnienia, dla których jest przypisany. 
 
@@ -51,7 +51,7 @@ W przypadku używania nazwy głównej usługi dla zasobu operacje zarządzania z
 
 W poniższym przykładzie appID i hasło są używane do wykonywania operacji odświeżania bazy danych modelu:
 
-```PowerShell
+```powershell
 Param (
 
         [Parameter(Mandatory=$true)] [String] $AppId,

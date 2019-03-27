@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9f88314bbf507dc3b4e282532acfa079c2a63cce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890546"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481692"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Cross-tenant analytics przy użyciu wyodrębnione dane — aplikacja jednej dzierżawy
  
@@ -91,7 +91,7 @@ W poniższych krokach wdrożyć magazyn analizy, który jest nazywany **tenantan
 2. Ustaw zmienną $DemoScenario w skrypcie, aby dopasować się do wyboru magazynu analytics:
     - Aby użyć usługi SQL database bez magazynu kolumn, należy ustawić **$DemoScenario** = **2**
     - Usługa SQL database za pomocą magazynu kolumn, ustawianie **$DemoScenario** = **3**  
-3. Naciśnij klawisz **F5** Aby uruchomić skrypt pokazowy (wywołująca *TenantAnalytics Wdróż<XX>.ps1* skryptu) tworzy magazyn analizy dzierżawy. 
+3. Naciśnij klawisz **F5** Aby uruchomić skrypt pokazowy (wywołująca *TenantAnalytics Wdróż\<XX > .ps1* skryptu) tworzy magazyn analizy dzierżawy. 
 
 Skoro masz wdrożono aplikację i wypełnione interesujących danych dzierżawy, użyj [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) połączyć **tenants1-dpt -&lt;użytkownika&gt;**  i **katalogu-dpt -&lt;użytkownika&gt;**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło = *P\@ssword1*. Zobacz [Samouczek wprowadzający](saas-dbpertenant-wingtip-app-overview.md) Aby uzyskać więcej wskazówek.
 
@@ -120,7 +120,7 @@ Przed kontynuowaniem upewnij się, że wdrożono bazy danych konta i jobaccount 
 
 1. W programie SSMS, połącz się z **jobaccount** bazy danych w wykazie-dpt -&lt;użytkownika&gt;.
 2. W programie SSMS Otwórz *...\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
-3. Modyfikowanie @User zmiennej u góry skryptu, zastępując <User> wartością użytkownika podanej podczas wdrażania aplikacji Wingtip SaaS.
+3. Modyfikowanie @User zmiennej u góry skryptu, zastępując `<User>` wartością użytkownika podanej podczas wdrażania aplikacji Wingtip SaaS.
 4. Naciśnij klawisz **F5** do uruchomienia skryptu, który tworzy dwa docelowe grupy.
 
 ### <a name="extract-raw-data-from-all-tenants"></a>Wyodrębnij nieprzetworzone dane ze wszystkich dzierżaw
@@ -134,7 +134,7 @@ Każde zadanie wyodrębnia dane i publikuje go do magazynu usługi analytics. Is
 
 1. W programie SSMS, połącz się z **jobaccount** bazy danych w wykazie-dpt -&lt;użytkownika&gt; serwera.
 2. W programie SSMS Otwórz *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*.
-3. Modyfikowanie @User u góry skryptu i Zastąp <User> przy użyciu nazwy użytkownika podanej podczas wdrażania aplikacji Wingtip SaaS 
+3. Modyfikowanie @User u góry skryptu i Zastąp `<User>` przy użyciu nazwy użytkownika podanej podczas wdrażania aplikacji Wingtip SaaS 
 4. Naciśnij klawisz F5, aby uruchomić skrypt, który tworzy i uruchamia zadanie, który wyodrębnia dane biletów i klientów z każdej bazy danych dzierżawy. Zadanie zapisuje dane do magazynu usługi analytics.
 5. Zapytania w tabeli TicketsRawData w bazie danych tenantanalytics, aby upewnić się, że tabela zostanie wypełniona informacji biletów ze wszystkich dzierżaw.
 

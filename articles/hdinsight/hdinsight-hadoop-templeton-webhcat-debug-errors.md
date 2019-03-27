@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f1515af1ef61bc40ae91e3e5b43154f92bc89ae4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f158e08f0f882801dc488721013e9705ea4ff738
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725376"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448309"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Omówienie i rozwiązywanie błędów odebranych z usługi WebHCat na HDInsight
 
@@ -29,7 +29,7 @@ Więcej informacji na temat błędów odebranych podczas przy użyciu usługi We
 > [!IMPORTANT]  
 > Wystąpić kilka błędów wymienione w niniejszym dokumencie, ponieważ przekroczono maksymalny skonfigurowany. Gdy krok rozpoznawania uwagi, można zmienić wartości, musi być jedną z następujących dokonać zmiany:
 
-* Aby uzyskać **Windows** klastrów: Aby skonfigurować wartość podczas tworzenia klastra, należy użyć akcji skryptu. Aby uzyskać więcej informacji, zobacz [opracowywanie akcji skryptu](hdinsight-hadoop-script-actions.md).
+* Aby uzyskać **Windows** klastrów: Aby skonfigurować wartość podczas tworzenia klastra, należy użyć akcji skryptu. Aby uzyskać więcej informacji, zobacz [opracowywanie akcji skryptu](hdinsight-hadoop-script-actions-linux.md).
 
 * Aby uzyskać **Linux** klastrów: Za pomocą systemu Apache Ambari (sieć web lub interfejsu API REST), aby zmodyfikować wartość. Aby uzyskać więcej informacji, zobacz [Zarządzanie HDInsight przy użyciu narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
@@ -80,7 +80,7 @@ Przekroczeniu następujące wartości domyślne go obniżyć wydajność usługi
 | --- | --- |
 | Wewnętrzny wyrzucania elementów bezużytecznych ma miejsce w ramach procesu usługi WebHCat |Poczekaj, aż wyrzucania elementów bezużytecznych zakończyć lub ponownego uruchomienia usługi WebHCat |
 | Przekroczono limit czasu oczekiwania na odpowiedź z usługi Menedżera zasobów. Ten błąd może wystąpić, gdy liczba aktywnych aplikacji skonfigurowaną liczbę maksymalną (domyślnie 10 000) |Poczekaj, aż aktualnie uruchomione zadania, aby ukończyć lub zwiększ limit współbieżnych zadań, modyfikując `yarn.scheduler.capacity.maximum-applications`. Aby uzyskać więcej informacji, zobacz [modyfikowanie konfiguracji](#modifying-configuration) sekcji. |
-| Próby pobrania wszystkich zadań za pośrednictwem [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) wywołania podczas `Fields` jest równa `*` |Nie pobierają *wszystkich* szczegóły zadania. Zamiast tego użyć `jobid` można pobrać szczegółów dla zadania przekracza tylko niektórych identyfikator zadania. Nie używaj `Fields` |
+| Próby pobrania wszystkich zadań za pośrednictwem [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) wywołania podczas `Fields` jest równa `*` |Nie pobierają *wszystkich* szczegóły zadania. Zamiast tego użyć `jobid` można pobrać szczegółów dla zadania tylko większa niż określone identyfikatory zadań. Nie używaj `Fields` |
 | Usługi WebHCat nie działa podczas trybu failover węzła głównego |Poczekaj na dwie minuty, a następnie spróbuj ponownie wykonać operację |
 | Istnieje więcej niż 500 oczekujące zadania przesłane za pośrednictwem usługi WebHCat |Zaczekaj, aż obecnie w stanie oczekiwania zadania zostały zakończone przed przesłaniem jednego zadania |
 

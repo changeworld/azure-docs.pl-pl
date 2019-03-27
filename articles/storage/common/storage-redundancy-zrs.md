@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.subservice: common
-ms.openlocfilehash: 8928e59b97143038e0850132196f1ce9a1da131d
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337888"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447260"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -50,7 +50,7 @@ Migracja do / z magazynu LRS, GRS i RA-GRS jest bardzo proste. Umożliwia zmian�
 
 Migrowanie danych do / z magazynu ZRS wymaga innych strategii. Migracja magazynu ZRS obejmuje fizyczne przenoszenie danych z sygnaturą pojedynczy magazyn do wielu sygnatury w regionie.
 
-Istnieją dwie podstawowe opcje migracja do / z magazynu ZRS: 
+Istnieją dwie podstawowe opcje migracji magazynu ZRS: 
 
 - Ręcznie skopiować lub przenieść dane do nowego konta magazynu ZRS z istniejącego konta.
 - Żądanie migracji na żywo.
@@ -73,6 +73,7 @@ Mieć na uwadze następujące ograniczenia dotyczące migracji na żywo:
 - Twoje konto musi zawierać dane.
 - Można przeprowadzić migrację tylko danych w tym samym regionie. Jeśli chcesz przeprowadzić migrację danych do konta magazynu ZRS, znajdującego się w regionie, które są inne niż konto źródłowe, należy wykonać ręczną migrację.
 - Tylko typy kont magazynu w warstwie standardowa obsługuje migrację na żywo. Kont usługi Premium storage muszą zostać zmigrowane ręcznie.
+- Migracja na żywo z magazynu ZRS LRS, GRS lub RA-GRS nie jest obsługiwana. Należy ręcznie przenieść dane do nowego lub istniejącego konta magazynu.
 
 Możesz poprosić o migracji na żywo za pośrednictwem [portalu pomocy technicznej systemu Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Z poziomu portalu wybierz konto magazynu, który chcesz przekonwertować ZRS.
 1. Wybierz **nowe żądanie obsługi**
@@ -128,7 +129,19 @@ Klasyczny magazyn ZRS jest dostępna tylko dla **blokowe obiekty BLOB** w ogóln
 
 Z konta magazynu LRS, klasycznego magazynu ZRS, GRS lub RA-GRS lub ręcznego przeprowadzania migracji danych z konta magazynu ZRS, użyj jednej z następujących narzędzi: Interfejs wiersza polecenia narzędzia AzCopy, Eksplorator usługi Azure Storage, programu Azure PowerShell lub Azure. Możesz także tworzyć własne rozwiązanie migracji przy użyciu jednego z biblioteki klienta usługi Azure Storage.
 
-Możesz również uaktualnić swoje konta klasycznego magazynu ZRS do magazynu ZRS w portalu lub przy użyciu programu Azure PowerShell lub wiersza polecenia platformy Azure.
+Możesz również uaktualnić swoje konta klasycznego magazynu ZRS ZRS w portalu lub przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure w regionach, w których Magazyn ZRS jest dostępny.
+
+Aby uaktualnić do magazynu ZRS w portalu przejdź do sekcji konfiguracji konta i kliknij pozycję Uaktualnij:![Uaktualnij klasyczny magazyn ZRS do magazynu ZRS w portalu](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+
+Uaktualnienie do magazynu ZRS przy użyciu programu PowerShell Wywołaj następujące polecenie:
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
+```
+
+Uaktualnienie do magazynu ZRS przy użyciu interfejsu wiersza polecenia platformy Wywołaj następujące polecenie:
+```cli
+az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
+```
 
 ## <a name="see-also"></a>Zobacz także
 - [Replikacja usługi Azure Storage](storage-redundancy.md)

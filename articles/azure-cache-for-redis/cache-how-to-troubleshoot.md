@@ -12,96 +12,98 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 03/15/2019
 ms.author: yegu
-ms.openlocfilehash: 5a8542007d67cb76eaf615da6c5d1db1b1555ea3
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 838fc1da3e167d1df04fbb36a2fea33b8ac248a4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234921"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482610"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Jak rozwiązywać problemy z pamięć podręczna systemu Azure dla usługi Redis
-Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z następujących kategorii pamięć podręczna systemu Azure w przypadku problemów z pamięci podręcznej Redis.
 
-* [Rozwiązywanie problemów po stronie klienta](#client-side-troubleshooting) — ta sekcja zawiera wskazówki dotyczące identyfikowania i rozwiązywania problemów spowodowanych aplikacji nawiązaniem połączenia z usługą pamięć podręczna Azure redis Cache.
-* [Rozwiązywanie problemów po stronie serwera](#server-side-troubleshooting) — ta sekcja zawiera wskazówki dotyczące identyfikowania i rozwiązywania problemów spowodowane na platformie Azure pamięci podręcznej po stronie serwera Redis.
-* [Wyjątków przekroczenia limitu czasu StackExchange.Redis](#stackexchangeredis-timeout-exceptions) — ta sekcja zawiera informacje na temat rozwiązywania problemów w przypadku korzystania z klienta StackExchange.Redis.
+Ten artykuł pomaga w rozwiązywaniu różne kategorie problemów, które mogą wystąpić podczas nawiązywania połączenia z usługą Azure Cache dla wystąpień usługi Redis.
+
+- [Rozwiązywanie problemów po stronie klienta](#client-side-troubleshooting) ułatwia identyfikowanie i rozwiązywanie problemów w aplikacji, na nawiązywanie połączeń z pamięci podręcznej.
+- [Rozwiązywanie problemów po stronie serwera](#server-side-troubleshooting) ułatwia identyfikowanie i rozwiązywanie problemów występujących na usługi Azure Cache dla strony pamięci podręcznej Redis.
+- [Rozwiązywanie problemów z utratą danych](#data-loss-troubleshooting) ułatwia identyfikowanie i rozwiązywanie zdarzeń, gdzie klucze są nie znaleziono oczekiwanej w pamięci podręcznej.
+- [Wyjątków przekroczenia limitu czasu StackExchange.Redis](#stackexchangeredis-timeout-exceptions) zawiera dokładne wskazówki dotyczące rozwiązywania problemów z biblioteki StackExchange.Redis.
 
 > [!NOTE]
 > Niektóre kroki rozwiązywania problemów, w tym przewodniku obejmują instrukcji, aby uruchamiać polecenia Redis i monitorować różne metryki wydajności. Aby uzyskać więcej informacji oraz instrukcje, zobacz artykuły w [dodatkowe informacje](#additional-information) sekcji.
-> 
-> 
+>
+>
 
 ## <a name="client-side-troubleshooting"></a>Rozwiązywanie problemów po stronie klienta
+
 W tej sekcji omówiono rozwiązywanie problemów, które występują ze względu na stan aplikacji klienta.
 
-* [Wykorzystanie pamięci na komputerze klienckim](#memory-pressure-on-the-client)
-* [Serii ruchu](#burst-of-traffic)
-* [Klient wysokie użycie procesora CPU](#high-client-cpu-usage)
-* [Przekroczona przepustowość po stronie klienta](#client-side-bandwidth-exceeded)
-* [Rozmiar dużych żądań/odpowiedzi](#large-requestresponse-size)
-* [Co się stało z moimi danymi w usłudze Redis?](#what-happened-to-my-data-in-redis)
+- [Wykorzystanie pamięci na komputerze klienckim](#memory-pressure-on-the-client)
+- [Serii ruchu](#burst-of-traffic)
+- [Klient wysokie użycie procesora CPU](#high-client-cpu-usage)
+- [Przekroczona przepustowość po stronie klienta](#client-side-bandwidth-exceeded)
+- [Rozmiar dużych żądań/odpowiedzi](#large-requestresponse-size)
 
 ### <a name="memory-pressure-on-the-client"></a>Wykorzystanie pamięci na komputerze klienckim
-#### <a name="problem"></a>Problem
-Wykorzystanie pamięci na komputerze klienckim prowadzi do wszelkiego rodzaju problemów z wydajnością, które mogą opóźnić proces przetwarzania danych, który został wysłany przez wystąpienia pamięci podręcznej Redis, bez żadnego opóźnienia. Gdy liczba trafień wykorzystanie pamięci, system zwykle ma do danych strony od ilości pamięci fizycznej w pamięci wirtualnej, która znajduje się na dysku. To *powodujący błąd strony* sprawia, że znacznie spowolnić system.
 
-#### <a name="measurement"></a>Miara
-1. Monitoruj użycie pamięci na komputerze, aby upewnić się, że nie przekracza ilość dostępnej pamięci. 
-2. Monitor `Page Faults/Sec` licznika wydajności. Większość systemów mają pewne błędy stron nawet podczas normalnego działania, więc poszukaj skoków ten licznik wydajności strony błędów, które odnoszą się do przekroczenia limitu czasu.
+Wykorzystanie pamięci na komputerze klienckim prowadzi do wszelkiego rodzaju problemów z wydajnością, które mogą opóźnić proces przetwarzania odpowiedzi z pamięci podręcznej. Gdy liczba trafień wykorzystanie pamięci, system może strony danych na dysku. To _powodujący błąd strony_ sprawia, że znacznie spowolnić system.
 
-#### <a name="resolution"></a>Rozwiązanie
-Uaktualnić klienta na kliencie większy rozmiar maszyny Wirtualnej przy użyciu większej ilości pamięci lub zagłębiania się w Twojej wzorców użycia pamięci, aby zmniejszyć zużycie pamięci.
+Aby wykryć wykorzystanie pamięci na komputerze klienckim:
+
+- Monitoruj użycie pamięci na komputerze, aby upewnić się, że nie może przekraczać dostępnej pamięci.
+- Monitorowanie klienta `Page Faults/Sec` licznika wydajności. Podczas normalnego działania większość systemów ma kilka błędów stron. Skoków błędów stron odpowiedni dla żądania przekroczeń limitu czasu może wskazywać dużego wykorzystania pamięci.
+
+Wykorzystanie dużą ilość pamięci na komputerze klienckim, można zminimalizować na kilka sposobów:
+
+- Analizując swoje wzorców użycia pamięci, aby zmniejszyć zużycie pamięci na komputerze klienckim.
+- Uaktualnić klienta maszyny Wirtualnej na większy rozmiar przy użyciu większej ilości pamięci.
 
 ### <a name="burst-of-traffic"></a>Serii ruchu
-#### <a name="problem"></a>Problem
+
 Wzrosty ruchu w połączeniu z niska `ThreadPool` ustawień może spowodować opóźnienia w przetwarzaniu danych już wysłanych przez serwer Redis, ale nie są jeszcze używane po stronie klienta.
 
-#### <a name="measurement"></a>Miara
-Monitor jak Twoje `ThreadPool` statystyki zmieniać wraz z upływem czasu przy użyciu kodu [następująco](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs). Można również przeglądać `TimeoutException` komunikat z StackExchange.Redis. Oto przykład:
+Monitor jak Twoje `ThreadPool` statystyki zmieniać wraz z upływem czasu przy użyciu [przykład `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs). Możesz użyć `TimeoutException` wiadomości z StackExchange.Redis, takich jak poniżej w celu dalszego zbadania problemu:
 
-    System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0, 
+    System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
 
-W poprzednim komunikacie istnieje kilka problemów, które mogą być interesujące:
+W poprzednim wyjątku istnieje kilka problemów, które mogą być interesujące:
 
-1. Należy zauważyć, że w `IOCP` sekcji i `WORKER` sekcji masz `Busy` wartość, która jest większa niż `Min` wartości. Różnica ta oznacza, że Twoje `ThreadPool` ustawienia wymagać dostosowania.
-2. Można również wyświetlić `in: 64221`. Ta wartość wskazuje, że 64,211 bajty zostały odebrane w warstwie jądra gniazda, ale jeszcze nie został odczytany przez aplikację (na przykład StackExchange.Redis). Różnica ta zazwyczaj oznacza, że aplikacji będą nie jest odczyt danych z sieci tak szybko, jak serwer wysyła go do Ciebie.
+- Należy zauważyć, że w `IOCP` sekcji i `WORKER` sekcji masz `Busy` wartość, która jest większa niż `Min` wartości. Różnica ta oznacza, że Twoje `ThreadPool` ustawienia wymagać dostosowania.
+- Można również wyświetlić `in: 64221`. Ta wartość wskazuje, że 64,211 Bajty otrzymane w warstwie klienta jądra gniazda, ale jeszcze nie został odczytany przez aplikację. Różnica ta zazwyczaj oznacza, że aplikacji (na przykład StackExchange.Redis) będą nie jest odczyt danych z sieci tak szybko, jak serwer wysyła go do Ciebie.
 
-#### <a name="resolution"></a>Rozwiązanie
-Konfigurowanie usługi [ustawienia puli wątków](https://gist.github.com/JonCole/e65411214030f0d823cb) aby upewnić się, że z puli wątków jest skalowany w górę szybko w obszarze serii scenariuszy.
+Możesz [skonfigurować swoje `ThreadPool` ustawienia](https://gist.github.com/JonCole/e65411214030f0d823cb) aby upewnić się, że z puli wątków jest skalowany w górę szybko w obszarze serii scenariuszy.
 
 ### <a name="high-client-cpu-usage"></a>Klient wysokie użycie procesora CPU
-#### <a name="problem"></a>Problem
-Wysokie użycie procesora CPU na kliencie jest wskazanie, że system nie może nadążyć z pracy, która ma prośby o ich wykonania. Tę sytuację oznacza, że klient może się nie powieść przetwarzania odpowiedzi z pamięci podręcznej Redis w odpowiednim czasie, nawet jeśli Redis wysyłane odpowiedzi szybko.
 
-#### <a name="measurement"></a>Miara
-Monitorowanie użycia szerokiego procesor CPU systemu za pośrednictwem witryny Azure Portal lub za pomocą licznika wydajności skojarzonego. Uważaj nie monitorował *procesu* procesora CPU, ponieważ jeden proces może mieć niskie użycie procesora CPU w tym samym czasu tego całego systemu Procesora może być wysokie. Obserwuj wzrostów użycia procesora CPU, które odnoszą się do przekroczenia limitu czasu. W wyniku wysokie użycie procesora CPU, może również zostać wyświetlony wysokiego `in: XXX` wartości w `TimeoutException` komunikaty o błędach, zgodnie z opisem w [serii ruchu](#burst-of-traffic) sekcji.
+Klient wysokie użycie procesora CPU wskazuje, że system nie może nadążyć z pracy, który jest prośby o ich czy. Mimo, że pamięć podręczna wysyłane odpowiedzi szybko, klient może zakończyć się niepowodzeniem do przetwarzania odpowiedzi w odpowiednim czasie.
+
+Monitoruj użycie procesora CPU całego systemu klienta przy użyciu metryk dostępnych w witrynie Azure portal lub za pomocą liczników wydajności na maszynie. Uważaj nie monitorował *procesu* procesora CPU, ponieważ jeden proces może mieć niskie użycie procesora CPU, ale Procesora systemowe mogą być wysokie. Obserwuj wzrostów użycia procesora CPU, które odnoszą się do przekroczenia limitu czasu. Wysokie użycie procesora CPU mogą również spowodować wysokiej `in: XXX` wartości w `TimeoutException` komunikaty o błędach, zgodnie z opisem w [serii ruchu](#burst-of-traffic) sekcji.
 
 > [!NOTE]
 > StackExchange.Redis 1.1.603 i nowszych obejmują `local-cpu` metryki w `TimeoutException` komunikaty o błędach. Upewnij się, że za pomocą najnowszej wersji [pakietu StackExchange.Redis NuGet](https://www.nuget.org/packages/StackExchange.Redis/). Brak błędów stale zostanie naprawiony w kodzie, aby był bardziej niezawodny dla limitów czasu tak ważne jest posiadanie najnowszej wersji.
-> 
-> 
+>
+>
 
-#### <a name="resolution"></a>Rozwiązanie
-Uaktualnij do większego rozmiaru maszyny Wirtualnej o większej pojemności procesora CPU lub badania, co jest przyczyną wzrostów użycia Procesora. 
+Aby zmniejszyć wysokie użycie procesora CPU do klienta:
+
+- Sprawdź, co jest przyczyną wzrostów użycia Procesora.
+- Uaktualnij klienta do większego rozmiaru maszyny Wirtualnej o większej pojemności procesora CPU.
 
 ### <a name="client-side-bandwidth-exceeded"></a>Przekroczona przepustowość po stronie klienta
-#### <a name="problem"></a>Problem
-W zależności od architektury komputery klienckie, mogą mieć ograniczenia na przepustowość sieci, ile mają one dostępne. Jeśli klient przekracza dostępną przepustowość przeciążając pojemności sieci, następnie danych nie jest wykonywane po stronie klienta tak szybko, jak serwer wysyła go. Taka sytuacja może prowadzić do przekroczenia limitu czasu.
 
-#### <a name="measurement"></a>Miara
-Monitorowanie, jak zmienić wykorzystanie przepustowości sieci wraz z upływem czasu przy użyciu kodu [następująco](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs). Ten kod może nie działać prawidłowo w niektórych środowiskach z ograniczonymi uprawnieniami (np. witryny sieci web systemu Azure).
+W zależności od architektury komputery klienckie, mogą mieć ograniczenia na przepustowość sieci, ile mają one dostępne. Jeżeli klient przekracza dostępną przepustowość przeciążając pojemności sieci, danych nie jest przetwarzany po stronie klienta tak szybko, jak serwer wysyła go. Taka sytuacja może prowadzić do przekroczenia limitu czasu.
 
-#### <a name="resolution"></a>Rozwiązanie
-Zwiększ rozmiar maszyny Wirtualnej klienta lub ograniczyć zużycie przepustowości sieci.
+Monitorowanie, jak wykorzystanie przepustowości sieci, zmieniać wraz z upływem czasu przy użyciu [przykład `BandwidthLogger` ](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs). Ten kod może nie działać prawidłowo w niektórych środowiskach z ograniczonymi uprawnieniami (np. witryny sieci web systemu Azure).
+
+Aby rozwiązać problem, ograniczyć zużycie przepustowości sieci, lub zwiększ rozmiar maszyny Wirtualnej do jednego o większej pojemności sieci klienta.
 
 ### <a name="large-requestresponse-size"></a>Rozmiar dużych żądań/odpowiedzi
-#### <a name="problem"></a>Problem
-Dużych żądań/odpowiedzi może być przyczyną przekroczenia limitu czasu. Na przykład załóżmy, że wartość limitu czasu skonfigurowany na komputerze klienckim wynosi 1 s. Aplikacja żąda dwa klucze (na przykład, "A" i "B") w tym samym czasie (przy użyciu tego samego połączenia sieci fizycznej). Większość klientów pomocy technicznej "Pipelining" żądań w taki sposób, że zarówno w przypadku żądań "A" i "B" są wysyłane na o komunikacji sieciowej na serwerze, jeden po drugim bez oczekiwania na odpowiedzi. Serwer wysyła odpowiedzi w tej samej kolejności. Jeśli odpowiedź "A" jest wystarczająco duży, może to jeść większość limitu czasu dla kolejnych żądań. 
 
-Poniższy przykład pokazuje, w tym scenariuszu. W tym scenariuszu szybko wysłaniem żądania "A" i "B", serwer jest uruchamiany szybkie wysyłanie odpowiedzi "A" i "B", ale ze względu na czas transferu danych, 'B' utknięcie żądania i limit czasu, mimo że szybko odpowiedź serwera.
+Dużych żądań/odpowiedzi może być przyczyną przekroczenia limitu czasu. Na przykład załóżmy, że wartość limitu czasu skonfigurowany na komputerze klienckim wynosi 1 s. Aplikacja żąda dwa klucze (na przykład, "A" i "B") w tym samym czasie (przy użyciu tego samego połączenia sieci fizycznej). Większość klientów obsługuje żądania "przetwarzanie potokowe", gdzie oba "A" i "B" są wysyłane żądania jedna po drugiej bez oczekiwania na odpowiedzi. Serwer wysyła odpowiedzi w tej samej kolejności. W przypadku dużych odpowiedzi "A", może to jeść większość limitu czasu dla nowszych żądań.
+
+W poniższym przykładzie żądania "A" i "B" są szybko wysyłane do serwera. Serwer jest uruchamiany szybkie wysyłanie odpowiedzi "A" i "B". Ze względu na czas transferu danych odpowiedzi, 'B' musi czekać za odpowiedź "A" upłynie limit czasu, mimo że szybko odpowiedź serwera.
 
     |-------- 1 Second Timeout (A)----------|
     |-Request A-|
@@ -110,101 +112,114 @@ Poniższy przykład pokazuje, w tym scenariuszu. W tym scenariuszu szybko wysła
                 |- Read Response A --------|
                                            |- Read Response B-| (**TIMEOUT**)
 
+Żądanie/odpowiedź jest trudne do mierzenia. Można instrumentować swój kod klienta, aby śledzić dużych żądań i odpowiedzi.
 
+Rozwiązania dla dużych odpowiedzi rozmiarów są różne, ale obejmuje:
 
-#### <a name="measurement"></a>Miara
-Żądanie/odpowiedź jest trudne do mierzenia. Zasadniczo muszą instrumentować swój kod klienta, aby śledzić dużych żądań i odpowiedzi. 
-
-#### <a name="resolution"></a>Rozwiązanie
-1. Redis jest zoptymalizowany pod kątem dużej liczby małych wartości, a nie kilka dużych wartościach. Preferowanym rozwiązaniem jest podział danych do powiązanych wartości mniejsze. Zobacz [co to jest idealna wartość zakresem rozmiar pamięci podręcznej redis? 100 KB jest za duży? ](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) uzyskać szczegółowe informacje w całym dlaczego są zalecane, mniejsze wartości.
-2. Zwiększ rozmiar maszyny wirtualnej (klient i serwer Redis w pamięci podręcznej Azure), aby uzyskać wyższy możliwości przepustowość, zmniejszyć czas transferu danych dla większych odpowiedzi. Pobieranie większej przepustowości, po prostu serwera lub tylko na kliencie może nie być wystarczająca. Pomiar użycia przepustowości i porównać go z możliwości rozmiaru maszyny Wirtualnej aktualnie zainstalowana.
-3. Zwiększenie liczby `ConnectionMultiplexer` obiektów użycia i działanie okrężne żądania za pośrednictwem różnych połączeń.
-
-### <a name="what-happened-to-my-data-in-redis"></a>Co się stało z moimi danymi w usłudze Redis?
-#### <a name="problem"></a>Problem
-Dla niektórych oczekiwanych danych w pamięci podręcznej Azure Moje wystąpienia pamięci podręcznej Redis, ale go nie wydaje się, że ma być.
-
-#### <a name="resolution"></a>Rozwiązanie
-Zobacz [co się stało z moimi danymi w usłudze Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) możliwe przyczyny i rozwiązania.
+1. Optymalizowanie aplikacji dla dużej liczby małych wartości, a nie kilka dużych wartościach.
+    - Preferowanym rozwiązaniem jest podział danych do powiązanych wartości mniejsze.
+    - Zobacz wpis [co to jest idealna wartość zakresem rozmiar pamięci podręcznej redis? 100 KB jest za duży? ](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) Aby uzyskać szczegółowe informacje o tym, dlaczego są zalecane, mniejsze wartości.
+1. Zwiększ rozmiar maszyny Wirtualnej, aby uzyskać wyższy możliwości przepustowości
+    - Większej przepustowości w maszynie Wirtualnej serwera lub klienta, na których może zmniejszyć czas transferu danych dla większych odpowiedzi.
+    - Porównaj bieżące użycie sieci na obu komputerach, na granicach bieżącego rozmiaru maszyn wirtualnych. Większa przepustowość tylko serwer lub tylko na komputerze klienckim może nie być wystarczająca.
+1. Zwiększ liczbę obiektów połączeń, używanych przez aplikację.
+    - Użyj sposób okrężny na wysyłanie żądań za pośrednictwem połączenia różnych obiektów.
 
 ## <a name="server-side-troubleshooting"></a>Rozwiązywanie problemów po stronie serwera
+
 W tej sekcji omówiono rozwiązywanie problemów, które występują ze względu na stan na serwerze pamięci podręcznej.
 
-* [Wykorzystanie pamięci na serwerze](#memory-pressure-on-the-server)
-* Wysokie użycie procesora CPU / obciążenie serwera
-* [Przekroczona przepustowość po stronie serwera](#server-side-bandwidth-exceeded)
+- [Wykorzystanie pamięci na serwerze](#memory-pressure-on-the-server)
+- [Wysokie użycie procesora CPU / obciążenie serwera](#high-cpu-usage--server-load)
+- [Przekroczona przepustowość po stronie serwera](#server-side-bandwidth-exceeded)
 
 ### <a name="memory-pressure-on-the-server"></a>Wykorzystanie pamięci na serwerze
-#### <a name="problem"></a>Problem
-Wykorzystanie pamięci po stronie serwera prowadzi do wszelkiego rodzaju problemów z wydajnością, które mogą opóźnić proces przetwarzania żądania. Gdy liczba trafień wykorzystanie pamięci, system zwykle ma do danych strony od ilości pamięci fizycznej w pamięci wirtualnej, która znajduje się na dysku. To *powodujący błąd strony* sprawia, że znacznie spowolnić system. Istnieje kilka możliwych przyczyn to wykorzystania pamięci: 
 
-1. Wypełnienie pamięci podręcznej w celu pełnego wykorzystania możliwości danych. 
-2. Redis Cache ma do czynienia z fragmentacji pamięci wysokiej — najczęściej powodowane przez przechowywanie dużych obiektów (Redis zoptymalizowana pod kątem małych obiektów — zobacz [co to jest idealna wartość zakresem rozmiar pamięci podręcznej redis? 100 KB jest za duży? ](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) uzyskać szczegółowe informacje). 
+Wykorzystanie pamięci po stronie serwera prowadzi do wszelkiego rodzaju problemów z wydajnością, które mogą opóźnić proces przetwarzania żądania. Gdy liczba trafień wykorzystanie pamięci, system może strony danych na dysku. To _powodujący błąd strony_ sprawia, że znacznie spowolnić system. Istnieje kilka możliwych przyczyn to wykorzystania pamięci:
 
-#### <a name="measurement"></a>Miara
-Redis Cache udostępnia dwie metryki, które mogą pomóc zidentyfikować ten problem. Pierwsza to `used_memory` , a drugi to `used_memory_rss`. [Te metryki](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) są dostępne w witrynie Azure Portal lub za pośrednictwem [Redis informacje](https://redis.io/commands/info) polecenia.
+- Pamięć podręczna jest wypełniony niemal pojemności maksymalnej.
+- Duża ilość pamięci fragmentacji ma do czynienia z pamięci podręcznej redis. Fragmentacja to najczęściej spowodowane przechowywanie dużych obiektów, ponieważ w pamięci podręcznej Redis zoptymalizowana pod kątem małych obiektów.
 
-#### <a name="resolution"></a>Rozwiązanie
-Istnieje kilka możliwych zmian, wchodzące w celu zapewnienia dobrej kondycji zużycie pamięci:
+Redis Cache udostępnia dwa statystyki za pośrednictwem [informacje](https://redis.io/commands/info) polecenia, które pomaga zidentyfikować ten problem: "used_memory" i "used_memory_rss". Możesz [wyświetlić te metryki](cache-how-to-monitor.md#view-metrics-with-azure-monitor) przy użyciu portalu.
 
-1. [Konfigurowanie zasad pamięci](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) i ustaw czas wygaśnięcia na klucze. Ta konfiguracja może nie być wystarczające, jeśli masz fragmentacji.
-2. [Skonfiguruj wartość maxmemory zastrzeżone](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) jest wystarczająco duży, aby zrekompensować fragmentacji pamięci.
-3. Podziel duże obiekty pamięci podręcznej na mniejsze powiązane obiekty.
-4. [Skala](cache-how-to-scale.md) na większy rozmiar pamięci podręcznej.
-5. Jeśli używasz [cache w warstwie premium przy użyciu klastra pamięci podręcznej Redis włączone](cache-how-to-premium-clustering.md), możesz [zwiększyć liczbę fragmentów](cache-how-to-premium-clustering.md#change-the-cluster-size-on-a-running-premium-cache).
+Istnieje kilka możliwych zmian, wprowadzane w celu zapewnienia dobrej kondycji zużycie pamięci:
+
+- [Konfigurowanie zasad pamięci](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) i ustaw czas wygaśnięcia na klucze. Ta zasada może nie być wystarczające, jeśli masz fragmentacji.
+- [Skonfiguruj wartość maxmemory zastrzeżone](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) jest wystarczająco duży, aby zrekompensować fragmentacji pamięci. Aby uzyskać więcej informacji, zobacz dodatkowe [zagadnienia dotyczące rezerwacji pamięci](#considerations-for-memory-reservations) poniżej.
+- Podziel duże obiekty pamięci podręcznej na mniejsze powiązane obiekty.
+- [Tworzenie alertów](cache-how-to-monitor.md#alerts) na metryki, takie jak użycie pamięci powiadamiany wcześnie o potencjalny wpływ na środowisko.
+- [Skala](cache-how-to-scale.md) na większy rozmiar pamięci podręcznej o większej pojemności pamięci.
+
+#### <a name="considerations-for-memory-reservations"></a>Zagadnienia dotyczące rezerwacji pamięci
+
+Trwa aktualizowanie wartości rezerwacji pamięci, takich jak maxmemory zarezerwowane, może wpływać na wydajność pamięci podręcznej. Załóżmy, że 53GB pamięci podręcznej, który zostanie wypełniony kolorem 49 GB danych. Zmiana wartości rezerwacji do 8 GB porzuca systemu maksymalną dostępną pamięć, aby 45 GB. Jeśli _used_memory_ lub _used_memory_rss_ wartości jest wyższa niż 45 GB, system może eksmitują dane przed zakończeniem _used_memory_ i _used_memory_rss_ znajdują się poniżej 45 GB. Wykluczenia może zwiększyć fragmentacji obciążenia i pamięci serwera.
 
 ### <a name="high-cpu-usage--server-load"></a>Wysokie użycie procesora CPU / obciążenie serwera
-#### <a name="problem"></a>Problem
-Wysokie użycie procesora CPU może oznaczać, że może zakończyć się niepowodzeniem po stronie klienta do przetwarzania odpowiedzi z pamięci podręcznej Redis w odpowiednim czasie, nawet jeśli Redis wysyłane odpowiedzi szybko.
 
-#### <a name="measurement"></a>Miara
-Monitorowanie użycia szerokiego procesor CPU systemu za pośrednictwem witryny Azure Portal lub za pomocą licznika wydajności skojarzonego. Uważaj nie monitorował *procesu* procesora CPU, ponieważ jeden proces może mieć niskie użycie procesora CPU w tym samym czasu tego całego systemu Procesora może być wysokie. Obserwuj wzrostów użycia procesora CPU, które odnoszą się do przekroczenia limitu czasu.
+Obciążenie serwera wysokiej albo użycia procesorów CPU oznacza, że serwer nie może przetworzyć żądania w odpowiednim czasie. Serwer może być powolne odpowiedzi i nie może nadążyć z kursów żądania.
 
-#### <a name="resolution"></a>Rozwiązanie
-* Przejrzyj wszelkie opinie i alerty wymienione w [pamięci podręcznej Azure redis Cache Advisor](cache-configure.md#azure-cache-for-redis-advisor).
-* Sprawdź również inne zalecenia przedstawione w tym temacie i [najlepsze rozwiązania dotyczące usługi Azure Redis](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f) aby zobaczyć, jeśli zostały użyte wszystkie opcje do dalszej optymalizacji pamięci podręcznej i klienta. 
-* Przegląd [usługi Azure Cache wydajność pamięci podręcznej Redis](cache-faq.md#azure-cache-for-redis-performance) wykresy i zobaczyć, czy użytkownik może w pobliżu górnej wartości progowe Twojej bieżącej warstwy. Jeśli to konieczne, [skalowania](cache-how-to-scale.md) do większych warstwy pamięci podręcznej o większej pojemności procesora CPU. Jeśli już używasz w warstwie Premium, możesz chcieć [skalowanie w poziomie z klastrowaniem](cache-how-to-premium-clustering.md)
+[Monitoruj metryki](cache-how-to-monitor.md#view-metrics-with-azure-monitor) takich jak obciążenie procesora CPU lub serwera. Obserwuj wzrostów użycia procesora CPU, które odnoszą się do przekroczenia limitu czasu.
 
+Istnieje kilka zmian, możesz wprowadzić, aby zmniejszyć obciążenie serwera wysokiej:
+
+- Zbadaj, co jest przyczyną wzrostów użycia Procesora, takie jak uruchamianie [kosztownych poleceń](#expensive-commands) lub strony powodujący błąd z powodu dużego wykorzystania dużą ilość pamięci.
+- [Tworzenie alertów](cache-how-to-monitor.md#alerts) na metryki, takie jak obciążenie procesora CPU lub serwer powiadamiany wcześnie o potencjalny wpływ na środowisko.
+- [Skala](cache-how-to-scale.md) na większy rozmiar pamięci podręcznej o większej pojemności procesora CPU.
+
+#### <a name="expensive-commands"></a>Kosztownych poleceń
+
+Nie wszystkie polecenia usługi Redis są tworzone w równym stopniu — niektóre są droższe niż inne. [Redis polecenia dokumentacji](https://redis.io/commands) pokazano stopnia złożoności czasu każdego polecenia. Zalecane jest, że zostały spełnione poleceń, że używasz w pamięci podręcznej w celu zrozumienia wpływu tych poleceń. Na przykład [KLUCZE](https://redis.io/commands/keys) polecenia jest często używana, nie wiedząc o tym, że jest operacją O(N). KLUCZE można uniknąć, używając [skanowania](https://redis.io/commands/scan) zmniejszyć Procesora nagłego zapotrzebowania.
+
+Za pomocą [dziennik wolno wykonywanych zapytań](https://redis.io/commands/slowlog) polecenia, można zmierzyć, kosztownych poleceń, wykonywane na serwerze.
 
 ### <a name="server-side-bandwidth-exceeded"></a>Przekroczona przepustowość po stronie serwera
-#### <a name="problem"></a>Problem
-W zależności od rozmiaru wystąpienia pamięci podręcznej mogą mieć ograniczenia na przepustowość sieci, ile mają one dostępne. Jeśli serwer przekracza dostępną przepustowość, dane nie są wysyłane do klienta tak szybko. Taka sytuacja może prowadzić do przekroczenia limitu czasu.
 
-#### <a name="measurement"></a>Miara
-Możesz monitorować `Cache Read` metryki, które jest ilość danych odczytu z pamięci podręcznej w MB na sekundę (MB/s) w określonym interwale raportowania. Ta wartość odpowiada przepustowości sieci używanej przez tę pamięć podręczną. Jeśli chcesz skonfigurować alerty dla limity przepustowości sieci po stronie serwera, możesz utworzyć je za pomocą tego `Cache Read` licznika. Porównaj swoje odczyty z wartościami w [tej tabeli](cache-faq.md#cache-performance) limitów obserwowanych przepustowości dla różnych pamięci podręcznej ceny warstwy i rozmiarów.
+Pamięć podręczna w różnych rozmiarach charakteryzują się pojemności przepustowości inną sieć. Jeśli serwer przekracza dostępną przepustowość, dane nie zostaną wysłane do klienta tak szybko. Żądania klientów może przekroczyć limit czasu, ponieważ serwer nie można wypchnąć dane do klienta wystarczająco szybko.
 
-#### <a name="resolution"></a>Rozwiązanie
-Jeśli jesteś spójnie niemal obserwowanych maksymalnej przepustowości dla cenową rozmiar warstwy i pamięci podręcznej, należy wziąć pod uwagę [skalowanie](cache-how-to-scale.md) cen warstwę lub rozmiar, który ma większą przepustowość sieci, przy użyciu wartości w [tej tabeli](cache-faq.md#cache-performance)jako wskazówki.
+Metryki "Pamięć podręczna Odczyt" i "Pamięć podręczna zapisu" może służyć do przepustowości, jaką po stronie serwera jest używany. Możesz [wyświetlić te metryki](cache-how-to-monitor.md#view-metrics-with-azure-monitor) w portalu.
+
+Aby uniknąć sytuacji, gdy wykorzystanie przepustowości sieci znajduje się w pobliżu maksymalną pojemność:
+
+- Zmiany zachowania wywołania klienta, aby ograniczyć żądanie sieci.
+- [Tworzenie alertów](cache-how-to-monitor.md#alerts) dotyczące metryk, takich jak pamięci podręcznej odczytu lub zapisu w pamięci podręcznej powiadamiany wcześnie o potencjalny wpływ na środowisko.
+- [Skala](cache-how-to-scale.md) na większy rozmiar pamięci podręcznej o większej pojemności przepustowości sieci.
+
+## <a name="data-loss-troubleshooting"></a>Rozwiązywanie problemów z utratą danych
+
+Dla niektórych oczekiwanych danych w pamięci podręcznej Azure Moje wystąpienia pamięci podręcznej Redis, ale go nie wydaje się, że ma być.
+
+Zobacz [co się stało z moimi danymi w usłudze Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) możliwe przyczyny i rozwiązania.
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>Wyjątków przekroczenia limitu czasu StackExchange.Redis
-StackExchange.Redis korzysta z konfiguracji, ustawienie o nazwie `synctimeout` synchronicznej operacji, które mają wartość domyślną 1000 MS. Jeśli wywołanie synchroniczne nie zakończy się w określonym czasie, klient StackExchange.Redis zgłasza błąd upływu limitu czasu, podobny do poniższego przykładu:
+
+StackExchange.Redis korzysta z konfiguracji, ustawienie o nazwie `synctimeout` na operacje synchroniczne z wartością domyślną 1000 ms. Jeśli wywołanie synchroniczne nie zakończy się w tym okresie, klient StackExchange.Redis zgłasza błąd upływu limitu czasu, podobny do poniższego przykładu:
 
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
-
 
 Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczyny oraz możliwe rozwiązania tego problemu. Poniższa tabela zawiera szczegółowe informacje o metrykach komunikat o błędzie.
 
 | Metryka komunikat o błędzie | Szczegóły |
 | --- | --- |
 | instrukcje powrotu |W ostatnim przedziału czasu: 0 polecenia zostały wydane. |
-| mgr |Menedżer gniazda wykonuje `socket.select`, co oznacza, że jest zapytaniem systemu operacyjnego w celu wskazania gniazda, które ma związek; po prostu: czytnik nie aktywnie odczytuje z sieci ponieważ on nie rozmawiamy tu nic wspólnego |
+| mgr |Działania Menedżera gniazda `socket.select`, co oznacza, że jest zapytaniem systemu operacyjnego w celu wskazania gniazda, które ma coś zrobić. Czytnik nie jest aktywnie odczytu z sieci, ponieważ on nie wydaje się, że jest coś zrobić |
 | kolejka |Istnieją 73 łączna liczba operacji w toku |
-| qu |6 operacji w toku znajdują się w kolejce niewysłane i nie zostały jeszcze zapisane sieciowego ruchu wychodzącego |
+| qu |6 operacji w toku znajdują się w kolejce niewysłane i jeszcze nie zostały zapisane do sieciowego ruchu wychodzącego |
 | qs |67 operacji w toku zostały wysłane do serwera, ale odpowiedź nie jest jeszcze dostępna. Odpowiedzi mogą być `Not yet sent by the server` lub `sent by the server but not yet processed by the client.` |
-| qc |Zauważyliśmy już odpowiedzi na 0 lub operacji w toku, ale nie zostało oznaczone jako zakończone z powodu oczekiwania na zakończenie pętli |
+| qc |Zauważyliśmy już odpowiedzi na 0 lub operacji w toku, ale jeszcze nie zostało oznaczone jako ukończone, ponieważ czeka na zakończenie pętli |
 | wr |Ma aktywnego modułu zapisującego (co oznacza, że 6 niewysłane żądania nie są ignorowane) bajty/activewriters |
 | wejście |Nie ma żadnych aktywnych czytelników i zero bajtów dostępnych do odczytu na NIC bajty/activereaders |
 
 ### <a name="steps-to-investigate"></a>Kroki, aby zbadać
-1. Zgodnie z najlepszym rozwiązaniem jest upewnij się, używają następującego wzorca łączenia podczas korzystania z klienta StackExchange.Redis.
+
+1. Najlepszym rozwiązaniem upewnij się, że używasz następujący wzorzec łączenia podczas korzystania z klienta StackExchange.Redis.
 
     ```csharp
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
         return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
-    
+
     });
-    
+
     public static ConnectionMultiplexer Connection
     {
         get
@@ -216,24 +231,24 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczy
 
     Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia z pamięci podręcznej, za pomocą StackExchange.Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
 
-1. Upewnij się, że pamięć podręczna Azure dla usługi Redis i aplikację kliencką znajdują się w tym samym regionie platformy Azure. Na przykład użytkownik może się pojawiać przekroczeń limitu czasu gdy pamięć podręczna znajduje się we wschodnim regionie USA, ale klient znajduje się w regionie zachodnie stany USA i żądania nie zakończył się w `synctimeout` interwał lub mogą się pojawiać przekroczeń limitu czasu podczas debugowania z lokalnej maszynie do programowania. 
-   
-    Zdecydowanie zaleca się mieć pamięci podręcznej i w kliencie, w tym samym regionie platformy Azure. W przypadku scenariusza, który zawiera wywołań między regionami, należy ustawić `synctimeout` interwał na wartość większą niż domyślny interwał 1000 ms, umieszczając `synctimeout` właściwość w parametrach połączenia. W poniższym przykładzie pokazano StackExchange.Azure pamięci podręcznej dla pamięci podręcznej Redis fragment kodu parametrów połączenia z `synctimeout` 2000 MS.
-   
+1. Upewnij się, że serwer i aplikacja kliencka znajdują się w tym samym regionie platformy Azure. Na przykład użytkownik może się pojawiać przekroczeń limitu czasu gdy pamięć podręczna znajduje się we wschodnim regionie USA, ale klient znajduje się w regionie zachodnie stany USA i żądania nie zakończył się w `synctimeout` interwał lub mogą się pojawiać przekroczeń limitu czasu podczas debugowania z lokalnej maszynie do programowania. 
+
+    Zdecydowanie zaleca się mieć pamięci podręcznej i w kliencie, w tym samym regionie platformy Azure. W przypadku scenariusza, który zawiera wywołań między regionami, należy ustawić `synctimeout` interwał na wartość większą niż domyślny interwał 1000 ms, umieszczając `synctimeout` właściwość w parametrach połączenia. W poniższym przykładzie przedstawiono fragment ciągu połączenia dla StackExchange.Redis udostępnianej przez pamięć podręczna Azure redis cache za pomocą `synctimeout` 2000 MS.
+
         synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
-2. Upewnij się, że za pomocą najnowszej wersji [pakietu StackExchange.Redis NuGet](https://www.nuget.org/packages/StackExchange.Redis/). Brak błędów stale zostanie naprawiony w kodzie, aby był bardziej niezawodny dla limitów czasu tak ważne jest posiadanie najnowszej wersji.
-3. W przypadku żądań, które są związane wprowadzenie ograniczenia przepustowości na serwerze lub kliencie zajmuje więcej czasu na ich ukończenie i spowodować przekroczeń limitu czasu. Aby zobaczyć, czy Twoje limitu czasu, ze względu na przepustowość sieci na serwerze, zobacz [Przekroczona przepustowość po stronie serwera](#server-side-bandwidth-exceeded). Aby zobaczyć, czy Twoje limitu czasu, ze względu na przepustowość sieci klienta, zobacz [Przekroczona przepustowość po stronie klienta](#client-side-bandwidth-exceeded).
-4. Są możesz wprowadzenie procesora CPU związane na serwerze lub na komputerze klienckim?
-   
-   * Sprawdź, jeśli jesteś wprowadzenie zobowiązany najbardziej obciążających procesor CPU na komputerze klienckim, który może spowodować, że żądania nie został przetworzony w ramach `synctimeout` interwał, w związku z tym, co powoduje przekroczenie limitu czasu. Przejście do klienta o większym rozmiarze lub rozłożeniu obciążenia może pomóc kontrolować ten problem. 
-   * Sprawdź, czy pojawiają się procesora CPU związane na serwerze monitorowania `CPU` [Metryka wydajności w pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Żądań przychodzących trakcie Redis procesora CPU związane może spowodować te żądania, przekroczenie limitu czasu. Aby rozwiązać ten problem, rozkładają obciążenie na wiele fragmentów w pamięci podręcznej — wersja premium lub uaktualnienia do wersji o większym rozmiarze lub warstwie cenowej. Aby uzyskać więcej informacji, zobacz [Przekroczona przepustowość po stronie serwera](#server-side-bandwidth-exceeded).
-5. Czy istnieją polecenia dłużej przetwarzania na serwerze? Długie wykonywanie poleceń, które mają długi czas przetwarzania na serwerze usługi redis może spowodować przekroczeń limitu czasu. Oto kilka przykładów poleceń długotrwałe `mget` z dużą liczbą kluczy `keys *` lub źle napisane skryptów lua. Możesz nawiązać połączenie z pamięci podręcznej dla wystąpienia pamięci podręcznej Redis przy użyciu klienta pamięci podręcznej redis — interfejs wiersza polecenia platformy Azure lub użyć [konsolę pamięci podręcznej Redis](cache-configure.md#redis-console) i uruchom [dziennik wolno wykonywanych zapytań](https://redis.io/commands/slowlog) polecenie, aby sprawdzić, czy żądania trwa dłużej niż oczekiwano. Serwer redis i StackExchange.Redis są zoptymalizowane pod kątem wielu małych żądań, a nie mniej dużych żądań. Podział danych na mniejsze części może poprawić rzeczy w tym miejscu. 
-   
-    Aby uzyskać informacji na temat nawiązywania połączenia z pamięci podręcznej Azure redis Cache punktu końcowego protokołu SSL przy użyciu usługi redis — interfejs wiersza polecenia i programu stunnel, zobacz [ogłoszenie dostawca stanu sesji ASP.NET dla wersji zapoznawczej Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu. Aby uzyskać więcej informacji, zobacz [dziennik wolno wykonywanych zapytań](https://redis.io/commands/slowlog).
-6. Wysokie obciążenie serwera Redis może spowodować przekroczeń limitu czasu. Można monitorować, obciążenie serwera jest monitorowanie `Redis Server Load` [Metryka wydajności w pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Obciążenie serwera, 100 (wartość maksymalna) oznacza, że serwer redis był zajęty, bez czasu bezczynności, przetwarzanie żądań. Aby zobaczyć, jeśli niektórych żądań zajmują wszystkich funkcji serwera, uruchom polecenie Dziennik wolno wykonywanych zapytań, zgodnie z opisem w poprzednim akapicie. Aby uzyskać więcej informacji, zobacz wysokie użycie procesora CPU / obciążenie serwera.
-7. Po stronie klienta, który może to być spowodowane blip sieci była dowolne inne zdarzenie? Sprawdź na kliencie (web, rola procesu roboczego lub Maszynie wirtualnej IaaS), jeśli wystąpiło zdarzenie, takie jak skalowanie liczby wystąpień klienta w górę lub w dół lub wdrażania nowej wersji klienta lub automatyczne skalowanie jest włączone? W naszych testach, znaleźliśmy tego skalowania automatycznego lub skalowania w górę/dół można przyczyny połączenia sieciowego ruchu wychodzącego mogą zostać utracone przez kilka sekund. Kod StackExchange.Redis jest odporna na takie zdarzenia i ponownie nawiąże połączenie. W tym czasie ponowne łączenie wszystkich żądań w kolejce można limit czasu.
-8. Czy były poprzedzających kilka małych żądań do usługi Azure Cache dla pamięci podręcznej Redis, który upłynął limit czasu żądania big? Parametr `qs` w błędzie komunikat informujący o tym ile żądań wysłanych z klienta do serwera, ale nie zostały jeszcze przetworzone odpowiedzi. Tę wartość można zachować rośnie, ponieważ StackExchange.Redis korzysta z jednego połączenia TCP i jedną odpowiedź mogą być odczytane tylko w danym momencie. Mimo że upłynął limit czasu operacji pierwsze, nie zatrzymuje danych wysyłanych z serwera, a inne żądania są blokowane, aż do ukończenia żądania dużych przyczyną przekroczenia limitów czasu. Jednym rozwiązaniem jest zminimalizować prawdopodobieństwo przekroczenia limitu czasu, zapewnia, że pamięć podręczna jest wystarczająco duży dla obciążenia i dzielenia dużych wartości na mniejsze części. Inne rozwiązanie możliwe jest użycie puli `ConnectionMultiplexer` obiektów w swoim kliencie, a następnie wybierz co najmniej załadować `ConnectionMultiplexer` wysyłając żądanie nowego. Powinno to zapobiec pojedynczego limitu czasu powoduje innych żądaniach również limit czasu.
-9. Jeśli używasz `RedisSessionStateProvider`, upewnij się, limit czasu ponawiania zostały ustawione prawidłowo. `retryTimeoutInMilliseconds` powinien być większy niż `operationTimeoutInMilliseconds`, w przeciwnym razie wystąpić brak ponownych prób. W poniższym przykładzie `retryTimeoutInMilliseconds` jest równa 3000. Aby uzyskać więcej informacji, zobacz [dostawca stanu sesji ASP.NET dla usługi Azure Cache dla usługi Redis](cache-aspnet-session-state-provider.md) i [sposobu korzystania z parametrów konfiguracji dostawcy stanu sesji i dostawca wyjściowej pamięci podręcznej](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
+1. Upewnij się, że za pomocą najnowszej wersji [pakietu StackExchange.Redis NuGet](https://www.nuget.org/packages/StackExchange.Redis/). Brak błędów stale zostanie naprawiony w kodzie, aby był bardziej niezawodny dla limitów czasu tak ważne jest posiadanie najnowszej wersji.
+1. Jeśli żądania są powiązane przez ograniczenia przepustowości na serwerze lub kliencie, go dłużej na ich ukończenie i może spowodować, że limity czasu. Aby zobaczyć, czy Twoje limitu czasu, ze względu na przepustowość sieci na serwerze, zobacz [Przekroczona przepustowość po stronie serwera](#server-side-bandwidth-exceeded). Aby zobaczyć, czy Twoje limitu czasu, ze względu na przepustowość sieci klienta, zobacz [Przekroczona przepustowość po stronie klienta](#client-side-bandwidth-exceeded).
+1. Są możesz wprowadzenie procesora CPU związane na serwerze lub na komputerze klienckim?
+
+   - Sprawdź, jeśli użytkownik jest wprowadzenie powiązany najbardziej obciążających procesor CPU na komputerze klienckim. Wysokie użycie procesora CPU może spowodować, że żądania nie został przetworzony w ramach `synctimeout` interwał i przyczynę żądania przekroczy limit czasu. Przejście do klienta o większym rozmiarze lub rozłożeniu obciążenia może pomóc kontrolować ten problem.
+   - Sprawdź, czy uzyskujesz procesora CPU związane na serwerze monitorowania `CPU` [Metryka wydajności w pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Żądań przychodzących trakcie Redis procesora CPU związane może spowodować te żądania, które przekraczają limit czasu. Aby rozwiązać ten problem, rozkładają obciążenie na wiele fragmentów w pamięci podręcznej — wersja premium lub uaktualnienia do wersji o większym rozmiarze lub warstwie cenowej. Aby uzyskać więcej informacji, zobacz [Przekroczona przepustowość po stronie serwera](#server-side-bandwidth-exceeded).
+1. Czy istnieją polecenia dłużej przetwarzania na serwerze? Długotrwałych poleceń, które mają długi czas przetwarzania na serwerze usługi redis może spowodować przekroczeń limitu czasu. Aby uzyskać więcej informacji na temat długotrwałych poleceń, zobacz [kosztownych poleceń](#expensive-commands). Można połączyć się z pamięci podręcznej dla wystąpienia pamięci podręcznej Redis przy użyciu klienta pamięci podręcznej redis — interfejs wiersza polecenia platformy Azure lub [konsolę pamięci podręcznej Redis](cache-configure.md#redis-console). Następnie uruchom [dziennik wolno wykonywanych zapytań](https://redis.io/commands/slowlog) polecenie, aby sprawdzić, czy żądania wolniej niż oczekiwano. Serwer redis i StackExchange.Redis są zoptymalizowane pod kątem wielu małych żądań, a nie mniej dużych żądań. Podział danych na mniejsze części może poprawić rzeczy w tym miejscu.
+
+    Instrukcje dotyczące nawiązywania połączenia z punktu końcowego protokołu SSL pamięć podręczną przy użyciu usługi redis — interfejs wiersza polecenia i programu stunnel, zobacz wpis w blogu [ogłoszenie dostawca stanu sesji ASP.NET dla wersji zapoznawczej Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+1. Wysokie obciążenie serwera Redis może spowodować przekroczeń limitu czasu. Można monitorować, obciążenie serwera jest monitorowanie `Redis Server Load` [Metryka wydajności w pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Obciążenie serwera, 100 (wartość maksymalna) oznacza, że serwer redis był zajęty, bez czasu bezczynności, przetwarzanie żądań. Aby zobaczyć, jeśli niektórych żądań zajmują wszystkich funkcji serwera, uruchom polecenie Dziennik wolno wykonywanych zapytań, zgodnie z opisem w poprzednim akapicie. Aby uzyskać więcej informacji, zobacz wysokie użycie procesora CPU / obciążenie serwera.
+1. Po stronie klienta, który może to być spowodowane blip sieci była dowolne inne zdarzenie? Typowe zdarzenia obejmują: skalowanie liczby wystąpień klienta w górę lub w dół, wdrażania nowej wersji klienta lub włączyć Skalowanie automatyczne. W naszych testach, znaleźliśmy, że automatyczne skalowanie lub skalowania w górę/w dół może spowodować połączenia sieciowego ruchu wychodzącego, zostanie utracone przez kilka sekund. Kod StackExchange.Redis jest odporna na takie zdarzenia i ponownie nawiąże połączenie. Podczas ponownego podłączania, wszystkie żądania w kolejce może przekroczyło limit czasu.
+1. Czy były dużych poprzedzających kilka żądań o małym rozmiarze pamięci podręcznej, który upłynął limit czasu żądania? Parametr `qs` w błędzie komunikat informujący o tym ile żądań wysłanych z klienta do serwera, ale nie zostały przetworzone odpowiedzi. Tę wartość można zachować rośnie, ponieważ StackExchange.Redis korzysta z jednego połączenia TCP i jedną odpowiedź mogą być odczytane tylko w danym momencie. Mimo że upłynął limit czasu operacji pierwszy, go nie zatrzymuje większej ilości danych wysyłanych do lub z serwera. Inne żądania będą blokowane, aż do dużych żądanie zostało zakończone i może spowodować, że limity czasu. Jednym rozwiązaniem jest zminimalizować prawdopodobieństwo przekroczenia limitu czasu, zapewnia, że pamięć podręczna jest wystarczająco duży dla obciążenia i dzielenia dużych wartości na mniejsze części. Inne rozwiązanie możliwe jest użycie puli `ConnectionMultiplexer` obiektów w swoim kliencie, a następnie wybierz co najmniej załadować `ConnectionMultiplexer` wysyłając żądanie nowego. Podczas ładowania wielu obiektów połączenia uniemożliwiać pojedynczego limitu czasu będą powodować innych żądaniach również limit czasu.
+1. Jeśli używasz `RedisSessionStateProvider`, upewnij się, limit czasu ponawiania zostały ustawione prawidłowo. `retryTimeoutInMilliseconds` powinien być większy niż `operationTimeoutInMilliseconds`, w przeciwnym razie wystąpić brak ponownych prób. W poniższym przykładzie `retryTimeoutInMilliseconds` jest równa 3000. Aby uzyskać więcej informacji, zobacz [dostawca stanu sesji ASP.NET dla usługi Azure Cache dla usługi Redis](cache-aspnet-session-state-provider.md) i [sposobu korzystania z parametrów konfiguracji dostawcy stanu sesji i dostawca wyjściowej pamięci podręcznej](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
     <add
       name="AFRedisCacheSessionStateProvider"
@@ -248,18 +263,17 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczy
       operationTimeoutInMilliseconds = "1000"
       retryTimeoutInMilliseconds="3000" />
 
+1. Sprawdź użycie pamięci w usłudze Azure Cache serwera Redis przez [monitorowania](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` i `Used Memory`. Jeśli zasady eksmisji znajduje się w miejscu, rozpoczyna się Redis wykluczania klucze kiedy `Used_Memory` osiągnie rozmiar pamięci podręcznej. W idealnym przypadku `Used Memory RSS` powinny być tylko nieznacznie wyższe niż `Used memory`. Duża różnica oznacza, że istnieje fragmentacji pamięci (wewnętrznych lub zewnętrznych). Gdy `Used Memory RSS` jest mniejsza niż `Used Memory`, oznacza to część pamięci podręcznej została zapisana przez system operacyjny. Jeśli zamianę ten problem wystąpi, można oczekiwać, że niektóre znaczne opóźnienia. Ponieważ usługa Redis nie ma kontrolę nad jak jego alokacje są mapowane do stron pamięci wysokiej `Used Memory RSS` często jest wynikiem wzrost użycia pamięci. Gdy serwer Redis zwalnia pamięć, alokator zajmuje pamięć, ale może być lub może nie być pamięć powrót do systemu. Może być niezgodność między `Used Memory` zużycie wartości i pamięci podaną przez system operacyjny. Może być używana pamięć i wydane przez usługi Redis, ale nie udzieliła wstecz do systemu. Aby pomóc rozwiązać problemy z pamięcią, można wykonać następujące czynności:
 
-1. Sprawdź użycie pamięci w usłudze Azure Cache serwera Redis przez [monitorowania](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` i `Used Memory`. Jeśli zasady eksmisji znajduje się w miejscu, rozpoczyna się Redis wykluczania klucze kiedy `Used_Memory` osiągnie rozmiar pamięci podręcznej. W idealnym przypadku `Used Memory RSS` powinny być tylko nieznacznie wyższe niż `Used memory`. Duża różnica oznacza, że istnieje fragmentacji pamięci (wewnętrznych lub zewnętrznych). Gdy `Used Memory RSS` jest mniejsza niż `Used Memory`, oznacza to część pamięci podręcznej została zapisana przez system operacyjny. Jeśli zamianę ten problem wystąpi, można oczekiwać, że niektóre znaczne opóźnienia. Ponieważ usługi Redis nie ma kontrolę nad jak jego alokacje są mapowane do stron pamięci wysokiej `Used Memory RSS` często jest wynikiem wzrost użycia pamięci. Gdy Redis zwalnia pamięć, pamięć umożliwiającej powrót alokator i alokator może być lub może nie być pamięć powrót do systemu. Może być niezgodność między `Used Memory` zużycie wartości i pamięci podaną przez system operacyjny. Może być ze względu na fakt pamięci został używane i opublikowany w pamięci podręcznej Redis, ale nie udzieliła wstecz do systemu. Aby ułatwić uniknięcie problemów z pamięcią, należy wykonać następujące czynności:
-   
-   * Uaktualnij do większego rozmiaru pamięci podręcznej, tak, aby nie zostały uruchomione w odniesieniu do ograniczenia ilości pamięci w systemie.
-   * Ustaw czas wygaśnięcia na kluczach, tak, aby aktywnie obrazuje starsze wartości.
-   * Monitor `used_memory_rss` metryki w pamięci podręcznej. Ta wartość koloru zbliża się rozmiaru pamięci podręcznej, prawdopodobnie wykonywanych problemy z wydajnością. Rozmieść dane w wielu fragmentów, jeśli są przy użyciu cache w wersji premium lub uaktualnienie do większego rozmiaru pamięci podręcznej.
-   
+   - Uaktualnij do większego rozmiaru pamięci podręcznej, tak, aby nie są uruchomione względem ograniczeń pamięci, w systemie.
+   - Ustaw czas wygaśnięcia na kluczach, tak, aby aktywnie obrazuje starsze wartości.
+   - Monitor `used_memory_rss` metryki w pamięci podręcznej. Ta wartość koloru zbliża się rozmiaru pamięci podręcznej, prawdopodobnie wykonywanych problemy z wydajnością. Rozmieść dane w wielu fragmentów, jeśli jesteś przy użyciu cache w wersji premium lub uaktualnienie do większego rozmiaru pamięci podręcznej.
+
    Aby uzyskać więcej informacji, zobacz [wykorzystanie pamięci na serwerze](#memory-pressure-on-the-server).
 
 ## <a name="additional-information"></a>Dodatkowe informacje
-* [Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-* [Jak testu wydajności i przetestować wydajność przepełnieniu pamięci podręcznej?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-* [Jak uruchomić polecenia Redis](cache-faq.md#how-can-i-run-redis-commands)
-* [Jak monitorować pamięć podręczna systemu Azure dla usługi Redis](cache-how-to-monitor.md)
 
+- [Jakie usługi Azure Cache oferty pamięci podręcznej Redis i rozmiaru należy używać?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [Jak testu wydajności i przetestować wydajność przepełnieniu pamięci podręcznej?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Jak uruchomić polecenia Redis](cache-faq.md#how-can-i-run-redis-commands)
+- [Jak monitorować pamięć podręczna systemu Azure dla usługi Redis](cache-how-to-monitor.md)

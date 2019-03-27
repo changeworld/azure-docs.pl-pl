@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012330"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445996"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
 ## <a name="overview"></a>Przegląd
@@ -98,7 +98,7 @@ W czasie pisania cele przepustowości w Stanach Zjednoczonych konto magazyn geog
 Jeśli zbliża się limit kont magazynu, posiadane w połączeniu określonej subskrypcji/regionu, należy ocenić aplikacji i użycia kont magazynu i określić, jeśli którykolwiek z tych warunków zastosować.
 
 * Używanie kont magazynu jako dyski niezarządzane i dodanie tych dysków do maszyny wirtualnej. W tym scenariuszu zaleca się używanie [usługi managed disks](../../virtual-machines/windows/managed-disks-overview.md), ponieważ obsługują storage dotyczące skalowalności dysku dla Ciebie bez konieczności tworzenia i zarządzania kontami magazynu.
-* Na podstawie poszczególnych klientów na potrzeby izolacji danych, przy użyciu jednego konta magazynu. W tym scenariuszu firma Microsoft zaleca używanie kontenerów magazynu dla każdego klienta, a nie całe konto magazynu. Usługa Azure Storage umożliwia teraz określenie kontroli dostępu opartej na rolach na poszczególnych [podstawy kontenera](storage-auth-aad-rbac.md).
+* Na podstawie poszczególnych klientów na potrzeby izolacji danych, przy użyciu jednego konta magazynu. W tym scenariuszu firma Microsoft zaleca używanie kontenerów magazynu dla każdego klienta, a nie całe konto magazynu. Usługa Azure Storage umożliwia teraz określenie kontroli dostępu opartej na rolach na poszczególnych [podstawy kontenera](storage-auth-aad-rbac-portal.md).
 * Zwiększenie skalowalności pojemność zdarzeń przychodzących/wychodzących/operacji We/Wy/przy użyciu wielu kont magazynu do fragmentu. W tym scenariuszu, jeśli to możliwe, zaleca się korzystać z [zwiększenie limitów](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) kont magazynu w warstwie standardowa w celu zmniejszenia liczby kont magazynu wymagana dla obciążenia.
 
 Jeśli aplikacja zbliża się do wartości docelowe skalowalności pojedynczego konta magazynu, należy rozważyć przyjęcie jedną z następujących metod:  

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e594ace368799f85eea2e7291ead6febea0ea4b7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dc6e218fe048e1781f53c53935308eb193fcd094
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543886"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487162"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Tworzenie obrazu niestandardowego z pliku VHD za pomocą programu PowerShell
 
@@ -37,20 +37,20 @@ W poniższych krokach objaśniono proces tworzenia obrazu niestandardowego z pli
 
 1. W wierszu polecenia programu PowerShell Zaloguj się do konta platformy Azure przy użyciu następujące wywołanie do **Connect AzAccount** polecenia cmdlet.  
     
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 
 1.  Wybierz odpowiednią subskrypcję platformy Azure przez wywołanie metody **AzSubscription wybierz** polecenia cmdlet. Zastąp następujące symbol zastępczy dla **$subscriptionId** zmiennej z identyfikatorem ważnej subskrypcji platformy Azure. 
 
-    ```PowerShell
+    ```powershell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzSubscription -SubscriptionId $subscriptionId
     ```
 
 1.  Pobierz obiekt laboratorium, wywołując **Get AzResource** polecenia cmdlet. Zastąp następujące symbole zastępcze dla **$labRg** i **$labName** zmienne odpowiednimi wartościami dla danego środowiska. 
 
-    ```PowerShell
+    ```powershell
     $labRg = '<Specify your lab resource group name here>'
     $labName = '<Specify your lab name here>'
     $lab = Get-AzResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
@@ -58,20 +58,20 @@ W poniższych krokach objaśniono proces tworzenia obrazu niestandardowego z pli
  
 1.  Uzyskiwanie laboratorium magazynu konta i laboratorium z magazynu konta wartości klucza obiektu laboratorium. 
 
-    ```PowerShell
+    ```powershell
     $labStorageAccount = Get-AzResource -ResourceId $lab.Properties.defaultStorageAccount 
     $labStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
     ```
 
 1.  Zastąp następujące symbol zastępczy dla **$vhdUri** zmiennej za pomocą identyfikatora URI do przekazanego pliku wirtualnego dysku twardego. Identyfikator URI pliku wirtualnego dysku twardego może pobrać z bloku obiektu blob konta magazynu w witrynie Azure portal.
 
-    ```PowerShell
+    ```powershell
     $vhdUri = '<Specify the VHD URI here>'
     ```
 
 1.  Tworzenie przy użyciu niestandardowego obrazu **New AzResourceGroupDeployment** polecenia cmdlet. Zastąp następujące symbole zastępcze dla **$customImageName** i **$customImageDescription** zmienne do nazw opisowych dla środowiska.
 
-    ```PowerShell
+    ```powershell
     $customImageName = '<Specify the custom image name>'
     $customImageDescription = '<Specify the custom image description>'
 
@@ -84,7 +84,7 @@ W poniższych krokach objaśniono proces tworzenia obrazu niestandardowego z pli
 
 Poniższy skrypt programu PowerShell, można utworzyć niestandardowy obraz z pliku wirtualnego dysku twardego. Zastąp symbole zastępcze (uruchamianie i kończy z nawiasami) odpowiednie wartości dla Twoich potrzeb. 
 
-```PowerShell
+```powershell
 # Log in to your Azure account.  
 Connect-AzAccount
 

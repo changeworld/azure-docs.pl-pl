@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731092"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485156"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
-Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
+Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Dzięki usłudze Service Map można wyświetlać serwery w sposób, w jakich się o nich myśli: jako wzajemnie połączone systemy dostarczające usługi. Usługa ta pokazuje połączenia między serwerami i procesami, opóźnienie połączeń przychodzących i wychodzących oraz porty dla każdej architektury połączonej za pomocą protokołu TCP. Nie jest wymagana żadna konfiguracja z wyjątkiem zainstalowania agenta.
 
 W tym artykule opisano szczegóły dotyczące dołączania i przy użyciu mapy usługi. Aby uzyskać informacje dotyczące konfigurowania rozwiązania Service Map i dołączania agentów, zobacz [konfigurowania rozwiązania Service Map rozwiązanie na platformie Azure]( service-map-configure.md).
 
@@ -374,50 +374,50 @@ Rekordy z typem *ServiceMapComputer_CL* zawierają dane spisu dla serwerów z ag
 
 | Właściwość | Opis |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | Unikatowy identyfikator dla maszyny w obszarze roboczym |
-| ResourceName_s | Unikatowy identyfikator dla maszyny w obszarze roboczym |
-| ComputerName_s | Nazwa FQDN komputera |
-| Ipv4Addresses_s | Lista IPv4 serwera adresów |
-| Ipv6Addresses_s | Lista IPv6 serwera adresów |
-| DnsNames_s | Tablica nazw DNS |
-| OperatingSystemFamily_s | Windows lub Linux |
-| OperatingSystemFullName_s | Pełna nazwa systemu operacyjnego  |
-| Bitness_s | Liczba bitów maszyny (32-bitowy lub 64-bitowy)  |
-| PhysicalMemory_d | Pamięci fizycznej w Megabajtach |
-| Cpus_d | Liczba procesorów CPU |
-| CpuSpeed_d | Szybkość Procesora w MHz|
-| VirtualizationState_s | *Nieznany*, *fizycznych*, *wirtualnego*, *funkcji hypervisor* |
-| VirtualMachineType_s | *funkcji Hyper-v*, *vmware*i tak dalej |
-| VirtualMachineNativeMachineId_g | Identyfikator maszyny Wirtualnej, zgodnie z dokonanym przez jego funkcji hypervisor |
-| VirtualMachineName_s | Nazwa maszyny Wirtualnej |
-| BootTime_t | W czasie rozruchu |
+| `Type` | *ServiceMapComputer_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | Unikatowy identyfikator dla maszyny w obszarze roboczym |
+| `ResourceName_s` | Unikatowy identyfikator dla maszyny w obszarze roboczym |
+| `ComputerName_s` | Nazwa FQDN komputera |
+| `Ipv4Addresses_s` | Lista IPv4 serwera adresów |
+| `Ipv6Addresses_s` | Lista IPv6 serwera adresów |
+| `DnsNames_s` | Tablica nazw DNS |
+| `OperatingSystemFamily_s` | Windows lub Linux |
+| `OperatingSystemFullName_s` | Pełna nazwa systemu operacyjnego  |
+| `Bitness_s` | Liczba bitów maszyny (32-bitowy lub 64-bitowy)  |
+| `PhysicalMemory_d` | Pamięci fizycznej w Megabajtach |
+| `Cpus_d` | Liczba procesorów CPU |
+| `CpuSpeed_d` | Szybkość Procesora w MHz|
+| `VirtualizationState_s` | *Nieznany*, *fizycznych*, *wirtualnego*, *funkcji hypervisor* |
+| `VirtualMachineType_s` | *funkcji Hyper-v*, *vmware*i tak dalej |
+| `VirtualMachineNativeMachineId_g` | Identyfikator maszyny Wirtualnej, zgodnie z dokonanym przez jego funkcji hypervisor |
+| `VirtualMachineName_s` | Nazwa maszyny Wirtualnej |
+| `BootTime_t` | W czasie rozruchu |
 
 ### <a name="servicemapprocesscl-type-records"></a>Rejestruje typ ServiceMapProcess_CL
 Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesy połączone z protokołu TCP na serwerach z agentami mapy usługi. Te rekordy mają właściwości podane w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | Unikatowy identyfikator procesu wewnątrz obszaru roboczego |
-| ResourceName_s | Unikatowy identyfikator procesu na maszynie, na którym jest uruchomiony|
-| MachineResourceName_s | Nazwa zasobu maszyny |
-| ExecutableName_s | Nazwa pliku wykonywalnego procesu |
-| StartTime_t | Czas rozpoczęcia procesu puli |
-| FirstPid_d | Pierwszy identyfikator PID w puli procesów |
-| Description_s | Opis procesu |
-| CompanyName_s | Nazwa firmy |
-| InternalName_s | Nazwa wewnętrzna |
-| ProductName_s | Nazwa produktu |
-| ProductVersion_s | Wersja produktu |
-| FileVersion_s | Wersja pliku |
-| CommandLine_s | W wierszu polecenia |
-| ExecutablePath _s | Ścieżka do pliku wykonywalnego |
-| WorkingDirectory_s | Katalog roboczy |
-| UserName | Konta, w którym proces jest wykonywany |
-| UserDomain | Domeny, w którym proces jest wykonywany |
+| `Type | *ServiceMapProcess_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | Unikatowy identyfikator procesu wewnątrz obszaru roboczego |
+| `ResourceName_s` | Unikatowy identyfikator procesu na maszynie, na którym jest uruchomiony|
+| `MachineResourceName_s` | Nazwa zasobu maszyny |
+| `ExecutableName_s` | Nazwa pliku wykonywalnego procesu |
+| `StartTime_t` | Czas rozpoczęcia procesu puli |
+| `FirstPid_d` | Pierwszy identyfikator PID w puli procesów |
+| `Description_s` | Opis procesu |
+| `CompanyName_s` | Nazwa firmy |
+| `InternalName_s` | Nazwa wewnętrzna |
+| `ProductName_s` | Nazwa produktu |
+| `ProductVersion_s` | Wersja produktu |
+| `FileVersion_s` | Wersja pliku |
+| `CommandLine_s` | W wierszu polecenia |
+| `ExecutablePath _s` | Ścieżka do pliku wykonywalnego |
+| `WorkingDirectory_s` | Katalog roboczy |
+| `UserName` | Konta, w którym proces jest wykonywany |
+| `UserDomain` | Domeny, w którym proces jest wykonywany |
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 

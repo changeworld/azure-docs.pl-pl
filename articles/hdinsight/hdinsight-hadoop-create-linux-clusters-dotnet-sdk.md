@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 52f67d21c3a130df4d85c220baca9c6af8eb06c1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0106063cfe376f31040b5dcd6856282ee09ae5c9
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793482"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447953"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Tworzenie klastrów opartych na systemie Linux w HDInsight przy użyciu zestawu .NET SDK
 
@@ -396,5 +396,5 @@ Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następują
 * [Uruchamiać zadania Apache Hive w HDInsight przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [Uruchamiać zadania Apache Pig w HDInsight przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)
 * [Uruchamiać zadania Apache Sqoop w HDInsight przy użyciu zestawu .NET SDK](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
-* [Uruchamiać zadania Apache Oozie w HDInsight](hdinsight-use-oozie.md)
+* [Uruchamiać zadania Apache Oozie w HDInsight](hdinsight-use-oozie-linux-mac.md)
 

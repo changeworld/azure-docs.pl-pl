@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 3b302c60aefec1c4cd37a7dde82a2f11a9eeed33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20c58647b8a6283de4ca2b90c830fe54db927095
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862866"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484190"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Bezpieczny dostęp do magazynu kluczy
 
@@ -150,14 +150,14 @@ Fragmenty kodu programu PowerShell w tej sekcji są tworzone za pomocą następu
 
 Administrator subskrypcji przypisuje `key vault Contributor` i `User Access Administrator` ról do zespołu zabezpieczeń. Te role Zezwalaj na zespół ds. zabezpieczeń Zarządzanie dostępem do innych zasobów i magazynów kluczy, które w **ContosoAppRG** grupy zasobów.
 
-```PowerShell
+```powershell
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
 Zespół ds. zabezpieczeń utworzenie magazynu kluczy i konfiguruje rejestrowanie i uprawnienia dostępu. Aby uzyskać szczegółowe informacje o uprawnieniach zasad dostępu magazynu kluczy, zobacz [klucze usługi Azure Key Vault, klucze tajne i certyfikaty](about-keys-secrets-and-certificates.md).
 
-```PowerShell
+```powershell
 # Create a key vault and enable logging
 $sa = Get-AzStorageAccount -ResourceGroup ContosoAppRG -Name contosologstorage
 $kv = New-AzKeyVault -Name ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment
