@@ -1,31 +1,38 @@
 items:
-- name: Dokumentacja dotycząca dostosowywania witryny Azure Portal
+- name: Dokumentacja witryny Azure Portal
   href: index.yml
-- name: Pulpity nawigacyjne platformy Azure
+- name: Omówienie
+  items:
+  - name: Informacje o witrynie Azure Portal
+    href: azure-portal-overview.md
+  - name: Obsługiwane przeglądarki i urządzenia
+    href: azure-portal-supported-browsers-devices.md
+- name: Pojęcia
   items:
   - name: Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure
     href: azure-portal-dashboards.md
-  - name: Używanie kafelka niestandardowego z kodem Markdown
-    href: azure-portal-markdown-tile.md
   - name: Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli dostępu opartej na rolach
     href: azure-portal-dashboard-share-access.md
-  - name: Struktura pulpitów nawigacyjnych platformy Azure
-    href: azure-portal-dashboards-structure.md
   - name: Programowe tworzenie pulpitów nawigacyjnych platformy Azure
     href: azure-portal-dashboards-create-programmatically.md
-- name: Ustawienia
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Włączanie dużego kontrastu lub zmienianie motywu
+    href: azure-portal-change-theme-high-contrast.md
+  - name: Używanie kafelka niestandardowego z kodem Markdown
+    href: azure-portal-markdown-tile.md
+  - name: Eksportowanie i usuwanie ustawień użytkownika
+    href: azure-portal-export-delete-settings.md
+- name: Dokumentacja
   items:
   - name: Skróty klawiaturowe
     href: azure-portal-keyboard-shortcuts.md
-  - name: Obsługiwane przeglądarki i urządzenia
-    href: ../azure-preview-portal-supported-browsers-devices.md
-  - name: Włączanie dużego kontrastu lub zmienianie motywu
-    href: azure-portal-change-theme-high-contrast.md
-  - name: Eksportowanie i usuwanie ustawień użytkownika
-    href: azure-portal-export-delete-settings.md
-  expanded: true
+  - name: Struktura pulpitów nawigacyjnych platformy Azure
+    href: azure-portal-dashboards-structure.md
 - name: Zasoby
   items:
+  - name: Seria instruktażowych wideo dla witryny Azure Portal
+    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/updates/
   - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
@@ -36,11 +43,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: Filmy wideo
+  - name: Wideo dotyczące platformy Azure
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 7fee5a433470309384931e6ea43817288aecf7a8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 43a009582b565f10261c0cc6cc24507c3ef6e44e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902775"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443874"

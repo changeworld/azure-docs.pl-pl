@@ -1,0 +1,47 @@
+items:
+- name: Dokumentacja narzędzia do wykrywania anomalii
+  href: index.yml
+- name: Omówienie
+  items:
+  - name: Co to jest interfejs API narzędzia do wykrywania anomalii?
+    href: overview.md
+  expanded: true
+- name: Przewodniki Szybki start
+  items:
+  - name: Wykrywanie anomalii w danych
+    items:
+    - name: Przy użyciu języka C#
+      href: quickstarts/detect-data-anomalies-csharp.md
+    - name: Korzystanie z języka Java
+      href: quickstarts/detect-data-anomalies-java.md
+    - name: Korzystanie z języka Python
+      href: quickstarts/detect-data-anomalies-python.md
+  expanded: true
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Identyfikowanie anomalii w danych
+    href: how-to/identify-anomalies.md
+- name: Pojęcia
+  items:
+  - name: Najlepsze rozwiązania dotyczące interfejsu API wykrywania anomalii
+    href: concepts/anomaly-detection-best-practices.md
+- name: Dokumentacja
+  items:
+  - name: Dokumentacja interfejsu API REST
+    href: https://aka.ms/anomaly-detector-rest-api-ref
+  - name: Zestawy SDK
+    items:
+    - name: .NET
+      href: https://aka.ms/anomaly-detector-dotnet-ref
+- name: Zasoby
+  items:
+  - name: Cennik
+    href: https://aka.ms/anomaly-detector-pricing
+  - name: Dostępność regionalna
+    href: https://aka.ms/anomaly-detector-region
+ms.openlocfilehash: c752383026434ca2f8f1d3f047bb1dbc3740c7ea
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58473397"

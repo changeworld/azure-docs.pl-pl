@@ -99,12 +99,16 @@ items:
         href: map-accessibility.md
     - name: Moduł usług
       items:
+      - name: Korzystanie z modułu usług
+        href: how-to-use-services-module.md
       - name: Wyświetlanie wyników wyszukiwania
         href: map-search-location.md
       - name: Uzyskiwanie informacji na podstawie współrzędnych
         href: map-get-information-from-coordinate.md
       - name: Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
         href: map-route.md
+    - name: Obsługiwane przeglądarki
+      href: supported-browsers.md
   - name: Tworzenie aplikacji przy użyciu zestawu Android SDK
     items:
     - name: Jak używać kontrolki map w systemie Android
@@ -193,15 +197,15 @@ items:
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
     - name: Time Series Insights
       href: /azure/time-series-insights
-  - name: Brzeg
+  - name: IoT Edge
     items:
     - name: IoT Edge
       href: /azure/iot-edge
     - name: Zestawy SDK urządzeń IoT
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: 2753badd048840eb518fbcfaa97cde6f185688bc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb06543874f24a6d339e4e0ce402c838b572f9a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014608"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500121"

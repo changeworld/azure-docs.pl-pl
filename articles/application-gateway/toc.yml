@@ -17,15 +17,15 @@ items:
 - name: Samouczki
   items:
   - name: Hostowanie pojedynczej witryny
-    href: tutorial-manage-web-traffic-cli.md
+    href: quick-create-portal.md
   - name: Włączanie zapory aplikacji internetowych
-    href: tutorial-restrict-web-traffic-cli.md
+    href: application-gateway-web-application-firewall-portal.md
   - name: Zabezpieczanie przy użyciu protokołu SSL
-    href: tutorial-ssl-cli.md
+    href: create-ssl-portal.md
   - name: Hostowanie wielu witryn
-    href: tutorial-multiple-sites-cli.md
+    href: create-multiple-sites-portal.md
   - name: Kierowanie według adresu URL
-    href: tutorial-url-route-cli.md
+    href: create-url-route-portal.md
   - name: Przekierowywanie ruchu internetowego
     href: tutorial-url-redirect-cli.md
   - name: Skalowanie automatyczne i strefowo nadmiarowe
@@ -90,8 +90,10 @@ items:
   items:
   - name: Hostowanie pojedynczej witryny
     items:
-    - name: Azure Portal
+    - name: Azure PowerShell
       href: tutorial-manage-web-traffic-powershell.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: tutorial-manage-web-traffic-cli.md
     - name: Szablon
       href: create-vmss-template.md
   - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
@@ -104,10 +106,10 @@ items:
     items:
     - name: Kończenie żądań protokołu SSL
       items:
-      - name: Kończenie żądań protokołu SSL — portal
-        href: create-ssl-portal.md
       - name: Kończenie żądań protokołu SSL — PowerShell
         href: tutorial-ssl-powershell.md
+      - name: Kończenie żądań protokołu SSL — interfejs wiersza polecenia platformy Azure
+        href: tutorial-ssl-cli.md
     - name: Kompleksowa łączność SSL
       items:
       - name: Kompleksowa łączność SSL — portal
@@ -126,10 +128,10 @@ items:
         href: application-gateway-configure-ssl-policy-powershell.md
   - name: Konfigurowanie zapory aplikacji internetowej
     items:
-    - name: Azure Portal
-      href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: tutorial-restrict-web-traffic-cli.md
   - name: Konfigurowanie zestawów reguł zapory aplikacji internetowej
     items:
     - name: Azure Portal
@@ -140,16 +142,16 @@ items:
       href: application-gateway-customize-waf-rules-cli.md
   - name: Kierowanie według adresu URL
     items:
-    - name: Azure Portal
-      href: create-url-route-portal.md
     - name: Azure PowerShell
       href: tutorial-url-route-powershell.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: tutorial-url-route-cli.md
   - name: Hostowanie wielu witryn
     items:
-    - name: Azure Portal
-      href: create-multiple-sites-portal.md
     - name: Azure PowerShell
       href: tutorial-multiple-sites-powershell.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: tutorial-multiple-sites-cli.md
   - name: Przekierowywanie ruchu
     items:
     - name: Ruch zewnętrzny
@@ -236,9 +238,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: cd08a1ac880bb4242f4f57882d0e45133cf26748
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: b7b696b2094dc74e1a30cbd33f304aa663bf742e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350764"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444930"

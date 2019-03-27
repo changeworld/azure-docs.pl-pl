@@ -596,6 +596,8 @@ items:
       items:
       - name: Przycisk Utwórz
         items:
+        - name: Planowanie wdrożenia klastra
+          href: service-fabric-cluster-azure-deployment-preparation.md
         - name: Tworzenie w witrynie Azure Portal
           href: service-fabric-cluster-creation-via-portal.md
         - name: Konfigurowanie uwierzytelniania za pomocą usługi Azure Active Directory
@@ -630,6 +632,10 @@ items:
           href: service-fabric-patch-orchestration-application.md
         - name: Stosowanie poprawek do węzłów klastra (Linux)
           href: service-fabric-patch-orchestration-application-linux.md
+        - name: Włączanie szyfrowania dysku (Windows)
+          href: service-fabric-enable-azure-disk-encryption-windows.md
+        - name: Włączanie szyfrowania dysku (Linux)
+          href: service-fabric-enable-azure-disk-encryption-linux.md
         - name: Ustawianie kontroli dostępu
           href: service-fabric-cluster-security-roles.md
         - name: Otwieranie portu w module równoważenia obciążenia
@@ -839,9 +845,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: bb1cfedbaf699ff951a03adc47b93332412d1e5a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1346468fa0f29954ca382c32f49928f7810424a4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225284"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483135"
