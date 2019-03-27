@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 6afc9325cb2aababb286f653323531c9ebb04b4a
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: cfc9b44963f6880e97859bc7ab77bff12d258471
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438805"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500172"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
 
@@ -76,7 +76,7 @@ Atrybuty indeksu w polu Określ dozwolone operacje —, czy pole jest *wyszukiwa
 Powyższym zrzucie ekranu jest częściowa lista atrybuty indeksu dla przykładu nieruchomości. Schemat indeksu całego można wyświetlić w portalu. Aby uzyskać więcej informacji na temat atrybutów indeksu zobacz [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Niektóre funkcje zapytania włączono całego indeksu, a nie na poszczególnych pól. Te funkcje obejmują: [mapy synonimów](search-synonyms.md), [niestandardowe analizatory](index-add-custom-analyzers.md), [konstrukcji sugestora (dla automatycznego uzupełniania i automatycznego sugerowania)](index-add-suggesters.md), [oceniania logikę Klasyfikacja wyników](index-add-scoring-profiles.md).
+> Niektóre funkcje zapytania włączono całego indeksu, a nie na poszczególnych pól. Te funkcje obejmują: [mapy synonimów](search-synonyms.md), [niestandardowe analizatory](index-add-custom-analyzers.md), [sugestora konstrukcje (na potrzeby automatycznego uzupełniania i sugerowane zapytania)](index-add-suggesters.md), [oceniania logiki do ustalania kolejności wyniki](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>Elementy żądania zapytania
 

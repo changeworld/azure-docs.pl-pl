@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f0a22ea4a24a82cb4acf7a3b20a743ee7425c72
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: ac1c1c4ae21ebd184b833fe4d23084f7cf324d2c
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294913"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500478"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -98,7 +98,7 @@ Następnym krokiem jest przeglądanie plików dziennika wykonywania zadania dla 
 
 ### <a name="access-the-hadoop-log-files"></a>Dostęp do plików dziennika usługi Hadoop
 
-HDInsight są przechowywane pliki dzienników, zarówno w systemie plików klastra, jak i w usłudze Azure storage. Pliki dziennika w klastrze można sprawdzić, otwierając [SSH](/hdinsight-hadoop-linux-use-ssh-unix.md) połączenia do klastra i przeglądania systemu plików lub przy użyciu portalu platformy Hadoop YARN stanu na serwerze zdalnym węzła głównego. Można sprawdzić pliki dziennika w usłudze Azure storage przy użyciu dowolnego narzędzia, które mogą uzyskać dostęp i pobierania danych z usługi Azure storage. Należą do nich [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)i w Eksploratorze serwera programu Visual Studio. Dostęp do danych w usłudze Azure blob storage, można użyć programu PowerShell i biblioteki klienta magazynu Azure lub zestawów Azure .NET SDK.
+HDInsight są przechowywane pliki dzienników, zarówno w systemie plików klastra, jak i w usłudze Azure storage. Pliki dziennika w klastrze można sprawdzić, otwierając [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) połączenia do klastra i przeglądania systemu plików lub przy użyciu portalu platformy Hadoop YARN stanu na serwerze zdalnym węzła głównego. Można sprawdzić pliki dziennika w usłudze Azure storage przy użyciu dowolnego narzędzia, które mogą uzyskać dostęp i pobierania danych z usługi Azure storage. Należą do nich [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)i w Eksploratorze serwera programu Visual Studio. Dostęp do danych w usłudze Azure blob storage, można użyć programu PowerShell i biblioteki klienta magazynu Azure lub zestawów Azure .NET SDK.
 
 Hadoop uruchamia pracy zadania jako *zadań prób* w różnych węzłach w klastrze. HDInsight można zainicjować prób spekulacyjnego zadań, kończące inne próby zadania, które nie zakończą się najpierw. Spowoduje to wygenerowanie znaczące działania, który jest zalogowany do kontrolera, stderr i syslog dziennika pliki na bieżąco. Ponadto jednocześnie jest uruchomionych wiele prób zadania, ale plik dziennika mogą być wyświetlane tylko wyniki liniowo.
 

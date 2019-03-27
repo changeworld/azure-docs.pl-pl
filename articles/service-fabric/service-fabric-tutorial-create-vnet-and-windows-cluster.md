@@ -3,7 +3,7 @@ title: Tworzenie klastra usługi Service Fabric z systemem Windows na platformie
 description: W tym samouczku dowiesz się, jak wdrożyć klaster Windows usługi Service Fabric w sieci wirtualnej platformy Azure i sieciowej grupy zabezpieczeń przy użyciu programu PowerShell.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/13/2019
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: aa44355ea86b42f8865d7791fec04ffad2b6f3ad
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 28f115e356c8852174b923f4891f93ad435ce7d7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313825"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498183"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Samouczek: Wdrażanie klastra usługi Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
 
@@ -58,6 +58,7 @@ Przed rozpoczęciem tego samouczka:
 * Zainstaluj [zestawu SDK usługi Service Fabric i moduł programu PowerShell](service-fabric-get-started.md).
 * Zainstaluj [Azure modułu Powershell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 * Zapoznaj się z kluczowymi założeniami programu [klastrów Azure](service-fabric-azure-clusters-overview.md).
+* [Planowanie i przygotowanie](service-fabric-cluster-azure-deployment-preparation.md) wdrożenia klastra produkcyjnego.
 
 Następujące procedury umożliwiają utworzenie klastra usługi Service Fabric z siedmioma węzłami. Użyj [Kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator/) można obliczyć koszt działania klastra usługi Service Fabric na platformie Azure.
 
@@ -181,7 +182,7 @@ Utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: 
 
 Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej. Określ nazwy użytkowników i hasła dla użytkowników. Na przykład:
 
-```PowerShell
+```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
 .\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
 .\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 3/25/2019
+ms.date: 3/26/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 5029fb29aecda1f1bef14dc95f6301b539c60441
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: c632989ea85033c6cbdd4188351d34345e919c49
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419108"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500665"
 ---
 ### <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -45,10 +45,11 @@ Za pomocą witryny Azure portal, programu PowerShell, interfejsu API REST lub pr
 
 Zapora usługi Azure obsługuje reguł i kolekcji reguł. Kolekcja reguł jest zestaw reguł, które współużytkują ten sam kolejności i priorytet. Kolekcje reguł są wykonywane w kolejności według ich priorytetu. Kolekcje reguł sieci mają wyższy priorytet niż kolekcje reguły aplikacji, a wszystkie reguły są przerywa.
 
-Istnieją dwa rodzaje kolekcji reguł:
+Istnieją trzy typy kolekcji reguł:
 
-* *Zasady aplikacji*: Umożliwiają skonfigurowanie w pełni kwalifikowanych nazw domen (FQDN), które są dostępne z podsieci.
-* *Reguł sieciowych*: Umożliwia skonfigurowanie reguł, które zawierają adresów źródłowych, protokoły, porty docelowe i docelowe adresy.
+* *Zasady aplikacji*: Skonfiguruj w pełni kwalifikowanych nazw domen (FQDN), które są dostępne z podsieci.
+* *Reguł sieciowych*: Skonfiguruj reguły, które zawierają adresów źródłowych, protokoły, porty docelowe i docelowe adresy.
+* *Reguły translatora adresów Sieciowych*: Skonfiguruj reguły DNAT zezwalać na połączenia przychodzące.
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Zaporę usługi Azure obsługuje filtrowanie ruchu przychodzącego?
 
@@ -94,19 +95,19 @@ Na przykład:
 ```azurepowershell
 # Stop an exisitng firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
+$azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
-Set-AzureRmFirewall -AzureFirewall $azfw
+Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ```azurepowershell
 #Start a firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
+$azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
+$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
 $azfw.Allocate($vnet,$publicip)
-Set-AzureRmFirewall -AzureFirewall $azfw
+Set-AzFirewall -AzureFirewall $azfw
 ```
 
 > [!NOTE]
@@ -124,6 +125,14 @@ Tak, można użyć zapory usługi Azure, w centralnej sieci wirtualnej trasy i f
 
 Tak. Konfigurowanie tras zdefiniowanych przez użytkownika, aby przekierować ruch pomiędzy podsieciami w tej samej sieci Wirtualnej wymaga jednak wymagają dodatkowej uwagi. Podczas korzystania z zakres adresów sieci Wirtualnej, ponieważ prefiks docelowy dla zdefiniowanej przez użytkownika jest wystarczająca, również są kierowane cały ruch z jednego komputera do innej maszyny w tej samej podsieci za pośrednictwem wystąpienia zapory usługi Azure. Aby tego uniknąć, objęte tras dla podsieci zdefiniowanej przez użytkownika z typem następnego przeskoku dla **sieci Wirtualnej**. Zarządzanie te trasy może być uciążliwe i podatne na błędy. Zalecaną metodą segmentacji sieci wewnętrznej jest używać sieciowych grup zabezpieczeń, które nie wymagają tras zdefiniowanych przez użytkownika.
 
+### <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Jest wymuszone tunelowanie łańcucha do wirtualnego urządzenia sieciowego obsługiwane?
+
+Tak.
+
+Zaporę platformy Azure musi mieć bezpośrednie połączenie z Internetem. Domyślnie AzureFirewallSubnet ma trasę 0.0.0.0/0, typ następnego przeskoku wartość **Internet**.
+
+Włączenie tunelowania do sieci lokalnej za pośrednictwem usługi ExpressRoute i VPN Gateway, konieczne może być jawnie skonfigurować 0.0.0.0/0 trasy zdefiniowanej przez użytkownika (UDR) z zestawem wartości Typ następnego przeskoku jako Internet i skojarzyć go z Twojego AzureFirewallSubnet. Zastępuje to potencjalne bramy domyślnej anonsowania BGP do sieci lokalnej. Jeśli Twoja organizacja potrzebuje, wymuszonego tunelowania dla zapory usługi Azure w celu kierowania ruchu bramy domyślne wstecz za pośrednictwem sieci lokalnej, skontaktuj się z pomocą techniczną. Możemy umieścić na liście dozwolonych jest utrzymywany w subskrypcji, aby upewnić się, zapory wymagane połączenie z Internetem.
+
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>Czy istnieją wszystkie zapory ograniczenia grup zasobów?
 
 Tak. Zapora, podsieci, sieci wirtualnej i publicznego adresu IP musi być w tej samej grupie zasobów.
@@ -131,3 +140,7 @@ Tak. Zapora, podsieci, sieci wirtualnej i publicznego adresu IP musi być w tej 
 ### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Podczas konfigurowania DNAT dla przychodzącego ruchu sieciowego, również należy skonfigurować odpowiednią regułę sieci, aby zezwolić na ruch?
 
 Nie. Reguły translatora adresów Sieciowych niejawnie Dodaj odpowiednie sieci regułę zezwalającą na ruch tłumaczenia. Aby przesłonić to zachowanie, jawnie dodaj kolekcję reguł sieci z regułami odmowy zgodnymi z przetłumaczonym ruchem. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](../articles/firewall/rule-processing.md).
+
+### <a name="how-to-wildcards-work-in-an-application-rule-target-fqdn"></a>W jaki sposób do symboli wieloznacznych? w aplikacji obiekt docelowy reguły nazwy FQDN
+
+Jeśli skonfigurujesz ***. contoso.com**, umożliwia ona *anyvalue*. contoso.com, ale nie contoso.com (wierzchołki domeny). Jeśli chcesz zezwolić na wierzchołku domeny jawnie należy go skonfigurować jako docelowa nazwa FQDN.

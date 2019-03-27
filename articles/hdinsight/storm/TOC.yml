@@ -74,21 +74,6 @@ items:
       - name: Publikowanie aplikacji usługi HDInsight w portalu Azure Marketplace
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: Bezpieczeństwo
     items:
     - name: Używanie protokołu SSH z usługą HDInsight
@@ -178,9 +163,6 @@ items:
       maintainContext: true
     - name: Korzystanie z technologii Apache Oozie na potrzeby przepływów pracy
       href: ../hdinsight-use-oozie-linux-mac.md
-      maintainContext: true
-    - name: Korzystanie z koordynatorów Apache Oozie opartych na czasie
-      href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: Identyfikatory URI oraz porty usługi i klastra
       href: ../hdinsight-hadoop-port-settings-for-services.md
@@ -283,20 +265,6 @@ items:
     - name: Migrowanie rozwiązań .NET do klastrów z systemem Linux
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Wdrażanie topologii Apache Storm i zarządzanie nimi
-      href: apache-storm-deploy-monitor-topology.md
-    - name: Konstruowanie aplikacji Java za pomocą narzędzia Apache Maven
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: Uzyskiwanie dostępu do dzienników aplikacji platformy YARN w usłudze Apache Hadoop
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: Opracowywanie akcji skryptu
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Monitorowanie klastrów za pomocą interfejsu API systemu Apache Ambari
-      href: ../hdinsight-monitor-use-ambari-api.md
-      maintainContext: true
 - name: Zasoby
   items:
   - name: Harmonogram działania dla platformy Azure
@@ -312,9 +280,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2dd6ba413eaaad3e740c9c4dcc905f7384172f1a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: b8a55191f78010bab759cf90880c3b7aaddab7ba
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359794"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444956"

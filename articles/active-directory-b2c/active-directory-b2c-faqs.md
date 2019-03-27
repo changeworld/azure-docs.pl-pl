@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 12b8fc2fb8df7fd730e220a3c1b60097ed7748a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 89ad91316da027e399891a7e1b348e66c1d3a4f5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433726"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499900"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Często zadawane pytania 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
@@ -113,7 +113,8 @@ Obecnie nie. Ta funkcja jest w naszym harmonogramie działania. Weryfikowanie Tw
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Jak usunąć moją dzierżawę usługi Azure AD B2C?
 Wykonaj następujące kroki, aby usunąć dzierżawę usługi Azure AD B2C:
 
-1. Usuń wszystkie zasady w dzierżawie usługi Azure AD B2C.
+1. Usuń wszystkie przepływy użytkownika (zasady) w dzierżawie usługi Azure AD B2C.
+1. Usuń wszystkie aplikacje, zarejestrowanych w dzierżawie usługi Azure AD B2C.
 1. Teraz Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako Administrator subskrypcji. (Użyj tej samej pracy lub konta służbowego lub tego samego konta Microsoft, którego użyto podczas tworzenia konta na platformie Azure).
 1. Przełącz do dzierżawy usługi Azure AD B2C chcesz usunąć.
 2. Przejdź do menu po lewej stronie usługi Active Directory.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: afe71953e9917ccf274742124d59cb790f15521b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414137"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445223"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Samouczek: Tworzenie bramy sieci VPN i zarządzanie nią przy użyciu programu PowerShell
 
@@ -118,7 +118,7 @@ Po zakończeniu tworzenia bramy możesz utworzyć połączenie między swoją si
 
 ## <a name="view-the-gateway-public-ip-address"></a>Wyświetlanie publicznego adresu IP bramy
 
-Jeśli znasz nazwę publicznego adresu IP, za pomocą polecenia [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azurermps-6.8.1) możesz wyświetlić publiczny adres IP przypisany do bramy.
+Jeśli znasz nazwę publicznego adresu IP, za pomocą polecenia [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) możesz wyświetlić publiczny adres IP przypisany do bramy.
 
 Jeśli upłynął limit czasu sesji, skopiuj wspólne parametry sieci z początkowej części tego samouczka do nowej sesji i kontynuuj pracę.
 
@@ -159,7 +159,7 @@ Jeśli jednak brama jest częścią wdrożenia prototypowego lub służącego do
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje dotyczące podstawowych zadań tworzenia bramy sieci VPN i zarządzania nią, takie jak:
 

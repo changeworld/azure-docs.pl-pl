@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: c64a3455e1189b83558707a96dc80b88dc242b48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eaea0719aa8ca981da68841dae365decdd3c860e
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181660"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499866"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Ustawienia wstępne Dostosowywanie Media Encoder Standard  
 
@@ -28,6 +28,9 @@ ms.locfileid: "58181660"
 Ten artykuł pokazuje, jak wykonywać zaawansowane kodowanie za pomocą Media Encoder Standard (MES) przy użyciu niestandardowego ustawienia wstępnego. Artykuł będzie używał programu .NET do tworzenia zadania kodowania i zadanie, które wykonuje to zadanie.  
 
 W tym artykule pokazano, jak dostosować ustawienia domyślne, wykonując [wielu szybkość transmisji bitów H264 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) ustawienie wstępne i zmniejsza liczbę warstw. [Dostosowywanie Media Encoder Standard ustawienia wstępne](media-services-advanced-encoding-with-mes.md) artykuł przedstawia niestandardowych ustawień wstępnych, które mogą służyć do wykonywania zaawansowanych zadań kodowania.
+
+> [!NOTE]
+> Nie można użyć niestandardowych ustawień wstępnych, opisane w tym artykule w [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) przekształcenia lub poleceń interfejsu wiersza polecenia. Zobacz [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md) Aby uzyskać więcej informacji.
 
 ## <a id="customizing_presets"></a> Dostosowywanie ustawienie wstępne usługi MES
 
@@ -260,6 +263,11 @@ namespace CustomizeMESPresests
     }
 }
 ```
+
+## <a name="see-also"></a>Zobacz także
+
+- [Jak kodować z niestandardowe przekształcenia przy użyciu interfejsu wiersza polecenia](../latest/custom-preset-cli-howto.md)
+- [Kodowania z Media Services v3](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

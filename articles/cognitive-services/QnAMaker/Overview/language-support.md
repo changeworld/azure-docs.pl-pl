@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 820a9ae0df91fba8cf00764428867bec6196841a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335865"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497690"
 ---
 # <a name="language-support-for-qna-maker"></a>Obsługa języka dla usługi QnA Maker
 
@@ -37,7 +37,7 @@ Usługa QnA Maker obsługuje wyodrębnianie pytań i odpowiedzi na stronie dowol
 
 Podstawowy język używany do wykrywania jest ustawiona dla zasobów usługi QnA Maker i wszystkich baz wiedzy utworzone na taki zasób, podczas pierwszego dokumentu lub adresu URL jest dodawany do pierwszego bazy wiedzy. Nie można zmienić język. 
 
-Jeśli użytkownik planuje się obsługiwać wiele języków, muszą mieć nowy zasób usługi QnA Maker dla każdego języka. Dowiedz się, jak [tworzenie opartych na języku usługi QnA Maker wiedzy](/how-to/language-knowledge-base.md).  
+Jeśli użytkownik planuje się obsługiwać wiele języków, muszą mieć nowy zasób usługi QnA Maker dla każdego języka. Dowiedz się, jak [tworzenie opartych na języku usługi QnA Maker wiedzy](../how-to/language-knowledge-base.md).  
 
 Sprawdź, podstawowy język wykonując następujące kroki:
 

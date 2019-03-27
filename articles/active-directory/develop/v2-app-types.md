@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ea0be84cc36ca6fa6547d01054599e37229d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0aac3e40089c67cd71a2c634280e333964e47902
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162938"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499985"
 ---
 # <a name="application-types-for-v20"></a>Typy aplikacji dla wersji 2.0
 
@@ -124,7 +124,7 @@ W tym przepływie aplikacja odbiera kod autoryzacji z punktem końcowym v2.0 po 
 
 Aplikacje, które mają procesy długotrwałe lub niewymagające interakcji z użytkownikiem również muszą mieć dostęp do zabezpieczonych zasobów, takich jak interfejsy API sieci Web. Te aplikacje mogą uwierzytelniać i uzyskiwać tokeny przy użyciu tożsamości aplikacji, a nie użytkownika delegowana tożsamość przy użyciu przepływu poświadczeń klienta OAuth 2.0. Możesz udowodnić tożsamość aplikacji przy użyciu klucza tajnego klienta lub certyfikat. Aby uzyskać więcej informacji, zobacz [uwierzytelniania w usłudze Azure AD w narzędziu aplikacje demona z certyfikatami](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
 
-W tym przepływie aplikacja współpracuje bezpośrednio z `/token` punktu końcowego uzyskać punkty końcowe:
+W tym przepływie aplikacja współpracuje bezpośrednio z `/token` punktu końcowego w celu uzyskania dostępu:
 
 ![Przepływu uwierzytelnianie aplikacji demona](./media/v2-app-types/convergence_scenarios_daemon.png)
 

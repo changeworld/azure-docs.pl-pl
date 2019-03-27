@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850279"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498132"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil aplikacji produkcyjnych na platformie Azure za pomocą usługi Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Włącz Application Insights Profiler do aplikacji
@@ -75,7 +75,7 @@ Jeśli **clr! ThePreStub** zajmuje dużo czasu na żądanie, żądanie jest pier
 
 ### <a id="ngencold"></a>Trwa ładowanie kodu ([ZIMNEGO])
 
-Jeśli nazwa metody zawiera **[ZIMNYCH]**, takich jak **mscorlib.ni! [ COLD]system.Reflection.CustomAttribute.IsDefined**, środowisko uruchomieniowe programu .NET Framework jest wykonywanie kodu po raz pierwszy, nie jest zoptymalizowany pod kątem przez [optymalizacji sterowanej profilem](https://msdn.microsoft.com/library/e7k32f4k.aspx). Dla każdej metody jej powinien zostać wyświetlony co najwyżej jeden raz w procesie.
+Jeśli nazwa metody zawiera **[ZIMNYCH]**, takich jak **mscorlib.ni! [ COLD]system.Reflection.CustomAttribute.IsDefined**, środowisko uruchomieniowe programu .NET Framework jest wykonywanie kodu po raz pierwszy, nie jest zoptymalizowany pod kątem przez [optymalizacji sterowanej profilem](/cpp/build/profile-guided-optimizations). Dla każdej metody jej powinien zostać wyświetlony co najwyżej jeden raz w procesie.
 
 Jeśli podczas ładowania kodu zajmuje znaczną ilość czasu dla żądania, żądanie jest pierwszy z nich można wykonać niezoptymalizowane część metody. Należy rozważyć użycie procesu rozgrzewania, który wykonuje część kodu, zanim do niego dostęp przez użytkowników.
 

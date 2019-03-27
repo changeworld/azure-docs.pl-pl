@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: b02f5011b9482481ca3fbe439061c160b3c73a1e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016617"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481404"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Przepustowość/testowania (NTTTCP)
 
@@ -132,13 +132,13 @@ W tym scenariuszy firma Microsoft Włącz tryb nie synchronizacji, aby uruchomi�
 
 #### <a name="from-linux-to-windows"></a>Z systemu Linux do Windows:
 
-Odbiornik <Windows>:
+Odbiornik \<Windows >:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-Nadawca <Linux> :
+Nadawca \<Linux >:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,18 +146,18 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>Od Windows z systemem Linux:
 
-Odbiornik <Linux>:
+Odbiornik \<Linux >:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-Nadawca <Windows>:
+Sender \<Windows>:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 ```
-## <a name="testing-cloud-service-instances"></a>Testowanie wystąpień usługi w chmurze:
+## <a name="testing-cloud-service-instances"></a>Testing Cloud Service Instances:
 Należy dodać następujące sekcji do Twojej ServiceDefinition.csdef
 ```xml
 <Endpoints>

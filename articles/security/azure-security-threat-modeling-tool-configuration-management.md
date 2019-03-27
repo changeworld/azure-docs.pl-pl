@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bd1d3c71660ae584b0aa57c7cc765fdc519f4b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863597"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498387"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Ramka zabezpieczeń: Zarządzanie konfiguracją | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
-| **Odwołania**              | [Informacje o debugowaniu ASP.NET](https://msdn2.microsoft.com/library/ms227556.aspx), [ASP.NET śledzenie — Przegląd](https://msdn2.microsoft.com/library/bb386420.aspx), [jak: Włącz śledzenie dla aplikacji ASP.NET](https://msdn2.microsoft.com/library/0x5wc973.aspx), [jak: Włącz debugowanie aplikacji ASP.NET](https://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Odwołania**              | [Informacje o debugowaniu ASP.NET](https://msdn.microsoft.com/library/ms227556.aspx), [ASP.NET śledzenie — Przegląd](https://msdn.microsoft.com/library/bb386420.aspx), [jak: Włącz śledzenie dla aplikacji ASP.NET](https://msdn.microsoft.com/library/0x5wc973.aspx), [jak: Włącz debugowanie aplikacji ASP.NET](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **Kroki** | Gdy włączone jest śledzenie dla strony przeglądarki, każdy proces żądania uzyskuje informacje o śledzeniu, który zawiera dane dotyczące stanu wewnętrznego serwera i przepływ pracy. Te informacje można zabezpieczenia poufnych. Debugowanie jest włączone dla strony, błędów, wykonywane na serwerze spowodować pełny stos danych śledzenia, przedstawione w przeglądarce. Te dane mogą ujawniać informacje związane z zabezpieczeniami dotyczące serwera przepływu pracy. |
 
 ## <a id="js-trusted"></a>Skrypty JavaScript innych firm na dostęp tylko z zaufanych źródeł

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 22d270d9bc337b9d7ad776baf5dd35f877c05eae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b5ace2e741f900dd4ab7ba6518d0956284af35f6
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856431"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498235"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Utwórz niestandardowe słowo aktywujące przy użyciu usługi mowy
 
@@ -47,25 +47,21 @@ W przypadku wybrania słowa wznawiania, należy wziąć pod uwagę następujące
 
 ## <a name="create-your-wake-word"></a>Utwórz swoje słowo aktywujące
 
-Zanim użyjesz niestandardowe słowo aktywujące urządzeń z systemem słowo aktywujące należy utworzyć przy użyciu usługi Microsoft niestandardowe Wake generowania programu Word. Po podaniu słowo wznawiania, tworzy usługi, plik, który można wdrożyć na Twoje deweloperski umożliwiające swoje słowo aktywujące na urządzeniu z systemem.
+Zanim użyjesz niestandardowe słowo aktywujące urządzeń z systemem słowo aktywujące należy utworzyć przy użyciu usługi Microsoft niestandardowe Wake generowania programu Word. Po podaniu słowo wznawiania, tworzy usługi, plik, który można wdrożyć na usługi deweloperski, aby umożliwić aktywujące na urządzeniu z systemem.
 
-1. Przejdź do [portal usługi Custom Speech](https://cris.ai/).
+1. Przejdź do [Portal usługi Custom Speech Service](https://cris.ai/).
 
-1. Utwórz nowe konto, za pomocą adresu e-mail, na którym odebrano zaproszenie dla usługi Azure Active Directory.
+    ![Portal usługi Custom Speech Service](media/speech-devices-sdk/wake-word-4.png)
 
-    ![Utwórz nowe konto](media/speech-devices-sdk/wake-word-1.png)
+1. Zaloguj się przy użyciu adresu e-mail, który otrzymał zaproszenie dla usługi Azure Active Directory.
 
 1. **Niestandardowe wznawiania w programie Word** strona nie jest dostępny publicznie, więc nie ma żadnych bezpośredni link umożliwiający przejście istnieje. Funkcja Custom Speech wymaga subskrypcji platformy Azure, ale nie funkcji Wake niestandardowe w programie Word. Jeśli masz **nie nie znaleziono subskrypcji.** Strona błędu, po prostu zastąpić **"subskrypcji? komunikat o błędzie = nie % 20Subscriptions % 20found"** za pomocą "**customkws**" adres URL i wprowadź trafień. Adres URL powinien być jednym z następujących: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws lub https://northeurope.cris.ai/customkws, w zależności od których jest Twoim regionie.
-
-    ![Strona niestandardowe wznawiania w programie Word jest ukryta](media/speech-devices-sdk/wake-word-4.png)
 
 1. Wpisz słowo aktywujące wybranych przez użytkownika, a następnie wybierz **przesłać słowo**.
 
     ![Wprowadź swoje słowo aktywujące](media/speech-devices-sdk/wake-word-5.png)
 
 1. Może upłynąć kilka minut, zanim pliki do wygenerowania. Powinien zostać wyświetlony rotowania okrąg w oknie przeglądarki. Po chwili informacji pasek jest wyświetlany, pytaniem, aby pobrać plik zip.
-
-    ![Odbieranie pliku zip](media/speech-devices-sdk/wake-word-6.png)
 
 1. Zapisz plik zip na komputer. Należy ten plik, aby wdrażać niestandardowe słowo aktywujące development Kit. Aby wdrożyć niestandardowe słowo aktywujące, postępuj zgodnie z instrukcjami [wprowadzenie do zestawu Speech Devices SDK](speech-devices-sdk-qsg.md).
 

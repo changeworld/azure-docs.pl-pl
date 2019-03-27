@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 1ae35c30e0379ed7a0f1fac16c279651e3bcd8fd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315881"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480550"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorowanie użycia i szacowanych kosztów
 
@@ -138,7 +138,7 @@ isGrandFatherableSubscription optedInDate
 
 Aby przeprowadzić migrację tej subskrypcji do nowego modelu cen, uruchom:
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -149,7 +149,7 @@ Invoke-AzResourceAction `
 
 Aby sprawdzić, czy zmiana została pomyślnie ponownie:
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -170,7 +170,7 @@ OptInDate zawiera teraz podczas tej subskrypcji wybranych do nowego modelu cen s
 
 Jeśli potrzebujesz powrócić do starego modelu cen, możesz uruchomić następujące polecenie:
 
-```PowerShell
+```powershell
  $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -183,7 +183,7 @@ Jeśli następnie ponownie uruchom poprzedni skrypt, który ma ``-Action listmig
 
 Jeśli masz wiele subskrypcji, które chcesz zmigrować, które są obsługiwane w ramach tej samej dzierżawy można utworzyć własne wariant przy użyciu fragmentów następujące skrypty:
 
-```PowerShell
+```powershell
 #Query tenant and create an array comprised of all of your tenants subscription ids
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
@@ -192,7 +192,7 @@ $Subscriptions = $Tenant.Id
 
 Aby sprawdzić, czy wszystkie subskrypcje w ramach dzierżawy są kwalifikuje się do nowego modelu cen, można uruchomić:
 
-```PowerShell
+```powershell
 Foreach ($id in $Subscriptions)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
@@ -206,7 +206,7 @@ Invoke-AzResourceAction `
 
 Skrypt może być dostosowany dalsze poprzez utworzenie skryptu, który generuje trzech tablic. Jedna tablica będzie obejmować wszystkich subskrypcji identyfikatory mających ```isGrandFatherableSubscription``` ustawiona na wartość True, a optedInDate nie ma obecnie wartość. Druga tablica żadnych subskrypcji, obecnie w nowym modelu cen. I trzeci tablicy, wypełniony ich identyfikatorów subskrypcji w Twojej dzierżawie, które nie są uprawnione do nowego modelu cen:
 
-```PowerShell
+```powershell
 [System.Collections.ArrayList]$Eligible= @{}
 [System.Collections.ArrayList]$NewPricingEnabled = @{}
 [System.Collections.ArrayList]$NotEligible = @{}
@@ -242,7 +242,7 @@ $Result= Invoke-AzResourceAction `
 
 Teraz, gdy masz subskrypcji, który został podzielony na trzy tablice należy dokładnie przejrzeć wyniki. Możesz chcieć wykonanie kopii zapasowej zawartości tablic, tak że można łatwo przywrócić zmiany to konieczne w przyszłości. Jeśli zdecydujesz, chcesz przekonwertować wszystkie uprawnione subskrypcje, które są aktualnie na poprzedni model cen do nowego modelu cen to zadanie teraz mogą być realizowane za pomocą:
 
-```PowerShell
+```powershell
 Foreach ($id in $Eligible)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"

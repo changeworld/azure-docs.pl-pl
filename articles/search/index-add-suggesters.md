@@ -19,35 +19,39 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 877294e80d655ab75be78a5aa57854a03a5f267a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 5a46575f6e8a0b05b65dbf49c70bddb570b514b2
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370656"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497437"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Dodaj sugestory do indeksu dla typeahead w usłudze Azure Search
 
-A **sugestora** to konstrukcja w [indeksu usługi Azure Search](search-what-is-an-index.md) , która obsługuje środowisko "search jako — możesz type". Zawiera listę pól, dla których chcesz włączyć typeahead zapytania w danych wejściowych. Istnieją dwa warianty typeahead: [ *autouzupełniania* ](search-autocomplete-tutorial.md) kończy termin lub frazę wpisywania [ *automatycznego sugerowania* ](search-autosuggest-example.md) zawiera krótki Lista terminów ani fraz, które można wybrać jako zapytanie wprowadzania. Zauważyliśmy już bez wątpienia te zachowania przed w komercyjnych wyszukiwarek.
+A **sugestora** to konstrukcja w [indeksu usługi Azure Search](search-what-is-an-index.md) , która obsługuje środowisko "search jako — możesz type". Zawiera listę pól, dla których chcesz włączyć typeahead zapytania w danych wejściowych. Istnieją dwa warianty typeahead: *autouzupełniania* kończy termin lub frazę wpisywania *sugestie* zawiera krótką listę wyników. 
 
-![Porównanie Visual Autouzupełnianie i automatycznego sugerowania](./media/index-add-suggesters/visual-comparison-suggest-complete.png "Visual porównanie Autouzupełnianie i automatycznego sugerowania")
+Na tej stronie wyszukiwania Xbox elementów autouzupełniania przejście do nowej strony wyników wyszukiwania dla tego zapytania sugestie są rzeczywiste wyniki, które przejście do strony dla tego konkretnego gry. Można ograniczyć autouzupełniania jednego elementu w pasku wyszukiwania lub Podaj listę, tak jak pokazano poniżej. Masz sugestie może pojawić się dowolnej części dokumentu, która najlepiej opisuje wynik.
+
+![Porównanie Visual Autouzupełnianie i sugerowane zapytania](./media/index-add-suggesters/visual-comparison-suggest-complete.png "Visual porównanie Autouzupełnianie i sugerowane zapytania")
 
 Aby zaimplementować te zachowania w usłudze Azure Search, jest składnikiem indeksów i zapytań. 
 
-+ W ramach indeksu należy dodać sugestora. Można użyć portalu, interfejsu API REST lub zestawu .NET SDK, aby utworzyć sugestora. 
++ W ramach indeksu należy dodać sugestora. Portalu, interfejsu API REST lub zestawu SDK platformy .NET umożliwia tworzenie sugestora. 
 
-+ W zapytaniu Określ akcję automatycznego sugerowania lub automatycznego uzupełniania. 
++ W zapytaniu Określ akcję sugestię lub sutocomplete. 
 
 > [!Important]
 > Autouzupełnianie jest obecnie dostępna w wersji zapoznawczej, dostępna w wersji zapoznawczej interfejsów API REST i zestawu SDK platformy .NET i nie są obsługiwane przez aplikacje produkcyjne. 
 
-Obsługa Typeahead jest włączona na poszczególnych pól. Można zaimplementować zarówno zachowania typeahead w obrębie tego samego rozwiązania wyszukiwania, chcąc środowisko podobny do wskazanej na zrzucie ekranu. Zarówno docelowego żądania *dokumenty* kolekcji określonego indeksu i odpowiedzi są zwracane po użytkownik udostępnił co najmniej trzech wejściowy ciąg znaków.
+Obsługa wyszukiwania jako użytkownik typ-jest włączona na poszczególnych pól. Można zaimplementować zarówno zachowania typeahead w obrębie tego samego rozwiązania wyszukiwania, chcąc środowisko podobny do wskazanej na zrzucie ekranu. Zarówno docelowego żądania *dokumenty* kolekcji określonego indeksu i odpowiedzi są zwracane po użytkownik udostępnił co najmniej trzech wejściowy ciąg znaków.
 
-## <a name="create-a-suggester"></a>Utwórz sugestora
+## <a name="create-a-suggester"></a>Tworzenie sugestora
 
 Mimo że sugestora ma kilka właściwości, to przede wszystkim zbiór pól, dla których jest włączane w środowisku typeahead. Na przykład aplikacji turystycznej chcieć umożliwić wyszukiwanie typeahead miejsc docelowych, miasta i atrakcje. W efekcie wszystkie trzy pola musieli przejść z kolekcji pól.
 
 Aby utworzyć sugestora, dodaj je do schematu indeksu. Jeden sugestora może mieć w ramach indeksu (w szczególności jeden sugestora w kolekcji sugestory). 
+
+### <a name="use-the-rest-api"></a>Używanie interfejsu API REST
 
 W interfejsie API REST można dodać sugestory za pośrednictwem [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) lub [Aktualizowanie indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index). 
 
@@ -69,8 +73,11 @@ W interfejsie API REST można dodać sugestory za pośrednictwem [Create Index](
     ]
   }
   ```
+Po utworzeniu sugestora Dodaj [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [interfejsu API automatycznego uzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) w logice zapytania, aby wywołać tę funkcję.
 
-W zestawie SDK platformy .NET za pomocą [klasy Sugestora](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Sugestora to kolekcja, ale może potrwać tylko jeden element.
+### <a name="use-the-net-sdk"></a>Korzystanie z zestawu SDK dla platformy .NET
+
+W C#, zdefiniuj [klasy Sugestora](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Sugestora to kolekcja, ale może potrwać tylko jeden element.
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -91,11 +98,9 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 }
 ```
 
+## <a name="property-reference"></a>Odwołania do właściwości
+
 Klucz wskazuje informacja dotycząca sugestory jest nazwę (sugestory są przywoływane przez nazwę, na żądanie), searchMode (obecnie tylko jeden "analyzingInfixMatching") i listę pól, dla których włączono typeahead. 
-
-Po utworzeniu sugestora Dodaj [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) w logice zapytania, aby wywołać tę funkcję.
-
-### <a name="property-reference"></a>Odwołania do właściwości
 
 Właściwości, które definiują sugestora są następujące:
 
@@ -105,38 +110,31 @@ Właściwości, które definiują sugestora są następujące:
 |`searchMode`  |Strategia używana do wyszukiwania fraz kandydujących. To jedyny obecnie obsługiwany tryb `analyzingInfixMatching`, który przeprowadza elastyczne dopasowywanie fraz na początku lub w środku zdań.|
 |`sourceFields`|Lista jednego lub więcej pól, które są źródłem zawartości sugestie. Tylko pola typu `Edm.String` i `Collection(Edm.String)` może być źródeł dla sugestie. Można tylko pola, które nie mają niestandardowego analizatora języków zestawu.<p/>Te pola, które nadają się do oczekiwanego i odpowiednich odpowiedzi, należy określić, czy jest ono ukończone ciąg w pasku wyszukiwania lub na liście rozwijanej.<p/>Nazwa hotelu jest dobrym kandydatem, ponieważ ma ona dokładności. Pełne pól, takich jak opisy i komentarze są zbyt gęste. Podobnie powtarzających się pola, takie jak kategorie i tagów, są mniej skuteczne. W przykładach zawiera "category" mimo to wykazać, że może zawierać wiele pól. |
 
-### <a name="index-rebuilds-for-existing-fields"></a>Indeks odbudowuje dla istniejących pól
+## <a name="when-to-create-a-suggester"></a>Kiedy należy utworzyć sugestora
 
-Sugestory zawierać pola, a jeśli w przypadku dodawania sugestora do istniejącego indeksu lub zmiana jego skład pola, najprawdopodobniej konieczne będzie odbudowanie indeksu.
+Aby uniknąć odbudowywanie indeksu, sugestora i pola określone w parametrze `sourceFields` musi zostać utworzona w tym samym czasie.
 
-| Akcja | Wpływ |
-|--------|--------|
-| Utwórz nowe pola a nowy sugestora równocześnie w tej samej aktualizacji | Wpływ na co najmniej. Jeśli indeks zawiera wcześniej dodane pola, dodawanie nowych pól i nowych sugestora nie ma wpływu na istniejące pola. |
-| Dodaj istniejące pola do sugestora | O dużym znaczeniu. Dodawanie pola zmienia definicję pola, wymagających [pełnej rekompilacji](search-howto-reindex.md).|
+Jeśli dodasz sugestora do istniejącego indeksu, gdzie istniejące pola są uwzględnione w `sourceFields`, całkowicie zmienia definicję pola i ponownej kompilacji jest wymagana. Aby uzyskać więcej informacji, zobacz [sposobie odbudowania indeksu usługi Azure Search](search-howto-reindex.md).
 
-## <a name="use-a-suggester"></a>Użyj sugestora
+## <a name="how-to-use-a-suggester"></a>Jak używać sugestora
 
-Jak wspomniano wcześniej można użyć sugestora dla automatycznego sugerowania i/lub automatycznego uzupełniania. 
+Jak wspomniano wcześniej można użyć sugestora sugerowane zapytania i/lub automatycznego uzupełniania. 
 
 Sugestora odwołuje się na żądanie, wraz z operacji. Na przykład na wywołanie GET REST, określ opcję `suggest` lub `autocomplete` w kolekcji dokumentów. REST, po utworzeniu sugestora użytku [sugestie dotyczące interfejsów API](https://docs.microsoft.com/rest/api/searchservice/suggestions) lub [autouzupełniania interfejsu API (wersja zapoznawcza)](https://docs.microsoft.com/rest/api/searchservice/autocomplete) w logice zapytania.
 
 Dla platformy .NET, należy użyć [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) lub [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet).
 
-Przykłady pokazujące każdego żądania:
-
-+ [Dodaj automatycznego sugerowania zaznaczeń zapytań listy rozwijanej](search-autosuggest-example.md)
-
-+ [Dodawanie funkcji autouzupełniania do wejść częściowe termin w usłudze Azure Search](search-autocomplete-tutorial.md) (w wersji zapoznawczej) 
+Aby uzyskać przykład, pokazujący zarówno w przypadku żądań, zobacz [przykład dodawania automatycznego uzupełniania i sugestii w usłudze Azure Search](search-autocomplete-tutorial.md).
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-[DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) zawiera przykładowe C# i kod Java i pokazuje konstrukcji sugestora, automatyczne sugerowanie Autouzupełnianie i nawigacji zestawu reguł. 
+[DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) zawiera przykładowe C# i kod Java i pokazuje konstrukcji sugestora, sugerowane zapytania, automatycznego uzupełniania i nawigacji zestawu reguł. 
 
 Używa piaskownicy usługi Azure Search i wstępnie załadowane indeksu, dzięki czemu wszystkie trzeba jest naciśnij klawisz F5, aby go uruchomić. Brak subskrypcji i logowania w razie potrzeby.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przejrzyj poniższe przykłady, aby zobaczyć, jak są formułowane żądania:
+Firma Microsoft zaleca poniższy przykład, aby zobaczyć, jak są formułowane żądania.
 
-+ [Przykład autosuggested zapytania](search-autosuggest-example.md) 
-+ [Przykład zapytania Autouzupełniania (wersja zapoznawcza)](search-autocomplete-tutorial.md) 
+> [!div class="nextstepaction"]
+> [Przykład zapytania Autouzupełniania (wersja zapoznawcza)](search-autocomplete-tutorial.md) 

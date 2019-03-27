@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: f7c189c59b5098ef22491a914a618afda2b5f51e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554597"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500869"
 ---
 ### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
 **Połączonej usługi Azure Storage** umożliwia połączenie konta usługi Azure storage do usługi Azure data factory przy użyciu **klucz konta**, co umożliwia usługi data factory z globalnego dostępu do usługi Azure Storage. Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla połączonej usługi Azure Storage.
@@ -42,8 +42,8 @@ Sygnatury dostępu współdzielonego (SAS) zapewnia delegowany dostęp do zasob�
 > Usługa Azure Data Factory obsługuje teraz tylko **sygnatury dostępu Współdzielonego usługi** , ale nie sygnatury dostępu Współdzielonego konta. Zobacz [typów z sygnatury dostępu współdzielonego](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) szczegółowe informacje na temat tych dwóch typów oraz sposobu konstruowania. Zanotuj adres URL sygnatury dostępu Współdzielonego generable z witryny Azure portal lub Eksplorator usługi Storage to konto sygnatury dostępu Współdzielonego, który nie jest obsługiwany.
 
 > [!TIP]
-> Można wykonać poniższych poleceń programu PowerShell, aby wygenerować sygnaturę dostępu Współdzielonego usługi dla konta usługi storage (Zastąp zastępcze i Udziel uprawnienia potrzebne): `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
+> Można wykonać poniższych poleceń programu PowerShell, aby wygenerować sygnaturę dostępu Współdzielonego usługi dla konta usługi storage (Zastąp zastępcze i Udziel uprawnienia potrzebne): `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Usługa połączona sygnatury dostępu Współdzielonego Azure Storage pozwala połączyć konto usługi Azure Storage do usługi Azure data factory przy użyciu sygnatury dostępu współdzielonego (SAS). Usługi data factory zapewnia ograniczony/czasowo dostęp do wszystkich/dla zasobów (obiekt blob/kontenera) w magazynie. Poniższa tabela zawiera opis dla elementów JSON, które są specyficzne dla usługi połączonej usługi Azure Storage sygnatury dostępu Współdzielonego. 
 

@@ -3,7 +3,7 @@ title: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirt
 description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b74b85235cc47375f6289b52371bc588105ad9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.openlocfilehash: 49b0d9e4fad61195118c92c047340f2cd4d9e20f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890100"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480689"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Samouczek: Używanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskiwania dostępu do interfejsu API funkcji Azure AD Graph
 
@@ -85,7 +85,7 @@ Ta opcja wymaga użycia programu PowerShell usługi Azure AD. Jeśli nie jest on
    ```
    Aby połączyć się z określoną usługą Azure Active Directory, użyj parametru _TenantId_ w następujący sposób:
 
-   ```PowerShell
+   ```powershell
    Connect-AzureAD -TenantId "Object Id of the tenant"
    ```
 
@@ -179,7 +179,7 @@ Aby użyć przypisanej przez system tożsamości zarządzanej maszyny wirtualnej
    Content : {"odata.metadata":"https://graph.windows.net/<Tenant ID>/$metadata#Collection(Edm.String)","value":["<ObjectID of VM's group membership>"]}
    ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku przedstawiono sposób używania przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows w celu uzyskania dostępu do funkcji Azure AD Graph.  Aby dowiedzieć się więcej o funkcji Azure AD Graph, zobacz:
 

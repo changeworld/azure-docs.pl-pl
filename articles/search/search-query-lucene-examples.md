@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c7c120b9bac33f71df72650d8a9d9a72e819d227
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 6f7fce7eab697f6517b351d00595cb02110d3641
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439205"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499577"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Przykłady zapytań przy użyciu składni wyszukiwania w usłudze "pełnej" Lucene (zaawansowanych zapytań w usłudze Azure Search)
 
@@ -139,6 +139,7 @@ Określając **fieldname:searchterm** konstrukcji, można zdefiniować operacji 
 
 * business_title:(senior NOT junior)
 * Stan: ("New York" i "Nowe Jersey")
+* business_title:(senior NOT junior) AND posting_type:external
 
 Pamiętaj umieścić wielu ciągów w cudzysłowach, jeśli chcesz, aby oba ciągi, które ma zostać obliczone jako pojedynczą jednostkę, jak w tym przypadku wyszukiwania dla dwóch różnych miast w polu lokalizacji. Upewnij się również, operator jest wielką literą, jak widać, z użyciem NOT i AND.
 

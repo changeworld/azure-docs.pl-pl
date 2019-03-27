@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8502ab3257bc1d121e0440ba765dfd19a6722cec
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3be702d1f75b0a96e22ea03602c924be580b0968
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311972"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499254"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -36,7 +36,7 @@ Po ta funkcja działa w trybie inspekcji odpowiednim czasie, można przełącza�
 
 ## <a name="deployment-requirements"></a>Wymagania dotyczące wdrażania
 
-* Wszystkie kontrolery domeny, które Agent kontrolera domeny usługi, aby zainstalować ochrona za pomocą hasła usługi Azure AD musi działać system Windows Server 2012 lub nowszym.
+* Wszystkie kontrolery domeny, które Agent kontrolera domeny usługi, aby zainstalować ochrona za pomocą hasła usługi Azure AD musi działać system Windows Server 2012 lub nowszym. To wymaganie nie oznacza, że domeny usługi Active Directory lub lasu również musi występować w systemie Windows Server 2012 domeny lub lasu poziom funkcjonalności. Jak wspomniano w [zasady projektowania](concept-password-ban-bad-on-premises.md#design-principles), nie ma żadnych minimalna DFL ani FFL wymagane dla dowolnego kontrolera domeny agenta lub serwera proxy oprogramowania do uruchomienia.
 * Wszystkie maszyny, które serwer proxy usługi, aby zainstalować ochrona za pomocą hasła usługi Azure AD musi działać system Windows Server 2012 R2 lub nowszym.
 * Wszystkie komputery z zainstalowaną usługę serwera Proxy ochrony haseł usługi Azure AD musi mieć zainstalowane programu .NET 4.7.
   .NET 4.7 powinno być już zainstalowane na serwerze systemu Windows w pełni zaktualizowany. Jeśli nie jest tak, Pobierz i uruchom Instalator znalazł w [Instalator w trybie offline programu .NET Framework 4.7 dla Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
@@ -85,7 +85,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
 1. Otwórz okno programu PowerShell jako administrator.
    * Oprogramowanie serwera proxy ochrony haseł obejmuje nowy moduł programu PowerShell, *AzureADPasswordProtection*. Poniższe kroki uruchamiania różnych poleceń cmdlet z tego modułu programu PowerShell. Zaimportuj nowy moduł w następujący sposób:
 
-      ```PowerShell
+      ```powershell
       Import-Module AzureADPasswordProtection
       ```
 
@@ -106,7 +106,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
 
      * Tryb interaktywny uwierzytelniania:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
         > [!NOTE]
@@ -114,7 +114,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
 
      * Tryb uwierzytelniania kodu urządzenia:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
         ```
@@ -123,7 +123,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
 
      * Tryb cichy uwierzytelniania (opartego na hasłach):
 
-        ```PowerShell
+        ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionProxy -AzureCredential $globalAdminCredentials
         ```
@@ -146,7 +146,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
 
      * Tryb interaktywny uwierzytelniania:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
         > [!NOTE]
@@ -154,7 +154,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
 
      * Tryb uwierzytelniania kodu urządzenia:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
         ```
@@ -162,7 +162,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
         Możesz następnie ukończenia uwierzytelniania, wykonując instrukcje wyświetlone na innym urządzeniu.
 
      * Tryb cichy uwierzytelniania (opartego na hasłach):
-        ```PowerShell
+        ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
         ```
@@ -221,7 +221,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
 1. Opcjonalnie: Konfigurowanie usługi Serwer proxy ochrony hasłem do nasłuchiwania na konkretnym porcie.
    * Oprogramowanie agenta kontrolera domeny, do ochrony haseł na kontrolerach domeny używa RPC za pośrednictwem protokołu TCP do komunikowania się z usługą serwera proxy. Domyślnie usługa serwera proxy nasłuchuje na wszystkie dostępne dynamiczne końcowych wywołań RPC. Można jednak skonfigurować usługi do nasłuchiwania na konkretnym porcie TCP, jeśli jest to konieczne ze względu na topologii sieci i wymagania dotyczące zapory w danym środowisku.
       * <a id="static" /></a>Aby skonfigurować usługę, aby działała z portu statycznego, należy użyć `Set-AzureADPasswordProtectionProxyConfiguration` polecenia cmdlet.
-         ```PowerShell
+         ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
 
@@ -229,7 +229,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
          > Należy zatrzymać i ponownie uruchomić usługę, aby zmiany zaczęły obowiązywać.
 
       * Aby skonfigurować usługę, aby była uruchamiana z portów dynamicznych, użyj tej samej procedury, ale ustawiona *StaticPort* powrotem do zera:
-         ```PowerShell
+         ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```
 
@@ -241,7 +241,7 @@ Istnieją dwa wymagane pliki instalacyjne dla programów ochrona za pomocą has�
 
    * Aby wysłać zapytanie w bieżącej konfiguracji usługi, użyj `Get-AzureADPasswordProtectionProxyConfiguration` polecenia cmdlet:
 
-      ```PowerShell
+      ```powershell
       Get-AzureADPasswordProtectionProxyConfiguration | fl
 
       ServiceName : AzureADPasswordProtectionProxy

@@ -4,20 +4,20 @@ description: Informacje dotyczące tworzenia cyklu życia reguły zasad danych p
 services: storage
 author: yzheng-msft
 ms.service: storage
-ms.topic: article
-ms.date: 11/04/2018
+ms.topic: conceptual
+ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 1428c2925ab57642899732bd4504b2d5b38781a8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0d52b2f59bba2270b3d36ff2499ce1e0e492b228
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315151"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500427"
 ---
-# <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie usługą Azure Blob storage w cyklu życia (wersja zapoznawcza)
+# <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie usługą Azure Blob storage w cyklu życia
 
-Zestawy danych ma unikatowy cykle życia. Na wczesnym etapie cyklu życia ludzie często dostęp do niektórych danych. Ale potrzebę dostępu spada znacząco rzadziej. Niektóre dane pozostaje w stanie bezczynności w chmurze i są rzadko używane po umieszczeniu. Niektóre dane wygasa dni lub miesięcy po utworzeniu, podczas gdy inne zestawy danych są aktywnie odczytu i modyfikacji przez cały okres ich istnienia. Cyklem życiowym usługi Azure storage Blob (wersja zapoznawcza) oferuje zaawansowane, oparte na regułach zasad dla kont usługi GPv2 i Blob storage. Użyj zasad przeniesienie danych do warstw odpowiedni dostęp, lub wygaśnie z końcem cykl życia danych.
+Zestawy danych ma unikatowy cykle życia. Na wczesnym etapie cyklu życia ludzie często dostęp do niektórych danych. Ale potrzebę dostępu spada znacząco rzadziej. Niektóre dane pozostaje w stanie bezczynności w chmurze i są rzadko używane po umieszczeniu. Niektóre dane wygasa dni lub miesięcy po utworzeniu, podczas gdy inne zestawy danych są aktywnie odczytu i modyfikacji przez cały okres ich istnienia. Zarządzanie cyklem życia magazynu w usłudze Azure Blob oferuje zaawansowane, oparte na regułach zasad dla kont usługi GPv2 i Blob storage. Użyj zasad przeniesienie danych do warstw odpowiedni dostęp, lub wygaśnie z końcem cykl życia danych.
 
 Zasady zarządzania cyklem życia zapewnia następujące możliwości:
 
@@ -34,44 +34,18 @@ Zasady zarządzania cyklem życia jest dostępny z obu ogólnego przeznaczenia w
 
 ## <a name="pricing"></a>Cennik 
 
-Funkcja zarządzania cyklem życia jest bezpłatne w wersji zapoznawczej. Klienci są obciążani koszt normalnej [wyświetlanie listy obiektów blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) i [Ustawianie warstwy obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) wywołań interfejsu API. Aby uzyskać więcej informacji o cenach, zobacz [ceny blokowych obiektów Blob](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Funkcja zarządzania cyklem życia jest bezpłatne. Klienci są obciążani koszt normalnej [wyświetlanie listy obiektów blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) i [Ustawianie warstwy obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) wywołań interfejsu API. Operacja usuwania jest bezpłatne. Aby uzyskać więcej informacji o cenach, zobacz [ceny blokowych obiektów Blob](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="register-for-preview"></a>Rejestrowanie na potrzeby wersji zapoznawczej 
-Aby zarejestrować się w publicznej wersji zapoznawczej, musisz przesłać żądanie, aby zarejestrować tę funkcję, aby Twoja subskrypcja. Żądania odbywa się zwykle w ciągu 72 godzin. Po zatwierdzeniu funkcji dołączania wszystkie istniejące i nowe konta GPv2 lub Blob konta magazynu w następujących regionach: Zachodnie stany USA 2, zachodnie środkowe stany USA, wschodnie stany USA 2 i Europa Zachodnia. Wersja zapoznawcza obsługuje tylko blokowe obiekty blob. Podobnie jak w przypadku większości wersji Preview, nie należy używać tej funkcji dla obciążeń produkcyjnych aż do napotkania GA.
-
-Aby przesłać żądanie, uruchom następujące polecenia programu PowerShell lub interfejsu wiersza polecenia.
-
-### <a name="powershell"></a>PowerShell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Aby przesłać żądanie:
-
-```powershell
-Register-AzProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage 
-```
-Możesz sprawdzić stan zatwierdzenia rejestracji za pomocą następującego polecenia:
-```powershell
-Get-AzProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage
-```
-Zatwierdzenia i odpowiednie rejestracji, pojawi się *zarejestrowanej* stanu, gdy prześlesz poprzednich żądań.
-
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-Aby przesłać żądanie: 
-```cli
-az feature register --namespace Microsoft.Storage --name DLM
-```
-Możesz sprawdzić stan zatwierdzenia rejestracji za pomocą następującego polecenia:
-```cli
-az feature show --namespace Microsoft.Storage --name DLM
-```
-Zatwierdzenia i odpowiednie rejestracji, pojawi się *zarejestrowanej* stanu, gdy prześlesz poprzednich żądań.
+## <a name="regional-availability"></a>Dostępność regionalna 
+Funkcja zarządzania cyklem życia jest dostępna we wszystkich publicznych regionach platformy Azure. 
 
 
 ## <a name="add-or-remove-a-policy"></a>Dodawanie lub usuwanie zasad 
 
-Możesz dodawać, edytować lub usunąć zasadę przy użyciu witryny Azure portal, [PowerShell](https://www.powershellgallery.com/packages/Az.Storage), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ext/storage-preview/storage/account/management-policy?view=azure-cli-latest#ext-storage-preview-az-storage-account-management-policy-create), [interfejsów API REST](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/createorupdate), lub narzędzia klienta w następujących językach: [platformy .NET ](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby](https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Dodawanie, edytowanie lub usuwanie zasady za pomocą witryny Azure portal [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases), wiersza polecenia platformy Azure, interfejsów API REST lub narzędzia klienta. W tym artykule przedstawiono sposób zarządzania zasady za pomocą portalu i metod programu PowerShell.  
+
+> [!NOTE]
+> Włączenie reguły zapory dla konta magazynu, mogą być zablokowane żądania zarządzania cyklem życia. Zapewniając wyjątków, mogą odblokować te żądania. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w [skonfigurować zapory i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -79,28 +53,34 @@ Możesz dodawać, edytować lub usunąć zasadę przy użyciu witryny Azure port
 
 2. Wybierz **wszystkie zasoby** i następnie wybierz swoje konto magazynu.
 
-3. Wybierz **zarządzania cyklem życia (wersja zapoznawcza)** zgrupowane w obszarze usługi obiektów Blob, aby wyświetlić lub zmienić zasady.
+3. W obszarze **usługę Blob Service**, wybierz opcję **zarządzania cyklem życia** do wyświetlania lub zmieniania swoich zasad.
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$rules = '{ ... }'
+#Install the latest module
+Install-Module -Name Az -Repository PSGallery 
 
-Set-AzStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName] -StorageAccountName [storageAccountName] -Policy $rules 
+#Create a new action object
 
-Get-AzStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName] -StorageAccountName [storageAccountName]
+$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 2555
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 90
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -SnapshotAction Delete -daysAfterCreationGreaterThan 90
+
+# Create a new filter object
+# PowerShell automatically sets BlobType as “blockblob” because it is the only available option currently
+$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd 
+
+#Create a new fule object
+#PowerShell automatically sets Type as “Lifecycle” because it is the only available option currently
+$rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+
+#Set the policy 
+$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
+
 ```
 
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-```
-az account set --subscription "[subscriptionName]”
-az extension add --name storage-preview
-az storage account management-policy show --resource-group [resourceGroupName] --account-name [accountName]
-```
-
-> [!NOTE]
-> Włączenie reguły zapory dla konta magazynu, mogą być zablokowane żądania zarządzania cyklem życia. Zapewniając wyjątków, mogą odblokować te żądania. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w [skonfigurować zapory i sieci wirtualne](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ## <a name="policy"></a>Zasady
 
@@ -108,10 +88,10 @@ Zasady zarządzania cyklem życia to zbiór reguł w dokumencie JSON:
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "rule1",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {...}
     },
@@ -125,27 +105,27 @@ Zasady zarządzania cyklem życia to zbiór reguł w dokumencie JSON:
 ```
 
 
-Zasady wymaga dwóch parametrów:
+Zasady to zbiór reguł:
 
 | Nazwa parametru | Typ parametru | Uwagi |
 |----------------|----------------|-------|
-| version        | Wyrażonej w postaci ciągu `x.x` | Numer wersji (wersja zapoznawcza) to 0,5. |
-| rules          | Tablica obiektów reguły | Co najmniej jedna reguła jest wymagana w każdej z zasad. W trakcie okresu zapoznawczego można określić maksymalnie 4 reguły, zgodnie z zasadami. |
+| rules          | Tablica obiektów reguły | Co najmniej jedna reguła jest wymagana w zasadach. W zasadach, można zdefiniować reguły do 100.|
 
-Każda reguła w ramach zasad wymaga trzech parametrów:
+Każda reguła w ramach zasad ma kilka parametrów:
 
-| Nazwa parametru | Typ parametru | Uwagi |
-|----------------|----------------|-------|
-| Name (Nazwa)           | String | Nazwa reguły może zawierać dowolną kombinację znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter. Musi być unikatowa w ramach zasad. |
-| type           | Wartość wyliczenia | Nieprawidłowa wartość (wersja zapoznawcza) jest `Lifecycle`. |
-| definicja     | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. |
+| Nazwa parametru | Typ parametru | Uwagi | Wymagane |
+|----------------|----------------|-------|----------|
+| name           | String |Nazwa reguły może zawierać maksymalnie 256 znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter.  Musi być unikatowa w ramach zasad. | True |
+| enabled | Wartość logiczna | Opcjonalna wartość logiczna, aby umożliwić reguły do zastosowania tymczasowego wyłączone. Wartość domyślna to true, jeśli nie jest ustawiona. | False | 
+| type           | Wartość wyliczenia | Bieżącym typem prawidłowe jest `Lifecycle`. | True |
+| definicja     | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. | True |
 
 ## <a name="rules"></a>Reguły
 
 Każda definicja reguły obejmuje zestaw filtrów i zestawu zadań. [Filtrowania zestawu](#rule-filters) ogranicza akcji reguł do zestawu obiektów w kontenerze lub nazw obiektów. [Zestaw akcji](#rule-actions) stosuje warstwy lub usuwanie akcji na zestawie filtrowanych obiektów.
 
 ### <a name="sample-rule"></a>Przykładowa reguła
-Następująca reguła Przykładowe filtry konta, aby uruchomić tylko na akcje `container1/foo`. Uruchom następujące akcje dla wszystkich obiektów, które istnieją w `container1` **i** rozpoczyna się od `foo`: 
+Następująca reguła Przykładowe filtry konto do uruchamiania działania na obiektach, które istnieją w `container1` **i** rozpoczynać `foo`.  
 
 - Blob z warstwy chłodna warstwa 30 dni od ostatniej modyfikacji
 - Warstwa obiektu blob, do archiwizacji warstwy 90 dni od ostatniej modyfikacji
@@ -154,10 +134,10 @@ Następująca reguła Przykładowe filtry konta, aby uruchomić tylko na akcje `
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "ruleFoo",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {
         "filters": {
@@ -185,18 +165,18 @@ Następująca reguła Przykładowe filtry konta, aby uruchomić tylko na akcje `
 
 Filtry ograniczają akcji reguł do podzbioru obiektów blob na koncie magazynu. Jeśli nie zdefiniowano więcej niż jeden filtr, wartość logiczna `AND` działa na wszystkich filtrów.
 
-W trakcie okresu zapoznawczego dostępne są następujące filtry prawidłowy:
+Prawidłowymi filtrami obejmują:
 
 | Nazwa filtru | Typ filtru | Uwagi | Wymagany |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Tablica wartości wyliczenia wstępnie zdefiniowane. | Wersja zapoznawcza obsługuje tylko `blockBlob`. | Yes |
-| prefixMatch | Tablica ciągów dla prefiksów dopasować się. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład, jeśli chcesz dopasować wszystkich obiektów blob w ramach "https:\//myaccount.blob.core.windows.net/container1/foo/..." w przypadku reguły jest prefixMatch `container1/foo`. | Jeśli nie zdefiniowano prefixMatch, reguły mają zastosowanie do wszystkich obiektów blob w ramach konta. | Nie |
+| blobTypes   | Tablica wartości wyliczenia wstępnie zdefiniowane. | Bieżąca wersja obsługuje `blockBlob`. | Yes |
+| prefixMatch | Tablica ciągów dla prefiksów dopasować się. Każda reguła można zdefiniować maksymalnie 10 prefiksy. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład, jeśli chcesz dopasować wszystkich obiektów blob w obszarze "https://myaccount.blob.core.windows.net/container1/foo/..." dla reguły jest prefixMatch `container1/foo`. | Jeśli nie zdefiniowano prefixMatch, reguła ma zastosowanie do wszystkich obiektów blob na koncie magazynu.  | Nie |
 
 ### <a name="rule-actions"></a>Akcje reguły
 
 Akcje są stosowane do filtrowanych obiektów blob, po spełnieniu warunku wykonywania.
 
-W wersji zapoznawczej zarządzania cyklem życia obsługuje warstw i usuwanie obiektów blob i usuwanie migawek obiektów blob. Dla obiektów blob lub migawki obiektów blob, należy zdefiniować co najmniej jedną akcję dla każdej reguły.
+Zarządzanie cyklem życia obsługuje warstw i usuwanie obiektów blob i usuwanie migawek obiektów blob. Dla obiektów blob lub migawki obiektów blob, należy zdefiniować co najmniej jedną akcję dla każdej reguły.
 
 | Akcja        | Podstawowy obiekt Blob                                   | Snapshot      |
 |---------------|---------------------------------------------|---------------|
@@ -204,12 +184,12 @@ W wersji zapoznawczej zarządzania cyklem życia obsługuje warstw i usuwanie ob
 | tierToArchive | Obsługuje obiekty BLOB, obecnie w warstwie gorącej lub chłodnej | Nieobsługiwane |
 | delete        | Obsługiwane                                   | Obsługiwane     |
 
-> [!NOTE]
-> Jeśli więcej niż jedna akcja jest zdefiniowana w tym samym obiekcie blob, Zarządzanie cyklem życia dotyczy najniższy akcję obiektu blob. Na przykład akcja `delete` jest tańsze niż akcja `tierToArchive`. Akcja `tierToArchive` jest tańsze niż akcja `tierToCool`.
+>[!NOTE] 
+>Jeśli więcej niż jedna akcja jest zdefiniowana w tym samym obiekcie blob, Zarządzanie cyklem życia dotyczy najniższy akcję obiektu blob. Na przykład akcja `delete` jest tańsze niż akcja `tierToArchive`. Akcja `tierToArchive` jest tańsze niż akcja `tierToCool`.
 
-W wersji zapoznawczej warunki wykonanie akcji są oparte na okres ważności. Podstawowy obiektów blob umożliwia śledzenie wiek godzinę ostatniej modyfikacji oraz obiektów blob migawki użycia czas utworzenia migawki śledzić okres ważności.
+Warunki uruchomienia zależą od wieku. Podstawowy obiektów blob umożliwia śledzenie wiek godzinę ostatniej modyfikacji oraz obiektów blob migawki użycia czas utworzenia migawki śledzić okres ważności.
 
-| Warunek wykonania akcji | Wartość warunku | Opis |
+| Uruchom warunku akcji | Wartość warunku | Opis |
 |----------------------------|-----------------|-------------|
 | daysAfterModificationGreaterThan | Wartość całkowitą, wskazując wiek w dniach | Nieprawidłowy warunek akcji podstawowego obiektu blob |
 | daysAfterCreationGreaterThan     | Wartość całkowitą, wskazując wiek w dniach | Nieprawidłowy warunek akcji migawki obiektu blob | 
@@ -223,10 +203,10 @@ W tym przykładzie pokazano, jak przejście blokowych obiektów blob z prefiksem
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "agingRule",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {
         "filters": {
@@ -251,10 +231,10 @@ Niektóre dane pozostaje w stanie bezczynności w chmurze i uzyskuje się rzadko
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "archiveRule",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {
         "filters": {
@@ -279,10 +259,10 @@ Niektóre dane powinien wygasają dni lub miesięcy po utworzeniu, aby zredukowa
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "expirationRule",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {
         "filters": {
@@ -305,11 +285,11 @@ W przypadku danych, który został zmodyfikowany i uzyskać dostęp regularnie w
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "snapshotRule",
-      "type": "Lifecycle",
+      "enabled": true,
+      "type": "Lifecycle",      
     "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
@@ -327,7 +307,7 @@ W przypadku danych, który został zmodyfikowany i uzyskać dostęp regularnie w
 ```
 ## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>Często zadawane pytania — I utworzyć nowe zasady, dlaczego akcje nie są uruchamiane natychmiast? 
 
-Platforma działa zasady cyklu życia raz dziennie. Po ustawieniu nowej zasady może potrwać do 24 godzin w przypadku niektórych działań (np. warstw i usuwanie) do uruchomienia.  
+Platforma działa zasady cyklu życia raz dziennie. Po skonfigurowaniu zasad, może upłynąć do 24 godzin w przypadku niektórych działań (np. warstw i usuwanie) do uruchomienia po raz pierwszy.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

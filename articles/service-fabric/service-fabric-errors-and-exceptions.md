@@ -3,7 +3,7 @@ title: Typowe wyjątki FabricClient zgłaszane | Dokumentacja firmy Microsoft
 description: W tym artykule opisano typowe wyjątki i błędy, które mogą być generowane przez interfejsy API FabricClient podczas wykonywania aplikacji i operacji zarządzania klastrem.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: oanapl
 manager: timlt
 editor: ''
 ms.assetid: bb821313-b221-479f-b08e-36cf07e60a07
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/20/2018
-ms.author: ryanwi
-ms.openlocfilehash: fae345530a28bc7fdb875570546b125b13a79310
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: oanapl
+ms.openlocfilehash: 2932274849782b1f485a97813c281850b53fc15d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104036"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499463"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Typowe wyjątki i błędy podczas pracy z interfejsami API FabricClient
 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) interfejsy API umożliwiają administratorom klastrami i aplikacjami do wykonywania zadań administracyjnych w aplikacji, usług lub klastra usługi Service Fabric. Na przykład wdrożenie aplikacji, uaktualniania i usuwania, sprawdzanie kondycji klastra lub testowania usługi. Deweloperzy aplikacji i administratorów klastrów umożliwia interfejsy API FabricClient Tworzenie narzędzi do zarządzania klastrem usługi Service Fabric i aplikacji.

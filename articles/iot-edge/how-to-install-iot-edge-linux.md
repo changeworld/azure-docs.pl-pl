@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 398b984f4d97005fdc4d749f3fe072423cc5bbd7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1d1e0f100a90c28bd7469991dee559abcd88f9a2
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309302"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499475"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)
 
@@ -23,7 +23,7 @@ ms.locfileid: "57309302"
 
 Aby dowiedzieć się więcej, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md).
 
-W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge w swojej x64 (Intel/AMD) w systemie Linux urządzenie usługi IoT Edge. Zapoznaj się [pomocy technicznej usługi Azure IoT Edge](support.md#operating-systems) Aby uzyskać listę obsługiwanych systemów operacyjnych AMD64.
+W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge w systemie Linux x64 (Intel/AMD) Ubuntu urządzenie usługi IoT Edge. Zapoznaj się [pomocy technicznej usługi Azure IoT Edge](support.md#operating-systems) Aby uzyskać listę obsługiwanych systemów operacyjnych AMD64.
 
 > [!NOTE]
 > Są pakiety w repozytoriach oprogramowania systemu Linux, z zastrzeżeniem postanowień licencyjnych, znajduje się w każdym pakiecie (/ usr/udostępnianie/docs/*nazwy pakietu*). Przeczytaj postanowienia licencyjne przed przy użyciu pakietu. Twoja instalacja i używanie pakietu stanowi zaakceptowania przez korzystającego tych warunków. Jeśli nie zgadzasz się z warunkami licencji, nie należy używać pakietu.
@@ -33,11 +33,22 @@ W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe us
 Przygotuj urządzenie usługi IoT Edge instalacji środowiska uruchomieniowego.
 
 
-Zainstaluj Konfiguracja repozytorium. Zastąp **\<wersji\>** z **16.04** lub **18.04** odpowiednie dla danej wersji systemu Ubuntu.
+Zainstaluj Konfiguracja repozytorium. Wybierz opcję **16.04** lub **18.04** fragment kodu odpowiednie dla danej wersji systemu Ubuntu.
 
+> [!IMPORTANT]
+> Upewnij się, że wybrano fragment kodu z usługi box poprawny kod dla danej wersji systemu Ubuntu.
+
+* Aby uzyskać **Ubuntu 16.04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/<release>/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
    ```
+
+* Aby uzyskać **Ubuntu 18.04**:
+   ```bash
+   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
+   ```
+   
+Zainstaluj Konfiguracja repozytorium. Wybierz opcję **16.04** lub **18.04** fragment kodu odpowiednie dla danej wersji systemu Ubuntu.
 
 Kopiowanie wygenerowanej listy.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c904d8306c145bad57ca7d77b139a2ad6d216b0b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839104"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500257"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -274,7 +274,7 @@ Możesz dowiedzieć się więcej na temat opcji sieci VPN platformy Azure, przec
 
 [Usługa Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) używa zasad szyfrowania, tożsamości i autoryzacji, aby ułatwić zabezpieczanie plików oraz wiadomości e-mail. Usługa Azure RMS działa na wielu urządzeniach — telefonach, tabletach i komputerach, aby chronić w obrębie organizacji i spoza Twojej organizacji. Ta funkcja jest możliwe, ponieważ usługa Azure RMS dodaje poziom ochrony, która jest powiązana z danymi, nawet wtedy, gdy opuszczą teren organizacji.
 
-Gdy używasz usługi Azure RMS do ochrony plików za pomocą branżowego standardu kryptografii pełną obsługę [FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html). Gdy możesz korzystać z usługi Azure RMS w celu ochrony danych, masz pewność, że ta ochrona pozostanie z plikiem, nawet wtedy, gdy jest kopiowany do magazynu, który nie jest pod kontrolą IT, takiego jak Usługa magazynu w chmurze. Taki sam występuje w przypadku plików udostępnianych za pośrednictwem poczty e-mail, plik jest chroniony jako załącznik do wiadomości e-mail z instrukcjami sposób otwierania chronionego załącznika.
+Gdy używasz usługi Azure RMS do ochrony plików za pomocą branżowego standardu kryptografii pełną obsługę [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). Gdy możesz korzystać z usługi Azure RMS w celu ochrony danych, masz pewność, że ta ochrona pozostanie z plikiem, nawet wtedy, gdy jest kopiowany do magazynu, który nie jest pod kontrolą IT, takiego jak Usługa magazynu w chmurze. Taki sam występuje w przypadku plików udostępnianych za pośrednictwem poczty e-mail, plik jest chroniony jako załącznik do wiadomości e-mail z instrukcjami sposób otwierania chronionego załącznika.
 Podczas planowania wdrożenia usługi Azure RMS zalecamy wykonanie poniższych czynności:
 
 - Zainstaluj [aplikacji RMS sharing](https://technet.microsoft.com/library/dn339006.aspx). Ta aplikacja integruje się z pakietem Office, aplikacje, instalując pakiet Office dodatku, aby ułatwiający użytkownikom ochronę plików bezpośrednio.

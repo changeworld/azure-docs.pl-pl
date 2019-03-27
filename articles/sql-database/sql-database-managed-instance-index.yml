@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0de87f1038a7e91e5d66bb579ac7087e75a8db5f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7f0a0f64b0b48a76c72970b7b1b2e248df920ec7
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308078"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447060"
 documentType: LandingData
 title: Wystąpienie zarządzane usługi Azure SQL Database
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Usługi Azure SQL Database, zarządzanego wystąpienia dokumentacja — samouczki i dokumentacja interfejsu API
-  meta.description: Learn how to use Azure SQL Database Managed Instance.
+  title: Wystąpienie zarządzane dokumentacja — samouczki i dokumentacja interfejsu API
+  meta.description: Learn how to use a managed instance in Azure SQL Database.
   services: sql-database
   author: jovanpop-msft
   manager: craigg
@@ -23,14 +23,14 @@ metadata:
   ms.date: 01/03/2019
   ms.author: jovanpop
 abstract:
-  description: Wystąpienie usługi Azure SQL Database zarządzanych jest w pełni zarządzane wystąpienia programu SQL Server bazy danych aparatu hostowanych w chmurze platformy Azure. Jest to najlepszym rozwiązaniem PaaS migracji bazy danych programu SQL Server do chmury. Informacje o sposobie tworzenia i używania wystąpienia zarządzanego z naszych przewodników Szybki Start, samouczków i przykładów.
+  description: Wystąpienie zarządzane usługi Azure SQL Database to w pełni zarządzane wystąpienia programu SQL Server bazy danych aparatu hostowanych w chmurze platformy Azure. Jest to najlepszym rozwiązaniem PaaS migracji bazy danych programu SQL Server do chmury. Informacje o sposobie tworzenia i używania wystąpienia zarządzanego z naszych przewodników Szybki Start, samouczków i przykładów.
   aside:
     image:
       alt: 
       height: 110
       src: media/sql-database-managed-instance-index/intro.png
       width: 250
-    title: Wprowadzenie do usługi Azure SQL Database Managed wystąpienia (5:38)
+    title: Wprowadzenie do wystąpienia zarządzanego usługi Azure SQL Database (5:38)
     href: https://www.youtube.com/watch?v=W8feSZXm2Ec
     width: 250
 sections:
@@ -42,7 +42,7 @@ sections:
     items:
     - title: Przegląd
       href: /azure/sql-database/sql-database-managed-instance
-      html: <p>Dowiedz się więcej informacji na temat usługi Azure SQL Database Managed Instance.</p>
+      html: <p>Dowiedz się więcej informacji na temat wystąpienia zarządzanego usługi Azure SQL Database.</p>
     - title: Obszar powierzchni zaawansowane
       href: /azure/sql-database/sql-database-managed-instance#sql-features-supported
       html: <p>Prawie 100% funkcji zgodności z najnowszą wersją programu SQL Server Database Engine.</p>
@@ -70,7 +70,7 @@ sections:
 - title: Nowe i funkcje w wersji zapoznawczej
   items:
   - type: paragraph
-    text: 'Dzięki nowym funkcjom nieustannie poprawiamy wystąpienia zarządzanego:'
+    text: 'Firma Microsoft nieustannie ulepsza wystąpienia zarządzanego z nowymi funkcjami:'
   - type: list
     style: unordered
     items:
@@ -81,7 +81,8 @@ sections:
     - html: (Wersja zapoznawcza) Użyj <a href="https://aka.ms/managed-instance-failover-groups">grupy trybu failover z rozproszone geograficznie</a> przechowywać kopię wystąpienia w innym regionie i upewnij się, że Twoje dane będą dostępne, nawet w przypadku scenariusza regionalnej awarii.
     - html: (Wersja zapoznawcza) <a href="https://aka.ms/managed-instance-tde-byok">Przenieść klucze szyfrowania</a> podczas migracji lokalnych baz danych, które już zostały włączone przezroczystego szyfrowania danych (TDE).
     - html: Wystąpienia zarządzane są chronione za pomocą <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">wbudowanej zapory</a>.
-    - html: (Wersja zapoznawcza) <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance/">Utwórz porzucić bazy danych</a>.
+    - html: (Wersja zapoznawcza) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Ponownie utworzyć usunięte bazy danych przy użyciu programu PowerShell</a>
+    - html: Funkcja przywracania geograficznego umożliwia <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">przywrócić bazę danych do innego centrum danych przy użyciu programu PowerShell</a>.
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
@@ -105,14 +106,14 @@ sections:
     - title: Utwórz nowe wystąpienie
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
+      - href: sql-database-managed-instance-get-started
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: Modyfikowanie wystąpienia
       values:
       - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../change-size-azure-sql-managed-instance-using-powershell/
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
+      - href: /powershell/module/az.sql/set-azsqlinstance#examples
       - href: 
     - title: Konfigurowanie środowiska sieciowego platformy Azure
       values:
@@ -123,8 +124,8 @@ sections:
     - title: Przywracanie do punktu w czasie
       values:
       - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
+      - href: /powershell/module/az.sql/restore-azsqlinstancedatabase#examples
       - href: 
     - title: Przywróć usuwanej bazy danych
       values:
@@ -139,17 +140,17 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Dowiedz się, jak szybko <a href="sql-database-managed-instance-quickstart-guide.md">Rozpoczynanie pracy z wystąpieniem zarządzanym</a> za pomocą naszych przewodników Szybki Start.
-    - html: Dowiedz się więcej o <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">charakterystyki sprzętu i ograniczenia</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">różnice języka Transact-SQL</a>, i <a href="/azure/sql-database/sql-database-managed-instance-create-manage">języka Transact-SQL, programu PowerShell, interfejsu wiersza polecenia interfejsu API usługi Azure do skonfigurowania wystąpienia zarządzanego<a/>.
+    - html: Dowiedz się, jak szybko <a href="sql-database-managed-instance-quickstart-guide.md">wprowadzenie do wystąpienia zarządzanego</a> za pomocą naszych przewodników Szybki Start.
+    - html: Dowiedz się więcej o <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">charakterystyki sprzętu i ograniczenia</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">różnice języka Transact-SQL</a>, i <a href="/azure/sql-database/sql-database-managed-instance-create-manage">języka Transact-SQL, programu PowerShell, interfejsu API interfejsu wiersza polecenia platformy Azure do konfigurowania zarządzanych wystąpienia<a/>.
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurowanie</a> sieci wirtualnej platformy Azure, w którym zostanie wdrożony wystąpienia zarządzanego.
-    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Sprawdź poprawność</a> że istniejącej sieci wirtualnej platformy Azure może służyć do wdrożenia wystąpienia zarządzanego.
+    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Sprawdź poprawność</a> że istniejącej sieci wirtualnej platformy Azure może służyć do wdrożenia wystąpienia zarządzane.
     - html: Nawiązać połączenie przy użyciu wystąpienia <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">maszyny wirtualnej platformy Azure</a> lub <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">punkt lokacja połączenie</a>, lub <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikacji</a>.
     - html: Sprawdź, czy można migrować bazy danych przy użyciu <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> lub <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">Asystent eksperymentowania w usłudze bazy danych</a>.
     - html: Przenieś bazy danych do wystąpienia zarządzanego przy użyciu <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natywnych przywracania</a> lub <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.
     - html: Przenoszenie pakietów SSIS do <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">usługi Azure Data Factory</a>, modele tabelaryczne usług SSAS, aby <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, i raporty usług SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">usługi Power BI Premium</a>.
     - html: Więcej informacji na temat warstwy magazynowania w <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">warstwie przeznaczenie ogólne</a> i zastosować <a href="https://blogs.msdn.microsoft.com/sqlcat/20../../storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">magazynu najlepsze rozwiązania w zakresie wydajności i zagadnienia dotyczące warstwy usług ogólnego przeznaczenia</a>.
     - html: Znajdź najlepsze rozwiązania i zalecenia dotyczące <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">zabezpieczania wystąpienia</a>.
-    - html: Znajdź więcej <a href="sql-database-howto-managed-instance.md">prowadzi instrukcje</a> , mogą być pomocne w konfigurowaniu wystąpienia zarządzanego.
+    - html: Dowiedz się więcej <a href="sql-database-howto-managed-instance.md">prowadzi instrukcje</a> , mogą być pomocne w konfigurowaniu wystąpienia zarządzanego.
 - title: Informacje ogólne
   items:
   - type: list

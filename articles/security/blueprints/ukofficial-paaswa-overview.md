@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b30ef7d0b373f0d9a440b6649f819e429e28328c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314930"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482991"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
@@ -95,7 +95,7 @@ Dane są przesyłane z zewnątrz i między składnikami platformy Azure jest chr
 
 [Usługa Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) to spersonalizowany konsultant ds. chmury, który ułatwia stosowanie najlepszych rozwiązań do optymalizacji wdrożeń platformy Azure. Analizuje konfigurację zasobów i dane telemetryczne dotyczące użycia, a następnie zaleca rozwiązania, które mogą pomóc w zapewnieniu wysokiej dostępności, bezpieczeństwa, wydajności i efektywności kosztowej zasobów platformy Azure.
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) funkcja ochrony w czasie rzeczywistym, który ułatwia identyfikowanie i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania. To domyślnie jest instalowany na podstawowej infrastruktury PaaS w maszynie wirtualnej i jest zarządzana przez sieci szkieletowej Azure w sposób niewidoczny dla użytkownika do klientów, zapewniając
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) funkcja ochrony w czasie rzeczywistym, który ułatwia identyfikowanie i usuwanie wirusów, programów szpiegujących oraz innego złośliwego oprogramowania. To domyślnie jest zainstalowany na podstawowej infrastruktury PaaS w maszynie wirtualnej i jest zarządzana przez sieci szkieletowej Azure w sposób niewidoczny dla użytkownika do klienta.
 
 ### <a name="paas-services-in-this-blueprint"></a>Usługi PaaS w tym planie
 

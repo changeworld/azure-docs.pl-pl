@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 03/26/2019
+ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295253"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498489"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i korzystanie z aktywnej replikacji geograficznej
 
@@ -75,8 +75,11 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
   Aplikacja może uzyskiwać dostęp do dodatkowej bazy danych dla operacji tylko do odczytu przy użyciu podmiotów zabezpieczeń tego samego lub innego, używane do uzyskiwania dostępu do podstawowej bazy danych. Pomocnicze bazy danych działa w trybie izolacji migawki, aby upewnić się, że replikacja aktualizacji podstawową (dziennik powtarzania) nie będzie opóźniony o zapytania wykonywane na serwerze pomocniczym.
 
-  > [!NOTE]
-  > Powtarzanie dziennika jest opóźnione w pomocniczej bazie danych, czy są aktualizacje schematu na serwerze podstawowym. Te ostatnie wymaga blokadę schematu w pomocniczej bazie danych.
+> [!NOTE]
+> Powtarzanie dziennika jest opóźnione w pomocniczej bazie danych, czy są aktualizacje schematu na serwerze podstawowym. Te ostatnie wymaga blokadę schematu w pomocniczej bazie danych.
+> [!IMPORTANT]
+> Replikacja geograficzna umożliwia tworzenie pomocniczej bazy danych w tym samym regionie jako podstawowy. W tym samym regionie, można użyć tej pomocniczej do obciążenia równoważenia obciążenia, tylko do odczytu. Jednak pomocniczej bazy danych, w tym samym regionie nie zapewnia dodatkową odporność i dlatego nie jest odpowiedni tryb failover obiektu docelowego dla odzyskiwania po awarii. On również nie gwarantuje avaialability strefy izolacji. Krytyczne dla działania lub warstwie usług Premium [nadmiarowe konfiguracji strefy](sql-database-high-availability.md#zone-redundant-configuration) do osiągnięcia avaialability strefy izolacji.   
+>
 
 - **Planowany tryb failover**
 

@@ -3,7 +3,7 @@ title: Przykładowy skrypt programu Azure PowerShell — aktualizowanie nazwy u�
 description: Przykładowy skrypt programu Azure PowerShell — aktualizowanie nazwy użytkownika i hasła protokołu RDP dla wszystkich węzłów klastra usługi Service Fabric określonego typu węzła.
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,18 +13,20 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: ff9cfabc4ac7b759a916ddaaeb3f4c95ceecd452
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: a5c1e7786f02b7ebc42f96e4ed12b2fb5729bb41
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30177835"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498013"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualizowanie nazwy użytkownika i hasła administratora maszyn wirtualnych w klastrze
 
 Każdy [typ węzła](../service-fabric-cluster-nodetypes.md) w klastrze usługi Service Fabric jest zestawem skalowania maszyn wirtualnych. Ten przykładowy skrypt aktualizuje nazwę użytkownika i hasło dla maszyn wirtualnych klastra w określonym typie węzła.  Dodaj rozszerzenie VMAccessAgent do zestawu skalowania, ponieważ hasło administratora nie jest wartością zestawu skalowania, którą można modyfikować.  Zmiany nazwy użytkownika i hasła dotyczą wszystkich węzłów w zestawie skalowania. Dostosuj parametry zgodnie z potrzebami.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 W razie potrzeby zainstaluj program Azure PowerShell przy użyciu instrukcji dostępnej w [przewodniku programu Azure PowerShell](/powershell/azure/overview). 
 
@@ -34,15 +36,15 @@ W razie potrzeby zainstaluj program Azure PowerShell przy użyciu instrukcji dos
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+W tym skrypcie użyto następujących poleceń: Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) | Pobiera właściwości typu węzła klastra (zestaw skalowania maszyn wirtualnych).   |
-| [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension)| Dodaje rozszerzenie do zestawu skalowania maszyn wirtualnych.|
-| [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)|Aktualizuje stan zestawu skalowania maszyn wirtualnych do stanu obiektu lokalnego VMSS.|
+| [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Pobiera właściwości typu węzła klastra (zestaw skalowania maszyn wirtualnych).   |
+| [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Dodaje rozszerzenie do zestawu skalowania maszyn wirtualnych.|
+| [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|Aktualizuje stan zestawu skalowania maszyn wirtualnych do stanu obiektu lokalnego VMSS.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

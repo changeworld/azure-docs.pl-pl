@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/02/2019
+ms.date: 03/26/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 86e28c3561968b1411a3baa9ec0daecfab6ac73f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202888"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445682"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage
 
@@ -46,6 +46,8 @@ Niezmienny magazyn obsługuje następujące funkcje:
 ## <a name="how-it-works"></a>Jak to działa
 
 Niezmienny magazyn dla usługi Azure Blob storage obsługuje dwa typy ROBAK lub niezmienne zasad: przechowywania na podstawie czasu i archiwizacją ze względów prawnych. Jeśli zasady przechowywania na podstawie czasu lub prawnych jest stosowany do kontenera, wszystkie istniejące obiekty BLOB przenieść się do niezmiennego stanu ROBAK w mniej niż 30 sekund. Wszystkie nowe obiekty BLOB, które są przekazywane do tego kontenera zostanie również przenieść do niezmiennego stanu. Po wszystkich obiektów blob zostały przeniesione do niezmiennego stanu, potwierdzono niezmienne zasad i wszystkie zastąpienia lub usuń operacje dla istniejących i nowych obiektów w kontenerze niezmienialnych nie są dozwolone.
+
+Kontener i usuwanie kont również nie są dozwolone w przypadku wszystkie obiekty BLOB, chronione przez zasady niezmienne. Operacja usuwania kontenera nie powiedzie się, jeśli co najmniej jeden obiekt blob istnieje zasady przechowywania na podstawie czasu zablokowane lub prawnych. Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jeden kontener z zasadami WORM i ustawionym stanem archiwizacji ze względów prawnych lub co najmniej jeden obiekt blob z aktywnym okresem przechowywania. 
 
 ### <a name="time-based-retention"></a>Na podstawie czasu przechowywania
 
@@ -85,12 +87,10 @@ W poniższej tabeli przedstawiono typy obiekty blob — operacje, które są wy�
 Nie ma żadnych dodatkowych opłat za używanie tej funkcji. Niezmienialnymi danymi jest rozliczana w taki sam sposób, jak regularne, mutable danych. Aby uzyskać szczegóły cennika w usłudze Azure Blob Storage, zobacz [usługi Azure Storage, cennik](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="getting-started"></a>Wprowadzenie
+Niezmienne storage jest dostępna tylko w przypadku ogólnego przeznaczenia w wersji 2 i kont usługi Blob Storage. Te konta muszą być zarządzane za pośrednictwem [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Aby uzyskać informacje na temat aktualizowania istniejącego konta magazynu ogólnego przeznaczenia w wersji 1, zobacz [podnoszenie poziomu konta magazynu](../common/storage-account-upgrade.md).
 
 Najnowsze wersje [witryny Azure portal](https://portal.azure.com), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), i [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases) obsługiwać niezmienny magazyn dla usługi Azure Blob storage. [Obsługa bibliotek klienta](#client-libraries) jest również udostępniany.
 
-> [!NOTE]
->
-> Niezmienne storage jest dostępna tylko w przypadku ogólnego przeznaczenia w wersji 2 i kont usługi Blob Storage. Te konta muszą być zarządzane za pośrednictwem [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Aby uzyskać informacje na temat aktualizowania istniejącego konta magazynu ogólnego przeznaczenia w wersji 1, zobacz [podnoszenie poziomu konta magazynu](../common/storage-account-upgrade.md).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -114,17 +114,19 @@ Najnowsze wersje [witryny Azure portal](https://portal.azure.com), [wiersza pole
 
     !["Blokowanie zasad" w menu](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
-    Wybierz **zasad blokowania**. Zasada jest zablokowany i nie można usunąć, może być tylko rozszerzenia okres przechowywania.
+6. Wybierz **zasady blokowania** i upewnij się, blokady. Zasada jest zablokowany i nie można usunąć, może być tylko rozszerzenia okres przechowywania. Usuwa obiekt blob i zastąpienia są niedozwolone. 
 
-6. Aby włączyć archiwizacją ze względów prawnych, zaznacz **+ Dodaj zasady**. Wybierz **prawnych** z menu rozwijanego.
+    ![Upewnij się, "Zablokuj policy" w menu](media/storage-blob-immutable-storage/portal-image-5-lock-policy.png)
+
+7. Aby włączyć archiwizacją ze względów prawnych, zaznacz **+ Dodaj zasady**. Wybierz **prawnych** z menu rozwijanego.
 
     !["Ze względów prawnych" z menu "Typ zasad"](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
 
-7. Utwórz prawnych z co najmniej jednego znacznika.
+8. Utwórz prawnych z co najmniej jednego znacznika.
 
     ![Pole "Nazwa tagu" w obszarze Typ zasad](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-8. Aby wyczyścić prawnych, po prostu usunąć tag identyfikatora zastosowane prawnych.
+9. Aby wyczyścić prawnych, po prostu usunąć tag identyfikatora zastosowane prawnych.
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -170,9 +172,9 @@ Tak. Zapewnienie zgodności dokumentu Microsoft przechowywane wiodące przedsię
 
 Niezmienny magazyn może być używany z żadnym typem obiektów blob, ale zaleca się używać przede wszystkim dla blokowych obiektów blob. Inaczej niż w przypadku blokowych obiektów blob strony obiekty BLOB i uzupełnialnych obiektów blob należy utworzyć poza kontenerem ROBAK, a następnie kopiowane w. Po skopiowaniu tych obiektów blob w kontenerze ROBAK nie dalsze *dołącza* do dołączania obiektu blob lub zmiany stronicowych obiektów blob są dozwolone.
 
-**Czy w każdym przypadku należy utworzyć nowe konto magazynu, aby móc korzystać z tej funkcji?**
+**Należy utworzyć nowe konto magazynu, aby użyć tej funkcji?**
 
-Niezmienne magazynu można użyć w przypadku istniejących i nowo utworzony ogólnego przeznaczenia w wersji 2 lub kont usługi Blob Storage. Ta funkcja jest przeznaczone do użycia z blokowych obiektów blob na kontach GPv2 i Blob Storage.
+Nie można użyć magazynu niezmienne z istniejących i nowo utworzony ogólnego przeznaczenia w wersji 2 lub kont usługi Blob storage. Ta funkcja jest przeznaczone do użycia z blokowych obiektów blob na kontach GPv2 i Blob Storage. Konta magazynu w wersji 1 ogólnego przeznaczenia nie są obsługiwane, ale można łatwo uaktualnić do ogólnego przeznaczenia w wersji 2. Aby uzyskać informacje na temat aktualizowania istniejącego konta magazynu ogólnego przeznaczenia w wersji 1, zobacz [podnoszenie poziomu konta magazynu](../common/storage-account-upgrade.md).
 
 **Czy mogę stosować prawnych i zasady przechowywania na podstawie czasu?**
 
@@ -188,7 +190,7 @@ Operacja usuwania kontenera nie powiedzie się, jeśli co najmniej jeden obiekt 
 
 **Co się stanie, jeśli spróbuję usunąć konto magazynu zawierające kontener z zasadami WORM — *zablokowanymi* zasadami przechowywania na podstawie czasu lub ustawionym stanem archiwizacji ze względów prawnych?**
 
-Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jeden kontener z zasadami WORM i ustawionym stanem archiwizacji ze względów prawnych lub co najmniej jeden obiekt blob z aktywnym okresem przechowywania.  Należy usunąć wszystkie kontenery ROBAK, zanim będzie możliwe usunięcie konta magazynu. Instrukcje dotyczące usuwania kontenera zobacz poprzedni pytanie.
+Usunięcie konta magazynu nie powiedzie się, jeśli zawiera ono co najmniej jeden kontener z zasadami WORM i ustawionym stanem archiwizacji ze względów prawnych lub co najmniej jeden obiekt blob z aktywnym okresem przechowywania. Należy usunąć wszystkie kontenery ROBAK, zanim będzie możliwe usunięcie konta magazynu. Instrukcje dotyczące usuwania kontenera zobacz poprzedni pytanie.
 
 **Czy mogę przenosić dane pomiędzy warstwami magazynowania (gorącą, chłodną, zimną), gdy obiekt blob znajduje się w stanie niezmiennym?**
 

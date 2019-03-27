@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880929"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445640"
 ---
 # <a name="azure-networking"></a>Sieci platformy Azure
 
@@ -34,7 +34,7 @@ System Azure oferuje szeroką gamę funkcji sieciowych, które mogą być używa
 - [Możliwości zarządzania](#manageability): Monitorowanie i zarządzanie zasobami sieci platformy Azure.
 - [Wdrażanie i Konfigurowanie narzędzia](#tools): Wdrażanie i konfigurowanie zasobów sieciowych, należy użyć oparty na sieci web portal lub narzędzi wiersza polecenia dla wielu platform.
 
-## <a name="Connectivity"></a>Łączność między zasobami platformy Azure
+## <a name="connectivity"></a>Łączność między zasobami platformy Azure
 
 Zasoby platformy Azure, takie jak maszyny wirtualne, usługi w chmurze, zestawy skalowania maszyn wirtualnych i środowisk Azure App Service Environment może komunikować się prywatnie ze sobą za pośrednictwem usługi Azure Virtual Network (VNet). Sieć wirtualna jest to logiczna izolacja chmury platformy Azure w wersji dedykowanej do Twojej [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Można zaimplementować wiele sieci wirtualnych w ramach każdej subskrypcji platformy Azure i Azure [region](https://azure.microsoft.com/regions). Każda sieć wirtualna jest odizolowana od innych sieci wirtualnych. W każdej sieci wirtualnej możesz wykonywać następujące czynności:
 
@@ -150,7 +150,7 @@ Platforma Azure udostępnia następujące narzędzia w celu monitorowania sieci 
 Możesz wdrożyć i skonfigurować zasoby sieciowe platformy Azure z dowolnymi z następujących narzędzi:
 
 - **Witryna Azure portal:** Graficzny interfejs użytkownika, który działa w przeglądarce. Otwórz [portal Azure](https://portal.azure.com).
-- **Azure PowerShell:** Narzędzia wiersza polecenia do zarządzania platformy Azure z komputerów Windows. Więcej informacji na temat programu Azure PowerShell, czytając [Omówienie programu Azure PowerShell](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
+- **Azure PowerShell:** Narzędzia wiersza polecenia do zarządzania platformy Azure z komputerów Windows. Więcej informacji na temat programu Azure PowerShell, czytając [Omówienie programu Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Interfejs wiersza polecenia platformy Azure (CLI):** Narzędzia wiersza polecenia do zarządzania platformy Azure z komputerów z systemem Linux, macOS lub Windows. Więcej informacji na temat interfejsu wiersza polecenia platformy Azure, czytając [wiersza polecenia platformy Azure — omówienie](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Szablony usługi Azure Resource Manager:** Plik (w formacie JSON), który definiuje infrastruktury i konfiguracji rozwiązania platformy Azure. Dzięki szablonowi można wielokrotnie wdrażać rozwiązanie w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu. Aby dowiedzieć się więcej na temat tworzenia szablonów, przeczytaj [najlepsze rozwiązania dotyczące tworzenia szablonów](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu. Szablony można wdrażać za pomocą witryny Azure portal, interfejsu wiersza polecenia lub programu PowerShell. Aby rozpocząć pracę już teraz za pomocą szablonów, Wdróż jedną z wielu wstępnie skonfigurowanych szablonów w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=network) biblioteki. 
 

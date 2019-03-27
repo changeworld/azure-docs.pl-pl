@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0a25dd3a2228f0b1b3ab33db0c9c689d7b2899d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e6623e18fa319066f121dced551dcada133ebd5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310561"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479533"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 
@@ -32,8 +32,15 @@ Ochrony hasłem w usłudze Azure AD zaprojektowano z tymi zasadami, należy pami
 * Nie minimalnych usługi Active Directory domeny lub lasu poziom funkcjonalności (DFL/FFL) jest wymagany.
 * Oprogramowanie nie jest tworzenie i wymagają kont w domenach usługi Active Directory, które chroni.
 * Hasła w postaci zwykłego tekstu użytkowników nie może pozostać kontrolera domeny podczas operacji sprawdzania poprawności hasła lub w dowolnym innym czasie.
-* Wdrożenie przyrostowe jest obsługiwane. Jednak z zasadami haseł jest wymuszana tylko którym jest zainstalowany Agent kontrolera domeny (DC Agent).
-* Firma Microsoft zaleca instalowanie agenta kontrolera domeny na wszystkich kontrolerach domeny, aby upewnić się, wymuszania zabezpieczeń ochrony universal hasła.
+* Wdrożenie przyrostowe jest obsługiwane, ale z zasadami haseł jest wymuszana tylko którym jest zainstalowany Agent kontrolera domeny (DC Agent). Zobacz następny temat, aby uzyskać więcej informacji.
+
+## <a name="incremental-deployment"></a>Wdrożenie przyrostowe
+
+Ochrony hasłem w usłudze Azure AD obsługuje wdrożenie przyrostowe między kontrolerami domeny w domenie usługi Active Directory, ale jest ważne zrozumieć, co tak naprawdę oznacza to, i jakie są wady i zalety.
+
+Oprogramowanie agenta usługi Azure AD hasło ochrony kontrolera domeny można tylko weryfikowania haseł, gdy jest zainstalowany na kontrolerze domeny, a tylko w przypadku zmiany hasła, które są wysyłane do tego kontrolera domeny. Nie jest możliwe do kontroli kontrolerach domeny, które zostały wybrane przez komputery klienckie Windows do przetwarzania wprowadzania zmian hasła użytkownika. Aby można było zagwarantować spójne zachowanie oraz wzmacnianiu zabezpieczeń ochrony universal hasła, oprogramowanie agenta kontrolera domeny musi zainstalowany na wszystkich kontrolerach domeny w domenie.
+
+Wiele organizacji będą chcieli dokładnej testowanie ochrony haseł usługi Azure AD w podzestawie kontrolerów domeny przed pełnym wdrożeniem czynności. Ochrony hasłem w usłudze Azure AD obsługuje wdrożenia częściowe, ie oprogramowanie agenta kontrolera domeny na danym kontrolerze domeny będą aktywnie weryfikowania haseł, nawet wtedy, gdy inne kontrolery domeny w domenie, nie masz zainstalowanego oprogramowani kontrolera domeny. Częściowe wdrożenia tego typu nie są bezpieczny i nie są inne niż zalecane do celów testowych.
 
 ## <a name="architectural-diagram"></a>Diagram architektury
 

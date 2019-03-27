@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: W tym artykule opisano procesy tego moc usługi Azure Dev miejsca do magazynowania i sposobu ich konfiguracji w pliku konfiguracyjnym azds.yaml
 keywords: azds.yaml, Azure Dev miejsca do magazynowania, Dev miejsca do magazynowania, Docker, Kubernetes, Azure, usługi AKS, Azure Kubernetes Service, kontenerów
-ms.openlocfilehash: b6f178628961001c4022ffc86bc13ee0e529e3c4
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 622a0780d74618fe694e5b9da0327490e0ec38dd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438975"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500563"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak Azure Dev miejsca do magazynowania działa i jest skonfigurowany
 
@@ -96,7 +96,7 @@ Po włączeniu usługi Azure Dev miejsca do magazynowania w klastrze AKS instalu
 * Usuwa wszystkie przestrzeni nazw Kubernetes o nazwie *azds*, jeśli istnieje, a utworzony zostaje nowy indeks.
 * Wdraża obiektu inicjatora Kubernetes.
 
-! [Azure Dev spacje przygotować klaster]] (media/how-dev-spaces-works/prepare-cluster.svg)
+![Usługa Azure Dev spacje przygotować klaster](media/how-dev-spaces-works/prepare-cluster.svg)
 
 Aby można było używać usługi Azure Dev miejsca do magazynowania, musi istnieć co najmniej jedną spację deweloperów. Azure Dev do magazynowania używa przestrzeni nazw Kubernetes, w ramach klastra usługi AKS dla deweloperów miejsca do magazynowania. Po zainstalowaniu kontrolera monituje o utworzenie nowej przestrzeni nazw Kubernetes lub wybierz istniejącą przestrzenią nazw do użycia jako pierwszą przestrzeń deweloperów. Gdy przestrzeni nazw jest wyznaczony jako miejsce dev, dodaje kontroler *azds.io/space=true* etykietę do tego obszaru nazw do identyfikowania jej jako przestrzeni deweloperów. Miejsce początkowe dev utworzyć albo wyznaczenie jest domyślnie zaznaczona, po przygotowaniu klastra. Po wybraniu miejsca jest używany przez usługi Azure Dev miejsca do magazynowania do tworzenia nowych obciążeń.
 

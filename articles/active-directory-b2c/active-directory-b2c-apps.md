@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 5324f1ed92ae4513dcd877853cb6fa2f4c7dd8f3
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446379"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497963"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
@@ -108,7 +108,7 @@ Aby dowiedzieć się, jak zabezpieczyć interfejs API sieci Web przy użyciu us�
 
 Aplikacje, które są zainstalowane na urządzeniach, takich jak w przypadku aplikacji mobilnych i komputerowych często muszą uzyskać dostęp do usług zaplecza lub interfejsów API sieci web w imieniu użytkowników. Możesz dodać niestandardowe środowiska zarządzania tożsamością do aplikacji natywnych i bezpiecznie wywoływać usługi zaplecza przy użyciu usługi Azure AD B2C i [przepływ kodu autoryzacji OAuth 2.0](active-directory-b2c-reference-oauth-code.md).  
 
-W tym przepływie aplikacja wykonuje [zasady](active-directory-b2c-reference-policies.md) i odbiera `authorization_code` z usługi Azure AD po wypełnieniu zasad przez użytkownika. `authorization_code` Reprezentuje aplikacji uprawnień do wywoływania usług zaplecza w imieniu użytkownika, który jest aktualnie zalogowany. Aplikacja może następnie wymienić `authorization_code` w tle dla `id_token` i `refresh_token`.  Aplikacja może używać `id_token` do uwierzytelniania internetowego interfejsu API zaplecza w żądaniach HTTP. Może również użyć tokenu `refresh_token` do pobrania nowego tokenu `id_token`, gdy wygaśnie stary.
+W tym przepływie aplikacja wykonuje [zasady](active-directory-b2c-reference-policies.md) i odbiera `authorization_code` z usługi Azure AD po wypełnieniu zasad przez użytkownika. `authorization_code` Reprezentuje aplikacji uprawnień do wywoływania usług zaplecza w imieniu użytkownika, który jest aktualnie zalogowany. Aplikacja może następnie wymienić `authorization_code` w tle dla `access_token` i `refresh_token`.  Aplikacja może używać `access_token` do uwierzytelniania internetowego interfejsu API zaplecza w żądaniach HTTP. Może również użyć tokenu `refresh_token` do pobrania nowego tokenu `access_token`, gdy wygaśnie stary.
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 

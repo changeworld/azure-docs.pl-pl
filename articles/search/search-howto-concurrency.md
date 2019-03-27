@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c317bbdef2511728d23b33d8eef1c4a41a87d97
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 4599498918b7a01a1207f20135c26924c6758eb8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201521"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499429"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Jak zarządzać współbieżnością w usłudze Azure Search
 
@@ -170,7 +170,7 @@ Poniższy kod demonstruje, że accessCondition sprawdza, czy operacje aktualizac
 
 Wzorzec projektowania do wdrażania optymistycznej współbieżności powinien zawierać pętli, która ponawia próbę warunki dostępu, sprawdź, test warunki dostępu i opcjonalnie umożliwia pobranie zaktualizowanego zasobu przed podjęciem próby ponownego zastosowania zmian.
 
-Ten fragment kodu ilustruje dodanie synonymMap do indeksu, który już istnieje. Ten kod pochodzi z [synonimów (wersja zapoznawcza) C# przykładzie przy użyciu usługi Azure Search](https://docs.microsoft.com/azure/search/search-synonyms-example-sdk).
+Ten fragment kodu ilustruje dodanie synonymMap do indeksu, który już istnieje. Ten kod pochodzi z [synonimów (wersja zapoznawcza) C# przykładzie przy użyciu usługi Azure Search](search-synonyms-tutorial-sdk.md).
 
 Fragment kodu pobiera indeks "hotels", sprawdza, czy wersja obiektu w operacji aktualizacji, zgłasza wyjątek, jeśli warunek zakończy się niepowodzeniem, a następnie ponawia operację (maksymalnie trzy razy), począwszy od indeksu pobierania z serwera, aby uzyskać najnowszą wersję.
 

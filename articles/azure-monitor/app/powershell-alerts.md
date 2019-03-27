@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1da3b71cbb809c92ba3228676f8a47235829b499
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309540"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481795"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights przy użyciu programu PowerShell
 
@@ -41,7 +41,7 @@ Instalowanie modułu Azure Powershell na komputerze, na którym chcesz uruchomi�
 ## <a name="connect-to-azure"></a>Nawiązywanie połączenia z usługą Azure
 Uruchom program Azure PowerShell i [nawiązać połączenie z subskrypcją](/powershell/azure/overview):
 
-```PowerShell
+```powershell
 
     Add-AzAccount
 ```
@@ -116,7 +116,7 @@ Ta zasada może służyć do metryki zgłoszony za pomocą [parametr miary](../.
 | `performanceCounter.request_execution_time.value` |Czas wykonywania żądania programu ASP.NET |Czas wykonywania najnowszego żądania. |
 | `performanceCounter.requests_in_application_queue.value` |Żądania programu ASP.NET w kolejce do wykonania |Długość kolejki żądań aplikacji. |
 | `performanceCounter.requests_per_sec.value` |Liczba żądań programu ASP.NET |Liczba wszystkich żądań wysłanych do aplikacji z platformy ASP.NET na sekundę. |
-| `remoteDependencyFailed.durationMetric.count` |Awarie zależności |Liczba wywołań zakończonych niepowodzeniem wykonanych przez aplikację serwera z zasobami zewnętrznymi. |
+| `remoteDependencyFailed.durationMetric.count` |Błędy zależności |Liczba wywołań zakończonych niepowodzeniem wykonanych przez aplikację serwera z zasobami zewnętrznymi. |
 | `request.duration` |Czas odpowiedzi serwera |Czas między odebraniem żądania HTTP i zakończeniem wysyłania odpowiedzi. |
 | `request.rate` |Współczynnik żądań |Liczba wszystkich żądań do aplikacji na sekundę. |
 | `requestFailed.count` |Żądania zakończone niepowodzeniem |Żądania liczba HTTP, które spowodowało kod odpowiedzi > = 400 |

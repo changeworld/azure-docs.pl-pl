@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411258"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500053"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Dodaj warstwę symbol do mapy
 
@@ -35,6 +35,9 @@ W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSou
 Trzeci bloku kodu tworzy [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) i aktualizacje współrzędne punktu od myszy, kliknij przycisk za pomocą klasy kształt [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metody.
 
 A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie.  Źródła danych, kliknij odbiornik zdarzeń i warstwy symboli są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, że punkt jest wyświetlany po mapy ładuje pełni.
+
+> [!TIP]
+> Domyślnie w celu uzyskania wydajności warstwy symbol zoptymalizować renderowania symbole, ukrywając symboli, które nakładają się. Jak powiększyć symbole ukryte stają się widoczne. Aby wyłączyć tę funkcję i renderowania wszystkie symbole przez cały czas, ustaw `allowOverlap` właściwość `iconOptions` opcji `true`.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Dodać niestandardową ikonę do warstwy symboli
 

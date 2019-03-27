@@ -1,6 +1,6 @@
 ---
 title: Dokumentacja usługi Power BI Embedded — samouczki i dokumentacja interfejsu API | Microsoft Docs
-description: Dowiedz się, jak osadzać w aplikacjach wizualizacje danych i interakcyjne raporty usługi Power BI. Samouczki, dokumentacja interfejsu API i inne dokumenty.
+description: 'Dowiedz się, jak osadzać w aplikacjach wizualizacje danych i interakcyjne raporty usługi Power BI. Samouczki, dokumentacja interfejsu API i inne dokumenty.'
 services: power-bi-embedded
 author: markingmyname
 ms.author: maghan
@@ -9,13 +9,8 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
-ms.openlocfilehash: 051b7d725a121b3160e8a572c5fab91e8289f44b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678240"
 ---
+
 # <a name="power-bi-embedded-documentation"></a>Dokumentacja usługi Power BI Embedded
 
 Dowiedz się, jak za pomocą usługi Power BI Embedded dodawać do aplikacji wizualizacje danych i interakcyjne raporty. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób płynnego osadzania raportów i pulpitów nawigacyjnych usługi Power BI w aplikacjach.
@@ -105,7 +100,7 @@ Dowiedz się, jak za pomocą usługi Power BI Embedded dodawać do aplikacji wiz
                 <div class="card">
                     <div class="cardText">
                         <h3>PowerShell</h3>
-                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/?view=azurermps-6.5.0#power_bi_embedded_capacity">Program PowerShell</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/#power_bi_embedded_capacity">Program PowerShell</a></p>
                     </div>
                 </div>
             </div>

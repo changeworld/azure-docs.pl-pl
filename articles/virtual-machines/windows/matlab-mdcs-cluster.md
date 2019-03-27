@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: fd5ae375dff80c8b1179d2fd73566d07c5861e4a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a9de0f0021d92c59c44e85f0487cc9a08b6a3099
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000343"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497366"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Tworzenie klastrów serwera rozproszonych obliczeń MATLAB na maszynach wirtualnych platformy Azure
 Maszyny wirtualne Microsoft Azure umożliwia utworzenie co najmniej jeden klaster MATLAB rozproszonego przetwarzania serwera do uruchamiania obciążeń MATLAB intensywnych obliczeń równoległych. Instalowanie oprogramowania serwera rozproszonych obliczeń MATLAB na maszynie Wirtualnej do użycia jako obraz podstawowy i użyj szablonu szybkiego startu platformy Azure lub skrypt programu Azure PowerShell (dostępne na [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) do wdrażania i zarządzania klastrem. Po wdrożeniu Połącz się z klastrem, do uruchamiania obciążeń.
@@ -34,7 +34,7 @@ Za pomocą maszyn wirtualnych platformy Azure, można utworzyć klastrów serwer
 * **Program Azure PowerShell** — zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) go zainstalować na komputerze klienckim.
 * **Subskrypcja platformy Azure** — Jeśli nie masz subskrypcji, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/) w zaledwie kilka minut. W przypadku większych klastrów należy wziąć pod uwagę subskrypcji zgodnie z rzeczywistym użyciem lub inne opcje zakupu.
 * **limit przydziału procesorów wirtualnych Vcpu** — może być konieczne zwiększyć limit przydziału procesorów wirtualnych, aby wdrożyć więcej niż jeden klaster serwera rozproszonych obliczeń MATLAB lub dużego klastra. Aby zwiększyć limit przydziału, [Otwórz żądanie obsługi klienta online](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) bez dodatkowych opłat.
-* **Licencje MATLAB przybornika obliczeń równoległych oraz serwera rozproszonych obliczeń MATLAB** — skrypty przyjęto założenie, że [MathWorks hostowanych License Manager](https://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) służy wobec wszystkich licencji.  
+* **Licencje MATLAB przybornika obliczeń równoległych oraz serwera rozproszonych obliczeń MATLAB** — skrypty przyjęto założenie, że [MathWorks hostowanych License Manager](https://www.mathworks.com/help/install/license-management.html) służy wobec wszystkich licencji.  
 * **Oprogramowanie serwerowe rozproszonych obliczeń MATLAB** — zostanie zainstalowany na maszynie Wirtualnej, która będzie służyć jako podstawowy obraz maszyny Wirtualnej dla maszyn wirtualnych klastra.
 
 ## <a name="high-level-steps"></a>Wysokiego poziomu kroków

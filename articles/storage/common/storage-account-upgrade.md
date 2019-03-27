@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: df9bc1680f20fe6264da0109cd52db1072fd9fc5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: a1ee95ad847d20159c79af8f080cc7878e114759
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311139"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444532"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnienie do konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -21,7 +21,7 @@ Konta magazynu ogólnego przeznaczenia v2 obsługi najnowszych funkcji usługi A
 Uaktualnienie do konta magazynu ogólnego przeznaczenia v2 z Twojej ogólnego przeznaczenia w wersji 1 lub kont usługi Blob storage jest proste. Można uaktualnić za pomocą witryny Azure portal, programu PowerShell lub wiersza polecenia platformy Azure.
 
 > [!IMPORTANT]
-> Uaktualnianie konta magazynu w wersji 1 do ogólnego przeznaczenia w wersji 2 jest trwały i nie można cofnąć.
+> Uaktualnianie ogólnego przeznaczenia w wersji 1 lub konta magazynu usługi Blob storage do ogólnego przeznaczenia w wersji 2 jest trwały i nie można cofnąć.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Uaktualnianie za pomocą witryny Azure portal
 
@@ -31,6 +31,8 @@ Uaktualnienie do konta magazynu ogólnego przeznaczenia v2 z Twojej ogólnego pr
 4. W obszarze **Rodzaj konta** kliknij pozycję **Uaktualnij**.
 5. W obszarze **Potwierdź uaktualnianie** wpisz nazwę konta.
 6. Kliknij przycisk **uaktualnienia** w dolnej części bloku.
+
+    ![Uaktualnij rodzaj konta](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
 ## <a name="upgrade-with-powershell"></a>Podnoszenie poziomu przy użyciu programu PowerShell
 
@@ -116,7 +118,7 @@ Dzięki włączeniu tej opcji dane pojemności są rejestrowane codziennie dla k
 Aby monitorować wzorce dostępu do danych dla usługi Blob Storage, należy włączyć godzinowe metryki transakcji z poziomu interfejsu API. Dzięki włączeniu godzinowych metryk transakcji transakcje interfejsu API są agregowane co godzinę i rejestrowane jako wpis tabeli, który jest zapisywany w tabeli *$MetricsHourPrimaryTransactionsBlob* w obrębie tego samego konta magazynu. W przypadku używania kont magazynu RA-GRS tabela *$MetricsHourSecondaryTransactionsBlob* rejestruje transakcje kierowane do pomocniczego punktu końcowego.
 
 > [!NOTE]
-> Jeśli masz konto magazynu ogólnego przeznaczenia, w którym są przechowywane stronicowe obiekty blob i dyski maszyny wirtualnej albo kolejki, pliki lub tabele (obok danych blokowych obiektów blob i uzupełnialnych obiektów blob), ten proces szacowania nie ma zastosowania. Dane pojemności nie obejmują rozróżnienia blokowych obiektów blob od innych typów ani danych pojemności dla innych typów danych. Jeśli używasz tych typów, alternatywną metodologią będzie zapoznanie się z ilościami na najnowszym rachunku.
+> Jeśli masz konto magazynu ogólnego przeznaczenia, w którym są przechowywane stronicowe obiekty BLOB i dyski maszyny wirtualnej albo kolejki, pliki lub tabele obok blokowych i danych uzupełnialnych obiektów blob, ten proces szacowania nie ma zastosowania. Dane pojemności nie obejmują rozróżnienia blokowych obiektów blob od innych typów ani danych pojemności dla innych typów danych. Jeśli używasz tych typów, alternatywną metodologią będzie zapoznanie się z ilościami na najnowszym rachunku.
 
 Aby uzyskać najbardziej zbliżone do prawdziwych informacje o użyciu danych i wzorcu dostępu, zalecamy wybranie takiego okresu przechowywania dla metryk, który odzwierciedla normalne użycie, i ekstrapolację. Jedną z opcji jest przechowywanie danych metryk przez siedem dni i zbieranie danych co tydzień, aby przeprowadzić analizę pod koniec miesiąca. Innym rozwiązaniem jest przechowywanie danych metryk z ostatnich 30 dni i zbieranie oraz analizowanie danych z końcem 30-dniowego okresu.
 

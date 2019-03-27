@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8362ae5e9647c023ff950a363f9ba7bfde37fdb6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863325"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499560"
 ---
 # <a name="what-is-azure-container-instances"></a>Co to jest usługa Azure Container Instances?
 
@@ -52,10 +52,11 @@ Niektóre funkcje są obecnie ograniczone do kontenerów systemu Linux:
 
 * Wiele kontenerów na grupę kontenerów
 * Instalowanie woluminów ([usługi Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [klucz tajny](container-instances-volume-secret.md))
+* [Metryki użycia zasobów](container-instances-monitor.md) z usługą Azure Monitor
 * [Wdrażanie sieci wirtualnej](container-instances-vnet.md) (wersja zapoznawcza)
 * [Zasoby procesora GPU](container-instances-gpu.md) (wersja zapoznawcza)
 
-Usługa Azure Container Instances obsługuje obrazy systemu Windows Server 2016, oparte na wersji Long-Term Servicing Channel (LTSC). Obrazy systemu Windows z wersjami kanału Semi-Annual Channel (SAC), takimi jak 1709 i 1803, nie są obsługiwane.
+Usługa Azure Container Instances obsługuje obecnie obrazów systemu Windows Server 2016 opartych na wersji Long-Term Servicing Channel (LTSC). Obrazy systemu Windows z wersjami kanału Semi-Annual Channel (SAC), takimi jak 1709 i 1803, nie są obsługiwane.
 
 ## <a name="co-scheduled-groups"></a>Grupy planowane wspólnie
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 9dbc6b5de3f2050067dc558be7bffdbcad2cb4eb
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5ffd1cb0c71c4948e522d44231242e33889c6409
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339367"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442458"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Rozwiązywanie problemów przy użyciu usługi Azure HDInsight
 
@@ -32,4 +32,4 @@ ms.locfileid: "58339367"
 | HDInsight w systemie Linux i optymalizacja | - [Informacje o używaniu HDInsight w systemie Linux](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop pamięci i rozwiązywanie problemów z wydajnością](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Wydajność zapytań technologii Hive](https://web.archive.org/web/20190217214250/ https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | Dzienniki i zrzuty | - [Dzienniki aplikacji Apache Hadoop YARN dostępu w systemie Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Włączanie zrzutów sterty dla usługi Apache Hadoop w systemie Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [Analizowanie dzienników usługi HDInsight](hdinsight-debug-jobs.md)|
 | Błędy | - [Omówienie i rozwiązywanie błędów usługi WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Apache Hive ustawienia, aby naprawić błąd zdarzeń OutofMemory](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
-| Narzędzia | - [Debugowanie zadań tez przy Apache przy użyciu widoków Ambari Apache](hdinsight-debug-ambari-tez-view.md)<br>- [Optymalizowanie zapytań technologii Hive](hdinsight-hadoop-optimize-hive-query.md)<br>- [Narzędzia HDInsight IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Narzędzia HDInsight Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [Narzędzia HDInsight VSCode](hdinsight-for-vscode.md)<br>- [Narzędzia HDInsight Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
+| Narzędzia | - [Optymalizowanie zapytań technologii Hive](hdinsight-hadoop-optimize-hive-query.md)<br>- [Narzędzia HDInsight IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Narzędzia HDInsight Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [Narzędzia HDInsight VSCode](hdinsight-for-vscode.md)<br>- [Narzędzia HDInsight Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |

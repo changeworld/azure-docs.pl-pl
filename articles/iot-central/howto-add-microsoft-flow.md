@@ -1,25 +1,32 @@
 ---
 title: Tworzenie przepływów pracy za pomocą usługi Azure IoT Central łącznik w programie Microsoft Flow | Dokumentacja firmy Microsoft
-description: Korzystania z łącznika IoT Central w Microsoft Flow, aby wyzwalać przepływy tworzenie, aktualizowanie i usuwanie urządzeń w przepływach pracy.
+description: Korzystania z łącznika IoT Central w Microsoft Flow, aby wyzwalać przepływy i tworzenie, pobieranie, aktualizowanie, usuwanie urządzeń i poleceń w przepływach pracy.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 03/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: 555fe54174c9e13319af676cab3a5d3dcfaf2fe5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+manager: hegate
+ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770253"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497741"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Tworzenie przepływów pracy z łącznikiem usługi IoT Central w Microsoft Flow
 
 *Ten temat dotyczy konstruktorów i administratorów.*
 
-Microsoft Flow umożliwia automatyzowanie przepływów pracy między wiele aplikacji i usług, które zależą od użytkowników biznesowych. Za pomocą łącznika usługi IoT Central w Microsoft Flow, może wyzwalać przepływy pracy po wyzwoleniu reguły w IoT Central. W przepływie pracy wyzwalany przez IoT Central lub innych aplikacji można użyć działania w łączniku usługi IoT Central utworzenie urządzenia, aktualizowanie właściwości urządzenia i ustawienia lub usunąć urządzenie. Zapoznaj się z [tych szablonów Microsoft Flow](https://aka.ms/iotcentralflowtemplates) IoT Central połączone z innymi usługami, takimi jak powiadomień na telefon komórkowy i Microsoft Teams.
+Microsoft Flow umożliwia automatyzowanie przepływów pracy między wiele aplikacji i usług, które zależą od użytkowników biznesowych. Za pomocą łącznika usługi IoT Central w Microsoft Flow, może wyzwalać przepływy pracy po wyzwoleniu reguły w IoT Central. W przepływie pracy wyzwalany przez IoT Central lub innych aplikacji można użyć działania w łączniku usługi IoT Central, aby:
+- Tworzenie urządzenia
+- Pobierz informacje o urządzeniu
+- Aktualizowanie właściwości urządzenia i ustawienia
+- Uruchom polecenie na urządzeniu
+- Usuwanie urządzenia
+
+Zapoznaj się z [tych szablonów Microsoft Flow](https://aka.ms/iotcentralflowtemplates) IoT Central połączone z innymi usługami, takimi jak powiadomień na telefon komórkowy i Microsoft Teams.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,19 +35,19 @@ Microsoft Flow umożliwia automatyzowanie przepływów pracy między wiele aplik
 
 ## <a name="trigger-a-workflow"></a>Wyzwalacz przepływu pracy
 
-W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne w aplikacji mobilnej Flow, gdy wyzwolenie reguły w IoT Central.
+W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne w aplikacji mobilnej Flow, gdy wyzwolenie reguły w IoT Central. Ta całego przepływu pracy można tworzyć w ramach aplikacji IoT Central przy użyciu osadzonego projektanta Microsoft Flow.
 
-1. Rozpocznij od [tworzenia reguły w IoT Central](howto-create-telemetry-rules.md). Po zapisaniu warunki reguły wybierz **akcji Microsoft Flow** jako nową akcję. Nowa karta lub okna powinna zostać otwarta w przeglądarce, uwzględniając Microsoft Flow.
+1. Rozpocznij od [tworzenia reguły w IoT Central](howto-create-telemetry-rules.md). Po zapisaniu warunki reguły wybierz **akcji Microsoft Flow** jako nową akcję. Okno dialogowe zostanie otwarty do konfiguracji przepływu pracy. Konto użytkownika IoT Central, które są podpisane w będzie służyć do logowania się do Microsoft Flow.
 
     ![Utwórz nową akcję Microsoft Flow](media/howto-add-microsoft-flow/createflowaction.png)
 
-1. Zaloguj się do Microsoft Flow. Nie musi to być to samo konto, którego używasz w IoT Central. Zostanie wyświetlona się na stronie Przegląd pokazujący łącznika usługi IoT Central nawiązywania połączenia z akcji niestandardowej.
+1. Zobaczysz listę tha przepływy pracy mają dostęp do a są dołączone do tej reguły IoT Central. Kliknij przycisk **Eksploruj szablony** lub **nowy > Utwórz z szablonu** i można wybrać jedną z dostępnych szablonów. 
 
-1. Zaloguj się do łącznika usługi IoT Central, a następnie wybierz pozycję **Kontynuuj**. Nastąpi przekierowanie do projektanta Microsoft Flow do utworzenia przepływu pracy. Przepływ pracy ma wyzwalacz IoT Central, który zawiera aplikację i reguła już wypełnione.
+    ![Dostępne szablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates.png)
 
-1. Wybierz **+ nowy krok** i **Dodaj akcję**. W tym momencie można dodawać żadnych działań do przepływu pracy. Na przykład możemy wysłać powiadomienie na urządzenie przenośne. Wyszukaj **powiadomień**i wybierz polecenie **powiadomienia — Wyślij mi powiadomienie na urządzenie przenośne**.
+1. Zostanie wyświetlony monit logować się do łączników w wybranym szablonie. Po zalogowaniu łączniki nastąpi przejście do projektanta w celu utworzenia przepływu pracy. Przepływ pracy ma wyzwalacz IoT Central, który zawiera aplikację i reguła już wypełnione.
 
-1. W akcji Wypełnij pole tekstowe o co chcesz zgłoszeniu powiedzieć. Możesz uwzględnić *zawartości dynamicznej* z reguły IoT Central, przekazując wzdłuż ważne informacje, takie jak nazwa urządzenia i sygnatura czasowa do powiadomienia.
+1. Dostosowywanie informacje przekazane do tej akcji i dodawania nowych akcji można dostosować przepływ pracy. W tym przykładzie to akcja **powiadomienia — Wyślij mi powiadomienie na urządzenie przenośne**. Możesz uwzględnić *zawartości dynamicznej* z reguły IoT Central, przekazując wzdłuż ważne informacje, takie jak nazwa urządzenia i sygnatura czasowa do powiadomienia.
 
     > [!NOTE]
     > Wybierz **Zobacz więcej** tekst w oknie zawartości dynamicznej można pobrać miary i wartości właściwości, które wyzwolona reguła.
@@ -54,7 +61,7 @@ W tej sekcji dowiesz się, jak wyzwalać powiadomienie na urządzenie przenośne
 
 1. Po powrocie do aplikacji IoT Central, zobaczysz, że ta reguła zawiera akcję Microsoft Flow, w obszarze akcji.
 
-Zawsze możesz rozpocząć tworzenie przepływu pracy przy użyciu łącznika usługi IoT Central w Microsoft Flow. Następnie możesz wybrać aplikacji, która IoT Central i które zasadę, aby nawiązać połączenie.
+Można również tworzyć przepływy pracy, przy użyciu łącznika usługi IoT Central bezpośrednio z poziomu Microsoft Flow. Następnie możesz która aplikacja IoT Central, aby nawiązać połączenie.
 
 ## <a name="create-a-device-in-a-workflow"></a>Utwórz urządzenie w przepływie pracy
 
@@ -107,6 +114,18 @@ W tej sekcji dowiesz się, jak zaktualizować ustawień i właściwości w IoT C
 1. Na koniec Zapisz przepływ pracy.
 
 1. Spróbuj przepływu pracy w aplikacji mobilnej Microsoft Flow. Przejdź do **przyciski** kartę w aplikacji. Powinien zostać wyświetlony przycisku -> Aktualizacja przepływu pracy urządzenia. Wprowadź dane wejściowe, a urządzenie zostaje zaktualizowana w IoT Central widoczne!
+
+## <a name="get-device-information-in-a-workflow"></a>Pobierz informacje o urządzeniu w przepływie pracy
+
+Możesz uzyskać informacje o urządzeniu za pomocą jego Identyfikatora urządzenia **Azure IoT Central — Pobierz urządzenie** akcji. Aby uzyskać informacje, takie jak nazwa urządzenia, nazwę szablonu w urządzeniu, wartości właściwości i wartości ustawień do przekazania do kolejnych akcjach w przepływie pracy. Oto przykładowy przepływ pracy, który przekazuje wartość właściwości nazwy klienta z urządzenia do Microsoft Teams.
+
+   ![Przepływ pracy usługi Flow get urządzenia](./media/howto-add-microsoft-flow/flowgetdevice.png)
+
+
+## <a name="run-a-command-on-a-device-in-a-workflow"></a>Uruchom polecenie na urządzeniu w przepływie pracy
+Na urządzeniu określone za pomocą jego Identyfikatora urządzenia, można uruchomić polecenie **usługi Azure IoT Central — Uruchom polecenie** akcji. Możesz wybrać polecenie Uruchom i przekaż parametry polecenia za pomocą tej akcji. Oto przykładowy przepływ pracy, który uruchamia polecenie ponownego uruchomienia urządzenia przy użyciu przycisku w aplikacji mobilnej Microsoft Flow.
+
+   ![Przepływ pracy usługi Flow get urządzenia](./media/howto-add-microsoft-flow/flowrunacommand.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>Usuwanie urządzenia w przepływie pracy
 

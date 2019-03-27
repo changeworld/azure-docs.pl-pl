@@ -3,7 +3,7 @@ title: Zaprzestać korzystania z tożsamości zarządzanej rozszerzenia maszyny 
 description: Krok po kroku instrukcje, aby uniemożliwić korzystanie z rozszerzenia maszyny Wirtualnej i rozpocząć korzystanie z platformy Azure wystąpienie metadanych usługi (IMDS) do uwierzytelniania.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: priyamo
-ms.openlocfilehash: c29eb22f2606fc44cfd7d948f2c363cb51c811dd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.author: markvi
+ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227686"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498336"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Jak zatrzymać za pomocą maszyny wirtualnej zarządzany rozszerzenie tożsamości i Rozpocznij korzystanie z usługi Azure Instance Metadata Service
 
@@ -196,7 +196,7 @@ Istnieje kilka głównych ograniczeń dotyczących używania rozszerzenia maszyn
 
 ## <a name="azure-instance-metadata-service"></a>Wystąpienie usługi Azure Metadata Service
 
-[Azure wystąpienie metadanych usługi (IMDS)](https://docs.microsoft.com/azure/virtual-machines/instance-metadata-service) jest punkt końcowy REST, który dostarcza informacji o uruchomionych wystąpień maszyn wirtualnych, które może służyć do zarządzania i konfigurowania maszyn wirtualnych. Punkt końcowy jest dostępny w dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), są dostępne tylko z poziomu maszyny wirtualnej.
+[Azure wystąpienie metadanych usługi (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) jest punkt końcowy REST, który dostarcza informacji o uruchomionych wystąpień maszyn wirtualnych, które może służyć do zarządzania i konfigurowania maszyn wirtualnych. Punkt końcowy jest dostępny w dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), są dostępne tylko z poziomu maszyny wirtualnej.
 
 Ma kilka zalet za pomocą usługi Azure IMDS żądania tokenów. 
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71e9a3f614048185d9444011da3c47b88931d0c5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097995"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499951"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie systemu Zendesk dla automatycznej aprowizacji użytkowników
 
@@ -39,7 +39,7 @@ Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące
 *   Konto użytkownika w usłudze Zendesk z uprawnieniami administratora 
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API Rest systemu Zendesk](https://developer.zendesk.com/rest_api/docs/core/introduction), co jest dostępne dla zespołów systemu Zendesk z planem Enterprise lub większą.
+> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API Rest systemu Zendesk](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources), co jest dostępne dla zespołów systemu Zendesk z planem Enterprise lub większą.
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Dodawanie aplikacji Zendesk z galerii
 Przed skonfigurowaniem systemu Zendesk dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, musisz dodać systemu Zendesk z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
