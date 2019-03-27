@@ -216,21 +216,6 @@ items:
       - name: Publikowanie aplikacji usługi HDInsight w portalu Azure Marketplace
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: Instalowanie opublikowanej aplikacji — Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: Bezpieczeństwo
     items:
     - name: Używanie protokołu SSH z usługą HDInsight
@@ -351,9 +336,6 @@ items:
     - name: Korzystanie z technologii Apache Oozie na potrzeby przepływów pracy
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: Korzystanie z koordynatorów Apache Oozie opartych na czasie
-      href: ../hdinsight-use-oozie-coordinator-time.md
-      maintainContext: true
     - name: Identyfikatory URI oraz porty usługi i klastra
       href: ../hdinsight-hadoop-port-settings-for-services.md
       maintainContext: true
@@ -400,9 +382,6 @@ items:
         maintainContext: true
       - name: Usuwanie błędów związanych z brakiem pamięci za pomocą ustawień technologii Apache Hive
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
-        maintainContext: true
-      - name: Debugowanie zadań środowiska Apache Tez przy użyciu widoków systemu Apache Ambari
-        href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
       - name: Optymalizowanie zapytań technologii Apache Hive
         href: ../hdinsight-hadoop-optimize-hive-query.md
@@ -487,33 +466,6 @@ items:
     - name: Migrowanie rozwiązań .NET do klastrów z systemem Linux
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Uruchamianie przykładów technologii MapReduce w usłudze Apache Hadoop
-      href: ../hdinsight-run-samples.md
-      maintainContext: true
-    - name: Przetwarzanie dużych wykresów za pomocą systemu Apache Giraph
-      href: ../hdinsight-hadoop-giraph-install.md
-      maintainContext: true
-    - name: Korzystanie z technologii Apache Oozie na potrzeby przepływów pracy
-      href: ../hdinsight-use-oozie.md
-      maintainContext: true
-    - name: Wdrażanie topologii Apache Storm i zarządzanie nimi
-      href: ../storm/apache-storm-deploy-monitor-topology.md
-      maintainContext: true
-    - name: Konstruowanie aplikacji Java za pomocą narzędzia Apache Maven
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: Uzyskiwanie dostępu do dzienników aplikacji platformy YARN w usłudze Apache Hadoop
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: Generowanie rekomendacji filmów za pomocą biblioteki Apache Mahout
-      href: ../hdinsight-mahout.md
-      maintainContext: true
-    - name: Opracowywanie akcji skryptu
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Monitorowanie klastrów za pomocą interfejsu API systemu Apache Ambari
-      href: ../hdinsight-monitor-use-ambari-api.md
-      maintainContext: true
 - name: Zasoby
   items:
   - name: Informacje o wersji
@@ -536,9 +488,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 519bef9c31a8dc4905b988b3c7c9ac063dc8d949
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 3dfbd1844f463efa9d99aa39dde86391ec773408
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361714"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449408"
