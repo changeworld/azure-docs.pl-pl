@@ -1,27 +1,22 @@
 ---
 title: Azure Service Health | Microsoft Docs
-description: Usługa Azure Service Health to zestaw środowisk, które udostępniają spersonalizowane wskazówki i pomoc techniczną, gdy napotkasz problemy z usługami platformy Azure.
+description: 'Usługa Azure Service Health to zestaw środowisk, które udostępniają spersonalizowane wskazówki i pomoc techniczną, gdy napotkasz problemy z usługami platformy Azure.'
 author: stephbaron
 layout: LandingPage
 ms.service: service-health
 ms.topic: landing-page
-ms.date: 03/27/2018
+ms.date: 03/4/2019
 ms.author: stbaron
-ms.openlocfilehash: d8d922dd16cb00b5e3a682dc491af6b59f8476f2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881931"
 ---
 # <a name="azure-service-health-documentation"></a>Dokumentacja usługi Azure Service Health
 
-Usługa Azure Service Health to zestaw środowisk, które udostępniają spersonalizowane wskazówki i pomoc techniczną, gdy napotkasz problemy z usługami platformy Azure. Może ona generować powiadomienia, pomagać zrozumieć znaczenie problemów i informować na bieżąco o rozwiązywaniu problemów. Może też ułatwić przygotowanie się do zaplanowanej konserwacji i zmian, które mogą wpłynąć na dostępność zasobów.
+Platforma Azure oferuje pakiet środowisk umożliwiający informowanie o kondycji zasobów w chmurze, łącznie z bieżącymi i przyszłymi problemami, takimi jak zdarzenia mające wpływ na usługę, planowana konserwacja i inne zmiany, które mogą mieć wpływ na dostępność.
 
-Usługa Azure Service Health składa się z następujących elementów:
- 1. **Stan platformy Azure** — globalny widok kondycji usług platformy Azure
- 2. **Service Health** — spersonalizowany widok kondycji usług platformy Azure
- 3. **Resource Health** — dokładniejszy widok kondycji poszczególnych zasobów aprowizowanych przez usługi platformy Azure
+Być może znasz **[stronę stanu platformy Azure](https://status.azure.com)**, która zapewnia globalny widok kondycji wszystkich usług platformy Azure we wszystkich regionach świadczenia usługi Azure. Strona stanu jest przydatna w przypadku zdarzeń mających wpływ na wiele elementów, ale zdecydowanie zalecamy, aby bieżący użytkownicy platformy Azure korzystali z usługi **Azure Service Health**, aby uzyskiwać informacje o zdarzeniach i konserwacji platformy Azure.
+
+Usługa **[Azure Service Health](service-health-overview.md)** zapewnia spersonalizowany widok kondycji usług platformy Azure i używanych regionów. Jest to najlepsze miejsce do sprawdzania komunikatów mających wpływ na usługi o przestojach i działaniach planowanej konserwacji oraz innych porad dotyczących kondycji, ponieważ uwierzytelnione środowisko usługi Azure Service Health zna obecnie używane usługi i zasoby. Najlepszym sposobem używania usługi Service Health jest skonfigurowanie alertów, aby otrzymywać powiadomienia za pośrednictwem preferowanych kanałów komunikacyjnych w przypadku problemów z usługą, planowanej konserwacji lub innych zmian, które mogą mieć wpływ na używane usługi platformy Azure i regiony.
+
+Usługa **[Azure Resource Health](resource-health-overview.md)** udostępnia informacje o kondycji poszczególnych zasobów w chmurze, takich jak określone wystąpienie maszyny wirtualnej. Za pomocą usługi Azure Monitor można również skonfigurować alerty informujące o zmianach dostępności zasobów w chmurze. Usługa Azure Resource Health wraz z powiadomieniami w usłudze Azure Monitor pomogą Ci w uzyskiwaniu aktualnych informacji na temat dostępności zasobów minuta po minucie i szybko ocenić, czy problem jest spowodowany problemem po Twojej stronie czy jest związany ze zdarzeniem platformy Azure.
 
 Razem te środowiska umożliwiają kompleksowy wgląd w kondycję platformy Azure, na poziomie szczegółowości najbardziej odpowiednim dla Ciebie.
 
