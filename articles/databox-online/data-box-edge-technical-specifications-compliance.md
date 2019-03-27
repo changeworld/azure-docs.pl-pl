@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ab3d3a13f8bfa69bd9e13dae344cfbcc3731cc77
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402596"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449201"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Usługa Azure specyfikacji technicznej krawędź pola danych
 
@@ -57,9 +57,17 @@ W poniższej tabeli wymieniono Wymiary obudowy milimetry i cala.
 
 |     Obudowy     |     Milimetry     |     Cala     |
 |-------------------|---------------------|----------------|
-|    Wysokość         |    304.8            |    12          |
-|    Szerokość          |    660.4            |    26          |
-|    Głębokość          |    1041.4           |    41          |
+|    Wysokość         |    44.45            |    1.75"          |
+|    Szerokość          |    434.1           |    17.09"          |
+|    Długość          |    740.4           |    29.15"          |
+
+W poniższej tabeli wymieniono wymiary pakiet wysyłki w milimetrach i cali.
+
+|     Pakiet     |     Milimetry     |     Cala     |
+|-------------------|---------------------|----------------|
+|    Wysokość         |    311.2            |    12.25"          |
+|    Szerokość          |    642.8          |    25.31"          |
+|    Długość          |   1,051.1          |    41.38"          |
 
 ### <a name="enclosure-weight"></a>Waga obudowy
 
@@ -67,8 +75,8 @@ Pakiet urządzenia zadowalająco uwzględni wagi 66 modułów równoważenia obc
 
 |     Obudowy                                 |     Waga          |
 |-----------------------------------------------|---------------------|
-|    Łączna waga tym pakowanie       |    66 modułów równoważenia obciążenia.          |
-|    Waga urządzenia                       |    48,3 modułów równoważenia obciążenia.        |
+|    Łączna waga tym pakowanie       |    61 modułów równoważenia obciążenia.          |
+|    Waga urządzenia                       |    35 modułów równoważenia obciążenia.          |
 
 ## <a name="enclosure-environment-specifications"></a>Specyfikacje środowiska obudowy
 

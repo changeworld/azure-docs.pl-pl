@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8cda538cade4750e03ecb91dfb2c478df730e556
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 20ca4b9d347b9dc01e3b890fcf3758fb2fb135b9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961299"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486142"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -63,8 +63,8 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Zamówienie | Yes | Kolejność etapów aranżacji. | 
-| Type | Yes | Typ kroku aranżacji. Możliwe wartości: <ul><li>**Elemencie ClaimsProviderSelection** — wskazuje, że kroku aranżacji przedstawia informacje o różnych dostawców oświadczeń użytkownikowi wybrać jeden z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że kroku aranżacji przedstawia połączone mediów społecznościowych strona rejestracji dla kont logowania i lokalnych.</li><li>**Elementu ClaimsExchange** — wskazuje, że kroku aranżacji wymienia oświadczenia, za pomocą dostawcy oświadczeń.</li><li>**SendClaims** — wskazuje, że kroku aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczenia.</li></ul> | 
+| `Order` | Yes | Kolejność etapów aranżacji. | 
+| `Type` | Yes | Typ kroku aranżacji. Możliwe wartości: <ul><li>**Elemencie ClaimsProviderSelection** — wskazuje, że kroku aranżacji przedstawia informacje o różnych dostawców oświadczeń użytkownikowi wybrać jeden z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że kroku aranżacji przedstawia połączone mediów społecznościowych strona rejestracji dla kont logowania i lokalnych.</li><li>**Elementu ClaimsExchange** — wskazuje, że kroku aranżacji wymienia oświadczenia, za pomocą dostawcy oświadczeń.</li><li>**SendClaims** — wskazuje, że kroku aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczenia.</li></ul> | 
 | ContentDefinitionReferenceId | Nie | Identyfikator [zawartości definicji](contentdefinitions.md) skojarzony z tym krokiem aranżacji. Zazwyczaj identyfikator odwołania definicji zawartości jest zdefiniowany w profilu technicznym samodzielnie. Gdy usługa Azure AD B2C musi wyświetlić coś bez profilu technicznego istnieją jednak przypadki. Istnieją dwa przykłady, jeśli typ kroku aranżacji jest jednym z następujących czynności: `ClaimsProviderSelection` lub `CombinedSignInAndSignUp`. Usługa Azure AD B2C wymaganych, aby wyświetlić wyboru dostawcy tożsamości bez profilu technicznego. | 
 | CpimIssuerTechnicalProfileReferenceId | Nie | Typ kroku aranżacji jest `SendClaims`. Ta właściwość określa identyfikator profilu technicznego dotyczącego dostawcy oświadczeń, który wystawia token dla jednostki uzależnionej.  Jeśli brak, jest tworzony token nie jednostki uzależnionej ze stron. |
 
@@ -92,8 +92,8 @@ Aby określić uporządkowaną listą kroków aranżacji **OrchestrationSteps** 
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Type | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, czy działania powinny wykonane, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, która określa, że akcje należy wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa określonej wartości. |
-| ExecuteActionsIf | Yes | Użyj testu prawda lub FAŁSZ, aby zdecydować, jeśli można wykonać akcje w warunku wstępnym. | 
+| `Type` | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, czy działania powinny wykonane, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, która określa, że akcje należy wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa określonej wartości. |
+| `ExecuteActionsIf` | Yes | Użyj testu prawda lub FAŁSZ, aby zdecydować, jeśli można wykonać akcje w warunku wstępnym. | 
 
 **Wstępnym** elementy zawierają następujące elementy:
 

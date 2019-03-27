@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 63b134ab9bfdac3617c845da7a14ee6b9234c84d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5647802ff383ce046d108f25384df81bcbd08cd3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782024"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484901"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Wyślij metryki systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywania, przy użyciu szablonu usługi Resource Manager dla maszyny wirtualnej Windows
 
@@ -243,12 +243,12 @@ Aby wdrożyć szablon usługi Resource Manager, będziemy korzystać z programu 
 1. Pobierz listę subskrypcji przy użyciu `Get-AzSubscription`.
 1. Ustaw subskrypcję, której używasz do utworzenia/zaktualizowania maszynę wirtualną w:
 
-   ```PowerShell
+   ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
 1. Aby utworzyć nową grupę zasobów dla maszyny Wirtualnej, który jest wdrażany, uruchom następujące polecenie:
 
-   ```PowerShell
+   ```powershell
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
@@ -258,7 +258,7 @@ Aby wdrożyć szablon usługi Resource Manager, będziemy korzystać z programu 
    > [!NOTE]
    > Jeśli chcesz zaktualizować istniejącą maszynę Wirtualną, wystarczy dodać *— tryb Przyrostowy* -to-end następującego polecenia.
 
-   ```PowerShell
+   ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 

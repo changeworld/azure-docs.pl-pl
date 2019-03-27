@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: cb68e93553be66d0d0be0edf61e491217bfe4d48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 92c09e7defe159818b22bc8275d011d05512aa66
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091311"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446583"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Użyj widoku Hive narzędzia Ambari Apache przy użyciu technologii Apache Hadoop w HDInsight
 
@@ -108,8 +108,6 @@ Aby wyświetlić interfejsu użytkownika Tez dla zapytania, zaznacz **Tez** kart
 
 > [!IMPORTANT]  
 > Tez nie jest używany do rozpoznawania wszystkich zapytań. Wiele zapytań można rozwiązać, bez korzystania z aplikacji Tez. 
-
-Jeśli Tez użyte do rozpoznania zapytania, wyświetlana jest kierowane acykliczne wykresu (DAG). Jeśli chcesz wyświetlić grupy DAG dla zapytań, po uruchomieniu w przeszłości, lub jeśli chcesz debugować proces aplikacji Tez, należy użyć [widoku Tez](../hdinsight-debug-ambari-tez-view.md) zamiast tego.
 
 ## <a name="view-job-history"></a>Wyświetlanie historii zadań
 

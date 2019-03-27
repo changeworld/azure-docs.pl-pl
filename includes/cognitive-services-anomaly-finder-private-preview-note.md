@@ -7,15 +7,15 @@ manager: cgrounlun
 ms.service: cognitive-services
 ms.technology: anomaly-finder
 ms.topic: include
-ms.date: 11/15/2018
+ms.date: 03/21/2019
 ms.author: nitinme
 ms.custom: include file
-ms.openlocfilehash: e93b889ee3ead06c28f9fec5659a61aad2752bac
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 1dab9b0e23b5fe574f9b4506fdcad510d378bfef
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716238"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58495058"
 ---
 > [!NOTE]
-> Narzędzie do wyszukiwania anomalii znajduje się w prywatnej wersji zapoznawczej. Aby dołączyć podgląd prywatnych do wyszukiwania anomalii [skontaktuj się z nami](mailto:kenshoteam@microsoft.com). Po udzielono dostępu, zapoznaj się z kontrolą dostępu [dokumentacji anomalii wyszukiwania prywatnej wersji zapoznawczej](https://aka.ms/AnomalyFinderPrivatePreview) Aby uzyskać więcej informacji.
+> Interfejs API wykrywanie anomalii (teraz w publicznej wersji zapoznawczej) jest wymiana laboratorium narzędzie do wyszukiwania anomalii. Istniejące labs narzędzie do wyszukiwania anomalii zostaną usunięte na 30 kwietnia 2019 r. Zachęcamy do migrowania na wykrywanie anomalii przed upływem wskazanego terminu. Zobacz [dokumentacji interfejsu API wykrywanie anomalii](../articles/cognitive-services/anomaly-detector/index.yml) Aby uzyskać więcej informacji. 

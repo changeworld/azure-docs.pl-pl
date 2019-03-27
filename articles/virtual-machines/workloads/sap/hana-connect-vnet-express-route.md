@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a64a60603cd9898386a975313afc676e3b253326
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 071db2d9aeda2373c85ae62c47bbef175dcb7678
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353601"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483407"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Łączenie sieci wirtualnej do dużych wystąpień HANA
 
@@ -34,7 +34,7 @@ Jeśli ta brama już istnieje, sprawdź, czy jest brama usługi ExpressRoute. W 
   - Jeśli używasz witryny Azure portal, Dodaj nowy **bramy sieci wirtualnej**, a następnie wybierz pozycję **ExpressRoute** jako typ bramy.
   - Jeśli używasz programu PowerShell, należy najpierw pobrać i użyć najnowszej wersji [Azure PowerShell SDK](https://azure.microsoft.com/downloads/). Następujące polecenia Utwórz bramę usługi ExpressRoute. Teksty poprzedzone _$_ to zmienne zdefiniowane przez użytkownika, które powinien być zaktualizowany o konkretnych informacji.
 
-```PowerShell
+```powershell
 # These Values should already exist, update to match your environment
 $myAzureRegion = "eastus"
 $myGroupName = "SAP-East-Coast"
@@ -71,7 +71,7 @@ Usługa Azure virtual network ma teraz bramę usługi ExpressRoute. Za pomocą i
 
 Uruchom następujące polecenia dla każdej bramy sieci wirtualnej przy użyciu różnych AuthGUID dla każdego połączenia. Pierwsze dwie pozycje pokazano w poniższym skrypcie pochodzą z informacji podanych przez firmę Microsoft. Ponadto AuthGUID jest specyficzne dla każdej sieci wirtualnej i bramy. Aby dodać kolejną sieć wirtualną platformy Azure, musisz uzyskać inny AuthID obwód usługi ExpressRoute, który łączy dużych wystąpień HANA na platformie Azure. 
 
-```PowerShell
+```powershell
 # Populate with information provided by Microsoft Onboarding team
 $PeerID = "/subscriptions/9cb43037-9195-4420-a798-f87681a0e380/resourceGroups/Customer-USE-Circuits/providers/Microsoft.Network/expressRouteCircuits/Customer-USE01"
 $AuthGUID = "76d40466-c458-4d14-adcf-3d1b56d1cd61"

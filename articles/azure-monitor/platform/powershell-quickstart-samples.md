@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: ae06fae8aa7706428a71b8069eff58ba8bf6abb1
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1ca2faca6c3d34ec4c987df85fff65e0a8fdc7f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307517"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486061"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykłady — szybki start usługi Azure Monitor programu PowerShell
 Ten artykuł przedstawia przykładowe polecenia programu PowerShell, aby ułatwić dostęp do funkcji usługi Azure Monitor.
@@ -32,19 +32,19 @@ Przykłady w artykule pokazują, jak można użyć poleceń cmdlet usługi Azure
 ## <a name="sign-in-and-use-subscriptions"></a>Zaloguj się i używać subskrypcji
 Najpierw zaloguj się do subskrypcji platformy Azure.
 
-```PowerShell
+```powershell
 Connect-AzAccount
 ```
 
 Zostanie wyświetlony ekran logowania. Po zalogowaniu się na Twoim koncie, identyfikator dzierżawy, a domyślny identyfikator subskrypcji są wyświetlane. Wszystkie polecenia cmdlet platformy Azure działa w ramach subskrypcji domyślnej. Aby wyświetlić listę subskrypcji masz dostęp, użyj następującego polecenia:
 
-```PowerShell
+```powershell
 Get-AzSubscription
 ```
 
 Aby zmienić kontekst pracy do innej subskrypcji, użyj następującego polecenia:
 
-```PowerShell
+```powershell
 Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
@@ -54,37 +54,37 @@ Użyj `Get-AzLog` polecenia cmdlet.  Poniżej przedstawiono kilka typowych przyk
 
 Pobierz wpisy dziennika tej daty/godziny do przedstawienia:
 
-```PowerShell
+```powershell
 Get-AzLog -StartTime 2016-03-01T10:30
 ```
 
 Pobierz wpisy dziennika z zakresu daty/godziny:
 
-```PowerShell
+```powershell
 Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
 Pobierz wpisy dziennika w określonej grupie zasobów:
 
-```PowerShell
+```powershell
 Get-AzLog -ResourceGroup 'myrg1'
 ```
 
 Pobierz wpisy dziennika od dostawcy określonego zasobu z zakresu daty/godziny:
 
-```PowerShell
+```powershell
 Get-AzLog -ResourceProvider 'Microsoft.Web' -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
 Pobierz wszystkie wpisy dziennika przy użyciu określonego obiektu wywołującego:
 
-```PowerShell
+```powershell
 Get-AzLog -Caller 'myname@company.com'
 ```
 
 Następujące polecenie pobiera ostatnie 1000 zdarzeń z dziennika aktywności:
 
-```PowerShell
+```powershell
 Get-AzLog -MaxEvents 1000
 ```
 
@@ -98,13 +98,13 @@ Get-AzLog -MaxEvents 1000
 ## <a name="retrieve-alerts-history"></a>Pobieranie historii alertów
 Aby wyświetlić wszystkie zdarzenia alertów, można tworzyć zapytania dzienniki usługi Azure Resource Manager przy użyciu poniższych przykładach.
 
-```PowerShell
+```powershell
 Get-AzLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 2015-03-01
 ```
 
 Aby wyświetlić historię dla określonej reguły alertu, można użyć `Get-AzAlertHistory` polecenia cmdlet, przekazując identyfikator zasobu reguły alertu.
 
-```PowerShell
+```powershell
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
@@ -115,19 +115,19 @@ Wszystkie z poniższych poleceń, działają na grupę zasobów o nazwie "montes
 
 Wyświetl wszystkie właściwości reguły alertu:
 
-```PowerShell
+```powershell
 Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
 ```
 
 Pobieranie wszystkich alertów w grupie zasobów:
 
-```PowerShell
+```powershell
 Get-AzAlertRule -ResourceGroup montest
 ```
 
 Pobieranie wszystkich reguł alertów dla zasobu docelowego. Na przykład wszystkich reguł alertów jest ustawiony na maszynie Wirtualnej.
 
-```PowerShell
+```powershell
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
@@ -156,25 +156,25 @@ W poniższej tabeli opisano parametry i wartości używane do tworzenia alertu z
 
 Tworzenie akcji w wiadomości E-mail
 
-```PowerShell
+```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail myname@company.com
 ```
 
 Tworzenie akcji elementu Webhook
 
-```PowerShell
+```powershell
 $actionWebhook = New-AzAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
 ```
 
 Utwórz regułę alertu na metryce % procesora CPU na klasycznej maszynie Wirtualnej
 
-```PowerShell
+```powershell
 Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "East US" -ResourceGroup myrg1 -TargetResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.ClassicCompute/virtualMachines/my_vm1 -MetricName "Percentage CPU" -Operator GreaterThan -Threshold 1 -WindowSize 00:05:00 -TimeAggregationOperator Average -Actions $actionEmail, $actionWebhook -Description "alert on CPU > 1%"
 ```
 
 Pobieranie reguły alertu
 
-```PowerShell
+```powershell
 Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
@@ -183,13 +183,13 @@ Alertu polecenia cmdlet Add aktualizuje również reguły, jeśli reguły alertu
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>Pobierz listę dostępnych metryk dla alertów
 Możesz użyć `Get-AzMetricDefinition` polecenia cmdlet, aby wyświetlić listę wszystkich metryk dla określonego zasobu.
 
-```PowerShell
+```powershell
 Get-AzMetricDefinition -ResourceId <resource_id>
 ```
 
 Poniższy przykład generuje tabelę o nazwie metryki i jednostki dla niego.
 
-```PowerShell
+```powershell
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
@@ -198,7 +198,7 @@ Pełną listę dostępnych opcji `Get-AzMetricDefinition` znajduje się w temaci
 ## <a name="create-and-manage-activity-log-alerts"></a>Tworzenie i zarządzanie nimi alertów dziennika aktywności
 Możesz użyć `Set-AzActivityLogAlert` polecenia cmdlet, aby ustawić alert dziennika aktywności. Alert dziennika aktywności zostanie wymaga, należy najpierw zdefiniować warunkach jako słownik warunków, a następnie Utwórz alert, który używa tych warunków.
 
-```PowerShell
+```powershell
 
 $condition1 = New-AzActivityLogAlertCondition -Field 'category' -Equal 'Administrative'
 $condition2 = New-AzActivityLogAlertCondition -Field 'operationName' -Equal 'Microsoft.Compute/virtualMachines/write'
@@ -226,37 +226,37 @@ W poniższych przykładach pokazano, jak utworzyć ustawienia automatycznego ska
 
 Najpierw należy utworzyć zasadę, aby skalować w poziomie, za pomocą wzrost liczby wystąpień.
 
-```PowerShell
+```powershell
 $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
 Następnie utwórz regułę, skalować, zmniejszenie liczby wystąpień.
 
-```PowerShell
+```powershell
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
 ```
 
 Następnie utwórz profil dla reguły.
 
-```PowerShell
+```powershell
 $profile1 = New-AzAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "My_Profile"
 ```
 
 Utwórz właściwość elementu webhook.
 
-```PowerShell
+```powershell
 $webhook_scale = New-AzAutoscaleWebhook -ServiceUri "https://example.com?mytoken=mytokenvalue"
 ```
 
 Utwórz właściwość powiadomienia, ustawienia automatycznego skalowania, w tym wiadomości e-mail i elementu webhook, który został utworzony wcześniej.
 
-```PowerShell
+```powershell
 $notification1= New-AzAutoscaleNotification -CustomEmails ashwink@microsoft.com -SendEmailToSubscriptionAdministrators SendEmailToSubscriptionCoAdministrators -Webhooks $webhook_scale
 ```
 
 Na koniec Utwórz ustawienie skalowania automatycznego, aby dodać profil, który został utworzony wcześniej. 
 
-```PowerShell
+```powershell
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
@@ -265,13 +265,13 @@ Aby uzyskać więcej informacji o zarządzaniu ustawień automatycznego skalowan
 ## <a name="autoscale-history"></a>Historia automatycznego skalowania
 Poniższy przykład pokazuje, jak można wyświetlić ostatnie automatycznego skalowania i zdarzenia alertów. Aby wyświetlić historię skalowania automatycznego, należy użyć wyszukiwanie w dzienniku aktywności.
 
-```PowerShell
+```powershell
 Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartTime 2015-03-01
 ```
 
 Możesz użyć `Get-AzAutoScaleHistory` polecenia cmdlet, aby pobrać historii automatycznego skalowania.
 
-```PowerShell
+```powershell
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
@@ -282,20 +282,20 @@ Możesz użyć `Get-Autoscalesetting` polecenie cmdlet do pobierania informacji 
 
 Poniższy przykład przedstawia szczegółowe informacje o wszystkich ustawień automatycznego skalowania w grupie zasobów "myrg1".
 
-```PowerShell
+```powershell
 Get-AzAutoscalesetting -ResourceGroup myrg1 -DetailedOutput
 ```
 
 Poniższy kod przedstawia szczegółowe informacje o wszystkich ustawień skalowania automatycznego w grupie zasobów "myrg1" i specjalnie ustawienie automatycznego skalowania o nazwie "MyScaleVMSSSetting".
 
-```PowerShell
+```powershell
 Get-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting -DetailedOutput
 ```
 
 ### <a name="remove-an-autoscale-setting"></a>Usuń ustawienia automatycznego skalowania
 Możesz użyć `Remove-Autoscalesetting` polecenia cmdlet, aby usunąć ustawienia automatycznego skalowania.
 
-```PowerShell
+```powershell
 Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
@@ -306,26 +306,26 @@ Możesz utworzyć *profil dziennika* i Eksportuj dane z dziennika aktywności na
 Aby pobrać swoje istniejące profile dziennika, należy użyć `Get-AzLogProfile` polecenia cmdlet.
 
 ### <a name="add-a-log-profile-without-data-retention"></a>Dodaj profil dziennika bez przechowywania danych
-```PowerShell
+```powershell
 Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
 ```
 
 ### <a name="remove-a-log-profile"></a>Usuwanie profilu dziennika
-```PowerShell
+```powershell
 Remove-AzLogProfile -name my_log_profile_s1
 ```
 
 ### <a name="add-a-log-profile-with-data-retention"></a>Dodaj profil dziennika z przechowywaniem danych
 Można określić **- RetentionInDays** właściwości z liczbą dni, jako dodatnią liczbą całkowitą, w którym dane są zachowywane.
 
-```PowerShell
+```powershell
 Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ### <a name="add-log-profile-with-retention-and-eventhub"></a>Dodaj profil dziennika przechowywania i Centrum zdarzeń
 Oprócz routingu danych do konta magazynu, użytkownik może również Prześlij go strumieniowo do Centrum zdarzeń. W tej wersji zapoznawczej konfigurację konta magazynu jest wymagane, ale konfiguracja Centrum zdarzeń jest opcjonalna.
 
-```PowerShell
+```powershell
 Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
@@ -338,50 +338,50 @@ Wiele usług platformy Azure zapewniają dodatkowe dzienniki i dane telemetryczn
 Operację można wykonać tylko na poziomie zasobów. Centrum konta lub zdarzenia magazynu powinny znajdować się w tym samym regionie co zasób docelowy, na której skonfigurowano ustawienia diagnostyki.
 
 ### <a name="get-diagnostic-setting"></a>Pobierz ustawienie diagnostyczne
-```PowerShell
+```powershell
 Get-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp
 ```
 
 Wyłącz ustawienie diagnostyczne
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $false
 ```
 
 Włącz ustawienie diagnostyczne bez przechowywania
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $true
 ```
 
 Włącz ustawienie diagnostyczne z przechowywaniem
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp -StorageAccountId /subscriptions/s1/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/mystorageaccount -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
 Włącz ustawienie diagnostyczne z przechowywaniem dla kategorii określonego dziennika
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
 Włącz ustawienie diagnostyczne dla usługi Event Hubs
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
 ```
 
 Włącz ustawienie diagnostyczne dla usługi Log Analytics
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId /subscriptions/s1/resourceGroups/insights-integration/providers/providers/microsoft.operationalinsights/workspaces/myWorkspace -Enabled $true
 
 ```
 
 Należy zauważyć, że właściwość WorkspaceId przyjmuje *identyfikator zasobu* obszaru roboczego. Możesz uzyskać identyfikator zasobu obszaru roboczego usługi Log Analytics przy użyciu następującego polecenia:
 
-```PowerShell
+```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId
 
 ```

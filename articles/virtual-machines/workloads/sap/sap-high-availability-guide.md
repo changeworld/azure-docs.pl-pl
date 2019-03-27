@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6b6728d7eaa263bb7e9da0f08a47ffe2f1e961a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 81e31a6e5fd1260ec844cc36f28a64e44334ebec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009463"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482779"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver
 
@@ -455,14 +455,14 @@ Dla systemów SAP w środowisku produkcyjnym, wdrażanie maszyn wirtualnych plat
 2. W **SUBNETID** Dodaj pełny ciąg sieci platformy Azure przygotowany SubnetID, w którym planujesz wdrożyć usługi Azure virtual machines.
 3. Aby uzyskać listę wszystkich podsieci w sieci platformy Azure, uruchom następujące polecenie programu PowerShell:
 
-   ```PowerShell
+   ```powershell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
    **Identyfikator** pola pokazuje **SUBNETID**.
 4. Aby uzyskać listę wszystkich **SUBNETID** wartości, uruchom następujące polecenie programu PowerShell:
 
-   ```PowerShell
+   ```powershell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 
@@ -1196,7 +1196,7 @@ Aby dodać port sondy:
 
 1. Sprawdź bieżące **ProbePort** ustawienie, uruchamiając następujące polecenie programu PowerShell. Wykonaj go z jednej z maszyn wirtualnych w konfiguracji klastra.
 
-   ```PowerShell
+   ```powershell
    $SAPSID = "PR1"     # SAP <SID>
 
    $SAPNetworkIPClusterName = "SAP $SAPSID IP"
@@ -1213,7 +1213,7 @@ Aby dodać port sondy:
 
    Aby ustawić nową wartość ProbePort **SAP <*SID*> IP** zasób klastra, uruchom następujący skrypt programu PowerShell. Zaktualizuj zmienne programu PowerShell dla danego środowiska. Po uruchomieniu skryptu zostanie wyświetlony monit o ponowne uruchomienie Grupa klastra SAP do aktywowania zmian.
 
-   ```PowerShell
+   ```powershell
    $SAPSID = "PR1"      # SAP <SID>
    $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
 
@@ -1271,7 +1271,7 @@ Aby dodać port sondy:
 
    Po przekazaniu **SAP <*SID*>** klastra roli w tryb online, upewnij się, że **ProbePort** ustawiono nową wartość.
 
-   ```PowerShell
+   ```powershell
    $SAPSID = "PR1"     # SAP <SID>
 
    $SAPNetworkIPClusterName = "SAP $SAPSID IP"
@@ -1287,7 +1287,7 @@ Aby dodać port sondy:
 
 Musisz otworzyć port sondy zapory Windows na obu węzłach klastra. Użyj następującego skryptu, aby otworzyć port sondy zapory Windows. Zaktualizuj zmienne programu PowerShell dla danego środowiska.
 
-  ```PowerShell
+  ```powershell
   $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
 
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
@@ -1347,7 +1347,7 @@ _**Ilustracja 62** W oprogramowanie SIOS DataKeeper replikowania woluminu lokaln
    - Menedżer klastra trybu Failover  
    - Za pomocą programu PowerShell klastra trybu Failover
 
-   ```PowerShell
+   ```powershell
    $SAPSID = "PR1"     # SAP <SID>
 
    $SAPClusterGroup = "SAP $SAPSID"

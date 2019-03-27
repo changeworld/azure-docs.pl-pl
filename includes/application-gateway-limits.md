@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 77a391cc661ed33f5888d2b18cb9c5db16498cd6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554241"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58495046"
 ---
 | Zasób | Limit domyślny | Uwaga |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ ms.locfileid: "57554241"
 | Mapy adresów URL na odbiornik |1 | |
 | Maksymalna reguł opartych na ścieżkach na adres URL mapy|100||
 | Konfiguracje przekierowania |100<sup>1</sup>| |
-| Równoczesnych połączeń protokołu WebSocket |5000| |
+| Równoczesnych połączeń protokołu WebSocket |Średnie bram 20k<br> Duże bram 50k| |
 | Maksymalna długość adresu URL|8000||
 | Maksymalny rozmiar przekazywanych plików, standardowy |2 GB | |
 | Maksymalny przekazywania rozmiar zapory aplikacji sieci Web |Średnie bramy zapory aplikacji sieci Web, 100 MB<br>Duże bramy zapory aplikacji sieci Web, 500 MB| |

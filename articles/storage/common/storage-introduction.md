@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d558f0fa5abc421785ff6f9fcc2a6318819e3ebc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ae2384d0ac6773ccd362778d2913cdcaa9cb4d6c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012736"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446702"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -93,23 +93,15 @@ Usługa Azure Storage obejmuje również wszystkie funkcje dysków zarządzanych
 
 Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat [Przegląd konta usługi Azure Storage](storage-account-overview.md). 
 
-## <a name="accessing-your-blobs-files-and-queues"></a>Uzyskiwanie dostępu do obiektów blob, plików i kolejek
+## <a name="securing-access-to-storage-accounts"></a>Zabezpieczanie dostępu do konta magazynu
 
-Każde konto magazynu ma dwa klucze uwierzytelniania, przy czym każdego z nich można użyć do dowolnej operacji. Klucze są dwa, więc od czasu do czasu można je przerzucić w celu zwiększenia poziomu bezpieczeństwa. Zabezpieczenie tych kluczy jest bardzo ważne, ponieważ posiadanie ich wraz z nazwą konta daje nieograniczony dostęp do wszystkich danych na koncie magazynu.
+Musi być autoryzowana każde żądanie do usługi Azure Storage. Usługa Azure Storage obsługuje następujące metody autoryzacji:
 
-W tej sekcji omówiono dwa sposoby zabezpieczania konta magazynu i jego danych. Aby uzyskać szczegółowe informacje na temat zabezpieczania konta magazynu i jego danych, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](storage-security-guide.md).
-
-### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Zabezpieczanie dostępu do kont magazynu przy użyciu usługi Azure AD
-
-Jednym ze sposobów na zabezpieczenie danych magazynu jest kontrolowanie dostępu do kluczy konta magazynu. Dzięki kontroli dostępu opartej na rolach (RBAC, Role-Based Access Control) w usłudze Resource Manager możesz przypisywać role użytkownikom, grupom i aplikacjom. Te role są powiązane z określonym zestawem akcji, które są dozwolone lub niedozwolone. Udzielanie dostępu przy użyciu kontroli dostępu opartej na rolach obsługuje tylko operacje zarządzania dla tego konta magazynu, na przykład zmianę warstwy dostępu. Przy użyciu kontroli dostępu opartej na rolach nie można udzielać dostępu do obiektów danych takich jak określony kontener lub udział plików. Za pomocą kontroli dostępu opartej na rolach można natomiast udzielać dostępu do kluczy konta magazynu, przy użyciu których można następnie odczytać obiekty danych.
-
-### <a name="securing-access-using-shared-access-signatures"></a>Zabezpieczanie dostępu przy użyciu sygnatur dostępu współdzielonego
-
-Obiekty danych możesz zabezpieczyć przy użyciu sygnatur dostępu współdzielonego i przechowywanych zasad dostępu. Sygnatura dostępu współdzielonego to ciąg zawierający token zabezpieczający, który można dołączyć do identyfikatora URI dla zasobu, co umożliwia delegowanie dostępu do określonych obiektów oraz określanie ograniczeń takich jak uprawnienia oraz zakres dat/godzin dostępu. Ta funkcja ma rozbudowane możliwości. Zobacz [Używanie sygnatur dostępu współdzielonego (SAS)](storage-dotnet-shared-access-signature-part-1.md), aby uzyskać szczegółowe informacje.
-
-### <a name="public-access-to-blobs"></a>Dostęp publiczny do obiektów blob
-
-Usługa Blob umożliwia zapewnienie publicznego dostępu do kontenera i jego obiektów blob lub do konkretnego obiektu blob. Po wskazaniu, że kontener lub obiekt blob jest publiczny, dowolny użytkownik może go anonimowo odczytać — uwierzytelnianie nie jest wymagane. Można to zrobić na przykład w przypadku witryny internetowej korzystającej z obrazów, klipów wideo lub dokumentów z usługi Blob Storage. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md)
+- **Integracja usługi Azure Active Directory (Azure AD) danych obiektów blob i kolejek.** Usługa Azure Storage obsługuje uwierzytelnianie i autoryzacja przy użyciu poświadczeń usługi Azure AD dla obiektów Blob i kolejek usługi za pomocą kontroli dostępu opartej na rolach (RBAC). Autoryzowanie żądań z usługą Azure AD jest zalecana dla wyższego poziomu zabezpieczeń i łatwość użycia. Aby uzyskać więcej informacji, zobacz [uwierzytelnienia dostępu do platformy Azure obiekty BLOB i kolejki, przy użyciu usługi Azure Active Directory](storage-auth-aad.md).
+- **Autoryzacja usłudze Azure AD przy użyciu protokołu SMB dla usługi Azure Files (wersja zapoznawcza).** Usługa pliki systemu Azure obsługuje uwierzytelnianie oparte na tożsamości za pośrednictwem protokołu SMB (Server Message Block) za pośrednictwem usługi Azure Active Directory Domain Services. Przyłączone do domeny Windows maszyn wirtualnych (VM) mają dostęp do udziałów plików platformy Azure przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [autoryzacja — Omówienie programu Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)](../files/storage-files-active-directory-overview.md).
+- **Uwierzytelnianie za pomocą klucza współużytkowanego.** Usługi Azure Storage Blob, kolejki i tabeli i usługi Azure Files obsługuje autoryzacji za pomocą klienta Key.A udostępnione za pomocą klucza wspólnego autoryzacji przekazuje nagłówek z każdym żądaniem, który jest podpisany przy użyciu klucza dostępu konta magazynu. Aby uzyskać więcej informacji, zobacz [autoryzacji za pomocą klucza wspólnego](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
+- **Autoryzacja przy użyciu udostępnionych access signatures (SAS).** Sygnatury dostępu współdzielonego (SAS) jest ciąg zawierający token zabezpieczający, który można dołączyć do identyfikatora URI dla zasobu magazynu. Token zabezpieczający hermetyzuje ograniczeń, takich jak uprawnienia oraz zakres dostępu. Aby uzyskać więcej informacji, zobacz [przy użyciu dostępu współdzielonego Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Anonimowy dostęp do kontenerów i obiektów blob.** Kontenera i jego obiektów blob może być dostępne publicznie. Po określeniu, kontenera lub obiektu blob jest publiczny, każda osoba może go anonimowo odczytać; nie jest wymagane uwierzytelnienie. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md)
 
 ## <a name="encryption"></a>Szyfrowanie
 

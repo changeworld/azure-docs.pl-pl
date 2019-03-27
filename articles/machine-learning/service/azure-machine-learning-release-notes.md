@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b9ab48ea971a5e7f5e9c72f9e729d2fcb5ed37f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437870"
+ms.locfileid: "58444653"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -29,6 +29,23 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 
 + **Nowe funkcje**
   + *Azureml.core.Run.create_children* metoda umożliwia tworzenie małych opóźnieniach wiele podrzędnych uruchamiany przy użyciu jednego wywołania.
+
+### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Zestaw SDK v1.1.0 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Fundamentalne zmiany**
+  + Pojęcie pakiet przygotowania bazy danych jest przestarzała i nie jest już obsługiwana. Zamiast utrwalanie wiele przepływów danych w jednym pakiecie, jednak można utrwalić przepływów danych indywidualnie.
+    + Przewodnik: [Otwieranie i zapisywanie przepływów danych notesu](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
+
++ **Nowe funkcje**
+  + Przygotowywanie danych teraz może rozpoznawać kolumn, które dopasować określony typu semantycznego i dzielenie się odpowiednio. STypes aktualnie obsługiwane obejmują: adres e-mail, współrzędne geograficzne (szerokość i długość geograficzna), adresy IPv4 i IPv6, numer telefonu w Stanach Zjednoczonych oraz kodem pocztowym.
+    + Przewodnik: [Semantyczne notesu typów](https://aka.ms/aml-data-prep-semantic-types-nb)
+  + Przygotowywanie danych obsługuje teraz następujące operacje do generowania wynikowe kolumny z dwóch kolumnach liczbowych: odejmowanie, mnożenie, dzielenie i modulo.
+  + Możesz wywołać `verify_has_data()` na przepływ danych w celu sprawdzenia, czy przepływ danych dałby w efekcie rekordy jeśli wykonywane.
+
++ **Poprawki błędów i ulepszenia**
+  + Można teraz określić liczbę pojemniki do użycia w histogram kolumny liczbowej profilów.
+  + `read_pandas_dataframe` Przekształcenie teraz wymaga DataFrame mieć parametry - lub bajt typowanie nazw kolumn.
+  + Usunięto usterkę w `fill_nulls` brakuje transformacji, gdzie wartości zostały poprawnie wypełniony. Jeśli kolumna.
 
 ## <a name="2019-03-11"></a>2019-03-11
 

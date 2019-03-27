@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 0fd96f9bd3027568e81e9c56ddb095297c699683
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 77519c57c9a603ae0eff46d248ff15432d0404fa
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089778"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485403"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analizowanie zabezpieczeń maszyny wirtualnej przy użyciu widoku grupy zabezpieczeń przy użyciu interfejsu API REST
 
@@ -42,7 +42,7 @@ Scenariusz, w tym artykule pobiera zasady zabezpieczeń efektywny i zastosowanyc
 
 ## <a name="log-in-with-armclient"></a>Zaloguj się przy użyciu ARMClient
 
-```PowerShell
+```powershell
 armclient login
 ```
 

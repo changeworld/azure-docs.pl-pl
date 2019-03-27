@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 635700529007cc90c7e9b79c224f55f34b326f0f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5d7036f2c7301223b27c80402dace8e9ea05b7f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167074"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487825"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -106,8 +106,8 @@ W wyniku token JWT wystawione przez usługę Azure AD B2C, emituje `family_name`
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Type | Yes | Typ oświadczenia maski. Możliwe wartości: `Simple` lub `Regex`. `Simple` Wartość wskazuje, że maska prosty tekst jest stosowane wiodących części oświadczenia ciągu. `Regex` Wartość wskazuje, że wyrażenie regularne jest stosowany do oświadczenia ciągu jako całości.  Jeśli `Regex` jest określona, opcjonalny atrybut musi także być zdefiniowany za pomocą wyrażeń regularnych do użycia. |
-| Regex | Nie | Jeśli **typu** ustawiono `Regex`, określ wyrażenie regularne do użycia.
+| `Type` | Yes | Typ oświadczenia maski. Możliwe wartości: `Simple` lub `Regex`. `Simple` Wartość wskazuje, że maska prosty tekst jest stosowane wiodących części oświadczenia ciągu. `Regex` Wartość wskazuje, że wyrażenie regularne jest stosowany do oświadczenia ciągu jako całości.  Jeśli `Regex` jest określona, opcjonalny atrybut musi także być zdefiniowany za pomocą wyrażeń regularnych do użycia. |
+| `Regex` | Nie | Jeśli **`Type`** ustawiono `Regex`, określ wyrażenie regularne do użycia.
 
 Poniższy przykład umożliwia skonfigurowanie **PhoneNumber** oświadczenia `Simple` maski:
 
@@ -162,7 +162,7 @@ Struktura środowiska tożsamości powoduje wyświetlenie tylko pierwszą liter�
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Tekst | Yes | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
-|Value | Yes | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
+|Wartość | Yes | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
 | SelectByDefault | Nie | Wskazuje, czy należy wybrać tę opcję, domyślnie w interfejsie użytkownika. Możliwe wartości: Wartość TRUE lub False. |
 
 Poniższy przykład umożliwia skonfigurowanie **Miasto** lista rozwijana lista oświadczeń z wartością domyślną wartość `New York`:

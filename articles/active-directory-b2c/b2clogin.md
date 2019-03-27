@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8188e36278bad9c93f709a5d7d9f831d1c19e6b4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160908"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486851"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Zestaw przekierowania adresów URL z usługi b2clogin.com dla usługi Azure Active Directory B2C
 
@@ -25,6 +25,13 @@ Korzystanie z usługi b2clogin.com zapewnia dodatkowe korzyści, takich jak:
 
 - Zmniejszono ilość miejsca na używana w nagłówku plików cookie przez usługi Microsoft Azure.
 - Adresami URL nie będzie zawierać odniesienie do firmy Microsoft. Na przykład `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+
+>[!NOTE]
+> Program nazwa dzierżawy i dzierżawy, identyfikator GUID w następujący sposób:
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (które nadal odwołuje się do `onmicrosoft.com`)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (w takim przypadku nie ma żadnego odwołania do firmy Microsoft w ogóle)
+>
+> Nie można jednak użyć _domeny niestandardowej_ dla usługi Azure Active Directory B2C dzierżawy, np. `https://your-tenant-name.b2clogin.com/your-custom-domain-name` będzie _nie_ pracy.
 
 Należy wziąć pod uwagę te ustawienia, które może być konieczna zmiana podczas korzystania z usługi b2clogin.com:
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 777b3a8d414f0b785d908c37da98e987445ed96d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c54d2aef2d8e748e31bffcecef323c4806d15f60
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317463"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482062"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -96,6 +96,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > Wszystkie wystąpienia metadanych zapytania jest rozróżniana wielkość liter.
 
 ### <a name="data-output"></a>Dane wyjściowe
+
 Domyślnie Instance Metadata Service zwraca dane w formacie JSON (`Content-Type: application/json`). Jednak różne interfejsy API zwracają dane w różnych formatach, jeśli jest to wymagane.
 Poniższa tabela jest odwołaniem do innych formatów danych, które mogą obsługiwać interfejsy API.
 
@@ -111,6 +112,9 @@ Aby uzyskać dostęp, format odpowiedzi innych niż domyślne, określ żądany 
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
+> [!NOTE]
+> Dla węzły liści `format=json` nie działa. Aby te zapytania `format=text` należy jawnie określić, czy domyślny format json.
+
 ### <a name="security"></a>Bezpieczeństwo
 
 Instance Metadata Service punkt końcowy jest dostępny tylko w obrębie uruchomionego wystąpienia maszyny wirtualnej bez obsługi routingu adresu IP. Ponadto, żądanie przy użyciu `X-Forwarded-For` nagłówek zostanie odrzucone przez usługę.
@@ -123,8 +127,8 @@ Jeśli istnieje, nie znaleziono elementu danych lub źle sformułowane żądanie
 Kod stanu HTTP | Przyczyna
 ----------------|-------
 200 OK |
-400 Niewłaściwe żądanie | Brak `Metadata: true` nagłówka
-404 — Nie odnaleziono | Żądany element nie istnieje. 
+400 Niewłaściwe żądanie | Brak `Metadata: true` nagłówek lub Brak formatu podczas wykonywania zapytań dotyczących węzeł liścia
+404 — Nie odnaleziono | Żądany element nie istnieje.
 Metoda 405 nie jest dozwolona | Tylko `GET` i `POST` żądania są obsługiwane
 429 zbyt wiele żądań | Interfejs API obsługuje obecnie maksymalnie 5 zapytań na sekundę
 Błąd usługi 500     | Spróbuj ponownie po pewnym czasie
@@ -503,12 +507,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Platforma Azure oferuje różne chmur suwerennych, takich jak [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/). Czasami konieczne jest środowisko platformy Azure do podejmowania decyzji dotyczących niektórych środowiska uruchomieniowego. Poniższy przykład pokazuje, jak można osiągnąć to zachowanie.
 
 **Żądanie**
-``` bash
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Odpowiedź**
-```
+```bash
 AZUREPUBLICCLOUD
 ```
 

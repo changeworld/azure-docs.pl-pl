@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544045"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444817"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
@@ -29,6 +29,29 @@ Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostęp
 > Jednostka SKU autoskalowanej i strefowo nadmiarowej bramy aplikacji jest aktualnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porównanie funkcji jednostki SKU v1 i v2 jednostki SKU
+
+W poniższej tabeli porównano funkcje dostępne w każdej jednostki SKU.
+
+|                                                   | Jednostka SKU V1   | Jednostka SKU w wersji 2   |
+| ------------------------------------------------- | -------- | -------- |
+| Skalowanie automatyczne                                       |          | &#x2713; |
+| Nadmiarowości strefy                                   |          | &#x2713; |
+| &nbsp;Statyczny adres VIP&nbsp;&nbsp;                      |          | &#x2713; |
+| Routing oparty na adresach URL                                 | &#x2713; | &#x2713; |
+| Hostowanie wielu witryn                             | &#x2713; | &#x2713; |
+| Przekierowywanie ruchu                               | &#x2713; | &#x2713; |
+| Zapora aplikacji internetowej                    | &#x2713; | &#x2713; |
+| Kończenie żądań protokołu Secure Sockets Layer (SSL)            | &#x2713; | &#x2713; |
+| End-to-end szyfrowania SSL                         | &#x2713; | &#x2713; |
+| Koligacja sesji                                  | &#x2713; | &#x2713; |
+| Niestandardowe strony błędów                                | &#x2713; | &#x2713; |
+| Ponownie zapisuje nagłówki HTTP (S)                           |          | &#x2713; |
+| Obsługa protokołu WebSocket                                 | &#x2713; | &#x2713; |
+| Obsługa protokołu HTTP/2                                    | &#x2713; | &#x2713; |
+| Opróżnianie połączeń                               | &#x2713; | &#x2713; |
+| Usługa Azure kontrolera danych przychodzących rozwiązania Kubernetes Service (AKS) |          | &#x2713; |
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
@@ -48,7 +71,7 @@ W trakcie okresu zapoznawczego nie ma opłat. Opłaty naliczane są za zasobów 
 |Sieciowa grupa zabezpieczeń dla zakresu portów dla ruchu przychodzącego| -65200 do 65535, aby uzyskać Standard_v2 jednostki SKU<br>-65503 do 65534 dla standardowej jednostki SKU.<br>Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Dzienniki wydajności w usłudze Diagnostyka Azure|Nieobsługiwane.<br>Metryki platformy Azure powinna być używana.|
 |Rozliczenia|Nie ma obecnie nie rozliczeń.|
-|Tryb FIPS, WebSocket|Te nie są obecnie obsługiwane.|
+|Tryb FIPS|Te nie są obecnie obsługiwane.|
 |Trybie tylko do wewnętrznego modułu równoważenia obciążenia|To nie jest obecnie obsługiwane. Publiczne i tryb wewnętrznego modułu równoważenia obciążenia ze sobą jest obsługiwany.|
 |Sieć, obserwator integracji|Nie są obsługiwane w publicznej wersji zapoznawczej.|
 
