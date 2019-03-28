@@ -1,0 +1,77 @@
+---
+title: Tworzenie bliźniaczą reprezentację modułu zabezpieczeń usługi ASC dla IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć ASC bliźniaczą reprezentację modułu IoT do użycia z usługą ASC dla IoT.
+services: ascforiot
+documentationcenter: na
+author: mlottner
+manager: barbkess
+editor: ''
+ms.assetid: c782692e-1284-4c54-9d76-567bc13787cc
+ms.service: ascforiot
+ms.devlang: na
+ms.topic: quickstart
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/26/2019
+ms.author: mlottner
+ms.openlocfilehash: 89802a638944ec220186e943d5fdc33524b2d4e9
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541676"
+---
+# <a name="quickstart-create-an-asc-for-iot-module-twin"></a>Szybki start: Utwórz ASC bliźniaczą reprezentację modułu IoT
+
+> [!IMPORTANT]
+> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ten przewodnik Szybki Start wyjaśnień dotyczących utworzyć indywidualne ASC dla bliźniaczych reprezentacjach modułów IoT nowego urządzenia lub usługi batch Utwórz bliźniaczych reprezentacjach modułów dla wszystkich urządzeń w usłudze IoT Hub.  
+
+## <a name="understanding-asc-for-iot-module-twins"></a>Opis usługi ASC dotyczących bliźniaczych reprezentacjach modułów IoT 
+
+Dla rozwiązań IoT, zbudowany na platformie Azure bliźniacze reprezentacje urządzeń odgrywają kluczową rolę zarówno w przypadku zarządzania urządzeniami, jak i automatyzację procesów. 
+
+ASC IoT oferuje pełną integrację ze swojej istniejącej IoT platforma do zarządzania urządzeniami, dzięki któremu można zarządzać stanu zabezpieczeń urządzenia oraz upewnij korzystać z istniejących możliwości kontroli urządzenia. ASC integracji IoT jest osiągane dzięki wykorzystaniu usługi IoT Hub bliźniaczej reprezentacji mechanizm.  
+
+Zobacz [bliźniaczych reprezentacjach modułów usługi IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) dowiedzieć się więcej o ogólnym założeniem bliźniaczych reprezentacjach modułów w usłudze Azure IoT Hub. 
+ 
+ASC IoT sprawia, że użycie mechanizmu bliźniaczej reprezentacji modułu i utrzymuje bliźniaczą reprezentację modułu zabezpieczeń dla każdego urządzenia. Bliźniacza reprezentacja modułu zabezpieczeń przechowuje wszystkie informacje dotyczą zasady zabezpieczeń urządzeń dla każdego urządzenia. 
+ 
+Aby wykorzystać ASC funkcji IoT, musisz tworzenia, konfigurowania i używania tych bliźniaczych reprezentacjach modułów zabezpieczeń dla każdego urządzenia w usłudze.  
+
+## <a name="create-asc-for-iot-module-twin"></a>Tworzenie usługi ASC dla bliźniaczą reprezentację modułu IoT 
+
+ASC bliźniaczych reprezentacjach modułów IoT mogą być tworzone w trybie wsadowym przy użyciu domyślnej konfiguracji lub osobno przy użyciu określonej konfiguracji dla każdego urządzenia. Do przetworzenia wsadowego tworzone dla nowych urządzeń lub urządzeń bez bliźniaczą reprezentację modułu, należy użyć [skrypt wsadowy modułu](https://aka.ms/iot-security-github-create-module). 
+
+>[!NOTE] 
+> Za pomocą metody partii nie spowoduje zastąpienie istniejących bliźniaczych reprezentacjach modułów. TYLKO przy użyciu metody batch tworzy nowy bliźniaczych reprezentacjach modułów dla urządzeń, które nie zostały jeszcze bliźniaczą reprezentację modułu. 
+
+Zobacz [zmodyfikować bliźniaczą reprezentację modułu zabezpieczeń](how-to-modify-security-module-twin.md) dowiesz się, jak zmodyfikować lub zmiany konfiguracji istniejących bliźniaczą reprezentację modułu. 
+
+Aby utworzyć nowy ASC IoT moduł bliźniacza reprezentacja urządzenia, wykonaj następujące instrukcje: 
+
+1. W usłudze IoT Hub Znajdź i wybierz urządzenie, którego chcesz utworzyć zabezpieczeń bliźniaczą reprezentację modułu w usłudze IoT Hub. 
+1. W **Nazwa tożsamości firmy Microsoft** wprowadź **ascforiotsecurity**.
+1. Kliknij pozycję **Zapisz**. 
+
+## <a name="verify-creation-of-a-module-twin"></a>Sprawdź tworzenia bliźniaczej reprezentacji modułu
+
+Aby sprawdzić, czy bliźniaczą reprezentację modułu zabezpieczeń istnieje dla określonego urządzenia:
+
+1. W usłudze Azure IoT Hub, wybierz **urządzeń IoT** z **Eksploratory** menu.    
+1. Wprowadź identyfikator urządzenia, lub wybierz opcję **pola urządzenia zapytania** i kliknij przycisk **zapytania urządzeń**. 
+    ![Zapytania urządzeń](./media/quickstart/verify-security-module-twin.png)
+1. Wybierz urządzenie lub dwukrotnie kliknij go, aby otworzyć stronę szczegółów urządzenia. 
+1. Wybierz **tożsamości modułu** menu i Sprawdź istnienie **ascforiotsecurity** modułu i **stan połączenia** z **połączono**na liście tożsamości modułu skojarzone z urządzeniem. 
+    ![Moduły skojarzone z urządzenia](./media/quickstart/verify-security-module-twin-2.png)
+
+
+Aby dowiedzieć się więcej o dostosowywaniu właściwości ASC dla bliźniaczych reprezentacjach modułów IoT, zobacz [konfiguracji agenta](concept-agent-configuration.md).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Przejdź do następnego artykułu, aby dowiedzieć się, jak skonfigurować niestandardowe alerty...
+
+> [!div class="nextstepaction"]
+> [Skonfiguruj alerty niestandardowe](quickstart-create-custom-alerts.md)

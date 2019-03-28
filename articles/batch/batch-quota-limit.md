@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 51be74d0adbd5ce75234be2a5b7c99fcd36ca91c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: e33d014bd2dddf0c7310727229f8137c9f181325
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295270"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540979"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Limity przydziału i limity usługi Batch
 
@@ -77,14 +77,12 @@ Wyświetl limity przydziału konta usługi Batch w [witryny Azure portal][portal
 1. Wybierz **konta usługi Batch** w portalu, a następnie wybierz konto usługi Batch interesuje Cię.
 1. Wybierz **przydziały** menu konta usługi Batch.
 1. Wyświetl limity przydziału, obecnie stosowany do konta usługi Batch
-   
+
     ![Limity przydziału konta usługi Batch][account_quotas]
-
-
 
 ## <a name="increase-a-quota"></a>Zwiększ limit przydziału
 
-Wykonaj następujące kroki, aby zażądać przydziału zwiększyć dla konta usługi Batch lub subskrypcją za pomocą [witryny Azure portal][portal]. Typ zwiększenia limitu przydziału, zależy od trybu alokacji puli konta usługi Batch.
+Wykonaj następujące kroki, aby zażądać przydziału zwiększyć dla konta usługi Batch lub subskrypcją za pomocą [witryny Azure portal][portal]. Typ zwiększenia limitu przydziału, zależy od trybu alokacji puli konta usługi Batch. Aby zażądać zwiększenia limitu przydziału, musi zawierać serię maszyn wirtualnych, które chcesz zwiększyć limit przydziału. Po zastosowaniu zwiększenia limitu przydziału jest stosowana do wszystkich maszyn wirtualnych serii.
 
 ### <a name="increase-a-batch-cores-quota"></a>Zwiększ limit przydziału rdzeni usługi Batch 
 

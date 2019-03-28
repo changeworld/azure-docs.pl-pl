@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: be96aaa69fc1d59bdfa8079eff99c13c1e92c736
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3b3bb206286629a68c14b6444f3f88ffa0af50dd
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905124"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540877"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Korzystanie z usługi Azure Premium Storage z programem SQL Server na maszynach wirtualnych
 
@@ -682,7 +682,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Krok 2: Zwiększ dozwolonych błędów w zasobach <Optional>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Krok 2: Zwiększ dozwolonych błędów w zasobach \<Optional >
 
 W niektórych zasobów, które należą do sieci zawsze włączonej grupy dostępności istnieją limity jak wiele błędów, które mogą wystąpić w okresie, w którym usługa klastrowania podejmie próbę ponownego uruchomienia grupy zasobów. Zalecane jest, że zwiększenie to o ile możesz są zalet tej procedury od w przeciwnym razie ręcznie trybu failover i wyzwalania trybu failover przez zamknięcie maszyny, na których można uzyskać blisko tego limitu.
 
@@ -692,7 +692,7 @@ Byłoby rozsądne dwukrotnie dopuszczalna liczba awarii, w tym celu w Menedżerz
 
 Zmień maksymalna liczba awarii na 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Krok 3: Dodawanie adresu IP zasobu dla grupy klastra <Optional>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Krok 3: Dodawanie adresu IP zasobu dla grupy klastra \<Optional >
 
 Jeśli masz tylko jeden adres IP dla grupy klastra i to jest wyrównany do podsieci, w chmurze, należy pamiętać, jeśli przypadkowo w tryb offline wszystkich węzłów klastra w chmurze w tej sieci, a następnie zasób adresu IP klastra i nazwa sieciowa klastra są nie będą mogli trybu online. W takiej sytuacji uniemożliwia ona aktualizacje dla innych zasobów klastra.
 

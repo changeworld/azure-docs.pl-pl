@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/18/2018
+ms.date: 03/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab0e7ce1891dc3553f89f652c7dac70e66a4df0
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7ae5b58fb87aaa94e081f9cb60d063c70e5d0359
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499917"
+ms.locfileid: "58540962"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -41,7 +41,7 @@ Pobierz | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink
 >[!NOTE]
 >Nie wszystkie wersje programu Azure AD Connect będzie dostępna dla uaktualnienie automatyczne. Stan wersji wskazuje, czy wydanie jest udostępniana dla uaktualnienie automatyczne lub tylko pobieranie. Jeśli automatyczne uaktualnianie zostało włączone na serwerze programu Azure AD Connect tego serwera zostanie automatycznie uaktualniona do najnowszej wersji programu Azure AD Connect, wydawanego dla uaktualnienie automatyczne. Należy pamiętać, że nie wszystkie konfiguracje program Azure AD Connect kwalifikujące się do automatycznego uaktualnienia. Postępuj zgodnie z tego linku, aby dowiedzieć się więcej o [automatyczne uaktualnianie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="13900"></a>1.3.90.0 
+## <a name="13100"></a>1.3.10.0 
 
 ### <a name="release-status"></a>Stan zlecenia 
 

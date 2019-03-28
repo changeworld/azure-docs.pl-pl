@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 615005e265f199cd6950123aa2af8b26f4fa4637
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456811"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541166"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Usługa Azure Resource Manager testowej
+# <a name="azure-resource-manager-test-drive"></a>Wersja testowa usługi Azure Resource Manager
 
 Ten artykuł jest dla wydawców, którzy mają swoją ofertę w portalu Azure Marketplace lub korzystający z usługi AppSource, ale chcesz tworzyć ich wersji testowej przy użyciu tylko zasobów platformy Azure.
 
@@ -51,7 +51,7 @@ Poniżej przedstawiono proces tworzenia wersji testowej usługi Resource Manager
 
 To najważniejszy element o tworzeniu usługi Azure Resource Manager testowej do zdefiniowania, jakie scenario(s) użytkownicy powinni się. Czy program zapory i chcesz pokaz, jak obsługiwać ataki przez iniekcję kodu skryptu? Czy można produktu magazynu i chcesz pokaz, jak szybko i łatwo, rozwiązania kompresuje pliki?
 
-Należy zabezpieczenia poświęcić wystarczająca ilość czasu, ocenianie, jakie są najlepsze sposoby stażysta produktu. Specjalnie wokół wszystkich wymaganych zasobów może być konieczne, ponieważ ułatwia pakowanie wystarczająco łatwiejsze szablonu usługi Resource Manager.
+Upewnij się, które możesz wydać wystarczająca ilość czasu, ocenianie, jakie są najlepsze sposoby stażysta produktu. Specjalnie wokół wszystkich wymaganych zasobów może być konieczne, ponieważ ułatwia pakowanie wystarczająco łatwiejsze szablonu usługi Resource Manager.
 
 Aby kontynuować z naszego przykładu zapory, architektury może być konieczne publiczny adres IP URL usługi i inny publiczny adres IP URL dla witryny sieci Web, która chroni zapora. Każdego adresu IP jest wdrożone na maszynie wirtualnej i połączone razem z grupy zabezpieczeń sieci i interfejsu sieciowego.
 

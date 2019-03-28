@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999560"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541040"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -243,7 +243,7 @@ Aby uzyskać przykład, zobacz [szablon szybkiego startu usługi GitHub 101-vm-s
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Po uruchomieniu `Update-AzVmss` po dodaniu więcej niż jeden certyfikat z magazynu kluczy, w tym samym, I zostanie wyświetlony następujący komunikat:
 
->Update-AzVmss: Klucz tajny lista zawiera powtórzone wystąpienia /subscriptions/ < my-subscription-id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, która jest niedozwolona.
+>Update-AzVmss: Klucz tajny lista zawiera powtórzone wystąpienia /subscriptions/\<mój identyfikator subskrypcji > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, która jest niedozwolona.
 
 Może to nastąpić, jeśli zostanie podjęta próba ponownego dodania w tym samym magazynie, a nie przy użyciu nowego certyfikatu w magazynie dla istniejącego magazynu źródłowego. `Add-AzVmssSecret` Polecenie nie działa poprawnie, w przypadku dodawania dodatkowych wpisów tajnych.
 
@@ -303,7 +303,7 @@ Składnik CRP nie utrwala wpisów tajnych klienta. Jeśli uruchamiasz `stop deal
 
 Nie wystąpi ten problem, skalowania w poziomie, ponieważ nie istnieje w pamięci podręcznej kopię klucza tajnego w usłudze Azure Service Fabric (w modelu sieci szkieletowej pojedynczej dzierżawy).
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Dlaczego trzeba, określania dokładnej lokalizacji dla adresu URL certyfikatu (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>), jak wskazano w [scenariusze zabezpieczeń klastra usługi Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)?
+### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Dlaczego trzeba, określania dokładnej lokalizacji dla adresu URL certyfikatu (https:\/\/\<nazwa magazynu >.vault.azure.net:443/secrets/\<dokładna lokalizacja >), jak wskazano w [usługi Service Fabric scenariusze zabezpieczeń klastra](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)?
 
 Dokumentacja usługi Azure Key Vault stanów, Uzyskaj wpis tajny interfejsu API REST powinien zwrócić najnowszej wersji klucza tajnego, jeśli nie określono wersji.
 

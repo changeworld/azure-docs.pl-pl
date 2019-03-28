@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab71b8d3af573f62e69c02564c237ad433962ff9
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107733"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541234"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
@@ -416,10 +416,10 @@ For snapshot of the volume storing the boot LUN
 Szczegóły parametrów są następujące: 
 
 - Pierwszy parametr charakteryzuje typ kopii zapasowej migawki. Wartości dozwolone są **hana**, **dzienniki**, i **rozruchu**. 
-- Parametr **<HANA Large Instance Type>** wymagane do rozruchu kopie zapasowe woluminów tylko. Dwóch prawidłowych wartości "TypeI" lub "TypeII" są zależne od HANA duże wystąpienia jednostki. Aby dowiedzieć się, jaki typ urządzenia, zobacz [platformy SAP HANA (duże wystąpienia) — omówienie i architektura na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
-- Parametr **< snapshot_prefix >** migawki lub etykieta kopii zapasowej dla typu migawka. Ma dwa cele: jeden jest nadaj jej nazwę, dzięki czemu będzie wiadomo, o ile te migawki. Drugi cel to skrypt *azure\_hana\_backup.pl* do określenia liczby migawek magazynu, które są przechowywane w ramach tej określonej etykiety. Jeśli zaplanować dwie kopie zapasowe migawek magazynu tego samego typu (takich jak **hana**), za pomocą dwóch różnych etykiet i zdefiniuj, czy powinny być przechowywane 30 migawek dla każdego, na końcu 60 migawek magazynu woluminów, których to dotyczy. Alfanumeryczne ("A – Z, a-z, 0 – 9"), podkreślenia ("_") i myślnik ("-") może zawierać znaków. 
-- Parametr **< snapshot_frequency >** jest zarezerwowane dla przyszłego rozwoju i nie ma żadnego wpływu. Ustaw ją na "3min" podczas wykonywania kopii zapasowych typu **dziennika**i "15 min" podczas wykonywania kopii zapasowej innych typów.
-- Parametr **<number of snapshots retained>** definiuje przechowywania migawek pośrednio przez zdefiniowanie liczby migawek z tym samym prefiksem migawki (etykieta). Ten parametr jest ważne w przypadku zaplanowanego wykonania za pomocą usługi cron. Jeśli liczba migawki za pomocą tego samego snapshot_prefix przekracza wartość podana w tym parametrze, najstarsza migawka jest usuwana przed wykonaniem nową migawkę pamięci masowej.
+- Parametr  **\<HANA dużego wystąpienia typu >** wymagane do rozruchu kopie zapasowe woluminów tylko. Dwóch prawidłowych wartości "TypeI" lub "TypeII" są zależne od HANA duże wystąpienia jednostki. Aby dowiedzieć się, jaki typ urządzenia, zobacz [platformy SAP HANA (duże wystąpienia) — omówienie i architektura na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
+- Parametr  **\<snapshot_prefix >** migawki lub etykieta kopii zapasowej dla typu migawka. Ma dwa cele: jeden jest nadaj jej nazwę, dzięki czemu będzie wiadomo, o ile te migawki. Drugi cel to skrypt *azure\_hana\_backup.pl* do określenia liczby migawek magazynu, które są przechowywane w ramach tej określonej etykiety. Jeśli zaplanować dwie kopie zapasowe migawek magazynu tego samego typu (takich jak **hana**), za pomocą dwóch różnych etykiet i zdefiniuj, czy powinny być przechowywane 30 migawek dla każdego, na końcu 60 migawek magazynu woluminów, których to dotyczy. Alfanumeryczne ("A – Z, a-z, 0 – 9"), podkreślenia ("_") i myślnik ("-") może zawierać znaków. 
+- Parametr  **\<snapshot_frequency >** jest zarezerwowane dla przyszłego rozwoju i nie ma żadnego wpływu. Ustaw ją na "3min" podczas wykonywania kopii zapasowych typu **dziennika**i "15 min" podczas wykonywania kopii zapasowej innych typów.
+- Parametr  **\<liczby migawek przechowywane >** definiuje przechowywania migawek pośrednio przez zdefiniowanie liczby migawek z tym samym prefiksem migawki (etykieta). Ten parametr jest ważne w przypadku zaplanowanego wykonania za pomocą usługi cron. Jeśli liczba migawki za pomocą tego samego snapshot_prefix przekracza wartość podana w tym parametrze, najstarsza migawka jest usuwana przed wykonaniem nową migawkę pamięci masowej.
 
 W przypadku skalowania w poziomie skrypt wykonuje dodatkowego sprawdzenia, czy można uzyskać dostępu do wszystkich serwerów HANA. Skrypt sprawdza również, że wszystkich wystąpień HANA zwraca odpowiedni stan wystąpienia, zanim utworzy migawkę platformy SAP HANA. Migawka platformy SAP HANA następuje migawki magazynu.
 

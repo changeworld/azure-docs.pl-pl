@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/10/2017
+ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f1d557396f17357afd6f9e5d701e946668fcee65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861047"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541217"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacja aspektowa jest mechanizm filtrowania, który zapewnia kierunkowane samodzielnie przez użytkowników Przechodzenie do szczegółów nawigacji w aplikacji do wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak pokazano na poniższym przykładzie, nawigacji aspektowej ma więcej niż kategorii, używana do filtrowania wyników.
@@ -34,7 +34,7 @@ W zakresie opracowywania aplikacji pisanie kodu, który konstruuje zapytania sta
 ## <a name="sample-code-and-demo"></a>Przykładowy kod i wersji demonstracyjnej
 Tym artykule użyto portalu do wyszukiwania zadania jako przykład. Przykład jest implementowany jako aplikację ASP.NET MVC.
 
--   Obejrzeć i przetestować pokaz pracy w [usługi Azure Search zadania Portal Demo](https://azjobsdemo.azurewebsites.net/).
+-   Obejrzeć i przetestować pokaz pracy w [usługi Azure Search zadania Portal Demo](http://azjobsdemo.azurewebsites.net/).
 
 -   Pobierz kod ze [repozytorium przykładów dla platformy Azure w serwisie GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -364,7 +364,7 @@ Istnieją dwa funkcji Geoprzestrzennych w usłudze Azure Search **geo.distance**
 * **Geo.distance** funkcja zwraca odległość w kilometrach między dwoma punktami. Jeden punkt jest polem, a drugi jest stałą przekazanych jako część filtru. 
 * **Geo.intersects** funkcja zwraca wartość true, jeśli dany punkt znajduje się w danym wielokąta. Punkt znajduje się pole, a następnie Wielokąt jest określony jako stała lista przekazanych jako część filtru współrzędnych.
 
-Można znaleźć przykłady filtrów w [składnia wyrażenia OData (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+Można znaleźć przykłady filtrów w [składnia wyrażenia OData (Azure Search)](query-odata-filter-orderby-syntax.md).
 
 <a name="tryitout"></a>
 

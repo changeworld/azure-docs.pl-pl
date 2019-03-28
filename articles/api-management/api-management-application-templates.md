@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 0eead6201f737448b4de76476802518a506375da
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 732fdf3f9210a1484895e0b43e061b4bbc586b43
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446248"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541268"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Szablony aplikacji w usłudze Azure API Management
 Usługa Azure API Management zapewnia możliwość dostosować zawartość portalu dla deweloperów przy użyciu zestawu szablonów, które ich zawartość. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takich jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zlokalizowanych podany zbiór [zasoby ciągu](api-management-template-resources.md#strings), [symbol zasoby](api-management-template-resources.md#glyphs), i [stronie kontrolki](api-management-page-controls.md), masz dużą elastyczność konfigurowania zawartości stron, zgodnie z potrzebami przy użyciu tych szablonów.  
@@ -75,15 +75,15 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
 ### <a name="controls"></a>Kontrolki  
  `Product list` Szablonu może korzystać z następujących [stronie kontrolki](api-management-page-controls.md).  
   
--   [Formant stronicowania](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Model danych  
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|Stronicowanie|[Stronicowanie](api-management-template-data-model-reference.md#Paging) jednostki.|Informacje o stronicowania dla kolekcji.|  
-|Aplikacje|Kolekcja [aplikacji](api-management-template-data-model-reference.md#Application) jednostek.|Aplikacje widoczne dla bieżącego użytkownika.|  
-|CategoryName|ciąg|Kategoria aplikacji.|  
+|`Paging`|[Stronicowanie](api-management-template-data-model-reference.md#Paging) jednostki.|Informacje o stronicowania dla kolekcji.|  
+|`Applications`|Kolekcja [aplikacji](api-management-template-data-model-reference.md#Application) jednostek.|Aplikacje widoczne dla bieżącego użytkownika.|  
+|`CategoryName`|string|Kategoria aplikacji.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   

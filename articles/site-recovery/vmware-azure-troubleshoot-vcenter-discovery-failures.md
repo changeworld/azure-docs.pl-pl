@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
-ms.openlocfilehash: a0707ad356e51a9e4d4f73c54085fe9736bb0752
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885298"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540809"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>Rozwiązywanie problemów z błędami odnajdywania vCenter
+# <a name="troubleshoot-vcenter-discovery-failures"></a>Rozwiązywanie problemów z awariami odnajdywania w programie vCenter
 
 Ten artykuł pomaga rozwiązywać problemy, które występują ze względu na błędy wykrywania programu VMware vCenter.
 
@@ -46,8 +46,8 @@ Ogólnie rzecz biorąc serwer proxy jest używany do komunikacji z sieci publicz
 
 Po ten problem występuje, wykonywane są następujące sytuacje:
 
-- Serwer vCenter <vCenter> jest nieosiągalny z powodu błędu: Serwer zdalny zwrócił błąd: Serwer (503) jest niedostępny
-- Serwer vCenter <vCenter> jest nieosiągalny z powodu błędu: Serwer zdalny zwrócił błąd: Nie można nawiązać połączenia z serwerem zdalnym.
+- Serwer vCenter \<vCenter > jest nieosiągalny z powodu błędu: Serwer zdalny zwrócił błąd: Serwer (503) jest niedostępny
+- Serwer vCenter \<vCenter > jest nieosiągalny z powodu błędu: Serwer zdalny zwrócił błąd: Nie można nawiązać połączenia z serwerem zdalnym.
 - Nie można połączyć się z serwerem vCenter/ESXi.
 
 Aby rozwiązać ten problem:

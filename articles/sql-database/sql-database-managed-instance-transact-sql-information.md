@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b044a7c2b3122fcbce44ae2e45198f57f6a87260
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903134"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541285"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -217,7 +217,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE SET PARTNER i SET WITNES
 
 - Wiele plików dziennika nie są obsługiwane.
 - Obiekty w pamięci nie są obsługiwane w przypadku warstwy usług ogólnego przeznaczenia.  
-- Ma limitu 280 plików dla każdego wystąpienia obszaru max 280 plików na bazę danych. Plików dziennika i danych są wliczane do tego limitu.  
+- Ma limitu 280 plików dla każdego wystąpienia ogólnego przeznaczenia obszaru max 280 plików na bazę danych. Zarówno danych i dziennika plików, ogólnie rzecz biorąc przeznaczenie warstwy są wliczane do tego limitu. [Obsługuje pliki 32 767 na bazę danych o warstwie krytyczne dla działania firmy](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 - Baza danych nie mogą zawierać grup plików zawierających dane filestream.  Przywracania zakończy się niepowodzeniem, jeśli zawiera .bak `FILESTREAM` danych.  
 - Każdy plik zostanie umieszczony w usłudze Azure Blob storage. We/Wy i przepływność na pliku są zależne od rozmiaru każdego pliku.  
 
@@ -485,9 +485,9 @@ Wystąpienia zarządzanego nie można przywrócić [zawartych baz danych](https:
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Przekroczenia miejsca do magazynowania z plikami małej bazy danych
 
-Każde wystąpienie zarządzane musi 35 TB pamięci masowej zarezerwowane dla miejsca na dysku Premium platformy Azure, a każdego pliku bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest rozliczany, ale suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekraczać 35 TB. W niektórych przypadkach wystąpienia zarządzanego, które nie wymagają 8 TB w sumie może przekraczać 35 TB Azure limit rozmiaru magazynu, z powodu wewnętrznego fragmentacji.
+Każdy ogólnego przeznaczenia wystąpienie zarządzane usługi o maksymalnej 35 TB pamięci masowej zarezerwowane dla miejsca na dysku Premium platformy Azure i każdego pliku bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest rozliczany, ale suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekraczać 35 TB. W niektórych przypadkach wystąpienia zarządzanego, które nie wymagają 8 TB w sumie może przekraczać 35 TB Azure limit rozmiaru magazynu, z powodu wewnętrznego fragmentacji.
 
-Na przykład wystąpienie zarządzane mogą mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 (każdego 1 GB w rozmiarze), które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
+Na przykład, ogólnego przeznaczenia wystąpienia zarządzanego może mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 (każdego 1 GB w rozmiarze), które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
 
 - Rozmiar magazynu całkowitego miejsca na dysku przydzielonego to 1-4 TB + 248 × 128 GB = 35 TB.
 - łączne miejsce zarezerwowane dla baz danych w wystąpieniu jest 1 x 1,2 TB + 248 x 1 GB = 1,4 TB pojemności.
@@ -495,6 +495,8 @@ Na przykład wystąpienie zarządzane mogą mieć jeden plik 1,2 TB, rozmiar, kt
 To pokazuje, że w pewnych okolicznościach, ze względu na dystrybucji określonych plików, wystąpienie zarządzane mogą docierać do większej 35 TB zarezerwowane dla dołączonego dysku w warstwie Premium usługi Azure, gdy być może nie oczekujesz.
 
 W tym przykładzie istniejących baz danych będą nadal działać i można rozwijać bez żadnych przeszkód, tak długo, jak nowe pliki nie zostaną dodane. Jednak nowe bazy danych może nie można utworzyć ani przywrócić, ponieważ nie ma wystarczającej ilości miejsca dla nowych dysków twardych, nawet wtedy, gdy łączny rozmiar wszystkich baz danych nie osiąga limit rozmiaru wystąpienia. Błąd, który jest zwracany nie jest w takim przypadku usuń zaznaczenie.
+
+Możesz [określenie liczby pozostałych plików](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) korzystanie z widoków systemowych. Jeśli chcesz się połączyć ten limit, próby [pustych, a następnie usuń część mniejsze pliki za pomocą instrukcji DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) lub shitch do [warstwy krytyczne dla działania firmy, która nie ma tego limitu](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Przywróć niepoprawnej konfiguracji klucza sygnatury dostępu Współdzielonego podczas bazy danych
 
