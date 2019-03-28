@@ -1,0 +1,67 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 12ba136bb227ef5ea469d91c6da9477b718b9e92
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58542237"
+documentType: LandingData
+title: Dokumentacja usługi Azure Security Center (ASC) for IoT (wersja zapoznawcza)
+metadata:
+  title: Dokumentacja usługi Azure Security Center (ASC) for IoT (wersja zapoznawcza) — samouczki i przewodniki Szybki start | Microsoft Docs
+  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  services: ascforiot
+  author: mlottner
+  manager: barbkess
+  ms.service: ascforiot
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/26/19
+  ms.author: barbkess
+abstract:
+  description: Używaj usługi Azure Security Center for IoT (wersja zapoznawcza), aby rozszerzać istniejącą perspektywę cyberzabezpieczeń na całe swoje rozwiązanie IoT. Uzyskaj prawdziwie panoramiczny widok zabezpieczeń wszystkich zasobów powiązanych z platformą Azure. Opcje szybkiego wdrażania i pełna integracja z bliźniaczymi reprezentacjami modułu usługi IoT Hub zapewniają szeroką gamę opcji dostosowywania i łatwą integrację z obecnie używanymi narzędziami do zarządzania urządzeniami. 
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak włączyć w usłudze IoT Hub obsługę usługi ASC for IoT, zainstalować agentów usługi ASC for IoT i uzyskać wgląd w swoje dane oraz potencjalne zagrożenia.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/deploy.svg
+      text: Włączanie usługi ASC for IoT
+      href: /azure/ascforiot/quickstart-onboard-iot-hub
+    - image:
+        src: media/index/get-started.svg
+      text: Wprowadzenie do usługi ASC for IoT
+      href: /azure/ascforiot/quickstart-getting-started
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak definiować zasady zabezpieczeń, chronić urządzenia przed złośliwymi działaniami i reagować na alerty zabezpieczeń oraz zdarzenia.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/ascforiot/tutorial-investigate-device">Wykrywanie zagrożeń za pomocą usługi ASC for IoT</a>
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Wprowadzenie do zabezpieczeń na platformie Azure
+      href: https://docs.microsoft.com/learn/azure
+      image:
+        src: media/index/tutorial.svg
+        href: https://docs.microsoft.com/learn/azure
+  - type: paragraph
+    text: <a href="/learn/browse/?term=security">Więcej interakcyjnych zasobów szkoleniowych...</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - html: <a href="https://azure.microsoft.com/updates/?product=iotsecurity">Aktualizacje usług</a>

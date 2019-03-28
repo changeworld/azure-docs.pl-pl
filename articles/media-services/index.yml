@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3b778caed10981923d424745d820bfe10c1ce553
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 903c1153db57f7cb632fc752bb696598902f5aaa
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903610"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519718"
 documentType: LandingData
 title: Dokumentacja usługi Azure Media Services
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Azure Media Services (AMS) to oparta na chmurze platforma umożliwiająca tworzenie rozwiązań pozwalających na realizowanie kodowania wideo w jakości HD i przesyłania strumieniowego wideo w jakości telewizyjnej docierającego do odbiorców na najpopularniejszych urządzeniach. Usługa AMS w wersji 3 umożliwia też wyodrębnianie szczegółowych informacji z plików wideo i audio przy użyciu usługi Video Indexer za pośrednictwem ustawień wstępnych analizatora usługi AMS w wersji 3. Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer.<br/> Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentem z porównaniem</a>.
+  description: Azure Media Services to oparta na chmurze platforma umożliwiająca tworzenie rozwiązań pozwalających na realizowanie kodowania wideo w jakości HD i przesyłania strumieniowego wideo w jakości telewizyjnej docierającego do odbiorców na najpopularniejszych urządzeniach. Usługa Media Services v3 umożliwia też wyodrębnianie szczegółowych informacji z plików wideo i audio przy użyciu usługi Video Indexer za pośrednictwem ustawień wstępnych analizatora usługi Media Services v3. Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer.
 sections:
 - items:
   - type: list
@@ -40,7 +40,7 @@ sections:
         src: media/index/AMSIcons-media_analytics.svg
       title: Indeksator wideo
     - href: /azure/media-services/previous/
-      html: <p>Dowiedz się, jak kodować, przeprowadzać przesyłanie strumieniowe na żądanie i prowadzić emisje wideo na żywo za pomocą usługi Media Services v2.</p>
+      html: <p>Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. Zapoznaj się z najnowszą wersją usługi Media Services v3.</p>
       image:
         src: media/index/AMSIcons-media_servicesV2.svg
       title: Azure Media Services w wersji 2 (starsza wersja)
@@ -49,51 +49,3 @@ sections:
       image:
         src: /azure/cdn/media/index/cdn.svg
       title: CDN
-- title: 5-minutowe przewodniki Szybki start
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak kodować i przesyłać strumieniowo przy użyciu usługi Media Services w wersji 3:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: Przesyłanie strumieniowe plików
-      href: /azure/media-services/latest/stream-files-dotnet-quickstart
-  - type: paragraph
-    text: 'Dowiedz się, jak wyodrębniać szczegółowe informacje z plików wideo za pomocą usługi Video Indexer:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Wyodrębnianie szczegółowych informacji
-      href: ../cognitive-services/video-indexer/video-indexer-get-started.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
-- title: Samouczki krok po kroku
-  items:
-  - type: paragraph
-    text: 'Dowiedz się, jak przesyłać strumieniowo pliki na żądanie, prowadzić emisję na żywo i analizować klipy wideo za pomocą usługi Media Services w wersji 3:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: Przekazywanie, kodowanie i przesyłanie strumieniowe klipów wideo
-      href: /azure/media-services/latest/stream-files-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-live.svg
-      text: Emisja na żywo
-      href: /azure/media-services/latest/stream-live-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Analizowanie klipów wideo
-      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-  - type: paragraph
-    text: 'Dowiedz się, jak wyodrębniać szczegółowe informacje z plików wideo za pomocą interfejsu API usługi Video Indexer:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Wyodrębnianie szczegółowych informacji
-      href: ../cognitive-services/video-indexer/video-indexer-use-apis.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json

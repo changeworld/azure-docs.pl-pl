@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4581173f142170248a48d99683804bdb67f1703e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f8e833088ffdf819e387fd28ae88508d5fe6d00
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250686"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519934"
 abstract:
   description: Dowiedz się, jak wbudowywać inteligentne algorytmy w aplikacjach i witrynach internetowych przy użyciu produktów usługi Azure Machine Learning.  Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.
 documentType: LandingData
@@ -38,8 +38,8 @@ sections:
   - text: <b>Przewodniki Szybki start:</b>
     type: paragraph
   - items:
-    - html: <a href="service/quickstart-create-workspace-with-python">Rozpoczynanie pracy przy użyciu języka Python</a>
-    - html: <a href="service/quickstart-get-started">Rozpoczynanie pracy przy użyciu witryny Azure Portal</a>
+    - html: <a href="service/quickstart-run-cloud-notebook">Przeprowadzanie eksperymentu w chmurze</a> (nie jest wymagana instalacja)
+    - html: <a href="service/quickstart-run-local-notebook">Przeprowadzanie eksperymentu przy użyciu lokalnego serwera notesów</a> (instalacja lokalna zestawu SDK)
     style: unordered
     type: list
   - text: <b>Samouczek dotyczący klasyfikacji obrazów, korzystający z danych MNIST:</b>

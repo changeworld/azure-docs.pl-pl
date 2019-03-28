@@ -18,6 +18,8 @@ ms.author: carolz
 
 Dowiedz się, jak za pomocą usługi Media Services — rozszerzalnej platformy w chmurze — zapewnić przesyłanie strumieniowe materiałów wideo w jakości odpowiedniej do emisji. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.
 
+**UWAGA:** Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji z wersji v2 do v3](../latest/migrate-from-v2-to-v3.md).
+
 <ul class="panelContent cardsFTitle">
      <li>
         <a href="/azure/media-services/media-services-overview">
@@ -84,7 +86,7 @@ Dowiedz się, jak za pomocą usługi Media Services — rozszerzalnej platformy 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Tworzenie konta usługi Azure Media Services przy użyciu witryny Azure Portal</h3>
+                        <h3>Tworzenie konta usługi Azure Media Services za pomocą witryny Azure Portal</h3>
                     </div>
                 </div>
             </div>

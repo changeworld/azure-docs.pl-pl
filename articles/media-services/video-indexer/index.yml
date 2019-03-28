@@ -1,35 +1,58 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7372c3010f31a43dc91a33de08f059a5a60d5ba4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 45c8f83ce814d5fa8b6d9cde29e59e4628534522
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988010"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522002"
 documentType: LandingData
 title: Dokumentacja usługi Video Indexer
 metadata:
   document_id: 
   title: Dokumentacja usługi Video Indexer | Microsoft Docs
-  meta.description: Learn how about Video Indexer.
+  meta.description: Learn about Video Indexer.
   services: media-services
-  author: Juliako
+  author: juliako
   manager: femila
   ms.service: media-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/10/2019
+  ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: W usłudze Video Indexer połączono technologie sztucznej inteligencji związane z multimediami, aby ułatwić wyodrębnianie szczegółowych informacji z plików wideo.
+  description: Usługa Azure Video Indexer to aplikacja w chmurze utworzona za pomocą usługi Azure Media Analytics, usługi Azure Search oraz usług Cognitive Services (takich jak interfejs API rozpoznawania twarzy, Microsoft Translator, interfejs API przetwarzania obrazów i Custom Speech Service). Umożliwia wyodrębnianie szczegółowych informacji z plików wideo przy użyciu modeli wideo i audio usługi Video Indexer.<br/>Aby ustalić, kiedy należy używać usługi Video Indexer zamiast ustawień wstępnych analizatora usługi Media Services, zapoznaj się z <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentem z porównaniem</a>.
 sections:
 - items:
   - type: list
     style: cards
     className: cardsM
-    columns: 3
+    columns: 2
+    items:
+    - href: video-indexer-overview.md
+      html: <p>W usłudze Video Indexer połączono technologie sztucznej inteligencji związane z multimediami, aby ułatwić wyodrębnianie szczegółowych informacji z plików wideo.</p>
+      image:
+        src: media/index/AMSIcons-media_servicesV3.svg
+      title: Co to jest Video Indexer?
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: 'Zaloguj się do witryny internetowej usługi Video Indexer i przekaż swoje pierwsze wideo:'
+  - type: list
+    style: icon48
     items:
     - image:
-        src: 
-      text: Co to jest Video Indexer?
-      href: video-indexer-overview.md
+        src: media/index/AMSIcons-media_analytics.svg
+      text: Wyodrębnianie szczegółowych informacji
+      href: /azure/media-services/video-indexer/video-indexer-get-started
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: 'Dowiedz się, jak wyodrębniać szczegółowe informacje z plików wideo za pomocą interfejsu API usługi Video Indexer:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: Wyodrębnianie szczegółowych informacji
+      href: /azure/media-services/video-indexer/video-indexer-use-apis

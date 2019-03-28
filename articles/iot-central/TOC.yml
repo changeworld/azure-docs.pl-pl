@@ -70,6 +70,8 @@ items:
       href: howto-create-analytics.md
   - name: Akcje i rozszerzalność
     items:
+    - name: Grupowanie wielu akcji w regułach
+      href: howto-use-action-groups.md
     - name: Tworzenie akcji elementów webhook dla reguł
       href: howto-create-webhooks.md
     - name: Tworzenie przepływów pracy w usłudze Microsoft Flow
@@ -142,9 +144,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: Obsługiwane przeglądarki
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: e1ff69dd8b8956ddfc9225f6a1d36ee8f7b511c7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 09145448edd42e03b77abde46a120ade1631d6bf
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371489"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520738"

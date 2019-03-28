@@ -90,15 +90,18 @@ items:
         href: how-to-vscode-tools.md
       - name: Szkolenie i wdrażanie
         href: how-to-vscode-train-deploy.md
-  - name: Przygotowywanie danych
+  - name: Praca z danymi
     displayName: data prep, etl, elt, data preparation
     items:
-    - name: Ładowanie danych
-      href: how-to-load-data.md
-    - name: Przekształcanie danych
-      href: how-to-transform-data.md
-    - name: Zapisywanie danych
-      href: how-to-write-data.md
+    - name: Eksplorowanie i przygotowywanie danych
+      displayName: data prep, etl, elt, data preparation
+      items:
+      - name: Ładowanie danych
+        href: how-to-load-data.md
+      - name: Przekształcanie danych
+        href: how-to-transform-data.md
+      - name: Zapisywanie danych
+        href: how-to-write-data.md
   - name: Pobieranie danych w magazynie danych
     displayName: blob get fileshare access storage
     href: how-to-access-data.md
@@ -198,9 +201,9 @@ items:
   - name: Porównanie naszych produktów do uczenia maszynowego
     href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
     maintainContext: true
-ms.openlocfilehash: 0e40f17725cb56dbc346fffcce0f672f2394ca1d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 52bc0220f3eb2fa28d344f68fe86310eabeee47c
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359980"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540384"
