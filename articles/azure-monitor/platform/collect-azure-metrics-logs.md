@@ -1,6 +1,6 @@
 ---
-title: Zbieraj dzienniki usługi platformy Azure i metryki dla usługi Log Analytics | Dokumentacja firmy Microsoft
-description: Skonfigurować diagnostykę dla zasobów platformy Azure do zapisywania dzienników i metryk do usługi Log Analytics.
+title: Zbieraj dzienniki usługi platformy Azure i metryk do obszaru roboczego usługi Log Analytics | Dokumentacja firmy Microsoft
+description: Skonfigurować diagnostykę dla zasobów platformy Azure do zapisywania dzienników i metryk do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 034abe4e3c37c94afbe431a51efd9493b707fa89
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 5a619b768d61875a03e53a613dfb9a3fb01dd7aa
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498540"
+ms.locfileid: "58540182"
 ---
-# <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
+# <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Zbieranie dzienników usługi platformy Azure i metryk do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor
 
 Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług platformy Azure:
 
-1. Narzędzie diagnostyczne systemu Azure bezpośrednio do usługi Log Analytics (*diagnostyki* w poniższej tabeli)
-2. Diagnostyka Azure do usługi Azure storage do usługi Log Analytics (*magazynu* w poniższej tabeli)
+1. Narzędzie diagnostyczne systemu Azure bezpośrednio do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor (*diagnostyki* w poniższej tabeli)
+2. Diagnostyka Azure do usługi Azure storage do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor (*magazynu* w poniższej tabeli)
 3. Łączniki dla usług platformy Azure (*łączników* w poniższej tabeli)
-4. Skrypty można zbierać, a następnie publikują dane w usłudze Log Analytics (puste w poniższej tabeli, jak i dla usług, które nie są wyświetlane)
+4. Skrypty można zbierać, a następnie publikują dane w obszarze roboczym Log Analytics w usłudze Azure Monitor (puste w poniższej tabeli, jak i dla usług, które nie są wyświetlane)
 
 
 | Usługa                 | Typ zasobu                           | Dzienniki        | Metryki     | Rozwiązanie |
@@ -64,12 +64,12 @@ Istnieją cztery różne sposoby pobierania dzienników i metryk dla usług plat
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>Narzędzie diagnostyczne systemu Azure bezpośrednio do usługi Log Analytics
-Wiele zasobów platformy Azure są w stanie zapisywać dzienniki diagnostyczne i metryki bezpośrednio do usługi Log Analytics i to jest preferowany sposób zbierania danych w celu analizy. Korzystając z usługi Diagnostyka Azure, dane są zapisywane bezpośrednio do usługi Log Analytics i nie ma potrzeby najpierw zapisać danych do magazynu.
+Wiele zasobów platformy Azure są w stanie zapisują dzienniki diagnostyczne i metryki bezpośrednio do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor, a jest to preferowany sposób zbierania danych w celu analizy. Korzystając z usługi Diagnostyka Azure, dane są zapisywane bezpośrednio do obszaru roboczego, a nie ma potrzeby najpierw zapisać danych do magazynu.
 
-Zasoby platformy Azure, które obsługują [usługa Azure monitor](../../azure-monitor/overview.md) wysłać ich dzienników i metryk bezpośrednio do usługi Log Analytics.
+Zasoby platformy Azure, które obsługują [usługa Azure monitor](../../azure-monitor/overview.md) wysłać ich dzienników i metryk bezpośrednio do obszaru roboczego usługi Log Analytics.
 
 > [!NOTE]
-> Wysyłanie metryk wielowymiarowych do usługi Log Analytics za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
+> Wysyłanie metryk wielowymiarowych do obszaru usługi Log Analytics, za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
 > *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych metryka jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejek w zdarzeniu koncentratora.
 >
@@ -125,9 +125,9 @@ Aby włączyć diagnostyki dla zasobu po jego utworzeniu i diagnostyki wysłały
 
 ## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Narzędzie diagnostyczne systemu Azure do magazynu, a następnie do usługi Log Analytics
 
-Do zbierania dzienników z w ramach niektórych zasobów, jest to możliwe wysłać dzienniki do usługi Azure storage, a następnie skonfigurować usługi Log Analytics w celu odczytu dzienników z magazynu.
+Do zbierania dzienników z w ramach niektórych zasobów, jest to możliwe wysłać dzienniki do usługi Azure storage, a następnie skonfigurować obszar roboczy usługi Log Analytics do odczytywania dzienników z magazynu.
 
-Tej metody można użyć usługi log Analytics na zbieranie danych diagnostycznych z usługi Azure storage dla następujących zasobów i dzienników:
+Usługa Azure Monitor umożliwia zbieranie danych diagnostycznych z usługi Azure storage dla następujących zasobów i dzienników tego podejścia:
 
 | Zasób | Dzienniki |
 | --- | --- |
@@ -136,23 +136,23 @@ Tej metody można użyć usługi log Analytics na zbieranie danych diagnostyczny
 | Role sieci Web <br> Role procesów roboczych |Dzienników Syslog systemu Linux <br> Zdarzenia Windows <br> Dziennik IIS <br> Windows ETWEvent |
 
 > [!NOTE]
-> Opłaty są naliczane normalne danych platformy Azure stawek za magazyn i transakcje po wysyłanie danych diagnostycznych na konto magazynu i kiedy usługi Log Analytics odczytuje dane z konta magazynu.
+> Stawek za magazyn i transakcje normalne dane platformy Azure są naliczane, gdy wysyłanie danych diagnostycznych na konto magazynu i kiedy obszar roboczy usługi Log Analytics odczytuje dane z konta magazynu.
 >
 >
 
-Zobacz [usługa blob storage dla usług IIS i magazynu table storage zdarzeń](azure-storage-iis-table.md) Aby dowiedzieć się więcej na temat sposobu Log Analytics może zbierać dzienniki.
+Zobacz [usługa blob storage dla usług IIS i magazynu table storage zdarzeń](azure-storage-iis-table.md) dowiedzieć się więcej o jak zbierać dzienniki usługi Azure Monitor.
 
 ## <a name="connectors-for-azure-services"></a>Łączniki dla usług platformy Azure
 
-Brak łącznika usługi Application Insights, która zezwala na dane zebrane przez usługę Application Insights do wysłania do usługi Log Analytics.
+Brak łącznika usługi Application Insights, która zezwala na dane zebrane przez usługę Application Insights do wysłania do obszaru roboczego usługi Log Analytics.
 
 Dowiedz się więcej o [łącznik usługi Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
 
-## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>Skrypty do zbierania i dane post do usługi Log Analytics
+## <a name="scripts-to-collect-and-post-data-to-log-analytics-workspace"></a>Skrypty w celu zbierania i publikowania danych do obszaru roboczego usługi Log Analytics
 
-Dla usług platformy Azure, które nie mają bezpośredni sposób wysyłania dzienników i metryk do usługi Log Analytics skrypt usługi Azure Automation służy do zbierania dzienników i metryk. Skrypt następnie możesz wysłać dane do usługi Log Analytics przy użyciu [interfejs API modułu zbierającego dane](../../azure-monitor/platform/data-collector-api.md)
+Dla usług platformy Azure, które nie mają bezpośredniego sposobu, aby wysłać dzienniki i metryki, do obszaru roboczego usługi Log Analytics skrypt usługi Azure Automation służy do zbierania dzienników i metryk. Skrypt następnie możesz wysłać dane do obszaru roboczego przy użyciu [interfejs API modułu zbierającego dane](../../azure-monitor/platform/data-collector-api.md)
 
-Galeria szablonów platformy Azure ma [przykłady użycia usługi Azure Automation](https://azure.microsoft.com/resources/templates/?term=OMS) do zbierania danych z usług i wysłanie go do usługi Log Analytics.
+Galeria szablonów platformy Azure ma [przykłady użycia usługi Azure Automation](https://azure.microsoft.com/resources/templates/?term=OMS) do zbierania danych z usług i wysyłać je do usługi Azure Monitor.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

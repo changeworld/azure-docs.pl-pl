@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 504f79186eb69fb6e6c23c1a0cd9dfd7584bb128
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904341"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522081"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: moderowanie wideo i transkrypcji
 
@@ -234,7 +234,7 @@ Proces moderowania zwraca listę ramek kluczy z wideo oraz transkrypcję ścież
 Metoda `CreateVideoReviewInContentModerator()` wywołuje kilka innych metod wykonujących następujące zadania:
 
 > [!NOTE]
-> Aplikacja konsolowa używa biblioteki [FFmpeg](https://ffmpeg.org/) do generowania miniatur. Te miniatury (obrazy) odpowiadają znacznikom czasu ramek w [danych wyjściowych moderowania wideo](#sample-video-moderation-response).
+> Aplikacja konsolowa używa biblioteki [FFmpeg](https://ffmpeg.org/) do generowania miniatur. Te miniatury (obrazy) odpowiadają sygnatury czasowe ramki w danych wyjściowych Moderowanie filmów wideo.
 
 |Zadanie|Metody|Plik|
 |-|-|-|

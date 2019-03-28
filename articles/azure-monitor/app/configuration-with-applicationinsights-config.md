@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: d17b1b754afc5067a885025dba83cd0fba2370d5
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 1a5b6d435dcc82b59c30302f9cd711975864594c
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214576"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522251"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurowanie zestawu SDK usługi Application Insights za pomocą pliku ApplicationInsights.config lub xml
 Zestaw SDK .NET usługi Application Insights składa się kilka pakietów NuGet. [Pakiet podstawowego](https://www.nuget.org/packages/Microsoft.ApplicationInsights) zapewnia interfejs API do wysyłania danych telemetrycznych do usługi Application Insights. [Dodatkowe pakiety](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) Podaj dane telemetryczne *modułów* i *inicjatory* dla automatycznego śledzenia danych telemetrycznych z aplikacji i jej kontekstu. Dostosowując plik konfiguracji, można włączyć lub wyłączyć inicjatory i moduły danych telemetrycznych i ustawić parametry dla niektórych z nich.
@@ -30,7 +30,7 @@ Nie ma pliku równoważne do kontroli [zestawu SDK na stronie sieci web][client]
 W tym dokumencie opisano sekcje, które widać w konfiguracji, plików, sposobie ich kontrolować składników zestawu SDK, i pakiety NuGet ładowania tych składników.
 
 > [!NOTE]
-> Plik ApplicationInsights.config i .xml instrukcje nie dotyczą platformy .NET Core SDK. Dla zmian w aplikacji .NET Core zwykle używany plik appsettings.json. Na przykład można znaleźć w [dokumentacji rozszerzenia Snapshot Debugger.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
+> Plik ApplicationInsights.config i .xml instrukcje nie dotyczą platformy .NET Core SDK. Dla zmian w aplikacji .NET Core zwykle używany plik appsettings.json. Na przykład można znaleźć w [dokumentacji rozszerzenia Snapshot Debugger.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
 
 ## <a name="telemetry-modules-aspnet"></a>Moduły danych telemetrycznych (ASP.NET)
 Każdy moduł danych telemetrycznych zbiera określonego typu danych i wysyła te dane przy użyciu podstawowego interfejsu API. Moduły są instalowane przez różne pakiety NuGet, które również dodać wymagane wiersze do pliku Config.

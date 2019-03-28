@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c4d2320ffd54054eb8a5bb26ef14c8e99dabb33
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855958"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539500"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Samouczek: moderowanie obrazów produktów na potrzeby handlu elektronicznego za pomocą usługi Azure Content Moderator
 
@@ -61,7 +61,7 @@ W tym samouczku przedstawiono kod najważniejszy dla projektu, ale nie omówiono
 
 ## <a name="define-api-keys-and-endpoints"></a>Definiowanie kluczy i punktów końcowych interfejsu API
 
-Jak wspomniano powyżej, w tym samouczku używane są trzy usługi Cognitive Services, a zatem potrzebne są trzy odpowiadające im klucze i punkty końcowe interfejsu API. Zwróć uwagę na następujące pola w klasie **Program**: 
+Jak wspomniano powyżej, w tym samouczku używane są trzy usługi Cognitive Services, a zatem potrzebne są trzy odpowiadające im klucze i punkty końcowe interfejsu API. Zwróć uwagę na następujące pola w klasie **Program**:
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
@@ -79,19 +79,19 @@ Zwróć uwagę na metodę **EvaluateAdultRacy** w klasie **Program**. Parametram
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
-## <a name="evaluatecustomvisiontags-method"></a>Metoda EvaluateCustomVisionTags
+## <a name="evaluatecomputervisiontags-method"></a>Metoda EvaluateComputerVisionTags
 
-Kolejna metoda przyjmuje adres URL obrazu i dane subskrypcji interfejsu API przetwarzania obrazów i analizuje obraz pod kątem obecności znanych osobistości. W przypadku znalezienia co najmniej jednej osobistości w tablicy **ReviewTags** zostaje ustawiona wartość **True** dla odpowiedniego parametru. 
+Kolejna metoda przyjmuje adres URL obrazu i dane subskrypcji interfejsu API przetwarzania obrazów i analizuje obraz pod kątem obecności znanych osobistości. W przypadku znalezienia co najmniej jednej osobistości w tablicy **ReviewTags** zostaje ustawiona wartość **True** dla odpowiedniego parametru.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
 ## <a name="evaluatecustomvisiontags-method"></a>Metoda EvaluateCustomVisionTags
 
-Następnie zwróć uwagę na metodę **EvaluateCustomVisionTags**, która klasyfikuje poszczególne produkty &mdash; w tym przypadku flagi, zabawki i długopisy. Postępuj zgodnie z instrukcjami przedstawionymi w przewodniku [How to build a classifier (Tworzenie klasyfikatora)](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier), aby utworzyć własny niestandardowy klasyfikator obrazów w celu wykrywania flag, zabawek i długopisów (lub innych przedmiotów, zgodnie z wybranymi przez Ciebie tagami niestandardowymi) na obrazach.
+Następnie zwróć uwagę na metodę **EvaluateCustomVisionTags**, która klasyfikuje poszczególne produkty &mdash; w tym przypadku flagi, zabawki i długopisy. Postępuj zgodnie z instrukcjami przedstawionymi w przewodniku [How to build a classifier (Tworzenie klasyfikatora)](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier), aby utworzyć własny niestandardowy klasyfikator obrazów w celu wykrywania flag, zabawek i długopisów (lub innych przedmiotów, zgodnie z wybranymi przez Ciebie tagami niestandardowymi) na obrazach. Możesz używać obrazów w **przykładowe obrazy** folderu [repozytorium GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) szybko trenować niektóre kategorie, w tym przykładzie.
 
 ![Strona internetowa usługi Custom Vision z obrazami szkoleniowymi przedstawiającymi długopisy, zabawki i flagi](images/tutorial-ecommerce-custom-vision.PNG)
 
-Po wyszkoleniu klasyfikatora należy uzyskać klucz predykcyjny i adres URL punktu końcowego przewidywania (zobacz [Pobieranie adresu URL i klucza predykcyjnego](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key), jeśli potrzebujesz pomocy), a następnie przypisać ich wartości odpowiednio do pól `CustomVisionKey` i `CustomVisionUri`. Te wartości są używane w tej metodzie do wysyłania zapytań do klasyfikatora. Jeśli klasyfikator znajdzie na obrazie zawartość odpowiadającą co najmniej jednemu z tych tagów niestandardowych, metoda ustawi wartość **True** dla odpowiednich parametrów w tablicy **ReviewTags**. 
+Po wyszkoleniu klasyfikatora należy uzyskać klucz predykcyjny i adres URL punktu końcowego przewidywania (zobacz [Pobieranie adresu URL i klucza predykcyjnego](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key), jeśli potrzebujesz pomocy), a następnie przypisać ich wartości odpowiednio do pól `CustomVisionKey` i `CustomVisionUri`. Te wartości są używane w tej metodzie do wysyłania zapytań do klasyfikatora. Jeśli klasyfikator znajdzie na obrazie zawartość odpowiadającą co najmniej jednemu z tych tagów niestandardowych, metoda ustawi wartość **True** dla odpowiednich parametrów w tablicy **ReviewTags**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

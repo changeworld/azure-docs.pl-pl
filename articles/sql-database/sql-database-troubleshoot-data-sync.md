@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 8b86103f76e2425acea1b4f7c590204f0a893510
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484432"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539636"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z usługą SQL Data Sync
 
@@ -40,7 +40,7 @@ Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud 
 
 - [Czy mogę zobaczyć znaczne pogorszenie wydajności](#sync-perf)
 
-- [Pojawia się następujący komunikat: "Nie można wstawić wartości NULL w kolumnie <column>. Kolumna nie dopuszcza wartości null." Co to znaczy, i jak to naprawić?](#sync-nulls)
+- [Pojawia się następujący komunikat: "Nie można wstawić wartości NULL w kolumnie \<kolumny >. Kolumna nie dopuszcza wartości null." Co to znaczy, i jak to naprawić?](#sync-nulls)
 
 - [Jak synchronizacja danych obsługuje odwołania cykliczne? Oznacza to, kiedy te same dane jest synchronizowana w wielu grupach synchronizacji i ulega ciągłym zmianom w wyniku?](#sync-circ)
 
@@ -105,7 +105,7 @@ Wydajność ulega znacznej degradacji, prawdopodobnie w punkcie, gdzie jeszcze n
 
 - **Rozpoznawanie**. Najlepsze poprawka jest zapobieganie. Upewnij się, że nie masz odwołania cykliczne w grupach synchronizacji. Nie można zsynchronizować wszystkie wiersze, która jest synchronizowana według jedną grupę synchronizacji przez inną grupę synchronizacji.
 
-### <a name="sync-nulls"></a> Pojawia się następujący komunikat: "Nie można wstawić wartości NULL w kolumnie <column>. Kolumna nie dopuszcza wartości null." Co to znaczy, i jak to naprawić? 
+### <a name="sync-nulls"></a> Pojawia się następujący komunikat: "Nie można wstawić wartości NULL w kolumnie \<kolumny >. Kolumna nie dopuszcza wartości null." Co to znaczy, i jak to naprawić? 
 Ten komunikat o błędzie wskazuje, że wystąpił jeden z dwóch następujących problemów:
 -  Tabela nie ma klucza podstawowego. Aby rozwiązać ten problem, należy dodać klucz podstawowy do wszystkich tabel, które synchronizowania.
 -  Brak klauzuli WHERE w instrukcji CREATE INDEX. Synchronizacja danych nie obsługuje tego warunku. Aby rozwiązać ten problem, usuń klauzulę WHERE, lub ręcznie wprowadzić zmiany do wszystkich baz danych. 

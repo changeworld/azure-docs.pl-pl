@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c68e937c1c4e77a5b24b48f8b73271bf8ec9da66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170806"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540911"
 ---
 # <a name="risky-ip-report-public-preview"></a>Ryzykowne raport adresów IP (publiczna wersja zapoznawcza)
 Klienci usług AD FS mogą uwidaczniać w Internecie punkty końcowe uwierzytelniania za pomocą hasła w celu udostępniania użytkownikom końcowym usług uwierzytelniania umożliwiających dostęp do aplikacji SaaS, takich jak usługa Office 365. W takim przypadku możliwe są nieuprawnione próby logowania przy użyciu systemu AD FS w celu odgadnięcia hasła użytkownika końcowego i uzyskania dostępu do zasobów aplikacji. Od wersji 2012 R2 systemu Windows Server usługi AD FS udostępniają funkcję blokady konta na ekstranecie, która uniemożliwia przeprowadzenie takich ataków. Jeśli korzystasz ze starszej wersji, zdecydowanie zalecamy uaktualnienie systemu AD FS do wersji 2016 systemu Windows Server. <br />
@@ -38,7 +38,7 @@ Ponadto możliwe jest podejmowanie szeregu prób logowania z jednego adresu IP p
 > 
 
 ## <a name="what-is-in-the-report"></a>Co to jest w raporcie?
-Poszczególne elementy raportu ryzykownych adresów IP zawierają zagregowane informacje o nieudanych operacjach logowania za pomocą usług AD FS, przekraczających wyznaczoną wartość progową. Raport zawiera następujące informacje: ![Portal programu Azure AD Connect Health](./media/how-to-connect-health-adfs/report4a.png)
+Logowanie nie powiodło się adresów IP klientów aktywności są zagregowane za pośrednictwem serwerów Proxy aplikacji sieci Web. Poszczególne elementy raportu ryzykownych adresów IP zawierają zagregowane informacje o nieudanych operacjach logowania za pomocą usług AD FS, przekraczających wyznaczoną wartość progową. Raport zawiera następujące informacje: ![Portal programu Azure AD Connect Health](./media/how-to-connect-health-adfs/report4a.png)
 
 | Element raportu | Opis |
 | ------- | ----------- |

@@ -1,0 +1,71 @@
+---
+title: Opis usługi ASC dla architektury agenta zabezpieczeń IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Informacje na temat architektury agenta zabezpieczeń dla agentów używanych w ASC dla usługi IoT.
+services: ascforiot
+documentationcenter: na
+author: mlottner
+manager: barbkess
+editor: ''
+ms.assetid: e78523ae-d70a-456a-818d-f8b1b025d7cb
+ms.service: ascforiot
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/25/2019
+ms.author: mlottner
+ms.openlocfilehash: 7c8f256cf91a479c45f21b933efdb6a5e0212796
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541875"
+---
+# <a name="security-agent-reference-architecture"></a>Architektura referencyjna agenta zabezpieczeń
+
+> [!IMPORTANT]
+> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+ASC IoT udostępnia architekturę referencyjną dla agentów zabezpieczeń, które logowania, przetwarzania, agregacji i wysłać danych zabezpieczeń za pomocą usługi IoT hub.
+
+Agentów zabezpieczeń zostały zaprojektowane do pracy w środowisku IoT ograniczone i są wysoce dostosowywalne pod względem wartości, które zapewniają w porównaniu do zasoby, z których korzystają.
+
+Zabezpieczenia agentów obsługuje następujące funkcje rozwiązania IoT:
+
+- Gromadzenie zdarzeń zabezpieczeń pierwotnych z podstawowego systemu operacyjnego (Linux, Windows). Aby dowiedzieć się więcej na temat modułów zbierających dane zabezpieczeń dostępne, zobacz [ASC konfiguracji agenta IoT](concept-agent-configuration.md).
+
+- Agregowanie zdarzeń zabezpieczeń pierwotnych do komunikaty wysyłane za pośrednictwem usługi IoT hub.
+
+- Uwierzytelnianie za pomocą istniejących tożsamości urządzenia lub tożsamości dedykowanych modułu. Zobacz [metody uwierzytelniania agenta zabezpieczeń](concept-security-agent-authentication-methods.md) Aby dowiedzieć się więcej.
+
+- Skonfiguruj zdalne za pośrednictwem **ascforiot** bliźniaczą reprezentację modułu. Aby dowiedzieć się więcej, zobacz [skonfigurować ASC agenta IoT](concept-agent-configuration.md).
+
+ASC agentów zabezpieczeń IoT są tworzone jako projekty typu open source i są dostępne w witrynie GitHub: 
+
+- [IoT-ASC-Agent-C](https://github.com/Azure/IoT-ASC-Agent-C) 
+- [IoT-ASC-Agent-CS](https://github.com/Azure/IoT-ASC-Agent-CS)
+
+## <a name="agent-supported-platforms"></a>Agent obsługiwany platformy
+
+ASC IoT oferuje różne Instalatora agentów dla 32-bitowe i 64-bitowej Windows oraz takie same dla 32-bitowe i 64-bitowy systemu Linux. Upewnij się, że masz Instalatora agenta poprawne dla każdego urządzenia, zgodnie z poniższą tabelą:
+
+| 32 lub 64-bitowy | Linux | Windows |    Szczegóły|
+|----------|----------------------------------------------|-------------|-------------------------------------------|
+| 32-bitowe  | C  | C#  ||
+| 64-bitowy  | C#lub C           | C#      | Użyj agenta C w przypadku urządzeń z minimalnymi zasobami|
+
+## <a name="next-steps"></a>Kolejne kroki
+
+W tym artykule opisano ASC architektury agenta zabezpieczeń IoT i dostępne pliki instalacyjne.
+
+Aby kontynuować wprowadzenie do usługi ASC dla wdrożenia IoT, skorzystaj z poniższych artykułów:
+
+
+- Zapoznaj się z usługą ASC dla IoT [usługi wymagań wstępnych](service-prerequisites.md)
+- Dowiedz się, jak [ASC włączyć dla usługi IoT w usłudze IoT Hub](quickstart-onboard-iot-hub.md)
+- Użycia opcji szybkiego startu, aby [Konfiguruj rozwiązanie](quickstart-configure-your-solution.md)
+- Zrozumienie [metody uwierzytelniania agenta zabezpieczeń](concept-security-agent-authentication-methods.md)
+- Wybierz, a następnie wdrożyć [agent zabezpieczeń](select-deploy-agent.md)
+- Dowiedz się więcej o usłudze z [ASC IoT — często zadawane pytania](resources-frequently-asked-questions.md)

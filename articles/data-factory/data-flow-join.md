@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726876"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540044"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Przekształcenie sprzężenie przepływu danych mapowania
 
@@ -67,6 +67,10 @@ Samosprzężenie warunków w przepływ danych ADF można osiągnąć za pomocą 
 ![Samosprzężenie](media/data-flow/selfjoin.png "samosprzężenie")
 
 Na powyższym diagramie Wybierz przekształcenie znajduje się na górze. Wszystkie wykonywanie operacji jest aliasowanie oryginalnego strumienia do "OrigSourceBatting". W wyróżnionych transformacji sprzężenia poniżej widać, że używamy tego strumienia wybierz aliasu jako sprzężenia po prawej stronie, może odwoływać się do tego samego klucza w lewej i prawej strony sprzężenia wewnętrznego.
+
+## <a name="composite-and-custom-keys"></a>Klucze złożone i niestandardowe
+
+Klucze złożone i niestandardowych można tworzyć na bieżąco wewnątrz przekształcania sprzężenia. Dodawanie wierszy i kolumn sprzężenia dodatkowe za pomocą znak plus (+) obok każdego wiersza w relacji. Albo obliczyć nową wartość klucza w Konstruktorze wyrażeń wartości sprzężenia na bieżąco.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

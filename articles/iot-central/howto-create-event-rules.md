@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f350d0ae6602fb393da3ddc350f33ec89e86078e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: c98136e2f45965834fa1c538a5929eee14b24466
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369047"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521588"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
 
@@ -113,4 +113,5 @@ Teraz, gdy wiesz jak utworzyć zasady w aplikacji usługi Azure IoT Central, pon
 
 - [Dodawanie akcji Microsoft Flow w regułach](howto-add-microsoft-flow.md)
 - [Dodawanie akcji elementu Webhook w regułach](howto-create-webhooks.md)
+- [Wiele akcji, aby uruchamiała się z co najmniej jedną regułę grupy](howto-use-action-groups.md)
 - [Jak zarządzać urządzeniami](howto-manage-devices.md)

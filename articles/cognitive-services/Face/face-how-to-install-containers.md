@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3f77b7b71fa2ef4e7262656540b8562d3a2ff33c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 3e6b220e7193c5e683fc8a6c06a6e9e3dd3e3f6e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437598"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521622"
 ---
 # <a name="install-and-run-face-containers"></a>Instalowanie i uruchamianie kontenerów twarzy
 
@@ -120,6 +120,11 @@ Kontener udostępnia punkt końcowy usługi oparte na protokole REST zapytania p
 
 Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 
+
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
 ## <a name="stop-the-container"></a>Zastavit kontejner
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
@@ -128,9 +133,6 @@ Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API.
 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](./face-resource-container-config.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="containers-api-documentation"></a>Dokumentacja interfejsu API kontenera
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Rozliczenia
 

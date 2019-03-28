@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie wdrażanie Windows maszyny wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
-description: Wdrażanie Windows maszyny wirtualnej rozwiązywania problemów z w modelu wdrażania usługi Resource Manager Azurethe.
+description: Wdrażanie Windows maszyny wirtualnej rozwiązywania problemów z w modelu wdrażania usługi Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 9d98a060033674a53c8ac5390bc40d10b0fbe69b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5752731f08a7dc9ae8661e698aef9655837c6220
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882505"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540707"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Rozwiązywanie wdrażanie Windows maszyny wirtualnej na platformie Azure
 
@@ -32,11 +32,7 @@ Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, może
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Klaster nie obsługuje żądanego rozmiaru maszyny Wirtualnej
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Ponów żądanie, używając mniejszego rozmiaru maszyny Wirtualnej.
 - Jeśli nie można zmienić rozmiar żądanej maszyny Wirtualnej:
     - Zatrzymaj wszystkie maszyny wirtualne w zestawie dostępności. Kliknij przycisk **grup zasobów** > Grupa zasobów > **zasobów** > zestawie dostępności > **maszyn wirtualnych** > Maszyna wirtualna >  **Zatrzymaj**.
@@ -45,11 +41,7 @@ productPesIds="1234, 5678"
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Klaster ma bezpłatne zasoby
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Ponów żądanie później.
 - Jeśli nowa maszyna wirtualna może być częścią zestawu dostępności różnych
     - Utwórz Maszynę wirtualną w innej zestaw dostępności (w tym samym regionie).

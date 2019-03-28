@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: 739ae64c6b32958271260bcbd01b339c1b108f11
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337429"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522200"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Użyj aktywnej nauki usprawniających bazy wiedzy
 
@@ -208,7 +208,7 @@ Stan 204 i nie treści odpowiedzi JSON zwrócą pomyślne odpowiedzi.
 
 Gdy Twoja aplikacja ma aktywne uczenie włączone i wyeksportować aplikację, `SuggestedQuestions` kolumna w pliku tsv przechowuje dane aktywne uczenie. 
 
-`SuggestedQuestions` Kolumny jest obiektem JSON informacji niejawne (`autosuggested`) i jawne (`usersuggested`) [opinii](#active-learning). Przykładem obiektu JSON do pojedynczego zapytania przesłane przez użytkownika z `help` jest:
+`SuggestedQuestions` Kolumny jest obiektem JSON informacji niejawne (`autosuggested`) i jawne (`usersuggested`) opinii. Przykładem obiektu JSON do pojedynczego zapytania przesłane przez użytkownika z `help` jest:
 
 ```JSON
 [

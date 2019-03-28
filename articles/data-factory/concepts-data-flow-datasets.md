@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 4e36e96947e6a8595230023065eb9f44a5a1f3d2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: efb82c57a5620ef3eace8b39f6f27f2286202f84
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371319"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521843"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapowanie przepływu danych w zestawach danych
 
@@ -49,9 +49,27 @@ W przepływu danych możesz poprosić usługi ADF, aby utworzyć nową definicj�
 
 ![Źródło przekształcenia schematu](media/data-flow/dataset2.png "schematu SQL")
 
-## <a name="delimited-text-dataset"></a>Zestaw danych tekstu rozdzielanego
+## <a name="choose-your-type-of-data-first"></a>Najpierw wybierz typ danych
 
-W dataset tekst rozdzielany ustawi ogranicznik, który ma obsługiwać albo jednego ograniczniki ("\t"dla TSV,"," dla woluminów CSV, ' |'...) lub użyć wielu znaków w poszukiwaniu ogranicznika. Ustaw przełącznik wiersza nagłówka, a następnie przejdź do przekształcania źródła automatyczne wykrywanie typów danych.
+### <a name="delimited-text"></a>Tekst rozdzielany
+
+W dataset tekst rozdzielany ustawi ogranicznik, który ma obsługiwać albo jednego ograniczniki ("\t"dla TSV,"," dla woluminów CSV, ' |'...) lub użyć wielu znaków w poszukiwaniu ogranicznika. Ustaw przełącznik wiersza nagłówka, a następnie przejdź do przekształcania źródła automatyczne wykrywanie typów danych. Jeśli używasz tekst rozdzielany zestaw danych, aby ładowanie danych w ujściu, wystarczy wybrać folder docelowy. W obszarze Ustawienia ujścia można zdefiniować nazwę plików wyjściowych.
+
+### <a name="parquet"></a>Parquet
+
+Użyj Parquet jako preferowany przemieszczania typ zestawu danych w usłudze ADF przepływów danych. Parquet zapisze obszerne metadane schematu razem z danymi.
+
+### <a name="database-types"></a>Typy bazy danych
+
+Możesz wybrać bazy danych SQL Azure lub usługi Azure SQL data Warehouse.
+
+Dla innych ADF zestawu danych typów należy użyć działania kopiowania do przygotowania danych. Brak szablonu usługi ADF w galerii szablonów, aby ułatwić Ci budowanie tego wzorca.
+
+![Kopiowanie tymczasowego](media/data-flow/templatedf.png "skopiuj przemieszczania")
+
+## <a name="choose-your-connection-type"></a>Wybierz typ połączenia
+
+Jeśli używasz Parquet lub tekst rozdzielany zestawów danych można następnie wybrać lokalizację danych: Azure Data Lake Store lub obiektu Blob.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

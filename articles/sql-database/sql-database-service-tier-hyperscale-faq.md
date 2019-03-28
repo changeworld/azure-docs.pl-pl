@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/26/2019
+ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075939"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540673"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -216,7 +216,7 @@ Nie. W publicznej wersji zapoznawczej nie można przenieść bazę danych na du�
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Po zakończeniu migracji do warstwy usługi w Hiperskali utracić wszystkie funkcje lub możliwości
 
-Tak. Niektóre funkcje usługi Azure SQL Database nie są obsługiwane w Hiperskali w publicznej wersji zapoznawczej, w tym między innymi funkcji TDE i długi okres przechowywanie kopii zapasowej. Po przeprowadzeniu migracji bazy danych na dużą skalę, te funkcje przestają działać.
+Tak. Niektóre funkcje usługi Azure SQL Database nie są obsługiwane w Hiperskali w publicznej wersji zapoznawczej, w tym między innymi do długi okres przechowywania wykonywania kopii zapasowych. Po przeprowadzeniu migracji bazy danych na dużą skalę, te funkcje przestają działać.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Czy mogę przenieść moją bazę danych programu SQL Server w środowisku lokalnym lub maszynie wirtualnej bazy danych programu SQL Server na dużą skalę
 

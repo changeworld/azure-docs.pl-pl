@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 681ee66ca165ece170dd2a2ce2736cf55a44f1f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d599414978c44407acc1a449f853607d6a40c495
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104084"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541013"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpieczanie klastra autonomicznego w Windows przy użyciu zabezpieczeń Windows
 Aby zapobiec nieautoryzowanemu dostępowi do klastra usługi Service Fabric, należy zabezpieczyć klaster. Bezpieczeństwo jest szczególnie ważne, gdy klaster działa obciążeń produkcyjnych. W tym artykule opisano sposób konfigurowania zabezpieczeń między węzłami i węzeł klienta przy użyciu zabezpieczeń Windows w *ClusterConfig.JSON* pliku.  Proces odnosi się do kroku zabezpieczeń Konfiguruj [Tworzenie klastra autonomicznego w systemie Windows](service-fabric-cluster-creation-for-windows-server.md). Aby uzyskać więcej informacji o używaniu Windows zabezpieczeń w usłudze Service Fabric, zobacz [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md).
@@ -30,7 +30,7 @@ Aby zapobiec nieautoryzowanemu dostępowi do klastra usługi Service Fabric, nal
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Konfigurowanie zabezpieczeń Windows przy użyciu gMSA  
-Przykład *ClusterConfig.gMSA.Windows.MultiMachine.JSON* pliku konfiguracji pobranej z [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. ZIP](https://go.microsoft.com/fwlink/?LinkId=730690) autonomicznego klastra pakiet zawiera szablon służący do konfigurowania zabezpieczeń Windows przy użyciu [konta usługi zarządzanego przez grupę (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+Przykład *ClusterConfig.gMSA.Windows.MultiMachine.JSON* pliku konfiguracji pobranej z [Microsoft.Azure.ServiceFabric.WindowsServer.\< w wersji > zip](https://go.microsoft.com/fwlink/?LinkId=730690) autonomicznego klastra pakiet zawiera szablon służący do konfigurowania zabezpieczeń Windows przy użyciu [konta usługi zarządzanego przez grupę (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
 
 ```
 "security": {
@@ -86,7 +86,7 @@ Poniższy przykład **zabezpieczeń** sekcji konfiguruje zabezpieczeń Windows p
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurowanie zabezpieczeń Windows przy użyciu grupy maszyn  
-Ten model jest wycofywany. Zaleca się używania konta usługi zarządzanego zgodnie z powyższym opisem. Przykład *ClusterConfig.Windows.MultiMachine.JSON* pliku konfiguracji pobranej z [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. ZIP](https://go.microsoft.com/fwlink/?LinkId=730690) autonomicznego klastra pakiet zawiera szablon służący do konfigurowania zabezpieczeń Windows.  Zabezpieczenia Windows jest skonfigurowany w **właściwości** sekcji: 
+Ten model jest wycofywany. Zaleca się używania konta usługi zarządzanego zgodnie z powyższym opisem. Przykład *ClusterConfig.Windows.MultiMachine.JSON* pliku konfiguracji pobranej z [Microsoft.Azure.ServiceFabric.WindowsServer.\< w wersji > zip](https://go.microsoft.com/fwlink/?LinkId=730690) autonomicznego klastra pakiet zawiera szablon służący do konfigurowania zabezpieczeń Windows.  Zabezpieczenia Windows jest skonfigurowany w **właściwości** sekcji: 
 
 ```
 "security": {

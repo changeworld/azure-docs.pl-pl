@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 8f0eaf8918913836cfe724ffea4f93b62eb3bf6a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4030b1905f8d5b50ef6be3ffa61eda74d8a27951
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841646"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541056"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Uruchamianie powrotu po awarii dla maszyn wirtualnych funkcji Hyper-V
 
@@ -30,8 +30,8 @@ Po przejściu w tryb failover z serwera podstawowego do lokalizacji dodatkowej r
 2. Na **potwierdzić planowanego trybu Failover** wybierz lokalizacje źródłowe i docelowe. Należy pamiętać, wybrano kierunek trybu failover. W przypadku pracy awaryjnej z podstawowej pracował jako oczekują, i wszystkie maszyny wirtualne znajdują się w lokalizacji dodatkowej, jest to wyłącznie w celach informacyjnych.
 3. W przypadku przechodzenia powrót po awarii z platformy Azure wybierz ustawienia w **synchronizacji danych**:
     - **Synchronizowanie danych przed włączeniem trybu failover (tylko zmiany różnicowe Synchronize)**— tę opcję, minimalizuje czas przestoju w przypadku maszyn wirtualnych, jak synchronizuje się bez ich zamykania. Go wykonuje następujące czynności:
-        - Faza 1: Wykonuje migawkę maszyny wirtualnej na platformie Azure i kopiuje go do hosta funkcji Hyper-V w środowisku lokalnym. Komputer nadal działających na platformie Azure.
-        - Faza 2: Zamyka maszyny wirtualnej na platformie Azure tak, aby żadne nowe zmiany wystąpić istnieje. Ostateczny zestaw zmian różnicowych jest przekazywany do lokalnego serwera i uruchomienia maszyny wirtualnej w środowisku lokalnym.
+        - Faza 1: Pobiera migawkę maszyny wirtualnej na platformie Azure i kopiuje go do hosta funkcji Hyper-V w środowisku lokalnym. Komputer nadal działających na platformie Azure.
+        - Faza 2: Spowoduje to nie nowych zmian zamknięcie maszyny wirtualnej na platformie Azure. Ostateczny zestaw zmian różnicowych jest przekazywany do lokalnego serwera i uruchomienia maszyny wirtualnej w środowisku lokalnym.
 
     - **Synchronizowanie danych podczas pracy awaryjnej tylko (pełne pobieranie)**— ta opcja jest szybsze.
         - Ta opcja jest szybsze, ponieważ oczekuje się, że większość dysku został zmieniony i nie chcemy poświęcić czas Obliczanie sumy kontrolnej. Wykonuje pobierania dysku. Jest również przydatne, gdy maszyna wirtualna w warstwie Premium zostały usunięte.
@@ -54,16 +54,16 @@ Jeśli udało Ci się wdrożyć ochrony między [lokacją funkcji Hyper-V i plat
 
 1. Jeśli konfigurujesz nowy sprzęt systemu Windows Server 2012 R2 i roli Hyper-V należy zainstalować na serwerze.
 2. Utwórz przełącznik sieci wirtualnej o tej samej nazwie, która była na oryginalnym serwerze.
-3. Wybierz **chronione elementy** -> **grupy ochrony**  ->  <ProtectionGroupName>  ->  <VirtualMachineName> chcesz wykonać powrotu po awarii, a następnie wybierz **planowana Tryb failover**.
+3. Wybierz **chronione elementy** -> **grupy ochrony** -> \<ProtectionGroupName > -> \<VirtualMachineName > aby powrót po awarii, i wybierz **planowanego trybu Failover**.
 4. W **potwierdzić planowanego trybu Failover** wybierz **Utwórz lokalną maszynę wirtualną, jeśli nie istnieje**.
 5. W polu Nazwa hosta ** wybierz nowy serwer hosta funkcji Hyper-V, na którym chcesz umieścić maszyny wirtualnej.
 6. W synchronizacji danych zaleca się, że wybierasz opcję, aby synchronizować dane przed włączeniem trybu failover. Minimalizuje czas przestoju w przypadku maszyn wirtualnych, jak synchronizuje się bez ich zamykania. Wykonuje następujące zadania:
 
-    - Faza 1: Wykonuje migawkę maszyny wirtualnej na platformie Azure i kopiuje go do hosta funkcji Hyper-V w środowisku lokalnym. Komputer nadal działających na platformie Azure.
-    - Faza 2: Zamyka maszyny wirtualnej na platformie Azure tak, aby żadne nowe zmiany wystąpić istnieje. Ostateczny zestaw zmian jest przekazywany do lokalnego serwera i uruchomienia maszyny wirtualnej w środowisku lokalnym.
+    - Faza 1: Pobiera migawkę maszyny wirtualnej na platformie Azure i kopiuje go do hosta funkcji Hyper-V w środowisku lokalnym. Komputer nadal działających na platformie Azure.
+    - Faza 2: Spowoduje to nie nowych zmian zamknięcie maszyny wirtualnej na platformie Azure. Ostateczny zestaw zmian jest przekazywany do lokalnego serwera i uruchomienia maszyny wirtualnej w środowisku lokalnym.
     
 7. Kliknij znacznik wyboru, aby rozpocząć tryb failover (powrót po awarii).
-8. Po zakończeniu początkowej synchronizacji i wszystko będzie gotowe, zamknij maszynę wirtualną na platformie Azure, kliknij przycisk **zadania** > <planned failover job> > **zakończenie pracy awaryjnej**. Zamyka maszyny platformy Azure, przesyła najnowsze zmiany z maszyną wirtualną w środowisku lokalnym i uruchamia go.
+8. Po zakończeniu początkowej synchronizacji i wszystko będzie gotowe, zamknij maszynę wirtualną na platformie Azure, kliknij przycisk **zadania** > \<zadania planowanego trybu failover >> **zakończenie pracy awaryjnej** . Zamyka maszyny platformy Azure, przesyła najnowsze zmiany z maszyną wirtualną w środowisku lokalnym i uruchamia go.
 9. Możesz zalogować się do maszyny wirtualnej w środowisku lokalnym, aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami. Następnie kliknij przycisk **zatwierdzić** na zakończenie pracy w trybie failover. Zatwierdzenie powoduje usunięcie maszyny wirtualnej platformy Azure i jej dysków i przygotowuje maszynę Wirtualną, która ma być ponownie chroniony.
 10. Kliknij przycisk **replikacja odwrotna** aby rozpocząć ochronę maszyny wirtualnej w środowisku lokalnym.
 

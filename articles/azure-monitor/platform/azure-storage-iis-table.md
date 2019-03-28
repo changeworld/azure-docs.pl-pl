@@ -1,6 +1,6 @@
 ---
-title: Magazyn obiektów blob na użytek usług IIS i magazynu table storage dla zdarzeń w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Usługa log Analytics może odczytywać dzienniki dla usług platformy Azure, które zapisać diagnostyki w usłudze table storage lub dzienniki programu IIS zapisywane do magazynu obiektów blob.
+title: Magazyn obiektów blob na użytek usług IIS i magazynu table storage dla zdarzeń w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Usługa Azure Monitor może odczytywać dzienniki dla usług platformy Azure, które zapisać diagnostyki w usłudze table storage lub dzienniki programu IIS zapisywane do magazynu obiektów blob.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 9f5948887262ae190547c96aa09318a19f64812e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 35befe7122f493998d0d91c2721e6013e057fed3
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306633"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540605"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Użyj usługi Azure blob storage usług IIS i platformą Azure table Storage w przypadku zdarzeń z usługą Log Analytics
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Użyj usługi Azure blob storage usług IIS i platformą Azure table Storage dla zdarzeń za pomocą usługi Azure Monitor
 
-Usługa log Analytics może odczytywać dzienniki Aby uzyskać następujące usługi, które zapisać diagnostyki w usłudze table storage lub dzienniki programu IIS zapisywane do magazynu obiektów blob:
+Usługa Azure Monitor może odczytywać dzienniki Aby uzyskać następujące usługi, które zapisać diagnostyki w usłudze table storage lub dzienniki programu IIS zapisywane do magazynu obiektów blob:
 
 * Usługa Service Fabric clusters (wersja zapoznawcza)
 * Maszyny wirtualne
 * Role sieć Web/proces roboczy
 
-Log Analytics może zbierać dane dla tych zasobów, należy włączyć diagnostykę platformy Azure.
+Usługa Azure Monitor umożliwia zbieranie danych do obszaru roboczego usługi Log Analytics dla tych zasobów, należy włączyć diagnostyki platformy Azure.
 
-Po włączeniu diagnostyki, można użyć witryny Azure portal lub programu PowerShell skonfiguruj usługę Log Analytics, aby zbierać dzienniki.
+Po włączeniu diagnostyki, można użyć witryny Azure portal lub programu PowerShell Konfiguruj obszar roboczy, aby zebrać dzienniki.
 
-Narzędzie diagnostyczne systemu Azure to rozszerzenie platformy Azure, która umożliwia zbieranie danych diagnostycznych z roli proces roboczy, roli sieci web lub maszyny wirtualnej działającej na platformie Azure. Dane są przechowywane na koncie usługi Azure storage, a następnie mogą być zbierane przez usługę Log Analytics.
+Narzędzie diagnostyczne systemu Azure to rozszerzenie platformy Azure, która umożliwia zbieranie danych diagnostycznych z roli proces roboczy, roli sieci web lub maszyny wirtualnej działającej na platformie Azure. Dane są przechowywane na koncie usługi Azure storage, a następnie mogą zostać zebrane przez usługi Azure Monitor.
 
-Dla usługi Log Analytics do zbierania tych dzienników diagnostyki platformy Azure dzienniki musi być w następujących lokalizacjach:
+Dla usługi Azure Monitor do zbierania tych dzienników diagnostyki platformy Azure dzienniki musi być w następujących lokalizacjach:
 
 | Typ dziennika | Typ zasobu | Lokalizacja |
 | --- | --- | --- |
@@ -116,10 +116,10 @@ Upewnij się, że Twoje appSettings Określa konto magazynu, jak w poniższym pr
 
 **AccountName** i **AccountKey** wartości znajdują się w witrynie Azure portal na pulpicie nawigacyjnym konta magazynu w obszarze Zarządzaj kluczami dostępu. Protokół dla parametrów połączenia musi być **https**.
 
-Po zastosowaniu zaktualizowanej konfiguracji diagnostycznych do usługi w chmurze i zapisuje diagnostyczne do usługi Azure Storage, następnie można przystąpić do konfigurowania usługi Log Analytics.
+Po zastosowaniu zaktualizowanej konfiguracji diagnostycznych do usługi w chmurze i zapisuje diagnostyczne do usługi Azure Storage, następnie można przystąpić do konfigurowania obszaru roboczego usługi Log Analytics.
 
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Zbieranie dzienników z usługi Azure Storage za pomocą witryny Azure portal
-Witryna Azure portal służy do konfigurowania usługi Log Analytics do zbierania dzienników dla następujących usług platformy Azure:
+Aby skonfigurować obszar roboczy usługi Log Analytics w usłudze Azure Monitor do zbierania dzienników dla następujących usług platformy Azure, można użyć witryny Azure portal:
 
 * Klastry usługi Service Fabric
 * Maszyny wirtualne
@@ -136,9 +136,9 @@ W witrynie Azure portal przejdź do obszaru roboczego usługi Log Analytics i wy
 5. Wartość źródła jest automatycznie wypełniane na podstawie typu danych i nie można jej zmienić
 6. Kliknij przycisk OK, aby zapisać konfigurację
 
-Powtórz kroki od 2 do 6 dla dodatkowych kont magazynu i typy danych, które chcesz, aby usługi Log Analytics do zbierania.
+Powtórz kroki od 2 do 6 dla dodatkowych kont magazynu i typy danych, które mają być zbierane do obszaru roboczego.
 
-W ciągu 30 minut jesteś w stanie wyświetlić dane z konta magazynu w usłudze Log Analytics. Widoczne są tylko dane, które są zapisywane do magazynu, po zastosowaniu konfiguracji. Usługa log Analytics nie odczytuje już istniejące dane z konta magazynu.
+W ciągu 30 minut jesteś w stanie wyświetlić dane z konta magazynu, w obszarze roboczym usługi Log Analytics. Widoczne są tylko dane, które są zapisywane do magazynu, po zastosowaniu konfiguracji. Obszar roboczy nie odczytuje już istniejące dane z konta magazynu.
 
 > [!NOTE]
 > Nie można zweryfikować portalu, że źródło istnieje na koncie magazynu lub jeśli nowe dane zostaną zapisane.
@@ -149,7 +149,7 @@ W ciągu 30 minut jesteś w stanie wyświetlić dane z konta magazynu w usłudze
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Użyj kroków w [konfigurowania usługi Log Analytics do indeksowania usługi Diagnostyka Azure](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-collect-azure-diagnostics-from-storage) odczytywać diagnostyki platformy Azure, które są zapisywane w usłudze table storage przy użyciu programu PowerShell.
+Użyj kroków w [konfigurowania usługi Azure Monitor do indeksowania usługi Diagnostyka Azure](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage) odczytywać diagnostyki platformy Azure, które są zapisywane w usłudze table storage przy użyciu programu PowerShell.
 
 Przy użyciu programu Azure PowerShell można bardziej precyzyjnie określić zdarzenia, które są zapisywane do usługi Azure Storage.
 Aby uzyskać więcej informacji, zobacz [Włączanie diagnostyki w usłudze Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433454"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521758"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania usługi IoT Edge w środowisku produkcyjnym
 
@@ -134,7 +134,7 @@ W samouczkach i innej dokumentacji firma Microsoft poinstruować przy użyciu ty
 
 ### <a name="use-tags-to-manage-versions"></a>Zarządzanie wersjami za pomocą tagów
 
-Tag jest pojęciem platformy Docker, używaną do rozróżniania między wersjami kontenerów platformy Docker. Tagi są sufiksy, takich jak **1.0** , przejdź na koniec repozytorium kontenerów. Na przykład **mcr.microsoft.com/azureiotedge-agent:1.0**. Tagi są modyfikowalne i można ją zmienić na punkt do innego kontenera w dowolnym momencie, aby Twój zespół powinien zgody na Konwencji do wykonania podczas aktualizowania obrazów modułu przenoszenie do przodu. 
+Tag jest pojęciem platformy docker, używaną do rozróżniania między wersjami kontenerów platformy docker. Tagi są sufiksy, takich jak **1.0** , przejdź na koniec repozytorium kontenerów. Na przykład **mcr.microsoft.com/azureiotedge-agent:1.0**. Tagi są modyfikowalne i można ją zmienić na punkt do innego kontenera w dowolnym momencie, aby Twój zespół powinien zgody na Konwencji do wykonania podczas aktualizowania obrazów modułu przenoszenie do przodu. 
 
 Tagi ułatwiają też wymusić aktualizacje na urządzeniach usługi IoT Edge. Po wypchnięciu zaktualizowaną wersję modułu do rejestru kontenerów, jego wartość tagu. Następnie wypchnąć nowe wdrożenie na urządzeniach z systemem z tagiem zwiększany. Aparat kontenera rozpozna zwiększona tag jako nową wersję i będzie pobierać najnowszą wersję modułu swoje urządzenie. 
 
@@ -172,7 +172,7 @@ Ta lista kontrolna stanowi punkt wyjścia dla reguł zapory:
    | \*. azurecr.io | 443 | Rejestry kontenerów strony osobistych, jak i 3 |
    | \*.blob.core.windows.net | 443 | Pobierz obraz różnic | 
    | \*.azure-devices.net | 5671, 8883, 443 | Dostęp do usługi IoT Hub |
-   | \*.docker.io  | 443 | Docker dostępu (opcjonalnie) |
+   | \*.docker.io  | 443 | Dostęp do Centrum docker (opcjonalnie) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurowanie komunikacji za pośrednictwem serwera proxy
 
@@ -186,16 +186,57 @@ Urządzenia mają zostać wdrożone w sieci, która korzysta z serwera proxy, mu
 
 ### <a name="set-up-logs-and-diagnostics"></a>Konfigurowanie dzienników i Diagnostyka
 
-W systemie Linux demon usługi IoT Edge korzysta z arkuszy jako domyślne rejestrowanie sterownika. Można użyć narzędzia wiersza polecenia `journalctl` kwerendy demona dzienniki. Demon usługi IoT Edge na Windows, korzysta z diagnostyki programu PowerShell. Użyj `Get-WinEvent` dzienniki zapytania z demona. Moduły usługi IoT Edge użyć sterownika JSON do rejestrowania, co jest ustawieniem domyślnym platformy Docker.  
+W systemie Linux demon usługi IoT Edge korzysta z arkuszy jako domyślne rejestrowanie sterownika. Można użyć narzędzia wiersza polecenia `journalctl` kwerendy demona dzienniki. Demon usługi IoT Edge na Windows, korzysta z diagnostyki programu PowerShell. Użyj `Get-WinEvent` dzienniki zapytania z demona. Moduły usługi IoT Edge na użytek sterownik JSON rejestrowania, co jest ustawieniem domyślnym.  
 
 Podczas testowania wdrożenia usługi IoT Edge, zwykle dostęp urządzenia do pobierania dzienników i rozwiązywanie problemów. W scenariuszu wdrażania możesz nie mieć tej opcji. Należy wziąć pod uwagę, jak możesz zacząć zbierać informacje dotyczące urządzeń w środowisku produkcyjnym. Jedną z opcji jest używać moduł rejestrowania, który zbiera informacje z innymi modułami i wysyła je do chmury. Jednym z przykładów moduł rejestrowania jest [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics), lub projektować własne. 
 
-Martwisz dzienników staje się zbyt duży, na urządzeniu zasobów ograniczone, masz kilka opcji, aby zmniejszyć użycie pamięci. 
+### <a name="place-limits-on-log-size"></a>Ogranicza rozmiar dziennika
 
-* W szczególności można ograniczyć rozmiar wszystkich logfiles platformy docker w demona platformy Docker, sam. W przypadku systemu Linux skonfiguruj demona na `/etc/docker/daemon.json`. Dla Windows `C:\ProgramData\docker\confige\daemon.json`. 
-* Aby dostosować rozmiar pliku dziennika dla każdego kontenera, możesz to zrobić w CreateOptions, można żądań każdego modułu. 
-* Konfigurowanie platformy Docker do automatycznego zarządzania dziennikami, ustawiając arkuszy jako domyślnego sterownika rejestrowanie dla platformy Docker. 
-* Okresowo należy usunąć stare dzienniki z urządzenia, instalując narzędzia logrotate dla platformy Docker. Użyj następujących specyfikacji pliku: 
+Domyślnie aparat container Moby nie ustawia limity rozmiaru dziennika kontenera. Wraz z upływem czasu może to prowadzić do urządzenia zapełnia się za pomocą dzienników i wyczerpuje się miejsce na dysku. Należy wziąć pod uwagę następujące opcje, aby zapobiec takiej sytuacji:
+
+**Opcja: Ustaw limity globalne, które są stosowane do wszystkich modułów kontenera**
+
+Można ograniczyć rozmiar wszystkich logfiles kontenera za pomocą kontenera aparatu dziennika opcji. Poniższy przykład ustawia sterownik dziennika `json-file` (zalecane), za pomocą ograniczenia dotyczące rozmiaru i liczby plików:
+
+    {
+        "log-driver": "json-file",
+        "log-opts": {
+            "max-size": "10m",
+            "max-file": "3"
+        }
+    }
+
+Dodaj (lub dołączyć) te informacje w pliku o nazwie `daemon.json` i umieść go w odpowiedniej lokalizacji dla danej platformy urządzenia.
+
+| Platforma | Lokalizacja |
+| -------- | -------- |
+| Linux | `/etc/docker/` |
+| Windows | `C:\ProgramData\iotedge-moby-data\config\` |
+
+Aby zmiany zaczęły obowiązywać, należy ponownie uruchomić aparat kontenera.
+
+**Opcja: Dostosuj ustawienia dziennika dla każdego modułu kontenera**
+
+Możecie więc w **CreateOptions, można żądań** każdego modułu. Na przykład:
+
+    "createOptions": {
+        "HostConfig": {
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-size": "10m",
+                    "max-file": "3"
+                }
+            }
+        }
+    }
+
+
+**Dodatkowe opcje w systemach Linux**
+
+* Konfigurowanie aparatu kontenera, aby wysłać dzienniki do `systemd` [dziennika](https://docs.docker.com/config/containers/logging/journald/) , ustawiając `journald` jako domyślnego sterownika rejestrowania. 
+
+* Okresowo należy usunąć stare dzienniki z urządzenia, instalując narzędzia logrotate. Użyj następujących specyfikacji pliku: 
 
    ```
    /var/lib/docker/containers/*/*-json.log{

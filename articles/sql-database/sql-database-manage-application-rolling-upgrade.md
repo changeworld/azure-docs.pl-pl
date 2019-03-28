@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: ad971ae3157dd17ecd4af662626c986584a27fe2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 63f301b4618df9764460d0a9a133834fb72e33bb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329170"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540588"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Zarządzanie przeprowadzania uaktualnienia równoległych aplikacji w chmurze przy użyciu aktywnej replikacji geograficznej bazy danych SQL
 
@@ -103,7 +103,21 @@ Aby umożliwić wycofać uaktualnienie, należy utworzyć środowisko przejścio
 Po zakończeniu kroków przygotowania środowisko tymczasowe jest gotowy do uaktualnienia. Następny diagram ilustruje te kroki uaktualniania:
 
 1. Ustaw podstawowej bazy danych w środowisku produkcyjnym do trybu tylko do odczytu (10). W tym trybie gwarantuje, że produkcyjnej bazy danych (wersja 1) nie zmienią się podczas uaktualniania, aby zapobiec wystąpieniu rozbieżności danych między wystąpieniami bazy danych w wersji 1 i 2.
-2. Odłącz pomocniczej bazy danych w tym samym regionie przy użyciu trybu planowane zakończenie (11). Ta akcja tworzy niezależne, ale w pełni zsynchronizowane kopię produkcyjnej bazy danych. Ta baza danych zostanie uaktualniony.
+
+```sql
+-- Set the production database to read-only mode
+ALTER DATABASE <Prod_DB>
+SET (ALLOW_CONNECTIONS = NO)
+```
+
+2. Zakończenie replikacji geograficznej przez odłączenie pomocniczy (11). Ta akcja tworzy niezależne, ale w pełni zsynchronizowane kopię produkcyjnej bazy danych. Ta baza danych zostanie uaktualniony. W poniższym przykładzie użyto instrukcji języka Transact-SQL, ale [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) jest również dostępna. 
+
+```sql
+-- Disconnect the secondary, terminating geo-replication
+ALTER DATABSE V1
+REMOVE SECONDARY ON SERVER <Partner-Server>
+```
+
 3. Uruchom skrypt uaktualnienia skryptu przed `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`i przemieszczania podstawowej bazy danych (12). Zmiany w bazie danych będą automatycznie replikowane do dodatkowej przemieszczania.
 
 ![Konfiguracja replikacji geograficznej bazy danych SQL do odzyskiwania po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)

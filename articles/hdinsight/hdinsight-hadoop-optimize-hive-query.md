@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 1c863bc3b0ded0558e052ee3d98586ad815a0cfd
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/21/2019
+ms.openlocfilehash: 63def1464c3c219b5181a31bf19cc80a1e487025
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202745"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521741"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
 
-W usłudze Azure HDInsight istnieje kilka typów klastrów i technologie, które można uruchomić zapytania usługi Apache Hive. Podczas tworzenia klastra usługi HDInsight, należy wybrać typ klastra odpowiednie do optymalizowania wydajności na potrzeby związane z obciążeniem. 
+W usłudze Azure HDInsight istnieje kilka typów klastrów i technologie, które można uruchomić zapytania usługi Apache Hive. Podczas tworzenia klastra usługi HDInsight, należy wybrać typ klastra odpowiednie do optymalizowania wydajności na potrzeby związane z obciążeniem.
 
 Na przykład wybrać **Interactive Query** typ zoptymalizowane pod kątem zapytań ad-hoc, interaktywne klastra. Wybierz pozycję Apache **Hadoop** typ zoptymalizowane pod kątem zapytań programu Hive, używane jako proces wsadowy klastra. **Platforma Spark** i **HBase** typy klastrów można również uruchomić zapytania programu Hive. Aby uzyskać więcej informacji na temat uruchamiania zapytań programu Hive na różne typy klastrów HDInsight, zobacz [co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?](hadoop/hdinsight-use-hive.md).
 

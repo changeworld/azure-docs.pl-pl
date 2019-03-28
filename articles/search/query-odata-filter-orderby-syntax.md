@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087401"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541064"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Składnia wyrażenia OData, filtry i klauzule w klauzuli order by w usłudze Azure Search
 
@@ -128,10 +128,10 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 ## <a name="filter-examples"></a>Przykłady filtrów  
 
- Znajdź wszystkie hotele ze stawką podstawową mniejsza niż 100 USD, które są oceniane co najmniej 4:  
+ Znajdź wszystkie hotele ze stawką podstawową mniejsza niż 200 USD, które są oceniane co najmniej 4:  
 
 ```
-$filter=baseRate lt 100.0 and rating ge 4
+$filter=baseRate lt 200.0 and rating ge 4
 ```
 
  Znajdź wszystkie hotele innych niż "Roach Motel", które zostały renovated od 2010:  
@@ -140,10 +140,10 @@ $filter=baseRate lt 100.0 and rating ge 4
 $filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
 ```
 
- Znajdź wszystkie hotele z stawkę za podstawowy mniejsza niż 200 USD, które zostały renovated od 2012 ciągiem datetime literału, który zawiera informacje o strefie czasowej dla pacyficznego czasu standardowego:  
+ Znajdź wszystkie hotele z stawkę za podstawowy mniejsza niż 200 USD, które zostały renovated od 2010 ciągiem datetime literału, który zawiera informacje o strefie czasowej dla pacyficznego czasu standardowego:  
 
 ```
-$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00
+$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
 ```
 
  Znajdź wszystkie hotele, które parkowania uwzględniona i nie zezwalają na palenia:  

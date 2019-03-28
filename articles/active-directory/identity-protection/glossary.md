@@ -4,7 +4,7 @@ description: Usługa Azure Active Directory Identity Protection słownik
 services: active-directory
 keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń, słownik
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.author: markvi
-ms.reviewer: nigu
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a45107d7a1223acb57f67cff85ea0fc700301d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5def46b6c12dc08c273ea7334516b63b7606477f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208439"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521945"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Usługa Azure Active Directory Identity Protection słownik
 ### <a name="at-risk-user"></a>Zagrożone (użytkownik)

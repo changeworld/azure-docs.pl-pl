@@ -3,7 +3,7 @@ title: Dołączanie nowego urządzenia z systemem Windows 10 przy użyciu usług
 description: Temat, który objaśnia, jak użytkownicy mogą konfigurować dołączanie do usługi Azure AD podczas pierwszego uruchomienia.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/03/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 505ed32d405b840d6a5b8d6cee144ab7cdbe592a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a79c5f89b14d15ffe4f3c582ac7e1e4cabbdc611
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177414"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521554"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Samouczek: dołączanie nowego urządzenia z systemem Windows 10 przy użyciu usługi Azure AD podczas pierwszego uruchomienia
 
@@ -90,7 +90,7 @@ Aby sprawdzić, czy urządzenie dołączyło do usługi Azure AD, zapoznaj się 
 ![Dostęp do zasobów służbowych](./media/azuread-joined-devices-frx/13.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać więcej informacji, zobacz [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md).
 

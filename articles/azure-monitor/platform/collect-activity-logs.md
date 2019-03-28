@@ -1,5 +1,5 @@
 ---
-title: Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics | Dokumentacja firmy Microsoft
+title: Zbieraj i Analizuj Dzienniki aktywności platformy Azure, w obszarze roboczym usługi Log Analytics | Dokumentacja firmy Microsoft
 description: Rozwiązanie dzienników aktywności platformy Azure służy do analizowania i wyszukiwanie w dzienniku aktywności platformy Azure w Twojej subskrypcji platformy Azure.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2fd74262d9c1b4a751df5d836f98bf89d31dbdc2
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540263"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540435"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure, w obszarze roboczym Log Analytics w usłudze Azure Monitor
 
 ![Symbol dzienników aktywności usługi Azure](./media/collect-activity-logs/activity-log-analytics.png)
 
@@ -28,7 +28,7 @@ Rozwiązanie Activity Log Analytics ułatwiają analizowanie i wyszukaj [dzienni
 
 Korzystając z dziennika aktywności można określić *co*, *kto*, i *podczas* dla dowolnego zapisu (PUT, POST, DELETE) dla zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stan działania i inne odpowiednie właściwości. Dziennik aktywności nie obejmują operacji odczytu (GET) ani operacji dotyczących zasobów, które używają klasycznego modelu wdrażania.
 
-Po nawiązaniu połączenia dzienników aktywności platformy Azure do usługi Log Analytics, możesz wykonywać następujące czynności:
+Po nawiązaniu połączenia dzienników aktywności platformy Azure z obszarem roboczym usługi Log Analytics, możesz wykonywać następujące czynności:
 
 - Analizowanie dzienników aktywności, za pomocą wstępnie zdefiniowanych widoków
 - Analizowanie i wyszukiwania i Dzienniki aktywności z wieloma subskrypcjami platformy Azure
@@ -40,15 +40,15 @@ Po nawiązaniu połączenia dzienników aktywności platformy Azure do usługi L
 - Identyfikowanie awarii lub usługi problemy z kondycją wywierania wpływu na zasoby
 - Umożliwia korelowanie aktywności użytkowników, operacje automatycznego skalowania, zmiany autoryzacji i kondycję usługi do innych dzienników i metryk ze środowiska wyszukiwania w Dzienniku
 
-<sup>1</sup>Domyślnie usługi Log Analytics przechowuje dzienników aktywności platformy Azure przez 90 dni, nawet jeśli znajdują się w ramach warstwy bezpłatna. Lub, jeśli masz obszar roboczy ustawienia przechowywania, mniej niż 90 dni. Jeśli obszar roboczy ma przechowywania, która jest większa niż 90 dni, dzienniki aktywności są przechowywane na podstawie na okres przechowywania obszaru roboczego.
+<sup>1</sup>Domyślnie usługa Azure Monitor przechowuje dzienników aktywności platformy Azure w obszarze roboczym usługi Log Analytics przez 90 dni, nawet jeśli znajdują się w ramach warstwy bezpłatna. Lub, jeśli masz obszar roboczy ustawienia przechowywania, mniej niż 90 dni. Jeśli obszar roboczy ma przechowywania, która jest większa niż 90 dni, dzienniki aktywności są przechowywane na podstawie na okres przechowywania obszaru roboczego.
 
-Log Analytics zbiera Dzienniki aktywności są bezpłatne i dzienniki są przechowywane przez 90 dni wolne od opłat. W przypadku przechowywania dzienników przez czas dłuższy niż 90 dni spowoduje naliczenie opłaty za przechowywanie danych na dane przechowywane dłużej niż 90 dni.
+Obszar roboczy usługi Log Analytics zbiera Dzienniki aktywności są bezpłatne i dzienniki są przechowywane przez 90 dni wolne od opłat. W przypadku przechowywania dzienników przez czas dłuższy niż 90 dni spowoduje naliczenie opłaty za przechowywanie danych na dane przechowywane dłużej niż 90 dni.
 
 Podczas korzystania z warstwy cenowej bezpłatna, dzienniki aktywności nie dotyczą dzienne zużycie w magazynie danych.
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane nie są zbierane dla dzienników aktywności przez agentów. Wszystkie dane używane przez rozwiązania pochodzi bezpośrednio na platformie Azure.
+W przeciwieństwie do większości innych rozwiązań usługi Azure Monitor dane nie są zbierane dla dzienników aktywności przez agentów. Wszystkie dane używane przez rozwiązania pochodzi bezpośrednio na platformie Azure.
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |

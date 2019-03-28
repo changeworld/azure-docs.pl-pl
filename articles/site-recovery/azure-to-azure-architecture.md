@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 73def6b659676cc4fecf1d9ef499247c23888566
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310289"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540724"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii Azure – Azure
 
@@ -144,7 +144,7 @@ Do sterowania ruchem wychodzącym dla maszyn wirtualnych przy użyciu adresów I
 
 **Reguły** |  **Szczegóły** | **Tag usługi**
 --- | --- | --- 
-Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwól na użycie zakresów, które odpowiadają na kontach magazynu w regionie źródłowym | Storage.<region-name>.
+Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwól na użycie zakresów, które odpowiadają na kontach magazynu w regionie źródłowym | Magazyn. \<region-name >.
 Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do usługi Azure Active Directory (Azure AD).<br/><br/> Jeśli adresy usługi Azure AD zostaną dodane w przyszłości, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń (NSG).  | AzureActiveDirectory
 Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na dostęp do [punktów końcowych Site Recovery](https://aka.ms/site-recovery-public-ips) odnoszą się do lokalizacji docelowej. 
 
@@ -152,7 +152,7 @@ Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na dostęp do [pu
 
 **Reguły** |  **Szczegóły** | **Tag usługi**
 --- | --- | --- 
-Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do konta magazynu w regionie docelowym. | Storage.<region-name>.
+Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do konta magazynu w regionie docelowym. | Magazyn. \<region-name >.
 Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na zakresy, które odnoszą się do usługi Azure AD.<br/><br/> Jeśli adresy usługi Azure AD zostaną dodane w przyszłości, musisz utworzyć nowe reguły sieciowej grupy zabezpieczeń.  | AzureActiveDirectory
 Zezwala na wychodzące połączenia HTTPS: port 443 | Zezwalaj na dostęp do [punktów końcowych Site Recovery](https://aka.ms/site-recovery-public-ips) odnoszą się do lokalizacji źródłowej. 
 

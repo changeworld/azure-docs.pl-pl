@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 0d52b2f59bba2270b3d36ff2499ce1e0e492b228
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: fe5e4b6a4f6a3da851b6e27419bff265758a1ba1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500427"
+ms.locfileid: "58522217"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie usługą Azure Blob storage w cyklu życia
 
@@ -227,7 +227,7 @@ W tym przykładzie pokazano, jak przejście blokowych obiektów blob z prefiksem
 
 ### <a name="archive-data-at-ingest"></a>Pozyskiwanie danych archiwum 
 
-Niektóre dane pozostaje w stanie bezczynności w chmurze i uzyskuje się rzadko, jeśli, uzyskuje się dostęp po przechowywane. Archiwizowanie danych, natychmiast po ich przetwarzania. Następujące zasady cyklu życia jest skonfigurowany pod kątem archiwizowania danych na odbierania. W tym przykładzie przejścia blokowe obiekty BLOB na koncie magazynu w kontenerze `archivecontainer` natychmiast w warstwie archiwum. Natychmiastowe przejście odbywa się według działających obiektów blob 0 dni po Godzina ostatniej modyfikacji:
+Niektóre dane pozostaje w stanie bezczynności w chmurze i uzyskuje się rzadko, jeśli, uzyskuje się dostęp po przechowywane. Następujące zasady cyklu życia jest skonfigurowany pod kątem archiwizowania danych po ich przetwarzania. W tym przykładzie przejścia blokowe obiekty BLOB na koncie magazynu w kontenerze `archivecontainer` w warstwie archiwum. Przejście odbywa się według działających obiektów blob 0 dni po Godzina ostatniej modyfikacji:
 
 ```json
 {

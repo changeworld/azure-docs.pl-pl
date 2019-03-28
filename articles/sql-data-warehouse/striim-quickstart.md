@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 1f8c2590ea01e9a819ebdacd6b3774555dded800
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a835fbd427408afae9ea6ae1b1bc2a84c18b0c34
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250844"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540461"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Portal SQL magazynu danych Striim Azure Marketplace oferuje Przewodnik instalacji
 
@@ -29,7 +29,7 @@ Konfigurowanie maszyny Wirtualnej Striim przy użyciu określonych właściwośc
 
 ![Konfigurowanie Striim][configure]
 
-Po wdrożeniu, kliknij pozycję <VM Name>masternode — w witrynie Azure portal kliknij pozycję Połącz, a następnie skopiuj logowania przy użyciu lokalnego konta maszyny Wirtualnej 
+Po wdrożeniu, kliknij pozycję \<Nazwa maszyny Wirtualnej >-masternode w witrynie Azure portal kliknij pozycję Połącz, a następnie skopiuj logowania przy użyciu lokalnego konta maszyny Wirtualnej 
 
 ![Połącz Striim do usługi SQL Data Warehouse][connect]
 
@@ -55,7 +55,7 @@ Wykonaj następujące polecenia, aby przenieść plik jar JDBC do katalogu lib f
 
 ![Uruchomienie klastra Striim][start-striim]
 
-Teraz Otwórz ulubioną przeglądarkę i przejdź do <DNS Name>: 9080
+Teraz Otwórz ulubioną przeglądarkę i przejdź do \<DNS Name >: 9080
 
 ![Przejdź do ekranu logowania][navigate]
 

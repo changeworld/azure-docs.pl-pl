@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 899068141a936aa5257501e733c6600185f22b8e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285075"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522166"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -145,7 +145,7 @@ Skonfiguruj tworzenie kopii zapasowych w następujący sposób:
 
    - Wybrać zasady domyślne: HourlyLogBackup.
    - Wybrać istniejące zasady kopii zapasowych utworzone wcześniej dla środowiska SQL.
-   - [Zdefiniować nowe zasady](#configure-a-backup-policy) oparte na własnym celu punktu odzyskiwania i zakresie przechowywania.
+   - Definiowanie nowych zasad opartych na swój zakres od celu punktu odzyskiwania i przechowywania.
 
      ![Wybieranie pozycji Zasady kopii zapasowych](./media/backup-azure-sql-database/select-backup-policy.png)
 

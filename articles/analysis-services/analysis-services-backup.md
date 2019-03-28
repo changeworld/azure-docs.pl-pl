@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b88660548feaa1d3a8e83e633f798212c80ac6dc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190310"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539109"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
@@ -24,8 +24,7 @@ Wykonywanie kopii zapasowych baz danych modelu tabelarycznego w usługach Azure 
 > 
 > 
 
-Kopie zapasowe są zapisywane z rozszerzeniem abf. Modele tabelaryczne w pamięci zarówno w modelu danych, jak i metadane są przechowywane. Dla zapytania bezpośredniego modeli tabelarycznych są przechowywane tylko metadanych modelu. Kopie zapasowe można kompresowane i szyfrowane, w zależności od wybranych opcji. 
-
+Kopie zapasowe są zapisywane z rozszerzeniem abf. Modele tabelaryczne w pamięci zarówno w modelu danych, jak i metadane są przechowywane. Dla zapytania bezpośredniego modeli tabelarycznych są przechowywane tylko metadanych modelu. Kopie zapasowe można kompresowane i szyfrowane, w zależności od wybranych opcji.
 
 
 ## <a name="configure-storage-settings"></a>Skonfiguruj ustawienia magazynu

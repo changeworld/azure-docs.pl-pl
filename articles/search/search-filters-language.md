@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: aae081232d3633d3f7d8094979764606bf99430d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 76892e22e940476ca26cde7a91bfe928b47f22ba
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311188"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522268"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Jak filtrować za pomocą języka w usłudze Azure Search 
 
@@ -39,11 +39,11 @@ W naszym próbnym, w tym [przykładowe nieruchomości](search-get-started-portal
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Przykłady kodu, przedstawiający definicje pól z analizatory języków, zobacz [definiowania indeksu (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet#define-your-azure-search-index) i [definiowania indeksu (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api#define-your-azure-search-index-using-well-formed-json).
+> Przykłady kodu, przedstawiający definicje pól z analizatory języków, zobacz [definiowania indeksu (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) i [definiowania indeksu (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api-using-well-formed-json).
 
 ## <a name="build-and-load-an-index"></a>Tworzenie i ładowanie indeksu
 
-Etap pośredni (i prawdopodobnie oczywisty) jest, że trzeba [kompilacji i wypełnić indeks](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) przed formułowanie zapytania. Firma Microsoft wspominać o tym kroku, w tym miejscu aby informacje były kompletne. Jednym ze sposobów, aby ustalić, czy indeks jest dostępna jest sprawdzanie listy indeksów w [portal](https://portal.azure.com).
+Etap pośredni (i prawdopodobnie oczywisty) jest, że trzeba [kompilacji i wypełnić indeks](https://docs.microsoft.com/azure/search/search-create-index-dotnet) przed formułowanie zapytania. Firma Microsoft wspominać o tym kroku, w tym miejscu aby informacje były kompletne. Jednym ze sposobów, aby ustalić, czy indeks jest dostępna jest sprawdzanie listy indeksów w [portal](https://portal.azure.com).
 
 ## <a name="constrain-the-query-and-trim-results"></a>Ograniczenie zapytania i przycinany wyników
 

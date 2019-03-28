@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: b208ab10568740e3e1bcadd5f072f2080a573cef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: ae9f2cbdd659b7eaf3558717be19f324e803d906
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369483"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522336"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
 
@@ -28,7 +28,7 @@ Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersj
 |**Znaczenie obciążenie jest teraz dostępna w wersji zapoznawczej**|Znaczenie obciążenia zapewnia inżynierom danych możliwość używania znaczenie do klasyfikowania żądań. Żądania o wyższym ważności jest gwarantowana szybszego uzyskiwania dostępu do zasobów, która pomaga spełnić wymagania umów SLA.  Znaczenie obciążenia pozwala biznesowe wysoki wartość pracy, aby spełnić wymagania umów SLA w środowisku współdzielonym za pomocą mniejszej ilości zasobów.<br/><br/>Aby uzyskać więcej informacji na temat znaczenia obciążenia, zobacz [klasyfikacji](sql-data-warehouse-workload-classification.md) i [znaczenie](sql-data-warehouse-workload-importance.md) Przegląd artykułów w dokumentacji. Zapoznaj się z [tworzenie KLASYFIKATORA obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) także dokumentu.<br/><br/>Zobacz znaczenie obciążenia w akcji poniżej wideo:<br/>[Obciążenie pojęć związanych z zarządzaniem](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[Scenariusze zarządzania obciążenia](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**GRUPUJ WEDŁUG ZBIORCZEGO**|Pakiet ZBIORCZY jest teraz obsługiwaną opcją GROUP BY w usłudze Azure Data Warehouse.   Przedstawienie grupy przez tworzy grupę dla każdej kombinacji wyrażeń kolumny. GROUP BY również "rzutuje" wyniki do sumy częściowe i końcowe. Aby to zrobić, przenosi od prawej do lewej, zmniejszając liczbę wyrażeń kolumny, które tworzy, grupy i aggregation(s).  Kolejność kolumn wpływa na dane wyjściowe ZBIORCZY i może wpłynąć na liczbę wierszy w zestawie wyników.<br/><br/>Aby uzyskać więcej informacji na przedstawienie według grupy, zobacz artykuł [GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**Polepszenia dokładności używane jednostki DWU i procesora CPU metrykami w portalu**|Usługa SQL Data Warehouse znacznie zwiększa dokładność metryki w witrynie Azure portal.  Ta wersja zawiera poprawkę do definicji metryk, procesora CPU i użyte jednostki DWU Aby poprawnie odzwierciedlają obciążenie we wszystkich węzłach obliczeniowych.|
-|**Obsługa dodatkowych języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę:<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)
+|**Obsługa dodatkowych języka T-SQL**|Obszar powierzchni języka T-SQL dla usługi SQL Data Warehouse został rozszerzony o obsługę:<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)<br/>&bull; &nbsp; [TRIM (Transact-SQL)](/sql/t-sql/functions/trim-transact-sql)
 | | |
 
 ### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji

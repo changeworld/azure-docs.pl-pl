@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 057f5fcf9f050bdce9efb301db43b909893ade60
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d2b0209f57ff5f59d59ee057db7675b2dcd071b8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769170"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522064"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -408,19 +408,19 @@ Poniższe procedury składowanej znajdują się w [bazy danych zadania](sql-data
 
 |Procedura składowana  |Opis  |
 |---------|---------|
-|[sp_add_job](#spaddjob)     |     Dodaje nowe zadanie.    |
-|[sp_update_job](#spupdatejob)    |      Aktualizuje istniejące zadanie.   |
-|[sp_delete_job](#spdeletejob)     |      Usuwa istniejące zadanie.   |
-|[sp_add_jobstep](#spaddjobstep)    |    Do dodawania kroku do zadania.     |
-|[sp_update_jobstep](#spupdatejobstep)     |     Aktualizuje krok zadania.    |
-|[sp_delete_jobstep](#spdeletejobstep)     |     Usuwa krok zadania.    |
-|[sp_start_job](#spstartjob)    |  Rozpoczyna się wykonywanie zadania.       |
-|[sp_stop_job](#spstopjob)     |     Zatrzymuje wykonywanie zadania.   |
-|[sp_add_target_group](#spaddtargetgroup)    |     Dodaje grupy docelowej.    |
-|[sp_delete_target_group](#spdeletetargetgroup)     |    Usuwa grupy docelowej.     |
-|[sp_add_target_group_member](#spaddtargetgroupmember)     |    Dodaje do grupy docelowej bazy danych lub grupy baz danych.     |
-|[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     Usuwa docelowy element członkowski grupy z grupy docelowej.    |
-|[sp_purge_jobhistory](#sppurgejobhistory)    |    Usuwa rekordy historii zadania.     |
+|sp_add_job     |     Dodaje nowe zadanie.    |
+|sp_update_job    |      Aktualizuje istniejące zadanie.   |
+|sp_delete_job     |      Usuwa istniejące zadanie.   |
+|sp_add_jobstep    |    Do dodawania kroku do zadania.     |
+|sp_update_jobstep     |     Aktualizuje krok zadania.    |
+|sp_delete_jobstep     |     Usuwa krok zadania.    |
+|sp_start_job    |  Rozpoczyna się wykonywanie zadania.       |
+|sp_stop_job     |     Zatrzymuje wykonywanie zadania.   |
+|sp_add_target_group    |     Dodaje grupy docelowej.    |
+|sp_delete_target_group     |    Usuwa grupy docelowej.     |
+|sp_add_target_group_member     |    Dodaje do grupy docelowej bazy danych lub grupy baz danych.     |
+|sp_delete_target_group_member     |     Usuwa docelowy element członkowski grupy z grupy docelowej.    |
+|sp_purge_jobhistory    |    Usuwa rekordy historii zadania.     |
 
 
 
@@ -1195,13 +1195,13 @@ Następujące widoki są dostępne w [bazy danych zadania](sql-database-job-auto
 
 |Widok  |Opis  |
 |---------|---------|
-|[jobs_executions](#jobsexecutions-view)     |  Pokazano zadań historii wykonywania.      |
+|jobs_executions     |  Pokazano zadań historii wykonywania.      |
 |[Zadania](#jobs-view)     |   Pokazuje wszystkie zadania.      |
-|[job_versions](#jobversions-view)     |   Przedstawia wszystkie wersje zadania.      |
+|job_versions     |   Przedstawia wszystkie wersje zadania.      |
 |[etapów zadania](#jobsteps-view)     |     Przedstawia wszystkie kroki opisane w bieżącej wersji każdego zadania.    |
-|[jobstep_versions](#jobstepversions-view)     |     Przedstawia wszystkie kroki opisane we wszystkich wersjach każdego zadania.    |
-|[target_groups](#targetgroups-view)     |      Wyświetla wszystkie grupy docelowej.   |
-|[target_group_members](#targetgroups-view)     |   Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.      |
+|jobstep_versions     |     Przedstawia wszystkie kroki opisane we wszystkich wersjach każdego zadania.    |
+|target_groups     |      Wyświetla wszystkie grupy docelowej.   |
+|target_group_members     |   Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.      |
 
 
 ### <a name="jobsexecutions-view"></a>Widok jobs_executions

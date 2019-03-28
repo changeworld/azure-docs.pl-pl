@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5fcd7f05aeb294441b16bab0aeb18ef5d0bf5c28
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749039"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540486"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie bazy danych SQL Azure lub trybu failover do dodatkowej
 
@@ -32,6 +32,13 @@ Aby dowiedzieć się więcej na temat ciągłość działania — scenariusze i 
 
 > [!NOTE]
 > Jeśli używasz strefowo nadmiarowych baz danych Premium lub krytyczne dla działania firmy lub pul jest zautomatyzowany proces odzyskiwania, a pozostała część tego materiału nie ma zastosowania.
+
+> [!NOTE]
+> Podstawowych i pomocniczych baz danych muszą mieć taką samą warstwę usług. Zalecane jest również zdecydowanie, czy pomocniczej bazy danych został utworzony przy użyciu tych samych obliczeń rozmiaru (jednostki Dtu lub rdzeni wirtualnych) jako podstawowy. Aby uzyskać więcej informacji, zobacz [uaktualnianie, lub obniżenie jako podstawowej bazy danych](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database).
+
+> [!NOTE]
+> Użyj jednej lub kilku grup trybu failover można zarządzać trybem failover wielu baz danych.
+> Jeśli dodasz istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że pomocniczej geograficznej jest skonfigurowany z tej samej warstwy usług i rozmiaru obliczeń jako podstawowy. Aby uzyskać więcej informacji, zobacz [umożliwiają automatyczny tryb failover grupy przejrzyste i skoordynowany pracy w trybie failover wielu baz danych](sql-database-auto-failover-group.md).
 
 ## <a name="prepare-for-the-event-of-an-outage"></a>Przygotuj się na wypadek wystąpienia awarii
 
@@ -73,6 +80,7 @@ Do trybu failover do pomocniczej bazy danych replikowanej geograficznie, użyj j
 
 - [Awaryjnie na serwer pomocniczy replikacją geograficzną za pomocą witryny Azure portal](sql-database-geo-replication-portal.md)
 - [Awaryjnie na serwer pomocniczy przy użyciu programu PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [Awaryjnie na serwer pomocniczy przy użyciu języka Transact-SQL (T-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
 
 ## <a name="recover-using-geo-restore"></a>Odzyskiwanie przy użyciu przywracania geograficznego
 

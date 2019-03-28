@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 845bf72f52bb83fa597c597871599c826e5749f6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479984"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540146"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -241,7 +241,7 @@ Celem jest zapewnienie instalowania wielu SAP Advanced Business Application prog
 
 _**Rysunek 2:** SAP — wiele identyfikatorów SID konfiguracji w dwóch klastrach_
 
-Instalacja dodatkowego **SAP \<SID2 >** systemu jest taka sama jak instalacja jednej <SID> systemu. Dwa dodatkowe przygotowania kroki są wymagane, klastrowania ASCS/SCS, a także klastra serwerów SOFS udziału plików.
+Instalacja dodatkowego **SAP \<SID2 >** systemu jest taka sama jak instalacja jednej \<SID > system. Dwa dodatkowe przygotowania kroki są wymagane, klastrowania ASCS/SCS, a także klastra serwerów SOFS udziału plików.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Przygotowywanie infrastruktury SAP — wiele identyfikatorów SID scenariusz
 
@@ -261,7 +261,7 @@ Te kroki opisano w [przygotowanie infrastruktury SAP — wiele identyfikatorów 
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Przygotowywanie infrastruktury na klaster serwerów SOFS przy użyciu istniejącego hosta globalnego SAP
 
-Ponowne używanie istniejących \<SAPGlobalHost > i Volume1 pierwszy SAP <SID1> systemu.
+Ponowne używanie istniejących \<SAPGlobalHost > i Volume1 pierwszy SAP \<SID1 > system.
 
 ![Rysunek 3: SOFS — wiele identyfikatorów SID jest taka sama jak nazwa hosta globalnego SAP][sap-ha-guide-figure-8014]
 
@@ -271,7 +271,7 @@ _**Rysunek 3:** SOFS — wiele identyfikatorów SID jest taka sama jak nazwa hos
 >Dla drugiego **SAP \<SID2 >** systemu, ten sam Volume1 i tym samym  **\<SAPGlobalHost >** używane są nazwa sieciowa.
 >Ponieważ został już skonfigurowany **SAPMNT** jako nazwa udziału dla różnych systemów SAP, aby ponownie użyć  **\<SAPGlobalHost >** nazwy sieci, należy używać tego samego **Volume1**.
 >
->Ścieżki plików <SID2> globalnego host to C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
+>Ścieżki plików \<SID2 > host globalne to C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
 >
 
 Aby uzyskać \<SID2 > system, należy przygotować hosta globalnego SAP... \SYS\.. folder klastra serwerów SOFS.

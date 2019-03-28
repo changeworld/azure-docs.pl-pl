@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: 8fc364eac619c2f23ad2db1051a9b3ffa1bd38d6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7fdc1417ac524b422a12a087cf1661040efb9f8a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138086"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521962"
 ---
 # <a name="azure-container-registry-skus"></a>Jednostki SKU rejestru kontenerów platformy Azure
 
@@ -20,31 +20,15 @@ Usługa Azure Container Registry (ACR) jest dostępna w wielu warstwach usług, 
 
 | SKU | Zarządzane | Opis |
 | --- | :-------: | ----------- |
-| **Podstawowa** | Yes | Zoptymalizowany pod kątem kosztów punkt wejścia dla deweloperów poznających usługę Azure Container Registry. Rejestry podstawowe mają te same możliwości programowe jako Standard i Premium (Integracja uwierzytelniania usługi Azure Active Directory, usunięcie obrazu i elementy webhook). Jednak uwzględnionego magazynu i przepływności obrazu są najbardziej odpowiednie dla dolnej scenariusze użycia. |
+| **Podstawowa** | Yes | Zoptymalizowany pod kątem kosztów punkt wejścia dla deweloperów poznających usługę Azure Container Registry. Rejestry podstawowe mają te same możliwości programowe jako Standard i Premium (takich jak Azure Active Directory [integracja uwierzytelniania](container-registry-authentication.md#individual-login-with-azure-ad), [obraz usuwania][container-registry-delete], i [elementów webhook][container-registry-webhook]). Jednak uwzględnionego magazynu i przepływności obrazu są najbardziej odpowiednie dla dolnej scenariusze użycia. |
 | **Standardowa** | Yes | Standardowymi rejestrami oferuje te same możliwości jak podstawowe, za pomocą zwiększona przepływność dołączony magazyn i obrazów. Rejestry w warstwie Standardowa powinny spełniać wymagania większości scenariuszy produkcyjnych. |
 | **Premium** | Yes | Rejestrach w warstwie Premium zapewniają największa ilość magazynu w pakiecie i obsługi jednoczesnych, scenariusze dużej liczby. Oprócz większą przepływność obrazu, Premium dodaje funkcje, w tym [geografickou replikaci] [ container-registry-geo-replication] Zarządzanie pojedynczym rejestrem w wielu regionach, [zawartości zaufania(wersjazapoznawcza)](container-registry-content-trust.md) podpisywania tag obrazu i [zapory i sieci wirtualne (wersja zapoznawcza)](container-registry-vnet.md) do ograniczania dostępu do rejestru. |
-| Klasyczne<sup>1</sup> | Nie | Ta jednostka SKU włączone wstępną wersję usługi Azure Container Registry na platformie Azure. Rejestry klasyczne są wspierane przez konto magazynu, które platforma Azure tworzy się w ramach subskrypcji, który ogranicza możliwość rejestru Azure container Registry w celu zapewnienia możliwości wyższego poziomu, takie jak zwiększona przepływność i replikacji geograficznej. |
-
-<sup>1</sup> będzie klasycznego SKU **przestarzałe** w **marca 2019**. Dla wszystkich nowych rejestry kontenerów, należy użyć podstawowa, standardowa lub Premium.
-
-Wybieranie wyższego poziomu jednostki SKU zapewnia większą wydajność i skalę, jednak wszystkie zarządzane jednostki SKU zapewniają takie same możliwości programowe. Z wieloma warstwami usług możesz zacząć korzystać z Basic, a następnie przekonwertować Standard i Premium wzrostu użycia rejestru.
-
-## <a name="managed-vs-unmanaged"></a>Zarządzane i niezarządzane
-
-Podstawowa, standardowa i Premium jednostek SKU są nazywane zbiorczo *zarządzane* rejestrów i rejestry Classic jako *niezarządzanych*. Główną różnicą między tymi dwoma jest sposób przechowywania obrazów kontenerów.
-
-### <a name="managed-basic-standard-premium"></a>Zarządzany (Basic, Standard i Premium)
-
-Zarządzane rejestry korzyści z magazynu obrazu zarządzane w całości na platformie Azure. Oznacza to, że konto magazynu, które są przechowywane obrazy nie pojawia się w ramach subskrypcji platformy Azure. Ma wiele zalet uzyskane przy użyciu jednej jednostki SKU rejestru zarządzanego, omówiono szczegółowe w [magazyn obrazów kontenerów w usłudze Azure Container Registry][container-registry-storage]. Ten artykuł koncentruje się na jednostki SKU rejestru zarządzanego i ich funkcji.
-
-### <a name="unmanaged-classic"></a>Niezarządzane (wersja klasyczna)
+|  Klasyczny (*nie jest dostępna od kwietnia 2019*) | Nie | Ta jednostka SKU włączone wstępną wersję usługi Azure Container Registry na platformie Azure. Rejestry klasyczne są wspierane przez konto magazynu, które platforma Azure tworzy się w ramach subskrypcji, który ogranicza możliwość rejestru Azure container Registry w celu zapewnienia możliwości wyższego poziomu, takie jak zwiększona przepływność i replikacji geograficznej. |
 
 > [!IMPORTANT]
-> Klasyczne jednostki SKU jest wycofywany, a będzie niedostępna po marca 2019 r. Dla wszystkich nowych rejestrów, należy użyć podstawowa, standardowa lub Premium.
+> Rejestru klasycznego jest jednostka SKU **przestarzałe**, a będzie niedostępna po **2019 kwietnia**. Zalecamy używanie podstawowa, standardowa lub Premium dla wszystkich nowych rejestrów. Wszystkie istniejące rejestrów Classic powinny zostać uaktualnione przed kwietnia 2019 r. Aby uzyskać informacje o uaktualnianiu, zobacz [uaktualnianie rejestru klasycznego][container-registry-upgrade].
 
-Rejestry klasyczne są "unmanaged" w tym sensie, że konto magazynu, która będzie tworzyć kopię rejestru klasycznego znajduje się w *swoje* subskrypcji platformy Azure. W efekcie odpowiedzialność za zarządzanie konta magazynu, w której są przechowywane obrazy kontenera. Za pomocą rejestrów niezarządzanych, nie można przełączyć między jednostkami SKU stosownie do potrzeb (inne niż [uaktualnianie] [ container-registry-upgrade] do rejestru zarządzanego), i kilka funkcji rejestry zarządzane są niedostępne (np. Usuwanie obrazu kontenera, [geografickou replikaci][container-registry-geo-replication], i [elementów webhook][container-registry-webhook]).
-
-Aby uzyskać więcej informacji na temat uaktualnianie rejestru klasycznego do jednego z zarządzanymi jednostkami SKU, zobacz [uaktualnianie rejestru klasycznego][container-registry-upgrade].
+Podstawowa, standardowa i Premium jednostki SKU (nazywane zbiorczo o nazwie *zarządzane rejestry*) oferować takie same możliwości programowe. One również wszystkie korzyści z [obrazu magazynu] [ container-registry-storage] zarządzane w całości na platformie Azure. Wybieranie wyższego poziomu jednostki SKU zapewnia większą wydajność i skalę. Z wieloma warstwami usług możesz zacząć korzystać z Basic, a następnie przekonwertować Standard i Premium wzrostu użycia rejestru.
 
 ## <a name="sku-feature-matrix"></a>Tabela funkcji jednostki SKU
 
@@ -70,13 +54,7 @@ W rejestrze kontenerów **Przegląd** w witrynie Azure portal wybierz **aktualiz
 
 ![Aktualizacja jednostki SKU rejestru kontenerów w witrynie Azure portal][update-registry-sku]
 
-W przypadku rejestrze klasycznym nie można wybrać zarządzaną jednostką SKU w witrynie Azure portal. Zamiast tego należy się najpierw [uaktualnienia] [ container-registry-upgrade] do rejestru zarządzanego (zobacz [zmiany z wersji klasycznej](#changing-from-classic)).
-
-## <a name="changing-from-classic"></a>Zmiana z wersji klasycznej
-
-Istnieją dodatkowe informacje, weź pod uwagę podczas migrowania niezarządzanych rejestru klasycznego do jednego z zarządzanego podstawowa, standardowa lub jednostek SKU Premium. Jeśli rejestru klasycznego zawiera dużą liczbę obrazów i rozmiarze wielu gigabajtów, proces migracji może trochę potrwać. Ponadto `docker push` operacje są wyłączone do czasu ukończenia migracji.
-
-Aby uzyskać szczegółowe informacje na temat uaktualniania rejestru klasycznego do jednego z zarządzanymi jednostkami SKU, zobacz [uaktualnianie rejestru klasycznego kontenera][container-registry-upgrade].
+W przypadku rejestrze klasycznym nie można wybrać zarządzaną jednostką SKU w witrynie Azure portal. Zamiast tego należy się najpierw [uaktualnienia] [ container-registry-upgrade] do rejestru zarządzanego.
 
 ## <a name="pricing"></a>Cennik
 
@@ -107,4 +85,5 @@ Przesyłaj i głosuj na propozycje dotyczące nowych funkcji w [ACR UserVoice][c
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-upgrade]: container-registry-upgrade.md
 [container-registry-storage]: container-registry-storage.md
+[container-registry-delete]: container-registry-delete.md
 [container-registry-webhook]: container-registry-webhook.md
