@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d70ad65f5bbc4424b4224cf601d903ad7ec10691
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405117"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518749"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indeksować obiektów blob JSON za pomocą indeksatora obiektów Blob platformy Azure Search
 W tym artykule dowiesz się, jak skonfigurować obiekt blob usługi Azure Search [indeksatora](search-indexer-overview.md) wyodrębniania zawartości ze strukturą z dokumenty JSON w usłudze Azure Blob storage i którą można przeszukiwać w usłudze Azure Search. Ten przepływ tworzy indeks usługi Azure Search i ładuje je za pomocą istniejący tekst wyodrębnione z obiektów blob JSON. 
@@ -211,7 +211,7 @@ Konfiguracji indeksatora znajduje się w treści żądania. Wymaga to źródło 
 
 Harmonogram i parametry są opcjonalne. Jeżeli pominięto ich uruchomieniu indeksatora natychmiast, za pomocą `json` jako tryb analizy.
 
-Nie ma tego konkretnego indeksatora [mapowania pól](#field-mappings). W ramach definicji indeksatora, możesz pozostawić **mapowania pól** Jeśli właściwości źródła dokument JSON zgodny pola z docelowym indeksem wyszukiwania. 
+Ten indeksator określonego nie zawiera mapowania pól. W ramach definicji indeksatora, możesz pozostawić **mapowania pól** Jeśli właściwości źródła dokument JSON zgodny pola z docelowym indeksem wyszukiwania. 
 
 
 ### <a name="rest-example"></a>Przykład REST
@@ -253,7 +253,7 @@ Wszystkie indeksatory wymagają indeksu docelowego, który odbiera dane. Treść
 
 ### <a name="indexer-request"></a>Żądania indeksowania
 
-To żądanie zawiera indeksator z w pełni określona. Zawiera on [mapowania pól](#field-mappings), które zostały pominięte w poprzednich przykładach. Pamiętaj, że "schedule", "parameters" i "fieldMappings" są opcjonalne, tak długo, jak brak dostępnych domyślnych. Pominięcie "zaplanować" powoduje, że indeksator natychmiast uruchomić. Pominięcie "parsingMode" powoduje, że indeks, aby użyć domyślnej "json".
+To żądanie zawiera indeksator z w pełni określona. Zawiera mapowania pól, które zostały pominięte w poprzednich przykładach. Pamiętaj, że "schedule", "parameters" i "fieldMappings" są opcjonalne, tak długo, jak brak dostępnych domyślnych. Pominięcie "zaplanować" powoduje, że indeksator natychmiast uruchomić. Pominięcie "parsingMode" powoduje, że indeks, aby użyć domyślnej "json".
 
 Tworzenie indeksatora w usłudze Azure Search wyzwala importu danych. Działa natychmiast, a następnie zgodnie z harmonogramem, jeśli podano jeden.
 

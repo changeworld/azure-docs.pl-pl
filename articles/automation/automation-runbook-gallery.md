@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58f666d7ebf8ac02d393a42f55e00f08d82b8cae
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 20aafc117ad8b6bd625894180fdfe79bd86192bd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337092"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519004"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów usługi Azure Automation
 
 Zamiast tworzenia własnych elementów runbook i modułów w usłudze Azure Automation, możesz uzyskać dostęp do scenariuszy, które zostały już utworzone przez firmę Microsoft i społeczność.
 
-Możesz uzyskać [elementy runbook programu PowerShell](#runbooks-in-runbook-gallery) i [modułów](#modules-in-powerShell-gallery) z galerii programu PowerShell i [elementy runbook języka Python](#python-runbooks) z galerii Centrum skryptów. Można również przyczyniają się do społeczności, udostępniając scenariusze, które tworzysz, zobacz [Dodawanie elementu runbook do galerii](#adding-a-runbook-to-the-runbook-gallery)
+Zawiera elementy runbook programu PowerShell i [modułów](#modules-in-powershell-gallery) z galerii programu PowerShell i [elementy runbook języka Python](#python-runbooks) z galerii Centrum skryptów. Możesz także współtworzyć społeczności, udostępniając scenariusze, które tworzysz, zobacz Dodawanie elementu runbook do galerii
 
 ## <a name="runbooks-in-powershell-gallery"></a>Elementy Runbook w galerii programu PowerShell
 

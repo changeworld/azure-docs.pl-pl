@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 06dd24b9909da9c3358c876a71de7d0df45a5223
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: HT
+ms.openlocfilehash: 1f86690b97fc7d65afed650664a76200ef490f33
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585328"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517117"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Szybki start: Tworzenie aplikacji z listą zadań do wykonania za pomocą platformy Xamarin przy użyciu konta interfejsu API SQL usługi Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy
 > [!NOTE]
 > Przykładowy kod dla całej kanonicznej przykładowej aplikacji platformy Xamarin z wieloma ofertami platformy Azure, w tym usługą CosmosDB, można znaleźć w witrynie GitHub [tutaj](https://github.com/xamarinhq/app-geocontacts). Ta aplikacja demonstruje wyświetlanie geograficznie rozproszonych kontaktów i umożliwianie tym kontaktom zaktualizowanie ich lokalizacji.
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia konta interfejsu SQL API usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Utworzysz w nim i wdrożysz aplikację internetową z listą zadań do wykonania opartą na [interfejsie SQL .NET API](sql-api-sdk-dotnet.md) i [oprogramowaniu Xamarin](https://docs.microsoft.com/xamarin/#pivot=platforms&panel=Cross-Platform) przy użyciu [platformy Xamarin.Forms](https://docs.microsoft.com/xamarin/#pivot=platforms&panel=XamarinForms) i [wzorca architektury MVVM](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm).
+Ten przewodnik Szybki start przedstawia sposób tworzenia konta interfejsu SQL API usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Utworzysz w nim i wdrożysz aplikację internetową z listą zadań do wykonania opartą na [interfejsie SQL .NET API](sql-api-sdk-dotnet.md) i [oprogramowaniu Xamarin](https://docs.microsoft.com/xamarin/) przy użyciu [platformy Xamarin.Forms](https://docs.microsoft.com/xamarin/) i [wzorca architektury MVVM](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm).
 
 ![Aplikacji Xamarin z listą zadań do wykonania działająca w systemie iOS](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
 

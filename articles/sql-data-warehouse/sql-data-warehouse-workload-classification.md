@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: bcc09095955a28bde3ed999f23180e08485543fc
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57993999"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520145"
 ---
 # <a name="sql-data-warehouse-workload-classification-preview"></a>Klasyfikacja obciążenia usługa SQL Data Warehouse (wersja zapoznawcza)
 
@@ -33,6 +33,8 @@ Obciążenie Zarządzanie Klasyfikacja umożliwia obciążenia zasady mają być
 Dostępnych jest wiele sposobów klasyfikowania obciążeń magazynowania danych, najprostszy i najbardziej powszechnym klasyfikacji jest obciążenia i zapytania. Ładowania danych przy użyciu insert, update i usuwania instrukcji.  Wykonujesz zapytanie o dane przy użyciu wybiera. Rozwiązań magazynowania danych często mają zasady obciążenia dla działalności obciążenia, takich jak przypisywanie z wyższą klasą zasobu więcej zasobów. Różne obciążenia zasad można zastosować do zapytania, takie jak niższe ważności w porównaniu do załadowania działań.
 
 Można również subclassify obciążeń obciążenia i zapytań. Podrzędna daje większą kontrolę obciążeń. Na przykład obciążeń związanych z zapytaniami może obejmować odświeżania modułu, pulpit nawigacyjny zapytań lub zapytań ad hoc. Można klasyfikować, każda z tych obciążeń związanych z zapytaniami, za pomocą innego zasobu klas ani ustawień ważności. Obciążenia można również korzystać z podrzędna. Duże przekształcenia można przypisać do większych klas zasobów. Wyższe znaczenie może służyć do upewnij się, że kluczowe dane dotyczące sprzedaży jest modułu ładującego przed danych o pogodzie lub strumieniowe źródło danych społecznościowych.
+
+Nie wszystkie instrukcje są klasyfikowane nie wymagają zasobów lub potrzebujesz znaczenie w celu wywierania wpływu na wykonanie.  Polecenia DBCC, instrukcji BEGIN, zatwierdzenia i ROLLBACK TRANSACTION nie zostały sklasyfikowane.
 
 ## <a name="classification-process"></a>Proces klasyfikacji
 

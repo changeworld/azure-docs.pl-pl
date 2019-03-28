@@ -4,7 +4,7 @@ description: Omówienie luk w zabezpieczeniach wykryte przez usługi Azure Activ
 services: active-directory
 keywords: Usługa Azure active directory identity protection rozwiązania cloud discovery, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
-ms.author: markvi
-ms.reviewer: nigu
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5968731981e9ba602a27b6b66a53e7b67e8fa7f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fec9693641ff5918f622ecceee3fb94828b508e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187325"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517899"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Luki w zabezpieczeniach wykryte przez usługi Azure Active Directory Identity Protection
 Luki w zabezpieczeniach występują luki w środowisku, które może być wykorzystane przez osobę atakującą. Firma Microsoft zaleca tych luk w celu zwiększenia poziomu bezpieczeństwa organizacji i uniemożliwić osobom atakującym ich wykorzystania.

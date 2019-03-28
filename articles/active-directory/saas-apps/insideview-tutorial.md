@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92cb4f1093d8450bb2c32d99f4ccedd0a5688253
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 845ab85ae10a9d57bf3e263d49532675f60cd84f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165921"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą InsideView
 
@@ -91,7 +91,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego InsideView](#creating-a-insideview-test-user)**  — aby odpowiednikiem Britta Simon w InsideView połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **[Tworzenie użytkownika testowego InsideView](#creating-an-insideview-test-user)**  — aby odpowiednikiem Britta Simon w InsideView połączonego z usługi Azure AD reprezentacja użytkownika.
 1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
@@ -254,4 +254,3 @@ Po kliknięciu kafelka InsideView w panelu dostępu, użytkownik powinien uzyska
 [201]: ./media/insideview-tutorial/tutorial_general_201.png
 [202]: ./media/insideview-tutorial/tutorial_general_202.png
 [203]: ./media/insideview-tutorial/tutorial_general_203.png
-

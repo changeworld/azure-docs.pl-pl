@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5b21c16a166a3a264156b7719be6a331e00e6e8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881371"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520058"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążeniami przy użyciu klas zasobów w usłudze Azure SQL Data Warehouse
 
@@ -130,7 +130,21 @@ Niektóre zapytania są zawsze uruchamiane w klasie zasobów smallrc nawet, jeś
 
 Poniższe instrukcje są wykluczone z klasami zasobów i są zawsze uruchamiane w smallrc:
 
-— Tworzenie lub DROP TABLE - ALTER TABLE... PRZEŁĄCZNIKA, dzielenia lub scalania PARTYCJI — Wyłącz polecenia ALTER INDEX — instrukcja DROP INDEX — tworzenia, aktualizacji lub DROP STATISTICS — TRUNCATE TABLE — ALTER AUTHORIZATION — CREATE LOGIN-utworzyć, ALTER i DROP USER-tworzenie ALTER lub PORZUCIĆ procedury — utworzyć lub usunąć VIEW - wstawianie wartości — wybierz widoki systemowe i dynamicznych widoków zarządzania-WYJAŚNIĆ - DBCC
+- Utwórz lub DROP TABLE
+- INSTRUKCJA ALTER TABLE... PRZEŁĄCZNIK, dzielenia lub scalania PARTYCJI
+- INSTRUKCJA ALTER INDEX WYŁĄCZ
+- USUŃ INDEKS
+- TWORZENIA, aktualizacji i DROP STATISTICS
+- OBCINANIE TABELI
+- INSTRUKCJA ALTER AUTORYZACJI
+- UTWÓRZ NAZWĘ LOGOWANIA
+- CREATE, ALTER i DROP USER
+- CREATE, ALTER lub PORZUCIĆ procedury
+- Utwórz lub PORZUĆ widok
+- WSTAWIANIE WARTOŚCI
+- Wybierz z widoków systemowych i dynamicznych widoków zarządzania
+- WYJAŚNIONO
+- DBCC
 
 <!--
 Removed as these two are not confirmed / supported under SQL DW

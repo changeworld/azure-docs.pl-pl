@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
-ms.openlocfilehash: 801258f2f6f56fc3fd9e7c830e93bf0dbfa9c134
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/26/2019
+ms.openlocfilehash: ce3bf98a5f31f18c6759b202d53d8a1ced46296e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170364"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519667"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: Kontrolowanie urządzenia podłączone do usługi IoT hub (Python)
 
@@ -35,9 +35,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Python. Potrzebujesz języka Python w wersji 2.7.x lub 3.5.x na komputerze deweloperskim.
+Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Python. Obecnie usługa Microsoft Azure IoT SDKs dla języka Python obsługuje tylko określonych wersji języka Python dla każdej platformy. Aby dowiedzieć się więcej, zobacz [Readme zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-Możesz pobrać język Python dla wielu platform ze strony [Python.org](https://www.python.org/downloads/).
+Ten przewodnik Szybki Start założono, że używasz komputera deweloperskiego z systemem Windows. Dla systemów Windows, tylko [Python 3.6.x](https://www.python.org/downloads/release/python-368/) jest obsługiwana. Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli system architektury procesora CPU jest 32-bitowych, a następnie Instalator pobierania x86; z architekturą 64-bitowy Pobierz Instalator x86-64. Dodatkowo należy upewnić się, że [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) dla architektury (x86 lub x64) jest zainstalowany.
+
+Możesz pobrać języka Python dla innych platform z [Python.org](https://www.python.org/downloads/).
 
 Możesz sprawdzić bieżącą wersję języka Python na komputerze deweloperskim przy użyciu jednego z następujących poleceń:
 

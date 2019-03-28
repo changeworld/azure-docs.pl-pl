@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994719"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520585"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Sprawdź i rozwiązywanie problemów z instalacją w wysokiej dostępności skalowalnego w poziomie oprogramowania SAP HANA w systemie SLES 12 z dodatkiem SP3 
 
@@ -72,15 +72,15 @@ Kiedy używasz **migracji crm** polecenia, upewnij się wyczyścić konfiguracji
 | Węzeł procesu roboczego 1 w witrynie 1 | hso-hana-vm-s1-1 | 10.0.0.31 |
 | Węzeł procesu roboczego 2 w witrynie 1 | hso-hana-vm-s1-2 | 10.0.0.32 |
 | | | |
-| Węzłem głównym w witrynie 2 | hso-hana-vm-s2 — 0 | 10.0.0.40 |
-| Węzeł procesu roboczego 1 na 2 lokacji | hso-hana-vm-s2 — 1 | 10.0.0.41 |
+| Węzłem głównym w witrynie 2 | hso-hana-vm-s2-0 | 10.0.0.40 |
+| Węzeł procesu roboczego 1 na 2 lokacji | hso-hana-vm-s2-1 | 10.0.0.41 |
 | Węzeł procesu roboczego 2 w witrynie 2 | hso-hana-vm-s2-2  | 10.0.0.42 |
 | | | |
 | Twórca większościowym | hso-hana-dm | 10.0.0.13 |
-| Interwencja urządzenia serwera | hso-hana interwencja | 10.0.0.19 |
+| Interwencja urządzenia serwera | hso-hana-sbd | 10.0.0.19 |
 | | | |
-| Serwer systemu plików NFS 1 | hso-systemu plików nfs-vm-0 | 10.0.0.15 |
-| Serwer systemu plików NFS 2 | hso-systemu plików nfs-vm-1 | 10.0.0.14 |
+| Serwer systemu plików NFS 1 | hso-nfs-vm-0 | 10.0.0.15 |
+| Serwer systemu plików NFS 2 | hso-nfs-vm-1 | 10.0.0.14 |
 
 
 
@@ -451,7 +451,7 @@ node.startup = automatic
 
 Podczas testowania i weryfikacji po ponownym uruchomieniu maszyny wirtualnej na urządzeniu interwencja nie były widoczne już w niektórych przypadkach. Było rozbieżności między ustawienie uruchamiania i YaST2 pokazano. Aby sprawdzić ustawienia, należy wykonać następujące czynności:
 
-1. Rozpocznij YaST2.
+1. Start YaST2.
 2. Wybierz **usług sieciowych** po lewej stronie.
 3. Przewiń w dół po prawej stronie, aby **inicjatora iSCSI** i wybierz ją.
 4. Na następnym ekranie, w obszarze **usługi** karcie Nazwa inicjatora unikatowy dla węzła.
@@ -901,7 +901,7 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 
 
 
-## <a name="sap-hana-globalini"></a>Global.ini platformy SAP HANA
+## <a name="sap-hana-globalini"></a>SAP HANA global.ini
 
 
 Następujące fragmenty są z platformy SAP HANA **global.ini** pliku 2 w witrynie klastra. Ten przykład przedstawia nazwę hosta wpisów rozpoznawania korzystać z różnych sieci na potrzeby komunikacji między węzłami platformy SAP HANA i replikacji systemu HANA:
@@ -964,7 +964,7 @@ W tym przykładzie przedstawiono ograniczenia lokalizacji spowodowane migracji z
 ![Hawk lista ograniczeń](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Możesz również przekazać **hb_report** dane wyjściowe w Hawk w obszarze **historii**, jak pokazano w następujący sposób. Zobacz [hb_report, aby zbierać pliki dziennika](#hbreport-to-collect-log-files): 
+Możesz również przekazać **hb_report** dane wyjściowe w Hawk w obszarze **historii**, jak pokazano w następujący sposób. Zobacz hb_report, aby zbierać pliki dziennika: 
 
 ![Dane wyjściowe hb_report przekazywania hawk](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 

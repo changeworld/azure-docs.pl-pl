@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2019
+ms.date: 03/26/2019
 ms.author: monhaber
-ms.openlocfilehash: cbda94b8ceeaf7a225117e1ca73445135a32a243
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088999"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517984"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center
 Z tego przewodnika dowiesz się, jak skonfigurować funkcje sterowania aplikacjami w usłudze Azure Security Center.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Co to są funkcje adaptacyjnego sterowania aplikacjami w usłudze Security Center?
-Funkcji adaptacyjnego sterowania aplikacjami to rozwiązanie umieszczania na białej liście automatyczne aplikacji inteligentnych end-to-end w usłudze Azure Security Center. Pomaga kontrolować, które aplikacje mogą być uruchamiane na maszynach wirtualnych na platformie Azure, co pozwala między innymi, wzmocnić ochronę tych maszyn wirtualnych przed złośliwym oprogramowaniem. Usługa Security Center korzysta z uczenia maszynowego w celu analizuje aplikacje uruchomione na maszynach wirtualnych i ułatwia zastosowanie listy reguł elementów dozwolonych określonej za pomocą tej analizy. Ta funkcja znacząco upraszcza proces konfigurowania i konserwowania zasady listy dozwolonych aplikacji, dzięki któremu można:
+Funkcji adaptacyjnego sterowania aplikacjami to rozwiązanie umieszczania na białej liście automatyczne aplikacji inteligentnych end-to-end w usłudze Azure Security Center. Ułatwia on kontroli aplikacji, które można uruchomić na platformę Azure i innych — maszyny wirtualne platformy Azure (Windows i Linux), która pozwala między innymi, wzmocnić ochronę tych maszyn wirtualnych przed złośliwym oprogramowaniem. Usługa Security Center korzysta z uczenia maszynowego w celu analizuje aplikacje uruchomione na maszynach wirtualnych i ułatwia zastosowanie listy reguł elementów dozwolonych określonej za pomocą tej analizy. Ta funkcja znacząco upraszcza proces konfigurowania i konserwowania zasady listy dozwolonych aplikacji, dzięki któremu można:
 
 - Blokowanie lub ostrzeganie w przypadku prób uruchomienia złośliwych aplikacji, w tym te, które w przeciwnym razie może zostać niezauważone przez rozwiązania chroniące przed złośliwym kodem.
 - Zachowanie zgodności z zasadami zabezpieczeń organizacji, które nakazują korzystanie wyłącznie z licencjonowanego oprogramowania.
@@ -34,8 +34,11 @@ Funkcji adaptacyjnego sterowania aplikacjami to rozwiązanie umieszczania na bia
 - Zapobieganie używaniu określonych programów narzędziowych, które nie są dozwolone w organizacji.
 - Umożliwianie informatykom sterowania dostępem do poufnych danych za pomocą aplikacji.
 
+> [!NOTE]
+> Dla maszyn wirtualnych systemu Linux i spoza platformy Azure funkcje adaptacyjnego sterowania aplikacjami są obsługiwane tylko w trybie inspekcji.
+
 ## <a name="how-to-enable-adaptive-application-controls"></a>Jak włączyć funkcje adaptacyjnego sterowania aplikacjami?
-Funkcje adaptacyjnego sterowania aplikacjami ułatwiają zdefiniowanie zestawu aplikacji, które mogą być uruchamiane w skonfigurowanych grupach maszyn wirtualnych. Ta funkcja jest dostępna tylko dla maszyn z systemem Windows (we wszystkich wersjach, klasycznych lub usługi Azure Resource Manager). Poniższe kroki umożliwiają skonfigurowanie listy dozwolonych aplikacji w usłudze Security Center:
+Funkcje adaptacyjnego sterowania aplikacjami ułatwiają zdefiniowanie zestawu aplikacji, które mogą być uruchamiane w skonfigurowanych grupach maszyn wirtualnych. Ta funkcja jest dostępna dla platformy Azure i innych niż - Azure Windows (wszystkie wersje, klasyczne lub usługi Azure Resource Manager) i maszyny wirtualne systemu Linux i serwerów. Poniższe kroki umożliwiają skonfigurowanie listy dozwolonych aplikacji w usłudze Security Center:
 
 1. Otwórz pulpit nawigacyjny usługi **Security Center**.
 2. W okienku po lewej stronie wybierz pozycję **Funkcje adaptacyjnego sterowania aplikacjami** w obszarze **Zaawansowana ochrona w chmurze**.
@@ -64,10 +67,10 @@ Sekcja **Grupy maszyn wirtualnych** zawiera trzy karty:
 
    Lista zawiera:
 
-   - **NAZWA**: nazwa subskrypcji i grupy
-   - **MASZYNY WIRTUALNE**: liczba maszyn wirtualnych w grupie
+   - **Nazwa grupy**: Nazwa subskrypcji i grupy
+   - **Maszyny wirtualne i komputery**: Liczba maszyn wirtualnych w grupie
    - **Stan**: stan zaleceń
-   - **WAŻNOŚĆ**: poziom ważności zaleceń
+   - **Ważność**: poziom ważności zaleceń
 
 2. Kliknij grupę, aby otworzyć **Utwórz reguły sterowania aplikacjami** opcji.
 
@@ -102,8 +105,8 @@ Sekcja **Grupy maszyn wirtualnych** zawiera trzy karty:
 
    Lista zawiera:
 
-   - **Nazwa**: Nazwa subskrypcji i grupy
-   - **MASZYNY WIRTUALNE**: liczba maszyn wirtualnych w grupie
+   - **Nazwa grupy**: Nazwa subskrypcji i grupy
+   - **Maszyny wirtualne i komputery**: liczba maszyn wirtualnych w grupie
    - **Tryb**: Tryb inspekcji będą rejestrowane próby uruchomienia aplikacji spoza; Wymuszanie będą nie Pozwól na uruchamianie aplikacji — na liście dozwolonych
    - **Alerty**: wszelkie bieżące naruszenia
 
@@ -146,14 +149,14 @@ Usługa Security Center zaleca tylko zasady listy dozwolonych aplikacji dla masz
 ![Zalecenie](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
 
 Lista zawiera:
-- **NAZWA**: nazwa subskrypcji i grupy
-- **MASZYNY WIRTUALNE**: liczba maszyn wirtualnych w grupie
+- **Nazwa grupy**: Nazwa subskrypcji i grupy
+- **Maszyny wirtualne i komputery**: liczba maszyn wirtualnych w grupie
 
 Usługa Azure Security Center umożliwia zdefiniowanie zasad umieszczania na białej liście aplikacji na innych niż zalecane grupy maszyn wirtualnych, jak również. Postępuj zgodnie z tymi samymi zasadami, opisane zostały wcześniej, aby skonfigurować zasady umieszczania na białej liście aplikacji na tych grup, jak również.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym dokumencie omówiono korzystanie z funkcji adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center w celu tworzenia listy dozwolonych aplikacji uruchamianych na maszynach wirtualnych platformy Azure. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
+W tym dokumencie przedstawiono sposób użycia funkcji adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center do listy dozwolonych działających na platformie Azure i - Azure VMs. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
 
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md). Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.

@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.openlocfilehash: 9f626e2a5c277cdce78c6e90046a1d40dac2d588
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3a9a1cb7a5829c7c824f9aa61d5f4976a533f4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078673"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519735"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki w programie Visual Studio
 
@@ -42,6 +42,13 @@ Mimo że można tworzyć, edytować, zarządzanie i wdrażanie aplikacji logiki 
   
     Możesz pobrać i zainstalować narzędzia Azure Logic Apps Tools bezpośrednio z witryny Visual Studio Marketplace lub dowiedzieć się, <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">jak zainstalować to rozszerzenie z poziomu programu Visual Studio</a>. 
     Upewnij się, że po zakończeniu instalacji program Visual Studio zostanie ponownie uruchomiony.
+
+* Eksplorator chmury dla programu Visual Studio 2017 lub Visual Studio 2015
+
+  * Dla programu Visual Studio 2017, uruchom Instalatora programu Visual Studio, a następnie zainstaluj **obciążenie platformy Azure**. Aby uzyskać więcej informacji, zobacz [Zarządzanie zasoby skojarzone ze swojej accuonts platformy Azure w programie Visual Studio Cloud Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2017).
+
+  * Dla programu Visual Studio 2015 [Pobierz Eksplorator chmury z witryny Marketplace programu Visual Studio](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
+  Aby uzyskać więcej informacji, zobacz [Zarządzanie zasoby skojarzone z kontami platformy Azure w Eksploratorze chmury w usłudze Visual Studio (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
 * Dostęp do Internetu podczas korzystania z osadzonego projektanta aplikacji logiki
 

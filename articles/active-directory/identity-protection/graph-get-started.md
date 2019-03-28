@@ -4,7 +4,7 @@ description: Dowiedz się, jak wykonywać zapytania dla programu Microsoft Graph
 services: active-directory
 keywords: Usługa Azure active directory identity protection, zdarzenie o podwyższonym ryzyku, luk w zabezpieczeniach, zasadach zabezpieczeń program Microsoft Graph
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: markvi
-ms.reviewer: nigu
+ms.author: joflore
+ms.reviewer: sahandle
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9935b5605bc09f000a81e7616e807a0e194e12
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8f748e10ffa8b1c8a7f4ee3dc3d151f7413179ab
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295542"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517457"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Rozpoczynanie pracy z usługą Azure Active Directory Identity Protection i Microsoft Graph
 
-Usługa Microsoft Graph programu Microsoft unified punkt końcowy interfejsu API i stroną główną [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md) interfejsów API. Istnieją trzy interfejsy API, które udostępniają informacje o ryzykownych użytkowników i logowania. Pierwszym interfejsem API **identityRiskEvents**, służy do wykonywania zapytań programu Microsoft Graph, aby uzyskać listę [zdarzeń o podwyższonym ryzyku](../reports-monitoring/concept-risk-events.md) i skojarzonych informacji. Drugi interfejs API **riskyUsers**, pozwala do wykonywania zapytań w programie Microsoft Graph dla informacji o użytkownikach Identity Protection wykryte jako ryzyka. Trzeci interfejsu API, **signIn**, można wyszukać Microsoft Graph informacji na temat usługi Azure AD, logowania z określonymi właściwościami, które dotyczą stan ryzyka szczegółów i poziomu. Ten artykuł ułatwia rozpoczęcie pracy z [nawiązywania połączenia z programu Microsoft Graph](#Connect-to-Microsoft-Graph) i [podczas badania tych interfejsów API](#Query-the-APIs). Szczegółowe wprowadzenie, pełną dokumentację i dostępu do programu Graph Explorer, zobacz [witryny programu Microsoft Graph](https://graph.microsoft.io/) lub określonych dokumentacji dla tych interfejsów API:
+Usługa Microsoft Graph programu Microsoft unified punkt końcowy interfejsu API i stroną główną [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md) interfejsów API. Istnieją trzy interfejsy API, które udostępniają informacje o ryzykownych użytkowników i logowania. Pierwszym interfejsem API **identityRiskEvents**, służy do wykonywania zapytań programu Microsoft Graph, aby uzyskać listę [zdarzeń o podwyższonym ryzyku](../reports-monitoring/concept-risk-events.md) i skojarzonych informacji. Drugi interfejs API **riskyUsers**, pozwala do wykonywania zapytań w programie Microsoft Graph dla informacji o użytkownikach Identity Protection wykryte jako ryzyka. Trzeci interfejsu API, **signIn**, można wyszukać Microsoft Graph informacji na temat usługi Azure AD, logowania z określonymi właściwościami, które dotyczą stan ryzyka szczegółów i poziomu. Ten artykuł ułatwia rozpoczęcie pracy z łączenia z programem Microsoft Graph i wykonywania zapytań względem tych interfejsów API. Szczegółowe wprowadzenie, pełną dokumentację i dostępu do programu Graph Explorer, zobacz [witryny programu Microsoft Graph](https://graph.microsoft.io/) lub określonych dokumentacji dla tych interfejsów API:
 
 * [identityRiskEvents interfejsu API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
 * [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: cbc28ce13d08ee8665be642d9db6b1f236b380d3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ae63b1738824095073ac6b9e1071f6b4a3e5ae1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870133"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518851"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Szybki start: Konwertowanie tekstu na mowę, przy użyciu platformy .NET Core
 
@@ -236,6 +236,6 @@ Jeśli klucz subskrypcji umieszczono na stałe w kodzie programu, pamiętaj, aby
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Dokumentacja interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+* [Dokumentacja interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)
 * [Próbki głosu rekord do utworzenia niestandardowych voice](record-custom-voice-samples.md)

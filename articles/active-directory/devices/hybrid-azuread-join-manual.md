@@ -3,7 +3,7 @@ title: Ręczne konfigurowanie urządzeń dołączonych hybrydowo do usługi Azur
 description: Dowiedz się, jak ręcznie skonfigurować urządzenia dołączone hybrydowo do usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 851a340c4c5624fe45d065e002b732517a657303
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e3944031101b954c380b5db6503002dae57ea16d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174269"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518477"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Samouczek: ręczne konfigurowanie urządzeń dołączonych hybrydowo do usługi Azure Active Directory 
 
@@ -556,7 +556,7 @@ Jeśli występują problemy z ukończeniem dołączania hybrydowego do usługi A
 - [Rozwiązywanie problemów z dołączeniem hybrydowym do usługi Azure AD urządzeń z bieżącym systemem Windows](troubleshoot-hybrid-join-windows-current.md)
 - [Rozwiązywanie problemów z dołączeniem hybrydowym do usługi Azure AD urządzeń z systemem Windows niższego poziomu](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](overview.md)
 

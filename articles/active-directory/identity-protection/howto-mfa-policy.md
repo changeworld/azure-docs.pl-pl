@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować zasady rejestracji uwierzytelniani
 services: active-directory
 keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6b5df5144c5e9e2c211c87ed8fe70abf871435
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: cd3d5a19e861bd738f3c618610aadb77da30b384
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258041"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520347"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>Instrukcje: Skonfiguruj zasady rejestracji uwierzytelniania wieloskładnikowego
 

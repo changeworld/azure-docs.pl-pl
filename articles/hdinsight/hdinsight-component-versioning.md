@@ -4,18 +4,18 @@ description: Poznaj składniki platformy Apache Hadoop i wersje w HDInsight i po
 keywords: wersji usługi hadoop, składniki ekosystemu platformy hadoop, składniki platformy hadoop, jak sprawdzić wersji usługi hadoop
 services: hdinsight
 ms.reviewer: jasonh
-author: kkampf
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: kakampf
-ms.openlocfilehash: 38667bfe1c7c2a23db9375aa50dd328b98735c06
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 03/26/2019
+ms.author: hrasheed
+ms.openlocfilehash: 1783bf51c33a1dec84572b76149771a9723fe209
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361782"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519650"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?
 

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 92c09e7defe159818b22bc8275d011d05512aa66
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 978b865f6dd7e3427a0139e7e71ed4b2d937fbe5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446583"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517304"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Użyj widoku Hive narzędzia Ambari Apache przy użyciu technologii Apache Hadoop w HDInsight
 
@@ -24,22 +24,14 @@ Dowiedz się, jak uruchamianie zapytań Hive przy użyciu widoku Hive narzędzia
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Linux Apache Hadoop oparte na wersji klastra HDInsight 3.4 lub nowszą.
-
-  > [!IMPORTANT]  
-  > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
-
+* Klaster Hadoop w HDInsight. Zobacz [Rozpoczynanie pracy z usługą HDInsight w systemie Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * Przeglądarki sieci web
 
 ## <a name="run-a-hive-query"></a>Uruchomienie zapytania programu Hive
 
-1. Otwórz [portal Azure](https://portal.azure.com).
+1. Z [witryny Azure portal](https://portal.azure.com/), wybierz klaster.  Zobacz [listy i wyświetlaniu klastrów](../hdinsight-administer-use-portal-linux.md#showClusters) instrukcje. Klaster jest otwarty w nowym bloku portalu.
 
-2. Wybierz klaster usługi HDInsight, a następnie wybierz **widoków Ambari** z **szybkich łączy** sekcji.
-
-    ![Szybkie linki sekcji w portalu](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
-
-    Gdy monit o uwierzytelnienie, należy użyć danych logowania klastra (domyślny `admin`) konta i hasło podane podczas tworzenia klastra.
+2. Z **pulpity nawigacyjne klastra**, wybierz opcję **widoków Ambari**. Gdy monit o uwierzytelnienie, należy użyć danych logowania klastra (domyślny `admin`) konta i hasło podane podczas tworzenia klastra.
 
 3. Wybierz z listy widoków __Hive View__.
 
@@ -81,30 +73,30 @@ Dowiedz się, jak uruchamianie zapytań Hive przy użyciu widoku Hive narzędzia
 
    * `SELECT`: Wybiera liczbę wszystkich wierszy, gdzie t4 kolumna zawiera wartość [Błąd].
 
-     > [!IMPORTANT]  
-     > Pozostaw __bazy danych__ zaznaczenia w __domyślne__. W przykładach w tym dokumencie używany domyślna baza danych dołączone do HDInsight.
+   > [!IMPORTANT]  
+   > Pozostaw __bazy danych__ zaznaczenia w __domyślne__. W przykładach w tym dokumencie używany domyślna baza danych dołączone do HDInsight.
 
-5. Aby uruchomić zapytanie, należy użyć **Execute** znajdujący się poniżej arkusza. Przycisk zmieni kolor na pomarańczowy i tekst zostanie zmieniony na **zatrzymać**.
+5. Aby uruchomić kwerendę, zaznacz **Execute** pod arkuszem. Przycisk zmieni kolor na pomarańczowy i tekst zostanie zmieniony na **zatrzymać**.
 
 6. Po zakończeniu zapytanie **wyniki** karcie są wyświetlane wyniki operacji. Następujący tekst jest wynik kwerendy:
 
         loglevel       count
         [ERROR]        3
 
-    Możesz użyć **dzienniki** kartę, aby wyświetlić dane rejestrowania, utworzonego przez zadanie.
+    Możesz użyć **dziennika** kartę, aby wyświetlić dane rejestrowania, utworzonego przez zadanie.
 
    > [!TIP]  
-   > Pobierz lub zapisać wyniki z **zapisać wyniki** okno dialogowe listy rozwijanej w prawym górnym lewym rogu **wyniki przetwarzania zapytania** sekcji.
+   > Pobierz lub zapisać wyniki z **akcje** okno dialogowe listy rozwijanej w obszarze **wyniki** kartę.
 
 ### <a name="visual-explain"></a>Wyjaśniono Visual
 
 Aby wyświetlić wizualizację planu zapytania, zaznacz **Visual wyjaśnić** kartę pod arkuszem.
 
-**Visual wyjaśnić** widoku zapytania mogą być pomocne w zrozumienie przepływu złożonych zapytań. Tekstową wielokrotność ten widok można wyświetlić za pomocą **wyjaśnienia** przycisku w edytorze zapytań.
+**Visual wyjaśnić** widoku zapytania mogą być pomocne w zrozumienie przepływu złożonych zapytań.
 
 ### <a name="tez-ui"></a>Interfejsu użytkownika tez
 
-Aby wyświetlić interfejsu użytkownika Tez dla zapytania, zaznacz **Tez** kartę pod arkuszem.
+Aby wyświetlić interfejsu użytkownika Tez dla zapytania, zaznacz **interfejsu użytkownika Tez** kartę pod arkuszem.
 
 > [!IMPORTANT]  
 > Tez nie jest używany do rozpoznawania wszystkich zapytań. Wiele zapytań można rozwiązać, bez korzystania z aplikacji Tez. 

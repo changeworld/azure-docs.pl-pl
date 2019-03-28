@@ -4,15 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 432d0d4c201d0d73e5695a1726129e7fa744bdde
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2a1bf160926bc2f90e326d773bf6a3e7fdc37103
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319739"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505646"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Typowe błędy występujące podczas migracji z modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
 W tym artykule skatalogowano najbardziej typowe błędy i środki zaradcze w trakcie migracji zasobów IaaS z klasycznego modelu wdrażania platformy Azure do stosu usługi Azure Resource Manager.
+
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 ## <a name="list-of-errors"></a>Lista błędów
 
@@ -22,7 +24,7 @@ W tym artykule skatalogowano najbardziej typowe błędy i środki zaradcze w tra
 | Migracja wdrożenia {nazwa_wdrożenia} w usłudze hostowanej {nazwa_usługi_hostowanej} nie jest obsługiwana, ponieważ jest to wdrożenie PaaS (sieć Web/proces roboczy). |Ma to miejsce w przypadku, gdy wdrożenie zawiera rolę sieci Web/procesu roboczego. Ponieważ migracja jest obsługiwana tylko dla maszyn wirtualnych, usuń rolę sieci Web/procesu roboczego z wdrożenia i ponownie spróbuj przeprowadzić migrację. |
 | Wdrożenie szablonu {nazwa_szablonu} nie powiodło się. CorrelationId={guid} |W zapleczu usługi migracji używamy szablonów usługi Azure Resource Manager do tworzenia zasobów w stosie usługi Azure Resource Manager. Ponieważ szablony są idempotentne, zwykle możesz bezpiecznie ponowić próbę operacji migracji, aby pokonać ten błąd. Jeśli ten błąd nie ustąpi, [skontaktuj się z pomocą techniczną platformy Azure](../articles/azure-supportability/how-to-create-azure-support-request.md) i podaj im wartość CorrelationId. <br><br> **UWAGA:** Gdy zdarzenie jest śledzone przez zespół pomocy technicznej, nie należy podejmować żadnych samodzielnych ponieważ może to mieć niezamierzone konsekwencje w używanym środowisku. |
 | Sieć wirtualna {nazwa_sieci_wirtualnej} nie istnieje. |Może to się zdarzyć, jeśli sieć wirtualna została utworzona w nowej witrynie Azure Portal. Rzeczywista nazwa sieci wirtualnej jest zgodna z wzorcem „Grupa * <VNET name>” |
-| Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia}, które nie jest obsługiwane w usłudze Azure Resource Manager. Zaleca się odinstalowanie go z maszyny wirtualnej przed kontynuowaniem migracji. |Rozszerzenia XML, takie jak BGInfo 1.*, nie są obsługiwane w usłudze Azure Resource Manager. W związku z tym nie można migrować tych rozszerzeń. Jeśli te rozszerzenia pozostaną zainstalowane na maszynie wirtualnej, zostaną automatycznie odinstalowane przed ukończeniem migracji. |
+| Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia}, które nie jest obsługiwane w usłudze Azure Resource Manager. Zaleca się odinstalowanie go z maszyny wirtualnej przed kontynuowaniem migracji. |Rozszerzenia XML, takie jak BGInfo 1. \* nie są obsługiwane w usłudze Azure Resource Manager. W związku z tym nie można migrować tych rozszerzeń. Jeśli te rozszerzenia pozostaną zainstalowane na maszynie wirtualnej, zostaną automatycznie odinstalowane przed ukończeniem migracji. |
 | Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie VMSnapshot/VMSnapshotLinux, które nie jest obecnie obsługiwane dla migracji. Odinstaluj je z maszyny wirtualnej i dodaj ponownie za pomocą usługi Azure Resource Manager po zakończeniu migracji |Jest to scenariusz, w którym maszyna wirtualna jest skonfigurowana na potrzeby usługi Azure Backup. Ponieważ obecnie jest to nieobsługiwany scenariusz, wykonaj obejście opisane w https://aka.ms/vmbackupmigration |
 | Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia}, którego stan nie jest zgłaszany z maszyny wirtualnej. Z tego powodu nie można migrować maszyny wirtualnej. Upewnij się, że stan rozszerzenia jest zgłaszany, lub odinstaluj rozszerzenie z maszyny wirtualnej i ponów próbę migracji. <br><br> Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia} zgłaszające stan procedury obsługi: {stan_procedury_obsługi}. Z tego powodu nie można migrować maszyny wirtualnej. Upewnij się, że zgłaszanym stanem procedury obsługi rozszerzenia jest {stan_procedury_obsługi} lub odinstaluj rozszerzenie z maszyny wirtualnej i ponów próbę migracji. <br><br> Agent maszyny wirtualnej dla maszyny wirtualnej {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zgłasza ogólny stan agenta jako Niegotowy. Z tego powodu nie można migrować maszyny wirtualnej, jeśli ma ona rozszerzenie, które można migrować. Upewnij się, że agent maszyny wirtualnej zgłasza ogólny stan agenta jako Gotowy. Zapoznaj się https://aka.ms/classiciaasmigrationfaqs. |Agent gościa platformy Azure i rozszerzenia maszyny wirtualnej potrzebują wychodzącego dostępu do Internetu dla konta magazynu maszyny wirtualnej w celu wypełnienia ich stanu. Typowe przyczyny niepowodzenia stanu obejmują następujące sytuacje: <li> grupa zabezpieczeń sieci blokuje wychodzący dostęp do Internetu, <li> Jeśli sieć wirtualna ma lokalnych serwerów DNS i DNS połączenie zostało utracone <br><br> Jeśli nieobsługiwany stan jest nadal wyświetlany, możesz odinstalować rozszerzenia, aby pominąć to sprawdzanie i kontynuować migrację. |
 | Migracja wdrożenia {nazwa_wdrożenia} w usłudze hostowanej {nazwa_usługi_hostowanej} nie jest obsługiwana, ponieważ zawiera ono wiele zestawów dostępności. |Obecnie można migrować tylko usługi hostowane, które mają nie więcej niż 1 zestaw dostępności. Aby obejść ten problem, przenieś dodatkowe zestawy dostępności i maszyny wirtualne w tych zestawach dostępności do innej usługi hostowanej. |
@@ -44,7 +46,7 @@ Dzieje się tak, gdy rozmiar logiczny dysku danych nie jest zsynchronizowany z r
 
 #### <a name="verifying-the-issue"></a>Weryfikowanie problemu
 
-```PowerShell
+```powershell
 # Store the VM details in the VM object
 $vm = Get-AzureVM -ServiceName $servicename -Name $vmname
 
@@ -65,7 +67,7 @@ ExtensionData       :
 
 # Now get the properties of the blob backing the data disk above
 # NOTE the size of the blob is about 15 GB which is different from LogicalDiskSizeInGB above
-$blob = Get-AzureStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
+$blob = Get-AzStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
 
 $blob
 
@@ -82,7 +84,7 @@ Name              : coreosvm-dd1.vhd
 
 #### <a name="mitigating-the-issue"></a>Korygowanie problemu
 
-```PowerShell
+```powershell
 # Convert the blob size in bytes to GB into a variable which we'll use later
 $newSize = [int]($blob.Length / 1GB)
 

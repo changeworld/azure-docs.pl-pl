@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: dc84d5850656a0898fba328b652d86f3d8995bef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb1d6c5bd51fcfe35127c2f6d8dd6a80b727c45f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118378"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517151"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Użyj usługi Azure Data Box do wysyłania danych do odpowiedniej warstwy obiektu blob usługi Azure Storage
 
@@ -27,7 +27,7 @@ Usługa Azure storage umożliwia trzy różne warstwy do przechowywania danych w
 
 Warstwa magazynu chłodnego jest dla rzadko używanych danych, które muszą być przechowywane za okres co najmniej 30 dni. Koszt magazynu na potrzeby zimnych warstwa jest niższa niż w przypadku warstwy magazynu gorącego, ale opłaty za dostęp do danych jest wysokie, w porównaniu do warstwy gorąca i używanie.
 
-Warstwę archiwum platformy Azure jest w trybie offline i oferuje najniższe koszty magazynowania, ale także najwyższe koszty dostępu. Ta warstwa jest przeznaczona dla danych, która pozostaje w magazynie archiwizacji za okres co najmniej 180 dni. Aby uzyskać szczegółowe informacje o każdej z tych warstw i model cenowy, przejdź do [Porównanie warstw magazynowania](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#comparison-of-the-storage-tiers).
+Warstwę archiwum platformy Azure jest w trybie offline i oferuje najniższe koszty magazynowania, ale także najwyższe koszty dostępu. Ta warstwa jest przeznaczona dla danych, która pozostaje w magazynie archiwizacji za okres co najmniej 180 dni. Aby uzyskać szczegółowe informacje o każdej z tych warstw i model cenowy, przejdź do [Porównanie warstw magazynowania](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
 Dane z urządzenia Data Box jest przekazywany do warstwy magazynowania, który jest skojarzony z kontem magazynu. Podczas tworzenia konta magazynu, można określić warstwy dostępu jako gorąca lub zimnego. W zależności od wzorca dostępu kosztów i obciążeń, można przenieść dane z domyślnej warstwy do innej warstwy magazynu.
 

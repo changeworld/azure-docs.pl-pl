@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: raynew
-ms.openlocfilehash: 3133f22a4d9ecd8a0ee4bff9f8b0be9c1f4eb705
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 7fc724f1aff40c6dedff59ce3919496a30b30337
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403667"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520177"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
 
@@ -220,7 +220,8 @@ Po włączeniu kopii zapasowej:
 - Tworzenie początkowej kopii zapasowej jest uruchamiane zgodnie z harmonogramem kopii zapasowej.
 - Usługa Backup instaluje rozszerzenie kopii zapasowej, czy maszyna wirtualna jest uruchomiona.
     - Uruchomiona maszyna wirtualna zapewnia największe prawdopodobieństwo uzyskania punktu odzyskiwania spójnego z aplikacją.
-    -  Jednak maszyna wirtualna jest kopii zapasowej, nawet jeśli jest ona wyłączona i nie można zainstalować rozszerzenia. Wiadomo, jako Maszynę wirtualną w trybie offline. W tym przypadku punkt odzyskiwania będzie spójna w razie awarii. [Dowiedz się więcej]() Uwaga usługi Azure Backup nie obsługuje dostosowanie zegara automatycznej zmiany letniego dla kopii zapasowych maszyn wirtualnych platformy Azure. Modyfikowanie zasad tworzenia kopii zapasowej ręcznego zgodnie z potrzebami.
+    -  Jednak maszyna wirtualna jest kopii zapasowej, nawet jeśli jest ona wyłączona i nie można zainstalować rozszerzenia. Wiadomo, jako Maszynę wirtualną w trybie offline. W tym przypadku punkt odzyskiwania będzie spójna w razie awarii.
+    Należy pamiętać, że usługi Azure Backup nie obsługuje zegara automatyczne dostosowanie zmian letniego dla kopii zapasowych maszyn wirtualnych platformy Azure. Modyfikowanie zasad tworzenia kopii zapasowej ręcznego zgodnie z potrzebami.
 
 ## <a name="run-the-initial-backup"></a>Uruchom tworzenie początkowej kopii zapasowej
 

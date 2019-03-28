@@ -4,14 +4,14 @@ description: Dowiedz się, jak ustawić aprowizowanej przepływności baz danych
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 03/19/2019
 ms.author: andrl
-ms.openlocfilehash: 439b48c271260e9744bb9c9ca0e2b21e61cf4687
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8335a235de708227136400f3af8fa7b4d0a52e29
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005067"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520908"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -75,6 +75,20 @@ Możesz połączyć dwa modele. Przepływność inicjowania obsługi administrac
 * Jawnie konfigurowalnych RUs "P" z aprowizowaną przepływność w kontenerze o nazwie B.
 * Przepływność (RUS) "K" jest współużytkowany przez cztery kontenery, A "," C "," D "i" E. Dokładne zalecenia dotyczące ilości przepływności można A, C, D lub E różni się. Nie istnieją żadne umowy SLA dla każdego kontenera poszczególnych przepływności.
 * Kontener o nazwie B jest gwarantowane do uzyskiwania informacji o przepływności "P" (RUS) przez cały czas. Jest wspierana przez umowy SLA.
+
+## <a name="update-throughput-on-a-database-or-a-container"></a>Przepływność aktualizacji w bazie danych lub kontener
+
+Po utworzeniu kontenera usługi Azure Cosmos lub bazy danych, możesz zaktualizować aprowizowanej przepływności. Nie ma żadnego limitu z maksymalną przepływnością na skonfigurowanym w bazie danych lub kontenera. Minimalnej aprowizowanej przepływności zależy od następujących czynników: 
+
+* Rozmiar maksymalny danych, które nigdy nie są przechowywane w kontenerze
+* Maksymalna przepływność, które kiedykolwiek aprowizować w kontenerze
+* Maksymalna liczba kontenerów Azure Cosmos, które warto utworzyć w bazie danych z udostępnionej przepływności. 
+
+Można programowo pobrać minimalna przepływność w kontenerze lub bazy danych za pomocą zestawów SDK lub Wyświetl wartości w witrynie Azure portal. Korzystając z zestawu .NET SDK [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) metoda umożliwia skalowanie wartość aprowizowanej przepływności. Podczas korzystania z zestawu SDK Java [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) metoda umożliwia skalowanie wartość aprowizowanej przepływności. 
+
+Korzystając z zestawu .NET SDK [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) metoda pozwala pobrać minimalna przepływność w kontenerze lub bazy danych. 
+
+Aprowizowana przepływność w kontenerze lub bazy danych można skalować w dowolnym momencie. Można uruchomić operacji skalowania w dół po okresie bezczynności 4 godziny. Okres bezczynności jest zdefiniowany jako czas okresie nie było żadnych oferty zamienianie (co obejmuje skalowanie w górę i w dół) w kontenerze lub bazy danych. 
 
 ## <a name="comparison-of-models"></a>Porównanie modeli
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 846f07051ee65a542b56624fa84a9bdc4ca0f4e6
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 67603e326583400e8fc250ea6120297e7a94d101
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418010"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520925"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
 
@@ -96,7 +96,7 @@ Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych se
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Zwraca listę szyfrów obsługiwanych przez klienta          |
 | ciphers_used               | Zwraca ciąg mechanizmów szyfrowania używany do ustanowionego połączenia SSL |
-| client_ip                  | Adres IP klienta; szczególnie przydatne w scenariuszach, w których klienci mają do przepisania nagłówek X-Forwarded-dla ustawiony przez usługę Application Gateway, tak aby nagłówek zawiera tylko adres IP bez informacji o porcie. |
+| client_ip                  | Adres IP klienta, z którego bramy application gateway odebrał żądanie. W przypadku zwrotnego serwera proxy przed bramy aplikacji i klient źródłowy, następnie *client_ip* zwróci adres IP zwrotnego serwera proxy. Zmienna tjsi jest szczególnie przydatne w scenariuszach, w których klienci mają do przepisania nagłówek X-Forwarded-dla ustawiony przez usługę Application Gateway, tak aby nagłówek zawiera tylko adres IP bez informacji o porcie. |
 | client_port                | port klienta                                                  |
 | client_tcp_rtt             | informacje na temat klienta połączenie TCP. dostępna w systemach, które obsługują opcję gniazda TCP_INFO |
 | client_user                | Korzystając z uwierzytelniania HTTP, nazwa użytkownika podana dla uwierzytelniania |
@@ -121,7 +121,7 @@ Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych se
 
 - Obsługa ponownego napisania nagłówka HTTP jest obsługiwana tylko w nowej jednostki SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). Ta funkcja nie będzie obsługiwana w starych jednostek SKU.
 
-- Ponowne napisanie nagłówki Connect, uaktualniania i hosta nie jest jeszcze obsługiwany.
+- Ponowne napisanie nagłówki połączenia, uaktualniania i hosta nie jest jeszcze obsługiwany.
 
 - Możliwość warunkowo ponownie zapisuje nagłówki http będzie dostępna wkrótce.
 

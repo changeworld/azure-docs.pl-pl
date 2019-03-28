@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: b007575c614134f298a16b32c3179f7f0dfd31e5
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: edd035bc95cd2e694a7cfac39e447c63fce0f7d3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436697"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520160"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -309,6 +309,11 @@ Wybierz aplikację z portalu usługi LUIS, a następnie wybierz **importować dz
 
 Po przekazaniu dziennika [Przejrzyj punktu końcowego](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) wypowiedzi w portalu usługi LUIS.
 
+
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
 ## <a name="stop-the-container"></a>Zastavit kontejner
 
 Do zamykania w kontenerze, w środowisko wiersza polecenia, na którym działa kontener, naciśnij klawisz **klawisze Ctrl + C**.
@@ -316,10 +321,6 @@ Do zamykania w kontenerze, w środowisko wiersza polecenia, na którym działa k
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](luis-container-configuration.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
-
-## <a name="containers-api-documentation"></a>Dokumentacja interfejsu API kontenera
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Rozliczenia
 

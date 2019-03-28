@@ -8,12 +8,12 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4714ea7aa4bf55f7cbd4500977b09505788233dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e77dcd96ffa0fbd57aa0ed1b4f857279ca768a7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895808"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520806"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Tworzenie środowiska skuteczne zakotwiczenia przy użyciu kotwic przestrzenne platformy Azure
 
@@ -72,7 +72,7 @@ Podobnie w środowiskach, gdzie funkcje visual zmienić, ponieważ większość 
 
 W wielu przypadkach elementu zakotwiczenia jest punktem wejścia do środowiska aplikacji. Będziesz chciał szybko przy użyciu tego kroku i niezawodnie tak użytkownicy mogą wprowadzać swoje środowisko. Poświęcania czasu na jak prowadzą do Twojej kotwic jest krokiem ważnych projektu. Warto wziąć pod uwagę znajdowanie kotwic pod względem dwa scenariusze szerokiego: *cele* i *pokojów*.
 
-### <a name="targets"></a>Cele
+### <a name="targets"></a>Obiekty docelowe
 
 W tym scenariuszu docelowej lokalizacji elementu zakotwiczenia jest dobrze znana. Na przykład w aplikacji fikcyjnej malowania rzeczywistości mieszanej, jeden użytkownik umieszcza wirtualnego kanwę na tablicy. Powoduje ona, że inni użytkownicy w pomieszczeniu aby wskazywały swoich urządzeń, w tym samym miejscu na tablicy, aby zlokalizować zakotwiczenia i rozpocząć proces.  
 
@@ -86,7 +86,7 @@ W tym scenariuszu docelowego może pomóc zdjęcia. Jeśli użytkowników można
 
 W tym scenariuszu miejsca użytkownicy wprowadzają spację po prostu, wiedząc, że występuje gdzieś kotwicy w tym miejscu. Użytkownicy skanowanie miejsca za pomocą swoich urządzeń i szybko znaleźć zakotwiczenia.
 
-Środowisko to zwykle wymaga utworzenia zakotwiczenia dobrze wyselekcjonowane, zgodnie z opisem w [różnych perspektyw wyświetlania](#consider-various-viewing-perspectives). Po utworzeniu zakotwiczenia skanowany pokoju z wielu perspektyw, użytkownicy może skanować praktycznie dowolnym miejscu przy próbie jego znalezienie.
+Środowisko to zwykle wymaga utworzenia zakotwiczenia dobrze wyselekcjonowane, zgodnie z opisem w różnych perspektyw wyświetlania. Po utworzeniu zakotwiczenia skanowany pokoju z wielu perspektyw, użytkownicy może skanować praktycznie dowolnym miejscu przy próbie jego znalezienie.
 
 ![Ilustracja przedstawiająca sposób użytkownik może skanować miejsca można znaleźć elementu zakotwiczenia](./media/scan-room.png)
 

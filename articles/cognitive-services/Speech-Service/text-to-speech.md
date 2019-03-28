@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 05028704c08ebd06f9b9e4e3f45c5137eb1e6b58
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1edc2587ef8680f60082bf6271b73d30184f331b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226916"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521248"
 ---
 # <a name="what-is-text-to-speech"></a>Co to jest zamiany tekstu na mowę?
 
-Zamiana tekstu na mowę, z usług przetwarzania mowy platformy Azure jest oparte na protokole REST usługa, umożliwiająca aplikacje, narzędzia lub urządzenia do konwertowania tekstu do naturalnym przypominającej ludzką syntezatora mowy. Wybierać standardowych i neuronowych głosów lub Utwórz swoje własne [niestandardowych voice](#custom-voice-fonts) unikatowe dla produktu lub marki. ponad 75 standardowa głosy są dostępne w ponad 45 języków i ustawień regionalnych i 5 neuronowych głosy są dostępne w 4 języków i ustawień regionalnych. Aby uzyskać pełną listę, zobacz [obsługiwane języki](language-support.md#text-to-speech).
+Zamiana tekstu na mowę, z usług przetwarzania mowy platformy Azure jest oparte na protokole REST usługa, umożliwiająca aplikacje, narzędzia lub urządzenia do konwertowania tekstu do naturalnym przypominającej ludzką syntezatora mowy. Wybierać standardowych i neuronowych głosów lub utworzyć niestandardowe głosu unikatowe dla produktu lub marki. ponad 75 standardowa głosy są dostępne w ponad 45 języków i ustawień regionalnych i 5 neuronowych głosy są dostępne w 4 języków i ustawień regionalnych. Aby uzyskać pełną listę, zobacz [obsługiwane języki](language-support.md#text-to-speech).
 
 Technologia zamiany tekstu na mowę umożliwia twórcom zawartości korzystaj z użytkowników na różne sposoby. Zamiana tekstu na mowę można poprawić dostępność, udostępniając użytkownikom możliwość interakcji z zawartością komputerowi. Czy użytkownik ma wzroku niepełnosprawności uczenia, wymaga informacji o nawigacji podczas kierowania, zamiany tekstu na mowę można ulepszyć istniejące. Zamiana tekstu na mowę jest także cenne dodatek dla programu Boty głosu i asystentów wirtualnego.
 
@@ -56,9 +56,9 @@ Firma Microsoft oferuje przewodników Szybki Start, zaprojektowane do uruchamian
 
 | Szybki start | Platforma | Dokumentacja interfejsu API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS i Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
-| [Python](quickstart-python-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS i Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Okno systemu macOS, Linux | [Przeglądaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>Przykładowy kod
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: acf338afdf33408637bf7cca79d28f5e90888eba
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6400e3d3fa7f0317ff927f2931e705365a450770
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224444"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520670"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest mowy na tekst?
 
@@ -24,7 +24,7 @@ Mowy na tekst z usług przetwarzania mowy platformy Azure, znany także jako zam
 
 Domyślnie usługa mowy na tekst używa modelu językowego uniwersalnych. Ten model został uczony przy użyciu danych należącymi do firmy Microsoft i jest wdrożona w chmurze. Jest optymalna do konwersacji i dyktowanie scenariuszy. Korzystania z funkcji rozpoznawania mowy na tekst do rozpoznawania i transkrypcji w środowisku unikatowe można tworzyć i szkolenie niestandardowe modele akustyczne, języka i Wymowa hałasu otoczenia adres lub słownictwa branżowych. 
 
-Można łatwo przechwytywania dźwięku z mikrofonu, odczytywania ze strumienia lub dostępu do plików dźwiękowych z magazynu przy użyciu zestawu SDK rozpoznawania mowy i interfejsów API REST. Zestaw SDK rozpoznawania mowy obsługuje WAV/PCM 16-bitowy, 16 kHz, dźwięk jednego kanału rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane przy użyciu [punktu końcowego REST mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-formats) lub [transkrypcji, usługa batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
+Można łatwo przechwytywania dźwięku z mikrofonu, odczytywania ze strumienia lub dostępu do plików dźwiękowych z magazynu przy użyciu zestawu SDK rozpoznawania mowy i interfejsów API REST. Zestaw SDK rozpoznawania mowy obsługuje WAV/PCM 16-bitowy, 16 kHz, dźwięk jednego kanału rozpoznawania mowy. Dodatkowe formaty audio są obsługiwane przy użyciu [punktu końcowego REST mowy na tekst](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) lub [transkrypcji, usługa batch](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
 ## <a name="core-features"></a>Podstawowe funkcje
 

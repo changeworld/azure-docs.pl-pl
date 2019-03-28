@@ -4,7 +4,7 @@ description: Więcej informacji na temat czynności, które należy znać i co j
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/25/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f28bbe4ea0e1aa33a8b46815231db170493c5d3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7d0e20e9c8e248b446b7b938ae4180ffb546d823
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185948"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517606"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania z zakresu dostępu warunkowego w usłudze Azure Active Directory
 

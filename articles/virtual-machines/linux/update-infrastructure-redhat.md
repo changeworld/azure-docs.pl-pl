@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 2fc881aac096ccbafa351fcac2d726cc51d8f178
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 7d5c0a2a05bbdb19681641f53fb4e1cfcf30f6ca
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286894"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519973"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takich jak Azure duplikatów zawartości hostowanej w systemie Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i udostępnić go do maszyn wirtualnych przez użytkownika końcowego.
@@ -108,6 +108,11 @@ sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 
 Alternatywnie systemem `sudo yum update` także zaktualizować pakiet certyfikatu klienta (w zależności od używanej wersji systemu RHEL), pomimo błędów "wygasły certyfikat SSL" zostanie wyświetlony w przypadku innych repozytoriów. Jeśli ta aktualizacja się powiedzie, normalne łączność do innych repozytoriów usługi RHUI powinna zostać przywrócona, aby można było uruchomić `sudo yum update` pomyślnie.
 
+Jeśli napotkasz błąd 404 podczas uruchamiania `yum update`, spróbuj wykonać następujące czynności, aby odświeżyć pamięć podręczną yum:
+```bash
+sudo yum clean all;
+sudo yum makecache
+```
 
 ### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Rozwiązywanie problemów z połączeniem do usługi RHUI platformy Azure
 Jeśli wystąpią problemy z połączeniem z maszyny Wirtualnej platformy Azure RHEL PAYG RHUI platformy Azure, wykonaj następujące kroki:

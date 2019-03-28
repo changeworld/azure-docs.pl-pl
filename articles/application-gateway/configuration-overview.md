@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 18013050546cc5e204d9cc07a2f499388596164c
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: ca4f9bf00d70f327ff756558e25315762a9a77a8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319452"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519752"
 ---
 # <a name="application-gateway-configuration-overview"></a>Omówienie konfiguracji bramy aplikacji
 
@@ -72,7 +72,7 @@ Można skonfigurować bramę aplikacji, albo mieć publiczny adres IP lub prywat
 
 Obsługiwane jest tylko jeden publiczny adres IP lub jeden prywatny adres IP. Podczas tworzenia bramy aplikacji możesz wybrać adresu IP frontonu. 
 
-- W przypadku publicznego adresu IP można utworzyć nowy publiczny adres IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji co usługa Application Gateway. Jeśli tworzysz nowy publiczny adres IP, nie można później zmienić wybrany typ adresu IP (statyczne lub dynamiczne). Aby uzyskać więcej informacji, zobacz [statycznej dynamicznym publicznym adresem IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip) 
+- W przypadku publicznego adresu IP można utworzyć nowy publiczny adres IP lub użyć istniejącego publicznego adresu IP w tej samej lokalizacji co usługa Application Gateway. Jeśli tworzysz nowy publiczny adres IP, nie można później zmienić wybrany typ adresu IP (statyczne lub dynamiczne). Aby uzyskać więcej informacji, zobacz [statycznej dynamicznym publicznym adresem IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components) 
 
 - W przypadku prywatny adres IP można określić prywatny adres IP z podsieci, w którym zostanie utworzona brama aplikacji. Jeśli nie zostanie określony jawnie, dowolnego adresu IP zostanie automatycznie wybrana z podsieci. Aby uzyskać więcej informacji, zobacz [utworzyć bramę aplikacji z punktem końcowym usługi wewnętrznego load balancer (ILB).](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)
 
@@ -110,7 +110,7 @@ Należy wybrać protokół HTTP i HTTPS.
 
 - Jeśli wybierzesz HTTP, ruch między bramy klienta i aplikacji będą przepływać niezaszyfrowane.
 
-- Wybierz protokół HTTPS, jeśli interesują Cię [kończenie żądań protokołu Secure Sockets Layer (SSL)](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl) lub [kompleksowe szyfrowanie SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Jeśli wybierzesz HTTPS, ruch między bramy klienta i aplikacji zostaną zaszyfrowane i połączenia SSL zostanie zakończony w usłudze application gateway.  Chcąc kompleksowe szyfrowanie SSL, ponadto należy wybrać protokół HTTPS podczas konfigurowania *ustawienia zaplecza HTTP*. Pozwoli to zagwarantować, że ruch ponownie szyfrowane podczas przesyłania z bramy aplikacji z zapleczem usługi.
+- Wybierz protokół HTTPS, jeśli interesują Cię [kończenie żądań protokołu Secure Sockets Layer (SSL)](https://docs.microsoft.com/azure/application-gateway/overview) lub [kompleksowe szyfrowanie SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Jeśli wybierzesz HTTPS, ruch między bramy klienta i aplikacji zostaną zaszyfrowane i połączenia SSL zostanie zakończony w usłudze application gateway.  Chcąc kompleksowe szyfrowanie SSL, ponadto należy wybrać protokół HTTPS podczas konfigurowania *ustawienia zaplecza HTTP*. Pozwoli to zagwarantować, że ruch ponownie szyfrowane podczas przesyłania z bramy aplikacji z zapleczem usługi.
 
   Aby skonfigurować kończenie żądań protokołu Secure Sockets Layer (SSL) i kompleksowe szyfrowanie SSL, certyfikat jest wymagany do dodania do odbiornika tak, aby umożliwić Application Gateway do wyprowadzenia klucza symetrycznego zgodnie z specyfikacją protokołu SSL. Klucz symetryczny jest następnie używany do szyfrowania i odszyfrowywania ruch wysyłany do bramy. Certyfikat bramy musi mieć format wymiany informacji osobistych (PFX). Ten format pliku umożliwia eksportowanie klucza prywatnego, wymagane przez tę bramę aplikacji z realizacją szyfrowania i odszyfrowywania ruchu. 
 

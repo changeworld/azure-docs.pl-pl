@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38c8e98d92c21e3dc7d37337466dc79c85d0a15f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401119"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517916"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Samouczek: Aprowizacji usługi Azure Data Box bramy w funkcji Hyper-V
 
@@ -136,7 +136,9 @@ Wykonaj następujące czynności, aby aprowizować urządzenie w funkcji hypervi
 18. Na stronie **Określanie nazwy i lokalizacji** podaj **nazwę** dysku danych oraz jego **lokalizację** (możesz skorzystać z opcji Przeglądaj). Kliknij przycisk **Dalej**.
 
     ![Określ nazwę i lokalizację strony](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. Na stronie **Konfigurowanie dysku** wybierz opcję **Utwórz nowy pusty wirtualny dysk twardy** i wybierz rozmiar **2 TB** lub większy. 2 TB to wymaganie minimalne — zawsze można aprowizować większy dysk. Pamiętaj, że po aprowizowaniu dysku nie można zmniejszyć jego rozmiaru.  Można natomiast rozszerzyć go, dodając dysk danych. Kliknij przycisk **Dalej**.
+19. Na stronie **Konfigurowanie dysku** wybierz opcję **Utwórz nowy pusty wirtualny dysk twardy** i wybierz rozmiar **2 TB** lub większy. 
+    
+    2 TB to wymaganie minimalne — zawsze można aprowizować większy dysk. Pamiętaj, że po aprowizowaniu dysku nie można zmniejszyć jego rozmiaru. Podjęto próbę zmniejszania wyniki dysku spowoduje utratę wszystkich danych lokalnych na urządzeniu. Można natomiast rozszerzyć go, dodając dysk danych. Kliknij przycisk **Dalej**.
 
     ![Konfigurowanie strony dysku](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Sprawdź dane dysku wirtualnego na stronie **Podsumowanie** i, jeśli wszystkie dane są prawidłowe, kliknij przycisk **Zakończ**, aby utworzyć dysk. Kreator zostanie zamknięty, a wirtualny dysk twardy zostanie dodany do maszyny.

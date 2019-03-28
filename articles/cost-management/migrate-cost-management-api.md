@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 283808c0bd3f5297011b25619d6f978c99d4dc32
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: d9c5d731120f939cf7fb28c718cc4159a3702e44
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439230"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518789"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migracja z umową Enterprise Agreement do interfejsów API umowy klienta firmy Microsoft
 
@@ -60,7 +60,7 @@ Interfejsy API EA używają klucza interfejsu API, uwierzytelniania i autoryzacj
 | Arkusz cen | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format = json|CSV Microsoft.Billing/billingAccounts/.../billingProfiles/.../invoices/... /pricesheet/default/download format=json|CSV Microsoft.Billing/billingAccounts/... / billingProfiles /... /Providers/Microsoft.consumption/pricesheets/Download  |
 | Zakup rezerwacji | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
 | Zalecenia dotyczące rezerwacji | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
-| Użycie rezerwacji | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-summary) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
+| Użycie rezerwacji | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
 <sup>1</sup> usługi platformy azure i użycia witryny Marketplace innych firm są dostępne z [interfejs API użycia szczegóły](/rest/api/consumption/usagedetails).
 
@@ -501,7 +501,7 @@ Użycie rezerwacji można rozpocząć w rejestracji z zarezerwowanych interfejs 
 Obejmują one:
 
 - [Szczegóły użycia wystąpień zarezerwowanych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)
-- [Podsumowanie użycia wystąpień zarezerwowanych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-summary)
+- [Podsumowanie użycia wystąpień zarezerwowanych](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
 
 Wszystkie interfejsy API zużycia są zastępowane przez natywnych interfejsów API platformy Azure, używanego przez usługi Azure AD do uwierzytelniania i autoryzacji. Aby uzyskać więcej informacji na temat wywoływania interfejsów API REST platformy Azure, zobacz [wprowadzenie z użyciem usług REST](/rest/api/azure/#create-the-request). Zalecenia dotyczące rezerwacji, interfejsy API wymienionymi wcześniej są zastępowane przez [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails) i [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) interfejsów API.
 

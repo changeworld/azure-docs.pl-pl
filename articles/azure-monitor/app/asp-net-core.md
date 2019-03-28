@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 934d0a73bf6345edd79ae00526a1db0361b3524d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ae0d3658d9ae8534b1596fa7363495926cd0dfe7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482787"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520755"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Usługa Application Insights dla aplikacji ASP.NET Core
 
@@ -409,6 +409,6 @@ Problem przy użyciu jednej z tych metod polega na tym, że nie wyłączają si�
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zapoznaj się z przepływy użytkownika](../../azure-monitor/app/usage-flows.md) Aby zrozumieć, jak użytkownicy nawigują w aplikacjach.
-* [Konfigurowanie zbierania migawek](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications) Aby wyświetlić stan zmiennych i kod źródłowy w tej chwili, zgłaszany jest wyjątek.
+* [Konfigurowanie zbierania migawek](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) Aby wyświetlić stan zmiennych i kod źródłowy w tej chwili, zgłaszany jest wyjątek.
 * [Za pomocą interfejsu API](../../azure-monitor/app/api-custom-events-metrics.md) do wysłania własnych zdarzeń i metryk, aby uzyskać bardziej szczegółowy widok wydajności i użycia Twojej aplikacji.
 * Użyj [testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) do sprawdzenia aplikacji stale z całego świata.

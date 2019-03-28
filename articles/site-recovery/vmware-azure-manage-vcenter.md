@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: efbcc0143570b3d379cf392c170f599fcc0176d4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9694c682f171ab715812b05fed2064c9bbcd36b3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855133"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518086"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Zarządzaj serwerem VMware vCenter
 
@@ -108,7 +108,7 @@ Aby przenieść kilku maszyn wirtualnych do nowego vCenter:
 4. Teraz, ochrona migrowanych maszyn wirtualnych za pomocą [wybierając nowy serwer vCenter, po włączeniu ochrony](vmware-azure-tutorial.md#enable-replication).
 
 > [!TIP]
-> Jeśli liczba migrowanych maszyn wirtualnych jest **wyższe** , liczby maszyn wirtualnych, przechowywane w starym vCenter zaktualizowanie adresu IP nowego vcenter, wykonując instrukcje podane [tutaj](#modify-vcenter-ip-address-port). Kilka maszyn wirtualnych, które mają zostać zachowane podczas stary serwer vCenter [Wyłącz replikację](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault)i Rozpocznij  **[Włącz ochronę](vmware-azure-tutorial.md#enable-replication)**.
+> Jeśli liczba migrowanych maszyn wirtualnych jest **wyższe** , liczby maszyn wirtualnych, przechowywane w starym vCenter zaktualizowanie adresu IP nowego vcenter, wykonując instrukcje podane w tym miejscu. Kilka maszyn wirtualnych, które mają zostać zachowane podczas stary serwer vCenter [Wyłącz replikację](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault)i Rozpocznij  **[Włącz ochronę](vmware-azure-tutorial.md#enable-replication)**.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

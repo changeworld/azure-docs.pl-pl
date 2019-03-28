@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/24/2019
+ms.date: 3/26/2019
 ms.author: monhaber
-ms.openlocfilehash: 8c8108697e39153aef8727942c166a741cb8398c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402766"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517695"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Usługa Azure Security Center zaleceń, aby zwiększyć poziom bezpieczeństwa
 Konfigurowanie zasad zabezpieczeń, a następnie wdrażanie zaleceń dotyczących, dostarczone przez usługę Azure Security Center może zmniejszyć prawdopodobieństwo zdarzeń zabezpieczeń. W tym artykule przedstawiono sposób używania zasad zabezpieczeń i zalecenia w usłudze Security Center, aby ułatwić uniknięcie atak na zabezpieczenia. 
 
-Usługa Security Center automatycznie uruchamia ciągłe skanowania, aby analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania kontroli zabezpieczeń potrzebne. Usługa Security Center aktualizuje zalecenia co 24 godziny.
+Usługa Security Center automatycznie uruchamia ciągłe skanowania, aby analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania kontroli zabezpieczeń potrzebne. Usługa Security Center aktualizacje zalecenia w ciągu 24 godzin, z następującymi wyjątkami:
+
+- Zalecenia dotyczące konfiguracji zabezpieczeń systemu operacyjnego zostały zaktualizowane w ciągu 48 godzin
+- Zalecenia dotyczące problemów ochrony punktu końcowego są aktualizowane w ramach 8 godzin
 
 ## <a name="scenario"></a>Scenariusz
 W tym scenariuszu pokazano, jak zmniejszają prawdopodobieństwo wystąpienia zdarzenia zabezpieczeń, monitorując zaleceń usługi Security Center i podjęcia działań za pomocą usługi Security Center. Scenariuszu fikcyjnej firmy, Contoso i ról znajdujące się w Centrum zabezpieczeń [przewodnik planowania i obsługi](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). W tym scenariuszu firma Microsoft jest koncentrujących się na rolach następujących:

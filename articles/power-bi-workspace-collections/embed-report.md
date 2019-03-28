@@ -1,21 +1,19 @@
 ---
 title: Osadzanie raportu w kolekcji obszarów roboczych usługi Azure Power BI | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak możesz osadzić raport, który znajduje się w kolekcji obszarów roboczych usługi Power BI w aplikacji.
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: ecf73b08755f548c5506888a8113ad53fd8987ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bdfaaf3ecd5beb7cea56f017006921a86ecfb3f6
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877976"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519265"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Osadzanie raportu w kolekcji obszarów roboczych usługi Power BI
 

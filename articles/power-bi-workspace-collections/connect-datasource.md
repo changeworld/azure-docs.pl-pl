@@ -1,21 +1,19 @@
 ---
 title: Łączenie ze źródłem danych w kolekcji obszarów roboczych usługi Power BI | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak połączyć się ze źródłem danych w obrębie kolekcji obszarów roboczych usługi Power BI.
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: c67369edec2f3c84ada14e6c2a3a3ab8056b3e0c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 143213b148518fdf936974152d5d9196c42febd8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870099"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521503"
 ---
 # <a name="connect-to-a-data-source"></a>Łączenie ze źródłem danych
 
@@ -43,7 +41,7 @@ Tryb **DirectQuery**
 
 **Importowanie**
 
-Można zaimportować za pomocą wszystkich źródeł danych dostępnych w programie Power BI Desktop. Wykonasz **nie** można było odświeżyć dane w kolekcji obszarów roboczych usługi Power BI. Musisz przekazać zmiany do pliku PBIX do kolekcji obszarów roboczych usługi Power BI. Jest to spowodowane dostępnej bramy. 
+Można zaimportować za pomocą wszystkich źródeł danych dostępnych w programie Power BI Desktop. Wykonasz **nie** można było odświeżyć dane w kolekcji obszarów roboczych usługi Power BI. Musisz przekazać zmiany do pliku PBIX do kolekcji obszarów roboczych usługi Power BI. Jest to spowodowane dostępnej bramy.
 
 ## <a name="benefits-of-using-directquery"></a>Korzyści z używania zapytania bezpośredniego
 
@@ -73,4 +71,3 @@ Aby upewnić się, że zapytania wysłane do bazowego źródła danych mają akc
 * [Program Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
 Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](https://community.powerbi.com/)
-

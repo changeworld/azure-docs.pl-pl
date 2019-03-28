@@ -4,7 +4,7 @@ description: Zawiera omówienie środowiska użytkownika, gdy Identity Protectio
 services: active-directory
 keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.author: markvi
-ms.reviewer: nigu
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b47943b14b30400075ca0a018ba5367257f15f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 449f808e98c4e0db2972071e160f5335153a88f2
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177340"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520135"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Środowisko logowania za pomocą usługi Azure AD Identity Protection
 Za pomocą usługi Azure Active Directory Identity Protection możesz wykonywać następujące czynności:

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: e9e47eff3df941b0c1437083dc7440fab4091418
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0224d9ba5a430635e4675c2fb2bf354e7c975f31
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317072"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518733"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -24,7 +24,7 @@ ms.locfileid: "58317072"
 
 ![Eksplorator metryk usługi Application Insights](media/functions-monitoring/metrics-explorer.png)
 
-Usługa Azure Functions ma również [wbudowane funkcje monitorowania, która nie korzysta z usługi Application Insights](#monitoring-without-application-insights). Firma Microsoft zaleca usługi Application Insights, ponieważ oferuje on większej ilości danych i lepsze sposoby analizować dane.
+Usługa Azure Functions oferuje również wbudowane monitorowanie, która nie korzysta z usługi Application Insights. Firma Microsoft zaleca usługi Application Insights, ponieważ oferuje on większej ilości danych i lepsze sposoby analizować dane.
 
 ## <a name="application-insights-pricing-and-limits"></a>Limity i ceny usługi Application Insights
 
@@ -77,7 +77,7 @@ Następnym krokiem jest [wyłączyć wbudowane funkcje rejestrowania](#disable-b
 
 ## <a name="disable-built-in-logging"></a>Wyłącz wbudowane funkcje rejestrowania
 
-Po włączeniu usługi Application Insights, wyłącz [wbudowane funkcje rejestrowania, który używa usługi Azure Storage](#logging-to-storage). Wbudowane funkcje rejestrowania jest przydatna przy testowaniu z niewielkich obciążeń, ale nie jest przeznaczony do użytku produkcyjnego duże obciążenie. Do monitorowania produkcji, firma Microsoft zaleca usługę Application Insights. Jeśli wbudowane funkcje rejestrowania jest używany w środowisku produkcyjnym, rekord rejestrowania może być niekompletna ze względu na ograniczenia przepustowości w usłudze Azure Storage.
+Po włączeniu usługi Application Insights, należy wyłączyć wbudowane funkcje rejestrowania, który używa usługi Azure Storage. Wbudowane funkcje rejestrowania jest przydatna przy testowaniu z niewielkich obciążeń, ale nie jest przeznaczony do użytku produkcyjnego duże obciążenie. Do monitorowania produkcji, firma Microsoft zaleca usługę Application Insights. Jeśli wbudowane funkcje rejestrowania jest używany w środowisku produkcyjnym, rekord rejestrowania może być niekompletna ze względu na ograniczenia przepustowości w usłudze Azure Storage.
 
 Aby wyłączyć wbudowane funkcje rejestrowania, należy usunąć `AzureWebJobsDashboard` ustawienia aplikacji. Aby dowiedzieć się, jak usunąć ustawienia aplikacji w witrynie Azure portal, zobacz **ustawienia aplikacji** części [jak Zarządzanie aplikacją funkcji](functions-how-to-use-azure-function-app-settings.md#settings). Zanim usuniesz ustawienia aplikacji, upewnij się, że żadne istniejące funkcje w tej samej aplikacji funkcji, użyj ustawienia dla wyzwalaczy usługi Azure Storage lub powiązania.
 
@@ -125,7 +125,7 @@ W [Eksploratora metryk](../azure-monitor/app/metrics-explorer.md), możesz równ
 
 ![Eksplorator metryk](media/functions-monitoring/metrics-explorer.png)
 
-Na [błędy](../azure-monitor/app/asp-net-exceptions.md) karty, możesz tworzyć wykresy i alerty oparte na błędy funkcji i serwera, wyjątki. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że możesz wdrożyć [niestandardowych danych telemetrycznych](#custom-telemetry-in-c-functions) zależności.
+Na [błędy](../azure-monitor/app/asp-net-exceptions.md) karty, możesz tworzyć wykresy i alerty oparte na błędy funkcji i serwera, wyjątki. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że implementacji niestandardowej telemetrii zależności.
 
 ![Niepowodzenia](media/functions-monitoring/failures.png)
 
@@ -423,7 +423,7 @@ W skrypcie funkcji języka C#, można użyć `LogMetric` metody rozszerzenia `IL
 logger.LogMetric("TestMetric", 1234);
 ```
 
-Ten kod jest alternatywą do wywoływania `TrackMetric` przy użyciu [interfejsu API usługi Application Insights dla platformy .NET](#custom-telemetry-in-c-functions).
+Ten kod jest alternatywą do wywoływania `TrackMetric` przy użyciu interfejsu API usługi Application Insights dla platformy .NET.
 
 ## <a name="write-logs-in-javascript-functions"></a>Zapisują dzienniki w funkcji języka JavaScript
 
@@ -441,7 +441,7 @@ Jeśli uruchamiasz [wersji 1.x](functions-versions.md#creating-1x-apps) funkcje 
 context.log.metric("TestMetric", 1234);
 ```
 
-Ten kod jest alternatywą do wywoływania `trackMetric` przy użyciu [zestawu SDK środowiska Node.js dla usługi Application Insights](#custom-telemetry-in-javascript-functions).
+Ten kod jest alternatywą do wywoływania `trackMetric` przy użyciu zestawu SDK środowiska Node.js dla usługi Application Insights.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>Zaloguj się niestandardowych danych telemetrycznych C# funkcji
 
@@ -632,7 +632,7 @@ module.exports = function (context, req) {
 
 ### <a name="dependencies"></a>Zależności
 
-Zależności, funkcja używa się do innych usług, które nie będą automatycznie wyświetlane. Można napisać kod niestandardowy, aby wyświetlić zależności. Przykłady można znaleźć w przykładowym kodzie w [ C# sekcji niestandardowej telemetrii](#custom-telemetry-in-c-functions). Przykładowy kod powoduje *mapy aplikacji* w usłudze Application Insights, który wygląda podobnie do poniższej ilustracji:
+Zależności, funkcja używa się do innych usług, które nie będą automatycznie wyświetlane. Można napisać kod niestandardowy, aby wyświetlić zależności. Przykłady można znaleźć w przykładowym kodzie w [ C# sekcji niestandardowej telemetrii](#log-custom-telemetry-in-c-functions). Przykładowy kod powoduje *mapy aplikacji* w usłudze Application Insights, który wygląda podobnie do poniższej ilustracji:
 
 ![Mapa aplikacji](media/functions-monitoring/app-map.png)
 

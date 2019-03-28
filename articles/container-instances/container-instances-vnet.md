@@ -5,18 +5,18 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: c6c82ee26fdbd824bdf42720ed7fc08135a872da
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a4da7a23d6dcb50164829507130fed145abeebbd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372416"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517321"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
-[Usługa Azure Virtual Network](../virtual-network/virtual-networks-overview.md) udostępnia bezpieczne i prywatne sieci wraz z filtrowaniem, routingu i komunikacji równorzędnej dla subskrypcji platformy Azure i zasobów lokalnych. Wdrażając grup kontenerów w sieci wirtualnej platformy Azure, kontenery można bezpiecznego komunikowania się z innymi zasobami w sieci wirtualnej.
+[Usługa Azure Virtual Network](../virtual-network/virtual-networks-overview.md) zapewnia bezpieczny, prywatnych sieci na potrzeby subskrypcji platformy Azure i zasobów lokalnych. Wdrażając grup kontenerów w sieci wirtualnej platformy Azure, kontenery można bezpiecznego komunikowania się z innymi zasobami w sieci wirtualnej.
 
 Grupy kontenerów wdrożonych w sieci wirtualnej platformy Azure obsługi takich scenariuszy jak:
 
@@ -34,7 +34,6 @@ Grupy kontenerów wdrożonych w sieci wirtualnej platformy Azure obsługi takich
 Niektóre ograniczenia mają zastosowanie w przypadku wdrażania grup kontenerów z siecią wirtualną.
 
 * Aby wdrożyć grup kontenerów do podsieci, podsieci nie może zawierać innych typów zasobów. Usuń wszystkie istniejące zasoby z istniejącej podsieci przed wdrożeniem grup kontenerów do niej, lub Utwórz nową podsieć.
-* Grupy kontenerów wdrożonych w sieci wirtualnej nie obsługują obecnie publiczne adresy IP i etykiety nazwy DNS.
 * Nie można użyć [tożsamości zarządzanej](container-instances-managed-identity.md) w grupie kontenerów wdrożonych w sieci wirtualnej.
 * Ze względu na dodatkowe zaangażowanych zasobów sieciowych wdrożenie grupy kontenera z siecią wirtualną jest zazwyczaj trwa nieco dłużej niż wdrażanie wystąpienia standard kontenera.
 
@@ -46,10 +45,14 @@ Chociaż ta funkcja jest dostępna w wersji zapoznawczej, podlegają następują
 
 Ograniczenia zasobów kontenera, może różnić się od limity wystąpień kontenerów obsługi sieci w tych regionach. Obecnie kontenery systemu Linux są obsługiwane dla tej funkcji. Planowane jest wprowadzenie obsługi w systemie Windows.
 
-### <a name="unsupported-network-resources-and-features"></a>Nieobsługiwane sieci zasobów i funkcji
+### <a name="unsupported-networking-scenarios"></a>Nieobsługiwane scenariusze sieci 
 
-* Azure Load Balancer
-* Wirtualne sieci równorzędne
+* **Usługa Azure Load Balancer** — wprowadzenie do usługi Azure Load Balancer przed wystąpienia kontenerów w grupie kontenerów sieciowych nie jest obsługiwane.
+* **Wirtualne sieci równorzędne** — nie komunikacja równorzędna sieć wirtualna, zawierający podsieci delegowanie do usługi Azure Container Instances do innej sieci wirtualnej
+* **Tabele tras** — nie można ich konfigurować trasy zdefiniowane przez użytkownika w podsieci delegować domenę do usługi Azure Container Instances
+* **Sieciowe grupy zabezpieczeń** -reguły zabezpieczeń dla ruchu wychodzącego w NSG stosowana do podsieci delegować domenę do usługi Azure Container Instances obecnie nie są wymuszane. 
+* **Publiczny adres IP lub DNS etykiety** -grup kontenerów wdrożonych w sieci wirtualnej, obecnie nie obsługują uwidaczniającą kontenerów bezpośrednio w Internecie przy użyciu publicznego adresu IP lub w pełni kwalifikowanej nazwy domeny
+* **Rozpoznawania nazw wewnętrznych** — rozpoznawanie nazw dla zasobów platformy Azure w sieci wirtualnej za pomocą wewnętrznego serwera DNS platformy Azure nie jest obsługiwana.
 
 **Usunięcie zasobu sieciowego** wymaga [dodatkowe kroki](#delete-network-resources) po wdrożeniu grupy kontenerów w sieci wirtualnej.
 

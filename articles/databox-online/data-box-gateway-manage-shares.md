@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d1b5125c2e3904900adb0a121d60cba8a1731d43
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 105996cf72e2a96a06a4478518e68765d3d158f5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499645"
+ms.locfileid: "58516896"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Zarządzanie udziałami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal 
 
@@ -84,6 +84,9 @@ Lista udziałów zostanie zaktualizowana w celu uwzględnienia usuniętego udzia
 
 Funkcja odświeżania umożliwia odświeżenie zawartości udziału lokalnego. Podczas odświeżania udziału inicjowane jest wyszukiwanie w celu odnalezienia wszystkich obiektów platformy Azure, w tym obiektów blob i plików, które zostały dodane do chmury po ostatnio przeprowadzonym odświeżaniu. Te dodatkowe pliki są następnie używane do odświeżenia zawartości udziału lokalnego na urządzeniu. 
 
+> [!NOTE]
+> Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w ramach operacji odświeżania. 
+
 Wykonaj następujące czynności w witrynie Azure Portal, aby odświeżyć udział.
 
 1.  W witrynie Azure Portal przejdź do sekcji **Udziały**. Kliknij udział, który chcesz odświeżyć.
@@ -107,7 +110,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby odświeżyć udzia
 W przypadku awarii zostanie zgłoszony alert. Alert zawiera szczegółowe informacje o przyczynie awarii oraz zalecenia dotyczące rozwiązania problemu. Alert wskazuje również plik, który zawiera pełne podsumowanie awarii — w tym pliki, których nie udało się zaktualizować lub usunąć.
 
 >[!IMPORTANT]
-> W tej wersji zapoznawczej nie należy odświeżać więcej niż jednego udziału naraz.
+> W tej wersji nie odświeżaj więcej niż jeden udział w danym momencie.
 
 ## <a name="sync-storage-keys"></a>Synchronizowanie kluczy magazynu
 

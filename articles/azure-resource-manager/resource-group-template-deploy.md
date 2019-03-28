@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8005b187f300375b62c254516a61f4993675b0b9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 3b9a35cb5a37aa17a2f7803f3e996d51bede81e0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403112"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518562"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)
 
@@ -47,7 +47,7 @@ W przykładach w tym artykule używany wdrożenia grupy zasobów. Aby uzyskać w
 
 Potrzebne do wdrożenia szablonu. Jeśli nie masz jeszcze jeden, Pobierz i Zapisz [przykładowy szablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z repozytorium szablonów szybkiego startu platformy Azure. Nazwa pliku lokalnego, używane w tym artykule jest **c:\MyTemplates\azuredeploy.json**.
 
-Jeśli nie używasz [usługa Azure Cloud shell](#deploy-templates-from-azure-cloud-shell) do wdrażania szablonów, należy zainstalować program Azure PowerShell i łączenie z platformą Azure:
+Jeśli usługa Azure Cloud shell jest używana do wdrażania szablonów, należy zainstalować program Azure PowerShell i łączenie z platformą Azure:
 
 - **Zainstaluj polecenia cmdlet programu Azure PowerShell na komputerze lokalnym.** Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](/powershell/azure/get-started-azureps).
 - **Połącz z platformą Azure za pomocą [Connect AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Jeśli masz wiele subskrypcji platformy Azure, być może trzeba będzie również uruchomić [AzContext zestaw](/powershell/module/Az.Accounts/Set-AzContext). Aby uzyskać więcej informacji, zobacz [użycie większej liczby subskrypcji platformy Azure](/powershell/azure/manage-subscriptions-azureps).

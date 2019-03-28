@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 03/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 96766a12d7e78dacd93432e30d12f313d52ad4c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2b7364a2bb32f2d38f5cf9ddeddd5e4e1f928e01
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176178"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519803"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -87,7 +87,7 @@ Po nawiązaniu komunikacji równorzędnej między sieciami wirtualnymi, należy 
 
 ![Konfigurowanie serwerów DNS niestandardowe dla wirtualnej sieci równorzędnej](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Jeśli używasz reguł sieciowych grup zabezpieczeń w podsieci usługi HDInsight, należy umożliwić [wymaganych adresów IP](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1) dla ruchu przychodzącego i ruchu wychodzącego. 
+Jeśli używasz reguł sieciowych grup zabezpieczeń w podsieci usługi HDInsight, należy umożliwić [wymaganych adresów IP](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network) dla ruchu przychodzącego i ruchu wychodzącego. 
 
 **Aby przetestować** Jeśli sieci są poprawnie skonfigurowane, Dołącz do HDInsight sieci Wirtualnej/podsieci maszyny Wirtualnej systemu windows i zbadaj nazwy domeny (jego powinien rozwiązać adres IP), a następnie uruchom **ldp.exe** uzyskać dostępu do domeny usług AD DS platformy Azure. Następnie **przyłączanie maszyny Wirtualnej systemu windows do domeny, aby potwierdzić** się wszystkie wymagane wywołania RPC sukcesem między klientem i serwerem. Można również użyć **nslookup** o potwierdzenie sieci dostępu do konta magazynu lub dowolnego zewnętrzne bazy danych można użyć (na przykład zewnętrzny Magazyn metadanych Hive lub Ranger bazy danych).
 Upewnij się, że wszystkie [wymagane porty](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) dozwolonych elementów znajdują się w podsieci usługi AAD DS reguły sieciowej grupy zabezpieczeń, jeśli DS usługi AAD jest zabezpieczony przez sieciową grupę zabezpieczeń. Jeśli maszyna wirtualna przyłączenie do domeny systemu windows to się powiedzie, można przejść do następnego kroku i utworzyć klastry z ESP.

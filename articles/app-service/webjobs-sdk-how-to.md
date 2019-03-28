@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 0da4e1a0b20874c4452dd77bf77df0860dec455f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 81401d95b9c40f16a6e593d61b79f5c2d647c0c5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848077"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518834"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach
 
@@ -153,7 +153,7 @@ static void Main(string[] args)
 
 ## <a name="triggers"></a>Wyzwalacze
 
-Funkcje muszą być metody publiczne i musi mieć jeden atrybut wyzwalacza lub [ `NoAutomaticTrigger` ](#manual-trigger) atrybutu.
+Funkcje muszą być metody publiczne i musi mieć jeden atrybut wyzwalacza lub [ `NoAutomaticTrigger` ](#manual-triggers) atrybutu.
 
 ### <a name="automatic-triggers"></a>Automatycznymi wyzwalaczami
 
@@ -995,7 +995,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-`SamplingPercentageEstimatorSettings` Konfiguruje obiektu [próbkowanie adaptacyjne](https://docs.microsoft.com/azure/application-insights/app-insights-sampling#adaptive-sampling-at-your-web-server). Oznacza to, że w niektórych scenariuszach mocno obciążające wgląd w aplikacje wysyła wybrany podzbiór danych telemetrycznych do serwera.
+`SamplingPercentageEstimatorSettings` Konfiguruje obiektu [próbkowanie adaptacyjne](https://docs.microsoft.com/azure/application-insights/app-insights-sampling). Oznacza to, że w niektórych scenariuszach mocno obciążające wgląd w aplikacje wysyła wybrany podzbiór danych telemetrycznych do serwera.
 
 Po utworzeniu fabryki danych telemetrycznych, przekaż go do dostawcy logowania usługi Application Insights:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: d4587b5268635691d55b51a7bf88bbe01df2a0c4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871652"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519633"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
@@ -39,9 +39,9 @@ Te funkcje tworzą usługi mowy platformy Azure. Użyj linków w tej tabeli, aby
 
 Poznaj nowe funkcje usług mowy platformy Azure.
 
+* Marca 2019 - nowy punkt końcowy zamiany tekstu na mowę, która zwraca pełną listę dostępnych głosów w określonych regionach jest teraz dostępna. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API zamiany tekstu na mowę (REST)](rest-text-to-speech.md).
 * Lutego 2019 - wydane mowy SDK 1.3.0 dzięki obsłudze [aparatu Unity (wersja beta)](quickstart-csharp-unity.md). Dodano obsługę `AudioInput` klasy, która pozwala na dokonanie wyboru przesyłania strumieniowego źródła audio. Aby uzyskać pełną listę znanych problemów i rozszerzeń, zobacz [informacje o wersji](releasenotes.md).
 * Grudnia 2018 - wydane mowy SDK 1.2.0 dzięki obsłudze [Python](quickstart-python.md) i [Node.js](quickstart-js-node.md), jak Ubuntu 18.04 LTS. Aby uzyskać więcej informacji, zobacz [informacje o wersji](releasenotes.md).
-* Grudnia 2018 r. — Przewodniki Szybki Start zamiany tekstu na mowę dodane do [platformy .NET Core](quickstart-dotnet-text-to-speech.md), [Python](quickstart-python-text-to-speech.md), [Node.js](quickstart-nodejs-text-to-speech.md). Dodatkowe przykłady są dostępne w [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http).
 
 ## <a name="try-speech-services"></a>Wypróbuj usługi mowy
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 3/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 84af16c156635f7f7dbfb42972e564dd21a554bb
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b7e60b4fbdf076c50a7d9a29092de9ab1c32b210
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436893"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520653"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów rozpoznawanie tekstu
 
@@ -133,6 +133,11 @@ Możesz użyć `POST /vision/v2.0/recognizeText` i `GET /vision/v2.0/textOperati
 
 Możesz użyć `POST /vision/v2.0/recognizeTextDirect` operacji synchronicznie, rozpoznawał drukowanego tekstu w obrazie. Ponieważ ta operacja jest synchroniczne, treść żądania dla tej operacji jest taka sama, jak dla `POST /vision/v2.0/recognizeText` operacja, ale odpowiedź treści dla tej operacji jest taka sama jak zwracany przez `GET /vision/v2.0/textOperations/*{id}*` operacji.
 
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+
 ## <a name="stop-the-container"></a>Zastavit kontejner
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
@@ -141,9 +146,6 @@ Możesz użyć `POST /vision/v2.0/recognizeTextDirect` operacji synchronicznie, 
 
 Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](./computer-vision-resource-container-config.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
 
-## <a name="containers-api-documentation"></a>Dokumentacja interfejsu API kontenera
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Rozliczenia
 

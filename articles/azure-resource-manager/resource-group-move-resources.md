@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 98236133a90cfddfe2ea476486556318b2c88b10
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: e74b9b5c8347c7348c4da27b80d00daa091b826f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418894"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521096"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -104,6 +104,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
 * Usługi Recovery Services vault — Zarejestruj się w [Podgląd](#recovery-services-limitations).
+* Oprogramowanie SAP HANA na platformie Azure
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
 * Service Bus
@@ -146,7 +147,6 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Lab Services - laboratorium na potrzeby zajęć, nie można przenieść do nowej grupy zasobów lub subskrypcji. DevTest Labs, mogą być przenoszone do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
 * Aplikacje zarządzane
 * Microsoft Genomics
-* Oprogramowanie SAP HANA na platformie Azure
 * Bezpieczeństwo
 * Site Recovery
 * Menedżer urządzeń StorSimple

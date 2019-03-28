@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f6887a403e03ac11bb080a1d9855daff66ca088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096779"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517270"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Śledź koszty związane z laboratorium Azure DevTest Labs
 Ten artykuł zawiera informacje na temat śledzenia kosztów środowiska laboratoryjnego. Pokazuje sposób wyświetlania szacowany koszt trent w bieżącym miesiącu dla laboratorium. Artykuł przedstawia również sposób wyświetlania data miesiąca koszt zasobów w środowisku laboratoryjnym
@@ -71,7 +71,7 @@ DevTest Labs pozwala lepiej zarządzać kosztami w środowisku laboratoryjnym, u
    - Określ **docelowe koszt**. Na przykład ile planujesz możesz wydać na tym środowisku laboratoryjnym w przedziale czasu, który został zdefiniowany.
    - Zaznacz, aby włączyć lub wyłączyć wszelkie próg ma zgłoszone — w przyrostach co 25% — do 125% z określonym **docelowe koszt**.
       - **Powiadom**: Po spełnieniu tego progu, otrzymasz powiadomienie, należy określić adres URL elementu webhook.
-      - **Vykreslit v**: Po spełnieniu tego progu, wyniki są oznaczane na wykresach na wykres trendu kosztów, który można wyświetlić, zgodnie z opisem w [wyświetlania wykresu trendu kosztów szacowany miesięczny](#viewing-the-monthly-estimated-cost-trend-chart).
+      - **Vykreslit v**: Po spełnieniu tego progu, wyniki są oznaczane na wykresach na wykres trendu kosztów, który można wyświetlić, zgodnie z opisem w wyświetlania wykresu trendu kosztów szacowane miesięczne.
    - Jeśli zdecydujesz się **powiadamiania** po osiągnięciu wartości progowej, należy określić adres URL elementu webhook. W obszarze integracji kosztów, wybierz **kliknij tutaj, aby dodać integracji**. Wprowadź **adresu URL elementu Webhook** w okienku powiadomienia Konfiguruj, a następnie wybierz pozycję **OK**.
 
        ![Konfigurowanie okienkiem powiadomienia](./media/devtest-lab-configure-cost-management/configure-notification.png)

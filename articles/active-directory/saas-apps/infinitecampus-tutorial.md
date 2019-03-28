@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0ada3055a3347cb42179fddbba671f2f03f502d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d7d194d810e0fd3b9fb57b0876bee12447f65c6
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885071"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519871"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Samouczek: Integracja usługi Azure Active Directory z Kampusu nieskończona
 
@@ -90,7 +90,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z Kampusu
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego nieskończonej Campus](#creating-a-infinite-campus-test-user)**  — aby odpowiednikiem Britta Simon w nieskończonej Campus, połączonego z usługi Azure AD reprezentacja użytkownika.
+3. **[Tworzenie użytkownika testowego nieskończonej Campus](#creating-an-infinite-campus-test-user)**  — aby odpowiednikiem Britta Simon w nieskończonej Campus, połączonego z usługi Azure AD reprezentacja użytkownika.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 

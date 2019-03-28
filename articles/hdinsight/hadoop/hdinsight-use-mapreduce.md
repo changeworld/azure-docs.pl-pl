@@ -8,27 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: eeb548d6bd955aedf322a63c861fd23bb37c1167
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 03/20/2019
+ms.openlocfilehash: f2baaf598be8ede69fd6e1fa49a5f5a6b64c24ff
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634630"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521204"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Korzystanie z technologii MapReduce na platformie Apache Hadoop w HDInsight
 
-Dowiedz się, jak uruchamiać zadania MapReduce w klastrach HDInsight. Skorzystaj z poniższej tabeli, aby odnaleźć różne sposoby, że MapReduce mogą być używane z HDInsight:
-
-| **Użyj tego**... | **. Aby to zrobić** | ...zwykle to **systemu operacyjnego klastra** | ...from to **system operacyjny klienta** |
-|:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |Użyj polecenia usługi Hadoop za pośrednictwem **SSH** |Linux |Linux, Unix, Mac OS X lub Windows |
-| [REST](apache-hadoop-use-mapreduce-curl.md) |Prześlij zadanie zdalnie przy użyciu **REST** (przykładach używane jest narzędzie cURL) |System Linux lub Windows |Linux, Unix, Mac OS X lub Windows |
-| [Program Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Prześlij zadanie zdalnie przy użyciu **programu Windows PowerShell** |System Linux lub Windows |Windows |
-
-> [!IMPORTANT]
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
-
+Dowiedz się, jak uruchamiać zadania MapReduce w klastrach HDInsight. 
 
 ## <a id="whatis"></a>Co to jest MapReduce
 
@@ -161,10 +151,7 @@ HDInsight można uruchamiać zadania HiveQL, przy użyciu różnych metod. Skorz
 |:--- |:--- |:--- |:--- |
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |Użyj polecenia usługi Hadoop za pośrednictwem **SSH** |Linux |Linux, Unix, Mac OS X lub Windows |
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |Prześlij zadanie zdalnie przy użyciu **REST** |System Linux lub Windows |Linux, Unix, Mac OS X lub Windows |
-| [Program Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Prześlij zadanie zdalnie przy użyciu **programu Windows PowerShell** |System Linux lub Windows |Windows |
-
-> [!IMPORTANT]  
-> Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Prześlij zadanie zdalnie przy użyciu **programu Windows PowerShell** |System Linux lub Windows |Windows |
 
 ## <a id="nextsteps"></a>Następne kroki
 

@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: 2c3b63e671240a239dc2037ce56e56af4a8f95e7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: e55c898cdbb45dc7ff3466c61e968e3ae52be0cb
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369166"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521010"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Utwórz obszar roboczy usługi Azure Machine Learning
 
@@ -24,7 +24,7 @@ Aby korzystać z usługi Azure Machine Learning, musisz mieć [ **obszaru robocz
 W tym artykule dowiesz się, jak utworzyć obszar roboczy przy użyciu dowolnej z następujących metod: 
 * [Witryny Azure portal](#portal) interfejsu
 * [Usługi Azure Machine Learning zestawu SDK dla języka Python](#sdk)
-* [Szablonu usługi Azure Resource Manager](#template)
+* Szablon usługi Azure Resource Manager
 * [Usługi Azure Machine Learning interfejs wiersza polecenia](#cli)
 
 Obszar roboczy, którego możesz utworzyć przy użyciu czynności opisane w tym miejscu może służyć jako warunek wstępny do innych samouczki i artykuły z instrukcjami. 

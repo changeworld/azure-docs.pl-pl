@@ -1,19 +1,19 @@
 ---
 title: Omówienie dzienniki diagnostyczne platformy Azure
 description: Dowiedz się, czym są dzienniki diagnostyczne platformy Azure i jak można je zrozumieć zdarzenia występujące w obrębie zasobu platformy Azure.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
+ms.date: 03/26/2019
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 890f2224a4053ec8cad65b44b85eab0e31be3b64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310186"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519395"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -49,11 +49,6 @@ Można użyć konta magazynu lub przestrzeni nazw usługi Event Hubs, która nie
 > [!NOTE]
 >  Obecnie nie można zarchiwizować dzienniki przepływu sieciowych do konta magazynu, który znajduje się za zabezpieczonej sieci wirtualnej.
 
-> [!WARNING]
-> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
-
 ## <a name="diagnostic-settings"></a>Ustawienia diagnostyczne
 
 Dzienniki diagnostyczne zasobu są skonfigurowane za pomocą ustawień diagnostycznych zasobu. Dzienniki diagnostyczne dzierżawy są skonfigurowane przy użyciu ustawienia diagnostyczne dzierżawy. **Ustawienia diagnostyczne** kontroli usługi:
@@ -61,7 +56,7 @@ Dzienniki diagnostyczne zasobu są skonfigurowane za pomocą ustawień diagnosty
 * Której dzienniki diagnostyczne i metryki są wysyłane (konto magazynu, usługa Event Hubs i/lub usługi Azure Monitor).
 * Kategorie dziennika, które są wysyłane i tego, czy też są wysyłane dane metryk.
 * Jak długo każda kategoria dziennika ma być przechowywana na koncie magazynu
-    - Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni z zakresu od 1 do 2147483647.
+    - Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni z zakresu od 1 do 365.
     - Jeśli ustawiono zasady przechowywania, ale przechowywania dzienników na koncie magazynu jest wyłączona (na przykład, jeśli tylko są zaznaczone opcje usługi Event Hubs lub usługi Log Analytics), zasad przechowywania przyniosło żadnego skutku.
     - Zasady przechowywania są stosowane dziennie, aby na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu.
 

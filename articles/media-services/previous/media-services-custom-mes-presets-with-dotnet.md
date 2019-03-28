@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: eaea0719aa8ca981da68841dae365decdd3c860e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499866"
+ms.locfileid: "58516488"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Ustawienia wstępne Dostosowywanie Media Encoder Standard  
 
@@ -267,14 +267,10 @@ namespace CustomizeMESPresests
 ## <a name="see-also"></a>Zobacz także
 
 - [Jak kodować z niestandardowe przekształcenia przy użyciu interfejsu wiersza polecenia](../latest/custom-preset-cli-howto.md)
-- [Kodowania z Media Services v3](../latest/encoding-concept.md)
+- [Kodowanie przy użyciu usługi Media Services w wersji 3](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-## <a name="see-also"></a>Zobacz też
-[Omówienie kodowania usługi Media Services](media-services-encode-asset.md)
-

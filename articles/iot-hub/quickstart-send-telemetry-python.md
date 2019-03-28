@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: 8dab132cd03b24f4f9e55cb777cc0f984526ba12
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 51398c893f212bc51f3edd20ee4c666d91779352
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243367"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520007"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie ich przy użyciu aplikacji zaplecza (Python)
 
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane w języku Python. Obecnie usługa Microsoft Azure IoT SDKs dla języka Python obsługuje tylko określonych wersji języka Python dla każdej platformy. Aby dowiedzieć się więcej, zobacz [Readme zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
+Przykładowa aplikacja, uruchamianych w tym przewodniku Szybki Start jest zapisywany przy użyciu języka Python. Obecnie usługa Microsoft Azure IoT SDKs dla języka Python obsługuje tylko określonych wersji języka Python dla każdej platformy. Aby dowiedzieć się więcej, zobacz [Readme zestawu SDK języka Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
 Ten przewodnik Szybki Start założono, że używasz komputera deweloperskiego z systemem Windows. Dla systemów Windows, tylko [Python 3.6.x](https://www.python.org/downloads/release/python-368/) jest obsługiwana. Wybrany instalator języka Python powinien być oparty na architekturze systemu, którego używasz. Jeśli system architektury procesora CPU jest 32-bitowych, a następnie Instalator pobierania x86; z architekturą 64-bitowy Pobierz Instalator x86-64. Dodatkowo należy upewnić się, że [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) dla architektury (x86 lub x64) jest zainstalowany.
 

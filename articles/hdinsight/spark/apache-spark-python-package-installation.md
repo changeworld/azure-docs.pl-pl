@@ -7,21 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 03/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: f804cfd693a37099edc22e7f4861d6d7e1af0fc7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 8bc44949d804349de37796a2695edbdc64693edf
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651117"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518681"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Użyj akcji skryptu, aby zainstalować zewnętrznych pakietów języka Python dla notesów programu Jupyter w klastrach platformy Apache Spark w HDInsight
 > [!div class="op_single_selector"]
 > * [Przy użyciu funkcji cell magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Za pomocą akcji skryptu](apache-spark-python-package-installation.md)
 
-Dowiedz się, jak skonfigurować przy użyciu akcji skryptu [platformy Apache Spark](https://spark.apache.org/) klastra w systemie HDInsight (Linux), aby używać zewnętrznych, przez społeczność **python** pakiety, które nie są uwzględnione poza pole w klastrze.
+Dowiedz się, jak skonfigurować przy użyciu akcji skryptu [platformy Apache Spark](https://spark.apache.org/) klastra w systemie HDInsight do korzystania z zewnętrznego, przez społeczność **python** pakiety, które nie są uwzględnione poza pole w klastrze.
 
 > [!NOTE]  
 > Można również skonfigurować za pomocą notesu Jupyter `%%configure` magic Aby korzystanie z zewnętrznych pakietów. Aby uzyskać instrukcje, zobacz [korzystanie z zewnętrznych pakietów z notesami Jupyter w klastrach platformy Apache Spark w HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
@@ -48,7 +48,7 @@ Istnieją dwa typy składników typu open source, które są dostępne w usłudz
 * **Wbudowane składniki** — te składniki są wstępnie zainstalowane w klastrach HDInsight i zapewnia podstawowe funkcje klastra. Na przykład Apache Hadoop YARN ResourceManager, język zapytań technologii Hive (HiveQL) i biblioteki mahout dostępnych należą do tej kategorii. Pełną listę składniki klastra jest dostępna w [nowości w wersjach klastra platformy Apache Hadoop, dostarczone przez HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 * **Składniki niestandardowe** —, jako użytkownik klastra, można zainstalować lub użyj w obciążenia dowolny składnik, dostępne w społeczności lub utworzonej przez użytkownika.
 
-> [!WARNING]   
+> [!IMPORTANT]   
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane. Microsoft Support pomaga wyizolować i rozwiązać problemy związane z tych składników.
 >
 > Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Pomoc techniczna firmy Microsoft może rozwiązać ten problem, lub ich może poprosić o angażowanie dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [Forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Projektów Apache mieć witryny projektu na [ https://apache.org ](https://apache.org), na przykład: [Hadoop](https://hadoop.apache.org/).
@@ -56,33 +56,52 @@ Istnieją dwa typy składników typu open source, które są dostępne w usłudz
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Korzystanie z zewnętrznych pakietów z notesami Jupyter
 
-1. W [Portalu Azure](https://portal.azure.com/) na tablicy startowej kliknij kafelek klastra Spark (jeśli został przypięty do tablicy startowej). Możesz także przejść do klastra, wybierając polecenia **Przeglądaj wszystko** > **Klastry usługi HDInsight**.   
+1. Z [witryny Azure portal](https://portal.azure.com/), przejdź do klastra.  
 
-2. W bloku klastra Spark kliknij **akcji skryptu** z okienka po lewej stronie. Użyj typu skrypt "Niestandardowy", a następnie wprowadź przyjazną nazwę dla akcji skryptu. Uruchom skrypt na **węzły główne i proces roboczy** i pozostaw puste pole parametrów. Skrypt powłoki bash, mogą być przywoływane z: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh Odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+2. Z klastrem usługi wybrane w lewym okienku w obszarze **ustawienia**, wybierz opcję **akcji skryptu**.
 
-   > [!NOTE]  
-   > Istnieją dwa python instalacji w klastrze. Spark użyje Anaconda instalację języka python, znajdujący się w `/usr/bin/anaconda/bin` i przywróci domyślną wartość dla środowiska Python 2.7. Aby użyć pakietów języka Python 3.x i instalowanie w jądrze PySpark3, użyj ścieżki do `conda` plik wykonywalny dla tego środowiska i użycia `-n` parametru, aby określić środowisko. Na przykład polecenie `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, instaluje `ggplot` pakietu za pomocą środowiska Python 3.5 `conda-forge` kanału.
+3. Wybierz **+ Prześlij nowe**.
 
-3. Otwieranie notesu programu PySpark Jupyter
+4. Wprowadź następujące wartości w polach **Prześlij akcję skryptu** okna:  
+
+
+    |Parametr | Wartość |
+    |---|---|
+    |Typ skryptu | Wybierz **- niestandardowa** z listy rozwijanej.|
+    |Name (Nazwa) |Wprowadź `tensorflow` w polu tekstowym.|
+    |Identyfikator URI skryptu powłoki systemowej |Wprowadź `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` w polu tekstowym. |
+    |Typy węzłów | Wybierz **Head**, i **procesu roboczego** pola wyboru. |
+
+    `tensorflowinstall.sh` zawiera następujące polecenia:
+
+    ```bash
+    #!/usr/bin/env bash
+    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    ```
+
+5. Wybierz pozycję **Utwórz**.  Odwiedź stronę dokumentacji na [sposób użyć niestandardowego skryptu akcji](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+
+6. Poczekaj na wykonanie skryptu.  **Akcji skryptu** okienko będzie zawierać informację **nowe akcje skryptów można przesłać po zakończeniu bieżącej operacji klastra** podczas wykonywania skryptu.  Pasek postępu, mogą być wyświetlane w interfejsie użytkownika Ambari **operacji w tle** okna.
+
+7. Otwieranie notesu programu PySpark Jupyter.  Zobacz [tworzenie notesu Jupyter w HDInsight Spark](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight) kroków.
 
     ![Tworzenie nowego notesu Jupyter](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Tworzenie nowego notesu Jupyter")
 
-4. Zostanie utworzony i otwarty nowy notes o nazwie Untitled.pynb. Kliknij nazwę notesu u góry, a następnie wprowadź przyjazną nazwę.
+8. Teraz należy `import tensorflow` i uruchomić przykład Witaj świecie. Wprowadź następujący kod:
 
-    ![Wprowadzanie nazwy notesu](./media/apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "Wprowadzanie nazwy notesu")
-
-5. Teraz należy `import tensorflow` i uruchomić przykład Witaj świecie. 
-
-    Skopiuj kod:
-
-        import tensorflow as tf
-        hello = tf.constant('Hello, TensorFlow!')
-        sess = tf.Session()
-        print(sess.run(hello))
+    ```
+    import tensorflow as tf
+    hello = tf.constant('Hello, TensorFlow!')
+    sess = tf.Session()
+    print(sess.run(hello))
+    ```
 
     Wynik wygląda następująco:
     
     ![Wykonywanie kodu TensorFlow](./media/apache-spark-python-package-installation/execution.png "TensorFlow wykonywanie kodu")
+
+> [!NOTE]  
+> Istnieją dwa python instalacji w klastrze. Spark użyje Anaconda instalację języka python, znajdujący się w `/usr/bin/anaconda/bin` i przywróci domyślną wartość dla środowiska Python 2.7. Aby użyć pakietów języka Python 3.x i instalowanie w jądrze PySpark3, użyj ścieżki do `conda` plik wykonywalny dla tego środowiska i użycia `-n` parametru, aby określić środowisko. Na przykład polecenie `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, instaluje `ggplot` pakietu za pomocą środowiska Python 3.5 `conda-forge` kanału.
 
 ## <a name="seealso"></a>Zobacz też
 * [Omówienie: Platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)

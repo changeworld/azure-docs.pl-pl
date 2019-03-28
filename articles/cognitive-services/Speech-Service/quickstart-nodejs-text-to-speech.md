@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: eff79b31e926d382d98416b585ca2af54b3e87d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a7713576565ca2632d7d91857040ece4d02c411b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872650"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520840"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Szybki start: Konwertowanie tekstu na mowę, przy użyciu środowiska Node.js
 
@@ -82,7 +82,7 @@ W następnej sekcji utworzymy funkcja do wywołania interfejsu API zamiany tekst
 
 W tym miejscu możesz zacząć tworzenie żądań do interfejsu API zamiany tekstu na mowę i zapisywanie odpowiedzi mowy. W tym przykładzie przyjęto założenie, że używasz punktu końcowego zachodnie stany USA. Jeśli zasób jest zarejestrowany w innym regionie, pamiętaj o zaktualizowaniu `uri`. Aby uzyskać więcej informacji, zobacz [regionów usług przetwarzania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Następnie należy dodać wymagane nagłówki żądania. Upewnij się, że aktualizujesz `User-Agent` nazwą zasobu (znajdujący się w witrynie Azure portal) i ustaw `X-Microsoft-OutputFormat` do preferowanego danych wyjściowych audio. Aby uzyskać pełną listę formatów danych wyjściowych, zobacz [danych wyjściowych Audio](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs).
+Następnie należy dodać wymagane nagłówki żądania. Upewnij się, że aktualizujesz `User-Agent` nazwą zasobu (znajdujący się w witrynie Azure portal) i ustaw `X-Microsoft-OutputFormat` do preferowanego danych wyjściowych audio. Aby uzyskać pełną listę formatów danych wyjściowych, zobacz [danych wyjściowych Audio](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 Następnie konstruować treści żądania, za pomocą mowy syntezy Markup Language (SSML). W tym przykładzie definiuje strukturę i używa `text` dane wejściowe została utworzona wcześniej.
 
@@ -187,6 +187,6 @@ Upewnij się, że wszystkie poufne informacje, takie jak klucze subskrypcji, zos
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Dokumentacja interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+* [Dokumentacja interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)
 * [Próbki głosu rekord do utworzenia niestandardowych voice](record-custom-voice-samples.md)

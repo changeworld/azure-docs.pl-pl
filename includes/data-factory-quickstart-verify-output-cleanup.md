@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 831a72fff0931d116a669060b160f51fde6e1d3e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.openlocfilehash: 309ef92b33d5bbdf8e8aed6b162ed9428a669c87
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572527"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505880"
 ---
 ## <a name="verify-the-output"></a>Sprawdzanie danych wyjściowych
 Potok automatycznie tworzy folder wyjściowy w kontenerze obiektów blob adftutorial. Następnie kopiuje plik emp.txt z folderu wejściowego do folderu wyjściowego. 
@@ -27,7 +27,7 @@ Zasoby, które zostały utworzone w ramach tego przewodnika Szybki start, możes
 
 Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów łącznie z fabrykami danych w nich zawartymi. Uruchom poniższe polecenie, aby usunąć całą grupę zasobów: 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 Uwaga: usunięcie grupy zasobów może potrwać jakiś czas. Prosimy o cierpliwość
@@ -35,5 +35,5 @@ Uwaga: usunięcie grupy zasobów może potrwać jakiś czas. Prosimy o cierpliwo
 Jeśli chcesz usunąć tylko fabrykę danych, a nie całą grupę zasobów, uruchom następujące polecenie: 
 
 ```powershell
-Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
+Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
 ```

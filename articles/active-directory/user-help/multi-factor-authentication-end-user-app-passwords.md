@@ -14,12 +14,12 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d0dbfeaf3fb018c8dd3f671ce7ad9d7d50e5fca
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336307"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517763"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Zarządzanie hasłami aplikacji weryfikacji dwuetapowej
 
@@ -40,7 +40,7 @@ Korzystanie z haseł aplikacji, to należy pamiętać:
 
 Podczas rejestracji weryfikacji dwuetapowej początkowej otrzymuje hasła aplikacji. Jeśli potrzebujesz więcej niż jeden hasło, można utworzyć dodatkowe haseł, w oparciu o sposobie korzystania z weryfikacji dwuetapowej:
 
-- **Weryfikacja dwuetapowa jest używany z pracy lub nauki i portalu MyApps.** Tworzenie i usuwanie hasła aplikacji przy użyciu instrukcji w [tworzenie i usuwanie hasła aplikacji przy użyciu portalu MyApps](#create-and-delete-app-passwords-using-the-my-apps-portal) dalszej części tego artykułu. Aby uzyskać więcej informacji na temat portalu MyApps i jak z niej korzystać, zobacz [co to jest portal MyApps, w usłudze Azure Active Directory?](active-directory-saas-access-panel-introduction.md).
+- **Weryfikacja dwuetapowa jest używany z pracy lub nauki i portalu MyApps.** Tworzenie i usuwanie hasła aplikacji zgodnie z instrukcjami tworzenia i usuwanie hasła aplikacji przy użyciu portalu MyApps części tego artykułu. Aby uzyskać więcej informacji na temat portalu MyApps i jak z niej korzystać, zobacz [co to jest portal MyApps, w usłudze Azure Active Directory?](active-directory-saas-access-panel-introduction.md).
 
 - **Weryfikacja dwuetapowa jest używany z pracy lub konta służbowego i portalu usługi Office 365.** Tworzenie i usuwanie hasła aplikacji przy użyciu instrukcji w [tworzenie i usuwanie hasła aplikacji przy użyciu portalu usługi Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) dalszej części tego artykułu.
 

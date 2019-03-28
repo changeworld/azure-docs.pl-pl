@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5f97c2997711c30ad52e5209ba86e0d1bfe30ea8
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 12bcf665fafca3df7fc2d21c77c2f8d2fbec84fc
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57251922"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58542314"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure premium storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -235,7 +235,7 @@ Usługa Azure Premium Storage oferuje osiem rozmiary dysków GA i trzech rozmiar
 
 | Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32 767 giB (32 GiB)    |
+| Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32 767 giB (32 TiB)    |
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
 | Przepływność na dysk | 25 MiB na sekundę  | 50 MiB na sekundę  | MiB 100 na sekundę |125 MiB na sekundę | 150 MiB na sekundę | 200 MiB na sekundę | 250 MiB na sekundę | 250 MiB na sekundę | 480 MiB na sekundę | 750 MiB na sekundę | 750 MiB na sekundę |
 

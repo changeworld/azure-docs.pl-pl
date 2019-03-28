@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ec5fbffdf7df5ef3a952e21b79ab02f355fb8e29
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: e85e006a54fcb4bb677932b3e1ff9fa79352dba9
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403650"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519837"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Zarządzanie udziałami na krawędzi sieci Azure Data Box za pomocą witryny Azure portal
 
@@ -63,7 +63,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby utworzyć udział.
 
         ![Dodawanie udziału NFS](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Aby łatwo uzyskiwać dostęp do udziałów z modułów obliczeń brzegowych, użyj punktu instalacji lokalnej. Wybierz **udziału za pomocą obliczeń brzegowych** tak, aby udział jest automatycznie instalowane po jego utworzony. Gdy ta opcja jest zaznaczona, moduł usługi Edge umożliwia również zasoby obliczeniowe z punktem instalacji lokalnej.
+7. Aby łatwo uzyskiwać dostęp do udziałów z modułów obliczeń brzegowych, użyj punktu instalacji lokalnej. Wybierz **udziału za pomocą obliczeń brzegowych** tak, aby udział jest instalowane automatycznie po jego utworzeniu. Gdy ta opcja jest zaznaczona, moduł usługi Edge umożliwia również zasoby obliczeniowe z punktem instalacji lokalnej.
 
 8. Kliknij pozycję **Utwórz**, aby utworzyć udział. Zostanie wyświetlone powiadomienie, że trwa tworzenie udziału. Po utworzeniu udziału z określonymi ustawieniami blok **Udziały** zostanie zaktualizowany, aby odzwierciedlić nowy udział.
 
@@ -97,6 +97,30 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby utworzyć udział.
 
     ![Wyświetl szczegóły udziału lokalnego](media/data-box-edge-manage-shares/add-local-share-4.png)
 
+## <a name="mount-a-share"></a>Instalowanie udziałów usługi
+
+Jeśli utworzono udział, przed skonfigurowaniem obliczeń na urządzeniu usługi Edge pole danych, należy zainstalować ten udział. Wykonaj następujące kroki, aby zainstalować udział.
+
+
+1. W witrynie Azure portal przejdź do zasobu krawędź pola danych, a następnie przejdź do **bramy > udziałów**. Z listy akcji wybierz udział, który chcesz zainstalować. **Używane do obliczeń** kolumna pojawi się stan jako **wyłączone** dla wybranego udziału.
+
+    ![Wybieranie udziału](media/data-box-edge-manage-shares/select-share-mount.png)
+
+2. Wybierz **instalacji**.
+
+    ![Wybierz opcję instalacji](media/data-box-edge-manage-shares/select-mount.png)
+
+3. Po wyświetleniu monitu o potwierdzenie, wybierz **tak**. To będzie zainstalować ten udział.
+
+    ![Potwierdzenie instalacji](media/data-box-edge-manage-shares/confirm-mount.png)
+
+4. Po udział jest zainstalowany, przejdź do listy udziałów. Zobaczysz, że **używane do obliczeń** kolumna pokazuje stan udziału jako **włączone**.
+
+    ![Zainstalowany udział](media/data-box-edge-manage-shares/share-mounted.png)
+
+5. Wybierz udział ponownie, aby wyświetlić lokalnego punktu instalacji dla udziału. Krawędź obliczeń używa modułu to lokalnego punktu instalacji dla udziału.
+
+    ![Lokalny punkt instalacji udziału](media/data-box-edge-manage-shares/share-mountpoint.png)
 
 ## <a name="unmount-a-share"></a>Odinstaluj udział
 
@@ -142,7 +166,8 @@ Lista aktualizacji akcji w celu odzwierciedlenia usunięcia.
 Funkcja odświeżania umożliwia odświeżanie zawartości udziału. Podczas odświeżania udziału inicjowane jest wyszukiwanie w celu odnalezienia wszystkich obiektów platformy Azure, w tym obiektów blob i plików, które zostały dodane do chmury po ostatnio przeprowadzonym odświeżaniu. Te dodatkowe pliki zostaną następnie pobrane Odśwież zawartość udziału na urządzeniu.
 
 > [!IMPORTANT]
-> Nie można odświeżyć udziałów lokalnych.
+> - Nie można odświeżyć udziałów lokalnych.
+> - Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w ramach operacji odświeżania. 
 
 Wykonaj następujące czynności w witrynie Azure Portal, aby odświeżyć udział.
 

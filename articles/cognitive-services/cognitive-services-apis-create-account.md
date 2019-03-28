@@ -7,14 +7,14 @@ author: garyericson
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 03/26/2019
 ms.author: garye
-ms.openlocfilehash: 7df429aa848c6f9fb9abe09fbf4357db20fcde6a
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 6950cba5ac958233e7ea77c8dc783ca86cc5a386
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472858"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519905"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal
 
@@ -33,27 +33,6 @@ Przed rozpoczęciem pracy należy wiedzieć, że istnieją dwa rodzaje subskrypc
 
 W kolejnych sekcjach prowadzą użytkownika przez proces tworzenia subskrypcji jednej lub wielu usług.
 
-### <a name="single-service-subscription"></a>Usługę pojedynczej subskrypcji
-
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i kliknij przycisk **+ Utwórz zasób**.
-
-    ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreen.png)
-
-2. W obszarze Azure Marketplace wybierz **SI i uczenie maszynowe**. Jeśli nie widzisz usługi interesuje Cię, kliknij polecenie **holograficznych** Aby wyświetlić cały katalog interfejsów API usług Cognitive Services.
-
-    ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
-
-3. Na **Utwórz** Podaj następujące informacje:
-
-    |    |    |
-    |--|--|
-    | **Nazwa** | Opisowa nazwa zasobu usług cognitive services. Firma Microsoft zaleca używanie nazwę opisową, na przykład *MyNameFaceAPIAccount*. |
-    | **Subskrypcja** | Wybierz jedną z dostępnych subskrypcji platformy Azure. |
-    | **Lokalizacja** | Lokalizacja wystąpienia usługi cognitive Services. Różne lokalizacje może wprowadzić opóźnienie, ale nie mają wpływu na dostępność Twojego zasobu w czasie wykonywania. |
-    | **Warstwa cenowa** | Koszt konta usług Cognitive Services zależy od wybranych opcji i użycie. Aby uzyskać więcej informacji, zobacz omówienie interfejsu API [cennik](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    | **Grupa zasobów** | [Grupy zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) który będzie zawierał zasobu usług Cognitive Services. Można utworzyć nową grupę lub dodaj je do wcześniej istniejącej grupy. |
-
-    ![Ekran tworzenia zasobów](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 ### <a name="multi-service-subscription"></a>Wielu usług subskrypcji
 
@@ -80,6 +59,28 @@ W kolejnych sekcjach prowadzą użytkownika przez proces tworzenia subskrypcji j
     | **Grupa zasobów** | [Grupy zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) który będzie zawierał zasobu usług Cognitive Services. Można utworzyć nową grupę lub dodaj je do wcześniej istniejącej grupy. |
 
     ![Ekran tworzenia zasobów](media/cognitive-services-apis-create-account/resource_create_screen_multi.png)
+
+### <a name="single-service-subscription"></a>Usługę pojedynczej subskrypcji
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i kliknij przycisk **+ Utwórz zasób**.
+
+    ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreen.png)
+
+2. W obszarze Azure Marketplace wybierz **SI i uczenie maszynowe**. Jeśli nie widzisz usługi interesuje Cię, kliknij polecenie **holograficznych** Aby wyświetlić cały katalog interfejsów API usług Cognitive Services.
+
+    ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
+
+3. Na **Utwórz** Podaj następujące informacje:
+
+    |    |    |
+    |--|--|
+    | **Nazwa** | Opisowa nazwa zasobu usług cognitive services. Firma Microsoft zaleca używanie nazwę opisową, na przykład *MyNameFaceAPIAccount*. |
+    | **Subskrypcja** | Wybierz jedną z dostępnych subskrypcji platformy Azure. |
+    | **Lokalizacja** | Lokalizacja wystąpienia usługi cognitive Services. Różne lokalizacje może wprowadzić opóźnienie, ale nie mają wpływu na dostępność Twojego zasobu w czasie wykonywania. |
+    | **Warstwa cenowa** | Koszt konta usług Cognitive Services zależy od wybranych opcji i użycie. Aby uzyskać więcej informacji, zobacz omówienie interfejsu API [cennik](https://azure.microsoft.com/pricing/details/cognitive-services/).
+    | **Grupa zasobów** | [Grupy zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) który będzie zawierał zasobu usług Cognitive Services. Można utworzyć nową grupę lub dodaj je do wcześniej istniejącej grupy. |
+
+    ![Ekran tworzenia zasobów](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 ## <a name="access-your-resource"></a>Dostęp do zasobu
 

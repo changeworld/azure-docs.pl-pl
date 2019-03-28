@@ -4,7 +4,7 @@ description: Dowiedz się, jak usługa Azure AD Identity Protection umożliwia o
 services: active-directory
 keywords: Usługa Azure active directory identity protection rozwiązania cloud discovery, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
-ms.author: markvi
-ms.reviewer: nigu
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2f2f90029918955f00771acaac10b3cf5f4416
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 697bb8a60861acb120e92d8fd1dda3892a957b57
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868276"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518913"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Podręcznik usługi Azure Active Directory Identity Protection
 

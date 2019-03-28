@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 1c0a04a074cfbd96423502ac92dd5821bade78e1
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 841193305556e3bc9e543abc47974c7b91b0cea1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258534"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518044"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Użyj usługi Azure Data Box do migracji danych z lokalnego systemu plików HDFS magazynu do usługi Azure Storage
 
@@ -111,7 +111,7 @@ Aby zwiększyć szybkość kopii:
 
 Wykonaj następujące kroki, aby przygotujemy i wyślemy urządzenie Data Box do firmy Microsoft.
 
-1. Po zakończeniu kopiowania danych uruchom [przygotowywanie do wysłania](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#prepare-to-ship) na Twoje urządzenie Data Box. Po zakończeniu przygotowywania urządzenia pobierają pliki BOM. Będzie używać tych BOM lub manifest pliki później, aby sprawdzić dane przekazywane do platformy Azure. Zamknij urządzenie i Usuń kable. 
+1. Po zakończeniu kopiowania danych uruchom [przygotowywanie do wysłania](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest) na Twoje urządzenie Data Box. Po zakończeniu przygotowywania urządzenia pobierają pliki BOM. Będzie używać tych BOM lub manifest pliki później, aby sprawdzić dane przekazywane do platformy Azure. Zamknij urządzenie i Usuń kable. 
 2.  Zaplanować odbioru z UPS [dostarczaj swoje urządzenie Data Box do usługi Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up). 
 3.  Po firma Microsoft odbierze urządzenia, jest ona dołączona do sieci centrum danych i dane są przekazywane do konta magazynu określony (hierarchiczne przestrzenie nazw, wyłączona) po użytkownik uporządkowane urządzenie Data Box. Sprawdź względem plików BOM, że wszystkie dane została przekazana do platformy Azure. Te dane mogą teraz przejść do konta magazynu Data Lake Storage Gen2.
 
