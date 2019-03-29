@@ -8,6 +8,8 @@ items:
     href: architecture.md
   - name: Agenci zabezpieczeń
     href: security-agent-architecture.md
+  - name: Moduł zabezpieczeń usługi Edge
+    href: security-edge-architecture.md
   - name: Wymagania wstępne usługi
     href: service-prerequisites.md
   - name: Wprowadzenie do usługi ASC for IoT
@@ -23,26 +25,8 @@ items:
   - name: Tworzenie niestandardowych alertów zabezpieczeń
     href: quickstart-create-custom-alerts.md
   expanded: true
-- name: Samouczki
-  items:
-  - name: Wdrażanie agentów zabezpieczeń
-    items:
-    - name: Wdrażanie agenta zabezpieczeń bazującego na języku C# na urządzeniu z systemem Windows
-      href: tutorial-deploy-windows-cs.md
-    - name: Wdrażanie agenta zabezpieczeń bazującego na języku C# na urządzeniu z systemem Linux
-      href: tutorial-deploy-linux-cs.md
-    - name: Wdrażanie agenta zabezpieczeń bazującego na języku C na urządzeniu z systemem Linux
-      href: tutorial-deploy-linux-c.md
-  - name: Badanie urządzenia
-    href: tutorial-investigate-device.md
-  - name: Wysyłanie własnych komunikatów dotyczących zabezpieczeń
-    href: tutorial-send-security-messages.md
 - name: Pojęcia
   items:
-  - name: Którego agenta należy wdrożyć?
-    href: select-deploy-agent.md
-  - name: Konfigurowanie alertów zabezpieczeń
-    href: concept-agent-configuration.md
   - name: Uwierzytelnianie agenta zabezpieczeń
     href: concept-security-agent-authentication-methods.md
   - name: Moduł zabezpieczeń
@@ -51,12 +35,30 @@ items:
     href: concept-security-alerts.md
   - name: Zalecenia dotyczące zabezpieczeń
     href: concept-recommendations.md
+  - name: Cennik i powiązane koszty
+    href: concept-pricing.md
 - name: Przewodniki z instrukcjami
   items:
+  - name: Którego agenta należy wdrożyć?
+    items:
+    - name: Wybieranie agenta do wdrożenia
+      href: how-to-deploy-agent.md
+    - name: Wdrażanie agenta zabezpieczeń bazującego na języku C# na urządzeniu z systemem Windows
+      href: how-to-deploy-windows-cs.md
+    - name: Wdrażanie agenta zabezpieczeń bazującego na języku C# na urządzeniu z systemem Linux
+      href: how-to-deploy-linux-cs.md
+    - name: Wdrażanie agenta zabezpieczeń bazującego na języku C na urządzeniu z systemem Linux
+      href: how-to-deploy-linux-c.md
+  - name: Wdrażanie modułu zabezpieczeń usługi Edge
+    href: how-to-deploy-edge.md
+  - name: Konfigurowanie alertów zabezpieczeń
+    href: how-to-agent-configuration.md
+  - name: Wysyłanie własnych komunikatów dotyczących zabezpieczeń
+    href: how-to-send-security-messages.md
   - name: Dostęp do nieprzetworzonych danych zabezpieczeń
     href: how-to-security-data-access.md
-  - name: Modyfikowanie bliźniaczej reprezentacji modułu zabezpieczeń
-    href: how-to-modify-security-module-twin.md
+  - name: Badanie urządzenia
+    href: how-to-investigate-device.md
 - name: Zasoby
   items:
   - name: Często zadawane pytania
@@ -67,9 +69,9 @@ items:
     href: http://blogs.msdn.com/b/azuresecurity/
   - name: Dostępność regionalna
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 6789b87deb5c502df3541a10e9a8e4eece21a351
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 17508e05a8de52e12487bf35fd3e063761abcbe2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541326"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575168"

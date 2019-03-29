@@ -45,6 +45,8 @@ items:
     href: supported-languages.md
   - name: Obsługiwane style mapy
     href: supported-map-styles.md
+  - name: Przeglądarki obsługiwane przez zestaw Web SDK
+    href: supported-browsers.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Zarządzanie kontami usługi Maps
@@ -85,6 +87,8 @@ items:
         href: map-add-shape.md
       - name: Dodawanie warstwy mapy cieplnej
         href: map-add-heat-map-layer.md
+      - name: Dane punktu klastra
+        href: clustering-point-data-web-sdk.md
       - name: Nakładka obrazu
         href: map-add-image-layer.md
       - name: Dodawanie warstw kafelków
@@ -107,8 +111,6 @@ items:
         href: map-get-information-from-coordinate.md
       - name: Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
         href: map-route.md
-    - name: Obsługiwane przeglądarki
-      href: supported-browsers.md
   - name: Tworzenie aplikacji przy użyciu zestawu Android SDK
     items:
     - name: Jak używać kontrolki map w systemie Android
@@ -203,9 +205,9 @@ items:
       href: /azure/iot-edge
     - name: Zestawy SDK urządzeń IoT
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: 7cb06543874f24a6d339e4e0ce402c838b572f9a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: db82c8eac3288867b524f19b688b6358b8e6bbc6
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500121"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575827"

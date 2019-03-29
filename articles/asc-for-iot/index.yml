@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 12ba136bb227ef5ea469d91c6da9477b718b9e92
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: fad8ecd0658b2a00f249e8b218bab1dbdaf83187
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542237"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578224"
 documentType: LandingData
-title: Dokumentacja usługi Azure Security Center (ASC) for IoT (wersja zapoznawcza)
+title: Dokumentacja usługi ASC for IoT (wersja zapoznawcza)
 metadata:
-  title: Dokumentacja usługi Azure Security Center (ASC) for IoT (wersja zapoznawcza) — samouczki i przewodniki Szybki start | Microsoft Docs
-  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  title: Dokumentacja usługi ASC for IoT (wersja zapoznawcza) — samouczki i przewodniki Szybki start | Microsoft Docs
+  meta.description: ASC for IoT unifies your security management and enables advanced threat protection across your IoT solution.
   services: ascforiot
   author: mlottner
   manager: barbkess
@@ -20,7 +20,7 @@ metadata:
   ms.date: 03/26/19
   ms.author: barbkess
 abstract:
-  description: Używaj usługi Azure Security Center for IoT (wersja zapoznawcza), aby rozszerzać istniejącą perspektywę cyberzabezpieczeń na całe swoje rozwiązanie IoT. Uzyskaj prawdziwie panoramiczny widok zabezpieczeń wszystkich zasobów powiązanych z platformą Azure. Opcje szybkiego wdrażania i pełna integracja z bliźniaczymi reprezentacjami modułu usługi IoT Hub zapewniają szeroką gamę opcji dostosowywania i łatwą integrację z obecnie używanymi narzędziami do zarządzania urządzeniami. 
+  description: Używaj usługi ASC for IoT (wersja zapoznawcza), aby rozszerzać istniejącą perspektywę cyberzabezpieczeń na całe swoje rozwiązanie IoT. Uzyskaj prawdziwie panoramiczny widok zabezpieczeń wszystkich zasobów powiązanych z platformą Azure. Opcje szybkiego wdrażania i pełna integracja z bliźniaczymi reprezentacjami modułu usługi IoT Hub zapewniają szeroką gamę opcji dostosowywania i łatwą integrację z obecnie używanymi narzędziami do zarządzania urządzeniami. 
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
@@ -32,19 +32,19 @@ sections:
     - image:
         src: media/index/deploy.svg
       text: Włączanie usługi ASC for IoT
-      href: /azure/ascforiot/quickstart-onboard-iot-hub
+      href: /azure/asc-for-iot/quickstart-onboard-iot-hub
     - image:
         src: media/index/get-started.svg
       text: Wprowadzenie do usługi ASC for IoT
-      href: /azure/ascforiot/quickstart-getting-started
-- title: Samouczki krok po kroku
+      href: /azure/asc-for-iot/getting-started
+- title: Przewodniki z instrukcjami
   items:
   - type: paragraph
     text: Dowiedz się, jak definiować zasady zabezpieczeń, chronić urządzenia przed złośliwymi działaniami i reagować na alerty zabezpieczeń oraz zdarzenia.
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: <a href="/azure/ascforiot/tutorial-investigate-device">Wykrywanie zagrożeń za pomocą usługi ASC for IoT</a>
+    - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Wykrywanie zagrożeń za pomocą usługi ASC for IoT</a>
 - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
   items:
   - type: list
