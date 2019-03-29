@@ -1,5 +1,5 @@
 ---
-title: Wiadomości e-mail z powiadomieniami w usłudze PIM — Azure | Dokumentacja firmy Microsoft
+title: Wiadomości e-mail z powiadomieniami w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: W tym artykule opisano powiadomienia e-mail w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905175"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576951"
 ---
 # <a name="email-notifications-in-pim"></a>Powiadomienia e-mail w usłudze PIM
 
-Usługa Azure AD Privileged Identity Management (PIM) informuje o tym, kiedy ważne wydarzenia, takiego jak po przypisaniu lub aktywacji roli. Usługa PIM zapewnia wspieranemu przez wysyłanie powiadomień e-mail razem z innymi uczestnikami. Te wiadomości e-mail może również zawierać łącza do odpowiednich zadań, takich aktywowanie lub odnawianie ról. W tym artykule opisano wyglądać tych wiadomości e-mail, gdy są wysyłane i kto otrzymuje.
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) informuje o tym, kiedy ważne wydarzenia, takiego jak po przypisaniu lub aktywacji roli. Usługa PIM zapewnia wspieranemu przez wysyłanie powiadomień e-mail razem z innymi uczestnikami. Te wiadomości e-mail może również zawierać łącza do odpowiednich zadań, takich aktywowanie lub odnawianie ról. W tym artykule opisano wyglądać tych wiadomości e-mail, gdy są wysyłane i kto otrzymuje.
 
 ## <a name="sender-email-address-and-subject-line"></a>Wiersz adresu i temat wiadomości e-mail nadawcy
 
@@ -101,5 +101,5 @@ Poniżej przedstawiono przykładową wiadomością e-mail jest wysyłana, gdy u�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
-- [Zatwierdź lub Odrzuć żądania dla ról katalogu usługi Azure AD w usłudze PIM](azure-ad-pim-approval-workflow.md)
+- [Konfigurowanie ustawień roli w usłudze Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
+- [Zatwierdź lub Odrzuć żądania dla ról usługi Azure AD w usłudze PIM](azure-ad-pim-approval-workflow.md)

@@ -2,20 +2,20 @@
 title: 'Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
 description: Samouczek korzysta z platformy Azure portal i programu SQL Server Management Studio, aby załadować dane taksówek w Nowym Jorku z publicznej platformy Azure obiektu blob do usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 09/12/2018
-ms.author: cakarst
+ms.date: 03/27/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: 979488009f7afa2ccae3993d756e92e1ae15d5a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466533"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620193"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: Załaduj dane dotyczące taksówek w Nowym Jorku do usługi Azure SQL Data Warehouse
 
@@ -80,7 +80,7 @@ Wykonaj poniższe czynności, aby utworzyć pusty magazyn danych SQL.
 
 6. Kliknij przycisk **poziom wydajności** do określenia, czy magazyn danych jest Gen1 lub Gen2, a liczba danych jednostek magazynu. 
 
-7. Na potrzeby tego samouczka wybierz **Gen1** usługi SQL Data Warehouse. Suwak, domyślnie jest ustawiony na **DW1000c**.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
+7. Na potrzeby tego samouczka wybierz **Gen2** usługi SQL Data Warehouse. Suwak jest ustawiony na **DW1000c** domyślnie.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
 
     ![konfigurowanie wydajności](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 

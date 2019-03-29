@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 5b4da39d56b86f79727590076ac60b87541643e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 27b55af74a713c51655891df8c852ff44cd3744a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082844"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621774"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska za pomocą rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
@@ -297,7 +297,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 
 *Dlaczego są wyświetlane tylko 10 najlepszych zaleceń?* Zamiast daje wyczerpująca, przytłaczająca listę zadań, zaleca się skupić się na temat zaleceń z priorytetami najpierw. Po ich wykonaniu, dodatkowe zalecenia staną się dostępne. Jeśli wolisz wyświetlić szczegółową listę, możesz wyświetlić wszystkie zalecenia za pomocą wyszukiwania w dziennikach.
 
-*Czy istnieje sposób, aby zignorować zalecenie?* Tak, zobacz [Zignoruj zalecenia](#Ignore-recommendations).
+*Czy istnieje sposób, aby zignorować zalecenie?* Tak, zobacz [Zignoruj zalecenia](#ignore-recommendations).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

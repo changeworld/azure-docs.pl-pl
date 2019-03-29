@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 61ebebaf61d1cbbc72f3e12b5ff516924cc9b8c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b951da73006731b38b265dc3a2f542e670f9fbf6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317752"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621740"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -79,12 +79,14 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 Interfejs API w wersji 3 ma następujące luki funkcji w odniesieniu do interfejsu API w wersji 2. Do wypełniania luk jest w toku.
 
 * [Koder w warstwie Premium](../previous/media-services-premium-workflow-encoder-formats.md) i starszego [media analytics procesorów](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 — wersja zapoznawcza, usługi Face Redactor itp.) nie są dostępne za pośrednictwem v3.<br/>Klienci, którzy chcą przeprowadzić migrację z 1 indeksatora multimediów lub 2 (wersja zapoznawcza) można użyć od razu AudioAnalyzer wstępnie ustawione w interfejsie API w wersji 3.  To nowe ustawienie wstępne zawiera więcej funkcji niż starsze 1 indeksatora multimediów lub 2. 
-* Wiele zaawansowanych funkcji usługi Media Encoder Standard w interfejsach API w wersji 2 nie są obecnie dostępne w wersji 3, takich jak:
+* Wiele [zaawansowanych funkcji usługi Media Encoder Standard w wersji 2](../previous/media-services-advanced-encoding-with-mes.md) interfejsy API nie są obecnie dostępne w wersji 3, takich jak:
     * Przycinanie (dla scenariuszy, na żądanie i na żywo)
     * Łączenie zasobów
     * Nakładki
     * Przycinanie
     * Miniatury ikony
+    * Wstawianie dyskretnej ścieżki audio, gdy dane wejściowe ma nie audio
+    * Wstawianie ścieżki wideo, gdy dane wejściowe nie ma karty wideo
 * Wydarzeń na żywo za pomocą transkodowanie aktualnie nie obsługują Plansz wstawiania środku strumienia i ad wstawianiem znaczników za pośrednictwem wywołania interfejsu API. 
 
 > [!NOTE]

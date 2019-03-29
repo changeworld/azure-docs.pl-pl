@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 694c56cf52cb7a15230b9a2cdd34642c7820b407
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d5fc14adab956fae23aad24fa7bc488c8c2041e3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897568"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621689"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Limity przydziału i ograniczenia dotyczące usługi Azure Media Services v3
 
@@ -27,21 +27,23 @@ W tym artykule opisano przydziały i ograniczenia dotyczące usługi Azure Media
 | Elementy zawartości na konto usługi Azure Media Services | 1 000 000|
 | Filtry manifestów dynamicznych|100|
 | JobInputs na zadanie | 50 (stałe)|
-| JobOutputs za zadanie/TransformOutputs w transformacji | 20 (stałe) |
+| JobOutputs na zadanie | 20 (stałe) |
+| TransformOutputs w transformacji | 20 (stałe) |
 | Pliki na JobInput|10 (stałe)|
 | Rozmiar pliku| W niektórych scenariuszach istnieje limit na maksymalny obsługiwany rozmiar pliku do przetwarzania w usłudze Media Services. <sup>(1)</sup> |
 | Liczba zadań na konto usługi Media Services | 500 000 <sup>(2)</sup> (stałe)|
-| Lista przekształceń|Stronicowanie odpowiedzi z 1000 przekształceń na stronę|
-| Wyświetlanie listy zadań|Stronicowanie odpowiedzi 500 zadań na stronie|
+| Wyświetlanie listy przekształceń|Dzielenie odpowiedzi na strony, 1000 przekształceń na stronie|
+| Wyświetlanie listy zadań|Dzielenie odpowiedzi na strony, 500 zadań na stronie|
 | Wydarzenia na żywo na konto usługi Media Services |5|
 | Konta usługi Media Services w ramach jednej subskrypcji | 25 (stały) |
-| Dane wyjściowe na żywo w stanie działania na element LiveEvent |3|
+| Na żywo dane wyjściowe w stanie działania na wydarzenie na żywo |3|
+| Czas trwania Max na żywo w danych wyjściowych | 25 godzin |
 | Konta magazynu | 100<sup>(4)</sup> (stałe) |
 | Punkty końcowe przesyłania strumieniowego (zatrzymana lub uruchomiona) na konto usługi Media Services|2 (stałe)|
 | Zasady przesyłania strumieniowego | 100 <sup>(3)</sup> |
 | Przekształcenia na konto usługi Media Services | 100 (stałe)|
 | Unikatowe Lokalizatory przesyłania strumieniowego, w tym samym czasie skojarzony z elementem zawartości | 100<sup>(5)</sup> (stałe) |
-| Zasady kluczy zawartości |30 | 
+| Zasady dotyczące klucza zawartości |30 | 
 
 <sup>1</sup> maksymalny rozmiar obsługiwany dla pojedynczego obiektu blob jest obecnie maksymalnie 5 TB w usłudze Azure Blob Storage. Jednak dodatkowe limity mają zastosowanie w usłudze Azure Media Services, oparte na rozmiary maszyn wirtualnych, które są używane przez usługę. Jeśli plik źródłowy jest większy niż 260 GB, zadanie prawdopodobnie zakończy się niepowodzeniem. Jeśli zawartość 4K, który jest większy niż limit 260 GB, skontaktuj się z nami pod adresem amshelp@microsoft.com dla potencjalne środki zaradcze w celu obsługi danego scenariusza.
 

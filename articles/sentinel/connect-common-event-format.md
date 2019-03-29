@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 3/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 31939b3b09fb36ac59efa1d7d7e302ac5f65a51c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d3ecfed766f8a1ba558e0b0cd4fe6a27c33e441
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117187"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579635"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Połączenia zewnętrzne rozwiązania przy użyciu Common Event Format
 
@@ -123,7 +123,7 @@ Może upłynąć zgłaszane 20 minut do momentu dzienników rozpocząć pojawiaj
 3. Jeśli oba te polecenia pomyślne wyniki, sprawdź usługi Log Analytics, aby zobaczyć, jeśli dzienniki są odbierane. Wszystkie zdarzenia przesyłane strumieniowo ze te urządzenia są wyświetlane w nieprzetworzonej postaci, w usłudze Log Analytics w obszarze `CommonSecurityLog ` typu.
 1. Aby sprawdzić, czy występują błędy, czy dzienniki nie są przychodzących, Szukaj w `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. Upewnij się, że rozmiar domyślny wiadomości usługi Syslog wynosi 2048 bajtów (2KB). Jeśli dzienniki są zbyt długie, należy zaktualizować security_events.conf za pomocą tego polecenia: `message_length_limit 4096`
-
+6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla zdarzeń CEF, możesz wyszukać **CommonSecurityLog**.
 
 
 

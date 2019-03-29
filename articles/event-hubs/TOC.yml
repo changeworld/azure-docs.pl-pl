@@ -53,6 +53,14 @@ items:
       href: event-hubs-node-get-started-receive.md
     - name: Apache Storm
       href: event-hubs-storm-getstarted-receive.md
+  - name: Przechwytywanie zdarzeń
+    items:
+    - name: Włączanie usługi Event Hubs Capture za pomocą witryny Azure Portal
+      href: event-hubs-capture-enable-through-portal.md
+    - name: Włączanie usługi Event Hubs Capture za pomocą szablonu usługi Resource Manager
+      href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - name: Przechwytywanie danych usługi Event Hubs przy użyciu języka Python
+      href: event-hubs-capture-python.md
   - name: Przesyłanie strumieniowe do usługi Event Hubs dla platformy Apache Kafka
     href: event-hubs-quickstart-kafka-enabled-event-hubs.md
   expanded: true
@@ -116,14 +124,6 @@ items:
       href: event-hubs-create-kafka-enabled.md
     - name: Przetwarzanie zdarzeń platformy Apache Kafka dla usługi Event Hubs za pomocą usługi Stream Analytics
       href: event-hubs-kafka-stream-analytics.md
-  - name: Przechwytywanie zdarzeń
-    items:
-    - name: Włączanie usługi Event Hubs Capture za pomocą witryny Azure Portal
-      href: event-hubs-capture-enable-through-portal.md
-    - name: Włączanie usługi Event Hubs Capture za pomocą szablonu usługi Resource Manager
-      href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-    - name: Przechwytywanie danych usługi Event Hubs przy użyciu języka Python
-      href: event-hubs-capture-python.md
   - name: Zarządzanie
     items:
     - name: Monitorowanie usługi Event Hubs przy użyciu funkcji monitorowania platformy Azure
@@ -199,9 +199,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: f565b8c743d8ed29b1fea4480f798dd522fcd045
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 21aafbeff9aa06d890afb6282fdf10e1feac739e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285988"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577284"
