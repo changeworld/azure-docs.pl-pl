@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: ff3f1e405dc7a1e69c3b1d1d20936ca78b97fcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ca54ae11390b388c3158bd220ee5c7829172a5c3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855099"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620482"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 
@@ -175,7 +175,7 @@ Aby przywrócić bazę pojedynczego lub w puli przy użyciu interfejsu API REST:
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 - Aby przywrócić bazę pojedynczego lub w puli przy użyciu wiersza polecenia platformy Azure, zobacz [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
-- Aby przywrócić wystąpienia zarządzanego przy użyciu wiersza polecenia platformy Azure, zobacz [az sql fragment przywracania](/cli/azure/sql/db)
+- Aby przywrócić wystąpienia zarządzanego przy użyciu wiersza polecenia platformy Azure, zobacz [az sql fragment przywracania](/cli/azure/sql/midb#az-sql-midb-restore)
 
 ## <a name="summary"></a>Podsumowanie
 

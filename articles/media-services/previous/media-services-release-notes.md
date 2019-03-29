@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f09d18759478c6c07aa0aea82f8bd1707595aa63
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499084"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621434"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 
 Te informacje o wersji dla usługi Azure Media Services podsumowują zmiany z poprzednich wersji i znane problemy.
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersję [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
 
 Chcemy poznać od naszych klientów, dzięki czemu możemy skupić się na rozwiązywanie problemów wpływających na użytkownik. Aby zgłosić problem lub pytania, Prześlij wpis w [forum MSDN dotyczącym usługi Azure Media Services]. 
 
@@ -42,13 +42,12 @@ Chcemy poznać od naszych klientów, dzięki czemu możemy skupić się na rozwi
 | Niektórzy klienci mogą pochodzić między problemem powtórzeń tag w manifeście Smooth Streaming. |Aby uzyskać więcej informacji, zobacz [w tej sekcji](media-services-deliver-content-overview.md#known-issues). |
 | Obiekty Media Services .NET SDK nie może być serializowany i dlatego nie działają z pamięć podręczna systemu Azure dla usługi Redis. |Jeśli zostanie podjęta próba serializacji obiektu AssetCollection zestawu SDK, aby dodać go do usługi Azure Cache dla pamięci podręcznej Redis, wyjątek jest generowany. |
 
-
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historia wersji interfejsu API REST
 Aby uzyskać informacji o historii wersji interfejsu API REST usługi Media Services, zobacz [Dokumentacja usługi Azure Media Services — interfejs API REST].
 
 ## <a name="december-2018"></a>Grudzień 2018 r.
 
-[Media Hyperlapse w wersji zapoznawczej](media-services-hyperlapse-content.md) funkcji usługi Azure Media Services zostanie wkrótce wycofany. Od 19 grudnia 2018 r. usługi Media Services nie jest już wprowadzi zmiany i udoskonalenia Media Hyperlapse. Na 29 marca 2019 r będzie wycofane i nie będą już dostępne.
+Funkcja Media Hyperlapse w wersji zapoznawczej usługi Azure Media Services zostanie wkrótce wycofany. Od 19 grudnia 2018 r. usługi Media Services nie jest już wprowadzi zmiany i udoskonalenia Media Hyperlapse. Na 29 marca 2019 r będzie wycofane i nie będą już dostępne.
 
 ## <a name="october-2018"></a>Październik 2018 r.
 
@@ -260,7 +259,6 @@ Następujące nowe funkcje zostały ogłoszone:
 
 * [Podgląd kodowania na żywo za pomocą usługi Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Dynamiczne manifestu](media-services-dynamic-manifest-overview.md)
-* [Podgląd procesor multimediów Azure Media Hyperlapse](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
 ## <a id="april_changes_15"></a>Kwietnia 2015 r.
 ### <a name="general-media-services-updates"></a>Aktualizuje ogólne usługi Media Services

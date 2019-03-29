@@ -1,5 +1,5 @@
 ---
-title: Udzielić dostępu do innych administratorów do zarządzania usługą PIM — Azure | Dokumentacja firmy Microsoft
+title: Udzielanie dostępu do innych administratorów do zarządzania usługą PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak udzielić dostępu do innych administracji do zarządzania usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d8cb77cda97c3141987fa8b0ea39541ace6db3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 74b938335dbace5a827bcfa43172704dc8b09da2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191745"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579618"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>Udzielanie dostępu do innych administratorów do zarządzania usługi PIM
 
-Administrator globalny, który umożliwia automatyczne usługi Azure AD Privileged Identity Management (PIM) dla organizacji, skorzystaj z przypisań ról i dostępu do usługi PIM. Nikt inny nie pobiera zapisu domyślnie, jednak tym innych administratorów globalnych. Inne Administratorzy globalni, Administratorzy zabezpieczeń i czytelnicy zabezpieczeń mają dostęp tylko do odczytu do usługi PIM. Aby udzielić dostępu do usługi PIM, pierwszego użytkownika można przypisać inne osoby **Administrator ról uprzywilejowanych** roli.
+Administrator globalny, który umożliwia automatyczne usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) dla organizacji, skorzystaj z przypisań ról i dostępu do usługi PIM. Nikt inny nie pobiera zapisu domyślnie, jednak tym innych administratorów globalnych. Inne Administratorzy globalni, Administratorzy zabezpieczeń i czytelnicy zabezpieczeń mają dostęp tylko do odczytu do usługi PIM. Aby udzielić dostępu do usługi PIM, pierwszego użytkownika można przypisać inne osoby **Administrator ról uprzywilejowanych** roli.
 
 > [!NOTE]
 > Zarządzanie usługą PIM wymaga usługi Azure MFA. Ponieważ kont Microsoft nie można zarejestrować usługi Azure MFA, użytkownik zaloguje się za pomocą konta Microsoft nie może uzyskać dostępu usługi PIM.
@@ -36,11 +36,11 @@ Upewnij się, są zawsze co najmniej dwóch użytkowników należących do roli 
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **role**.
 
-    ![Role katalogu usługi AD PIM Azure — role](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+    ![Role usługi AD PIM Azure — role](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
 1. Kliknij przycisk **Administrator ról uprzywilejowanych** roli, aby otworzyć stronę elementów członkowskich.
 
@@ -74,7 +74,7 @@ Zanim usuniesz ktoś z roli Administrator ról uprzywilejowanych, zawsze upewnij
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **role**.
 

@@ -7,24 +7,29 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b97c84a7a5d7732c8c895fd3074734762e5e040c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780409"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620653"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w usłudze Azure Search
-Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dokumentów, a inne obiekty zależne od tego, czy możesz [aprowizowanie usługi Azure Search](search-create-service-portal.md) na **bezpłatna**, **podstawowe**, lub **Standardowa** warstw cenowych.
+Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dokumentów, a inne obiekty zależne od tego, czy możesz [aprowizowanie usługi Azure Search](search-create-service-portal.md) na **bezpłatna**, **podstawowe**,  **Standardowa**, lub **zoptymalizowane pod kątem magazynu** warstw cenowych.
 
 + **Bezpłatne** jest udostępnianą usługą wielodostępną, dostarczanego z subskrypcją platformy Azure.
 
 + **Podstawowe** zapewnia dedykowane zasoby obliczeniowe dla obciążeń produkcyjnych na mniejszą skalę.
 
 + **Standardowa** działa na dedykowanych maszynach o większej pojemności do przechowywania i przetwarzania na każdym poziomie. Standardowa jest oferowana w czterech poziomów: S1, S2 i S3 oraz wysoka gęstość S3.
+
++ **Magazyn zoptymalizowany pod kątem** działa na dedykowanych maszynach przy użyciu więcej całkowita ilość miejsca, magazynu, przepustowości i ilości pamięci niż **standardowa**. Magazyn zoptymalizowany pod kątem jest oferowana w dwóch poziomach: P1 i P2
+
+> [!NOTE]
+> Warstwy usługi zoptymalizowane pod kątem magazynu są obecnie dostępne w wersji zapoznawczej w obniżonej cenie na potrzeby testowania i eksperymentowania w celu zbierania informacji zwrotnych. Ostateczna cena usługi zostanie ogłoszony później podczas tych warstwach są ogólnie dostępne. Odradzamy korzystający z tych warstw w przypadku aplikacji produkcyjnych.
 
   S3 High Density (wysoka gęstość S3) jest zaprojektowany z myślą o konkretnych obciążeń: [wielodostępu](search-modeling-multitenant-saas-applications.md) i dużych ilości małych indeksów (miliona dokumentów na indeks, trzy tysiące indeksów na usługę). Ta warstwa nie zapewnia [funkcji indeksatora](search-indexer-overview.md). Na wysoka gęstość S3 pozyskiwania danych musi korzystać z podejścia push przy użyciu wywołań interfejsu API wypychania danych ze źródła do indeksu. 
 
@@ -42,13 +47,13 @@ Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dok
 
 ## <a name="index-limits"></a>Limity indeksu
 
-| Zasób | Bezpłatna | Podstawowe&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD |
-| -------- | ---- | ------------------- | --- | --- | --- | --- |
-| Maksymalna liczba indeksów |3 |5 lub 15 |50 |200 |200 |1000 na partycję lub 3000 na usługę |
-| Maksymalna pola indeksu |1000 |100 |1000 |1000 |1000 |1000 |
-| Maksymalna [sugestory](https://docs.microsoft.com/rest/api/searchservice/suggesters) indeksu |1 |1 |1 |1 |1 |1 |
-| Maksymalna [profile oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indeksu |100 |100 |100 |100 |100 |100 |
-| Maksymalna funkcje każdego profilu |8 |8 |8 |8 |8 |8 |
+| Zasób | Bezpłatna | Podstawowe&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | PAMIĘCI PODRĘCZNEJ L2 |
+| -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
+| Maksymalna liczba indeksów |3 |5 lub 15 |50 |200 |200 |1000 na partycję lub 3000 na usługę |10 |10 |
+| Maksymalna pola indeksu |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maksymalna [sugestory](https://docs.microsoft.com/rest/api/searchservice/suggesters) indeksu |1 |1 |1 |1 |1 |1 |1 |1 |
+| Maksymalna [profile oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indeksu |100 |100 |100 |100 |100 |100 |100 |100 |
+| Maksymalna funkcje każdego profilu |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> podstawowe usługi utworzone po późno 2017 nie zwiększone limity indeksach 15, źródła danych i indeksatorów. Usługi utworzonej wcześniej mieć 5. Warstwa Basic jest tylko jednostki SKU z niższy limit 100 pól w indeksie.
 
@@ -98,16 +103,16 @@ Podstawowe usługi utworzonych po późno 2017 nie zwiększone limity indeksach 
 
 Operacje dużej ilości zasobów, takich jak analiza obrazu w indeksowanie obiektów blob platformy Azure lub przetwarzania języka naturalnego w cognitive search mają krótsze maksymalne czasy uruchomione, więc inne zadania indeksowania są spełnione. Jeśli zadania nie można wykonać w ramach maksymalny dozwolony czas, spróbuj uruchomić go zgodnie z harmonogramem. Harmonogram przechowuje informacje o stanie indeksowania. Jeśli zaplanowane zadanie indeksowania zostanie przerwany z jakiegokolwiek powodu, indeksator może przejmą tam, gdzie ją ostatnia przerwaliśmy na następne zaplanowane uruchomienie.
 
-| Zasób | Bezpłatne&nbsp;<sup>1</sup> | Podstawowe&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
-| -------- | ----------------- | ----------------- | --- | --- | --- | --- |
-| Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |ND |
-| Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |
-| Maksymalna dokładniejsze <sup>4</sup> |3 |5 lub 15 |50 |200 |200 |ND |
-| Maksymalne obciążenie indeksowania dla wywołania |10 000 dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |ND |
-| Maksymalny czas działania <sup>5</sup> | 1 – 3 minuty |24 godziny |24 godziny |24 godziny |24 godziny |ND  |
-| Maksymalny czas dokładniejsze wyszukiwanie kognitywne lub obiektu blob indeksowanie za pomocą analizy obrazów działania <sup>5</sup> | 3 – 10 minut |2 godziny |2 godziny |2 godziny |2 godziny |ND  |
-| Indeksatora obiektów blob: rozmiar maksymalny obiektu blob, MB |16 |16 |128 |256 |256 |ND  |
-| Indeksatora obiektów blob: Maksymalna liczba znaków w treści wyodrębnić z obiektu blob |32,000 |64,000 |4 mln |4 mln |4 mln |ND |
+| Zasób | Bezpłatne&nbsp;<sup>1</sup> | Podstawowe&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |PAMIĘCI PODRĘCZNEJ L2 |
+| -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
+| Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |ND |10 |10 |
+| Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
+| Maksymalna dokładniejsze <sup>4</sup> |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
+| Maksymalne obciążenie indeksowania dla wywołania |10 000 dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |Ograniczone tylko przez maksymalna liczba dokumentów |ND |Bez ograniczeń |Bez ograniczeń |
+| Maksymalny czas działania <sup>5</sup> | 1 – 3 minuty |24 godziny |24 godziny |24 godziny |24 godziny |ND  |24 godziny |24 godziny |
+| Maksymalny czas dokładniejsze wyszukiwanie kognitywne lub obiektu blob indeksowanie za pomocą analizy obrazów działania <sup>5</sup> | 3 – 10 minut |2 godziny |2 godziny |2 godziny |2 godziny |ND  |2 godziny |2 godziny |
+| Indeksatora obiektów blob: rozmiar maksymalny obiektu blob, MB |16 |16 |128 |256 |256 |ND  |256 |256 |
+| Indeksatora obiektów blob: Maksymalna liczba znaków w treści wyodrębnić z obiektu blob |32,000 |64,000 |4 mln |4 mln |4 mln |ND |4 mln |4 mln |
 
 <sup>1</sup> do usług bezpłatnych ma indeksatora maksymalny czas wykonywania więcej niż trzy minuty źródła obiektów blob i 1 minuty dla wszystkich źródeł danych.
 
@@ -124,6 +129,8 @@ Operacje dużej ilości zasobów, takich jak analiza obrazu w indeksowanie obiek
 Liczby zapytań na Sekundę oszacowania musi być opracowana niezależnie przez każdy klient korzystający z. Rozmiar indeksu i złożoność, rozmiaru zapytania i złożoności i natężenie ruchu są podstawowym uwarunkowania liczby zapytań na Sekundę. Nie istnieje żaden sposób zapewniają znaczących szacunki, gdy takie czynniki są nieznane.
 
 Szacunki są bardziej przewidywalna, gdy została obliczona dla usług uruchomionych na dedykowanych zasobów (w warstwach podstawowa i standardowa). Liczby zapytań na Sekundę więcej można oszacować ściśle, ponieważ masz kontrolę nad jeden z parametrów. Aby uzyskać wskazówki na temat szacowania podejście, zobacz [wydajności usługi Azure Search i optymalizacji](search-performance-optimization.md).
+
+W przypadku warstw zoptymalizowane pod kątem magazynu należy się spodziewać, niższe przepływności zapytań i większego opóźnienia niż warstwy standardowa.  Metodologia szacowania wydajności zapytań, które będą występować jest taka sama jak warstwy standardowa.
 
 ## <a name="data-limits-cognitive-search"></a>Limity danych (cognitive search)
 

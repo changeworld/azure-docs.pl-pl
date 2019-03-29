@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 2a6d356bcf65cdb59e84b34cf2a7478de796e61a
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 06cb4d32359014f3cbc67ed1f75988c794e6599e
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473283"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619519"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Szybki start: Wykrywanie anomalii w danych szeregów czasowych za pomocą interfejsu API REST wykrywanie anomalii i Java
 
@@ -91,7 +91,7 @@ Użyj tego przewodnika Szybki Start, aby rozpocząć korzystanie z dwóch trybó
 
 2. Utwórz `CloseableHttpClient` obiektu, który może wysyłać żądań do interfejsu API. Wyślij żądanie `HttpPost` obiekt żądania przez połączenie punktu końcowego i adres URL wykrywanie anomalii.
 
-3. Użyj żądania `setHeader()` funkcję, aby ustawić `Content-Type` nagłówek, aby `application/json`i Dodaj swój klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka.
+3. Użyj żądania `setHeader()` funkcję, aby ustawić `Content-Type` nagłówka do `application/json`i Dodaj swój klucz subskrypcji, aby `Ocp-Apim-Subscription-Key` nagłówka.
 
 4. Użyj żądania `setEntity()` funkcję, aby dane, które mają być wysyłane.   
 

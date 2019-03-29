@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868548"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622216"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
 **Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
@@ -358,6 +358,7 @@ Ta kategoria zawiera rekord wszystkich aktywacje alertów platformy Azure. Jest 
 | correlationId | Identyfikator GUID w formacie ciągu. |
 | description |Opis statyczny tekst alertu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia alertów. |
+| category | Zawsze "Alert" |
 | poziom |Poziom zdarzenia. Jeden z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie" i "Informacyjne" |
 | resourceGroupName |Nazwa grupy zasobów zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest nazwa grupy zasobów, która zawiera samego alertu. |
 | resourceProviderName |Nazwa dostawcy zasobów zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest nazwa dostawcy zasobów dla samego alertu. |
@@ -556,6 +557,7 @@ Ta kategoria zawiera rekord wszystkie alerty wygenerowane przez usługę Azure S
 | description |Tekst statyczny opis zdarzenia zabezpieczeń. |
 | eventDataId |Unikatowy identyfikator zdarzenia zabezpieczeń. |
 | eventName |Przyjazna nazwa zdarzenia zabezpieczeń. |
+| category | Zawsze "zabezpieczenia" |
 | id |Unikatowy identyfikator zdarzenia zabezpieczeń. |
 | poziom |Poziom zdarzenia. Jeden z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie" lub "Informacyjny" |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu. |

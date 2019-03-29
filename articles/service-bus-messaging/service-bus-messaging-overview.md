@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 8217eddd6f31a30b9113b178d74b59afb94f42af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06f1cdccc135d8f025d6256a12d47a97c92dbee8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900866"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579346"
 ---
 # <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
 
@@ -39,7 +39,7 @@ Komunikaty są wysyłane do *kolejek* i odbierane z nich. Kolejki umożliwiają 
 
 ![Kolejka](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Po przybyciu do kolejki komunikaty są porządkowane i oznaczane znacznikiem czasu. Po zaakceptowaniu komunikat jest bezpiecznie przechowywany w magazynie nadmiarowym. Komunikaty są dostarczane w trybie  *ściągania*, który dostarcza komunikaty na żądanie.
+Komunikaty w kolejkach są uporządkowane i oznaczony sygnaturą czasową po przybyciu. Po zaakceptowaniu komunikat jest bezpiecznie przechowywany w magazynie nadmiarowym. Komunikaty są dostarczane w *ściągnięcia* trybu, który dostarcza komunikaty na żądanie.
 
 ## <a name="topics"></a>Tematy
 

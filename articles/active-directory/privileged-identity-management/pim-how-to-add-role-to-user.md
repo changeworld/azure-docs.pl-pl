@@ -1,6 +1,6 @@
 ---
-title: Przypisywanie ról administratora usługi Azure AD — Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak do przypisywania ról administratora w usłudze Azure Active Directory w usłudze Azure AD Privileged Identity Management (PIM).
+title: Przypisz role usługi Azure AD w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przypisać role usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.subservice: pim
 ms.date: 10/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3c8a7fb7a94dbca7b0e63ddaf756a536fbd0600
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dfce4c918bbc7f7e30b5cb6372d4370e305ba63e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000633"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578258"
 ---
-# <a name="assign-azure-ad-administrator-roles-in-pim"></a>Przypisywanie ról administratora usługi Azure AD w usłudze PIM
+# <a name="assign-azure-ad-roles-in-pim"></a>Przypisz role usługi Azure AD w usłudze PIM
 
 Za pomocą usługi Azure Active Directory (Azure AD), ułatwia administratora globalnego **stałe** przypisania roli administratora usługi Azure AD. Te przypisania roli mogą być tworzone za pomocą [witryny Azure portal](../users-groups-roles/directory-assign-admin-roles.md) lub za pomocą [poleceń programu PowerShell](/powershell/module/azuread#directory_roles).
 
@@ -38,11 +38,11 @@ Wykonaj następujące kroki, aby utworzyć użytkownika kwalifikuje się do roli
 
     Jeśli jeszcze nie rozpoczęto jeszcze PIM w witrynie Azure portal, przejdź do strony [rozpocząć korzystanie z usługi PIM](pim-getting-started.md).
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **role** lub **członków**.
 
-    ![Role katalogu usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Role usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. Kliknij przycisk **Dodawanie elementu członkowskiego** aby otworzyć aplet Dodaj zarządzanych elementów członkowskich.
 
@@ -62,7 +62,7 @@ Wykonaj następujące kroki, aby utworzyć użytkownika kwalifikuje się do roli
 
     ![Kwalifikuje się do roli użytkownika](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
-1. Teraz, gdy użytkownik jest uprawnieni do roli, daj znać, czy użytkownik może dokonać aktywacji go zgodnie z instrukcjami w [Uaktywnij Moje role katalogu usługi Azure AD w usłudze PIM](pim-how-to-activate-role.md).
+1. Teraz, gdy użytkownik jest uprawnieni do roli, daj znać, czy użytkownik może dokonać aktywacji go zgodnie z instrukcjami w [Uaktywnij Moje role usługi Azure AD w usłudze PIM](pim-how-to-activate-role.md).
 
     Administratorzy uprawnieni są proszeni o rejestracji dla usługi Azure Multi-Factor Authentication (MFA) podczas aktywacji. Użytkownik nie może zarejestrować na potrzeby uwierzytelniania Wieloskładnikowego, czy jest używane konto Microsoft (zazwyczaj @outlook.com), należy wprowadzić je stałe w ich ról.
 
@@ -72,7 +72,7 @@ Domyślnie nowi użytkownicy tylko kwalifikują się do roli administratora usł
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **członków**.
 
@@ -96,7 +96,7 @@ Wykonaj następujące kroki, aby usunąć określonego użytkownika z roli admin
 
 1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-1. Kliknij przycisk **ról katalogu usługi Azure AD**.
+1. Kliknij przycisk **ról usługi Azure AD**.
 
 1. Kliknij przycisk **członków**.
 

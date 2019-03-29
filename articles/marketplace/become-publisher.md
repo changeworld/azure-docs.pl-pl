@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 223eff79d809a78d531d86d315fff80282cd29bb
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842461"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620159"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Zostań chmury wydawcy w witrynie Marketplace
 
@@ -44,6 +44,8 @@ Uczestnictwo w chmurze firmy Microsoft w witrynie marketplace wymaga członkostw
 Po zarejestrowaniu, Zapisz identyfikator Microsoft Partner Network dla Twojej organizacji. Będzie on potrzebny podczas wykonywania kroku 3 podczas przesyłania formularza rejestracji portalu marketplace.
 *   Dowiedz się więcej o zaletach [sieci Microsoft Partner Network](https://partner.microsoft.com/commercial)
 *   Jeśli Twoja organizacja ma istniejące członkostwo, spowoduje dołączenie do Twojej organizacji, podczas rejestracji. Jeśli używasz [Centrum partnerskiego](https://partnercenter.microsoft.com/partner/home), będzie można zobaczyć identyfikator na Twoim koncie Centrum partnerskiego. Jeśli używasz [Centrum członkostwa partnera (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx), będzie można zobaczyć, jak to na Twoim koncie Partner Membership Center. 
+
+Otwórz bilet z firmą Microsoft [partnera pomocy technicznej](https://partner.microsoft.com/support) w przypadku problemów z rejestracją MPN.
 
 ---
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 26e54ba507ecab5d12ceb4169baaa52f99c20792
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b6a8393a5f47d7fb85699f6828c4d08cc7afcabc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232434"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620703"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchia krajów/regionów używana przez usługę Azure Traffic Manager dla metody geograficznego routingu ruchu
 
@@ -125,9 +125,10 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - SK(Slovakia)
 
-        - SM (San Marino)
+        - SM(San Marino)
 
         - UA(Ukraine)
+            - Region Krym
 
         - Oceny luk w zabezpieczeniach (Watykan)
 
@@ -161,7 +162,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - SY(Syria)
 
-        - Ameryka Południowa (Arabia Saudyjska)
+        - SA(Saudi Arabia)
 
         - TR(Turkey)
 
@@ -199,7 +200,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
             - NL(Newfoundland and Labrador) urzędu certyfikacji
 
-            - NS(Nova Scotia) urzędu certyfikacji
+            - CA-NS(Nova Scotia)
 
             - NT(Northwest Territories) urzędu certyfikacji
 
@@ -217,7 +218,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - CR (Kostaryka)
 
-        - Cu(CUBA)
+        - CU(Cuba)
 
         - CW(CuraÃ§ao)
 
@@ -255,7 +256,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - Ni(Nicaragua)
 
-        - Pa(Panama)
+        - PA(Panama)
 
         - PM (Saint Pierre i Miquelon)
 
@@ -273,9 +274,9 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - US(United States)
 
-            - US-ak(Alaska)
+            - US-AK(Alaska)
 
-            - US-Al(Alabama)
+            - US-AL(Alabama)
 
             - US-AR(Arkansas)
 
@@ -289,7 +290,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
             - DC(District of Columbia) Stanów Zjednoczonych
 
-            - US-de(Delaware)
+            - US-DE(Delaware)
 
             - US-FL(Florida)
 
@@ -317,11 +318,11 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
             - US-Me(Maine)
 
-            - US-mi(Michigan)
+            - US-MI(Michigan)
 
             - US-MN(Minnesota)
 
-            - US-mo(Missouri)
+            - US-MO(Missouri)
 
             - US-MS(Mississippi)
 
@@ -353,7 +354,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
             - RI(Rhode Island) Stanów Zjednoczonych
 
-            - SC(South Carolina) Stanów Zjednoczonych
+            - US-SC(South Carolina)
 
             - SD(South Dakota) Stanów Zjednoczonych
 
@@ -385,7 +386,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - XS(Saba)
 
-    - Geo-AS(ASIA)
+    - GEO-AS(Asia)
 
         - AF(Afghanistan)
 
@@ -427,7 +428,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - KZ(Kazakhstan)
 
-        - La(Laos)
+        - LA(Laos)
 
         - LK(Sri Lanka)
 
@@ -463,11 +464,11 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - VN(Vietnam)
 
-    - Geo-AF(Africa)
+    - GEO-AF(Africa)
 
         - AO(Angola)
 
-        - BF (Burkina Faso)
+        - BF(Burkina Faso)
 
         - BI(Burundi)
 
@@ -477,7 +478,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - BW(Botswana)
 
-        - Ciągłe dostarczanie (Kongo (DRK))
+        - CD(Congo (DRC))
 
         - CF (Republika Środkowoafrykańska)
 
@@ -491,7 +492,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - DJ(Djibouti)
 
-        - Dz(Algeria)
+        - DZ(Algeria)
 
         - EG(Egypt)
 
@@ -545,13 +546,13 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - RW(Rwanda)
 
-        - SC(SEYCHELLES)
+        - SC(Seychelles)
 
         - SD(Sudan)
 
         - SH (Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha)
 
-        - SL (Sierra Leone)
+        - SL(Sierra Leone)
 
         - SN(Senegal)
 
@@ -563,7 +564,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - SZ(Swaziland)
 
-        - TD(CHAD)
+        - TD(Chad)
 
         - TF (Francuskie Terytoria Południowe i Antarktyczne)
 
@@ -583,7 +584,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - ZW(Zimbabwe)
 
-    - Geo-an(Antarctica)
+    - GEO-AN(Antarctica)
 
         - AQ(Antarctica)
 
@@ -595,7 +596,7 @@ Ten artykuł zawiera listę krajów i regionów używana przez **Geographic** me
 
         - BR(Brazil)
 
-        - Cl(Chile)
+        - CL(Chile)
 
         - CO(Colombia)
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: a9a445208c151a537c35fa7afafa48b19486828f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4bad788156b2068f24484d3b248f2091409752ad
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008162"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621621"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Rozwiązywanie problemów z Agent usług Microsoft Azure Recovery Services (MARS)
 
@@ -60,7 +60,7 @@ Poniżej przedstawiono sposób naprawić błędy, które można napotkać podcza
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Tworzenie kopii zapasowych nie działają zgodnie z harmonogramem
 Jeśli zaplanowane kopie zapasowe nie wyzwalane automatycznie, podczas ręcznego tworzenia kopii zapasowych działać bez problemów, spróbuj wykonać następujące czynności:
 
-- Upewnij się, że harmonogram tworzenia kopii zapasowych systemu Windows Server nie powoduje konfliktu z platformy Azure, pliki i foldery harmonogram tworzenia kopii zapasowych.
+- Upewnij się, że harmonogram tworzenia kopii zapasowych systemu Windows Server nie powoduje konfliktu z platformy Azure harmonogram tworzenia kopii zapasowych plików i folderów.
 - Przejdź do **Panel sterowania** > **narzędzia administracyjne** > **harmonogram zadań**. Rozwiń **Microsoft**i wybierz **kopii zapasowej Online**. Kliknij dwukrotnie **Microsoft OnlineBackup**, a następnie przejdź do **wyzwalaczy** kartę. Upewnij się, że stan jest ustawiony na **włączone**. Jeśli nie, wybierz **Edytuj**i wybierz **włączone** pole wyboru i kliknij przycisk **OK**. Na **ogólne** karty, wróć do **opcje zabezpieczeń** i upewnij się, że konto użytkownika, wybrany do uruchomienia tego zadania jest **systemu** lub **lokalne Grupa administratorów** na serwerze.
 
 - Zobacz, jeśli program PowerShell 3.0 lub nowszej jest zainstalowane na serwerze. Aby sprawdzić wersję programu PowerShell, uruchom następujące polecenie i upewnij się, że *głównych* numer wersji jest równy lub większy niż 3.

@@ -1,6 +1,6 @@
 ---
-title: Interfejsy API Microsoft Graph w usłudze PIM (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Zawiera informacje na temat korzystania z interfejsów API programu Microsoft Graph dla usługi Azure Active Directory Privileged Identity Management (PIM) (wersja zapoznawcza).
+title: Interfejsy API Microsoft Graph w usłudze PIM (wersja zapoznawcza) — usługa Azure Active Directory | Dokumentacja firmy Microsoft
+description: Zawiera informacje dotyczące korzystania z interfejsów API programu Microsoft Graph dla usługi Azure AD Privileged Identity Management (PIM) (wersja zapoznawcza).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.date: 11/13/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d853579335653987321fded154eb9fb0f8dbdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e54ec4049b2b0cd67c148d881a64a40efff438a2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000292"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578972"
 ---
 # <a name="microsoft-graph-apis-for-pim-preview"></a>Interfejsy API programu Microsoft Graph dla usługi PIM (wersja zapoznawcza)
 
-Większość zadań, które można wykonać w usłudze Azure AD Privileged Identity Management (PIM), używając witryny Azure Portal, można również wykonać przy użyciu [interfejsów API programu Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/overview). W tym artykule opisano niektóre ważne pojęcia dotyczące korzystania z interfejsów API programu Microsoft Graph dla usługi PIM. Szczegółowe informacje na temat interfejsów API programu Microsoft Graph można znaleźć w [dokumentacji interfejsu API usługi Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
+Większość zadań można wykonywać w usłudze Azure Active Directory (Azure AD) Privileged Identity Management (PIM) w witrynie Azure portal, można również wykonać przy użyciu [interfejsów API programu Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/overview). W tym artykule opisano niektóre ważne pojęcia dotyczące korzystania z interfejsów API programu Microsoft Graph dla usługi PIM. Szczegółowe informacje na temat interfejsów API programu Microsoft Graph można znaleźć w [dokumentacji interfejsu API usługi Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
 
 > [!IMPORTANT]
 > Interfejsy API w wersji beta w programie Microsoft Graph są w wersji zapoznawczej i mogą ulec zmianie. Te interfejsy API nie są obsługiwane w zastosowaniach produkcyjnych.

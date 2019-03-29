@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 10/26/2018
-ms.openlocfilehash: 5d328164ac8ad99db15a12d850327615a9ffd809
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 42e1ef3e311633f9631163bc9d3df212b608ef3a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910288"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578377"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu usługi Azure Logic Apps
 
@@ -27,10 +27,18 @@ Automatyzowanie zadań, które monitorowania, tworzenie, wysyłanie i odbieranie
 * Pobierz zawartość pliku i metadanych.
 * Wyodrębnij archiwum do folderów.
 
-W porównaniu do [łącznika SFTP-SSH](../connectors/connectors-sftp-ssh.md), łącznik SFTP może odczytywać lub zapisu wynosi 50 MB rozmiar plików, chyba że używasz [komunikat segmentu w akcjach](../logic-apps/logic-apps-handle-large-messages.md). Obecnie nie można używać segmentu wyzwalaczy. Dla plików do 1 GB, rozmiar, użyj [łącznika SFTP-SSH](../connectors/connectors-sftp-ssh.md). W przypadku plików większych niż 1 GB, można użyć protokołu SFTP-SSH i [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). 
-
 Możesz użyć wyzwalaczy, które monitorowania zdarzeń na serwerze SFTP i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonywania różnych zadań na serwerze SFTP. Mogą też istnieć inne akcje w aplikacji logiki, użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać alerty e-mail dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com.
 Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+
+## <a name="limits"></a>Limity
+
+* Akcje SFTP może odczytać lub zapisać pliki, które są *50 MB lub mniej* chyba że używasz [komunikat segmentu w akcjach](../logic-apps/logic-apps-handle-large-messages.md), umożliwiają który przekroczenia tego limitu. Obecnie usługa SFTP wyzwalaczy nie obsługują segmentu.
+
+* W przypadku plików *do 1 GB*, użyj [łącznika SFTP-SSH](../connectors/connectors-sftp-ssh.md).
+
+* Dla plików *większą niż 1 GB*, użycie SFTP-SSH łącznika oraz [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
+
+Aby poznać inne różnice między łącznika SFTP i łącznika SFTP-SSH, przejrzyj [porównania SFTP-SSH i SFTP](../connectors/connectors-sftp-ssh.md#comparison) w artykule SFTP-protokołu SSH.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

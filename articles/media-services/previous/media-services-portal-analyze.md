@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7a303b9d27b3708bd4f59517452fa232cc38c923
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259690"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619445"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Analiza multimediów za pomocą witryny Azure Portal 
 > [!NOTE]
@@ -73,11 +73,6 @@ Przyjazna nazwa umożliwiająca zidentyfikowanie zadania. [To](media-services-po
 
 ### <a name="output-file"></a>Plik wyjściowy
 Przyjazna nazwa umożliwiająca zidentyfikowanie zawartości wyjściowej. 
-
-## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Usługa Azure Media Hyperlapse jest pakiet administracyjny, który tworzy smooth czasu uzyskanie płynnych wideo poklatkowych na podstawie zawartości pierwszą osobą, która lub kamery akcji.  Aby uzyskać więcej informacji, zobacz [ten](media-services-hyperlapse-content.md) temat. W tej części przedstawiono informacje na temat opcji, które określisz dla tego pakietu administracyjnego.
-
-![Analizowanie wideo](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
 ### <a name="speed"></a>Szybkość
 Określ szybkości, z którego ma zostać przyspieszenia wejściowego klipu wideo. Dane wyjściowe są stabilizowanych i czas, jaki upłynął dobór wejściowego pliku wideo.

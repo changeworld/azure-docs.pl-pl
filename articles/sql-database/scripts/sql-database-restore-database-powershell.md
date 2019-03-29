@@ -1,6 +1,6 @@
 ---
 title: Przykład programu PowerShell — przywracanie kopii zapasowej bazy danych Azure SQL Database | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell umożliwiający przywrócenie pojedynczej bazy danych usługi Azure SQL Database z geograficznie nadmiarowych kopii zapasowych
+description: Przykładowy skrypt Azure PowerShell do przywracania pojedynczej bazy danych Azure SQL do wcześniejszego punktu w czasie z automatycznych kopii zapasowych
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 3bfefa704fdd819b3841dcc58866c310353bfdc3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/27/2019
+ms.openlocfilehash: f58cc930ace2dc1fc65aa0494fd6c1510ee5ff29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883614"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621349"
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-single-database-from-backups"></a>Przywracanie pojedynczej bazy danych usługi Azure SQL Database z kopii zapasowych przy użyciu programu PowerShell
+# <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Przywracanie pojedynczej bazy danych Azure SQL do wcześniejszego punktu w czasie za pomocą programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell umożliwia przywrócenie bazy danych Azure SQL Database z geograficznie nadmiarowej kopii zapasowej, przywrócenie najnowszej kopii zapasowej usuniętej bazy danych Azure SQL Database oraz przywrócenie bazy danych Azure SQL Database do konkretnego punktu w czasie.  
+Ten przykładowy skrypt programu PowerShell przywraca bazę danych Azure SQL database do określonego punktu w czasie.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

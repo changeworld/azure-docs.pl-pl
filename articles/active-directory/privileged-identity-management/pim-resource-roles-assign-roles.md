@@ -1,5 +1,5 @@
 ---
-title: Przypisz role zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+title: Przypisz role zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przypisać role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee09526c2bf1ebf9821e1f84dc99bfc8635b9ee2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a912e1786e005e9a4b6ba2cc22713a172234a489
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086194"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578666"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Przypisz role zasobów platformy Azure w usłudze PIM
 
-Usługa Azure AD PIM można zarządzać ról wbudowanych zasobów platformy Azure, a także niestandardowe role, w tym (między innymi):
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można zarządzać ról wbudowanych zasobów platformy Azure, a także niestandardowe role, w tym (między innymi):
 
 - Właściciel
 - Administrator dostępu użytkowników
@@ -129,4 +129,4 @@ Wykonaj następujące kroki, aby zaktualizować lub usunąć istniejące przypis
 
 - [Rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-renew-extend.md)
 - [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)
-- [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
+- [Przypisz role usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)

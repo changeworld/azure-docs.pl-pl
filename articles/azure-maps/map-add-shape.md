@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7598bbc879351752580247e46bc986ee84fa0d56
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2582b277238bbfbda29156c857e7bd91cf6fe059
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497248"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579295"
 ---
 # <a name="add-a-shape-to-a-map"></a>Dodawanie kształtu do mapy
 
@@ -32,6 +32,16 @@ Pierwszy blok kodu w powyższym kodzie konstrukcji obiektu mapy. Możesz zobaczy
 W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy. A [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest) obiekt zostanie utworzony i dodany do źródła danych.
 
 A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje wiersz obiektów w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest). Ostatni blok kodu tworzy i dodaje warstwę linii do mapy. Zobacz właściwości warstwy linii w [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Źródło danych i warstwie wiersza są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, czy wiersz jest wyświetlany po mapy ładuje pełni.
+
+## <a name="add-symbols-along-a-line"></a>Dodawanie symboli wzdłuż linii
+
+W tym przykładzie przedstawiono sposób dodawania ikony strzałek wzdłuż linii na mapie. Gdy za pomocą warstwy symboli, ustaw opcję "umieszczania" "wiersz", spowoduje to renderowania symbole wzdłuż linii i Obróć ikony (0 stopni = po prawej stronie).
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Pokaż strzałkę wzdłuż linii" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz pióra <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Pokaż strzałkę wzdłuż linii</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+</iframe>
 
 ## <a name="customize-a-line-layer"></a>Dostosowywanie warstwę linii
 
@@ -84,6 +94,16 @@ W drugim bloku kodu obiektu źródła danych jest tworzony przy użyciu [DataSou
 A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) powoduje wyświetlenie danych w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) na mapie. Zobacz właściwości warstwy wielokątów w [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) jest tablicą wierszy. Zobacz właściwości warstwy linii w [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Trzeci bloku kodu tworzy warstw wielokątów i linii.
 
 Ostatni blok kodu dodaje warstw wielokątów i linii do mapy. Źródło danych i warstwy są tworzone i dodawane do mapy w ramach [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkcję, aby upewnić się, że wielokąta jest wyświetlany po mapy ładuje pełni.
+
+## <a name="fill-a-polygon-with-a-pattern"></a>Wypełnij wielokąta z wzorcem
+
+Oprócz wypełnianie wielokąta kolorem wzorzec obrazu można również. Ładowanie wzorzec obrazu do zasobów sprite obrazu mapy, a następnie Odwołaj ten obraz z `fillPattern` właściwości warstwy wielokątów.
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Deseń wypełnienia wielokąta" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz pióra <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>deseń wypełnienia wielokąta</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
+</iframe>
 
 ## <a name="customize-a-polygon-layer"></a>Dostosowywanie warstwę wielokątów
 

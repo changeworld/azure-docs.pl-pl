@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 53f480b8858e2bbe7d4699d8637ecaa5ab0c08a3
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 355d89b1fd7d7cc8c9db58122d51c6ff7dff5f3b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305181"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622590"
 ---
 Na platformie Unity, otwórz projekt w `Unity` folderu.
 
@@ -25,4 +25,4 @@ Zamknij okno **Build Settings (Ustawienia kompilacji)**.
 
 ### <a name="download-and-import-the-arcore-sdk-for-unity"></a>Pobierz i zaimportuj zestaw ARCore SDK dla aparatu Unity
 
-Pobierz plik `unitypackage` z sekcji [wersji zestawu ARCore SDK dla aparatu Unity](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0). W projekcie Unity, wybierz **zasoby** > **Importuj pakiet** > **niestandardowy pakiet** , a następnie wybierz `unitypackage` plik wcześniej pobrane. W **Importowanie pakietu Unity** okno dialogowe, upewnij się, że zaznaczone są wszystkie pliki, a następnie wybierz pozycję **importu**.
+Pobierz `unitypackage` plik wchodzącej w skład [zwalnia ARCore SDK dla środowiska Unity w wersji 1.5](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0). W projekcie Unity, wybierz **zasoby** > **Importuj pakiet** > **niestandardowy pakiet** , a następnie wybierz `unitypackage` plik wcześniej pobrane. W **Importowanie pakietu Unity** okno dialogowe, upewnij się, że zaznaczone są wszystkie pliki, a następnie wybierz pozycję **importu**.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: ec9551b92702c3c9050e60c7550b89e99b99b6b6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 08b6f803d6994015432bf68c7b3edae14af8f976
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661687"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579261"
 ---
 # <a name="api-management-caching-policies"></a>Zasady buforowania usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -43,7 +43,7 @@ Użyj `cache-lookup` zasad do wykonania pamięci podręcznej wyszukać i zwróci
 ### <a name="policy-statement"></a>Deklaracja zasad
 
 ```xml
-<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" cache-preference="prefer-external | external | internal" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">
+<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" caching-type="prefer-external | external | internal" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">
   <vary-by-header>Accept</vary-by-header>
   <!-- should be present in most cases -->
   <vary-by-header>Accept-Charset</vary-by-header>
@@ -65,7 +65,7 @@ Użyj `cache-lookup` zasad do wykonania pamięci podręcznej wyszukać i zwróci
 <policies>
     <inbound>
         <base />
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" must-revalidate="true" cache-preference="internal" >
+        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" must-revalidate="true" caching-type="internal" >
             <vary-by-query-parameter>version</vary-by-query-parameter>
         </cache-lookup>
     </inbound>
@@ -112,7 +112,7 @@ Aby uzyskać więcej informacji, zobacz [wyrażenia zasad](api-management-policy
 | Name (Nazwa)                           | Opis                                                                                                                                                                                                                                                                                                                                                 | Wymagane | Domyślne           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | allow-private-response-caching | Po ustawieniu `true`, pozwala na buforowanie żądań, które zawierają nagłówka autoryzacji.                                                                                                                                                                                                                                                                        | Nie       | false             |
-| cache-preference               | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
+| Typ buforowania               | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
 | downstream-caching-type        | Ten atrybut musi być równa jeden z następujących wartości.<br /><br /> -Brak — buforowanie podrzędnych nie jest dozwolone.<br />— prywatna — podrzędny prywatnej pamięci podręcznej jest dozwolone.<br />-publiczny — prywatny i udostępnianie podrzędnego buforowanie jest dozwolone.                                                                                                          | Nie       | brak              |
 | must-revalidate                | Gdy włączone jest buforowanie podrzędnych tego atrybutu Włącza lub wyłącza `must-revalidate` dyrektywa kontroli pamięci podręcznej w odpowiedziach bramy.                                                                                                                                                                                                                      | Nie       | true              |
 | różnią się przez deweloperów              | Ustaw `true` do pamięci podręcznej odpowiedzi na [klucz subskrypcji](https://docs.microsoft.com/azure/api-management/api-management-subscriptions).                                                                                                                                                                                                                                                                                                         | Yes      |         False          |
@@ -208,7 +208,7 @@ Użyj `cache-lookup-value` zasady wykonują wyszukiwanie pamięci podręcznej we
 <cache-lookup-value key="cache key value"
     default-value="value to use if cache lookup resulted in a miss"
     variable-name="name of a variable looked up value is assigned to"
-    cache-preference="prefer-external | external | internal" />
+    caching-type="prefer-external | external | internal" />
 ```
 
 ### <a name="example"></a>Przykład
@@ -231,7 +231,7 @@ Aby uzyskać więcej informacji i przykładów niniejszych zasad, zobacz [niesta
 
 | Name (Nazwa)             | Opis                                                                                                                                                                                                                                                                                                                                                 | Wymagane | Domyślne           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
+| Typ buforowania | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
 | Wartość domyślna    | Wartość, która zostanie przypisana do zmiennej czy wyszukiwanie klucza pamięci podręcznej w wyniku trafienia. Jeśli ten atrybut nie jest określony, `null` jest przypisany.                                                                                                                                                                                                           | Nie       | `null`            |
 | key              | Wartość klucza do użycia w polu wyszukiwania w pamięci podręcznej.                                                                                                                                                                                                                                                                                                                       | Yes      | ND               |
 | Nazwa zmiennej    | Nazwa [zmiennej kontekstowej](api-management-policy-expressions.md#ContextVariables) looked zapasową zostanie przypisana wartość, jeśli wyszukiwanie zakończy się pomyślnie. Jeśli wyszukiwanie w wyniku trafienia, zmienna zostanie przypisana wartość `default-value` atrybutu lub `null`, jeśli `default-value` atrybut jest określony.                                       | Yes      | ND               |
@@ -251,7 +251,7 @@ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.micr
 ### <a name="policy-statement"></a>Deklaracja zasad
 
 ```xml
-<cache-store-value key="cache key value" value="value to cache" duration="seconds" cache-preference="prefer-external | external | internal" />
+<cache-store-value key="cache key value" value="value to cache" duration="seconds" caching-type="prefer-external | external | internal" />
 ```
 
 ### <a name="example"></a>Przykład
@@ -274,7 +274,7 @@ Aby uzyskać więcej informacji i przykładów niniejszych zasad, zobacz [niesta
 
 | Name (Nazwa)             | Opis                                                                                                                                                                                                                                                                                                                                                 | Wymagane | Domyślne           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
+| Typ buforowania | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
 | czas trwania         | Wartość będzie zapisywane jako wartość podany czas trwania w sekundach.                                                                                                                                                                                                                                                                                 | Yes      | ND               |
 | key              | Klucz pamięci podręcznej wartości będą przechowywane w obszarze.                                                                                                                                                                                                                                                                                                                   | Yes      | ND               |
 | wartość            | Wartość w pamięci podręcznej.                                                                                                                                                                                                                                                                                                                                     | Yes      | ND               |
@@ -291,7 +291,7 @@ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.micr
 
 ```xml
 
-<cache-remove-value key="cache key value" cache-preference="prefer-external | external | internal"  />
+<cache-remove-value key="cache key value" caching-type="prefer-external | external | internal"  />
 
 ```
 
@@ -313,7 +313,7 @@ Ta zasada może służyć w następujących zasadach [sekcje](https://azure.micr
 
 | Name (Nazwa)             | Opis                                                                                                                                                                                                                                                                                                                                                 | Wymagane | Domyślne           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
+| Typ buforowania | Wybrać jeden z następujących wartości atrybutu:<br />- `internal` Aby użyć wbudowaną pamięć podręczną usługi API Management<br />- `external` Aby użyć zewnętrzna pamięć podręczna, zgodnie z opisem w [użytek zewnętrzna pamięć podręczna Azure redis Cache w usłudze Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Aby użyć w przeciwnym razie zewnętrzna pamięć podręczna, jeśli skonfigurowane lub wewnętrznej pamięci podręcznej. | Nie       | `prefer-external` |
 | key              | Klucz wartości wcześniej w pamięci podręcznej, aby były usuwane z pamięci podręcznej.                                                                                                                                                                                                                                                                                        | Yes      | ND               |
 
 #### <a name="usage"></a>Sposób użycia
@@ -329,4 +329,4 @@ Aby uzyskać więcej informacji, w pracy z tymi zasadami zobacz:
 + [Zasady usługi API Management](api-management-howto-policies.md)
 + [Przekształć interfejsy API](transform-api.md)
 + [Informacje o zasadach](api-management-policy-reference.md) pełną listę zasad i ich ustawienia
-+ [Przykłady zasad](policy-samples.md)   
++ [Przykłady zasad](policy-samples.md)

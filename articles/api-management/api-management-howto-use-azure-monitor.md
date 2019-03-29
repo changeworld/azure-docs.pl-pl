@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f2fe6fc3ba3ae515d372fb5a794e46897bad115
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517950"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622199"
 ---
 # <a name="monitor-published-apis"></a>Monitorowanie opublikowanych interfejsów API
 
@@ -77,21 +77,28 @@ Można skonfigurować odbieranie alertów w oparciu o metryki i dzienniki aktywn
 
 Aby skonfigurować alerty:
 
-1. Wybierz pozycję **Alerty (klasyczne)** na pasku menu w dolnej części strony.
+1. Wybierz **alerty** na pasku menu w dolnej części strony.
 
-    ![alerts](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. Wybierz pozycję **Dodaj alert dotyczący metryki**.
-3. Wprowadź **nazwę** tego alertu.
-4. Wybierz pozycję **Nieautoryzowane żądania bramy** jako metrykę do monitorowania.
-5. Wybierz pozycję **Właściciele, współautorzy i czytelnicy poczty e-mail**.
-6. Naciśnij przycisk **OK**.
-7. Spróbuj wywołać interfejs API konferencji bez klucza API. Jako właściciel tej usługi API Management otrzymasz alert e-mail. 
+2. Kliknij pozycję **Nowa reguła alertu** dla tego alertu.
+3. Kliknij pozycję **Dodaj warunek**.
+4. Wybierz **metryki** w typie sygnału listy rozwijanej.
+5. Wybierz **nieautoryzowane żądania bramy** jako sygnał do monitorowania.
 
-    > [!TIP]
-    > Wyzwolenie reguły alertu może również spowodować wywołanie elementu webhook lub aplikacji logiki platformy Azure.
+    ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-    ![set-up-alert](./media/api-management-azure-monitor/set-up-alert.png)
+6. W **konfigurowanie logiki sygnału** wyświetlanie, określ wartość progową, po upływie którego powinna być wyzwolona alert i kliknij przycisk **gotowe**.
+
+    ![alerts](./media/api-management-azure-monitor/threshold.png)
+
+7. Wybierz istniejącą grupę akcji lub Utwórz nową. W poniższym przykładzie zostanie wysłana wiadomość e-mail do administratorów. 
+
+    ![alerts](./media/api-management-azure-monitor/action-details.png)
+
+8. Podaj nazwę i opis reguły alertu, a następnie wybierz poziom ważności. 
+9. Naciśnij klawisz **Utwórz regułę alertu**.
+10. Teraz spróbuj wywołać interfejs API konferencji bez klucza API. Alert zostanie wywołany zostanie wysłana wiadomość e-mail do administratorów. 
 
 ## <a name="activity-logs"></a>Dzienniki aktywności
 

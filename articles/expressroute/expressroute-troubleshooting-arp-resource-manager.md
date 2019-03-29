@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 01eac27b63f9eaaf62e863cd023201c3eab4b74e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432145"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622080"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Pobieranie tabel ARP w modelu wdrażania usługi Resource Manager
 > [!div class="op_single_selector"]
@@ -59,6 +59,11 @@ Upewnij się, że następujące przed postępu w dalszych
 * Zakresy adresów IP używane podczas konfigurowania komunikacji równorzędnej (Azure prywatnej i publicznej Azure i Microsoft). Przejrzyj przykłady przypisania adresów ip w [na stronie wymagania dotyczące routingu usługi ExpressRoute](expressroute-routing.md) ułatwią zrozumienie sposobu adresy ip są mapowane do interfejsów ze strony i po stronie usługi ExpressRoute. Informacje o konfiguracji komunikacji równorzędnej można uzyskać, przeglądając [strony konfiguracji z komunikacji równorzędnej usługi ExpressRoute](expressroute-howto-routing-arm.md).
 * Informacje od zespołu sieciowych / dostawcy łączności adresów MAC interfejsów używane z tych adresów IP.
 * Konieczne jest posiadanie najnowszy moduł programu PowerShell dla platformy Azure (wersja 1,50 lub nowsza).
+
+> [!NOTE]
+> Jeśli warstwa 3 są dostarczane przez dostawcę usług i tabele ARP są puste w portalu/danych wyjściowych poniżej, należy odświeżyć konfiguracji obwodu, używając przycisku Odśwież w portalu. Ta operacja wejdzie odpowiednią konfigurację routingu w obwodu. 
+>
+>
 
 ## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>Pobieranie tabel ARP dla obwodu usługi ExpressRoute
 Ta sekcja zawiera instrukcje dotyczące sposobu wyświetlania tabele ARP na komunikację równorzędną przy użyciu programu PowerShell. Użytkownik lub dostawcą połączenia, należy skonfigurować komunikację równorzędną przed dalsze postępu. Każdy obwód ma dwie ścieżki (podstawowych i pomocniczych). Możesz sprawdzić tabeli protokołu ARP w przypadku poszczególnych ścieżek niezależnie.

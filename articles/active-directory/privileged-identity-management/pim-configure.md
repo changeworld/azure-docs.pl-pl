@@ -1,6 +1,6 @@
 ---
-title: Co to jest usługa Azure AD Privileged Identity Management? | Microsoft Docs
-description: Omówienie usługi Azure Active Directory Privileged Identity Management (PIM).
+title: Co to jest usługa Privileged Identity Management? — Azure Active Directory | Microsoft Docs
+description: Omówienie usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 022fd8e1ab8445954b205f471cd1aa4d18e11545
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 22f4caed1ea0490470009c21f22624861808cb2d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178162"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578683"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co to jest usługa Azure AD Privileged Identity Management?
 
@@ -57,8 +57,8 @@ Aby lepiej zrozumieć usługę PIM i jej dokumentację, zapoznaj się z poniższ
 
 | Termin lub pojęcie | Kategoria przypisania roli | Opis |
 | --- | --- | --- |
-| kwalifikowanie się | Typ | Przypisanie roli, które wymaga od użytkownika wykonania jednej lub kilku akcji w celu użycia tej roli. Jeśli użytkownik został zakwalifikowany do roli, oznacza to, że może aktywować tę rolę, kiedy musi wykonać zadanie uprzywilejowane. Nie ma żadnej różnicy między dostępem udzielonym komuś za pomocą trwałego przypisania roli i przypisania kwalifikowania się do roli. Jedyna różnica polega na tym, że niektórzy użytkownicy nie potrzebują tego dostępu przez cały czas. |
-| aktywne | Typ | Przypisanie roli, które nie wymaga od użytkownika wykonywania żadnych akcji w celu użycia tej roli. Użytkownicy przypisani jako aktywni mają uprawnienia przypisane do danej roli. |
+| kwalifikowanie się | Type | Przypisanie roli, które wymaga od użytkownika wykonania jednej lub kilku akcji w celu użycia tej roli. Jeśli użytkownik został zakwalifikowany do roli, oznacza to, że może aktywować tę rolę, kiedy musi wykonać zadanie uprzywilejowane. Nie ma żadnej różnicy między dostępem udzielonym komuś za pomocą trwałego przypisania roli i przypisania kwalifikowania się do roli. Jedyna różnica polega na tym, że niektórzy użytkownicy nie potrzebują tego dostępu przez cały czas. |
+| aktywne | Type | Przypisanie roli, które nie wymaga od użytkownika wykonywania żadnych akcji w celu użycia tej roli. Użytkownicy przypisani jako aktywni mają uprawnienia przypisane do danej roli. |
 | aktywuj |  | Proces wykonywania jednej lub kilku akcji w celu użycia roli, do której użytkownik został zakwalifikowany. Akcje te mogą obejmować przeprowadzenie uwierzytelniania wieloskładnikowego (MFA), podanie uzasadnienia biznesowego lub żądanie zatwierdzenia od wyznaczonych osób zatwierdzających. |
 | przypisano | Stan | Użytkownik, który ma aktywne przypisanie roli. |
 | aktywowano | Stan | Użytkownik, który ma przypisanie kwalifikowania się do roli, wykonał akcje w celu aktywowania roli i jest teraz aktywny.  Po aktywowaniu roli użytkownik może z niej korzystać przez wstępnie skonfigurowany czas, po którym rola będzie musiała być ponownie aktywowana. |
@@ -105,7 +105,7 @@ Usługa PIM obsługuje następujące scenariusze:
 - Wyświetlanie stanu żądania uaktywnienia
 - Wykonywanie zadania w usłudze Azure AD w przypadku zatwierdzenia uaktywnienia
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wymagania licencyjne dotyczące korzystania z usługi PIM](subscription-requirements.md)
 - [Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i wdrożeń w chmurze w usłudze Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

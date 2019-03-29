@@ -1,0 +1,90 @@
+---
+title: Omówienie usługi ASC koszty IoT (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat kosztów związanych z usługą ASC IoT i jak je kontrolować.
+services: ascforiot
+documentationcenter: na
+author: mlottner
+manager: barbkess
+editor: ''
+ms.assetid: ef839708-4574-4a40-bc45-07005f8e9daf
+ms.service: ascforiot
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/27/2019
+ms.author: mlottner
+ms.openlocfilehash: e694bb1a121b172fe67fbde0bd956700a75dfe12
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58580661"
+---
+# <a name="pricing-and-associated-costs"></a>Cennik i skojarzone kosztów
+
+> [!IMPORTANT]
+> ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+W tym artykule wyjaśniono ASC dla IoT modelu cen, znajduje się podsumowanie wszystkich powiązanych z nimi kosztów i wyjaśniono, jak zarządzać nimi.
+
+## <a name="pricing"></a>Cennik
+
+ASC dla IoT, model cen składa się z dwóch części i jest naliczana, gdy usługa IoT Hub jest [włączone](quickstart-onboard-iot-hub.md) w ASC IoT:
+
+- Koszt według urządzenia — funkcje wbudowane zabezpieczenia oparty na analizie dzienników usługi IoT Hub.
+
+- Koszt według komunikatu — możliwości zwiększone zabezpieczenia oparty na zabezpieczenia komunikatów z urządzenia usługi IoT Edge lub typu liść.
+
+  >[!Note]
+  > Zabezpieczenia komunikatów również spowoduje naliczenie opłaty za użycie przydziału w Centrum IoT Hub.
+
+Aby uzyskać więcej informacji, zobacz [cennik usługi Security Center](https://azure.microsoft.com/en-us/pricing/details/security-center/).
+
+## <a name="associated-costs"></a>Powiązanych z nimi kosztów
+
+ASC IoT udostępnia dwa typy powiązanych z nimi kosztów, które nie są częścią bezpośrednie ceny:
+
+- Użycie limitu przydziału usługi IoT Hub
+
+- Zaloguj się koszty usługi storage Analytics
+
+Można jednocześnie obniżając jej koszty, rezygnując z niektórych funkcji, zmieniając ustawienia.
+
+Aby zmienić swoje ustawienia:
+
+1. Otwórz Centrum IoT Hub.
+
+2. W obszarze **zabezpieczeń**, kliknij przycisk **Przegląd**.
+
+3. Kliknij pozycję **Ustawienia**.
+
+Poniższa tabela zawiera podsumowanie powiązanych z nimi kosztów i skutki każdej z nich.
+
+|     | Sposób użycia | Komentarz |
+| --- | --- | --- |
+| **Użycie limitu przydziału usługi IoT Hub** |  |
+| [Eksportowanie urządzeń](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) zadania (Eksportowanie bliźniaczej reprezentacji) | raz dziennie | Wyłącz _bliźniaczej reprezentacji w kolekcji metadanych_ |
+| **Magazyn analizy dzienników** |  |
+| Urządzenia zaleceń i alertów| Zalecenie dotyczące zabezpieczeń i alerty wygenerowane przez usługę | Nie jest opcjonalny |
+| Dane pierwotne zabezpieczeń| Dane pierwotne zabezpieczeń z urządzeń IoT, zbierane przez agentów zabezpieczeń | Wyłącz _przechowywania zdarzeń zabezpieczeń urządzenia_ |
+
+>[!Important]
+> Zrezygnować ma poważny wpływ na dostępnych funkcji zabezpieczeń.
+  
+| Zrezygnuj | Implikacje |
+| --- | --- |
+| _Kolekcja metadanych bliźniaczych reprezentacji_ | Wyłącz [alerty niestandardowe](quickstart-create-custom-alerts.md) |
+| | Wyłącz zalecenia manifestu usługi IoT Edge |
+| | Wyłącz urządzenia na podstawie tożsamości zaleceń i alertów |
+| _Zdarzenia zabezpieczeń urządzenie niesformatowane Store_ | Szczegółowe informacje na temat zaleceń dotyczących linii bazowej systemu operacyjnego urządzenia nie są dostępne |
+| | Szczegółowe informacje na [alert](concept-security-alerts.md) i [zalecenie](concept-recommendations.md) badania nie są dostępne |
+
+
+## <a name="see-also"></a>Zobacz także
+
+- Dostęp do Twojego [danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
+- [Badanie urządzenia](how-to-investigate-device.md)
+- Poznawanie i eksplorowanie [zalecenia dotyczące zabezpieczeń](concept-recommendations.md)
+- Poznawanie i eksplorowanie [alerty zabezpieczeń](concept-security-alerts.md)

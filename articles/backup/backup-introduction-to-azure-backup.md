@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 98acb6c5b83ce31046b50f744492c518cdf77498
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994414"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621655"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Omówienie funkcji usługi Azure Backup
 Azure Backup to oparta na platformie Azure usługa, która umożliwia tworzenie kopii zapasowej (lub ochronę) i przywracanie danych w chmurze Microsoft Cloud. Usługa Azure Backup pozwala zastąpić dotychczasowe rozwiązania tworzenia kopii zapasowych, istniejące lokalnie lub poza siedzibą firmy, rozwiązaniem opartym na chmurze, które jest niezawodne, bezpieczne i konkurencyjne cenowo. Usługa Azure Backup oferuje wiele składników, które możesz pobrać i wdrożyć na odpowiednim komputerze, serwerze lub w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki usługi Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Recovery Services na platformie Azure. Informacje o tym, jakich składników należy użyć do ochrony konkretnych danych, aplikacji lub obciążeń, znajdują się w [tabeli składników usługi Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (w dalszej części tego artykułu).
@@ -37,7 +37,11 @@ Tradycyjne rozwiązania do tworzenia kopii zapasowych rozwinęły się w kierunk
 
 **Nieograniczony transfer danych** — usługa Azure Backup nie ogranicza ilości przesyłanych danych przychodzących i wychodzących. W usłudze Azure Backup nie są również naliczane opłaty za przesyłane dane. Jeśli jednak używasz usługi Azure Import/Export do importowania dużych ilości danych, istnieje koszt związany z danymi przychodzącymi. Aby uzyskać więcej informacji o tym koszcie, zobacz [Offline-backup workflow in Azure Backup](backup-azure-backup-import-export.md) (Przepływ pracy tworzenia kopii zapasowej offline w usłudze Azure Backup). Dane wychodzące to dane transferowane z magazynu usługi Recovery Services podczas operacji przywracania.
 
-**Szyfrowanie danych** — szyfrowanie danych umożliwia bezpieczną transmisję i przechowywanie danych w chmurze publicznej. Hasło szyfrowania przechowujesz lokalnie i nigdy nie jest ono przesyłane ani przechowywane na platformie Azure. Jeśli jest konieczne przywrócenie jakichkolwiek danych, tylko Ty masz hasło lub klucz szyfrowania.
+**Szyfrowanie danych**:
+- W środowisku lokalnym, przesyłane dane są szyfrowane na maszynie lokalnej przy użyciu AES256. Dane przesyłane jest chroniony przez protokół HTTPS między magazynu i kopii zapasowych. Protokół iSCSI zabezpiecza dane przesyłane między kopią zapasową i komputera użytkownika. Bezpiecznego tunelowania jest używany do ochrony kanału iSCSI.
+- W przypadku środowiska lokalnego do usługi Azure backup dane na platformie Azure jest zaszyfrowanych danych w spoczynku przy użyciu hasła, podane podczas konfigurowania kopii zapasowej. Hasło lub klucz nigdy nie jest on przesyłane ani przechowywane na platformie Azure. Jeśli jest konieczne przywrócenie jakichkolwiek danych, tylko Ty masz hasło lub klucz szyfrowania.
+- W przypadku maszyn wirtualnych platformy Azure, dane są szyfrowane przy użyciu szyfrowania usługi Storage (SSE) na resetowanie. Kopia zapasowa automatycznie szyfruje dane przed przekazaniem jej. Usługa Azure Storage odszyfrowuje dane przed ich pobraniem.
+- Kopia zapasowa obsługuje również maszyn wirtualnych platformy Azure, zaszyfrowane za pomocą szyfrowania dysków Azure (ADE). [Dowiedz się więcej](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 
 **Kopia zapasowa spójna na poziomie aplikacji** — kopia zapasowa spójna na poziomie aplikacji oznacza, że punkt odzyskiwania ma wszystkie dane wymagane do przywrócenia kopii zapasowej. Usługa Azure Backup umożliwia wykonywanie kopii zapasowych spójnych na poziomie aplikacji, które zapewniają, że do przywrócenia danych nie są wymagane dodatkowe poprawki. Przywracanie danych spójnych na poziomie aplikacji skraca czas przywracania, co pozwala szybko powrócić do stanu roboczego.
 
@@ -83,10 +87,10 @@ W poniższej tabeli przedstawiono składniki usługi Azure Backup obsługiwane w
 
 **Składnik** | **Linux (zatwierdzony przez Azure)**
 --- | ---
-Agent usługi Azure Backup (MARS) | Nie (tylko agent oparty na systemie Windows)
-System Center DPM | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure
+Agent usługi Azure Backup (MARS) | Nie (oparte na Windows agent tylko)
+System Center DPM | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych funkcji Hyper-V i maszyn wirtualnych programu VMWare systemu Linux gościa</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure
 Azure Backup Server | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure
-Usługa Backup dla maszyn wirtualnych IaaS platformy Azure | Spójna na poziomie aplikacji kopia zapasowa korzystająca ze [struktury skryptów uruchamianych przed utworzeniem i po utworzeniu](backup-azure-linux-app-consistent.md)<br/><br/> [Odzyskiwanie na poziomie plików](backup-azure-restore-files-from-vm.md)<br/><br/> [Tworzenie maszyny wirtualnej na podstawie przywróconego dysku](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Tworzenie maszyny wirtualnej na podstawie punktu odzyskiwania](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
+Usługa Backup dla maszyn wirtualnych IaaS platformy Azure | Spójna na poziomie aplikacji kopia zapasowa korzystająca ze [struktury skryptów uruchamianych przed utworzeniem i po utworzeniu](backup-azure-linux-app-consistent.md)<br/><br/> [Odzyskiwanie na poziomie plików](backup-azure-restore-files-from-vm.md)<br/><br/> [Tworzenie maszyny wirtualnej na podstawie przywróconego dysku](backup-azure-arm-restore-vms.md#restore-disks)<br/><br/> [Tworzenie maszyny wirtualnej na podstawie punktu odzyskiwania](backup-azure-arm-restore-vms.md#create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Korzystanie z maszyn wirtualnych usługi Premium Storage przy użyciu usługi Azure Backup
 Usługa Azure Backup chroni maszyny wirtualne usługi Premium Storage. Azure Premium Storage to magazyn oparty na dyskach SSD i zaprojektowany z myślą o obsłudze dużych obciążeń wejścia/wyjścia. Usługa Premium Storage jest atrakcyjna dla obciążeń maszyn wirtualnych. Aby uzyskać więcej informacji o usłudze Premium Storage i innych typach dysków, zobacz artykuł dotyczący [wybierania typu dysku](../virtual-machines/windows/disks-types.md).

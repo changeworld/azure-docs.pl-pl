@@ -1,7 +1,7 @@
 ---
 title: Składnia wyrażenia OData, filtry i klauzuli order by klauzule — usługa Azure Search
 description: Filtr klauzuli order by wyrażenia i składnia OData dla zapytań usługi Azure Search.
-ms.date: 01/31/2019
+ms.date: 03/27/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8445ab2c8797226b08519e2f186350a31416f049
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541064"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578411"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Składnia wyrażenia OData, filtry i klauzule w klauzuli order by w usłudze Azure Search
 
@@ -207,7 +207,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-Znajdź wszystkie hotele o nazwie równa albo Roach motel "lub"Budżetu hotel"):  
+Znajdź wszystkie hotele o nazwie równa "motel Roach" lub "Budżetu hotel"). Zwroty zawierają spacje, który jest domyślnym ogranicznikiem. Aby określić zastąpienie ogranicznik, należy dołączyć nowy ogranicznik w pojedynczym cudzysłowie jako część wyrażenia filtru:  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -223,6 +223,12 @@ Znajdź wszystkie hotele za pomocą znacznika "sieć Wi-Fi" lub "puli":
 
 ```
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
+```
+
+Znajdź dopasowanie w wielu tagów "podgrzewanego ręczników stojakami" ani uwzględniony hairdryer. Pamiętaj, aby określić alternatywne ogranicznik, gdy miejsca na domyślnym ogranicznikiem jest niedziałającym. 
+
+```
+$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
 ```
 
 Znajdź wszystkie hotele bez tagu "motel" ani "podręcznego":  

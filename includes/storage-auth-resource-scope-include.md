@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ad4b244b58d741ad45463297df5bd358f3ae9918
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: a50eb45291ada23f55057f3c440c5b8b23cc4bce
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58450027"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622641"
 ---
 Przed przypisaniem roli RBAC do podmiotu zabezpieczeń, należy określić zakres dostępu, którą powinien posiadać podmiotu zabezpieczeń. Najlepsze rozwiązania określają, że zawsze najlepiej jest udzielić tylko to możliwe najwęższego zakresu.
 
@@ -24,3 +24,6 @@ Na poniższej liście opisano poziomów, w których możesz ograniczyć dostęp 
 - **Konto magazynu.** W tym zakresie podmiotu zabezpieczeń ma dostęp do wszystkich kontenerów i ich obiektów blob lub wszystkich kolejek i ich wiadomości.
 - **Grupa zasobów.** W tym zakresie podmiotu zabezpieczeń ma dostęp do wszystkich kontenerów lub kolejek we wszystkich kont magazynu w grupie zasobów.
 - **Subskrypcja.** W tym zakresie podmiotu zabezpieczeń ma dostęp do wszystkich kontenerów lub kolejek we wszystkich kont magazynu we wszystkich grupach zasobów w subskrypcji.
+
+> [!IMPORTANT]
+> Jeśli Twoja subskrypcja obejmuje przestrzeni nazw usługi Azure DataBricks, role przypisane w zakresie subskrypcji zostanie zablokowany udzielanie dostępu do danych obiektów blob i kolejek.

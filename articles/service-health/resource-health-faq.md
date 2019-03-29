@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
 ms.workload: Supportability
-ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b4062b3f0bc389de4403ac81b56688508f5ea50e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884549"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579567"
 ---
 # <a name="azure-resource-health-faq"></a>Usługa Azure Resource Health — często zadawane pytania
 Dowiedz się, odpowiedzi na często zadawane pytania dotyczące usługi Azure Resource Health.
@@ -50,7 +50,7 @@ Tak, gdy zasób jest niedostępny, usługa Resource Health identyfikuje główn�
 W portalu akcji zainicjowanej przez użytkownika są wyświetlane, za pomocą ikony powiadomień niebieski, podczas planowanych i nieplanowanych zdarzeń są wyświetlane przy użyciu czerwona ikona ostrzeżenia. Szczegółowe informacje znajdują się w [Przegląd kondycji zasobów](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Za pomocą narzędzi do monitorowania można zintegrować Resource Health?
-Usługa Resource health to usługa przeznaczona do pomagają zdiagnozować i rozwiązać problemy z usług platformy Azure, które mają wpływ na Twoje zasoby. Podczas korzystania z interfejsu API kondycji zasobów, aby programowo uzyskać stan kondycji, zalecamy metryki do monitorowania zasobów. Po wykryciu problemu usługa Resource Health pomaga w określeniu głównych przyczyn i przeprowadzi Cię przez czynności pozwalających im sprostać. Odwiedź stronę [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) Aby dowiedzieć się więcej na temat wykorzystania metryki Aby sprawdzić swoje zasoby.
+Kondycja zasobu ma [pomocy technicznej w wersji zapoznawczej](resource-health-alert-arm-template-guide.md) dla alertów opartych na dzienniku aktywności. Dziennik aktywności alerty użyj [grup akcji](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/action-groups) powiadomienie użytkowników, czy alert został wywołany. Grupy akcji obsługują różne kanały powiadomień, takie jak wiadomości e-mail, wiadomości SMS, element webhook i akcje ITSM.
 
 ## <a name="where-do-i-find-resource-health"></a>Gdzie znaleźć Resource Health?
 Po zalogowaniu się do witryny Azure portal istnieje wiele sposobów, możesz uzyskać dostęp Resource Health:
@@ -67,13 +67,7 @@ Lista kontroli kondycji i typy zasobów, obsługiwane w usłudze Resource Health
 Sprawdzanie kondycji zasobu, tuż poniżej stan kondycji można kliknąć **raportu niepoprawny stan kondycji**. Przed przesłaniem raportu, masz możliwość udostępniające dodatkowe szczegóły dotyczące dlaczego uważasz, że bieżący stan kondycji jest nieprawidłowy.
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>Jest dostępna dla wszystkich regionów świadczenia usługi Azure Resource Health? 
-Usługa Resource health jest dostępna w we wszystkich regionach geograficznych systemu Azure z wyjątkiem następujących regionów:
-- Administracja USA — Wirginia
-- US Gov Iowa
-- US DoD — wschodnie stany
-- US DoD — środkowe stany
-- Niemcy Środkowe
-- Niemcy Północno-Wschodnie
+Usługa Resource health jest dostępny w wszystkich regionach geograficznych systemu Azure.
 
 ## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Jak jest inny niż stan usługi Azure lub pulpit nawigacyjny kondycji usługi Resource Health?
 Dostarczonych przez usługę Resource Health jest bardziej szczegółowe niż dostarczanych przez stan platformy Azure lub pulpit nawigacyjny kondycji usługi.

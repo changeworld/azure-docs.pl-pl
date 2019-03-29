@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 1a8bfbe12156156944d4527ebb11fa6f1a1de544
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c27d92a330d82cb8638a970602f2a8d0ce2e79c2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977239"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579754"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Ustawia pionowe skalowania automatycznego za pomocą skalowania maszyn wirtualnych
 
@@ -43,16 +43,52 @@ Możesz skonfigurować skalowanie w pionie być wyzwalane na podstawie alertów 
 4. Dodawanie alertu do Twojej maszyny wirtualnej zestawu skalowania przy użyciu powiadomień elementu webhook.
 
 > [!NOTE]
-> Automatyczne skalowanie w pionie może występować tylko w określonym zakresie rozmiarów maszyn wirtualnych. Porównanie specyfikacji każdego rozmiaru przed podjęciem decyzji o Skaluj od jednej do innego (większa liczba zostanie podana nie zawsze wskazuje większy rozmiar maszyny Wirtualnej). Możesz skalować między następujące pary rozmiarów:
+> Ze względu na rozmiar pierwszej maszyny wirtualnej, rozmiary, które mogą być skalowane, może być ograniczona z powodu dostępności o innych rozmiarach w klastrze bieżącej maszyny wirtualnej jest wdrożony w. W opublikowanych elementów runbook usługi automation używane w tym artykule zajmie się tym przypadku firma Microsoft i można skalować tylko w ramach poniżej pary rozmiar maszyny Wirtualnej. Oznacza to, że Standard_D1v2 maszyny wirtualnej będzie nie nagle skalowany w górę aby maszyna wirtualna Standard_G5 lub skalowane w dół do Basic_A0. Ponadto ograniczone maszyny wirtualnej rozmiary skalowanie w górę/w dół nie jest obsługiwana. Możesz skalować między następujące pary rozmiarów:
 > 
 > | Rozmiary maszyn wirtualnych, skalowanie parę |  |
 > | --- | --- |
-> | Standardowa_A0 |Standardowa_A11 |
-> | Standardowa_D1 |Standardowa_D14 |
-> | Standardowa_DS1 |Standardowa_DS14 |
-> | Standard_D1v2 |Standard_D15v2 |
+> | Basic_A0 |Basic_A4 |
+> | Standardowa_A0 |Standardowa_A4 |
+> | Standardowa_A5 |Standardowa_A7 |
+> | Standard_A8 |Standard_A9 |
+> | Standardowa_A10 |Standardowa_A11 |
+> | Standardowa_A1_v2 |Standardowa_A8_v2 |
+> | Standardowa_A2m_v2 |Standardowa_A8m_v2  |
+> | Standard_B1s |Standard_B2s |
+> | Standard_B1ms |Standard_B8ms |
+> | Standardowa_D1 |Standardowa_D4 |
+> | Standardowa_D11 |Standardowa_D14 |
+> | Standardowa_DS1 |Standardowa_DS4 |
+> | Standardowa_DS11 |Standardowa_DS14 |
+> | Standardowa_D1_v2 |Standardowa_D5_v2 |
+> | Standardowa_D11_v2 |Standardowa_D14_v2 |
+> | Standardowa_DS1_v2 |Standardowa_DS5_v2 |
+> | Standardowa_DS11_v2 |Standardowa_DS14_v2 |
+> | Standardowa_D2_v3 |Standard_D64_v3 |
+> | Standardowa_D2s_v3 |Standard_D64s_v3 |
+> | Standard_DC2s |Standard_DC4s |
+> | Standardowa_E2_v3 |Standardowa_E64_v3 |
+> | Standardowa_E2s_v3 |Standardowa_E64s_v3 |
+> | Standardowa_F1 |Standardowa_F16 |
+> | Standardowa_F1s |Standardowa_F16s |
+> | Standard_F2sv2 |Standard_F72sv2 |
 > | Standardowa_G1 |Maszyna wirtualna Standard_G5 |
 > | Standardowa_GS1 |Standard_GS5 |
+> | Standardowa_H8 |Standardowa_H16 |
+> | Standardowa_H8m |Standardowa_H16m |
+> | Standardowa_L4s |Standardowa_L32s |
+> | Standard_L8s_v2 |Standard_L80s_v2 |
+> | Warstwie standardowa_m8ms  |Maszyna wirtualna Standard_M128ms |
+> | Warstwie standardowa_m32ls  |Warstwie standardowa_m64ls |
+> | Maszyna wirtualna Standard_M64s  |Maszyna wirtualna Standard_M128s |
+> | Standard_M64  |Standard_M128 |
+> | Standard_M64m  |Standard_M128m |
+> | Standardowa_NC6 |Standardowa_NC24 |
+> | Standard_NC6s_v2 |Standard_NC24s_v2 |
+> | Standard_NC6s_v3 |Standard_NC24s_v3 |
+> | Standard_ND6s |Standard_ND24s |
+> | Standardowa_NV6 |Standardowa_NV24 |
+> | Standard_NV6s_v2 |Standard_NV24s_v2 |
 > 
 > 
 
@@ -64,7 +100,7 @@ Pierwszą rzeczą, jaką należy wykonać jest utworzyć konto usługi Azure Aut
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importowanie elementów runbook usługi Azure Automation pionowy skalowania w ramach subskrypcji
 Elementy runbook konieczne skalowanie w pionie Twoje zestawy skalowania maszyn wirtualnych są już opublikowany w galerii elementów Runbook automatyzacji Azure. Aby zaimportować je do subskrypcji postępuj zgodnie z instrukcjami w tym artykule:
 
-* [Galeria elementów Runbook i modułów usługi Azure Automation](../automation/automation-runbook-gallery.md)
+* [Galerie elementów Runbook i modułów dla usługi Azure Automation](../automation/automation-runbook-gallery.md)
 
 Wybierz opcję Przeglądaj galerię menu elementów Runbook:
 

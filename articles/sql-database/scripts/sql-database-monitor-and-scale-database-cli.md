@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 18d4127e8babfcb541312d14b80d2d5477feb331
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 3493a248f557e93b770cf6c48ace84754791f3cd
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766440"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621959"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Monitorowanie i skalowanie pojedynczej bazy danych SQL
 
@@ -52,12 +52,12 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer usługi SQL Database hostujący pojedyncze bazy danych i elastyczne pule. |
-| [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql/db) | Pokazuje informacje o użyciu rozmiaru dla pojedynczej bazy danych lub bazy danych w puli. |
+| [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql#az-sql-show-usage) | Pokazuje informacje o użyciu rozmiaru dla pojedynczej bazy danych lub bazy danych w puli. |
 | [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Aktualizuje właściwości bazy danych (takie jak poziom wydajności lub rozmiar obliczeniowy) lub przenosi bazę danych do pul elastycznych, poza nie lub między nimi. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 |||
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

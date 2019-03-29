@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: f39fee9b59dfec643a640a4e17460ed9199c858f
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 23af0d9e2d7c4033a2457676b29b5e4b2f8c15ea
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542070"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579448"
 ---
 # <a name="asc-for-iot-security-alerts"></a>ASC alerty zabezpieczeń IoT
 
@@ -27,8 +27,15 @@ ms.locfileid: "58542070"
 > ASC IoT jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza jest dostarczane bez umowy dotyczącej poziomu usług, a nie jest zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+ASC IoT w sposób ciągły analizuje rozwiązania IoT przy użyciu zaawansowanych analizę zagrożeń ostrzega o złośliwych działań.
+Ponadto możesz utworzyć niestandardowe alerty bazujące na swojej wiedzy na temat urządzenia oczekiwane zachowanie.
+Alert działa jako wskaźnik comprise, należy zbadać i skorygować.
 
-## <a name="device-alerts"></a>Alerty urządzeń
+W tym artykule znajdziesz listę wbudowanych alertów, które mogą być wyzwalane na usługi IoT Hub i/lub urządzeń IoT.
+Obok wbudowanych alert ASC IoT pozwala na zdefiniowanie niestandardowe alerty bazujące na Hub oczekiwane i/lub zachowania urządzeń.
+Aby uzyskać więcej informacji, zobacz [tworzyć niestandardowe alerty](quickstart-create-custom-alerts.md).
+
+## <a name="built-in-alerts-for-iot-devices"></a>Wbudowane alerty dla urządzeń IoT
 
 | Ważność | Name (Nazwa)                                                   | Źródło danych | Opis                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------|--------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -72,7 +79,7 @@ ms.locfileid: "58542070"
 | Małe      | Historia bash wyczyszczone                                   | Agent       | Czyszczenie dziennika historii powłoki bash. Przeciwników można ukryć swoje własne polecenia z pojawiają się w dziennikach                                                                                                                                                                                                                                                                                                                                                   |
 | Małe      | Nie powiodło się atak siłowy                                      | Agent       | Wielokrotne próby Nieudane logowanie zidentyfikowane. Próby i zakończonych niepowodzeniem słownikowym życie ataków została wprowadzona na urządzeniu.                                                                                                                                                                                                                                                                                                                                                  |
 
-## <a name="iot-hub-alerts"></a>Alerty usługi IoT Hub
+## <a name="built-in-alerts-for-iot-hub"></a>Alerty wbudowane usługi IoT Hub
 
 | Ważność | Name (Nazwa)                                                                         | Opis                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -88,4 +95,4 @@ ms.locfileid: "58542070"
 
 - [Omówienie](overview.md)
 - [Dostęp do danych zabezpieczeń](how-to-security-data-access.md)
-- [Badanie urządzenia](tutorial-investigate-device.md)
+- [Badanie urządzenia](how-to-investigate-device.md)

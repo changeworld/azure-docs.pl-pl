@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2018
 ms.author: monhaber
-ms.openlocfilehash: 2ce3a94b7ea4745ec3727e508cd10bb580a74c98
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cabd3d58c3b6bf76b294e1edf1cf94aad5d30f2f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401031"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578955"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM), zestawy skalowania maszyn wirtualnych, kontenerach IaaS i komputery spoza platformy Azure (z uwzględnieniem lokalnej) do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Agent Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -286,7 +286,7 @@ Program Microsoft Monitoring Agent, można zainstalować ręcznie, dzięki czemu
    3. Wypełnij konfiguracji publicznej i prywatnej konfiguracji następującymi wartościami:
      
            $PublicConf = '{
-               "workspaceId": "WorkspaceID value",
+               "workspaceId": "WorkspaceID value"
            }' 
  
            $PrivateConf = '{

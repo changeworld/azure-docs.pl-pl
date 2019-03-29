@@ -1,6 +1,6 @@
 ---
-title: Kończenie przeglądu dostępu grup lub aplikacji w przeglądach dostępu usługi Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zakończyć Przegląd dostępu członków grupy lub dostęp do aplikacji w przeglądach dostępu usługi Azure AD.
+title: Kończenie przeglądu dostępu grup lub aplikacji — Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zakończyć Przegląd dostępu członków grupy lub dostęp do aplikacji w przeglądów dostępu w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729614"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579601"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Kończenie przeglądu dostępu grup lub aplikacji w przeglądach dostępu usługi Azure AD
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Kończenie przeglądu dostępu grup lub przeglądów dostępu dla aplikacji w usłudze Azure AD
 
 Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [tworzenia przeglądów dostępu](create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji. Usługa Azure AD automatycznie wysyła wiadomość e-mail z monitami, aby przeprowadzić przegląd dostępu recenzentów. Jeśli użytkownik nie otrzymasz wiadomość e-mail, możesz wysłać im instrukcje [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md). (Należy zauważyć, że goście, którzy są przypisywane recenzentów, ale nie zaakceptowali zaproszenia nie otrzyma wiadomość e-mail z przeglądów dostępu, zgodnie z ich musisz najpierw zaakceptować zaproszenie przed przeglądania.) Po zakończeniu okresu przeglądu dostępu lub administrator zatrzymuje przeglądu dostępu, wykonaj kroki opisane w tym artykule, aby zobaczyć i zastosować wyniki.
 

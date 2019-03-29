@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903627"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619836"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostyka ujednoliconego transakcji między składnikami
 
@@ -32,7 +32,7 @@ Składniki są niezależne wdrażanym poszczególnych części aplikacji rozpros
 * Składniki mogą być oddzielnych kluczy Instrumentacji usługi Application Insights (nawet jeśli różnią się subskrypcje) lub różne role, raportowanie do jednego klucza Instrumentacji usługi Application Insights. Nowe środowisko zawiera szczegóły dotyczące wszystkich składników, niezależnie od tego, jak one zostały skonfigurowane.
 
 > [!NOTE]
-> * **Brak łączy powiązanych elementów?** Wszystkie powiązane dane telemetryczne są w [górnej](#cross-component-transaction-chart) i [dolnej](#all-telemetry-with-this-Operation-Id) sekcje po lewej stronie. 
+> * **Brak łączy powiązanych elementów?** Wszystkie powiązane dane telemetryczne są w [górnej](#cross-component-transaction-chart) i [dolnej](#all-telemetry-with-this-operation-id) sekcje po lewej stronie. 
 
 ## <a name="transaction-diagnostics-experience"></a>Środowisko Diagnostyka transakcji
 Ten widok składa się z czterech części klucza: wyniki listy, wykres transakcji międzyskładnikowych, listę sekwencję czasową wszystkie dane telemetryczne dotyczące tej operacji i okienka szczegółów dla każdego elementu wybranego telemetrii po lewej stronie.

@@ -1,6 +1,6 @@
 ---
-title: Pobieranie wyników przeglądu dostępu dla grup i aplikacji w przeglądach dostępu usługi Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak pobrać wyników przeglądu dostępu dla członków grupy lub dostęp do aplikacji w przeglądach dostępu usługi Azure AD.
+title: Pobieranie wyników przeglądu dostępu dla grup i aplikacji w - przeglądów dostępu w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pobrać wyników przeglądu dostępu dla członków grupy lub dostęp do aplikacji w przeglądów dostępu w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2516e61b6b86c3d2cee164cfcb80a1f938922908
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eae4bafb3eefcee2785c784030d7be8dde66988e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839648"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578717"
 ---
-# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>Pobieranie wyników przeglądu dostępu dla grup i aplikacji w przeglądach dostępu usługi Azure AD
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>Pobieranie przeglądu dostępu przeglądów dostępu z wyników dla grupy lub aplikacji w usłudze Azure AD
 
 Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [tworzenia przeglądów dostępu](create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji.  Użytkownik, który znajduje się w **administratora globalnego**, **administrator użytkowników**, **administrator zabezpieczeń** lub **Czytelnik zabezpieczeń** roli może również Przeczytaj wyników przeglądu dostępu.  Aby przypisać użytkowników do jednej z tych ról, administratorem ról uprzywilejowanych umożliwia usłudze Azure AD PIM udzielić użytkownikowi uprawnień do aktywacji roli lub administrator globalny można trwale [przypisać użytkownika do roli](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 

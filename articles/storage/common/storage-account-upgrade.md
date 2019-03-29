@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: a1ee95ad847d20159c79af8f080cc7878e114759
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444532"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578930"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnienie do konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -21,7 +21,7 @@ Konta magazynu ogólnego przeznaczenia v2 obsługi najnowszych funkcji usługi A
 Uaktualnienie do konta magazynu ogólnego przeznaczenia v2 z Twojej ogólnego przeznaczenia w wersji 1 lub kont usługi Blob storage jest proste. Można uaktualnić za pomocą witryny Azure portal, programu PowerShell lub wiersza polecenia platformy Azure.
 
 > [!IMPORTANT]
-> Uaktualnianie ogólnego przeznaczenia w wersji 1 lub konta magazynu usługi Blob storage do ogólnego przeznaczenia w wersji 2 jest trwały i nie można cofnąć.
+> Uaktualnianie ogólnego przeznaczenia w wersji 1 lub konta usługi Blob storage do ogólnego przeznaczenia w wersji 2 jest trwały i nie można cofnąć.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Uaktualnianie za pomocą witryny Azure portal
 

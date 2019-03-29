@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 6f878e05255be8f65868d8d1dcdbacb3ccfa2729
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 6baeb27855381ca03862f2632d31c628a088af39
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369942"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620618"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Bezpieczny dostęp w usłudze Azure Logic Apps
 
@@ -52,7 +52,7 @@ Podpis jest generowana z użyciem algorytm SHA256 za pomocą klucza dostępu do 
 Poniżej przedstawiono więcej informacji na temat zabezpieczania dostępu za pomocą sygnatura dostępu współdzielonego:
 
 * [Wygeneruj ponownie klucze dostępu](#access-keys)
-* [Utwórz wygasające adresów URL wywołania zwrotnego](#expiring-URLs)
+* [Utwórz wygasające adresów URL wywołania zwrotnego](#expiring-urls)
 * [Tworzyć adresy URL z kluczem podstawowym lub pomocniczym](#primary-secondary-key)
 
 <a name="access-keys"></a>

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie tożsamościami w usłudze Azure AD | Dokumentacja firmy Microsoft
-description: Zarządzanie tożsamościami w usłudze Azure AD umożliwia zrównoważenia organizacji na potrzeby zabezpieczeń i pracownikom produktywność dzięki odpowiednie procesy i widoczności.
+title: Zarządzanie tożsamościami — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Zarządzanie tożsamościami w usłudze Azure Active Directory umożliwia zrównoważenia organizacji na potrzeby zabezpieczeń i pracownikom produktywność dzięki odpowiednie procesy i widoczności.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304399905e9dfd37557a342248c829c1f940452b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167606"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579720"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co to jest Zarządzanie tożsamościami usługi Azure AD?
 
@@ -77,7 +77,7 @@ Następujące konfiguracje oferują przewodnika po to, jakie zasady linii bazowe
 - [Co to jest przegląd dostępu?](access-reviews-overview.md)
 - [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu](manage-user-access-with-access-reviews.md)
 - [Zarządzanie dostępem gości za pomocą przeglądów dostępu](manage-guest-access-with-access-reviews.md)
-- [Uruchamianie przeglądu dostępu z rolą katalogu](../privileged-identity-management/pim-how-to-start-security-review.md)
+- [Uruchamianie przeglądu dostępu ról usługi Azure AD](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 

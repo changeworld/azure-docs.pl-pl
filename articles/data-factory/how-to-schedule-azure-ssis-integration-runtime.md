@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 0b84f02d11e278950e4e44874e7b1af9da58f83f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092450"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621638"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchamiać i zatrzymywać środowisko Azure-SSIS Integration Runtime zgodnie z harmonogramem
 W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania środowiska Azure-SSIS Integration Runtime (IR) przy użyciu usługi Azure Data Factory (ADF). Azure-SSIS IR to ADF obliczenia zasobów dedykowanych do wykonywania pakietów usług SQL Server Integration Services (SSIS). Uruchamianie środowiska Azure-SSIS IR ma koszt związany z nim. W związku z tym zazwyczaj chcesz uruchomić środowiska IR tylko wtedy, gdy konieczne wykonywanie pakietów usług SSIS na platformie Azure i Zatrzymaj środowiska IR, gdy nie trzeba go dłużej. Możesz użyć usługi ADF interfejsu użytkownika (UI) / aplikacji lub programu Azure PowerShell [ręcznie rozpocząć lub zatrzymać środowiska IR](manage-azure-ssis-integration-runtime.md)).
@@ -94,7 +94,7 @@ Jeśli utworzysz trzeci wyzwalacz, który jest zaplanowane do uruchomienia codzi
   
     2. Dla **metoda**, wybierz opcję **WPIS**. 
     3. Aby uzyskać **treści**, wprowadź `{"message":"Start my IR"}`. 
-    4. Dla **uwierzytelniania**, wybierz opcję **MSI** Aby użyć tożsamości zarządzanej dla usługi ADF, zobacz [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) artykuł, aby uzyskać więcej informacji.
+    4. Dla **uwierzytelniania**, wybierz opcję **MSI** Aby użyć tożsamości zarządzanej dla usługi ADF, zobacz [tożsamości zarządzanej przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) artykuł, aby uzyskać więcej informacji.
     5. Aby uzyskać **zasobów**, wprowadź `https://management.azure.com/`.
     
        ![Harmonogram działania w sieci Web usługi ADF środowisko SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
@@ -348,7 +348,7 @@ Poniższa sekcja zawiera instrukcje tworzenia elementu runbook programu PowerShe
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Tworzenie harmonogramów dla elementu runbook można uruchomić/zatrzymać środowisko Azure-SSIS IR
 
-W poprzedniej sekcji opisano tworzenie elementu runbook usługi Azure Automation, który może rozpocząć lub zatrzymać Azure-SSIS IR. W tej sekcji utworzysz dwa harmonogramy dla elementu runbook. Podczas konfigurowania pierwszego harmonogramu, należy określić **START** dla **operacji**. Podobnie podczas konfigurowania drugi, należy określić **ZATRZYMAĆ** dla **operacji**. Aby uzyskać szczegółowy opis kroków tworzenia harmonogramów, zobacz [Utwórz harmonogram](../automation/automation-schedules.md#creating-a-schedule) artykułu.
+W poprzedniej sekcji opisano tworzenie elementu runbook usługi Azure Automation, który może rozpocząć lub zatrzymać Azure-SSIS IR. W tej sekcji utworzysz dwa harmonogramy dla elementu runbook. Podczas konfigurowania pierwszego harmonogramu, należy określić **START** dla **operacji**. Podobnie podczas konfigurowania drugi, należy określić **ZATRZYMAĆ** dla **operacji**. Aby uzyskać szczegółowy opis kroków tworzenia harmonogramów, zobacz [Utwórz harmonogram](../automation/shared-resources/schedules.md#creating-a-schedule) artykułu.
 
 1. W **Runbook** wybierz **harmonogramy**i wybierz **+ Dodaj harmonogram** na pasku narzędzi. 
 

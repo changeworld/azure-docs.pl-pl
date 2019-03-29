@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 8fb60f36bbc7c8886c1f465177a11224a1c90659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541251"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621927"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Dokumentacja modelu danych szablonu usługi Azure API Management
 W tym temacie opisano reprezentacji jednostek i typów dla wspólne elementy używane w ramach modeli danych dla szablonów portalu dla deweloperów w usłudze Azure API Management.  
@@ -162,7 +162,7 @@ Portalu dla deweloperów, nie jest dostępne w warstwie zużycia.
 ##  <a name="Header"></a> Nagłówek  
  W tej sekcji opisano `parameter` reprezentacji.  
   
-|Właściwość|Opis|Type|  
+|Właściwość|Typ|Opis|  
 |--------------|-----------------|----------|  
 |`name`|string|Nazwa parametru.|  
 |`description`|string|Opis parametru.|  
@@ -239,7 +239,7 @@ Portalu dla deweloperów, nie jest dostępne w warstwie zużycia.
 ##  <a name="Parameter"></a> Parametr  
  W tej sekcji opisano `parameter` reprezentacji.  
   
-|Właściwość|Opis|Type|  
+|Właściwość|Typ|Opis|  
 |--------------|-----------------|----------|  
 |`name`|string|Nazwa parametru.|  
 |`description`|string|Opis parametru.|  

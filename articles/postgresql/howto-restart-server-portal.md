@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: 83947571ed835c53c6cf8da6e73deb8dceabdd62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168779"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621834"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Uruchom ponownie usługi Azure Database for PostgreSQL przy użyciu witryny Azure portal
 W tym temacie opisano, jak można uruchomić ponownie usługi Azure Database for postgresql w warstwie serwera. Może być konieczne ponowne uruchomienie serwera ze względu na konserwację powoduje krótki przestój serwera wykonuje operację.
@@ -22,7 +22,7 @@ Czas wymagany do ukończenia ponownego uruchomienia, zależy od procesu odzyskiw
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby ukończyć ten przewodnik, potrzebne są:
-- [— Azure Database for postgresql w warstwie serwera i bazy danych](quickstart-create-server-database-portal.md)
+- [— Azure Database for postgresql w warstwie serwera](quickstart-create-server-database-portal.md)
 
 ## <a name="perform-server-restart"></a>Wykonania ponownego uruchomienia serwera
 

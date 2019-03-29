@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 7c8f256cf91a479c45f21b933efdb6a5e0212796
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7de4307f7eef95a637dc828ac1738bd0ed39c7c7
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541875"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578462"
 ---
 # <a name="security-agent-reference-architecture"></a>Architektura referencyjna agenta zabezpieczeń
 
@@ -32,15 +32,15 @@ ASC IoT udostępnia architekturę referencyjną dla agentów zabezpieczeń, któ
 
 Agentów zabezpieczeń zostały zaprojektowane do pracy w środowisku IoT ograniczone i są wysoce dostosowywalne pod względem wartości, które zapewniają w porównaniu do zasoby, z których korzystają.
 
-Zabezpieczenia agentów obsługuje następujące funkcje rozwiązania IoT:
+Zabezpieczenia agentów obsługuje następujące funkcje:
 
-- Gromadzenie zdarzeń zabezpieczeń pierwotnych z podstawowego systemu operacyjnego (Linux, Windows). Aby dowiedzieć się więcej na temat modułów zbierających dane zabezpieczeń dostępne, zobacz [ASC konfiguracji agenta IoT](concept-agent-configuration.md).
+- Zbieranie zdarzeń zabezpieczeń pierwotne od zasadniczego systemu operacyjnego (Linux, Windows). Aby dowiedzieć się więcej na temat modułów zbierających dane zabezpieczeń dostępne, zobacz [ASC konfiguracji agenta IoT](how-to-agent-configuration.md).
 
 - Agregowanie zdarzeń zabezpieczeń pierwotnych do komunikaty wysyłane za pośrednictwem usługi IoT hub.
 
 - Uwierzytelnianie za pomocą istniejących tożsamości urządzenia lub tożsamości dedykowanych modułu. Zobacz [metody uwierzytelniania agenta zabezpieczeń](concept-security-agent-authentication-methods.md) Aby dowiedzieć się więcej.
 
-- Skonfiguruj zdalne za pośrednictwem **ascforiot** bliźniaczą reprezentację modułu. Aby dowiedzieć się więcej, zobacz [skonfigurować ASC agenta IoT](concept-agent-configuration.md).
+- Skonfiguruj zdalne za pośrednictwem **azureiotsecurity** bliźniaczą reprezentację modułu. Aby dowiedzieć się więcej, zobacz [skonfigurować ASC agenta IoT](how-to-agent-configuration.md).
 
 ASC agentów zabezpieczeń IoT są tworzone jako projekty typu open source i są dostępne w witrynie GitHub: 
 
@@ -62,10 +62,8 @@ W tym artykule opisano ASC architektury agenta zabezpieczeń IoT i dostępne pli
 
 Aby kontynuować wprowadzenie do usługi ASC dla wdrożenia IoT, skorzystaj z poniższych artykułów:
 
-
+- Zrozumienie [metody uwierzytelniania agenta zabezpieczeń](concept-security-agent-authentication-methods.md)
+- Wybierz, a następnie wdrożyć [agent zabezpieczeń](how-to-deploy-agent.md)
 - Zapoznaj się z usługą ASC dla IoT [usługi wymagań wstępnych](service-prerequisites.md)
 - Dowiedz się, jak [ASC włączyć dla usługi IoT w usłudze IoT Hub](quickstart-onboard-iot-hub.md)
-- Użycia opcji szybkiego startu, aby [Konfiguruj rozwiązanie](quickstart-configure-your-solution.md)
-- Zrozumienie [metody uwierzytelniania agenta zabezpieczeń](concept-security-agent-authentication-methods.md)
-- Wybierz, a następnie wdrożyć [agent zabezpieczeń](select-deploy-agent.md)
 - Dowiedz się więcej o usłudze z [ASC IoT — często zadawane pytania](resources-frequently-asked-questions.md)

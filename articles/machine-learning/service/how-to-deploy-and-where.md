@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 370fb17e9f00d64db847e49c48c6f03cb329612d
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: ea2986ea2b2f561288773a7d187101f90f3e9fa9
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472943"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622131"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -26,7 +26,7 @@ Można wdrażać modele do następujących celów obliczeń:
 
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
-| [Usługa Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
+| [Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
 | [Usługa Azure obliczeniowego usługi Machine Learning (amlcompute)](#azuremlcompute) | Wnioskowanie usługi Batch | Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
 | [Usługa Azure Container Instances (ACI)](#aci) | Testowanie | Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
@@ -48,9 +48,7 @@ Aby uzyskać więcej informacji na temat pojęć, które są zaangażowane w prz
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
-
-- Obszar roboczy usługi Azure Machine Learning i Azure Machine Learning SDK dla język Python jest zainstalowany. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [Utwórz obszar roboczy usługi Azure Machine Learning](setup-create-workspace.md).
+[!INCLUDE [aml-prereq](../../../includes/aml-prereq.md)]
 
 - Uczonego modelu. Jeśli nie masz trenowanego modelu, wykonaj kroki w [uczyć modele](tutorial-train-models-with-aml.md) samouczka, aby uczyć i zarejestrować jeden z usługą Azure Machine Learning.
 
@@ -214,7 +212,7 @@ Gdy pojawi się do wdrożenia, proces jest nieco inne w zależności od wdrażan
 
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
-| [Usługa Azure Kubernetes Service (AKS)](#aks) | Usługa sieci Web (wnioskowania w czasie rzeczywistym)| Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
+| [Azure Kubernetes Service (AKS)](#aks) | Usługa sieci Web (wnioskowania w czasie rzeczywistym)| Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
 | [Usługa Azure środowiska obliczeniowego usługi ML](#azuremlcompute) | Usługa sieci Web (wnioskowanie usługi Batch)| Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje maszyny wirtualne normalnych i o niskim priorytecie. |
 | [Usługa Azure Container Instances (ACI)](#aci) | Usługa sieci Web (Tworzenie i testowanie)| Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
 | [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |

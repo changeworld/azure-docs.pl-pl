@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d2b0209f57ff5f59d59ee057db7675b2dcd071b8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522064"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621502"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -408,19 +408,19 @@ Poniższe procedury składowanej znajdują się w [bazy danych zadania](sql-data
 
 |Procedura składowana  |Opis  |
 |---------|---------|
-|sp_add_job     |     Dodaje nowe zadanie.    |
-|sp_update_job    |      Aktualizuje istniejące zadanie.   |
-|sp_delete_job     |      Usuwa istniejące zadanie.   |
-|sp_add_jobstep    |    Do dodawania kroku do zadania.     |
-|sp_update_jobstep     |     Aktualizuje krok zadania.    |
-|sp_delete_jobstep     |     Usuwa krok zadania.    |
-|sp_start_job    |  Rozpoczyna się wykonywanie zadania.       |
-|sp_stop_job     |     Zatrzymuje wykonywanie zadania.   |
-|sp_add_target_group    |     Dodaje grupy docelowej.    |
-|sp_delete_target_group     |    Usuwa grupy docelowej.     |
-|sp_add_target_group_member     |    Dodaje do grupy docelowej bazy danych lub grupy baz danych.     |
-|sp_delete_target_group_member     |     Usuwa docelowy element członkowski grupy z grupy docelowej.    |
-|sp_purge_jobhistory    |    Usuwa rekordy historii zadania.     |
+|[sp_add_job](#sp_add_job)     |     Dodaje nowe zadanie.    |
+|[sp_update_job](#sp_update_job)    |      Aktualizuje istniejące zadanie.   |
+|[sp_delete_job](#sp_delete_job)     |      Usuwa istniejące zadanie.   |
+|[sp_add_jobstep](#sp_add_jobstep)    |    Do dodawania kroku do zadania.     |
+|[sp_update_jobstep](#sp_update_jobstep)     |     Aktualizuje krok zadania.    |
+|[sp_delete_jobstep](#sp_delete_jobstep)     |     Usuwa krok zadania.    |
+|[sp_start_job](#sp_start_job)    |  Rozpoczyna się wykonywanie zadania.       |
+|[sp_stop_job](#sp_stop_job)     |     Zatrzymuje wykonywanie zadania.   |
+|[sp_add_target_group](#sp_add_target_group)    |     Dodaje grupy docelowej.    |
+|[sp_delete_target_group](#sp_delete_target_group)     |    Usuwa grupy docelowej.     |
+|[sp_add_target_group_member](#sp_add_target_group_member)     |    Dodaje do grupy docelowej bazy danych lub grupy baz danych.     |
+|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     Usuwa docelowy element członkowski grupy z grupy docelowej.    |
+|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Usuwa rekordy historii zadania.     |
 
 
 
@@ -1195,13 +1195,13 @@ Następujące widoki są dostępne w [bazy danych zadania](sql-database-job-auto
 
 |Widok  |Opis  |
 |---------|---------|
-|jobs_executions     |  Pokazano zadań historii wykonywania.      |
+|[jobs_executions](#jobs_executions-view)     |  Pokazano zadań historii wykonywania.      |
 |[Zadania](#jobs-view)     |   Pokazuje wszystkie zadania.      |
-|job_versions     |   Przedstawia wszystkie wersje zadania.      |
+|[job_versions](#job_versions-view)     |   Przedstawia wszystkie wersje zadania.      |
 |[etapów zadania](#jobsteps-view)     |     Przedstawia wszystkie kroki opisane w bieżącej wersji każdego zadania.    |
-|jobstep_versions     |     Przedstawia wszystkie kroki opisane we wszystkich wersjach każdego zadania.    |
-|target_groups     |      Wyświetla wszystkie grupy docelowej.   |
-|target_group_members     |   Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.      |
+|[jobstep_versions](#jobstep_versions-view)     |     Przedstawia wszystkie kroki opisane we wszystkich wersjach każdego zadania.    |
+|[target_groups](#target_groups-view)     |      Wyświetla wszystkie grupy docelowej.   |
+|[target_group_members](#target_groups_members-view)     |   Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.      |
 
 
 ### <a name="jobsexecutions-view"></a>Widok jobs_executions
@@ -1347,4 +1347,3 @@ Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.
 
 - [Tworzenie zadań elastycznych i zarządzanie nimi za pomocą programu PowerShell](elastic-jobs-powershell.md)
 - [Autoryzacja i uprawnienia programu SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
-  

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 20f934ae418b0a5e37d3e619fabadc5cb6e23642
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 21aa01ec8382341de34cca743b9e088598872659
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285551"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578904"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -67,6 +67,8 @@ Migawek przyrostowych znajdują się na koncie magazynu maszyny Wirtualnej, któ
 W witrynie Azure portal można zobaczyć pola dodane w **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku w obszarze **natychmiastowe Przywracanie** sekcji. Można zmienić czasu trwania przechowywania migawek z **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku dla wszystkich maszyn wirtualnych skojarzonych z określonych zasad tworzenia kopii zapasowej.
 
 ![Możliwość natychmiastowego przywracania](./media/backup-azure-vms/instant-restore-capability.png)
+
+Aby skonfigurować przechowywanie migawki przy użyciu programu Powershell, zapoznaj się [w tym dokumencie](backup-azure-vms-automation.md#configuring-instant-restore-snapshot-retention).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

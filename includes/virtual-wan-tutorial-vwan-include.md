@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/27/2019
+ms.date: 03/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 485a386210458d57b87aaa0537b1c58a6adab2c7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58342584"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58616483"
 ---
-1. Usługę Virtual WAN można znaleźć, przechodząc do pozycji **Wszystkie usługi** i wyszukując nazwę Virtual WAN. Możesz również wyszukać usługę Virtual WAN, używając pola wyszukiwania w górnej części witryny Azure Portal. Kliknij pozycję **Virtual WAN**, aby otworzyć stronę usługi.
-2. Kliknij polecenie **+Dodaj**, aby otworzyć stronę **Tworzenie sieci WAN**.
-3. Na **tworzenie sieci WAN** strony, wypełnij następujące pola:
+1. Przejdź do strony wirtualne sieci WAN. Jest jednym ze sposobów, aby przejść do strony, aby przejść do **wszystkich usług**, a następnie wyszukaj wirtualne sieci WAN.
+1. Kliknij polecenie **+Dodaj**, aby otworzyć stronę **Tworzenie sieci WAN**.
+1. Na **tworzenie sieci WAN** strony, wypełnij następujące pola:
 
    * **Nazwa** — wybierz nazwę sieci WAN.
    * **Subskrypcja** — wybierz subskrypcję, która ma być używana.

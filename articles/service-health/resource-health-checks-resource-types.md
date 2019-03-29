@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: a8bc82a2717bfa6838b2331ef54ed8098422c223
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770349"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620754"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure resource health
 Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w usłudze resource health według typów zasobów.
@@ -51,10 +51,15 @@ Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w 
 |---|
 |<ul><li>Ma serwera hostingu tej maszyny wirtualnej w górę i uruchomiona</li><li>Rozruch systemu operacyjnego hosta zakończonych?</li><li>Są aprowizowane kontenera maszyny wirtualnej i włączone?</li><li>Czy istnieje połączenie sieciowe między hostem i konto magazynu?</li><li>Rozruch systemu operacyjnego gościa zakończonych?</li><li>Czy istnieje planowanej konserwacji?</li></ul>|
 
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
+|Wykonane testy|
+|---|
+|<ul><li>Zostały niepowodzenia uruchomienia potoku?</li><li>Klaster hostuje usługi Data Factory dobrej kondycji?</li></ul>|
+
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Wykonane testy|
 |---|
-|<ul><li>Masz problemy doświadczonym użytkownikom przesyłania lub wyświetlania listy zadań usługi Data Lake Analytics?</li><li>Są w stanie wykonać, aby błędy systemu zadań usługi Data Lake Analytics?</li></ul>|
+|<ul><li>Masz problemy doświadczonym użytkownikom przesyłania lub wyświetlania listy zadań usługi Data Lake Analytics?</li><li>Są w stanie ukończyć z powodu błędów systemowych zadań usługi Data Lake Analytics?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
@@ -62,8 +67,27 @@ Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w 
 |---|
 |<ul><li>Użytkownicy wystąpiły problemy z przekazywaniem danych do usługi Data Lake Store?</li><li>Użytkownicy wystąpiły problemy, pobieranie danych z programu Data Lake Store?</li></ul>|
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
+## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
+|Wykonane testy|
+|---|
+|<ul><li>Usługa migracji bazy danych nie może aprowizować?</li><li>Usługa migracji bazy danych zatrzymał ze względu na nieaktywności lub żądania użytkownika?</li></ul>|
 
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+|Wykonane testy|
+|---|
+|<ul><li>Serwer jest niedostępny z powodu konserwacji?</li><li>Serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
+
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+|Wykonane testy|
+|---|
+|<ul><li>Serwer jest niedostępny z powodu konserwacji?</li><li>Serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
+
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+|Wykonane testy|
+|---|
+|<ul><li>Serwer jest niedostępny z powodu konserwacji?</li><li>Serwer jest niedostępny z powodu ponownej konfiguracji?</li></ul>|
+
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |Wykonane testy|
 |---|
 |<ul><li>Jest usługa IoT hub działa?</li></ul>|
@@ -73,15 +97,40 @@ Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w 
 |---|
 |<ul><li>Zostały wszystkie żądania bazy danych lub kolekcji nie jest obsługiwany z powodu niedostępności usługi Azure Cosmos DB?</li><li>Zostały wszystkie żądania dokumentu nie jest obsługiwany z powodu niedostępności usługi Azure Cosmos DB?</li></ul>|
 
+## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/Namespaces
+|Wykonane testy|
+|---|
+|<ul><li>Przestrzeń nazw usługi Event Hubs występują błędy wygenerowane przez użytkowników?</li><li>Jest przestrzeń nazw usługi Event Hubs jest obecnie uaktualniana?</li></ul>|
+
+## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
+|Wykonane testy|
+|---|
+|<ul><li>Dostępne są również podstawowe usługi w klastrze HDInsight?</li><li>Klaster HDInsight dostęp klucz dla funkcji BYOK szyfrowanie w spoczynku?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |Wykonane testy|
 |---|
 |<ul><li>Czy żądania do usługi key vault kończy się niepowodzeniem z powodu problemów z platformy Azure KeyVault?</li><li>Są ograniczane ze względu na zbyt wiele żądań podjęte przez klienta żądania do usługi key vault?</li></ul>|
 
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
+|Wykonane testy|
+|---|
+|<ul><li>Czy wydajność bramy Application Gateway, negatywny wpływ na dostępność?</li><li>Application Gateway jest dostępny?</li></ul>|
+
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Wykonane testy|
 |---|
 |<ul><li>Tunel VPN jest podłączony?</li><li>Czy istnieją konflikty konfiguracji połączenia?</li><li>Klucze wstępne prawidłowo skonfigurowano?</li><li>Lokalne urządzenie sieci VPN jest dostępny?</li><li>Zasady zabezpieczeń protokołu IPSec/IKE są niezgodności?</li><li>Czy połączenia sieci VPN S2S poprawnie udostępniane w stanie niepowodzenia?</li><li>Czy połączenia sieć wirtualna-sieć wirtualna poprawnie udostępniane w stanie niepowodzenia?</li></ul>|
+
+## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+|Wykonane testy|
+|---|
+|<ul><li>Obwód usługi ExpressRoute jest w dobrej kondycji?</li></ul>|
+
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
+|Wykonane testy|
+|---|
+|<ul><li>Drzwiami frontowymi zaplecza odpowiadają z błędami na sond kondycji?</li><li>Zmiany konfiguracji są opóźnione?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Wykonane testy|
@@ -91,7 +140,12 @@ Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w 
 ## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
 |Wykonane testy|
 |---|
-|<ul><li> Można wykonać operacji środowiska uruchomieniowego, takich jak rejestracji, instalacji lub wysyłania w przestrzeni nazw?</li></ul>|
+|<ul><li>Można wykonać operacji środowiska uruchomieniowego, takich jak rejestracji, instalacji lub wysyłania w przestrzeni nazw?</li></ul>|
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
+|Wykonane testy|
+|---|
+|<ul><li>Istnieją indeksowania opóźnienia dla obszaru roboczego?</li></ul>|
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |Wykonane testy|
@@ -101,7 +155,7 @@ Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w 
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |Wykonane testy|
 |---|
-|<ul><li>Jest system operacyjny hosta działa?</li><li>WorkspaceCollection jest osiągalny z poza centrum danych?</li><li>Dostawca zasobów usługi Power BI jest dostępny?</li><li>Usługa Power BI jest dostępna w odpowiedni region?</li></ul>|
+|<ul><li>Jest system operacyjny hosta działa?</li><li>WorkspaceCollection jest osiągalny z poza centrum danych?</li><li>Dostawca zasobów usługi Power BI jest dostępny?</li><li>Usługa Power BI jest dostępna w regionie odpowiednie?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |Wykonane testy|

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 51e9d44a95a3896767caf4b3f04d17c2933e8599
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 801a37496b36be1f98408c46807f5b10db2b0282
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990548"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622063"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -67,9 +67,9 @@ Aby usunąć grupę zarządzania, muszą być spełnione następujące wymagania
 
 1. Nie istnieją żadne podrzędne grupy zarządzania lub subskrypcji w ramach grupy zarządzania.
 
-   - Aby przenieść subskrypcję z grupą zarządzania, zobacz [przenieść subskrypcję do innej grupy zarządzania](#Move-subscriptions-in-the-hierarchy).
+   - Aby przenieść subskrypcję z grupą zarządzania, zobacz [przenieść subskrypcję do innej grupy zarządzania](#move-subscriptions-in-the-hierarchy).
 
-   - Aby przenieść grupę zarządzania do innej grupy zarządzania, zobacz [przenieść grup zarządzania w hierarchii](#Move-management-groups-in-the-hierarchy).
+   - Aby przenieść grupę zarządzania do innej grupy zarządzania, zobacz [przenieść grup zarządzania w hierarchii](#move-management-groups-in-the-hierarchy).
 
 1. Masz uprawnienia do zapisu w grupie zarządzania ("Owner", "Współautor" lub "Współautor grupy zarządzania"). Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [zarządzanie dostępem i uprawnieniami przy użyciu RBAC](../../role-based-access-control/overview.md).  
 
@@ -316,11 +316,11 @@ az account management-group update --name 'Contoso' --parent-id '/providers/Micr
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Inspekcja grup zarządzania przy użyciu dzienników aktywności
 
-Grupy zarządzania są obsługiwane w ramach [dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md). Można tworzyć zapytania wszystkie zdarzenia, które odbywa się w grupie zarządzania w tej samej lokalizacji centralnej, innych zasobów platformy Azure.  Na przykład widoczne wszystkie przypisania roli lub przypisania zasad zmian wprowadzonych do grupy zarządzania określonej.
+Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md). Można tworzyć zapytania wszystkie zdarzenia, które odbywa się w grupie zarządzania w tej samej lokalizacji centralnej, innych zasobów platformy Azure.  Na przykład widoczne są wszystkie przypisania ról i zmiany przypisań zasad w określonej grupie zarządzania.
 
-![Dzienniki aktywności przy użyciu grup zarządzania](media/al-mg.png)
+![Dzienniki aktywności z grupami zarządzania](media/al-mg.png)
 
-Podczas wyszukiwania do wykonywania zapytań dotyczących grup zarządzania spoza witryny Azure portal, zakres docelowy dla grup zarządzania wygląda **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
+Jeśli chcesz wykonać zapytanie dotyczące grup zarządzania spoza witryny Azure Portal, zakres docelowy grup zarządzania wygląda tak: **„/providers/Microsoft.Management/managementGroups/{identyfikator_grupy_zarządzania}”**.
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Odwoływanie się do grup zarządzania, od innych dostawców zasobów
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 03/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 78008357e3ea8fbfe707a7dbead19e3fce83b578
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 34bc4d7cbdbb89cd9ff3f334ca32087c474735b7
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403701"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620091"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Samouczek: Przygotowanie do wdrożenia bramy pola danych platformy Azure
 
@@ -101,8 +101,11 @@ Do utworzenia zasobu bramy pola danych, wykonaj następujące kroki w witrynie A
     |Grupa zasobów  |Wybierz istniejącą grupę lub utwórz nową.<br>Dowiedz się więcej o [grupach zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md).     |
 
 5. Wprowadź lub wybierz następujące pozycje **wystąpienia szczegóły**.
-   | Nazwa | Przyjazna nazwa do identyfikacji zasobu.<br>Nazwa może zawierać od 2 do 50 znaków, w tym litery, cyfry i łączniki.<br> Nazwa rozpoczyna się i kończy literą lub cyfrą.        |   
-    | Region | W tej wersji są dostępne do wdrożenia usługi resource wschodnie stany USA, Azja południowo-wschodnia i Europa Zachodnia. Dla platformy Azure Government, wszystkie regiony dla instytucji rządowych na liście [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/) są dostępne. <br> Wybierz lokalizację najbliżej regionu geograficznego, w której chcesz wdrożyć urządzenie. |
+
+    |Ustawienie  |Wartość  |
+    |---------|---------|
+    |Name (Nazwa)   | Przyjazna nazwa identyfikująca zasób.<br>Nazwa może zawierać od 2 do 50 znaków, w tym litery, cyfry i łączniki.<br> Nazwa rozpoczyna się i kończy literą lub cyfrą.        |   
+    |Region     |W tej wersji są dostępne do wdrożenia usługi resource wschodnie stany USA, Azja południowo-wschodnia i Europa Zachodnia. Dla platformy Azure Government, wszystkie regiony dla instytucji rządowych na liście [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/) są dostępne. <br> Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie.|
     
     ![Tworzenie zasobu usługi Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 22ec05660682f000d8bc3b9780732d5adf9b5c24
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9b0c48b3a3fb3a1b4e4fbe94a368297823a86778
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226712"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579584"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Szybki start: Tworzenie funkcji platformy Azure przy użyciu usługi App Configuration
 
@@ -45,13 +45,19 @@ Ten przewodnik Szybki Start, instaluje [programu Visual Studio 2017](https://vis
 
 ## <a name="connect-to-an-app-configuration-store"></a>Łączenie do sklepu z aplikacjami konfiguracji
 
-1. Otwórz *Function1.cs*i Dodaj odwołanie do dostawcy usługi konfiguracji aplikacji konfiguracji platformy .NET Core.
+1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Na **Przeglądaj** kartę, wyszukiwanie i dodaj następujące pakiety NuGet do projektu. Jeśli nie można go znaleźć, wybrać **Uwzględnij wersję wstępną** pole wyboru.
+
+    ```
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    ```
+
+2. Otwórz *Function1.cs*i Dodaj odwołanie do dostawcy usługi konfiguracji aplikacji konfiguracji platformy .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-2. Zaktualizuj metodę `Run`, tak aby używała usługi App Configuration przez wywołanie elementu `builder.AddAzureAppConfiguration()`.
+3. Zaktualizuj metodę `Run`, tak aby używała usługi App Configuration przez wywołanie elementu `builder.AddAzureAppConfiguration()`.
 
     ```csharp
     public static async Task<IActionResult> Run(

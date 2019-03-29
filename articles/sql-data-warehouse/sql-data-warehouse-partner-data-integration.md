@@ -7,133 +7,94 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
+ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0e82c1887cb096c7c95ad7e1cbbc1d76962f7831
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74449f7319f800e8008c5d457351fa49ae1af59a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000438"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621706"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partnerów integracji danych SQL Data Warehouse
-Aby utworzyć swoje rozwiązanie magazynu danych, wybierz z szerokiej gamy narzędzi wiodące w branży. W tym artykule przedstawiono firm partnerskich firmy Microsoft przy użyciu rozwiązania integracji danych, obsługa usługi Azure SQL Data Warehouse.
+Aby utworzyć swoje rozwiązanie magazynu danych, wybierz z szerokiej gamy narzędzi wiodące w branży. W tym artykule przedstawiono firm partnerskich firmy Microsoft przy użyciu rozwiązania do integracji danych oficjalna Obsługa usługi Azure SQL Data Warehouse.
 
 ## <a name="data-integration-partners"></a>Partnerów integracji danych
-| Partner | Opis | Linki | Filmy wideo |
-| --- | --- | --- | --- |
-| ![Alteryx][1] |**Alteryx**<br> Projektant Alteryx udostępnia powtarzalnego przepływu pracy analizy danych samoobsługi, który prowadzi do bardziej szczegółowych informacji w godzinach, a nie tygodni, które są typowe dla tradycyjnych metod! Projektant Alteryx ułatwia analitykom danych, łącząc przygotowywania danych, mieszania danych i analiza — predykcyjne, statystycznych i przestrzennych — przy użyciu tego samego intuicyjny interfejs użytkownika. |[Marketplace][alteryx_marketplace]<br>[Witryny sieci Web][alteryx_designer_website]<br>[Oficjalny dokument][alteryx_whitepaper]<br>[Arkusz danych][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] |[![Alteryx wideo](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
-| ![Firmy Attunity][2] |**Firmy Attunity**<br>Firmy Attunity CloudBeam stanowi rozwiązanie zautomatyzowane i zoptymalizowane do ładowania danych do usługi SQL Data Warehouse. W projekcie "kliknij ładowanie" upraszcza i przyspiesza zarówno obciążenia usługi batch, jak i replikacja przyrostowa z wielu heterogenicznych baz danych w tym programu SQL Server, Oracle, DB2, Sybase i mySQL. |[Marketplace][attunity_marketplace]<br>[Przewodnik Szybki start][attunity_quickstart]<br>[Witryny sieci Web][attunity_cloudbeam_website]<br>[Arkusz danych][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] |[![Wideo firmy Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
-| ![Bryte Systems][3] |**Systemy Bryte**<br>Systemy Bryte automatyzuje transfer danych do usługi SQL Data Warehouse z różnych baz danych i źródeł. Systemy Bryte specjalizuje się w technologii przenoszenia i integracji danych. Tworzą magazynów danych w chmurze i usług data Lake, aby odkryć informacje. |[Witryny sieci Web][bryte_systems_azure_website] | |
-| ![Informatica][4] |**Informatica usług Cloud Services — Azure — płatność za rzeczywiste użycie**<br> Zoptymalizowanie wartości usług Azure i uzyskiwanie przydatnych wyników analiz poza wszystkich zestawów danych hybrydowych przy użyciu usług Cloud Services firmy Informatica dla platformy Azure — płatność za rzeczywiste użycie. Chmura firmy Informatica oferuje najlepszą w swojej klasie rozwiązania do integracji danych, analizy chmur, integracji aplikacji i zarządzania danymi. Migracja danych samoobsługi klientom integracji i zarządzania można szybkie i niezawodne importowanie, eksportowanie, synchronizacji i planowania petabajtów danych na platformie Azure z różnych źródeł, takich jak aplikacje SaaS, jeziora danych oparta na technologii Hadoop, i inne do lokalnych źródeł danych (bazy danych Oracle, SAP). Usług Cloud Services firmy Informatica na platformie Azure zapewnia natywne, wysoki woluminu, łączność o wysokiej wydajności z usługi Azure SQL Data Warehouse, bazy danych SQL Database, Blob Storage, Data Lake Store i Azure Cosmos DB. |[Marketplace][informatica_Cloud_Services_marketplace]<br>[Bezpłatna wersja próbna][informatica_cloud_free_trial]<br>[Przewodnik po konfiguracji][informatica_cloud_services_config]<br>[Witryny sieci Web][informatica_Cloud_Services_website]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
-| ![Informatica][4] |**Informatica PowerCenter**<br>Informatica jest jednym z na świecie najbardziej rozpoznawalnych niezależnych dostawców oprogramowania, integracji danych. PowerCenter stanowi podstawę dla wszystkich swoich inicjatyw integracji danych. Na użytek PowerCenter analizy, magazynowanie danych, migrację aplikacji, konsolidacji i nadzór nad danymi. |[Marketplace][informatica_PowerCenter_byol]<br>[Witryny sieci Web][informatica_PowerCenter_website]<br>[Arkusz danych][informatica_powercenter_datasheet]<br>[Twitter][informatica_powercenter_twitter]<br>[YouTube][informatica_powercenter_youtube] | |
-| ![Redgate][5] |**Narzędzie Redgate Data Platform Studio (wersja zapoznawcza)**<br>Data Platform Studio firmy Redgate umożliwia prostą i niezawodną migrację baz danych SQL na lokalnych do usługi Azure SQL Data Warehouse. Jest zaprojektowane z myślą o inteligentne decyzje dotyczące migracji w pełni zautomatyzowane i może zostać użyty dla jednorazowej migracji. |[Witryny sieci Web][redgate_website]<br>[Twitter][redgate_twitter]<br>[YouTube][redgate_youtube] |[![Narzędzia Redgate wideo](./media/sql-data-warehouse-partner-data-integration/redgate_video.jpg)](https://www.youtube.com/watch?v=IR9HNvnU46s) |
-| ![SnapLogic][6] |**SnapLogic**<br>Platforma integracji SnapLogic jako usługę (rozwiązanie typu iPaaS) umożliwia klientom szybko przesłać dane do i z systemu Microsoft Azure SQL Data Warehouse. SnapLogic oferuje możliwość integracji setki aplikacji, usług oraz scenariusze IoT w jednym rozwiązaniu. Dostarczanie szybkie i skuteczne szczegółowych informacji w chmurze, lokalnie lub w trybie hybrydowym z SnapLogic! |[Marketplace][snaplogic_marketplace]<br>[Witryny sieci Web][snaplogic_website]<br>[Arkusz danych][snaplogic_datasheet]<br>[Twitter][snaplogic_twitter]<br>[YouTube][snaplogic_youtube] |[![Snaplogic wideo](./media/sql-data-warehouse-partner-data-integration/snaplogic_video.jpg)](https://www.youtube.com/watch?v=YiJCwObOh5Y) |
+| Partner | Opis | Link do witryny sieci Web/produktu |
+| ------- | ----------- | -------------------- |
+| ![Alooma][7] |**Alooma**<br> Alooma jest rozwiązaniem ETL, który umożliwia zespołom danych integracji, wzbogacanie i przesyłanie strumieniowe danych z różnych silosów danych do usługi SQL Data Warehouse w czasie rzeczywistym. |[Strona produktu][alooma_website] |
+| ![Alteryx][1] |**Alteryx**<br> Projektant Alteryx udostępnia powtarzalnego przepływu pracy analizy danych samoobsługi, który prowadzi do bardziej szczegółowych informacji w godzinach, a nie tygodni, które są typowe dla tradycyjnych metod! Projektant Alteryx ułatwia analitykom danych, łącząc przygotowywania danych, mieszania danych i analiza — predykcyjne, statystycznych i przestrzennych — przy użyciu tego samego intuicyjny interfejs użytkownika. |[Strona produktu][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
+| ![Firmy Attunity][2] |**Firmy Attunity (CloudBeam)**<br>Firmy Attunity CloudBeam zapewnia zautomatyzowane rozwiązanie dotyczące ładowania danych do usługi SQL Data Warehouse. Upraszcza ona usługi batch, ładowania i replikacja przyrostowa danych pochodzących z wielu źródeł — program SQL Server, Oracle, DB2, Sybase, MySQL i więcej. |[Strona produktu][attunity_cloudbeam_website]<br>[Azure Marketplace][attunity_marketplace]<br> |
+| ![Denodo][3] |**Denodo**<br>Denodo zapewniają w czasie rzeczywistym dostępu do danych w źródłach danych różnych organizacji. Używa ona wirtualizacji danych do mostka danych w wielu źródłach bez replikacji. Oferuje ona szeroki dostęp do danych ze strukturą i bez struktury, znajdującej się w przedsiębiorstwie, dane big data i źródeł w chmurze zarówno w partii, jak i w czasie rzeczywistym.|[Strona produktu][denodo_website]<br>[Azure Marketplace][denodo_marketplace]<br> |
+| ![Fivetran][8] |**Fivetran**<br>Fivetran pomaga scentralizowanie danych z różnych źródeł. Zawiera funkcje eliminujące potrzebę konserwacji, dane konfiguracji, zerowego potoku produktu z rosnącą listę wbudowanych łączników do wszystkich źródeł danych popularne. Instalator ma pięć minut po uwierzytelnieniu do źródła danych i magazynu danych docelowych.|[Strona produktu][fivetran_website]<br> |
+| ![Informatica][4] |**1. usługi w chmurze firmy Informatica na platformie Azure**<br> Chmura firmy Informatica oferuje rozwiązania najlepsze w swojej klasie możliwości samoobsługi danych migrację, integrację i zarządzania. Klientów można szybko i niezawodnie importowanie i eksportowanie petabajtów danych na platformie Azure z różnych źródeł. Usług Cloud Services firmy Informatica na platformie Azure zapewnia natywne, wysoki woluminu, łączność o wysokiej wydajności z usługi Azure SQL Data Warehouse, bazy danych SQL Database, Blob Storage, Data Lake Store i Azure Cosmos DB. <br><br> **2. Informatica PowerCenter** PowerCenter to platforma integracji danych oparte na metadanych tej sieci elektroenergetycznych szybko zwiększa i przyspiesza projekty integracji danych, aby znacznie szybciej niż kodowania ręcznego ręcznie dostarczać dane do firmy. Służy jako podstawa inwestycji integracji danych |**Usługi w chmurze firmy Informatica dla platformy Azure**<br>[Strona produktu][informatica_Cloud_Services_website]<br>[Azure Marketplace][informatica_Cloud_Services_marketplace]<br><br> **Informatica PowerCenter**<br>[Strona produktu][informatica_PowerCenter_website]<br> [Azure Marketplace][informatica_PowerCenter_byol]<br>|
+| ![Konstruktorzy informacji][5] |**Konstruktorzy informacji (Zarządzanie danymi ogólnego Omni)**<br>Platformę zarządzania danymi ogólnego Omni konstruktora informacji zapewnia integrację danych, dobrą jakość danych i rozwiązań do zarządzania danymi głównymi. Ułatwia on dostęp, poruszać nim i blend wszystkie dane, niezależnie od tego, czy format, lokalizacji, woluminu lub opóźnienia.|[Strona produktu][omnifocus_website]<br> [Azure Marketplace][omnigen_marketplace] |
+| ![Qubole][9] |**Qubole**<br>Qubole zapewnia platformę natywnych dla chmury, która umożliwia użytkownikom przeprowadzanie ETL, analiza i obciążeń SI/ML. Obsługuje ona różnych aparatów typu open-source - platformy Apache Spark, TensorFlow, Presto, powietrza, Hadoop, Hive i nie tylko. Oferuje ona narzędzia Łatwy w użyciu przez użytkownika końcowego przetwarzania danych z narzędzia zapytania SQL, notesy i pulpity nawigacyjne, które korzystają z zaawansowanych aparatów typu open source.|[Strona produktu][qubole_website]<br> [Azure Marketplace][qubole_marketplace] |
+| ![Segment][10] |**Segment**<br>Segment jest zarządzanie danymi i rozwiązań do analizy, które ułatwiają sensu danych klienta, pochodzących z różnych źródeł. Umożliwia łączenie danych z ponad 200 narzędzia służące do tworzenia lepszych decyzji, produktów i środowisk. Segment będzie Przekształcanie i ładowanie wielu źródeł danych do magazynu przy użyciu jego wbudowane łączniki danych|[Strona produktu][segment_website]<br> |
+| ![Skyvia][11] |**Skyvia (Integracja danych)**<br>Integracja danych Skyvia udostępnia kreatora, który automatyzuje Importy danych. Ten kreator umożliwia migrację danych między różnymi źródłami - CRM, bazę danych aplikacji, pliki CSV i. |[Strona produktu][segment_website]<br> |
+| ![SnapLogic][6] |**SnapLogic**<br>Platforma SnapLogic umożliwia klientom szybko przesłać dane do i z systemu Microsoft Azure SQL Data Warehouse. Oferuje ona możliwość integracji setki aplikacji, usług oraz scenariusze IoT w jednym rozwiązaniu.|[Strona produktu][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
+| ![Talend][12] |**Talend chmury**<br>Chmura Talend to platforma integracji danych interprise łączenie oraz uzyskać dostęp i przekształcanie danych w chmurze lub lokalnie. Jest to oferta platform-as-a-service (model iPaaS) integracji, która zapewnia szeroką łączności, dobrej jakości danych wbudowane i natywną obsługę najnowszych big technologii danych i w chmurze |[Strona produktu][talend_website]<br> [Azure Marketplace][talend_marketplace] |
+| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta ukryła i organizacje, zapoznaj się z, a jednocześnie dołączyć zróżnicowanych danych do analizy. Trifacta Wrangler jest przeznaczony do obsługi inteligencji obciążeń danych, które muszą obsługiwać dane na skalę i z dużą liczbą użytkowników końcowych.|[Strona produktu][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
+| ![WhereScape][14] |**Wherescape czerwony**<br> CZERWONY WhereScape to środowisko IDE, który umożliwia zespołom, narzędzia automatyzacji, aby usprawnić przepływów pracy ETL. Środowisko IDE zapewnia najlepszym rozwiązaniem jest zoptymalizowanego kodu natywnego dla celów popularnych danych. CZERWONY WhereScape umożliwiają skrócenie czasu na tworzenie, wdrażanie i obsługiwanie infrastruktury danych.|[Strona produktu][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat innych partnerów, zobacz [analizy biznesowej partnerów] [ bi_partners] i [partnerów w dziedzinie zarządzania danych][dm_partners].
 
+<!--Article links-->
+
+[bi_partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[di_partners]: ./sql-data-warehouse-partner-data-integration.md
+[dm_partners]: ./sql-data-warehouse-partner-data-management.md
+
+
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png
 [2]: ./media/sql-data-warehouse-partner-data-integration/attunity_logo.png
-[3]: ./media/sql-data-warehouse-partner-data-integration/bryte_systems_logo.png
+[3]: ./media/sql-data-warehouse-partner-data-integration/denodo_logo.png
 [4]: ./media/sql-data-warehouse-partner-data-integration/informatica_logo.png
-[5]: ./media/sql-data-warehouse-partner-data-integration/redgate_logo.png
+[5]: ./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png
 [6]: ./media/sql-data-warehouse-partner-data-integration/snaplogic_logo.png
+[7]: ./media/sql-data-warehouse-partner-data-integration/alooma_logo.png
+[8]: ./media/sql-data-warehouse-partner-data-integration/fivetran_logo.png
+[9]: ./media/sql-data-warehouse-partner-data-integration/qubole_logo.png
+[10]: ./media/sql-data-warehouse-partner-data-integration/segment_logo.png
+[11]: ./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png
+[12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
+[13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
+[14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
 
-
-<!--Article links-->
-[bi_partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[dm_partners]: ./sql-data-warehouse-partner-data-management.md
-[di_partners]: ./sql-data-warehouse-partner-data-integration.md
-
-<!--ebook Links-->
-
-<!--Configuration Guides-->
-[informatica_cloud_services_config]:https://kb.informatica.com/proddocs/Product%20Documentation/6/IC_Spring2017_MicrosoftAzure[SQL]DataWarehouseConnectorGuide_en.pdf
-
-<!--Datasheet Links-->
-[alteryx_designer_datasheet]:https://www.alteryx.com/sites/default/files/resources/files/alt-designer-ds.pdf
-[attunity_cloudbeam_datasheet]:http://www.attunity.com/sites/default/files/content/attunity-azure-solution-sheet.pdf
-
-<!--[bryte_systems_azure_datasheet]:-->
-
-<!--[informatica_cloud_datasheet]:https://www.informatica.com/content/dam/informatica-com/global/amer/us/collateral/data-sheet/cloud-integration-platform_data-sheet_2711.pdf-->
-
-[informatica_powercenter_datasheet]:https://www.informatica.com/content/dam/informatica-com/global/amer/us/collateral/brochure/powercenter_brochure_6659.pdf
-[snaplogic_datasheet]:https://campaigns.snaplogic.com/rs/055-FYJ-916/images/SnapLogic-for-Microsoft-Cortana.pdf
-
-<!--Free Trial-->
-[informatica_cloud_free_trial]:https://www.informatica.com/products/cloud-integration/connectivity/microsoft-azure-connector.html
 
 <!--Website Links -->
+
+[alooma_website]:https://www.alooma.com/
 [alteryx_designer_website]:https://www.alteryx.com/partners/microsoft/
 [attunity_cloudbeam_website]:http://www.attunity.com/attunity-cloudbeam-for-azure/
 [bryte_systems_azure_website]:https://www.bryteflow.com/
 [informatica_Cloud_Services_website]:https://www.informatica.com/products/cloud-integration.html
 [informatica_PowerCenter_website]:https://www.informatica.com/products/data-integration/powercenter.html
-[redgate_website]:http://dataplatformstudio.com/
-[snaplogic_website]:https://www.snaplogic.com/solutions/microsoft-cortana-analytics-integration/
+[snaplogic_website]:https://www.snaplogic.com/
+[denodo_website]:https://www.denodo.com/en
+[fivetran_website]:https://fivetran.com/
+[omnifocus_website]:https://www.informationbuilders.com/3i-platform
+[qubole_website]:https://www.qubole.com/
+[segment_website]:https://segment.com/
+[skyvia_website]:https://skyvia.com/
+[talend_website]:https://www.talend.com/
+[trifacta_website]:https://www.trifacta.com/
+[wherescape_website]:https://www.wherescape.com/
 
 <!--Marketplace Links -->
+
 [alteryx_marketplace]:https://azure.microsoft.com/marketplace/partners/alteryx/alteryx-designer/
 [attunity_marketplace]:https://azure.microsoft.com/marketplace/partners/attunity-cloudbeam/cloudbeam-dw-byol/ 
-
-<!--[bryte_systems_marketplace]:https://azure.microsoft.com/marketplace/partners/bryte/bryteflow-cdc-free-trial/--> 
-
+[denodo_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0
 [informatica_Cloud_Services_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.ics-byol
-
-<!--[informatica_PowerCenter_std_marketplace]:https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-standard-10-0pc-std-10-0-windows/
-[informatica_PowerCenter_adv_marketplace]:https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-advanced-10-0pc-adv-10-0-ubuntu/-->
-
-[informatica_PowerCenter_byol]:https://azuremarketplace.microsoft.com/en-us/marketplace/apps/informatica.powercenter/
-
-<!--[redgate_marketplace]:-->
-
+[informatica_PowerCenter_byol]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/
 [snaplogic_marketplace]:https://azure.microsoft.com/marketplace/partners/snaplogic/snaplogic-elastic-integration-windows/ 
-
-<!--Quickstart_links-->
-
-[attunity_quickstart]:https://www.attunity.com/products/cloudbeam/solutions-attunity-cloudbeam-azure-data-analytic-services/
-
-<!--PressRelease_links-->
-
-[alteryx_designer_press]:https://www.alteryx.com/press-releases/alteryx-now-enables-data-analysts-to-perform-in-database-blending-in-microsoft-azure 
-[attunity_cloudbeam_press]:http://www.attunity.com/news/attunity-launches-cloud-data-warehouse-solutions-microsoft-azure
-[bryte_systems_azure_press]:https://medianet.com.au/releases/release-details?id=837667
-
-<!--[informatica_Cloud_Services_press]:-->
-<!--[informatica_PowerCenter_press]:-->
-
-<!--[redgate_press]:-->
-
-[snaplogic_press]:https://www.snaplogic.com/press-releases/snaplogic-introduces-support-for-microsoft-azure-sql-data-warehouse
-
-<!--YouTube-->
-
-[alteryx_designer_youtube]:https://www.youtube.com/user/alteryx
-[attunity_cloudbeam_youtube]:https://www.youtube.com/user/Attunity
-
-<!--[bryte_systems_azure_youtube]:-->
-
-[informatica_Cloud_youtube]:https://www.youtube.com/user/InformaticaOnDemand
-[informatica_PowerCenter_youtube]:https://www.youtube.com/user/InformaticaCorp
-[redgate_youtube]:https://www.youtube.com/user/RedGateVideos
-[snaplogic_youtube]:https://www.youtube.com/user/snapLogicInc
-
-<!--Twitter-->
-
-[alteryx_designer_twitter]:https://twitter.com/alteryx
-[attunity_cloudbeam_twitter]:https://twitter.com/attunity
-
-<!--[bryte_systems_azure_twitter]:-->
-
-[informatica_cloud_twitter]:https://twitter.com/infacloud
-[informatica_powercenter_twitter]:https://twitter.com/Informatica
-[redgate_twitter]:https://twitter.com/RedgateDPS
-[snaplogic_twitter]:https://twitter.com/snaplogic
-
-<!--WhitePaper-->
-
-[alteryx_whitepaper]:https://pages.alteryx.com/Microsoft-Azure-InDB-WP?lsm=microsoft
+[omnigen_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm
+[qubole_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview
+[talend_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview
+[trifacta_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01?source=datamarket&tab=Overview
+[wherescape_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview

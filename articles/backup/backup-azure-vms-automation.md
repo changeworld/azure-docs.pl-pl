@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 230c68b0b1de1ef452de51b7b0661a3c3786ea76
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 3f64be35aca985d0374e224cc9c8940502005014
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521707"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578887"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
-W tym artykule wyjaśniono, jak utworzyć kopię zapasową i przywrócić Maszynę wirtualną platformy Azure w [kopia zapasowa Azure](backup-overview.md) magazyn usługi Recovery Services za pomocą poleceń cmdlet programu PowerShell. 
+W tym artykule wyjaśniono, jak utworzyć kopię zapasową i przywrócić Maszynę wirtualną platformy Azure w [kopia zapasowa Azure](backup-overview.md) magazyn usługi Recovery Services za pomocą poleceń cmdlet programu PowerShell.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -24,10 +24,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Utwórz magazyn usługi Recovery Services i Ustaw kontekst magazynu.
 > * Definiowanie zasad tworzenia kopii zapasowych
 > * Stosowanie zasad tworzenia kopii zapasowych w celu ochrony wielu maszyn wirtualnych
-> * Wyzwalacz zadania tworzenia kopii zapasowej na żądanie dla chronionych maszyn wirtualnych przed można utworzyć kopię zapasową (lub ochronę) maszyny wirtualnej, należy wykonać [wymagania wstępne](backup-azure-arm-vms-prepare.md) do przygotowania środowiska na potrzeby ochrony maszyn wirtualnych. 
-
-
-
+> * Wyzwalacz zadania tworzenia kopii zapasowej na żądanie dla chronionych maszyn wirtualnych przed można utworzyć kopię zapasową (lub ochronę) maszyny wirtualnej, należy wykonać [wymagania wstępne](backup-azure-arm-vms-prepare.md) do przygotowania środowiska na potrzeby ochrony maszyn wirtualnych.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -44,8 +41,6 @@ Hierarchia obiektów jest podsumowywane na poniższym diagramie.
 
 Przegląd **Az.RecoveryServices** [informacje o poleceniach cmdlet](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) odwołania w bibliotece platformy Azure.
 
-
-
 ## <a name="set-up-and-register"></a>Konfigurowanie i rejestrowanie
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -58,7 +53,7 @@ Aby rozpocząć:
 
     ```powershell
     Get-Command *azrecoveryservices*
-    ```   
+    ```
  
     Aliasy i polecenia cmdlet dla usługi Kopia zapasowa Azure, usługi Azure Site Recovery i magazyn usługi Recovery Services są wyświetlane. Poniższy rysunek jest przykładem zostaną wyświetlone. Nie jest pełną listę poleceń cmdlet.
 
@@ -147,6 +142,18 @@ Przed włączeniem ochrony na maszynie Wirtualnej, użyj [AzRecoveryServicesVaul
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
+### <a name="modifying-storage-replication-settings"></a>Modyfikowanie ustawień replikacji magazynu
+
+Użyj [AzRecoveryServicesBackupProperties zestaw](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperties?view=azps-1.6.0) polecenie, aby ustawić konfigurację magazynu replikacji magazynu LRS/GRS
+
+```powershell
+$vault= Get-AzRecoveryServicesVault -name "testvault"
+Set-AzRecoveryServicesBackupProperties -Vault $vault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
+```
+
+> [!NOTE]
+> Nadmiarowość magazynu mogą być modyfikowane tylko wtedy, gdy istnieją żadnych elementów kopii zapasowych chronionych w magazynie.
+
 ### <a name="create-a-protection-policy"></a>Tworzenie zasad ochrony
 
 Podczas tworzenia magazynu usługi Recovery Services jest on dostarczany z domyślnymi zasadami ochrony i przechowywania. Domyślne zasady ochrony wyzwalają zadanie tworzenia kopii zapasowej każdego dnia o określonej godzinie. Domyślne zasady przechowywania zachowują codzienny punkt odzyskiwania przez 30 dni. Aby zapewnić szybką ochronę maszyny Wirtualnej i edytować zasady, które później za pomocą różnych szczegółów, można użyć domyślne zasady.
@@ -226,7 +233,6 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Jeśli używasz chmury Azure Government, należy użyć ff281ffe-705c-4f53-9f37-a40e6f2c68f3 wartość parametru elementu ServicePrincipalName w [AzKeyVaultAccessPolicy zestaw](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) polecenia cmdlet.
 >
 
-
 ### <a name="modify-a-protection-policy"></a>Zmodyfikuj zasady ochrony
 
 Aby zmodyfikować zasady ochrony, użyj [AzRecoveryServicesBackupProtectionPolicy zestaw](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) do modyfikowania obiektów SchedulePolicy lub zasadach RetentionPolicy.
@@ -239,6 +245,19 @@ $retPol.DailySchedule.DurationCountInDays = 365
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $RetPol
 ```
+
+#### <a name="configuring-instant-restore-snapshot-retention"></a>Konfigurowanie przechowywania migawek natychmiastowe Przywracanie
+
+> [!NOTE]
+> Z poziomu PS Az wersji 1.6.0 lub nowszy jeden zaktualizować okresu przechowywania natychmiastowe Przywracanie migawki w zasadach przy użyciu programu Powershell
+
+````powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=7
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+````
+
+Wartością domyślną będzie mieć wartość 2, użytkownik może ustawić wartość minimalna 1 i maksymalnie 5. Zasady kopii zapasowych co tydzień, okresie jest równa 5 i nie można zmienić.
 
 ## <a name="trigger-a-backup"></a>Wyzwalanie tworzenia kopii zapasowej
 
@@ -672,7 +691,7 @@ $rp[0]
 
 Dane wyjściowe są podobne do poniższego przykładu:
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -719,4 +738,4 @@ Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli wolisz, skontaktuj się z zasobami platformy Azure przy użyciu programu PowerShell, zapoznaj się z artykułem PowerShell [wdrażanie i zarządzanie nimi kopii zapasowych dla systemu Windows Server](backup-client-automation.md). Jeśli zarządzasz kopii zapasowych programu DPM, zapoznaj się z artykułem [wdrażanie i zarządzanie nimi kopii zapasowej programu DPM](backup-dpm-automation.md). 
+Jeśli wolisz, skontaktuj się z zasobami platformy Azure przy użyciu programu PowerShell, zapoznaj się z artykułem PowerShell [wdrażanie i zarządzanie nimi kopii zapasowych dla systemu Windows Server](backup-client-automation.md). Jeśli zarządzasz kopii zapasowych programu DPM, zapoznaj się z artykułem [wdrażanie i zarządzanie nimi kopii zapasowej programu DPM](backup-dpm-automation.md).

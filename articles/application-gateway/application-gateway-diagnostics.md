@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/11/2019
+ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 14b99f648bb1d7e1926aa9d5dd9926e267ba9709
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309132"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620880"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
@@ -131,7 +131,7 @@ Rejestrowanie aktywności jest automatycznie włączone dla wszystkich zasobów 
 
 ### <a name="enable-logging-through-the-azure-portal"></a>Włączanie rejestrowania za pośrednictwem witryny Azure Portal
 
-1. W witrynie Azure portal Znajdź zasób, a następnie kliknij przycisk **dzienniki diagnostyczne**.
+1. W witrynie Azure portal Znajdź zasób i wybierz **ustawień diagnostycznych**.
 
    W usłudze Application Gateway dostępne są trzy dzienniki:
 
@@ -139,21 +139,15 @@ Rejestrowanie aktywności jest automatycznie włączone dla wszystkich zasobów 
    * Dziennik wydajności
    * Dziennik zapory
 
-2. Aby rozpocząć zbieranie danych, kliknij pozycję **Włącz diagnostykę**.
+2. Aby rozpocząć zbieranie danych, wybierz pozycję **Włącz diagnostykę**.
 
    ![Włączanie diagnostyki][1]
 
-3. **Ustawień diagnostycznych** blok zawiera ustawienia dla dzienników diagnostycznych. W tym przykładzie usługi Log Analytics są przechowywane dzienniki. Kliknij przycisk **Konfiguruj** w obszarze **usługi Log Analytics** do skonfigurowania obszaru roboczego. Na potrzeby zapisywania dzienników diagnostycznych można także skorzystać z usługi Event Hubs i konta magazynu.
+3. Strona **Ustawienia diagnostyczne** zawiera ustawienia dzienników diagnostycznych. W tym przykładzie usługi Log Analytics są przechowywane dzienniki. Na potrzeby zapisywania dzienników diagnostycznych można także skorzystać z usługi Event Hubs i konta magazynu.
 
    ![Uruchamianie procesu konfiguracji][2]
 
-4. Wybierz istniejący obszar roboczy usługi Log Analytics lub Utwórz nową. W tym przykładzie użyto istniejącą grupę.
-
-   ![Opcje dla obszarów roboczych usługi Log Analytics][3]
-
-5. Potwierdź ustawienia, a następnie kliknij przycisk **Zapisz**.
-
-   ![Blok ustawień diagnostycznych przy użyciu opcji][4]
+5. Wpisz nazwę dla ustawienia, Potwierdź ustawienia, a następnie wybierz **Zapisz**.
 
 ### <a name="activity-log"></a>Dziennik aktywności
 
@@ -295,8 +289,8 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 
 Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowolnej z następujących metod:
 
-* **Narzędzia platformy Azure**: Pobieranie informacji z dziennika aktywności przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub witryny Azure portal. Instrukcje krok po kroku dla każdej metody są szczegółowo opisane w artykule [Activity operations with Resource Manager (Operacje działań przy użyciu usługi Resource Manager)](../azure-resource-manager/resource-group-audit.md).
-* **Power BI**: Jeśli nie masz jeszcze [usługi Power BI](https://powerbi.microsoft.com/pricing) konta, możesz ją wypróbować bezpłatnie. Korzystając z [pakietu zawartości dzienników aktywności platformy Azure dla usługi Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), możesz analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych, których możesz używać bez zmian lub po dostosowaniu.
+* **Narzędzia platformy Azure**: Pobierz informacje z dziennika aktywności przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub witryny Azure Portal. Instrukcje krok po kroku dla każdej metody są szczegółowo opisane w artykule [Activity operations with Resource Manager (Operacje działań przy użyciu usługi Resource Manager)](../azure-resource-manager/resource-group-audit.md).
+* **Power BI**: Jeśli nie masz jeszcze konta usługi [Power BI](https://powerbi.microsoft.com/pricing), możesz ją wypróbować bezpłatnie. Korzystając z [pakietu zawartości dzienników aktywności platformy Azure dla usługi Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), możesz analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych, których możesz używać bez zmian lub po dostosowaniu.
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Wyświetlanie i analizowanie dostępu, wydajność i dzienniki zapory
 
@@ -334,7 +328,7 @@ Metryki są funkcją dla niektórych zasobów platformy Azure, w którym można 
 
    Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia hostów w dobrej kondycji/złej kondycji w puli zaplecza określone.
 
-Przejdź do bramy aplikacji w obszarze **monitorowanie** kliknij **metryki**. Aby wyświetlić dostępne wartości, wybierz listę rozwijaną **METRYKA**.
+Przejdź do bramy aplikacji w obszarze **monitorowanie** wybierz **metryki**. Aby wyświetlić dostępne wartości, wybierz listę rozwijaną **METRYKA**.
 
 Na poniższej ilustracji możesz zobaczyć przykład, za pomocą trzech metryk dla ostatnich 30 minut:
 
@@ -348,11 +342,11 @@ Można uruchomić reguły alertów w oparciu o metryki dla zasobu. Na przykład 
 
 Poniższy przykład przeprowadzi Cię przez tworzenie reguły alertu, który wysyła wiadomość e-mail do administratora po naruszeń przepływności próg:
 
-1. Kliknij przycisk **Dodaj alert dotyczący metryki** otworzyć **Dodaj regułę** bloku. Możesz również połączyć tego bloku, w bloku metryk.
+1. Wybierz **Dodaj alert dotyczący metryki** otworzyć **Dodaj regułę** strony. Mogą również skorzystać z tej strony ze strony metryki.
 
    ![Przycisk "Dodaj alert dotyczący metryki"][6]
 
-2. Na **Dodaj regułę** bloku, wypełnij nazwę warunku sekcji Powiadom i kliknij przycisk **OK**.
+2. Na **Dodaj regułę** strony, wprowadź nazwę warunku sekcji Powiadom i wybierz **OK**.
 
    * W **warunek** selektor, wybierz jedną z czterech wartości: **Większa niż**, **większy lub równy**, **mniej niż**, lub **mniejsze niż lub równe**.
 
@@ -360,7 +354,7 @@ Poniższy przykład przeprowadzi Cię przez tworzenie reguły alertu, który wys
 
    * Jeśli wybierzesz **właściciele, współautorzy i czytelnicy poczty E-mail**, wiadomości e-mail może być dynamiczny na podstawie użytkowników, którzy mają dostęp do tego zasobu. W przeciwnym razie możesz podać listę rozdzielanych przecinkami użytkowników w **email(s) dodatkowego administratora** pole.
 
-   ![Dodawanie bloku reguły][7]
+   ![Dodaj stronę reguły][7]
 
 W przypadku włamania się progu, zostanie odebrana wiadomość e-mail, który jest podobny do przedstawionego na poniższym obrazie:
 

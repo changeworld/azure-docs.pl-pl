@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/28/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 72a3bead4ba8670187c35856f9cd4e4f4b975a30
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311699"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621978"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Najlepsze rozwiązania wiedzy usługi QnA Maker
 [Cykl życia projektowania bazy wiedzy knowledge base](../Concepts/development-lifecycle-knowledge-base.md) przeprowadzi Cię o tym, jak zarządzać wiedzy od początku do końca. Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy i zapewniają lepsze wyniki użytkownikom końcowym bota aplikacji/rozmowy.
@@ -108,7 +108,7 @@ Usługa QnA Maker umożliwia użytkownikom [współpracy](../How-to/collaborate-
 
 ## <a name="active-learning"></a>Aktywne uczenie
 
-[Aktywna nauka](../How-to/improve-knowledge-base.md) jest najlepiej sugerowanie alternatywnych pytania, gdy ma ona szeroką gamę jakości i ilości zapytania oparte na użytkownikach. Ważne jest, aby zezwolić na zapytania użytkowników klienta aplikacji do wzięcia udziału w aktywnej nauki sprzężenia zwrotnego bez cenzurą. Po pytania są sugerowane w portalu narzędzia QnA Maker, należy przejrzeć i zaakceptować lub odrzucić te sugestie. 
+[Aktywna nauka](../How-to/improve-knowledge-base.md) jest najlepiej sugerowanie alternatywnych pytania, gdy ma ona szeroką gamę jakości i ilości zapytania oparte na użytkownikach. Ważne jest, aby zezwolić na zapytania użytkowników klienta aplikacji do wzięcia udziału w aktywnej nauki sprzężenia zwrotnego bez cenzurą. Po pytania są sugerowane w portalu narzędzia QnA Maker, możesz **[Filtruj według sugestii](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** , a następnie przejrzeć i zaakceptować lub odrzucić te sugestie. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

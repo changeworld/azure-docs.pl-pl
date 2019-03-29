@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 401827f3fa5eb6d364d0f133d8cd672cf8968031
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6d1ce56ef66d224b89f49a00c2883ebbf22a5745
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103183"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622029"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Utworzyć i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute
 
@@ -35,7 +35,7 @@ Można skonfigurować jedną komunikację równorzędną, dwie lub trzy (prywatn
 
 * Pamiętaj, aby przed rozpoczęciem konfiguracji przejrzeć strony z [wymaganiami wstępnymi](expressroute-prerequisites.md), [wymaganiami routingu](expressroute-routing.md) oraz [przepływami pracy](expressroute-workflows.md).
 * Musisz mieć aktywny obwód usługi ExpressRoute. Zanim przejdziesz dalej, postępuj zgodnie z instrukcjami, aby [utworzyć obwód usługi ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md), który powinien zostać włączony przez dostawcę połączenia. Obwód usługi ExpressRoute musi być w stanie zainicjowany i włączony na tym, aby można było uruchamiać polecenia cmdlet w kolejnych sekcjach.
-* Jeśli planujesz używać udostępnionego skrótu klucza/MD5, pamiętaj użyjemy w obie strony tunelu i ograniczyć liczbę znaków, które mają więcej niż 25.
+* Jeśli planujesz używać udostępnionego skrótu klucza/MD5, pamiętaj użyjemy w obie strony tunelu i ograniczyć liczbę znaków alfanumerycznych, maksymalnie 25. Znaki specjalne są nieobsługiwane. 
 
 Te instrukcje dotyczą tylko obwodów utworzonych przy pomocy dostawców oferujących usługi łączności warstwy 2. Jeśli używasz dostawcy usług, który oferuje zarządzane w warstwie 3 usługi (zwykle IPVPN, np. MPLS), dostawca połączenia skonfiguruje i zarządza routing. 
 

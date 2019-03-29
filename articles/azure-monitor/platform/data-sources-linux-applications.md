@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 453e66934b93ab4368c4d3816d3db1a4588ae660
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001338"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621536"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [agenta usługi Log Analytics dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności określonych aplikacji do usługi Azure Monitor.  Aplikacje zawarte w tym artykule są następujące:  
 
-- [MySQL](#MySQL)
+- [MySQL](#mysql)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL

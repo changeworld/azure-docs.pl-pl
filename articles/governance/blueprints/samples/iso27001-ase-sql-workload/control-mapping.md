@@ -8,12 +8,12 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d487ce81babc2d1d6a35e3bdb1c13e1a24f8d1ca
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c062759938652518ac3cafff64973050554ca19d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58014202"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579703"
 ---
 # <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Mapowanie kontrolek Azure schematy ISO 27001 próbki planu
 
@@ -122,7 +122,7 @@ Zrozumienie, w której zasoby platformy Azure może mieć optymalnej konfiguracj
 
 ## <a name="a1241-event-logging"></a>Rejestrowanie zdarzeń A.12.4.1
 
-Ten plan pomaga zagwarantować, system zdarzenia są rejestrowane przez przypisanie siedem [usługi Azure Policy](../../../policy/overview.md) definicje, które inspekcji dziennika ustawienia dla zasobów platformy Azure. Przypisanych zasad przeprowadza inspekcję, jeśli maszyny wirtualne nie są wysyłane dzienniki do obszaru roboczego analizy określonego dziennika.
+Ten plan pomaga zagwarantować, system zdarzenia są rejestrowane przez przypisanie siedem [usługi Azure Policy](../../../policy/overview.md) definicje, które Przeprowadź inspekcję ustawienia dziennika dla zasobów platformy Azure. Przypisanych zasad przeprowadza inspekcję, jeśli maszyny wirtualne nie są wysyłane dzienniki do obszaru roboczego analizy określonego dziennika.
 
 - [Wersja zapoznawcza]: Wdrażanie agenta zależności inspekcji — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 - [Wersja zapoznawcza]: Inspekcja wdrożenie agenta zależności w zestawu skalowania maszyn wirtualnych — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
@@ -187,10 +187,10 @@ Teraz, gdy przejrzeniu mapowanie kontrolek próbki planu obciążenia ISO 27001 
 > [Plan obciążenia ISO 27001 App Service środowiska/bazą danych SQL — omówienie](./index.md)
 > [obciążenie bazy danych środowiska/SQL usługi ISO 27001 aplikacji planu — wdrażanie kroki](./deploy.md)
 
-Dodatkowe artykuły na temat planów i jak ich używać:
+Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Dowiedz się więcej o [planu cyklu życia](../../concepts/lifecycle.md).
-- Opis sposobu użycia [statycznych i dynamicznych parametrów](../../concepts/parameters.md).
-- Dowiedz się, jak dostosować [planu sekwencjonowania](../../concepts/sequencing-order.md).
-- Dowiedz się, jak używać [planu blokowania zasobów](../../concepts/resource-locking.md).
+- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
+- Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
+- Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
+- Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).
 - Dowiedz się, jak [zaktualizować istniejące przypisania](../../how-to/update-existing-assignments.md).

@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b307a497e69bd6c2dcc7b415b2d94335459f7fd3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b929182ce1c89e7508aeae91a95b5c9b0d599774
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544992"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621383"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
@@ -231,6 +231,9 @@ Poniższe tabele pokazują minimalnych wymaganych uprawnień, służące do doł
 |Sprawdź stan dołączania — rozwiązanie do odczytu      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | Rozwiązanie         |
 |Sprawdzanie stanu dołączania do - odczytu maszyny Wirtualnej      | Microsoft.Compute/virtualMachines/read         | Maszyna wirtualna         |
 |Sprawdź stan dołączania — odczytu konta      | Microsoft.Automation/automationAccounts/read  |  Konto usługi Automation   |
+| Dołączanie do obszaru roboczego wyboru dla maszyny Wirtualnej<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Subskrypcja         |
+
+<sup>1</sup> to uprawnienie jest wymagane do dołączania za pomocą środowiska portalu maszyny Wirtualnej.
 
 ### <a name="onboarding-from-automation-account"></a>Dołączanie z konta usługi Automation
 

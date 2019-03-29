@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 4d3de1d0b242017f7026873ccaeba547f85981fc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a152d9242c4d272800e2e159603c2554f1d89092
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482103"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622046"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -57,13 +57,11 @@ Poniższa sekcja Lista obsługiwanych systemów operacyjnych dla agenta zależno
 - Windows 7
 
 ## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
-Poniższa sekcja Lista obsługiwanych systemów operacyjnych dla agenta zależności w systemie Red Hat Enterprise Linux, CentOS Linux i Oracle Linux (za pośrednictwem jądra systemu RHEL).  
+Poniższa sekcja Lista obsługiwanych systemów operacyjnych dla agenta zależności w systemie Linux.  
 
 - Obsługiwane są tylko wersje domyślne i wersje SMP jądra systemu Linux.
 - Niestandardowe wydania jądra, takie jak PAE i Xen, nie są obsługiwane dla żadnej dystrybucji systemu Linux. Na przykład systemu z wersji ciąg "2.6.16.21-0.8-xen" nie jest obsługiwane.
 - Niestandardowe jądra, łącznie z ponownymi kompilacjami standardowych jąder, nie są obsługiwane.
-- CentOSPlus jądra jest obsługiwana.
-- Jądro Oracle Unbreakable Enterprise Kernel (UEK) zostało opisane w dalszej części tego artykułu.
 
 ### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 

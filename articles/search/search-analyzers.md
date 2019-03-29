@@ -4,17 +4,17 @@ description: Analizatory przypisywanie do pól tekstowych można wyszukiwać w i
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/27/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3e6f0a2b9b935df9b12cf9146ebf05f1b1c84855
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343276"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578768"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analizatory do przetwarzania w usłudze Azure Search tekstu
 
@@ -97,16 +97,18 @@ Jeśli wyszukiwanie nie zwraca oczekiwanych rezultatów, najbardziej prawdopodob
 
 [Wersja demonstracyjna analizatora wyszukiwania](https://alice.unearth.ai/) jest aplikacją firm pokaz przedstawiający porównania side-by-side standardowy analizator Lucene, Lucene w języku angielskim analizator i procesora angielskiej języka naturalnego firmy Microsoft. Indeks został rozwiązany; zawiera ona tekstu z popularnych wątku. Dla każdego dane wejściowe zostaną podane, wyniki z każdego analizatora są wyświetlane w sąsiadujących okienka, co daje poczucie przetwarzaniu tego samego ciągu w każdej analizatora. 
 
-## <a name="examples"></a>Przykłady
+<a name="examples"></a>
+
+## <a name="rest-examples"></a>Przykłady REST
 
 Poniższe przykłady pokazują analizatora definicje kilku kluczowych scenariuszy.
 
-+ [Przykład analizatora niestandardowego](#Example1)
-+ [Przypisz analizatory do przykładu pola](#Example2)
-+ [Mieszanie analizatory na indeksowanie i wyszukiwanie](#Example3)
-+ [Przykład analizatora języka](#Example4)
++ [Przykład analizatora niestandardowego](#Custom-analyzer-example)
++ [Przypisz analizatory do przykładu pola](#Per-field-analyzer-assignment-example)
++ [Mieszanie analizatory na indeksowanie i wyszukiwanie](#Mixing-analyzers-for-indexing-and-search-operations)
++ [Przykład analizatora języka](#Language-analyzer-example)
 
-<a name="Example1"></a>
+<a name="Custom-analyzer-example"></a>
 
 ### <a name="custom-analyzer-example"></a>Przykład analizatora niestandardowego
 
@@ -180,7 +182,7 @@ Instruktaż następująco:
   }
 ~~~~
 
-<a name="Example2"></a>
+<a name="Per-field-analyzer-assignment-example"></a>
 
 ### <a name="per-field-analyzer-assignment-example"></a>Przykład przypisania analizatora pola
 
@@ -213,7 +215,7 @@ Element "analizatora" zastępuje standardowy analizator na podstawie pól pola. 
   }
 ~~~~
 
-<a name="Example3"></a>
+<a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
 ### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>Mieszanie analizatory dla operacji indeksowania i wyszukiwania
 
@@ -241,7 +243,7 @@ Interfejsy API zawiera atrybuty indeksu do określania różnych analizatory do 
   }
 ~~~~
 
-<a name="Example4"></a>
+<a name="Language-analyzer-example"></a>
 
 ### <a name="language-analyzer-example"></a>Przykład analizatora języka
 
@@ -273,6 +275,69 @@ Pola zawierające ciągi w różnych językach, można użyć analizatora język
      ],
   }
 ~~~~
+
+## <a name="c-examples"></a>C#Przykłady
+
+Korzystając z przykładów kodu zestawu .NET SDK, można dołączyć tych przykładów użycia i konfigurowania analizatorów.
+
++ [Przypisz wbudowanych analizatora](#Assign-a-language-analyzer)
++ [Konfigurowanie analizatora](#Define-a-custom-analyzer)
+
+<a name="Assign-a-language-analyzer"></a>
+
+### <a name="assign-a-language-analyzer"></a>Przypisz analizatora języków
+
+Dowolnego analizatora, który jest używany jako — jest bez konfiguracji, jest określone w definicji pola. Nie jest wymagane do tworzenia konstrukcji analizatora. 
+
+W tym przykładzie przypisuje analizatory English firmy Microsoft i francuskim, do pola Opis. To fragment kodu, pobranego z większych definicję indeksu hotels, tworzenie, używanie klasy hotelu w pliku hotels.cs [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) próbki.
+
+Wywołaj [analizatora](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), określanie [klasy AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) zawierający wszystkie analizatory tekstu, obsługiwane w usłudze Azure Search.
+
+```csharp
+    public partial class Hotel
+    {
+       . . . 
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.FrLucene)]
+        [JsonProperty("description_fr")]
+        public string DescriptionFr { get; set; }
+
+      . . .
+    }
+```
+<a name="Define-a-custom-analyzer"></a>
+
+### <a name="define-a-custom-analyzer"></a>Definiowanie niestandardowego analizatora
+
+Podczas dostosowywania lub konfiguracja jest wymagana, należy dodać konstrukcja analizatora do indeksu. Po zdefiniowaniu, można dodać jej definicja pola jak pokazano w poprzednim przykładzie.
+
+Użyj [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) do utworzenia obiektu. Aby uzyskać więcej przykładów, zobacz [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
+
+```csharp
+{
+   var definition = new Index()
+   {
+         Name = "hotels",
+         Fields = FieldBuilder.BuildForType<Hotel>(),
+         Analyzers = new[]
+            {
+               new CustomAnalyzer()
+               {
+                     Name = "url-analyze",
+                     Tokenizer = TokenizerName.UaxUrlEmail,
+                     TokenFilters = new[] { TokenFilterName.Lowercase }
+               }
+            },
+   };
+
+   serviceClient.Indexes.Create(definition);
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

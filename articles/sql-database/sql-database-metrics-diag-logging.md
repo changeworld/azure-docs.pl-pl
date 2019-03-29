@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: c5be8af71fcbdf6f38f878c70180f38227070245
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: bb45062697b113b676f85381f0653c14ac8c0c67
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499329"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621234"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -148,7 +148,7 @@ Można skonfigurować wystąpienia zarządzanego zasobu zebrać następujące da
 
 | Zasób | Monitorowanie danych telemetrycznych |
 | :------------------- | ------------------- |
-| **Wystąpienie zarządzane** | ResourceUsageStats zawiera liczbę rdzeni wirtualnych, średni procent użycia procesora CPU, żądań We/Wy, bajtów odczytanych/zapisanych, zarezerwowane miejsca i użyte miejsce do magazynowania. |
+| **Wystąpienie zarządzane** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) zawiera liczbę rdzeni wirtualnych, średni procent użycia procesora CPU, żądań We/Wy, bajtów odczytanych/zapisanych, zarezerwowane miejsca i użyte miejsce do magazynowania. |
 
 Aby skonfigurować, przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla wystąpienia zarządzanego i wystąpienie bazy danych, musisz oddzielnie skonfigurować **zarówno** z następujących czynności:
 

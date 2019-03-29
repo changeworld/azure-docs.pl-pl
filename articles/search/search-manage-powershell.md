@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 7a91ad691089ac816b31ebe1fce202110e580f71
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8f07468ccff4431e1afdf66aedc72599ddc0c25b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520568"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620601"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Zarządzanie usługą Azure Search przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -24,17 +24,17 @@ ms.locfileid: "58520568"
 > * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Można uruchomić polecenia cmdlet programu PowerShell i skryptów na Windows, Linux, lub w [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) do tworzenia i konfigurowania [usługi Azure Search](https://docs.microsoft.com/azure/search/). [ **Az.Search** ](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) rozszerza modułu [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.4.0) z parzystością pełną do [interfejsów API REST zarządzania usługi Azure Search](https://docs.microsoft.com/rest/api/searchmanagement). Za pomocą programu Azure PowerShell i **Az.Search**, można wykonywać następujące zadania:
+Można uruchomić polecenia cmdlet programu PowerShell i skryptów na Windows, Linux, lub w [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) do tworzenia i konfigurowania usługi Azure Search. **Az.Search** modułu rozszerza programu Azure PowerShell] z parzystością pełną do [interfejsów API REST zarządzania usługi Azure Search](https://docs.microsoft.com/rest/api/searchmanagement). Za pomocą programu Azure PowerShell i **Az.Search**, można wykonywać następujące zadania:
 
 > [!div class="checklist"]
 > * [Wyświetlić listę wszystkich usług wyszukiwania w ramach subskrypcji](#list-search-services)
 > * [Uzyskaj informacje o usłudze wyszukiwania określonego](#get-search-service-information)
 > * [Tworzenie lub usuwanie usługi](#create-or-delete-a-service)
-> * Wygeneruj ponownie klucze API-Key administratora
+> * [Wygeneruj ponownie klucze API-Key administratora](#regenerate-admin-keys)
 > * [Tworzenie lub usuwanie kluczy interfejsu api zapytań](#create-or-delete-query-keys)
 > * [Skalowanie usługi przez zwiększenie lub zmniejszenie replik i partycji](#scale-replicas-and-partitions)
 
-Program PowerShell nie można zmienić nazwę, region lub warstwy usługi. Dedykowane zasoby są przydzielane podczas tworzenia usługi. Zmiana bazowego sprzętu (typ lokalizacji lub węzła) wymaga nowej usługi. Brak narzędzia i interfejsy API do transferowania zawartości. Całe Zarządzanie zawartości jest użycie [REST](https://docs.microsoft.com/rest/api/searchservice/) lub [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) interfejsów API, a jeśli chcesz przenieść indeksów, należy ponownie utworzyć i załadować je ponownie na nową usługę. 
+Program PowerShell nie można zmienić nazwę, region lub warstwy usługi. Dedykowane zasoby są przydzielane podczas tworzenia usługi. Zmiana bazowego sprzętu (typ lokalizacji lub węzła) wymaga nowej usługi. Brak narzędzia i interfejsy API dla przesyłania zawartości z jednej usługi. Całe Zarządzanie zawartości jest użycie [REST](https://docs.microsoft.com/rest/api/searchservice/) lub [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) interfejsów API, a jeśli chcesz przenieść indeksów, należy ponownie utworzyć i załadować je ponownie na nową usługę. 
 
 Gdy nie ma żadnych dedykowanych poleceń programu PowerShell dotyczące zarządzania zawartością, można napisać skrypt programu PowerShell, który wywołuje REST lub .NET, aby utworzyć i załadować indeksów. **Az.Search** modułem samodzielnie nie zapewnia tych operacji.
 

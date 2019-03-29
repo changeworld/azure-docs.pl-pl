@@ -7,75 +7,51 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: b620ca76cfea296e504afffd91852308a01575db
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 902303a8f55f4494e0cc6c21b0438e41437c0567
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002010"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620669"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 
-Pięć modeli spójności oferowanych przez usługę Azure Cosmos DB są natywnie obsługiwane przez interfejs API SQL. Gdy używasz usługi Azure Cosmos DB, interfejs API SQL jest ustawieniem domyślnym. 
+Usługa Azure Cosmos DB zapewnia natywną obsługę sieci zgodnego z protokołem interfejsów API na potrzeby popularnych baz danych. Obejmują one bazy danych MongoDB, Apache Cassandra, Gremlin i Azure Table storage. Te bazy danych, które nie oferują dokładnie zdefiniowanych modeli spójności lub objętym umową SLA gwarancje dotyczące poziomów spójności. Zwykle zapewniają tylko podzbiór pięcioma modelami spójności oferowanych przez usługę Azure Cosmos DB. 
 
-Usługa Azure Cosmos DB również zapewnia natywną obsługę sieci zgodnego z protokołem interfejsów API na potrzeby popularnych baz danych. Bazy danych obejmują bazy danych MongoDB, Apache Cassandra, Gremlin i Azure Table storage. Te bazy danych nie ma możliwości dokładnie zdefiniowanych modeli spójności lub objętym umową SLA gwarancje dotyczące poziomów spójności. Zwykle zapewniają tylko podzbiór pięcioma modelami spójności oferowanych przez usługę Azure Cosmos DB. Dla interfejsu API SQL, interfejs API Gremlin i interfejsu API tabel jest używany domyślny poziom spójności skonfigurowany na koncie usługi Azure Cosmos. 
+Korzystając z interfejsu API SQL, interfejs API Gremlin i interfejsu API tabel, jest używany domyślny poziom spójności skonfigurowany na koncie usługi Azure Cosmos. 
 
-W poniższych sekcjach przedstawiono mapowanie między spójności danych, żądane przez sterownik klienta OSS dla bazy danych Apache Cassandra, MongoDB i odpowiadającymi im poziomami spójności w usłudze Azure Cosmos DB.
+Korzystając z interfejsu API rozwiązania Cassandra API lub usługi Azure Cosmos DB dla bazy danych MongoDB, pełny zestaw poziomów spójności oferowanych przez bazy danych Apache Cassandra i bazy danych MongoDB, odpowiednio, jeszcze lepsze spójności i gwarancje niezawodności uzyskiwania aplikacji. Ten dokument zawiera odpowiednie poziomy spójności w usłudze Azure Cosmos DB dla bazy danych Apache Cassandra i poziomów spójności bazy danych MongoDB.
+
 
 ## <a id="cassandra-mapping"></a>Mapowanie między poziomami spójności bazy danych Apache Cassandra usługi Azure Cosmos DB
 
-Poniższa tabela zawiera opis różnych kombinacji spójności, które umożliwia korzystanie z interfejsu API rozwiązania Cassandra i równoważne spójności natywne mapowanie poziomu usługi Cosmos DB. Połączenie wszystkich trybach odczytu i zapisu bazy danych Apache Cassandra są natywnie obsługiwane przez usługi Cosmos DB. W przypadku każdej kombinacji zapisu bazy danych Apache Cassandra i modelu spójności odczytu usługi Cosmos DB zapewnia gwarancje spójności równym lub większym niż bazy danych Apache Cassandra. Ponadto usługi Cosmos DB zapewnia gwarancje większą trwałość niż bazy danych Apache Cassandra, nawet w trybie najsłabsza, liczby operacji zapisu.
+W odróżnieniu od AzureCosmos DB bazy danych Apache Cassandra nie zawierają dokładnie zdefiniowane ustawienia spójności gwarancji.  Zamiast tego bazy danych Apache Cassandra zapewnia poziom spójności zapisu i poziomu spójności odczytu do włączenia wysokiej dostępności, spójności i opóźnienia stosowania kompromisów. W przypadku korzystania z interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB: 
 
-W poniższej tabeli przedstawiono **zapisu mapowanie spójności** między usługi Azure Cosmos DB i bazy danych Cassandra:
+* Poziom spójności zapisu bazy danych Apache Cassandra jest zamapowana na domyślny poziom spójności skonfigurowane na Twoim koncie usługi Azure Cosmos. 
 
-| Cassandra | Azure Cosmos DB | Gwarancja |
-| - | - | - |
-|WSZYSTKIE|Silna  | Operacje atomowe |
-| EACH_QUORUM   | Silna    | Operacje atomowe | 
-| KWORUM SZEREGOWEJ |  Silna |    Operacje atomowe |
-| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks |Globalne spójny prefiks |
-| EACH_QUORUM   | Silna    | Operacje atomowe |
-| KWORUM SZEREGOWEJ |  Silna |    Operacje atomowe |
-| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks | Globalne spójny prefiks |
-| KWORUM SZEREGOWEJ | Silna   | Operacje atomowe |
-| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks | Globalne spójny prefiks |
-| LOCAL_QUORUM, LOCAL_SERIAL, DWÓCH, TRZECH    | Powiązana nieaktualność | <ul><li>Powiązana nieaktualność.</li><li>Co najwyżej K wersji lub czasu (t) za zaporą.</li><li>Odczytaj najnowsze zatwierdzone wartość w regionie.</li></ul> |
-| JEDEN, LOCAL_ONE, WSZYSTKIE   | Spójny prefiks | Spójny prefiks regionu |
+* Usługa Azure Cosmos DB będzie mapować dynamicznie poziomu spójności odczytu określonego przez sterownik klienta bazy danych Cassandra do jednego z poziomów spójności usługi Azure Cosmos DB, które są skonfigurowane dynamicznie, na żądanie odczytu. 
 
-W poniższej tabeli przedstawiono **mapowanie spójności odczytu** między usługi Azure Cosmos DB i bazy danych Cassandra:
+W poniższej tabeli przedstawiono, jak natywne poziomów spójności bazy danych Cassandra są mapowane na poziomy spójności usługi Azure Cosmos DB, korzystając z interfejsu API rozwiązania Cassandra:  
 
-| Cassandra | Azure Cosmos DB | Gwarancja |
-| - | - | - |
-| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, 3, DWÓCH, JEDEN, LOCAL_ONE | Silna  | Operacje atomowe|
-| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, TRZY, DWA   |Silna |   Operacje atomowe |
-|LOCAL_ONE, PO JEDNYM | Spójny prefiks | Globalne spójny prefiks |
-| WSZYSTKIM KWORUM, SERYJNY   | Silna    | Operacje atomowe |
-| LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH |  Spójny prefiks   | Globalne spójny prefiks |
-| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM |    Spójny prefiks   | Globalne spójny prefiks |
-| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, TRZY, DWA   |Silna |   Operacje atomowe |
-| LOCAL_ONE, PO JEDNYM    | Spójny prefiks | Globalne spójny prefiks|
-| WSZYSTKIE KWORUM, SERIAL silne atomowych
-LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH  |Spójny prefiks  | Globalne spójny prefiks |
-|WSZYSTKIE    |Silna |Operacje atomowe |
-| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  |Spójny prefiks  |Globalne spójny prefiks|
-|WSZYSTKIE KWORUM, SERIAL silne atomowych
-LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH  |Spójny prefiks  |Globalne spójny prefiks |
-|WSZYSTKIE    |Silna | Operacje atomowe |
-| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  | Spójny prefiks | Globalne spójny prefiks |
-| KWORUM, LOCAL_QUORUM, LOCAL_SERIAL, DWA, TRZY |  Powiązana nieaktualność   | <ul><li>Powiązana nieaktualność.</li><li>Co najwyżej K wersji lub czasu (t) za zaporą. </li><li>Odczytaj najnowsze zatwierdzone wartość w regionie.</li></ul>
-| LOCAL_ONE, PO JEDNYM |Spójny prefiks | Spójny prefiks regionu |
-| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  | Spójny prefiks | Spójny prefiks regionu |
+[ ![Mapowanie modelu spójności bazy danych Cassandra](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
+## <a id="mongo-mapping"></a>Mapowanie między poziomami spójności bazy danych MongoDB i usługi Azure Cosmos DB
 
-## <a id="mongo-mapping"></a>Mapowanie między poziomami spójności bazy danych MongoDB 3.4 i Azure Cosmos DB
+W przeciwieństwie do usługi Azure Cosmos DB MongoDB natywnych nie gwarancje dokładnie zdefiniowane ustawienia spójności. Zamiast tego natywnej bazy danych MongoDB umożliwia użytkownikom na konfigurowanie następujące gwarancje spójności: kwestią zapisu, dotyczą odczytu i dyrektywy ismaster czy — w celu przekierowania operacji odczytu do repliki podstawowej lub dodatkowej do osiągnięcia poziomu spójności żądaną. 
 
-W poniższej tabeli przedstawiono "Przeczytaj uwagi" mapowanie między MongoDB 3.4 i domyślny poziom spójności w usłudze Azure Cosmos DB. W tabeli przedstawiono wdrożenia w wielu regionach i jednym regionie.
+Korzystając z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, sterownika bazy danych MongoDB traktuje region zapisu jako repliki podstawowej i wszystkie inne regiony odczytu replik. Można wybrać regionu, który został skojarzony z Twoim kontem usługi Azure Cosmos jako repliki podstawowej. 
 
-| **MongoDB 3.4** | **Usługa Azure Cosmos DB (wielu regionów)** | **Usługa Azure Cosmos DB (jednym regionie)** |
-| - | - | - |
-| Linearizable | Silna | Silna |
-| Większość | Powiązana nieaktualność | Silna |
-| Lokalna | Spójny prefiks | Spójny prefiks |
+Podczas korzystania z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB:
+
+* Zastrzeżenia zapisu jest zamapowana na domyślny poziom spójności skonfigurowane na Twoim koncie usługi Azure Cosmos.
+ 
+* Usługa Azure Cosmos DB będzie mapować dynamicznie odczytu kwestią, określonego przez sterownik klienta bazy danych MongoDB na jeden z poziomów spójności usługi Azure Cosmos DB, skonfigurowane dynamicznie na żądanie odczytu. 
+
+* Możesz dodawać adnotacje do konkretnego regionu skojarzonych z Twoim kontem usługi Azure Cosmos, jako "Master", wprowadzając regionie, co pierwszy region zapisu. 
+
+W poniższej tabeli przedstawiono, jak natywnej bazy danych MongoDB zapisu/odczytu uwagi są mapowane na poziomy spójności w usłudze Azure Cosmos, korzystając z interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB:
+
+[ ![Mapowanie modelu spójności bazy danych MongoDB](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

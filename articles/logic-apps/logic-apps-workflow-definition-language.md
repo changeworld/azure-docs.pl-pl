@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 3c17ec2133e278b17475e4988e1e9766b1349ba4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734644"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620840"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołanie do schematu dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -41,7 +41,7 @@ Poniżej przedstawiono ogólną strukturę dla definicji przepływu pracy:
 | Element | Wymagany | Opis |
 |---------|----------|-------------|
 | definicja | Yes | Element początkowy dla swojej definicji przepływu pracy |
-| $schema | Tylko wtedy, gdy zewnętrznie odwołujące się do definicji przepływu pracy | Lokalizacja pliku schematu JSON, który opisuje wersję język definicji przepływów pracy, który można znaleźć tutaj: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |
+| $schema | Tylko wtedy, gdy zewnętrznie odwołujące się do definicji przepływu pracy | Lokalizacja pliku schematu JSON, który opisuje wersję język definicji przepływów pracy, który można znaleźć tutaj: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | contentversion — | Nie | Numer wersji dla definicji przepływu pracy, czyli "1.0.0.0" domyślnie. Aby ułatwić identyfikowanie i Potwierdź poprawną definicję, wdrażając przepływu pracy, należy określić wartość do użycia. |
 | parameters | Nie | Definicje dla jednego lub więcej parametrów, które przekazują dane do Twojego przepływu pracy <p><p>Maksymalna parametry: 50 |
 | wyzwalacze | Nie | Definicje dla co najmniej jeden wyzwalacze, które wystąpienia przepływu pracy. Można zdefiniować więcej niż jeden wyzwalacz, ale tylko za pomocą języka definicji przepływu pracy, nie wizualnie za pomocą projektanta aplikacji logiki. <p><p>Maksymalna wyzwalaczy: 10 |
@@ -72,8 +72,8 @@ Poniżej przedstawiono ogólną strukturę dla definicji parametru:
 
 | Element | Wymagane | Typ | Opis |
 |---------|----------|------|-------------|
-| type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: W przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. | Typ parametru |
-| defaultValue | Nie | Takie same jak `type` | Domyślna wartość parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy |
+| type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: W przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz [zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | Typ parametru |
+| defaultValue | Yes | Takie same jak `type` | Domyślna wartość parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy |
 | allowedValues | Nie | Takie same jak `type` | Tablica wartości akceptujące parametr |
 | metadane | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis dla swojej aplikacji logiki lub danych czasu projektowania używanych przez program Visual Studio lub innych narzędzi |
 ||||

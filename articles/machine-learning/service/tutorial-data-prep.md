@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0ee49299dbbe8095ef98be51dc8619c28891abc5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 4fc6f2e147c5c891653031b913f4b2a04b571b2b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361391"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622182"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
@@ -1083,9 +1083,7 @@ Teraz masz w pełni przekształcony i przygotowany obiekt przepływu danych, kt�
 ```python
 import os
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
-
-package = dprep.Package([final_df])
-package.save(file_path)
+final_df.save(file_path)
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0c090499ee6ae2aaaa14af18c3c38db28ecb2f3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884731"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620006"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Analiza multimediów na platformie Media Services 
 
@@ -40,8 +40,6 @@ Procesory multimediów usługi Analiza multimediów tworzą pliki MP4 lub JSON. 
 
 ### <a name="indexer"></a>Indeksator
 Za pomocą usługi Azure Media Indexer, który ułatwia zawartości można wyszukiwać i generowanie napisów ścieżki. W porównaniu do poprzedniej wersji usługi Azure Media Indexer 2 w wersji zapoznawczej ma języka szybciej indeksowania i szerszej pomocy technicznej. Obsługiwane języki angielski, hiszpański, francuski, niemiecki, włoski, chiński, Portugalskiej i arabskim. Aby uzyskać szczegółowe informacje i przykłady, zobacz [przetwarzanie plików wideo za pomocą usługi Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
-### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse łączy stabilizacji wideo i ujęć poklatkowych możliwości tworzenia szybkie, konsumpcyjnych wideo z Twojej zawartości w formie długiej. Oprócz tworzenia wideo poklatkowych, można użyć usługi przyspieszone ujęcia Poklatkowe utworzyć stabilną filmów wideo z trzęsącym wideo przechwycone przy użyciu telefonów komórkowych i są. Aby uzyskać szczegółowe informacje i przykłady, zobacz [Hyperlapse plików multimedialnych za pomocą usługi Azure Media Hyperlapse](media-services-hyperlapse-content.md).
 ### <a name="motion-detector"></a>Wykrywanie ruchu
 Wykrywanie ruchu służy do wykrywania ruchu w wideo z nieruchomym. Umożliwia pod kątem wyników fałszywie dodatnich zdarzeń ruchu wykrywane przez kamery nadzoru. Aby uzyskać szczegółowe informacje i przykłady, zobacz [wykrywanie na potrzeby analizy multimediów Azure ruchu](media-services-motion-detection.md).
 ### <a name="face-detector"></a>Wykrywanie twarzy
@@ -53,7 +51,7 @@ Za pomocą usługi Azure Media optyczne rozpoznawanie znaków (OCR) zawartości 
 ### <a name="scalable-face-redaction"></a>Pomocą redakcji twarzy skalowalne
 Usługa Azure Media Redactor to procesor multimediów usługi Media Analytics, który oferuje pomocą redakcji twarzy skalowalny w chmurze. Za pomocą redakcji twarzy, można zmodyfikować filmu wideo, aby Rozmycie twarze wybranych osób. Można korzystać z niej redakcji twarzy w mediami lub gdy uczestniczy bezpieczeństwa publicznego. Kilka minut materiał, który zawiera wiele powierzchni może zająć godzin redagowanie ręcznie, ale w tej usłudze pomocą redakcji twarzy trwa zaledwie kilku prostych krokach. Aby uzyskać więcej informacji, zobacz [redagowanie twarze za pomocą usługi Azure Media Analytics](media-services-face-redaction.md) artykułu.
 ### <a name="content-moderation"></a>Moderowanie zawartości
-Usługa Azure Content Moderator pozwala na potrzeby wspomagane maszynowo Moderowanie filmów wideo. Na przykład możesz chcieć wykrywanie możliwej zawartości dla dorosłych w filmach wideo i przejrzeć flagą zawartość przez Twoje zespoły Moderowanie ludzi. Ręcznie Moderowanie filmów wideo niepożądanych zawartości to zadania czasochłonne i kosztowne. Z usługą i narzędziom do przeglądu skojarzonych możesz połączyć wspomaganego maszynowo moderowania możliwości człowieka w pętli, aby uzyskać najlepsze wyniki wydajnie i ekonomicznie. Aby dowiedzieć się więcej, zobacz [przetwarzać pliki wideo przy użyciu usługi Azure Content Moderator](media-services-content-moderation.md) artykułu.
+Usługa Azure Content Moderator pozwala na potrzeby wspomagane maszynowo Moderowanie filmów wideo. Na przykład chcesz wykrywać potencjalną zawartość dla dorosłych i nieodpowiednią w filmach wideo oraz przesyłać zawartość oznaczoną flagą do przejrzenia przez zespoły ds. moderowania obsługiwanego przez ludzi. Ręcznie Moderowanie filmów wideo niepożądanych zawartości to zadania czasochłonne i kosztowne. Z usługą i narzędziom do przeglądu skojarzonych możesz połączyć wspomaganego maszynowo moderowania możliwości człowieka w pętli, aby uzyskać najlepsze wyniki wydajnie i ekonomicznie. Aby dowiedzieć się więcej, zobacz [przetwarzać pliki wideo przy użyciu usługi Azure Content Moderator](media-services-content-moderation.md) artykułu.
 
 ## <a name="common-scenarios"></a>Typowe scenariusze
 Analiza multimediów może pomóc organizacjom i przedsiębiorstwom gromadzić nowe analizy z wideo więcej wydajne zarządzanie dużymi ilościami zawartości wideo. Poniżej przedstawiono kilka scenariuszy:

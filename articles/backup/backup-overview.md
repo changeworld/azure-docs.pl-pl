@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1debbcc8f225a0d4608d67b19e5e00aca580ce1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 51191f3276a9420129f47944b47a182479719d5a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122016"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621672"
 ---
 # <a name="what-is-azure-backup"></a>Co to jest Azure Backup?
 
@@ -26,12 +26,16 @@ Usługa Azure Backup umożliwia wykonywanie kopii zapasowych danych w chmurze pl
 Usługa Azure Backup oferuje następujące kluczowe korzyści:
 
 - **Odciążanie lokalnej kopii zapasowej**: Usługa Azure Backup oferuje proste rozwiązanie do wykonywania kopii zapasowych zasobów lokalnych w chmurze. Uzyskaj krótkoterminowe i długoterminowe kopie zapasowe bez konieczności wdrażania złożonych lokalnych rozwiązań do wykonywania kopii zapasowych. 
-- **Wykonywanie kopii zapasowych maszyn wirtualnych IaaS platformy Azure**: usługa Azure Backup umożliwia wykonywanie niezależnych i odizolowanych kopii zapasowych, co chroni przed przypadkowym zniszczeniem oryginalnych danych. Kopie zapasowe są przechowywane w magazynie usługi Recovery Services z wbudowanymi zarządzanymi punktami odzyskiwania. Konfiguracja i skalowalność są proste, kopie zapasowe są zoptymalizowane i można je łatwo przywrócić.
+- **Wykonywanie kopii zapasowych maszyn wirtualnych IaaS platformy Azure**: usługa Azure Backup umożliwia wykonywanie niezależnych i odizolowanych kopii zapasowych, co chroni przed przypadkowym zniszczeniem oryginalnych danych. Kopie zapasowe są przechowywane w magazynie usługi Recovery Services z wbudowanymi zarządzanymi punktami odzyskiwania. Konfiguracji i skalowalność to proste, kopie zapasowe są zoptymalizowane i można je łatwo przywrócić, zgodnie z potrzebami.
 - **Łatwe skalowanie** — usługa Azure Backup używa dostępnej mocy i nieograniczonej skali chmury Azure do zapewniania wysokiej dostępności, bez narzutu na konserwację lub monitorowanie. 
-- **Nieograniczony transfer danych** — usługa Azure Backup nie ogranicza ilości przesyłanych danych przychodzących i wychodzących ani nie nalicza opłat za przesyłane dane.
+- **Uzyskać nieograniczony transfer danych**: Usługa Azure Backup nie ogranicza ilość danych przychodzących lub wychodzących przetransferowana lub opłaty za przesyłane dane.
     - Dane wychodzące to dane transferowane z magazynu usługi Recovery Services podczas operacji przywracania.
     - Jeśli tworzysz wstępną kopię zapasową w trybie offline za pomocą usługi Azure Import/Export w celu importowania dużych ilości danych, istnieje koszt związany z danymi przychodzącymi.  [Dowiedz się więcej](backup-azure-backup-import-export.md). 
-- **Bezpieczeństwo danych**: szyfrowanie danych umożliwia bezpieczną transmisję i przechowywania danych w chmurze publicznej. Hasło szyfrowania przechowujesz lokalnie i nigdy nie jest ono przesyłane ani przechowywane na platformie Azure. Jeśli jest konieczne przywrócenie jakichkolwiek danych, tylko Ty masz hasło lub klucz szyfrowania.
+- **Bezpieczeństwo danych**:
+    - W środowisku lokalnym, przesyłane dane są szyfrowane na maszynie lokalnej przy użyciu AES256. Dane przesyłane jest chroniony przez protokół HTTPS między magazynu i kopii zapasowych. Protokół iSCSI zabezpiecza dane przesyłane między kopią zapasową i komputera użytkownika. Bezpiecznego tunelowania jest używany do ochrony kanału iSCSI.
+    - W przypadku środowiska lokalnego do usługi Azure backup dane na platformie Azure jest zaszyfrowanych danych w spoczynku przy użyciu hasła, podane podczas konfigurowania kopii zapasowej. Hasło lub klucz nigdy nie jest on przesyłane ani przechowywane na platformie Azure. Jeśli jest konieczne przywrócenie jakichkolwiek danych, tylko Ty masz hasło lub klucz szyfrowania.
+    - W przypadku maszyn wirtualnych platformy Azure, dane są szyfrowane przy użyciu szyfrowania usługi Storage (SSE) na resetowanie. Kopia zapasowa automatycznie szyfruje dane przed przekazaniem jej. Usługa Azure Storage odszyfrowuje dane przed ich pobraniem.
+    - Kopia zapasowa obsługuje również maszyn wirtualnych platformy Azure, zaszyfrowane za pomocą szyfrowania dysków Azure (ADE). [Dowiedz się więcej](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 - **Kopie zapasowe spójne na poziomie aplikacji**: kopia zapasowa spójna na poziomie aplikacji oznacza, że punkt odzyskiwania ma wszystkie dane wymagane do przywrócenia kopii zapasowej. Usługa Azure Backup umożliwia wykonywanie kopii zapasowych spójnych na poziomie aplikacji, które zapewniają, że do przywrócenia danych nie są wymagane dodatkowe poprawki. Przywracanie danych spójnych na poziomie aplikacji skraca czas przywracania, co pozwala szybko powrócić do stanu roboczego.
 - **Krótkoterminowe i długoterminowe przechowywanie danych**: Magazynów usług Recovery Services możesz użyć do krótko- i długoterminowego przechowywania danych. Platforma Azure nie ogranicza czasu przechowywania danych w magazynie usługi Recovery Services. Możesz je przechowywać przez dowolny czas. Usługa Azure Backup ma limit 9999 punktów odzyskiwania dla każdego chronionego wystąpienia. [Dowiedz się więcej](backup-introduction-to-azure-backup.md#backup-and-retention) o wpływie tego limitu na wymagania dotyczące tworzenia kopii zapasowych.
 - **Automatyczne zarządzanie magazynem** — hybrydowe środowiska często wymagają heterogenicznego magazynu — znajdującego się w części lokalnie, a w części w chmurze. W usłudze Azure Backup nie płaci się za korzystanie z lokalnych urządzeń magazynujących. Usługa Azure Backup automatycznie przydziela magazyn kopii zapasowych i zarządza nim oraz używa modelu płatności zgodnie z rzeczywistym użyciem, dzięki czemu płacisz tylko za używane miejsce w magazynie. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/backup) o cenach.
@@ -56,7 +60,7 @@ Użyj punktów w tabeli, aby łatwiej ustalić wymagania w zakresie strategii BC
 
 **Cel** | **Szczegóły** | **Porównanie**
 --- | --- | --- 
-**Wykonywanie kopii zapasowej/przechowywanie danych** | Dane kopii zapasowej można przechowywać przez wiele dni, miesięcy lub nawet lat, jeśli jest to konieczne pod względem zgodności. | Rozwiązania do wykonywania kopii zapasowych, takie jak Azure Backup, umożliwiają precyzyjne wybieranie danych, dla których chcesz wykonać kopię zapasową, oraz precyzyjne dostosowywanie zasad wykonywania kopii zapasowych i przechowywania.<br/><br/> Usługa Site Recovery nie oferuje takiej precyzji konfiguracji.
+**Wykonywanie kopii zapasowej/przechowywanie danych** | Dane kopii zapasowej można przechowywać przez wiele dni, miesięcy lub nawet lat, jeśli jest to konieczne pod względem zgodności. | Rozwiązania do wykonywania kopii zapasowych, takie jak Azure Backup, umożliwiają precyzyjne wybieranie danych, dla których chcesz wykonać kopię zapasową, oraz precyzyjne dostosowywanie zasad wykonywania kopii zapasowych i przechowywania.<br/><br/> Usługa Site Recovery nie zezwala na tym samym dostrajanie.
 **Cel punktu odzyskiwania** | Dopuszczalna ilość utraconych danych, jeśli wymagane jest odzyskiwanie. | Kopie zapasowe mają bardziej zmienny cel punktu odzyskiwania.<br/><br/> Kopie zapasowe maszyn wirtualnych mają zwykle cel punktu odzyskiwania na poziomie jednego dnia, natomiast kopie zapasowe baz danych mają cel punktu odzyskiwania o wartości 15 minut.<br/><br/> Usługa Site Recovery ma ustawiony niski cel punktu odzyskiwania, ponieważ replikacja jest przeprowadzana ciągle lub często, aby zachować małą różnicę między źródłem i kopią repliki.
 **Cel czasu odzyskiwania** |Ilość czasu potrzebnego do ukończenia odzyskiwania lub przywracania. | Ilość danych, które musi przetworzyć rozwiązanie kopii zapasowych, jest zwykle znacznie wyższa (ze względu na większą wartość RPO), a to prowadzi do większych wartości RTO. Na przykład przywrócenie danych z taśmy może potrwać kilka dni, zależnie od czasu potrzebnego do przetransportowania taśmy z oddalonej lokalizacji. 
 
@@ -66,7 +70,7 @@ Usługa Azure Backup umożliwia wykonywanie kopii zapasowych maszyn lokalnych i 
 
 **Maszyna** | **Scenariusz wykonywania kopii zapasowej**
 --- | ---
-**Lokalna kopia zapasowa** |  (1) Uruchom agenta usługi Microsoft Azure Recovery Services (MARS) w usłudze Azure Backup na lokalnych maszynach z systemem Windows, aby tworzyć kopię zapasową poszczególnych plików i stanu systemu. <br/><br/>(2) Utwórz kopie zapasowe maszyn lokalnych na serwerze kopii zapasowych (System Center Data Protection Manager (DPM) lub Microsoft Azure Backup Server (MABS)), a następnie skonfiguruj ten serwer w celu tworzenia kopii zapasowych w magazynie usługi Azure Backup Recovery Services na platformie Azure.
+**Lokalna kopia zapasowa** |  (1) Uruchom agenta usługi Microsoft Azure Recovery Services (MARS) w usłudze Azure Backup na lokalnych maszynach z systemem Windows, aby tworzyć kopię zapasową poszczególnych plików i stanu systemu. <br/><br/>(2) tworzyć kopie zapasowe maszyn lokalnych na serwer zapasowy (System Center Data Protection Manager (DPM) lub Microsoft Azure Backup serwera (MABS)), a następnie skonfiguruj serwer kopii zapasowych, aby utworzyć kopię zapasową w magazynie usługi Azure Backup Recovery Services na platformie Azure.
 **Maszyny wirtualne platformy Azure** | (1) Włącz tworzenie kopii zapasowych dla poszczególnych maszyn wirtualnych platformy Azure. Przy włączaniu tworzenia kopii zapasowych usługa Azure Backup instaluje rozszerzenie agenta maszyny wirtualnej platformy Azure, który działa na maszynie wirtualnej. Agent tworzy kopię zapasową całej maszyny wirtualnej.<br/><br/> (2) Uruchom agenta MARS na maszynie wirtualnej platformy Azure. Jest to przydatne, jeśli chcesz tworzyć kopie zapasowe poszczególnych plików i folderów na maszynie wirtualnej.<br/><br/> (3) Utwórz kopię zapasową maszyny wirtualnej platformy Azure na serwerze programu DPM lub usługi MABS na platformie Azure. Następnie utwórz kopię zapasową serwera programu DPM lub usługi MABS w magazynie przy użyciu usługi Azure Backup. 
 
 
@@ -75,10 +79,10 @@ Usługa Azure Backup umożliwia wykonywanie kopii zapasowych maszyn lokalnych i 
 
 
 
-Utworzenie kopii zapasowych maszyn i aplikacji w usłudze MABS lub programie DPM, a następnie utworzenie kopii zapasowej w magazynie ma następujące zalety:
+Zalety kopie zapasowe maszyn i aplikacji do magazynu serwera usługi Mab/programu DPM, a następnie tworzenia kopii zapasowych magazynu programu DPM/serwera usługi Mab magazynu są następujące:
 
 - Kopie zapasowe w usłudze MABS lub programie DPM uwzględniają aplikacje i są zoptymalizowane pod kątem typowych aplikacji, takich jak SQL Server, Exchange i SharePoint, a także umożliwiają tworzenie kopii zapasowych plików/folderów/woluminów i kopii zapasowych stanu maszyny (bez systemu operacyjnego, stan systemu).
-- W przypadku maszyn lokalnych nie trzeba instalować agenta MARS na każdej maszynie, której kopię zapasową chcesz utworzyć. Na każdej maszynie jest uruchomiony agent ochrony programu DPM lub usługi MABS, a agent MARS jest uruchomiony tylko w usłudze MABS lub programie DPM.
+- W przypadku maszyn lokalnych nie trzeba instalować agenta MARS na każdej maszynie, której kopię zapasową chcesz utworzyć. Każda maszyna działa agent ochrony programu DPM/serwera usługi Mab i agenta usług MARS jest uruchamiany na serwera usługi Mab/DPM tylko.
 - Zapewnia to większą elastyczność i szczegółowe opcje planowania wykonywania kopii zapasowych.
 - Możesz zarządzać kopiami zapasowymi wielu maszyn zawartymi w grupach ochrony za pomocą jednej konsoli. Jest to szczególnie przydatne w sytuacji, gdy aplikacje są rozmieszczone warstwowo na wielu maszynach i chcesz wykonać ich kopię zapasową razem.
 

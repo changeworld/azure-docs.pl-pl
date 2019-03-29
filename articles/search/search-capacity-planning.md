@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 69fce34c55007daff48b2463da590ffb9cd59926
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775326"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620645"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Skalowanie partycji i replik dla zapytań i indeksowania obciążeń w usłudze Azure Search
 Po zakończeniu [wybierz warstwę cenową](search-sku-tier.md) i [aprowizować usługę wyszukiwania](search-create-service-portal.md), następnym krokiem jest opcjonalnie zwiększyć liczbę repliki lub partycje używane przez usługę. Każda warstwa oferuje stałą liczbę jednostek rozliczeniowych. W tym artykule wyjaśniono, jak można przydzielić tych jednostek, aby osiągnąć optymalną konfigurację, która równoważy wymagań dotyczących wykonywania zapytania, indeksowania i magazynu.
 
-Konfiguracja zasobu jest dostępna podczas konfigurowania usługi po [warstwa podstawowa](https://aka.ms/azuresearchbasic) lub jednego z [warstwy standardowa](search-limits-quotas-capacity.md). W przypadku usług w tych warstwach zostanie kupiona pojemność, z przyrostem równym *wyszukiwanie jednostek* (SUs) gdzie każdej partycji i replik jest liczona jako jeden SU. 
+Konfiguracja zasobu jest dostępna podczas konfigurowania usługi po [warstwa podstawowa](https://aka.ms/azuresearchbasic) lub jednego z [warstwy standardowa lub zoptymalizowane pod kątem magazynu](search-limits-quotas-capacity.md). W przypadku usług w tych warstwach zostanie kupiona pojemność, z przyrostem równym *wyszukiwanie jednostek* (SUs) gdzie każdej partycji i replik jest liczona jako jeden SU. 
 
 Użycie mniejszej liczby wyników SUs w obniżenie proporcjonalnie. Rozliczenia są włączone dla tak długo, jak skonfigurowano usługę. Możesz tymczasowo nie korzystania z usługi, jedynym sposobem, aby uniknąć rozliczeń jest usunięcie usługi, a następnie ponowne utworzenie go, gdy ich potrzebujesz.
 
@@ -81,7 +81,7 @@ Ogólnie rzecz biorąc Wyszukaj aplikacje muszą większa liczba replik niż par
 
 Podstawowa usługa mogą mieć dokładnie jedną partycję i maksymalnie trzech replik dla maksymalnie ograniczyć trzech serwerów SUS. Tylko zmienianych zasób jest replik. Należy co najmniej dwóch replik wysokiej dostępności dla zapytań.
 
-Wszystkich usług w warstwie standardowa może przyjmować następujące kombinacje replik i partycji, z zastrzeżeniem limit 36 SU. 
+Wszystkie standardowe i zoptymalizowane pod kątem magazynu usługi wyszukiwania może przyjmować następujące kombinacje replik i partycji, z zastrzeżeniem limit 36 SU. 
 
 |   | **1 partycji** | **2 partycjach** | **3 partycji** | **4 partycje** | **partycje 6** | **12 partycjami** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -112,7 +112,7 @@ Ogólne zalecenia dotyczące wysokiej dostępności są:
 
 Umowy dotyczące poziomu usług (SLA) dla usługi Azure Search są stosowane w operacjach zapytań i aktualizacji indeksu, które składają się z Dodawanie, aktualizowanie lub usuwanie dokumentów.
 
-Warstwa podstawowa wierzchołki w jednej partycji i trzech replik. Jeśli chcesz, aby mogli natychmiastowe odpowiadanie na wahania zapotrzebowanie na przepustowość indeksowania i zapytania, należy rozważyć użycie jednej z warstwy standardowa.
+Warstwa podstawowa wierzchołki w jednej partycji i trzech replik. Jeśli chcesz, aby mogli natychmiastowe odpowiadanie na wahania zapotrzebowanie na przepustowość indeksowania i zapytania, należy rozważyć użycie jednej z warstwy standardowa.  Jeśli okaże się, że wymagań dotyczących magazynu stają się znacznie szybciej niż przepływności zapytań, należy rozważyć użycie jednej z warstw zoptymalizowane pod kątem magazynu.
 
 ### <a name="index-availability-during-a-rebuild"></a>Indeks dostępności podczas ponownej kompilacji
 

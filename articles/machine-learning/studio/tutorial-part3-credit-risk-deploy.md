@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6cdccd54546296c85864f1588b71109ed8b8f79f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839021"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620518"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Samouczek 3. Wdrażanie modelu ryzyka kredytowego — usługa Azure Machine Learning Studio
 
@@ -172,7 +172,7 @@ Podczas uzyskiwania dostępu do usługi internetowej dane użytkownika są wprow
 Wyniki są zwracane użytkownikowi z usługi internetowej za pośrednictwem modułu **Web service output (Dane wyjściowe usługi internetowej)**.
 
 > [!TIP]
-> W oparciu o skonfigurowanie eksperymentu predykcyjnego są zwracane wyniki z modułu [Score Model (Wygeneruj wyniki dla modelu)][score-model]. Obejmuje to wszystkie dane wejściowe oraz wartość ryzyka kredytowego i generowania wyniku dla prawdopodobieństwa. Ale jeśli chcesz, możesz zwrócić coś innego — na przykład możesz zwrócić tylko wartość ryzyka kredytowego. Aby to zrobić, wstaw moduł [Project Columns (Kolumny projektu)][project-columns] między moduły [Score Model (Wygeneruj wyniki dla modelu)][score-model] i **Web service output (Dane wyjściowe usługi internetowej)**, aby wyeliminować kolumny, które mają nie być zwracane przez usługę internetową. 
+> W oparciu o skonfigurowanie eksperymentu predykcyjnego są zwracane wyniki z modułu [Score Model (Wygeneruj wyniki dla modelu)][score-model]. Obejmuje to wszystkie dane wejściowe oraz wartość ryzyka kredytowego i generowania wyniku dla prawdopodobieństwa. Ale jeśli chcesz, możesz zwrócić coś innego — na przykład możesz zwrócić tylko wartość ryzyka kredytowego. Aby to zrobić, należy wstawić [wybierz kolumny] [ select-columns] modułu między [Score Model] [ score-model] i **sieci Web usługi danych wyjściowych**, aby wyeliminować kolumny nie chcesz, usługę sieci web do zwrócenia. 
 > 
 > 
 
@@ -267,4 +267,4 @@ Możesz również opracować niestandardową aplikację do uzyskiwania dostępu 
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/

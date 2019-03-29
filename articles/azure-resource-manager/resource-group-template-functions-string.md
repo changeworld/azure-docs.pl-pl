@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: c35352c47edb4f34100501ac791c84108fa9ac17
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762844"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621417"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
 
@@ -1809,7 +1809,7 @@ Poniższy przykład przedstawia sposób tworzenia unikatowej nazwy dla konta mag
     ...
 ```
 
-Jeśli musisz utworzyć nową nazwę unikatową za każdym razem wdrożyć szablon, a nie intencji na aktualizację zasobu, można użyć [utcNow](#utcnow) funkcji z uniqueString. Tej metody można użyć w środowisku testowym. Aby uzyskać przykład, zobacz [utcNow](#utcNow).
+Jeśli musisz utworzyć nową nazwę unikatową za każdym razem wdrożyć szablon, a nie intencji na aktualizację zasobu, można użyć [utcNow](#utcnow) funkcji z uniqueString. Tej metody można użyć w środowisku testowym. Aby uzyskać przykład, zobacz [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Wartość zwracana
 

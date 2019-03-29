@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 16abcd2130e92f182dc129c2d7f5cd07ac04a766
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2493866f2926f29e673a7825dbd3c4a2d0e41808
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313535"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579533"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zatrzymać monitorowanie usługi Azure Kubernetes Service (AKS) z usługą Azure Monitor dla kontenerów
 
@@ -32,7 +32,7 @@ Użyj [az aks disable dodatków](https://docs.microsoft.com/cli/azure/aks?view=a
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-Aby ponownie włączyć monitorowania dla klastra, zobacz [Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure](container-insights-onboard.md#enable-monitoring-using-azure-cli).
+Aby ponownie włączyć monitorowania dla klastra, zobacz [Włącz monitorowanie przy użyciu wiersza polecenia platformy Azure](container-insights-onboard.md#enable-using-azure-cli).
 
 ## <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
 Czy podana, dwa szablonu usługi Azure Resource Manager umożliwiają usunięcie spójnego i wielokrotnego zasoby rozwiązania w grupie zasobów. Jednym z nich jest określenie konfiguracji, aby zatrzymać monitorowanie szablonu JSON, a drugi zawiera wartości parametrów, które można skonfigurować w celu określenia AKS grupę zasobów klastra identyfikator i zasobów wdrożoną w klastrze. 

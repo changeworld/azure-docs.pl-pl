@@ -1,6 +1,6 @@
 ---
-title: Kończenie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kończenie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM) i wyświetlić wyniki
+title: Kończenie przeglądu dostępu dla ról usługi Azure AD w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kończenie przeglądu dostępu dla ról usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM) i wyświetlić wyniki
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bea4f649b40298de15b8352fc8eb522da87dead5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed53c8bb3cb735822fc40aab86ca40bef7b9607a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190351"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619186"
 ---
-# <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Kończenie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM
-Administratorzy ról uprzywilejowanych mogą raz Sprawdź dostęp uprzywilejowany [przeglądu dostępu została uruchomiona](pim-how-to-start-security-review.md). Usługa Azure AD Privileged Identity Management (PIM) automatycznie wyśle wiadomość e-mail monitowaniu użytkowników, aby zapoznać się z ich dostęp. Jeśli użytkownik nie pobrały wiadomość e-mail, możesz wysłać im instrukcje [jak przeprowadzić przegląd dostępu](pim-how-to-perform-security-review.md).
+# <a name="complete-an-access-review-for-azure-ad-roles-in-pim"></a>Kończenie przeglądu dostępu dla ról usługi Azure AD w usłudze PIM
+Administratorzy ról uprzywilejowanych mogą raz Sprawdź dostęp uprzywilejowany [przeglądu dostępu została uruchomiona](pim-how-to-start-security-review.md). Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) automatycznie wyśle wiadomość e-mail monitowaniu użytkowników, aby zapoznać się z ich dostęp. Jeśli użytkownik nie pobrały wiadomość e-mail, możesz wysłać im instrukcje [jak przeprowadzić przegląd dostępu](pim-how-to-perform-security-review.md).
 
 Po zakończeniu okresu przeglądu dostępu lub wszystkich użytkowników została zakończona w ich własnym Przejrzyj, wykonaj kroki opisane w tym artykule, aby zarządzać przeglądu i wyświetlić wyniki.
 
@@ -55,5 +55,5 @@ Jeśli nie jesteś zainteresowany przeglądu w bardziej, należy go usunąć. **
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Rozpoczynanie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-start-security-review.md)
-- [Wykonywanie przeglądu dostępu ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)
+- [Rozpoczynanie przeglądu dostępu dla ról usługi Azure AD w usłudze PIM](pim-how-to-start-security-review.md)
+- [Wykonywanie przeglądu dostępu Moje ról usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)
